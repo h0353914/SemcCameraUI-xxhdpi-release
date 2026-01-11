@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"Mạng
+Để kết nối với WLAN"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"Kết nối với %1$s?
+Nhấn vào CHI TIẾT để xem thông tin về mạng WLAN này."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"WLAN đã tắt và Chế độ máy bay đang bật.
+Vui lòng thay đổi các cài đặt này bằng cách nhấn vào CÀI ĐẶT."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Đã tắt WLAN.
+Vui lòng bật WLAN từ phần CÀI ĐẶT."</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">Bật WLAN</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">Sd dữ liệu WLAN &amp; di động</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">Không kết nối được với WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">Chi tiết về WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">Không thể kết nối với WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Mạng WLAN này có rủi ro bảo mật</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Kết nối với WLAN</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"Bạn có thể truy cập nhanh vào web hoặc kết nối với WLAN bằng cách quét QR Code.
+Chức năng này hoạt động khi ở chế độ Ảnh chụp. Bạn có thể thay đổi cài đặt này từ Trình đọc QR Code trong cài đặt Camera."</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Không thể kết nối với camera WLAN/NFC của Sony khi Xperia của bạn được kết nối với Xperia khác.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">Chế độ này không khả dụng trong khi kết nối WLAN.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Chỉ có thể kết nối một camera WLAN/NFC của Sony với Xperia của bạn một lúc.</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Camera WLAN/NFC của Sony</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Không thể kết nối với bất kỳ Xperia nào khi Xperia của bạn được kết nối với camera WLAN/NFC của Sony.</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Không thể kết nối với mạng WLAN này</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Nhấn để kết nối với mạng WLAN \"%1$s\"</string>
+</resources>

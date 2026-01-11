@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/debug_preference_title_debug_mode">
+        <SwitchPreference android:title="@string/debug_preference_entry_title_auto_power_off" android:key="@string/key_debug_disable_auto_power_off" />
+        <SwitchPreference android:title="@string/debug_preference_entry_title_low_power_mode" android:key="@string/key_debug_disable_low_power_mode" />
+        <Preference android:title="@string/debug_preference_entry_title_force_migrate_settings" android:key="@string/key_debug_force_migrate_settings" />
+        <SwitchPreference android:title="@string/debug_preference_entry_title_always_predictive_capture" android:key="@string/key_debug_always_predictive_capture" />
+        <SwitchPreference android:title="@string/debug_preference_entry_title_emulate_sidetouch" android:key="@string/key_debug_emulate_sidetouch" />
+        <SwitchPreference android:title="@string/debug_preference_entry_title_show_scene_condition" android:key="@string/key_debug_show_scene_condition" />
+        <SwitchPreference android:title="@string/debug_preference_entry_title_debug_exif" android:key="@string/key_debug_enable_debug_exif" />
+        <SwitchPreference android:title="@string/debug_preference_entry_title_always_hdr_on" android:key="@string/key_debug_always_hdr_on" />
+        <SwitchPreference android:title="@string/debug_preference_entry_title_show_auto_hdr_icon" android:key="@string/key_debug_show_auto_hdr_icon" />
+        <SwitchPreference android:title="@string/debug_preference_entry_title_show_debug_info_on_preview" android:key="@string/key_debug_show_debug_info_on_preview" />
+        <SwitchPreference android:title="@string/debug_preference_entry_title_disable_motion_for_night" android:key="@string/key_debug_disable_motion_for_night" />
+    </PreferenceCategory>
+</PreferenceScreen>

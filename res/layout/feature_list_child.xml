@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/list_item" android:background="@color/feature_list_background_color" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/feature_list_child_background_color" android:layout_width="fill_parent" android:layout_height="fill_parent" android:elevation="4.0dip">
+        <ImageView android:id="@id/icon" android:layout_width="@dimen/feature_list_child_image_width" android:layout_height="@dimen/feature_list_child_image_height" android:scaleType="fitCenter" />
+        <TextView android:id="@id/list_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/feature_list_child_text_left_margin" android:layout_marginRight="@dimen/feature_list_child_text_right_margin" style="@style/FeatureListChildText" />
+    </LinearLayout>
+    <View android:layout_width="fill_parent" android:layout_height="@dimen/feature_list_child_divide_size" />
+</LinearLayout>

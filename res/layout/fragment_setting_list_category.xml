@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/settings_list_title_height" android:minHeight="@dimen/settings_list_title_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_gravity="top" android:id="@id/category_divider" android:background="@drawable/setting_category_divider" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/settings_list_divider_height" />
+    <LinearLayout android:layout_gravity="start|bottom" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textAppearance="@style/TextAppearanceSettingsCategoryTitle" android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/title" android:paddingBottom="@dimen/settings_list_title_text_padding_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/settings_list_title_text_margin_start" android:paddingEnd="@dimen/settings_list_title_text_margin_end" />
+    </LinearLayout>
+</FrameLayout>

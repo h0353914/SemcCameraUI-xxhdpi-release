@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"Verkko
+WLAN-yhteyden muodostaminen"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"Muodostetaanko yhteys verkkoon %1$s?
+Saat lisätietoja tästä WLAN-verkosta napauttamalla TIEDOT"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"WLAN ei ole käytössä ja lentokonetila on käytössä.
+Muokkaa näitä asetuksia napauttamalla ASETUKSET."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"WLAN ei ole käytössä.
+Ota WLAN käyttöön ASETUKSISSA."</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">Ota WLAN käyttöön</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">Käytä WLANä ja mobiilidataa</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">WLAN-yhteyden muodostaminen epäonnistui</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">WLAN-tiedot</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">WLAN-yhteyden muodostaminen ei onnistu</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Tässä WLAN-verkossa on tietoturvariskejä</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Muodosta WLAN-yhteys</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"Voit käyttää Internetiä tai muodostaa WLAN-yhteyden nopeasti lukemalla QR Code -koodin.
+Tämä toiminto on käytössä kuvatilassa. Voit muokata tätä asetusta kameran asetusten QR Code -lukijan asetuksissa."</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Yhteyttä Sonyn WLAN-/NFC-kameraan ei voi muodostaa, kun Xperia-laitteesi on yhdistetty johonkin toiseen Xperia-laitteeseen.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">Tämä tila ei ole käytettävissä WLAN-verkkosidonnan aikana.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Vain yhden Sonyn WLAN-/NFC-kameran voi yhdistää Xperia-laitteeseen kerrallaan.</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">"Sony's WLAN-/NFC-kamera"</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Yhteyttä Xperia-laitteeseen ei voi muodostaa, kun Xperia-laitteesi on yhdistetty Sonyn WLAN-/NFC-kameraan.</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Tähän WLAN-verkkoon yhdistäminen ei onnistu</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Yhdistä napauttamalla verkkoon %1$s</string>
+</resources>

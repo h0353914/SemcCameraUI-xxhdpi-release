@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:descendantFocusability="beforeDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="start|center" android:layout_gravity="center_vertical" android:id="@id/title_container" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:paddingStart="@dimen/settings_list_item_margin_start" android:paddingEnd="@dimen/settings_list_item_margin_end">
+        <TextView android:textAppearance="@style/TextAppearanceSettingsItemTitle" android:id="@id/title" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textAppearance="@style/TextAppearanceSettingsItemDesc" android:id="@id/sub_description" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/title" android:textAlignment="viewStart" android:layout_alignStart="@id/title" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="end|center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <Switch android:gravity="center_vertical" android:linksClickable="false" android:id="@id/switch_widget" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minWidth="@dimen/settings_list_switch_min_width" android:layout_marginStart="@dimen/settings_list_switch_margin_start" android:layout_marginEnd="@dimen/settings_list_switch_margin_end" android:contextClickable="false" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">Ugrás a főoldalra</string>
+    <string name="abc_action_bar_up_description">Felfelé mozgatás</string>
+    <string name="abc_action_menu_overflow_description">További lehetőségek</string>
+    <string name="abc_action_mode_done">Kész</string>
+    <string name="abc_activity_chooser_view_see_all">Összes megtekintése</string>
+    <string name="abc_activitychooserview_choose_application">Válasszon ki egy alkalmazást</string>
+    <string name="abc_capital_off">KI</string>
+    <string name="abc_capital_on">BE</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">Delete</string>
+    <string name="abc_menu_enter_shortcut_label">Enter</string>
+    <string name="abc_menu_function_shortcut_label">Function+</string>
+    <string name="abc_menu_meta_shortcut_label">Meta+</string>
+    <string name="abc_menu_shift_shortcut_label">Shift+</string>
+    <string name="abc_menu_space_shortcut_label">Szóköz</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">Menu+</string>
+    <string name="abc_search_hint">Keresés…</string>
+    <string name="abc_searchview_description_clear">Lekérdezés törlése</string>
+    <string name="abc_searchview_description_query">Keresési lekérdezés</string>
+    <string name="abc_searchview_description_search">Keresés</string>
+    <string name="abc_searchview_description_submit">Lekérdezés küldése</string>
+    <string name="abc_searchview_description_voice">Hangalapú keresés</string>
+    <string name="abc_shareactionprovider_share_with">Megosztás a következővel:</string>
+    <string name="abc_shareactionprovider_share_with_application">Megosztás a következő alkalmazással: %s</string>
+    <string name="abc_toolbar_collapse_description">Összecsukás</string>
+    <string name="call_notification_answer_action">Fogadás</string>
+    <string name="call_notification_answer_video_action">Videó</string>
+    <string name="call_notification_decline_action">Elutasítás</string>
+    <string name="call_notification_hang_up_action">Befejezés</string>
+    <string name="call_notification_incoming_text">Bejövő hívás</string>
+    <string name="call_notification_ongoing_text">Hívás folyamatban</string>
+    <string name="call_notification_screening_text">Bejövő hívás szűrése</string>
+    <string name="cam_3d_strings_creating_but_incorrect_direction_txt">Nem fejezhető be a felvétel. Pásztázzon a megfelelő irányban.</string>
+    <string name="cam_3d_strings_creating_but_too_quick_txt">Nem fejezhető be a felvétel. Pásztázzon lassabban.</string>
+    <string name="cam_3d_strings_creating_but_too_slow_txt">Nem fejezhető be a felvétel. Pásztázzon gyorsabban.</string>
+    <string name="cam_3d_strings_description_sweep_panorama_txt">Panorámakép készítése a kamera pásztázásával</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Az alábbi fájlok létrehozása:
+- Több látószögű kép
+- 3D kép
+Megjegyzés: Ezek a fájlok egy szürke területet tartalmaznak."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Az alábbi fájlok létrehozása:
+- Több látószögű kép
+- 3D kép"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Feldolgozás...
+Ez a kép egy szürke területet tartalmaz"</string>
+    <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Kép mentése</string>
+    <string name="cam_3d_strings_dialog_processing_txt">Feldolgozás...</string>
+    <string name="cam_3d_strings_error_application_busy_txt">Várjon néhány másodpercig a 3D kamera elindításához</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_title_txt">Hiba</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">Húzza ki a kábelt. Ebben a módban nem készíthet fényképet csatlakoztatott kábellel.</string>
+    <string name="cam_3d_strings_error_direction_txt">Nem sikerült elkészíteni a képet. Pásztázzon a megfelelő irányban.</string>
+    <string name="cam_3d_strings_error_too_quick_txt">Nem sikerült elkészíteni a képet. Pásztázzon lassabban.</string>
+    <string name="cam_3d_strings_error_too_slow_txt">Nem sikerült elkészíteni a képet. Pásztázzon gyorsabban.</string>
+    <string name="cam_3d_strings_setting_shooting_direction_down_txt">Lefelé</string>
+    <string name="cam_3d_strings_setting_shooting_direction_left_txt">Balra</string>
+    <string name="cam_3d_strings_setting_shooting_direction_right_txt">Jobbra</string>
+    <string name="cam_3d_strings_setting_shooting_direction_title_txt">Felvétel iránya</string>
+    <string name="cam_3d_strings_setting_shooting_direction_up_txt">Felfelé</string>
+    <string name="cam_3d_strings_shooting_direction_guide_txt">Irányt válthat a bal oldali ikonra koppintással</string>
+    <string name="cam_3d_strings_shooting_failure_title_txt">Nem sikerült a felvétel</string>
+    <string name="cam_3d_strings_shooting_guide_down_to_up_txt">Pásztázzon lentről felfelé</string>
+    <string name="cam_3d_strings_shooting_guide_left_to_right_txt">Pásztázzon balról jobbra</string>
+    <string name="cam_3d_strings_shooting_guide_pan_too_fast_txt">Pásztázzon lassabban</string>
+    <string name="cam_3d_strings_shooting_guide_press_key_txt">Nyomja meg a zárgombot, és lassan pásztázzon a kamerával</string>
+    <string name="cam_3d_strings_shooting_guide_right_to_left_txt">Pásztázzon jobbról balra</string>
+    <string name="cam_3d_strings_shooting_guide_touch_cap_txt">Koppintson a kamera gombjára, és lassan pásztázzon a kamerával</string>
+    <string name="cam_3d_strings_shooting_guide_up_to_down_txt">Pásztázzon fentről lefelé</string>
+    <string name="cam_3d_strings_sweep_panorama_short_txt">Panorámakép</string>
+    <string name="cam_app_shortcut_front_photo_txt">Előlapi fénykép</string>
+    <string name="cam_app_shortcut_manual_txt">Kézi</string>
+    <string name="cam_app_shortcut_video_txt">Videó</string>
+    <string name="cam_face_eye_af_settings_on_txt">Arcfelismerés/Szem AF bekapcsolva</string>
+    <string name="cam_string_dualrec_m_apr_txt">%2$tY. április %1$td.</string>
+    <string name="cam_string_dualrec_m_aug_txt">%2$tY. augusztus %1$td.</string>
+    <string name="cam_string_dualrec_m_dec_txt">%2$tY. december %1$td.</string>
+    <string name="cam_string_dualrec_m_feb_txt">%2$tY. február %1$td.</string>
+    <string name="cam_string_dualrec_m_jan_txt">%2$tY. január %1$td.</string>
+    <string name="cam_string_dualrec_m_jul_txt">%2$tY. július %1$td.</string>
+    <string name="cam_string_dualrec_m_jun_txt">%2$tY. június %1$td.</string>
+    <string name="cam_string_dualrec_m_mar_txt">%2$tY. március %1$td.</string>
+    <string name="cam_string_dualrec_m_may_txt">%2$tY. május %1$td.</string>
+    <string name="cam_string_dualrec_m_nov_txt">%2$tY. november %1$td.</string>
+    <string name="cam_string_dualrec_m_oct_txt">%2$tY. október %1$td.</string>
+    <string name="cam_string_dualrec_m_sep_txt">%2$tY. szeptember %1$td.</string>
+    <string name="cam_string_dualrec_t_am_txt">de. %1$tl:%2$tM</string>
+    <string name="cam_string_dualrec_t_pm_txt">du. %1$tl:%2$tM</string>
+    <string name="cam_strings_1x1_frame_lines_txt">1:1 keretvonalak</string>
+    <string name="cam_strings_accessibility_auto_review_txt">Fényképek aut. előnézete</string>
+    <string name="cam_strings_accessibility_auto_scene_recognized_txt">A következő motívum érzékelhető: %1$s</string>
+    <string name="cam_strings_accessibility_back_main_txt">Vissza</string>
+    <string name="cam_strings_accessibility_back_txt">Vissza</string>
+    <string name="cam_strings_accessibility_capturing_mode_txt">Felvételi üzemmód</string>
+    <string name="cam_strings_accessibility_close_color_button_txt">Színkorrekció bezárása</string>
+    <string name="cam_strings_accessibility_color_brightness_button_txt">Szín és fényerő módosításának bezárása</string>
+    <string name="cam_strings_accessibility_condition_detected_txt">A következő állapot észlelhető: %1$s</string>
+    <string name="cam_strings_accessibility_condition_motion_txt">Mozgásban</string>
+    <string name="cam_strings_accessibility_condition_stable_txt">Stabil</string>
+    <string name="cam_strings_accessibility_condition_walk_txt">Séta</string>
+    <string name="cam_strings_accessibility_dual_effect_menu_txt">Kétkamerás hatás</string>
+    <string name="cam_strings_accessibility_eyeaf_off_txt">Koppintson duplán a Szem AF funkció bekapcsolásához</string>
+    <string name="cam_strings_accessibility_eyeaf_on_txt">Koppintson duplán a Szem AF funkció kikapcsolásához</string>
+    <string name="cam_strings_accessibility_flash_torch_txt">Zseblámpa</string>
+    <string name="cam_strings_accessibility_flash_txt">Vaku</string>
+    <string name="cam_strings_accessibility_fusion_auto_txt">Koppintson duplán az automatikus dupla kamerára váltáshoz</string>
+    <string name="cam_strings_accessibility_fusion_off_txt">Koppintson duplán a két kamera bekapcsolásához</string>
+    <string name="cam_strings_accessibility_fusion_on_txt">Koppintson duplán a két kamera kikapcsolásához</string>
+    <string name="cam_strings_accessibility_image_quality_control_exposure_value_txt">Expozíciós érték</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_deselected_txt">Automatikus kiválasztása megszüntetve</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_selected_txt">Automatikus kiválasztva</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_txt">Autofókusz</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_adjusted_txt">Megváltozott a fókusz hossza</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_txt">Manuális fókusz</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_txt">Fókusz</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_deselected_txt">Automatikus kiválasztása megszüntetve</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_selected_txt">Automatikus kiválasztva</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_txt">Zársebesség</string>
+    <string name="cam_strings_accessibility_image_quality_control_white_balance_txt">Fehéregyensúly</string>
+    <string name="cam_strings_accessibility_information_txt">Információ</string>
+    <string name="cam_strings_accessibility_menu_txt">Menü</string>
+    <string name="cam_strings_accessibility_not_configurable_txt">Nem konfigurálható</string>
+    <string name="cam_strings_accessibility_open_color_button_txt">Színkorrekció megnyitása</string>
+    <string name="cam_strings_accessibility_other_settings_txt">Egyéb beállítások</string>
+    <string name="cam_strings_accessibility_pause_button_txt">Szünet</string>
+    <string name="cam_strings_accessibility_photo_setting_txt">Kamerabeállítások</string>
+    <string name="cam_strings_accessibility_predictive_capture_txt">Prediktív rögzítés</string>
+    <string name="cam_strings_accessibility_recent_photo_txt">Legutóbbi fényképek csoportja</string>
+    <string name="cam_strings_accessibility_recording_button_txt">Felvétel</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_button_txt">Lassított mozgás</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_exti_button_txt">Kilépés Lassított mozgás módból</string>
+    <string name="cam_strings_accessibility_recording_stop_button_txt">Leállítás</string>
+    <string name="cam_strings_accessibility_self_timer_stop_button_txt">Visszaszámolás leállítása</string>
+    <string name="cam_strings_accessibility_shutter_button_txt">Zárgomb</string>
+    <string name="cam_strings_accessibility_soundphoto_play_txt">A hang lejátszása</string>
+    <string name="cam_strings_accessibility_superior_auto_color_brightness_txt">Szín és fényerő módosítása</string>
+    <string name="cam_strings_accessibility_swf_normal_txt">Koppintson duplán a normál üzemmódra váltáshoz</string>
+    <string name="cam_strings_accessibility_swf_wide_txt">Koppintson duplán a nagylátószögű üzemmódra váltáshoz</string>
+    <string name="cam_strings_accessibility_switch_to_front_by_swiping_txt">Átváltva előlapi kamerára</string>
+    <string name="cam_strings_accessibility_switch_to_front_txt">Koppintson duplán az előlapi kamerára váltáshoz</string>
+    <string name="cam_strings_accessibility_switch_to_main_by_swiping_txt">Átváltva a fő kamerára</string>
+    <string name="cam_strings_accessibility_switch_to_main_txt">Koppintson duplán a fő kamerára váltáshoz</string>
+    <string name="cam_strings_accessibility_switch_to_photo_txt">Koppintson duplán a fényképezőgépre váltáshoz</string>
+    <string name="cam_strings_accessibility_switch_to_video_txt">Koppintson duplán a videokamerára váltáshoz</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">Koppintson duplán a HDR bekapcsolásához</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_on_txt">Koppintson duplán a HDR kikapcsolásához</string>
+    <string name="cam_strings_accessibility_video_setting_txt">Videobeállítások</string>
+    <string name="cam_strings_accessibility_viewer_txt">Megnyitás a képnézővel</string>
+    <string name="cam_strings_accessibility_zoom_ratio_with_number_txt">%1$sx</string>
+    <string name="cam_strings_advanced_setting_geo_tag_both_off_txt">Helyek mentéséhez engedélyeznie kell a GPS és/vagy vezeték nélküli hálózatokat. Engedélyezi?</string>
+    <string name="cam_strings_advanced_setting_geo_tag_title_txt">Hely mentése</string>
+    <string name="cam_strings_ai_face_restore_txt">Arcok élesítése</string>
+    <string name="cam_strings_application_name_creative_effect_txt">Kreatív effektus</string>
+    <string name="cam_strings_application_name_dualrec_txt">Arc a képen</string>
+    <string name="cam_strings_application_name_facefusion_txt">AR maszk</string>
+    <string name="cam_strings_application_name_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_application_name_multicam_txt">Többkamerás</string>
+    <string name="cam_strings_application_name_night_mode_txt">Éjszakai mód</string>
+    <string name="cam_strings_application_name_night_shooting_txt">Éjszakai mód</string>
+    <string name="cam_strings_application_name_soundphoto_txt">Sound Photo</string>
+    <string name="cam_strings_application_name_sweep_panorama_txt">Panorámapásztázás</string>
+    <string name="cam_strings_application_name_timeshift_txt">Timeshift burst</string>
+    <string name="cam_strings_application_name_txt">Kamera</string>
+    <string name="cam_strings_application_name_video_txt">Videó</string>
+    <string name="cam_strings_apps_list_add_txt">Hozzáadás</string>
+    <string name="cam_strings_apps_list_downloadable_txt">Letölthető</string>
+    <string name="cam_strings_apps_list_installed_txt">Telepítve</string>
+    <string name="cam_strings_apps_list_txt">Kameraalkalmazások</string>
+    <string name="cam_strings_art_filter_guesture_guide_general_txt">Ujjait használva szerkesztheti a megjelenített képet</string>
+    <string name="cam_strings_art_filter_guesture_guide_tap_txt">Koppintson a színezni kívánt területre</string>
+    <string name="cam_strings_aspect_ratio_txt">Képarány</string>
+    <string name="cam_strings_auto_hdr_discription_txt">Ha bekapcsolod ezt a beállítást, akkor elkerülheted a túl- vagy alulexponált felvételek készítését, a fényképezés közben érzékelhető kontraszt észlelésével.</string>
+    <string name="cam_strings_auto_hdr_txt">Automatikus HDR</string>
+    <string name="cam_strings_auto_power_off_txt">A kamera inaktivitás miatt hamarosan bezárul</string>
+    <string name="cam_strings_auto_scene_recognition_txt">Automatikus motívum-érzékelés</string>
+    <string name="cam_strings_auto_upload_all_title_txt">Automatikus feltöltés</string>
+    <string name="cam_strings_auto_upload_all_txt">Automatikus feltöltés</string>
+    <string name="cam_strings_awb_priority_setting_asmosphere_txt">Hangulat</string>
+    <string name="cam_strings_awb_priority_setting_standard_txt">Normál</string>
+    <string name="cam_strings_awb_priority_setting_txt">Elsőbbség beállítása AWB-ben</string>
+    <string name="cam_strings_awb_priority_setting_white_txt">Fehér</string>
+    <string name="cam_strings_balloon_tips_modeselector_title_txt">Különböző felvételi módok kipróbálása</string>
+    <string name="cam_strings_balloon_tips_modeselector_txt">Ide koppintva válasszon másik módot</string>
+    <string name="cam_strings_balloon_tips_timeshift_title_txt">A legjobb pillanat kiválasztása</string>
+    <string name="cam_strings_balloon_tips_timeshift_txt">A legjobb kép keresése a miniatűrök fel-le csúsztatásával</string>
+    <string name="cam_strings_bokeh_error_covering_lens_txt">Ellenőrizze, hogy az objektív tiszta-e, és az ujja nincs-e rajta</string>
+    <string name="cam_strings_bokeh_error_night_shooting_disable_txt">Az éjszakai felvétel nem érhető el, ha a bokeh be van kapcsolva</string>
+    <string name="cam_strings_bokeh_error_over_light_txt">Túl világos</string>
+    <string name="cam_strings_bokeh_error_too_close_txt">Távolodjon el az objektumtól</string>
+    <string name="cam_strings_bokeh_error_too_dark_txt">Több fény szükséges</string>
+    <string name="cam_strings_bokeh_error_too_far_away_txt">Menjen közelebb az objektumhoz</string>
+    <string name="cam_strings_bokeh_error_unknown_txt">A Háttérelmosás (bokeh) jelenleg nem érhető el</string>
+    <string name="cam_strings_bokeh_title_txt">Háttér-homályosítás (bokeh)</string>
+    <string name="cam_strings_burst_battery_level_low_txt">Az akkumulátor alacsony töltöttsége miatt nem lehet sorozatfelvételt készíteni</string>
+    <string name="cam_strings_burst_change_camera_key_setting_txt">Kapcs. be a „Sorozatfelv. a készülék zárgombjával” opciót a s.felv. eng.</string>
+    <string name="cam_strings_burst_in_bokeh_effect_txt">Háttérelmosás effektussal nem készíthető sor.felvétel</string>
+    <string name="cam_strings_burst_in_dark_condition_txt">Sötétben nem lehet sorozatfelvételt készíteni</string>
+    <string name="cam_strings_burst_in_long_shutter_speed_txt">2 mp v. hosszabb záridővel nem készíthető sorozatfelvétel</string>
+    <string name="cam_strings_burst_in_transfer_and_tagging_txt">Transfer &amp; Tagging add-on bekapcs.: nem készíth. s.fénykép</string>
+    <string name="cam_strings_burst_in_widecam_txt">Ultranagy látószögű objektívvel nem készíthető sorozatfelvétel</string>
+    <string name="cam_strings_burst_not_supported_front_camera_txt">Az előlapi kamerával nem lehet sorozatfelvételt készíteni</string>
+    <string name="cam_strings_burst_not_supported_fusion_on_txt">Dupla kamera bekapcsolásakor nem készíthető sorozatfelvétel</string>
+    <string name="cam_strings_burst_saved_internal_storage_txt">A sorozatfelvételek mentése a belső tárhelyre történik</string>
+    <string name="cam_strings_burst_shooting_txt">Sorozat sebessége</string>
+    <string name="cam_strings_button_continue_txt">Folytatás</string>
+    <string name="cam_strings_button_quit_txt">KILÉPÉS</string>
+    <string name="cam_strings_camera_af_sound_txt">Autofókusz hangja</string>
+    <string name="cam_strings_camera_apps_tab_txt">KAMERAALK.</string>
+    <string name="cam_strings_camera_key_setting_burst_shot_txt">Sorozatfelvétel</string>
+    <string name="cam_strings_camera_key_setting_take_photo_txt">Fénykép készítése</string>
+    <string name="cam_strings_camera_key_setting_txt">Sorozatfelvétel zárgombbal</string>
+    <string name="cam_strings_camera_sound_txt">Hang</string>
+    <string name="cam_strings_camera_switching_txt">Kamera váltása</string>
+    <string name="cam_strings_camerakey_launch_description_photo_pro_txt">A készülék zárgombját lenyomva és nyomva tartva elindíthatja a Kamera alkalmazást és a Photography Pro alkalmazást. Ez akkor is működik, ha a telefon zárolt vagy alvó módban van.</string>
+    <string name="cam_strings_camerakey_launch_description_txt">A készülék zárgombját megnyomva és lenyomva tartva elindíthatja a Kamera alkalmazást. Ez akkor is működik, ha a telefon zárolt vagy alvó módban van.</string>
+    <string name="cam_strings_cancel_txt">Mégse</string>
+    <string name="cam_strings_capturing_mode_4k2k_txt">4K videó</string>
+    <string name="cam_strings_capturing_mode_auto_txt">Fénykép</string>
+    <string name="cam_strings_capturing_mode_button_txt">Mód</string>
+    <string name="cam_strings_capturing_mode_camera_txt">Kamera</string>
+    <string name="cam_strings_capturing_mode_creative_effect_txt">Kreatív effektus</string>
+    <string name="cam_strings_capturing_mode_dualrec_txt">Arc a képen</string>
+    <string name="cam_strings_capturing_mode_facefusion_txt">AR maszk</string>
+    <string name="cam_strings_capturing_mode_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_capturing_mode_high_frame_rate_txt">Timeshift video</string>
+    <string name="cam_strings_capturing_mode_manual_txt">Kézi</string>
+    <string name="cam_strings_capturing_mode_multicam_txt">Többkamerás</string>
+    <string name="cam_strings_capturing_mode_network_error_txt">Nem sikerült az adatok betöltése</string>
+    <string name="cam_strings_capturing_mode_photopro_txt">Photo Pro</string>
+    <string name="cam_strings_capturing_mode_portraitselfie_txt">Szelfiportré</string>
+    <string name="cam_strings_capturing_mode_slow_motion_txt">Videó (lassított mozgás)</string>
+    <string name="cam_strings_capturing_mode_soundphoto_txt">Sound Photo</string>
+    <string name="cam_strings_capturing_mode_superior_auto_cy_txt">Kiváló automatikus</string>
+    <string name="cam_strings_capturing_mode_superior_auto_txt">Kiváló automatikus</string>
+    <string name="cam_strings_capturing_mode_timeshift_txt">Timeshift burst</string>
+    <string name="cam_strings_capturing_mode_title_txt">Felvételi üzemmód</string>
+    <string name="cam_strings_change_full_storage_to_internal_txt">Az SD-kártya megtelt. Az alapértelmezett adattároló belső tárhelyre változott.</string>
+    <string name="cam_strings_change_save_destination_high_frame_rate_title_txt">Timeshift video</string>
+    <string name="cam_strings_change_save_destination_slowmotion_title_txt">Lassított mozgás</string>
+    <string name="cam_strings_change_save_destination_title_txt">4K videó</string>
+    <string name="cam_strings_change_storage_to_sd_txt">Az SD-kártya be van helyezve. SD-kártyára változtatja az alapértelmezett adattárolót?</string>
+    <string name="cam_strings_change_txt">Módosítás</string>
+    <string name="cam_strings_close_txt">Bezárás</string>
+    <string name="cam_strings_color_brightness_txt">Szín és fényerősség</string>
+    <string name="cam_strings_common_error_internal_memory_full_txt">A belső tárhely megtelt. Menti helyette SD-kártyára az adatokat?</string>
+    <string name="cam_strings_common_error_internal_memory_unavailable_txt">A belső tárhely sérült vagy írásvédett. Menti helyette SD-kártyára az adatokat?</string>
+    <string name="cam_strings_common_error_open_txt">Nem nyith. meg: %1$s</string>
+    <string name="cam_strings_common_error_sdcard_full_txt">Az SD-kártya megtelt. Menti helyette belső tárhelyre az adatokat?</string>
+    <string name="cam_strings_common_error_sdcard_unavailable_txt">Az SD-kártya nem használható. Menti helyette belső tárhelyre az adatokat?</string>
+    <string name="cam_strings_common_explanatory_sdcard_setting_txt">A stabil rögzítéshez vagy felvételhez javasoljuk, hogy az adattárolót módosítsa belső tárhelyre, vagy használjon nagy sebességű SD-kártyát (Class 10 vagy gyorsabb javasolt).</string>
+    <string name="cam_strings_cooling_mode_cooled_down_txt">Egyes funkciók le vannak tiltva</string>
+    <string name="cam_strings_cooling_mode_learn_more_txt">További infó</string>
+    <string name="cam_strings_cooling_mode_message1_txt">A következő funkciók jelenleg le vannak tiltva.</string>
+    <string name="cam_strings_cooling_mode_message2_txt">Várja meg, hogy készüléke lehűljön, majd indítsa újra a kamerát.</string>
+    <string name="cam_strings_cooling_mode_title_txt">A következő funkciók le vannak tiltva</string>
+    <string name="cam_strings_cooling_mode_txt">Egyes funkciók letiltva a felmelegedéskor</string>
+    <string name="cam_strings_core_intelligentactive_txt">Aktív intelligencia</string>
+    <string name="cam_strings_cta_description_txt">Engedélyezi az alábbi kérelmet?</string>
+    <string name="cam_strings_cta_title_txt">Figyelem</string>
+    <string name="cam_strings_dependency_changed_txt">%1$s a következőre változott: %2$s</string>
+    <string name="cam_strings_description_4k2k_txt">Videó rögzítése 4K Ultra High Definition felbontásban</string>
+    <string name="cam_strings_description_camera_txt">Fényképek és videók készítése</string>
+    <string name="cam_strings_description_creative_effect_txt">Effektusok kiválasztása művészi fényképekhez és videókhoz</string>
+    <string name="cam_strings_description_dualrec_txt">Az előlapi és fő kamerával felveheti arcát a fényképekre és a videókba</string>
+    <string name="cam_strings_description_facefusion_txt">Arcát a barátja arcával álcázva készítsen hatásos szelfit</string>
+    <string name="cam_strings_description_google_lens_txt">A %1$s segítségével további részleteket tudhat meg, illetve műveleteket hajthat végre</string>
+    <string name="cam_strings_description_high_frame_rate_txt">Nagy sebességű videó rögzítése és lassított lejátszás alkalmazása</string>
+    <string name="cam_strings_description_multicam_txt">Ugyanazon téma felvétele több szögből egyetlen képernyőn</string>
+    <string name="cam_strings_description_shoundphoto_txt">Fénykép készítése háttérhanggal (madárcsicsergés stb.)</string>
+    <string name="cam_strings_description_timeshift_short_txt">A legjobb fénykép kiválasztása a sorozatképek közül</string>
+    <string name="cam_strings_details_txt">Részletek</string>
+    <string name="cam_strings_dialog_4k_unavailable_while_screen_recording_txt">"Nem lehet 4K videókat felvenni képernyőrögzítés közben.
+Válasszon a 4K-tól különböző videóméretet, vagy állítsa le a képernyőrögzítést, ha videót szeretne felvenni."</string>
+    <string name="cam_strings_dialog_60fps_unavailable_while_screen_recording_txt">"A jelenlegi méretben nem lehet videókat felvenni képernyőrögzítés közben.
+Válasszon a Full HD (60 képkocka/mp) felbontástól eltérő videóméretet, vagy állítsa le a képernyőrögzítést, ha videót szeretne felvenni."</string>
+    <string name="cam_strings_dialog_battery_level_low_info_txt">Nem elég a telefon akkumulátorának töltöttsége. Alacsony akkumulátorszint esetén a kamera automatikusan bezárul.</string>
+    <string name="cam_strings_dialog_battery_level_low_recording_txt">A rögzítés az akkumulátor lemerülése miatt leállt. Töltse a készüléket, és próbálkozzon újból.</string>
+    <string name="cam_strings_dialog_battery_level_low_using_txt">A kamera az akkumulátor lemerülése miatt nem használható. Töltse a készüléket, és próbálkozzon újból.</string>
+    <string name="cam_strings_dialog_body_accessibility_txt">Kisegítő lehetőségek: &lt;a href=\"%s\">Részben megfelel&lt;/a></string>
+    <string name="cam_strings_dialog_body_applicationnotification_1_txt">Az alkalmazásnak szüksége van az alábbi engedély(ek)re a művelet végrehajtásához.</string>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"Hálózat
+Wi-Fi-hálózathoz való csatlakoztatáshoz"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_airplane_on_txt">"A Repülőgépes üzemmód be van kapcsolva.
+A BEÁLLÍTÁSOK gombot használva kapcsolja ki a Repülőgépes üzemmódot."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_name_txt">"Hálózat neve: 
+"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_disable_txt">Nem védett</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_enable_txt">Védett</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Biztosan csatlakozni szeretne a következő hálózathoz: %1$s?</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"Csatlakoztatás ehhez: %1$s?
+A Wi-Fi-hálózatról a RÉSZLETEK gombra koppintva talál további információt."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"A Wi-Fi ki van kapcsolva és a Repülőgépes üzemmód be van kapcsolva.
+A BEÁLLÍTÁSOK gombra koppintva módosítsa ezeket a beállításokat."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"A Wi-Fi ki van kapcsolva.
+A BEÁLLÍTÁSOK gombot használva kapcsolja ki a Wi-Fi funkciót."</string>
+    <string name="cam_strings_dialog_btn_connect_txt">Kapcsolódás</string>
+    <string name="cam_strings_dialog_btn_settings_txt">Beállítások</string>
+    <string name="cam_strings_dialog_burst_information_txt">Sorozatfelvételek készítéséhez válassza a kameraalkalmazások Timeshift burst beállítását</string>
+    <string name="cam_strings_dialog_change_resolution_manual_txt">Kézi (előlapi kamera)</string>
+    <string name="cam_strings_dialog_change_resolution_superior_auto_txt">Kiváló automatikus (előlapi kamera)</string>
+    <string name="cam_strings_dialog_change_resolution_txt">Egy szoftverfrissítés következtében a következő felvételi üzemmódok felbontása 13 MP (4:3) értékre módosult</string>
+    <string name="cam_strings_dialog_cta_access_txt">%1$s művelete</string>
+    <string name="cam_strings_dialog_cta_allow_txt">Engedélyezés</string>
+    <string name="cam_strings_dialog_cta_deny_txt">Elutasítás</string>
+    <string name="cam_strings_dialog_cta_location_info_txt">Helyadatok lekérése</string>
+    <string name="cam_strings_dialog_cta_turn_on_nfc_txt">NFC bekapcsolása</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">Wi-Fi bekapcsolása</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">Wi-Fi és mobiladatok haszn.</string>
+    <string name="cam_strings_dialog_high_temp_title_txt">Figyelem</string>
+    <string name="cam_strings_dialog_high_temp_txt">Ha a készülék felmelegszik, előfordulhat, hogy az alkalmazás a használat során leáll. A program automatikusan menti a felvételét.</string>
+    <string name="cam_strings_dialog_high_temp_vzw_txt">Ez a kameramód nagymértékben használja a telefon erőforrásait, és a telefon melegedését okozhatja. A túlmelegedés megelőzése érdekében előfordulhat, hogy leáll a videorögzítés és bezárul a kameraalkalmazás. A program automatikusan menti a felvételt.</string>
+    <string name="cam_strings_dialog_storage_full_burst_txt">A sorozatfelvétel leállt, mert elfogyott a memória. Hely felszabadításához töröljön néhány fájlt a belső tárhelyen.</string>
+    <string name="cam_strings_dialog_title_accessibility_txt">Kisegítő lehetőségek</string>
+    <string name="cam_strings_dialog_title_applicationnotification_txt">Engedélyek megadása</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_connecting_txt">Kapcsolódás...</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">Sikertelen csatlakoztatás Wi-Fi-hálózathoz</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_password_txt">"
+Jelszavas védelem: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_security_txt">"
+Biztonság: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">Wi-Fi-részletek</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">Nem lehet csatlakozni Wi-Fi-hálózathoz</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Ez a Wi-Fi-hálózat biztonsági kockázatokkal jár</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Csatlakoztatás Wi-Fi-hálózathoz</string>
+    <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">Videókat rögzíthet olyan helyszíneken, ahol nagy a kontraszt, és drámaibbá és a valós életben láthatóhoz hasonlóvá teheti őket. Ha eredeti színnel és fényerővel szeretné élvezni a tartalmat, használjon támogatott eszközöket és szolgáltatásokat.</string>
+    <string name="cam_strings_digital_zoom_type_description_txt">"Válasszon digitális zoombeállítást.
+
+Normál digitális zoom: A képérzékelő adataira épülő digitális feldolgozást használó zoom.
+Szuperfelbontású zoom: Digitális adatfeldolgozást alkalmazó, az eredeti képminőségből többet megtartani képes zoom. A fényképek mentése hosszabb időt vehet igénybe."</string>
+    <string name="cam_strings_digital_zoom_type_standard_txt">Normál digitális zoom</string>
+    <string name="cam_strings_digital_zoom_type_super_resolution_txt">Szuperfelbontású zoom</string>
+    <string name="cam_strings_digital_zoom_type_txt">Digitális zoom beállításai</string>
+    <string name="cam_strings_dispbutton_settings_txt">DISP gomb beállításai</string>
+    <string name="cam_strings_distortion_correction_photo_video_txt">Torzításkorrekció</string>
+    <string name="cam_strings_distortion_correction_txt">Képtorzítás korrigálása</string>
+    <string name="cam_strings_do_not_show_again_txt">Ne jelenjen meg újra</string>
+    <string name="cam_strings_downloadable_tab_txt">LETÖLTHETŐ</string>
+    <string name="cam_strings_drive_continuous_txt">Folyamatos felvétel</string>
+    <string name="cam_strings_drive_hybrid_txt">Egyszeri-folyamatos hibrid felvétel</string>
+    <string name="cam_strings_drive_single_txt">Egyszeri felvétel</string>
+    <string name="cam_strings_drivemode_txt">Képtovábbítási mód</string>
+    <string name="cam_strings_effect_Kaleidoscope_txt">Kaleidoszkóp</string>
+    <string name="cam_strings_effect_after_image_txt">Mozgás nyomvonala</string>
+    <string name="cam_strings_effect_brightness_contrast_txt">Fényerő-kontraszt</string>
+    <string name="cam_strings_effect_color_filter_tint_txt">Tónus</string>
+    <string name="cam_strings_effect_color_pencil_txt">Színes rajz</string>
+    <string name="cam_strings_effect_comic_txt">Komikus</string>
+    <string name="cam_strings_effect_fish_eye_txt">Halszem</string>
+    <string name="cam_strings_effect_harris_shutter_txt">Harris-effektus</string>
+    <string name="cam_strings_effect_hue_saturation_txt">Árnyalat-telítettség</string>
+    <string name="cam_strings_effect_miniature_txt">Miniatűr</string>
+    <string name="cam_strings_effect_mirror_txt">Tükrözés</string>
+    <string name="cam_strings_effect_mosaic_txt">Mozaik</string>
+    <string name="cam_strings_effect_motion_effects_txt">Mozgási effektusok</string>
+    <string name="cam_strings_effect_no_effect_txt">Normál</string>
+    <string name="cam_strings_effect_nostalgia_txt">Nosztalgikus</string>
+    <string name="cam_strings_effect_old_film_txt">Régi film</string>
+    <string name="cam_strings_effect_partical_color_txt">Részleges szín</string>
+    <string name="cam_strings_effect_pencil_txt">Ceruzarajz</string>
+    <string name="cam_strings_effect_selector_txt">Kétkamerás hatás</string>
+    <string name="cam_strings_effect_vivid_txt">Élénk</string>
+    <string name="cam_strings_error_capture_txt">Ez a mód nem érhető el, amikor egy másik alkalmazásban felvétel van folyamatban.</string>
+    <string name="cam_strings_error_delete_txt">Sikertelen törlés</string>
+    <string name="cam_strings_error_device_not_available_txt">Nem lehet elindítani a kamerát. Indítsa újra a kamerát vagy a készüléket.</string>
+    <string name="cam_strings_error_dialog_title_txt">Hiba</string>
+    <string name="cam_strings_error_fatal_sd_photo_txt">Nem sikerült menteni a fényképeket. Előfordulhat, hogy a problémát az adattároló okozza. Ha adattárolóként SD-kártya van megadva, ellenőrizze az SD-kártyáját.</string>
+    <string name="cam_strings_error_fatal_sd_video_txt">Nem sikerült elindítani a rögzítést. Előfordulhat, hogy a problémát az adattároló okozza. Ha adattárolóként SD-kártya van megadva, ellenőrizze az SD-kártyáját.</string>
+    <string name="cam_strings_error_fatal_txt">Ismeretlen hiba.</string>
+    <string name="cam_strings_error_high_temp_already_high_txt">Xperia készülékének le kell hűlnie. Kis türelmet.</string>
+    <string name="cam_strings_error_high_temp_info_flashlight_unavailable_txt">A készülék hőmérséklete túl magas a zseblámpa használatához</string>
+    <string name="cam_strings_error_high_temp_info_txt">Emelkedik az eszköz hőmérséklete. Ha tovább melegszik, az alkalmazás automatikusan leáll.</string>
+    <string name="cam_strings_error_high_temp_info_video_recording_with_flashlight_unavailable_txt">A készülék túl meleg a zseblámpás felvételkészítéshez</string>
+    <string name="cam_strings_error_high_temp_info_vzw_txt">Emelkedik az eszköz hőmérséklete. Ha tovább melegszik, az alkalmazás automatikusan leáll.</string>
+    <string name="cam_strings_error_high_temp_shut_down_no_txt">Nem</string>
+    <string name="cam_strings_error_high_temp_shut_down_yes_txt">Igen</string>
+    <string name="cam_strings_error_high_temp_shutting_down_txt">A kamera ideiglenesen kikapcsol, hogy lehűljön.</string>
+    <string name="cam_strings_error_high_temp_shutting_down_vzw_txt">A kamera ideiglenesen kikapcsol, hogy lehűljön.</string>
+    <string name="cam_strings_error_internal_memory_full_txt">A belső memória megtelt. Az alapértelmezett adattároló SD-kártyára változott.</string>
+    <string name="cam_strings_error_internal_memory_unavailable_txt">A belső tárhely sérült vagy írásvédett. Az adattároló SD-kártyára változott.</string>
+    <string name="cam_strings_error_internal_sd_full_txt">A memória megtelt. Töröljön néhány fájlt az SD-kártyáról vagy a belső tárhelyről.</string>
+    <string name="cam_strings_error_max_faces_exceeded_txt">Nem lehet több arcot hozzáadni. Távolítson el egy vagy több arcot, és próbálja meg újra.</string>
+    <string name="cam_strings_error_memory_full_txt">A memória megtelt. Töröljön néhány fájlt az SD-kártyáról.</string>
+    <string name="cam_strings_error_memory_ims_access_error_txt">Memóriahiba</string>
+    <string name="cam_strings_error_memory_ims_full_txt">A memória megtelt. Töröljön néhány fájlt a memóriából, vagy változtassa meg az alapértelmezett adattárolót.</string>
+    <string name="cam_strings_error_memory_ims_unavailable_txt">A memória nem érhető el</string>
+    <string name="cam_strings_error_memory_title_txt">Memóriahiba</string>
+    <string name="cam_strings_error_memory_unavailable_txt">Nem érhető el az SD-kártya</string>
+    <string name="cam_strings_error_message_during_voice_call_title_txt">Hívás folyamatban</string>
+    <string name="cam_strings_error_message_during_voice_call_txt">Hívás során nem érhető el a kamera</string>
+    <string name="cam_strings_error_mms_rec_size_limit_txt">Nem vehető fel több fájl. A fájl mérete túl nagy.</string>
+    <string name="cam_strings_error_save_file_in_progress_txt">Mentés. Jelenleg nem érhető el a művelet.</string>
+    <string name="cam_strings_error_save_file_txt">Felvétel van folyamatban egy másik alkalmazásban. Nem sikerült felvenni.</string>
+    <string name="cam_strings_error_storage_changing_to_internal_txt">Nem érhető el SD-kártya. Az alapértelmezett adattároló belső tárhelyre változott.</string>
+    <string name="cam_strings_error_video_rec_txt">Nem sikerült rögzíteni a videót. Lehetséges, hogy egy másik alkalmazás használja a rögzítéssel kapcsolatos funkciókat.</string>
+    <string name="cam_strings_ev_disable_txt">EV-beállítás letiltva. EV vezérlés: SS vagy ISO beállítása AUTO értékre.</string>
+    <string name="cam_strings_exposure_level_m03_txt">-0,3 EV</string>
+    <string name="cam_strings_exposure_level_m07_txt">-0,7 EV</string>
+    <string name="cam_strings_exposure_level_m10_txt">-1,0 EV</string>
+    <string name="cam_strings_exposure_level_m13_txt">-1,3 EV</string>
+    <string name="cam_strings_exposure_level_m17_txt">-1,7 EV</string>
+    <string name="cam_strings_exposure_level_m20_txt">-2,0 EV</string>
+    <string name="cam_strings_exposure_level_p03_txt">+0,3 EV</string>
+    <string name="cam_strings_exposure_level_p07_txt">+0,7 EV</string>
+    <string name="cam_strings_exposure_level_p10_txt">+1,0 EV</string>
+    <string name="cam_strings_exposure_level_p13_txt">+1,3 EV</string>
+    <string name="cam_strings_exposure_level_p17_txt">+1,7 EV</string>
+    <string name="cam_strings_exposure_level_p20_txt">+2,0 EV</string>
+    <string name="cam_strings_exposure_level_pm0_txt">±0.0 EV</string>
+    <string name="cam_strings_exposure_level_title_txt">Expozíciós érték</string>
+    <string name="cam_strings_exposure_level_txt">Expozíciós érték</string>
+    <string name="cam_strings_eye_position_tutorial_title_txt">Szem iránya</string>
+    <string name="cam_strings_eye_position_tutorial_txt">Nézzen az előlapi kamerába a hangszóró mellett</string>
+    <string name="cam_strings_face_eyeaf_settings_txt">Arcfelismerés/Szem AF beállításai</string>
+    <string name="cam_strings_facefusion_add_face_txt">Arc hozzáadása</string>
+    <string name="cam_strings_facefusion_delete_mask_txt">Törli ezt az arcot? A művelet nem fordítható vissza</string>
+    <string name="cam_strings_facefusion_no_face_detected_txt">A program nem észlelt egy arcot sem</string>
+    <string name="cam_strings_facefusion_point_at_face_txt">Irányítsa a kamerát egy arcra</string>
+    <string name="cam_strings_facefusion_select_face_txt">Arc kijelöléséhez kopp. a négyszögre</string>
+    <string name="cam_strings_failure_camera_shake_preview_txt">Az elmosódás elkerüléséhez tartsa stabilan a kamerát.</string>
+    <string name="cam_strings_failure_camera_shake_txt">A kamera rázkódása miatt elmosódhatott a fénykép</string>
+    <string name="cam_strings_failure_detection_description_not_blink_txt">"A funkció a hibák elkerülése érdekében a fényképezés előtt jelzi, ha az ujja fedi az objektívet, vagy ha a kép nem éles.
+A fényképezés után az elmosódásra keresve tanácsokat kap a fényképek újrakészítéséhez."</string>
+    <string name="cam_strings_failure_detection_description_txt">"A funkció a hibák elkerüléséhez a fényképezés előtt jelzi, ha az ujja fedi az objektívet, vagy ha a kép nem éles.
+A fényképezés után a pislogásra vagy elmosódásra keresve tanácsokat kap a fénykép újrakészítéséhez."</string>
+    <string name="cam_strings_failure_detection_txt">Fényképezési tanácsok megjelen.</string>
+    <string name="cam_strings_failure_eye_blinks_preview_txt">Ellenőrizze, hogy pislogott-e valaki</string>
+    <string name="cam_strings_failure_eye_blinks_txt">Lehet, hogy valaki pislogott ezen a fényképen</string>
+    <string name="cam_strings_failure_finger_covering_lens_after_txt">Lehet, hogy az ujja fedte az objektívet</string>
+    <string name="cam_strings_failure_finger_covering_lens_preview_txt">Ellenőrizze a kameraobjektív helyzetét, és ne fedje el az ujjával</string>
+    <string name="cam_strings_failure_finger_covering_lens_txt">Az ujja az objektíven van</string>
+    <string name="cam_strings_failure_focus_too_close_txt">Távolodjon el az objektumtól</string>
+    <string name="cam_strings_failure_focus_too_dark_txt">Több fényre van szükség a fókuszáláshoz</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_photo_txt">Indítás és felvétel</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_video_txt">Indítás és videó rögzítése</string>
+    <string name="cam_strings_fast_capturing_launch_camera_capture_txt">Kamera elindít./felvétel</string>
+    <string name="cam_strings_fast_capturing_launch_camera_txt">A Kamera elindítása</string>
+    <string name="cam_strings_fast_capturing_launch_only_txt">Csak indítás</string>
+    <string name="cam_strings_fast_capturing_launch_only_video_txt">Csak indítás (videokamera)</string>
+    <string name="cam_strings_fast_capturing_launch_photo_pro_txt">A Photography Pro elindítása</string>
+    <string name="cam_strings_fast_capturing_screen_locked_apps_list_txt">A felvételi üzemmód módosításához fel kell oldania a képernyőzárat. Feloldja?</string>
+    <string name="cam_strings_fast_capturing_screen_locked_photos_burst_txt">A készülék zárolását fel kell oldani, ha fénykép-megjelenítő alkalmazásra szeretne váltani, miután sorozatfényképeket készített a képernyő zárolása során. Feloldja a készülék zárolását?</string>
+    <string name="cam_strings_fast_capturing_screen_locked_settings_txt">A beállítások megnyitásához oldja fel a képernyő zárolását.</string>
+    <string name="cam_strings_fast_capturing_screen_locked_title_txt">Képernyő zárolva</string>
+    <string name="cam_strings_fast_capturing_title_txt">Gyorsindítás</string>
+    <string name="cam_strings_fast_capturing_txt">Gyorsindítás</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_title_txt">Felvételi üzemmód és kamera váltása</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_txt">A képernyőn csúsztatva válthat másik felvételi üzemmódra (például Videó vagy Kézi), illetve válthat a fő- és az előlapi kamera között.</string>
+    <string name="cam_strings_fast_switch_tutorial_title_txt">Kameraváltás</string>
+    <string name="cam_strings_fast_switch_tutorial_txt">A fő- és az előlapi kamera között a képernyőn történő csúsztatással válthat</string>
+    <string name="cam_strings_feature_bokeh_cameraui_description_txt">"A Háttérelmosás (bokeh) effektus módosításához koppintson a Háttérelmosás (bokeh) ikonra a keresőben, és húzza el a csúszkát.
+Ez a funkció Fénykép módban támogatott.
+Látványos fényképeket készíthet a tárgyat kiélesítve elmosódott, életlen háttér előtt."</string>
+    <string name="cam_strings_feature_bokeh_cameraui_subtitle_txt">A Háttérelmosás effektus használata</string>
+    <string name="cam_strings_feature_bokeh_cameraui_title_txt">Háttérelmosás (bokeh) effektus</string>
+    <string name="cam_strings_feature_bokeh_description_txt">"Látványos fényképeket készíthet a tárgyat kiélesítve elmosódott, életlen háttér előtt.
+A mód használatához koppintson a MÓD ikonra a keresőben, majd válassza a Háttérelmosás (bokeh) lehetőséget."</string>
+    <string name="cam_strings_feature_bokeh_subtitle_txt">Háttér-homályosítás (bokeh)</string>
+    <string name="cam_strings_feature_bokeh_title_txt">Háttér-homályosítás (bokeh)</string>
+    <string name="cam_strings_feature_dual_camera_manual_description_txt">A dupla kamerát kézi üzemmódban kapcsolhatja be és ki. Kapcsolja be, ha gyenge fényviszonyok mellett alacsony zajszintű fényképeket szeretne készíteni. Közelképek készítéséhez kapcsolja ki.</string>
+    <string name="cam_strings_feature_dual_camera_manual_subtitle_txt">Fényképek készítése dupla kamerával kézi ü.módban</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_2_txt">Tartson legalább 1 méter távolságot a tárgytól, amikor fényképeket készít vagy videókat rögzít a dupla kamerával. Ha közelebb megy az objektumhoz, megváltozhat a nézőpont vagy a szín.</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_txt">"Dupla kamerát használva még éjszaka vagy gyenge megvilágítású szobában is gyönyörű fényképeket és videókat készíthet alacsony zajszinten.
+A kamera automatikusan vált az egyetlen és a dupla kamerás üzemmód között, a rögzíteni kívánt jelenettől függően. A fényképeket és videókat is ultranagy érzékenységgel rögzíti."</string>
+    <string name="cam_strings_feature_dual_camera_photo_subtitle_txt">Dupla kamera</string>
+    <string name="cam_strings_feature_dual_camera_title_txt">Dupla kamera</string>
+    <string name="cam_strings_feature_dual_camera_video_description_txt">Ha nagyon jó közelképeket szeretne készíteni, a dupla kamerát kikapcsolva váltson egyetlen kamerára a keresőben. A beállítások gombra koppintva bármikor visszaállíthatja azt.</string>
+    <string name="cam_strings_feature_dual_camera_video_subtitle_txt">Videorögzítés dupla kamerával</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_description_txt">"A keresőben lévő gombra koppintva váltson az x1 és az x2 látószög között.
+Ez a funkció Fénykép és Videó módban is használható."</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_subtitle_txt">Látószög váltása a gombbal</string>
+    <string name="cam_strings_feature_dual_zoom_camera_title_txt">Dupla kamera</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_description_txt">"Érintse meg és tartsa lenyomva a gombot a keresőben a csúszka megjelenítéséhez. A csúszkával módosíthatja a nagyítási szintet.
+A nagyítás szintje hangerőgombbal vagy képernyő csippentésével is beállítható."</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_subtitle_txt">Nagyítás csúszkával</string>
+    <string name="cam_strings_feature_eye_af_description_txt">"Készíthet olyan portrékat, amelyek az emberek szemére fókuszálnak.
+Az élesítési célpont módosításához koppintson a téma arcára, amelyre fókuszálni szeretne. A funkció engedélyezéséhez vagy letiltásához koppintson az ikonra, amely arcok észlelésekor jelenik meg."</string>
+    <string name="cam_strings_feature_eye_af_description_with_animal_txt">"Készíthet olyan portrékat, amelyek az emberek vagy állatok szemére fókuszálnak.
+Az élesítési célpont módosításához koppintson a téma arcára, amelyre fókuszálni szeretne. A funkció engedélyezéséhez vagy letiltásához koppintson az ikonra, amely arcok észlelésekor jelenik meg. Ez a funkció kompatibilis a fénykép és kézi üzemmóddal is."</string>
+    <string name="cam_strings_feature_eye_af_subtitle_txt">Szem AF</string>
+    <string name="cam_strings_feature_eye_af_title_txt">Szem AF</string>
+    <string name="cam_strings_feature_failure_detection_description_not_blink_txt">"A funkció a hibák elkerülése érdekében a fényképezés előtt jelzi, ha az ujja fedi az objektívet, vagy ha a kép nem éles.
+A fényképezés után az elmosódásra keresve tanácsokat kap a fényképek újrakészítéséhez.
+
+A beállítások a Fényképezési tanácsok megjelen. kamerabeállításban módosítható."</string>
+    <string name="cam_strings_feature_failure_detection_description_txt">"A funkció a hibák elkerüléséhez a fényképezés előtt jelzi, ha az ujja fedi az objektívet, vagy ha a kép nem éles.
+A fényképezés után a pislogásra v. elmosódásra keresve tanácsokat kap a fénykép újrakészítéséhez.
+
+A beállítások a Fényképezési tanácsok megjelen. kamerabeállításban módosítható."</string>
+    <string name="cam_strings_feature_failure_detection_subtitle_txt">Fényképezési tanácsok megjelenítése</string>
+    <string name="cam_strings_feature_failure_detection_title_txt">Fényképezési tanácsok megjelenítése</string>
+    <string name="cam_strings_feature_failure_option_after_and_preview_txt">Fényképezés előtt és után</string>
+    <string name="cam_strings_feature_failure_option_after_only_txt">Csak fényképez. után</string>
+    <string name="cam_strings_feature_hand_shutter_description_txt">"Fordítsa a tenyerét a kamera felé. A tenyér felismerésekor bekapcsol az önkioldó. A felismerés megkönnyítése érdekében nyújtsa ki az ujjait felfelé.
+A funkció engedélyezéséhez nyissa meg a Fénykép (előlapi) beállítást, és az Automatikus felvétel részen válassza a Kézi rekesz lehetőséget."</string>
+    <string name="cam_strings_feature_hand_shutter_subtitle_txt">Kézi rekesz</string>
+    <string name="cam_strings_feature_hand_shutter_title_txt">Kézi rekesz</string>
+    <string name="cam_strings_feature_lens_correction_description_nosuperwidemode_txt">"Ultranagy látószögű objektív használatakor kiválaszthat egy prioritást. A \"Képminőség előtérbe helyezésével\" dinamikus, minőségi képeket készíthet. A „Torzításkorrekció előtérbe helyezésével” csökkentheti a vizuális torzítást.
+A funkciók az ultranagy látószögű objektív Fénykép módú használatakor engedélyezettek. A beállítások a kamerabeállításból módosíthatók."</string>
+    <string name="cam_strings_feature_lens_correction_description_txt">Ultranagy látószögű objektív használatakor kiválaszthat egy prioritást. A „Képminőség előtérbe helyezésével” dinamikus, minőségi képeket készíthet. A „Torzításkorrekció előtérbe helyezésével” csökkentheti a vizuális torzítást. A funkciók a szup. lát. objektív Fénykép módban való használatakor engedélyezettek. A beállítások a kamerabeállításból módosíthatók.</string>
+    <string name="cam_strings_feature_level_description_txt">"A Szint bekapcsolása lehetővé teszi a kamera dőlésének ellenőrzését egy jelzővel.
+A kijelző zöldre vált, amikor a kamera eléri a szintet.
+Ez hasznos, amikor tájképek készítésekor meg szeretné őrizni a horizontvonalat.
+
+A funkció beállításait a kamerabeállítások Szint csoportjában találja."</string>
+    <string name="cam_strings_feature_level_subtitle_txt">Fényképezés a Szint funkció használatával</string>
+    <string name="cam_strings_feature_level_title_txt">Szint</string>
+    <string name="cam_strings_feature_list_banner_txt">Próbálja ki az új funkciókat</string>
+    <string name="cam_strings_feature_list_new_title_txt">Az új funkciók használata</string>
+    <string name="cam_strings_feature_list_other_title_txt">A funkciók használata</string>
+    <string name="cam_strings_feature_list_title_txt">A funkciók ismertetése</string>
+    <string name="cam_strings_feature_long_ss_description_txt">"Kézi üzemmódban akár 30 másodpercre is állíthatja a záridőt. Alacsony záridő használata esetén stabilan kell tartania a kamerát gyönyörű fényképek készítéséhez.
+Rögzítsen mozgásban lévő éjszakai jeleneteket vagy tárgyakat lenyűgöző effektussal."</string>
+    <string name="cam_strings_feature_long_ss_subtitle_txt">Záridő módosítása</string>
+    <string name="cam_strings_feature_long_ss_title_txt">Zársebesség</string>
+    <string name="cam_strings_feature_mono_description_txt">"Nagy felbontású művészi fényképeket és videókat készíthet egyszerűen.
+A mód használatához koppintson a MÓD ikonra a keresőben, majd válassza a Monokróm lehetőséget."</string>
+    <string name="cam_strings_feature_mono_subtitle_txt">Monokróm</string>
+    <string name="cam_strings_feature_mono_title_txt">Monokróm</string>
+    <string name="cam_strings_feature_night_mode_description_txt">"Éles fényképeket készíthet akár éjszaka vagy sötét fényviszonyok mellett is.
+Kis időt igénybe vehet a kép feldolgozása a fénykép elkészítését követően, ezért tartsa mozdulatlanul a kamerát, amíg be nem fejeződik."</string>
+    <string name="cam_strings_feature_night_mode_subtitle_txt">Éjszakai mód</string>
+    <string name="cam_strings_feature_night_mode_title_txt">Éjszakai mód</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_all_lang_txt">Éjszakai mód</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_txt">Éjszakai mód</string>
+    <string name="cam_strings_feature_night_shooting_title_all_lang_txt">Éjszakai mód</string>
+    <string name="cam_strings_feature_night_shooting_title_txt">Éjszakai mód</string>
+    <string name="cam_strings_feature_oneshot_description_txt">"A képernyő közepén lévő gombra koppintva azonnal rögzíthet egy értékes pillanatot %1$s képkocka/mp lassított felvétellel.
+A jó megvilágítású környezetben rögzített videó minősége jobb lesz."</string>
+    <string name="cam_strings_feature_oneshot_subtitle_txt">Szuper lassított felvétel (egyképes)</string>
+    <string name="cam_strings_feature_portrait_bokeh_description_txt">"A Háttérelmosás (bokeh) effektus módosításához koppintson a Portré háttérelmosás ikonra a keresőben, és mozgassa a csúszkát.
+Ezt a funkciót a Fénykép üzemmód támogatja.
+A témákat kiemelheti lenyűgöző kontraszttal, ha elmossa a hátteret."</string>
+    <string name="cam_strings_feature_portrait_bokeh_subtitle_txt">A Háttérelmosás effektus használata portrékhoz</string>
+    <string name="cam_strings_feature_portrait_bokeh_title_txt">Portré háttérelmosás (Bokeh) effektus</string>
+    <string name="cam_strings_feature_portrait_selfie_description_txt">"Művészi szelfi rögzítése Háttér-homályosítás (bokeh) használatával és szépségeffektusok hozzáadásával.
+A mód használatához koppintson a MÓD ikonra a keresőben, és válassza a Szelfiportré lehetőséget.
+Tegye stílusossá a szelfit, és élvezze a kreatív eredményt."</string>
+    <string name="cam_strings_feature_portrait_selfie_subtitle_txt">Szelfiportré</string>
+    <string name="cam_strings_feature_portrait_selfie_title_txt">Szelfiportré</string>
+    <string name="cam_strings_feature_predictive_launch_description_txt">"Gyorsan elindíthatja a kamerát. Emelje fel gyorsan a készüléket fekvő módban, és irányítsa a kamerát egy tárgy felé. A kamera automatikusan elindul.
+Kiválaszthatja a funkció használatának kedvelt módját a kamerabeállítások között az Intelligens indítás pontban."</string>
+    <string name="cam_strings_feature_predictive_launch_subtitle_txt">Intelligens indítás</string>
+    <string name="cam_strings_feature_predictive_launch_title_txt">Intelligens indítás</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"QR Code beolvasásával gyorsan hozzáférhet a webhez, vagy csatlakozhat Wi-Fi-hálózathoz.
+Ez a funkció Fénykép módban aktív. A beállítás a QR Code-olvasó beállításából módosítható a Kamerabeállítások között."</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code-olvasó</string>
+    <string name="cam_strings_feature_qrcode_notification_channel_txt">QR Code-olvasó</string>
+    <string name="cam_strings_feature_selfie_description_txt">"Amikor az előlapi kamerával készít fényképeket, nézzen az előlapi kamera lencséjébe, a hangszóró mellett.
+Ekkor a fényképen a megfelelő irányba néz a tekintete."</string>
+    <string name="cam_strings_feature_selfie_subtitle_txt">Szem iránya</string>
+    <string name="cam_strings_feature_selfie_title_txt">Előlapi kamera</string>
+    <string name="cam_strings_feature_sidesense_bar_description_txt">"Fényképeket vagy videókat készíthet az exponálógomb használata helyett a képernyő szélén lévő érzékelőkre duplán koppintva.
+Ez a funkció kompatibilis a fénykép és a videó móddal is. A funkció beállításai a kamerabeállítások között az Oldalérzékelő beállításai csoportban módosíthatók."</string>
+    <string name="cam_strings_feature_sidesense_description_txt">"Fényképet vagy videót készíthet egyszerűen a képernyő szélén az érzékelőre duplán koppintva, anélkül hogy az exponálógombra kellene koppintania.
+A fénykép és a videó mód is támogatja ezt a funkciót. A beállításokat a kamerabeállítások [Oldalérzékelő] részén módosíthatja."</string>
+    <string name="cam_strings_feature_sidesense_subtitle_txt">Oldalérzékelő</string>
+    <string name="cam_strings_feature_sidesense_title_txt">Oldalérzékelő</string>
+    <string name="cam_strings_feature_slowmotion_description_txt">A videókat több lassított felvételből álló résszel rögzítheti (120 képkocka/mp lassítás)</string>
+    <string name="cam_strings_feature_slowmotion_subtitle_txt">Lassított felvétel</string>
+    <string name="cam_strings_feature_slowmotion_title_txt">Lassított felvétel</string>
+    <string name="cam_strings_feature_superslow_description_txt">"Hatásos videót készíthet egy fontos pillanat lassított megjelenítésével. A jó megvilágítású környezetben rögzített videó minősége jobb lesz.
+A mód használatához koppintson a MÓD ikonra a keresőben, majd válassza a Lassított felvétel mód lehetőséget. A Lassított felvétel mód beállításai között különböző lehetőségeket is választhat."</string>
+    <string name="cam_strings_feature_superslow_subtitle_txt">Szuper lassított felvétel</string>
+    <string name="cam_strings_feature_transfer_and_tagging_description_txt">"A funkció bekapcsolása lehetővé teszi, hogy a Transfer &amp; Tagging add-on megjelenítse az Xperia kamerájával készített fényképeket. A fényképeket a belső tárhelyre menti a rendszer.
+Ez a funkció fénykép és kézi üzemmódban készített fényképekkel kompatibilis.
+A beállításokat a Transfer &amp; Tagging add-on üzemmódban módosíthatja a kamerabeállítások között."</string>
+    <string name="cam_strings_feature_transfer_and_tagging_subtitle_txt">Összekapcsolás a Transfer &amp; Tagging add-on alk.-sal</string>
+    <string name="cam_strings_feature_transfer_and_tagging_title_txt">Transfer &amp; Tagging add-on üzemmód</string>
+    <string name="cam_strings_feature_triple_camera_button_description_new_txt">"Egyszerűen válthat az objektívek között, és a kreativitását igénylő bármilyen helyzetet rögzíthet.
+A keresőben a gombra koppintva válthat ultraszéles, széles és telefotó objektívek között.
+Ezt a funkciót Fénykép és Videó módban is használhatja."</string>
+    <string name="cam_strings_feature_triple_camera_button_description_txt">"Az objektívek között egyszerűen váltva rögzíthet a kreativitását igénylő bármilyen helyzetet.
+Koppintson a keresőben látható gombra, ha az x1, x2 és ultranagy látószögek között szeretne váltani.
+Ezt a funkciót Fénykép és Videó módban is használhatja."</string>
+    <string name="cam_strings_feature_triple_camera_button_subtitle_txt">Látószög váltása a gombbal</string>
+    <string name="cam_strings_feature_triple_camera_button_with_zoom_ratio_description_txt">"Egyszerűen válthat az objektívek között, így kihasználhatja kreativitását a különféle helyzetek megörökítésekor.
+A keresőben a gombra koppintva válthat 0,6x (ultraszéles), 1x (széles) és 2x (teleobjektív) szögek közötti váltáshoz.
+Ez a funkció a Fotó és a Videó módban is használható."</string>
+    <string name="cam_strings_feature_triple_camera_how_to_zoom_subtitle_txt">Zoom növelése/csökkentése</string>
+    <string name="cam_strings_feature_triple_camera_title_txt">Hármas kamera</string>
+    <string name="cam_strings_feature_triple_camera_wide_description_txt">"Ez az objektív alkalmas tájképekhez, mert szélesebb látómezőt rögzít.
+Győződjön meg arról, hogy átkapcsolt az ultranagy látószögű objektívre, mielőtt az ultraszéles objektív beállításait módosítja."</string>
+    <string name="cam_strings_feature_triple_camera_wide_subtitle_txt">Rögzítés ultranagy látószögű objektívvel</string>
+    <string name="cam_strings_feature_triple_camera_zoom_description_txt">"A csúszka megjelenítéséhez csúsztassa az ujját balra vagy jobbra a keresőben látható gombon. A csúszkával módosíthatja a nagyítás szintjét.
+A nagyítás szintje a hangerőgombbal vagy a képernyő csippentésével is beállítható."</string>
+    <string name="cam_strings_feature_triple_camera_zoom_plus_zoom_frames_description_txt">"A csúszka megjelenítéséhez csúsztassa az ujját balra vagy jobbra a keresőben látható gombon. A csúszkával módosíthatja a nagyítás szintjét.
+A nagyítás szintje a hangerőgombbal vagy a képernyő csippentésével is beállítható.
+Fotó módban megjeleníthet kereteket, amelyek segítségével előnézeti képet kaphat arról, hogyan fog kinézni, ha ráközelít. Ezt a beállítást a fényképezőgép beállításai között a Zoomkompozíciós segéd menüpontban változtathatja meg."</string>
+    <string name="cam_strings_feature_triple_camera_zoom_subtitle_txt">Nagyítás csúszkával</string>
+    <string name="cam_strings_feature_zoom_frames_description_txt">"Ha bekapcsolja ezt a beállítást, akkor előnézetben megtekintheti, hogyan fog kinézni, amikor ráközelít.
+Fókuszáljon az alanyra a képkockában, és a nagyítási arányt megérintve könnyedén ráközelíthet.
+Ez a funkció nem támogatott, ha az Állókép mérete 21:9-re van állítva."</string>
+    <string name="cam_strings_file_delete_confirm_title_txt">Törlés</string>
+    <string name="cam_strings_file_delete_confirm_txt">Törli ezt a fájlt?</string>
+    <string name="cam_strings_file_format_description_txt">Válasszon ki egy kódolót a 4K videóhoz</string>
+    <string name="cam_strings_file_format_sub_description_h264_txt">Kódolás normál formátuma. A készülékek és szolgáltatások többsége támogatja ezt a formátumot.</string>
+    <string name="cam_strings_file_format_sub_description_h265_txt">Magas tömörítési arányú formátum. Ellenőrizze, hogy a készülékek vagy a szolgáltatások támogatják-e ezt a formátumot.</string>
+    <string name="cam_strings_file_share_title_txt">Megosztás</string>
+    <string name="cam_strings_flash_fill_flash_txt">Derítő vakuzás</string>
+    <string name="cam_strings_flash_night_portrait_hint_txt">Tartsa mozdulatlanul a készüléket</string>
+    <string name="cam_strings_flash_night_portrait_txt">Éjszakai portré vakuval</string>
+    <string name="cam_strings_flash_pro_txt">Vaku üzemmód</string>
+    <string name="cam_strings_flash_red_eye_reduc_txt">Vörösszemhatás-csökkent.</string>
+    <string name="cam_strings_flash_title_txt">Vaku</string>
+    <string name="cam_strings_flash_torch_txt">Zseblámpa</string>
+    <string name="cam_strings_flash_txt">Vaku</string>
+    <string name="cam_strings_focus_af_c_txt">Folyamatos AF</string>
+    <string name="cam_strings_focus_af_s_txt">Egyszeri AF</string>
+    <string name="cam_strings_focus_mf_txt">Kézi fókusz</string>
+    <string name="cam_strings_focus_mode_face_detection_txt">Arcfelismerés</string>
+    <string name="cam_strings_focus_mode_infinity_txt">Végtelen</string>
+    <string name="cam_strings_focus_mode_macro_txt">Makró</string>
+    <string name="cam_strings_focus_mode_multi_af_txt">Többmezős autofókusz</string>
+    <string name="cam_strings_focus_mode_object_tracking_txt">Tárgykövetés</string>
+    <string name="cam_strings_focus_mode_single_af_txt">Egymezős autofókusz</string>
+    <string name="cam_strings_focus_mode_title_txt">Fókusz üzemmód</string>
+    <string name="cam_strings_focus_mode_touch_focus_txt">Fókusz érintésre</string>
+    <string name="cam_strings_focus_mode_txt">Fókusz üzemmód</string>
+    <string name="cam_strings_forced_change_flash_off_txt">Éjsz. felv. kész. haszn. a Vaku ü. mód ki van kapcs.</string>
+    <string name="cam_strings_forced_change_night_shooting_auto_txt">Éjsz. felv. készítés Auto értékre van állítva a Vaku ü. mód használatához</string>
+    <string name="cam_strings_front_cam_location_guide_txt">A kamera lencséje az ábrán látható helyen található</string>
+    <string name="cam_strings_fusion_error_too_close_txt">Távolodjon el az objektumtól</string>
+    <string name="cam_strings_fusion_on_txt">Ultranagy érzékenység</string>
+    <string name="cam_strings_fusion_setting_txt">Kettős kamera kapcsolója</string>
+    <string name="cam_strings_geotagging_title_txt">Hely mentése</string>
+    <string name="cam_strings_geotagging_txt">Hely mentése</string>
+    <string name="cam_strings_get_more_modes_txt">Alkalmazás</string>
+    <string name="cam_strings_global_setting_softskin_available_applications_txt">Elérhető alkalmazások</string>
+    <string name="cam_strings_global_setting_softskin_brighten_skin_txt">Ragyogó bőr</string>
+    <string name="cam_strings_global_setting_softskin_detail_txt">Ragyogóvá és simává varázsolja a bőrét. Az effektus az előlapi kamerát használó alkalmazásokban működik. Fényképeken és videókon is alkalmazható. A szint módosítására is lehetősége van.</string>
+    <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Szint módosítása</string>
+    <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Sima bőr</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Nem indítható el az alkalmazás.
+Győződjön meg arról, hogy a %1$s telepítve és engedélyezve van a készülékén."</string>
+    <string name="cam_strings_gridline_txt">Rácsvonalak</string>
+    <string name="cam_strings_hand_shutter_hint_detail_txt">Fordítsa tenyerét a kamera felé. Az önkioldó bekapcsol, amikor felismeri a tenyerét. A felismerés megkönnyítéséhez nyújtsa ki az ujjait felfelé.</string>
+    <string name="cam_strings_hand_shutter_hint_txt">Fordítsa tenyerét a kamera felé</string>
+    <string name="cam_strings_hand_shutter_txt">Kézi rekesz</string>
+    <string name="cam_strings_hdr_dro_settings_dro_txt">Dinamikatartomány-optimalizáló</string>
+    <string name="cam_strings_hdr_dro_settings_hdr_txt">Automatikus HDR</string>
+    <string name="cam_strings_hdr_dro_settings_txt">DRO/Automatikus HDR</string>
+    <string name="cam_strings_hdr_guide_txt">A Still HDR ugyanarról a témáról két képet rögzít és egyesít, ezért csak álló tárgyakhoz használható.</string>
+    <string name="cam_strings_hdr_title_txt">HDR</string>
+    <string name="cam_strings_hdr_txt">HDR</string>
+    <string name="cam_strings_help_txt">Súgó</string>
+    <string name="cam_strings_histogram_txt">Hisztogram</string>
+    <string name="cam_strings_iburst_feedback_txt">Előre jelzett</string>
+    <string name="cam_strings_image_quality_control_button_cancel_txt">Mégse</string>
+    <string name="cam_strings_image_quality_control_button_clear_txt">Törlés</string>
+    <string name="cam_strings_image_quality_control_button_reset_txt">Visszaállítás</string>
+    <string name="cam_strings_image_quality_control_tab_focus_txt">Fókusz</string>
+    <string name="cam_strings_image_size_txt">Állókép mérete</string>
+    <string name="cam_strings_image_stabilizer_title_txt">Képstabilizáló</string>
+    <string name="cam_strings_image_stabilizer_txt">Képstabilizáló</string>
+    <string name="cam_strings_intelligent_burst_txt">Prediktív rögzítés</string>
+    <string name="cam_strings_intelligent_wind_filter_txt">Intelligens szélzajszűrő</string>
+    <string name="cam_strings_iso_changed_txt">Módosult az ISO érték is</string>
+    <string name="cam_strings_launch_with_camera_key_txt">Indítás zárgombbal</string>
+    <string name="cam_strings_lens_correction_for_photo_description_added_txt">Megjegyzés: Sorozatfényképek készítésekor az objektívkorrekció le lesz tiltva.</string>
+    <string name="cam_strings_lens_correction_for_photo_description_txt">Ultranagy látószögű objektív használatakor kiválaszthat egy prioritást. A „Képminőség előtérbe helyezése” esetén dinamikus jó minőségű képeket rögzíthet. Ha a Torzításkorrekció előtérbe helyezése prioritást választja, csökkentheti a vizuális torzítást.</string>
+    <string name="cam_strings_lens_correction_for_photo_nosuperwidemode_txt">Ultranagy lát. objektív korrekció (fénykép)</string>
+    <string name="cam_strings_lens_correction_for_photo_pro_txt">Ultranagy látószögű objektív korr.</string>
+    <string name="cam_strings_lens_correction_for_photo_txt">Objektívkorrekció (fénykép)</string>
+    <string name="cam_strings_lens_correction_off_txt">Képminőség előtérbe helyezése</string>
+    <string name="cam_strings_lens_correction_on_txt">Torzításkorrekció előtérbe helyezése</string>
+    <string name="cam_strings_lens_correction_txt">Objektívkorrekció</string>
+    <string name="cam_strings_lens_switch">Objektív látószögének váltása</string>
+    <string name="cam_strings_level_meter_calibration_txt">Szint kalibrálása</string>
+    <string name="cam_strings_level_pro_txt">Szint</string>
+    <string name="cam_strings_level_txt">Szint</string>
+    <string name="cam_strings_long_press_burst_best_txt">Normál</string>
+    <string name="cam_strings_long_press_burst_high_txt">Nagy sebesség</string>
+    <string name="cam_strings_long_press_burst_txt">Sorozatfelvétel h. gombnyomásra</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_title_txt">Fényképek készítése dupla kamerával</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_txt">Tartson 1 méter távolságot a tárgytól, amikor a dupla kamerát bekapcsolva készít fényképeket. Ha közelebb megy a tárgyhoz, megváltozhat a nézőpont vagy a szín.</string>
+    <string name="cam_strings_manual_fusion_tutorial_title_txt">Váltás dupla kamerára</string>
+    <string name="cam_strings_manual_fusion_tutorial_txt">A dupla kamerát kézi üzemmódban kapcsolhatja be és ki. Kapcsolja be, ha gyenge fényviszonyok mellett alacsony zajszintű fényképeket szeretne készíteni. Közelképek készítéséhez kapcsolja ki.</string>
+    <string name="cam_strings_max_file_size_save_failed_txt">A rögzítés a maximális fájlméretkorlát miatt leállt</string>
+    <string name="cam_strings_max_recording_time_save_failed_txt">A rögzítés a maximális rögzítési időkorlát miatt leállt</string>
+    <string name="cam_strings_memory_full_save_failed_txt">Sikertelen mentés. A memória megtelt.</string>
+    <string name="cam_strings_memory_full_zoom_not_supported_txt">A memória megtelt. Jelenleg nem lehet nagyítani.</string>
+    <string name="cam_strings_metering_multi_cy_txt">Több</string>
+    <string name="cam_strings_mf_assist_txt">MF segéd</string>
+    <string name="cam_strings_mfnr_txt">Többkockás zajcsökkentés</string>
+    <string name="cam_strings_microphone_title_txt">Mikrofon</string>
+    <string name="cam_strings_modeselector_addon_installed_txt">Telepítve</string>
+    <string name="cam_strings_monochrome_photo_txt">Monokróm fénykép</string>
+    <string name="cam_strings_monochrome_title_txt">Monokróm</string>
+    <string name="cam_strings_monochrome_video_txt">Monokróm videó</string>
+    <string name="cam_strings_more_common_setting_title_txt">Általános beállítások</string>
+    <string name="cam_strings_more_txt">Továbbiak</string>
+    <string name="cam_strings_mr_txt">Regiszt. itt: Memória visszahívása %d</string>
+    <string name="cam_strings_multi_window_txt">A felosztósáv közepét húzva váltson teljes képernyőre a %1$s számára</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Csatlakozott egy másik eszköz.
+Szeretné megosztani a képet a keresőn keresztül az eszközzel?"</string>
+    <string name="cam_strings_multicam_add_device_txt">Eszköz felvétele</string>
+    <string name="cam_strings_multicam_add_more_txt">Továbbiak felvétele</string>
+    <string name="cam_strings_multicam_apply_txt">Kész</string>
+    <string name="cam_strings_multicam_connection_failure_dialog_txt">Sikertelen csatlakozás</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Nem csatlakoztatható semmilyen Sony Wi-Fi/NFC kamerához, miközben az Xperia másik Xperia készülékhez kapcsolódik.</string>
+    <string name="cam_strings_multicam_error_app_ver_old_txt">Nem egyezik az alkalmazás verziója. Nem lehet csatlakoztatni. Frissítse az alkalmazását.</string>
+    <string name="cam_strings_multicam_error_disconnect_txt">Leválasztva</string>
+    <string name="cam_strings_multicam_error_nfc_txt">Nem lehet elindítani zárolt NFC-vel.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">Ez a mód nem érhető el Wi-Fi-alapú internetmegosztás során.</string>
+    <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">Hozzáadott eszközök maximális száma.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Csak egy Sony Wi-Fi/NFC kamera csatlakoztatható egyszerre az Xperia készülékéhez.</string>
+    <string name="cam_strings_multicam_nfc_connect_title_txt">Az eszközöket egymáshoz érintve csatlakoztasson</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">A Sony Wi-Fi/NFC kamerája</string>
+    <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
+    <string name="cam_strings_multicam_nfc_touch_to_beam_title_txt">Érintse meg a képernyőt</string>
+    <string name="cam_strings_multicam_security_info_txt">Ha ezen az alkalmazáson keresztül más Xperia eszközökhöz is csatlakozik az az eszköz, amelyhez kapcsolódik, Xperia készüléke automatikusan csatlakozni fog az adott eszközökhöz, a keresőn keresztül pedig minden kép meg lesz osztva Xperia készüléke és az összes csatlakoztatott eszköz között.</string>
+    <string name="cam_strings_multicam_touch_add_camera_desc_txt">Koppintson ide egy készülék felvételéhez. Itt jelenik meg a keresőn keresztül a kép.</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Nem csatlakoztatható semmilyen Xperia készülékhez, miközben az Xperia egy Sony Wi-Fi/NFC kamerához kapcsolódik.</string>
+    <string name="cam_strings_night_mode_hint_txt">Éjszakai mód</string>
+    <string name="cam_strings_night_shooting_hint_txt">Éjszakai mód</string>
+    <string name="cam_strings_not_zoom_for_full_hd_60fps_video_txt">Full HD (60 fps) videoméret esetén 1x-nél kisebb zoom nem érhető el</string>
+    <string name="cam_strings_not_zoom_txt">4K v. Full HD (60 fps) videóméret es. nem érhető el 1x-nél kis. zoom</string>
+    <string name="cam_strings_ok_txt">OK</string>
+    <string name="cam_strings_only_main_txt">Csak a főkamera</string>
+    <string name="cam_strings_peaking_display_txt">Csúcsérték megjelenítése</string>
+    <string name="cam_strings_permgroupdesc_thermalmitigation_message_txt">Lehetővé teszi, hogy az alkalmazás a stabil rögzítés érdekében a készülék hőmérsékletétől függően szabályozza a rendszert.</string>
+    <string name="cam_strings_permgrouplab_thermalmitigation_txt">a rendszer felügyelete</string>
+    <string name="cam_strings_photo_autoreview_txt">Fényképek aut. előnézete</string>
+    <string name="cam_strings_photometry_average_txt">Átlag</string>
+    <string name="cam_strings_photometry_center_txt">Közép</string>
+    <string name="cam_strings_photometry_face_txt">Arc</string>
+    <string name="cam_strings_photometry_pro_txt">Fénymérési mód</string>
+    <string name="cam_strings_photometry_spot_txt">Pontszerű</string>
+    <string name="cam_strings_photometry_title_txt">Fénymérés</string>
+    <string name="cam_strings_photometry_touch_txt">Érintse</string>
+    <string name="cam_strings_photometry_txt">Fénymérés</string>
+    <string name="cam_strings_pleaking_color_txt">Színcsúcsérték</string>
+    <string name="cam_strings_preaf_txt">Elő AF</string>
+    <string name="cam_strings_predictive_capture_description_txt">Egy mosolyt vagy egy objektum mozdulatát észlelve a készülék automatikusan rögzíti a képeket még másodpercekkel azelőtt, hogy lenyomná az exponálógombot. A kedvenc képét kiválaszthatja akár négy rögzített fénykép közül. Nem fogja elmulasztani a tökéletes felvételt.</string>
+    <string name="cam_strings_predictive_capture_feedback_txt">Előre jelzett</string>
+    <string name="cam_strings_predictive_capture_txt">Prediktív rögzítés</string>
+    <string name="cam_strings_predictive_launch_description_txt">Automatikusan elindíthatja a kamerát a készülék gyors felemelésével fekvő módban és a kamerát egy tárgyra irányítva.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"A kamera automatikusan elindult, mivel észlelte, hogy felemeli a telefonját fekvő módban, és egy tárgy felé irányítja.
+A kamerabeállítások Intelligens indítás pontjában kiválaszthatja a funkció használatának kedvenc módját."</string>
+    <string name="cam_strings_predictive_launch_guide_2_txt">A rögzítéshez érintse meg a kör belsejét</string>
+    <string name="cam_strings_predictive_launch_guide_3_txt">A rögzítéshez érintse meg a képernyőt</string>
+    <string name="cam_strings_predictive_launch_guide_circle_txt">Teljes képernyős nézethez koppintson a körbe</string>
+    <string name="cam_strings_predictive_launch_guide_txt">Érintse meg a kör belsejét a kamera indításához</string>
+    <string name="cam_strings_predictive_launch_launch_and_capture_txt">Indítás/rögzítés érintéssel</string>
+    <string name="cam_strings_predictive_launch_launch_only_txt">Indítás érintéssel</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_and_capture_txt">Koppintson a körön belül, és a kamera ekkor teljes képernyős módban elindul, ezzel egyidejűleg elkészít egy fényképet.</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_only_txt">Koppintson a körön belül, és a kamera ekkor teljes képernyős módban elindul.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Gyorsan elindíthatja a kamerát. Emelje fel gyorsan a készüléket fekvő módban, és irányítsa a kamerát egy tárgy felé. A kamera automatikusan elindul.
+Kiválaszthatja a funkció használatának kedvelt módját a kamerabeállítások között az Intelligens indítás pontban."</string>
+    <string name="cam_strings_predictive_launch_tutorial_title_txt">Intelligens indítás</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Gyorsan elindíthatja a kamerát. Forgassa el a készüléket fekvő módban, és irányítsa a kamerát egy tárgy felé. A kamera automatikusan elindul.
+Ez a funkció a kamerabeállítások között az Intelligens indítás pontban kapcsolható ki."</string>
+    <string name="cam_strings_predictive_launch_txt">Intelligens indítás</string>
+    <string name="cam_strings_preview_always_txt">Be</string>
+    <string name="cam_strings_preview_duration_3sec_txt">3 másodperc</string>
+    <string name="cam_strings_preview_duration_5sec_txt">5 másodperc</string>
+    <string name="cam_strings_preview_duration_title_txt">Megtekintés</string>
+    <string name="cam_strings_preview_duration_txt">Megtekintés</string>
+    <string name="cam_strings_preview_duration_unlimited_txt">Nincs korlát</string>
+    <string name="cam_strings_preview_edit_txt">Szerkesztés</string>
+    <string name="cam_strings_preview_only_front_txt">Csak előlapi kamera</string>
+    <string name="cam_strings_previous_txt">Előző</string>
+    <string name="cam_strings_processing_capturing_photo_txt">Fénykép készítése. Kis türelmet.</string>
+    <string name="cam_strings_processing_loading_txt">Fénykép készítése. Tartsa mozdulatlanul a kamerát.</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Kopp. a készülék beállításához</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Ez a QR Code nem támogatott</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Kopp. a hiv. megnyitásához: \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Nem lehet csatlakozni ehhez a Wi-Fi-hálózathoz</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Kopp. csatlakozás Wi-Fi-hálózathoz: %1$s</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code-olvasó</string>
+    <string name="cam_strings_recommend_night_mode_txt">Éjszakai mód használatához koppintson ide</string>
+    <string name="cam_strings_recommend_night_mode_use_button_txt">Használom</string>
+    <string name="cam_strings_recommend_night_shooting_txt">Éjszakai mód használatához koppintson ide</string>
+    <string name="cam_strings_recording_txt">FELVÉTEL</string>
+    <string name="cam_strings_remember_geotag_title_txt">Menti a helyet?</string>
+    <string name="cam_strings_remember_geotag_txt">Fényképeit és videóit megcímkézheti azokkal a helyszínekkel, ahol készültek. Később módosíthatja a beállítást a kamera Hely mentése beállításából.</string>
+    <string name="cam_strings_remote_touch_to_start_txt">Koppintson az indításhoz</string>
+    <string name="cam_strings_reset_color_brightness_txt">Szín és fényerősség visszaállítása</string>
+    <string name="cam_strings_reset_settings_confirm_title_txt">Visszaállítja a kamerabeállításokat az alapértékekre?</string>
+    <string name="cam_strings_reset_settings_txt">Beállítások visszaállítása</string>
+    <string name="cam_strings_reset_txt">Visszaállítás</string>
+    <string name="cam_strings_resolution_title_txt">Felbontás</string>
+    <string name="cam_strings_resolution_txt">Felbontás</string>
+    <string name="cam_strings_restricted_mf_touchfocus_txt">A Fókusz érintésre funkcióhoz módosítsa a fókuszt AF értékre</string>
+    <string name="cam_strings_restricted_setting_dialog_title_txt">Nem módosítható</string>
+    <string name="cam_strings_restricted_setting_photo_long_shutter_speed_txt">Ez a beállítás nem támogatja az aktuális záridőt. A beállítás konfigurálásához módosítsa a záridőt 1 másodpercre vagy kisebb értékre.</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_or_scene_txt">Ez a beállítás nem támogatott az aktuális felbontáshoz vagy jelenethez. A beállítás konfigurálásához módosítsa a felbontást vagy a jelenetválasztást.</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_txt">Ez a beállítás nem támogatja az aktuális állóképméretet. A beállítás konfigurálásához módosítsa az állókép méretét.</string>
+    <string name="cam_strings_restricted_setting_scene_txt">Ez a beállítás nem támogatott az aktuális jelenethez. A beállítás konfigurálásához módosítsa a jelenetválasztást.</string>
+    <string name="cam_strings_restricted_setting_slow_motion_txt">Lassított felvétel módban nem lehet módosítani a videóméretet. A beállítás módosításához lépjen ki a Lassított felvétel módból.</string>
+    <string name="cam_strings_restricted_setting_transfer_and_tagging_txt">Ez a beállítás nem érhető el, ha a Transfer &amp; Tagging add-on üzemmód be van kapcsolva. A beállítás módosításához kapcsolja ki a Transfer &amp; Tagging add-on üzemmódot.</string>
+    <string name="cam_strings_restricted_setting_video_hdr_hlg_txt">Ez a beállítás nem érhető el, ha a HDR be van kapcsolva. A konfigurálásához kapcsolja ki a HDR funkciót.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_or_scene_txt">Ez a beállítás nem támogatott az aktuális videofelbontáshoz vagy jelenethez. A beállítás konfigurálásához módosítsa a videofelbontást vagy a jelenetválasztást.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_txt">Ez a beállítás nem támogatott a jelenlegi videómérethez. A beállítás konfigurálásához módosítsa a videóméretet.</string>
+    <string name="cam_strings_restriction_info_correction_for_distortion_txt">A Háttérelmosás (bokeh) effektus használata során az objektívkorrekció nem érhető el</string>
+    <string name="cam_strings_restriction_information_txt">Ettől a beállítástól függően lehet, hogy automatikusan letiltja vagy módosítja a következő beállításokat:</string>
+    <string name="cam_strings_runtime_permission_continue_button_txt">ALK. INFORMÁCIÓ</string>
+    <string name="cam_strings_runtime_permission_dialog1_message_txt">A(z) %1$s alkalmazásnak az alábbi engedélyekre van szüksége</string>
+    <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s-engedély</string>
+    <string name="cam_strings_runtime_permission_dialog2_message1_txt">Az alkalmazásnak szüksége van az alábbi engedély(ek)re a művelet végrehajtásához.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Az engedélyek megadásához lépjen az Alkalmazásinformáció > Engedélyek részre.</string>
+    <string name="cam_strings_runtime_permission_dialog2_title_txt">Nem sikerült folytatni</string>
+    <string name="cam_strings_runtime_permission_rationale_camera_txt">Fényképek és videók készítéséhez</string>
+    <string name="cam_strings_runtime_permission_rationale_location_txt">Tartózkodási hely beolvasásához</string>
+    <string name="cam_strings_runtime_permission_rationale_microphone_txt">Hang rögzítéséhez</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_cta_txt">Fényképek és videók beolvasásához és mentéséhez</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_txt">Fényképek és videók mentéséhez</string>
+    <string name="cam_strings_s1_settings_txt">AF zárral</string>
+    <string name="cam_strings_save_destination_ims_txt">Belső tárhely</string>
+    <string name="cam_strings_save_destination_sd_txt">SD-kártya</string>
+    <string name="cam_strings_save_destination_title_txt">Adattároló</string>
+    <string name="cam_strings_save_destination_txt">Adattároló</string>
+    <string name="cam_strings_saving_files_txt">Fájlok mentése</string>
+    <string name="cam_strings_scene_selection_title_cy_txt">Jelenetválasztás</string>
+    <string name="cam_strings_scenes_anti_motion_blur_cy_txt">Elmosódás csökkentése</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_portrait_cy_txt">Ellenfényes portré</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_txt">Ellenfény</string>
+    <string name="cam_strings_scenes_auto_recog_gourmet_txt">Gasztronómia</string>
+    <string name="cam_strings_scenes_auto_recog_infant_cy_txt">Gyermek</string>
+    <string name="cam_strings_scenes_auto_recog_landscape_txt">Tájkép</string>
+    <string name="cam_strings_scenes_auto_recog_low_light_cy_txt">Kevés fény</string>
+    <string name="cam_strings_scenes_auto_recog_softsnap_cy_txt">Lágy megjelenítés</string>
+    <string name="cam_strings_scenes_auto_recog_spotlight_cy_txt">Reflektor</string>
+    <string name="cam_strings_scenes_auto_recog_text_txt">Dokumentum</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_portrait_cy_txt">Éjszakai portré</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_txt">Éjszakai jelenet</string>
+    <string name="cam_strings_scenes_backlight_hdr_cy_txt">HDR ellenfény-kompenzáció</string>
+    <string name="cam_strings_scenes_beach_cy_txt">Tengerpart</string>
+    <string name="cam_strings_scenes_beachsnow_txt">Tengerpart és hó</string>
+    <string name="cam_strings_scenes_document_txt">Dokumentum</string>
+    <string name="cam_strings_scenes_fireworks_cy_txt">Tűzijáték</string>
+    <string name="cam_strings_scenes_gurumet_cy_txt">Gasztronómia</string>
+    <string name="cam_strings_scenes_handheld_twilight_cy_txt">Kézben tartott esti</string>
+    <string name="cam_strings_scenes_high_sensitivity_cy_txt">Nagy érzékenység</string>
+    <string name="cam_strings_scenes_landscape_txt">Tájkép</string>
+    <string name="cam_strings_scenes_nightmode_txt">Éjszakai</string>
+    <string name="cam_strings_scenes_nightportrait_cy_txt">Éjszakai portré</string>
+    <string name="cam_strings_scenes_nightscene_txt">Éjszakai jelenet</string>
+    <string name="cam_strings_scenes_party_txt">Parti</string>
+    <string name="cam_strings_scenes_pet_cy_txt">Kisállat</string>
+    <string name="cam_strings_scenes_pets_txt">Kisállatok</string>
+    <string name="cam_strings_scenes_snow_cy_txt">Hó</string>
+    <string name="cam_strings_scenes_soft_skin_cy_txt">Sima bőr</string>
+    <string name="cam_strings_scenes_soft_snap_cy_txt">Lágy megjelenítés</string>
+    <string name="cam_strings_scenes_sports_txt">Sport</string>
+    <string name="cam_strings_scenes_txt">Motívum-programok</string>
+    <string name="cam_strings_screen_pinned_txt">A képernyő rögzítve van</string>
+    <string name="cam_strings_sd_permission_data_storage_info_txt">Belső tárhelyre mentve</string>
+    <string name="cam_strings_sd_permission_dialog_continue_button_txt">TOVÁBB</string>
+    <string name="cam_strings_sd_permission_dialog_message1_txt">Az alkalmazásnak szüksége van az alábbi engedély(ek)re a művelet végrehajtásához.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Az SD-kártya használatához a kamerának engedélyekre van szüksége az SD-kártya eléréséhez.
+Módosítsa az adattárolót ismét SD-kártyára, vagy a következő képernyőn engedélyezze a kamerának a hozzáférést az SD-kártyához."</string>
+    <string name="cam_strings_sd_permission_dialog_title_txt">Nem érhető el az SD-kártya</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"A rendszer új SD-kártyát észlelt, amelyhez engedélyek szükségesek.
+
+Az SD-kártya adattárolóként való használatához a következő képernyőn válassza ki az SD-kártyát vagy a DCIM könyvtárat."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Nem lett kiválasztva az SD-kártya vagy a DCIM könyvtár. Az SD-kártya nem használható.
+
+Az engedélyek megadásához módosítsa a mentési helyet az SD-kártyára, vagy a következő képernyőn válassza ki a megfelelő könyvtárat."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Új SD-kártya észlelhető, amelyhez engedélyek szükségesek.
+Ezért a belső tárhely lesz alapértelmezett adattárolóként használva.
+
+Ha adattárolóként SD-kártyát szeretne használni, a kamera beállításai között módosítsa az adattárolási lehetőséget SD-kártyára."</string>
+    <string name="cam_strings_sd_permission_rationale_txt">Fényképek és videók mentéséhez SD-kártyára</string>
+    <string name="cam_strings_select_picture_txt">Fénykép kiválasztása</string>
+    <string name="cam_strings_self_timer_05_txt">0,5 másodperc</string>
+    <string name="cam_strings_self_timer_10_pro_txt">Önkioldó: 10 másodperc</string>
+    <string name="cam_strings_self_timer_10_txt">10 másodperc</string>
+    <string name="cam_strings_self_timer_2_txt">2 másodperc</string>
+    <string name="cam_strings_self_timer_3_pro_txt">Önkioldó: 3 másodperc</string>
+    <string name="cam_strings_self_timer_3_txt">3 másodperc</string>
+    <string name="cam_strings_self_timer_front_hint_10_txt">Önkioldó: 10 másodperc</string>
+    <string name="cam_strings_self_timer_front_hint_3_txt">Önkioldó: 3 másodperc</string>
+    <string name="cam_strings_self_timer_front_hint_off_txt">Önkioldó: Kikapcsolva</string>
+    <string name="cam_strings_self_timer_hint_countdown_txt">Nézzen a kamera felé</string>
+    <string name="cam_strings_self_timer_photo_txt">Önkioldó (állóképek)</string>
+    <string name="cam_strings_self_timer_txt">Önkioldó</string>
+    <string name="cam_strings_setting_common_title_txt">Általános</string>
+    <string name="cam_strings_setting_front_manual_title_txt">Kézi (előlapi)</string>
+    <string name="cam_strings_setting_front_photo_title_txt">Fénykép (előlapi)</string>
+    <string name="cam_strings_setting_front_video_title_txt">Videó (előlapi)</string>
+    <string name="cam_strings_setting_main_title_txt">Kamerabeállítások</string>
+    <string name="cam_strings_setting_manual_title_txt">Kézi</string>
+    <string name="cam_strings_setting_night_mode_title_txt">Éjszakai mód beállításai</string>
+    <string name="cam_strings_setting_night_shooting_title_txt">Éjszakai mód beállításai</string>
+    <string name="cam_strings_setting_photo_title_txt">Fénykép</string>
+    <string name="cam_strings_setting_slow_motion_title_txt">Lassított felvétel</string>
+    <string name="cam_strings_setting_tele_title_txt">Fénykép (teleobjektív)</string>
+    <string name="cam_strings_setting_tele_video_title_txt">Videó (teleobjektív)</string>
+    <string name="cam_strings_setting_video_title_txt">Videó</string>
+    <string name="cam_strings_setting_wide_title_txt">Fénykép (ultraszéles)</string>
+    <string name="cam_strings_setting_wide_video_title_txt">Videó (ultraszéles)</string>
+    <string name="cam_strings_settings_always_on_txt">Mindig bekapcsolva</string>
+    <string name="cam_strings_settings_auto_txt">Auto</string>
+    <string name="cam_strings_settings_off_txt">Kikapcsol</string>
+    <string name="cam_strings_settings_on_txt">Be</string>
+    <string name="cam_strings_settings_save_photos_all_txt">Összes fénykép</string>
+    <string name="cam_strings_settings_save_photos_one_txt">Kijelölt fénykép</string>
+    <string name="cam_strings_settings_save_photos_txt">Mentés</string>
+    <string name="cam_strings_shortcut_video_camera_txt">Videokamera</string>
+    <string name="cam_strings_shutter_trigger_txt">Automatikus felvétel</string>
+    <string name="cam_strings_side_sense_bar_description_txt">"Fényképeket v. videókat készíthet az exponálógomb helyett a képernyő szélén lévő érzékelőkre duplán koppintva.
+A funkció kompatibilis a fénykép és a videó móddal is.
+
+Nem haszn., ha A képernyő belső szélén működik funkció be van kapcs. az Oldalérzékelő beáll. között az Érintési pozíció beállítása csoportban."</string>
+    <string name="cam_strings_side_sense_description_txt">"Az exponálógomb helyett a képernyő oldalán lévő érzékelőn duplán koppintva egyszerűen készíthet fényképet vagy videót.
+A fénykép és a videó mód is támogatja ezt a funkciót."</string>
+    <string name="cam_strings_side_touch_not_supported_txt">Az Oldalérzékelő nem támogatott ezen a képernyőn</string>
+    <string name="cam_strings_side_touch_on_title_txt">Oldalérzékelő</string>
+    <string name="cam_strings_side_touch_on_txt">A funkció engedélyezéséhez nyissa meg a Beállítások > Megjelenítés panelt, és kapcsolja be az Oldalérzékelőt. Engedélyezi most?</string>
+    <string name="cam_strings_side_touch_tutorial_title_txt">Oldalérzékelő</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Fényképet vagy videót készíthet egyszerűen a képernyő szélén az érzékelőre duplán koppintva, anélkül hogy az exponálógombra kellene koppintania. Nagyíthat és kicsinyítheti is az ujja csúsztatásával az oldalérzékelő mentén.
+A fénykép és a videó mód is támogatja ezt a funkciót, amelyet a kamerabeállítások Oldalérzékelő részén kapcsolhat ki."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Fényképet vagy videót készíthet álló nézetben egyszerűen a képernyő szélén az érzékelőre duplán koppintva, anélkül hogy az exponálógombra kellene koppintania. Nagyíthat és kicsinyíthet is az ujja csúsztatásával az oldalérzékelő mentén.
+A fénykép és a videó mód is támogatja ezt a funkciót, amelyet a kamerabeállítások Oldalérzékelő részén kapcsolhat ki."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Fényképet vagy videót készíthet álló nézetben egyszerűen a képernyő szélén az érzékelőre duplán koppintva, anélkül hogy az exponálógombra kellene koppintania.
+A fénykép és a videó mód is támogatja ezt a funkciót, amelyet a kamerabeállítások Oldalérzékelő részén kapcsolhat ki."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Fényképet vagy videót készíthet egyszerűen a képernyő szélén az érzékelőre duplán koppintva, anélkül hogy az exponálógombra kellene koppintania.
+A fénykép és a videó mód is támogatja ezt a funkciót, amelyet a kamerabeállítások Oldalérzékelő részén kapcsolhat ki."</string>
+    <string name="cam_strings_side_touch_txt">Oldalérzékelő</string>
+    <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">A rögzítési stílus és a képernyőfelbontás a Kamera beállításai között módosítható</string>
+    <string name="cam_strings_slow_motion_settings_shot_txt">Szuper lassított (egyképes)</string>
+    <string name="cam_strings_slow_motion_settings_standard_txt">Lassított felvétel</string>
+    <string name="cam_strings_slow_motion_settings_super_txt">Szuper lassított felvétel</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_1_txt">A lassított mozgás képkocka/mp értéke és a rögzítési stílus módosítható</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_title_txt">További beállítások</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"A képernyő közepén lévő gombra koppintva azonnal rögzíthet egy értékes pillanatot %1$s képkocka/mp lassított felvétellel.
+A jó megvilágítású környezetben rögzített videó minősége jobb lesz."</string>
+    <string name="cam_strings_slow_motion_shot_hint_1_txt">A középső gombra koppintva %1$s képk./mp seb.-gel rögzítheti a kellő pillanatot</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_1_txt">A képernyő közepén lévő gombra koppintva azonnal rögzíthet egy értékes pillanatot %1$s képkocka/mp lassított mozgással</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Szuper lassított felvétel (egyképes)</string>
+    <string name="cam_strings_slow_motion_shot_txt">Szuper lassított felvétel (egyképes)</string>
+    <string name="cam_strings_slow_motion_standard_hint_1_txt">Videó rögzítése %1$s képk./mp sebességgel és lassított felv. effektusokkal</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_1_txt">Videókat rögzíthet 120 képkocka/mp lassított felvétellel</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_2_txt">Rögzítsen videót, majd szerkesztéssel lassítsa a kijelölt részeket. Koppintson a gombra a képernyő közepén a részek beállításához lassított felvételként.</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Lassított felvétel</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">A rögzítés módja</string>
+    <string name="cam_strings_slow_motion_standard_txt">Lassított felvétel</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Hatásos videó készítése egy értékes pillanat lassított megjelenítésével.
+A jó megvilágítású környezetben rögzített videó minősége jobb lesz."</string>
+    <string name="cam_strings_slow_motion_super_hint_1_txt">%1$s képk./mp sebességre váltva különböző sebességeken is rögzíthet videót</string>
+    <string name="cam_strings_slow_motion_super_hint_2_txt">A megfelelő pillanatban koppintson a gombra középen</string>
+    <string name="cam_strings_slow_motion_super_hint_3_txt">Lassított mozgás rögzítve</string>
+    <string name="cam_strings_slow_motion_super_tutorial_1_txt">Hatásos videó készítése egy kivételes pillanat lassított megjelenítésével</string>
+    <string name="cam_strings_slow_motion_super_tutorial_2_txt">Videorögzítés elindítása a felvétel gombra koppintással</string>
+    <string name="cam_strings_slow_motion_super_tutorial_3_txt">Koppintson a képernyő közepén található gombra a lassított felvételhez. A rögzítés leállításához koppintson a leállítás gombra.</string>
+    <string name="cam_strings_slow_motion_super_tutorial_title_1_txt">Szuper lassított felvétel</string>
+    <string name="cam_strings_slow_motion_super_txt">Szuper lassított felvétel</string>
+    <string name="cam_strings_slow_motion_txt">Lassított felvétel mód</string>
+    <string name="cam_strings_smile_capture_big_txt">Nagy mosoly</string>
+    <string name="cam_strings_smile_capture_faint_txt">Kis mosoly</string>
+    <string name="cam_strings_smile_capture_normal_txt">Átlagos mosoly</string>
+    <string name="cam_strings_smile_capture_txt">Mosolyfelismerés</string>
+    <string name="cam_strings_smile_shutter_cy_txt">Mosolyexponál.</string>
+    <string name="cam_strings_smile_shutter_title_cy_txt">Mosolyexponálás</string>
+    <string name="cam_strings_snackbar_dependency_button_txt">Részletek</string>
+    <string name="cam_strings_snackbar_dependency_info_txt">Ez a módosítás más beállításokra is hatással volt</string>
+    <string name="cam_strings_soft_skin_effect_cy_txt">Sima bőr hatás</string>
+    <string name="cam_strings_soft_skin_effect_title_cy_txt">Sima bőr hatás</string>
+    <string name="cam_strings_standard_txt">Normál</string>
+    <string name="cam_strings_steadyshot_cy_txt">SteadyShot™</string>
+    <string name="cam_strings_step_tutorial_title_txt">%1$s./%2$s lépés</string>
+    <string name="cam_strings_store_fail_txt">Nem lehet menteni</string>
+    <string name="cam_strings_superior_auto_brightness_txt">Fényerősség</string>
+    <string name="cam_strings_superior_auto_color_txt">Szín</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_title_txt">Dupla kamera</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_txt">A dupla kamerával gyönyörű, alacsony zajszintű fényképeket készíthet még éjszaka vagy gyenge megvilágítású szobában is. A kamera a helyszíntől függően automatikusan vált az egyetlen kamera és a dupla kamera között az ultranagy érzékenységű képek készítéséhez.</string>
+    <string name="cam_strings_sw_licence_title_txt">Szoftverlicencek</string>
+    <string name="cam_strings_take_photo_txt">Fénykép készítése</string>
+    <string name="cam_strings_term_of_use_accept_txt">Elfogadom</string>
+    <string name="cam_strings_term_of_use_consent_txt">Elfogadom a Sony &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">használati feltételeit&lt;/a>.</string>
+    <string name="cam_strings_term_of_use_data_charge_txt">A szolgáltatás igénybe vétele díjcsomagjától függően mobil adatforgalmi díjak felszámításával járhat.</string>
+    <string name="cam_strings_term_of_use_data_collection_txt">A Sony összegyűjti a kivonatolt Android-azonosítóját (az egyedi eszközazonosítót), a helyre vonatkozó adatokat és az időbélyegzőt annak érdekében, hogy a szolgáltatás és a szolgáltatás javításának részeként megfelelő eredményeket biztosítsunk Önnek.</string>
+    <string name="cam_strings_term_of_use_decline_txt">Nem fogadom el</string>
+    <string name="cam_strings_term_of_use_title_txt">Feltételek</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Használati feltételek&lt;/a></string>
+    <string name="cam_strings_timeshift_cancel_selection_txt">Képek kiválasztásának törlése</string>
+    <string name="cam_strings_timeshift_operation_failed_txt">Nem lehet menteni</string>
+    <string name="cam_strings_timeshift_save_complete_txt">Mentve</string>
+    <string name="cam_strings_timeshift_save_selection_txt">Mentés külön</string>
+    <string name="cam_strings_timeshift_select_images_txt">Képek kiválasztása</string>
+    <string name="cam_strings_timeshift_share_txt">Megosztás</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Csatlakoztatva ehhez: %1$s</string>
+    <string name="cam_strings_touch_capturing_always_txt">Be</string>
+    <string name="cam_strings_touch_capturing_only_front_txt">Csak előlapi kamera</string>
+    <string name="cam_strings_touch_capturing_title_txt">Felvétel érintésre</string>
+    <string name="cam_strings_touch_focus_in_manual_focus_txt">A Fókusz érintésre használatához módosítsa a fókusz beállítását AF (automatikus élességállítás) értékre.</string>
+    <string name="cam_strings_touch_to_adjust_description_txt">Válassza ki, hogy mit módosít a kereső megérintésekor</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_focus_and_exposure_txt">Fókusz és fényerő</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_only_focus_txt">Csak fókusz</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_txt">Érintésre módosítás</string>
+    <string name="cam_strings_transfer_and_tagging_description_txt">"A funkció bekapcsolása lehetővé teszi, hogy a Transfer &amp; Tagging add-on megjelenítse az Xperia kamerájával készített fényképeket. A fényképeket a belső tárhelyre menti a rendszer.
+Ez a funkció fénykép és kézi üzemmódban készített fényképekkel kompatibilis."</string>
+    <string name="cam_strings_transfer_and_tagging_txt">Transfer &amp; Tagging add-on üzemmód</string>
+    <string name="cam_strings_tutorial_bright_place_txt">A jó megvilágítású környezetben rögzített videó minősége jobb lesz</string>
+    <string name="cam_strings_tutorial_button_next_txt">Tovább</string>
+    <string name="cam_strings_tutorial_button_skip_txt">Kihagyás</string>
+    <string name="cam_strings_tutorial_button_txt">Értem</string>
+    <string name="cam_strings_tutorial_title_txt">Váltás módja</string>
+    <string name="cam_strings_tutorial_txt">Másik felvételi üzemmódra (pl. Videó v. Kézi) váltás csúsztatással</string>
+    <string name="cam_strings_unable_to_operate_txt">Fényképek mentésekor nem működik</string>
+    <string name="cam_strings_unlock_button_txt">Feloldás</string>
+    <string name="cam_strings_use_of_camera_not_authorized_txt">Biztonsági okokból a kamera használata korlátozott</string>
+    <string name="cam_strings_video_backlight_correction_description_txt">Ha bekapcsolja ezt a beállítást, akkor automatikusan optimális expozícióval készíthet videót, még világos háttérfény esetén is.</string>
+    <string name="cam_strings_video_backlight_correction_txt">Videó ellenfény-kompenzáció</string>
+    <string name="cam_strings_video_codec_for_4k_txt">Felvétel fájltípusa</string>
+    <string name="cam_strings_video_digital_zoom_type_description_txt">"Válasszon videó digitális zoombeállítást.
+
+Normál digitális zoom: A képérzékelő adataira épülő digitális feldolgozást használó zoom.
+Videó szuperfelbontású zoom: Digitális adatfeldolgozást alkalmazó, az eredeti képminőségből többet megtartani képes zoom. A videók mentése hosszabb időt vehet igénybe."</string>
+    <string name="cam_strings_video_digital_zoom_type_super_resolution_txt">Videó szuperfelbontású zoom</string>
+    <string name="cam_strings_video_digital_zoom_type_txt">Videó digitális zoom beállításai</string>
+    <string name="cam_strings_video_explanatory_4k2k_setting_txt">A stabil 4K videorögzítéshez nem szabad módosítania ezt a beállítást, kivéve ha nagy sebességű SD-kártyát használ (UHS Speed Class 1 vagy gyorsabb, illetve Speed Class 10 ajánlott).</string>
+    <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">A stabil Timeshift videorögzítéshez nem szabad módosítania ezt a beállítást, kivéve ha nagy sebességű SD-kártyát használ (UHS Speed Class 1 vagy gyorsabb, illetve Speed Class 10 ajánlott). Mindenképpen módosítja?</string>
+    <string name="cam_strings_video_explanatory_slowmotion_setting_txt">A stabil lassított felvételű videorögzítéshez nem szabad módosítania ezt a beállítást, kivéve ha nagy sebességű SD-kártyát használ (UHS Speed Class 1 vagy gyorsabb, illetve Speed Class 10 ajánlott).</string>
+    <string name="cam_strings_video_explanatory_txt">"A stabil videorögzítéshez azt javasoljuk, hogy az adattárolót módosítsa belső tárhelyre. Szeretné most módosítani?
+
+Ha továbbra is SD-kártyát használ adattárolóként, feltétlenül nagy sebességű SD-kártyát válasszon (UHS Speed Class 1 vagy gyorsabb, illetve Speed Class 10 javasolt)."</string>
+    <string name="cam_strings_video_fusion_tutorial_0_title_txt">Dupla kamera</string>
+    <string name="cam_strings_video_fusion_tutorial_0_txt">A dupla kamerával gyönyörű, alacsony zajszintű videókat rögzíthet még éjszaka vagy gyenge megvilágítású szobában is. A kamera a helyszíntől függően automatikusan vált az egyetlen kamera és a dupla kamera között az ultranagy érzékenységű rögzítéshez.</string>
+    <string name="cam_strings_video_fusion_tutorial_1_title_txt">Videorögzítés dupla kamerával</string>
+    <string name="cam_strings_video_fusion_tutorial_1_txt">Tartson legalább 1 méter távolságot a tárgytól, amikor dupla kamerával végez rögzítést. Ultranagy érzékenységen történő rögzítéskor a tárgy megközelítése nézőpont- vagy színváltást okozhat.</string>
+    <string name="cam_strings_video_fusion_tutorial_2_title_txt">Dupla kamerát használ a videorögzítéshez?</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">Nagyszerű közelképek készítéséhez koppintson a Nem lehetőségre, és váltson egyetlen kamerára. A keresőben lévő gombra koppintva bármikor visszaválthat dupla kamerára.</string>
+    <string name="cam_strings_video_hdr_hlg_txt">HDR bekapcsolva</string>
+    <string name="cam_strings_video_hdr_setting_hlg_txt">HDR</string>
+    <string name="cam_strings_video_hdr_title_txt">HDR videó</string>
+    <string name="cam_strings_video_hdr_txt">HDR videó</string>
+    <string name="cam_strings_video_resolution_4k_file_type_txt">Fájlformátum (4K)</string>
+    <string name="cam_strings_video_resolution_full_hd_16_9_60fps_txt">Full HD (16:9 60 képkocka/mp)</string>
+    <string name="cam_strings_video_resolution_full_hd_30fps_txt">Full HD (30 képkocka/mp)</string>
+    <string name="cam_strings_video_resolution_full_hd_60fps_txt">Full HD (60 képkocka/mp)</string>
+    <string name="cam_strings_video_resolution_full_hd_frame_rate_txt">Képkockasebesség (Full HD)</string>
+    <string name="cam_strings_video_resolution_full_hd_super_slow_desc_txt">A HD-től eltérően, feleannyi rögzítési idő alatt szélesebb területet rögzít.</string>
+    <string name="cam_strings_video_resolution_full_hd_txt">Full HD</string>
+    <string name="cam_strings_video_resolution_hd_super_slow_desc_txt">A Full HD-től eltérően, a rögzítési idő duplája alatt keskenyebb területet rögzít.</string>
+    <string name="cam_strings_video_resolution_hd_txt">HD</string>
+    <string name="cam_strings_video_resolution_mms_txt">MMS-üzenet</string>
+    <string name="cam_strings_video_resolution_qvga_txt">QVGA</string>
+    <string name="cam_strings_video_resolution_title_txt">Videofelbontás</string>
+    <string name="cam_strings_video_resolution_txt">Videofelbontás</string>
+    <string name="cam_strings_video_resolution_vga_txt">VGA</string>
+    <string name="cam_strings_video_shutter_trigger_txt">Automatikus felvétel (videó)</string>
+    <string name="cam_strings_video_size_4kuhd_txt">4K (QFHD)</string>
+    <string name="cam_strings_video_size_full_hd_16_9_txt">Full HD (16:9)</string>
+    <string name="cam_strings_video_size_full_hd_21_9_txt">Full HD (21:9)</string>
+    <string name="cam_strings_video_size_full_hd_txt">Full HD</string>
+    <string name="cam_strings_video_size_txt">Videoméret</string>
+    <string name="cam_strings_video_smile_shutter_txt">Mosolyexponálás (videó)</string>
+    <string name="cam_strings_video_stabilizer_txt">Videostabilizálás</string>
+    <string name="cam_strings_volumekey_shutter_txt">Exponálás</string>
+    <string name="cam_strings_volumekey_txt">Hangerőgomb használata így</string>
+    <string name="cam_strings_volumekey_volume_txt">Hangerő</string>
+    <string name="cam_strings_volumekey_zoom_txt">Zoom</string>
+    <string name="cam_strings_white_balance_auto_txt">Auto</string>
+    <string name="cam_strings_white_balance_cloudy_txt">Felhős</string>
+    <string name="cam_strings_white_balance_day_light_txt">Nappali fény</string>
+    <string name="cam_strings_white_balance_fluorescent_txt">Neon</string>
+    <string name="cam_strings_white_balance_incandescent_txt">Izzólámpa</string>
+    <string name="cam_strings_white_balance_title_txt">Fehéregyensúly</string>
+    <string name="cam_strings_white_balance_txt">Fehéregyensúly</string>
+    <string name="cam_strings_whitebalance_custom1_txt">Egyéni 1</string>
+    <string name="cam_strings_whitebalance_custom2_txt">Egyéni 2</string>
+    <string name="cam_strings_whitebalance_custom3_txt">Egyéni 3</string>
+    <string name="cam_strings_whitebalance_shde_txt">Árnyék</string>
+    <string name="cam_strings_zoom_frames_description_txt">"Ha bekapcsolja ezt a beállítást, akkor előnézetben megtekintheti, hogyan fog kinézni, amikor ráközelít.
+Fókuszáljon az alanyra a képkockában, és a nagyítási arányt megérintve könnyedén ráközelíthet."</string>
+    <string name="cam_strings_zoom_frames_txt">Zoomkompozíciós segéd</string>
+    <string name="cam_strings_zoom_help_txt">A zoom növelése/csökkentése a hangerőgombbal lehetséges</string>
+    <string name="cam_strings_zoom_not_supported_in_bokeh_effect_txt">A Háttérelmosás (bokeh) effektus használatakor nem lehet zoomolni</string>
+    <string name="cam_strings_zoom_not_supported_in_front_txt">Az előlapi kamerával nem lehet zoomolni</string>
+    <string name="cam_strings_zoom_not_supported_in_widecam_txt">Ultranagy látószögű objektívvel nem lehet zoomolni</string>
+    <string name="cam_strings_zoom_not_supported_txt">Jelenleg nem használható zoom</string>
+    <string name="expand_button_title">Speciális</string>
+    <string name="photopro_strings_multi_or_popup_window_txt">Nem lehet használni a kamerát többablakos módban, sem előugró ablakban. Zárja be az ablakot, és próbálkozzon újra. Ha többablakos módot használ, a felosztósáv közepét húzva a kamera képének teljes képernyős megjelenítésére válthat.</string>
+    <string name="search_menu_title">Keresés</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="v7_preference_off">KI</string>
+    <string name="v7_preference_on">BE</string>
+</resources>

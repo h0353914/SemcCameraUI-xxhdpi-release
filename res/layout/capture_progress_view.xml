@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sonyericsson.android.camera.view.feedback.CaptureProgressView android:background="@color/capture_progress_view_background_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/capture_progress_layout_portrait" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/capture_progress_text_portrait" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="24.0dip" android:text="@string/cam_strings_processing_capturing_photo_txt" android:maxLines="4" android:layout_above="@id/capturing_count_down_base_portrait" android:layout_centerHorizontal="true" android:lineSpacingMultiplier="1.2" android:fontFamily="sans-serif-medium" style="@style/SelfTimerTextDropShadow" />
+        <FrameLayout android:id="@id/capturing_count_down_base_portrait" android:layout_width="120.0dip" android:layout_height="120.0dip" android:layout_centerInParent="true">
+            <ImageView android:layout_gravity="center" android:layout_width="@dimen/viewfinder_countdown_outside_diameter" android:layout_height="@dimen/viewfinder_countdown_outside_diameter" android:src="@drawable/selftimer_countdown_bg" />
+            <com.sonyericsson.android.camera.view.feedback.CaptureProgressCircleView android:layout_gravity="center" android:id="@id/capture_progress_circle_portrait" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </FrameLayout>
+    </RelativeLayout>
+    <RelativeLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/capture_progress_layout_landscape" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:rotation="90.0">
+        <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/capture_progress_text_landscape" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="24.0dip" android:text="@string/cam_strings_processing_capturing_photo_txt" android:maxLines="4" android:layout_above="@id/capturing_count_down_base_landscape" android:layout_centerHorizontal="true" android:lineSpacingMultiplier="1.2" android:fontFamily="sans-serif-medium" style="@style/SelfTimerTextDropShadow" />
+        <FrameLayout android:id="@id/capturing_count_down_base_landscape" android:layout_width="120.0dip" android:layout_height="120.0dip" android:layout_centerInParent="true">
+            <ImageView android:layout_gravity="center" android:layout_width="@dimen/viewfinder_countdown_outside_diameter" android:layout_height="@dimen/viewfinder_countdown_outside_diameter" android:src="@drawable/selftimer_countdown_bg" />
+            <com.sonyericsson.android.camera.view.feedback.CaptureProgressCircleView android:layout_gravity="center" android:id="@id/capture_progress_circle_landscape" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </FrameLayout>
+    </RelativeLayout>
+</com.sonyericsson.android.camera.view.feedback.CaptureProgressView>

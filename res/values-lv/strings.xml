@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">Pārvietoties uz sākuma ekrānu</string>
+    <string name="abc_action_bar_up_description">Pārvietoties augšup</string>
+    <string name="abc_action_menu_overflow_description">Vairāk opciju</string>
+    <string name="abc_action_mode_done">Gatavs</string>
+    <string name="abc_activity_chooser_view_see_all">Skatīt visu</string>
+    <string name="abc_activitychooserview_choose_application">Izvēlieties lietotni</string>
+    <string name="abc_capital_off">IZSLĒGTS</string>
+    <string name="abc_capital_on">IESLĒGTS</string>
+    <string name="abc_menu_alt_shortcut_label">Alternēšanas taustiņš +</string>
+    <string name="abc_menu_ctrl_shortcut_label">Vadīšanas taustiņš +</string>
+    <string name="abc_menu_delete_shortcut_label">dzēšanas taustiņš</string>
+    <string name="abc_menu_enter_shortcut_label">ievadīšanas taustiņš</string>
+    <string name="abc_menu_function_shortcut_label">Funkcijas taustiņš +</string>
+    <string name="abc_menu_meta_shortcut_label">Meta taustiņš +</string>
+    <string name="abc_menu_shift_shortcut_label">Pārslēgšanas taustiņš +</string>
+    <string name="abc_menu_space_shortcut_label">atstarpes taustiņš</string>
+    <string name="abc_menu_sym_shortcut_label">Simbolu taustiņš +</string>
+    <string name="abc_prepend_shortcut_label">Poga Izvēlne +</string>
+    <string name="abc_search_hint">Meklējiet…</string>
+    <string name="abc_searchview_description_clear">Notīrīt vaicājumu</string>
+    <string name="abc_searchview_description_query">Meklēšanas vaicājums</string>
+    <string name="abc_searchview_description_search">Meklēt</string>
+    <string name="abc_searchview_description_submit">Iesniegt vaicājumu</string>
+    <string name="abc_searchview_description_voice">Meklēšana ar balsi</string>
+    <string name="abc_shareactionprovider_share_with">Kopīgot ar:</string>
+    <string name="abc_shareactionprovider_share_with_application">Kopīgot ar lietojumprogrammu %s</string>
+    <string name="abc_toolbar_collapse_description">Sakļaut</string>
+    <string name="call_notification_answer_action">Atbildēt</string>
+    <string name="call_notification_answer_video_action">Video</string>
+    <string name="call_notification_decline_action">Noraidīt</string>
+    <string name="call_notification_hang_up_action">Pārtraukt</string>
+    <string name="call_notification_incoming_text">Ienākošais zvans</string>
+    <string name="call_notification_ongoing_text">Pašreizējais zvans</string>
+    <string name="call_notification_screening_text">Ienākošā zvana filtrēšana</string>
+    <string name="cam_3d_strings_creating_but_incorrect_direction_txt">Nevarēja pabeigt uzņemšanu. Lūdzu, panoramējiet pareizajā virzienā.</string>
+    <string name="cam_3d_strings_creating_but_too_quick_txt">Nevarēja pabeigt uzņemšanu. Lūdzu, panoramējiet lēnāk.</string>
+    <string name="cam_3d_strings_creating_but_too_slow_txt">Nevarēja pabeigt uzņemšanu. Lūdzu, panoramējiet ātrāk.</string>
+    <string name="cam_3d_strings_description_sweep_panorama_txt">Uzņemiet panorāmas fotoattēlu, velkot kameru</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Izveido šos failus:
+- Multi Angle attēls
+- 3D attēls
+Piezīme. Šajos failos ir pelēks apgabals."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Izveido šos failus:
+- Multi Angle attēls
+- 3D attēls"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Apstrāde...
+Šajā attēlā ir pelēks apgabals"</string>
+    <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Tiek saglabāts attēls</string>
+    <string name="cam_3d_strings_dialog_processing_txt">Apstrāde...</string>
+    <string name="cam_3d_strings_error_application_busy_txt">Lūdzu, uzgaidiet dažas sekundes, lai palaistu 3D kameru</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_title_txt">Kļūda</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">Atvienojiet kabeli. Šajā režīmā nevar uzņemt fotoattēlu, ja ir pievienots kabelis.</string>
+    <string name="cam_3d_strings_error_direction_txt">Nevarēja nofotografēt. Lūdzu, panoramējiet pareizā virzienā.</string>
+    <string name="cam_3d_strings_error_too_quick_txt">Nevarēja nofotografēt. Lūdzu, panoramējiet lēnāk.</string>
+    <string name="cam_3d_strings_error_too_slow_txt">Nevarēja nofotografēt. Lūdzu, panoramējiet ātrāk.</string>
+    <string name="cam_3d_strings_setting_shooting_direction_down_txt">Uz leju</string>
+    <string name="cam_3d_strings_setting_shooting_direction_left_txt">Pa kreisi</string>
+    <string name="cam_3d_strings_setting_shooting_direction_right_txt">Pa labi</string>
+    <string name="cam_3d_strings_setting_shooting_direction_title_txt">Uzņemšanas virziens</string>
+    <string name="cam_3d_strings_setting_shooting_direction_up_txt">Uz augšu</string>
+    <string name="cam_3d_strings_shooting_direction_guide_txt">Mainiet virzienu, piesitot ikonai pa kreisi</string>
+    <string name="cam_3d_strings_shooting_failure_title_txt">Nevarēja uzņemt</string>
+    <string name="cam_3d_strings_shooting_guide_down_to_up_txt">Panoramējiet no lejas uz augšu</string>
+    <string name="cam_3d_strings_shooting_guide_left_to_right_txt">Panoramējiet no kreisās puses uz labo</string>
+    <string name="cam_3d_strings_shooting_guide_pan_too_fast_txt">Bīdiet lēnāk</string>
+    <string name="cam_3d_strings_shooting_guide_press_key_txt">Nospiediet aizslēga pogu un lēnām panoramējiet kameru</string>
+    <string name="cam_3d_strings_shooting_guide_right_to_left_txt">Panoramējiet no labās puses uz kreiso</string>
+    <string name="cam_3d_strings_shooting_guide_touch_cap_txt">Piesitiet kameras pogai un lēni panoramējiet kameru</string>
+    <string name="cam_3d_strings_shooting_guide_up_to_down_txt">Panoramējiet no augšas uz leju</string>
+    <string name="cam_3d_strings_sweep_panorama_short_txt">Sweep Panorama</string>
+    <string name="cam_app_shortcut_front_photo_txt">Priekš. fotoattēls</string>
+    <string name="cam_app_shortcut_manual_txt">Manuāli</string>
+    <string name="cam_app_shortcut_video_txt">Video</string>
+    <string name="cam_face_eye_af_settings_on_txt">Sejas noteikšanas/acu AF ieslēgts</string>
+    <string name="cam_string_dualrec_m_apr_txt">%2$tY. gada %1$td. aprīlis</string>
+    <string name="cam_string_dualrec_m_aug_txt">%2$tY. gada %1$td. aug.</string>
+    <string name="cam_string_dualrec_m_dec_txt">%2$tY. gada %1$td. dec.</string>
+    <string name="cam_string_dualrec_m_feb_txt">%2$tY. gada %1$td. feb.</string>
+    <string name="cam_string_dualrec_m_jan_txt">%2$tY. gada %1$td. jan.</string>
+    <string name="cam_string_dualrec_m_jul_txt">%2$tY. gada %1$td. jūlijs</string>
+    <string name="cam_string_dualrec_m_jun_txt">%2$tY. gada %1$td. jūnijs</string>
+    <string name="cam_string_dualrec_m_mar_txt">%2$tY. gada %1$td. marts</string>
+    <string name="cam_string_dualrec_m_may_txt">%2$tY. gada %1$td. maijs</string>
+    <string name="cam_string_dualrec_m_nov_txt">%2$tY. gada %1$td. nov.</string>
+    <string name="cam_string_dualrec_m_oct_txt">%2$tY. gada %1$td. okt.</string>
+    <string name="cam_string_dualrec_m_sep_txt">%2$tY. gada %1$td. sept.</string>
+    <string name="cam_string_dualrec_t_am_txt">%1$tl:%2$tM AM</string>
+    <string name="cam_string_dualrec_t_pm_txt">%1$tl:%2$tM PM</string>
+    <string name="cam_strings_1x1_frame_lines_txt">1:1 kadra līnijas</string>
+    <string name="cam_strings_accessibility_auto_review_txt">Autom. fotoattēla priekšskat.</string>
+    <string name="cam_strings_accessibility_auto_scene_recognized_txt">Sižets atpazīts kā %1$s</string>
+    <string name="cam_strings_accessibility_back_main_txt">Atpakaļ</string>
+    <string name="cam_strings_accessibility_back_txt">Atpakaļ</string>
+    <string name="cam_strings_accessibility_capturing_mode_txt">Tveršanas režīms</string>
+    <string name="cam_strings_accessibility_close_color_button_txt">Aizvērt krāsu pielāgošanu</string>
+    <string name="cam_strings_accessibility_color_brightness_button_txt">Aizvērt krāsu un spilgtuma pielāgošanu</string>
+    <string name="cam_strings_accessibility_condition_detected_txt">Konstatēts nosacījums %1$s</string>
+    <string name="cam_strings_accessibility_condition_motion_txt">Kustībā</string>
+    <string name="cam_strings_accessibility_condition_stable_txt">Stabils</string>
+    <string name="cam_strings_accessibility_condition_walk_txt">Pastaiga</string>
+    <string name="cam_strings_accessibility_dual_effect_menu_txt">Duālās kameras efekts</string>
+    <string name="cam_strings_accessibility_eyeaf_off_txt">Divreiz piesitiet, lai ieslēgtu acu AF</string>
+    <string name="cam_strings_accessibility_eyeaf_on_txt">Divreiz piesitiet, lai izslēgtu acu AF</string>
+    <string name="cam_strings_accessibility_flash_torch_txt">Lukturītis</string>
+    <string name="cam_strings_accessibility_flash_txt">Zibspuldze</string>
+    <string name="cam_strings_accessibility_fusion_auto_txt">Divreiz piesitiet, lai pārslēgtu uz automātisko duālo kameru</string>
+    <string name="cam_strings_accessibility_fusion_off_txt">Divreiz piesitiet, lai ieslēgtu duālo kameru</string>
+    <string name="cam_strings_accessibility_fusion_on_txt">Divreiz piesitiet, lai izslēgtu duālo kameru</string>
+    <string name="cam_strings_accessibility_image_quality_control_exposure_value_txt">Ekspozīcijas vērtība</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_deselected_txt">Autom. režīms noņemts</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_selected_txt">Autom. režīms atlasīts</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_txt">Automātiskais fokuss</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_adjusted_txt">Fokusa attālums mainīts</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_txt">Manuālais fokuss</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_txt">Fokuss</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_deselected_txt">Automātiskais režīms noņemts</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_selected_txt">Autom. režīms atlasīts</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_txt">Aizslēga ātrums</string>
+    <string name="cam_strings_accessibility_image_quality_control_white_balance_txt">Baltā balanss</string>
+    <string name="cam_strings_accessibility_information_txt">Informācija</string>
+    <string name="cam_strings_accessibility_menu_txt">Izvēlne</string>
+    <string name="cam_strings_accessibility_not_configurable_txt">Nav konfigurējams</string>
+    <string name="cam_strings_accessibility_open_color_button_txt">Atvērt krāsu pielāgošanu</string>
+    <string name="cam_strings_accessibility_other_settings_txt">Citi iestatījumi</string>
+    <string name="cam_strings_accessibility_pause_button_txt">Pauze</string>
+    <string name="cam_strings_accessibility_photo_setting_txt">Kameras iestatījumi</string>
+    <string name="cam_strings_accessibility_predictive_capture_txt">Paredzamā uzņemšana</string>
+    <string name="cam_strings_accessibility_recent_photo_txt">Visjaunāko fotoattēlu krājums</string>
+    <string name="cam_strings_accessibility_recording_button_txt">Ierakstīt</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_button_txt">Palēnināta kustība</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_exti_button_txt">Izslēgt palēninātas kustības režīmu</string>
+    <string name="cam_strings_accessibility_recording_stop_button_txt">Pārtraukt</string>
+    <string name="cam_strings_accessibility_self_timer_stop_button_txt">Beigt atpakaļskaitīšanu</string>
+    <string name="cam_strings_accessibility_shutter_button_txt">Aizslēga poga</string>
+    <string name="cam_strings_accessibility_soundphoto_play_txt">Atskaņot skaņu</string>
+    <string name="cam_strings_accessibility_superior_auto_color_brightness_txt">Krāsu un spilgtuma pielāgošana</string>
+    <string name="cam_strings_accessibility_swf_normal_txt">Divreiz piesist, lai pārslēgtu uz parasto režīmu</string>
+    <string name="cam_strings_accessibility_swf_wide_txt">Divreiz piesist, lai pārslēgtu uz platleņķa režīmu</string>
+    <string name="cam_strings_accessibility_switch_to_front_by_swiping_txt">Pārslēgta uz priekšējo kameru</string>
+    <string name="cam_strings_accessibility_switch_to_front_txt">Divreiz piesitiet, lai pārslēgtu uz priekšējo kameru</string>
+    <string name="cam_strings_accessibility_switch_to_main_by_swiping_txt">Pārslēgta uz galveno kameru</string>
+    <string name="cam_strings_accessibility_switch_to_main_txt">Divreiz piesitiet, lai pārslēgtu uz galveno kameru</string>
+    <string name="cam_strings_accessibility_switch_to_photo_txt">Divreiz piesitiet, lai pārslēgtu uz kameru</string>
+    <string name="cam_strings_accessibility_switch_to_video_txt">Divreiz piesitiet, lai pārslēgtu uz video</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">Lai ieslēgtu HDR, divreiz piesitiet</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_on_txt">Lai izslēgtu HDR, divreiz piesitiet</string>
+    <string name="cam_strings_accessibility_video_setting_txt">Video iestatījumi</string>
+    <string name="cam_strings_accessibility_viewer_txt">Atvērt attēlu skatītājā</string>
+    <string name="cam_strings_accessibility_zoom_ratio_with_number_txt">%1$sx</string>
+    <string name="cam_strings_advanced_setting_geo_tag_both_off_txt">Lai saglabātu atrašanās vietas, ir jāiespējo GPS un/vai bezvadu tīkli. Vai iespējot tūlīt?</string>
+    <string name="cam_strings_advanced_setting_geo_tag_title_txt">Atrašanās vietas saglabāšana</string>
+    <string name="cam_strings_ai_face_restore_txt">Padarīt sejas asākas</string>
+    <string name="cam_strings_application_name_creative_effect_txt">Radošs efekts</string>
+    <string name="cam_strings_application_name_dualrec_txt">Seja attēlā</string>
+    <string name="cam_strings_application_name_facefusion_txt">AR maska</string>
+    <string name="cam_strings_application_name_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_application_name_multicam_txt">Multikameras režīms</string>
+    <string name="cam_strings_application_name_night_mode_txt">Nakts režīms</string>
+    <string name="cam_strings_application_name_night_shooting_txt">Nakts režīms</string>
+    <string name="cam_strings_application_name_soundphoto_txt">Sound Photo</string>
+    <string name="cam_strings_application_name_sweep_panorama_txt">Sweep Panorama</string>
+    <string name="cam_strings_application_name_timeshift_txt">Timeshift burst</string>
+    <string name="cam_strings_application_name_txt">Kamera</string>
+    <string name="cam_strings_application_name_video_txt">Video</string>
+    <string name="cam_strings_apps_list_add_txt">Pievienot</string>
+    <string name="cam_strings_apps_list_downloadable_txt">Lejupielādējamās</string>
+    <string name="cam_strings_apps_list_installed_txt">Instalēts</string>
+    <string name="cam_strings_apps_list_txt">Kameras lietotnes</string>
+    <string name="cam_strings_art_filter_guesture_guide_general_txt">Rediģējiet redzamo attēlu, pieskaroties tam ar pirkstiem.</string>
+    <string name="cam_strings_art_filter_guesture_guide_tap_txt">Piesitiet tai daļai, kurā vēlaties izmantot krāsu.</string>
+    <string name="cam_strings_aspect_ratio_txt">Proporcijas</string>
+    <string name="cam_strings_auto_hdr_discription_txt">Ja ieslēdzat šo iestatījumu, varat izvairīties no pārāk lielas vai pārāk mazas ekspozīcijas, nosakot kontrastu uzņemšanas laikā.</string>
+    <string name="cam_strings_auto_hdr_txt">Automātisks HDR</string>
+    <string name="cam_strings_auto_power_off_txt">Kamera drīz tiks aizvērta neaktivitātes dēļ</string>
+    <string name="cam_strings_auto_scene_recognition_txt">Automātiskā sižeta atpazīšana</string>
+    <string name="cam_strings_auto_upload_all_title_txt">Automātiskā augšupielāde</string>
+    <string name="cam_strings_auto_upload_all_txt">Automātiskā augšupielāde</string>
+    <string name="cam_strings_awb_priority_setting_asmosphere_txt">Atmosfēra</string>
+    <string name="cam_strings_awb_priority_setting_standard_txt">Standarta</string>
+    <string name="cam_strings_awb_priority_setting_txt">Prioritātes iestatījumi AWB</string>
+    <string name="cam_strings_awb_priority_setting_white_txt">Balts</string>
+    <string name="cam_strings_balloon_tips_modeselector_title_txt">Dažādu uzņemšanas režīmu izmēģināšana</string>
+    <string name="cam_strings_balloon_tips_modeselector_txt">Piesitiet šim, lai atlasītu citu režīmu</string>
+    <string name="cam_strings_balloon_tips_timeshift_title_txt">Labākā mirkļa atlase</string>
+    <string name="cam_strings_balloon_tips_timeshift_txt">Atrodiet labāko foto, bīdot sīktēlus uz augšu vai uz leju</string>
+    <string name="cam_strings_bokeh_error_covering_lens_txt">Pārliecinieties, ka objektīvs ir tīrs un pirksts nav uz objektīva</string>
+    <string name="cam_strings_bokeh_error_night_shooting_disable_txt">Izmantojot fona pludināšanas (bukē) efektu, nakts režīms nav pieejams</string>
+    <string name="cam_strings_bokeh_error_over_light_txt">Pārāk spilgts</string>
+    <string name="cam_strings_bokeh_error_too_close_txt">Pārvietojieties tālāk no objekta</string>
+    <string name="cam_strings_bokeh_error_too_dark_txt">Nepieciešams vairāk gaismas</string>
+    <string name="cam_strings_bokeh_error_too_far_away_txt">Pārvietojieties tuvāk objektam</string>
+    <string name="cam_strings_bokeh_error_unknown_txt">Fona pludināšana (bukē) šobrīd nav pieejama</string>
+    <string name="cam_strings_bokeh_title_txt">Fona pludināšana (bokeh)</string>
+    <string name="cam_strings_burst_battery_level_low_txt">Nevar uzņemt sērijas attēlus zema akumulatora uzlādes līmeņa dēļ</string>
+    <string name="cam_strings_burst_change_camera_key_setting_txt">Ieslēdz. Sērija ar ierīc. aizslēga pogas iestat., lai iespēj. sērijas uzņem.</string>
+    <string name="cam_strings_burst_in_bokeh_effect_txt">Neizdodas veikt sēriju ar fona pludināšanas (bukē) efektu</string>
+    <string name="cam_strings_burst_in_dark_condition_txt">Nevar uzņemt sērijas attēlus tumsā</string>
+    <string name="cam_strings_burst_in_long_shutter_speed_txt">Nevar veikt sēriju, ja aizslēga ātrums ir iestat. uz 2 sek. vai ilgāk</string>
+    <string name="cam_strings_burst_in_transfer_and_tagging_txt">Ja ir iesl. Transfer &amp; Tagging add-on rež., sēr. fotoatt. nevar uzņ.</string>
+    <string name="cam_strings_burst_in_widecam_txt">Nevar uzņemt fotoattēlu sēriju</string>
+    <string name="cam_strings_burst_not_supported_front_camera_txt">Nevar uzņemt sērijas attēlus, izmantojot priekšējo kameru</string>
+    <string name="cam_strings_burst_not_supported_fusion_on_txt">Sērija nav pieejama, ja ieslēgta Duālā kamera</string>
+    <string name="cam_strings_burst_saved_internal_storage_txt">Sērijas attēli tiek saglabāti iekšējā atmiņā</string>
+    <string name="cam_strings_burst_shooting_txt">Sērijas ātrums</string>
+    <string name="cam_strings_button_continue_txt">Turpināt</string>
+    <string name="cam_strings_button_quit_txt">BEIGT</string>
+    <string name="cam_strings_camera_af_sound_txt">Automātiskā fokusa skaņa</string>
+    <string name="cam_strings_camera_apps_tab_txt">KAMERAS LIETOTNES</string>
+    <string name="cam_strings_camera_key_setting_burst_shot_txt">Sērijas uzņemšana</string>
+    <string name="cam_strings_camera_key_setting_take_photo_txt">Fotografēt</string>
+    <string name="cam_strings_camera_key_setting_txt">Sērija ar aizslēga pogu</string>
+    <string name="cam_strings_camera_sound_txt">Skaņa</string>
+    <string name="cam_strings_camera_switching_txt">Kameras slēdzis</string>
+    <string name="cam_strings_camerakey_launch_description_photo_pro_txt">Nospiežot un turot nospiestu ierīces aizslēga pogu, varat palaist lietotni Kamera vai Photography Pro. Tas darbojas pat tad, ja tālrunis atrodas miega režīmā vai ir bloķēts.</string>
+    <string name="cam_strings_camerakey_launch_description_txt">Nospiežot un turot nospiestu ierīces aizslēga pogu, varat palaist lietotni Kamera. Tas darbojas pat tad, ja tālrunis atrodas miega režīmā vai ir bloķēts.</string>
+    <string name="cam_strings_cancel_txt">Atcelt</string>
+    <string name="cam_strings_capturing_mode_4k2k_txt">4K video</string>
+    <string name="cam_strings_capturing_mode_auto_txt">Fotoattēls</string>
+    <string name="cam_strings_capturing_mode_button_txt">Režīms</string>
+    <string name="cam_strings_capturing_mode_camera_txt">Kamera</string>
+    <string name="cam_strings_capturing_mode_creative_effect_txt">Radošs efekts</string>
+    <string name="cam_strings_capturing_mode_dualrec_txt">Seja attēlā</string>
+    <string name="cam_strings_capturing_mode_facefusion_txt">AR maska</string>
+    <string name="cam_strings_capturing_mode_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_capturing_mode_high_frame_rate_txt">Timeshift video</string>
+    <string name="cam_strings_capturing_mode_manual_txt">Manuāli</string>
+    <string name="cam_strings_capturing_mode_multicam_txt">Multikameras režīms</string>
+    <string name="cam_strings_capturing_mode_network_error_txt">Nevarēja pabeigt datu lejupielādi</string>
+    <string name="cam_strings_capturing_mode_photopro_txt">Photo Pro</string>
+    <string name="cam_strings_capturing_mode_portraitselfie_txt">Pašportrets</string>
+    <string name="cam_strings_capturing_mode_slow_motion_txt">Video (palēninātas kustības)</string>
+    <string name="cam_strings_capturing_mode_soundphoto_txt">Sound Photo</string>
+    <string name="cam_strings_capturing_mode_superior_auto_cy_txt">Labākais automātiskais</string>
+    <string name="cam_strings_capturing_mode_superior_auto_txt">Labākais automātiskais režīms</string>
+    <string name="cam_strings_capturing_mode_timeshift_txt">Timeshift burst</string>
+    <string name="cam_strings_capturing_mode_title_txt">Tveršanas režīms</string>
+    <string name="cam_strings_change_full_storage_to_internal_txt">SD karte ir pilna. Kā noklusējuma datu krātuve it iestatīta iekšējā atmiņa.</string>
+    <string name="cam_strings_change_save_destination_high_frame_rate_title_txt">Timeshift video</string>
+    <string name="cam_strings_change_save_destination_slowmotion_title_txt">Palēnināta kustība</string>
+    <string name="cam_strings_change_save_destination_title_txt">4K video</string>
+    <string name="cam_strings_change_storage_to_sd_txt">Ir ievietota SD karte. Vai iestatīt SD karti kā noklusējuma datu krātuvi?</string>
+    <string name="cam_strings_change_txt">Mainīt</string>
+    <string name="cam_strings_close_txt">Aizvērt</string>
+    <string name="cam_strings_color_brightness_txt">Krāsa un spilgtums</string>
+    <string name="cam_strings_common_error_internal_memory_full_txt">Iekšējā krātuve ir pilna.Vai saglabāt datus SD kartē?</string>
+    <string name="cam_strings_common_error_internal_memory_unavailable_txt">Iekšējā krātuve ir pilna vai aizsargāta pret rakstīšanu. Vai saglabāt datus SD kartē?</string>
+    <string name="cam_strings_common_error_open_txt">%1$s nevar atvērt</string>
+    <string name="cam_strings_common_error_sdcard_full_txt">SD karte ir pilna. Vai saglabāt datus iekšējā krātuvē?</string>
+    <string name="cam_strings_common_error_sdcard_unavailable_txt">Nevar izmantot SD karti. Vai saglabāt datus iekšējā krātuvē?</string>
+    <string name="cam_strings_common_explanatory_sdcard_setting_txt">Stabilai uzņemšanai vai ierakstīšanai iesakām mainīt datu glabāšanas krātuvi uz iekšējo atmiņu vai izmantot ātrgaitas SD karti (ieteicamā klase ir 10. vai augstāka).</string>
+    <string name="cam_strings_cooling_mode_cooled_down_txt">Dažas funkcijas ir atspējotas</string>
+    <string name="cam_strings_cooling_mode_learn_more_txt">Uzzināt vairāk</string>
+    <string name="cam_strings_cooling_mode_message1_txt">Tālāk minētās funkcijas pašlaik ir atspējotas.</string>
+    <string name="cam_strings_cooling_mode_message2_txt">Lūdzu, uzgaidiet, kamēr ierīce atdzisīs, un tad restartējiet kameru.</string>
+    <string name="cam_strings_cooling_mode_title_txt">Šīs funkcijas ir atspējotas</string>
+    <string name="cam_strings_cooling_mode_txt">Dažas funkcijas temperatūras celšanās dēļ atspējotas</string>
+    <string name="cam_strings_core_intelligentactive_txt">Intelligent active</string>
+    <string name="cam_strings_cta_description_txt">Vai izpildīt tālāk redzamo piekļuves pieprasījumu?</string>
+    <string name="cam_strings_cta_title_txt">Piezīme</string>
+    <string name="cam_strings_dependency_changed_txt">%1$s tika mainīts uz%2$s</string>
+    <string name="cam_strings_description_4k2k_txt">Ierakstīt video 4K īpaši augstā izšķirtspējā</string>
+    <string name="cam_strings_description_camera_txt">Fotografējiet un uzņemiet video</string>
+    <string name="cam_strings_description_creative_effect_txt">Atlasīt efektus mākslinieciskiem fotoattēliem un video</string>
+    <string name="cam_strings_description_dualrec_txt">Uzņ. sevi fotoattēlos un videoklipus, izmantojot priekšējo un galveno kameru</string>
+    <string name="cam_strings_description_facefusion_txt">Maskējiet savu seju ar drauga seju, lai uzņemtu aizraujošu pašportretu</string>
+    <string name="cam_strings_description_google_lens_txt">Skatiet papildinformāciju vai veiciet darbību ar parādāmo saturu pakalpojumā %1$s.</string>
+    <string name="cam_strings_description_high_frame_rate_txt">Ierakstīt video ar lielu kadru nom. ātrumu un lietot lēnas kust. efektus</string>
+    <string name="cam_strings_description_multicam_txt">Vienā ekrānā ierakstiet vienu ainavu, kas uzņ. no dažādiem leņķiem</string>
+    <string name="cam_strings_description_shoundphoto_txt">Uzņemiet fotoattēlus un piev. tiem fona skaņu (putnu dziesmas u.c.)</string>
+    <string name="cam_strings_description_timeshift_short_txt">Atrodiet labāko foto no sērijas attēliem, kas uzņ. pirms un pēc attēla</string>
+    <string name="cam_strings_details_txt">Informācija</string>
+    <string name="cam_strings_dialog_4k_unavailable_while_screen_recording_txt">"4K video nevar uzņemt, kamēr tiek ierakstīts ekrāns.
+Lūdzu, izvēlieties video lielumu, kas nav 4K, vai pārtrauciet ekrāna ierakstīšanu, lai uzņemtu video."</string>
+    <string name="cam_strings_dialog_60fps_unavailable_while_screen_recording_txt">"Ar pašreizējo video izmēru nevar uzņemt, kamēr tiek ierakstīts ekrāns.
+Lūdzu, izvēlieties video lielumu, kas nav Full HD (60 kadri sekundē), vai pārtrauciet ekrāna ierakstīšanu, lai uzņemtu video."</string>
+    <string name="cam_strings_dialog_battery_level_low_info_txt">Tālruņa akumulatorā nepietiek enerģijas. Ja akumulatora uzlādes līmenis ir zems, kamera tiks automātiski izslēgta.</string>
+    <string name="cam_strings_dialog_battery_level_low_recording_txt">Ierakstīšana tika pārtraukta zema akumulatora uzlādes līmeņa dēļ. Uzlādējiet ierīci un mēģiniet vēlreiz.</string>
+    <string name="cam_strings_dialog_battery_level_low_using_txt">Nevar izmantot kameru zema akumulatora uzlādes līmeņa dēļ. Uzlādējiet ierīci un mēģiniet vēlreiz.</string>
+    <string name="cam_strings_dialog_body_accessibility_txt">Pieejamība: &lt;a href=\"%s\">Daļēji atbilstošs&lt;/a></string>
+    <string name="cam_strings_dialog_body_applicationnotification_1_txt">Lai veiktu šo darbību, lietotnei ir nepieciešamas tālāk norādītās atļaujas.</string>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"Tīkls
+Lai izveidotu savienojumu ar Wi-Fi"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_airplane_on_txt">"Lidmašīnas režīms ir ieslēgts.
+Lūdzu, izslēdziet lidmašīnas režīmu izvēlnē IESTATĪJUMI."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_name_txt">"Tīkla nosaukums: 
+"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_disable_txt">Neaizsargāts</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_enable_txt">Aizsargāts</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Vai tiešām vēlaties veidot savienojumu ar %1$s?</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"Vai izveidot savienojumu ar %1$s?
+Piesitiet pie INFORMĀCIJA, lai skatītu informāciju par šo Wi-Fi tīklu."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"Wi-Fi ir izslēgts, un ir ieslēgts lidmašīnas režīms.
+Lūdzu, mainiet šos iestatījumus, piesitot pie IESTATĪJUMI."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi ir izslēgts.
+Lūdzu, ieslēdziet Wi-Fi izvēlnē IESTATĪJUMI."</string>
+    <string name="cam_strings_dialog_btn_connect_txt">Savienot</string>
+    <string name="cam_strings_dialog_btn_settings_txt">Iestatījumi</string>
+    <string name="cam_strings_dialog_burst_information_txt">Lai uzņemtu nepārtrauktos kadrus, kameras lietotnē atlasiet Timeshift burst</string>
+    <string name="cam_strings_dialog_change_resolution_manual_txt">Manuāli (priekšējā kamera)</string>
+    <string name="cam_strings_dialog_change_resolution_superior_auto_txt">Labākais automātiskais režīms (priekšējā kamera)</string>
+    <string name="cam_strings_dialog_change_resolution_txt">Šo uzņemšanas režīmu izsķirtspēja ir mainīta uz 13MP (4:3), jo programmatūra tika atjaunināta</string>
+    <string name="cam_strings_dialog_cta_access_txt">Lietotne %1$s mēģina</string>
+    <string name="cam_strings_dialog_cta_allow_txt">Atļaut</string>
+    <string name="cam_strings_dialog_cta_deny_txt">Noraidīt</string>
+    <string name="cam_strings_dialog_cta_location_info_txt">Izgūt informāciju par atrašanās vietu</string>
+    <string name="cam_strings_dialog_cta_turn_on_nfc_txt">Ieslēgt NFC</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">Wi-Fi ieslēgšana</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">Lietot Wi-Fi un mob. datus</string>
+    <string name="cam_strings_dialog_high_temp_title_txt">Piezīme</string>
+    <string name="cam_strings_dialog_high_temp_txt">Ja ierīce uzkarst, lietotne izmantošanas laikā var tikt aizvērta. Ieraksts tiks saglabāts automātiski.</string>
+    <string name="cam_strings_dialog_high_temp_vzw_txt">Šī kamera izmanto daudz jūsu tālruņa resursu, tāpēc tālrunis var uzkarst. Lai novērstu pārkaršanu, iespējams, video ierakstīšana tiks pārtraukta un un kameras lietotne tiks aizvērta. Ieraksts tiks automātiski saglabāts.</string>
+    <string name="cam_strings_dialog_storage_full_burst_txt">Sērijas attēlu uzņemšana pārtraukta, jo atmiņā nav brīvas vietas. Izdzēsiet dažus failus, lai atbrīvotu vietu iekšējā atmiņā.</string>
+    <string name="cam_strings_dialog_title_accessibility_txt">Pieejamība</string>
+    <string name="cam_strings_dialog_title_applicationnotification_txt">Piešķirt atļaujas</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_connecting_txt">Notiek savienošana…</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">Neizdevās izveidot savienojumu ar Wi-Fi</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_password_txt">"
+Aizsardzība ar paroli: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_security_txt">"
+Drošība: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">Wi-Fi informācija</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">Nevar izveidot savienojumu ar Wi-Fi</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Šajā Wi-Fi tīklā pastāv drošības riski</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Izveidot savienojumu ar Wi-Fi</string>
+    <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">Video var ierakstīt pat augsta kontrasta sižetā, turklāt varat tos padarīt izteiksmīgākus un pietuvinātākus nekā realitātē. Lai saturu skatītu sākotnējās krāsās un spilgtumā, izmantojiet atbalstītas ierīces/pakalpojumus.</string>
+    <string name="cam_strings_digital_zoom_type_description_txt">"Atlasiet digitālās tālummaiņas iestatījumu.
+
+Standarta digitālā tālummaiņa: regulējiet tālummaiņu, izmantojot digitālo apstrādi atkarībā no attēlu sensora datiem.
+Īpaši lielas izšķirtspējas tālummaiņa: regulējiet tālummaiņu, kas saglabā lielāku daļu sākotnējās attēla kvalitātes. Fotogrāfiju saglabāšana var aizņemt ilgāku laiku."</string>
+    <string name="cam_strings_digital_zoom_type_standard_txt">Standarta digitālā tālummaiņa</string>
+    <string name="cam_strings_digital_zoom_type_super_resolution_txt">Īpaši lielas izšķirtsp. tālumm.</string>
+    <string name="cam_strings_digital_zoom_type_txt">Digitālas tālummaiņas iestatījumi</string>
+    <string name="cam_strings_dispbutton_settings_txt">Pogas DISP iestatījumi</string>
+    <string name="cam_strings_distortion_correction_photo_video_txt">Defektu korekcija</string>
+    <string name="cam_strings_distortion_correction_txt">Attēla defektu koriģēšana</string>
+    <string name="cam_strings_do_not_show_again_txt">Vairs nerādīt</string>
+    <string name="cam_strings_downloadable_tab_txt">LEJUPIELĀDĒJAMĀS</string>
+    <string name="cam_strings_drive_continuous_txt">Nepārtraukta uzņemšana</string>
+    <string name="cam_strings_drive_hybrid_txt">Viena kadra–nepārtr. uzņ. hibrīds</string>
+    <string name="cam_strings_drive_single_txt">Viena kadra uzņemšana</string>
+    <string name="cam_strings_drivemode_txt">Vilkšanas režīms</string>
+    <string name="cam_strings_effect_Kaleidoscope_txt">Kaleidoskops</string>
+    <string name="cam_strings_effect_after_image_txt">Kustību izsekošana</string>
+    <string name="cam_strings_effect_brightness_contrast_txt">Spilgtums/kontrasts</string>
+    <string name="cam_strings_effect_color_filter_tint_txt">Nianse</string>
+    <string name="cam_strings_effect_color_pencil_txt">Krāsaina skice</string>
+    <string name="cam_strings_effect_comic_txt">Komikss</string>
+    <string name="cam_strings_effect_fish_eye_txt">Zivs acs</string>
+    <string name="cam_strings_effect_harris_shutter_txt">Harisa aizslēgs</string>
+    <string name="cam_strings_effect_hue_saturation_txt">Nokrāsa/piesātin.</string>
+    <string name="cam_strings_effect_miniature_txt">Miniatūra</string>
+    <string name="cam_strings_effect_mirror_txt">Spogulis</string>
+    <string name="cam_strings_effect_mosaic_txt">Mozaīka</string>
+    <string name="cam_strings_effect_motion_effects_txt">Kustības efekti</string>
+    <string name="cam_strings_effect_no_effect_txt">Parasts</string>
+    <string name="cam_strings_effect_nostalgia_txt">Nostalģisks</string>
+    <string name="cam_strings_effect_old_film_txt">Veca filma</string>
+    <string name="cam_strings_effect_partical_color_txt">Daļēja krāsa</string>
+    <string name="cam_strings_effect_pencil_txt">Skice ar zīmuli</string>
+    <string name="cam_strings_effect_selector_txt">Duālās kameras efekts</string>
+    <string name="cam_strings_effect_vivid_txt">Košs</string>
+    <string name="cam_strings_error_capture_txt">Šis režīms nav pieejams, kad citā lietotnē tiek veikta ierakstīšana.</string>
+    <string name="cam_strings_error_delete_txt">Neizdevās dzēst</string>
+    <string name="cam_strings_error_device_not_available_txt">Nevar sākt kameru. Restartējiet kameru vai ierīci.</string>
+    <string name="cam_strings_error_dialog_title_txt">Kļūda</string>
+    <string name="cam_strings_error_fatal_sd_photo_txt">Nevarēja saglabāt fotoattēlus. Iespējams, radusies problēma ar datu krātuvi. Ja SD karte ir iestatīta kā datu krātuve, pārbaudiet SD karti.</string>
+    <string name="cam_strings_error_fatal_sd_video_txt">Nevarēja sākt ierakstīšanu. Iespējams, radusies problēma ar datu krātuvi. Ja SD karte ir iestatīta kā datu krātuve, pārbaudiet SD karti.</string>
+    <string name="cam_strings_error_fatal_txt">Nezināma kļūda.</string>
+    <string name="cam_strings_error_high_temp_already_high_txt">Xperia ierīcei ir jāatdziest. Lūdzu, uzgaidiet.</string>
+    <string name="cam_strings_error_high_temp_info_flashlight_unavailable_txt">Ierīces temperatūra ir pārāk augsta, lai izmantotu lukturīti</string>
+    <string name="cam_strings_error_high_temp_info_txt">Ierīce uzkarst. Ja temperatūra turpinās paaugstināties, lietotne tiks automātiski aizvērta.</string>
+    <string name="cam_strings_error_high_temp_info_video_recording_with_flashlight_unavailable_txt">Ierīces temperatūra ir pārāk augsta, lai lietotu to ar ieslēgtu spuldzi</string>
+    <string name="cam_strings_error_high_temp_info_vzw_txt">Ierīce uzkarst. Ja temperatūra turpinās paaugstināties, lietotne tiks automātiski aizvērta.</string>
+    <string name="cam_strings_error_high_temp_shut_down_no_txt">Nē</string>
+    <string name="cam_strings_error_high_temp_shut_down_yes_txt">Jā</string>
+    <string name="cam_strings_error_high_temp_shutting_down_txt">Kamera tūlīt tiks īslaicīgi izslēgta, lai atdzistu.</string>
+    <string name="cam_strings_error_high_temp_shutting_down_vzw_txt">Kamera tūlīt tiks īslaicīgi izslēgta, lai atdzistu.</string>
+    <string name="cam_strings_error_internal_memory_full_txt">Iekšējā atmiņa ir pilna. Kā noklusējuma datu krātuve ir iestatīta SD karte.</string>
+    <string name="cam_strings_error_internal_memory_unavailable_txt">Iekšējā atmiņa ir bojāta vai ierakstaizsargāta. Kā datu krātuve ir iestatīta SD karte.</string>
+    <string name="cam_strings_error_internal_sd_full_txt">Atmiņa pilna. Izdzēsiet dažus failus no SD kartes vai iekšējās atmiņas.</string>
+    <string name="cam_strings_error_max_faces_exceeded_txt">Atlasīts maksimālais sejai pievienojamo efektu skaits. Noņemiet izvēli no viena vai vairākiem efektiem un mēģiniet vēlreiz.</string>
+    <string name="cam_strings_error_memory_full_txt">Atmiņa pilna. Izdzēsiet dažus failus no SD kartes.</string>
+    <string name="cam_strings_error_memory_ims_access_error_txt">Atmiņas kļūda</string>
+    <string name="cam_strings_error_memory_ims_full_txt">Atmiņa ir pilna. Izdzēsiet no atmiņas dažus failus vai mainiet noklusējuma datu krātuvi.</string>
+    <string name="cam_strings_error_memory_ims_unavailable_txt">Atmiņa nav pieejama</string>
+    <string name="cam_strings_error_memory_title_txt">Atmiņas kļūda</string>
+    <string name="cam_strings_error_memory_unavailable_txt">SD karte nav pieejama</string>
+    <string name="cam_strings_error_message_during_voice_call_title_txt">Notiek zvans</string>
+    <string name="cam_strings_error_message_during_voice_call_txt">Kamera zvana laikā nav pieejama</string>
+    <string name="cam_strings_error_mms_rec_size_limit_txt">Nevar pievienot citus failus. Fails ir par lielu.</string>
+    <string name="cam_strings_error_save_file_in_progress_txt">Notiek saglabāšana. Darbība pašlaik nav pieejama.</string>
+    <string name="cam_strings_error_save_file_txt">Citā lietotnē jau notiek ierakstīšana. Nevarēja ierakstīt.</string>
+    <string name="cam_strings_error_storage_changing_to_internal_txt">Nav pieejama neviena SD karte. Kā noklusējuma datu krātuve ir iestatīta iekšējā atmiņa.</string>
+    <string name="cam_strings_error_video_rec_txt">Nevar ierakstīt. Ierakstīšanu vai ar ierakstīšanu saistītu funkciju, iespējams, izmanto cita lietotne.</string>
+    <string name="cam_strings_ev_disable_txt">EV iestatījums ir atspējots. Iestatiet SS vai ISO uz AUTO.</string>
+    <string name="cam_strings_exposure_level_m03_txt">EV -0,3</string>
+    <string name="cam_strings_exposure_level_m07_txt">EV -0,7</string>
+    <string name="cam_strings_exposure_level_m10_txt">EV -1,0</string>
+    <string name="cam_strings_exposure_level_m13_txt">EV -1,3</string>
+    <string name="cam_strings_exposure_level_m17_txt">EV -1,7</string>
+    <string name="cam_strings_exposure_level_m20_txt">EV -2,0</string>
+    <string name="cam_strings_exposure_level_p03_txt">EV +0,3</string>
+    <string name="cam_strings_exposure_level_p07_txt">EV +0,7</string>
+    <string name="cam_strings_exposure_level_p10_txt">EV +1,0</string>
+    <string name="cam_strings_exposure_level_p13_txt">EV +1,3</string>
+    <string name="cam_strings_exposure_level_p17_txt">EV +1,7</string>
+    <string name="cam_strings_exposure_level_p20_txt">EV +2,0</string>
+    <string name="cam_strings_exposure_level_pm0_txt">EV ±0,0</string>
+    <string name="cam_strings_exposure_level_title_txt">Ekspozīcijas vērtība</string>
+    <string name="cam_strings_exposure_level_txt">Ekspozīcijas vērtība</string>
+    <string name="cam_strings_eye_position_tutorial_title_txt">Skatiena virziens</string>
+    <string name="cam_strings_eye_position_tutorial_txt">Fokusējiet skatienu uz priekšējās kameras blakus auss skaļrunim.</string>
+    <string name="cam_strings_face_eyeaf_settings_txt">Sejas noteikšanas/acu AF iestatījumi</string>
+    <string name="cam_strings_facefusion_add_face_txt">Pievienot seju</string>
+    <string name="cam_strings_facefusion_delete_mask_txt">Vai dzēst šo seju? Šī darbība ir neatgriezeniska.</string>
+    <string name="cam_strings_facefusion_no_face_detected_txt">Nav noteikta neviena seja</string>
+    <string name="cam_strings_facefusion_point_at_face_txt">Lūdzu, pavērsiet kameru pret seju</string>
+    <string name="cam_strings_facefusion_select_face_txt">Pieskarieties lodziņiem, lai atlasītu sejas</string>
+    <string name="cam_strings_failure_camera_shake_preview_txt">Lai novērstu sakust. kameras radītu izpl., turiet kam. nekustīgi.</string>
+    <string name="cam_strings_failure_camera_shake_txt">Fotoattēls var būt izplūdis kameras kratīšanās dēļ</string>
+    <string name="cam_strings_failure_detection_description_not_blink_txt">"Šī funkcija palīdz novērst kļūdas, informējot jūs gadījumā, ja pirksts ir aizsedzis objektīvu vai ja attēls pirms fotografēšanas nav fokusēts.
+Pēc fotoattēlu uzņemšanas varat pārbaudīt, vai tie nav izplūduši, un saņemt padomus atkārtotai fotografēšanai."</string>
+    <string name="cam_strings_failure_detection_description_txt">"Šī funkcija palīdz novērst kļūdas, pirms fotografēšanas informējot, ja objektīvu aizsedz pirksts vai attēls nav fokusā.
+Pēc fotografēšanas varat pārbaudīt, vai nav manāma mirgošana vai aizmiglojums, un saņemt padomus par atkārtotu fotografēšanu."</string>
+    <string name="cam_strings_failure_detection_txt">Fotografēšanas ieteikumu rādīšana</string>
+    <string name="cam_strings_failure_eye_blinks_preview_txt">Pārbaudiet, vai kāds aizvēra acis</string>
+    <string name="cam_strings_failure_eye_blinks_txt">Kāds šajā fotoattēlā, iespējams, ir mirkšķinājis</string>
+    <string name="cam_strings_failure_finger_covering_lens_after_txt">Ar pirkstu, iespējams, esat aizsedzis objektīvu</string>
+    <string name="cam_strings_failure_finger_covering_lens_preview_txt">Pārbaudiet kameras obj. pozīciju un neaizsedziet to ar pirkstu</string>
+    <string name="cam_strings_failure_finger_covering_lens_txt">Jūsu pirksts ir uz lēcas</string>
+    <string name="cam_strings_failure_focus_too_close_txt">Pārvietojieties tālāk no objekta</string>
+    <string name="cam_strings_failure_focus_too_dark_txt">Lai varētu iestatīt fokusu, nepieciešams vairāk gaismas</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_photo_txt">Palaist un uzņemt</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_video_txt">Palaist un ierakstīt video</string>
+    <string name="cam_strings_fast_capturing_launch_camera_capture_txt">Palaist kameru, fotografēt</string>
+    <string name="cam_strings_fast_capturing_launch_camera_txt">Palaist lietotni Kamera</string>
+    <string name="cam_strings_fast_capturing_launch_only_txt">Tikai palaist</string>
+    <string name="cam_strings_fast_capturing_launch_only_video_txt">Tikai palaist (videokamera)</string>
+    <string name="cam_strings_fast_capturing_launch_photo_pro_txt">Palaist Photography Pro</string>
+    <string name="cam_strings_fast_capturing_screen_locked_apps_list_txt">Lai mainītu tveršanas režīmu, atbloķējiet ekrānu. Vai atbloķēt?</string>
+    <string name="cam_strings_fast_capturing_screen_locked_photos_burst_txt">Lai pārslēgtos uz fotoattēlu skatītāja lietotni pēc sērijas fotoattēlu uzņemšanas, kamēr ekrāns ir bloķēts, ierīce ir jāatbloķē. Vai atbloķēt ierīci?</string>
+    <string name="cam_strings_fast_capturing_screen_locked_settings_txt">Lai atvērtu iestatījumus, atbloķējiet ekrānu.</string>
+    <string name="cam_strings_fast_capturing_screen_locked_title_txt">Ekrāns bloķēts</string>
+    <string name="cam_strings_fast_capturing_title_txt">Ātrā palaišana</string>
+    <string name="cam_strings_fast_capturing_txt">Ātrā palaišana</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_title_txt">Uzņemšanas režīma un kameras pārslēgšana</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_txt">Velciet ekrānu, lai pārslēgtu citu uzņemšanas režīmu, piemēram, video vai manuālo režīmu, un pārslēdziet galveno un priekšējo kameru.</string>
+    <string name="cam_strings_fast_switch_tutorial_title_txt">Pārslēgt kameru</string>
+    <string name="cam_strings_fast_switch_tutorial_txt">Varat pārslēgties no galvenās uz priekšējo kameru un otrādi, švīkājot pa ekrānu</string>
+    <string name="cam_strings_feature_bokeh_cameraui_description_txt">"Lai pielāgotu fona pludināšanas (bukē) efektu, skatu meklētājā pieskarieties bukē ikonai un pārvietojiet slīdni.
+Šī funkcija tiek atbalstīta foto režīmā.
+Uzņemsim iespaidīgus fotoattēlus, kas fokusējas uz objektu, kas ir uz maiga nefokusēta fona."</string>
+    <string name="cam_strings_feature_bokeh_cameraui_subtitle_txt">Uzņemt fotoattēlus ar bukē efektu</string>
+    <string name="cam_strings_feature_bokeh_cameraui_title_txt">Fona pludināšanas (bukē) efekts</string>
+    <string name="cam_strings_feature_bokeh_description_txt">"Uzņemiet iespaidīgus fotoattēlus, kuros ir asi fokusēts objekts un mīksts, nefokusēts fons.
+Lai izmantotu šo režīmu, skatu meklētājā piesitiet ikonai MODE, pēc tam atlasiet fona pludināšanas opciju (bukē)."</string>
+    <string name="cam_strings_feature_bokeh_subtitle_txt">Fona pludināšana (bokeh)</string>
+    <string name="cam_strings_feature_bokeh_title_txt">Fona pludināšana (bokeh)</string>
+    <string name="cam_strings_feature_dual_camera_manual_description_txt">Duālo kameru var ieslēgt un izslēgt manuālajā režīmā. Ieslēdziet to, lai uzņemtu fotoattēlus ar zemu trokšņu līmeni vāja apgaismojuma apstākļos. Izslēdziet to, lai uzņemtu tuvplānus.</string>
+    <string name="cam_strings_feature_dual_camera_manual_subtitle_txt">Att. uzņemšana ar duālo kameru manuālajā režīmā</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_2_txt">Palieciet vismaz viena metra attālumā no objekta, kad fotografējat vai ierakstāt video ar duālo kameru. Atrašanās tuvāk objektam var izraisīt skata punkta vai krāsas novirzi.</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_txt">"Izmantojot duālo kameru, jūs varat uzņemt skaistus fotoattēlus un video ar zemu trokšņa līmeni pat naktī vai zemā apgaismojumā.
+Kamera automātiski pārslēdzas no vienas kameras uz duālo kameru atkarībā no tā, ko vēlaties uzņemt. Gan fotoattēli, gan video tiek uzņemti ar īpaši augstu jutību."</string>
+    <string name="cam_strings_feature_dual_camera_photo_subtitle_txt">Duālā kamera</string>
+    <string name="cam_strings_feature_dual_camera_title_txt">Duālā kamera</string>
+    <string name="cam_strings_feature_dual_camera_video_description_txt">Lai uzņemtu lieliskus tuvplāna fotoattēlus, pārslēdzieties uz vienu kameru, izslēdzot duālo kameru skatu meklētājā. Varat jebkurā laikā to mainīt, pieskaroties iestatījumu pogai.</string>
+    <string name="cam_strings_feature_dual_camera_video_subtitle_txt">Video ierakstīšana ar duālo kameru</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_description_txt">"Lai pārslēgtu leņķi starp x1 un x2, piesitiet pogai skatu meklētājā.
+Šo funkciju var izmantot gan fotoattēlu, gan video režīmā."</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_subtitle_txt">Pārslēdziet leņķi ar pogu</string>
+    <string name="cam_strings_feature_dual_zoom_camera_title_txt">Duālā kamera</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_description_txt">"Lai rādītu slīdni, piesitiet pogai skatu meklētājā un turiet to. Jūs varat pielāgot tālummaiņas līmeni ar slīdni.
+Tālummaiņas līmeni var pielāgot, izmantojot skaļuma pogu vai arī pieskaroties ekrānam."</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_subtitle_txt">Tāliniet/tāliniet ar slīdni</string>
+    <string name="cam_strings_feature_eye_af_description_txt">"Varat uzņemt portretu fotoattēlus, kur fokuss ir uz cilvēku acīm.
+Lai mainītu fokusa mērķus, piesitiet pie tā subjekta sejas, uz kuru vēlaties fokusēties. Lai šo funkciju iespējotu vai atspējotu, piesitiet pie ikonas, kas tiek rādīta, kad tiek konstatētas sejas."</string>
+    <string name="cam_strings_feature_eye_af_description_with_animal_txt">"Varat fotografēt, fokusējoties uz cilvēku vai dzīvnieku acīm.
+Lai mainītu fokusa mērķus, pieskarieties tā tēla sejai, kuram vēlaties pievērst fokusu. Lai iespējotu vai atspējotu šo funkciju, pieskarieties ikonai, ko rāda seju noteikšanas laikā. Šī funkcija ir saderīga ar fotoattēlu un manuālo režīmu."</string>
+    <string name="cam_strings_feature_eye_af_subtitle_txt">Acu AF</string>
+    <string name="cam_strings_feature_eye_af_title_txt">Acu AF</string>
+    <string name="cam_strings_feature_failure_detection_description_not_blink_txt">"Šī funkcija palīdz novērst kļūdas, informējot jūs gadījumā, ja pirksts ir aizsedzis objektīvu vai ja attēls pirms fotografēšanas nav fokusēts.
+Pēc fotoattēlu uzņemšanas varat pārbaudīt, vai tie nav izplūduši, un saņemt padomus atkārtotai fotografēšanai.
+
+Šo iestatījumu var mainīt kameras iestatījumu sadaļā Rādīt fotografēšanas padomus."</string>
+    <string name="cam_strings_feature_failure_detection_description_txt">"Funkcija palīdz novērst kļūdas, pirms fotografēšanas informējot, ja objektīvu aizsedz pirksts vai attēls nav fokusā.
+Pēc fotografēšanas varat pārbaudīt mirgošanu vai aizmiglojumu un saņemt padomus par atkārtotu fotografēšanu.
+
+Šo iestatījumu var mainīt kameras iestatījumu sadaļā Rādīt fotografēšanas padomus."</string>
+    <string name="cam_strings_feature_failure_detection_subtitle_txt">Fotografēšanas ieteikumu rādīšana</string>
+    <string name="cam_strings_feature_failure_detection_title_txt">Fotografēšanas ieteikumu rādīšana</string>
+    <string name="cam_strings_feature_failure_option_after_and_preview_txt">Pirms un pēc fotoattēlu uzņ.</string>
+    <string name="cam_strings_feature_failure_option_after_only_txt">Tikai pēc fotoattēlu uzņ.</string>
+    <string name="cam_strings_feature_hand_shutter_description_txt">"Pagrieziet plaukstu pret kameru. Iekšējais taimeris tiks ieslēgts, kad jūsu plauksta tiks atpazīta. Lai to būtu viegli atpazīt, izpletiet pirkstus uz augšu.
+Lai iespējotu šo funkciju, atveriet sadaļu Fotoattēls (priekšējais) un automātiskās uzņemšanas sadaļā atlasiet Uzņemšana ar roku."</string>
+    <string name="cam_strings_feature_hand_shutter_subtitle_txt">Aizvars ar roku</string>
+    <string name="cam_strings_feature_hand_shutter_title_txt">Aizvars ar roku</string>
+    <string name="cam_strings_feature_lens_correction_description_nosuperwidemode_txt">"Izmantojot īpaši platu objektīvu, varat atlasīt prioritāti. Atlasot Noteikt attēla kvalitātes prioritāti, varat uzņemt dinamiskus augstas kvalitātes attēlus. Atlasot Noteikt defektu korekcijas prioritātes, varat samazināt vizuālos defektus.
+Šīs funkcijas ir iespējotas, kad tiek izmantots īpaši plats objektīvs Foto režīmā. Iestatījumus varat mainīt izvēlnē Īpaši plata objektīva koriģēšana (foto) kameras iestatījumos."</string>
+    <string name="cam_strings_feature_lens_correction_description_txt">Izmantojot īpaši platu objektīvu, varat atlasīt prioritāti. Atlasot Noteikt attēla kvalitātes prioritāti, varat uzņemt dinamiskus augstas kvalitātes attēlus. Atlasot Noteikt defektu korekcijas prioritātes, varat samazināt vizuālos defektus. Šīs funkcijas ir iespējotas, kad tiek izmantots īpaši plata objektīvs Foto režīmā. Iest. varat mainīt sadaļā Objektīva kor. (foto) kameras iest., kad esat veicis pāreju uz īpaši platu obj..</string>
+    <string name="cam_strings_feature_level_description_txt">"Ja ieslēgsit līmeņrādi, varēsit pārbaudīt kameras sasvēršanos, izmantojot indikatoru.
+Kad kamera būs taisna, displejs kļūs zaļš.
+Tas ir noderīgi, ja vēlaties saglabāt horizonta līniju un uzņemt ainavu fotoattēlus.
+
+Varat mainīt šīs funkcijas iestatījumus kameras iestatījumu sadaļā Līmeņrādis."</string>
+    <string name="cam_strings_feature_level_subtitle_txt">Fotoattēlu uzņemšana, izmantojot līmeni</string>
+    <string name="cam_strings_feature_level_title_txt">Līmenis</string>
+    <string name="cam_strings_feature_list_banner_txt">Apskatiet jaunās funkcijas</string>
+    <string name="cam_strings_feature_list_new_title_txt">Kā izmantot jaunās funkcijas</string>
+    <string name="cam_strings_feature_list_other_title_txt">Kā izmantot funkcijas</string>
+    <string name="cam_strings_feature_list_title_txt">Ievads par funkcijām</string>
+    <string name="cam_strings_feature_long_ss_description_txt">"Manuālajā režīmā jūs varat iestatīt aizslēga ātrumu līdz 30 sekundēm. Kad izmantojat zemu aizslēga ātrumu, turiet kameru vienmērīgi, lai uzņemtu skaistu fotoattēlu.
+Fotografējiet nakts ainavas vai objektus kustībā ar iespaidīgu efektu."</string>
+    <string name="cam_strings_feature_long_ss_subtitle_txt">Mainiet aizslēga ātrumu</string>
+    <string name="cam_strings_feature_long_ss_title_txt">Aizslēga ātrums</string>
+    <string name="cam_strings_feature_mono_description_txt">"Viegli uzņemiet augstas izšķirtspējas mākslinieciskus fotoattēlus un video.
+Lai izmantotu šo režīmu, skatu meklētājā piesitiet ikonai MODE, pēc tam atlasiet opciju Vienkrāsains."</string>
+    <string name="cam_strings_feature_mono_subtitle_txt">Melnbalts</string>
+    <string name="cam_strings_feature_mono_title_txt">Melnbalts</string>
+    <string name="cam_strings_feature_night_mode_description_txt">"Varat uzņemt skaidrus fotoattēlus pat naktī vai tumšos apstākļos.
+Pilna attēla apstrāde pēc uzņemšanas var ilgt kādu laiku, tāpēc turiet kameru stabili, līdz tā tiek pabeigta."</string>
+    <string name="cam_strings_feature_night_mode_subtitle_txt">Nakts režīms</string>
+    <string name="cam_strings_feature_night_mode_title_txt">Nakts režīms</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_all_lang_txt">Nakts režīms</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_txt">Nakts režīms</string>
+    <string name="cam_strings_feature_night_shooting_title_all_lang_txt">Nakts režīms</string>
+    <string name="cam_strings_feature_night_shooting_title_txt">Nakts režīms</string>
+    <string name="cam_strings_feature_oneshot_description_txt">"Uzreiz ierakstiet svarīgo mirkli palēninājumā ar ātrumu %1$s  kadri/s, piesitot ekrāna vidū esošajai pogai
+Video kvalitāte būs labāka, ierakstot to spilgtā apgaismojumā."</string>
+    <string name="cam_strings_feature_oneshot_subtitle_txt">Īpašs palēninājums (viens attēls)</string>
+    <string name="cam_strings_feature_portrait_bokeh_description_txt">"Lai pielāgotu Fona pl. (bukē) efektu, skatu meklētājā piesitiet pie Bukē ikonas un pārvietojiet slīdni.
+Šī funkcija tiek atbalstīta foto režīmā.
+Ļaujiet objektiem izcelties ar iespaidīgu kontrastu, sapludinot fonu."</string>
+    <string name="cam_strings_feature_portrait_bokeh_subtitle_txt">Uzņemt fotoattēlus ar Fona pludināšanas (bukē) efektu</string>
+    <string name="cam_strings_feature_portrait_bokeh_title_txt">Portrets ar Fona pl. (bukē) efektu</string>
+    <string name="cam_strings_feature_portrait_selfie_description_txt">"Iegūstiet māksliniecisku pašportretu, izmantojot fona pludināšanu (bukē) un pievienojot skaistuma efektus.
+Lai izmantotu šo režīmu, skatu meklētājā pieskarieties MODE ikonai, pēc tam atlasiet Portreta pašportrets.
+Stilizējiet savu pašportretu un izbaudiet radošos rezultātus."</string>
+    <string name="cam_strings_feature_portrait_selfie_subtitle_txt">Pašportrets</string>
+    <string name="cam_strings_feature_portrait_selfie_title_txt">Pašportrets</string>
+    <string name="cam_strings_feature_predictive_launch_description_txt">"Jūs varat ātri palaist kameru. Ātri paceliet ierīci ainavas režīmā un mērķējiet kameru objekta virzienā. Ierīce automātiski palaidīs kameru.
+Viedās palaišanas kameras iestatījumos varat atlasīt savu iecienītāko veidu, kā izmantot šo funkciju."</string>
+    <string name="cam_strings_feature_predictive_launch_subtitle_txt">Viedā palaišana</string>
+    <string name="cam_strings_feature_predictive_launch_title_txt">Viedā palaišana</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"Varat ātri piekļūt tīmeklim vai izveidot savienojumu ar Wi-Fi, noskenējot QR Code.
+Šī funkcija ir aktīva, kamēr tiek izmantots foto režīms. Šo iestatījumu varat mainīt QR Code lasītājā kameras iestatījumos."</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code lasītājs</string>
+    <string name="cam_strings_feature_qrcode_notification_channel_txt">QR Code lasītājs</string>
+    <string name="cam_strings_feature_selfie_description_txt">"Uzņemot fotoattēlus ar priekšējo kameru, skatieties uz priekšējās kameras objektīvu, kas atrodas pie klausules skaļruņa.
+Jūsu acis fotoattēlā skatīsies pareizā virzienā."</string>
+    <string name="cam_strings_feature_selfie_subtitle_txt">Skatiena virziens</string>
+    <string name="cam_strings_feature_selfie_title_txt">Priekšējā kamera</string>
+    <string name="cam_strings_feature_sidesense_bar_description_txt">"Lai fotografētu vai uzņemtu video, divreiz piesitiet sensoram ekrāna malā, nevis slēdža pogai.
+Šī funkcija ir saderīga ar fotografēšanas un video režīmu. Šīs funkcijas iestatījumus varat mainīt kameras iestatījumu sadaļā Sānu palaišanas izvēlne."</string>
+    <string name="cam_strings_feature_sidesense_description_txt">"Jūs varat uzņemt fotoattēlu vai videoklipu, vienkārši veicot dubultu piesitienu sensoram ekrāna malā, nevis izmantojot slēdža pogu.
+Gan foto, gan video režīms atbalsta šo funkciju. Kameras iestatījumos no [Sānu palaišanas izvēlnes] varat mainīt šos iestatījumus."</string>
+    <string name="cam_strings_feature_sidesense_subtitle_txt">Sānu palaiš. izvēlne</string>
+    <string name="cam_strings_feature_sidesense_title_txt">Sānu palaiš. izvēlne</string>
+    <string name="cam_strings_feature_slowmotion_description_txt">Varat ierakstīt video ar vairākām daļām palēninājumā (120 kadri/s)</string>
+    <string name="cam_strings_feature_slowmotion_subtitle_txt">Palēninājums</string>
+    <string name="cam_strings_feature_slowmotion_title_txt">Palēninājums</string>
+    <string name="cam_strings_feature_superslow_description_txt">"Izveidojiet iespaidīgu videoklipu, parādot šo nozīmīgo mirkli palēninājumā. Ierakstīšana spilgtā apgaismojumā palīdzēs jums izveidot labāku video.
+Lai izmantotu šo režīmu, skatu meklētājā pieskarieties MODE ikonai, pēc tam atlasiet Palēninājums. Varat arī izvēlēties dažādas iespējas palēninājuma režīma iestatījumos."</string>
+    <string name="cam_strings_feature_superslow_subtitle_txt">Īpašs palēninājums</string>
+    <string name="cam_strings_feature_transfer_and_tagging_description_txt">"Ieslēdzot šo funkciju, Transfer &amp; Tagging add-on varēs attēlot fotoattēlus, kas uzņemti ar Xperia kameru. Fotoattēlu tiks saglabāti iekšējā atmiņā.
+Šī funkcija ir saderīga ar fotoattēliem, kas uzņemti fotoattēlu un manuālajā režīmā.
+Varat mainīt iestatījumus no Transfer &amp; Tagging add-on režīma kameras iestatījumos."</string>
+    <string name="cam_strings_feature_transfer_and_tagging_subtitle_txt">Saistīšana ar Transfer &amp; Tagging add-on</string>
+    <string name="cam_strings_feature_transfer_and_tagging_title_txt">Transfer &amp; Tagging add-on režīms</string>
+    <string name="cam_strings_feature_triple_camera_button_description_new_txt">"Varat vienkārši pārslēgties starp kameras objektīviem, lai tvertu jebkuru situāciju un izaicinātu savu radošumu.
+Piesitiet pogai skatu meklētājā, lai pārslēgtu starp īpaši plata, plata un telefoto objektīvu.
+Šo funkciju varat izmantot gan foto, gan video režīmā."</string>
+    <string name="cam_strings_feature_triple_camera_button_description_txt">"Varat vienkārši pārslēgties starp kameras objektīviem, lai tvertu jebkuru situāciju un izaicinātu savu radošumu.
+Piesitiet pogai skatu meklētājā, lai pārslēgtu leņķus starp x1, x2 un īpaši platu.
+Šo funkciju varat izmantot gan foto, gan video režīmā."</string>
+    <string name="cam_strings_feature_triple_camera_button_subtitle_txt">Pārslēdziet leņķi ar pogu</string>
+    <string name="cam_strings_feature_triple_camera_button_with_zoom_ratio_description_txt">"Varat viegli pārslēgt dažādus kameras objektīvus, lai uzņemtu jebkādu situāciju uz izaicinātu savu radošumu.
+Piesitiet pogai skatu meklētājā, lai pārslēgtu leņķus starp 0,6x (īpaši plats), 1x (plats) un 2x (telefoto).
+Šo funkciju varat izmantot gan Fotoattēlu, gan Video režīmos."</string>
+    <string name="cam_strings_feature_triple_camera_how_to_zoom_subtitle_txt">Kā veikt tuvināšanu/tālināšanu</string>
+    <string name="cam_strings_feature_triple_camera_title_txt">Trīskārtēja kamera</string>
+    <string name="cam_strings_feature_triple_camera_wide_description_txt">"Šis objektīvs ir piemērots ainavas fotogrāfijām, jo tas uzņem plašāku lauku.
+Pirms īpaši plata objektīva iestatījumu maiņas noteikti pārslēdzieties uz īpaši platu objektīvu."</string>
+    <string name="cam_strings_feature_triple_camera_wide_subtitle_txt">Uzņemiet ar īpaši platu objektīvu</string>
+    <string name="cam_strings_feature_triple_camera_zoom_description_txt">"Bīdiet pirkstu pa kreisi vai pa labi skatu meklētājā, lai parādītu slīdni. Tālummaiņas līmeni var regulēt, izmantojot slīdni.
+Tālummaiņas līmeni var pielāgot, izmantojot skaļuma pogu vai arī pieskaroties ekrānam."</string>
+    <string name="cam_strings_feature_triple_camera_zoom_plus_zoom_frames_description_txt">"Bīdiet pirkstu pa kreisi vai pa labi skatu meklētājā, lai parādītu slīdni. Tālummaiņas līmeni var regulēt, izmantojot slīdni.
+Tālummaiņas līmeni var pielāgot, izmantojot skaļuma pogu vai pieskaroties ekrānam.
+Fotoattēlu režīmā varat parādīt kadrus, kas palīdz priekšskatīt, kā tas izskatīsies, kad tuvināsiet. Šo iestatījumu varat mainīt kameras iestatījumu sadaļā Tālummaiņas kompozīcijas palīgs."</string>
+    <string name="cam_strings_feature_triple_camera_zoom_subtitle_txt">Tāliniet/tāliniet ar slīdni</string>
+    <string name="cam_strings_feature_zoom_frames_description_txt">"Ja ieslēdzat šo iestatījumu, varat priekšskatīt, kā tas izskatīsies, kad tuvināsiet.
+Centrējiet objektu rāmī un piesitiet tālummaiņas koeficientam, lai viegli tuvinātu.
+Šī funkcija netiek atbalstīta, ja fotoattēla lielums ir iestatīts uz 21:9."</string>
+    <string name="cam_strings_file_delete_confirm_title_txt">Dzēšana</string>
+    <string name="cam_strings_file_delete_confirm_txt">Vai izdzēst šo failu?</string>
+    <string name="cam_strings_file_format_description_txt">Atlasiet kodētāju 4K videoklipam</string>
+    <string name="cam_strings_file_format_sub_description_h264_txt">Standarta formāts kodēšanai. Lielākā daļa ierīču un pakalpojumu atbalsta šo formātu.</string>
+    <string name="cam_strings_file_format_sub_description_h265_txt">Augstas saspiešanas pakāpes formāts. Pārliecinieties, vai ierīces vai pakalpojumi atbalsta šo formātu.</string>
+    <string name="cam_strings_file_share_title_txt">Kopīgot</string>
+    <string name="cam_strings_flash_fill_flash_txt">Lietot zibspuldzi</string>
+    <string name="cam_strings_flash_night_portrait_hint_txt">Turiet ierīci nekustīgi</string>
+    <string name="cam_strings_flash_night_portrait_txt">Nakts portreta zibspuldze</string>
+    <string name="cam_strings_flash_pro_txt">Zibspuldzes režīms</string>
+    <string name="cam_strings_flash_red_eye_reduc_txt">Sarkano acu efekta mazin.</string>
+    <string name="cam_strings_flash_title_txt">Zibspuldze</string>
+    <string name="cam_strings_flash_torch_txt">Lukturītis</string>
+    <string name="cam_strings_flash_txt">Zibspuldze</string>
+    <string name="cam_strings_focus_af_c_txt">Nepārtraukta AF</string>
+    <string name="cam_strings_focus_af_s_txt">Viena kadra AF</string>
+    <string name="cam_strings_focus_mf_txt">Manuāls fokuss</string>
+    <string name="cam_strings_focus_mode_face_detection_txt">Seju atrašana</string>
+    <string name="cam_strings_focus_mode_infinity_txt">Bezgalība</string>
+    <string name="cam_strings_focus_mode_macro_txt">Makro</string>
+    <string name="cam_strings_focus_mode_multi_af_txt">Vairākpunktu aut. fokuss</string>
+    <string name="cam_strings_focus_mode_object_tracking_txt">Objekta izsekošana</string>
+    <string name="cam_strings_focus_mode_single_af_txt">Viena punkta aut. fokuss</string>
+    <string name="cam_strings_focus_mode_title_txt">Fokusa režīms</string>
+    <string name="cam_strings_focus_mode_touch_focus_txt">Pieskāriena fokuss</string>
+    <string name="cam_strings_focus_mode_txt">Fokusa režīms</string>
+    <string name="cam_strings_forced_change_flash_off_txt">Zibspuldzes režīms ir izslēgts, lai izmantotu Nakts režīmu</string>
+    <string name="cam_strings_forced_change_night_shooting_auto_txt">Automātisks nakts režīms, lai izmantotu Zibspuldzes režīmu</string>
+    <string name="cam_strings_front_cam_location_guide_txt">Kameras objektīva atrašanās vieta ir norādīta attēlā</string>
+    <string name="cam_strings_fusion_error_too_close_txt">Pārvietojieties tālāk no objekta</string>
+    <string name="cam_strings_fusion_on_txt">Īpaši augsta jutība</string>
+    <string name="cam_strings_fusion_setting_txt">Duālās kameras slēdzis</string>
+    <string name="cam_strings_geotagging_title_txt">Atrašanās vietas saglabāšana</string>
+    <string name="cam_strings_geotagging_txt">Atrašanās vietas saglabāšana</string>
+    <string name="cam_strings_get_more_modes_txt">Lietotnes</string>
+    <string name="cam_strings_global_setting_softskin_available_applications_txt">Pieejamās lietotnes</string>
+    <string name="cam_strings_global_setting_softskin_brighten_skin_txt">Gaiša āda</string>
+    <string name="cam_strings_global_setting_softskin_detail_txt">Piešķiriet ādai gaišu un vienmērīgu izskatu. Efekts darbojas lietotnēs, kas izmanto priekšējo kameru. To var lietot fotoattēliem un video. Varat arī pielāgot līmeni.</string>
+    <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Līmeņa pielāgošana</string>
+    <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Gluda āda</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Nevar startēt lietotni.
+Pārliecinieties, ka ierīcē ir instalēta un iespējota %1$s jaunākā versija."</string>
+    <string name="cam_strings_gridline_txt">Režģlīnijas</string>
+    <string name="cam_strings_hand_shutter_hint_detail_txt">Pavērsiet plaukstu pret kameru. Taimeris tiks ieslēgts, tiklīdz tiks atpazīta jūsu plauksta. Lai atvieglotu atpazīšanu, izvērsiet pirkstus uz augšu.</string>
+    <string name="cam_strings_hand_shutter_hint_txt">Pavērsiet plaukstu pret kameru</string>
+    <string name="cam_strings_hand_shutter_txt">Aizvars ar roku</string>
+    <string name="cam_strings_hdr_dro_settings_dro_txt">Dinamiskā diapazona optimizētājs</string>
+    <string name="cam_strings_hdr_dro_settings_hdr_txt">Automātisks HDR</string>
+    <string name="cam_strings_hdr_dro_settings_txt">DRO/automātisks HDR</string>
+    <string name="cam_strings_hdr_guide_txt">Tā kā Still HDR uzņem un kombinē divus viena sižeta attēlus, to var izmantot, uzņemot tikai nekustīgus objektus.</string>
+    <string name="cam_strings_hdr_title_txt">HDR</string>
+    <string name="cam_strings_hdr_txt">HDR</string>
+    <string name="cam_strings_help_txt">Palīdzība</string>
+    <string name="cam_strings_histogram_txt">Histogramma</string>
+    <string name="cam_strings_iburst_feedback_txt">Paredzams</string>
+    <string name="cam_strings_image_quality_control_button_cancel_txt">Atcelt</string>
+    <string name="cam_strings_image_quality_control_button_clear_txt">Notīrīt</string>
+    <string name="cam_strings_image_quality_control_button_reset_txt">Atiestatīt</string>
+    <string name="cam_strings_image_quality_control_tab_focus_txt">Fokuss</string>
+    <string name="cam_strings_image_size_txt">Fotoattēla lielums</string>
+    <string name="cam_strings_image_stabilizer_title_txt">Attēla stabilizators</string>
+    <string name="cam_strings_image_stabilizer_txt">Attēla stabilizators</string>
+    <string name="cam_strings_intelligent_burst_txt">Paredzamā uzņemšana</string>
+    <string name="cam_strings_intelligent_wind_filter_txt">Inteliģentais vēja filtrs</string>
+    <string name="cam_strings_iso_changed_txt">ISO vērtība mainīta</string>
+    <string name="cam_strings_launch_with_camera_key_txt">Palaidiet ar aizslēga pogu</string>
+    <string name="cam_strings_lens_correction_for_photo_description_added_txt">Piezīme. Uzņemot sērijas fotoattēlus, objektīva korekcija tiks atspējota.</string>
+    <string name="cam_strings_lens_correction_for_photo_description_txt">Izmantojot īpaši platu objektīvu, varat atlasīt prioritāti. Atlasot Noteikt attēla kvalitātes prioritāti, varat uzņemt dinamiskus augstas kvalitātes attēlus. Atlasot Noteikt defektu korekcijas prioritātes, varat samazināt vizuālos defektus.</string>
+    <string name="cam_strings_lens_correction_for_photo_nosuperwidemode_txt">Objektīva koriģēšana (foto)</string>
+    <string name="cam_strings_lens_correction_for_photo_pro_txt">Objektīva koriģēšana</string>
+    <string name="cam_strings_lens_correction_for_photo_txt">Objektīva korekcija (fotoattēls)</string>
+    <string name="cam_strings_lens_correction_off_txt">Noteikt attēla kvalitātes prioritātes</string>
+    <string name="cam_strings_lens_correction_on_txt">Noteikt defektu korekcijas prioritātes</string>
+    <string name="cam_strings_lens_correction_txt">Objektīva korekcija</string>
+    <string name="cam_strings_lens_switch">Pārslēgt objektīva leņķi</string>
+    <string name="cam_strings_level_meter_calibration_txt">Līmeņa kalibrācija</string>
+    <string name="cam_strings_level_pro_txt">Līmenis</string>
+    <string name="cam_strings_level_txt">Līmenis</string>
+    <string name="cam_strings_long_press_burst_best_txt">Standarta</string>
+    <string name="cam_strings_long_press_burst_high_txt">Liels ātrums</string>
+    <string name="cam_strings_long_press_burst_txt">Sērija nospiežot un turot</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_title_txt">Fotoattēlu uzņemšana ar duālo kameru</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_txt">Uzņemot fotoattēlus ar duālo kameru, esat vismaz 1 metra attālumā no objekta. Ja būsiet tuvu objektam, var rasties skatpunkta vai krāsas maiņa.</string>
+    <string name="cam_strings_manual_fusion_tutorial_title_txt">Duālās kameras pārslēgšana</string>
+    <string name="cam_strings_manual_fusion_tutorial_txt">Duālo kameru var ieslēgt un izslēgt manuālajā režīmā. Ieslēdziet to, lai uzņemtu fotoattēlus ar zemu trokšņu līmeni vāja apgaismojuma apstākļos. Izslēdziet to, lai uzņemtu tuvplānus.</string>
+    <string name="cam_strings_max_file_size_save_failed_txt">Ierakstīšana tika apturēta maksimālā faila lieluma ierobežojuma dēļ</string>
+    <string name="cam_strings_max_recording_time_save_failed_txt">Ierakstīšana apturēta, jo sasniegts maksimālais ierakstīšanas laika ierobežojums.</string>
+    <string name="cam_strings_memory_full_save_failed_txt">Neizdevās saglabāt. Atmiņa pilna.</string>
+    <string name="cam_strings_memory_full_zoom_not_supported_txt">Atmiņa ir pilna. Tālummaiņa pašlaik nav pieejama.</string>
+    <string name="cam_strings_metering_multi_cy_txt">Vairāki</string>
+    <string name="cam_strings_mf_assist_txt">MF palīgs</string>
+    <string name="cam_strings_mfnr_txt">Vairākkadru traucējumu samazināšana</string>
+    <string name="cam_strings_microphone_title_txt">Mikrofons</string>
+    <string name="cam_strings_modeselector_addon_installed_txt">Instalēts</string>
+    <string name="cam_strings_monochrome_photo_txt">Melnbalts attēls</string>
+    <string name="cam_strings_monochrome_title_txt">Melnbalts</string>
+    <string name="cam_strings_monochrome_video_txt">Melnbalts video</string>
+    <string name="cam_strings_more_common_setting_title_txt">Vispārīgie iestatījumi</string>
+    <string name="cam_strings_more_txt">Vairāk</string>
+    <string name="cam_strings_mr_txt">Reģ. funkcijā Atsaukšana atmiņā %d</string>
+    <string name="cam_strings_multi_window_txt">Velciet dalītās joslas vidusdaļu, lai pārslēgtos uz pilnu ekrānu un lietotu %1$s</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Tagad ir pievienota cita ierīce.
+Vai vēlaties kopīgot attēlu ar šo ierīci, izmantojot skatu meklētāju?"</string>
+    <string name="cam_strings_multicam_add_device_txt">Ierīces pievien.</string>
+    <string name="cam_strings_multicam_add_more_txt">Pievienot vairāk</string>
+    <string name="cam_strings_multicam_apply_txt">Gatavs</string>
+    <string name="cam_strings_multicam_connection_failure_dialog_txt">Neizdevās izveidot savienojumu</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Kamēr jūsu Xperia ir savienots ar citu Xperia, nevar izveidot savienojumu ar Sony Wi-Fi/NFC kamerām.</string>
+    <string name="cam_strings_multicam_error_app_ver_old_txt">Lietotnes versija neatbilst. Savienojumu nevar izveidot. Atjauniniet lietotni.</string>
+    <string name="cam_strings_multicam_error_disconnect_txt">Atvienots</string>
+    <string name="cam_strings_multicam_error_nfc_txt">Nevar startēt, ja NFC ir bloķēts.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">Šis režīms Wi-Fi saistīšanas laikā nav pieejams.</string>
+    <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">Ir pievienots maksimālais ierīču skaits.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Ar jūsu Xperia vienā reizē var savienot tikai vienu Sony Wi-Fi/NFC kameru.</string>
+    <string name="cam_strings_multicam_nfc_connect_title_txt">Lai izveidotu savienojumu, ierīcēm ir jāsaskaras</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Sony Wi-Fi/NFC kamera</string>
+    <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
+    <string name="cam_strings_multicam_nfc_touch_to_beam_title_txt">Pieskarieties ekrānam</string>
+    <string name="cam_strings_multicam_security_info_txt">Ja pievienotā ierīce ir savienota arī ar citām Xperia ierīcēm, izmantojot šo lietotni, Xperia tiks automātiski savienota arī ar šīm ierīcēm, kā arī visi attēli skatu meklētājā tiks kopīgoti starp Xperia un visām pievienotajām ierīcēm.</string>
+    <string name="cam_strings_multicam_touch_add_camera_desc_txt">Piesitiet, lai piev. ierīci. Ierīces skatu meklētājā redz. attēls tiks parādīts šeit.</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Kamēr jūsu Xperia ir savienots ar Sony Wi-Fi/NFC kameru, nevar izveidot savienojumu ar citu Xperia.</string>
+    <string name="cam_strings_night_mode_hint_txt">Nakts režīms</string>
+    <string name="cam_strings_night_shooting_hint_txt">Nakts režīms</string>
+    <string name="cam_strings_not_zoom_for_full_hd_60fps_video_txt">Tālummaiņa, kas mazāka par 1x, nav pieejama Full HD (60 kadri/s) video lielumam</string>
+    <string name="cam_strings_not_zoom_txt">Tālumm., kas m. par 1x, nav pieej. 4K vai Full HD (60 k./s) video liel.</string>
+    <string name="cam_strings_ok_txt">Labi</string>
+    <string name="cam_strings_only_main_txt">Tikai galvenā kamera</string>
+    <string name="cam_strings_peaking_display_txt">Displeja kontūru izcelšana</string>
+    <string name="cam_strings_permgroupdesc_thermalmitigation_message_txt">Atļaut lietotnei pārvaldīt sistēmu stabilai uzņemšanai atkarībā no ierīces temperatūras.</string>
+    <string name="cam_strings_permgrouplab_thermalmitigation_txt">pārvaldīt sistēmu</string>
+    <string name="cam_strings_photo_autoreview_txt">Autom. fotoattēla priekšskat.</string>
+    <string name="cam_strings_photometry_average_txt">Vidēji</string>
+    <string name="cam_strings_photometry_center_txt">Centrā</string>
+    <string name="cam_strings_photometry_face_txt">Seja</string>
+    <string name="cam_strings_photometry_pro_txt">Mērīšanas režīms</string>
+    <string name="cam_strings_photometry_spot_txt">Punkts</string>
+    <string name="cam_strings_photometry_title_txt">Mērīšana</string>
+    <string name="cam_strings_photometry_touch_txt">Pieskarieties</string>
+    <string name="cam_strings_photometry_txt">Mērīšana</string>
+    <string name="cam_strings_pleaking_color_txt">Kontūru izcelšanas krāsa</string>
+    <string name="cam_strings_preaf_txt">Iepriekšējs AF</string>
+    <string name="cam_strings_predictive_capture_description_txt">Attēli tiek automātiski uzņemti, nosakot objekta smaidu vai kustību tikai dažas sekundes, pirms jūs nospiežat slēdža pogu. Jūs varat no četriem uzņemtajiem fotoattēliem atlasīt to, kurš jums patīk vislabāk. Jūs nepalaidīsiet garām perfekto fotoattēlu.</string>
+    <string name="cam_strings_predictive_capture_feedback_txt">Paredzams</string>
+    <string name="cam_strings_predictive_capture_txt">Paredzamā uzņemšana</string>
+    <string name="cam_strings_predictive_launch_description_txt">Jūs varat automātiski palaist kameru, ātri paceļot ierīci ainavas režīmā un virzot kameru objekta virzienā.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Kad tiek konstatēts, ka tālrunis ir pacelts un novietots ainavas režīmā, pavēršot to pret objektu, tiek automātiski palaista kamera.
+Veidu, kā izmantot šo funkciju, varat atlasīt kameras iestatījumu sadaļā Viedā palaišana."</string>
+    <string name="cam_strings_predictive_launch_guide_2_txt">Pieskarieties apļa iekšpusē, lai uzņemtu</string>
+    <string name="cam_strings_predictive_launch_guide_3_txt">Pieskarieties ekrānam, lai uzņemtu</string>
+    <string name="cam_strings_predictive_launch_guide_circle_txt">Piesitiet riņķa iekšpusē, lai skatītu pa visu ekrānu</string>
+    <string name="cam_strings_predictive_launch_guide_txt">Pieskarieties apļa iekšpusē, lai palaistu kameru</string>
+    <string name="cam_strings_predictive_launch_launch_and_capture_txt">Palast un uzņemt ar pieskārienu</string>
+    <string name="cam_strings_predictive_launch_launch_only_txt">Pieskarieties, lai palaistu</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_and_capture_txt">Pieskarieties apļa iekšpusē, pēc tam vienlaikus tiks palaista kamera pa visu ekrānu un uzņemts fotoattēls.</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_only_txt">Pieskarieties apļa iekšpusē, un kamera tiks palaista pa visu ekrānu.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Jūs varat ātri palaist kameru. Ātri paceliet ierīci ainavas režīmā un mērķējiet kameru objekta virzienā. Ierīce automātiski palaidīs kameru.
+Viedās palaišanas kameras iestatījumos varat atlasīt savu iecienītāko veidu, kā izmantot šo funkciju."</string>
+    <string name="cam_strings_predictive_launch_tutorial_title_txt">Viedā palaišana</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Jūs varat ātri palaist kameru. Paceliet ierīci ainavas režīmā un mērķējiet kameru objekta virzienā. Ierīce automātiski palaidīs kameru.
+Jūs varat izslēgt šo funkciju kameras viedās palaišanas iestatījumos."</string>
+    <string name="cam_strings_predictive_launch_txt">Viedā palaišana</string>
+    <string name="cam_strings_preview_always_txt">Ieslēgt</string>
+    <string name="cam_strings_preview_duration_3sec_txt">3 sekundes</string>
+    <string name="cam_strings_preview_duration_5sec_txt">5 sekundes</string>
+    <string name="cam_strings_preview_duration_title_txt">Apskatīšana</string>
+    <string name="cam_strings_preview_duration_txt">Apskatīt</string>
+    <string name="cam_strings_preview_duration_unlimited_txt">Neierobežots</string>
+    <string name="cam_strings_preview_edit_txt">Rediģēt</string>
+    <string name="cam_strings_preview_only_front_txt">Tikai priekšējā kamera</string>
+    <string name="cam_strings_previous_txt">Atpakaļ</string>
+    <string name="cam_strings_processing_capturing_photo_txt">Uzņem fotoattēlu. Lūdzu, uzgaidiet.</string>
+    <string name="cam_strings_processing_loading_txt">Tiek uzņemts fotoattēls. Lūdzu, turiet kameru stabili.</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Piesitiet, lai iestatītu šo ierīci.</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Šis QR Code netiek atbalstīts</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Piesitiet, lai atvērtu \"%1$s\" pārlūkpr.</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Nevar izveidot savienojumu ar šo Wi-Fi tīklu</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Piesitiet, lai izv. sav. ar Wi-Fi tīklu \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code lasītājs</string>
+    <string name="cam_strings_recommend_night_mode_txt">Piesitiet šeit, lai izmantotu Nakts režīmu</string>
+    <string name="cam_strings_recommend_night_mode_use_button_txt">Lietot</string>
+    <string name="cam_strings_recommend_night_shooting_txt">Piesitiet šeit, lai izmantotu Nakts režīmu</string>
+    <string name="cam_strings_recording_txt">REC</string>
+    <string name="cam_strings_remember_geotag_title_txt">Vai saglabāt atrašanās vietu?</string>
+    <string name="cam_strings_remember_geotag_txt">Pievienojiet saviem fotoattēliem un video etiķetes ar informāciju par to uzņemšanas vietām. Varat vēlāk mainīt šo iestatījumu lietotnes Kamera iestatījumu sadaļā Atrašanās vietas saglabāšana.</string>
+    <string name="cam_strings_remote_touch_to_start_txt">Piesitiet, lai sāktu</string>
+    <string name="cam_strings_reset_color_brightness_txt">Atiestatīt krāsu un spilgtumu</string>
+    <string name="cam_strings_reset_settings_confirm_title_txt">Vai atiestatīt kameru uz noklusējuma iestatījumiem?</string>
+    <string name="cam_strings_reset_settings_txt">Atiestatīt iestatījumus</string>
+    <string name="cam_strings_reset_txt">Atiestatīt</string>
+    <string name="cam_strings_resolution_title_txt">Izšķirtspēja</string>
+    <string name="cam_strings_resolution_txt">Izšķirtspēja</string>
+    <string name="cam_strings_restricted_mf_touchfocus_txt">Lai izmantotu pieskāriena fokusu, mainiet fokusa iestatījumu uz AF</string>
+    <string name="cam_strings_restricted_setting_dialog_title_txt">Nevar mainīt</string>
+    <string name="cam_strings_restricted_setting_photo_long_shutter_speed_txt">Šis iestatījums neatbalsta pašreizējo aizslēga ātrumu. Lai konfigurētu šo iestatījumu, nomainiet aizslēga ātrumu uz 1 sekundi vai mazāk.</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_or_scene_txt">Šis iestatījums netiek atbalstīts pašreizējai izšķirtspējai vai sižetam. Lai konfigurētu šo iestatījumu, mainiet izšķirtspēju vai sižeta atlasi.</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_txt">Šis iestatījums netiek atbalstīts pašreizējam fotoattēla lielumam. Lai konfigurētu šo iestatījumu, mainiet fotoattēla lielumu.</string>
+    <string name="cam_strings_restricted_setting_scene_txt">Šis iestatījums netiek atbalstīts pašreizējam sižetam. Lai konfigurētu šo iestatījumu, mainiet sižeta atlasi.</string>
+    <string name="cam_strings_restricted_setting_slow_motion_txt">Video lielumu nevar mainīt palēninājuma režīmā. Lai konfigurētu šo iestatījumu, aizveriet palēninājuma režīmu.</string>
+    <string name="cam_strings_restricted_setting_transfer_and_tagging_txt">Šis iestatījums nav pieejams, kad ir ieslēgts Transfer &amp; Tagging add-on režīms. Lai šo iestatījumu mainītu, lūdzu, izslēdziet Transfer &amp; Tagging add-on režīmu.</string>
+    <string name="cam_strings_restricted_setting_video_hdr_hlg_txt">Šis iestatījums nav pieejams, ja HDR ir ieslēgts. Lai rediģētu, izslēdziet HDR.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_or_scene_txt">Šis iestatījums netiek atbalstīts pašreizējai video izšķirtspējai vai sižetam. Lai konfigurētu šo iestatījumu, mainiet video izšķirtspēju vai sižeta atlasi.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_txt">Šis iestatījums netiek atbalstīts pašreizējam video lielumam. Lai konfigurētu šo iestatījumu, mainiet video lielumu.</string>
+    <string name="cam_strings_restriction_info_correction_for_distortion_txt">Fona pludināšanas (bukē) efekta lietošanas laikā nav pieejama objektīva korekcija</string>
+    <string name="cam_strings_restriction_information_txt">Atkarībā no šī iestatījuma tālāk norādītās funkcijas var tikt atspējotas vai modificētas automātiski:</string>
+    <string name="cam_strings_runtime_permission_continue_button_txt">LIETOTNES INFO.</string>
+    <string name="cam_strings_runtime_permission_dialog1_message_txt">Lietotnei %1$s ir nepieciešamas tālāk norādītās atļaujas.</string>
+    <string name="cam_strings_runtime_permission_dialog1_title_txt">Lietotnes %1$s atļauja</string>
+    <string name="cam_strings_runtime_permission_dialog2_message1_txt">Lai veiktu šo darbību, lietotnei ir nepieciešamas tālāk norādītās atļaujas.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Lai piešķirtu atļaujas, pārejiet uz sadaļu Informācija par lietotni > Atļaujas.</string>
+    <string name="cam_strings_runtime_permission_dialog2_title_txt">Nevarēja turpināt</string>
+    <string name="cam_strings_runtime_permission_rationale_camera_txt">Fotoattēlu un videoklipu uzņemšana</string>
+    <string name="cam_strings_runtime_permission_rationale_location_txt">Atrašanās vietas datu izgūšana</string>
+    <string name="cam_strings_runtime_permission_rationale_microphone_txt">Skaņas ierakstīšana</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_cta_txt">Lai nolasītu un saglabātu fotoattēlus un video</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_txt">Fotoattēlu un videoklipu saglabāšana</string>
+    <string name="cam_strings_s1_settings_txt">AF ar aizslēgu</string>
+    <string name="cam_strings_save_destination_ims_txt">Iekšējā atmiņa</string>
+    <string name="cam_strings_save_destination_sd_txt">SD karte</string>
+    <string name="cam_strings_save_destination_title_txt">Datu krātuve</string>
+    <string name="cam_strings_save_destination_txt">Datu krātuve</string>
+    <string name="cam_strings_saving_files_txt">Notiek failu saglabāšana</string>
+    <string name="cam_strings_scene_selection_title_cy_txt">Sižeta atlase</string>
+    <string name="cam_strings_scenes_anti_motion_blur_cy_txt">Kust. izpl. mazin.</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_portrait_cy_txt">Portrets ar pretgaismu</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_txt">Fona apgaismojums</string>
+    <string name="cam_strings_scenes_auto_recog_gourmet_txt">Gastronomija</string>
+    <string name="cam_strings_scenes_auto_recog_infant_cy_txt">Bērns</string>
+    <string name="cam_strings_scenes_auto_recog_landscape_txt">Ainava</string>
+    <string name="cam_strings_scenes_auto_recog_low_light_cy_txt">Blāva gaisma</string>
+    <string name="cam_strings_scenes_auto_recog_softsnap_cy_txt">Attēli ar nefokusētu fonu</string>
+    <string name="cam_strings_scenes_auto_recog_spotlight_cy_txt">Prožektors</string>
+    <string name="cam_strings_scenes_auto_recog_text_txt">Dokuments</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_portrait_cy_txt">Nakts portrets</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_txt">Nakts sižets</string>
+    <string name="cam_strings_scenes_backlight_hdr_cy_txt">Pretgaismas labošanas HDR</string>
+    <string name="cam_strings_scenes_beach_cy_txt">Pludmale</string>
+    <string name="cam_strings_scenes_beachsnow_txt">Pludmale un sniegs</string>
+    <string name="cam_strings_scenes_document_txt">Dokuments</string>
+    <string name="cam_strings_scenes_fireworks_cy_txt">Salūts</string>
+    <string name="cam_strings_scenes_gurumet_cy_txt">Gastronomija</string>
+    <string name="cam_strings_scenes_handheld_twilight_cy_txt">Krēslā bez statīva</string>
+    <string name="cam_strings_scenes_high_sensitivity_cy_txt">Augsta jutība</string>
+    <string name="cam_strings_scenes_landscape_txt">Ainava</string>
+    <string name="cam_strings_scenes_nightmode_txt">Nakts</string>
+    <string name="cam_strings_scenes_nightportrait_cy_txt">Nakts portrets</string>
+    <string name="cam_strings_scenes_nightscene_txt">Nakts sižets</string>
+    <string name="cam_strings_scenes_party_txt">Ballīte</string>
+    <string name="cam_strings_scenes_pet_cy_txt">Dzīvnieks</string>
+    <string name="cam_strings_scenes_pets_txt">Mājdzīvnieki</string>
+    <string name="cam_strings_scenes_snow_cy_txt">Sniegs</string>
+    <string name="cam_strings_scenes_soft_skin_cy_txt">Maiga āda</string>
+    <string name="cam_strings_scenes_soft_snap_cy_txt">Attēli ar nefokusētu fonu</string>
+    <string name="cam_strings_scenes_sports_txt">Sports</string>
+    <string name="cam_strings_scenes_txt">Sižeti</string>
+    <string name="cam_strings_screen_pinned_txt">Ekrāns ir piesprausts</string>
+    <string name="cam_strings_sd_permission_data_storage_info_txt">Saglabāts iekšējā atmiņā</string>
+    <string name="cam_strings_sd_permission_dialog_continue_button_txt">PĀRIET</string>
+    <string name="cam_strings_sd_permission_dialog_message1_txt">Lai veiktu šo darbību, lietotnei ir nepieciešamas tālāk norādītās atļaujas.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Lai izmantotu SD karti, kamerai ir nepieciešama atļauja piekļūt SD kartei.
+Mainiet datu krātuvi vēlreiz uz SD karti vai nākamajā ekrānā atļaujiet kamerai piekļūt SD kartei."</string>
+    <string name="cam_strings_sd_permission_dialog_title_txt">SD karte nav pieejama</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Ir konstatēta jauna SD karte, kas pieprasa atļaujas.
+
+Lai SD karti lietotu kā datu krātuvi, lūdzu, atlasiet SD karti vai DCIM direktoriju nākamajā ekrānā."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD karte vai DCIM direktorijs netika atlasīts. SD karti nevar izmantot.
+
+Lai piešķirtu atļaujas, vispirms nomainiet saglabāšanas atrašanās vietu uz SD karti vai atlasiet atbilstošo direktoriju nākamajā ekrānā."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Atrasta jauna SD karte, kam nepieciešamas atļaujas.
+Iekšējā atmiņa turpmāk tiks izmantota kā noklusējuma datu krātuve.
+
+Lai izmantotu SD karti kā datu krātuvi, kameras iestatījumos mainiet datu krātuvi uz SD karti."</string>
+    <string name="cam_strings_sd_permission_rationale_txt">Lai saglabātu fotoattēlus un video SD kartē</string>
+    <string name="cam_strings_select_picture_txt">Fotoattēla atlase</string>
+    <string name="cam_strings_self_timer_05_txt">0,5 s</string>
+    <string name="cam_strings_self_timer_10_pro_txt">Iekšējais taimeris: 10 sek</string>
+    <string name="cam_strings_self_timer_10_txt">10 s</string>
+    <string name="cam_strings_self_timer_2_txt">2 s</string>
+    <string name="cam_strings_self_timer_3_pro_txt">Iekšējais taimeris: 3 sek</string>
+    <string name="cam_strings_self_timer_3_txt">3 s</string>
+    <string name="cam_strings_self_timer_front_hint_10_txt">Taimeris: 10 s</string>
+    <string name="cam_strings_self_timer_front_hint_3_txt">Taimeris: 3 s</string>
+    <string name="cam_strings_self_timer_front_hint_off_txt">Taimeris: izslēgts</string>
+    <string name="cam_strings_self_timer_hint_countdown_txt">Skatieties uz kameru</string>
+    <string name="cam_strings_self_timer_photo_txt">Taimeris (fotoattēliem)</string>
+    <string name="cam_strings_self_timer_txt">Taimeris</string>
+    <string name="cam_strings_setting_common_title_txt">Bieži izmantotie iestatījumi</string>
+    <string name="cam_strings_setting_front_manual_title_txt">Manuāli (priekšējā kamera)</string>
+    <string name="cam_strings_setting_front_photo_title_txt">Fotokamera (priekšējā)</string>
+    <string name="cam_strings_setting_front_video_title_txt">Videokamera (priekšējā)</string>
+    <string name="cam_strings_setting_main_title_txt">Kameras iestatījumi</string>
+    <string name="cam_strings_setting_manual_title_txt">Manuāli</string>
+    <string name="cam_strings_setting_night_mode_title_txt">Nakts režīma iestatījumi</string>
+    <string name="cam_strings_setting_night_shooting_title_txt">Nakts režīma iestatījumi</string>
+    <string name="cam_strings_setting_photo_title_txt">Fotoattēls</string>
+    <string name="cam_strings_setting_slow_motion_title_txt">Palēninājums</string>
+    <string name="cam_strings_setting_tele_title_txt">Foto (telefoto)</string>
+    <string name="cam_strings_setting_tele_video_title_txt">Video (telefoto)</string>
+    <string name="cam_strings_setting_video_title_txt">Video</string>
+    <string name="cam_strings_setting_wide_title_txt">Fotoattēls (īpaši plats)</string>
+    <string name="cam_strings_setting_wide_video_title_txt">Video (īpaši plats)</string>
+    <string name="cam_strings_settings_always_on_txt">Vienmēr ieslēgts</string>
+    <string name="cam_strings_settings_auto_txt">Automātiski</string>
+    <string name="cam_strings_settings_off_txt">Izslēgt</string>
+    <string name="cam_strings_settings_on_txt">Ieslēgt</string>
+    <string name="cam_strings_settings_save_photos_all_txt">Visi fotoattēli</string>
+    <string name="cam_strings_settings_save_photos_one_txt">Atlasītais fotoattēls</string>
+    <string name="cam_strings_settings_save_photos_txt">Saglabāt</string>
+    <string name="cam_strings_shortcut_video_camera_txt">Videokamera</string>
+    <string name="cam_strings_shutter_trigger_txt">Autom. uzņemšana</string>
+    <string name="cam_strings_side_sense_bar_description_txt">"Lai fotografētu vai uzņemtu video, divreiz piesitiet sensoram ekrāna malā, nevis slēdža pogai.
+Šī funkcija ir saderīga ar fotografēšanas un video režīmu.
+
+Šo funkciju nevar izmantot, kamēr Sānu palaišanas izvēlnes iestatījumos sadaļā Pieskāriena pozīcijas konfigurēšana ir ieslēgta funkcija Operēt ekrāna iekšējā stūrī."</string>
+    <string name="cam_strings_side_sense_description_txt">"Jūs varat uzņemt fotoattēlu vai video, vienkārši divreiz piesitot sensoram ekrāna malā, nevis ar slēdža pogu.
+Gan foto, gan video režīms atbalsta šo funkciju."</string>
+    <string name="cam_strings_side_touch_not_supported_txt">Sāna palaišanas izvēlne netiek atbalstīta šajā ekrānā</string>
+    <string name="cam_strings_side_touch_on_title_txt">Sānu palaišanas izvēlne</string>
+    <string name="cam_strings_side_touch_on_txt">Lai izmantotu šo funkciju, dodieties uz Iestatījumi > Displejs un ieslēdziet sānu palaišanas izvēlni. Vai iespējot tagad?</string>
+    <string name="cam_strings_side_touch_tutorial_title_txt">Sānu palaiš. izvēlne</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Jūs varat uzņemt fotoattēlu vai video vienkārši, ja divreiz piesitat sensoram ierīces malā, nevis slēdža pogai. Tāpat jūs varat tuvināt un tālināt, bīdot pirkstu pa ierīces sānu sensoru.
+Gan foto, gan video režīms nodrošina šo funkciju. Jūs varat to izslēgt Sānu palaišanas izvēlnes kameras iestatījumos."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Jūs varat uzņemt fotoattēlu vai video vienkārši, ja divreiz piesitat sensoram ierīces malā portreta skatā, nevis slēdža pogai. Tāpat jūs varat tuvināt un tālināt, bīdot pirkstu pa sānu sensoru.
+Gan foto, gan video režīms nodrošina šo funkciju. Jūs varat to izslēgt Sānu palaišanas izvēlnes kameras iestatījumos."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Jūs varat uzņemt fotoattēlu vai video vienkārši, ja divreiz piesitat sensoram ekrāna portreta skatā, nevis slēdža pogai.
+Gan foto, gan video režīms nodrošina šo funkciju. Jūs varat to izslēgt sānu palaišanas izvēlnes kameras iestatījumos."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Jūs varat uzņemt fotoattēlu vai video vienkārši, ja divreiz piesitat sensoram ierīces malā, nevis slēdža pogai.
+Gan foto, gan video režīms nodrošina šo funkciju. Jūs varat to izslēgt sānu palaišanas izvēlnes kameras iestatījumos."</string>
+    <string name="cam_strings_side_touch_txt">Sānu palaiš. izvēlne</string>
+    <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Kameras iestatījumos var tik izmainīts ierakstīšanas stils un ekrāna izšķirtspēja</string>
+    <string name="cam_strings_slow_motion_settings_shot_txt">Super lēns (one-shot)</string>
+    <string name="cam_strings_slow_motion_settings_standard_txt">Palēninājums</string>
+    <string name="cam_strings_slow_motion_settings_super_txt">Īpašs palēninājums</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Varat mainīt palēninātās kustības kadru ātrumu un ierakstīšanas veidu</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Citas iespējas</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Uzreiz ierakstiet svarīgo mirkli palēninājumā ar ātrumu %1$s  kadri/s, piesitot ekrāna vidū esošajai pogai
+Video kvalitāte būs labāka, ierakstot to spilgtā apgaismojumā."</string>
+    <string name="cam_strings_slow_motion_shot_hint_1_txt">Īstā mirkļa ierakstīšana video ar ātrumu %1$s kadri/s, pieskaroties pogai centrā</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Uzreiz ierakstiet svarīgo mirkli palēninājumā ar ātrumu %1$s kadri/s, piesitot ekrāna vidū esošajai pogai</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Īpašs palēninājums (viens attēls)</string>
+    <string name="cam_strings_slow_motion_shot_txt">Īpašs palēninājums (viens attēls)</string>
+    <string name="cam_strings_slow_motion_standard_hint_1_txt">Video ierakstīšana ar ātrumu %1$s kadri/s un palēninājuma efektu piemērošana</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_1_txt">Varat ierakstīt video ar 120 kadriem/s palēninājumā</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_2_txt">Ierakstiet video un pēc tam rediģējiet to, iestatot noteiktu daļu rādīšanu palēninājumā. Piesitiet pogai ekrāna vidū, lai iestatītu daļu rādīšanu palēninājumā.</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Palēninājums</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Kā ierakstīt</string>
+    <string name="cam_strings_slow_motion_standard_txt">Palēninājums</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Radiet iespaidīgu video, parādot svarīgu brīdi palēninājumā
+Video kvalitāte būs labāka, ierakstot to spilgtā apgaismojumā."</string>
+    <string name="cam_strings_slow_motion_super_hint_1_txt">Varat ierakstīt video ar dažādiem ātrumiem, pārslēdzot uz ātrumu %1$s kadri/s</string>
+    <string name="cam_strings_slow_motion_super_hint_2_txt">Īstajā brīdī piesitiet vidējai pogai</string>
+    <string name="cam_strings_slow_motion_super_hint_3_txt">Palēninātas kustības video ir ierakstīts</string>
+    <string name="cam_strings_slow_motion_super_tutorial_1_txt">Radiet iespaidīgu video, parādot svarīgu brīdi palēninājumā</string>
+    <string name="cam_strings_slow_motion_super_tutorial_2_txt">Sāciet video ierakstīšanu, piesitot ierakstīšanas pogai</string>
+    <string name="cam_strings_slow_motion_super_tutorial_3_txt">Piesitiet pogai ekrāna vidū, lai ierakstītu video palēninājumā. Piesitiet pārtraukšanas pogai, lai pārtrauktu ierakstīšanu.</string>
+    <string name="cam_strings_slow_motion_super_tutorial_title_1_txt">Īpašs palēninājums</string>
+    <string name="cam_strings_slow_motion_super_txt">Īpašs palēninājums</string>
+    <string name="cam_strings_slow_motion_txt">Palēninājuma režīms</string>
+    <string name="cam_strings_smile_capture_big_txt">Plats smaids</string>
+    <string name="cam_strings_smile_capture_faint_txt">Mazs smaids</string>
+    <string name="cam_strings_smile_capture_normal_txt">Vidējs smaids</string>
+    <string name="cam_strings_smile_capture_txt">Smaida noteikšana</string>
+    <string name="cam_strings_smile_shutter_cy_txt">Smile Shutter</string>
+    <string name="cam_strings_smile_shutter_title_cy_txt">Smile Shutter</string>
+    <string name="cam_strings_snackbar_dependency_button_txt">Informācija</string>
+    <string name="cam_strings_snackbar_dependency_info_txt">Šīs izmaiņas ietekmēja citus iestatījumus</string>
+    <string name="cam_strings_soft_skin_effect_cy_txt">Maigas ādas efekts</string>
+    <string name="cam_strings_soft_skin_effect_title_cy_txt">Maigas ādas efekts</string>
+    <string name="cam_strings_standard_txt">Standarta</string>
+    <string name="cam_strings_steadyshot_cy_txt">SteadyShot™</string>
+    <string name="cam_strings_step_tutorial_title_txt">%1$s. no %2$s darbībām</string>
+    <string name="cam_strings_store_fail_txt">Neizdevās saglabāt</string>
+    <string name="cam_strings_superior_auto_brightness_txt">Spilgtums</string>
+    <string name="cam_strings_superior_auto_color_txt">Krāsa</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_title_txt">Duālā kamera</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_txt">Varat uzņemt skaistus fotoattēlus ar zemu trokšņu līmeni, izmantojot duālo kameru, pat naktī vai vāji apgaismotā telpā. Kamera automātiski pārslēdzas starp atsevišķo kameru un duālo kameru atbilstoši sižetiem, kas jāuzņem ar īpaši augstu jutību.</string>
+    <string name="cam_strings_sw_licence_title_txt">Programmatūras Licences</string>
+    <string name="cam_strings_take_photo_txt">Fotografēt</string>
+    <string name="cam_strings_term_of_use_accept_txt">Akceptēt</string>
+    <string name="cam_strings_term_of_use_consent_txt">Es piekrītu Sony &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">lietošanas noteikumiem&lt;/a>.</string>
+    <string name="cam_strings_term_of_use_data_charge_txt">Lietojot šo pakalpojumu, var tikt pieprasīta maksa par mobilajiem datiem atkarībā no jūsu datu plāna.</string>
+    <string name="cam_strings_term_of_use_data_collection_txt">Sony ievāc jaukto Android ID unikālo ierīces identifikatoru, atrašanās vietas datus un laikspiedolu, lai jums pakalpojuma ietvaros nodrošinātu atbilstošus rezultātus un uzlabotu pakalpojumu.</string>
+    <string name="cam_strings_term_of_use_decline_txt">Atteikties</string>
+    <string name="cam_strings_term_of_use_title_txt">Noteikumi un nosacījumi</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Lietošanas noteikumi&lt;/a></string>
+    <string name="cam_strings_timeshift_cancel_selection_txt">Noņemt izvēli fotoattēliem</string>
+    <string name="cam_strings_timeshift_operation_failed_txt">Neizdevās saglabāt</string>
+    <string name="cam_strings_timeshift_save_complete_txt">Saglabāts</string>
+    <string name="cam_strings_timeshift_save_selection_txt">Saglabāt atsevišķi</string>
+    <string name="cam_strings_timeshift_select_images_txt">Atlasīt fotoattēlus</string>
+    <string name="cam_strings_timeshift_share_txt">Kopīgot</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Izveidots savienojums ar %1$s</string>
+    <string name="cam_strings_touch_capturing_always_txt">Ieslēgt</string>
+    <string name="cam_strings_touch_capturing_only_front_txt">Tikai priekšējā kamera</string>
+    <string name="cam_strings_touch_capturing_title_txt">Uzņemšana pieskaroties</string>
+    <string name="cam_strings_touch_focus_in_manual_focus_txt">Lai izmantotu pieskāriena fokusu, mainiet fokusa iestatījumu uz AF (automātisko fokusu).</string>
+    <string name="cam_strings_touch_to_adjust_description_txt">Atlasiet, ko pielāgot, kad jūs pieskaraties skatu meklētājam</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_focus_and_exposure_txt">Fokuss un spilgtums</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_only_focus_txt">Tikai fokuss</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_txt">Pieskarties, lai pielāgotu</string>
+    <string name="cam_strings_transfer_and_tagging_description_txt">"Ieslēdzot šo funkciju, Transfer &amp; Tagging add-on varēs attēlot fotoattēlus, kas uzņemti ar Xperia kameru. Fotoattēli tiks saglabāti iekšējā atmiņā.
+Šī funkcija ir saderīga ar fotoattēliem, kas uzņemti fotoattēlu un manuālajā režīmā."</string>
+    <string name="cam_strings_transfer_and_tagging_txt">Transfer &amp; Tagging add-on režīms</string>
+    <string name="cam_strings_tutorial_bright_place_txt">Video būs labāka kvalitāte, ja to ierakstīsiet gaišos apstākļos</string>
+    <string name="cam_strings_tutorial_button_next_txt">Tālāk</string>
+    <string name="cam_strings_tutorial_button_skip_txt">Izlaist</string>
+    <string name="cam_strings_tutorial_button_txt">Sapratu</string>
+    <string name="cam_strings_tutorial_title_txt">Režīma pārslēgšana</string>
+    <string name="cam_strings_tutorial_txt">Pavelciet, lai pārslēgtos uz citu tveršanas režīmu, piemēram, video vai manuāli</string>
+    <string name="cam_strings_unable_to_operate_txt">Fotoattēlu saglabāšanas laikā darbības nevar veikt</string>
+    <string name="cam_strings_unlock_button_txt">Atslēgt</string>
+    <string name="cam_strings_use_of_camera_not_authorized_txt">Kameras lietošana ir ierobežota drošības apsvērumu dēļ</string>
+    <string name="cam_strings_video_backlight_correction_description_txt">Ja ieslēdzat šo iestatījumu, varat automātiski uzņemt video ar optimālu ekspozīciju pat fona apgaismojuma situācijās.</string>
+    <string name="cam_strings_video_backlight_correction_txt">Video fona apgaismojuma korekcija</string>
+    <string name="cam_strings_video_codec_for_4k_txt">Ieraksta faila tips</string>
+    <string name="cam_strings_video_digital_zoom_type_description_txt">"Atlasiet video digitālās tālummaiņas iestatījumu.
+
+Standarta digitālā tālummaiņa: regulējiet tālummaiņu, izmantojot digitālo apstrādi atkarībā no attēlu sensora datiem.
+Video īpaši lielas izšķirtspējas tālummaiņa: regulējiet tālummaiņu, izmantojot digitālo apstrādi, kas saglabā lielāku daļu sākotnējās attēla kvalitātes. Video saglabāšana var aizņemt ilgāku laiku."</string>
+    <string name="cam_strings_video_digital_zoom_type_super_resolution_txt">Video īpaši lielas izšķirtsp. tālumm.</string>
+    <string name="cam_strings_video_digital_zoom_type_txt">Video digitālā tālummaiņa</string>
+    <string name="cam_strings_video_explanatory_4k2k_setting_txt">Lai nodrošinātu netraucētu 4K video ierakstīšanu, nemainiet šo iestatījumu, ja vien neizmantojat ātrdarbīgu SD karti (ieteicams izmantot UHS 1. vai augstākas ātruma klases karti vai 10. ātruma klases karti).</string>
+    <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Lai nodrošinātu netraucētu Timeshift video ierakstīšanu, nemainiet šo iestatījumu, ja vien neizmantojat ātrdarbību SD karti (ieteicams izmantot UHS 1. klases, augstākas ātruma klases vai 10. ātruma klases karti). Vai joprojām vēlaties mainīt?</string>
+    <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Lai nodrošinātu netraucētu palēninātas kustības video ierakstīšanu, nemainiet šo iestatījumu, ja vien neizmantojat ātrdarbīgu SD karti (ieteicams izmantot UHS 1. vai augstākas ātruma klases karti vai 10. ātruma klases karti).</string>
+    <string name="cam_strings_video_explanatory_txt">"Lai nodrošinātu netraucētu video ierakstīšanu, ieteicams mainīt datu krātuvi uz iekšējo atmiņu. Vai vēlaties to mainīt tagad? 
+
+Ja joprojām vēlaties kā datu krātuvi izmantot SD karti, izmantojiet ātrdarbīgu SD karti (ieteicams izmantot UHS 1. klases, augstākas klases vai 10. ātruma klases karti)."</string>
+    <string name="cam_strings_video_fusion_tutorial_0_title_txt">Duālā kamera</string>
+    <string name="cam_strings_video_fusion_tutorial_0_txt">Tagad, pateicoties duālajai kamerai, skaistus attēlus var ierakstīt ar zemu trokšņa līmeni — pat naktī vai telpā ar vāju apgaismojumu. Atkarībā no uzņemamā sižeta kamera automātiski pārslēdz vienas kameras un duālās kameras režīmu, lai ierakstot nodrošinātu īpaši augstu jutību.</string>
+    <string name="cam_strings_video_fusion_tutorial_1_title_txt">Video ierakstīšana ar duālo kameru</string>
+    <string name="cam_strings_video_fusion_tutorial_1_txt">Kad ierakstīšanu veicat ar duālo kameru, atkāpieties vismaz 1 metra attālumā no objekta. Pārāk pietuvojoties objektam, var mainīties skatpunkts vai krāsa, ja ierakstīšana tiek veikta ar īpaši augstu jutību.</string>
+    <string name="cam_strings_video_fusion_tutorial_2_title_txt">Vai izmantot duālo kameru video ierakstīšanai?</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">Lai uzņemtu lieliskus tuvplānus, piesitiet pie Nē un pārslēdzieties uz atsevišķo kameru. Jebkurā laikā varat pārslēgt atpakaļ duālo kameru, piesitot pie pogas skatu meklētājā.</string>
+    <string name="cam_strings_video_hdr_hlg_txt">HDR ir ieslēgts</string>
+    <string name="cam_strings_video_hdr_setting_hlg_txt">HDR</string>
+    <string name="cam_strings_video_hdr_title_txt">HDR video</string>
+    <string name="cam_strings_video_hdr_txt">HDR video</string>
+    <string name="cam_strings_video_resolution_4k_file_type_txt">Faila formāts (4K)</string>
+    <string name="cam_strings_video_resolution_full_hd_16_9_60fps_txt">Full HD (16:9, 60 kadri/s)</string>
+    <string name="cam_strings_video_resolution_full_hd_30fps_txt">Full HD (30 kadri sekundē)</string>
+    <string name="cam_strings_video_resolution_full_hd_60fps_txt">Full HD (60 kadri sekundē)</string>
+    <string name="cam_strings_video_resolution_full_hd_frame_rate_txt">Kadru nom. ātrums (Full HD)</string>
+    <string name="cam_strings_video_resolution_full_hd_super_slow_desc_txt">Uzņem platāku lauku pusē no ieraksta laika, atšķirīgā no HD.</string>
+    <string name="cam_strings_video_resolution_full_hd_txt">Pilnais HD režīms</string>
+    <string name="cam_strings_video_resolution_hd_super_slow_desc_txt">Uzņem šaurāku lauku dubultā ieraksta laikā, atšķirīgā no Full HD.</string>
+    <string name="cam_strings_video_resolution_hd_txt">HD</string>
+    <string name="cam_strings_video_resolution_mms_txt">Multiziņa</string>
+    <string name="cam_strings_video_resolution_qvga_txt">QVGA</string>
+    <string name="cam_strings_video_resolution_title_txt">Video izšķirtspēja</string>
+    <string name="cam_strings_video_resolution_txt">Video izšķirtspēja</string>
+    <string name="cam_strings_video_resolution_vga_txt">VGA</string>
+    <string name="cam_strings_video_shutter_trigger_txt">Automātiskā uzņemšana (video)</string>
+    <string name="cam_strings_video_size_4kuhd_txt">4K (QFHD)</string>
+    <string name="cam_strings_video_size_full_hd_16_9_txt">Full HD (16:9)</string>
+    <string name="cam_strings_video_size_full_hd_21_9_txt">Full HD (21:9)</string>
+    <string name="cam_strings_video_size_full_hd_txt">Pilnais HD režīms</string>
+    <string name="cam_strings_video_size_txt">Video lielums</string>
+    <string name="cam_strings_video_smile_shutter_txt">Smile Shutter (video)</string>
+    <string name="cam_strings_video_stabilizer_txt">Video stabilizācija</string>
+    <string name="cam_strings_volumekey_shutter_txt">Slēdzis</string>
+    <string name="cam_strings_volumekey_txt">Izmantojiet skaļuma pogu kā</string>
+    <string name="cam_strings_volumekey_volume_txt">Skaļums</string>
+    <string name="cam_strings_volumekey_zoom_txt">Tālummaiņa</string>
+    <string name="cam_strings_white_balance_auto_txt">Automātiski</string>
+    <string name="cam_strings_white_balance_cloudy_txt">Apmācies</string>
+    <string name="cam_strings_white_balance_day_light_txt">Dienasgaisma</string>
+    <string name="cam_strings_white_balance_fluorescent_txt">Fluorescējošs</string>
+    <string name="cam_strings_white_balance_incandescent_txt">Spoža gaisma</string>
+    <string name="cam_strings_white_balance_title_txt">Baltā balanss</string>
+    <string name="cam_strings_white_balance_txt">Baltā balanss</string>
+    <string name="cam_strings_whitebalance_custom1_txt">Pielāgots 1</string>
+    <string name="cam_strings_whitebalance_custom2_txt">Pielāgots 2</string>
+    <string name="cam_strings_whitebalance_custom3_txt">Pielāgots 3</string>
+    <string name="cam_strings_whitebalance_shde_txt">Ēnojums</string>
+    <string name="cam_strings_zoom_frames_description_txt">"Ja ieslēdzat šo iestatījumu, varat priekšskatīt, kā tas izskatīsies, kad tuvināsiet.
+Centrējiet objektu rāmī un piesitiet tālummaiņas koeficientam, lai viegli tuvinātu."</string>
+    <string name="cam_strings_zoom_frames_txt">Tālummaiņas kompozīcijas palīgs</string>
+    <string name="cam_strings_zoom_help_txt">Lai tuvinātu/tālinātu, izmantojiet skaļuma pogu</string>
+    <string name="cam_strings_zoom_not_supported_in_bokeh_effect_txt">Fona pl. (bukē) efekta liet. laikā nevar izm. tālumm.</string>
+    <string name="cam_strings_zoom_not_supported_in_front_txt">Tālummaiņu nevar veikt ar priekšējo kameru</string>
+    <string name="cam_strings_zoom_not_supported_in_widecam_txt">Neizdodas tuvināt</string>
+    <string name="cam_strings_zoom_not_supported_txt">Tālummaiņa pašreiz nav pieejama</string>
+    <string name="expand_button_title">Papildu iestatījumi</string>
+    <string name="photopro_strings_multi_or_popup_window_txt">Nevar izmantot kameru vairāklogu režīmā vai uznirstošajā logā. Aizveriet logu un mēģiniet vēlreiz. Izmantojot vairāklogu režīmu, jūs varat vilkt dalītās joslas vidusdaļu, lai pārslēgtos uz pilnu kameras ekrānu.</string>
+    <string name="search_menu_title">Meklēt</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="v7_preference_off">IZSLĒGTS</string>
+    <string name="v7_preference_on">IESLĒGTS</string>
+</resources>

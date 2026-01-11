@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="35" android:compileSdkVersionCodename="15" package="com.sonyericsson.android.camera" platformBuildVersionCode="35" platformBuildVersionName="15">
+    <compatible-screens/>
+    <queries>
+        <package android:name="com.google.android.googlequicksearchbox"/>
+        <package android:name="com.sonymobile.addoncamera.portraitselfie"/>
+        <intent>
+            <action android:name="com.android.camera.action.REVIEW"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            <data android:mimeType="image/jpeg"/>
+        </intent>
+        <intent>
+            <action android:name="com.sonymobile.camera.addon.action.REGISTER_MODE"/>
+        </intent>
+        <intent>
+            <action android:name="com.sonymobile.moviecreator.intent.action.TIMESHIFT_VIDEO_EDITOR"/>
+            <data android:mimeType="video/mp4"/>
+        </intent>
+        <intent>
+            <action android:name="com.sonymobile.sidesenseapp.action.LAUNCH_SETTINGS"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+        </intent>
+    </queries>
+    <permission android:name="com.sonymobile.permission.SOMC_CAMERA" android:protectionLevel="signatureOrSystem"/>
+    <permission android:name="com.sonymobile.permission.CAMERA_ADDON_LOG" android:protectionLevel="signatureOrSystem"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.DETECT_SCREEN_RECORDING"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.MANAGE_MEDIA_PROJECTION"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.STOP_APP_SWITCHES"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:maxSdkVersion="32" android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"/>
+    <uses-permission android:name="com.sonymobile.permission.CAMERA_ADDON"/>
+    <uses-permission android:name="com.sonymobile.permission.CAMERA_STATUS_PROVIDER"/>
+    <uses-permission android:name="com.sonymobile.permission.IMAGE_PROCESSOR"/>
+    <uses-permission android:name="com.sonymobile.permission.SOMC_CAMERA"/>
+    <uses-permission android:name="com.sonymobile.permission.CAMERA_ADDON_LOG"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <permission android:name="com.sonyericsson.android.camera.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.sonyericsson.android.camera.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+    <uses-permission android:name="com.sonymobile.permission.SECURE_DATA_MANAGER"/>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="false" android:hardwareAccelerated="true" android:icon="@drawable/cam_application_common_icn" android:label="@string/cam_strings_application_name_txt" android:name="com.sonyericsson.android.camera.CameraApplication" android:resizeableActivity="false" android:supportsRtl="true" android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen">
+        <receiver android:exported="true" android:name="com.sonyericsson.android.camera.CameraButtonIntentReceiver">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.CAMERA_BUTTON"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.sonymobile.camerauicommon.provider" android:exported="false" android:name="com.sonyericsson.android.camera.provider.CameraUISettingsProvider"/>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:exported="true" android:label="@string/cam_strings_application_name_txt" android:launchMode="singleTask" android:maxAspectRatio="2.5" android:name="com.sonyericsson.android.camera.CameraActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:theme="@style/SomcCameraTheme" android:turnScreenOn="true" android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.sonymobile.camera.addon.action.REGISTER_MODE"/>
+            </intent-filter>
+            <meta-data android:name="android.supports_size_changes" android:value="true"/>
+            <meta-data android:name="com.sonymobile.camera.addon.MODE_ATTRIBUTES" android:resource="@xml/mode_scenerecognition"/>
+            <meta-data android:name="com.sonymobile.camera.addon.MODE_NAME" android:value="SCENE_RECOGNITION"/>
+            <meta-data android:name="com.sonymobile.camera.addon.MODE_SELECTOR_ICON" android:resource="@drawable/cam_cap_mode_camera_icn"/>
+            <meta-data android:name="com.sonymobile.camera.addon.MODE_SELECTOR_LABEL" android:resource="@string/cam_strings_capturing_mode_camera_txt"/>
+            <meta-data android:name="com.sonymobile.camera.addon.MODE_DESCRIPTION_LABEL" android:resource="@string/cam_strings_description_camera_txt"/>
+            <meta-data android:name="com.sonymobile.camera.addon.MODE_SHORTCUT_ICON" android:resource="@drawable/cam_cap_mode_camera_icn"/>
+            <meta-data android:name="com.sonymobile.camera.addon.MODE_SHORTCUT_LABEL" android:resource="@string/cam_strings_capturing_mode_camera_txt"/>
+            <meta-data android:name="com.android.keyguard.layout" android:resource="@layout/keyguard_layout"/>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts"/>
+        </activity>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:excludeFromRecents="true" android:exported="true" android:label="@string/cam_strings_application_name_txt" android:launchMode="singleTask" android:maxAspectRatio="2.5" android:name="com.sonyericsson.android.camera.CameraGestureTriggerActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.sonyericsson.android.camera.gesturetrigger" android:theme="@style/SomcCameraTheme" android:turnScreenOn="true" android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+            <meta-data android:name="android.supports_size_changes" android:value="true"/>
+        </activity>
+        <activity-alias android:exported="true" android:name="com.sonyericsson.android.camera.fastcapturing.FastCapturingActivity" android:showWhenLocked="true" android:targetActivity="com.sonyericsson.android.camera.CameraGestureTriggerActivity" android:turnScreenOn="true"/>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:excludeFromRecents="true" android:exported="true" android:label="@string/cam_strings_application_name_txt" android:launchMode="singleTask" android:maxAspectRatio="2.5" android:name="com.sonyericsson.android.camera.CameraGestureTriggerActivityOnLockScreen" android:resizeableActivity="false" android:screenOrientation="portrait" android:showWhenLocked="true" android:taskAffinity="com.sonyericsson.android.camera.gesturetrigger" android:theme="@style/SomcCameraTheme" android:turnScreenOn="true" android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.STILL_IMAGE_CAMERA_SECURE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data android:name="android.supports_size_changes" android:value="true"/>
+        </activity>
+        <activity android:configChanges="mcc|mnc|keyboardHidden|orientation|uiMode|screenSize" android:excludeFromRecents="true" android:exported="true" android:label="@string/cam_strings_application_name_txt" android:name="com.sonyericsson.android.camera.OneshotPhotoActivityOnLockScreen" android:resizeableActivity="false" android:screenOrientation="portrait" android:showWhenLocked="true" android:theme="@style/SomcCameraTheme" android:turnScreenOn="true" android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.media.action.IMAGE_CAPTURE_SECURE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="orientation" android:excludeFromRecents="true" android:exported="true" android:name="com.sonyericsson.android.camera.CameraImageActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:showWhenLocked="true" android:theme="@style/SomcCameraBlackScreenTheme" android:turnScreenOn="true">
+            <intent-filter>
+                <action android:name="android.media.action.STILL_IMAGE_CAMERA"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.VOICE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.VIDEO_CAMERA"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.VOICE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:excludeFromRecents="true" android:exported="false" android:label="@string/cam_strings_application_name_txt" android:launchMode="singleTask" android:maxAspectRatio="2.5" android:name="com.sonyericsson.android.camera.InternalCameraActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:theme="@style/SomcCameraTheme" android:turnScreenOn="true" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:icon="@drawable/cam_app_shortcut_video_camera_icn" android:label="@string/cam_strings_shortcut_video_camera_txt" android:name="com.sonyericsson.android.camera.OneshotVideoActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:theme="@style/SomcCameraTheme" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:icon="@drawable/cam_application_common_icn" android:label="@string/cam_strings_application_name_txt" android:name="com.sonyericsson.android.camera.OneshotPhotoActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:theme="@style/SomcCameraTheme" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:exported="true" android:name="com.sonyericsson.android.camera.MultiWindowActivity" android:resizeableActivity="true" android:visibleToInstantApps="true">
+            <intent-filter>
+                <action android:name="android.media.action.IMAGE_CAPTURE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity-alias android:exported="true" android:icon="@drawable/cam_app_shortcut_video_camera_icn" android:label="@string/cam_strings_shortcut_video_camera_txt" android:name="com.sonyericsson.android.camera.MultiWindowVideoActivity" android:targetActivity="com.sonyericsson.android.camera.MultiWindowActivity" android:visibleToInstantApps="true">
+            <intent-filter>
+                <action android:name="android.media.action.VIDEO_CAPTURE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity-alias>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:exported="false" android:label="@string/cam_strings_application_name_txt" android:launchMode="singleTask" android:name="com.sonyericsson.android.camera.CameraSettingsActivity" android:resizeableActivity="false" android:showWhenLocked="true" android:theme="@style/Theme.CameraSettings" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboard|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:exported="false" android:name="com.sonyericsson.cameracommon.activity.RequestPermissionActivity" android:resizeableActivity="false" android:showWhenLocked="true" android:theme="@style/SomcCameraTheme" android:turnScreenOn="true"/>
+        <activity android:configChanges="keyboard|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:exported="false" android:inheritShowWhenLocked="true" android:name="com.sonyericsson.android.camera.SetupWizardActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:theme="@style/Theme.CameraSettingsWizard" android:turnScreenOn="true"/>
+        <activity android:exported="false" android:name="com.sonyericsson.android.camera.debug.DebugMenuActivity" android:theme="@style/Theme.DebugMenu">
+            <intent-filter>
+                <action android:name="com.sonyericsson.debugmenu.ENTRY_INTENT"/>
+                <category android:name="com.sonyericsson.debugmenu.ENTRY_CATEGORY"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboard|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:excludeFromRecents="true" android:exported="false" android:launchMode="singleTask" android:name="com.sonyericsson.android.camera.view.modeselector.internalmode.googlelens.GoogleLensModeActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:showWhenLocked="true" android:taskAffinity="com.sonyericsson.android.camera.googlelensmode" android:theme="@style/SomcCameraTheme" android:turnScreenOn="true">
+            <meta-data android:name="com.sonymobile.camera.addon.MODE_ATTRIBUTES" android:resource="@xml/mode_googlelens"/>
+            <meta-data android:name="com.sonymobile.camera.addon.MODE_NAME" android:value="GOOGLE_LENS"/>
+            <meta-data android:name="com.sonymobile.camera.addon.MODE_SELECTOR_ICON" android:resource="@drawable/cam_cap_mode_google_lens_icn"/>
+            <meta-data android:name="com.sonymobile.camera.addon.MODE_SELECTOR_LABEL" android:resource="@string/cam_strings_capturing_mode_google_lens"/>
+            <meta-data android:name="com.sonymobile.camera.addon.MODE_DESCRIPTION_LABEL" android:resource="@string/cam_strings_description_google_lens"/>
+            <intent-filter>
+                <action android:name="com.sonymobile.camera.addon.action.REGISTER_MODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboard|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:exported="false" android:name="com.sonyericsson.android.camera.FeatureListActivity" android:resizeableActivity="false" android:showWhenLocked="true" android:theme="@style/SomcCameraFeatureListTheme" android:turnScreenOn="true"/>
+        <provider android:authorities="@string/provider_authority" android:exported="true" android:grantUriPermissions="true" android:name="com.sonyericsson.cameracommon.storage.processing.CameraContentProvider" android:syncable="false"/>
+        <uses-library android:name="com.sony.device" android:required="true"/>
+        <uses-library android:name="com.sonyericsson.idd" android:required="false"/>
+        <uses-library android:name="com.sonymobile.securedatamanager" android:required="false"/>
+        <provider android:authorities="com.sonyericsson.android.camera.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
+            <meta-data android:name="androidx.profileinstaller.ProfileInstallerInitializer" android:value="androidx.startup"/>
+        </provider>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="true" android:name="androidx.profileinstaller.ProfileInstallReceiver" android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SKIP_FILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION"/>
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

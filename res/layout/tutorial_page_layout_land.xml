@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/tutorial_page_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="28.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="16.0dip" android:text="" android:maxLines="2" android:contentDescription="" style="@style/TutorialPageTitle" />
+    <TextView android:scrollbarThumbVertical="@drawable/setting_scroll" android:id="@id/tutorial_page_description" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="6.0dip" android:text="@string/cam_strings_tutorial_txt" android:layout_weight="6.0" android:lineSpacingMultiplier="1.4" android:contentDescription="@string/cam_strings_tutorial_txt" style="@style/TutorialPageDesc" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="64.0dip" android:layout_weight="1.0">
+        <ListView android:id="@id/tutorial_page_value_list" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:dividerHeight="0.0dip" android:nestedScrollingEnabled="false" />
+    </LinearLayout>
+</LinearLayout>

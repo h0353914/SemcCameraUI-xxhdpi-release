@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/new_feature_bar" android:background="@color/new_feature_bar_color" android:paddingLeft="@dimen/mode_selector_grid_item_name_text_area_top_margin" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/cam_strings_feature_list_banner_txt"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/new_feature_bar_height">
+        <ImageView android:gravity="center_vertical" android:id="@id/icon" android:layout_width="@dimen/new_feature_bar_icon_wh" android:layout_height="@dimen/new_feature_bar_icon_wh" android:src="@drawable/cam_core_feature_bunner_icn" android:scaleType="fitCenter" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/text_frame" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/new_feature_bar_text_size" android:textColor="@color/new_feature_bar_title_text_color" android:id="@id/text" android:paddingLeft="@dimen/new_feature_bar_icon_text_margin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cam_strings_feature_list_banner_txt" android:maxLines="1" android:lineSpacingMultiplier="1.2" android:fontFamily="sans-serif" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

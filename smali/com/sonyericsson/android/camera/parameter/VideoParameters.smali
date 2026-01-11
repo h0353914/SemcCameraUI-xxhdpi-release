@@ -1,0 +1,278 @@
+.class public Lcom/sonyericsson/android/camera/parameter/VideoParameters;
+.super Lcom/sonyericsson/android/camera/parameter/MainParameters;
+.source "VideoParameters.java"
+
+
+# direct methods
+.method public constructor <init>(Landroid/content/Context;Lcom/sonyericsson/android/camera/configuration/parameters/CapturingMode;ZLcom/sonyericsson/android/camera/parameter/ModeIndependentParams;)V
+    .locals 0
+
+    .line 35
+    invoke-direct {p0, p1, p2, p3, p4}, Lcom/sonyericsson/android/camera/parameter/MainParameters;-><init>(Landroid/content/Context;Lcom/sonyericsson/android/camera/configuration/parameters/CapturingMode;ZLcom/sonyericsson/android/camera/parameter/ModeIndependentParams;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public getTargetParameters()Ljava/util/EnumMap;
+    .locals 6
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/EnumMap<",
+            "Lcom/sonyericsson/android/camera/configuration/UserSettingKey;",
+            "Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValue;",
+            ">;"
+        }
+    .end annotation
+
+    .line 59
+    new-instance v0, Ljava/util/EnumMap;
+
+    const-class v1, Lcom/sonyericsson/android/camera/configuration/UserSettingKey;
+
+    invoke-direct {v0, v1}, Ljava/util/EnumMap;-><init>(Ljava/lang/Class;)V
+
+    .line 61
+    iget-object v1, p0, Lcom/sonyericsson/android/camera/parameter/VideoParameters;->mHolders:Ljava/util/Map;
+
+    invoke-interface {v1}, Ljava/util/Map;->keySet()Ljava/util/Set;
+
+    move-result-object v1
+
+    invoke-interface {v1}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    :cond_0
+    :goto_0
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Lcom/sonyericsson/android/camera/configuration/UserSettingKey;
+
+    .line 62
+    iget-object v3, p0, Lcom/sonyericsson/android/camera/parameter/VideoParameters;->mHolders:Ljava/util/Map;
+
+    invoke-interface {v3, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValueHolder;
+
+    invoke-virtual {v3}, Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValueHolder;->get()Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValue;
+
+    move-result-object v3
+
+    .line 66
+    sget-object v4, Lcom/sonyericsson/android/camera/configuration/UserSettingKey;->RESOLUTION:Lcom/sonyericsson/android/camera/configuration/UserSettingKey;
+
+    if-eq v2, v4, :cond_0
+
+    sget-object v4, Lcom/sonyericsson/android/camera/configuration/UserSettingKey;->VIDEO_SHUTTER_TRIGGER:Lcom/sonyericsson/android/camera/configuration/UserSettingKey;
+
+    if-eq v2, v4, :cond_0
+
+    if-nez v3, :cond_1
+
+    .line 68
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    const-string v5, "["
+
+    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    const-string v5, "] getTargetParameters() invalid value of key: "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    filled-new-array {v4}, [Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v4}, Lcom/sonyericsson/android/camera/util/CamLog;->d([Ljava/lang/String;)V
+
+    .line 70
+    :cond_1
+    invoke-virtual {v0, v2, v3}, Ljava/util/EnumMap;->put(Ljava/lang/Enum;Ljava/lang/Object;)Ljava/lang/Object;
+
+    goto :goto_0
+
+    :cond_2
+    return-object v0
+.end method
+
+.method protected prepare()V
+    .locals 0
+
+    return-void
+.end method
+
+.method public set(Lcom/sonyericsson/android/camera/configuration/parameters/AspectRatio;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public set(Lcom/sonyericsson/android/camera/configuration/parameters/BackSoftSkin;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public set(Lcom/sonyericsson/android/camera/configuration/parameters/Flash;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public set(Lcom/sonyericsson/android/camera/configuration/parameters/FocusRange;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public set(Lcom/sonyericsson/android/camera/configuration/parameters/Hdr;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public set(Lcom/sonyericsson/android/camera/configuration/parameters/Iso;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public set(Lcom/sonyericsson/android/camera/configuration/parameters/PredictiveCapture;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public set(Lcom/sonyericsson/android/camera/configuration/parameters/Resolution;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public set(Lcom/sonyericsson/android/camera/configuration/parameters/SelfTimer;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public set(Lcom/sonyericsson/android/camera/configuration/parameters/ShutterSpeed;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public set(Lcom/sonyericsson/android/camera/configuration/parameters/ShutterTrigger;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public set(Lcom/sonyericsson/android/camera/configuration/parameters/SlowMotion;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public set(Lcom/sonyericsson/android/camera/configuration/parameters/TouchIntention;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public set(Lcom/sonyericsson/android/camera/configuration/parameters/VideoCodec;)V
+    .locals 0
+
+    .line 124
+    iget-object p0, p0, Lcom/sonyericsson/android/camera/parameter/VideoParameters;->mCapturingModeParams:Lcom/sonyericsson/android/camera/parameter/CapturingModeParams;
+
+    iget-object p0, p0, Lcom/sonyericsson/android/camera/parameter/CapturingModeParams;->mVideoCodec:Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValueHolder;
+
+    invoke-virtual {p0, p1}, Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValueHolder;->set(Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValue;)V
+
+    return-void
+.end method
+
+.method protected updateSelectability()V
+    .locals 2
+
+    .line 46
+    iget-object v0, p0, Lcom/sonyericsson/android/camera/parameter/VideoParameters;->mCapturingModeParams:Lcom/sonyericsson/android/camera/parameter/CapturingModeParams;
+
+    iget-object v0, v0, Lcom/sonyericsson/android/camera/parameter/CapturingModeParams;->mVideoSize:Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValueHolder;
+
+    invoke-virtual {v0}, Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValueHolder;->get()Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValue;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/sonyericsson/android/camera/parameter/dependency/DependencyApplier;->create(Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValue;)Lcom/sonyericsson/android/camera/parameter/dependency/DependencyApplier;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    .line 48
+    iget-object v1, p0, Lcom/sonyericsson/android/camera/parameter/VideoParameters;->mCapturingModeParams:Lcom/sonyericsson/android/camera/parameter/CapturingModeParams;
+
+    invoke-virtual {v0, v1}, Lcom/sonyericsson/android/camera/parameter/dependency/DependencyApplier;->apply(Lcom/sonyericsson/android/camera/parameter/CapturingModeParams;)V
+
+    .line 51
+    :cond_0
+    iget-object v0, p0, Lcom/sonyericsson/android/camera/parameter/VideoParameters;->mCapturingModeParams:Lcom/sonyericsson/android/camera/parameter/CapturingModeParams;
+
+    iget-object v0, v0, Lcom/sonyericsson/android/camera/parameter/CapturingModeParams;->mVideoHdr:Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValueHolder;
+
+    invoke-virtual {v0}, Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValueHolder;->get()Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValue;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/sonyericsson/android/camera/parameter/dependency/DependencyApplier;->create(Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValue;)Lcom/sonyericsson/android/camera/parameter/dependency/DependencyApplier;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_1
+
+    .line 53
+    iget-object p0, p0, Lcom/sonyericsson/android/camera/parameter/VideoParameters;->mCapturingModeParams:Lcom/sonyericsson/android/camera/parameter/CapturingModeParams;
+
+    invoke-virtual {v0, p0}, Lcom/sonyericsson/android/camera/parameter/dependency/DependencyApplier;->apply(Lcom/sonyericsson/android/camera/parameter/CapturingModeParams;)V
+
+    :cond_1
+    return-void
+.end method

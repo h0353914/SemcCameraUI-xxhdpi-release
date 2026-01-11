@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"Reţea
+Pentru conectare la WLAN"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"Vă conectaţi la %1$s?
+Atingeţi DETALII pentru a vedea informaţii despre această reţea WLAN."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"Funcţia WLAN este dezactivată şi modul pentru avion este activat.
+Modificaţi aceste setări atingând SETĂRI."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Funcţia WLAN este dezactivată.
+Activaţi funcţia WLAN din SETĂRI."</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">Activare WLAN</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">Util. WLAN şi date tel. mob.</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">Nu s-a conectat la WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">Detalii WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">Nu se poate conecta la WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Această reţea WLAN prezintă riscuri de securitate</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Conectaţi-vă la WLAN</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"Puteţi să accesaţi rapid webul sau să vă conectaţi la WLAN scanând un QR Code.
+Această funcţie este activă în modul de fotografiere. Puteţi modifica această setare din cititorul QR Code, în Setări aparat foto."</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Nu este posibilă conectare cu niciun aparat foto WLAN/NFC Sony atunci când dispozitivul Xperia este conectat cu alt dispozitiv Xperia.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">Acest mod este indisponibil în timpul tetheringului prin WLAN.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Un singur aparat foto WLAN/NFC Sony poate fi conectat cu dispozitivul dvs. Xperia la un moment dat.</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Aparat foto WLAN/NFC de la Sony</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Nu este posibilă conectarea cu niciun alt dispozitiv Xperia atunci când dispozitivul Xperia este conectat cu un aparat foto WLAN/NFC Sony.</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Nu se poate conecta la această rețea WLAN</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Atingeţi pt. a vă conec. la reţ. WLAN „%1$s”</string>
+</resources>

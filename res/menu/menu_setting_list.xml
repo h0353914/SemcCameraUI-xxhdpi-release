@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/cam_core_feature_shortcut_setting_icn" android:id="@id/menu_feature_list" android:title="@string/cam_strings_feature_list_title_txt" android:contentDescription="@null" app:showAsAction="always" />
+</menu>

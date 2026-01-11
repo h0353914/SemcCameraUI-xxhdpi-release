@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="settings_color_accent">#ffc1e8ff</color>
+    <color name="settings_scroll_color">#99808080</color>
+    <color name="settings_switch_thumb_uncheck">#ffbdbdbd</color>
+    <color name="settings_switch_track_uncheck">#ffffffff</color>
+    <color name="tutorial_background_color">#ff212121</color>
+    <color name="tutorial_got_it_pressed_color">#ffaed1e6</color>
+    <color name="tutorial_indicator_color">#61ffffff</color>
+    <color name="tutorial_indicator_selected_color">#8affffff</color>
+    <color name="tutorial_text_color">#b3ffffff</color>
+    <color name="tutorial_title_text_color">#ffffffff</color>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"네트워크
+WLAN에 연결하기 위해"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"%1$s에 연결하시겠습니까?
+이WLAN 네트워크에 대한 정보를 보려면 상세 정보를 누르세요."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"WLAN가 꺼져 있고 비행 모드가 켜져 있습니다.
+설정을 눌러 이러한 설정을 변경하세요."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"WLAN가 꺼져 있습니다.
+설정에서 WLAN를 켜세요."</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">WLAN 켜기</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">WLAN 및 모바일 데이터 사용</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">WLAN 연결 실패</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">WLAN 상세 정보</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">WLAN에 연결할 수 없음</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">이 WLAN 네트워크에 보안 위험이 있음</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">WLAN 연결</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"QR Code를 스캔하여 빠르게 웹에 접속하거나 WLAN에 연결할 수 있습니다.
+이 기능은 사진 모드일 때 활성화됩니다. 카메라 설정의 QR Code 리더에서 이 설정을 변경할 수 있습니다."</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">사용 중인 Xperia가 다른 Xperia와 연결되어 있으면 Sony의 WLAN/NFC 카메라와 연결할 수 없습니다.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">WLAN 테더링 동안 이 모드를 사용할 수 없습니다.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">한 번에 Sony의 WLAN/NFC 카메라 하나만 사용 중인 Xperia와 연결할 수 있습니다.</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Sony의 WLAN/NFC 카메라</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">사용 중인 Xperia가 Sony의 WLAN/NFC 카메라와 연결되어 있으면 다른 Xperia와 연결할 수 없습니다.</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">WLAN 네트워크에 연결할 수 없음</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">WLAN 네트워크에 연결하려면 누름: \"%1$s\"</string>
+</resources>

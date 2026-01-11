@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">Navigate home</string>
+    <string name="abc_action_bar_up_description">Navigate up</string>
+    <string name="abc_action_menu_overflow_description">More options</string>
+    <string name="abc_action_mode_done">Done</string>
+    <string name="abc_activity_chooser_view_see_all">See all</string>
+    <string name="abc_activitychooserview_choose_application">Choose an app</string>
+    <string name="abc_capital_off">OFF</string>
+    <string name="abc_capital_on">ON</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">delete</string>
+    <string name="abc_menu_enter_shortcut_label">enter</string>
+    <string name="abc_menu_function_shortcut_label">Function+</string>
+    <string name="abc_menu_meta_shortcut_label">Meta+</string>
+    <string name="abc_menu_shift_shortcut_label">Shift+</string>
+    <string name="abc_menu_space_shortcut_label">space</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">Menu+</string>
+    <string name="abc_search_hint">Search…</string>
+    <string name="abc_searchview_description_clear">Clear query</string>
+    <string name="abc_searchview_description_query">Search query</string>
+    <string name="abc_searchview_description_search">Search</string>
+    <string name="abc_searchview_description_submit">Submit query</string>
+    <string name="abc_searchview_description_voice">Voice search</string>
+    <string name="abc_shareactionprovider_share_with">Share with</string>
+    <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
+    <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="call_notification_answer_action">Answer</string>
+    <string name="call_notification_answer_video_action">Video</string>
+    <string name="call_notification_decline_action">Decline</string>
+    <string name="call_notification_hang_up_action">Hang Up</string>
+    <string name="call_notification_incoming_text">Incoming call</string>
+    <string name="call_notification_ongoing_text">Ongoing call</string>
+    <string name="call_notification_screening_text">Screening an incoming call</string>
+    <string name="cam_3d_strings_creating_but_incorrect_direction_txt">Could not complete the capturing. Please pan in the correct direction.</string>
+    <string name="cam_3d_strings_creating_but_too_quick_txt">Could not complete the capturing. Please pan more slowly.</string>
+    <string name="cam_3d_strings_creating_but_too_slow_txt">Could not complete the capturing. Please pan faster.</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Creating the following files:
+- Multi Angle image
+- 3D image
+Note: These files contain a gray area."</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Processing...
+This image contains a gray area"</string>
+    <string name="cam_face_eye_af_settings_on_txt">Face Detection/Eye AF On</string>
+    <string name="cam_string_dualrec_m_apr_txt">April %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_aug_txt">August %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_dec_txt">December %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_feb_txt">February %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_jan_txt">January %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_jul_txt">July %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_jun_txt">June %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_mar_txt">March %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_may_txt">May %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_nov_txt">November %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_oct_txt">October %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_sep_txt">September %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_t_am_txt">%1$tl:%2$tM AM</string>
+    <string name="cam_string_dualrec_t_pm_txt">%1$tl:%2$tM PM</string>
+    <string name="cam_strings_accessibility_auto_scene_recognized_txt">Scene recognized as %1$s</string>
+    <string name="cam_strings_accessibility_close_color_button_txt">Close color adjustment</string>
+    <string name="cam_strings_accessibility_color_brightness_button_txt">Close color and brightness adjustment</string>
+    <string name="cam_strings_accessibility_flash_torch_txt">Flashlight</string>
+    <string name="cam_strings_accessibility_fusion_off_txt">Double tap to turn on Dual camera</string>
+    <string name="cam_strings_accessibility_fusion_on_txt">Double tap to turn off Dual camera</string>
+    <string name="cam_strings_accessibility_open_color_button_txt">Open color adjustment</string>
+    <string name="cam_strings_accessibility_superior_auto_color_brightness_txt">Color and brightness adjustment</string>
+    <string name="cam_strings_accessibility_swf_wide_txt">Double tap to switch to wide angle mode</string>
+    <string name="cam_strings_accessibility_switch_to_front_txt">Double tap to switch to front camera</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">Double tap to turn on HDR</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_on_txt">Double tap to turn off HDR</string>
+    <string name="cam_strings_art_filter_guesture_guide_tap_txt">Tap the portion you want to color</string>
+    <string name="cam_strings_burst_saved_internal_storage_txt">Burst photos are saved to internal storage</string>
+    <string name="cam_strings_color_brightness_txt">Color and brightness</string>
+    <string name="cam_strings_common_error_internal_memory_full_txt">Internal storage full. Save data in SD card instead?</string>
+    <string name="cam_strings_common_error_internal_memory_unavailable_txt">Internal storage is corrupt or write protected. Save data in SD card instead?</string>
+    <string name="cam_strings_cooling_mode_message2_txt">Please wait for your device to cool down and then restart the camera.</string>
+    <string name="cam_strings_description_dualrec_txt">Put your face in photos and videos using the front &amp; main cameras</string>
+    <string name="cam_strings_description_high_frame_rate_txt">Record high frame rate video and apply slow motion effects</string>
+    <string name="cam_strings_description_shoundphoto_txt">Take photos with background sound (birds chirping, etc.)</string>
+    <string name="cam_strings_description_timeshift_short_txt">Find the best in the burst photos taken before and after your shot</string>
+    <string name="cam_strings_dialog_battery_level_low_recording_txt">Recording stopped due to low battery. Charge your device and try again.</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_airplane_on_txt">"Airplane mode is on.
+Please turn off Airplane mode from SETTINGS."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_name_txt">"Network name: 
+"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"Wi-Fi is turned off and Airplane mode is turned on.
+Please change these settings by tapping on SETTINGS."</string>
+    <string name="cam_strings_dialog_change_resolution_txt">Resolution for the following capturing modes have been changed to 13MP (4:3) due to a Software update</string>
+    <string name="cam_strings_dialog_storage_full_burst_txt">Burst capturing stopped due to out of memory. Delete some files to free some space on the internal storage.</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_connecting_txt">Connecting…</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_password_txt">"
+Password protection: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_security_txt">"
+Security: 
+"</string>
+    <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">You can record videos even in high contrast scene, and make them more dramatic and closer to what you see in real life. Please use supported devices/services to enjoy the content with its original color and brightness.</string>
+    <string name="cam_strings_effect_color_pencil_txt">Color sketch</string>
+    <string name="cam_strings_effect_partical_color_txt">Partial color</string>
+    <string name="cam_strings_error_high_temp_info_vzw_txt">Your camera will need to cool. If you are recording, we may need to automatically save your video and exit until the camera has cooled.</string>
+    <string name="cam_strings_error_high_temp_shutting_down_vzw_txt">Your camera needs to cool. Your recording will be saved and application exited until your device is properly cooled.</string>
+    <string name="cam_strings_error_internal_memory_unavailable_txt">Internal storage is corrupt or write protected. Data storage changed to SD card.</string>
+    <string name="cam_strings_error_internal_sd_full_txt">Memory full. Delete some files from SD card or Internal storage.</string>
+    <string name="cam_strings_exposure_level_pm0_txt">EV ±0.0</string>
+    <string name="cam_strings_failure_eye_blinks_preview_txt">Check if someone blinked</string>
+    <string name="cam_strings_failure_focus_too_close_txt">Move farther away from the object</string>
+    <string name="cam_strings_fast_capturing_screen_locked_apps_list_txt">To change the Capturing mode, unlock the screen. Unlock?</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_txt">Swipe the screen to switch to another capturing mode such as Video or Manual, and switch between the main and front camera.</string>
+    <string name="cam_strings_feature_bokeh_cameraui_description_txt">"To adjust Bokeh effect, tap Bokeh icon in the viewfinder and move the slider.
+This function is supported in Photo mode.
+Let's take impressive photos which focused on the object against the soft out-of-focus background."</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_2_txt">Stay at least 1 meter away from the object when taking photos or recording videos with dual camera. Getting closer to the object may cause a shift in the view point or color.</string>
+    <string name="cam_strings_feature_dual_camera_video_description_txt">For great close-up photos, switch to single camera by turning dual camera off in the viewfinder. You can change it back anytime by tapping the settings button.</string>
+    <string name="cam_strings_feature_eye_af_description_with_animal_txt">"You can take photos that focus on the eyes of people or animals.
+To change focus targets, tap the face of the subject you would like to focus on. To enable or disable this function, tap the icon shown when faces are detected. This function is compatible with photo and manual mode."</string>
+    <string name="cam_strings_feature_hand_shutter_description_txt">"Turn your palm toward the camera. Self-timer will be turned on when your palm is recognized. To make it easy to be recognized, extend your fingers upward.
+To enable this function, go to Photo (front) and select Hand Shutter option in Auto capturing."</string>
+    <string name="cam_strings_feature_lens_correction_description_nosuperwidemode_txt">"When using the ultra-wide lens, you can select a priority. By selecting Prioritize image quality, you can capture dynamic high-quality images. If you select Prioritize correction for distortion, you can reduce visual distortion.
+These features are enabled when using the ultra-wide lens in Photo mode. You can change the settings from Ultra-wide lens correction (photo) under the camera settings."</string>
+    <string name="cam_strings_feature_lens_correction_description_txt">When using the ultra-wide lens, you can select a priority. By selecting Prioritize image quality, you can capture dynamic high-quality images. If you select Prioritize correction for distortion, you can reduce visual distortion. These features are enabled when using the ultra-wide lens in Photo mode. You can change the settings from Lens correction (photo) under the camera settings once you have switched to the ultra-wide lens.</string>
+    <string name="cam_strings_feature_list_banner_txt">Check out the new features</string>
+    <string name="cam_strings_feature_night_mode_description_txt">"You can take clear photos even at night or in dark conditions.
+It may take time to fully process the image after taking a photo, so hold the camera still until it is complete."</string>
+    <string name="cam_strings_feature_oneshot_description_txt">"Instantly record a precious moment in %1$s fps slow motion by tapping the button in the center of the screen.
+Recording in bright conditions will help you create a better video."</string>
+    <string name="cam_strings_feature_predictive_launch_description_txt">"You can launch the camera quickly. Swiftly lift your device in landscape mode and aim the camera towards an object. The camera will be launched automatically.
+You can select your favorite way to use this feature from Smart launch in camera settings."</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"You can quickly access the web or connect to Wi-Fi by scanning a QR code.
+This function is active while in Photo mode. You can change this setting from QR Code reader in Camera settings."</string>
+    <string name="cam_strings_feature_sidesense_bar_description_txt">"You can take photos or videos by double-tapping the sensor on the edge of the screen instead of the shutter button.
+This function is compatible with both photo and video mode. You can change this function's settings from Side sense in the camera settings."</string>
+    <string name="cam_strings_feature_transfer_and_tagging_description_txt">"Turning on this function will allow Transfer &amp; Tagging add-on to display photos taken with the Xperia camera. Photos will be saved in the internal storage.
+This function is compatible with photos taken in photo and manual mode.
+You can change the settings from Transfer &amp; Tagging add-on mode in camera settings."</string>
+    <string name="cam_strings_feature_zoom_frames_description_txt">"If you turn this setting on, you can preview what it will look like when you zoom in.
+Center the subject in a frame and tap the zoom ratio to easily zoom in.
+This function is not supported when Still image size is set to 21:9."</string>
+    <string name="cam_strings_flash_night_portrait_hint_txt">Make sure to hold your device still</string>
+    <string name="cam_strings_flash_torch_txt">Flashlight</string>
+    <string name="cam_strings_focus_mf_txt">Manual Focus</string>
+    <string name="cam_strings_focus_mode_multi_af_txt">Multi autofocus</string>
+    <string name="cam_strings_focus_mode_single_af_txt">Single autofocus</string>
+    <string name="cam_strings_fusion_error_too_close_txt">Move farther away from the object</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Cannot start app.
+Make sure the latest version of %1$s is installed and enabled on your device."</string>
+    <string name="cam_strings_hand_shutter_hint_detail_txt">Turn your palm toward the camera. Self-timer will be turned on when your palm is recognized. To make it easy to be recognized, extend your fingers upward.</string>
+    <string name="cam_strings_hand_shutter_hint_txt">Turn your palm toward the camera</string>
+    <string name="cam_strings_hdr_dro_settings_dro_txt">D-Range Optimizer</string>
+    <string name="cam_strings_image_stabilizer_title_txt">Image stabilizer</string>
+    <string name="cam_strings_image_stabilizer_txt">Image stabilizer</string>
+    <string name="cam_strings_lens_correction_for_photo_description_txt">When using the ultra-wide lens, you can select a priority. By selecting Prioritize image quality, you can capture dynamic high-quality images. If you select Prioritize correction for distortion, you can reduce visual distortion.</string>
+    <string name="cam_strings_lens_correction_off_txt">Prioritize image quality</string>
+    <string name="cam_strings_lens_correction_on_txt">Prioritize correction for distortion</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_txt">Stay at least 1 meter away from the object when taking photos with dual camera on. Getting close to the object may cause a shift of the viewpoint or color.</string>
+    <string name="cam_strings_max_file_size_save_failed_txt">Recording stopped due to maximum file size limitation or not enough space on SD card</string>
+    <string name="cam_strings_max_recording_time_save_failed_txt">Recording stopped due to maximum recording time limitation</string>
+    <string name="cam_strings_memory_full_zoom_not_supported_txt">Memory full. Zoom is currently not available.</string>
+    <string name="cam_strings_mfnr_txt">Multi frame noise reduction</string>
+    <string name="cam_strings_multi_window_txt">Drag the middle of the split bar to switch to full screen %1$s to use</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">"Cannot connect with any Sony's Wi-Fi/NFC camera when your Xperia is connected with another Xperia."</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">"Only one Sony's Wi-Fi/NFC camera can be connected with your Xperia at a time."</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">"Sony's Wi-Fi/NFC camera"</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">"Cannot connect with any Xperia when your Xperia is connected with a Sony's Wi-Fi/NFC camera."</string>
+    <string name="cam_strings_photometry_center_txt">Center</string>
+    <string name="cam_strings_pleaking_color_txt">Peaking color</string>
+    <string name="cam_strings_predictive_capture_description_txt">"Images are automatically captured by detecting a smile or motion of an object just seconds before you press the shutter button. You can select your favorite photo from up to four captured photos. You won't miss the perfect shot."</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"The camera has been launched automatically by detecting your motion of lifting up your phone in landscape mode and aiming it towards an object.
+You can select your favorite way to use this feature from Smart launch in camera settings."</string>
+    <string name="cam_strings_predictive_launch_guide_circle_txt">Tap inside of the circle to view fullscreen</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_and_capture_txt">Tap inside the circle, then Camera will be launched in fullscreen and a photo taken simultaneously.</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_only_txt">Tap inside the circle and Camera will be launched in fullscreen.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"You can launch the camera quickly. Swiftly lift your device in landscape mode and aim the camera towards an object. The camera will be launched automatically.
+You can select your favorite way to use this feature from Smart launch in camera settings."</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"You can launch the camera quickly. Swing up your device in landscape mode and aim the camera towards an object. The camera will be launched automatically.
+You can turn off this feature from Smart launch in camera settings."</string>
+    <string name="cam_strings_preview_only_front_txt">Only front camera</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">This QR code is not supported</string>
+    <string name="cam_strings_reset_color_brightness_txt">Reset color and brightness</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_or_scene_txt">This setting is not supported for the current resolution or scene. To configure this setting, change resolution or scene selection.</string>
+    <string name="cam_strings_restricted_setting_scene_txt">This setting is not supported for the current scene. To configure this setting, change scene selection.</string>
+    <string name="cam_strings_restricted_setting_slow_motion_txt">Unable to change video size in slow motion mode. To configure this setting, exit slow motion mode.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_or_scene_txt">This setting is not supported for the current video resolution or scene. To configure this setting, change video resolution or scene selection.</string>
+    <string name="cam_strings_restriction_information_txt">Depending on this setting, the following features may be disabled or modified automatically:</string>
+    <string name="cam_strings_runtime_permission_rationale_location_txt">To retrieve location</string>
+    <string name="cam_strings_runtime_permission_rationale_microphone_txt">To record sound</string>
+    <string name="cam_strings_scenes_soft_skin_cy_txt">Soft skin</string>
+    <string name="cam_strings_shutter_trigger_txt">Auto capturing</string>
+    <string name="cam_strings_side_sense_bar_description_txt">"You can take photos or videos by double-tapping the sensor on the edge of the screen instead of the shutter button.
+This function is compatible with both photo and video mode.
+
+This function cannot be used while Operate on inner edge of screen is turned on under Configure touch position in the Side sense settings."</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Instantly record a precious moment in %1$s fps slow motion by tapping the button in the center of the screen.
+Recording in bright conditions will help you create a better video."</string>
+    <string name="cam_strings_slow_motion_shot_hint_1_txt">You can record a right moment with %1$s fps by tapping the center button</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Instantly record a precious moment in %1$s fps slow motion by tapping the button in the center of the screen</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_2_txt">Record a video and then edit it to make select parts in slow motion. Tap the button in center of the screen to set the parts as slow motion.</string>
+    <string name="cam_strings_slow_motion_super_hint_2_txt">"Tap the button in the center
+at the right moment"</string>
+    <string name="cam_strings_slow_motion_super_tutorial_3_txt">Tap the button in the center of the screen to record in slow motion. Tap stop button to stop recording.</string>
+    <string name="cam_strings_soft_skin_effect_cy_txt">Soft skin effect</string>
+    <string name="cam_strings_superior_auto_color_txt">Color</string>
+    <string name="cam_strings_sw_licence_title_txt">Software Licenses</string>
+    <string name="cam_strings_touch_capturing_only_front_txt">Only front camera</string>
+    <string name="cam_strings_transfer_and_tagging_description_txt">"Turning on this function will allow Transfer &amp; Tagging add-on to display photos taken with the Xperia camera. Photos will be saved in the internal storage.
+This function is compatible with photos taken in photo and manual mode."</string>
+    <string name="cam_strings_video_explanatory_4k2k_setting_txt">For stable 4K video recording, you must not change this setting unless you use a high-speed SD card (UHS Speed Class 1 or higher, or Speed Class 10 recommended).</string>
+    <string name="cam_strings_video_explanatory_slowmotion_setting_txt">"For stable slow motion video recording, don't change this setting unless you use a high-speed SD card (UHS Speed Class 1 or higher, or Speed Class 10 recommended)."</string>
+    <string name="cam_strings_video_explanatory_txt">"For stable video recording, we recommend you change data storage to Internal storage. Would you like to change now?
+
+If you continue to use SD card as data storage, be sure to use a high-speed SD card (UHS Speed Class 1 or higher, or Speed Class 10 recommended)."</string>
+    <string name="cam_strings_video_fusion_tutorial_1_txt">Keep at least 1 meter away from the object when recording with dual camera. Getting close to the object may cause a shift of the view point or color when recording in Ultra-high sensitivity.</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">To take great close-up photos, tap No and switch to single camera. You can change it back to dual camera anytime by tapping the button on the viewfinder.</string>
+    <string name="cam_strings_video_resolution_4k_file_type_txt">File format (4K)</string>
+    <string name="cam_strings_video_shutter_trigger_txt">Auto capturing (video)</string>
+    <string name="cam_strings_video_stabilizer_txt">Video stabilization</string>
+    <string name="cam_strings_zoom_frames_description_txt">"If you turn this setting on, you can preview what it will look like when you zoom in.
+Center the subject in a frame and tap the zoom ratio to easily zoom in."</string>
+    <string name="expand_button_title">Advanced</string>
+    <string name="search_menu_title">Search</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="v7_preference_off">OFF</string>
+    <string name="v7_preference_on">ON</string>
+</resources>

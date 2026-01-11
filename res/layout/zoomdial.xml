@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/zoom_dial_view" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:rotation="-90.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.sonyericsson.android.camera.view.baselayout.zoom.ZoomDial android:layout_gravity="center|bottom" android:id="@id/scroll_area_base" android:clipChildren="false" android:layout_width="@dimen/zoom_dial_container_width" android:layout_height="@dimen/zoom_dial_container_height" android:layout_marginBottom="@dimen/zoom_dial_bottom_margin" android:splitMotionEvents="false" android:layoutDirection="ltr">
+        <FrameLayout android:layout_gravity="bottom" android:id="@id/scroll_area" android:visibility="invisible" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:orientation="horizontal" android:id="@id/zoom_dial_wide_label_container" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                    <LinearLayout android:id="@id/wide_non_display_area" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                        <View android:layout_width="@dimen/zoom_dial_wide_label_left_margin" android:layout_height="wrap_content" />
+                        <FrameLayout android:id="@id/zoom_dial_wide_wide_label_layout" android:layout_width="@dimen/zoom_dial_wide_label_container_width" android:layout_height="@dimen/zoom_dial_wide_label_container_height">
+                            <ImageView android:layout_gravity="center" android:id="@id/zoom_dial_wide_label_wide_circle" android:background="@drawable/cam_core_zoom_button_icn" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="" />
+                            <TextView android:textSize="@dimen/zoom_dial_wide_label_text_size" android:gravity="center" android:layout_gravity="center" android:id="@id/zoom_dial_wide_label_wide_text" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        </FrameLayout>
+                    </LinearLayout>
+                    <View android:layout_width="@dimen/zoom_dial_wide_label_right_margin" android:layout_height="wrap_content" />
+                </LinearLayout>
+                <FrameLayout android:id="@id/dial_bar_base" android:clipChildren="false" android:layout_width="0.0dip" android:layout_height="fill_parent">
+                    <FrameLayout android:id="@id/dial_bar" android:layout_width="@dimen/zoom_dial_slider_width" android:layout_height="fill_parent">
+                        <LinearLayout android:orientation="horizontal" android:layout_width="@dimen/zoom_dial_slider_width" android:layout_height="wrap_content">
+                            <View android:layout_width="@dimen/zoom_dial_dot_left_margin" android:layout_height="fill_parent" />
+                            <LinearLayout android:gravity="start|center" android:orientation="horizontal" android:id="@id/scale_dot0" android:layout_width="@dimen/zoom_dial_text_dot_span_0dot7_1" android:layout_height="fill_parent" />
+                            <View android:layout_width="@dimen/zoom_dial_dot_center_margin" android:layout_height="fill_parent" />
+                            <LinearLayout android:gravity="start|center" android:orientation="horizontal" android:id="@id/scale_dot1" android:layout_width="@dimen/zoom_dial_text_dot_span_1_2" android:layout_height="fill_parent" />
+                            <View android:layout_width="@dimen/zoom_dial_dot_center_margin" android:layout_height="fill_parent" />
+                            <LinearLayout android:gravity="start|center" android:orientation="horizontal" android:id="@id/scale_dot2" android:layout_width="@dimen/zoom_dial_text_dot_span_2_10" android:layout_height="fill_parent" />
+                            <View android:layout_width="0.0dip" android:layout_height="fill_parent" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="start|center" android:orientation="horizontal" android:id="@id/circle_background" android:layout_width="@dimen/zoom_dial_slider_width" android:layout_height="fill_parent">
+                            <FrameLayout android:id="@id/circle_background_zoom0" android:layout_width="@dimen/zoom_dial_wide_label_circle_container_width" android:layout_height="@dimen/zoom_dial_wide_label_circle_container_height">
+                                <ImageView android:layout_gravity="center" android:id="@id/circle_zoom0" android:background="@drawable/cam_core_zoom_button_icn" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                            </FrameLayout>
+                            <View android:layout_width="@dimen/zoom_dial_text_span_0dot7_1" android:layout_height="fill_parent" />
+                            <FrameLayout android:id="@id/circle_background_zoom1" android:layout_width="@dimen/zoom_dial_wide_label_circle_container_width" android:layout_height="@dimen/zoom_dial_wide_label_circle_container_height">
+                                <ImageView android:layout_gravity="center" android:id="@id/circle_zoom1" android:background="@drawable/cam_core_zoom_button_icn" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                            </FrameLayout>
+                            <View android:layout_width="@dimen/zoom_dial_text_span_1_2" android:layout_height="fill_parent" />
+                            <FrameLayout android:id="@id/circle_background_zoom2" android:layout_width="@dimen/zoom_dial_wide_label_circle_container_width" android:layout_height="@dimen/zoom_dial_wide_label_circle_container_height">
+                                <ImageView android:layout_gravity="center" android:id="@id/circle_zoom2" android:background="@drawable/cam_core_zoom_button_icn" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                            </FrameLayout>
+                            <View android:layout_width="@dimen/zoom_dial_text_span_2_10" android:layout_height="fill_parent" />
+                            <FrameLayout android:id="@id/circle_background_zoom3" android:layout_width="@dimen/zoom_dial_wide_label_circle_container_width" android:layout_height="@dimen/zoom_dial_wide_label_circle_container_height">
+                                <ImageView android:layout_gravity="center" android:id="@id/circle_zoom3" android:background="@drawable/cam_core_zoom_button_icn" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                            </FrameLayout>
+                        </LinearLayout>
+                        <LinearLayout android:gravity="start|center" android:orientation="horizontal" android:id="@id/zoom_dial_slider" android:layout_width="@dimen/zoom_dial_slider_width" android:layout_height="fill_parent">
+                            <TextView android:textSize="@dimen/zoom_dial_point_text_size" android:textColor="@color/zoom_dial_text_color" android:gravity="center" android:id="@id/zoom_dial_scale0" android:background="@drawable/cam_core_zoom_button_icn" android:focusableInTouchMode="true" android:layout_width="@dimen/zoom_dial_point_text_width" android:layout_height="@dimen/zoom_dial_point_text_height" android:contentDescription="" style="@style/ZoomDialPointTextDropShadow" />
+                            <View android:id="@id/zoom_dial_scale0dot7_1_margin" android:layout_width="@dimen/zoom_dial_text_span_0dot7_1" android:layout_height="fill_parent" />
+                            <TextView android:textSize="@dimen/zoom_dial_point_text_size" android:textColor="@color/zoom_dial_text_color" android:gravity="center" android:id="@id/zoom_dial_scale1" android:background="@drawable/cam_core_zoom_button_icn" android:focusableInTouchMode="true" android:layout_width="@dimen/zoom_dial_point_text_width" android:layout_height="@dimen/zoom_dial_point_text_height" android:contentDescription="" style="@style/ZoomDialPointTextDropShadow" />
+                            <View android:id="@id/zoom_dial_scale1_2_margin" android:layout_width="@dimen/zoom_dial_text_span_1_2" android:layout_height="fill_parent" />
+                            <TextView android:textSize="@dimen/zoom_dial_point_text_size" android:textColor="@color/zoom_dial_text_color" android:gravity="center" android:id="@id/zoom_dial_scale2" android:background="@drawable/cam_core_zoom_button_icn" android:focusableInTouchMode="true" android:layout_width="@dimen/zoom_dial_point_text_width" android:layout_height="@dimen/zoom_dial_point_text_height" android:contentDescription="" style="@style/ZoomDialPointTextDropShadow" />
+                            <View android:id="@id/zoom_dial_scale2_3_margin" android:layout_width="@dimen/zoom_dial_text_span_2_10" android:layout_height="fill_parent" />
+                            <TextView android:textSize="@dimen/zoom_dial_point_text_size" android:textColor="@color/zoom_dial_text_color" android:gravity="center" android:id="@id/zoom_dial_scale3" android:background="@drawable/cam_core_zoom_button_icn" android:layout_width="@dimen/zoom_dial_point_text_width" android:layout_height="@dimen/zoom_dial_point_text_height" style="@style/ZoomDialPointTextDropShadow" />
+                        </LinearLayout>
+                    </FrameLayout>
+                </FrameLayout>
+                <View android:layout_width="@dimen/zoom_dial_gradient_mask_size" android:layout_height="fill_parent" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/zoom_dial_image_Layout" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:id="@id/zoom_dial_left_blur_area" android:layout_width="@dimen/zoom_dial_gradient_mask_size" android:layout_height="fill_parent" />
+                <ImageView android:id="@id/zoom_dial_image_center_area" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <ImageView android:id="@id/zoom_dial_right_blur_area" android:layout_width="@dimen/zoom_dial_gradient_mask_size" android:layout_height="fill_parent" />
+            </LinearLayout>
+        </FrameLayout>
+        <com.sonyericsson.android.camera.view.baselayout.zoom.CircleView android:layout_gravity="center" android:id="@id/zoom_dial_button_circle" android:focusableInTouchMode="true" android:layout_width="@dimen/zoom_dial_wide_label_circle_width" android:layout_height="@dimen/zoom_dial_wide_label_circle_height" />
+        <TextView android:textSize="@dimen/zoom_dial_button_text_size" android:textColor="@color/zoom_dial_button_text_color" android:gravity="center" android:layout_gravity="center" android:id="@id/zoom_dial_button_text" android:focusableInTouchMode="false" android:layout_width="@dimen/zoom_dial_button_text_width" android:layout_height="@dimen/zoom_dial_button_text_height" />
+        <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/center_layout" android:background="@drawable/cam_core_zoom_base_icon" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.sonyericsson.android.camera.view.baselayout.zoom.CircleView android:layout_gravity="center_vertical" android:id="@id/zoom_dial_button_circle_left" android:padding="12.0dip" android:focusableInTouchMode="false" android:layout_width="@dimen/zoom_dial_wide_label_circle_container_width" android:layout_height="@dimen/zoom_dial_wide_label_circle_container_width" android:layout_marginStart="2.0dip" android:layout_marginEnd="4.0dip" />
+            <com.sonyericsson.android.camera.view.baselayout.zoom.CircleView android:layout_gravity="center_vertical" android:id="@id/zoom_dial_button_circle_center" android:focusableInTouchMode="false" android:layout_width="@dimen/zoom_dial_wide_label_circle_container_width" android:layout_height="@dimen/zoom_dial_wide_label_circle_container_width" />
+            <com.sonyericsson.android.camera.view.baselayout.zoom.CircleView android:layout_gravity="center_vertical" android:id="@id/zoom_dial_button_circle_right" android:focusableInTouchMode="false" android:layout_width="@dimen/zoom_dial_wide_label_circle_container_width" android:layout_height="@dimen/zoom_dial_wide_label_circle_container_width" android:layout_marginStart="4.0dip" android:layout_marginEnd="2.0dip" />
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="@dimen/zoom_dial_container_height">
+            <TextView android:textSize="@dimen/zoom_dial_button_text_size" android:textColor="@color/zoom_dial_button_text_color" android:gravity="center" android:layout_gravity="center" android:id="@id/zoom_dial_button_text_left" android:focusableInTouchMode="false" android:layout_width="@dimen/zoom_dial_button_text_width" android:layout_height="@dimen/zoom_dial_button_text_height" android:contentDescription="" android:layout_marginEnd="4.0dip" />
+            <TextView android:textSize="@dimen/zoom_dial_button_text_size" android:textColor="@color/zoom_dial_button_text_color" android:gravity="center" android:layout_gravity="center" android:id="@id/zoom_dial_button_text_center" android:focusableInTouchMode="false" android:layout_width="@dimen/zoom_dial_button_text_width" android:layout_height="@dimen/zoom_dial_button_text_height" android:contentDescription="" />
+            <TextView android:textSize="@dimen/zoom_dial_button_text_size" android:textColor="@color/zoom_dial_button_text_color" android:gravity="center" android:layout_gravity="center" android:id="@id/zoom_dial_button_text_right" android:focusableInTouchMode="false" android:layout_width="@dimen/zoom_dial_button_text_width" android:layout_height="@dimen/zoom_dial_button_text_height" android:contentDescription="" android:layout_marginStart="4.0dip" />
+        </LinearLayout>
+    </com.sonyericsson.android.camera.view.baselayout.zoom.ZoomDial>
+    <View android:layout_gravity="center|bottom" android:id="@id/event_handler" android:layout_width="@dimen/zoom_dial_container_width" android:layout_height="@dimen/zoom_dial_container_height" android:layout_marginBottom="@dimen/zoom_dial_bottom_margin" />
+</FrameLayout>

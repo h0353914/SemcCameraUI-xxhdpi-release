@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">Navigasi skrin utama</string>
+    <string name="abc_action_bar_up_description">Navigasi ke atas</string>
+    <string name="abc_action_menu_overflow_description">Lagi pilihan</string>
+    <string name="abc_action_mode_done">Selesai</string>
+    <string name="abc_activity_chooser_view_see_all">Lihat semua</string>
+    <string name="abc_activitychooserview_choose_application">Pilih apl</string>
+    <string name="abc_capital_off">MATI</string>
+    <string name="abc_capital_on">HIDUP</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">padam</string>
+    <string name="abc_menu_enter_shortcut_label">enter</string>
+    <string name="abc_menu_function_shortcut_label">Fungsi+</string>
+    <string name="abc_menu_meta_shortcut_label">Meta+</string>
+    <string name="abc_menu_shift_shortcut_label">Shift+</string>
+    <string name="abc_menu_space_shortcut_label">ruang</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">Menu+</string>
+    <string name="abc_search_hint">Cari…</string>
+    <string name="abc_searchview_description_clear">Kosongkan pertanyaan</string>
+    <string name="abc_searchview_description_query">Pertanyaan carian</string>
+    <string name="abc_searchview_description_search">Cari</string>
+    <string name="abc_searchview_description_submit">Serah pertanyaan</string>
+    <string name="abc_searchview_description_voice">Carian suara</string>
+    <string name="abc_shareactionprovider_share_with">Kongsi dengan</string>
+    <string name="abc_shareactionprovider_share_with_application">Kongsi dengan %s</string>
+    <string name="abc_toolbar_collapse_description">Runtuhkan</string>
+    <string name="call_notification_answer_action">Jawab</string>
+    <string name="call_notification_answer_video_action">Video</string>
+    <string name="call_notification_decline_action">Tolak</string>
+    <string name="call_notification_hang_up_action">Tamatkan Panggilan</string>
+    <string name="call_notification_incoming_text">Panggilan masuk</string>
+    <string name="call_notification_ongoing_text">Panggilan sedang berlangsung</string>
+    <string name="call_notification_screening_text">Menyaring panggilan masuk</string>
+    <string name="cam_3d_strings_creating_but_incorrect_direction_txt">Tidak dapat menyelesaikan penangkapan. Sila sorot ke arah yang betul.</string>
+    <string name="cam_3d_strings_creating_but_too_quick_txt">Tidak dapat menyelesaikan penangkapan. Sila sorot dengan lebih perlahan.</string>
+    <string name="cam_3d_strings_creating_but_too_slow_txt">Tidak dapat menyelesaikan penangkapan. Sila sorot dengan lebih cepat.</string>
+    <string name="cam_3d_strings_description_sweep_panorama_txt">Ambil foto panoramik dengan meleretkan kamera anda</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Mewujudkan fail berikut:
+- Imej Berbilang Sudut
+- Imej 3D
+Nota: Fail ini mengandungi kawasan kelabu."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Mewujudkan fail berikut:
+- Imej Berbilang Sudut
+- Imej 3D"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Memproses...
+Imej ini mengandungi kawasan kelabu"</string>
+    <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Menyimpan imej</string>
+    <string name="cam_3d_strings_dialog_processing_txt">Memproses...</string>
+    <string name="cam_3d_strings_error_application_busy_txt">Sila tunggu beberapa saat untuk melancarkan kamera 3D</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_title_txt">Ralat</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">Cabut pemalam kabel. Anda tidak boleh menangkap foto dalam mod ini dengan kabel disambungkan.</string>
+    <string name="cam_3d_strings_error_direction_txt">Tidak boleh mengambil gambar. Sila sorot ke arah yang betul.</string>
+    <string name="cam_3d_strings_error_too_quick_txt">Tidak boleh mengambil gambar. Sila sorot dengan lebih perlahan.</string>
+    <string name="cam_3d_strings_error_too_slow_txt">Tidak boleh mengambil gambar. Sila sorot dengan lebih cepat.</string>
+    <string name="cam_3d_strings_setting_shooting_direction_down_txt">Ke bawah</string>
+    <string name="cam_3d_strings_setting_shooting_direction_left_txt">Ke kiri</string>
+    <string name="cam_3d_strings_setting_shooting_direction_right_txt">Ke kanan</string>
+    <string name="cam_3d_strings_setting_shooting_direction_title_txt">Arah rakaman</string>
+    <string name="cam_3d_strings_setting_shooting_direction_up_txt">Ke atas</string>
+    <string name="cam_3d_strings_shooting_direction_guide_txt">Tukar arah dgn mengetik ikon di sebelah kiri</string>
+    <string name="cam_3d_strings_shooting_failure_title_txt">Tidak boleh tangkap</string>
+    <string name="cam_3d_strings_shooting_guide_down_to_up_txt">Sorot dari bawah ke atas</string>
+    <string name="cam_3d_strings_shooting_guide_left_to_right_txt">Sorot dari kiri ke kanan</string>
+    <string name="cam_3d_strings_shooting_guide_pan_too_fast_txt">Sorot dengan lebih perlahan</string>
+    <string name="cam_3d_strings_shooting_guide_press_key_txt">Tekan butang pengatup dan sorot kamera dengan perlahan</string>
+    <string name="cam_3d_strings_shooting_guide_right_to_left_txt">Sorot dari kanan ke kiri</string>
+    <string name="cam_3d_strings_shooting_guide_touch_cap_txt">Ketik butang kamera, kemudian sorot kamera dengan perlahan</string>
+    <string name="cam_3d_strings_shooting_guide_up_to_down_txt">Sorot dari atas ke bawah</string>
+    <string name="cam_3d_strings_sweep_panorama_short_txt">Sapuan Panorama</string>
+    <string name="cam_app_shortcut_front_photo_txt">Foto depan</string>
+    <string name="cam_app_shortcut_manual_txt">Manual</string>
+    <string name="cam_app_shortcut_video_txt">Video</string>
+    <string name="cam_face_eye_af_settings_on_txt">Pengesanan Muka/AF Mata Hidup</string>
+    <string name="cam_string_dualrec_m_apr_txt">April %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_aug_txt">Ogos %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_dec_txt">Disember %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_feb_txt">Februari %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_jan_txt">Januari %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_jul_txt">Julai %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_jun_txt">Jun %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_mar_txt">Mac %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_may_txt">Mei %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_nov_txt">November %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_oct_txt">Oktober %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_m_sep_txt">September %1$td, %2$tY</string>
+    <string name="cam_string_dualrec_t_am_txt">%1$tl:%2$tM AM</string>
+    <string name="cam_string_dualrec_t_pm_txt">%1$tl:%2$tM PM</string>
+    <string name="cam_strings_1x1_frame_lines_txt">Garisan bingkai 1:1</string>
+    <string name="cam_strings_accessibility_auto_review_txt">Pratonton foto auto</string>
+    <string name="cam_strings_accessibility_auto_scene_recognized_txt">Pemandangan dicam sebagai %1$s</string>
+    <string name="cam_strings_accessibility_back_main_txt">Kembali</string>
+    <string name="cam_strings_accessibility_back_txt">Kembali</string>
+    <string name="cam_strings_accessibility_capturing_mode_txt">Mod tangkapan</string>
+    <string name="cam_strings_accessibility_close_color_button_txt">Tutup pelarasan warna</string>
+    <string name="cam_strings_accessibility_color_brightness_button_txt">Tutup pelarasan warna dan kecerahan</string>
+    <string name="cam_strings_accessibility_condition_detected_txt">Keadaan dikesan sebagai %1$s</string>
+    <string name="cam_strings_accessibility_condition_motion_txt">Bergerak</string>
+    <string name="cam_strings_accessibility_condition_stable_txt">Stabil</string>
+    <string name="cam_strings_accessibility_condition_walk_txt">Berjalan</string>
+    <string name="cam_strings_accessibility_dual_effect_menu_txt">Kesan kamera dual</string>
+    <string name="cam_strings_accessibility_eyeaf_off_txt">Ketik dua kali untuk menghidupkan Eye AF</string>
+    <string name="cam_strings_accessibility_eyeaf_on_txt">Ketik dua kali untuk mematikan Eye AF</string>
+    <string name="cam_strings_accessibility_flash_torch_txt">Lampu suluh</string>
+    <string name="cam_strings_accessibility_flash_txt">Denyar</string>
+    <string name="cam_strings_accessibility_fusion_auto_txt">Ketik dua kali untuk bertukar ke kamera dual auto</string>
+    <string name="cam_strings_accessibility_fusion_off_txt">Ketik dua kali untuk menghidupkan Kamera dual</string>
+    <string name="cam_strings_accessibility_fusion_on_txt">Ketik dua kali untuk mematikan Kamera dual</string>
+    <string name="cam_strings_accessibility_image_quality_control_exposure_value_txt">Nilai dedahan</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_deselected_txt">Dinyahpilih auto</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_selected_txt">Dipilih auto</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_txt">Fokus auto</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_adjusted_txt">Panjang fokus berubah</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_txt">Fokus manual</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_txt">Fokus</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_deselected_txt">Dinyahpilih auto</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_selected_txt">Dipilih auto</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_txt">Kelajuan pengatup</string>
+    <string name="cam_strings_accessibility_image_quality_control_white_balance_txt">Imbangan putih</string>
+    <string name="cam_strings_accessibility_information_txt">Maklumat</string>
+    <string name="cam_strings_accessibility_menu_txt">Menu</string>
+    <string name="cam_strings_accessibility_not_configurable_txt">Tidak dikonfigurasi</string>
+    <string name="cam_strings_accessibility_open_color_button_txt">Buka pelarasan warna</string>
+    <string name="cam_strings_accessibility_other_settings_txt">Tetapan lain</string>
+    <string name="cam_strings_accessibility_pause_button_txt">Jeda</string>
+    <string name="cam_strings_accessibility_photo_setting_txt">Tetapan kamera</string>
+    <string name="cam_strings_accessibility_predictive_capture_txt">Tangkapan Ramalan</string>
+    <string name="cam_strings_accessibility_recent_photo_txt">Susunan foto terbaru</string>
+    <string name="cam_strings_accessibility_recording_button_txt">Rakam</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_button_txt">Gerak perlahan</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_exti_button_txt">Keluar Gerak perlahan</string>
+    <string name="cam_strings_accessibility_recording_stop_button_txt">Berhenti</string>
+    <string name="cam_strings_accessibility_self_timer_stop_button_txt">Berhenti mengira undur</string>
+    <string name="cam_strings_accessibility_shutter_button_txt">Butang pengatup</string>
+    <string name="cam_strings_accessibility_soundphoto_play_txt">Mainkan bunyi</string>
+    <string name="cam_strings_accessibility_superior_auto_color_brightness_txt">Pelarasan warna dan kecerahan</string>
+    <string name="cam_strings_accessibility_swf_normal_txt">Ketik dua kali untuk menukar ke mod normal</string>
+    <string name="cam_strings_accessibility_swf_wide_txt">Ketik dua kali untuk menukar ke mod sudut luas</string>
+    <string name="cam_strings_accessibility_switch_to_front_by_swiping_txt">Ditukar ke kamera depan</string>
+    <string name="cam_strings_accessibility_switch_to_front_txt">Ketik dua kali untuk bertukar ke kamera depan</string>
+    <string name="cam_strings_accessibility_switch_to_main_by_swiping_txt">Ditukar ke kamera utama</string>
+    <string name="cam_strings_accessibility_switch_to_main_txt">Ketik dua kali untuk menukar ke kamera utama</string>
+    <string name="cam_strings_accessibility_switch_to_photo_txt">Ketik dua kali untuk bertukar kepada kamera</string>
+    <string name="cam_strings_accessibility_switch_to_video_txt">Ketik dua kali untuk bertukar kepada video</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">Ketik dua kali untuk menghidupkan HDR</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_on_txt">Ketik dua kali untuk mematikan HDR</string>
+    <string name="cam_strings_accessibility_video_setting_txt">Tetapan video</string>
+    <string name="cam_strings_accessibility_viewer_txt">Buka dengan pemapar imej</string>
+    <string name="cam_strings_accessibility_zoom_ratio_with_number_txt">%1$sx</string>
+    <string name="cam_strings_advanced_setting_geo_tag_both_off_txt">Untuk menyimpan lokasi, anda perlu mendayakan GPS dan/atau rangkaian wayarles. Dayakan sekarang?</string>
+    <string name="cam_strings_advanced_setting_geo_tag_title_txt">Simpan lokasi</string>
+    <string name="cam_strings_ai_face_restore_txt">Tajamkan muka</string>
+    <string name="cam_strings_application_name_creative_effect_txt">Kesan kreatif</string>
+    <string name="cam_strings_application_name_dualrec_txt">Muka dalam gambar</string>
+    <string name="cam_strings_application_name_facefusion_txt">Topeng AR</string>
+    <string name="cam_strings_application_name_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_application_name_multicam_txt">Berbilang kamera</string>
+    <string name="cam_strings_application_name_night_mode_txt">Mod malam</string>
+    <string name="cam_strings_application_name_night_shooting_txt">Mod malam</string>
+    <string name="cam_strings_application_name_soundphoto_txt">Sound Photo</string>
+    <string name="cam_strings_application_name_sweep_panorama_txt">Sapuan Panorama</string>
+    <string name="cam_strings_application_name_timeshift_txt">Timeshift burst</string>
+    <string name="cam_strings_application_name_txt">Kamera</string>
+    <string name="cam_strings_application_name_video_txt">Video</string>
+    <string name="cam_strings_apps_list_add_txt">Tambah</string>
+    <string name="cam_strings_apps_list_downloadable_txt">Boleh dimuat turun</string>
+    <string name="cam_strings_apps_list_installed_txt">Dipasang</string>
+    <string name="cam_strings_apps_list_txt">Apl kamera</string>
+    <string name="cam_strings_art_filter_guesture_guide_general_txt">Gunakan jari anda untuk menyunting foto yang dipaparkan</string>
+    <string name="cam_strings_art_filter_guesture_guide_tap_txt">Ketik bahagian yang anda mahu warnakan</string>
+    <string name="cam_strings_aspect_ratio_txt">Nisbah aspek</string>
+    <string name="cam_strings_auto_hdr_discription_txt">Jika anda menghidupkan tetapan ini, anda boleh mengelakkan dedahan lampau dan kurang dedahan dengan mengesan kontras semasa tangkapan.</string>
+    <string name="cam_strings_auto_hdr_txt">HDR Auto</string>
+    <string name="cam_strings_auto_power_off_txt">Kamera akan ditutup tidak lama lagi kerana tidak aktif</string>
+    <string name="cam_strings_auto_scene_recognition_txt">Pengecaman pemandangan auto</string>
+    <string name="cam_strings_auto_upload_all_title_txt">Muat naik automatik</string>
+    <string name="cam_strings_auto_upload_all_txt">Muat naik automatik</string>
+    <string name="cam_strings_awb_priority_setting_asmosphere_txt">Suasana</string>
+    <string name="cam_strings_awb_priority_setting_standard_txt">Piawaian</string>
+    <string name="cam_strings_awb_priority_setting_txt">Tetapan keutamaan dalam AWB</string>
+    <string name="cam_strings_awb_priority_setting_white_txt">Putih</string>
+    <string name="cam_strings_balloon_tips_modeselector_title_txt">Cuba mod tangkapan yang lain</string>
+    <string name="cam_strings_balloon_tips_modeselector_txt">Ketik di sini untuk pilih mod lain.</string>
+    <string name="cam_strings_balloon_tips_timeshift_title_txt">Pilih detik terbaik</string>
+    <string name="cam_strings_balloon_tips_timeshift_txt">Cari gambar terbaik dengan meluncurkan imej kecil ke atas atau bawah</string>
+    <string name="cam_strings_bokeh_error_covering_lens_txt">Pastikan bahawa lensa bersih dan jari anda tidak berada di ats lensa</string>
+    <string name="cam_strings_bokeh_error_night_shooting_disable_txt">Tangkapan malam tidak tersedia ketika Kesan bokeh dihidupkan</string>
+    <string name="cam_strings_bokeh_error_over_light_txt">Terlalu cerah</string>
+    <string name="cam_strings_bokeh_error_too_close_txt">Bergerak lebih jauh daripada objek</string>
+    <string name="cam_strings_bokeh_error_too_dark_txt">Lebih cahaya diperlukan</string>
+    <string name="cam_strings_bokeh_error_too_far_away_txt">Alih lebih dekat dengan objek</string>
+    <string name="cam_strings_bokeh_error_unknown_txt">Bokeh tidak tersedia buat masa ini</string>
+    <string name="cam_strings_bokeh_title_txt">Bokeh</string>
+    <string name="cam_strings_burst_battery_level_low_txt">Tidak boleh meletus kerana bateri lemah</string>
+    <string name="cam_strings_burst_change_camera_key_setting_txt">Hidupkn Letus dgn ttpn btg pengatup utk mdayakn tngkpn letusn</string>
+    <string name="cam_strings_burst_in_bokeh_effect_txt">Tidak boleh letuskan dengan kesan Bokeh</string>
+    <string name="cam_strings_burst_in_dark_condition_txt">Tidak boleh meletus dalam keadaan gelap</string>
+    <string name="cam_strings_burst_in_long_shutter_speed_txt">Tdk blh letuskn jka kljuan pngatup dttapkn kpd 2 saat atau lbh lama</string>
+    <string name="cam_strings_burst_in_transfer_and_tagging_txt">Tdk blh ambil foto letusn jika mod Transfer &amp; Tagging add-on hidup</string>
+    <string name="cam_strings_burst_in_widecam_txt">Tidak boleh letuskan menggunakan lensa ultralebar</string>
+    <string name="cam_strings_burst_not_supported_front_camera_txt">Tidak boleh meletus menggunakan kamera depan</string>
+    <string name="cam_strings_burst_not_supported_fusion_on_txt">Tidak boleh letuskan dengan Kamera dual Hidup</string>
+    <string name="cam_strings_burst_saved_internal_storage_txt">Imej letusan disimpan ke storan dalaman</string>
+    <string name="cam_strings_burst_shooting_txt">Kelajuan letus</string>
+    <string name="cam_strings_button_continue_txt">Teruskan</string>
+    <string name="cam_strings_button_quit_txt">KELUAR</string>
+    <string name="cam_strings_camera_af_sound_txt">Bunyi fokus auto</string>
+    <string name="cam_strings_camera_apps_tab_txt">APL KAMERA</string>
+    <string name="cam_strings_camera_key_setting_burst_shot_txt">Tangkapan letusan</string>
+    <string name="cam_strings_camera_key_setting_take_photo_txt">Ambil foto</string>
+    <string name="cam_strings_camera_key_setting_txt">Letus dgn btg pengatup</string>
+    <string name="cam_strings_camera_sound_txt">Bunyi</string>
+    <string name="cam_strings_camera_switching_txt">Tukar kamera</string>
+    <string name="cam_strings_camerakey_launch_description_photo_pro_txt">Anda boleh melancarkan aplikasi Kamera atau Photography Pro dengan menekan lama butang pengatup peranti. Ini berfungsi walaupun telefon dalam mod tidur atau berkunci.</string>
+    <string name="cam_strings_camerakey_launch_description_txt">Anda boleh melancarkan aplikasi Kamera dengan menekan terus butang pengatup peranti. Ini berfungsi walaupun telefon dalam mod tidur atau berkunci.</string>
+    <string name="cam_strings_cancel_txt">Batal</string>
+    <string name="cam_strings_capturing_mode_4k2k_txt">Video 4K</string>
+    <string name="cam_strings_capturing_mode_auto_txt">Foto</string>
+    <string name="cam_strings_capturing_mode_button_txt">Mod</string>
+    <string name="cam_strings_capturing_mode_camera_txt">Kamera</string>
+    <string name="cam_strings_capturing_mode_creative_effect_txt">Kesan kreatif</string>
+    <string name="cam_strings_capturing_mode_dualrec_txt">Muka dalam gambar</string>
+    <string name="cam_strings_capturing_mode_facefusion_txt">Topeng AR</string>
+    <string name="cam_strings_capturing_mode_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_capturing_mode_high_frame_rate_txt">Timeshift video</string>
+    <string name="cam_strings_capturing_mode_manual_txt">Manual</string>
+    <string name="cam_strings_capturing_mode_multicam_txt">Berbilang kamera</string>
+    <string name="cam_strings_capturing_mode_network_error_txt">Tidak dapat melengkapkan muat turun data</string>
+    <string name="cam_strings_capturing_mode_photopro_txt">Photo Pro</string>
+    <string name="cam_strings_capturing_mode_portraitselfie_txt">Selfie potret</string>
+    <string name="cam_strings_capturing_mode_slow_motion_txt">Video (Gerak perlahan)</string>
+    <string name="cam_strings_capturing_mode_soundphoto_txt">Sound Photo</string>
+    <string name="cam_strings_capturing_mode_superior_auto_cy_txt">Auto superior</string>
+    <string name="cam_strings_capturing_mode_superior_auto_txt">Auto superior</string>
+    <string name="cam_strings_capturing_mode_timeshift_txt">Timeshift burst</string>
+    <string name="cam_strings_capturing_mode_title_txt">Mod tangkapan</string>
+    <string name="cam_strings_change_full_storage_to_internal_txt">Kad SD penuh. Storan data lalai diubah ke Storan dalaman.</string>
+    <string name="cam_strings_change_save_destination_high_frame_rate_title_txt">Timeshift video</string>
+    <string name="cam_strings_change_save_destination_slowmotion_title_txt">Gerak perlahan</string>
+    <string name="cam_strings_change_save_destination_title_txt">Video 4K</string>
+    <string name="cam_strings_change_storage_to_sd_txt">Kad SD dimasukkan. Ubah storan data lalai ke kad SD?</string>
+    <string name="cam_strings_change_txt">Ubah</string>
+    <string name="cam_strings_close_txt">Tutup</string>
+    <string name="cam_strings_color_brightness_txt">Warna dan kecerahan</string>
+    <string name="cam_strings_common_error_internal_memory_full_txt">Storan dalaman penuh. Sebaliknya, simpan data dalam kad SD?</string>
+    <string name="cam_strings_common_error_internal_memory_unavailable_txt">Storan dalaman rosak atau terlindung tulis. Sebaliknya, simpan data dalam kad SD?</string>
+    <string name="cam_strings_common_error_open_txt">Tidak boleh buka %1$s</string>
+    <string name="cam_strings_common_error_sdcard_full_txt">Kad SD penuh. Sebaliknya, simpan data dalam storan dalaman?</string>
+    <string name="cam_strings_common_error_sdcard_unavailable_txt">Tidak boleh menggunakan kad SD. Sebaliknya, simpan data dalam storan dalaman?</string>
+    <string name="cam_strings_common_explanatory_sdcard_setting_txt">Untuk tangkapan atau rakaman yang stabil, kami mengesyorkan anda mengubah storan data kepada storan dalaman atau menggunakan kad SD berkelajuan tinggi (Kelas 10 atau lebih tinggi disyorkan).</string>
+    <string name="cam_strings_cooling_mode_cooled_down_txt">Sesetengah fungsi telah dinyahdayakan</string>
+    <string name="cam_strings_cooling_mode_learn_more_txt">Baca lbh lanjut</string>
+    <string name="cam_strings_cooling_mode_message1_txt">Fungsi-fungsi berikut dinyahdayakan pada masa ini.</string>
+    <string name="cam_strings_cooling_mode_message2_txt">Sila tunggu peranti anda menjadi sejuk dan kemudian, mulakan semula kamera.</string>
+    <string name="cam_strings_cooling_mode_title_txt">Fungsi berikut dinyahdayakan</string>
+    <string name="cam_strings_cooling_mode_txt">Beberapa fungsi dinyahdayakn dengan kenaikn suhu</string>
+    <string name="cam_strings_core_intelligentactive_txt">Aktif cerdas</string>
+    <string name="cam_strings_cta_description_txt">Benarkan permintaan akses di bawah?</string>
+    <string name="cam_strings_cta_title_txt">Nota</string>
+    <string name="cam_strings_dependency_changed_txt">%1$s telah diubah kepada %2$s</string>
+    <string name="cam_strings_description_4k2k_txt">Rakam video dalam ultra definisi tinggi 4K</string>
+    <string name="cam_strings_description_camera_txt">Ambil foto dan video</string>
+    <string name="cam_strings_description_creative_effect_txt">Pilih kesan untuk foto dan video artistik</string>
+    <string name="cam_strings_description_dualrec_txt">Letak muka anda dalam foto &amp; video menggunakan kamera hadapan &amp; utama</string>
+    <string name="cam_strings_description_facefusion_txt">Topengkan muka anda dengan muka rakan anda untuk mengambil selfie hebat</string>
+    <string name="cam_strings_description_google_lens_txt">Anda blh dptkn butirn lnjut atau ambil tndkan dgn prkra yg anda lihat mggunakn %1$s</string>
+    <string name="cam_strings_description_high_frame_rate_txt">Rakam video kadar bingkai tinggi dan guna kesan gerak perlahan</string>
+    <string name="cam_strings_description_multicam_txt">Rakam adegan sama daripada berbilang sudut pada skrin tunggal</string>
+    <string name="cam_strings_description_shoundphoto_txt">Ambil foto dengan bunyi latar belakang (kicauan burung, dsb.)</string>
+    <string name="cam_strings_description_timeshift_short_txt">Cari foto terbaik dari imej letusan yg diambil sebelum dan selepas tangkapan foto anda</string>
+    <string name="cam_strings_details_txt">Butiran</string>
+    <string name="cam_strings_dialog_4k_unavailable_while_screen_recording_txt">"Tidak boleh menangkap video 4K semasa merakam skrin.
+Sila pilih saiz video selain 4K atau tamatkan rakaman skrin untuk mengambil video."</string>
+    <string name="cam_strings_dialog_60fps_unavailable_while_screen_recording_txt">"Tidak boleh merakam dengan saiz video semasa ketika merakam skrin.
+Sila pilih saiz video selain HD Penuh (60 fps) atau tamatkan rakaman skrin untuk mengambil video."</string>
+    <string name="cam_strings_dialog_battery_level_low_info_txt">Bateri telefon tidak mencukupi. Apabila bateri lemah, kamera akan tertutup secara automatik.</string>
+    <string name="cam_strings_dialog_battery_level_low_recording_txt">Rakaman terhenti kerana bateri lemah. Cas peranti anda dan cuba lagi.</string>
+    <string name="cam_strings_dialog_battery_level_low_using_txt">Tidak boleh menggunakan kamera kerana bateri lemah. Cas peranti anda dan cuba lagi.</string>
+    <string name="cam_strings_dialog_body_accessibility_txt">Kebolehcapaian: &lt;a href=\"%s\">Separa patuh&lt;/a></string>
+    <string name="cam_strings_dialog_body_applicationnotification_1_txt">Aplikasi memerlukan kebenaran berikut untuk melaksanakan tindakan ini.</string>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"Rangkaian
+Untuk menyambung ke Wi-Fi"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_airplane_on_txt">"Mod pesawat hidup.
+Sila matikan mod Pesawat daripada TETAPAN."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_name_txt">"Nama rangkaian: 
+"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_disable_txt">Tidak dilindungi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_enable_txt">Dilindungi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Adakah anda pasti mahu menyambung ke %1$s?</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"Sambung ke %1$s?
+Ketik BUTIRAN untuk melihat maklumat tentang rangkaian Wi-Fi ini."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"Wi-Fi dimatikan dan mod Pesawat dihidupkan.
+Sila ubah tetapan ini dengan mengetik pada TETAPAN."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi dimatikan.
+Sila hidupkan Wi-Fi daripada TETAPAN."</string>
+    <string name="cam_strings_dialog_btn_connect_txt">Sambung</string>
+    <string name="cam_strings_dialog_btn_settings_txt">Tetapan</string>
+    <string name="cam_strings_dialog_burst_information_txt">Untuk mengambil tangkapan berterusan, pilih letusan Timeshift burst dalam aplikasi Kamera</string>
+    <string name="cam_strings_dialog_change_resolution_manual_txt">Manual (Kamera depan)</string>
+    <string name="cam_strings_dialog_change_resolution_superior_auto_txt">Auto superior (Kamera depan)</string>
+    <string name="cam_strings_dialog_change_resolution_txt">Resolusi untuk mod tangkapan berikut telah diubah kepada 13MP (4:3) kerana kemas kini Perisian</string>
+    <string name="cam_strings_dialog_cta_access_txt">%1$s cuba untuk</string>
+    <string name="cam_strings_dialog_cta_allow_txt">Benarkan</string>
+    <string name="cam_strings_dialog_cta_deny_txt">Tolak</string>
+    <string name="cam_strings_dialog_cta_location_info_txt">Mendapatkan semula maklumat lokasi</string>
+    <string name="cam_strings_dialog_cta_turn_on_nfc_txt">Hidupkan NFC</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">Hidupkan Wi-Fi</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">Guna Wi-Fi &amp; data mdh alih</string>
+    <string name="cam_strings_dialog_high_temp_title_txt">Nota</string>
+    <string name="cam_strings_dialog_high_temp_txt">Jika suhu peranti meningkat, apl mungkin tutup semasa digunakan. Rakaman anda akan disimpan secara automatik.</string>
+    <string name="cam_strings_dialog_high_temp_vzw_txt">Mod kamera ini menggunakan banyak sumber telefon anda dan boleh menyebabkan suhu telefon anda meningkat. Untuk menghalang terlampau panas, rakaman video mungkin dihentikan dan aplikasi kamera mungkin ditutup. Rakaman anda akan disimpan secara automatik.</string>
+    <string name="cam_strings_dialog_storage_full_burst_txt">Tangkapan letusan terhenti kerana kehabisan memori. Padamkan beberapa fail untuk mengosongkan sedikit ruang pada storan dalaman.</string>
+    <string name="cam_strings_dialog_title_accessibility_txt">Kebolehcapaian</string>
+    <string name="cam_strings_dialog_title_applicationnotification_txt">Berikan kebenaran</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_connecting_txt">Menyambung...</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">Gagal menyambung ke Wi-Fi</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_password_txt">"
+Perlindungan kata laluan: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_security_txt">"
+Keselamatan: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">Butiran Wi-Fi</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">Tidak boleh menyambung ke Wi-Fi</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Rangkaian Wi-Fi ini ada risiko keselamatan</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Sambung ke Wi-Fi</string>
+    <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">Anda boleh merakam video walaupun dalam pemandangan kontras tinggi dan menjadikannya lebih dramatik dan lebih hampir dengan apa yang anda lihat dalam kehidupan sebenar. Sila gunakan peranti/perkhidmatan yang disokong untuk menikmati kandungan dengan warna dan kecerahan asalnya.</string>
+    <string name="cam_strings_digital_zoom_type_description_txt">"Pilih tetapan zum digital.
+
+Zum digital standard: Zum menggunakan pemprosesan digital berdasarkan data sensor imej.
+Zum resolusi super: Zum menggunakan pemprosesan digital yang lebih mengekalkan kualiti imej asal. Penyimpanan foto mungkin mengambil masa yang lebih lama."</string>
+    <string name="cam_strings_digital_zoom_type_standard_txt">Zum digital standard</string>
+    <string name="cam_strings_digital_zoom_type_super_resolution_txt">Zum resolusi super</string>
+    <string name="cam_strings_digital_zoom_type_txt">Tetapan zum digital</string>
+    <string name="cam_strings_dispbutton_settings_txt">Tetapan butang DISP</string>
+    <string name="cam_strings_distortion_correction_photo_video_txt">Pembetulan untuk herotan</string>
+    <string name="cam_strings_distortion_correction_txt">Pembetulan utk herotan imej</string>
+    <string name="cam_strings_do_not_show_again_txt">Jangan tunjukkan lagi</string>
+    <string name="cam_strings_downloadable_tab_txt">BOLEH DIMUAT TURUN</string>
+    <string name="cam_strings_drive_continuous_txt">Tangkapan berterusan</string>
+    <string name="cam_strings_drive_hybrid_txt">Hibrid tangkapan tunggal berterusan</string>
+    <string name="cam_strings_drive_single_txt">Tangkapan tunggal</string>
+    <string name="cam_strings_drivemode_txt">Mod pacuan</string>
+    <string name="cam_strings_effect_Kaleidoscope_txt">Kaleidoskop</string>
+    <string name="cam_strings_effect_after_image_txt">Jejak gerakan</string>
+    <string name="cam_strings_effect_brightness_contrast_txt">Kecerahan-Kontras</string>
+    <string name="cam_strings_effect_color_filter_tint_txt">Seri Warna</string>
+    <string name="cam_strings_effect_color_pencil_txt">Lakaran warna</string>
+    <string name="cam_strings_effect_comic_txt">Komik</string>
+    <string name="cam_strings_effect_fish_eye_txt">Mata ikan</string>
+    <string name="cam_strings_effect_harris_shutter_txt">Pengatup Harris</string>
+    <string name="cam_strings_effect_hue_saturation_txt">Rona-Ketepuan</string>
+    <string name="cam_strings_effect_miniature_txt">Miniatur</string>
+    <string name="cam_strings_effect_mirror_txt">Cermin</string>
+    <string name="cam_strings_effect_mosaic_txt">Mozek</string>
+    <string name="cam_strings_effect_motion_effects_txt">Kesan gerakan</string>
+    <string name="cam_strings_effect_no_effect_txt">Biasa</string>
+    <string name="cam_strings_effect_nostalgia_txt">Nostalgia</string>
+    <string name="cam_strings_effect_old_film_txt">Filem Lama</string>
+    <string name="cam_strings_effect_partical_color_txt">Warna separa</string>
+    <string name="cam_strings_effect_pencil_txt">Lakaran pensel</string>
+    <string name="cam_strings_effect_selector_txt">Kesan kamera dual</string>
+    <string name="cam_strings_effect_vivid_txt">Terang</string>
+    <string name="cam_strings_error_capture_txt">Mod ini tidak tersedia apabila rakaman sedang berjalan dalam apl lain.</string>
+    <string name="cam_strings_error_delete_txt">Tidak dapat memadam</string>
+    <string name="cam_strings_error_device_not_available_txt">Tidak boleh memulakan kamera. Mulakan semula kamera atau peranti.</string>
+    <string name="cam_strings_error_dialog_title_txt">Ralat</string>
+    <string name="cam_strings_error_fatal_sd_photo_txt">Tidak dapat menyimpan foto. Mungkin terdapat masalah dengan storan data. Jika Storan data ditetapkan pada kad SD, periksa kad SD anda.</string>
+    <string name="cam_strings_error_fatal_sd_video_txt">Tidak dapat memulakan rakaman. Mungkin terdapat masalah dengan storan data. Jika Storan data ditetapkan pada kad SD, periksa kad SD anda.</string>
+    <string name="cam_strings_error_fatal_txt">Ralat tidak diketahui.</string>
+    <string name="cam_strings_error_high_temp_already_high_txt">Xperia anda perlu sejuk. Sila tunggu.</string>
+    <string name="cam_strings_error_high_temp_info_flashlight_unavailable_txt">Suhu peranti terlalu tinggi untuk menggunakan lampu</string>
+    <string name="cam_strings_error_high_temp_info_txt">Suhu peranti sedang meningkat. Jika ia berterusan, aplikasi akan ditutup secara automatik.</string>
+    <string name="cam_strings_error_high_temp_info_video_recording_with_flashlight_unavailable_txt">Suhu peranti terlalu tinggi untuk digunakan dengan lampu dihidupkan</string>
+    <string name="cam_strings_error_high_temp_info_vzw_txt">Suhu peranti sedang meningkat. Jika ia terus meningkat, aplikasi akan tutup secara automatik.</string>
+    <string name="cam_strings_error_high_temp_shut_down_no_txt">Tidak</string>
+    <string name="cam_strings_error_high_temp_shut_down_yes_txt">Ya</string>
+    <string name="cam_strings_error_high_temp_shutting_down_txt">Sekarang, kamera akan mati sementara menjadi sejuk.</string>
+    <string name="cam_strings_error_high_temp_shutting_down_vzw_txt">Sekarang, kamera akan mati sementara menjadi sejuk.</string>
+    <string name="cam_strings_error_internal_memory_full_txt">Ingatan dalaman penuh. Storan data lalai diubah ke kad SD.</string>
+    <string name="cam_strings_error_internal_memory_unavailable_txt">Storan dalaman rosak atau dilindung tulis. Storan data diubah ke kad SD.</string>
+    <string name="cam_strings_error_internal_sd_full_txt">Ingatan penuh. Padam beberapa fail dari kad SD atau storan dalaman.</string>
+    <string name="cam_strings_error_max_faces_exceeded_txt">Bilangan maksimum muka telah dipilih. Sila nyahpilih satu atau lebih muka dan cuba lagi.</string>
+    <string name="cam_strings_error_memory_full_txt">Ingatan penuh. Padamkan beberapa fail daripada kad SD.</string>
+    <string name="cam_strings_error_memory_ims_access_error_txt">Ralat ingatan</string>
+    <string name="cam_strings_error_memory_ims_full_txt">Ingatan penuh. Padamkan beberapa fail daripada ingatan atau tukar storan data lalai.</string>
+    <string name="cam_strings_error_memory_ims_unavailable_txt">Ingatan tidak tersedia</string>
+    <string name="cam_strings_error_memory_title_txt">Ralat ingatan</string>
+    <string name="cam_strings_error_memory_unavailable_txt">Kad SD tidak tersedia</string>
+    <string name="cam_strings_error_message_during_voice_call_title_txt">Panggilan sdng berjalan</string>
+    <string name="cam_strings_error_message_during_voice_call_txt">Kamera tidak tersedia semasa panggilan</string>
+    <string name="cam_strings_error_mms_rec_size_limit_txt">Tidak boleh menambah fail lagi. Saiz fail terlalu besar.</string>
+    <string name="cam_strings_error_save_file_in_progress_txt">Menyimpan. Tindakan tidak tersedia pada masa ini.</string>
+    <string name="cam_strings_error_save_file_txt">Rakaman sedang berjalan dalam apl lain. Tidak dapat merakam.</string>
+    <string name="cam_strings_error_storage_changing_to_internal_txt">Tiada kad SD tersedia. Storan data lalai diubah ke Storan dalaman.</string>
+    <string name="cam_strings_error_video_rec_txt">Tidak boleh merakam. Rakaman atau fungsi berkaitan rakaman mungkin sedang digunakan oleh aplikasi lain.</string>
+    <string name="cam_strings_ev_disable_txt">EV dinyahdayakan. Tetapkan SS atau ISO kpd AUTO.</string>
+    <string name="cam_strings_exposure_level_m03_txt">EV -0.3</string>
+    <string name="cam_strings_exposure_level_m07_txt">EV -0.7</string>
+    <string name="cam_strings_exposure_level_m10_txt">EV -1.0</string>
+    <string name="cam_strings_exposure_level_m13_txt">EV -1.3</string>
+    <string name="cam_strings_exposure_level_m17_txt">EV -1.7</string>
+    <string name="cam_strings_exposure_level_m20_txt">EV -2.0</string>
+    <string name="cam_strings_exposure_level_p03_txt">EV +0.3</string>
+    <string name="cam_strings_exposure_level_p07_txt">EV +0.7</string>
+    <string name="cam_strings_exposure_level_p10_txt">EV +1.0</string>
+    <string name="cam_strings_exposure_level_p13_txt">EV +1.3</string>
+    <string name="cam_strings_exposure_level_p17_txt">EV +1.7</string>
+    <string name="cam_strings_exposure_level_p20_txt">EV +2.0</string>
+    <string name="cam_strings_exposure_level_pm0_txt">EV ±0.0</string>
+    <string name="cam_strings_exposure_level_title_txt">Nilai dedahan</string>
+    <string name="cam_strings_exposure_level_txt">Nilai dedahan</string>
+    <string name="cam_strings_eye_position_tutorial_title_txt">Arah mata</string>
+    <string name="cam_strings_eye_position_tutorial_txt">Kekalkan mata anda pada kamera hadapan berdekatan pembesar suara telinga</string>
+    <string name="cam_strings_face_eyeaf_settings_txt">Pengesanan muka/Tetapan AF mata</string>
+    <string name="cam_strings_facefusion_add_face_txt">Tambah muka</string>
+    <string name="cam_strings_facefusion_delete_mask_txt">Padamkan muka ini? Tindakan ini tidak boleh diterbalikkan.</string>
+    <string name="cam_strings_facefusion_no_face_detected_txt">Tiada muka dikesan</string>
+    <string name="cam_strings_facefusion_point_at_face_txt">Sila halakan kamera ke arah muka</string>
+    <string name="cam_strings_facefusion_select_face_txt">Ketik segi empat untuk memilih muka</string>
+    <string name="cam_strings_failure_camera_shake_preview_txt">Utk halang kabur drpd kamera bergoyang, pgg kamera dgn stabil.</string>
+    <string name="cam_strings_failure_camera_shake_txt">Foto mungkin kabur kerana kamera bergoyang</string>
+    <string name="cam_strings_failure_detection_description_not_blink_txt">"Fungsi ini membantu menghalang kesilapan dengan memaklumkan anda jika jari anda menutup lensa atau jika imej berada luar fokus sebelum mengambil foto.
+Selepas mengambil foto, anda boleh menyemak kabur dan mendapatkan nasihat untuk mengambil semula foto."</string>
+    <string name="cam_strings_failure_detection_description_txt">"Fungsi ini membantu mencegah kesilapan dengan memberitahu anda jika jari anda menutup lensa atau jika imej di luar fokus sebelum mengambil foto.
+Selepas mengambil foto, anda boleh memeriksa kerlipan atau kabur dan mendapatkan nasihat untuk mengambil semula foto."</string>
+    <string name="cam_strings_failure_detection_txt">Tunjukkan nasihat fotografi</string>
+    <string name="cam_strings_failure_eye_blinks_preview_txt">Periksa jika seseorang berkelip</string>
+    <string name="cam_strings_failure_eye_blinks_txt">Mata seseorang mungkin telah berkelip dalam foto ini</string>
+    <string name="cam_strings_failure_finger_covering_lens_after_txt">Jari anda mungkin telah menutup lensa</string>
+    <string name="cam_strings_failure_finger_covering_lens_preview_txt">Priksa kdudukan lnsa kmera dan cuba utk tdk tutup dgn jari anda</string>
+    <string name="cam_strings_failure_finger_covering_lens_txt">Jari anda berada di atas lensa</string>
+    <string name="cam_strings_failure_focus_too_close_txt">Bergerak lebih jauh daripada objek</string>
+    <string name="cam_strings_failure_focus_too_dark_txt">Lebih banyak cahaya diperlukan untuk fokus</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_photo_txt">Lancar dan tangkap</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_video_txt">Lancar dan rakam video</string>
+    <string name="cam_strings_fast_capturing_launch_camera_capture_txt">Lancarkn apl Kamera dan tgkp</string>
+    <string name="cam_strings_fast_capturing_launch_camera_txt">Lancarkan aplikasi Kamera</string>
+    <string name="cam_strings_fast_capturing_launch_only_txt">Lancarkan sahaja</string>
+    <string name="cam_strings_fast_capturing_launch_only_video_txt">Lancar sahaja (kamera video)</string>
+    <string name="cam_strings_fast_capturing_launch_photo_pro_txt">Lancarkan Photography Pro</string>
+    <string name="cam_strings_fast_capturing_screen_locked_apps_list_txt">Untuk mengubah Mod tangkapan, buka kunci skrin. Buka kunci?</string>
+    <string name="cam_strings_fast_capturing_screen_locked_photos_burst_txt">Peranti mesti dibuka kunci untuk bertukar kepada aplikasi pemapar foto selepas mengambil foto letusan semasa skrin dikunci. Buka kunci peranti?</string>
+    <string name="cam_strings_fast_capturing_screen_locked_settings_txt">Untuk membuka tetapan, buka kunci skrin.</string>
+    <string name="cam_strings_fast_capturing_screen_locked_title_txt">Skrin dikunci</string>
+    <string name="cam_strings_fast_capturing_title_txt">Pelancar pantas</string>
+    <string name="cam_strings_fast_capturing_txt">Pelancar pantas</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_title_txt">Tukar mod tangkapan dan kamera</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_txt">Leret skrin untuk bertukar ke mod tangkapan lain seperti Video atau Manual, dan tukar antara kamera utama dan depan.</string>
+    <string name="cam_strings_fast_switch_tutorial_title_txt">Tukar kamera</string>
+    <string name="cam_strings_fast_switch_tutorial_txt">Anda boleh menukar antara kamera utama dan depan dengan meleret skrin</string>
+    <string name="cam_strings_feature_bokeh_cameraui_description_txt">"Untuk melaraskan kesan Bokeh, ketik ikon Bokeh dalam pemidang tilik dan alihkan penggelangsar.
+Fungsi ini disokong dalam mod Foto.
+Mari ambil foto mengagumkan yang fokus pada objek berbanding fokus latar belakang yang sedikit kabur."</string>
+    <string name="cam_strings_feature_bokeh_cameraui_subtitle_txt">Ambil foto dengan kesan bokeh</string>
+    <string name="cam_strings_feature_bokeh_cameraui_title_txt">Kesan bokeh</string>
+    <string name="cam_strings_feature_bokeh_description_txt">"Ambil foto mengagumkan dengan fokus tajam pada objek dengan latar belakang yang lembut dan luar fokus.
+Untuk menggunakan mod ini, ketik ikon MOD dalam pemidang tilik, kemudian pilih Bokeh."</string>
+    <string name="cam_strings_feature_bokeh_subtitle_txt">Bokeh</string>
+    <string name="cam_strings_feature_bokeh_title_txt">Bokeh</string>
+    <string name="cam_strings_feature_dual_camera_manual_description_txt">Anda boleh menghidupkan dan mematikan kamera dual dalam mod manual. Hidupkannya untuk mengambil foto hingar rendah dalam keadaan cahaya lemah. Matikannya untuk mengambil foto jarak dekat.</string>
+    <string name="cam_strings_feature_dual_camera_manual_subtitle_txt">Mengambil foto dgn kamera dual dalam mod manual</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_2_txt">Sekurang-kurangnya sentiasa 1 jauh daripada objek apabila mengambil foto atau merakam video dengan kamera dual. Semakin dekat dengan objek boleh menyebabkan anjakan dalam titik pandangan atau warna.</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_txt">"Anda boleh mengambil foto dan video yang cantik dengan hingar rendah walaupun pada waktu malam atau dalam bilik yang bercahaya malap menggunakan kamera dual.
+Kamera bertukar secara automatik antara kamera tunggal dan dual bergantung pada pemandangan yang anda ambil. Kedua-dua foto dan video ditangkap dengan kepekaan Amat tinggi."</string>
+    <string name="cam_strings_feature_dual_camera_photo_subtitle_txt">Kamera dual</string>
+    <string name="cam_strings_feature_dual_camera_title_txt">Kamera dual</string>
+    <string name="cam_strings_feature_dual_camera_video_description_txt">Untuk foto jarak dekat yang hebat, bertukar kepada kamera tunggal dengan mematikan kamera dual dalam pemidang tilik. Anda boleh mengubahnya kembali pada bila-bila masa dengan mengetik butang tetapan.</string>
+    <string name="cam_strings_feature_dual_camera_video_subtitle_txt">Rakaman video dengan kamera dual</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_description_txt">"Ketik butang dalam pemidang tilik untuk menukar sudut antara x1 dan x2.
+Anda boleh menggunakan fungsi ini dalam kedua-dua mod Foto dan Video."</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_subtitle_txt">Tukar sudut dengan butang</string>
+    <string name="cam_strings_feature_dual_zoom_camera_title_txt">Kamera dual</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_description_txt">"Sentuh terus butang dalam pemidang tilik untuk menunjukkan penggelangsar. Anda boleh melaraskan tahap zum dengan penggelangsar.
+Tahap zum boleh diselaraskan dengan butang kelantangan atau dengan mencubit skrin juga."</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_subtitle_txt">Zum dengan penggelangsar</string>
+    <string name="cam_strings_feature_eye_af_description_txt">"Anda boleh mengambil foto potret yang fokus pada mata manusia.
+Untuk mengubah sasaran fokus, ketik muka subjek yang ingin anda fokus. Untuk mendayakan atau menyahdayakan fungsi ini, ketik ikon yang ditunjukkan apabila muka dikesan."</string>
+    <string name="cam_strings_feature_eye_af_description_with_animal_txt">"Anda boleh mengambil foto yang fokus pada mata manusia atau haiwan.
+Untuk mengubah sasaran fokus, ketik muka subjek yang anda mahu fokus. Untuk mendayakan atau menyahdayakan fungsi ini, ketik ikon yang ditunjukkan apabila muka dikesan. Fungsi ini serasi dengan foto dan mod manual."</string>
+    <string name="cam_strings_feature_eye_af_subtitle_txt">Eye AF</string>
+    <string name="cam_strings_feature_eye_af_title_txt">Eye AF</string>
+    <string name="cam_strings_feature_failure_detection_description_not_blink_txt">"Fungsi ini membantu menghalang kesilapan dgn memaklumkan anda jika jari anda menutup lensa atau jika imej berada luar fokus sblm ambil foto.
+Selepas mengambil foto, anda boleh menyemak kabur dan mendapatkan nasihat utk mengambil semula foto.
+
+Anda boleh mengubah tetapan drpd Tunjukkan nasihat fotografi dlm tetapan kamera."</string>
+    <string name="cam_strings_feature_failure_detection_description_txt">"Fungsi ini mbantu mcegah kesilapan dgn mberitahu anda jika jari anda menutup lensa atau jika imej di luar fokus sblm ambil foto.
+Slps ambil foto, anda boleh periksa kerlipan atau kabur dan dptkn nasihat utk ambil smula foto.
+
+Anda boleh mengubah tetapan drpd Tunjukkan nasihat fotografi dlm tetapan kamera."</string>
+    <string name="cam_strings_feature_failure_detection_subtitle_txt">Tunjukkan nasihat fotografi</string>
+    <string name="cam_strings_feature_failure_detection_title_txt">Tunjukkan nasihat fotografi</string>
+    <string name="cam_strings_feature_failure_option_after_and_preview_txt">Sebelum dan slps ambil foto</string>
+    <string name="cam_strings_feature_failure_option_after_only_txt">Selepas ambil foto sahaja</string>
+    <string name="cam_strings_feature_hand_shutter_description_txt">"Pusingkan tapak tangan anda ke arah kamera. Pemasa kendiri akan dihidupkan apabila tapak tangan anda dikenal pasti. Untuk menjadikannya mudah dikenal pasti, hulurkan jari anda ke atas.
+Untuk mendayakan fungsi ini, pergi ke Foto (depan) dan pilih pilihan Pengatup Tangan dalam penangkapan Auto."</string>
+    <string name="cam_strings_feature_hand_shutter_subtitle_txt">Pengatup Tangan</string>
+    <string name="cam_strings_feature_hand_shutter_title_txt">Pengatup Tangan</string>
+    <string name="cam_strings_feature_lens_correction_description_nosuperwidemode_txt">"Pilih keutamaan dlm pilihan lensa ultralebar. Tangkap imej dinamik berkualiti tinggi menggunakan lensa ultralebar. Jika anda pilih Utamakan pembetulan utk herotan, herotan visual dapat dikurangkan.
+Ciri ini didayakan menggunakan lensa ultralebar dalam Mod foto. Anda boleh tukar tetapan dalam tetapan kamera."</string>
+    <string name="cam_strings_feature_lens_correction_description_txt">Apabila menggunakan lensa ultra lebar, anda blh pilih keutamaan. Tangkap imej dinamik berkualiti tinggi menggunakan lensa ultralebar. Jika anda pilih Utamakan pembetulan utk herotan, herotan visual dapat dikurangkan. Ciri ini didayakan menggunakan lensa ultralebar dalam Mod foto. Anda boleh tukar tetapan dalam tetapan kamera. sebaik saja bertukar kpd lensa ultralebar.</string>
+    <string name="cam_strings_feature_level_description_txt">"Menghidupkan Rata membolehkan anda memeriksa kecondongan kamera dgn petunjuk.
+Paparan akan bertukar hijau apabila kamera rata.
+Ini berguna apabila anda mahu memelihara garisan ufuk semasa mengambil foto landskap.
+
+Anda boleh mengubah tetapan fungsi ini di bwh Rata dlm tetapan kamera."</string>
+    <string name="cam_strings_feature_level_subtitle_txt">Mengambil foto menggunakan Rata</string>
+    <string name="cam_strings_feature_level_title_txt">Rata</string>
+    <string name="cam_strings_feature_list_banner_txt">Lihat ciri-ciri baharu</string>
+    <string name="cam_strings_feature_list_new_title_txt">Cara menggunakan ciri baharu</string>
+    <string name="cam_strings_feature_list_other_title_txt">Cara guna grk ciri tersebut</string>
+    <string name="cam_strings_feature_list_title_txt">Pengenalan kepada ciri</string>
+    <string name="cam_strings_feature_long_ss_description_txt">"Anda boleh menetapkan kelajuan pengatup sehingga 30 saat dalam mod manual. Apabila anda menggunakan kelajuan pengatup perlahan, pegang kamera anda dengan stabil untuk mengambil foto yang cantik.
+Tangkap pemandangan malam atau objek bergerak dengan kesan yang mengagumkan."</string>
+    <string name="cam_strings_feature_long_ss_subtitle_txt">Ubah kelajuan pengatup</string>
+    <string name="cam_strings_feature_long_ss_title_txt">Kelajuan pengatup</string>
+    <string name="cam_strings_feature_mono_description_txt">"Ambil foto dan video artistik dengan mudah dalam definisi tinggi.
+Untuk menggunakan mod ini, ketik ikon MOD dalam pemidang tilik, kemudian pilih Monokrom."</string>
+    <string name="cam_strings_feature_mono_subtitle_txt">Monokrom</string>
+    <string name="cam_strings_feature_mono_title_txt">Monokrom</string>
+    <string name="cam_strings_feature_night_mode_description_txt">"Anda boleh mengambil foto dengan jelas walaupun pada waktu malam atau dalam keadaan gelap.
+Ia mungkin mengambil masa untuk memproses imej sepenuhnya selepas mengambil foto, jadi pastikan kamera tidak bergerak sehingga ia lengkap."</string>
+    <string name="cam_strings_feature_night_mode_subtitle_txt">Mod malam</string>
+    <string name="cam_strings_feature_night_mode_title_txt">Mod malam</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_all_lang_txt">Mod malam</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_txt">Mod malam</string>
+    <string name="cam_strings_feature_night_shooting_title_all_lang_txt">Mod malam</string>
+    <string name="cam_strings_feature_night_shooting_title_txt">Mod malam</string>
+    <string name="cam_strings_feature_oneshot_description_txt">"Rakam detik berharga serta-merta dalam gerak perlahan %1$s fps dengan mengetik butang di tengah skrin.
+Merakam dlm keadaan cerah akan membantu anda mencipta video lbh baik."</string>
+    <string name="cam_strings_feature_oneshot_subtitle_txt">Gerak perlahan super (satu tangkapan)</string>
+    <string name="cam_strings_feature_portrait_bokeh_description_txt">"Untuk melaraskan kesan Bokeh pada potret, ketik ikon Bokeh Potret dalam pemidang tilik dan gerakkan penggelangsar.
+Fungsi ini disokong dalam Mod foto.
+Tonjolkan subjek anda dengan kontras yang menarik dengan mengaburkan latar belakang."</string>
+    <string name="cam_strings_feature_portrait_bokeh_subtitle_txt">Ambil foto potret dengan kesan Bokeh</string>
+    <string name="cam_strings_feature_portrait_bokeh_title_txt">Kesan Bokeh Potret</string>
+    <string name="cam_strings_feature_portrait_selfie_description_txt">"Tangkap swafoto artistik menggunakan Bokeh dan menambah kesan kecantikan.
+Untuk menggunakan mod ini, ketik ikon MOD dalam pemidang tilik, kemudian pilih swafoto Potret.
+Gayakan swafoto anda dan nikmati hasil yang kreatif."</string>
+    <string name="cam_strings_feature_portrait_selfie_subtitle_txt">Selfie potret</string>
+    <string name="cam_strings_feature_portrait_selfie_title_txt">Selfie potret</string>
+    <string name="cam_strings_feature_predictive_launch_description_txt">"Anda boleh melancarkan kamera dengan cepat. Angkat segera peranti anda dalam mod landskap dan halakan kamera ke arah objek. Kamera akan dilancarkan secara automatik.
+Anda boleh memilih cara kegemaran anda untuk menggunakan ciri ini daripada Pelancaran pintar dalam tetapan kamera."</string>
+    <string name="cam_strings_feature_predictive_launch_subtitle_txt">Pelancaran pintar</string>
+    <string name="cam_strings_feature_predictive_launch_title_txt">Pelancaran pintar</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"Anda boleh mengakses web yang cepat dan menyambung ke Wi-Fi dengan mengimbas QR Code.
+Fungsi ini aktif semasa dalam mod Foto. Anda boleh mengubah tetapan ini daripada pembaca QR Code dalam tetapan Kamera."</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Pembaca QR Code</string>
+    <string name="cam_strings_feature_qrcode_notification_channel_txt">Pembaca QR Code</string>
+    <string name="cam_strings_feature_selfie_description_txt">"Semasa mengambil foto menggunakan kamera depan, tetapkan mata anda pada lensa kamera depan berhampiran pembesar suara telinga.
+Mata anda akan melihat pada arah yang betul dalam foto."</string>
+    <string name="cam_strings_feature_selfie_subtitle_txt">Arah mata</string>
+    <string name="cam_strings_feature_selfie_title_txt">Kamera depan</string>
+    <string name="cam_strings_feature_sidesense_bar_description_txt">"Anda boleh mengambil foto atau video dengan mengetik dua kali sensor pada tepi skrin dan bukannya butang pengatup.
+Fungsi ini serasi dengan kedua-dua mod foto dan video. Anda boleh mengubah tetapan fungsi daripada Deria sisi dalam tetapan kamera."</string>
+    <string name="cam_strings_feature_sidesense_description_txt">"Anda boleh mengambil foto atau video dengan hanya mengetik dua kali sensor di tepi skrin dan bukannya butang pengatup.
+Kedua-dua mod foto dan video menyokong fungsi ini. Anda boleh mengubah tetapan daripada [Deria sisi] dalam tetapan kamera."</string>
+    <string name="cam_strings_feature_sidesense_subtitle_txt">Deria sisi</string>
+    <string name="cam_strings_feature_sidesense_title_txt">Deria sisi</string>
+    <string name="cam_strings_feature_slowmotion_description_txt">Anda boleh merakam video dgn berbilang bhgn gerak perlahan (120 fps gerak perlahan)</string>
+    <string name="cam_strings_feature_slowmotion_subtitle_txt">Gerak perlahan</string>
+    <string name="cam_strings_feature_slowmotion_title_txt">Gerak perlahan</string>
+    <string name="cam_strings_feature_superslow_description_txt">"Buat video yang mengagumkan dengan menunjukkan detik berharga dalam gerak perlahan. Rakaman dalam keadaan cerah akan membantu anda membuat video yang lebih baik.
+Untuk menggunakan mod ini, ketik ikon MOD dalam pemidang tilik, kemudian pilih Gerak perlahan. Selain itu, anda boleh memilih pilihan yang berbeza dalam tetapan mod Gerak Perlahan."</string>
+    <string name="cam_strings_feature_superslow_subtitle_txt">Gerak perlahan super</string>
+    <string name="cam_strings_feature_transfer_and_tagging_description_txt">"Menghidupkan fungsi ini akan membolehkan Transfer &amp; Tagging add-on memaparkan foto yg diambil mgunakan kamera Xperia. Foto akn dsimpan dlm storan dlman.
+Fungsi ini serasi dengan foto yang diambil dalam mod foto dan manual.
+Anda boleh mengubah tetapan daripada mod Transfer &amp; Tagging add-on dalam tetapan kamera."</string>
+    <string name="cam_strings_feature_transfer_and_tagging_subtitle_txt">Pautan dengan Transfer &amp; Tagging add-on</string>
+    <string name="cam_strings_feature_transfer_and_tagging_title_txt">Mod Transfer &amp; Tagging add-on</string>
+    <string name="cam_strings_feature_triple_camera_button_description_new_txt">"Anda boleh menukar dengan mudah antara lensa kamera untuk menangkap sebarang situasi bagi mencabar kreativiti anda.
+Ketik butang dalam pemidang tilik untuk menukar antara lensa ultralebar, lebar dan telefoto.
+Anda boleh menggunakan fungsi ini dalam kedua-dua mod Foto dan Video."</string>
+    <string name="cam_strings_feature_triple_camera_button_description_txt">"Anda boleh menukar dengan mudah antara lensa kamera untuk menangkap sebarang situasi bagi mencabar kreativiti anda.
+Ketik butang dalam pemidang tilik untuk menukar sudut antara x1, x2 dan ultralebar.
+Anda boleh menggunakan fungsi ini dalam kedua-dua mod Foto dan Video."</string>
+    <string name="cam_strings_feature_triple_camera_button_subtitle_txt">Tukar sudut dengan butang</string>
+    <string name="cam_strings_feature_triple_camera_button_with_zoom_ratio_description_txt">"Anda boleh menukar antara lensa kamera dengan mudah untuk menangkap sebarang situasi bagi merangsang kreativiti anda.
+Ketik butang dalam pemidang tilik untuk menukar sudut antara 0.6x (lebar ultra), 1x (lebar) dan 2x (telefoto).
+Anda boleh menggunakan fungsi ini dalam kedua-dua Mod foto dan video."</string>
+    <string name="cam_strings_feature_triple_camera_how_to_zoom_subtitle_txt">Cara zum masuk/keluar</string>
+    <string name="cam_strings_feature_triple_camera_title_txt">Kamera tiga kali ganda</string>
+    <string name="cam_strings_feature_triple_camera_wide_description_txt">"Lensa ini sesuai untuk foto landskap kerana ia menangkap medan yang lebih lebar.
+Pastikan anda menukar kepada lensa ultralebar sebelum menukar tetapan lensa ultralebar."</string>
+    <string name="cam_strings_feature_triple_camera_wide_subtitle_txt">Tangkap dengan lensa ultralebar</string>
+    <string name="cam_strings_feature_triple_camera_zoom_description_txt">"Luncurkan jari anda ke kiri atau ke kanan pada butang dalam pemidang tilik untuk menunjukkan penggelangsar. Anda boleh melaraskan tahap zum menggunakan penggelangsar.
+Tahap zum boleh diselaraskan dengan butang kelantangan atau dengan mencubit skrin juga."</string>
+    <string name="cam_strings_feature_triple_camera_zoom_plus_zoom_frames_description_txt">"Luncurkan jari anda ke kiri atau ke kanan pada butang dalam pemidang tilik untuk memaparkan penggelangsar. Anda boleh melaraskan tahap zum menggunakan penggelangsar tersebut.
+Tahap zum tersebut boleh diselaraskan dengan butang kelantangan atau dengan mencubit skrin.
+Dalam Mod foto, anda boleh memaparkan bingkai yang membantu anda pratonton rupa video apabila anda zum masuk. Anda boleh menukar tetapan ini daripada bantuan komposisi Zum pada tetapan kamera."</string>
+    <string name="cam_strings_feature_triple_camera_zoom_subtitle_txt">Zum dengan penggelangsar</string>
+    <string name="cam_strings_feature_zoom_frames_description_txt">"Jika anda menghidupkan tetapan ini, anda boleh pratonton rupa video apabila anda zum masuk.
+Ketengahkan subjek dalam bingkai dan ketik nisbah zum untuk zum masuk dengan mudah.
+Fungsi ini tidak disokong apabila Saiz imej pegun ditetapkan pada 21:9."</string>
+    <string name="cam_strings_file_delete_confirm_title_txt">Padam</string>
+    <string name="cam_strings_file_delete_confirm_txt">Padamkan fail ini?</string>
+    <string name="cam_strings_file_format_description_txt">Pilih pengekod untuk video 4K</string>
+    <string name="cam_strings_file_format_sub_description_h264_txt">Format standard untuk pengekodan. Kebanyakan peranti dan perkhidmatan menyokong format ini.</string>
+    <string name="cam_strings_file_format_sub_description_h265_txt">Format nisbah pemampatan tinggi. Pastikan bahawa peranti atau perkhidmatan menyokong format ini.</string>
+    <string name="cam_strings_file_share_title_txt">Kongsi</string>
+    <string name="cam_strings_flash_fill_flash_txt">Hidupkan denyar</string>
+    <string name="cam_strings_flash_night_portrait_hint_txt">Pastikan peranti anda dipegang dengan kemas</string>
+    <string name="cam_strings_flash_night_portrait_txt">Denyar potret malam</string>
+    <string name="cam_strings_flash_pro_txt">Mod denyar</string>
+    <string name="cam_strings_flash_red_eye_reduc_txt">"Pengurangan 'red eye'"</string>
+    <string name="cam_strings_flash_title_txt">Denyar</string>
+    <string name="cam_strings_flash_torch_txt">Lampu suluh</string>
+    <string name="cam_strings_flash_txt">Denyar</string>
+    <string name="cam_strings_focus_af_c_txt">AF Berterusan</string>
+    <string name="cam_strings_focus_af_s_txt">AF tangkapan tunggal</string>
+    <string name="cam_strings_focus_mf_txt">Fokus Manual</string>
+    <string name="cam_strings_focus_mode_face_detection_txt">Pengecaman muka</string>
+    <string name="cam_strings_focus_mode_infinity_txt">Infiniti</string>
+    <string name="cam_strings_focus_mode_macro_txt">Makro</string>
+    <string name="cam_strings_focus_mode_multi_af_txt">Berbilang fokus auto</string>
+    <string name="cam_strings_focus_mode_object_tracking_txt">Penjejakan objek</string>
+    <string name="cam_strings_focus_mode_single_af_txt">Fokus auto tunggal</string>
+    <string name="cam_strings_focus_mode_title_txt">Mod fokus</string>
+    <string name="cam_strings_focus_mode_touch_focus_txt">Fokus sentuh</string>
+    <string name="cam_strings_focus_mode_txt">Mod fokus</string>
+    <string name="cam_strings_forced_change_flash_off_txt">Mod Denyar dimatikan untuk menggunakan Tangkapan malam</string>
+    <string name="cam_strings_forced_change_night_shooting_auto_txt">Tangkapan malam ditetapkan kpd Auto utk gunakan Mod Denyar</string>
+    <string name="cam_strings_front_cam_location_guide_txt">Lensa kamera berada seperti yang ditunjukkan dalam gambar</string>
+    <string name="cam_strings_fusion_error_too_close_txt">Bergerak lebih jauh daripada objek</string>
+    <string name="cam_strings_fusion_on_txt">Kepekaan amat tinggi</string>
+    <string name="cam_strings_fusion_setting_txt">Tukar kamera dual</string>
+    <string name="cam_strings_geotagging_title_txt">Simpan lokasi</string>
+    <string name="cam_strings_geotagging_txt">Simpan lokasi</string>
+    <string name="cam_strings_get_more_modes_txt">Aplikasi</string>
+    <string name="cam_strings_global_setting_softskin_available_applications_txt">Aplikasi tersedia</string>
+    <string name="cam_strings_global_setting_softskin_brighten_skin_txt">Kulit cerah</string>
+    <string name="cam_strings_global_setting_softskin_detail_txt">Jadikan kulit anda cerah dan licin. Kesan tersebut berkesan dalam aplikasi yang menggunakan kamera hadapan. Ini boleh digunakan pada foto dan video. Anda juga boleh melaras tahap.</string>
+    <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Pelarasan tahap</string>
+    <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Kulit licin</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Tidak boleh memulakan aplikasi.
+Pastikan versi terkini %1$s dipasang dan didayakan pada peranti anda."</string>
+    <string name="cam_strings_gridline_txt">Garisan grid</string>
+    <string name="cam_strings_hand_shutter_hint_detail_txt">Pusing tapak tangan anda ke arah kamera. Pemasa sendiri akan dihidupkan apabila tapak tangan anda dikenal pasti. Untuk menjadikannya mudah dikenal pasti, regangkan jari-jari anda ke atas.</string>
+    <string name="cam_strings_hand_shutter_hint_txt">Pusing tapak tangan anda ke arah kamera</string>
+    <string name="cam_strings_hand_shutter_txt">Pengatup Tangan</string>
+    <string name="cam_strings_hdr_dro_settings_dro_txt">Pengoptimum Julat Dinamik</string>
+    <string name="cam_strings_hdr_dro_settings_hdr_txt">HDR Auto</string>
+    <string name="cam_strings_hdr_dro_settings_txt">DRO/HDR Auto</string>
+    <string name="cam_strings_hdr_guide_txt">Oleh kerana HDR Pegun menangkap dan menggabungkan dua imej pemandangan yang sama, ia hanya sesuai untuk objek pegun.</string>
+    <string name="cam_strings_hdr_title_txt">HDR</string>
+    <string name="cam_strings_hdr_txt">HDR</string>
+    <string name="cam_strings_help_txt">Bantuan</string>
+    <string name="cam_strings_histogram_txt">Histogram</string>
+    <string name="cam_strings_iburst_feedback_txt">Diramal</string>
+    <string name="cam_strings_image_quality_control_button_cancel_txt">Batal</string>
+    <string name="cam_strings_image_quality_control_button_clear_txt">Kosongkan</string>
+    <string name="cam_strings_image_quality_control_button_reset_txt">Tetapkn semula</string>
+    <string name="cam_strings_image_quality_control_tab_focus_txt">Fokus</string>
+    <string name="cam_strings_image_size_txt">Saiz imej pegun</string>
+    <string name="cam_strings_image_stabilizer_title_txt">Penstabil imej</string>
+    <string name="cam_strings_image_stabilizer_txt">Penstabil imej</string>
+    <string name="cam_strings_intelligent_burst_txt">Tangkapan Ramalan</string>
+    <string name="cam_strings_intelligent_wind_filter_txt">Penapis angin pintar</string>
+    <string name="cam_strings_iso_changed_txt">Nilai ISO juga telah berubah</string>
+    <string name="cam_strings_launch_with_camera_key_txt">Lancar dgn btg pengatup</string>
+    <string name="cam_strings_lens_correction_for_photo_description_added_txt">Nota: Pembetulan lensa akan dinyahdayakan apabila mengambil foto letusan.</string>
+    <string name="cam_strings_lens_correction_for_photo_description_txt">Apabila menggunakan lensa ultra lebar, anda blh pilih keutamaan. Tangkap imej dinamik berkualiti tinggi menggunakan lensa ultralebar. Jika anda pilih Utamakan pembetulan utk herotan, herotan visual dapat dikurangkan.</string>
+    <string name="cam_strings_lens_correction_for_photo_nosuperwidemode_txt">Pembetulan lensa (foto)</string>
+    <string name="cam_strings_lens_correction_for_photo_pro_txt">Pembetulan lensa ultralebar</string>
+    <string name="cam_strings_lens_correction_for_photo_txt">Pembetulan lensa (foto)</string>
+    <string name="cam_strings_lens_correction_off_txt">Utamakan kualiti imej</string>
+    <string name="cam_strings_lens_correction_on_txt">Utamakan pembetulan untuk herotan</string>
+    <string name="cam_strings_lens_correction_txt">Pembetulan lensa</string>
+    <string name="cam_strings_lens_switch">Tukar sudut lensa</string>
+    <string name="cam_strings_level_meter_calibration_txt">Penentukuran rata</string>
+    <string name="cam_strings_level_pro_txt">Paras</string>
+    <string name="cam_strings_level_txt">Rata</string>
+    <string name="cam_strings_long_press_burst_best_txt">Standard</string>
+    <string name="cam_strings_long_press_burst_high_txt">Kelajuan tinggi</string>
+    <string name="cam_strings_long_press_burst_txt">Letus dgn tekan lama</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_title_txt">Mengambil foto dengan kamera dual</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_txt">Kekalkan jarak sekurang-kurangnya 1 meter daripada objek apabila mengambil foto dengan kamera dual hidup. Mendekati objek boleh menyebabkan anjakan titik pandangan atau warna.</string>
+    <string name="cam_strings_manual_fusion_tutorial_title_txt">Tukar kamera dual</string>
+    <string name="cam_strings_manual_fusion_tutorial_txt">Anda boleh menghidupkan dan mematikan kamera dual dalam mod manual. Hidupkannya untuk mengambil foto hingar rendah dalam keadaan cahaya lemah. Matikannya untuk mengambil foto jarak dekat.</string>
+    <string name="cam_strings_max_file_size_save_failed_txt">Rakaman terhenti kerana had saiz fail maksimum</string>
+    <string name="cam_strings_max_recording_time_save_failed_txt">Rakaman terhenti kerana had masa rakaman maksimum</string>
+    <string name="cam_strings_memory_full_save_failed_txt">Tidak boleh menyimpan. Ingatan penuh.</string>
+    <string name="cam_strings_memory_full_zoom_not_supported_txt">Memori penuh. Zum tidak tersedia pada masa ini.</string>
+    <string name="cam_strings_metering_multi_cy_txt">Berbilang</string>
+    <string name="cam_strings_mf_assist_txt">Bantuan MF</string>
+    <string name="cam_strings_mfnr_txt">Pengurangan hingar berbilang bingkai</string>
+    <string name="cam_strings_microphone_title_txt">Mikrofon</string>
+    <string name="cam_strings_modeselector_addon_installed_txt">Dipasang</string>
+    <string name="cam_strings_monochrome_photo_txt">Foto monokrom</string>
+    <string name="cam_strings_monochrome_title_txt">Monokrom</string>
+    <string name="cam_strings_monochrome_video_txt">Video monokrom</string>
+    <string name="cam_strings_more_common_setting_title_txt">Tetapan biasa</string>
+    <string name="cam_strings_more_txt">Lagi</string>
+    <string name="cam_strings_mr_txt">Berdaftar dlm Ingat Semula Memori %d</string>
+    <string name="cam_strings_multi_window_txt">Seret tengah bar pisah untuk menukar ke skrin penuh %1$s untuk menggunakannya</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Peranti lain kini bersambung.
+Adakah anda ingin berkongsi imej melalui pemidang tilik dengan peranti?"</string>
+    <string name="cam_strings_multicam_add_device_txt">Tambah peranti</string>
+    <string name="cam_strings_multicam_add_more_txt">Tambah lagi</string>
+    <string name="cam_strings_multicam_apply_txt">Selesai</string>
+    <string name="cam_strings_multicam_connection_failure_dialog_txt">Tidak dapat menyambung</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Tidak boleh bersambung dengan sebarang kamera Wi-Fi/NFC Sony apabila Xperia anda disambungkan dengan Xperia lain.</string>
+    <string name="cam_strings_multicam_error_app_ver_old_txt">Versi apl tidak sepadan. Tidak boleh bersambung. Apl anda perlu dikemas kini.</string>
+    <string name="cam_strings_multicam_error_disconnect_txt">Diputuskan sambungan</string>
+    <string name="cam_strings_multicam_error_nfc_txt">Tidak boleh bermula dengan NFC terkunci.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">Mod ini tidak tersedia semasa penambatan Wi-Fi.</string>
+    <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">Bilangan maksimum peranti telah ditambah.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Hanya sebuah kamera Wi-Fi/NFC Sony boleh disambungkan dengan Xperia anda pada satu-satu masa.</string>
+    <string name="cam_strings_multicam_nfc_connect_title_txt">Sentuh peranti bersama untuk menyambung</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Kamera Wi-Fi/NFC Sony</string>
+    <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
+    <string name="cam_strings_multicam_nfc_touch_to_beam_title_txt">Sentuh skrin</string>
+    <string name="cam_strings_multicam_security_info_txt">Jika peranti yang anda sambungkan juga bersambung dengan peranti Xperia lain menerusi apl ini, Xperia anda juga akan bersambung secara automatik dengan peranti-peranti itu dan setiap imej melalui pemidang tilik akan dikongsikan antara Xperia anda dan semua peranti yang bersambung.</string>
+    <string name="cam_strings_multicam_touch_add_camera_desc_txt">Ketik utk mnmbhkn prnti. Imej mnrsi pemidang tiliknya akan dipprkn di sini.</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Tidak boleh bersambung dengan sebarang Xperia apabila Xperia anda disambungkan dengan kamera Wi-Fi/NFC Sony.</string>
+    <string name="cam_strings_night_mode_hint_txt">Mod malam</string>
+    <string name="cam_strings_night_shooting_hint_txt">Mod malam</string>
+    <string name="cam_strings_not_zoom_for_full_hd_60fps_video_txt">Zum bawah 1x tidak tersedia untuk saiz video HD Penuh (60 fps)</string>
+    <string name="cam_strings_not_zoom_txt">Zum bawah 1x tidak tersedia untuk saiz video 4K atau Full HD (60 fps)</string>
+    <string name="cam_strings_ok_txt">OK</string>
+    <string name="cam_strings_only_main_txt">Hanya kamera utama</string>
+    <string name="cam_strings_peaking_display_txt">Paparan Memuncak</string>
+    <string name="cam_strings_permgroupdesc_thermalmitigation_message_txt">Benarkan aplikasi mengawal sistem untuk tangkapan yang stabil, bergantung pada suhu dalam peranti.</string>
+    <string name="cam_strings_permgrouplab_thermalmitigation_txt">kawal sistem</string>
+    <string name="cam_strings_photo_autoreview_txt">Pratonton foto auto</string>
+    <string name="cam_strings_photometry_average_txt">Purata</string>
+    <string name="cam_strings_photometry_center_txt">Tengah</string>
+    <string name="cam_strings_photometry_face_txt">Muka</string>
+    <string name="cam_strings_photometry_pro_txt">Mod permeteran</string>
+    <string name="cam_strings_photometry_spot_txt">Titik</string>
+    <string name="cam_strings_photometry_title_txt">Permeteran</string>
+    <string name="cam_strings_photometry_touch_txt">Sentuh</string>
+    <string name="cam_strings_photometry_txt">Permeteran</string>
+    <string name="cam_strings_pleaking_color_txt">Warna penimbulan</string>
+    <string name="cam_strings_preaf_txt">AF Awal</string>
+    <string name="cam_strings_predictive_capture_description_txt">Imej ditangkap secara automatik dengan mengesan senyuman atau pergerakan objek hanya beberapa saat sebelum anda menekan butang pengatup. Anda boleh memilih foto kegemaran anda daripada sehingga empat foto yang ditangkap. Anda tidak akan terlepas tangkapan sempurna.</string>
+    <string name="cam_strings_predictive_capture_feedback_txt">Diramal</string>
+    <string name="cam_strings_predictive_capture_txt">Tangkapan Ramalan</string>
+    <string name="cam_strings_predictive_launch_description_txt">Anda boleh melancarkan kamera secara automatik dengan pantas mengangkat peranti anda dalam mod Landskap dan menghalakan kamera ke arah objek.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Kamera telah dilancarkan secara automatik dengan mengesan pergerakan anda mengangkat telefon anda dalam mod landskap dan menyasarkannya ke arah objek.
+Anda boleh memilih cara kegemaran anda untuk menggunakan ciri ini daripada Lancar pintar dalam tetapan kamera."</string>
+    <string name="cam_strings_predictive_launch_guide_2_txt">Sentuh dalam bulatan untuk tangkap</string>
+    <string name="cam_strings_predictive_launch_guide_3_txt">Sentuh skrin untuk tangkap</string>
+    <string name="cam_strings_predictive_launch_guide_circle_txt">Ketik di dalam bulatan untuk melihat skrin penuh</string>
+    <string name="cam_strings_predictive_launch_guide_txt">Sentuh dalam bulatan untuk melancarkan kamera</string>
+    <string name="cam_strings_predictive_launch_launch_and_capture_txt">Sentuh utk lancar dan tgkp</string>
+    <string name="cam_strings_predictive_launch_launch_only_txt">Sentuh untuk lancarkan</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_and_capture_txt">Ketik di dalam bulatan, kemudian Kamera akan dilancarkan dalam skrin penuh dan foto diambil secara serentak.</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_only_txt">Ketik di dalam bulatan dan Kamera akan dilancarkan dalam skrin penuh.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Anda boleh melancarkan kamera dengan cepat. Angkat segera peranti anda dalam mod landskap dan halakan kamera ke arah objek. Kamera akan dilancarkan secara automatik.
+Anda boleh memilih cara kegemaran anda untuk menggunakan ciri ini daripada Pelancaran pintar dalam tetapan kamera."</string>
+    <string name="cam_strings_predictive_launch_tutorial_title_txt">Pelancaran pintar</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Anda boleh melancarkan kamera dengan cepat. Ayun peranti anda ke atas dalam mod landskap dan halakan kamera ke arah objek. Kamera akan dilancarkan secara automatik.
+Anda boleh mematikan ciri ini daripada Pelancaran pintar dalam tetapan kamera."</string>
+    <string name="cam_strings_predictive_launch_txt">Pelancaran pintar</string>
+    <string name="cam_strings_preview_always_txt">Hidupkan</string>
+    <string name="cam_strings_preview_duration_3sec_txt">3 saat</string>
+    <string name="cam_strings_preview_duration_5sec_txt">5 saat</string>
+    <string name="cam_strings_preview_duration_title_txt">Pratonton</string>
+    <string name="cam_strings_preview_duration_txt">Pratonton</string>
+    <string name="cam_strings_preview_duration_unlimited_txt">Tanpa had</string>
+    <string name="cam_strings_preview_edit_txt">Sunting</string>
+    <string name="cam_strings_preview_only_front_txt">Hanya kamera depan</string>
+    <string name="cam_strings_previous_txt">Sebelumnya</string>
+    <string name="cam_strings_processing_capturing_photo_txt">Mengambil foto. Sila tunggu.</string>
+    <string name="cam_strings_processing_loading_txt">Mengambil foto. Sila pastikan kamera tidak bergerak.</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Ketik untuk menyediakan peranti ini</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">QR Code ini tidak disokong</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Ketik utk buka \"%1$s\" dlm pelayar anda</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Tidak dapat menyambung ke rangkaian Wi-Fi ini</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Ketik utk samb ke rangkaian Wi-Fi \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Pembaca QR Code</string>
+    <string name="cam_strings_recommend_night_mode_txt">Ketik di sini untuk menggunakan Mod malam</string>
+    <string name="cam_strings_recommend_night_mode_use_button_txt">Guna</string>
+    <string name="cam_strings_recommend_night_shooting_txt">Ketik di sini untuk menggunakan Mod malam</string>
+    <string name="cam_strings_recording_txt">RAKAM</string>
+    <string name="cam_strings_remember_geotag_title_txt">Lokasi simpan?</string>
+    <string name="cam_strings_remember_geotag_txt">Tag foto dan video anda dengan lokasi di mana ia diambil. Anda boleh mengubah tetapan ini kemudian dari lokasi Simpan dalam tetapan Kamera.</string>
+    <string name="cam_strings_remote_touch_to_start_txt">Ketik untuk mula</string>
+    <string name="cam_strings_reset_color_brightness_txt">Tetapkn smula warna dan kecerahan</string>
+    <string name="cam_strings_reset_settings_confirm_title_txt">Tetapkan semula tetapan kamera ke lalai?</string>
+    <string name="cam_strings_reset_settings_txt">Tetap semula tetapan</string>
+    <string name="cam_strings_reset_txt">Tetapkan semula</string>
+    <string name="cam_strings_resolution_title_txt">Resolusi</string>
+    <string name="cam_strings_resolution_txt">Resolusi</string>
+    <string name="cam_strings_restricted_mf_touchfocus_txt">Untuk menggunakan fokus sentuh, ubah tetapan fokus kepada AF</string>
+    <string name="cam_strings_restricted_setting_dialog_title_txt">Tidak boleh ubah</string>
+    <string name="cam_strings_restricted_setting_photo_long_shutter_speed_txt">Tetapan ini tidak menyokong kelajuan pengatup semasa. Untuk mengkonfigurasikan tetapan ini, ubah kelajuan pengatup kepada 1 saat atau kurang.</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_or_scene_txt">Tetapan ini tidak disokong untuk resolusi atau pemandangan semasa. Untuk mengkonfigurasi tetapan ini, ubah resolusi atau pemilihan adegan.</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_txt">Tetapan ini tidak menyokong saiz imej pegun semasa. Untuk mengkonfigurasi tetapan ini, ubah saiz imej pegun.</string>
+    <string name="cam_strings_restricted_setting_scene_txt">Tetapan ini tidak disokong untuk pemandangan semasa. Untuk mengkonfigurasi tetapan ini, ubah pemilihan adegan.</string>
+    <string name="cam_strings_restricted_setting_slow_motion_txt">Tidak dapat mengubah saiz video dalam mod gerak perlahan. Untuk mengkonfigurasikan tetapan ini, keluar daripada mod gerak perlahan.</string>
+    <string name="cam_strings_restricted_setting_transfer_and_tagging_txt">Tetapan ini tidak tersedia apabila mod Transfer &amp; Tagging add-on dihidupkan. Untuk mengubah tetapan ini, sila matikan mod Transfer &amp; Tagging add-on.</string>
+    <string name="cam_strings_restricted_setting_video_hdr_hlg_txt">Tetapan ini tidak tersedia dengan HDR Hidup. Untuk mengkonfigurasi ini, matikan HDR.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_or_scene_txt">Tetapan ini tidak disokong untuk resolusi atau pemandangan video semasa. Untuk mengkonfigurasi tetapan ini, ubah pemilihan Resolusi video atau Pemilihan adegan.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_txt">Tetapan ini tidak disokong untuk saiz video semasa. Untuk mengkonfigurasikan tetapan ini, ubah saiz video.</string>
+    <string name="cam_strings_restriction_info_correction_for_distortion_txt">Pembetulan lensa tidak tersedia semasa menggunakan kesan Bokeh</string>
+    <string name="cam_strings_restriction_information_txt">Bergantung pada tetapan ini, ciri berikut boleh dinyahdayakan atau diubah suai secara automatik:</string>
+    <string name="cam_strings_runtime_permission_continue_button_txt">MAKLUMAT APL</string>
+    <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s memerlukan kebenaran berikut</string>
+    <string name="cam_strings_runtime_permission_dialog1_title_txt">Kebenaran %1$s</string>
+    <string name="cam_strings_runtime_permission_dialog2_message1_txt">Aplikasi memerlukan kebenaran berikut untuk melaksanakan tindakan ini.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Untuk memberikan kebenaran, pergi ke Maklumat aplikasi > Kebenaran.</string>
+    <string name="cam_strings_runtime_permission_dialog2_title_txt">Tidak dapat teruskan</string>
+    <string name="cam_strings_runtime_permission_rationale_camera_txt">Untuk mengambil foto dan video</string>
+    <string name="cam_strings_runtime_permission_rationale_location_txt">Untuk mendapatkan semula lokasi</string>
+    <string name="cam_strings_runtime_permission_rationale_microphone_txt">Untuk merakam bunyi</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_cta_txt">Untuk membaca dan menyimpan foto dan video</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_txt">Untuk menyimpan foto dan video</string>
+    <string name="cam_strings_s1_settings_txt">AF dengan pengatup</string>
+    <string name="cam_strings_save_destination_ims_txt">Storan dalaman</string>
+    <string name="cam_strings_save_destination_sd_txt">Kad SD</string>
+    <string name="cam_strings_save_destination_title_txt">Storan data</string>
+    <string name="cam_strings_save_destination_txt">Storan data</string>
+    <string name="cam_strings_saving_files_txt">Menyimpan fail</string>
+    <string name="cam_strings_scene_selection_title_cy_txt">Pemilihan adegan</string>
+    <string name="cam_strings_scenes_anti_motion_blur_cy_txt">Anti gerakan kabur</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_portrait_cy_txt">Potret cahaya latar</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_txt">Cahaya latar</string>
+    <string name="cam_strings_scenes_auto_recog_gourmet_txt">Gourmet</string>
+    <string name="cam_strings_scenes_auto_recog_infant_cy_txt">Bayi</string>
+    <string name="cam_strings_scenes_auto_recog_landscape_txt">Landskap</string>
+    <string name="cam_strings_scenes_auto_recog_low_light_cy_txt">Lampu suram</string>
+    <string name="cam_strings_scenes_auto_recog_softsnap_cy_txt">Tangkapan lembut</string>
+    <string name="cam_strings_scenes_auto_recog_spotlight_cy_txt">Lampu tumpu</string>
+    <string name="cam_strings_scenes_auto_recog_text_txt">Dokumen</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_portrait_cy_txt">Potret malam</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_txt">Pemandangan malam</string>
+    <string name="cam_strings_scenes_backlight_hdr_cy_txt">HDR Pembetulan Lampu Latar</string>
+    <string name="cam_strings_scenes_beach_cy_txt">Pantai</string>
+    <string name="cam_strings_scenes_beachsnow_txt">Pantai dan salji</string>
+    <string name="cam_strings_scenes_document_txt">Dokumen</string>
+    <string name="cam_strings_scenes_fireworks_cy_txt">Bunga api</string>
+    <string name="cam_strings_scenes_gurumet_cy_txt">Gourmet</string>
+    <string name="cam_strings_scenes_handheld_twilight_cy_txt">Senjakala bimbit</string>
+    <string name="cam_strings_scenes_high_sensitivity_cy_txt">Sensitiviti tinggi</string>
+    <string name="cam_strings_scenes_landscape_txt">Landskap</string>
+    <string name="cam_strings_scenes_nightmode_txt">Malam</string>
+    <string name="cam_strings_scenes_nightportrait_cy_txt">Potret malam</string>
+    <string name="cam_strings_scenes_nightscene_txt">Pemandangan malam</string>
+    <string name="cam_strings_scenes_party_txt">Parti</string>
+    <string name="cam_strings_scenes_pet_cy_txt">Haiwan kesayangan</string>
+    <string name="cam_strings_scenes_pets_txt">Haiwan kesayangan</string>
+    <string name="cam_strings_scenes_snow_cy_txt">Salji</string>
+    <string name="cam_strings_scenes_soft_skin_cy_txt">Kulit lembut</string>
+    <string name="cam_strings_scenes_soft_snap_cy_txt">Tangkapan lembut</string>
+    <string name="cam_strings_scenes_sports_txt">Sukan</string>
+    <string name="cam_strings_scenes_txt">Pemandangan</string>
+    <string name="cam_strings_screen_pinned_txt">Skrin dipin</string>
+    <string name="cam_strings_sd_permission_data_storage_info_txt">Disimpan ke storan dalaman</string>
+    <string name="cam_strings_sd_permission_dialog_continue_button_txt">ALIH</string>
+    <string name="cam_strings_sd_permission_dialog_message1_txt">Aplikasi memerlukan kebenaran berikut untuk melaksanakan tindakan ini.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Untuk menggunakan kad SD, kamera memerlukan kebenaran untuk mengakses kad SD.
+Ubah storan data ke kad SD sekali lagi atau benarkan kamera mengakses kad SD pada skrin berikutnya."</string>
+    <string name="cam_strings_sd_permission_dialog_title_txt">Kad SD tidak tersedia</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Kad SD baharu yang memerlukan kebenaran telah dikesan.
+
+Untuk menggunakan kad SD sebagai storan data, sila pilih kad SD atau direktori DCIM pada skrin seterusnya."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Kad SD atau direktori DCIM tidak dipilih. Kad SD tidak boleh digunakan.
+
+Untuk memberikan kebenaran, mulakan dengan mengubah lokasi simpan ke kad SD atau pilih direktori yang sesuai pada skrin seterusnya."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Kad SD baharu telah mengesan perkara yang memerlukan kebenaran.
+Oleh itu, storan peranti dalaman akan digunakan sebagai storan data lalai.
+
+Untuk menggunakan kad SD sebagai storan data, sila pergi ke tetapan kamera dan ubah pilihan storan kepada kad SD."</string>
+    <string name="cam_strings_sd_permission_rationale_txt">Untuk menyimpan foto dan video pada kad SD</string>
+    <string name="cam_strings_select_picture_txt">Pilih foto</string>
+    <string name="cam_strings_self_timer_05_txt">0.5 saat</string>
+    <string name="cam_strings_self_timer_10_pro_txt">Pemasa kendiri: 10 saat</string>
+    <string name="cam_strings_self_timer_10_txt">10 saat</string>
+    <string name="cam_strings_self_timer_2_txt">2 saat</string>
+    <string name="cam_strings_self_timer_3_pro_txt">Pemasa kendiri: 3 saat</string>
+    <string name="cam_strings_self_timer_3_txt">3 saat</string>
+    <string name="cam_strings_self_timer_front_hint_10_txt">Pemasa kendiri: 10 saat.</string>
+    <string name="cam_strings_self_timer_front_hint_3_txt">Pemasa kendiri: 3 saat.</string>
+    <string name="cam_strings_self_timer_front_hint_off_txt">Pemasa kendiri: Mati</string>
+    <string name="cam_strings_self_timer_hint_countdown_txt">Kekalkan mata anda pada kamera</string>
+    <string name="cam_strings_self_timer_photo_txt">Pemasa kendiri (imej pegun)</string>
+    <string name="cam_strings_self_timer_txt">Pemasa kendiri</string>
+    <string name="cam_strings_setting_common_title_txt">Biasa</string>
+    <string name="cam_strings_setting_front_manual_title_txt">Manual (depan)</string>
+    <string name="cam_strings_setting_front_photo_title_txt">Foto (depan)</string>
+    <string name="cam_strings_setting_front_video_title_txt">Video (depan)</string>
+    <string name="cam_strings_setting_main_title_txt">Tetapan kamera</string>
+    <string name="cam_strings_setting_manual_title_txt">Manual</string>
+    <string name="cam_strings_setting_night_mode_title_txt">Tetapan mod malam</string>
+    <string name="cam_strings_setting_night_shooting_title_txt">Tetapan mod malam</string>
+    <string name="cam_strings_setting_photo_title_txt">Foto</string>
+    <string name="cam_strings_setting_slow_motion_title_txt">Gerak perlahan</string>
+    <string name="cam_strings_setting_tele_title_txt">Foto (Telefoto)</string>
+    <string name="cam_strings_setting_tele_video_title_txt">Video (Telefoto)</string>
+    <string name="cam_strings_setting_video_title_txt">Video</string>
+    <string name="cam_strings_setting_wide_title_txt">Foto (Ultralebar)</string>
+    <string name="cam_strings_setting_wide_video_title_txt">Video (Ultralebar)</string>
+    <string name="cam_strings_settings_always_on_txt">Sentiasa hidup</string>
+    <string name="cam_strings_settings_auto_txt">Auto</string>
+    <string name="cam_strings_settings_off_txt">Matikan</string>
+    <string name="cam_strings_settings_on_txt">Hidupkan</string>
+    <string name="cam_strings_settings_save_photos_all_txt">Semua foto</string>
+    <string name="cam_strings_settings_save_photos_one_txt">Foto dipilih</string>
+    <string name="cam_strings_settings_save_photos_txt">Simpan</string>
+    <string name="cam_strings_shortcut_video_camera_txt">Kamera video</string>
+    <string name="cam_strings_shutter_trigger_txt">Penangkapan auto</string>
+    <string name="cam_strings_side_sense_bar_description_txt">"Anda boleh mengambil foto atau video dengan mengetik dua kali sensor pada tepi skrin dan bukannya butang pengatup.
+Fungsi ini serasi dengan kedua-dua mod foto dan video.
+
+Fungsi ini tidak blh digunakan smasa Beroperasi pada bahagian dalam tepi skrin dhidupkn di bwh Konfigurasi kdudukan sntuh dlm ttpan Deria sisi."</string>
+    <string name="cam_strings_side_sense_description_txt">"Anda boleh mengambil foto atau video dengan hanya mengetik dua kali sensor di sisi skrin dan bukannya butang pengatup.
+Kedua-dua mod foto dan video menyokong fungsi ini."</string>
+    <string name="cam_strings_side_touch_not_supported_txt">Deria sisi tidak disokong pada skrin ini</string>
+    <string name="cam_strings_side_touch_on_title_txt">Deria sisi</string>
+    <string name="cam_strings_side_touch_on_txt">Untuk menggunakan fungsi ini, pergi ke Tetapan > Paparan dan hidupkan Deria sisi. Dayakan sekarang?</string>
+    <string name="cam_strings_side_touch_tutorial_title_txt">Deria sisi</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Anda boleh mengambil foto atau video dengan hanya mengetik dua kali sensor di sisi skrin dan bukannya butang pengatup. Anda juga boleh zum masuk dan keluar dengan meluncurkan jari anda di sepanjang sensor sisi ini.
+Kedua-dua mod foto dan video menyokong fungsi ini. Anda boleh mematikan ini daripada Deria sisi dalam tetapan kamera."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Anda boleh mengambil foto atau video dengan hanya mengetik dua kali sensor di sisi skrin dalam pandangan potret dan bukannya butang pengatup. Anda juga boleh zum masuk atau keluar dengan meluncurkan jari anda di sepanjang sensor sisi ini.
+Kedua-dua mod foto dan video menyokong fungsi ini. Anda boleh mematikan ini daripada Deria sisi dalam tetapan kamera."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Anda boleh mengambil foto atau video dengan hanya mengetik dua kali sensor di sisi skrin dalam pandangan potret dan bukannya butang pengatup.
+Kedua-dua mod foto dan video menyokong fungsi ini. Anda boleh mematikan ini daripada Deria sisi dalam tetapan kamera."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Anda boleh mengambil foto atau video dengan hanya mengetik dua kali sensor di sisi skrin dan bukannya butang pengatup.
+Kedua-dua mod foto dan video menyokong fungsi ini. Anda boleh mematikan ini daripada Deria sisi dalam tetapan kamera."</string>
+    <string name="cam_strings_side_touch_txt">Deria sisi</string>
+    <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Gaya rakaman dan resolusi skrin boleh diubah dalam tetapan Kamera</string>
+    <string name="cam_strings_slow_motion_settings_shot_txt">Super perlahan (satu tangkapan)</string>
+    <string name="cam_strings_slow_motion_settings_standard_txt">Gerak perlahan</string>
+    <string name="cam_strings_slow_motion_settings_super_txt">Gerak perlahan super</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Anda boleh mengubah fps dan gaya rakaman untuk gerak perlahan</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Lagi pilihan</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Rakam detik berharga serta-merta dalam gerak perlahan %1$s fps dengan mengetik butang di tengah skrin.
+Merakam dlm keadaan cerah akan membantu anda mencipta video lbh baik."</string>
+    <string name="cam_strings_slow_motion_shot_hint_1_txt">Anda blh merakam detik yg tepat sebnyk %1$s fps dgn mengetik butang tengah</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Rakam detik berharga serta-merta dalam gerak perlahan %1$s fps dengan mengetik butang di tengah skrin</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Gerak perlahan super (satu tangkapan)</string>
+    <string name="cam_strings_slow_motion_shot_txt">Grk prlahan super (satu tangkapan)</string>
+    <string name="cam_strings_slow_motion_standard_hint_1_txt">Rakam video dengan %1$s fps dan guna kesan gerak perlahan</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_1_txt">Anda boleh merakam video dalam gerak perlahan 120 fps</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_2_txt">Rakam video dan kemudian, editnya utk memilih bhgn dlm gerak perlahan. Ketik butang di tgh skrin utk menetapkan bhgn tersebut sbg gerak perlahan.</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Gerak perlahan</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Cara untuk merakam</string>
+    <string name="cam_strings_slow_motion_standard_txt">Gerak perlahan</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Buat video hebat dengan menunjukkan detik berharga dalam gerak perlahan.
+Rakaman dalam keadaan yang cerah akan membantu anda mencipta video yang lebih baik."</string>
+    <string name="cam_strings_slow_motion_super_hint_1_txt">Anda blh merakam video pd kelajuan yg berbeza dgn menukar kpd %1$s fps</string>
+    <string name="cam_strings_slow_motion_super_hint_2_txt">Ketik butang di tengah pada detik yang tepat</string>
+    <string name="cam_strings_slow_motion_super_hint_3_txt">Gerak perlahan dirakam</string>
+    <string name="cam_strings_slow_motion_super_tutorial_1_txt">Buat video hebat dengan menunjukkan detik berharga dalam gerak perlahan</string>
+    <string name="cam_strings_slow_motion_super_tutorial_2_txt">Mulakan rakaman video dengan mengetik butang rakam</string>
+    <string name="cam_strings_slow_motion_super_tutorial_3_txt">Ketik butang di tengah skrin untuk merakam dalam gerak perlahan. Ketik butang berhenti untuk menghentikan rakaman.</string>
+    <string name="cam_strings_slow_motion_super_tutorial_title_1_txt">Gerak perlahan super</string>
+    <string name="cam_strings_slow_motion_super_txt">Gerak perlahan super</string>
+    <string name="cam_strings_slow_motion_txt">Mod gerak perlahan</string>
+    <string name="cam_strings_smile_capture_big_txt">Senyuman lebar</string>
+    <string name="cam_strings_smile_capture_faint_txt">Senyuman kecil</string>
+    <string name="cam_strings_smile_capture_normal_txt">Senyuman biasa</string>
+    <string name="cam_strings_smile_capture_txt">Pengecaman senyuman</string>
+    <string name="cam_strings_smile_shutter_cy_txt">Pengatup Senyum</string>
+    <string name="cam_strings_smile_shutter_title_cy_txt">Pengatup Senyum</string>
+    <string name="cam_strings_snackbar_dependency_button_txt">Butiran</string>
+    <string name="cam_strings_snackbar_dependency_info_txt">Perubahan ini menjejaskan tetapan lain</string>
+    <string name="cam_strings_soft_skin_effect_cy_txt">Kesan kulit lembut</string>
+    <string name="cam_strings_soft_skin_effect_title_cy_txt">Kesan kulit lembut</string>
+    <string name="cam_strings_standard_txt">Standard</string>
+    <string name="cam_strings_steadyshot_cy_txt">SteadyShot™</string>
+    <string name="cam_strings_step_tutorial_title_txt">Langkah %1$s drpd %2$s</string>
+    <string name="cam_strings_store_fail_txt">Tidak dapat menyimpan</string>
+    <string name="cam_strings_superior_auto_brightness_txt">Kecerahan</string>
+    <string name="cam_strings_superior_auto_color_txt">Warna</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_title_txt">Kamera dual</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_txt">Anda boleh mengambil foto cantik dengan hingar rendah menggunakan kamera dual walaupun pada waktu malam atau dalam bilik kurang cahaya. Kamera bertukar secara automatik antara kamera tunggal dan kamera dual berdasarkan pemandangan yang akan diambil dengan kepekaan Amat tinggi.</string>
+    <string name="cam_strings_sw_licence_title_txt">Lesen Perisian</string>
+    <string name="cam_strings_take_photo_txt">Ambil foto</string>
+    <string name="cam_strings_term_of_use_accept_txt">Terima</string>
+    <string name="cam_strings_term_of_use_consent_txt">Saya bersetuju dengan &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Terma Penggunaan&lt;/a> Sony.</string>
+    <string name="cam_strings_term_of_use_data_charge_txt">Penggunaan anda ke atas perkhidmatan ini tertakluk pada caj data mudah alih yang bergantung pada pelan data anda.</string>
+    <string name="cam_strings_term_of_use_data_collection_txt">Sony akan mengumpulkan pengecam peranti unik ID Android hash anda, data berasaskan lokasi dan cap masa bagi memberikan hasil yang bersesuaian kepada anda sebagai sebahagian daripada perkhidmatan dan untuk peningkatan perkhidmatan.</string>
+    <string name="cam_strings_term_of_use_decline_txt">Tolak</string>
+    <string name="cam_strings_term_of_use_title_txt">Terma dan Syarat</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Terma Penggunaan&lt;/a></string>
+    <string name="cam_strings_timeshift_cancel_selection_txt">Nyahpilih foto</string>
+    <string name="cam_strings_timeshift_operation_failed_txt">Tidak dapat menyimpan</string>
+    <string name="cam_strings_timeshift_save_complete_txt">Disimpan</string>
+    <string name="cam_strings_timeshift_save_selection_txt">Simpan secara berasingan</string>
+    <string name="cam_strings_timeshift_select_images_txt">Pilih foto</string>
+    <string name="cam_strings_timeshift_share_txt">Kongsi</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Bersambung ke %1$s</string>
+    <string name="cam_strings_touch_capturing_always_txt">Hidupkan</string>
+    <string name="cam_strings_touch_capturing_only_front_txt">Hanya kamera depan</string>
+    <string name="cam_strings_touch_capturing_title_txt">Tangkap sentuh</string>
+    <string name="cam_strings_touch_focus_in_manual_focus_txt">Untuk menggunakan Fokus sentuh, ubah tetapan fokus kepada AF (fokus auto).</string>
+    <string name="cam_strings_touch_to_adjust_description_txt">Pilih item untuk dilaraskan apabila anda menyentuh pemidang tilik</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_focus_and_exposure_txt">Fokus dan kecerahan</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_only_focus_txt">Fokus sahaja</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_txt">Sentuh untuk melaras</string>
+    <string name="cam_strings_transfer_and_tagging_description_txt">"Menghidupkan fungsi ini akan membolehkan Transfer &amp; Tagging add-on memaparkan foto yang diambil menggunakan kamera Xperia. Foto akan disimpan dalam storan dalaman.
+Fungsi ini serasi dengan foto yang diambil dalam mod foto dan manual."</string>
+    <string name="cam_strings_transfer_and_tagging_txt">Mod Transfer &amp; Tagging add-on</string>
+    <string name="cam_strings_tutorial_bright_place_txt">Rakaman dalam keadaan yang cerah akan membantu anda mencipta video yang lebih baik</string>
+    <string name="cam_strings_tutorial_button_next_txt">Seterusnya</string>
+    <string name="cam_strings_tutorial_button_skip_txt">Langkau</string>
+    <string name="cam_strings_tutorial_button_txt">Faham</string>
+    <string name="cam_strings_tutorial_title_txt">Tukar mod</string>
+    <string name="cam_strings_tutorial_txt">Leret untuk menukar ke Mod tangkapan yang lain seperti Video atau Manual</string>
+    <string name="cam_strings_unable_to_operate_txt">Tidak boleh beroperasi semasa menyimpan foto</string>
+    <string name="cam_strings_unlock_button_txt">Buka kunci</string>
+    <string name="cam_strings_use_of_camera_not_authorized_txt">Penggunaan kamera terhad untuk tujuan keselamatan</string>
+    <string name="cam_strings_video_backlight_correction_description_txt">Jika anda menghidupkan tetapan ini, anda boleh merakam video secara automatik dengan dedahan optimum, walaupun dalam keadaan adanya cahaya latar.</string>
+    <string name="cam_strings_video_backlight_correction_txt">Pembetulan cahaya latar video</string>
+    <string name="cam_strings_video_codec_for_4k_txt">Jenis fail rakaman</string>
+    <string name="cam_strings_video_digital_zoom_type_description_txt">"Pilih tetapan zum digital video.
+
+Zum digital standard: Zum menggunakan pemprosesan digital berdasarkan data sensor imej.
+Zum resolusi super video: Zum menggunakan pemprosesan digital yang lebih mengekalkan kualiti imej asal. Penyimpanan video mungkin mengambil masa yang lebih lama."</string>
+    <string name="cam_strings_video_digital_zoom_type_super_resolution_txt">Zum resolusi super video</string>
+    <string name="cam_strings_video_digital_zoom_type_txt">Tetapan zum digital video</string>
+    <string name="cam_strings_video_explanatory_4k2k_setting_txt">Untuk rakaman video 4K yang stabil, anda mestilah tidak mengubah tetapan ini kecuali anda menggunakan kad SD berkelajuan tinggi (UHS Kelajuan Kelas 1 atau lebih tinggi, atau Kelajuan Kelas 10 disyorkan).</string>
+    <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Untuk rakaman video Peralihan masa yang stabil, anda mestilah tidak mengubah tetapan ini kecuali anda menggunakan kad SD berkelajuan tinggi (UHS Kelajuan Kelas 1 atau lebih tinggi, atau Kelajuan Kelas 10 disyorkan). Ubah juga?</string>
+    <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Untuk rakaman video gerak perlahan yang stabil, jangan ubah tetapan ini kecuali anda menggunakan kad SD berkelajuan tinggi (UHS Kelajuan Kelas 1 atau lebih tinggi, atau Kelajuan Kelas 10 disyorkan).</string>
+    <string name="cam_strings_video_explanatory_txt">"Untuk rakaman video yang stabil, kami mengesyorkan anda mengubah storan data ke storan Dalaman. Adakah anda ingin mengubah sekarang?
+
+Jika anda terus menggunakan kad SD sebagai storan data, pastikan anda menggunakan kad SD berkelajuan tinggi (UHS Kelajuan Kelas 1 atau lebih tinggi, atau Kelajuan Kelas 10 disyorkan)."</string>
+    <string name="cam_strings_video_fusion_tutorial_0_title_txt">Kamera dual</string>
+    <string name="cam_strings_video_fusion_tutorial_0_txt">Anda boleh merakamkan video indah dengan hingar yang rendah menggunakan kamera dual, walaupun pada waktu malam atau dalam bilik yang mempunyai pencahayaan lemah. Kamera bertukar secara automatik antara kamera tunggal dan kamera dual berdasarkan pemandangan untuk merakam dengan Kepekaan amat tinggi.</string>
+    <string name="cam_strings_video_fusion_tutorial_1_title_txt">Rakaman video dengan kamera dual</string>
+    <string name="cam_strings_video_fusion_tutorial_1_txt">Jauhkan sekurang-kurangnya 1 meter daripada objek apabila merakam dengan kamera dual. Menghampiri objek boleh menyebabkan titik pandangan atau warna berubah apabila merakam dalam kepekaan Amat tinggi.</string>
+    <string name="cam_strings_video_fusion_tutorial_2_title_txt">Gunakan kamera dual untuk rakaman video?</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">Untuk mengambil foto jarak dekat yang hebat, ketik Tidak dan bertukar ke kamera tunggal. Anda boleh mengubahnya kembali ke kamera dual pada bila-bila masa dengan mengetik butang pada pemidang tilik.</string>
+    <string name="cam_strings_video_hdr_hlg_txt">HDR Hidup</string>
+    <string name="cam_strings_video_hdr_setting_hlg_txt">HDR</string>
+    <string name="cam_strings_video_hdr_title_txt">HDR video</string>
+    <string name="cam_strings_video_hdr_txt">HDR video</string>
+    <string name="cam_strings_video_resolution_4k_file_type_txt">Format fail (4K)</string>
+    <string name="cam_strings_video_resolution_full_hd_16_9_60fps_txt">Full HD (16:9 60fps)</string>
+    <string name="cam_strings_video_resolution_full_hd_30fps_txt">HD penuh (30 fps)</string>
+    <string name="cam_strings_video_resolution_full_hd_60fps_txt">HD penuh (60 fps)</string>
+    <string name="cam_strings_video_resolution_full_hd_frame_rate_txt">Kadar bingkai (Full HD)</string>
+    <string name="cam_strings_video_resolution_full_hd_super_slow_desc_txt">Menangkap kwsn yg lbh luas dlm separuh masa rakaman, berbeza drpd HD.</string>
+    <string name="cam_strings_video_resolution_full_hd_txt">HD Penuh</string>
+    <string name="cam_strings_video_resolution_hd_super_slow_desc_txt">Menangkap kwsn yg lebih sempit dlm dua kali masa rakaman, berbeza drpd Full HD.</string>
+    <string name="cam_strings_video_resolution_hd_txt">HD</string>
+    <string name="cam_strings_video_resolution_mms_txt">MMS</string>
+    <string name="cam_strings_video_resolution_qvga_txt">QVGA</string>
+    <string name="cam_strings_video_resolution_title_txt">Resolusi video</string>
+    <string name="cam_strings_video_resolution_txt">Resolusi video</string>
+    <string name="cam_strings_video_resolution_vga_txt">VGA</string>
+    <string name="cam_strings_video_shutter_trigger_txt">Penangkapan auto (video)</string>
+    <string name="cam_strings_video_size_4kuhd_txt">4K (QFHD)</string>
+    <string name="cam_strings_video_size_full_hd_16_9_txt">Full HD (16:9)</string>
+    <string name="cam_strings_video_size_full_hd_21_9_txt">Full HD (21:9)</string>
+    <string name="cam_strings_video_size_full_hd_txt">HD Penuh</string>
+    <string name="cam_strings_video_size_txt">Saiz video</string>
+    <string name="cam_strings_video_smile_shutter_txt">Pengatup Senyum (video)</string>
+    <string name="cam_strings_video_stabilizer_txt">Penstabilan video</string>
+    <string name="cam_strings_volumekey_shutter_txt">Pengatup</string>
+    <string name="cam_strings_volumekey_txt">Gunakan Btg kelantangn sbg</string>
+    <string name="cam_strings_volumekey_volume_txt">Kelantangan</string>
+    <string name="cam_strings_volumekey_zoom_txt">Zum</string>
+    <string name="cam_strings_white_balance_auto_txt">Auto</string>
+    <string name="cam_strings_white_balance_cloudy_txt">Mendung</string>
+    <string name="cam_strings_white_balance_day_light_txt">Siang hari</string>
+    <string name="cam_strings_white_balance_fluorescent_txt">Pendarfluor</string>
+    <string name="cam_strings_white_balance_incandescent_txt">Pijar</string>
+    <string name="cam_strings_white_balance_title_txt">Imbangan putih</string>
+    <string name="cam_strings_white_balance_txt">Imbangan putih</string>
+    <string name="cam_strings_whitebalance_custom1_txt">Tersuai 1</string>
+    <string name="cam_strings_whitebalance_custom2_txt">Tersuai 2</string>
+    <string name="cam_strings_whitebalance_custom3_txt">Tersuai 3</string>
+    <string name="cam_strings_whitebalance_shde_txt">Bebayang</string>
+    <string name="cam_strings_zoom_frames_description_txt">"Jika anda menghidupkan tetapan ini, anda boleh pratonton rupa video apabila anda zum masuk.
+Ketengahkan subjek dalam bingkai dan ketik nisbah zum untuk zum masuk dengan mudah."</string>
+    <string name="cam_strings_zoom_frames_txt">Bantuan komposisi zum</string>
+    <string name="cam_strings_zoom_help_txt">Gunakan butang kelantangan untuk mengezum masuk/keluar</string>
+    <string name="cam_strings_zoom_not_supported_in_bokeh_effect_txt">Tidak boleh zum semasa menggunakan kesan Bokeh</string>
+    <string name="cam_strings_zoom_not_supported_in_front_txt">Tidak boleh zum dengan kamera depan</string>
+    <string name="cam_strings_zoom_not_supported_in_widecam_txt">Tidak boleh zum menggunakan lensa ultralebar</string>
+    <string name="cam_strings_zoom_not_supported_txt">Zum tidak tersedia pada masa ini</string>
+    <string name="expand_button_title">Terperinci</string>
+    <string name="photopro_strings_multi_or_popup_window_txt">Tidak boleh menggunakan kamera dalam Berbilang tetingkap atau dan tetingkap pop-timbul. Tutup tetingkap dan cuba sekali lagi. Jika anda menggunakan Berbilang tetingkap, anda boleh menyeret tengah bar pisah untuk menjadikan kamera sebagai skrin penuh.</string>
+    <string name="search_menu_title">Cari</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="v7_preference_off">MATI</string>
+    <string name="v7_preference_on">HIDUP</string>
+</resources>

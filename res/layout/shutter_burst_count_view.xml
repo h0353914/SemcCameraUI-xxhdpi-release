@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sonyericsson.android.camera.view.BurstCountView android:textSize="16.0dip" android:gravity="center" android:layout_gravity="left|center" android:id="@id/burst_count_view" android:background="@drawable/cam_core_manual_burst_feedback_icn" android:visibility="invisible" android:layout_width="40.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/shutter_burst_count_indicator_right_margin"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

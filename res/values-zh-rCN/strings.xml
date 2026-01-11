@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">转到主屏幕</string>
+    <string name="abc_action_bar_up_description">转到上一层级</string>
+    <string name="abc_action_menu_overflow_description">更多选项</string>
+    <string name="abc_action_mode_done">完成</string>
+    <string name="abc_activity_chooser_view_see_all">查看全部</string>
+    <string name="abc_activitychooserview_choose_application">选择应用</string>
+    <string name="abc_capital_off">关闭</string>
+    <string name="abc_capital_on">开启</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">Delete 键</string>
+    <string name="abc_menu_enter_shortcut_label">Enter 键</string>
+    <string name="abc_menu_function_shortcut_label">Fn+</string>
+    <string name="abc_menu_meta_shortcut_label">Meta+</string>
+    <string name="abc_menu_shift_shortcut_label">Shift+</string>
+    <string name="abc_menu_space_shortcut_label">空格键</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">Menu+</string>
+    <string name="abc_search_hint">搜索…</string>
+    <string name="abc_searchview_description_clear">清除查询</string>
+    <string name="abc_searchview_description_query">搜索查询</string>
+    <string name="abc_searchview_description_search">搜索</string>
+    <string name="abc_searchview_description_submit">提交查询</string>
+    <string name="abc_searchview_description_voice">语音搜索</string>
+    <string name="abc_shareactionprovider_share_with">分享方式</string>
+    <string name="abc_shareactionprovider_share_with_application">使用%s分享</string>
+    <string name="abc_toolbar_collapse_description">收起</string>
+    <string name="call_notification_answer_action">接听</string>
+    <string name="call_notification_answer_video_action">视频通话</string>
+    <string name="call_notification_decline_action">拒接</string>
+    <string name="call_notification_hang_up_action">挂断</string>
+    <string name="call_notification_incoming_text">来电</string>
+    <string name="call_notification_ongoing_text">正在通话</string>
+    <string name="call_notification_screening_text">正在过滤来电</string>
+    <string name="cam_3d_strings_creating_but_incorrect_direction_txt">无法完成拍摄。请在正确的方向平移。</string>
+    <string name="cam_3d_strings_creating_but_too_quick_txt">无法完成拍摄。请更缓慢地平移。</string>
+    <string name="cam_3d_strings_creating_but_too_slow_txt">无法完成拍摄。请更快地平移。</string>
+    <string name="cam_3d_strings_description_sweep_panorama_txt">通过平移相机，以拍摄全景照片</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"正在创建以下文件：
+- 多角度图像
+- 3D 图像
+注意：这些文件包含一个灰色区域。"</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"正在创建以下文件：
+- 多角度图像
+- 3D图像"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"正在处理...
+此图像包含一个灰色区域"</string>
+    <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">保存图像</string>
+    <string name="cam_3d_strings_dialog_processing_txt">正在处理...</string>
+    <string name="cam_3d_strings_error_application_busy_txt">正在启动3D相机，请等待数秒钟</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_title_txt">错误</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">连接连接线时无法在此模式下拍摄照片。请拔出连接线。</string>
+    <string name="cam_3d_strings_error_direction_txt">无法拍照。请在正确的方向平移。</string>
+    <string name="cam_3d_strings_error_too_quick_txt">无法拍照。请更缓慢地平移。</string>
+    <string name="cam_3d_strings_error_too_slow_txt">无法拍照。请更快地平移。</string>
+    <string name="cam_3d_strings_setting_shooting_direction_down_txt">向下</string>
+    <string name="cam_3d_strings_setting_shooting_direction_left_txt">向左</string>
+    <string name="cam_3d_strings_setting_shooting_direction_right_txt">向右</string>
+    <string name="cam_3d_strings_setting_shooting_direction_title_txt">拍摄方向</string>
+    <string name="cam_3d_strings_setting_shooting_direction_up_txt">向上</string>
+    <string name="cam_3d_strings_shooting_direction_guide_txt">通过点按左侧的图标更改拍摄方向</string>
+    <string name="cam_3d_strings_shooting_failure_title_txt">无法拍摄</string>
+    <string name="cam_3d_strings_shooting_guide_down_to_up_txt">从下向上平移</string>
+    <string name="cam_3d_strings_shooting_guide_left_to_right_txt">从左向右平移</string>
+    <string name="cam_3d_strings_shooting_guide_pan_too_fast_txt">缓慢平移</string>
+    <string name="cam_3d_strings_shooting_guide_press_key_txt">按快门按钮，然后慢慢平移相机</string>
+    <string name="cam_3d_strings_shooting_guide_right_to_left_txt">从右向左平移</string>
+    <string name="cam_3d_strings_shooting_guide_touch_cap_txt">点按相机按钮，然后慢慢平移相机</string>
+    <string name="cam_3d_strings_shooting_guide_up_to_down_txt">从上向下平移</string>
+    <string name="cam_3d_strings_sweep_panorama_short_txt">全景扫描</string>
+    <string name="cam_app_shortcut_front_photo_txt">前置照片</string>
+    <string name="cam_app_shortcut_manual_txt">手动</string>
+    <string name="cam_app_shortcut_video_txt">视频</string>
+    <string name="cam_face_eye_af_settings_on_txt">人脸检测/眼部AF开启</string>
+    <string name="cam_string_dualrec_m_apr_txt">%2$tY年4月%1$td日</string>
+    <string name="cam_string_dualrec_m_aug_txt">%2$tY年8月%1$td日</string>
+    <string name="cam_string_dualrec_m_dec_txt">%2$tY年12月%1$td日</string>
+    <string name="cam_string_dualrec_m_feb_txt">%2$tY年2月%1$td日</string>
+    <string name="cam_string_dualrec_m_jan_txt">%2$tY年1月%1$td日</string>
+    <string name="cam_string_dualrec_m_jul_txt">%2$tY年7月%1$td日</string>
+    <string name="cam_string_dualrec_m_jun_txt">%2$tY年6月%1$td日</string>
+    <string name="cam_string_dualrec_m_mar_txt">%2$tY年3月%1$td日</string>
+    <string name="cam_string_dualrec_m_may_txt">%2$tY年5月%1$td日</string>
+    <string name="cam_string_dualrec_m_nov_txt">%2$tY年11月%1$td日</string>
+    <string name="cam_string_dualrec_m_oct_txt">%2$tY年10月%1$td日</string>
+    <string name="cam_string_dualrec_m_sep_txt">%2$tY年9月%1$td日</string>
+    <string name="cam_string_dualrec_t_am_txt">上午%1$tl:%2$tM</string>
+    <string name="cam_string_dualrec_t_pm_txt">下午%1$tl:%2$tM</string>
+    <string name="cam_strings_1x1_frame_lines_txt">1:1框线</string>
+    <string name="cam_strings_accessibility_auto_review_txt">自动预览照片</string>
+    <string name="cam_strings_accessibility_auto_scene_recognized_txt">识别到的场景为%1$s</string>
+    <string name="cam_strings_accessibility_back_main_txt">返回</string>
+    <string name="cam_strings_accessibility_back_txt">返回</string>
+    <string name="cam_strings_accessibility_capturing_mode_txt">拍摄模式</string>
+    <string name="cam_strings_accessibility_close_color_button_txt">关闭颜色调整</string>
+    <string name="cam_strings_accessibility_color_brightness_button_txt">关闭颜色和亮度调节</string>
+    <string name="cam_strings_accessibility_condition_detected_txt">检测到的状况为%1$s</string>
+    <string name="cam_strings_accessibility_condition_motion_txt">移动</string>
+    <string name="cam_strings_accessibility_condition_stable_txt">稳定</string>
+    <string name="cam_strings_accessibility_condition_walk_txt">步行</string>
+    <string name="cam_strings_accessibility_dual_effect_menu_txt">双镜头相机效果</string>
+    <string name="cam_strings_accessibility_eyeaf_off_txt">双击以打开眼部AF</string>
+    <string name="cam_strings_accessibility_eyeaf_on_txt">双击以关闭眼部AF</string>
+    <string name="cam_strings_accessibility_flash_torch_txt">手电筒</string>
+    <string name="cam_strings_accessibility_flash_txt">闪光灯</string>
+    <string name="cam_strings_accessibility_fusion_auto_txt">双击即可切换到自动双镜头相机</string>
+    <string name="cam_strings_accessibility_fusion_off_txt">点按两次以开启双镜头相机</string>
+    <string name="cam_strings_accessibility_fusion_on_txt">点按两次以关闭双镜头相机</string>
+    <string name="cam_strings_accessibility_image_quality_control_exposure_value_txt">曝光值</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_deselected_txt">已自动取消选择</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_selected_txt">已自动选择</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_txt">自动对焦</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_adjusted_txt">焦距已更改</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_txt">手动对焦</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_txt">对焦</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_deselected_txt">已自动取消选择</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_selected_txt">已自动选择</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_txt">快门速度</string>
+    <string name="cam_strings_accessibility_image_quality_control_white_balance_txt">白平衡</string>
+    <string name="cam_strings_accessibility_information_txt">信息</string>
+    <string name="cam_strings_accessibility_menu_txt">菜单</string>
+    <string name="cam_strings_accessibility_not_configurable_txt">不可配置</string>
+    <string name="cam_strings_accessibility_open_color_button_txt">打开颜色调整</string>
+    <string name="cam_strings_accessibility_other_settings_txt">其他设定</string>
+    <string name="cam_strings_accessibility_pause_button_txt">暂停</string>
+    <string name="cam_strings_accessibility_photo_setting_txt">相机设定</string>
+    <string name="cam_strings_accessibility_predictive_capture_txt">预测拍摄</string>
+    <string name="cam_strings_accessibility_recent_photo_txt">一叠最近的照片</string>
+    <string name="cam_strings_accessibility_recording_button_txt">录制</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_button_txt">慢动作</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_exti_button_txt">退出慢动作模式</string>
+    <string name="cam_strings_accessibility_recording_stop_button_txt">停止</string>
+    <string name="cam_strings_accessibility_self_timer_stop_button_txt">停止倒计时</string>
+    <string name="cam_strings_accessibility_shutter_button_txt">快门按钮</string>
+    <string name="cam_strings_accessibility_soundphoto_play_txt">播放声音</string>
+    <string name="cam_strings_accessibility_superior_auto_color_brightness_txt">颜色和亮度调节</string>
+    <string name="cam_strings_accessibility_swf_normal_txt">点按两次以切换到正常模式</string>
+    <string name="cam_strings_accessibility_swf_wide_txt">点按两次以切换到广角模式</string>
+    <string name="cam_strings_accessibility_switch_to_front_by_swiping_txt">切换到前置摄像头</string>
+    <string name="cam_strings_accessibility_switch_to_front_txt">双击切换到前置相机</string>
+    <string name="cam_strings_accessibility_switch_to_main_by_swiping_txt">切换到主摄像头</string>
+    <string name="cam_strings_accessibility_switch_to_main_txt">双击切换到主摄像头</string>
+    <string name="cam_strings_accessibility_switch_to_photo_txt">双击切换到相机</string>
+    <string name="cam_strings_accessibility_switch_to_video_txt">双击切换到视频</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">双击以开启HDR</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_on_txt">双击以关闭HDR</string>
+    <string name="cam_strings_accessibility_video_setting_txt">视频设定</string>
+    <string name="cam_strings_accessibility_viewer_txt">用图像浏览器打开</string>
+    <string name="cam_strings_accessibility_zoom_ratio_with_number_txt">%1$s倍</string>
+    <string name="cam_strings_advanced_setting_geo_tag_both_off_txt">要保存位置，必须启用GPS和/或无线网络。立即启用？</string>
+    <string name="cam_strings_advanced_setting_geo_tag_title_txt">保存位置</string>
+    <string name="cam_strings_ai_face_restore_txt">锐化人脸</string>
+    <string name="cam_strings_application_name_creative_effect_txt">创意效果</string>
+    <string name="cam_strings_application_name_dualrec_txt">图中露脸儿</string>
+    <string name="cam_strings_application_name_facefusion_txt">AR面罩</string>
+    <string name="cam_strings_application_name_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_application_name_multicam_txt">联机合拍</string>
+    <string name="cam_strings_application_name_night_mode_txt">夜间模式</string>
+    <string name="cam_strings_application_name_night_shooting_txt">夜间模式</string>
+    <string name="cam_strings_application_name_soundphoto_txt">有声照片</string>
+    <string name="cam_strings_application_name_sweep_panorama_txt">全景扫描</string>
+    <string name="cam_strings_application_name_timeshift_txt">疾速连拍</string>
+    <string name="cam_strings_application_name_txt">相机</string>
+    <string name="cam_strings_application_name_video_txt">视频</string>
+    <string name="cam_strings_apps_list_add_txt">添加</string>
+    <string name="cam_strings_apps_list_downloadable_txt">可下载</string>
+    <string name="cam_strings_apps_list_installed_txt">已安装</string>
+    <string name="cam_strings_apps_list_txt">相机应用程序</string>
+    <string name="cam_strings_art_filter_guesture_guide_general_txt">使用您的手指编辑显示的图片</string>
+    <string name="cam_strings_art_filter_guesture_guide_tap_txt">点按希望着色的部分</string>
+    <string name="cam_strings_aspect_ratio_txt">高宽比</string>
+    <string name="cam_strings_auto_hdr_discription_txt">如果打开此设定，可以通过在拍摄过程中检测对比度来避免曝光过度和曝光不足。</string>
+    <string name="cam_strings_auto_hdr_txt">自动HDR</string>
+    <string name="cam_strings_auto_power_off_txt">由于不活动，相机即将关闭</string>
+    <string name="cam_strings_auto_scene_recognition_txt">自动场景识别</string>
+    <string name="cam_strings_auto_upload_all_title_txt">自动上传</string>
+    <string name="cam_strings_auto_upload_all_txt">自动上传</string>
+    <string name="cam_strings_awb_priority_setting_asmosphere_txt">环境</string>
+    <string name="cam_strings_awb_priority_setting_standard_txt">标准</string>
+    <string name="cam_strings_awb_priority_setting_txt">AWB优先级设置</string>
+    <string name="cam_strings_awb_priority_setting_white_txt">白色</string>
+    <string name="cam_strings_balloon_tips_modeselector_title_txt">尝试不同的拍摄模式</string>
+    <string name="cam_strings_balloon_tips_modeselector_txt">点按此图标以选择其他模式</string>
+    <string name="cam_strings_balloon_tips_timeshift_title_txt">选择最佳瞬间</string>
+    <string name="cam_strings_balloon_tips_timeshift_txt">通过上下滑动缩略图，寻找拍摄的最佳照片</string>
+    <string name="cam_strings_bokeh_error_covering_lens_txt">请确保镜头清洁且手指不在镜头上</string>
+    <string name="cam_strings_bokeh_error_night_shooting_disable_txt">夜间拍摄在散景效果开启时不可用</string>
+    <string name="cam_strings_bokeh_error_over_light_txt">太亮</string>
+    <string name="cam_strings_bokeh_error_too_close_txt">再远离对象一些</string>
+    <string name="cam_strings_bokeh_error_too_dark_txt">需要更多光亮</string>
+    <string name="cam_strings_bokeh_error_too_far_away_txt">再靠近对象一些</string>
+    <string name="cam_strings_bokeh_error_unknown_txt">散景目前不可用</string>
+    <string name="cam_strings_bokeh_title_txt">散景</string>
+    <string name="cam_strings_burst_battery_level_low_txt">由于电池电量过低，无法连拍</string>
+    <string name="cam_strings_burst_change_camera_key_setting_txt">开启“使用设备快门按钮连拍”设定以启用连拍</string>
+    <string name="cam_strings_burst_in_bokeh_effect_txt">使用散景效果时无法连拍</string>
+    <string name="cam_strings_burst_in_dark_condition_txt">无法在黑暗条件下进行连拍</string>
+    <string name="cam_strings_burst_in_long_shutter_speed_txt">如果将快门速度设定为2秒或更长，则无法连拍</string>
+    <string name="cam_strings_burst_in_transfer_and_tagging_txt">如果开启了Transfer &amp; Tagging add-on模式，则无法拍摄连拍照片</string>
+    <string name="cam_strings_burst_in_widecam_txt">使用超宽镜头时无法连拍</string>
+    <string name="cam_strings_burst_not_supported_front_camera_txt">无法使用前置相机进行连拍</string>
+    <string name="cam_strings_burst_not_supported_fusion_on_txt">双镜头相机开启时无法连拍</string>
+    <string name="cam_strings_burst_saved_internal_storage_txt">连拍图像已存储到内存中</string>
+    <string name="cam_strings_burst_shooting_txt">连拍速度</string>
+    <string name="cam_strings_button_continue_txt">继续</string>
+    <string name="cam_strings_button_quit_txt">退出</string>
+    <string name="cam_strings_camera_af_sound_txt">自动对焦声音</string>
+    <string name="cam_strings_camera_apps_tab_txt">相机应用程序</string>
+    <string name="cam_strings_camera_key_setting_burst_shot_txt">连拍</string>
+    <string name="cam_strings_camera_key_setting_take_photo_txt">拍照</string>
+    <string name="cam_strings_camera_key_setting_txt">使用快门按钮连拍</string>
+    <string name="cam_strings_camera_sound_txt">声音</string>
+    <string name="cam_strings_camera_switching_txt">相机切换</string>
+    <string name="cam_strings_camerakey_launch_description_photo_pro_txt">您可以通过长按设备快门按钮来启动相机应用程序或摄影大师。即使手机处于睡眠模式或锁定状态，此功能也可以使用。</string>
+    <string name="cam_strings_camerakey_launch_description_txt">您可以通过长按设备快门按钮来启动相机应用程序。即使手机处于睡眠模式或锁定状态，此功能也可以使用。</string>
+    <string name="cam_strings_cancel_txt">取消</string>
+    <string name="cam_strings_capturing_mode_4k2k_txt">4K视频</string>
+    <string name="cam_strings_capturing_mode_auto_txt">照片</string>
+    <string name="cam_strings_capturing_mode_button_txt">模式</string>
+    <string name="cam_strings_capturing_mode_camera_txt">相机</string>
+    <string name="cam_strings_capturing_mode_creative_effect_txt">创意效果</string>
+    <string name="cam_strings_capturing_mode_dualrec_txt">图中露脸儿</string>
+    <string name="cam_strings_capturing_mode_facefusion_txt">AR面罩</string>
+    <string name="cam_strings_capturing_mode_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_capturing_mode_high_frame_rate_txt">疾速视频</string>
+    <string name="cam_strings_capturing_mode_manual_txt">手动</string>
+    <string name="cam_strings_capturing_mode_multicam_txt">联机合拍</string>
+    <string name="cam_strings_capturing_mode_network_error_txt">无法完成数据下载</string>
+    <string name="cam_strings_capturing_mode_photopro_txt">摄影大师</string>
+    <string name="cam_strings_capturing_mode_portraitselfie_txt">人像自拍</string>
+    <string name="cam_strings_capturing_mode_slow_motion_txt">视频（慢动作）</string>
+    <string name="cam_strings_capturing_mode_soundphoto_txt">有声照片</string>
+    <string name="cam_strings_capturing_mode_superior_auto_cy_txt">高级自动模式</string>
+    <string name="cam_strings_capturing_mode_superior_auto_txt">高级自动模式</string>
+    <string name="cam_strings_capturing_mode_timeshift_txt">疾速连拍</string>
+    <string name="cam_strings_capturing_mode_title_txt">拍摄模式</string>
+    <string name="cam_strings_change_full_storage_to_internal_txt">SD卡已满。默认数据存储已更改为内部存储设备。</string>
+    <string name="cam_strings_change_save_destination_high_frame_rate_title_txt">疾速视频</string>
+    <string name="cam_strings_change_save_destination_slowmotion_title_txt">慢动作</string>
+    <string name="cam_strings_change_save_destination_title_txt">4K视频</string>
+    <string name="cam_strings_change_storage_to_sd_txt">已插入SD卡。是否将默认数据存储更改为SD卡？</string>
+    <string name="cam_strings_change_txt">更改</string>
+    <string name="cam_strings_close_txt">关闭</string>
+    <string name="cam_strings_color_brightness_txt">颜色和亮度</string>
+    <string name="cam_strings_common_error_internal_memory_full_txt">内部存储设备已满。将数据保存到SD卡中？</string>
+    <string name="cam_strings_common_error_internal_memory_unavailable_txt">内部存储设备已损坏或写保护。将数据保存到SD卡中？</string>
+    <string name="cam_strings_common_error_open_txt">无法打开%1$s</string>
+    <string name="cam_strings_common_error_sdcard_full_txt">SD卡已满。将数据保存到内部存储设备？</string>
+    <string name="cam_strings_common_error_sdcard_unavailable_txt">无法使用SD卡。将数据保存到内部存储设备？</string>
+    <string name="cam_strings_common_explanatory_sdcard_setting_txt">为了稳定地捕获或记录，我们建议您将数据存储设备更改为内部存储设备或使用高速SD卡（建议使用Class 10或更高）。</string>
+    <string name="cam_strings_cooling_mode_cooled_down_txt">已禁用部分功能</string>
+    <string name="cam_strings_cooling_mode_learn_more_txt">阅读更多</string>
+    <string name="cam_strings_cooling_mode_message1_txt">目前已禁用以下功能。</string>
+    <string name="cam_strings_cooling_mode_message2_txt">请等待设备冷却，然后重新启动相机。</string>
+    <string name="cam_strings_cooling_mode_title_txt">以下功能已禁用</string>
+    <string name="cam_strings_cooling_mode_txt">由于温度上升禁用部分功能</string>
+    <string name="cam_strings_core_intelligentactive_txt">智能增强</string>
+    <string name="cam_strings_cta_description_txt">是否允许以下访问请求？</string>
+    <string name="cam_strings_cta_title_txt">注意</string>
+    <string name="cam_strings_dependency_changed_txt">%1$s已更改为%2$s</string>
+    <string name="cam_strings_description_4k2k_txt">以4K超高分辨率录制视频</string>
+    <string name="cam_strings_description_camera_txt">拍摄照片和视频</string>
+    <string name="cam_strings_description_creative_effect_txt">选择艺术照片和视频的效果</string>
+    <string name="cam_strings_description_dualrec_txt">使用前置相机和主相机将您的脸部拍入到照片和视频</string>
+    <string name="cam_strings_description_facefusion_txt">将朋友的头像蒙在您的头像上来创作令人惊讶的自拍</string>
+    <string name="cam_strings_description_google_lens_txt">通过使用%1$s，您可以更详细地了解或处理所看到的内容</string>
+    <string name="cam_strings_description_high_frame_rate_txt">录制高帧率视频并应用慢动作效果</string>
+    <string name="cam_strings_description_multicam_txt">在单个屏幕上从多个角度记录同一场景</string>
+    <string name="cam_strings_description_shoundphoto_txt">拍摄带有背景声音（鸟叫声等）的照片</string>
+    <string name="cam_strings_description_timeshift_short_txt">从按快门前后所拍摄的连拍照片中挑选最好的照片</string>
+    <string name="cam_strings_details_txt">详细信息</string>
+    <string name="cam_strings_dialog_4k_unavailable_while_screen_recording_txt">"进行屏幕录制时无法拍摄4K视频。
+请选择4K以外的视频大小或者停止屏幕录制以拍摄视频。"</string>
+    <string name="cam_strings_dialog_60fps_unavailable_while_screen_recording_txt">"进行屏幕录制时无法拍摄当前视频大小。
+请选择全高清(60 fps)以外的视频大小或者停止屏幕录制以拍摄视频。"</string>
+    <string name="cam_strings_dialog_battery_level_low_info_txt">手机电量不足。在电池电量低时，相机会自动关闭。</string>
+    <string name="cam_strings_dialog_battery_level_low_recording_txt">电池电量低，记录已停止。请为设备充电，然后重试。</string>
+    <string name="cam_strings_dialog_battery_level_low_using_txt">电池电量低，无法使用相机。请为设备充电，然后重试。</string>
+    <string name="cam_strings_dialog_body_accessibility_txt">辅助功能：&lt;a href=\"%s\">部分兼容&lt;/a></string>
+    <string name="cam_strings_dialog_body_applicationnotification_1_txt">应用程序需要以下权限才能执行此操作。</string>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"网络
+连接到WLAN"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_airplane_on_txt">"飞行模式已开启。
+请从“设定”中关闭飞行模式。"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_name_txt">"网络名称：
+"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_disable_txt">不受保护</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_enable_txt">受保护</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">是否确定要连接到%1$s？</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"连接到%1$s？
+点按“详细信息”可查看有关此WLAN网络的信息。"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"WLAN已关闭，飞行模式已开启。
+请通过点按“设定”来更改这些设定。"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"WLAN已关闭。
+请从“设定”中开启WLAN。"</string>
+    <string name="cam_strings_dialog_btn_connect_txt">连接</string>
+    <string name="cam_strings_dialog_btn_settings_txt">设定</string>
+    <string name="cam_strings_dialog_burst_information_txt">要连续拍照，请选择相机应用程序中的疾速连拍</string>
+    <string name="cam_strings_dialog_change_resolution_manual_txt">手动（前置相机）</string>
+    <string name="cam_strings_dialog_change_resolution_superior_auto_txt">高级自动模式（前置相机）</string>
+    <string name="cam_strings_dialog_change_resolution_txt">由于软件更新，以下捕捉模式的分辨率已更改为13MP (4:3)</string>
+    <string name="cam_strings_dialog_cta_access_txt">%1$s尝试</string>
+    <string name="cam_strings_dialog_cta_allow_txt">允许</string>
+    <string name="cam_strings_dialog_cta_deny_txt">拒绝</string>
+    <string name="cam_strings_dialog_cta_location_info_txt">检索位置信息</string>
+    <string name="cam_strings_dialog_cta_turn_on_nfc_txt">打开NFC</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">打开WLAN</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">使用WLAN和移动数据</string>
+    <string name="cam_strings_dialog_high_temp_title_txt">注意</string>
+    <string name="cam_strings_dialog_high_temp_txt">如果设备温度升高，应用可能会在使用过程中关闭。您的录像将自动保存。</string>
+    <string name="cam_strings_dialog_high_temp_vzw_txt">相机模式将消耗大量手机资源，并可能导致手机温度上升。为了防止温度过高，可能会停止视频录制并关闭相机应用程序。您的录像将会自动保存。</string>
+    <string name="cam_strings_dialog_storage_full_burst_txt">由于内存不足，连拍已停止。删除一些文件以释放内部存储设备中的一些空间。</string>
+    <string name="cam_strings_dialog_title_accessibility_txt">辅助功能</string>
+    <string name="cam_strings_dialog_title_applicationnotification_txt">授予权限</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_connecting_txt">正在连接...</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">未能连接到WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_password_txt">"
+密码保护：
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_security_txt">"
+安全性：
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">WLAN详细信息</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">无法连接到WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">此WLAN网络存在安全风险</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">连接到WLAN</string>
+    <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">即使在高对比度的场景中，您也可以录制视频，并且使其更具戏剧性，更接近您在现实生活中看到的内容。请使用支持的设备/服务欣赏具有原始颜色和亮度的内容。</string>
+    <string name="cam_strings_digital_zoom_type_description_txt">"选择数字变焦设定。
+
+标准数字变焦：根据图像传感器数据，使用数字处理进行变焦。
+超分辨率变焦：使用可保留更多原始图像质量的数字处理进行变焦。保存照片可能需要更长时间。"</string>
+    <string name="cam_strings_digital_zoom_type_standard_txt">标准数字变焦</string>
+    <string name="cam_strings_digital_zoom_type_super_resolution_txt">超分辨率变焦</string>
+    <string name="cam_strings_digital_zoom_type_txt">数字变焦设定</string>
+    <string name="cam_strings_dispbutton_settings_txt">DISP按钮设定</string>
+    <string name="cam_strings_distortion_correction_photo_video_txt">扭曲度校正</string>
+    <string name="cam_strings_distortion_correction_txt">图像失真校正</string>
+    <string name="cam_strings_do_not_show_again_txt">不再显示</string>
+    <string name="cam_strings_downloadable_tab_txt">可下载</string>
+    <string name="cam_strings_drive_continuous_txt">连拍</string>
+    <string name="cam_strings_drive_hybrid_txt">单张拍摄连拍混合</string>
+    <string name="cam_strings_drive_single_txt">单张拍摄</string>
+    <string name="cam_strings_drivemode_txt">拍摄模式</string>
+    <string name="cam_strings_effect_Kaleidoscope_txt">万花筒</string>
+    <string name="cam_strings_effect_after_image_txt">运动轨迹</string>
+    <string name="cam_strings_effect_brightness_contrast_txt">亮度-对比度</string>
+    <string name="cam_strings_effect_color_filter_tint_txt">染色</string>
+    <string name="cam_strings_effect_color_pencil_txt">彩色素描</string>
+    <string name="cam_strings_effect_comic_txt">漫画</string>
+    <string name="cam_strings_effect_fish_eye_txt">鱼眼</string>
+    <string name="cam_strings_effect_harris_shutter_txt">哈里斯快门</string>
+    <string name="cam_strings_effect_hue_saturation_txt">色调-饱和度</string>
+    <string name="cam_strings_effect_miniature_txt">微缩景观</string>
+    <string name="cam_strings_effect_mirror_txt">镜像</string>
+    <string name="cam_strings_effect_mosaic_txt">马赛克</string>
+    <string name="cam_strings_effect_motion_effects_txt">运动效果</string>
+    <string name="cam_strings_effect_no_effect_txt">正常</string>
+    <string name="cam_strings_effect_nostalgia_txt">怀旧</string>
+    <string name="cam_strings_effect_old_film_txt">老电影</string>
+    <string name="cam_strings_effect_partical_color_txt">局部彩色</string>
+    <string name="cam_strings_effect_pencil_txt">铅笔素描</string>
+    <string name="cam_strings_effect_selector_txt">双镜头相机效果</string>
+    <string name="cam_strings_effect_vivid_txt">生动</string>
+    <string name="cam_strings_error_capture_txt">其他应用程序正在录制时，此模式不可用。</string>
+    <string name="cam_strings_error_delete_txt">无法删除</string>
+    <string name="cam_strings_error_device_not_available_txt">无法启动相机。重新启动相机或设备。</string>
+    <string name="cam_strings_error_dialog_title_txt">错误</string>
+    <string name="cam_strings_error_fatal_sd_photo_txt">无法保存照片。数据存储可能出现问题。如果数据存储设定为SD卡，请查看您的SD卡。</string>
+    <string name="cam_strings_error_fatal_sd_video_txt">无法开始进行录制。数据存储可能出现问题。如果数据存储设定为SD卡，请查看您的SD卡。</string>
+    <string name="cam_strings_error_fatal_txt">未知错误。</string>
+    <string name="cam_strings_error_high_temp_already_high_txt">您的Xperia需要冷却，请稍候。</string>
+    <string name="cam_strings_error_high_temp_info_flashlight_unavailable_txt">设备温度过高，无法使用手电筒</string>
+    <string name="cam_strings_error_high_temp_info_txt">设备温度正在升高。如果温度持续升高，应用将自动关闭。</string>
+    <string name="cam_strings_error_high_temp_info_video_recording_with_flashlight_unavailable_txt">设备温度过高，无法在打开手电筒时录制视频</string>
+    <string name="cam_strings_error_high_temp_info_vzw_txt">您的相机需要冷却。如果您正在录像中，我们需要自动保存您的视频并退出录像，直至相机冷却后才能使用。</string>
+    <string name="cam_strings_error_high_temp_shut_down_no_txt">否</string>
+    <string name="cam_strings_error_high_temp_shut_down_yes_txt">是</string>
+    <string name="cam_strings_error_high_temp_shutting_down_txt">相机将临时关闭以便冷却。</string>
+    <string name="cam_strings_error_high_temp_shutting_down_vzw_txt">您的相机需要冷却。您的录像将自动保存，并且退出应用程序，直至您的设备适当冷却后才能使用。</string>
+    <string name="cam_strings_error_internal_memory_full_txt">内部存储器已满。请将默认数据存储更改为SD卡。</string>
+    <string name="cam_strings_error_internal_memory_unavailable_txt">内部存储设备已损坏或写入受保护。数据存储已更改为SD卡。</string>
+    <string name="cam_strings_error_internal_sd_full_txt">内存已满。请从SD卡或内部存储设备删除一些文件。</string>
+    <string name="cam_strings_error_max_faces_exceeded_txt">已选择最大人脸数。请取消选择一个或多个人脸并重试。</string>
+    <string name="cam_strings_error_memory_full_txt">内存已满。请从SD卡中删除一些文件。</string>
+    <string name="cam_strings_error_memory_ims_access_error_txt">记忆卡错误</string>
+    <string name="cam_strings_error_memory_ims_full_txt">内存已满。请删除内存中的一些文件或更改默认数据存储。</string>
+    <string name="cam_strings_error_memory_ims_unavailable_txt">记忆卡不可用</string>
+    <string name="cam_strings_error_memory_title_txt">记忆卡错误</string>
+    <string name="cam_strings_error_memory_unavailable_txt">SD卡不可用</string>
+    <string name="cam_strings_error_message_during_voice_call_title_txt">正在进行通话</string>
+    <string name="cam_strings_error_message_during_voice_call_txt">通话时相机不可用</string>
+    <string name="cam_strings_error_mms_rec_size_limit_txt">无法添加更多文件。文件过大。</string>
+    <string name="cam_strings_error_save_file_in_progress_txt">正在保存。操作当前不可用。</string>
+    <string name="cam_strings_error_save_file_txt">其他应用程序正在录制。无法录制。</string>
+    <string name="cam_strings_error_storage_changing_to_internal_txt">SD卡不可用。请将默认数据存储更改为内部存储设备。</string>
+    <string name="cam_strings_error_video_rec_txt">无法录制。其他应用程序可能正在使用录制或录制相关的功能。</string>
+    <string name="cam_strings_ev_disable_txt">EV 设定已禁用。要控制 EV，请将 SS 或 ISO 更改为 AUTO。</string>
+    <string name="cam_strings_exposure_level_m03_txt">EV-0.3</string>
+    <string name="cam_strings_exposure_level_m07_txt">EV-0.7</string>
+    <string name="cam_strings_exposure_level_m10_txt">EV-1.0</string>
+    <string name="cam_strings_exposure_level_m13_txt">EV-1.3</string>
+    <string name="cam_strings_exposure_level_m17_txt">EV-1.7</string>
+    <string name="cam_strings_exposure_level_m20_txt">EV-2.0</string>
+    <string name="cam_strings_exposure_level_p03_txt">EV+0.3</string>
+    <string name="cam_strings_exposure_level_p07_txt">EV+0.7</string>
+    <string name="cam_strings_exposure_level_p10_txt">EV+1.0</string>
+    <string name="cam_strings_exposure_level_p13_txt">EV+1.3</string>
+    <string name="cam_strings_exposure_level_p17_txt">EV+1.7</string>
+    <string name="cam_strings_exposure_level_p20_txt">EV+2.0</string>
+    <string name="cam_strings_exposure_level_pm0_txt">EV±0.0</string>
+    <string name="cam_strings_exposure_level_title_txt">曝光值</string>
+    <string name="cam_strings_exposure_level_txt">曝光值</string>
+    <string name="cam_strings_eye_position_tutorial_title_txt">视线方向</string>
+    <string name="cam_strings_eye_position_tutorial_txt">保持眼睛注视听筒旁的前置相机</string>
+    <string name="cam_strings_face_eyeaf_settings_txt">人脸检测/眼部AF设定</string>
+    <string name="cam_strings_facefusion_add_face_txt">添加脸部图像</string>
+    <string name="cam_strings_facefusion_delete_mask_txt">删除此脸部图像？此操作无法撤销。</string>
+    <string name="cam_strings_facefusion_no_face_detected_txt">未检测到人脸</string>
+    <string name="cam_strings_facefusion_point_at_face_txt">请将相机对准人脸</string>
+    <string name="cam_strings_facefusion_select_face_txt">点按方格来选择人脸</string>
+    <string name="cam_strings_failure_camera_shake_preview_txt">为防止相机抖动导致模糊，请握稳相机。</string>
+    <string name="cam_strings_failure_camera_shake_txt">相机抖动可能会使照片模糊不清</string>
+    <string name="cam_strings_failure_detection_description_not_blink_txt">"如果您在拍照前，手指遮住镜头或图像失焦，此功能将通知您，帮助您避免错误。
+拍照后，您可以检查照片是否模糊并获得重新拍照的建议。"</string>
+    <string name="cam_strings_failure_detection_description_txt">"拍照前，如果手指遮住镜头或者如果图像没有聚焦，此功能会通知您，以帮助您预防错误。
+拍照后，您可以检查是否出现眨眼睛或模糊情况，并获得重新拍摄照片的建议。"</string>
+    <string name="cam_strings_failure_detection_txt">显示摄影建议</string>
+    <string name="cam_strings_failure_eye_blinks_preview_txt">检查是否有人眨眼</string>
+    <string name="cam_strings_failure_eye_blinks_txt">拍摄这张照片时可能有人眨了眼睛</string>
+    <string name="cam_strings_failure_finger_covering_lens_after_txt">您的手指可能挡住了镜头</string>
+    <string name="cam_strings_failure_finger_covering_lens_preview_txt">检查相机镜头位置，手指尽量不要遮住它</string>
+    <string name="cam_strings_failure_finger_covering_lens_txt">您的手指挡住了镜头</string>
+    <string name="cam_strings_failure_focus_too_close_txt">再远离对象一些</string>
+    <string name="cam_strings_failure_focus_too_dark_txt">需要更多光线才能对焦</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_photo_txt">启动并拍照</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_video_txt">启动并录制视频</string>
+    <string name="cam_strings_fast_capturing_launch_camera_capture_txt">启动相机应用程序并拍照</string>
+    <string name="cam_strings_fast_capturing_launch_camera_txt">启动相机应用程序</string>
+    <string name="cam_strings_fast_capturing_launch_only_txt">仅启动</string>
+    <string name="cam_strings_fast_capturing_launch_only_video_txt">仅启动（摄像机）</string>
+    <string name="cam_strings_fast_capturing_launch_photo_pro_txt">启动摄影大师</string>
+    <string name="cam_strings_fast_capturing_screen_locked_apps_list_txt">要更改拍摄模式，请解锁屏幕。是否解锁？</string>
+    <string name="cam_strings_fast_capturing_screen_locked_photos_burst_txt">在屏幕锁定时拍摄连拍照片后，必须解锁设备才能切换到照片查看器应用程序。解锁设备？</string>
+    <string name="cam_strings_fast_capturing_screen_locked_settings_txt">若要打开设定，请解锁屏幕。</string>
+    <string name="cam_strings_fast_capturing_screen_locked_title_txt">屏幕已锁</string>
+    <string name="cam_strings_fast_capturing_title_txt">快速启动</string>
+    <string name="cam_strings_fast_capturing_txt">快速启动</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_title_txt">切换捕捉模式和摄像头</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_txt">轻扫屏幕以切换到另一种捕捉模式（如视频或手动），并在主摄像头和前置摄像头之间切换。</string>
+    <string name="cam_strings_fast_switch_tutorial_title_txt">切换相机</string>
+    <string name="cam_strings_fast_switch_tutorial_txt">通过轻扫屏幕，您可以在主摄像头和前置摄像头之间切换</string>
+    <string name="cam_strings_feature_bokeh_cameraui_description_txt">"要调整散景效果，请在取景器中点按“散景”图标并移动滑块。
+照片模式支持此功能。
+让我们针对柔化失焦背景下聚焦的对象拍摄令人印象深刻的照片。"</string>
+    <string name="cam_strings_feature_bokeh_cameraui_subtitle_txt">拍摄带有散景效果的照片</string>
+    <string name="cam_strings_feature_bokeh_cameraui_title_txt">散景效果</string>
+    <string name="cam_strings_feature_bokeh_description_txt">"通过针对柔化的失焦背景锐化对焦对象来拍摄令人印象深刻的照片。
+要使用此模式，请在取景器中点按模式图标，然后选择“散景”。"</string>
+    <string name="cam_strings_feature_bokeh_subtitle_txt">散景</string>
+    <string name="cam_strings_feature_bokeh_title_txt">散景</string>
+    <string name="cam_strings_feature_dual_camera_manual_description_txt">您可以在手动模式下开启或关闭双镜头相机。要在低照明条件下拍摄杂色较少的照片，请将其开启。要拍摄特写照片，请将其关闭。</string>
+    <string name="cam_strings_feature_dual_camera_manual_subtitle_txt">在手动模式下使用双镜头相机拍照</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_2_txt">使用双镜头相机拍照或录制视频时，请与对象保持至少1米的距离。距离对象较近可能会导致视点或颜色发生偏移。</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_txt">"通过使用双镜头相机，您甚至可以在夜间或昏暗的房间内拍摄杂色较少的精美照片和视频。
+根据拍摄的场景，相机会在单镜头和双镜头相机之间自动切换。照片和视频均采用超高灵敏度拍摄。"</string>
+    <string name="cam_strings_feature_dual_camera_photo_subtitle_txt">双镜头相机</string>
+    <string name="cam_strings_feature_dual_camera_title_txt">双镜头相机</string>
+    <string name="cam_strings_feature_dual_camera_video_description_txt">要想拍摄精美的特写照片，请通过在取景器中关闭双镜头相机来切换到单镜头相机。您可以通过点按设定按钮随时更改。</string>
+    <string name="cam_strings_feature_dual_camera_video_subtitle_txt">使用双镜头相机录制视频</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_description_txt">"点按取景器中的按钮可在x1和x2之间切换角度。
+您可以在照片和视频模式下使用此功能。"</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_subtitle_txt">使用按钮切换角度</string>
+    <string name="cam_strings_feature_dual_zoom_camera_title_txt">双镜头相机</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_description_txt">"长按取景器中的按钮可显示滑块。您可以使用该滑块调整缩放级别。
+可以使用音量按钮，也可以通过捏合屏幕来调整缩放级别。"</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_subtitle_txt">使用滑块缩放</string>
+    <string name="cam_strings_feature_eye_af_description_txt">"您可以拍摄对焦人眼的人像照片。
+要更改对焦目标，请点按您要对焦的对象的脸部。要启用或禁用此功能，请在检测到脸部时点按显示的图标。"</string>
+    <string name="cam_strings_feature_eye_af_description_with_animal_txt">"您可以拍摄聚焦于人或动物的眼睛的照片。
+要更改对焦目标，请点按要聚焦的对象的脸部。要启用或禁用此功能，请点按检测到脸部时显示的图标。此功能与照片和手动模式兼容。"</string>
+    <string name="cam_strings_feature_eye_af_subtitle_txt">眼部AF</string>
+    <string name="cam_strings_feature_eye_af_title_txt">眼部AF</string>
+    <string name="cam_strings_feature_failure_detection_description_not_blink_txt">"如果您在拍照前，手指遮住镜头或图像失焦，此功能将通知您，帮助您避免错误。
+拍照后，您可以检查照片是否模糊并获得重新拍照的建议。
+
+您可以从相机设定中的“显示摄影建议”中更改设定。"</string>
+    <string name="cam_strings_feature_failure_detection_description_txt">"拍照前，如果手指遮住镜头或者如果图像没有聚焦，此功能会通知您，以帮助您预防错误。
+拍照后，您可以检查是否出现眨眼睛或模糊情况，并获得重新拍摄照片的建议。
+
+您可以从相机设定中的“显示摄影建议”中更改设定。"</string>
+    <string name="cam_strings_feature_failure_detection_subtitle_txt">显示摄影建议</string>
+    <string name="cam_strings_feature_failure_detection_title_txt">显示摄影建议</string>
+    <string name="cam_strings_feature_failure_option_after_and_preview_txt">拍照前和拍照后</string>
+    <string name="cam_strings_feature_failure_option_after_only_txt">仅拍照后</string>
+    <string name="cam_strings_feature_hand_shutter_description_txt">"将手掌转向相机。识别手掌时，将打开自拍。为了便于识别，请将手指向上伸展。
+要启用此功能，请转到“照片（前置）”，然后在“自动捕捉”中选择“手势快门”选项。"</string>
+    <string name="cam_strings_feature_hand_shutter_subtitle_txt">手势快门</string>
+    <string name="cam_strings_feature_hand_shutter_title_txt">手势快门</string>
+    <string name="cam_strings_feature_lens_correction_description_nosuperwidemode_txt">"使用超宽镜头时，您可以选择优先级。通过选择“优先考虑图像质量”，您可以捕获动态的高质量图像。如果选择“优先考虑扭曲度校正”，则可以减少视觉扭曲度。
+在“照片”模式下使用超宽镜头时会启用这些功能。您可以在相机设定下从超宽镜头校正（照片）更改设定。"</string>
+    <string name="cam_strings_feature_lens_correction_description_txt">使用超宽镜头时，您可以选择优先级。通过选择“优先考虑图像质量”，您可以捕获动态的高质量图像。如果选择“优先考虑扭曲度校正”，则可以减少视觉扭曲度。在“照片”模式下使用超宽镜头时会启用这些功能。切换到超宽镜头后，您可以在相机设定下从镜头校正（照片）更改设定。</string>
+    <string name="cam_strings_feature_level_description_txt">"通过开启“水平”功能，您可以使用指示器检查相机的倾斜度。
+当相机处于水平状态时，显示屏将变为绿色。
+当您想在拍摄风景时维持水平线，此功能非常有用。
+
+您可以在相机设定中的“水平”下更改此功能的设定。"</string>
+    <string name="cam_strings_feature_level_subtitle_txt">使用水平功能拍照</string>
+    <string name="cam_strings_feature_level_title_txt">水平</string>
+    <string name="cam_strings_feature_list_banner_txt">查看新功能</string>
+    <string name="cam_strings_feature_list_new_title_txt">如何使用新功能</string>
+    <string name="cam_strings_feature_list_other_title_txt">如何使用功能</string>
+    <string name="cam_strings_feature_list_title_txt">功能简介</string>
+    <string name="cam_strings_feature_long_ss_description_txt">"您可以在手动模式下将快门速度设定为长达30秒。使用较慢的快门速度时，请保持相机稳定以拍摄精美的照片。
+可捕捉夜景或运动中的物体，呈现令人印象深刻的效果。"</string>
+    <string name="cam_strings_feature_long_ss_subtitle_txt">更改快门速度</string>
+    <string name="cam_strings_feature_long_ss_title_txt">快门速度</string>
+    <string name="cam_strings_feature_mono_description_txt">"轻松拍摄高清艺术照片和视频。
+要使用此模式，请在取景器中点按模式图标，然后选择“单色”。"</string>
+    <string name="cam_strings_feature_mono_subtitle_txt">黑白</string>
+    <string name="cam_strings_feature_mono_title_txt">黑白</string>
+    <string name="cam_strings_feature_night_mode_description_txt">"您甚至可以在夜晚或黑暗的环境中拍摄清晰的照片。
+拍摄照片后可能需要花费一些时间才能完全处理图像，因此请保持相机静止不动直至完成。"</string>
+    <string name="cam_strings_feature_night_mode_subtitle_txt">夜间模式</string>
+    <string name="cam_strings_feature_night_mode_title_txt">夜间模式</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_all_lang_txt">夜间模式</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_txt">夜间模式</string>
+    <string name="cam_strings_feature_night_shooting_title_all_lang_txt">夜间模式</string>
+    <string name="cam_strings_feature_night_shooting_title_txt">夜间模式</string>
+    <string name="cam_strings_feature_oneshot_description_txt">"点按屏幕中央的按钮即可快速地将珍贵的瞬间录制为%1$s fps的慢动作。
+在明亮的条件下录制将有助于您制作更好的视频。"</string>
+    <string name="cam_strings_feature_oneshot_subtitle_txt">超级慢动作（一次性）</string>
+    <string name="cam_strings_feature_portrait_bokeh_description_txt">"要调整人像上的散景效果，请在取景器中点按“人像散景”图标并移动滑块。
+照片模式支持此功能。
+通过将背景模糊化，您的主体将跃然而出，呈现令人印象深刻的对比度。"</string>
+    <string name="cam_strings_feature_portrait_bokeh_subtitle_txt">拍摄带有散景效果的人像照片</string>
+    <string name="cam_strings_feature_portrait_bokeh_title_txt">人像散景效果</string>
+    <string name="cam_strings_feature_portrait_selfie_description_txt">"通过使用散景并添加美颜效果来拍摄艺术自拍照。
+要使用此模式，请点按取景器中的“模式”图标，然后选择“人像自拍”。
+设计自拍样式并享受创意效果。"</string>
+    <string name="cam_strings_feature_portrait_selfie_subtitle_txt">人像自拍</string>
+    <string name="cam_strings_feature_portrait_selfie_title_txt">人像自拍</string>
+    <string name="cam_strings_feature_predictive_launch_description_txt">"您可以快速启动相机。在横向模式下快速提起设备，并使相机朝向物体。该相机将自动启动。
+您可以选择自己喜欢的方式从相机设定中的“智能启动”使用此功能。"</string>
+    <string name="cam_strings_feature_predictive_launch_subtitle_txt">智能启动</string>
+    <string name="cam_strings_feature_predictive_launch_title_txt">智能启动</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"您可以通过扫描二维码快速访问Web或连接到WLAN。
+在照片模式下，此功能有效。您可以从相机设定中的二维码扫一扫更改此设定。"</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">二维码扫一扫</string>
+    <string name="cam_strings_feature_qrcode_notification_channel_txt">二维码扫一扫</string>
+    <string name="cam_strings_feature_selfie_description_txt">"使用前置相机拍摄照片时，保持眼睛注视听筒附近的前置相机镜头。
+这样才能确保您在自拍中保持正确的目光方向。"</string>
+    <string name="cam_strings_feature_selfie_subtitle_txt">视线方向</string>
+    <string name="cam_strings_feature_selfie_title_txt">前置相机</string>
+    <string name="cam_strings_feature_sidesense_bar_description_txt">"您可以通过双击屏幕边缘的传感器而不是快门按钮来拍摄照片或视频。
+此功能与照片和视频模式兼容。您可以在相机设定中从侧感更改此功能的设定。"</string>
+    <string name="cam_strings_feature_sidesense_description_txt">"您只需双击屏幕侧面的传感器而不是快门按钮即可拍摄照片或视频。
+照片和视频模式均支持此功能。您可以在相机设定中更改[侧感]中的设定。"</string>
+    <string name="cam_strings_feature_sidesense_subtitle_txt">侧感</string>
+    <string name="cam_strings_feature_sidesense_title_txt">侧感</string>
+    <string name="cam_strings_feature_slowmotion_description_txt">您可以录制包含多个慢动作部分的视频（每秒120帧慢放）</string>
+    <string name="cam_strings_feature_slowmotion_subtitle_txt">慢动作</string>
+    <string name="cam_strings_feature_slowmotion_title_txt">慢动作</string>
+    <string name="cam_strings_feature_superslow_description_txt">"通过以慢动作展示珍贵时刻，制作令人印象深刻的视频。在明亮的条件下录制将有助于您创建更好的视频。
+要使用此模式，请点按取景器中的“模式”图标，然后选择“慢动作”。此外，您还可以在慢动作模式设定中选择其他选项。"</string>
+    <string name="cam_strings_feature_superslow_subtitle_txt">超级慢动作</string>
+    <string name="cam_strings_feature_transfer_and_tagging_description_txt">"开启此功能将允许Transfer &amp; Tagging add-on显示使用Xperia相机拍摄的照片。照片将保存在内部存储中。
+此功能与照片和手动模式下拍摄的照片兼容。
+您可以在相机设定中更改Transfer &amp; Tagging add-on模式中的设定。"</string>
+    <string name="cam_strings_feature_transfer_and_tagging_subtitle_txt">链接Transfer &amp; Tagging add-on</string>
+    <string name="cam_strings_feature_transfer_and_tagging_title_txt">Transfer &amp; Tagging add-on模式</string>
+    <string name="cam_strings_feature_triple_camera_button_description_new_txt">"您可以轻松地在相机镜头之间切换，捕捉任何挑战您的创造力的瞬间。
+点按取景器中的按钮可在超宽镜头、宽镜头和远摄镜头之间切换角度。
+您可以在照片和视频模式下使用此功能。"</string>
+    <string name="cam_strings_feature_triple_camera_button_description_txt">"您可以轻松地在相机镜头之间切换，捕捉任何挑战您的创造力的瞬间。
+点按取景器中的按钮可在x1、x2和超宽范围之间切换角度。
+您可以在照片和视频模式下使用此功能。"</string>
+    <string name="cam_strings_feature_triple_camera_button_subtitle_txt">使用按钮切换角度</string>
+    <string name="cam_strings_feature_triple_camera_button_with_zoom_ratio_description_txt">"您可以轻松地在相机镜头之间切换，捕捉任何挑战您的创造力的瞬间。
+点按取景器中的按钮可在 0.6x（超宽镜头）、1x（宽镜头）和 2x（远摄镜头）之间切换角度。
+您可以在照片和视频模式下使用此功能。"</string>
+    <string name="cam_strings_feature_triple_camera_how_to_zoom_subtitle_txt">如何放大/缩小</string>
+    <string name="cam_strings_feature_triple_camera_title_txt">三镜头相机</string>
+    <string name="cam_strings_feature_triple_camera_wide_description_txt">"此镜头适用于风景照片，因为它可以拍摄更广阔的视野。
+在更改超宽镜头设定之前，请务必切换到超宽镜头。"</string>
+    <string name="cam_strings_feature_triple_camera_wide_subtitle_txt">使用超宽镜头拍摄</string>
+    <string name="cam_strings_feature_triple_camera_zoom_description_txt">"在取景器中的按钮上向左或向右滑动手指以显示滑块。您可以使用滑块调整缩放级别。
+可以使用音量按钮，也可以通过捏合屏幕来调整缩放级别。"</string>
+    <string name="cam_strings_feature_triple_camera_zoom_plus_zoom_frames_description_txt">"在取景器中的按钮上向左或向右滑动手指以显示滑块。您可以使用滑块调整缩放级别。
+可以使用音量按钮，也可以通过捏合屏幕来调整缩放比例。
+在照片模式下，您可以显示相框以帮助预览放大后的效果。您可以通过相机设定中的缩放构图助手来更改此设定。"</string>
+    <string name="cam_strings_feature_triple_camera_zoom_subtitle_txt">使用滑块缩放</string>
+    <string name="cam_strings_feature_zoom_frames_description_txt">"如果打开此设定，您可以预览放大后的效果。
+将主体置于相框中央，然后点按变焦倍率即可轻松放大。
+将“静止影像尺寸”设定为21:9时不支持此功能。"</string>
+    <string name="cam_strings_file_delete_confirm_title_txt">删除</string>
+    <string name="cam_strings_file_delete_confirm_txt">要删除此文件吗？</string>
+    <string name="cam_strings_file_format_description_txt">选择4K视频的编码器</string>
+    <string name="cam_strings_file_format_sub_description_h264_txt">编码的标准格式。大多数设备和服务均支持此格式。</string>
+    <string name="cam_strings_file_format_sub_description_h265_txt">高压缩比格式。请确保设备或服务支持此格式。</string>
+    <string name="cam_strings_file_share_title_txt">共享</string>
+    <string name="cam_strings_flash_fill_flash_txt">闪光灯补光</string>
+    <string name="cam_strings_flash_night_portrait_hint_txt">确保握住设备不动</string>
+    <string name="cam_strings_flash_night_portrait_txt">夜间人像闪光</string>
+    <string name="cam_strings_flash_pro_txt">闪光灯模式</string>
+    <string name="cam_strings_flash_red_eye_reduc_txt">减少红眼</string>
+    <string name="cam_strings_flash_title_txt">闪光灯</string>
+    <string name="cam_strings_flash_torch_txt">手电筒</string>
+    <string name="cam_strings_flash_txt">闪光灯</string>
+    <string name="cam_strings_focus_af_c_txt">连续AF</string>
+    <string name="cam_strings_focus_af_s_txt">单次AF</string>
+    <string name="cam_strings_focus_mf_txt">手动对焦</string>
+    <string name="cam_strings_focus_mode_face_detection_txt">人脸检测</string>
+    <string name="cam_strings_focus_mode_infinity_txt">无限远</string>
+    <string name="cam_strings_focus_mode_macro_txt">微距</string>
+    <string name="cam_strings_focus_mode_multi_af_txt">多点自动对焦</string>
+    <string name="cam_strings_focus_mode_object_tracking_txt">对象跟踪</string>
+    <string name="cam_strings_focus_mode_single_af_txt">单点自动对焦</string>
+    <string name="cam_strings_focus_mode_title_txt">对焦模式</string>
+    <string name="cam_strings_focus_mode_touch_focus_txt">触摸对焦</string>
+    <string name="cam_strings_focus_mode_txt">对焦模式</string>
+    <string name="cam_strings_forced_change_flash_off_txt">闪光模式已关闭，以使用夜间拍摄</string>
+    <string name="cam_strings_forced_change_night_shooting_auto_txt">夜间拍摄已设定为自动，以使用闪光模式</string>
+    <string name="cam_strings_front_cam_location_guide_txt">相机镜头位置如图所示</string>
+    <string name="cam_strings_fusion_error_too_close_txt">再远离对象一些</string>
+    <string name="cam_strings_fusion_on_txt">超高感光度</string>
+    <string name="cam_strings_fusion_setting_txt">双相机开关</string>
+    <string name="cam_strings_geotagging_title_txt">保存位置</string>
+    <string name="cam_strings_geotagging_txt">保存位置</string>
+    <string name="cam_strings_get_more_modes_txt">应用程序</string>
+    <string name="cam_strings_global_setting_softskin_available_applications_txt">适用的应用程序</string>
+    <string name="cam_strings_global_setting_softskin_brighten_skin_txt">亮肤</string>
+    <string name="cam_strings_global_setting_softskin_detail_txt">使您的皮肤看起来晶莹润泽。在使用前置摄像头的应用程序中可实现此效果。此效果可应用于照片和视频。您还可以调整级别。</string>
+    <string name="cam_strings_global_setting_softskin_level_adjustment_txt">级别调整</string>
+    <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">光滑皮肤</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"无法启动应用程序。
+请确保您的设备上已安装并启用了最新版本的%1$s。"</string>
+    <string name="cam_strings_gridline_txt">网格线</string>
+    <string name="cam_strings_hand_shutter_hint_detail_txt">将您的手掌转向摄像头。识别手掌后，将打开自拍定时器。为易于识别，请将手指向上伸展。</string>
+    <string name="cam_strings_hand_shutter_hint_txt">将您的手掌转向摄像头</string>
+    <string name="cam_strings_hand_shutter_txt">手势快门</string>
+    <string name="cam_strings_hdr_dro_settings_dro_txt">D范围优化器</string>
+    <string name="cam_strings_hdr_dro_settings_hdr_txt">自动HDR</string>
+    <string name="cam_strings_hdr_dro_settings_txt">DRO/自动HDR</string>
+    <string name="cam_strings_hdr_guide_txt">由于静态HDR会拍摄并组合同一场景的两个图像，因此它仅适合于静止的物体。</string>
+    <string name="cam_strings_hdr_title_txt">HDR</string>
+    <string name="cam_strings_hdr_txt">HDR</string>
+    <string name="cam_strings_help_txt">帮助</string>
+    <string name="cam_strings_histogram_txt">柱状图</string>
+    <string name="cam_strings_iburst_feedback_txt">已预设</string>
+    <string name="cam_strings_image_quality_control_button_cancel_txt">取消</string>
+    <string name="cam_strings_image_quality_control_button_clear_txt">清除</string>
+    <string name="cam_strings_image_quality_control_button_reset_txt">重设</string>
+    <string name="cam_strings_image_quality_control_tab_focus_txt">对焦</string>
+    <string name="cam_strings_image_size_txt">静止影像尺寸</string>
+    <string name="cam_strings_image_stabilizer_title_txt">图像稳定器</string>
+    <string name="cam_strings_image_stabilizer_txt">图像稳定器</string>
+    <string name="cam_strings_intelligent_burst_txt">预测拍摄</string>
+    <string name="cam_strings_intelligent_wind_filter_txt">智能风噪滤波器</string>
+    <string name="cam_strings_iso_changed_txt">ISO值已更改</string>
+    <string name="cam_strings_launch_with_camera_key_txt">使用快门按钮启动</string>
+    <string name="cam_strings_lens_correction_for_photo_description_added_txt">注意：拍摄连拍照片时将禁用镜头校正。</string>
+    <string name="cam_strings_lens_correction_for_photo_description_txt">使用超宽镜头时，您可以选择优先级。通过选择“优先考虑图像质量”，您可以捕获动态的高质量图像。如果选择“优先考虑扭曲度校正”，则可以减少视觉扭曲度。</string>
+    <string name="cam_strings_lens_correction_for_photo_nosuperwidemode_txt">超宽镜头校正（照片）</string>
+    <string name="cam_strings_lens_correction_for_photo_pro_txt">超宽镜头校正</string>
+    <string name="cam_strings_lens_correction_for_photo_txt">镜头校正（照片）</string>
+    <string name="cam_strings_lens_correction_off_txt">优先考虑图像质量</string>
+    <string name="cam_strings_lens_correction_on_txt">优先考虑扭曲度校正</string>
+    <string name="cam_strings_lens_correction_txt">镜头校正</string>
+    <string name="cam_strings_lens_switch">切换镜头角度</string>
+    <string name="cam_strings_level_meter_calibration_txt">水平校准</string>
+    <string name="cam_strings_level_pro_txt">水平</string>
+    <string name="cam_strings_level_txt">水平</string>
+    <string name="cam_strings_long_press_burst_best_txt">标准</string>
+    <string name="cam_strings_long_press_burst_high_txt">高速</string>
+    <string name="cam_strings_long_press_burst_txt">通过长按连拍</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_title_txt">使用双镜头相机拍摄照片</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_txt">使用双镜头相机拍摄照片时，请距离物体至少1米。靠近物体可能会导致视点或颜色的偏移。</string>
+    <string name="cam_strings_manual_fusion_tutorial_title_txt">切换双镜头相机</string>
+    <string name="cam_strings_manual_fusion_tutorial_txt">您可以在手动模式下开启或关闭双镜头相机。要在低照明条件下拍摄杂色较少的照片，请将其开启。要拍摄特写照片，请将其关闭。</string>
+    <string name="cam_strings_max_file_size_save_failed_txt">由于最大文件大小限制，记录已停止</string>
+    <string name="cam_strings_max_recording_time_save_failed_txt">由于最大记录时间限制导致记录停止</string>
+    <string name="cam_strings_memory_full_save_failed_txt">无法保存。内存已满。</string>
+    <string name="cam_strings_memory_full_zoom_not_supported_txt">内存已满。目前缩放不可用。</string>
+    <string name="cam_strings_metering_multi_cy_txt">多重测光</string>
+    <string name="cam_strings_mf_assist_txt">MF帮助</string>
+    <string name="cam_strings_mfnr_txt">减少多帧杂色</string>
+    <string name="cam_strings_microphone_title_txt">话筒</string>
+    <string name="cam_strings_modeselector_addon_installed_txt">已安装</string>
+    <string name="cam_strings_monochrome_photo_txt">单色照片</string>
+    <string name="cam_strings_monochrome_title_txt">黑白</string>
+    <string name="cam_strings_monochrome_video_txt">单色视频</string>
+    <string name="cam_strings_more_common_setting_title_txt">通用设定</string>
+    <string name="cam_strings_more_txt">更多</string>
+    <string name="cam_strings_mr_txt">已在记忆唤起%d中注册</string>
+    <string name="cam_strings_multi_window_txt">拖动拆分条的中间以切换至全屏%1$s来使用</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"现已连接另一台设备。
+是否要通过取景器与该设备共享图像？"</string>
+    <string name="cam_strings_multicam_add_device_txt">添加设备</string>
+    <string name="cam_strings_multicam_add_more_txt">添加更多</string>
+    <string name="cam_strings_multicam_apply_txt">完成</string>
+    <string name="cam_strings_multicam_connection_failure_dialog_txt">无法连接</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">当Xperia与另一部Xperia连接时，无法连接到索尼的WLAN/NFC相机。</string>
+    <string name="cam_strings_multicam_error_app_ver_old_txt">应用程序版本不匹配。无法连接。您的应用程序需要更新。</string>
+    <string name="cam_strings_multicam_error_disconnect_txt">已断开连接</string>
+    <string name="cam_strings_multicam_error_nfc_txt">NFC已锁定，无法启动。</string>
+    <string name="cam_strings_multicam_error_wifi_txt">此模式在WLAN网络共享中不可用。</string>
+    <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">添加的设备已达最大数量。</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">一次只能将一台索尼的WLAN/NFC相机与Xperia相连。</string>
+    <string name="cam_strings_multicam_nfc_connect_title_txt">将设备接触在一起进行连接</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">索尼的WLAN/NFC相机</string>
+    <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
+    <string name="cam_strings_multicam_nfc_touch_to_beam_title_txt">触摸屏幕</string>
+    <string name="cam_strings_multicam_security_info_txt">如果您连接的设备同时通过此应用程序与其他Xperia设备连接，则Xperia可能也会自动连接到这些设备，通过取景器的每个图像将在您的Xperia和所有已连接的设备之间共享。</string>
+    <string name="cam_strings_multicam_touch_add_camera_desc_txt">点按可添加设备。从取景器看到的图像会显示在此处。</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">当Xperia与索尼的WLAN/NFC相机连接时，无法连接到任何Xperia。</string>
+    <string name="cam_strings_night_mode_hint_txt">夜间模式</string>
+    <string name="cam_strings_night_shooting_hint_txt">夜间模式</string>
+    <string name="cam_strings_not_zoom_for_full_hd_60fps_video_txt">1x 以下的缩放不适用全高清(60 fps)视频大小</string>
+    <string name="cam_strings_not_zoom_txt">1x以下的缩放不适用于4K或全高清(60 fps)视频大小</string>
+    <string name="cam_strings_ok_txt">确定</string>
+    <string name="cam_strings_only_main_txt">仅限主相机</string>
+    <string name="cam_strings_peaking_display_txt">显示峰值</string>
+    <string name="cam_strings_permgroupdesc_thermalmitigation_message_txt">允许应用程序控制系统进行稳定捕获，具体取决于设备中的温度。</string>
+    <string name="cam_strings_permgrouplab_thermalmitigation_txt">控制系统</string>
+    <string name="cam_strings_photo_autoreview_txt">自动预览照片</string>
+    <string name="cam_strings_photometry_average_txt">平均</string>
+    <string name="cam_strings_photometry_center_txt">中心</string>
+    <string name="cam_strings_photometry_face_txt">人脸</string>
+    <string name="cam_strings_photometry_pro_txt">测光模式</string>
+    <string name="cam_strings_photometry_spot_txt">点</string>
+    <string name="cam_strings_photometry_title_txt">测光</string>
+    <string name="cam_strings_photometry_touch_txt">触摸</string>
+    <string name="cam_strings_photometry_txt">测光</string>
+    <string name="cam_strings_pleaking_color_txt">峰值色彩</string>
+    <string name="cam_strings_preaf_txt">预先AF</string>
+    <string name="cam_strings_predictive_capture_description_txt">在按下快门按钮之前的几秒，通过检测对象的微笑或动作自动捕捉图像。您可以从多达四张拍摄的照片中选择自己喜欢的照片，因此您不会错过完美的镜头。</string>
+    <string name="cam_strings_predictive_capture_feedback_txt">已预设</string>
+    <string name="cam_strings_predictive_capture_txt">预测拍摄</string>
+    <string name="cam_strings_predictive_launch_description_txt">您可以通过在横向模式下快速抬起设备并使相机对准对象即可自动启动相机。</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"通过检测以横向模式抬起手机并将其对准物体的动作，相机已自动启动。
+您可以选择自己喜欢的方式从相机设定中的智能启动使用此功能。"</string>
+    <string name="cam_strings_predictive_launch_guide_2_txt">触摸圆圈内部以拍摄</string>
+    <string name="cam_strings_predictive_launch_guide_3_txt">触摸屏幕以拍摄</string>
+    <string name="cam_strings_predictive_launch_guide_circle_txt">在圆圈内点按以查看全屏</string>
+    <string name="cam_strings_predictive_launch_guide_txt">触摸圆圈内部以启动相机</string>
+    <string name="cam_strings_predictive_launch_launch_and_capture_txt">触摸以启动并拍摄</string>
+    <string name="cam_strings_predictive_launch_launch_only_txt">触摸以启动</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_and_capture_txt">点按圆圈内部，相机将以全屏模式启动并同时拍摄照片。</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_only_txt">点按圆圈内部，相机将以全屏模式启动。</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"您可以快速启动相机。在横向模式下快速提起设备，并使相机朝向物体。该相机将自动启动。
+您可以选择自己喜欢的方式从相机设定中的“智能启动”使用此功能。"</string>
+    <string name="cam_strings_predictive_launch_tutorial_title_txt">智能启动</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"您可以快速启动相机。以横向模式摆放设备，并使相机朝向物体。该相机将自动启动。
+您可通过相机设定中的“智能启动”关闭此功能。"</string>
+    <string name="cam_strings_predictive_launch_txt">智能启动</string>
+    <string name="cam_strings_preview_always_txt">开</string>
+    <string name="cam_strings_preview_duration_3sec_txt">3秒</string>
+    <string name="cam_strings_preview_duration_5sec_txt">5秒</string>
+    <string name="cam_strings_preview_duration_title_txt">预览</string>
+    <string name="cam_strings_preview_duration_txt">预览</string>
+    <string name="cam_strings_preview_duration_unlimited_txt">不限</string>
+    <string name="cam_strings_preview_edit_txt">编辑</string>
+    <string name="cam_strings_preview_only_front_txt">仅前置摄像头</string>
+    <string name="cam_strings_previous_txt">上一屏</string>
+    <string name="cam_strings_processing_capturing_photo_txt">正在拍摄照片。请稍等。</string>
+    <string name="cam_strings_processing_loading_txt">正在拍摄照片。请保持相机静止不动。</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">点按以设置此设备</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">不支持此二维码</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">点按可在浏览器中打开\"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">无法连接到此Wi-Fi网络</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">点按以连接到WLAN网络“%1$s”</string>
+    <string name="cam_strings_qrcode_detect_title_txt">二维码扫一扫</string>
+    <string name="cam_strings_recommend_night_mode_txt">点按此处以使用夜间模式</string>
+    <string name="cam_strings_recommend_night_mode_use_button_txt">使用</string>
+    <string name="cam_strings_recommend_night_shooting_txt">点按此处以使用夜间模式</string>
+    <string name="cam_strings_recording_txt">录制</string>
+    <string name="cam_strings_remember_geotag_title_txt">保存位置？</string>
+    <string name="cam_strings_remember_geotag_txt">为照片和视频标记所拍摄的位置。您可以稍后从“相机设定”中的“保存位置”更改此设定。</string>
+    <string name="cam_strings_remote_touch_to_start_txt">点按开始</string>
+    <string name="cam_strings_reset_color_brightness_txt">重设颜色和亮度</string>
+    <string name="cam_strings_reset_settings_confirm_title_txt">将相机设定重置为默认设定？</string>
+    <string name="cam_strings_reset_settings_txt">重设设定</string>
+    <string name="cam_strings_reset_txt">重设</string>
+    <string name="cam_strings_resolution_title_txt">分辨率</string>
+    <string name="cam_strings_resolution_txt">分辨率</string>
+    <string name="cam_strings_restricted_mf_touchfocus_txt">要使用触摸对焦，请将对焦设置更改为 AF</string>
+    <string name="cam_strings_restricted_setting_dialog_title_txt">无法更改</string>
+    <string name="cam_strings_restricted_setting_photo_long_shutter_speed_txt">此设定不支持当前快门速度。要配置此设定，请将快门速度更改为1秒或更短。</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_or_scene_txt">当前分辨率或场景不支持此设定。要配置此设定，请更改分辨率或场景选择。</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_txt">此设置不支持当前静像大小。若要配置此设置，请更改静像大小。</string>
+    <string name="cam_strings_restricted_setting_scene_txt">当前场景不支持此设定。要配置此设定，请更改场景选择。</string>
+    <string name="cam_strings_restricted_setting_slow_motion_txt">无法在慢动作模式下更改视频大小。若要配置此设定，请退出慢动作模式。</string>
+    <string name="cam_strings_restricted_setting_transfer_and_tagging_txt">开启Transfer &amp; Tagging add-on模式后，此设定不可用。要更改此设定，请关闭Transfer &amp; Tagging add-on模式。</string>
+    <string name="cam_strings_restricted_setting_video_hdr_hlg_txt">此设定在HDR开启时不可用。要配置此设定，请关闭HDR。</string>
+    <string name="cam_strings_restricted_setting_video_resolution_or_scene_txt">当前视频分辨率或场景不支持此设定。要配置此设定，请更改视频分辨率或场景选择。</string>
+    <string name="cam_strings_restricted_setting_video_resolution_txt">当前视频大小不支持此设定。若要配置此设定，请更改视频大小。</string>
+    <string name="cam_strings_restriction_info_correction_for_distortion_txt">使用散景效果时无法执行镜头校正</string>
+    <string name="cam_strings_restriction_information_txt">根据此设定，系统可能会自动禁用或修改以下功能：</string>
+    <string name="cam_strings_runtime_permission_continue_button_txt">应用程序信息</string>
+    <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s需要以下权限</string>
+    <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s权限</string>
+    <string name="cam_strings_runtime_permission_dialog2_message1_txt">应用程序需要以下权限才能执行此操作。</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">要授予权限，请转到“应用程序信息”>“权限”。</string>
+    <string name="cam_strings_runtime_permission_dialog2_title_txt">无法继续</string>
+    <string name="cam_strings_runtime_permission_rationale_camera_txt">拍摄照片和视频</string>
+    <string name="cam_strings_runtime_permission_rationale_location_txt">检索位置</string>
+    <string name="cam_strings_runtime_permission_rationale_microphone_txt">录音</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_cta_txt">读取并保存照片和视频</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_txt">保存照片和视频</string>
+    <string name="cam_strings_s1_settings_txt">半按快门AF</string>
+    <string name="cam_strings_save_destination_ims_txt">内部存储设备</string>
+    <string name="cam_strings_save_destination_sd_txt">SD卡</string>
+    <string name="cam_strings_save_destination_title_txt">数据存储</string>
+    <string name="cam_strings_save_destination_txt">数据存储</string>
+    <string name="cam_strings_saving_files_txt">正在保存文件</string>
+    <string name="cam_strings_scene_selection_title_cy_txt">场景选择</string>
+    <string name="cam_strings_scenes_anti_motion_blur_cy_txt">动作防抖</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_portrait_cy_txt">背光人像</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_txt">背光</string>
+    <string name="cam_strings_scenes_auto_recog_gourmet_txt">美食</string>
+    <string name="cam_strings_scenes_auto_recog_infant_cy_txt">婴儿</string>
+    <string name="cam_strings_scenes_auto_recog_landscape_txt">风景模式</string>
+    <string name="cam_strings_scenes_auto_recog_low_light_cy_txt">弱光</string>
+    <string name="cam_strings_scenes_auto_recog_softsnap_cy_txt">柔和快照</string>
+    <string name="cam_strings_scenes_auto_recog_spotlight_cy_txt">聚光灯</string>
+    <string name="cam_strings_scenes_auto_recog_text_txt">文档</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_portrait_cy_txt">夜景肖像</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_txt">夜景</string>
+    <string name="cam_strings_scenes_backlight_hdr_cy_txt">背光校正HDR</string>
+    <string name="cam_strings_scenes_beach_cy_txt">海滩</string>
+    <string name="cam_strings_scenes_beachsnow_txt">海滩和雪景</string>
+    <string name="cam_strings_scenes_document_txt">文档</string>
+    <string name="cam_strings_scenes_fireworks_cy_txt">烟火</string>
+    <string name="cam_strings_scenes_gurumet_cy_txt">美食</string>
+    <string name="cam_strings_scenes_handheld_twilight_cy_txt">手持夜景模式</string>
+    <string name="cam_strings_scenes_high_sensitivity_cy_txt">高感光度</string>
+    <string name="cam_strings_scenes_landscape_txt">风景模式</string>
+    <string name="cam_strings_scenes_nightmode_txt">夜间模式</string>
+    <string name="cam_strings_scenes_nightportrait_cy_txt">夜景肖像</string>
+    <string name="cam_strings_scenes_nightscene_txt">夜景</string>
+    <string name="cam_strings_scenes_party_txt">聚会</string>
+    <string name="cam_strings_scenes_pet_cy_txt">宠物</string>
+    <string name="cam_strings_scenes_pets_txt">宠物</string>
+    <string name="cam_strings_scenes_snow_cy_txt">雪景</string>
+    <string name="cam_strings_scenes_soft_skin_cy_txt">美肤</string>
+    <string name="cam_strings_scenes_soft_snap_cy_txt">柔和快照</string>
+    <string name="cam_strings_scenes_sports_txt">运动</string>
+    <string name="cam_strings_scenes_txt">场景</string>
+    <string name="cam_strings_screen_pinned_txt">屏幕已固定</string>
+    <string name="cam_strings_sd_permission_data_storage_info_txt">已保存到内部存储设备</string>
+    <string name="cam_strings_sd_permission_dialog_continue_button_txt">移动</string>
+    <string name="cam_strings_sd_permission_dialog_message1_txt">应用程序需要以下权限才能执行此操作。</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"要使用SD卡，相机需要具有访问SD卡的权限。
+将数据存储再次更改为SD卡，或允许相机在下一个屏幕上访问SD卡。"</string>
+    <string name="cam_strings_sd_permission_dialog_title_txt">SD卡不可用</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"已检测到需要许可的新SD卡。
+
+要将SD卡用作数据存储，请在下一个屏幕上选择SD卡或DCIM目录。"</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"未选择SD卡或DCIM目录。 SD卡无法使用。
+
+要授予权限，请先将保存位置更改为SD卡，或在下一个屏幕上选择相应的目录。"</string>
+    <string name="cam_strings_sd_permission_info_txt">"检测到了需要权限的新SD卡。
+因此，内部设备存储将用作默认数据存储设备。
+
+若要将SD卡用作数据存储设备，请转到相机设定并将存储选项更改为SD卡。"</string>
+    <string name="cam_strings_sd_permission_rationale_txt">将照片和视频保存在SD卡上</string>
+    <string name="cam_strings_select_picture_txt">选择照片</string>
+    <string name="cam_strings_self_timer_05_txt">0.5秒</string>
+    <string name="cam_strings_self_timer_10_pro_txt">自拍定时：10秒</string>
+    <string name="cam_strings_self_timer_10_txt">10秒</string>
+    <string name="cam_strings_self_timer_2_txt">2秒</string>
+    <string name="cam_strings_self_timer_3_pro_txt">自拍定时：3秒</string>
+    <string name="cam_strings_self_timer_3_txt">3秒</string>
+    <string name="cam_strings_self_timer_front_hint_10_txt">自拍：10秒。</string>
+    <string name="cam_strings_self_timer_front_hint_3_txt">自拍：3秒。</string>
+    <string name="cam_strings_self_timer_front_hint_off_txt">自拍：关闭</string>
+    <string name="cam_strings_self_timer_hint_countdown_txt">双眼注视摄像头</string>
+    <string name="cam_strings_self_timer_photo_txt">自拍（静态图像）</string>
+    <string name="cam_strings_self_timer_txt">自拍</string>
+    <string name="cam_strings_setting_common_title_txt">通用</string>
+    <string name="cam_strings_setting_front_manual_title_txt">手动（前置）</string>
+    <string name="cam_strings_setting_front_photo_title_txt">照片（前置）</string>
+    <string name="cam_strings_setting_front_video_title_txt">视频（前置）</string>
+    <string name="cam_strings_setting_main_title_txt">相机设定</string>
+    <string name="cam_strings_setting_manual_title_txt">手动</string>
+    <string name="cam_strings_setting_night_mode_title_txt">夜间模式设定</string>
+    <string name="cam_strings_setting_night_shooting_title_txt">夜间模式设定</string>
+    <string name="cam_strings_setting_photo_title_txt">照片</string>
+    <string name="cam_strings_setting_slow_motion_title_txt">慢动作</string>
+    <string name="cam_strings_setting_tele_title_txt">照片（远摄镜头）</string>
+    <string name="cam_strings_setting_tele_video_title_txt">视频（远摄镜头）</string>
+    <string name="cam_strings_setting_video_title_txt">视频</string>
+    <string name="cam_strings_setting_wide_title_txt">照片（超宽）</string>
+    <string name="cam_strings_setting_wide_video_title_txt">视频（超宽）</string>
+    <string name="cam_strings_settings_always_on_txt">始终启用</string>
+    <string name="cam_strings_settings_auto_txt">自动</string>
+    <string name="cam_strings_settings_off_txt">关</string>
+    <string name="cam_strings_settings_on_txt">开</string>
+    <string name="cam_strings_settings_save_photos_all_txt">所有照片</string>
+    <string name="cam_strings_settings_save_photos_one_txt">选定的照片</string>
+    <string name="cam_strings_settings_save_photos_txt">保存</string>
+    <string name="cam_strings_shortcut_video_camera_txt">摄像模式</string>
+    <string name="cam_strings_shutter_trigger_txt">自动捕捉</string>
+    <string name="cam_strings_side_sense_bar_description_txt">"您可以通过双击屏幕边缘的传感器而不是快门按钮来拍摄照片或视频。
+此功能与照片和视频模式兼容。
+
+在“侧感”设定中的“配置触摸位置”下开启“在屏幕内边缘操作”后，无法使用此功能。"</string>
+    <string name="cam_strings_side_sense_description_txt">"您只需双击屏幕侧面的传感器（而非快门按钮）即可拍摄照片或视频。
+照片和视频模式均支持此功能。"</string>
+    <string name="cam_strings_side_touch_not_supported_txt">此屏幕不支持侧感</string>
+    <string name="cam_strings_side_touch_on_title_txt">侧感</string>
+    <string name="cam_strings_side_touch_on_txt">要使用此功能，请转到“设定”>“显示”并开启“侧感”。是否立即启用？</string>
+    <string name="cam_strings_side_touch_tutorial_title_txt">侧感</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"无需点按快门按钮，只需双击屏幕侧面的传感器即可拍摄照片或视频。您还可以通过沿着此侧传感器滑动手指进行放大和缩小。
+照片和视频模式都支持此功能。您可以从相机设定的“侧感”中关闭此功能。"</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"无需点按快门按钮，只需在纵向视图中双击屏幕侧面的传感器即可拍摄照片或视频。您还可以通过沿着此侧传感器滑动手指进行放大和缩小。
+照片和视频模式都支持此功能。您可以从相机设定的“侧感”中关闭此功能。"</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"无需点按快门按钮，只需在纵向视图中双击屏幕侧面的传感器即可拍摄照片或视频。
+照片和视频模式都支持此功能。您可以从相机设定的“侧感”中关闭此功能。"</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"无需点按快门按钮，只需双击屏幕侧面的传感器即可拍摄照片或视频。
+照片和视频模式都支持此功能。您可以从相机设定的“侧感”中关闭此功能。"</string>
+    <string name="cam_strings_side_touch_txt">侧感</string>
+    <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">可以在相机设定中更改录制风格和屏幕分辨率</string>
+    <string name="cam_strings_slow_motion_settings_shot_txt">超级慢（一次性）</string>
+    <string name="cam_strings_slow_motion_settings_standard_txt">慢动作</string>
+    <string name="cam_strings_slow_motion_settings_super_txt">超级慢动作</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_1_txt">您可以更改fps和慢动作录制风格</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_title_txt">更多选项</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"点按屏幕中央的按钮即可快速地将珍贵的瞬间录制为%1$s fps的慢动作。
+在明亮的条件下录制将有助于您制作更好的视频。"</string>
+    <string name="cam_strings_slow_motion_shot_hint_1_txt">通过点按中心按钮能够以%1$s fps录制精彩瞬间</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_1_txt">点按屏幕中央的按钮即可快速地将珍贵的瞬间录制为%1$s fps的慢动作</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_title_txt">超级慢动作（一次性）</string>
+    <string name="cam_strings_slow_motion_shot_txt">超级慢动作（一次性）</string>
+    <string name="cam_strings_slow_motion_standard_hint_1_txt">以%1$s fps录制视频并应用慢动作效果</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_1_txt">您可以录制每秒120帧的慢动作视频</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_2_txt">录制视频，然后编辑视频，选择要作为慢动作的部分。点按屏幕中心的按钮，将这些部分设定为慢动作。</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">慢动作</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">如何录制</string>
+    <string name="cam_strings_slow_motion_standard_txt">慢动作</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"通过慢放显示珍贵瞬间，制作出令人印象深刻的视频。
+在明亮的条件下录制将有助于您制作更好的视频。"</string>
+    <string name="cam_strings_slow_motion_super_hint_1_txt">您可以切换至%1$s fps以不同的速度录制视频</string>
+    <string name="cam_strings_slow_motion_super_hint_2_txt">适时点按中央的按钮</string>
+    <string name="cam_strings_slow_motion_super_hint_3_txt">已录制慢动作</string>
+    <string name="cam_strings_slow_motion_super_tutorial_1_txt">通过慢放显示珍贵瞬间，制作出令人印象深刻的视频</string>
+    <string name="cam_strings_slow_motion_super_tutorial_2_txt">点按录制按钮开始录制视频</string>
+    <string name="cam_strings_slow_motion_super_tutorial_3_txt">点按屏幕中心的按钮录制慢动作，点按停止按钮暂停录制。</string>
+    <string name="cam_strings_slow_motion_super_tutorial_title_1_txt">超级慢动作</string>
+    <string name="cam_strings_slow_motion_super_txt">超级慢动作</string>
+    <string name="cam_strings_slow_motion_txt">慢动作模式</string>
+    <string name="cam_strings_smile_capture_big_txt">大笑</string>
+    <string name="cam_strings_smile_capture_faint_txt">微笑</string>
+    <string name="cam_strings_smile_capture_normal_txt">正常笑</string>
+    <string name="cam_strings_smile_capture_txt">笑容检测</string>
+    <string name="cam_strings_smile_shutter_cy_txt">笑脸快门</string>
+    <string name="cam_strings_smile_shutter_title_cy_txt">笑脸快门</string>
+    <string name="cam_strings_snackbar_dependency_button_txt">详细信息</string>
+    <string name="cam_strings_snackbar_dependency_info_txt">此更改影响了其他设定</string>
+    <string name="cam_strings_soft_skin_effect_cy_txt">美肤效果</string>
+    <string name="cam_strings_soft_skin_effect_title_cy_txt">美肤效果</string>
+    <string name="cam_strings_standard_txt">标准</string>
+    <string name="cam_strings_steadyshot_cy_txt">SteadyShot™</string>
+    <string name="cam_strings_step_tutorial_title_txt">第%1$s步（共%2$s步）</string>
+    <string name="cam_strings_store_fail_txt">无法保存</string>
+    <string name="cam_strings_superior_auto_brightness_txt">亮度</string>
+    <string name="cam_strings_superior_auto_color_txt">颜色</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_title_txt">双镜头相机</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_txt">即使在夜间或昏暗的房间内，您也可以使用双镜头相机拍摄出带有较少杂色的精美照片。相机根据要拍摄的场景可通过超高感光度在单镜头相机和双镜头相机之间自动切换。</string>
+    <string name="cam_strings_sw_licence_title_txt">软件许可证</string>
+    <string name="cam_strings_take_photo_txt">拍照</string>
+    <string name="cam_strings_term_of_use_accept_txt">接受</string>
+    <string name="cam_strings_term_of_use_consent_txt">我同意索尼的&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">使用条款&lt;/a>。</string>
+    <string name="cam_strings_term_of_use_data_charge_txt">根据您的数据计划，使用本服务可能会产生移动数据费用。</string>
+    <string name="cam_strings_term_of_use_data_collection_txt">索尼将收集散列的Android ID唯一设备标识符、基于位置的数据和时间戳，以便向您提供相应的结果（服务的一部分）并改进服务质量。</string>
+    <string name="cam_strings_term_of_use_decline_txt">拒绝</string>
+    <string name="cam_strings_term_of_use_title_txt">条款和条件</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">使用条款&lt;/a></string>
+    <string name="cam_strings_timeshift_cancel_selection_txt">取消选择照片</string>
+    <string name="cam_strings_timeshift_operation_failed_txt">无法保存</string>
+    <string name="cam_strings_timeshift_save_complete_txt">已保存</string>
+    <string name="cam_strings_timeshift_save_selection_txt">单独保存</string>
+    <string name="cam_strings_timeshift_select_images_txt">选择照片</string>
+    <string name="cam_strings_timeshift_share_txt">共享</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">已连接到%1$s</string>
+    <string name="cam_strings_touch_capturing_always_txt">开</string>
+    <string name="cam_strings_touch_capturing_only_front_txt">仅前置摄像头</string>
+    <string name="cam_strings_touch_capturing_title_txt">触摸拍照</string>
+    <string name="cam_strings_touch_focus_in_manual_focus_txt">要使用触摸对焦，请将对焦设定更改为AF（自动对焦）。</string>
+    <string name="cam_strings_touch_to_adjust_description_txt">选择触摸取景器时要调整的内容</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_focus_and_exposure_txt">焦点和亮度</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_only_focus_txt">仅焦点</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_txt">触摸进行调整</string>
+    <string name="cam_strings_transfer_and_tagging_description_txt">"开启此功能将允许Transfer &amp; Tagging add-on显示使用Xperia相机拍摄的照片。照片将保存在内部存储中。
+此功能与照片和手动模式下拍摄的照片兼容。"</string>
+    <string name="cam_strings_transfer_and_tagging_txt">Transfer &amp; Tagging add-on模式</string>
+    <string name="cam_strings_tutorial_bright_place_txt">在明亮的条件下录制将有助于您制作更好的视频</string>
+    <string name="cam_strings_tutorial_button_next_txt">下一页</string>
+    <string name="cam_strings_tutorial_button_skip_txt">跳过</string>
+    <string name="cam_strings_tutorial_button_txt">我知道了</string>
+    <string name="cam_strings_tutorial_title_txt">切换模式</string>
+    <string name="cam_strings_tutorial_txt">轻扫以切换为其他拍摄模式，如视频拍摄或手动拍摄</string>
+    <string name="cam_strings_unable_to_operate_txt">保存照片时无法操作</string>
+    <string name="cam_strings_unlock_button_txt">解锁</string>
+    <string name="cam_strings_use_of_camera_not_authorized_txt">出于安全原因，已限制使用照相机</string>
+    <string name="cam_strings_video_backlight_correction_description_txt">如果打开此设定，您可以自动拍摄具有最佳曝光度的视频，即使在背光情况下也是如此。</string>
+    <string name="cam_strings_video_backlight_correction_txt">视频背光校正</string>
+    <string name="cam_strings_video_codec_for_4k_txt">录制文件类型</string>
+    <string name="cam_strings_video_digital_zoom_type_description_txt">"选择视频数字变焦设定。
+
+标准数字变焦：根据图像传感器数据，使用数字处理进行变焦。
+视频超分辨率变焦：使用可保留更多原始图像质量的数字处理进行变焦。保存视频可能需要更长时间。"</string>
+    <string name="cam_strings_video_digital_zoom_type_super_resolution_txt">视频超分辨率变焦</string>
+    <string name="cam_strings_video_digital_zoom_type_txt">视频数字变焦设定</string>
+    <string name="cam_strings_video_explanatory_4k2k_setting_txt">对于平稳的4K视频录制，您不能更改此设定，除非您使用高速SD卡（UHS Speed Class 1或更高等级，或推荐的Speed Class 10）。</string>
+    <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">对于平稳的疾速视频录制，您不能更改此设定，除非使用高速SD卡（UHS Speed Class 1或更高等级，或推荐的Speed Class 10）。还要更改吗？</string>
+    <string name="cam_strings_video_explanatory_slowmotion_setting_txt">对于平稳的慢动作视频录制，请勿更改此设定，除非您使用高速SD卡（UHS Speed Class 1或更高等级，或推荐的Speed Class 10）。</string>
+    <string name="cam_strings_video_explanatory_txt">"对于平稳的视频录制，我们建议您将数据存储设备更改为内部存储设备。您要现在更改吗？
+
+如果您继续使用SD卡作为数据存储设备，请务必使用高速SD卡（UHS Speed Class 1或更高等级，或推荐的Speed Class 10）。"</string>
+    <string name="cam_strings_video_fusion_tutorial_0_title_txt">双镜头相机</string>
+    <string name="cam_strings_video_fusion_tutorial_0_txt">即使在夜间或昏暗的房间内，您也可以使用双镜头相机录制杂色较少的精美视频。相机可根据要录制的场景通过超高感光度在单镜头相机和双镜头相机之间自动切换。</string>
+    <string name="cam_strings_video_fusion_tutorial_1_title_txt">使用双镜头相机录制视频</string>
+    <string name="cam_strings_video_fusion_tutorial_1_txt">使用双镜头相机进行录制时与对象之间保持至少1米的距离。采用超高感光度进行录制时，靠近对象可能会导致视点或颜色的偏移。</string>
+    <string name="cam_strings_video_fusion_tutorial_2_title_txt">使用双镜头相机录制视频？</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">为了拍摄精美的特写照片，请点按“否”并切换到单镜头相机。您可以通过点按取景器上的按钮随时变回双镜头相机。</string>
+    <string name="cam_strings_video_hdr_hlg_txt">HDR已开启</string>
+    <string name="cam_strings_video_hdr_setting_hlg_txt">HDR</string>
+    <string name="cam_strings_video_hdr_title_txt">HDR视频</string>
+    <string name="cam_strings_video_hdr_txt">HDR视频</string>
+    <string name="cam_strings_video_resolution_4k_file_type_txt">文件格式(4K)</string>
+    <string name="cam_strings_video_resolution_full_hd_16_9_60fps_txt">全高清(16:9 60fps)</string>
+    <string name="cam_strings_video_resolution_full_hd_30fps_txt">全高清(30 fps)</string>
+    <string name="cam_strings_video_resolution_full_hd_60fps_txt">全高清(60 fps)</string>
+    <string name="cam_strings_video_resolution_full_hd_frame_rate_txt">帧速率（全高清）</string>
+    <string name="cam_strings_video_resolution_full_hd_super_slow_desc_txt">在一半的录制时间里捕捉更宽的区域，不同于高清。</string>
+    <string name="cam_strings_video_resolution_full_hd_txt">全高清</string>
+    <string name="cam_strings_video_resolution_hd_super_slow_desc_txt">在两倍的录制时间里捕捉更窄的区域，不同于全高清。</string>
+    <string name="cam_strings_video_resolution_hd_txt">高清</string>
+    <string name="cam_strings_video_resolution_mms_txt">彩信</string>
+    <string name="cam_strings_video_resolution_qvga_txt">QVGA</string>
+    <string name="cam_strings_video_resolution_title_txt">视频分辨率</string>
+    <string name="cam_strings_video_resolution_txt">视频分辨率</string>
+    <string name="cam_strings_video_resolution_vga_txt">VGA</string>
+    <string name="cam_strings_video_shutter_trigger_txt">自动捕捉（视频）</string>
+    <string name="cam_strings_video_size_4kuhd_txt">4K (QFHD)</string>
+    <string name="cam_strings_video_size_full_hd_16_9_txt">全高清(16:9)</string>
+    <string name="cam_strings_video_size_full_hd_21_9_txt">全高清(21:9)</string>
+    <string name="cam_strings_video_size_full_hd_txt">全高清</string>
+    <string name="cam_strings_video_size_txt">视频大小</string>
+    <string name="cam_strings_video_smile_shutter_txt">笑脸快门（视频）</string>
+    <string name="cam_strings_video_stabilizer_txt">视频稳定</string>
+    <string name="cam_strings_volumekey_shutter_txt">快门</string>
+    <string name="cam_strings_volumekey_txt">将音量按钮用作</string>
+    <string name="cam_strings_volumekey_volume_txt">音量</string>
+    <string name="cam_strings_volumekey_zoom_txt">缩放</string>
+    <string name="cam_strings_white_balance_auto_txt">自动</string>
+    <string name="cam_strings_white_balance_cloudy_txt">多云</string>
+    <string name="cam_strings_white_balance_day_light_txt">日光</string>
+    <string name="cam_strings_white_balance_fluorescent_txt">荧光灯</string>
+    <string name="cam_strings_white_balance_incandescent_txt">白炽灯</string>
+    <string name="cam_strings_white_balance_title_txt">白平衡</string>
+    <string name="cam_strings_white_balance_txt">白平衡</string>
+    <string name="cam_strings_whitebalance_custom1_txt">自定义1</string>
+    <string name="cam_strings_whitebalance_custom2_txt">自定义2</string>
+    <string name="cam_strings_whitebalance_custom3_txt">自定义3</string>
+    <string name="cam_strings_whitebalance_shde_txt">阴影</string>
+    <string name="cam_strings_zoom_frames_description_txt">"如果打开此设定，您可以预览放大后的效果。
+将主体置于相框中央，然后点按变焦倍率即可轻松放大。"</string>
+    <string name="cam_strings_zoom_frames_txt">缩放构图助手</string>
+    <string name="cam_strings_zoom_help_txt">使用音量按钮放大/缩小</string>
+    <string name="cam_strings_zoom_not_supported_in_bokeh_effect_txt">使用散景效果时无法缩放</string>
+    <string name="cam_strings_zoom_not_supported_in_front_txt">无法使用前置摄像头进行变焦</string>
+    <string name="cam_strings_zoom_not_supported_in_widecam_txt">使用超宽镜头时无法缩放</string>
+    <string name="cam_strings_zoom_not_supported_txt">当前无法进行缩放</string>
+    <string name="expand_button_title">高级</string>
+    <string name="photopro_strings_multi_or_popup_window_txt">无法在多窗口或弹出窗口中使用相机。关闭窗口并重试。如果您要使用多窗口，可以拖动拆分条的中间以使相机全屏显示。</string>
+    <string name="search_menu_title">搜索</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="summary_collapsed_preference_list">%1$s、%2$s</string>
+    <string name="v7_preference_off">关闭</string>
+    <string name="v7_preference_on">开启</string>
+</resources>

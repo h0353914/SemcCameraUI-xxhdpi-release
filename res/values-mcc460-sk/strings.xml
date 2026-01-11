@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"Sieť
+Pripojenie k sieti WLAN"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"Chcete sa pripojiť k %1$s?
+Informácie o sieti WLAN získate ťuknutím na tlačidlo DETAILY."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"WLAN je vypnuté a Režim v lietadle je zapnutý.
+Tieto nastavenia môžete zmeniť ťuknutím na NASTAVENIA."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"WLAN je vypnuté.
+Môžete ho zapnúť v NASTAVENIACH."</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">Zapnúť pripojenie WLAN</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">Použiť WLAN a mobilné dáta</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">Pripojenie k sieti WLAN zlyhalo</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">Detaily siete WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">Nedá sa pripojiť k WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Táto sieť WLAN obsahuje bezpečnostné riziká</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Pripojenie k WLAN</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"Ak sa chcete rýchlo dostať na web alebo pripojiť k sieti WLAN, môžete naskenovať kód QR Code.
+Táto funkcia je aktívna v režime Fotografia. Toto nastavenie môžete zmeniť v nastaveniach fotoaparátu v časti Čítačka kódu QR Code."</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Ak je vaša Xperia pripojená k inému zariadeniu Xperia, nedá sa prepojiť s fotoaparátom Sony s podporou WLAN a NFC.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">Počas zdieľania WLAN pripojenia tento režim nie je k dispozícii.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">K zariadeniu Xperia môžete naraz pripojiť iba jeden fotoaparát Sony s podporou WLAN a NFC.</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Fotoaparát Sony s WLAN a NFC</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Ak je vaša Xperia pripojená k fotoaparátu Sony s podporou WLAN a NFC, nemôže sa pripojiť k inému zariadeniu Xperia.</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Nedá sa pripojiť k tejto sieti WLAN</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Ťuknutím na kód sa pripojte k WLAN: %1$s</string>
+</resources>

@@ -1,0 +1,1086 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">Перейти на главный экран</string>
+    <string name="abc_action_bar_up_description">Перейти вверх</string>
+    <string name="abc_action_menu_overflow_description">Другие параметры</string>
+    <string name="abc_action_mode_done">Готово</string>
+    <string name="abc_activity_chooser_view_see_all">Показать все</string>
+    <string name="abc_activitychooserview_choose_application">Выбрать приложение</string>
+    <string name="abc_capital_off">ОТКЛ.</string>
+    <string name="abc_capital_on">ВКЛ.</string>
+    <string name="abc_menu_alt_shortcut_label">Alt +</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl +</string>
+    <string name="abc_menu_delete_shortcut_label">Delete</string>
+    <string name="abc_menu_enter_shortcut_label">Ввод</string>
+    <string name="abc_menu_function_shortcut_label">Fn +</string>
+    <string name="abc_menu_meta_shortcut_label">Meta +</string>
+    <string name="abc_menu_shift_shortcut_label">Shift +</string>
+    <string name="abc_menu_space_shortcut_label">Пробел</string>
+    <string name="abc_menu_sym_shortcut_label">Sym +</string>
+    <string name="abc_prepend_shortcut_label">Меню +</string>
+    <string name="abc_search_hint">Поиск</string>
+    <string name="abc_searchview_description_clear">Удалить запрос</string>
+    <string name="abc_searchview_description_query">Поисковый запрос</string>
+    <string name="abc_searchview_description_search">Поиск</string>
+    <string name="abc_searchview_description_submit">Отправить запрос</string>
+    <string name="abc_searchview_description_voice">Голосовой поиск</string>
+    <string name="abc_shareactionprovider_share_with">Открыть доступ</string>
+    <string name="abc_shareactionprovider_share_with_application">Открыть доступ приложению \"%s\"</string>
+    <string name="abc_toolbar_collapse_description">Свернуть</string>
+    <string name="call_notification_answer_action">Ответить</string>
+    <string name="call_notification_answer_video_action">Видео</string>
+    <string name="call_notification_decline_action">Отклонить</string>
+    <string name="call_notification_hang_up_action">Завершить</string>
+    <string name="call_notification_incoming_text">Входящий вызов</string>
+    <string name="call_notification_ongoing_text">Текущий вызов</string>
+    <string name="call_notification_screening_text">Фильтрация входящего вызова</string>
+    <string name="cam_3d_strings_creating_but_incorrect_direction_txt">Невозможно завершить съемку. Поворачивайте камеру в верном направлении.</string>
+    <string name="cam_3d_strings_creating_but_too_quick_txt">Невозможно завершить съемку. Поворачивайте камеру медленнее.</string>
+    <string name="cam_3d_strings_creating_but_too_slow_txt">Невозможно завершить съемку. Поворачивайте камеру быстрее.</string>
+    <string name="cam_3d_strings_description_sweep_panorama_txt">Сделайте панорамную фотографию, поворачивая камеру</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Создание следующих файлов:
+– изображение многоракурсного обзора;
+– 3D-изображение.
+Примечание. Эти файлы содержат переходную зону."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Создание следующих файлов:
+– изображение многоракурсного обзора;
+– 3D-изображение"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Обработка...
+Это изображение содержит переходную зону"</string>
+    <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Сохранение изображ.</string>
+    <string name="cam_3d_strings_dialog_processing_txt">Обработка...</string>
+    <string name="cam_3d_strings_error_application_busy_txt">Для запуска 3D-камеры требуется несколько секунд</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_title_txt">Ошибка</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">Отсоедините кабель. С подключенным кабелем невозможно сделать фотографию в этом режиме.</string>
+    <string name="cam_3d_strings_error_direction_txt">Невозможно сделать снимок. Поворачивайте камеру в верном направлении.</string>
+    <string name="cam_3d_strings_error_too_quick_txt">Невозможно сделать снимок. Поворачивайте камеру медленнее.</string>
+    <string name="cam_3d_strings_error_too_slow_txt">Невозможно сделать снимок. Поворачивайте камеру быстрее.</string>
+    <string name="cam_3d_strings_setting_shooting_direction_down_txt">Вниз</string>
+    <string name="cam_3d_strings_setting_shooting_direction_left_txt">Влево</string>
+    <string name="cam_3d_strings_setting_shooting_direction_right_txt">Вправо</string>
+    <string name="cam_3d_strings_setting_shooting_direction_title_txt">Направление съемки</string>
+    <string name="cam_3d_strings_setting_shooting_direction_up_txt">Вверх</string>
+    <string name="cam_3d_strings_shooting_direction_guide_txt">Смена направления – коснитесь значка слева</string>
+    <string name="cam_3d_strings_shooting_failure_title_txt">Съёмка невозможна</string>
+    <string name="cam_3d_strings_shooting_guide_down_to_up_txt">Поверните камеру снизу вверх</string>
+    <string name="cam_3d_strings_shooting_guide_left_to_right_txt">Поверните камеру слева направо</string>
+    <string name="cam_3d_strings_shooting_guide_pan_too_fast_txt">Перемещайте медленнее</string>
+    <string name="cam_3d_strings_shooting_guide_press_key_txt">Нажмите кнопку затвора и медленно поворачивайте камеру</string>
+    <string name="cam_3d_strings_shooting_guide_right_to_left_txt">Поверните камеру справа налево</string>
+    <string name="cam_3d_strings_shooting_guide_touch_cap_txt">Коснитесь кнопки камеры и медленно поворачивайте камеру</string>
+    <string name="cam_3d_strings_shooting_guide_up_to_down_txt">Поверните камеру сверху вниз</string>
+    <string name="cam_3d_strings_sweep_panorama_short_txt">Панорамный обзор</string>
+    <string name="cam_app_shortcut_front_photo_txt">Фронт. камера</string>
+    <string name="cam_app_shortcut_manual_txt">Вручную</string>
+    <string name="cam_app_shortcut_video_txt">Видео</string>
+    <string name="cam_face_eye_af_settings_on_txt">Распознавание лиц/AF на глаз вкл.</string>
+    <string name="cam_string_dualrec_m_apr_txt">%1$td апреля %2$tY г.</string>
+    <string name="cam_string_dualrec_m_aug_txt">%1$td августа %2$tY г.</string>
+    <string name="cam_string_dualrec_m_dec_txt">%1$td декабря %2$tY г.</string>
+    <string name="cam_string_dualrec_m_feb_txt">%1$td февраля %2$tY г.</string>
+    <string name="cam_string_dualrec_m_jan_txt">%1$td января %2$tY г.</string>
+    <string name="cam_string_dualrec_m_jul_txt">%1$td июля %2$tY г.</string>
+    <string name="cam_string_dualrec_m_jun_txt">%1$td июня %2$tY г.</string>
+    <string name="cam_string_dualrec_m_mar_txt">%1$td марта %2$tY г.</string>
+    <string name="cam_string_dualrec_m_may_txt">%1$td мая %2$tY г.</string>
+    <string name="cam_string_dualrec_m_nov_txt">%1$td ноября %2$tY г.</string>
+    <string name="cam_string_dualrec_m_oct_txt">%1$td октября %2$tY</string>
+    <string name="cam_string_dualrec_m_sep_txt">%1$td сентября %2$tY г.</string>
+    <string name="cam_string_dualrec_t_am_txt">%1$tl:%2$tM AM</string>
+    <string name="cam_string_dualrec_t_pm_txt">%1$tl:%2$tM PM</string>
+    <string name="cam_strings_1x1_frame_lines_txt">Границы кадра 1:1</string>
+    <string name="cam_strings_accessibility_auto_review_txt">Автопросмотр фото</string>
+    <string name="cam_strings_accessibility_auto_scene_recognized_txt">Условия съемки распознаны как %1$s</string>
+    <string name="cam_strings_accessibility_back_main_txt">Назад</string>
+    <string name="cam_strings_accessibility_back_txt">Назад</string>
+    <string name="cam_strings_accessibility_capturing_mode_txt">Метод фикс. изобр.</string>
+    <string name="cam_strings_accessibility_close_color_button_txt">Закрыть настройки цвета</string>
+    <string name="cam_strings_accessibility_color_brightness_button_txt">Закрыть окно \"Настройка яркости и цвета\"</string>
+    <string name="cam_strings_accessibility_condition_detected_txt">Состояние определено как %1$s</string>
+    <string name="cam_strings_accessibility_condition_motion_txt">В движении</string>
+    <string name="cam_strings_accessibility_condition_stable_txt">Неподвижный</string>
+    <string name="cam_strings_accessibility_condition_walk_txt">Ходьба</string>
+    <string name="cam_strings_accessibility_dual_effect_menu_txt">Эффект двойного объектива</string>
+    <string name="cam_strings_accessibility_eyeaf_off_txt">Коснитесь дважды для включения Eye AF</string>
+    <string name="cam_strings_accessibility_eyeaf_on_txt">Коснитесь дважды для отключения Eye AF</string>
+    <string name="cam_strings_accessibility_flash_torch_txt">Фонарь</string>
+    <string name="cam_strings_accessibility_flash_txt">Вспышка</string>
+    <string name="cam_strings_accessibility_fusion_auto_txt">Коснитесь дважды, чтобы переключиться на автоматическое использование двойной камеры</string>
+    <string name="cam_strings_accessibility_fusion_off_txt">Коснитесь дважды, чтобы включить функцию \"Двойной объектив\"</string>
+    <string name="cam_strings_accessibility_fusion_on_txt">Коснитесь дважды, чтобы отключить функцию \"Двойной объектив\"</string>
+    <string name="cam_strings_accessibility_image_quality_control_exposure_value_txt">"Экспозицион-
+ное число"</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_deselected_txt">Автоматический режим отключен</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_selected_txt">Выбран автоматический режим</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_txt">Автофокусировка</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_adjusted_txt">Фокусное расстояние изменено</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_txt">Ручная фокусировка</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_txt">Фокус</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_deselected_txt">Автоматический режим отключен</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_selected_txt">Выбран автоматический режим</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_txt">Скорость затвора</string>
+    <string name="cam_strings_accessibility_image_quality_control_white_balance_txt">Баланс белого</string>
+    <string name="cam_strings_accessibility_information_txt">Информация</string>
+    <string name="cam_strings_accessibility_menu_txt">Меню</string>
+    <string name="cam_strings_accessibility_not_configurable_txt">Не настраивается</string>
+    <string name="cam_strings_accessibility_open_color_button_txt">Открыть настройки цвета</string>
+    <string name="cam_strings_accessibility_other_settings_txt">Другие параметры</string>
+    <string name="cam_strings_accessibility_pause_button_txt">Пауза</string>
+    <string name="cam_strings_accessibility_photo_setting_txt">Параметры камеры</string>
+    <string name="cam_strings_accessibility_predictive_capture_txt">Предиктивная съёмка</string>
+    <string name="cam_strings_accessibility_recent_photo_txt">Набор последних фотографий</string>
+    <string name="cam_strings_accessibility_recording_button_txt">Запись</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_button_txt">Замедленная съемка</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_exti_button_txt">Выход из режима замедленной съемки</string>
+    <string name="cam_strings_accessibility_recording_stop_button_txt">Остановка</string>
+    <string name="cam_strings_accessibility_self_timer_stop_button_txt">Остановить обратный отсчет</string>
+    <string name="cam_strings_accessibility_shutter_button_txt">Кнопка затвора</string>
+    <string name="cam_strings_accessibility_soundphoto_play_txt">Воспроизвести звук</string>
+    <string name="cam_strings_accessibility_superior_auto_color_brightness_txt">Настройка яркости и цвета</string>
+    <string name="cam_strings_accessibility_swf_normal_txt">Коснитесь дважды для перехода в обычный режим</string>
+    <string name="cam_strings_accessibility_swf_wide_txt">Коснитесь дважды для перехода в широкоугольный режим</string>
+    <string name="cam_strings_accessibility_switch_to_front_by_swiping_txt">Переключено на фронтальную камеру</string>
+    <string name="cam_strings_accessibility_switch_to_front_txt">Коснитесь дважды для переключения на фронтальную камеру</string>
+    <string name="cam_strings_accessibility_switch_to_main_by_swiping_txt">Переключено на главную камеру</string>
+    <string name="cam_strings_accessibility_switch_to_main_txt">Коснитесь дважды, чтобы переключиться на главную камеру</string>
+    <string name="cam_strings_accessibility_switch_to_photo_txt">Коснитесь дважды для переключения на фотокамеру</string>
+    <string name="cam_strings_accessibility_switch_to_video_txt">Коснитесь дважды для переключения на видеокамеру</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">Коснитесь дважды, чтобы включить HDR</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_on_txt">Коснитесь дважды, чтобы отключить HDR</string>
+    <string name="cam_strings_accessibility_video_setting_txt">Параметры видео</string>
+    <string name="cam_strings_accessibility_viewer_txt">Открыть с помощью средства просмотра изображений</string>
+    <string name="cam_strings_accessibility_zoom_ratio_with_number_txt">%1$sx</string>
+    <string name="cam_strings_advanced_setting_geo_tag_both_off_txt">Чтобы сохранить геоданные, необходимо включить GPS и/или беспроводные сети. Включить?</string>
+    <string name="cam_strings_advanced_setting_geo_tag_title_txt">Сохранить геоданные</string>
+    <string name="cam_strings_ai_face_restore_txt">Резкость лиц</string>
+    <string name="cam_strings_application_name_creative_effect_txt">Художественный эффект</string>
+    <string name="cam_strings_application_name_dualrec_txt">С лицом на изображении</string>
+    <string name="cam_strings_application_name_facefusion_txt">Маска AR</string>
+    <string name="cam_strings_application_name_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_application_name_multicam_txt">Мультикамера</string>
+    <string name="cam_strings_application_name_night_mode_txt">Ночной режим</string>
+    <string name="cam_strings_application_name_night_shooting_txt">Ночная съемка</string>
+    <string name="cam_strings_application_name_soundphoto_txt">Sound Photo</string>
+    <string name="cam_strings_application_name_sweep_panorama_txt">Панорамный обзор</string>
+    <string name="cam_strings_application_name_timeshift_txt">Timeshift burst</string>
+    <string name="cam_strings_application_name_txt">Камера</string>
+    <string name="cam_strings_application_name_video_txt">Видео</string>
+    <string name="cam_strings_apps_list_add_txt">Добавить</string>
+    <string name="cam_strings_apps_list_downloadable_txt">Загружаемые</string>
+    <string name="cam_strings_apps_list_installed_txt">Установка завершена</string>
+    <string name="cam_strings_apps_list_txt">Приложения камеры</string>
+    <string name="cam_strings_art_filter_guesture_guide_general_txt">Редактируйте изображение с помощью пальцев</string>
+    <string name="cam_strings_art_filter_guesture_guide_tap_txt">Коснитесь участка, для которого нужно сохранить цвет</string>
+    <string name="cam_strings_aspect_ratio_txt">Соотношение сторон</string>
+    <string name="cam_strings_auto_hdr_discription_txt">Этот параметр помогает избежать чрезмерной и недостаточной выдержки при помощи обнаружения контрастности во время съемки.</string>
+    <string name="cam_strings_auto_hdr_txt">Авто HDR</string>
+    <string name="cam_strings_auto_power_off_txt">Камера будет закрыта из-за бездействия</string>
+    <string name="cam_strings_auto_scene_recognition_txt">Авто-распознавание условий съемки</string>
+    <string name="cam_strings_auto_upload_all_title_txt">Автозагрузка на сервер</string>
+    <string name="cam_strings_auto_upload_all_txt">Автозагрузка на сервер</string>
+    <string name="cam_strings_awb_priority_setting_asmosphere_txt">Атмосфера</string>
+    <string name="cam_strings_awb_priority_setting_standard_txt">Стандартный</string>
+    <string name="cam_strings_awb_priority_setting_txt">Установки (приоритетные) в AWB</string>
+    <string name="cam_strings_awb_priority_setting_white_txt">Белый</string>
+    <string name="cam_strings_balloon_tips_modeselector_title_txt">Попробуйте другие режимы фотосъемки</string>
+    <string name="cam_strings_balloon_tips_modeselector_txt">Коснитесь для выбора другого режима</string>
+    <string name="cam_strings_balloon_tips_timeshift_title_txt">Выбор лучшего момента</string>
+    <string name="cam_strings_balloon_tips_timeshift_txt">Найдите лучший снимок, перемещаясь по миниатюрам вверх или вниз</string>
+    <string name="cam_strings_bokeh_error_covering_lens_txt">Убедитесь, что объектив чистый и в кадре нет пальцев</string>
+    <string name="cam_strings_bokeh_error_night_shooting_disable_txt">Ночная съемка недоступна при использовании эффекта Боке</string>
+    <string name="cam_strings_bokeh_error_over_light_txt">Слишком высокая яркость</string>
+    <string name="cam_strings_bokeh_error_too_close_txt">Отойдите подальше от объекта</string>
+    <string name="cam_strings_bokeh_error_too_dark_txt">Требуется больше света</string>
+    <string name="cam_strings_bokeh_error_too_far_away_txt">Подойдите ближе к объекту</string>
+    <string name="cam_strings_bokeh_error_unknown_txt">Эффект боке сейчас недоступен</string>
+    <string name="cam_strings_bokeh_title_txt">Боке</string>
+    <string name="cam_strings_burst_battery_level_low_txt">Невозможно создать серию кадров из-за низкого заряда аккумулятора</string>
+    <string name="cam_strings_burst_change_camera_key_setting_txt">Для сер. съемки вкл. съемку серии кнопкой затвора на устр.</string>
+    <string name="cam_strings_burst_in_bokeh_effect_txt">Нельзя использовать боке при съемке серии снимков</string>
+    <string name="cam_strings_burst_in_dark_condition_txt">Серийная съемка при тусклом освещении недоступна</string>
+    <string name="cam_strings_burst_in_long_shutter_speed_txt">При скорости затвора от 2 с серийная съемка недоступна</string>
+    <string name="cam_strings_burst_in_transfer_and_tagging_txt">Фото серии недоступны, когда вкл. Transfer &amp; Tagging add-on</string>
+    <string name="cam_strings_burst_in_widecam_txt">Нельзя сделать серию снимков сверхширокоуг. объективом</string>
+    <string name="cam_strings_burst_not_supported_front_camera_txt">Серийная съемка фронтальной камерой недоступна</string>
+    <string name="cam_strings_burst_not_supported_fusion_on_txt">Серийная съемка двойной камерой недоступна</string>
+    <string name="cam_strings_burst_saved_internal_storage_txt">Серия кадров сохранена на внутреннем накопителе</string>
+    <string name="cam_strings_burst_shooting_txt">Скорость съемки</string>
+    <string name="cam_strings_button_continue_txt">Продолжить</string>
+    <string name="cam_strings_button_quit_txt">ЗАКРЫТЬ</string>
+    <string name="cam_strings_camera_af_sound_txt">Звук автофокуса</string>
+    <string name="cam_strings_camera_apps_tab_txt">ПРИЛОЖ. КАМЕРЫ</string>
+    <string name="cam_strings_camera_key_setting_burst_shot_txt">Серия кадров</string>
+    <string name="cam_strings_camera_key_setting_take_photo_txt">Сделать фото</string>
+    <string name="cam_strings_camera_key_setting_txt">Съемка серии кн. затвора</string>
+    <string name="cam_strings_camera_sound_txt">Звук</string>
+    <string name="cam_strings_camera_switching_txt">Переключатель камеры</string>
+    <string name="cam_strings_camerakey_launch_description_photo_pro_txt">Можно запустить приложение \"Камера\" или Photography Pro, нажав и удерживая кнопку затвора на устройстве. Функция работает, даже если смартфон заблокирован или находится в режиме сна.</string>
+    <string name="cam_strings_camerakey_launch_description_txt">Чтобы запустить приложение \"Камера\", нажмите и удерживайте кнопку затвора на устройстве. Функция работает, даже если смартфон заблокирован или находится в режиме сна.</string>
+    <string name="cam_strings_cancel_txt">Отмена</string>
+    <string name="cam_strings_capturing_mode_4k2k_txt">Видео 4K</string>
+    <string name="cam_strings_capturing_mode_auto_txt">Фото</string>
+    <string name="cam_strings_capturing_mode_button_txt">Режим</string>
+    <string name="cam_strings_capturing_mode_camera_txt">Камера</string>
+    <string name="cam_strings_capturing_mode_creative_effect_txt">Худож. эффект</string>
+    <string name="cam_strings_capturing_mode_dualrec_txt">С лицом на изображении</string>
+    <string name="cam_strings_capturing_mode_facefusion_txt">Маска AR</string>
+    <string name="cam_strings_capturing_mode_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_capturing_mode_high_frame_rate_txt">Timeshift video</string>
+    <string name="cam_strings_capturing_mode_manual_txt">Вручную</string>
+    <string name="cam_strings_capturing_mode_multicam_txt">Мультикамера</string>
+    <string name="cam_strings_capturing_mode_network_error_txt">Не удалось завершить загрузку данных</string>
+    <string name="cam_strings_capturing_mode_photopro_txt">Photo Pro</string>
+    <string name="cam_strings_capturing_mode_portraitselfie_txt">Селфи-портрет</string>
+    <string name="cam_strings_capturing_mode_slow_motion_txt">Видео (замедленная съемка)</string>
+    <string name="cam_strings_capturing_mode_soundphoto_txt">Sound Photo</string>
+    <string name="cam_strings_capturing_mode_superior_auto_cy_txt">Супер авторежим</string>
+    <string name="cam_strings_capturing_mode_superior_auto_txt">Супер авторежим</string>
+    <string name="cam_strings_capturing_mode_timeshift_txt">Timeshift burst</string>
+    <string name="cam_strings_capturing_mode_title_txt">Метод фикс. изобр.</string>
+    <string name="cam_strings_change_full_storage_to_internal_txt">SD-карта заполнена. Внутренний накопитель будет использоваться в качестве хранилища данных по умолчанию.</string>
+    <string name="cam_strings_change_save_destination_high_frame_rate_title_txt">Timeshift video</string>
+    <string name="cam_strings_change_save_destination_slowmotion_title_txt">Замедленная съемка</string>
+    <string name="cam_strings_change_save_destination_title_txt">Видео 4K</string>
+    <string name="cam_strings_change_storage_to_sd_txt">Вставлена SD-карта. Изменить хранилище данных по умолчанию на SD-карту?</string>
+    <string name="cam_strings_change_txt">Изменить</string>
+    <string name="cam_strings_close_txt">Закрыть</string>
+    <string name="cam_strings_color_brightness_txt">Цвет и яркость</string>
+    <string name="cam_strings_common_error_internal_memory_full_txt">Внутренний накопитель заполнен. Сохранить данные на SD-карту?</string>
+    <string name="cam_strings_common_error_internal_memory_unavailable_txt">Внутренний накопитель поврежден или защищен от записи. Сохранить данные на SD-карту?</string>
+    <string name="cam_strings_common_error_open_txt">%1$s не открывается</string>
+    <string name="cam_strings_common_error_sdcard_full_txt">SD-карта заполнена. Сохранить данные на внутреннем накопителе?</string>
+    <string name="cam_strings_common_error_sdcard_unavailable_txt">Невозможно использовать SD-карту. Сохранить данные на внутреннем накопителе?</string>
+    <string name="cam_strings_common_explanatory_sdcard_setting_txt">Для стабильной съемки и записи видео рекомендуем в качестве хранилища использовать внутренний накопитель или высокоскоростную SD-карту (рекомендованный класс: 10 или выше).</string>
+    <string name="cam_strings_cooling_mode_cooled_down_txt">Некоторые функции отключены</string>
+    <string name="cam_strings_cooling_mode_learn_more_txt">Подробнее</string>
+    <string name="cam_strings_cooling_mode_message1_txt">Следующие функции в данный момент отключены.</string>
+    <string name="cam_strings_cooling_mode_message2_txt">Подождите, пока устройство остынет, а затем перезапустите камеру.</string>
+    <string name="cam_strings_cooling_mode_title_txt">Следующие функции отключены</string>
+    <string name="cam_strings_cooling_mode_txt">Некоторые функции отключены из-за нагрева</string>
+    <string name="cam_strings_core_intelligentactive_txt">Умный активный</string>
+    <string name="cam_strings_cta_description_txt">Разрешить запрос доступа (см. ниже)?</string>
+    <string name="cam_strings_cta_title_txt">Внимание!</string>
+    <string name="cam_strings_dependency_changed_txt">%1$s: задано значение %2$s</string>
+    <string name="cam_strings_description_4k2k_txt">Записать видео в сверхвысоком разрешении 4K</string>
+    <string name="cam_strings_description_camera_txt">Съемка фотографий и запись видео</string>
+    <string name="cam_strings_description_creative_effect_txt">Эффекты для фотографий и видеозаписей</string>
+    <string name="cam_strings_description_dualrec_txt">Вставка лица в фото и видео с помощью передней и главные камер</string>
+    <string name="cam_strings_description_facefusion_txt">Создайте отличное селфи, наложив лицо друга поверх своего</string>
+    <string name="cam_strings_description_google_lens_txt">%1$s позволяет получить данные о видимом объекте и выполнить действия</string>
+    <string name="cam_strings_description_high_frame_rate_txt">Запись видео с высокой частотой кадров и эффекты замедления</string>
+    <string name="cam_strings_description_multicam_txt">Запись одной и той же сцены под разными углами на одном экране</string>
+    <string name="cam_strings_description_shoundphoto_txt">Снимки с фоновым звуком (щебет птиц и т. д.)</string>
+    <string name="cam_strings_description_timeshift_short_txt">Выбор лучшего фото из серии, сделанной до и после нажатия на спуск</string>
+    <string name="cam_strings_details_txt">Сведения</string>
+    <string name="cam_strings_dialog_4k_unavailable_while_screen_recording_txt">"Невозможно снимать видео в формате 4K во время записи экрана.
+Выберите другой размер видео (не 4K) или остановите запись экрана, чтобы снять видео."</string>
+    <string name="cam_strings_dialog_60fps_unavailable_while_screen_recording_txt">"Невозможно снимать видео в текущем размере во время записи экрана.
+Выберите другой размер видео (не Full-HD 60 кадров/с) или остановите запись экрана, чтобы снять видео."</string>
+    <string name="cam_strings_dialog_battery_level_low_info_txt">Недостаточный заряд аккумулятора телефона. При низком уровне заряда приложение камеры закрывается автоматически.</string>
+    <string name="cam_strings_dialog_battery_level_low_recording_txt">Запись остановлена в связи с низким уровнем заряда аккумулятора. Зарядите устройство и повторите попытку.</string>
+    <string name="cam_strings_dialog_battery_level_low_using_txt">Работа с камерой невозможна в связи с низким уровнем заряда аккумулятора. Зарядите устройство и повторите попытку.</string>
+    <string name="cam_strings_dialog_body_accessibility_txt">Специальные возможности: &lt;a href=\"%s\">Частичное соответствие&lt;/a></string>
+    <string name="cam_strings_dialog_body_applicationnotification_1_txt">Чтобы выполнить это действие, приложению необходимо предоставить следующие разрешения.</string>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"Сеть
+Подключение к Wi-Fi"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_airplane_on_txt">"Режим полета вкл.
+Выключите режим полета в разделе ПАРАМЕТРЫ."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_name_txt">"Имя сети: 
+"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_disable_txt">Не защищено</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_enable_txt">Защищено</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Подключиться к %1$s?</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"Подключиться к %1$s?
+Коснитесь кнопки СВЕДЕНИЯ, чтобы увидеть данные о сети Wi-Fi."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"Wi-Fi отключен, режим полета включен.
+Измените эти настройки в разделе ПАРАМЕТРЫ."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Сеть Wi-Fi отключена.
+Включите Wi-Fi в разделе ПАРАМЕТРЫ."</string>
+    <string name="cam_strings_dialog_btn_connect_txt">Подключить</string>
+    <string name="cam_strings_dialog_btn_settings_txt">Параметры</string>
+    <string name="cam_strings_dialog_burst_information_txt">Для выполнения серии снимков выберите приложение Timeshift burst из списка приложений камеры</string>
+    <string name="cam_strings_dialog_change_resolution_manual_txt">Вручную (фронтальная камера)</string>
+    <string name="cam_strings_dialog_change_resolution_superior_auto_txt">Супер авторежим (фронтальная камера)</string>
+    <string name="cam_strings_dialog_change_resolution_txt">Из-за обновления ПО разрешение для следующих режимов съемки было изменено на 13 Мпикс (4:3)</string>
+    <string name="cam_strings_dialog_cta_access_txt">%1$s пытается</string>
+    <string name="cam_strings_dialog_cta_allow_txt">Разрешить</string>
+    <string name="cam_strings_dialog_cta_deny_txt">Запретить</string>
+    <string name="cam_strings_dialog_cta_location_info_txt">Изв. сведения о местоположении</string>
+    <string name="cam_strings_dialog_cta_turn_on_nfc_txt">Включить NFC</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">Включить Wi-Fi</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">Исп. Wi-Fi и моб. дан.</string>
+    <string name="cam_strings_dialog_high_temp_title_txt">Примечание</string>
+    <string name="cam_strings_dialog_high_temp_txt">При повышении температуры устройства, приложение может быть закрыто. Ваша запись будет сохранена автоматически.</string>
+    <string name="cam_strings_dialog_high_temp_vzw_txt">При этом режиме съемки используется большое количество ресурсов, что может привести к повышению температуры устройства. Во избежание перегрева запись видео может прекратиться, а приложение камеры может закрыться. Запись сохранится автоматически.</string>
+    <string name="cam_strings_dialog_storage_full_burst_txt">Создание серии кадров остановлено, так как не хватает памяти. Удалите некоторые файлы, чтобы освободить место на внутреннем накопителе.</string>
+    <string name="cam_strings_dialog_title_accessibility_txt">Специальные возможности</string>
+    <string name="cam_strings_dialog_title_applicationnotification_txt">Предоставление разрешений</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_connecting_txt">Подключение...</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">Не удалось подключиться к Wi-Fi</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_password_txt">"
+Защита паролем: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_security_txt">"
+Безопасность: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">Сведения о Wi-Fi</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">Не удается подключиться к Wi-Fi</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Сеть Wi-Fi небезопасна</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Подключение к Wi-Fi</string>
+    <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">Можно записывать видеоролики даже при высоком контрасте, а также делать их более выразительными и реалистичными. Используйте поддерживаемые устройства и службы, чтобы наслаждаться оригинальными цветами и яркостью объектов.</string>
+    <string name="cam_strings_digital_zoom_type_description_txt">"Выберите параметр цифрового зума.
+
+Стандартный цифровой зум: зум с использованием цифровой обработки на основе данных датчика изображений.
+Зум с высочайшим разрешением: зум с использованием цифровой обработки, которая сохраняет более высокое качество оригинального изображения. Сохранение фотографий может занять больше времени."</string>
+    <string name="cam_strings_digital_zoom_type_standard_txt">Стандартный цифровой зум</string>
+    <string name="cam_strings_digital_zoom_type_super_resolution_txt">Зум с высоч. разрешением</string>
+    <string name="cam_strings_digital_zoom_type_txt">Настройки цифрового зума</string>
+    <string name="cam_strings_dispbutton_settings_txt">Параметры кнопки DISP</string>
+    <string name="cam_strings_distortion_correction_photo_video_txt">Коррекция искажений</string>
+    <string name="cam_strings_distortion_correction_txt">Исправление искажения</string>
+    <string name="cam_strings_do_not_show_again_txt">Больше не показывать</string>
+    <string name="cam_strings_downloadable_tab_txt">ЗАГРУЖАЕМЫЕ</string>
+    <string name="cam_strings_drive_continuous_txt">Непрерывная съемка</string>
+    <string name="cam_strings_drive_hybrid_txt">Гибрид покадр. и непрер. съемки</string>
+    <string name="cam_strings_drive_single_txt">Покадровая съемка</string>
+    <string name="cam_strings_drivemode_txt">Режим протяжки</string>
+    <string name="cam_strings_effect_Kaleidoscope_txt">Калейдоскоп</string>
+    <string name="cam_strings_effect_after_image_txt">След от движения</string>
+    <string name="cam_strings_effect_brightness_contrast_txt">Яркость-контраст</string>
+    <string name="cam_strings_effect_color_filter_tint_txt">Оттенок</string>
+    <string name="cam_strings_effect_color_pencil_txt">Цвет наброска</string>
+    <string name="cam_strings_effect_comic_txt">Комический</string>
+    <string name="cam_strings_effect_fish_eye_txt">\"Рыбий глаз\"</string>
+    <string name="cam_strings_effect_harris_shutter_txt">Затвор Харриса</string>
+    <string name="cam_strings_effect_hue_saturation_txt">Тон-насыщенность</string>
+    <string name="cam_strings_effect_miniature_txt">Миниатюра</string>
+    <string name="cam_strings_effect_mirror_txt">Зеркало</string>
+    <string name="cam_strings_effect_mosaic_txt">Мозаика</string>
+    <string name="cam_strings_effect_motion_effects_txt">Эффекты движения</string>
+    <string name="cam_strings_effect_no_effect_txt">Без эффектов</string>
+    <string name="cam_strings_effect_nostalgia_txt">Ностальгия</string>
+    <string name="cam_strings_effect_old_film_txt">Старая пленка</string>
+    <string name="cam_strings_effect_partical_color_txt">Выделение цвета</string>
+    <string name="cam_strings_effect_pencil_txt">Карандаш</string>
+    <string name="cam_strings_effect_selector_txt">Эффект двойного объектива</string>
+    <string name="cam_strings_effect_vivid_txt">Живые цвета</string>
+    <string name="cam_strings_error_capture_txt">Этот режим недоступен во время записи в другом приложении.</string>
+    <string name="cam_strings_error_delete_txt">Не удалось удалить</string>
+    <string name="cam_strings_error_device_not_available_txt">Невозможно запустить камеру. Перезапустите камеру или устройство.</string>
+    <string name="cam_strings_error_dialog_title_txt">Ошибка</string>
+    <string name="cam_strings_error_fatal_sd_photo_txt">Не удалось сохранить фотографии. Возможно, возникли проблемы с накопителем. Если данные хранятся на карте SD, проверьте карту SD.</string>
+    <string name="cam_strings_error_fatal_sd_video_txt">Не удалось начать запись. Возможно, возникли проблемы с накопителем. Если данные хранятся на карте SD, проверьте карту SD.</string>
+    <string name="cam_strings_error_fatal_txt">Неизвестная ошибка.</string>
+    <string name="cam_strings_error_high_temp_already_high_txt">Устройство Xperia должно остыть, подождите.</string>
+    <string name="cam_strings_error_high_temp_info_flashlight_unavailable_txt">Устройство слишком сильно нагрелось, поэтому фонарь недоступен</string>
+    <string name="cam_strings_error_high_temp_info_txt">Температура устройства растет. Если рост продолжится, приложение будет закрыто автоматически.</string>
+    <string name="cam_strings_error_high_temp_info_video_recording_with_flashlight_unavailable_txt">Высокая температура: для записи видео выключите фонарик</string>
+    <string name="cam_strings_error_high_temp_info_vzw_txt">Температура устройства растет. Если рост продолжится, приложение будет закрыто автоматически.</string>
+    <string name="cam_strings_error_high_temp_shut_down_no_txt">Нет</string>
+    <string name="cam_strings_error_high_temp_shut_down_yes_txt">Да</string>
+    <string name="cam_strings_error_high_temp_shutting_down_txt">Камера будет временно выключена, чтобы она могла остыть.</string>
+    <string name="cam_strings_error_high_temp_shutting_down_vzw_txt">Камера будет временно выключена, чтобы она могла остыть.</string>
+    <string name="cam_strings_error_internal_memory_full_txt">Внутренняя память заполнена. SD-карта будет использоваться в качестве хранилища данных по умолчанию.</string>
+    <string name="cam_strings_error_internal_memory_unavailable_txt">Внутренний накопитель поврежден или защищен от записи. В качестве хранилища данных задана SD-карта.</string>
+    <string name="cam_strings_error_internal_sd_full_txt">Память заполнена. Удалите некоторые файлы с SD-карты или внутреннего накопителя.</string>
+    <string name="cam_strings_error_max_faces_exceeded_txt">Выбрано максимальное число лиц. Отмените выбор одного или нескольких лиц и повторите попытку.</string>
+    <string name="cam_strings_error_memory_full_txt">Память заполнена. Удалите некоторые файлы с SD-карты.</string>
+    <string name="cam_strings_error_memory_ims_access_error_txt">Ошибка памяти</string>
+    <string name="cam_strings_error_memory_ims_full_txt">Память заполнена. Удалите из памяти ненужные файлы или измените хранилище данных по умолчанию.</string>
+    <string name="cam_strings_error_memory_ims_unavailable_txt">Память недоступна</string>
+    <string name="cam_strings_error_memory_title_txt">Ошибка памяти</string>
+    <string name="cam_strings_error_memory_unavailable_txt">SD-карта недоступна</string>
+    <string name="cam_strings_error_message_during_voice_call_title_txt">Идет вызов</string>
+    <string name="cam_strings_error_message_during_voice_call_txt">Камера недоступна во время вызова</string>
+    <string name="cam_strings_error_mms_rec_size_limit_txt">Невозможно добавить файлы. Слишком большой размер файла.</string>
+    <string name="cam_strings_error_save_file_in_progress_txt">Выполняется сохранение. В данный момент это действие недоступно.</string>
+    <string name="cam_strings_error_save_file_txt">Идет запись в другом приложении. Невозможно записать.</string>
+    <string name="cam_strings_error_storage_changing_to_internal_txt">SD-карта недоступна. Внутренний накопитель будет использоваться в качестве хранилища данных по умолчанию.</string>
+    <string name="cam_strings_error_video_rec_txt">Запись невозможна. Видеозапись или процессы, связанные с этой функцией, используются другим приложением.</string>
+    <string name="cam_strings_ev_disable_txt">EV отключен. Для управления установите SS или ISO на AUTO.</string>
+    <string name="cam_strings_exposure_level_m03_txt">EV -0,3</string>
+    <string name="cam_strings_exposure_level_m07_txt">EV -0,7</string>
+    <string name="cam_strings_exposure_level_m10_txt">EV -1,0</string>
+    <string name="cam_strings_exposure_level_m13_txt">EV -1,3</string>
+    <string name="cam_strings_exposure_level_m17_txt">EV -1,7</string>
+    <string name="cam_strings_exposure_level_m20_txt">EV -2,0</string>
+    <string name="cam_strings_exposure_level_p03_txt">EV +0,3</string>
+    <string name="cam_strings_exposure_level_p07_txt">EV +0,7</string>
+    <string name="cam_strings_exposure_level_p10_txt">EV +1,0</string>
+    <string name="cam_strings_exposure_level_p13_txt">EV +1,3</string>
+    <string name="cam_strings_exposure_level_p17_txt">EV +1,7</string>
+    <string name="cam_strings_exposure_level_p20_txt">EV +2,0</string>
+    <string name="cam_strings_exposure_level_pm0_txt">EV ±0,0</string>
+    <string name="cam_strings_exposure_level_title_txt">Экспозиционное число</string>
+    <string name="cam_strings_exposure_level_txt">"Экспозицион-
+ное число"</string>
+    <string name="cam_strings_eye_position_tutorial_title_txt">Направл. взгляда</string>
+    <string name="cam_strings_eye_position_tutorial_txt">Смотрите во фронтальную камеру рядом с динамиком</string>
+    <string name="cam_strings_face_eyeaf_settings_txt">Парам. распозн. лиц/AF на глаз</string>
+    <string name="cam_strings_facefusion_add_face_txt">Добавление лица</string>
+    <string name="cam_strings_facefusion_delete_mask_txt">Удалить это лицо? Данное действие невозможно отменить.</string>
+    <string name="cam_strings_facefusion_no_face_detected_txt">Лица не обнаружены</string>
+    <string name="cam_strings_facefusion_point_at_face_txt">Наведите камеру на лицо</string>
+    <string name="cam_strings_facefusion_select_face_txt">Коснитесь квадратов для выбора лиц</string>
+    <string name="cam_strings_failure_camera_shake_preview_txt">Для предотвр. размытия держите камеру неподвижно.</string>
+    <string name="cam_strings_failure_camera_shake_txt">Фото может быть размыто из-за дрожания камеры</string>
+    <string name="cam_strings_failure_detection_description_not_blink_txt">"Функция информирует о пальце в кадре или отсутствии фокусировки до спуска затвора.
+После съемки можно проверить, нет ли на фото размытия, и получить советы по съемке."</string>
+    <string name="cam_strings_failure_detection_description_txt">"Функция информирует о пальце в кадре или отсутствии фокусировки до спуска затвора.
+После съемки можно проверить, нет ли на фото моргнувших людей или размытия, и получить советы по съемке."</string>
+    <string name="cam_strings_failure_detection_txt">Показывать советы по съемке</string>
+    <string name="cam_strings_failure_eye_blinks_preview_txt">Проверьте, не моргнул ли кто-нибудь</string>
+    <string name="cam_strings_failure_eye_blinks_txt">Возможно, на фотографии кто-то моргнул</string>
+    <string name="cam_strings_failure_finger_covering_lens_after_txt">Возможно, палец закрыл объектив</string>
+    <string name="cam_strings_failure_finger_covering_lens_preview_txt">Проверьте объектив, не закрывайте его пальцем</string>
+    <string name="cam_strings_failure_finger_covering_lens_txt">Палец закрывает объектив</string>
+    <string name="cam_strings_failure_focus_too_close_txt">Отойдите подальше от объекта</string>
+    <string name="cam_strings_failure_focus_too_dark_txt">Для фокусировки требуется больше света</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_photo_txt">Запустить и снять</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_video_txt">Запустить и записать видео</string>
+    <string name="cam_strings_fast_capturing_launch_camera_capture_txt">Запустить прил. и сделать фото</string>
+    <string name="cam_strings_fast_capturing_launch_camera_txt">Запустить прил. камеры</string>
+    <string name="cam_strings_fast_capturing_launch_only_txt">Только запустить</string>
+    <string name="cam_strings_fast_capturing_launch_only_video_txt">Только запустить (видеокамера)</string>
+    <string name="cam_strings_fast_capturing_launch_photo_pro_txt">Запустить Photography Pro</string>
+    <string name="cam_strings_fast_capturing_screen_locked_apps_list_txt">Для изменения метода фиксации изображения необходимо разблокировать экран. Разблокировать?</string>
+    <string name="cam_strings_fast_capturing_screen_locked_photos_burst_txt">Устройство необходимо разблокировать для перехода к приложению просмотра фотографий после съемки серии при заблокированном экране. Разблокировать устройство?</string>
+    <string name="cam_strings_fast_capturing_screen_locked_settings_txt">Чтобы открыть настройки, разблокируйте экран.</string>
+    <string name="cam_strings_fast_capturing_screen_locked_title_txt">Экран заблокирован</string>
+    <string name="cam_strings_fast_capturing_title_txt">Быстрый запуск</string>
+    <string name="cam_strings_fast_capturing_txt">Быстрый запуск</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_title_txt">Изменение режима съемки и камеры</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_txt">Проведите по экрану, чтобы перейти в другой режим съемки, например \"Видео\" или \"Вручную\", а также для переключения с основной камеры на фронтальную и наоборот.</string>
+    <string name="cam_strings_fast_switch_tutorial_title_txt">Смена камеры</string>
+    <string name="cam_strings_fast_switch_tutorial_txt">Переключайтесь между основной и фронтальной камерой, прокручивая экран</string>
+    <string name="cam_strings_feature_bokeh_cameraui_description_txt">"Для настройки эффекта Боке коснитесь значка Боке в видоискателе и переместите ползунок.
+Эта функция поддерживается в режиме фотографии.
+Создавайте впечатляющие фотографии с фокусом на объекте, а не на размытом фоне."</string>
+    <string name="cam_strings_feature_bokeh_cameraui_subtitle_txt">Фотографии с эффектом Боке</string>
+    <string name="cam_strings_feature_bokeh_cameraui_title_txt">Эффект Боке</string>
+    <string name="cam_strings_feature_bokeh_description_txt">"Создание эффектных фотографий с четким объектом съемки на мягком, расфокусированном фоне.
+Для использования этого режима коснитесь значка РЕЖИМ в видоискателе и выберите \"Боке\"."</string>
+    <string name="cam_strings_feature_bokeh_subtitle_txt">Боке</string>
+    <string name="cam_strings_feature_bokeh_title_txt">Боке</string>
+    <string name="cam_strings_feature_dual_camera_manual_description_txt">Двойную камеру можно включать и выключать в ручном режиме. Включите ее, чтобы делать фотографии с низким уровнем шума при слабом освящении. Выключите для съемки крупным планом.</string>
+    <string name="cam_strings_feature_dual_camera_manual_subtitle_txt">Фотосъемка двойной камерой в ручном режиме</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_2_txt">При фото- и видеосъемке двойной камерой расположитесь как минимум в метре от объекта. При более близком расположении точка съемки или цвет могут измениться.</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_txt">"С помощью двойной камеры можно снимать великолепные фотографии и видео с низким уровнем шума даже ночью или при слабом освещении.
+Автоматическое переключение между одинарной и двойной камерой выполняется в зависимости от условий съемки. При фото- и видеосъемке применяется ультрачувствительность."</string>
+    <string name="cam_strings_feature_dual_camera_photo_subtitle_txt">Двойная камера</string>
+    <string name="cam_strings_feature_dual_camera_title_txt">Двойная камера</string>
+    <string name="cam_strings_feature_dual_camera_video_description_txt">Для получения качественных фотографий крупным планом переключитесь на одинарную камеру, выключив двойную камеру в видоискателе. К ней можно вернуться в любой момент, коснувшись кнопки настроек.</string>
+    <string name="cam_strings_feature_dual_camera_video_subtitle_txt">Запись видео с помощью двойной камеры</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_description_txt">"Коснитесь кнопки в видоискателе, чтобы переключиться между углом x1 и x2.
+Данную функцию можно использовать в режиме фотографии и видео."</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_subtitle_txt">Переключение угла кнопкой</string>
+    <string name="cam_strings_feature_dual_zoom_camera_title_txt">Двойная камера</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_description_txt">"Коснитесь и удерживайте кнопку в видоискателе, чтобы отобразился ползунок. С его помощью можно настроить масштаб.
+Масштаб можно также настроить с помощью кнопок громкости или сведения/разведения пальцев."</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_subtitle_txt">Изменение масштаба ползунком</string>
+    <string name="cam_strings_feature_eye_af_description_txt">"Съемка портретов с фокусом на глазах людей.
+Чтобы изменить объект фокусировки, коснитесь лица снимаемого человека. Чтобы включить или выключить эту функцию, коснитесь значка, отображаемого при обнаружении лиц."</string>
+    <string name="cam_strings_feature_eye_af_description_with_animal_txt">"Можно делать портреты с фокусом на глазах людей и животных.
+Чтобы изменить место фокусировки, коснитесь лица объекта. Чтобы включить или отключить эту функцию, коснитесь значка, отображаемого при обнаружении лиц. Эта функция совместима с режимом фото и ручным режимом."</string>
+    <string name="cam_strings_feature_eye_af_subtitle_txt">Eye AF</string>
+    <string name="cam_strings_feature_eye_af_title_txt">Eye AF</string>
+    <string name="cam_strings_feature_failure_detection_description_not_blink_txt">"Функция информирует о пальце в кадре или отсутствии фокусировки до спуска затвора.
+После съемки можно проверить, нет ли на фото размытия, и получить советы по съемке.
+
+Изменить параметры можно в разделе настроек камеры \"Показывать советы по съемке\"."</string>
+    <string name="cam_strings_feature_failure_detection_description_txt">"Функция информирует о пальце в кадре или отсутствии фокусировки до спуска затвора.
+После съемки можно проверить, нет ли на фото моргнувших людей или размытия, и получить советы по съемке.
+
+Изменить параметры можно в разделе настроек камеры \"Показывать советы по съемке\"."</string>
+    <string name="cam_strings_feature_failure_detection_subtitle_txt">Показывать советы по съемке</string>
+    <string name="cam_strings_feature_failure_detection_title_txt">Показывать советы по съемке</string>
+    <string name="cam_strings_feature_failure_option_after_and_preview_txt">До и после съемки</string>
+    <string name="cam_strings_feature_failure_option_after_only_txt">Только после съемки</string>
+    <string name="cam_strings_feature_hand_shutter_description_txt">"Разверните руку ладонью к камере. Таймер авт. съемки активируется после распознавания руки. Для более точного распознавания вытяните пальцы вверх.
+Чтобы включить эту функцию, перейдите в меню \"Фото (фронтальная камера)\" и выберите параметр \"Спуск затвора движ. руки\" в разделе \"Автозахват\"."</string>
+    <string name="cam_strings_feature_hand_shutter_subtitle_txt">Спуск затвора движ. руки</string>
+    <string name="cam_strings_feature_hand_shutter_title_txt">Спуск затвора движ. руки</string>
+    <string name="cam_strings_feature_lens_correction_description_nosuperwidemode_txt">"При исп. сверхширокоугольного объектива можно задать приоритет. \"Приоритет качества изображения\" позв. делать динамичные высококач. снимки, а \"Приоритет коррекции искажений\" – сократить визуал. искажение.
+Доступно при исп. сверхширокоугольного объектива в режиме фото. Параметры можно изменить в настройках камеры \"Коррекция дисторсии сверхширокуг. объектива (фото)\"."</string>
+    <string name="cam_strings_feature_lens_correction_description_txt">При исп. сверхширокоуг. объектива можно задать приоритет. Параметр \"Приоритет качества изображения\" позв. делать динамичные высококач. снимки, а \"Приоритет коррекции искажений\" – сократить виз. искажения. Доступно при исп. сверхширокоуг. объектива в режиме фотографии. Параметры можно изм. в настр. \"Коррекция дисторсии (фото)\" после вкл. сверхширокоуг. объектива.</string>
+    <string name="cam_strings_feature_level_description_txt">"Функция \"Уровень\" позволяет проверить наклон камеры с помощью индикатора.
+Дисплей станет зеленым, когда камера будет расположена ровно.
+Это полезно для удержания линии горизонта во время съемки пейзажей.
+
+Настройки функции можно изменить в разделе \"Уровень\" параметров камеры."</string>
+    <string name="cam_strings_feature_level_subtitle_txt">Фотосъемка с помощью функции \"Уровень\"</string>
+    <string name="cam_strings_feature_level_title_txt">Уровень</string>
+    <string name="cam_strings_feature_list_banner_txt">Изучите новые функции</string>
+    <string name="cam_strings_feature_list_new_title_txt">Использование новых функций</string>
+    <string name="cam_strings_feature_list_other_title_txt">Использование функций</string>
+    <string name="cam_strings_feature_list_title_txt">Представление функций</string>
+    <string name="cam_strings_feature_long_ss_description_txt">"Можно вручную настроить скорость затвора до 30 секунд. При использовании медленной скорости затвора удерживайте камеру неподвижно, чтобы делать красивые фотографии.
+Снимайте ночные сцены или объекты в движении с впечатляющими эффектами."</string>
+    <string name="cam_strings_feature_long_ss_subtitle_txt">Изменение скорости затвора</string>
+    <string name="cam_strings_feature_long_ss_title_txt">Скорость затвора</string>
+    <string name="cam_strings_feature_mono_description_txt">"Создание художественных фотографий и видео высокой четкости без лишних усилий.
+Для использования этого режима коснитесь значка РЕЖИМ в видоискателе и выберите \"Монохромный режим\"."</string>
+    <string name="cam_strings_feature_mono_subtitle_txt">ЧБ</string>
+    <string name="cam_strings_feature_mono_title_txt">ЧБ</string>
+    <string name="cam_strings_feature_night_mode_description_txt">"Четкие фотографии можно делать даже ночью или в темноте.
+Полная обработка изображения после съемки может занять некоторое время, держите камеру неподвижно до завершения процесса."</string>
+    <string name="cam_strings_feature_night_mode_subtitle_txt">Ночной режим</string>
+    <string name="cam_strings_feature_night_mode_title_txt">Ночной режим</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_all_lang_txt">Ночная съемка</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_txt">Ночная съемка</string>
+    <string name="cam_strings_feature_night_shooting_title_all_lang_txt">Ночная съемка</string>
+    <string name="cam_strings_feature_night_shooting_title_txt">Ночная съемка</string>
+    <string name="cam_strings_feature_oneshot_description_txt">"Коснитесь кнопки в центре экрана, чтобы записать важный момент с частотой %1$s кадров/с в режиме замедленной съемки.
+Яркий свет улучшает качество видео."</string>
+    <string name="cam_strings_feature_oneshot_subtitle_txt">Сверхзамедленная съемка (один кадр)</string>
+    <string name="cam_strings_feature_portrait_bokeh_description_txt">"Для настройки эффекта Боке коснитесь значка портретного Боке в видоискателе и переместите ползунок.
+Эта функция поддерживается в режиме фотографии.
+Используйте впечатляющую контрастность, чтобы выделить объекты съемки с помощью размытия фона."</string>
+    <string name="cam_strings_feature_portrait_bokeh_subtitle_txt">Портретные фотографии с эффектом Боке</string>
+    <string name="cam_strings_feature_portrait_bokeh_title_txt">Эффект портретного Боке</string>
+    <string name="cam_strings_feature_portrait_selfie_description_txt">"Снимайте художественные селфи благодаря режиму Боке и бьюти-эффектам.
+Для использования этого режима коснитесь значка РЕЖИМ в видоискателе, затем выберите \"Селфи-портрет\".
+Стилизуйте селфи и наслаждайтесь креативным результатом."</string>
+    <string name="cam_strings_feature_portrait_selfie_subtitle_txt">Селфи-портрет</string>
+    <string name="cam_strings_feature_portrait_selfie_title_txt">Селфи-портрет</string>
+    <string name="cam_strings_feature_predictive_launch_description_txt">"Возможен быстрый запуск камеры. Быстро переверните устройство в альбомную ориентацию и направьте камеру на объект. Она запустится автоматически.
+Функцию можно отключить в разделе \"Интеллектуальный запуск\" настроек камеры."</string>
+    <string name="cam_strings_feature_predictive_launch_subtitle_txt">Интел. запуск</string>
+    <string name="cam_strings_feature_predictive_launch_title_txt">Интел. запуск</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"Сканирование QR Code обеспечивает быстрый доступ в интернет или подключение к Wi-Fi.
+Эта функция активна в режиме фотографии. Изменить настройку можно в разделе \"Средство чтения QR Code\" параметров камеры."</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Средство чтения QR Code</string>
+    <string name="cam_strings_feature_qrcode_notification_channel_txt">Средство чтения QR Code</string>
+    <string name="cam_strings_feature_selfie_description_txt">"При съемке с помощью фронтальной камеры смотрите в объектив фронтальной камеры рядом с динамиком телефона.
+На фотографии взгляд будет направлен правильно."</string>
+    <string name="cam_strings_feature_selfie_subtitle_txt">Направл. взгляда</string>
+    <string name="cam_strings_feature_selfie_title_txt">Фронтальная камера</string>
+    <string name="cam_strings_feature_sidesense_bar_description_txt">"Вместо нажатия кнопки \"Затвор\" для создания фотографий и съемки видео можно дважды коснуться датчика сбоку экрана.
+Эту функцию можно использовать в режиме фото и ручном режиме. Изменить параметры функции можно в разделе Side sense в настройках камеры."</string>
+    <string name="cam_strings_feature_sidesense_description_txt">"Можно сделать фотографию или записать видео просто дважды коснувшись сканера на боковой части экрана вместо кнопки затвора.
+Данную функцию поддерживают режимы фотографии и видео. Настройки можно изменить в меню [Side sense] в параметрах камеры."</string>
+    <string name="cam_strings_feature_sidesense_subtitle_txt">Side sense</string>
+    <string name="cam_strings_feature_sidesense_title_txt">Side sense</string>
+    <string name="cam_strings_feature_slowmotion_description_txt">Можно записать видео с несколькими фрагментами замедл. съемки (120 кадров/с)</string>
+    <string name="cam_strings_feature_slowmotion_subtitle_txt">Замедленная съемка</string>
+    <string name="cam_strings_feature_slowmotion_title_txt">Замедленная съемка</string>
+    <string name="cam_strings_feature_superslow_description_txt">"Создавайте впечатляющие видеоролики, делясь драгоценными моментами в замедленной съемке. Запись при хорошем освещении поможет создать видео лучшего качества
+Для работы в этом режиме коснитесь значка РЕЖИМ в видоискателе и выберите \"Замедленная съемка\". Можно выбрать различные варианты в параметрах режима."</string>
+    <string name="cam_strings_feature_superslow_subtitle_txt">Сверхзамедленная съемка</string>
+    <string name="cam_strings_feature_transfer_and_tagging_description_txt">"Вкл. данной функции позволит Transfer &amp; Tagging add-on отображать фотографии камеры Xperia. Фотографии будут сохранены на внутр. накопителе.
+Функция совместима с фотографиями, сделанными в режиме фотографии и ручном режиме.
+Можно изменить параметры режима Transfer &amp; Tagging add-on в настройках камеры."</string>
+    <string name="cam_strings_feature_transfer_and_tagging_subtitle_txt">Связывание с Transfer &amp; Tagging add-on</string>
+    <string name="cam_strings_feature_transfer_and_tagging_title_txt">Режим Transfer &amp; Tagging add-on</string>
+    <string name="cam_strings_feature_triple_camera_button_description_new_txt">"Можно легко переключаться между объективами камеры для съемки любых сцен и создания креативных снимков.
+Коснитесь кнопки в видоискателе, чтобы переключиться между сверхширокоугольным, широкоугольным и телеобъективом.
+Данную функцию можно использовать в режиме фото- и видеосъемки."</string>
+    <string name="cam_strings_feature_triple_camera_button_description_txt">"Можно легко переключаться между объективами камеры для съемки любых сцен и создания креативных снимков.
+Коснитесь кнопки в видоискателе, чтобы переключиться между углами x1, x2 и сверхширокоугольным режимом.
+Данную функцию можно использовать в режиме фотографии и видео."</string>
+    <string name="cam_strings_feature_triple_camera_button_subtitle_txt">Переключение угла кнопкой</string>
+    <string name="cam_strings_feature_triple_camera_button_with_zoom_ratio_description_txt">"Можно легко переключаться между объективами камеры для съемки любых сцен и создания креативных снимков.
+Коснитесь кнопки в видоискателе, чтобы переключиться между углами 0.6x (сверхширокоугольный), 1x (широкоугольный) и 2x (телеобъектив).
+Данную функцию можно использовать в режимах Фото и Видео."</string>
+    <string name="cam_strings_feature_triple_camera_how_to_zoom_subtitle_txt">Увеличение и уменьшение</string>
+    <string name="cam_strings_feature_triple_camera_title_txt">Тройная камера</string>
+    <string name="cam_strings_feature_triple_camera_wide_description_txt">"Данный объектив подходит для съемки пейзажей, так как захватывает более широкую область.
+Перед тем как менять параметры сверхширокоугольного объектива, убедитесь, что выполнено переключение на соответствующий объектив."</string>
+    <string name="cam_strings_feature_triple_camera_wide_subtitle_txt">Съемка сверхширокоугол. объективом</string>
+    <string name="cam_strings_feature_triple_camera_zoom_description_txt">"Проведите пальцем влево или вправо по кнопке в видоискателе, чтобы отобразить ползунок. С помощью ползунка можно настроить масштаб.
+Масштаб можно также настроить с помощью кнопок громкости или сведения/разведения пальцев."</string>
+    <string name="cam_strings_feature_triple_camera_zoom_plus_zoom_frames_description_txt">"Проведите пальцем влево или вправо по кнопке в видоискателе, чтобы отобразить ползунок. С помощью ползунка можно настроить масштаб.
+Масштаб можно настроить с помощью кнопок громкости или сведения/разведения пальцев.
+В режиме Фото вы можете отображать кадры, которые помогут вам просмотреть, как они будут выглядеть при увеличении. Вы можете изменить этот параметр в разделе \"Помощник по компоновке зума\" в настройках камеры."</string>
+    <string name="cam_strings_feature_triple_camera_zoom_subtitle_txt">Изменение масштаба ползунком</string>
+    <string name="cam_strings_feature_zoom_frames_description_txt">"Если вы включите этот параметр, вы сможете просмотреть, как это будет выглядеть при увеличении.
+Отцентрируйте объект в кадре и коснитесь коэффициента масштабирования, чтобы легко увеличить масштаб.
+Данная функция не поддерживается при размере фотоснимка 21:9."</string>
+    <string name="cam_strings_file_delete_confirm_title_txt">Удалить</string>
+    <string name="cam_strings_file_delete_confirm_txt">Удалить этот файл?</string>
+    <string name="cam_strings_file_format_description_txt">Выберите кодер для видео 4K</string>
+    <string name="cam_strings_file_format_sub_description_h264_txt">Стандартный формат для кодировки. Поддерживается большинством устройств и служб.</string>
+    <string name="cam_strings_file_format_sub_description_h265_txt">Формат высокой степени сжатия. Убедитесь, что устройства или службы поддерживают его.</string>
+    <string name="cam_strings_file_share_title_txt">Обмен</string>
+    <string name="cam_strings_flash_fill_flash_txt">Заполняющая вспышка</string>
+    <string name="cam_strings_flash_night_portrait_hint_txt">Постарайтесь не трясти устройство</string>
+    <string name="cam_strings_flash_night_portrait_txt">Вспышка ночн. портрета</string>
+    <string name="cam_strings_flash_pro_txt">Режим вспышки</string>
+    <string name="cam_strings_flash_red_eye_reduc_txt">Устранение красных глаз</string>
+    <string name="cam_strings_flash_title_txt">Вспышка</string>
+    <string name="cam_strings_flash_torch_txt">Фонарь</string>
+    <string name="cam_strings_flash_txt">Вспышка</string>
+    <string name="cam_strings_focus_af_c_txt">Непрерывный AF</string>
+    <string name="cam_strings_focus_af_s_txt">Покадровый AF</string>
+    <string name="cam_strings_focus_mf_txt">Ручной фокус</string>
+    <string name="cam_strings_focus_mode_face_detection_txt">Распознавание лиц</string>
+    <string name="cam_strings_focus_mode_infinity_txt">Бесконечность</string>
+    <string name="cam_strings_focus_mode_macro_txt">Макро</string>
+    <string name="cam_strings_focus_mode_multi_af_txt">Мультиавтофокусировка</string>
+    <string name="cam_strings_focus_mode_object_tracking_txt">Слежение за объектом</string>
+    <string name="cam_strings_focus_mode_single_af_txt">Одиночная AF</string>
+    <string name="cam_strings_focus_mode_title_txt">Режим фокусировки</string>
+    <string name="cam_strings_focus_mode_touch_focus_txt">Сенсорная фокусировка</string>
+    <string name="cam_strings_focus_mode_txt">Режим фокусировки</string>
+    <string name="cam_strings_forced_change_flash_off_txt">Режим вспышки выключен для использования Ночной съемки</string>
+    <string name="cam_strings_forced_change_night_shooting_auto_txt">Ночная съемка в режиме Авто для использования Режима вспышки</string>
+    <string name="cam_strings_front_cam_location_guide_txt">Объектив камеры расположен, как показано на рисунке</string>
+    <string name="cam_strings_fusion_error_too_close_txt">Отойдите подальше от объекта</string>
+    <string name="cam_strings_fusion_on_txt">Ультрачувствительность</string>
+    <string name="cam_strings_fusion_setting_txt">Переключить двойной объектив</string>
+    <string name="cam_strings_geotagging_title_txt">Сохранить геоданные</string>
+    <string name="cam_strings_geotagging_txt">Сохранить геоданные</string>
+    <string name="cam_strings_get_more_modes_txt">Приложения</string>
+    <string name="cam_strings_global_setting_softskin_available_applications_txt">Доступные приложения</string>
+    <string name="cam_strings_global_setting_softskin_brighten_skin_txt">Сияющая кожа</string>
+    <string name="cam_strings_global_setting_softskin_detail_txt">Ваша кожа становится гладкой и сияет. Эффект доступен в приложениях с использованием фронтальной камеры. Его можно применять на фотографиях и видеозаписях, а также регулировать степень выраженности.</string>
+    <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Регулировка уровня</string>
+    <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Гладкая кожа</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Не удается запустить приложение.
+Убедитесь, что на устройстве установлена и включена последняя версия %1$s."</string>
+    <string name="cam_strings_gridline_txt">Линии сетки</string>
+    <string name="cam_strings_hand_shutter_hint_detail_txt">Разверните руку ладонью к камере. Автоматический таймер активируется после распознавания руки. Для более точного распознавания вытяните пальцы вверх.</string>
+    <string name="cam_strings_hand_shutter_hint_txt">Разверните руку ладонью к камере</string>
+    <string name="cam_strings_hand_shutter_txt">Спуск затвора движ. руки</string>
+    <string name="cam_strings_hdr_dro_settings_dro_txt">Оптимизатор динам. диапазона</string>
+    <string name="cam_strings_hdr_dro_settings_hdr_txt">Авто HDR</string>
+    <string name="cam_strings_hdr_dro_settings_txt">DRO/Авто HDR</string>
+    <string name="cam_strings_hdr_guide_txt">Поскольку функция Still HDR требует съемки и сложения двух изображений одной и той же сцены, она подходит только для неподвижных объектов.</string>
+    <string name="cam_strings_hdr_title_txt">HDR</string>
+    <string name="cam_strings_hdr_txt">HDR</string>
+    <string name="cam_strings_help_txt">Справка</string>
+    <string name="cam_strings_histogram_txt">Гистограмма</string>
+    <string name="cam_strings_iburst_feedback_txt">Захват</string>
+    <string name="cam_strings_image_quality_control_button_cancel_txt">Отмена</string>
+    <string name="cam_strings_image_quality_control_button_clear_txt">Удалить</string>
+    <string name="cam_strings_image_quality_control_button_reset_txt">Сброс</string>
+    <string name="cam_strings_image_quality_control_tab_focus_txt">Фокус</string>
+    <string name="cam_strings_image_size_txt">Размер фотоснимка</string>
+    <string name="cam_strings_image_stabilizer_title_txt">Стабилизатор изображения</string>
+    <string name="cam_strings_image_stabilizer_txt">Стабилизатор изображения</string>
+    <string name="cam_strings_intelligent_burst_txt">Предиктивная съёмка</string>
+    <string name="cam_strings_intelligent_wind_filter_txt">Интеллект-й фильтр шума ветра</string>
+    <string name="cam_strings_iso_changed_txt">Значение ISO было изменено</string>
+    <string name="cam_strings_launch_with_camera_key_txt">Запуск кнопкой затвора</string>
+    <string name="cam_strings_lens_correction_for_photo_description_added_txt">Примечание. Коррекция искажений отключена при съемке фото серии.</string>
+    <string name="cam_strings_lens_correction_for_photo_description_txt">При использовании сверхширокоугольного объектива можно задать приоритет. Параметр \"Приоритет качества изображения\" позволяет делать динамичные высококачественные снимки, а параметр \"Приоритет коррекции искажений\" – сократить визуальные искажения.</string>
+    <string name="cam_strings_lens_correction_for_photo_nosuperwidemode_txt">Коррекция дист.сверх. объек. (фото)</string>
+    <string name="cam_strings_lens_correction_for_photo_pro_txt">Коррекция дисторсии сверх. объек.</string>
+    <string name="cam_strings_lens_correction_for_photo_txt">Коррекция дисторсии (фото)</string>
+    <string name="cam_strings_lens_correction_off_txt">Приоритет качества изображения</string>
+    <string name="cam_strings_lens_correction_on_txt">Приоритет коррекции искажений</string>
+    <string name="cam_strings_lens_correction_txt">Коррекция дисторсии</string>
+    <string name="cam_strings_lens_switch">Переключить угол объектива</string>
+    <string name="cam_strings_level_meter_calibration_txt">Калибровка уровня</string>
+    <string name="cam_strings_level_pro_txt">Уровень</string>
+    <string name="cam_strings_level_txt">Уровень</string>
+    <string name="cam_strings_long_press_burst_best_txt">Стандартная</string>
+    <string name="cam_strings_long_press_burst_high_txt">Высокоскоростная</string>
+    <string name="cam_strings_long_press_burst_txt">Серия фото удержанием</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_title_txt">Фотосъемка двойной камерой</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_txt">При фотосъемке двойной камерой расположитесь как минимум в метре от объекта. При более близком расположении точка съемки или цвет могут измениться.</string>
+    <string name="cam_strings_manual_fusion_tutorial_title_txt">Переключение двойной камеры</string>
+    <string name="cam_strings_manual_fusion_tutorial_txt">Двойную камеру можно включать и выключать в ручном режиме. Включите ее, чтобы делать фотографии с низким уровнем шума при слабом освящении. Выключите для съемки крупным планом.</string>
+    <string name="cam_strings_max_file_size_save_failed_txt">Запись остановлена, так как размер файла превысил ограничения</string>
+    <string name="cam_strings_max_recording_time_save_failed_txt">Запись остановлена, достигнуто максимальное время записи</string>
+    <string name="cam_strings_memory_full_save_failed_txt">Невозможно сохранить. Память заполнена.</string>
+    <string name="cam_strings_memory_full_zoom_not_supported_txt">Память переполнена. Невозможно изменить размер изображения.</string>
+    <string name="cam_strings_metering_multi_cy_txt">Мульти</string>
+    <string name="cam_strings_mf_assist_txt">Помощь для MF</string>
+    <string name="cam_strings_mfnr_txt">Мультикадр с шумопонижением</string>
+    <string name="cam_strings_microphone_title_txt">Микрофон</string>
+    <string name="cam_strings_modeselector_addon_installed_txt">Установка завершена</string>
+    <string name="cam_strings_monochrome_photo_txt">Фотография ЧБ</string>
+    <string name="cam_strings_monochrome_title_txt">ЧБ</string>
+    <string name="cam_strings_monochrome_video_txt">Видео ЧБ</string>
+    <string name="cam_strings_more_common_setting_title_txt">Общие параметры</string>
+    <string name="cam_strings_more_txt">Ещё</string>
+    <string name="cam_strings_mr_txt">Зарег. в вызове из памяти %d</string>
+    <string name="cam_strings_multi_window_txt">Перетащите центр разделителя, чтобы перейти в полноэкранный режим и использовать %1$s</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Подключено другое устройство.
+Поделиться с устройством изображением в видоискателе?"</string>
+    <string name="cam_strings_multicam_add_device_txt">Добавить</string>
+    <string name="cam_strings_multicam_add_more_txt">Добавить еще</string>
+    <string name="cam_strings_multicam_apply_txt">Готово</string>
+    <string name="cam_strings_multicam_connection_failure_dialog_txt">Не удалось подключить</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Невозможно подключить к камере Sony Wi-Fi/NFC, когда ваше устройство Xperia подключено к другому устройству Xperia.</string>
+    <string name="cam_strings_multicam_error_app_ver_old_txt">Несоответствующая версия приложения. Невозможно подключить. Необходимо обновить приложение.</string>
+    <string name="cam_strings_multicam_error_disconnect_txt">Отключено</string>
+    <string name="cam_strings_multicam_error_nfc_txt">Невозможно запустить, если функция NFC заблокирована.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">Этот режим недоступен в режиме модема Wi-Fi.</string>
+    <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">Добавлено макс. число устройств.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">К Xperia можно одновременно подключить только одну камеру Sony Wi-Fi/NFC.</string>
+    <string name="cam_strings_multicam_nfc_connect_title_txt">Соприкосните устройства друг с другом</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Камера Sony Wi-Fi/NFC</string>
+    <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
+    <string name="cam_strings_multicam_nfc_touch_to_beam_title_txt">Коснитесь экрана</string>
+    <string name="cam_strings_multicam_security_info_txt">Если устройство, к которому вы подключаетесь, также подключено к другим устройствам Xperia через это приложение, ваше устройство Xperia будет автоматически подключено к этим устройствам и будет передавать изображение в видоискателе Xperia на все подключенные устройства.</string>
+    <string name="cam_strings_multicam_touch_add_camera_desc_txt">Добавьте устройство. Окно его видоискателя появится здесь.</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Невозможно подключить к другому устройству Xperia, когда ваше устройство Xperia подключено к камере Sony Wi-Fi/NFC.</string>
+    <string name="cam_strings_night_mode_hint_txt">Ночной режим</string>
+    <string name="cam_strings_night_shooting_hint_txt">Ночная съемка</string>
+    <string name="cam_strings_not_zoom_for_full_hd_60fps_video_txt">Зум менее 1x недоступен для формата Full HD (60 кадр./с)</string>
+    <string name="cam_strings_not_zoom_txt">Зум менее 1x недоступен для форматов 4K и Full HD (60 кадр./с)</string>
+    <string name="cam_strings_ok_txt">ОК</string>
+    <string name="cam_strings_only_main_txt">Только осн. камера</string>
+    <string name="cam_strings_peaking_display_txt">Отобразить выделение контуров</string>
+    <string name="cam_strings_permgroupdesc_thermalmitigation_message_txt">Разрешить приложению управлять системой для стабильной съемки в зависимости от температуры устройства.</string>
+    <string name="cam_strings_permgrouplab_thermalmitigation_txt">управление системой</string>
+    <string name="cam_strings_photo_autoreview_txt">Автопросмотр фото</string>
+    <string name="cam_strings_photometry_average_txt">Средний уровень</string>
+    <string name="cam_strings_photometry_center_txt">Центр</string>
+    <string name="cam_strings_photometry_face_txt">Лицо</string>
+    <string name="cam_strings_photometry_pro_txt">Режим измерения</string>
+    <string name="cam_strings_photometry_spot_txt">Точка</string>
+    <string name="cam_strings_photometry_title_txt">Измерение</string>
+    <string name="cam_strings_photometry_touch_txt">Коснитесь</string>
+    <string name="cam_strings_photometry_txt">Измерение</string>
+    <string name="cam_strings_pleaking_color_txt">Цвет выделения контуров</string>
+    <string name="cam_strings_preaf_txt">Предварительный AF</string>
+    <string name="cam_strings_predictive_capture_description_txt">Снимки делаются автоматически при обнаружении улыбки или движения объекта за мгновение до спуска затвора. Возможность выбрать самый удачный кадр из четырех снимков гарантирует, что вы не упустите идеальный момент.</string>
+    <string name="cam_strings_predictive_capture_feedback_txt">Захват</string>
+    <string name="cam_strings_predictive_capture_txt">Предиктивная съёмка</string>
+    <string name="cam_strings_predictive_launch_description_txt">Можно автоматически запустить камеру, быстро подняв устройство в альбомной ориентации и наведя камеру на объект.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Камера была запущена автоматически после того, как телефон перемещен в альбомную ориентацию и направлен на объект.
+Можно выбрать способ использования данной функции в разделе параметров камеры \"Интел. запуск\"."</string>
+    <string name="cam_strings_predictive_launch_guide_2_txt">Коснитесь круга для съемки</string>
+    <string name="cam_strings_predictive_launch_guide_3_txt">Коснитесь экрана для съемки</string>
+    <string name="cam_strings_predictive_launch_guide_circle_txt">Нажмите внутри круга для просмотра на весь экран</string>
+    <string name="cam_strings_predictive_launch_guide_txt">Для запуска камеры коснитесь внутри круга</string>
+    <string name="cam_strings_predictive_launch_launch_and_capture_txt">Запуск и съемка касанием</string>
+    <string name="cam_strings_predictive_launch_launch_only_txt">Коснитесь для запуска</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_and_capture_txt">Коснитесь круга, чтобы открыть камеру на весь экран и сразу сделать снимок.</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_only_txt">Коснитесь круга, чтобы открыть камеру на весь экран.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Возможен быстрый запуск камеры. Быстро переверните устройство в альбомную ориентацию и направьте камеру на объект. Она запустится автоматически.
+Функцию можно отключить в разделе \"Интеллектуальный запуск\" настроек камеры."</string>
+    <string name="cam_strings_predictive_launch_tutorial_title_txt">Интел. запуск</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Возможен быстрый запуск камеры. Переверните устройство в альбомную ориентацию и направьте камеру на объект. Она запустится автоматически.
+Функцию можно отключить в разделе \"Интеллектуальный запуск\" настроек камеры."</string>
+    <string name="cam_strings_predictive_launch_txt">Интеллектуальный запуск</string>
+    <string name="cam_strings_preview_always_txt">Включить</string>
+    <string name="cam_strings_preview_duration_3sec_txt">3 секунды</string>
+    <string name="cam_strings_preview_duration_5sec_txt">5 секунд</string>
+    <string name="cam_strings_preview_duration_title_txt">Просмотр</string>
+    <string name="cam_strings_preview_duration_txt">Просмотр</string>
+    <string name="cam_strings_preview_duration_unlimited_txt">Неогранич.</string>
+    <string name="cam_strings_preview_edit_txt">Редактировать</string>
+    <string name="cam_strings_preview_only_front_txt">Только фронт. камера</string>
+    <string name="cam_strings_previous_txt">Назад</string>
+    <string name="cam_strings_processing_capturing_photo_txt">Идет съемка. Подождите.</string>
+    <string name="cam_strings_processing_loading_txt">Идет съемка. Держите камеру неподвижно.</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Коснитесь, чтобы настроить это устройство</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Этот QR Code не поддерживается</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Коснитесь и откр. \"%1$s\" в браузере</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Не удается подключиться к этой сети Wi-Fi</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Коснитесь для подкл. к Wi-Fi %1$s</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Средство чтения QR Code</string>
+    <string name="cam_strings_recommend_night_mode_txt">Коснитесь тут, чтобы использовать Ночной режим</string>
+    <string name="cam_strings_recommend_night_mode_use_button_txt">Использ.</string>
+    <string name="cam_strings_recommend_night_shooting_txt">Коснитесь тут, чтобы использовать Ночную съемку</string>
+    <string name="cam_strings_recording_txt">ЗАПИСЬ</string>
+    <string name="cam_strings_remember_geotag_title_txt">Сохранить геоданные?</string>
+    <string name="cam_strings_remember_geotag_txt">Указывайте место съемки, добавляя к фотографиям и видеозаписям геометки. Эту настройку можно изменить позже в разделе \"Сохранить геоданные\" в настройках камеры.</string>
+    <string name="cam_strings_remote_touch_to_start_txt">Коснитесь для запуска</string>
+    <string name="cam_strings_reset_color_brightness_txt">Сбросить цвет и яркость</string>
+    <string name="cam_strings_reset_settings_confirm_title_txt">Восстановить параметры камеры по умолчанию?</string>
+    <string name="cam_strings_reset_settings_txt">Сбросить настройки</string>
+    <string name="cam_strings_reset_txt">Сброс</string>
+    <string name="cam_strings_resolution_title_txt">Разрешение</string>
+    <string name="cam_strings_resolution_txt">Разрешение</string>
+    <string name="cam_strings_restricted_mf_touchfocus_txt">Сенс. фокусировка доступна при включении автофокуса</string>
+    <string name="cam_strings_restricted_setting_dialog_title_txt">Невозможно изменить</string>
+    <string name="cam_strings_restricted_setting_photo_long_shutter_speed_txt">Данный параметр не поддерживает текущую скорость затвора. Для настройки параметра установите скорость затвора не более 1 секунды.</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_or_scene_txt">Данный параметр недоступен для текущего разрешения или сцены. Чтобы сделать его доступным, выберите другое разрешение или сцену.</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_txt">Данный параметр не поддерживает текущий размер фотоснимка. Чтобы настроить параметр, измените размер.</string>
+    <string name="cam_strings_restricted_setting_scene_txt">Данный параметр недоступен для текущей сцены. Чтобы сделать его доступным, выберите другую сцену.</string>
+    <string name="cam_strings_restricted_setting_slow_motion_txt">Невозможно изменить размер видео в режиме замедленной съемки. Чтобы настроить этот параметр, выйдите из режима замедленной съемки.</string>
+    <string name="cam_strings_restricted_setting_transfer_and_tagging_txt">Данный параметр недоступен, когда включен режим Transfer &amp; Tagging add-on. Для изменения данного параметра выключите режим Transfer &amp; Tagging add-on.</string>
+    <string name="cam_strings_restricted_setting_video_hdr_hlg_txt">Настройка недоступна, если включена функция HDR. Для выполнения настройки отключите HDR.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_or_scene_txt">Данный параметр недоступен для текущего разрешения видео или сцены. Чтобы сделать его доступным, выберите другое разрешение видео или сцену.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_txt">Данный параметр недоступен для текущего размера видео. Чтобы сделать его доступным, измените размер видео.</string>
+    <string name="cam_strings_restriction_info_correction_for_distortion_txt">Коррекция дисторсии недоступна при использовании эффекта Боке</string>
+    <string name="cam_strings_restriction_information_txt">Изменение этого параметра приводит к автоматическому отключению или изменению настроек следующих функций:</string>
+    <string name="cam_strings_runtime_permission_continue_button_txt">О ПРИЛОЖЕНИИ</string>
+    <string name="cam_strings_runtime_permission_dialog1_message_txt">Приложению %1$s необходимо предоставить следующие разрешения</string>
+    <string name="cam_strings_runtime_permission_dialog1_title_txt">Разрешения для приложения %1$s</string>
+    <string name="cam_strings_runtime_permission_dialog2_message1_txt">Чтобы выполнить это действие, приложению необходимо предоставить следующие разрешения.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Для настройки разрешений перейдите к разделу \"О приложении\" > \"Разрешения\".</string>
+    <string name="cam_strings_runtime_permission_dialog2_title_txt">Невозможно продолжить</string>
+    <string name="cam_strings_runtime_permission_rationale_camera_txt">Фото- и видеосъемка</string>
+    <string name="cam_strings_runtime_permission_rationale_location_txt">Получение данных о местоположении</string>
+    <string name="cam_strings_runtime_permission_rationale_microphone_txt">Запись звука</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_cta_txt">Чтение и сохранение фотографий и видео</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_txt">Сохранение фотографий и видео</string>
+    <string name="cam_strings_s1_settings_txt">AF с затвором</string>
+    <string name="cam_strings_save_destination_ims_txt">Внутренний накопитель</string>
+    <string name="cam_strings_save_destination_sd_txt">SD-карта</string>
+    <string name="cam_strings_save_destination_title_txt">Хранилище данных</string>
+    <string name="cam_strings_save_destination_txt">Хранилище данных</string>
+    <string name="cam_strings_saving_files_txt">Сохранение файлов</string>
+    <string name="cam_strings_scene_selection_title_cy_txt">Выбор сцены</string>
+    <string name="cam_strings_scenes_anti_motion_blur_cy_txt">Сглаживание размытости</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_portrait_cy_txt">Портрет с подсветкой</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_txt">Подсветка</string>
+    <string name="cam_strings_scenes_auto_recog_gourmet_txt">Еда</string>
+    <string name="cam_strings_scenes_auto_recog_infant_cy_txt">Ребенок</string>
+    <string name="cam_strings_scenes_auto_recog_landscape_txt">Ландшафт</string>
+    <string name="cam_strings_scenes_auto_recog_low_light_cy_txt">Низкая освещенность</string>
+    <string name="cam_strings_scenes_auto_recog_softsnap_cy_txt">Моментальный снимок</string>
+    <string name="cam_strings_scenes_auto_recog_spotlight_cy_txt">Прожектор</string>
+    <string name="cam_strings_scenes_auto_recog_text_txt">Документ</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_portrait_cy_txt">Ночной портрет</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_txt">Ночная сцена</string>
+    <string name="cam_strings_scenes_backlight_hdr_cy_txt">HDR-коррекция контр. света</string>
+    <string name="cam_strings_scenes_beach_cy_txt">Пляж</string>
+    <string name="cam_strings_scenes_beachsnow_txt">Пляж и снег</string>
+    <string name="cam_strings_scenes_document_txt">Документ</string>
+    <string name="cam_strings_scenes_fireworks_cy_txt">Фейерверки</string>
+    <string name="cam_strings_scenes_gurumet_cy_txt">Еда</string>
+    <string name="cam_strings_scenes_handheld_twilight_cy_txt">Сумерки с рук</string>
+    <string name="cam_strings_scenes_high_sensitivity_cy_txt">Высокая чувствительн.</string>
+    <string name="cam_strings_scenes_landscape_txt">Ландшафт</string>
+    <string name="cam_strings_scenes_nightmode_txt">Ночной режим</string>
+    <string name="cam_strings_scenes_nightportrait_cy_txt">Ночной портрет</string>
+    <string name="cam_strings_scenes_nightscene_txt">Ночная сцена</string>
+    <string name="cam_strings_scenes_party_txt">Вечеринка</string>
+    <string name="cam_strings_scenes_pet_cy_txt">Домашнее животное</string>
+    <string name="cam_strings_scenes_pets_txt">Домашние животные</string>
+    <string name="cam_strings_scenes_snow_cy_txt">Снег</string>
+    <string name="cam_strings_scenes_soft_skin_cy_txt">Гладкая кожа</string>
+    <string name="cam_strings_scenes_soft_snap_cy_txt">Моментальный снимок</string>
+    <string name="cam_strings_scenes_sports_txt">Спорт</string>
+    <string name="cam_strings_scenes_txt">Условия съемки</string>
+    <string name="cam_strings_screen_pinned_txt">Экран закреплен</string>
+    <string name="cam_strings_sd_permission_data_storage_info_txt">Сохранено на внутренний накопитель</string>
+    <string name="cam_strings_sd_permission_dialog_continue_button_txt">ПЕРЕЙТИ</string>
+    <string name="cam_strings_sd_permission_dialog_message1_txt">Чтобы выполнить это действие, приложению необходимо предоставить следующие разрешения.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Для использования SD-карты необходимо предоставить камере разрешение на доступ к ней.
+Снова выберите SD-карту в качестве хранилища данных или перейдите на следующий экран и предоставьте разрешения."</string>
+    <string name="cam_strings_sd_permission_dialog_title_txt">SD-карта недоступна</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Обнаружена новая SD-карта, для которой требуются разрешения.
+
+Чтобы использовать SD-карту для хранения данных, выберите на следующем экране эту SD-карту или папку DCIM."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Не выбрана SD-карта или папка DCIM. Невозможно использовать SD-карту.
+
+Чтобы предоставить разрешения, выберите в качестве пути для сохранения SD-карту или задайте подходящую папку на следующем экране."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Найдена новая SD-карта, для которой требуются разрешения.
+По этой причине внутренний накопитель устройства будет использован как хранилище данных по умолчанию.
+
+Для использования SD-карты в качестве хранилища данных задайте ее как хранилище в настройках камеры."</string>
+    <string name="cam_strings_sd_permission_rationale_txt">Сохранение фото и видео на SD-карту</string>
+    <string name="cam_strings_select_picture_txt">Выбор фотографии</string>
+    <string name="cam_strings_self_timer_05_txt">0,5 с</string>
+    <string name="cam_strings_self_timer_10_pro_txt">Таймер: 10 с</string>
+    <string name="cam_strings_self_timer_10_txt">10 с</string>
+    <string name="cam_strings_self_timer_2_txt">2 с</string>
+    <string name="cam_strings_self_timer_3_pro_txt">Таймер: 3 с</string>
+    <string name="cam_strings_self_timer_3_txt">3 с</string>
+    <string name="cam_strings_self_timer_front_hint_10_txt">Таймер авт. съемки: 10 сек.</string>
+    <string name="cam_strings_self_timer_front_hint_3_txt">Таймер авт. съемки: 3 сек.</string>
+    <string name="cam_strings_self_timer_front_hint_off_txt">Таймер авт. съемки: выкл.</string>
+    <string name="cam_strings_self_timer_hint_countdown_txt">Смотрите в объектив камеры</string>
+    <string name="cam_strings_self_timer_photo_txt">Автотаймер (статические изобр.)</string>
+    <string name="cam_strings_self_timer_txt">Таймер авт. съемки</string>
+    <string name="cam_strings_setting_common_title_txt">Стандартные</string>
+    <string name="cam_strings_setting_front_manual_title_txt">Вручную (фронтальная камера)</string>
+    <string name="cam_strings_setting_front_photo_title_txt">Фото (фронтальная камера)</string>
+    <string name="cam_strings_setting_front_video_title_txt">Видео (фронтальная камера)</string>
+    <string name="cam_strings_setting_main_title_txt">Параметры камеры</string>
+    <string name="cam_strings_setting_manual_title_txt">Вручную</string>
+    <string name="cam_strings_setting_night_mode_title_txt">Парам. Ночного режима</string>
+    <string name="cam_strings_setting_night_shooting_title_txt">Настройки ночной съемки</string>
+    <string name="cam_strings_setting_photo_title_txt">Фото</string>
+    <string name="cam_strings_setting_slow_motion_title_txt">Замедленная съемка</string>
+    <string name="cam_strings_setting_tele_title_txt">Фотография (телеобъектив)</string>
+    <string name="cam_strings_setting_tele_video_title_txt">Видео (телеобъектив)</string>
+    <string name="cam_strings_setting_video_title_txt">Видео</string>
+    <string name="cam_strings_setting_wide_title_txt">Фото (сверхширокоугольное)</string>
+    <string name="cam_strings_setting_wide_video_title_txt">Видео (сверхширокоугольное)</string>
+    <string name="cam_strings_settings_always_on_txt">Всегда включено</string>
+    <string name="cam_strings_settings_auto_txt">Авто</string>
+    <string name="cam_strings_settings_off_txt">Выключить</string>
+    <string name="cam_strings_settings_on_txt">Включить</string>
+    <string name="cam_strings_settings_save_photos_all_txt">Все фотографии</string>
+    <string name="cam_strings_settings_save_photos_one_txt">Выбранная фотография</string>
+    <string name="cam_strings_settings_save_photos_txt">Сохранение</string>
+    <string name="cam_strings_shortcut_video_camera_txt">Видеокамера</string>
+    <string name="cam_strings_shutter_trigger_txt">Автозахват</string>
+    <string name="cam_strings_side_sense_bar_description_txt">"Вместо кнопки \"Затвор\" для создания фотографий и съемки видео можно использовать двойное нажатие на датчик сбоку экрана.
+Эта функция поддерживается в режиме фото и ручном режиме.
+Функция недоступна, если в меню параметров Side sense \"Настроить место нажатия\" выбран параметр \"Использовать на внутреннем крае\"."</string>
+    <string name="cam_strings_side_sense_description_txt">"Делать фотографию можно не только кнопкой \"затвор\", но и двойным нажатием на сканер на боковой части экрана.
+Эта функция поддерживает создание фотографий и запись видео."</string>
+    <string name="cam_strings_side_touch_not_supported_txt">Side sense не поддерживается на этом экране</string>
+    <string name="cam_strings_side_touch_on_title_txt">Side sense</string>
+    <string name="cam_strings_side_touch_on_txt">Для использования функции перейдите в раздел \"Настройки\" > \"Экран\" и включите Side sense. Включить?</string>
+    <string name="cam_strings_side_touch_tutorial_title_txt">Side sense</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Снимайте фотографии и видео с помощью двойного касания сканера на боковой части экрана вместо кнопки затвора. Кроме того, можно приближать и удалять объект съемки, проводя пальцем по сканеру на боковой части.
+Режимы фото- и видеосъемки поддерживают эту функцию. Ее можно выключить в разделе Side sense настроек камеры."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Снимайте фотографии и видео с помощью двойного касания сканера на боковой части экрана в книжной ориентации вместо кнопки затвора. Кроме того, можно приближать и удалять объект съемки, проводя пальцем сканеру на боковой части.
+Режимы фото- и видеосъемки поддерживают эту функцию. Ее можно выключить в разделе Side sense настроек камеры."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Снимайте фотографии и видео двойным касанием сканера на боковой части экрана в книжной ориентации вместо касания кнопки затвора. Приближайте или удаляйте объект съемки, проводя пальцем по сканеру на боковой части устройства.
+Режимы фото- и видеосъемки поддерживают эту функцию. Ее можно отключить в разделе сканера на боковой части настроек камеры."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Снимайте фотографии и видео с помощью двойного касания на боковой части экрана вместо касания кнопки затвора. Кроме того, приближайте или удаляйте объект съемки, проводя пальцем по боковой части устройства.
+Режимы фото- и видеосъемки поддерживают эту функцию. Ее можно отключить в разделе Side sense настроек камеры."</string>
+    <string name="cam_strings_side_touch_txt">Side sense</string>
+    <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Стиль записи и разрешение экрана можно изменить в настройках камеры</string>
+    <string name="cam_strings_slow_motion_settings_shot_txt">Сверхмедленно (один снимок)</string>
+    <string name="cam_strings_slow_motion_settings_standard_txt">Замедленная съемка</string>
+    <string name="cam_strings_slow_motion_settings_super_txt">Сверхзамедленная съемка</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Можно изменить количество кадров/с и стиль записи для замедленной съемки</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Другие функции</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Коснитесь кнопки в центре экрана, чтобы записать важный момент с частотой %1$s кадров/с в режиме замедленной съемки.
+Яркий свет улучшает качество видео."</string>
+    <string name="cam_strings_slow_motion_shot_hint_1_txt">Коснитесь кнопки, чтобы записать момент с частотой %1$s кадров/с</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Коснитесь кнопки в центре экрана, чтобы моментально записать важный момент с частотой %1$s кадров/с в режиме замедл. съемки</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Сверхзамедленная съемка (один кадр)</string>
+    <string name="cam_strings_slow_motion_shot_txt">Сверхзамедл. съемка (один кадр)</string>
+    <string name="cam_strings_slow_motion_standard_hint_1_txt">Запись видео с частотой %1$s кадров/с и эффекты замедления</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_1_txt">Можно записывать видео в замедленной съемке (120 кадров/с)</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_2_txt">Запишите видео и измените его для замедления отдельных фрагментов. Коснитесь кнопки в центре экрана, чтобы задать фрагменты.</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Замедленная съемка</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Как записать видео</string>
+    <string name="cam_strings_slow_motion_standard_txt">Замедленная съемка</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Снимайте видео и делитесь лучшими моментами с замедленной съемкой.
+Съемка при ярком свете позволяет улучшить качество видео."</string>
+    <string name="cam_strings_slow_motion_super_hint_1_txt">Можно изменять скорость видео, переключившись на %1$s кадров/с</string>
+    <string name="cam_strings_slow_motion_super_hint_2_txt">Коснитесь кнопки в центре для записи</string>
+    <string name="cam_strings_slow_motion_super_hint_3_txt">Замедленная съемка завершена</string>
+    <string name="cam_strings_slow_motion_super_tutorial_1_txt">Снимайте видео и делитесь лучшими моментами с замедленной съемкой</string>
+    <string name="cam_strings_slow_motion_super_tutorial_2_txt">Коснитесь кнопки записи, чтобы начать съемку</string>
+    <string name="cam_strings_slow_motion_super_tutorial_3_txt">Нажмите кнопку в центре экрана для записи в режиме замедленной съемки. Чтобы остановить запись, нажмите кнопку остановки.</string>
+    <string name="cam_strings_slow_motion_super_tutorial_title_1_txt">Сверхзамедленная съемка</string>
+    <string name="cam_strings_slow_motion_super_txt">Сверхзамедленная съемка</string>
+    <string name="cam_strings_slow_motion_txt">Замедл. съемка</string>
+    <string name="cam_strings_smile_capture_big_txt">Большая улыбка</string>
+    <string name="cam_strings_smile_capture_faint_txt">Маленькая улыбка</string>
+    <string name="cam_strings_smile_capture_normal_txt">Средняя улыбка</string>
+    <string name="cam_strings_smile_capture_txt">Распознавание улыбки</string>
+    <string name="cam_strings_smile_shutter_cy_txt">Распознавание улыбки</string>
+    <string name="cam_strings_smile_shutter_title_cy_txt">Распознавание улыбки</string>
+    <string name="cam_strings_snackbar_dependency_button_txt">Сведения</string>
+    <string name="cam_strings_snackbar_dependency_info_txt">Это изменение повлияло на другие параметры</string>
+    <string name="cam_strings_soft_skin_effect_cy_txt">Эффект гладкой кожи</string>
+    <string name="cam_strings_soft_skin_effect_title_cy_txt">Эффект гладкой кожи</string>
+    <string name="cam_strings_standard_txt">Стандартное</string>
+    <string name="cam_strings_steadyshot_cy_txt">SteadyShot™</string>
+    <string name="cam_strings_step_tutorial_title_txt">Шаг %1$s из %2$s</string>
+    <string name="cam_strings_store_fail_txt">Невозможно сохранить</string>
+    <string name="cam_strings_superior_auto_brightness_txt">Яркость</string>
+    <string name="cam_strings_superior_auto_color_txt">Цвет</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_title_txt">Двойная камера</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_txt">С помощью двойной камеры можно делать великолепные фотографии с низким уровнем шума даже ночью или при слабом освещении. Автоматическое переключение между одинарной и двойной камерой выполняется в зависимости от сцены для съемки с ультрачувствительностью.</string>
+    <string name="cam_strings_sw_licence_title_txt">Лицензии на ПО</string>
+    <string name="cam_strings_take_photo_txt">Сфотографировать</string>
+    <string name="cam_strings_term_of_use_accept_txt">Принять</string>
+    <string name="cam_strings_term_of_use_consent_txt">Я принимаю &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Условия использования&lt;/a> Sony.</string>
+    <string name="cam_strings_term_of_use_data_charge_txt">При использовании услуги может взиматься плата за передачу мобильных данных, размер которой зависит от вашего тарифного плана.</string>
+    <string name="cam_strings_term_of_use_data_collection_txt">К информации, которую собирает Sony, относятся хэшированный уникальный идентификатор устройства Android, данные о местоположении и метка времени. Эти данные позволят улучшить обслуживание.</string>
+    <string name="cam_strings_term_of_use_decline_txt">Отклонить</string>
+    <string name="cam_strings_term_of_use_title_txt">Положения и условия</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Условия использования&lt;/a></string>
+    <string name="cam_strings_timeshift_cancel_selection_txt">Отменить выбор фотографий</string>
+    <string name="cam_strings_timeshift_operation_failed_txt">Не удалось сохранить</string>
+    <string name="cam_strings_timeshift_save_complete_txt">Сохранено</string>
+    <string name="cam_strings_timeshift_save_selection_txt">Сохранить отдельно</string>
+    <string name="cam_strings_timeshift_select_images_txt">Выбрать фотографии</string>
+    <string name="cam_strings_timeshift_share_txt">Обмен</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Подключено к %1$s</string>
+    <string name="cam_strings_touch_capturing_always_txt">Включить</string>
+    <string name="cam_strings_touch_capturing_only_front_txt">Только фронт. камера</string>
+    <string name="cam_strings_touch_capturing_title_txt">Съемка касанием</string>
+    <string name="cam_strings_touch_focus_in_manual_focus_txt">Для использования сенсорной фокусировки задайте в качестве параметра фокусировки автофокусировку.</string>
+    <string name="cam_strings_touch_to_adjust_description_txt">Выберите параметры, настраиваемые касанием видоискателя</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_focus_and_exposure_txt">Яркость и фокус</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_only_focus_txt">Только фокус</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_txt">Коснитесь для настройки</string>
+    <string name="cam_strings_transfer_and_tagging_description_txt">"Включение данной функции позволит надстройке Transfer &amp; Tagging add-on отображать фотографии камеры Xperia. Фотографии будут сохранены на внутреннем накопителе.
+Данная функция совместима с фотографиями, которые были сделаны в режиме фотографии и ручном режиме."</string>
+    <string name="cam_strings_transfer_and_tagging_txt">Режим Transfer &amp; Tagging add-on</string>
+    <string name="cam_strings_tutorial_bright_place_txt">Съемка при ярком свете позволяет улучшить качество видео</string>
+    <string name="cam_strings_tutorial_button_next_txt">След.</string>
+    <string name="cam_strings_tutorial_button_skip_txt">Пропустить</string>
+    <string name="cam_strings_tutorial_button_txt">Ясно</string>
+    <string name="cam_strings_tutorial_title_txt">Перекл. режимов</string>
+    <string name="cam_strings_tutorial_txt">Для смены метода фикс. изобр. (видео или ручной) проведите пальцем по экрану</string>
+    <string name="cam_strings_unable_to_operate_txt">Недоступно во время сохранения фотографий</string>
+    <string name="cam_strings_unlock_button_txt">Разблокировать</string>
+    <string name="cam_strings_use_of_camera_not_authorized_txt">Использование камеры запрещено в целях безопасности</string>
+    <string name="cam_strings_video_backlight_correction_description_txt">Если вы включите этот параметр, вы сможете автоматически снимать видео с оптимальной экспозицией даже в условиях подсветки.</string>
+    <string name="cam_strings_video_backlight_correction_txt">Коррекция подсветки на видео</string>
+    <string name="cam_strings_video_codec_for_4k_txt">Тип файла записи</string>
+    <string name="cam_strings_video_digital_zoom_type_description_txt">"Выберите параметр цифрового видео зума.
+
+Стандартный цифровой зум: зум с использованием цифровой обработки на основе данных датчика изображений.
+Зум с высочайшим разрешением видео: зум с использованием цифровой обработки, которая сохраняет более высокое качество оригинального изображения. Сохранение видео может занять больше времени."</string>
+    <string name="cam_strings_video_digital_zoom_type_super_resolution_txt">Зум с высоч. разрешением видео</string>
+    <string name="cam_strings_video_digital_zoom_type_txt">Настройки цифрового зума</string>
+    <string name="cam_strings_video_explanatory_4k2k_setting_txt">Для стабильной записи видео 4K не рекомендуется изменять эту настройку, если используемая SD-карта не является высокоскоростной (рекомендуется класс скорости UHS 1 и выше или класс скорости 10).</string>
+    <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Для стабильной записи Timeshift Video не рекомендуется изменять эту настройку, если используемая SD-карта не является высокоскоростной (рекомендуется класс скорости UHS 1 и выше или класс скорости 10). Изменить?</string>
+    <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Для стабильной записи в режиме замедленной съемки не рекомендуется изменять эту настройку, если используемая SD-карта не является высокоскоростной (рекомендуется класс скорости UHS 1 и выше или класс скорости 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Для стабильной записи видео рекомендуется выбрать в качестве хранилища данных внутренний накопитель. Изменить?
+
+При использовании SD-карты в качестве хранилища данных необходимо убедиться, что это высокоскоростная SD-карта (рекомендуется класс скорости UHS 1 и выше или класс скорости 10)."</string>
+    <string name="cam_strings_video_fusion_tutorial_0_title_txt">Двойная камера</string>
+    <string name="cam_strings_video_fusion_tutorial_0_txt">С помощью двойной камеры можно записывать прекрасные видео с низким уровнем шума даже ночью или при слабом освещении. Автоматическое переключение между одинарной и двойной камерой выполняется в зависимости от сцены для съемки с ультрачувствительностью.</string>
+    <string name="cam_strings_video_fusion_tutorial_1_title_txt">Запись видео с помощью двойной камеры</string>
+    <string name="cam_strings_video_fusion_tutorial_1_txt">При записи видео с использованием двойной камеры держитесь на расстоянии не менее одного метра от объекта. При приближении к объекту в режиме съемки с ультрачувствительностью точка обзора может сдвигаться, а цвет меняться.</string>
+    <string name="cam_strings_video_fusion_tutorial_2_title_txt">Использовать двойную камеру для записи видео?</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">Для получения качественных фотографий крупным планом нажмите \"Нет\" и переключитесь на одинарную камеру. В любой момент можно вернуться к двойной камере, коснувшись кнопки на видоискателе.</string>
+    <string name="cam_strings_video_hdr_hlg_txt">HDR вкл.</string>
+    <string name="cam_strings_video_hdr_setting_hlg_txt">HDR</string>
+    <string name="cam_strings_video_hdr_title_txt">HDR-видео</string>
+    <string name="cam_strings_video_hdr_txt">HDR-видео</string>
+    <string name="cam_strings_video_resolution_4k_file_type_txt">Формат файла (4K)</string>
+    <string name="cam_strings_video_resolution_full_hd_16_9_60fps_txt">Full-HD (16:9, 60 кадров/с)</string>
+    <string name="cam_strings_video_resolution_full_hd_30fps_txt">Full HD (30 кадров/с)</string>
+    <string name="cam_strings_video_resolution_full_hd_60fps_txt">Full HD (60 кадров/с)</string>
+    <string name="cam_strings_video_resolution_full_hd_frame_rate_txt">Частота кадров (Full HD)</string>
+    <string name="cam_strings_video_resolution_full_hd_super_slow_desc_txt">Съемка большего пространства вдвое быстрее, чем в режиме HD.</string>
+    <string name="cam_strings_video_resolution_full_hd_txt">Full-HD</string>
+    <string name="cam_strings_video_resolution_hd_super_slow_desc_txt">Съемка меньшего пространства вдвое медленнее, чем в режиме Full HD.</string>
+    <string name="cam_strings_video_resolution_hd_txt">HD</string>
+    <string name="cam_strings_video_resolution_mms_txt">MMS</string>
+    <string name="cam_strings_video_resolution_qvga_txt">QVGA</string>
+    <string name="cam_strings_video_resolution_title_txt">Разрешение видео</string>
+    <string name="cam_strings_video_resolution_txt">Разрешение видео</string>
+    <string name="cam_strings_video_resolution_vga_txt">VGA</string>
+    <string name="cam_strings_video_shutter_trigger_txt">Автозахват (видео)</string>
+    <string name="cam_strings_video_size_4kuhd_txt">4K (QFHD)</string>
+    <string name="cam_strings_video_size_full_hd_16_9_txt">Full-HD (16:9)</string>
+    <string name="cam_strings_video_size_full_hd_21_9_txt">Full-HD (21:9)</string>
+    <string name="cam_strings_video_size_full_hd_txt">Full-HD</string>
+    <string name="cam_strings_video_size_txt">Размер видео</string>
+    <string name="cam_strings_video_smile_shutter_txt">Распознавание улыбки (видео)</string>
+    <string name="cam_strings_video_stabilizer_txt">Стабилизация видео</string>
+    <string name="cam_strings_volumekey_shutter_txt">Затвор</string>
+    <string name="cam_strings_volumekey_txt">Кнопка громкости</string>
+    <string name="cam_strings_volumekey_volume_txt">Громкость</string>
+    <string name="cam_strings_volumekey_zoom_txt">Зум</string>
+    <string name="cam_strings_white_balance_auto_txt">Авто</string>
+    <string name="cam_strings_white_balance_cloudy_txt">Облачный</string>
+    <string name="cam_strings_white_balance_day_light_txt">Дневной свет</string>
+    <string name="cam_strings_white_balance_fluorescent_txt">Флуоресцентная лампа</string>
+    <string name="cam_strings_white_balance_incandescent_txt">Лампа накаливания</string>
+    <string name="cam_strings_white_balance_title_txt">Баланс белого</string>
+    <string name="cam_strings_white_balance_txt">Баланс белого</string>
+    <string name="cam_strings_whitebalance_custom1_txt">Пользовательский 1</string>
+    <string name="cam_strings_whitebalance_custom2_txt">Пользовательский 2</string>
+    <string name="cam_strings_whitebalance_custom3_txt">Пользовательский 3</string>
+    <string name="cam_strings_whitebalance_shde_txt">Тень</string>
+    <string name="cam_strings_zoom_frames_description_txt">"Если вы включите этот параметр, вы сможете просмотреть, как это будет выглядеть при увеличении.
+Отцентрируйте объект в кадре и коснитесь коэффициента масштабирования, чтобы легко увеличить масштаб."</string>
+    <string name="cam_strings_zoom_frames_txt">Помощник по компоновке зума</string>
+    <string name="cam_strings_zoom_help_txt">Изменяйте масштаб с помощью кнопки громкости</string>
+    <string name="cam_strings_zoom_not_supported_in_bokeh_effect_txt">Не удается зумировать при использовании эффекта Боке</string>
+    <string name="cam_strings_zoom_not_supported_in_front_txt">Зумирование фронтальной камерой недоступно</string>
+    <string name="cam_strings_zoom_not_supported_in_widecam_txt">Нельзя использовать зум на сверхширокоугольном объективе</string>
+    <string name="cam_strings_zoom_not_supported_txt">Зум недоступен</string>
+    <string name="expand_button_title">Дополнительно</string>
+    <string name="photopro_strings_multi_or_popup_window_txt">Нельзя использовать камеру в режиме нескольких окон или всплывающем окне. Закройте окно и повторите попытку. В режиме нескольких окон можно перетащить центр разделителя, чтобы перевести камеру в полноэкранный режим.</string>
+    <string name="search_menu_title">Поиск</string>
+    <string name="status_bar_notification_info_overflow">>999</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="v7_preference_off">ВЫКЛ.</string>
+    <string name="v7_preference_on">ВКЛ.</string>
+</resources>

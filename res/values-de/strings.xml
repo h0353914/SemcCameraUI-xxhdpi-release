@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">Zur Startseite</string>
+    <string name="abc_action_bar_up_description">Nach oben</string>
+    <string name="abc_action_menu_overflow_description">Weitere Optionen</string>
+    <string name="abc_action_mode_done">Fertig</string>
+    <string name="abc_activity_chooser_view_see_all">Alle ansehen</string>
+    <string name="abc_activitychooserview_choose_application">App auswählen</string>
+    <string name="abc_capital_off">Aus</string>
+    <string name="abc_capital_on">An</string>
+    <string name="abc_menu_alt_shortcut_label">Alt +</string>
+    <string name="abc_menu_ctrl_shortcut_label">Strg +</string>
+    <string name="abc_menu_delete_shortcut_label">Löschen</string>
+    <string name="abc_menu_enter_shortcut_label">Eingabetaste</string>
+    <string name="abc_menu_function_shortcut_label">Funktionstaste +</string>
+    <string name="abc_menu_meta_shortcut_label">Meta-Taste +</string>
+    <string name="abc_menu_shift_shortcut_label">Umschalttaste +</string>
+    <string name="abc_menu_space_shortcut_label">Leertaste +</string>
+    <string name="abc_menu_sym_shortcut_label">Sym-Taste +</string>
+    <string name="abc_prepend_shortcut_label">Menütaste +</string>
+    <string name="abc_search_hint">Suchen…</string>
+    <string name="abc_searchview_description_clear">Suchanfrage löschen</string>
+    <string name="abc_searchview_description_query">Suchanfrage</string>
+    <string name="abc_searchview_description_search">Suchen</string>
+    <string name="abc_searchview_description_submit">Suchanfrage senden</string>
+    <string name="abc_searchview_description_voice">Sprachsuche</string>
+    <string name="abc_shareactionprovider_share_with">Freigeben für</string>
+    <string name="abc_shareactionprovider_share_with_application">Mit %s teilen</string>
+    <string name="abc_toolbar_collapse_description">Minimieren</string>
+    <string name="call_notification_answer_action">Annehmen</string>
+    <string name="call_notification_answer_video_action">Video</string>
+    <string name="call_notification_decline_action">Ablehnen</string>
+    <string name="call_notification_hang_up_action">Auflegen</string>
+    <string name="call_notification_incoming_text">Eingehender Anruf</string>
+    <string name="call_notification_ongoing_text">Aktueller Anruf</string>
+    <string name="call_notification_screening_text">Filter für eingehenden Anruf</string>
+    <string name="cam_3d_strings_creating_but_incorrect_direction_txt">Die Erfassung konnte nicht abgeschlossen werden. Bitte schwenken Sie in die richtige Richtung.</string>
+    <string name="cam_3d_strings_creating_but_too_quick_txt">Die Erfassung konnte nicht abgeschlossen werden. Bitte schwenken Sie langsamer.</string>
+    <string name="cam_3d_strings_creating_but_too_slow_txt">Die Erfassung konnte nicht abgeschlossen werden. Bitte schwenken Sie schneller.</string>
+    <string name="cam_3d_strings_description_sweep_panorama_txt">Panoramaaufnahmen durch Schwenken der Kamera</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Erstellung der folgenden Dateien:
+- Multi-Angle-Bild
+- 3D-Bild
+Hinweis: Diese Dateien enthalten einen grauen Bereich."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Erstellung der folgenden Dateien: 
+- Multi-Angle-Bild 
+- 3D-Bild"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Verarbeitung... 
+Dieses Bild enthält einen grauen Bereich."</string>
+    <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Bild wird gespeichert.</string>
+    <string name="cam_3d_strings_dialog_processing_txt">Verarbeitung...</string>
+    <string name="cam_3d_strings_error_application_busy_txt">Warten Sie einige Sekunden, um die 3D-Kamera zu starten.</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_title_txt">Fehler</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">"Ziehen Sie das Kabel ab. In diesem Modus kann kein Foto aufgenommen werden, während ein Kabel angeschlossen ist. "</string>
+    <string name="cam_3d_strings_error_direction_txt">Das Bild konnte nicht aufgenommen werden. Schwenken Sie in die richtige Richtung.</string>
+    <string name="cam_3d_strings_error_too_quick_txt">Das Bild konnte nicht aufgenommen werden. Schwenken Sie langsamer.</string>
+    <string name="cam_3d_strings_error_too_slow_txt">Das Bild konnte nicht aufgenommen werden. Schwenken Sie schneller.</string>
+    <string name="cam_3d_strings_setting_shooting_direction_down_txt">Abwärts</string>
+    <string name="cam_3d_strings_setting_shooting_direction_left_txt">Links</string>
+    <string name="cam_3d_strings_setting_shooting_direction_right_txt">Rechts</string>
+    <string name="cam_3d_strings_setting_shooting_direction_title_txt">Aufnahmerichtung</string>
+    <string name="cam_3d_strings_setting_shooting_direction_up_txt">Aufwärts</string>
+    <string name="cam_3d_strings_shooting_direction_guide_txt">Richtungsänderung: Auf Symbol links tippen</string>
+    <string name="cam_3d_strings_shooting_failure_title_txt">Aufnahme nicht möglich</string>
+    <string name="cam_3d_strings_shooting_guide_down_to_up_txt">Von unten nach oben schwenken</string>
+    <string name="cam_3d_strings_shooting_guide_left_to_right_txt">Von links nach rechts schwenken</string>
+    <string name="cam_3d_strings_shooting_guide_pan_too_fast_txt">Langsamer schwenken</string>
+    <string name="cam_3d_strings_shooting_guide_press_key_txt">Verschlusstaste drücken und dann Kamera langsam schwenken</string>
+    <string name="cam_3d_strings_shooting_guide_right_to_left_txt">Von rechts nach links schwenken</string>
+    <string name="cam_3d_strings_shooting_guide_touch_cap_txt">Auf die Kamerataste tippen und die Kamera langsam schwenken</string>
+    <string name="cam_3d_strings_shooting_guide_up_to_down_txt">Von oben nach unten schwenken</string>
+    <string name="cam_3d_strings_sweep_panorama_short_txt">Schwenk-Panorama</string>
+    <string name="cam_app_shortcut_front_photo_txt">Frontkamerafoto</string>
+    <string name="cam_app_shortcut_manual_txt">Manuell</string>
+    <string name="cam_app_shortcut_video_txt">Video</string>
+    <string name="cam_face_eye_af_settings_on_txt">Gesichtserkennung/Augen-AF EIN</string>
+    <string name="cam_string_dualrec_m_apr_txt">%1$td. April %2$tY</string>
+    <string name="cam_string_dualrec_m_aug_txt">%1$td. August %2$tY</string>
+    <string name="cam_string_dualrec_m_dec_txt">%1$td. Dezember %2$tY</string>
+    <string name="cam_string_dualrec_m_feb_txt">%1$td. Februar %2$tY</string>
+    <string name="cam_string_dualrec_m_jan_txt">%1$td. Januar %2$tY</string>
+    <string name="cam_string_dualrec_m_jul_txt">%1$td. Juli %2$tY</string>
+    <string name="cam_string_dualrec_m_jun_txt">%1$td. Juni %2$tY</string>
+    <string name="cam_string_dualrec_m_mar_txt">%1$td. März %2$tY</string>
+    <string name="cam_string_dualrec_m_may_txt">%1$td. Mai %2$tY</string>
+    <string name="cam_string_dualrec_m_nov_txt">%1$td. November %2$tY</string>
+    <string name="cam_string_dualrec_m_oct_txt">%1$td. Oktober %2$tY</string>
+    <string name="cam_string_dualrec_m_sep_txt">%1$td. September %2$tY</string>
+    <string name="cam_string_dualrec_t_am_txt">%1$tl:%2$tM UHR</string>
+    <string name="cam_string_dualrec_t_pm_txt">%1$tl:%2$tM UHR</string>
+    <string name="cam_strings_1x1_frame_lines_txt">1:1-Rahmenlinien</string>
+    <string name="cam_strings_accessibility_auto_review_txt">Automatische Fotovorschau</string>
+    <string name="cam_strings_accessibility_auto_scene_recognized_txt">Motiv erkannt als %1$s</string>
+    <string name="cam_strings_accessibility_back_main_txt">Zurück</string>
+    <string name="cam_strings_accessibility_back_txt">Zurück</string>
+    <string name="cam_strings_accessibility_capturing_mode_txt">Aufnahmemodus</string>
+    <string name="cam_strings_accessibility_close_color_button_txt">Farbanpassung schließen</string>
+    <string name="cam_strings_accessibility_color_brightness_button_txt">„Farb- und Helligkeitanpassung“ schließen</string>
+    <string name="cam_strings_accessibility_condition_detected_txt">Zustand erkannt als „%1$s“</string>
+    <string name="cam_strings_accessibility_condition_motion_txt">In Bewegung</string>
+    <string name="cam_strings_accessibility_condition_stable_txt">Stabil</string>
+    <string name="cam_strings_accessibility_condition_walk_txt">Gehen</string>
+    <string name="cam_strings_accessibility_dual_effect_menu_txt">Dual-Kamera-Effekt</string>
+    <string name="cam_strings_accessibility_eyeaf_off_txt">Zweimal tippen, um Augen-AF zu aktivieren</string>
+    <string name="cam_strings_accessibility_eyeaf_on_txt">Zweimal tippen, um Augen-AF zu deaktivieren</string>
+    <string name="cam_strings_accessibility_flash_torch_txt">Taschenlampe</string>
+    <string name="cam_strings_accessibility_flash_txt">Blitz</string>
+    <string name="cam_strings_accessibility_fusion_auto_txt">Doppeltippen, um zu Auto-Dual-Kamera zu wechseln</string>
+    <string name="cam_strings_accessibility_fusion_off_txt">Zweimal tippen, um Dual-Kamera einzuschalten</string>
+    <string name="cam_strings_accessibility_fusion_on_txt">Zweimal tippen, um Dual-Kamera auszuschalten</string>
+    <string name="cam_strings_accessibility_image_quality_control_exposure_value_txt">Belichtungswert</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_deselected_txt">Markierung für „Automatisch“ aufgehoben</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_selected_txt">„Automatisch“ ausgewählt</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_txt">Autofokus</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_adjusted_txt">Brennweite geändert</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_txt">Manueller Fokus</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_txt">Fokus</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_deselected_txt">Markierung für „Automatisch“ aufgehoben</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_selected_txt">„Automatisch“ ausgewählt</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_txt">Verschlusszeit</string>
+    <string name="cam_strings_accessibility_image_quality_control_white_balance_txt">Weißabgleich</string>
+    <string name="cam_strings_accessibility_information_txt">Informationen</string>
+    <string name="cam_strings_accessibility_menu_txt">Menü</string>
+    <string name="cam_strings_accessibility_not_configurable_txt">Nicht konfigurierbar</string>
+    <string name="cam_strings_accessibility_open_color_button_txt">Farbanpassung öffnen</string>
+    <string name="cam_strings_accessibility_other_settings_txt">Weitere Einstellungen</string>
+    <string name="cam_strings_accessibility_pause_button_txt">Pause</string>
+    <string name="cam_strings_accessibility_photo_setting_txt">Kameraeinstellungen</string>
+    <string name="cam_strings_accessibility_predictive_capture_txt">Vorhersagende Aufnahme</string>
+    <string name="cam_strings_accessibility_recent_photo_txt">Ein Stapel aktueller Fotos</string>
+    <string name="cam_strings_accessibility_recording_button_txt">Aufnahme</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_button_txt">Zeitlupe</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_exti_button_txt">Zeitlupe beenden</string>
+    <string name="cam_strings_accessibility_recording_stop_button_txt">Stopp</string>
+    <string name="cam_strings_accessibility_self_timer_stop_button_txt">Countdown läuft noch</string>
+    <string name="cam_strings_accessibility_shutter_button_txt">Verschlusstaste</string>
+    <string name="cam_strings_accessibility_soundphoto_play_txt">Ton abspielen</string>
+    <string name="cam_strings_accessibility_superior_auto_color_brightness_txt">Farb- und Helligkeitanpassung</string>
+    <string name="cam_strings_accessibility_swf_normal_txt">Zweimal tippen, um zum normalen Modus zu wechseln</string>
+    <string name="cam_strings_accessibility_swf_wide_txt">Zweimal tippen, um zum Weitwinkelmodus zu wechseln</string>
+    <string name="cam_strings_accessibility_switch_to_front_by_swiping_txt">Zur Frontkamera gewechselt</string>
+    <string name="cam_strings_accessibility_switch_to_front_txt">Zweimal tippen, um zur Frontkamera zu wechseln</string>
+    <string name="cam_strings_accessibility_switch_to_main_by_swiping_txt">Zur Hauptkamera gewechselt</string>
+    <string name="cam_strings_accessibility_switch_to_main_txt">Doppeltippen, um zur Hauptkamera zu wechseln</string>
+    <string name="cam_strings_accessibility_switch_to_photo_txt">Zweimal Tippen, um zur Kamera zu wechseln</string>
+    <string name="cam_strings_accessibility_switch_to_video_txt">Zweimal Tippen, um zu Video zu wechseln</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">Zweimal tippen, um HDR einzuschalten</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_on_txt">Zweimal tippen, um HDR auszuschalten</string>
+    <string name="cam_strings_accessibility_video_setting_txt">Videoeinstellungen</string>
+    <string name="cam_strings_accessibility_viewer_txt">Mit Bildbetrachter öffnen</string>
+    <string name="cam_strings_accessibility_zoom_ratio_with_number_txt">%1$sx</string>
+    <string name="cam_strings_advanced_setting_geo_tag_both_off_txt">Um Standorte zu speichern, müssen Sie GPS und/oder Funknetzwerk aktivieren. Jetzt aktivieren?</string>
+    <string name="cam_strings_advanced_setting_geo_tag_title_txt">Ort speichern</string>
+    <string name="cam_strings_ai_face_restore_txt">Gesichter schärfen</string>
+    <string name="cam_strings_application_name_creative_effect_txt">Kreativer Effekt</string>
+    <string name="cam_strings_application_name_dualrec_txt">Bild mit Gesicht</string>
+    <string name="cam_strings_application_name_facefusion_txt">AR-Maske</string>
+    <string name="cam_strings_application_name_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_application_name_multicam_txt">Multi-Kamera</string>
+    <string name="cam_strings_application_name_night_mode_txt">Nachtmodus</string>
+    <string name="cam_strings_application_name_night_shooting_txt">Nachtmodus</string>
+    <string name="cam_strings_application_name_soundphoto_txt">Sound Photo</string>
+    <string name="cam_strings_application_name_sweep_panorama_txt">Schwenk-Panorama</string>
+    <string name="cam_strings_application_name_timeshift_txt">Timeshift burst</string>
+    <string name="cam_strings_application_name_txt">Kamera</string>
+    <string name="cam_strings_application_name_video_txt">Video</string>
+    <string name="cam_strings_apps_list_add_txt">Hinzufügen</string>
+    <string name="cam_strings_apps_list_downloadable_txt">Herunterladbar</string>
+    <string name="cam_strings_apps_list_installed_txt">Installiert</string>
+    <string name="cam_strings_apps_list_txt">Kamera-Apps</string>
+    <string name="cam_strings_art_filter_guesture_guide_general_txt">Verwenden Sie Ihre Finger, um das angezeigte Bild zu bearbeiten.</string>
+    <string name="cam_strings_art_filter_guesture_guide_tap_txt">Tippen Sie auf den Teil, der Farbe erhalten soll.</string>
+    <string name="cam_strings_aspect_ratio_txt">Seitenverhältnis</string>
+    <string name="cam_strings_auto_hdr_discription_txt">Wenn Sie diese Einstellung aktivieren, können Sie Über- und Unterbelichtungen vermeiden, indem Sie den Kontrast während der Aufnahme erfassen.</string>
+    <string name="cam_strings_auto_hdr_txt">Auto HDR</string>
+    <string name="cam_strings_auto_power_off_txt">Kamera wird wegen Inaktivität bald geschlossen</string>
+    <string name="cam_strings_auto_scene_recognition_txt">Autom. Motiverkennung</string>
+    <string name="cam_strings_auto_upload_all_title_txt">Automatisches Hochladen</string>
+    <string name="cam_strings_auto_upload_all_txt">Automatisches Hochladen</string>
+    <string name="cam_strings_awb_priority_setting_asmosphere_txt">Ambiente</string>
+    <string name="cam_strings_awb_priority_setting_standard_txt">Standard</string>
+    <string name="cam_strings_awb_priority_setting_txt">Prioritätseinstellung bei AWB</string>
+    <string name="cam_strings_awb_priority_setting_white_txt">Weiß</string>
+    <string name="cam_strings_balloon_tips_modeselector_title_txt">Verschiedene Aufnahmemodi ausprobieren</string>
+    <string name="cam_strings_balloon_tips_modeselector_txt">Anderen Modus auswählen: hier tippen</string>
+    <string name="cam_strings_balloon_tips_timeshift_title_txt">Besten Moment auswählen</string>
+    <string name="cam_strings_balloon_tips_timeshift_txt">Aufnahme durch Schieben der Miniaturbilder auswählen</string>
+    <string name="cam_strings_bokeh_error_covering_lens_txt">Objektiv bitte säubern und nicht mit Finger versperren</string>
+    <string name="cam_strings_bokeh_error_night_shooting_disable_txt">Nachtaufnahmen nicht verfügbar, wenn der Bokeh-Effekt aktiviert ist</string>
+    <string name="cam_strings_bokeh_error_over_light_txt">Zu hell</string>
+    <string name="cam_strings_bokeh_error_too_close_txt">Bewegen Sie sich weiter weg vom Objekt</string>
+    <string name="cam_strings_bokeh_error_too_dark_txt">Mehr Licht erforderlich</string>
+    <string name="cam_strings_bokeh_error_too_far_away_txt">Bewegen Sie sich näher an das Objekt heran</string>
+    <string name="cam_strings_bokeh_error_unknown_txt">Bokeh ist derzeit nicht verfügbar</string>
+    <string name="cam_strings_bokeh_title_txt">Bokeh</string>
+    <string name="cam_strings_burst_battery_level_low_txt">Bildfolge wegen niedrigem Akkustand nicht möglich</string>
+    <string name="cam_strings_burst_change_camera_key_setting_txt">Bildfolgeeinstellungen aktivieren, um Bildfolgen zu ermöglichen</string>
+    <string name="cam_strings_burst_in_bokeh_effect_txt">Bildfolge mit Bokeh-Effekt nicht möglich</string>
+    <string name="cam_strings_burst_in_dark_condition_txt">Bildfolge bei dunklen Lichtverhältnissen nicht möglich</string>
+    <string name="cam_strings_burst_in_long_shutter_speed_txt">Bildfolge nicht möglich bei Verschlusszeit von 2 Sek. o. mehr</string>
+    <string name="cam_strings_burst_in_transfer_and_tagging_txt">Bildfolge bei aktiviertem „Transfer &amp; Tagging add-on“ nicht möglich</string>
+    <string name="cam_strings_burst_in_widecam_txt">Mit Ultraweitwinkelobjektiv keine Bildfolge möglich</string>
+    <string name="cam_strings_burst_not_supported_front_camera_txt">Bildfolge mit Frontkamera nicht möglich</string>
+    <string name="cam_strings_burst_not_supported_fusion_on_txt">Bildfolge nicht möglich, wenn Dual-Kamera eingeschaltet ist</string>
+    <string name="cam_strings_burst_saved_internal_storage_txt">Bildfolgen werden im internen Speicher gespeichert</string>
+    <string name="cam_strings_burst_shooting_txt">Bildfolge-frequenz</string>
+    <string name="cam_strings_button_continue_txt">Fortsetzen</string>
+    <string name="cam_strings_button_quit_txt">SCHLIEẞEN</string>
+    <string name="cam_strings_camera_af_sound_txt">Autofokuston</string>
+    <string name="cam_strings_camera_apps_tab_txt">KAMERA-APPS</string>
+    <string name="cam_strings_camera_key_setting_burst_shot_txt">Bildfolge</string>
+    <string name="cam_strings_camera_key_setting_take_photo_txt">Ein Foto aufnehmen</string>
+    <string name="cam_strings_camera_key_setting_txt">Bildfolge mit Verschlusstaste</string>
+    <string name="cam_strings_camera_sound_txt">Ton</string>
+    <string name="cam_strings_camera_switching_txt">Kamera umschalten</string>
+    <string name="cam_strings_camerakey_launch_description_photo_pro_txt">Starten Sie die Kamera-App oder Photography Pro, indem Sie die Verschlusstaste des Geräts drücken und gedrückt halten. Dies funktioniert auch dann, wenn sich das Telefon im Energiespar- oder Sperrmodus befindet.</string>
+    <string name="cam_strings_camerakey_launch_description_txt">Starten Sie die Kamera-App, indem Sie die Verschlusstaste des Geräts drücken und gedrückt halten. Dies funktioniert auch dann, wenn sich das Telefon im Energiespar- oder Sperrmodus befindet.</string>
+    <string name="cam_strings_cancel_txt">Abbrechen</string>
+    <string name="cam_strings_capturing_mode_4k2k_txt">4K-Video</string>
+    <string name="cam_strings_capturing_mode_auto_txt">Foto</string>
+    <string name="cam_strings_capturing_mode_button_txt">Modus</string>
+    <string name="cam_strings_capturing_mode_camera_txt">Kamera</string>
+    <string name="cam_strings_capturing_mode_creative_effect_txt">Kreativer Effekt</string>
+    <string name="cam_strings_capturing_mode_dualrec_txt">Bild mit Gesicht</string>
+    <string name="cam_strings_capturing_mode_facefusion_txt">AR-Maske</string>
+    <string name="cam_strings_capturing_mode_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_capturing_mode_high_frame_rate_txt">Timeshift-Video</string>
+    <string name="cam_strings_capturing_mode_manual_txt">Manuell</string>
+    <string name="cam_strings_capturing_mode_multicam_txt">Multi-Kamera</string>
+    <string name="cam_strings_capturing_mode_network_error_txt">Download von Daten konnte nicht abgeschlossen werden</string>
+    <string name="cam_strings_capturing_mode_photopro_txt">Photo Pro</string>
+    <string name="cam_strings_capturing_mode_portraitselfie_txt">Porträt-Selfie</string>
+    <string name="cam_strings_capturing_mode_slow_motion_txt">Video (Zeitlupe)</string>
+    <string name="cam_strings_capturing_mode_soundphoto_txt">Sound Photo</string>
+    <string name="cam_strings_capturing_mode_superior_auto_cy_txt">Überlegene Automatik</string>
+    <string name="cam_strings_capturing_mode_superior_auto_txt">Überlegene Automatik</string>
+    <string name="cam_strings_capturing_mode_timeshift_txt">Timeshift burst</string>
+    <string name="cam_strings_capturing_mode_title_txt">Aufnahmemodus</string>
+    <string name="cam_strings_change_full_storage_to_internal_txt">SD-Karte voll. Standarddatenspeicher wurde zum internen Massenspeicher geändert.</string>
+    <string name="cam_strings_change_save_destination_high_frame_rate_title_txt">Timeshift-Video</string>
+    <string name="cam_strings_change_save_destination_slowmotion_title_txt">Zeitlupe</string>
+    <string name="cam_strings_change_save_destination_title_txt">4K-Video</string>
+    <string name="cam_strings_change_storage_to_sd_txt">SD-Karte eingesetzt. Standarddatenspeicher in SD-Karte ändern?</string>
+    <string name="cam_strings_change_txt">Ändern</string>
+    <string name="cam_strings_close_txt">Schließen</string>
+    <string name="cam_strings_color_brightness_txt">Farbe und Helligkeit</string>
+    <string name="cam_strings_common_error_internal_memory_full_txt">Interner Speicher voll. Daten stattdessen auf SD-Karte speichern?</string>
+    <string name="cam_strings_common_error_internal_memory_unavailable_txt">Der interne Speicher ist beschädigt oder schreibgeschützt. Daten stattdessen auf SD-Karte speichern?</string>
+    <string name="cam_strings_common_error_open_txt">Öffn. fehlgeschl.: %1$s</string>
+    <string name="cam_strings_common_error_sdcard_full_txt">Die SD-Karte ist voll. Daten stattdessen im internen Speicher speichern?</string>
+    <string name="cam_strings_common_error_sdcard_unavailable_txt">SD-Karte kann nicht verwendet werden. Daten stattdessen im internen Speicher speichern?</string>
+    <string name="cam_strings_common_explanatory_sdcard_setting_txt">Für eine stabile Aufnahme oder Aufzeichnung empfehlen wir, als Datenspeicher den internen Speicher zu verwenden oder eine Hochgeschwindigkeits-SD-Karte zu verwenden (Klasse 10 oder höher wird empfohlen).</string>
+    <string name="cam_strings_cooling_mode_cooled_down_txt">Einige Funktionen wurden deaktiviert</string>
+    <string name="cam_strings_cooling_mode_learn_more_txt">Weiterlesen</string>
+    <string name="cam_strings_cooling_mode_message1_txt">Die folgenden Funktionen sind derzeit deaktiviert.</string>
+    <string name="cam_strings_cooling_mode_message2_txt">Bitte warten Sie, bis sich Ihr Gerät abgekühlt hat und starten Sie dann die Kamera neu.</string>
+    <string name="cam_strings_cooling_mode_title_txt">Die folgenden Funktionen sind deaktiviert</string>
+    <string name="cam_strings_cooling_mode_txt">Einige Funktionen wegen Temperaturanstieg deaktiviert</string>
+    <string name="cam_strings_core_intelligentactive_txt">Intelligent Active</string>
+    <string name="cam_strings_cta_description_txt">Unten stehende Zugriffsanforderung zulassen?</string>
+    <string name="cam_strings_cta_title_txt">Hinweis</string>
+    <string name="cam_strings_dependency_changed_txt">%1$s wurde in %2$s geändert</string>
+    <string name="cam_strings_description_4k2k_txt">4K-Video mit extrem hoher Auflösung aufnehmen</string>
+    <string name="cam_strings_description_camera_txt">Fotos und Videos aufnehmen</string>
+    <string name="cam_strings_description_creative_effect_txt">Effekte für künstlerische Fotos und Videos auswählen</string>
+    <string name="cam_strings_description_dualrec_txt">Gesicht mit Front- und Hauptkamera in Fotos und Videos einfügen</string>
+    <string name="cam_strings_description_facefusion_txt">Maskieren Sie Ihr Gesicht mit dem eines Freundes für ein tolles Selfie</string>
+    <string name="cam_strings_description_google_lens_txt">%1$s bietet zu dem, was Sie sehen, mehr Details oder bestimmte Aktionen</string>
+    <string name="cam_strings_description_high_frame_rate_txt">Video mit hoher Bildrate aufnehmen und Zeitlupeneffekt anwenden</string>
+    <string name="cam_strings_description_multicam_txt">Die gleiche Szene aus mehreren Perspektiven auf einem Bildschirm auf.</string>
+    <string name="cam_strings_description_shoundphoto_txt">Fotos mit Hintergrundgeräusch (Vogelgezwitscher usw.) aufnehmen</string>
+    <string name="cam_strings_description_timeshift_short_txt">Finden Sie das beste Bildfolgemotiv vor oder nach der Aufnahme</string>
+    <string name="cam_strings_details_txt">Details</string>
+    <string name="cam_strings_dialog_4k_unavailable_while_screen_recording_txt">"4K-Videos können während der Bildschirmaufzeichnung nicht aufgenommen werden.
+Wählen Sie eine andere Videogröße als 4K aus oder beenden Sie die Bildschirmaufzeichnung, um ein Video aufzunehmen."</string>
+    <string name="cam_strings_dialog_60fps_unavailable_while_screen_recording_txt">"Videos können während der Bildschirmaufzeichnung nicht mit der aktuellen Videogröße aufgenommen werden.
+Wählen Sie eine andere Videogröße als Full HD (60 BpS) aus oder beenden Sie die Bildschirmaufzeichnung, um ein Video aufzunehmen."</string>
+    <string name="cam_strings_dialog_battery_level_low_info_txt">Der Akkustand des Telefons ist zu gering. Bei niedrigem Akkustand schließt die Kamera automatisch.</string>
+    <string name="cam_strings_dialog_battery_level_low_recording_txt">Aufzeichnung wegen niedrigem Akkustand angehalten. Laden Sie Ihr Gerät und versuchen Sie es erneut.</string>
+    <string name="cam_strings_dialog_battery_level_low_using_txt">Kamera kann wegen niedrigem Akkustand nicht verwendet werden. Laden Sie Ihr Gerät und versuchen Sie es erneut.</string>
+    <string name="cam_strings_dialog_body_accessibility_txt">Bedienungshilfen: &lt;a href=\"%s\">Teilweise kompatibel&lt;/a></string>
+    <string name="cam_strings_dialog_body_applicationnotification_1_txt">Die App benötigt die folgenden Berechtigungen, um diese Aktion durchzuführen.</string>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"Netzwerk
+Um WLAN-Verbindung herzustellen"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_airplane_on_txt">"Flugmodus ist an.
+Bitte Flugmodus in den EINSTELLUNGEN ausschalten."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_name_txt">"Netzwerkname: 
+"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_disable_txt">Nicht geschützt</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_enable_txt">Geschützt</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Möchten Sie wirklich eine Verbindung zu %1$s herstellen?</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"Mit %1$s verbinden?
+Auf DETAILS tippen, um Informationen über das WLAN-Netzwerk anzuzeigen."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"WLAN ist ausgeschaltet und der Flugmodus ist an.
+Bitte auf EINSTELLUNGEN und diese Einstellungen ändern."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"WLAN ist ausgeschaltet
+Bitte WLAN in den EINSTELLUNGEN einschalten."</string>
+    <string name="cam_strings_dialog_btn_connect_txt">Verbinden</string>
+    <string name="cam_strings_dialog_btn_settings_txt">Einstellungen</string>
+    <string name="cam_strings_dialog_burst_information_txt">Wählen Sie „Timeshift burst“ unter „Kamera-Apps“, um Serienaufnahmen zu machen</string>
+    <string name="cam_strings_dialog_change_resolution_manual_txt">Manuell (Frontkamera)</string>
+    <string name="cam_strings_dialog_change_resolution_superior_auto_txt">Überlegene Automatik (Frontkamera)</string>
+    <string name="cam_strings_dialog_change_resolution_txt">Die Auflösung für die folgenden Aufnahmemodi wurden aufgrund eines Softwareupdates in 13 MP (4:3) geändert</string>
+    <string name="cam_strings_dialog_cta_access_txt">%1$s versucht</string>
+    <string name="cam_strings_dialog_cta_allow_txt">Erlauben</string>
+    <string name="cam_strings_dialog_cta_deny_txt">Verweigern</string>
+    <string name="cam_strings_dialog_cta_location_info_txt">Standortinformation abzurufen</string>
+    <string name="cam_strings_dialog_cta_turn_on_nfc_txt">NFC einzuschalten</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">WLAN aktivieren</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">WLAN/mob. Daten zu verw.</string>
+    <string name="cam_strings_dialog_high_temp_title_txt">Hinweis</string>
+    <string name="cam_strings_dialog_high_temp_txt">Wenn die Temperatur des Geräts steigt, schließt sich die App eventuell während der Benutzung. Ihre Aufnahme wird jedoch automatisch gespeichert.</string>
+    <string name="cam_strings_dialog_high_temp_vzw_txt">Dieser Kameramodus ist sehr ressourcenintensiv, wodurch die Temperatur Ihres Telefons steigen kann. Um eine Überhitzung zu vermeiden, kann die Videoaufzeichnung beendet und die Kamera-App kann geschlossen werden. Ihre Aufzeichnung wird automatisch gespeichert.</string>
+    <string name="cam_strings_dialog_storage_full_burst_txt">Aufnahme der Bildfolge wegen fehlendem Speicher gestoppt. Löschen Sie ein paar Dateien, um Platz im internen Speicher zu schaffen.</string>
+    <string name="cam_strings_dialog_title_accessibility_txt">Bedienungshilfen</string>
+    <string name="cam_strings_dialog_title_applicationnotification_txt">Berechtigungen erteilen</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_connecting_txt">Verbindung wird hergestellt...</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">WLAN-Verbindung konnte nicht hergestellt werden</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_password_txt">"
+Kennwortschutz: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_security_txt">"
+Sicherheit: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">WLAN-Details</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">Keine WLAN-Verbindung möglich</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Bei diesem WLAN-Netzwerk bestehen Sicherheitsrisiken</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Mit WLAN verbinden</string>
+    <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">Sie können Videos auch mit kontrastreichen Szenen aufnehmen und sie dramatischer und möglichst realitätsgetreu zu gestalten. Bitte verwenden Sie unterstützte Geräte/Dienste, um Inhalte in ihrer ursprünglichen Farbe und Helligkeit zu genießen.</string>
+    <string name="cam_strings_digital_zoom_type_description_txt">"Wählen Sie eine Einstellung für den digitalen Zoom aus.
+
+Standardmäßiger digitaler Zoom: Zoom anhand digitaler Verarbeitung basierend auf Bildsensordaten.
+Super-Resolution-Zoom: Zoom anhand digitaler Verarbeitung, wodurch mehr von der ursprünglichen Bildqualität erhalten bleibt. Das Speichern von Fotos kann länger dauern."</string>
+    <string name="cam_strings_digital_zoom_type_standard_txt">Standardmäßiger digitaler Zoom</string>
+    <string name="cam_strings_digital_zoom_type_super_resolution_txt">Super-Resolution-Zoom</string>
+    <string name="cam_strings_digital_zoom_type_txt">Einstellungen für digitalen Zoom</string>
+    <string name="cam_strings_dispbutton_settings_txt">Einstellungen DISP-Taste</string>
+    <string name="cam_strings_distortion_correction_photo_video_txt">Korrektur bei Bildverzerrung</string>
+    <string name="cam_strings_distortion_correction_txt">Korrektur bei Bildverzerrung</string>
+    <string name="cam_strings_do_not_show_again_txt">Nicht wieder anzeigen</string>
+    <string name="cam_strings_downloadable_tab_txt">HERUNTERLADBAR</string>
+    <string name="cam_strings_drive_continuous_txt">Serienaufnahme</string>
+    <string name="cam_strings_drive_hybrid_txt">Kombination Einzel-/Serienaufnahme</string>
+    <string name="cam_strings_drive_single_txt">Einzelaufnahme</string>
+    <string name="cam_strings_drivemode_txt">Bildfolgemodus</string>
+    <string name="cam_strings_effect_Kaleidoscope_txt">Kaleidoskop</string>
+    <string name="cam_strings_effect_after_image_txt">Bewegungsspur</string>
+    <string name="cam_strings_effect_brightness_contrast_txt">Helligkeit-Kontrast</string>
+    <string name="cam_strings_effect_color_filter_tint_txt">Tönung</string>
+    <string name="cam_strings_effect_color_pencil_txt">Farbskizze</string>
+    <string name="cam_strings_effect_comic_txt">Comic</string>
+    <string name="cam_strings_effect_fish_eye_txt">Fischauge</string>
+    <string name="cam_strings_effect_harris_shutter_txt">Harris-Effekt</string>
+    <string name="cam_strings_effect_hue_saturation_txt">Farbton-Sättigung</string>
+    <string name="cam_strings_effect_miniature_txt">Miniatur</string>
+    <string name="cam_strings_effect_mirror_txt">Spiegel</string>
+    <string name="cam_strings_effect_mosaic_txt">Mosaik</string>
+    <string name="cam_strings_effect_motion_effects_txt">Bewegungseffekte</string>
+    <string name="cam_strings_effect_no_effect_txt">Normal</string>
+    <string name="cam_strings_effect_nostalgia_txt">Nostalgie</string>
+    <string name="cam_strings_effect_old_film_txt">Alter Film</string>
+    <string name="cam_strings_effect_partical_color_txt">Teilfarbe</string>
+    <string name="cam_strings_effect_pencil_txt">Bleistiftskizze</string>
+    <string name="cam_strings_effect_selector_txt">Dual-Kamera-Effekt</string>
+    <string name="cam_strings_effect_vivid_txt">Strahlend</string>
+    <string name="cam_strings_error_capture_txt">Dieser Modus ist bei einer Aufnahme in einer anderen App nicht verfügbar.</string>
+    <string name="cam_strings_error_delete_txt">Löschen war nicht möglich.</string>
+    <string name="cam_strings_error_device_not_available_txt">Kamera kann nicht gestartet werden. Kamera oder Gerät neu starten.</string>
+    <string name="cam_strings_error_dialog_title_txt">Fehler</string>
+    <string name="cam_strings_error_fatal_sd_photo_txt">Fotos konnten nicht gespeichert werden. Möglicherweise besteht ein Problem mit dem Datenspeicher. Wenn die SD-Karte als Datenspeicher festgelegt ist, überprüfen Sie Ihre SD-Karte.</string>
+    <string name="cam_strings_error_fatal_sd_video_txt">Aufzeichnung konnte nicht gestartet werden. Möglicherweise besteht ein Problem mit dem Datenspeicher. Wenn die SD-Karte als Datenspeicher festgelegt ist, überprüfen Sie Ihre SD-Karte.</string>
+    <string name="cam_strings_error_fatal_txt">Unbekannter Fehler.</string>
+    <string name="cam_strings_error_high_temp_already_high_txt">Ihr Xperia muss abkühlen. Bitte warten Sie.</string>
+    <string name="cam_strings_error_high_temp_info_flashlight_unavailable_txt">Die Gerätetemperatur ist für die Verwendung der Taschenlampe zu hoch</string>
+    <string name="cam_strings_error_high_temp_info_txt">Die Temperatur des Geräts steigt. Wenn sie noch höher steigt, schließt sich die App automatisch.</string>
+    <string name="cam_strings_error_high_temp_info_video_recording_with_flashlight_unavailable_txt">Gerätetemperatur für Video mit Taschenlampe zu hoch</string>
+    <string name="cam_strings_error_high_temp_info_vzw_txt">Die Temperatur des Geräts steigt. Wenn sie noch höher steigt, schließt sich die App automatisch.</string>
+    <string name="cam_strings_error_high_temp_shut_down_no_txt">Nein</string>
+    <string name="cam_strings_error_high_temp_shut_down_yes_txt">Ja</string>
+    <string name="cam_strings_error_high_temp_shutting_down_txt">Die Kamera wird sich vorübergehend ausschalten, um abzukühlen.</string>
+    <string name="cam_strings_error_high_temp_shutting_down_vzw_txt">Die Kamera wird sich vorübergehend ausschalten, um abzukühlen.</string>
+    <string name="cam_strings_error_internal_memory_full_txt">Der interne Massenspeicher ist voll. Der Standarddatenspeicher wurde zur SD-Karte geändert.</string>
+    <string name="cam_strings_error_internal_memory_unavailable_txt">Interner Massenspeicher ist korrupt oder schreibgeschützt. Die SD-Karte wurde als neuer Datenspeicher festgelegt.</string>
+    <string name="cam_strings_error_internal_sd_full_txt">Speicher voll. Löschen Sie Dateien von der SD-Karte oder aus dem internen Speicher.</string>
+    <string name="cam_strings_error_max_faces_exceeded_txt">Die maximale Anzahl an Gesichtern wurde ausgewählt. Bitte entfernen Sie eines oder mehrere Gesichter und versuchen es erneut.</string>
+    <string name="cam_strings_error_memory_full_txt">Speicher voll. Löschen Sie Dateien auf der SD-Karte.</string>
+    <string name="cam_strings_error_memory_ims_access_error_txt">Speicherfehler</string>
+    <string name="cam_strings_error_memory_ims_full_txt">Speicher voll. Löschen Sie einige Dateien aus dem Speicher oder ändern Sie den Standarddatenspeicher.</string>
+    <string name="cam_strings_error_memory_ims_unavailable_txt">Speicher nicht verfügbar</string>
+    <string name="cam_strings_error_memory_title_txt">Speicherfehler</string>
+    <string name="cam_strings_error_memory_unavailable_txt">SD-Karte nicht verfügbar</string>
+    <string name="cam_strings_error_message_during_voice_call_title_txt">Anruf wird getätigt</string>
+    <string name="cam_strings_error_message_during_voice_call_txt">Die Kamera ist während eines Anrufs nicht verfügbar.</string>
+    <string name="cam_strings_error_mms_rec_size_limit_txt">Es können keine weiteren Dateien hinzugefügt werden. Die Datei ist zu groß.</string>
+    <string name="cam_strings_error_save_file_in_progress_txt">Speichervorgang läuft. Aktion derzeit nicht verfügbar.</string>
+    <string name="cam_strings_error_save_file_txt">Es wird gerade in einer anderen App eine Aufnahme vorgenommen. Aufnahme nicht möglich.</string>
+    <string name="cam_strings_error_storage_changing_to_internal_txt">Es ist keine SD-Karte verfügbar. Der Standarddatenspeicher wurde zu internem Massenspeicher geändert.</string>
+    <string name="cam_strings_error_video_rec_txt">Aufzeichnung nicht möglich. Die Aufzeichnungsfunktion oder eine verwandte Funktion wird möglicherweise von einer anderen App verwendet.</string>
+    <string name="cam_strings_ev_disable_txt">Die EV-Einstellung ist deaktiviert. EV steuern: SS/ISO auf AUTO festlegen.</string>
+    <string name="cam_strings_exposure_level_m03_txt">EV -0,3</string>
+    <string name="cam_strings_exposure_level_m07_txt">EV -0,7</string>
+    <string name="cam_strings_exposure_level_m10_txt">EV -1,0</string>
+    <string name="cam_strings_exposure_level_m13_txt">EV -1,3</string>
+    <string name="cam_strings_exposure_level_m17_txt">EV -1,7</string>
+    <string name="cam_strings_exposure_level_m20_txt">EV -2,0</string>
+    <string name="cam_strings_exposure_level_p03_txt">EV +0,3</string>
+    <string name="cam_strings_exposure_level_p07_txt">EV +0,7</string>
+    <string name="cam_strings_exposure_level_p10_txt">EV +1,0</string>
+    <string name="cam_strings_exposure_level_p13_txt">EV +1,3</string>
+    <string name="cam_strings_exposure_level_p17_txt">EV +1,7</string>
+    <string name="cam_strings_exposure_level_p20_txt">EV +2,0</string>
+    <string name="cam_strings_exposure_level_pm0_txt">EV ±0,0</string>
+    <string name="cam_strings_exposure_level_title_txt">Belichtungswert</string>
+    <string name="cam_strings_exposure_level_txt">Belichtungswert</string>
+    <string name="cam_strings_eye_position_tutorial_title_txt">Blickrichtung</string>
+    <string name="cam_strings_eye_position_tutorial_txt">Blicken Sie in die vordere Kamera in der Nähe der Hörmuschel</string>
+    <string name="cam_strings_face_eyeaf_settings_txt">Einstell. Gesichtserkennung/Augen-AF</string>
+    <string name="cam_strings_facefusion_add_face_txt">Gesicht hinzufügen</string>
+    <string name="cam_strings_facefusion_delete_mask_txt">Das Gesicht löschen? Diese Aktion kann nicht rückgängig gemacht werden.</string>
+    <string name="cam_strings_facefusion_no_face_detected_txt">Keine Gesichter erkannt</string>
+    <string name="cam_strings_facefusion_point_at_face_txt">Richten Sie die Kamera auf ein Gesicht.</string>
+    <string name="cam_strings_facefusion_select_face_txt">Viereck(e) z. Gesicht(er) ausw. antippen</string>
+    <string name="cam_strings_failure_camera_shake_preview_txt">Halten Sie die Kamera ruhig, um Unschärfen zu vermeiden.</string>
+    <string name="cam_strings_failure_camera_shake_txt">Das Foto ist durch Verwackeln der Kamera wahrscheinlich unscharf</string>
+    <string name="cam_strings_failure_detection_description_not_blink_txt">"Diese Funktion informiert vor der Aufnahme, wenn das Objektiv verdeckt oder das Bild unscharf ist.
+Nach der Aufnahme können Sie Fotos auf Unschärfe prüfen und Tipps für die Wiederholung einholen."</string>
+    <string name="cam_strings_failure_detection_description_txt">"Diese Funktion informiert vor der Aufnahme, wenn das Objektiv verdeckt oder das Bild unscharf ist.
+Nach der Aufnahme können Sie Fotos auf Blinzeln oder Unschärfe prüfen und Tipps für die Wiederholung einholen."</string>
+    <string name="cam_strings_failure_detection_txt">Fotografiertipps anzeigen</string>
+    <string name="cam_strings_failure_eye_blinks_preview_txt">Prüfen Sie, ob jemand geblinzelt hat</string>
+    <string name="cam_strings_failure_eye_blinks_txt">Jemand hat auf diesem Foto wahrscheinlich geblinzelt</string>
+    <string name="cam_strings_failure_finger_covering_lens_after_txt">Ihr Finger hat möglicherweise das Objektiv abgedeckt.</string>
+    <string name="cam_strings_failure_finger_covering_lens_preview_txt">Position des Objektivs prüfen und nicht mit dem Finger abdecken</string>
+    <string name="cam_strings_failure_finger_covering_lens_txt">Ihr Finger ist über der Linse</string>
+    <string name="cam_strings_failure_focus_too_close_txt">Bewegen Sie sich weiter weg vom Objekt</string>
+    <string name="cam_strings_failure_focus_too_dark_txt">Für das Fokussieren ist mehr Licht erforderlich</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_photo_txt">Starten und fotografieren</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_video_txt">Starten &amp; Video aufnehmen</string>
+    <string name="cam_strings_fast_capturing_launch_camera_capture_txt">Kamera-App starten u. fotogr.</string>
+    <string name="cam_strings_fast_capturing_launch_camera_txt">Kamera-App starten</string>
+    <string name="cam_strings_fast_capturing_launch_only_txt">Nur starten</string>
+    <string name="cam_strings_fast_capturing_launch_only_video_txt">Nur starten (Videokamera)</string>
+    <string name="cam_strings_fast_capturing_launch_photo_pro_txt">Photography Pro starten</string>
+    <string name="cam_strings_fast_capturing_screen_locked_apps_list_txt">Entsperren Sie den Bildschirm, um den Aufnahmemod. zu ändern. Entsperren?</string>
+    <string name="cam_strings_fast_capturing_screen_locked_photos_burst_txt">Das Gerät muss entsperrt werden, um nach der Aufnahme von Bildfolgen bei gesperrtem Bildschirm zur Fotoanzeige-App zu wechseln Gerät entsperren?</string>
+    <string name="cam_strings_fast_capturing_screen_locked_settings_txt">Entsperren Sie den Bildschirm, um die Einstellungen zu öffnen.</string>
+    <string name="cam_strings_fast_capturing_screen_locked_title_txt">Bildschirm gesperrt</string>
+    <string name="cam_strings_fast_capturing_title_txt">Schnellstart</string>
+    <string name="cam_strings_fast_capturing_txt">Schnellstart</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_title_txt">Aufnahmemodus und Kamera wechseln</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_txt">Wischen Sie über den Bildschirm, um zu einem anderen Aufnahmemodus wie „Video“ oder „Manuell“ zu wechseln. Sie können auch zwischen Haupt- und Frontkamera wechseln.</string>
+    <string name="cam_strings_fast_switch_tutorial_title_txt">Kamera wechseln</string>
+    <string name="cam_strings_fast_switch_tutorial_txt">Wischen Sie über den Bildschirm, um zwischen Haupt- und Frontkamera wechseln</string>
+    <string name="cam_strings_feature_bokeh_cameraui_description_txt">"Um den Bokeh-Effekt einzustellen, tippen Sie im Sucher auf das Bokeh-Symbol und bewegen Sie den Schieber.
+Diese Funktion wird im Fotomodus unterstützt.
+Sie können beeindruckende Fotos machen, die auf ein Objekt vor dem weichen, unscharfen Hintergrund fokussiert sind."</string>
+    <string name="cam_strings_feature_bokeh_cameraui_subtitle_txt">Mit dem Bokeh-Effekt fotografieren</string>
+    <string name="cam_strings_feature_bokeh_cameraui_title_txt">Bokeh-Effekt</string>
+    <string name="cam_strings_feature_bokeh_description_txt">"Machen Sie beeindruckende Fotos mit scharfem Fokus auf dem Objekt vor einem weichen, unscharfen Hintergrund.
+Um diesen Modus zu verwenden, tippen Sie im Sucher auf das MODUS-Symbol und wählen Sie dann „Bokeh“."</string>
+    <string name="cam_strings_feature_bokeh_subtitle_txt">Bokeh</string>
+    <string name="cam_strings_feature_bokeh_title_txt">Bokeh</string>
+    <string name="cam_strings_feature_dual_camera_manual_description_txt">Im manuellen Modus können Sie die Dual-Kamera ein- und ausschalten. Schalten Sie sie ein, um bei schlechten Lichtverhältnissen rauscharme Fotos aufzunehmen, und aus, um Nahaufnahmen zu machen.</string>
+    <string name="cam_strings_feature_dual_camera_manual_subtitle_txt">Im manuellen Modus mit Dualkamera fotografieren</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_2_txt">Bleiben Sie mindestens 1 Meter vom Objekt entfernt, wenn Sie mit eingeschalteter Dual-Kamera Fotos oder Videos. Wenn Sie zu nah am Objekt sind, können sich Blickpunkt oder Farbe ändern.</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_txt">"Mit der Dualkamera können Sie auch nachts oder in einem schwach beleuchteten Raum schöne Fotos und Videos mit geringem Rauschen aufnehmen.
+Die Kamera wechselt automatisch zwischen Einzel- und Dualkamera, je nachdem, welche Szene Sie aufnehmen. Sowohl Fotos als auch Videos werden mit extrem hoher Empfindlichkeit aufgenommen."</string>
+    <string name="cam_strings_feature_dual_camera_photo_subtitle_txt">Dual-Kamera</string>
+    <string name="cam_strings_feature_dual_camera_title_txt">Dual-Kamera</string>
+    <string name="cam_strings_feature_dual_camera_video_description_txt">Um tolle Nahaufnahmen zu machen, wechseln Sie zur Einzelkamera. Schalten Sie dazu die Dualkamera im Sucher aus. Dies können jederzeit wieder ändern, indem Sie auf die Schaltfläche „Einstellungen“ tippen.</string>
+    <string name="cam_strings_feature_dual_camera_video_subtitle_txt">Videoaufnahme mit Dual-Kamera</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_description_txt">"Tippen Sie auf die Taste im Sucher, um den Winkel von x1 zu x2 zu wechseln.
+Sie können diese Funktion im Foto- und im Videomodus verwenden."</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_subtitle_txt">Winkel mit der Taste wechseln</string>
+    <string name="cam_strings_feature_dual_zoom_camera_title_txt">Dual-Kamera</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_description_txt">"Berühren und halten Sie die Taste im Sucher, um einen Schieber anzuzeigen. Sie können die Zoomstufe mit dem Schieber anpassen.
+Die Zoomstufe kann mit einer Lautstärketaste oder durch Zusammendrücken der Finger auf einem Display eingestellt werden."</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_subtitle_txt">Zoomen mit Schieber</string>
+    <string name="cam_strings_feature_eye_af_description_txt">"Sie können Portraitfotos machen, das den Fokus auf die Augen setzt.
+Um Fokusziele zu ändern, tippen Sie auf das Gesicht des Motivs, das Sie fokussieren möchten. Um diese Funktion zu aktivieren/deaktivieren, tippen Sie auf das Symbol, das angezeigt wird, wenn Gesichter erkannt werden."</string>
+    <string name="cam_strings_feature_eye_af_description_with_animal_txt">"Sie können Fotos machen, die bei Menschen oder Tieren den Fokus auf die Augen setzen.
+Um Fokusziele zu ändern, tippen Sie auf das Gesicht des Motivs, das Sie fokussieren möchten. Um diese Funktion zu aktivieren/deaktivieren, tippen Sie auf das Symbol, das angezeigt wird, wenn Gesichter erkannt werden. Der Fotomodus und der manuelle Modus unterstützen diese Funktion."</string>
+    <string name="cam_strings_feature_eye_af_subtitle_txt">Augen-AF</string>
+    <string name="cam_strings_feature_eye_af_title_txt">Augen-AF</string>
+    <string name="cam_strings_feature_failure_detection_description_not_blink_txt">"Diese Funktion informiert vor der Aufnahme, wenn das Objektiv verdeckt oder das Bild unscharf ist.
+Nach der Aufnahme können Sie auf Unschärfe prüfen u. Tipps für die Wiederh. einholen.
+
+Sie können die Einstellungen in den Kameraeinstellungen unter „Fotografiertipps anzeigen“ ändern."</string>
+    <string name="cam_strings_feature_failure_detection_description_txt">"Diese Funktion informiert vor der Aufnahme, wenn das Objektiv verdeckt oder das Bild unscharf ist.
+Nach der Aufnahme können Sie auf Blinzeln oder Unschärfe prüfen u. Tipps f. d. Wiederh. einholen.
+
+Sie können die Einstellungen in den Kameraeinstellungen unter „Fotografiertipps anzeigen“ ändern."</string>
+    <string name="cam_strings_feature_failure_detection_subtitle_txt">Fotografiertipps anzeigen</string>
+    <string name="cam_strings_feature_failure_detection_title_txt">Fotografiertipps anzeigen</string>
+    <string name="cam_strings_feature_failure_option_after_and_preview_txt">Vor und nach der Aufnahme</string>
+    <string name="cam_strings_feature_failure_option_after_only_txt">Nur nach der Aufnahme</string>
+    <string name="cam_strings_feature_hand_shutter_description_txt">"Richten Sie Ihre Handfläche zur Kamera. Der Selbstauslöser wird eingeschaltet, wenn Ihre Handfläche erkannt wird. Strecken Sie die Finger nach oben, um den Erkennungsvorgang zu erleichtern.
+Um diese Funktion zu aktivieren, gehen Sie zu „Foto (Front)“ wählen Sie unter „Automat. Aufnahme“ die Handverschlussoption."</string>
+    <string name="cam_strings_feature_hand_shutter_subtitle_txt">Handverschluss</string>
+    <string name="cam_strings_feature_hand_shutter_title_txt">Handverschluss</string>
+    <string name="cam_strings_feature_lens_correction_description_nosuperwidemode_txt">"Beim Ultraweitwinkelobjektiv können Sie eine Priorität wählen. Mit „Bildqualität priorisieren“ können Sie dynamische Bilder in hoher Qualität aufnehmen. Wenn Sie „Korrektur bei Bildverzeichn. prioris.“ auswählen, können Sie die visuelle Verzerrung reduzieren.
+Diese Funktionen werden bei Nutzung des Objektivs im Fotomodus aktiviert. Sie können die Einst. in den Kameraeinst. ändern."</string>
+    <string name="cam_strings_feature_lens_correction_description_txt">Beim Ultraweitwinkelobjektiv können Sie eine Priorität wählen. Mit „Bildqualität priorisieren“ können Sie dynamische Bilder in hoher Qualität aufnehmen. Wenn Sie „Korrektur bei Bildverzeichn. prioris.“ auswählen, können Sie die visuelle Verzerrung reduzieren. Diese Funktionen werden bei Nutzung des Objektivs im Fotomodus aktiviert. Ändern Sie die Einst. unter „Objektivkorrektur (Foto)“.</string>
+    <string name="cam_strings_feature_level_description_txt">"Wenn Sie das Level einschalten, können Sie die Kameraneigung mit einer Anzeige überprüfen.
+Die Anzeige wird grün, wenn die Kamera waagerecht steht.
+Dies ist nützlich, wenn Sie die Horizontlinie bei Landschaftsaufnahmen beibehalten möchten.
+
+Sie können die Einstellungen dieser Funktion in den Kameraeinstellungen unter „Level“ ändern."</string>
+    <string name="cam_strings_feature_level_subtitle_txt">Fotos mit dem Level aufnehmen</string>
+    <string name="cam_strings_feature_level_title_txt">Level</string>
+    <string name="cam_strings_feature_list_banner_txt">Neuen Funktionen anschauen</string>
+    <string name="cam_strings_feature_list_new_title_txt">So verwenden Sie die neuen Funktionen</string>
+    <string name="cam_strings_feature_list_other_title_txt">So verwenden Sie die Funktionen</string>
+    <string name="cam_strings_feature_list_title_txt">Funktionen im Überblick</string>
+    <string name="cam_strings_feature_long_ss_description_txt">"Sie können die Verschlusszeit im manuellen Modus auf bis zu 30 Sekunden setzen. Wenn Sie eine lange Verschlusszeit verwenden, halten Sie die Kamera ruhig, um ein schönes Foto zu machen.
+Sie können Nachtszenen oder bewegte Objekte mit tollem Effekt aufnehmen."</string>
+    <string name="cam_strings_feature_long_ss_subtitle_txt">Verschlusszeit ändern</string>
+    <string name="cam_strings_feature_long_ss_title_txt">Verschlusszeit</string>
+    <string name="cam_strings_feature_mono_description_txt">"Sie können ganz einfach künstlerische Fotos und Videos in High-Definition aufnehmen.
+Um diesen Modus zu verwenden, tippen Sie im Sucher auf das MODUS-Symbol und wählen Sie dann „Monochrom“."</string>
+    <string name="cam_strings_feature_mono_subtitle_txt">Monochrom</string>
+    <string name="cam_strings_feature_mono_title_txt">Monochrom</string>
+    <string name="cam_strings_feature_night_mode_description_txt">"Sie können auch nachts oder bei Dunkelheit klare Fotos machen.
+Es kann einige Zeit dauern, bis das Bild nach der Aufnahme vollständig verarbeitet ist. Halten Sie die Kamera daher ruhig, bis die Aufnahme fertig ist."</string>
+    <string name="cam_strings_feature_night_mode_subtitle_txt">Nachtmodus</string>
+    <string name="cam_strings_feature_night_mode_title_txt">Nachtmodus</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_all_lang_txt">Nachtmodus</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_txt">Nachtmodus</string>
+    <string name="cam_strings_feature_night_shooting_title_all_lang_txt">Nachtmodus</string>
+    <string name="cam_strings_feature_night_shooting_title_txt">Nachtmodus</string>
+    <string name="cam_strings_feature_oneshot_description_txt">"Nehmen Sie spontan e. Moment in Zeitlupe mit %1$s BpS auf. Tippen Sie auf d. Taste i. d. Mitte des Bildschirms.
+Aufnahmen in heller Umgebung erzielen eine bessere Qualität."</string>
+    <string name="cam_strings_feature_oneshot_subtitle_txt">Super Slow Motion (eine Aufnahme)</string>
+    <string name="cam_strings_feature_portrait_bokeh_description_txt">"Um den Bokeh-Effekt für Porträts einzustellen, tippen Sie im Sucher auf das Bokeh-Symbol und bewegen Sie den Schieber.
+Diese Funktion wird im Fotomodus unterstützt.
+Sorgen Sie dafür, dass Ihre Motive mit beeindruckendem Kontrast hervorgehoben werden, indem der Hintergrund verwischt wird."</string>
+    <string name="cam_strings_feature_portrait_bokeh_subtitle_txt">Porträtfotos mit Bokeh-Effekt erstellen</string>
+    <string name="cam_strings_feature_portrait_bokeh_title_txt">Porträt-Bokeh-Effekt</string>
+    <string name="cam_strings_feature_portrait_selfie_description_txt">"Nehmen Sie ein künstlerisches Selfie mit Bokeh auf und fügen Sie Beauty-Effekte hinzu.
+Um diesen Modus zu verwenden, tippen Sie im Sucher auf das MODUS-Symbol und wählen Sie dann „Portrait-Selfie“.
+Stylen Sie Ihr Selfie und freuen Sie sich über das kreative Ergebnis."</string>
+    <string name="cam_strings_feature_portrait_selfie_subtitle_txt">Porträt-Selfie</string>
+    <string name="cam_strings_feature_portrait_selfie_title_txt">Porträt-Selfie</string>
+    <string name="cam_strings_feature_predictive_launch_description_txt">"Sie können die Kamera schnell starten: Heben Sie das Gerät im Querformat schnell an und richten Sie die Kamera auf das Objekt. Die Kamera wird automatisch gestartet.
+Sie können in den Kameraeinstellungen von „Smart-Start“ auswählen, wie Sie diese Funktion nutzen möchten."</string>
+    <string name="cam_strings_feature_predictive_launch_subtitle_txt">Smart-Start</string>
+    <string name="cam_strings_feature_predictive_launch_title_txt">Smart-Start</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"Durch das Scannen eines QR Codes können Sie schnell aufs Internet zugreifen oder eine WLAN-Verbindung herstellen.
+Diese Funktion ist im Fotomodus aktiv. Sie können die Einstellung in den Kameraeinstellungen unter „QR Code-Scanner“ ändern."</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code-Scanner</string>
+    <string name="cam_strings_feature_qrcode_notification_channel_txt">QR Code-Scanner</string>
+    <string name="cam_strings_feature_selfie_description_txt">"Wenn Sie Fotos mit der Frontkamera aufnehmen, schauen Sie in das Objektiv der Frontkamera in der Nähe der Hörmuschel.
+Ihre Augen sehen auf einem Foto dann in die richtige Richtung."</string>
+    <string name="cam_strings_feature_selfie_subtitle_txt">Blickrichtung</string>
+    <string name="cam_strings_feature_selfie_title_txt">Frontkamera</string>
+    <string name="cam_strings_feature_sidesense_bar_description_txt">"Sie können Fotos oder Videos durch Doppeltippen auf den Sensor am Bildschirmrand anstelle des Auslösers aufnehmen.
+Der Fotomodus und der manuelle Modus unterstützen diese Funktion. Sie können diese Funktion in den Kameraeinstellungen von Side Sense ändern."</string>
+    <string name="cam_strings_feature_sidesense_description_txt">"Sie können ein Foto oder Video aufnehmen, indem Sie einfach den Sensor auf der Seite des Displays anstelle des Auslöseknopfs zweimal antippen.
+Sowohl der Foto- als auch der Videomodus unterstützen diese Funktion. Sie können die Funktion in den Kameraeinstellungen von [Side Sense] ändern."</string>
+    <string name="cam_strings_feature_sidesense_subtitle_txt">Side Sense</string>
+    <string name="cam_strings_feature_sidesense_title_txt">Side Sense</string>
+    <string name="cam_strings_feature_slowmotion_description_txt">Sie können ein Video mit mehreren Abschn. in Zeitlupe aufnehmen (Zeitlupe mit 120 BpS)</string>
+    <string name="cam_strings_feature_slowmotion_subtitle_txt">Slow Motion</string>
+    <string name="cam_strings_feature_slowmotion_title_txt">Slow Motion</string>
+    <string name="cam_strings_feature_superslow_description_txt">"Erstellen Sie ein tolles Video, indem Sie einen besonderen Moment in Zeitlupe zeigen. Nehmen Sie Videos in heller Umgebung auf, um eine bessere Qualität zu erreichen.
+Um diesen Modus zu verwenden, tippen Sie im Sucher auf das MODUS-Symbol und wählen Sie dann „Slow Motion“. Außerdem können Sie in den Einstellungen des Zeitlupenmodus verschiedene Optionen auswählen."</string>
+    <string name="cam_strings_feature_superslow_subtitle_txt">Super Slow Motion</string>
+    <string name="cam_strings_feature_transfer_and_tagging_description_txt">"Ist diese Funktion an, kann „Transfer &amp; Tagging add-on“ mit der Xperia Kamera aufgenommene Fotos anzeigen. Fotos werden im internen Speicher gespeichert.
+Im Fotomodus/manuellen Modus gemachte Fotos werden von dieser Funktion unterstützt.
+In den Kameraeinstellungen können Sie die Einstellungen von „Transfer &amp; Tagging add-on“ ändern."</string>
+    <string name="cam_strings_feature_transfer_and_tagging_subtitle_txt">Mit „Transfer &amp; Tagging add-on“ verknüpfen</string>
+    <string name="cam_strings_feature_transfer_and_tagging_title_txt">„Transfer &amp; Tagging add-on“-Modus</string>
+    <string name="cam_strings_feature_triple_camera_button_description_new_txt">"Sie können ganz einfach zwischen den Objektiven wechseln, um jede Situation nach Ihren Vorstellungen aufzunehmen.
+Tippen Sie auf die Taste im Sucher, um zwischen Ultraweitwinkel-, Weitwinkel- und Teleobjektiv zu wechseln.
+Sie können diese Funktion im Foto- und Videomodus verwenden."</string>
+    <string name="cam_strings_feature_triple_camera_button_description_txt">"Sie können ganz einfach zwischen den Objektiven wechseln, um jede Situation nach Ihren Vorstellungen aufzunehmen.
+Tippen Sie auf die Taste im Sucher, um zwischen den Winkeln x1, x2 und ultraweit zu wechseln.
+Sie können diese Funktion im Foto- und Videomodus verwenden."</string>
+    <string name="cam_strings_feature_triple_camera_button_subtitle_txt">Winkel mit der Taste wechseln</string>
+    <string name="cam_strings_feature_triple_camera_button_with_zoom_ratio_description_txt">"Sie können ganz einfach zwischen den Objektiven wechseln, um jede Situation nach Ihren Vorstellungen aufzunehmen.
+Tippen Sie auf die Taste im Sucher, um zwischen den Winkeln 0,6x (Ultraweitwinkel), 1x (Weitwinkel) und 2x (Teleobjektiv) zu wechseln.
+Sie können diese Funktion im Fotomodus und im Videomodus verwenden."</string>
+    <string name="cam_strings_feature_triple_camera_how_to_zoom_subtitle_txt">So zoomen Sie hinein/heraus</string>
+    <string name="cam_strings_feature_triple_camera_title_txt">Dreifach-Kamera</string>
+    <string name="cam_strings_feature_triple_camera_wide_description_txt">"Dieses Objektiv ist für Landschaftsaufnahmen geeignet, da es ein breiteres Feld erfasst.
+Sie müssen auf das Ultraweitwinkelobjektiv umschalten, bevor Sie die Einstellungen für den Ultraweitwinkel ändern."</string>
+    <string name="cam_strings_feature_triple_camera_wide_subtitle_txt">Aufnahme mit Ultraweitwinkelobjektiv</string>
+    <string name="cam_strings_feature_triple_camera_zoom_description_txt">"Bewegen Sie die Taste im Sucher nach links oder rechts, um den Schieber anzuzeigen. Sie können die Zoomstufe mit dem Schieber anpassen.
+Die Zoomstufe kann mit der Lautstärketaste oder durch Zusammendrücken der Finger auf dem Display eingestellt werden."</string>
+    <string name="cam_strings_feature_triple_camera_zoom_plus_zoom_frames_description_txt">"Bewegen Sie die Taste im Sucher nach links oder rechts, um den Schieber anzuzeigen. Sie können die Zoomstufe mit dem Schieber anpassen.
+Die Zoomstufe kann mit den Lautstärketasten oder durch Zusammendrücken der Finger auf dem Display eingestellt werden.
+Im Fotomodus können Sie Rahmen für eine Vorschau des Hineinzoomens anzeigen. Diese Einstellung können Sie über „Zoomkompositionsunterstützung“ in den Kameraeinstellungen ändern."</string>
+    <string name="cam_strings_feature_triple_camera_zoom_subtitle_txt">Zoomen mit Schieber</string>
+    <string name="cam_strings_feature_zoom_frames_description_txt">"Wenn Sie diese Einstellung aktivieren, können Sie eine Vorschau des Hineinzoomens anzeigen.
+Zentrieren Sie das Objekt in einem Rahmen und tippen Sie auf den Zoomfaktor, um auf einfache Weise hineinzuzoomen.
+Diese Funktion wird nicht unterstützt, wenn „Standbildgröße“ auf 21:9 festgelegt ist."</string>
+    <string name="cam_strings_file_delete_confirm_title_txt">Löschen</string>
+    <string name="cam_strings_file_delete_confirm_txt">Diese Datei löschen?</string>
+    <string name="cam_strings_file_format_description_txt">Wählen Sie einen Encoder für 4K-Video aus</string>
+    <string name="cam_strings_file_format_sub_description_h264_txt">Standardformat für die Kodierung. Die meisten Geräte und Dienste unterstützen dieses Format.</string>
+    <string name="cam_strings_file_format_sub_description_h265_txt">Format mit hohem Kompressionsgrad. Prüfen Sie, ob die Geräte oder Dienste dieses Format unterstützen.</string>
+    <string name="cam_strings_file_share_title_txt">Freigeben</string>
+    <string name="cam_strings_flash_fill_flash_txt">Aufhellblitz</string>
+    <string name="cam_strings_flash_night_portrait_hint_txt">Halten Sie das Gerät ruhig</string>
+    <string name="cam_strings_flash_night_portrait_txt">Blitz bei Nachtportrait</string>
+    <string name="cam_strings_flash_pro_txt">Blitzmodus</string>
+    <string name="cam_strings_flash_red_eye_reduc_txt">Rote-Augen-Korrektur</string>
+    <string name="cam_strings_flash_title_txt">Blitz</string>
+    <string name="cam_strings_flash_torch_txt">Taschenlampe</string>
+    <string name="cam_strings_flash_txt">Blitz</string>
+    <string name="cam_strings_focus_af_c_txt">Nachführ-AF</string>
+    <string name="cam_strings_focus_af_s_txt">Einzelbild-AF</string>
+    <string name="cam_strings_focus_mf_txt">Manuellfokus</string>
+    <string name="cam_strings_focus_mode_face_detection_txt">Gesichtserkenn.</string>
+    <string name="cam_strings_focus_mode_infinity_txt">Unendlich</string>
+    <string name="cam_strings_focus_mode_macro_txt">Makro</string>
+    <string name="cam_strings_focus_mode_multi_af_txt">Multi-Autofokus</string>
+    <string name="cam_strings_focus_mode_object_tracking_txt">Objektverfolgung</string>
+    <string name="cam_strings_focus_mode_single_af_txt">Einzel-Autofokus</string>
+    <string name="cam_strings_focus_mode_title_txt">Fokusmodus</string>
+    <string name="cam_strings_focus_mode_touch_focus_txt">Sensorfokus</string>
+    <string name="cam_strings_focus_mode_txt">Fokusmodus</string>
+    <string name="cam_strings_forced_change_flash_off_txt">Blitzmodus ausgeschaltet, um Nachtaufnahmen zu machen</string>
+    <string name="cam_strings_forced_change_night_shooting_auto_txt">Nachtaufn. auf Auto gestellt, um Blitzmodus zu verwenden</string>
+    <string name="cam_strings_front_cam_location_guide_txt">Kameraobjektiv wie in der Abbildung positioniert</string>
+    <string name="cam_strings_fusion_error_too_close_txt">Bewegen Sie sich weiter weg vom Objekt</string>
+    <string name="cam_strings_fusion_on_txt">Extrem hohe Empfindlichkeit</string>
+    <string name="cam_strings_fusion_setting_txt">Dual-Kamera-Umschalter</string>
+    <string name="cam_strings_geotagging_title_txt">Ort speichern</string>
+    <string name="cam_strings_geotagging_txt">Ort speichern</string>
+    <string name="cam_strings_get_more_modes_txt">Apps</string>
+    <string name="cam_strings_global_setting_softskin_available_applications_txt">Verfügbare Anwendungen</string>
+    <string name="cam_strings_global_setting_softskin_brighten_skin_txt">Rosige Haut</string>
+    <string name="cam_strings_global_setting_softskin_detail_txt">Lassen Sie Ihre Haut rosig und glatt erscheinen. Den Effekt können Sie in Anwendungen nutzen, die die Frontkamera verwenden. Verfügbar für Fotos und Videos. Auch die Stärke kann angepasst werden.</string>
+    <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Stärkeanpassung</string>
+    <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Glatte Haut</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"App kann nicht gestartet werden.
+Vergewissern Sie sich, dass die aktuelle Version von %1$s auf Ihrem Gerät installiert und aktiviert ist."</string>
+    <string name="cam_strings_gridline_txt">Gitterlinien</string>
+    <string name="cam_strings_hand_shutter_hint_detail_txt">Richten Sie Ihre Handfläche zur Kamera. Der Selbstauslöser wird eingeschaltet, wenn Ihre Handfläche erkannt wird. Strecken Sie die Finger nach oben, um den Erkennungsvorgang zu erleichtern.</string>
+    <string name="cam_strings_hand_shutter_hint_txt">Richten Sie Ihre Handfläche zur Kamera</string>
+    <string name="cam_strings_hand_shutter_txt">Handverschluss</string>
+    <string name="cam_strings_hdr_dro_settings_dro_txt">Dynamikbereichoptimierer</string>
+    <string name="cam_strings_hdr_dro_settings_hdr_txt">Auto HDR</string>
+    <string name="cam_strings_hdr_dro_settings_txt">DRO/Auto HDR</string>
+    <string name="cam_strings_hdr_guide_txt">Da HDR zwei Bilder der gleichen Szene aufnimmt und kombiniert, ist diese Funktion nur bei unbewegten Objekten geeignet.</string>
+    <string name="cam_strings_hdr_title_txt">HDR</string>
+    <string name="cam_strings_hdr_txt">HDR</string>
+    <string name="cam_strings_help_txt">Hilfe</string>
+    <string name="cam_strings_histogram_txt">Histogramm</string>
+    <string name="cam_strings_iburst_feedback_txt">Vorherges.</string>
+    <string name="cam_strings_image_quality_control_button_cancel_txt">Abbrechen</string>
+    <string name="cam_strings_image_quality_control_button_clear_txt">Löschen</string>
+    <string name="cam_strings_image_quality_control_button_reset_txt">Zurücksetzen</string>
+    <string name="cam_strings_image_quality_control_tab_focus_txt">Fokus</string>
+    <string name="cam_strings_image_size_txt">Standbildgröße</string>
+    <string name="cam_strings_image_stabilizer_title_txt">Bildstabilisator</string>
+    <string name="cam_strings_image_stabilizer_txt">Bildstabilisator</string>
+    <string name="cam_strings_intelligent_burst_txt">Vorhersagende Aufnahme</string>
+    <string name="cam_strings_intelligent_wind_filter_txt">Intelligenter Windfilter</string>
+    <string name="cam_strings_iso_changed_txt">Der ISO-Wert wurde auch geändert</string>
+    <string name="cam_strings_launch_with_camera_key_txt">Mit Verschlusstaste starten</string>
+    <string name="cam_strings_lens_correction_for_photo_description_added_txt">Hinweis: Die Objektivkorrektur wird bei der Aufnahme von Bildfolgen deaktiviert.</string>
+    <string name="cam_strings_lens_correction_for_photo_description_txt">Bei der Verwendung des Ultraweitwinkelobjektiv können Sie eine Priorität auswählen. Mit „Bildqualität priorisieren“ können Sie dynamische Bilder in hoher Qualität aufnehmen. Wenn Sie „Korrektur bei Bildverzeichn. prioris.“ auswählen, können Sie die visuelle Verzerrung reduzieren.</string>
+    <string name="cam_strings_lens_correction_for_photo_nosuperwidemode_txt">Ultraweitwinkelobjektivkorrektur (Foto)</string>
+    <string name="cam_strings_lens_correction_for_photo_pro_txt">Ultraweitwinkelobjektivkorrektur</string>
+    <string name="cam_strings_lens_correction_for_photo_txt">Objektivkorrektur (Foto)</string>
+    <string name="cam_strings_lens_correction_off_txt">Bildqualität priorisieren</string>
+    <string name="cam_strings_lens_correction_on_txt">Korrektur bei Bildverzeichn. prioris.</string>
+    <string name="cam_strings_lens_correction_txt">Objektivkorrektur</string>
+    <string name="cam_strings_lens_switch">Objektivwinkel wechseln</string>
+    <string name="cam_strings_level_meter_calibration_txt">Levelkalibrierung</string>
+    <string name="cam_strings_level_pro_txt">Level</string>
+    <string name="cam_strings_level_txt">Level</string>
+    <string name="cam_strings_long_press_burst_best_txt">Standard</string>
+    <string name="cam_strings_long_press_burst_high_txt">Schnelle Folge</string>
+    <string name="cam_strings_long_press_burst_txt">Bildfolge mit Gedrückthalten</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_title_txt">Fotografieren mit Dual-Kamera</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_txt">Bleiben Sie mindestens 1 Meter vom Objekt entfernt, wenn Sie mit eingeschalteter Dual-Kamera fotografieren. Wenn Sie zu nah am Objekt sind, können sich Blickpunkt oder Farbe ändern.</string>
+    <string name="cam_strings_manual_fusion_tutorial_title_txt">Zu Dual-Kamera wechseln</string>
+    <string name="cam_strings_manual_fusion_tutorial_txt">Im manuellen Modus können Sie die Dual-Kamera ein- und ausschalten. Schalten Sie sie ein, um bei schlechten Lichtverhältnissen rauscharme Fotos aufzunehmen, und aus, um Nahaufnahmen zu machen.</string>
+    <string name="cam_strings_max_file_size_save_failed_txt">Aufnahme gestoppt, da maximale Dateigröße erreicht wurde</string>
+    <string name="cam_strings_max_recording_time_save_failed_txt">Aufnahme gestoppt, da maximale Aufnahmezeit erreicht wurde</string>
+    <string name="cam_strings_memory_full_save_failed_txt">Konnte nicht gespeichert werden. Speicher voll.</string>
+    <string name="cam_strings_memory_full_zoom_not_supported_txt">Speicher ist voll. Zoom ist derzeit nicht verfügbar.</string>
+    <string name="cam_strings_metering_multi_cy_txt">Multi</string>
+    <string name="cam_strings_mf_assist_txt">MF-Unterstützung</string>
+    <string name="cam_strings_mfnr_txt">Multiframe-Rauschminderung</string>
+    <string name="cam_strings_microphone_title_txt">Mikrofon</string>
+    <string name="cam_strings_modeselector_addon_installed_txt">Installiert</string>
+    <string name="cam_strings_monochrome_photo_txt">Monochromes Foto</string>
+    <string name="cam_strings_monochrome_title_txt">Monochrom</string>
+    <string name="cam_strings_monochrome_video_txt">Monochromes Video</string>
+    <string name="cam_strings_more_common_setting_title_txt">Allgemeine Einstellungen</string>
+    <string name="cam_strings_more_txt">Mehr</string>
+    <string name="cam_strings_mr_txt">Im Speicherabruf %d registriert</string>
+    <string name="cam_strings_multi_window_txt">Ziehen Sie die Mitte des Fensterteilers, um zum Vollbildmodus zu wechseln und %1$s verwenden zu können</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Ein weiteres Gerät ist nun verbunden.
+Möchten Sie das Bild über den Sucher für das Gerät freigeben?"</string>
+    <string name="cam_strings_multicam_add_device_txt">Gerät hinzufügen</string>
+    <string name="cam_strings_multicam_add_more_txt">Mehr hinzufügen</string>
+    <string name="cam_strings_multicam_apply_txt">Fertig</string>
+    <string name="cam_strings_multicam_connection_failure_dialog_txt">Verbindung konnte nicht hergestellt werden</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Verbindung mit WLAN/NFC-Kamera von Sony kann nicht hergestellt werden, wenn Ihr Xperia mit einem anderen Xperia verbunden ist.</string>
+    <string name="cam_strings_multicam_error_app_ver_old_txt">App-Version stimmt nicht überein. Verbindung kann nicht hergestellt werden. Ihre App muss aktualisiert werden.</string>
+    <string name="cam_strings_multicam_error_disconnect_txt">Getrennt</string>
+    <string name="cam_strings_multicam_error_nfc_txt">Fehlgeschlagen, da NFC gesperrt ist.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">Diese Modus ist während einer WLAN-Anbindung nicht verfügbar.</string>
+    <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">Es wurde die maximale Anzahl von Geräten hinzugefügt.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Nur ein WLAN oder eine NFC-Kamera von Sony kann mit einem Xperia gleichzeitig verbunden werden.</string>
+    <string name="cam_strings_multicam_nfc_connect_title_txt">Geräte zum Verbinden zusammenführen.</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">WLAN/NFC-Kamera von Sony</string>
+    <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
+    <string name="cam_strings_multicam_nfc_touch_to_beam_title_txt">Tippen Sie auf das Display</string>
+    <string name="cam_strings_multicam_security_info_txt">Wenn das Gerät, mit dem Sie sich verbinden, über diese App auch mit anderen Xperia Geräten verbunden ist, verbindet sich Ihr Xperia automatisch mit diesen Geräten und jedes Bild wird über den Sucher für Ihr Xperia und alle anderen verbundenen Geräte freigegeben.</string>
+    <string name="cam_strings_multicam_touch_add_camera_desc_txt">Tippen, um ein Gerät hinzuzufügen. Bild wird über den Sucher hier angezeigt.</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Verbindung mit einem Xperia kann nicht hergestellt werden, wenn Ihr Xperia mit WLAN oder einer NFC-Kamera von Sony verbunden ist.</string>
+    <string name="cam_strings_night_mode_hint_txt">Nachtmodus</string>
+    <string name="cam_strings_night_shooting_hint_txt">Nachtmodus</string>
+    <string name="cam_strings_not_zoom_for_full_hd_60fps_video_txt">Zoom unter 1x für Full HD-Videogrößen (60 BpS) nicht verfügbar</string>
+    <string name="cam_strings_not_zoom_txt">Zoom unter 1x für 4K- oder Full HD-Videogrößen (60 BpS) nicht verfügbar</string>
+    <string name="cam_strings_ok_txt">OK</string>
+    <string name="cam_strings_only_main_txt">Nur Hauptkamera</string>
+    <string name="cam_strings_peaking_display_txt">Kantenanhebung anzeigen</string>
+    <string name="cam_strings_permgroupdesc_thermalmitigation_message_txt">Erlauben Sie der App, für eine stabile Aufnahme das System zu steuern, abhängig von der Temperatur im Gerät.</string>
+    <string name="cam_strings_permgrouplab_thermalmitigation_txt">das System zu steuern</string>
+    <string name="cam_strings_photo_autoreview_txt">Automatische Fotovorschau</string>
+    <string name="cam_strings_photometry_average_txt">Durchschnitt</string>
+    <string name="cam_strings_photometry_center_txt">Mitte</string>
+    <string name="cam_strings_photometry_face_txt">Gesicht</string>
+    <string name="cam_strings_photometry_pro_txt">Messmodus</string>
+    <string name="cam_strings_photometry_spot_txt">Spot</string>
+    <string name="cam_strings_photometry_title_txt">Messung</string>
+    <string name="cam_strings_photometry_touch_txt">Berühren</string>
+    <string name="cam_strings_photometry_txt">Messung</string>
+    <string name="cam_strings_pleaking_color_txt">Kantenanhebungsfarbe</string>
+    <string name="cam_strings_preaf_txt">Vor-AF</string>
+    <string name="cam_strings_predictive_capture_description_txt">Bilder werden automatisch aufgenommen, indem ein Lächeln oder eine Bewegung des Motivs kurz vor dem Drücken des Auslösers erkannt wird. Sie können Ihr Lieblingsfoto aus bis zu vier aufgenommenen Fotos auswählen. So erhalten Sie die perfekte Aufnahme.</string>
+    <string name="cam_strings_predictive_capture_feedback_txt">Vorherges.</string>
+    <string name="cam_strings_predictive_capture_txt">Vorhersagende Aufnahme</string>
+    <string name="cam_strings_predictive_launch_description_txt">Sie können die Kamera automatisch starten: Heben Sie das Gerät im Querformat schnell an und richten Sie die Kamera auf das Objekt.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Die Kamera hat erkannt, dass Sie das Telefon im Querformat angehoben und auf ein Objekt gerichtet haben und wurde automatisch gestartet.
+Sie können in den Kameraeinstellungen von „Vorausschauender Start“ auswählen, wie Sie diese Funktion nutzen möchten."</string>
+    <string name="cam_strings_predictive_launch_guide_2_txt">Tippen Sie zur Aufnahme innerhalb des Kreises</string>
+    <string name="cam_strings_predictive_launch_guide_3_txt">Berühren Sie zur Aufnahme das Display</string>
+    <string name="cam_strings_predictive_launch_guide_circle_txt">Tippen Sie in den Kreis, um in Vollbildmodus zu wechseln</string>
+    <string name="cam_strings_predictive_launch_guide_txt">Tippen Sie innerhalb des Kreises, um die Kamera zu starten</string>
+    <string name="cam_strings_predictive_launch_launch_and_capture_txt">Tippen zum Starten/Aufn.</string>
+    <string name="cam_strings_predictive_launch_launch_only_txt">Zum Starten tippen</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_and_capture_txt">Tippen Sie innerhalb des Kreises. Die Kamera wird dann im Vollbildmodus gestartet und ein Foto wird gleichzeitig aufgenommen.</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_only_txt">Tippen Sie innerhalb des Kreises und die Kamera wird im Vollbildmodus gestartet.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Sie können die Kamera schnell starten: Heben Sie das Gerät im Querformat schnell an und richten Sie die Kamera auf das Objekt. Die Kamera wird automatisch gestartet.
+Sie können in den Kameraeinstellungen von „Smart-Start“ auswählen, wie Sie diese Funktion nutzen möchten."</string>
+    <string name="cam_strings_predictive_launch_tutorial_title_txt">Smart-Start</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Sie können die Kamera schnell starten: Halten Sie das Gerät im Querformat und richten Sie die Kamera auf das Objekt. Die Kamera wird automatisch gestartet.
+Sie können diese Funktion in den Kameraeinstellungen der Funktion „Smart-Start“ deaktivieren."</string>
+    <string name="cam_strings_predictive_launch_txt">Smart-Start</string>
+    <string name="cam_strings_preview_always_txt">Ein</string>
+    <string name="cam_strings_preview_duration_3sec_txt">3 Sekunden</string>
+    <string name="cam_strings_preview_duration_5sec_txt">5 Sekunden</string>
+    <string name="cam_strings_preview_duration_title_txt">Vorschau</string>
+    <string name="cam_strings_preview_duration_txt">Vorschau</string>
+    <string name="cam_strings_preview_duration_unlimited_txt">Unbeschränkt</string>
+    <string name="cam_strings_preview_edit_txt">Bearbeiten</string>
+    <string name="cam_strings_preview_only_front_txt">Nur Frontkamera</string>
+    <string name="cam_strings_previous_txt">Zurück</string>
+    <string name="cam_strings_processing_capturing_photo_txt">Es wird ein Foto aufgenommen. Bitte warten.</string>
+    <string name="cam_strings_processing_loading_txt">Foto wird aufgenommen. Bitte Kamera ruhig halten.</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Zum Einrichten dieses Geräts tippen</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Dieser QR Code wird nicht unterstützt</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Tippen, um Link zu öffnen: \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Keine Verbindung mit diesem WLAN möglich</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Tippen zum Verbinden mit „%1$s“</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code-Scanner</string>
+    <string name="cam_strings_recommend_night_mode_txt">Tippen Sie hier, um den Nachtmodus zu verwenden</string>
+    <string name="cam_strings_recommend_night_mode_use_button_txt">Verwenden</string>
+    <string name="cam_strings_recommend_night_shooting_txt">Tippen Sie hier, um den Nachtmodus zu verwenden</string>
+    <string name="cam_strings_recording_txt">REC</string>
+    <string name="cam_strings_remember_geotag_title_txt">Ort speichern?</string>
+    <string name="cam_strings_remember_geotag_txt">Taggen Sie Ihre Fotos und Videos mit den Orten, an denen sie aufgenommen wurden. Sie können diese Einstellung später in den Kameraeinstellungen unter „Ort speichern“ ändern.</string>
+    <string name="cam_strings_remote_touch_to_start_txt">Tippen, um zu starten</string>
+    <string name="cam_strings_reset_color_brightness_txt">Farbe und Helligkeit zurücksetzen</string>
+    <string name="cam_strings_reset_settings_confirm_title_txt">Kameraeinstellungen auf Standard zurücksetzen?</string>
+    <string name="cam_strings_reset_settings_txt">Einstellungen zurücksetzen</string>
+    <string name="cam_strings_reset_txt">Zurücksetzen</string>
+    <string name="cam_strings_resolution_title_txt">Auflösung</string>
+    <string name="cam_strings_resolution_txt">Auflösung</string>
+    <string name="cam_strings_restricted_mf_touchfocus_txt">Fokuseinstellung auf AF ändern, um Sensorfokus zu verwenden</string>
+    <string name="cam_strings_restricted_setting_dialog_title_txt">Änderung nicht möglich</string>
+    <string name="cam_strings_restricted_setting_photo_long_shutter_speed_txt">Diese Einstellung unterstützt nicht die aktuelle Verschlusszeit. Um die Einstellung zu konfigurieren, ändern Sie die Verschlusszeit auf 1 Sekunde oder weniger.</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_or_scene_txt">Diese Einstellung wird für die aktuelle Auflösung oder Szene nicht unterstützt. Ändern Sie die Auflösung oder Szenenwahl, um die Einstellung zu konfigurieren.</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_txt">Diese Einstellung unterstützt nicht die aktuelle Standbildgröße. Um diese Einstellung zu konfigurieren, ändern Sie die Größe des Standbildes.</string>
+    <string name="cam_strings_restricted_setting_scene_txt">Diese Einstellung wird für die aktuelle Szene nicht unterstützt. Ändern Sie die Szenenwahl, um die Einstellung zu konfigurieren.</string>
+    <string name="cam_strings_restricted_setting_slow_motion_txt">Die Videogröße kann im Zeitlupenmodus nicht geändert werden. Beenden Sie den Zeitlupenmodus, um diese Einstellung zu konfigurieren.</string>
+    <string name="cam_strings_restricted_setting_transfer_and_tagging_txt">Diese Einstellung ist nicht verfügbar, wenn der „Transfer &amp; Tagging add-on“-Modus aktiviert ist. Bitte deaktivieren Sie den Modus, um diese Einstellung zu ändern.</string>
+    <string name="cam_strings_restricted_setting_video_hdr_hlg_txt">Diese Einstellung ist nicht verfügbar, wenn HDR eingeschaltet ist. Schalten Sie HDR aus, um sie zu konfigurieren.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_or_scene_txt">Diese Einstellung wird für die aktuelle Videoauflösung oder Szene nicht unterstützt. Ändern Sie die Videoauflösung oder Szenenwahl, um die Einstellung zu konfigurieren.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_txt">Diese Einstellung wird für die aktuelle Videogröße nicht unterstützt. Ändern Sie die Videogröße, um die Einstellung zu konfigurieren.</string>
+    <string name="cam_strings_restriction_info_correction_for_distortion_txt">Objektivkorrektur bei Verwendung des Bokeh-Effekts nicht verfügbar</string>
+    <string name="cam_strings_restriction_information_txt">Abhängig von dieser Einstellung können die folgenden Funktionen deaktiviert oder automatisch geändert werden:</string>
+    <string name="cam_strings_runtime_permission_continue_button_txt">APP-INFO</string>
+    <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s benötigt die folgenden Berechtigungen</string>
+    <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s-Berechtigung</string>
+    <string name="cam_strings_runtime_permission_dialog2_message1_txt">Die App benötigt die folgenden Berechtigungen, um diese Aktion durchzuführen.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Um Berechtigungen zu erteilen, gehen Sie zu App-Info > Berechtigungen.</string>
+    <string name="cam_strings_runtime_permission_dialog2_title_txt">Fortfahren nicht möglich</string>
+    <string name="cam_strings_runtime_permission_rationale_camera_txt">Um Fotos und Videos aufzunehmen</string>
+    <string name="cam_strings_runtime_permission_rationale_location_txt">Um den Standort abzurufen</string>
+    <string name="cam_strings_runtime_permission_rationale_microphone_txt">Um Ton aufzunehmen</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_cta_txt">Um Fotos und Videos zu lesen und zu speichern</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_txt">Um Fotos und Videos zu speichern</string>
+    <string name="cam_strings_s1_settings_txt">AF bei Auslösung</string>
+    <string name="cam_strings_save_destination_ims_txt">Interner Massenspeicher</string>
+    <string name="cam_strings_save_destination_sd_txt">SD-Karte</string>
+    <string name="cam_strings_save_destination_title_txt">Datenspeicher</string>
+    <string name="cam_strings_save_destination_txt">Datenspeicher</string>
+    <string name="cam_strings_saving_files_txt">Dateien werden gespeichert</string>
+    <string name="cam_strings_scene_selection_title_cy_txt">Szenenwahl</string>
+    <string name="cam_strings_scenes_anti_motion_blur_cy_txt">Anti-Bewegungsunschärfe</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_portrait_cy_txt">Hintergrundbel.-Porträt</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_txt">Hintergrundbeleuchtung</string>
+    <string name="cam_strings_scenes_auto_recog_gourmet_txt">Gourmet</string>
+    <string name="cam_strings_scenes_auto_recog_infant_cy_txt">Kleinkind</string>
+    <string name="cam_strings_scenes_auto_recog_landscape_txt">Landschaft</string>
+    <string name="cam_strings_scenes_auto_recog_low_light_cy_txt">Schwaches Licht</string>
+    <string name="cam_strings_scenes_auto_recog_softsnap_cy_txt">Soft Snap</string>
+    <string name="cam_strings_scenes_auto_recog_spotlight_cy_txt">Spotlicht</string>
+    <string name="cam_strings_scenes_auto_recog_text_txt">Dokument</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_portrait_cy_txt">Nachtaufnahme</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_txt">Nachtszene</string>
+    <string name="cam_strings_scenes_backlight_hdr_cy_txt">Gegenlichtkorrektur HDR</string>
+    <string name="cam_strings_scenes_beach_cy_txt">Strand</string>
+    <string name="cam_strings_scenes_beachsnow_txt">Strand und Schnee</string>
+    <string name="cam_strings_scenes_document_txt">Dokument</string>
+    <string name="cam_strings_scenes_fireworks_cy_txt">Feuerwerk</string>
+    <string name="cam_strings_scenes_gurumet_cy_txt">Gourmet</string>
+    <string name="cam_strings_scenes_handheld_twilight_cy_txt">Handgehalten bei Dämmerung</string>
+    <string name="cam_strings_scenes_high_sensitivity_cy_txt">Hohe Empfindlichkeit</string>
+    <string name="cam_strings_scenes_landscape_txt">Landschaft</string>
+    <string name="cam_strings_scenes_nightmode_txt">Nacht</string>
+    <string name="cam_strings_scenes_nightportrait_cy_txt">Nachtaufnahme</string>
+    <string name="cam_strings_scenes_nightscene_txt">Nachtszene</string>
+    <string name="cam_strings_scenes_party_txt">Party</string>
+    <string name="cam_strings_scenes_pet_cy_txt">Tiere</string>
+    <string name="cam_strings_scenes_pets_txt">Tiere</string>
+    <string name="cam_strings_scenes_snow_cy_txt">Schnee</string>
+    <string name="cam_strings_scenes_soft_skin_cy_txt">Soft Skin</string>
+    <string name="cam_strings_scenes_soft_snap_cy_txt">Soft Snap</string>
+    <string name="cam_strings_scenes_sports_txt">Sport</string>
+    <string name="cam_strings_scenes_txt">Szenen</string>
+    <string name="cam_strings_screen_pinned_txt">Bildschirm ist fixiert</string>
+    <string name="cam_strings_sd_permission_data_storage_info_txt">Im internen Speicher gespeichert</string>
+    <string name="cam_strings_sd_permission_dialog_continue_button_txt">WEITER</string>
+    <string name="cam_strings_sd_permission_dialog_message1_txt">Die App benötigt die folgenden Berechtigungen, um diese Aktion durchzuführen.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Um eine SD-Karte zu verwenden, benötigt die Kamera die Berechtigung zum Zugriff auf die SD-Karte.
+Ändern Sie den Datenspeicher wieder auf „SD-Karte“ oder gewähren Sie der Kamera im nächsten Bildschirm den Zugriff auf die SD-Karte."</string>
+    <string name="cam_strings_sd_permission_dialog_title_txt">SD-Karte nicht verfügbar</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Eine neue SD-Karte, die Berechtigungen anfragt, wurde erkannt.
+
+Um die SD-Karte als Datenspeicher zu verwenden, wählen Sie bitte im nächsten Bildschirm die SD-Karte oder das DCIM-Verzeichnis aus."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Die SD-Karte/das DCIM-Verzeichnis wurde nicht ausgewählt. Die SD-Karte kann nicht verwendet werden.
+
+Um Berechtigungen zu erteilen, müssen Sie die SD-Karte als Speicherort festlegen oder im nächsten Bildschirm das entsprechende Verzeichnis auswählen."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Eine neue SD-Karte erkannt, die Berechtigungen benötigt.
+Der interne Speicher wird daher als Standarddatenspeicher verwendet.
+
+Bitte ändern Sie in den Kameraeinstellungen den Datenspeicher auf SD-Karte, um die SD-Karte als Datenspeicher verwenden."</string>
+    <string name="cam_strings_sd_permission_rationale_txt">Um Fotos und Videos auf der SD-Karte zu speichern</string>
+    <string name="cam_strings_select_picture_txt">Foto auswählen</string>
+    <string name="cam_strings_self_timer_05_txt">0,5 Sek.</string>
+    <string name="cam_strings_self_timer_10_pro_txt">Selbstauslöser: 10 Sek.</string>
+    <string name="cam_strings_self_timer_10_txt">10 Sek.</string>
+    <string name="cam_strings_self_timer_2_txt">2 Sek.</string>
+    <string name="cam_strings_self_timer_3_pro_txt">Selbstauslöser: 3 Sek.</string>
+    <string name="cam_strings_self_timer_3_txt">3 Sek.</string>
+    <string name="cam_strings_self_timer_front_hint_10_txt">Selbstauslöser: 10 Sek.</string>
+    <string name="cam_strings_self_timer_front_hint_3_txt">Selbstauslöser: 3 Sek.</string>
+    <string name="cam_strings_self_timer_front_hint_off_txt">Selbstauslöser: Aus</string>
+    <string name="cam_strings_self_timer_hint_countdown_txt">Blicken Sie in die Kamera</string>
+    <string name="cam_strings_self_timer_photo_txt">Selbstauslöser (Standbilder)</string>
+    <string name="cam_strings_self_timer_txt">Selbstauslöser</string>
+    <string name="cam_strings_setting_common_title_txt">Allgemein</string>
+    <string name="cam_strings_setting_front_manual_title_txt">Manuell (Front)</string>
+    <string name="cam_strings_setting_front_photo_title_txt">Foto (Front)</string>
+    <string name="cam_strings_setting_front_video_title_txt">Video (Front)</string>
+    <string name="cam_strings_setting_main_title_txt">Kameraeinstellungen</string>
+    <string name="cam_strings_setting_manual_title_txt">Manuell</string>
+    <string name="cam_strings_setting_night_mode_title_txt">Nachtmodus-Einstellungen</string>
+    <string name="cam_strings_setting_night_shooting_title_txt">Nachtmodus-Einstellungen</string>
+    <string name="cam_strings_setting_photo_title_txt">Foto</string>
+    <string name="cam_strings_setting_slow_motion_title_txt">Slow Motion</string>
+    <string name="cam_strings_setting_tele_title_txt">Foto (Teleobjektiv)</string>
+    <string name="cam_strings_setting_tele_video_title_txt">Video (Teleobjektiv)</string>
+    <string name="cam_strings_setting_video_title_txt">Video</string>
+    <string name="cam_strings_setting_wide_title_txt">Foto (Ultraweitwinkel)</string>
+    <string name="cam_strings_setting_wide_video_title_txt">Video (Ultraweitwinkel)</string>
+    <string name="cam_strings_settings_always_on_txt">Immer eingeschaltet</string>
+    <string name="cam_strings_settings_auto_txt">Automatisch</string>
+    <string name="cam_strings_settings_off_txt">Aus</string>
+    <string name="cam_strings_settings_on_txt">Ein</string>
+    <string name="cam_strings_settings_save_photos_all_txt">Alle Fotos</string>
+    <string name="cam_strings_settings_save_photos_one_txt">Ausgewähltes Foto</string>
+    <string name="cam_strings_settings_save_photos_txt">Speichern</string>
+    <string name="cam_strings_shortcut_video_camera_txt">Videokamera</string>
+    <string name="cam_strings_shutter_trigger_txt">Automat. Aufnahme</string>
+    <string name="cam_strings_side_sense_bar_description_txt">"Sie können Fotos/Videos durch Doppeltippen auf den Sensor am Bildschirmrand anstelle des Auslösers aufnehmen.
+Der Fotomodus/manuelle Modus unterstützen diese Funktion.
+
+Die Funktion ist deaktiviert, wenn „Bedienung am Bildschirminnenrand“ i. den Side Sense-Einst. unter „Berührungsposition konfigurieren“ an ist."</string>
+    <string name="cam_strings_side_sense_description_txt">"Sie können ein Foto oder Video aufnehmen, indem Sie einfach den Sensor auf der Seite des Displays anstelle des Auslösers zweimal antippen.
+Sowohl der Foto- als auch der Videomodus unterstützen diese Funktion."</string>
+    <string name="cam_strings_side_touch_not_supported_txt">„Side Sense“ wird auf diesem Bildschirm nicht unterstützt</string>
+    <string name="cam_strings_side_touch_on_title_txt">Side Sense</string>
+    <string name="cam_strings_side_touch_on_txt">Gehen Sie zu Einstellungen > Display und aktivieren Sie „Side Sense“, um die Funktion zu nutzen. Jetzt aktivieren?</string>
+    <string name="cam_strings_side_touch_tutorial_title_txt">Side Sense</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Sie können ein Foto oder Video aufnehmen, indem Sie einfach auf den Sensor an der Seite des Displays anstelle des Auslösers doppeltippen. Sie können auch zoomen; bewegen Sie dazu Ihren Finger an dem Seitensensor entlang.
+Sowohl der Foto- als auch der Videomodus unterstützen diese Funktion. Sie können die Funktion in den Kameraeinstellungen von „Side Sense“ deaktivieren."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Sie können ein Foto oder Video aufnehmen, indem Sie im Hochformat einfach auf den Sensor an der Seite des Displays anstelle des Auslösers doppeltippen. Sie können auch zoomen; bewegen Sie dazu Ihren Finger an dem Seitensensor entlang.
+Der Foto- und der Videomodus unterstützen diese Funktion. Sie können die Funktion in den Side Sense-Kameraeinstellungen deaktivieren."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Sie können ein Foto oder Video aufnehmen, indem Sie im Hochformat einfach den Sensor auf der Seite des Displays anstelle des Auslösers zweimal antippen.
+Sowohl der Foto- als auch der Videomodus unterstützen diese Funktion. Sie können die Funktion in den Kameraeinstellungen von „Side Sense“ deaktivieren."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Sie können ein Foto oder Video aufnehmen, indem Sie einfach den Sensor auf der Seite des Displays anstelle des Auslösers zweimal antippen.
+Sowohl der Foto- als auch der Videomodus unterstützen diese Funktion. Sie können die Funktion in den Kameraeinstellungen von „Side Sense“ deaktivieren."</string>
+    <string name="cam_strings_side_touch_txt">Side Sense</string>
+    <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Aufnahmestil und Bildschirmauflösung können in den Kameraeinstellungen geändert werden</string>
+    <string name="cam_strings_slow_motion_settings_shot_txt">Extrem langsam (eine Aufnahme)</string>
+    <string name="cam_strings_slow_motion_settings_standard_txt">Zeitlupe</string>
+    <string name="cam_strings_slow_motion_settings_super_txt">Extreme Zeitlupe</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Sie können die BpS und den Aufnahmestil für die Zeitlupe ändern</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Weitere Optionen</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Nehmen Sie spontan e. Moment in Zeitlupe mit %1$s BpS auf. Tippen Sie auf d. Taste i. d. Mitte des Bildschirms.
+Aufnahmen in heller Umgebung erzielen eine bessere Qualität."</string>
+    <string name="cam_strings_slow_motion_shot_hint_1_txt">Sie können mit %1$s BpS aufnehmen, indem Sie auf die Taste in der Mitte tippen</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Nehmen Sie einen besonderen Moment sofort in Zeitlupe mit %1$s BpS auf, indem Sie auf die Taste in der Mitte des Bildschirms tippen.</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Extreme Zeitlupe (eine Aufnahme)</string>
+    <string name="cam_strings_slow_motion_shot_txt">Extreme Zeitlupe (eine Aufnahme)</string>
+    <string name="cam_strings_slow_motion_standard_hint_1_txt">Nehmen Sie ein Video mit %1$s BpS auf und wenden Sie Zeitlupeneffekte an</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_1_txt">Sie können ein Video in Slow Motion mit 120 BpS aufnehmen</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_2_txt">Nehmen Sie ein Video auf u. bearbeiten Sie es dann. Um bestimmte Abschnitte in Zeitlupe darzustellen, tippen Sie auf die Taste in der Mitte des Bildschirms.</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Zeitlupe</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">So nehmen Sie auf</string>
+    <string name="cam_strings_slow_motion_standard_txt">Zeitlupe</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Erstellen Sie ein tolles Video, indem Sie einen besonderen Moment in Zeitlupe zeigen.
+Nehmen Sie Videos in heller Umgebung auf, um eine bessere Qualität zu erreichen."</string>
+    <string name="cam_strings_slow_motion_super_hint_1_txt">Videos mit versch. Geschwindigkeiten aufnehmen: zu %1$s BpS wechseln</string>
+    <string name="cam_strings_slow_motion_super_hint_2_txt">Tippen Sie im richtigen Moment auf die Taste in der Mitte</string>
+    <string name="cam_strings_slow_motion_super_hint_3_txt">Zeitlupe aufgenommen</string>
+    <string name="cam_strings_slow_motion_super_tutorial_1_txt">Erstellen Sie ein tolles Video, indem Sie einen besonderen Moment in Zeitlupe zeigen</string>
+    <string name="cam_strings_slow_motion_super_tutorial_2_txt">Starten Sie die Videoaufnahme, indem Sie auf die Aufnahmetaste tippen</string>
+    <string name="cam_strings_slow_motion_super_tutorial_3_txt">Tippen Sie auf die Taste in der Mitte, um in Zeitlupe aufzunehmen. Tippen Sie zum Stoppen auf die Schaltfläche „Stopp“.</string>
+    <string name="cam_strings_slow_motion_super_tutorial_title_1_txt">Extreme Zeitlupe</string>
+    <string name="cam_strings_slow_motion_super_txt">Extreme Zeitlupe</string>
+    <string name="cam_strings_slow_motion_txt">Zeitlupenmodus</string>
+    <string name="cam_strings_smile_capture_big_txt">Großes Lächeln</string>
+    <string name="cam_strings_smile_capture_faint_txt">Kleines Lächeln</string>
+    <string name="cam_strings_smile_capture_normal_txt">Mittleres Lächeln</string>
+    <string name="cam_strings_smile_capture_txt">Lächelerkenn.</string>
+    <string name="cam_strings_smile_shutter_cy_txt">Auslösung bei Lächeln</string>
+    <string name="cam_strings_smile_shutter_title_cy_txt">Auslösung bei Lächeln</string>
+    <string name="cam_strings_snackbar_dependency_button_txt">Details</string>
+    <string name="cam_strings_snackbar_dependency_info_txt">Diese Änderung wirkte sich auf andere Einstellungen aus</string>
+    <string name="cam_strings_soft_skin_effect_cy_txt">Soft Skin-Effekt</string>
+    <string name="cam_strings_soft_skin_effect_title_cy_txt">Soft Skin-Effekt</string>
+    <string name="cam_strings_standard_txt">Standard</string>
+    <string name="cam_strings_steadyshot_cy_txt">SteadyShot™</string>
+    <string name="cam_strings_step_tutorial_title_txt">Schritt %1$s von %2$s</string>
+    <string name="cam_strings_store_fail_txt">Speichern nicht möglich</string>
+    <string name="cam_strings_superior_auto_brightness_txt">Helligkeit</string>
+    <string name="cam_strings_superior_auto_color_txt">Farbe</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_title_txt">Dual-Kamera</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_txt">Mit der Dual-Kamera können Sie auch nachts oder in einem schwach beleuchteten Raum schöne und rauscharme Fotos machen. Die Kamera schaltet automatisch zwischen Einzel- und Dual-Kamera um, basierend auf den Szenen, die mit extrem hoher Empfindlichkeit aufgenommen werden sollen.</string>
+    <string name="cam_strings_sw_licence_title_txt">Softwarelizenzen</string>
+    <string name="cam_strings_take_photo_txt">Fotografieren</string>
+    <string name="cam_strings_term_of_use_accept_txt">Akzeptieren</string>
+    <string name="cam_strings_term_of_use_consent_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Nutzungsbedingungen&lt;/a> von Sony zustimmen.</string>
+    <string name="cam_strings_term_of_use_data_charge_txt">Für Ihre Nutzung dieses Diensts fallen abhängig vom Datentarif möglicherweise Gebühren für mobile Daten an.</string>
+    <string name="cam_strings_term_of_use_data_collection_txt">Sony wird Ihre gehashte Android-ID (einmalige Gerätenummer), ortsbezogene Daten und Zeitstempel erfassen, um Ihnen im Rahmen und zur Verbesserung des Dienstes entsprechende Ergebnisse bereitzustellen.</string>
+    <string name="cam_strings_term_of_use_decline_txt">Ablehnen</string>
+    <string name="cam_strings_term_of_use_title_txt">Nutzungsbedingungen</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Nutzungsbedingungen&lt;/a></string>
+    <string name="cam_strings_timeshift_cancel_selection_txt">Fotos entfernen</string>
+    <string name="cam_strings_timeshift_operation_failed_txt">Speichern fehlgeschlagen</string>
+    <string name="cam_strings_timeshift_save_complete_txt">Gespeichert</string>
+    <string name="cam_strings_timeshift_save_selection_txt">Separat speichern</string>
+    <string name="cam_strings_timeshift_select_images_txt">Fotos auswählen</string>
+    <string name="cam_strings_timeshift_share_txt">Freigeben</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Verbunden mit %1$s</string>
+    <string name="cam_strings_touch_capturing_always_txt">Ein</string>
+    <string name="cam_strings_touch_capturing_only_front_txt">Nur Frontkamera</string>
+    <string name="cam_strings_touch_capturing_title_txt">Touch-Aufnahme</string>
+    <string name="cam_strings_touch_focus_in_manual_focus_txt">Um den Sensorfokus zu verwenden, ändern Sie die Fokuseinstellung auf AF (Autofokus).</string>
+    <string name="cam_strings_touch_to_adjust_description_txt">Wählen Sie aus, was angepasst werden soll, wenn Sie den Sucher berühren</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_focus_and_exposure_txt">Fokus und Helligkeit</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_only_focus_txt">Nur Fokus</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_txt">Zum Anpassen berühren</string>
+    <string name="cam_strings_transfer_and_tagging_description_txt">"Ist diese Funktion aktiviert, kann das „Transfer &amp; Tagging add-on“ mit der Xperia Kamera aufgenommene Fotos anzeigen. Fotos werden im internen Speicher gespeichert.
+Im Fotomodus und im manuellen Modus aufgenommene Fotos werden von dieser Funktion unterstützt."</string>
+    <string name="cam_strings_transfer_and_tagging_txt">„Transfer &amp; Tagging add-on“-Modus</string>
+    <string name="cam_strings_tutorial_bright_place_txt">Nehmen Sie Videos in heller Umgebung auf, um eine bessere Qualität zu erreichen.</string>
+    <string name="cam_strings_tutorial_button_next_txt">Weiter</string>
+    <string name="cam_strings_tutorial_button_skip_txt">Überspringen</string>
+    <string name="cam_strings_tutorial_button_txt">Verstanden</string>
+    <string name="cam_strings_tutorial_title_txt">Modus wechseln</string>
+    <string name="cam_strings_tutorial_txt">Wischen für einen anderen Aufnahmemod., z. B. Video oder Manuell</string>
+    <string name="cam_strings_unable_to_operate_txt">Keine Aufnahme möglich, solange Fotos gespeichert werden</string>
+    <string name="cam_strings_unlock_button_txt">Entsperren</string>
+    <string name="cam_strings_use_of_camera_not_authorized_txt">Die Verwendung der Kamera ist aus Sicherheitsgründen beschränkt.</string>
+    <string name="cam_strings_video_backlight_correction_description_txt">Wenn Sie diese Einstellung aktivieren, können Sie automatisch Videoaufnahmen mit der optimalen Belichtung erstellen, selbst in Situationen mit Hintergrundbeleuchtung.</string>
+    <string name="cam_strings_video_backlight_correction_txt">Video-Gegenlichtkorrektur</string>
+    <string name="cam_strings_video_codec_for_4k_txt">Dateityp der Aufzeichnung</string>
+    <string name="cam_strings_video_digital_zoom_type_description_txt">"Wählen Sie eine Einstellung für den digitalen Zoom von Videos aus.
+
+Standardmäßiger digitaler Zoom: Zoom anhand digitaler Verarbeitung basierend auf Bildsensordaten.
+Super-Resolution-Zoom von Videos: Zoom anhand digitaler Verarbeitung, wodurch mehr von der ursprünglichen Bildqualität erhalten bleibt. Das Speichern von Videos kann länger dauern."</string>
+    <string name="cam_strings_video_digital_zoom_type_super_resolution_txt">Super-Resolution-Zoom von Videos</string>
+    <string name="cam_strings_video_digital_zoom_type_txt">Einst. für digitalen Zoom von Videos</string>
+    <string name="cam_strings_video_explanatory_4k2k_setting_txt">Zur stabilen Aufnahme von 4K-Videos dürfen Sie diese Einstellung nicht ändern, sofern Sie nicht eine Hochgeschwindigkeits-SD-Karte (UHS-Geschwindigkeitsklasse 1 oder höher oder Geschwindigkeitsklasse 10 empfohlen) verwenden.</string>
+    <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Zur stabilen Aufnahme von Timeshift-Videos dürfen Sie diese Einstellung nicht ändern, sofern Sie nicht eine Hochgeschwindigkeits-SD-Karte (UHS-Geschwindigkeitsklasse 1 oder höher oder Geschwindigkeitsklasse 10 empfohlen) verwenden. Trotzdem ändern?</string>
+    <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Zur stabilen Videoaufnahme in Zeitlupe dürfen Sie diese Einstellung nicht ändern, sofern Sie nicht eine Hochgeschwindigkeits-SD-Karte (UHS-Geschwindigkeitsklasse 1 oder höher oder Geschwindigkeitsklasse 10 empfohlen) verwenden.</string>
+    <string name="cam_strings_video_explanatory_txt">"Für stabile Videoaufnahmen empfiehlt es sich, den internen Massenspeicher als Datenspeicher festzulegen. Möchten Sie die Änderung jetzt vornehmen?
+
+Wenn Sie weiterhin eine SD-Karte als Datenspeicher verwenden möchten, sollte es eine Hochgeschwindigkeits-SD-Karte sein (UHS-Geschwindigkeitsklasse 1 oder höher oder Geschwindigkeitsklasse 10 empfohlen)."</string>
+    <string name="cam_strings_video_fusion_tutorial_0_title_txt">Dual-Kamera</string>
+    <string name="cam_strings_video_fusion_tutorial_0_txt">Mit der Dual-Kamera können Sie auch nachts oder in einem schwach beleuchteten Raum schöne und rauscharme Videos aufnehmen. Die Kamera schaltet automatisch zwischen Einzel- und Dual-Kamera um, basierend auf den Szenen, die mit extrem hoher Empfindlichkeit aufgenommen werden sollen.</string>
+    <string name="cam_strings_video_fusion_tutorial_1_title_txt">Videoaufnahme mit Dual-Kamera</string>
+    <string name="cam_strings_video_fusion_tutorial_1_txt">Halten Sie bei der Aufnahme mit einer Dual-Kamera einen Mindestabstand von 1 Meter zum Objekt ein. Wenn Sie dem Objekt zu nahe kommen, kann es bei der Aufnahme mit extrem hoher Empfindlichkeit zu einer Verschiebung des Betrachtungspunkts oder der Farbe kommen.</string>
+    <string name="cam_strings_video_fusion_tutorial_2_title_txt">Dual-Kamera für die Videoaufnahme verwenden?</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">Um tolle Nahaufnahmen zu machen, tippen Sie auf „Nein“ und wechseln Sie zur Einzelkamera. Durch Tippen auf die Taste im Sucher können Sie jederzeit wieder auf Dual-Kamera umstellen.</string>
+    <string name="cam_strings_video_hdr_hlg_txt">HDR ist AN</string>
+    <string name="cam_strings_video_hdr_setting_hlg_txt">HDR</string>
+    <string name="cam_strings_video_hdr_title_txt">HDR-Video</string>
+    <string name="cam_strings_video_hdr_txt">HDR-Video</string>
+    <string name="cam_strings_video_resolution_4k_file_type_txt">Dateiformat (4K)</string>
+    <string name="cam_strings_video_resolution_full_hd_16_9_60fps_txt">Full HD (16:9 60 BpS)</string>
+    <string name="cam_strings_video_resolution_full_hd_30fps_txt">Full HD (30 BpS)</string>
+    <string name="cam_strings_video_resolution_full_hd_60fps_txt">Full HD (60 BpS)</string>
+    <string name="cam_strings_video_resolution_full_hd_frame_rate_txt">Bildrate (Full HD)</string>
+    <string name="cam_strings_video_resolution_full_hd_super_slow_desc_txt">Erfasst einen größeren Bereich i. d. Hälfte der Aufnahmezeit, weicht von HD ab.</string>
+    <string name="cam_strings_video_resolution_full_hd_txt">Full HD</string>
+    <string name="cam_strings_video_resolution_hd_super_slow_desc_txt">Erfasst e. kleineren Bereich i. d. doppelten Aufnahmezeit, weicht von Full HD ab.</string>
+    <string name="cam_strings_video_resolution_hd_txt">HD</string>
+    <string name="cam_strings_video_resolution_mms_txt">MMS</string>
+    <string name="cam_strings_video_resolution_qvga_txt">QVGA</string>
+    <string name="cam_strings_video_resolution_title_txt">Videoauflösung</string>
+    <string name="cam_strings_video_resolution_txt">Videoauflösung</string>
+    <string name="cam_strings_video_resolution_vga_txt">VGA</string>
+    <string name="cam_strings_video_shutter_trigger_txt">Automatische Aufnahme (Video)</string>
+    <string name="cam_strings_video_size_4kuhd_txt">4K (QFHD)</string>
+    <string name="cam_strings_video_size_full_hd_16_9_txt">Full HD (16:9)</string>
+    <string name="cam_strings_video_size_full_hd_21_9_txt">Full HD (21:9)</string>
+    <string name="cam_strings_video_size_full_hd_txt">Full HD</string>
+    <string name="cam_strings_video_size_txt">Videogröße</string>
+    <string name="cam_strings_video_smile_shutter_txt">Auslösung bei Lächeln (Video)</string>
+    <string name="cam_strings_video_stabilizer_txt">Videostabilisation</string>
+    <string name="cam_strings_volumekey_shutter_txt">Verschluss</string>
+    <string name="cam_strings_volumekey_txt">Lautstärketaste verw. als</string>
+    <string name="cam_strings_volumekey_volume_txt">Lautstärke</string>
+    <string name="cam_strings_volumekey_zoom_txt">Zoom</string>
+    <string name="cam_strings_white_balance_auto_txt">Auto</string>
+    <string name="cam_strings_white_balance_cloudy_txt">Bewölkung</string>
+    <string name="cam_strings_white_balance_day_light_txt">Tageslicht</string>
+    <string name="cam_strings_white_balance_fluorescent_txt">Leuchtstofflampe</string>
+    <string name="cam_strings_white_balance_incandescent_txt">Glühlampe</string>
+    <string name="cam_strings_white_balance_title_txt">Weißabgleich</string>
+    <string name="cam_strings_white_balance_txt">Weißabgleich</string>
+    <string name="cam_strings_whitebalance_custom1_txt">Anpassung 1</string>
+    <string name="cam_strings_whitebalance_custom2_txt">Anpassung 2</string>
+    <string name="cam_strings_whitebalance_custom3_txt">Anpassung 3</string>
+    <string name="cam_strings_whitebalance_shde_txt">Schatten</string>
+    <string name="cam_strings_zoom_frames_description_txt">"Wenn Sie diese Einstellung aktivieren, können Sie eine Vorschau des Hineinzoomens anzeigen.
+Zentrieren Sie das Objekt in einem Rahmen und tippen Sie auf den Zoomfaktor, um auf einfache Weise hineinzuzoomen."</string>
+    <string name="cam_strings_zoom_frames_txt">Zoomkompositionsunterstützung</string>
+    <string name="cam_strings_zoom_help_txt">Zum Hinein-/Herauszoomen die Lautstärketaste verwenden</string>
+    <string name="cam_strings_zoom_not_supported_in_bokeh_effect_txt">Zoomen bei Verwendung des Bokeh-Effekts nicht möglich</string>
+    <string name="cam_strings_zoom_not_supported_in_front_txt">Zoomen mit Frontkamera nicht möglich</string>
+    <string name="cam_strings_zoom_not_supported_in_widecam_txt">Mit Ultraweitwinkelobjektiv Zoomen nicht möglich</string>
+    <string name="cam_strings_zoom_not_supported_txt">Zoomen derzeit nicht möglich</string>
+    <string name="expand_button_title">Erweitert</string>
+    <string name="photopro_strings_multi_or_popup_window_txt">Kamera kann nicht in Multi-Fenster oder einem Popup-Fenster verwendet werden. Schließen Sie das Fenster und versuchen Sie es erneut. Wenn Sie Multi-Fenster verwenden, können Sie die Mitte des Fensterteilers ziehen, um den Vollbildmodus der Kamera zu verwenden.</string>
+    <string name="search_menu_title">Suchen</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="v7_preference_off">AUS</string>
+    <string name="v7_preference_on">EIN</string>
+</resources>

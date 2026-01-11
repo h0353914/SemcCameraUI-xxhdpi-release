@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"Võrk
+WLAN ühenduse loomiseks"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"Kas luua ühendus võrguga %1$s?
+WLAN võrgu teabe kuvamiseks puudutage nuppu ÜKSIKASJAD."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"WLAN on välja lülitatud ja lennurežiim on sisse lülitatud.
+Nende seadete muutmiseks puudutage nuppu SEADED."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"WLAN on välja lülitatud.
+Lülitage WLAN sisse kuval SEADED."</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">WLAN sisselülitamine</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">WLAN, mob.-sidea. kas.</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">WLAN ühenduse loomine nurjus</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">WLAN üksikasjad</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">WLAN ühendust ei saa luua</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">See WLAN võrk sisaldab turbeohte</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">WLAN ühenduse loomine</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"QR Code'i skannides saate kiire juurdepääsu veebi või luua WLAN ühenduse.
+See funktsioon on aktiivne režiimis Foto. Saate seda seadet muuta QR Code'i lugeris Kaameraseadetes."</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Ei saa luua ühendust ühegi Sony WLAN-/NFC-kaameraga, kui teie Xperia on ühendatud teise Xperia-ga.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">See režiim pole WLAN lõastamise ajal saadaval.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Korraga tohib Xperia-ga ühendatud olla ainult üks Sony WLAN-/NFC-kaamera.</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Sony WLAN-/NFC-kaamera</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Ei saa luua ühendust ühegi Xperia-ga, kui teie Xperia on ühendatud Sony WLAN-/NFC-kaameraga.</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Selle WLAN-võrguga ei saa ühendust luua</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Koput. ühend. WLAN võrguga „%1$s“</string>
+</resources>

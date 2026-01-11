@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"Netværk
+Sådan opretter du forbindelse til WLAN"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"Vil du oprette forbindelse til %1$s?
+Tap på DETALJER for at se oplysninger om dette WLAN-netværk."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"WLAN er slået fra, og flytilstand er slået til.
+Skift disse indstillinger ved at tappe på INDSTILLINGER."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"WLAN er slået fra.
+Slå WLAN til under INDSTILLINGER."</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">Tænd for WLAN</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">Brug WLAN og mobildata</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">Der blev ikke oprettet forbindelse til WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">WLAN-detaljer</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">Der kan ikke oprettes forbindelse til WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Dette WLAN-netværk har en sikkerhedsrisiko</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Opret forbindelse til WLAN</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"Du kan hurtigt få adgang til internettet eller oprette forbindelse til WLAN ved at scanne en QR Code.
+Denne funktion er aktiv, når du er i fototilstand. Du kan ændre denne indstilling fra QR Code-læser i kameraindstillinger."</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Der kan ikke tilsluttes til et Sony WLAN/NFC-kamera, når din Xperia er tilsluttet en anden Xperia.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">Denne tilstand er ikke tilgængelig under WLAN-internetdeling.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Der kan kun tilsluttes ét Sony WLAN/NFC-kamera til din Xperia ad gangen.</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Sonys WLAN/NFC-kamera</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Der kan ikke tilsluttes til en Xperia, når din Xperia er tilsluttet et Sony WLAN/NFC-kamera.</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Forbindelse til WLAN-netværket kan ikke oprettes</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Tap og forbind til WLAN-netværket \"%1$s\"</string>
+</resources>

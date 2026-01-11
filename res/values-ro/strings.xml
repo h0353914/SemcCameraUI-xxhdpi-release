@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">Navigați la ecranul de pornire</string>
+    <string name="abc_action_bar_up_description">Navigați în sus</string>
+    <string name="abc_action_menu_overflow_description">Mai multe opțiuni</string>
+    <string name="abc_action_mode_done">Terminat</string>
+    <string name="abc_activity_chooser_view_see_all">Afișați-le pe toate</string>
+    <string name="abc_activitychooserview_choose_application">Alegeți o aplicație</string>
+    <string name="abc_capital_off">DEZACTIVAȚI</string>
+    <string name="abc_capital_on">ACTIVAT</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">delete</string>
+    <string name="abc_menu_enter_shortcut_label">enter</string>
+    <string name="abc_menu_function_shortcut_label">Funcție+</string>
+    <string name="abc_menu_meta_shortcut_label">Meta+</string>
+    <string name="abc_menu_shift_shortcut_label">Shift+</string>
+    <string name="abc_menu_space_shortcut_label">spațiu</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">Meniu+</string>
+    <string name="abc_search_hint">Căutați…</string>
+    <string name="abc_searchview_description_clear">Ștergeți interogarea</string>
+    <string name="abc_searchview_description_query">Interogare de căutare</string>
+    <string name="abc_searchview_description_search">Căutați</string>
+    <string name="abc_searchview_description_submit">Trimiteți interogarea</string>
+    <string name="abc_searchview_description_voice">Căutare vocală</string>
+    <string name="abc_shareactionprovider_share_with">Trimiteți la</string>
+    <string name="abc_shareactionprovider_share_with_application">Trimiteți folosind %s</string>
+    <string name="abc_toolbar_collapse_description">Restrângeți</string>
+    <string name="call_notification_answer_action">Răspunde</string>
+    <string name="call_notification_answer_video_action">Video</string>
+    <string name="call_notification_decline_action">Respinge</string>
+    <string name="call_notification_hang_up_action">Închide</string>
+    <string name="call_notification_incoming_text">Apel primit</string>
+    <string name="call_notification_ongoing_text">Apel în desfășurare</string>
+    <string name="call_notification_screening_text">Se filtrează un apel primit</string>
+    <string name="cam_3d_strings_creating_but_incorrect_direction_txt">Imposibil de finalizat captura. Panoramaţi în direcţia corectă.</string>
+    <string name="cam_3d_strings_creating_but_too_quick_txt">Imposibil de finalizat captura. Panoramaţi mai lent.</string>
+    <string name="cam_3d_strings_creating_but_too_slow_txt">Imposibil de finalizat captura. Panoramaţi mai rapid.</string>
+    <string name="cam_3d_strings_description_sweep_panorama_txt">Faceţi o fotografie panoramică rotind aparatul foto</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Se creează următoarele fişiere:
+- imagine multiunghiulară;
+- imagine 3D.
+Notă: aceste fişiere conţin o zonă gri."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Se creează următoarele fişiere:
+- imagine multiunghiulară;
+- imagine 3D."</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Se procesează...
+Această imagine conţine o zonă gri"</string>
+    <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Se salvează imaginea</string>
+    <string name="cam_3d_strings_dialog_processing_txt">Se procesează...</string>
+    <string name="cam_3d_strings_error_application_busy_txt">Aşteptaţi câteva secunde pentru a se lansa aplicaţia Aparat foto 3D</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_title_txt">Eroare</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">Deconectaţi cablul. Imposibil de efectuat o fotografie în acest mod cu un cablu conectat.</string>
+    <string name="cam_3d_strings_error_direction_txt">Imposibil de realizat fotografia. Panoramaţi în direcţia corectă.</string>
+    <string name="cam_3d_strings_error_too_quick_txt">Imposibil de realizat fotografia. Panoramaţi mai lent.</string>
+    <string name="cam_3d_strings_error_too_slow_txt">Imposibil de realizat fotografia. Panoramaţi mai rapid.</string>
+    <string name="cam_3d_strings_setting_shooting_direction_down_txt">Jos</string>
+    <string name="cam_3d_strings_setting_shooting_direction_left_txt">Stânga</string>
+    <string name="cam_3d_strings_setting_shooting_direction_right_txt">Dreapta</string>
+    <string name="cam_3d_strings_setting_shooting_direction_title_txt">Direcţie fotografiere</string>
+    <string name="cam_3d_strings_setting_shooting_direction_up_txt">Sus</string>
+    <string name="cam_3d_strings_shooting_direction_guide_txt">"Schimbaţi direcţia imaginea din stânga "</string>
+    <string name="cam_3d_strings_shooting_failure_title_txt">Imposibil de fotografiat</string>
+    <string name="cam_3d_strings_shooting_guide_down_to_up_txt">Panoramare de jos în sus</string>
+    <string name="cam_3d_strings_shooting_guide_left_to_right_txt">Panoramare de la stânga la dreapta</string>
+    <string name="cam_3d_strings_shooting_guide_pan_too_fast_txt">Panoramaţi mai încet</string>
+    <string name="cam_3d_strings_shooting_guide_press_key_txt">Apăsați butonul aparatului foto și panoramați lent camera</string>
+    <string name="cam_3d_strings_shooting_guide_right_to_left_txt">Panoramare de la dreapta la stânga</string>
+    <string name="cam_3d_strings_shooting_guide_touch_cap_txt">Atingeţi uşor butonul aparatului foto şi panoramaţi lent</string>
+    <string name="cam_3d_strings_shooting_guide_up_to_down_txt">Panoramare de sus în jos</string>
+    <string name="cam_3d_strings_sweep_panorama_short_txt">Panoramă prin rotire</string>
+    <string name="cam_app_shortcut_front_photo_txt">Fotografie faţă</string>
+    <string name="cam_app_shortcut_manual_txt">Manual</string>
+    <string name="cam_app_shortcut_video_txt">Video</string>
+    <string name="cam_face_eye_af_settings_on_txt">Detectare feţe/FA pe ochi activată</string>
+    <string name="cam_string_dualrec_m_apr_txt">%1$td aprilie %2$tY</string>
+    <string name="cam_string_dualrec_m_aug_txt">%1$td august %2$tY</string>
+    <string name="cam_string_dualrec_m_dec_txt">%1$td decembrie %2$tY</string>
+    <string name="cam_string_dualrec_m_feb_txt">%1$td februarie %2$tY</string>
+    <string name="cam_string_dualrec_m_jan_txt">%1$td ianuarie %2$tY</string>
+    <string name="cam_string_dualrec_m_jul_txt">%1$td iulie %2$tY</string>
+    <string name="cam_string_dualrec_m_jun_txt">%1$td iunie %2$tY</string>
+    <string name="cam_string_dualrec_m_mar_txt">%1$td martie %2$tY</string>
+    <string name="cam_string_dualrec_m_may_txt">%1$td mai %2$tY</string>
+    <string name="cam_string_dualrec_m_nov_txt">%1$td noiembrie %2$tY</string>
+    <string name="cam_string_dualrec_m_oct_txt">%1$td octombrie %2$tY</string>
+    <string name="cam_string_dualrec_m_sep_txt">%1$td septembrie %2$tY</string>
+    <string name="cam_string_dualrec_t_am_txt">%1$tl:%2$tM AM</string>
+    <string name="cam_string_dualrec_t_pm_txt">%1$tl:%2$tM PM</string>
+    <string name="cam_strings_1x1_frame_lines_txt">1:1 Perimetru cadru</string>
+    <string name="cam_strings_accessibility_auto_review_txt">Examinare auto. fotografie</string>
+    <string name="cam_strings_accessibility_auto_scene_recognized_txt">Scenă recunoscută ca %1$s</string>
+    <string name="cam_strings_accessibility_back_main_txt">Înapoi</string>
+    <string name="cam_strings_accessibility_back_txt">Înapoi</string>
+    <string name="cam_strings_accessibility_capturing_mode_txt">Mod de capturare</string>
+    <string name="cam_strings_accessibility_close_color_button_txt">Închideţi funcţia de reglare a culorilor</string>
+    <string name="cam_strings_accessibility_color_brightness_button_txt">Închideţi reglarea culorilor şi a luminozităţii</string>
+    <string name="cam_strings_accessibility_condition_detected_txt">Condiție detectată ca %1$s</string>
+    <string name="cam_strings_accessibility_condition_motion_txt">În mișcare</string>
+    <string name="cam_strings_accessibility_condition_stable_txt">Stabil</string>
+    <string name="cam_strings_accessibility_condition_walk_txt">Mers pe jos</string>
+    <string name="cam_strings_accessibility_dual_effect_menu_txt">Efect Aparat foto dual</string>
+    <string name="cam_strings_accessibility_eyeaf_off_txt">Atingeţi uşor de două ori pentru a activa AF ochi</string>
+    <string name="cam_strings_accessibility_eyeaf_on_txt">Atingeţi uşor de două ori pentru a dezactiva AF ochi</string>
+    <string name="cam_strings_accessibility_flash_torch_txt">Lanternă</string>
+    <string name="cam_strings_accessibility_flash_txt">Bliţ</string>
+    <string name="cam_strings_accessibility_fusion_auto_txt">Atingeţi uşor de două ori pentru a comuta la aparat foto dual automat</string>
+    <string name="cam_strings_accessibility_fusion_off_txt">Atingeţi uşor de două ori pentru a activa setarea Aparat foto dual</string>
+    <string name="cam_strings_accessibility_fusion_on_txt">Atingeţi uşor de două ori pentru a dezactiva setarea Aparat foto dual</string>
+    <string name="cam_strings_accessibility_image_quality_control_exposure_value_txt">Valoare expunere</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_deselected_txt">Opţiunea Automat s-a deselectat</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_selected_txt">Opţiunea Automat s-a selectat</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_txt">Focalizare automată</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_adjusted_txt">Lungimea focală s-a modificat</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_txt">Focalizare manuală</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_txt">Focalizare</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_deselected_txt">Opţiunea Automat s-a deselectat</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_selected_txt">Opţiunea Automat s-a selectat</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_txt">Viteză de declanşare</string>
+    <string name="cam_strings_accessibility_image_quality_control_white_balance_txt">Compensare alb</string>
+    <string name="cam_strings_accessibility_information_txt">Informaţii</string>
+    <string name="cam_strings_accessibility_menu_txt">Meniu</string>
+    <string name="cam_strings_accessibility_not_configurable_txt">Nu se poate configura</string>
+    <string name="cam_strings_accessibility_open_color_button_txt">Deschideţi funcţia de reglare a culorilor</string>
+    <string name="cam_strings_accessibility_other_settings_txt">Alte setări</string>
+    <string name="cam_strings_accessibility_pause_button_txt">Pauză</string>
+    <string name="cam_strings_accessibility_photo_setting_txt">Setări aparat foto</string>
+    <string name="cam_strings_accessibility_predictive_capture_txt">Capturare anticipată</string>
+    <string name="cam_strings_accessibility_recent_photo_txt">Un teanc cu cele mai recente fotografii</string>
+    <string name="cam_strings_accessibility_recording_button_txt">Înregistrare</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_button_txt">Rulare cu încetinitorul</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_exti_button_txt">Ieşire din redarea cu încetinitorul</string>
+    <string name="cam_strings_accessibility_recording_stop_button_txt">Oprire</string>
+    <string name="cam_strings_accessibility_self_timer_stop_button_txt">Oprire numărătoare inversă</string>
+    <string name="cam_strings_accessibility_shutter_button_txt">Buton Aparat foto</string>
+    <string name="cam_strings_accessibility_soundphoto_play_txt">Redaţi sunetul</string>
+    <string name="cam_strings_accessibility_superior_auto_color_brightness_txt">Reglare culoare şi luminozitate</string>
+    <string name="cam_strings_accessibility_swf_normal_txt">Atingeţi uşor de două ori pentru a comuta la modul normal</string>
+    <string name="cam_strings_accessibility_swf_wide_txt">Atingeţi uşor de două ori pentru a comuta la modul Unghi larg</string>
+    <string name="cam_strings_accessibility_switch_to_front_by_swiping_txt">S-a comutat la camera frontală</string>
+    <string name="cam_strings_accessibility_switch_to_front_txt">Atingeţi uşor de două ori pentru a comuta la aparatul foto frontal</string>
+    <string name="cam_strings_accessibility_switch_to_main_by_swiping_txt">S-a comutat la camera principală</string>
+    <string name="cam_strings_accessibility_switch_to_main_txt">Atingeţi uşor de două ori pentru a comuta la camera principală</string>
+    <string name="cam_strings_accessibility_switch_to_photo_txt">Atingeţi uşor de două ori pentru a comuta la aparatul foto</string>
+    <string name="cam_strings_accessibility_switch_to_video_txt">Atingeţi uşor de două ori pentru a comuta la înregistrare video</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">Atingeţi uşor de două ori pentru a activa HDR</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_on_txt">Atingeţi uşor de două ori pentru a dezactiva HDR</string>
+    <string name="cam_strings_accessibility_video_setting_txt">Setări video</string>
+    <string name="cam_strings_accessibility_viewer_txt">Deschideţi cu vizualizatorul de imagini</string>
+    <string name="cam_strings_accessibility_zoom_ratio_with_number_txt">%1$sx</string>
+    <string name="cam_strings_advanced_setting_geo_tag_both_off_txt">Pentru a salva locaţii, trebuie să activaţi funcţia GPS şi/sau reţelele wireless. Le activaţi acum?</string>
+    <string name="cam_strings_advanced_setting_geo_tag_title_txt">Salvare locaţie</string>
+    <string name="cam_strings_ai_face_restore_txt">Accentuare fețe</string>
+    <string name="cam_strings_application_name_creative_effect_txt">Efect creativ</string>
+    <string name="cam_strings_application_name_dualrec_txt">Faţă în imagine</string>
+    <string name="cam_strings_application_name_facefusion_txt">Mască AR</string>
+    <string name="cam_strings_application_name_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_application_name_multicam_txt">Mai multe aparate foto</string>
+    <string name="cam_strings_application_name_night_mode_txt">Mod nocturn</string>
+    <string name="cam_strings_application_name_night_shooting_txt">Mod nocturn</string>
+    <string name="cam_strings_application_name_soundphoto_txt">Sound Photo</string>
+    <string name="cam_strings_application_name_sweep_panorama_txt">Panoramă prin rotire</string>
+    <string name="cam_strings_application_name_timeshift_txt">Timeshift burst</string>
+    <string name="cam_strings_application_name_txt">Aparat foto</string>
+    <string name="cam_strings_application_name_video_txt">Video</string>
+    <string name="cam_strings_apps_list_add_txt">Adăugare</string>
+    <string name="cam_strings_apps_list_downloadable_txt">Se pot descărca</string>
+    <string name="cam_strings_apps_list_installed_txt">Instalate</string>
+    <string name="cam_strings_apps_list_txt">Aplicaţii aparat foto</string>
+    <string name="cam_strings_art_filter_guesture_guide_general_txt">Utilizaţi degetele pentru a edita imaginea afişată</string>
+    <string name="cam_strings_art_filter_guesture_guide_tap_txt">Atingeţi uşor porţiunea pe care doriţi să o coloraţi</string>
+    <string name="cam_strings_aspect_ratio_txt">Raport de aspect</string>
+    <string name="cam_strings_auto_hdr_discription_txt">Dacă activați această setare, puteți evita supraexpunerea și subexpunerea prin detectarea contrastului în timpul fotografierii.</string>
+    <string name="cam_strings_auto_hdr_txt">HDR automat</string>
+    <string name="cam_strings_auto_power_off_txt">Aparatul foto se va închide în curând din cauza inactivităţii</string>
+    <string name="cam_strings_auto_scene_recognition_txt">Recunoaştere automată scenă</string>
+    <string name="cam_strings_auto_upload_all_title_txt">Încărcare automată</string>
+    <string name="cam_strings_auto_upload_all_txt">Încărcare automată</string>
+    <string name="cam_strings_awb_priority_setting_asmosphere_txt">Ambianţă</string>
+    <string name="cam_strings_awb_priority_setting_standard_txt">Standard</string>
+    <string name="cam_strings_awb_priority_setting_txt">Setări prioritate în AWB</string>
+    <string name="cam_strings_awb_priority_setting_white_txt">Alb</string>
+    <string name="cam_strings_balloon_tips_modeselector_title_txt">Încercaţi moduri de capturare diferite</string>
+    <string name="cam_strings_balloon_tips_modeselector_txt">Atingeţi pt. a selecta alt mod</string>
+    <string name="cam_strings_balloon_tips_timeshift_title_txt">Selectaţi ipostaza optimă</string>
+    <string name="cam_strings_balloon_tips_timeshift_txt">Găsiţi fotografia optimă glisând în sus sau în jos miniaturile</string>
+    <string name="cam_strings_bokeh_error_covering_lens_txt">Asiguraţi-vă că lentila este curată şi că nu o acoperiţi cu degetul</string>
+    <string name="cam_strings_bokeh_error_night_shooting_disable_txt">Fotografiere pe timp de noapte indisponibilă cu efectul Bokeh activat</string>
+    <string name="cam_strings_bokeh_error_over_light_txt">Luminozitate prea mare</string>
+    <string name="cam_strings_bokeh_error_too_close_txt">Depărtaţi-vă de obiect</string>
+    <string name="cam_strings_bokeh_error_too_dark_txt">Este necesară mai multă lumină</string>
+    <string name="cam_strings_bokeh_error_too_far_away_txt">Apropiaţi-vă de obiect</string>
+    <string name="cam_strings_bokeh_error_unknown_txt">Efectul Bokeh este momentan indisponibil</string>
+    <string name="cam_strings_bokeh_title_txt">Bokeh</string>
+    <string name="cam_strings_burst_battery_level_low_txt">Baterie insuficientă pentru fotografiere în serie</string>
+    <string name="cam_strings_burst_change_camera_key_setting_txt">Activați set. În serie cu buton aparat foto pt. a activa fot. În serie</string>
+    <string name="cam_strings_burst_in_bokeh_effect_txt">Nu se poate fotografia în seria cu efectul Bokeh</string>
+    <string name="cam_strings_burst_in_dark_condition_txt">Nu se poate fotografia în serie pe întuneric</string>
+    <string name="cam_strings_burst_in_long_shutter_speed_txt">Nu se poate fot. în rafală dacă vit. obt. este setată la cel puţin 2 s</string>
+    <string name="cam_strings_burst_in_transfer_and_tagging_txt">Nu se poate fotog. în serie dacă s-a activ. Transfer &amp; Tagging add-on</string>
+    <string name="cam_strings_burst_in_widecam_txt">Nu se poate fotografia în serie folosindu-se obiectivul ultra-larg</string>
+    <string name="cam_strings_burst_not_supported_front_camera_txt">Cu aparatul foto frontal nu se poate fotografia în serie</string>
+    <string name="cam_strings_burst_not_supported_fusion_on_txt">Nu se poate fotografia în serie dacă s-a activat Aparat foto dual</string>
+    <string name="cam_strings_burst_saved_internal_storage_txt">Imaginile în serie sunt salvate în memoria internă</string>
+    <string name="cam_strings_burst_shooting_txt">Viteză fotogr. în serie</string>
+    <string name="cam_strings_button_continue_txt">Continuare</string>
+    <string name="cam_strings_button_quit_txt">IEŞIŢI</string>
+    <string name="cam_strings_camera_af_sound_txt">Sunet focalizare automată</string>
+    <string name="cam_strings_camera_apps_tab_txt">APLICAŢII AP. FOTO</string>
+    <string name="cam_strings_camera_key_setting_burst_shot_txt">Fotografiere în serie</string>
+    <string name="cam_strings_camera_key_setting_take_photo_txt">Fotografiaţi</string>
+    <string name="cam_strings_camera_key_setting_txt">În serie cu buton aparat foto</string>
+    <string name="cam_strings_camera_sound_txt">Sunet</string>
+    <string name="cam_strings_camera_switching_txt">Comutare aparat foto</string>
+    <string name="cam_strings_camerakey_launch_description_photo_pro_txt">Puteți lansa aplicația Cameră foto sau Photography Pro apăsând și ținând apăsat butonul aparatului foto. Acest lucru funcționează chiar dacă telefonul este în modul de repaus sau blocat.</string>
+    <string name="cam_strings_camerakey_launch_description_txt">Puteți lansa aplicația Cameră foto apăsând și ținând apăsat butonul aparatului foto. Acest lucru funcționează chiar dacă telefonul este în modul de repaus sau blocat.</string>
+    <string name="cam_strings_cancel_txt">Revocare</string>
+    <string name="cam_strings_capturing_mode_4k2k_txt">Clip video 4K</string>
+    <string name="cam_strings_capturing_mode_auto_txt">Fotografie</string>
+    <string name="cam_strings_capturing_mode_button_txt">Mod</string>
+    <string name="cam_strings_capturing_mode_camera_txt">Aparat foto</string>
+    <string name="cam_strings_capturing_mode_creative_effect_txt">Efect creativ</string>
+    <string name="cam_strings_capturing_mode_dualrec_txt">Faţă în imagine</string>
+    <string name="cam_strings_capturing_mode_facefusion_txt">Mască AR</string>
+    <string name="cam_strings_capturing_mode_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_capturing_mode_high_frame_rate_txt">Timeshift video</string>
+    <string name="cam_strings_capturing_mode_manual_txt">Manual</string>
+    <string name="cam_strings_capturing_mode_multicam_txt">Mai multe aparate foto</string>
+    <string name="cam_strings_capturing_mode_network_error_txt">Descărcarea datelor nu a putut fi finalizată</string>
+    <string name="cam_strings_capturing_mode_photopro_txt">Photo Pro</string>
+    <string name="cam_strings_capturing_mode_portraitselfie_txt">Portret selfie</string>
+    <string name="cam_strings_capturing_mode_slow_motion_txt">Video (rulare cu încetinitorul)</string>
+    <string name="cam_strings_capturing_mode_soundphoto_txt">Sound Photo</string>
+    <string name="cam_strings_capturing_mode_superior_auto_cy_txt">Autoreglare superioară</string>
+    <string name="cam_strings_capturing_mode_superior_auto_txt">Autoreglare superioară</string>
+    <string name="cam_strings_capturing_mode_timeshift_txt">Timeshift burst</string>
+    <string name="cam_strings_capturing_mode_title_txt">Mod de capturare</string>
+    <string name="cam_strings_change_full_storage_to_internal_txt">Cartelă SD plină. Memoria internă a fost stabilită ca spaţiu implicit de stocare a datelor.</string>
+    <string name="cam_strings_change_save_destination_high_frame_rate_title_txt">Timeshift video</string>
+    <string name="cam_strings_change_save_destination_slowmotion_title_txt">Rulare cu încetinitorul</string>
+    <string name="cam_strings_change_save_destination_title_txt">Clip video 4K</string>
+    <string name="cam_strings_change_storage_to_sd_txt">Cartelă SD inserată. Stabiliţi cartela SD ca spaţiu implicit de stocare a datelor?</string>
+    <string name="cam_strings_change_txt">Schimbare</string>
+    <string name="cam_strings_close_txt">Închidere</string>
+    <string name="cam_strings_color_brightness_txt">Culoare şi luminozitate</string>
+    <string name="cam_strings_common_error_internal_memory_full_txt">Memoria internă este plină. Salvaţi datele pe cartela SD?</string>
+    <string name="cam_strings_common_error_internal_memory_unavailable_txt">Memoria internă este deteriorată sau protejată împotriva scrierii. Salvaţi datele pe cartela SD?</string>
+    <string name="cam_strings_common_error_open_txt">Impos. de desc. %1$s</string>
+    <string name="cam_strings_common_error_sdcard_full_txt">Cartela SD este plină. Salvaţi datele în memoria internă?</string>
+    <string name="cam_strings_common_error_sdcard_unavailable_txt">Cartela SD nu poate fi utilizată. Salvaţi datele în memoria internă?</string>
+    <string name="cam_strings_common_explanatory_sdcard_setting_txt">Pentru capturare sau înregistrare stabilă, vă recomandăm ca pentru stocarea datelor să alegeţi în schimb memoria internă sau să folosiţi o cartelă SD de mare viteză (se recomandă cel puţin Class 10).</string>
+    <string name="cam_strings_cooling_mode_cooled_down_txt">Unele funcţii au fost dezactivate</string>
+    <string name="cam_strings_cooling_mode_learn_more_txt">Citiţi mai multe</string>
+    <string name="cam_strings_cooling_mode_message1_txt">Următoarele funcţii sunt dezactivate în acest moment.</string>
+    <string name="cam_strings_cooling_mode_message2_txt">Aşteptaţi să se răcească dispozitivul, apoi reporniţi aparatul foto.</string>
+    <string name="cam_strings_cooling_mode_title_txt">Următoarele funcţii sunt dezactivate</string>
+    <string name="cam_strings_cooling_mode_txt">Unele funcţii sunt dezactivate de temperatura mare</string>
+    <string name="cam_strings_core_intelligentactive_txt">Activ inteligent</string>
+    <string name="cam_strings_cta_description_txt">Acceptaţi solicitarea de acces de mai jos?</string>
+    <string name="cam_strings_cta_title_txt">Notă</string>
+    <string name="cam_strings_dependency_changed_txt">%1$s s-a schimbat la %2$s</string>
+    <string name="cam_strings_description_4k2k_txt">Filmaţi la definiţie ultraînaltă 4K</string>
+    <string name="cam_strings_description_camera_txt">Fotografiaţi şi filmaţi</string>
+    <string name="cam_strings_description_creative_effect_txt">Selectaţi efecte pentru fotografii şi clipuri video artistice</string>
+    <string name="cam_strings_description_dualrec_txt">Introduce fața dvs. în fotografii şi clipuri video cu aparat foto frontal şi cel principal</string>
+    <string name="cam_strings_description_facefusion_txt">Mascaţi-vă cu faţa unui prieten pentru a crea un selfie impresionant</string>
+    <string name="cam_strings_description_google_lens_txt">Puteţi să aflaţi alte detalii sau să interac. cu ce vedeţi utilizând %1$s</string>
+    <string name="cam_strings_description_high_frame_rate_txt">Filmaţi clipuri video cu un număr ridicat de cadre şi aplicaţi efecte de ralanti</string>
+    <string name="cam_strings_description_multicam_txt">Înregistraţi aceeaşi scenă din mai multe unghiuri pe un singur ecran</string>
+    <string name="cam_strings_description_shoundphoto_txt">Efectuaţi fotografii cu sunet de fundal (ciripit de păsărele etc.)</string>
+    <string name="cam_strings_description_timeshift_short_txt">Găsiţi cea mai bună fotografie dintre cele făcute în serie</string>
+    <string name="cam_strings_details_txt">Detalii</string>
+    <string name="cam_strings_dialog_4k_unavailable_while_screen_recording_txt">"Nu se pot filma videoclipuri 4K în timpul înregistrării ecranului.
+Selectați o dimensiune video alta decât 4K sau să opriți înregistrarea ecranului pentru a realiza un clip video."</string>
+    <string name="cam_strings_dialog_60fps_unavailable_while_screen_recording_txt">"Nu se pot filma clipuri video cu dimensiunea video actuală în timpul înregistrării pe ecran.
+Selectați o dimensiune video alta decât Full HD (60 cadre/s) sau opriți înregistrarea ecranului pentru a realiza un clip video."</string>
+    <string name="cam_strings_dialog_battery_level_low_info_txt">Baterie insuficientă a telefonului. Când nivelul bateriei este scăzut, aparatul foto se va închide automat.</string>
+    <string name="cam_strings_dialog_battery_level_low_recording_txt">Înregistrare oprită din cauza bateriei descărcate. Încărcaţi dispozitivul şi încercaţi din nou.</string>
+    <string name="cam_strings_dialog_battery_level_low_using_txt">Aparatul foto nu poate fi utilizat din cauza bateriei descărcate. Încărcaţi dispozitivul şi încercaţi din nou.</string>
+    <string name="cam_strings_dialog_body_accessibility_txt">Accesibilitate: &lt;a href=\"%s\">Compatibilă parțial&lt;/a></string>
+    <string name="cam_strings_dialog_body_applicationnotification_1_txt">Aplicaţia are nevoie de permisiunile următoare pentru a efectua această acţiune.</string>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"Reţea
+Pentru conectare la Wi-Fi"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_airplane_on_txt">"Modul pentru avion este activat.
+Dezactivaţi modul pentru avion din SETĂRI."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_name_txt">"Nume reţea: 
+"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_disable_txt">Neprotejată</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_enable_txt">Protejată</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Sigur doriţi să vă conectaţi la %1$s?</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"Vă conectaţi la %1$s?
+Atingeţi DETALII pentru a vedea informaţii despre această reţea Wi-Fi."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"Funcţia Wi-Fi este dezactivată şi modul pentru avion este activat.
+Modificaţi aceste setări atingând SETĂRI."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Funcţia Wi-Fi este dezactivată.
+Activaţi funcţia Wi-Fi din SETĂRI."</string>
+    <string name="cam_strings_dialog_btn_connect_txt">Conectare</string>
+    <string name="cam_strings_dialog_btn_settings_txt">Setări</string>
+    <string name="cam_strings_dialog_burst_information_txt">Pentru a fotografia continuu, selectaţi Timeshift burst în Aplicaţii aparat foto</string>
+    <string name="cam_strings_dialog_change_resolution_manual_txt">Manual (aparat foto frontal)</string>
+    <string name="cam_strings_dialog_change_resolution_superior_auto_txt">Autoreglare superioară (aparat foto frontal)</string>
+    <string name="cam_strings_dialog_change_resolution_txt">Rezoluţia pentru următoarele moduri de capturare a fost comutată la 13 MP (4:3) datorită unei actualizări de software</string>
+    <string name="cam_strings_dialog_cta_access_txt">%1$s încearcă</string>
+    <string name="cam_strings_dialog_cta_allow_txt">Permitere</string>
+    <string name="cam_strings_dialog_cta_deny_txt">Refuzare</string>
+    <string name="cam_strings_dialog_cta_location_info_txt">Preluare informaţii de localizare</string>
+    <string name="cam_strings_dialog_cta_turn_on_nfc_txt">Activare NFC</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">Activare Wi-Fi</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">Util. Wi-Fi şi date tel. mob.</string>
+    <string name="cam_strings_dialog_high_temp_title_txt">Notă</string>
+    <string name="cam_strings_dialog_high_temp_txt">Dacă temperatura dispozitivului creşte, este posibil ca aplicaţia să se închidă în timpul utilizării. Înregistrarea dvs. va fi salvată automat.</string>
+    <string name="cam_strings_dialog_high_temp_vzw_txt">Acest mod al aparatului foto utilizează o mare parte a resurselor telefonului şi poate duce la creşterea temperaturii telefonului. Pentru a preveni supraîncălzirea, este posibil să se oprească înregistrarea video şi să se închidă aplicaţia aparatului foto. Înregistrarea se va salva în mod automat.</string>
+    <string name="cam_strings_dialog_storage_full_burst_txt">Fotografierea în serie s-a oprit din cauza epuizării memoriei. Ştergeţi unele fişiere pentru a elibera spaţiu în memoria internă.</string>
+    <string name="cam_strings_dialog_title_accessibility_txt">Accesibilitate</string>
+    <string name="cam_strings_dialog_title_applicationnotification_txt">Acordaţi permisiuni</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_connecting_txt">Se conectează...</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">Nu s-a conectat la Wi-Fi</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_password_txt">"
+Protecţie prin parolă: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_security_txt">"
+Securitate: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">Detalii Wi-Fi</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">Nu se poate conecta la Wi-Fi</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Această reţea Wi-Fi prezintă riscuri de securitate</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Conectaţi-vă la Wi-Fi</string>
+    <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">Puteţi înregistra clipuri video chiar şi în situaţii cu contrast ridicat şi să le sporiţi dramatismul şi realismul. Utilizaţi dispozitive/servicii acceptate pentru a vă bucura de culorile şi luminozitatea originale ale conţinutului.</string>
+    <string name="cam_strings_digital_zoom_type_description_txt">"Selectați o setare de mărire/micșorare digitală.
+
+Mărire/micșorare digitală standard: măriți/micșorați utilizând procesarea digitală bazată pe datele senzorului de imagine.
+Mărire/micșorare super rezoluție: măriți/micșorați utilizând procesarea digitală care păstrează mai mult din calitatea originală a imaginii. Salvarea fotografiilor poate dura mai mult."</string>
+    <string name="cam_strings_digital_zoom_type_standard_txt">Mărire/micșorare digitală standard</string>
+    <string name="cam_strings_digital_zoom_type_super_resolution_txt">Mărire/micșorare super rezoluție</string>
+    <string name="cam_strings_digital_zoom_type_txt">Setări mărire/micșorare digitală</string>
+    <string name="cam_strings_dispbutton_settings_txt">Setări buton DISP</string>
+    <string name="cam_strings_distortion_correction_photo_video_txt">Corectare a distorsiunilor</string>
+    <string name="cam_strings_distortion_correction_txt">Corecţie a distorsiunii imaginii</string>
+    <string name="cam_strings_do_not_show_again_txt">Nu se mai afişează</string>
+    <string name="cam_strings_downloadable_tab_txt">SE POT DESCĂRCA</string>
+    <string name="cam_strings_drive_continuous_txt">Fotografiere continuă</string>
+    <string name="cam_strings_drive_hybrid_txt">Fotografiere hibridă unică-continuă</string>
+    <string name="cam_strings_drive_single_txt">Fotografiere unică</string>
+    <string name="cam_strings_drivemode_txt">Mod acţionare</string>
+    <string name="cam_strings_effect_Kaleidoscope_txt">Caleidoscop</string>
+    <string name="cam_strings_effect_after_image_txt">Urme de mişcare</string>
+    <string name="cam_strings_effect_brightness_contrast_txt">Luminoz. - contrast</string>
+    <string name="cam_strings_effect_color_filter_tint_txt">Tentă</string>
+    <string name="cam_strings_effect_color_pencil_txt">Schiţă color</string>
+    <string name="cam_strings_effect_comic_txt">Comic</string>
+    <string name="cam_strings_effect_fish_eye_txt">Fisheye</string>
+    <string name="cam_strings_effect_harris_shutter_txt">Efect Harris shutter</string>
+    <string name="cam_strings_effect_hue_saturation_txt">Nuanţă - saturaţie</string>
+    <string name="cam_strings_effect_miniature_txt">Miniatură</string>
+    <string name="cam_strings_effect_mirror_txt">Oglindă</string>
+    <string name="cam_strings_effect_mosaic_txt">Mozaic</string>
+    <string name="cam_strings_effect_motion_effects_txt">Efecte mişcare</string>
+    <string name="cam_strings_effect_no_effect_txt">Normal</string>
+    <string name="cam_strings_effect_nostalgia_txt">Nostalgic</string>
+    <string name="cam_strings_effect_old_film_txt">Film vechi</string>
+    <string name="cam_strings_effect_partical_color_txt">Parţial color</string>
+    <string name="cam_strings_effect_pencil_txt">Schiţă în creion</string>
+    <string name="cam_strings_effect_selector_txt">Efect Aparat foto dual</string>
+    <string name="cam_strings_effect_vivid_txt">Viu</string>
+    <string name="cam_strings_error_capture_txt">Acest mod este indisponibil atunci când înregistrarea este în desfăşurare în altă aplicaţie.</string>
+    <string name="cam_strings_error_delete_txt">Imposibil de şters</string>
+    <string name="cam_strings_error_device_not_available_txt">Aparatul foto nu poate fi pornit. Reporniţi aparatul foto sau dispozitivul.</string>
+    <string name="cam_strings_error_dialog_title_txt">Eroare</string>
+    <string name="cam_strings_error_fatal_sd_photo_txt">Imposibil de salvat fotografiile. Poate fi o problemă cu stocarea datelor. Dacă Stocare date s-a setat la Cartelă SD, verificaţi cartela SD.</string>
+    <string name="cam_strings_error_fatal_sd_video_txt">Imposibil de pornit înregistrarea. Poate fi o problemă cu stocarea datelor. Dacă Stocare date s-a setat la Cartelă SD, verificaţi cartela SD.</string>
+    <string name="cam_strings_error_fatal_txt">Eroarea este necunoscută.</string>
+    <string name="cam_strings_error_high_temp_already_high_txt">Dispozitivul Xperia trebuie să se răcească. Aşteptaţi.</string>
+    <string name="cam_strings_error_high_temp_info_flashlight_unavailable_txt">Temperatura dispozitivului este prea mare pentru a folosi lanterna</string>
+    <string name="cam_strings_error_high_temp_info_txt">Temperatura dispozitivului este în creştere. Dacă această creştere continuă, aplicaţia se va închide automat.</string>
+    <string name="cam_strings_error_high_temp_info_video_recording_with_flashlight_unavailable_txt">Temp. disp. prea mare pt. a înreg. un clip video cu lanterna pornită</string>
+    <string name="cam_strings_error_high_temp_info_vzw_txt">Temperatura dispozitivului este în creştere. Dacă această creştere continuă, aplicaţia se va închide automat.</string>
+    <string name="cam_strings_error_high_temp_shut_down_no_txt">Nu</string>
+    <string name="cam_strings_error_high_temp_shut_down_yes_txt">Da</string>
+    <string name="cam_strings_error_high_temp_shutting_down_txt">Acum, aparatul foto se va dezactiva temporar pentru a se răci.</string>
+    <string name="cam_strings_error_high_temp_shutting_down_vzw_txt">Acum, aparatul foto se va dezactiva temporar pentru a se răci.</string>
+    <string name="cam_strings_error_internal_memory_full_txt">Memorie internă plină. Cartela SD a fost stabilită ca spaţiu implicit de stocare a datelor.</string>
+    <string name="cam_strings_error_internal_memory_unavailable_txt">Memoria internă este deteriorată sau protejată la scriere. Stocare date s-a comutat la Cartelă SD.</string>
+    <string name="cam_strings_error_internal_sd_full_txt">Memorie plină. Ştergeţi unele fişiere de pe cartela SD sau din memoria internă.</string>
+    <string name="cam_strings_error_max_faces_exceeded_txt">A fost selectat numărul maxim de feţe. Anulaţi selectarea cel puţin a unei feţe şi încercaţi din nou.</string>
+    <string name="cam_strings_error_memory_full_txt">Memorie plină. Ştergeţi unele fişiere de pe cartela SD.</string>
+    <string name="cam_strings_error_memory_ims_access_error_txt">Eroare memorie</string>
+    <string name="cam_strings_error_memory_ims_full_txt">Memorie plină. Ştergeţi unele fişiere din memorie sau schimbaţi spaţiul implicit de stocare a datelor.</string>
+    <string name="cam_strings_error_memory_ims_unavailable_txt">Memorie indisponibilă</string>
+    <string name="cam_strings_error_memory_title_txt">Eroare memorie</string>
+    <string name="cam_strings_error_memory_unavailable_txt">Cartelă SD indisponibilă</string>
+    <string name="cam_strings_error_message_during_voice_call_title_txt">Apel în curs</string>
+    <string name="cam_strings_error_message_during_voice_call_txt">Aparat foto indisponibil în timpul unui apel</string>
+    <string name="cam_strings_error_mms_rec_size_limit_txt">Imposibil de adăugat alte fişiere. Dimensiunea fişierului este prea mare.</string>
+    <string name="cam_strings_error_save_file_in_progress_txt">Se salvează. Acţiune momentan indisponibilă.</string>
+    <string name="cam_strings_error_save_file_txt">Înregistrare în desfăşurare în altă aplicaţie. Nu s-a putut înregistra.</string>
+    <string name="cam_strings_error_storage_changing_to_internal_txt">Nicio cartelă SD disponibilă. Memoria internă a fost stabilită ca spaţiu implicit de stocare a datelor.</string>
+    <string name="cam_strings_error_video_rec_txt">Nu se poate înregistra. Este posibil ca înregistrarea sau o funcţie corelată cu aceasta să fie utilizată de altă aplicaţie.</string>
+    <string name="cam_strings_ev_disable_txt">Setare VE dezactivată. Pentru a controla VE, setați SS/ISO la AUTO.</string>
+    <string name="cam_strings_exposure_level_m03_txt">VE -0.3</string>
+    <string name="cam_strings_exposure_level_m07_txt">VE -0.7</string>
+    <string name="cam_strings_exposure_level_m10_txt">VE -1.0</string>
+    <string name="cam_strings_exposure_level_m13_txt">VE -1.3</string>
+    <string name="cam_strings_exposure_level_m17_txt">VE -1.7</string>
+    <string name="cam_strings_exposure_level_m20_txt">VE -2.0</string>
+    <string name="cam_strings_exposure_level_p03_txt">VE +0.3</string>
+    <string name="cam_strings_exposure_level_p07_txt">VE +0.7</string>
+    <string name="cam_strings_exposure_level_p10_txt">VE +1.0</string>
+    <string name="cam_strings_exposure_level_p13_txt">VE +1.3</string>
+    <string name="cam_strings_exposure_level_p17_txt">VE +1.7</string>
+    <string name="cam_strings_exposure_level_p20_txt">VE +2.0</string>
+    <string name="cam_strings_exposure_level_pm0_txt">VE ±0.0</string>
+    <string name="cam_strings_exposure_level_title_txt">Valoare expunere</string>
+    <string name="cam_strings_exposure_level_txt">Valoare expunere</string>
+    <string name="cam_strings_eye_position_tutorial_title_txt">Direcţia ochilor</string>
+    <string name="cam_strings_eye_position_tutorial_txt">Ţineţi ochii în dreptul aparatului foto frontal de lângă difuzor.</string>
+    <string name="cam_strings_face_eyeaf_settings_txt">Setări Detecţie feţe/FA pe ochi</string>
+    <string name="cam_strings_facefusion_add_face_txt">Adăugare faţă</string>
+    <string name="cam_strings_facefusion_delete_mask_txt">Ştergeţi această faţă? Această acţiune nu este reversibilă.</string>
+    <string name="cam_strings_facefusion_no_face_detected_txt">Nicio faţă detectată</string>
+    <string name="cam_strings_facefusion_point_at_face_txt">Îndreptaţi aparatul foto spre o figură</string>
+    <string name="cam_strings_facefusion_select_face_txt">Atingeţi uşor pătratele pt. a selecta feţe</string>
+    <string name="cam_strings_failure_camera_shake_preview_txt">Ţineţi aparatul stabil pt. a evita neclarităţile cauzate de mişcare.</string>
+    <string name="cam_strings_failure_camera_shake_txt">Fotografia poate să fie neclară din cauza mişcării aparatului foto</string>
+    <string name="cam_strings_failure_detection_description_not_blink_txt">"Această funcţie contribuie la evitarea greşelilor informându-vă dacă un deget acoperă obiectivul sau dacă imaginea este defocalizată înainte de fotografiere.
+După fotografiere, puteţi să verificaţi dacă există neclarităţi şi să primi sfaturi pentru refotografiere."</string>
+    <string name="cam_strings_failure_detection_description_txt">"Această funcţie contribuie la evitarea greşelilor, informându-vă dacă un deget acoperă obiec. sau dacă imag. este defoc. înainte de fotogr.
+După fotogr., puteţi verifica dacă s-a clipit sau există neclarităţi şi primi sfaturi pentru refotogr."</string>
+    <string name="cam_strings_failure_detection_txt">Afişare sfaturi pentru fotografiere</string>
+    <string name="cam_strings_failure_eye_blinks_preview_txt">Verificaţi dacă a clipit cineva</string>
+    <string name="cam_strings_failure_eye_blinks_txt">Este posibil ca cineva să fi clipit în această fotografie</string>
+    <string name="cam_strings_failure_finger_covering_lens_after_txt">Este posibil ca degetul să fi acoperit obiectivul</string>
+    <string name="cam_strings_failure_finger_covering_lens_preview_txt">Reperaţi obiectivul aparatului foto şi încercaţi să nu-l acoperiţi</string>
+    <string name="cam_strings_failure_finger_covering_lens_txt">Aveţi un deget pe obiectiv</string>
+    <string name="cam_strings_failure_focus_too_close_txt">Depărtaţi-vă de obiect</string>
+    <string name="cam_strings_failure_focus_too_dark_txt">Este nevoie de mai multă lumină pentru focalizare</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_photo_txt">Lansare şi fotografiere</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_video_txt">Lansare şi înregis. clip video</string>
+    <string name="cam_strings_fast_capturing_launch_camera_capture_txt">Lansaţi Aparat foto şi fotograf.</string>
+    <string name="cam_strings_fast_capturing_launch_camera_txt">Lansaţi aplicaţia Aparat foto</string>
+    <string name="cam_strings_fast_capturing_launch_only_txt">Numai lansare</string>
+    <string name="cam_strings_fast_capturing_launch_only_video_txt">Numai lansare (cameră video)</string>
+    <string name="cam_strings_fast_capturing_launch_photo_pro_txt">Lansaţi Photography Pro</string>
+    <string name="cam_strings_fast_capturing_screen_locked_apps_list_txt">Pentru a schimba Mod de capturare, deblocați ecranul. Deblocați funcția?</string>
+    <string name="cam_strings_fast_capturing_screen_locked_photos_burst_txt">Dispozitivul trebuie să fie deblocat pentru a comuta la aplicaţia de vizualizare a fotografiilor după ce faceţi fotografii în serie în timp ce ecranul este blocat. Deblocaţi dispozitivul?</string>
+    <string name="cam_strings_fast_capturing_screen_locked_settings_txt">Pentru a deschide setările, deblocaţi ecranul.</string>
+    <string name="cam_strings_fast_capturing_screen_locked_title_txt">Ecran blocat</string>
+    <string name="cam_strings_fast_capturing_title_txt">Lansare rapidă</string>
+    <string name="cam_strings_fast_capturing_txt">Lansare rapidă</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_title_txt">Comutaţi modul de capturare şi aparatul foto</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_txt">Deplasaţi degetul pe ecran pentru a comuta la alt mod de capturare, de exemplu, Video sau Manual, şi pentru a comuta între aparatul foto principal şi cel frontal.</string>
+    <string name="cam_strings_fast_switch_tutorial_title_txt">Comutare ap. foto</string>
+    <string name="cam_strings_fast_switch_tutorial_txt">Puteţi comuta între aparatul foto principal şi cel frontal deplasând degetul pe ecran</string>
+    <string name="cam_strings_feature_bokeh_cameraui_description_txt">"Pentru a ajusta efectul Bokeh, atingeți pictograma Bokeh în vizor și mutați glisorul.
+Această funcție este acceptată în modul de fotografiere.
+Veți realiza fotografii impresionante focalizând obiectul din prim-plan, în contrast cu fundalul nefocalizat."</string>
+    <string name="cam_strings_feature_bokeh_cameraui_subtitle_txt">Realizați fotografii cu efect bokeh</string>
+    <string name="cam_strings_feature_bokeh_cameraui_title_txt">Efect bokeh</string>
+    <string name="cam_strings_feature_bokeh_description_txt">"Faceţi fotografii impresionante, cu focalizare clară a subiectului pe un fundal neclar, defocalizat.
+Pentru a utiliza acest mod, atingeţi uşor pictograma MOD în vizor, apoi selectaţi Bokeh."</string>
+    <string name="cam_strings_feature_bokeh_subtitle_txt">Bokeh</string>
+    <string name="cam_strings_feature_bokeh_title_txt">Bokeh</string>
+    <string name="cam_strings_feature_dual_camera_manual_description_txt">În modul manual, puteţi să activaţi sau să dezactivaţi aparatul foto dual. Activaţi-l pentru a face fotografii cu zgomot redus în condiţii de lumină redusă. Dezactivaţi-l pentru a face fotografii în prim-plan.</string>
+    <string name="cam_strings_feature_dual_camera_manual_subtitle_txt">Fotografierea cu aparatul foto dual în modul manual</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_2_txt">Staţi la cel puţin 1 metru faţă de subiect când fotografiaţi sau înregistraţi clipuri video cu aparatul foto dual. Dacă vă apropiaţi de subiect, perspectiva sau culorile pot fi modificate.</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_txt">"Puteţi să faceţi fotografii şi clipuri video frumoase, cu zgomot redus, chiar şi noaptea sau în încăperi slab iluminate utilizând aparatul foto dual.
+Se comută automat de la un singur aparat foto la aparatul foto dual în funcţie de scena pe care o surprindeţi. Atât fotografiile, cât şi clipurile video sunt realizate cu sensibilitate ultraînaltă."</string>
+    <string name="cam_strings_feature_dual_camera_photo_subtitle_txt">Aparat foto dual</string>
+    <string name="cam_strings_feature_dual_camera_title_txt">Aparat foto dual</string>
+    <string name="cam_strings_feature_dual_camera_video_description_txt">Pentru a face fotografii în prim-plan extraordinare, comutaţi la un singur aparat foto dezactivând aparatul foto dual în vizor. Puteţi oricând să reveniţi la setarea anterioară atingând uşor butonul de setări.</string>
+    <string name="cam_strings_feature_dual_camera_video_subtitle_txt">Înregistrare video cu aparatul foto dual</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_description_txt">"Atingeți butonul din vizor pentru a comuta unghiurile între x1 și x2
+Puteți folosi această funcție atât în modul de fotografiere, cât și în modul de înregistrare video."</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_subtitle_txt">Comutați unghiul folosind acest buton</string>
+    <string name="cam_strings_feature_dual_zoom_camera_title_txt">Aparat foto dual</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_description_txt">"Atingeți și mențineți apăsat pe butonul din vizor pentru a afișa un glisor. Puteți să reglați nivelul de zoom cu ajutorul glisorului.
+Nivelul de mărire/micșorare poate fi reglat cu ajutorul unui buton de volum sau prin apropierea degetelor pe ecran."</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_subtitle_txt">Măriți/micșorați cu glisorul</string>
+    <string name="cam_strings_feature_eye_af_description_txt">"Puteţi face fotografii în modul Portret, în care sunt focalizaţi ochii subiecţilor.
+Pentru a schimba ţintele de focalizare, atingeţi faţa subiectului care doriţi să fie focalizat. Pentru a activa sau a dezactiva această funcţie, atingeţi pictograma care apare când sunt detectate feţe."</string>
+    <string name="cam_strings_feature_eye_af_description_with_animal_txt">"Puteţi face fotografii care să focalizeze ochii persoanelor sau ai animalelor.
+Pentru a schimba ţintele de focalizare, atingeţi uşor faţa subiectului pe care doriţi să o focalizaţi. Pentru a activa sau a dezactiva această funcţie, atingeţi uşor pictograma afişată la detectarea feţelor. Această funcţie este compatibilă cu modurile Foto şi Manual."</string>
+    <string name="cam_strings_feature_eye_af_subtitle_txt">AF ochi</string>
+    <string name="cam_strings_feature_eye_af_title_txt">AF ochi</string>
+    <string name="cam_strings_feature_failure_detection_description_not_blink_txt">"Această funcţie contribuie la evitarea greşelilor informându-vă dacă un deget acoperă obiectivul sau dacă imag. este defocalizată înainte de fotog.
+După fotografiere, puteţi să verificaţi dacă există neclarităţi şi să primi sfaturi pentru refotografiere.
+
+Puteţi schimba setările în Afişare sfaturi pt. fotog. din setările aparatului foto."</string>
+    <string name="cam_strings_feature_failure_detection_description_txt">"Această funcţie contribuie la evitarea greşelilor, informându-vă dacă un deget acoperă obiec. sau dacă imaginea este defocal. înainte de fotogr.
+După fotografiere, puteţi să verificaţi dacă s-a clipit sau dacă există neclarităţi şi să primi sfaturi pentru refotografiere.
+
+Puteţi schimba setările în Afişare sfaturi pt. fotog. din setările aparatului foto."</string>
+    <string name="cam_strings_feature_failure_detection_subtitle_txt">Afişare sfaturi pentru fotografiere</string>
+    <string name="cam_strings_feature_failure_detection_title_txt">Afişare sfaturi pentru fotografiere</string>
+    <string name="cam_strings_feature_failure_option_after_and_preview_txt">Înainte şi după fotografiere</string>
+    <string name="cam_strings_feature_failure_option_after_only_txt">Doar după fotografiere</string>
+    <string name="cam_strings_feature_hand_shutter_description_txt">"Întoarceţi palma spre aparatul foto. Autotemporizatorul va fi pornit atunci când palma este recunoscută. Pentru a fi uşor de recunoscut, extindeţi degetele în sus.
+Pentru a activa această funcţie, accesați opţiunea Foto (din faţă) şi selectaţi opțiunea Declanşare manuală în Captură automată."</string>
+    <string name="cam_strings_feature_hand_shutter_subtitle_txt">Declanşator manual</string>
+    <string name="cam_strings_feature_hand_shutter_title_txt">Declanşator manual</string>
+    <string name="cam_strings_feature_lens_correction_description_nosuperwidemode_txt">"Când utilizaţi obiectivul ultra-larg, puteţi selecta o prioritate. Selectând Calitatea imaginii are prioritate, puteţi captura imagini dinamice de înaltă calitate. Selectând Corectarea distorsiunilor are prioritate, puteți reduce distors. vizuale.
+Aceste funcţii sunt activate când utilizaţi obiectivul ultra-larg în modul Foto. Puteţi modifica setările din Corectare obiectiv ultra-larg (fotografie), sub setările aparatului foto."</string>
+    <string name="cam_strings_feature_lens_correction_description_txt">Când utilizaţi obiectivul ultra-larg, puteţi selecta o prioritate. Selectând Calitatea imaginii are prioritate, puteţi captura imagini dinamice de înaltă calitate. Selectând Corectarea distorsiunilor are prioritate, puteți reduce distors. vizuale. Aceste funcţii sunt activate când utilizaţi obiectivul ultra-larg în modul Foto. Puteţi schimba setările din Corectare obiectiv (fotografie), sub setările ap. foto, după ce treceţi la ob. ultra-larg.</string>
+    <string name="cam_strings_feature_level_description_txt">"Dacă activaţi funcţia Nivelă, puteţi verifica înclinarea aparatului foto cu un indicator.
+Afişajul devine verde când aparatul foto este în poziţie orizontală.
+Acest lucru este util când doriţi să aveţi linia orizontului dreaptă în fotografiile cu peisaje.
+
+Puteţi schimba setările acestei funcţii sub Nivelă în setările aparatului foto."</string>
+    <string name="cam_strings_feature_level_subtitle_txt">Fotografierea cu ajutorul funcţiei Nivelă</string>
+    <string name="cam_strings_feature_level_title_txt">Nivelă</string>
+    <string name="cam_strings_feature_list_banner_txt">Descoperiţi noile caracteristici</string>
+    <string name="cam_strings_feature_list_new_title_txt">Cum utilizaţi noile funcţii</string>
+    <string name="cam_strings_feature_list_other_title_txt">Cum se utilizează caracteristicile</string>
+    <string name="cam_strings_feature_list_title_txt">Prezentarea funcţiilor</string>
+    <string name="cam_strings_feature_long_ss_description_txt">"Puteți să setați viteza obturatorului până la 30 de secunde în modul manual. Când folosiți o viteză mai mică a obturatorului, țineți camera fixă pentru a realiza o fotografie minunată.
+Capturați scene nocturne sau obiecte în mișcare cu un efect impresionant."</string>
+    <string name="cam_strings_feature_long_ss_subtitle_txt">Schimbați viteza obturatorului</string>
+    <string name="cam_strings_feature_long_ss_title_txt">Viteză de declanşare</string>
+    <string name="cam_strings_feature_mono_description_txt">"Realizaţi uşor fotografii şi clipuri video artistice la înaltă definiţie.
+Pentru a utiliza acest mod, atingeţi uşor pictograma MOD în vizor, apoi selectaţi Monocrom."</string>
+    <string name="cam_strings_feature_mono_subtitle_txt">Monocrom</string>
+    <string name="cam_strings_feature_mono_title_txt">Monocrom</string>
+    <string name="cam_strings_feature_night_mode_description_txt">"Puteţi face fotografii clare chiar şi noaptea sau pe întuneric.
+Deoarece procesarea completă a imaginii după fotografiere poate dura, ţineţi fix aparatul foto până la finalizare."</string>
+    <string name="cam_strings_feature_night_mode_subtitle_txt">Mod nocturn</string>
+    <string name="cam_strings_feature_night_mode_title_txt">Mod nocturn</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_all_lang_txt">Mod nocturn</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_txt">Mod nocturn</string>
+    <string name="cam_strings_feature_night_shooting_title_all_lang_txt">Mod nocturn</string>
+    <string name="cam_strings_feature_night_shooting_title_txt">Mod nocturn</string>
+    <string name="cam_strings_feature_oneshot_description_txt">"Înregistraţi instantaneu un moment preţios în reluare cu %1$s cadre/s atingând butonul din centru ecranului.
+Înregistrarea în lumină puternică vă va ajuta să creaţi cu clip video mai bun."</string>
+    <string name="cam_strings_feature_oneshot_subtitle_txt">Rulare cu încetinitorul extremă (un cadru)</string>
+    <string name="cam_strings_feature_portrait_bokeh_description_txt">"Pentru a ajusta efectul Bokeh pe portrete, atingeți pictograma Portret Bokeh în vizor și mutați cursorul.
+Această funcție este acceptată în modul Fotografie.
+Faceți subiecții să iasă în evidență cu contrast impresionant prin estomparea fundalului."</string>
+    <string name="cam_strings_feature_portrait_bokeh_subtitle_txt">Realizați fotografii tip portret cu efect Bokeh</string>
+    <string name="cam_strings_feature_portrait_bokeh_title_txt">Portret efect Bokeh</string>
+    <string name="cam_strings_feature_portrait_selfie_description_txt">"Capturați un selfie artistic prin folosirea efectului Bokeh și adăugarea efectelor de înfrumusețare.
+Pentru a folosi acest mod, atingeți pictograma MOD în vizor, apoi selectați Selfie portret.
+Stilizați selfie-ul și bucurați-vă de rezultatele creative."</string>
+    <string name="cam_strings_feature_portrait_selfie_subtitle_txt">Portret selfie</string>
+    <string name="cam_strings_feature_portrait_selfie_title_txt">Portret selfie</string>
+    <string name="cam_strings_feature_predictive_launch_description_txt">"Puteţi lansa rapid aparatul foto. Ridicaţi rapid dispozitivul în modul tip peisaj şi orientaţi aparatul foto spre un obiect. Aparatul foto se va lansa automat.
+Puteţi selecta modul preferat de utilizare a funcţiei din Lansare inteligentă în setările aparatului foto."</string>
+    <string name="cam_strings_feature_predictive_launch_subtitle_txt">Lansare inteligentă</string>
+    <string name="cam_strings_feature_predictive_launch_title_txt">Lansare inteligentă</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"Puteţi să accesaţi rapid webul sau să vă conectaţi la Wi-Fi scanând un QR Code.
+Această funcţie este activă în modul de fotografiere. Puteţi modifica această setare din cititorul QR Code, în Setări aparat foto."</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Cititor QR Code</string>
+    <string name="cam_strings_feature_qrcode_notification_channel_txt">Cititor QR Code</string>
+    <string name="cam_strings_feature_selfie_description_txt">"Când realizați fotografii cu aparatul foto frontal, priviți spre obiectivul aparatului foto principal de lângă cască.
+Ochii dvs. vor privi în direcția corectă în fotografie."</string>
+    <string name="cam_strings_feature_selfie_subtitle_txt">Direcţia ochilor</string>
+    <string name="cam_strings_feature_selfie_title_txt">Aparat foto frontal</string>
+    <string name="cam_strings_feature_sidesense_bar_description_txt">"Puteţi să fotografiaţi sau să înregistraţi clipuri video atingând uşor de două ori senzorul de pe marginea ecranului în loc de butonul Declanşaţi.
+Funcţia este compatibilă modurile Foto şi Video. Puteţi schimba setările acestei funcţii din secţiunea Detecţie laterală a setărilor pentru aparatul foto."</string>
+    <string name="cam_strings_feature_sidesense_description_txt">"Puteți să realizați o fotografie doar atingând de două ori senzorul de pe partea laterală a ecranului în locul butonului obturatorului.
+Atât modul de fotografiere, cât și modul de înregistrare video acceptă această funcție. Puteți să schimbați setările din secțiunea [Detecție laterală] din setările camerei."</string>
+    <string name="cam_strings_feature_sidesense_subtitle_txt">Detecţie laterală</string>
+    <string name="cam_strings_feature_sidesense_title_txt">Detecţie laterală</string>
+    <string name="cam_strings_feature_slowmotion_description_txt">Puteţi înregistra un clip video cu mai multe părţi redate cu încetinitorul (la 120 cadre/s)</string>
+    <string name="cam_strings_feature_slowmotion_subtitle_txt">Rulare cu încetinitorul</string>
+    <string name="cam_strings_feature_slowmotion_title_txt">Rulare cu încetinitorul</string>
+    <string name="cam_strings_feature_superslow_description_txt">"Realizați un clip video impresionant prin prezentarea unui moment prețios cu încetinitorul. Înregistrarea în condiții de lumină puternică vă va ajuta să creați un clip video mai bun.
+Pentru a folosi acest mod, atingeți pictograma MOD în vizor, apoi selectați Redare cu încetinitorul. De asemenea, puteți să selectați diferite opțiuni în setările Mod rulare cu încetinitorul."</string>
+    <string name="cam_strings_feature_superslow_subtitle_txt">Redare cu încetinitorul extremă</string>
+    <string name="cam_strings_feature_transfer_and_tagging_description_txt">"Dacă activaţi această funcţie, Transfer &amp; Tagging add-on va avea permisiunea să afişeze fotografiile făcute cu aparatul foto Xperia. Fotografiile vor fi salvate în memoria internă.
+Această funcţie este compatibilă cu fotografiile făcute în modurile Foto şi Manual.
+Puteţi să modificaţi setările din modul Transfer &amp; Tagging add-on din setările aparatului foto."</string>
+    <string name="cam_strings_feature_transfer_and_tagging_subtitle_txt">Asocierea cu Transfer &amp; Tagging add-on</string>
+    <string name="cam_strings_feature_transfer_and_tagging_title_txt">Mod Transfer &amp; Tagging add-on</string>
+    <string name="cam_strings_feature_triple_camera_button_description_new_txt">"Puteţi să comutaţi cu uşurinţă între obiectivele aparatului foto pentru a vă provoca creativitatea fotografiind în orice situaţie.
+Atingeți butonul de pe vizor pentru a comuta între obiectivele ultra-larg, larg și telefoto.
+Puteţi să folosiţi această funcţie atât în modul Foto, cât şi în cel Video."</string>
+    <string name="cam_strings_feature_triple_camera_button_description_txt">"Puteţi să comutaţi cu uşurinţă între obiectivele aparatului foto pentru a vă provoca creativitatea fotografiind în orice situaţie.
+Atingeți butonul din vizor pentru a comuta unghiurile între x1, x2 și ultra-larg.
+Puteţi să folosiţi această funcţie atât în modul Foto, cât şi în cel Video."</string>
+    <string name="cam_strings_feature_triple_camera_button_subtitle_txt">Comutați unghiul folosind acest buton</string>
+    <string name="cam_strings_feature_triple_camera_button_with_zoom_ratio_description_txt">"Puteți să comutați cu ușurință între obiectivele aparatului foto pentru a vă provoca creativitatea, fotografiind în orice situație.
+Atingeți butonul din vizor pentru a comuta unghiurile între 0,6x (ultra-larg), 1x (larg) și 2x (telefoto).
+Puteți folosi această funcție atât în modul Fotografie, cât și Video."</string>
+    <string name="cam_strings_feature_triple_camera_how_to_zoom_subtitle_txt">Mărirea/micșorarea</string>
+    <string name="cam_strings_feature_triple_camera_title_txt">Cameră triplă</string>
+    <string name="cam_strings_feature_triple_camera_wide_description_txt">"Acest obiectiv este potrivit pentru fotografierea peisajelor, deoarece capturează un câmp mai larg.
+Comutați la obiectivul ultra-larg pentru a putea modifica setările acestuia."</string>
+    <string name="cam_strings_feature_triple_camera_wide_subtitle_txt">Capturați cu un obiectiv ultra-larg</string>
+    <string name="cam_strings_feature_triple_camera_zoom_description_txt">"Glisaţi degetul la stânga sau la dreapta pe butonul din vizor pentru a se afişa cursorul. Puteţi regla nivelul de zoom utilizând cursorul.
+Nivelul de mărire/micșorare poate fi reglat cu ajutorul butonului de volum sau prin apropierea degetelor pe ecran."</string>
+    <string name="cam_strings_feature_triple_camera_zoom_plus_zoom_frames_description_txt">"Glisați degetul la stânga sau la dreapta pe butonul din vizor pentru a se afișa cursorul. Puteţi regla nivelul de zoom utilizând cursorul.
+Nivelul de zoom poate fi ajustat cu ajutorul butoanelor de volum sau prin apropierea degetelor pe ecran.
+În modul Fotografie, puteți afișa chenare care vă ajută să previzualizați cum va arăta atunci când măriți. Puteți modifica această setare din Asistent compoziție zoom din setările aparatului foto."</string>
+    <string name="cam_strings_feature_triple_camera_zoom_subtitle_txt">Măriți/micșorați cu glisorul</string>
+    <string name="cam_strings_feature_zoom_frames_description_txt">"Dacă activați această setare, puteți previzualiza cum va arăta când măriți.
+Centrați subiectul într-un chenar și atingeți raportul zoom pentru a mări cu ușurință.
+Această funcție nu este acceptată atunci când Dimensiune imagine statică este setată la 21:9."</string>
+    <string name="cam_strings_file_delete_confirm_title_txt">Ştergere</string>
+    <string name="cam_strings_file_delete_confirm_txt">Ştergeţi acest fişier?</string>
+    <string name="cam_strings_file_format_description_txt">Selectaţi un codificator pentru clipurile video 4K</string>
+    <string name="cam_strings_file_format_sub_description_h264_txt">Format standard pentru codificare. Este compatibil cu majoritatea dispozitivelor şi serviciilor.</string>
+    <string name="cam_strings_file_format_sub_description_h265_txt">Format cu rată de compresie ridicată. Asiguraţi-vă că este compatibil cu dispozitivele sau serviciile.</string>
+    <string name="cam_strings_file_share_title_txt">Partajare</string>
+    <string name="cam_strings_flash_fill_flash_txt">Bliţ de umplere</string>
+    <string name="cam_strings_flash_night_portrait_hint_txt">Asiguraţi-vă că ţineţi dispozitivul nemişcat</string>
+    <string name="cam_strings_flash_night_portrait_txt">Bliţ pentru portret nocturn</string>
+    <string name="cam_strings_flash_pro_txt">Mod bliţ</string>
+    <string name="cam_strings_flash_red_eye_reduc_txt">Atenuare ochi roşii</string>
+    <string name="cam_strings_flash_title_txt">Bliţ</string>
+    <string name="cam_strings_flash_torch_txt">Lanternă</string>
+    <string name="cam_strings_flash_txt">Bliţ</string>
+    <string name="cam_strings_focus_af_c_txt">FA continuă</string>
+    <string name="cam_strings_focus_af_s_txt">FA cadru unic</string>
+    <string name="cam_strings_focus_mf_txt">Focalizare manuală</string>
+    <string name="cam_strings_focus_mode_face_detection_txt">Detectare faţă</string>
+    <string name="cam_strings_focus_mode_infinity_txt">Infinit</string>
+    <string name="cam_strings_focus_mode_macro_txt">Macro</string>
+    <string name="cam_strings_focus_mode_multi_af_txt">Focal. autom. zone multiple</string>
+    <string name="cam_strings_focus_mode_object_tracking_txt">Urmărire obiect</string>
+    <string name="cam_strings_focus_mode_single_af_txt">Focal. autom. o singură zonă</string>
+    <string name="cam_strings_focus_mode_title_txt">Mod focalizare</string>
+    <string name="cam_strings_focus_mode_touch_focus_txt">Focalizare la atingere</string>
+    <string name="cam_strings_focus_mode_txt">Mod focalizare</string>
+    <string name="cam_strings_forced_change_flash_off_txt">Mod bliț dezactivat pentru a utiliza Fotografiere pe timp de noapte</string>
+    <string name="cam_strings_forced_change_night_shooting_auto_txt">Fotografiere pe timp de noapte pe Automat pentru a utiliza Mod bliț</string>
+    <string name="cam_strings_front_cam_location_guide_txt">Obiectivul aparatului foto este amplasat conform ilustraţiei</string>
+    <string name="cam_strings_fusion_error_too_close_txt">Depărtaţi-vă de obiect</string>
+    <string name="cam_strings_fusion_on_txt">Sensibilitate ultraînaltă</string>
+    <string name="cam_strings_fusion_setting_txt">Comutator aparat foto dual</string>
+    <string name="cam_strings_geotagging_title_txt">Salvare locaţie</string>
+    <string name="cam_strings_geotagging_txt">Salvare locaţie</string>
+    <string name="cam_strings_get_more_modes_txt">Aplicaţii</string>
+    <string name="cam_strings_global_setting_softskin_available_applications_txt">Aplicaţii disponibile</string>
+    <string name="cam_strings_global_setting_softskin_brighten_skin_txt">Piele luminoasă</string>
+    <string name="cam_strings_global_setting_softskin_detail_txt">Faceţi pielea dvs. să arate luminoasă şi netedă. Efectul funcţionează în aplicaţiile care utilizează aparatul foto frontal. Efectul poate fi aplicat la fotografii şi clipuri video. De asemenea, puteţi să reglaţi nivelul aplicat.</string>
+    <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Reglare nivel</string>
+    <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Piele fină</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Nu se poate porni aplicaţia.
+Asiguraţi-vă că aveţi instalată şi activată pe dispozitiv cea mai recentă versiune de %1$s."</string>
+    <string name="cam_strings_gridline_txt">Linii grilă</string>
+    <string name="cam_strings_hand_shutter_hint_detail_txt">Întoarceţi-vă palma către aparatul foto. Atunci când palma dvs. este recunoscută, este pornit temporizatorul automat. Pentru a facilita recunoaşterea, întindeţi degetele în sus.</string>
+    <string name="cam_strings_hand_shutter_hint_txt">Întoarceţi-vă palma către aparatul foto</string>
+    <string name="cam_strings_hand_shutter_txt">Declanşator manual</string>
+    <string name="cam_strings_hdr_dro_settings_dro_txt">Optimizare interval dinamic</string>
+    <string name="cam_strings_hdr_dro_settings_hdr_txt">HDR automat</string>
+    <string name="cam_strings_hdr_dro_settings_txt">DRO/HDR automat</string>
+    <string name="cam_strings_hdr_guide_txt">Deoarece funcţia HDR foto realizează şi combină două imagini ale aceleiaşi scene, aceasta se potriveşte numai pentru obiectele statice.</string>
+    <string name="cam_strings_hdr_title_txt">HDR</string>
+    <string name="cam_strings_hdr_txt">HDR</string>
+    <string name="cam_strings_help_txt">Ajutor</string>
+    <string name="cam_strings_histogram_txt">Histogramă</string>
+    <string name="cam_strings_iburst_feedback_txt">Anticipată</string>
+    <string name="cam_strings_image_quality_control_button_cancel_txt">Revocare</string>
+    <string name="cam_strings_image_quality_control_button_clear_txt">Ștergere</string>
+    <string name="cam_strings_image_quality_control_button_reset_txt">Resetare</string>
+    <string name="cam_strings_image_quality_control_tab_focus_txt">Focalizare</string>
+    <string name="cam_strings_image_size_txt">Dimensiune imagine statică</string>
+    <string name="cam_strings_image_stabilizer_title_txt">Stabilizator imagine</string>
+    <string name="cam_strings_image_stabilizer_txt">Stabilizator imagine</string>
+    <string name="cam_strings_intelligent_burst_txt">Capturare anticipată</string>
+    <string name="cam_strings_intelligent_wind_filter_txt">Filtru inteligent pentru vânt</string>
+    <string name="cam_strings_iso_changed_txt">S-a modificat şi valoarea ISO</string>
+    <string name="cam_strings_launch_with_camera_key_txt">Lansare cu buton aparat foto</string>
+    <string name="cam_strings_lens_correction_for_photo_description_added_txt">Notă: opţiunea Corectare obiectiv va fi dezactivată dacă se fac fotografii în serie.</string>
+    <string name="cam_strings_lens_correction_for_photo_description_txt">Când utilizaţi obiectivul ultra-larg, puteţi selecta o prioritate. Selectând Calitatea imaginii are prioritate, puteţi captura imagini dinamice de înaltă calitate. Selectând Corectarea distorsiunilor are prioritate, puteţi reduce distorsiunile vizuale.</string>
+    <string name="cam_strings_lens_correction_for_photo_nosuperwidemode_txt">Corectare obiectiv ultra-larg (fotografie)</string>
+    <string name="cam_strings_lens_correction_for_photo_pro_txt">Corectare obiectiv ultra-larg</string>
+    <string name="cam_strings_lens_correction_for_photo_txt">Corectare obiectiv (fotografie)</string>
+    <string name="cam_strings_lens_correction_off_txt">Calitatea imaginii are prioritate</string>
+    <string name="cam_strings_lens_correction_on_txt">Corectarea distorsiunilor are prioritate</string>
+    <string name="cam_strings_lens_correction_txt">Corectare obiectiv</string>
+    <string name="cam_strings_lens_switch">Schimbaţi unghiul obiectivului</string>
+    <string name="cam_strings_level_meter_calibration_txt">Calibrare nivelă</string>
+    <string name="cam_strings_level_pro_txt">Nivelă</string>
+    <string name="cam_strings_level_txt">Nivelă</string>
+    <string name="cam_strings_long_press_burst_best_txt">Standard</string>
+    <string name="cam_strings_long_press_burst_high_txt">Viteză mare</string>
+    <string name="cam_strings_long_press_burst_txt">Fotografii în serie cu apăsare lungă</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_title_txt">Realizarea fotografiilor cu aparatul foto dual</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_txt">Stați la cel puțin 1 metru depărtare față de obiect când realizați fotografii cu aparatul foto dual pornit. Apropierea de obiect poate duce la modificarea punctului de vedere sau a culorilor.</string>
+    <string name="cam_strings_manual_fusion_tutorial_title_txt">Comutaţi la aparatul foto dual</string>
+    <string name="cam_strings_manual_fusion_tutorial_txt">În modul manual, puteţi să activaţi sau să dezactivaţi aparatul foto dual. Activaţi-l pentru a face fotografii cu zgomot redus în condiţii de lumină redusă. Dezactivaţi-l pentru a face fotografii în prim-plan.</string>
+    <string name="cam_strings_max_file_size_save_failed_txt">Înregistrarea s-a oprit din cauza limitei pentru dimensiunea maximă a fişierului</string>
+    <string name="cam_strings_max_recording_time_save_failed_txt">Înregistrarea s-a oprit din cauza limitei pentru durata maximă de înregistrare</string>
+    <string name="cam_strings_memory_full_save_failed_txt">Imposibil de salvat. Memorie plină.</string>
+    <string name="cam_strings_memory_full_zoom_not_supported_txt">Memoria este plină. Momentan, mărirea/micşorarea nu este disponibilă.</string>
+    <string name="cam_strings_metering_multi_cy_txt">Multi</string>
+    <string name="cam_strings_mf_assist_txt">Asistent MF</string>
+    <string name="cam_strings_mfnr_txt">Atenuare zgomot în cadre multiple</string>
+    <string name="cam_strings_microphone_title_txt">Microfon</string>
+    <string name="cam_strings_modeselector_addon_installed_txt">Instalate</string>
+    <string name="cam_strings_monochrome_photo_txt">Fotografie monocromă</string>
+    <string name="cam_strings_monochrome_title_txt">Monocrom</string>
+    <string name="cam_strings_monochrome_video_txt">Video monocrom</string>
+    <string name="cam_strings_more_common_setting_title_txt">Setări comune</string>
+    <string name="cam_strings_more_txt">Mai multe</string>
+    <string name="cam_strings_mr_txt">Înregistrate în Preluare din memorie %d</string>
+    <string name="cam_strings_multi_window_txt">Trageţi mijlocul barei de divizare pentru a utiliza %1$s pe ecran complet</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Alt dispozitiv este acum conectat.
+Doriţi să partajaţi imaginea cu dispozitivul prin intermediul vizorului?"</string>
+    <string name="cam_strings_multicam_add_device_txt">Adăug. dispozit.</string>
+    <string name="cam_strings_multicam_add_more_txt">Adăugare mai multe</string>
+    <string name="cam_strings_multicam_apply_txt">Efectuat</string>
+    <string name="cam_strings_multicam_connection_failure_dialog_txt">Imposibil de conectat</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Nu este posibilă conectare cu niciun aparat foto Wi-Fi/NFC Sony atunci când dispozitivul Xperia este conectat cu alt dispozitiv Xperia.</string>
+    <string name="cam_strings_multicam_error_app_ver_old_txt">Versiunea aplicaţiei nu se potriveşte. Imposibil de conectat. Aplicaţia trebuie actualizată.</string>
+    <string name="cam_strings_multicam_error_disconnect_txt">Deconectat</string>
+    <string name="cam_strings_multicam_error_nfc_txt">Nu se poate porni dacă funcţia NFC este blocată.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">Acest mod este indisponibil în timpul tetheringului prin Wi-Fi.</string>
+    <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">Număr maxim de dispozitive adăugat.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Un singur aparat foto Wi-Fi/NFC Sony poate fi conectat cu dispozitivul dvs. Xperia la un moment dat.</string>
+    <string name="cam_strings_multicam_nfc_connect_title_txt">Pentru conectare, atingeţi uşor disp. unul de celălalt</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Aparat foto Wi-Fi/NFC de la Sony</string>
+    <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
+    <string name="cam_strings_multicam_nfc_touch_to_beam_title_txt">Atingeţi uşor ecranul</string>
+    <string name="cam_strings_multicam_security_info_txt">Dacă dispozitivul la care vă conectaţi este, la rândul său, conectat cu alte dispozitive Xperia prin intermediul acestei aplicaţii, dispozitivul dvs. Xperia va fi, de asemenea, conectat la dispozitivele respective şi orice imagine care apare în vizor va fi partajată între dispozitivul dvs. Xperia şi toate dispozitivele conectate.</string>
+    <string name="cam_strings_multicam_touch_add_camera_desc_txt">Atingeţi uşor pt. a adăuga un dispozitiv. Imaginea din vizor va apărea aici.</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Nu este posibilă conectarea cu niciun alt dispozitiv Xperia atunci când dispozitivul Xperia este conectat cu un aparat foto Wi-Fi/NFC Sony.</string>
+    <string name="cam_strings_night_mode_hint_txt">Mod nocturn</string>
+    <string name="cam_strings_night_shooting_hint_txt">Mod nocturn</string>
+    <string name="cam_strings_not_zoom_for_full_hd_60fps_video_txt">Pentru video Full HD (60 cad./s) nu este disponibil zoom sub 1x</string>
+    <string name="cam_strings_not_zoom_txt">Pentru video 4K şi Full HD (60 cad./s) nu este disponibil zoom sub 1x</string>
+    <string name="cam_strings_ok_txt">OK</string>
+    <string name="cam_strings_only_main_txt">Numai aparatul foto principal</string>
+    <string name="cam_strings_peaking_display_txt">Afişare accentuare</string>
+    <string name="cam_strings_permgroupdesc_thermalmitigation_message_txt">Permiteţi aplicaţiei să controleze sistemul pentru capturi stabile, în funcţie de temperatura dispozitivului.</string>
+    <string name="cam_strings_permgrouplab_thermalmitigation_txt">controlaţi sistemul</string>
+    <string name="cam_strings_photo_autoreview_txt">Examinare auto. fotografie</string>
+    <string name="cam_strings_photometry_average_txt">Medie</string>
+    <string name="cam_strings_photometry_center_txt">Centru</string>
+    <string name="cam_strings_photometry_face_txt">Figură</string>
+    <string name="cam_strings_photometry_pro_txt">Mod măsurare</string>
+    <string name="cam_strings_photometry_spot_txt">Punct</string>
+    <string name="cam_strings_photometry_title_txt">Dozare</string>
+    <string name="cam_strings_photometry_touch_txt">Atingeţi</string>
+    <string name="cam_strings_photometry_txt">Dozare</string>
+    <string name="cam_strings_pleaking_color_txt">Culoare a accentuării</string>
+    <string name="cam_strings_preaf_txt">Pre-FA</string>
+    <string name="cam_strings_predictive_capture_description_txt">Imaginile sunt capturate automat după detectarea unui zâmbet sau a unei mişcări a unui obiect cu câteva secunde înainte să apăsaţi pe butonul obturatorului. Puteţi să selectaţi fotografia preferată din până la patru fotografii capturate. Nu veţi rata niciodată fotografia perfectă.</string>
+    <string name="cam_strings_predictive_capture_feedback_txt">Anticipată</string>
+    <string name="cam_strings_predictive_capture_txt">Capturare anticipată</string>
+    <string name="cam_strings_predictive_launch_description_txt">Puteţi să lansaţi automat camera ridicând rapid dispozitivul în modul Peisaj şi îndreptând camera către un obiect.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Aparatul foto a fost lansată automat prin detectarea mişcării dvs. de ridicare a telefonului în modul peisaj şi orientarea acestuia către un obiect.
+Puteți selecta modul preferat de utilizare a acestei caracteristici din Lansare inteligentă în setările aparatului foto."</string>
+    <string name="cam_strings_predictive_launch_guide_2_txt">Atingeţi în interiorul cercului pentru capturare</string>
+    <string name="cam_strings_predictive_launch_guide_3_txt">Atingeţi ecranul pentru capturare</string>
+    <string name="cam_strings_predictive_launch_guide_circle_txt">Atingeţi uşor în interiorul cercului pentru vizualizare pe tot ecranul</string>
+    <string name="cam_strings_predictive_launch_guide_txt">Atingeți în interiorul cercului pentru a lansa camera</string>
+    <string name="cam_strings_predictive_launch_launch_and_capture_txt">Ating. pt. lans. şi captură</string>
+    <string name="cam_strings_predictive_launch_launch_only_txt">Atingeţi pentru lansare</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_and_capture_txt">Atingeţi în interiorul cercului, iar camera va fi lansată pe tot ecranul şi în acelaşi timp va realiza o fotografie.</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_only_txt">Atingeţi în interiorul cercului, iar camera va fi lansată pe tot ecranul.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Puteţi lansa rapid aparatul foto. Ridicaţi rapid dispozitivul în modul tip peisaj şi orientaţi aparatul foto spre un obiect. Aparatul foto se va lansa automat.
+Puteţi selecta modul preferat de utilizare a funcţiei din Lansare inteligentă în setările aparatului foto."</string>
+    <string name="cam_strings_predictive_launch_tutorial_title_txt">Lansare inteligentă</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Puteți lansa rapid aparatul foto. Balansați dispozitivul în vizualizarea de tip peisaj şi orientaţi aparatul foto spre obiect. Aparatul foto se va lansa automat.
+Puteți dezactiva caracteristica în Lansare predictivă din setările aparatului foto."</string>
+    <string name="cam_strings_predictive_launch_txt">Lansare inteligentă</string>
+    <string name="cam_strings_preview_always_txt">Activat</string>
+    <string name="cam_strings_preview_duration_3sec_txt">3 secunde</string>
+    <string name="cam_strings_preview_duration_5sec_txt">5 secunde</string>
+    <string name="cam_strings_preview_duration_title_txt">Examinare</string>
+    <string name="cam_strings_preview_duration_txt">Examinare</string>
+    <string name="cam_strings_preview_duration_unlimited_txt">Nelimitat</string>
+    <string name="cam_strings_preview_edit_txt">Editare</string>
+    <string name="cam_strings_preview_only_front_txt">Numai aparatul foto frontal</string>
+    <string name="cam_strings_previous_txt">Anterior</string>
+    <string name="cam_strings_processing_capturing_photo_txt">Se efectuează fotografia. Aşteptaţi.</string>
+    <string name="cam_strings_processing_loading_txt">Se fotografiază. Ţineţi fix aparatul foto.</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Atingeţi pentru a sera acest dispozitiv</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Acest QR Code nu este acceptat</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Atingeţi pentru a deschide \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Nu se poate conecta la această rețea Wi-Fi</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Atingeţi pt. a vă conec. la reţ. Wi-Fi „%1$s”</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Cititor QR Code</string>
+    <string name="cam_strings_recommend_night_mode_txt">Atingeți aici pentru a utiliza Mod nocturn</string>
+    <string name="cam_strings_recommend_night_mode_use_button_txt">Se utilizează</string>
+    <string name="cam_strings_recommend_night_shooting_txt">Atingeți aici pentru a utiliza Mod nocturn</string>
+    <string name="cam_strings_recording_txt">ÎNREG.</string>
+    <string name="cam_strings_remember_geotag_title_txt">Salvaţi locaţia?</string>
+    <string name="cam_strings_remember_geotag_txt">Etichetaţi-vă fotografiile şi clipurile video cu locaţiile unde au fost făcute. Puteţi să modificaţi oricând această setare dezactivând opţiunea Salvare locaţie din setările aparatului foto.</string>
+    <string name="cam_strings_remote_touch_to_start_txt">Atingeţi uşor pentru a începe</string>
+    <string name="cam_strings_reset_color_brightness_txt">Resetare culoare şi luminozitate</string>
+    <string name="cam_strings_reset_settings_confirm_title_txt">Restauraţi setările implicite ale aparatului foto?</string>
+    <string name="cam_strings_reset_settings_txt">Reiniţializare setări</string>
+    <string name="cam_strings_reset_txt">Resetare</string>
+    <string name="cam_strings_resolution_title_txt">Rezoluţie</string>
+    <string name="cam_strings_resolution_txt">Rezoluţie</string>
+    <string name="cam_strings_restricted_mf_touchfocus_txt">Pentru a utiliza focalizarea la atingere, treceţi la setarea FA</string>
+    <string name="cam_strings_restricted_setting_dialog_title_txt">Nu se poate modifica</string>
+    <string name="cam_strings_restricted_setting_photo_long_shutter_speed_txt">Această setare nu acceptă viteza actuală a obturatorului. Pentru a configura această setare, schimbați viteza obturatorului la 1 secundă sau mai puțin.</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_or_scene_txt">Această setare nu este compatibilă cu rezoluţia sau scena actuală. Pentru a o configura, schimbaţi rezoluţia sau selecţia scenei.</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_txt">Această setare nu acceptă dimensiunea de imagine statică actuală. Pentru a configura această setare, schimbaţi dimensiunea imaginii statice.</string>
+    <string name="cam_strings_restricted_setting_scene_txt">Această setare nu este compatibilă cu scena actuală. Pentru a o configura, schimbaţi selecţia scenei.</string>
+    <string name="cam_strings_restricted_setting_slow_motion_txt">Nu se poate schimba dimensiunea video în modul Cu încetinitorul. Pentru a configura această setare, ieşiţi din modul Cu încetinitorul.</string>
+    <string name="cam_strings_restricted_setting_transfer_and_tagging_txt">Această setare nu este disponibilă dacă modul Transfer &amp; Tagging add-on este activat. Pentru a modifica această setare, dezactivaţi modul Transfer &amp; Tagging add-on.</string>
+    <string name="cam_strings_restricted_setting_video_hdr_hlg_txt">Această setare nu este disponibilă dacă setarea HDR este activată. Pentru configurare, dezactivaţi setarea HDR.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_or_scene_txt">Această setare nu este compatibilă cu rezoluţia video sau scena actuală. Pentru a o configura, schimbaţi rezoluţia video sau selecţia scenei.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_txt">Această setare nu este compatibilă cu dimensiunea video actuală. Pentru a o configura, schimbaţi dimensiunea video.</string>
+    <string name="cam_strings_restriction_info_correction_for_distortion_txt">Corectarea obiectivului nu este disponibilă când se utilizează efectul Bokeh</string>
+    <string name="cam_strings_restriction_information_txt">În funcţie de această setare, următoarele funcţii ar putea fi dezactivate sau modificate automat:</string>
+    <string name="cam_strings_runtime_permission_continue_button_txt">INFO APLICAŢIE</string>
+    <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s necesită permisiunile următoare</string>
+    <string name="cam_strings_runtime_permission_dialog1_title_txt">Permisiune %1$s</string>
+    <string name="cam_strings_runtime_permission_dialog2_message1_txt">Aplicaţia are nevoie de permisiunile următoare pentru a efectua această acţiune.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Pentru a acorda permisiuni, mergeţi la Informaţii aplicaţie > Permisiuni.</string>
+    <string name="cam_strings_runtime_permission_dialog2_title_txt">Nu s-a putut continua</string>
+    <string name="cam_strings_runtime_permission_rationale_camera_txt">Pentru a realiza fotografii şi clipuri video</string>
+    <string name="cam_strings_runtime_permission_rationale_location_txt">Pentru a prelua locaţia</string>
+    <string name="cam_strings_runtime_permission_rationale_microphone_txt">Pentru a înregistra sunetul</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_cta_txt">Pentru a citi și salva fotografii și clipuri video</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_txt">Pentru a salva fotografii şi clipuri video</string>
+    <string name="cam_strings_s1_settings_txt">FA prin declanşator</string>
+    <string name="cam_strings_save_destination_ims_txt">Memorie internă</string>
+    <string name="cam_strings_save_destination_sd_txt">Cartelă SD</string>
+    <string name="cam_strings_save_destination_title_txt">Stocare date</string>
+    <string name="cam_strings_save_destination_txt">Stocare date</string>
+    <string name="cam_strings_saving_files_txt">Se salvează fişierele</string>
+    <string name="cam_strings_scene_selection_title_cy_txt">Selectare scenă</string>
+    <string name="cam_strings_scenes_anti_motion_blur_cy_txt">Anti-neclaritate în mişcare</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_portrait_cy_txt">Portret contrejour</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_txt">Contrejour</string>
+    <string name="cam_strings_scenes_auto_recog_gourmet_txt">Specialităţi culinare</string>
+    <string name="cam_strings_scenes_auto_recog_infant_cy_txt">Bebeluş</string>
+    <string name="cam_strings_scenes_auto_recog_landscape_txt">Peisaj</string>
+    <string name="cam_strings_scenes_auto_recog_low_light_cy_txt">Lumină difuză</string>
+    <string name="cam_strings_scenes_auto_recog_softsnap_cy_txt">Instantaneu estompat</string>
+    <string name="cam_strings_scenes_auto_recog_spotlight_cy_txt">Reflector</string>
+    <string name="cam_strings_scenes_auto_recog_text_txt">Document</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_portrait_cy_txt">Portret nocturn</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_txt">Scenă nocturnă</string>
+    <string name="cam_strings_scenes_backlight_hdr_cy_txt">Corecţie contrejour HDR</string>
+    <string name="cam_strings_scenes_beach_cy_txt">Plajă</string>
+    <string name="cam_strings_scenes_beachsnow_txt">Plajă şi zăpadă</string>
+    <string name="cam_strings_scenes_document_txt">Document</string>
+    <string name="cam_strings_scenes_fireworks_cy_txt">Artificii</string>
+    <string name="cam_strings_scenes_gurumet_cy_txt">Specialităţi culinare</string>
+    <string name="cam_strings_scenes_handheld_twilight_cy_txt">Seara, fără trepied</string>
+    <string name="cam_strings_scenes_high_sensitivity_cy_txt">Sensibilitate înaltă</string>
+    <string name="cam_strings_scenes_landscape_txt">Peisaj</string>
+    <string name="cam_strings_scenes_nightmode_txt">Mod nocturn</string>
+    <string name="cam_strings_scenes_nightportrait_cy_txt">Portret nocturn</string>
+    <string name="cam_strings_scenes_nightscene_txt">Scenă nocturnă</string>
+    <string name="cam_strings_scenes_party_txt">Petrecere</string>
+    <string name="cam_strings_scenes_pet_cy_txt">Animal de companie</string>
+    <string name="cam_strings_scenes_pets_txt">Animale de companie</string>
+    <string name="cam_strings_scenes_snow_cy_txt">Zăpadă</string>
+    <string name="cam_strings_scenes_soft_skin_cy_txt">Piele fină</string>
+    <string name="cam_strings_scenes_soft_snap_cy_txt">Instantaneu estompat</string>
+    <string name="cam_strings_scenes_sports_txt">Sport</string>
+    <string name="cam_strings_scenes_txt">Scene</string>
+    <string name="cam_strings_screen_pinned_txt">Ecranul este fixat</string>
+    <string name="cam_strings_sd_permission_data_storage_info_txt">Salvat în memoria internă</string>
+    <string name="cam_strings_sd_permission_dialog_continue_button_txt">MUTARE</string>
+    <string name="cam_strings_sd_permission_dialog_message1_txt">Aplicaţia are nevoie de permisiunile următoare pentru a efectua această acţiune.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Pentru a utiliza o cartelă SD, camera are nevoie de permisiuni de acces la cartela SD.
+Schimbaţi din nou stocarea de date la cartela SD sau permiteţi camerei să acceseze cartela SD în următorul ecran."</string>
+    <string name="cam_strings_sd_permission_dialog_title_txt">Cartelă SD indisponibilă</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"A fost detectată o cartelă SD nouă care solicită permisiuni.
+
+Pentru a utiliza cartela SD ca spaţiu de stocare a datelor, selectaţi-o ca director DCIM în ecranul următor."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Cartela SD sau directorul DCIM nu a fost selectat. Cartela SD nu poate fi utilizată.
+
+Pentru a acorda permisiuni, începeţi prin a stabili cartela SD drept locaţie de salvare sau selectaţi directorul adecvat în ecranul următor."</string>
+    <string name="cam_strings_sd_permission_info_txt">"A fost detectată o cartelă SD nouă care necesită permisiuni.
+Prin urmare, se foloseşte în mod implicit spaţiul de stocare intern pentru stocarea datelor.
+
+Pentru a folosi cartela SD pentru stocarea datelor, accesaţi setările camerei şi modificaţi opţiunea de stocare la Cartelă SD."</string>
+    <string name="cam_strings_sd_permission_rationale_txt">Pentru a salva fotografii şi conţinut video pe cartela SD</string>
+    <string name="cam_strings_select_picture_txt">Selectare fotografie</string>
+    <string name="cam_strings_self_timer_05_txt">0,5 sec.</string>
+    <string name="cam_strings_self_timer_10_pro_txt">Temporizator: 10 sec.</string>
+    <string name="cam_strings_self_timer_10_txt">10 sec.</string>
+    <string name="cam_strings_self_timer_2_txt">2 sec.</string>
+    <string name="cam_strings_self_timer_3_pro_txt">Temporizator: 3 sec.</string>
+    <string name="cam_strings_self_timer_3_txt">3 sec.</string>
+    <string name="cam_strings_self_timer_front_hint_10_txt">Temporizator automat: 10 sec.</string>
+    <string name="cam_strings_self_timer_front_hint_3_txt">Temporizator automat: 3 sec.</string>
+    <string name="cam_strings_self_timer_front_hint_off_txt">Temporizator automat: oprit</string>
+    <string name="cam_strings_self_timer_hint_countdown_txt">Ţineţi ochii îndreptaţi spre aparatul foto</string>
+    <string name="cam_strings_self_timer_photo_txt">Temporizator auto. (imagini statice)</string>
+    <string name="cam_strings_self_timer_txt">Temporizator automat</string>
+    <string name="cam_strings_setting_common_title_txt">Frecvente</string>
+    <string name="cam_strings_setting_front_manual_title_txt">Manuală (frontal)</string>
+    <string name="cam_strings_setting_front_photo_title_txt">Fotografie (frontal)</string>
+    <string name="cam_strings_setting_front_video_title_txt">Video (frontal)</string>
+    <string name="cam_strings_setting_main_title_txt">Setări aparat foto</string>
+    <string name="cam_strings_setting_manual_title_txt">Manual</string>
+    <string name="cam_strings_setting_night_mode_title_txt">Setări Mod nocturn</string>
+    <string name="cam_strings_setting_night_shooting_title_txt">Setări Mod nocturn</string>
+    <string name="cam_strings_setting_photo_title_txt">Fotografie</string>
+    <string name="cam_strings_setting_slow_motion_title_txt">Rulare cu încetinitorul</string>
+    <string name="cam_strings_setting_tele_title_txt">Fotografie (telefoto)</string>
+    <string name="cam_strings_setting_tele_video_title_txt">Clip video (telefoto)</string>
+    <string name="cam_strings_setting_video_title_txt">Video</string>
+    <string name="cam_strings_setting_wide_title_txt">Fotografie (obiectiv ultra-larg)</string>
+    <string name="cam_strings_setting_wide_video_title_txt">Clip video (obiectiv ultra-larg)</string>
+    <string name="cam_strings_settings_always_on_txt">În permanență</string>
+    <string name="cam_strings_settings_auto_txt">Automat</string>
+    <string name="cam_strings_settings_off_txt">Dezactivat</string>
+    <string name="cam_strings_settings_on_txt">Activat</string>
+    <string name="cam_strings_settings_save_photos_all_txt">Toate fotografiile</string>
+    <string name="cam_strings_settings_save_photos_one_txt">Fotografia selectată</string>
+    <string name="cam_strings_settings_save_photos_txt">Salvare</string>
+    <string name="cam_strings_shortcut_video_camera_txt">Cameră video</string>
+    <string name="cam_strings_shutter_trigger_txt">Captură automată</string>
+    <string name="cam_strings_side_sense_bar_description_txt">"Puteţi fotografia sau înregistra clipuri video atingând uşor de două ori senzorul de pe marg. ecranului în loc de butonul Declanşaţi.
+Funcţia este compat. cu modurile Foto şi Video.
+
+Funcţia nu se poate utiliza dacă s-a activat „Acţionare de pe margine interioară ecran” în „Configurare poziţie atingere” din set. Detecţie laterală."</string>
+    <string name="cam_strings_side_sense_description_txt">"Puteţi să înregistraţi simplu o fotografie sau un clip video, prin atingerea dublă a senzorului de pe partea laterală a ecranului în locul butonului obturatorului.
+Această funcţie este acceptată atât în modul de fotografiere, cât şi în modul de înregistrare video."</string>
+    <string name="cam_strings_side_touch_not_supported_txt">Funcţia Detecţie laterală nu este acceptată pe acest ecran</string>
+    <string name="cam_strings_side_touch_on_title_txt">Detecţie laterală</string>
+    <string name="cam_strings_side_touch_on_txt">Pentru a utiliza această funcţie, accesaţi Setări > Afişaj şi activaţi opţiunea Detecţie laterală. Activaţi acum?</string>
+    <string name="cam_strings_side_touch_tutorial_title_txt">Detecţie laterală</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Puteţi face o fotografie sau un clip video prin simpla atingere de două ori a senzorului din partea laterală a ecranului în loc să atingeţi butonul declanşatorului. De asemenea, puteţi mări sau micşora glisând degetul de-a lungul acestui senzor lateral.
+Atât modul foto, cât şi cel video acceptă această funcţie. Puteţi dezactiva funcţia în Detecţie laterală din setările pentru aparatul foto."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Puteţi face o fotografie sau un clip video prin simpla atingere de două ori a senzorului din partea laterală a ecranului în vizualizarea tip portret în loc să atingeţi butonul declanşatorului. De asemenea, puteţi mări sau micşora glisând degetul de-a lungul acestui senzor lateral.
+Atât modul foto, cât şi cel video acceptă această funcţie. Puteţi dezactiva funcţia în Detecţie laterală din setările pentru aparatul foto."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Puteţi face o fotografie sau un clip video prin simpla atingere uşoară dublă pe senzorul din partea laterală a ecranului în vizualizarea tip portret în loc să atingeţi butonul declanşatorului.
+Modurile foto şi video acceptă această funcţie. Puteţi dezactiva funcţia în Detecţie laterală din setările pentru aparatul foto."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Puteţi face o fotografie sau un clip video prin simpla atingere uşoară dublă pe senzorul din partea laterală a ecranului în loc să atingeţi butonul declanşatorului.
+Modurile foto şi video acceptă această funcţie. Puteţi dezactiva funcţia în Detecţie laterală din setările pentru aparatul foto."</string>
+    <string name="cam_strings_side_touch_txt">Detecţie laterală</string>
+    <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Stilul înregistrării și rezoluția ecranului pot fi schimbate în setările aparatului foto</string>
+    <string name="cam_strings_slow_motion_settings_shot_txt">Foarte încet (un cadru)</string>
+    <string name="cam_strings_slow_motion_settings_standard_txt">Rulare cu încetinitorul</string>
+    <string name="cam_strings_slow_motion_settings_super_txt">Rulare cu încetinitorul extremă</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Puteţi schimba frecvenţa cadrelor pe secundă şi stilul de înreg. cu încetinitorul</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Mai multe opţiuni</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Înregistraţi instantaneu un moment preţios în reluare cu %1$s cadre/s atingând butonul din centru ecranului.
+Înregistrarea în lumină puternică vă va ajuta să creaţi cu clip video mai bun."</string>
+    <string name="cam_strings_slow_motion_shot_hint_1_txt">Puteţi înregistra un moment potrivit cu %1$s cadre/s atingând uşor butonul central</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Înregistraţi instantaneu un moment preţios în reluare cu %1$s cadre/s atingând butonul din centru ecranului</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Rulare cu încetinitorul extremă (un cadru)</string>
+    <string name="cam_strings_slow_motion_shot_txt">Rulare cu încetinitorul extremă (un cadru)</string>
+    <string name="cam_strings_slow_motion_standard_hint_1_txt">Înregistraţi un clip video cu %1$s cadre/s şi aplicaţi efecte de rulare cu încetinitorul</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_1_txt">Puteţi înregistra un clip video la ralanti, cu 120 cadre/s</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_2_txt">Înregistraţi un clip video şi editaţi-l pentru a reda cu încetinitorul părţile selectate. Atingeţi butonul din mijloc ca să setaţi părţile redării cu încetinitorul.</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Rulare cu încetinitorul</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Cum se înregistrează</string>
+    <string name="cam_strings_slow_motion_standard_txt">Rulare cu încetinitorul</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Creaţi un clip video impresionant prezentând un moment preţios cu încetinitorul.
+Înregistrarea în lumină puternică vă va ajuta să creaţi cu clip video mai bun."</string>
+    <string name="cam_strings_slow_motion_super_hint_1_txt">Puteţi înregistra un clip video la viteze diferite comutând la %1$s cadre/s</string>
+    <string name="cam_strings_slow_motion_super_hint_2_txt">Atingeţi uşor butonul din mijloc la momentul potrivit</string>
+    <string name="cam_strings_slow_motion_super_hint_3_txt">Rulare cu încetinitorul înregistrată</string>
+    <string name="cam_strings_slow_motion_super_tutorial_1_txt">Creaţi un clip video impresionant prezentând un moment preţios cu încetinitorul</string>
+    <string name="cam_strings_slow_motion_super_tutorial_2_txt">Porniţi înregistrarea video atingând uşor butonul de înregistrare</string>
+    <string name="cam_strings_slow_motion_super_tutorial_3_txt">Atingeţi uşor butonul din mijlocul ecranului ca să înregistraţi cu încetinitorul. Atingeţi uşor butonul de oprire ca să opriţi înregistrarea.</string>
+    <string name="cam_strings_slow_motion_super_tutorial_title_1_txt">Rulare cu încetinitorul extremă</string>
+    <string name="cam_strings_slow_motion_super_txt">Rulare cu încetinitorul extremă</string>
+    <string name="cam_strings_slow_motion_txt">Mod Rulare cu încetin.</string>
+    <string name="cam_strings_smile_capture_big_txt">Zâmbet larg</string>
+    <string name="cam_strings_smile_capture_faint_txt">Zâmbet discret</string>
+    <string name="cam_strings_smile_capture_normal_txt">Zâmbet normal</string>
+    <string name="cam_strings_smile_capture_txt">Detectare zâmbet</string>
+    <string name="cam_strings_smile_shutter_cy_txt">Declanşator zâmbet</string>
+    <string name="cam_strings_smile_shutter_title_cy_txt">Declanşator zâmbet</string>
+    <string name="cam_strings_snackbar_dependency_button_txt">Detalii</string>
+    <string name="cam_strings_snackbar_dependency_info_txt">Această modificare a afectat alte setări</string>
+    <string name="cam_strings_soft_skin_effect_cy_txt">Efect piele fină</string>
+    <string name="cam_strings_soft_skin_effect_title_cy_txt">Efect piele fină</string>
+    <string name="cam_strings_standard_txt">Standard</string>
+    <string name="cam_strings_steadyshot_cy_txt">SteadyShot™</string>
+    <string name="cam_strings_step_tutorial_title_txt">Pasul %1$s din %2$s</string>
+    <string name="cam_strings_store_fail_txt">Salvarea nu a putut fi efectuată</string>
+    <string name="cam_strings_superior_auto_brightness_txt">Luminozitate</string>
+    <string name="cam_strings_superior_auto_color_txt">Culoare</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_title_txt">Aparat foto dual</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_txt">Puteţi face fotografii frumoase cu zgomot redus folosind aparatul foto dual chiar şi noaptea sau într-o cameră slab iluminată. Aparatul foto comută automat între un singur aparat foto şi aparatul foto dual în funcţie de scenele de imortalizat la sensibilitate ultraînaltă.</string>
+    <string name="cam_strings_sw_licence_title_txt">Licenţe software</string>
+    <string name="cam_strings_take_photo_txt">Fotografiere</string>
+    <string name="cam_strings_term_of_use_accept_txt">Acceptare</string>
+    <string name="cam_strings_term_of_use_consent_txt">Sunt de acord cu &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">termenii de utilizare&lt;/a> Sony.</string>
+    <string name="cam_strings_term_of_use_data_charge_txt">Este posibil ca, în funcţie de planul dvs. de date, să vi se perceapă taxe pentru date de telefonie mobilă pentru utilizarea acestui serviciu.</string>
+    <string name="cam_strings_term_of_use_data_collection_txt">Sony va colecta identificatorul unic codificat al dispozitivului dvs. Android, precum şi datele şi marcajul temporal bazate pe locaţie, pentru a vă oferi rezultate corespunzătoare la utilizarea serviciului şi pentru a aduce îmbunătăţiri acestui serviciu.</string>
+    <string name="cam_strings_term_of_use_decline_txt">Respingere</string>
+    <string name="cam_strings_term_of_use_title_txt">Termeni şi condiţii</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Termeni de utilizare&lt;/a></string>
+    <string name="cam_strings_timeshift_cancel_selection_txt">Deselectare fotografii</string>
+    <string name="cam_strings_timeshift_operation_failed_txt">Nu s-a putut salva</string>
+    <string name="cam_strings_timeshift_save_complete_txt">Salvată</string>
+    <string name="cam_strings_timeshift_save_selection_txt">Salvare separată</string>
+    <string name="cam_strings_timeshift_select_images_txt">Selectare fotografii</string>
+    <string name="cam_strings_timeshift_share_txt">Partajare</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Conectat la %1$s</string>
+    <string name="cam_strings_touch_capturing_always_txt">Activat</string>
+    <string name="cam_strings_touch_capturing_only_front_txt">Numai aparatul foto frontal</string>
+    <string name="cam_strings_touch_capturing_title_txt">Capturare la atingere</string>
+    <string name="cam_strings_touch_focus_in_manual_focus_txt">Pentru a utiliza funcţia Focalizare la atingere, comutaţi setarea de focalizare la FA (focalizare automată).</string>
+    <string name="cam_strings_touch_to_adjust_description_txt">Selectaţi ce doriţi să reglaţi atunci când atingeţi vizorul</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_focus_and_exposure_txt">Focalizare şi luminozitate</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_only_focus_txt">Numai focalizare</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_txt">Atingeţi pentru a regla</string>
+    <string name="cam_strings_transfer_and_tagging_description_txt">"Dacă activaţi această funcţie, Transfer &amp; Tagging add-on va avea permisiunea să afişeze fotografiile făcute cu aparatul foto Xperia. Fotografiile vor fi salvate în memoria internă.
+Această funcţie este compatibilă cu fotografiile făcute în modurile Foto şi Manual."</string>
+    <string name="cam_strings_transfer_and_tagging_txt">Mod Transfer &amp; Tagging add-on</string>
+    <string name="cam_strings_tutorial_bright_place_txt">Înregistrarea în lumină puternică vă va ajuta să creaţi cu clip video mai bun</string>
+    <string name="cam_strings_tutorial_button_next_txt">Următorul</string>
+    <string name="cam_strings_tutorial_button_skip_txt">Ignorare</string>
+    <string name="cam_strings_tutorial_button_txt">Am înţeles</string>
+    <string name="cam_strings_tutorial_title_txt">Comutarea modului</string>
+    <string name="cam_strings_tutorial_txt">Deplasați degetul pentru a comuta la alt Mod de capturare, de exemplu, Video sau Manual</string>
+    <string name="cam_strings_unable_to_operate_txt">Nu funcţionează când se salvează fotografii</string>
+    <string name="cam_strings_unlock_button_txt">Deblocare</string>
+    <string name="cam_strings_use_of_camera_not_authorized_txt">Utilizarea aparatului foto este restricţionată din motive de securitate</string>
+    <string name="cam_strings_video_backlight_correction_description_txt">Dacă activați această setare, puteți înregistra automat clipuri video cu expunere optimă, chiar și în situații contrejour.</string>
+    <string name="cam_strings_video_backlight_correction_txt">Corecție contrejour clip video</string>
+    <string name="cam_strings_video_codec_for_4k_txt">Tip fişier de înregistrare</string>
+    <string name="cam_strings_video_digital_zoom_type_description_txt">"Selectați o setare de mărire/micșorare digitală video.
+
+Mărire/micșorare digitală standard: măriți/micșorați utilizând procesarea digitală bazată pe datele senzorului de imagine.
+Mărire/micșorare super rezoluție video: măriți/micșorați utilizând procesarea digitală care păstrează mai mult din calitatea originală a imaginii. Salvarea videoclipurilor poate dura mai mult."</string>
+    <string name="cam_strings_video_digital_zoom_type_super_resolution_txt">Mărire/micșorare super rezoluție</string>
+    <string name="cam_strings_video_digital_zoom_type_txt">Setări mărire/micșorare digitală video</string>
+    <string name="cam_strings_video_explanatory_4k2k_setting_txt">Pentru o înregistrare video 4K stabilă, nu trebuie să modificaţi această setare decât dacă utilizaţi o cartelă SD de mare viteză (se recomandă UHS Speed Class 1 sau o clasă superioară ori Speed Class 10).</string>
+    <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Pentru o înregistrare Timeshift video stabilă, nu trebuie să modificaţi această setare decât dacă utilizaţi o cartelă SD de mare viteză (se recomandă UHS Speed Class 1 sau o clasă superioară ori Speed Class 10). O modificaţi oricum?</string>
+    <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Pentru o înregistrare video cu încetinitorul stabilă, nu modificaţi această setare decât dacă utilizaţi o cartelă SD de mare viteză (se recomandă UHS Speed Class 1 sau o clasă superioară ori Speed Class 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Pentru o înregistrare video stabilă, vă recomandăm să alegeţi memoria internă pentru stocarea datelor. Doriţi să alegeţi acum?
+
+Dacă utilizaţi în continuare cartela SD ca spaţiu de stocare a datelor, asiguraţi-vă că folosiţi o cartelă SD de mare viteză (se recomandă UHS Speed Class 1 sau o clasă superioară ori Speed Class 10)."</string>
+    <string name="cam_strings_video_fusion_tutorial_0_title_txt">Aparat foto dual</string>
+    <string name="cam_strings_video_fusion_tutorial_0_txt">Puteţi înregistra clipuri video frumoase cu zgomot redus folosind aparatul foto dual chiar şi noaptea sau într-o cameră slab iluminată. Aparatul foto comută automat între un singur aparat foto şi aparatul foto dual în funcţie de scenele de înregistrat la sensibilitate ultraînaltă.</string>
+    <string name="cam_strings_video_fusion_tutorial_1_title_txt">Înregistrare video cu aparatul foto dual</string>
+    <string name="cam_strings_video_fusion_tutorial_1_txt">Păstraţi cel puţin 1 metru distanţă faţă de subiect când înregistraţi cu aparatul foto dual. Apropierea de subiect poate cauza o deviaţie cromatică sau a punctului de vizualizare când se înregistrează la sensibilitate ultraînaltă.</string>
+    <string name="cam_strings_video_fusion_tutorial_2_title_txt">Utilizaţi aparatul foto dual pentru înregistrarea video?</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">Pentru a face fotografii în prim-plan extraordinare, atingeţi uşor Nu şi comutaţi la un singur aparat foto. Puteţi reveni oricând la aparatul foto dual atingând uşor butonul de pe vizor.</string>
+    <string name="cam_strings_video_hdr_hlg_txt">Setarea HDR este activată</string>
+    <string name="cam_strings_video_hdr_setting_hlg_txt">HDR</string>
+    <string name="cam_strings_video_hdr_title_txt">HDR video</string>
+    <string name="cam_strings_video_hdr_txt">HDR video</string>
+    <string name="cam_strings_video_resolution_4k_file_type_txt">Format fişier (4K)</string>
+    <string name="cam_strings_video_resolution_full_hd_16_9_60fps_txt">HD complet (16:9, 60 cadre/s)</string>
+    <string name="cam_strings_video_resolution_full_hd_30fps_txt">Full HD (30 cadre/s)</string>
+    <string name="cam_strings_video_resolution_full_hd_60fps_txt">Full HD (60 cadre/s)</string>
+    <string name="cam_strings_video_resolution_full_hd_frame_rate_txt">Frecvenţă cadre (Full HD)</string>
+    <string name="cam_strings_video_resolution_full_hd_super_slow_desc_txt">Surprinde o zonă mai extinsă în jumătatea timpului de înregistrare față de HD.</string>
+    <string name="cam_strings_video_resolution_full_hd_txt">HD complet</string>
+    <string name="cam_strings_video_resolution_hd_super_slow_desc_txt">Surprinde o zonă mai îngustă în de două ori timpul de înregistrare față de Full HD.</string>
+    <string name="cam_strings_video_resolution_hd_txt">HD</string>
+    <string name="cam_strings_video_resolution_mms_txt">MMS</string>
+    <string name="cam_strings_video_resolution_qvga_txt">QVGA</string>
+    <string name="cam_strings_video_resolution_title_txt">Rezoluţie video</string>
+    <string name="cam_strings_video_resolution_txt">Rezoluţie video</string>
+    <string name="cam_strings_video_resolution_vga_txt">VGA</string>
+    <string name="cam_strings_video_shutter_trigger_txt">Captură automată (video)</string>
+    <string name="cam_strings_video_size_4kuhd_txt">4.000 (QFHD)</string>
+    <string name="cam_strings_video_size_full_hd_16_9_txt">HD complet (16:9)</string>
+    <string name="cam_strings_video_size_full_hd_21_9_txt">HD complet (21:9)</string>
+    <string name="cam_strings_video_size_full_hd_txt">HD complet</string>
+    <string name="cam_strings_video_size_txt">Dimensiune video</string>
+    <string name="cam_strings_video_smile_shutter_txt">Declanşator zâmbet (video)</string>
+    <string name="cam_strings_video_stabilizer_txt">Stabilizare video</string>
+    <string name="cam_strings_volumekey_shutter_txt">Declanşare</string>
+    <string name="cam_strings_volumekey_txt">Utilizare buton de volum ca</string>
+    <string name="cam_strings_volumekey_volume_txt">Volum</string>
+    <string name="cam_strings_volumekey_zoom_txt">Zoom</string>
+    <string name="cam_strings_white_balance_auto_txt">Automată</string>
+    <string name="cam_strings_white_balance_cloudy_txt">Înnorat</string>
+    <string name="cam_strings_white_balance_day_light_txt">Zi</string>
+    <string name="cam_strings_white_balance_fluorescent_txt">Fluorescent</string>
+    <string name="cam_strings_white_balance_incandescent_txt">Incandescent</string>
+    <string name="cam_strings_white_balance_title_txt">Compensare alb</string>
+    <string name="cam_strings_white_balance_txt">Compensare alb</string>
+    <string name="cam_strings_whitebalance_custom1_txt">Personalizat 1</string>
+    <string name="cam_strings_whitebalance_custom2_txt">Personalizat 2</string>
+    <string name="cam_strings_whitebalance_custom3_txt">Personalizat 3</string>
+    <string name="cam_strings_whitebalance_shde_txt">Umbră</string>
+    <string name="cam_strings_zoom_frames_description_txt">"Dacă activați această setare, puteți previzualiza cum va arăta când măriți.
+Centrați subiectul într-un chenar și atingeți raportul zoom pentru a mări cu ușurință."</string>
+    <string name="cam_strings_zoom_frames_txt">Asistent compoziție zoom</string>
+    <string name="cam_strings_zoom_help_txt">Utilizați butonul de volum pentru mărire/micșorare</string>
+    <string name="cam_strings_zoom_not_supported_in_bokeh_effect_txt">Nu se poate apropia/depărta când se utilizează efectul Bokeh</string>
+    <string name="cam_strings_zoom_not_supported_in_front_txt">Nu se poate face zoom cu aparatul foto frontal</string>
+    <string name="cam_strings_zoom_not_supported_in_widecam_txt">Nu se poate apropia/depărta folosindu-se obiectivul ultra-larg</string>
+    <string name="cam_strings_zoom_not_supported_txt">Mărire/Micşorare indisponibilă în prezent</string>
+    <string name="expand_button_title">Avansat</string>
+    <string name="photopro_strings_multi_or_popup_window_txt">Nu se poate utiliza aparatul foto în ferestre multiple sau într-o fereastră popup. Închideți fereastra și încercați din nou. Dacă utilizați ferestre multiple, puteți trage mijlocul barei divizate pentru a afișa aparatul foto pe tot ecranul.</string>
+    <string name="search_menu_title">Căutați</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="v7_preference_off">DEZACTIVAT</string>
+    <string name="v7_preference_on">ACTIVAT</string>
+</resources>

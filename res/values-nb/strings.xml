@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">Gå til startsiden</string>
+    <string name="abc_action_bar_up_description">Gå opp</string>
+    <string name="abc_action_menu_overflow_description">Flere alternativer</string>
+    <string name="abc_action_mode_done">Ferdig</string>
+    <string name="abc_activity_chooser_view_see_all">Se alle</string>
+    <string name="abc_activitychooserview_choose_application">Velg en app</string>
+    <string name="abc_capital_off">AV</string>
+    <string name="abc_capital_on">PÅ</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">delete</string>
+    <string name="abc_menu_enter_shortcut_label">enter</string>
+    <string name="abc_menu_function_shortcut_label">Funksjon+</string>
+    <string name="abc_menu_meta_shortcut_label">Meta+</string>
+    <string name="abc_menu_shift_shortcut_label">Shift+</string>
+    <string name="abc_menu_space_shortcut_label">mellomrom</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">Meny+</string>
+    <string name="abc_search_hint">Søk …</string>
+    <string name="abc_searchview_description_clear">Slett søket</string>
+    <string name="abc_searchview_description_query">Søkeord</string>
+    <string name="abc_searchview_description_search">Søk</string>
+    <string name="abc_searchview_description_submit">Utfør søket</string>
+    <string name="abc_searchview_description_voice">Talesøk</string>
+    <string name="abc_shareactionprovider_share_with">Del med</string>
+    <string name="abc_shareactionprovider_share_with_application">Del med %s</string>
+    <string name="abc_toolbar_collapse_description">Skjul</string>
+    <string name="call_notification_answer_action">Svar</string>
+    <string name="call_notification_answer_video_action">Video</string>
+    <string name="call_notification_decline_action">Avvis</string>
+    <string name="call_notification_hang_up_action">Legg på</string>
+    <string name="call_notification_incoming_text">Innkommende anrop</string>
+    <string name="call_notification_ongoing_text">Pågående samtale</string>
+    <string name="call_notification_screening_text">Filtrerer et innkommende anrop</string>
+    <string name="cam_3d_strings_creating_but_incorrect_direction_txt">Kan ikke fullføre fotograferingen. Panorer i riktig retning.</string>
+    <string name="cam_3d_strings_creating_but_too_quick_txt">Kan ikke fullføre fotograferingen. Panorer langsommere.</string>
+    <string name="cam_3d_strings_creating_but_too_slow_txt">Kan ikke fullføre fotograferingen. Panorer raskere.</string>
+    <string name="cam_3d_strings_description_sweep_panorama_txt">Ta et panoramabilde ved å sveipe kameraet</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Oppretter følgende filer:
+- flervinkelsbilde
+- 3D-bilde
+Merk: Disse filene inneholder et grått område."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Oppretter følgende filer:
+- flervinkelsbile
+- 3D-bilde"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Behandler...
+Dette bildet inneholder et grått område"</string>
+    <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Lagrer bilde</string>
+    <string name="cam_3d_strings_dialog_processing_txt">Behandler...</string>
+    <string name="cam_3d_strings_error_application_busy_txt">Vent et par sekunder før du starter 3D-kamera</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_title_txt">Feil</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">Koble fra kabelen. Du kan ikke ta bilde i denne modusen når en kabel er koblet til.</string>
+    <string name="cam_3d_strings_error_direction_txt">Kan ikke ta bilde. Panorer i riktig retning.</string>
+    <string name="cam_3d_strings_error_too_quick_txt">Kan ikke ta bilde. Panorer langsommere.</string>
+    <string name="cam_3d_strings_error_too_slow_txt">Kan ikke ta bilde. Panorer raskere.</string>
+    <string name="cam_3d_strings_setting_shooting_direction_down_txt">Ned</string>
+    <string name="cam_3d_strings_setting_shooting_direction_left_txt">Venstre</string>
+    <string name="cam_3d_strings_setting_shooting_direction_right_txt">Høyre</string>
+    <string name="cam_3d_strings_setting_shooting_direction_title_txt">Bilderetning</string>
+    <string name="cam_3d_strings_setting_shooting_direction_up_txt">Opp</string>
+    <string name="cam_3d_strings_shooting_direction_guide_txt">Endre retning ved å trykke på ikonet til venstre</string>
+    <string name="cam_3d_strings_shooting_failure_title_txt">Kan ikke ta bilde</string>
+    <string name="cam_3d_strings_shooting_guide_down_to_up_txt">Panorer nedenfra og opp</string>
+    <string name="cam_3d_strings_shooting_guide_left_to_right_txt">Panorer fra venstre mot høyre</string>
+    <string name="cam_3d_strings_shooting_guide_pan_too_fast_txt">Panorer saktere</string>
+    <string name="cam_3d_strings_shooting_guide_press_key_txt">Trykk på utløserknappen og panorer kameraet langsomt</string>
+    <string name="cam_3d_strings_shooting_guide_right_to_left_txt">Panorer fra høyre mot venstre</string>
+    <string name="cam_3d_strings_shooting_guide_touch_cap_txt">Trykk på kameraknappen og panorer kameraet langsomt</string>
+    <string name="cam_3d_strings_shooting_guide_up_to_down_txt">Panorer ovenfra og ned</string>
+    <string name="cam_3d_strings_sweep_panorama_short_txt">Sweep Panorama</string>
+    <string name="cam_app_shortcut_front_photo_txt">Frontbilde</string>
+    <string name="cam_app_shortcut_manual_txt">Manuell</string>
+    <string name="cam_app_shortcut_video_txt">Video</string>
+    <string name="cam_face_eye_af_settings_on_txt">Ansiktsgjenkjenning/Øye-AF På</string>
+    <string name="cam_string_dualrec_m_apr_txt">%1$td. april %2$tY</string>
+    <string name="cam_string_dualrec_m_aug_txt">%1$td. august %2$tY</string>
+    <string name="cam_string_dualrec_m_dec_txt">%1$td. desember %2$tY</string>
+    <string name="cam_string_dualrec_m_feb_txt">%1$td. februar %2$tY</string>
+    <string name="cam_string_dualrec_m_jan_txt">%1$td. januar %2$tY</string>
+    <string name="cam_string_dualrec_m_jul_txt">%1$td. juli %2$tY</string>
+    <string name="cam_string_dualrec_m_jun_txt">%1$td. juni %2$tY</string>
+    <string name="cam_string_dualrec_m_mar_txt">%1$td. mars %2$tY</string>
+    <string name="cam_string_dualrec_m_may_txt">%1$td. mai %2$tY</string>
+    <string name="cam_string_dualrec_m_nov_txt">%1$td. november %2$tY</string>
+    <string name="cam_string_dualrec_m_oct_txt">%1$td. oktober %2$tY</string>
+    <string name="cam_string_dualrec_m_sep_txt">%1$td. september %2$tY</string>
+    <string name="cam_string_dualrec_t_am_txt">%1$tl:%2$tM AM</string>
+    <string name="cam_string_dualrec_t_pm_txt">%1$tl:%2$tM PM</string>
+    <string name="cam_strings_1x1_frame_lines_txt">1:1 Rammelinjer</string>
+    <string name="cam_strings_accessibility_auto_review_txt">Forhåndsvis bilde automatisk</string>
+    <string name="cam_strings_accessibility_auto_scene_recognized_txt">Motiv gjenkjent som %1$s</string>
+    <string name="cam_strings_accessibility_back_main_txt">Tilbake</string>
+    <string name="cam_strings_accessibility_back_txt">Tilbake</string>
+    <string name="cam_strings_accessibility_capturing_mode_txt">Opptaksmodus</string>
+    <string name="cam_strings_accessibility_close_color_button_txt">Lukk fargejustering</string>
+    <string name="cam_strings_accessibility_color_brightness_button_txt">Lukk farge- og lysstyrkejustering</string>
+    <string name="cam_strings_accessibility_condition_detected_txt">Tilstand registrert som %1$s</string>
+    <string name="cam_strings_accessibility_condition_motion_txt">I bevegelse</string>
+    <string name="cam_strings_accessibility_condition_stable_txt">Stabil</string>
+    <string name="cam_strings_accessibility_condition_walk_txt">Går</string>
+    <string name="cam_strings_accessibility_dual_effect_menu_txt">Dobbelt-kamera-effekt</string>
+    <string name="cam_strings_accessibility_eyeaf_off_txt">Dobbelttrykk for å slå på øye-AF</string>
+    <string name="cam_strings_accessibility_eyeaf_on_txt">Dobbelttrykk for å slå av øye-AF</string>
+    <string name="cam_strings_accessibility_flash_torch_txt">Lykt</string>
+    <string name="cam_strings_accessibility_flash_txt">Blits</string>
+    <string name="cam_strings_accessibility_fusion_auto_txt">Dobbelttrykk for å bytte til automatisk dobbelt kamera</string>
+    <string name="cam_strings_accessibility_fusion_off_txt">Trykk to ganger for å slå på dobbelt-kamera</string>
+    <string name="cam_strings_accessibility_fusion_on_txt">Trykk to ganger for å slå av dobbelt-kamera</string>
+    <string name="cam_strings_accessibility_image_quality_control_exposure_value_txt">Eksponerings-verdi</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_deselected_txt">Automatisk opphevet valg</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_selected_txt">Automatisk valgt</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_auto_txt">Autofokus</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_adjusted_txt">Brennvidde endret</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_manual_txt">Manuell fokus</string>
+    <string name="cam_strings_accessibility_image_quality_control_focus_txt">Fokus</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_deselected_txt">Automatisk opphevet valg</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_selected_txt">Automatisk valgt</string>
+    <string name="cam_strings_accessibility_image_quality_control_shutter_speed_txt">Lukkerhastighet</string>
+    <string name="cam_strings_accessibility_image_quality_control_white_balance_txt">Hvitbalanse</string>
+    <string name="cam_strings_accessibility_information_txt">Informasjon</string>
+    <string name="cam_strings_accessibility_menu_txt">Meny</string>
+    <string name="cam_strings_accessibility_not_configurable_txt">Kan ikke konfigureres</string>
+    <string name="cam_strings_accessibility_open_color_button_txt">Åpne fargejustering</string>
+    <string name="cam_strings_accessibility_other_settings_txt">Andre innstillinger</string>
+    <string name="cam_strings_accessibility_pause_button_txt">Pause</string>
+    <string name="cam_strings_accessibility_photo_setting_txt">Kamerainnstillinger</string>
+    <string name="cam_strings_accessibility_predictive_capture_txt">Forutsigende innspilling</string>
+    <string name="cam_strings_accessibility_recent_photo_txt">En stabel av nye bilder</string>
+    <string name="cam_strings_accessibility_recording_button_txt">Spill inn</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_button_txt">Sakte film</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_exti_button_txt">Avslutt sakte film</string>
+    <string name="cam_strings_accessibility_recording_stop_button_txt">Stopp</string>
+    <string name="cam_strings_accessibility_self_timer_stop_button_txt">Stopp nedtelling</string>
+    <string name="cam_strings_accessibility_shutter_button_txt">Utløserknapp</string>
+    <string name="cam_strings_accessibility_soundphoto_play_txt">Spill lyden</string>
+    <string name="cam_strings_accessibility_superior_auto_color_brightness_txt">Farge- og lysstyrkejustering</string>
+    <string name="cam_strings_accessibility_swf_normal_txt">Dobbelttrykk for å bytte til normal modus</string>
+    <string name="cam_strings_accessibility_swf_wide_txt">Dobbelttrykk for å bytte til vidvinkelmodus</string>
+    <string name="cam_strings_accessibility_switch_to_front_by_swiping_txt">Byttet til frontkamera</string>
+    <string name="cam_strings_accessibility_switch_to_front_txt">Trykk to ganger på skjermen for å bytte til frontkamera</string>
+    <string name="cam_strings_accessibility_switch_to_main_by_swiping_txt">Byttet til hovedkamera</string>
+    <string name="cam_strings_accessibility_switch_to_main_txt">Trykk to ganger for å bytte til hovedkameraet</string>
+    <string name="cam_strings_accessibility_switch_to_photo_txt">Trykk to ganger på skjermen for å bytte til kamera</string>
+    <string name="cam_strings_accessibility_switch_to_video_txt">Trykk to ganger på skjermen for å bytte til video</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">Dobbelttrykk for å slå på HDR</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_on_txt">Dobbelttrykk for å slå av HDR</string>
+    <string name="cam_strings_accessibility_video_setting_txt">Videoinnstillinger</string>
+    <string name="cam_strings_accessibility_viewer_txt">Åpne med bildeviseren</string>
+    <string name="cam_strings_accessibility_zoom_ratio_with_number_txt">%1$sx</string>
+    <string name="cam_strings_advanced_setting_geo_tag_both_off_txt">Hvis du vil lagre steder, må du aktivere GPS og/eller trådløse nettverk. Aktivere nå?</string>
+    <string name="cam_strings_advanced_setting_geo_tag_title_txt">Lagre sted</string>
+    <string name="cam_strings_ai_face_restore_txt">Gjør ansikter skarpere</string>
+    <string name="cam_strings_application_name_creative_effect_txt">Kreativ effekt</string>
+    <string name="cam_strings_application_name_dualrec_txt">Ansikt i bilde</string>
+    <string name="cam_strings_application_name_facefusion_txt">AR-maske</string>
+    <string name="cam_strings_application_name_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_application_name_multicam_txt">Multi-kamera</string>
+    <string name="cam_strings_application_name_night_mode_txt">Nattmodus</string>
+    <string name="cam_strings_application_name_night_shooting_txt">Nattmodus</string>
+    <string name="cam_strings_application_name_soundphoto_txt">Sound Photo</string>
+    <string name="cam_strings_application_name_sweep_panorama_txt">Sweep Panorama</string>
+    <string name="cam_strings_application_name_timeshift_txt">Timeshift burst</string>
+    <string name="cam_strings_application_name_txt">Kamera</string>
+    <string name="cam_strings_application_name_video_txt">Video</string>
+    <string name="cam_strings_apps_list_add_txt">Legg til</string>
+    <string name="cam_strings_apps_list_downloadable_txt">Nedlastbare</string>
+    <string name="cam_strings_apps_list_installed_txt">Installert</string>
+    <string name="cam_strings_apps_list_txt">Kameraapper</string>
+    <string name="cam_strings_art_filter_guesture_guide_general_txt">Rediger bildet som vises, ved å bruke fingrene.</string>
+    <string name="cam_strings_art_filter_guesture_guide_tap_txt">Trykk på delen du vil farge</string>
+    <string name="cam_strings_aspect_ratio_txt">Sideforhold</string>
+    <string name="cam_strings_auto_hdr_discription_txt">Hvis du slår på denne innstillingen, kan du unngå overeksponering og undereksponering ved å oppdage kontrasten under opptak.</string>
+    <string name="cam_strings_auto_hdr_txt">Auto-HDR</string>
+    <string name="cam_strings_auto_power_off_txt">Kamera avsluttes snart på grunn av inaktivitet</string>
+    <string name="cam_strings_auto_scene_recognition_txt">Automatisk motivgjenkjennelse</string>
+    <string name="cam_strings_auto_upload_all_title_txt">Automatisk opplasting</string>
+    <string name="cam_strings_auto_upload_all_txt">Automatisk opplasting</string>
+    <string name="cam_strings_awb_priority_setting_asmosphere_txt">Stemning</string>
+    <string name="cam_strings_awb_priority_setting_standard_txt">Standard</string>
+    <string name="cam_strings_awb_priority_setting_txt">Prioritetsinnstillinger i AWB</string>
+    <string name="cam_strings_awb_priority_setting_white_txt">Hvit</string>
+    <string name="cam_strings_balloon_tips_modeselector_title_txt">Prøv ulike opptaksmodi</string>
+    <string name="cam_strings_balloon_tips_modeselector_txt">Trykk her for å velge en annen modus</string>
+    <string name="cam_strings_balloon_tips_timeshift_title_txt">Velg det beste øyeblikket</string>
+    <string name="cam_strings_balloon_tips_timeshift_txt">Finn det beste bildet ved å skyve miniatyrbildene opp eller ned</string>
+    <string name="cam_strings_bokeh_error_covering_lens_txt">Kontroller at linsen er ren og at fingeren ikke dekker til linsen</string>
+    <string name="cam_strings_bokeh_error_night_shooting_disable_txt">Nattopptak er ikke tilgjengelig når Bokeh-effekten er på</string>
+    <string name="cam_strings_bokeh_error_over_light_txt">For lyst</string>
+    <string name="cam_strings_bokeh_error_too_close_txt">Flytt lenger bort fra objektet</string>
+    <string name="cam_strings_bokeh_error_too_dark_txt">Mer lys kreves</string>
+    <string name="cam_strings_bokeh_error_too_far_away_txt">Flytt nærmere objektet</string>
+    <string name="cam_strings_bokeh_error_unknown_txt">Bokeh er for øyeblikket ikke tilgjengelig</string>
+    <string name="cam_strings_bokeh_title_txt">Bokeh</string>
+    <string name="cam_strings_burst_battery_level_low_txt">Kan ikke ta bildeserie pga. lite batteri</string>
+    <string name="cam_strings_burst_change_camera_key_setting_txt">Slå på bildeserie med utløserknappen for å aktiv. bildeserie</string>
+    <string name="cam_strings_burst_in_bokeh_effect_txt">Kan ikke ta bildeserie med Bokeh-effekt</string>
+    <string name="cam_strings_burst_in_dark_condition_txt">Kan ikke ta bildeserie i mørke forhold</string>
+    <string name="cam_strings_burst_in_long_shutter_speed_txt">Kan ikke ta bildeserier med 2 sekunder eller tregere lukkerhast.</string>
+    <string name="cam_strings_burst_in_transfer_and_tagging_txt">Kan ikke ta bildeserie hvis Transfer &amp; Tagging add-on er på</string>
+    <string name="cam_strings_burst_in_widecam_txt">Kan ikke ta bildeserie med ultravidvinkellinse</string>
+    <string name="cam_strings_burst_not_supported_front_camera_txt">Kan ikke ta bildeserie med frontkamera</string>
+    <string name="cam_strings_burst_not_supported_fusion_on_txt">Kan ikke ta bildeserie med dobbelt-kamera på</string>
+    <string name="cam_strings_burst_saved_internal_storage_txt">Bildeserier lagres på intern lagring</string>
+    <string name="cam_strings_burst_shooting_txt">"Bildeserie-
+hastighet"</string>
+    <string name="cam_strings_button_continue_txt">Fortsett</string>
+    <string name="cam_strings_button_quit_txt">AVSLUTT</string>
+    <string name="cam_strings_camera_af_sound_txt">Autofokuslyd</string>
+    <string name="cam_strings_camera_apps_tab_txt">KAMERAAPPER</string>
+    <string name="cam_strings_camera_key_setting_burst_shot_txt">Bildeserie</string>
+    <string name="cam_strings_camera_key_setting_take_photo_txt">Ta et bilde</string>
+    <string name="cam_strings_camera_key_setting_txt">Bildes. med utløserkn.</string>
+    <string name="cam_strings_camera_sound_txt">Lyd</string>
+    <string name="cam_strings_camera_switching_txt">Kamerabytte</string>
+    <string name="cam_strings_camerakey_launch_description_photo_pro_txt">Du kan åpne kameraappen eller Photography Pro ved å trykke inn og holde utløserknappen på enheten. Dette fungerer selv om telefonen er i hvilemodus eller er låst.</string>
+    <string name="cam_strings_camerakey_launch_description_txt">Du kan åpne kameraappen ved å trykke inn og holde utløserknappen på enheten. Dette fungerer selv om telefonen er i hvilemodus eller er låst.</string>
+    <string name="cam_strings_cancel_txt">Avbryt</string>
+    <string name="cam_strings_capturing_mode_4k2k_txt">4K-video</string>
+    <string name="cam_strings_capturing_mode_auto_txt">Bilde</string>
+    <string name="cam_strings_capturing_mode_button_txt">Modus</string>
+    <string name="cam_strings_capturing_mode_camera_txt">Kamera</string>
+    <string name="cam_strings_capturing_mode_creative_effect_txt">Kreativ effekt</string>
+    <string name="cam_strings_capturing_mode_dualrec_txt">Ansikt i bilde</string>
+    <string name="cam_strings_capturing_mode_facefusion_txt">AR-maske</string>
+    <string name="cam_strings_capturing_mode_google_lens_txt">Google Lens</string>
+    <string name="cam_strings_capturing_mode_high_frame_rate_txt">Timeshift video</string>
+    <string name="cam_strings_capturing_mode_manual_txt">Manuelt</string>
+    <string name="cam_strings_capturing_mode_multicam_txt">Multi-kamera</string>
+    <string name="cam_strings_capturing_mode_network_error_txt">Kan ikke fullføre datanedlasting</string>
+    <string name="cam_strings_capturing_mode_photopro_txt">Photo Pro</string>
+    <string name="cam_strings_capturing_mode_portraitselfie_txt">Selvportrett</string>
+    <string name="cam_strings_capturing_mode_slow_motion_txt">Video (sakte film)</string>
+    <string name="cam_strings_capturing_mode_soundphoto_txt">Sound Photo</string>
+    <string name="cam_strings_capturing_mode_superior_auto_cy_txt">Fremragende auto</string>
+    <string name="cam_strings_capturing_mode_superior_auto_txt">Fremragende auto</string>
+    <string name="cam_strings_capturing_mode_timeshift_txt">Timeshift burst</string>
+    <string name="cam_strings_capturing_mode_title_txt">Opptaksmodus</string>
+    <string name="cam_strings_change_full_storage_to_internal_txt">SD-kortet er fullt. Standard datalagring endret til Intern lagring.</string>
+    <string name="cam_strings_change_save_destination_high_frame_rate_title_txt">Timeshift video</string>
+    <string name="cam_strings_change_save_destination_slowmotion_title_txt">Sakte film</string>
+    <string name="cam_strings_change_save_destination_title_txt">4K-video</string>
+    <string name="cam_strings_change_storage_to_sd_txt">SD-kort satt inn. Endre standard datalagring til SD-kort?</string>
+    <string name="cam_strings_change_txt">Endre</string>
+    <string name="cam_strings_close_txt">Lukk</string>
+    <string name="cam_strings_color_brightness_txt">Farger og lysstyrke</string>
+    <string name="cam_strings_common_error_internal_memory_full_txt">Intern lagring er full. Lagre data på SD-kortet i stedet?</string>
+    <string name="cam_strings_common_error_internal_memory_unavailable_txt">Intern lagring er skadet eller skrivebeskyttet. Lagre data på SD-kortet i stedet?</string>
+    <string name="cam_strings_common_error_open_txt">Kan ikke åpne %1$s</string>
+    <string name="cam_strings_common_error_sdcard_full_txt">SD-kortet er fullt. Lagre data på intern lagring i stedet?</string>
+    <string name="cam_strings_common_error_sdcard_unavailable_txt">Kan ikke bruke SD-kortet. Lagre data på intern lagring i stedet?</string>
+    <string name="cam_strings_common_explanatory_sdcard_setting_txt">For stabil innspilling eller opptak anbefales det at du endrer datalagring til intern lagring eller bruker et SD-kort med høy hastighet (klasse 10 eller raskere anbefales).</string>
+    <string name="cam_strings_cooling_mode_cooled_down_txt">Noen funksjoner har blitt deaktivert</string>
+    <string name="cam_strings_cooling_mode_learn_more_txt">Les mer</string>
+    <string name="cam_strings_cooling_mode_message1_txt">Følgende funksjoner er for øyeblikket deaktiverte.</string>
+    <string name="cam_strings_cooling_mode_message2_txt">Vent til enheten kjøles ned og start deretter kameraet på nytt.</string>
+    <string name="cam_strings_cooling_mode_title_txt">Følgende funksjoner er deaktiverte</string>
+    <string name="cam_strings_cooling_mode_txt">Enkelte funksjoner deaktivert av temperaturøkning</string>
+    <string name="cam_strings_core_intelligentactive_txt">Intelligent aktiv</string>
+    <string name="cam_strings_cta_description_txt">Tillate tilgangsforespørselen under?</string>
+    <string name="cam_strings_cta_title_txt">Merk</string>
+    <string name="cam_strings_dependency_changed_txt">%1$s ble endret til %2$s</string>
+    <string name="cam_strings_description_4k2k_txt">Spill inn video in 4K ultra-HD</string>
+    <string name="cam_strings_description_camera_txt">Ta bilder og videoer</string>
+    <string name="cam_strings_description_creative_effect_txt">Velg effekter og lag kunstneriske bilder og videoer</string>
+    <string name="cam_strings_description_dualrec_txt">Få med ansiktet ditt i bilder og videoer med kameraene foran og bak</string>
+    <string name="cam_strings_description_facefusion_txt">Masker ansiktet ditt med en venns ansikt for å ta en imponerende selfie</string>
+    <string name="cam_strings_description_google_lens_txt">Du kan få flere detaljer eller utføre handlinger basert på hva du ser med %1$s</string>
+    <string name="cam_strings_description_high_frame_rate_txt">Spill inn video med høy bildefrekvens og legg på effekter for sakte film</string>
+    <string name="cam_strings_description_multicam_txt">Spill inn den samme scenen fra flere vinkler på én enkelt skjerm</string>
+    <string name="cam_strings_description_shoundphoto_txt">Ta bilder med bakgrunnslyder (fugler som synger osv.)</string>
+    <string name="cam_strings_description_timeshift_short_txt">Finn det beste bildet fra bildeserien av bilder tatt før og etter at du knipset</string>
+    <string name="cam_strings_details_txt">Detaljer</string>
+    <string name="cam_strings_dialog_4k_unavailable_while_screen_recording_txt">"Kan ikke ta opp video i 4K mens skjermopptak pågår.
+Velg en annen videostørrelse enn 4K, eller stopp skjermopptaket for å kunne ta opp video."</string>
+    <string name="cam_strings_dialog_60fps_unavailable_while_screen_recording_txt">"Kan ikke ta opp video med nåværende videostørrelse mens skjermopptak pågår.
+Velg en annen videostørrelse enn Full HD (60 bps), eller stopp skjermopptaket for å kunne ta opp video."</string>
+    <string name="cam_strings_dialog_battery_level_low_info_txt">Ikke nok batteri på telefonen. Når det er lite batteri, lukkes kameraet automatisk.</string>
+    <string name="cam_strings_dialog_battery_level_low_recording_txt">Opptak stoppet på grunn av lite batteri. Lad enheten din og prøv igjen.</string>
+    <string name="cam_strings_dialog_battery_level_low_using_txt">Kan ikke bruke kamera på grunn av lite batteri. Lad enheten din og prøv igjen.</string>
+    <string name="cam_strings_dialog_body_accessibility_txt">Tilgjengelighet: &lt;a href=\"%s\">Delvis samsvar&lt;/a></string>
+    <string name="cam_strings_dialog_body_applicationnotification_1_txt">Appen krever følgende rettighet(er) for å utføre denne handlingen.</string>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"Nettverk
+For å koble til Wi-Fi"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_airplane_on_txt">"Flymodus ser slått på.
+Slå av Flymodus i INNSTILLINGER."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_name_txt">"Nettverksnavn: 
+"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_disable_txt">Ikke beskyttet</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_details_pw_enable_txt">Beskyttet</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Er du sikker på at du vil koble til %1$s?</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"Vil du koble til %1$s?
+Trykk på DETALJER for å se informasjon om dette Wi-Fi-nettverket."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"Wi-Fi er slått av og Flymodus er slått på.
+Endre disse innstillingene ved å trykke på INNSTILLINGER."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi er slått av.
+Slå på Wi-Fi i INNSTILLINGER."</string>
+    <string name="cam_strings_dialog_btn_connect_txt">Koble til</string>
+    <string name="cam_strings_dialog_btn_settings_txt">Innstillinger</string>
+    <string name="cam_strings_dialog_burst_information_txt">For å ta bilder kontinuerlig velger du Timeshift burst i Kameraapper</string>
+    <string name="cam_strings_dialog_change_resolution_manual_txt">Manuell (frontkamera)</string>
+    <string name="cam_strings_dialog_change_resolution_superior_auto_txt">Fremragende auto (frontkamera)</string>
+    <string name="cam_strings_dialog_change_resolution_txt">Oppløsningen for følgende opptaksmoduser har blitt endret til 13 MP (4:3) på grunn av en programvareoppdatering</string>
+    <string name="cam_strings_dialog_cta_access_txt">%1$s prøver å</string>
+    <string name="cam_strings_dialog_cta_allow_txt">Tillat</string>
+    <string name="cam_strings_dialog_cta_deny_txt">Avslå</string>
+    <string name="cam_strings_dialog_cta_location_info_txt">hente stedsinformasjon</string>
+    <string name="cam_strings_dialog_cta_turn_on_nfc_txt">slå på NFC</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">Slå på Wi-Fi</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">bruke Wi-Fi &amp; mobildata</string>
+    <string name="cam_strings_dialog_high_temp_title_txt">Merk</string>
+    <string name="cam_strings_dialog_high_temp_txt">Hvis temperaturen til enheten stiger, kan appen lukkes under bruk. Opptaket ditt vil lagres automatisk.</string>
+    <string name="cam_strings_dialog_high_temp_vzw_txt">Denne kameramodusen bruker mye av telefonens ressurser og kan gjøre at telefonens temperatur stiger. For å hindre overoppheting kan videoinnspilling stoppe og kameraappen kan lukke. Innspillingen vil lagres automatisk.</string>
+    <string name="cam_strings_dialog_storage_full_burst_txt">Bildeserie stoppet fordi det ikke er nok ledig plass. Slett noen filer for å frigjøre litt plass på intern lagring.</string>
+    <string name="cam_strings_dialog_title_accessibility_txt">Tilgjengelighet</string>
+    <string name="cam_strings_dialog_title_applicationnotification_txt">Gi tillatelser</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_connecting_txt">Kobler til ...</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">Kunne ikke koble til Wi-Fi</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_password_txt">"
+Passordbeskyttelse: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_security_txt">"
+Sikkerhet: 
+"</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">Wi-Fi-detaljer</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">Kan ikke koble til Wi-Fi</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Dette Wi-Fi-nettverket er ikke trygt</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Koble til Wi-Fi</string>
+    <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">Du kan spille inn videoer selv ved motiver med stor kontrast, og gjøre dem mer dramatiske og nærmere det du ser i virkeligheten. Bruk støttede enheter/tjenester for å nyte innholdet med de opprinnelige fargene og lysstyrken.</string>
+    <string name="cam_strings_digital_zoom_type_description_txt">"Velg en innstilling for digital zoom.
+
+Standard digital zoom: Zoom med digital behandling basert på bildets sensordata.
+Superoppløsningszoom: Zoom med digital behandling som beholder mer av den opprinnelige bildekvaliteten. Det kan ta mer tid å lagre bildene."</string>
+    <string name="cam_strings_digital_zoom_type_standard_txt">Standard digital zoom</string>
+    <string name="cam_strings_digital_zoom_type_super_resolution_txt">Superoppløsningszoom</string>
+    <string name="cam_strings_digital_zoom_type_txt">Innstillinger for digital zoom</string>
+    <string name="cam_strings_dispbutton_settings_txt">DISP-knappinnstillinger</string>
+    <string name="cam_strings_distortion_correction_photo_video_txt">Korrigering av skjevhet</string>
+    <string name="cam_strings_distortion_correction_txt">Korrigering av bildeskjevhet</string>
+    <string name="cam_strings_do_not_show_again_txt">Ikke vis igjen</string>
+    <string name="cam_strings_downloadable_tab_txt">NEDLASTBARE</string>
+    <string name="cam_strings_drive_continuous_txt">Bildeserie</string>
+    <string name="cam_strings_drive_hybrid_txt">Hybrid enkeltbilde/bildeserie</string>
+    <string name="cam_strings_drive_single_txt">Enkeltbilde</string>
+    <string name="cam_strings_drivemode_txt">Bruksmodus</string>
+    <string name="cam_strings_effect_Kaleidoscope_txt">Kaleidoskop</string>
+    <string name="cam_strings_effect_after_image_txt">Bevegelsesspor</string>
+    <string name="cam_strings_effect_brightness_contrast_txt">Lysstyrke og kontrast</string>
+    <string name="cam_strings_effect_color_filter_tint_txt">Nyanse</string>
+    <string name="cam_strings_effect_color_pencil_txt">Fargeskisse</string>
+    <string name="cam_strings_effect_comic_txt">Tegneserie</string>
+    <string name="cam_strings_effect_fish_eye_txt">Fiskeøye</string>
+    <string name="cam_strings_effect_harris_shutter_txt">Harris-lukker</string>
+    <string name="cam_strings_effect_hue_saturation_txt">Fargetone og metning</string>
+    <string name="cam_strings_effect_miniature_txt">Miniatyr</string>
+    <string name="cam_strings_effect_mirror_txt">Speil</string>
+    <string name="cam_strings_effect_mosaic_txt">Mosaikk</string>
+    <string name="cam_strings_effect_motion_effects_txt">Bevegelseseffekter</string>
+    <string name="cam_strings_effect_no_effect_txt">Normal</string>
+    <string name="cam_strings_effect_nostalgia_txt">Nostalgisk</string>
+    <string name="cam_strings_effect_old_film_txt">Gammel film</string>
+    <string name="cam_strings_effect_partical_color_txt">Delfarge</string>
+    <string name="cam_strings_effect_pencil_txt">Blyantskisse</string>
+    <string name="cam_strings_effect_selector_txt">Dobbelt-kamera-effekt</string>
+    <string name="cam_strings_effect_vivid_txt">Livlig</string>
+    <string name="cam_strings_error_capture_txt">Denne modusen er ikke tilgjengelig når innspilling pågår i en annen app.</string>
+    <string name="cam_strings_error_delete_txt">Kan ikke slette</string>
+    <string name="cam_strings_error_device_not_available_txt">Kan ikke starte kameraet. Start kameraet eller enheten på nytt.</string>
+    <string name="cam_strings_error_dialog_title_txt">Feil</string>
+    <string name="cam_strings_error_fatal_sd_photo_txt">Kunne ikke lagre bilder. Det kan være et problem med datalagringen. Hvis datalagring er angitt til SD-kortet, sjekk SD-kortet.</string>
+    <string name="cam_strings_error_fatal_sd_video_txt">Kunne ikke starte innspilling. Det kan være et problem med datalagringen. Hvis datalagring er angitt til SD-kortet, sjekk SD-kortet.</string>
+    <string name="cam_strings_error_fatal_txt">Ukjent feil.</string>
+    <string name="cam_strings_error_high_temp_already_high_txt">Xperia-enheten må kjøles ned. Vent litt.</string>
+    <string name="cam_strings_error_high_temp_info_flashlight_unavailable_txt">Enhetstemperaturen er for høy til at lykten kan brukes</string>
+    <string name="cam_strings_error_high_temp_info_txt">Temperaturen til enheten stiger. Hvis den fortsetter å stige, vil appen lukkes automatisk.</string>
+    <string name="cam_strings_error_high_temp_info_video_recording_with_flashlight_unavailable_txt">Enhetstemperaturen er for høy til å spille inn video med lykten</string>
+    <string name="cam_strings_error_high_temp_info_vzw_txt">Temperaturen til enheten stiger. Hvis den fortsetter å stige, vil appen lukkes automatisk.</string>
+    <string name="cam_strings_error_high_temp_shut_down_no_txt">Nei</string>
+    <string name="cam_strings_error_high_temp_shut_down_yes_txt">Ja</string>
+    <string name="cam_strings_error_high_temp_shutting_down_txt">Kameraet blir nå slått av midlertidig for å kjøles ned.</string>
+    <string name="cam_strings_error_high_temp_shutting_down_vzw_txt">Kameraet blir nå slått av midlertidig for å kjøles ned.</string>
+    <string name="cam_strings_error_internal_memory_full_txt">Internt minne er fullt. Endret standard datalagring til SD-kort.</string>
+    <string name="cam_strings_error_internal_memory_unavailable_txt">Intern lagring er skadet eller skrivebeskyttet. Datalagring endret til SD-kort.</string>
+    <string name="cam_strings_error_internal_sd_full_txt">Minnet er fullt. Slett noen filer fra SD-kortet eller intern lagring.</string>
+    <string name="cam_strings_error_max_faces_exceeded_txt">Maksimalt antall ansikter har blitt valgt. Opphev valget av ett eller flere ansikter og prøv igjen.</string>
+    <string name="cam_strings_error_memory_full_txt">Minnet er fullt. Slett noen filer fra SD-kortet.</string>
+    <string name="cam_strings_error_memory_ims_access_error_txt">Minnefeil</string>
+    <string name="cam_strings_error_memory_ims_full_txt">Minnet er fullt. Slett noen filer fra minnet eller endre standard datalagring.</string>
+    <string name="cam_strings_error_memory_ims_unavailable_txt">Minnet er utilgjengelig</string>
+    <string name="cam_strings_error_memory_title_txt">Minnefeil</string>
+    <string name="cam_strings_error_memory_unavailable_txt">SD-kort er ikke tilgjengelig</string>
+    <string name="cam_strings_error_message_during_voice_call_title_txt">Anrop pågår</string>
+    <string name="cam_strings_error_message_during_voice_call_txt">Kamera utilgjengelig under anrop</string>
+    <string name="cam_strings_error_mms_rec_size_limit_txt">Kan ikke legge til flere filer. Filen er for stor.</string>
+    <string name="cam_strings_error_save_file_in_progress_txt">Lagrer. Handling ikke tilgjengelig.</string>
+    <string name="cam_strings_error_save_file_txt">Innspilling pågår i en annen app. Kunne ikke spille inn.</string>
+    <string name="cam_strings_error_storage_changing_to_internal_txt">Ingen SD-kort er tilgjengelig. Endret standard datalagring til Intern lagring.</string>
+    <string name="cam_strings_error_video_rec_txt">Kan ikke spille in. Innspilling eller en innspillingsrelatert funksjon kan være i bruk av en annen app.</string>
+    <string name="cam_strings_ev_disable_txt">EV er deaktivert. Sett SS eller ISO til AUTO.</string>
+    <string name="cam_strings_exposure_level_m03_txt">EV -0,3</string>
+    <string name="cam_strings_exposure_level_m07_txt">EV -0,7</string>
+    <string name="cam_strings_exposure_level_m10_txt">EV -1,0</string>
+    <string name="cam_strings_exposure_level_m13_txt">EV -1,3</string>
+    <string name="cam_strings_exposure_level_m17_txt">EV -1,7</string>
+    <string name="cam_strings_exposure_level_m20_txt">EV -2,0</string>
+    <string name="cam_strings_exposure_level_p03_txt">EV +0,3</string>
+    <string name="cam_strings_exposure_level_p07_txt">EV +0,7</string>
+    <string name="cam_strings_exposure_level_p10_txt">EV +1,0</string>
+    <string name="cam_strings_exposure_level_p13_txt">EV +1,3</string>
+    <string name="cam_strings_exposure_level_p17_txt">EV +1,7</string>
+    <string name="cam_strings_exposure_level_p20_txt">EV +2,0</string>
+    <string name="cam_strings_exposure_level_pm0_txt">EV ±0,0</string>
+    <string name="cam_strings_exposure_level_title_txt">Eksponeringsverdi</string>
+    <string name="cam_strings_exposure_level_txt">Eksponerings-verdi</string>
+    <string name="cam_strings_eye_position_tutorial_title_txt">Øyeretning</string>
+    <string name="cam_strings_eye_position_tutorial_txt">Fokuser øynene på frontkameraet ved ørehøyttaleren</string>
+    <string name="cam_strings_face_eyeaf_settings_txt">Ansiktsgjenkjenning/Øye-AF-innst.</string>
+    <string name="cam_strings_facefusion_add_face_txt">Legg til ansikt</string>
+    <string name="cam_strings_facefusion_delete_mask_txt">Slette dette ansiktet? Denne handlingen kan ikke angres.</string>
+    <string name="cam_strings_facefusion_no_face_detected_txt">Ingen ansikter funnet</string>
+    <string name="cam_strings_facefusion_point_at_face_txt">Rett kameraet mot et ansikt</string>
+    <string name="cam_strings_facefusion_select_face_txt">Trykk på firkanten(e) for å velge ansikt(er)</string>
+    <string name="cam_strings_failure_camera_shake_preview_txt">Hold kameraet stødig for å hindre uskarphet fra risting av kameraet.</string>
+    <string name="cam_strings_failure_camera_shake_txt">Bildet kan være uskarpt på grunn av kameraristing</string>
+    <string name="cam_strings_failure_detection_description_not_blink_txt">"Denne funksjonen bidrar til å hindre at du gjør feil ved å informere deg hvis fingeren dekker til linsen eller bildet er ute av fokus, før du tar det.
+Etter at du har tatt bildet, kan du sjekke om det er uskarpt, og motta råd for å ta bilder på nytt."</string>
+    <string name="cam_strings_failure_detection_description_txt">"Denne funksjonen bidrar til å hindre at du gjør feil ved å informere deg hvis fingeren dekker til linsen eller bildet er ute av fokus, før du tar det.
+Etter at du har tatt bildet, kan du sjekke om noen har blunket eller om det er uskarpt på grunn av risting, og motta råd for å ta bilder på nytt."</string>
+    <string name="cam_strings_failure_detection_txt">Vis fotograferingsråd</string>
+    <string name="cam_strings_failure_eye_blinks_preview_txt">Sjekk om noen blunket</string>
+    <string name="cam_strings_failure_eye_blinks_txt">Noen kan ha blunket i dette bildet</string>
+    <string name="cam_strings_failure_finger_covering_lens_after_txt">Fingeren din kan ha dekket til linsen</string>
+    <string name="cam_strings_failure_finger_covering_lens_preview_txt">Sjekk hvor kameralinsen er, og unngå å dekke til den</string>
+    <string name="cam_strings_failure_finger_covering_lens_txt">Fingeren din dekker til linsen</string>
+    <string name="cam_strings_failure_focus_too_close_txt">Flytt lenger bort fra objektet</string>
+    <string name="cam_strings_failure_focus_too_dark_txt">Mer lys kreves for å fokusere</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_photo_txt">Start og ta bilde</string>
+    <string name="cam_strings_fast_capturing_launch_and_capture_video_txt">Start og spill inn video</string>
+    <string name="cam_strings_fast_capturing_launch_camera_capture_txt">Start Kamera-appen og ta bilde</string>
+    <string name="cam_strings_fast_capturing_launch_camera_txt">Start Kamera-appen</string>
+    <string name="cam_strings_fast_capturing_launch_only_txt">Bare start</string>
+    <string name="cam_strings_fast_capturing_launch_only_video_txt">Bare start (videokamera)</string>
+    <string name="cam_strings_fast_capturing_launch_photo_pro_txt">Start Photography Pro</string>
+    <string name="cam_strings_fast_capturing_screen_locked_apps_list_txt">For å endre opptaksmodusen må du låse opp skjermen. Vil du låse opp?</string>
+    <string name="cam_strings_fast_capturing_screen_locked_photos_burst_txt">Enheten må låses opp for å veksle til bildevisningsappen etter å ha tatt bildeserie mens skjermen er låst. Vil du låse opp enheten?</string>
+    <string name="cam_strings_fast_capturing_screen_locked_settings_txt">Lås opp skjermen for å åpne innstillingene.</string>
+    <string name="cam_strings_fast_capturing_screen_locked_title_txt">Skjermen er låst</string>
+    <string name="cam_strings_fast_capturing_title_txt">Hurtiglasting</string>
+    <string name="cam_strings_fast_capturing_txt">Hurtiglasting</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_title_txt">Bytt opptaksmodus og kamera</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_txt">Sveip på skjermen for å veksle til en annen opptaksmodus, som for eksempel Video eller Manuell, og bytt mellom hoved- og frontkameraet.</string>
+    <string name="cam_strings_fast_switch_tutorial_title_txt">Bytt kamera</string>
+    <string name="cam_strings_fast_switch_tutorial_txt">Du kan veksle mellom hoved- og frontkameraet ved å sveipe på skjermen</string>
+    <string name="cam_strings_feature_bokeh_cameraui_description_txt">"For å justere bokeh-effekten trykker du på bokeh-ikonet i søkeren og beveger glidebryteren.
+Denne funksjonen støttes i fotomodus.
+La oss ta imponerende bilder som fokuserer på motivet i forgrunnen med en uskarp bakgrunn."</string>
+    <string name="cam_strings_feature_bokeh_cameraui_subtitle_txt">Ta bilder med bokeh-effekt</string>
+    <string name="cam_strings_feature_bokeh_cameraui_title_txt">Bokeh-effekt</string>
+    <string name="cam_strings_feature_bokeh_description_txt">"Ta imponerende bilder med skarp fokus på objektet mot en myk, uskarp bakgrunn.
+For å bruke denne modusen trykker du på MODUS-ikonet i søkeren og velger deretter Bokeh."</string>
+    <string name="cam_strings_feature_bokeh_subtitle_txt">Bokeh</string>
+    <string name="cam_strings_feature_bokeh_title_txt">Bokeh</string>
+    <string name="cam_strings_feature_dual_camera_manual_description_txt">Du kan aktivere og deaktivere dobbelt kamera i manuell modus. Aktiver det for å ta bilder med lite støy under dårlig belysning. Deaktiver det for å ta nærbilder.</string>
+    <string name="cam_strings_feature_dual_camera_manual_subtitle_txt">Ta bilder med dobbelt kamera i manuell modus</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_2_txt">Hold en avstand på minst 1 meter fra objektet når du tar bilder eller videoer med dobbelt kamera. Hvis du kommer for nær objektet, kan det oppstå en forskyvning av synsvinkel eller farger.</string>
+    <string name="cam_strings_feature_dual_camera_photo_description_txt">"Du kan ta vakre bilder og videoer med lite støy også om natten eller i et rom med dårlig belysning ved bruk av dobbelt kamera.
+Kameraet bytter automatisk mellom enkelt kamera og dobbelt kamera avhengig av motivene som skal tas. Både bilder og video tas med ultrahøy følsomhet."</string>
+    <string name="cam_strings_feature_dual_camera_photo_subtitle_txt">Dobbelt kamera</string>
+    <string name="cam_strings_feature_dual_camera_title_txt">Dobbelt kamera</string>
+    <string name="cam_strings_feature_dual_camera_video_description_txt">For flotte nærbilder kan du bytte til enkelt kamera ved å slå av dobbelt kamera i søkeren. Du kan endre det når som helst ved å trykke på innstillinger-knappen.</string>
+    <string name="cam_strings_feature_dual_camera_video_subtitle_txt">Videoopptak med dobbelt kamera</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_description_txt">"Trykk på knappen i søkeren for å bytte mellom synsvinklene x1 og x2.
+Du kan bruke denne funksjonen både i bilde- og videomodus."</string>
+    <string name="cam_strings_feature_dual_zoom_camera_button_subtitle_txt">Bytt vinkel med knappen</string>
+    <string name="cam_strings_feature_dual_zoom_camera_title_txt">Dobbelt kamera</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_description_txt">"Berør og hold nede knappen i søkeren for å vise en glidebryter. Du kan justere zoomnivået med den.
+Zoomnivået kan også justeres en volumknapp eller ved å knipe på en skjerm."</string>
+    <string name="cam_strings_feature_dual_zoom_camera_zoom_subtitle_txt">Zoom med glidebryter</string>
+    <string name="cam_strings_feature_eye_af_description_txt">"Du kan ta portrettbilder som fokuserer på øyene.
+Trykk på ansiktet til motivet du vil fokusere på for å endre fokusmålet. Trykk på ikonet som vises når ansikter gjenkjennes for å aktivere eller deaktivere denne funksjonen."</string>
+    <string name="cam_strings_feature_eye_af_description_with_animal_txt">"Du kan ta bilder som fokuserer på øyene til mennesker eller dyr.
+Trykk på ansiktet til motivet du vil fokusere på for å endre fokusmålet. Trykk på ikonet som vises når ansikter gjenkjennes for å aktivere eller deaktivere denne funksjonen. Fotomodus og manuell modus støtter denne funksjonen."</string>
+    <string name="cam_strings_feature_eye_af_subtitle_txt">Øye-AF</string>
+    <string name="cam_strings_feature_eye_af_title_txt">Øye-AF</string>
+    <string name="cam_strings_feature_failure_detection_description_not_blink_txt">"Denne funksjonen bidrar til å hindre at du gjør feil ved å informere deg hvis fingeren dekker til linsen eller bildet er ute av fokus, før du tar det.
+Etter at du har tatt bildet, kan du sjekke om det er uskarpt og motta råd for å ta bilder på nytt.
+
+Du kan endre innstillingene fra Vis fotograferingsråd i kamerainnstillingene."</string>
+    <string name="cam_strings_feature_failure_detection_description_txt">"Denne funksjonen hindrer at du gjør feil ved å informere deg hvis fingeren dekker til linsen eller bildet er ute av fokus, før du tar det. Etter at du har tatt bildet, kan du sjekke om noen har blunket eller om det er uskarpt på grunn av risting, og motta råd for å ta bilder på nytt.
+
+Du kan endre innstillingene fra Vis fotograferingsråd i kamerainnstillingene."</string>
+    <string name="cam_strings_feature_failure_detection_subtitle_txt">Vis fotograferingsråd</string>
+    <string name="cam_strings_feature_failure_detection_title_txt">Vis fotograferingsråd</string>
+    <string name="cam_strings_feature_failure_option_after_and_preview_txt">Før og etter du tar bilder</string>
+    <string name="cam_strings_feature_failure_option_after_only_txt">Bare etter at du tar bilder</string>
+    <string name="cam_strings_feature_hand_shutter_description_txt">"Vri håndflaten mot kameraet. Selvutløseren vil slås på når håndflaten gjenkjennes. For å gjøre det enkelt å gjenkjenne, strekk fingrene oppover.
+Gå til Bilde (front) og velg Håndutløser-alternativet i Automat. bildetaking for å aktivere denne funksjonen."</string>
+    <string name="cam_strings_feature_hand_shutter_subtitle_txt">Håndlukker</string>
+    <string name="cam_strings_feature_hand_shutter_title_txt">Håndlukker</string>
+    <string name="cam_strings_feature_lens_correction_description_nosuperwidemode_txt">"Du kan velge en prioritet når du bruker ultravidvinkellinse. Ved å velge Prioriter bildekvalitet kan du ta dynamiske bilder av høy kvalitet. Hvis du velger Prioriter korrigering av skjevhet, kan du redusere visuelle fordreininger.
+Disse funksjonene aktiveres når du bruke ultravidvinkellinse i bildemodus. Du kan endre innstillingene i kamerainnstillinger."</string>
+    <string name="cam_strings_feature_lens_correction_description_txt">Du kan velge en prioritet når du bruker ultravidvinkell. Ved å velge Prioriter bildekvalitet kan du ta dynamiske bilder av høy kvalitet. Hvis du velger Prioriter korrigering av skjevhet, kan du redusere visuelle fordreininger. Disse funksjonene aktiveres når du bruke ultravidvinkellinse i bildemodus. Inst. fra linsekorrig. (bilde) kan endres i kamerainnst. når du har byttet til ultravidvinkel.</string>
+    <string name="cam_strings_feature_level_description_txt">"Ved å slå på vaterpasset kan du sjekke vinklingen for kameraet med en indikator.
+Skjermen blir grønn når kameraet er i vater.
+Dette er nyttig hvis du vil ivareta horisontlinjen når du tar landskapsbilder.
+
+Du kan endre innstillingene for denne funksjonen i Vaterpass i kamerainnstillingene."</string>
+    <string name="cam_strings_feature_level_subtitle_txt">Ta bilder med vaterpasset</string>
+    <string name="cam_strings_feature_level_title_txt">Vaterpass</string>
+    <string name="cam_strings_feature_list_banner_txt">Ta en titt på de nyeste funksjonene</string>
+    <string name="cam_strings_feature_list_new_title_txt">Slik bruker du de nye funksjonene</string>
+    <string name="cam_strings_feature_list_other_title_txt">Slik bruker du funksjonene</string>
+    <string name="cam_strings_feature_list_title_txt">Introduksjon til funksjoner</string>
+    <string name="cam_strings_feature_long_ss_description_txt">"Du kan stille inn lukkerhastigheten til inntil 30 sekunder i manuell modus. Hvis du bruker en treg lukkerhastighet, hold kameraet stødig for å ta et flott bilde.
+Ta bilder av nattmotiver eller motiver i bevegelse med imponerende effekt."</string>
+    <string name="cam_strings_feature_long_ss_subtitle_txt">Endre lukkerhastighet</string>
+    <string name="cam_strings_feature_long_ss_title_txt">Lukkerhastighet</string>
+    <string name="cam_strings_feature_mono_description_txt">"Ta enkelt kunstneriske bilder og videoer i høy oppløsning.
+For å bruke denne modusen trykker du på MODUS-ikonet i søkeren og velger deretter Svart-hvitt."</string>
+    <string name="cam_strings_feature_mono_subtitle_txt">Svart-hvitt</string>
+    <string name="cam_strings_feature_mono_title_txt">Svart-hvitt</string>
+    <string name="cam_strings_feature_night_mode_description_txt">"Du kan ta klare bilder selv om natten eller i mørke forhold.
+Det kan ta noe tid å behandle bildet etter at det er tatt, så hold kameraet rolig til det er ferdig."</string>
+    <string name="cam_strings_feature_night_mode_subtitle_txt">Nattmodus</string>
+    <string name="cam_strings_feature_night_mode_title_txt">Nattmodus</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_all_lang_txt">Nattmodus</string>
+    <string name="cam_strings_feature_night_shooting_subtitle_txt">Nattmodus</string>
+    <string name="cam_strings_feature_night_shooting_title_all_lang_txt">Nattmodus</string>
+    <string name="cam_strings_feature_night_shooting_title_txt">Nattmodus</string>
+    <string name="cam_strings_feature_oneshot_description_txt">"Spill inn umiddelbart et viktig øyeblikk i %1$s bps sakte film ved å trykke på knappen i midten av skjermen.
+Innspilling under lyse forhold vil bidra til en bedre video."</string>
+    <string name="cam_strings_feature_oneshot_subtitle_txt">Super-sakte film (ett opptak)</string>
+    <string name="cam_strings_feature_portrait_bokeh_description_txt">"For å justere bokeh-effekten på portretter trykker du på bokeh-ikonet i søkeren og flytter glidebryteren.
+Denne funksjonen støttes i bildemodus.
+Fremhev motivet med imponerende kontraster ved å gjøre bakgrunnen uskarp."</string>
+    <string name="cam_strings_feature_portrait_bokeh_subtitle_txt">Ta portrettbilder med bokeh-effekt</string>
+    <string name="cam_strings_feature_portrait_bokeh_title_txt">Bokeh-effekt for portrett</string>
+    <string name="cam_strings_feature_portrait_selfie_description_txt">"Ta en kunstnerisk selfie med bokeh og legg til skjønnhetseffekter.
+For å bruke denne modusen trykker du på MODUS-ikonet i søkeren og velger deretter Selvportrett.
+Gi stil til selfien og nyt kreative resultater."</string>
+    <string name="cam_strings_feature_portrait_selfie_subtitle_txt">Selvportrett</string>
+    <string name="cam_strings_feature_portrait_selfie_title_txt">Selvportrett</string>
+    <string name="cam_strings_feature_predictive_launch_description_txt">"Du kan starte kameraet raskt. Løft raskt opp enheten i liggende modus og rett kameraet mot et motiv. Kameraet startes automatisk.
+Du kan velge favorittmåten din for å bruke denne funksjonen fra Smartstart i kamerainnstillingene."</string>
+    <string name="cam_strings_feature_predictive_launch_subtitle_txt">Smartstart</string>
+    <string name="cam_strings_feature_predictive_launch_title_txt">Smartstart</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"Du kan raskt få tilgang til nettsider eller Wi-Fi ved å skanne en QR Code.
+Denne funksjonen er aktivert mens du er i fotomodus. Du kan endre innstillingen fra QR Code-leser i kamerainnstillingene."</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code-leser</string>
+    <string name="cam_strings_feature_qrcode_notification_channel_txt">QR Code-leser</string>
+    <string name="cam_strings_feature_selfie_description_txt">"Når du tar bilder med frontkameraet, rett øynene mot frontkameralinsen nær ørehøyttaleren.
+Øynene dine ser da i rett retning i bildet."</string>
+    <string name="cam_strings_feature_selfie_subtitle_txt">Øyeretning</string>
+    <string name="cam_strings_feature_selfie_title_txt">Frontkamera</string>
+    <string name="cam_strings_feature_sidesense_bar_description_txt">"Du kan ta bilder eller videoer ved å dobbelttrykke på sensoren på kanten av skjermen i stedet for utløserknappen.
+Denne funksjonen er kompatibel både med foto- og videomodus. Du kan endre innstillingene for funksjonen fra Sidesans i kamerainnstillingene."</string>
+    <string name="cam_strings_feature_sidesense_description_txt">"Du kan ta et bilde eller video enkelt ved å dobbelttrykke på sensoren på siden av skjermen i stedet for utløserknappen.
+Både bilde- og videomodus støtter denne funksjonen. Du kan endre innstillingen i [Sidesans] i kamerainnstillingene."</string>
+    <string name="cam_strings_feature_sidesense_subtitle_txt">Sidesans</string>
+    <string name="cam_strings_feature_sidesense_title_txt">Sidesans</string>
+    <string name="cam_strings_feature_slowmotion_description_txt">Du kan spille inn en video med flere deler i sakte film (120 bps sakte film)</string>
+    <string name="cam_strings_feature_slowmotion_subtitle_txt">Sakte film</string>
+    <string name="cam_strings_feature_slowmotion_title_txt">Sakte film</string>
+    <string name="cam_strings_feature_superslow_description_txt">"Lag en imponerende video ved å vise et viktig øyeblikk i sakte film. Innspilling under lyse forhold vil bidra til en bedre video.
+For å bruke denne modusen trykker du på MODUS-ikonet i søkeren og velger deretter Sakte film. Du kan også velge ulike alternativer i Sakte film-modus-innstillingene."</string>
+    <string name="cam_strings_feature_superslow_subtitle_txt">Super-sakte film</string>
+    <string name="cam_strings_feature_transfer_and_tagging_description_txt">"Ved å slå på denne funksjonen kan Transfer &amp; Tagging add-on vise bilder tatt med Xperia-kameraet. Bildene lagres i intern lagring.
+Denne funksjonen er kompatibel med bilder tatt i fotomodus og manuell modus.
+Du kan endre innstillingene fra Transfer &amp; Tagging add-on-modusen i kamerainnstillingene."</string>
+    <string name="cam_strings_feature_transfer_and_tagging_subtitle_txt">Koble til Transfer &amp; Tagging add-on-modus</string>
+    <string name="cam_strings_feature_transfer_and_tagging_title_txt">Transfer &amp; Tagging add-on-modus</string>
+    <string name="cam_strings_feature_triple_camera_button_description_new_txt">"Du kan enkelt veksle mellom kameralinser for å fange enhver situasjon for å utfordre kreativiteten din.
+Trykk på knappen i søkeren for å bytte mellom ultravidvinkel- og telelinser.
+Du kan bruke denne funksjonen både i bilde- og videomodus."</string>
+    <string name="cam_strings_feature_triple_camera_button_description_txt">"Du kan enkelt veksle mellom kameralinser for å fange enhver situasjon for å utfordre kreativiteten din.
+Trykk på knappen i søkeren for å bytte mellom synsvinklene x1, x2 og ultravidvinkel.
+Du kan bruke denne funksjonen både i bilde- og videomodus."</string>
+    <string name="cam_strings_feature_triple_camera_button_subtitle_txt">Bytt vinkel med knappen</string>
+    <string name="cam_strings_feature_triple_camera_button_with_zoom_ratio_description_txt">"Du kan bytte kjapt mellom forskjellige kameralinser for å ta det perfekte bildet.
+Trykk på knappen i søkeren for å bytte mellom synsvinklene 0,6x (ultravid), 1x (vid) og 2x (telefoto).
+Du kan bruke denne funksjonen i både grunnleggende Bilde- og Videomodus."</string>
+    <string name="cam_strings_feature_triple_camera_how_to_zoom_subtitle_txt">Slik zoomer du inn og ut</string>
+    <string name="cam_strings_feature_triple_camera_title_txt">Trippelt kamera</string>
+    <string name="cam_strings_feature_triple_camera_wide_description_txt">"Denne linsen passer for landskapsbilder fordi den har en bredere synsvinkel.
+Pass på at du bytter til ultravidvinkellinsen før du endrer innstillingene for den."</string>
+    <string name="cam_strings_feature_triple_camera_wide_subtitle_txt">Ta bilder og video med ultravidvinkellinse</string>
+    <string name="cam_strings_feature_triple_camera_zoom_description_txt">"Skyv fingeren til venstre eller høyre på knappen i søkeren for å vise glidebryteren. Du kan justere zoomnivået ved å bruke glidebryteren.
+Zoomnivået kan også justeres med volumknappen eller ved å knipe på skjermen."</string>
+    <string name="cam_strings_feature_triple_camera_zoom_plus_zoom_frames_description_txt">"Skyv fingeren til venstre eller høyre på knappen i søkeren for å vise glidebryteren. Du kan justere zoomnivået med glidebryteren.
+Zoomnivået kan også justeres med volumknappene eller ved å knipe på skjermen.
+I fotomodus kan du vise rammer som hjelper deg med å forhåndsvise hvordan det vil se ut når du zoomer inn. Du kan endre denne innstillingen fra Zoom-komposisjonshjelpen i kamerainnstillingene."</string>
+    <string name="cam_strings_feature_triple_camera_zoom_subtitle_txt">Zoom med glidebryter</string>
+    <string name="cam_strings_feature_zoom_frames_description_txt">"Hvis du slår på denne innstillingen, kan du forhåndsvise hvordan den vil se ut når du zoomer inn.
+Sentrer motivet i en ramme og trykk på zoomforholdet for enkelt å zoome inn.
+Denne funksjonen støttes ikke når stillbildestørrelsen er satt til 21:9."</string>
+    <string name="cam_strings_file_delete_confirm_title_txt">Slett</string>
+    <string name="cam_strings_file_delete_confirm_txt">Slette denne filen?</string>
+    <string name="cam_strings_file_format_description_txt">Velg en enkoder for 4K-video</string>
+    <string name="cam_strings_file_format_sub_description_h264_txt">Standardformat for koding. De fleste enheter og tjenester støtter dette formatet.</string>
+    <string name="cam_strings_file_format_sub_description_h265_txt">Format med høyt komprimeringsforhold. Sjekk at enhetene eller tjenestene støtter dette formatet.</string>
+    <string name="cam_strings_file_share_title_txt">Del</string>
+    <string name="cam_strings_flash_fill_flash_txt">Utfyllingsblits</string>
+    <string name="cam_strings_flash_night_portrait_hint_txt">Pass på at du holder enheten i ro</string>
+    <string name="cam_strings_flash_night_portrait_txt">Nattportrettblits</string>
+    <string name="cam_strings_flash_pro_txt">Blitsmodus</string>
+    <string name="cam_strings_flash_red_eye_reduc_txt">Reduksjon av røde øyne</string>
+    <string name="cam_strings_flash_title_txt">Blits</string>
+    <string name="cam_strings_flash_torch_txt">Lykt</string>
+    <string name="cam_strings_flash_txt">Blits</string>
+    <string name="cam_strings_focus_af_c_txt">Kontinuerlig AF</string>
+    <string name="cam_strings_focus_af_s_txt">Enkeltbilde-AF</string>
+    <string name="cam_strings_focus_mf_txt">Manuell fokus</string>
+    <string name="cam_strings_focus_mode_face_detection_txt">Ansiktsregistrering</string>
+    <string name="cam_strings_focus_mode_infinity_txt">Uendelig</string>
+    <string name="cam_strings_focus_mode_macro_txt">Makro</string>
+    <string name="cam_strings_focus_mode_multi_af_txt">Multiautofokus</string>
+    <string name="cam_strings_focus_mode_object_tracking_txt">Motivsporing</string>
+    <string name="cam_strings_focus_mode_single_af_txt">Enkel autofokus</string>
+    <string name="cam_strings_focus_mode_title_txt">Fokusmodus</string>
+    <string name="cam_strings_focus_mode_touch_focus_txt">Berøringsfokus</string>
+    <string name="cam_strings_focus_mode_txt">Fokusmodus</string>
+    <string name="cam_strings_forced_change_flash_off_txt">Blitsmodus er slått av for å bruke nattopptak</string>
+    <string name="cam_strings_forced_change_night_shooting_auto_txt">Nattopptak satt til automatisk for å bruke Blitsmodus</string>
+    <string name="cam_strings_front_cam_location_guide_txt">Kameralinsen befinner seg som vist på illustrasjonen</string>
+    <string name="cam_strings_fusion_error_too_close_txt">Flytt lenger bort fra objektet</string>
+    <string name="cam_strings_fusion_on_txt">Ultrahøy følsomhet</string>
+    <string name="cam_strings_fusion_setting_txt">Bytt dobbelt-kamera</string>
+    <string name="cam_strings_geotagging_title_txt">Lagre sted</string>
+    <string name="cam_strings_geotagging_txt">Lagre sted</string>
+    <string name="cam_strings_get_more_modes_txt">Apper</string>
+    <string name="cam_strings_global_setting_softskin_available_applications_txt">Tilgjengelige apper</string>
+    <string name="cam_strings_global_setting_softskin_brighten_skin_txt">Lys hud</string>
+    <string name="cam_strings_global_setting_softskin_detail_txt">Gjør huden din lys og jevn. Effekten virker i apper som bruker frontkameraet. Dette kan brukes både på bilder og videoer. Du kan også justere nivået.</string>
+    <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Nivåjustering</string>
+    <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Jevn hud</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Kan ikke starte app.
+Sjekk at nyeste versjon av %1$s er installert og aktivert på enheten din."</string>
+    <string name="cam_strings_gridline_txt">Rutenettlinjer</string>
+    <string name="cam_strings_hand_shutter_hint_detail_txt">Vri håndflaten mot kameraet. Selvutløseren vil slås på når håndflaten gjenkjennes. For å gjøre det enkelt å gjenkjennes, strekk fingrene oppover.</string>
+    <string name="cam_strings_hand_shutter_hint_txt">Vri håndflaten mot kameraet</string>
+    <string name="cam_strings_hand_shutter_txt">Håndlukker</string>
+    <string name="cam_strings_hdr_dro_settings_dro_txt">Optimaliser dynamisk område</string>
+    <string name="cam_strings_hdr_dro_settings_hdr_txt">Auto-HDR</string>
+    <string name="cam_strings_hdr_dro_settings_txt">DRO/Auto-HDR</string>
+    <string name="cam_strings_hdr_guide_txt">Ettersom foto-HDR tar to bilder av samme motiv og setter dem sammen, egner det seg bare for motiver som ikke er i bevegelse.</string>
+    <string name="cam_strings_hdr_title_txt">HDR</string>
+    <string name="cam_strings_hdr_txt">HDR</string>
+    <string name="cam_strings_help_txt">Hjelp</string>
+    <string name="cam_strings_histogram_txt">Histogram</string>
+    <string name="cam_strings_iburst_feedback_txt">Forutsagt</string>
+    <string name="cam_strings_image_quality_control_button_cancel_txt">Avbryt</string>
+    <string name="cam_strings_image_quality_control_button_clear_txt">Slett</string>
+    <string name="cam_strings_image_quality_control_button_reset_txt">Tilbakestill</string>
+    <string name="cam_strings_image_quality_control_tab_focus_txt">Fokus</string>
+    <string name="cam_strings_image_size_txt">Stillbildestørrelse</string>
+    <string name="cam_strings_image_stabilizer_title_txt">Bildestabilisator</string>
+    <string name="cam_strings_image_stabilizer_txt">Bildestabilisator</string>
+    <string name="cam_strings_intelligent_burst_txt">Forutsigende innspilling</string>
+    <string name="cam_strings_intelligent_wind_filter_txt">Intelligent vindfilter</string>
+    <string name="cam_strings_iso_changed_txt">ISO-verdien er også endret</string>
+    <string name="cam_strings_launch_with_camera_key_txt">Åpne med utløserknappen</string>
+    <string name="cam_strings_lens_correction_for_photo_description_added_txt">Merk: Linsekorrigering er deaktivert når du tar bildeserier.</string>
+    <string name="cam_strings_lens_correction_for_photo_description_txt">Du kan velge en prioritet når du bruker ultravidvinkell. Ved å velge Prioriter bildekvalitet kan du ta dynamiske bilder av høy kvalitet. Hvis du velger Prioriter korrigering av skjevhet, kan du redusere visuelle fordreininger.</string>
+    <string name="cam_strings_lens_correction_for_photo_nosuperwidemode_txt">Korr. av ultravidvinkell. (bilde)</string>
+    <string name="cam_strings_lens_correction_for_photo_pro_txt">Korrigering av ultravidvinkellinse</string>
+    <string name="cam_strings_lens_correction_for_photo_txt">Linsekorrigering (bilde)</string>
+    <string name="cam_strings_lens_correction_off_txt">Prioriter bildekvalitet</string>
+    <string name="cam_strings_lens_correction_on_txt">Prioriter korrigering av skjevhet</string>
+    <string name="cam_strings_lens_correction_txt">Linsekorrigering</string>
+    <string name="cam_strings_lens_switch">Bytt linsevinkel</string>
+    <string name="cam_strings_level_meter_calibration_txt">Vaterpasskalibrering</string>
+    <string name="cam_strings_level_pro_txt">Vaterpass</string>
+    <string name="cam_strings_level_txt">Vaterpass</string>
+    <string name="cam_strings_long_press_burst_best_txt">Standard</string>
+    <string name="cam_strings_long_press_burst_high_txt">Høy hastighet</string>
+    <string name="cam_strings_long_press_burst_txt">Bildeserie ved trykk og hold</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_title_txt">Ta bilder med dobbelt kamera</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_txt">Hold en avstand på minst 1 meter fra objektet når du tar bilder med dobbelt kamera. Hvis du kommer for nær objektet, kan det oppstå en forskyvning av synsvinkel eller farger.</string>
+    <string name="cam_strings_manual_fusion_tutorial_title_txt">Bytt til dobbelt kamera</string>
+    <string name="cam_strings_manual_fusion_tutorial_txt">Du kan aktivere og deaktivere dobbelt kamera i manuell modus. Aktiver det for å ta bilder med lite støy under dårlig belysning. Deaktiver det for å ta nærbilder.</string>
+    <string name="cam_strings_max_file_size_save_failed_txt">Innspilling stoppet på grunn av grense for maksimal filstørrelse</string>
+    <string name="cam_strings_max_recording_time_save_failed_txt">Innspilling stoppet på grunn av grense for maksimal innspillingstid</string>
+    <string name="cam_strings_memory_full_save_failed_txt">Kan ikke lagre. Minnet er fullt.</string>
+    <string name="cam_strings_memory_full_zoom_not_supported_txt">Minnet fullt. Zoom er for øyeblikket ikke tilgjengelig.</string>
+    <string name="cam_strings_metering_multi_cy_txt">Multi</string>
+    <string name="cam_strings_mf_assist_txt">MF-assistanse</string>
+    <string name="cam_strings_mfnr_txt">Støyreduksjon med multibilde</string>
+    <string name="cam_strings_microphone_title_txt">Mikrofon</string>
+    <string name="cam_strings_modeselector_addon_installed_txt">Installert</string>
+    <string name="cam_strings_monochrome_photo_txt">Svart-hvitt-bilde</string>
+    <string name="cam_strings_monochrome_title_txt">Svart-hvitt</string>
+    <string name="cam_strings_monochrome_video_txt">Svart-hvitt-video</string>
+    <string name="cam_strings_more_common_setting_title_txt">Vanlige innstillinger</string>
+    <string name="cam_strings_more_txt">Mer</string>
+    <string name="cam_strings_mr_txt">Registrert i Husk i minne %d</string>
+    <string name="cam_strings_multi_window_txt">Dra midten av den delte linjen for å bytte til fullskjerm for %1$s for å bruke</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"En annen enhet er nå tilkoblet.
+Vil du dele bildet gjennom søkeren med enheten?"</string>
+    <string name="cam_strings_multicam_add_device_txt">Legg til enhet</string>
+    <string name="cam_strings_multicam_add_more_txt">Legg til mer</string>
+    <string name="cam_strings_multicam_apply_txt">Utført</string>
+    <string name="cam_strings_multicam_connection_failure_dialog_txt">Kan ikke koble til</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Kan ikke tilkoble et Sony Wi-Fi/NFC-kamera når din Xperia er tilkoblet en annen Xperia.</string>
+    <string name="cam_strings_multicam_error_app_ver_old_txt">Appversjonen samsvarer ikke. Kan ikke koble til. Appen må oppdateres.</string>
+    <string name="cam_strings_multicam_error_disconnect_txt">Frakoblet</string>
+    <string name="cam_strings_multicam_error_nfc_txt">Kan ikke starte med NFS låst.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">Denne modusen er ikke tilgjengelig under Wi-Fi-tilknytning.</string>
+    <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">Maks. antall enheter lagt til.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Kun et Sony Wi-Fi/NFC-kamera kan være tilkoblet din Xperia om gangen.</string>
+    <string name="cam_strings_multicam_nfc_connect_title_txt">Berør de to enhetene med hverandre for å koble til</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Sonys Wi-Fi/NFC-kamera</string>
+    <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
+    <string name="cam_strings_multicam_nfc_touch_to_beam_title_txt">Trykk på skjermen</string>
+    <string name="cam_strings_multicam_security_info_txt">Hvis enheten du kobler til med også er tilkoblet andre Xperia-enheter via denne appen, vil din Xperia også automatisk kobles til de enheten, og alle bilder fra søkeren vil deles mellom din Xperia og alle de andre tilkoblede enhetene.</string>
+    <string name="cam_strings_multicam_touch_add_camera_desc_txt">Trykk for å legge til en enhet. Bildet fra søkeren vil vises her.</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Kan ikke tilkoble en Xperia når din Xperia er tilkoblet et Sony Wi-Fi/NFC-kamera.</string>
+    <string name="cam_strings_night_mode_hint_txt">Nattmodus</string>
+    <string name="cam_strings_night_shooting_hint_txt">Nattmodus</string>
+    <string name="cam_strings_not_zoom_for_full_hd_60fps_video_txt">Zoom under 1x er ikke tilgjengelig for video i Full HD (60 bps)</string>
+    <string name="cam_strings_not_zoom_txt">Zoom under 1x er ikke tilgjengelig for video i 4K eller Full HD (60 bps)</string>
+    <string name="cam_strings_ok_txt">OK</string>
+    <string name="cam_strings_only_main_txt">Bare hovedkameraet</string>
+    <string name="cam_strings_peaking_display_txt">Skjermfremheving</string>
+    <string name="cam_strings_permgroupdesc_thermalmitigation_message_txt">Tillater appen å kontrollere systemet for å ta stabile bilder, avhengig av temperaturen til enheten.</string>
+    <string name="cam_strings_permgrouplab_thermalmitigation_txt">kontrollere systemet</string>
+    <string name="cam_strings_photo_autoreview_txt">Forhåndsvis bilde automatisk</string>
+    <string name="cam_strings_photometry_average_txt">Gjennomsnittlig</string>
+    <string name="cam_strings_photometry_center_txt">Senter</string>
+    <string name="cam_strings_photometry_face_txt">Ansikt</string>
+    <string name="cam_strings_photometry_pro_txt">Målemodus</string>
+    <string name="cam_strings_photometry_spot_txt">Punkt</string>
+    <string name="cam_strings_photometry_title_txt">Måling</string>
+    <string name="cam_strings_photometry_touch_txt">Trykk</string>
+    <string name="cam_strings_photometry_txt">Måling</string>
+    <string name="cam_strings_pleaking_color_txt">Fremhevingsfarge</string>
+    <string name="cam_strings_preaf_txt">Pre-AF</string>
+    <string name="cam_strings_predictive_capture_description_txt">Bilder tas automatisk ved registrering av et smil eller bevegelsen til et motiv sekunder før du trykker på utløserknappen. Du kan velge favorittbildet ditt fra opptil fire bilder. Du vil ikke gå glipp av det perfekte bildet.</string>
+    <string name="cam_strings_predictive_capture_feedback_txt">Forutsagt</string>
+    <string name="cam_strings_predictive_capture_txt">Forutsigende innspilling</string>
+    <string name="cam_strings_predictive_launch_description_txt">Du kan automatisk starte kameraet ved å raskt løfte enheten i liggende modus og rette kameraet mot et motiv.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Kameraet har blitt startet automatisk ved å registrere at du løftet opp enheten telefonen i liggende modus og rettet kameraet mot et motiv.
+Du kan velge favorittmåten din for å bruke denne funksjonen fra Smartstart i kamerainnstillingene."</string>
+    <string name="cam_strings_predictive_launch_guide_2_txt">Berør i sirkelen for å ta bilde</string>
+    <string name="cam_strings_predictive_launch_guide_3_txt">Berør skjermen for å ta bilde</string>
+    <string name="cam_strings_predictive_launch_guide_circle_txt">Trykk på innsiden av sirkelen for å vise i fullskjerm</string>
+    <string name="cam_strings_predictive_launch_guide_txt">Berør i sirkelen for å starte kameraet</string>
+    <string name="cam_strings_predictive_launch_launch_and_capture_txt">Trykk for å starte og ta bilder</string>
+    <string name="cam_strings_predictive_launch_launch_only_txt">Trykk for å starte</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_and_capture_txt">Trykk inne i sirkelen, deretter startes kameraet i fullskjerm og et bilde tas samtidig.</string>
+    <string name="cam_strings_predictive_launch_sub_description_launch_only_txt">Trykk inne i sirkelen, og kameraet startes i fullskjerm.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Du kan starte kameraet raskt. Løft raskt opp enheten i liggende modus og rett kameraet mot et motiv. Kameraet startes automatisk.
+Du kan velge favorittmåten din for å bruke denne funksjonen fra Smartstart i kamerainnstillingene."</string>
+    <string name="cam_strings_predictive_launch_tutorial_title_txt">Smartstart</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Du kan starte kameraet raskt. Sving opp enheten i liggende modus og rett kameraet mot et motiv. Kameraet startes automatisk.
+Du kan slå av denne funksjonen fra Smartstart i kamerainnstillingene."</string>
+    <string name="cam_strings_predictive_launch_txt">Smartstart</string>
+    <string name="cam_strings_preview_always_txt">På</string>
+    <string name="cam_strings_preview_duration_3sec_txt">3 sekunder</string>
+    <string name="cam_strings_preview_duration_5sec_txt">5 sekunder</string>
+    <string name="cam_strings_preview_duration_title_txt">Forhåndsvisning</string>
+    <string name="cam_strings_preview_duration_txt">Forhånds-visning</string>
+    <string name="cam_strings_preview_duration_unlimited_txt">Ubegrenset</string>
+    <string name="cam_strings_preview_edit_txt">Rediger</string>
+    <string name="cam_strings_preview_only_front_txt">Bare frontkamera</string>
+    <string name="cam_strings_previous_txt">Forrige</string>
+    <string name="cam_strings_processing_capturing_photo_txt">Tar bilde. Vent litt.</string>
+    <string name="cam_strings_processing_loading_txt">Tar bilde. Hold kameraet rolig.</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Trykk for å konfigurere denne enheten</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Denne QR Code støttes ikke</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Trykk for å åpne koblingen \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Kan ikke koble til dette Wi-Fi-nettverket</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Trykk for å koble til Wi-Fi-nettet «%1$s»</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code-leser</string>
+    <string name="cam_strings_recommend_night_mode_txt">Trykk her for å bruke Nattmodus</string>
+    <string name="cam_strings_recommend_night_mode_use_button_txt">Bruk</string>
+    <string name="cam_strings_recommend_night_shooting_txt">Trykk her for å bruke Nattmodus</string>
+    <string name="cam_strings_recording_txt">SPILLER INN</string>
+    <string name="cam_strings_remember_geotag_title_txt">Lagre sted?</string>
+    <string name="cam_strings_remember_geotag_txt">Merk bildene og videoene dine med stedene der de er tatt. Du kan endre denne innstillingen senere fra Lagre sted i kamerainnstillingene.</string>
+    <string name="cam_strings_remote_touch_to_start_txt">Ta hurtig her for å starte</string>
+    <string name="cam_strings_reset_color_brightness_txt">Tilbakestill farger og lysstyrke</string>
+    <string name="cam_strings_reset_settings_confirm_title_txt">Tilbakestille kamerainnstillinger til standard?</string>
+    <string name="cam_strings_reset_settings_txt">Nullstill innstillinger</string>
+    <string name="cam_strings_reset_txt">Tilbakestill</string>
+    <string name="cam_strings_resolution_title_txt">Oppløsning</string>
+    <string name="cam_strings_resolution_txt">Oppløsning</string>
+    <string name="cam_strings_restricted_mf_touchfocus_txt">Du må endre fokusinnstillingen til AF for å bruke berøringsfokus</string>
+    <string name="cam_strings_restricted_setting_dialog_title_txt">Kan ikke endre</string>
+    <string name="cam_strings_restricted_setting_photo_long_shutter_speed_txt">Denne innstillingen støtter ikke den gjeldende lukkerhastigheten. Hvis du vil endre innstillingen, må du endre lukkerhastigheten til 1 sekund eller mindre.</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_or_scene_txt">Denne innstillingen støttes ikke for den gjeldende oppløsningen eller scenen. Du må endre oppløsning eller scenevalg for å konfigurere innstillingen.</string>
+    <string name="cam_strings_restricted_setting_photo_resolution_txt">Denne innstillingen støtter ikke den gjeldende stillbildestørrelsen. Du må endre stillbildestørrelsen for å konfigurere innstillingen.</string>
+    <string name="cam_strings_restricted_setting_scene_txt">Denne innstillingen støttes ikke for den gjeldende scenen. Du må endre scenevalg for å konfigurere innstillingen.</string>
+    <string name="cam_strings_restricted_setting_slow_motion_txt">Klarte ikke å endre videostørrelse i sakte film-modus. Avslutt sakte film-modus for å konfigurere denne innstillingen.</string>
+    <string name="cam_strings_restricted_setting_transfer_and_tagging_txt">Denne innstillingen er ikke tilgjengelig når Transfer &amp; Tagging add-on-modusen er slått på. Du må slå av Transfer &amp; Tagging add-on-modusen for å endre denne innstillingen.</string>
+    <string name="cam_strings_restricted_setting_video_hdr_hlg_txt">Denne innstillingen er ikke tilgjengelig hvis HDR er slått på. Slå av HDR for å konfigurere den.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_or_scene_txt">Denne innstillingen støttes ikke for den gjeldende videooppløsningen eller scenen. Du må endre videooppløsning eller scenevalg for å konfigurere innstillingen.</string>
+    <string name="cam_strings_restricted_setting_video_resolution_txt">Denne innstillingen støttes ikke for den gjeldende videostørrelsen. Du må endre videostørrelse for å konfigurere innstillingen.</string>
+    <string name="cam_strings_restriction_info_correction_for_distortion_txt">Linsekorrigering er ikke tilgjengelig mens Bokeh-effekten brukes</string>
+    <string name="cam_strings_restriction_information_txt">Avhengig av denne innstillingen, kan følgende funksjoner være deaktivert eller modifisert automatisk:</string>
+    <string name="cam_strings_runtime_permission_continue_button_txt">APPINFO</string>
+    <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s krever følgende rettighet(er)</string>
+    <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s-rettighet</string>
+    <string name="cam_strings_runtime_permission_dialog2_message1_txt">Appen krever følgende rettighet(er) for å utføre denne handlingen.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Gå til Appinfo > Rettigheter for å gi rettigheter.</string>
+    <string name="cam_strings_runtime_permission_dialog2_title_txt">Kunne ikke fortsette</string>
+    <string name="cam_strings_runtime_permission_rationale_camera_txt">For å ta bilder og videoer</string>
+    <string name="cam_strings_runtime_permission_rationale_location_txt">For å hente posisjon</string>
+    <string name="cam_strings_runtime_permission_rationale_microphone_txt">For å spille inn lyd</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_cta_txt">For å lese og lagre bilder og videoer</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_txt">For å lagre bilder og videoer</string>
+    <string name="cam_strings_s1_settings_txt">AF med utløser</string>
+    <string name="cam_strings_save_destination_ims_txt">Intern lagring</string>
+    <string name="cam_strings_save_destination_sd_txt">SD-kort</string>
+    <string name="cam_strings_save_destination_title_txt">Datalagring</string>
+    <string name="cam_strings_save_destination_txt">Datalagring</string>
+    <string name="cam_strings_saving_files_txt">Lagrer filer</string>
+    <string name="cam_strings_scene_selection_title_cy_txt">Scenevalg</string>
+    <string name="cam_strings_scenes_anti_motion_blur_cy_txt">Bevegelsesstabilisering</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_portrait_cy_txt">Motlysportrett</string>
+    <string name="cam_strings_scenes_auto_recog_backlight_txt">Motlys</string>
+    <string name="cam_strings_scenes_auto_recog_gourmet_txt">Gourmet</string>
+    <string name="cam_strings_scenes_auto_recog_infant_cy_txt">Spedbarn</string>
+    <string name="cam_strings_scenes_auto_recog_landscape_txt">Landskap</string>
+    <string name="cam_strings_scenes_auto_recog_low_light_cy_txt">Svakt lys</string>
+    <string name="cam_strings_scenes_auto_recog_softsnap_cy_txt">Mykt snapshot</string>
+    <string name="cam_strings_scenes_auto_recog_spotlight_cy_txt">Søkelys</string>
+    <string name="cam_strings_scenes_auto_recog_text_txt">Dokument</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_portrait_cy_txt">Nattportrett</string>
+    <string name="cam_strings_scenes_auto_recog_twilight_txt">Nattscene</string>
+    <string name="cam_strings_scenes_backlight_hdr_cy_txt">Motlyskorreksjon HDR</string>
+    <string name="cam_strings_scenes_beach_cy_txt">Strand</string>
+    <string name="cam_strings_scenes_beachsnow_txt">Strand og snø</string>
+    <string name="cam_strings_scenes_document_txt">Dokument</string>
+    <string name="cam_strings_scenes_fireworks_cy_txt">Fyrverkeri</string>
+    <string name="cam_strings_scenes_gurumet_cy_txt">Gourmet</string>
+    <string name="cam_strings_scenes_handheld_twilight_cy_txt">Håndholdt skumring</string>
+    <string name="cam_strings_scenes_high_sensitivity_cy_txt">Høy følsomhet</string>
+    <string name="cam_strings_scenes_landscape_txt">Landskap</string>
+    <string name="cam_strings_scenes_nightmode_txt">Natt</string>
+    <string name="cam_strings_scenes_nightportrait_cy_txt">Nattportrett</string>
+    <string name="cam_strings_scenes_nightscene_txt">Nattscene</string>
+    <string name="cam_strings_scenes_party_txt">Fest</string>
+    <string name="cam_strings_scenes_pet_cy_txt">Kjæledyr</string>
+    <string name="cam_strings_scenes_pets_txt">Kjæledyr</string>
+    <string name="cam_strings_scenes_snow_cy_txt">Snø</string>
+    <string name="cam_strings_scenes_soft_skin_cy_txt">Myke hudtoner</string>
+    <string name="cam_strings_scenes_soft_snap_cy_txt">Mykt snapshot</string>
+    <string name="cam_strings_scenes_sports_txt">Sport</string>
+    <string name="cam_strings_scenes_txt">Scener</string>
+    <string name="cam_strings_screen_pinned_txt">Skjermbildet er festet</string>
+    <string name="cam_strings_sd_permission_data_storage_info_txt">Lagret på intern lagring</string>
+    <string name="cam_strings_sd_permission_dialog_continue_button_txt">NESTE</string>
+    <string name="cam_strings_sd_permission_dialog_message1_txt">Appen krever følgende rettighet(er) for å utføre denne handlingen.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Hvis du vil bruke et SD-kort, trenger kameraet tillatelse for tilgang til SD-kortet.
+Endre datalagring til SD-kortet igjen, eller tillat kameraet tilgang til SD-kortet på neste skjermbilde."</string>
+    <string name="cam_strings_sd_permission_dialog_title_txt">SD-kort er ikke tilgjengelig</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Det har blitt oppdaget et nytt SD-kort som krever tillatelser.
+
+Velg SD-kortet eller DCIM-mappen på neste skjermbilde for å bruke SD-kortet til datalagring."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD-kortet eller DCIM-mappen ble ikke valgt. SD-kortet kan ikke brukes.
+
+For å gi tillatelser start med å endre lagringsstedet til SD-kortet, eller velg den aktuelle mappen på det neste skjermbildet."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Det ble oppdaget et nytt SD-kort som krever tillatelser.
+Intern lagring brukes derfor som standard lagringsplass i stedet.
+
+Hvis du vil bruke SD-kortet som lagringsplass, må du gå til kamerainnstillingene og endre lagringsalternativet til SD-kortet."</string>
+    <string name="cam_strings_sd_permission_rationale_txt">For å lagre bilder og videoer på SD-kort</string>
+    <string name="cam_strings_select_picture_txt">Velg bilde</string>
+    <string name="cam_strings_self_timer_05_txt">0,5 sek</string>
+    <string name="cam_strings_self_timer_10_pro_txt">Selvutløser: 10 sek</string>
+    <string name="cam_strings_self_timer_10_txt">10 sek</string>
+    <string name="cam_strings_self_timer_2_txt">2 sek</string>
+    <string name="cam_strings_self_timer_3_pro_txt">Selvutløser: 3 sek</string>
+    <string name="cam_strings_self_timer_3_txt">3 sek</string>
+    <string name="cam_strings_self_timer_front_hint_10_txt">Selvutløser: 10 sek</string>
+    <string name="cam_strings_self_timer_front_hint_3_txt">Selvutløser: 3 sek</string>
+    <string name="cam_strings_self_timer_front_hint_off_txt">Selvutløser: av</string>
+    <string name="cam_strings_self_timer_hint_countdown_txt">Hold fokus på kameraet</string>
+    <string name="cam_strings_self_timer_photo_txt">Selvutløser (stillbilder)</string>
+    <string name="cam_strings_self_timer_txt">Selvutløser</string>
+    <string name="cam_strings_setting_common_title_txt">Vanlige</string>
+    <string name="cam_strings_setting_front_manual_title_txt">Manuell (front)</string>
+    <string name="cam_strings_setting_front_photo_title_txt">Bilde (front)</string>
+    <string name="cam_strings_setting_front_video_title_txt">Video (front)</string>
+    <string name="cam_strings_setting_main_title_txt">Kamerainnstillinger</string>
+    <string name="cam_strings_setting_manual_title_txt">Manuell</string>
+    <string name="cam_strings_setting_night_mode_title_txt">Nattmodus-innstillinger</string>
+    <string name="cam_strings_setting_night_shooting_title_txt">Nattmodus-innstillinger</string>
+    <string name="cam_strings_setting_photo_title_txt">Bilde</string>
+    <string name="cam_strings_setting_slow_motion_title_txt">Sakte film</string>
+    <string name="cam_strings_setting_tele_title_txt">Bilde (telelinse)</string>
+    <string name="cam_strings_setting_tele_video_title_txt">Video (telelinse)</string>
+    <string name="cam_strings_setting_video_title_txt">Video</string>
+    <string name="cam_strings_setting_wide_title_txt">Foto (ultravidvinkel)</string>
+    <string name="cam_strings_setting_wide_video_title_txt">Video (ultravidvinkel)</string>
+    <string name="cam_strings_settings_always_on_txt">Alltid på</string>
+    <string name="cam_strings_settings_auto_txt">Auto</string>
+    <string name="cam_strings_settings_off_txt">Av</string>
+    <string name="cam_strings_settings_on_txt">På</string>
+    <string name="cam_strings_settings_save_photos_all_txt">Alle bilder</string>
+    <string name="cam_strings_settings_save_photos_one_txt">Valgt bilde</string>
+    <string name="cam_strings_settings_save_photos_txt">Lagre</string>
+    <string name="cam_strings_shortcut_video_camera_txt">Videokamera</string>
+    <string name="cam_strings_shutter_trigger_txt">Automat. bildetaking</string>
+    <string name="cam_strings_side_sense_bar_description_txt">"Du kan ta bilder eller videoer ved å dobbelttrykke på sensoren på kanten av skjermen i stedet for utløserknappen. 
+Denne funksjonen er kompatibel både med foto- og videomodus.
+
+Funksjonen kan ikke brukes mens Betjen på indre kant av skjermen er slått på under Konfigurer berøringsposisjon i Sidesans-innstillingene."</string>
+    <string name="cam_strings_side_sense_description_txt">"Du kan ta et bilde eller video enkelt ved å dobbelttrykke på sensoren på siden av skjermen i stedet for utløserknappen.
+Både bilde- og videomodus støtter denne funksjonen."</string>
+    <string name="cam_strings_side_touch_not_supported_txt">Sidesans støttes ikke på denne enheten</string>
+    <string name="cam_strings_side_touch_on_title_txt">Sidesans</string>
+    <string name="cam_strings_side_touch_on_txt">Hvis du vil bruke denne funksjonen, gå til Innstillinger > Skjerm og slå på Sidesans. Aktivere nå?</string>
+    <string name="cam_strings_side_touch_tutorial_title_txt">Sidesans</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Du kan ta et bilde eller en video enkelt ved å dobbelttrykke på sensoren på siden av skjermen i stedet for utløserknappen. Du kan også zoome inn eller ut ved å skyve fingeren langs denne sidesensoren.
+Både bilde- og videomodus støtter denne funksjonen. Du kan slå den av fra Sidesans i kamerainnstillingene."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Du kan ta et bilde eller en video enkelt ved å dobbelttrykke på sensoren på siden av skjermen i stående visning i stedet for utløserknappen. Du kan også zoome inn eller ut ved å skyve fingeren langs denne sidesensoren.
+Både bilde- og videomodus støtter denne funksjonen. Du kan slå den av fra Sidesans i kamerainnstillingene."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Du kan ta et bilde eller en video enkelt ved å dobbelttrykke på sensoren på siden av skjermen i visning format uten å trykke på utløserknappen.
+Både bilde- og videomodus støtter denne funksjonen. Du kan slå den av fra Sidesans i kamerainnstillingene."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Du kan ta et bilde eller en video enkelt ved å dobbelttrykke på sensoren på siden av skjermen i stedet for utløserknappen.
+Både bilde- og videomodus støtter denne funksjonen. Du kan slå den av fra Sidesans i kamerainnstillingene."</string>
+    <string name="cam_strings_side_touch_txt">Sidesans</string>
+    <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Innspillingsstil og skjermoppløsning kan endres i Kamera-innstillinger</string>
+    <string name="cam_strings_slow_motion_settings_shot_txt">Super-sakte film (ett opptak)</string>
+    <string name="cam_strings_slow_motion_settings_standard_txt">Sakte film</string>
+    <string name="cam_strings_slow_motion_settings_super_txt">Super-sakte film</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Du kan endre bps og innspillingsstilen for sakte film</string>
+    <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Flere valg</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Spill inn umiddelbart et viktig øyeblikk i %1$s bps sakte film ved å trykke på knappen i midten av skjermen.
+Innspilling under lyse forhold vil bidra til en bedre video."</string>
+    <string name="cam_strings_slow_motion_shot_hint_1_txt">Du kan spille inn det rette øyeblikket med %1$s BPS ved å trykke på knappen i midten.</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Spill inn umiddelbart et viktig øyeblikk i %1$s bps sakte film ved å trykke på knappen i midten av skjermen</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Super-sakte film (ett opptak)</string>
+    <string name="cam_strings_slow_motion_shot_txt">Super-sakte film (ett opptak)</string>
+    <string name="cam_strings_slow_motion_standard_hint_1_txt">Spill inn video med %1$s BPS og legg på effekter for sakte film</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_1_txt">Du kan spille inn en video i 120 bps sakte film</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_2_txt">Spill inn en video og rediger den for å gjøre enkelte deler til sakte film. Trykk på knappen i midten av skjermen for å angi delene som sakte film.</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Sakte film</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Slik spiller du inn</string>
+    <string name="cam_strings_slow_motion_standard_txt">Sakte film</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Lag en imponerende video ved å vise et viktig øyeblikk i sakte film.
+Innspilling under lyse forhold vil bidra til en bedre video."</string>
+    <string name="cam_strings_slow_motion_super_hint_1_txt">Du kan spille inn video med ulike hastigheter ved å bytte til %1$s bps</string>
+    <string name="cam_strings_slow_motion_super_hint_2_txt">Trykk på knappen i midten i det rette øyeblikket</string>
+    <string name="cam_strings_slow_motion_super_hint_3_txt">Sakte film spilt inn</string>
+    <string name="cam_strings_slow_motion_super_tutorial_1_txt">Lag en imponerende video ved å vise et viktig øyeblikk i sakte film</string>
+    <string name="cam_strings_slow_motion_super_tutorial_2_txt">Start videoinnspillingen ved å trykk på spill inn-knappen</string>
+    <string name="cam_strings_slow_motion_super_tutorial_3_txt">Trykk på knappen i midten av skjermen for å spille inn i sakte film. Trykk på stopp-knappen for å stoppe.</string>
+    <string name="cam_strings_slow_motion_super_tutorial_title_1_txt">Super-sakte film</string>
+    <string name="cam_strings_slow_motion_super_txt">Super-sakte film</string>
+    <string name="cam_strings_slow_motion_txt">Sakte film-modus</string>
+    <string name="cam_strings_smile_capture_big_txt">Stort smil</string>
+    <string name="cam_strings_smile_capture_faint_txt">Lite smil</string>
+    <string name="cam_strings_smile_capture_normal_txt">Middels smil</string>
+    <string name="cam_strings_smile_capture_txt">Smiloppdaging</string>
+    <string name="cam_strings_smile_shutter_cy_txt">Smilutløser</string>
+    <string name="cam_strings_smile_shutter_title_cy_txt">Smilutløser</string>
+    <string name="cam_strings_snackbar_dependency_button_txt">Detaljer</string>
+    <string name="cam_strings_snackbar_dependency_info_txt">Denne endringen påvirket andre innstillinger</string>
+    <string name="cam_strings_soft_skin_effect_cy_txt">Myke hudtoner-effekt</string>
+    <string name="cam_strings_soft_skin_effect_title_cy_txt">Myke hudtoner-effekt</string>
+    <string name="cam_strings_standard_txt">Standard</string>
+    <string name="cam_strings_steadyshot_cy_txt">SteadyShot™</string>
+    <string name="cam_strings_step_tutorial_title_txt">Trinn %1$s av %2$s</string>
+    <string name="cam_strings_store_fail_txt">Kunne ikke lagre</string>
+    <string name="cam_strings_superior_auto_brightness_txt">Lysstyrke</string>
+    <string name="cam_strings_superior_auto_color_txt">Farge</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_title_txt">Dobbelt kamera</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_txt">Du kan ta vakre bilder med lite støy ved å bruke dobbelt kamera, også om natten eller i et rom med dårlig belysning. Kameraet bytter automatisk mellom enkelt kamera og dobbelt kamera basert på motivene som skal tas, med ultrahøy følsomhet.</string>
+    <string name="cam_strings_sw_licence_title_txt">Programvarelisenser</string>
+    <string name="cam_strings_take_photo_txt">Ta foto</string>
+    <string name="cam_strings_term_of_use_accept_txt">Godta</string>
+    <string name="cam_strings_term_of_use_consent_txt">Jeg godtar Sonys &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">vilkår for bruk&lt;/a>.</string>
+    <string name="cam_strings_term_of_use_data_charge_txt">Når du bruker denne tjenesten, kan det medføre kostnader for datatrafikk, avhengig av abonnementet du har.</string>
+    <string name="cam_strings_term_of_use_data_collection_txt">Sony kommer til å innhente den nøkkeltransformerte unike Android-ID-enhetsidentifikatoren din, stedsbaserte data og tidsstempel for å gi deg passende resultater som en del av tjenesten og for tjenesteforbedringer.</string>
+    <string name="cam_strings_term_of_use_decline_txt">Avvis</string>
+    <string name="cam_strings_term_of_use_title_txt">Vilkår for bruk</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Vilkår for bruk&lt;/a></string>
+    <string name="cam_strings_timeshift_cancel_selection_txt">Fjern valg av bilder</string>
+    <string name="cam_strings_timeshift_operation_failed_txt">Kunne ikke lagre</string>
+    <string name="cam_strings_timeshift_save_complete_txt">Lagret</string>
+    <string name="cam_strings_timeshift_save_selection_txt">Lagre separat</string>
+    <string name="cam_strings_timeshift_select_images_txt">Velg bilder</string>
+    <string name="cam_strings_timeshift_share_txt">Del</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Koblet til %1$s</string>
+    <string name="cam_strings_touch_capturing_always_txt">På</string>
+    <string name="cam_strings_touch_capturing_only_front_txt">Bare frontkamera</string>
+    <string name="cam_strings_touch_capturing_title_txt">Berøringsopptak</string>
+    <string name="cam_strings_touch_focus_in_manual_focus_txt">Hvis du vil bruke Berøringsfokus, endrer du innstillingen til AF (autofokus).</string>
+    <string name="cam_strings_touch_to_adjust_description_txt">Velg det du vil justere når du berører søkeren</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_focus_and_exposure_txt">Fokus og lysstyrke</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_only_focus_txt">Kun fokus</string>
+    <string name="cam_strings_touch_to_focus_adjust_exposure_txt">Trykk for å justere</string>
+    <string name="cam_strings_transfer_and_tagging_description_txt">"Ved å slå på denne funksjonen kan Transfer &amp; Tagging add-on vise bilder tatt med Xperia-kameraet. Bildene lagres i intern lagring.
+Denne funksjonen er kompatibel med bilder tatt i fotomodus og manuell modus."</string>
+    <string name="cam_strings_transfer_and_tagging_txt">Transfer &amp; Tagging add-on-modus</string>
+    <string name="cam_strings_tutorial_bright_place_txt">Innspilling under lyse forhold vil bidra til en bedre video</string>
+    <string name="cam_strings_tutorial_button_next_txt">Neste</string>
+    <string name="cam_strings_tutorial_button_skip_txt">Hopp over</string>
+    <string name="cam_strings_tutorial_button_txt">Skjønner</string>
+    <string name="cam_strings_tutorial_title_txt">Veksle modus</string>
+    <string name="cam_strings_tutorial_txt">Sveip for å bytte til en annen opptaksmodus, f.eks. Video eller Manuell</string>
+    <string name="cam_strings_unable_to_operate_txt">Kan ikke gjøre dette mens bilder lagres</string>
+    <string name="cam_strings_unlock_button_txt">Lås opp</string>
+    <string name="cam_strings_use_of_camera_not_authorized_txt">Bruk av kameraet er begrenset av sikkerhetsårsaker</string>
+    <string name="cam_strings_video_backlight_correction_description_txt">Hvis du slår på denne innstillingen, kan du automatisk ta opp video med optimal eksponering – selv i motlyssituasjoner.</string>
+    <string name="cam_strings_video_backlight_correction_txt">Korrigering av motlys i video</string>
+    <string name="cam_strings_video_codec_for_4k_txt">Opptaksfiltype</string>
+    <string name="cam_strings_video_digital_zoom_type_description_txt">"Velg en innstilling for digital zoom i video.
+
+Standard digital zoom: Zoom med digital behandling basert på bildets sensordata.
+Zoom med superoppløsning i video: Zoom med digital behandling som beholder mer av den opprinnelige bildekvaliteten. Det kan ta mer tid å lagre videoer."</string>
+    <string name="cam_strings_video_digital_zoom_type_super_resolution_txt">Zoom med superoppløsning i video</string>
+    <string name="cam_strings_video_digital_zoom_type_txt">Innstillinger for digital zoom i video</string>
+    <string name="cam_strings_video_explanatory_4k2k_setting_txt">For stabil innspilling av 4K-video må du ikke endre denne innstillingen, bortsett fra hvis du bruker et SD-kort med høy hastighet (UHS hastighetsklasse 1 eller høyere, eller hastighetsklasse 10 anbefales).</string>
+    <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">For stabil innspilling av Timeshift video må du ikke endre denne innstillingen, bortsett fra hvis du bruker et SD-kort med høy hastighet (UHS hastighetsklasse 1 eller høyere, eller hastighetsklasse 10 anbefales). Endre likevel?</string>
+    <string name="cam_strings_video_explanatory_slowmotion_setting_txt">For stabil innspilling av video i sakte film må du ikke endre denne innstillingen, bortsett fra hvis du bruker et SD-kort med høy hastighet (UHS hastighetsklasse 1 eller høyere, eller hastighetsklasse 10 anbefales).</string>
+    <string name="cam_strings_video_explanatory_txt">"For stabil videoinnspilling anbefaler vi at du endrer lagringsplassen til intern lagring. Vil du endre det nå?
+
+Hvis du fortsetter å bruke SD-kortet til datalagring, er det viktig at du bruker et SD-kort med høy hastighet (UHS hastighetsklasse 1 eller høyere eller hastighetsklasse 10 anbefales)."</string>
+    <string name="cam_strings_video_fusion_tutorial_0_title_txt">Dobbelt kamera</string>
+    <string name="cam_strings_video_fusion_tutorial_0_txt">Du kan spille inn vakre videoer med lite støy ved å bruke dobbelt kamera, også om natten eller i et rom med dårlig belysning. Kameraet bytter automatisk mellom enkelt kamera og dobbelt kamera basert på motivene som skal spilles inn med ultrahøy følsomhet.</string>
+    <string name="cam_strings_video_fusion_tutorial_1_title_txt">Videoopptak med dobbelt kamera</string>
+    <string name="cam_strings_video_fusion_tutorial_1_txt">Hold en avstand på minst 1 meter fra objektet når du tar opp med dobbelt kamera. Hvis du kommer for nær objektet, kan det oppstå en forskyvning av visningspunkt eller farge når du tar opp med ultrahøy følsomhet.</string>
+    <string name="cam_strings_video_fusion_tutorial_2_title_txt">Bruke dobbelt kamera til videoopptak?</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">Hvis du vil ta flotte nærbilder, trykker du på Nei og bytter til enkelt kamera. Du kan bytte tilbake til dobbelt kamera når som helst ved å trykke på knappen på søkeren.</string>
+    <string name="cam_strings_video_hdr_hlg_txt">HDR er på</string>
+    <string name="cam_strings_video_hdr_setting_hlg_txt">HDR</string>
+    <string name="cam_strings_video_hdr_title_txt">HDR video</string>
+    <string name="cam_strings_video_hdr_txt">HDR video</string>
+    <string name="cam_strings_video_resolution_4k_file_type_txt">Filformat (4K)</string>
+    <string name="cam_strings_video_resolution_full_hd_16_9_60fps_txt">Full HD (16:9 60 bps)</string>
+    <string name="cam_strings_video_resolution_full_hd_30fps_txt">Full HD (30 bps)</string>
+    <string name="cam_strings_video_resolution_full_hd_60fps_txt">Full HD (60 bps)</string>
+    <string name="cam_strings_video_resolution_full_hd_frame_rate_txt">Bildehastighet (Full HD)</string>
+    <string name="cam_strings_video_resolution_full_hd_super_slow_desc_txt">Spiller inn et bredere område på halve innspillingstiden, til forskjell fra HD.</string>
+    <string name="cam_strings_video_resolution_full_hd_txt">Full HD</string>
+    <string name="cam_strings_video_resolution_hd_super_slow_desc_txt">Spiller inn et smalere område på doble innspillingstiden, til forskjell fra Full HD.</string>
+    <string name="cam_strings_video_resolution_hd_txt">HD</string>
+    <string name="cam_strings_video_resolution_mms_txt">MMS</string>
+    <string name="cam_strings_video_resolution_qvga_txt">QVGA</string>
+    <string name="cam_strings_video_resolution_title_txt">Videooppløsning</string>
+    <string name="cam_strings_video_resolution_txt">Video-oppløsning</string>
+    <string name="cam_strings_video_resolution_vga_txt">VGA</string>
+    <string name="cam_strings_video_shutter_trigger_txt">Automatisk opptak (video)</string>
+    <string name="cam_strings_video_size_4kuhd_txt">4K (QFHD)</string>
+    <string name="cam_strings_video_size_full_hd_16_9_txt">Full HD (16:9)</string>
+    <string name="cam_strings_video_size_full_hd_21_9_txt">Full HD (21:9)</string>
+    <string name="cam_strings_video_size_full_hd_txt">Full HD</string>
+    <string name="cam_strings_video_size_txt">Filmstørrelse</string>
+    <string name="cam_strings_video_smile_shutter_txt">Smilutløser (video)</string>
+    <string name="cam_strings_video_stabilizer_txt">Videostabilisering</string>
+    <string name="cam_strings_volumekey_shutter_txt">Lukker</string>
+    <string name="cam_strings_volumekey_txt">Bruk volumknappen som</string>
+    <string name="cam_strings_volumekey_volume_txt">Volum</string>
+    <string name="cam_strings_volumekey_zoom_txt">Zoom</string>
+    <string name="cam_strings_white_balance_auto_txt">Auto</string>
+    <string name="cam_strings_white_balance_cloudy_txt">Overskyet</string>
+    <string name="cam_strings_white_balance_day_light_txt">Dagslys</string>
+    <string name="cam_strings_white_balance_fluorescent_txt">Fluorescerende</string>
+    <string name="cam_strings_white_balance_incandescent_txt">Glødelampe</string>
+    <string name="cam_strings_white_balance_title_txt">Hvitbalanse</string>
+    <string name="cam_strings_white_balance_txt">Hvitbalanse</string>
+    <string name="cam_strings_whitebalance_custom1_txt">Egendefinert 1</string>
+    <string name="cam_strings_whitebalance_custom2_txt">Egendefinert 2</string>
+    <string name="cam_strings_whitebalance_custom3_txt">Egendefinert 3</string>
+    <string name="cam_strings_whitebalance_shde_txt">Skygge</string>
+    <string name="cam_strings_zoom_frames_description_txt">"Hvis du slår på denne innstillingen, kan du forhåndsvise hvordan den vil se ut når du zoomer inn.
+Sentrer motivet i en ramme og trykk på zoomforholdet for enkelt å zoome inn."</string>
+    <string name="cam_strings_zoom_frames_txt">Zoomkomposisjonshjelp</string>
+    <string name="cam_strings_zoom_help_txt">Bruk volumknappen til å zoome inn/ut</string>
+    <string name="cam_strings_zoom_not_supported_in_bokeh_effect_txt">Kan ikke zoome mens Bokeh-effekten brukes</string>
+    <string name="cam_strings_zoom_not_supported_in_front_txt">Kan ikke zoome med frontkameraet</string>
+    <string name="cam_strings_zoom_not_supported_in_widecam_txt">Kan ikke zoome med ultravidvinkellinse</string>
+    <string name="cam_strings_zoom_not_supported_txt">Kan ikke zoome nå</string>
+    <string name="expand_button_title">Avansert</string>
+    <string name="photopro_strings_multi_or_popup_window_txt">Kan ikke bruke kameraet i Flervindu eller popup-vindu. Lukk vinduet, og prøv igjen. Hvis du bruker Flervindu, kan du dra midten av den delte linjen for å vise kameraet i fullskjerm.</string>
+    <string name="search_menu_title">Søk</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="v7_preference_off">AV</string>
+    <string name="v7_preference_on">PÅ</string>
+</resources>

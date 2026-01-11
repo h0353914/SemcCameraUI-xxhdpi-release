@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"Mreža
+Da biste se povezali sa WLAN mrežom"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"Želite da se povežete na %1$s?
+Tapnite na DETALJI za informacije o ovoj WLAN mreži."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"WLAN je isključen i uključen je režim rada u avionu.
+Promenite ova podešavanja tako što ćete tapnuti na PODEŠAVANJA."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"WLAN je isključen.
+Uključite WLAN iz PODEŠAVANJA."</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">Uključivanje WLAN veze</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">Koristi WLAN i mob. podatke</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">Povezivanje na WLAN nije uspelo</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">Detalji WLAN mreže</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">Nije moguće povezati se na WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Na ovoj WLAN mreži postoje bezbednosni rizici</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Povezivanje na WLAN</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"Možete brzo da pristupite vebu ili da se povežete sa WLAN mrežom skenirajući QR Code.
+Ova funkcija je aktivna dok ste u foto režimu. Podešavanje možete da promenite iz čitača za QR Code u podešavanjima kamere."</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Xperia uređaj ne može da se poveže sa Sony WLAN/NFC kamerom kada je povezan sa drugim Xperia uređajem.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">Ovaj režim je nedostupan tokom WLAN povezivanje računara sa internetom putem mobilnog telefona.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Sa Xperia uređajem može da bude povezana samo jedna Sony WLAN/NFC kamera.</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Sony WLAN/NFC kamera</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Xperia uređaj ne može da se poveže sa drugim Xperia uređajem kada je povezan sa Sony WLAN/NFC kamerom.</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Nije moguće povezati se na ovu WLAN mrežu</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Tapnite i povežite se na WLAN „%1$s“</string>
+</resources>

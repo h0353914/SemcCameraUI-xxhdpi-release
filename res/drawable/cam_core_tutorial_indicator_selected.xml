@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:height="16.0dip" android:width="16.0dip" android:viewportWidth="48.0" android:viewportHeight="48.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="@color/tutorial_indicator_selected_color" android:pathData="             M40,24 A 16,16 0 1 0 8,24             M40,24 A 16,16 0 1 1 8,24" />
+</vector>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"الشبكة
+للاتصال بشبكة WLAN"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"الاتصال بـ %1$s؟
+انقر على تفاصيل لعرض معلومات حول شبكة WLAN هذه."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"تم إيقاف شبكة WLAN وتشغيل وضع الطائرة.
+يرجى تغيير هذه الإعدادات عن طريق النقر على الإعدادات."</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"تم إيقاف شبكة WLAN.
+يرجى تشغيل شبكة WLAN من الإعدادات."</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">تشغيل WLAN</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">استخدام WLAN وبيانات نقال</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">فشل الاتصال بشبكة WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">تفاصيل WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">لا يمكن الاتصال بشبكة WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">تنطوي شبكة WLAN هذه على مخاطر أمنية</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">الاتصال بـ WLAN</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"يمكنك الوصول سريعًا إلى الويب أو الاتصال بشبكة WLAN عن طريق مسح QR Code.
+يتم تنشيط هذه الوظيفة أثناء تشغيل وضع الصور. ويمكنك تغيير هذا الإعداد من قارئ QR Code ضمن إعدادات الكاميرا."</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">لا يمكن التوصيل بأي كاميرا WLAN/NFC من Sony عندما يكون جهازXperia متصلاً بجهاز Xperia آخر.</string>
+    <string name="cam_strings_multicam_error_wifi_txt">هذا الوضع غير متوفر أثناء ربط WLAN.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">يمكن توصيل كاميرا WLAN/NFC من Sony واحدة فقط بجهاز Xperia في المرة.</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">كاميرا WLAN/NFC من Sony</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">لا يمكن التوصيل بأي جهازXperia عندما يكون جهازXperia متصلاً بكاميرا WLAN/NFC من Sony.</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">لا يمكن الاتصال بشبكة WLAN هذه</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">انقر للاتصال بشبكة WLAN \"%1$s\"</string>
+</resources>

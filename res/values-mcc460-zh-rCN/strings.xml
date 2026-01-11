@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cam_strings_dialog_body_applicationnotification_network_txt">"网络
+连接到WLAN"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_txt">"连接到%1$s？
+点按“详细信息”可查看有关此WLAN网络的信息。"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_airplane_on_txt">"WLAN已关闭，飞行模式已开启。
+请通过点按“设定”来更改这些设定。"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"WLAN已关闭。
+请从“设定”中开启WLAN。"</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">打开WLAN</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">使用WLAN和移动数据</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_error_txt">未能连接到WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_details_txt">WLAN详细信息</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_error_txt">无法连接到WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">此WLAN网络存在安全风险</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">连接到WLAN</string>
+    <string name="cam_strings_feature_qrcode_detection_description_txt">"您可以通过扫描二维码快速访问Web或连接到WLAN。
+在照片模式下，此功能有效。您可以从相机设定中的二维码扫一扫更改此设定。"</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">当Xperia与另一部Xperia连接时，无法连接到索尼的WLAN/NFC相机。</string>
+    <string name="cam_strings_multicam_error_wifi_txt">此模式在WLAN网络共享中不可用。</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">一次只能将一台索尼的WLAN/NFC相机与Xperia相连。</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">索尼的WLAN/NFC相机</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">当Xperia与索尼的WLAN/NFC相机连接时，无法连接到任何Xperia。</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">无法连接到此WLAN网络</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">点按以连接到WLAN网络“%1$s”</string>
+</resources>

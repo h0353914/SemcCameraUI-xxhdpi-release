@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="right" android:orientation="horizontal" android:id="@id/simple_iq_control_indicator_view" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layoutDirection="rtl"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:layoutDirection="rtl">
+        <ImageView android:id="@id/simple_iq_control_expand_button" android:background="@drawable/simple_iq_control_button_icon_bg" android:visibility="invisible" android:clickable="true" android:layout_width="@dimen/seek_bar_view_button_width" android:layout_height="@dimen/seek_bar_view_button_height" android:layout_marginTop="@dimen/simple_iq_control_view_button_margin_to_parent" android:layout_marginBottom="@dimen/simple_iq_control_view_button_margin_to_siblings" android:src="@drawable/cam_core_color_brightness_controls_button_more_icn" android:scaleType="center" android:layout_alignParentTop="true" android:contentDescription="@string/cam_strings_accessibility_open_color_button_txt" />
+        <ImageView android:id="@id/simple_iq_control_reset_button" android:background="@drawable/simple_iq_control_button_icon_bg" android:visibility="invisible" android:clickable="true" android:layout_width="@dimen/seek_bar_view_button_width" android:layout_height="@dimen/seek_bar_view_button_height" android:layout_marginTop="@dimen/simple_iq_control_view_button_margin_to_siblings" android:layout_marginBottom="@dimen/simple_iq_control_view_button_margin_to_parent" android:src="@drawable/cam_core_color_brightness_controls_button_reset_icn" android:scaleType="center" android:layout_alignParentBottom="true" android:contentDescription="@string/cam_strings_reset_txt" />
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_above="@id/simple_iq_control_reset_button" android:layout_below="@id/simple_iq_control_expand_button" android:layoutDirection="rtl">
+            <include android:id="@id/simple_iq_control_seekbar_bokeh_strength" android:layout_width="wrap_content" android:layout_height="fill_parent" layout="@layout/simple_iq_control_seekbar_view" />
+            <include android:id="@id/simple_iq_control_seekbar_brightness" android:layout_width="wrap_content" android:layout_height="fill_parent" layout="@layout/simple_iq_control_seekbar_view" />
+            <include android:id="@id/simple_iq_control_coloring" android:layout_width="wrap_content" android:layout_height="fill_parent" layout="@layout/simple_iq_control_seekbar_view" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
