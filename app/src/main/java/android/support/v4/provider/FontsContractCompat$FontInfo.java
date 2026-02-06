@@ -7,7 +7,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import android.support.v4.util.Preconditions;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FontsContractCompat$FontInfo {
     private final boolean mItalic;
     private final int mResultCode;

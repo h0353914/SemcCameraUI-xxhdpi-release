@@ -7,7 +7,6 @@ import android.support.annotation.RestrictTo$Scope;
 import android.support.v4.internal.view.SupportMenuItem;
 import android.view.ActionProvider;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(16)
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 class MenuItemWrapperJB extends MenuItemWrapperICS {

@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class FastScroller$1 implements Runnable {
     final /* synthetic */ FastScroller this$0;
 

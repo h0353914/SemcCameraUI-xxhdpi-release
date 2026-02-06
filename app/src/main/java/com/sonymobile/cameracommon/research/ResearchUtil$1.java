@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.research;
 
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class ResearchUtil$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey;
     static final /* synthetic */ int[] $SwitchMap$com$sonymobile$cameracommon$research$ResearchUtil$VideoSize = new int[ResearchUtil$VideoSize.values().length];

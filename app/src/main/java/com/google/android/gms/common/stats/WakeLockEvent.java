@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class WakeLockEvent extends zzf implements SafeParcelable {
     public static final Parcelable$Creator<WakeLockEvent> CREATOR = new zzh();
     private final long mTimeout;

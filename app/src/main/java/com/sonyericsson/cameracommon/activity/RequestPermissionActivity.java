@@ -20,7 +20,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RequestPermissionActivity extends Activity {
     private static int HIGHEST_PRIORITY = 0;
     private static int INVALID_ID = -1;

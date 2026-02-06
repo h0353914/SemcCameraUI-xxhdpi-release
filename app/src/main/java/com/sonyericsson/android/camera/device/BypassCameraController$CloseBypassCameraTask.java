@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class BypassCameraController$CloseBypassCameraTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     private static final long TIMEOUT_WAIT_FOR_ALL_SNAPSHOT_DONE_MILLIS = 30000;

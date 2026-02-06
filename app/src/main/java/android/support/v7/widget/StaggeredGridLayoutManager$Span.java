@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.view.View;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class StaggeredGridLayoutManager$Span {
     static final int INVALID_LINE = Integer.MIN_VALUE;
     final int mIndex;

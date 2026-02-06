@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import android.graphics.Point;
 import com.sonyericsson.android.camera.view.baselayout.BaseLayoutPattern;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$ViewFinderStateListener implements CaptureArea$CaptureAreaStateListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

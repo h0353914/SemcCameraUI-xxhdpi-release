@@ -1,6 +1,5 @@
 package android.support.v7.graphics.drawable;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class AnimatedStateListDrawableCompat$Transition {
     public boolean canReverse() {
         return false;

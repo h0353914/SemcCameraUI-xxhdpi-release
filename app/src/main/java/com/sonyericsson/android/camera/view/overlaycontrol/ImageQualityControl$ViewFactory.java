@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver$ScreenAspect;
 import com.sonyericsson.android.camera.view.overlaycontrol.imagequality.ImageQualityControlView;
 
-/* JADX INFO: loaded from: classes.dex */
 class ImageQualityControl$ViewFactory {
     private static final String VIEW_TAG = "Imagequalitycontrol-view";
     private final Rect mContainerRect;

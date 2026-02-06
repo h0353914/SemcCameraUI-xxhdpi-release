@@ -5,7 +5,6 @@ import android.os.Build$VERSION;
 import android.support.annotation.Nullable;
 import android.view.WindowInsets;
 
-/* JADX INFO: loaded from: classes.dex */
 public class WindowInsetsCompat {
     private final Object mInsets;
 

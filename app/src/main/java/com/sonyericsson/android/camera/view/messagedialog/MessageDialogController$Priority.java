@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.messagedialog;
 
-/* JADX INFO: loaded from: classes.dex */
 enum MessageDialogController$Priority {
     IMMEDIATELY(0),
     NORMAL(1),

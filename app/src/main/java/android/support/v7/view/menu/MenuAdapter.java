@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class MenuAdapter extends BaseAdapter {
     MenuBuilder mAdapterMenu;

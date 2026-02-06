@@ -2,7 +2,6 @@ package android.support.v7.util;
 
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface ListUpdateCallback {
     void onChanged(int i, int i2, @Nullable Object obj);
 

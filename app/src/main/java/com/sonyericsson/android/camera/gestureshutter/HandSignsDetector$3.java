@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.gestureshutter;
 
 import com.sonyericsson.android.camera.CameraActivity$LayoutOrientation;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class HandSignsDetector$3 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$CameraActivity$LayoutOrientation = new int[CameraActivity$LayoutOrientation.values().length];
 

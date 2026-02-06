@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SetRecordingMaxFaceNumTask implements Runnable {
     private final int mNum;
     final /* synthetic */ ResearchUtil this$0;

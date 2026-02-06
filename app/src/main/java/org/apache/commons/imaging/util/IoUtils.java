@@ -3,7 +3,6 @@ package org.apache.commons.imaging.util;
 import java.io.Closeable;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class IoUtils {
     public static void closeQuietly(boolean z, Closeable... closeableArr) throws IOException {
         IOException iOException = null;

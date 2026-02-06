@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.utility;
 
 import android.graphics.Rect;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ViewUtility$ScreenSize {
     WUXGA(1920, 1200),
     FULL_HD(1920, 1080),

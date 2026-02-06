@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.selectabledialog;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class ScrollContainer$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$view$selectabledialog$ScrollContainer$Status = new int[ScrollContainer$Status.values().length];
 

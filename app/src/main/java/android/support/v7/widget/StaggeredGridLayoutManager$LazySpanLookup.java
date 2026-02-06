@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class StaggeredGridLayoutManager$LazySpanLookup {
     private static final int MIN_SIZE = 10;
     int[] mData;

@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.constants;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CommonConstants {
     public static final int BUTTONTYPE_CANCEL_SELFTIMER = 3;
     public static final int BUTTONTYPE_PHOTO_CAPTURE = 0;

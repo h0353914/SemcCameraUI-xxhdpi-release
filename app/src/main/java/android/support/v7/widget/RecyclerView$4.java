@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 class RecyclerView$4 implements ViewInfoStore$ProcessCallback {
     final /* synthetic */ RecyclerView this$0;
 

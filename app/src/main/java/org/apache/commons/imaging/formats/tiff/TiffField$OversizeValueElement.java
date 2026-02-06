@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.tiff;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TiffField$OversizeValueElement extends TiffElement {
     final /* synthetic */ TiffField this$0;
 

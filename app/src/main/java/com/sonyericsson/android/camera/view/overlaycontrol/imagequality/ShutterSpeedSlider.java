@@ -4,7 +4,6 @@ import android.content.Context;
 import com.sonyericsson.android.camera.configuration.parameters.ShutterSpeed;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class ShutterSpeedSlider extends SettingItemSlider {
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider
     protected int getBackgroundImageResource(int i) {

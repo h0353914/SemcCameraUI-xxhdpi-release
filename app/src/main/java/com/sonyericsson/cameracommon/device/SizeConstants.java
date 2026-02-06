@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.device;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SizeConstants {
     public static final int HEIGHT_10MP_WIDE = 2358;
     public static final int HEIGHT_12MP = 3000;

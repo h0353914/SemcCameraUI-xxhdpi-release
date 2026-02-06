@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import com.sonymobile.cameracommon.font.FontUtil;
 import com.sonymobile.cameracommon.font.FontUtil$RobotoFontType;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class AbsPanelView extends FrameLayout {
     public static final Typeface REGULAR_ROBOTO = FontUtil.createTypeface(FontUtil$RobotoFontType.REGULAR);
 

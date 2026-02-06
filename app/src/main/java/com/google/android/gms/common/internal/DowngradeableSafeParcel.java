@@ -2,7 +2,6 @@ package com.google.android.gms.common.internal;
 
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class DowngradeableSafeParcel implements SafeParcelable {
     private static final Object zzafm = new Object();
     private static ClassLoader zzafn;

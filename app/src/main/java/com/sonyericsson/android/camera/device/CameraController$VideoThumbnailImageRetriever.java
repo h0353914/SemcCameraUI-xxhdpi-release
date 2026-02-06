@@ -4,7 +4,6 @@ import android.media.ImageReader;
 import android.os.Handler;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraController$VideoThumbnailImageRetriever implements ImageRetriever {
     private final ImageReader mImageReader;
     private final CameraDeviceHandler$CameraSessionId mSessionId;

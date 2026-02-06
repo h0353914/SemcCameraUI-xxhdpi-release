@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.capturefeedback.contextview;
 
 import com.sonymobile.cameracommon.opengl.SimpleFrame;
 
-/* JADX INFO: loaded from: classes.dex */
 class GLSurfaceContextView$SetupRelatedToSurfaceSizeTask implements Runnable {
     final /* synthetic */ GLSurfaceContextView this$0;
 

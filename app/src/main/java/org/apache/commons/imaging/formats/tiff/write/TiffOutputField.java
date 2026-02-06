@@ -8,7 +8,6 @@ import org.apache.commons.imaging.common.BinaryOutputStream;
 import org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffOutputField {
     private static final String NEWLINE = System.getProperty("line.separator");
     private byte[] bytes;

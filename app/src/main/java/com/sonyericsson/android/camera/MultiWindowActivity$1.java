@@ -4,7 +4,6 @@ import android.content.Intent;
 import com.sonyericsson.cameracommon.activity.OnActivityResultListener;
 import com.sonyericsson.cameracommon.utility.PermissionsUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class MultiWindowActivity$1 implements OnActivityResultListener {
     final /* synthetic */ MultiWindowActivity this$0;
     final /* synthetic */ String[] val$permissions;

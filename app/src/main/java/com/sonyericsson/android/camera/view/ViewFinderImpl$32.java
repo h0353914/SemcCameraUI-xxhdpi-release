@@ -21,7 +21,6 @@ import com.sonyericsson.cameracommon.storage.SavingTaskManager$SavedFileType;
 import com.sonyericsson.cameracommon.storage.Storage$StorageState;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class ViewFinderImpl$32 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$LaunchCondition$ExtraOperation;
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$NavigatorContents;

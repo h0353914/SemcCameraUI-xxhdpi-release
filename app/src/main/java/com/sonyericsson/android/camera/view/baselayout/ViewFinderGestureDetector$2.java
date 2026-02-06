@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.baselayout;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class ViewFinderGestureDetector$2 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$view$baselayout$ViewFinderGestureDetector$Direction = new int[ViewFinderGestureDetector$Direction.values().length];
 

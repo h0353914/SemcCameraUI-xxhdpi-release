@@ -8,7 +8,6 @@ import android.os.Message;
 import android.util.Log;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 class VideoTrack$CodecHandler extends Handler {
     final /* synthetic */ VideoTrack this$0;
 

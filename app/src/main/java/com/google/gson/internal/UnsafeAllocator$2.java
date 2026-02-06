@@ -2,7 +2,6 @@ package com.google.gson.internal;
 
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 class UnsafeAllocator$2 extends UnsafeAllocator {
     final /* synthetic */ Method val$newInstance;
 

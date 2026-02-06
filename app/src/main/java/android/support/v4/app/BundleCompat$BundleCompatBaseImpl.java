@@ -6,7 +6,6 @@ import android.util.Log;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 class BundleCompat$BundleCompatBaseImpl {
     private static final String TAG = "BundleCompatBaseImpl";
     private static Method sGetIBinderMethod;

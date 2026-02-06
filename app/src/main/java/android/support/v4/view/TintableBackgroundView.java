@@ -4,7 +4,6 @@ import android.content.res.ColorStateList;
 import android.graphics.PorterDuff$Mode;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface TintableBackgroundView {
     @Nullable
     ColorStateList getSupportBackgroundTintList();

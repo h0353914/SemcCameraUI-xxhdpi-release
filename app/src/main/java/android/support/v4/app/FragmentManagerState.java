@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 
 /* JADX INFO: compiled from: FragmentManager.java */
-/* JADX INFO: loaded from: classes.dex */
 final class FragmentManagerState implements Parcelable {
     public static final Parcelable$Creator<FragmentManagerState> CREATOR = new FragmentManagerState$1();
     FragmentState[] mActive;

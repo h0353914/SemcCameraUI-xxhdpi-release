@@ -6,7 +6,6 @@ import android.support.v7.appcompat.R$attr;
 import android.support.v7.widget.TintTypedArray;
 import android.util.AttributeSet;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatDelegateImpl$ActionBarDrawableToggleImpl implements ActionBarDrawerToggle$Delegate {
     final /* synthetic */ AppCompatDelegateImpl this$0;
 

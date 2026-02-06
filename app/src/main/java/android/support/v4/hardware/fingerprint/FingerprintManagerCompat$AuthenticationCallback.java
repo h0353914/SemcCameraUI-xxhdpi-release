@@ -1,6 +1,5 @@
 package android.support.v4.hardware.fingerprint;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class FingerprintManagerCompat$AuthenticationCallback {
     public void onAuthenticationError(int i, CharSequence charSequence) {
     }

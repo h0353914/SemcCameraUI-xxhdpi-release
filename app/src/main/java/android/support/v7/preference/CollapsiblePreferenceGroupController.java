@@ -4,7 +4,6 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 final class CollapsiblePreferenceGroupController {
     private final Context mContext;
     private boolean mHasExpandablePreference = false;

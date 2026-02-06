@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.tiff.write;
 import java.util.Comparator;
 import org.apache.commons.imaging.formats.tiff.TiffElement;
 
-/* JADX INFO: loaded from: classes.dex */
 class TiffImageWriterLossless$1 implements Comparator<TiffElement> {
     TiffImageWriterLossless$1() {
     }

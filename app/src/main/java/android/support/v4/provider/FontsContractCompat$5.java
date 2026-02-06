@@ -2,7 +2,6 @@ package android.support.v4.provider;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class FontsContractCompat$5 implements Comparator<byte[]> {
     FontsContractCompat$5() {
     }

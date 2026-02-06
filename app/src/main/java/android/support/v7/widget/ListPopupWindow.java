@@ -36,7 +36,6 @@ import android.widget.PopupWindow;
 import android.widget.PopupWindow$OnDismissListener;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ListPopupWindow implements ShowableListMenu {
     private static final boolean DEBUG = false;
     static final int EXPAND_LIST_TIMEOUT = 250;

@@ -2,7 +2,6 @@ package com.sonymobile.media;
 
 import android.provider.MediaStore$Files$FileColumns;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface SomcMediaStore$ExtendedFiles$ExtendedFileColumns extends MediaStore$Files$FileColumns {
     public static final int SOMC_CATEGORY_NONE = 0;
     public static final int SOMC_CATEGORY_SEQUENCE = 2;

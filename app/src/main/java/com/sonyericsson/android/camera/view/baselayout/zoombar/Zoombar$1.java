@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.baselayout.zoombar;
 import android.animation.Animator;
 import android.animation.Animator$AnimatorListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class Zoombar$1 implements Animator$AnimatorListener {
     final /* synthetic */ Zoombar this$0;
 

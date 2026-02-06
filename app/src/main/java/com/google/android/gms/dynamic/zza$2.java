@@ -3,7 +3,6 @@ package com.google.android.gms.dynamic;
 import android.app.Activity;
 import android.os.Bundle;
 
-/* JADX INFO: loaded from: classes.dex */
 class zza$2 implements zza$zza {
     final /* synthetic */ zza zzapr;
     final /* synthetic */ Activity zzaps;

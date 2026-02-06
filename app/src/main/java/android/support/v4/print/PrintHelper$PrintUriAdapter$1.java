@@ -11,7 +11,6 @@ import android.print.PrintDocumentAdapter$LayoutResultCallback;
 import android.print.PrintDocumentInfo$Builder;
 import java.io.FileNotFoundException;
 
-/* JADX INFO: loaded from: classes.dex */
 class PrintHelper$PrintUriAdapter$1 extends AsyncTask<Uri, Boolean, Bitmap> {
     final /* synthetic */ PrintHelper$PrintUriAdapter this$1;
     final /* synthetic */ CancellationSignal val$cancellationSignal;

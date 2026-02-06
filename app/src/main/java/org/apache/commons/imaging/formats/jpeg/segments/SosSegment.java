@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import org.apache.commons.imaging.common.BinaryFunctions;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SosSegment extends Segment {
     private final SosSegment$Component[] components;
     public final int endOfSpectralSelection;

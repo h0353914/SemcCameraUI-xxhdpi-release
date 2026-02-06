@@ -7,7 +7,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URL;
 
-/* JADX INFO: loaded from: classes.dex */
 class TypeAdapters$18 extends TypeAdapter<URL> {
     TypeAdapters$18() {
     }

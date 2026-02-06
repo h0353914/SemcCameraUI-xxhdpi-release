@@ -5,7 +5,6 @@ import java.nio.ByteOrder;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFunctions;
 
-/* JADX INFO: loaded from: classes.dex */
 class PixelParserBitFields extends PixelParserSimple {
     private final int alphaMask;
     private final int alphaShift;

@@ -6,7 +6,6 @@ import android.os.Build$VERSION;
 import android.support.annotation.NonNull;
 import android.support.v4.util.Pair;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class PaintCompat {
     private static final String EM_STRING = "m";
     private static final String TOFU_STRING = "\udfffd";

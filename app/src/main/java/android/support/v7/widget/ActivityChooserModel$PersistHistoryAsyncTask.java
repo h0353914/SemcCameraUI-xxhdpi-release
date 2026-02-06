@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.List;
 import org.xmlpull.v1.XmlSerializer;
 
-/* JADX INFO: loaded from: classes.dex */
 final class ActivityChooserModel$PersistHistoryAsyncTask extends AsyncTask<Object, Void, Void> {
     final /* synthetic */ ActivityChooserModel this$0;
 

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller.selftimerfeedback;
 
 import android.os.Handler;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SelfTimerFeedback {
     private static final int SELF_TIMER_BLINK_DURATION = 100;
     private static final int SELF_TIMER_LIGHT_MIN_INTERVAL = 250;

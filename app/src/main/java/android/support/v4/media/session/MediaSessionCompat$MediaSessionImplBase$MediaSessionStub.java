@@ -12,7 +12,6 @@ import android.support.v4.media.VolumeProviderCompat;
 import android.view.KeyEvent;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionCompat$MediaSessionImplBase$MediaSessionStub extends IMediaSession$Stub {
     final /* synthetic */ MediaSessionCompat$MediaSessionImplBase this$0;
 

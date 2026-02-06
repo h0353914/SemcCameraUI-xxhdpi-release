@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.overlaycontrol;
 
 import com.sonyericsson.android.camera.view.overlaycontrol.imagequality.OnSlideListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ImageQualityControl$1 implements OnSlideListener {
     final /* synthetic */ ImageQualityControl this$0;
 

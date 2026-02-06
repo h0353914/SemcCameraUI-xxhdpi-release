@@ -5,7 +5,6 @@ import android.view.animation.PathInterpolator;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 class CaptureFeedbackAnimationFactory$DefaultFeedbackAnimation implements CaptureFeedbackAnimation {
     private static final float BLUE = 0.0f;
     private static final float CONTROL_X1 = 0.95f;

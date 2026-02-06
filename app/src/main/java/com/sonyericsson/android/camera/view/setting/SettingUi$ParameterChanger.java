@@ -22,7 +22,6 @@ import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import com.sonyericsson.cameracommon.utility.RegionConfig;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingUi$ParameterChanger implements SettingChangerInterface<UserSettingValue> {
     final /* synthetic */ SettingUi this$0;
 

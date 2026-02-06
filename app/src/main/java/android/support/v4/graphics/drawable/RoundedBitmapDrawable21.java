@@ -7,7 +7,6 @@ import android.graphics.Rect;
 import android.support.annotation.RequiresApi;
 import android.view.Gravity;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class RoundedBitmapDrawable21 extends RoundedBitmapDrawable {
     protected RoundedBitmapDrawable21(Resources resources, Bitmap bitmap) {

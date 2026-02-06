@@ -4,7 +4,6 @@ import android.support.v4.view.ViewCompat;
 import android.view.View;
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class CoordinatorLayout$ViewElevationComparator implements Comparator<View> {
     CoordinatorLayout$ViewElevationComparator() {
     }

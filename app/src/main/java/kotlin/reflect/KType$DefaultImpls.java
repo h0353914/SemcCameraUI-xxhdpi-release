@@ -4,7 +4,6 @@ import kotlin.Metadata;
 import kotlin.SinceKotlin;
 
 /* JADX INFO: compiled from: KType.kt */
-/* JADX INFO: loaded from: classes.dex */
 @Metadata(bv = {1, 0, 2}, k = 3, mv = {1, 1, 10})
 public final class KType$DefaultImpls {
     @SinceKotlin(version = "1.1")

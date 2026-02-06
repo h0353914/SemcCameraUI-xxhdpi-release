@@ -7,7 +7,6 @@ import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.formats.png.chunks.PngChunkPlte;
 import org.apache.commons.imaging.formats.png.transparencyfilters.TransparencyFilter;
 
-/* JADX INFO: loaded from: classes.dex */
 class ScanExpediterSimple extends ScanExpediter {
     public ScanExpediterSimple(int i, int i2, InputStream inputStream, BufferedImage bufferedImage, PngColorType pngColorType, int i3, int i4, PngChunkPlte pngChunkPlte, GammaCorrection gammaCorrection, TransparencyFilter transparencyFilter) {
         super(i, i2, inputStream, bufferedImage, pngColorType, i3, i4, pngChunkPlte, gammaCorrection, transparencyFilter);

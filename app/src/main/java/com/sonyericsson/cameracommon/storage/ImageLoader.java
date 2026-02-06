@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InvalidObjectException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ImageLoader {
     private static final int FIRST_REDUCE_RATIO_FULL_IMG = 2;
     private static final int FULL_SIZE_MAX_LENGTH = 1025;

@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Event$CaptureOperation implements Event$UserOperation {
     EMPTY(0, false),
     SHOOTING(1, true),

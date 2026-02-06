@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.View$AccessibilityDelegate;
 import android.view.accessibility.AccessibilityNodeInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActivityChooserView$3 extends View$AccessibilityDelegate {
     final /* synthetic */ ActivityChooserView this$0;
 

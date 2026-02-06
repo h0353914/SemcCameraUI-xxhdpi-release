@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.utility;
 
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ByteBufferUtil {
     public static final String TAG = "ByteBufferUtil";
 

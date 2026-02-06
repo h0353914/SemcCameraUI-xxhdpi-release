@@ -31,7 +31,6 @@ import android.view.View;
 import java.lang.reflect.Constructor;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AppCompatViewInflater {
     private static final String LOG_TAG = "AppCompatViewInflater";
     private final Object[] mConstructorArgs = new Object[2];

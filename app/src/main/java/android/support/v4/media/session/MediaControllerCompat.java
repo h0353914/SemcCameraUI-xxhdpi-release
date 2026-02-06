@@ -21,7 +21,6 @@ import android.view.KeyEvent;
 import java.util.HashSet;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaControllerCompat {
 
     @RestrictTo({RestrictTo$Scope.LIBRARY})

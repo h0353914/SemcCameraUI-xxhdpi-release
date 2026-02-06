@@ -13,7 +13,6 @@ import org.apache.commons.imaging.common.BinaryOutputStream;
 import org.apache.commons.imaging.palette.PaletteFactory;
 import org.apache.commons.imaging.palette.SimplePalette;
 
-/* JADX INFO: loaded from: classes.dex */
 class PcxWriter {
     private int bitDepth;
     private int encoding;

@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView$ViewHolder;
 import android.util.SparseArray;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PreferenceViewHolder extends RecyclerView$ViewHolder {
     private final SparseArray<View> mCachedViews;
     private boolean mDividerAllowedAbove;

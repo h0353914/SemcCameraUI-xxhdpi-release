@@ -8,7 +8,6 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ShortcutButton extends ImageView {
     private static final int DISABLED_FILTER = 2131099706;
     private static final int ICON_FADE_SWITCH_ANIMATION_DURATION = 250;

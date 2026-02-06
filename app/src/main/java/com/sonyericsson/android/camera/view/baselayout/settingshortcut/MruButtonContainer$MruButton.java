@@ -4,7 +4,6 @@ import android.view.View$OnClickListener;
 import android.widget.ImageView;
 import com.sonyericsson.android.camera.view.modeselector.Mode;
 
-/* JADX INFO: loaded from: classes.dex */
 class MruButtonContainer$MruButton {
     private ImageView mButton;
     private View$OnClickListener mClickListener = new MruButtonContainer$MruButton$1(this);

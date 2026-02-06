@@ -3,7 +3,6 @@ package android.support.v4.content;
 import android.content.SharedPreferences$Editor;
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 class SharedPreferencesCompat$EditorCompat$Helper {
     SharedPreferencesCompat$EditorCompat$Helper() {
     }

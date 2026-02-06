@@ -5,7 +5,6 @@ import org.apache.commons.imaging.common.ByteConversions;
 import org.apache.commons.imaging.formats.tiff.constants.TiffDirectoryType;
 import org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TagInfoByteOrShort extends TagInfo {
     public byte[] encodeValue(ByteOrder byteOrder, byte... bArr) {
         return bArr;

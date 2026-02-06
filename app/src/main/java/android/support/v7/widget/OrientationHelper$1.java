@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class OrientationHelper$1 extends OrientationHelper {
     OrientationHelper$1(RecyclerView$LayoutManager recyclerView$LayoutManager) {
         super(recyclerView$LayoutManager, null);

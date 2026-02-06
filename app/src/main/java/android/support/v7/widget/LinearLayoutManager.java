@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LinearLayoutManager extends RecyclerView$LayoutManager implements ItemTouchHelper$ViewDropHandler, RecyclerView$SmoothScroller$ScrollVectorProvider {
     static final boolean DEBUG = false;
     public static final int HORIZONTAL = 0;

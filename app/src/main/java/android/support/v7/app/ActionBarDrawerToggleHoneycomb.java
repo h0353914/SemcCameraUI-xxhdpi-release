@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build$VERSION;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionBarDrawerToggleHoneycomb {
     private static final String TAG = "ActionBarDrawerToggleHC";
     private static final int[] THEME_ATTRS = {16843531};

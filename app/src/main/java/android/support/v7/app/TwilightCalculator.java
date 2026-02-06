@@ -1,6 +1,5 @@
 package android.support.v7.app;
 
-/* JADX INFO: loaded from: classes.dex */
 class TwilightCalculator {
     private static final float ALTIDUTE_CORRECTION_CIVIL_TWILIGHT = -0.10471976f;
     private static final float C1 = 0.0334196f;

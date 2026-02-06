@@ -10,7 +10,6 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzlt {
     public static Bitmap zza(Bitmap bitmap) {
         int i;

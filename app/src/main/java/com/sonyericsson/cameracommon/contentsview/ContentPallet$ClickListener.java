@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.contentsview;
 import android.view.View;
 import android.view.View$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ContentPallet$ClickListener implements View$OnClickListener {
     final /* synthetic */ ContentPallet this$0;
 

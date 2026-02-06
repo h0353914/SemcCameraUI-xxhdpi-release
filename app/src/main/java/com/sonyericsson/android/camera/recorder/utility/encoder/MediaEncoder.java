@@ -8,7 +8,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaEncoder {
     public static final String TAG = "MediaEncoder";
     private static final String THREAD_NAME_DATA_WRITE_FOR_EACH_STREAMS = "ME#WriteData";

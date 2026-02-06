@@ -4,7 +4,6 @@ import android.graphics.Rect;
 import android.hardware.camera2.CaptureRequest$Key;
 import java.lang.reflect.InvocationTargetException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class SomcCaptureRequestKeys {
     public static final CaptureRequest$Key<Integer> SONYMOBILE_STATISTICS_OBJECT_SELECT_TRIGGER = keyConstructor("com.sonymobile.statistics.objectSelectTrigger", Integer.TYPE);
     public static final CaptureRequest$Key<int[]> SONYMOBILE_STATISTICS_OBJECT_SELECT_TRIGGER_AREA = keyConstructor("com.sonymobile.statistics.objectSelectTriggerArea", int[].class);

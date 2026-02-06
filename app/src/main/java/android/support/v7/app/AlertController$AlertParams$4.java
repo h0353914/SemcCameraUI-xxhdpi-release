@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView$OnItemClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class AlertController$AlertParams$4 implements AdapterView$OnItemClickListener {
     final /* synthetic */ AlertController$AlertParams this$0;
     final /* synthetic */ AlertController val$dialog;

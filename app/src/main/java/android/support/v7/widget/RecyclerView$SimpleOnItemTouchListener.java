@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.support.annotation.NonNull;
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecyclerView$SimpleOnItemTouchListener implements RecyclerView$OnItemTouchListener {
     @Override // android.support.v7.widget.RecyclerView$OnItemTouchListener
     public boolean onInterceptTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {

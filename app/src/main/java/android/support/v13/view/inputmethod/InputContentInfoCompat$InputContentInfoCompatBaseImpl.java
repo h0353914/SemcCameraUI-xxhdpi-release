@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 final class InputContentInfoCompat$InputContentInfoCompatBaseImpl implements InputContentInfoCompat$InputContentInfoCompatImpl {
 
     @NonNull

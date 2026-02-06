@@ -3,7 +3,6 @@ package android.support.v7.app;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.view.menu.MenuPresenter$Callback;
 
-/* JADX INFO: loaded from: classes.dex */
 final class ToolbarActionBar$ActionMenuPresenterCallback implements MenuPresenter$Callback {
     private boolean mClosingActionMenu;
     final /* synthetic */ ToolbarActionBar this$0;

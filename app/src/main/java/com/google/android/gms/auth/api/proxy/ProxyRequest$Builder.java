@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.util.Patterns;
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ProxyRequest$Builder {
     private String zzSL;
     private int zzSM = ProxyRequest.HTTP_METHOD_GET;

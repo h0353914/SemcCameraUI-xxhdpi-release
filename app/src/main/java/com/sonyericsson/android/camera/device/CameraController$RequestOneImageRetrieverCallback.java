@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.device;
 import android.graphics.Rect;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraController$RequestOneImageRetrieverCallback implements ImageRetriever$OnImageRetrieverCallback {
     final /* synthetic */ CameraController this$0;
 

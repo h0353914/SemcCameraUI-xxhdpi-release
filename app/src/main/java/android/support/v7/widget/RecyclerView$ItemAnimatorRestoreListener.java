@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class RecyclerView$ItemAnimatorRestoreListener implements RecyclerView$ItemAnimator$ItemAnimatorListener {
     final /* synthetic */ RecyclerView this$0;
 

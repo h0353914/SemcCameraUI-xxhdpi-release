@@ -26,7 +26,6 @@ import android.widget.LinearLayout$LayoutParams;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ListMenuItemView extends LinearLayout implements MenuView$ItemView, AbsListView$SelectionBoundsAdjuster {
     private static final String TAG = "ListMenuItemView";

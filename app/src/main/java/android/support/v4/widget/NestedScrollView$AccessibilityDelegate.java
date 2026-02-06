@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.ScrollView;
 
-/* JADX INFO: loaded from: classes.dex */
 class NestedScrollView$AccessibilityDelegate extends AccessibilityDelegateCompat {
     NestedScrollView$AccessibilityDelegate() {
     }

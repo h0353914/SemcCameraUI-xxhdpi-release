@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class SnapHelper$1 extends RecyclerView$OnScrollListener {
     boolean mScrolled = false;
     final /* synthetic */ SnapHelper this$0;

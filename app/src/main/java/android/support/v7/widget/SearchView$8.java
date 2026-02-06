@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView$OnItemClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SearchView$8 implements AdapterView$OnItemClickListener {
     final /* synthetic */ SearchView this$0;
 

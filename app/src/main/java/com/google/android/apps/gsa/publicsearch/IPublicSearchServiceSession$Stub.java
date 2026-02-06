@@ -7,7 +7,6 @@ import android.os.RemoteException;
 import com.google.android.aidl.BaseStub;
 import com.google.android.aidl.Codecs;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class IPublicSearchServiceSession$Stub extends BaseStub implements IPublicSearchServiceSession {
     private static final String DESCRIPTOR = "com.google.android.apps.gsa.publicsearch.IPublicSearchServiceSession";
     static final int TRANSACTION_onGenericClientEvent = 1;

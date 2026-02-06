@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.View$OnClickListener;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class ContentsViewController$ClickListener implements View$OnClickListener {
     final /* synthetic */ ContentsViewController this$0;
 

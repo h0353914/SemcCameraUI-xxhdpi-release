@@ -17,7 +17,6 @@ import com.sonyericsson.android.camera.parameter.dependency.DependencyApplier;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.EnumMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NormalParameters extends MainParameters {
     @Override // com.sonyericsson.android.camera.parameter.Parameters
     protected void prepare() {

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import android.graphics.drawable.Animatable2$AnimationCallback;
 import android.graphics.drawable.Drawable;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$31 extends Animatable2$AnimationCallback {
     final /* synthetic */ ViewFinderImpl this$0;
 

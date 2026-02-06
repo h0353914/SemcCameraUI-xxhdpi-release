@@ -1,6 +1,5 @@
 package com.google.android.gms.internal;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlr$2 extends zzlr<Long> {
     zzlr$2(String str, Long l) {
         super(str, l);

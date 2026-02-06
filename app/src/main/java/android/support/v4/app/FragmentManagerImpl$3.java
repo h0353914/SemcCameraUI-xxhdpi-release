@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentManagerImpl$3 extends AnimatorListenerAdapter {
     final /* synthetic */ FragmentManagerImpl this$0;
     final /* synthetic */ ViewGroup val$container;

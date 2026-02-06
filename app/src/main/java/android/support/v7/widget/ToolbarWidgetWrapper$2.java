@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ToolbarWidgetWrapper$2 extends ViewPropertyAnimatorListenerAdapter {
     private boolean mCanceled = false;
     final /* synthetic */ ToolbarWidgetWrapper this$0;

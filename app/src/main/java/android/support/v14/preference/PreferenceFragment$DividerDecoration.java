@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView$State;
 import android.support.v7.widget.RecyclerView$ViewHolder;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class PreferenceFragment$DividerDecoration extends RecyclerView$ItemDecoration {
     private boolean mAllowDividerAfterLastItem = true;
     private Drawable mDivider;

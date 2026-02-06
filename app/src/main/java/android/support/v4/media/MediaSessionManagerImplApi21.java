@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class MediaSessionManagerImplApi21 extends MediaSessionManagerImplBase {
     MediaSessionManagerImplApi21(Context context) {

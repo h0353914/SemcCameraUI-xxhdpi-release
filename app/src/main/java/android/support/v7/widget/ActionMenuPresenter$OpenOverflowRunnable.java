@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionMenuPresenter$OpenOverflowRunnable implements Runnable {
     private ActionMenuPresenter$OverflowPopup mPopup;
     final /* synthetic */ ActionMenuPresenter this$0;

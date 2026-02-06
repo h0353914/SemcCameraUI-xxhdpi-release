@@ -6,7 +6,6 @@ import android.support.v7.appcompat.R$attr;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AppCompatSeekBar extends SeekBar {
     private final AppCompatSeekBarHelper mAppCompatSeekBarHelper;
 

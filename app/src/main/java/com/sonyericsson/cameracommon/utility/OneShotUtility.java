@@ -8,7 +8,6 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class OneShotUtility {
     public static final String KEY_ADD_TO_MEDIA_STORE = "addToMediaStore";
     public static final int REQUEST_ONE_SHOT = 1;

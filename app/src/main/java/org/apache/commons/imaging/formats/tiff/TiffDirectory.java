@@ -29,7 +29,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShort;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShortOrLong;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoXpString;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffDirectory extends TiffElement {
     public final List<TiffField> entries;
     private JpegImageData jpegImageData;

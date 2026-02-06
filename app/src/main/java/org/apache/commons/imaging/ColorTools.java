@@ -14,7 +14,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Hashtable;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ColorTools {
     private int countBitsInMask(int i) {
         int i2 = 0;

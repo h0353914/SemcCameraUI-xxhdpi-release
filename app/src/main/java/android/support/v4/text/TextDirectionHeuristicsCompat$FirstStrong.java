@@ -1,6 +1,5 @@
 package android.support.v4.text;
 
-/* JADX INFO: loaded from: classes.dex */
 class TextDirectionHeuristicsCompat$FirstStrong implements TextDirectionHeuristicsCompat$TextDirectionAlgorithm {
     static final TextDirectionHeuristicsCompat$FirstStrong INSTANCE = new TextDirectionHeuristicsCompat$FirstStrong();
 

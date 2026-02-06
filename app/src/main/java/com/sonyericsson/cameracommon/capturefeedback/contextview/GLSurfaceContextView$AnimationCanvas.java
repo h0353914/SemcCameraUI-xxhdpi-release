@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.capturefeedback.contextview;
 
 import com.sonyericsson.cameracommon.capturefeedback.animation.CaptureFeedbackAnimationCanvas;
 
-/* JADX INFO: loaded from: classes.dex */
 class GLSurfaceContextView$AnimationCanvas implements CaptureFeedbackAnimationCanvas {
     final /* synthetic */ GLSurfaceContextView this$0;
 

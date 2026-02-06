@@ -16,7 +16,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 @Deprecated
 public class ActionBarDrawerToggle implements DrawerLayout$DrawerListener {
     private static final int ID_HOME = 16908332;

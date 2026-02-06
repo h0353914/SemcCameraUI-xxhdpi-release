@@ -6,7 +6,6 @@ import android.support.annotation.WorkerThread;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class CameraController$SetOneTimeRequestTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     private final CameraController$CaptureSessionCallback mCaptureSessionCallback;

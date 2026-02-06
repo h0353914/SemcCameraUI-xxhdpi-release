@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.png;
 import java.io.UnsupportedEncodingException;
 import org.apache.commons.imaging.common.BinaryFunctions;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ChunkType {
     IHDR,
     PLTE,

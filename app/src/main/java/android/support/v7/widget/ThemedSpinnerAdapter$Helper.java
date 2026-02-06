@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ThemedSpinnerAdapter$Helper {
     private final Context mContext;
     private LayoutInflater mDropDownInflater;

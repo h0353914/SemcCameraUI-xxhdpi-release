@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import android.graphics.Point;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class UserEventHandler$TouchEventDispatcher extends UserEventHandler$EventDispatcher {
     public UserEventHandler$TouchEventDispatcher() {
         super(null);

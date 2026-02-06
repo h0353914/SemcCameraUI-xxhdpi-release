@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.baselayout.onscreenbutton;
 
 import com.sonyericsson.android.camera.view.UserEventHandler$TouchEventSource;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum OnScreenButtonItemFactory$ButtonType implements UserEventHandler$TouchEventSource {
     CAPTURE_LARGE,
     CAPTURE_SMALL,

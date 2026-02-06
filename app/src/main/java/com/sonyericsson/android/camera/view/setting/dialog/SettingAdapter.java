@@ -13,7 +13,6 @@ import com.sonyericsson.android.camera.view.setting.settingitem.SettingItemBuild
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SettingAdapter extends ArrayAdapter<SettingItem> {
     public static final int INVALID_VALUE = -1;
     public static final String TAG = "SettingAdapter";

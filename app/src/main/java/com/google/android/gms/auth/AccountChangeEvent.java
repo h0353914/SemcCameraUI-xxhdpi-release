@@ -6,7 +6,6 @@ import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzw;
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AccountChangeEvent implements SafeParcelable {
     public static final Parcelable$Creator<AccountChangeEvent> CREATOR = new zza();
     final int mVersion;

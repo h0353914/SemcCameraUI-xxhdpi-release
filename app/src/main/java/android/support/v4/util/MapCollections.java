@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Map$Entry;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class MapCollections<K, V> {
 
     /* JADX WARN: Incorrect inner types in field signature: Landroid/support/v4/util/MapCollections<TK;TV;>.EntrySet; */

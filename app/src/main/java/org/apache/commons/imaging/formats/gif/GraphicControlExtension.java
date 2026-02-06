@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.gif;
 
-/* JADX INFO: loaded from: classes.dex */
 class GraphicControlExtension extends GifBlock {
     public final int delay;
     public final int dispose;

@@ -5,7 +5,6 @@ import com.google.android.gms.common.api.Api$zzb;
 import com.google.android.gms.common.api.GoogleApiClient$zza;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlg$zze extends zzlg$zzi {
     final /* synthetic */ zzlg zzabL;
     private final Map<Api$zzb, GoogleApiClient$zza> zzabU;

@@ -4,7 +4,6 @@ import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class AbsActionBarView$VisibilityAnimListener implements ViewPropertyAnimatorListener {
     private boolean mCanceled = false;
     int mFinalVisibility;

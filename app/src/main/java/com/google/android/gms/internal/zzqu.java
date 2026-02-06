@@ -8,7 +8,6 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.signin.internal.zzh;
 import com.google.android.gms.signin.internal.zzi;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzqu {
     public static final Api$zzc<zzi> zzRk = new Api$zzc<>();
     public static final Api$zzc<zzi> zzapF = new Api$zzc<>();

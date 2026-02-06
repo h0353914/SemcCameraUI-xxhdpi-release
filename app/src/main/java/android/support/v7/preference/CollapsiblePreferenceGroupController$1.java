@@ -1,6 +1,5 @@
 package android.support.v7.preference;
 
-/* JADX INFO: loaded from: classes.dex */
 class CollapsiblePreferenceGroupController$1 implements Preference$OnPreferenceClickListener {
     final /* synthetic */ CollapsiblePreferenceGroupController this$0;
     final /* synthetic */ PreferenceGroup val$group;

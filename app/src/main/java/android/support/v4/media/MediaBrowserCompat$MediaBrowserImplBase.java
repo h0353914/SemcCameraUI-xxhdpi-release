@@ -14,7 +14,6 @@ import android.util.Log;
 import java.util.List;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$MediaBrowserImplBase implements MediaBrowserCompat$MediaBrowserImpl, MediaBrowserCompat$MediaBrowserServiceCallbackImpl {
     static final int CONNECT_STATE_CONNECTED = 3;
     static final int CONNECT_STATE_CONNECTING = 2;

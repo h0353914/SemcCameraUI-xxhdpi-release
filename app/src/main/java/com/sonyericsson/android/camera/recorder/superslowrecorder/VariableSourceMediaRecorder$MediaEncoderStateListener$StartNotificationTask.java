@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.recorder.superslowrecorder;
 
-/* JADX INFO: loaded from: classes.dex */
 class VariableSourceMediaRecorder$MediaEncoderStateListener$StartNotificationTask implements Runnable {
     final /* synthetic */ VariableSourceMediaRecorder$MediaEncoderStateListener this$1;
 

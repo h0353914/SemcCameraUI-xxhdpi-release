@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.tutorial;
 import android.view.View;
 import android.view.View$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class PagingTutorialNavigator$1 implements View$OnClickListener {
     final /* synthetic */ PagingTutorialNavigator this$0;
 

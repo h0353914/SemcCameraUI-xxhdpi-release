@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ShootingLabel$Flash implements ShootingLabel$StringParameter {
     AUTO("AUTO"),
     ON("ON"),

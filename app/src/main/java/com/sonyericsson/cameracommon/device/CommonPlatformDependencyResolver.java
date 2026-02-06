@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.util.List;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CommonPlatformDependencyResolver {
     private static final double ASPECT_TOLERANCE = 0.05d;
     public static final String TAG = "CommonPlatformDependencyResolver";

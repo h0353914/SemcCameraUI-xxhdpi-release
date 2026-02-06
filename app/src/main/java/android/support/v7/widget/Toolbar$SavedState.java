@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 import android.support.v4.view.AbsSavedState;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Toolbar$SavedState extends AbsSavedState {
     public static final Parcelable$Creator<Toolbar$SavedState> CREATOR = new Toolbar$SavedState$1();
     int expandedMenuItemId;

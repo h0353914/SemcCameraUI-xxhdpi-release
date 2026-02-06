@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.hint;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class HintTextViewController$BlockingFiloContentQueue$1 implements Comparator<HintTextContent> {
     HintTextViewController$BlockingFiloContentQueue$1() {
     }

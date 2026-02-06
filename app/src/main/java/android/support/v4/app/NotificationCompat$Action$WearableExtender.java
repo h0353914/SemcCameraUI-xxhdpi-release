@@ -2,7 +2,6 @@ package android.support.v4.app;
 
 import android.os.Bundle;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class NotificationCompat$Action$WearableExtender implements NotificationCompat$Action$Extender {
     private static final int DEFAULT_FLAGS = 1;
     private static final String EXTRA_WEARABLE_EXTENSIONS = "android.wearable.EXTENSIONS";

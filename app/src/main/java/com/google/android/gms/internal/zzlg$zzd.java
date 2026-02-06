@@ -7,7 +7,6 @@ import com.google.android.gms.common.api.GoogleApiClient$zza;
 import com.google.android.gms.common.internal.zzx;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlg$zzd implements GoogleApiClient$zza {
     private final WeakReference<zzlg> zzabM;
     private final Api<?> zzabS;

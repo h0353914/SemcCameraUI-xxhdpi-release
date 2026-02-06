@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import org.apache.commons.imaging.common.BinaryFunctions;
 
-/* JADX INFO: loaded from: classes.dex */
 public class App14Segment extends AppnSegment {
     public static final int ADOBE_COLOR_TRANSFORM_UNKNOWN = 0;
     public static final int ADOBE_COLOR_TRANSFORM_YCCK = 2;

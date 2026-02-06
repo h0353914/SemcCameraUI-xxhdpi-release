@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.focusview;
 import android.animation.Animator;
 import android.animation.Animator$AnimatorListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class FocusRectangles$3 implements Animator$AnimatorListener {
     final /* synthetic */ FocusRectangles this$0;
 

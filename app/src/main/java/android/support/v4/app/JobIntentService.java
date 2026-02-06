@@ -12,7 +12,6 @@ import android.support.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class JobIntentService extends Service {
     static final boolean DEBUG = false;
     static final String TAG = "JobIntentService";

@@ -6,7 +6,6 @@ import java.lang.reflect.Type;
 import java.util.EnumSet;
 
 /* JADX INFO: Add missing generic type declarations: [T] */
-/* JADX INFO: loaded from: classes.dex */
 class ConstructorConstructor$5<T> implements ObjectConstructor<T> {
     final /* synthetic */ ConstructorConstructor this$0;
     final /* synthetic */ Type val$type;

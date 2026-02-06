@@ -31,7 +31,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LocalResearchUtil {
     public static final String TAG = "LocalResearchUtil";
     private static final LocalResearchUtil sInstance = new LocalResearchUtil();

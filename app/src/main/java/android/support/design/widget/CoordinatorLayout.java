@@ -55,7 +55,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CoordinatorLayout extends ViewGroup implements NestedScrollingParent2 {
     static final Class<?>[] CONSTRUCTOR_PARAMS;
     static final int EVENT_NESTED_SCROLL = 1;

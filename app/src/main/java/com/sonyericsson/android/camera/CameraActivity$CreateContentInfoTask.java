@@ -4,7 +4,6 @@ import android.net.Uri;
 import com.sonyericsson.android.camera.view.ViewFinderImpl;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$CreateContentInfoTask implements Runnable {
     ArrayList<Uri> mCapturedUris;
     final /* synthetic */ CameraActivity this$0;

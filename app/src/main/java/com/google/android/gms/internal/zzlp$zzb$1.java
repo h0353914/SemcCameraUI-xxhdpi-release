@@ -2,7 +2,6 @@ package com.google.android.gms.internal;
 
 import android.app.Dialog;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlp$zzb$1 extends zzll {
     final /* synthetic */ Dialog zzacW;
     final /* synthetic */ zzlp$zzb zzacX;

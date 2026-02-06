@@ -1,6 +1,5 @@
 package android.support.v4.provider;
 
-/* JADX INFO: loaded from: classes.dex */
 class FontsContractCompat$4$7 implements Runnable {
     final /* synthetic */ FontsContractCompat$4 this$0;
     final /* synthetic */ int val$resultCode;

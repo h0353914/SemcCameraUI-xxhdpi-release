@@ -6,7 +6,6 @@ import android.support.v4.media.session.IMediaSession;
 import android.support.v4.media.session.MediaSessionCompat$Token;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$MediaBrowserServiceImplApi21$1 implements Runnable {
     final /* synthetic */ MediaBrowserServiceCompat$MediaBrowserServiceImplApi21 this$1;
     final /* synthetic */ MediaSessionCompat$Token val$token;

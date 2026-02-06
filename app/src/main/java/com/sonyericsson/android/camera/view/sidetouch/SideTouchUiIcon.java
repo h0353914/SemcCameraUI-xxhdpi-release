@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout$LayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class SideTouchUiIcon implements SideTouchUi$Icon {
     protected final Context mContext;
     protected SideTouchUi$Icon$OnDetachedListener mOnDetachedListener;

@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import java.util.HashSet;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class RemoteInput$Builder {
     private CharSequence[] mChoices;
     private CharSequence mLabel;

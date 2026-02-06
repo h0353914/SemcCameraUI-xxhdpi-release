@@ -1,6 +1,5 @@
 package com.google.android.gms.common.internal;
 
-/* JADX INFO: loaded from: classes.dex */
 class zze$11 extends zze {
     final /* synthetic */ char zzaff;
 

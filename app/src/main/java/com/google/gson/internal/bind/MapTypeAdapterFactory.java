@@ -9,7 +9,6 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MapTypeAdapterFactory implements TypeAdapterFactory {
     private final boolean complexMapKeySerialization;
     private final ConstructorConstructor constructorConstructor;

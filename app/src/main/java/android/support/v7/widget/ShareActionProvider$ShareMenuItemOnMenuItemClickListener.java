@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem$OnMenuItemClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ShareActionProvider$ShareMenuItemOnMenuItemClickListener implements MenuItem$OnMenuItemClickListener {
     final /* synthetic */ ShareActionProvider this$0;
 

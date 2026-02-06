@@ -34,7 +34,6 @@ import android.view.WindowInsets;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DrawerLayout extends ViewGroup {
     private static final boolean ALLOW_EDGE_LOCK = false;
     static final boolean CAN_HIDE_DESCENDANTS;

@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DividerItemDecoration extends RecyclerView$ItemDecoration {
     private static final int[] ATTRS = {16843284};
     public static final int HORIZONTAL = 0;

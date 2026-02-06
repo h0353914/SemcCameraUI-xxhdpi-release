@@ -45,7 +45,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Toolbar extends ViewGroup {
     private static final String TAG = "Toolbar";
     private MenuPresenter$Callback mActionMenuPresenterCallback;

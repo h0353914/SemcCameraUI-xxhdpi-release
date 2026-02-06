@@ -6,7 +6,6 @@ import android.support.annotation.RestrictTo$Scope;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ActivityChooserView$InnerLayout extends LinearLayout {
     private static final int[] TINT_ATTRS = {16842964};

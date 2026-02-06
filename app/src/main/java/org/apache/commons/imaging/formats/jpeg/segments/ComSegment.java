@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ComSegment extends GenericSegment {
     public ComSegment(int i, byte[] bArr) {
         super(i, bArr);

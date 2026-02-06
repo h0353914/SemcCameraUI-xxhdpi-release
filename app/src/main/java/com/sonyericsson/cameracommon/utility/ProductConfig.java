@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Point;
 import android.view.WindowManager;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ProductConfig {
     public static final String TAG = "ProductConfig";
 

@@ -13,7 +13,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TimeTypeAdapter extends TypeAdapter<Time> {
     public static final TypeAdapterFactory FACTORY = new TimeTypeAdapter$1();
     private final DateFormat format = new SimpleDateFormat("hh:mm:ss a");

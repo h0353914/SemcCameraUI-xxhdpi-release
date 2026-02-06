@@ -2,7 +2,6 @@ package com.google.android.gms.internal;
 
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzsc {
     public static final Object zzbiu = new Object();
 

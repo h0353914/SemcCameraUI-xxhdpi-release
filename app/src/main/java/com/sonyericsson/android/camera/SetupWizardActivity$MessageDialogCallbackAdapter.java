@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.view.messagedialog.MessageDialogControlle
 import com.sonyericsson.android.camera.view.messagedialog.MessageDialogController$MessageDialogOnOpenListener;
 import com.sonyericsson.android.camera.view.messagedialog.MessageDialogRequest;
 
-/* JADX INFO: loaded from: classes.dex */
 class SetupWizardActivity$MessageDialogCallbackAdapter implements MessageDialogController$MessageDialogOnDismissListener, MessageDialogController$MessageDialogOnOpenListener, MessageDialogController$MessageDialogOnCancelListener {
     @Override // com.sonyericsson.android.camera.view.messagedialog.MessageDialogController$MessageDialogOnCancelListener
     public void onCancel(MessageDialogRequest messageDialogRequest) {

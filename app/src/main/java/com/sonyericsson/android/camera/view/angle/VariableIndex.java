@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.angle;
 
-/* JADX INFO: loaded from: classes.dex */
 public class VariableIndex {
     protected int mIndex;
     protected final int mMaxIndex;

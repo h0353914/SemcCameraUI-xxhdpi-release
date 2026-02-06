@@ -4,7 +4,6 @@ import android.content.IntentSender$SendIntentException;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlp$zzb implements Runnable {
     final /* synthetic */ zzlp zzacT;
     private final int zzacU;

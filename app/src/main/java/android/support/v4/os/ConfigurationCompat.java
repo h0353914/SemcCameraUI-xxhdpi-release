@@ -3,7 +3,6 @@ package android.support.v4.os;
 import android.content.res.Configuration;
 import android.os.Build$VERSION;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ConfigurationCompat {
     private ConfigurationCompat() {
     }

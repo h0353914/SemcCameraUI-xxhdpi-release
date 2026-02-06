@@ -8,7 +8,6 @@ import com.google.android.gms.playlog.internal.PlayLoggerContext;
 import com.google.android.gms.playlog.internal.zzd;
 import com.google.android.gms.playlog.internal.zzf;
 
-/* JADX INFO: loaded from: classes.dex */
 @Deprecated
 public class zzqd {
     private final zzf zzaRE;

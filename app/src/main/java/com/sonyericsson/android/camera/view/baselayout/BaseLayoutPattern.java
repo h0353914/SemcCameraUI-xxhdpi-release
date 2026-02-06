@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.baselayout;
 
 import com.sonyericsson.cameracommon.viewfinder.LayoutPattern;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum BaseLayoutPattern implements LayoutPattern {
     PREVIEW,
     PREVIEW_NO_RECORDING,

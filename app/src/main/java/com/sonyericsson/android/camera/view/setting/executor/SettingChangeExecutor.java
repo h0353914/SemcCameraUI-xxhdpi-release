@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.setting.executor;
 
 import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SettingChangeExecutor<T> implements SettingExecutorInterface<T> {
     private final SettingChangerInterface<T> mSettingChanger;
 

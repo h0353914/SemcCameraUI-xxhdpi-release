@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.baselayout;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class BaseLayout$LazyInitializer<T> {
     private T mView;
 

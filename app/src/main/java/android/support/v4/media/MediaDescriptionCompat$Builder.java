@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaDescriptionCompat$Builder {
     private CharSequence mDescription;
     private Bundle mExtras;

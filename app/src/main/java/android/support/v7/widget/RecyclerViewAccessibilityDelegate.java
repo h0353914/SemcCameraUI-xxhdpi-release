@@ -7,7 +7,6 @@ import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecyclerViewAccessibilityDelegate extends AccessibilityDelegateCompat {
     final AccessibilityDelegateCompat mItemDelegate = new RecyclerViewAccessibilityDelegate$ItemDelegate(this);
     final RecyclerView mRecyclerView;

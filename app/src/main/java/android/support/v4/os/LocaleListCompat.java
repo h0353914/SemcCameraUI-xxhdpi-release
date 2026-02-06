@@ -9,7 +9,6 @@ import android.support.annotation.RequiresApi;
 import android.support.annotation.Size;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class LocaleListCompat {
     static final LocaleListInterface IMPL;
     private static final LocaleListCompat sEmptyLocaleList = new LocaleListCompat();

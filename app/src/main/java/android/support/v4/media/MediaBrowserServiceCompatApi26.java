@@ -8,7 +8,6 @@ import android.support.annotation.RequiresApi;
 import android.util.Log;
 import java.lang.reflect.Field;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(26)
 class MediaBrowserServiceCompatApi26 {
     private static final String TAG = "MBSCompatApi26";

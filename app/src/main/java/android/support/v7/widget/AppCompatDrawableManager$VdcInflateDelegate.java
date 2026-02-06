@@ -10,7 +10,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import org.xmlpull.v1.XmlPullParser;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatDrawableManager$VdcInflateDelegate implements AppCompatDrawableManager$InflateDelegate {
     AppCompatDrawableManager$VdcInflateDelegate() {
     }

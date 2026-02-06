@@ -4,7 +4,6 @@ import android.animation.ObjectAnimator;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Build$VERSION;
 
-/* JADX INFO: loaded from: classes.dex */
 class AnimatedStateListDrawableCompat$AnimationDrawableTransition extends AnimatedStateListDrawableCompat$Transition {
     private final ObjectAnimator mAnim;
     private final boolean mHasReversibleFlag;

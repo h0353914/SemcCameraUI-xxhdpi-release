@@ -20,7 +20,6 @@ import com.sonyericsson.cameracommon.utility.RotationUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ApplicationNavigator extends LinearLayout {
     public static final int MODE_INDEX_UNSPECIFIED = -1;
     private static final String TAG = "ApplicationNavigator";

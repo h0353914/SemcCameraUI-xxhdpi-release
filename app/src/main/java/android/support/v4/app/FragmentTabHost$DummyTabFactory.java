@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TabHost$TabContentFactory;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentTabHost$DummyTabFactory implements TabHost$TabContentFactory {
     private final Context mContext;
 

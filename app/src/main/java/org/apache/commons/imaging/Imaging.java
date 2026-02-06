@@ -24,7 +24,6 @@ import org.apache.commons.imaging.icc.IccProfileInfo;
 import org.apache.commons.imaging.icc.IccProfileParser;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class Imaging {
     private static final int[] MAGIC_NUMBERS_GIF = {71, 73};
     private static final int[] MAGIC_NUMBERS_PNG = {137, 80};

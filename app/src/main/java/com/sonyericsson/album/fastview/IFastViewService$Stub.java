@@ -7,7 +7,6 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class IFastViewService$Stub extends Binder implements IFastViewService {
     private static final String DESCRIPTOR = "com.sonyericsson.album.fastview.IFastViewService";
     static final int TRANSACTION_prepare = 1;

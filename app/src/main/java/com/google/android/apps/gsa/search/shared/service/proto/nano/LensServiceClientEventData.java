@@ -8,7 +8,6 @@ import com.google.protobuf.nano.InvalidProtocolBufferNanoException;
 import com.google.protobuf.nano.MessageNano;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class LensServiceClientEventData extends ExtendableMessageNano<LensServiceClientEventData> implements Cloneable {
     private static volatile LensServiceClientEventData[] _emptyArray;
     private int bitField0_;

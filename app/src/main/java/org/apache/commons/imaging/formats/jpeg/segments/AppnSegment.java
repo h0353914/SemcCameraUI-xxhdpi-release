@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.jpeg.segments;
 import java.io.IOException;
 import java.io.InputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AppnSegment extends GenericSegment {
     public AppnSegment(int i, int i2, InputStream inputStream) throws IOException {
         super(i, i2, inputStream);

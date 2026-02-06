@@ -1,6 +1,5 @@
 package android.support.v4.app;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentManagerImpl$2$1 implements Runnable {
     final /* synthetic */ FragmentManagerImpl$2 this$1;
 

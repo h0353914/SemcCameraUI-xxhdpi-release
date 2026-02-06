@@ -5,7 +5,6 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class NotificationCompat$Action$Builder {
     private boolean mAllowGeneratedReplies;
     private final Bundle mExtras;

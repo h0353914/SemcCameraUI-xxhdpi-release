@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.controller;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ZoomController {
     private static final float PINCH_ZOOM_COEFFICIENT = 0.2f;
 

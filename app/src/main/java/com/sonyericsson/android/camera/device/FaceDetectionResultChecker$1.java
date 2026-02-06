@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 class FaceDetectionResultChecker$1 implements Runnable {
     final /* synthetic */ FaceDetectionResultChecker this$0;
     final /* synthetic */ CameraParameters$FaceDetectionResult val$faceDetectionResult;

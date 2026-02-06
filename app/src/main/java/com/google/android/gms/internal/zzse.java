@@ -2,7 +2,6 @@ package com.google.android.gms.internal;
 
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzse {
     protected volatile int zzbiv = -1;
 

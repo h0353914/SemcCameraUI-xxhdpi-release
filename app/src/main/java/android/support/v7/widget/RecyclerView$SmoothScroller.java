@@ -7,7 +7,6 @@ import android.support.annotation.Px;
 import android.util.Log;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class RecyclerView$SmoothScroller {
     private RecyclerView$LayoutManager mLayoutManager;
     private boolean mPendingInitialRun;

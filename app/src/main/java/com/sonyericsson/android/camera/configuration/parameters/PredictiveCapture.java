@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum PredictiveCapture implements UserSettingValue {
     AUTO(2131690114, "auto", 4),
     OFF(2131690115, "off", 1),

@@ -8,7 +8,6 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzc$zza extends Binder implements zzc {
     public zzc$zza() {
         attachInterface(this, "com.google.android.gms.dynamic.IFragmentWrapper");

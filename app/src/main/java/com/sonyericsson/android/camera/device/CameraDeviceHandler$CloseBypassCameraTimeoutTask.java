@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$CloseBypassCameraTimeoutTask implements Runnable {
     private final CameraDeviceHandler$CameraSessionId mSessionId;
     final /* synthetic */ CameraDeviceHandler this$0;

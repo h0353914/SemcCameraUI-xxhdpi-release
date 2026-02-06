@@ -3,7 +3,6 @@ package kotlin.math;
 import kotlin.Metadata;
 import kotlin.SinceKotlin;
 
-/* JADX INFO: loaded from: classes.dex */
 @Metadata(bv = {1, 0, 2}, d1 = {"kotlin/math/MathKt__MathHKt", "kotlin/math/MathKt__MathJVMKt"}, k = 4, mv = {1, 1, 10}, xi = 1)
 public final class MathKt extends MathKt__MathJVMKt {
     public static final double E = 2.718281828459045d;

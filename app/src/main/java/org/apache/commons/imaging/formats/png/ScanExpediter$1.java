@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.png;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class ScanExpediter$1 {
     static final /* synthetic */ int[] $SwitchMap$org$apache$commons$imaging$formats$png$FilterType = new int[FilterType.values().length];
     static final /* synthetic */ int[] $SwitchMap$org$apache$commons$imaging$formats$png$PngColorType;

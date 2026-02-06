@@ -9,7 +9,6 @@ import android.os.RemoteException;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.Status;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzd$zza extends Binder implements zzd {
     public static zzd zzay(IBinder iBinder) {
         if (iBinder == null) {

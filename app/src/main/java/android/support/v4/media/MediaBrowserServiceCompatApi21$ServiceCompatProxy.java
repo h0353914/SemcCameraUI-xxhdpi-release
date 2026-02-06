@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Parcel;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface MediaBrowserServiceCompatApi21$ServiceCompatProxy {
     MediaBrowserServiceCompatApi21$BrowserRoot onGetRoot(String str, int i, Bundle bundle);
 

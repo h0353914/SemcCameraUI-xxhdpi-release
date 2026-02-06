@@ -7,7 +7,6 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class IResultReceiver$Stub extends Binder implements IResultReceiver {
     private static final String DESCRIPTOR = "android.support.v4.os.IResultReceiver";
     static final int TRANSACTION_send = 1;

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.util.capability;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class PlatformCapability$isBypassCameraSupportStateHolder {
     private static final boolean sIsSupported = isSupported();
 

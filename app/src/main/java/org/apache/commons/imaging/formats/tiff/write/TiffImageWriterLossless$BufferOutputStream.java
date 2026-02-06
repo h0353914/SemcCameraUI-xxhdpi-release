@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.tiff.write;
 import java.io.IOException;
 import java.io.OutputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 class TiffImageWriterLossless$BufferOutputStream extends OutputStream {
     private final byte[] buffer;
     private int index;

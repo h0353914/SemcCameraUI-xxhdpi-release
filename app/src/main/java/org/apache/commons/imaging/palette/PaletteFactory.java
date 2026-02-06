@@ -9,7 +9,6 @@ import java.util.Iterator;
 import java.util.List;
 import org.apache.commons.imaging.ImageWriteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PaletteFactory {
     public static final int COMPONENTS = 3;
     private static final boolean DEBUG = false;

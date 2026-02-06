@@ -15,7 +15,6 @@ import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum VideoSize implements UserSettingValue {
     FOUR_K_UHD_H264(-1, 2131690229, new Rect(0, 0, 3840, 2160), false),
     FOUR_K_UHD_H265(-1, 2131690229, new Rect(0, 0, 3840, 2160), false),

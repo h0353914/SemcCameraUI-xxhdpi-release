@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceUtil$1 implements Comparator<int[]> {
     CameraDeviceUtil$1() {
     }

@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface LifecycleDelegate {
     void onCreate(Bundle bundle);
 

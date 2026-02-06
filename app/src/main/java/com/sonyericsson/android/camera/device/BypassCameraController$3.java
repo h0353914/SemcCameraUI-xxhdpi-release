@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import com.sonyericsson.android.camera.configuration.parameters.FastCapture;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class BypassCameraController$3 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$parameters$FastCapture = new int[FastCapture.values().length];
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$device$CameraInfo$CameraId;

@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class AbsActionBarView$1 implements Runnable {
     final /* synthetic */ AbsActionBarView this$0;
 

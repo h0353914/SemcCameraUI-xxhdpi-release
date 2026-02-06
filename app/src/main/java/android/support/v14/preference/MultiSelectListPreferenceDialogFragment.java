@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MultiSelectListPreferenceDialogFragment extends PreferenceDialogFragment {
     private static final String SAVE_STATE_CHANGED = "MultiSelectListPreferenceDialogFragment.changed";
     private static final String SAVE_STATE_ENTRIES = "MultiSelectListPreferenceDialogFragment.entries";

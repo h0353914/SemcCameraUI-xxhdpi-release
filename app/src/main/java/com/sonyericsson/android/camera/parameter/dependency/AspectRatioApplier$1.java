@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.parameter.dependency;
 import com.sonyericsson.android.camera.configuration.parameters.Resolution;
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class AspectRatioApplier$1 implements Comparator<Resolution> {
     final /* synthetic */ AspectRatioApplier this$0;
 

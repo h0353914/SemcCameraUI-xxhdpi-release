@@ -12,7 +12,6 @@ import android.support.v4.media.MediaDescriptionCompat;
 import android.support.v4.media.RatingCompat;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class MediaSessionCompat$Callback$StubApi21 implements MediaSessionCompatApi21$Callback {
     final /* synthetic */ MediaSessionCompat$Callback this$0;

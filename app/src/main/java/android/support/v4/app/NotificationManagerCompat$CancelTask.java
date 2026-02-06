@@ -2,7 +2,6 @@ package android.support.v4.app;
 
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 class NotificationManagerCompat$CancelTask implements NotificationManagerCompat$Task {
     final boolean all;
     final int id;

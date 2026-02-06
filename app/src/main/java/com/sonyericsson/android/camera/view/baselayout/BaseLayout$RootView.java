@@ -6,7 +6,6 @@ import android.view.Display;
 import android.view.MotionEvent;
 import com.sonyericsson.cameracommon.utility.AccessibilityHelper$HoverEventInterceptView;
 
-/* JADX INFO: loaded from: classes.dex */
 class BaseLayout$RootView extends AccessibilityHelper$HoverEventInterceptView {
     final /* synthetic */ BaseLayout this$0;
 

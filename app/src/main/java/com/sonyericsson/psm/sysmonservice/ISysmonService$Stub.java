@@ -6,7 +6,6 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class ISysmonService$Stub extends Binder implements ISysmonService {
     private static final String DESCRIPTOR = "com.sonyericsson.psm.sysmonservice.ISysmonService";
     static final int TRANSACTION_getCameraLowTempBurnTimeoutSec = 3;

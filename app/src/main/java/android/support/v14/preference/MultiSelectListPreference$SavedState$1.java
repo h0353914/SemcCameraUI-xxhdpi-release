@@ -3,7 +3,6 @@ package android.support.v14.preference;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class MultiSelectListPreference$SavedState$1 implements Parcelable$Creator<MultiSelectListPreference$SavedState> {
     MultiSelectListPreference$SavedState$1() {
     }

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller;
 
 import com.sonyericsson.android.camera.controller.selftimerfeedback.LedLight;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateCaptureCountdown$LedLightImpl implements LedLight {
     final /* synthetic */ StateMachine$StateCaptureCountdown this$1;
 

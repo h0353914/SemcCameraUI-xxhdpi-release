@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Preference implements Comparable<Preference> {
     public static final int DEFAULT_ORDER = Integer.MAX_VALUE;
     private boolean mAllowDividerAbove;

@@ -5,7 +5,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks;
 import java.util.concurrent.atomic.AtomicReference;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzli$5 implements GoogleApiClient$ConnectionCallbacks {
     final /* synthetic */ zzli zzacr;
     final /* synthetic */ AtomicReference zzacu;

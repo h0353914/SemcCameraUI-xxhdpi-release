@@ -4,7 +4,6 @@ import android.graphics.Point;
 import android.view.GestureDetector$OnGestureListener;
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderGestureDetector$1 implements GestureDetector$OnGestureListener {
     final /* synthetic */ ViewFinderGestureDetector this$0;
 

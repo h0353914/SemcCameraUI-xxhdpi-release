@@ -4,7 +4,6 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.view.animation.Interpolator;
 
-/* JADX INFO: loaded from: classes.dex */
 class PathInterpolatorApi14 implements Interpolator {
     private static final float PRECISION = 0.002f;
     private final float[] mX;

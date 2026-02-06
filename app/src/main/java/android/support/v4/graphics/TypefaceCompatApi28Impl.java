@@ -8,7 +8,6 @@ import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(28)
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class TypefaceCompatApi28Impl extends TypefaceCompatApi26Impl {

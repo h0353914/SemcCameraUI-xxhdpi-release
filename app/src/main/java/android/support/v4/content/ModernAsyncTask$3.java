@@ -7,7 +7,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 /* JADX INFO: Add missing generic type declarations: [Result] */
-/* JADX INFO: loaded from: classes.dex */
 class ModernAsyncTask$3<Result> extends FutureTask<Result> {
     final /* synthetic */ ModernAsyncTask this$0;
 

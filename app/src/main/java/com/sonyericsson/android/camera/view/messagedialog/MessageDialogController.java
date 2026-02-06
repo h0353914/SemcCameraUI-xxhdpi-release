@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MessageDialogController {
     private static String TAG = "MessageDialogController";
     private static final boolean TRACE = true;

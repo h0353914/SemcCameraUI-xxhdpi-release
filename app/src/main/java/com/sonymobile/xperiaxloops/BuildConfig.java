@@ -1,6 +1,5 @@
 package com.sonymobile.xperiaxloops;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class BuildConfig {
     public static final String APPLICATION_ID = "com.sonymobile.xperiaxloops";
     public static final String BUILD_TYPE = "release";

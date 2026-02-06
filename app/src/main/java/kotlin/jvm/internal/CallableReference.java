@@ -13,7 +13,6 @@ import kotlin.reflect.KType;
 import kotlin.reflect.KTypeParameter;
 import kotlin.reflect.KVisibility;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class CallableReference implements KCallable, Serializable {
 
     @SinceKotlin(version = "1.1")

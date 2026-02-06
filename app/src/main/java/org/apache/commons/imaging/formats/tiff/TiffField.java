@@ -13,7 +13,6 @@ import org.apache.commons.imaging.formats.tiff.constants.TiffTagConstants;
 import org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffField {
     private final ByteOrder byteOrder;
     private final long count;

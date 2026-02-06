@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.os.Parcel;
 import android.os.Parcelable$ClassLoaderCreator;
 
-/* JADX INFO: loaded from: classes.dex */
 class SearchView$SavedState$1 implements Parcelable$ClassLoaderCreator<SearchView$SavedState> {
     SearchView$SavedState$1() {
     }

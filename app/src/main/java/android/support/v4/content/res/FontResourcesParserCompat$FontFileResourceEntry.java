@@ -3,7 +3,6 @@ package android.support.v4.content.res;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class FontResourcesParserCompat$FontFileResourceEntry {
 
     @NonNull

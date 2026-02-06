@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.view.ViewGroup$LayoutParams;
 import android.view.ViewGroup$MarginLayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LinearLayoutCompat$LayoutParams extends ViewGroup$MarginLayoutParams {
     public int gravity;
     public float weight;

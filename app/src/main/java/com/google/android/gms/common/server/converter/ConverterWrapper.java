@@ -4,7 +4,6 @@ import android.os.Parcel;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.server.response.FastJsonResponse$zza;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ConverterWrapper implements SafeParcelable {
     public static final zza CREATOR = new zza();
     private final int mVersionCode;

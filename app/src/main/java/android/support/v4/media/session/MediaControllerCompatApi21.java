@@ -15,7 +15,6 @@ import android.view.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class MediaControllerCompatApi21 {
     public static Object fromToken(Context context, Object obj) {

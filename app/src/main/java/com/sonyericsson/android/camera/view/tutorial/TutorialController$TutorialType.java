@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum TutorialController$TutorialType {
     SAVE_LOCATION(MessageType.NO_MESSAGE),
     PREDICTIVE_LAUNCH(MessageType.NO_MESSAGE),

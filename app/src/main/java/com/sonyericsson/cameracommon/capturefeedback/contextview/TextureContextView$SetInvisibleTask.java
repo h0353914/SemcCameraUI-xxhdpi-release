@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.capturefeedback.contextview;
 
-/* JADX INFO: loaded from: classes.dex */
 class TextureContextView$SetInvisibleTask implements Runnable {
     final /* synthetic */ TextureContextView this$0;
 

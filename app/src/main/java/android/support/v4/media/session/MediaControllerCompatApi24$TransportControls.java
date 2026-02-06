@@ -4,7 +4,6 @@ import android.media.session.MediaController$TransportControls;
 import android.net.Uri;
 import android.os.Bundle;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaControllerCompatApi24$TransportControls {
     public static void prepare(Object obj) {
         ((MediaController$TransportControls) obj).prepare();

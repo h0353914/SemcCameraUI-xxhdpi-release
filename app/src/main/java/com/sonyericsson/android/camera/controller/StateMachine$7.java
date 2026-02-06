@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.controller;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$7 implements Runnable {
     final /* synthetic */ StateMachine this$0;
 

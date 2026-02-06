@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class MessageNano {
     public static final int UNSET_ENUM_VALUE = Integer.MIN_VALUE;
     protected volatile int cachedSize = -1;

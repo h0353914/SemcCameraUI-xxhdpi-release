@@ -2,7 +2,6 @@ package com.google.protobuf.nano;
 
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DescriptorProtos$DescriptorProto$ExtensionRange extends ExtendableMessageNano<DescriptorProtos$DescriptorProto$ExtensionRange> {
     private static volatile DescriptorProtos$DescriptorProto$ExtensionRange[] _emptyArray;
     public int end;

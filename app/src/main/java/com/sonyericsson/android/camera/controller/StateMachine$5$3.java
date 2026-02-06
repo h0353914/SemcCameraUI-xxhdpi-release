@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.recorder.RecorderController$Result;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$5$3 implements Runnable {
     final /* synthetic */ StateMachine$5 this$1;
     final /* synthetic */ RecorderController$Result val$localResult;

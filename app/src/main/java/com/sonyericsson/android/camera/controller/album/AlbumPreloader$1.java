@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.controller.album;
 import com.sonyericsson.album.fastview.FastViewManager$OnPrewarmedListener;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class AlbumPreloader$1 implements FastViewManager$OnPrewarmedListener {
     final /* synthetic */ AlbumPreloader this$0;
 

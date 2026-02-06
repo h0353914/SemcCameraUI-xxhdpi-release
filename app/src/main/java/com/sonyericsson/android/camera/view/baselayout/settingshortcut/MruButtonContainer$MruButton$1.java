@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.baselayout.settingshortcut;
 import android.view.View;
 import android.view.View$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class MruButtonContainer$MruButton$1 implements View$OnClickListener {
     final /* synthetic */ MruButtonContainer$MruButton this$1;
 

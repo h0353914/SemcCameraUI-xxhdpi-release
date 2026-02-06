@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class ListPopupWindow$ListSelectorHider implements Runnable {
     final /* synthetic */ ListPopupWindow this$0;
 

@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 import com.google.android.gms.common.internal.safeparcel.zza$zza;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzy implements Parcelable$Creator<ResolveAccountRequest> {
     static void zza(ResolveAccountRequest resolveAccountRequest, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);

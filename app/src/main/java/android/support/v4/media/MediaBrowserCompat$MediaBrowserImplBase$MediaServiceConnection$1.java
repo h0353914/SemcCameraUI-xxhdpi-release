@@ -6,7 +6,6 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$MediaBrowserImplBase$MediaServiceConnection$1 implements Runnable {
     final /* synthetic */ MediaBrowserCompat$MediaBrowserImplBase$MediaServiceConnection this$1;
     final /* synthetic */ IBinder val$binder;

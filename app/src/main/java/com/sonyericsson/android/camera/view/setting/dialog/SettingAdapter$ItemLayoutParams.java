@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.setting.dialog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SettingAdapter$ItemLayoutParams {
     public final boolean bottom;
     public final int height;

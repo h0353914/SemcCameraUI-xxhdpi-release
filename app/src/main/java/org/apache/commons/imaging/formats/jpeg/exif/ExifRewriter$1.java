@@ -7,7 +7,6 @@ import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.formats.jpeg.JpegConstants;
 import org.apache.commons.imaging.formats.jpeg.JpegUtils$Visitor;
 
-/* JADX INFO: loaded from: classes.dex */
 class ExifRewriter$1 implements JpegUtils$Visitor {
     final /* synthetic */ ExifRewriter this$0;
     final /* synthetic */ List val$exifPieces;

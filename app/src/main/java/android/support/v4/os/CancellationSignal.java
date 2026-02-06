@@ -2,7 +2,6 @@ package android.support.v4.os;
 
 import android.os.Build$VERSION;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class CancellationSignal {
     private boolean mCancelInProgress;
     private Object mCancellationSignalObj;

@@ -24,7 +24,6 @@ import org.apache.commons.imaging.common.ImageMetadata;
 import org.apache.commons.imaging.common.bytesource.ByteSource;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RgbeImageParser extends ImageParser {
     @Override // org.apache.commons.imaging.ImageParser
     public String getDefaultExtension() {

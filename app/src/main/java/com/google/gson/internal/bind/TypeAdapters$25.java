@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 class TypeAdapters$25 extends TypeAdapter<JsonElement> {
     TypeAdapters$25() {
     }

@@ -6,7 +6,6 @@ import android.support.v4.internal.view.SupportMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MenuCompat {
     @Deprecated
     public static void setShowAsAction(MenuItem menuItem, int i) {

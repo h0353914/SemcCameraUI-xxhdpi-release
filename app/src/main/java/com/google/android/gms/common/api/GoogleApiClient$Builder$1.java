@@ -2,7 +2,6 @@ package com.google.android.gms.common.api;
 
 import com.google.android.gms.internal.zzlp;
 
-/* JADX INFO: loaded from: classes.dex */
 class GoogleApiClient$Builder$1 implements Runnable {
     final /* synthetic */ GoogleApiClient zzWT;
     final /* synthetic */ GoogleApiClient$Builder zzaaU;

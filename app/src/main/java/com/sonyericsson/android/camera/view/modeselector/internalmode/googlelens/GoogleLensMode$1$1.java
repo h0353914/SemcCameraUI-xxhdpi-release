@@ -4,7 +4,6 @@ import com.google.lens.sdk.LensApi$LensAvailabilityCallback;
 import com.google.lens.sdk.LensApi$LensAvailabilityStatus;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class GoogleLensMode$1$1 implements LensApi$LensAvailabilityCallback {
     final /* synthetic */ GoogleLensMode$1 this$1;
 

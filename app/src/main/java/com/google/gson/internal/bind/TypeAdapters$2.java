@@ -8,7 +8,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.BitSet;
 
-/* JADX INFO: loaded from: classes.dex */
 class TypeAdapters$2 extends TypeAdapter<BitSet> {
     TypeAdapters$2() {
     }

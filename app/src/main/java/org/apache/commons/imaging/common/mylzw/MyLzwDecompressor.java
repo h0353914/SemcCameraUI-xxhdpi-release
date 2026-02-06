@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.ByteOrder;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MyLzwDecompressor {
     private static final int MAX_TABLE_SIZE = 4096;
     private final ByteOrder byteOrder;

@@ -6,7 +6,6 @@ import android.os.RemoteException;
 import android.support.v4.media.session.MediaSessionCompat$Token;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 interface MediaBrowserServiceCompat$ServiceCallbacks {
     IBinder asBinder();
 

@@ -7,7 +7,6 @@ import android.support.v7.recyclerview.R$id;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ItemTouchUIUtilImpl implements ItemTouchUIUtil {
     static final ItemTouchUIUtil INSTANCE = new ItemTouchUIUtilImpl();
 

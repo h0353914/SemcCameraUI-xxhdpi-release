@@ -1,6 +1,5 @@
 package com.sonymobile.android.media.internal;
 
-/* JADX INFO: loaded from: classes.dex */
 enum SomcMediaRecorder$States {
     INITIAL,
     INITIALIZED,

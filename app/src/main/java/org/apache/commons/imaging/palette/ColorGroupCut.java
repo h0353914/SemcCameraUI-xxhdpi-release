@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.palette;
 
-/* JADX INFO: loaded from: classes.dex */
 class ColorGroupCut {
     public final ColorGroup less;
     public final int limit;

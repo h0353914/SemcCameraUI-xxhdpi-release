@@ -12,7 +12,6 @@ import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 import com.sonyericsson.android.camera.parameter.ParameterUtil;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 public class VideoSizeApplier extends DependencyApplier {
     public static final String TAG = "VideoSizeApplier";
     private final VideoSize mValue;

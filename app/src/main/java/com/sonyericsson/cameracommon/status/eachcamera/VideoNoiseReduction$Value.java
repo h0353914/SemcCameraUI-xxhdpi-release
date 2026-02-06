@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.status.eachcamera;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum VideoNoiseReduction$Value {
     ON("on"),
     OFF("off");

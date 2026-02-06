@@ -2,7 +2,6 @@ package android.support.v4.widget;
 
 import android.database.DataSetObserver;
 
-/* JADX INFO: loaded from: classes.dex */
 class CursorAdapter$MyDataSetObserver extends DataSetObserver {
     final /* synthetic */ CursorAdapter this$0;
 

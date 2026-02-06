@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera;
 import android.os.Handler;
 import android.os.Message;
 
-/* JADX INFO: loaded from: classes.dex */
 class AutoPowerOffTimer$AutoPowerOffHandler extends Handler {
     private static final int MSG_AUTO_POWER_OFF = 2;
     private static final int MSG_AUTO_POWER_OFF_WARNING = 1;

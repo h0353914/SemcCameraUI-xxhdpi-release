@@ -6,7 +6,6 @@ import android.graphics.Rect;
 import android.support.v4.graphics.BitmapCompat;
 import android.support.v4.view.GravityCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 class RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable extends RoundedBitmapDrawable {
     RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable(Resources resources, Bitmap bitmap) {
         super(resources, bitmap);

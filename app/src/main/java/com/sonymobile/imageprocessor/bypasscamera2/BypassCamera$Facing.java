@@ -1,6 +1,5 @@
 package com.sonymobile.imageprocessor.bypasscamera2;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum BypassCamera$Facing {
     BACK(0),
     FRONT(1);

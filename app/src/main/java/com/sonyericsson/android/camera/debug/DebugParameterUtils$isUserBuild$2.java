@@ -9,7 +9,6 @@ import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 
 /* JADX INFO: compiled from: DebugParameterUtils.kt */
-/* JADX INFO: loaded from: classes.dex */
 @Metadata(bv = {1, 0, 2}, d1 = {"\u0000\b\n\u0000\n\u0002\u0010\u000b\n\u0000\u0010\u0000\u001a\u00020\u0001H\n¢\u0006\u0002\b\u0002"}, d2 = {"<anonymous>", "", "invoke"}, k = 3, mv = {1, 1, 11})
 final class DebugParameterUtils$isUserBuild$2 extends Lambda implements Function0<Boolean> {
     public static final DebugParameterUtils$isUserBuild$2 INSTANCE = new DebugParameterUtils$isUserBuild$2();

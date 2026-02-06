@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.contentsview;
 import android.graphics.Bitmap;
 import com.sonyericsson.cameracommon.contentsview.contents.Content;
 
-/* JADX INFO: loaded from: classes.dex */
 class ContentLoader$DataLoadResult {
     private Bitmap mBitmap;
     private Content mContent;

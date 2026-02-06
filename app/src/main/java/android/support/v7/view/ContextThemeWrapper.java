@@ -11,7 +11,6 @@ import android.support.annotation.StyleRes;
 import android.support.v7.appcompat.R$style;
 import android.view.LayoutInflater;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ContextThemeWrapper extends ContextWrapper {
     private LayoutInflater mInflater;
     private Configuration mOverrideConfiguration;

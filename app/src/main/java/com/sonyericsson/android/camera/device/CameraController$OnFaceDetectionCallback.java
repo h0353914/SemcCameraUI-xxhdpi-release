@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraController$OnFaceDetectionCallback implements CameraParameters$FaceDetectionCallback {
     final /* synthetic */ CameraController this$0;
 

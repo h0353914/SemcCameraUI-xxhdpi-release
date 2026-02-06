@@ -82,7 +82,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CancellationException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CameraDeviceHandler {
     static final long CLOSE_BYPASS_CAMERA_TIMEOUT_MILLIS = 100000;
     private static final long DELAY_STATUS_PROVIDER_UPDATE_UNTIL_RECORDING_STARTED_MILLIS = 3000;

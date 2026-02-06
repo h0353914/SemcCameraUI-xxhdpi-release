@@ -4,7 +4,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View$OnTouchListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingItemSlider$2 implements View$OnTouchListener {
     final /* synthetic */ SettingItemSlider this$0;
 

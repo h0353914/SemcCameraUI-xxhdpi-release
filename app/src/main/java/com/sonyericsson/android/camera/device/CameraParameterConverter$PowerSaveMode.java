@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 enum CameraParameterConverter$PowerSaveMode {
     OFF("off", 0),
     LOW("low", 1),

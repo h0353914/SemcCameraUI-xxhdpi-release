@@ -3,7 +3,6 @@ package com.sonymobile.sidetouchgesturedetector;
 import android.database.ContentObserver;
 import android.os.Handler;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchGestureDetector$DynamicSettings$1 extends ContentObserver {
     final /* synthetic */ SideTouchGestureDetector$DynamicSettings this$1;
 

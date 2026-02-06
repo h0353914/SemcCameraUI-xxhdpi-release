@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 class FileProvider$SimplePathStrategy implements FileProvider$PathStrategy {
     private final String mAuthority;
     private final HashMap<String, File> mRoots = new HashMap<>();

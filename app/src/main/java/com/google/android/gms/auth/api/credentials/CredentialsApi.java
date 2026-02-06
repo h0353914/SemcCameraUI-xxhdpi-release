@@ -4,7 +4,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Status;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface CredentialsApi {
     public static final int ACTIVITY_RESULT_ADD_ACCOUNT = 1000;
 

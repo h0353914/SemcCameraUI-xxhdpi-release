@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.recorder.superslowrecorder;
 import com.sonyericsson.android.camera.recorder.defaultrecorder.DefaultRecorderController$CallbackLock;
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$StartSuperSlowRecordingCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class SuperSlowRecorderController$StartSuperSlowRecordingCallbackImpl implements BypassCamera$StartSuperSlowRecordingCallback {
     private final DefaultRecorderController$CallbackLock mLock;
 

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.tutorial;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum TutorialController$DisplayTrigger {
     SETUP_WIZARD,
     CHANGE_MODE,

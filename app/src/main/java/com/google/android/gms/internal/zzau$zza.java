@@ -10,7 +10,6 @@ import android.os.RemoteException;
 import com.google.android.gms.auth.AccountChangeEventsRequest;
 import com.google.android.gms.auth.AccountChangeEventsResponse;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzau$zza extends Binder implements zzau {
     public static zzau zza(IBinder iBinder) {
         if (iBinder == null) {

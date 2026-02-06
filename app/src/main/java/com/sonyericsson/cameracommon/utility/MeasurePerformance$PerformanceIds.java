@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.utility;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum MeasurePerformance$PerformanceIds {
     ON_CREATE("[SEQ][START UP]"),
     ON_START("[START UP]"),

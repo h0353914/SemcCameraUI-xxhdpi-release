@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.configuration.parameters.VolumeKey;
 import com.sonyericsson.android.camera.setting.UserSettings;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class KeyEventTranslator {
     public static final String TAG = "KeyEventTranslator";
     private KeyEventTranslator$KeyType mCurrentKeyType = KeyEventTranslator$KeyType.NON;

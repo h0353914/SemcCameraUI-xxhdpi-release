@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.controller;
 import com.sonyericsson.cameracommon.storage.Storage$StorageReadyState;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateResume$1$1 implements Runnable {
     final /* synthetic */ StateMachine$StateResume$1 this$2;
     final /* synthetic */ Storage$StorageReadyState val$state;

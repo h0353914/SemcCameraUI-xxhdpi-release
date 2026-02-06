@@ -5,7 +5,6 @@ import android.view.Menu;
 import android.view.View;
 import android.view.Window$Callback;
 
-/* JADX INFO: loaded from: classes.dex */
 class ToolbarActionBar$ToolbarCallbackWrapper extends WindowCallbackWrapper {
     final /* synthetic */ ToolbarActionBar this$0;
 

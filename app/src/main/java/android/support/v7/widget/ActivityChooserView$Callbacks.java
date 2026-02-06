@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView$OnItemClickListener;
 import android.widget.PopupWindow$OnDismissListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActivityChooserView$Callbacks implements AdapterView$OnItemClickListener, View$OnClickListener, View$OnLongClickListener, PopupWindow$OnDismissListener {
     final /* synthetic */ ActivityChooserView this$0;
 

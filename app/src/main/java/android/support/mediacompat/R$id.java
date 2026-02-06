@@ -1,6 +1,5 @@
 package android.support.mediacompat;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$id {
     public static final int action0 = 2131296262;
     public static final int action_container = 2131296270;

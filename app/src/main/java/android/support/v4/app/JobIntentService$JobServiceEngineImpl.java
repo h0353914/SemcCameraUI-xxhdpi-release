@@ -6,7 +6,6 @@ import android.app.job.JobWorkItem;
 import android.os.IBinder;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(26)
 final class JobIntentService$JobServiceEngineImpl extends JobServiceEngine implements JobIntentService$CompatJobEngine {
     static final boolean DEBUG = false;

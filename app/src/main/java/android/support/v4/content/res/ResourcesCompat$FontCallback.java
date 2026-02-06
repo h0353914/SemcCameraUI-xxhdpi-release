@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class ResourcesCompat$FontCallback {
     public abstract void onFontRetrievalFailed(int i);
 

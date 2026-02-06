@@ -1,6 +1,5 @@
 package com.google.android.gms.internal;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlr$3 extends zzlr<Integer> {
     zzlr$3(String str, Integer num) {
         super(str, num);

@@ -4,7 +4,6 @@ import android.app.AlertDialog$Builder;
 import android.content.Context;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RotatableDialog$Builder extends AlertDialog$Builder {
     private RotatableDialog$Cancelable mIsCancelable;
     private RotatableDialog$Cancelable mIsCancelableOnTouchOutside;

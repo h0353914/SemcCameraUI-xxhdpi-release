@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.Callable;
 
-/* JADX INFO: loaded from: classes.dex */
 class PlatformCapability$PrepareParametersTask implements Callable<Map<PlatformCapability$HolderType, ParameterHolder>> {
     private PlatformCapability$PrepareParametersTask() {
     }

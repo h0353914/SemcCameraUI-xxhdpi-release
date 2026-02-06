@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.os.Build$VERSION;
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class BitmapCompat {
     public static boolean hasMipMap(@NonNull Bitmap bitmap) {
         if (Build$VERSION.SDK_INT >= 18) {

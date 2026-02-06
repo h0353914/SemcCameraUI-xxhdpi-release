@@ -2,7 +2,6 @@ package com.google.android.apps.gsa.search.shared.service.proto;
 
 import com.google.protobuf.GeneratedMessageLite$ExtendableBuilder;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ClientEventProto$Builder extends GeneratedMessageLite$ExtendableBuilder<ClientEventProto, ClientEventProto$Builder> implements ClientEventProtoOrBuilder {
     /* synthetic */ ClientEventProto$Builder(ClientEventProto$1 clientEventProto$1) {
         this();

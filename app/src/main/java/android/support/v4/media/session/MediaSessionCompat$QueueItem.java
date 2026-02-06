@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaSessionCompat$QueueItem implements Parcelable {
     public static final Parcelable$Creator<MediaSessionCompat$QueueItem> CREATOR = new MediaSessionCompat$QueueItem$1();
     public static final int UNKNOWN_ID = -1;

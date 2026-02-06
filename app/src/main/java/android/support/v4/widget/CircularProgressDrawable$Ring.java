@@ -11,7 +11,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 class CircularProgressDrawable$Ring {
     Path mArrow;
     int mArrowHeight;

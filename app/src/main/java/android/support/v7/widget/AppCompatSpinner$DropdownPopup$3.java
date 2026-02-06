@@ -4,7 +4,6 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver$OnGlobalLayoutListener;
 import android.widget.PopupWindow$OnDismissListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatSpinner$DropdownPopup$3 implements PopupWindow$OnDismissListener {
     final /* synthetic */ AppCompatSpinner$DropdownPopup this$1;
     final /* synthetic */ ViewTreeObserver$OnGlobalLayoutListener val$layoutListener;

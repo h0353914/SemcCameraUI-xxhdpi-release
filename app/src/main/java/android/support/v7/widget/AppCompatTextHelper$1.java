@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.res.ResourcesCompat$FontCallback;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatTextHelper$1 extends ResourcesCompat$FontCallback {
     final /* synthetic */ AppCompatTextHelper this$0;
     final /* synthetic */ WeakReference val$textViewWeak;

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import android.support.annotation.WorkerThread;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class CameraDeviceHandler$CameraControllerCallbackImpl$OnDisconnectedTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     final /* synthetic */ CameraDeviceHandler$CameraControllerCallbackImpl this$1;

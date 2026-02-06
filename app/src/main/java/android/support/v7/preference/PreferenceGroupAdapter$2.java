@@ -3,7 +3,6 @@ package android.support.v7.preference;
 import android.support.v7.util.DiffUtil$Callback;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class PreferenceGroupAdapter$2 extends DiffUtil$Callback {
     final /* synthetic */ PreferenceGroupAdapter this$0;
     final /* synthetic */ PreferenceManager$PreferenceComparisonCallback val$comparisonCallback;

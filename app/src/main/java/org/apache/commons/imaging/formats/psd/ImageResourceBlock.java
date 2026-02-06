@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.psd;
 import java.io.UnsupportedEncodingException;
 import org.apache.commons.imaging.util.Debug;
 
-/* JADX INFO: loaded from: classes.dex */
 class ImageResourceBlock {
     final byte[] data;
     final int id;

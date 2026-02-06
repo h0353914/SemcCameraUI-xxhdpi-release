@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.view.ViewGroup$LayoutParams;
 import android.view.ViewGroup$MarginLayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Toolbar$LayoutParams extends ActionBar$LayoutParams {
     static final int CUSTOM = 0;
     static final int EXPANDED = 2;

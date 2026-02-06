@@ -4,7 +4,6 @@ import java.io.IOException;
 import org.apache.commons.imaging.ImageWriteException;
 import org.apache.commons.imaging.common.BinaryOutputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffOutputItem$Value extends TiffOutputItem {
     private final byte[] bytes;
     private final String name;

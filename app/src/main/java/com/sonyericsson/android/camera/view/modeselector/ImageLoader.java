@@ -22,7 +22,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.concurrent.Executor;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ImageLoader {
     private static final boolean DEBUG = false;
     private static final int FADE_IN_TRANSITION_DURATION = 200;

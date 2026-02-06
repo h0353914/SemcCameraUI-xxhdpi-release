@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.view.modeselector.ModeLoader$OnModeListCh
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MruButtonContainer$2 implements ModeLoader$OnModeListChangeListener {
     final /* synthetic */ MruButtonContainer this$0;
 

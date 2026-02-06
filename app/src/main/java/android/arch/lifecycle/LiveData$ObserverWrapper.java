@@ -1,6 +1,5 @@
 package android.arch.lifecycle;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class LiveData$ObserverWrapper {
     boolean mActive;
     int mLastVersion = -1;

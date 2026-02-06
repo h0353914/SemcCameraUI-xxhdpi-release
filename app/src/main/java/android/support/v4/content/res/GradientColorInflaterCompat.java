@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 final class GradientColorInflaterCompat {
     private static final int TILE_MODE_CLAMP = 0;

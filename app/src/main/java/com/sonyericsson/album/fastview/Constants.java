@@ -1,6 +1,5 @@
 package com.sonyericsson.album.fastview;
 
-/* JADX INFO: loaded from: classes.dex */
 class Constants {
     static final String ALBUM_PACKAGE = "com.sonyericsson.album";
     static final String CLASS_KEY = "com.sonyericsson.album.fastview.class";

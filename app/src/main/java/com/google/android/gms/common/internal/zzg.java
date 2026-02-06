@@ -6,7 +6,6 @@ import android.util.Log;
 import com.google.android.gms.R$string;
 import com.google.android.gms.internal.zzmq;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzg {
     public static String zzc(Context context, int i, String str) {
         Resources resources = context.getResources();

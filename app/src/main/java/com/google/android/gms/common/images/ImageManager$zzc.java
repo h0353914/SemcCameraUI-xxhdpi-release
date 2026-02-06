@@ -8,7 +8,6 @@ import android.util.Log;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
-/* JADX INFO: loaded from: classes.dex */
 final class ImageManager$zzc implements Runnable {
     private final Uri mUri;
     final /* synthetic */ ImageManager zzadR;

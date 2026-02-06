@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewPropertyAnimatorCompat$1 extends AnimatorListenerAdapter {
     final /* synthetic */ ViewPropertyAnimatorCompat this$0;
     final /* synthetic */ ViewPropertyAnimatorListener val$listener;

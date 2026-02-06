@@ -3,7 +3,6 @@ package android.support.v7.view.menu;
 import android.view.View;
 import android.view.View$OnAttachStateChangeListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class CascadingMenuPopup$2 implements View$OnAttachStateChangeListener {
     final /* synthetic */ CascadingMenuPopup this$0;
 

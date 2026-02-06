@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.png;
 
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum PngColorType {
     GREYSCALE(0, true, false, 1, new int[]{1, 2, 4, 8, 16}),
     TRUE_COLOR(2, false, false, 3, new int[]{8, 16}),

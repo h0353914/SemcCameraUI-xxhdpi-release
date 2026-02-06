@@ -4,7 +4,6 @@ import android.content.res.Resources;
 import android.os.Build$VERSION;
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ConfigurationHelper {
     private ConfigurationHelper() {
     }

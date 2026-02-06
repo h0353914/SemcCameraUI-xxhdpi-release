@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.device.CameraParameters$ObjectTrackingRes
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StatePhotoWaitingTrackedObjectForAfStart extends StateMachine$State {
     boolean mIsAutoFocusStarted;
     boolean mIsBurstCaptureRequired;

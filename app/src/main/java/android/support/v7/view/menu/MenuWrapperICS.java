@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 
-/* JADX INFO: loaded from: classes.dex */
 class MenuWrapperICS extends BaseMenuWrapper<SupportMenu> implements Menu {
     MenuWrapperICS(Context context, SupportMenu supportMenu) {
         super(context, supportMenu);

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import android.animation.Animator;
 import android.animation.Animator$AnimatorListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class BurstCountView$1 implements Animator$AnimatorListener {
     final /* synthetic */ BurstCountView this$0;
 

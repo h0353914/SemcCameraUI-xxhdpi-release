@@ -2,7 +2,6 @@ package android.support.v4.app;
 
 import android.content.Intent;
 
-/* JADX INFO: loaded from: classes.dex */
 final class JobIntentService$CompatWorkItem implements JobIntentService$GenericWorkItem {
     final Intent mIntent;
     final int mStartId;

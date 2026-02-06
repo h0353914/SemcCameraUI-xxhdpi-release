@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonymobile.cameracommon.evf.Evf;
 import com.sonymobile.cameracommon.evf.Evf$LifeCycleCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$EvfLifeCycleCallback implements Evf$LifeCycleCallback {
     final /* synthetic */ ViewFinderImpl this$0;
 

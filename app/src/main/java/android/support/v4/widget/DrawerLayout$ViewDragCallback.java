@@ -2,7 +2,6 @@ package android.support.v4.widget;
 
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class DrawerLayout$ViewDragCallback extends ViewDragHelper$Callback {
     private final int mAbsGravity;
     private ViewDragHelper mDragger;

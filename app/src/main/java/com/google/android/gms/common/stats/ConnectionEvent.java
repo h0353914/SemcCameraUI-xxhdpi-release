@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable$Creator;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ConnectionEvent extends zzf implements SafeParcelable {
     public static final Parcelable$Creator<ConnectionEvent> CREATOR = new zza();
     final int mVersionCode;

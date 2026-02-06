@@ -16,7 +16,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 class TypefaceCompatApi21Impl extends TypefaceCompatBaseImpl {

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class GestureShutterView$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$view$GestureShutterView$AnimationType = new int[GestureShutterView$AnimationType.values().length];
 

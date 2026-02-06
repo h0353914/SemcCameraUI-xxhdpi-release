@@ -3,7 +3,6 @@ package android.support.v4.util;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SparseArrayCompat<E> implements Cloneable {
     private static final Object DELETED = new Object();
     private boolean mGarbage;

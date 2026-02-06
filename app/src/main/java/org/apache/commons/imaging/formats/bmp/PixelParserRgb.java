@@ -5,7 +5,6 @@ import java.nio.ByteOrder;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFunctions;
 
-/* JADX INFO: loaded from: classes.dex */
 class PixelParserRgb extends PixelParserSimple {
     private int bytecount;
     private int cachedBitCount;

@@ -3,7 +3,6 @@ package com.google.android.apps.gsa.search.shared.service.proto;
 import com.google.protobuf.Internal$EnumLite;
 import com.google.protobuf.Internal$EnumLiteMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ServiceEventId implements Internal$EnumLite {
     ATTACH_WEBVIEW(1),
     SHOW_WEBVIEW(63),

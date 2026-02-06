@@ -1,6 +1,5 @@
 package android.support.v4.media;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class AudioAttributesCompat$AudioManagerHidden {
     public static final int STREAM_ACCESSIBILITY = 10;
     public static final int STREAM_BLUETOOTH_SCO = 6;

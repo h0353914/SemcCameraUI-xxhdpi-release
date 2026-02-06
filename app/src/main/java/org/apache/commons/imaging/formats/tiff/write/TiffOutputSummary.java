@@ -7,7 +7,6 @@ import java.util.Map;
 import org.apache.commons.imaging.ImageWriteException;
 import org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType;
 
-/* JADX INFO: loaded from: classes.dex */
 class TiffOutputSummary {
     public final ByteOrder byteOrder;
     public final Map<Integer, TiffOutputDirectory> directoryTypeMap;

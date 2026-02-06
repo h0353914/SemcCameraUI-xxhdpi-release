@@ -23,7 +23,6 @@ import android.support.v4.app.NotificationCompat$Style;
 import android.support.v4.media.session.MediaSessionCompat$Token;
 import android.widget.RemoteViews;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NotificationCompat$MediaStyle extends NotificationCompat$Style {
     private static final int MAX_MEDIA_BUTTONS = 5;
     private static final int MAX_MEDIA_BUTTONS_IN_COMPACT = 3;

@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.jpeg;
 import java.io.IOException;
 import org.apache.commons.imaging.ImageReadException;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface JpegUtils$Visitor {
     boolean beginSOS();
 

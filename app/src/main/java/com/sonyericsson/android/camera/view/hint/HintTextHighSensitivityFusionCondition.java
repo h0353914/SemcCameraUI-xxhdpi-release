@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.hint;
 
-/* JADX INFO: loaded from: classes.dex */
 public class HintTextHighSensitivityFusionCondition extends HintTextContent {
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
     public int getButtonMessageResourceId() {

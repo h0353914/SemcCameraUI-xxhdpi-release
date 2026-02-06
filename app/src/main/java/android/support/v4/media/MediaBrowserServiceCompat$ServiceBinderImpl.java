@@ -5,7 +5,6 @@ import android.os.IBinder;
 import android.support.v4.os.ResultReceiver;
 import android.text.TextUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$ServiceBinderImpl {
     final /* synthetic */ MediaBrowserServiceCompat this$0;
 

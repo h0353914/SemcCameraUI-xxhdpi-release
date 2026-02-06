@@ -8,7 +8,6 @@ import java.util.List;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFunctions;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DqtSegment extends Segment {
     public final List<DqtSegment$QuantizationTable> quantizationTables;
 

@@ -12,7 +12,6 @@ import android.graphics.Shader;
 import android.support.v4.content.res.ComplexColorCompat;
 import android.support.v4.util.ArrayMap;
 
-/* JADX INFO: loaded from: classes.dex */
 class VectorDrawableCompat$VPathRenderer {
     private static final Matrix IDENTITY_MATRIX = new Matrix();
     float mBaseHeight;

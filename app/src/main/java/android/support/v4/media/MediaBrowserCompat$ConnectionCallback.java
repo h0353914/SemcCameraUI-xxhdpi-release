@@ -2,7 +2,6 @@ package android.support.v4.media;
 
 import android.os.Build$VERSION;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaBrowserCompat$ConnectionCallback {
     MediaBrowserCompat$ConnectionCallback$ConnectionCallbackInternal mConnectionCallbackInternal;
     final Object mConnectionCallbackObj;

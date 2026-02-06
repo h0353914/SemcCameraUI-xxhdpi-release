@@ -13,7 +13,6 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class IMediaSession$Stub$Proxy implements IMediaSession {
     private IBinder mRemote;
 

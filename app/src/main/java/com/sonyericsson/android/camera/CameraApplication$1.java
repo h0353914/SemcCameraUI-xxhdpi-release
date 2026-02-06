@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability$OnPlatformCapabilityPreparedCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraApplication$1 implements PlatformCapability$OnPlatformCapabilityPreparedCallback {
     final /* synthetic */ CameraApplication this$0;
 

@@ -4,7 +4,6 @@ import kotlin.SinceKotlin;
 import kotlin.reflect.KCallable;
 import kotlin.reflect.KFunction;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FunctionReference extends CallableReference implements FunctionBase, KFunction {
     private final int arity;
 

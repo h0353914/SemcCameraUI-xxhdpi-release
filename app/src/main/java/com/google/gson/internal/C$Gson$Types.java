@@ -14,7 +14,6 @@ import java.util.NoSuchElementException;
 import java.util.Properties;
 
 /* JADX INFO: renamed from: com.google.gson.internal.$Gson$Types, reason: invalid class name */
-/* JADX INFO: loaded from: classes.dex */
 public final class C$Gson$Types {
     static final Type[] EMPTY_TYPE_ARRAY = new Type[0];
 

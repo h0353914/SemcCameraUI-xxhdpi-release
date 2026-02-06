@@ -10,7 +10,6 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import java.util.Collection;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GetServiceRequest implements SafeParcelable {
     public static final Parcelable$Creator<GetServiceRequest> CREATOR = new zzi();
     final int version;

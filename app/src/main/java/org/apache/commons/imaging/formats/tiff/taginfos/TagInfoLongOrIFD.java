@@ -5,7 +5,6 @@ import org.apache.commons.imaging.common.ByteConversions;
 import org.apache.commons.imaging.formats.tiff.constants.TiffDirectoryType;
 import org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TagInfoLongOrIFD extends TagInfo {
     public TagInfoLongOrIFD(String str, int i, int i2, TiffDirectoryType tiffDirectoryType) {
         super(str, i, FieldType.LONG_OR_IFD, i2, tiffDirectoryType);

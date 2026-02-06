@@ -1,6 +1,5 @@
 package org.apache.commons.imaging;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ImagingConstants {
     public static final String BUFFERED_IMAGE_FACTORY = "BUFFERED_IMAGE_FACTORY";
     public static final String PARAM_KEY_COMPRESSION = "COMPRESSION";

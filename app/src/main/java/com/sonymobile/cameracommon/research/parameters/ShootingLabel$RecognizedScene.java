@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ShootingLabel$RecognizedScene implements ShootingLabel$StringParameter {
     AUTO("auto"),
     ACTION("action"),

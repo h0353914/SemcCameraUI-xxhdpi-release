@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera;
 import android.content.Context;
 import android.view.OrientationEventListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$ExtendedOrientationEventListener extends OrientationEventListener {
     final /* synthetic */ CameraActivity this$0;
 

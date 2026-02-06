@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.research;
 
 import com.sonymobile.cameracommon.research.idd.IddUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$OnResumeTask implements Runnable {
     private final boolean mIsPanorama;
     final /* synthetic */ ResearchUtil this$0;

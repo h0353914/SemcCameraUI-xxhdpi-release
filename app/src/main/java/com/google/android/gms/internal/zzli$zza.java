@@ -5,7 +5,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 final class zzli$zza extends Handler {
     final /* synthetic */ zzli zzacr;
 

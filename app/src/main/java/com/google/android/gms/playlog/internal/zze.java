@@ -3,7 +3,6 @@ package com.google.android.gms.playlog.internal;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zze implements Parcelable$Creator<PlayLoggerContext> {
     static void zza(PlayLoggerContext playLoggerContext, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);

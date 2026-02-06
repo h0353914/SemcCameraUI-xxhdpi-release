@@ -1,6 +1,5 @@
 package com.sonymobile.imageprocessor.bypasscamera2;
 
-/* JADX INFO: loaded from: classes.dex */
 class BypassCamera$CallbackPrepareBurstTask implements Runnable {
     private final boolean mIsSuccess;
     final /* synthetic */ BypassCamera this$0;

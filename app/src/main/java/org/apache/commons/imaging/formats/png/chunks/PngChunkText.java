@@ -6,7 +6,6 @@ import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.formats.png.PngText;
 import org.apache.commons.imaging.formats.png.PngText$Text;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PngChunkText extends PngTextChunk {
     public final String keyword;
     public final String text;

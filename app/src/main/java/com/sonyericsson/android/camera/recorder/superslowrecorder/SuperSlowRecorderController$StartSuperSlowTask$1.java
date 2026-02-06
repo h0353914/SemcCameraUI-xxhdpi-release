@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.recorder.superslowrecorder;
 
-/* JADX INFO: loaded from: classes.dex */
 class SuperSlowRecorderController$StartSuperSlowTask$1 implements Runnable {
     final /* synthetic */ SuperSlowRecorderController$StartSuperSlowTask this$1;
 

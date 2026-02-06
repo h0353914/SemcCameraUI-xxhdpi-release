@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.angle;
 
-/* JADX INFO: loaded from: classes.dex */
 public class KeyZoomStepCalculator implements VariableIndex$Calculator {
     private static final int ZOOM_STEP_THRESHOLD_FOR_ZOOM_LEVER_1_MILLIS = 500;
     private static final int ZOOM_STEP_THRESHOLD_FOR_ZOOM_LEVER_2_MILLIS = 750;

@@ -8,7 +8,6 @@ import java.io.PushbackInputStream;
 import java.util.Map;
 import org.apache.commons.imaging.ImageReadException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BasicCParser {
     private final PushbackInputStream is;
 

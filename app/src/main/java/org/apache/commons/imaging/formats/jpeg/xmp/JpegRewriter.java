@@ -14,7 +14,6 @@ import org.apache.commons.imaging.formats.jpeg.JpegConstants;
 import org.apache.commons.imaging.formats.jpeg.JpegUtils;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JpegRewriter extends BinaryFileParser {
     private static final ByteOrder JPEG_BYTE_ORDER = ByteOrder.BIG_ENDIAN;
     private static final JpegRewriter$SegmentFilter EXIF_SEGMENT_FILTER = new JpegRewriter$1();

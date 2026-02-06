@@ -8,7 +8,6 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ValidateAccountRequest implements SafeParcelable {
     public static final Parcelable$Creator<ValidateAccountRequest> CREATOR = new zzad();
     final int mVersionCode;

@@ -5,7 +5,6 @@ import android.animation.Animator$AnimatorListener;
 import android.animation.AnimatorSet;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class TransitionAnimationController$TransitionAnimatorListener implements Animator$AnimatorListener {
     private final TransitionAnimationController$TransitionAnimationCallback mCallback;
     private final AnimationRequest mRequest;

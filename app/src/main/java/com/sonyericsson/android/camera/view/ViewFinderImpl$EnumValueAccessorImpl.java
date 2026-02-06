@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue
 import com.sonyericsson.android.camera.setting.UserSettings;
 import com.sonyericsson.android.camera.view.overlaycontrol.EnumValueAccessor;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$EnumValueAccessorImpl<T extends UserSettingValue> implements EnumValueAccessor<T> {
     private final UserSettingKey mKey;
     private final UserSettings mSettings;

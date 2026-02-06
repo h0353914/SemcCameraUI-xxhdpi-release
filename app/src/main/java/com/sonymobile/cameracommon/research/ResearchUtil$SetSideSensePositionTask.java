@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SetSideSensePositionTask implements Runnable {
     private final int mX;
     private final int mY;

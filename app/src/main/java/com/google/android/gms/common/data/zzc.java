@@ -5,7 +5,6 @@ import android.net.Uri;
 import com.google.android.gms.common.internal.zzw;
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzc {
     protected final DataHolder zzabq;
     protected int zzadl;

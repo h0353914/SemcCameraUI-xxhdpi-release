@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 import com.sonyericsson.android.camera.view.animation.AnimationRequest$AnimationType;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$ChangeCameraModeTask implements Runnable {
     private final CapturingMode mRequestMode;
     private final AnimationRequest$AnimationType mTriggerType;

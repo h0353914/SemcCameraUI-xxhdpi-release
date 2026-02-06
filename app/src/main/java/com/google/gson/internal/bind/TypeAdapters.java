@@ -15,7 +15,6 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.UUID;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TypeAdapters {
     public static final TypeAdapter<Class> CLASS = new TypeAdapters$1();
     public static final TypeAdapterFactory CLASS_FACTORY = newFactory(Class.class, CLASS);

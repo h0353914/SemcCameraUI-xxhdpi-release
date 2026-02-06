@@ -7,7 +7,6 @@ import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 import android.text.TextUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class PlaybackStateCompat$CustomAction implements Parcelable {
     public static final Parcelable$Creator<PlaybackStateCompat$CustomAction> CREATOR = new PlaybackStateCompat$CustomAction$1();
     private final String mAction;

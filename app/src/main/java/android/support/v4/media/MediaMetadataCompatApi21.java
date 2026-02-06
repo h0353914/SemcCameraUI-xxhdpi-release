@@ -6,7 +6,6 @@ import android.os.Parcel;
 import android.support.annotation.RequiresApi;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class MediaMetadataCompatApi21 {
     public static Set<String> keySet(Object obj) {

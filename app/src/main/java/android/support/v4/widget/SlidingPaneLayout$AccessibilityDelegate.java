@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class SlidingPaneLayout$AccessibilityDelegate extends AccessibilityDelegateCompat {
     private final Rect mTmpRect = new Rect();
     final /* synthetic */ SlidingPaneLayout this$0;

@@ -2,7 +2,6 @@ package com.google.android.gms.internal;
 
 import android.support.v4.app.FragmentActivity;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzli$8 implements Runnable {
     final /* synthetic */ zzli zzacr;
     final /* synthetic */ FragmentActivity zzacx;

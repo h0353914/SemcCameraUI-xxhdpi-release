@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AccessibilityEventFilter extends View$AccessibilityDelegate {
     public static final String TAG = "AccessibilityEventFilter";
     private String mAllowedClassName;

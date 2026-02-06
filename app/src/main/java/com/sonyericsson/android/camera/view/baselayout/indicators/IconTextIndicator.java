@@ -4,7 +4,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.sonyericsson.cameracommon.viewfinder.indicators.Indicator;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IconTextIndicator extends Indicator implements Runnable {
     private static final long TEXT_VISIBLE_DURATION = 2000;
     private int mOrientation;

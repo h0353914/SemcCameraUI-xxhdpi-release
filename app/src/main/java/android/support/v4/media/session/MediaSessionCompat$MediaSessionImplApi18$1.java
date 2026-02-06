@@ -2,7 +2,6 @@ package android.support.v4.media.session;
 
 import android.media.RemoteControlClient$OnPlaybackPositionUpdateListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionCompat$MediaSessionImplApi18$1 implements RemoteControlClient$OnPlaybackPositionUpdateListener {
     final /* synthetic */ MediaSessionCompat$MediaSessionImplApi18 this$0;
 

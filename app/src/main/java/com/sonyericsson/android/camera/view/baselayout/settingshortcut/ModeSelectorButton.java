@@ -8,7 +8,6 @@ import com.sonyericsson.cameracommon.utility.RotationUtil;
 import com.sonymobile.cameracommon.font.FontUtil;
 import com.sonymobile.cameracommon.font.FontUtil$RobotoFontType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ModeSelectorButton extends TextView {
     private boolean mIsAvailable;
     private int mOrientation;

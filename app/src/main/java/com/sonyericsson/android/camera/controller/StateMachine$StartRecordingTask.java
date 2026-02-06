@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StartRecordingTask implements Runnable {
     private final boolean mBySideSense;
     final /* synthetic */ StateMachine this$0;

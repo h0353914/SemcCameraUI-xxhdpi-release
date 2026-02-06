@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import android.view.animation.Animation;
 import android.view.animation.Animation$AnimationListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$20 implements Animation$AnimationListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

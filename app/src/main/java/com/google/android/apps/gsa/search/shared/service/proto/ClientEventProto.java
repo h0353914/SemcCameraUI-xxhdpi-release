@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 @ProtoMessage(checkInitialized = {}, messageSetWireFormat = false, protoSyntax = ProtoSyntax.PROTO2)
 public final class ClientEventProto extends GeneratedMessageLite$ExtendableMessage<ClientEventProto, ClientEventProto$Builder> implements ClientEventProtoOrBuilder {
     private static final ClientEventProto DEFAULT_INSTANCE = new ClientEventProto();

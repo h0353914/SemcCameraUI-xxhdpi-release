@@ -9,7 +9,6 @@ import android.text.Html$ImageGetter;
 import android.text.Html$TagHandler;
 import android.text.Spanned;
 
-/* JADX INFO: loaded from: classes.dex */
 @SuppressLint({"InlinedApi"})
 public final class HtmlCompat {
     public static final int FROM_HTML_MODE_COMPACT = 63;

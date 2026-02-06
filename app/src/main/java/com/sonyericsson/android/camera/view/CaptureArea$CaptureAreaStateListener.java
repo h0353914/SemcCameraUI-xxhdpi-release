@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import android.graphics.Point;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface CaptureArea$CaptureAreaStateListener {
     void onCaptureAreaCanceled();
 

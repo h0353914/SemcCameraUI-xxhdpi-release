@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import java.io.InputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class RoundedBitmapDrawableFactory {
     private static final String TAG = "RoundedBitmapDrawableFa";
 

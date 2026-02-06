@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.Map$Entry;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class RemoteInput {
     private static final String EXTRA_DATA_TYPE_RESULTS_DATA = "android.remoteinput.dataTypeResultsData";
     public static final String EXTRA_RESULTS_DATA = "android.remoteinput.resultsData";

@@ -4,7 +4,6 @@ import android.support.annotation.WorkerThread;
 import android.view.Surface;
 import com.sonyericsson.android.camera.util.PerfLog;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class CameraController$SetSurfaceTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     private final Surface mSurface;

@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.view.View;
 import android.view.ViewGroup$LayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 interface ChildHelper$Callback {
     void addView(View view, int i);
 

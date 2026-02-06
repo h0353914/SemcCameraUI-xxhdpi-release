@@ -12,7 +12,6 @@ import org.apache.commons.imaging.formats.tiff.TiffImageData$Strips;
 import org.apache.commons.imaging.formats.tiff.photometricinterpreters.PhotometricInterpreter;
 import org.apache.commons.imaging.formats.tiff.photometricinterpreters.PhotometricInterpreterRgb;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DataReaderStrips extends DataReader {
     private final int bitsPerPixel;
     private final ByteOrder byteOrder;

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$animator {
     public static final int somc_dialog_popup_enter = 2130837504;
     public static final int somc_dialog_popup_exit_landscape = 2130837505;

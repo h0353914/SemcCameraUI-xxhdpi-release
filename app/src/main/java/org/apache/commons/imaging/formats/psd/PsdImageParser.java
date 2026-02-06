@@ -34,7 +34,6 @@ import org.apache.commons.imaging.formats.psd.datareaders.DataReader;
 import org.apache.commons.imaging.formats.psd.datareaders.UncompressedDataReader;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PsdImageParser extends ImageParser {
     private static final String[] ACCEPTED_EXTENSIONS = {".psd"};
     public static final String BLOCK_NAME_XMP = "XMP";

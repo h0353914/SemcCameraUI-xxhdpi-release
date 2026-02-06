@@ -4,7 +4,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Animation$AnimationListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentManagerImpl$2 extends FragmentManagerImpl$AnimationListenerWrapper {
     final /* synthetic */ FragmentManagerImpl this$0;
     final /* synthetic */ ViewGroup val$container;

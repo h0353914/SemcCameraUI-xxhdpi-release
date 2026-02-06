@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.jpeg.exif;
 
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class ExifRewriter$JFIFPieces {
     public final List<ExifRewriter$JFIFPiece> exifPieces;
     public final List<ExifRewriter$JFIFPiece> pieces;

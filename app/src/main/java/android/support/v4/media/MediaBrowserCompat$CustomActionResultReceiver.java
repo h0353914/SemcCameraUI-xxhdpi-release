@@ -6,7 +6,6 @@ import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.os.ResultReceiver;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$CustomActionResultReceiver extends ResultReceiver {
     private final String mAction;
     private final MediaBrowserCompat$CustomActionCallback mCallback;

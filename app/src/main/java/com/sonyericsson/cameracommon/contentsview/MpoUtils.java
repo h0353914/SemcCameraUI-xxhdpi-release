@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MpoUtils {
     public static final int MULTIANGLE = 2;
     public static final int STEREO = 1;

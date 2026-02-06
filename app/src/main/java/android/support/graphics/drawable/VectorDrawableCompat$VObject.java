@@ -1,6 +1,5 @@
 package android.support.graphics.drawable;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class VectorDrawableCompat$VObject {
     public boolean isStateful() {
         return false;

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.device;
 import android.graphics.Rect;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 interface CameraController$CameraControllerCallback {
     void onCropRegionReady();
 

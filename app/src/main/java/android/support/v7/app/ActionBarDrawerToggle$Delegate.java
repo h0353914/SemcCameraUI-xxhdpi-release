@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.StringRes;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface ActionBarDrawerToggle$Delegate {
     Context getActionBarThemedContext();
 

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.hint;
 import android.os.Handler;
 import android.os.Message;
 
-/* JADX INFO: loaded from: classes.dex */
 class HintTextViewController$TimeoutHandler extends Handler {
     private static final int MSG_START_FADE_OUT = 2;
     private static final int MSG_TIMEOUT = 1;

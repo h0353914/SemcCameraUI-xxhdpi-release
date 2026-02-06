@@ -5,7 +5,6 @@ import android.graphics.Rect;
 import com.sonyericsson.android.camera.configuration.parameters.Resolution;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ResolutionOptions {
     public static final String TAG = "ResolutionOptions";
     private final String mDefaultResolution;

@@ -5,7 +5,6 @@ import android.os.Build$VERSION;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaSessionManager {
     static final String TAG = "MediaSessionManager";
     private static volatile MediaSessionManager sSessionManager;

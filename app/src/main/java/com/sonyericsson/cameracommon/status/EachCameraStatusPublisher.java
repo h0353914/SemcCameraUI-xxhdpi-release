@@ -29,7 +29,6 @@ import com.sonyericsson.cameracommon.status.eachcamera.VideoRecordingFps;
 import com.sonyericsson.cameracommon.status.eachcamera.VideoResolution;
 import com.sonyericsson.cameracommon.status.eachcamera.VideoStabilizerStatus;
 
-/* JADX INFO: loaded from: classes.dex */
 public class EachCameraStatusPublisher extends CameraStatusPublisher<EachCameraStatusValue> {
     private final String mKeyPrefix;
 

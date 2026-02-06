@@ -3,7 +3,6 @@ package android.support.v4.app;
 import android.os.Handler;
 import android.os.Message;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentActivity$1 extends Handler {
     final /* synthetic */ FragmentActivity this$0;
 

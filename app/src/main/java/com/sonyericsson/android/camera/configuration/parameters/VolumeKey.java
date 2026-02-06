@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum VolumeKey implements UserSettingValue {
     ZOOM(-1, 2131690254),
     VOLUME(-1, 2131690253),

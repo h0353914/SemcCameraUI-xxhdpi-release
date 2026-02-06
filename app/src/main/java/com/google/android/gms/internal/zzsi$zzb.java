@@ -2,7 +2,6 @@ package com.google.android.gms.internal;
 
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzsi$zzb extends zzry<zzsi$zzb> {
     public String version;
     public int zzbiJ;

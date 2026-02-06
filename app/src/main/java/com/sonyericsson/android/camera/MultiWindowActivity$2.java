@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface$OnCancelListener;
 import android.os.Process;
 
-/* JADX INFO: loaded from: classes.dex */
 class MultiWindowActivity$2 implements DialogInterface$OnCancelListener {
     final /* synthetic */ MultiWindowActivity this$0;
 

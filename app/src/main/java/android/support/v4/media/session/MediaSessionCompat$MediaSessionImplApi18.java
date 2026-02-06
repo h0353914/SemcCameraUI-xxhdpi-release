@@ -8,7 +8,6 @@ import android.os.SystemClock;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(18)
 class MediaSessionCompat$MediaSessionImplApi18 extends MediaSessionCompat$MediaSessionImplBase {
     private static boolean sIsMbrPendingIntentSupported = true;

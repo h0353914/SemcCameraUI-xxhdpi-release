@@ -1,6 +1,5 @@
 package android.support.v4.media;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$ConnectionRecord$1 implements Runnable {
     final /* synthetic */ MediaBrowserServiceCompat$ConnectionRecord this$1;
 

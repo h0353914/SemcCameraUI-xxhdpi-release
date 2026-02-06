@@ -1,6 +1,5 @@
 package com.google.protobuf.nano;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface DescriptorProtos$FileOptions$OptimizeMode {
 
     @NanoEnumValue(legacy = false, value = DescriptorProtos$FileOptions$OptimizeMode.class)

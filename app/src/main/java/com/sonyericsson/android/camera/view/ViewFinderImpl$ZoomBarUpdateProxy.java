@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import com.sonyericsson.android.camera.view.baselayout.zoombar.Zoombar;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewFinderImpl$ZoomBarUpdateProxy {
     private Zoombar mZoomBar;
 

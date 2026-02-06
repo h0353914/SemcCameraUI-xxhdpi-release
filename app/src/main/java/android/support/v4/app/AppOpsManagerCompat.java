@@ -6,7 +6,6 @@ import android.os.Build$VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class AppOpsManagerCompat {
     public static final int MODE_ALLOWED = 0;
     public static final int MODE_DEFAULT = 3;

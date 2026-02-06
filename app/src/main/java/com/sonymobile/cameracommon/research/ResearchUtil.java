@@ -32,7 +32,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ResearchUtil {
     private static final String DUAL_CAMERA_EFFECT_USAGE_DATA_CONTENT_URI = "content://com.sonymobile.addoncamera.dualcameraeffect.provider/UsageData";
     private static final String PORTRAIT_SELFIE_USAGE_DATA_CONTENT_URI = "content://com.sonymobile.addoncamera.beautyportrait.provider/UsageData";

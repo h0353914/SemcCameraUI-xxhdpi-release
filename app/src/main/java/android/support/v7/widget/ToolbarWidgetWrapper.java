@@ -29,7 +29,6 @@ import android.widget.AdapterView$OnItemSelectedListener;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ToolbarWidgetWrapper implements DecorToolbar {
     private static final int AFFECTS_LOGO_MASK = 3;

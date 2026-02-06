@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.device;
 import android.graphics.Rect;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraController$PreviewFrameReceiver$1 implements Runnable {
     final /* synthetic */ CameraController$PreviewFrameReceiver this$0;
     final /* synthetic */ ByteBuffer val$byteBuffer;

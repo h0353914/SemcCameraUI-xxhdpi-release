@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Flash implements UserSettingValue {
     AUTO(2131231047, 2131690114, "auto", true),
     ON(2131231048, 2131689836, "on", false),

@@ -6,7 +6,6 @@ import com.sonyericsson.cameracommon.storage.Storage;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import com.sonyericsson.cameracommon.utility.RecordingUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MaxVideoSize {
     public static final long GUARANTEED_MIN_DURATION_IN_MILLIS = 3000;
     private static final long MAX_FILE_SIZE_BYTES = 256000000000L;

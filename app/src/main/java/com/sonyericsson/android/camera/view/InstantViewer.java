@@ -31,7 +31,6 @@ import com.sonymobile.cameracommon.research.ResearchUtil;
 import java.util.Arrays;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class InstantViewer extends FrameLayout {
     private static final String ACTION_FAST_VIEW_MODE_LAUNCHED = "com.sonyericsson.album.intent.action.FAST_VIEW_MODE_LAUNCHED";
     public static final String TAG = "InstantViewer";

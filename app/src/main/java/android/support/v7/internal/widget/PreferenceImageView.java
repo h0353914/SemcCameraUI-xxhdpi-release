@@ -9,7 +9,6 @@ import android.util.AttributeSet;
 import android.view.View$MeasureSpec;
 import android.widget.ImageView;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class PreferenceImageView extends ImageView {
     private int mMaxHeight;

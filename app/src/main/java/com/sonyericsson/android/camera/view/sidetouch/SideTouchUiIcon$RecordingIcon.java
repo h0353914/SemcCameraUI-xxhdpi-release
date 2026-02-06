@@ -15,7 +15,6 @@ import com.sonymobile.cameracommon.font.FontUtil;
 import com.sonymobile.cameracommon.font.FontUtil$RobotoFontType;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class SideTouchUiIcon$RecordingIcon extends SideTouchUiIcon$ScreenButtonIcon implements RecordingTimeIndicator {
     private TextView mRecTimeView;
     private DurationParameterSet mRecordingTime;

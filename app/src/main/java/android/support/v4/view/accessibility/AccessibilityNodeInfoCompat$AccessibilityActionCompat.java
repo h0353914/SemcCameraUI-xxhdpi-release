@@ -3,7 +3,6 @@ package android.support.v4.view.accessibility;
 import android.os.Build$VERSION;
 import android.view.accessibility.AccessibilityNodeInfo$AccessibilityAction;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AccessibilityNodeInfoCompat$AccessibilityActionCompat {
     public static final AccessibilityNodeInfoCompat$AccessibilityActionCompat ACTION_CONTEXT_CLICK;
     public static final AccessibilityNodeInfoCompat$AccessibilityActionCompat ACTION_HIDE_TOOLTIP;

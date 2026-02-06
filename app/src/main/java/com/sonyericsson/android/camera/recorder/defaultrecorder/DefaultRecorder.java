@@ -18,7 +18,6 @@ import com.sonymobile.android.media.MediaRecorderWrapper;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DefaultRecorder implements RecorderInterface {
     private static final int DELAY_AUDIO_DURATION_IN_MILLIS = 100;
     private static final int MUTE_START_RECORD_SOUND_DURATION_IN_MILLIS = 900;

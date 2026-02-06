@@ -5,7 +5,6 @@ import android.view.MotionEvent;
 import com.sonymobile.sidetouchgesturedetector.DynamicAreaFilter;
 import com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SideTouchEventDetector {
     private static final boolean mIsZoomEnabled = false;
     private final DynamicAreaFilter mDynamicAreaFilter;

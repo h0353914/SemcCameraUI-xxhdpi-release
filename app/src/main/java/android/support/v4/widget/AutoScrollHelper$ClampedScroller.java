@@ -2,7 +2,6 @@ package android.support.v4.widget;
 
 import android.view.animation.AnimationUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 class AutoScrollHelper$ClampedScroller {
     private int mEffectiveRampDown;
     private int mRampDownDuration;

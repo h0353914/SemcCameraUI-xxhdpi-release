@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 
-/* JADX INFO: loaded from: classes.dex */
 class DefaultItemAnimator$8 extends AnimatorListenerAdapter {
     final /* synthetic */ DefaultItemAnimator this$0;
     final /* synthetic */ DefaultItemAnimator$ChangeInfo val$changeInfo;

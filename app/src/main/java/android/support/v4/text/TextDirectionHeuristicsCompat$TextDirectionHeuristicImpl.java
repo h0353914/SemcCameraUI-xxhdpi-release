@@ -2,7 +2,6 @@ package android.support.v4.text;
 
 import java.nio.CharBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class TextDirectionHeuristicsCompat$TextDirectionHeuristicImpl implements TextDirectionHeuristicCompat {
     private final TextDirectionHeuristicsCompat$TextDirectionAlgorithm mAlgorithm;
 

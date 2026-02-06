@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView$OnItemClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatSpinner$DropdownPopup$1 implements AdapterView$OnItemClickListener {
     final /* synthetic */ AppCompatSpinner$DropdownPopup this$1;
     final /* synthetic */ AppCompatSpinner val$this$0;

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.baselayout.onscreenbutton;
 
 import android.content.Context;
 
-/* JADX INFO: loaded from: classes.dex */
 public class OnScreenButton$Resource {
     public static final int NONE = -1;
     final int mBackground;

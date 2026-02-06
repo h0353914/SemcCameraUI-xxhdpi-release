@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 import com.sonyericsson.android.camera.ActionMode;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum CameraKey implements UserSettingValue {
     BURST_SHOT(2131690116),
     TAKE_PHOTO(2131690115);

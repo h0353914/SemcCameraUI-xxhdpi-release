@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.gestureshutter;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 class HandSignsDetector$DetectRunnable implements Runnable {
     private int height;
     private ByteBuffer mYuvBuffer;

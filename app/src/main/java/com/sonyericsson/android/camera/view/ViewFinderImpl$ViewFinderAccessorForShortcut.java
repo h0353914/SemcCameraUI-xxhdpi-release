@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.CameraApplication;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewFinderImpl$ViewFinderAccessorForShortcut {
     final /* synthetic */ ViewFinderImpl this$0;
 

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentTransition {
     private static final int[] INVERSE_OPS = {0, 3, 0, 1, 5, 4, 7, 6, 9, 8};
     private static final FragmentTransitionImpl PLATFORM_IMPL;

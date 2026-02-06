@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.View$OnApplyWindowInsetsListener;
 import android.view.WindowInsets;
 
-/* JADX INFO: loaded from: classes.dex */
 class DrawerLayout$1 implements View$OnApplyWindowInsetsListener {
     final /* synthetic */ DrawerLayout this$0;
 

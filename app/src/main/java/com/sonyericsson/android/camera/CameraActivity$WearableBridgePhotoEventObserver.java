@@ -6,7 +6,6 @@ import com.sonymobile.cameracommon.research.parameters.Event$CaptureTrigger;
 import com.sonymobile.cameracommon.vanilla.wearablebridge.handheld.client.ObserveWearableInterface$PhotoEventObserver;
 import com.sonymobile.cameracommon.vanilla.wearablebridge.handheld.client.WearableBridgeClient;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$WearableBridgePhotoEventObserver implements ObserveWearableInterface$PhotoEventObserver {
     final /* synthetic */ CameraActivity this$0;
 

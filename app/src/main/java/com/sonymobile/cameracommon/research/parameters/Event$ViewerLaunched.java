@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Event$ViewerLaunched {
     NOT_LAUNCHED(0),
     LAUNCHED(1);

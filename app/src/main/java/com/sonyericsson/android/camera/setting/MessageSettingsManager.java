@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.setting;
 
 import android.content.Context;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MessageSettingsManager implements MessageSettings {
     private SharedPreferencesAccessor mAppAccessor;
     private SharedPreferencesAccessor mCurrentAccessor;

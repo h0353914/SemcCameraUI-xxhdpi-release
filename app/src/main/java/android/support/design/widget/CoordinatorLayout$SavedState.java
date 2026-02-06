@@ -6,7 +6,6 @@ import android.os.Parcelable$Creator;
 import android.support.v4.view.AbsSavedState;
 import android.util.SparseArray;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class CoordinatorLayout$SavedState extends AbsSavedState {
     public static final Parcelable$Creator<CoordinatorLayout$SavedState> CREATOR = new CoordinatorLayout$SavedState$1();
     SparseArray<Parcelable> behaviorStates;

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera;
 
 import com.sonyericsson.cameracommon.systemmonitor.ThermalAlertReceiver;
 
-/* JADX INFO: loaded from: classes.dex */
 final class CameraActivity$ThermalAlertReceiverCreateTask implements Runnable {
     final /* synthetic */ CameraActivity this$0;
 

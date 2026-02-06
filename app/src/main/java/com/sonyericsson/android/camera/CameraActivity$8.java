@@ -5,7 +5,6 @@ import com.sonyericsson.cameracommon.storage.Storage$StorageReadyState;
 import com.sonyericsson.cameracommon.storage.Storage$StorageReadyStateListener;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$8 implements Storage$StorageReadyStateListener {
     final /* synthetic */ CameraActivity this$0;
 

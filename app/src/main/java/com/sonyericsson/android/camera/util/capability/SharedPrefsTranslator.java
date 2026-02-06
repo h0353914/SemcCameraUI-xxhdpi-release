@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class SharedPrefsTranslator {
     public static final String CONNECTOR_AT = "@";
     public static final String CONNECTOR_CROSS = "x";

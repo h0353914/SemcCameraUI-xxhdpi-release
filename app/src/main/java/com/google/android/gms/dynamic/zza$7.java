@@ -1,6 +1,5 @@
 package com.google.android.gms.dynamic;
 
-/* JADX INFO: loaded from: classes.dex */
 class zza$7 implements zza$zza {
     final /* synthetic */ zza zzapr;
 

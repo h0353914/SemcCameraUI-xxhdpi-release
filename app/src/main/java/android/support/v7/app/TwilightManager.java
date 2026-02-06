@@ -11,7 +11,6 @@ import android.support.v4.content.PermissionChecker;
 import android.util.Log;
 import java.util.Calendar;
 
-/* JADX INFO: loaded from: classes.dex */
 class TwilightManager {
     private static final int SUNRISE = 6;
     private static final int SUNSET = 22;

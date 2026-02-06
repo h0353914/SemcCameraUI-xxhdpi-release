@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences$Editor;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class CapabilityItem<T> {
     public static final String TAG = "CapabilityItem";
     private final String mName;

@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class RecyclerView$LayoutManager$1 implements ViewBoundsCheck$Callback {
     final /* synthetic */ RecyclerView$LayoutManager this$0;
 

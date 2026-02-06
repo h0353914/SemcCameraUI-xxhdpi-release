@@ -18,7 +18,6 @@ import com.sonyericsson.android.camera.configuration.parameters.VideoShutterTrig
 import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
 import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class DependencyApplier {
     public static final String TAG = "DependencyApplier";
 

@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class CollapsiblePreferenceGroupController$ExpandButton extends Preference {
     private long mId;
 

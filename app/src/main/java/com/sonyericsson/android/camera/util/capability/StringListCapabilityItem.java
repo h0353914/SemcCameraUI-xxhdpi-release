@@ -5,7 +5,6 @@ import android.content.SharedPreferences$Editor;
 import java.util.Collections;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class StringListCapabilityItem extends CapabilityItem<List<String>> {
     @Override // com.sonyericsson.android.camera.util.capability.CapabilityItem
     /* bridge */ /* synthetic */ List<String> getDefaultValue() {

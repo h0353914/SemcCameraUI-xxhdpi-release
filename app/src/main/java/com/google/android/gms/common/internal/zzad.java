@@ -8,7 +8,6 @@ import android.os.Parcelable$Creator;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.safeparcel.zza$zza;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzad implements Parcelable$Creator<ValidateAccountRequest> {
     static void zza(ValidateAccountRequest validateAccountRequest, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);

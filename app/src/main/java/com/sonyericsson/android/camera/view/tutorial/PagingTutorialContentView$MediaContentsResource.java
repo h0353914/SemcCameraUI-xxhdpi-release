@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.tutorial;
 
-/* JADX INFO: loaded from: classes.dex */
 class PagingTutorialContentView$MediaContentsResource {
     private final int mResourceId;
     private final PagingTutorialContentView$MediaContentsResourceType mType;

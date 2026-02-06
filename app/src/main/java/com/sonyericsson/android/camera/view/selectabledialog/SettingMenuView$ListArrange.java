@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.sonyericsson.android.camera.view.setting.dialogitem.SettingDialogItem;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingMenuView$ListArrange extends AbsDialogScrollView$ContentArrange {
     private final boolean mIsTop;
     private final String mTitle;

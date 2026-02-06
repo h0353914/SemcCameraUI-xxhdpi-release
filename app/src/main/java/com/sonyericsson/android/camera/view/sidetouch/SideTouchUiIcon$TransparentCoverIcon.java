@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class SideTouchUiIcon$TransparentCoverIcon extends SideTouchUiIcon {
     @Override // com.sonyericsson.android.camera.view.sidetouch.SideTouchUiIcon
     protected void attachView(ViewGroup viewGroup) {

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.animation.Interpolator;
 import android.widget.OverScroller;
 
-/* JADX INFO: loaded from: classes.dex */
 @Deprecated
 public final class ScrollerCompat {
     OverScroller mScroller;

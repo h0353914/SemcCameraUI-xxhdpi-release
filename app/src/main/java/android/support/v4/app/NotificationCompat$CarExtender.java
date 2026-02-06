@@ -13,7 +13,6 @@ import android.support.annotation.RequiresApi;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class NotificationCompat$CarExtender implements NotificationCompat$Extender {
 
     @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})

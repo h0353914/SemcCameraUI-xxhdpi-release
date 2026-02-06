@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class SomcCameraMetadataEnums {
     public static final int SONYMOBILE_CONTROL_AE_MODE_OFF = 0;
     public static final int SONYMOBILE_CONTROL_AE_MODE_ON = 1;

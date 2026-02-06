@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.baselayout.onscreenbutton;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class OnScreenButtonItemFactory$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$view$baselayout$onscreenbutton$OnScreenButtonItemFactory$ButtonType = new int[OnScreenButtonItemFactory$ButtonType.values().length];
 

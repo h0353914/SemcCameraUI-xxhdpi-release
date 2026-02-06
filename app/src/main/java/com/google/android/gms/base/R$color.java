@@ -1,6 +1,5 @@
 package com.google.android.gms.base;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$color {
     public static final int common_action_bar_splitter = 2131099688;
     public static final int common_signin_btn_dark_text_default = 2131099689;

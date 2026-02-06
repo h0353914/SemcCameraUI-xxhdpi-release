@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue
 import java.util.Map;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ParameterUtil {
     public static final String TAG = "ParameterUtil";
 

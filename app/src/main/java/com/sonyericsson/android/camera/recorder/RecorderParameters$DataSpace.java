@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.recorder;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecorderParameters$DataSpace {
     public final int range;
     public final int standard;

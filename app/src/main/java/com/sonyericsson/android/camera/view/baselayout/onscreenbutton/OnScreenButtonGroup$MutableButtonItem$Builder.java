@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.baselayout.onscreenbutton;
 
-/* JADX INFO: loaded from: classes.dex */
 public class OnScreenButtonGroup$MutableButtonItem$Builder {
     private int mBackground;
     private int mDescription;

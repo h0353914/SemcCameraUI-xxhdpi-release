@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.tutorial;
 import com.sonyericsson.android.camera.setting.MessageType;
 import com.sonyericsson.android.camera.setting.StoredSettings;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class PagingTutorialContentView$ManualFusionTutorialContent extends PagingTutorialContentView$PagingTutorialContent {
     protected PagingTutorialContentView$ManualFusionTutorialContent(int i) {
         super(i);

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 class TiffReader$Collector implements TiffReader$Listener {
     private final List<TiffDirectory> directories;
     private final List<TiffField> fields;

@@ -3,7 +3,6 @@ package org.apache.commons.imaging.common;
 import java.io.IOException;
 import java.io.OutputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 class FastByteArrayOutputStream extends OutputStream {
     private final byte[] bytes;
     private int count;

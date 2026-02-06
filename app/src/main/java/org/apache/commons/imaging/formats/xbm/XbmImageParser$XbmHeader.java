@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.xbm;
 
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 class XbmImageParser$XbmHeader {
     int height;
     int width;

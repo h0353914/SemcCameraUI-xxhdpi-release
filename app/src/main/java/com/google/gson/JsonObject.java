@@ -4,7 +4,6 @@ import com.google.gson.internal.LinkedTreeMap;
 import java.util.Map$Entry;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class JsonObject extends JsonElement {
     private final LinkedTreeMap<String, JsonElement> members = new LinkedTreeMap<>();
 

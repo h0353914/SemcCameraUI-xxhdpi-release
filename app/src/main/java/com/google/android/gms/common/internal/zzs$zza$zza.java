@@ -5,7 +5,6 @@ import android.os.IBinder;
 import android.os.Parcel;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzs$zza$zza implements zzs {
     private IBinder zznJ;
 

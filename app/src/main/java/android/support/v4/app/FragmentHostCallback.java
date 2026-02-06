@@ -15,7 +15,6 @@ import android.view.View;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class FragmentHostCallback<E> extends FragmentContainer {
 
     @Nullable

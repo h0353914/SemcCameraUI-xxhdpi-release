@@ -14,7 +14,6 @@ import com.sonyericsson.cameracommon.status.eachcamera.DeviceStatus;
 import com.sonyericsson.cameracommon.status.eachcamera.DeviceStatus$Value;
 import com.sonyericsson.cameracommon.status.global.BuiltInCameraIds;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class CameraController$OpenCameraTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     private final FastCapture mFastCapture;

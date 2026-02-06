@@ -10,7 +10,6 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class FragmentManager {
     public static final int POP_BACK_STACK_INCLUSIVE = 1;
 

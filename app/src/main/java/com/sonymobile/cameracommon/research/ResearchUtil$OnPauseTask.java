@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.research;
 
 import com.sonymobile.cameracommon.research.idd.IddUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$OnPauseTask implements Runnable {
     private final boolean mIsSameActivity;
     final /* synthetic */ ResearchUtil this$0;

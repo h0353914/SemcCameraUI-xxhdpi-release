@@ -13,7 +13,6 @@ import com.sonymobile.cameracommon.research.ResearchUtil;
 import java.util.List;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Zoombar extends FrameLayout {
     private static final boolean DEBUG = false;
     public static final int DELAY_ZOOMBAR_HIDE = 1000;

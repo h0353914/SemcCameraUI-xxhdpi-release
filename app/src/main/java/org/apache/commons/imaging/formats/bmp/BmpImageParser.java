@@ -31,7 +31,6 @@ import org.apache.commons.imaging.palette.PaletteFactory;
 import org.apache.commons.imaging.palette.SimplePalette;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BmpImageParser extends ImageParser {
     private static final int BITMAP_FILE_HEADER_SIZE = 14;
     private static final int BITMAP_INFO_HEADER_SIZE = 40;

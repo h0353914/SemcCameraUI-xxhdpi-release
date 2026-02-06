@@ -4,7 +4,6 @@ import android.animation.Animator$AnimatorListener;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 
-/* JADX INFO: loaded from: classes.dex */
 class AbsDialogScrollView$FadeAnimation implements AbsDialogScrollView$AnimationFactory {
     private final int mDuration;
     final /* synthetic */ AbsDialogScrollView this$0;

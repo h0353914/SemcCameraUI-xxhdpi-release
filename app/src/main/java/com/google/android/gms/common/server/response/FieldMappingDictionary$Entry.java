@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FieldMappingDictionary$Entry implements SafeParcelable {
     public static final zzd CREATOR = new zzd();
     final String className;

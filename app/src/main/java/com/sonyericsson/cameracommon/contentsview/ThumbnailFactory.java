@@ -13,7 +13,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.contentsview.contents.Content$ContentInfo;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ThumbnailFactory {
     private static final int MAX_NUM_PIXELS_MICRO_THUMBNAIL = 19200;
     public static final String TAG = "ThumbnailFactory";

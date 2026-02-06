@@ -27,7 +27,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShort;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoXpString;
 import org.apache.commons.imaging.formats.tiff.write.TiffOutputSet;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffImageMetadata extends GenericImageMetadata {
     public final TiffContents contents;
 

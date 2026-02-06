@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.baselayout;
 
-/* JADX INFO: loaded from: classes.dex */
 enum BaseLayout$ViewRootChild {
     PREFERRED_FOCUS(0),
     PREVIEW_CONTAINER_LAYOUT(1),

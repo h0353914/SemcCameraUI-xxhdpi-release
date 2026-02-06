@@ -9,7 +9,6 @@ import com.sonyericsson.cameracommon.mediasaving.MediaSavingResult;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class SavingTaskManager$MediaScanController$OnMediaScanCompletedListener implements MediaScannerConnection$OnScanCompletedListener {
     private final List<PhotoSavingRequest> mRequests;
     final /* synthetic */ SavingTaskManager$MediaScanController this$0;

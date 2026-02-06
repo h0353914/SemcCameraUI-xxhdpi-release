@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.PerfLog;
 import java.io.File;
 import java.util.concurrent.Callable;
 
-/* JADX INFO: loaded from: classes.dex */
 class DcfPathBuilder$ScanTask implements Callable<DcfPathBuilder$ScanResult> {
     private int mScanDirNo = 100;
     private int mScanFileNo = 1;

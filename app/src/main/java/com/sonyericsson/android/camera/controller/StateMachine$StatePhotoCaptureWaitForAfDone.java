@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller;
 
 import com.sonyericsson.cameracommon.storage.SavingTaskManager$SavedFileType;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StatePhotoCaptureWaitForAfDone extends StateMachine$StatePhotoBase {
     private static final String TAG = "StateMachine.StatePhotoCaptureWaitForAfDone";
     private final boolean mIsDirectCaptureRequired;

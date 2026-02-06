@@ -4,7 +4,6 @@ import android.content.Context;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum SoftSkin implements UserSettingValue {
     ON(-1, 2131690116, 0.5f),
     OFF(-1, 2131690115, 0.0f);

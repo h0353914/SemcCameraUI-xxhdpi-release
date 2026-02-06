@@ -8,7 +8,6 @@ import com.sonyericsson.android.camera.configuration.parameters.VideoStabilizer;
 import com.sonyericsson.android.camera.setting.UserSettings;
 import com.sonyericsson.android.camera.view.messagedialog.DialogId;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum UserSettingKey {
     AUTO_REVIEW(true, false, true, ParameterCategory.COMMON, 2131689980),
     VIDEO_AUTO_REVIEW(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690020),

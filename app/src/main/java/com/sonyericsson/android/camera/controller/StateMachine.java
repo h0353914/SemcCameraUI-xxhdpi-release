@@ -111,7 +111,6 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.ExecutorService;
 
-/* JADX INFO: loaded from: classes.dex */
 public class StateMachine {
     private static final int COLOR_VALUE_MAX = 255;
     private static final int RESUME_TIMEOUT = 7000;

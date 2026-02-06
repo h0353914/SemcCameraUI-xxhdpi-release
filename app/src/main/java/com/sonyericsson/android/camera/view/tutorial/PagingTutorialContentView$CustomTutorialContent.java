@@ -6,7 +6,6 @@ import android.widget.TextView;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class PagingTutorialContentView$CustomTutorialContent extends PagingTutorialContentView$PagingTutorialContent {
     public PagingTutorialContentView$CustomTutorialContent(int i, List<TutorialController$TutorialType> list, List<TutorialContentView$TutorialContent> list2) {
         super(i);

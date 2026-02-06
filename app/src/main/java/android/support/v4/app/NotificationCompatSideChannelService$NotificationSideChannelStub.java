@@ -3,7 +3,6 @@ package android.support.v4.app;
 import android.app.Notification;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 class NotificationCompatSideChannelService$NotificationSideChannelStub extends INotificationSideChannel$Stub {
     final /* synthetic */ NotificationCompatSideChannelService this$0;
 

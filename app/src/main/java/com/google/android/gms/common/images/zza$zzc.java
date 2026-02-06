@@ -5,7 +5,6 @@ import android.net.Uri;
 import com.google.android.gms.common.internal.zzw;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zza$zzc extends zza {
     private WeakReference<ImageManager$OnImageLoadedListener> zzaef;
 

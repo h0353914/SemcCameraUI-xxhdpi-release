@@ -5,7 +5,6 @@ import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusCommon;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class RequestFactory$RequestBuilder {
     public TakenStatusCommon mCommonStatus;
     private boolean mFinalRequest = true;

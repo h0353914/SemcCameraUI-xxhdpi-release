@@ -1,6 +1,5 @@
 package android.support.v4.text;
 
-/* JADX INFO: loaded from: classes.dex */
 class BidiFormatter$DirectionalityEstimator {
     private static final byte[] DIR_TYPE_CACHE = new byte[1792];
     private static final int DIR_TYPE_CACHE_SIZE = 1792;

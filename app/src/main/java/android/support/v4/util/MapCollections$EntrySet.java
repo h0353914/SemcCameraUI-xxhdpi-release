@@ -6,7 +6,6 @@ import java.util.Map$Entry;
 import java.util.Set;
 
 /* JADX INFO: Add missing generic type declarations: [V, K] */
-/* JADX INFO: loaded from: classes.dex */
 final class MapCollections$EntrySet<K, V> implements Set<Map$Entry<K, V>> {
     final /* synthetic */ MapCollections this$0;
 

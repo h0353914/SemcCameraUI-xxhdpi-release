@@ -6,7 +6,6 @@ import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.view.menu.MenuPopupHelper;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionMenuPresenter$OverflowPopup extends MenuPopupHelper {
     final /* synthetic */ ActionMenuPresenter this$0;
 

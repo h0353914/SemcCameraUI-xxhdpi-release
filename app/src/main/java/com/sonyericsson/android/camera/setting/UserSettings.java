@@ -14,7 +14,6 @@ import com.sonyericsson.android.camera.util.MaxVideoSize;
 import com.sonyericsson.cameracommon.storage.Storage;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface UserSettings {
     void applyCapturingMode();
 

@@ -4,7 +4,6 @@ import com.sonyericsson.cameracommon.storage.Storage$StorageState;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import com.sonyericsson.cameracommon.storage.StorageUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class ContentsViewController$UpdateContentTask implements Runnable {
     private final Storage$StorageState mChangedStorageState;
     private final Storage$StorageType mChangedStorageType;

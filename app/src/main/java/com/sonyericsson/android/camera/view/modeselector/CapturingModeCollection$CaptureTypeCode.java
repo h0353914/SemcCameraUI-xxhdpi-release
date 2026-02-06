@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.modeselector;
 
-/* JADX INFO: loaded from: classes.dex */
 class CapturingModeCollection$CaptureTypeCode {
     static final int PHOTO = 1;
     static final int VIDEO = 2;

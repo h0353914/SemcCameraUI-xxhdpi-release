@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.media.session.MediaSessionCompat$Token;
 
-/* JADX INFO: loaded from: classes.dex */
 interface MediaBrowserCompat$MediaBrowserImpl {
     void connect();
 

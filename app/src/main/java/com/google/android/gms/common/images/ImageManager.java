@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ImageManager {
     private static final Object zzadG = new Object();
     private static HashSet<Uri> zzadH = new HashSet<>();

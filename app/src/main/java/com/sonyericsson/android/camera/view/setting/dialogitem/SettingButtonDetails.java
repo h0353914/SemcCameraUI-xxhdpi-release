@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter$ItemLayoutParams;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingButtonDetails extends SettingDialogItem {
     private final View mBackground;
     private final View mContainer;

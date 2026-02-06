@@ -5,7 +5,6 @@ import com.sonyericsson.cameracommon.status.global.BuiltInCameraIds;
 import com.sonyericsson.cameracommon.status.global.CameraId;
 import com.sonyericsson.cameracommon.status.global.RemovableCameraClients;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GlobalCameraStatusPublisher extends CameraStatusPublisher<GlobalCameraStatusValue> {
     public GlobalCameraStatusPublisher(Context context) {
         super(context);

@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$BypassCameraControllerCallbackImpl implements BypassCameraController$BypassCameraControllerCallback {
     private Runnable mSnapshotReadyDoneTask;
     final /* synthetic */ CameraDeviceHandler this$0;

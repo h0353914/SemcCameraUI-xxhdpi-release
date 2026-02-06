@@ -1,6 +1,5 @@
 package android.support.coreui;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$attr {
     public static final int alpha = 2130968619;
     public static final int coordinatorLayoutStyle = 2130968676;

@@ -6,7 +6,6 @@ import android.os.RemoteException;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.Status;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface zzd extends IInterface {
     void zza(GoogleSignInAccount googleSignInAccount, Status status) throws RemoteException;
 

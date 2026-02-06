@@ -18,7 +18,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ContentLoader {
     private static final int MAX_LOCAL_CACHE_NUM = 400;
     public static final float PANORAMA_ASPECT_THRESHOLD = 1.8777778f;

@@ -6,7 +6,6 @@ import android.view.InputDevice$MotionRange;
 import android.view.MotionEvent;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SideTouchUtils {
     public static final int SIDE_BOTTOM = 8;
     public static final int SIDE_LEFT = 1;

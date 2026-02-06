@@ -11,7 +11,6 @@ import kotlin.reflect.KProperty0;
 import kotlin.reflect.KProperty1;
 import kotlin.reflect.KProperty2;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Reflection {
     private static final KClass[] EMPTY_K_CLASS_ARRAY;
     static final String REFLECTION_NOT_AVAILABLE = " (Kotlin reflection is not available)";

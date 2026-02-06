@@ -5,7 +5,6 @@ import android.animation.Animator$AnimatorListener;
 import android.animation.ValueAnimator;
 import android.support.v7.widget.RecyclerView$ViewHolder;
 
-/* JADX INFO: loaded from: classes.dex */
 class ItemTouchHelper$RecoverAnimation implements Animator$AnimatorListener {
     final int mActionState;
     final int mAnimationType;

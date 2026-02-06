@@ -20,7 +20,6 @@ import android.support.v7.graphics.drawable.DrawableWrapper;
 import android.util.Log;
 import java.lang.reflect.Field;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class DrawableUtils {
     public static final Rect INSETS_NONE = new Rect();

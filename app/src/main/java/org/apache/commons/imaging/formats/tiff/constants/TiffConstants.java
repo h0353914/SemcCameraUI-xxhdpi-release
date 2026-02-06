@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.tiff.constants;
 
 import java.nio.ByteOrder;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TiffConstants {
     public static final ByteOrder DEFAULT_TIFF_BYTE_ORDER = ByteOrder.LITTLE_ENDIAN;
     public static final String PARAM_KEY_LZW_COMPRESSION_BLOCK_SIZE = "PARAM_KEY_LZW_COMPRESSION_BLOCK_SIZE";

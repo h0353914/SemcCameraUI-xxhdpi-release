@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.activity;
 import java.util.Arrays;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 enum RequestPermissionActivity$PermissionCategory {
     MANDATORY(Arrays.asList(RequestPermissionActivity$PermissionGroup.CAMERA, RequestPermissionActivity$PermissionGroup.MIC, RequestPermissionActivity$PermissionGroup.STORAGE), RequestPermissionActivity.access$100()),
     OPTIONAL(Arrays.asList(RequestPermissionActivity$PermissionGroup.LOCATION), RequestPermissionActivity.access$100() + 1);

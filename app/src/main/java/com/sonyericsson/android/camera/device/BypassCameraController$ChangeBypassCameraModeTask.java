@@ -14,7 +14,6 @@ import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$SuperSlowRecordi
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$VideoMode;
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCameraTimeoutException;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class BypassCameraController$ChangeBypassCameraModeTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     final /* synthetic */ BypassCameraController this$0;

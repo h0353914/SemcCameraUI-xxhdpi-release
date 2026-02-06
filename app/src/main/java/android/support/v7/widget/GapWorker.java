@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 final class GapWorker implements Runnable {
     static final ThreadLocal<GapWorker> sGapWorker = new ThreadLocal<>();
     static Comparator<GapWorker$Task> sTaskComparator = new GapWorker$1();

@@ -18,7 +18,6 @@ import android.support.v7.appcompat.R$attr;
 import android.support.v7.appcompat.R$style;
 import android.support.v7.appcompat.R$styleable;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DrawerArrowDrawable extends Drawable {
     public static final int ARROW_DIRECTION_END = 3;
     public static final int ARROW_DIRECTION_LEFT = 0;

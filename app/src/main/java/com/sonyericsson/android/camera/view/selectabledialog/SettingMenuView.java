@@ -13,7 +13,6 @@ import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SettingMenuView extends AbsDialogScrollView {
     private final boolean mIsSettingMenu;
     private final AbsSelectableDialog$SelectableDialogType mMenuDialogType;

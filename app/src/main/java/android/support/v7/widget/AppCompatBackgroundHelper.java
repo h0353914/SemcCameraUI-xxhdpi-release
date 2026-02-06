@@ -10,7 +10,6 @@ import android.support.v7.appcompat.R$styleable;
 import android.util.AttributeSet;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatBackgroundHelper {
     private TintInfo mBackgroundTint;
     private TintInfo mInternalBackgroundTint;

@@ -1,6 +1,5 @@
 package android.support.v4.app;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentTransition$FragmentContainerTransition {
     public Fragment firstOut;
     public boolean firstOutIsPop;

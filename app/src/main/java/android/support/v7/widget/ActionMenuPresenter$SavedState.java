@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionMenuPresenter$SavedState implements Parcelable {
     public static final Parcelable$Creator<ActionMenuPresenter$SavedState> CREATOR = new ActionMenuPresenter$SavedState$1();
     public int openSubMenuId;

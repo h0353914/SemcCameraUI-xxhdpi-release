@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SetViewerLaunchedTask implements Runnable {
     final /* synthetic */ ResearchUtil this$0;
 

@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.view.ViewPropertyAnimator;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class ScrollingTabContainerView$VisibilityAnimListener extends AnimatorListenerAdapter {
     private boolean mCanceled = false;
     private int mFinalVisibility;

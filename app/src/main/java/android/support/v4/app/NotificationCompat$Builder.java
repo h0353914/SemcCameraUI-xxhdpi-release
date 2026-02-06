@@ -18,7 +18,6 @@ import android.support.compat.R$dimen;
 import android.widget.RemoteViews;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NotificationCompat$Builder {
     private static final int MAX_CHARSEQUENCE_LENGTH = 5120;
 

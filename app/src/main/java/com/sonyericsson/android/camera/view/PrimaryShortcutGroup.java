@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PrimaryShortcutGroup extends FrameLayout implements SettingDialogListener {
     private ShortcutButton mAspectRatioShortcut;
     private ShortcutButton mContextualSettingShortcut;

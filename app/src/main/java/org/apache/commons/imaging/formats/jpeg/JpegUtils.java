@@ -11,7 +11,6 @@ import org.apache.commons.imaging.common.ByteConversions;
 import org.apache.commons.imaging.common.bytesource.ByteSource;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JpegUtils extends BinaryFileParser {
     public static String getMarkerName(int i) {
         switch (i) {

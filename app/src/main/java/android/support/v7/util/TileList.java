@@ -2,7 +2,6 @@ package android.support.v7.util;
 
 import android.util.SparseArray;
 
-/* JADX INFO: loaded from: classes.dex */
 class TileList<T> {
     TileList$Tile<T> mLastAccessedTile;
     final int mTileSize;

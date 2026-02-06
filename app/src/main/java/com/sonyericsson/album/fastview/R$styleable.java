@@ -1,6 +1,5 @@
 package com.sonyericsson.album.fastview;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$styleable {
     public static final int ActionBarLayout_android_layout_gravity = 0;
     public static final int ActionBar_background = 0;

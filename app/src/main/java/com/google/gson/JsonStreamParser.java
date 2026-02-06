@@ -11,7 +11,6 @@ import java.io.StringReader;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class JsonStreamParser implements Iterator<JsonElement> {
     private final Object lock;
     private final JsonReader parser;

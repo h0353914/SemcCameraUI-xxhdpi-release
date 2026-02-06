@@ -5,7 +5,6 @@ import com.sonymobile.imageprocessor.bypasscamera2.BypassCameraParameters;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 final class BypassCameraStaticParameters {
     private static final String DELIMITER_COMMA = ",";
     private static final String TAG = "BypassCameraStaticParameters";

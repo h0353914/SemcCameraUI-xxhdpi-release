@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.selectabledialog;
 
-/* JADX INFO: loaded from: classes.dex */
 class ModeSelector$1 implements Runnable {
     final /* synthetic */ ModeSelector this$0;
 

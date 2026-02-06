@@ -5,7 +5,6 @@ import android.net.Uri;
 import com.sonyericsson.cameracommon.mediasaving.MediaSavingResult;
 import com.sonyericsson.cameracommon.storage.SavingRequest;
 
-/* JADX INFO: loaded from: classes.dex */
 public class StateMachine$OneShotResult {
     public final Bitmap bitmap;
     public final int code;

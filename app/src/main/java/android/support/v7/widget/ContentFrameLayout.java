@@ -11,7 +11,6 @@ import android.util.TypedValue;
 import android.view.View$MeasureSpec;
 import android.widget.FrameLayout;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY})
 public class ContentFrameLayout extends FrameLayout {
     private ContentFrameLayout$OnAttachListener mAttachListener;

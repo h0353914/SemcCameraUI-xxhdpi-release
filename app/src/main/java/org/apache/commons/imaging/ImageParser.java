@@ -34,7 +34,6 @@ import org.apache.commons.imaging.formats.wbmp.WbmpImageParser;
 import org.apache.commons.imaging.formats.xbm.XbmImageParser;
 import org.apache.commons.imaging.formats.xpm.XpmImageParser;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class ImageParser extends BinaryFileParser {
     public boolean dumpImageFile(PrintWriter printWriter, ByteSource byteSource) throws IOException, ImageReadException {
         return false;

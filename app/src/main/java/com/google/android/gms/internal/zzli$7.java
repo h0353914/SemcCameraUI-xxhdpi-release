@@ -5,7 +5,6 @@ import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzli$7 implements ResultCallback<Status> {
     final /* synthetic */ GoogleApiClient zzWT;
     final /* synthetic */ zzli zzacr;

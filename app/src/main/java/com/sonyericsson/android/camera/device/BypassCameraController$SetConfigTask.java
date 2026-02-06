@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.device;
 import android.support.annotation.WorkerThread;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class BypassCameraController$SetConfigTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     final /* synthetic */ BypassCameraController this$0;

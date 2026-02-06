@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.storage;
 
-/* JADX INFO: loaded from: classes.dex */
 class DcfPathBuilder$ScanResult {
     final int resultDirNo;
     final int resultFileNo;

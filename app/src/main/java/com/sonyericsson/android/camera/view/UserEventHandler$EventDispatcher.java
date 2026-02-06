@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class UserEventHandler$EventDispatcher {
     private UserEventHandler mHandler;
     private boolean mIsRunning;

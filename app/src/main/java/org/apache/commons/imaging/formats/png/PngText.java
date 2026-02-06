@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.png;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class PngText {
     public final String keyword;
     public final String text;

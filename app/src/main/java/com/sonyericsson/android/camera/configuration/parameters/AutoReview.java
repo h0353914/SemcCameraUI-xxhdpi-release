@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 import com.sonyericsson.android.camera.ActionMode;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum AutoReview implements UserSettingValue {
     ALWAYS(-1, 2131690017, 3000),
     FRONT_ONLY(-1, 2131690024, 3000),

@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.jpeg.iptc;
 import java.io.UnsupportedEncodingException;
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IptcRecord {
     public static final Comparator<IptcRecord> COMPARATOR = new IptcRecord$1();
     private final byte[] bytes;

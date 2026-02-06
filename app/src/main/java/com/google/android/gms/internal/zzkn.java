@@ -4,7 +4,6 @@ import com.google.android.gms.auth.api.proxy.ProxyApi$ProxyResult;
 import com.google.android.gms.auth.api.proxy.ProxyResponse;
 import com.google.android.gms.common.api.Status;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzkn implements ProxyApi$ProxyResult {
     private Status zzSC;
     private ProxyResponse zzST;

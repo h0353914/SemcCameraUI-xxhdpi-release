@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 class ClassesInfoCache {
     private static final int CALL_TYPE_NO_ARG = 0;
     private static final int CALL_TYPE_PROVIDER = 1;

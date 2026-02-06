@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class RecyclerView$ItemAnimator {
     public static final int FLAG_APPEARED_IN_PRE_LAYOUT = 4096;
     public static final int FLAG_CHANGED = 2;

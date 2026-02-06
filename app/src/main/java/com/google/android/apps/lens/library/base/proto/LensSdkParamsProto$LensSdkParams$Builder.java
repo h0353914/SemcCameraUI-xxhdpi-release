@@ -3,7 +3,6 @@ package com.google.android.apps.lens.library.base.proto;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.GeneratedMessageLite$Builder;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class LensSdkParamsProto$LensSdkParams$Builder extends GeneratedMessageLite$Builder<LensSdkParamsProto$LensSdkParams, LensSdkParamsProto$LensSdkParams$Builder> implements LensSdkParamsProto$LensSdkParamsOrBuilder {
     /* synthetic */ LensSdkParamsProto$LensSdkParams$Builder(LensSdkParamsProto$1 lensSdkParamsProto$1) {
         this();

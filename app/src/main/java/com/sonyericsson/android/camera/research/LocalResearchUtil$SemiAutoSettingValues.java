@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.research;
 
-/* JADX INFO: loaded from: classes.dex */
 class LocalResearchUtil$SemiAutoSettingValues {
     private LocalResearchUtil$BasisAndChange<Integer> mAmberBlue = new LocalResearchUtil$BasisAndChange<>(0, 0);
     private LocalResearchUtil$BasisAndChange<Integer> mBrightness = new LocalResearchUtil$BasisAndChange<>(0, 0);

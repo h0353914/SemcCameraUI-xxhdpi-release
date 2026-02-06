@@ -6,7 +6,6 @@ import android.os.Build$VERSION;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NotificationCompat$BigPictureStyle extends NotificationCompat$Style {
     private Bitmap mBigLargeIcon;
     private boolean mBigLargeIconSet;

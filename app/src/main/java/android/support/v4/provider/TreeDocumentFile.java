@@ -10,7 +10,6 @@ import android.support.annotation.RequiresApi;
 import android.util.Log;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class TreeDocumentFile extends DocumentFile {
     private Context mContext;

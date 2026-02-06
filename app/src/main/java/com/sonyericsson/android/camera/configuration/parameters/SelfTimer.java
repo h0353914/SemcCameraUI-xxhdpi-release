@@ -6,7 +6,6 @@ import com.sonyericsson.cameracommon.sound.SoundPlayer$Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum SelfTimer implements UserSettingValue, SelfTimerInterface {
     LONG(2131231172, 2131231181, 2131690105, true, 10000, -1, SoundPlayer$Type.SELF_TIMER_1SEC),
     SHORT(2131231174, 2131231182, 2131690107, true, 3000, -1, SoundPlayer$Type.SELF_TIMER_3SEC),

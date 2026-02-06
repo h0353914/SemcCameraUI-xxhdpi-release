@@ -11,7 +11,6 @@ import com.sonyericsson.android.camera.setting.MessageType;
 import com.sonyericsson.android.camera.setting.StoredSettings;
 import com.sonyericsson.android.camera.setting.UserSettings;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class PagingTutorialContentView$OneShotSlowTutorialContent extends PagingTutorialContentView$PagingTutorialContent {
     protected PagingTutorialContentView$OneShotSlowTutorialContent(int i) {
         super(i);

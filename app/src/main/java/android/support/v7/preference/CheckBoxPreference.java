@@ -11,7 +11,6 @@ import android.view.accessibility.AccessibilityManager;
 import android.widget.Checkable;
 import android.widget.CompoundButton;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CheckBoxPreference extends TwoStatePreference {
     private final CheckBoxPreference$Listener mListener;
 

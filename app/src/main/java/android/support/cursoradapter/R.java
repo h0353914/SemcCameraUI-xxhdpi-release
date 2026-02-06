@@ -1,5 +1,4 @@
 package android.support.cursoradapter;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R {
 }

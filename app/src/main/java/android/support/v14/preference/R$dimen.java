@@ -1,6 +1,5 @@
 package android.support.v14.preference;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$dimen {
     public static final int abc_action_bar_content_inset_material = 2131165184;
     public static final int abc_action_bar_content_inset_with_nav = 2131165185;

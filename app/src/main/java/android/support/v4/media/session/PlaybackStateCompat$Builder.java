@@ -5,7 +5,6 @@ import android.os.SystemClock;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class PlaybackStateCompat$Builder {
     private long mActions;
     private long mActiveItemId;

@@ -18,7 +18,6 @@ import com.sonyericsson.cameracommon.mediasaving.StoreDataResult;
 import com.sonyericsson.cameracommon.storage.VideoSavingRequest;
 import com.sonymobile.cameracommon.evf.Evf;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateOperationRestricted extends StateMachine$State {
     private StoreDataResult mVideoStoreDataResult;
     final /* synthetic */ StateMachine this$0;

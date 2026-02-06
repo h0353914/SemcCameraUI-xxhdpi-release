@@ -3,7 +3,6 @@ package android.support.v4.media;
 import android.support.v4.util.ObjectsCompat;
 import android.text.TextUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionManagerImplBase$RemoteUserInfoImplBase implements MediaSessionManager$RemoteUserInfoImpl {
     private String mPackageName;
     private int mPid;

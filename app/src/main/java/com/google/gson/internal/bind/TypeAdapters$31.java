@@ -5,7 +5,6 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 
-/* JADX INFO: loaded from: classes.dex */
 class TypeAdapters$31 implements TypeAdapterFactory {
     final /* synthetic */ Class val$clazz;
     final /* synthetic */ TypeAdapter val$typeAdapter;

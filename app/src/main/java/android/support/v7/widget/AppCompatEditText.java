@@ -19,7 +19,6 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.EditText;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AppCompatEditText extends EditText implements TintableBackgroundView {
     private final AppCompatBackgroundHelper mBackgroundTintHelper;
     private final AppCompatTextHelper mTextHelper;

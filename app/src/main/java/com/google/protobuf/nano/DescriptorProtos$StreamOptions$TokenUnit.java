@@ -1,6 +1,5 @@
 package com.google.protobuf.nano;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface DescriptorProtos$StreamOptions$TokenUnit {
 
     @NanoEnumValue(legacy = false, value = DescriptorProtos$StreamOptions$TokenUnit.class)

@@ -13,7 +13,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaMetadataCompat implements Parcelable {
     public static final Parcelable$Creator<MediaMetadataCompat> CREATOR;
     static final ArrayMap<String, Integer> METADATA_KEYS_TYPE = new ArrayMap<>();

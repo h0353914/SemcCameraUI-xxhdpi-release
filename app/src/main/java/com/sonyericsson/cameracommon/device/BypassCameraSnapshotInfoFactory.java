@@ -8,7 +8,6 @@ import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$SnapshotInfo$Exi
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$SnapshotInfo$ExifOrientationInfo;
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$SnapshotInfo$ExifThumbnailInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BypassCameraSnapshotInfoFactory {
     private static final int EXIF_THUMBNAIL_HEIGHT = 120;
     private static final int EXIF_THUMBNAIL_QUALITY = 80;

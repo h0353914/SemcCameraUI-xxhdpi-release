@@ -6,7 +6,6 @@ import android.service.media.MediaBrowserService$Result;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompatApi21$ResultWrapper<T> {
     MediaBrowserService$Result mResultObj;
 

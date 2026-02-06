@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.jpeg.decoder;
 
-/* JADX INFO: loaded from: classes.dex */
 final class Dct {
     private static final float[] DCT_SCALING_FACTORS = {(float) (0.5d / Math.sqrt(2.0d)), (float) (0.25d / Math.cos(0.19634954084936207d)), (float) (0.25d / Math.cos(0.39269908169872414d)), (float) (0.25d / Math.cos(0.5890486225480862d)), (float) (0.25d / Math.cos(0.7853981633974483d)), (float) (0.25d / Math.cos(0.9817477042468103d)), (float) (0.25d / Math.cos(1.1780972450961724d)), (float) (0.25d / Math.cos(1.3744467859455345d))};
     private static final float[] IDCT_SCALING_FACTORS = {(float) ((8.0d / Math.sqrt(2.0d)) * 0.0625d), (float) ((Math.cos(0.19634954084936207d) * 4.0d) * 0.125d), (float) ((Math.cos(0.39269908169872414d) * 4.0d) * 0.125d), (float) ((Math.cos(0.5890486225480862d) * 4.0d) * 0.125d), (float) ((Math.cos(0.7853981633974483d) * 4.0d) * 0.125d), (float) ((Math.cos(0.9817477042468103d) * 4.0d) * 0.125d), (float) ((Math.cos(1.1780972450961724d) * 4.0d) * 0.125d), (float) ((4.0d * Math.cos(1.3744467859455345d)) * 0.125d)};

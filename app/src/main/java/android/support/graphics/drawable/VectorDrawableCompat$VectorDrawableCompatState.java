@@ -13,7 +13,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable$ConstantState;
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 class VectorDrawableCompat$VectorDrawableCompatState extends Drawable$ConstantState {
     boolean mAutoMirrored;
     boolean mCacheDirty;

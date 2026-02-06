@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class Toolbar$2 implements Runnable {
     final /* synthetic */ Toolbar this$0;
 

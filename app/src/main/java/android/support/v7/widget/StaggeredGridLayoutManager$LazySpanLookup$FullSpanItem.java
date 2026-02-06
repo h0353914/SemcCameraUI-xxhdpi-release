@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 class StaggeredGridLayoutManager$LazySpanLookup$FullSpanItem implements Parcelable {
     public static final Parcelable$Creator<StaggeredGridLayoutManager$LazySpanLookup$FullSpanItem> CREATOR = new StaggeredGridLayoutManager$LazySpanLookup$FullSpanItem$1();
     int mGapDir;

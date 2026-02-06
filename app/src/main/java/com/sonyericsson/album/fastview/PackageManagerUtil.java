@@ -6,7 +6,6 @@ import android.content.pm.PackageManager$NameNotFoundException;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PackageManagerUtil {
     private static final String LOG_TAG = "PackageManagerUtil";
 

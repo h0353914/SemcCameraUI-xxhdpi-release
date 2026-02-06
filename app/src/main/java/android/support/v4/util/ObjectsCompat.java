@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import java.util.Arrays;
 import java.util.Objects;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ObjectsCompat {
     private ObjectsCompat() {
     }

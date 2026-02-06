@@ -15,7 +15,6 @@ jadx.core.utils.exceptions.JadxRuntimeException: Init of enum field 'THERMAL_WAR
 	at jadx.core.dex.visitors.EnumVisitor.visit(EnumVisitor.java:100)
  */
 /* JADX WARN: Failed to restore enum class, 'enum' modifier and super class removed */
-/* JADX INFO: loaded from: classes.dex */
 public final class DialogId {
     private static final /* synthetic */ DialogId[] $VALUES;
     public static final DialogId COOLING_MODE;

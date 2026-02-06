@@ -3,7 +3,6 @@ package android.support.graphics.drawable;
 import android.graphics.drawable.Animatable2$AnimationCallback;
 import android.graphics.drawable.Drawable;
 
-/* JADX INFO: loaded from: classes.dex */
 class Animatable2Compat$AnimationCallback$1 extends Animatable2$AnimationCallback {
     final /* synthetic */ Animatable2Compat$AnimationCallback this$0;
 

@@ -4,7 +4,6 @@ import android.support.v4.view.ViewCompat;
 import android.view.View;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentTransitionImpl$1 implements Runnable {
     final /* synthetic */ FragmentTransitionImpl this$0;
     final /* synthetic */ ArrayList val$inNames;

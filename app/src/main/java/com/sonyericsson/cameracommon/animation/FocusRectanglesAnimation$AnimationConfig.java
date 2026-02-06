@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.animation;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FocusRectanglesAnimation$AnimationConfig {
     public final int mDuration;
     public final int mFromHeight;

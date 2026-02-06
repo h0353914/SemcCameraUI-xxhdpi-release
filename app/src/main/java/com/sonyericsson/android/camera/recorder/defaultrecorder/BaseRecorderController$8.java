@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.recorder.defaultrecorder;
 
 import com.sonyericsson.android.camera.recorder.RecorderController$Result;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class BaseRecorderController$8 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$recorder$RecorderController$Result = new int[RecorderController$Result.values().length];
 

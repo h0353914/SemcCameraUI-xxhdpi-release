@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller;
 
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StatePhotoBase extends StateMachine$State {
     final /* synthetic */ StateMachine this$0;
 

@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/* JADX INFO: loaded from: classes.dex */
 class FocusStrategy {
     private static int getWeightedDistanceFor(int i, int i2) {
         return (13 * i * i) + (i2 * i2);

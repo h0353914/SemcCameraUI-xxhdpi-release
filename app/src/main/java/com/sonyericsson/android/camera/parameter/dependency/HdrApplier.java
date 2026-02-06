@@ -9,7 +9,6 @@ import com.sonyericsson.android.camera.configuration.parameters.Iso;
 import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 import com.sonyericsson.android.camera.parameter.ParameterUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class HdrApplier extends DependencyApplier {
     public static final String TAG = "HdrApplier";
     private final Hdr mValue;

@@ -6,7 +6,6 @@ import kotlin.KotlinNullPointerException;
 import kotlin.SinceKotlin;
 import kotlin.UninitializedPropertyAccessException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Intrinsics {
     public static int compare(int i, int i2) {
         if (i < i2) {

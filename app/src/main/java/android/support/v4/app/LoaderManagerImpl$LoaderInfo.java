@@ -15,7 +15,6 @@ import android.util.Log;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LoaderManagerImpl$LoaderInfo<D> extends MutableLiveData<D> implements Loader$OnLoadCompleteListener<D> {
 
     @Nullable

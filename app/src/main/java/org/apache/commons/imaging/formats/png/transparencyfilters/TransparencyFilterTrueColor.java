@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFunctions;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TransparencyFilterTrueColor extends TransparencyFilter {
     private final int transparentColor;
 

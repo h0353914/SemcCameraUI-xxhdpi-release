@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ArrayTypeAdapter<E> extends TypeAdapter<Object> {
     public static final TypeAdapterFactory FACTORY = new ArrayTypeAdapter$1();
     private final Class<E> componentType;

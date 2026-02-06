@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.contentsview;
 
-/* JADX INFO: loaded from: classes.dex */
 class MpoUtils$JpegMaker {
     static final byte APP0 = -32;
     static final byte APP15 = -17;

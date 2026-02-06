@@ -17,7 +17,6 @@ import com.sonyericsson.cameracommon.utility.ResourceUtil;
 import java.util.Iterator;
 import java.util.concurrent.BlockingQueue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class HintTextViewController {
     private static final String TAG = "HintTextViewController";
     private HintTextContent$HintPriority mContentDisplayThreshold;

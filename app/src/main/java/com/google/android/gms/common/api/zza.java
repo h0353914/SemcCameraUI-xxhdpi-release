@@ -4,7 +4,6 @@ import android.app.Activity;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zza {
     private static final Map<Activity, zza> zzaaZ = new WeakHashMap();
     private static final Object zzpy = new Object();

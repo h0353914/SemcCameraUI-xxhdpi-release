@@ -12,7 +12,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.activity.OnActivityResultListener;
 import com.sonyericsson.cameracommon.utility.PermissionsUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MultiWindowActivity extends Activity {
     private static final String TAG = "MultiWindowActivity";
     private SparseArray<OnActivityResultListener> mActivityResultListeners;

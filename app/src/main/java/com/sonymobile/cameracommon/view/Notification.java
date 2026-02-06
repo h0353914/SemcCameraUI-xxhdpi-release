@@ -9,7 +9,6 @@ import com.sonyericsson.android.camera.device.CameraParameterConverter$SceneMode
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Notification extends RelativeLayout {
     public static final String TAG = "Notification";
     private boolean mAnimating;

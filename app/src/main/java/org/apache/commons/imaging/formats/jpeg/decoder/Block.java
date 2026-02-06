@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.jpeg.decoder;
 
-/* JADX INFO: loaded from: classes.dex */
 final class Block {
     final int height;
     final int[] samples;

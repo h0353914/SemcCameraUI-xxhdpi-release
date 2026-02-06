@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LifecycleRegistry extends Lifecycle {
     private static final String LOG_TAG = "LifecycleRegistry";
     private final WeakReference<LifecycleOwner> mLifecycleOwner;

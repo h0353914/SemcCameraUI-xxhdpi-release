@@ -13,7 +13,6 @@ import org.apache.commons.imaging.common.bytesource.ByteSourceFile;
 import org.apache.commons.imaging.util.Debug;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IccProfileParser extends BinaryFileParser {
     public IccProfileParser() {
         setByteOrder(ByteOrder.BIG_ENDIAN);

@@ -2,7 +2,6 @@ package android.support.v7.view.menu;
 
 import android.view.MenuItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class CascadingMenuPopup$3$1 implements Runnable {
     final /* synthetic */ CascadingMenuPopup$3 this$1;
     final /* synthetic */ MenuItem val$item;

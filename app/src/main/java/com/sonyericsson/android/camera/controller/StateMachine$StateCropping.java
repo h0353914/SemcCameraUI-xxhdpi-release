@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 import com.sonyericsson.android.camera.view.angle.VariableIndex;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateCropping extends StateMachine$State {
     private StateMachine$CaptureState mPreviousCaptureState;
     final /* synthetic */ StateMachine this$0;

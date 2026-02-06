@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.focusview;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FocusRectanglesViewList {
     public View[] faceViewList;
     public RelativeLayout rectanglesContainer;

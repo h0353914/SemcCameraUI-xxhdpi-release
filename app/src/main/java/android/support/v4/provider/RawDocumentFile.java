@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class RawDocumentFile extends DocumentFile {
     private File mFile;
 

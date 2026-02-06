@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.interaction;
 import android.graphics.Point;
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 final class TouchActionTranslator$NullInteractionListener implements TouchActionTranslator$TouchActionListener {
     @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
     public void onDoubleCanceled() {

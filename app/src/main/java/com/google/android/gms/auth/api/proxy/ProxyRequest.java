@@ -8,7 +8,6 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ProxyRequest implements SafeParcelable {
     public static final Parcelable$Creator<ProxyRequest> CREATOR = new zzb();
     public static final int HTTP_METHOD_DELETE = 3;

@@ -18,7 +18,6 @@ import android.view.ViewGroup$LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout$LayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ActionBarContainer extends FrameLayout {
     private View mActionBarView;

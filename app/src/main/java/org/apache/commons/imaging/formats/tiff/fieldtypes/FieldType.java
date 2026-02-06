@@ -8,7 +8,6 @@ import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
 import org.apache.commons.imaging.formats.tiff.TiffField;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class FieldType {
     private final int elementSize;
     private final String name;

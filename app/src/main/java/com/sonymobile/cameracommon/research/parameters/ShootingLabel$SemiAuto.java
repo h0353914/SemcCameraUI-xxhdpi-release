@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ShootingLabel$SemiAuto implements ShootingLabel$IntParameter {
     ON(0),
     OFF(1);

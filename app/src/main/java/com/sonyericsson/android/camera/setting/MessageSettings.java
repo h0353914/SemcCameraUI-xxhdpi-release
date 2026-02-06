@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.setting;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface MessageSettings {
     void clearSavedMessageSettings();
 

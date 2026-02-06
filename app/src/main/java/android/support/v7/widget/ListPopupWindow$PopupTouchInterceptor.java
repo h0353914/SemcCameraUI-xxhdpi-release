@@ -4,7 +4,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View$OnTouchListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ListPopupWindow$PopupTouchInterceptor implements View$OnTouchListener {
     final /* synthetic */ ListPopupWindow this$0;
 

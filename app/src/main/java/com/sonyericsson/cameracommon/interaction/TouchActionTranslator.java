@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TouchActionTranslator implements TouchMoveAndStopDetector$TouchStopDetectorListener, TouchScaleAndRotateDetector$ScaleAndRotateDetectorListener, GestureDetector$OnGestureListener {
     private static final TouchActionTranslator$TouchActionListener NULL_LISTENER = new TouchActionTranslator$NullInteractionListener(null);
     public static final String TAG = "TouchActionTranslator";

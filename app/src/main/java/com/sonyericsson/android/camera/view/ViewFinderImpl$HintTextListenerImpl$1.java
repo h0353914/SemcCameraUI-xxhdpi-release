@@ -9,7 +9,6 @@ import com.sonyericsson.android.camera.view.tutorial.TutorialContentView$OnClick
 import com.sonyericsson.android.camera.view.tutorial.TutorialController;
 import com.sonymobile.cameracommon.research.parameters.Event$WizardResult;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$HintTextListenerImpl$1 implements TutorialContentView$OnClickCloseButtonListener {
     final /* synthetic */ ViewFinderImpl$HintTextListenerImpl this$1;
     final /* synthetic */ HintTextSlowMotionDescription val$content;

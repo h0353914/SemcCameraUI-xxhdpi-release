@@ -6,7 +6,6 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import com.google.android.gms.auth.api.consent.GetConsentIntentRequest;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzkg$zza$zza implements zzkg {
     private IBinder zznJ;
 

@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ScrollbarHelper {
     static int computeScrollOffset(RecyclerView$State recyclerView$State, OrientationHelper orientationHelper, View view, View view2, RecyclerView$LayoutManager recyclerView$LayoutManager, boolean z, boolean z2) {
         int iMax;

@@ -25,7 +25,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class PreferenceDialogFragmentCompat extends DialogFragment implements DialogInterface$OnClickListener {
     protected static final String ARG_KEY = "key";
     private static final String SAVE_STATE_ICON = "PreferenceDialogFragment.icon";

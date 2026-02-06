@@ -4,7 +4,6 @@ import android.support.v4.os.OperationCanceledException;
 import java.util.concurrent.CountDownLatch;
 
 /* JADX INFO: Add missing generic type declarations: [D] */
-/* JADX INFO: loaded from: classes.dex */
 final class AsyncTaskLoader$LoadTask<D> extends ModernAsyncTask<Void, Void, D> implements Runnable {
     private final CountDownLatch mDone = new CountDownLatch(1);
     final /* synthetic */ AsyncTaskLoader this$0;

@@ -5,7 +5,6 @@ import android.content.IntentFilter;
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 
-/* JADX INFO: loaded from: classes.dex */
 @VisibleForTesting
 final class AppCompatDelegateImpl$AutoNightModeManager {
     private BroadcastReceiver mAutoTimeChangeReceiver;

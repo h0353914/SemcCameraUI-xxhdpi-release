@@ -4,7 +4,6 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 final class GradientColorInflaterCompat$ColorStops {
     final int[] mColors;
     final float[] mOffsets;

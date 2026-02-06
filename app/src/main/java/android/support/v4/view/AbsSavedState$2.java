@@ -3,7 +3,6 @@ package android.support.v4.view;
 import android.os.Parcel;
 import android.os.Parcelable$ClassLoaderCreator;
 
-/* JADX INFO: loaded from: classes.dex */
 class AbsSavedState$2 implements Parcelable$ClassLoaderCreator<AbsSavedState> {
     AbsSavedState$2() {
     }

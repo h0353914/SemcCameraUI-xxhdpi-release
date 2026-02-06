@@ -5,7 +5,6 @@ import android.os.Parcel;
 import android.os.Parcelable$Creator;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ResolveAccountRequest implements SafeParcelable {
     public static final Parcelable$Creator<ResolveAccountRequest> CREATOR = new zzy();
     final int mVersionCode;

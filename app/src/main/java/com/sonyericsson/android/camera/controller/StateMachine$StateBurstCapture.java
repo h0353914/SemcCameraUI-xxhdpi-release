@@ -15,7 +15,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateBurstCapture extends StateMachine$StatePhotoBase {
     private static final int BURST_NUMBER_MAX = 100;
     private static final int BURST_NUMBER_MIN = 2;

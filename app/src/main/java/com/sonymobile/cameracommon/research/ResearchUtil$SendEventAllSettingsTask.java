@@ -4,7 +4,6 @@ import com.sonymobile.cameracommon.research.idd.IddUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$Category;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SendEventAllSettingsTask implements Runnable {
     private final Event$Category mCategory;
     private final Map<String, String> mEnv;

@@ -3,7 +3,6 @@ package com.google.android.gms.internal;
 import android.os.Bundle;
 import com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzli$2 implements GoogleApiClient$ConnectionCallbacks {
     final /* synthetic */ zzli zzacr;
 

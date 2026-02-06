@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FieldMappingDictionary implements SafeParcelable {
     public static final zzc CREATOR = new zzc();
     private final int mVersionCode;

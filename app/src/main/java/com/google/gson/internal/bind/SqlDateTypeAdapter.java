@@ -12,7 +12,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class SqlDateTypeAdapter extends TypeAdapter<Date> {
     public static final TypeAdapterFactory FACTORY = new SqlDateTypeAdapter$1();
     private final DateFormat format = new SimpleDateFormat("MMM d, yyyy");

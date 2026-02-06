@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.gif;
 
-/* JADX INFO: loaded from: classes.dex */
 class ImageDescriptor extends GifBlock {
     final byte[] imageData;
     final int imageHeight;

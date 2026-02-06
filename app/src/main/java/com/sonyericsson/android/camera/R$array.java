@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$array {
     public static final int ux_recommended_resolution_array_beagle = 2130903040;
     public static final int ux_recommended_resolution_array_blakiston = 2130903041;

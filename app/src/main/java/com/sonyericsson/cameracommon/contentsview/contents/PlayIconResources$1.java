@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.contentsview.contents;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class PlayIconResources$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$cameracommon$contentsview$contents$Content$ContentsType = new int[Content$ContentsType.values().length];
 

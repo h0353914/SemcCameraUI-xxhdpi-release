@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.recorder.RecorderController$Result;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.storage.RequestFactory$VideoSavingRequestBuilder;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$5 implements RecorderController$RecorderListener {
     private RequestFactory$VideoSavingRequestBuilder mVideoSavingRequestBuilder = null;
     final /* synthetic */ StateMachine this$0;

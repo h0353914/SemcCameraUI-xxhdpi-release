@@ -3,7 +3,6 @@ package android.support.v4.widget;
 import android.animation.Animator;
 import android.animation.Animator$AnimatorListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class CircularProgressDrawable$2 implements Animator$AnimatorListener {
     final /* synthetic */ CircularProgressDrawable this$0;
     final /* synthetic */ CircularProgressDrawable$Ring val$ring;

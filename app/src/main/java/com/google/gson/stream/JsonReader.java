@@ -6,7 +6,6 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.Reader;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JsonReader implements Closeable {
     private static final long MIN_INCOMPLETE_INTEGER = -922337203685477580L;
     private static final char[] NON_EXECUTE_PREFIX = ")]}'\n".toCharArray();

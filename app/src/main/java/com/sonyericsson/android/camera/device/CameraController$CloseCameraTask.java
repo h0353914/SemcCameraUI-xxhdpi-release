@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.status.EachCameraStatusPublisher;
 import com.sonyericsson.cameracommon.status.GlobalCameraStatusPublisher;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class CameraController$CloseCameraTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     final /* synthetic */ CameraController this$0;

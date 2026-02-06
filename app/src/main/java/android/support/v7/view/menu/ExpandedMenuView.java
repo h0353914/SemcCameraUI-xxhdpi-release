@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView$OnItemClickListener;
 import android.widget.ListView;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public final class ExpandedMenuView extends ListView implements MenuBuilder$ItemInvoker, MenuView, AdapterView$OnItemClickListener {
     private static final int[] TINT_ATTRS = {16842964, 16843049};

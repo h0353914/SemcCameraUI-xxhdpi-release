@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CapturingModeUtil {
     public static final String ACTION_GET_MORE_APPLICATION = "com.sonymobile.cameracommon.action.GET_MORE_APPLICATION";
     public static final String ACTION_REGISTER_MODE = "com.sonymobile.cameracommon.action.REGISTER_MODE";

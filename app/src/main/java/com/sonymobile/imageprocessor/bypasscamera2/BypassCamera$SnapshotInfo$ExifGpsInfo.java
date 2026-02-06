@@ -1,6 +1,5 @@
 package com.sonymobile.imageprocessor.bypasscamera2;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BypassCamera$SnapshotInfo$ExifGpsInfo {
     public final double exifGpsAltitude;
     public final double exifGpsLatitude;

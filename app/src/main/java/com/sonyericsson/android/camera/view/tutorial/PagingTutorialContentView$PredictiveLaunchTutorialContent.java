@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.tutorial;
 import com.sonyericsson.android.camera.setting.StoredSettings;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class PagingTutorialContentView$PredictiveLaunchTutorialContent extends PagingTutorialContentView$PagingTutorialContent {
     protected PagingTutorialContentView$PredictiveLaunchTutorialContent(int i) {
         super(i);

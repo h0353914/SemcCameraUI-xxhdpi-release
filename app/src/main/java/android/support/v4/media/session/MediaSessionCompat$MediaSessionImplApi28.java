@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.media.MediaSessionManager$RemoteUserInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(28)
 class MediaSessionCompat$MediaSessionImplApi28 extends MediaSessionCompat$MediaSessionImplApi21 {
     @Override // android.support.v4.media.session.MediaSessionCompat$MediaSessionImplApi21, android.support.v4.media.session.MediaSessionCompat$MediaSessionImpl

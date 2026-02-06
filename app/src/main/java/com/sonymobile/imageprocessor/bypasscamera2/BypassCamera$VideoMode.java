@@ -1,6 +1,5 @@
 package com.sonymobile.imageprocessor.bypasscamera2;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum BypassCamera$VideoMode {
     NORMAL(0),
     STEADYSHOT(1),

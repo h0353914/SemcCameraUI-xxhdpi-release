@@ -5,7 +5,6 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 @Deprecated
 public abstract class ActionBar$Tab {
     public static final int INVALID_POSITION = -1;

@@ -8,7 +8,6 @@ import kotlin.reflect.KMutableProperty1$Setter;
 import kotlin.reflect.KProperty$Getter;
 import kotlin.reflect.KProperty1$Getter;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class MutablePropertyReference1 extends MutablePropertyReference implements KMutableProperty1 {
     @Override // kotlin.reflect.KProperty
     public /* bridge */ /* synthetic */ KProperty$Getter getGetter() {

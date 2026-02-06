@@ -5,7 +5,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlg$zzg implements GoogleApiClient$ConnectionCallbacks, GoogleApiClient$OnConnectionFailedListener {
     final /* synthetic */ zzlg zzabL;
 

@@ -9,7 +9,6 @@ import android.widget.Toast;
 import com.google.lens.sdk.LensApi;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GoogleLensModeActivity extends Activity {
     private static final long START_TIMEOUT_MILLIS = 5000;
     private Handler mHandler;

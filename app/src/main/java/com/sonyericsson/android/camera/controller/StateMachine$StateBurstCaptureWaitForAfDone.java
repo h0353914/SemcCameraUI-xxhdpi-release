@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.controller;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 import com.sonyericsson.cameracommon.storage.SavingTaskManager$SavedFileType;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateBurstCaptureWaitForAfDone extends StateMachine$StatePhotoBase {
     private static final String TAG = "StateMachine.StateBurstCaptureWaitForAfDone";
     private boolean mIsCancelRequested;

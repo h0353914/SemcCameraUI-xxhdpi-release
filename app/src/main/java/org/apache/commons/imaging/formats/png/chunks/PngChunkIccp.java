@@ -6,7 +6,6 @@ import java.util.zip.InflaterInputStream;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFunctions;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PngChunkIccp extends PngChunk {
     private final byte[] compressedProfile;
     public final int compressionMethod;

@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.jpeg.segments;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DqtSegment$QuantizationTable {
     public final int destinationIdentifier;
     private final int[] elements;

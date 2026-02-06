@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$NotifyDelayedEventTask implements Runnable {
     private final Object[] mArgs;
     private final StateMachine$TransitterEvent mEvent;

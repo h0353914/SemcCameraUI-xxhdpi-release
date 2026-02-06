@@ -6,7 +6,6 @@ import android.support.v4.view.AccessibilityDelegateCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerViewAccessibilityDelegate;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class PreferenceRecyclerViewAccessibilityDelegate extends RecyclerViewAccessibilityDelegate {
     final AccessibilityDelegateCompat mDefaultItemDelegate;

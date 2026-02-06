@@ -7,7 +7,6 @@ import java.util.Iterator;
 import java.util.Map$Entry;
 import java.util.WeakHashMap;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class SafeIterableMap<K, V> implements Iterable<Map$Entry<K, V>> {
     private SafeIterableMap$Entry<K, V> mEnd;

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.tutorial;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TutorialController$OpenType {
     public final boolean isReadMore;
     public final List<TutorialController$TutorialType> tutorialTypes;

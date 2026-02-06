@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum GridLine implements UserSettingValue {
     ON(-1, 2131690116),
     OFF(-1, 2131690115);

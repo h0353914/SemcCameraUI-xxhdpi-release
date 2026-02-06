@@ -4,7 +4,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 class Gson$FutureTypeAdapter<T> extends TypeAdapter<T> {
     private TypeAdapter<T> delegate;
 

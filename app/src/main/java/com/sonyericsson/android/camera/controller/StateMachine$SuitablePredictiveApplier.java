@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.configuration.parameters.SelfTimer;
 import com.sonyericsson.cameracommon.storage.Storage$StorageState;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$SuitablePredictiveApplier {
     private boolean isSuppressed;
     private ArrayList<Object> mSuppressors;

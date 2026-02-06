@@ -3,7 +3,6 @@ package com.sonymobile.imageprocessor.bypasscamera2;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class BypassCameraParameters {
     public static final String BURST_OFF = "off";
     public static final String BURST_ON = "on";

@@ -2,7 +2,6 @@ package android.support.v7.util;
 
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BatchingListUpdateCallback implements ListUpdateCallback {
     private static final int TYPE_ADD = 1;
     private static final int TYPE_CHANGE = 3;

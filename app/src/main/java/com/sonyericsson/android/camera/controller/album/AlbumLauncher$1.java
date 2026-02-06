@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller.album;
 
 import com.sonyericsson.cameracommon.utility.CommonUtility$DefaultGallerySetting;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class AlbumLauncher$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$cameracommon$utility$CommonUtility$DefaultGallerySetting = new int[CommonUtility$DefaultGallerySetting.values().length];
 

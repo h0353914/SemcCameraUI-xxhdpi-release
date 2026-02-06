@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.CheckedTextView;
 import android.widget.CursorAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 class AlertController$AlertParams$2 extends CursorAdapter {
     private final int mIsCheckedIndex;
     private final int mLabelIndex;

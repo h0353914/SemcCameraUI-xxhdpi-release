@@ -9,7 +9,6 @@ import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(19)
 class DocumentsContractApi19 {
     private static final int FLAG_VIRTUAL_DOCUMENT = 512;

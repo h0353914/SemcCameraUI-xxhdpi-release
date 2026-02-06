@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$1$1 implements Runnable {
     final /* synthetic */ ViewFinderImpl$1 this$1;
 

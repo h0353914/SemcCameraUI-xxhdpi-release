@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.vanilla.wearablebridge.common;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BridgeConstants {
     public static final String MSG_LIFE_CYCLE_ON_PAUSE = "msg-life-cycle-on-pause";
     public static final String MSG_LIFE_CYCLE_ON_RESUME = "msg-life-cycle-on-resume";

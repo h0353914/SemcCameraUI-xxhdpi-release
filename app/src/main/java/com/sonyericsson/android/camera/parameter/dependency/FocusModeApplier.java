@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.configuration.parameters.VideoShutterTrig
 import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 import com.sonyericsson.android.camera.parameter.ParameterUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FocusModeApplier extends DependencyApplier {
     public static final String TAG = "FocusModeApplier";
     private final FocusMode mValue;

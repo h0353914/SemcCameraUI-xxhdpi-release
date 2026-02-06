@@ -4,7 +4,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import com.sonyericsson.android.camera.view.setting.SettingDialogStack$ExclusiveViewListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$SettingMenuExclusiveListener implements SettingDialogStack$ExclusiveViewListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

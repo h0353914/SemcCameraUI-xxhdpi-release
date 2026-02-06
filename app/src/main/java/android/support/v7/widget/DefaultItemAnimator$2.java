@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 class DefaultItemAnimator$2 implements Runnable {
     final /* synthetic */ DefaultItemAnimator this$0;
     final /* synthetic */ ArrayList val$changes;

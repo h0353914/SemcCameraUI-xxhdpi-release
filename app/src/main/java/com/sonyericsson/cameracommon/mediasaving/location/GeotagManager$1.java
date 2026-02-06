@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.view.ViewFinderImpl;
 import com.sonyericsson.android.camera.view.messagedialog.DialogId;
 import com.sonyericsson.cameracommon.utility.PermissionsUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class GeotagManager$1 implements CameraActivity$PermissionCheckCallback {
     final /* synthetic */ GeotagManager this$0;
     final /* synthetic */ CameraActivity val$activity;

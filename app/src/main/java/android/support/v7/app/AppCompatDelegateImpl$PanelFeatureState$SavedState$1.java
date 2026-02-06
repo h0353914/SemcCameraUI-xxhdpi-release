@@ -3,7 +3,6 @@ package android.support.v7.app;
 import android.os.Parcel;
 import android.os.Parcelable$ClassLoaderCreator;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatDelegateImpl$PanelFeatureState$SavedState$1 implements Parcelable$ClassLoaderCreator<AppCompatDelegateImpl$PanelFeatureState$SavedState> {
     AppCompatDelegateImpl$PanelFeatureState$SavedState$1() {
     }

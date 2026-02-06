@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.io.PrintWriter;
 import org.apache.commons.imaging.ImageReadException;
 
-/* JADX INFO: loaded from: classes.dex */
 class IcoImageParser$BitmapIconData extends IcoImageParser$IconData {
     public final BufferedImage bufferedImage;
     public final IcoImageParser$BitmapHeader header;

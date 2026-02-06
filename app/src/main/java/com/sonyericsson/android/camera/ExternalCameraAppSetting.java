@@ -14,7 +14,6 @@ import com.sonyericsson.android.camera.configuration.parameters.VolumeKey;
 import java.util.Map;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ExternalCameraAppSetting {
     FLASH("FLASH_MODE", UserSettingKey.FLASH, ExternalCameraAppSetting$ShareSettingCategory.PHOTO, items().add("auto", Flash.AUTO).add("fill_flash", Flash.ON).add("flashlight", Flash.LED_ON).add("red_eye", Flash.RED_EYE).add("off", Flash.OFF)),
     FRONT_ANGLE("FRONT_ANGLE", UserSettingKey.FRONT_ANGLE, ExternalCameraAppSetting$ShareSettingCategory.COMMON, items().add("default", FrontAngle.DEFAULT).add("cropped", FrontAngle.CROPPED)),

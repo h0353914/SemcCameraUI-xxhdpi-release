@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class RecyclerView$ViewHolder {
     static final int FLAG_ADAPTER_FULLUPDATE = 1024;
     static final int FLAG_ADAPTER_POSITION_UNKNOWN = 512;

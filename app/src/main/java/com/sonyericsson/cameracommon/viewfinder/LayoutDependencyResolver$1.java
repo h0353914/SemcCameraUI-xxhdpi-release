@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.viewfinder;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class LayoutDependencyResolver$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$cameracommon$viewfinder$LayoutDependencyResolver$SystemBarStatus = new int[LayoutDependencyResolver$SystemBarStatus.values().length];
 

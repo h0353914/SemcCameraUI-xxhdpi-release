@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.status;
 import android.content.ContentValues;
 import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class CameraIdArrayValue implements CameraStatusValue {
     private static final String INLALID_VALUE = "N/A";
     private static final char SEPARATOR = ',';

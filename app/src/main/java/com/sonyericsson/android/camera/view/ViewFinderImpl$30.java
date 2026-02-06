@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 import com.sonyericsson.android.camera.view.overlaycontrol.ValueAccessor;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$30 implements ValueAccessor<Float> {
     final /* synthetic */ ViewFinderImpl this$0;
 

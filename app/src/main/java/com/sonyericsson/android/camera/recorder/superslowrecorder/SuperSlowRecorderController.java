@@ -24,7 +24,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SuperSlowRecorderController extends DefaultRecorderController {
     private static final int MEDIA_FORMAT_OPERATING_RATE = 120;
     private static long MIN_VIDEO_DURATION_MILLIS = 3000;

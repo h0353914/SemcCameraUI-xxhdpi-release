@@ -2,7 +2,6 @@ package android.support.v7.util;
 
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 class MessageThreadUtil$1$1 implements Runnable {
     final /* synthetic */ MessageThreadUtil$1 this$1;
 

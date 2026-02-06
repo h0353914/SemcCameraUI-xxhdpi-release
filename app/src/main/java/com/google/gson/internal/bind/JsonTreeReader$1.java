@@ -3,7 +3,6 @@ package com.google.gson.internal.bind;
 import java.io.IOException;
 import java.io.Reader;
 
-/* JADX INFO: loaded from: classes.dex */
 class JsonTreeReader$1 extends Reader {
     JsonTreeReader$1() {
     }

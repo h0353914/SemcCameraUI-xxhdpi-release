@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class SetupWizardActivity$8 implements DialogInterface$OnClickListener {
     final /* synthetic */ SetupWizardActivity this$0;
 

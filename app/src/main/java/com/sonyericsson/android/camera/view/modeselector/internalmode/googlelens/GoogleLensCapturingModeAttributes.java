@@ -6,7 +6,6 @@ import android.content.pm.PackageManager$NameNotFoundException;
 import com.sonyericsson.android.camera.view.modeselector.CapturingModeAttributes;
 import com.sonyericsson.android.camera.view.modeselector.ResourceUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GoogleLensCapturingModeAttributes extends CapturingModeAttributes {
     private Context mContext;
 

@@ -12,7 +12,6 @@ import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.cameracommon.utility.PositionConverter;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 final class CameraController$CaptureSessionCallback extends CameraCaptureSession$CaptureCallback {
     private static final int IGNORE_CAPTURE_RESULT_THRESHOLD = 5;
     private boolean mIsPreviewStartNotificationRequired;

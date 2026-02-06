@@ -6,7 +6,6 @@ import java.lang.reflect.Type;
 import java.util.Arrays;
 
 /* JADX INFO: renamed from: com.google.gson.internal.$Gson$Types$ParameterizedTypeImpl, reason: invalid class name */
-/* JADX INFO: loaded from: classes.dex */
 final class C$Gson$Types$ParameterizedTypeImpl implements ParameterizedType, Serializable {
     private static final long serialVersionUID = 0;
     private final Type ownerType;

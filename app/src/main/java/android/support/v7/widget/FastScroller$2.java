@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class FastScroller$2 extends RecyclerView$OnScrollListener {
     final /* synthetic */ FastScroller this$0;
 

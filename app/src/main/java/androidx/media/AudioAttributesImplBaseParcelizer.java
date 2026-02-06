@@ -5,7 +5,6 @@ import android.support.annotation.RestrictTo$Scope;
 import android.support.v4.media.AudioAttributesImplBase;
 import androidx.versionedparcelable.VersionedParcel;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY})
 public final class AudioAttributesImplBaseParcelizer {
     public static AudioAttributesImplBase read(VersionedParcel versionedParcel) {

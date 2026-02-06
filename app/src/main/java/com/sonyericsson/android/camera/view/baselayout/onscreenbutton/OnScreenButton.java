@@ -17,7 +17,6 @@ import com.sonyericsson.android.camera.research.LocalResearchUtil$MeasurementKey
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class OnScreenButton extends FrameLayout implements OnScreenButtonGroup$OnItemUpdatedListener {
     private static final int DISABLED_FILTER = 2131099706;
     public static final OnScreenButtonListener EMPTY_LISTENER = new OnScreenButton$1();

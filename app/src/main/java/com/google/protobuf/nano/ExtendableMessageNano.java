@@ -3,7 +3,6 @@ package com.google.protobuf.nano;
 import com.google.protobuf.nano.ExtendableMessageNano;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class ExtendableMessageNano<M extends ExtendableMessageNano<M>> extends MessageNano {
     protected FieldArray unknownFieldData;
 

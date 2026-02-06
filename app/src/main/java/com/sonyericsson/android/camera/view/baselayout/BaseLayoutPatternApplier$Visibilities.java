@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.baselayout;
 
-/* JADX INFO: loaded from: classes.dex */
 class BaseLayoutPatternApplier$Visibilities {
     public final int batteryIndicator;
     public final int captureButton;

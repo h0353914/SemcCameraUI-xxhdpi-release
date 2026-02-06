@@ -24,7 +24,6 @@ import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileChannel$MapMode;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class TypefaceCompatUtil {
     private static final String CACHE_FILE_PREFIX = ".font";

@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.gif;
 
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class ImageContents {
     final List<GifBlock> blocks;
     final GifHeaderInfo gifHeaderInfo;

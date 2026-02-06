@@ -6,7 +6,6 @@ import android.os.RemoteException;
 import android.support.v4.media.MediaMetadataCompat;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface IMediaControllerCallback extends IInterface {
     void onCaptioningEnabledChanged(boolean z) throws RemoteException;
 

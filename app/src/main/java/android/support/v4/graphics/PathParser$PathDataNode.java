@@ -5,7 +5,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PathParser$PathDataNode {
 
     @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})

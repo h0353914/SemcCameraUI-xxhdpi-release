@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.storage;
 import java.io.File;
 import java.io.FilenameFilter;
 
-/* JADX INFO: loaded from: classes.dex */
 class DcfPathBuilder$DcfImageFileNameFilter implements FilenameFilter {
     private int mFilterFileNo;
 

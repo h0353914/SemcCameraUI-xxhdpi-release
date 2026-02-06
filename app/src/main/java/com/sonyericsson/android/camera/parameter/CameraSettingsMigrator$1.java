@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraSettingsMigrator$1 extends HashMap<CapturingMode, List<UserSettingKey>> {
     CameraSettingsMigrator$1() {
         put(CapturingMode.NORMAL, Arrays.asList(UserSettingKey.RESOLUTION, UserSettingKey.WHITE_BALANCE, UserSettingKey.EV, UserSettingKey.SHUTTER_SPEED, UserSettingKey.FOCUS_RANGE, UserSettingKey.SELF_TIMER, UserSettingKey.FUSION_MODE, UserSettingKey.ISO, UserSettingKey.HDR, UserSettingKey.TOUCH_INTENTION, UserSettingKey.OBJECT_TRACKING, UserSettingKey.METERING, UserSettingKey.SHUTTER_TRIGGER));

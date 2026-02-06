@@ -4,7 +4,6 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator$AnimatorUpdateListener;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewPropertyAnimatorCompat$2 implements ValueAnimator$AnimatorUpdateListener {
     final /* synthetic */ ViewPropertyAnimatorCompat this$0;
     final /* synthetic */ ViewPropertyAnimatorUpdateListener val$listener;

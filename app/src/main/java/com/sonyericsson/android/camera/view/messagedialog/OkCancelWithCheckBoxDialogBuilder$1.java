@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class OkCancelWithCheckBoxDialogBuilder$1 implements DialogInterface$OnClickListener {
     final /* synthetic */ OkCancelWithCheckBoxDialogBuilder this$0;
     final /* synthetic */ MessageDialogBuilder$MessageDialogCheckBoxListener val$checkBoxListener;

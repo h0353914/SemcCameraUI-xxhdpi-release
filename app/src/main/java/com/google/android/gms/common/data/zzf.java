@@ -2,7 +2,6 @@ package com.google.android.gms.common.data;
 
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzf<T> extends AbstractDataBuffer<T> {
     private boolean zzadD;
     private ArrayList<Integer> zzadE;

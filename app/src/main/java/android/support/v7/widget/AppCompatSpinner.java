@@ -29,7 +29,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AppCompatSpinner extends Spinner implements TintableBackgroundView {
     private static final int[] ATTRS_ANDROID_SPINNERMODE = {16843505};
     private static final int MAX_ITEMS_MEASURED = 15;

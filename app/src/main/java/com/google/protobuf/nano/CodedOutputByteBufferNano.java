@@ -10,7 +10,6 @@ import java.nio.ByteOrder;
 import java.nio.ReadOnlyBufferException;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class CodedOutputByteBufferNano {
     public static final int LITTLE_ENDIAN_32_SIZE = 4;
     public static final int LITTLE_ENDIAN_64_SIZE = 8;

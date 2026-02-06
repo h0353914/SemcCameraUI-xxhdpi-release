@@ -9,7 +9,6 @@ import android.support.v4.media.MediaMetadataCompat;
 import android.view.KeyEvent;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 interface MediaControllerCompat$MediaControllerImpl {
     void addQueueItem(MediaDescriptionCompat mediaDescriptionCompat);
 

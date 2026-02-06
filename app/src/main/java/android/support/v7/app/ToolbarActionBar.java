@@ -21,7 +21,6 @@ import android.view.Window$Callback;
 import android.widget.SpinnerAdapter;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class ToolbarActionBar extends ActionBar {
     DecorToolbar mDecorToolbar;
     private boolean mLastMenuVisibility;

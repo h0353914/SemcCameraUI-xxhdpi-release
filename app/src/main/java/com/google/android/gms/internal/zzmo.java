@@ -3,7 +3,6 @@ package com.google.android.gms.internal;
 import android.database.CharArrayBuffer;
 import android.text.TextUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzmo {
     public static void zzb(String str, CharArrayBuffer charArrayBuffer) {
         if (TextUtils.isEmpty(str)) {

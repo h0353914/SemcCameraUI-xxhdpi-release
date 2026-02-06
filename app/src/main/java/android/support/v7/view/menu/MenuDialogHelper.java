@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager$LayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 class MenuDialogHelper implements DialogInterface$OnKeyListener, DialogInterface$OnClickListener, DialogInterface$OnDismissListener, MenuPresenter$Callback {
     private AlertDialog mDialog;
     private MenuBuilder mMenu;

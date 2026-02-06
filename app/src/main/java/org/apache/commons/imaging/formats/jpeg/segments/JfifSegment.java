@@ -7,7 +7,6 @@ import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.formats.jpeg.JpegConstants;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JfifSegment extends Segment {
     public final int densityUnits;
     public final int jfifMajorVersion;

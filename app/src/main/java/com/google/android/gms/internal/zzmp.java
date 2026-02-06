@@ -2,7 +2,6 @@ package com.google.android.gms.internal;
 
 import android.os.SystemClock;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzmp implements zzmn {
     private static zzmp zzaik;
 

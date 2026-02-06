@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.net.Uri$Builder;
 import android.text.TextUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzn {
     private static final Uri zzagi = Uri.parse("http://plus.google.com/");
     private static final Uri zzagj = zzagi.buildUpon().appendPath("circles").appendPath("find").build();

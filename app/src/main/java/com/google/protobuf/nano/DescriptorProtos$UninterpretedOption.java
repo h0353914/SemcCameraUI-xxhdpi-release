@@ -3,7 +3,6 @@ package com.google.protobuf.nano;
 import java.io.IOException;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DescriptorProtos$UninterpretedOption extends ExtendableMessageNano<DescriptorProtos$UninterpretedOption> {
     private static volatile DescriptorProtos$UninterpretedOption[] _emptyArray;
     public String aggregateValue;

@@ -13,7 +13,6 @@ import com.sonyericsson.cameracommon.utility.CommonUtility;
 import com.sonymobile.help.HelpUtils;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 public class HelpGuide {
     private static final String CATEGORY_CAPTURE = "Capture";
     private static final String HELP_APP_PKG_NAME = "com.sonymobile.support";

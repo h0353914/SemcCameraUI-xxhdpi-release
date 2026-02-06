@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DataHolder implements SafeParcelable {
     public static final zze CREATOR = new zze();
     private static final DataHolder$zza zzadx = new DataHolder$1(new String[0], null);

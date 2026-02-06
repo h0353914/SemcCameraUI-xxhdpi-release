@@ -5,7 +5,6 @@ import com.sonymobile.cameracommon.research.parameters.Event$TimeFromAfDoneToCap
 import com.sonymobile.cameracommon.research.parameters.ShootingLabel;
 import com.sonymobile.cameracommon.research.parameters.ShootingLabel$Parameter;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$AfDoneKeepingTimeHolder {
     private boolean mContinuousCapture;
     private long mTimeAfDone;

@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class StorageUtil {
     private static final String DUMMY_FILE_MIME_TYPE = "text/plane";
     private static final String DUMMY_FILE_NAME = "sdcard_write_test";

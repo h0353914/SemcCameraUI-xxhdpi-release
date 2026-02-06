@@ -8,7 +8,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.view.setting.SettingDialogStack;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingDialogInterface;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class AbsSelectableDialog implements SettingDialogInterface, ScrollContainer$OnScrollListener {
     private Animator mAnimation;
     protected final Context mContext;

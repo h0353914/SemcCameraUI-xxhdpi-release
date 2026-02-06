@@ -9,7 +9,6 @@ import com.sonyericsson.android.camera.view.setting.dialogitem.SettingDialogItem
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ImageQualityWidgetFactory extends SettingDialogItemFactory {
     private CameraInfo$CameraId mCameraId;
     private final OnSlideListener mListener;

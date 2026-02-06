@@ -14,7 +14,6 @@ import android.support.v7.content.res.AppCompatResources;
 import android.util.AttributeSet;
 import android.widget.RadioButton;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AppCompatRadioButton extends RadioButton implements TintableCompoundButton {
     private final AppCompatCompoundButtonHelper mCompoundButtonHelper;
     private final AppCompatTextHelper mTextHelper;

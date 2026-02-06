@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.baselayout.zoombar;
 
-/* JADX INFO: loaded from: classes.dex */
 class Zoombar$2 implements Runnable {
     final /* synthetic */ Zoombar this$0;
 

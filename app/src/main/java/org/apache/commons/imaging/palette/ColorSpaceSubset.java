@@ -2,7 +2,6 @@ package org.apache.commons.imaging.palette;
 
 import java.io.PrintStream;
 
-/* JADX INFO: loaded from: classes.dex */
 class ColorSpaceSubset {
     public static final ColorSpaceSubset$RgbComparator RGB_COMPARATOR = new ColorSpaceSubset$RgbComparator();
     private int index;

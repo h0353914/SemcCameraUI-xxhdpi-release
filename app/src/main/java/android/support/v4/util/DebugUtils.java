@@ -3,7 +3,6 @@ package android.support.v4.util;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class DebugUtils {
     public static void buildShortClassTag(Object obj, StringBuilder sb) {

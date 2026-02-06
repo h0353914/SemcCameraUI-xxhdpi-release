@@ -5,7 +5,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatDelegateImpl$PanelFeatureState$SavedState implements Parcelable {
     public static final Parcelable$Creator<AppCompatDelegateImpl$PanelFeatureState$SavedState> CREATOR = new AppCompatDelegateImpl$PanelFeatureState$SavedState$1();
     int featureId;

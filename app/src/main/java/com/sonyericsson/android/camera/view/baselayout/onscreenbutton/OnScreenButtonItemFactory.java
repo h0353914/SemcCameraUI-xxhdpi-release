@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.baselayout.onscreenbutton;
 
-/* JADX INFO: loaded from: classes.dex */
 public class OnScreenButtonItemFactory {
     public static OnScreenButtonGroup$MutableButtonItem createMutableButton(OnScreenButtonListener onScreenButtonListener) {
         return new OnScreenButtonGroup$MutableButtonItem(onScreenButtonListener, true);

@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.view.modeselector.ModeSelectorInternalMod
 import com.sonyericsson.android.camera.view.tutorial.TutorialController$TutorialType;
 import com.sonymobile.cameracommon.research.parameters.Event$Category;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class LocalResearchUtil$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey;
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode;

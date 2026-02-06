@@ -5,7 +5,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import java.io.File;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FontUtil {
     public static final String TAG = "FontUtil";
 

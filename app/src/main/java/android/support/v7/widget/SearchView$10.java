@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-/* JADX INFO: loaded from: classes.dex */
 class SearchView$10 implements TextWatcher {
     final /* synthetic */ SearchView this$0;
 

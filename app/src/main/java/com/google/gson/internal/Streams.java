@@ -13,7 +13,6 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.Writer;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class Streams {
     public static JsonElement parse(JsonReader jsonReader) throws JsonParseException {
         boolean z;

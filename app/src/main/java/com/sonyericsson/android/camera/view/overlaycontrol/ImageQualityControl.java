@@ -30,7 +30,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ImageQualityControl extends OverlayControl {
     public static final List<UserSettingKey> KEYS = Collections.unmodifiableList(Arrays.asList(UserSettingKey.WHITE_BALANCE, UserSettingKey.EV, UserSettingKey.ISO, UserSettingKey.SHUTTER_SPEED, UserSettingKey.FOCUS_RANGE));
     private final EnumValueAccessor<CapturingMode> mCapturingMode;

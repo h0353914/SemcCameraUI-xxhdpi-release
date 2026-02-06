@@ -7,7 +7,6 @@ import android.os.RemoteException;
 import com.google.android.aidl.BaseStub;
 import com.google.android.aidl.Codecs;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class IPublicSearchService$Stub extends BaseStub implements IPublicSearchService {
     private static final String DESCRIPTOR = "com.google.android.apps.gsa.publicsearch.IPublicSearchService";
     static final int TRANSACTION_beginSession = 1;

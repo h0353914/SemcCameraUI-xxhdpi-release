@@ -19,7 +19,6 @@ import android.view.accessibility.AccessibilityEvent;
 import java.util.Arrays;
 import java.util.BitSet;
 
-/* JADX INFO: loaded from: classes.dex */
 public class StaggeredGridLayoutManager extends RecyclerView$LayoutManager implements RecyclerView$SmoothScroller$ScrollVectorProvider {
     static final boolean DEBUG = false;
 

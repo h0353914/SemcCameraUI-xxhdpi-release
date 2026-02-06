@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.contentsview.contents;
 import android.app.Activity;
 import com.sonyericsson.cameracommon.contentsview.contents.optionmenu.OptionOperating;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Content implements OptionOperating {
     public static final String TAG = "Content";
     protected String mCountText;

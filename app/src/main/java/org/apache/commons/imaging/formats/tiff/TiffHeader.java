@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.tiff;
 
 import java.nio.ByteOrder;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffHeader extends TiffElement {
     public final ByteOrder byteOrder;
     public final long offsetToFirstIFD;

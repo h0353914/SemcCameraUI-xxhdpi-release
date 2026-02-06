@@ -4,7 +4,6 @@ import android.graphics.Rect;
 import com.sonyericsson.android.camera.device.ImageRetriever$OnImageRetrieverCallback;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 class HandSignsDetector$2 implements ImageRetriever$OnImageRetrieverCallback {
     final /* synthetic */ HandSignsDetector this$0;
 

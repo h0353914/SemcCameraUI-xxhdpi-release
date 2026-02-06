@@ -8,7 +8,6 @@ import android.os.Debug;
 import android.os.Debug$MemoryInfo;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MemoryAnalyzer {
     public static final String TAG = "MemoryAnalyzer";
 

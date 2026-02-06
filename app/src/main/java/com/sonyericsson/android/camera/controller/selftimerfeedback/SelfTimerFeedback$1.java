@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller.selftimerfeedback;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class SelfTimerFeedback$1 implements SelfTimerFeedback$PeriodicEvent$TickEvent {
     final /* synthetic */ SelfTimerFeedback this$0;
 

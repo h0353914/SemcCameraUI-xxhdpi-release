@@ -37,7 +37,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PlatformCapability {
     private static int CAPABILITY_VERSION = 1;
     private static final String FILE_NAME = "com.sonyericsson.android.camera.supported_values.";
@@ -392,7 +391,6 @@ public class PlatformCapability {
             return null;
         }
         if (isSharedPreferencesValid(sharedPreferences)) {
-            CamLog.d("loaded from shared-preferences: name = " + str);
             return sharedPreferences;
         }
         CamLog.i("shared-preferences is not valid: name = " + str);
@@ -422,7 +420,6 @@ public class PlatformCapability {
     private static PlatformCapabilityList loadPlatformCapabilityFromDevice(Context context) {
         try {
             PlatformCapabilityList platformCapabilityList = new PlatformCapabilityList(context);
-            CamLog.d("PlatformCapabilities are loaded from device.");
             return platformCapabilityList;
         } catch (Exception e) {
             CamLog.e("Fail to load PlatformCapabilities from device.", e);

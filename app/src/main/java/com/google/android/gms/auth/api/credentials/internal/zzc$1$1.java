@@ -3,7 +3,6 @@ package com.google.android.gms.auth.api.credentials.internal;
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.common.api.Status;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzc$1$1 extends zza {
     final /* synthetic */ zzc$1 zzSG;
 

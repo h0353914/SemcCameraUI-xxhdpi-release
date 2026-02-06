@@ -7,7 +7,6 @@ import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.os.ResultReceiver;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$SearchResultReceiver extends ResultReceiver {
     private final MediaBrowserCompat$SearchCallback mCallback;
     private final Bundle mExtras;

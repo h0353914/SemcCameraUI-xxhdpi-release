@@ -19,7 +19,6 @@ import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
 import org.apache.commons.imaging.formats.tiff.constants.TiffTagConstants;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SavingTaskManager$PhotoSavingTask implements Runnable {
     private volatile boolean mIsCanceled = false;
     private volatile boolean mIsRunning = false;

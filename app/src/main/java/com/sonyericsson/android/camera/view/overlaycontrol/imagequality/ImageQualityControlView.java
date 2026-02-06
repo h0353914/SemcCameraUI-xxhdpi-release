@@ -26,7 +26,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ImageQualityControlView extends SettingDialog {
     private SettingAdapter mAdapter;
     private final Context mContext;

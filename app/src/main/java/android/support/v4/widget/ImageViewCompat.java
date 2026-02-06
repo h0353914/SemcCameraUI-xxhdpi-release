@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ImageViewCompat {
     /* JADX WARN: Multi-variable type inference failed */
     @Nullable

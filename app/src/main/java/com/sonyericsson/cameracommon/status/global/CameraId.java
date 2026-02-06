@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.status.global;
 import com.sonyericsson.cameracommon.status.GlobalCameraStatusValue;
 import com.sonyericsson.cameracommon.status.IntegerValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CameraId extends IntegerValue implements GlobalCameraStatusValue {
     public static final int DEFAULT_VALUE = 0;
     public static final String KEY = "camera_id";

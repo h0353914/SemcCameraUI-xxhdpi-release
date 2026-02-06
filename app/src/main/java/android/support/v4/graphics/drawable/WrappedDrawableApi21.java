@@ -16,7 +16,6 @@ import android.support.annotation.RequiresApi;
 import android.util.Log;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class WrappedDrawableApi21 extends WrappedDrawableApi14 {
     private static final String TAG = "WrappedDrawableApi21";

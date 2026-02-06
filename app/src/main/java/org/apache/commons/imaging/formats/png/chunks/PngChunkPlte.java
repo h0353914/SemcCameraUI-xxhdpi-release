@@ -6,7 +6,6 @@ import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.formats.png.GammaCorrection;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PngChunkPlte extends PngChunk {
     private final int[] rgb;
 

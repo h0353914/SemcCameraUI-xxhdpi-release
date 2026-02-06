@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.common;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GenericImageMetadata$GenericImageMetadataItem implements ImageMetadata$ImageMetadataItem {
     private final String keyword;
     private final String text;

@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.view;
 
 import com.sonyericsson.android.camera.device.CameraParameterConverter$SceneMode;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class RecognizedScene$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$device$CameraParameterConverter$SceneMode = new int[CameraParameterConverter$SceneMode.values().length];
 

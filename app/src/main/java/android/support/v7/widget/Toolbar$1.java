@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.view.MenuItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class Toolbar$1 implements ActionMenuView$OnMenuItemClickListener {
     final /* synthetic */ Toolbar this$0;
 

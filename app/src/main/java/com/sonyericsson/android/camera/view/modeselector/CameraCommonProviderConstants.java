@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.modeselector;
 
 import android.net.Uri;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CameraCommonProviderConstants {
     public static final String AUTHORITY = "com.sonymobile.camerauicommon.provider";
     private static final Uri BASE_URI = Uri.parse("content://com.sonymobile.camerauicommon.provider");

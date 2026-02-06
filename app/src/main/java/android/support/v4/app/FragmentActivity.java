@@ -27,7 +27,6 @@ import android.view.View;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FragmentActivity extends SupportActivity implements ViewModelStoreOwner, ActivityCompat$OnRequestPermissionsResultCallback, ActivityCompat$RequestPermissionsRequestCodeValidator {
     static final String ALLOCATED_REQUEST_INDICIES_TAG = "android:support:request_indicies";
     static final String FRAGMENTS_TAG = "android:support:fragments";

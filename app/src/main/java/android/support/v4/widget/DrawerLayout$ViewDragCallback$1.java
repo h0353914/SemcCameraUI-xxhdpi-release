@@ -1,6 +1,5 @@
 package android.support.v4.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class DrawerLayout$ViewDragCallback$1 implements Runnable {
     final /* synthetic */ DrawerLayout$ViewDragCallback this$1;
 

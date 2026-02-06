@@ -19,7 +19,6 @@ import android.view.SubMenu;
 import android.view.View;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class MenuItemWrapperICS extends BaseMenuWrapper<SupportMenuItem> implements MenuItem {
     static final String LOG_TAG = "MenuItemWrapper";

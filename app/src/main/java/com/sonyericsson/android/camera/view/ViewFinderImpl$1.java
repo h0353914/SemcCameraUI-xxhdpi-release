@@ -7,7 +7,6 @@ import com.sonyericsson.cameracommon.storage.Storage$StorageState;
 import com.sonyericsson.cameracommon.storage.Storage$StorageStateListener;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$1 implements Storage$StorageStateListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.setting;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ContextualSettingList$Group {
     public final ContextualSettingList$Category common;
     public final ContextualSettingList$Category priorityHigh;

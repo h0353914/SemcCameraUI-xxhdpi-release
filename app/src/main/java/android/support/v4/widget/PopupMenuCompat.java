@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.View$OnTouchListener;
 import android.widget.PopupMenu;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class PopupMenuCompat {
     private PopupMenuCompat() {
     }

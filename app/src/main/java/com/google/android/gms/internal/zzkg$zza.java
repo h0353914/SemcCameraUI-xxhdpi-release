@@ -8,7 +8,6 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import com.google.android.gms.auth.api.consent.GetConsentIntentRequest;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzkg$zza extends Binder implements zzkg {
     public static zzkg zzaq(IBinder iBinder) {
         if (iBinder == null) {

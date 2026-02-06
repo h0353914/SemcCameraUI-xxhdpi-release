@@ -18,7 +18,6 @@ import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import com.sonyericsson.cameracommon.storage.StorageUtil;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LaunchCondition {
     public static final String ACTION_FRONT_STILL_IMAGE_CAMERA = "com.sonyericsson.android.camera.action.FRONT_STILL_IMAGE_CAMERA";
     public static final String ACTION_FRONT_VIDEO_CAMERA = "com.sonyericsson.android.camera.action.FRONT_VIDEO_CAMERA";

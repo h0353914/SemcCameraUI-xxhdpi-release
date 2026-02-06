@@ -18,7 +18,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.Semaphore;
 
-/* JADX INFO: loaded from: classes.dex */
 public class StorageImpl implements Storage, CameraApplication$Pausable {
     private static final int DATA_LOAD_TASK_SIZE = 1;
     private static final int MULTI_STORAGE_ACCESS_PERMIT_NUM = 2;

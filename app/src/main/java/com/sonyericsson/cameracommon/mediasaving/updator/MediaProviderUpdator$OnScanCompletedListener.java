@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaProviderUpdator$OnScanCompletedListener implements MediaScannerConnection$OnScanCompletedListener {
     private final CountDownLatch mLatch = new CountDownLatch(1);
     private Uri mScanResult;

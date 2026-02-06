@@ -3,7 +3,6 @@ package android.support.v4.media.session;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class PlaybackStateCompat$CustomAction$Builder {
     private final String mAction;
     private Bundle mExtras;

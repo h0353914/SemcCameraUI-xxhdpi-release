@@ -5,7 +5,6 @@ import java.awt.color.ICC_ColorSpace;
 import java.awt.image.BufferedImage;
 import org.apache.commons.imaging.icc.IccProfileParser;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ImageDump {
     private String colorSpaceTypeToName(ColorSpace colorSpace) {
         int type = colorSpace.getType();

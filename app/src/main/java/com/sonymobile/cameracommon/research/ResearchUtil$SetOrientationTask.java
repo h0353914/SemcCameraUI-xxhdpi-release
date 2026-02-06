@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SetOrientationTask implements Runnable {
     private final int mOrientation;
     final /* synthetic */ ResearchUtil this$0;

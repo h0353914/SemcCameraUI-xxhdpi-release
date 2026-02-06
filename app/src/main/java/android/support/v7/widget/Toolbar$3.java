@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.view.View;
 import android.view.View$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class Toolbar$3 implements View$OnClickListener {
     final /* synthetic */ Toolbar this$0;
 

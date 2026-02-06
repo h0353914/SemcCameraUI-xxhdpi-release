@@ -3,7 +3,6 @@ package com.google.android.gms.common.api;
 import com.google.android.gms.common.internal.zzx;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class BatchResult implements Result {
     private final Status zzSC;
     private final PendingResult<?>[] zzaaB;

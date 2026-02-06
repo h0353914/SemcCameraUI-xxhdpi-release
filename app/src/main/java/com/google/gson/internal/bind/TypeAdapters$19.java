@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-/* JADX INFO: loaded from: classes.dex */
 class TypeAdapters$19 extends TypeAdapter<URI> {
     TypeAdapters$19() {
     }

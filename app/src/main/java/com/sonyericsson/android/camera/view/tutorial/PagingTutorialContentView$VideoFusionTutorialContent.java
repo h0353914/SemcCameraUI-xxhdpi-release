@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.setting.MessageType;
 import com.sonyericsson.android.camera.setting.StoredSettings;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class PagingTutorialContentView$VideoFusionTutorialContent extends PagingTutorialContentView$PagingTutorialContent {
     protected PagingTutorialContentView$VideoFusionTutorialContent(int i) {
         super(i);

@@ -2,7 +2,6 @@ package android.support.v7.widget.helper;
 
 import android.support.v4.view.ViewCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 class ItemTouchHelper$1 implements Runnable {
     final /* synthetic */ ItemTouchHelper this$0;
 

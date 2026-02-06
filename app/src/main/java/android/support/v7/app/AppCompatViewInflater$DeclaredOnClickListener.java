@@ -9,7 +9,6 @@ import android.view.View$OnClickListener;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatViewInflater$DeclaredOnClickListener implements View$OnClickListener {
     private final View mHostView;
     private final String mMethodName;

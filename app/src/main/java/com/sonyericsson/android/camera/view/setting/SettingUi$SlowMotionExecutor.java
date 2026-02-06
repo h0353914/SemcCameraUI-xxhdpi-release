@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInte
 import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController$DisplayTrigger;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingUi$SlowMotionExecutor<T> implements SettingExecutorInterface<T> {
     private final SettingExecutorInterface<T> mExecutor;
     final /* synthetic */ SettingUi this$0;

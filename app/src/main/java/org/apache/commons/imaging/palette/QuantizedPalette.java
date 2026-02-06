@@ -3,7 +3,6 @@ package org.apache.commons.imaging.palette;
 import java.util.List;
 import org.apache.commons.imaging.ImageWriteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class QuantizedPalette implements Palette {
     private final int precision;
     private final ColorSpaceSubset[] straight;

@@ -9,7 +9,6 @@ import com.sonyericsson.cameracommon.utility.CommonUtility;
 import java.util.Iterator;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 class FocusRectangles$OnFaceRectTouchListener implements Rectangle$RectangleOnTouchListener {
     private boolean mIsForceTouchCanceled = false;
     final /* synthetic */ FocusRectangles this$0;

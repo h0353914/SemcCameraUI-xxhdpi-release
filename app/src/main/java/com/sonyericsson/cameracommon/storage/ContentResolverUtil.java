@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.mediasaving.updator.CrUpdateParameter;
 import java.io.InputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ContentResolverUtil {
     public static final String TAG = "ContentResolverUtil";
 

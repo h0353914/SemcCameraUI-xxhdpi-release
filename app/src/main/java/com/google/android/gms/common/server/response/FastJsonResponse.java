@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class FastJsonResponse {
     private void zza(StringBuilder sb, FastJsonResponse$Field fastJsonResponse$Field, Object obj) {
         String string;

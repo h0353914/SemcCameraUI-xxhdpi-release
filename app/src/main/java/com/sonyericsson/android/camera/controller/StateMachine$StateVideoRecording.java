@@ -11,7 +11,6 @@ import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 import com.sonyericsson.cameracommon.storage.Storage$StorageState;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateVideoRecording extends StateMachine$StateVideoBase {
     private static final String TAG = "StateMachine.StateVideoRecording";
     private boolean mAlreadyRequestStop;

@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.research;
 
 import com.sonymobile.cameracommon.research.idd.IddUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SendEventInternalModeChangeTask implements Runnable {
     private final String mCurrentMode;
     private final String mMethod;

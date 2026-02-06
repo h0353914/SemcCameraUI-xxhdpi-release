@@ -7,7 +7,6 @@ import android.support.annotation.RequiresApi;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class PlaybackStateCompatApi21 {
     public static int getState(Object obj) {

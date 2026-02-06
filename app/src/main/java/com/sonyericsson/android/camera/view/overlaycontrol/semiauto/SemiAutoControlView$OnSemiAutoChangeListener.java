@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.overlaycontrol.semiauto;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface SemiAutoControlView$OnSemiAutoChangeListener {
     void onAmberBlueColorChanged(int i);
 

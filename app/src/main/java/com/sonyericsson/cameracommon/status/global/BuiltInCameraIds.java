@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
 import com.sonyericsson.cameracommon.status.CameraIdArrayValue;
 import com.sonyericsson.cameracommon.status.GlobalCameraStatusValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BuiltInCameraIds extends CameraIdArrayValue implements GlobalCameraStatusValue {
     public static final CameraInfo$CameraId[] DEFAULT_VALUE = new CameraInfo$CameraId[0];
     public static final String KEY = "built_in_camera_ids";

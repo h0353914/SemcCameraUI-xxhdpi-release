@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Event$CaptureTrigger implements Event$Action {
     CAMERA_KEY,
     CAPTURE_BUTTON,

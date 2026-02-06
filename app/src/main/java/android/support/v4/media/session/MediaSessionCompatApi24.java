@@ -5,7 +5,6 @@ import android.support.annotation.RequiresApi;
 import android.util.Log;
 import java.lang.reflect.InvocationTargetException;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(24)
 class MediaSessionCompatApi24 {
     private static final String TAG = "MediaSessionCompatApi24";

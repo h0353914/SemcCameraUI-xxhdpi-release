@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class PagerSnapHelper$1 extends LinearSmoothScroller {
     final /* synthetic */ PagerSnapHelper this$0;
 

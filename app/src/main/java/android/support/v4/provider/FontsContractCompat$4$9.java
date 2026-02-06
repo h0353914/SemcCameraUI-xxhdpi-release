@@ -2,7 +2,6 @@ package android.support.v4.provider;
 
 import android.graphics.Typeface;
 
-/* JADX INFO: loaded from: classes.dex */
 class FontsContractCompat$4$9 implements Runnable {
     final /* synthetic */ FontsContractCompat$4 this$0;
     final /* synthetic */ Typeface val$typeface;

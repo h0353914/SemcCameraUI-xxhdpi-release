@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.View$OnTouchListener;
 import android.widget.ListView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PopupMenu {
     private final View mAnchor;
     private final Context mContext;

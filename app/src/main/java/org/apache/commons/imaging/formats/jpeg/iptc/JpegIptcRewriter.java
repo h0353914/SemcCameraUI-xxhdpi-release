@@ -18,7 +18,6 @@ import org.apache.commons.imaging.formats.jpeg.xmp.JpegRewriter;
 import org.apache.commons.imaging.formats.jpeg.xmp.JpegRewriter$JFIFPiece;
 import org.apache.commons.imaging.formats.jpeg.xmp.JpegRewriter$JFIFPieceSegment;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JpegIptcRewriter extends JpegRewriter {
     public void removeIPTC(File file, OutputStream outputStream) throws ImageWriteException, IOException, ImageReadException {
         removeIPTC(new ByteSourceFile(file), outputStream);

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class SomcCameraDeviceInfo {
     private static HashSet<String> getAllCharacteristicsKeyNames() {
         HashSet<String> hashSet = new HashSet<>();

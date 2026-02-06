@@ -1,6 +1,5 @@
 package com.sonymobile.imageprocessor.bypasscamera2;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum BypassCameraParameters$Capability$ClimaxRecognitionMode {
     OFF(0, "off"),
     AUTO(1, "auto"),

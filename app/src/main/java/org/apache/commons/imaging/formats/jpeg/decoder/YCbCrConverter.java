@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.jpeg.decoder;
 
-/* JADX INFO: loaded from: classes.dex */
 final class YCbCrConverter {
     private static final int[] REDS = new int[65536];
     private static final int[] BLUES = new int[65536];

@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.evf;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface Evf$LifeCycleCallback {
     void onEvfFinalized(Evf evf);
 

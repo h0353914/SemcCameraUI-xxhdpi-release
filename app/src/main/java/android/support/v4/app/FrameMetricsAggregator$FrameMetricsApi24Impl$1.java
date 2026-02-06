@@ -4,7 +4,6 @@ import android.view.FrameMetrics;
 import android.view.Window;
 import android.view.Window$OnFrameMetricsAvailableListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class FrameMetricsAggregator$FrameMetricsApi24Impl$1 implements Window$OnFrameMetricsAvailableListener {
     final /* synthetic */ FrameMetricsAggregator$FrameMetricsApi24Impl this$0;
 

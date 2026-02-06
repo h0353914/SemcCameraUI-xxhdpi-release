@@ -3,7 +3,6 @@ package android.support.v4.media.session;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class PlaybackStateCompat$1 implements Parcelable$Creator<PlaybackStateCompat> {
     PlaybackStateCompat$1() {
     }

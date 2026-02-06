@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$ScreenOffReceiver extends BroadcastReceiver {
     private static final String TAG = "ScreenOffReceiver";
     final /* synthetic */ CameraActivity this$0;

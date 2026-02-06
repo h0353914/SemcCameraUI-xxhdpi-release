@@ -2,7 +2,6 @@ package android.support.v4.widget;
 
 import android.view.animation.Interpolator;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewDragHelper$1 implements Interpolator {
     @Override // android.animation.TimeInterpolator
     public float getInterpolation(float f) {

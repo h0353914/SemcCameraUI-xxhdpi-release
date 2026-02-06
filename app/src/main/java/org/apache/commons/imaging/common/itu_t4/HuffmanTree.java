@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class HuffmanTree<T> {
     private final List<HuffmanTree$Node<T>> nodes = new ArrayList();
 

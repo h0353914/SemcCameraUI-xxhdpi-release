@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserSettingValueHolder$ForceChangedState extends UserSettingValueHolder<T>.UserSettingValueHolder$ParameterState {
     final /* synthetic */ UserSettingValueHolder this$0;
 

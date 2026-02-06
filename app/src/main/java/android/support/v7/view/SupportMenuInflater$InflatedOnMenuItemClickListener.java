@@ -5,7 +5,6 @@ import android.view.MenuItem;
 import android.view.MenuItem$OnMenuItemClickListener;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 class SupportMenuInflater$InflatedOnMenuItemClickListener implements MenuItem$OnMenuItemClickListener {
     private static final Class<?>[] PARAM_TYPES = {MenuItem.class};
     private Method mMethod;

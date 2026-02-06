@@ -12,7 +12,6 @@ import android.util.SparseArray;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NotificationCompat {
     public static final int BADGE_ICON_LARGE = 2;
     public static final int BADGE_ICON_NONE = 0;

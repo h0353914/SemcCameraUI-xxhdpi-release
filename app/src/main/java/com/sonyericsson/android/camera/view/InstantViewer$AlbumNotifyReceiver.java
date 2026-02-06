@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class InstantViewer$AlbumNotifyReceiver extends BroadcastReceiver {
     public static final String TAG = "AlbumNotifyReceiver";
     final /* synthetic */ InstantViewer this$0;

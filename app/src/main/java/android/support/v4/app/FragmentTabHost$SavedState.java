@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 import android.view.View$BaseSavedState;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentTabHost$SavedState extends View$BaseSavedState {
     public static final Parcelable$Creator<FragmentTabHost$SavedState> CREATOR = new FragmentTabHost$SavedState$1();
     String curTab;

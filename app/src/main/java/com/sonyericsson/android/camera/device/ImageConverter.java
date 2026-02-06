@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 class ImageConverter {
     public static native void convertFromYuv420_888ToNv21(byte[] bArr, int i, int i2, ByteBuffer byteBuffer, int i3, int i4, ByteBuffer byteBuffer2, int i5, int i6, ByteBuffer byteBuffer3, int i7, int i8);
 

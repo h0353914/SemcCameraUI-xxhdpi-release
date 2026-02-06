@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera;
 import android.support.annotation.MainThread;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$1 implements Runnable {
     final /* synthetic */ CameraActivity this$0;
 

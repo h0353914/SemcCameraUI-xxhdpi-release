@@ -6,7 +6,6 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.ReadOnlyBufferException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzrx {
     private final ByteBuffer zzbij;
 

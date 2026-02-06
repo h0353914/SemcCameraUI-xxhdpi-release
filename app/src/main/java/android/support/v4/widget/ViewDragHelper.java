@@ -15,7 +15,6 @@ import android.view.animation.Interpolator;
 import android.widget.OverScroller;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewDragHelper {
     private static final int BASE_SETTLE_DURATION = 256;
     public static final int DIRECTION_ALL = 3;

@@ -12,7 +12,6 @@ import android.view.ViewConfiguration;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Interpolator;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class AutoScrollHelper implements View$OnTouchListener {
     private static final int DEFAULT_ACTIVATION_DELAY = ViewConfiguration.getTapTimeout();
     private static final int DEFAULT_EDGE_TYPE = 1;

@@ -6,7 +6,6 @@ import android.media.MediaFormat;
 import android.view.Surface;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class InputDataInfo {
     public final MediaCodec codec;
     public final MediaFormat codecFormat;

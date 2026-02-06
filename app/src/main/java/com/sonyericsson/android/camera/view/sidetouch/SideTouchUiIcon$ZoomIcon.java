@@ -7,7 +7,6 @@ import android.widget.FrameLayout;
 import com.sonyericsson.android.camera.view.ViewFinderImpl$ZoomBarUpdateProxy;
 import com.sonyericsson.android.camera.view.baselayout.zoombar.Zoombar;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class SideTouchUiIcon$ZoomIcon extends SideTouchUiIcon {
     private int mOrientation;
     private FrameLayout mZoomBarLayout;

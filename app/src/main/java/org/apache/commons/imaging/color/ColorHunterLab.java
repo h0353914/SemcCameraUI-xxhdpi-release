@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.color;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ColorHunterLab {
     public final double L;
     public final double a;

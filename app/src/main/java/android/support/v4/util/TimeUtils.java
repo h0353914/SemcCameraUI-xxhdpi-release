@@ -4,7 +4,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public final class TimeUtils {
 

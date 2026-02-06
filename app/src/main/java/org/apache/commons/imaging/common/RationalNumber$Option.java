@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.common;
 
-/* JADX INFO: loaded from: classes.dex */
 class RationalNumber$Option {
     public final double error;
     public final RationalNumber rationalNumber;

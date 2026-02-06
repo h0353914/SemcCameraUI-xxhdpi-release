@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.support.v7.view.menu.ShowableListMenu;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionMenuPresenter$OverflowMenuButton$1 extends ForwardingListener {
     final /* synthetic */ ActionMenuPresenter$OverflowMenuButton this$1;
     final /* synthetic */ ActionMenuPresenter val$this$0;

@@ -1,6 +1,5 @@
 package android.arch.lifecycle;
 
-/* JADX INFO: loaded from: classes.dex */
 interface FullLifecycleObserver extends LifecycleObserver {
     void onCreate(LifecycleOwner lifecycleOwner);
 

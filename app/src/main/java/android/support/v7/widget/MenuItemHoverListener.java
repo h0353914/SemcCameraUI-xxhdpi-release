@@ -6,7 +6,6 @@ import android.support.annotation.RestrictTo$Scope;
 import android.support.v7.view.menu.MenuBuilder;
 import android.view.MenuItem;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public interface MenuItemHoverListener {
     void onItemHoverEnter(@NonNull MenuBuilder menuBuilder, @NonNull MenuItem menuItem);

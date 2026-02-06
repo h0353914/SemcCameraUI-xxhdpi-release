@@ -4,7 +4,6 @@ import android.app.PendingIntent;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NotificationCompat$CarExtender$UnreadConversation$Builder {
     private long mLatestTimestamp;
     private final List<String> mMessages = new ArrayList();

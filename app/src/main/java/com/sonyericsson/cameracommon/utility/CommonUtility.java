@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CommonUtility {
     public static final String TAG = "CommonUtility";
     private static final String WRITE_MEDIA_STORAGE = "android.permission.WRITE_MEDIA_STORAGE";

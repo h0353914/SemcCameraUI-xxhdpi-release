@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.ViewGroup$LayoutParams;
 import android.view.ViewGroup$MarginLayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GridLayoutManager$LayoutParams extends RecyclerView$LayoutParams {
     public static final int INVALID_SPAN_ID = -1;
     int mSpanIndex;

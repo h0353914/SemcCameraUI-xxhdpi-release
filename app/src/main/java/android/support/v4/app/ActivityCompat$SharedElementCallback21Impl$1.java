@@ -1,6 +1,5 @@
 package android.support.v4.app;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActivityCompat$SharedElementCallback21Impl$1 implements SharedElementCallback$OnSharedElementsReadyListener {
     final /* synthetic */ ActivityCompat$SharedElementCallback21Impl this$0;
     final /* synthetic */ android.app.SharedElementCallback$OnSharedElementsReadyListener val$listener;

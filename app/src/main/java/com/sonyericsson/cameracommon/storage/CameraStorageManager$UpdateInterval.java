@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.storage;
 
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum CameraStorageManager$UpdateInterval {
     STOP(-1),
     IMMEDIATE(0),

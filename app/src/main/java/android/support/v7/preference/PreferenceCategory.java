@@ -7,7 +7,6 @@ import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat;
 import android.util.AttributeSet;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PreferenceCategory extends PreferenceGroup {
     private static final String TAG = "PreferenceCategory";
 

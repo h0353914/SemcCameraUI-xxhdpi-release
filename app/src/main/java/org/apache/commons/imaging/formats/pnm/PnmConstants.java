@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.pnm;
 
-/* JADX INFO: loaded from: classes.dex */
 final class PnmConstants {
     public static final byte PAM_RAW_CODE = 55;
     public static final byte PBM_RAW_CODE = 52;

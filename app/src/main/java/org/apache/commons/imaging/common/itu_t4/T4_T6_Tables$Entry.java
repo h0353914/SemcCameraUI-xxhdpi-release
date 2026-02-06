@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.common.itu_t4;
 
-/* JADX INFO: loaded from: classes.dex */
 public class T4_T6_Tables$Entry {
     String bitString;
     Integer value;

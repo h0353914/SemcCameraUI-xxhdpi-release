@@ -2,7 +2,6 @@ package com.google.android.gms.internal;
 
 import com.google.android.gms.common.data.DataHolder;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzld<L> implements zzlm$zzb<L> {
     private final DataHolder zzabq;
 

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences$Editor;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ParamSharedPref {
     public static final String TAG = "ParamSharedPref";
     private SharedPreferences$Editor mEditor;

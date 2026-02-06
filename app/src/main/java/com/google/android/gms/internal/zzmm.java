@@ -5,7 +5,6 @@ import android.content.pm.PackageManager$NameNotFoundException;
 import android.os.Process;
 import com.google.android.gms.common.internal.zzd;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzmm {
     public static boolean zzjA() {
         return zzd.zzaeK && zzlr.isInitialized() && zzlr.zzoo() == Process.myUid();

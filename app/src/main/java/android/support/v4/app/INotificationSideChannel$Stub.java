@@ -7,7 +7,6 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class INotificationSideChannel$Stub extends Binder implements INotificationSideChannel {
     private static final String DESCRIPTOR = "android.support.v4.app.INotificationSideChannel";
     static final int TRANSACTION_cancel = 2;

@@ -8,7 +8,6 @@ import android.media.browse.MediaBrowser$SubscriptionCallback;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class MediaBrowserCompatApi21 {
     static final String NULL_MEDIA_ITEM_ID = "android.support.v4.media.MediaBrowserCompat.NULL_MEDIA_ITEM";

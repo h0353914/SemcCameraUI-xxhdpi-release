@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.common.mylzw;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface MyLzwDecompressor$Listener {
     void code(int i);
 

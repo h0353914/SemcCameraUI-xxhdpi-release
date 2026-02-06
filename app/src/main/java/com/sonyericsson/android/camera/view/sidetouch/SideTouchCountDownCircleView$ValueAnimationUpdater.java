@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.sidetouch;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator$AnimatorUpdateListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchCountDownCircleView$ValueAnimationUpdater implements ValueAnimator$AnimatorUpdateListener {
     final /* synthetic */ SideTouchCountDownCircleView this$0;
 

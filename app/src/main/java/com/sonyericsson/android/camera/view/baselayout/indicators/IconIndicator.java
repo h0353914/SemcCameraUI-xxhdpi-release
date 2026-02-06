@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.baselayout.indicators;
 
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IconIndicator extends BaseIndicator {
     private int mImageResourceId;
 

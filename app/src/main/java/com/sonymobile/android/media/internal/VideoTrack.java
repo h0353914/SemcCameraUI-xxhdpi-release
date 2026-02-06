@@ -14,7 +14,6 @@ import java.nio.ByteBuffer;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingDeque;
 
-/* JADX INFO: loaded from: classes.dex */
 class VideoTrack extends Track {
     private static final int ENCODER_REQUEST_SYNC_FRAME = 0;
     private static final int I_FRAME_INTERVAL = 1;

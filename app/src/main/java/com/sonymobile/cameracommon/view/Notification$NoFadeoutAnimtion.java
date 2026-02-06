@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.view;
 
-/* JADX INFO: loaded from: classes.dex */
 class Notification$NoFadeoutAnimtion implements Notification$SceneTextAnimation {
     private Runnable mSceneTextRunnable;
     final /* synthetic */ Notification this$0;

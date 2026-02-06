@@ -27,7 +27,6 @@ import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(26)
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class TypefaceCompatApi26Impl extends TypefaceCompatApi21Impl {

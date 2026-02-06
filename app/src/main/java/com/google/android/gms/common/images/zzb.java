@@ -5,7 +5,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzb implements Parcelable$Creator<WebImage> {
     static void zza(WebImage webImage, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);

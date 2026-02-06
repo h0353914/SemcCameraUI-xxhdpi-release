@@ -13,7 +13,6 @@ import android.support.v7.content.res.AppCompatResources;
 import android.util.AttributeSet;
 import android.widget.CompoundButton;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatCompoundButtonHelper {
     private ColorStateList mButtonTintList = null;
     private PorterDuff$Mode mButtonTintMode = null;

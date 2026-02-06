@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 import com.google.android.gms.common.internal.safeparcel.zza$zza;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzb implements Parcelable$Creator<FACLData> {
     static void zza(FACLData fACLData, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);

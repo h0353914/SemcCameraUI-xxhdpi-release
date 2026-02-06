@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Map$Entry;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ArrayMap<K, V> extends SimpleArrayMap<K, V> implements Map<K, V> {
 
     @Nullable

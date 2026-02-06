@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.ServiceConnection;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzl {
     private static final Object zzafW = new Object();
     private static zzl zzafX;

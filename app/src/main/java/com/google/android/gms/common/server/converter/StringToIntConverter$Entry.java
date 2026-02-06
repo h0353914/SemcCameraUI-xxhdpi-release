@@ -3,7 +3,6 @@ package com.google.android.gms.common.server.converter;
 import android.os.Parcel;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class StringToIntConverter$Entry implements SafeParcelable {
     public static final zzc CREATOR = new zzc();
     final int versionCode;

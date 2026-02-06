@@ -19,7 +19,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup$LayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AppCompatDialog extends Dialog implements AppCompatCallback {
     private AppCompatDelegate mDelegate;
     private final KeyEventDispatcher$Component mKeyDispatcher;

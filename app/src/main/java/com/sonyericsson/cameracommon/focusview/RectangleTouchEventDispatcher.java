@@ -8,7 +8,6 @@ import com.sonyericsson.cameracommon.utility.FaceDetectUtil;
 import com.sonyericsson.cameracommon.utility.PositionConverter;
 import java.util.HashMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RectangleTouchEventDispatcher implements View$OnTouchListener {
     public static final String TAG = "RectangleTouchEventDispatcher";
     private FaceInformationList mFacetList;

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.recorder.defaultrecorder;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.concurrent.CountDownLatch;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DefaultRecorderController$CallbackLock {
     private CountDownLatch mLatch = null;
 

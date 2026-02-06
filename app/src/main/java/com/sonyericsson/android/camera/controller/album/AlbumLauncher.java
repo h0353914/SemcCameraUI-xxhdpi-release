@@ -11,7 +11,6 @@ import com.sonyericsson.cameracommon.utility.CommonUtility$DefaultGallerySetting
 import com.sonymobile.cameracommon.research.ResearchUtil;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class AlbumLauncher {
     public static final String EXTRA_BURST_BUCKETID = "burst_bucketId";
     public static final String TAG = "AlbumLauncher";

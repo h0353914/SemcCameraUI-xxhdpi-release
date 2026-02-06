@@ -2,7 +2,6 @@ package org.apache.commons.imaging.common.itu_t4;
 
 import java.io.OutputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 class BitArrayOutputStream extends OutputStream {
     private byte[] buffer;
     private int bytesWritten;

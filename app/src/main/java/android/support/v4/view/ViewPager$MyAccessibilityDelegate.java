@@ -5,7 +5,6 @@ import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewPager$MyAccessibilityDelegate extends AccessibilityDelegateCompat {
     final /* synthetic */ ViewPager this$0;
 

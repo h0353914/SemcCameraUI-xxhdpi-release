@@ -4,7 +4,6 @@ import android.os.Bundle;
 import com.google.android.gms.common.api.Releasable;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface DataBuffer<T> extends Releasable, Iterable<T> {
     @Deprecated
     void close();

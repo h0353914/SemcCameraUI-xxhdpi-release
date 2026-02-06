@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class UserSettingValueHolder$ParameterState {
 
     /* JADX INFO: Incorrect field signature: TT; */

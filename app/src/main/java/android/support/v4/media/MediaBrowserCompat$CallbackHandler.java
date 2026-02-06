@@ -10,7 +10,6 @@ import android.support.v4.media.session.MediaSessionCompat$Token;
 import android.util.Log;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$CallbackHandler extends Handler {
     private final WeakReference<MediaBrowserCompat$MediaBrowserServiceCallbackImpl> mCallbackImplRef;
     private WeakReference<Messenger> mCallbacksMessengerRef;

@@ -11,7 +11,6 @@ import kotlin.annotation.AnnotationTarget;
 import kotlin.annotation.MustBeDocumented;
 
 /* JADX INFO: compiled from: PurelyImplements.kt */
-/* JADX INFO: loaded from: classes.dex */
 @Target({ElementType.TYPE})
 @kotlin.annotation.Target(allowedTargets = {AnnotationTarget.CLASS})
 @Retention(RetentionPolicy.RUNTIME)

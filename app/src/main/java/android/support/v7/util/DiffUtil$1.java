@@ -2,7 +2,6 @@ package android.support.v7.util;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class DiffUtil$1 implements Comparator<DiffUtil$Snake> {
     DiffUtil$1() {
     }

@@ -9,7 +9,6 @@ import com.sonyericsson.android.camera.view.messagedialog.DialogId;
 import com.sonyericsson.android.camera.view.modeselector.ModeSelectorInternalMode;
 import com.sonyericsson.cameracommon.storage.RequestFactory$PhotoSavingRequestBuilder;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StatePause extends StateMachine$StatePhotoBase {
     private static final String TAG = "StateMachine.StatePause";
     final /* synthetic */ StateMachine this$0;

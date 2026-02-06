@@ -13,7 +13,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.util.Pair;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ActivityOptionsCompat {
     public static final String EXTRA_USAGE_TIME_REPORT = "android.activity.usage_time";
     public static final String EXTRA_USAGE_TIME_REPORT_PACKAGES = "android.usage_time_packages";

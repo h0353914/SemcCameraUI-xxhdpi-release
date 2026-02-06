@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.storage;
 
-/* JADX INFO: loaded from: classes.dex */
 class StorageImpl$StorageInitializeThread extends Thread {
     private static final String THREAD_NAME_STORAGE_INITIALIZE = "SM#initTask";
     final /* synthetic */ StorageImpl this$0;

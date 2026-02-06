@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.device;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$LoadNativeLibraryTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     final /* synthetic */ CameraDeviceHandler this$0;
 

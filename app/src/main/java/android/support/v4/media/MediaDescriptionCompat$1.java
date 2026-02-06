@@ -4,7 +4,6 @@ import android.os.Build$VERSION;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaDescriptionCompat$1 implements Parcelable$Creator<MediaDescriptionCompat> {
     MediaDescriptionCompat$1() {
     }

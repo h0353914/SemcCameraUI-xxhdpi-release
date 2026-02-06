@@ -6,7 +6,6 @@ import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageInfo$ColorType;
 import org.apache.commons.imaging.common.ImageBuilder;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class FileInfo {
     protected final int height;
     protected final boolean rawbits;

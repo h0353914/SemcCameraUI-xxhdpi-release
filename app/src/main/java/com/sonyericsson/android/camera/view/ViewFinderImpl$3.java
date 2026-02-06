@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$3 implements Runnable {
     final /* synthetic */ ViewFinderImpl this$0;
 

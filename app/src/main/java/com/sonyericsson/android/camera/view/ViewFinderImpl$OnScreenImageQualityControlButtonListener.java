@@ -4,7 +4,6 @@ import android.view.MotionEvent;
 import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButton;
 import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewFinderImpl$OnScreenImageQualityControlButtonListener implements OnScreenButtonListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

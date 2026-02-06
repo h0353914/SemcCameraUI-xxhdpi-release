@@ -16,7 +16,6 @@ import android.support.v7.appcompat.R$attr;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AppCompatImageButton extends ImageButton implements TintableBackgroundView, TintableImageSourceView {
     private final AppCompatBackgroundHelper mBackgroundTintHelper;
     private final AppCompatImageHelper mImageHelper;

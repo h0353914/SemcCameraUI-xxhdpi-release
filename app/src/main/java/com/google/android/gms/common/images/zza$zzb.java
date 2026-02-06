@@ -8,7 +8,6 @@ import com.google.android.gms.internal.zzls;
 import com.google.android.gms.internal.zzlu;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zza$zzb extends zza {
     private WeakReference<ImageView> zzaee;
 

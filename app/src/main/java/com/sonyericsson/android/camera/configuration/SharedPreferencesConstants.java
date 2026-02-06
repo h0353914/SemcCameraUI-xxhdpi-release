@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.configuration;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SharedPreferencesConstants {
     public static final String CAMERA_SHARED_PREFERENCES_NAME = "com.sonyericsson.android.camera.shared_preferences";
     public static final String CAMERA_SHARED_PREFERENCES_VERSION = "0.0.0";

@@ -3,7 +3,6 @@ package android.support.design.widget;
 import android.os.Parcel;
 import android.os.Parcelable$ClassLoaderCreator;
 
-/* JADX INFO: loaded from: classes.dex */
 class CoordinatorLayout$SavedState$1 implements Parcelable$ClassLoaderCreator<CoordinatorLayout$SavedState> {
     CoordinatorLayout$SavedState$1() {
     }

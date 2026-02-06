@@ -6,7 +6,6 @@ import android.os.RemoteException;
 import android.support.v4.media.RatingCompat;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaControllerCompat$TransportControlsBase extends MediaControllerCompat$TransportControls {
     private IMediaSession mBinder;
 

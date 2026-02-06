@@ -1,6 +1,5 @@
 package android.support.v7.preference;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$layout {
     public static final int abc_action_bar_title_item = 2131492864;
     public static final int abc_action_bar_up_container = 2131492865;

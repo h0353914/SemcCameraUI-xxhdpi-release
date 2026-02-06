@@ -8,7 +8,6 @@ import com.google.android.gms.common.internal.ResolveAccountRequest;
 import com.google.android.gms.common.internal.zzp;
 import com.google.android.gms.common.internal.zzt;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface zzf extends IInterface {
     void zza(int i, Account account, zze zzeVar) throws RemoteException;
 

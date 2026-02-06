@@ -3,7 +3,6 @@ package android.support.v7.util;
 import android.util.Log;
 
 /* JADX INFO: Add missing generic type declarations: [T] */
-/* JADX INFO: loaded from: classes.dex */
 class AsyncListUtil$1<T> implements ThreadUtil$MainThreadCallback<T> {
     final /* synthetic */ AsyncListUtil this$0;
 

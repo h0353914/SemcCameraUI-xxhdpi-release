@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$anim {
     public static final int abc_fade_in = 2130771968;
     public static final int abc_fade_out = 2130771969;

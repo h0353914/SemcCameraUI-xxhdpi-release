@@ -10,7 +10,6 @@ import android.support.annotation.RestrictTo$Scope;
 import android.util.SparseIntArray;
 import androidx.versionedparcelable.VersionedParcelable;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AudioAttributesCompat implements VersionedParcelable {
     static final String AUDIO_ATTRIBUTES_CONTENT_TYPE = "android.support.v4.media.audio_attrs.CONTENT_TYPE";
     static final String AUDIO_ATTRIBUTES_FLAGS = "android.support.v4.media.audio_attrs.FLAGS";

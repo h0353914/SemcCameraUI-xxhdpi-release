@@ -20,7 +20,6 @@ import java.util.Map;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActivityChooserModel extends DataSetObservable {
     static final String ATTRIBUTE_ACTIVITY = "activity";
     static final String ATTRIBUTE_TIME = "time";

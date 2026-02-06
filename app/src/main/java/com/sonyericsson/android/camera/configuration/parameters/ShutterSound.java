@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ShutterSound implements UserSettingValue {
     SOUND1(-1, 2131690116, true, "sound1/"),
     OFF(-1, 2131690115, false, "sound0/");

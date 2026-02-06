@@ -3,7 +3,6 @@ package android.support.v4.hardware.fingerprint;
 import android.hardware.fingerprint.FingerprintManager$AuthenticationCallback;
 import android.hardware.fingerprint.FingerprintManager$AuthenticationResult;
 
-/* JADX INFO: loaded from: classes.dex */
 class FingerprintManagerCompat$1 extends FingerprintManager$AuthenticationCallback {
     final /* synthetic */ FingerprintManagerCompat$AuthenticationCallback val$callback;
 

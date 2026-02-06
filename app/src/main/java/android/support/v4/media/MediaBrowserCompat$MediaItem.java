@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaBrowserCompat$MediaItem implements Parcelable {
     public static final Parcelable$Creator<MediaBrowserCompat$MediaItem> CREATOR = new MediaBrowserCompat$MediaItem$1();
     public static final int FLAG_BROWSABLE = 1;

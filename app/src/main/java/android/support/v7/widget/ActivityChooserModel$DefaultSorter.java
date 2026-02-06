@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 final class ActivityChooserModel$DefaultSorter implements ActivityChooserModel$ActivitySorter {
     private static final float WEIGHT_DECAY_COEFFICIENT = 0.95f;
     private final Map<ComponentName, ActivityChooserModel$ActivityResolveInfo> mPackageNameToActivityMap = new HashMap();

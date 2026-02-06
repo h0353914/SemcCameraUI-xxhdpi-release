@@ -2,7 +2,6 @@ package android.support.v4.text.util;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class LinkifyCompat$1 implements Comparator<LinkifyCompat$LinkSpec> {
     LinkifyCompat$1() {
     }

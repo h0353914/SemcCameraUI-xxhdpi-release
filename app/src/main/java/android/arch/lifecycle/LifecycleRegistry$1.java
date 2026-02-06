@@ -1,6 +1,5 @@
 package android.arch.lifecycle;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class LifecycleRegistry$1 {
     static final /* synthetic */ int[] $SwitchMap$android$arch$lifecycle$Lifecycle$Event;
     static final /* synthetic */ int[] $SwitchMap$android$arch$lifecycle$Lifecycle$State = new int[Lifecycle$State.values().length];

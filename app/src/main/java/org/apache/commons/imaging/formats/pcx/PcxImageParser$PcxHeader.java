@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.pcx;
 
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 class PcxImageParser$PcxHeader {
     public static final int ENCODING_RLE = 1;
     public static final int ENCODING_UNCOMPRESSED = 0;

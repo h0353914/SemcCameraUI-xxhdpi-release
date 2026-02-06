@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class JsonParser {
     public JsonElement parse(String str) throws JsonSyntaxException {
         return parse(new StringReader(str));

@@ -7,7 +7,6 @@ import com.google.android.gms.common.server.converter.ConverterWrapper;
 import java.util.ArrayList;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FastJsonResponse$Field<I, O> implements SafeParcelable {
     public static final zza CREATOR = new zza();
     private final int mVersionCode;

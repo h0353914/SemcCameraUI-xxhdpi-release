@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.mediasaving;
 import com.sonyericsson.cameracommon.mediasaving.yuv2jpeg.IntegrationMakerException;
 import java.math.BigInteger;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JfifIntegrator {
     private static final int M_DHT = 196;
     private static final int M_DQT = 219;

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.sidetouch;
 import android.content.Context;
 import android.widget.ImageView;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchUiIcon$AutoReviewIcon$AutoReviewImageView extends ImageView {
     final /* synthetic */ SideTouchUiIcon$AutoReviewIcon this$0;
 

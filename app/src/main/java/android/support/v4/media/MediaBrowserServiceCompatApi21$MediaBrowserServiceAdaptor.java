@@ -9,7 +9,6 @@ import android.service.media.MediaBrowserService$Result;
 import android.support.v4.media.session.MediaSessionCompat;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompatApi21$MediaBrowserServiceAdaptor extends MediaBrowserService {
     final MediaBrowserServiceCompatApi21$ServiceCompatProxy mServiceProxy;
 

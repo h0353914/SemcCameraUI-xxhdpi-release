@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.sidetouch;
 import android.os.Handler;
 import android.os.Message;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchUiIcon$AutoReviewIcon$PreviewTimerHandler extends Handler {
     final /* synthetic */ SideTouchUiIcon$AutoReviewIcon this$0;
 

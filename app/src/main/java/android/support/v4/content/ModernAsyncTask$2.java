@@ -4,7 +4,6 @@ import android.os.Binder;
 import android.os.Process;
 
 /* JADX INFO: Add missing generic type declarations: [Params, Result] */
-/* JADX INFO: loaded from: classes.dex */
 class ModernAsyncTask$2<Params, Result> extends ModernAsyncTask$WorkerRunnable<Params, Result> {
     final /* synthetic */ ModernAsyncTask this$0;
 

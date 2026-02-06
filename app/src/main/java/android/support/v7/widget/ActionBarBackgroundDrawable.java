@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionBarBackgroundDrawable extends Drawable {
     final ActionBarContainer mContainer;
 

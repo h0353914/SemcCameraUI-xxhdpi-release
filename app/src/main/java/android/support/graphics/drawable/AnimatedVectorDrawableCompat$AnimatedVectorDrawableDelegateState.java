@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable$ConstantState;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(24)
 class AnimatedVectorDrawableCompat$AnimatedVectorDrawableDelegateState extends Drawable$ConstantState {
     private final Drawable$ConstantState mDelegateState;

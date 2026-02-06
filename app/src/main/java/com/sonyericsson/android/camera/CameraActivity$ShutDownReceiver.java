@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$ShutDownReceiver extends BroadcastReceiver {
     final /* synthetic */ CameraActivity this$0;
 

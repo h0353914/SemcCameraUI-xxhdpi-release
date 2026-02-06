@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.tiff;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class TiffElement$1 implements Comparator<TiffElement> {
     TiffElement$1() {
     }

@@ -6,7 +6,6 @@ import java.io.InputStream;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.ImageBuilder;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class PixelParser {
     final BmpHeaderInfo bhi;
     final byte[] colorTable;

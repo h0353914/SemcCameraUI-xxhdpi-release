@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.io.File;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ManualBurstPathBuilder {
     private static final String DCF_DIR_NAME_FREE_WORD_XPERIA_BURST = "XPERIA" + File.separator + "BURST";
     private static final String DCF_FILE_NAME_CONTENT_TYPE_BURST = "DSC";

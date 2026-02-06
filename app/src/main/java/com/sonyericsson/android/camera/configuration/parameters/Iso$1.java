@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class Iso$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$parameters$FusionMode = new int[FusionMode.values().length];
 

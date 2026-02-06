@@ -8,7 +8,6 @@ import android.media.MediaFormat;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 class AudioTrack$AudioEncoderCallback extends MediaCodec$Callback {
     final /* synthetic */ AudioTrack this$0;
 

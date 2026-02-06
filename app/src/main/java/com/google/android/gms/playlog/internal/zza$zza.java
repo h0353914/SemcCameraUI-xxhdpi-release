@@ -6,7 +6,6 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zza$zza extends Binder implements zza {
     public static zza zzdz(IBinder iBinder) {
         if (iBinder == null) {

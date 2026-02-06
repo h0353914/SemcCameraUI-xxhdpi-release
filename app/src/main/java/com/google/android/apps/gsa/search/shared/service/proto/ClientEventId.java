@@ -3,7 +3,6 @@ package com.google.android.apps.gsa.search.shared.service.proto;
 import com.google.protobuf.Internal$EnumLite;
 import com.google.protobuf.Internal$EnumLiteMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ClientEventId implements Internal$EnumLite {
     UNKNOWN(0),
     SEARCH_TOOLS_CLICKED(1),

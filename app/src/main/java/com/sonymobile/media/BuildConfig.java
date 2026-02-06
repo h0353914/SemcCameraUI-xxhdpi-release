@@ -1,6 +1,5 @@
 package com.sonymobile.media;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class BuildConfig {
     public static final String APPLICATION_ID = "com.sonymobile.media";
     public static final String BUILD_TYPE = "release";

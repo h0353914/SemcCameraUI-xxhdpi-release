@@ -6,7 +6,6 @@ import android.os.Parcelable$Creator;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class AbsSavedState implements Parcelable {
     private final Parcelable mSuperState;
     public static final AbsSavedState EMPTY_STATE = new AbsSavedState$1();

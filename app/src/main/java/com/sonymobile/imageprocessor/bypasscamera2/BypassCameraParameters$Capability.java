@@ -3,7 +3,6 @@ package com.sonymobile.imageprocessor.bypasscamera2;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class BypassCameraParameters$Capability {
     public List<String> mVideoStabilizationMode = new ArrayList();
     public List<String> mSuperSlowMode = new ArrayList();

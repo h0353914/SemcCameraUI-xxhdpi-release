@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.util.capability;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class PlatformCapability$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$util$capability$PlatformCapability$PrepareState = new int[PlatformCapability$PrepareState.values().length];
 

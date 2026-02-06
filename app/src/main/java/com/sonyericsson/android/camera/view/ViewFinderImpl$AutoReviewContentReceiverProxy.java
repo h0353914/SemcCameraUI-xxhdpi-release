@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewFinderImpl$AutoReviewContentReceiverProxy {
     private AutoReviewContent$ContentReceiver mReceiver;
 

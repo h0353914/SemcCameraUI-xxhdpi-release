@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.configuration.parameters.TouchCapture;
 import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 import com.sonyericsson.cameracommon.keytranslator.KeyEventTranslator$TranslatedKeyCode;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class UserEventHandler$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode;
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$parameters$TouchCapture = new int[TouchCapture.values().length];

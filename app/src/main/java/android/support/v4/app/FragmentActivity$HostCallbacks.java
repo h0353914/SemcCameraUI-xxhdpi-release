@@ -12,7 +12,6 @@ import android.view.Window;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentActivity$HostCallbacks extends FragmentHostCallback<FragmentActivity> {
     final /* synthetic */ FragmentActivity this$0;
 

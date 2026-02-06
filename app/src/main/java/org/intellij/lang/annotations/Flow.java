@@ -7,7 +7,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.jetbrains.annotations.NonNls;
 
-/* JADX INFO: loaded from: classes.dex */
 @Target({ElementType.PARAMETER, ElementType.METHOD})
 @Documented
 @Retention(RetentionPolicy.CLASS)

@@ -4,7 +4,6 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.NestedScrollView$OnScrollChangeListener;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class AlertController$2 implements NestedScrollView$OnScrollChangeListener {
     final /* synthetic */ AlertController this$0;
     final /* synthetic */ View val$bottom;

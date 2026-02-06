@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum WhiteBalance implements UserSettingValue {
     INCANDESCENT(2131231088, 2131690259, "incandescent", 2131231093),
     FLUORESCENT(2131231087, 2131690258, "fluorescent", 2131231092),

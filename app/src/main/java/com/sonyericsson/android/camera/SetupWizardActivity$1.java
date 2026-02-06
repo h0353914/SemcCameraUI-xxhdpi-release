@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera;
 import com.sonyericsson.android.camera.view.messagedialog.MessageDialogController$MessageDialogOnClickListener;
 import com.sonyericsson.android.camera.view.messagedialog.MessageDialogRequest;
 
-/* JADX INFO: loaded from: classes.dex */
 class SetupWizardActivity$1 implements MessageDialogController$MessageDialogOnClickListener {
     final /* synthetic */ SetupWizardActivity this$0;
 

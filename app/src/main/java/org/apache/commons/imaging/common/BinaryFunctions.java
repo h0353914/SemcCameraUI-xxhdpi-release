@@ -9,7 +9,6 @@ import java.io.RandomAccessFile;
 import java.nio.ByteOrder;
 import org.apache.commons.imaging.ImageReadException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class BinaryFunctions {
     public static int charsToQuad(char c, char c2, char c3, char c4) {
         return ((c & 255) << 24) | ((c2 & 255) << 16) | ((255 & c3) << 8) | ((255 & c4) << 0);

@@ -8,7 +8,6 @@ import android.support.v4.media.MediaSessionManager$RemoteUserInfo;
 import android.support.v4.media.VolumeProviderCompat;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 interface MediaSessionCompat$MediaSessionImpl {
     String getCallingPackage();
 

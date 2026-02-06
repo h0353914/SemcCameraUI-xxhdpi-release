@@ -3,7 +3,6 @@ package android.support.v4.view.accessibility;
 import android.support.annotation.NonNull;
 import android.view.accessibility.AccessibilityManager$AccessibilityStateChangeListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class AccessibilityManagerCompat$AccessibilityStateChangeListenerWrapper implements AccessibilityManager$AccessibilityStateChangeListener {
     AccessibilityManagerCompat$AccessibilityStateChangeListener mListener;
 

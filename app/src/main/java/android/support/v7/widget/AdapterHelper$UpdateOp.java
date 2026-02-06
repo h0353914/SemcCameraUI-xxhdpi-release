@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class AdapterHelper$UpdateOp {
     static final int ADD = 1;
     static final int MOVE = 8;

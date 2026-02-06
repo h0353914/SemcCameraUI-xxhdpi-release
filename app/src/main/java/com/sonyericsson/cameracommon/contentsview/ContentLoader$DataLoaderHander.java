@@ -4,7 +4,6 @@ import android.os.Handler;
 import android.os.Message;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class ContentLoader$DataLoaderHander extends Handler {
     private static final int NOTIFY_CONTENT_CREATED = 1;
     private static final int NOTIFY_NO_CONTENT_LOADED = 0;

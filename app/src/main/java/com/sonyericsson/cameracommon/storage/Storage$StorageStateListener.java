@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.storage;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface Storage$StorageStateListener {
     void onStorageSizeChanged(Storage$StorageType storage$StorageType, long j);
 

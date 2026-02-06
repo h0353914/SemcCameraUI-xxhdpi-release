@@ -14,7 +14,6 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DateTypeAdapter extends TypeAdapter<Date> {
     public static final TypeAdapterFactory FACTORY = new DateTypeAdapter$1();
     private final DateFormat enUsFormat = DateFormat.getDateTimeInstance(2, 2, Locale.US);

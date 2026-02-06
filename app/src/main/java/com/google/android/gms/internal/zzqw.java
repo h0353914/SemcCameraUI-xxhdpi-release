@@ -7,7 +7,6 @@ import com.google.android.gms.common.internal.zzt;
 import com.google.android.gms.signin.internal.zze;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface zzqw extends Api$zzb {
     void connect();
 

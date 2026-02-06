@@ -2,7 +2,6 @@ package com.google.android.gms.internal;
 
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzsd extends IOException {
     public zzsd(String str) {
         super(str);

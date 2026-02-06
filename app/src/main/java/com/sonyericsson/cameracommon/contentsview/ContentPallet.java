@@ -15,7 +15,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.contentsview.contents.Content;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ContentPallet extends RelativeLayout {
     private static final int INSERTANIMATION_DURATION = 300;
     private static final float INSERTANIMATION_FADE_END = 1.0f;

@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class FragmentTransitionCompat21 extends FragmentTransitionImpl {
     FragmentTransitionCompat21() {

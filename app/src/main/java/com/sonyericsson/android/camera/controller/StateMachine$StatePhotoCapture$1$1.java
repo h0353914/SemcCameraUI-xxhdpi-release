@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StatePhotoCapture$1$1 implements Runnable {
     final /* synthetic */ StateMachine$StatePhotoCapture$1 this$2;
 

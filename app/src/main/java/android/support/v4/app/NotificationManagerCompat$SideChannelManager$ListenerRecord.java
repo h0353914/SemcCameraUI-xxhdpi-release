@@ -3,7 +3,6 @@ package android.support.v4.app;
 import android.content.ComponentName;
 import java.util.ArrayDeque;
 
-/* JADX INFO: loaded from: classes.dex */
 class NotificationManagerCompat$SideChannelManager$ListenerRecord {
     final ComponentName componentName;
     INotificationSideChannel service;

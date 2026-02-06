@@ -9,7 +9,6 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class RequestPermissionActivity$PermissionAdapter implements ListAdapter {
     private final Context mContext;
     private List<RequestPermissionActivity$PermissionGroup> mGroupList;

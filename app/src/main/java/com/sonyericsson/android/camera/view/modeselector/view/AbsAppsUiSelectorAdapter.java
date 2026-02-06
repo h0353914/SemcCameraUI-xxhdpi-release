@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import com.sonyericsson.android.camera.view.modeselector.ImageLoader;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class AbsAppsUiSelectorAdapter extends ArrayAdapter<AbsPanelView$PanelAttributes> {
     public static final int DRAWABLE_RESOURCE_LOADING = 2131230944;
     private LayoutInflater mInflater;

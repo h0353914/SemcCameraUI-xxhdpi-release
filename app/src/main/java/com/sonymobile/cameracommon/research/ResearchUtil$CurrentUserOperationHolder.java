@@ -11,7 +11,6 @@ import com.sonymobile.cameracommon.research.parameters.ShootingLabel$Parameter;
 import java.util.List;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$CurrentUserOperationHolder {
     private Event$UserOperation mUserOperation;
     final /* synthetic */ ResearchUtil this$0;

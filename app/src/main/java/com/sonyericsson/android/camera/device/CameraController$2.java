@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class CameraController$2 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$device$CameraDeviceHandler$CameraDeviceStatus = new int[CameraDeviceHandler$CameraDeviceStatus.values().length];
 

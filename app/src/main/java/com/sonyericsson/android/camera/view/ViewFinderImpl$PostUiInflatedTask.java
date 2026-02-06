@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$PostUiInflatedTask implements Runnable {
     final /* synthetic */ ViewFinderImpl this$0;
 

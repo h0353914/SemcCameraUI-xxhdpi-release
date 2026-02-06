@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.LruCache;
 
-/* JADX INFO: loaded from: classes.dex */
 class ImageLoader$1 extends LruCache<String, BitmapDrawable> {
     final /* synthetic */ ImageLoader this$0;
 

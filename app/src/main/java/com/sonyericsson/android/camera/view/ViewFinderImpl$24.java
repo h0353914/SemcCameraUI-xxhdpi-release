@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import android.content.Intent;
 import android.os.Bundle;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$24 implements Runnable {
     final /* synthetic */ ViewFinderImpl this$0;
     final /* synthetic */ Intent val$intent;

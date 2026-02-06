@@ -3,7 +3,6 @@ package android.support.v4.content;
 import android.database.ContentObserver;
 import android.os.Handler;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class Loader$ForceLoadContentObserver extends ContentObserver {
     final /* synthetic */ Loader this$0;
 

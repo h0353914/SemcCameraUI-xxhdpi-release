@@ -34,7 +34,6 @@ import com.sonymobile.cameracommon.research.ResearchUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$CaptureTrigger;
 import com.sonymobile.cameracommon.research.parameters.Event$SelfTimerTrigger;
 
-/* JADX INFO: loaded from: classes.dex */
 public class UserEventHandler {
     private static final String TAG = "UserEventHandler";
     private final CameraActivity mActivity;

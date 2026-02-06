@@ -8,7 +8,6 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.Type;
 
-/* JADX INFO: loaded from: classes.dex */
 class ArrayTypeAdapter$1 implements TypeAdapterFactory {
     ArrayTypeAdapter$1() {
     }

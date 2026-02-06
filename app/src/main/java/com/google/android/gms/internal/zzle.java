@@ -5,7 +5,6 @@ import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.data.DataHolder;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzle implements Releasable, Result {
     protected final Status zzSC;
     protected final DataHolder zzabq;

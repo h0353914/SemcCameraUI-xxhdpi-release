@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import org.apache.commons.imaging.ImageInfo$ColorType;
 
-/* JADX INFO: loaded from: classes.dex */
 class PamFileInfo$GrayscaleTupleReader extends PamFileInfo$TupleReader {
     private final ImageInfo$ColorType colorType;
     final /* synthetic */ PamFileInfo this$0;

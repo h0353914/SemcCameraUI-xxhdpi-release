@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.wbmp;
 
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 class WbmpImageParser$WbmpHeader {
     byte fixHeaderField;
     int height;

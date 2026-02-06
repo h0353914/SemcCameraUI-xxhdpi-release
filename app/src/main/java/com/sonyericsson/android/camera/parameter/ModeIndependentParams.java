@@ -25,7 +25,6 @@ import com.sonyericsson.cameracommon.storage.Storage;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ModeIndependentParams {
     public static final String TAG = "ModeIndependentParams";
     UserSettingValueHolder<CameraKey> mBurstByCameraKey = new UserSettingValueHolder<>(CameraKey.TAKE_PHOTO);

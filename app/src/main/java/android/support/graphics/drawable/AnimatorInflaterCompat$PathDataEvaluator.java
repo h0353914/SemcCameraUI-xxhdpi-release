@@ -4,7 +4,6 @@ import android.animation.TypeEvaluator;
 import android.support.v4.graphics.PathParser;
 import android.support.v4.graphics.PathParser$PathDataNode;
 
-/* JADX INFO: loaded from: classes.dex */
 class AnimatorInflaterCompat$PathDataEvaluator implements TypeEvaluator<PathParser$PathDataNode[]> {
     private PathParser$PathDataNode[] mNodeArray;
 

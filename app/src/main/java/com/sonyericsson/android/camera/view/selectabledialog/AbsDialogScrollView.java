@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class AbsDialogScrollView extends FrameLayout {
     protected final List<AbsDialogScrollView$ContentArrange> mArranges;
     protected FrameLayout mBackground;

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import com.sonyericsson.cameracommon.rotatableview.RotatableToast$ToastPosition;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ToastContent$ToastID {
     USE_VOLUME_KEY_TO_ZOOM(2131690262, 0, RotatableToast$ToastPosition.TOP),
     NEEDS_TO_COOL_DOWN(2131689774, 1, RotatableToast$ToastPosition.TOP),

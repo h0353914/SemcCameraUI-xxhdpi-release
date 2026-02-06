@@ -5,7 +5,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class PathParser {
     private static final String LOGTAG = "PathParser";

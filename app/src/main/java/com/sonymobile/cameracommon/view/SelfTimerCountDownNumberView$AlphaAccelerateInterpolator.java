@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.view;
 
 import android.view.animation.AccelerateInterpolator;
 
-/* JADX INFO: loaded from: classes.dex */
 class SelfTimerCountDownNumberView$AlphaAccelerateInterpolator extends AccelerateInterpolator {
     private final float mAnimationRatio;
 

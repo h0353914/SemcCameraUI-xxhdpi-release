@@ -4,7 +4,6 @@ import android.content.Context;
 import com.sonyericsson.android.camera.parameter.UserSettingManager;
 import com.sonyericsson.cameracommon.storage.Storage;
 
-/* JADX INFO: loaded from: classes.dex */
 class StoredSettingsProxy implements StoredSettings {
     private LastSettings mLastSettings;
     private MessageSettings mMessageSettingManager;

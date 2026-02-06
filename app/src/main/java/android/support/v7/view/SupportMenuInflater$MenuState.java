@@ -17,7 +17,6 @@ import android.view.SubMenu;
 import android.view.View;
 import java.lang.reflect.Constructor;
 
-/* JADX INFO: loaded from: classes.dex */
 class SupportMenuInflater$MenuState {
     private static final int defaultGroupId = 0;
     private static final int defaultItemCategory = 0;

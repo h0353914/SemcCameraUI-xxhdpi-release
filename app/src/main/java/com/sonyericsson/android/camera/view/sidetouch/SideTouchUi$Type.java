@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.sidetouch;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum SideTouchUi$Type {
     NONE(-1),
     CAPTURE_COUNTDOWN(0),

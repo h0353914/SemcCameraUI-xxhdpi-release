@@ -9,7 +9,6 @@ import android.support.annotation.StringRes;
 import android.support.annotation.StyleRes;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class FragmentTransaction {
     public static final int TRANSIT_ENTER_MASK = 4096;
     public static final int TRANSIT_EXIT_MASK = 8192;

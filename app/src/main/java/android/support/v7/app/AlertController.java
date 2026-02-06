@@ -33,7 +33,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 class AlertController {
     ListAdapter mAdapter;
     private int mAlertDialogLayout;

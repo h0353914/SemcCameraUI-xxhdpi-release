@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.rotatableview;
 
 import android.graphics.Rect;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RotatableToast$ToastLayoutParams {
     public final Rect bottomContainer;
     public final Rect topContainer;

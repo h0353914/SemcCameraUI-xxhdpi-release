@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 class SceneRecognitionResultChecker$1 implements Runnable {
     final /* synthetic */ SceneRecognitionResultChecker this$0;
     final /* synthetic */ CameraParameters$SceneRecognitionResult val$sceneRecognitionResult;

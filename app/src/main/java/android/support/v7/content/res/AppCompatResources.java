@@ -17,7 +17,6 @@ import android.util.SparseArray;
 import android.util.TypedValue;
 import java.util.WeakHashMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class AppCompatResources {
     private static final String LOG_TAG = "AppCompatResources";
     private static final ThreadLocal<TypedValue> TL_TYPED_VALUE = new ThreadLocal<>();

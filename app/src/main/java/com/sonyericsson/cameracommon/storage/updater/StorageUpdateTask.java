@@ -11,7 +11,6 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class StorageUpdateTask implements Callable {
     private final StorageUpdateTask$OnTaskFinishCallback mCallback;
     private final SavingTaskInquiry mInquiry;

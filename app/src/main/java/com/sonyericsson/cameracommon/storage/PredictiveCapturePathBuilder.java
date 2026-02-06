@@ -9,7 +9,6 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PredictiveCapturePathBuilder {
     public static final int CAPTURE_ID_STRING_LENGTH = 4;
     public static final String DCF_FILE_NAME_CONTENT_TYPE_PREDICTIVE_CAPTURE = "DSCPDC";

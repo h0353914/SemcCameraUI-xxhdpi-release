@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 final class MapTypeAdapterFactory$Adapter<K, V> extends TypeAdapter<Map<K, V>> {
     private final ObjectConstructor<? extends Map<K, V>> constructor;
     private final TypeAdapter<K> keyTypeAdapter;

@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BinaryFileParser {
     private ByteOrder byteOrder;
     private boolean debug;

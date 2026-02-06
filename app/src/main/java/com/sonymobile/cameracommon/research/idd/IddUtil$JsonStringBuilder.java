@@ -9,7 +9,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 class IddUtil$JsonStringBuilder {
     private final Map<String, IddUtil$ValueMap> mMap = new ArrayMap();
 

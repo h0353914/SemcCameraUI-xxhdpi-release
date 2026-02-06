@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.status.eachcamera;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 import com.sonyericsson.cameracommon.status.EnumValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TimeShift extends EnumValue<TimeShift$Value> implements EachCameraStatusValue {
     public static final TimeShift$Value DEFAULT_VALUE = TimeShift$Value.OFF;
     public static final String KEY = "time_shift";

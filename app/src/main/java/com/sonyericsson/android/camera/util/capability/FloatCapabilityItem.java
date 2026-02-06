@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.util.capability;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences$Editor;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FloatCapabilityItem extends CapabilityItem<Float> {
     @Override // com.sonyericsson.android.camera.util.capability.CapabilityItem
     /* bridge */ /* synthetic */ Float getDefaultValue() {

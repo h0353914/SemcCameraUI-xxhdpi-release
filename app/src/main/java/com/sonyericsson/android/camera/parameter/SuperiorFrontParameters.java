@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SuperiorFrontParameters extends FrontParameters {
     @Override // com.sonyericsson.android.camera.parameter.Parameters
     protected void prepare() {

@@ -2,7 +2,6 @@ package com.google.protobuf.nano;
 
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DescriptorProtos$FieldOptions$UpgradedOption extends ExtendableMessageNano<DescriptorProtos$FieldOptions$UpgradedOption> {
     private static volatile DescriptorProtos$FieldOptions$UpgradedOption[] _emptyArray;
     public String name;

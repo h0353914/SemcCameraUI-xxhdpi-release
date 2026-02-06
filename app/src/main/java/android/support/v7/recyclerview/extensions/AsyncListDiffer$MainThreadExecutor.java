@@ -5,7 +5,6 @@ import android.os.Looper;
 import android.support.annotation.NonNull;
 import java.util.concurrent.Executor;
 
-/* JADX INFO: loaded from: classes.dex */
 class AsyncListDiffer$MainThreadExecutor implements Executor {
     final Handler mHandler = new Handler(Looper.getMainLooper());
 

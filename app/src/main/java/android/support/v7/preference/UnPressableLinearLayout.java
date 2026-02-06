@@ -6,7 +6,6 @@ import android.support.annotation.RestrictTo$Scope;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class UnPressableLinearLayout extends LinearLayout {
     @Override // android.view.ViewGroup, android.view.View

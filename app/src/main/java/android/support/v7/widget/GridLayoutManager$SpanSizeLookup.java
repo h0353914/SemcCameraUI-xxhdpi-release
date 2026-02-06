@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.util.SparseIntArray;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class GridLayoutManager$SpanSizeLookup {
     final SparseIntArray mSpanIndexCache = new SparseIntArray();
     private boolean mCacheSpanIndices = false;

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$CameraControllerCallbackImpl$2 implements Runnable {
     final /* synthetic */ CameraDeviceHandler$CameraControllerCallbackImpl this$1;
 

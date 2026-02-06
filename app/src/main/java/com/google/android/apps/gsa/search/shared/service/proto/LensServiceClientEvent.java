@@ -6,7 +6,6 @@ import com.google.protobuf.GeneratedMessageLite$GeneratedExtension;
 import com.google.protobuf.Internal$EnumLiteMap;
 import com.google.protobuf.WireFormat$FieldType;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class LensServiceClientEvent {
     public static final int LENS_SERVICE_CLIENT_EVENT_DATA_FIELD_NUMBER = 152666889;
     public static final GeneratedMessageLite$GeneratedExtension<ClientEventProto, LensServiceClientEventData> lensServiceClientEventData = GeneratedMessageLite.newSingularGeneratedExtension(ClientEventProto.getDefaultInstance(), LensServiceClientEventData.getDefaultInstance(), LensServiceClientEventData.getDefaultInstance(), (Internal$EnumLiteMap) null, 152666889, WireFormat$FieldType.MESSAGE, LensServiceClientEventData.class);

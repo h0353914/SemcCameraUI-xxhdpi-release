@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FpsMonitor {
     private final int mIntervalCount;
     private final List<Double> mResult = new ArrayList();

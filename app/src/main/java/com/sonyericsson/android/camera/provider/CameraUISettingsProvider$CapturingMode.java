@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.provider;
 import android.net.Uri;
 import com.sonyericsson.android.camera.view.modeselector.CameraCommonProviderConstants;
 
-/* JADX INFO: loaded from: classes.dex */
 interface CameraUISettingsProvider$CapturingMode {
     public static final Uri CONTENT_URI = CameraCommonProviderConstants.CAPTURINGMODE_CONTENT_URI;
     public static final String MIME_TYPE = "capturingmode";

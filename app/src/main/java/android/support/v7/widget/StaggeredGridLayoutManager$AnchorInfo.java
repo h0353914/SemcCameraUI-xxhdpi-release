@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 class StaggeredGridLayoutManager$AnchorInfo {
     boolean mInvalidateOffsets;
     boolean mLayoutFromEnd;

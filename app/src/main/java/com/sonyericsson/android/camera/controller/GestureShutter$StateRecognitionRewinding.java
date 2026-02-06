@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface
 import com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface$DetectResultInterface$HandStatus;
 import com.sonyericsson.android.camera.research.LocalResearchUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class GestureShutter$StateRecognitionRewinding extends GestureShutter$State {
     final /* synthetic */ GestureShutter this$0;
 

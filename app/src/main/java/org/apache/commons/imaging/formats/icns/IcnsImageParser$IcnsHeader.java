@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.icns;
 
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 class IcnsImageParser$IcnsHeader {
     public final int fileSize;
     public final int magic;

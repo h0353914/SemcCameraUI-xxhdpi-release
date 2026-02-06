@@ -3,7 +3,6 @@ package android.support.graphics.drawable;
 import android.graphics.drawable.Animatable;
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface Animatable2Compat extends Animatable {
     void clearAnimationCallbacks();
 

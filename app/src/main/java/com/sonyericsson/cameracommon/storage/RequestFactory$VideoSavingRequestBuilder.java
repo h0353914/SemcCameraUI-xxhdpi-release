@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusCommon;
 import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusVideo;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RequestFactory$VideoSavingRequestBuilder extends RequestFactory$RequestBuilder {
     public TakenStatusVideo mVideoStatus;
 

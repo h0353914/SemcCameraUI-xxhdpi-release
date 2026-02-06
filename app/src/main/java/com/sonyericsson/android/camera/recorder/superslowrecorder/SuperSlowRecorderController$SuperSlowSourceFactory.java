@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.recorder.utility.encoder.InputDataSource;
 import com.sonyericsson.android.camera.recorder.utility.encoder.source.MutableAudioSampleDataSource;
 import com.sonyericsson.android.camera.recorder.utility.encoder.source.VideoFrameSource;
 
-/* JADX INFO: loaded from: classes.dex */
 class SuperSlowRecorderController$SuperSlowSourceFactory implements VariableSourceMediaRecorder$InputDataSourceFactory {
     final /* synthetic */ SuperSlowRecorderController this$0;
 

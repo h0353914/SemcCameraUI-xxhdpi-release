@@ -9,7 +9,6 @@ import android.support.v4.util.SparseArrayCompat;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 class LoaderManagerImpl$LoaderViewModel extends ViewModel {
     private static final ViewModelProvider$Factory FACTORY = new LoaderManagerImpl$LoaderViewModel$1();
     private SparseArrayCompat<LoaderManagerImpl$LoaderInfo> mLoaders = new SparseArrayCompat<>();

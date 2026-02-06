@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.mediasaving.location;
 import android.content.Context;
 import android.location.LocationManager;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LocationSettingsReader {
     public static final String TAG = "LocationSettingsReader";
     boolean mIsGpsLocationAllowed;

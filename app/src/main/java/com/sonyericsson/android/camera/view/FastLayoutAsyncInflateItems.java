@@ -4,7 +4,6 @@ import com.sonyericsson.cameracommon.viewfinder.InflateItem;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FastLayoutAsyncInflateItems {
     private static final List<InflateItem> INFLATE_ITEMS_FOR_FAST = new ArrayList();
     public static final String TAG = "FastLayoutAsyncInflateItems";

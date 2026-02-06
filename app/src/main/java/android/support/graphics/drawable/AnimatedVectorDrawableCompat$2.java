@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class AnimatedVectorDrawableCompat$2 extends AnimatorListenerAdapter {
     final /* synthetic */ AnimatedVectorDrawableCompat this$0;
 

@@ -1,6 +1,5 @@
 package com.google.gson.internal;
 
-/* JADX INFO: loaded from: classes.dex */
 class Streams$AppendableWriter$CurrentWrite implements CharSequence {
     char[] chars;
 

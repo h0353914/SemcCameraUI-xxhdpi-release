@@ -2,7 +2,6 @@ package android.support.v4.view;
 
 import android.view.animation.Interpolator;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewPager$2 implements Interpolator {
     @Override // android.animation.TimeInterpolator
     public float getInterpolation(float f) {

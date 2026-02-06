@@ -5,7 +5,6 @@ import android.os.RemoteException;
 import android.util.Log;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$1 extends MediaBrowserServiceCompat$Result<List<MediaBrowserCompat$MediaItem>> {
     final /* synthetic */ MediaBrowserServiceCompat this$0;
     final /* synthetic */ MediaBrowserServiceCompat$ConnectionRecord val$connection;

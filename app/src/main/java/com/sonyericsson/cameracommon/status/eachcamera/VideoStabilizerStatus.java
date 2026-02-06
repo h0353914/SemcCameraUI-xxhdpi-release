@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.status.eachcamera;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 import com.sonyericsson.cameracommon.status.EnumValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class VideoStabilizerStatus extends EnumValue<VideoStabilizerStatus$Value> implements EachCameraStatusValue {
     public static final VideoStabilizerStatus$Value DEFAULT_VALUE = VideoStabilizerStatus$Value.OFF;
     public static final String KEY = "video_stabilizer";

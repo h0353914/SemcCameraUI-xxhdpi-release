@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.tutorial;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class SimpleTutorialContentView$SaveLocationTutorialContent extends SimpleTutorialContentView$ShortTutorialContent {
     protected SimpleTutorialContentView$SaveLocationTutorialContent(int i) {
         super(i);

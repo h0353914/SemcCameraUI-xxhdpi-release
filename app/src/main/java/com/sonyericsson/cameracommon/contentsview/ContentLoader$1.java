@@ -6,7 +6,6 @@ import com.sonyericsson.cameracommon.contentsview.contents.Content$ContentInfo;
 import com.sonyericsson.cameracommon.storage.Storage$OnLoadCompletedListener;
 import java.util.LinkedList;
 
-/* JADX INFO: loaded from: classes.dex */
 class ContentLoader$1 implements Storage$OnLoadCompletedListener {
     final /* synthetic */ ContentLoader this$0;
 

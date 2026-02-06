@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera;
 
 import com.sonymobile.cameracommon.vanilla.wearablebridge.handheld.client.ObserveWearableInterface$VideoEventObserver;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$WearableBridgeVideoEventObserver implements ObserveWearableInterface$VideoEventObserver {
     @Override // com.sonymobile.cameracommon.vanilla.wearablebridge.handheld.client.ObserveWearableInterface$VideoEventObserver
     public void onStartVideoRecRequested() {

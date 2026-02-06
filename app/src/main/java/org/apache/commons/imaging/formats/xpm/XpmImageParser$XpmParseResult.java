@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.xpm;
 
 import org.apache.commons.imaging.common.BasicCParser;
 
-/* JADX INFO: loaded from: classes.dex */
 class XpmImageParser$XpmParseResult {
     BasicCParser cParser;
     XpmImageParser$XpmHeader xpmHeader;

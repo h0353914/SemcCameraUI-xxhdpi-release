@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class RequestPermissionActivity$2 implements DialogInterface$OnClickListener {
     final /* synthetic */ RequestPermissionActivity this$0;
 

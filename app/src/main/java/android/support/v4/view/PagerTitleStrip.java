@@ -17,7 +17,6 @@ import android.view.ViewParent;
 import android.widget.TextView;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 @ViewPager$DecorView
 public class PagerTitleStrip extends ViewGroup {
     private static final float SIDE_ALPHA = 0.6f;

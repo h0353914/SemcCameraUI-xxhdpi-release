@@ -3,7 +3,6 @@ package android.support.v7.view;
 import android.view.Menu;
 import android.view.MenuItem;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface ActionMode$Callback {
     boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem);
 

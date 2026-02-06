@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class EditTextPreference$SavedState extends Preference$BaseSavedState {
     public static final Parcelable$Creator<EditTextPreference$SavedState> CREATOR = new EditTextPreference$SavedState$1();
     String text;

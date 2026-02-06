@@ -3,7 +3,6 @@ package android.support.v7.util;
 import android.support.annotation.Nullable;
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class SortedList$Callback<T2> implements Comparator<T2>, ListUpdateCallback {
     public abstract boolean areContentsTheSame(T2 t2, T2 t22);
 

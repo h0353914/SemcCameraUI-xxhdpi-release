@@ -1,6 +1,5 @@
 package android.arch.lifecycle;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Lifecycle$Event {
     ON_CREATE,
     ON_START,

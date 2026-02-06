@@ -5,7 +5,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View$OnUnhandledKeyEventListener;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(28)
 class ViewCompat$OnUnhandledKeyEventListenerWrapper implements View$OnUnhandledKeyEventListener {
     private ViewCompat$OnUnhandledKeyEventListenerCompat mCompatListener;

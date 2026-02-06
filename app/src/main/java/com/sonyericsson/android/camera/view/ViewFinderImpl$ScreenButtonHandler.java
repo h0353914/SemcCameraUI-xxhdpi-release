@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenBu
 import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonItemFactory;
 import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonItemFactory$ButtonType;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$ScreenButtonHandler {
     final /* synthetic */ ViewFinderImpl this$0;
 

@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.research.LocalResearchUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$WizardResult;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 class PagingTutorialContentView$1 implements ViewPager$OnPageChangeListener {
     final /* synthetic */ PagingTutorialContentView this$0;
 

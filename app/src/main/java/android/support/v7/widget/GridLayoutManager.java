@@ -13,7 +13,6 @@ import android.view.ViewGroup$LayoutParams;
 import android.view.ViewGroup$MarginLayoutParams;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GridLayoutManager extends LinearLayoutManager {
     private static final boolean DEBUG = false;
     public static final int DEFAULT_SPAN_COUNT = -1;

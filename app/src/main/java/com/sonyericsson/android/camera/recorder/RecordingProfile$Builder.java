@@ -5,7 +5,6 @@ import android.media.CamcorderProfile;
 import com.sonyericsson.android.camera.configuration.parameters.VideoHdr;
 import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecordingProfile$Builder {
     private boolean mIsOneShot;
     private String mResultExt;

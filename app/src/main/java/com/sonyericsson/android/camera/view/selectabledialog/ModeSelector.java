@@ -16,7 +16,6 @@ import com.sonyericsson.android.camera.view.modeselector.ModeSelectorInternalMod
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ModeSelector extends AbsSelectableDialog implements ModeLoader$OnModeListChangeListener {
     protected static final boolean DEBUG = CamLog.VERBOSE;
     protected static final String TAG = "ModeSelector";

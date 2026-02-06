@@ -9,7 +9,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.Status;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zze$zza extends Binder implements zze {
     public zze$zza() {
         attachInterface(this, "com.google.android.gms.signin.internal.ISignInCallbacks");

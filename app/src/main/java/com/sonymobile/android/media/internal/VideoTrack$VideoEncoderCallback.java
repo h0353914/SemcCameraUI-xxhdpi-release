@@ -8,7 +8,6 @@ import android.media.MediaFormat;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 class VideoTrack$VideoEncoderCallback extends MediaCodec$Callback {
     final /* synthetic */ VideoTrack this$0;
 

@@ -10,7 +10,6 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AlbumPreloader {
     public static final String TAG = "AlbumPreloader";
     private Context mContext;

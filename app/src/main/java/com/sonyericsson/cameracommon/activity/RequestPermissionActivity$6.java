@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.activity;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class RequestPermissionActivity$6 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$cameracommon$activity$RequestPermissionActivity$PermissionAction = new int[RequestPermissionActivity$PermissionAction.values().length];
 

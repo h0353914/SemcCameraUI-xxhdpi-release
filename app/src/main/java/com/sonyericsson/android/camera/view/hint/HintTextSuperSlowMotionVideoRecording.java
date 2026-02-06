@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.hint;
 
-/* JADX INFO: loaded from: classes.dex */
 public class HintTextSuperSlowMotionVideoRecording extends HintTextSlowMotion {
     private final boolean mIsDone;
 

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$22 implements SuperSlowMotionTriggerAnimationController$OnAnimationEndListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

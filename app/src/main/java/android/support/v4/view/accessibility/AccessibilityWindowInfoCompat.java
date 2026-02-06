@@ -4,7 +4,6 @@ import android.graphics.Rect;
 import android.os.Build$VERSION;
 import android.view.accessibility.AccessibilityWindowInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AccessibilityWindowInfoCompat {
     public static final int TYPE_ACCESSIBILITY_OVERLAY = 4;
     public static final int TYPE_APPLICATION = 1;

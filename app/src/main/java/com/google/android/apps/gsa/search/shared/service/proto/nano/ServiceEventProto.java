@@ -8,7 +8,6 @@ import com.google.protobuf.nano.InvalidProtocolBufferNanoException;
 import com.google.protobuf.nano.MessageNano;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ServiceEventProto extends ExtendableMessageNano<ServiceEventProto> implements Cloneable {
     private static volatile ServiceEventProto[] _emptyArray;
     private int bitField0_;

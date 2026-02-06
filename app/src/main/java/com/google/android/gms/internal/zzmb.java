@@ -9,7 +9,6 @@ import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListe
 import com.google.android.gms.common.internal.zzf;
 import com.google.android.gms.common.internal.zzj;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzmb extends zzj<zzmd> {
     public zzmb(Context context, Looper looper, zzf zzfVar, GoogleApiClient$ConnectionCallbacks googleApiClient$ConnectionCallbacks, GoogleApiClient$OnConnectionFailedListener googleApiClient$OnConnectionFailedListener) {
         super(context, looper, 39, zzfVar, googleApiClient$ConnectionCallbacks, googleApiClient$OnConnectionFailedListener);

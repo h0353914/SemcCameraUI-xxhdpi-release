@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.contentsview.ContentsViewController$OnClickThumbnailProgressListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$OnClickThumbnailProgressListenerImpl implements ContentsViewController$OnClickThumbnailProgressListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

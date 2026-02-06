@@ -8,7 +8,6 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SupportErrorDialogFragment extends DialogFragment {
     private Dialog mDialog = null;
     private DialogInterface$OnCancelListener zzaaa = null;

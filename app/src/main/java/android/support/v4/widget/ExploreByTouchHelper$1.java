@@ -3,7 +3,6 @@ package android.support.v4.widget;
 import android.graphics.Rect;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 class ExploreByTouchHelper$1 implements FocusStrategy$BoundsAdapter<AccessibilityNodeInfoCompat> {
     ExploreByTouchHelper$1() {
     }

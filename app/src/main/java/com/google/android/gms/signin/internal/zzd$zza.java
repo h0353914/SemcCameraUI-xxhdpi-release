@@ -6,7 +6,6 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import com.google.android.gms.common.api.Scope;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzd$zza extends Binder implements zzd {
     public zzd$zza() {
         attachInterface(this, "com.google.android.gms.signin.internal.IOfflineAccessCallbacks");

@@ -14,7 +14,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FaceDetectUtil {
     public static final String TAG = "FaceDetectUtil";
 

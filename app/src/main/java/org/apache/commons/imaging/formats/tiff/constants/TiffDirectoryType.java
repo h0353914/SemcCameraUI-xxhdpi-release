@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.tiff.constants;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum TiffDirectoryType {
     TIFF_DIRECTORY_IFD0(true, 0, "IFD0"),
     TIFF_DIRECTORY_IFD1(true, 1, "IFD1"),

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeProviderCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 class ExploreByTouchHelper$MyNodeProvider extends AccessibilityNodeProviderCompat {
     final /* synthetic */ ExploreByTouchHelper this$0;
 

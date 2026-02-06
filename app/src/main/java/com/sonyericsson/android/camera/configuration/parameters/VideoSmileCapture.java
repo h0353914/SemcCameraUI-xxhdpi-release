@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum VideoSmileCapture implements UserSettingValue {
     HIGH(SmileCapture.HIGH, 2131231407),
     MIDDLE(SmileCapture.MIDDLE, 2131231409),

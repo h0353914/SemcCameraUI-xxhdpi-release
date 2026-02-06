@@ -6,7 +6,6 @@ import android.text.format.DateFormat;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.storage.RequestFactory$RequestBuilder;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ExifOption {
     public static final String TAG = "ExifOption";
     public String mDateTime;

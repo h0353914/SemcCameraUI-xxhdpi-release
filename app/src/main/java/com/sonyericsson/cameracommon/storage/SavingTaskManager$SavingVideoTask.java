@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.mediasaving.MediaSavingResult;
 import java.util.concurrent.Semaphore;
 
-/* JADX INFO: loaded from: classes.dex */
 class SavingTaskManager$SavingVideoTask implements Runnable {
     final VideoSavingRequest mRequest;
     final /* synthetic */ SavingTaskManager this$0;

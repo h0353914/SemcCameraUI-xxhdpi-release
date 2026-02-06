@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.png;
 import org.apache.commons.imaging.ImageWriteException;
 import org.apache.commons.imaging.palette.Palette;
 
-/* JADX INFO: loaded from: classes.dex */
 class PngWriter$TransparentPalette implements Palette {
     private final Palette palette;
 

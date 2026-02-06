@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.mediasaving;
 import java.io.IOException;
 import java.io.OutputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ThreadSafeOutputStream extends OutputStream {
     boolean mClosed;
     private OutputStream mDelegateStream;

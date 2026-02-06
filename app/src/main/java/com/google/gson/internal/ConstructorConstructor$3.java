@@ -4,7 +4,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 /* JADX INFO: Add missing generic type declarations: [T] */
-/* JADX INFO: loaded from: classes.dex */
 class ConstructorConstructor$3<T> implements ObjectConstructor<T> {
     final /* synthetic */ ConstructorConstructor this$0;
     final /* synthetic */ Constructor val$constructor;

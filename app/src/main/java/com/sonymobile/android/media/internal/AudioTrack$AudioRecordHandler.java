@@ -7,7 +7,6 @@ import android.util.Log;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 class AudioTrack$AudioRecordHandler extends Handler {
     final /* synthetic */ AudioTrack this$0;
 

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.recorder.defaultrecorder;
 
 import com.sonyericsson.android.camera.recorder.utility.ReferenceClock$TickCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class BaseRecorderController$6 implements ReferenceClock$TickCallback {
     final /* synthetic */ BaseRecorderController this$0;
 

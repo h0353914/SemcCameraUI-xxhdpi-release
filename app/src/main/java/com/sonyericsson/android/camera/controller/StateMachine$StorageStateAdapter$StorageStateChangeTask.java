@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.LaunchCondition$ExtraOperation;
 import com.sonyericsson.cameracommon.storage.Storage$StorageState;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StorageStateAdapter$StorageStateChangeTask implements Runnable {
     private final Storage$StorageState mStorageState;
     private final Storage$StorageType mStorageType;

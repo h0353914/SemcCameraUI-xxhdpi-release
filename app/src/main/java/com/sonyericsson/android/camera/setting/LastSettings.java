@@ -5,7 +5,6 @@ import android.graphics.Rect;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.configuration.parameters.FastCapture;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LastSettings {
     private static final String LAUNCH_AND_RECORDING = "LAUNCH_AND_RECORDING";
     private final SharedPreferencesAccessor mAccessor;

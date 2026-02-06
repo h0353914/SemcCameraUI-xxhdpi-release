@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.baselayout.onscreenbutton;
 
-/* JADX INFO: loaded from: classes.dex */
 public class OnScreenButtonGroup$ImmutableButtonItem extends OnScreenButtonGroup$Item {
     private final OnScreenButton$Resource mResource;
     private final Object mTag;

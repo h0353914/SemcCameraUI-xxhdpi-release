@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FaceInformationList {
     public static final String TAG = "FaceInformationList";
     private List<NamedFace> mNamedFaceList = new ArrayList();

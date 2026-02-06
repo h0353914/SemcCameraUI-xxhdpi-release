@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class NotificationCompat$WearableExtender implements NotificationCompat$Extender {
     private static final int DEFAULT_CONTENT_ICON_GRAVITY = 8388613;
     private static final int DEFAULT_FLAGS = 1;

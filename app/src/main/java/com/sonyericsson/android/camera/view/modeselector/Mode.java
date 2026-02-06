@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class Mode {
     public static final int INVALID_ID = 0;
     protected final Context mContext;

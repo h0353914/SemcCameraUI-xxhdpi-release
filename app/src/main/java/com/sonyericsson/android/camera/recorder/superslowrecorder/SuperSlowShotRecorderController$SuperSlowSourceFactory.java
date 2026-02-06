@@ -5,7 +5,6 @@ import android.media.MediaCodec;
 import com.sonyericsson.android.camera.recorder.utility.encoder.InputDataSource;
 import com.sonyericsson.android.camera.recorder.utility.encoder.source.VideoFrameSource;
 
-/* JADX INFO: loaded from: classes.dex */
 class SuperSlowShotRecorderController$SuperSlowSourceFactory implements VariableSourceMediaRecorder$InputDataSourceFactory {
     private SuperSlowShotRecorderController$SuperSlowSourceFactory() {
     }

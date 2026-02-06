@@ -5,7 +5,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView$OnItemClickListener;
 import android.widget.ListView;
 
-/* JADX INFO: loaded from: classes.dex */
 class ListFragment$2 implements AdapterView$OnItemClickListener {
     final /* synthetic */ ListFragment this$0;
 

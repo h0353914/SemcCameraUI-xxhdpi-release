@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class SystemParcelableWrapper implements Parcelable {
     public static final Parcelable$Creator<SystemParcelableWrapper> CREATOR = new SystemParcelableWrapper$1();
     private final Parcelable parcelable;

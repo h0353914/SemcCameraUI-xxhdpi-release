@@ -7,7 +7,6 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ExifFactory {
     private static final int MAKER_NAME_LIMITATION = 14;
     public static final String TAG = "ExifFactory";

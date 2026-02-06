@@ -6,7 +6,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder$Callback;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class SurfaceViewEvf$SurfaceViewCallback implements SurfaceHolder$Callback {
     final /* synthetic */ SurfaceViewEvf this$0;
 

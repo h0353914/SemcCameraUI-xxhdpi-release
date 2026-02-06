@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.bmp;
 
-/* JADX INFO: loaded from: classes.dex */
 class ImageContents {
     final BmpHeaderInfo bhi;
     final byte[] colorTable;

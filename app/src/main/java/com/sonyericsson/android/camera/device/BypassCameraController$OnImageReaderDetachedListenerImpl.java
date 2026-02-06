@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.cameracommon.storage.PhotoSavingRequest$OnImageReaderDetachedListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class BypassCameraController$OnImageReaderDetachedListenerImpl implements PhotoSavingRequest$OnImageReaderDetachedListener {
     final /* synthetic */ BypassCameraController this$0;
 

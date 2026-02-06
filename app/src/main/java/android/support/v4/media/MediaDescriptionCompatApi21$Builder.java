@@ -5,7 +5,6 @@ import android.media.MediaDescription$Builder;
 import android.net.Uri;
 import android.os.Bundle;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaDescriptionCompatApi21$Builder {
     public static Object newInstance() {
         return new MediaDescription$Builder();

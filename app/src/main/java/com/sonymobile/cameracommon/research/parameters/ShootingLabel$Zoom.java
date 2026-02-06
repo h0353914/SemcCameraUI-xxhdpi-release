@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ShootingLabel$Zoom implements ShootingLabel$IntParameter {
     ZOOM_0(0),
     ZOOM_1(1),

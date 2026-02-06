@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AccessibilityNodeProviderCompat {
     public static final int HOST_VIEW_ID = -1;
     private final Object mProvider;

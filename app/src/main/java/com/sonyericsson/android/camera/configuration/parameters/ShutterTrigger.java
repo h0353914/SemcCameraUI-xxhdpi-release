@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.controller.GestureShutter;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ShutterTrigger implements UserSettingValue {
     SMILE_SHUTTER(2131690163, SmileCapture.MIDDLE, false),
     GESTURE_SHUTTER(2131689868, SmileCapture.OFF, true),

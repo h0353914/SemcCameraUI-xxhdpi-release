@@ -3,7 +3,6 @@ package android.support.v4.view.accessibility;
 import android.os.Build$VERSION;
 import android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AccessibilityNodeInfoCompat$CollectionItemInfoCompat {
     final Object mInfo;
 

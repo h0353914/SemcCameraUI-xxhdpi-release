@@ -17,7 +17,6 @@ import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import com.sonymobile.cameracommon.evf.Evf;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateResume extends StateMachine$State {
     private final FastCapture mFastCapture;
     private boolean mIsCameraStarted;

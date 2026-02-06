@@ -6,7 +6,6 @@ import android.os.RemoteException;
 import com.google.android.aidl.BaseProxy;
 import com.google.android.aidl.Codecs;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IPublicSearchServiceSessionCallback$Stub$Proxy extends BaseProxy implements IPublicSearchServiceSessionCallback {
     IPublicSearchServiceSessionCallback$Stub$Proxy(IBinder remote) {
         super(remote, "com.google.android.apps.gsa.publicsearch.IPublicSearchServiceSessionCallback");

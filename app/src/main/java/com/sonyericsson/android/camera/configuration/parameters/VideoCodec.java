@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum VideoCodec implements UserSettingValue {
     H264(-1, 2131690209),
     H265(-1, 2131690210);

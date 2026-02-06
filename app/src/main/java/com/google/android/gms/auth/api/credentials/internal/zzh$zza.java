@@ -7,7 +7,6 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import com.google.android.gms.auth.api.credentials.CredentialRequest;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzh$zza extends Binder implements zzh {
     public static zzh zzat(IBinder iBinder) {
         if (iBinder == null) {

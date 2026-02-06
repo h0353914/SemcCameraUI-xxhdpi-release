@@ -9,7 +9,6 @@ import android.os.RemoteException;
 import android.support.v4.media.MediaMetadataCompat;
 import android.text.TextUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class IMediaControllerCallback$Stub extends Binder implements IMediaControllerCallback {
     private static final String DESCRIPTOR = "android.support.v4.media.session.IMediaControllerCallback";
     static final int TRANSACTION_onCaptioningEnabledChanged = 11;

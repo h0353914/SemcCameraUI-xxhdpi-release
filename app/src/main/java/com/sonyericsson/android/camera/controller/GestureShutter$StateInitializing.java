@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.controller;
 
-/* JADX INFO: loaded from: classes.dex */
 class GestureShutter$StateInitializing extends GestureShutter$State {
     final /* synthetic */ GestureShutter this$0;
 

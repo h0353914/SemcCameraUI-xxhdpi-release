@@ -7,7 +7,6 @@ import com.google.android.gms.common.internal.zzf;
 import java.util.Collections;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class Api$zza<T extends Api$zzb, O> {
     public int getPriority() {
         return Integer.MAX_VALUE;

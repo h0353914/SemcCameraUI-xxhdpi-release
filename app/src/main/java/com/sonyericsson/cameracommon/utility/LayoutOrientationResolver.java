@@ -4,7 +4,6 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.Size;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LayoutOrientationResolver {
     public static final String TAG = "LayoutOrientationResolver";
     private static final LayoutOrientationResolver sInstance = new LayoutOrientationResolver();

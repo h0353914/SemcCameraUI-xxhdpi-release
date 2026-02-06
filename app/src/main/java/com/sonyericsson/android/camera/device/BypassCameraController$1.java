@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.PerfLog;
 import java.util.concurrent.CountDownLatch;
 
-/* JADX INFO: loaded from: classes.dex */
 class BypassCameraController$1 implements Runnable {
     final /* synthetic */ BypassCameraController this$0;
     final /* synthetic */ CameraDeviceHandler$CameraSessionId val$currentSessionId;

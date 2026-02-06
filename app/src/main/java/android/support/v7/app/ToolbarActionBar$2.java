@@ -3,7 +3,6 @@ package android.support.v7.app;
 import android.support.v7.widget.Toolbar$OnMenuItemClickListener;
 import android.view.MenuItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class ToolbarActionBar$2 implements Toolbar$OnMenuItemClickListener {
     final /* synthetic */ ToolbarActionBar this$0;
 

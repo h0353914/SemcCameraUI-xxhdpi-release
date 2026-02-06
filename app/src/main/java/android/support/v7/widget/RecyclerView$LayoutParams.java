@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.view.ViewGroup$LayoutParams;
 import android.view.ViewGroup$MarginLayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecyclerView$LayoutParams extends ViewGroup$MarginLayoutParams {
     final Rect mDecorInsets;
     boolean mInsetsDirty;

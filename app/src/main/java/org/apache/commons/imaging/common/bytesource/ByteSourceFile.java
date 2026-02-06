@@ -10,7 +10,6 @@ import java.io.RandomAccessFile;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ByteSourceFile extends ByteSource {
     private final File file;
 

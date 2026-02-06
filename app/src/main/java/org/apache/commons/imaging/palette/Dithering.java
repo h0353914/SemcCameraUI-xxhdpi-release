@@ -3,7 +3,6 @@ package org.apache.commons.imaging.palette;
 import java.awt.image.BufferedImage;
 import org.apache.commons.imaging.ImageWriteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class Dithering {
     private Dithering() {
     }

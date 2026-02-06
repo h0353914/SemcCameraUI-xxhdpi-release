@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.color;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ColorConversions {
     private static final double REF_X = 95.047d;
     private static final double REF_Y = 100.0d;

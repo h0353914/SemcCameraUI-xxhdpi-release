@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 import com.sonyericsson.cameracommon.review.ReviewWindowListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$ReviewWindowListenerImpl implements ReviewWindowListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

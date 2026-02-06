@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.png;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PngText$Itxt extends PngText {
     public final String languageTag;
     public final String translatedKeyword;

@@ -7,7 +7,6 @@ import com.sonyericsson.cameracommon.systemmonitor.ThermalAlertReceiver$ThermalA
 import com.sonymobile.cameracommon.research.ResearchUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$CoolMode;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$3 implements ThermalAlertReceiver$ThermalAlertReceiverListener {
     final /* synthetic */ CameraActivity this$0;
 

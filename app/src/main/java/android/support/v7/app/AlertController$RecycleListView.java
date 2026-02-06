@@ -6,7 +6,6 @@ import android.support.v7.appcompat.R$styleable;
 import android.util.AttributeSet;
 import android.widget.ListView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AlertController$RecycleListView extends ListView {
     private final int mPaddingBottomNoButtons;
     private final int mPaddingTopNoTitle;

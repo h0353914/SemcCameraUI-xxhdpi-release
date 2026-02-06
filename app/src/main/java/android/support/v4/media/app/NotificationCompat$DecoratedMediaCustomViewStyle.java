@@ -10,7 +10,6 @@ import android.support.mediacompat.R$layout;
 import android.support.v4.app.NotificationBuilderWithBuilderAccessor;
 import android.widget.RemoteViews;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NotificationCompat$DecoratedMediaCustomViewStyle extends NotificationCompat$MediaStyle {
     @Override // android.support.v4.media.app.NotificationCompat$MediaStyle, android.support.v4.app.NotificationCompat$Style
     @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})

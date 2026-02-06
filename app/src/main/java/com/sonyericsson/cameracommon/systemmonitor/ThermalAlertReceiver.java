@@ -12,7 +12,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.psm.sysmonservice.ISysmonService;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ThermalAlertReceiver extends BroadcastReceiver {
     private static final String ACTION_CAMERA_COOLED_DOWN_NORMAL = "com.sonyericsson.psm.action.CAMERA_COOLED_DOWN_NORMAL";
     private static final String ACTION_CAMERA_HEATED_CLOSE_TO_SHUTDOWN = "com.sonyericsson.psm.action.CAMERA_HEATED_CLOSE_TO_SHUTDOWN";

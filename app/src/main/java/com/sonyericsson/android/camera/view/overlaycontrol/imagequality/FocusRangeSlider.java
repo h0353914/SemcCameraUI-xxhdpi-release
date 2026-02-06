@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.configuration.parameters.FocusRange;
 import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class FocusRangeSlider extends SettingItemSlider {
     private CameraInfo$CameraId mCameraId;
 

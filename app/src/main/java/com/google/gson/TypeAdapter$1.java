@@ -6,7 +6,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
 /* JADX INFO: Add missing generic type declarations: [T] */
-/* JADX INFO: loaded from: classes.dex */
 class TypeAdapter$1<T> extends TypeAdapter<T> {
     final /* synthetic */ TypeAdapter this$0;
 

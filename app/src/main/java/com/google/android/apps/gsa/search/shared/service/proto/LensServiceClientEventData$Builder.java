@@ -2,7 +2,6 @@ package com.google.android.apps.gsa.search.shared.service.proto;
 
 import com.google.protobuf.GeneratedMessageLite$Builder;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class LensServiceClientEventData$Builder extends GeneratedMessageLite$Builder<LensServiceClientEventData, LensServiceClientEventData$Builder> implements LensServiceClientEventDataOrBuilder {
     /* synthetic */ LensServiceClientEventData$Builder(LensServiceClientEventData$1 lensServiceClientEventData$1) {
         this();

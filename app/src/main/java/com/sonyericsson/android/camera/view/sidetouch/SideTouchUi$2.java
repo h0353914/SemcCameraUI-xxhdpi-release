@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.sidetouch;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class SideTouchUi$2 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$view$sidetouch$SideTouchUi$Type = new int[SideTouchUi$Type.values().length];
 

@@ -15,7 +15,6 @@ import android.view.ViewGroup$LayoutParams;
 import android.view.ViewGroup$MarginLayoutParams;
 import android.view.ViewParent;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CoordinatorLayout$LayoutParams extends ViewGroup$MarginLayoutParams {
     public int anchorGravity;
     public int dodgeInsetEdges;

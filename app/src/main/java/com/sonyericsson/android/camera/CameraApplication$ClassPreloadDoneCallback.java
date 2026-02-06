@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraApplication$ClassPreloadDoneCallback implements ClassStaticBlockPreLoadThread$PreloadDoneCallback {
     final /* synthetic */ CameraApplication this$0;
 

@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.interaction;
 
 import android.graphics.PointF;
 
-/* JADX INFO: loaded from: classes.dex */
 public class VectorCalculator {
     private static final float PARALLEL_ANGLE_FORWARD_DIRECTION = 0.0f;
     private static final float PARALLEL_ANGLE_INVERSE_DIRECTION = 3.1415927f;

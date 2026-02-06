@@ -4,7 +4,6 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ImageContents {
     public final int ColorModeDataLength;
     public final int Compression;

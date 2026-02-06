@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.util.SparseArray;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecyclerView$State {
     static final int STEP_ANIMATIONS = 4;
     static final int STEP_LAYOUT = 2;

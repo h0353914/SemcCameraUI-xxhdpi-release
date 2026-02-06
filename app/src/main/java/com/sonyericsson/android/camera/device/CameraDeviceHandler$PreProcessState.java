@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum CameraDeviceHandler$PreProcessState {
     NOT_STARTED,
     PRE_SCAN_STARTED,

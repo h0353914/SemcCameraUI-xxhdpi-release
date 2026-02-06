@@ -27,7 +27,6 @@ import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOri
 import com.sonyericsson.cameracommon.utility.PositionConverter;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class SideTouchUiIcon$AutoReviewIcon extends SideTouchUiIcon implements AutoReviewContent$ContentReceiver {
     private static final long ANIMATION_DURATION = 200;
     private static final float ANIMATION_HIDE_SCALE = 0.8f;

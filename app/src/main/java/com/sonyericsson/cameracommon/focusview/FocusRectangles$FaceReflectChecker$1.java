@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.focusview;
 
-/* JADX INFO: loaded from: classes.dex */
 class FocusRectangles$FaceReflectChecker$1 implements Runnable {
     final /* synthetic */ FocusRectangles$FaceReflectChecker this$1;
 

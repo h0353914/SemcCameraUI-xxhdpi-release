@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class SideTouchEventDetector$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$SideTouchEventDetector$SideTouchArea;
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$SideTouchEventDetector$State = new int[SideTouchEventDetector$State.values().length];

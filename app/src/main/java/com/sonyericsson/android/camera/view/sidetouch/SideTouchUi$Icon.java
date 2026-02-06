@@ -4,7 +4,6 @@ import android.graphics.Point;
 import android.view.View;
 import android.view.ViewGroup;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface SideTouchUi$Icon {
     View attach(ViewGroup viewGroup, Point point);
 

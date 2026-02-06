@@ -4,7 +4,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
-/* JADX INFO: loaded from: classes.dex */
 class ModernAsyncTask$InternalHandler extends Handler {
     ModernAsyncTask$InternalHandler() {
         super(Looper.getMainLooper());

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.setting;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ContextualSettingList {
     private final ContextualSettingList$Group mAuto;
     private final ContextualSettingList$Group mManual;

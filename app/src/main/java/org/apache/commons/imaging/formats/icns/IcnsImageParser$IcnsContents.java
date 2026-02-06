@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.icns;
 
-/* JADX INFO: loaded from: classes.dex */
 class IcnsImageParser$IcnsContents {
     public final IcnsImageParser$IcnsElement[] icnsElements;
     public final IcnsImageParser$IcnsHeader icnsHeader;

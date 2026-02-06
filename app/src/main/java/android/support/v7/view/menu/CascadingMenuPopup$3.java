@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.MenuItemHoverListener;
 import android.view.MenuItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class CascadingMenuPopup$3 implements MenuItemHoverListener {
     final /* synthetic */ CascadingMenuPopup this$0;
 

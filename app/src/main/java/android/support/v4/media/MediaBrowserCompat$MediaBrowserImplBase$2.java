@@ -3,7 +3,6 @@ package android.support.v4.media;
 import android.os.RemoteException;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$MediaBrowserImplBase$2 implements Runnable {
     final /* synthetic */ MediaBrowserCompat$MediaBrowserImplBase this$0;
 

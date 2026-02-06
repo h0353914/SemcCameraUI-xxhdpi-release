@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.View$OnClickListener;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
-/* JADX INFO: loaded from: classes.dex */
 class PrimaryShortcutGroup$1 implements View$OnClickListener {
     final /* synthetic */ PrimaryShortcutGroup this$0;
 

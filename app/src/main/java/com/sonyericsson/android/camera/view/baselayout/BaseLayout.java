@@ -67,7 +67,6 @@ import com.sonyericsson.cameracommon.viewfinder.indicators.Indicator;
 import com.sonyericsson.cameracommon.viewfinder.recordingindicator.RecordingIndicator;
 import java.util.LinkedList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BaseLayout {
     private static final String TAG = "BaseLayout";
     private final CameraActivity mActivity;

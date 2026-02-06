@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ShootingLabel$AfDoneKeepingTime implements ShootingLabel$StringParameter {
     WITHIN_10_MS("WITHIN_10_MS"),
     WITHIN_50_MS("WITHIN_50_MS"),

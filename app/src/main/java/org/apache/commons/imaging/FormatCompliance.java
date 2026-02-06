@@ -7,7 +7,6 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FormatCompliance {
     private final List<String> comments;
     private final String description;

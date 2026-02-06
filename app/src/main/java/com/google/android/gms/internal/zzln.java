@@ -7,7 +7,6 @@ import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.ResultCallback;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzln<R extends Result> extends OptionalPendingResult<R> {
     private final zzlc<R> zzacI;
 

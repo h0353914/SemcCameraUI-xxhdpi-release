@@ -5,7 +5,6 @@ import android.support.annotation.WorkerThread;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.concurrent.CountDownLatch;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class BypassCameraController$RequestPrepareCaptureImageReaderTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     private final BypassCameraController$CaptureImageReaderRequest mRequest;

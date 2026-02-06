@@ -5,7 +5,6 @@ import com.sonyericsson.cameracommon.contentsview.contents.Content;
 import com.sonyericsson.cameracommon.contentsview.contents.Content$ContentInfo;
 import com.sonyericsson.cameracommon.contentsview.contents.Content$ContentsType;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$21 implements ContentPallet$ThumbnailStateListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

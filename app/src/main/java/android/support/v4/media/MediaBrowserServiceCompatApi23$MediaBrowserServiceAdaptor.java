@@ -4,7 +4,6 @@ import android.content.Context;
 import android.media.browse.MediaBrowser$MediaItem;
 import android.service.media.MediaBrowserService$Result;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompatApi23$MediaBrowserServiceAdaptor extends MediaBrowserServiceCompatApi21$MediaBrowserServiceAdaptor {
     MediaBrowserServiceCompatApi23$MediaBrowserServiceAdaptor(Context context, MediaBrowserServiceCompatApi23$ServiceCompatProxy mediaBrowserServiceCompatApi23$ServiceCompatProxy) {
         super(context, mediaBrowserServiceCompatApi23$ServiceCompatProxy);

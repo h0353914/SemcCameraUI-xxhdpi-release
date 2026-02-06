@@ -3,7 +3,6 @@ package android.support.v7.graphics.drawable;
 import android.animation.TimeInterpolator;
 import android.graphics.drawable.AnimationDrawable;
 
-/* JADX INFO: loaded from: classes.dex */
 class AnimatedStateListDrawableCompat$FrameInterpolator implements TimeInterpolator {
     private int[] mFrameTimes;
     private int mFrames;

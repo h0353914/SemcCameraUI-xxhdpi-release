@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.view.inputmethod.InputContentInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(25)
 final class InputContentInfoCompat$InputContentInfoCompatApi25Impl implements InputContentInfoCompat$InputContentInfoCompatImpl {
 

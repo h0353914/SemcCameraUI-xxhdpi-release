@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.jpeg.iptc;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class IptcConstants {
     public static final int IMAGE_RESOURCE_BLOCK_ALPHA_CHANNELS_NAMES = 1006;
     public static final int IMAGE_RESOURCE_BLOCK_ALPHA_IDENTIFIERS = 1053;

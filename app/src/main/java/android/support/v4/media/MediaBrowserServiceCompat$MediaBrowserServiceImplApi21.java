@@ -13,7 +13,6 @@ import android.support.v4.util.Pair;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class MediaBrowserServiceCompat$MediaBrowserServiceImplApi21 implements MediaBrowserServiceCompat$MediaBrowserServiceImpl, MediaBrowserServiceCompatApi21$ServiceCompatProxy {
     Messenger mMessenger;

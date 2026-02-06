@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.setting;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingDialogListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingUi$SettingDialogListenerImpl implements SettingDialogListener {
     final /* synthetic */ SettingUi this$0;
 

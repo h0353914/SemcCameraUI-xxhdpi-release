@@ -5,7 +5,6 @@ import android.os.IBinder$DeathRecipient;
 import com.google.android.gms.common.api.zza;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzli$zzc implements IBinder$DeathRecipient, zzli$zze {
     private final WeakReference<zza> zzacA;
     private final WeakReference<IBinder> zzacB;

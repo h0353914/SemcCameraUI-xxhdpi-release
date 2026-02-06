@@ -2,7 +2,6 @@ package android.support.v4.view;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewPager$1 implements Comparator<ViewPager$ItemInfo> {
     ViewPager$1() {
     }

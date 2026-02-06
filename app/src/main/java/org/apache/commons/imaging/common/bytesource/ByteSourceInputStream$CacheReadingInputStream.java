@@ -3,7 +3,6 @@ package org.apache.commons.imaging.common.bytesource;
 import java.io.IOException;
 import java.io.InputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 class ByteSourceInputStream$CacheReadingInputStream extends InputStream {
     private ByteSourceInputStream$CacheBlock block;
     private int blockIndex;

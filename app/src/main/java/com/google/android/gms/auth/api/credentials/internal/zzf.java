@@ -6,7 +6,6 @@ import android.os.Parcelable$Creator;
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.common.internal.safeparcel.zza$zza;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzf implements Parcelable$Creator<DeleteRequest> {
     static void zza(DeleteRequest deleteRequest, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);

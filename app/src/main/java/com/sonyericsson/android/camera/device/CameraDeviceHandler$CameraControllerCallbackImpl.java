@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$CameraControllerCallbackImpl implements CameraController$CameraControllerCallback {
     final /* synthetic */ CameraDeviceHandler this$0;
 

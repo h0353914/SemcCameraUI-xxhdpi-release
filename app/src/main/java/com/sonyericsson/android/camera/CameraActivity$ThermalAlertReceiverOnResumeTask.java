@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 final class CameraActivity$ThermalAlertReceiverOnResumeTask implements Runnable {
     final /* synthetic */ CameraActivity this$0;
 

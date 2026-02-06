@@ -9,7 +9,6 @@ import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.os.ResultReceiver;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 final class MediaBrowserServiceCompat$ServiceHandler extends Handler {
     private final MediaBrowserServiceCompat$ServiceBinderImpl mServiceBinderImpl;
     final /* synthetic */ MediaBrowserServiceCompat this$0;

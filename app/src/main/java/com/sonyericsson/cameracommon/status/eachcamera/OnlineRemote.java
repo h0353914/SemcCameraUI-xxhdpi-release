@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.status.eachcamera;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 import com.sonyericsson.cameracommon.status.EnumValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class OnlineRemote extends EnumValue<OnlineRemote$Value> implements EachCameraStatusValue {
     public static final OnlineRemote$Value DEFAULT_VALUE = OnlineRemote$Value.OFF;
     public static final String KEY = "online_remote";

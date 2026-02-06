@@ -6,7 +6,6 @@ import org.apache.commons.imaging.common.ByteConversions;
 import org.apache.commons.imaging.common.RationalNumber;
 import org.apache.commons.imaging.formats.tiff.TiffField;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FieldTypeRational extends FieldType {
     public FieldTypeRational(int i, String str) {
         super(i, str, 8);

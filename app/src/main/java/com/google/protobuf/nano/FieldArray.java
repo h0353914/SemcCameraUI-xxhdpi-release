@@ -1,6 +1,5 @@
 package com.google.protobuf.nano;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class FieldArray implements Cloneable {
     private static final FieldData DELETED = new FieldData();
     private FieldData[] mData;

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.controller;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.storage.RequestFactory$PhotoSavingRequestBuilder;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$RequestStoreTask implements Runnable {
     private final RequestFactory$PhotoSavingRequestBuilder mRequest;
     final /* synthetic */ StateMachine this$0;

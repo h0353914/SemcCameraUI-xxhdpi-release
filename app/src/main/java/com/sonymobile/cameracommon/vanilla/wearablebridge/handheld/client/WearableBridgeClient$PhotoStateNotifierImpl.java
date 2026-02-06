@@ -3,7 +3,6 @@ package com.sonymobile.cameracommon.vanilla.wearablebridge.handheld.client;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonymobile.cameracommon.vanilla.wearablebridge.common.AbstractCapturableState$AbstractPhotoState;
 
-/* JADX INFO: loaded from: classes.dex */
 class WearableBridgeClient$PhotoStateNotifierImpl implements NotifyWearableInterface$PhotoStateNotifier {
     final /* synthetic */ WearableBridgeClient this$0;
 

@@ -4,7 +4,6 @@ import java.io.IOException;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.ImageBuilder;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PhotometricInterpreterYCbCr extends PhotometricInterpreter {
     public PhotometricInterpreterYCbCr(int i, int[] iArr, int i2, int i3, int i4) {
         super(i, iArr, i2, i3, i4);

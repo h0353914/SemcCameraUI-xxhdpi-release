@@ -6,7 +6,6 @@ import android.util.Size;
 import android.view.Surface;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface Evf {
     Surface asSurface();
 

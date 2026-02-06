@@ -4,7 +4,6 @@ import android.os.StatFs;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.concurrent.Callable;
 
-/* JADX INFO: loaded from: classes.dex */
 public class StorageUtil$GetStatFsTask implements Callable<StatFs> {
     private final String mPath;
 

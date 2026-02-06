@@ -41,7 +41,6 @@ import com.sonymobile.cameracommon.research.parameters.Event$WizardResult;
 import java.util.HashMap;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SetupWizardActivity extends Activity {
     static final int BACK_KEY = 1;
     static final String GEO_TAG_RESULT = "geo_tag_result";

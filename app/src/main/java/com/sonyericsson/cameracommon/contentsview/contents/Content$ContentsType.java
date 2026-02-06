@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.contentsview.contents;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Content$ContentsType {
     NONE,
     PHOTO,

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera;
 import com.sonyericsson.android.camera.controller.StateMachine$StaticEvent;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$LazyInitializationTask implements Runnable {
     final /* synthetic */ CameraActivity this$0;
 

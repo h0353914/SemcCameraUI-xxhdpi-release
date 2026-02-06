@@ -8,7 +8,6 @@ import android.media.ImageReader$OnImageAvailableListener;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 final class CameraController$PreviewFrameReceiver implements ImageReader$OnImageAvailableListener {
     private Runnable mCallbackTask;
     private ImageRetriever$CaptureImageRequest mCaptureImageRequest;

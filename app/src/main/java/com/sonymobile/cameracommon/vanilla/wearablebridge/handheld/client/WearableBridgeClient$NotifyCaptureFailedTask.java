@@ -3,7 +3,6 @@ package com.sonymobile.cameracommon.vanilla.wearablebridge.handheld.client;
 import android.content.Intent;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class WearableBridgeClient$NotifyCaptureFailedTask implements Runnable {
     final /* synthetic */ WearableBridgeClient this$0;
 

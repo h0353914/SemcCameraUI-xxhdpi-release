@@ -4,7 +4,6 @@ import android.support.annotation.Nullable;
 import android.util.SparseArray;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecyclerView$RecycledViewPool {
     private static final int DEFAULT_MAX_SCRAP = 5;
     SparseArray<RecyclerView$RecycledViewPool$ScrapData> mScrap = new SparseArray<>();

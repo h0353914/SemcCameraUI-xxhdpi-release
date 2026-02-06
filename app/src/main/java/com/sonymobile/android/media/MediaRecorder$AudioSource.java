@@ -1,6 +1,5 @@
 package com.sonymobile.android.media;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaRecorder$AudioSource {
     public static final int AUDIO_SOURCE_INVALID = -1;
     public static final int CAMCORDER = 5;

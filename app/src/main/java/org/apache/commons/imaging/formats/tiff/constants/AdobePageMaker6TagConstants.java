@@ -10,7 +10,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoLong;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoLongOrIFD;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShort;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class AdobePageMaker6TagConstants {
     public static final int INDEXED_VALUE_INDEXED = 1;
     public static final int INDEXED_VALUE_NOT_INDEXED = 0;

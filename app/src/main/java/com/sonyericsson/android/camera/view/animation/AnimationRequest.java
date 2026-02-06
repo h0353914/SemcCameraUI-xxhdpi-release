@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.animation;
 
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AnimationRequest {
     public final AnimationRequest$AnimationDegree mDegree;
     public final CapturingMode mFrom;

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.util;
 
 import java.util.concurrent.ThreadFactory;
 
-/* JADX INFO: loaded from: classes.dex */
 class ThreadUtil$NamedThreadFactory implements ThreadFactory {
     private final boolean forPool;
     private int mPooledThreadCount = 0;

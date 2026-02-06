@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.controller;
 
-/* JADX INFO: loaded from: classes.dex */
 class GestureShutter$StateStopped extends GestureShutter$State {
     private final boolean mStopForRelease;
     final /* synthetic */ GestureShutter this$0;

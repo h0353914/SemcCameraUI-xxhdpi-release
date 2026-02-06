@@ -7,7 +7,6 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 protected abstract class AbsDialogScrollView$ContentArrange extends DataSetObserver {
     protected ViewGroup container;
     protected ArrayAdapter mAdapter;

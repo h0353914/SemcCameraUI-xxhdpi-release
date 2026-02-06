@@ -8,7 +8,6 @@ import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 import com.sonyericsson.android.camera.parameter.ParameterUtil;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ObjectTrackingApplier extends DependencyApplier {
     public static final String TAG = "ObjectTrackingApplier";
     private final ObjectTracking mValue;

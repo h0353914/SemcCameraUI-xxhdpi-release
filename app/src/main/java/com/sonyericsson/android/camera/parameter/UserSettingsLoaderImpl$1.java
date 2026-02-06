@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.parameter;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserSettingsLoaderImpl$1 implements Runnable {
     final /* synthetic */ UserSettingsLoaderImpl this$0;
 

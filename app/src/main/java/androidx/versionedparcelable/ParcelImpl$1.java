@@ -3,7 +3,6 @@ package androidx.versionedparcelable;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class ParcelImpl$1 implements Parcelable$Creator<ParcelImpl> {
     ParcelImpl$1() {
     }

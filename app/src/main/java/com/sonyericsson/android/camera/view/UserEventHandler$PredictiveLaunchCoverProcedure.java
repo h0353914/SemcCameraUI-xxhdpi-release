@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.research.LocalResearchUtil;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$CaptureTrigger;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$PredictiveLaunchCoverProcedure extends UserEventHandler$TouchEventProcedure {
     final /* synthetic */ UserEventHandler this$0;
 

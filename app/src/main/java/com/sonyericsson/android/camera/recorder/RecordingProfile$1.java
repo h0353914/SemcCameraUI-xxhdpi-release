@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.recorder;
 
 import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class RecordingProfile$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$parameters$VideoSize = new int[VideoSize.values().length];
 

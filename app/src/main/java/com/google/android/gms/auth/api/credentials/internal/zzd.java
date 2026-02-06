@@ -8,7 +8,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.internal.zzlb$zza;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class zzd<R extends Result> extends zzlb$zza<R, zze> {
     zzd(GoogleApiClient googleApiClient) {
         super(Auth.zzRF, googleApiClient);

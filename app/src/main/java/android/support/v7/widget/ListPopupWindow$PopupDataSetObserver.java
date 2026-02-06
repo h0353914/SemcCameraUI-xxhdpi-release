@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.database.DataSetObserver;
 
-/* JADX INFO: loaded from: classes.dex */
 class ListPopupWindow$PopupDataSetObserver extends DataSetObserver {
     final /* synthetic */ ListPopupWindow this$0;
 

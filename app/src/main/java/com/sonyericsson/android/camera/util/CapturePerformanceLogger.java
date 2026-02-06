@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CapturePerformanceLogger {
     private static final String TAG = "CapturePerformance";
     private static int sNumOfBurstTaken;

@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.view.messagedialog.DialogId;
 import com.sonyericsson.android.camera.view.messagedialog.MessageDialogController$MessageDialogOnDismissListener;
 import com.sonyericsson.android.camera.view.messagedialog.MessageDialogRequest;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$MessageDialogOnDismissListenerImpl implements MessageDialogController$MessageDialogOnDismissListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

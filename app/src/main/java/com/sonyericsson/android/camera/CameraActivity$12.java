@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.view.modeselector.ModeSelectorInternalMode;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class CameraActivity$12 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$CameraActivity$LayoutOrientation;
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$LaunchCondition$ExtraOperation;

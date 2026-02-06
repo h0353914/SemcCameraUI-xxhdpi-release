@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Hdr implements UserSettingValue {
     HDR_ON(2131231054, 2131690116, "on-still-hdr"),
     HDR_AUTO(2131231054, 2131690116, "auto"),

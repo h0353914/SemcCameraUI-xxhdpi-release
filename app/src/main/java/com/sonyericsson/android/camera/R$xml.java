@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$xml {
     public static final int camera_parameter_validator_validation_invalid_list = 2131886080;
     public static final int camera_parameter_validator_validation_valid_list = 2131886081;

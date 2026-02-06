@@ -11,7 +11,6 @@ import android.view.animation.AnimationUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FocusRectanglesAnimation {
     public static final String TAG = "FocusRectanglesAnimation";
     private final Context mContext;

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.hint;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum HintTextTimedOutMessage$MessageType {
     CANNOT_BURST_DUE_TO_LOW_BATTERY(2131689651, HintTextContent$HintPriority.HIGH, true),
     CANNOT_BURST_IN_DARK_CONDITION(2131689654, HintTextContent$HintPriority.HIGH, true),

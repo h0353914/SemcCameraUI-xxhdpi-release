@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.storage;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum CameraStorageManager$UpdateRequestReason {
     APP_LAUNCH,
     APP_LAUNCH_WITH_UNTRUSTED,

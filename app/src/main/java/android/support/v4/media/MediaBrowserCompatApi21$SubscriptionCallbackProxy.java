@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.media.MediaBrowserCompatApi21$SubscriptionCallback;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompatApi21$SubscriptionCallbackProxy<T extends MediaBrowserCompatApi21$SubscriptionCallback> extends MediaBrowser$SubscriptionCallback {
     protected final T mSubscriptionCallback;
 

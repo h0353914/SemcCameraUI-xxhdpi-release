@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.View$MeasureSpec;
 import android.view.ViewGroup;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class AlertDialogLayout extends LinearLayoutCompat {
     public AlertDialogLayout(@Nullable Context context) {

@@ -5,7 +5,6 @@ import android.support.v4.util.ArrayMap;
 import android.view.View;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentTransition$4 implements Runnable {
     final /* synthetic */ Object val$enterTransition;
     final /* synthetic */ Object val$finalSharedElementTransition;

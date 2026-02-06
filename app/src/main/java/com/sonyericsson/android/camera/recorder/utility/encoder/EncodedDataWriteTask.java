@@ -6,7 +6,6 @@ import android.media.MediaFormat;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 class EncodedDataWriteTask implements Runnable {
     private static final long OUTPUTBUFFER_TIMEOUT_NANOSECONDS = 100000000;
     public static final String TAG = "EncodedDataWriteTask";

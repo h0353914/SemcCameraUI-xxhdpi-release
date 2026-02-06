@@ -12,7 +12,6 @@ import com.sonyericsson.android.camera.recorder.utility.Accessor;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecorderFactory {
     private static long MIN_VIDEO_DURATION_MILLIS = 3000;
 

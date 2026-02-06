@@ -8,7 +8,6 @@ import android.support.v7.preference.EditTextPreference;
 import android.view.View;
 import android.widget.EditText;
 
-/* JADX INFO: loaded from: classes.dex */
 public class EditTextPreferenceDialogFragment extends PreferenceDialogFragment {
     private static final String SAVE_STATE_TEXT = "EditTextPreferenceDialogFragment.text";
     private EditText mEditText;

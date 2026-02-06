@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class Extension$PrimitiveExtension<M extends ExtendableMessageNano<M>, T> extends Extension<M, T> {
     private final int nonPackedTag;
     private final int packedTag;

@@ -20,7 +20,6 @@ import com.sonyericsson.android.camera.configuration.parameters.VideoCodec;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.EnumMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SlowMotionParameters extends MainParameters {
     @Override // com.sonyericsson.android.camera.parameter.Parameters
     protected void prepare() {

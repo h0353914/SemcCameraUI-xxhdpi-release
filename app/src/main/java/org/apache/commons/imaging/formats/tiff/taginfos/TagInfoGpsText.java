@@ -10,7 +10,6 @@ import org.apache.commons.imaging.formats.tiff.constants.TiffDirectoryType;
 import org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType;
 import org.apache.commons.imaging.util.Debug;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TagInfoGpsText extends TagInfo {
     private static final TagInfoGpsText$TextEncoding TEXT_ENCODING_ASCII = new TagInfoGpsText$TextEncoding(new byte[]{65, 83, 67, 73, 73, 0, 0, 0}, "US-ASCII");
     private static final TagInfoGpsText$TextEncoding TEXT_ENCODING_JIS = new TagInfoGpsText$TextEncoding(new byte[]{74, 73, 83, 0, 0, 0, 0, 0}, "JIS");

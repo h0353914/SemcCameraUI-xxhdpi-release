@@ -12,7 +12,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GoogleSignInConfig implements Api$ApiOptions$Optional, SafeParcelable {
     final int versionCode;
     private Account zzQd;

@@ -1,6 +1,5 @@
 package android.support.graphics.drawable;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$color {
     public static final int notification_action_color_filter = 2131099733;
     public static final int notification_icon_bg_color = 2131099734;

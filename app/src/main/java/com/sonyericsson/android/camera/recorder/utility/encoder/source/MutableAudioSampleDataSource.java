@@ -6,7 +6,6 @@ import android.os.SystemClock;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MutableAudioSampleDataSource extends AudioSampleDataSourceBase {
     private static final long AUDIO_READ_INTERVAL_MILLIS = 100;
     private static final long AUDIO_READ_TIME_OUT_DURATION_MILLIS = 5000;

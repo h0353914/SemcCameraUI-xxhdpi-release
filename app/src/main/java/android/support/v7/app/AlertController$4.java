@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView$OnScrollListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class AlertController$4 implements AbsListView$OnScrollListener {
     final /* synthetic */ AlertController this$0;
     final /* synthetic */ View val$bottom;

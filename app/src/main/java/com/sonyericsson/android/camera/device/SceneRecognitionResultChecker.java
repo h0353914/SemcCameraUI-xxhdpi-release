@@ -5,7 +5,6 @@ import android.os.Handler;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 class SceneRecognitionResultChecker extends CaptureResultCheckerBase {
     private static final float MACRO_RANGE_IN_METER = 0.1455f;
     private static final String TAG = "SceneRecognitionResultChecker";

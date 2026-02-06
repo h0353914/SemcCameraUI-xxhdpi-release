@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.vanilla.wearablebridge.handheld.client;
 
 import android.content.IntentFilter;
 
-/* JADX INFO: loaded from: classes.dex */
 class WearableBridgeClient$InitializeTask implements Runnable {
     final /* synthetic */ WearableBridgeClient this$0;
 

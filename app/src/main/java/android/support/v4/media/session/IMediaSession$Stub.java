@@ -15,7 +15,6 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class IMediaSession$Stub extends Binder implements IMediaSession {
     private static final String DESCRIPTOR = "android.support.v4.media.session.IMediaSession";
     static final int TRANSACTION_addQueueItem = 41;

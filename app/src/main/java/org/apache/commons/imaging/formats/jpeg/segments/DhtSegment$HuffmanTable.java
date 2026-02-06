@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.jpeg.segments;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DhtSegment$HuffmanTable {
     private final int[] bits;
     public final int destinationIdentifier;

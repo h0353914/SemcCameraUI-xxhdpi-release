@@ -39,7 +39,6 @@ import java.util.Map;
 import java.util.Map$Entry;
 import java.util.Objects;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraSettingsMigrator {
     private static final String TAG = "cameramigrator";
     private static final boolean DEBUG_ENABLED = Log.isLoggable("cameramigrator", 3);

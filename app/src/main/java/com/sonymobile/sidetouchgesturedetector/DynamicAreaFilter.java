@@ -13,7 +13,6 @@ import android.view.MotionEvent;
 import android.view.MotionEvent$PointerCoords;
 import android.view.WindowManager;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DynamicAreaFilter {
     private static final float DEFAULT_HEIGHT_PX = 864.0f;
     private static final int DEFAULT_VALUE_INT_DYNAMIC_FILTER_LIMIT_SCALE = 70;

@@ -6,7 +6,6 @@ import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class T4AndT6Compression {
     public static final int BLACK = 1;
     public static final int WHITE = 0;

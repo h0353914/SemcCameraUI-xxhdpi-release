@@ -2,7 +2,6 @@ package com.google.protobuf.nano;
 
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class WireFormatNano {
     static final int MESSAGE_SET_ITEM = 1;
     static final int MESSAGE_SET_MESSAGE = 3;

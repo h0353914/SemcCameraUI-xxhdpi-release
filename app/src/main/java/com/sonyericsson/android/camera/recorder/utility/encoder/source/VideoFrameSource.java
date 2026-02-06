@@ -4,7 +4,6 @@ import android.media.MediaCodec;
 import android.view.Surface;
 import com.sonyericsson.android.camera.recorder.utility.encoder.InputDataSource;
 
-/* JADX INFO: loaded from: classes.dex */
 public class VideoFrameSource implements InputDataSource {
     private final MediaCodec mEncoder;
 

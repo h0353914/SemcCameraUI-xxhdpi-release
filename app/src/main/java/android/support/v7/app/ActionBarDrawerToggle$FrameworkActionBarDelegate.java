@@ -6,7 +6,6 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build$VERSION;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionBarDrawerToggle$FrameworkActionBarDelegate implements ActionBarDrawerToggle$Delegate {
     private final Activity mActivity;
     private ActionBarDrawerToggleHoneycomb$SetIndicatorInfo mSetIndicatorInfo;

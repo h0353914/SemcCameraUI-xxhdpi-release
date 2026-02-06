@@ -8,7 +8,6 @@ import android.support.annotation.RestrictTo$Scope;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class DefaultTaskExecutor extends TaskExecutor {
 

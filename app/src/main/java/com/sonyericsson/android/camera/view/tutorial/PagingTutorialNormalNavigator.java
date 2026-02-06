@@ -8,7 +8,6 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout$LayoutParams;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PagingTutorialNormalNavigator extends PagingTutorialNavigator {
 
     @Nullable

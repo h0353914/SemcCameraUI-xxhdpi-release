@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$FinishBurstCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class BypassCameraController$FinishBurstCallbackImpl implements BypassCamera$FinishBurstCallback {
     @Override // com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$FinishBurstCallback
     public void onFinishBurstDone() {

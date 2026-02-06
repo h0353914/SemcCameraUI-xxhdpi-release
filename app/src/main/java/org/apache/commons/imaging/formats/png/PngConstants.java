@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.png;
 
 import org.apache.commons.imaging.common.BinaryConstant;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class PngConstants {
     public static final int COMPRESSION_DEFLATE_INFLATE = 0;
     public static final byte COMPRESSION_TYPE_INFLATE_DEFLATE = 0;

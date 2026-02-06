@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Date;
 
-/* JADX INFO: loaded from: classes.dex */
 class TypeAdapters$22$1 extends TypeAdapter<Timestamp> {
     final /* synthetic */ TypeAdapters$22 this$0;
     final /* synthetic */ TypeAdapter val$dateTypeAdapter;

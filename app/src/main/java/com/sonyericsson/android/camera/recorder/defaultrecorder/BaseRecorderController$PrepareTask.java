@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.recorder.defaultrecorder;
 
 import com.sonyericsson.android.camera.recorder.RecorderParameters;
 
-/* JADX INFO: loaded from: classes.dex */
 class BaseRecorderController$PrepareTask implements Runnable {
     private final RecorderParameters mParameters;
     final /* synthetic */ BaseRecorderController this$0;

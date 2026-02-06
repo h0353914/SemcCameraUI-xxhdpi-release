@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.jpeg.iptc;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PhotoshopApp13Data {
     private final List<IptcBlock> rawBlocks;
     private final List<IptcRecord> records;

@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class LayoutState {
     static final int INVALID_LAYOUT = Integer.MIN_VALUE;
     static final int ITEM_DIRECTION_HEAD = -1;

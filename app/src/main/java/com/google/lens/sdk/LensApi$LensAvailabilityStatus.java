@@ -1,6 +1,5 @@
 package com.google.lens.sdk;
 
-/* JADX INFO: loaded from: classes.dex */
 public @interface LensApi$LensAvailabilityStatus {
     public static final int LENS_READY = 0;
     public static final int LENS_UNAVAILABLE = 1;

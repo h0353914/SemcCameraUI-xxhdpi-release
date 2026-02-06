@@ -3,7 +3,6 @@ package android.support.v4.widget;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class NestedScrollView$SavedState$1 implements Parcelable$Creator<NestedScrollView$SavedState> {
     NestedScrollView$SavedState$1() {
     }

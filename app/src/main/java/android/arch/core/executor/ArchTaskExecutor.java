@@ -6,7 +6,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import java.util.concurrent.Executor;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ArchTaskExecutor extends TaskExecutor {
     private static volatile ArchTaskExecutor sInstance;

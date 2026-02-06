@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.focusview;
 
 import android.widget.ImageView;
 
-/* JADX INFO: loaded from: classes.dex */
 class FocusRectangles$1 implements Runnable {
     final /* synthetic */ FocusRectangles this$0;
 

@@ -4,7 +4,6 @@ import android.media.AudioAttributes$Builder;
 import android.os.Build$VERSION;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AudioAttributesCompat$Builder {
     private int mContentType;
     private int mFlags;

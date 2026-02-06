@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.view.modeselector.CapturingModeUtil$1;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DataBufferUtils {
     private DataBufferUtils() {
     }

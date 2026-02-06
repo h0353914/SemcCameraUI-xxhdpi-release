@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.recorder.defaultrecorder;
 
 import com.sonyericsson.android.camera.recorder.RecorderInterface$OnErrorListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class BaseRecorderController$2 implements RecorderInterface$OnErrorListener {
     final /* synthetic */ BaseRecorderController this$0;
 

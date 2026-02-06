@@ -8,7 +8,6 @@ import android.text.method.TransformationMethod;
 import android.view.View;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class AllCapsTransformationMethod implements TransformationMethod {
     private Locale mLocale;

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Handler;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class WearableBridgeClientBroadcastReceiver extends BroadcastReceiver {
     private static final String TAG = "WearableBridgeClientBroadcastReceiver";
     private Handler mCallbackHandler;

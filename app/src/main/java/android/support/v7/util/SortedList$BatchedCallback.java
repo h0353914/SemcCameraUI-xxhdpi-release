@@ -2,7 +2,6 @@ package android.support.v7.util;
 
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SortedList$BatchedCallback<T2> extends SortedList$Callback<T2> {
     private final BatchingListUpdateCallback mBatchingListUpdateCallback;
     final SortedList$Callback<T2> mWrappedCallback;

@@ -25,7 +25,6 @@ import org.apache.commons.imaging.formats.jpeg.segments.SofnSegment$Component;
 import org.apache.commons.imaging.formats.jpeg.segments.SosSegment;
 import org.apache.commons.imaging.formats.jpeg.segments.SosSegment$Component;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JpegDecoder extends BinaryFileParser implements JpegUtils$Visitor {
     private BufferedImage image;
     private ImageReadException imageReadException;

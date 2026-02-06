@@ -6,7 +6,6 @@ import android.os.IBinder;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.psm.sysmonservice.ISysmonService$Stub;
 
-/* JADX INFO: loaded from: classes.dex */
 class ThermalAlertReceiver$ServiceConnectionSysmon implements ServiceConnection {
     final /* synthetic */ ThermalAlertReceiver this$0;
 

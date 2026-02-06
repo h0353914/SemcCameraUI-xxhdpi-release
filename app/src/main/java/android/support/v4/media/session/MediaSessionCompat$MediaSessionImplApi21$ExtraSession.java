@@ -11,7 +11,6 @@ import android.support.v4.media.RatingCompat;
 import android.view.KeyEvent;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionCompat$MediaSessionImplApi21$ExtraSession extends IMediaSession$Stub {
     final /* synthetic */ MediaSessionCompat$MediaSessionImplApi21 this$0;
 

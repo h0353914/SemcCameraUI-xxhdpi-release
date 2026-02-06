@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzw;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FACLConfig implements SafeParcelable {
     public static final zza CREATOR = new zza();
     final int version;

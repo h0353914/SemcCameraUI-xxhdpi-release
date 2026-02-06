@@ -20,7 +20,6 @@ import android.support.v4.media.VolumeProviderCompat;
 import android.support.v4.media.VolumeProviderCompat$Callback;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionCompat$MediaSessionImplBase implements MediaSessionCompat$MediaSessionImpl {
     static final int RCC_PLAYSTATE_NONE = 0;
     final AudioManager mAudioManager;

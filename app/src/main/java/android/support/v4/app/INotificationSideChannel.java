@@ -4,7 +4,6 @@ import android.app.Notification;
 import android.os.IInterface;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface INotificationSideChannel extends IInterface {
     void cancel(String str, int i, String str2) throws RemoteException;
 

@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.systemmonitor;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class ThermalAlertReceiver$LowTempBurnTimeoutTimerWrapper$LowTempBurnTimerTask$1 implements Runnable {
     final /* synthetic */ ThermalAlertReceiver$LowTempBurnTimeoutTimerWrapper$LowTempBurnTimerTask this$2;
 

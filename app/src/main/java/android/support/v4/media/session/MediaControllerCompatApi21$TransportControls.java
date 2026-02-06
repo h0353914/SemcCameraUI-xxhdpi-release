@@ -4,7 +4,6 @@ import android.media.Rating;
 import android.media.session.MediaController$TransportControls;
 import android.os.Bundle;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaControllerCompatApi21$TransportControls {
     public static void play(Object obj) {
         ((MediaController$TransportControls) obj).play();

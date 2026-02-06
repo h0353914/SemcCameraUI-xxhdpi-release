@@ -3,7 +3,6 @@ package android.support.v4.widget;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface SlidingPaneLayout$PanelSlideListener {
     void onPanelClosed(@NonNull View view);
 

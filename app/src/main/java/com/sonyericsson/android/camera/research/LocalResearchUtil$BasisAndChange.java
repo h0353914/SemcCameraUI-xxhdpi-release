@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.research;
 
-/* JADX INFO: loaded from: classes.dex */
 class LocalResearchUtil$BasisAndChange<T> {
     private T mBasis;
     private T mChange;

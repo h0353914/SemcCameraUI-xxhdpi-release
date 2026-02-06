@@ -5,7 +5,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class ListMenuPresenter$MenuAdapter extends BaseAdapter {
     private int mExpandedIndex = -1;
     final /* synthetic */ ListMenuPresenter this$0;

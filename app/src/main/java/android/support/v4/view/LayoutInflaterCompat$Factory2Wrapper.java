@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater$Factory2;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class LayoutInflaterCompat$Factory2Wrapper implements LayoutInflater$Factory2 {
     final LayoutInflaterFactory mDelegateFactory;
 

@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum FocusMode implements UserSettingValue {
     SINGLE(-1, 2131689848, "continuous-picture", "continuous-video", "center", true),
     FIXED(-1, 2131689848, "fixed", "fixed", "center", false),

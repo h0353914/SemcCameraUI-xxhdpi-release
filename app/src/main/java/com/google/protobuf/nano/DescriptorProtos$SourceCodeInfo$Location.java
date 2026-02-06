@@ -2,7 +2,6 @@ package com.google.protobuf.nano;
 
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DescriptorProtos$SourceCodeInfo$Location extends ExtendableMessageNano<DescriptorProtos$SourceCodeInfo$Location> {
     private static volatile DescriptorProtos$SourceCodeInfo$Location[] _emptyArray;
     public String leadingComments;

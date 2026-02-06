@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.util.Property;
 
-/* JADX INFO: loaded from: classes.dex */
 class SwitchCompat$1 extends Property<SwitchCompat, Float> {
     SwitchCompat$1(Class cls, String str) {
         super(cls, str);

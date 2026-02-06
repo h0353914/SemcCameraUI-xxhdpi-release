@@ -54,7 +54,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SettingUi {
     public static final String TAG = "SettingUi";
     private final CameraActivity mActivity;

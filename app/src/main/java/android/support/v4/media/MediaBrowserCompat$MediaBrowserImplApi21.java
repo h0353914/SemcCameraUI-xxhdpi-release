@@ -18,7 +18,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class MediaBrowserCompat$MediaBrowserImplApi21 implements MediaBrowserCompat$MediaBrowserImpl, MediaBrowserCompat$MediaBrowserServiceCallbackImpl, MediaBrowserCompat$ConnectionCallback$ConnectionCallbackInternal {
     protected final Object mBrowserObj;

@@ -8,7 +8,6 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.safeparcel.zza$zza;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zze implements Parcelable$Creator<GoogleSignInConfig> {
     static void zza(GoogleSignInConfig googleSignInConfig, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);

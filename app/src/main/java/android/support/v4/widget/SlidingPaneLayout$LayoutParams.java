@@ -9,7 +9,6 @@ import android.util.AttributeSet;
 import android.view.ViewGroup$LayoutParams;
 import android.view.ViewGroup$MarginLayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SlidingPaneLayout$LayoutParams extends ViewGroup$MarginLayoutParams {
     private static final int[] ATTRS = {16843137};
     Paint dimPaint;

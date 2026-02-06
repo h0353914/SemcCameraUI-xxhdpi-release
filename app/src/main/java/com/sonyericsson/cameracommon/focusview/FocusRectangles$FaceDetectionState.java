@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.device.CameraParameters$ObjectTrackingRes
 import java.util.Iterator;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 class FocusRectangles$FaceDetectionState extends FocusRectangles$DefaultFocusState {
     final /* synthetic */ FocusRectangles this$0;
 

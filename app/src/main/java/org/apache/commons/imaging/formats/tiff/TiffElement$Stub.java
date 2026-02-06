@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.tiff;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TiffElement$Stub extends TiffElement {
     public TiffElement$Stub(long j, int i) {
         super(j, i);

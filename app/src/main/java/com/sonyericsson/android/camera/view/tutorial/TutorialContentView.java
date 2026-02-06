@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.View$OnClickListener;
 import android.widget.RelativeLayout;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class TutorialContentView extends RelativeLayout implements View$OnClickListener {
     protected TutorialContentView$TutorialContent mContent;
     private TutorialContentView$OnClickCloseButtonListener mOnClickCloseButtonListener;

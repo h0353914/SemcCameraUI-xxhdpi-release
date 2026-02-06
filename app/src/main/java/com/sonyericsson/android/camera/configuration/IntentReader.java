@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.configuration;
 import android.content.Intent;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IntentReader {
     private static final long INVALID = -1;
     private static final String KEY_CROP = "crop";

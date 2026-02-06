@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.setting.settingitem;
 import android.content.res.Resources;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface SettingItem {
     boolean compareData(SettingItem settingItem);
 

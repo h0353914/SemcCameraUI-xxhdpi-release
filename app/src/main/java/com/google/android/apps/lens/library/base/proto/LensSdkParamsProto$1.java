@@ -2,7 +2,6 @@ package com.google.android.apps.lens.library.base.proto;
 
 import com.google.protobuf.GeneratedMessageLite$MethodToInvoke;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class LensSdkParamsProto$1 {
     static final /* synthetic */ int[] $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke = new int[GeneratedMessageLite$MethodToInvoke.values().length];
 

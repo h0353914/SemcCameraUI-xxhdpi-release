@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.activity.OnActivityResultListener;
 import com.sonyericsson.cameracommon.utility.PermissionsUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$11 implements OnActivityResultListener {
     final /* synthetic */ CameraActivity this$0;
     final /* synthetic */ CameraActivity$PermissionCheckCallback val$callback;

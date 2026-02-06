@@ -4,7 +4,6 @@ import android.graphics.Canvas;
 import android.net.Uri;
 import android.widget.ImageView;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzlu extends ImageView {
     private int zzaeA;
     private zzlu$zza zzaeB;

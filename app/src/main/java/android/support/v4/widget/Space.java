@@ -9,7 +9,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View$MeasureSpec;
 
-/* JADX INFO: loaded from: classes.dex */
 @Deprecated
 public class Space extends View {
     @Override // android.view.View

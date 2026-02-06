@@ -10,7 +10,6 @@ import java.net.SocketAddress;
 import java.net.SocketException;
 import java.net.SocketImpl;
 
-/* JADX INFO: loaded from: classes.dex */
 class DatagramSocketWrapper$DatagramSocketImplWrapper extends SocketImpl {
     DatagramSocketWrapper$DatagramSocketImplWrapper(DatagramSocket datagramSocket, FileDescriptor fileDescriptor) {
         this.localport = datagramSocket.getLocalPort();

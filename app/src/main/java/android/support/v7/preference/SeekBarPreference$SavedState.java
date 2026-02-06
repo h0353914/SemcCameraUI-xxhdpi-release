@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class SeekBarPreference$SavedState extends Preference$BaseSavedState {
     public static final Parcelable$Creator<SeekBarPreference$SavedState> CREATOR = new SeekBarPreference$SavedState$1();
     int max;

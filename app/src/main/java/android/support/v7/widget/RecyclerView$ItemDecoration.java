@@ -5,7 +5,6 @@ import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class RecyclerView$ItemDecoration {
     @Deprecated
     public void onDraw(@NonNull Canvas canvas, @NonNull RecyclerView recyclerView) {

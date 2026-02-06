@@ -13,7 +13,6 @@ import com.sonyericsson.android.camera.view.modeselector.ModeSelectorInternalMod
 import com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInterface;
 import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingUi$MonochromeExecutor<T> implements SettingExecutorInterface<T> {
     boolean mIsMostRecentlyUsed;
     Mode mMode;

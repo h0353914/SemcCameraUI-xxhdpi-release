@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.utility;
 import android.os.Message;
 import java.util.TimerTask;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraTimer$SelfTimerTimerTask extends TimerTask {
     final /* synthetic */ CameraTimer this$0;
 

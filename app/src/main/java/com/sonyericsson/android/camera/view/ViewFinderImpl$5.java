@@ -6,7 +6,6 @@ import android.view.View$OnTouchListener;
 import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$5 implements View$OnTouchListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

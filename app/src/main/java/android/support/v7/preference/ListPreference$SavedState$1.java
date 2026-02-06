@@ -3,7 +3,6 @@ package android.support.v7.preference;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class ListPreference$SavedState$1 implements Parcelable$Creator<ListPreference$SavedState> {
     ListPreference$SavedState$1() {
     }

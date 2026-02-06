@@ -9,7 +9,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInConfig;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class SignInConfiguration implements SafeParcelable {
     public static final Parcelable$Creator<SignInConfiguration> CREATOR = new zzh();
     private static int zzTr = 31;

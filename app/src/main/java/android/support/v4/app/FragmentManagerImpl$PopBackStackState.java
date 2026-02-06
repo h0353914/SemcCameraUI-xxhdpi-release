@@ -2,7 +2,6 @@ package android.support.v4.app;
 
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentManagerImpl$PopBackStackState implements FragmentManagerImpl$OpGenerator {
     final int mFlags;
     final int mId;

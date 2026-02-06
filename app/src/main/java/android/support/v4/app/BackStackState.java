@@ -8,7 +8,6 @@ import android.util.Log;
 import java.util.ArrayList;
 
 /* JADX INFO: compiled from: BackStackRecord.java */
-/* JADX INFO: loaded from: classes.dex */
 final class BackStackState implements Parcelable {
     public static final Parcelable$Creator<BackStackState> CREATOR = new BackStackState$1();
     final int mBreadCrumbShortTitleRes;

@@ -10,7 +10,6 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.internal.zzx;
 import java.util.concurrent.atomic.AtomicReference;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzlb$zza<R extends Result, A extends Api$zzb> extends zzlc<R> implements zzlb$zzb<R>, zzli$zzf<A> {
     private final Api$zzc<A> zzZM;
     private AtomicReference<zzli$zze> zzabg;

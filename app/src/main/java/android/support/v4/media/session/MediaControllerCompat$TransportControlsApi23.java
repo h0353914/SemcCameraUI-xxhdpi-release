@@ -4,7 +4,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(23)
 class MediaControllerCompat$TransportControlsApi23 extends MediaControllerCompat$TransportControlsApi21 {
     public MediaControllerCompat$TransportControlsApi23(Object obj) {

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.device;
 import android.util.Printer;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$CloseBypassCameraTimeoutTask$1 implements Printer {
     final /* synthetic */ CameraDeviceHandler$CloseBypassCameraTimeoutTask this$1;
 

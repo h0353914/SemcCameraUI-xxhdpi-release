@@ -14,7 +14,6 @@ import com.sonyericsson.android.camera.view.ViewFinderImpl;
 import com.sonyericsson.cameracommon.capturefeedback.contextview.GLSurfaceContextView;
 import com.sonyericsson.cameracommon.focusview.SmileScore;
 
-/* JADX INFO: loaded from: classes.dex */
 class ClassStaticBlockPreLoadThread extends Thread {
     private static final boolean IS_CLASS_LOAD_TIME_MEASUREMENT = false;
     public static final String TAG = "ClassStaticBlockPreLoadThread";

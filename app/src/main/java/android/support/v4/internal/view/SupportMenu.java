@@ -4,7 +4,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import android.view.Menu;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public interface SupportMenu extends Menu {
     public static final int CATEGORY_MASK = -65536;

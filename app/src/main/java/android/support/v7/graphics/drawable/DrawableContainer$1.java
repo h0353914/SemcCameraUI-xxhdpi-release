@@ -1,6 +1,5 @@
 package android.support.v7.graphics.drawable;
 
-/* JADX INFO: loaded from: classes.dex */
 class DrawableContainer$1 implements Runnable {
     final /* synthetic */ DrawableContainer this$0;
 

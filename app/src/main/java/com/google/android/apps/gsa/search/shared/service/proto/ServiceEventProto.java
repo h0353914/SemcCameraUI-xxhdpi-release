@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 @ProtoMessage(checkInitialized = {}, messageSetWireFormat = false, protoSyntax = ProtoSyntax.PROTO2)
 public final class ServiceEventProto extends GeneratedMessageLite$ExtendableMessage<ServiceEventProto, ServiceEventProto$Builder> implements ServiceEventProtoOrBuilder {
     private static final ServiceEventProto DEFAULT_INSTANCE = new ServiceEventProto();

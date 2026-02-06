@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import java.util.ConcurrentModificationException;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SimpleArrayMap<K, V> {
     private static final int BASE_SIZE = 4;
     private static final int CACHE_SIZE = 10;

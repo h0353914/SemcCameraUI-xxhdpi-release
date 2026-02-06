@@ -1,6 +1,5 @@
 package com.google.android.gms.actions;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ItemListIntents {
     public static final String ACTION_ACCEPT_ITEM = "com.google.android.gms.actions.ACCEPT_ITEM";
     public static final String ACTION_APPEND_ITEM_LIST = "com.google.android.gms.actions.APPEND_ITEM_LIST";

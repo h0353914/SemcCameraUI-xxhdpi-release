@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 class ScrollingTabContainerView$TabAdapter extends BaseAdapter {
     final /* synthetic */ ScrollingTabContainerView this$0;
 

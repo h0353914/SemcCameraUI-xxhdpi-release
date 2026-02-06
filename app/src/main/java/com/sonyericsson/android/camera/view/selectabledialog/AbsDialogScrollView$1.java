@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.selectabledialog;
 
-/* JADX INFO: loaded from: classes.dex */
 class AbsDialogScrollView$1 implements Runnable {
     final /* synthetic */ AbsDialogScrollView this$0;
 

@@ -3,7 +3,6 @@ package android.support.design.widget;
 import android.view.View;
 import android.view.ViewGroup$OnHierarchyChangeListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class CoordinatorLayout$HierarchyChangeListener implements ViewGroup$OnHierarchyChangeListener {
     final /* synthetic */ CoordinatorLayout this$0;
 

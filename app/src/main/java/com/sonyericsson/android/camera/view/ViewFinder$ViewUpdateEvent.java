@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ViewFinder$ViewUpdateEvent {
     EVENT_REQUEST_SETUP_HEAD_UP_DISPLAY,
     EVENT_REQUEST_RESIZE_EVF_SCOPE,

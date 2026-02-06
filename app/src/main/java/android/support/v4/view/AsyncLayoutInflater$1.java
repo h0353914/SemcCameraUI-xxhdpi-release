@@ -3,7 +3,6 @@ package android.support.v4.view;
 import android.os.Handler$Callback;
 import android.os.Message;
 
-/* JADX INFO: loaded from: classes.dex */
 class AsyncLayoutInflater$1 implements Handler$Callback {
     final /* synthetic */ AsyncLayoutInflater this$0;
 

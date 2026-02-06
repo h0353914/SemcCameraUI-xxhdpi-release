@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.selectabledialog;
 
 import android.animation.Animator$AnimatorListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class AbsDialogScrollView$2 implements AbsDialogScrollView$AnimationFactory {
     final /* synthetic */ AbsDialogScrollView this$0;
 

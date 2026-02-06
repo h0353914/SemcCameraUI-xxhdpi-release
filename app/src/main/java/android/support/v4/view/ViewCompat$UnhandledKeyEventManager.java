@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.WeakHashMap;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewCompat$UnhandledKeyEventManager {
     private static final ArrayList<WeakReference<View>> sViewsWithListeners = new ArrayList<>();
 

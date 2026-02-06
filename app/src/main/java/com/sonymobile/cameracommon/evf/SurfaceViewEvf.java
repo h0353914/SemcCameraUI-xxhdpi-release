@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup$LayoutParams;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SurfaceViewEvf implements Evf {
     private static final String TAG = "SurfaceViewEvf";
     private Size mSurfaceSize;

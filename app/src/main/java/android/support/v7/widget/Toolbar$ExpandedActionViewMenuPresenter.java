@@ -12,7 +12,6 @@ import android.support.v7.view.menu.SubMenuBuilder;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
-/* JADX INFO: loaded from: classes.dex */
 class Toolbar$ExpandedActionViewMenuPresenter implements MenuPresenter {
     MenuItemImpl mCurrentExpandedItem;
     MenuBuilder mMenu;

@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.mediasaving.location;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LocationConstants {
     public static final float LOCATION_GPS_MIN_UPDATE_DISTANCE = 0.0f;
     public static final int LOCATION_GPS_MIN_UPDATE_TIME = 60000;

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.controller;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateNone extends StateMachine$State {
     final /* synthetic */ StateMachine this$0;
 

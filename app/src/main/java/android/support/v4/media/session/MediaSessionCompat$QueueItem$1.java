@@ -3,7 +3,6 @@ package android.support.v4.media.session;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionCompat$QueueItem$1 implements Parcelable$Creator<MediaSessionCompat$QueueItem> {
     MediaSessionCompat$QueueItem$1() {
     }

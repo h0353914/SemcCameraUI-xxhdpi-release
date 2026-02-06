@@ -6,7 +6,6 @@ import android.support.v7.widget.ContentFrameLayout;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatDelegateImpl$ListMenuDecorView extends ContentFrameLayout {
     final /* synthetic */ AppCompatDelegateImpl this$0;
 

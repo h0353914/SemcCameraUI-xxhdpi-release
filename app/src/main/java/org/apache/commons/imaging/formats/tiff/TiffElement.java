@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.tiff;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class TiffElement {
     public static final Comparator<TiffElement> COMPARATOR = new TiffElement$1();
     public final int length;

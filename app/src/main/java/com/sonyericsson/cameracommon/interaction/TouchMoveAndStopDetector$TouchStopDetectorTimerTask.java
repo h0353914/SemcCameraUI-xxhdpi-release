@@ -4,7 +4,6 @@ import android.graphics.Point;
 import android.graphics.PointF;
 import java.util.TimerTask;
 
-/* JADX INFO: loaded from: classes.dex */
 class TouchMoveAndStopDetector$TouchStopDetectorTimerTask extends TimerTask {
     final /* synthetic */ TouchMoveAndStopDetector this$0;
 

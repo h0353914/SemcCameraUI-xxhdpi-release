@@ -10,7 +10,6 @@ import kotlin.annotation.AnnotationTarget;
 import kotlin.annotation.MustBeDocumented;
 
 /* JADX INFO: compiled from: Annotations.kt */
-/* JADX INFO: loaded from: classes.dex */
 @Target({ElementType.ANNOTATION_TYPE})
 @SinceKotlin(version = "1.1")
 @kotlin.annotation.Target(allowedTargets = {AnnotationTarget.ANNOTATION_CLASS})

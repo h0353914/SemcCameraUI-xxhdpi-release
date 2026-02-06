@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.baselayout;
 
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface ViewFinderGestureDetector$OnViewFinderGestureDetectorListener {
     void onDown(MotionEvent motionEvent);
 

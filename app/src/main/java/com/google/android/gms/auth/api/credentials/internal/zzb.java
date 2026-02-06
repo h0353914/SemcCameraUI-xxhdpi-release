@@ -4,7 +4,6 @@ import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.auth.api.credentials.CredentialRequestResult;
 import com.google.android.gms.common.api.Status;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzb implements CredentialRequestResult {
     private final Status zzSC;
     private final Credential zzSD;

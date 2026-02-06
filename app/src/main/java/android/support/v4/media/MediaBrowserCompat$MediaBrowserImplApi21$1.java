@@ -1,6 +1,5 @@
 package android.support.v4.media;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$MediaBrowserImplApi21$1 implements Runnable {
     final /* synthetic */ MediaBrowserCompat$MediaBrowserImplApi21 this$0;
     final /* synthetic */ MediaBrowserCompat$ItemCallback val$cb;

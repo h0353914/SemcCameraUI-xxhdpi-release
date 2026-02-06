@@ -9,7 +9,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ObjectTypeAdapter extends TypeAdapter<Object> {
     public static final TypeAdapterFactory FACTORY = new ObjectTypeAdapter$1();
     private final Gson gson;

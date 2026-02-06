@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.research;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum LocalResearchUtil$MeasurementKey {
     LAUNCH_COLD_BOOT_FROM_HOME_READY_FOR_USE,
     LAUNCH_COLD_BOOT_FROM_LOCKSCREEN_READY_FOR_USE,

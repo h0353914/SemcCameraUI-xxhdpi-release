@@ -2,7 +2,6 @@ package android.support.v7.util;
 
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class DiffUtil$Callback {
     public abstract boolean areContentsTheSame(int i, int i2);
 

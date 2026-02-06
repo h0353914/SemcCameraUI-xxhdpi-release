@@ -12,7 +12,6 @@ import com.sonyericsson.cameracommon.storage.RequestFactory$PhotoSavingRequestBu
 import com.sonyericsson.cameracommon.storage.Storage$StorageState;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$State {
     protected StateMachine$CaptureState mCaptureState;
     final /* synthetic */ StateMachine this$0;

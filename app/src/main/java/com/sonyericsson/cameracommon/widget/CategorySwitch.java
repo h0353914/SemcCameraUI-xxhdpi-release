@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CategorySwitch extends Switch {
     public static final String TAG = "CategorySwitch";
 

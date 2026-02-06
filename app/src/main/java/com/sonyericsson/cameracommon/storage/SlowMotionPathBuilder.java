@@ -10,7 +10,6 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SlowMotionPathBuilder {
     private static final String DCF_FILE_NAME_DATE_FORMAT = "yyyyMMddHHmmss";
     private static final String DCF_FILE_NAME_FREE_WORD_120F = "MOV_HFR_120F_";

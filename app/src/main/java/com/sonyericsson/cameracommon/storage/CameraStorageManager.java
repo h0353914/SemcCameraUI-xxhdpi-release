@@ -23,7 +23,6 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CameraStorageManager {
     public static final String TAG = "CameraStorageManager";
     private static final String THREAD_NAME_CHECK_REMAIN = "SM#ChkRemain";

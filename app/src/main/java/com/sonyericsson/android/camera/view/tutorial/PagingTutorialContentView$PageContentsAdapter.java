@@ -4,7 +4,6 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-/* JADX INFO: loaded from: classes.dex */
 final class PagingTutorialContentView$PageContentsAdapter extends PagerAdapter {
     private PagingTutorialContentView$PagingTutorialContent mContent;
 

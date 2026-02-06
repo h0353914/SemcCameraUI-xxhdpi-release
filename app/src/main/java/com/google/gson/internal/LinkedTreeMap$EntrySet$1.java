@@ -3,7 +3,6 @@ package com.google.gson.internal;
 import java.util.Map$Entry;
 
 /* JADX INFO: Add missing generic type declarations: [V, K] */
-/* JADX INFO: loaded from: classes.dex */
 class LinkedTreeMap$EntrySet$1<K, V> extends LinkedTreeMap<K, V>.LinkedTreeMap$LinkedTreeMapIterator<Map$Entry<K, V>> {
     final /* synthetic */ LinkedTreeMap$EntrySet this$1;
 

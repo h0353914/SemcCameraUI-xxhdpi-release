@@ -8,7 +8,6 @@ import com.google.protobuf.nano.DescriptorProtos$MessageOptions;
 import com.google.protobuf.nano.Extension;
 import com.google.protobuf.nano.NanoEnumValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class NanoDescriptor {
     public static final Extension<DescriptorProtos$MessageOptions, Boolean> legacyOneof = Extension.createPrimitiveTyped(8, Boolean.class, 1180950304);
     public static final Extension<DescriptorProtos$MessageOptions, Boolean> messageAsLite = Extension.createPrimitiveTyped(8, Boolean.class, 1195348696);

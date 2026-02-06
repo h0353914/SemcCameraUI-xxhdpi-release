@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.os.Parcel;
 import android.os.Parcelable$ClassLoaderCreator;
 
-/* JADX INFO: loaded from: classes.dex */
 class RecyclerView$SavedState$1 implements Parcelable$ClassLoaderCreator<RecyclerView$SavedState> {
     RecyclerView$SavedState$1() {
     }

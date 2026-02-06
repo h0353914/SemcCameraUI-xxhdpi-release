@@ -4,7 +4,6 @@ import android.util.Log;
 import android.view.View;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class LinearLayoutManager$LayoutState {
     static final int INVALID_LAYOUT = Integer.MIN_VALUE;
     static final int ITEM_DIRECTION_HEAD = -1;

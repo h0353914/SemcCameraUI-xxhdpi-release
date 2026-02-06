@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class RecyclerView$6 implements AdapterHelper$Callback {
     final /* synthetic */ RecyclerView this$0;
 

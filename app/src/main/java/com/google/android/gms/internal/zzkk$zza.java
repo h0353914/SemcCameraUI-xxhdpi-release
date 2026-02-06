@@ -8,7 +8,6 @@ import android.os.RemoteException;
 import com.google.android.gms.auth.api.proxy.ProxyGrpcRequest;
 import com.google.android.gms.auth.api.proxy.ProxyRequest;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzkk$zza extends Binder implements zzkk {
     public static zzkk zzaw(IBinder iBinder) {
         if (iBinder == null) {

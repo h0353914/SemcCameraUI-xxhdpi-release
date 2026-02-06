@@ -10,7 +10,6 @@ import android.support.annotation.RestrictTo$Scope;
 import android.support.v4.media.MediaMetadataCompat;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class MediaControllerCompat$Callback implements IBinder$DeathRecipient {
     final Object mCallbackObj;
     MediaControllerCompat$Callback$MessageHandler mHandler;

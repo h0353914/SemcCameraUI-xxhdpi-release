@@ -2,7 +2,6 @@ package com.google.protobuf.nano.nano;
 
 import com.google.protobuf.nano.NanoEnumValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface NanoDescriptor$Munger {
 
     @NanoEnumValue(legacy = false, value = NanoDescriptor$Munger.class)

@@ -18,7 +18,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShortOrLong;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoUndefined;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoUnknown;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ExifTagConstants {
     public static final int CONTRAST_1_VALUE_HIGH = 2;
     public static final int CONTRAST_1_VALUE_LOW = 1;

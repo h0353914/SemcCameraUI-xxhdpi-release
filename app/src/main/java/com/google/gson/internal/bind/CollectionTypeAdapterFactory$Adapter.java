@@ -11,7 +11,6 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 final class CollectionTypeAdapterFactory$Adapter<E> extends TypeAdapter<Collection<E>> {
     private final ObjectConstructor<? extends Collection<E>> constructor;
     private final TypeAdapter<E> elementTypeAdapter;

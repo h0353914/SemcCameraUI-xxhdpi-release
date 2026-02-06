@@ -10,7 +10,6 @@ import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListe
 import com.google.android.gms.common.internal.zzf;
 import com.google.android.gms.internal.zzkf;
 
-/* JADX INFO: loaded from: classes.dex */
 class Auth$4 extends Api$zza<zzkf, Api$ApiOptions$NoOptions> {
     Auth$4() {
     }

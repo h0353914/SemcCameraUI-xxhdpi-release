@@ -4,7 +4,6 @@ import android.content.Context;
 import com.sonymobile.cameracommon.research.idd.IddUtil;
 import java.util.concurrent.Callable;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$OnDestroyTask implements Callable<Boolean> {
     private final Context mContextInner;
 

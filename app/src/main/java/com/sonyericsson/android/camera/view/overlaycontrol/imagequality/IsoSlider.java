@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.configuration.parameters.Iso;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class IsoSlider extends SettingItemSlider {
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider
     public final int getBackgroundImageResource(int i) {

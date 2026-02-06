@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum DistortionCorrection implements UserSettingValue {
     OFF(-1, 2131689931, "off"),
     ON(-1, 2131689932, "on");

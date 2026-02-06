@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider$Factory;
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 class LoaderManagerImpl$LoaderViewModel$1 implements ViewModelProvider$Factory {
     LoaderManagerImpl$LoaderViewModel$1() {
     }

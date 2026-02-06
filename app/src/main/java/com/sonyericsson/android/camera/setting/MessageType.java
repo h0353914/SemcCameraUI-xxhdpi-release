@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.setting;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum MessageType {
     NO_MESSAGE("", false),
     THERMAL_NOTE("THERMAL_NOTE_DISABLED", true),

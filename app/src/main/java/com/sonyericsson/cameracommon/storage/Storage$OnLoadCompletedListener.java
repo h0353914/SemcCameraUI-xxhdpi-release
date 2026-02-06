@@ -5,7 +5,6 @@ import android.net.Uri;
 import com.sonyericsson.cameracommon.contentsview.contents.Content$ContentInfo;
 import java.util.LinkedList;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface Storage$OnLoadCompletedListener {
     void onDataLoadCompleted(int i, boolean z, LinkedList<Content$ContentInfo> linkedList, Bitmap bitmap);
 

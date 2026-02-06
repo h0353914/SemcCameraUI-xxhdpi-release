@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera;
 
 import com.sonymobile.cameracommon.vanilla.wearablebridge.handheld.client.ObserveWearableInterface$LifeCycleObserver;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$WearableBridgeLifeCycleObserver implements ObserveWearableInterface$LifeCycleObserver {
     final /* synthetic */ CameraActivity this$0;
 

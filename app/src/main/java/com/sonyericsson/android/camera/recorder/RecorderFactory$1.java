@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.recorder;
 
 import com.sonyericsson.android.camera.configuration.parameters.SlowMotion;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class RecorderFactory$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion = new int[SlowMotion.values().length];
 

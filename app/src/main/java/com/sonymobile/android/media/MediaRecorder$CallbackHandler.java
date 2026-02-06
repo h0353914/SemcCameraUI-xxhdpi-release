@@ -6,7 +6,6 @@ import android.os.Message;
 import android.util.Log;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaRecorder$CallbackHandler extends Handler {
     private final WeakReference<MediaRecorder> mRecorder;
     final /* synthetic */ MediaRecorder this$0;

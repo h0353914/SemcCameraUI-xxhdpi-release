@@ -4,7 +4,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FontsContractCompat$FontFamilyResult {
     public static final int STATUS_OK = 0;
     public static final int STATUS_UNEXPECTED_DATA_PROVIDED = 2;

@@ -6,7 +6,6 @@ import android.graphics.RadialGradient;
 import android.graphics.Shader$TileMode;
 import android.graphics.drawable.shapes.OvalShape;
 
-/* JADX INFO: loaded from: classes.dex */
 class CircleImageView$OvalShadow extends OvalShape {
     private RadialGradient mRadialGradient;
     private Paint mShadowPaint = new Paint();

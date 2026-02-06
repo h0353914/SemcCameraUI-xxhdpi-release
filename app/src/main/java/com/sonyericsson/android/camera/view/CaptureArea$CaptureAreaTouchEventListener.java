@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.View$OnTouchListener;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CaptureArea$CaptureAreaTouchEventListener implements View$OnTouchListener {
     final /* synthetic */ CaptureArea this$0;
 

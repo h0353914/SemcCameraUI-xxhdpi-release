@@ -7,7 +7,6 @@ import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class RatingCompat implements Parcelable {
     public static final Parcelable$Creator<RatingCompat> CREATOR = new RatingCompat$1();
     public static final int RATING_3_STARS = 3;

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.IInterface;
 import com.google.android.gms.common.ConnectionResult;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class zzj$zza extends zzj<T>.zzj$zzc<Boolean> {
     public final int statusCode;
     public final Bundle zzafJ;

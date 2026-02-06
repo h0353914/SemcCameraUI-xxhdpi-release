@@ -7,7 +7,6 @@ import android.service.media.MediaBrowserService$Result;
 import android.support.v4.media.session.MediaSessionCompat;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompatApi26$MediaBrowserServiceAdaptor extends MediaBrowserServiceCompatApi23$MediaBrowserServiceAdaptor {
     MediaBrowserServiceCompatApi26$MediaBrowserServiceAdaptor(Context context, MediaBrowserServiceCompatApi26$ServiceCompatProxy mediaBrowserServiceCompatApi26$ServiceCompatProxy) {
         super(context, mediaBrowserServiceCompatApi26$ServiceCompatProxy);

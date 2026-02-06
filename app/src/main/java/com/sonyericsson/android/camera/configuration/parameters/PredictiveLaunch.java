@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum PredictiveLaunch implements UserSettingValue {
     TOUCH_TO_LAUNCH(-1, 2131690012, "1", false),
     TOUCH_TO_LAUNCH_AND_CAPTURE(-1, 2131690011, "1", true),

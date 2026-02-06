@@ -3,7 +3,6 @@ package android.support.v7.app;
 import android.support.v4.view.ViewPropertyAnimatorUpdateListener;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class WindowDecorActionBar$3 implements ViewPropertyAnimatorUpdateListener {
     final /* synthetic */ WindowDecorActionBar this$0;
 

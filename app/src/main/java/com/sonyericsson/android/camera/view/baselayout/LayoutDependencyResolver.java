@@ -14,7 +14,6 @@ import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 import com.sonyericsson.cameracommon.utility.ResourceUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LayoutDependencyResolver {
     private static final int BASIC_SYSTEM_UI_FLAGS = 1792;
     private static final float SCREEN_ASPECT_EIGHTEEN_NINE = 2.0f;

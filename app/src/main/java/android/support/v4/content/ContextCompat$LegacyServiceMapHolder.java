@@ -54,7 +54,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.view.textservice.TextServicesManager;
 import java.util.HashMap;
 
-/* JADX INFO: loaded from: classes.dex */
 final class ContextCompat$LegacyServiceMapHolder {
     static final HashMap<Class<?>, String> SERVICES = new HashMap<>();
 

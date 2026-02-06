@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.view;
 
 import com.sonyericsson.android.camera.device.CameraParameters$DeviceStabilityCondition;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecognizedCondition {
     private final CameraParameters$DeviceStabilityCondition mCondition;
     private final int mIconId;

@@ -3,7 +3,6 @@ package android.support.v7.app;
 import android.content.Context;
 import android.widget.ArrayAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 class AlertController$CheckedItemAdapter extends ArrayAdapter<CharSequence> {
     @Override // android.widget.ArrayAdapter, android.widget.Adapter
     public long getItemId(int i) {

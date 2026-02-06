@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.pnm;
 import java.io.IOException;
 import java.io.InputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 class WhiteSpaceReader {
     private final InputStream is;
 

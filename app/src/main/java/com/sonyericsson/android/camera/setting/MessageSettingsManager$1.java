@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.setting;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class MessageSettingsManager$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$setting$MessageType = new int[MessageType.values().length];
 

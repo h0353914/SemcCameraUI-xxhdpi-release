@@ -1,6 +1,5 @@
 package android.support.coreutils;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$id {
     public static final int action_container = 2131296270;
     public static final int action_divider = 2131296272;

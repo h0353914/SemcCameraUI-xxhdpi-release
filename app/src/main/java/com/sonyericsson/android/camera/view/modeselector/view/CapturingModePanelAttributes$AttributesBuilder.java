@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.modeselector.view;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CapturingModePanelAttributes$AttributesBuilder {
     CapturingModePanelAttributes mAttributes = new CapturingModePanelAttributes((CapturingModePanelAttributes$1) null);
 

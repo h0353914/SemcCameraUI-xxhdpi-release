@@ -3,7 +3,6 @@ package com.google.android.gms.internal;
 import com.google.android.gms.common.internal.zzw;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzmj {
     public static <T> int zza(T[] tArr, T t) {
         int length = tArr != null ? tArr.length : 0;

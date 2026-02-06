@@ -6,7 +6,6 @@ import android.view.View;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.nio.FloatBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class FrameBase extends RenderBase implements AlphaBlendable {
     private static final int DEFAULT_TEXCOORD_INDEX = 1;
     private static final int DEFAULT_VERTEX_INDEX = 0;

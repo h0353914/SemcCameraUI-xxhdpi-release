@@ -19,7 +19,6 @@ import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem
 import com.sonyericsson.cameracommon.utility.CommonUtility;
 import com.sonyericsson.cameracommon.widget.CategorySwitch;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingButton extends SettingDialogItem {
     private static final int DISABLED_FILTER = 2131099706;
     private final SettingButton$ViewHolder mHolder;

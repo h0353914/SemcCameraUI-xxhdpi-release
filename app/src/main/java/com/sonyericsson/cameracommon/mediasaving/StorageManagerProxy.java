@@ -8,7 +8,6 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class StorageManagerProxy {
     private static Method mMethodGetVolumes;
     private static Class<?> mStorageTypeClass;

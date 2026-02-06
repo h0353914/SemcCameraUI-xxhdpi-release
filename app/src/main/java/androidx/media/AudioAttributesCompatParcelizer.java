@@ -6,7 +6,6 @@ import android.support.v4.media.AudioAttributesCompat;
 import android.support.v4.media.AudioAttributesImpl;
 import androidx.versionedparcelable.VersionedParcel;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY})
 public final class AudioAttributesCompatParcelizer {
     public static AudioAttributesCompat read(VersionedParcel versionedParcel) {

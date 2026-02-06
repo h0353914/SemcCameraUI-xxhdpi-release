@@ -1,6 +1,5 @@
 package android.support.swiperefreshlayout;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$drawable {
     public static final int notification_action_background = 2131231506;
     public static final int notification_bg = 2131231507;

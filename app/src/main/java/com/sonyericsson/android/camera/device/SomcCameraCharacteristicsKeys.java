@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.device;
 import android.hardware.camera2.CameraCharacteristics$Key;
 import java.lang.reflect.InvocationTargetException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class SomcCameraCharacteristicsKeys {
     public static final CameraCharacteristics$Key<Boolean> SONYMOBILE_STATISTICS_INFO_AVAILABLE_OBJECT_TRACKING = keyConstructor("com.sonymobile.statistics.info.availableObjectTracking", Boolean.TYPE);
     public static final CameraCharacteristics$Key<int[]> SONYMOBILE_STATISTICS_INFO_AVAILABLE_FACE_SMILE_SCORES_MODE = keyConstructor("com.sonymobile.statistics.info.availableFaceSmileScoresMode", int[].class);

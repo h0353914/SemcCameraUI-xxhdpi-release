@@ -1,6 +1,5 @@
 package com.google.android.gms.internal;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlf$1 extends zzli$zzb {
     final /* synthetic */ zzlf zzabs;
 

@@ -4,7 +4,6 @@ import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LifecycleRegistry;
 
-/* JADX INFO: loaded from: classes.dex */
 class Fragment$3 implements LifecycleOwner {
     final /* synthetic */ Fragment this$0;
 

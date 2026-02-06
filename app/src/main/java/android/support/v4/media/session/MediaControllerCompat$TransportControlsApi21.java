@@ -4,7 +4,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.media.RatingCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaControllerCompat$TransportControlsApi21 extends MediaControllerCompat$TransportControls {
     protected final Object mControlsObj;
 

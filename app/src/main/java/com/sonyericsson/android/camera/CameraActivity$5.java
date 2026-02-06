@@ -10,7 +10,6 @@ import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import com.sonyericsson.cameracommon.activity.OnActivityResultListener;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$5 implements OnActivityResultListener {
     final /* synthetic */ CameraActivity this$0;
 

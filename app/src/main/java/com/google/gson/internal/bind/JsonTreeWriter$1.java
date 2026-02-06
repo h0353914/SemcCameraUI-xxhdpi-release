@@ -3,7 +3,6 @@ package com.google.gson.internal.bind;
 import java.io.IOException;
 import java.io.Writer;
 
-/* JADX INFO: loaded from: classes.dex */
 class JsonTreeWriter$1 extends Writer {
     JsonTreeWriter$1() {
     }

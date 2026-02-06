@@ -10,7 +10,6 @@ import com.sonyericsson.android.camera.configuration.parameters.VideoStabilizer;
 import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DependencyCheckUtil {
     public static boolean isIntelligentActiveAvailable(@NonNull CameraInfo$CameraId cameraInfo$CameraId, @NonNull VideoSize videoSize, @NonNull VideoHdr videoHdr) {
         if (videoHdr == VideoHdr.HDR_ON) {

@@ -2,7 +2,6 @@ package com.google.android.gms.internal;
 
 import com.google.android.gms.auth.api.proxy.ProxyResponse;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzkm$1$1 extends zzkh {
     final /* synthetic */ zzkm$1 zzSS;
 

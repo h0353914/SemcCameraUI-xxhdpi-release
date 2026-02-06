@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.mediasaving.updator;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class CrQueryParameter {
     public String[] projection = null;
     public String where = null;

@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface$OnKeyListener;
 import android.view.KeyEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class SetupWizardActivity$KeyEventKiller implements DialogInterface$OnKeyListener {
     @Override // android.content.DialogInterface$OnKeyListener
     public boolean onKey(DialogInterface dialogInterface, int i, KeyEvent keyEvent) {

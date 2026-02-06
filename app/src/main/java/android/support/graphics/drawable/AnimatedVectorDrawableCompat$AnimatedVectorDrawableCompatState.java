@@ -10,7 +10,6 @@ import android.graphics.drawable.Drawable$ConstantState;
 import android.support.v4.util.ArrayMap;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class AnimatedVectorDrawableCompat$AnimatedVectorDrawableCompatState extends Drawable$ConstantState {
     AnimatorSet mAnimatorSet;
     ArrayList<Animator> mAnimators;

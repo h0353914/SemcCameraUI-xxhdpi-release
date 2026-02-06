@@ -3,7 +3,6 @@ package android.support.v4.app;
 import android.app.job.JobWorkItem;
 import android.content.Intent;
 
-/* JADX INFO: loaded from: classes.dex */
 final class JobIntentService$JobServiceEngineImpl$WrapperWorkItem implements JobIntentService$GenericWorkItem {
     final JobWorkItem mJobWork;
     final /* synthetic */ JobIntentService$JobServiceEngineImpl this$0;

@@ -37,7 +37,6 @@ import android.widget.FrameLayout$LayoutParams;
 import android.widget.OverScroller;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NestedScrollView extends FrameLayout implements NestedScrollingParent2, NestedScrollingChild2, ScrollingView {
     static final int ANIMATED_SCROLL_GAP = 250;
     private static final int INVALID_POINTER = -1;

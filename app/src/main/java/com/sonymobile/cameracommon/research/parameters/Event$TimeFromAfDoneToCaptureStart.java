@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Event$TimeFromAfDoneToCaptureStart {
     WITHIN_10_MS,
     WITHIN_50_MS,

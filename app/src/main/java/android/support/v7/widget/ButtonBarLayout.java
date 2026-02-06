@@ -13,7 +13,6 @@ import android.view.View$MeasureSpec;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout$LayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ButtonBarLayout extends LinearLayout {
     private static final int PEEK_BUTTON_DP = 16;

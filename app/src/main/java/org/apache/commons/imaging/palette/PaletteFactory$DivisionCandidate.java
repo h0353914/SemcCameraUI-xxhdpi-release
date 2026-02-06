@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.palette;
 
-/* JADX INFO: loaded from: classes.dex */
 class PaletteFactory$DivisionCandidate {
     private final ColorSpaceSubset dst_a;
     private final ColorSpaceSubset dst_b;

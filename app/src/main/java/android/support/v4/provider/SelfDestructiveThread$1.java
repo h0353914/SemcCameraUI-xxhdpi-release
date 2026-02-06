@@ -3,7 +3,6 @@ package android.support.v4.provider;
 import android.os.Handler$Callback;
 import android.os.Message;
 
-/* JADX INFO: loaded from: classes.dex */
 class SelfDestructiveThread$1 implements Handler$Callback {
     final /* synthetic */ SelfDestructiveThread this$0;
 

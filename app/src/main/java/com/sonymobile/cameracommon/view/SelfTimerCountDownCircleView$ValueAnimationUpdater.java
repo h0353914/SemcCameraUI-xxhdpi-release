@@ -3,7 +3,6 @@ package com.sonymobile.cameracommon.view;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator$AnimatorUpdateListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SelfTimerCountDownCircleView$ValueAnimationUpdater implements ValueAnimator$AnimatorUpdateListener {
     final /* synthetic */ SelfTimerCountDownCircleView this$0;
 

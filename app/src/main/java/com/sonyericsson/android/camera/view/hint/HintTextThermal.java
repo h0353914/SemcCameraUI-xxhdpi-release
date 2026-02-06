@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.hint;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class HintTextThermal extends HintTextContent {
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
     public int getButtonDescriptionResourceId() {

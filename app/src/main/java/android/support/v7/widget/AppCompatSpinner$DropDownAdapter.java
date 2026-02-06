@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.SpinnerAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatSpinner$DropDownAdapter implements ListAdapter, SpinnerAdapter {
     private SpinnerAdapter mAdapter;
     private ListAdapter mListAdapter;

@@ -19,7 +19,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ResourceUtil {
     public static final String HTTPS_SCHEME = "https";
     public static final String HTTP_SCHEME = "http";

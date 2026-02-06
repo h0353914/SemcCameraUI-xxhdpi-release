@@ -1,6 +1,5 @@
 package com.google.android.gms.common.images;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class Size {
     private final int zznQ;
     private final int zznR;

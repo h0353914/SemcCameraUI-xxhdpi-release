@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.recorder.utility.encoder;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.concurrent.CountDownLatch;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaEncoder$1 implements Runnable {
     final /* synthetic */ MediaEncoder this$0;
 

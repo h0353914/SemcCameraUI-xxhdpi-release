@@ -5,7 +5,6 @@ import android.support.v4.util.Pools$SynchronizedPool;
 import android.util.Log;
 import java.util.concurrent.ArrayBlockingQueue;
 
-/* JADX INFO: loaded from: classes.dex */
 class AsyncLayoutInflater$InflateThread extends Thread {
     private static final AsyncLayoutInflater$InflateThread sInstance = new AsyncLayoutInflater$InflateThread();
     private ArrayBlockingQueue<AsyncLayoutInflater$InflateRequest> mQueue = new ArrayBlockingQueue<>(10);

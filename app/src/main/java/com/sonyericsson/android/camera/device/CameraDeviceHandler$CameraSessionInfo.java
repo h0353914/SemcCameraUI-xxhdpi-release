@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.device;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$CameraSessionInfo {
     private final CameraParameters mCameraParameters;
     private boolean mIsCameraEvicted = false;

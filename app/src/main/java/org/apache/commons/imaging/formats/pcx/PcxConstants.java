@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.pcx;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class PcxConstants {
     public static final String PARAM_KEY_PCX_BIT_DEPTH = "PCX_BIT_DEPTH";
     public static final String PARAM_KEY_PCX_COMPRESSION = "PCX_COMPRESSION";

@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class SnapHelper extends RecyclerView$OnFlingListener {
     static final float MILLISECONDS_PER_INCH = 100.0f;
     private Scroller mGravityScroller;

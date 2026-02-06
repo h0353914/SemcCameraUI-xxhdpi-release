@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ActionBarDrawerToggle implements DrawerLayout$DrawerListener {
     private final ActionBarDrawerToggle$Delegate mActivityImpl;
     private final int mCloseDrawerContentDescRes;

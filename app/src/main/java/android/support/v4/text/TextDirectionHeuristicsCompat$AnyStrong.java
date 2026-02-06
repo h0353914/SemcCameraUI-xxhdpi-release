@@ -1,6 +1,5 @@
 package android.support.v4.text;
 
-/* JADX INFO: loaded from: classes.dex */
 class TextDirectionHeuristicsCompat$AnyStrong implements TextDirectionHeuristicsCompat$TextDirectionAlgorithm {
     private final boolean mLookForRtl;
     static final TextDirectionHeuristicsCompat$AnyStrong INSTANCE_RTL = new TextDirectionHeuristicsCompat$AnyStrong(true);

@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 class DcfPathBuilder$DcfImageDirNameFilter implements FilenameFilter {
     private String mFilterDirName;
     private int mFilterDirNo;

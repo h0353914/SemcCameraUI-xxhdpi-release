@@ -9,7 +9,6 @@ import com.sonyericsson.android.camera.configuration.parameters.PredictiveLaunch
 import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 class SecureSetting {
     private static final String KEY_LIFT_TRIGGER = "camera_lift_trigger_enabled";
     private static final Map<UserSettingKey, String> KEY_MAP = new ArrayMap();

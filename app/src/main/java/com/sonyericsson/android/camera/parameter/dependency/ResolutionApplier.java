@@ -10,7 +10,6 @@ import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 import com.sonyericsson.android.camera.parameter.ParameterUtil;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ResolutionApplier extends DependencyApplier {
     public static final String TAG = "ResolutionApplier";
     private final boolean mIsCorrectionSize;

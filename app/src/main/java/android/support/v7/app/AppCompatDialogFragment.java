@@ -6,7 +6,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import android.support.v4.app.DialogFragment;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AppCompatDialogFragment extends DialogFragment {
     @Override // android.support.v4.app.DialogFragment
     public Dialog onCreateDialog(Bundle bundle) {

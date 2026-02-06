@@ -4,7 +4,6 @@ import android.os.Parcel;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ScopeDetail implements SafeParcelable {
     public static final zzc CREATOR = new zzc();
     String description;

@@ -10,7 +10,6 @@ import java.lang.Enum;
 import java.util.HashMap;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 final class TypeAdapters$EnumTypeAdapter<T extends Enum<T>> extends TypeAdapter<T> {
     private final Map<String, T> nameToConstant = new HashMap();
     private final Map<T, String> constantToName = new HashMap();

@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.view.animation.AnimationRequest;
 import com.sonyericsson.android.camera.view.animation.AnimationRequest$AnimationType;
 import com.sonymobile.cameracommon.evf.Evf;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateModeChanging extends StateMachine$StatePhotoBase {
     final /* synthetic */ StateMachine this$0;
 

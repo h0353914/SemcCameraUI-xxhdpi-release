@@ -12,7 +12,6 @@ import com.sonyericsson.android.camera.view.modeselector.ModeLoader;
 import com.sonyericsson.android.camera.view.modeselector.ModeLoader$OnModeListChangeListener;
 import com.sonyericsson.android.camera.view.selectabledialog.ModeSelector$OnModeSelectListener;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MruButtonContainer extends FrameLayout {
     private boolean mIsAvailable;
     private Mode$OnStateChangeListener mModeChangeListener;

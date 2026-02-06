@@ -9,7 +9,6 @@ import com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener;
 import com.google.android.gms.common.internal.zzf;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlx$1 extends Api$zza<zzmb, Api$ApiOptions$NoOptions> {
     zzlx$1() {
     }

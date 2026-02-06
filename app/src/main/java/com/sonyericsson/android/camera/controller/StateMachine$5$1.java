@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.controller;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$5$1 implements Runnable {
     final /* synthetic */ StateMachine$5 this$1;
     final /* synthetic */ int val$progress;

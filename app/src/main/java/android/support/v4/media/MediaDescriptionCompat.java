@@ -13,7 +13,6 @@ import android.support.annotation.RestrictTo$Scope;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.text.TextUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaDescriptionCompat implements Parcelable {
     public static final long BT_FOLDER_TYPE_ALBUMS = 2;
     public static final long BT_FOLDER_TYPE_ARTISTS = 3;

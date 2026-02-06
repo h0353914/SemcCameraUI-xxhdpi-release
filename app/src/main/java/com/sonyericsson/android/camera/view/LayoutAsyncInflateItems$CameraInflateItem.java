@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import com.sonyericsson.cameracommon.viewfinder.InflateItem;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum LayoutAsyncInflateItems$CameraInflateItem implements InflateItem {
     HEAD_UP_DISPLAY(2131492899, 1),
     RECTANGLE_FACE(2131492923, 5),

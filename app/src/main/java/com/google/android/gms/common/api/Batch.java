@@ -3,7 +3,6 @@ package com.google.android.gms.common.api;
 import com.google.android.gms.internal.zzlc;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class Batch extends zzlc<BatchResult> {
     private boolean zzaaA;
     private final PendingResult<?>[] zzaaB;

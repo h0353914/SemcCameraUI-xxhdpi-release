@@ -8,7 +8,6 @@ import android.support.v4.util.LongSparseArray;
 import android.support.v4.util.SparseArrayCompat;
 import android.util.StateSet;
 
-/* JADX INFO: loaded from: classes.dex */
 class AnimatedStateListDrawableCompat$AnimatedStateListState extends StateListDrawable$StateListState {
     private static final long REVERSED_BIT = 4294967296L;
     private static final long REVERSIBLE_FLAG_BIT = 8589934592L;

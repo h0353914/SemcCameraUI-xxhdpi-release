@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.controller;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum StateMachine$TransitterEvent {
     EVENT_INITIALIZE,
     EVENT_RESUME,

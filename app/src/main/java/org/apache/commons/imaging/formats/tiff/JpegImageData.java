@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.tiff;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JpegImageData extends TiffElement$DataElement {
     public JpegImageData(long j, int i, byte[] bArr) {
         super(j, i, bArr);

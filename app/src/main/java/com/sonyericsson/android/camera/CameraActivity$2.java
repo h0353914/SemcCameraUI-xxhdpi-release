@@ -4,7 +4,6 @@ import android.support.annotation.MainThread;
 import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$2 implements Runnable {
     final /* synthetic */ CameraActivity this$0;
 

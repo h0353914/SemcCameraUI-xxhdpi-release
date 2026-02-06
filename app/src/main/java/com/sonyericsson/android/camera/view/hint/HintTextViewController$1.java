@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.hint;
 import android.view.View;
 import android.view.View$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class HintTextViewController$1 implements View$OnClickListener {
     final /* synthetic */ HintTextViewController this$0;
 

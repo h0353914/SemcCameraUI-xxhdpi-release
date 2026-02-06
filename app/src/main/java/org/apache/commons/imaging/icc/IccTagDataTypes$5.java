@@ -5,7 +5,6 @@ import java.nio.ByteOrder;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 enum IccTagDataTypes$5 extends IccTagDataTypes {
     IccTagDataTypes$5(String str, int i, String str2, int i2) {
         super(str, i, str2, i2, null);

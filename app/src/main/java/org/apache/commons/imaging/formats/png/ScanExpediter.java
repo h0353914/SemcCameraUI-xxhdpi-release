@@ -14,7 +14,6 @@ import org.apache.commons.imaging.formats.png.scanlinefilters.ScanlineFilterSub;
 import org.apache.commons.imaging.formats.png.scanlinefilters.ScanlineFilterUp;
 import org.apache.commons.imaging.formats.png.transparencyfilters.TransparencyFilter;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class ScanExpediter {
     protected final BufferedImage bi;
     protected final int bitDepth;

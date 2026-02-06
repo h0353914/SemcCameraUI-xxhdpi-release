@@ -2,7 +2,6 @@ package android.support.v7.graphics.drawable;
 
 import android.graphics.drawable.Animatable;
 
-/* JADX INFO: loaded from: classes.dex */
 class AnimatedStateListDrawableCompat$AnimatableTransition extends AnimatedStateListDrawableCompat$Transition {
     private final Animatable mA;
 

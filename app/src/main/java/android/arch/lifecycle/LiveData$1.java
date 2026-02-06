@@ -1,6 +1,5 @@
 package android.arch.lifecycle;
 
-/* JADX INFO: loaded from: classes.dex */
 class LiveData$1 implements Runnable {
     final /* synthetic */ LiveData this$0;
 

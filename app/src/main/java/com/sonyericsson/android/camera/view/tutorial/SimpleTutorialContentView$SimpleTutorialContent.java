@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.tutorial;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class SimpleTutorialContentView$SimpleTutorialContent extends TutorialContentView$TutorialContent {
     protected int mDescriptionResourceId;
     protected int mIconResourceId;

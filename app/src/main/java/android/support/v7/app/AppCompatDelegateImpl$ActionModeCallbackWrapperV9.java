@@ -6,7 +6,6 @@ import android.support.v7.view.ActionMode$Callback;
 import android.view.Menu;
 import android.view.MenuItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatDelegateImpl$ActionModeCallbackWrapperV9 implements ActionMode$Callback {
     private ActionMode$Callback mWrapped;
     final /* synthetic */ AppCompatDelegateImpl this$0;

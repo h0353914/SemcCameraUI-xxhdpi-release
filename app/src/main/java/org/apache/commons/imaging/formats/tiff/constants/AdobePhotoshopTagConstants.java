@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfo;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoUndefined;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class AdobePhotoshopTagConstants {
     public static final TagInfoUndefined EXIF_TAG_JPEGTABLES = new TagInfoUndefined("JPEGTables", 347, -1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);
     public static final TagInfoUndefined EXIF_TAG_IMAGE_SOURCE_DATA = new TagInfoUndefined("ImageSourceData", 37724, 1, TiffDirectoryType.EXIF_DIRECTORY_IFD0);

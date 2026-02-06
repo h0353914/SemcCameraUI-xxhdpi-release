@@ -16,7 +16,6 @@ import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CircularProgressDrawable extends Drawable implements Animatable {
     private static final int ANIMATION_DURATION = 1332;
     private static final int ARROW_HEIGHT = 5;

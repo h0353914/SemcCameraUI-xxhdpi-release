@@ -4,7 +4,6 @@ import android.media.session.PlaybackState$CustomAction;
 import android.media.session.PlaybackState$CustomAction$Builder;
 import android.os.Bundle;
 
-/* JADX INFO: loaded from: classes.dex */
 final class PlaybackStateCompatApi21$CustomAction {
     public static String getAction(Object obj) {
         return ((PlaybackState$CustomAction) obj).getAction();

@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.tiff.write;
 
 import org.apache.commons.imaging.formats.tiff.TiffElement$DataElement;
 
-/* JADX INFO: loaded from: classes.dex */
 class ImageDataOffsets {
     final int[] imageDataOffsets;
     final TiffOutputField imageDataOffsetsField;

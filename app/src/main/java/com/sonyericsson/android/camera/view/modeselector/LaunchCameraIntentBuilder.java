@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.modeselector;
 
 import android.content.Intent;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LaunchCameraIntentBuilder {
     public static final String EXTRA_CALLING_ACTIVITY = "calling-activity";
     public static final String EXTRA_CALLING_MODE = "calling-mode";

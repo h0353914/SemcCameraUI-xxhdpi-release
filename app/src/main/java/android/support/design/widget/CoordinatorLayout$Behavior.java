@@ -13,7 +13,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View$BaseSavedState;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class CoordinatorLayout$Behavior<V extends View> {
     public boolean getInsetDodgeRect(@NonNull CoordinatorLayout coordinatorLayout, @NonNull V v, @NonNull Rect rect) {
         return false;

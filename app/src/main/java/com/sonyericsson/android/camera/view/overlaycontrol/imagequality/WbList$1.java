@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.View$OnClickListener;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class WbList$1 implements View$OnClickListener {
     final /* synthetic */ WbList this$0;
     final /* synthetic */ SettingItem val$item;

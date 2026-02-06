@@ -10,7 +10,6 @@ import com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener;
 import com.google.android.gms.common.internal.zzf;
 
-/* JADX INFO: loaded from: classes.dex */
 class Auth$6 extends Api$zza<zzb, GoogleSignInConfig> {
     Auth$6() {
     }

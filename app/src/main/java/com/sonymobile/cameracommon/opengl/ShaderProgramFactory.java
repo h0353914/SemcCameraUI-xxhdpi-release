@@ -4,7 +4,6 @@ import android.content.Context;
 import android.opengl.GLES20;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ShaderProgramFactory {
     public static final String GLSL_FIELD_ID_ALPHA_MASK_TEXTURE = "uAlphaMaskTexture";
     public static final String GLSL_FIELD_ID_ATTRIB_TEXCOORD = "aTexCoord";

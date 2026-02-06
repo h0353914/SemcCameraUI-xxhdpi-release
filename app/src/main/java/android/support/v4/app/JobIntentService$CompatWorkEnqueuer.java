@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.PowerManager;
 import android.os.PowerManager$WakeLock;
 
-/* JADX INFO: loaded from: classes.dex */
 final class JobIntentService$CompatWorkEnqueuer extends JobIntentService$WorkEnqueuer {
     private final Context mContext;
     private final PowerManager$WakeLock mLaunchWakeLock;

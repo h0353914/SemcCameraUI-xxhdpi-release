@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class MenuBuilder implements SupportMenu {
     private static final String ACTION_VIEW_STATES_KEY = "android:menu:actionviewstates";

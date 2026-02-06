@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewParent;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NestedScrollingChildHelper {
     private boolean mIsNestedScrollingEnabled;
     private ViewParent mNestedScrollingParentNonTouch;

@@ -1,6 +1,5 @@
 package com.sonymobile.imageprocessor.bypasscamera2;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BypassCameraParameters$Capability$SupportedInfo {
     public final int fps;
     public final int height;

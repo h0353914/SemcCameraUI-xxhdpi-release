@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import org.apache.commons.imaging.common.BinaryFunctions;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ByteSourceInputStream extends ByteSource {
     private static final int BLOCK_SIZE = 1024;
     private ByteSourceInputStream$CacheBlock cacheHead;

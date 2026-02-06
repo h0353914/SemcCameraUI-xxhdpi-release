@@ -2,7 +2,6 @@ package com.google.gson.internal;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class LinkedTreeMap$1 implements Comparator<Comparable> {
     LinkedTreeMap$1() {
     }

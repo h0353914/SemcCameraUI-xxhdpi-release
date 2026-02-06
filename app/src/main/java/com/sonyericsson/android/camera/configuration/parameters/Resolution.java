@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Resolution implements UserSettingValue {
     WIDE_SEVENTEEN_MP(-1, 2131689984, new Rect(0, 0, 5504, 3096)),
     WIDE_THIRTEEN_MP(-1, 2131689983, new Rect(0, 0, 4864, 2736)),

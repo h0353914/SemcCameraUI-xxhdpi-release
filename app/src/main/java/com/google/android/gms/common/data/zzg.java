@@ -2,7 +2,6 @@ package com.google.android.gms.common.data;
 
 import java.util.NoSuchElementException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzg<T> extends zzb<T> {
     private T zzadF;
 

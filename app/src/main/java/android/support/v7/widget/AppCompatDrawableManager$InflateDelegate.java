@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import org.xmlpull.v1.XmlPullParser;
 
-/* JADX INFO: loaded from: classes.dex */
 interface AppCompatDrawableManager$InflateDelegate {
     Drawable createFromXmlInner(@NonNull Context context, @NonNull XmlPullParser xmlPullParser, @NonNull AttributeSet attributeSet, @Nullable Resources$Theme resources$Theme);
 }

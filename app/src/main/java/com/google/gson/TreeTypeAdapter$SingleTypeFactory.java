@@ -3,7 +3,6 @@ package com.google.gson;
 import com.google.gson.internal.C$Gson$Preconditions;
 import com.google.gson.reflect.TypeToken;
 
-/* JADX INFO: loaded from: classes.dex */
 class TreeTypeAdapter$SingleTypeFactory implements TypeAdapterFactory {
     private final JsonDeserializer<?> deserializer;
     private final TypeToken<?> exactType;

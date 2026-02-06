@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.recorder.defaultrecorder;
 
-/* JADX INFO: loaded from: classes.dex */
 class BaseRecorderController$ResumeTask implements Runnable {
     final /* synthetic */ BaseRecorderController this$0;
 

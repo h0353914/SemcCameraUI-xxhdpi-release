@@ -15,7 +15,6 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TaskStackBuilder implements Iterable<Intent> {
     private static final String TAG = "TaskStackBuilder";
     private final ArrayList<Intent> mIntents = new ArrayList<>();

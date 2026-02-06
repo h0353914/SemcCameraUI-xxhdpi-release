@@ -1,6 +1,5 @@
 package android.support.v7.util;
 
-/* JADX INFO: loaded from: classes.dex */
 class MessageThreadUtil<T> implements ThreadUtil<T> {
     MessageThreadUtil() {
     }

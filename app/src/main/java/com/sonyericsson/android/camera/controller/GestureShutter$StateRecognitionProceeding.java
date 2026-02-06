@@ -4,7 +4,6 @@ import android.graphics.RectF;
 import com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface$DetectResultInterface;
 import com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface$DetectResultInterface$HandStatus;
 
-/* JADX INFO: loaded from: classes.dex */
 class GestureShutter$StateRecognitionProceeding extends GestureShutter$State {
     final RectF mInitialFrame;
     final /* synthetic */ GestureShutter this$0;

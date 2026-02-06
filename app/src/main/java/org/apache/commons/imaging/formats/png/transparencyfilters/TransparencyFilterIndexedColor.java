@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.png.transparencyfilters;
 import java.io.IOException;
 import org.apache.commons.imaging.ImageReadException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TransparencyFilterIndexedColor extends TransparencyFilter {
     public TransparencyFilterIndexedColor(byte[] bArr) {
         super(bArr);

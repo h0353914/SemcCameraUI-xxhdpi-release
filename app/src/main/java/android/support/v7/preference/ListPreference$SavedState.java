@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 class ListPreference$SavedState extends Preference$BaseSavedState {
     public static final Parcelable$Creator<ListPreference$SavedState> CREATOR = new ListPreference$SavedState$1();
     String value;

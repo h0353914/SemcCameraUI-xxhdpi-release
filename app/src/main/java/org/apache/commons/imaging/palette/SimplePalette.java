@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.palette;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SimplePalette implements Palette {
     private final int[] palette;
 

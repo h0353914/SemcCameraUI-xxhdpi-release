@@ -1,6 +1,5 @@
 package android.support.v7.preference;
 
-/* JADX INFO: loaded from: classes.dex */
 class PreferenceGroupAdapter$1 implements Runnable {
     final /* synthetic */ PreferenceGroupAdapter this$0;
 

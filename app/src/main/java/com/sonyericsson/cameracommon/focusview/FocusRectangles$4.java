@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.focusview;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class FocusRectangles$4 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$cameracommon$focusview$FocusRectangles$FocusSetType = new int[FocusRectangles$FocusSetType.values().length];
 

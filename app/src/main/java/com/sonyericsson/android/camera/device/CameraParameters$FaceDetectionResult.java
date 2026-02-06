@@ -4,7 +4,6 @@ import android.graphics.Rect;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CameraParameters$FaceDetectionResult {
     public List<CameraParameters$ExtFace> extFaceList = new ArrayList();
     public int faceNum;

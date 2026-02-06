@@ -11,7 +11,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ModeLoader implements CapturingModeListLoader$OnCapturingModeListChangedListener {
     private static final String THREAD_NAME = "AddonAppsLoader";
     private static ExecutorService mExecutor = ThreadUtil.buildExecutor("AddonAppsLoader");

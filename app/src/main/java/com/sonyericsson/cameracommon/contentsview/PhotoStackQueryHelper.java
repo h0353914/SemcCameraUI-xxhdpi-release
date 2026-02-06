@@ -9,7 +9,6 @@ import com.sonyericsson.cameracommon.mediasaving.updator.CrDeleteParameter;
 import com.sonyericsson.cameracommon.mediasaving.updator.CrQueryParameter;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PhotoStackQueryHelper {
     public static final String TAG = "PhotoStackQueryHelper";
 

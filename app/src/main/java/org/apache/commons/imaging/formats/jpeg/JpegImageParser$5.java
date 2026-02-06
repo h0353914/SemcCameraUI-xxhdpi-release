@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.formats.jpeg.xmp.JpegXmpParser;
 
-/* JADX INFO: loaded from: classes.dex */
 class JpegImageParser$5 implements JpegUtils$Visitor {
     final /* synthetic */ JpegImageParser this$0;
     final /* synthetic */ List val$result;

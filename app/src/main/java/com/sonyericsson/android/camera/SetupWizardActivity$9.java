@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface$OnClickListener;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController$TutorialType;
 
-/* JADX INFO: loaded from: classes.dex */
 class SetupWizardActivity$9 implements DialogInterface$OnClickListener {
     final /* synthetic */ SetupWizardActivity this$0;
 

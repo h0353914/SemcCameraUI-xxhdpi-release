@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeProvider;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AccessibilityDelegateCompat {
     private static final View$AccessibilityDelegate DEFAULT_DELEGATE = new View$AccessibilityDelegate();
     private final View$AccessibilityDelegate mBridge = new AccessibilityDelegateCompat$AccessibilityDelegateAdapter(this);

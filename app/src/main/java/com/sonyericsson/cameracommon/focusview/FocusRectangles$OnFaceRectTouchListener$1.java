@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.focusview;
 
-/* JADX INFO: loaded from: classes.dex */
 class FocusRectangles$OnFaceRectTouchListener$1 implements FocusRectangles$FaceReflectedCallback {
     final /* synthetic */ FocusRectangles$OnFaceRectTouchListener this$1;
 

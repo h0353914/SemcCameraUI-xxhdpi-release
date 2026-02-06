@@ -7,7 +7,6 @@ import com.sonyericsson.cameracommon.storage.Storage$StorageState;
 import com.sonyericsson.cameracommon.storage.Storage$StorageStateListener;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StorageStateAdapter implements Storage$StorageStateListener {
     private Storage$StorageState mOldStorageState;
     final /* synthetic */ StateMachine this$0;

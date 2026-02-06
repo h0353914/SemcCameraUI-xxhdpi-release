@@ -4,7 +4,6 @@ import android.provider.Settings$System;
 import com.sonyericsson.android.camera.CameraApplication;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SettingUtil {
     private static final String SYSTEM_SETTING_SIDE_TOUCH = "somc.side_sense";
     public static final String TAG = "SettingUtil";

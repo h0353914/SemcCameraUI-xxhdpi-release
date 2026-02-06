@@ -6,7 +6,6 @@ import android.support.annotation.RestrictTo$Scope;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-/* JADX INFO: loaded from: classes.dex */
 @SuppressLint({"UniqueConstants"})
 @Retention(RetentionPolicy.SOURCE)
 @RestrictTo({RestrictTo$Scope.LIBRARY})

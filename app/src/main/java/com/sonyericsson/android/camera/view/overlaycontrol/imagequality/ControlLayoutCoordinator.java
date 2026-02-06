@@ -7,7 +7,6 @@ import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 import com.sonyericsson.cameracommon.utility.ResourceUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class ControlLayoutCoordinator implements LayoutCoordinator {
     private final Rect mContainerRect;
     public Rect mDialogRect;

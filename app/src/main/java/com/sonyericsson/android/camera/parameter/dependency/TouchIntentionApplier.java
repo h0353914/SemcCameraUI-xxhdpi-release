@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.configuration.parameters.TouchIntention;
 import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 import com.sonyericsson.android.camera.parameter.ParameterUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TouchIntentionApplier extends DependencyApplier {
     public static final String TAG = "TouchIntentionApplier";
     private final TouchIntention mValue;

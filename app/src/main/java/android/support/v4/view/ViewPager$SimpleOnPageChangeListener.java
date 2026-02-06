@@ -1,6 +1,5 @@
 package android.support.v4.view;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewPager$SimpleOnPageChangeListener implements ViewPager$OnPageChangeListener {
     @Override // android.support.v4.view.ViewPager$OnPageChangeListener
     public void onPageScrollStateChanged(int i) {

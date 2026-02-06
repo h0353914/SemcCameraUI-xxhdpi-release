@@ -8,7 +8,6 @@ import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfo;
 import org.apache.commons.imaging.util.Debug;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffContents {
     public final List<TiffDirectory> directories;
     public final TiffHeader header;

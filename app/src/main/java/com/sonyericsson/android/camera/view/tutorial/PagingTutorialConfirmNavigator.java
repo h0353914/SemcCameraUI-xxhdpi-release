@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PagingTutorialConfirmNavigator extends PagingTutorialNavigator {
 
     @Nullable

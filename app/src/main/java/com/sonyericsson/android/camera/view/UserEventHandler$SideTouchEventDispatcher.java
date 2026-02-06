@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import android.view.MotionEvent;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class UserEventHandler$SideTouchEventDispatcher extends UserEventHandler$EventDispatcher {
     public UserEventHandler$SideTouchEventDispatcher() {
         super(null);

@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable$Callback;
 import android.graphics.drawable.Drawable$ConstantState;
 import android.os.SystemClock;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzls extends Drawable implements Drawable$Callback {
     private int mFrom;
     private long zzNY;

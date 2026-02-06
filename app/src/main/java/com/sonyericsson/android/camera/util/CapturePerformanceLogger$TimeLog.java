@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.util;
 import com.sonyericsson.cameracommon.storage.SavingTaskManager$SavedFileType;
 import java.text.DecimalFormat;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CapturePerformanceLogger$TimeLog {
     public int burstNum;
     public int fileSize;

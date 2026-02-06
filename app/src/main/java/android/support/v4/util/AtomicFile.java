@@ -9,7 +9,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AtomicFile {
     private final File mBackupName;
     private final File mBaseName;

@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.commons.imaging.common.BinaryConstant;
 import org.apache.commons.imaging.common.BinaryFunctions;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class JpegConstants {
     public static final int COM_MARKER = 65534;
     public static final int DAC_MARKER = 65484;

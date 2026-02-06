@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CameraParameters$SceneRecognitionResult {
     public CameraParameters$DeviceStabilityCondition deviceStabilityCondition;
     public boolean isMacroRange;

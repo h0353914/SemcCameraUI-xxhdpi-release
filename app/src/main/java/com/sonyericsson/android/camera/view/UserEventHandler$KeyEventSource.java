@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$KeyEventSource implements UserEventHandler$EventSource {
     private static UserEventHandler$KeyEventSource CAMERA = from(27);
     private static UserEventHandler$KeyEventSource FOCUS = from(80);

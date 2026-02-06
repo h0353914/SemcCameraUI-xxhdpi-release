@@ -10,7 +10,6 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FastViewManager {
     private static final String LOG_TAG = "FastViewManager";
     private final Object mBitmapManagerClassInstance;

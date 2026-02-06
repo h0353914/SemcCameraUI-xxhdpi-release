@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.modeselector;
 import android.content.Context;
 import android.os.AsyncTask;
 
-/* JADX INFO: loaded from: classes.dex */
 class ModeLoader$UpdatePluginsDBTask extends AsyncTask<Void, Void, Void> {
     private static final String THREAD_NAME = "PluginsDBTask";
     private Context mContext;

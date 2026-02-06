@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.png.chunks;
 import java.io.ByteArrayInputStream;
 import org.apache.commons.imaging.common.BinaryFileParser;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PngChunk extends BinaryFileParser {
     public final boolean ancillary;
     private final byte[] bytes;

@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.jpeg.segments;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SosSegment$Component {
     public final int acCodingTableSelector;
     public final int dcCodingTableSelector;

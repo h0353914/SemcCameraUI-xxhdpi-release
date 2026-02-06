@@ -3,7 +3,6 @@ package android.support.v7.util;
 import android.support.annotation.NonNull;
 import android.support.annotation.UiThread;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class AsyncListUtil$ViewCallback {
     public static final int HINT_SCROLL_ASC = 2;
     public static final int HINT_SCROLL_DESC = 1;

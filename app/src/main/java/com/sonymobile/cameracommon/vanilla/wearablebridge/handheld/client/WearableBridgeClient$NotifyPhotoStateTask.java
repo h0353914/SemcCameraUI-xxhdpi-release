@@ -4,7 +4,6 @@ import android.content.Intent;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonymobile.cameracommon.vanilla.wearablebridge.common.AbstractCapturableState$AbstractPhotoState;
 
-/* JADX INFO: loaded from: classes.dex */
 class WearableBridgeClient$NotifyPhotoStateTask implements Runnable {
     private final AbstractCapturableState$AbstractPhotoState mPhotoState;
     final /* synthetic */ WearableBridgeClient this$0;

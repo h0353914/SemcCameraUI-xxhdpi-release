@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.view.baselayout.BaseLayoutPattern;
 import com.sonyericsson.android.camera.view.baselayout.zoombar.Zoombar$ZoombarDisplayChangedListener;
 import com.sonyericsson.android.camera.view.sidetouch.SideTouchUi$Type;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$ZoombarDisplayChangedListenerImpl implements Zoombar$ZoombarDisplayChangedListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

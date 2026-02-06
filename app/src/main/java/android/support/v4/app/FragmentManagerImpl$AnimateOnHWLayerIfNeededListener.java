@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation$AnimationListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentManagerImpl$AnimateOnHWLayerIfNeededListener extends FragmentManagerImpl$AnimationListenerWrapper {
     View mView;
 

@@ -9,7 +9,6 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.internal.zzx;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ProviderInstaller {
     public static final String PROVIDER_NAME = "GmsCore_OpenSSL";
     private static Method zzaUV;

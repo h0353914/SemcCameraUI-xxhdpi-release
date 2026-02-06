@@ -3,7 +3,6 @@ package android.support.v4.view.accessibility;
 import android.os.Build$VERSION;
 import android.view.accessibility.AccessibilityNodeInfo$RangeInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AccessibilityNodeInfoCompat$RangeInfoCompat {
     public static final int RANGE_TYPE_FLOAT = 1;
     public static final int RANGE_TYPE_INT = 0;

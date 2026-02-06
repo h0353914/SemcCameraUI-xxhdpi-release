@@ -9,7 +9,6 @@ import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.cameracommon.storage.RequestFactory$PhotoSavingRequestBuilder;
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$SnapshotCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class BypassCameraController$SnapshotCallbackImpl implements BypassCamera$SnapshotCallback, ImageReader$OnImageAvailableListener {
     final /* synthetic */ BypassCameraController this$0;
 

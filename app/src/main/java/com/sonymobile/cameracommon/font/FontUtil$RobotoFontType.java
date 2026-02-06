@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.font;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum FontUtil$RobotoFontType {
     THIN("/system/fonts/Roboto-Thin.ttf"),
     THIN_ITALIC("/system/fonts/Roboto-ThinItalic.ttf"),

@@ -5,7 +5,6 @@ import android.media.browse.MediaBrowser$SubscriptionCallback;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(26)
 class MediaBrowserCompatApi26 {
     static Object createSubscriptionCallback(MediaBrowserCompatApi26$SubscriptionCallback mediaBrowserCompatApi26$SubscriptionCallback) {

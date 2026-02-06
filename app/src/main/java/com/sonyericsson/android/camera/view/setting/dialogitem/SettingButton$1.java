@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.setting.dialogitem;
 import android.view.View;
 import android.view.View$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingButton$1 implements View$OnClickListener {
     final /* synthetic */ SettingButton this$0;
 

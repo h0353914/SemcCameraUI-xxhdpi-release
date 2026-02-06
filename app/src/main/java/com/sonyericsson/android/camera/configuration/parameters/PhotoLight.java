@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum PhotoLight implements UserSettingValue {
     ON(2131231051, 2131690116, "torch", true),
     OFF(2131231052, 2131690115, "off", false);

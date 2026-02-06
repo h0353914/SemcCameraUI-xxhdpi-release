@@ -5,7 +5,6 @@ import android.view.ViewGroup;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter$ItemLayoutParams;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class SettingDialogItem {
     private SettingItem mItem;
 

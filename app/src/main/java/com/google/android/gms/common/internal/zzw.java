@@ -2,7 +2,6 @@ package com.google.android.gms.common.internal;
 
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzw {
     public static boolean equal(Object obj, Object obj2) {
         if (obj != obj2) {

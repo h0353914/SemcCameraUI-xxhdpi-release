@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.storage;
 
-/* JADX INFO: loaded from: classes.dex */
 class SavingTaskManager$ImageToFile$1 implements Runnable {
     final /* synthetic */ SavingTaskManager$ImageToFile this$1;
     final /* synthetic */ Storage$StorageType val$type;

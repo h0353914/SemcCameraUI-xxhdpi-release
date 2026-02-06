@@ -14,7 +14,6 @@ import com.sonyericsson.android.camera.view.messagedialog.DialogId;
 import com.sonyericsson.cameracommon.storage.Storage$StorageState;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface ViewFinder {
     void attachToWindow();
 

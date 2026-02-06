@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.hint;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController$TutorialType;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class HintTextSlowMotionDescription extends HintTextContent {
     private static final long HINT_TIMEOUT_MILLIS = 10000;
     private final String mDescription;

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.PowerManager;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzmr {
     private static IntentFilter zzail = new IntentFilter("android.intent.action.BATTERY_CHANGED");
 

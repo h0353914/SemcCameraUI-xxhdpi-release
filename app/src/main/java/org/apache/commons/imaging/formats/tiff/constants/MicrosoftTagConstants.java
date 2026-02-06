@@ -7,7 +7,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfo;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShort;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoXpString;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MicrosoftTagConstants {
     public static final TagInfoShort EXIF_TAG_RATING = new TagInfoShort("Rating", 18246, 1, TiffDirectoryType.EXIF_DIRECTORY_IFD0);
     public static final TagInfoShort EXIF_TAG_RATING_PERCENT = new TagInfoShort("RatingPercent", 18249, 1, TiffDirectoryType.EXIF_DIRECTORY_IFD0);

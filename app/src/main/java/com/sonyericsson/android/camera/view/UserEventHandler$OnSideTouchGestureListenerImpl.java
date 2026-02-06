@@ -8,7 +8,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$SelfTimerTrigger;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$OnSideTouchGestureListenerImpl implements SideTouchEventDetector$OnSideTouchGestureListener {
     private SideTouchEventDetector$SideTouchEvent mTriggerEvent;
     final /* synthetic */ UserEventHandler this$0;

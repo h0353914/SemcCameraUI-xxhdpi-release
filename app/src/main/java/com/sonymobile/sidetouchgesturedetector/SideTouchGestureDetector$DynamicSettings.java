@@ -4,7 +4,6 @@ import android.database.ContentObserver;
 import android.os.Handler;
 import android.provider.Settings$System;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchGestureDetector$DynamicSettings {
     final /* synthetic */ SideTouchGestureDetector this$0;
     private boolean mRegistered = false;

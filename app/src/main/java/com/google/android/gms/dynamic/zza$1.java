@@ -4,7 +4,6 @@ import android.os.Bundle;
 import java.util.Iterator;
 
 /* JADX INFO: Add missing generic type declarations: [T] */
-/* JADX INFO: loaded from: classes.dex */
 class zza$1<T> implements zzf<T> {
     final /* synthetic */ zza zzapr;
 

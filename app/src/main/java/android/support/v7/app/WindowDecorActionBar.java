@@ -42,7 +42,6 @@ import android.view.animation.Interpolator;
 import android.widget.SpinnerAdapter;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class WindowDecorActionBar extends ActionBar implements ActionBarOverlayLayout$ActionBarVisibilityCallback {
     static final /* synthetic */ boolean $assertionsDisabled = false;

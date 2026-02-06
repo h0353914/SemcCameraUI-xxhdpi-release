@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Event$WizardPage implements Event$Action {
     LOCATION_WIZARD,
     PREDICTIVE_LAUNCH_WIZARD,

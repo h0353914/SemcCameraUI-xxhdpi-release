@@ -2,7 +2,6 @@ package com.google.protobuf.nano;
 
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DescriptorProtos$MethodDescriptorProto extends ExtendableMessageNano<DescriptorProtos$MethodDescriptorProto> {
     private static volatile DescriptorProtos$MethodDescriptorProto[] _emptyArray;
     public boolean clientStreaming;

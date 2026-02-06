@@ -22,7 +22,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import android.support.v4.graphics.drawable.DrawableCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 class DrawableContainer extends Drawable implements Drawable$Callback {
     private static final boolean DEBUG = false;

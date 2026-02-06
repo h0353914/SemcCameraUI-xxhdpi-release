@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import com.sonyericsson.cameracommon.keytranslator.KeyEventTranslator$TranslatedKeyCode;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class InstantViewer$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$cameracommon$keytranslator$KeyEventTranslator$TranslatedKeyCode = new int[KeyEventTranslator$TranslatedKeyCode.values().length];
 

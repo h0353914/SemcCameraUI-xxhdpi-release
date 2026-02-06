@@ -8,7 +8,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import android.support.v4.graphics.drawable.IconCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Person {
     private static final String ICON_KEY = "icon";
     private static final String IS_BOT_KEY = "isBot";

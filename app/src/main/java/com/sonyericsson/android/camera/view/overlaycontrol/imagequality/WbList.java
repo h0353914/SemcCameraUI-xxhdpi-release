@@ -18,7 +18,6 @@ import com.sonyericsson.android.camera.view.setting.dialogitem.SettingDialogItem
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class WbList extends SettingDialogItem {
     private final Context mContext;
     private final WbList$ViewHolder mHolder;

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewFinderGestureDetector {
     private static final String TAG = "ViewFinderGestureDetector";
     private static final boolean TRACE = false;

@@ -19,7 +19,6 @@ import java.util.concurrent.TimeUnit;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GLSurfaceContextView extends ExtendedGlSurfaceView implements GLSurfaceView$Renderer, CaptureFeedback {
     private static final long ANIMATION_CANCEL_WAITING_DURATION = 100;
     private static final float CENTER_X_POS = 0.0f;

@@ -2,7 +2,6 @@ package android.support.v7.preference;
 
 import android.support.v7.widget.RecyclerView$Adapter;
 
-/* JADX INFO: loaded from: classes.dex */
 class PreferenceFragmentCompat$3 implements Runnable {
     final /* synthetic */ PreferenceFragmentCompat this$0;
     final /* synthetic */ String val$key;

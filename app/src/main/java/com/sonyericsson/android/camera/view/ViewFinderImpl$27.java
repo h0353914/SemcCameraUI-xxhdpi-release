@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.view.baselayout.BaseLayoutPattern;
 import com.sonyericsson.cameracommon.mediasaving.StoreDataResult;
 import com.sonyericsson.cameracommon.viewfinder.LayoutPattern;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$27 implements Runnable {
     final /* synthetic */ ViewFinderImpl this$0;
     final /* synthetic */ Uri val$originalUri;

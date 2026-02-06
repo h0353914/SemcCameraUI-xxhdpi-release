@@ -4,7 +4,6 @@ import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.TextView$OnEditorActionListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SearchView$7 implements TextView$OnEditorActionListener {
     final /* synthetic */ SearchView this$0;
 

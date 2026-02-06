@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences$Editor;
 import android.util.Range;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IntegerRangeCapabilityItem extends CapabilityItem<Range<Integer>> {
     @Override // com.sonyericsson.android.camera.util.capability.CapabilityItem
     /* bridge */ /* synthetic */ Range<Integer> getDefaultValue() {

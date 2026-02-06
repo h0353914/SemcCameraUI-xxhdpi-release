@@ -4,7 +4,6 @@ import android.os.Build$VERSION;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionCompat$Token$1 implements Parcelable$Creator<MediaSessionCompat$Token> {
     MediaSessionCompat$Token$1() {
     }

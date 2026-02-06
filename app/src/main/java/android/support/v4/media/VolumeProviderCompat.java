@@ -2,7 +2,6 @@ package android.support.v4.media;
 
 import android.os.Build$VERSION;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class VolumeProviderCompat {
     public static final int VOLUME_CONTROL_ABSOLUTE = 2;
     public static final int VOLUME_CONTROL_FIXED = 0;

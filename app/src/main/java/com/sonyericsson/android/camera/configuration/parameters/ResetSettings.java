@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ResetSettings implements UserSettingValue {
     DUMMY_ON(-1, -1),
     DUMMY_OFF(-1, -1);

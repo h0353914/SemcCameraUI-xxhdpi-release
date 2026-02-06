@@ -8,7 +8,6 @@ import org.apache.commons.imaging.formats.tiff.TiffField;
 import org.apache.commons.imaging.formats.tiff.constants.TiffDirectoryType;
 import org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TagInfoXpString extends TagInfo {
     @Override // org.apache.commons.imaging.formats.tiff.taginfos.TagInfo
     public /* bridge */ /* synthetic */ Object getValue(TiffField tiffField) throws ImageReadException {

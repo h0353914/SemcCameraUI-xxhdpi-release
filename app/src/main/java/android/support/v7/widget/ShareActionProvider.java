@@ -13,7 +13,6 @@ import android.util.TypedValue;
 import android.view.SubMenu;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ShareActionProvider extends ActionProvider {
     private static final int DEFAULT_INITIAL_ACTIVITY_COUNT = 4;
     public static final String DEFAULT_SHARE_HISTORY_FILE_NAME = "share_history.xml";

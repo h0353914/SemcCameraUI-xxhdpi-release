@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.controller;
 import com.sonyericsson.android.camera.view.ViewFinder$UiComponentKind;
 import com.sonymobile.cameracommon.evf.Evf;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateWaitingEvfPreparedByModeChange extends StateMachine$State {
     final /* synthetic */ StateMachine this$0;
 

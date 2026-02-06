@@ -12,7 +12,6 @@ import android.os.Build$VERSION;
 import android.support.annotation.RequiresApi;
 import android.util.SparseArray;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class DrawableContainer$DrawableContainerState extends Drawable$ConstantState {
     boolean mAutoMirrored;
     boolean mCanConstantState;

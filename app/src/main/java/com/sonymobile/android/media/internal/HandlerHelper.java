@@ -4,7 +4,6 @@ import android.os.HandlerThread;
 import android.os.Message;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class HandlerHelper {
     private final ArrayList<HandlerHelper$WaitHandler> mMessageList = new ArrayList<>();
     private final Object mListLock = new Object();

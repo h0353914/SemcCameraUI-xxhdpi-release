@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.research;
 import com.sonymobile.cameracommon.research.parameters.ShootingLabel;
 import com.sonymobile.cameracommon.research.parameters.ShootingLabel$Parameter;
 
-/* JADX INFO: loaded from: classes.dex */
 final class LocalResearchUtil$ObjectTrackingValues {
     private String mTarget;
 

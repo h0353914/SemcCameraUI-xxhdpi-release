@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Event$StopOperation implements Event$Action {
     USER_STOP,
     THERMAL_STOP,

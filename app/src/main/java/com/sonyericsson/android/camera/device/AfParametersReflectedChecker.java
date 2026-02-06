@@ -7,7 +7,6 @@ import android.hardware.camera2.params.MeteringRectangle;
 import android.os.Handler;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class AfParametersReflectedChecker extends CaptureResultCheckerBase {
     private static final String TAG = "AfParametersReflectedChecker";
     private static final boolean TRACE = false;

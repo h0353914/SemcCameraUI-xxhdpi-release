@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public abstract class BaseMenuPresenter implements MenuPresenter {
     private MenuPresenter$Callback mCallback;

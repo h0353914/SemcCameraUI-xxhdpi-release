@@ -24,7 +24,6 @@ import com.sonymobile.cameracommon.extendedview.RoundRectImageView;
 import com.sonymobile.cameracommon.font.FontUtil;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecordingIndicator extends RelativeLayout implements RecordingTimeIndicator {
     public static final String TAG = "RecordingIndicator";
     private LinearLayout mConstraintIndicator;

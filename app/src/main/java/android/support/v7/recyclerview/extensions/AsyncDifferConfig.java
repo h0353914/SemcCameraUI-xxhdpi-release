@@ -6,7 +6,6 @@ import android.support.annotation.RestrictTo$Scope;
 import android.support.v7.util.DiffUtil$ItemCallback;
 import java.util.concurrent.Executor;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class AsyncDifferConfig<T> {
 
     @NonNull

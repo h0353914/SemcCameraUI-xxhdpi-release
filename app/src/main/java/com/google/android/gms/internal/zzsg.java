@@ -3,7 +3,6 @@ package com.google.android.gms.internal;
 import java.io.IOException;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 final class zzsg {
     final int tag;
     final byte[] zzbiw;

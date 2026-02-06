@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzb extends zzc$zza {
     private Fragment zzapz;
 

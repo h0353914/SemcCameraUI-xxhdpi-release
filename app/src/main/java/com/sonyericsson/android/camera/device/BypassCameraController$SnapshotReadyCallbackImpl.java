@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.device;
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$DisplayFlashColor;
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$SnapshotReadyCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class BypassCameraController$SnapshotReadyCallbackImpl implements BypassCamera$SnapshotReadyCallback {
     final /* synthetic */ BypassCameraController this$0;
 

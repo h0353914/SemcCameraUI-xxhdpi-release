@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.palette;
 
-/* JADX INFO: loaded from: classes.dex */
 class ColorCount {
     public final int alpha;
     public final int argb;

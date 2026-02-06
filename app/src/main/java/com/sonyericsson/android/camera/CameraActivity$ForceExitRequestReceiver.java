@@ -6,7 +6,6 @@ import android.content.Intent;
 import com.sonyericsson.android.camera.setting.MessageType;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$ForceExitRequestReceiver extends BroadcastReceiver {
     final /* synthetic */ CameraActivity this$0;
 

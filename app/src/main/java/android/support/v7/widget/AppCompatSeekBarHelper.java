@@ -11,7 +11,6 @@ import android.support.v7.appcompat.R$styleable;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatSeekBarHelper extends AppCompatProgressBarHelper {
     private boolean mHasTickMarkTint;
     private boolean mHasTickMarkTintMode;

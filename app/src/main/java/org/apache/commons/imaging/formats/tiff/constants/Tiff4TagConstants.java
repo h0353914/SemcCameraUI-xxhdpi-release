@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfo;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShort;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class Tiff4TagConstants {
     public static final int COLOR_RESPONSE_UNIT_VALUE_0_00001 = 5;
     public static final int COLOR_RESPONSE_UNIT_VALUE_0_0001 = 4;

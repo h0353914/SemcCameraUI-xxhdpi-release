@@ -1,6 +1,5 @@
 package android.arch.lifecycle;
 
-/* JADX INFO: loaded from: classes.dex */
 class LifecycleRegistry$ObserverWithState {
     GenericLifecycleObserver mLifecycleObserver;
     Lifecycle$State mState;

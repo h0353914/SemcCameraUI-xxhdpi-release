@@ -5,7 +5,6 @@ import android.support.annotation.WorkerThread;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class CameraController$OnCaptureSessionConfigured extends CameraDeviceHandler$CameraDeviceAccessTask {
     private final CameraCaptureSession mResult;

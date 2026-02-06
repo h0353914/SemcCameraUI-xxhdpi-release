@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.hint;
 import android.animation.Animator;
 import android.animation.Animator$AnimatorListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class HintTextViewController$2 implements Animator$AnimatorListener {
     final /* synthetic */ HintTextViewController this$0;
 

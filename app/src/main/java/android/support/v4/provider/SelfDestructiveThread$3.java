@@ -6,7 +6,6 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-/* JADX INFO: loaded from: classes.dex */
 class SelfDestructiveThread$3 implements Runnable {
     final /* synthetic */ SelfDestructiveThread this$0;
     final /* synthetic */ Callable val$callable;

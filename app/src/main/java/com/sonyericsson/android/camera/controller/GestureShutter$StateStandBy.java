@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface
 import com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface$DetectResultInterface$HandStatus;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class GestureShutter$StateStandBy extends GestureShutter$State {
     final /* synthetic */ GestureShutter this$0;
 

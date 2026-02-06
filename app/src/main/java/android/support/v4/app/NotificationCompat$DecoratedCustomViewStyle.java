@@ -9,7 +9,6 @@ import android.support.compat.R$id;
 import android.support.compat.R$layout;
 import android.widget.RemoteViews;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NotificationCompat$DecoratedCustomViewStyle extends NotificationCompat$Style {
     private static final int MAX_ACTION_BUTTONS = 3;
 

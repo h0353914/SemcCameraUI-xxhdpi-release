@@ -3,7 +3,6 @@ package com.google.android.gms.common.data;
 import android.os.Bundle;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class AbstractDataBuffer<T> implements DataBuffer<T> {
     protected final DataHolder zzabq;
 

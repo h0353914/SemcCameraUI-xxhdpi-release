@@ -12,7 +12,6 @@ import android.support.annotation.RequiresApi;
 import android.support.annotation.RequiresPermission;
 import android.support.v4.os.CancellationSignal;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class FingerprintManagerCompat {
     private final Context mContext;
 

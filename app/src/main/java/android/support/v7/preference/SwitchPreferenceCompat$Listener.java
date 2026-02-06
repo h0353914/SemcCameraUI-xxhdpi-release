@@ -3,7 +3,6 @@ package android.support.v7.preference;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton$OnCheckedChangeListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SwitchPreferenceCompat$Listener implements CompoundButton$OnCheckedChangeListener {
     final /* synthetic */ SwitchPreferenceCompat this$0;
 

@@ -19,7 +19,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CameraUISettingsProvider extends ContentProvider {
     private static final String AUTHORITY = "com.sonymobile.camerauicommon.provider";
     private static final String CAMERA_UI_AUTHORITY = "com.sonymobile.camerauicommon.provider";

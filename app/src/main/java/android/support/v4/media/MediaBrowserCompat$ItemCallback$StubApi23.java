@@ -3,7 +3,6 @@ package android.support.v4.media;
 import android.os.Parcel;
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$ItemCallback$StubApi23 implements MediaBrowserCompatApi23$ItemCallback {
     final /* synthetic */ MediaBrowserCompat$ItemCallback this$0;
 

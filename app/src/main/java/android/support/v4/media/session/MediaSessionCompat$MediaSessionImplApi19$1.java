@@ -4,7 +4,6 @@ import android.media.Rating;
 import android.media.RemoteControlClient$OnMetadataUpdateListener;
 import android.support.v4.media.RatingCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionCompat$MediaSessionImplApi19$1 implements RemoteControlClient$OnMetadataUpdateListener {
     final /* synthetic */ MediaSessionCompat$MediaSessionImplApi19 this$0;
 

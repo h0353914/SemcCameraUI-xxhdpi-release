@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.animation;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class TransitionAnimationController$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$view$animation$AnimationRequest$AnimationDegree = new int[AnimationRequest$AnimationDegree.values().length];
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$view$animation$AnimationRequest$AnimationType;

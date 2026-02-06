@@ -8,7 +8,6 @@ import android.view.View$OnTouchListener;
 import android.widget.LinearLayout;
 import com.sonyericsson.android.camera.CameraActivity;
 
-/* JADX INFO: loaded from: classes.dex */
 class SemiAutoSeekBarView extends LinearLayout implements View$OnTouchListener {
     private static final long FADE_ANIMATION_DURATION = 100;
     private static final int NON_TRACKING_POSITION = -1;

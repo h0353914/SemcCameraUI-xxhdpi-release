@@ -1,6 +1,5 @@
 package com.sonymobile.android.media;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaRecorder$OutputFormat {
     public static final int AAC_ADIF = 5;
     public static final int AAC_ADTS = 6;

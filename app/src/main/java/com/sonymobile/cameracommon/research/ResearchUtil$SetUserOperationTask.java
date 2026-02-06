@@ -5,7 +5,6 @@ import com.sonymobile.cameracommon.research.parameters.ShootingLabel$Parameter;
 import java.util.List;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SetUserOperationTask implements Runnable {
     private final List<ShootingLabel$Parameter> mParams;
     private final Map<String, String> mSettings;

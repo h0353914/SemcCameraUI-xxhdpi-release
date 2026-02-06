@@ -22,7 +22,6 @@ import android.view.WindowManager;
 import android.view.WindowManager$LayoutParams;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 class TooltipPopup {
     private static final String TAG = "TooltipPopup";

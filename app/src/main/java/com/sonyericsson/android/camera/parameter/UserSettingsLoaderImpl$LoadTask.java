@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.util.PerfLog;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserSettingsLoaderImpl$LoadTask implements Runnable {
     final /* synthetic */ UserSettingsLoaderImpl this$0;
 

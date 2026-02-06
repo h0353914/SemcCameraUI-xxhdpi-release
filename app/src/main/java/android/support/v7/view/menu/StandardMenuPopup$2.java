@@ -3,7 +3,6 @@ package android.support.v7.view.menu;
 import android.view.View;
 import android.view.View$OnAttachStateChangeListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class StandardMenuPopup$2 implements View$OnAttachStateChangeListener {
     final /* synthetic */ StandardMenuPopup this$0;
 

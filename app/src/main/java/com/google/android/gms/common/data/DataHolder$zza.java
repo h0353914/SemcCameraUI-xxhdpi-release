@@ -4,7 +4,6 @@ import com.google.android.gms.common.internal.zzx;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DataHolder$zza {
     private final HashMap<Object, Integer> zzadA;
     private boolean zzadB;

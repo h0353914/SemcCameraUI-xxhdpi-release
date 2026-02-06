@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera;
 
 import com.sonyericsson.cameracommon.utility.MeasurePerformance$PerformanceIds;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum CameraActivity$LifeCycleIds {
     ON_CREATE(MeasurePerformance$PerformanceIds.ON_CREATE, "onCreate()"),
     ON_START(MeasurePerformance$PerformanceIds.ON_START, "onStart()"),

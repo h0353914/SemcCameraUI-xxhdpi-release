@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.util;
 import android.os.Build;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CamLog {
     public static final boolean DEBUG = Build.TYPE.equals("userdebug");
     private static final String GLOBAL_TAG = "CameraApp";

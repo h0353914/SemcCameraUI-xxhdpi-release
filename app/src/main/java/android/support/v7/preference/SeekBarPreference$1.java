@@ -3,7 +3,6 @@ package android.support.v7.preference;
 import android.widget.SeekBar;
 import android.widget.SeekBar$OnSeekBarChangeListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SeekBarPreference$1 implements SeekBar$OnSeekBarChangeListener {
     final /* synthetic */ SeekBarPreference this$0;
 

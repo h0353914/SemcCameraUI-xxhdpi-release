@@ -4,7 +4,6 @@ import android.graphics.PointF;
 import android.support.annotation.NonNull;
 import android.support.v4.util.Preconditions;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class PathSegment {
     private final PointF mEnd;
     private final float mEndFraction;

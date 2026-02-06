@@ -16,7 +16,6 @@ import android.view.ViewGroup$LayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LinearLayoutCompat extends ViewGroup {
     public static final int HORIZONTAL = 0;
     private static final int INDEX_BOTTOM = 2;

@@ -27,7 +27,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow$OnDismissListener;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ActivityChooserView extends ViewGroup implements ActivityChooserModel$ActivityChooserModelClient {
     private static final String LOG_TAG = "ActivityChooserView";

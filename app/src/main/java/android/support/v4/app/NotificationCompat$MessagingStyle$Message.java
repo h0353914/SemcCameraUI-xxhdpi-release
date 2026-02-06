@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class NotificationCompat$MessagingStyle$Message {
     static final String KEY_DATA_MIME_TYPE = "type";
     static final String KEY_DATA_URI = "uri";

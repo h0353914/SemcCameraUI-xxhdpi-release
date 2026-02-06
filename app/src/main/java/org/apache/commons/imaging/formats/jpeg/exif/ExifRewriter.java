@@ -26,7 +26,6 @@ import org.apache.commons.imaging.formats.tiff.write.TiffImageWriterLossy;
 import org.apache.commons.imaging.formats.tiff.write.TiffOutputSet;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ExifRewriter extends BinaryFileParser {
     public ExifRewriter() {
         this(ByteOrder.BIG_ENDIAN);

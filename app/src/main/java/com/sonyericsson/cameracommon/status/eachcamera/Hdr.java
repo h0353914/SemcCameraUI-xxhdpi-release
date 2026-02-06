@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.configuration.parameters.VideoHdr;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 import com.sonyericsson.cameracommon.status.EnumValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Hdr extends EnumValue<Hdr$Value> implements EachCameraStatusValue {
     public static final Hdr$Value DEFAULT_VALUE = Hdr$Value.OFF;
     public static final String KEY = "hdr";

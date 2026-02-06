@@ -27,7 +27,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AutoReviewController implements AutoReviewContent$ContentReceiver {
     private static final String TAG = "AutoReviewController";
     private final CameraActivity mActivity;

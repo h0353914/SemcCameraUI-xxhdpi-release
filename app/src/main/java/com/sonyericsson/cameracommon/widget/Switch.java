@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Switch extends LinearLayout {
     private static final int DISABLED_FILTER = 2131099706;
     private static final int OFF_POSITION = 0;

@@ -11,7 +11,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import org.xmlpull.v1.XmlPullParser;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(11)
 class AppCompatDrawableManager$AsldcInflateDelegate implements AppCompatDrawableManager$InflateDelegate {
     AppCompatDrawableManager$AsldcInflateDelegate() {

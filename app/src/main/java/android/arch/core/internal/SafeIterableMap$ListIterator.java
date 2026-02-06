@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import java.util.Iterator;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class SafeIterableMap$ListIterator<K, V> implements Iterator<Map$Entry<K, V>>, SafeIterableMap$SupportRemove<K, V> {
     SafeIterableMap$Entry<K, V> mExpectedEnd;
     SafeIterableMap$Entry<K, V> mNext;

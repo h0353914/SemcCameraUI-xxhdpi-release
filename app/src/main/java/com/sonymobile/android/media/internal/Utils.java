@@ -1,6 +1,5 @@
 package com.sonymobile.android.media.internal;
 
-/* JADX INFO: loaded from: classes.dex */
 class Utils {
     static final boolean LOG_DEBUG = false;
     static final boolean LOG_DEBUG_BUFFER_HANDLING = false;

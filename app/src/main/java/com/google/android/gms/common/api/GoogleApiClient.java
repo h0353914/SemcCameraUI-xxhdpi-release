@@ -10,7 +10,6 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class GoogleApiClient {
     public abstract ConnectionResult blockingConnect();
 

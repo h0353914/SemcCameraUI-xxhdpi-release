@@ -4,7 +4,6 @@ import com.google.android.gms.common.internal.ResolveAccountResponse;
 import com.google.android.gms.common.internal.zzt$zza;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlg$zzb extends zzt$zza {
     private final WeakReference<zzlg> zzabM;
 

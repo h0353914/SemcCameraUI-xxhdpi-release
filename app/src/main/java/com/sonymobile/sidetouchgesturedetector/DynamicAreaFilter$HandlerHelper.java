@@ -4,7 +4,6 @@ import android.os.Handler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 class DynamicAreaFilter$HandlerHelper {
     private static final String METHOD_HAS_CALLBACKS = "hasCallbacks";
     private static Method sMethod;

@@ -7,7 +7,6 @@ import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FacebookSignInConfig implements SafeParcelable {
     public static final Parcelable$Creator<FacebookSignInConfig> CREATOR = new zzb();
     private Intent mIntent;

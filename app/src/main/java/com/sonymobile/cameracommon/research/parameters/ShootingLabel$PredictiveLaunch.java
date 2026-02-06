@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ShootingLabel$PredictiveLaunch implements ShootingLabel$StringParameter {
     True("True"),
     False("False");

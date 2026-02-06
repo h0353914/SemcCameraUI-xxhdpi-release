@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.setting;
 import com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInterface;
 import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingUi$CloseExecutor<T> implements SettingExecutorInterface<T> {
     private final SettingExecutorInterface<T> mExecutor;
     final /* synthetic */ SettingUi this$0;

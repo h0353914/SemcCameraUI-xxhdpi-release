@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(19)
 class MediaSessionCompat$MediaSessionImplApi19 extends MediaSessionCompat$MediaSessionImplApi18 {
     MediaSessionCompat$MediaSessionImplApi19(Context context, String str, ComponentName componentName, PendingIntent pendingIntent) {

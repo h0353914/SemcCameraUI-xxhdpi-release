@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenBu
 import java.util.HashMap;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$TouchEventProcedureManager {
     private final Map<UserEventHandler$TouchEventSource, UserEventHandler$TouchEventProcedure> mProcedures = new HashMap();
     final /* synthetic */ UserEventHandler this$0;

@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import com.google.android.gms.internal.zzmg;
 import com.google.android.gms.internal.zzmx;
 
-/* JADX INFO: loaded from: classes.dex */
 final class ImageManager$zzb extends zzmg<zza$zza, Bitmap> {
     public ImageManager$zzb(Context context) {
         super(zzaj(context));

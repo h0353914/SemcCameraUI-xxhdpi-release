@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class FragmentStatePagerAdapter extends PagerAdapter {
     private static final boolean DEBUG = false;
     private static final String TAG = "FragmentStatePagerAdapt";

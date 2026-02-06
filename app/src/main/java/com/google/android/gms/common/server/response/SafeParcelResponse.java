@@ -16,7 +16,6 @@ import java.util.Map;
 import java.util.Map$Entry;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SafeParcelResponse extends FastJsonResponse implements SafeParcelable {
     public static final zze CREATOR = new zze();
     private final String mClassName;

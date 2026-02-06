@@ -9,7 +9,6 @@ import android.content.pm.PackageManager$NameNotFoundException;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.status.CameraStatusValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class CameraStatusPublisher<T extends CameraStatusValue> {
     private static final String ACTION_CAMERA_STATUS_UPDATE = "com.sonymobile.cameracommon.action.CAMERA_STATUS_UPDATE";
     private static final String EXTRA_CAMERA_STATUS = "CAMERA_STATUS";

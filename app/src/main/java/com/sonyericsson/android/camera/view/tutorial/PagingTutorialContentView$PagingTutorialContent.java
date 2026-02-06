@@ -8,7 +8,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class PagingTutorialContentView$PagingTutorialContent extends TutorialContentView$TutorialContent {
     protected ArrayList<Integer> mDescriptionResourceId;
     protected ArrayList<PagingTutorialContentView$MediaContentsResource> mMediaContentsResourceId;

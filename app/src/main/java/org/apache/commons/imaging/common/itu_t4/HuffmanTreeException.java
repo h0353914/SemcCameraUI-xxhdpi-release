@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.common.itu_t4;
 
-/* JADX INFO: loaded from: classes.dex */
 class HuffmanTreeException extends Exception {
     private static final long serialVersionUID = 1;
 

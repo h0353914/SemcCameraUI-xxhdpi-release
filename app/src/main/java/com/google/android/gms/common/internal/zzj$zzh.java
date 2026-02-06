@@ -2,7 +2,6 @@ package com.google.android.gms.common.internal;
 
 import com.google.android.gms.common.ConnectionResult;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class zzj$zzh extends zzj<T>.zzj$zza {
     final /* synthetic */ zzj zzafK;
 

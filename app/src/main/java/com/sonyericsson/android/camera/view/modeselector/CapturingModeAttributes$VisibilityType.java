@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.modeselector;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum CapturingModeAttributes$VisibilityType {
     Normal("visibility_normal"),
     Oneshot("visibility_oneshot"),

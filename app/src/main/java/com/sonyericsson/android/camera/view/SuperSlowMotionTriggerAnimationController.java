@@ -10,7 +10,6 @@ import android.widget.FrameLayout;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SuperSlowMotionTriggerAnimationController {
     private Animation mAlphaAnimation;
     private View mBackground;

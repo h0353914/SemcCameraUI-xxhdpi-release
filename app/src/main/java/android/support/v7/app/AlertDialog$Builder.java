@@ -23,7 +23,6 @@ import android.view.View;
 import android.widget.AdapterView$OnItemSelectedListener;
 import android.widget.ListAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AlertDialog$Builder {
     private final AlertController$AlertParams P;
     private final int mTheme;

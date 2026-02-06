@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Screen {
     SUPERIOR_AUTO_MAIN,
     SUPERIOR_AUTO_FRONT,

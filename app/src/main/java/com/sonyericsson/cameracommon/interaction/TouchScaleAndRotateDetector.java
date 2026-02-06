@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.interaction;
 
 import android.graphics.PointF;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TouchScaleAndRotateDetector {
     private static final int ROTATE_DETECTION_THRESHOLD_DEGREE = 1;
     public static final String TAG = "TouchScaleAndRotateDetector";

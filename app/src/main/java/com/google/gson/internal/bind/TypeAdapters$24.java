@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
-/* JADX INFO: loaded from: classes.dex */
 class TypeAdapters$24 extends TypeAdapter<Locale> {
     TypeAdapters$24() {
     }

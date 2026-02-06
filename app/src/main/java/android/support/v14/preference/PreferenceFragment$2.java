@@ -1,6 +1,5 @@
 package android.support.v14.preference;
 
-/* JADX INFO: loaded from: classes.dex */
 class PreferenceFragment$2 implements Runnable {
     final /* synthetic */ PreferenceFragment this$0;
 

@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.view.ViewParent;
 
-/* JADX INFO: loaded from: classes.dex */
 class ForwardingListener$DisallowIntercept implements Runnable {
     final /* synthetic */ ForwardingListener this$0;
 

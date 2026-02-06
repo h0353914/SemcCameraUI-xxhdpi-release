@@ -6,7 +6,6 @@ import android.os.Build$VERSION;
 import android.support.annotation.NonNull;
 import android.widget.EdgeEffect;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class EdgeEffectCompat {
     private EdgeEffect mEdgeEffect;
 

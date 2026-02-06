@@ -5,7 +5,6 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class BaseProxy implements IInterface {
     private final String mDescriptor;
     private final IBinder mRemote;

@@ -14,7 +14,6 @@ import android.view.View$OnLongClickListener;
 import android.view.ViewConfiguration;
 import android.view.accessibility.AccessibilityManager;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 class TooltipCompatHandler implements View$OnLongClickListener, View$OnHoverListener, View$OnAttachStateChangeListener {
     private static final long HOVER_HIDE_TIMEOUT_MS = 15000;

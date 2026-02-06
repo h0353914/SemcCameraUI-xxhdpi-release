@@ -1,6 +1,5 @@
 package com.google.android.gms.common.api;
 
-/* JADX INFO: loaded from: classes.dex */
 class Batch$1 implements PendingResult$zza {
     final /* synthetic */ Batch zzaaC;
 

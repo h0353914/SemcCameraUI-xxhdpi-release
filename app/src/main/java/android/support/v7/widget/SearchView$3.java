@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.view.View;
 import android.view.View$OnFocusChangeListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SearchView$3 implements View$OnFocusChangeListener {
     final /* synthetic */ SearchView this$0;
 

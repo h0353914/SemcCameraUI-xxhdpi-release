@@ -18,7 +18,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class AppCompatDelegateImpl$PanelFeatureState {
     int background;
     View createdPanelView;

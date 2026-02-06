@@ -2,7 +2,6 @@ package android.support.v4.os;
 
 import android.os.Parcel;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ParcelCompat {
     public static boolean readBoolean(Parcel parcel) {
         return parcel.readInt() != 0;

@@ -8,7 +8,6 @@ import android.support.v4.content.Loader;
 import android.util.Log;
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 class LoaderManagerImpl$LoaderObserver<D> implements Observer<D> {
 
     @NonNull

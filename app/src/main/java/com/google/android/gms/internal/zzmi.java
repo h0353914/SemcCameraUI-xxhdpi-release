@@ -2,7 +2,6 @@ package com.google.android.gms.internal;
 
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzmi<K, V> {
     static Object[] mBaseCache;
     static int mBaseCacheSize;

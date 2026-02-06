@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class CapturingModeListLoader$GetCapturingModeListTask extends AsyncTask<Void, Void, List<CapturingModeAttributes>> {
     private static final String THREAD_NAME = "GetModeListTask";
     private final WeakReference<CapturingModeListLoader> mCapturingModeListLoaderRef;

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller;
 
 import android.graphics.Rect;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ChapterThumbnail {
     public final Integer format;
     private int mOrientation = 0;

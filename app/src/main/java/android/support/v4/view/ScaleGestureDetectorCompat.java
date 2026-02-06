@@ -3,7 +3,6 @@ package android.support.v4.view;
 import android.os.Build$VERSION;
 import android.view.ScaleGestureDetector;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ScaleGestureDetectorCompat {
     private ScaleGestureDetectorCompat() {
     }

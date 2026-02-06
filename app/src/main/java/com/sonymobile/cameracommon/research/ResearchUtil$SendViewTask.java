@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonymobile.cameracommon.research.idd.IddUtil;
 import com.sonymobile.cameracommon.research.parameters.Screen;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SendViewTask implements Runnable {
     private final LaunchCondition$LaunchTrigger mLaunchTrigger;
     private final Screen mScreen;

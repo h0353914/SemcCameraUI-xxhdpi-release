@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.gestureshutter;
 
-/* JADX INFO: loaded from: classes.dex */
 class HandSignsDetector$DetectRunnable$1 implements Runnable {
     final /* synthetic */ HandSignsDetector$DetectRunnable this$1;
     final /* synthetic */ HandSignsDetector$DetectResult val$result;

@@ -6,7 +6,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzrz<M extends zzry<M>, T> {
     public final int tag;
     protected final int type;

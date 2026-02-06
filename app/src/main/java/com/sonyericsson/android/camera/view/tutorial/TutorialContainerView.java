@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.ViewFlipper;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TutorialContainerView extends FrameLayout {
     private ViewFlipper mViewFlipper;
 

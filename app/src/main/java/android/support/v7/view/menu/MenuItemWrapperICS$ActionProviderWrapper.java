@@ -5,7 +5,6 @@ import android.support.v4.view.ActionProvider;
 import android.view.SubMenu;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class MenuItemWrapperICS$ActionProviderWrapper extends ActionProvider {
     final android.view.ActionProvider mInner;
     final /* synthetic */ MenuItemWrapperICS this$0;

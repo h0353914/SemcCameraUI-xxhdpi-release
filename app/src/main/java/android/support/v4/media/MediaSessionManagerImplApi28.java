@@ -3,7 +3,6 @@ package android.support.v4.media;
 import android.content.Context;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(28)
 class MediaSessionManagerImplApi28 extends MediaSessionManagerImplApi21 {
     android.media.session.MediaSessionManager mObject;

@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.png;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class PngImageParser$1 {
     static final /* synthetic */ int[] $SwitchMap$org$apache$commons$imaging$formats$png$InterlaceMethod = new int[InterlaceMethod.values().length];
     static final /* synthetic */ int[] $SwitchMap$org$apache$commons$imaging$formats$png$PngColorType;

@@ -5,7 +5,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MessageNanoPrinter {
     private static final String INDENT = "  ";
     private static final int MAX_STRING_LEN = 200;

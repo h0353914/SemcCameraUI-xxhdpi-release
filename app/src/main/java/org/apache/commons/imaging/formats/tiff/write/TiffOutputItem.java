@@ -4,7 +4,6 @@ import java.io.IOException;
 import org.apache.commons.imaging.ImageWriteException;
 import org.apache.commons.imaging.common.BinaryOutputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class TiffOutputItem {
     public static final long UNDEFINED_VALUE = -1;
     private long offset = -1;

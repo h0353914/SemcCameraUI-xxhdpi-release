@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.SparseIntArray;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FrameMetricsAggregator {
     public static final int ANIMATION_DURATION = 256;
     public static final int ANIMATION_INDEX = 8;

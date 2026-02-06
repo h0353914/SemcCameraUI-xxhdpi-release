@@ -24,7 +24,6 @@ import java.util.Map$Entry;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
-/* JADX INFO: loaded from: classes.dex */
 public class UserSettingsLoaderImpl implements UserSettingsLoader {
     private static final String FINGERPRINT_KEY = "android.os.Build.FINGERPRINT";
     private static final String THREAD_NAME = "SettingLoadTask";

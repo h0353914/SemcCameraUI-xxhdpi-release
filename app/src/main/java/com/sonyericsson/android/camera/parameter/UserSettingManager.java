@@ -44,7 +44,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class UserSettingManager implements UserSettings {
     public static final String TAG = "UserSettingManager";
     private boolean mCanWrite;

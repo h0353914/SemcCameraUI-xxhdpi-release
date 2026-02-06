@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum FastCapture implements UserSettingValue {
     LAUNCH_AND_CAPTURE(-1, 2131689820, 1, true),
     LAUNCH_ONLY(-1, 2131689822, 1, true),

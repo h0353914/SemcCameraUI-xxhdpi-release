@@ -10,7 +10,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
 import com.sonyericsson.android.camera.view.modeselector.view.CapturingModePanelAttributes;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class ModeSelectorView$GridArrange extends AbsDialogScrollView$ContentArrange {
     private int mItemMargin;
     final /* synthetic */ ModeSelectorView this$0;

@@ -3,7 +3,6 @@ package android.support.v7.preference;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PreferenceManager$SimplePreferenceComparisonCallback extends PreferenceManager$PreferenceComparisonCallback {
     @Override // android.support.v7.preference.PreferenceManager$PreferenceComparisonCallback
     public boolean arePreferenceItemsTheSame(Preference preference, Preference preference2) {

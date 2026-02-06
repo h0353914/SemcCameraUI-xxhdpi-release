@@ -3,7 +3,6 @@ package android.support.v4.provider;
 import android.content.Context;
 import java.util.concurrent.Callable;
 
-/* JADX INFO: loaded from: classes.dex */
 class FontsContractCompat$1 implements Callable<FontsContractCompat$TypefaceResult> {
     final /* synthetic */ Context val$context;
     final /* synthetic */ String val$id;

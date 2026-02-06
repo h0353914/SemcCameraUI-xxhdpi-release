@@ -1,6 +1,5 @@
 package com.google.android.gms.internal;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlr$4 extends zzlr<Float> {
     zzlr$4(String str, Float f) {
         super(str, f);

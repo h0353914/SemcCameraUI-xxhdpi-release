@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(26)
 final class JobIntentService$JobWorkEnqueuer extends JobIntentService$WorkEnqueuer {
     private final JobInfo mJobInfo;

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.recorder.utility.encoder;
 import android.media.MediaFormat;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaEncoder$2 implements EncodedDataWriteTask$EncoderStateListener {
     final /* synthetic */ MediaEncoder this$0;
 

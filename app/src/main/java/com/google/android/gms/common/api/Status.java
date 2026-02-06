@@ -8,7 +8,6 @@ import android.os.Parcelable$Creator;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzw;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class Status implements Result, SafeParcelable {
     private final PendingIntent mPendingIntent;
     private final int mVersionCode;

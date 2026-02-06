@@ -6,7 +6,6 @@ import android.hardware.camera2.params.MeteringRectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraParameterValidator$ValidationCase {
     private List<CameraParameterValidator$KeyValueSet> mBaseConditionList;
     private List<CameraParameterValidator$KeyValueSet> mCheckConditionList;

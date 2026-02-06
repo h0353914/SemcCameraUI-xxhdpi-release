@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.bmp;
 
-/* JADX INFO: loaded from: classes.dex */
 class BmpHeaderInfo {
     public final int alphaMask;
     public final int bitmapDataOffset;

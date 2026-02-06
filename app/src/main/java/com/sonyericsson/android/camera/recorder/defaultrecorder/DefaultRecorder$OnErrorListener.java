@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.recorder.RecorderInterface$OnErrorListene
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonymobile.android.media.MediaRecorder;
 
-/* JADX INFO: loaded from: classes.dex */
 class DefaultRecorder$OnErrorListener implements MediaRecorder$OnErrorListener {
     private final RecorderInterface$OnErrorListener mListener;
 

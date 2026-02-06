@@ -5,7 +5,6 @@ import android.support.v4.view.ViewCompat;
 import android.view.animation.Interpolator;
 import android.widget.OverScroller;
 
-/* JADX INFO: loaded from: classes.dex */
 class RecyclerView$ViewFlinger implements Runnable {
     private int mLastFlingX;
     private int mLastFlingY;

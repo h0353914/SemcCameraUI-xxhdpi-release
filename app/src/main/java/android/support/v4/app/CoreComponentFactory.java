@@ -10,7 +10,6 @@ import android.support.annotation.RequiresApi;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(api = 28)
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class CoreComponentFactory extends android.app.AppComponentFactory {

@@ -3,7 +3,6 @@ package android.support.v4.app;
 import android.animation.Animator;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class Fragment$AnimationInfo {
     Boolean mAllowEnterTransitionOverlap;
     Boolean mAllowReturnTransitionOverlap;

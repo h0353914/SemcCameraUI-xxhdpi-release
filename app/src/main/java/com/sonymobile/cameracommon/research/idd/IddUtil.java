@@ -17,7 +17,6 @@ import java.util.TimeZone;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IddUtil {
     private static final String EMPTY_STRING = "";
     private static final String IDD_CLASS_NAME = "com.sonyericsson.idd.api.Idd";

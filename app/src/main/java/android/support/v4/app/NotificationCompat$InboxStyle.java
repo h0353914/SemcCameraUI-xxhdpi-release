@@ -7,7 +7,6 @@ import android.support.annotation.RestrictTo$Scope;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NotificationCompat$InboxStyle extends NotificationCompat$Style {
     private ArrayList<CharSequence> mTexts = new ArrayList<>();
 

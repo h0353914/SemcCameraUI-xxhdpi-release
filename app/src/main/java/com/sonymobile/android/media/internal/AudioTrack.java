@@ -15,7 +15,6 @@ import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingDeque;
 
-/* JADX INFO: loaded from: classes.dex */
 class AudioTrack extends Track implements ClockInterface {
     private static final int ENCODING_PCM_SETTING = 2;
     private static final String HW_AAC_ENCODER = "OMX.qcom.audio.encoder.aac";

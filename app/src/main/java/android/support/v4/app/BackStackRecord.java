@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 final class BackStackRecord extends FragmentTransaction implements FragmentManager$BackStackEntry, FragmentManagerImpl$OpGenerator {
     static final int OP_ADD = 1;
     static final int OP_ATTACH = 7;

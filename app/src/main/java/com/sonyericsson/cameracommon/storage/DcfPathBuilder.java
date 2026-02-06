@@ -15,7 +15,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DcfPathBuilder {
     public static final String DCF_DIR_NAME_FREE_WORD = "ANDRO";
     public static final String DCF_FILE_NAME_FREE_WORD_MOVIE = "MOV_";

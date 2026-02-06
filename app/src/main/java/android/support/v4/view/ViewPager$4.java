@@ -3,7 +3,6 @@ package android.support.v4.view;
 import android.graphics.Rect;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewPager$4 implements OnApplyWindowInsetsListener {
     private final Rect mTempRect = new Rect();
     final /* synthetic */ ViewPager this$0;

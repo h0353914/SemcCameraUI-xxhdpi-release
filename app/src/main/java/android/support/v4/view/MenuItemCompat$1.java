@@ -3,7 +3,6 @@ package android.support.v4.view;
 import android.view.MenuItem;
 import android.view.MenuItem$OnActionExpandListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class MenuItemCompat$1 implements MenuItem$OnActionExpandListener {
     final /* synthetic */ MenuItemCompat$OnActionExpandListener val$listener;
 

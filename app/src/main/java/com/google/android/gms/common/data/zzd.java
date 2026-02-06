@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable$Creator;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzd<T extends SafeParcelable> extends AbstractDataBuffer<T> {
     private static final String[] zzadn = {"data"};
     private final Parcelable$Creator<T> zzado;

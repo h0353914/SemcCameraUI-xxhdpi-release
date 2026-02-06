@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.png.scanlinefilters;
 import java.io.IOException;
 import org.apache.commons.imaging.ImageReadException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ScanlineFilterSub implements ScanlineFilter {
     private final int bytesPerPixel;
 

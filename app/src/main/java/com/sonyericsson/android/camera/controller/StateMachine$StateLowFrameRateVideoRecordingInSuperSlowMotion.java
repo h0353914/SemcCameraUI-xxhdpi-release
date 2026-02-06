@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 import com.sonyericsson.cameracommon.storage.Storage$StorageState;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateLowFrameRateVideoRecordingInSuperSlowMotion extends StateMachine$StateVideoBase {
     private static final String TAG = "StateMachine.StateLowFrameRateVideoRecordingInSuperSlowMotion";
     final /* synthetic */ StateMachine this$0;

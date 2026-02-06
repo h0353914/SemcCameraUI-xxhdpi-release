@@ -9,7 +9,6 @@ import android.os.Build$VERSION;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionBarDrawerToggle$SlideDrawable extends InsetDrawable implements Drawable$Callback {
     private final boolean mHasMirroring;
     private float mOffset;

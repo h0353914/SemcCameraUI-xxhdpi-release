@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.contentsview.contents;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ContentFactory {
     public static final String TAG = "ContentFactory";
 

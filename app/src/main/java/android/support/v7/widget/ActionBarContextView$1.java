@@ -4,7 +4,6 @@ import android.support.v7.view.ActionMode;
 import android.view.View;
 import android.view.View$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionBarContextView$1 implements View$OnClickListener {
     final /* synthetic */ ActionBarContextView this$0;
     final /* synthetic */ ActionMode val$mode;

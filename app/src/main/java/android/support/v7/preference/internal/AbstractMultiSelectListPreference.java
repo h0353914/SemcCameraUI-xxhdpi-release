@@ -7,7 +7,6 @@ import android.support.v7.preference.DialogPreference;
 import android.util.AttributeSet;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public abstract class AbstractMultiSelectListPreference extends DialogPreference {
     public abstract CharSequence[] getEntries();

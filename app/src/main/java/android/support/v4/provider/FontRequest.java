@@ -9,7 +9,6 @@ import android.support.v4.util.Preconditions;
 import android.util.Base64;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class FontRequest {
     private final List<List<byte[]>> mCertificates;
     private final int mCertificatesArray;

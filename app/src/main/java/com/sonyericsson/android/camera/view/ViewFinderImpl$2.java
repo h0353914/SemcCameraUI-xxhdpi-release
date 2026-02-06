@@ -24,7 +24,6 @@ import com.sonyericsson.android.camera.view.selectabledialog.ModeSelector$OnMode
 import com.sonymobile.cameracommon.research.parameters.Event$AddonFW;
 import com.sonymobile.cameracommon.research.parameters.Event$Category;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$2 implements ModeSelector$OnModeSelectListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

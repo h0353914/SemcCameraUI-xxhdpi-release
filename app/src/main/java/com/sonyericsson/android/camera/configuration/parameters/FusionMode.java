@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum FusionMode implements UserSettingValue {
     OFF(2131231102, 2131690115, "off"),
     ON(2131231097, 2131690116, "on"),

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$MediaBrowserServiceImplBase$2 implements Runnable {
     final /* synthetic */ MediaBrowserServiceCompat$MediaBrowserServiceImplBase this$1;
     final /* synthetic */ Bundle val$options;

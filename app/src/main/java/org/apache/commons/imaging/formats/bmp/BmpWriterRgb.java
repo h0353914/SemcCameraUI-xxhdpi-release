@@ -5,7 +5,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import org.apache.commons.imaging.common.BinaryOutputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 class BmpWriterRgb implements BmpWriter {
     @Override // org.apache.commons.imaging.formats.bmp.BmpWriter
     public int getBitsPerPixel() {

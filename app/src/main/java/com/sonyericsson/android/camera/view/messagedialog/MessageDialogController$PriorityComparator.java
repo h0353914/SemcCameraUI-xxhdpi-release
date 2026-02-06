@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.messagedialog;
 import java.io.Serializable;
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class MessageDialogController$PriorityComparator implements Comparator<MessageDialogRequest>, Serializable {
     private MessageDialogController$PriorityComparator() {
     }

@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.widget;
 import android.view.View;
 import android.view.View$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 final class Switch$SwitchOnClickListener implements View$OnClickListener {
     final /* synthetic */ Switch this$0;
 

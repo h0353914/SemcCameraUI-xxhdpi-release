@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.utility;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ArraysUtil {
     public static final String TAG = "ArraysUtil";
 

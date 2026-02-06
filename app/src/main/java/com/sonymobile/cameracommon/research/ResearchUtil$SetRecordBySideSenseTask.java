@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SetRecordBySideSenseTask implements Runnable {
     private final boolean mRecordBySideSense;
     final /* synthetic */ ResearchUtil this$0;

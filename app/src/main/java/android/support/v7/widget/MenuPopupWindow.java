@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.widget.PopupWindow;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class MenuPopupWindow extends ListPopupWindow implements MenuItemHoverListener {
     private static final String TAG = "MenuPopupWindow";

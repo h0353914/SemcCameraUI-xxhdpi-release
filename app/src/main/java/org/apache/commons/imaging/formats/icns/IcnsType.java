@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.icns;
 
 import java.io.UnsupportedEncodingException;
 
-/* JADX INFO: loaded from: classes.dex */
 enum IcnsType {
     ICNS_16x12_1BIT_IMAGE_AND_MASK("icm#", 16, 12, 1, true),
     ICNS_16x12_4BIT_IMAGE("icm4", 16, 12, 4, false),

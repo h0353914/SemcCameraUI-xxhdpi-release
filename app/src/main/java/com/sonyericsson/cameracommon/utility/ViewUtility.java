@@ -8,7 +8,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewUtility {
     private static final float ASPECT_TOLERANCE = 0.001f;
     public static final String TAG = "ViewUtility";

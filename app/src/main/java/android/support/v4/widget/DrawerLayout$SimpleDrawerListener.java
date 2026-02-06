@@ -2,7 +2,6 @@ package android.support.v4.widget;
 
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class DrawerLayout$SimpleDrawerListener implements DrawerLayout$DrawerListener {
     @Override // android.support.v4.widget.DrawerLayout$DrawerListener
     public void onDrawerClosed(View view) {

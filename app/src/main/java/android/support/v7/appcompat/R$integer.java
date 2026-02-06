@@ -1,6 +1,5 @@
 package android.support.v7.appcompat;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$integer {
     public static final int abc_config_activityDefaultDur = 2131361792;
     public static final int abc_config_activityShortDur = 2131361793;

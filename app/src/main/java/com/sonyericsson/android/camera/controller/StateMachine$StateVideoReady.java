@@ -31,7 +31,6 @@ import com.sonymobile.cameracommon.evf.Evf;
 import com.sonymobile.cameracommon.research.parameters.Event$SelfTimerTrigger;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateVideoReady extends StateMachine$StateVideoBase {
     private static final String TAG = "StateMachine.StateVideoReady";
     private StateMachine$StartupAction mStartupAction;

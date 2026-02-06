@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.capability.CameraCapabilityList;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum TouchIntention implements UserSettingValue {
     OBJECT_TRACKING(-1, 2131689847),
     FOCUS_ONLY(-1, 2131690197),

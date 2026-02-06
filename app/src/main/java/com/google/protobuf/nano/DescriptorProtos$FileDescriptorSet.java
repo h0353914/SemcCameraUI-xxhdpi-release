@@ -2,7 +2,6 @@ package com.google.protobuf.nano;
 
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DescriptorProtos$FileDescriptorSet extends ExtendableMessageNano<DescriptorProtos$FileDescriptorSet> {
     private static volatile DescriptorProtos$FileDescriptorSet[] _emptyArray;
     public DescriptorProtos$FileDescriptorProto[] file;

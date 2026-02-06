@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class RecyclerView$Recycler {
     static final int DEFAULT_CACHE_SIZE = 2;
     RecyclerView$RecycledViewPool mRecyclerPool;

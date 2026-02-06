@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.view.ViewFinder$UiComponentKind;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 import com.sonyericsson.cameracommon.mediasaving.StoreDataResult;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateFatal extends StateMachine$State {
     private static final String TAG = "StateMachine.StateFatal";
     private boolean mIsSaving;

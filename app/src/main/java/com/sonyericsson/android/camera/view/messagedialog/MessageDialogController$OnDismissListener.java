@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.messagedialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface$OnDismissListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class MessageDialogController$OnDismissListener implements DialogInterface$OnDismissListener {
     private final MessageDialogRequest mParameter;
     final /* synthetic */ MessageDialogController this$0;

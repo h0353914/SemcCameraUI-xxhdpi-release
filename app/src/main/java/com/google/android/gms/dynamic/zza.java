@@ -15,7 +15,6 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.dynamic.LifecycleDelegate;
 import java.util.LinkedList;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zza<T extends LifecycleDelegate> {
     private T zzapn;
     private Bundle zzapo;

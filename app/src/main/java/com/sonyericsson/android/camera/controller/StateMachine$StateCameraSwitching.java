@@ -10,7 +10,6 @@ import com.sonyericsson.android.camera.view.messagedialog.DialogId;
 import com.sonymobile.cameracommon.evf.Evf;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateCameraSwitching extends StateMachine$State {
     private static final String TAG = "StateMachine.StateCameraSwitching";
     private final FastCapture mFastCapture;

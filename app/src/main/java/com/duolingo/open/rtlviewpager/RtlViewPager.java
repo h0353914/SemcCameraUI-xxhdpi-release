@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.View$MeasureSpec;
 import java.util.HashMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RtlViewPager extends ViewPager {
     private int mLayoutDirection;
     private HashMap<ViewPager$OnPageChangeListener, RtlViewPager$ReversingOnPageChangeListener> mPageChangeListeners;

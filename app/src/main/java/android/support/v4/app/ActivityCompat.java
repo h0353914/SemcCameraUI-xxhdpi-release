@@ -20,7 +20,6 @@ import android.support.v4.content.ContextCompat;
 import android.view.DragEvent;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ActivityCompat extends ContextCompat {
     private static ActivityCompat$PermissionCompatDelegate sDelegate;
 

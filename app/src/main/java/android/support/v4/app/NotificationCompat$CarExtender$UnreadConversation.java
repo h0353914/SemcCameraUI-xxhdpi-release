@@ -2,7 +2,6 @@ package android.support.v4.app;
 
 import android.app.PendingIntent;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NotificationCompat$CarExtender$UnreadConversation {
     private final long mLatestTimestamp;
     private final String[] mMessages;

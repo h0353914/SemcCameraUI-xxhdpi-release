@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.mediasaving.takenstatus;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TakenStatusVideo {
     public static final String TAG = "TakenStatusVideo";
     public long mDuration;

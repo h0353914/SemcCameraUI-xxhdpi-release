@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 import com.sonyericsson.cameracommon.storage.SavingTaskManager$SavedFileType;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StatePhotoAfDone extends StateMachine$StatePhotoBase {
     private boolean mIsClearObjectTrackingFocusFrame;
     private final boolean mIsHighQualityBurstAvailable;

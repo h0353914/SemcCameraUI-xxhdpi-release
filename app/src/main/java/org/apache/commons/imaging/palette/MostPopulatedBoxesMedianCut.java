@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import org.apache.commons.imaging.ImageWriteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MostPopulatedBoxesMedianCut implements MedianCut {
     @Override // org.apache.commons.imaging.palette.MedianCut
     public boolean performNextMedianCut(List<ColorGroup> list, boolean z) throws ImageWriteException {

@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Event$CoolMode implements Event$Action {
     HEATED_OVER_COOLING_LOW,
     HEATED_OVER_COOLING_ULTRA_LOW,

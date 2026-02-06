@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.support.v4.media.session.MediaSessionCompatApi21$Callback;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionCompatApi21$CallbackProxy<T extends MediaSessionCompatApi21$Callback> extends MediaSession$Callback {
     protected final T mCallback;
 

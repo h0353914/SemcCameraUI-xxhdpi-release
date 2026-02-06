@@ -25,7 +25,6 @@ import org.apache.commons.imaging.common.ImageMetadata;
 import org.apache.commons.imaging.common.bytesource.ByteSource;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IcnsImageParser extends ImageParser {
     private static final String DEFAULT_EXTENSION = ".icns";
     static final int ICNS_MAGIC = IcnsType.typeAsInt("icns");

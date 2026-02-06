@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.setting;
 
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class ContextualSettingList$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode = new int[CapturingMode.values().length];
 

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.device;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.mediasaving.location.LocationSettingsReader;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$LoadSettingsThread$1 extends CameraDeviceHandler$CameraDeviceAccessTask {
     final /* synthetic */ CameraDeviceHandler$LoadSettingsThread this$1;
 

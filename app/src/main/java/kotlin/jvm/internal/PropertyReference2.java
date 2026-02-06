@@ -6,7 +6,6 @@ import kotlin.reflect.KProperty$Getter;
 import kotlin.reflect.KProperty2;
 import kotlin.reflect.KProperty2$Getter;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class PropertyReference2 extends PropertyReference implements KProperty2 {
     @Override // kotlin.reflect.KProperty
     public /* bridge */ /* synthetic */ KProperty$Getter getGetter() {

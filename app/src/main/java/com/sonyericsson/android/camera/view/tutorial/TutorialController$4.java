@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.tutorial;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class TutorialController$4 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$view$tutorial$TutorialController$DisplayTrigger;
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$view$tutorial$TutorialController$TutorialType = new int[TutorialController$TutorialType.values().length];

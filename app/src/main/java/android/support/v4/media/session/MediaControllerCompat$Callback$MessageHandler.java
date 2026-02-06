@@ -7,7 +7,6 @@ import android.os.Message;
 import android.support.v4.media.MediaMetadataCompat;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaControllerCompat$Callback$MessageHandler extends Handler {
     private static final int MSG_DESTROYED = 8;
     private static final int MSG_EVENT = 1;

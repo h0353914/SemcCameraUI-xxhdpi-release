@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.jpeg.exif;
 import java.io.IOException;
 import java.io.OutputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 class ExifRewriter$JFIFPieceImageData extends ExifRewriter$JFIFPiece {
     public final byte[] imageData;
     public final byte[] markerBytes;

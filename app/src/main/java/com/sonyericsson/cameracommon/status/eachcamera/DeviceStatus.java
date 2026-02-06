@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.status.eachcamera;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 import com.sonyericsson.cameracommon.status.EnumValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DeviceStatus extends EnumValue<DeviceStatus$Value> implements EachCameraStatusValue {
     public static final DeviceStatus$Value DEFAULT_VALUE = DeviceStatus$Value.POWER_OFF;
     public static final String KEY = "device_status";

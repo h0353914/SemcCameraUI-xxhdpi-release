@@ -3,7 +3,6 @@ package android.support.v4.widget;
 import android.os.Parcel;
 import android.os.Parcelable$ClassLoaderCreator;
 
-/* JADX INFO: loaded from: classes.dex */
 class SlidingPaneLayout$SavedState$1 implements Parcelable$ClassLoaderCreator<SlidingPaneLayout$SavedState> {
     SlidingPaneLayout$SavedState$1() {
     }

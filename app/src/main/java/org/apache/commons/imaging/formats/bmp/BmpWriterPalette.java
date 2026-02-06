@@ -6,7 +6,6 @@ import java.io.IOException;
 import org.apache.commons.imaging.common.BinaryOutputStream;
 import org.apache.commons.imaging.palette.SimplePalette;
 
-/* JADX INFO: loaded from: classes.dex */
 class BmpWriterPalette implements BmpWriter {
     private final int bitsPerSample;
     private final SimplePalette palette;

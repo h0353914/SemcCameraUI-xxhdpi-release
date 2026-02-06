@@ -7,7 +7,6 @@ import org.apache.commons.imaging.common.BinaryFileParser;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.formats.jpeg.JpegConstants;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JpegXmpParser extends BinaryFileParser {
     public JpegXmpParser() {
         setByteOrder(ByteOrder.BIG_ENDIAN);

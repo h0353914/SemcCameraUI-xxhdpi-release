@@ -5,7 +5,6 @@ import android.media.CamcorderProfile;
 import android.net.Uri;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecorderParameters {
     public static final long DEFAULT_MAX_FILE_SIZE = 256000000000L;
     private static final int INVALID_VALUE = -1;

@@ -4,7 +4,6 @@ import android.app.Application;
 import android.support.annotation.NonNull;
 import java.lang.reflect.InvocationTargetException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewModelProvider$AndroidViewModelFactory extends ViewModelProvider$NewInstanceFactory {
     private static ViewModelProvider$AndroidViewModelFactory sInstance;
     private Application mApplication;

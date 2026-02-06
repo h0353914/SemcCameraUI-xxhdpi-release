@@ -44,7 +44,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 class BypassCameraController {
     private static final int BYPASSCAMERA_IMAGE_READER_BUFFER_NUM = 1;
     private static final int BYPASSCAMERA_MIN_CAPTURE_BUFFER_NUM = 2;

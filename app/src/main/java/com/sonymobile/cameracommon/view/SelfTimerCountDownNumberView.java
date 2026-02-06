@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.settings.SelfTimerInterface;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SelfTimerCountDownNumberView extends ImageView {
     private static final int ANIMATION_FADING_DURATION_MS = 250;
     private static final int ANIMATION_VALUE = 255;

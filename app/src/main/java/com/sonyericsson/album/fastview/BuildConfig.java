@@ -1,6 +1,5 @@
 package com.sonyericsson.album.fastview;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class BuildConfig {
     public static final String APPLICATION_ID = "com.sonyericsson.album.fastview";
     public static final String BUILD_TYPE = "release";

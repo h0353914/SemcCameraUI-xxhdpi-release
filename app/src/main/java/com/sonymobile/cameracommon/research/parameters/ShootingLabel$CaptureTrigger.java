@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ShootingLabel$CaptureTrigger implements ShootingLabel$StringParameter {
     CAMERA_KEY(Event$CaptureTrigger.CAMERA_KEY.toString()),
     CAPTURE_BUTTON(Event$CaptureTrigger.CAPTURE_BUTTON.toString()),

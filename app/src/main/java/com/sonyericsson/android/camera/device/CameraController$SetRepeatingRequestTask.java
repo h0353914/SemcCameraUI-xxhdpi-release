@@ -13,7 +13,6 @@ import com.sonyericsson.cameracommon.status.eachcamera.DeviceStatus$Value;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class CameraController$SetRepeatingRequestTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     private static final int REPEATING_BURST_COUNT = 3;

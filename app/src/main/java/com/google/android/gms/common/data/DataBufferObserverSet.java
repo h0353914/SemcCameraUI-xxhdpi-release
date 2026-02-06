@@ -3,7 +3,6 @@ package com.google.android.gms.common.data;
 import java.util.HashSet;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DataBufferObserverSet implements DataBufferObserver, DataBufferObserver$Observable {
     private HashSet<DataBufferObserver> zzadk = new HashSet<>();
 

@@ -2,7 +2,6 @@ package org.apache.commons.imaging.common;
 
 import java.awt.image.BufferedImage;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RgbBufferedImageFactory implements BufferedImageFactory {
     @Override // org.apache.commons.imaging.common.BufferedImageFactory
     public BufferedImage getColorBufferedImage(int i, int i2, boolean z) {

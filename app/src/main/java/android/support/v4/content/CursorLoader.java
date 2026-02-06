@@ -11,7 +11,6 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CursorLoader extends AsyncTaskLoader<Cursor> {
     CancellationSignal mCancellationSignal;
     Cursor mCursor;

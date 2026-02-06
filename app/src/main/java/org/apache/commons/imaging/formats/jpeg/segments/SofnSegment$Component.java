@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.jpeg.segments;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SofnSegment$Component {
     public final int componentIdentifier;
     public final int horizontalSamplingFactor;

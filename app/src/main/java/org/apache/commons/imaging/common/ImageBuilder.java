@@ -9,7 +9,6 @@ import java.awt.image.RasterFormatException;
 import java.awt.image.WritableRaster;
 import java.util.Properties;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ImageBuilder {
     private final int[] data;
     private final boolean hasAlpha;

@@ -16,7 +16,6 @@ import com.sonyericsson.android.camera.view.animation.AnimationRequest;
 import com.sonyericsson.android.camera.view.animation.AnimationRequest$AnimationDegree;
 import com.sonyericsson.android.camera.view.animation.AnimationRequest$AnimationType;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$6 extends AbstractDraggingEventHandler {
     final /* synthetic */ ViewFinderImpl this$0;
 

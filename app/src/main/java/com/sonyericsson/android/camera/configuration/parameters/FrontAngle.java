@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum FrontAngle implements UserSettingValue {
     DEFAULT,
     CROPPED;

@@ -1,6 +1,5 @@
 package com.google.android.gms.auth.api.credentials;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CredentialPickerConfig$Builder {
     private boolean zzSn = false;
     private boolean mShowCancelButton = true;

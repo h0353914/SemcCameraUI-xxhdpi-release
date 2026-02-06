@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.tiff.constants;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TiffDirectoryConstants {
     public static final int DIRECTORY_TYPE_DIR_0 = 0;
     public static final int DIRECTORY_TYPE_DIR_1 = 1;

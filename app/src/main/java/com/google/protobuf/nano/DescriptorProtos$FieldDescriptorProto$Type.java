@@ -1,6 +1,5 @@
 package com.google.protobuf.nano;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface DescriptorProtos$FieldDescriptorProto$Type {
 
     @NanoEnumValue(legacy = false, value = DescriptorProtos$FieldDescriptorProto$Type.class)

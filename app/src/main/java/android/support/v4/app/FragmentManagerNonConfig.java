@@ -3,7 +3,6 @@ package android.support.v4.app;
 import android.arch.lifecycle.ViewModelStore;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FragmentManagerNonConfig {
     private final List<FragmentManagerNonConfig> mChildNonConfigs;
     private final List<Fragment> mFragments;

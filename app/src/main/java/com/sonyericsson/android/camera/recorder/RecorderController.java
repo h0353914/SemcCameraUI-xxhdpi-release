@@ -4,7 +4,6 @@ import android.location.Location;
 import android.support.annotation.Nullable;
 import com.sonyericsson.cameracommon.storage.Storage$StorageWriteNotifier;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface RecorderController {
     long getRecordingTimeMillis();
 

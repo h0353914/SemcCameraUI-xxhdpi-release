@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.research;
 
 import com.sonymobile.cameracommon.research.parameters.Event$Category;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SendSettingsCommonKeyTask implements Runnable {
     private final String mKey;
     final /* synthetic */ ResearchUtil this$0;

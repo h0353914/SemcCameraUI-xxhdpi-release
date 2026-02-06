@@ -8,7 +8,6 @@ import com.google.android.gms.common.internal.zzw;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class WebImage implements SafeParcelable {
     public static final Parcelable$Creator<WebImage> CREATOR = new zzb();
     private final int mVersionCode;

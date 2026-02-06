@@ -1,6 +1,5 @@
 package com.google.android.gms.internal;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlr$1 extends zzlr<Boolean> {
     zzlr$1(String str, Boolean bool) {
         super(str, bool);

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface SideTouchEventDetector$OnSideTouchGestureListener {
     void onDoubleTap(SideTouchEventDetector$SideTouchEvent sideTouchEventDetector$SideTouchEvent, int i, int i2);
 

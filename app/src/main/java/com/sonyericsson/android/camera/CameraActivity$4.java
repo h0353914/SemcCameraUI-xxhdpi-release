@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.systemmonitor.BatteryChangedReceiver$BatteryChangedReceiverListener;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$4 implements BatteryChangedReceiver$BatteryChangedReceiverListener {
     final /* synthetic */ CameraActivity this$0;
 

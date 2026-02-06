@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class ChildHelper$Bucket {
     static final int BITS_PER_WORD = 64;
     static final long LAST_BIT = Long.MIN_VALUE;

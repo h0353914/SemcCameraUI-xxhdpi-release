@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import android.view.KeyEvent;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class UserEventHandler$KeyEventDispatcher extends UserEventHandler$EventDispatcher {
     public UserEventHandler$KeyEventDispatcher() {
         super(null);

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.setting.dialogitem;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton$OnCheckedChangeListener;
 
-/* JADX INFO: loaded from: classes.dex */
 final class SettingButton$SwitchOnCheckedChangeListener implements CompoundButton$OnCheckedChangeListener {
     final /* synthetic */ SettingButton this$0;
 

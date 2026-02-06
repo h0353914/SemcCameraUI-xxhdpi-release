@@ -8,7 +8,6 @@ import android.util.Patterns;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public class EmailSignInConfig implements SafeParcelable {
     public static final Parcelable$Creator<EmailSignInConfig> CREATOR = new zza();
     final int versionCode;

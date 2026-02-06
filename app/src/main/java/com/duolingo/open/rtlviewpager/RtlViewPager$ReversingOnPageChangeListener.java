@@ -3,7 +3,6 @@ package com.duolingo.open.rtlviewpager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager$OnPageChangeListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class RtlViewPager$ReversingOnPageChangeListener implements ViewPager$OnPageChangeListener {
     private final ViewPager$OnPageChangeListener mListener;
     final /* synthetic */ RtlViewPager this$0;

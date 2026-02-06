@@ -18,7 +18,6 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatTextHelper {
     private static final int MONOSPACE = 3;
     private static final int SANS = 1;

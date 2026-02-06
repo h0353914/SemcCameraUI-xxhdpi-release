@@ -5,7 +5,6 @@ import org.apache.commons.imaging.common.ByteConversions;
 import org.apache.commons.imaging.formats.tiff.constants.TiffDirectoryType;
 import org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TagInfoFloat extends TagInfo {
     public TagInfoFloat(String str, int i, int i2, TiffDirectoryType tiffDirectoryType) {
         super(str, i, FieldType.FLOAT, i2, tiffDirectoryType);

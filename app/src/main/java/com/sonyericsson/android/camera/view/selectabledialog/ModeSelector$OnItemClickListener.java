@@ -8,7 +8,6 @@ import com.sonyericsson.android.camera.view.modeselector.Mode;
 import com.sonyericsson.android.camera.view.modeselector.ModeSelectorInternalMode;
 import com.sonyericsson.android.camera.view.modeselector.view.CapturingModePanelAttributes;
 
-/* JADX INFO: loaded from: classes.dex */
 class ModeSelector$OnItemClickListener implements View$OnClickListener {
     final /* synthetic */ ModeSelector this$0;
 

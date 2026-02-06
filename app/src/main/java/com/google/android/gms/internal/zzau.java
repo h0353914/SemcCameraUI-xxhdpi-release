@@ -7,7 +7,6 @@ import android.os.RemoteException;
 import com.google.android.gms.auth.AccountChangeEventsRequest;
 import com.google.android.gms.auth.AccountChangeEventsResponse;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface zzau extends IInterface {
     Bundle zza(Account account) throws RemoteException;
 

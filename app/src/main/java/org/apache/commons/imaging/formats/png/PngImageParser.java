@@ -48,7 +48,6 @@ import org.apache.commons.imaging.formats.png.transparencyfilters.TransparencyFi
 import org.apache.commons.imaging.icc.IccProfileParser;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PngImageParser extends ImageParser {
     private static final String[] ACCEPTED_EXTENSIONS = {".png"};
     private static final String DEFAULT_EXTENSION = ".png";

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.overlaycontrol;
 
 import com.sonyericsson.android.camera.view.overlaycontrol.semiauto.SemiAutoControlView$OnSemiAutoChangeListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SemiAutoControl$OnSemiAutoChangeListenerImpl implements SemiAutoControlView$OnSemiAutoChangeListener {
     final /* synthetic */ SemiAutoControl this$0;
 

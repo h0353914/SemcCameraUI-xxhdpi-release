@@ -11,7 +11,6 @@ import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver$
 import com.sonyericsson.cameracommon.rotatableview.EdgeRotatableContainerView;
 import com.sonyericsson.cameracommon.utility.ResourceUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PredictiveCaptureIndicatorController {
     private final Activity mActivity;
     private Animation mAnimation;

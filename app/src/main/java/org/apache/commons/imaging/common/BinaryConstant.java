@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BinaryConstant implements Cloneable {
     private final byte[] value;
 

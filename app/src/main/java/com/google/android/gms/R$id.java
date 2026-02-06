@@ -1,6 +1,5 @@
 package com.google.android.gms;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$id {
     public static final int adjust_height = 2131296284;
     public static final int adjust_width = 2131296285;

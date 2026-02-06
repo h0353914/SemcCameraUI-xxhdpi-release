@@ -10,7 +10,6 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(24)
 class FrameMetricsAggregator$FrameMetricsApi24Impl extends FrameMetricsAggregator$FrameMetricsBaseImpl {
     private static final int NANOS_PER_MS = 1000000;

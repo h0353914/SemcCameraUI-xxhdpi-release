@@ -15,7 +15,6 @@ import org.apache.commons.imaging.formats.tiff.TiffField;
 import org.apache.commons.imaging.formats.tiff.constants.TiffTagConstants;
 import org.apache.commons.imaging.formats.tiff.photometricinterpreters.PhotometricInterpreter;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class DataReader {
     private final int[] bitsPerSample;
     protected final int bitsPerSampleLength;

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.angle;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SideTouchZoomStepCalculator implements VariableIndex$Calculator {
     private static final int ZOOM_STEP_THRESHOLD_FOR_SIDE_TOUCH_1_DISTANCE = 100;
     private static final int ZOOM_STEP_THRESHOLD_FOR_SIDE_TOUCH_2_DISTANCE = 200;

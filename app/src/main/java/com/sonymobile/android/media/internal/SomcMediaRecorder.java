@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.CountDownLatch;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     public static final long DEFAULT_MAX_FILE_SIZE = 256000000000L;
     public static final int MEDIA_RECORDER_INFO_MASK = 268435455;

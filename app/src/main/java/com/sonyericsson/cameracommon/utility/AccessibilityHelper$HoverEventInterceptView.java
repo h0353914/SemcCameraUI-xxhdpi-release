@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AccessibilityHelper$HoverEventInterceptView extends FrameLayout {
     public AccessibilityHelper$HoverEventInterceptView(Context context) {
         super(context);

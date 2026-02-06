@@ -4,7 +4,6 @@ import android.util.Log;
 import android.util.SparseBooleanArray;
 
 /* JADX INFO: Add missing generic type declarations: [T] */
-/* JADX INFO: loaded from: classes.dex */
 class AsyncListUtil$2<T> implements ThreadUtil$BackgroundCallback<T> {
     private int mFirstRequiredTileStart;
     private int mGeneration;

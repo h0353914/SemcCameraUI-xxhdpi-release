@@ -26,7 +26,6 @@ import org.apache.commons.imaging.common.bytesource.ByteSourceInputStream;
 import org.apache.commons.imaging.formats.pcx.PcxImageParser;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DcxImageParser extends ImageParser {
     private static final String[] ACCEPTED_EXTENSIONS = {".dcx"};
     private static final String DEFAULT_EXTENSION = ".dcx";

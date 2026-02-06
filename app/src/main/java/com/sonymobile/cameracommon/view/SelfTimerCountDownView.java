@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.sonyericsson.cameracommon.settings.SelfTimerInterface;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SelfTimerCountDownView extends FrameLayout {
     boolean mIsHideHintText;
     private SelfTimerCountDownNumberView mLeftSelfTimerCountDownNumberView;

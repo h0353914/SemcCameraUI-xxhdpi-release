@@ -3,7 +3,6 @@ package android.arch.lifecycle;
 import java.util.HashMap;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewModelStore {
     private final HashMap<String, ViewModel> mMap = new HashMap<>();
 

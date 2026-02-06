@@ -2,7 +2,6 @@ package android.support.v4.app;
 
 import android.os.AsyncTask;
 
-/* JADX INFO: loaded from: classes.dex */
 final class JobIntentService$CommandProcessor extends AsyncTask<Void, Void, Void> {
     final /* synthetic */ JobIntentService this$0;
 

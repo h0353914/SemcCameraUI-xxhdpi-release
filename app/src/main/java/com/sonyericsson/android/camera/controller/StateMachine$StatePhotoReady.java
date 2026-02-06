@@ -29,7 +29,6 @@ import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import com.sonymobile.cameracommon.evf.Evf;
 import com.sonymobile.cameracommon.research.parameters.Event$SelfTimerTrigger;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StatePhotoReady extends StateMachine$StatePhotoBase {
     private static final String TAG = "StateMachine.StatePhotoReady";
     private CameraParameters$FaceDetectionResult mLatestFaceDetectionResult;

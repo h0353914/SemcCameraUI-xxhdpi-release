@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public abstract class FragmentTransitionImpl {
     public abstract void addTarget(Object obj, View view);

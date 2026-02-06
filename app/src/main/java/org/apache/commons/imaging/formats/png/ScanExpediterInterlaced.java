@@ -7,7 +7,6 @@ import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.formats.png.chunks.PngChunkPlte;
 import org.apache.commons.imaging.formats.png.transparencyfilters.TransparencyFilter;
 
-/* JADX INFO: loaded from: classes.dex */
 class ScanExpediterInterlaced extends ScanExpediter {
     private static final int[] STARTING_ROW = {0, 0, 4, 0, 2, 0, 1};
     private static final int[] STARTING_COL = {0, 4, 0, 2, 0, 1, 0};

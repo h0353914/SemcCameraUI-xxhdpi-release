@@ -1,6 +1,5 @@
 package com.sonymobile.android.media;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaRecorder$VideoSource {
     public static final int CAMERA = 1;
     public static final int DEFAULT = 0;

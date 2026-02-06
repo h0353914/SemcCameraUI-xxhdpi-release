@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class MediaDescriptionCompatApi21 {
     public static String getMediaId(Object obj) {

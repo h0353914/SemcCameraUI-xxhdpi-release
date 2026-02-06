@@ -4,7 +4,6 @@ import android.content.Context;
 import android.opengl.Matrix;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class RenderBase {
     protected static final int FLOAT_SIZE_IN_BYTE = 4;
     private Context mContext;

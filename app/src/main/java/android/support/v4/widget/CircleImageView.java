@@ -9,7 +9,6 @@ import android.support.v4.view.ViewCompat;
 import android.view.animation.Animation$AnimationListener;
 import android.widget.ImageView;
 
-/* JADX INFO: loaded from: classes.dex */
 class CircleImageView extends ImageView {
     private static final int FILL_SHADOW_COLOR = 1023410176;
     private static final int KEY_SHADOW_COLOR = 503316480;

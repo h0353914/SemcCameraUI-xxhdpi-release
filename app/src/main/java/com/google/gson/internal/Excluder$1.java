@@ -8,7 +8,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
 /* JADX INFO: Add missing generic type declarations: [T] */
-/* JADX INFO: loaded from: classes.dex */
 class Excluder$1<T> extends TypeAdapter<T> {
     private TypeAdapter<T> delegate;
     final /* synthetic */ Excluder this$0;

@@ -1,6 +1,5 @@
 package com.sonymobile.imageprocessor.bypasscamera2;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum BypassCameraParameters$Capability$VideoStabilizationMode {
     OFF(0, "off"),
     STEADY_SHOT(1, "on"),

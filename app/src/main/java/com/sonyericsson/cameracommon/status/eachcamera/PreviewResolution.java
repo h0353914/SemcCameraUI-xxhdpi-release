@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.status.eachcamera;
 import android.graphics.Rect;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PreviewResolution extends ResolutionValue implements EachCameraStatusValue {
     public static final Rect DEFAULT_VALUE = new Rect(0, 0, 0, 0);
     public static final String KEY = "preview_resolution";

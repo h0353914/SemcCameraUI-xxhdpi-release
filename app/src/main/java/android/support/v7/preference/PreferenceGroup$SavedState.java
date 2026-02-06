@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class PreferenceGroup$SavedState extends Preference$BaseSavedState {
     public static final Parcelable$Creator<PreferenceGroup$SavedState> CREATOR = new PreferenceGroup$SavedState$1();
     int mInitialExpandedChildrenCount;

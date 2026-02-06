@@ -4,7 +4,6 @@ import android.media.session.MediaController$TransportControls;
 import android.net.Uri;
 import android.os.Bundle;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaControllerCompatApi23$TransportControls {
     public static void playFromUri(Object obj, Uri uri, Bundle bundle) {
         ((MediaController$TransportControls) obj).playFromUri(uri, bundle);

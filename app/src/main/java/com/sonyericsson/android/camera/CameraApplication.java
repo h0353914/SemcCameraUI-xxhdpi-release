@@ -15,7 +15,6 @@ import com.sonyericsson.cameracommon.storage.Storage;
 import com.sonyericsson.cameracommon.storage.StorageImpl;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CameraApplication extends Application {
     private static final int CLASS_PRELOAD_WAKELOCK_TIMEOUT_MILLIS = 2000;
     public static final String TAG = "CameraApplication";

@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.support.v7.view.menu.ShowableListMenu;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class PopupMenu$3 extends ForwardingListener {
     final /* synthetic */ PopupMenu this$0;
 

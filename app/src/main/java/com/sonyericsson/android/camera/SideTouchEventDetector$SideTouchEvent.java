@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera;
 
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SideTouchEventDetector$SideTouchEvent {
     public final SideTouchEventDetector$SideTouchArea area;
     public final int position;

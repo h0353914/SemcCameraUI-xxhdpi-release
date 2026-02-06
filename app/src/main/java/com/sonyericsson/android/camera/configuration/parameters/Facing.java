@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Facing implements UserSettingValue {
     BACK(2131231095, 2131689610, CameraInfo$CameraId.BACK),
     FRONT(2131231095, 2131689612, CameraInfo$CameraId.FRONT);

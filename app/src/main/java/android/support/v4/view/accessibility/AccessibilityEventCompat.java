@@ -4,7 +4,6 @@ import android.os.Build$VERSION;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityRecord;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class AccessibilityEventCompat {
     public static final int CONTENT_CHANGE_TYPE_CONTENT_DESCRIPTION = 4;
     public static final int CONTENT_CHANGE_TYPE_SUBTREE = 1;

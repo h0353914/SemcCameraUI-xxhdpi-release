@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MeasurePerformance {
     private static final String DEBUG_PERFORM_FILE = "camera_perform.csv";
     private static final boolean DEBUG_PERFORM_MEM = false;

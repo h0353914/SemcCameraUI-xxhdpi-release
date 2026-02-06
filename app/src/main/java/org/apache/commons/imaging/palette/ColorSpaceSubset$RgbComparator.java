@@ -3,7 +3,6 @@ package org.apache.commons.imaging.palette;
 import java.io.Serializable;
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ColorSpaceSubset$RgbComparator implements Comparator<ColorSpaceSubset>, Serializable {
     private static final long serialVersionUID = 509214838111679029L;
 

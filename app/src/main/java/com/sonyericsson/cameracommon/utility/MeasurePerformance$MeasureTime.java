@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.utility;
 
-/* JADX INFO: loaded from: classes.dex */
 class MeasurePerformance$MeasureTime {
     public String additionalInfo;
     public MeasurePerformance$PerformanceIds id;

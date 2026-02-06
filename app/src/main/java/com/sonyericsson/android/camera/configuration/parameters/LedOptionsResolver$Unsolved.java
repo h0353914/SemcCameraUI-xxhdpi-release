@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class LedOptionsResolver$Unsolved extends LedOptionsResolver$Resolver {
     final /* synthetic */ LedOptionsResolver this$0;
 

@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.io.PrintWriter;
 import org.apache.commons.imaging.ImageReadException;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class IcoImageParser$IconData {
     public final IcoImageParser$IconInfo iconInfo;
 

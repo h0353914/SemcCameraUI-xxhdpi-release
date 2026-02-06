@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 
-/* JADX INFO: loaded from: classes.dex */
 class FastViewManager$1 implements ServiceConnection {
     final /* synthetic */ FastViewManager this$0;
 

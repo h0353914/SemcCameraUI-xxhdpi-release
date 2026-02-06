@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView$OnItemTouchListener;
 import android.support.v7.widget.RecyclerView$ViewHolder;
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class ItemTouchHelper$2 implements RecyclerView$OnItemTouchListener {
     final /* synthetic */ ItemTouchHelper this$0;
 

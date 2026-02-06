@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.png;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GammaCorrection {
     private static final boolean DEBUG = false;
     private final int[] lookupTable = new int[256];

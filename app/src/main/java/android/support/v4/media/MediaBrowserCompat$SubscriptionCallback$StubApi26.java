@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$SubscriptionCallback$StubApi26 extends MediaBrowserCompat$SubscriptionCallback$StubApi21 implements MediaBrowserCompatApi26$SubscriptionCallback {
     final /* synthetic */ MediaBrowserCompat$SubscriptionCallback this$0;
 

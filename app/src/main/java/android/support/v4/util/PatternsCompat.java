@@ -4,7 +4,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import java.util.regex.Pattern;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class PatternsCompat {
 
     @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})

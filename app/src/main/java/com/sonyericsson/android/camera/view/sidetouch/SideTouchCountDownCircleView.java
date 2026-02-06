@@ -10,7 +10,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.sonyericsson.cameracommon.settings.SelfTimerInterface;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SideTouchCountDownCircleView extends View {
     private static final float ANIMATION_TIME_RATIO = 0.6f;
     private static final float ANIMATION_VALUE = 360.0f;

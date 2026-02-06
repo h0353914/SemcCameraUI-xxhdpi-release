@@ -13,7 +13,6 @@ import android.support.v7.appcompat.R$dimen;
 import android.support.v7.appcompat.R$styleable;
 import android.view.ViewConfiguration;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ActionBarPolicy {
     private Context mContext;

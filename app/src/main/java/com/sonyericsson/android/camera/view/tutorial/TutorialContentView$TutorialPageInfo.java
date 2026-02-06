@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.tutorial;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class TutorialContentView$TutorialPageInfo {
     final int pageIndexByType;
     final TutorialController$TutorialType type;

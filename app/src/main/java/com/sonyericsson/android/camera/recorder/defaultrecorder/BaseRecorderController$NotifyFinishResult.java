@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.recorder.defaultrecorder;
 
 import com.sonyericsson.android.camera.recorder.RecorderController$Result;
 
-/* JADX INFO: loaded from: classes.dex */
 class BaseRecorderController$NotifyFinishResult implements Runnable {
     private final RecorderController$Result mResult;
     final /* synthetic */ BaseRecorderController this$0;

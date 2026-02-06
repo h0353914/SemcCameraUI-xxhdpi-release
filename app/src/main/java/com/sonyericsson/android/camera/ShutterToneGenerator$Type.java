@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ShutterToneGenerator$Type {
     SOUND_AF_SUCCESS("common/af_success.m4a", true),
     SOUND_SELFTIMER_3SEC("common/selftimer_3sec.m4a", true),

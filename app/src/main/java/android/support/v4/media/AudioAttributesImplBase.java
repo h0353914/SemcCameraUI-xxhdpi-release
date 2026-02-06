@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 class AudioAttributesImplBase implements AudioAttributesImpl {
     int mContentType;
     int mFlags;

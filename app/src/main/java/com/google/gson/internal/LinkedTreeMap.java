@@ -8,7 +8,6 @@ import java.util.LinkedHashMap;
 import java.util.Map$Entry;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class LinkedTreeMap<K, V> extends AbstractMap<K, V> implements Serializable {
     static final /* synthetic */ boolean $assertionsDisabled = false;
     private static final Comparator<Comparable> NATURAL_ORDER = new LinkedTreeMap$1();

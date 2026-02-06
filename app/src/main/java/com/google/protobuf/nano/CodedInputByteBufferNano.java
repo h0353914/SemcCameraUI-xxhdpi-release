@@ -8,7 +8,6 @@ import com.google.protobuf.MapFieldLite;
 import com.google.protobuf.Parser;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class CodedInputByteBufferNano {
     private static final int DEFAULT_RECURSION_LIMIT = 64;
     private static final int DEFAULT_SIZE_LIMIT = 67108864;

@@ -2,7 +2,6 @@ package android.support.v7.app;
 
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class AlertController$3 implements Runnable {
     final /* synthetic */ AlertController this$0;
     final /* synthetic */ View val$bottom;

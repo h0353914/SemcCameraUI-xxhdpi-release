@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$attr {
     public static final int actionBarDivider = 2130968576;
     public static final int actionBarItemBackground = 2130968577;

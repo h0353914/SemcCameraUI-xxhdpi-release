@@ -4,7 +4,6 @@ import com.google.gson.internal.JsonReaderInternalAccess;
 import com.google.gson.internal.bind.JsonTreeReader;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 class JsonReader$1 extends JsonReaderInternalAccess {
     JsonReader$1() {
     }

@@ -4,7 +4,6 @@ import android.app.Activity;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.rotatableview.RotatableToast;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ToastContent {
     public static final String TAG = "ToastContent";
     private int mSensorOrientation = 2;

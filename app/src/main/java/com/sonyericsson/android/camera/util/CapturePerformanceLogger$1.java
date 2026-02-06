@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.util;
 
 import com.sonyericsson.cameracommon.storage.SavingTaskManager$SavedFileType;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class CapturePerformanceLogger$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$cameracommon$storage$SavingTaskManager$SavedFileType = new int[SavingTaskManager$SavedFileType.values().length];
 

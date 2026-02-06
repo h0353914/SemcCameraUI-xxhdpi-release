@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.util;
 import android.os.SystemClock;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum PerfLog {
     APPLICATION_ON_CREATE,
     APPLICATION_PRELOAD_THREAD,

@@ -3,7 +3,6 @@ package android.support.v4.media;
 import android.os.Build$VERSION;
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class MediaBrowserCompat$ItemCallback {
     final Object mItemCallbackObj;
 

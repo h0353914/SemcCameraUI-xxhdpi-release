@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller;
 
 import com.sonyericsson.android.camera.view.GestureShutterView$AnimationStatusListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class GestureShutter$1 implements GestureShutterView$AnimationStatusListener {
     final /* synthetic */ GestureShutter this$0;
 

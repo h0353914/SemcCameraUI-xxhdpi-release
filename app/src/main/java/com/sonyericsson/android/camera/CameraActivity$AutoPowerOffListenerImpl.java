@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$AutoPowerOffAction;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$AutoPowerOffListenerImpl implements AutoPowerOffTimer$AutoPowerOffListener {
     final /* synthetic */ CameraActivity this$0;
 

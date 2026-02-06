@@ -6,7 +6,6 @@ import java.nio.ByteOrder;
 import java.util.HashMap;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MyLzwCompressor {
     private final ByteOrder byteOrder;
     private final int clearCode;

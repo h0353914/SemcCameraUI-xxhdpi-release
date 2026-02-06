@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.selectabledialog;
 import android.animation.Animator$AnimatorListener;
 import android.animation.ObjectAnimator;
 
-/* JADX INFO: loaded from: classes.dex */
 class AbsDialogScrollView$SliderAnimation implements AbsDialogScrollView$AnimationFactory {
     private final int mDuration;
     final /* synthetic */ AbsDialogScrollView this$0;

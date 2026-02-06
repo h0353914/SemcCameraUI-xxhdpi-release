@@ -2,7 +2,6 @@ package android.support.v4.print;
 
 import android.os.CancellationSignal$OnCancelListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class PrintHelper$PrintUriAdapter$1$1 implements CancellationSignal$OnCancelListener {
     final /* synthetic */ PrintHelper$PrintUriAdapter$1 this$2;
 

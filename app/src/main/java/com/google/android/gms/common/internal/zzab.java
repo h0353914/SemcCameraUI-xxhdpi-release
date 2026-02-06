@@ -9,7 +9,6 @@ import com.google.android.gms.R$color;
 import com.google.android.gms.R$drawable;
 import com.google.android.gms.R$string;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzab extends Button {
     public zzab(Context context) {
         this(context, null);

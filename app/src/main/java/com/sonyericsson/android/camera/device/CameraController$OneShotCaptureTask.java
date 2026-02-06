@@ -8,7 +8,6 @@ import android.view.Surface;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class CameraController$OneShotCaptureTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     private final CameraController$CaptureSessionCallback mCaptureSessionCallback;

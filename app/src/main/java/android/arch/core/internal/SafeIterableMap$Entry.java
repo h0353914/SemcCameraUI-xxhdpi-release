@@ -3,7 +3,6 @@ package android.arch.core.internal;
 import android.support.annotation.NonNull;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 class SafeIterableMap$Entry<K, V> implements Map$Entry<K, V> {
 
     @NonNull

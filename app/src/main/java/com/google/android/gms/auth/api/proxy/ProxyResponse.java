@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ProxyResponse implements SafeParcelable {
     public static final Parcelable$Creator<ProxyResponse> CREATOR = new zzc();
     public static final int STATUS_CODE_NO_CONNECTION = -1;

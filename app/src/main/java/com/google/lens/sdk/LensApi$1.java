@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.KeyguardManager$KeyguardDismissCallback;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 class LensApi$1 extends KeyguardManager$KeyguardDismissCallback {
     final /* synthetic */ LensApi this$0;
     final /* synthetic */ Activity val$activity;

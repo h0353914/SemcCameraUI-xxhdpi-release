@@ -41,7 +41,6 @@ import kotlin.jvm.internal.markers.KMutableMap;
 import kotlin.jvm.internal.markers.KMutableMap$Entry;
 import kotlin.jvm.internal.markers.KMutableSet;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TypeIntrinsics {
     private static <T extends Throwable> T sanitizeStackTrace(T t) {
         return (T) Intrinsics.sanitizeStackTrace(t, TypeIntrinsics.class.getName());

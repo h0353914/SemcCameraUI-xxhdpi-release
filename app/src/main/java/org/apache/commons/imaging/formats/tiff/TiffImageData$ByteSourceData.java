@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.tiff;
 import java.io.IOException;
 import org.apache.commons.imaging.common.bytesource.ByteSourceFile;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffImageData$ByteSourceData extends TiffImageData$Data {
     ByteSourceFile byteSourceFile;
 

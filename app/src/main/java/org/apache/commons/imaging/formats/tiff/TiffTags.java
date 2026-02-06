@@ -27,7 +27,6 @@ import org.apache.commons.imaging.formats.tiff.constants.TiffTagConstants;
 import org.apache.commons.imaging.formats.tiff.constants.WangTagConstants;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 final class TiffTags {
     private static final List<TagInfo> ALL_TAGS = makeMergedTagList();
     private static final Map<Integer, List<TagInfo>> ALL_TAG_MAP = makeTagMap(ALL_TAGS);

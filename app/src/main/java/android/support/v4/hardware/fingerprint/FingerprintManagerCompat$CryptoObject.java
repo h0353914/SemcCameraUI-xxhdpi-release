@@ -6,7 +6,6 @@ import java.security.Signature;
 import javax.crypto.Cipher;
 import javax.crypto.Mac;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FingerprintManagerCompat$CryptoObject {
     private final Cipher mCipher;
     private final Mac mMac;

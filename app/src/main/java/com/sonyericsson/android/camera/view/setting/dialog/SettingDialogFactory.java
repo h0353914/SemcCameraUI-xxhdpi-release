@@ -12,7 +12,6 @@ import com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog
 import com.sonyericsson.android.camera.view.selectabledialog.ModeSelector;
 import com.sonyericsson.android.camera.view.selectabledialog.SettingMenu;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SettingDialogFactory {
     public static ModeSelector createModeSelector(Context context, int i, int i2, boolean z) {
         AbsSelectableDialog$Params absSelectableDialog$Params = new AbsSelectableDialog$Params();

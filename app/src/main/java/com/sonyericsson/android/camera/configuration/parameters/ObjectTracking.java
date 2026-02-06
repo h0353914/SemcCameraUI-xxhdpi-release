@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ObjectTracking implements UserSettingValue {
     ON(-1, 2131690116, FocusMode.OBJECT_TRACKING),
     OFF(-1, 2131690115, FocusMode.FACE_DETECTION);

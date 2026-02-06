@@ -4,7 +4,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class Track$MuxerHandler extends Handler {
     final /* synthetic */ Track this$0;
 

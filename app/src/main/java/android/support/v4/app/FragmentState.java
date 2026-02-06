@@ -8,7 +8,6 @@ import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 final class FragmentState implements Parcelable {
     public static final Parcelable$Creator<FragmentState> CREATOR = new FragmentState$1();
     final Bundle mArguments;

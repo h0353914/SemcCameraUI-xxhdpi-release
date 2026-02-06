@@ -10,7 +10,6 @@ import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem
 import com.sonyericsson.cameracommon.storage.Storage;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingUi$1 implements SettingExecutorInterface<UserSettingKey> {
     final /* synthetic */ SettingUi this$0;
     final /* synthetic */ Context val$context;

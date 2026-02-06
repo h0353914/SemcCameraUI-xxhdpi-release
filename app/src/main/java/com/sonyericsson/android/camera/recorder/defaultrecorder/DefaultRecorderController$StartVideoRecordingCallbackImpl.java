@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.recorder.defaultrecorder;
 
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$StartVideoRecordingCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class DefaultRecorderController$StartVideoRecordingCallbackImpl implements BypassCamera$StartVideoRecordingCallback {
     private final DefaultRecorderController$CallbackLock mLock;
 

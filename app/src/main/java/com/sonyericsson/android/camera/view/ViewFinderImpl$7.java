@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 import com.sonyericsson.android.camera.view.modeselector.ModeSelectorInternalMode;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$7 implements View$OnClickListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

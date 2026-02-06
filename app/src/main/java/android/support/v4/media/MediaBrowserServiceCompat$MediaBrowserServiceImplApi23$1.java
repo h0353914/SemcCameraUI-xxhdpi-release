@@ -2,7 +2,6 @@ package android.support.v4.media;
 
 import android.os.Parcel;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$MediaBrowserServiceImplApi23$1 extends MediaBrowserServiceCompat$Result<MediaBrowserCompat$MediaItem> {
     final /* synthetic */ MediaBrowserServiceCompat$MediaBrowserServiceImplApi23 this$1;
     final /* synthetic */ MediaBrowserServiceCompatApi21$ResultWrapper val$resultWrapper;

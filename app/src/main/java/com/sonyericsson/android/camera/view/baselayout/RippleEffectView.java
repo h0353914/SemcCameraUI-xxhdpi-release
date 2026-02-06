@@ -10,7 +10,6 @@ import android.view.View;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RippleEffectView extends View {
     private static final String TAG = "RippleEffectView";
     private float mMaxRadius;

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.gestureshutter;
 
 import android.graphics.Rect;
 
-/* JADX INFO: loaded from: classes.dex */
 class HandSignsDetector$DetectResult implements HandSignsDetectorInterface$DetectResultInterface {
     public static final int AHS_STATUS_CLICKDOWN = 2097152;
     public static final int AHS_STATUS_CLICKUP = 4194304;

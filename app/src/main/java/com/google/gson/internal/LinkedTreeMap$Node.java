@@ -2,7 +2,6 @@ package com.google.gson.internal;
 
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 final class LinkedTreeMap$Node<K, V> implements Map$Entry<K, V> {
     int height;
     final K key;

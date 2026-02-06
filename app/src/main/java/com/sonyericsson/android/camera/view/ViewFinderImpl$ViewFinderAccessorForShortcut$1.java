@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$ViewFinderAccessorForShortcut$1 implements Runnable {
     final /* synthetic */ ViewFinderImpl$ViewFinderAccessorForShortcut this$1;
 

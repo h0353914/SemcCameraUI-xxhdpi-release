@@ -2,7 +2,6 @@ package kotlin.io;
 
 import kotlin.Metadata;
 
-/* JADX INFO: loaded from: classes.dex */
 @Metadata(bv = {1, 0, 2}, k = 3, mv = {1, 1, 10})
 public final /* synthetic */ class FileTreeWalk$FileTreeWalkIterator$WhenMappings {
     public static final /* synthetic */ int[] $EnumSwitchMapping$0 = new int[FileWalkDirection.values().length];

@@ -6,7 +6,6 @@ import android.os.Looper;
 import android.os.Message;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 class AudioTrack$CodecHandler extends Handler {
     final /* synthetic */ AudioTrack this$0;
 

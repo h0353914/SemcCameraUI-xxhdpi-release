@@ -40,7 +40,6 @@ import org.apache.commons.imaging.formats.tiff.write.TiffOutputDirectory;
 import org.apache.commons.imaging.formats.tiff.write.TiffOutputField;
 import org.apache.commons.imaging.formats.tiff.write.TiffOutputSet;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JpegMetadata {
     private TiffImageMetadata mMetadata;
     private TiffOutputSet mOutput;

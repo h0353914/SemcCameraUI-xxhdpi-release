@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.png;
 
 import org.apache.commons.imaging.ImageReadException;
 
-/* JADX INFO: loaded from: classes.dex */
 class BitParser {
     private final int bitDepth;
     private final int bitsPerPixel;

@@ -1,6 +1,5 @@
 package android.support.v4.math;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MathUtils {
     public static double clamp(double d, double d2, double d3) {
         return d < d2 ? d2 : d > d3 ? d3 : d;

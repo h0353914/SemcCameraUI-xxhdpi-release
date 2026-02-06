@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.storage.updater;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 class StorageStateUpdater$1 implements StorageUpdateTask$OnTaskFinishCallback {
     final /* synthetic */ StorageStateUpdater this$0;
 

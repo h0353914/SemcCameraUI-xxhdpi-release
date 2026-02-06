@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class GenericGifBlock extends GifBlock {
     final List<byte[]> subblocks;
 

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.os.ResultReceiver;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$ServiceBinderImpl$9 implements Runnable {
     final /* synthetic */ MediaBrowserServiceCompat$ServiceBinderImpl this$1;
     final /* synthetic */ String val$action;

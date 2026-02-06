@@ -4,7 +4,6 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup$PreferencePositionCallback;
 import android.support.v7.widget.RecyclerView$Adapter;
 
-/* JADX INFO: loaded from: classes.dex */
 class PreferenceFragment$3 implements Runnable {
     final /* synthetic */ PreferenceFragment this$0;
     final /* synthetic */ String val$key;

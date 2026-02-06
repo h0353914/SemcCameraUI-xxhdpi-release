@@ -2,7 +2,6 @@ package android.support.v4.graphics;
 
 import android.support.v4.content.res.FontResourcesParserCompat$FontFileResourceEntry;
 
-/* JADX INFO: loaded from: classes.dex */
 class TypefaceCompatBaseImpl$2 implements TypefaceCompatBaseImpl$StyleExtractor<FontResourcesParserCompat$FontFileResourceEntry> {
     final /* synthetic */ TypefaceCompatBaseImpl this$0;
 

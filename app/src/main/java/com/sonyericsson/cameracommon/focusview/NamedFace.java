@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.focusview;
 
 import android.graphics.Rect;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NamedFace {
     public final Rect mFacePosition;
     public final String mName;

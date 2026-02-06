@@ -4,7 +4,6 @@ import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Handler;
 
-/* JADX INFO: loaded from: classes.dex */
 class DynamicAreaFilter$2 extends ContentObserver {
     final /* synthetic */ DynamicAreaFilter this$0;
 

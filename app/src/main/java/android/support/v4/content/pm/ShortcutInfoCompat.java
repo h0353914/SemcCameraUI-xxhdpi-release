@@ -15,7 +15,6 @@ import android.support.v4.graphics.drawable.IconCompat;
 import android.text.TextUtils;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ShortcutInfoCompat {
     ComponentName mActivity;
     Context mContext;

@@ -6,7 +6,6 @@ import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class BundleCompat {
     private BundleCompat() {
     }

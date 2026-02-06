@@ -3,7 +3,6 @@ package android.support.v4.app;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentState$1 implements Parcelable$Creator<FragmentState> {
     FragmentState$1() {
     }

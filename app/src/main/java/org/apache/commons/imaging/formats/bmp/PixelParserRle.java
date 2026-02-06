@@ -5,7 +5,6 @@ import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.common.ImageBuilder;
 
-/* JADX INFO: loaded from: classes.dex */
 class PixelParserRle extends PixelParser {
     public PixelParserRle(BmpHeaderInfo bmpHeaderInfo, byte[] bArr, byte[] bArr2) {
         super(bmpHeaderInfo, bArr, bArr2);

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ViewFinder$UiComponentKind {
     ZOOM_BAR,
     SETTING_DIALOG,

@@ -29,7 +29,6 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingParent, NestedScrollingChild {
     private static final int ALPHA_ANIMATION_DURATION = 300;
     private static final int ANIMATE_TO_START_DURATION = 200;

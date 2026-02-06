@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.capturefeedback.contextview;
 
-/* JADX INFO: loaded from: classes.dex */
 class GLSurfaceContextView$ReleaseTask implements Runnable {
     final /* synthetic */ GLSurfaceContextView this$0;
 

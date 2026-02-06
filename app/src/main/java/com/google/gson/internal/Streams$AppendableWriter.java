@@ -3,7 +3,6 @@ package com.google.gson.internal;
 import java.io.IOException;
 import java.io.Writer;
 
-/* JADX INFO: loaded from: classes.dex */
 final class Streams$AppendableWriter extends Writer {
     private final Appendable appendable;
     private final Streams$AppendableWriter$CurrentWrite currentWrite;

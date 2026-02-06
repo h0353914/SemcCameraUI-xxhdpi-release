@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.modeselector.internalmode.googlelen
 import android.app.KeyguardManager$KeyguardDismissCallback;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class GoogleLensModeActivity$KeyguardDismissCallbackImpl extends KeyguardManager$KeyguardDismissCallback {
     final /* synthetic */ GoogleLensModeActivity this$0;
 

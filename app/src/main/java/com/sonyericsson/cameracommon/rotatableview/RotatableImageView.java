@@ -9,7 +9,6 @@ import android.view.ViewGroup$LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView$ScaleType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RotatableImageView extends ImageView {
     public static final String TAG = "RotatableImageView";
     private int mFixRotation;

@@ -7,7 +7,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import android.support.v4.view.AbsSavedState;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class RecyclerView$SavedState extends AbsSavedState {
     public static final Parcelable$Creator<RecyclerView$SavedState> CREATOR = new RecyclerView$SavedState$1();

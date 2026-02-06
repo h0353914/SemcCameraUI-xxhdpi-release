@@ -7,7 +7,6 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceUtil {
     public static final String TAG = "CameraDeviceUtil";
     private static final Comparator<int[]> mSupportedFpsComparator = new CameraDeviceUtil$1();

@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionMenuPresenter$SavedState$1 implements Parcelable$Creator<ActionMenuPresenter$SavedState> {
     ActionMenuPresenter$SavedState$1() {
     }

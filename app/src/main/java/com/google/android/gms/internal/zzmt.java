@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzmt {
     public static long zza(InputStream inputStream, OutputStream outputStream, boolean z) throws IOException {
         return zza(inputStream, outputStream, z, 1024);

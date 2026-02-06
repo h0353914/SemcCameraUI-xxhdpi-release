@@ -1,6 +1,5 @@
 package android.support.v7.viewpager;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$style {
     public static final int TextAppearance_Compat_Notification = 2131755283;
     public static final int TextAppearance_Compat_Notification_Info = 2131755284;

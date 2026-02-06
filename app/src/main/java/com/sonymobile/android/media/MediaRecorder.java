@@ -12,7 +12,6 @@ import java.io.FileDescriptor;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaRecorder {
     public static final int MEDIA_ERROR_SERVER_DIED = 100;
     public static final int MEDIA_RECORDER_ERROR_UNKNOWN = 1;

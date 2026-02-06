@@ -5,7 +5,6 @@ import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable$ConstantState;
 
-/* JADX INFO: loaded from: classes.dex */
 final class zzls$zza extends Drawable {
     private static final zzls$zza zzaeu = new zzls$zza();
     private static final zzls$zza$zza zzaev = new zzls$zza$zza(null);

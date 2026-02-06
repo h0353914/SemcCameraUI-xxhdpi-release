@@ -11,7 +11,6 @@ import android.support.v4.media.RatingCompat;
 import android.view.KeyEvent;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface IMediaSession extends IInterface {
     void addQueueItem(MediaDescriptionCompat mediaDescriptionCompat) throws RemoteException;
 

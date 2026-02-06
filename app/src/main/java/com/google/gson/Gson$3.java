@@ -5,7 +5,6 @@ import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 class Gson$3 extends TypeAdapter<Number> {
     final /* synthetic */ Gson this$0;
 

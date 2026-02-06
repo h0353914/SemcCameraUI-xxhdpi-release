@@ -15,7 +15,6 @@ import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY})
 class VersionedParcelStream extends VersionedParcel {
     private static final int TYPE_BOOLEAN = 5;

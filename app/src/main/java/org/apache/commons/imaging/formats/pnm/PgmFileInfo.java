@@ -7,7 +7,6 @@ import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.ImageInfo$ColorType;
 import org.apache.commons.imaging.ImageReadException;
 
-/* JADX INFO: loaded from: classes.dex */
 class PgmFileInfo extends FileInfo {
     private final int bytesPerSample;
     private final int max;

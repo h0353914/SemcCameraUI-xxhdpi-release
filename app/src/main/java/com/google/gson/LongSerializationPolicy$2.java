@@ -1,6 +1,5 @@
 package com.google.gson;
 
-/* JADX INFO: loaded from: classes.dex */
 enum LongSerializationPolicy$2 extends LongSerializationPolicy {
     LongSerializationPolicy$2(String str, int i) {
         super(str, i, null);

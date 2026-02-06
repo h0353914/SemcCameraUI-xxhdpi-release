@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ScrollingTabContainerView$1 implements Runnable {
     final /* synthetic */ ScrollingTabContainerView this$0;
     final /* synthetic */ View val$tabView;

@@ -4,7 +4,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.media.session.MediaSessionCompatApi24$Callback;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionCompatApi24$CallbackProxy<T extends MediaSessionCompatApi24$Callback> extends MediaSessionCompatApi23$CallbackProxy<T> {
     public MediaSessionCompatApi24$CallbackProxy(T t) {
         super(t);

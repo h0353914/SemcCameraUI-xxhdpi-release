@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.recorder.defaultrecorder;
 
-/* JADX INFO: loaded from: classes.dex */
 class BaseRecorderController$NotifyProgressTask implements Runnable {
     private final long mRecordingTimeMillis;
     final /* synthetic */ BaseRecorderController this$0;

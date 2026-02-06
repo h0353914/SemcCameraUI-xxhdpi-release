@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.storage;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum CameraStorageManager$DetailStorageState {
     MEMORY_READY,
     MEMORY_READY_LOW,

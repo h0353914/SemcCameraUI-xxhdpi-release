@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.support.annotation.NonNull;
 import android.widget.EdgeEffect;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecyclerView$EdgeEffectFactory {
     public static final int DIRECTION_BOTTOM = 3;
     public static final int DIRECTION_LEFT = 0;

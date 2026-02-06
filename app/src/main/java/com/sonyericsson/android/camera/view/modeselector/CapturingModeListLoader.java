@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CapturingModeListLoader {
     private static final String TAG = "CapturingModeListLoader";
     private final CapturingModeAttributes$InternalCaptureType[] mCaptureTypeList;

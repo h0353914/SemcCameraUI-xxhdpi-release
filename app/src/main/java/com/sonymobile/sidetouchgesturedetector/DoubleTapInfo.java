@@ -2,7 +2,6 @@ package com.sonymobile.sidetouchgesturedetector;
 
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DoubleTapInfo {
     public int doubleTapMinTime;
     public int doubleTapSlopSquare;

@@ -9,7 +9,6 @@ import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 import com.sonyericsson.android.camera.parameter.ParameterUtil;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FusionModeApplier extends DependencyApplier {
     private static final String TAG = "FusionModeApplier";
     private final FusionMode mValue;

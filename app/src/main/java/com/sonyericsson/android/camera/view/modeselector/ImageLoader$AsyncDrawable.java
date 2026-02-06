@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 class ImageLoader$AsyncDrawable extends BitmapDrawable {
     private final WeakReference<ImageLoader$ImageLoaderTask> imageLoaderTaskReference;
 

@@ -18,7 +18,6 @@ import android.support.v4.provider.FontsContractCompat;
 import android.support.v4.provider.FontsContractCompat$FontInfo;
 import android.support.v4.util.LruCache;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class TypefaceCompat {
     private static final String TAG = "TypefaceCompat";

@@ -7,7 +7,6 @@ import java.util.Map;
 import org.apache.commons.imaging.ImageWriteException;
 import org.apache.commons.imaging.util.Debug;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MedianCutQuantizer {
     private final boolean ignoreAlpha;
 

@@ -5,7 +5,6 @@ import com.sonymobile.cameracommon.research.idd.IddUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$Category;
 import com.sonymobile.cameracommon.research.parameters.Event$ViewerLaunched;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$PanoramaInfo {
     private int mSuccessNum;
     private int mTryNum;

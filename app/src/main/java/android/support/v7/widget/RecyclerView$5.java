@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.view.View;
 import android.view.ViewGroup$LayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 class RecyclerView$5 implements ChildHelper$Callback {
     final /* synthetic */ RecyclerView this$0;
 

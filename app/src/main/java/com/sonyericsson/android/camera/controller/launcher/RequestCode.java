@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.controller.launcher;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RequestCode {
     public static final int ADDONS = 19;
     public static final int BACKGROUND_DEFOCUS = 16;

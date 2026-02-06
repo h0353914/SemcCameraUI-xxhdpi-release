@@ -15,7 +15,6 @@ import android.util.Log;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 class PrintHelper$1 extends AsyncTask<Void, Void, Throwable> {
     final /* synthetic */ PrintHelper this$0;
     final /* synthetic */ PrintAttributes val$attributes;

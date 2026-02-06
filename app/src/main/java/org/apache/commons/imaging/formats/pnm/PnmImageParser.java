@@ -25,7 +25,6 @@ import org.apache.commons.imaging.common.bytesource.ByteSource;
 import org.apache.commons.imaging.palette.PaletteFactory;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PnmImageParser extends ImageParser {
     private static final String[] ACCEPTED_EXTENSIONS = {".pbm", ".pgm", ".ppm", ".pnm", ".pam"};
     private static final String DEFAULT_EXTENSION = ".pnm";

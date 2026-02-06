@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.IntentSender$SendIntentException;
 
-/* JADX INFO: loaded from: classes.dex */
 class ShortcutManagerCompat$1 extends BroadcastReceiver {
     final /* synthetic */ IntentSender val$callback;
 

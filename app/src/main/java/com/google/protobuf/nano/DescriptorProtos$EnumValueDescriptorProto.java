@@ -2,7 +2,6 @@ package com.google.protobuf.nano;
 
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DescriptorProtos$EnumValueDescriptorProto extends ExtendableMessageNano<DescriptorProtos$EnumValueDescriptorProto> {
     private static volatile DescriptorProtos$EnumValueDescriptorProto[] _emptyArray;
     public String name;

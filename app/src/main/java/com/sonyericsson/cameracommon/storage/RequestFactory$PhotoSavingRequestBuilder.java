@@ -6,7 +6,6 @@ import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusCommon;
 import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusPhoto;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RequestFactory$PhotoSavingRequestBuilder extends RequestFactory$RequestBuilder {
     private Image mImage;
     private ImageReader mImageReader;

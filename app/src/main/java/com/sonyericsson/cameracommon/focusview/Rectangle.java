@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Rectangle extends RelativeLayout implements GestureDetector$OnGestureListener {
     public static final String TAG = "Rectangles";
     private GestureDetector mGestureDetector;

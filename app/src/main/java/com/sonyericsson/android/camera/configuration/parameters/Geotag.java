@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Geotag implements UserSettingValue {
     ON(-1, 2131690116, true),
     OFF(-1, 2131690115, false);

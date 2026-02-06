@@ -8,7 +8,6 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout$LayoutParams;
 import com.sonyericsson.android.camera.configuration.parameters.SelfTimer;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class SideTouchUiIcon$CountDownIcon extends SideTouchUiIcon {
     private static final long PUT_IN_ANIMATION_DURATION = 120;
     private SideTouchCountDownCircleView mSideTouchCountDownCircleView;

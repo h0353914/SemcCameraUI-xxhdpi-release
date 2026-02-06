@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class DefaultItemAnimator$ChangeInfo {
     public int fromX;
     public int fromY;

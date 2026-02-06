@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import android.view.animation.Animation;
 import android.view.animation.Animation$AnimationListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class PredictiveCaptureIndicatorController$1 implements Animation$AnimationListener {
     final /* synthetic */ PredictiveCaptureIndicatorController this$0;
 

@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.focusview;
 
-/* JADX INFO: loaded from: classes.dex */
 class FocusRectangles$ObjectTrackingStoppedInLockedState extends FocusRectangles$ObjectLostInLockedState {
     final /* synthetic */ FocusRectangles this$0;
 

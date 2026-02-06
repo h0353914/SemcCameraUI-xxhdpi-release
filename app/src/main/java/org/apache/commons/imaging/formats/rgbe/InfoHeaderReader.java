@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.rgbe;
 import java.io.IOException;
 import java.io.InputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 class InfoHeaderReader {
     private final InputStream is;
 

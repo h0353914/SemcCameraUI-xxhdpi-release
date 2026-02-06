@@ -3,7 +3,6 @@ package android.support.v4.text;
 import android.support.annotation.NonNull;
 import java.util.concurrent.Callable;
 
-/* JADX INFO: loaded from: classes.dex */
 class PrecomputedTextCompat$PrecomputedTextFutureTask$PrecomputedTextCallback implements Callable<PrecomputedTextCompat> {
     private PrecomputedTextCompat$Params mParams;
     private CharSequence mText;

@@ -2,7 +2,6 @@ package com.google.android.apps.gsa.search.shared.service.proto.nano;
 
 import com.google.protobuf.nano.NanoEnumValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class ServiceEventOuterClass {
     private ServiceEventOuterClass() {
     }

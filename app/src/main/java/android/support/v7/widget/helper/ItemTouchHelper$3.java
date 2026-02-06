@@ -3,7 +3,6 @@ package android.support.v7.widget.helper;
 import android.animation.Animator;
 import android.support.v7.widget.RecyclerView$ViewHolder;
 
-/* JADX INFO: loaded from: classes.dex */
 class ItemTouchHelper$3 extends ItemTouchHelper$RecoverAnimation {
     final /* synthetic */ ItemTouchHelper this$0;
     final /* synthetic */ RecyclerView$ViewHolder val$prevSelected;

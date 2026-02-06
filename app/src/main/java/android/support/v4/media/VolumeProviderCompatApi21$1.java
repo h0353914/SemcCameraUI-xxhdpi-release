@@ -2,7 +2,6 @@ package android.support.v4.media;
 
 import android.media.VolumeProvider;
 
-/* JADX INFO: loaded from: classes.dex */
 class VolumeProviderCompatApi21$1 extends VolumeProvider {
     final /* synthetic */ VolumeProviderCompatApi21$Delegate val$delegate;
 

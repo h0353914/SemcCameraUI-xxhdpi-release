@@ -12,7 +12,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.PopupWindow;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatPopupWindow extends PopupWindow {
     private static final boolean COMPAT_OVERLAP_ANCHOR;
     private boolean mOverlapAnchor;

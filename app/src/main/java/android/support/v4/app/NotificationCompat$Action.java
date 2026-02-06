@@ -3,7 +3,6 @@ package android.support.v4.app;
 import android.app.PendingIntent;
 import android.os.Bundle;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NotificationCompat$Action {
     static final String EXTRA_SEMANTIC_ACTION = "android.support.action.semanticAction";
     static final String EXTRA_SHOWS_USER_INTERFACE = "android.support.action.showsUserInterface";

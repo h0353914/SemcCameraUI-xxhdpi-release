@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum CameraParameterConverter$SceneMode {
     AUTO("auto", 100),
     PORTRAIT("portrait", 3),

@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.capability.CameraCapabilityList;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Ev implements UserSettingValue {
     M6_3(2131231032, 2131689882, -2.0f),
     M5_3(2131231032, 2131689881, -1.7f),

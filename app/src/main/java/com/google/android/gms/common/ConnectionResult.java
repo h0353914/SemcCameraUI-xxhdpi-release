@@ -8,7 +8,6 @@ import android.os.Parcelable$Creator;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzw;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ConnectionResult implements SafeParcelable {
     public static final int API_UNAVAILABLE = 16;
     public static final int CANCELED = 13;

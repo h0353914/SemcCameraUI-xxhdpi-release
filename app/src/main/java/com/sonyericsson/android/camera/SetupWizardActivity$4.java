@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera;
 import android.content.Context;
 import android.view.OrientationEventListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SetupWizardActivity$4 extends OrientationEventListener {
     final /* synthetic */ SetupWizardActivity this$0;
 

@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
 
-/* JADX INFO: loaded from: classes.dex */
 public class InflateTask implements Callable<Map<InflateItem, List<View>>> {
     public static final String TAG = "InflateTask";
     private final List<InflateItem> mInflateItemList;

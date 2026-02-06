@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.sidetouch;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum SideTouchUiIcon$AutoReviewIcon$Aspect {
     TABLET_1_1(2131165272, 2131165270),
     TABLET_4_3(2131165276, 2131165274),

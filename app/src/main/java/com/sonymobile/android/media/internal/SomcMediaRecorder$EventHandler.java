@@ -5,7 +5,6 @@ import android.os.Looper;
 import android.os.Message;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 class SomcMediaRecorder$EventHandler extends Handler {
     private final WeakReference<SomcMediaRecorder> mRecorder;
 

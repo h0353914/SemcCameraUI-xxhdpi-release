@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.debug.DebugParameterUtils;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.Timer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AutoPowerOffTimer {
     private CameraActivity mActivity;
     private int mAutoPowerOffTimeOutDuration;

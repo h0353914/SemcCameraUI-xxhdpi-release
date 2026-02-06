@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import com.sonyericsson.android.camera.configuration.parameters.FrontAngle;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$AngleActionHandler$3 implements UserEventHandler$VariableUserEventTicker$OnEventTickedListener {
     int mCount = 1;
     final /* synthetic */ UserEventHandler$AngleActionHandler this$1;

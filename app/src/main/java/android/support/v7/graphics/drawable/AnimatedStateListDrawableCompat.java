@@ -31,7 +31,6 @@ import java.io.IOException;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AnimatedStateListDrawableCompat extends StateListDrawable {
     private static final String ELEMENT_ITEM = "item";
     private static final String ELEMENT_TRANSITION = "transition";

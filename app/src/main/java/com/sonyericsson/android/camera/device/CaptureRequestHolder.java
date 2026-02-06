@@ -15,7 +15,6 @@ import java.util.Map;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-/* JADX INFO: loaded from: classes.dex */
 class CaptureRequestHolder {
     private static final String TAG = "CaptureRequestHolder";
     private final ReadWriteLock mReadWriteLock = new ReentrantReadWriteLock(true);

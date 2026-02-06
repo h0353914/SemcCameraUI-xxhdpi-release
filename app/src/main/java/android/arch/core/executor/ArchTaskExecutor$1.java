@@ -2,7 +2,6 @@ package android.arch.core.executor;
 
 import java.util.concurrent.Executor;
 
-/* JADX INFO: loaded from: classes.dex */
 class ArchTaskExecutor$1 implements Executor {
     ArchTaskExecutor$1() {
     }

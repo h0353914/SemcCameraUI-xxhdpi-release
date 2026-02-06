@@ -4,7 +4,6 @@ import com.sonyericsson.cameracommon.viewfinder.LayoutPattern;
 import java.util.HashMap;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BaseLayoutPatternApplier implements LayoutPatternApplier {
     public static final int D = 3;
     public static final int H = 2;

@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionBarDrawerToggle$SetIndicatorInfo {
     Method mSetHomeActionContentDescription;
     Method mSetHomeAsUpIndicator;

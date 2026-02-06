@@ -6,7 +6,6 @@ import android.view.ActionProvider$VisibilityListener;
 import android.view.MenuItem;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class MenuItemWrapperJB$ActionProviderWrapperJB extends MenuItemWrapperICS$ActionProviderWrapper implements ActionProvider$VisibilityListener {
     android.support.v4.view.ActionProvider$VisibilityListener mListener;
     final /* synthetic */ MenuItemWrapperJB this$0;

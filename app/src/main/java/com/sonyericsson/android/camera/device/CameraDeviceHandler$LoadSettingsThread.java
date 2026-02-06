@@ -8,7 +8,6 @@ import com.sonyericsson.android.camera.setting.UserSettings;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.mediasaving.location.GeotagManager;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$LoadSettingsThread extends Thread {
     private final CapturingMode mCapturingMode;
     private final UserSettings mUserSettings;

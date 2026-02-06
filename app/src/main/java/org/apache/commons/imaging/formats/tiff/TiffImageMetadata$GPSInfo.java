@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.tiff;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.RationalNumber;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffImageMetadata$GPSInfo {
     public final RationalNumber latitudeDegrees;
     public final RationalNumber latitudeMinutes;

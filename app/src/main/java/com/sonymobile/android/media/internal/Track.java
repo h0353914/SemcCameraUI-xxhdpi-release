@@ -7,7 +7,6 @@ import android.media.MediaFormat;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingDeque;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class Track {
     public static final int AUDIO_CODEC_MUXER_TRACK_ADDED = 11;
     public static final int CODEC_ERROR = 4;

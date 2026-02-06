@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DropDownPreference extends ListPreference {
     private final ArrayAdapter mAdapter;
     private final Context mContext;

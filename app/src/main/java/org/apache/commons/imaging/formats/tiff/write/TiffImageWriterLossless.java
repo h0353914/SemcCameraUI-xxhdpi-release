@@ -26,7 +26,6 @@ import org.apache.commons.imaging.formats.tiff.TiffImageData;
 import org.apache.commons.imaging.formats.tiff.TiffReader;
 import org.apache.commons.imaging.formats.tiff.constants.ExifTagConstants;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffImageWriterLossless extends TiffImageWriterBase {
     private static final Comparator<TiffElement> ELEMENT_SIZE_COMPARATOR = new TiffImageWriterLossless$1();
     private static final Comparator<TiffOutputItem> ITEM_SIZE_COMPARATOR = new TiffImageWriterLossless$2();

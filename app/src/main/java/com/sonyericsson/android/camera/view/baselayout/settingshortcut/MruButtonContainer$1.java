@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.baselayout.settingshortcut;
 import com.sonyericsson.android.camera.view.modeselector.Mode;
 import com.sonyericsson.android.camera.view.modeselector.Mode$OnStateChangeListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class MruButtonContainer$1 implements Mode$OnStateChangeListener {
     final /* synthetic */ MruButtonContainer this$0;
 

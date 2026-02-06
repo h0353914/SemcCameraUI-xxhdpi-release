@@ -5,7 +5,6 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /* JADX INFO: Add missing generic type declarations: [T] */
-/* JADX INFO: loaded from: classes.dex */
 class MessageThreadUtil$2<T> implements ThreadUtil$BackgroundCallback<T> {
     static final int LOAD_TILE = 3;
     static final int RECYCLE_TILE = 4;

@@ -4,7 +4,6 @@ import java.io.IOException;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.ImageBuilder;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PhotometricInterpreterLogLuv extends PhotometricInterpreter {
     private float cube(float f) {
         return f * f * f;

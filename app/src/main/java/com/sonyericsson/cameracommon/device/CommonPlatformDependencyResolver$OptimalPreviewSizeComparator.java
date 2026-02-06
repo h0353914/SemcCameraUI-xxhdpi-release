@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.device;
 import android.graphics.Rect;
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class CommonPlatformDependencyResolver$OptimalPreviewSizeComparator implements Comparator<Rect> {
     private final Rect mTarget;
 

@@ -7,7 +7,6 @@ import android.view.GestureDetector$OnDoubleTapListener;
 import android.view.GestureDetector$OnGestureListener;
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class GestureDetectorCompat$GestureDetectorCompatImplJellybeanMr2 implements GestureDetectorCompat$GestureDetectorCompatImpl {
     private final GestureDetector mDetector;
 

@@ -8,7 +8,6 @@ import android.content.DialogInterface$OnCancelListener;
 import android.os.Bundle;
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ErrorDialogFragment extends DialogFragment {
     private Dialog mDialog = null;
     private DialogInterface$OnCancelListener zzaaa = null;

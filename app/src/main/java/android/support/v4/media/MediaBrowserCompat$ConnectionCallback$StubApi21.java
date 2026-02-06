@@ -1,6 +1,5 @@
 package android.support.v4.media;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$ConnectionCallback$StubApi21 implements MediaBrowserCompatApi21$ConnectionCallback {
     final /* synthetic */ MediaBrowserCompat$ConnectionCallback this$0;
 

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.recorder;
 import com.sonyericsson.android.camera.configuration.parameters.SlowMotion;
 import com.sonyericsson.android.camera.recorder.superslowrecorder.OnSuperSlowRecordingFinishedListener;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecorderFactory$Parameters {
     private final boolean mIsShutterSoundOn;
     private final RecorderController$RecorderListener mListener;

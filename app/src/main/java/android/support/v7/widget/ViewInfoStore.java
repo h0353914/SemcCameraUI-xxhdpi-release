@@ -5,7 +5,6 @@ import android.support.annotation.VisibleForTesting;
 import android.support.v4.util.ArrayMap;
 import android.support.v4.util.LongSparseArray;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewInfoStore {
     private static final boolean DEBUG = false;
 

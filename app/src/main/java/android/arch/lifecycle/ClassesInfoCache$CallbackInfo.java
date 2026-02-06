@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 class ClassesInfoCache$CallbackInfo {
     final Map<Lifecycle$Event, List<ClassesInfoCache$MethodReference>> mEventToHandlers = new HashMap();
     final Map<ClassesInfoCache$MethodReference, Lifecycle$Event> mHandlerToEvent;

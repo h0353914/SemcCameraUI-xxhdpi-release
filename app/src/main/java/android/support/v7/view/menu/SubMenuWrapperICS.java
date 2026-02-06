@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 class SubMenuWrapperICS extends MenuWrapperICS implements SubMenu {
     @Override // android.support.v7.view.menu.BaseWrapper

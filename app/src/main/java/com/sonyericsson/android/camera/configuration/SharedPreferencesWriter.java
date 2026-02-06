@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.util.Map;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SharedPreferencesWriter {
     public static final String TAG = "SharedPreferencesWriter";
     private SharedPreferences$Editor mPreferencesEditor;

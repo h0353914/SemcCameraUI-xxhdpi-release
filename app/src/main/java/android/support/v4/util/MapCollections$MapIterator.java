@@ -5,7 +5,6 @@ import java.util.Map$Entry;
 import java.util.NoSuchElementException;
 
 /* JADX INFO: Add missing generic type declarations: [V, K] */
-/* JADX INFO: loaded from: classes.dex */
 final class MapCollections$MapIterator<K, V> implements Iterator<Map$Entry<K, V>>, Map$Entry<K, V> {
     int mEnd;
     boolean mEntryValid = false;

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 class ObjectTrackingResultChecker$1 implements Runnable {
     final /* synthetic */ ObjectTrackingResultChecker this$0;
     final /* synthetic */ CameraParameters$ObjectTrackingResult val$objectTrackingResult;

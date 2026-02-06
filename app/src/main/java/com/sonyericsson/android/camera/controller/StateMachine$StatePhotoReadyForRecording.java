@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 import com.sonyericsson.cameracommon.storage.Storage$StorageState;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StatePhotoReadyForRecording extends StateMachine$StatePhotoBase {
     private final boolean mBySideSense;
     final /* synthetic */ StateMachine this$0;

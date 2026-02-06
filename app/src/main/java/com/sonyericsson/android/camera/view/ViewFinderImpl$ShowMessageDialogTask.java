@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.LaunchCondition$ExtraOperation;
 import com.sonyericsson.android.camera.view.messagedialog.DialogId;
 import com.sonyericsson.android.camera.view.messagedialog.MessageDialogRequest;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$ShowMessageDialogTask implements Runnable {
     private MessageDialogRequest mRequestParam = new MessageDialogRequest();
     final /* synthetic */ ViewFinderImpl this$0;

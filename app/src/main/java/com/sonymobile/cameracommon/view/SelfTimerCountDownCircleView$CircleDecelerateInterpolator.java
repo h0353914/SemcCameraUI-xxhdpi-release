@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.view;
 
 import android.view.animation.DecelerateInterpolator;
 
-/* JADX INFO: loaded from: classes.dex */
 class SelfTimerCountDownCircleView$CircleDecelerateInterpolator extends DecelerateInterpolator {
     private SelfTimerCountDownCircleView$CircleDecelerateInterpolator() {
     }

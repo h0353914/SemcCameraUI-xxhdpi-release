@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.tutorial;
 import android.animation.Animator;
 import android.animation.Animator$AnimatorListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class TutorialController$3 implements Animator$AnimatorListener {
     final /* synthetic */ TutorialController this$0;
 

@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewPager$SavedState extends AbsSavedState {
     public static final Parcelable$Creator<ViewPager$SavedState> CREATOR = new ViewPager$SavedState$1();
     Parcelable adapterState;

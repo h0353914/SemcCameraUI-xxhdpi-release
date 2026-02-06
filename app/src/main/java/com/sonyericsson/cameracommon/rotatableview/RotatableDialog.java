@@ -25,7 +25,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RotatableDialog implements View$OnTouchListener, View$OnAttachStateChangeListener {
     public static final String TAG = "RotatableDialog";
     private final int mAnimationsForLand;

@@ -2,7 +2,6 @@ package android.support.v4.provider;
 
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class FontsContractCompat$3 implements SelfDestructiveThread$ReplyCallback<FontsContractCompat$TypefaceResult> {
     final /* synthetic */ String val$id;
 

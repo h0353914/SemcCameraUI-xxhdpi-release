@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.hint;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class HintTextContent {
     public static final long INFINITE_TIMEOUT_MILLIS = -1;
     public static final int NO_FADE = -1;

@@ -4,7 +4,6 @@ import android.location.Location;
 import android.media.CamcorderProfile;
 import android.net.Uri;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecorderParameters$Builder {
     private final RecorderParameters mParameters;
 

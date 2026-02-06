@@ -1,6 +1,5 @@
 package com.sonyericsson.album.fastview;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$style {
     public static final int AlertDialog_AppCompat = 2131755008;
     public static final int AlertDialog_AppCompat_Light = 2131755009;

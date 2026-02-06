@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$PrepareBurstCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class BypassCameraController$PrepareBurstCallbackImpl implements BypassCamera$PrepareBurstCallback {
     final /* synthetic */ BypassCameraController this$0;
 

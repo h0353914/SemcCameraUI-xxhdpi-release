@@ -3,7 +3,6 @@ package android.arch.lifecycle;
 import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewModelProvider {
     private static final String DEFAULT_KEY = "android.arch.lifecycle.ViewModelProvider.DefaultKey";
     private final ViewModelProvider$Factory mFactory;

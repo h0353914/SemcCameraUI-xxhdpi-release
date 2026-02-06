@@ -10,7 +10,6 @@ import android.support.annotation.VisibleForTesting;
 import android.support.v4.view.ViewCompat;
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 @VisibleForTesting
 class FastScroller extends RecyclerView$ItemDecoration implements RecyclerView$OnItemTouchListener {
     private static final int ANIMATION_STATE_FADING_IN = 1;

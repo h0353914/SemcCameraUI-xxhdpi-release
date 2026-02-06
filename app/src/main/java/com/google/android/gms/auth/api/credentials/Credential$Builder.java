@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import com.google.android.gms.common.internal.zzx;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Credential$Builder {
     private String mName;
     private Uri zzSh;

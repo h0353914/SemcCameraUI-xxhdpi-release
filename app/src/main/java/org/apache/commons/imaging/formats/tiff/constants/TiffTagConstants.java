@@ -14,7 +14,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShort;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShortOrLong;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoUnknown;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TiffTagConstants {
     public static final int COMPRESSION_VALUE_ADOBE_DEFLATE = 8;
     public static final int COMPRESSION_VALUE_CCIRLEW = 32771;

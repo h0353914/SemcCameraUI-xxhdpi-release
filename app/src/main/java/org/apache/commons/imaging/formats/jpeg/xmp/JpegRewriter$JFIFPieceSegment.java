@@ -7,7 +7,6 @@ import org.apache.commons.imaging.common.ByteConversions;
 import org.apache.commons.imaging.formats.jpeg.JpegConstants;
 import org.apache.commons.imaging.formats.jpeg.iptc.IptcParser;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class JpegRewriter$JFIFPieceSegment extends JpegRewriter$JFIFPiece {
     public final int marker;
     public final byte[] markerBytes;

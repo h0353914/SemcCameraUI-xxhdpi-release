@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 class VersionedParcelStream$FieldBuffer {
     private final int mFieldId;
     private final DataOutputStream mTarget;

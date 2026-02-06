@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.configuration.parameters.SlowMotion;
 import com.sonyericsson.android.camera.controller.launcher.ApplicationLauncher$MonochromeType;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem$Selectability;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class SettingUi$3 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey;
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion = new int[SlowMotion.values().length];

@@ -3,7 +3,6 @@ package com.sonymobile.android.media.internal;
 import android.media.MediaCodec$BufferInfo;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class Track$EncodedBuffer {
     public final int bufferIndex;
     public final MediaCodec$BufferInfo bufferInfo;

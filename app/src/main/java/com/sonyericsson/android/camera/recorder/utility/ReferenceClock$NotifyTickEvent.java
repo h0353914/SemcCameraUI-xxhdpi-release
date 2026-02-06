@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.recorder.utility;
 
-/* JADX INFO: loaded from: classes.dex */
 class ReferenceClock$NotifyTickEvent implements Runnable {
     public final long requestElapsedTime;
     final /* synthetic */ ReferenceClock this$0;

@@ -3,7 +3,6 @@ package com.google.android.gms.common.internal;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient$zza;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class zzj$zzf implements GoogleApiClient$zza {
     final /* synthetic */ zzj zzafK;
 

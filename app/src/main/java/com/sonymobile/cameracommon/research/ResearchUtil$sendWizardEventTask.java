@@ -4,7 +4,6 @@ import com.sonymobile.cameracommon.research.idd.IddUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$WizardPage;
 import com.sonymobile.cameracommon.research.parameters.Event$WizardResult;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$sendWizardEventTask implements Runnable {
     private final String mPage;
     private final String mResult;

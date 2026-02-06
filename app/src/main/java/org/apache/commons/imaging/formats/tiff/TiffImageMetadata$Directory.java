@@ -14,7 +14,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfo;
 import org.apache.commons.imaging.formats.tiff.write.TiffOutputDirectory;
 import org.apache.commons.imaging.formats.tiff.write.TiffOutputField;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffImageMetadata$Directory extends GenericImageMetadata implements ImageMetadata$ImageMetadataItem {
     private final ByteOrder byteOrder;
     private final TiffDirectory directory;

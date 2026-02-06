@@ -6,7 +6,6 @@ import android.os.RemoteException;
 import com.google.android.gms.auth.api.proxy.ProxyGrpcRequest;
 import com.google.android.gms.auth.api.proxy.ProxyRequest;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzkk$zza$zza implements zzkk {
     private IBinder zznJ;
 

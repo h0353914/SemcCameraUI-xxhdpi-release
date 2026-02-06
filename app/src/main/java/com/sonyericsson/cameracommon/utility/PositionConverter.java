@@ -5,7 +5,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PositionConverter {
     public static final String TAG = "PositionConverter";
     private static PositionConverter sInstance = new PositionConverter();

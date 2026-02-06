@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable$ConstantState;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 protected abstract class WrappedDrawableApi14$DrawableWrapperState extends Drawable$ConstantState {
     int mChangingConfigurations;
     Drawable$ConstantState mDrawableState;

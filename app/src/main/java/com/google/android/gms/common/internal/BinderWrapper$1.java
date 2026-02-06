@@ -3,7 +3,6 @@ package com.google.android.gms.common.internal;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class BinderWrapper$1 implements Parcelable$Creator<BinderWrapper> {
     BinderWrapper$1() {
     }

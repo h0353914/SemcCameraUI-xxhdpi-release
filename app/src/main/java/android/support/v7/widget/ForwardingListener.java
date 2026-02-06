@@ -10,7 +10,6 @@ import android.view.View$OnAttachStateChangeListener;
 import android.view.View$OnTouchListener;
 import android.view.ViewConfiguration;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public abstract class ForwardingListener implements View$OnTouchListener, View$OnAttachStateChangeListener {
     private int mActivePointerId;

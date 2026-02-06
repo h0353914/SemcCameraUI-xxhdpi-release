@@ -3,7 +3,6 @@ package android.support.v4.provider;
 import android.os.Handler;
 import java.util.concurrent.Callable;
 
-/* JADX INFO: loaded from: classes.dex */
 class SelfDestructiveThread$2 implements Runnable {
     final /* synthetic */ SelfDestructiveThread this$0;
     final /* synthetic */ Callable val$callable;

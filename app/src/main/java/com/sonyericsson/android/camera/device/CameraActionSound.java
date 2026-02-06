@@ -8,7 +8,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CameraActionSound {
     private static final int RELEASE_MEDIA_ACTION_SOUND_DELAY_MILLIS = 4000;
     public static final int SHUTTER_CLICK = 0;

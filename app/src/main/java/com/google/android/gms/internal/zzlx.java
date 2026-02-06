@@ -5,7 +5,6 @@ import com.google.android.gms.common.api.Api$ApiOptions$NoOptions;
 import com.google.android.gms.common.api.Api$zza;
 import com.google.android.gms.common.api.Api$zzc;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzlx {
     public static final Api$zzc<zzmb> zzRk = new Api$zzc<>();
     private static final Api$zza<zzmb, Api$ApiOptions$NoOptions> zzRl = new zzlx$1();

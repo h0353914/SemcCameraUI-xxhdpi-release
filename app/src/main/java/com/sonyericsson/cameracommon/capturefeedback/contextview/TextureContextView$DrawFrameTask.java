@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.capturefeedback.contextview;
 
 import com.sonyericsson.cameracommon.capturefeedback.animation.CaptureFeedbackAnimation;
 
-/* JADX INFO: loaded from: classes.dex */
 class TextureContextView$DrawFrameTask implements Runnable {
     final /* synthetic */ TextureContextView this$0;
 

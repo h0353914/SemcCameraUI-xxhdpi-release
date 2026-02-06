@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.setting.SharedPreferencesAccessor;
 import com.sonyericsson.android.camera.view.modeselector.Mode;
 import com.sonyericsson.android.camera.view.modeselector.internalmode.googlelens.GoogleLensMode;
 
-/* JADX INFO: loaded from: classes.dex */
 class MruButtonContainer$MruSmallModeButton extends MruButtonContainer$MruButton {
     private SharedPreferencesAccessor mPreferenceAccessor;
     final /* synthetic */ MruButtonContainer this$0;

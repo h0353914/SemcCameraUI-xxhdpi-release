@@ -18,7 +18,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShortOrLongOrRati
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShortOrRational;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoUndefined;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DngTagConstants {
     public static final int CALIBRATION_ILLUMINANT_1_VALUE_CLOUDY = 10;
     public static final int CALIBRATION_ILLUMINANT_1_VALUE_COOL_WHITE_FLUORESCENT = 14;

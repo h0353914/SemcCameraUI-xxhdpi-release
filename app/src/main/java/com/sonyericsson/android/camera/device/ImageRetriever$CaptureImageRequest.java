@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import android.os.Handler;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ImageRetriever$CaptureImageRequest {
     protected final ImageRetriever$OnImageRetrieverCallback callback;
     protected final Handler handler;

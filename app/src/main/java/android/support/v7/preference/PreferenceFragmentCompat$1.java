@@ -3,7 +3,6 @@ package android.support.v7.preference;
 import android.os.Handler;
 import android.os.Message;
 
-/* JADX INFO: loaded from: classes.dex */
 class PreferenceFragmentCompat$1 extends Handler {
     final /* synthetic */ PreferenceFragmentCompat this$0;
 

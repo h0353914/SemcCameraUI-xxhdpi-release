@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Build$VERSION;
 import android.os.UserManager;
 
-/* JADX INFO: loaded from: classes.dex */
 public class UserManagerCompat {
     private UserManagerCompat() {
     }

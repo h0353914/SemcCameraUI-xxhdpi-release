@@ -7,7 +7,6 @@ import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFileParser;
 import org.apache.commons.imaging.formats.psd.ImageContents;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface DataReader {
     void readData(InputStream inputStream, BufferedImage bufferedImage, ImageContents imageContents, BinaryFileParser binaryFileParser) throws IOException, ImageReadException;
 }

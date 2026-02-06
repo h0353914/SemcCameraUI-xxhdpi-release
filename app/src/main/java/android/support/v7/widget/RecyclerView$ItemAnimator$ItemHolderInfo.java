@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecyclerView$ItemAnimator$ItemHolderInfo {
     public int bottom;
     public int changeFlags;

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera;
 
 import com.sonyericsson.android.camera.research.LocalResearchUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 final class CameraActivity$ThermalAlertReceiverOnPauseTask implements Runnable {
     final /* synthetic */ CameraActivity this$0;
 

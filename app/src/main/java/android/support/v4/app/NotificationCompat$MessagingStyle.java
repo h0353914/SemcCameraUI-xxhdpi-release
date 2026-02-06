@@ -20,7 +20,6 @@ import android.text.style.TextAppearanceSpan;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NotificationCompat$MessagingStyle extends NotificationCompat$Style {
     public static final int MAXIMUM_RETAINED_MESSAGES = 25;
 

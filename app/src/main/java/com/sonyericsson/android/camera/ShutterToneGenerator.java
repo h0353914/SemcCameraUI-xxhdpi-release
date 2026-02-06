@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera;
 
 import com.sonyericsson.android.camera.configuration.parameters.ShutterSound;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ShutterToneGenerator {
     private static final String SOUND_HOME = "/system/media/audio/camera/";
     public static final String TAG = "ShutterToneGenerator";

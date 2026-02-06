@@ -11,7 +11,6 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-/* JADX INFO: loaded from: classes.dex */
 class CaptureResultHolder {
     private static final int QUEUE_CAPACITY = 10;
     private static final String TAG = "CaptureResultHolder";

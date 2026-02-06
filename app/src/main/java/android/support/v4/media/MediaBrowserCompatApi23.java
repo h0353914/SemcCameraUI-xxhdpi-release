@@ -4,7 +4,6 @@ import android.media.browse.MediaBrowser;
 import android.media.browse.MediaBrowser$ItemCallback;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(23)
 class MediaBrowserCompatApi23 {
     public static Object createItemCallback(MediaBrowserCompatApi23$ItemCallback mediaBrowserCompatApi23$ItemCallback) {

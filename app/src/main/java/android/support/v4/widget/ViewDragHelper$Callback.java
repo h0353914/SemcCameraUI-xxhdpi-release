@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Px;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class ViewDragHelper$Callback {
     public int clampViewPositionHorizontal(@NonNull View view, int i, int i2) {
         return 0;

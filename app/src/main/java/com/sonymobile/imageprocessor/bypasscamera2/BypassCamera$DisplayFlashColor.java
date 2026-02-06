@@ -1,6 +1,5 @@
 package com.sonymobile.imageprocessor.bypasscamera2;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BypassCamera$DisplayFlashColor {
     public final int colorBlue;
     public final int colorGreen;

@@ -5,7 +5,6 @@ import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.color.ColorConversions;
 import org.apache.commons.imaging.common.ImageBuilder;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PhotometricInterpreterCmyk extends PhotometricInterpreter {
     public PhotometricInterpreterCmyk(int i, int[] iArr, int i2, int i3, int i4) {
         super(i, iArr, i2, i3, i4);

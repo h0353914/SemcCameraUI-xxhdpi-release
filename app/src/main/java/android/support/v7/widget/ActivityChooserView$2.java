@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.view.ViewTreeObserver$OnGlobalLayoutListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActivityChooserView$2 implements ViewTreeObserver$OnGlobalLayoutListener {
     final /* synthetic */ ActivityChooserView this$0;
 

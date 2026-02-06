@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.jpeg.iptc;
 
-/* JADX INFO: loaded from: classes.dex */
 class IptcTypes$1 implements IptcType {
     final /* synthetic */ int val$type;
 

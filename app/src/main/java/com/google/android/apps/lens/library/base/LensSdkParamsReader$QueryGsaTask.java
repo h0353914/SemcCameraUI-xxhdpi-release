@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 class LensSdkParamsReader$QueryGsaTask extends AsyncTask<Void, Void, Integer> {
     final /* synthetic */ LensSdkParamsReader this$0;
 

@@ -15,7 +15,6 @@ import com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.view.GestureShutterView$AnimationStatusListener;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GestureShutter {
     private static final boolean IS_GESTURE_SHUTTER_SUPPORTED = !"".equalsIgnoreCase("noGesture");
     private static final String TAG = "GestureShutter";

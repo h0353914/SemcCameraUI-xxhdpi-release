@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.view;
 
 import com.sonyericsson.android.camera.device.CameraParameters$DeviceStabilityCondition;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class RecognizedCondition$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$device$CameraParameters$DeviceStabilityCondition = new int[CameraParameters$DeviceStabilityCondition.values().length];
 

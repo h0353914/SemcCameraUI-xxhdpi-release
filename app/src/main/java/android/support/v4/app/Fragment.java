@@ -46,7 +46,6 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Fragment implements ComponentCallbacks, View$OnCreateContextMenuListener, LifecycleOwner, ViewModelStoreOwner {
     static final int ACTIVITY_CREATED = 2;
     static final int CREATED = 1;

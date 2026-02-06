@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-/* JADX INFO: loaded from: classes.dex */
 final class DefaultDateTypeAdapter implements JsonSerializer<Date>, JsonDeserializer<Date> {
     private final DateFormat enUsFormat;
     private final DateFormat iso8601Format;

@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout$LayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SettingMenu extends AbsSelectableDialog {
     public SettingMenu(Context context, AbsSelectableDialog$Params absSelectableDialog$Params, AbsSelectableDialog$SelectableDialogType absSelectableDialog$SelectableDialogType) {
         this(context, absSelectableDialog$Params, 80, false, absSelectableDialog$SelectableDialogType);

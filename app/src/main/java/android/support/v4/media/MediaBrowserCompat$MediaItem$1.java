@@ -3,7 +3,6 @@ package android.support.v4.media;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$MediaItem$1 implements Parcelable$Creator<MediaBrowserCompat$MediaItem> {
     MediaBrowserCompat$MediaItem$1() {
     }

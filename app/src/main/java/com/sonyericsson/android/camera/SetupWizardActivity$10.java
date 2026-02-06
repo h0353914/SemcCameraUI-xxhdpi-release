@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface$OnDismissListener;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController$TutorialType;
 
-/* JADX INFO: loaded from: classes.dex */
 class SetupWizardActivity$10 implements DialogInterface$OnDismissListener {
     final /* synthetic */ SetupWizardActivity this$0;
 

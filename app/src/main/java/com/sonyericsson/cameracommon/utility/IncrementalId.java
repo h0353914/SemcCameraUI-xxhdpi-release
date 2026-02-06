@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.utility;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class IncrementalId {
     public static final int INCREMENTAL_INVALID = -1;
     private static final int INCREMENTAL_MAX = 2147483646;

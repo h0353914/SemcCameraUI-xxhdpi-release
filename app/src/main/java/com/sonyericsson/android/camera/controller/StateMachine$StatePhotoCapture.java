@@ -16,7 +16,6 @@ import com.sonymobile.cameracommon.research.parameters.Event$CaptureTrigger;
 import com.sonymobile.cameracommon.research.parameters.Event$Category;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StatePhotoCapture extends StateMachine$StatePhotoBase {
     private static final String TAG = "StateMachine.StatePhotoCapture";
     private boolean mIsStorageError;

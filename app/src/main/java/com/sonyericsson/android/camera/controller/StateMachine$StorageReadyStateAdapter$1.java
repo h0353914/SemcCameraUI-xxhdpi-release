@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.configuration.parameters.DestinationToSave;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StorageReadyStateAdapter$1 implements Runnable {
     final /* synthetic */ StateMachine$StorageReadyStateAdapter this$1;
     final /* synthetic */ Storage$StorageType val$type;

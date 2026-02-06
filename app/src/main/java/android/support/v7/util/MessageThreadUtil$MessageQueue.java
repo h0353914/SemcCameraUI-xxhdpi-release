@@ -1,6 +1,5 @@
 package android.support.v7.util;
 
-/* JADX INFO: loaded from: classes.dex */
 class MessageThreadUtil$MessageQueue {
     private MessageThreadUtil$SyncQueueItem mRoot;
 

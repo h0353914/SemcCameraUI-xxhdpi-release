@@ -10,7 +10,6 @@ import com.sonyericsson.cameracommon.status.eachcamera.DeviceStatus$Value;
 import com.sonyericsson.cameracommon.storage.RequestFactory$PhotoSavingRequestBuilder;
 import com.sonymobile.cameracommon.testevent.TestEventSender;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$BypassCameraControllerCallbackImpl$SnapshotDoneHandlerCallbackImpl implements Runnable {
     private final RequestFactory$PhotoSavingRequestBuilder localRequestBuilder;
     final /* synthetic */ CameraDeviceHandler$BypassCameraControllerCallbackImpl this$1;

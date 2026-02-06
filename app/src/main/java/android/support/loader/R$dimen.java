@@ -1,6 +1,5 @@
 package android.support.loader;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$dimen {
     public static final int compat_button_inset_horizontal_material = 2131165293;
     public static final int compat_button_inset_vertical_material = 2131165294;

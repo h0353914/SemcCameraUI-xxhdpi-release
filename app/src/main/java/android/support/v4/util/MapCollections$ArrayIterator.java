@@ -3,7 +3,6 @@ package android.support.v4.util;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/* JADX INFO: loaded from: classes.dex */
 final class MapCollections$ArrayIterator<T> implements Iterator<T> {
     boolean mCanRemove = false;
     int mIndex;

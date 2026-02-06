@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class TooltipCompatHandler$1 implements Runnable {
     final /* synthetic */ TooltipCompatHandler this$0;
 

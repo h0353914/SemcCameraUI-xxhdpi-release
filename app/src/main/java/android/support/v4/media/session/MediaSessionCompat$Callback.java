@@ -13,7 +13,6 @@ import android.view.KeyEvent;
 import android.view.ViewConfiguration;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class MediaSessionCompat$Callback {
     private MediaSessionCompat$Callback$CallbackHandler mCallbackHandler = null;
     final Object mCallbackObj;

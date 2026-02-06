@@ -9,7 +9,6 @@ import android.os.RemoteException;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ResultReceiver implements Parcelable {
     public static final Parcelable$Creator<ResultReceiver> CREATOR = new ResultReceiver$1();

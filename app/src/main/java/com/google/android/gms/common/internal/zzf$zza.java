@@ -4,7 +4,6 @@ import com.google.android.gms.common.api.Scope;
 import java.util.Collections;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzf$zza {
     public final Set<Scope> zzTm;
     public final boolean zzafk;

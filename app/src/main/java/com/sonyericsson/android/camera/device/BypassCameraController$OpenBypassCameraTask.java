@@ -25,7 +25,6 @@ import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$PhotoMode;
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCameraParameters;
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCameraTimeoutException;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class BypassCameraController$OpenBypassCameraTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     private final CapturingMode mMode;

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.overlaycontrol.imagequality;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingDialog$1 implements Runnable {
     final /* synthetic */ SettingDialog this$0;
 

@@ -4,7 +4,6 @@ import android.graphics.Point;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$CaptureAreaTouchEventProcedureSelector extends UserEventHandler$TouchEventProcedure {
     private final UserEventHandler$PhotoCaptureAreaEventProcedure mPhoto;
     private final UserEventHandler$FrontPhotoCaptureAreaEventProcedure mPhotoFront;

@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraController$CameraStateCallback extends CameraDevice$StateCallback {
     private static final int OPEN_CLOSE_WAIT_TIME_MILLIS = 2000;
     private final Object mCameraDeviceLock;

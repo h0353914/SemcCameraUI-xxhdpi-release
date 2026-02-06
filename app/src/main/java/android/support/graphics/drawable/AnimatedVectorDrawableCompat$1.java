@@ -3,7 +3,6 @@ package android.support.graphics.drawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable$Callback;
 
-/* JADX INFO: loaded from: classes.dex */
 class AnimatedVectorDrawableCompat$1 implements Drawable$Callback {
     final /* synthetic */ AnimatedVectorDrawableCompat this$0;
 

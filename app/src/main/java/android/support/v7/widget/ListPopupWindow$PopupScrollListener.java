@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.widget.AbsListView;
 import android.widget.AbsListView$OnScrollListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ListPopupWindow$PopupScrollListener implements AbsListView$OnScrollListener {
     final /* synthetic */ ListPopupWindow this$0;
 

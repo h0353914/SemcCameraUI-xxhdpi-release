@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 import com.sonyericsson.android.camera.view.overlaycontrol.OverlayControl$StateListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$OverlayControlStateListener implements OverlayControl$StateListener {
     private final ViewFinder$UiComponentKind mKind;
     final /* synthetic */ ViewFinderImpl this$0;

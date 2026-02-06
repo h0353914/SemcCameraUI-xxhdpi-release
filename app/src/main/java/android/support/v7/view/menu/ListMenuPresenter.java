@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView$OnItemClickListener;
 import android.widget.ListAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ListMenuPresenter implements MenuPresenter, AdapterView$OnItemClickListener {
     private static final String TAG = "ListMenuPresenter";

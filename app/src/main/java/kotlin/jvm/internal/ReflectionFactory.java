@@ -11,7 +11,6 @@ import kotlin.reflect.KProperty0;
 import kotlin.reflect.KProperty1;
 import kotlin.reflect.KProperty2;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ReflectionFactory {
     private static final String KOTLIN_JVM_FUNCTIONS = "kotlin.jvm.functions.";
 

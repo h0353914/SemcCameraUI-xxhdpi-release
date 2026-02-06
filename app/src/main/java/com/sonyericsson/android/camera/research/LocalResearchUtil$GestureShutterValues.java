@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonymobile.cameracommon.research.parameters.ShootingLabel;
 import com.sonymobile.cameracommon.research.parameters.ShootingLabel$Parameter;
 
-/* JADX INFO: loaded from: classes.dex */
 final class LocalResearchUtil$GestureShutterValues {
     private int mHandSignLostNum;
 

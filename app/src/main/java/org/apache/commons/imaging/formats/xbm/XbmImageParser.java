@@ -31,7 +31,6 @@ import org.apache.commons.imaging.common.ImageMetadata;
 import org.apache.commons.imaging.common.bytesource.ByteSource;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class XbmImageParser extends ImageParser {
     private static final String[] ACCEPTED_EXTENSIONS = {".xbm"};
     private static final String DEFAULT_EXTENSION = ".xbm";

@@ -4,7 +4,6 @@ import android.database.ContentObserver;
 import android.os.Handler;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CapturingModeListLoader$1 extends ContentObserver {
     final /* synthetic */ CapturingModeListLoader this$0;
 

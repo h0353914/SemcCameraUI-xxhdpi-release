@@ -7,7 +7,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LruCache<K, V> {
     private int createCount;
     private int evictionCount;

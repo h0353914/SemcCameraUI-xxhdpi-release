@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.viewfinder.indicators;
 import android.widget.ImageView;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Indicator {
     protected final ImageView mView;
     protected boolean mOn = false;

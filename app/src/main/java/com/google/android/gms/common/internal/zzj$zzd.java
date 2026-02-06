@@ -3,7 +3,6 @@ package com.google.android.gms.common.internal;
 import android.os.Bundle;
 import android.os.IBinder;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzj$zzd extends zzr$zza {
     private zzj zzafM;
     private final int zzafN;

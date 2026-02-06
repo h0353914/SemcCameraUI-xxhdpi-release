@@ -18,7 +18,6 @@ import com.sonyericsson.cameracommon.storage.VideoSavingRequest;
 import java.io.File;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaProviderUpdator {
     private static final Uri EXTENDED_FILES_CONTENT_URI = Uri.parse("content://media/external/file");
     public static final String TAG = "MediaProviderUpdator";

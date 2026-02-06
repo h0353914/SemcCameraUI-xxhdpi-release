@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum DestinationToSave implements UserSettingValue {
     EMMC(2131231018, 2131690056, Storage$StorageType.INTERNAL, null),
     SDCARD(2131231019, 2131690057, Storage$StorageType.EXTERNAL_CARD, null),

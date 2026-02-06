@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.LaunchCondition$LaunchTrigger;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonymobile.getmore.api.ContributionContract$Event;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ResearchUtil$XperiaTipsLaunchTrigger {
     HW_KEY_SLEEP_OR_LOCK,
     HW_KEY_OTHER,

@@ -6,7 +6,6 @@ import android.os.Parcelable$Creator;
 import com.google.android.gms.common.internal.safeparcel.zza$zza;
 import com.google.android.gms.common.server.converter.ConverterWrapper;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zza implements Parcelable$Creator<FastJsonResponse$Field> {
     static void zza(FastJsonResponse$Field fastJsonResponse$Field, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);

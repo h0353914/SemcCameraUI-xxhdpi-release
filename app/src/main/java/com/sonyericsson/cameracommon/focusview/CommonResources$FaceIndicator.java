@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.focusview;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CommonResources$FaceIndicator {
     public static final int FAIL = 0;
     public static final int NORMAL = 2131230868;

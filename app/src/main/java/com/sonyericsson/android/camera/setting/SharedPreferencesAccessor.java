@@ -15,7 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SharedPreferencesAccessor {
     public static final String TAG = "SharedPreferencesAccessor";
     private SharedPreferences mPreferences;

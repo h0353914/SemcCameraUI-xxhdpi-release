@@ -2,7 +2,6 @@ package android.support.v4.media;
 
 import android.os.Bundle;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaBrowserServiceCompat$Result<T> {
     private final Object mDebug;
     private boolean mDetachCalled;

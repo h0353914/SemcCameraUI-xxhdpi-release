@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaRecorderWrapper {
     private static final boolean DBG = false;
     private static final String TAG = "MediaRecorderWrapper";

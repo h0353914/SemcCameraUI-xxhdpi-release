@@ -3,7 +3,6 @@ package android.support.v4.app;
 import android.animation.Animator;
 import android.view.animation.Animation;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentManagerImpl$AnimationOrAnimator {
     public final Animation animation;
     public final Animator animator;

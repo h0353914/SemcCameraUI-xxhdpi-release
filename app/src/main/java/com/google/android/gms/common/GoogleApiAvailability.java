@@ -15,7 +15,6 @@ import android.widget.ProgressBar;
 import com.google.android.gms.R$string;
 import com.google.android.gms.common.internal.zzn;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GoogleApiAvailability {
     public static final String GOOGLE_PLAY_SERVICES_PACKAGE = "com.google.android.gms";
     public static final int GOOGLE_PLAY_SERVICES_VERSION_CODE = GooglePlayServicesUtil.GOOGLE_PLAY_SERVICES_VERSION_CODE;

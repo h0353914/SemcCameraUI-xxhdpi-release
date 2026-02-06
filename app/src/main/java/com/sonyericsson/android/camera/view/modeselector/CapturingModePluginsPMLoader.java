@@ -20,7 +20,6 @@ import java.util.List;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CapturingModePluginsPMLoader {
     private static final String FINGERPRINT = "android.os.Build.FINGERPRINT";
     private static final String INTENT_FILTER_ACTION_NAME_FOR_QUERY = "com.sonymobile.camera.addon.action.REGISTER_MODE";

@@ -6,7 +6,6 @@ import org.apache.commons.imaging.common.RationalNumber;
 import org.apache.commons.imaging.formats.tiff.constants.TiffDirectoryType;
 import org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TagInfoShortOrLongOrRational extends TagInfo {
     public TagInfoShortOrLongOrRational(String str, int i, int i2, TiffDirectoryType tiffDirectoryType) {
         super(str, i, FieldType.SHORT_OR_LONG_OR_RATIONAL, i2, tiffDirectoryType);

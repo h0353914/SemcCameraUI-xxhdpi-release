@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 import com.sonyericsson.android.camera.ActionMode;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LedOptionsResolver {
     public static final String TAG = "LedOptionsResolver";
     private static LedOptionsResolver sInstance = new LedOptionsResolver();

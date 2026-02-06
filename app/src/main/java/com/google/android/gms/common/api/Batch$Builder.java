@@ -3,7 +3,6 @@ package com.google.android.gms.common.api;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class Batch$Builder {
     private GoogleApiClient zzVs;
     private List<PendingResult<?>> zzaaD = new ArrayList();

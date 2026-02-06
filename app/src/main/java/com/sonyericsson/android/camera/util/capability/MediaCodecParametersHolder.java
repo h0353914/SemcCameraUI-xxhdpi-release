@@ -11,7 +11,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaCodecParametersHolder implements ParameterHolder {
     public static final int INVALID_PROFILE = 0;
     private Bundle mParameters;

@@ -38,7 +38,6 @@ import org.apache.commons.imaging.formats.tiff.photometricinterpreters.Photometr
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoByte;
 import org.apache.commons.imaging.formats.tiff.write.TiffImageWriterLossy;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffImageParser extends ImageParser {
     private static final String[] ACCEPTED_EXTENSIONS = {".tif", ".tiff"};
     private static final String DEFAULT_EXTENSION = ".tif";

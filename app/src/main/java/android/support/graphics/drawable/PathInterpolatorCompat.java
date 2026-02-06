@@ -15,7 +15,6 @@ import android.view.InflateException;
 import android.view.animation.Interpolator;
 import org.xmlpull.v1.XmlPullParser;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class PathInterpolatorCompat implements Interpolator {
     public static final double EPSILON = 1.0E-5d;

@@ -8,7 +8,6 @@ import android.support.v4.media.MediaMetadataCompat;
 import android.text.TextUtils;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class IMediaControllerCallback$Stub$Proxy implements IMediaControllerCallback {
     private IBinder mRemote;
 

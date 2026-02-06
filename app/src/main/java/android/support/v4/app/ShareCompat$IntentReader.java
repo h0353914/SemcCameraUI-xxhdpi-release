@@ -13,7 +13,6 @@ import android.text.Spanned;
 import android.util.Log;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ShareCompat$IntentReader {
     private static final String TAG = "IntentReader";
     private Activity mActivity;

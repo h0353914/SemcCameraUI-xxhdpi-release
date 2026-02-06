@@ -31,7 +31,6 @@ import org.apache.commons.imaging.palette.PaletteFactory;
 import org.apache.commons.imaging.palette.SimplePalette;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IcoImageParser extends ImageParser {
     private static final String[] ACCEPTED_EXTENSIONS = {".ico", ".cur"};
     private static final String DEFAULT_EXTENSION = ".ico";

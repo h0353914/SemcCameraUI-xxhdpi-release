@@ -1,6 +1,5 @@
 package android.support.v4.hardware.fingerprint;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class FingerprintManagerCompat$AuthenticationResult {
     private final FingerprintManagerCompat$CryptoObject mCryptoObject;
 

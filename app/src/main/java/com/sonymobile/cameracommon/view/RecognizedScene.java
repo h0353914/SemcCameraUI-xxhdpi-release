@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.view;
 
 import com.sonyericsson.android.camera.device.CameraParameterConverter$SceneMode;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecognizedScene {
     final int mIconId;
     final CameraParameterConverter$SceneMode mSceneMode;

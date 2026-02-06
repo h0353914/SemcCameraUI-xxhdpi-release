@@ -4,7 +4,6 @@ import com.google.android.gms.common.api.Api$zzb;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlg$zzh extends zzlg$zzi {
     final /* synthetic */ zzlg zzabL;
     private final ArrayList<Api$zzb> zzabX;

@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Constants {
     public static final String CAMERA_ACTION_ADVANCED_SETTING = "com.sonyericsson.android.camera.intent.action.SETTING";
     public static final String CAMERA_MODE_KEY = "com.sonyericsson.android.camera.intent.extra.Mode";

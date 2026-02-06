@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DiffUtil {
     private static final Comparator<DiffUtil$Snake> SNAKE_COMPARATOR = new DiffUtil$1();
 

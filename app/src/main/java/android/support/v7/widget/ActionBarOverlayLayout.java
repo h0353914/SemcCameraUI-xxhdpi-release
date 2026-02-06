@@ -27,7 +27,6 @@ import android.view.ViewPropertyAnimator;
 import android.view.Window$Callback;
 import android.widget.OverScroller;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ActionBarOverlayLayout extends ViewGroup implements DecorContentParent, NestedScrollingParent {
     private static final int ACTION_BAR_ANIMATE_DELAY = 600;

@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.status.eachcamera;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 import com.sonyericsson.cameracommon.status.EnumValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class VideoNoiseReduction extends EnumValue<VideoNoiseReduction$Value> implements EachCameraStatusValue {
     public static final VideoNoiseReduction$Value DEFAULT_VALUE = VideoNoiseReduction$Value.OFF;
     public static final String KEY = "video_noise_reduction";

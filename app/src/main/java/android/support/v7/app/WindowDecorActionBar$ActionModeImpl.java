@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class WindowDecorActionBar$ActionModeImpl extends ActionMode implements MenuBuilder$Callback {
     private final Context mActionModeContext;

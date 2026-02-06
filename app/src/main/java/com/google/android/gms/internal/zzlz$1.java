@@ -4,7 +4,6 @@ import android.os.RemoteException;
 import com.google.android.gms.common.api.Api$zzb;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlz$1 extends zzma$zza {
     final /* synthetic */ zzlz zzagx;
 

@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.View$MeasureSpec;
 import android.view.ViewGroup;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class AbsActionBarView extends ViewGroup {
     private static final int FADE_DURATION = 200;
     protected ActionMenuPresenter mActionMenuPresenter;

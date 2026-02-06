@@ -7,7 +7,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BackgroundWorker {
     private static final int SHUTDOWN_TIMEOUT_MILLISECONDS = 2000;
     private static final String THREAD_NAME = "BgWorker";

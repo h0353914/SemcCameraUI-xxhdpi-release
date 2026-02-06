@@ -1,6 +1,5 @@
 package com.google.android.gms.base;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$string {
     public static final int auth_google_play_services_client_facebook_display_name = 2131689511;
     public static final int auth_google_play_services_client_google_display_name = 2131689512;

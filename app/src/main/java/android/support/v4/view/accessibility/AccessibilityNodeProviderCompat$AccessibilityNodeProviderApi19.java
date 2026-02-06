@@ -3,7 +3,6 @@ package android.support.v4.view.accessibility;
 import android.support.annotation.RequiresApi;
 import android.view.accessibility.AccessibilityNodeInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(19)
 class AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi19 extends AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16 {
     AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi19(AccessibilityNodeProviderCompat accessibilityNodeProviderCompat) {

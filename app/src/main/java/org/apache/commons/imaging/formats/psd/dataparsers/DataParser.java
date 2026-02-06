@@ -5,7 +5,6 @@ import java.awt.image.DataBuffer;
 import org.apache.commons.imaging.formats.psd.ImageContents;
 import org.apache.commons.imaging.formats.psd.PsdHeaderInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class DataParser {
     public abstract int getBasicChannelsCount();
 

@@ -2,7 +2,6 @@ package com.google.gson.internal.bind;
 
 import com.google.gson.stream.JsonToken;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class ObjectTypeAdapter$2 {
     static final /* synthetic */ int[] $SwitchMap$com$google$gson$stream$JsonToken = new int[JsonToken.values().length];
 

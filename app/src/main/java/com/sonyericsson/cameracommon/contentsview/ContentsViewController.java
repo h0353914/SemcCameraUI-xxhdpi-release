@@ -25,7 +25,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ContentsViewController implements Storage$StorageStateListener, ContentLoader$ContentCreationCallback {
     public static final int MAX_CONTENT_NUMBER = 1;
     public static final String TAG = "ContentsViewController";

@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.png.chunks;
 
 import org.apache.commons.imaging.formats.png.PngText;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class PngTextChunk extends PngChunk {
     public abstract PngText getContents();
 

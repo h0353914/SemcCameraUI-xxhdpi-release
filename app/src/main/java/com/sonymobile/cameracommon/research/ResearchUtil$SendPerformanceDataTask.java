@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.research;
 
 import com.sonymobile.cameracommon.research.idd.IddUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SendPerformanceDataTask implements Runnable {
     private final String mBatteryLevel;
     private final boolean mIsHeated;

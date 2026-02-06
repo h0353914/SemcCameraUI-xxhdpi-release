@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 import com.sonyericsson.cameracommon.storage.RequestFactory$PhotoSavingRequestBuilder;
 import com.sonyericsson.cameracommon.storage.Storage$StorageState;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateVideoCaptureWhileRecording extends StateMachine$State {
     private final boolean mIsPaused;
     private boolean mIsPausingRequested;

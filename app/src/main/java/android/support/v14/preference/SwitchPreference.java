@@ -13,7 +13,6 @@ import android.view.accessibility.AccessibilityManager;
 import android.widget.Checkable;
 import android.widget.Switch;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SwitchPreference extends TwoStatePreference {
     private final SwitchPreference$Listener mListener;
     private CharSequence mSwitchOff;

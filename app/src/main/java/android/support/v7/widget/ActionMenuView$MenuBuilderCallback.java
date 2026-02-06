@@ -4,7 +4,6 @@ import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.view.menu.MenuBuilder$Callback;
 import android.view.MenuItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionMenuView$MenuBuilderCallback implements MenuBuilder$Callback {
     final /* synthetic */ ActionMenuView this$0;
 

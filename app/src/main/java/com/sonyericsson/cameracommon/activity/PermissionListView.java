@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.View$MeasureSpec;
 import android.widget.ListView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PermissionListView extends ListView {
     public PermissionListView(Context context) {
         super(context);

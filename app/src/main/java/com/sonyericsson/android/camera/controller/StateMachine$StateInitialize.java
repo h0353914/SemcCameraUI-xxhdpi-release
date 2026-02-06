@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.view.messagedialog.DialogId;
 import com.sonyericsson.cameracommon.storage.RequestFactory$PhotoSavingRequestBuilder;
 import com.sonymobile.cameracommon.evf.Evf;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateInitialize extends StateMachine$State {
     private Evf mEvf;
     final /* synthetic */ StateMachine this$0;

@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-/* JADX INFO: loaded from: classes.dex */
 class TypeAdapters$23 extends TypeAdapter<Calendar> {
     private static final String DAY_OF_MONTH = "dayOfMonth";
     private static final String HOUR_OF_DAY = "hourOfDay";

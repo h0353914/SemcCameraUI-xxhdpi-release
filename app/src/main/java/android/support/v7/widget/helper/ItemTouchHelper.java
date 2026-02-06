@@ -26,7 +26,6 @@ import android.view.ViewParent;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ItemTouchHelper extends RecyclerView$ItemDecoration implements RecyclerView$OnChildAttachStateChangeListener {
     static final int ACTION_MODE_DRAG_MASK = 16711680;
     private static final int ACTION_MODE_IDLE_MASK = 255;

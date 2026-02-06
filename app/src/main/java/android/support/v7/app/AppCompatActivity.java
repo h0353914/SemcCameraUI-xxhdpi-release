@@ -28,7 +28,6 @@ import android.view.View;
 import android.view.ViewGroup$LayoutParams;
 import android.view.Window;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AppCompatActivity extends FragmentActivity implements AppCompatCallback, TaskStackBuilder$SupportParentable, ActionBarDrawerToggle$DelegateProvider {
     private AppCompatDelegate mDelegate;
     private Resources mResources;

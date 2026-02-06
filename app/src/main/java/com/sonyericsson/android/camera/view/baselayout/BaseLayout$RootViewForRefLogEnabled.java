@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Canvas;
 import com.sonyericsson.android.camera.util.PerfLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class BaseLayout$RootViewForRefLogEnabled extends BaseLayout$RootView {
     final /* synthetic */ BaseLayout this$0;
 

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.controller.selftimerfeedback;
 import android.os.Handler;
 import android.os.SystemClock;
 
-/* JADX INFO: loaded from: classes.dex */
 class SelfTimerFeedback$PeriodicEvent {
     private final SelfTimerFeedback$PeriodicEvent$TickEvent mCallback;
     private long mCounter;

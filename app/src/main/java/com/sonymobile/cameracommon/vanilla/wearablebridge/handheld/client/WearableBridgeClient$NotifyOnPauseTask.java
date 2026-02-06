@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.vanilla.wearablebridge.handheld.client;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class WearableBridgeClient$NotifyOnPauseTask implements Runnable {
     final /* synthetic */ WearableBridgeClient this$0;
 

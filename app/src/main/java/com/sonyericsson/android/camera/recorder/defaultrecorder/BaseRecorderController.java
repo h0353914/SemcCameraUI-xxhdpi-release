@@ -23,7 +23,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BaseRecorderController implements RecorderController {
     private static final int TIME_OF_START_SOUND_TO_COMPLETE_IN_MILLI = 300;
     private static final boolean TRACE = true;

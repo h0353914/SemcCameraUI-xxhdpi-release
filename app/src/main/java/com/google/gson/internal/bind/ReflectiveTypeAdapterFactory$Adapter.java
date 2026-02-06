@@ -9,7 +9,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ReflectiveTypeAdapterFactory$Adapter<T> extends TypeAdapter<T> {
     private final Map<String, ReflectiveTypeAdapterFactory$BoundField> boundFields;
     private final ObjectConstructor<T> constructor;

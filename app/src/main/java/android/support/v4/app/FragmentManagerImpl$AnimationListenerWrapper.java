@@ -4,7 +4,6 @@ import android.support.annotation.CallSuper;
 import android.view.animation.Animation;
 import android.view.animation.Animation$AnimationListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentManagerImpl$AnimationListenerWrapper implements Animation$AnimationListener {
     private final Animation$AnimationListener mWrapped;
 

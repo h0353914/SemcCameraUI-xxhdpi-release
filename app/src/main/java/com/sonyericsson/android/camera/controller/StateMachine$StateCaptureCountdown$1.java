@@ -7,7 +7,6 @@ import com.sonymobile.cameracommon.research.ResearchUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$CaptureTrigger;
 import com.sonymobile.cameracommon.research.parameters.Event$SelfTimerTrigger;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateCaptureCountdown$1 implements SelfTimerFeedback$SelfTimerFeedbackListener {
     final /* synthetic */ StateMachine$StateCaptureCountdown this$1;
 

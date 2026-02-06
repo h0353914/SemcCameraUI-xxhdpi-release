@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MenuItemCompat {
 
     @Deprecated

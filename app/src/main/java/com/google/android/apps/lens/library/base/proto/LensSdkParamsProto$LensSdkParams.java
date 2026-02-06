@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 @ProtoMessage(checkInitialized = {}, messageSetWireFormat = false, protoSyntax = ProtoSyntax.PROTO2)
 public final class LensSdkParamsProto$LensSdkParams extends GeneratedMessageLite<LensSdkParamsProto$LensSdkParams, LensSdkParamsProto$LensSdkParams$Builder> implements LensSdkParamsProto$LensSdkParamsOrBuilder {
     public static final int AGSA_VERSION_NAME_FIELD_NUMBER = 2;

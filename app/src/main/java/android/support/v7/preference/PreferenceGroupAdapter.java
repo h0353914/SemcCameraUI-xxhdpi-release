@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class PreferenceGroupAdapter extends RecyclerView$Adapter<PreferenceViewHolder> implements Preference$OnPreferenceChangeInternalListener, PreferenceGroup$PreferencePositionCallback {
     private Handler mHandler;

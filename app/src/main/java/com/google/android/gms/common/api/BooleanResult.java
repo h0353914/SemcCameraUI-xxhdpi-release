@@ -2,7 +2,6 @@ package com.google.android.gms.common.api;
 
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BooleanResult implements Result {
     private final Status zzSC;
     private final boolean zzaaE;

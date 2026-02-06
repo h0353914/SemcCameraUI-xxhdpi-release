@@ -12,7 +12,6 @@ import android.support.v4.graphics.PathParser;
 import android.util.AttributeSet;
 import org.xmlpull.v1.XmlPullParser;
 
-/* JADX INFO: loaded from: classes.dex */
 class VectorDrawableCompat$VFullPath extends VectorDrawableCompat$VPath {
     private static final int FILL_TYPE_WINDING = 0;
     float mFillAlpha;

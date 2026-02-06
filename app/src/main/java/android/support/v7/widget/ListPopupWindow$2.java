@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ListPopupWindow$2 implements Runnable {
     final /* synthetic */ ListPopupWindow this$0;
 

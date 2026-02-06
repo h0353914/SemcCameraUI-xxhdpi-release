@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.support.v4.os.ResultReceiver;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$3 extends MediaBrowserServiceCompat$Result<List<MediaBrowserCompat$MediaItem>> {
     final /* synthetic */ MediaBrowserServiceCompat this$0;
     final /* synthetic */ ResultReceiver val$receiver;

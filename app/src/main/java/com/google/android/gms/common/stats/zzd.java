@@ -2,7 +2,6 @@ package com.google.android.gms.common.stats;
 
 import android.content.ComponentName;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzd {
     public static int LOG_LEVEL_OFF = 0;
     public static final ComponentName zzahN = new ComponentName("com.google.android.gms", "com.google.android.gms.common.stats.GmsCoreStatsService");

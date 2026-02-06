@@ -11,7 +11,6 @@ import org.apache.commons.imaging.formats.tiff.constants.TiffConstants;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfo;
 import org.apache.commons.imaging.util.Debug;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TiffOutputSet {
     private static final String NEWLINE = System.getProperty("line.separator");
     public final ByteOrder byteOrder;

@@ -4,7 +4,6 @@ import java.io.IOException;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.formats.jpeg.iptc.IptcParser;
 
-/* JADX INFO: loaded from: classes.dex */
 class JpegImageParser$3 implements JpegUtils$Visitor {
     final /* synthetic */ JpegImageParser this$0;
     final /* synthetic */ boolean[] val$result;

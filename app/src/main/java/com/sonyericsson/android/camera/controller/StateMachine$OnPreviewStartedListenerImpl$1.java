@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.controller;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$OnPreviewStartedListenerImpl$1 implements Runnable {
     final /* synthetic */ StateMachine$OnPreviewStartedListenerImpl this$1;
 

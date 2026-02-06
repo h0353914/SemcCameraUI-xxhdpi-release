@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.rotatableview;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class RotatableToast$2 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$cameracommon$rotatableview$RotatableToast$ToastPosition = new int[RotatableToast$ToastPosition.values().length];
 

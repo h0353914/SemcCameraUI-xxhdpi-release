@@ -1,6 +1,5 @@
 package android.support.v4.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewDragHelper$2 implements Runnable {
     final /* synthetic */ ViewDragHelper this$0;
 

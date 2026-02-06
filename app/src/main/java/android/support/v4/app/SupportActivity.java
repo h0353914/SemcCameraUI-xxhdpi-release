@@ -18,7 +18,6 @@ import android.view.KeyEvent;
 import android.view.View;
 
 /* JADX INFO: compiled from: ComponentActivity.java */
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class SupportActivity extends Activity implements LifecycleOwner, KeyEventDispatcher$Component {
     private SimpleArrayMap<Class<? extends SupportActivity$ExtraData>, SupportActivity$ExtraData> mExtraDataMap = new SimpleArrayMap<>();

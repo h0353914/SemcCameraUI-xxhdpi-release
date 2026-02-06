@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import android.media.MediaActionSound;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActionSound$2 implements Runnable {
     final /* synthetic */ CameraActionSound this$0;
     final /* synthetic */ MediaActionSound val$sound;

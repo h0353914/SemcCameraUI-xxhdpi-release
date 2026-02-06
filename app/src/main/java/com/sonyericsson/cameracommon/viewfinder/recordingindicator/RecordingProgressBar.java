@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecordingProgressBar extends ImageView {
     public static final String TAG = "RecordingProgressBar";
     private int mProgressBarWidth;

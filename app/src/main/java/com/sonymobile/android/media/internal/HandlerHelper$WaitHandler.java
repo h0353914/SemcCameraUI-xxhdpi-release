@@ -4,7 +4,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
-/* JADX INFO: loaded from: classes.dex */
 class HandlerHelper$WaitHandler extends Handler {
     private final Object lock;
     public boolean releaseLock;

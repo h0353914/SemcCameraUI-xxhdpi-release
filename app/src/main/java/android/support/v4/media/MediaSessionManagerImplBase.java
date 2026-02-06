@@ -8,7 +8,6 @@ import android.provider.Settings$Secure;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionManagerImplBase implements MediaSessionManager$MediaSessionManagerImpl {
     private static final boolean DEBUG = MediaSessionManager.DEBUG;
     private static final String ENABLED_NOTIFICATION_LISTENERS = "enabled_notification_listeners";

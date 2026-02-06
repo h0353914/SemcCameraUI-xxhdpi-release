@@ -2,7 +2,6 @@ package android.support.v7.widget.helper;
 
 import android.support.v7.widget.RecyclerView$ChildDrawingOrderCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class ItemTouchHelper$5 implements RecyclerView$ChildDrawingOrderCallback {
     final /* synthetic */ ItemTouchHelper this$0;
 

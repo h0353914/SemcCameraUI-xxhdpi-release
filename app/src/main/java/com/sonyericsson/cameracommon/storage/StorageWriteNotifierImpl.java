@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.storage;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class StorageWriteNotifierImpl implements Storage$StorageWriteNotifier {
     private static final String TAG = "StorageWriteNotifierImpl";
     private long mMaxIntervalCount;

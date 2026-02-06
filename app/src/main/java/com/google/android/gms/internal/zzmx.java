@@ -2,7 +2,6 @@ package com.google.android.gms.internal;
 
 import android.os.Build$VERSION;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzmx {
     @Deprecated
     public static boolean isAtLeastL() {

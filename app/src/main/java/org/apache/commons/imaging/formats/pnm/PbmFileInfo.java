@@ -6,7 +6,6 @@ import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.ImageInfo$ColorType;
 
-/* JADX INFO: loaded from: classes.dex */
 class PbmFileInfo extends FileInfo {
     private int bitcache;
     private int bitsInCache;

@@ -3,7 +3,6 @@ package android.support.v4.view.accessibility;
 import android.os.Build$VERSION;
 import android.view.accessibility.AccessibilityNodeInfo$CollectionInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AccessibilityNodeInfoCompat$CollectionInfoCompat {
     public static final int SELECTION_MODE_MULTIPLE = 2;
     public static final int SELECTION_MODE_NONE = 0;

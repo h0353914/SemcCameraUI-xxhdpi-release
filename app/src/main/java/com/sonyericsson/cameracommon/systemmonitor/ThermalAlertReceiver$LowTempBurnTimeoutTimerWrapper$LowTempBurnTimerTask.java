@@ -4,7 +4,6 @@ import android.os.Handler;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.TimerTask;
 
-/* JADX INFO: loaded from: classes.dex */
 class ThermalAlertReceiver$LowTempBurnTimeoutTimerWrapper$LowTempBurnTimerTask extends TimerTask {
     private final Handler mHandler;
     final /* synthetic */ ThermalAlertReceiver$LowTempBurnTimeoutTimerWrapper this$1;

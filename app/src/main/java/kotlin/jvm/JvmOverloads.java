@@ -11,7 +11,6 @@ import kotlin.annotation.AnnotationTarget;
 import kotlin.annotation.MustBeDocumented;
 
 /* JADX INFO: compiled from: JvmPlatformAnnotations.kt */
-/* JADX INFO: loaded from: classes.dex */
 @Target({ElementType.METHOD, ElementType.CONSTRUCTOR})
 @kotlin.annotation.Target(allowedTargets = {AnnotationTarget.FUNCTION, AnnotationTarget.CONSTRUCTOR})
 @Retention(RetentionPolicy.CLASS)

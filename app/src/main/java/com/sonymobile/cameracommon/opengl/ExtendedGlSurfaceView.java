@@ -15,7 +15,6 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ExtendedGlSurfaceView extends GLSurfaceView {
     public static final boolean IS_OPENGL_DEBUG = false;
     private static final int TARGET_OPEN_GL_ES_VERSION = 2;

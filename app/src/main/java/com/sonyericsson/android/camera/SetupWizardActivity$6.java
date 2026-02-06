@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 class SetupWizardActivity$6 implements Runnable {
     final /* synthetic */ SetupWizardActivity this$0;
 

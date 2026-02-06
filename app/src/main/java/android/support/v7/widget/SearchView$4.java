@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.view.View;
 import android.view.View$OnLayoutChangeListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SearchView$4 implements View$OnLayoutChangeListener {
     final /* synthetic */ SearchView this$0;
 

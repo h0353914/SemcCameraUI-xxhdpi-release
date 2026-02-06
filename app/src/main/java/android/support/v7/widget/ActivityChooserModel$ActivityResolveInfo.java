@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.content.pm.ResolveInfo;
 import java.math.BigDecimal;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ActivityChooserModel$ActivityResolveInfo implements Comparable<ActivityChooserModel$ActivityResolveInfo> {
     public final ResolveInfo resolveInfo;
     public float weight;

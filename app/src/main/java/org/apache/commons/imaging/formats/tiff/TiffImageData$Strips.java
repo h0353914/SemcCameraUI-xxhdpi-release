@@ -7,7 +7,6 @@ import org.apache.commons.imaging.formats.tiff.datareaders.DataReader;
 import org.apache.commons.imaging.formats.tiff.datareaders.DataReaderStrips;
 import org.apache.commons.imaging.formats.tiff.photometricinterpreters.PhotometricInterpreter;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffImageData$Strips extends TiffImageData {
     public final int rowsPerStrip;
     private final TiffElement$DataElement[] strips;

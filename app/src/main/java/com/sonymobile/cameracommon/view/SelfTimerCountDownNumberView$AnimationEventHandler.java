@@ -3,7 +3,6 @@ package com.sonymobile.cameracommon.view;
 import android.animation.Animator;
 import android.animation.Animator$AnimatorListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SelfTimerCountDownNumberView$AnimationEventHandler implements Animator$AnimatorListener {
     final /* synthetic */ SelfTimerCountDownNumberView this$0;
 

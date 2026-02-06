@@ -7,7 +7,6 @@ import android.support.v4.media.MediaBrowserCompatApi26$SubscriptionCallback;
 import android.support.v4.media.session.MediaSessionCompat;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompatApi26$SubscriptionCallbackProxy<T extends MediaBrowserCompatApi26$SubscriptionCallback> extends MediaBrowserCompatApi21$SubscriptionCallbackProxy<T> {
     MediaBrowserCompatApi26$SubscriptionCallbackProxy(T t) {
         super(t);

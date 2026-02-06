@@ -6,7 +6,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.sonyericsson.cameracommon.widget.CategorySwitch;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingButton$ViewHolder {
     CategorySwitch mBackground;
     View mContainer;

@@ -7,7 +7,6 @@ import android.os.ResultReceiver;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY})
 public final class MediaSessionCompat$ResultReceiverWrapper implements Parcelable {
     public static final Parcelable$Creator<MediaSessionCompat$ResultReceiverWrapper> CREATOR = new MediaSessionCompat$ResultReceiverWrapper$1();

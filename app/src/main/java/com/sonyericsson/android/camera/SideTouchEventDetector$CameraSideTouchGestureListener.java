@@ -6,7 +6,6 @@ import com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector$OnDouble
 import com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector$OnGestureListener;
 import com.sonymobile.sidetouchgesturedetector.SideTouchUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchEventDetector$CameraSideTouchGestureListener implements SideTouchGestureDetector$OnGestureListener, SideTouchGestureDetector$OnDoubleTapListener {
     private int mCurrentGestureId;
     private int mCurrentSide;

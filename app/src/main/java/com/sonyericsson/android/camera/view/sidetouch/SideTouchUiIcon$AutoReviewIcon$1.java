@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.sidetouch;
 import android.view.animation.Animation;
 import android.view.animation.Animation$AnimationListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchUiIcon$AutoReviewIcon$1 implements Animation$AnimationListener {
     final /* synthetic */ SideTouchUiIcon$AutoReviewIcon this$0;
 

@@ -5,7 +5,6 @@ import android.os.IBinder;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzg<T> {
     private final String zzapA;
     private T zzapB;

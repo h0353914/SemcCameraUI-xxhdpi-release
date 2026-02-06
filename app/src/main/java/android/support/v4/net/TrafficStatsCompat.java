@@ -8,7 +8,6 @@ import java.net.DatagramSocket;
 import java.net.Socket;
 import java.net.SocketException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TrafficStatsCompat {
     @Deprecated
     public static void clearThreadStatsTag() {

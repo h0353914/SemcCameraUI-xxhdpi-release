@@ -5,7 +5,6 @@ import android.location.Location;
 import android.view.Surface;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface RecorderInterface {
     Surface getSurface();
 

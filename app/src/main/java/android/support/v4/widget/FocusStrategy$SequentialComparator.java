@@ -3,7 +3,6 @@ package android.support.v4.widget;
 import android.graphics.Rect;
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class FocusStrategy$SequentialComparator<T> implements Comparator<T> {
     private final FocusStrategy$BoundsAdapter<T> mAdapter;
     private final boolean mIsLayoutRtl;

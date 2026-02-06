@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.storage;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class CameraStorageManager$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$cameracommon$storage$CameraStorageManager$DetailStorageState;
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$cameracommon$storage$CameraStorageManager$UpdateRequestReason;

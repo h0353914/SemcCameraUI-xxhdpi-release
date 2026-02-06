@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import com.sonyericsson.android.camera.recorder.utility.Accessor;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$4 implements Accessor<CameraActionSound> {
     final /* synthetic */ CameraDeviceHandler this$0;
 

@@ -3,7 +3,6 @@ package android.support.v7.widget.helper;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator$AnimatorUpdateListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ItemTouchHelper$RecoverAnimation$1 implements ValueAnimator$AnimatorUpdateListener {
     final /* synthetic */ ItemTouchHelper$RecoverAnimation this$0;
 

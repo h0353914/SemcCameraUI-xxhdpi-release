@@ -4,7 +4,6 @@ import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.view.menu.MenuPresenter$Callback;
 import android.support.v7.view.menu.SubMenuBuilder;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionMenuPresenter$PopupPresenterCallback implements MenuPresenter$Callback {
     final /* synthetic */ ActionMenuPresenter this$0;
 

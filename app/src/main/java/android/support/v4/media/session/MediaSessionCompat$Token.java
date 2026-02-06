@@ -10,7 +10,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import android.support.v4.app.BundleCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaSessionCompat$Token implements Parcelable {
     public static final Parcelable$Creator<MediaSessionCompat$Token> CREATOR = new MediaSessionCompat$Token$1();
     private IMediaSession mExtraBinder;

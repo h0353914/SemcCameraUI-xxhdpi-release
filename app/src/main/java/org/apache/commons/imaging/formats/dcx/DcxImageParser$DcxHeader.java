@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.dcx;
 
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 class DcxImageParser$DcxHeader {
     public static final int DCX_ID = 987654321;
     public final int id;

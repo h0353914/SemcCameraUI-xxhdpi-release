@@ -33,7 +33,6 @@ import org.apache.commons.imaging.common.ImageMetadata;
 import org.apache.commons.imaging.common.bytesource.ByteSource;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PcxImageParser extends ImageParser {
     private static final String[] ACCEPTED_EXTENSIONS = {".pcx", ".pcc"};
     private static final String DEFAULT_EXTENSION = ".pcx";

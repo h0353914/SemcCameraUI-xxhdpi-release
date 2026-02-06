@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.modeselector.internalmode.googlelens;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class GoogleLensModeActivity$2 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$view$modeselector$internalmode$googlelens$GoogleLensModeActivity$State = new int[GoogleLensModeActivity$State.values().length];
 

@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.recorder.RecorderParameters;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.concurrent.Callable;
 
-/* JADX INFO: loaded from: classes.dex */
 class SuperSlowShotRecorderController$PrepareTask implements Callable<Boolean> {
     private final RecorderParameters mParams;
     final /* synthetic */ SuperSlowShotRecorderController this$0;

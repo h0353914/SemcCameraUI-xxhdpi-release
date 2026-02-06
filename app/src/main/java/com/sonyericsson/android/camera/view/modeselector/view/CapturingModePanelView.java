@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CapturingModePanelView extends AbsPanelView {
     private int mSelectorIconHeight;
     private ImageView mSelectorIconView;

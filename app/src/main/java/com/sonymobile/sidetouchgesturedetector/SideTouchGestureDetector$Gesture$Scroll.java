@@ -2,7 +2,6 @@ package com.sonymobile.sidetouchgesturedetector;
 
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchGestureDetector$Gesture$Scroll extends SideTouchGestureDetector$Gesture$State {
     private float mLastX;
     private float mLastY;

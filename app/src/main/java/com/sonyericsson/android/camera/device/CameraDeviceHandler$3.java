@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.device;
 import com.sonyericsson.android.camera.recorder.utility.Accessor;
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$3 implements Accessor<BypassCamera> {
     final /* synthetic */ CameraDeviceHandler this$0;
 

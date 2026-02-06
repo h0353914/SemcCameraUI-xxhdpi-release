@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.jpeg.xmp;
 
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class JpegRewriter$JFIFPieces {
     public final List<JpegRewriter$JFIFPiece> pieces;
     public final List<JpegRewriter$JFIFPiece> segmentPieces;

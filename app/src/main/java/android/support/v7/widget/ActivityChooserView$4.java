@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.support.v7.view.menu.ShowableListMenu;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActivityChooserView$4 extends ForwardingListener {
     final /* synthetic */ ActivityChooserView this$0;
 

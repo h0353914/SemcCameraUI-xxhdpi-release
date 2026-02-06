@@ -3,7 +3,6 @@ package org.apache.commons.imaging.palette;
 import java.io.Serializable;
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class MostPopulatedBoxesMedianCut$ColorComparer implements Comparator<ColorCount>, Serializable {
     private static final long serialVersionUID = 1;
     private final ColorComponent colorComponent;

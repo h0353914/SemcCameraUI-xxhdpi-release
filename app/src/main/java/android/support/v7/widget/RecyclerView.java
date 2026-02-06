@@ -51,7 +51,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecyclerView extends ViewGroup implements ScrollingView, NestedScrollingChild2 {
     static final boolean ALLOW_SIZE_IN_UNSPECIFIED_SPEC;
     static final boolean ALLOW_THREAD_GAP_WORK;

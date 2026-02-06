@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.Callable;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DataLoader implements Callable<Long> {
     private static final int COLUMN_INDEX_BUCKETID = 7;
     private static final int COLUMN_INDEX_DATA = 1;

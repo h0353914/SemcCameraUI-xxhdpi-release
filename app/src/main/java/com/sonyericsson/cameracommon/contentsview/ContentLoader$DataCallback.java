@@ -7,7 +7,6 @@ import com.sonyericsson.cameracommon.contentsview.contents.ContentFactory;
 import com.sonyericsson.cameracommon.storage.DataLoader$DataLoadCallback;
 import java.util.LinkedList;
 
-/* JADX INFO: loaded from: classes.dex */
 class ContentLoader$DataCallback implements DataLoader$DataLoadCallback {
     final /* synthetic */ ContentLoader this$0;
 

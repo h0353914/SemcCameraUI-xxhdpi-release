@@ -6,7 +6,6 @@ import android.os.SystemClock;
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
 
-/* JADX INFO: loaded from: classes.dex */
 final class ImageManager$zzf implements Runnable {
     private final Bitmap mBitmap;
     private final Uri mUri;

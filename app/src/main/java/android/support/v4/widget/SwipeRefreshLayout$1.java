@@ -3,7 +3,6 @@ package android.support.v4.widget;
 import android.view.animation.Animation;
 import android.view.animation.Animation$AnimationListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SwipeRefreshLayout$1 implements Animation$AnimationListener {
     final /* synthetic */ SwipeRefreshLayout this$0;
 

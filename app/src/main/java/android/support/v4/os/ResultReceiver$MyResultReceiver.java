@@ -2,7 +2,6 @@ package android.support.v4.os;
 
 import android.os.Bundle;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResultReceiver$MyResultReceiver extends IResultReceiver$Stub {
     final /* synthetic */ ResultReceiver this$0;
 

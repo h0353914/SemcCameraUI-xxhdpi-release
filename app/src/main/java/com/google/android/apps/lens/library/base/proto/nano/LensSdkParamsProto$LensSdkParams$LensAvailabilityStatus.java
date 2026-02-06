@@ -2,7 +2,6 @@ package com.google.android.apps.lens.library.base.proto.nano;
 
 import com.google.protobuf.nano.NanoEnumValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface LensSdkParamsProto$LensSdkParams$LensAvailabilityStatus {
 
     @NanoEnumValue(legacy = false, value = LensSdkParamsProto$LensSdkParams$LensAvailabilityStatus.class)

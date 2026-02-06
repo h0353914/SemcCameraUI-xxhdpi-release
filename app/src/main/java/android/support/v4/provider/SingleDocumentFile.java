@@ -6,7 +6,6 @@ import android.provider.DocumentsContract;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(19)
 class SingleDocumentFile extends DocumentFile {
     private Context mContext;

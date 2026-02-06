@@ -1,6 +1,5 @@
 package com.sonymobile.android.media;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaRecorder$VideoEncoder {
     public static final int DEFAULT = 0;
     public static final int H263 = 1;

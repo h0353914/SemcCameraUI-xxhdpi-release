@@ -5,7 +5,6 @@ import android.location.LocationListener;
 import android.os.Bundle;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GeotagLocationListener implements LocationListener {
     public static final String TAG = "GeotagLocationListener";
     private final GeotagManager mGeotagManager;

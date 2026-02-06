@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.overlaycontrol.imagequality;
 import android.view.View;
 import android.view.View$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ImageQualityControlView$2 implements View$OnClickListener {
     final /* synthetic */ ImageQualityControlView this$0;
 

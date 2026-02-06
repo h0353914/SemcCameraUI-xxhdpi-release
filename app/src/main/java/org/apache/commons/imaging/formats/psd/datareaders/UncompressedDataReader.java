@@ -12,7 +12,6 @@ import org.apache.commons.imaging.formats.psd.PsdHeaderInfo;
 import org.apache.commons.imaging.formats.psd.dataparsers.DataParser;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class UncompressedDataReader implements DataReader {
     private DataParser dataParser;
 

@@ -7,7 +7,6 @@ import android.os.RemoteException;
 import com.google.android.aidl.BaseStub;
 import com.google.android.aidl.Codecs;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class IPublicSearchServiceSessionCallback$Stub extends BaseStub implements IPublicSearchServiceSessionCallback {
     private static final String DESCRIPTOR = "com.google.android.apps.gsa.publicsearch.IPublicSearchServiceSessionCallback";
     static final int TRANSACTION_onServiceEvent = 1;

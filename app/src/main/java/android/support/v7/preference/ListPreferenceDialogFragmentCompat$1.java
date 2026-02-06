@@ -3,7 +3,6 @@ package android.support.v7.preference;
 import android.content.DialogInterface;
 import android.content.DialogInterface$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ListPreferenceDialogFragmentCompat$1 implements DialogInterface$OnClickListener {
     final /* synthetic */ ListPreferenceDialogFragmentCompat this$0;
 

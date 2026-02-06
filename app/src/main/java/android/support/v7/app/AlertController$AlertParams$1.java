@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 class AlertController$AlertParams$1 extends ArrayAdapter<CharSequence> {
     final /* synthetic */ AlertController$AlertParams this$0;
     final /* synthetic */ AlertController$RecycleListView val$listView;

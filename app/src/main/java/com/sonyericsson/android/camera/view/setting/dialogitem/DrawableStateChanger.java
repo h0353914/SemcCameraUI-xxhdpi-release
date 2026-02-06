@@ -4,7 +4,6 @@ import android.view.View;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter$ItemLayoutParams;
 
 /* JADX INFO: compiled from: SettingDialogItem.java */
-/* JADX INFO: loaded from: classes.dex */
 class DrawableStateChanger {
     private static final int DRAWABLE_LEVEL_BOTTOM = 2;
     private static final int DRAWABLE_LEVEL_NORMAL = 0;

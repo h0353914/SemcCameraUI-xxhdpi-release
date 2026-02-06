@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SmileScore extends ImageView {
     private static final int GAUGE_BOTTOM_A = 178;
     private static final int GAUGE_BOTTOM_B = 229;

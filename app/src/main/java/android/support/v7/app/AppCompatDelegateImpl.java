@@ -76,7 +76,6 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import org.xmlpull.v1.XmlPullParser;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder$Callback, LayoutInflater$Factory2 {
     private static final boolean DEBUG = false;
     static final String EXCEPTION_HANDLER_MESSAGE_SUFFIX = ". If the resource you are trying to use is a vector resource, you may be referencing it in an unsupported way. See AppCompatDelegate.setCompatVectorFromResourcesEnabled() for more info.";

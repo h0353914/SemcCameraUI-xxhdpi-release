@@ -8,7 +8,6 @@ import com.google.android.gms.auth.api.signin.FacebookSignInConfig;
 import com.google.android.gms.auth.api.signin.GoogleSignInConfig;
 import com.google.android.gms.common.internal.safeparcel.zza$zza;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzh implements Parcelable$Creator<SignInConfiguration> {
     static void zza(SignInConfiguration signInConfiguration, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);

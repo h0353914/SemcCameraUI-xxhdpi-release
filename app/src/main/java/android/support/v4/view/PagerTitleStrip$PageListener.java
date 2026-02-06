@@ -2,7 +2,6 @@ package android.support.v4.view;
 
 import android.database.DataSetObserver;
 
-/* JADX INFO: loaded from: classes.dex */
 class PagerTitleStrip$PageListener extends DataSetObserver implements ViewPager$OnPageChangeListener, ViewPager$OnAdapterChangeListener {
     private int mScrollState;
     final /* synthetic */ PagerTitleStrip this$0;

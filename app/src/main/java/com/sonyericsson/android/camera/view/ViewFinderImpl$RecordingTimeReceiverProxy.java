@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import com.sonyericsson.cameracommon.viewfinder.recordingindicator.RecordingTimeIndicator;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewFinderImpl$RecordingTimeReceiverProxy {
     private int mCurrentTime;
     private RecordingTimeIndicator mReceiver;

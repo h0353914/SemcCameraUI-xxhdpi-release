@@ -6,7 +6,6 @@ import com.sonymobile.cameracommon.research.ResearchUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$CaptureTrigger;
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$DisplayFlashColor;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$BypassCameraControllerCallbackImpl$2 implements Runnable {
     final /* synthetic */ CameraDeviceHandler$BypassCameraControllerCallbackImpl this$1;
     final /* synthetic */ BypassCamera$DisplayFlashColor val$displayFlashColor;

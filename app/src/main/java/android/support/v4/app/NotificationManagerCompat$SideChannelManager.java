@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.Map$Entry;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 class NotificationManagerCompat$SideChannelManager implements Handler$Callback, ServiceConnection {
     private static final int MSG_QUEUE_TASK = 0;
     private static final int MSG_RETRY_LISTENER_QUEUE = 3;

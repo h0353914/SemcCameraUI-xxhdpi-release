@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.ViewGroup$LayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewPager$LayoutParams extends ViewGroup$LayoutParams {
     int childIndex;
     public int gravity;

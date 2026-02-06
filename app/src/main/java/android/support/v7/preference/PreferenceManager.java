@@ -9,7 +9,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import android.support.v4.content.ContextCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PreferenceManager {
     public static final String KEY_HAS_SET_DEFAULT_VALUES = "_has_set_default_values";
     private static final int STORAGE_DEFAULT = 0;

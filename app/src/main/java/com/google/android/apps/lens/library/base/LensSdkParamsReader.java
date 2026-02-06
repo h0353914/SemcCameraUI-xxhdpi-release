@@ -13,7 +13,6 @@ import com.google.android.apps.lens.library.base.proto.nano.LensSdkParamsProto$L
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LensSdkParamsReader {
     public static final String AGSA_AUTHORITY = "com.google.android.googlequicksearchbox.GsaPublicContentProvider";
     public static final String LENS_AR_STICKERS_ACTIVITY = "com.google.vr.apps.ornament.app.MainActivity";

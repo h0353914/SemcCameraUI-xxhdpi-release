@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.util.capability;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences$Editor;
 
-/* JADX INFO: loaded from: classes.dex */
 public class StringCapabilityItem extends CapabilityItem<String> {
     @Override // com.sonyericsson.android.camera.util.capability.CapabilityItem
     /* JADX INFO: renamed from: getDefaultValue, reason: avoid collision after fix types in other method */

@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.jpeg.iptc;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class IptcRecord$1 implements Comparator<IptcRecord> {
     IptcRecord$1() {
     }

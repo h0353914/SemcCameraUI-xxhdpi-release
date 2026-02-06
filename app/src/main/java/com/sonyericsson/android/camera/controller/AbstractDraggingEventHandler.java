@@ -9,7 +9,6 @@ import com.sonyericsson.android.camera.view.baselayout.ViewFinderGestureDetector
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class AbstractDraggingEventHandler implements ViewFinderGestureDetector$OnViewFinderGestureDetectorListener {
     private static final String TAG = "AbstractDraggingEventHandler";
     private final int mCameraSwitchDragFinishDistance;

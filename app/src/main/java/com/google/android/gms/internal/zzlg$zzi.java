@@ -1,6 +1,5 @@
 package com.google.android.gms.internal;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class zzlg$zzi implements Runnable {
     final /* synthetic */ zzlg zzabL;
 

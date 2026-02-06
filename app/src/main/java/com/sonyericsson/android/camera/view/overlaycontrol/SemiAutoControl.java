@@ -4,7 +4,6 @@ import android.view.ViewGroup;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver$ScreenAspect;
 import com.sonyericsson.android.camera.view.overlaycontrol.semiauto.SemiAutoControlView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SemiAutoControl extends OverlayControl {
     private ValueAccessor<Float> mBrightness;
     private ValueAccessor<Float> mColor;

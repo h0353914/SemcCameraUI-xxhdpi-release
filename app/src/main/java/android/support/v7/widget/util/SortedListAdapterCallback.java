@@ -3,7 +3,6 @@ package android.support.v7.widget.util;
 import android.support.v7.util.SortedList$Callback;
 import android.support.v7.widget.RecyclerView$Adapter;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class SortedListAdapterCallback<T2> extends SortedList$Callback<T2> {
     final RecyclerView$Adapter mAdapter;
 

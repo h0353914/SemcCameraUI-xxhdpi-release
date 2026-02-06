@@ -4,7 +4,6 @@ import android.graphics.Rect;
 import android.support.v4.util.ArrayMap;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentTransition$3 implements Runnable {
     final /* synthetic */ Rect val$epicenter;
     final /* synthetic */ View val$epicenterView;

@@ -2,7 +2,6 @@ package android.support.v4.media;
 
 import android.os.Bundle;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$MediaBrowserImplBase$5 implements Runnable {
     final /* synthetic */ MediaBrowserCompat$MediaBrowserImplBase this$0;
     final /* synthetic */ MediaBrowserCompat$SearchCallback val$callback;

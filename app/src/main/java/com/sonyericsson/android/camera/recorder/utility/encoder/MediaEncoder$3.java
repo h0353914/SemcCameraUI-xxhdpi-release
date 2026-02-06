@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.recorder.utility.encoder;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaEncoder$3 implements Runnable {
     final /* synthetic */ MediaEncoder this$0;
 

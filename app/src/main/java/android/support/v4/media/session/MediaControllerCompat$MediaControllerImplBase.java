@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaControllerCompat$MediaControllerImplBase implements MediaControllerCompat$MediaControllerImpl {
     private IMediaSession mBinder;
     private MediaControllerCompat$TransportControls mTransportControls;

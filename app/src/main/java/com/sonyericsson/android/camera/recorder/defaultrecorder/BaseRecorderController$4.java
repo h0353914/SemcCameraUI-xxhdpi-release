@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.recorder.defaultrecorder;
 
 import com.sonyericsson.android.camera.recorder.RecorderInterface$RecordTrackListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class BaseRecorderController$4 implements RecorderInterface$RecordTrackListener {
     final /* synthetic */ BaseRecorderController this$0;
 

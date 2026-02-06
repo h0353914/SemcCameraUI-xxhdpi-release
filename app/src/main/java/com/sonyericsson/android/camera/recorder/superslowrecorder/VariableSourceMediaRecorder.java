@@ -28,7 +28,6 @@ import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 public class VariableSourceMediaRecorder implements RecorderInterface {
     private static final String AUDIO_MIMETYPE = "audio/mp4a-latm";
     private static final boolean ENABLE_MONITOR_FPS = false;

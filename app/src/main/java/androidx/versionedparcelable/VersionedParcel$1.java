@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectStreamClass;
 
-/* JADX INFO: loaded from: classes.dex */
 class VersionedParcel$1 extends ObjectInputStream {
     final /* synthetic */ VersionedParcel this$0;
 

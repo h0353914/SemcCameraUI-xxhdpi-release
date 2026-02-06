@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzh implements DialogInterface$OnClickListener {
     private final Activity mActivity;
     private final Intent mIntent;

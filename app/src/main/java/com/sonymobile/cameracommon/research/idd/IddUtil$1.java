@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.research.idd;
 
 import com.sonymobile.cameracommon.research.parameters.Event$Category;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class IddUtil$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonymobile$cameracommon$research$parameters$Event$Category = new int[Event$Category.values().length];
 

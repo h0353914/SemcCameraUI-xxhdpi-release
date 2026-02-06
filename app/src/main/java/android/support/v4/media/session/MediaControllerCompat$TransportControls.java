@@ -4,7 +4,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.media.RatingCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class MediaControllerCompat$TransportControls {
     public static final String EXTRA_LEGACY_STREAM_TYPE = "android.media.session.extra.LEGACY_STREAM_TYPE";
 

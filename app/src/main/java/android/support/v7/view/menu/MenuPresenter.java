@@ -6,7 +6,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import android.view.ViewGroup;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public interface MenuPresenter {
     boolean collapseItemActionView(MenuBuilder menuBuilder, MenuItemImpl menuItemImpl);

@@ -2,7 +2,6 @@ package com.google.android.gms.common;
 
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzc$zzb extends zzc$zza {
     private final byte[] zzaah;
 

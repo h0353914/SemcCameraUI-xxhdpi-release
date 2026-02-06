@@ -8,7 +8,6 @@ import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenBu
 import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController$DisplayTrigger;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$OnHighSensitivityFusionButtonStateListener implements OnScreenButtonListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

@@ -7,7 +7,6 @@ import org.apache.commons.imaging.formats.tiff.datareaders.DataReader;
 import org.apache.commons.imaging.formats.tiff.datareaders.DataReaderTiled;
 import org.apache.commons.imaging.formats.tiff.photometricinterpreters.PhotometricInterpreter;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffImageData$Tiles extends TiffImageData {
     private final int tileLength;
     private final int tileWidth;

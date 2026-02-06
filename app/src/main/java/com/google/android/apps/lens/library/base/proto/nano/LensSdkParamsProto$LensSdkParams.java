@@ -9,7 +9,6 @@ import com.google.protobuf.nano.MessageNano;
 import com.google.protobuf.nano.NanoEnumValue;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class LensSdkParamsProto$LensSdkParams extends ExtendableMessageNano<LensSdkParamsProto$LensSdkParams> implements Cloneable {
     private static volatile LensSdkParamsProto$LensSdkParams[] _emptyArray;
     public String agsaVersionName;

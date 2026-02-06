@@ -1,6 +1,5 @@
 package com.sonymobile.android.media;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaRecorder$AudioEncoder {
     public static final int AAC = 3;
     public static final int AAC_ELD = 5;

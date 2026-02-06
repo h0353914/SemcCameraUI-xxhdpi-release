@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera;
 import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.android.camera.view.ViewFinderImpl;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$ViewFinderInitializationTask implements Runnable {
     private final ViewFinderImpl mViewFinderImpl;
 

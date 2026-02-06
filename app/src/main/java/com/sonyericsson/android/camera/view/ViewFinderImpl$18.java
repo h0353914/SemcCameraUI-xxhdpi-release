@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 import com.sonyericsson.android.camera.view.animation.AnimationRequest;
 import com.sonyericsson.android.camera.view.animation.TransitionAnimationController$TransitionAnimationCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$18 implements TransitionAnimationController$TransitionAnimationCallback {
     final /* synthetic */ ViewFinderImpl this$0;
     final /* synthetic */ AnimationRequest val$request;

@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.configuration.parameters.Flash;
 import com.sonyericsson.android.camera.configuration.parameters.FocusMode;
 import com.sonyericsson.android.camera.configuration.parameters.SoftSkin;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class MainParameters extends Parameters {
     @Override // com.sonyericsson.android.camera.parameter.Parameters, com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(SoftSkin softSkin) {

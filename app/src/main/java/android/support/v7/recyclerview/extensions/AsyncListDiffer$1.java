@@ -3,7 +3,6 @@ package android.support.v7.recyclerview.extensions;
 import android.support.v7.util.DiffUtil;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class AsyncListDiffer$1 implements Runnable {
     final /* synthetic */ AsyncListDiffer this$0;
     final /* synthetic */ List val$newList;

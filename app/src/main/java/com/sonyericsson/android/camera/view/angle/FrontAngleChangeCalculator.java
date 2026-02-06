@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.angle;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FrontAngleChangeCalculator implements VariableIndex$Calculator {
     public static final int ZOOM_CHANGE_ANGLE_LOOP_COUNT = 1;
     private int mStepInterval = -1;

@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 import org.apache.commons.imaging.ImageWriteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LongestAxisMedianCut implements MedianCut {
     private static final Comparator<ColorGroup> COMPARATOR = new LongestAxisMedianCut$1();
 

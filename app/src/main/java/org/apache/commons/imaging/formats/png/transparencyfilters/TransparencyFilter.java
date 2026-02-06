@@ -4,7 +4,6 @@ import java.io.IOException;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFileParser;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class TransparencyFilter extends BinaryFileParser {
     private final byte[] bytes;
 

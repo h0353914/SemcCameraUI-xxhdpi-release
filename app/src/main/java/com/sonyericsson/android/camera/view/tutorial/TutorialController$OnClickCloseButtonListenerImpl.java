@@ -4,7 +4,6 @@ import android.view.View;
 import com.sonyericsson.android.camera.research.LocalResearchUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$WizardResult;
 
-/* JADX INFO: loaded from: classes.dex */
 class TutorialController$OnClickCloseButtonListenerImpl implements TutorialContentView$OnClickCloseButtonListener {
     private final TutorialContentView$TutorialContent mTutorialContent;
     final /* synthetic */ TutorialController this$0;

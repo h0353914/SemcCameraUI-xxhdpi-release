@@ -3,7 +3,6 @@ package android.arch.lifecycle;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 class ClassesInfoCache$MethodReference {
     final int mCallType;
     final Method mMethod;

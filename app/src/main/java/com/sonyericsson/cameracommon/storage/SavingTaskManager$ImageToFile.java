@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 class SavingTaskManager$ImageToFile {
     private ByteBuffer mBuffer;
     private byte[] mJpegData;

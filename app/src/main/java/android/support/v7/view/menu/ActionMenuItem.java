@@ -20,7 +20,6 @@ import android.view.MenuItem$OnMenuItemClickListener;
 import android.view.SubMenu;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ActionMenuItem implements SupportMenuItem {
     private static final int CHECKABLE = 1;

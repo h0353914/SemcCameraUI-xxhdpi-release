@@ -14,7 +14,6 @@ import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ShortcutManagerCompat {
 
     @VisibleForTesting

@@ -10,7 +10,6 @@ import android.support.v4.content.Loader;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class LoaderManager {
     @MainThread
     public abstract void destroyLoader(int i);

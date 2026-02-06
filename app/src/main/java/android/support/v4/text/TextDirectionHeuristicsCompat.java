@@ -1,6 +1,5 @@
 package android.support.v4.text;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TextDirectionHeuristicsCompat {
     private static final int STATE_FALSE = 1;
     private static final int STATE_TRUE = 0;

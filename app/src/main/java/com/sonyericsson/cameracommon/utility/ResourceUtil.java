@@ -7,7 +7,6 @@ import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ResourceUtil {
     public static final int INVALID_RESOURCE_ID = -1;
     private static final String PACKAGE_NAME = "com.sonymobile.cameracommon";

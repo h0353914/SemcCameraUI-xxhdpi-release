@@ -4,7 +4,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.PriorityBlockingQueue;
 
-/* JADX INFO: loaded from: classes.dex */
 class HintTextViewController$BlockingFiloContentQueue extends PriorityBlockingQueue<HintTextContent> {
     private static final Map<HintTextContent, Long> sSequentialIndexMap = new LinkedHashMap();
     private long mCount;

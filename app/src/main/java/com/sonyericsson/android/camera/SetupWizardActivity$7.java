@@ -10,7 +10,6 @@ import com.sonyericsson.cameracommon.mediasaving.location.GeotagManager;
 import com.sonyericsson.cameracommon.utility.PermissionsUtil;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class SetupWizardActivity$7 implements TutorialController$OnClickSetupWizardButtonListener {
     final /* synthetic */ SetupWizardActivity this$0;
 

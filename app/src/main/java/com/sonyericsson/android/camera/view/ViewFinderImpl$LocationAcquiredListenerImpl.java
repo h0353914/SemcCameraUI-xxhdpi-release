@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import com.sonyericsson.android.camera.configuration.parameters.Geotag;
 import com.sonyericsson.cameracommon.mediasaving.location.LocationAcquiredListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$LocationAcquiredListenerImpl implements LocationAcquiredListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

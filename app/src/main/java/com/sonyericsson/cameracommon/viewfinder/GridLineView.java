@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup$LayoutParams;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GridLineView extends View {
     public static final String TAG = "GridLineView";
     private float mBottomHorizontalLinePositionY;

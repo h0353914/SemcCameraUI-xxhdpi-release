@@ -12,7 +12,6 @@ import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SmileGauge extends RelativeLayout {
     public static final int SMILE_LEVEL = 5;
     public static final int SMILE_MAX = 100;

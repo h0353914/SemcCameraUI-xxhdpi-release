@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.gestureshutter;
 import android.util.Log;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class HandSignsNativeWrapper {
     private static final String TAG = "HandSignsNativeWrapper";
     private long mNativeHandle = 0;

@@ -2,7 +2,6 @@ package org.apache.commons.imaging.palette;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class LongestAxisMedianCut$2 implements Comparator<ColorCount> {
     final /* synthetic */ LongestAxisMedianCut this$0;
     final /* synthetic */ ColorComponent val$mode;

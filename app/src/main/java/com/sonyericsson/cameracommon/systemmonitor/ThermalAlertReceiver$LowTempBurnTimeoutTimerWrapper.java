@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.systemmonitor;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.Timer;
 
-/* JADX INFO: loaded from: classes.dex */
 class ThermalAlertReceiver$LowTempBurnTimeoutTimerWrapper {
     static final long INVALID_TIMER_TIME = -1;
     private Timer mTimer;

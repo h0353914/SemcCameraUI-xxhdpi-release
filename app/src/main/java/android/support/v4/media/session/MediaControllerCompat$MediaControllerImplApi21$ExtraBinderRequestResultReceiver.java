@@ -5,7 +5,6 @@ import android.os.ResultReceiver;
 import android.support.v4.app.BundleCompat;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaControllerCompat$MediaControllerImplApi21$ExtraBinderRequestResultReceiver extends ResultReceiver {
     private WeakReference<MediaControllerCompat$MediaControllerImplApi21> mMediaControllerImpl;
 

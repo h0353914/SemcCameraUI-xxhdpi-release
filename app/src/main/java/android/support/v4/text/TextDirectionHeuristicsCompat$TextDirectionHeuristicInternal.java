@@ -1,6 +1,5 @@
 package android.support.v4.text;
 
-/* JADX INFO: loaded from: classes.dex */
 class TextDirectionHeuristicsCompat$TextDirectionHeuristicInternal extends TextDirectionHeuristicsCompat$TextDirectionHeuristicImpl {
     private final boolean mDefaultIsRtl;
 

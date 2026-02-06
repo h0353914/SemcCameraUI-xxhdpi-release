@@ -4,7 +4,6 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.support.v7.graphics.drawable.DrawableWrapper;
 
-/* JADX INFO: loaded from: classes.dex */
 class DropDownListView$GateKeeperDrawable extends DrawableWrapper {
     private boolean mEnabled;
 

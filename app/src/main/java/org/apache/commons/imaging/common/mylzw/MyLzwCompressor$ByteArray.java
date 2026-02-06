@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.common.mylzw;
 
-/* JADX INFO: loaded from: classes.dex */
 final class MyLzwCompressor$ByteArray {
     private final byte[] bytes;
     private final int hash;

@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.mediasaving.updator;
 
 import android.content.ContentValues;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class CrUpdateParameter {
     public ContentValues values = null;
     public String where = null;

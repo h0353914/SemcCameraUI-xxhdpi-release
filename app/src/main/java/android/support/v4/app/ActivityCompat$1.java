@@ -3,7 +3,6 @@ package android.support.v4.app;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActivityCompat$1 implements Runnable {
     final /* synthetic */ Activity val$activity;
     final /* synthetic */ String[] val$permissions;

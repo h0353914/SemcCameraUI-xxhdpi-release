@@ -4,7 +4,6 @@ import android.graphics.drawable.AnimationDrawable;
 import android.widget.ImageView;
 import com.sonyericsson.cameracommon.utility.BrandConfig;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GeotagIndicator extends Indicator {
     public GeotagIndicator(ImageView imageView) {
         super(imageView);

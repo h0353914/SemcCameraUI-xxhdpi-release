@@ -38,7 +38,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShortOrLongOrRati
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShortOrRational;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoXpString;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TiffOutputDirectory extends TiffOutputItem {
     public static final Comparator<TiffOutputDirectory> COMPARATOR = new TiffOutputDirectory$1();
     private final ByteOrder byteOrder;

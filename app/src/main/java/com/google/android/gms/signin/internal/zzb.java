@@ -5,7 +5,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.Status;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzb extends zze$zza {
     public void zza(ConnectionResult connectionResult, AuthAccountResult authAccountResult) {
     }

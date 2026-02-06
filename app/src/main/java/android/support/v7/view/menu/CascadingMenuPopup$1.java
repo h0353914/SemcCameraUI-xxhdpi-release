@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.ViewTreeObserver$OnGlobalLayoutListener;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 class CascadingMenuPopup$1 implements ViewTreeObserver$OnGlobalLayoutListener {
     final /* synthetic */ CascadingMenuPopup this$0;
 

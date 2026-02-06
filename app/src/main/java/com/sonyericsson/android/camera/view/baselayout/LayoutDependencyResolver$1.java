@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.baselayout;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class LayoutDependencyResolver$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$view$baselayout$LayoutDependencyResolver$SystemBarStatus = new int[LayoutDependencyResolver$SystemBarStatus.values().length];
 

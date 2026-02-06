@@ -19,7 +19,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AlertDialog extends AppCompatDialog implements DialogInterface {
     static final int LAYOUT_HINT_NONE = 0;
     static final int LAYOUT_HINT_SIDE = 1;

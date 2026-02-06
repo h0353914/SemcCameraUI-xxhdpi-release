@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 @ProtoMessage(checkInitialized = {}, messageSetWireFormat = false, protoSyntax = ProtoSyntax.PROTO2)
 public final class LensServiceClientEventData extends GeneratedMessageLite<LensServiceClientEventData, LensServiceClientEventData$Builder> implements LensServiceClientEventDataOrBuilder {
     private static final LensServiceClientEventData DEFAULT_INSTANCE = new LensServiceClientEventData();

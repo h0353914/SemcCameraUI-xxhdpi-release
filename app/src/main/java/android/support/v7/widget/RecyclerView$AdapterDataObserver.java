@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class RecyclerView$AdapterDataObserver {
     public void onChanged() {
     }

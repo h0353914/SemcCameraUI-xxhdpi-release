@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.MenuPopupWindow;
 import android.widget.ListView;
 
-/* JADX INFO: loaded from: classes.dex */
 class CascadingMenuPopup$CascadingMenuInfo {
     public final MenuBuilder menu;
     public final int position;

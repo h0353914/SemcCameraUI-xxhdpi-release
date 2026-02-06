@@ -6,7 +6,6 @@ import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 import java.sql.Date;
 
-/* JADX INFO: loaded from: classes.dex */
 class SqlDateTypeAdapter$1 implements TypeAdapterFactory {
     SqlDateTypeAdapter$1() {
     }

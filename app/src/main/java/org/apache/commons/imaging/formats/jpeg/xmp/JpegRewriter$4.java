@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.formats.jpeg.JpegUtils$Visitor;
 
-/* JADX INFO: loaded from: classes.dex */
 class JpegRewriter$4 implements JpegUtils$Visitor {
     final /* synthetic */ JpegRewriter this$0;
     final /* synthetic */ List val$pieces;

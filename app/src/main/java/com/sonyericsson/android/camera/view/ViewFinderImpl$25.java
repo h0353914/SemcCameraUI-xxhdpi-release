@@ -9,7 +9,6 @@ import com.sonyericsson.android.camera.view.tutorial.TutorialController$Tutorial
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$25 implements TutorialController$OnClickSetupWizardButtonListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

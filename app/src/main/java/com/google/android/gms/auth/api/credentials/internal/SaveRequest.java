@@ -5,7 +5,6 @@ import android.os.Parcelable$Creator;
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class SaveRequest implements SafeParcelable {
     public static final Parcelable$Creator<SaveRequest> CREATOR = new zzi();
     final int mVersionCode;

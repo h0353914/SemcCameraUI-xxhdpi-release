@@ -4,7 +4,6 @@ import kotlin.SinceKotlin;
 import kotlin.reflect.KCallable;
 import kotlin.reflect.KProperty;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class PropertyReference extends CallableReference implements KProperty {
     @Override // kotlin.jvm.internal.CallableReference
     protected /* bridge */ /* synthetic */ KCallable getReflected() {

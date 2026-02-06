@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.storage;
 
 import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusCommon;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RequestFactory {
     private static final String TAG = "RequestFactory";
 

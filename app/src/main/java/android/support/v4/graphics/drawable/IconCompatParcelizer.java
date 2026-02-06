@@ -4,7 +4,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import androidx.versionedparcelable.VersionedParcel;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY})
 public final class IconCompatParcelizer extends androidx.core.graphics.drawable.IconCompatParcelizer {
     public static IconCompat read(VersionedParcel versionedParcel) {

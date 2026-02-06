@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.sidetouch;
 
 import android.graphics.Point;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchUi$IconLayer {
     private Point mAttachPoint;
     private boolean mFocused;

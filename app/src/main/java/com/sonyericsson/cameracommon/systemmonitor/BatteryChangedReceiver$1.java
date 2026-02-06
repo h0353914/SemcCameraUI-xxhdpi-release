@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.systemmonitor;
 
-/* JADX INFO: loaded from: classes.dex */
 class BatteryChangedReceiver$1 implements Runnable {
     final /* synthetic */ BatteryChangedReceiver this$0;
     final /* synthetic */ boolean val$isOnStartup;

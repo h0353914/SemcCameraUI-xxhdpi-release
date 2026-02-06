@@ -4,7 +4,6 @@ import android.os.Handler;
 import android.os.Message;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class ObjectTrackingManager$ObjectTrackingHandler extends Handler {
     private static final int MSG_TIMEOUT_INVISIBLE = 2;
     private static final int MSG_TIMEOUT_LOST = 1;

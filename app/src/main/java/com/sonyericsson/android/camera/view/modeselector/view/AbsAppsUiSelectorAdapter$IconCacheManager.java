@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.view.modeselector.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class AbsAppsUiSelectorAdapter$IconCacheManager {
     private static ArrayList<AbsAppsUiSelectorAdapter> sCacheClientStack;
     private static ImageLoader sImageLoader;

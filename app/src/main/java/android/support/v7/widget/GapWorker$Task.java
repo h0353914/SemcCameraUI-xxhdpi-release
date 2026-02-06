@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class GapWorker$Task {
     public int distanceToItem;
     public boolean immediate;

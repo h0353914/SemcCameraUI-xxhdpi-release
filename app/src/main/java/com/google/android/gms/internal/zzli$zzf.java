@@ -5,7 +5,6 @@ import com.google.android.gms.common.api.Api$zzb;
 import com.google.android.gms.common.api.Api$zzc;
 import com.google.android.gms.common.api.Status;
 
-/* JADX INFO: loaded from: classes.dex */
 interface zzli$zzf<A extends Api$zzb> {
     void cancel();
 

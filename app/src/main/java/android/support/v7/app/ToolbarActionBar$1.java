@@ -1,6 +1,5 @@
 package android.support.v7.app;
 
-/* JADX INFO: loaded from: classes.dex */
 class ToolbarActionBar$1 implements Runnable {
     final /* synthetic */ ToolbarActionBar this$0;
 

@@ -7,7 +7,6 @@ import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.formats.png.InterlaceMethod;
 import org.apache.commons.imaging.formats.png.PngColorType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PngChunkIhdr extends PngChunk {
     public final int bitDepth;
     public final int compressionMethod;

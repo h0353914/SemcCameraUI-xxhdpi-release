@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SetTimeTask implements Runnable {
     private final boolean mIsStart;
     private final long mTime;

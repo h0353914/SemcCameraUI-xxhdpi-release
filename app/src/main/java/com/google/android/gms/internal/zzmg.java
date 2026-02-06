@@ -3,7 +3,6 @@ package com.google.android.gms.internal;
 import java.util.LinkedHashMap;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzmg<K, V> {
     private int size;
     private final LinkedHashMap<K, V> zzagB;

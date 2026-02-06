@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.ByteOrder;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BinaryOutputStream extends OutputStream {
     private ByteOrder byteOrder;
     private int count;

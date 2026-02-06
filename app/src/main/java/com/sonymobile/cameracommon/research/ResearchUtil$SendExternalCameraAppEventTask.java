@@ -8,7 +8,6 @@ import com.sonymobile.cameracommon.research.idd.IddUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SendExternalCameraAppEventTask implements Runnable {
     private final Context mContext;
     private final String mModeTo;

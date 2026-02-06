@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.hint;
 
-/* JADX INFO: loaded from: classes.dex */
 class HintTextView$1 implements Runnable {
     final /* synthetic */ HintTextView this$0;
 

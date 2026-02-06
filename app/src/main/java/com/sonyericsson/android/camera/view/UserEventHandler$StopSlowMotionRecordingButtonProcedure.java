@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import android.graphics.Point;
 import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$StopSlowMotionRecordingButtonProcedure extends UserEventHandler$TouchEventProcedure {
     final /* synthetic */ UserEventHandler this$0;
 

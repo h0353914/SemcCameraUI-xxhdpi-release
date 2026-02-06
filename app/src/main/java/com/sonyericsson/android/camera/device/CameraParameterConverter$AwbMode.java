@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum CameraParameterConverter$AwbMode {
     OFF("off", 0),
     AUTO("auto", 1),

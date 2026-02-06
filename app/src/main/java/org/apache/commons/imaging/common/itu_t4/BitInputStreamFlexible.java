@@ -3,7 +3,6 @@ package org.apache.commons.imaging.common.itu_t4;
 import java.io.IOException;
 import java.io.InputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 class BitInputStreamFlexible extends InputStream {
     private long bytesRead;
     private int cache;

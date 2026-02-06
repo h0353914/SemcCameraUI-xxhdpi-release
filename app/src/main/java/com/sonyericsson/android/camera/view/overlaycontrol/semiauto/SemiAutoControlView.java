@@ -15,7 +15,6 @@ import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver$
 import com.sonyericsson.cameracommon.utility.ResourceUtil;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SemiAutoControlView implements SemiAutoSeekBarView$OnSemiAutoSeekBarChangeListener, View$OnClickListener, View$OnTouchListener {
     private static final int SEEK_BAR_BRIGHTNESS = 2131296593;
     private static final int SEEK_BAR_COLORING = 2131296594;

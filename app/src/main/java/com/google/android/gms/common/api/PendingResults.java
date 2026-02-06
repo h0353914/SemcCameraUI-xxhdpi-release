@@ -5,7 +5,6 @@ import com.google.android.gms.common.internal.zzx;
 import com.google.android.gms.internal.zzln;
 import com.google.android.gms.internal.zzlo;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class PendingResults {
     private PendingResults() {
     }

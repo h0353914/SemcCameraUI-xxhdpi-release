@@ -4,7 +4,6 @@ import android.content.Context;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.controller.launcher.ApplicationLauncher;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ModeSelectorInternalMode {
     MANUAL(CapturingMode.NORMAL),
     SLOW_MOTION(CapturingMode.SLOW_MOTION),

@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView$OnItemSelectedListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ListPopupWindow$3 implements AdapterView$OnItemSelectedListener {
     final /* synthetic */ ListPopupWindow this$0;
 

@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum VideoHdr implements UserSettingValue {
     HDR_ON(2131231054, 2131690116, "on-video-hdr"),
     HDR_OFF(2131231053, 2131690115, "off");

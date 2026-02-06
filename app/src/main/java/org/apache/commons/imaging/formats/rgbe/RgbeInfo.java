@@ -14,7 +14,6 @@ import org.apache.commons.imaging.common.GenericImageMetadata;
 import org.apache.commons.imaging.common.ImageMetadata;
 import org.apache.commons.imaging.common.bytesource.ByteSource;
 
-/* JADX INFO: loaded from: classes.dex */
 class RgbeInfo implements Closeable {
     private static final byte[] HEADER = {35, 63, 82, 65, 68, 73, 65, 78, 67, 69};
     private static final Pattern RESOLUTION_STRING = Pattern.compile("-Y (\\d+) \\+X (\\d+)");

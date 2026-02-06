@@ -6,7 +6,6 @@ import android.support.annotation.RestrictTo$Scope;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ParcelUtils {
     private ParcelUtils() {

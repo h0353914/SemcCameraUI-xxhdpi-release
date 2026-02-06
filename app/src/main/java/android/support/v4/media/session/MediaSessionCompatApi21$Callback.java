@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 
-/* JADX INFO: loaded from: classes.dex */
 interface MediaSessionCompatApi21$Callback {
     void onCommand(String str, Bundle bundle, ResultReceiver resultReceiver);
 

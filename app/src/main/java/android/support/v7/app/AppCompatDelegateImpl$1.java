@@ -2,7 +2,6 @@ package android.support.v7.app;
 
 import android.content.res.Resources$NotFoundException;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatDelegateImpl$1 implements Thread$UncaughtExceptionHandler {
     final /* synthetic */ Thread$UncaughtExceptionHandler val$defHandler;
 

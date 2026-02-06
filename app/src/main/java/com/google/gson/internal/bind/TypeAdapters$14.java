@@ -8,7 +8,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-/* JADX INFO: loaded from: classes.dex */
 class TypeAdapters$14 extends TypeAdapter<BigDecimal> {
     TypeAdapters$14() {
     }

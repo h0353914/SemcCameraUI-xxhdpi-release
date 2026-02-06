@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.jpeg.iptc;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IptcBlock {
     final byte[] blockData;
     final byte[] blockNameBytes;

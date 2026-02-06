@@ -2,7 +2,6 @@ package android.arch.lifecycle;
 
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 class LiveData$LifecycleBoundObserver extends LiveData<T>.LiveData$ObserverWrapper implements GenericLifecycleObserver {
 
     @NonNull

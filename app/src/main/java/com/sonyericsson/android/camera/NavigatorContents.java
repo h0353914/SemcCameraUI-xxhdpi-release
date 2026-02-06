@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera;
 import android.content.Context;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum NavigatorContents {
     SUPERIOR_AUTO(2131230936, 2131230937, 2131689668),
     VIDEO(2131230938, 2131230939, 2131689631);

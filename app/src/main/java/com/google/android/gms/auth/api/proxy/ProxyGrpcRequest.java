@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable$Creator;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ProxyGrpcRequest implements SafeParcelable {
     public static final Parcelable$Creator<ProxyGrpcRequest> CREATOR = new zza();
     public final byte[] body;

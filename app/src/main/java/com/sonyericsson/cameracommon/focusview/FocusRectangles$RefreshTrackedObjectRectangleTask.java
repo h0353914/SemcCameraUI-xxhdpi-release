@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.focusview;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class FocusRectangles$RefreshTrackedObjectRectangleTask implements Runnable {
     final /* synthetic */ FocusRectangles this$0;
 

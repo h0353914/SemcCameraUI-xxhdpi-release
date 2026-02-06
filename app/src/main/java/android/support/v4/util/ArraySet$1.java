@@ -3,7 +3,6 @@ package android.support.v4.util;
 import java.util.Map;
 
 /* JADX INFO: Add missing generic type declarations: [E] */
-/* JADX INFO: loaded from: classes.dex */
 class ArraySet$1<E> extends MapCollections<E, E> {
     final /* synthetic */ ArraySet this$0;
 

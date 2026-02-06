@@ -11,7 +11,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.view.ViewFinderImpl;
 import com.sonyericsson.cameracommon.utility.PermissionsUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GeotagManager {
     private static final String[] REQUEST_LOCATION_PERMISSION = {"android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION"};
     public static final String TAG = "GeotagManager";

@@ -7,7 +7,6 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import com.google.android.gms.common.GoogleApiAvailability;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class zzll extends BroadcastReceiver {
     protected Context mContext;
 

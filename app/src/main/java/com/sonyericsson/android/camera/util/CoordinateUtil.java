@@ -5,7 +5,6 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class CoordinateUtil {
     private static final float ROUNDING = 0.5f;
     public static final String TAG = "CoordinateUtil";

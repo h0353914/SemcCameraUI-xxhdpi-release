@@ -8,7 +8,6 @@ import android.widget.FrameLayout$LayoutParams;
 import android.widget.ImageView;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class HighSensitivityFusionIndicator {
     private View$OnClickListener mListener;
     private final ViewGroup mRootView;

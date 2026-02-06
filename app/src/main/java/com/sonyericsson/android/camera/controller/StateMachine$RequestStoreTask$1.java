@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.controller;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$RequestStoreTask$1 implements Runnable {
     final /* synthetic */ StateMachine$RequestStoreTask this$1;
 

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.setting;
 
 import com.sonyericsson.android.camera.configuration.ParameterCategory;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class SharedPreferencesAccessor$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$ParameterCategory = new int[ParameterCategory.values().length];
 

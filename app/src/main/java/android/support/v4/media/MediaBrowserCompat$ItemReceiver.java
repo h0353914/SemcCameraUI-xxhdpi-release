@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.os.ResultReceiver;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$ItemReceiver extends ResultReceiver {
     private final MediaBrowserCompat$ItemCallback mCallback;
     private final String mMediaId;

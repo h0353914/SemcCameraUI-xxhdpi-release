@@ -24,7 +24,6 @@ import android.util.TypedValue;
 import java.io.IOException;
 import org.xmlpull.v1.XmlPullParserException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ResourcesCompat {
     private static final String TAG = "ResourcesCompat";
 

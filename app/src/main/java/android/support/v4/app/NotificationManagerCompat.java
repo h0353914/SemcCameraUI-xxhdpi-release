@@ -16,7 +16,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class NotificationManagerCompat {
     public static final String ACTION_BIND_SIDE_CHANNEL = "android.support.BIND_NOTIFICATION_SIDE_CHANNEL";
     private static final String CHECK_OP_NO_THROW = "checkOpNoThrow";

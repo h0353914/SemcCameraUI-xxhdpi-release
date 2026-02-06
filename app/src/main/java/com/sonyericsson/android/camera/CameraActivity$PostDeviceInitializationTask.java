@@ -8,7 +8,6 @@ import com.sonyericsson.android.camera.configuration.parameters.PhotoLight;
 import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 import com.sonyericsson.android.camera.setting.UserSettings;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$PostDeviceInitializationTask implements Runnable {
     private final CameraActivity mActivity;
     final /* synthetic */ CameraActivity this$0;

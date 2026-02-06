@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.contentsview;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PredictiveCaptureStoreInfo {
     private final int mCaptureNum;
     private final String mCaptureTime;

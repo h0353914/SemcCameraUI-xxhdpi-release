@@ -34,7 +34,6 @@ import org.apache.commons.imaging.palette.Palette;
 import org.apache.commons.imaging.palette.PaletteFactory;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GifImageParser extends ImageParser {
     private static final int APPLICATION_EXTENSION_LABEL = 255;
     private static final int COMMENT_EXTENSION = 254;

@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 class FastScroller$AnimatorListener extends AnimatorListenerAdapter {
     private boolean mCanceled = false;
     final /* synthetic */ FastScroller this$0;

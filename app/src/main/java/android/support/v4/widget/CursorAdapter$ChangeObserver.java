@@ -3,7 +3,6 @@ package android.support.v4.widget;
 import android.database.ContentObserver;
 import android.os.Handler;
 
-/* JADX INFO: loaded from: classes.dex */
 class CursorAdapter$ChangeObserver extends ContentObserver {
     final /* synthetic */ CursorAdapter this$0;
 

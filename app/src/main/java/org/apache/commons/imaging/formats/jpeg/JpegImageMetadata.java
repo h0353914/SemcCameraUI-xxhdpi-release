@@ -21,7 +21,6 @@ import org.apache.commons.imaging.formats.tiff.TiffImageMetadata$Directory;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfo;
 import org.apache.commons.imaging.util.Debug;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JpegImageMetadata implements ImageMetadata {
     private static final String NEWLINE = System.getProperty("line.separator");
     private final TiffImageMetadata exif;

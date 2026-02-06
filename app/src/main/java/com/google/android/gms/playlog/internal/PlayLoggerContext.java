@@ -5,7 +5,6 @@ import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzw;
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PlayLoggerContext implements SafeParcelable {
     public static final zze CREATOR = new zze();
     public final String packageName;

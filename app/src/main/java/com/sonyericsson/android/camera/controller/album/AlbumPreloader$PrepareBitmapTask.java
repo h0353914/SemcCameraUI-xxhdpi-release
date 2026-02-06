@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 final class AlbumPreloader$PrepareBitmapTask extends AsyncTask {
     private static final String THREAD_NAME = "PrepareBitmap";
     final /* synthetic */ AlbumPreloader this$0;

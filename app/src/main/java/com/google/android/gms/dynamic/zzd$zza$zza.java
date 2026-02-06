@@ -2,7 +2,6 @@ package com.google.android.gms.dynamic;
 
 import android.os.IBinder;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzd$zza$zza implements zzd {
     private IBinder zznJ;
 

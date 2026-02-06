@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateFatal$LazyAbortTask implements Runnable {
     final /* synthetic */ StateMachine$StateFatal this$1;
 

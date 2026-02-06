@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.View$OnClickListener;
 import android.widget.FrameLayout;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class PagingTutorialNavigator extends FrameLayout implements ViewPager$OnPageChangeListener {
     private PagingTutorialContentView$PagingTutorialController mController;
     protected final View$OnClickListener mOnClickListener;

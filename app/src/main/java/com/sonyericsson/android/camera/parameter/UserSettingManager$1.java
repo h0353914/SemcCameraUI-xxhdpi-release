@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.parameter;
 import com.sonyericsson.android.camera.setting.UserSettingsLoader$OnLoadCompletedListener;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserSettingManager$1 implements UserSettingsLoader$OnLoadCompletedListener {
     final /* synthetic */ UserSettingManager this$0;
 

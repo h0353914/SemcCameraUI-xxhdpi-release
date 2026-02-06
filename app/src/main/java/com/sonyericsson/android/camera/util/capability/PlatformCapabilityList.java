@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PlatformCapabilityList {
     private static final String KEY_SENSOR_CAMERA_LIFT_TRIGGER = "sensor_camera_lift_trigger";
     private static final String KEY_SIDE_SENSE = "somc_side_sense";

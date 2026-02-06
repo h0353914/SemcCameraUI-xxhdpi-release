@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.jpeg.iptc;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum IptcTypes implements IptcType {
     RECORD_VERSION(0, "Record Version"),
     OBJECT_TYPE_REFERENCE(3, "Object Type Reference"),

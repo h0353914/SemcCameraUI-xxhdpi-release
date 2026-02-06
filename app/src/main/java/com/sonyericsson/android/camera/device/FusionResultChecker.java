@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.device;
 import android.os.Handler;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class FusionResultChecker extends CaptureResultCheckerBase {
     private static final String TAG = "FusionResultChecker";
     private CameraParameters$FusionResultCallback mCallback;

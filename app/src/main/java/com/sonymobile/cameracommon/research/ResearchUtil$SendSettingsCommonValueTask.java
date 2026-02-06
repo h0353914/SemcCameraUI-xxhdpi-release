@@ -3,7 +3,6 @@ package com.sonymobile.cameracommon.research;
 import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue;
 import com.sonymobile.cameracommon.research.parameters.Event$Category;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SendSettingsCommonValueTask implements Runnable {
     private final UserSettingValue mValue;
     final /* synthetic */ ResearchUtil this$0;

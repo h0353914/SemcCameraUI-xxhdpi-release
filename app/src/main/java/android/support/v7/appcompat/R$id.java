@@ -1,6 +1,5 @@
 package android.support.v7.appcompat;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$id {
     public static final int action_bar = 2131296263;
     public static final int action_bar_activity_content = 2131296264;

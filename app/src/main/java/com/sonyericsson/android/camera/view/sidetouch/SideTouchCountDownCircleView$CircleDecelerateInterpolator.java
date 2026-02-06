@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.sidetouch;
 
 import android.view.animation.DecelerateInterpolator;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchCountDownCircleView$CircleDecelerateInterpolator extends DecelerateInterpolator {
     private SideTouchCountDownCircleView$CircleDecelerateInterpolator() {
     }

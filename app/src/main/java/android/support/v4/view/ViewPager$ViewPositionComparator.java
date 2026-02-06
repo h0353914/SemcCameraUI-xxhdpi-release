@@ -3,7 +3,6 @@ package android.support.v4.view;
 import android.view.View;
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewPager$ViewPositionComparator implements Comparator<View> {
     ViewPager$ViewPositionComparator() {
     }

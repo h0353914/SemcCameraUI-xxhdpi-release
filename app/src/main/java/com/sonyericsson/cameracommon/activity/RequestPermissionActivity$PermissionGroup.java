@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import java.util.Arrays;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 enum RequestPermissionActivity$PermissionGroup {
     CAMERA("android.permission-group.CAMERA", Arrays.asList("android.permission.CAMERA"), RequestPermissionActivity.access$000(), 2131690052),
     MIC("android.permission-group.MICROPHONE", Arrays.asList("android.permission.RECORD_AUDIO"), RequestPermissionActivity.access$000(), 2131690054),

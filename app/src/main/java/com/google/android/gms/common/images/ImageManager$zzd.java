@@ -3,7 +3,6 @@ package com.google.android.gms.common.images;
 import android.graphics.Bitmap;
 import android.os.SystemClock;
 
-/* JADX INFO: loaded from: classes.dex */
 final class ImageManager$zzd implements Runnable {
     final /* synthetic */ ImageManager zzadR;
     private final zza zzadT;

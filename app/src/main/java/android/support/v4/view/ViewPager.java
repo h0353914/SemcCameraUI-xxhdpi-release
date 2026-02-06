@@ -34,7 +34,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewPager extends ViewGroup {
     private static final int CLOSE_ENOUGH = 2;
     private static final boolean DEBUG = false;

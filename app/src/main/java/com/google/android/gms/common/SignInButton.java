@@ -12,7 +12,6 @@ import com.google.android.gms.common.internal.zzab;
 import com.google.android.gms.common.internal.zzx;
 import com.google.android.gms.dynamic.zzg$zza;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class SignInButton extends FrameLayout implements View$OnClickListener {
     public static final int COLOR_DARK = 0;
     public static final int COLOR_LIGHT = 1;

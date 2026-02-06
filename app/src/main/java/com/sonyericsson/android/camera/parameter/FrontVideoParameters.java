@@ -25,7 +25,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.EnumMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FrontVideoParameters extends FrontParameters {
     @Override // com.sonyericsson.android.camera.parameter.Parameters
     protected void prepare() {

@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionBarOverlayLayout$2 implements Runnable {
     final /* synthetic */ ActionBarOverlayLayout this$0;
 

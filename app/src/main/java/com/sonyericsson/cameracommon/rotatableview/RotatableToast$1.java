@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.rotatableview;
 
-/* JADX INFO: loaded from: classes.dex */
 class RotatableToast$1 implements Runnable {
     final /* synthetic */ RotatableToast this$0;
 

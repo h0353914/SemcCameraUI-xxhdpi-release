@@ -9,7 +9,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoLong;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoRational;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShort;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MolecularDynamicsGelTagConstants {
     public static final TagInfoLong EXIF_TAG_MD_FILE_TAG = new TagInfoLong("MD FileTag", 33445, 1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);
     public static final TagInfoRational EXIF_TAG_MD_SCALE_PIXEL = new TagInfoRational("MD ScalePixel", 33446, 1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);

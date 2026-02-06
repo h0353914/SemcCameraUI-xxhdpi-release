@@ -9,7 +9,6 @@ import com.sonyericsson.cameracommon.storage.SavingRequest;
 import com.sonyericsson.cameracommon.storage.Storage$OnStoreCompletedListener;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$1 implements Storage$OnStoreCompletedListener {
     final /* synthetic */ StateMachine this$0;
 

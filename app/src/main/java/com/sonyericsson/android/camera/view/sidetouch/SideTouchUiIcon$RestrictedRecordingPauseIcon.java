@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.view.ViewFinderImpl$RecordingTimeReceiver
 import com.sonyericsson.android.camera.view.ViewFinderImpl$SideTouchUiButtonListenerFactory;
 import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonItemFactory$ButtonType;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class SideTouchUiIcon$RestrictedRecordingPauseIcon extends SideTouchUiIcon$RestrictedRecordingIcon {
     protected SideTouchUiIcon$RestrictedRecordingPauseIcon(Context context, int i, ViewFinderImpl$SideTouchUiButtonListenerFactory viewFinderImpl$SideTouchUiButtonListenerFactory, ViewFinderImpl$RecordingTimeReceiverProxy viewFinderImpl$RecordingTimeReceiverProxy) {
         super(context, i, viewFinderImpl$SideTouchUiButtonListenerFactory, viewFinderImpl$RecordingTimeReceiverProxy);

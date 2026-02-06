@@ -13,7 +13,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoSShort;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShort;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoUndefined;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TiffEpTagConstants {
     public static final int FOCAL_PLANE_RESOLUTION_UNIT_VALUE_CM = 3;
     public static final int FOCAL_PLANE_RESOLUTION_UNIT_VALUE_INCHES = 2;

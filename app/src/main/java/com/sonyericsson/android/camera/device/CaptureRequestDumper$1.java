@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class CaptureRequestDumper$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$device$CaptureRequestDumper$Type = new int[CaptureRequestDumper$Type.values().length];
 

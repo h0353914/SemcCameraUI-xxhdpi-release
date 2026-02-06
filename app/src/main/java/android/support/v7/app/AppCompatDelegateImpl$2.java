@@ -1,6 +1,5 @@
 package android.support.v7.app;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatDelegateImpl$2 implements Runnable {
     final /* synthetic */ AppCompatDelegateImpl this$0;
 

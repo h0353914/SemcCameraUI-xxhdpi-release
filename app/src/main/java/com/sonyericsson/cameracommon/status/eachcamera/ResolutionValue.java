@@ -5,7 +5,6 @@ import android.graphics.Rect;
 import com.sonyericsson.cameracommon.status.CameraStatusValue;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class ResolutionValue implements CameraStatusValue, EachCameraStatusValue {
     private static int REQUIRED_PROVIDER_VERSION = 1;
     private int mHeight;

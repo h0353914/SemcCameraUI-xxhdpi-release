@@ -3,7 +3,6 @@ package android.support.v4.media.session;
 import android.media.AudioAttributes;
 import android.media.session.MediaController$PlaybackInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaControllerCompatApi21$PlaybackInfo {
     private static final int FLAG_SCO = 4;
     private static final int STREAM_BLUETOOTH_SCO = 6;

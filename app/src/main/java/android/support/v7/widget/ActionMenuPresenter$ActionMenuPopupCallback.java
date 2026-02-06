@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.support.v7.view.menu.ActionMenuItemView$PopupCallback;
 import android.support.v7.view.menu.ShowableListMenu;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionMenuPresenter$ActionMenuPopupCallback extends ActionMenuItemView$PopupCallback {
     final /* synthetic */ ActionMenuPresenter this$0;
 

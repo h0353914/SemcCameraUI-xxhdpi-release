@@ -1,6 +1,5 @@
 package com.sonymobile.imageprocessor.bypasscamera2;
 
-/* JADX INFO: loaded from: classes.dex */
 class BypassCamera$CallbackStartSuperSlowRecordingTask implements Runnable {
     final /* synthetic */ BypassCamera this$0;
 

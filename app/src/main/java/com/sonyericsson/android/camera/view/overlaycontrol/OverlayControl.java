@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.overlaycontrol;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class OverlayControl {
     private boolean mIsAllowedToShow;
     private boolean mIsEnabled;

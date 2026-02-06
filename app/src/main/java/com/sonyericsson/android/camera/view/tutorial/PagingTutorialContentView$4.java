@@ -4,7 +4,6 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer$OnErrorListener;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class PagingTutorialContentView$4 implements MediaPlayer$OnErrorListener {
     final /* synthetic */ PagingTutorialContentView this$0;
 

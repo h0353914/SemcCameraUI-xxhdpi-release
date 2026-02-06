@@ -7,7 +7,6 @@ import android.support.annotation.StringRes;
 import android.text.Html;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ShareCompat$IntentBuilder {
     private Activity mActivity;
     private ArrayList<String> mBccAddresses;

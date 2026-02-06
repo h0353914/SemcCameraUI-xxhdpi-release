@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 import android.support.v4.view.AbsSavedState;
 
-/* JADX INFO: loaded from: classes.dex */
 class SearchView$SavedState extends AbsSavedState {
     public static final Parcelable$Creator<SearchView$SavedState> CREATOR = new SearchView$SavedState$1();
     boolean isIconified;

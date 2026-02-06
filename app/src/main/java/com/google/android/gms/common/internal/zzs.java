@@ -5,7 +5,6 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface zzs extends IInterface {
     void zza(zzr zzrVar, int i) throws RemoteException;
 

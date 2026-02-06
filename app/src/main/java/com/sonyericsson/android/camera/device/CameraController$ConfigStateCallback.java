@@ -5,7 +5,6 @@ import android.hardware.camera2.CameraCaptureSession$StateCallback;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.PerfLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraController$ConfigStateCallback extends CameraCaptureSession$StateCallback {
     private final CameraDeviceHandler$CameraSessionId mSessionId;
     final /* synthetic */ CameraController this$0;

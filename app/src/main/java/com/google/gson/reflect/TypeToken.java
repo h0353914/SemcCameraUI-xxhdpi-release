@@ -9,7 +9,6 @@ import java.lang.reflect.TypeVariable;
 import java.util.HashMap;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TypeToken<T> {
     final int hashCode;
     final Class<? super T> rawType;

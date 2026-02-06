@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Metering implements UserSettingValue {
     FACE(-1, 2131689999, "face"),
     MULTI(-1, 2131689947, "multi"),

@@ -3,7 +3,6 @@ package android.support.v4.text;
 import android.text.SpannableStringBuilder;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class BidiFormatter {
     private static final int DEFAULT_FLAGS = 2;
     private static final int DIR_LTR = -1;

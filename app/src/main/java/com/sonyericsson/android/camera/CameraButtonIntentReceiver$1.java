@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class CameraButtonIntentReceiver$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$CameraButtonIntentReceiver$IntentKind;
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$CameraButtonIntentReceiver$ReceiverState = new int[CameraButtonIntentReceiver$ReceiverState.values().length];

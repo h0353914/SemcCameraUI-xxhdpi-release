@@ -7,7 +7,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfo;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoAscii;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoLong;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class HylaFaxTagConstants {
     public static final TagInfoLong EXIF_TAG_FAX_RECV_PARAMS = new TagInfoLong("FaxRecvParams", 34908, 1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);
     public static final TagInfoAscii EXIF_TAG_FAX_SUB_ADDRESS = new TagInfoAscii("FaxSubAddress", 34909, -1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);

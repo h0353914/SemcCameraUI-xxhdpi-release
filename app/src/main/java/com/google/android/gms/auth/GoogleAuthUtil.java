@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class GoogleAuthUtil {
     public static final int CHANGE_TYPE_ACCOUNT_ADDED = 1;
     public static final int CHANGE_TYPE_ACCOUNT_REMOVED = 2;

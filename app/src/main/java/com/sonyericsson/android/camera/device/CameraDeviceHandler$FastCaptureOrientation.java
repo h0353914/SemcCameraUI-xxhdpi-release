@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.OrientationEventListener;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$FastCaptureOrientation extends OrientationEventListener {
     private int mOrientation;
     final /* synthetic */ CameraDeviceHandler this$0;

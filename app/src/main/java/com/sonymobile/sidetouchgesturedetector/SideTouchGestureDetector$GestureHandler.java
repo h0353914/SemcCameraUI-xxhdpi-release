@@ -3,7 +3,6 @@ package com.sonymobile.sidetouchgesturedetector;
 import android.os.Handler;
 import android.os.Message;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchGestureDetector$GestureHandler extends Handler {
     final /* synthetic */ SideTouchGestureDetector this$0;
 

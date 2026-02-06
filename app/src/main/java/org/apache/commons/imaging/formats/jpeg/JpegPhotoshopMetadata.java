@@ -8,7 +8,6 @@ import org.apache.commons.imaging.formats.jpeg.iptc.IptcTypes;
 import org.apache.commons.imaging.formats.jpeg.iptc.PhotoshopApp13Data;
 import org.apache.commons.imaging.util.Debug;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JpegPhotoshopMetadata extends GenericImageMetadata {
     public final PhotoshopApp13Data photoshopApp13Data;
 

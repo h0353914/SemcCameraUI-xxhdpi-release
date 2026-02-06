@@ -5,7 +5,6 @@ import android.os.Message;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.Timer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CameraTimer {
     public static final int MSG_CANCEL = 2;
     public static final int MSG_INTERVAL = 0;

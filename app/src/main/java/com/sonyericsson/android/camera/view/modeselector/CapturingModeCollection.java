@@ -12,7 +12,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CapturingModeCollection {
     private static final int INVALID_POSITION = -1;
     private static final String[] PROTECTION = {"_id", "package", "activity", "mode_name", "selectoricon_id", "selectorlabel_id", "shortcuticon_id", "shortcutlabel_id", "descriptionlabel_id", "capture_type", "visibility_normal", "visibility_oneshot", "visibility_shortcut"};

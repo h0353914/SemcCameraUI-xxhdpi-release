@@ -4,7 +4,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener;
 import com.google.android.gms.common.api.Status;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzli$6 implements GoogleApiClient$OnConnectionFailedListener {
     final /* synthetic */ zzli zzacr;
     final /* synthetic */ zzlo zzacv;

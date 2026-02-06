@@ -3,7 +3,6 @@ package android.support.v4.os;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResultReceiver$1 implements Parcelable$Creator<ResultReceiver> {
     ResultReceiver$1() {
     }

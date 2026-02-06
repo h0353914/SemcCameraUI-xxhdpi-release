@@ -1,6 +1,5 @@
 package android.support.v4.text.util;
 
-/* JADX INFO: loaded from: classes.dex */
 class FindAddress$ZipRange {
     int mException1;
     int mException2;

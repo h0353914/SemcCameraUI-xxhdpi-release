@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.util.StateSet;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateListDrawable$StateListState extends DrawableContainer$DrawableContainerState {
     int[][] mStateSets;
 

@@ -7,7 +7,6 @@ import org.apache.commons.imaging.ImageInfo;
 import org.apache.commons.imaging.ImageInfo$ColorType;
 import org.apache.commons.imaging.ImageInfo$CompressionAlgorithm;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PngImageInfo extends ImageInfo {
     private final List<PngText> textChunks;
 

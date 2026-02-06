@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.ViewGroup;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SettingDialogItemFactory {
     public static final int BUTTON = 1;
     public static final int BUTTON_DETAILS = 5;

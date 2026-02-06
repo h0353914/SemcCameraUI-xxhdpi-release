@@ -21,7 +21,6 @@ import com.sonyericsson.android.camera.research.LocalResearchUtil$MeasurementKey
 import com.sonymobile.cameracommon.font.FontUtil;
 import com.sonymobile.cameracommon.font.FontUtil$RobotoFontType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PredictiveLaunchCoverView extends FrameLayout implements View$OnTouchListener {
     private static final long LOWER_TOUCH_INTERVAL_TIME_MILLIS = 0;
     private static final double TOUCH_AREA_SIZE_PER_DP = 0.5555555555555556d;

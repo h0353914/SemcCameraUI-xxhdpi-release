@@ -5,7 +5,6 @@ import android.os.Looper;
 import android.os.Message;
 import java.util.concurrent.CountDownLatch;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class Track$EventHandler extends Handler {
     final /* synthetic */ Track this$0;
 

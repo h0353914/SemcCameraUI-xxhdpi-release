@@ -17,7 +17,6 @@ import org.apache.commons.imaging.palette.SimplePalette;
 import org.apache.commons.imaging.util.Debug;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 class PngWriter {
     private final boolean verbose;
 

@@ -5,7 +5,6 @@ import android.support.annotation.RestrictTo$Scope;
 import android.util.Log;
 import java.io.Writer;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class LogWriter extends Writer {
     private StringBuilder mBuilder = new StringBuilder(128);

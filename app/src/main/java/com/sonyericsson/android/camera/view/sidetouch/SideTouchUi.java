@@ -10,7 +10,6 @@ import com.sonyericsson.android.camera.view.ViewFinderImpl$RecordingTimeReceiver
 import com.sonyericsson.android.camera.view.ViewFinderImpl$SideTouchUiButtonListenerFactory;
 import com.sonyericsson.android.camera.view.ViewFinderImpl$ZoomBarUpdateProxy;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SideTouchUi {
     private ViewFinderImpl$AutoReviewContentReceiverProxy mAutoReviewProxy;
     private ViewFinderImpl$SideTouchUiButtonListenerFactory mButtonListenerFactory;

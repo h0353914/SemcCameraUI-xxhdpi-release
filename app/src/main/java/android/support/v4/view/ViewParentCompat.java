@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ViewParentCompat {
     private static final String TAG = "ViewParentCompat";
 

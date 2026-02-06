@@ -15,7 +15,6 @@ import com.sonyericsson.android.camera.view.messagedialog.MessageDialogRequest;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController$OpenType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewFinderImpl$HintTextListenerImpl implements HintTextViewController$HintTextContentListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

@@ -5,7 +5,6 @@ import android.view.ViewGroup$LayoutParams;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class ChildHelper {
     private static final boolean DEBUG = false;
     private static final String TAG = "ChildrenHelper";

@@ -9,7 +9,6 @@ import com.sonyericsson.android.camera.view.setting.dialog.SettingDialogInterfac
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingDialogStack$Background extends FrameLayout {
     private final Rect mBackgroundRect;
     private final Rect mItemRect;

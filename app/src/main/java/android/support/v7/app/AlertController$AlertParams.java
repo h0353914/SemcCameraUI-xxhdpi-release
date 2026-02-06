@@ -15,7 +15,6 @@ import android.widget.AdapterView$OnItemSelectedListener;
 import android.widget.ListAdapter;
 import android.widget.SimpleCursorAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AlertController$AlertParams {
     public ListAdapter mAdapter;
     public boolean[] mCheckedItems;

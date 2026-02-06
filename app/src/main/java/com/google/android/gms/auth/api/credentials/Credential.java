@@ -10,7 +10,6 @@ import com.google.android.gms.common.internal.zzx;
 import java.util.Collections;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Credential implements SafeParcelable {
     public static final Parcelable$Creator<Credential> CREATOR = new zza();
     public static final String EXTRA_KEY = "com.google.android.gms.credentials.Credential";

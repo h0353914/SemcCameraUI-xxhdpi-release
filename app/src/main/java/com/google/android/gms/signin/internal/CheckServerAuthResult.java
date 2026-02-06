@@ -9,7 +9,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CheckServerAuthResult implements SafeParcelable {
     public static final Parcelable$Creator<CheckServerAuthResult> CREATOR = new zzc();
     final int mVersionCode;

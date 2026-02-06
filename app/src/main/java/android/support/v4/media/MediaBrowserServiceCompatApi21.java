@@ -7,7 +7,6 @@ import android.os.IBinder;
 import android.service.media.MediaBrowserService;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class MediaBrowserServiceCompatApi21 {
     public static Object createService(Context context, MediaBrowserServiceCompatApi21$ServiceCompatProxy mediaBrowserServiceCompatApi21$ServiceCompatProxy) {

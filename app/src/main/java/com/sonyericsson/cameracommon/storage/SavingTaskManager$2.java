@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.storage;
 
 import com.sonyericsson.cameracommon.mediasaving.MediaSavingResult;
 
-/* JADX INFO: loaded from: classes.dex */
 class SavingTaskManager$2 implements Runnable {
     final /* synthetic */ SavingTaskManager this$0;
     final /* synthetic */ PhotoSavingRequest val$request;

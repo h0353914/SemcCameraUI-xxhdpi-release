@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ViewFinder$BurstRejectedReason {
     NONE,
     CANNOT_BURST_IN_DARK_CONDITION,

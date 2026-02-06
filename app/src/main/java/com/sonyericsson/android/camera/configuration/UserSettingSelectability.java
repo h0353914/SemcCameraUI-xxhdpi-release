@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.configuration;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum UserSettingSelectability {
     INVALID(false),
     FIXED(false),

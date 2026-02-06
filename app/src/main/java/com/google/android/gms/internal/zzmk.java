@@ -2,7 +2,6 @@ package com.google.android.gms.internal;
 
 import android.util.Base64;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzmk {
     public static String zzi(byte[] bArr) {
         if (bArr == null) {

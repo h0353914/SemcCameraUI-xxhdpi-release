@@ -3,7 +3,6 @@ package android.support.v14.preference;
 import android.content.DialogInterface;
 import android.content.DialogInterface$OnMultiChoiceClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class MultiSelectListPreferenceDialogFragment$1 implements DialogInterface$OnMultiChoiceClickListener {
     final /* synthetic */ MultiSelectListPreferenceDialogFragment this$0;
 

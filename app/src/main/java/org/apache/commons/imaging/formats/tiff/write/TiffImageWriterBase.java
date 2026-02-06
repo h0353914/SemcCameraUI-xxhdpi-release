@@ -24,7 +24,6 @@ import org.apache.commons.imaging.formats.tiff.constants.ExifTagConstants;
 import org.apache.commons.imaging.formats.tiff.constants.TiffConstants;
 import org.apache.commons.imaging.formats.tiff.constants.TiffTagConstants;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class TiffImageWriterBase {
     protected final ByteOrder byteOrder;
 

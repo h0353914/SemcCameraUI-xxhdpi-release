@@ -2,7 +2,6 @@ package com.sonymobile.sidetouchgesturedetector;
 
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchGestureDetector$Gesture$LongPress extends SideTouchGestureDetector$Gesture$State {
     final /* synthetic */ SideTouchGestureDetector$Gesture this$1;
 

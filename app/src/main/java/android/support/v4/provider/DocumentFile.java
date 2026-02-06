@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import java.io.File;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class DocumentFile {
     static final String TAG = "DocumentFile";
 

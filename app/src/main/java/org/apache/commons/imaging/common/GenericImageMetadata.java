@@ -3,7 +3,6 @@ package org.apache.commons.imaging.common;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GenericImageMetadata implements ImageMetadata {
     private static final String NEWLINE = System.getProperty("line.separator");
     private final List<ImageMetadata$ImageMetadataItem> items = new ArrayList();

@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SoundPlayer {
     private static final int ID_NOT_LOADED = 0;
     private static final int ID_NOT_PLAYED = 0;

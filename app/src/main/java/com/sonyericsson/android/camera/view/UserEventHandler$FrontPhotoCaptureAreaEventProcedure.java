@@ -6,7 +6,6 @@ import com.sonyericsson.cameracommon.focusview.FocusRectangles$FocusSetType;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$CaptureTrigger;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$FrontPhotoCaptureAreaEventProcedure extends UserEventHandler$CaptureAreaEventProcedure {
     protected boolean mIsBurst;
     final /* synthetic */ UserEventHandler this$0;

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller.album;
 
 import android.os.AsyncTask;
 
-/* JADX INFO: loaded from: classes.dex */
 final class AlbumPreloader$PrewarmAlbumTask extends AsyncTask {
     private static final String THREAD_NAME = "PrewarmAlbum";
     final /* synthetic */ AlbumPreloader this$0;

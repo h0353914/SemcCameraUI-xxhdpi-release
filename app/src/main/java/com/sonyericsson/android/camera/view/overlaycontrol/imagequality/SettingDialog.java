@@ -10,7 +10,6 @@ import android.widget.RelativeLayout;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingDialogInterface;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class SettingDialog extends RelativeLayout implements SettingDialogInterface {
     public static final String TAG = "SettingDialog";
     private LayoutCoordinator mLayoutCoordinator;

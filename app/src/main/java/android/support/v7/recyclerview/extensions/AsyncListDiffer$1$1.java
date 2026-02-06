@@ -3,7 +3,6 @@ package android.support.v7.recyclerview.extensions;
 import android.support.annotation.Nullable;
 import android.support.v7.util.DiffUtil$Callback;
 
-/* JADX INFO: loaded from: classes.dex */
 class AsyncListDiffer$1$1 extends DiffUtil$Callback {
     final /* synthetic */ AsyncListDiffer$1 this$1;
 

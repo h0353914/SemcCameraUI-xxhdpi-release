@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView$Adapter;
 import android.support.v7.widget.RecyclerView$AdapterDataObserver;
 
-/* JADX INFO: loaded from: classes.dex */
 class PreferenceFragmentCompat$ScrollToPreferenceObserver extends RecyclerView$AdapterDataObserver {
     private final RecyclerView$Adapter mAdapter;
     private final String mKey;

@@ -4,7 +4,6 @@ import java.nio.ByteOrder;
 import org.apache.commons.imaging.formats.tiff.constants.TiffDirectoryType;
 import org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TagInfoSByte extends TagInfo {
     public byte[] encodeValue(ByteOrder byteOrder, byte... bArr) {
         return bArr;

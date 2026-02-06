@@ -28,7 +28,6 @@ import java.util.concurrent.Semaphore;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SavingTaskManager {
     private static final String CAN_PUSH_STORE_TASK_HPROF_FILE_NAME = "/can_push_store_task.hprof";
     private static final String SUFFIX_TEMP_FILE = ".rewrite-exif";

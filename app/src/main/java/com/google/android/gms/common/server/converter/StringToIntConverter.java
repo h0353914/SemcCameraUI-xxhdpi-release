@@ -6,7 +6,6 @@ import com.google.android.gms.common.server.response.FastJsonResponse$zza;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class StringToIntConverter implements SafeParcelable, FastJsonResponse$zza<String, Integer> {
     public static final zzb CREATOR = new zzb();
     private final int mVersionCode;

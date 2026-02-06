@@ -8,7 +8,6 @@ import com.sonyericsson.android.camera.view.modeselector.view.AbsAppsUiSelectorA
 import com.sonyericsson.android.camera.view.modeselector.view.AbsPanelView;
 import com.sonyericsson.android.camera.view.modeselector.view.CapturingModePanelView;
 
-/* JADX INFO: loaded from: classes.dex */
 class ModeSelector$CapturingModeSelectorAdapter extends AbsAppsUiSelectorAdapter {
     final /* synthetic */ ModeSelector this$0;
 

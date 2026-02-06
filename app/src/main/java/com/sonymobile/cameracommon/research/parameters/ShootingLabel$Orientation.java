@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ShootingLabel$Orientation implements ShootingLabel$IntParameter {
     ORIENTATION_0(0),
     ORIENTATION_90(90),

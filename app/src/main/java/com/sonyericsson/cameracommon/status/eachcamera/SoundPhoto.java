@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.status.eachcamera;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 import com.sonyericsson.cameracommon.status.EnumValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SoundPhoto extends EnumValue<SoundPhoto$Value> implements EachCameraStatusValue {
     public static final SoundPhoto$Value DEFAULT_VALUE = SoundPhoto$Value.OFF;
     public static final String KEY = "sound_photo";

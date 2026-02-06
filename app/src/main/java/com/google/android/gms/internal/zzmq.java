@@ -3,7 +3,6 @@ package com.google.android.gms.internal;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzmq {
     public static boolean zzb(Resources resources) {
         if (resources == null) {

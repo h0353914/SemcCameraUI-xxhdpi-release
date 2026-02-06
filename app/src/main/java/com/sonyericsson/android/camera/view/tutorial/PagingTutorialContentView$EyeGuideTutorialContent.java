@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.setting.MessageType;
 import com.sonyericsson.android.camera.setting.StoredSettings;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class PagingTutorialContentView$EyeGuideTutorialContent extends PagingTutorialContentView$PagingTutorialContent {
     protected PagingTutorialContentView$EyeGuideTutorialContent(int i) {
         super(i);

@@ -3,7 +3,6 @@ package android.support.v7.view;
 import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewPropertyAnimatorCompatSet$1 extends ViewPropertyAnimatorListenerAdapter {
     final /* synthetic */ ViewPropertyAnimatorCompatSet this$0;
     private boolean mProxyStarted = false;

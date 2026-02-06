@@ -6,7 +6,6 @@ import android.support.v4.graphics.PathParser;
 import android.support.v4.graphics.PathParser$PathDataNode;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class VectorDrawableCompat$VPath extends VectorDrawableCompat$VObject {
     int mChangingConfigurations;
     protected PathParser$PathDataNode[] mNodes;

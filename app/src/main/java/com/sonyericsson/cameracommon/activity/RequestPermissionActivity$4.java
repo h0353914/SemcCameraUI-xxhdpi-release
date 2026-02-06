@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface$OnClickListener;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class RequestPermissionActivity$4 implements DialogInterface$OnClickListener {
     final /* synthetic */ RequestPermissionActivity this$0;
 

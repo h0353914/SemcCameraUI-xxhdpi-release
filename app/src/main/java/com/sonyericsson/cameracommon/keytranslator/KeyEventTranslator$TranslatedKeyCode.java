@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.keytranslator;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum KeyEventTranslator$TranslatedKeyCode {
     NON,
     ZOOM,

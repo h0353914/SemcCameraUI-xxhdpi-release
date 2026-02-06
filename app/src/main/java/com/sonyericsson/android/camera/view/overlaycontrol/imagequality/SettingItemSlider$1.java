@@ -4,7 +4,6 @@ import android.content.Context;
 import android.widget.FrameLayout;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingItemSlider$1 extends FrameLayout {
     final /* synthetic */ SettingItemSlider this$0;
 

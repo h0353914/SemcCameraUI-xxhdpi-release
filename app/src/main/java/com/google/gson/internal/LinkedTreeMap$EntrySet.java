@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.Map$Entry;
 
 /* JADX INFO: Add missing generic type declarations: [V, K] */
-/* JADX INFO: loaded from: classes.dex */
 class LinkedTreeMap$EntrySet<K, V> extends AbstractSet<Map$Entry<K, V>> {
     final /* synthetic */ LinkedTreeMap this$0;
 

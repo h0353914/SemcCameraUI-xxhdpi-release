@@ -6,7 +6,6 @@ import android.os.Parcel;
 import android.support.annotation.NonNull;
 import android.support.v4.media.MediaBrowserCompatApi23$ItemCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompatApi23$ItemCallbackProxy<T extends MediaBrowserCompatApi23$ItemCallback> extends MediaBrowser$ItemCallback {
     protected final T mItemCallback;
 

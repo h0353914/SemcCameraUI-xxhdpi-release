@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.view.overlaycontrol.ImageQualityControl;
 import com.sonyericsson.android.camera.view.overlaycontrol.OverlayControl;
 import com.sonyericsson.android.camera.view.overlaycontrol.OverlayControl$StateListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class BaseLayout$2 extends BaseLayout$LazyInitializer<OverlayControl> {
     final /* synthetic */ BaseLayout this$0;
     final /* synthetic */ EnumValueAccessor val$capturingMode;

@@ -2,7 +2,6 @@ package com.google.android.gms.common.internal;
 
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 protected abstract class zzj$zzc<TListener> {
     private TListener mListener;
     final /* synthetic */ zzj zzafK;

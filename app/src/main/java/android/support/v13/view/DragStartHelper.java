@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.View$OnLongClickListener;
 import android.view.View$OnTouchListener;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DragStartHelper {
     private boolean mDragging;
     private int mLastTouchX;

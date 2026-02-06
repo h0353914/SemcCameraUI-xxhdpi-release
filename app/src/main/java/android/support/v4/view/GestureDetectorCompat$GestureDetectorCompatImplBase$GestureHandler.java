@@ -3,7 +3,6 @@ package android.support.v4.view;
 import android.os.Handler;
 import android.os.Message;
 
-/* JADX INFO: loaded from: classes.dex */
 class GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler extends Handler {
     final /* synthetic */ GestureDetectorCompat$GestureDetectorCompatImplBase this$0;
 

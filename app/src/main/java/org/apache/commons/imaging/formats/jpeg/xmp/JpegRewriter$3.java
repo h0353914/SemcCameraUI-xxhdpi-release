@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.jpeg.xmp;
 
-/* JADX INFO: loaded from: classes.dex */
 class JpegRewriter$3 implements JpegRewriter$SegmentFilter {
     JpegRewriter$3() {
     }

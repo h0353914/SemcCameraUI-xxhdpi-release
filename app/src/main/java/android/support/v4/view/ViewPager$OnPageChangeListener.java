@@ -2,7 +2,6 @@ package android.support.v4.view;
 
 import android.support.annotation.Px;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface ViewPager$OnPageChangeListener {
     void onPageScrollStateChanged(int i);
 

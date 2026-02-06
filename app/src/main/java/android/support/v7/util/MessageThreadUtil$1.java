@@ -4,7 +4,6 @@ import android.os.Handler;
 import android.os.Looper;
 
 /* JADX INFO: Add missing generic type declarations: [T] */
-/* JADX INFO: loaded from: classes.dex */
 class MessageThreadUtil$1<T> implements ThreadUtil$MainThreadCallback<T> {
     static final int ADD_TILE = 2;
     static final int REMOVE_TILE = 3;

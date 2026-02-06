@@ -9,7 +9,6 @@ import android.view.View;
 import java.util.List;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class ActivityCompat$SharedElementCallback21Impl extends android.app.SharedElementCallback {
     private final SharedElementCallback mCallback;

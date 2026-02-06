@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.storage;
 import android.os.storage.StorageVolume;
 import java.lang.reflect.InvocationTargetException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class StorageVolumeWrapper {
     private StorageVolume mStorageVolume;
 

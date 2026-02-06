@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import com.sonyericsson.android.camera.configuration.parameters.SlowMotion;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class CameraDeviceHandler$6 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion;
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$device$CameraDeviceHandler$CameraDeviceStatus = new int[CameraDeviceHandler$CameraDeviceStatus.values().length];

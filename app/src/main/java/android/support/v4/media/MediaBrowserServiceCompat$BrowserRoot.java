@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaBrowserServiceCompat$BrowserRoot {
     public static final String EXTRA_OFFLINE = "android.service.media.extra.OFFLINE";
     public static final String EXTRA_RECENT = "android.service.media.extra.RECENT";

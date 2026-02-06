@@ -9,7 +9,6 @@ import android.widget.FrameLayout$LayoutParams;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ModeSelectorView extends AbsDialogScrollView {
     private static final int COLUMN_NUM = 3;
     private View$OnClickListener mOnItemClickListener;

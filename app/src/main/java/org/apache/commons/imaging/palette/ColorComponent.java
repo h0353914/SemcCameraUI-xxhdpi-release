@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.palette;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ColorComponent {
     ALPHA(24),
     RED(16),

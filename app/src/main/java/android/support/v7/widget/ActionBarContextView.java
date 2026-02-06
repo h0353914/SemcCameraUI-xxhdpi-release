@@ -24,7 +24,6 @@ import android.view.accessibility.AccessibilityEvent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ActionBarContextView extends AbsActionBarView {
     private static final String TAG = "ActionBarContextView";

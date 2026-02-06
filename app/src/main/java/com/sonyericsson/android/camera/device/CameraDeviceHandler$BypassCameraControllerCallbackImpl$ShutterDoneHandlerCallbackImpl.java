@@ -10,7 +10,6 @@ import com.sonyericsson.android.camera.util.CapturePerformanceLogger;
 import com.sonyericsson.cameracommon.storage.RequestFactory$PhotoSavingRequestBuilder;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$BypassCameraControllerCallbackImpl$ShutterDoneHandlerCallbackImpl implements Runnable {
     private final int mCaptureRequestNum;
     private final boolean mIsAfSuccess;

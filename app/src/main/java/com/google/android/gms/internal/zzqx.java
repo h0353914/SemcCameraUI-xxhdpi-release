@@ -3,7 +3,6 @@ package com.google.android.gms.internal;
 import com.google.android.gms.common.api.Api$ApiOptions$Optional;
 import com.google.android.gms.common.api.GoogleApiClient$ServerAuthCodeCallbacks;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzqx implements Api$ApiOptions$Optional {
     public static final zzqx zzaUZ = new zzqx$zza().zzCi();
     private final boolean zzTi;

@@ -2,7 +2,6 @@ package android.support.v4.media;
 
 import android.os.Bundle;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$MediaBrowserServiceImplApi21$4 implements Runnable {
     final /* synthetic */ MediaBrowserServiceCompat$MediaBrowserServiceImplApi21 this$1;
     final /* synthetic */ Bundle val$options;

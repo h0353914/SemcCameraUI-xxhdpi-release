@@ -4,7 +4,6 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatDelegateImpl$ActionModeCallbackWrapperV9$1 extends ViewPropertyAnimatorListenerAdapter {
     final /* synthetic */ AppCompatDelegateImpl$ActionModeCallbackWrapperV9 this$1;
 

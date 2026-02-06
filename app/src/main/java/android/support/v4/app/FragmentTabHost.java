@@ -17,7 +17,6 @@ import android.widget.TabHost$TabSpec;
 import android.widget.TabWidget;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FragmentTabHost extends TabHost implements TabHost$OnTabChangeListener {
     private boolean mAttached;
     private int mContainerId;

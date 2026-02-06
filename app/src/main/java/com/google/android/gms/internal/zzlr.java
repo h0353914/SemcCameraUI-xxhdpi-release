@@ -2,7 +2,6 @@ package com.google.android.gms.internal;
 
 import android.os.Binder;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzlr<T> {
     private static zzlr$zza zzadc = null;
     private static int zzadd = 0;

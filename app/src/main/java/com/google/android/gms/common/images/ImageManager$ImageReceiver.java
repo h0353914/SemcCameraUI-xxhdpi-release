@@ -9,7 +9,6 @@ import android.os.ParcelFileDescriptor;
 import android.os.ResultReceiver;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 final class ImageManager$ImageReceiver extends ResultReceiver {
     private final Uri mUri;
     private final ArrayList<zza> zzadQ;

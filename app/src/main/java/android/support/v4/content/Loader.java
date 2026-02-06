@@ -8,7 +8,6 @@ import android.support.v4.util.DebugUtils;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Loader<D> {
     Context mContext;
     int mId;

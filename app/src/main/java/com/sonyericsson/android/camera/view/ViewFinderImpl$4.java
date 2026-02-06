@@ -4,7 +4,6 @@ import android.graphics.Rect;
 import android.util.Size;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$4 implements Runnable {
     final /* synthetic */ ViewFinderImpl this$0;
     final /* synthetic */ Rect val$previewRect;

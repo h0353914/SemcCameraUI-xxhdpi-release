@@ -40,7 +40,6 @@ import org.apache.commons.imaging.formats.tiff.TiffImageParser;
 import org.apache.commons.imaging.formats.tiff.constants.TiffTagConstants;
 import org.apache.commons.imaging.util.Debug;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JpegImageParser extends ImageParser {
     private static final String[] ACCEPTED_EXTENSIONS = {".jpg", ".jpeg"};
     private static final String DEFAULT_EXTENSION = ".jpg";

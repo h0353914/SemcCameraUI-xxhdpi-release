@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.Map$Entry;
 
 /* JADX INFO: Add missing generic type declarations: [V, K] */
-/* JADX INFO: loaded from: classes.dex */
 class SafeIterableMap$IteratorWithAdditions<K, V> implements Iterator<Map$Entry<K, V>>, SafeIterableMap$SupportRemove<K, V> {
     private boolean mBeforeStart;
     private SafeIterableMap$Entry<K, V> mCurrent;

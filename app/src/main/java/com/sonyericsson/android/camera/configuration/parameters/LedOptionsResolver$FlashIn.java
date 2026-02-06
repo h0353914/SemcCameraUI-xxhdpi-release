@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 import com.sonyericsson.android.camera.ActionMode;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class LedOptionsResolver$FlashIn extends LedOptionsResolver$Resolver {
     final /* synthetic */ LedOptionsResolver this$0;
 

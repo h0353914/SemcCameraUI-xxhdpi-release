@@ -8,7 +8,6 @@ import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.formats.png.PngText;
 import org.apache.commons.imaging.formats.png.PngText$Ztxt;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PngChunkZtxt extends PngTextChunk {
     public final String keyword;
     public final String text;

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller;
 
 import com.sonyericsson.android.camera.recorder.RecorderController$Result;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateVideoStopping extends StateMachine$StateVideoBase {
     private static final String TAG = "StateMachine.StateVideoStopping";
     private final RecorderController$Result mResult;

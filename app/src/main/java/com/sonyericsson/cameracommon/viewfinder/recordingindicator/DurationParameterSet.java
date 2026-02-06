@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.viewfinder.recordingindicator;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DurationParameterSet {
     public static final String TAG = "DurationParameterSet";
     public int hour = 0;

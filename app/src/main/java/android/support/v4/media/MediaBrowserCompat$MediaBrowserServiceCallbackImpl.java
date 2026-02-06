@@ -5,7 +5,6 @@ import android.os.Messenger;
 import android.support.v4.media.session.MediaSessionCompat$Token;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 interface MediaBrowserCompat$MediaBrowserServiceCallbackImpl {
     void onConnectionFailed(Messenger messenger);
 

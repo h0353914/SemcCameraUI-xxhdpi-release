@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SimpleTutorialContentView extends TutorialContentView {
     protected TextView mTutorialDescription;
     protected ImageView mTutorialIcon;

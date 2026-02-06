@@ -7,7 +7,6 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AuthAccountRequest implements SafeParcelable {
     public static final Parcelable$Creator<AuthAccountRequest> CREATOR = new zzc();
     final int mVersionCode;

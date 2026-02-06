@@ -22,7 +22,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class MediaBrowserServiceCompat extends Service {
     static final boolean DEBUG = Log.isLoggable("MBServiceCompat", 3);
     private static final float EPSILON = 1.0E-5f;

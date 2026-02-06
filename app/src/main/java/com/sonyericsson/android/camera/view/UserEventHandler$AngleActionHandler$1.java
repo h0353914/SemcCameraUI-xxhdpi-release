@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$AngleActionHandler$1 implements UserEventHandler$VariableUserEventTicker$OnEventTickedListener {
     final /* synthetic */ UserEventHandler$AngleActionHandler this$1;
 

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.hint;
 
-/* JADX INFO: loaded from: classes.dex */
 public class HintTextTimedOutMessage extends HintTextContent {
     private static final int FADE_OUT_DURATION = 1000;
     private static final int SHOW_DURATION = 5000;

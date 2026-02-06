@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera;
 
 import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ActionMode {
     public final CameraInfo$CameraId mCameraId;
     public final boolean mIsOneShot;

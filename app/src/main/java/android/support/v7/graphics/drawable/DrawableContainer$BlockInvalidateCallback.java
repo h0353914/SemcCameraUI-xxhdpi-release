@@ -4,7 +4,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable$Callback;
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 class DrawableContainer$BlockInvalidateCallback implements Drawable$Callback {
     private Drawable$Callback mCallback;
 

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera;
 import com.sonyericsson.android.camera.view.messagedialog.DialogId;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController$TutorialType;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class SetupWizardActivity$11 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$SetupWizardActivity$InterruptedBy = new int[SetupWizardActivity$InterruptedBy.values().length];
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$view$messagedialog$DialogId;

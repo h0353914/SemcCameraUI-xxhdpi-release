@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 import com.sonyericsson.android.camera.research.LocalResearchUtil;
 import com.sonyericsson.android.camera.research.LocalResearchUtil$MeasurementKey;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$VideoRecordingButtonProcedure extends UserEventHandler$TouchEventProcedure {
     final /* synthetic */ UserEventHandler this$0;
 

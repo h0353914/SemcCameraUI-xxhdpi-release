@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.baselayout.settingshortcut;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ModeSelectorButton$Type {
     MODE_SELECTOR(2131231505, 2131689669, 2131689669, 2131165438),
     RETURN(2131231465, -1, 2131689563, -1);

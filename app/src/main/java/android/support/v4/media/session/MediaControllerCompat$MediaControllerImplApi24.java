@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.RemoteException;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(24)
 class MediaControllerCompat$MediaControllerImplApi24 extends MediaControllerCompat$MediaControllerImplApi23 {
     public MediaControllerCompat$MediaControllerImplApi24(Context context, MediaSessionCompat$Token mediaSessionCompat$Token) throws RemoteException {

@@ -2,7 +2,6 @@ package android.support.v4.graphics;
 
 import android.support.v4.provider.FontsContractCompat$FontInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 class TypefaceCompatBaseImpl$1 implements TypefaceCompatBaseImpl$StyleExtractor<FontsContractCompat$FontInfo> {
     final /* synthetic */ TypefaceCompatBaseImpl this$0;
 

@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup$LayoutParams;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class RecyclerView$Adapter<VH extends RecyclerView$ViewHolder> {
     private final RecyclerView$AdapterDataObservable mObservable = new RecyclerView$AdapterDataObservable();
     private boolean mHasStableIds = false;

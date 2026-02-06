@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.view;
 
-/* JADX INFO: loaded from: classes.dex */
 class SelfTimerCountDownNumberView$UpdateCountDownNumberTask implements Runnable {
     final /* synthetic */ SelfTimerCountDownNumberView this$0;
 

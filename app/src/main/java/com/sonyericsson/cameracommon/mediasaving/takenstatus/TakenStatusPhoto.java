@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.mediasaving.takenstatus;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TakenStatusPhoto {
     public static final String TAG = "TakenStatusPhoto";
     protected TakenStatusPhoto$Facing mFacing;

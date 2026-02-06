@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.View$OnLongClickListener;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class OnScreenButton$LongClickListener implements View$OnLongClickListener {
     final /* synthetic */ OnScreenButton this$0;
 

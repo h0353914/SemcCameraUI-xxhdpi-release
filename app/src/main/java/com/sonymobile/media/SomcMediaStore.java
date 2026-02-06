@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class SomcMediaStore {
     public static final String AUTHORITY_NEW = "somcmedia";
     public static final int AUTHORITY_NEW_VERSION = 400;

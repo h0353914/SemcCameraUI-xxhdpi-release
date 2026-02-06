@@ -9,7 +9,6 @@ import com.sonymobile.cameracommon.research.parameters.Event$UserOperation;
 import com.sonymobile.cameracommon.research.parameters.ShootingLabel$Parameter;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SendRecordingEventTask implements Runnable {
     private final boolean mIsLaunchViewerAfterRec;
     private final int mRecTimeMillis;

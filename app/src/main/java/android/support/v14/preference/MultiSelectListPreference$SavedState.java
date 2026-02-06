@@ -9,7 +9,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 class MultiSelectListPreference$SavedState extends Preference$BaseSavedState {
     public static final Parcelable$Creator<MultiSelectListPreference$SavedState> CREATOR = new MultiSelectListPreference$SavedState$1();
     Set<String> mValues;

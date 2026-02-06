@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.png;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum InterlaceMethod {
     NONE(false),
     ADAM7(true);

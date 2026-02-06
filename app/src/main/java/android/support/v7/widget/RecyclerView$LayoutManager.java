@@ -25,7 +25,6 @@ import android.view.ViewGroup$MarginLayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class RecyclerView$LayoutManager {
     ChildHelper mChildHelper;
     private int mHeight;

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.recorder.superslowrecorder;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.concurrent.TimeoutException;
 
-/* JADX INFO: loaded from: classes.dex */
 class SuperSlowRecorderController$StartSuperSlowTask implements Runnable {
     final /* synthetic */ SuperSlowRecorderController this$0;
 

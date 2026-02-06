@@ -1,6 +1,5 @@
 package android.support.swiperefreshlayout;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$styleable {
     public static final int ColorStateListItem_alpha = 2;
     public static final int ColorStateListItem_android_alpha = 1;

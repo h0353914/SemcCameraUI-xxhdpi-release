@@ -3,7 +3,6 @@ package android.support.v4.view;
 import android.os.Build$VERSION;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewPropertyAnimatorCompat$ViewPropertyAnimatorListenerApi14 implements ViewPropertyAnimatorListener {
     boolean mAnimEndCalled;
     ViewPropertyAnimatorCompat mVpa;

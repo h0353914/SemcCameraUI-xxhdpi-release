@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class PagingTutorialContentView$SuperSlowTutorialContent extends PagingTutorialContentView$PagingTutorialContent {
     protected PagingTutorialContentView$SuperSlowTutorialContent(int i) {
         super(i);

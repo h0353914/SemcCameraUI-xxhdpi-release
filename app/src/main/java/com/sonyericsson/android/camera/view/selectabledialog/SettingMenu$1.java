@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.selectabledialog;
 
 import com.sonyericsson.android.camera.CameraActivity;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingMenu$1 implements Runnable {
     final /* synthetic */ SettingMenu this$0;
 

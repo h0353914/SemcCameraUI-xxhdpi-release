@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.intent;
 
 import android.content.ComponentName;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IntentConstants {
     public static final ComponentName CAMERA_UI_COMPONENT_NAME = new ComponentName("com.sonyericsson.android.camera", "com.sonyericsson.android.camera.CameraActivity");
     public static final ComponentName CAMERA_UI_ONE_SHOT_COMPONENT_NAME = new ComponentName("com.sonyericsson.android.camera", "com.sonyericsson.android.camera.CameraActivityForCaptureOnlyPhoto");

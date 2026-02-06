@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.storage;
 import android.graphics.Bitmap;
 import android.net.Uri;
 
-/* JADX INFO: loaded from: classes.dex */
 class StorageImpl$1 implements Runnable {
     final /* synthetic */ StorageImpl this$0;
     final /* synthetic */ Bitmap val$bitmap;

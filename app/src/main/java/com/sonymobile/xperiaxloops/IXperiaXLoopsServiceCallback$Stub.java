@@ -6,7 +6,6 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class IXperiaXLoopsServiceCallback$Stub extends Binder implements IXperiaXLoopsServiceCallback {
     private static final String DESCRIPTOR = "com.sonymobile.xperiaxloops.IXperiaXLoopsServiceCallback";
     static final int TRANSACTION_hide = 2;

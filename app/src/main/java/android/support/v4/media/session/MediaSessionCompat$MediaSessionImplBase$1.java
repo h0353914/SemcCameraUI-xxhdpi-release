@@ -3,7 +3,6 @@ package android.support.v4.media.session;
 import android.support.v4.media.VolumeProviderCompat;
 import android.support.v4.media.VolumeProviderCompat$Callback;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionCompat$MediaSessionImplBase$1 extends VolumeProviderCompat$Callback {
     final /* synthetic */ MediaSessionCompat$MediaSessionImplBase this$0;
 

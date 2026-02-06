@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.jpeg;
 
 import org.apache.commons.imaging.util.Debug;
 
-/* JADX INFO: loaded from: classes.dex */
 class JpegUtils$1 implements JpegUtils$Visitor {
     final /* synthetic */ JpegUtils this$0;
 

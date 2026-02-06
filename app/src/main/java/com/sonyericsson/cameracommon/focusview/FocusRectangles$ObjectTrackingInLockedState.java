@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.focusview;
 
 import com.sonyericsson.android.camera.device.CameraParameters$FaceDetectionResult;
 
-/* JADX INFO: loaded from: classes.dex */
 class FocusRectangles$ObjectTrackingInLockedState extends FocusRectangles$ObjectTrackingState {
     final /* synthetic */ FocusRectangles this$0;
 

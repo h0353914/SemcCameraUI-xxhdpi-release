@@ -3,7 +3,6 @@ package android.support.v4.media;
 import android.media.VolumeProvider;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(21)
 class VolumeProviderCompatApi21 {
     public static Object createVolumeProvider(int i, int i2, int i3, VolumeProviderCompatApi21$Delegate volumeProviderCompatApi21$Delegate) {

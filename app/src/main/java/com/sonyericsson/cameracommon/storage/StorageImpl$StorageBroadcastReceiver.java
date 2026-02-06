@@ -6,7 +6,6 @@ import android.content.Intent;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 class StorageImpl$StorageBroadcastReceiver extends BroadcastReceiver {
     final /* synthetic */ StorageImpl this$0;
 

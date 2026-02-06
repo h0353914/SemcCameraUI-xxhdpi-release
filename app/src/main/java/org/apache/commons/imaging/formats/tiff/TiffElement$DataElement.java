@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.tiff;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class TiffElement$DataElement extends TiffElement {
     private final byte[] data;
 

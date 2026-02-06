@@ -36,7 +36,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class Gson {
     static final boolean DEFAULT_JSON_NON_EXECUTABLE = false;
     private static final String JSON_NON_EXECUTABLE_PREFIX = ")]}'\n";

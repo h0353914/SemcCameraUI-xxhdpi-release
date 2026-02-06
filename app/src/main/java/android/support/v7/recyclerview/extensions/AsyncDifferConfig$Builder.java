@@ -7,7 +7,6 @@ import android.support.v7.util.DiffUtil$ItemCallback;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class AsyncDifferConfig$Builder<T> {
     private static Executor sDiffExecutor;
     private static final Object sExecutorLock = new Object();

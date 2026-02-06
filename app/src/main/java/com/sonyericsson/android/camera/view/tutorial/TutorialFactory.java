@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.tutorial;
 
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class TutorialFactory {
     public TutorialContentView$TutorialContent create(int i, List<TutorialController$TutorialType> list, List<TutorialContentView$TutorialContent> list2) {
         return new PagingTutorialContentView$CustomTutorialContent(i, list, list2);

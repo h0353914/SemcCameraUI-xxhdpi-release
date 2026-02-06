@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.modeselector;
 
-/* JADX INFO: loaded from: classes.dex */
 enum CapturingModeListLoader$CapturingModeId {
     DUAL_BACKGROUND_DEFOCUS("DUAL_BACKGROUND_DEFOCUS"),
     DUAL_MONOCHROME("DUAL_MONOCHROME"),

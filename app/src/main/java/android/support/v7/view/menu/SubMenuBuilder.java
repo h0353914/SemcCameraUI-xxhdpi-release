@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class SubMenuBuilder extends MenuBuilder implements SubMenu {
     private MenuItemImpl mItem;

@@ -3,7 +3,6 @@ package android.support.v4.media;
 import android.os.Parcel;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(23)
 class MediaBrowserServiceCompat$MediaBrowserServiceImplApi23 extends MediaBrowserServiceCompat$MediaBrowserServiceImplApi21 implements MediaBrowserServiceCompatApi23$ServiceCompatProxy {
     final /* synthetic */ MediaBrowserServiceCompat this$0;

@@ -9,7 +9,6 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GestureShutterView extends View {
     private static final float ANIMATION_PROGRESS_END = 1.0f;
     private static final float ANIMATION_PROGRESS_START = 0.0f;

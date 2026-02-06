@@ -25,7 +25,6 @@ import com.sonyericsson.cameracommon.utility.CommonUtility;
 import java.util.HashMap;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ApplicationLauncher {
     private static String ACTION_EDIT_HIGH_FRAME_RATE = "com.sonymobile.moviecreator.intent.action.TIMESHIFT_VIDEO_EDITOR";
     public static final int BOKEH_AND_MONOCHROME = 3;

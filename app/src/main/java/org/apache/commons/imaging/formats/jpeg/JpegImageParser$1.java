@@ -13,7 +13,6 @@ import org.apache.commons.imaging.formats.jpeg.segments.JfifSegment;
 import org.apache.commons.imaging.formats.jpeg.segments.SofnSegment;
 import org.apache.commons.imaging.formats.jpeg.segments.UnknownSegment;
 
-/* JADX INFO: loaded from: classes.dex */
 class JpegImageParser$1 implements JpegUtils$Visitor {
     final /* synthetic */ JpegImageParser this$0;
     final /* synthetic */ int[] val$markers;

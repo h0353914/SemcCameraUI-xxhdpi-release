@@ -7,7 +7,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.Transformation;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentManagerImpl$EndViewTransitionAnimator extends AnimationSet implements Runnable {
     private boolean mAnimating;
     private final View mChild;

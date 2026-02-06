@@ -20,7 +20,6 @@ import com.google.android.gms.common.internal.zzx;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzlp extends Fragment implements DialogInterface$OnCancelListener {
     private static final GoogleApiAvailability zzacJ = GoogleApiAvailability.getInstance();
     private boolean mStarted;

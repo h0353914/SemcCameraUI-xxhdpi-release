@@ -1,6 +1,5 @@
 package android.support.v14.preference;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$string {
     public static final int abc_action_bar_home_description = 2131689472;
     public static final int abc_action_bar_up_description = 2131689473;

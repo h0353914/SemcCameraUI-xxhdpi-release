@@ -2,7 +2,6 @@ package com.duolingo.open.rtlviewpager;
 
 import android.database.DataSetObserver;
 
-/* JADX INFO: loaded from: classes.dex */
 class DelegatingPagerAdapter$MyDataSetObserver extends DataSetObserver {
     final DelegatingPagerAdapter mParent;
 

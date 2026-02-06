@@ -9,7 +9,6 @@ import com.sonyericsson.android.camera.view.modeselector.AddonMode;
 import com.sonyericsson.android.camera.view.modeselector.CapturingModeAttributes;
 import com.sonyericsson.android.camera.view.modeselector.Mode$OnStateChangeListener;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GoogleLensMode extends AddonMode {
     public static final String MODE_NAME = "GOOGLE_LENS";
     private boolean[] mAvailable;

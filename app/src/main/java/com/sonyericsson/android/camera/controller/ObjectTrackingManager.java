@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.view.ViewFinder;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 import com.sonyericsson.cameracommon.utility.PositionConverter;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ObjectTrackingManager {
     public static final String TAG = "ObjectTrackingManager";
     private final CameraDeviceHandler mCameraDeviceHandler;

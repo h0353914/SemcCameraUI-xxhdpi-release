@@ -14,7 +14,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class ModernAsyncTask<Params, Progress, Result> {
     private static final int CORE_POOL_SIZE = 5;
     private static final int KEEP_ALIVE = 1;

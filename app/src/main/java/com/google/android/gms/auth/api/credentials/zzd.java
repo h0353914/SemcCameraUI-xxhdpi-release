@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable$Creator;
 import com.google.android.gms.common.internal.safeparcel.zza$zza;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzd implements Parcelable$Creator<IdToken> {
     static void zza(IdToken idToken, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);

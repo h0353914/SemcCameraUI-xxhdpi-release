@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Build$VERSION;
 import android.os.IBinder;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class NotificationCompatSideChannelService extends Service {
     public abstract void cancel(String str, int i, String str2);
 

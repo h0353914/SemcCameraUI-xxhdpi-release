@@ -19,7 +19,6 @@ import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RotatableToast extends FrameLayout implements Animation$AnimationListener {
     private static final long FADEOUT_OFFSET_LONG = 4500;
     private static final long FADEOUT_OFFSET_SHORT = 2500;

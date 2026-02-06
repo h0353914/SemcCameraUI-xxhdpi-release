@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class LocalBroadcastManager {
     private static final boolean DEBUG = false;
     static final int MSG_EXEC_PENDING_BROADCASTS = 1;

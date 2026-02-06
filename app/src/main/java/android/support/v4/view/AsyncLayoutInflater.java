@@ -10,7 +10,6 @@ import android.support.annotation.UiThread;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class AsyncLayoutInflater {
     private static final String TAG = "AsyncLayoutInflater";
     LayoutInflater mInflater;

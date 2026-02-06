@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.recorder.utility.encoder.source;
 
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 class MutableAudioSampleDataSource$DequeuedBuffer {
     private final ByteBuffer mBuffer;
     private final int mIndex;

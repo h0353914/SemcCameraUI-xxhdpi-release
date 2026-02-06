@@ -8,7 +8,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigInteger;
 
-/* JADX INFO: loaded from: classes.dex */
 class TypeAdapters$15 extends TypeAdapter<BigInteger> {
     TypeAdapters$15() {
     }

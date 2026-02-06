@@ -2,7 +2,6 @@ package android.support.v4.widget;
 
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class SlidingPaneLayout$DisableLayerRunnable implements Runnable {
     final View mChildView;
     final /* synthetic */ SlidingPaneLayout this$0;

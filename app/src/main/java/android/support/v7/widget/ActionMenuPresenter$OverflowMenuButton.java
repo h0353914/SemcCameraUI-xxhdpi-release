@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.appcompat.R$attr;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionMenuPresenter$OverflowMenuButton extends AppCompatImageView implements ActionMenuView$ActionMenuChildView {
     private final float[] mTempPts;
     final /* synthetic */ ActionMenuPresenter this$0;

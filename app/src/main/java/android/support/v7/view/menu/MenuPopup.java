@@ -15,7 +15,6 @@ import android.widget.HeaderViewListAdapter;
 import android.widget.ListAdapter;
 import android.widget.PopupWindow$OnDismissListener;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class MenuPopup implements ShowableListMenu, MenuPresenter, AdapterView$OnItemClickListener {
     private Rect mEpicenterBounds;
 

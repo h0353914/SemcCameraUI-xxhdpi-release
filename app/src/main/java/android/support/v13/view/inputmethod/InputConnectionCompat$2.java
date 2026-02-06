@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputConnectionWrapper;
 
-/* JADX INFO: loaded from: classes.dex */
 class InputConnectionCompat$2 extends InputConnectionWrapper {
     final /* synthetic */ InputConnectionCompat$OnCommitContentListener val$listener;
 

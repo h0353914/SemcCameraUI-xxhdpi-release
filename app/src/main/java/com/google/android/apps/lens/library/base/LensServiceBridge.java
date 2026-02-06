@@ -24,7 +24,6 @@ import com.google.android.apps.gsa.search.shared.service.proto.nano.ServiceEvent
 import com.google.protobuf.nano.InvalidProtocolBufferNanoException;
 import com.google.protobuf.nano.MessageNano;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LensServiceBridge extends IPublicSearchServiceSessionCallback$Stub implements ServiceConnection {
     private static final String BIND_INTENT_ACTION = "com.google.android.apps.gsa.publicsearch.IPublicSearchService";
     private static final boolean DEBUG = false;

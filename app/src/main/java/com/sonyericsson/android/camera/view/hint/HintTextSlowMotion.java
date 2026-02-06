@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.hint;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class HintTextSlowMotion extends HintTextContent {
     private final int mNameId;
 

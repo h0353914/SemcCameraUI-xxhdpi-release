@@ -15,7 +15,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 final class CameraStaticParameters {
     private static final int FORMAT_IMPLEMENTATION_DEFINED = 34;
     private static final int FORMAT_JPEG = 33;

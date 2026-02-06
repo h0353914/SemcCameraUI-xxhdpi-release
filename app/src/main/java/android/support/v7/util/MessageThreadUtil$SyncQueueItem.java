@@ -1,6 +1,5 @@
 package android.support.v7.util;
 
-/* JADX INFO: loaded from: classes.dex */
 class MessageThreadUtil$SyncQueueItem {
     private static MessageThreadUtil$SyncQueueItem sPool;
     private static final Object sPoolLock = new Object();

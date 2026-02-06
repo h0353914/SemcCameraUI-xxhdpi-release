@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.selectabledialog;
 import android.animation.Animator;
 import android.animation.Animator$AnimatorListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class AbsSelectableDialog$2 implements Animator$AnimatorListener {
     final /* synthetic */ AbsSelectableDialog this$0;
 

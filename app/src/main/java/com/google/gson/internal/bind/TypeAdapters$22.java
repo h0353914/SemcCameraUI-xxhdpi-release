@@ -7,7 +7,6 @@ import com.google.gson.reflect.TypeToken;
 import java.sql.Timestamp;
 import java.util.Date;
 
-/* JADX INFO: loaded from: classes.dex */
 class TypeAdapters$22 implements TypeAdapterFactory {
     TypeAdapters$22() {
     }

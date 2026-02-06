@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.utility;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RotationUtil {
     public static final String TAG = "RotationUtil";
 

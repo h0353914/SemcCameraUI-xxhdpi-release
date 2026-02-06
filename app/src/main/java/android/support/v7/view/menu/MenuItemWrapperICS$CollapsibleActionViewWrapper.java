@@ -4,7 +4,6 @@ import android.support.v7.view.CollapsibleActionView;
 import android.view.View;
 import android.widget.FrameLayout;
 
-/* JADX INFO: loaded from: classes.dex */
 class MenuItemWrapperICS$CollapsibleActionViewWrapper extends FrameLayout implements CollapsibleActionView {
     final android.view.CollapsibleActionView mWrappedView;
 

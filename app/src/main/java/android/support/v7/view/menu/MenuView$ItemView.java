@@ -2,7 +2,6 @@ package android.support.v7.view.menu;
 
 import android.graphics.drawable.Drawable;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface MenuView$ItemView {
     MenuItemImpl getItemData();
 

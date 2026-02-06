@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.recorder.utility.encoder.source;
 
-/* JADX INFO: loaded from: classes.dex */
 class AudioSampleDataSourceBase$1 implements Runnable {
     final /* synthetic */ AudioSampleDataSourceBase this$0;
     final /* synthetic */ boolean val$eos;

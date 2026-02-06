@@ -5,7 +5,6 @@ import com.google.android.gms.signin.internal.AuthAccountResult;
 import com.google.android.gms.signin.internal.zzb;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzlg$zza extends zzb {
     private final WeakReference<zzlg> zzabM;
 

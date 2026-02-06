@@ -5,7 +5,6 @@ import android.graphics.Matrix;
 import android.util.AttributeSet;
 import android.view.TextureView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TutorialVideoView extends TextureView {
     private float mTextureAspectRatio;
     private float mVideoAspectRatio;

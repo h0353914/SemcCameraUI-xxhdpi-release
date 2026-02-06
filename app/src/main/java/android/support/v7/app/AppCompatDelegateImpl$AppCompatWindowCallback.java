@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.Window$Callback;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatDelegateImpl$AppCompatWindowCallback extends WindowCallbackWrapper {
     final /* synthetic */ AppCompatDelegateImpl this$0;
 

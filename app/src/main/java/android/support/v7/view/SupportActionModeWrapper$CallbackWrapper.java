@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class SupportActionModeWrapper$CallbackWrapper implements ActionMode$Callback {
     final Context mContext;

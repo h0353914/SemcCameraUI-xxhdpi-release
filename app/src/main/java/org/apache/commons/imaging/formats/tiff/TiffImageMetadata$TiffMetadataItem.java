@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.tiff;
 
 import org.apache.commons.imaging.common.GenericImageMetadata$GenericImageMetadataItem;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffImageMetadata$TiffMetadataItem extends GenericImageMetadata$GenericImageMetadataItem {
     private final TiffField entry;
 

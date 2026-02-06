@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import android.os.Handler;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraController$StreamingImageRetriever implements ImageRetriever {
     final /* synthetic */ CameraController this$0;
 

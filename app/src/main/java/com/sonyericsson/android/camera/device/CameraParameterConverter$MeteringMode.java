@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 enum CameraParameterConverter$MeteringMode {
     CENTER("center-weighted", 0),
     FACE("face", 4),

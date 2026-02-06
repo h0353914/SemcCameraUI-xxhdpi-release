@@ -18,7 +18,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TutorialController {
     private static final long FADE_OUT_ANIMATION_DURATION_MILLIS = 300;
     private static final long SLIDE_IN_ANIMATION_DURATION_LAND_MILLIS = 700;

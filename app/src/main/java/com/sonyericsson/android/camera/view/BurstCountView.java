@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BurstCountView extends TextView {
     private final ObjectAnimator mFadeOutAnimator;
 

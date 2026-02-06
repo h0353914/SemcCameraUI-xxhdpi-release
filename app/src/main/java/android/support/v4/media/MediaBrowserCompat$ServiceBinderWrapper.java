@@ -9,7 +9,6 @@ import android.os.RemoteException;
 import android.support.v4.app.BundleCompat;
 import android.support.v4.os.ResultReceiver;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$ServiceBinderWrapper {
     private Messenger mMessenger;
     private Bundle mRootHints;

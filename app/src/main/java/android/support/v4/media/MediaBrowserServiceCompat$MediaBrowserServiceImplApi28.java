@@ -3,7 +3,6 @@ package android.support.v4.media;
 import android.service.media.MediaBrowserService;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(28)
 class MediaBrowserServiceCompat$MediaBrowserServiceImplApi28 extends MediaBrowserServiceCompat$MediaBrowserServiceImplApi26 {
     final /* synthetic */ MediaBrowserServiceCompat this$0;

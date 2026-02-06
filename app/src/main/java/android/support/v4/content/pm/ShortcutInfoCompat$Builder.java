@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.graphics.drawable.IconCompat;
 import android.text.TextUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ShortcutInfoCompat$Builder {
     private final ShortcutInfoCompat mInfo = new ShortcutInfoCompat();
 

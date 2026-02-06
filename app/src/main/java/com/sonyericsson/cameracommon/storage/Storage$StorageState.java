@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Storage$StorageState {
     REMOVED(CameraStorageManager$DetailStorageState.MEMORY_ERR_NO_MEMORY_CARD),
     AVAILABLE(CameraStorageManager$DetailStorageState.MEMORY_READY),

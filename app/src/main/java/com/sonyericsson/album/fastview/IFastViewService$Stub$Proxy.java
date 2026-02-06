@@ -5,7 +5,6 @@ import android.os.IBinder;
 import android.os.Parcel;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 class IFastViewService$Stub$Proxy implements IFastViewService {
     private IBinder mRemote;
 

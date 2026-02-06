@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$setAssistSelfTimerTask implements Runnable {
     private final int mAssistSelfTimer;
     final /* synthetic */ ResearchUtil this$0;

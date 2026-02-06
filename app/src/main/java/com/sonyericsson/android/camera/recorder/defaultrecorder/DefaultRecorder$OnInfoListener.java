@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.recorder.RecorderInterface$OnMaxReachedLi
 import com.sonyericsson.android.camera.recorder.RecorderInterface$RecordTrackListener;
 import com.sonymobile.android.media.MediaRecorder;
 
-/* JADX INFO: loaded from: classes.dex */
 class DefaultRecorder$OnInfoListener implements MediaRecorder$OnInfoListener {
     private static final int MEDIA_RECORDER_INFO_KIND_MASK = 15;
     private static final int MEDIA_RECORDER_INFO_KIND_SHIFT = 28;

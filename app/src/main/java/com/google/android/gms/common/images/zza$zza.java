@@ -3,7 +3,6 @@ package com.google.android.gms.common.images;
 import android.net.Uri;
 import com.google.android.gms.common.internal.zzw;
 
-/* JADX INFO: loaded from: classes.dex */
 final class zza$zza {
     public final Uri uri;
 

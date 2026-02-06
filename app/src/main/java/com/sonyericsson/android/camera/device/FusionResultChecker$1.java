@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 class FusionResultChecker$1 implements Runnable {
     final /* synthetic */ FusionResultChecker this$0;
     final /* synthetic */ CameraParameters$FusionResult val$result;

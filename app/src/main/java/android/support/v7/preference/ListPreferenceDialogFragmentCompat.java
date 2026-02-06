@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog$Builder;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ListPreferenceDialogFragmentCompat extends PreferenceDialogFragmentCompat {
     private static final String SAVE_STATE_ENTRIES = "ListPreferenceDialogFragment.entries";
     private static final String SAVE_STATE_ENTRY_VALUES = "ListPreferenceDialogFragment.entryValues";

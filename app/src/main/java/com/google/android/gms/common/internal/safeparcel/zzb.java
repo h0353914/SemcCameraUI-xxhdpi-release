@@ -6,7 +6,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzb {
     private static int zzG(Parcel parcel, int i) {
         parcel.writeInt(i | (-65536));

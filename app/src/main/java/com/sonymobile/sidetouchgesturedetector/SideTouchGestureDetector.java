@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SideTouchGestureDetector {
     private static final int DEFAULT_DOUBLE_TAP_TIMEOUT = 360;
     private static final int DOUBLE_TAP_MIN_TIME = 30;

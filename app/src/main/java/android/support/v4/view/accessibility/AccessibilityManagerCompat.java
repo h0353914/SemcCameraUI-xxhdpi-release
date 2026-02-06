@@ -5,7 +5,6 @@ import android.os.Build$VERSION;
 import android.view.accessibility.AccessibilityManager;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class AccessibilityManagerCompat {
     @Deprecated
     public static boolean addAccessibilityStateChangeListener(AccessibilityManager accessibilityManager, AccessibilityManagerCompat$AccessibilityStateChangeListener accessibilityManagerCompat$AccessibilityStateChangeListener) {

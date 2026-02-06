@@ -17,7 +17,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BitmapTeleporter implements SafeParcelable {
     public static final Parcelable$Creator<BitmapTeleporter> CREATOR = new zza();
     final int mVersionCode;

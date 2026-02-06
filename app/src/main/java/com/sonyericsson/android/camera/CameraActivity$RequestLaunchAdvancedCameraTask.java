@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$RequestLaunchAdvancedCameraTask implements Runnable {
     private static final String TAG = "RequestLaunchAdvancedCameraTask";
     private final LaunchCondition$ExtraOperation mExtraOperation;

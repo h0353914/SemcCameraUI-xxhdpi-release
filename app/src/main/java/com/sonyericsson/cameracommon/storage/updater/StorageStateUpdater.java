@@ -16,7 +16,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 public class StorageStateUpdater {
     private static final String THREAD_NAME = "SM#State:";
     private Future mAutoUpdateTask;

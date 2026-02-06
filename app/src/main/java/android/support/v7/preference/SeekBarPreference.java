@@ -10,7 +10,6 @@ import android.widget.SeekBar;
 import android.widget.SeekBar$OnSeekBarChangeListener;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SeekBarPreference extends Preference {
     private static final String TAG = "SeekBarPreference";
     boolean mAdjustable;

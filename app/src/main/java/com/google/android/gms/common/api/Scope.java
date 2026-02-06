@@ -5,7 +5,6 @@ import android.os.Parcelable$Creator;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class Scope implements SafeParcelable {
     public static final Parcelable$Creator<Scope> CREATOR = new zzc();
     final int mVersionCode;

@@ -5,7 +5,6 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collection;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SortedList<T> {
     private static final int CAPACITY_GROWTH = 10;
     private static final int DELETION = 2;

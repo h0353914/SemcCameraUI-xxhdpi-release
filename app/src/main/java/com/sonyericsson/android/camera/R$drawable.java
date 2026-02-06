@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$drawable {
     public static final int abc_ab_share_pack_mtrl_alpha = 2131230753;
     public static final int abc_action_bar_item_background_material = 2131230754;

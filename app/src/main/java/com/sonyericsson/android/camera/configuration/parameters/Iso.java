@@ -8,7 +8,6 @@ import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum Iso implements UserSettingValue {
     ISO_AUTO(-1, 2131689894, "auto", -1),
     ISO_50(-1, 2131689922, "iso-prio", 50),

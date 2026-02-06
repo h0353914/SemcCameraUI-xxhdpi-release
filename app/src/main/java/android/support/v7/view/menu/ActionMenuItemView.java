@@ -20,7 +20,6 @@ import android.view.View;
 import android.view.View$MeasureSpec;
 import android.view.View$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ActionMenuItemView extends AppCompatTextView implements MenuView$ItemView, View$OnClickListener, ActionMenuView$ActionMenuChildView {
     private static final int MAX_ICON_SIZE = 32;

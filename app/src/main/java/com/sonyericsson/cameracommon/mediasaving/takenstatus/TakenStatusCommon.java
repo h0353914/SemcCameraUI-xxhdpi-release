@@ -9,7 +9,6 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TakenStatusCommon {
     public static final int INVALID_ID = -1;
     public static final String TAG = "TakenStatusCommon";

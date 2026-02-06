@@ -1,6 +1,5 @@
 package android.arch.lifecycle;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MutableLiveData<T> extends LiveData<T> {
     @Override // android.arch.lifecycle.LiveData
     public void postValue(T t) {

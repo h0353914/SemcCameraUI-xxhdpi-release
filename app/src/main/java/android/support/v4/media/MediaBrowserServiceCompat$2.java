@@ -3,7 +3,6 @@ package android.support.v4.media;
 import android.os.Bundle;
 import android.support.v4.os.ResultReceiver;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$2 extends MediaBrowserServiceCompat$Result<MediaBrowserCompat$MediaItem> {
     final /* synthetic */ MediaBrowserServiceCompat this$0;
     final /* synthetic */ ResultReceiver val$receiver;

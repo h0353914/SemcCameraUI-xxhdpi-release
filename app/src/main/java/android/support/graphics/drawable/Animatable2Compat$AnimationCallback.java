@@ -4,7 +4,6 @@ import android.graphics.drawable.Animatable2$AnimationCallback;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class Animatable2Compat$AnimationCallback {
     Animatable2$AnimationCallback mPlatformCallback;
 

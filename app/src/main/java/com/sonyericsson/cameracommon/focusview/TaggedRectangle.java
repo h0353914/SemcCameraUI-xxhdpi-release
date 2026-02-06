@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TaggedRectangle extends RelativeLayout implements Rectangle$RectangleOnTouchListener {
     public static final int FACEDETECT_CAPTURE = 1;
     public static final int FACERECOGNITION_REVIEW = 2;

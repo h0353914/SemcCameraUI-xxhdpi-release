@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.status;
 
 import android.content.ContentValues;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface CameraStatusValue {
     String getKey();
 

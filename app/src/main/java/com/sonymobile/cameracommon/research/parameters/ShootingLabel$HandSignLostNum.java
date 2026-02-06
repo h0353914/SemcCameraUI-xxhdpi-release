@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ShootingLabel$HandSignLostNum implements ShootingLabel$IntParameter {
     NA(-1, -1),
     ZERO(0, 0),

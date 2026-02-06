@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.angle;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PinchZoomStepCalculator implements VariableIndex$Calculator {
     private static final float PINCH_ZOOM_COEFFICIENT = 0.7f;
 

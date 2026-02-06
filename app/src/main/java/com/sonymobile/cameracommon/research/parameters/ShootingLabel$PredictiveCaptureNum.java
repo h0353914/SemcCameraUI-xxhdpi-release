@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ShootingLabel$PredictiveCaptureNum implements ShootingLabel$IntParameter {
     PREDICTIVE_CAPTURE_OFF(0),
     PREDICTIVE_CAPTURE_NUM_1(1),

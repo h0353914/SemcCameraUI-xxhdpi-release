@@ -1,6 +1,5 @@
 package android.arch.core.internal;
 
-/* JADX INFO: loaded from: classes.dex */
 class SafeIterableMap$AscendingIterator<K, V> extends SafeIterableMap$ListIterator<K, V> {
     SafeIterableMap$AscendingIterator(SafeIterableMap$Entry<K, V> safeIterableMap$Entry, SafeIterableMap$Entry<K, V> safeIterableMap$Entry2) {
         super(safeIterableMap$Entry, safeIterableMap$Entry2);

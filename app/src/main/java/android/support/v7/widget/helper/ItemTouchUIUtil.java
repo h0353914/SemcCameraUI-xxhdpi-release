@@ -4,7 +4,6 @@ import android.graphics.Canvas;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface ItemTouchUIUtil {
     void clearView(View view);
 

@@ -3,7 +3,6 @@ package android.support.v4.media.session;
 import android.media.MediaDescription;
 import android.media.session.MediaSession$QueueItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionCompatApi21$QueueItem {
     public static Object createItem(Object obj, long j) {
         return new MediaSession$QueueItem((MediaDescription) obj, j);

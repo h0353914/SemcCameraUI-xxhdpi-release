@@ -11,7 +11,6 @@ import com.sonyericsson.cameracommon.storage.StorageUtil;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-/* JADX INFO: loaded from: classes.dex */
 class VariableSourceMediaRecorder$MediaEncoderStateListener implements MediaEncoder$StateListener {
     private long mLastNotifyProgressMillis = 0;
     final /* synthetic */ VariableSourceMediaRecorder this$0;

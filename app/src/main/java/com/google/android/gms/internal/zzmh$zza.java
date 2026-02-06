@@ -2,7 +2,6 @@ package com.google.android.gms.internal;
 
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 final class zzmh$zza<T> implements Iterator<T> {
     boolean mCanRemove = false;
     int mIndex;

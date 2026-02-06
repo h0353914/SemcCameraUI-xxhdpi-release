@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.controller;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum StateMachine$StaticEvent {
     EVENT_ON_PHOTO_STACK_INITIALIZED,
     EVENT_ON_HEAD_UP_DISPLAY_INITIALIZED,

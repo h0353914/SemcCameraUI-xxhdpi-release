@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.view.overlaycontrol.OverlayControl$StateL
 import com.sonyericsson.android.camera.view.overlaycontrol.SemiAutoControl;
 import com.sonyericsson.android.camera.view.overlaycontrol.ValueAccessor;
 
-/* JADX INFO: loaded from: classes.dex */
 class BaseLayout$3 extends BaseLayout$LazyInitializer<OverlayControl> {
     final /* synthetic */ BaseLayout this$0;
     final /* synthetic */ ValueAccessor val$brightness;

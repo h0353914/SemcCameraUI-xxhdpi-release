@@ -2,7 +2,6 @@ package com.sonymobile.cameracommon.research;
 
 import com.sonymobile.cameracommon.research.parameters.Event$CaptureTrigger;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SetCaptureTriggerTask implements Runnable {
     private final Event$CaptureTrigger mCaptureTrigger;
     final /* synthetic */ ResearchUtil this$0;

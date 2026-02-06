@@ -5,7 +5,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ThreadUtil {
     @NonNull
     public static ExecutorService buildExecutor(@NonNull String str) {

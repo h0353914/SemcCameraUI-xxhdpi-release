@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.ico;
 
-/* JADX INFO: loaded from: classes.dex */
 class IcoImageParser$ImageContents {
     public final IcoImageParser$FileHeader fileHeader;
     public final IcoImageParser$IconData[] iconDatas;

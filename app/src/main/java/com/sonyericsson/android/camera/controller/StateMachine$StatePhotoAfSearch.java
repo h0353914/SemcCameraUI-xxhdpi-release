@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.controller;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StatePhotoAfSearch extends StateMachine$StatePhotoBase {
     private static final String TAG = "StateMachine.StatePhotoAfSearch";
     private boolean mIsCancelRequested;

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.controller;
 import com.sonyericsson.android.camera.CameraActivity$LayoutOrientation;
 import com.sonyericsson.android.camera.CameraActivity$LayoutOrientationChangedListener;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface GestureShutter$ControllerHost {
     void addOrientationListener(CameraActivity$LayoutOrientationChangedListener cameraActivity$LayoutOrientationChangedListener);
 

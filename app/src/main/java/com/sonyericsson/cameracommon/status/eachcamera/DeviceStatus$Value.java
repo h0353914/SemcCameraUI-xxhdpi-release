@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.status.eachcamera;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum DeviceStatus$Value {
     POWER_ON("power_on"),
     POWER_OFF("power_off"),

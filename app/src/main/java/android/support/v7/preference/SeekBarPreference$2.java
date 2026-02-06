@@ -5,7 +5,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View$OnKeyListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SeekBarPreference$2 implements View$OnKeyListener {
     final /* synthetic */ SeekBarPreference this$0;
 

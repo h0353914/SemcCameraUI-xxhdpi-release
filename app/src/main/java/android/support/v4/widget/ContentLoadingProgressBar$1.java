@@ -1,6 +1,5 @@
 package android.support.v4.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class ContentLoadingProgressBar$1 implements Runnable {
     final /* synthetic */ ContentLoadingProgressBar this$0;
 

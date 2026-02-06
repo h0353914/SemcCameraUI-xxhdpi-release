@@ -7,7 +7,6 @@ import android.os.RemoteException;
 import android.util.Log;
 import com.google.android.gms.common.ConnectionResult;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class zzj$zzg extends zzj<T>.zzj$zza {
     final /* synthetic */ zzj zzafK;
     public final IBinder zzafO;

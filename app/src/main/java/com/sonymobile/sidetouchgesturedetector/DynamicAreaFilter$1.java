@@ -1,6 +1,5 @@
 package com.sonymobile.sidetouchgesturedetector;
 
-/* JADX INFO: loaded from: classes.dex */
 class DynamicAreaFilter$1 implements Runnable {
     final /* synthetic */ DynamicAreaFilter this$0;
 

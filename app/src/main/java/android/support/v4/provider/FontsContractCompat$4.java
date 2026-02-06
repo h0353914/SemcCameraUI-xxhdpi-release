@@ -5,7 +5,6 @@ import android.content.pm.PackageManager$NameNotFoundException;
 import android.graphics.Typeface;
 import android.os.Handler;
 
-/* JADX INFO: loaded from: classes.dex */
 class FontsContractCompat$4 implements Runnable {
     final /* synthetic */ FontsContractCompat$FontRequestCallback val$callback;
     final /* synthetic */ Handler val$callerThreadHandler;

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import android.graphics.Point;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$VideoCaptureAreaEventProcedure extends UserEventHandler$FrontVideoCaptureAreaEventProcedure {
     final /* synthetic */ UserEventHandler this$0;
 

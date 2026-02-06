@@ -17,7 +17,6 @@ import java.util.Iterator;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzlc<R extends Result> extends PendingResult<R> {
     private boolean zzL;
     private volatile R zzaaX;

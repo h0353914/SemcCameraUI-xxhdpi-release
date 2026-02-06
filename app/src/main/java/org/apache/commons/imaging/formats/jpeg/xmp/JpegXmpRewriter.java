@@ -15,7 +15,6 @@ import org.apache.commons.imaging.common.bytesource.ByteSourceFile;
 import org.apache.commons.imaging.common.bytesource.ByteSourceInputStream;
 import org.apache.commons.imaging.formats.jpeg.JpegConstants;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JpegXmpRewriter extends JpegRewriter {
     public void removeXmpXml(File file, OutputStream outputStream) throws IOException, ImageReadException {
         removeXmpXml(new ByteSourceFile(file), outputStream);

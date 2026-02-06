@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(26)
 class MediaBrowserCompat$MediaBrowserImplApi26 extends MediaBrowserCompat$MediaBrowserImplApi23 {
     MediaBrowserCompat$MediaBrowserImplApi26(Context context, ComponentName componentName, MediaBrowserCompat$ConnectionCallback mediaBrowserCompat$ConnectionCallback, Bundle bundle) {

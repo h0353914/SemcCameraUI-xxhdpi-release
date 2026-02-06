@@ -3,7 +3,6 @@ package com.google.android.gms.signin.internal;
 import android.os.RemoteException;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzi$zza$2 implements Runnable {
     final /* synthetic */ String zzaVo;
     final /* synthetic */ zzf zzaVp;

@@ -7,7 +7,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* JADX INFO: compiled from: ContinuationInterceptor.kt */
-/* JADX INFO: loaded from: classes.dex */
 @Metadata(bv = {1, 0, 2}, k = 3, mv = {1, 1, 10})
 public final class ContinuationInterceptor$DefaultImpls {
     public static <R> R fold(ContinuationInterceptor continuationInterceptor, R r, @NotNull Function2<? super R, ? super CoroutineContext$Element, ? extends R> operation) {

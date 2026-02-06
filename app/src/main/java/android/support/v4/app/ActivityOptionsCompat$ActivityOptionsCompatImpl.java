@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(16)
 class ActivityOptionsCompat$ActivityOptionsCompatImpl extends ActivityOptionsCompat {
     private final ActivityOptions mActivityOptions;

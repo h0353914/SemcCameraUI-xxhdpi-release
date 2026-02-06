@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.storage;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.mediasaving.StoreDataResult;
 
-/* JADX INFO: loaded from: classes.dex */
 class SavingTaskManager$NotifyStoreCompletedTask implements Runnable {
     private final StoreDataResult mResult;
 

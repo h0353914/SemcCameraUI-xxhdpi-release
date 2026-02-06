@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.ByteOrder;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MyBitOutputStream extends OutputStream {
     private int bitCache;
     private int bitsInCache;

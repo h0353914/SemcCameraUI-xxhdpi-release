@@ -1,6 +1,5 @@
 package android.support.v4.media.session;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaControllerCompat$PlaybackInfo {
     public static final int PLAYBACK_TYPE_LOCAL = 1;
     public static final int PLAYBACK_TYPE_REMOTE = 2;

@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class SearchView$2 implements Runnable {
     final /* synthetic */ SearchView this$0;
 

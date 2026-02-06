@@ -4,7 +4,6 @@ import com.sonyericsson.cameracommon.storage.RequestFactory$PhotoSavingRequestBu
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$DisplayFlashColor;
 import java.util.concurrent.ExecutorService;
 
-/* JADX INFO: loaded from: classes.dex */
 interface BypassCameraController$BypassCameraControllerCallback {
     void onCameraClosed();
 

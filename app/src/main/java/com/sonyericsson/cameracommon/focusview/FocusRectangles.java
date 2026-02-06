@@ -31,7 +31,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FocusRectangles {
     private static final String ANIMATION_SCALE_X = "scaleX";
     private static final String ANIMATION_SCALE_Y = "scaleY";

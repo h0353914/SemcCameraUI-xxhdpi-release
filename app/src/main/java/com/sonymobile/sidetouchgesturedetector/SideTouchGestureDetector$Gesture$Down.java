@@ -2,7 +2,6 @@ package com.sonymobile.sidetouchgesturedetector;
 
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchGestureDetector$Gesture$Down extends SideTouchGestureDetector$Gesture$State {
     private boolean mDeferConfirmSingleTap;
     final /* synthetic */ SideTouchGestureDetector$Gesture this$1;

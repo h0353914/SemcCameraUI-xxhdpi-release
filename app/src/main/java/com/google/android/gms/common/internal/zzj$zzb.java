@@ -7,7 +7,6 @@ import android.os.Message;
 import android.util.Log;
 import com.google.android.gms.common.ConnectionResult;
 
-/* JADX INFO: loaded from: classes.dex */
 final class zzj$zzb extends Handler {
     final /* synthetic */ zzj zzafK;
 

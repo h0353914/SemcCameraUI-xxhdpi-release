@@ -10,7 +10,6 @@ import android.view.ViewTreeObserver;
 import android.widget.ListAdapter;
 import android.widget.SpinnerAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatSpinner$DropdownPopup extends ListPopupWindow {
     ListAdapter mAdapter;
     private CharSequence mHintText;

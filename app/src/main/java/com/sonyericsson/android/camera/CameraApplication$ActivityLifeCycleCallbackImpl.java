@@ -8,7 +8,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraApplication$ActivityLifeCycleCallbackImpl implements Application$ActivityLifecycleCallbacks {
     List<Activity> mForegroundActivity = new LinkedList();
     List<CameraApplication$Pausable> mPausables;

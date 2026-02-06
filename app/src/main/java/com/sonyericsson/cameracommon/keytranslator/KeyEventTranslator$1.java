@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.keytranslator;
 
 import com.sonyericsson.android.camera.configuration.parameters.VolumeKey;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class KeyEventTranslator$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$parameters$VolumeKey;
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$cameracommon$keytranslator$KeyEventTranslator$KeyAction = new int[KeyEventTranslator$KeyAction.values().length];

@@ -1,6 +1,5 @@
 package org.apache.commons.imaging;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ImageFormats implements ImageFormat {
     UNKNOWN,
     BMP,

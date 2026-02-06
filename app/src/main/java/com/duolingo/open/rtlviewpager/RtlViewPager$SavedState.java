@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 import android.support.v4.os.ParcelableCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RtlViewPager$SavedState implements Parcelable {
     public static final Parcelable$Creator<RtlViewPager$SavedState> CREATOR = ParcelableCompat.newCreator(new RtlViewPager$SavedState$1());
     private final int mLayoutDirection;

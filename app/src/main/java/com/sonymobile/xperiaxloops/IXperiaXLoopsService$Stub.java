@@ -7,7 +7,6 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class IXperiaXLoopsService$Stub extends Binder implements IXperiaXLoopsService {
     private static final String DESCRIPTOR = "com.sonymobile.xperiaxloops.IXperiaXLoopsService";
     static final int TRANSACTION_notifyShowLoopsByApps = 8;

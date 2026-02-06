@@ -3,7 +3,6 @@ package android.support.v4.widget;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 class ExploreByTouchHelper$2 implements FocusStrategy$CollectionAdapter<SparseArrayCompat<AccessibilityNodeInfoCompat>, AccessibilityNodeInfoCompat> {
     ExploreByTouchHelper$2() {
     }

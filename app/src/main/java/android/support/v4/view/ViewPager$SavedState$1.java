@@ -3,7 +3,6 @@ package android.support.v4.view;
 import android.os.Parcel;
 import android.os.Parcelable$ClassLoaderCreator;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewPager$SavedState$1 implements Parcelable$ClassLoaderCreator<ViewPager$SavedState> {
     ViewPager$SavedState$1() {
     }

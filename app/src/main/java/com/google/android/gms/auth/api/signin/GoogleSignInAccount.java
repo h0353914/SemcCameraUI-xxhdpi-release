@@ -10,7 +10,6 @@ import com.google.android.gms.internal.zzmp;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GoogleSignInAccount implements SafeParcelable {
     public static final Parcelable$Creator<GoogleSignInAccount> CREATOR = new zzc();
     public static zzmn zzSY = zzmp.zzqt();

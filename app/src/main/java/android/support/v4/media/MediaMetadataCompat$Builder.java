@@ -8,7 +8,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import android.support.v4.media.session.MediaSessionCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaMetadataCompat$Builder {
     private final Bundle mBundle;
 

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum AspectRatio implements UserSettingValue {
     SIXTEEN_TO_NINE(2131230945, 2131689638),
     FOUR_TO_THREE(2131230947, 2131689640),

@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.ico;
 import java.awt.image.BufferedImage;
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 class IcoImageParser$PNGIconData extends IcoImageParser$IconData {
     public final BufferedImage bufferedImage;
 

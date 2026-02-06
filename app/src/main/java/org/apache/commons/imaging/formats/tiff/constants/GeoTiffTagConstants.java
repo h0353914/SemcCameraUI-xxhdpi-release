@@ -8,7 +8,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoAscii;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoDouble;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShort;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class GeoTiffTagConstants {
     public static final TagInfoDouble EXIF_TAG_MODEL_PIXEL_SCALE_TAG = new TagInfoDouble("ModelPixelScaleTag", 33550, 3, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);
     public static final TagInfoDouble EXIF_TAG_INTERGRAPH_MATRIX_TAG = new TagInfoDouble("IntergraphMatrixTag", 33920, -1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);

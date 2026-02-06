@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class Debug {
     private static final boolean DEBUG = false;
     private static final String NEWLINE = "\r\n";

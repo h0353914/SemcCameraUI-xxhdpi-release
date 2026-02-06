@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.png;
 
-/* JADX INFO: loaded from: classes.dex */
 class PngCrc {
     private final long[] crc_table = new long[256];
     private boolean crc_table_computed;

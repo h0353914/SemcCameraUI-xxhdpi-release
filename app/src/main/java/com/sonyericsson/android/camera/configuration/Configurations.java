@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.configuration;
 
 import android.view.KeyCharacterMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Configurations {
     public static final String TAG = "Configurations";
     static final boolean sHasShutterKey = KeyCharacterMap.deviceHasKey(27);

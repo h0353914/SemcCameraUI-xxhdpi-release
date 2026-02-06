@@ -8,7 +8,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import android.view.PointerIcon;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class PointerIconCompat {
     public static final int TYPE_ALIAS = 1010;
     public static final int TYPE_ALL_SCROLL = 1013;

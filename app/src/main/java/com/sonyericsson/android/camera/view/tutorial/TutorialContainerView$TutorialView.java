@@ -9,7 +9,6 @@ import android.view.ViewGroup$LayoutParams;
 import android.widget.RelativeLayout;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TutorialContainerView$TutorialView extends RelativeLayout {
     private static final int ANGLE_PORTRAIT_DEGREE = -90;
     private TutorialContentView$TutorialContent mContent;

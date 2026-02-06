@@ -3,7 +3,6 @@ package android.support.v7.app;
 import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatDelegateImpl$6$1 extends ViewPropertyAnimatorListenerAdapter {
     final /* synthetic */ AppCompatDelegateImpl$6 this$1;
 

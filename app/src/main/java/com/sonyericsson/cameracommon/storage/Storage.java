@@ -4,7 +4,6 @@ import android.net.Uri;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface Storage {
     void addStorageReadyStateListener(Storage$StorageReadyStateListener storage$StorageReadyStateListener);
 

@@ -2,7 +2,6 @@ package org.apache.commons.imaging.common;
 
 import java.nio.ByteOrder;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ByteConversions {
     private ByteConversions() {
     }

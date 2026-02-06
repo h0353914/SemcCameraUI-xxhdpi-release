@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraController$RequestSnapshotReadyAfterAfParametersReflected implements CameraParameters$AfParametersCallback {
     private final CameraDeviceHandler$CameraSessionId mSessionId;
     final /* synthetic */ CameraController this$0;

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class Fragment$2 extends FragmentContainer {
     final /* synthetic */ Fragment this$0;
 

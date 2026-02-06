@@ -2,7 +2,6 @@ package android.support.v7.view.menu;
 
 import android.support.v7.widget.ForwardingListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionMenuItemView$ActionMenuItemForwardingListener extends ForwardingListener {
     final /* synthetic */ ActionMenuItemView this$0;
 

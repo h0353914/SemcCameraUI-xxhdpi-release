@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CameraParameters$FusionResult {
     private CameraParameters$FusionCondition mFusionCondition;
     private CameraParameters$FusionStatus mFusionStatus;

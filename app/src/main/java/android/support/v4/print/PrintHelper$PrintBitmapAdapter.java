@@ -12,7 +12,6 @@ import android.print.PrintDocumentAdapter$WriteResultCallback;
 import android.print.PrintDocumentInfo$Builder;
 import android.support.annotation.RequiresApi;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(19)
 class PrintHelper$PrintBitmapAdapter extends PrintDocumentAdapter {
     private PrintAttributes mAttributes;

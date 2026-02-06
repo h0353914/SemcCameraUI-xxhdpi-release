@@ -4,7 +4,6 @@ import android.support.v7.view.menu.ActionMenuItem;
 import android.view.View;
 import android.view.View$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ToolbarWidgetWrapper$1 implements View$OnClickListener {
     final ActionMenuItem mNavItem;
     final /* synthetic */ ToolbarWidgetWrapper this$0;

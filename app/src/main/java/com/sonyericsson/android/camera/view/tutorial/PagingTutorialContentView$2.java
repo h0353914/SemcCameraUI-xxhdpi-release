@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.tutorial;
 import android.graphics.SurfaceTexture;
 import android.view.TextureView$SurfaceTextureListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class PagingTutorialContentView$2 implements TextureView$SurfaceTextureListener {
     final /* synthetic */ PagingTutorialContentView this$0;
     final /* synthetic */ int val$position;

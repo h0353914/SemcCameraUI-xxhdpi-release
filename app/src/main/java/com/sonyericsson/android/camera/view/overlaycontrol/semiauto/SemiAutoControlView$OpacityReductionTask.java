@@ -6,7 +6,6 @@ import android.view.Choreographer$FrameCallback;
 import android.view.View;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 final class SemiAutoControlView$OpacityReductionTask implements Choreographer$FrameCallback {
     private static final long DELAY = 3000;
     private static final float DELTA = -0.5f;

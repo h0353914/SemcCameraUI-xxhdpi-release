@@ -3,7 +3,6 @@ package android.support.v4.os;
 import android.os.Parcel;
 import android.os.Parcelable$ClassLoaderCreator;
 
-/* JADX INFO: loaded from: classes.dex */
 class ParcelableCompat$ParcelableCompatCreatorHoneycombMR2<T> implements Parcelable$ClassLoaderCreator<T> {
     private final ParcelableCompatCreatorCallbacks<T> mCallbacks;
 

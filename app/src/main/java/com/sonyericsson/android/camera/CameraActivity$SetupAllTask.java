@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$SetupAllTask implements Runnable {
     final /* synthetic */ CameraActivity this$0;
 

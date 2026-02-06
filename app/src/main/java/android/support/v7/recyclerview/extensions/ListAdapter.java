@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView$Adapter;
 import android.support.v7.widget.RecyclerView$ViewHolder;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class ListAdapter<T, VH extends RecyclerView$ViewHolder> extends RecyclerView$Adapter<VH> {
     private final AsyncListDiffer<T> mHelper;
 

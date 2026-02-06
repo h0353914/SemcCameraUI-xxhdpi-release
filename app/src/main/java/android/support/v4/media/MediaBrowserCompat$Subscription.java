@@ -4,7 +4,6 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$Subscription {
     private final List<MediaBrowserCompat$SubscriptionCallback> mCallbacks = new ArrayList();
     private final List<Bundle> mOptionsList = new ArrayList();

@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ShootingLabel$FaceNum implements ShootingLabel$IntParameter {
     FACE_NUM_0(0),
     FACE_NUM_1(1),

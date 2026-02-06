@@ -8,7 +8,6 @@ import com.sonyericsson.android.camera.setting.MessageSettings;
 import com.sonyericsson.cameracommon.rotatableview.RotatableDialog;
 import com.sonyericsson.cameracommon.rotatableview.RotatableDialog$Builder;
 
-/* JADX INFO: loaded from: classes.dex */
 public class NoButtonDialogBuilder extends MessageDialogBuilder {
     @Override // com.sonyericsson.android.camera.view.messagedialog.MessageDialogBuilder
     protected RotatableDialog create(Context context, int i, MessageSettings messageSettings, MessageDialogRequest messageDialogRequest, DialogInterface$OnClickListener dialogInterface$OnClickListener, DialogInterface$OnClickListener dialogInterface$OnClickListener2, DialogInterface$OnCancelListener dialogInterface$OnCancelListener, DialogInterface$OnDismissListener dialogInterface$OnDismissListener) {

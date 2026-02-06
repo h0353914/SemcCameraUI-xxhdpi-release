@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.interaction;
 import android.graphics.Point;
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class TouchActionTranslator$Idle implements TouchActionTranslator$InteractionState {
     final /* synthetic */ TouchActionTranslator this$0;
 

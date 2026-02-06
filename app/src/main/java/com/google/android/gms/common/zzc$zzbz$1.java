@@ -1,6 +1,5 @@
 package com.google.android.gms.common;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzc$zzbz$1 extends zzc$zzc {
     zzc$zzbz$1(byte[] bArr) {
         super(bArr);

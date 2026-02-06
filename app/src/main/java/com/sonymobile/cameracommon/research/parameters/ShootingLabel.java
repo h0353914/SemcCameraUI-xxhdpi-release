@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ShootingLabel {
     public static final String PREDICTIVE_LAUNCH_OFF = "False";
     public static final String PREDICTIVE_LAUNCH_ON = "True";

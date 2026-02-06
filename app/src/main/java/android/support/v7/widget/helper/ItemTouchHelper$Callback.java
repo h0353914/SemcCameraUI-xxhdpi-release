@@ -12,7 +12,6 @@ import android.support.v7.widget.RecyclerView$ViewHolder;
 import android.view.animation.Interpolator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class ItemTouchHelper$Callback {
     private static final int ABS_HORIZONTAL_DIR_FLAGS = 789516;
     public static final int DEFAULT_DRAG_ANIMATION_DURATION = 200;

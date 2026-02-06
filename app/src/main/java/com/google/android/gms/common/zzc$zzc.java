@@ -2,7 +2,6 @@ package com.google.android.gms.common;
 
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class zzc$zzc extends zzc$zza {
     private static final WeakReference<byte[]> zzaaj = new WeakReference<>(null);
     private WeakReference<byte[]> zzaai;

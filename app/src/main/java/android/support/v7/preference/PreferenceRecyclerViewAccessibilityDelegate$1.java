@@ -6,7 +6,6 @@ import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v7.widget.RecyclerView$Adapter;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class PreferenceRecyclerViewAccessibilityDelegate$1 extends AccessibilityDelegateCompat {
     final /* synthetic */ PreferenceRecyclerViewAccessibilityDelegate this$0;
 

@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.CapturePerformanceLogger;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class SavingTaskManager$MediaScanController {
     private final Context mContext;
     private final SavingTaskManager$MediaScanController$OnScanCompletedListener mOnScanCompletedListener;

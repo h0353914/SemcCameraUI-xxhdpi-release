@@ -1,6 +1,5 @@
 package android.support.v7.util;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface ThreadUtil$MainThreadCallback<T> {
     void addTile(int i, TileList$Tile<T> tileList$Tile);
 

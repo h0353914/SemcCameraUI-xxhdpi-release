@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 class AfParametersReflectedChecker$1 implements Runnable {
     final /* synthetic */ AfParametersReflectedChecker this$0;
 

@@ -2,7 +2,6 @@ package org.apache.commons.imaging.common.bytesource;
 
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 class ByteSourceInputStream$CacheBlock {
     public final byte[] bytes;
     private ByteSourceInputStream$CacheBlock next;

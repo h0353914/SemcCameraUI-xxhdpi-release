@@ -9,7 +9,6 @@ import android.os.PowerManager$WakeLock;
 import android.util.Log;
 import android.util.SparseArray;
 
-/* JADX INFO: loaded from: classes.dex */
 @Deprecated
 public abstract class WakefulBroadcastReceiver extends BroadcastReceiver {
     private static final String EXTRA_WAKE_LOCK_ID = "android.support.content.wakelockid";

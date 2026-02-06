@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewBoundsCheck {
     static final int CVE_PVE_POS = 12;
     static final int CVE_PVS_POS = 8;

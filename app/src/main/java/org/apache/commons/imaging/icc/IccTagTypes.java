@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.icc;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum IccTagTypes implements IccTagType {
     A_TO_B0_TAG("AToB0Tag", "lut8Type or lut16Type or lutAtoBType", 1093812784),
     A_TO_B1_TAG("AToB1Tag", "lut8Type or lut16Type or lutAtoBType", 1093812785),

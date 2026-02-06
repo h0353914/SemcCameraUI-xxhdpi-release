@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class OpReorderer {
     final OpReorderer$Callback mCallback;
 

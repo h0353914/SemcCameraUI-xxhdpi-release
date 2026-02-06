@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-/* JADX INFO: loaded from: classes.dex */
 class SavingTaskManager$1 implements SavingTaskInquiry {
     final /* synthetic */ SavingTaskManager this$0;
 

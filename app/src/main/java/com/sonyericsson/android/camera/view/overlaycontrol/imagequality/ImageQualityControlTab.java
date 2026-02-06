@@ -13,7 +13,6 @@ import com.sonyericsson.cameracommon.utility.RotationUtil;
 import com.sonymobile.cameracommon.font.FontUtil;
 import com.sonymobile.cameracommon.font.FontUtil$RobotoFontType;
 
-/* JADX INFO: loaded from: classes.dex */
 class ImageQualityControlTab extends LinearLayout {
     private RelativeLayout mContainer;
     private final Context mContext;

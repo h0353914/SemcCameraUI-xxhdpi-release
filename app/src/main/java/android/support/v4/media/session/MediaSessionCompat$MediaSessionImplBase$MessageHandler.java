@@ -12,7 +12,6 @@ import android.support.v4.media.RatingCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionCompat$MediaSessionImplBase$MessageHandler extends Handler {
     private static final int KEYCODE_MEDIA_PAUSE = 127;
     private static final int KEYCODE_MEDIA_PLAY = 126;

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.device;
 import com.sonyericsson.android.camera.recorder.RecorderException;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$CameraControllerCallbackImpl$OnDisconnectedTask$1 implements Runnable {
     final /* synthetic */ CameraDeviceHandler$CameraControllerCallbackImpl$OnDisconnectedTask this$2;
 

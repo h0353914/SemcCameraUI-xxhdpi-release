@@ -1,6 +1,5 @@
 package com.sonyericsson.album.fastview;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$id {
     public static final int ALT = 2131296256;
     public static final int CTRL = 2131296257;

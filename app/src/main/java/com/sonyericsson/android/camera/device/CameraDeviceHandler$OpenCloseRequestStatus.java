@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 enum CameraDeviceHandler$OpenCloseRequestStatus {
     NONE,
     BYPASS_CAMERA_OPENING,

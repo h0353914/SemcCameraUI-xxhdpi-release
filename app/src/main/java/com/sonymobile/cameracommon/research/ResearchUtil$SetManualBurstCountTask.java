@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SetManualBurstCountTask implements Runnable {
     private final int mManualBurstCount;
     final /* synthetic */ ResearchUtil this$0;

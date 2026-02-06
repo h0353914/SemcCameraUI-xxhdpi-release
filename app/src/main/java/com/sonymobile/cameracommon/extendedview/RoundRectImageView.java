@@ -9,7 +9,6 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RoundRectImageView extends ImageView {
     public static final String TAG = "RoundRectImageView";
     private Path mClipPath;

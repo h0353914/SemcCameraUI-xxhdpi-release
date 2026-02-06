@@ -3,7 +3,6 @@ package com.google.android.gms.internal;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable$ConstantState;
 
-/* JADX INFO: loaded from: classes.dex */
 final class zzls$zzb extends Drawable$ConstantState {
     int zzaew;
     int zzaex;

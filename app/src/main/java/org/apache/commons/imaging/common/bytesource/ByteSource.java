@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import org.apache.commons.imaging.common.BinaryFunctions;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class ByteSource {
     protected final String filename;
 

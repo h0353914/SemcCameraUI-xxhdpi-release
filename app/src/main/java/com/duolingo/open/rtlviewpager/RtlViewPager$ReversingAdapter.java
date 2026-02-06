@@ -5,7 +5,6 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-/* JADX INFO: loaded from: classes.dex */
 class RtlViewPager$ReversingAdapter extends DelegatingPagerAdapter {
     final /* synthetic */ RtlViewPager this$0;
 

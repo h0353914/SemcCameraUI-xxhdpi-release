@@ -7,7 +7,6 @@ import android.support.v4.util.Pair;
 import java.util.HashMap;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$ConnectionRecord implements IBinder$DeathRecipient {
     public final MediaSessionManager$RemoteUserInfo browserInfo;
     public final MediaBrowserServiceCompat$ServiceCallbacks callbacks;

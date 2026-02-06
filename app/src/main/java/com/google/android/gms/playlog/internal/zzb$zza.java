@@ -3,7 +3,6 @@ package com.google.android.gms.playlog.internal;
 import com.google.android.gms.common.internal.zzx;
 import com.google.android.gms.internal.zzsi$zzd;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzb$zza {
     public final PlayLoggerContext zzaRM;
     public final LogEvent zzaRN;

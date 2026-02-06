@@ -1,6 +1,5 @@
 package org.apache.commons.imaging;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class PixelDensity {
     private static final int PIXEL_NO_UNIT = 0;
     private static final int PIXEL_PER_CENTIMETRE = 100;

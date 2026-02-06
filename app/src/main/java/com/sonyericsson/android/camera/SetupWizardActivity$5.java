@@ -4,7 +4,6 @@ import android.view.ViewTreeObserver$OnWindowAttachListener;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController$DisplayTrigger;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController$OpenType;
 
-/* JADX INFO: loaded from: classes.dex */
 class SetupWizardActivity$5 implements ViewTreeObserver$OnWindowAttachListener {
     final /* synthetic */ SetupWizardActivity this$0;
 

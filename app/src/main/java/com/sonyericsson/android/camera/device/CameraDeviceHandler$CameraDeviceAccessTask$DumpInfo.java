@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$CameraDeviceAccessTask$DumpInfo {
     private final StackTraceElement[] stackTrace;
     private final String status;

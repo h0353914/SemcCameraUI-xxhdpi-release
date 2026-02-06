@@ -8,7 +8,6 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 
-/* JADX INFO: loaded from: classes.dex */
 class GestureDetectorCompat$GestureDetectorCompatImplBase implements GestureDetectorCompat$GestureDetectorCompatImpl {
     private static final int LONG_PRESS = 2;
     private static final int SHOW_PRESS = 1;

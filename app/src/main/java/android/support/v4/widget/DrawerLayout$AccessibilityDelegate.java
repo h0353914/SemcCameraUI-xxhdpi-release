@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class DrawerLayout$AccessibilityDelegate extends AccessibilityDelegateCompat {
     private final Rect mTmpRect = new Rect();
     final /* synthetic */ DrawerLayout this$0;

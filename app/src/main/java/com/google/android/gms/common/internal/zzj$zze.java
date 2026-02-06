@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzj$zze implements ServiceConnection {
     final /* synthetic */ zzj zzafK;
     private final int zzafN;

@@ -2,7 +2,6 @@ package android.support.v4.media;
 
 import android.support.v4.util.ObjectsCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 final class MediaSessionManagerImplApi28$RemoteUserInfoImplApi28 implements MediaSessionManager$RemoteUserInfoImpl {
     final android.media.session.MediaSessionManager$RemoteUserInfo mObject;
 

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$raw {
     public static final int cam_predictive_launch_wizard = 2131623936;
     public static final int cam_side_touch_wizard = 2131623937;

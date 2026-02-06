@@ -47,7 +47,6 @@ import android.widget.ImageView;
 import android.widget.TextView$OnEditorActionListener;
 import java.util.WeakHashMap;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SearchView extends LinearLayoutCompat implements CollapsibleActionView {
     static final boolean DBG = false;
     static final SearchView$AutoCompleteTextViewReflector HIDDEN_METHOD_INVOKER = new SearchView$AutoCompleteTextViewReflector();

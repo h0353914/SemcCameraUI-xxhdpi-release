@@ -12,7 +12,6 @@ import android.support.v4.media.session.MediaSessionCompat$Token;
 import android.text.TextUtils;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaBrowserCompat {
     public static final String CUSTOM_ACTION_DOWNLOAD = "android.support.v4.media.action.DOWNLOAD";
     public static final String CUSTOM_ACTION_REMOVE_DOWNLOADED_FILE = "android.support.v4.media.action.REMOVE_DOWNLOADED_FILE";

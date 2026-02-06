@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research.parameters;
 
-/* JADX INFO: loaded from: classes.dex */
 enum ShootingLabel$ObjectTracking implements ShootingLabel$StringParameter {
     OBJECT_TRACKING_OFF("OFF_OFF"),
     OBJECT_TRACKING_AUTO_TARGET_OFF("ON_OFF"),

@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.interaction;
 
-/* JADX INFO: loaded from: classes.dex */
 class TouchMoveAndStopDetector$1 implements Runnable {
     final /* synthetic */ TouchMoveAndStopDetector this$0;
 

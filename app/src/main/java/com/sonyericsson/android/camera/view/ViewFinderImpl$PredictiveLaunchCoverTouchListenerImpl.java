@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import com.sonyericsson.android.camera.view.baselayout.PredictiveLaunchCoverView$PredictiveLaunchCoverTouchListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$PredictiveLaunchCoverTouchListenerImpl implements PredictiveLaunchCoverView$PredictiveLaunchCoverTouchListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

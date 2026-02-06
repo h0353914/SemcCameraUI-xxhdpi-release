@@ -8,7 +8,6 @@ import com.sonyericsson.cameracommon.mediasaving.StoreDataResult;
 import com.sonyericsson.cameracommon.storage.Storage$OnLoadCompletedListener;
 import java.util.LinkedList;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$2 implements Storage$OnLoadCompletedListener {
     final /* synthetic */ StateMachine this$0;
     final /* synthetic */ StoreDataResult val$result;

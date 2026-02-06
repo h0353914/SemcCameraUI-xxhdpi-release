@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class OnScreenButtonGroup extends FrameLayout {
     private static final String TAG = "OnScreenButtonGroup";
     private OnScreenButton mMain;

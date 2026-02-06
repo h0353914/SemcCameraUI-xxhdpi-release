@@ -7,7 +7,6 @@ import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusVideo;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
 import java.io.File;
 
-/* JADX INFO: loaded from: classes.dex */
 public class VideoSavingRequest extends SavingRequest {
     public static final String TAG = "VideoSavingRequest";
     public final TakenStatusVideo video;

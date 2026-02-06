@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TransitionAnimationController {
     private final FacingTransitionAnimation mFacingAnimation;
     private final ModeTransitionAnimation mModeAnimation;

@@ -3,7 +3,6 @@ package android.support.v4.content;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 
-/* JADX INFO: loaded from: classes.dex */
 final class LocalBroadcastManager$ReceiverRecord {
     boolean broadcasting;
     boolean dead;

@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
 import com.sonyericsson.android.camera.setting.StoredSettings;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 protected final class PagingTutorialContentView$DualCameraTutorialContent extends PagingTutorialContentView$PagingTutorialContent {
     protected PagingTutorialContentView$DualCameraTutorialContent(int i) {
         super(i);

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$CameraActivityFinishBroadcastReceiver extends BroadcastReceiver {
     final WeakReference<CameraActivity> mCameraActivityRef;
 

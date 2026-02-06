@@ -28,7 +28,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SlidingPaneLayout extends ViewGroup {
     private static final int DEFAULT_FADE_COLOR = -858993460;
     private static final int DEFAULT_OVERHANG_SIZE = 32;

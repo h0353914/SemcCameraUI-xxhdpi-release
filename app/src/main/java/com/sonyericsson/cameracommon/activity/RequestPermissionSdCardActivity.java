@@ -12,7 +12,6 @@ import android.text.TextUtils;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.io.File;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RequestPermissionSdCardActivity extends Activity {
     public static final String EXTERNAL_STORAGE_PROVIDER_AUTHORITY = "com.android.externalstorage.documents";
     public static final String EXTRA_SHOW_ADVANCED = "android.provider.extra.SHOW_ADVANCED";

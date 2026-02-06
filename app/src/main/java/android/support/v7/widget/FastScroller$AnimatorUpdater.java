@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator$AnimatorUpdateListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class FastScroller$AnimatorUpdater implements ValueAnimator$AnimatorUpdateListener {
     final /* synthetic */ FastScroller this$0;
 

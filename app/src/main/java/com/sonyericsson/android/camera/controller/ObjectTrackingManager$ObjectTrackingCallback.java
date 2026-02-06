@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.device.CameraParameters$ObjectTrackingRes
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class ObjectTrackingManager$ObjectTrackingCallback implements CameraParameters$ObjectTrackingCallback {
     final /* synthetic */ ObjectTrackingManager this$0;
 

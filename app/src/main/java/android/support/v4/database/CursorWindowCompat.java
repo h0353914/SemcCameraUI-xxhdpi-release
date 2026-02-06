@@ -5,7 +5,6 @@ import android.os.Build$VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class CursorWindowCompat {
     private CursorWindowCompat() {
     }

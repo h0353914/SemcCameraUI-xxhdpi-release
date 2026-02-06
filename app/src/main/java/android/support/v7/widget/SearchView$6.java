@@ -4,7 +4,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View$OnKeyListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SearchView$6 implements View$OnKeyListener {
     final /* synthetic */ SearchView this$0;
 

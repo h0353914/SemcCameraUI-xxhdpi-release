@@ -1,6 +1,5 @@
 package android.support.v4.content.res;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResourcesCompat$FontCallback$2 implements Runnable {
     final /* synthetic */ ResourcesCompat$FontCallback this$0;
     final /* synthetic */ int val$reason;

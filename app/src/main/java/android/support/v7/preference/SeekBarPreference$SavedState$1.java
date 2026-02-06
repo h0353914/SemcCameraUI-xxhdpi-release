@@ -3,7 +3,6 @@ package android.support.v7.preference;
 import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class SeekBarPreference$SavedState$1 implements Parcelable$Creator<SeekBarPreference$SavedState> {
     SeekBarPreference$SavedState$1() {
     }

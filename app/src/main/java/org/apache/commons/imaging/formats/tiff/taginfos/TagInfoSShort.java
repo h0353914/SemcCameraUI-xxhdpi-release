@@ -5,7 +5,6 @@ import org.apache.commons.imaging.common.ByteConversions;
 import org.apache.commons.imaging.formats.tiff.constants.TiffDirectoryType;
 import org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TagInfoSShort extends TagInfo {
     public TagInfoSShort(String str, int i, int i2, TiffDirectoryType tiffDirectoryType) {
         super(str, i, FieldType.SSHORT, i2, tiffDirectoryType);

@@ -5,7 +5,6 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentTransitionImpl$2 implements Runnable {
     final /* synthetic */ FragmentTransitionImpl this$0;
     final /* synthetic */ Map val$nameOverrides;

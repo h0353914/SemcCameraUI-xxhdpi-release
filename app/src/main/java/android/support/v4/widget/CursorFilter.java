@@ -4,7 +4,6 @@ import android.database.Cursor;
 import android.widget.Filter;
 import android.widget.Filter$FilterResults;
 
-/* JADX INFO: loaded from: classes.dex */
 class CursorFilter extends Filter {
     CursorFilter$CursorFilterClient mClient;
 

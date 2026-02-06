@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 interface AdapterHelper$Callback {
     RecyclerView$ViewHolder findViewHolder(int i);
 

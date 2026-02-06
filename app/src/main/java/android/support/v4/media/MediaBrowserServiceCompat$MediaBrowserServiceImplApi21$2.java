@@ -4,7 +4,6 @@ import android.os.Parcel;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$MediaBrowserServiceImplApi21$2 extends MediaBrowserServiceCompat$Result<List<MediaBrowserCompat$MediaItem>> {
     final /* synthetic */ MediaBrowserServiceCompat$MediaBrowserServiceImplApi21 this$1;
     final /* synthetic */ MediaBrowserServiceCompatApi21$ResultWrapper val$resultWrapper;

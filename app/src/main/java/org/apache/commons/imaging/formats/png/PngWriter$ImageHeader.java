@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.png;
 
-/* JADX INFO: loaded from: classes.dex */
 class PngWriter$ImageHeader {
     public final byte bitDepth;
     public final byte compressionMethod;

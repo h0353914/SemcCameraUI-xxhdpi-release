@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$CameraControllerCallbackImpl$OpenCameraDeviceNotificationTask implements Runnable {
     private final CameraDeviceHandler$CameraSessionId mSessionId;
     final /* synthetic */ CameraDeviceHandler$CameraControllerCallbackImpl this$1;

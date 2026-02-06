@@ -3,7 +3,6 @@ package android.support.v4.util;
 import java.util.Map;
 
 /* JADX INFO: Add missing generic type declarations: [V, K] */
-/* JADX INFO: loaded from: classes.dex */
 class ArrayMap$1<K, V> extends MapCollections<K, V> {
     final /* synthetic */ ArrayMap this$0;
 

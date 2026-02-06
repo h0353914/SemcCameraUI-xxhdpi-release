@@ -3,7 +3,6 @@ package com.google.protobuf.nano;
 import java.io.IOException;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 final class UnknownFieldData {
     final byte[] bytes;
     final int tag;

@@ -5,7 +5,6 @@ import android.widget.ImageView;
 import com.sonyericsson.android.camera.device.CameraParameters$FaceDetectionResult;
 import com.sonyericsson.android.camera.device.CameraParameters$ObjectTrackingResult;
 
-/* JADX INFO: loaded from: classes.dex */
 class FocusRectangles$TouchFocusState extends FocusRectangles$DefaultFocusState {
     private boolean mIsAutoFocusStarted;
     final /* synthetic */ FocusRectangles this$0;

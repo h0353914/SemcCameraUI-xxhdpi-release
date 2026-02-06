@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.status.eachcamera;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 import com.sonyericsson.cameracommon.status.IntegerValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class VideoRecordingFps extends IntegerValue implements EachCameraStatusValue {
     public static final int DEFAULT_VALUE = 0;
     public static final String KEY = "video_recording_fps";

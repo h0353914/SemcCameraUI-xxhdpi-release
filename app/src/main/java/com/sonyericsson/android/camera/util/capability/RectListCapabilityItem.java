@@ -6,7 +6,6 @@ import android.graphics.Rect;
 import java.util.Collections;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RectListCapabilityItem extends CapabilityItem<List<Rect>> {
     @Override // com.sonyericsson.android.camera.util.capability.CapabilityItem
     /* bridge */ /* synthetic */ List<Rect> getDefaultValue() {

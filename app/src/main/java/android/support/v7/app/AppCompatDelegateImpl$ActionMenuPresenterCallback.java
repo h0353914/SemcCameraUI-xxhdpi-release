@@ -4,7 +4,6 @@ import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.view.menu.MenuPresenter$Callback;
 import android.view.Window$Callback;
 
-/* JADX INFO: loaded from: classes.dex */
 final class AppCompatDelegateImpl$ActionMenuPresenterCallback implements MenuPresenter$Callback {
     final /* synthetic */ AppCompatDelegateImpl this$0;
 

@@ -8,7 +8,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
-/* JADX INFO: loaded from: classes.dex */
 class ReflectiveTypeAdapterFactory$1 extends ReflectiveTypeAdapterFactory$BoundField {
     final /* synthetic */ ReflectiveTypeAdapterFactory this$0;
     final TypeAdapter<?> typeAdapter;

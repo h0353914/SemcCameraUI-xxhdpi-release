@@ -6,7 +6,6 @@ import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 import java.sql.Time;
 
-/* JADX INFO: loaded from: classes.dex */
 class TimeTypeAdapter$1 implements TypeAdapterFactory {
     TimeTypeAdapter$1() {
     }

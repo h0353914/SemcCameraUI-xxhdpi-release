@@ -13,7 +13,6 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ConstructorConstructor {
     private final Map<Type, InstanceCreator<?>> instanceCreators;
 

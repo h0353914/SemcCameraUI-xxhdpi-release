@@ -5,7 +5,6 @@ import android.net.Uri;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.concurrent.Callable;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraStorageManager$CheckFsDirectoryTask implements Callable<CameraStorageManager$DetailStorageState> {
     private final Context context;
     private final boolean forceSdCardGrantedCheck;

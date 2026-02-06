@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class LiveData<T> {
     private static final Object NOT_SET = new Object();
     static final int START_VERSION = -1;

@@ -9,7 +9,6 @@ import android.support.v4.media.MediaBrowserCompat$ConnectionCallback;
 import android.util.Log;
 import android.view.KeyEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaButtonReceiver$MediaButtonConnectionCallback extends MediaBrowserCompat$ConnectionCallback {
     private final Context mContext;
     private final Intent mIntent;

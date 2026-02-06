@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.ViewStub;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BaseIndicator {
     private static final boolean DEBUG = false;
     private static final String TAG = "BaseIndicator";

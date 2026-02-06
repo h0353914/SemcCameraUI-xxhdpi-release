@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AccessibilityHelper {
     public static final String TAG = "AccessibilityHelper";
     private static final Rect sRectForHit = new Rect();

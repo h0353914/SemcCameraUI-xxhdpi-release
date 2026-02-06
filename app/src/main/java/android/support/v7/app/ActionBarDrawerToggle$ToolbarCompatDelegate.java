@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.Toolbar;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionBarDrawerToggle$ToolbarCompatDelegate implements ActionBarDrawerToggle$Delegate {
     final CharSequence mDefaultContentDescription;
     final Drawable mDefaultUpIndicator;

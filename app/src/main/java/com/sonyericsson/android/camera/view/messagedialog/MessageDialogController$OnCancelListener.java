@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.messagedialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface$OnCancelListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class MessageDialogController$OnCancelListener implements DialogInterface$OnCancelListener {
     private final MessageDialogRequest mParameter;
     final /* synthetic */ MessageDialogController this$0;

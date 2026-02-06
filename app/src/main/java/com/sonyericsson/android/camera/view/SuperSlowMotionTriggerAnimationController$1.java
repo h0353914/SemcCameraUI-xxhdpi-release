@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import android.view.animation.Animation;
 import android.view.animation.Animation$AnimationListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SuperSlowMotionTriggerAnimationController$1 implements Animation$AnimationListener {
     final /* synthetic */ SuperSlowMotionTriggerAnimationController this$0;
 

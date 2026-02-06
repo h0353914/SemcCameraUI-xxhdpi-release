@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 
-/* JADX INFO: loaded from: classes.dex */
 final class TypeAdapterRuntimeTypeWrapper<T> extends TypeAdapter<T> {
     private final Gson context;
     private final TypeAdapter<T> delegate;

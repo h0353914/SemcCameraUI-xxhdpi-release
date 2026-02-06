@@ -8,7 +8,6 @@ import android.os.RemoteException;
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.common.api.Status;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzg$zza extends Binder implements zzg {
     public zzg$zza() {
         attachInterface(this, "com.google.android.gms.auth.api.credentials.internal.ICredentialsCallbacks");

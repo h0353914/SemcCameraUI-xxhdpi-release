@@ -4,7 +4,6 @@ import android.hardware.camera2.CameraAccessException;
 import android.support.annotation.WorkerThread;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class CameraController$StopPreviewTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     final /* synthetic */ CameraController this$0;

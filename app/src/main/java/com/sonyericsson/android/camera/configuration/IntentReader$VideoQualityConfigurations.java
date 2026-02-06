@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.configuration;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IntentReader$VideoQualityConfigurations {
     private static final int EXTRA_VIDEO_QUALITY_LOW = 0;
     public final boolean hasSizeLimit;

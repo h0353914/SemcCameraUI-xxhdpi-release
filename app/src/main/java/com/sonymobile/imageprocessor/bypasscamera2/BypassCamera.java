@@ -8,7 +8,6 @@ import android.view.Surface;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class BypassCamera {
     private static final int CALLBACK_TYPE_ON_FINISH_BURST_DONE = 50;
     private static final int CALLBACK_TYPE_ON_PREPARE_BURST_DONE = 40;

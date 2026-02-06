@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.view.modeselector.CapturingModeUtil$1;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class FreezableUtils {
     public static <T, E extends Freezable<T>> ArrayList<T> freeze(ArrayList<E> arrayList) {
         CapturingModeUtil$1 capturingModeUtil$1 = (ArrayList<T>) new ArrayList(arrayList.size());

@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.view.setting.dialogitem.SettingDialogItem
 import com.sonyericsson.cameracommon.widget.CategorySwitch;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingMenuView$1 implements Runnable {
     final /* synthetic */ SettingMenuView this$0;
     final /* synthetic */ SettingDialogItem val$item;

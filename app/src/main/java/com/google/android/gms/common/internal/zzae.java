@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzae {
     public static String zza(String str, String str2, Context context, AttributeSet attributeSet, boolean z, boolean z2, String str3) {
         String attributeValue = attributeSet == null ? null : attributeSet.getAttributeValue(str, str2);

@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.sound;
 
 import java.io.File;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum SoundPlayer$Type {
     SELF_TIMER_1SEC("selftimer_1sec.m4a", 2131623956),
     SELF_TIMER_3SEC("selftimer_3sec.m4a", 2131623957),

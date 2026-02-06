@@ -2,7 +2,6 @@ package kotlin.jvm.internal;
 
 import kotlin.SinceKotlin;
 
-/* JADX INFO: loaded from: classes.dex */
 @SinceKotlin(version = "1.2")
 public class MagicApiIntrinsics {
     public static <T> T anyMagicApiCall(int i) {

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.controller;
 import com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface$DetectResultInterface;
 import com.sonyericsson.android.camera.research.LocalResearchUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class GestureShutter$State {
     final boolean mCanStartDetection;
     final boolean mCanStopDetection;

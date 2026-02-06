@@ -15,7 +15,6 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class SearchView$SearchAutoComplete extends AppCompatAutoCompleteTextView {
     private boolean mHasPendingShowSoftInputRequest;

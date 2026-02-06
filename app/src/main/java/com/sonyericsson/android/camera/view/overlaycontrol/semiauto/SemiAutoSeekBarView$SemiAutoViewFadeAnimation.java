@@ -5,7 +5,6 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation$AnimationListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class SemiAutoSeekBarView$SemiAutoViewFadeAnimation extends AlphaAnimation implements Animation$AnimationListener {
     private long mStartTime;
 

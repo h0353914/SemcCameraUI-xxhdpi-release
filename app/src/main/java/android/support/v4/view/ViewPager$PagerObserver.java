@@ -2,7 +2,6 @@ package android.support.v4.view;
 
 import android.database.DataSetObserver;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewPager$PagerObserver extends DataSetObserver {
     final /* synthetic */ ViewPager this$0;
 

@@ -5,7 +5,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.v4.media.MediaSessionManager$RemoteUserInfo;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaSessionCompat$Callback$CallbackHandler extends Handler {
     private static final int MSG_MEDIA_PLAY_PAUSE_KEY_DOUBLE_TAP_TIMEOUT = 1;
     final /* synthetic */ MediaSessionCompat$Callback this$0;

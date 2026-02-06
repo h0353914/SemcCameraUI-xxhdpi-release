@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 class CachingInputStream extends InputStream {
     private final ByteArrayOutputStream baos = new ByteArrayOutputStream();
     private final InputStream is;

@@ -5,7 +5,6 @@ import org.apache.commons.imaging.ImageWriteException;
 import org.apache.commons.imaging.common.ByteConversions;
 import org.apache.commons.imaging.formats.tiff.TiffField;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FieldTypeShort extends FieldType {
     public FieldTypeShort(int i, String str) {
         super(i, str, 2);

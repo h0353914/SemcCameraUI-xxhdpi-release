@@ -8,7 +8,6 @@ import android.support.annotation.RestrictTo$Scope;
 import android.view.DragAndDropPermissions;
 import android.view.DragEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DragAndDropPermissionsCompat {
     private Object mDragAndDropPermissions;
 

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.controller.album;
 
-/* JADX INFO: loaded from: classes.dex */
 enum AlbumLauncher$MimeType {
     PHOTO("image/jpeg"),
     MPO("image/mpo"),

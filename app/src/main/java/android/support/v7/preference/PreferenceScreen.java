@@ -6,7 +6,6 @@ import android.support.annotation.RestrictTo$Scope;
 import android.support.v4.content.res.TypedArrayUtils;
 import android.util.AttributeSet;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class PreferenceScreen extends PreferenceGroup {
     private boolean mShouldUseGeneratedIds;
 

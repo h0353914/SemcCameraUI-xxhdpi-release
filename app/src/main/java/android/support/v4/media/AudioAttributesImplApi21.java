@@ -9,7 +9,6 @@ import android.util.Log;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 @TargetApi(21)
 class AudioAttributesImplApi21 implements AudioAttributesImpl {
     private static final String TAG = "AudioAttributesCompat21";

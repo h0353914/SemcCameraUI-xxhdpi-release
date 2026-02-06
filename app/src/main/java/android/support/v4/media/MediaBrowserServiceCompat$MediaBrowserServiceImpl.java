@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.media.session.MediaSessionCompat$Token;
 
-/* JADX INFO: loaded from: classes.dex */
 interface MediaBrowserServiceCompat$MediaBrowserServiceImpl {
     Bundle getBrowserRootHints();
 

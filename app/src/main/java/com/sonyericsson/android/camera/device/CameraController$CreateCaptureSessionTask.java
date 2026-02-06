@@ -9,7 +9,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.PerfLog;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class CameraController$CreateCaptureSessionTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     private CameraController$PreviewSessionRequest mRequest;

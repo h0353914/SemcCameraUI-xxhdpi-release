@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
 import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum FocusRange implements UserSettingIntValue {
     AF(-1, 2131689890),
     MF(-1, 2131689891),

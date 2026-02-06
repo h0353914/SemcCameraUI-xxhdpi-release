@@ -11,7 +11,6 @@ import android.os.Looper;
 import android.util.Log;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BatteryChangedReceiver extends BroadcastReceiver {
     private static final boolean BATTERY_CHECK_ENABLED;
     private static final String TAG = "BatteryChangedReceiver";

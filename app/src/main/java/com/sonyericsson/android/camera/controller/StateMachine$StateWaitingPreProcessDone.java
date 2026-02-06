@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.configuration.parameters.FastCapture;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 import com.sonyericsson.cameracommon.storage.RequestFactory$PhotoSavingRequestBuilder;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateWaitingPreProcessDone extends StateMachine$State {
     private final FastCapture mFastCapture;
     final /* synthetic */ StateMachine this$0;

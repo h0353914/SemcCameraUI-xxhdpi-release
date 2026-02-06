@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.jpeg.segments;
 import java.io.PrintWriter;
 import org.apache.commons.imaging.common.BinaryFileParser;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class Segment extends BinaryFileParser {
     public final int length;
     public final int marker;

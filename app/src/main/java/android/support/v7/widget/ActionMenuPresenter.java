@@ -26,7 +26,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup$LayoutParams;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionMenuPresenter extends BaseMenuPresenter implements ActionProvider$SubUiVisibilityListener {
     private static final String TAG = "ActionMenuPresenter";
     private final SparseBooleanArray mActionButtonGroups;

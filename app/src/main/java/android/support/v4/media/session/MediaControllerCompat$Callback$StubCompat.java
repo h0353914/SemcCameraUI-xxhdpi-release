@@ -6,7 +6,6 @@ import android.support.v4.media.MediaMetadataCompat;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaControllerCompat$Callback$StubCompat extends IMediaControllerCallback$Stub {
     private final WeakReference<MediaControllerCompat$Callback> mCallback;
 

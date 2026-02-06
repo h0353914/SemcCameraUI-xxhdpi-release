@@ -26,7 +26,6 @@ import android.view.ActionMode$Callback;
 import android.widget.TextView;
 import java.lang.reflect.Field;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class TextViewCompat {
     public static final int AUTO_SIZE_TEXT_TYPE_NONE = 0;
     public static final int AUTO_SIZE_TEXT_TYPE_UNIFORM = 1;

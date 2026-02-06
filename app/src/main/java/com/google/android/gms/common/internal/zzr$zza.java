@@ -7,7 +7,6 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzr$zza extends Binder implements zzr {
     public zzr$zza() {
         attachInterface(this, "com.google.android.gms.common.internal.IGmsCallbacks");

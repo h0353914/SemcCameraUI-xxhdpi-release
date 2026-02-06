@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.SystemClock;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class ObjectTrackingResultChecker extends CaptureResultCheckerBase {
     public static final int LOW_PASS_FILTER_STRENGTH = 0;
     public static final int MINIMUM_INTERVAL_MILLIS = 100;

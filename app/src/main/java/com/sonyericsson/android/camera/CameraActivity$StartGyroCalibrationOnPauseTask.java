@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera;
 
 import android.content.Intent;
 
-/* JADX INFO: loaded from: classes.dex */
 final class CameraActivity$StartGyroCalibrationOnPauseTask implements Runnable {
     final /* synthetic */ CameraActivity this$0;
 

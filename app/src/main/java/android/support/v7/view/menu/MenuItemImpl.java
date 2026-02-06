@@ -30,7 +30,6 @@ import android.view.ViewDebug$CapturedViewProperty;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public final class MenuItemImpl implements SupportMenuItem {
     private static final int CHECKABLE = 1;

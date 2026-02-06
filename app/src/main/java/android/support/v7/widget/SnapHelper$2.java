@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class SnapHelper$2 extends LinearSmoothScroller {
     final /* synthetic */ SnapHelper this$0;
 

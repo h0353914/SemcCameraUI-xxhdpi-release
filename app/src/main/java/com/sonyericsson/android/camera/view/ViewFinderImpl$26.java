@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import com.sonyericsson.android.camera.view.tutorial.TutorialController$SystemUiAccessor;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$26 implements TutorialController$SystemUiAccessor {
     final /* synthetic */ ViewFinderImpl this$0;
 

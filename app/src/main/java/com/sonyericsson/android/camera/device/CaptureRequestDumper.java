@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.Map$Entry;
 import java.util.TreeSet;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CaptureRequestDumper {
     private Map<String, String> mLast;
     private Map<String, String> mPrev;

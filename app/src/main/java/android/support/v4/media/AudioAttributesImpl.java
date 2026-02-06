@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import androidx.versionedparcelable.VersionedParcelable;
 
-/* JADX INFO: loaded from: classes.dex */
 interface AudioAttributesImpl extends VersionedParcelable {
     Object getAudioAttributes();
 

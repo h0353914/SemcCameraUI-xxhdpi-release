@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 final class SuggestionsAdapter$ChildViewCache {
     public final ImageView mIcon1;
     public final ImageView mIcon2;

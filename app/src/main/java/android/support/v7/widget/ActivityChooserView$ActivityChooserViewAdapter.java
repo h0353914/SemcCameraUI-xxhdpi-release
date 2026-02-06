@@ -13,7 +13,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActivityChooserView$ActivityChooserViewAdapter extends BaseAdapter {
     private static final int ITEM_VIEW_TYPE_ACTIVITY = 0;
     private static final int ITEM_VIEW_TYPE_COUNT = 3;

@@ -20,7 +20,6 @@ import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
 import java.util.Timer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CameraButtonIntentReceiver extends BroadcastReceiver {
     private static final int CAMERA_DEVICE_AUTO_RELEASE_TIMER_DURATION = 5000;
     private static final String NORMAL_LAUNCH_FAST_CAPTURE_START_SUBJECT = "start";

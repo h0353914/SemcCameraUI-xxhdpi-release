@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.baselayout;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ViewFinderGestureDetector$Direction {
     NONE(0),
     VERTICAL(1),

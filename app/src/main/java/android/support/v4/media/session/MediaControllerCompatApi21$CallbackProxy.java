@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.v4.media.session.MediaControllerCompatApi21$Callback;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaControllerCompatApi21$CallbackProxy<T extends MediaControllerCompatApi21$Callback> extends MediaController$Callback {
     protected final T mCallback;
 

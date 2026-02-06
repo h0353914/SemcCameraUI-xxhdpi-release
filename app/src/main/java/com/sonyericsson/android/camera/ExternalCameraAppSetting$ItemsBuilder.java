@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue
 import java.util.HashMap;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 class ExternalCameraAppSetting$ItemsBuilder {
     public final Map<Object, UserSettingValue> entries;
 

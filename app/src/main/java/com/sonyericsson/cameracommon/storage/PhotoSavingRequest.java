@@ -10,7 +10,6 @@ import com.sonyericsson.cameracommon.utility.CommonUtility;
 import java.io.File;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PhotoSavingRequest extends SavingRequest {
     public static final String TAG = "PhotoSavingRequest";
     private Image mImage;

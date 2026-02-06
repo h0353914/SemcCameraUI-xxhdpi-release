@@ -3,7 +3,6 @@ package com.google.android.gms.auth.api.credentials;
 import android.accounts.Account;
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class IdentityProviders {
     public static final String FACEBOOK = "https://www.facebook.com";
     public static final String GOOGLE = "https://accounts.google.com";

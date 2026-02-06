@@ -5,7 +5,6 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ImageInfo {
     private final int bitsPerPixel;
     private final ImageInfo$ColorType colorType;

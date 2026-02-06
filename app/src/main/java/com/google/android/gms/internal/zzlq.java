@@ -11,7 +11,6 @@ import com.google.android.gms.common.api.zzb;
 import com.google.android.gms.common.api.zze;
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzlq<R extends Result> extends zze<R> implements ResultCallback<R> {
     private final Object zzabh;
     private zzb<? super R, ? extends Result> zzacY;

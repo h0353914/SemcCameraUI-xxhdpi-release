@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class ActionMode {
     private Object mTag;
     private boolean mTitleOptionalHint;

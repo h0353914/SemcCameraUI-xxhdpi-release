@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.preference.ListPreference;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ListPreferenceDialogFragment extends PreferenceDialogFragment {
     private static final String SAVE_STATE_ENTRIES = "ListPreferenceDialogFragment.entries";
     private static final String SAVE_STATE_ENTRY_VALUES = "ListPreferenceDialogFragment.entryValues";

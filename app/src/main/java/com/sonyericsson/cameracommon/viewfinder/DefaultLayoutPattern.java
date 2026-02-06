@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.viewfinder;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum DefaultLayoutPattern implements LayoutPattern {
     PREVIEW,
     CLEAR,

@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.device.BypassCameraSnapshotInfoFactory;
 import com.sonyericsson.cameracommon.storage.RequestFactory$PhotoSavingRequestBuilder;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class BypassCameraController$RequestSnapshotTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     private final RequestFactory$PhotoSavingRequestBuilder mBuilder;

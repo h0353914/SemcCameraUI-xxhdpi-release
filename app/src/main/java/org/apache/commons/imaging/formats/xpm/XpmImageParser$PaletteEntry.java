@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.xpm;
 
-/* JADX INFO: loaded from: classes.dex */
 class XpmImageParser$PaletteEntry {
     int colorArgb;
     int gray4LevelArgb;

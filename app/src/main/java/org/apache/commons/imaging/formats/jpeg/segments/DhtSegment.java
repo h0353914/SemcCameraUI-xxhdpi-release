@@ -8,7 +8,6 @@ import java.util.Collections;
 import java.util.List;
 import org.apache.commons.imaging.common.BinaryFunctions;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DhtSegment extends Segment {
     public final List<DhtSegment$HuffmanTable> huffmanTables;
 

@@ -2,7 +2,6 @@ package android.support.v4.util;
 
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 public class Pools$SynchronizedPool<T> extends Pools$SimplePool<T> {
     private final Object mLock;
 

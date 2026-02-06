@@ -11,7 +11,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import java.lang.reflect.InvocationTargetException;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(28)
 public class AppComponentFactory extends android.app.AppComponentFactory {
     @Override // android.app.AppComponentFactory

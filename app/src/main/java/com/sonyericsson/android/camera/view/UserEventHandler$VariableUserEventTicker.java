@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import android.os.Handler;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$VariableUserEventTicker implements Runnable {
     private static final int INTERVAL_30_FPS = 33;
     private Handler mHandler;

@@ -1,6 +1,5 @@
 package android.support.v4.view;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewPager$3 implements Runnable {
     final /* synthetic */ ViewPager this$0;
 

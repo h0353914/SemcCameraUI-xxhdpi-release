@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.controller;
 
 import com.sonyericsson.android.camera.device.CameraDeviceHandler$ImageReaderInitializedCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StatePhotoCapture$1 implements CameraDeviceHandler$ImageReaderInitializedCallback {
     final /* synthetic */ StateMachine$StatePhotoCapture this$1;
 

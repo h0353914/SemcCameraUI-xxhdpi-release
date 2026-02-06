@@ -11,7 +11,6 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.accessibility.AccessibilityNodeProvider;
 
-/* JADX INFO: loaded from: classes.dex */
 final class AccessibilityDelegateCompat$AccessibilityDelegateAdapter extends View$AccessibilityDelegate {
     private final AccessibilityDelegateCompat mCompat;
 

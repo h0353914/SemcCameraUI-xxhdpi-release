@@ -4,7 +4,6 @@ import android.media.SoundPool;
 import android.media.SoundPool$OnLoadCompleteListener;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 class SoundPlayer$1 implements SoundPool$OnLoadCompleteListener {
     final /* synthetic */ SoundPlayer this$0;
 

@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface$OnDismissListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class RequestPermissionActivity$5 implements DialogInterface$OnDismissListener {
     final /* synthetic */ RequestPermissionActivity this$0;
 

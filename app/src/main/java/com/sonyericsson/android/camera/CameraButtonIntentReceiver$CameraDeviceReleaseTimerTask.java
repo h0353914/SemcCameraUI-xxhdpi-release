@@ -4,7 +4,6 @@ import android.content.Context;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.TimerTask;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraButtonIntentReceiver$CameraDeviceReleaseTimerTask extends TimerTask {
     private final Context mContext;
 

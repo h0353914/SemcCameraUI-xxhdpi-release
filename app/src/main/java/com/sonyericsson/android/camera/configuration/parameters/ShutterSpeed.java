@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ShutterSpeed implements UserSettingValue {
     AUTO(-1, 2131689894, "auto", -1),
     D1(-1, 2131689893, "shutter-prio", 1),

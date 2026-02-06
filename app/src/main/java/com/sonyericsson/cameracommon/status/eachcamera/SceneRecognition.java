@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.status.eachcamera;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 import com.sonyericsson.cameracommon.status.EnumValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SceneRecognition extends EnumValue<SceneRecognition$Value> implements EachCameraStatusValue {
     public static final SceneRecognition$Value DEFAULT_VALUE = SceneRecognition$Value.OFF;
     public static final String KEY = "scene_recognition";

@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.research;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SetPredictiveCaptureNumTask implements Runnable {
     private final int mPredictiveCaptureNum;
     final /* synthetic */ ResearchUtil this$0;

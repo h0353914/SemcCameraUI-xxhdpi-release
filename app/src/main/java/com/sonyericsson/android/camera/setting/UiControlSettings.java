@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.setting;
 import android.content.Context;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
-/* JADX INFO: loaded from: classes.dex */
 public class UiControlSettings {
     private final SharedPreferencesAccessor mAccessor;
 

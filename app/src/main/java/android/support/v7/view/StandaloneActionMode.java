@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class StandaloneActionMode extends ActionMode implements MenuBuilder$Callback {
     private ActionMode$Callback mCallback;

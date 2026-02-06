@@ -10,7 +10,6 @@ import com.sonyericsson.android.camera.view.ViewFinder$HeadUpDisplaySetupState;
 import com.sonyericsson.android.camera.view.animation.AnimationRequest$AnimationDegree;
 import com.sonyericsson.cameracommon.storage.SavingTaskManager$SavedFileType;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class StateMachine$8 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode;
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$parameters$FastCapture;

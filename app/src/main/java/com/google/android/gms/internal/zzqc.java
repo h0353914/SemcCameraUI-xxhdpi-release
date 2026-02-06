@@ -4,7 +4,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 @Deprecated
 public class zzqc implements zzqd$zza {
     private final zzqd zzaRC;

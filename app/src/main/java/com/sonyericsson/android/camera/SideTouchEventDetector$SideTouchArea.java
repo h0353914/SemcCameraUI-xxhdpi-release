@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera;
 import android.view.MotionEvent;
 import com.sonymobile.sidetouchgesturedetector.SideTouchUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum SideTouchEventDetector$SideTouchArea {
     UNKNOWN,
     TOP,

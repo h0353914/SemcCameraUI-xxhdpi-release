@@ -12,7 +12,6 @@ import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListe
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzk implements Handler$Callback {
     private final Handler mHandler;
     private final zzk$zza zzafP;

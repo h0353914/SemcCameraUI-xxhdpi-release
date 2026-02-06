@@ -5,7 +5,6 @@ import android.os.Parcel;
 import android.os.Parcelable$Creator;
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzc {
     public static <T extends SafeParcelable> T zza(Intent intent, String str, Parcelable$Creator<T> parcelable$Creator) {
         byte[] byteArrayExtra = intent.getByteArrayExtra(str);

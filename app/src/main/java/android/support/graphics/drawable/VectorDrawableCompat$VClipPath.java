@@ -8,7 +8,6 @@ import android.support.v4.graphics.PathParser;
 import android.util.AttributeSet;
 import org.xmlpull.v1.XmlPullParser;
 
-/* JADX INFO: loaded from: classes.dex */
 class VectorDrawableCompat$VClipPath extends VectorDrawableCompat$VPath {
     @Override // android.support.graphics.drawable.VectorDrawableCompat$VPath
     public boolean isClipPath() {

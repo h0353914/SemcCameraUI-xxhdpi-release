@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import com.sonyericsson.cameracommon.focusview.FocusRectangles$FocusSetType;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$CaptureAreaEventProcedure extends UserEventHandler$TouchEventProcedure {
     final /* synthetic */ UserEventHandler this$0;
 

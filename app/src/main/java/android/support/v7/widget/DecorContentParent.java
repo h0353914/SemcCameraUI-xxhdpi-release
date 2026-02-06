@@ -9,7 +9,6 @@ import android.util.SparseArray;
 import android.view.Menu;
 import android.view.Window$Callback;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public interface DecorContentParent {
     boolean canShowOverflowMenu();

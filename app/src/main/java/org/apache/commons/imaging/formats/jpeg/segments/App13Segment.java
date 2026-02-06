@@ -9,7 +9,6 @@ import org.apache.commons.imaging.formats.jpeg.JpegImageParser;
 import org.apache.commons.imaging.formats.jpeg.iptc.IptcParser;
 import org.apache.commons.imaging.formats.jpeg.iptc.PhotoshopApp13Data;
 
-/* JADX INFO: loaded from: classes.dex */
 public class App13Segment extends AppnSegment {
     protected final JpegImageParser parser;
 

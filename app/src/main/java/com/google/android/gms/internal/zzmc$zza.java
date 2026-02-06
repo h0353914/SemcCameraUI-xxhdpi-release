@@ -6,7 +6,6 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzmc$zza extends Binder implements zzmc {
     public zzmc$zza() {
         attachInterface(this, "com.google.android.gms.common.internal.service.ICommonCallbacks");

@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.configuration.parameters;
 
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum VideoShutterTrigger implements UserSettingValue {
     SMILE_SHUTTER(2131690163, VideoSmileCapture.MIDDLE),
     OFF(2131690115, VideoSmileCapture.OFF);

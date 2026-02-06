@@ -1,6 +1,5 @@
 package android.support.v7.app;
 
-/* JADX INFO: loaded from: classes.dex */
 class TwilightManager$TwilightState {
     boolean isNight;
     long nextUpdate;

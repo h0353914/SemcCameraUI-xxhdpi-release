@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.view.ViewGroup$LayoutParams;
 import android.view.ViewGroup$MarginLayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DrawerLayout$LayoutParams extends ViewGroup$MarginLayoutParams {
     private static final int FLAG_IS_CLOSING = 4;
     private static final int FLAG_IS_OPENED = 1;

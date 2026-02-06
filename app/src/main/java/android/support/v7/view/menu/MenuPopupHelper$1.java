@@ -2,7 +2,6 @@ package android.support.v7.view.menu;
 
 import android.widget.PopupWindow$OnDismissListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class MenuPopupHelper$1 implements PopupWindow$OnDismissListener {
     final /* synthetic */ MenuPopupHelper this$0;
 

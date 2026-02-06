@@ -2,7 +2,6 @@ package com.google.protobuf.nano;
 
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DescriptorProtos$FieldDescriptorProto extends ExtendableMessageNano<DescriptorProtos$FieldDescriptorProto> {
     private static volatile DescriptorProtos$FieldDescriptorProto[] _emptyArray;
     public String defaultValue;

@@ -4,7 +4,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.util.Pools$Pool;
 import android.support.v4.util.Pools$SimplePool;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewInfoStore$InfoRecord {
     static final int FLAG_APPEAR = 2;
     static final int FLAG_APPEAR_AND_DISAPPEAR = 3;

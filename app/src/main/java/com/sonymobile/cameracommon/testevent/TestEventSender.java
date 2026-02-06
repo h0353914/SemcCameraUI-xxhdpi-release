@@ -1,6 +1,5 @@
 package com.sonymobile.cameracommon.testevent;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TestEventSender {
     private static TestEventListener sListener = getBlankListener();
 

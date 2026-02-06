@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.database.Observable;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 class RecyclerView$AdapterDataObservable extends Observable<RecyclerView$AdapterDataObserver> {
     RecyclerView$AdapterDataObservable() {
     }

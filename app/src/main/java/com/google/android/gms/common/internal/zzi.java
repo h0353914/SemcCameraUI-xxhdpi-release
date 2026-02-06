@@ -9,7 +9,6 @@ import android.os.Parcelable$Creator;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.safeparcel.zza$zza;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzi implements Parcelable$Creator<GetServiceRequest> {
     static void zza(GetServiceRequest getServiceRequest, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);

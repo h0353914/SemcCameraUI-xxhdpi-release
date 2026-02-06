@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.widget.ImageView;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 class ImageLoader$ImageLoaderTask extends AsyncTask<Void, Void, BitmapDrawable> {
     private static final String THREAD_NAME = "AppsUi#AsyncTask";
     private final int imageHeight;

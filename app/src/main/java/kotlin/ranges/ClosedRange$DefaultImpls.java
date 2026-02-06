@@ -5,7 +5,6 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* JADX INFO: compiled from: Range.kt */
-/* JADX INFO: loaded from: classes.dex */
 @Metadata(bv = {1, 0, 2}, k = 3, mv = {1, 1, 10})
 public final class ClosedRange$DefaultImpls {
     public static <T extends Comparable<? super T>> boolean contains(ClosedRange<T> closedRange, @NotNull T value) {

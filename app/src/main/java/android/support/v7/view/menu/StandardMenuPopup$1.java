@@ -3,7 +3,6 @@ package android.support.v7.view.menu;
 import android.view.View;
 import android.view.ViewTreeObserver$OnGlobalLayoutListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class StandardMenuPopup$1 implements ViewTreeObserver$OnGlobalLayoutListener {
     final /* synthetic */ StandardMenuPopup this$0;
 

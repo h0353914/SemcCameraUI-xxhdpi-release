@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera;
 
 import java.util.TimerTask;
 
-/* JADX INFO: loaded from: classes.dex */
 class AutoPowerOffTimer$AutoPowerOffTask extends TimerTask {
     final /* synthetic */ AutoPowerOffTimer this$0;
 

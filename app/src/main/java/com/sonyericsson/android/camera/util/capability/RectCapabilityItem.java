@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences$Editor;
 import android.graphics.Rect;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RectCapabilityItem extends CapabilityItem<Rect> {
     @Override // com.sonyericsson.android.camera.util.capability.CapabilityItem
     /* bridge */ /* synthetic */ Rect getDefaultValue() {

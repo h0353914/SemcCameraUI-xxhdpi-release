@@ -1,6 +1,5 @@
 package org.apache.commons.imaging;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ImagingException extends Exception {
     private static final long serialVersionUID = -1;
 

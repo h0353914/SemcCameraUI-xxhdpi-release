@@ -6,7 +6,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/* JADX INFO: loaded from: classes.dex */
 final class TreeTypeAdapter<T> extends TypeAdapter<T> {
     private TypeAdapter<T> delegate;
     private final JsonDeserializer<T> deserializer;

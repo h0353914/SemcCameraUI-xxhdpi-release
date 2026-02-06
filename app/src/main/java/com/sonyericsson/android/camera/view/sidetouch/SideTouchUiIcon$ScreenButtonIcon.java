@@ -11,7 +11,6 @@ import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenBu
 import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonItemFactory;
 import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonItemFactory$ButtonType;
 
-/* JADX INFO: loaded from: classes.dex */
 protected abstract class SideTouchUiIcon$ScreenButtonIcon extends SideTouchUiIcon {
     private final ViewFinderImpl$SideTouchUiButtonListenerFactory mListenerFactory;
     protected OnScreenButtonGroup mOnScreenButtonGroup;

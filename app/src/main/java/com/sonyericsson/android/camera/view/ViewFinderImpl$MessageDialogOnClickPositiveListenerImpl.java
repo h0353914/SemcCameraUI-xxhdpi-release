@@ -12,7 +12,6 @@ import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import com.sonyericsson.cameracommon.storage.StorageUtil;
 import com.sonyericsson.cameracommon.utility.PermissionsUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewFinderImpl$MessageDialogOnClickPositiveListenerImpl implements MessageDialogController$MessageDialogOnClickListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

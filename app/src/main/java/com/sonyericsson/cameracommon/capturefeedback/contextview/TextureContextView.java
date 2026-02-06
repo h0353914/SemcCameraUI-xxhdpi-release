@@ -13,7 +13,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TextureContextView extends TextureView implements TextureView$SurfaceTextureListener, CaptureFeedback {
     private static final long DRAW_INTERVAL_MILLIS = 33;
     public static final String TAG = "TextureContextView";

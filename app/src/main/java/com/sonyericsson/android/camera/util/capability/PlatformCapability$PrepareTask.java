@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.util.capability;
 
 import java.util.concurrent.CountDownLatch;
 
-/* JADX INFO: loaded from: classes.dex */
 class PlatformCapability$PrepareTask implements Runnable {
     private PlatformCapability$OnPlatformCapabilityPreparedCallback mCallback;
     private final CountDownLatch mLatch;

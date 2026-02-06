@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SimpleCursorAdapter extends ResourceCursorAdapter {
     private SimpleCursorAdapter$CursorToStringConverter mCursorToStringConverter;
 

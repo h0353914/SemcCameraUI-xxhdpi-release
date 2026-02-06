@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.View$OnTouchListener;
 import android.widget.ListPopupWindow;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ListPopupWindowCompat {
     private ListPopupWindowCompat() {
     }

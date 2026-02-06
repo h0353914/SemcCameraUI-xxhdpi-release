@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 final class AlertController$ButtonHandler extends Handler {
     private static final int MSG_DISMISS_DIALOG = 1;
     private WeakReference<DialogInterface> mDialog;

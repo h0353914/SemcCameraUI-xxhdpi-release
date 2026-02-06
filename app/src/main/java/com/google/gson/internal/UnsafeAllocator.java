@@ -5,7 +5,6 @@ import java.io.ObjectStreamClass;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class UnsafeAllocator {
     public abstract <T> T newInstance(Class<T> cls) throws Exception;
 

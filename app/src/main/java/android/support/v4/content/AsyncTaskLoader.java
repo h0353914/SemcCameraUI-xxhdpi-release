@@ -12,7 +12,6 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.concurrent.Executor;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class AsyncTaskLoader<D> extends Loader<D> {
     static final boolean DEBUG = false;
     static final String TAG = "AsyncTaskLoader";

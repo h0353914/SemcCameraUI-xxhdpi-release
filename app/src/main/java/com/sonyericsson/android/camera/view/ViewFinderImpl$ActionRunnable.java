@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.HelpGuide;
 import com.sonyericsson.android.camera.view.messagedialog.DialogId;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$ActionRunnable implements Runnable {
     private UserSettingKey mUserSettingKey;
     final /* synthetic */ ViewFinderImpl this$0;

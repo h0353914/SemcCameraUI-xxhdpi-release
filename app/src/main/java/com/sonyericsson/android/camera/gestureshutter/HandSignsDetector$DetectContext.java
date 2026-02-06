@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.gestureshutter;
 
-/* JADX INFO: loaded from: classes.dex */
 class HandSignsDetector$DetectContext {
     private int mDetectHeight;
     private int mDetectWidth;

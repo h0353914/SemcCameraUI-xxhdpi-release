@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.media.AudioAttributes$Builder;
 import android.os.Vibrator;
 
-/* JADX INFO: loaded from: classes.dex */
 public class VibrationManager {
     private static final long[] DEFAULT_VIBRATION_PATTERN = {0, 1, 20, 21};
 

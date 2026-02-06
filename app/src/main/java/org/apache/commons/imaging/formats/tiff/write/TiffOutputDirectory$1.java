@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.tiff.write;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class TiffOutputDirectory$1 implements Comparator<TiffOutputDirectory> {
     TiffOutputDirectory$1() {
     }

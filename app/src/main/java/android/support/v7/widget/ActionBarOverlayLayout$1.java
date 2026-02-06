@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionBarOverlayLayout$1 extends AnimatorListenerAdapter {
     final /* synthetic */ ActionBarOverlayLayout this$0;
 

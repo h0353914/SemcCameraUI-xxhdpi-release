@@ -17,7 +17,6 @@ import com.duolingo.open.rtlviewpager.DelegatingPagerAdapter;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PagingTutorialContentView extends TutorialContentView {
     private static final float REVERSE_DEGREE = 180.0f;
     private static final String TAG = "PagingTutorialContentView";

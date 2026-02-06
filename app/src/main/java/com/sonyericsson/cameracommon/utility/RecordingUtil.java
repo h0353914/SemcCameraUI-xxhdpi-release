@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.storage.Storage;
 import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecordingUtil {
     private static final String DISALLOW_RECORD_AUDIO = "no_record_audio";
     public static final String TAG = "RecordingUtil";

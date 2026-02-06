@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 class TwoStatePreference$SavedState extends Preference$BaseSavedState {
     public static final Parcelable$Creator<TwoStatePreference$SavedState> CREATOR = new TwoStatePreference$SavedState$1();
     boolean checked;

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.modeselector;
 
-/* JADX INFO: loaded from: classes.dex */
 class CapturingModeCollection$VisibilityTypeCode {
     static final int FALSE = 0;
     static final int TRUE = 1;

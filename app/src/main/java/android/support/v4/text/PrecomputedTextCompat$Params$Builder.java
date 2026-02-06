@@ -7,7 +7,6 @@ import android.text.TextDirectionHeuristic;
 import android.text.TextDirectionHeuristics;
 import android.text.TextPaint;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PrecomputedTextCompat$Params$Builder {
     private int mBreakStrategy;
     private int mHyphenationFrequency;

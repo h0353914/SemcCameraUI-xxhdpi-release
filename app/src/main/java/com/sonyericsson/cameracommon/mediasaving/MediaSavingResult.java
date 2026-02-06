@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.mediasaving;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum MediaSavingResult {
     SUCCESS(true, -1, -1),
     FAIL(false, 2131690172, 0),

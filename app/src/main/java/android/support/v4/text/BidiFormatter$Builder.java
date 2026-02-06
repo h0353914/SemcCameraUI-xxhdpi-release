@@ -2,7 +2,6 @@ package android.support.v4.text;
 
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class BidiFormatter$Builder {
     private int mFlags;
     private boolean mIsRtlContext;

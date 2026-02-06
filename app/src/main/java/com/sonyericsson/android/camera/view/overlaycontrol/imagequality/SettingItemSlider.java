@@ -19,7 +19,6 @@ import com.sonymobile.cameracommon.font.FontUtil;
 import com.sonymobile.cameracommon.font.FontUtil$RobotoFontType;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class SettingItemSlider extends SettingDialogItem {
     private int mBottomPadding;
     private final Context mContext;

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum CameraInfo$CameraId {
     BACK("0", 0),
     FRONT("1", 1);

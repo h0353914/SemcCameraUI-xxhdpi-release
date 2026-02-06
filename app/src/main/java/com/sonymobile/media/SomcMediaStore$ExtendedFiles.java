@@ -3,7 +3,6 @@ package com.sonymobile.media;
 import android.content.Context;
 import android.net.Uri;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class SomcMediaStore$ExtendedFiles {
     public static Uri getContentUri(String str) {
         return getContentUri(SomcMediaStore.access$000(), str);

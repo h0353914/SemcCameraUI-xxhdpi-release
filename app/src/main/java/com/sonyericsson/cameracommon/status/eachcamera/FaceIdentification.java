@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.status.eachcamera;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 import com.sonyericsson.cameracommon.status.EnumValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FaceIdentification extends EnumValue<FaceIdentification$Value> implements EachCameraStatusValue {
     public static final FaceIdentification$Value DEFAULT_VALUE = FaceIdentification$Value.OFF;
     public static final String KEY = "face_identification";

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.sidetouch;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchUi$1 implements SideTouchUi$Icon$OnDetachedListener {
     final /* synthetic */ SideTouchUi this$0;
 

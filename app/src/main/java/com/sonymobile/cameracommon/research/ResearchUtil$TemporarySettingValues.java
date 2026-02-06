@@ -7,7 +7,6 @@ import com.sonymobile.cameracommon.research.parameters.ShootingLabel$Parameter;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$TemporarySettingValues {
     private boolean mRecordBySideSense;
     private float mZoomRatio = 1.0f;

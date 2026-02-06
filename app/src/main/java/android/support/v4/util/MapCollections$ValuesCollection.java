@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /* JADX INFO: Add missing generic type declarations: [V] */
-/* JADX INFO: loaded from: classes.dex */
 final class MapCollections$ValuesCollection<V> implements Collection<V> {
     final /* synthetic */ MapCollections this$0;
 

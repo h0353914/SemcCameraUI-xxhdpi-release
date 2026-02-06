@@ -1,6 +1,5 @@
 package com.sonymobile.sidetouchgesturedetector;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface DynamicAreaFilter$OnDynamicAreaListener {
     void onDynamicLimitScaleChanged(int i);
 

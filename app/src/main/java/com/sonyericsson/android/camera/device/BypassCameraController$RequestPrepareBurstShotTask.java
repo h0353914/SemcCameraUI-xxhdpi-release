@@ -7,7 +7,6 @@ import com.sonyericsson.cameracommon.status.EachCameraStatusPublisher;
 import com.sonyericsson.cameracommon.status.eachcamera.BurstShooting;
 import com.sonyericsson.cameracommon.status.eachcamera.BurstShooting$Value;
 
-/* JADX INFO: loaded from: classes.dex */
 @WorkerThread
 class BypassCameraController$RequestPrepareBurstShotTask extends CameraDeviceHandler$CameraDeviceAccessTask {
     final /* synthetic */ BypassCameraController this$0;

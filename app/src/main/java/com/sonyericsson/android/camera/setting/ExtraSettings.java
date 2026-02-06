@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue
 import java.util.List;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ExtraSettings {
     private Map<CapturingMode, List<UserSettingValue>> mSettingMap = new ArrayMap();
 

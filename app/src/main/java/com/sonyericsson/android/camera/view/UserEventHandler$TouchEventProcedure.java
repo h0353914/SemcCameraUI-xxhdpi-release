@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import android.graphics.Point;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$TouchEventProcedure {
     final /* synthetic */ UserEventHandler this$0;
 

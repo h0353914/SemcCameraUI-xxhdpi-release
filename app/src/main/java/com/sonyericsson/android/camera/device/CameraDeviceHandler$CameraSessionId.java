@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.device;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CameraDeviceHandler$CameraSessionId {
     private static Object sIdLock = new Object();
     private static int sLastId;

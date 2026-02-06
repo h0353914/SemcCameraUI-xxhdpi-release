@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.mediasaving;
 import android.net.Uri;
 import com.sonyericsson.cameracommon.storage.SavingRequest;
 
-/* JADX INFO: loaded from: classes.dex */
 public class StoreDataResult {
     public final SavingRequest savingRequest;
     public final MediaSavingResult storeResult;

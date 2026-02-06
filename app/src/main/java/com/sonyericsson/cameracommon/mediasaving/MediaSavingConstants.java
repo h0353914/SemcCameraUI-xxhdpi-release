@@ -6,7 +6,6 @@ import android.provider.MediaStore$Images$Thumbnails;
 import android.provider.MediaStore$Video$Thumbnails;
 import java.io.File;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaSavingConstants {
     public static final String INVALID_FILE_PATH = "/dev/null";
     public static final String MEDIA_TYPE_3GP_EXT = ".3gp";

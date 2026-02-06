@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.tutorial;
 import com.sonyericsson.android.camera.setting.StoredSettings;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class TutorialContentView$TutorialContent {
     protected int mLayoutId;
     protected int mOrientation = 0;

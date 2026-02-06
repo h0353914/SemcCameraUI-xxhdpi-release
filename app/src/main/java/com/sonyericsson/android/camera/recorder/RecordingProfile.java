@@ -4,7 +4,6 @@ import android.media.CamcorderProfile;
 import com.sonyericsson.android.camera.configuration.parameters.VideoHdr;
 import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecordingProfile {
     public static final int MIN_RECORDING_DURATION = 1;
     public static final int QUALITY_4K_UHD_30FPS = 100;

@@ -15,7 +15,6 @@ import android.view.ViewGroup$LayoutParams;
 import android.view.ViewParent;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public final class ViewStubCompat extends View {
     private ViewStubCompat$OnInflateListener mInflateListener;

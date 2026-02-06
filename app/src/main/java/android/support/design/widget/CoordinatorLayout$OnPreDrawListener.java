@@ -2,7 +2,6 @@ package android.support.design.widget;
 
 import android.view.ViewTreeObserver$OnPreDrawListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class CoordinatorLayout$OnPreDrawListener implements ViewTreeObserver$OnPreDrawListener {
     final /* synthetic */ CoordinatorLayout this$0;
 

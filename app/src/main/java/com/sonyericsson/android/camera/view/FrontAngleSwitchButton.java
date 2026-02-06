@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.sonyericsson.android.camera.configuration.parameters.FrontAngle;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FrontAngleSwitchButton extends ImageView {
     private FrontAngle mAngle;
     private int mCurrentOrientation;

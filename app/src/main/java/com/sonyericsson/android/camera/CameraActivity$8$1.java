@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera;
 
 import com.sonyericsson.cameracommon.storage.Storage$StorageReadyStateListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$8$1 implements Runnable {
     final /* synthetic */ CameraActivity$8 this$1;
     final /* synthetic */ Storage$StorageReadyStateListener val$listener;

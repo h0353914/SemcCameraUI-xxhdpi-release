@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import com.sonyericsson.android.camera.view.animation.TransitionAnimationController$TransitionAnimationCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$19$1 implements TransitionAnimationController$TransitionAnimationCallback {
     final /* synthetic */ ViewFinderImpl$19 this$1;
 

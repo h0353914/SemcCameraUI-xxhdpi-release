@@ -20,7 +20,6 @@ import android.view.View;
 import android.view.ViewGroup$LayoutParams;
 import android.view.Window;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class AppCompatDelegate {
     public static final int FEATURE_ACTION_MODE_OVERLAY = 10;
     public static final int FEATURE_SUPPORT_ACTION_BAR = 108;

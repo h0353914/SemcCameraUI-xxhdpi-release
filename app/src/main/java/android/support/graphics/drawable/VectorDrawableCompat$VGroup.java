@@ -10,7 +10,6 @@ import android.util.AttributeSet;
 import java.util.ArrayList;
 import org.xmlpull.v1.XmlPullParser;
 
-/* JADX INFO: loaded from: classes.dex */
 class VectorDrawableCompat$VGroup extends VectorDrawableCompat$VObject {
     int mChangingConfigurations;
     final ArrayList<VectorDrawableCompat$VObject> mChildren;

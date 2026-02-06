@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class JobIntentService$WorkEnqueuer {
     final ComponentName mComponentName;
     boolean mHasJobId;

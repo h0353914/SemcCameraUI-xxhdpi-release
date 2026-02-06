@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.content.ComponentName;
 import java.math.BigDecimal;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ActivityChooserModel$HistoricalRecord {
     public final ComponentName activity;
     public final long time;

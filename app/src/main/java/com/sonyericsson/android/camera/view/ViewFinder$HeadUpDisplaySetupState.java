@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ViewFinder$HeadUpDisplaySetupState {
     PHOTO_READY,
     PHOTO_CAPTURE,

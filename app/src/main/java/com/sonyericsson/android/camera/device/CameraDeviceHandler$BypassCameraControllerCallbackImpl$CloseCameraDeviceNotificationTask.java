@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraDeviceHandler$BypassCameraControllerCallbackImpl$CloseCameraDeviceNotificationTask implements Runnable {
     final /* synthetic */ CameraDeviceHandler$BypassCameraControllerCallbackImpl this$1;
 

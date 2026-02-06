@@ -9,7 +9,6 @@ import android.support.v4.media.session.MediaSessionCompat$Token;
 import android.support.v4.util.Pair;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$MediaBrowserServiceImplBase implements MediaBrowserServiceCompat$MediaBrowserServiceImpl {
     private Messenger mMessenger;
     final /* synthetic */ MediaBrowserServiceCompat this$0;

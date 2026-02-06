@@ -4,7 +4,6 @@ import android.graphics.Typeface;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 
-/* JADX INFO: loaded from: classes.dex */
 public class FontsContractCompat$FontRequestCallback {
     public static final int FAIL_REASON_FONT_LOAD_ERROR = -3;
     public static final int FAIL_REASON_FONT_NOT_FOUND = 1;

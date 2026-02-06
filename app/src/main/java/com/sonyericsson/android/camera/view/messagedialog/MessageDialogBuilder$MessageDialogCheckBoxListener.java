@@ -5,7 +5,6 @@ import android.widget.CompoundButton$OnCheckedChangeListener;
 import com.sonyericsson.android.camera.setting.MessageSettings;
 import com.sonyericsson.android.camera.setting.MessageType;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class MessageDialogBuilder$MessageDialogCheckBoxListener implements CompoundButton$OnCheckedChangeListener, Runnable {
     private boolean mIsItemChecked = false;
     private final MessageSettings mMessageSettings;

@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.status;
 import android.content.ContentValues;
 import java.lang.Enum;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class EnumValue<T extends Enum<T>> implements CameraStatusValue {
     private final String mValueString;
 

@@ -11,7 +11,6 @@ import kotlin.annotation.AnnotationTarget;
 import kotlin.annotation.MustBeDocumented;
 
 /* JADX INFO: compiled from: JvmPlatformAnnotations.kt */
-/* JADX INFO: loaded from: classes.dex */
 @Target({})
 @SinceKotlin(version = "1.2")
 @kotlin.annotation.Target(allowedTargets = {AnnotationTarget.FILE})

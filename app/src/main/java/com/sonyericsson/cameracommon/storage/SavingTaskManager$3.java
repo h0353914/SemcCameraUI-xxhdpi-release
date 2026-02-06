@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.storage;
 import android.net.Uri;
 import com.sonyericsson.cameracommon.mediasaving.MediaSavingResult;
 
-/* JADX INFO: loaded from: classes.dex */
 class SavingTaskManager$3 implements SavingTaskManager$MediaScanController$OnScanCompletedListener {
     final /* synthetic */ SavingTaskManager this$0;
 

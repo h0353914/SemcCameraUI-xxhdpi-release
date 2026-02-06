@@ -1,6 +1,5 @@
 package com.sonymobile.imageprocessor.bypasscamera2;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BypassCamera$SnapshotInfo {
     public final int captureNum;
     public final BypassCamera$SnapshotInfo$ExifGpsInfo exifGpsInfo;

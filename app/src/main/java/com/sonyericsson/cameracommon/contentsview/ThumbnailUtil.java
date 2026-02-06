@@ -18,7 +18,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ThumbnailUtil {
     public static final String TAG = "ThumbnailUtil";
 

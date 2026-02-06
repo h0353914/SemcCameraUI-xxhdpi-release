@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.mediasaving;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaSavingConstants$JpegQuality {
     public static final int ECONOMY = 85;
     public static final int FINE = 97;

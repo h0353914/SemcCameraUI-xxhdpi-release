@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.util.Map$Entry;
 
 /* JADX INFO: Add missing generic type declarations: [V, K] */
-/* JADX INFO: loaded from: classes.dex */
 final class zzmh$zzd<K, V> implements Iterator<Map$Entry<K, V>>, Map$Entry<K, V> {
     int mEnd;
     boolean mEntryValid = false;

@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.os.SystemClock;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class FaceDetectionResultChecker extends CaptureResultCheckerBase {
     private static final int MINIMUM_INTERVAL_MILLIS = 100;
     private static final String TAG = "FaceDetectionResultChecker";

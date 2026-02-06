@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.modeselector;
 
-/* JADX INFO: loaded from: classes.dex */
 class CapturingModePluginsPMLoader$TmpUiAttributes {
     String mActivityName;
     int mDescriptionLabelId;

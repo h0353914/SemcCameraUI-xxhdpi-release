@@ -5,7 +5,6 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$MediaBrowserImplBase$MediaServiceConnection implements ServiceConnection {
     final /* synthetic */ MediaBrowserCompat$MediaBrowserImplBase this$0;
 

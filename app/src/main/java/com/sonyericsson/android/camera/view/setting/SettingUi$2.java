@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInterface;
 import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem;
 
-/* JADX INFO: loaded from: classes.dex */
 class SettingUi$2 implements SettingExecutorInterface<UserSettingKey> {
     final /* synthetic */ SettingUi this$0;
     final /* synthetic */ UserSettingKey val$key;

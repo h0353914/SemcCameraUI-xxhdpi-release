@@ -18,7 +18,6 @@ import android.widget.FrameLayout$LayoutParams;
 import android.widget.OverScroller;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ScrollContainer extends FrameLayout {
     private static final int INVALID_POINTER = -1;
     private static final int MIN_SCROLL_DURATION = 200;

@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 import com.sonyericsson.android.camera.parameter.ParameterUtil;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ShutterSpeedApplier extends DependencyApplier {
     public static final String TAG = "ShutterSpeedApplier";
     private final ShutterSpeed mValue;

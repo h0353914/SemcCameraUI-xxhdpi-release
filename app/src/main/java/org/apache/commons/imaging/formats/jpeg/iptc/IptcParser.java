@@ -18,7 +18,6 @@ import org.apache.commons.imaging.formats.jpeg.JpegConstants;
 import org.apache.commons.imaging.util.Debug;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IptcParser extends BinaryFileParser {
     private static final ByteOrder APP13_BYTE_ORDER = ByteOrder.BIG_ENDIAN;
 

@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.tutorial;
 
-/* JADX INFO: loaded from: classes.dex */
 class TutorialController$1 implements Runnable {
     final /* synthetic */ TutorialController this$0;
 

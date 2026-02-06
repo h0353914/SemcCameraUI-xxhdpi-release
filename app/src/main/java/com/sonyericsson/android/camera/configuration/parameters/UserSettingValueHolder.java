@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 
-/* JADX INFO: loaded from: classes.dex */
 public class UserSettingValueHolder<T extends UserSettingValue> {
     public static final String DELIMITER = "-";
     public static final String NO_VALUE = "NO_VALUE";

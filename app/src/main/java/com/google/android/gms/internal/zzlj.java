@@ -6,7 +6,6 @@ import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.Api$zzb;
 import com.google.android.gms.common.api.Result;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface zzlj {
     void begin();
 

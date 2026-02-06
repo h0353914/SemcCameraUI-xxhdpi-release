@@ -49,7 +49,6 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /* JADX INFO: compiled from: FragmentManager.java */
-/* JADX INFO: loaded from: classes.dex */
 final class FragmentManagerImpl extends FragmentManager implements LayoutInflater$Factory2 {
     static final int ANIM_DUR = 220;
     public static final int ANIM_STYLE_CLOSE_ENTER = 3;

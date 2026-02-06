@@ -5,7 +5,6 @@ import android.transition.Transition$TransitionListener;
 import android.view.View;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 class FragmentTransitionCompat21$2 implements Transition$TransitionListener {
     final /* synthetic */ FragmentTransitionCompat21 this$0;
     final /* synthetic */ ArrayList val$exitingViews;

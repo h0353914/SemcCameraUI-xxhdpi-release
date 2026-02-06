@@ -6,7 +6,6 @@ import org.apache.commons.imaging.ImageWriteException;
 import org.apache.commons.imaging.formats.tiff.constants.TiffDirectoryType;
 import org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TagInfoAscii extends TagInfo {
     public TagInfoAscii(String str, int i, int i2, TiffDirectoryType tiffDirectoryType) {
         super(str, i, FieldType.ASCII, i2, tiffDirectoryType);

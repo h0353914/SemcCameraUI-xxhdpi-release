@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.utility;
 
-/* JADX INFO: loaded from: classes.dex */
 class MeasurePerformance$MeasureResource {
     public long mFreeMemory;
     public String mTag;

@@ -11,7 +11,6 @@ import com.sonyericsson.android.camera.util.capability.VideoConfiguration;
 import com.sonyericsson.cameracommon.device.CommonPlatformDependencyResolver;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PlatformDependencyResolver extends CommonPlatformDependencyResolver {
     public static final String TAG = "PlatformDependencyResolver";
 

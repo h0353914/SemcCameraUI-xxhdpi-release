@@ -5,7 +5,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class BinderWrapper implements Parcelable {
     public static final Parcelable$Creator<BinderWrapper> CREATOR = new BinderWrapper$1();
     private IBinder zzaeJ;

@@ -2,7 +2,6 @@ package kotlin.jvm.internal;
 
 import kotlin.reflect.KDeclarationContainer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MutablePropertyReference2Impl extends MutablePropertyReference2 {
     private final String name;
     private final KDeclarationContainer owner;

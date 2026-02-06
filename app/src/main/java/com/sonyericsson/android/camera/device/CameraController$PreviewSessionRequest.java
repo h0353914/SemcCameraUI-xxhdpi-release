@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.device;
 
 import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraController$PreviewSessionRequest {
     private static final int OPERATION_MODE_SOMC_CAMERA_BT601 = 32768;
     private static final int OPERATION_MODE_SOMC_CAMERA_BT709 = 32771;

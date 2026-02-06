@@ -3,7 +3,6 @@ package com.google.android.gms.internal;
 import java.io.IOException;
 import java.util.Arrays;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class zzsi$zzc extends zzry<zzsi$zzc> {
     public byte[] zzbiL;
     public byte[][] zzbiM;

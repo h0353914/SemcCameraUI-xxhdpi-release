@@ -3,7 +3,6 @@ package com.google.android.gms.common.api;
 import com.google.android.gms.common.internal.zzx;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GoogleApiClient$ServerAuthCodeCallbacks$CheckResult {
     private Set<Scope> zzTm;
     private boolean zzaaV;

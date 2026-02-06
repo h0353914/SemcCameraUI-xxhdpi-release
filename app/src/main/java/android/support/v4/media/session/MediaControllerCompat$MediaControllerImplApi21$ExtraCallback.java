@@ -5,7 +5,6 @@ import android.os.RemoteException;
 import android.support.v4.media.MediaMetadataCompat;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaControllerCompat$MediaControllerImplApi21$ExtraCallback extends MediaControllerCompat$Callback$StubCompat {
     MediaControllerCompat$MediaControllerImplApi21$ExtraCallback(MediaControllerCompat$Callback mediaControllerCompat$Callback) {
         super(mediaControllerCompat$Callback);

@@ -3,7 +3,6 @@ package android.support.v7.widget;
 import android.widget.AutoCompleteTextView;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 class SearchView$AutoCompleteTextViewReflector {
     private Method doAfterTextChanged;
     private Method doBeforeTextChanged;

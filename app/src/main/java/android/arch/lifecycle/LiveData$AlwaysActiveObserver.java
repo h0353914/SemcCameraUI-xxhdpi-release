@@ -1,6 +1,5 @@
 package android.arch.lifecycle;
 
-/* JADX INFO: loaded from: classes.dex */
 class LiveData$AlwaysActiveObserver extends LiveData<T>.LiveData$ObserverWrapper {
     final /* synthetic */ LiveData this$0;
 

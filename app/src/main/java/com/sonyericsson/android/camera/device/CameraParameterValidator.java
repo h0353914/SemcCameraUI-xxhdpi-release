@@ -16,7 +16,6 @@ import java.util.Map;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraParameterValidator {
     private static final String BASE_CONDITION_TAG = "base-condition";
     private static final String CHECK_CONDITION_TAG = "check-condition";

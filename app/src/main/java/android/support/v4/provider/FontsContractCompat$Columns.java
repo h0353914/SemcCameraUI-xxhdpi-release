@@ -2,7 +2,6 @@ package android.support.v4.provider;
 
 import android.provider.BaseColumns;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class FontsContractCompat$Columns implements BaseColumns {
     public static final String FILE_ID = "file_id";
     public static final String ITALIC = "font_italic";

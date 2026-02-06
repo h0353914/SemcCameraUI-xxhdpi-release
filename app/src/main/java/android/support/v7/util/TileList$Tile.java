@@ -2,7 +2,6 @@ package android.support.v7.util;
 
 import java.lang.reflect.Array;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TileList$Tile<T> {
     public int mItemCount;
     public final T[] mItems;

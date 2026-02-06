@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.configuration.parameters.SelfTimer;
 import com.sonymobile.cameracommon.research.parameters.Event$SelfTimerTrigger;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$3 implements GestureShutter$ControllerHost {
     final /* synthetic */ StateMachine this$0;
 

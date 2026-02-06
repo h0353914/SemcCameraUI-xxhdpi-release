@@ -1,6 +1,5 @@
 package com.google.android.gms.internal;
 
-/* JADX INFO: loaded from: classes.dex */
 interface zzlr$zza {
     Long getLong(String str, Long l);
 

@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.color;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ColorCieLch {
     public final double C;
     public final double H;

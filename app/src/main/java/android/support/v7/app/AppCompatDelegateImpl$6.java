@@ -2,7 +2,6 @@ package android.support.v7.app;
 
 import android.support.v4.view.ViewCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 class AppCompatDelegateImpl$6 implements Runnable {
     final /* synthetic */ AppCompatDelegateImpl this$0;
 

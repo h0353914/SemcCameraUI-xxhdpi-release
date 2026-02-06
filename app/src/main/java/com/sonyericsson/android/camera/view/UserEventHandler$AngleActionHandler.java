@@ -13,7 +13,6 @@ import com.sonyericsson.android.camera.view.angle.SideTouchZoomStepCalculator;
 import com.sonyericsson.android.camera.view.angle.VariableIndex;
 import com.sonyericsson.android.camera.view.angle.VariableIndex$Calculator;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$AngleActionHandler {
     private VariableIndex$Calculator mCalculator;
     private VariableIndex mCurrentVariable;

@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(24)
 class LocaleListCompat$LocaleListCompatApi24Impl implements LocaleListInterface {
     private LocaleList mLocaleList = new LocaleList(new Locale[0]);

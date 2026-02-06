@@ -4,7 +4,6 @@ import android.graphics.Point;
 import com.sonyericsson.android.camera.device.CameraParameters$FaceDetectionResult;
 import com.sonyericsson.cameracommon.utility.FaceDetectUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class FocusRectangles$FaceReflectChecker {
     private static final long WAIT_FOR_FACE_REFLECTED_TIME_MILLIS = 500;
     private FocusRectangles$FaceReflectedCallback mCallback;

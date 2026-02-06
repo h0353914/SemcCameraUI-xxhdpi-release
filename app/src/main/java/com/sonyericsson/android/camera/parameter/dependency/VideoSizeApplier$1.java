@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.parameter.dependency;
 
 import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class VideoSizeApplier$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$parameters$VideoSize = new int[VideoSize.values().length];
 

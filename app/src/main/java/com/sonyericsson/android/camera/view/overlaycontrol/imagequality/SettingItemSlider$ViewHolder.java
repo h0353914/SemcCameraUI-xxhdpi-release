@@ -5,7 +5,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 final class SettingItemSlider$ViewHolder {
     ImageView mAutoButton;
     View mBackground;

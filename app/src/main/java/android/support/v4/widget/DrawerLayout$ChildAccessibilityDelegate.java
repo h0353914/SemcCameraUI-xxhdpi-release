@@ -4,7 +4,6 @@ import android.support.v4.view.AccessibilityDelegateCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 final class DrawerLayout$ChildAccessibilityDelegate extends AccessibilityDelegateCompat {
     DrawerLayout$ChildAccessibilityDelegate() {
     }

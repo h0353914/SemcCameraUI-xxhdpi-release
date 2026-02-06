@@ -24,7 +24,6 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PrecomputedTextCompat implements Spannable {
     private static final char LINE_FEED = '\n';
 

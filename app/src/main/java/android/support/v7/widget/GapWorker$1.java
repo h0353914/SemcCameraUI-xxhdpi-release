@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class GapWorker$1 implements Comparator<GapWorker$Task> {
     GapWorker$1() {
     }

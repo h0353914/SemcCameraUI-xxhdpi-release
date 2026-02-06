@@ -39,7 +39,6 @@ import org.apache.commons.imaging.palette.PaletteFactory;
 import org.apache.commons.imaging.palette.SimplePalette;
 import org.apache.commons.imaging.util.IoUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public class XpmImageParser extends ImageParser {
     private static final String DEFAULT_EXTENSION = ".xpm";
     private static Map<String, Integer> colorNames;

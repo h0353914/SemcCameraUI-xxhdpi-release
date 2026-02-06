@@ -7,7 +7,6 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import com.google.android.gms.auth.api.signin.GoogleSignInConfig;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zze$zza extends Binder implements zze {
     public static zze zzaz(IBinder iBinder) {
         if (iBinder == null) {

@@ -9,7 +9,6 @@ import android.support.v4.media.session.MediaSessionCompat$Token;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$ServiceCallbacksCompat implements MediaBrowserServiceCompat$ServiceCallbacks {
     final Messenger mCallbacks;
 

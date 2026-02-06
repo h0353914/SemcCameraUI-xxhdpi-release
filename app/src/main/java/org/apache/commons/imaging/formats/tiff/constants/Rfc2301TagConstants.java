@@ -11,7 +11,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoRational;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShort;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShortOrLong;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class Rfc2301TagConstants {
     public static final int CLEAN_FAX_DATA_VALUE_CLEAN = 0;
     public static final int CLEAN_FAX_DATA_VALUE_REGENERATED = 1;

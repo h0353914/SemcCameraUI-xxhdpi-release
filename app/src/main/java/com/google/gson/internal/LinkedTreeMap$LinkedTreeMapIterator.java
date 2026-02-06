@@ -4,7 +4,6 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class LinkedTreeMap$LinkedTreeMapIterator<T> implements Iterator<T> {
     int expectedModCount;
     LinkedTreeMap$Node<K, V> lastReturned;

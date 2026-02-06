@@ -5,7 +5,6 @@ import android.os.Parcelable$Creator;
 import com.google.android.gms.common.internal.safeparcel.zza$zza;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzc implements Parcelable$Creator<AccountChangeEventsResponse> {
     static void zza(AccountChangeEventsResponse accountChangeEventsResponse, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);

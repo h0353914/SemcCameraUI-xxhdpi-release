@@ -2,7 +2,6 @@ package android.support.v7.preference;
 
 import android.text.TextUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 class PreferenceGroupAdapter$PreferenceLayout {
     String mName;
     int mResId;

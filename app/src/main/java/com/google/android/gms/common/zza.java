@@ -7,7 +7,6 @@ import android.os.Looper;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zza implements ServiceConnection {
     boolean zzZW = false;
     private final BlockingQueue<IBinder> zzZX = new LinkedBlockingQueue();

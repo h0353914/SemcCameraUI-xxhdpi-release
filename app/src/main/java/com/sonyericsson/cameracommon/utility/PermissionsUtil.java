@@ -11,7 +11,6 @@ import com.sonyericsson.cameracommon.activity.RequestPermissionSdCardActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class PermissionsUtil {
     private static final String[] REQUEST_LOCATION_PERMISSION = {"android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION"};
     public static final String TAG = "PermissionsUtil";

@@ -1,6 +1,5 @@
 package com.google.android.gms.common.internal;
 
-/* JADX INFO: loaded from: classes.dex */
 class zze$5 extends zze {
     zze$5() {
     }

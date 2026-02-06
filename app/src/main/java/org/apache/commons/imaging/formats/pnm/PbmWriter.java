@@ -6,7 +6,6 @@ import java.io.OutputStream;
 import java.util.Map;
 import org.apache.commons.imaging.ImageWriteException;
 
-/* JADX INFO: loaded from: classes.dex */
 class PbmWriter implements PnmWriter {
     private boolean rawbits;
 

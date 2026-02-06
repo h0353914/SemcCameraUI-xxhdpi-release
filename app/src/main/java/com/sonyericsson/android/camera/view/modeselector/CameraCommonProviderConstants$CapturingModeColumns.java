@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.modeselector;
 
 import android.provider.BaseColumns;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface CameraCommonProviderConstants$CapturingModeColumns extends BaseColumns {
     public static final String ACTIVITY = "activity";
     public static final String CAPTURE_TYPE = "capture_type";

@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 class AlbumPreloader$PreloadedCacheHolder {
     private Bitmap mBitmap;
     private Uri mUri;

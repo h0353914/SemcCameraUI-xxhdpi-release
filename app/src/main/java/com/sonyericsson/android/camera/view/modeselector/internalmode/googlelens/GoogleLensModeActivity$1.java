@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.modeselector.internalmode.googlelen
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class GoogleLensModeActivity$1 implements Runnable {
     final /* synthetic */ GoogleLensModeActivity this$0;
 

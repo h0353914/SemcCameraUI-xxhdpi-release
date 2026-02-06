@@ -17,7 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout$LayoutParams;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 class ScrollingTabContainerView$TabView extends LinearLayout {
     private final int[] BG_ATTRS;
     private View mCustomView;

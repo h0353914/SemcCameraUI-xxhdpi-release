@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.psd.dataparsers;
 
 import org.apache.commons.imaging.formats.psd.ImageContents;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DataParserIndexed extends DataParser {
     private final int[] colorTable = new int[256];
 

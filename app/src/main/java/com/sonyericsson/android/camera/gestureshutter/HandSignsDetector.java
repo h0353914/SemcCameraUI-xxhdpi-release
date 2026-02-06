@@ -8,7 +8,6 @@ import com.sonyericsson.android.camera.util.BackgroundWorker;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class HandSignsDetector implements HandSignsDetectorInterface {
     private static final int DEBUG_FPS_CALCULATE_INTERVAL_MILLIS = 3000;
     private static final int DETECT_FRAME_RATE = 10;

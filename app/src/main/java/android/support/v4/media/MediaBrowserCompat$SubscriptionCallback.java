@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class MediaBrowserCompat$SubscriptionCallback {
     final Object mSubscriptionCallbackObj;
     WeakReference<MediaBrowserCompat$Subscription> mSubscriptionRef;

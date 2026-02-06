@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/* JADX INFO: loaded from: classes.dex */
 @Deprecated
 public class StorageController {
     public static final String TAG = "StorageController";

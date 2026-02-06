@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class PreferenceGroup extends Preference {
     private static final String TAG = "PreferenceGroup";
     private boolean mAttachedToHierarchy;

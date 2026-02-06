@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View$AccessibilityDelegate;
 
-/* JADX INFO: loaded from: classes.dex */
 class PredictiveLaunchCoverView$1 extends View$AccessibilityDelegate {
     final /* synthetic */ PredictiveLaunchCoverView this$0;
 

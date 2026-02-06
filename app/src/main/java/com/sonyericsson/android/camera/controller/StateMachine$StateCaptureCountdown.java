@@ -18,7 +18,6 @@ import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$SelfTimerTrigger;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateCaptureCountdown extends StateMachine$StatePhotoReady {
     private SelfTimerFeedback mFeedback;
     private final LedLight mLedLight;

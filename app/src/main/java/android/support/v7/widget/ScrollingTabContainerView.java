@@ -20,7 +20,6 @@ import android.widget.HorizontalScrollView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class ScrollingTabContainerView extends HorizontalScrollView implements AdapterView$OnItemSelectedListener {
     private static final int FADE_DURATION = 200;

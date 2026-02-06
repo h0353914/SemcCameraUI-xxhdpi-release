@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.os.Parcelable$Creator;
 import android.view.View$BaseSavedState;
 
-/* JADX INFO: loaded from: classes.dex */
 class NestedScrollView$SavedState extends View$BaseSavedState {
     public static final Parcelable$Creator<NestedScrollView$SavedState> CREATOR = new NestedScrollView$SavedState$1();
     public int scrollPosition;

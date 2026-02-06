@@ -99,7 +99,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CameraActivity extends Activity implements DialogInterface$OnCancelListener, TerminateListener {
     private static final String ACTION_REQUEST_SOMC_CAMERA_SERVICE = "com.sonymobile.cameracommon.action.REQUEST_SOMC_CAMERA_SERVICE";
     private static final int ASYNC_ACT_TIMEOUT_MILLIS = 3000;

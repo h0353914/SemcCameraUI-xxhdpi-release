@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.baselayout;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class BaseLayout$4 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$view$baselayout$BaseLayout$NavigationBarVisibility = new int[BaseLayout$NavigationBarVisibility.values().length];
 

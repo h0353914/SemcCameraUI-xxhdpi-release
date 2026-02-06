@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 
-/* JADX INFO: loaded from: classes.dex */
 class AsyncLayoutInflater$BasicInflater extends LayoutInflater {
     private static final String[] sClassPrefixList = {"android.widget.", "android.webkit.", "android.app."};
 

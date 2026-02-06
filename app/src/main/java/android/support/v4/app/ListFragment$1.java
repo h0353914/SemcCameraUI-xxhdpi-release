@@ -1,6 +1,5 @@
 package android.support.v4.app;
 
-/* JADX INFO: loaded from: classes.dex */
 class ListFragment$1 implements Runnable {
     final /* synthetic */ ListFragment this$0;
 

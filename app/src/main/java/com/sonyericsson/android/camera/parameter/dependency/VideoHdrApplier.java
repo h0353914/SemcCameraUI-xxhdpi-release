@@ -13,7 +13,6 @@ import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 import com.sonyericsson.android.camera.parameter.ParameterUtil;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
-/* JADX INFO: loaded from: classes.dex */
 public class VideoHdrApplier extends DependencyApplier {
     private static final String TAG = "VideoHdrApplier";
     private final VideoHdr mValue;

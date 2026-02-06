@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class UserEventHandler$VirtualKeyEventDispatcher extends UserEventHandler$EventDispatcher {
     public UserEventHandler$VirtualKeyEventDispatcher() {
         super(null);

@@ -9,7 +9,6 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 import android.util.SparseIntArray;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY})
 class VersionedParcelParcel extends VersionedParcel {
     private static final boolean DEBUG = false;

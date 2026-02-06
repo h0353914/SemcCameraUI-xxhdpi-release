@@ -5,7 +5,6 @@ import android.text.method.SingleLineTransformationMethod;
 import android.view.View;
 import java.util.Locale;
 
-/* JADX INFO: loaded from: classes.dex */
 class PagerTitleStrip$SingleLineAllCapsTransform extends SingleLineTransformationMethod {
     private Locale mLocale;
 

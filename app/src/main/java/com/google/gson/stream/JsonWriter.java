@@ -5,7 +5,6 @@ import java.io.Flushable;
 import java.io.IOException;
 import java.io.Writer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class JsonWriter implements Closeable, Flushable {
     private static final String[] HTML_SAFE_REPLACEMENT_CHARS;
     private static final String[] REPLACEMENT_CHARS = new String[128];

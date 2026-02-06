@@ -3,7 +3,6 @@ package org.apache.commons.imaging.formats.jpeg.xmp;
 import java.io.IOException;
 import java.io.OutputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class JpegRewriter$JFIFPieceImageData extends JpegRewriter$JFIFPiece {
     public final byte[] imageData;
     public final byte[] markerBytes;

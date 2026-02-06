@@ -23,7 +23,6 @@ import android.view.View$MeasureSpec;
 import android.view.ViewGroup$LayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ActionMenuView extends LinearLayoutCompat implements MenuBuilder$ItemInvoker, MenuView {
     static final int GENERATED_ITEM_PADDING = 4;
     static final int MIN_CELL_SIZE = 56;

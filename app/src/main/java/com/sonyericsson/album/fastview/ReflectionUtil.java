@@ -5,7 +5,6 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ReflectionUtil {
     private static final Map<String, PathClassLoader> sClassLoaderMap = new HashMap();
 

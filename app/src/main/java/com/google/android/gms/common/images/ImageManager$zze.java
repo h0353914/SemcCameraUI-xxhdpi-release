@@ -3,7 +3,6 @@ package com.google.android.gms.common.images;
 import android.content.ComponentCallbacks2;
 import android.content.res.Configuration;
 
-/* JADX INFO: loaded from: classes.dex */
 final class ImageManager$zze implements ComponentCallbacks2 {
     private final ImageManager$zzb zzadL;
 

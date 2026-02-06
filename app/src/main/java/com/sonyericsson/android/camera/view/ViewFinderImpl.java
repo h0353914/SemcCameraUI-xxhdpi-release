@@ -206,7 +206,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ViewFinderImpl implements StateMachine$OnStateChangedListener, ViewFinder, ViewFinderInterface, CameraActivity$LayoutOrientationChangedListener {
     private static final int AUTO_POWER_OFF_HINT_TEXT_TIME_OUT_TIME_MILLIS = 10000;
     private static final int COLOR_VALUE_MAX = 255;

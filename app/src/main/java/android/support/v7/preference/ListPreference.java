@@ -8,7 +8,6 @@ import android.support.v4.content.res.TypedArrayUtils;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ListPreference extends DialogPreference {
     private CharSequence[] mEntries;
     private CharSequence[] mEntryValues;

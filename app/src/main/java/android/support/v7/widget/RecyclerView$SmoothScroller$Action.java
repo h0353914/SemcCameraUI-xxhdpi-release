@@ -5,7 +5,6 @@ import android.support.annotation.Px;
 import android.util.Log;
 import android.view.animation.Interpolator;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RecyclerView$SmoothScroller$Action {
     public static final int UNDEFINED_DURATION = Integer.MIN_VALUE;
     private boolean mChanged;

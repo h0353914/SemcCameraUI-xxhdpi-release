@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 class ActionBarDrawerToggleHoneycomb$SetIndicatorInfo {
     public Method setHomeActionContentDescription;
     public Method setHomeAsUpIndicator;

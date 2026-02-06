@@ -1,6 +1,5 @@
 package com.google.android.gms.common;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class Scopes {
     public static final String APP_STATE = "https://www.googleapis.com/auth/appstate";
     public static final String CLOUD_SAVE = "https://www.googleapis.com/auth/datastoremobile";

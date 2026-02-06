@@ -10,7 +10,6 @@ import android.util.AttributeSet;
 import java.util.HashSet;
 import java.util.Set;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MultiSelectListPreference extends AbstractMultiSelectListPreference {
     private CharSequence[] mEntries;
     private CharSequence[] mEntryValues;

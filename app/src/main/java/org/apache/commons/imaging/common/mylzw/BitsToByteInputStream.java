@@ -3,7 +3,6 @@ package org.apache.commons.imaging.common.mylzw;
 import java.io.IOException;
 import java.io.InputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BitsToByteInputStream extends InputStream {
     private final int desiredDepth;
     private final MyBitInputStream is;

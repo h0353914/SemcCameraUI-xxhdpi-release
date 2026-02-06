@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.status.eachcamera;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 import com.sonyericsson.cameracommon.status.EnumValue;
 
-/* JADX INFO: loaded from: classes.dex */
 public class BurstShooting extends EnumValue<BurstShooting$Value> implements EachCameraStatusValue {
     public static final BurstShooting$Value DEFAULT_VALUE = BurstShooting$Value.OFF;
     public static final String KEY = "burst_shooting";

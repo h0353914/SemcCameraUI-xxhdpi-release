@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-/* JADX INFO: loaded from: classes.dex */
 class WrappedDrawableApi21$DrawableWrapperStateLollipop extends WrappedDrawableApi14$DrawableWrapperState {
     WrappedDrawableApi21$DrawableWrapperStateLollipop(@Nullable WrappedDrawableApi14$DrawableWrapperState wrappedDrawableApi14$DrawableWrapperState, @Nullable Resources resources) {
         super(wrappedDrawableApi14$DrawableWrapperState, resources);

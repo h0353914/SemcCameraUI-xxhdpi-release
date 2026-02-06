@@ -5,7 +5,6 @@ import android.os.Parcelable$Creator;
 import com.google.android.gms.common.internal.safeparcel.zza$zza;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zze implements Parcelable$Creator<PasswordSpecification> {
     static void zza(PasswordSpecification passwordSpecification, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);

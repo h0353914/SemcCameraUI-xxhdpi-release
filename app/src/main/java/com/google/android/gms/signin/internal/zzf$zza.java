@@ -11,7 +11,6 @@ import com.google.android.gms.common.internal.ResolveAccountRequest;
 import com.google.android.gms.common.internal.zzp$zza;
 import com.google.android.gms.common.internal.zzt$zza;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzf$zza extends Binder implements zzf {
     public static zzf zzdN(IBinder iBinder) {
         if (iBinder == null) {

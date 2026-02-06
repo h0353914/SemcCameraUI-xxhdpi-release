@@ -3,7 +3,6 @@ package com.sonymobile.cameracommon.research;
 import com.sonymobile.cameracommon.research.idd.IddUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$Category;
 
-/* JADX INFO: loaded from: classes.dex */
 class ResearchUtil$SendEventTask implements Runnable {
     private final String mAction;
     private final Event$Category mCategory;

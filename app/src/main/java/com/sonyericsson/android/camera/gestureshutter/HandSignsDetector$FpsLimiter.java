@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.gestureshutter;
 
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class HandSignsDetector$FpsLimiter {
     private final int mExpectedInterval;
     private long mFrameStartTimeStamp = 0;

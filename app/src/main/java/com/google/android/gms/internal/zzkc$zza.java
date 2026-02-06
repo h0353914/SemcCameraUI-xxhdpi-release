@@ -7,7 +7,6 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import com.google.android.gms.common.api.Status;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzkc$zza extends Binder implements zzkc {
     public static zzkc zzan(IBinder iBinder) {
         if (iBinder == null) {

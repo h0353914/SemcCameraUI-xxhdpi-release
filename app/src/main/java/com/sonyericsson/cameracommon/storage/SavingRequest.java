@@ -9,7 +9,6 @@ import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusCommon;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class SavingRequest {
     public static final String TAG = "SavingRequest";
     public final TakenStatusCommon common;

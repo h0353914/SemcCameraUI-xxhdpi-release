@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.view.animation.AnimationRequest;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$15 implements Runnable {
     final /* synthetic */ ViewFinderImpl this$0;
     final /* synthetic */ AnimationRequest val$nextRequest;

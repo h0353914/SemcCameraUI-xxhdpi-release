@@ -1,6 +1,5 @@
 package android.support.v7.preference;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class PreferenceManager$PreferenceComparisonCallback {
     public abstract boolean arePreferenceContentsTheSame(Preference preference, Preference preference2);
 

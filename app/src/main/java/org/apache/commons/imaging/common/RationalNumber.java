@@ -2,7 +2,6 @@ package org.apache.commons.imaging.common;
 
 import java.text.NumberFormat;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RationalNumber extends Number {
     private static final double TOLERANCE = 1.0E-8d;
     private static final long serialVersionUID = -8412262656468158691L;

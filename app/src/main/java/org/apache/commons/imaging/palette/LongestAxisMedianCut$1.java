@@ -2,7 +2,6 @@ package org.apache.commons.imaging.palette;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class LongestAxisMedianCut$1 implements Comparator<ColorGroup> {
     LongestAxisMedianCut$1() {
     }

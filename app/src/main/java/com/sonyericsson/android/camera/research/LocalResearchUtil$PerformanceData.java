@@ -4,7 +4,6 @@ import android.os.SystemClock;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 
-/* JADX INFO: loaded from: classes.dex */
 class LocalResearchUtil$PerformanceData {
     private final LocalResearchUtil$MeasurementKey mKey;
     final /* synthetic */ LocalResearchUtil this$0;

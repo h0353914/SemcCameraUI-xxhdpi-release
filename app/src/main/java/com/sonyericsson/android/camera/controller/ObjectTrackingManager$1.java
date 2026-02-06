@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.controller;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class ObjectTrackingManager$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$controller$ObjectTrackingManager$State = new int[ObjectTrackingManager$State.values().length];
 

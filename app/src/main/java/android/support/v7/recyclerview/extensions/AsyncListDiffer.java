@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Executor;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AsyncListDiffer<T> {
     private static final Executor sMainThreadExecutor = new AsyncListDiffer$MainThreadExecutor();
     final AsyncDifferConfig<T> mConfig;

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.util.capability;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class VideoConfiguration {
     private static final String DELIMITER_AT = "@";
     private static final String DELIMITER_COMMA = ",";

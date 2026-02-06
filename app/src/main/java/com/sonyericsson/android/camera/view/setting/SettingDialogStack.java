@@ -27,7 +27,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SettingDialogStack {
     private static final String TAG = "SettingDialogStack";
     private final ViewGroup mBackground;

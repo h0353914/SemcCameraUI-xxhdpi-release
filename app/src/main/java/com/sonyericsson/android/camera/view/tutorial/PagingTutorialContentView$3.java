@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.tutorial;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer$OnPreparedListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class PagingTutorialContentView$3 implements MediaPlayer$OnPreparedListener {
     final /* synthetic */ PagingTutorialContentView this$0;
 

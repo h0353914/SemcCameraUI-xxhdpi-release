@@ -4,7 +4,6 @@ import android.graphics.Point;
 import android.graphics.PointF;
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class TouchActionTranslator$DoubleMove implements TouchActionTranslator$InteractionState {
     final /* synthetic */ TouchActionTranslator this$0;
 

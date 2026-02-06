@@ -1,6 +1,5 @@
 package android.support.v4.app;
 
-/* JADX INFO: loaded from: classes.dex */
 final class FragmentManagerImpl$FragmentLifecycleCallbacksHolder {
     final FragmentManager$FragmentLifecycleCallbacks mCallback;
     final boolean mRecursive;

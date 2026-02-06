@@ -11,7 +11,6 @@ import android.text.TextDirectionHeuristic;
 import android.text.TextPaint;
 import android.text.TextUtils;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class PrecomputedTextCompat$Params {
     private final int mBreakStrategy;
     private final int mHyphenationFrequency;

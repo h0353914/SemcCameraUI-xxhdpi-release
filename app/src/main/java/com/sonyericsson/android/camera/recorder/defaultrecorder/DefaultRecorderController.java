@@ -16,7 +16,6 @@ import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$RecordingParamet
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeoutException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DefaultRecorderController extends BaseRecorderController {
     private static final long STOP_PROCESS_INTERVAL_MILLISECONDS = 100;
     private static final boolean TRACE = true;

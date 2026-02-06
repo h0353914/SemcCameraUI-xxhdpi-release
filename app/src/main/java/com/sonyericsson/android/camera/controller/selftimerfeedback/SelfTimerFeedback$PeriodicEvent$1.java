@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.controller.selftimerfeedback;
 
-/* JADX INFO: loaded from: classes.dex */
 class SelfTimerFeedback$PeriodicEvent$1 implements Runnable {
     final /* synthetic */ SelfTimerFeedback$PeriodicEvent this$0;
 

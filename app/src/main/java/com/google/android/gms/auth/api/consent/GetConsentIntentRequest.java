@@ -7,7 +7,6 @@ import com.google.android.gms.auth.firstparty.shared.ScopeDetail;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzx;
 
-/* JADX INFO: loaded from: classes.dex */
 public class GetConsentIntentRequest implements SafeParcelable {
     public static final Parcelable$Creator<GetConsentIntentRequest> CREATOR = new zzb();
     private final int mVersionCode;

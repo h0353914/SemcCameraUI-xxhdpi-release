@@ -3,7 +3,6 @@ package android.support.v4.media.session;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 
-/* JADX INFO: loaded from: classes.dex */
 final class MediaSessionCompat$MediaSessionImplBase$Command {
     public final String command;
     public final Bundle extras;

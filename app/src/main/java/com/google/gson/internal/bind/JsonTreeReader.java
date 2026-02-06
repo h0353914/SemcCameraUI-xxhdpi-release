@@ -14,7 +14,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map$Entry;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class JsonTreeReader extends JsonReader {
     private final List<Object> stack;
     private static final Reader UNREADABLE_READER = new JsonTreeReader$1();

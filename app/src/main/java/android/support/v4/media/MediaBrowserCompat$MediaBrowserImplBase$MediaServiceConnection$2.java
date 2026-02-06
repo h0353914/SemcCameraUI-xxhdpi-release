@@ -3,7 +3,6 @@ package android.support.v4.media;
 import android.content.ComponentName;
 import android.util.Log;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$MediaBrowserImplBase$MediaServiceConnection$2 implements Runnable {
     final /* synthetic */ MediaBrowserCompat$MediaBrowserImplBase$MediaServiceConnection this$1;
     final /* synthetic */ ComponentName val$name;

@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.recorder.utility.encoder.InputDataSource;
 import com.sonyericsson.android.camera.util.BackgroundWorker;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class AudioSampleDataSourceBase implements InputDataSource, AudioRecord$OnRecordPositionUpdateListener {
     protected static final long INPUTBUFFER_TIMEOUT_MICROSECONDS = 100000;
     protected static final int NOTIFICATION_COUNT_PER_SECOND = 10;

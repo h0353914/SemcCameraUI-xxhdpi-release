@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.animation.Interpolator;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ViewPropertyAnimatorCompat {
     static final int LISTENER_TAG_ID = 2113929216;
     private static final String TAG = "ViewAnimatorCompat";

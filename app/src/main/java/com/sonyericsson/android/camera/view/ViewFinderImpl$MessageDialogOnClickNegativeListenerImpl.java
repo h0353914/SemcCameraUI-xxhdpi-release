@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.configuration.parameters.SideSense;
 import com.sonyericsson.android.camera.view.messagedialog.MessageDialogController$MessageDialogOnClickListener;
 import com.sonyericsson.android.camera.view.messagedialog.MessageDialogRequest;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$MessageDialogOnClickNegativeListenerImpl implements MessageDialogController$MessageDialogOnClickListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

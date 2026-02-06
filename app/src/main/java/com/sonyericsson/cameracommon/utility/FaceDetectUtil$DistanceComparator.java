@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.utility;
 
 import java.util.Comparator;
 
-/* JADX INFO: loaded from: classes.dex */
 class FaceDetectUtil$DistanceComparator implements Comparator<FaceDetectUtil$DistanceMapItem> {
     private FaceDetectUtil$DistanceComparator() {
     }

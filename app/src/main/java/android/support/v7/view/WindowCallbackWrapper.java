@@ -15,7 +15,6 @@ import android.view.WindowManager$LayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class WindowCallbackWrapper implements Window$Callback {
     final Window$Callback mWrapped;

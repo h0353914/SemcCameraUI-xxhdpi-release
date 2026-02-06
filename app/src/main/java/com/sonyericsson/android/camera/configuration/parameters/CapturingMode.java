@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum CapturingMode implements UserSettingValue {
     UNKNOWN(-1, -1, 0, CameraInfo$CameraId.BACK),
     SCENE_RECOGNITION(-1, 2131689683, 1, CameraInfo$CameraId.BACK),

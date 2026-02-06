@@ -7,7 +7,6 @@ import android.view.View;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.nio.FloatBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SimpleFrame extends FrameBase {
     public static final String TAG = "SimpleFrame";
     private float[] mColor;

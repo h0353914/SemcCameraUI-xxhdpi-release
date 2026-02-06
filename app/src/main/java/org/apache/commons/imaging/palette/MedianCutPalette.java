@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.palette;
 
-/* JADX INFO: loaded from: classes.dex */
 class MedianCutPalette extends SimplePalette {
     private final ColorGroup root;
 

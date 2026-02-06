@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView$ViewHolder;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class ItemTouchHelper$SimpleCallback extends ItemTouchHelper$Callback {
     private int mDefaultDragDirs;
     private int mDefaultSwipeDirs;

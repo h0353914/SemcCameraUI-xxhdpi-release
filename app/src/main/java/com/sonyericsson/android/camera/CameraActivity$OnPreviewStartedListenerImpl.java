@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera;
 import com.sonyericsson.android.camera.device.CameraDeviceHandler$CameraSessionId;
 import com.sonyericsson.android.camera.device.CameraDeviceHandler$OnPreviewStartedListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraActivity$OnPreviewStartedListenerImpl implements CameraDeviceHandler$OnPreviewStartedListener {
     private final CameraDeviceHandler$CameraSessionId mCameraSessionId;
     final /* synthetic */ CameraActivity this$0;

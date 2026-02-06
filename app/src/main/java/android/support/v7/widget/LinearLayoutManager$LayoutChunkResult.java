@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 protected class LinearLayoutManager$LayoutChunkResult {
     public int mConsumed;
     public boolean mFinished;

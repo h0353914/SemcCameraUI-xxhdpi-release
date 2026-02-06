@@ -4,7 +4,6 @@ import android.os.Message;
 import android.view.View;
 import android.view.View$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class AlertController$1 implements View$OnClickListener {
     final /* synthetic */ AlertController this$0;
 

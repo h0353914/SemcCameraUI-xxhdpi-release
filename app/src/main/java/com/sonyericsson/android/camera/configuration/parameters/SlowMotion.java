@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum SlowMotion implements UserSettingValue {
     SUPER_SLOW_MOTION(-1, 2131690135, 2131690150, VideoSize.HD),
     SUPER_SLOW_SHOT(-1, 2131690133, 2131690139, VideoSize.HD),

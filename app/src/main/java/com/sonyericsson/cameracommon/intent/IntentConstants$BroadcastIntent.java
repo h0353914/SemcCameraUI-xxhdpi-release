@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.intent;
 
-/* JADX INFO: loaded from: classes.dex */
 public class IntentConstants$BroadcastIntent {
     public static final String ACTION_CAMERA_FINISH = "com.sonyericsson.android.camera.intent.action.FINISH";
     public static final String ACTION_CAMERA_FINISH_CAMERAACTIVITY = "com.sonyericsson.android.camera.intent.action.FINISH_CAMERAACTIVITY";

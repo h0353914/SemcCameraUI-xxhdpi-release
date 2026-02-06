@@ -1,6 +1,5 @@
 package com.google.protobuf.nano;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface DescriptorProtos$MethodOptions$LogLevel {
 
     @NanoEnumValue(legacy = false, value = DescriptorProtos$MethodOptions$LogLevel.class)

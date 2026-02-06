@@ -13,7 +13,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SwitchAnimationView extends View {
     private static final String TAG = "SwitchAnimationView";
     private final float mDraggingEndRadius;

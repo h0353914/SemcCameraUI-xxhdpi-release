@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInte
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TypedSettingItem<T> implements SettingItem {
     public static final String TAG = "TypedSettingItem";
     private final String mAdditionalTextForAccessibility;

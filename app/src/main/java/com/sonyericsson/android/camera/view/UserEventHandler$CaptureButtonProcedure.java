@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$CaptureTrigger;
 
-/* JADX INFO: loaded from: classes.dex */
 class UserEventHandler$CaptureButtonProcedure extends UserEventHandler$TouchEventProcedure {
     private boolean mIsBurst;
     private boolean mIsTouched;

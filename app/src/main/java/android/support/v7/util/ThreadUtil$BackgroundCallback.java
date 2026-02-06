@@ -1,6 +1,5 @@
 package android.support.v7.util;
 
-/* JADX INFO: loaded from: classes.dex */
 public interface ThreadUtil$BackgroundCallback<T> {
     void loadTile(int i, int i2);
 

@@ -42,7 +42,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraController {
     private static final CaptureRequestDumper$Type CAPTURE_REQUEST_DUMP_TYPE = CaptureRequestDumper$Type.DIFF;
     private final Context mApplicationContext;

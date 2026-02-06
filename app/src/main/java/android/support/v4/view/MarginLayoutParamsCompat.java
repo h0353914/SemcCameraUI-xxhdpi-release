@@ -3,7 +3,6 @@ package android.support.v4.view;
 import android.os.Build$VERSION;
 import android.view.ViewGroup$MarginLayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MarginLayoutParamsCompat {
     public static int getMarginStart(ViewGroup$MarginLayoutParams viewGroup$MarginLayoutParams) {
         if (Build$VERSION.SDK_INT >= 17) {

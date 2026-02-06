@@ -10,7 +10,6 @@ import com.google.android.gms.common.internal.zzf;
 import com.google.android.gms.signin.internal.zzi;
 import java.util.concurrent.Executors;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzqu$1 extends Api$zza<zzi, zzqx> {
     zzqu$1() {
     }

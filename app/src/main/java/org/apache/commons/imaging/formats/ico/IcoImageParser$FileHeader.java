@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.ico;
 
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 class IcoImageParser$FileHeader {
     public final int iconCount;
     public final int iconType;

@@ -1,6 +1,5 @@
 package android.support.v7.widget;
 
-/* JADX INFO: loaded from: classes.dex */
 class DropDownListView$ResolveHoverRunnable implements Runnable {
     final /* synthetic */ DropDownListView this$0;
 

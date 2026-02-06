@@ -11,7 +11,6 @@ import com.sonymobile.cameracommon.research.ResearchUtil;
 import com.sonymobile.cameracommon.research.parameters.Event$CaptureTrigger;
 import com.sonymobile.cameracommon.research.parameters.Event$SelfTimerTrigger;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$FocusActionListenerImpl implements FocusActionListener {
     final /* synthetic */ ViewFinderImpl this$0;
 

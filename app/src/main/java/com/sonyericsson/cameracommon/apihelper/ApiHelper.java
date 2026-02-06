@@ -1,6 +1,5 @@
 package com.sonyericsson.cameracommon.apihelper;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ApiHelper {
     public static final String TAG = "ApiHelper";
 

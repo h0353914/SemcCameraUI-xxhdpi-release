@@ -18,7 +18,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ListFragment extends Fragment {
     static final int INTERNAL_EMPTY_ID = 16711681;
     static final int INTERNAL_LIST_CONTAINER_ID = 16711683;

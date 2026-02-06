@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view.overlaycontrol.imagequality;
 
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
-/* JADX INFO: loaded from: classes.dex */
 /* synthetic */ class ImageQualityWidgetFactory$1 {
     static final /* synthetic */ int[] $SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey = new int[UserSettingKey.values().length];
 

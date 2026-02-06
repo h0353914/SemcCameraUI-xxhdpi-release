@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.icc;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class IccConstants {
     public static final int IEC = 1229275936;
     public static final int sRGB = 1934772034;

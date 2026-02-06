@@ -11,7 +11,6 @@ import android.util.AttributeSet;
 import android.view.ActionMode$Callback;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class DialogTitle extends TextView {
     public DialogTitle(Context context, AttributeSet attributeSet, int i) {

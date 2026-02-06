@@ -3,7 +3,6 @@ package com.duolingo.open.rtlviewpager;
 import android.os.Parcel;
 import android.support.v4.os.ParcelableCompatCreatorCallbacks;
 
-/* JADX INFO: loaded from: classes.dex */
 class RtlViewPager$SavedState$1 implements ParcelableCompatCreatorCallbacks<RtlViewPager$SavedState> {
     RtlViewPager$SavedState$1() {
     }

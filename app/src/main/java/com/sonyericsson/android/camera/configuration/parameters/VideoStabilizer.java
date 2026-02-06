@@ -12,7 +12,6 @@ import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import com.sonyericsson.android.camera.util.capability.VideoConfiguration;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum VideoStabilizer implements UserSettingValue {
     STEADY_SHOT(-1, 2131690169, "on"),
     INTELLIGENT_ACTIVE(-1, 2131689709, "intelligent_active"),

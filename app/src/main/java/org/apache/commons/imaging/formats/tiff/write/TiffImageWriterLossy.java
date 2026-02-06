@@ -7,7 +7,6 @@ import java.util.List;
 import org.apache.commons.imaging.ImageWriteException;
 import org.apache.commons.imaging.common.BinaryOutputStream;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TiffImageWriterLossy extends TiffImageWriterBase {
     public TiffImageWriterLossy() {
     }

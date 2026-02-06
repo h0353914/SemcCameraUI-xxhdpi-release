@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.recorder.defaultrecorder;
 import com.sonyericsson.android.camera.recorder.RecorderController$Result;
 import com.sonyericsson.android.camera.recorder.RecorderInterface$OnMaxReachedListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class BaseRecorderController$3 implements RecorderInterface$OnMaxReachedListener {
     final /* synthetic */ BaseRecorderController this$0;
 

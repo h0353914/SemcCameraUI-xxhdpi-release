@@ -7,7 +7,6 @@ import android.os.Build$VERSION;
 import android.os.OperationCanceledException;
 import android.support.v4.os.CancellationSignal;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ContentResolverCompat {
     private ContentResolverCompat() {
     }

@@ -5,7 +5,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/* JADX INFO: loaded from: classes.dex */
 public class SomcDevicePolicyManager {
     public static String DISALLOW_RECORD_AUDIO;
     public static String SOMC_DEVICE_POLICY_SERVICE;

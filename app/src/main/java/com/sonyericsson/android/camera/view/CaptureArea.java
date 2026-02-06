@@ -9,7 +9,6 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.interaction.TouchActionTranslator;
 import com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener;
 
-/* JADX INFO: loaded from: classes.dex */
 public class CaptureArea extends ImageView implements TouchActionTranslator$TouchActionListener {
     public static final String TAG = "CaptureArea";
     private boolean mIsForceTouchCanceled;

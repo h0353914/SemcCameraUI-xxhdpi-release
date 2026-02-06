@@ -21,7 +21,6 @@ import android.support.compat.R$string;
 import android.widget.RemoteViews;
 import java.text.NumberFormat;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class NotificationCompat$Style {
     CharSequence mBigContentTitle;
 

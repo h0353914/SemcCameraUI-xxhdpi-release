@@ -2,7 +2,6 @@ package org.apache.commons.imaging.formats.icns;
 
 import java.io.PrintWriter;
 
-/* JADX INFO: loaded from: classes.dex */
 class IcnsImageParser$IcnsElement {
     public final byte[] data;
     public final int elementSize;

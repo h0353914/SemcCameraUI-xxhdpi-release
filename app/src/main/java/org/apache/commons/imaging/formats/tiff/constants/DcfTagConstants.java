@@ -8,7 +8,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoAscii;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShort;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShortOrLong;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class DcfTagConstants {
     public static final int COLOR_SPACE_VALUE_ADOBE_RGB = 2;
     public static final int COLOR_SPACE_VALUE_SRGB = 1;

@@ -6,7 +6,6 @@ import android.graphics.Rect;
 import android.view.WindowManager;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LayoutDependencyResolver {
     private static final int BASIC_SYSTEM_UI_FLAGS = 7936;
     public static final String TAG = "LayoutDependencyResolver";

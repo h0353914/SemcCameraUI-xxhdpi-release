@@ -4,7 +4,6 @@ import com.google.android.gms.common.internal.zzx;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzb<T> implements Iterator<T> {
     protected final DataBuffer<T> zzadi;
     protected int zzadj = -1;

@@ -4,7 +4,6 @@ import android.app.Service;
 import android.os.Build$VERSION;
 import android.support.annotation.NonNull;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class ServiceCompat {
     public static final int START_STICKY = 1;
     public static final int STOP_FOREGROUND_DETACH = 2;

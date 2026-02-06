@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.baselayout;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum LayoutDependencyResolver$ScreenAspect {
     NOT_DEFINED(-1.0f),
     SIXTEEN_NINE(1.7777778f),

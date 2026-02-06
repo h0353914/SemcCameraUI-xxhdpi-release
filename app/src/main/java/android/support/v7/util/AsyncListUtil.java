@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.util.SparseIntArray;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AsyncListUtil<T> {
     static final boolean DEBUG = false;
     static final String TAG = "AsyncListUtil";

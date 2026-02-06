@@ -1,6 +1,5 @@
 package org.apache.commons.imaging.formats.icns;
 
-/* JADX INFO: loaded from: classes.dex */
 final class Rle24Compression {
     private Rle24Compression() {
     }

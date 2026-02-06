@@ -7,7 +7,6 @@ import android.view.accessibility.AccessibilityNodeProvider;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(16)
 class AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16 extends AccessibilityNodeProvider {
     final AccessibilityNodeProviderCompat mCompat;

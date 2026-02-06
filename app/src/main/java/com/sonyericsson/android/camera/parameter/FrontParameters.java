@@ -6,7 +6,6 @@ import com.sonyericsson.android.camera.configuration.parameters.Flash;
 import com.sonyericsson.android.camera.configuration.parameters.Metering;
 import com.sonyericsson.android.camera.configuration.parameters.PredictiveCapture;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class FrontParameters extends Parameters {
     @Override // com.sonyericsson.android.camera.parameter.Parameters, com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(Metering metering) {

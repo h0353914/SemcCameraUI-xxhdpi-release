@@ -1,6 +1,5 @@
 package android.support.v4.provider;
 
-/* JADX INFO: loaded from: classes.dex */
 class SelfDestructiveThread$2$1 implements Runnable {
     final /* synthetic */ SelfDestructiveThread$2 this$1;
     final /* synthetic */ Object val$result;

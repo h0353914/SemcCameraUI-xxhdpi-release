@@ -4,7 +4,6 @@ import android.graphics.Point;
 import android.os.Handler;
 import java.util.Timer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class TouchMoveAndStopDetector {
     private static final float DIRECTION_TOLERANCE = 1.0471976f;
     public static final String TAG = "TouchMoveAndStopDetector";

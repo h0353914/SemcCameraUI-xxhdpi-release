@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.ViewDebug$ExportedProperty;
 import android.view.ViewGroup$LayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ActionMenuView$LayoutParams extends LinearLayoutCompat$LayoutParams {
 
     @ViewDebug$ExportedProperty

@@ -11,7 +11,6 @@ import android.util.Log;
 import com.google.android.apps.lens.library.base.LensSdkParamsReader;
 import com.google.android.apps.lens.library.base.LensServiceBridge;
 
-/* JADX INFO: loaded from: classes.dex */
 public class LensApi {
 
     @VisibleForTesting

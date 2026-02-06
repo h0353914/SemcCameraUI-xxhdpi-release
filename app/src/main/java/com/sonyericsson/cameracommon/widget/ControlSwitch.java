@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ControlSwitch extends Switch {
     public static final String TAG = "ControlSwitch";
     private boolean mIsUpsideDown;

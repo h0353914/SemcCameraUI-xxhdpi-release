@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.media.MediaMetadata$Builder;
 import android.media.Rating;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaMetadataCompatApi21$Builder {
     public static Object newInstance() {
         return new MediaMetadata$Builder();

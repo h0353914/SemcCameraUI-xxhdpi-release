@@ -3,7 +3,6 @@ package com.google.android.gms.internal;
 import android.os.Bundle;
 import com.google.android.gms.common.internal.zzk$zza;
 
-/* JADX INFO: loaded from: classes.dex */
 class zzli$3 implements zzk$zza {
     final /* synthetic */ zzli zzacr;
 

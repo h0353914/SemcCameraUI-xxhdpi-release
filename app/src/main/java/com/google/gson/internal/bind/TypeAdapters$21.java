@@ -7,7 +7,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.UUID;
 
-/* JADX INFO: loaded from: classes.dex */
 class TypeAdapters$21 extends TypeAdapter<UUID> {
     TypeAdapters$21() {
     }

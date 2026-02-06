@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.view.accessibility.AccessibilityManager$TouchExplorationStateChangeListener;
 
-/* JADX INFO: loaded from: classes.dex */
 @RequiresApi(19)
 class AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper implements AccessibilityManager$TouchExplorationStateChangeListener {
     final AccessibilityManagerCompat$TouchExplorationStateChangeListener mListener;

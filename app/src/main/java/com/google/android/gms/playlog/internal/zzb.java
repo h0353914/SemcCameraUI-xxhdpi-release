@@ -2,7 +2,6 @@ package com.google.android.gms.playlog.internal;
 
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzb {
     private final ArrayList<zzb$zza> zzaRK;
     private int zzaRL;

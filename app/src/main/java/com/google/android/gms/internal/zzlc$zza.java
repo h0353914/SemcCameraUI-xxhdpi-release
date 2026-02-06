@@ -9,7 +9,6 @@ import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
-/* JADX INFO: loaded from: classes.dex */
 public class zzlc$zza<R extends Result> extends Handler {
     public zzlc$zza() {
         this(Looper.getMainLooper());

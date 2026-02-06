@@ -10,7 +10,6 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoFloat;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoLong;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoUndefined;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MicrosoftHdPhotoTagConstants {
     public static final int ALPHA_DATA_DISCARD_VALUE_FLEXBITS_DISCARDED = 1;
     public static final int ALPHA_DATA_DISCARD_VALUE_FULL_RESOLUTION = 0;

@@ -3,7 +3,6 @@ package com.google.gson.internal;
 import java.io.ObjectStreamException;
 import java.math.BigDecimal;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class LazilyParsedNumber extends Number {
     private final String value;
 

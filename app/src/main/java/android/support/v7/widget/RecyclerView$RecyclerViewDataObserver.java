@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.support.v4.view.ViewCompat;
 
-/* JADX INFO: loaded from: classes.dex */
 class RecyclerView$RecyclerViewDataObserver extends RecyclerView$AdapterDataObserver {
     final /* synthetic */ RecyclerView this$0;
 

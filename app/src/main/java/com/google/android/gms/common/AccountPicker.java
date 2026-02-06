@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import java.util.ArrayList;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class AccountPicker {
     private AccountPicker() {
     }

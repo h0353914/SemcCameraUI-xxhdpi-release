@@ -8,7 +8,6 @@ import java.io.FileDescriptor;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-/* JADX INFO: loaded from: classes.dex */
 public class MediaMuxerWrapper {
     private static final float EXPECTED_OVERHEAD = 0.95f;
     private static final int MIN_DURATION_MS = 100;

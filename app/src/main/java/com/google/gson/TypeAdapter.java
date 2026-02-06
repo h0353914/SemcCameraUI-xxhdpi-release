@@ -10,7 +10,6 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class TypeAdapter<T> {
     public abstract T read(JsonReader jsonReader) throws IOException;
 

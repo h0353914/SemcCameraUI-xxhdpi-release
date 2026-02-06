@@ -1,6 +1,5 @@
 package com.sonyericsson.android.camera.view.selectabledialog;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AbsSelectableDialog$Params {
     public AbsSelectableDialog$AnimationType animationType;
     public int bottomMarginLandscape;

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import android.os.Handler;
 import android.os.Message;
 
-/* JADX INFO: loaded from: classes.dex */
 class AutoReviewController$PreviewTimerHandler extends Handler {
     final /* synthetic */ AutoReviewController this$0;
 

@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.PorterDuff$Mode;
 import com.sonyericsson.cameracommon.capturefeedback.animation.CaptureFeedbackAnimationCanvas;
 
-/* JADX INFO: loaded from: classes.dex */
 class TextureContextView$AnimationCanvas implements CaptureFeedbackAnimationCanvas {
     private Canvas mCanvas;
     final /* synthetic */ TextureContextView this$0;

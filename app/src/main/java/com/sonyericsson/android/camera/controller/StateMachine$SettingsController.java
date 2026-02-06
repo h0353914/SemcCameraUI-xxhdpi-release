@@ -60,7 +60,6 @@ import com.sonyericsson.cameracommon.status.eachcamera.VideoRecordingFps;
 import com.sonyericsson.cameracommon.status.eachcamera.VideoResolution;
 import com.sonyericsson.cameracommon.status.eachcamera.VideoStabilizerStatus;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$SettingsController implements UserSettingApplicable {
     final /* synthetic */ StateMachine this$0;
 

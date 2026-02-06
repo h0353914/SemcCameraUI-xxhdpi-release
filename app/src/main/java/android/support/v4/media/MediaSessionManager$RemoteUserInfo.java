@@ -7,7 +7,6 @@ import android.support.annotation.RequiresApi;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo$Scope;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class MediaSessionManager$RemoteUserInfo {
     public static final String LEGACY_CONTROLLER = "android.media.session.MediaController";
     MediaSessionManager$RemoteUserInfoImpl mImpl;

@@ -1,6 +1,5 @@
 package android.support.v7.appcompat;
 
-/* JADX INFO: loaded from: classes.dex */
 public final class R$color {
     public static final int abc_background_cache_hint_selector_material_dark = 2131099648;
     public static final int abc_background_cache_hint_selector_material_light = 2131099649;

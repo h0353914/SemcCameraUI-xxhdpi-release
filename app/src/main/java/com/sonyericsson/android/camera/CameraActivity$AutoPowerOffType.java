@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera;
 
 import com.sonymobile.cameracommon.research.parameters.Event$AutoPowerOffAction;
 
-/* JADX INFO: loaded from: classes.dex */
 enum CameraActivity$AutoPowerOffType {
     DEFAULT(180000, "DEFAULT", Event$AutoPowerOffAction.DEFAULT),
     ON_LOCKSCREEN(30000, "ON_LOCKSCREEN", Event$AutoPowerOffAction.ON_LOCKSCREEN),

@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view.overlaycontrol;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.view.overlaycontrol.imagequality.ImageQualityControlView$OnImageQualityControlDialogTabSelectListener;
 
-/* JADX INFO: loaded from: classes.dex */
 class ImageQualityControl$ViewFactory$1 implements ImageQualityControlView$OnImageQualityControlDialogTabSelectListener {
     final /* synthetic */ ImageQualityControl$ViewFactory this$1;
 

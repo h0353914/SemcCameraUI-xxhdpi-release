@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase$CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraUISettingsProvider$MyOpenHelper extends SQLiteOpenHelper {
     private final Context mContext;
 

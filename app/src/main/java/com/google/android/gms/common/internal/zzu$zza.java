@@ -7,7 +7,6 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import com.google.android.gms.dynamic.zzd$zza;
 
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zzu$zza extends Binder implements zzu {
     public static zzu zzaM(IBinder iBinder) {
         if (iBinder == null) {

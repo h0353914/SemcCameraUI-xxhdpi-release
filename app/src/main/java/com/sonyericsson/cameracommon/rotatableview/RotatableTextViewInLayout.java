@@ -9,7 +9,6 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout$LayoutParams;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 public class RotatableTextViewInLayout extends RelativeLayout {
     private static final int ROTATE_DEGREE = -90;
     public static final String TAG = "RotatableTextViewInLayout";

@@ -2,7 +2,6 @@ package android.support.v4.media;
 
 import android.os.IBinder;
 
-/* JADX INFO: loaded from: classes.dex */
 class MediaBrowserServiceCompat$ServiceBinderImpl$7 implements Runnable {
     final /* synthetic */ MediaBrowserServiceCompat$ServiceBinderImpl this$1;
     final /* synthetic */ MediaBrowserServiceCompat$ServiceCallbacks val$callbacks;

@@ -9,7 +9,6 @@ import android.view.SubMenu;
 import java.util.Iterator;
 import java.util.Map;
 
-/* JADX INFO: loaded from: classes.dex */
 abstract class BaseMenuWrapper<T> extends BaseWrapper<T> {
     final Context mContext;
     private Map<SupportMenuItem, MenuItem> mMenuItems;

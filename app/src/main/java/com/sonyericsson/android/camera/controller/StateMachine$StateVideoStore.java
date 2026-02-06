@@ -4,7 +4,6 @@ import com.sonyericsson.android.camera.recorder.RecorderController$Result;
 import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
 import com.sonyericsson.cameracommon.mediasaving.StoreDataResult;
 
-/* JADX INFO: loaded from: classes.dex */
 class StateMachine$StateVideoStore extends StateMachine$StateVideoBase {
     private final RecorderController$Result mResult;
     final /* synthetic */ StateMachine this$0;

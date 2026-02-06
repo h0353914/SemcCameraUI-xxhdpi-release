@@ -2,7 +2,6 @@ package com.sonymobile.sidetouchgesturedetector;
 
 import android.view.MotionEvent;
 
-/* JADX INFO: loaded from: classes.dex */
 class SideTouchGestureDetector$Gesture {
     final SideTouchGestureDetector$Gesture$State doubleTapDownState;
     final SideTouchGestureDetector$Gesture$State downState;

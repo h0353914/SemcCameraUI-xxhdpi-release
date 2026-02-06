@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.accessibility.AccessibilityRecord;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AccessibilityRecordCompat {
     private final AccessibilityRecord mRecord;
 

@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-/* JADX INFO: loaded from: classes.dex */
 public class DiffUtil$DiffResult {
     private static final int FLAG_CHANGED = 2;
     private static final int FLAG_IGNORE = 16;

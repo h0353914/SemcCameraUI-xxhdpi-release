@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.device;
 import com.sonyericsson.android.camera.research.LocalResearchUtil;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class CameraController$OnSceneModeChangedCallback implements CameraParameters$SceneRecognitionCallback {
     final /* synthetic */ CameraController this$0;
 

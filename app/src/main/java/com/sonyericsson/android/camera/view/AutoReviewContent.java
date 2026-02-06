@@ -3,7 +3,6 @@ package com.sonyericsson.android.camera.view;
 import android.net.Uri;
 import android.view.View$OnClickListener;
 
-/* JADX INFO: loaded from: classes.dex */
 public class AutoReviewContent {
     public View$OnClickListener mClickListener = null;
     public byte[] mData;

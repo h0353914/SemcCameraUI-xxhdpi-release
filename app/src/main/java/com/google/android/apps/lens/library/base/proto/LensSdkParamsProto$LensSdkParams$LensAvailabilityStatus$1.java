@@ -3,7 +3,6 @@ package com.google.android.apps.lens.library.base.proto;
 import com.google.protobuf.Internal$EnumLite;
 import com.google.protobuf.Internal$EnumLiteMap;
 
-/* JADX INFO: loaded from: classes.dex */
 class LensSdkParamsProto$LensSdkParams$LensAvailabilityStatus$1 implements Internal$EnumLiteMap<LensSdkParamsProto$LensSdkParams$LensAvailabilityStatus> {
     LensSdkParamsProto$LensSdkParams$LensAvailabilityStatus$1() {
     }

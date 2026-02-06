@@ -22,7 +22,6 @@ import android.widget.ListView;
 import android.widget.PopupWindow$OnDismissListener;
 import android.widget.TextView;
 
-/* JADX INFO: loaded from: classes.dex */
 final class StandardMenuPopup extends MenuPopup implements PopupWindow$OnDismissListener, AdapterView$OnItemClickListener, MenuPresenter, View$OnKeyListener {
     private static final int ITEM_LAYOUT = R$layout.abc_popup_menu_item_layout;
     private final MenuAdapter mAdapter;

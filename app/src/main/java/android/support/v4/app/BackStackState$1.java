@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable$Creator;
 
 /* JADX INFO: compiled from: BackStackRecord.java */
-/* JADX INFO: loaded from: classes.dex */
 class BackStackState$1 implements Parcelable$Creator<BackStackState> {
     BackStackState$1() {
     }

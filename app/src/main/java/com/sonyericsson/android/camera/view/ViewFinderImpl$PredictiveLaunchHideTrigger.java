@@ -2,7 +2,6 @@ package com.sonyericsson.android.camera.view;
 
 import com.sonymobile.cameracommon.research.parameters.Event$PredictiveLaunchAction;
 
-/* JADX INFO: loaded from: classes.dex */
 public enum ViewFinderImpl$PredictiveLaunchHideTrigger {
     TOUCH_UP(Event$PredictiveLaunchAction.TOUCH_UP),
     TOUCH_UP_CAPTURE(Event$PredictiveLaunchAction.TOUCH_UP),

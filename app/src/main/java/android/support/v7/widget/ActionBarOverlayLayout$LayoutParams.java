@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.ViewGroup$LayoutParams;
 import android.view.ViewGroup$MarginLayoutParams;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ActionBarOverlayLayout$LayoutParams extends ViewGroup$MarginLayoutParams {
     public ActionBarOverlayLayout$LayoutParams(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);

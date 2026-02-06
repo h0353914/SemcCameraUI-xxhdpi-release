@@ -3,7 +3,6 @@ package android.support.v4.provider;
 import android.os.Handler;
 import android.support.v4.content.res.ResourcesCompat$FontCallback;
 
-/* JADX INFO: loaded from: classes.dex */
 class FontsContractCompat$2 implements SelfDestructiveThread$ReplyCallback<FontsContractCompat$TypefaceResult> {
     final /* synthetic */ ResourcesCompat$FontCallback val$fontCallback;
     final /* synthetic */ Handler val$handler;

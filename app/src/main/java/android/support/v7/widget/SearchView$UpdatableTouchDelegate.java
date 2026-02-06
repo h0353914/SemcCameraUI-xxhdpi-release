@@ -6,7 +6,6 @@ import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-/* JADX INFO: loaded from: classes.dex */
 class SearchView$UpdatableTouchDelegate extends TouchDelegate {
     private final Rect mActualBounds;
     private boolean mDelegateTargeted;

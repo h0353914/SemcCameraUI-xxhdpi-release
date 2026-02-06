@@ -16,7 +16,6 @@ import android.view.MotionEvent;
 import android.widget.HeaderViewListAdapter;
 import android.widget.ListAdapter;
 
-/* JADX INFO: loaded from: classes.dex */
 @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
 public class MenuPopupWindow$MenuDropDownListView extends DropDownListView {
     final int mAdvanceKey;

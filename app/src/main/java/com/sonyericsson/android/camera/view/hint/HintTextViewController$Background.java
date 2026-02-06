@@ -5,7 +5,6 @@ import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import com.sonyericsson.android.camera.util.CamLog;
 
-/* JADX INFO: loaded from: classes.dex */
 class HintTextViewController$Background extends FrameLayout {
     final /* synthetic */ HintTextViewController this$0;
 

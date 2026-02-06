@@ -7,7 +7,6 @@ import com.sonyericsson.android.camera.controller.GestureShutter$WindowHost;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 
-/* JADX INFO: loaded from: classes.dex */
 class ViewFinderImpl$GestureShutterListener implements GestureShutter$WindowHost {
     private GestureShutterView mGestureShutterView;
     final /* synthetic */ ViewFinderImpl this$0;

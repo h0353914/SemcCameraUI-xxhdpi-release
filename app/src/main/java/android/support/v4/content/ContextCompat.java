@@ -16,7 +16,6 @@ import android.util.Log;
 import android.util.TypedValue;
 import java.io.File;
 
-/* JADX INFO: loaded from: classes.dex */
 public class ContextCompat {
     private static final String TAG = "ContextCompat";
     private static final Object sLock = new Object();
