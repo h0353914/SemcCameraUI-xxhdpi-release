@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt" android:ordering="together">
+    <objectAnimator
+        android:interpolator="@drawable/__predictivelaunch_animation_1__6__0_res_0x7f08000e"
+        android:duration="167"
+        android:startOffset="0"
+        android:valueFrom="0"
+        android:valueTo="0.7"
+        android:valueType="floatType"
+        android:propertyName="strokeAlpha"/>
+    <objectAnimator
+        android:interpolator="@drawable/__predictivelaunch_animation_1__6__1_res_0x7f08000f"
+        android:duration="833"
+        android:startOffset="167"
+        android:valueFrom="0.7"
+        android:valueTo="0.7"
+        android:valueType="floatType"
+        android:propertyName="strokeAlpha"/>
+    <objectAnimator
+        android:interpolator="@drawable/__predictivelaunch_animation_1__6__2_res_0x7f080010"
+        android:duration="500"
+        android:startOffset="1000"
+        android:valueFrom="0.7"
+        android:valueTo="0"
+        android:valueType="floatType"
+        android:propertyName="strokeAlpha"/>
+</set>

@@ -1,0 +1,14 @@
+package com.google.protobuf.nano;
+
+/* JADX INFO: loaded from: classes.dex */
+public interface DescriptorProtos$FieldOptions$JSType {
+
+    @NanoEnumValue(legacy = false, value = DescriptorProtos$FieldOptions$JSType.class)
+    public static final int JS_NORMAL = 0;
+
+    @NanoEnumValue(legacy = false, value = DescriptorProtos$FieldOptions$JSType.class)
+    public static final int JS_NUMBER = 2;
+
+    @NanoEnumValue(legacy = false, value = DescriptorProtos$FieldOptions$JSType.class)
+    public static final int JS_STRING = 1;
+}

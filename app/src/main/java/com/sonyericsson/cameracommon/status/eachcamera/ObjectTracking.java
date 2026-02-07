@@ -1,0 +1,25 @@
+package com.sonyericsson.cameracommon.status.eachcamera;
+
+import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
+import com.sonyericsson.cameracommon.status.EnumValue;
+
+/* JADX INFO: loaded from: classes.dex */
+public class ObjectTracking extends EnumValue<ObjectTracking$Value> implements EachCameraStatusValue {
+    public static final ObjectTracking$Value DEFAULT_VALUE = ObjectTracking$Value.OFF;
+    public static final String KEY = "object_tracking";
+    private static int REQUIRED_PROVIDER_VERSION = 1;
+
+    @Override // com.sonyericsson.cameracommon.status.CameraStatusValue
+    public String getKey() {
+        return "object_tracking";
+    }
+
+    public ObjectTracking(ObjectTracking$Value objectTracking$Value) {
+        super(objectTracking$Value);
+    }
+
+    @Override // com.sonyericsson.cameracommon.status.CameraStatusValue
+    public int minRequiredVersion() {
+        return REQUIRED_PROVIDER_VERSION;
+    }
+}

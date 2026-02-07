@@ -1,0 +1,22 @@
+package com.sonymobile.cameracommon.research.parameters;
+
+/* JADX INFO: loaded from: classes.dex */
+public enum Event$Category {
+    ADDON_FW,
+    THERMAL_MITIGATION,
+    CAMERA_NOT_AVAILABLE,
+    CAPTURE_OPERATION,
+    PANORAMA,
+    RECORDING,
+    SETTINGS_PHOTO,
+    SETTINGS_VIDEO,
+    SETTINGS_COMMON,
+    ALL_SETTINGS_PHOTO,
+    ALL_SETTINGS_VIDEO,
+    CHANGED_SETTING,
+    SELFTIMER_CANCELLED,
+    LOWBATTERY_MITIGATION,
+    SLOW_MOTION,
+    PREDICTIVE_LAUNCH,
+    AUTO_POWEROFF
+}

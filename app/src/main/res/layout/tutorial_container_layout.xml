@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sonyericsson.android.camera.view.tutorial.TutorialContainerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tutorial_container_view"
+    android:background="#ffffffff"
+    android:visibility="invisible"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr">
+    <ViewFlipper
+        android:id="@+id/flipper_view"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</com.sonyericsson.android.camera.view.tutorial.TutorialContainerView>
