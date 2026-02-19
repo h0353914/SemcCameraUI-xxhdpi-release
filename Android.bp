@@ -1,0 +1,130 @@
+// Prebuilt JNI shared libraries for SemcCameraUI
+
+cc_prebuilt_library_shared {
+    name: "libarcsoft_handsigns_semccamera",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libarcsoft_handsigns.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libhandsigns_jni_semccamera",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libhandsigns_jni.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libimage_converter_semccamera",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libimage_converter.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libmpbase_semccamera",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libmpbase.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+// Compile-only stub JARs (compileOnly in Gradle)
+
+java_import {
+    name: "SemcCameraUI-api-stubs",
+    jars: ["app/libs/api-stubs.jar"],
+    sdk_version: "current",
+}
+
+java_import {
+    name: "SemcCameraUI-extra-stubs",
+    jars: ["app/libs/extra-stubs.jar"],
+    sdk_version: "current",
+}
+
+java_import {
+    name: "SemcCameraUI-java-awt-stubs",
+    jars: ["app/libs/java-awt-stubs.jar"],
+    sdk_version: "current",
+}
+
+java_import {
+    name: "SemcCameraUI-protobuf-stubs",
+    jars: ["app/libs/protobuf-generated-registry-stub.jar"],
+    sdk_version: "current",
+}
+
+// Main SemcCameraUI application
+
+android_app {
+    name: "SemcCameraUI",
+
+    srcs: [
+        "app/src/main/java/**/*.java",
+        "app/src/main/org/**/*.java",
+        "app/src/main/kotlin/**/*.kt",
+    ],
+
+    resource_dirs: ["app/src/main/res"],
+    manifest: "app/src/main/AndroidManifest.xml",
+
+    // Compile-only dependencies (not bundled at runtime)
+    libs: [
+        "SemcCameraUI-api-stubs",
+        "SemcCameraUI-extra-stubs",
+        "SemcCameraUI-java-awt-stubs",
+        "SemcCameraUI-protobuf-stubs",
+        "libprotobuf-java-lite",
+    ],
+
+    // Bundled static dependencies
+    static_libs: [
+        "android-support-v7-appcompat",
+        "android-support-v4",
+        "android-support-v7-recyclerview",
+        "android-support-design",
+        "android-support-coordinatorlayout",
+        "android-support-v7-preference",
+        "android-support-v14-preference",
+        "android-support-annotations",
+        "kotlin-stdlib",
+        "kotlin-stdlib-jdk7",
+        "gson",
+        "android-arch-lifecycle-livedata-core",
+    ],
+
+    platform_apis: true,
+    certificate: "platform",
+    privileged: true,
+
+    jni_libs: [
+        "libarcsoft_handsigns_semccamera",
+        "libhandsigns_jni_semccamera",
+        "libimage_converter_semccamera",
+        "libmpbase_semccamera",
+    ],
+
+    optimize: {
+        enabled: false,
+    },
+
+    // Disable <uses-library> enforcement - Sony-specific shared libraries
+    // (com.sonymobile.camera.addon.api, etc.) are not available in AOSP tree
+    enforce_uses_libs: false,
+}
