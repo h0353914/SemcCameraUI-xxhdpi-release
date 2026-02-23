@@ -1,5 +1,0 @@
-package android.support.v4.view.accessibility;
-
-@Deprecated
-public abstract class AccessibilityManagerCompat$AccessibilityStateChangeListenerCompat implements AccessibilityManagerCompat$AccessibilityStateChangeListener {
-}
