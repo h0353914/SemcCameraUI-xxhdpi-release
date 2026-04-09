@@ -1,0 +1,72 @@
+.class public Lcom/sonyericsson/cameracommon/status/eachcamera/SlowMotion;
+.super Lcom/sonyericsson/cameracommon/status/EnumValue;
+.source "SlowMotion.java"
+
+# interfaces
+.implements Lcom/sonyericsson/cameracommon/status/EachCameraStatusValue;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/sonyericsson/cameracommon/status/eachcamera/SlowMotion$Value;
+    }
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/sonyericsson/cameracommon/status/EnumValue<",
+        "Lcom/sonyericsson/cameracommon/status/eachcamera/SlowMotion$Value;",
+        ">;",
+        "Lcom/sonyericsson/cameracommon/status/EachCameraStatusValue;"
+    }
+.end annotation
+
+
+# static fields
+.field public static final DEFAULT_VALUE:Lcom/sonyericsson/cameracommon/status/eachcamera/SlowMotion$Value;
+
+.field public static final KEY:Ljava/lang/String; = "slow_motion"
+
+.field private static REQUIRED_PROVIDER_VERSION:I = 0xb
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    .line 25
+    sget-object v0, Lcom/sonyericsson/cameracommon/status/eachcamera/SlowMotion$Value;->OFF:Lcom/sonyericsson/cameracommon/status/eachcamera/SlowMotion$Value;
+
+    sput-object v0, Lcom/sonyericsson/cameracommon/status/eachcamera/SlowMotion;->DEFAULT_VALUE:Lcom/sonyericsson/cameracommon/status/eachcamera/SlowMotion$Value;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lcom/sonyericsson/cameracommon/status/eachcamera/SlowMotion$Value;)V
+    .locals 0
+
+    .line 51
+    invoke-direct {p0, p1}, Lcom/sonyericsson/cameracommon/status/EnumValue;-><init>(Ljava/lang/Enum;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public getKey()Ljava/lang/String;
+    .locals 0
+
+    const-string p0, "slow_motion"
+
+    return-object p0
+.end method
+
+.method public minRequiredVersion()I
+    .locals 0
+
+    .line 61
+    sget p0, Lcom/sonyericsson/cameracommon/status/eachcamera/SlowMotion;->REQUIRED_PROVIDER_VERSION:I
+
+    return p0
+.end method
