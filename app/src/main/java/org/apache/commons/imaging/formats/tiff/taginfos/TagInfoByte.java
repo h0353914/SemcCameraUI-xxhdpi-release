@@ -11,14 +11,29 @@ public class TagInfoByte extends TagInfo {
     }
 
     public TagInfoByte(String str, int i, int i2, TiffDirectoryType tiffDirectoryType) {
+
+
+
+
+
+
+
+
+
+
+
+
+
         super(str, i, FieldType.BYTE, i2, tiffDirectoryType);
     }
 
     public TagInfoByte(String str, int i, List<FieldType> list, int i2, TiffDirectoryType tiffDirectoryType) {
+
         super(str, i, list, i2, tiffDirectoryType);
     }
 
     public TagInfoByte(String str, int i, FieldType fieldType, int i2, TiffDirectoryType tiffDirectoryType) {
+
         super(str, i, fieldType, i2, tiffDirectoryType);
     }
 }

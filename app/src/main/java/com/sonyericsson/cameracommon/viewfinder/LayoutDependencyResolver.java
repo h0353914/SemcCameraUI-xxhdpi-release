@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.WindowManager;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 
 public class LayoutDependencyResolver {
@@ -11,19 +12,24 @@ public class LayoutDependencyResolver {
     public static final String TAG = "LayoutDependencyResolver";
     private static float VIEWFINDER_ASPECT_RATIO = 1.7777778f;
 
+    public enum SystemBarStatus {
+        ALWAYS_CANCELED,
+        REGION_OVERLAID
+    }
+
     public static boolean isTablet(Context context) {
-        return context.getResources().getBoolean(2131034120);
+        return context.getResources().getBoolean(R.bool.is_tablet);
     }
 
     public static boolean isTenInch(Context context) {
-        return context.getResources().getBoolean(2131034121);
+        return context.getResources().getBoolean(R.bool.is_ten_inch);
     }
 
-    public static LayoutDependencyResolver$SystemBarStatus getCurrentSystemBarStatus(Context context) {
+    public static SystemBarStatus getCurrentSystemBarStatus(Context context) {
         if (isTablet(context)) {
-            return LayoutDependencyResolver$SystemBarStatus.ALWAYS_CANCELED;
+            return SystemBarStatus.ALWAYS_CANCELED;
         }
-        return LayoutDependencyResolver$SystemBarStatus.REGION_OVERLAID;
+        return SystemBarStatus.REGION_OVERLAID;
     }
 
     public static int getSystemBarMargin(Context context) {
@@ -35,7 +41,7 @@ public class LayoutDependencyResolver {
                 if (identifier > 0) {
                     return context.getResources().getDimensionPixelSize(identifier);
                 }
-                return context.getResources().getDimensionPixelSize(2131165455);
+                return context.getResources().getDimensionPixelSize(R.dimen.navigationbar_width);
             default:
                 throw new IllegalStateException("getSystemBarMargin(): Unknown system bar status");
         }
@@ -68,12 +74,12 @@ public class LayoutDependencyResolver {
     }
 
     public static int getLeftItemCount(Context context) {
-        return context.getResources().getInteger(2131361811);
+        return context.getResources().getInteger(R.integer.shortcut_icon_count);
     }
 
     public static Rect getSurfaceRect(Context context, float f) {
         Rect rectAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance().getRectAccordingToLayoutOrientation(getViewFinderSize(context));
-        if (f > rectAccordingToLayoutOrientation.width() / rectAccordingToLayoutOrientation.height()) {
+        if (f > (float) rectAccordingToLayoutOrientation.width() / rectAccordingToLayoutOrientation.height()) {  // Fixed: use float division
             return new Rect(0, 0, rectAccordingToLayoutOrientation.width(), (int) (rectAccordingToLayoutOrientation.width() / f));
         }
         return new Rect(0, 0, (int) (rectAccordingToLayoutOrientation.height() * f), rectAccordingToLayoutOrientation.height());

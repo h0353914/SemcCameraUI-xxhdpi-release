@@ -2,16 +2,18 @@ package com.google.android.gms.auth.api.credentials;
 
 import android.net.Uri;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzw;
 import com.google.android.gms.common.internal.zzx;
+import com.sonyericsson.android.camera.view.modeselector.ResourceUtil;
 import java.util.Collections;
 import java.util.List;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class Credential implements SafeParcelable {
-    public static final Parcelable$Creator<Credential> CREATOR = new zza();
+    public static final Parcelable.Creator<Credential> CREATOR = new zza();
     public static final String EXTRA_KEY = "com.google.android.gms.credentials.Credential";
     private final String mName;
     final int mVersionCode;
@@ -23,6 +25,61 @@ public class Credential implements SafeParcelable {
     private final String zzSm;
     private final String zzwN;
 
+    public static class Builder {
+        private String mName;
+        private Uri zzSh;
+        private List<IdToken> zzSi;
+        private String zzSj;
+        private String zzSk;
+        private String zzSl;
+        private String zzSm;
+        private final String zzwN;
+
+        public Builder(Credential credential) {
+            this.zzwN = credential.zzwN;
+            this.mName = credential.mName;
+            this.zzSh = credential.zzSh;
+            this.zzSi = credential.zzSi;
+            this.zzSj = credential.zzSj;
+            this.zzSk = credential.zzSk;
+            this.zzSl = credential.zzSl;
+            this.zzSm = credential.zzSm;
+        }
+
+        public Builder(String str) {
+            this.zzwN = str;
+        }
+
+        public Credential build() {
+            if (TextUtils.isEmpty(this.zzSj) || TextUtils.isEmpty(this.zzSk)) {
+                return new Credential(3, this.zzwN, this.mName, this.zzSh, this.zzSi, this.zzSj, this.zzSk, this.zzSl, this.zzSm);
+            }
+            throw new IllegalStateException("Only one of password or accountType may be set");
+        }
+
+        public Builder setAccountType(String str) {
+            String scheme = Uri.parse(str).getScheme();
+            zzx.zzaa(ResourceUtil.HTTP_SCHEME.equalsIgnoreCase(scheme) || ResourceUtil.HTTPS_SCHEME.equalsIgnoreCase(scheme));
+            this.zzSk = str;
+            return this;
+        }
+
+        public Builder setName(String str) {
+            this.mName = str;
+            return this;
+        }
+
+        public Builder setPassword(String str) {
+            this.zzSj = str;
+            return this;
+        }
+
+        public Builder setProfilePictureUri(Uri uri) {
+            this.zzSh = uri;
+            return this;
+        }
+    }
+
     Credential(int i, String str, String str2, Uri uri, List<IdToken> list, String str3, String str4, String str5, String str6) {
         this.mVersionCode = i;
         this.zzwN = (String) zzx.zzw(str);
@@ -33,38 +90,6 @@ public class Credential implements SafeParcelable {
         this.zzSk = str4;
         this.zzSl = str5;
         this.zzSm = str6;
-    }
-
-    static /* synthetic */ String zza(Credential credential) {
-        return credential.zzwN;
-    }
-
-    static /* synthetic */ String zzb(Credential credential) {
-        return credential.mName;
-    }
-
-    static /* synthetic */ Uri zzc(Credential credential) {
-        return credential.zzSh;
-    }
-
-    static /* synthetic */ List zzd(Credential credential) {
-        return credential.zzSi;
-    }
-
-    static /* synthetic */ String zze(Credential credential) {
-        return credential.zzSj;
-    }
-
-    static /* synthetic */ String zzf(Credential credential) {
-        return credential.zzSk;
-    }
-
-    static /* synthetic */ String zzg(Credential credential) {
-        return credential.zzSl;
-    }
-
-    static /* synthetic */ String zzh(Credential credential) {
-        return credential.zzSm;
     }
 
     @Override // android.os.Parcelable

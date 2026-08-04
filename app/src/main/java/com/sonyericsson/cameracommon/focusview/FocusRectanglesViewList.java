@@ -3,6 +3,18 @@ package com.sonyericsson.cameracommon.focusview;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+
+
+
+
+
+
+
+
+
+
+
+
 public class FocusRectanglesViewList {
     public View[] faceViewList;
     public RelativeLayout rectanglesContainer;

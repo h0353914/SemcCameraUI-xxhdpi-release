@@ -1,9 +1,8 @@
 package com.google.android.apps.gsa.search.shared.service.proto;
 
-import com.google.protobuf.Internal$EnumLite;
-import com.google.protobuf.Internal$EnumLiteMap;
+import com.google.protobuf.Internal;
 
-public enum ServiceEventId implements Internal$EnumLite {
+public enum ServiceEventId implements Internal.EnumLite {
     ATTACH_WEBVIEW(1),
     SHOW_WEBVIEW(63),
     HIDE_WEBVIEW(64),
@@ -427,7 +426,12 @@ public enum ServiceEventId implements Internal$EnumLite {
     public static final int WEB_ANSWER_HISTORY_RESPONSE_VALUE = 232;
     public static final int WERNICKE_PLAYBACK_STATE_CHANGED_VALUE = 156;
     public static final int WORKER_UNLOADING_FINISHED_VALUE = 127;
-    private static final Internal$EnumLiteMap<ServiceEventId> internalValueMap = new ServiceEventId$1();
+    private static final Internal.EnumLiteMap<ServiceEventId> internalValueMap = new Internal.EnumLiteMap<ServiceEventId>() { // from class: com.google.android.apps.gsa.search.shared.service.proto.ServiceEventId.1
+        /* renamed from: findValueByNumber, reason: merged with bridge method [inline-methods] */
+        public ServiceEventId findValueByNumber(int number) {
+            return ServiceEventId.forNumber(number);
+        }
+    };
     private final int value;
 
     public final int getNumber() {
@@ -892,7 +896,7 @@ public enum ServiceEventId implements Internal$EnumLite {
         }
     }
 
-    public static Internal$EnumLiteMap<ServiceEventId> internalGetValueMap() {
+    public static Internal.EnumLiteMap<ServiceEventId> internalGetValueMap() {
         return internalValueMap;
     }
 

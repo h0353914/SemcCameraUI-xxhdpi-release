@@ -1,5 +1,6 @@
 package org.apache.commons.imaging;
 
+import android.support.v4.os.EnvironmentCompat;
 import java.awt.color.ColorSpace;
 import java.awt.color.ICC_ColorSpace;
 import java.awt.image.BufferedImage;
@@ -26,7 +27,7 @@ public class ImageDump {
             case 1004:
                 return "CS_LINEAR_RGB";
             default:
-                return "unknown";
+                return EnvironmentCompat.MEDIA_UNKNOWN;
         }
     }
 
@@ -36,7 +37,11 @@ public class ImageDump {
             System.out.println(str + ": Unknown ColorSpace: " + colorSpace.getClass().getName());
             return;
         }
-        new IccProfileParser().getICCProfileInfo(((ICC_ColorSpace) colorSpace).getProfile().getData()).dump(str);
+        try {
+            new IccProfileParser().getICCProfileInfo(((ICC_ColorSpace) colorSpace).getProfile().getData()).dump(str);
+        } catch (Exception e) {
+            System.out.println(str + ": Error dumping ColorSpace: " + e.getMessage());
+        }
     }
 
     public void dump(BufferedImage bufferedImage) {

@@ -1,10 +1,11 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
 public enum VideoShutterTrigger implements UserSettingValue {
-    SMILE_SHUTTER(2131690163, VideoSmileCapture.MIDDLE),
-    OFF(2131690115, VideoSmileCapture.OFF);
+    SMILE_SHUTTER(R.string.cam_strings_smile_shutter_cy_txt, VideoSmileCapture.MIDDLE),
+    OFF(R.string.cam_strings_settings_off_txt, VideoSmileCapture.OFF);
 
     public static final String TAG = "VideoShutterTrigger";
     private static final int sParameterTextId = 2131690244;

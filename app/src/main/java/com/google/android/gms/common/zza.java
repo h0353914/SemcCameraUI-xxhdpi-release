@@ -7,6 +7,7 @@ import android.os.Looper;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zza implements ServiceConnection {
     boolean zzZW = false;
     private final BlockingQueue<IBinder> zzZX = new LinkedBlockingQueue();

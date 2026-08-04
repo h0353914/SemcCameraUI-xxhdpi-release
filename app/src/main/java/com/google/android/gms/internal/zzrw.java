@@ -1,7 +1,9 @@
 package com.google.android.gms.internal;
 
 import java.io.IOException;
+import kotlin.jvm.internal.ByteCompanionObject;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzrw {
     private final byte[] buffer;
     private int zzbia;
@@ -150,20 +152,20 @@ public final class zzrw {
         if (bZzFC >= 0) {
             return bZzFC;
         }
-        int i2 = bZzFC & 127;
+        int i2 = bZzFC & ByteCompanionObject.MAX_VALUE;
         byte bZzFC2 = zzFC();
         if (bZzFC2 >= 0) {
             i = bZzFC2 << 7;
         } else {
-            i2 |= (bZzFC2 & 127) << 7;
+            i2 |= (bZzFC2 & ByteCompanionObject.MAX_VALUE) << 7;
             byte bZzFC3 = zzFC();
             if (bZzFC3 >= 0) {
                 i = bZzFC3 << 14;
             } else {
-                i2 |= (bZzFC3 & 127) << 14;
+                i2 |= (bZzFC3 & ByteCompanionObject.MAX_VALUE) << 14;
                 byte bZzFC4 = zzFC();
                 if (bZzFC4 < 0) {
-                    int i3 = i2 | ((bZzFC4 & 127) << 21);
+                    int i3 = i2 | ((bZzFC4 & ByteCompanionObject.MAX_VALUE) << 21);
                     byte bZzFC5 = zzFC();
                     int i4 = i3 | (bZzFC5 << 28);
                     if (bZzFC5 >= 0) {
@@ -185,9 +187,9 @@ public final class zzrw {
     public long zzFw() throws IOException {
         long j = 0;
         for (int i = 0; i < 64; i += 7) {
-            byte bZzFC = zzFC();
-            j |= ((long) (bZzFC & 127)) << i;
-            if ((bZzFC & 128) == 0) {
+            byte b = zzFC();
+            j |= (long) (b & 127) << i;
+            if ((b & 128) == 0) {
                 return j;
             }
         }
@@ -202,8 +204,9 @@ public final class zzrw {
     }
 
     public long zzFy() throws IOException {
-        byte bZzFC = zzFC();
-        return ((((long) zzFC()) & 255) << 8) | (((long) bZzFC) & 255) | ((((long) zzFC()) & 255) << 16) | ((((long) zzFC()) & 255) << 24) | ((((long) zzFC()) & 255) << 32) | ((((long) zzFC()) & 255) << 40) | ((((long) zzFC()) & 255) << 48) | ((((long) zzFC()) & 255) << 56);
+        return (zzFC() & 255L) | ((zzFC() & 255L) << 8) | ((zzFC() & 255L) << 16) | ((zzFC() & 255L) << 24)
+                | ((zzFC() & 255L) << 32) | ((zzFC() & 255L) << 40) | ((zzFC() & 255L) << 48)
+                | ((zzFC() & 255L) << 56);
     }
 
     public void zza(zzse zzseVar) throws IOException {

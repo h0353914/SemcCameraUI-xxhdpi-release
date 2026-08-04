@@ -13,7 +13,7 @@ public final class IncrementalId {
     }
 
     public synchronized int generateNext() {
-        if (this.mId >= 2147483646) {
+        if (this.mId >= INCREMENTAL_MAX) {
             this.mId = 0;
         }
         this.mId++;

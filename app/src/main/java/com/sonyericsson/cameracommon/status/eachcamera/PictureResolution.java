@@ -10,7 +10,7 @@ public class PictureResolution extends ResolutionValue implements EachCameraStat
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusValue
     public String getKey() {
-        return "picture_resolution";
+        return KEY;
     }
 
     public PictureResolution(Rect rect) {

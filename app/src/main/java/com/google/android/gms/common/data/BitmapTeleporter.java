@@ -1,11 +1,9 @@
 package com.google.android.gms.common.data;
 
 import android.graphics.Bitmap;
-import android.graphics.Bitmap$Config;
 import android.os.Parcel;
 import android.os.ParcelFileDescriptor;
-import android.os.ParcelFileDescriptor$AutoCloseInputStream;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import android.util.Log;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import java.io.Closeable;
@@ -17,8 +15,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class BitmapTeleporter implements SafeParcelable {
-    public static final Parcelable$Creator<BitmapTeleporter> CREATOR = new zza();
+    public static final Parcelable.Creator<BitmapTeleporter> CREATOR = new zza();
     final int mVersionCode;
     ParcelFileDescriptor zzFc;
     final int zzWJ;
@@ -42,7 +41,7 @@ public class BitmapTeleporter implements SafeParcelable {
         this.zzadg = true;
     }
 
-    private void zza(Closeable closeable) {
+    private void zza(Closeable closeable) throws IOException {
         try {
             closeable.close();
         } catch (IOException e) {
@@ -50,7 +49,7 @@ public class BitmapTeleporter implements SafeParcelable {
         }
     }
 
-    private FileOutputStream zzot() {
+    private FileOutputStream zzot() throws IOException {
         if (this.zzadh == null) {
             throw new IllegalStateException("setTempDir() must be called before writing this object to a parcel");
         }
@@ -74,7 +73,7 @@ public class BitmapTeleporter implements SafeParcelable {
         return 0;
     }
 
-    public void release() {
+    public void release() throws IOException {
         if (this.zzadg) {
             return;
         }
@@ -87,6 +86,7 @@ public class BitmapTeleporter implements SafeParcelable {
 
     @Override // android.os.Parcelable
     public void writeToParcel(Parcel parcel, int i) {
+        try {
         if (this.zzFc == null) {
             Bitmap bitmap = this.zzadf;
             ByteBuffer byteBufferAllocate = ByteBuffer.allocate(bitmap.getRowBytes() * bitmap.getHeight());
@@ -109,6 +109,9 @@ public class BitmapTeleporter implements SafeParcelable {
         }
         zza.zza(this, parcel, i | 1);
         this.zzFc = null;
+        } catch (IOException e) {
+            // Ignore
+        }
     }
 
     public void zzc(File file) {
@@ -118,19 +121,19 @@ public class BitmapTeleporter implements SafeParcelable {
         this.zzadh = file;
     }
 
-    public Bitmap zzos() {
+    public Bitmap zzos() throws IOException {
         if (!this.zzadg) {
-            DataInputStream dataInputStream = new DataInputStream(new ParcelFileDescriptor$AutoCloseInputStream(this.zzFc));
+            DataInputStream dataInputStream = new DataInputStream(new ParcelFileDescriptor.AutoCloseInputStream(this.zzFc));
             try {
                 try {
                     byte[] bArr = new byte[dataInputStream.readInt()];
                     int i = dataInputStream.readInt();
                     int i2 = dataInputStream.readInt();
-                    Bitmap$Config bitmap$ConfigValueOf = Bitmap$Config.valueOf(dataInputStream.readUTF());
+                    Bitmap.Config configValueOf = Bitmap.Config.valueOf(dataInputStream.readUTF());
                     dataInputStream.read(bArr);
                     zza(dataInputStream);
                     ByteBuffer byteBufferWrap = ByteBuffer.wrap(bArr);
-                    Bitmap bitmapCreateBitmap = Bitmap.createBitmap(i, i2, bitmap$ConfigValueOf);
+                    Bitmap bitmapCreateBitmap = Bitmap.createBitmap(i, i2, configValueOf);
                     bitmapCreateBitmap.copyPixelsFromBuffer(byteBufferWrap);
                     this.zzadf = bitmapCreateBitmap;
                     this.zzadg = true;

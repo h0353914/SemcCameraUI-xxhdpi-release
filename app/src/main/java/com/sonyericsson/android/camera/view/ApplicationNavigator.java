@@ -1,19 +1,18 @@
 package com.sonyericsson.android.camera.view;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.view.View$OnClickListener;
+import android.view.View;
 import android.view.ViewStub;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout$LayoutParams;
 import android.widget.ImageView;
-import android.widget.ImageView$ScaleType;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout$LayoutParams;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.NavigatorContents;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
@@ -51,19 +50,19 @@ public class ApplicationNavigator extends LinearLayout {
     }
 
     @Override // android.view.View
-    protected void onFinishInflate() {
+    protected void onFinishInflate() throws Resources.NotFoundException {
         super.onFinishInflate();
         createIcons();
         createCurrentModeIndicator();
         updateModeSwitchAnimationContainer();
     }
 
-    public void setup(NavigatorContents navigatorContents, Rect rect, int i, View$OnClickListener view$OnClickListener) {
+    public void setup(NavigatorContents navigatorContents, Rect rect, int i, View.OnClickListener onClickListener) {
         this.mDisplayHeight = rect.height();
         this.mCaptureButtonAreaHeight = i;
         this.mViewIndex = computeViewIndex(navigatorContents);
         setIconPositions();
-        setIconClickListener(view$OnClickListener);
+        setIconClickListener(onClickListener);
         setModeIndicatorPosition(this.mViewIndex);
     }
 
@@ -114,17 +113,22 @@ public class ApplicationNavigator extends LinearLayout {
     }
 
     private void createIcons() {
-        LinearLayout$LayoutParams linearLayout$LayoutParams = new LinearLayout$LayoutParams(-2, -2);
-        linearLayout$LayoutParams.gravity = 1;
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-2, -2);
+        layoutParams.gravity = 1;
         this.mImageList = new ArrayList();
-        this.mModeIconsView = (FrameLayout) findViewById(2131296468);
+        this.mModeIconsView = (FrameLayout) findViewById(R.id.mode_icons);
+        if (this.mModeIconsView == null) {
+            CamLog.e("createIcons(): mode_icons view is null. disable navigator.");
+            this.mNavigationEnabled = false;
+            return;
+        }
         for (int i = 0; i < NavigatorContents.values().length; i++) {
             NavigatorContents navigatorContents = NavigatorContents.values()[(NavigatorContents.values().length - i) - 1];
             ImageView imageView = new ImageView(getContext());
-            imageView.setLayoutParams(linearLayout$LayoutParams);
+            imageView.setLayoutParams(layoutParams);
             imageView.setFocusable(true);
             imageView.setClickable(true);
-            imageView.setBackgroundResource(2131230837);
+            imageView.setBackgroundResource(R.drawable.application_navigator_icon_selector);
             imageView.setTag(Integer.valueOf(i));
             imageView.setImageResource(navigatorContents.getIconId());
             imageView.setContentDescription(navigatorContents.getText(getContext()));
@@ -132,41 +136,60 @@ public class ApplicationNavigator extends LinearLayout {
             this.mImageList.add(imageView);
             this.mModeIconsView.addView(imageView);
         }
-        this.mIconSize = getContext().getResources().getDimensionPixelSize(2131165456);
-        findViewById(2131296294).setMinimumHeight(this.mImageList.size() * this.mIconSize);
+        this.mIconSize = getContext().getResources().getDimensionPixelSize(R.dimen.navigator_container_width);
+        View appsBar = findViewById(R.id.apps_bar);
+        if (appsBar != null) {
+            appsBar.setMinimumHeight(this.mImageList.size() * this.mIconSize);
+        }
     }
 
     private void createCurrentModeIndicator() {
-        this.mCurrentModeIndicatorView = (ImageView) findViewById(2131296374);
+        this.mCurrentModeIndicatorView = (ImageView) findViewById(R.id.current_mode_indicator);
+        if (this.mCurrentModeIndicatorView == null) {
+            CamLog.e("createCurrentModeIndicator(): current_mode_indicator is null. disable navigator.");
+            this.mNavigationEnabled = false;
+        }
     }
 
     private void createModeSwitchContainer() {
-        this.mModeSwitchAnimationContainer = (FrameLayout) ((ViewStub) findViewById(2131296631)).inflate();
-        this.mModeSwitchViewContainer = (FrameLayout) this.mModeSwitchAnimationContainer.findViewById(2131296437);
-        this.mModeSwitchNameView = (TextView) this.mModeSwitchAnimationContainer.findViewById(2131296471);
+        this.mModeSwitchAnimationContainer = (FrameLayout) ((ViewStub) findViewById(R.id.stub_mode_switch_container)).inflate();
+        this.mModeSwitchViewContainer = (FrameLayout) this.mModeSwitchAnimationContainer.findViewById(R.id.layout_mode_switch_container);
+        this.mModeSwitchNameView = (TextView) this.mModeSwitchAnimationContainer.findViewById(R.id.mode_switch_animation_name);
         this.mModeSwitchNameView.setAlpha(0.0f);
-        this.mModeSwitchImageView = (ImageView) this.mModeSwitchAnimationContainer.findViewById(2131296470);
+        this.mModeSwitchImageView = (ImageView) this.mModeSwitchAnimationContainer.findViewById(R.id.mode_switch_animation_icon);
         this.mModeSwitchImageView.setAlpha(0.0f);
-        this.mModeSwitchImageView.setScaleType(ImageView$ScaleType.CENTER);
+        this.mModeSwitchImageView.setScaleType(ImageView.ScaleType.CENTER);
     }
 
     private void setModeIndicatorPosition(int i) {
+        if (this.mCurrentModeIndicatorView == null) {
+            return;
+        }
         this.mCurrentModeIndicatorView.setTranslationY(calculateModeIndicatorPosition(i));
     }
 
     private void setIconPositions() {
+        if (this.mImageList == null || this.mImageList.isEmpty()) {
+            return;
+        }
         for (int i = 0; i < this.mImageList.size(); i++) {
             this.mImageList.get(i).setTranslationY(calculateIconPosition(i));
         }
     }
 
-    private void setIconClickListener(View$OnClickListener view$OnClickListener) {
+    private void setIconClickListener(View.OnClickListener onClickListener) {
+        if (this.mImageList == null || this.mImageList.isEmpty()) {
+            return;
+        }
         for (int i = 0; i < this.mImageList.size(); i++) {
-            this.mImageList.get(i).setOnClickListener(view$OnClickListener);
+            this.mImageList.get(i).setOnClickListener(onClickListener);
         }
     }
 
     public void setModeIconClickable(boolean z) {
+        if (this.mImageList == null || this.mImageList.isEmpty()) {
+            return;
+        }
         for (int i = 0; i < this.mImageList.size(); i++) {
             this.mImageList.get(i).setEnabled(z);
         }
@@ -177,10 +200,16 @@ public class ApplicationNavigator extends LinearLayout {
     }
 
     public int calculateModeIndicatorPosition(int i) {
+        if (this.mCurrentModeIndicatorView == null) {
+            return 0;
+        }
         return (int) ((calculateIconPosition(i) + (this.mIconSize / 2.0f)) - (this.mCurrentModeIndicatorView.getBackground().getIntrinsicHeight() / 2.0f));
     }
 
     public void updateModeSwitchViews() {
+        if (this.mModeSwitchImageView == null || this.mModeSwitchNameView == null) {
+            return;
+        }
         this.mModeSwitchImageView.setImageResource(getSelectedContents().getLargeIconId());
         this.mModeSwitchNameView.setText(getSelectedContents().getText(getContext()));
         sendAccessibilityEventForModeName();
@@ -190,7 +219,7 @@ public class ApplicationNavigator extends LinearLayout {
         if (CamLog.VERBOSE) {
             CamLog.d("setDraggingPosition() draggingRate = " + f);
         }
-        if (this.mNavigationEnabled) {
+        if (this.mNavigationEnabled && this.mCurrentModeIndicatorView != null) {
             this.mCurrentModeIndicatorView.setTranslationY(calculateDraggingPosition(f, computeViewIndex(navigatorContents)));
         }
     }
@@ -200,7 +229,7 @@ public class ApplicationNavigator extends LinearLayout {
     }
 
     @Override // android.widget.LinearLayout
-    public void setOrientation(int i) {
+    public void setOrientation(int i) throws Resources.NotFoundException {
         if (CamLog.VERBOSE) {
             CamLog.d("setOrientation() orientation = " + i);
         }
@@ -214,6 +243,9 @@ public class ApplicationNavigator extends LinearLayout {
 
     private void updateNavigatorIcons() {
         float angle = RotationUtil.getAngle(this.mOrientation);
+        if (this.mImageList == null || this.mImageList.isEmpty()) {
+            return;
+        }
         for (ImageView imageView : this.mImageList) {
             if (this.mOrientation == 1) {
                 imageView.getLayoutParams().width = this.mIconSize;
@@ -229,12 +261,12 @@ public class ApplicationNavigator extends LinearLayout {
         }
     }
 
-    private void updateModeSwitchAnimationContainer() {
+    private void updateModeSwitchAnimationContainer() throws Resources.NotFoundException {
         int height;
         if (this.mModeSwitchAnimationContainer == null) {
             return;
         }
-        LinearLayout$LayoutParams linearLayout$LayoutParams = (LinearLayout$LayoutParams) this.mModeSwitchAnimationContainer.getLayoutParams();
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) this.mModeSwitchAnimationContainer.getLayoutParams();
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((WindowManager) getContext().getSystemService("window")).getDefaultDisplay().getMetrics(displayMetrics);
         int i = displayMetrics.heightPixels > displayMetrics.widthPixels ? displayMetrics.widthPixels : displayMetrics.heightPixels;
@@ -244,28 +276,28 @@ public class ApplicationNavigator extends LinearLayout {
             height = this.mModeSwitchAnimationContainer.getHeight();
         }
         if (height != i) {
-            linearLayout$LayoutParams.width = i;
-            linearLayout$LayoutParams.height = i;
-            this.mModeSwitchAnimationContainer.setLayoutParams(linearLayout$LayoutParams);
+            layoutParams.width = i;
+            layoutParams.height = i;
+            this.mModeSwitchAnimationContainer.setLayoutParams(layoutParams);
         }
         int i2 = displayMetrics.heightPixels > displayMetrics.widthPixels ? displayMetrics.heightPixels : displayMetrics.widthPixels;
-        int dimensionPixelSize = getContext().getResources().getDimensionPixelSize(2131165428);
-        int dimensionPixelSize2 = getContext().getResources().getDimensionPixelSize(2131165456);
-        int dimensionPixelSize3 = getContext().getResources().getDimensionPixelSize(2131165449);
-        FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) this.mModeSwitchViewContainer.getLayoutParams();
+        int dimensionPixelSize = getContext().getResources().getDimensionPixelSize(R.dimen.left_icon_area_height);
+        int dimensionPixelSize2 = getContext().getResources().getDimensionPixelSize(R.dimen.navigator_container_width);
+        int dimensionPixelSize3 = getContext().getResources().getDimensionPixelSize(R.dimen.mode_switch_image_size);
+        FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) this.mModeSwitchViewContainer.getLayoutParams();
         int i3 = ((((i2 - dimensionPixelSize) - dimensionPixelSize2) - this.mCaptureButtonAreaHeight) - dimensionPixelSize3) / 2;
         if (this.mOrientation == 2) {
-            frameLayout$LayoutParams.setMargins(0, 0, i3, 0);
-            frameLayout$LayoutParams.gravity = 8388629;
+            layoutParams2.setMargins(0, 0, i3, 0);
+            layoutParams2.gravity = 8388629;
         } else {
-            frameLayout$LayoutParams.setMargins(0, 0, 0, i3);
-            frameLayout$LayoutParams.gravity = 81;
+            layoutParams2.setMargins(0, 0, 0, i3);
+            layoutParams2.gravity = 81;
         }
-        this.mModeSwitchViewContainer.setLayoutParams(frameLayout$LayoutParams);
+        this.mModeSwitchViewContainer.setLayoutParams(layoutParams2);
         this.mModeSwitchAnimationContainer.setRotation(RotationUtil.getAngle(this.mOrientation));
     }
 
-    public TextView getModeSwitchNameView() {
+    public TextView getModeSwitchNameView() throws Resources.NotFoundException {
         if (this.mModeSwitchAnimationContainer == null) {
             setupModeSwitchContainer();
         }
@@ -308,14 +340,14 @@ public class ApplicationNavigator extends LinearLayout {
         return -1;
     }
 
-    public ImageView getModeSwitchImageView() {
+    public ImageView getModeSwitchImageView() throws Resources.NotFoundException {
         if (this.mModeSwitchAnimationContainer == null) {
             setupModeSwitchContainer();
         }
         return this.mModeSwitchImageView;
     }
 
-    private void setupModeSwitchContainer() {
+    private void setupModeSwitchContainer() throws Resources.NotFoundException {
         createModeSwitchContainer();
         updateModeSwitchAnimationContainer();
     }

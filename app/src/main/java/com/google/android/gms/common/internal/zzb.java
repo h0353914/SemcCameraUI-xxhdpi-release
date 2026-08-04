@@ -3,6 +3,7 @@ package com.google.android.gms.common.internal;
 import android.os.Looper;
 import android.util.Log;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzb {
     public static void zzZ(boolean z) {
         if (!z) {

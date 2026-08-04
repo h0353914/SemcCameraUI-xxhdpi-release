@@ -1,10 +1,11 @@
 package com.google.android.gms.auth.api.credentials;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import android.os.Parcelable;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzb implements Parcelable$Creator<CredentialPickerConfig> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzb implements Parcelable.Creator<CredentialPickerConfig> {
     static void zza(CredentialPickerConfig credentialPickerConfig, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zza(parcel, 1, credentialPickerConfig.shouldShowAddAccountButton());
@@ -13,17 +14,9 @@ public class zzb implements Parcelable$Creator<CredentialPickerConfig> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ CredentialPickerConfig createFromParcel(Parcel parcel) {
-        return zzF(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ CredentialPickerConfig[] newArray(int i) {
-        return zzaw(i);
-    }
-
-    public CredentialPickerConfig zzF(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzF, reason: merged with bridge method [inline-methods] */
+    public CredentialPickerConfig createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         boolean zZzc = false;
@@ -50,10 +43,12 @@ public class zzb implements Parcelable$Creator<CredentialPickerConfig> {
         if (parcel.dataPosition() == iZzap) {
             return new CredentialPickerConfig(iZzg, zZzc, zZzc2);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public CredentialPickerConfig[] zzaw(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaw, reason: merged with bridge method [inline-methods] */
+    public CredentialPickerConfig[] newArray(int i) {
         return new CredentialPickerConfig[i];
     }
 }

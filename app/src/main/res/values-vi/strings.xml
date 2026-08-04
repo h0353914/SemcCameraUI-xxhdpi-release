@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Không thể hoàn thành chụp. Hãy xoay chậm hơn.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Không thể hoàn thành chụp. Hãy xoay nhanh hơn.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Chụp ảnh toàn cảnh bằng cách quét camera của bạn</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Tạo các tập tin sau:\n- Hình ảnh Nhiều Góc\n- Hình ảnh 3D\nLưu ý: Các tập tin này có chứa vùng xám.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Tạo các tập tin sau:\n- Hình ảnh Nhiều Góc\n- Hình ảnh 3D</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Đang xử lý...\nHình ảnh này có chứa vùng xám.</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Tạo các tập tin sau:
+- Hình ảnh Nhiều Góc
+- Hình ảnh 3D
+Lưu ý: Các tập tin này có chứa vùng xám."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Tạo các tập tin sau:
+- Hình ảnh Nhiều Góc
+- Hình ảnh 3D"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Đang xử lý...
+Hình ảnh này có chứa vùng xám."</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Đang lưu hình ảnh</string>
     <string name="cam_3d_strings_dialog_processing_txt">Đang xử lý...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Vui lòng đợi vài giây để khởi chạy camera 3D</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Làm cho da của bạn trông sáng và mịn màng. Hiệu ứng hoạt động trong ứng dụng sử dụng camera trước. Hiệu ứng này có thể áp dụng với ảnh và video. Bạn cũng có thể điều chỉnh mức độ.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Điều chỉnh mức độ</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Làm mịn da</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Không thể khởi động ứng dụng.\nHãy đảm bảo bạn đã cài đặt và bật phiên bản mới nhất của %1$s trên thiết bị.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Không thể khởi động ứng dụng.
+Hãy đảm bảo bạn đã cài đặt và bật phiên bản mới nhất của %1$s trên thiết bị."</string>
     <string name="cam_strings_gridline_txt">Đường lưới</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Xoay bàn tay của bạn hướng về camera. Chụp hẹn giờ sẽ được bật khi camera nhận ra bàn tay của bạn. Để giúp dễ dàng nhận ra bàn tay của bạn, hãy duỗi thẳng các ngón tay lên trên.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Xoay bàn tay của bạn hướng về camera</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Cài đặt chung</string>
     <string name="cam_strings_more_txt">Thêm</string>
     <string name="cam_strings_multi_window_txt">Kéo phần giữa thanh chia tách để chuyển sang chế độ %1$s toàn màn hình để sử dụng</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Một thiết bị khác hiện đã được kết nối.\nBạn có muốn chia sẻ hình ảnh qua kính ngắm với thiết bị không?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Một thiết bị khác hiện đã được kết nối.
+Bạn có muốn chia sẻ hình ảnh qua kính ngắm với thiết bị không?"</string>
     <string name="cam_strings_multicam_add_device_txt">Thêm thiết bị</string>
     <string name="cam_strings_multicam_add_more_txt">Thêm thiết bị khác</string>
     <string name="cam_strings_multicam_apply_txt">Xong</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Định lượng</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Có dự đoán</string>
     <string name="cam_strings_predictive_capture_txt">Chụp có dự đoán</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Camera đã tự động chạy bằng cách phát hiện chuyển động của bạn hoặc đưa điện thoại lên ở chế độ nằm ngang rồi nhắm vào một vật thể.\nBạn có thể chọn cách mình thích sử dụng tính năng này từ phần Chạy thông minh trong cài đặt camera.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Camera đã tự động chạy bằng cách phát hiện chuyển động của bạn hoặc đưa điện thoại lên ở chế độ nằm ngang rồi nhắm vào một vật thể.
+Bạn có thể chọn cách mình thích sử dụng tính năng này từ phần Chạy thông minh trong cài đặt camera."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Chạm vào bên trong hình tròn để chụp ảnh</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Chạm vào màn hình để chụp ảnh</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Nhấn vào trong hình tròn để xem toàn màn hình</string>
     <string name="cam_strings_predictive_launch_guide_txt">Chạm vào trong hình tròn để khởi chạy máy ảnh</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Chạm để khởi chạy và chụp ảnh</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Chạm để khởi chạy</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Bạn có thể khởi chạy camera nhanh chóng. Nhấc nhanh thiết bị của bạn ở chế độ ngang và hướng camera về phía đối tượng. Camera sẽ tự động khởi chạy.\nBạn có thể chọn cách mình thích để sử dụng tính năng này từ Khởi chạy thông minh trong cài đặt camera.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Bạn có thể khởi chạy camera nhanh chóng. Nhấc nhanh thiết bị của bạn ở chế độ ngang và hướng camera về phía đối tượng. Camera sẽ tự động khởi chạy.
+Bạn có thể chọn cách mình thích để sử dụng tính năng này từ Khởi chạy thông minh trong cài đặt camera."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Chạy thông minh</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Bạn có thể khởi chạy nhanh camera. Đưa thiết bị lên ở chế độ xem ngang và hướng camera về phía đối tượng. Thiết bị sẽ tự động khởi chạy camera.\nBạn có thể tắt tính năng này từ mục Khởi chạy thông minh trong cài đặt camera.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Bạn có thể khởi chạy nhanh camera. Đưa thiết bị lên ở chế độ xem ngang và hướng camera về phía đối tượng. Thiết bị sẽ tự động khởi chạy camera.
+Bạn có thể tắt tính năng này từ mục Khởi chạy thông minh trong cài đặt camera."</string>
     <string name="cam_strings_predictive_launch_txt">Khởi chạy thông minh</string>
     <string name="cam_strings_preview_always_txt">Bật</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 giây</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s yêu cầu (các) quyền sau đây</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Quyền của %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Ứng dụng yêu cầu (các) quyền sau đây để thực hiện thao tác này.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Để cấp quyền, chuyển tới Thông tin về ứng dụng &gt; Cho phép.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Để cấp quyền, chuyển tới Thông tin về ứng dụng > Cho phép.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Không thể tiếp tục</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Để chụp ảnh và quay video</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Để truy xuất vị trí</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Đã lưu vào bộ nhớ trong</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">DI CHUYỂN</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Ứng dụng yêu cầu (các) quyền sau đây để thực hiện thao tác này.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Để sử dụng thẻ SD, máy ảnh cần có quyền truy cập vào thẻ SD.\nThay đổi lại bộ nhớ dữ liệu thành thẻ SD, hoặc cho phép máy ảnh truy cập vào thẻ SD trên màn hình tiếp theo.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Để sử dụng thẻ SD, máy ảnh cần có quyền truy cập vào thẻ SD.
+Thay đổi lại bộ nhớ dữ liệu thành thẻ SD, hoặc cho phép máy ảnh truy cập vào thẻ SD trên màn hình tiếp theo."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">Không sử dụng được thẻ SD</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Đã phát hiện thấy thẻ SD mới cần quyền.\n\nĐể sử dụng thẻ SD làm bộ nhớ dữ liệu, vui lòng chọn thẻ SD hoặc thư mục DCIM trên màn hình tiếp theo.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Chưa chọn thẻ SD hoặc thư mục DCIM. Không thể sử dụng thẻ SD.\n\nĐể cấp quyền, hãy bắt đầu bằng cách thay đổi vị trí lưu vào thẻ SD hoặc chọn thư mục thích hợp trên màn hình tiếp theo.</string>
-    <string name="cam_strings_sd_permission_info_txt">Đã phát hiện thẻ SD mới yêu cầu quyền.\nDo đó, bộ nhớ trong thiết bị sẽ được dùng làm bộ nhớ dữ liệu mặc định.\n\nĐể sử dụng thẻ SD làm bộ nhớ dữ liệu, vui lòng chuyển tới cài đặt camera và thay đổi tùy chọn bộ nhớ thành thẻ SD.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Đã phát hiện thấy thẻ SD mới cần quyền.
+
+Để sử dụng thẻ SD làm bộ nhớ dữ liệu, vui lòng chọn thẻ SD hoặc thư mục DCIM trên màn hình tiếp theo."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Chưa chọn thẻ SD hoặc thư mục DCIM. Không thể sử dụng thẻ SD.
+
+Để cấp quyền, hãy bắt đầu bằng cách thay đổi vị trí lưu vào thẻ SD hoặc chọn thư mục thích hợp trên màn hình tiếp theo."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Đã phát hiện thẻ SD mới yêu cầu quyền.
+Do đó, bộ nhớ trong thiết bị sẽ được dùng làm bộ nhớ dữ liệu mặc định.
+
+Để sử dụng thẻ SD làm bộ nhớ dữ liệu, vui lòng chuyển tới cài đặt camera và thay đổi tùy chọn bộ nhớ thành thẻ SD."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Để lưu ảnh và video trên thẻ SD</string>
     <string name="cam_strings_select_picture_txt">Chọn ảnh</string>
     <string name="cam_strings_self_timer_05_txt">0,5 giây</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Chụp tự động</string>
     <string name="cam_strings_side_touch_not_supported_txt">Màn hình này không hỗ trợ chức năng Cảm biến bên</string>
     <string name="cam_strings_side_touch_on_title_txt">Cảm biến bên</string>
-    <string name="cam_strings_side_touch_on_txt">Để sử dụng chức năng này, hãy chuyển đến Cài đặt &gt; Hiển thị và bật Cảm biến bên. Bật ngay?</string>
+    <string name="cam_strings_side_touch_on_txt">Để sử dụng chức năng này, hãy chuyển đến Cài đặt > Hiển thị và bật Cảm biến bên. Bật ngay?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Cảm biến bên</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Bạn có thể chụp ảnh hoặc quay video bằng cách nhấn đúp vào cảm biến trên cạnh của màn hình thay cho nút chụp. Bạn cũng có thể phóng to hoặc thu nhỏ bằng cách trượt ngón tay dọc cảm biến bên này.\nCả chế độ chụp ảnh và quay video đều hỗ trợ chức năng này. Bạn có thể tắt chức năng này từ Cảm biến bên trong cài đặt camera.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Bạn có thể chụp ảnh hoặc quay video bằng cách đơn giản là nhấn đúp vào cảm biến trên cạnh của thiết bị ở chế độ xem dọc thay cho nút chụp. Bạn cũng có thể phóng to hoặc thu nhỏ bằng cách trượt ngón tay dọc cảm biến bên này.\nCả chế độ chụp ảnh và quay video đều hỗ trợ chức năng này. Bạn có thể tắt chức năng này từ Cảm biến bên trong cài đặt camera.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Bạn có thể chụp ảnh hoặc quay video bằng cách đơn giản là nhấn đúp vào cảm biến trên cạnh của màn hình ở chế độ xem dọc thay cho nút chụp.\nCả chế độ chụp ảnh và quay video đều hỗ trợ chức năng này. Bạn có thể tắt chức năng này từ Cảm biến bên trong cài đặt camera.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Bạn có thể chụp ảnh hoặc quay video bằng cách đơn giản là nhấn đúp vào cảm biến trên cạnh của màn hình thay cho nút chụp.\nCả chế độ chụp ảnh và quay video đều hỗ trợ chức năng này. Bạn có thể tắt chức năng này từ Cảm biến bên trong cài đặt camera.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Bạn có thể chụp ảnh hoặc quay video bằng cách nhấn đúp vào cảm biến trên cạnh của màn hình thay cho nút chụp. Bạn cũng có thể phóng to hoặc thu nhỏ bằng cách trượt ngón tay dọc cảm biến bên này.
+Cả chế độ chụp ảnh và quay video đều hỗ trợ chức năng này. Bạn có thể tắt chức năng này từ Cảm biến bên trong cài đặt camera."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Bạn có thể chụp ảnh hoặc quay video bằng cách đơn giản là nhấn đúp vào cảm biến trên cạnh của thiết bị ở chế độ xem dọc thay cho nút chụp. Bạn cũng có thể phóng to hoặc thu nhỏ bằng cách trượt ngón tay dọc cảm biến bên này.
+Cả chế độ chụp ảnh và quay video đều hỗ trợ chức năng này. Bạn có thể tắt chức năng này từ Cảm biến bên trong cài đặt camera."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Bạn có thể chụp ảnh hoặc quay video bằng cách đơn giản là nhấn đúp vào cảm biến trên cạnh của màn hình ở chế độ xem dọc thay cho nút chụp.
+Cả chế độ chụp ảnh và quay video đều hỗ trợ chức năng này. Bạn có thể tắt chức năng này từ Cảm biến bên trong cài đặt camera."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Bạn có thể chụp ảnh hoặc quay video bằng cách đơn giản là nhấn đúp vào cảm biến trên cạnh của màn hình thay cho nút chụp.
+Cả chế độ chụp ảnh và quay video đều hỗ trợ chức năng này. Bạn có thể tắt chức năng này từ Cảm biến bên trong cài đặt camera."</string>
     <string name="cam_strings_side_touch_txt">Cảm biến bên</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Có thể thay đổi độ phân giải màn hình và kiểu ghi trong cài đặt Camera</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Siêu chậm (một cảnh)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Chuyển động siêu chậm</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Bạn có thể thay đổi kiểu quay và khung hình/giây cho chuyển động chậm</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Tùy chọn khác</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Ghi lại ngay khoảnh khắc quý giá bằng chuyển động chậm %1$s khung hình trên giây bằng cách nhấn nút ở giữa màn hình.\nQuay trong điều kiện có ánh sáng giúp bạn tạo ra video đẹp hơn.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Ghi lại ngay khoảnh khắc quý giá bằng chuyển động chậm %1$s khung hình trên giây bằng cách nhấn nút ở giữa màn hình.
+Quay trong điều kiện có ánh sáng giúp bạn tạo ra video đẹp hơn."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Bạn có thể quay đúng lúc với %1$s khung hình/giây bằng cách nhấn nút trung tâm</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Quay tức thì một khoảnh khắc quý giá trong chuyển động chậm %1$s khung hình/giây bằng cách nhấn vào nút ở giữa màn hình</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Chuyển động siêu chậm (một ảnh)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Chuyển động chậm</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Cách quay</string>
     <string name="cam_strings_slow_motion_standard_txt">Chuyển động chậm</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Tạo video ấn tượng bằng cách trình diễn khoảnh khắc quý giá bằng chuyển động chậm.\nQuay trong điều kiện có ánh sáng sẽ giúp bạn tạo video đẹp hơn.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Tạo video ấn tượng bằng cách trình diễn khoảnh khắc quý giá bằng chuyển động chậm.
+Quay trong điều kiện có ánh sáng sẽ giúp bạn tạo video đẹp hơn."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Bạn có thể quay video ở các t.độ kh.nhau bằng cách chuyển sang %1$s kh.hình/giây</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Nhấn vào nút giữa ở thời điểm thích hợp</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Chuyển động chậm đã được quay</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Giấy phép phần mềm</string>
     <string name="cam_strings_take_photo_txt">Chụp ảnh</string>
     <string name="cam_strings_term_of_use_accept_txt">Chấp nhận</string>
-    <string name="cam_strings_term_of_use_consent_txt">Tôi đồng ý với &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Điều khoản sử dụng&lt;/a&gt; của Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Tôi đồng ý với &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Điều khoản sử dụng&lt;/a> của Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Việc bạn sử dụng dịch vụ này có thể phải chịu các khoản phí dữ liệu di động tùy thuộc vào gói dữ liệu của bạn.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile sẽ thu thập dấu thời gian, dữ liệu dựa trên vị trí và mã nhận dạng thiết bị duy nhất ID Android được chia nhỏ của bạn để cung cấp cho bạn các kết quả phù hợp như là một phần của dịch vụ và để cải tiến dịch vụ.</string>
     <string name="cam_strings_term_of_use_decline_txt">Từ chối</string>
     <string name="cam_strings_term_of_use_title_txt">Điều khoản và Điều kiện</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Điều khoản Sử dụng&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Điều khoản Sử dụng&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Bỏ chọn ảnh</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Không thể lưu</string>
     <string name="cam_strings_timeshift_save_complete_txt">Đã lưu</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Để quay video 4K ổn định, bạn không được thay đổi cài đặt này trừ khi bạn sử dụng thẻ SD tốc độ cao (Khuyến nghị UHS Tốc độ Cấp 1 trở lên hoặc Tốc độ Cấp 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Để quay video Timeshift ổn định, bạn không được thay đổi cài đặt này trừ khi bạn sử dụng thẻ SD tốc độ cao (UHS Tốc độ Cấp 1 trở lên hoặc Tốc độ Cấp 10 được khuyến nghị). Vẫn thay đổi?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Để quay video chuyển động chậm ổn định, không thay đổi cài đặt này trừ khi bạn sử dụng thẻ SD tốc độ cao (Khuyến nghị UHS Tốc độ Cấp 1 trở lên hoặc Tốc độ Cấp 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Để quay video ổn định, chúng tôi khuyên bạn nên thay đổi bộ nhớ dữ liệu thành Bộ nhớ trong. Bạn có muốn thay đổi bây giờ không?\n\nNếu bạn tiếp tục sử dụng thẻ SD làm bộ nhớ dữ liệu, hãy nhớ sử dụng thẻ SD tốc độ cao (UHS Tốc độ Cấp 1 trở lên hoặc Tốc độ Cấp 10 được khuyến nghị).</string>
+    <string name="cam_strings_video_explanatory_txt">"Để quay video ổn định, chúng tôi khuyên bạn nên thay đổi bộ nhớ dữ liệu thành Bộ nhớ trong. Bạn có muốn thay đổi bây giờ không?
+
+Nếu bạn tiếp tục sử dụng thẻ SD làm bộ nhớ dữ liệu, hãy nhớ sử dụng thẻ SD tốc độ cao (UHS Tốc độ Cấp 1 trở lên hoặc Tốc độ Cấp 10 được khuyến nghị)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Camera kép</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Bạn có thể quay video đẹp với tiếng ồn thấp bằng cách sử dụng camera kép, ngay cả vào ban đêm hoặc trong một căn phòng thiếu sáng. Camera tự động chuyển giữa camera đơn và camera kép dựa trên cảnh để quay với độ nhạy siêu cao.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Quay video với camera kép</string>

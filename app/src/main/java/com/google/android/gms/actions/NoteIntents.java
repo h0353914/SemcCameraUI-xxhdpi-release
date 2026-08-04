@@ -1,5 +1,6 @@
 package com.google.android.gms.actions;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class NoteIntents {
     public static final String ACTION_APPEND_NOTE = "com.google.android.gms.actions.APPEND_NOTE";
     public static final String ACTION_CREATE_NOTE = "com.google.android.gms.actions.CREATE_NOTE";

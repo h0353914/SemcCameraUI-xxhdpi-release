@@ -1,11 +1,12 @@
 package com.google.android.gms.auth;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import android.os.Parcelable;
+import com.google.android.gms.common.internal.safeparcel.zza;
 import java.util.ArrayList;
 
-public class zzc implements Parcelable$Creator<AccountChangeEventsResponse> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzc implements Parcelable.Creator<AccountChangeEventsResponse> {
     static void zza(AccountChangeEventsResponse accountChangeEventsResponse, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, accountChangeEventsResponse.mVersion);
@@ -13,17 +14,9 @@ public class zzc implements Parcelable$Creator<AccountChangeEventsResponse> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ AccountChangeEventsResponse createFromParcel(Parcel parcel) {
-        return zzB(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ AccountChangeEventsResponse[] newArray(int i) {
-        return zzas(i);
-    }
-
-    public AccountChangeEventsResponse zzB(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzB, reason: merged with bridge method [inline-methods] */
+    public AccountChangeEventsResponse createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         ArrayList arrayListZzc = null;
@@ -44,10 +37,12 @@ public class zzc implements Parcelable$Creator<AccountChangeEventsResponse> {
         if (parcel.dataPosition() == iZzap) {
             return new AccountChangeEventsResponse(iZzg, arrayListZzc);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public AccountChangeEventsResponse[] zzas(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzas, reason: merged with bridge method [inline-methods] */
+    public AccountChangeEventsResponse[] newArray(int i) {
         return new AccountChangeEventsResponse[i];
     }
 }

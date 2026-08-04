@@ -3,10 +3,12 @@ package com.google.android.gms.internal;
 import android.os.Bundle;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.Api;
-import com.google.android.gms.common.api.Api$zzb;
 import com.google.android.gms.common.api.Result;
+import com.google.android.gms.internal.zzlb;
+import com.google.android.gms.internal.zzli;
 import java.util.Collections;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzlh implements zzlj {
     private final zzli zzabr;
 
@@ -27,9 +29,9 @@ public class zzlh implements zzlj {
 
     @Override // com.google.android.gms.internal.zzlj
     public void disconnect() {
-        for (zzli$zzf<?> zzli_zzf : this.zzabr.zzaca) {
-            zzli_zzf.zza(null);
-            zzli_zzf.cancel();
+        for (zzli.zzf<?> zzfVar : this.zzabr.zzaca) {
+            zzfVar.zza(null);
+            zzfVar.cancel();
         }
         this.zzabr.zzaca.clear();
         this.zzabr.zzach.clear();
@@ -50,7 +52,7 @@ public class zzlh implements zzlj {
     }
 
     @Override // com.google.android.gms.internal.zzlj
-    public <A extends Api$zzb, R extends Result, T extends zzlb$zza<R, A>> T zza(T t) {
+    public <A extends Api.zzb, R extends Result, T extends zzlb.zza<R, A>> T zza(T t) {
         this.zzabr.zzaca.add(t);
         return t;
     }
@@ -60,7 +62,7 @@ public class zzlh implements zzlj {
     }
 
     @Override // com.google.android.gms.internal.zzlj
-    public <A extends Api$zzb, T extends zzlb$zza<? extends Result, A>> T zzb(T t) {
+    public <A extends Api.zzb, T extends zzlb.zza<? extends Result, A>> T zzb(T t) {
         throw new IllegalStateException("GoogleApiClient is not connected yet.");
     }
 }

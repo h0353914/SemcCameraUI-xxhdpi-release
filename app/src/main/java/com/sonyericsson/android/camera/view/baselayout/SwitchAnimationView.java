@@ -4,14 +4,14 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PorterDuff$Mode;
+import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
-import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 
 public class SwitchAnimationView extends View {
     private static final String TAG = "SwitchAnimationView";
@@ -33,9 +33,9 @@ public class SwitchAnimationView extends View {
         this.mPositionX = 0;
         this.mPositionY = 0;
         this.mPaint.setColor(Color.argb(255, 238, 238, 238));
-        this.mHolePaint.setXfermode(new PorterDuffXfermode(PorterDuff$Mode.DST_OUT));
-        this.mDraggingStartRadius = context.getResources().getDimensionPixelSize(2131165320);
-        this.mDraggingEndRadius = context.getResources().getDimensionPixelSize(2131165319);
+        this.mHolePaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+        this.mDraggingStartRadius = context.getResources().getDimensionPixelSize(R.dimen.dragging_start_radius);
+        this.mDraggingEndRadius = context.getResources().getDimensionPixelSize(R.dimen.dragging_end_radius);
     }
 
     public SwitchAnimationView(Context context, AttributeSet attributeSet) {
@@ -46,9 +46,9 @@ public class SwitchAnimationView extends View {
         this.mPositionX = 0;
         this.mPositionY = 0;
         this.mPaint.setColor(Color.argb(255, 238, 238, 238));
-        this.mHolePaint.setXfermode(new PorterDuffXfermode(PorterDuff$Mode.DST_OUT));
-        this.mDraggingStartRadius = context.getResources().getDimensionPixelSize(2131165320);
-        this.mDraggingEndRadius = context.getResources().getDimensionPixelSize(2131165319);
+        this.mHolePaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+        this.mDraggingStartRadius = context.getResources().getDimensionPixelSize(R.dimen.dragging_start_radius);
+        this.mDraggingEndRadius = context.getResources().getDimensionPixelSize(R.dimen.dragging_end_radius);
     }
 
     @Override // android.view.View
@@ -85,7 +85,7 @@ public class SwitchAnimationView extends View {
         int iWidth = rect.width();
         int iHeight = rect.height();
         this.mPositionX = rect.centerY();
-        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
+        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
             i = this.mPositionX;
             i2 = iWidth - this.mPositionY;
         } else {

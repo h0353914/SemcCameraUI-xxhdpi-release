@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.util.Range;
+import com.sonyericsson.android.camera.device.CameraParameters;
+import com.sonymobile.imageprocessor.bypasscamera2.BypassCameraParameters;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -69,86 +71,140 @@ public class CameraCapabilityList {
     private final List<CapabilityItem<?>> mValues;
 
     public CameraCapabilityList(Context context, SharedPreferences sharedPreferences) {
-        this.EV_MAX = new IntegerCapabilityItem("max-exposure-compensation", sharedPreferences);
-        this.EV_MIN = new IntegerCapabilityItem("min-exposure-compensation", sharedPreferences);
-        this.EV_STEP = new FloatCapabilityItem("exposure-compensation-step", sharedPreferences);
-        this.FLASH = new StringListCapabilityItem("flash-mode", sharedPreferences);
-        this.FOCUS_MODE = new StringListCapabilityItem("focus-mode", sharedPreferences);
-        this.FPS_RANGE = new IntArrayListCapabilityItem("preview-fps-range", sharedPreferences);
-        this.MAX_NUM_FACE = new IntegerCapabilityItem("max-num-detected-faces", sharedPreferences);
-        this.MAX_NUM_FOCUS_AREA = new IntegerCapabilityItem("max-num-focus-areas", sharedPreferences);
-        this.MAX_ZOOM_RATIO = new FloatCapabilityItem("max-zoom-ratio", sharedPreferences);
-        this.WIDE_ZOOM_TARGET_RATIO = new FloatCapabilityItem("wide-zoom-target-ratio", sharedPreferences);
-        this.PICTURE_SIZE = new RectListCapabilityItem("picture-size", sharedPreferences);
-        this.MANUAL_ISO_SUPPORTED_PICTURE_SIZE = new RectListCapabilityItem("sony-manual-iso-size-values", sharedPreferences);
-        this.STILL_HDR_SUPPORTED_PICTURE_SIZE = new RectListCapabilityItem("sony-still-hdr-size-values", sharedPreferences);
-        this.PREVIEW_SIZE = new RectListCapabilityItem("preview-size", sharedPreferences);
-        this.PREVIEW_SIZE_FOR_STILL = new RectCapabilityItem("sony-preferred-preview-size-for-still", sharedPreferences);
-        this.PREVIEW_SIZE_FOR_VIDEO = new RectCapabilityItem("sony-preferred-preview-size-for-video", sharedPreferences);
-        this.PREVIEW_SIZE_FOR_HDR_VIDEO = new RectCapabilityItem("sony-preferred-preview-size-for-hdr-video", sharedPreferences);
-        this.VIDEO_CONFIGURATION = new VideoConfigurationListCapabilityItem("video-size", sharedPreferences);
-        this.WHITE_BALANCE = new StringListCapabilityItem("whitebalance", sharedPreferences);
-        this.AE = new StringListCapabilityItem("sony-ae-mode-values", sharedPreferences);
-        this.PREDICTIVE_CAPTURE = new StringListCapabilityItem("climax-recognition-values", sharedPreferences);
-        this.BURST = new StringListCapabilityItem("burst-values", sharedPreferences);
-        this.FOCUS_AREA = new StringListCapabilityItem("sony-focus-area-values", sharedPreferences);
-        this.HDR = new StringListCapabilityItem("sony-is-values", sharedPreferences);
-        this.ISO_RANGE = new IntegerRangeCapabilityItem("sony-iso-range", sharedPreferences);
-        this.METERING = new StringListCapabilityItem("sony-metering-mode-values", sharedPreferences);
-        this.OBJECT_TRACKING = new BooleanCapabilityItem("sony-object-tracking-supported", sharedPreferences);
-        this.TRACKING_FOCUS_DURING_LOCK = new BooleanCapabilityItem("sony-tracking-focus-during-lock-supported", sharedPreferences);
-        this.SCENE_RECOGNITION = new BooleanCapabilityItem("sony-scene-detect-supported", sharedPreferences);
-        this.SMILE_DETECTION = new BooleanCapabilityItem("sony-smile-detect-values", sharedPreferences);
-        this.VIDEO_STABILIZER = new StringListCapabilityItem("sony-vs-values", sharedPreferences);
-        this.STEADY_SHOT_CONFIGURATION = new VideoConfigurationListCapabilityItem("sony-vs-steady-shot-config", sharedPreferences);
-        this.INTELLIGENT_ACTIVE_CONFIGURATION = new VideoConfigurationListCapabilityItem("sony-vs-intelligent-active-config", sharedPreferences);
-        this.MAX_SOFT_SKIN_LEVEL = new IntegerCapabilityItem("sony-max-soft-skin-level", sharedPreferences);
-        this.MIN_SOFT_SKIN_LEVEL = new IntegerCapabilityItem("sony-min-soft-skin-level", sharedPreferences);
-        this.MAX_AWB_AB = new IntegerCapabilityItem("sony-max-awb-compensation-ab", sharedPreferences);
-        this.MIN_AWB_AB = new IntegerCapabilityItem("sony-min-awb-compensation-ab", sharedPreferences);
-        this.MACRO_FOCUS_RANGE = new FloatCapabilityItem("sony-manual-focus-for-macro", sharedPreferences);
-        this.MANUAL_FOCUS = new BooleanCapabilityItem("manual-focus-supported", sharedPreferences);
-        this.MAX_SHUTTER_SPEED = new LongCapabilityItem("sony-max-shutter-speed", sharedPreferences);
-        this.MIN_SHUTTER_SPEED = new LongCapabilityItem("sony-min-shutter-speed", sharedPreferences);
-        this.SHUTTER_SPEED_VALUES = new StringListCapabilityItem("sony-shutter-speed-values", sharedPreferences);
-        this.POWER_SAVING_MODE = new StringListCapabilityItem("sony-power-save-mode-values", sharedPreferences);
-        this.MIN_SHUTTER_SPEED_LIMIT = new LongCapabilityItem("sony-min-shutter-speed-limit", sharedPreferences);
-        this.SUPER_SLOW_CONFIGURATION = new VideoConfigurationListCapabilityItem("sony-super-slow-config", sharedPreferences);
-        this.SUPER_SLOW_VALUES = new StringListCapabilityItem("super-slow-values", sharedPreferences);
-        this.FUSION_MODE = new StringListCapabilityItem("sony-fusion", sharedPreferences);
-        this.FUSION_SUPPORTED_PICTURE_SIZES = new RectListCapabilityItem("sony-fusion-supported-picture-size-values", sharedPreferences);
-        this.FUSION_SUPPORTED_VIDEO_CONFIGURATION = new VideoConfigurationListCapabilityItem("sony-fusion-supported-video-config", sharedPreferences);
-        this.FUSION_ISO_RANGE = new IntegerRangeCapabilityItem("sony-fusion-iso-range", sharedPreferences);
-        this.ACTIVE_ARRAY_SIZE = new RectCapabilityItem("active-array-size", sharedPreferences);
-        this.LENS_FACING = new IntegerCapabilityItem("lens-facing", sharedPreferences);
-        this.SENSOR_NAME = new StringCapabilityItem("sensor-name", sharedPreferences);
-        this.HDR_VIDEO_SUPPORTED = new BooleanCapabilityItem("hdr-video-supported", sharedPreferences);
-        this.DISTORTION_CORRECTION = new StringListCapabilityItem("distortion-correction", sharedPreferences);
+        this.EV_MAX = new IntegerCapabilityItem(CameraParameters.KEY_MAX_EXPOSURE_COMPENSATION, sharedPreferences);
+        this.EV_MIN = new IntegerCapabilityItem(CameraParameters.KEY_MIN_EXPOSURE_COMPENSATION, sharedPreferences);
+        this.EV_STEP = new FloatCapabilityItem(CameraParameters.KEY_EXPOSURE_COMPENSATION_STEP, sharedPreferences);
+        this.FLASH = new StringListCapabilityItem(CameraParameters.KEY_FLASH_MODE, sharedPreferences);
+        this.FOCUS_MODE = new StringListCapabilityItem(CameraParameters.KEY_FOCUS_MODE, sharedPreferences);
+        this.FPS_RANGE = new IntArrayListCapabilityItem(CameraParameters.KEY_PREVIEW_FPS_RANGE, sharedPreferences);
+        this.MAX_NUM_FACE = new IntegerCapabilityItem(CameraParameters.KEY_MAX_NUM_DETECTED_FACES, sharedPreferences);
+        this.MAX_NUM_FOCUS_AREA = new IntegerCapabilityItem(CameraParameters.KEY_MAX_NUM_FOCUS_AREAS,
+                sharedPreferences);
+        this.MAX_ZOOM_RATIO = new FloatCapabilityItem(CameraParameters.KEY_MAX_ZOOM_RATIO, sharedPreferences);
+        this.WIDE_ZOOM_TARGET_RATIO = new FloatCapabilityItem(CameraParameters.KEY_WIDE_ZOOM_TARGET_RATIO,
+                sharedPreferences);
+        this.PICTURE_SIZE = new RectListCapabilityItem(CameraParameters.KEY_PICTURE_SIZE, sharedPreferences);
+        this.MANUAL_ISO_SUPPORTED_PICTURE_SIZE = new RectListCapabilityItem(
+                CameraParameters.KEY_EX_MANUAL_ISO_SUPPORTED_SIZES, sharedPreferences);
+        this.STILL_HDR_SUPPORTED_PICTURE_SIZE = new RectListCapabilityItem(
+                CameraParameters.KEY_EX_STILL_HDR_SUPPORTED_SIZES, sharedPreferences);
+        this.PREVIEW_SIZE = new RectListCapabilityItem(CameraParameters.KEY_PREVIEW_SIZE, sharedPreferences);
+        this.PREVIEW_SIZE_FOR_STILL = new RectCapabilityItem(CameraParameters.KEY_PREFERRED_PREVIEW_SIZE_FOR_STILL,
+                sharedPreferences);
+        this.PREVIEW_SIZE_FOR_VIDEO = new RectCapabilityItem(CameraParameters.KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO,
+                sharedPreferences);
+        this.PREVIEW_SIZE_FOR_HDR_VIDEO = new RectCapabilityItem(
+                CameraParameters.KEY_PREFERRED_PREVIEW_SIZE_FOR_HDR_VIDEO, sharedPreferences);
+        this.VIDEO_CONFIGURATION = new VideoConfigurationListCapabilityItem(CameraParameters.KEY_VIDEO_SIZE,
+                sharedPreferences);
+        this.WHITE_BALANCE = new StringListCapabilityItem(CameraParameters.KEY_WHITE_BALANCE, sharedPreferences);
+        this.AE = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_AE_MODES, sharedPreferences);
+        this.PREDICTIVE_CAPTURE = new StringListCapabilityItem(BypassCameraParameters.KEY_CLIMAX_RECOGNITION_VALUES,
+                sharedPreferences);
+        this.BURST = new StringListCapabilityItem(BypassCameraParameters.KEY_BURST_VALUES, sharedPreferences);
+        this.FOCUS_AREA = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_FOCUS_AREAS,
+                sharedPreferences);
+        this.HDR = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_IMAGE_STABILIZERS, sharedPreferences);
+        this.ISO_RANGE = new IntegerRangeCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_ISO_RANGE, sharedPreferences);
+        this.METERING = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_METERING_MODES,
+                sharedPreferences);
+        this.OBJECT_TRACKING = new BooleanCapabilityItem(CameraParameters.KEY_EX_OBJECT_TRACKING_SUPPORTED,
+                sharedPreferences);
+        this.TRACKING_FOCUS_DURING_LOCK = new BooleanCapabilityItem(
+                CameraParameters.KEY_EX_TRACKING_FOCUS_DURING_LOCK_SUPPORTED, sharedPreferences);
+        this.SCENE_RECOGNITION = new BooleanCapabilityItem(CameraParameters.KEY_EX_SCENE_DETECTION_SUPPORTED,
+                sharedPreferences);
+        this.SMILE_DETECTION = new BooleanCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_SMILE_DETECTIONS,
+                sharedPreferences);
+        this.VIDEO_STABILIZER = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_VIDEO_STABILIZERS,
+                sharedPreferences);
+        this.STEADY_SHOT_CONFIGURATION = new VideoConfigurationListCapabilityItem(
+                CameraParameters.KEY_EX_STEADY_SHOT_CONFIGURATION, sharedPreferences);
+        this.INTELLIGENT_ACTIVE_CONFIGURATION = new VideoConfigurationListCapabilityItem(
+                CameraParameters.KEY_EX_INTELLIGENT_ACTIVE_CONFIGURATION, sharedPreferences);
+        this.MAX_SOFT_SKIN_LEVEL = new IntegerCapabilityItem(CameraParameters.KEY_EX_MAX_SOFT_SKIN_LEVEL,
+                sharedPreferences);
+        this.MIN_SOFT_SKIN_LEVEL = new IntegerCapabilityItem(CameraParameters.KEY_EX_MIN_SOFT_SKIN_LEVEL,
+                sharedPreferences);
+        this.MAX_AWB_AB = new IntegerCapabilityItem(CameraParameters.KEY_EX_MAX_AWB_COMPENSATION_AB, sharedPreferences);
+        this.MIN_AWB_AB = new IntegerCapabilityItem(CameraParameters.KEY_EX_MIN_AWB_COMPENSATION_AB, sharedPreferences);
+        this.MACRO_FOCUS_RANGE = new FloatCapabilityItem(CameraParameters.KEY_EX_MANUAL_FOCUS_FOR_MACRO,
+                sharedPreferences);
+        this.MANUAL_FOCUS = new BooleanCapabilityItem(CameraParameters.KEY_MANUAL_FOCUS_SUPPORTED, sharedPreferences);
+        this.MAX_SHUTTER_SPEED = new LongCapabilityItem(CameraParameters.KEY_EX_MAX_SHUTTER_SPEED, sharedPreferences);
+        this.MIN_SHUTTER_SPEED = new LongCapabilityItem(CameraParameters.KEY_EX_MIN_SHUTTER_SPEED, sharedPreferences);
+        this.SHUTTER_SPEED_VALUES = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_SHUTTER_SPEED,
+                sharedPreferences);
+        this.POWER_SAVING_MODE = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_POWER_SAVE_MODE,
+                sharedPreferences);
+        this.MIN_SHUTTER_SPEED_LIMIT = new LongCapabilityItem(CameraParameters.KEY_EX_MIN_SHUTTER_SPEED_LIMIT,
+                sharedPreferences);
+        this.SUPER_SLOW_CONFIGURATION = new VideoConfigurationListCapabilityItem(
+                CameraParameters.KEY_EX_SUPER_SLOW_CONFIGURATION, sharedPreferences);
+        this.SUPER_SLOW_VALUES = new StringListCapabilityItem(BypassCameraParameters.KEY_SUPER_SLOW_VALUES,
+                sharedPreferences);
+        this.FUSION_MODE = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_FUSION_MODES,
+                sharedPreferences);
+        this.FUSION_SUPPORTED_PICTURE_SIZES = new RectListCapabilityItem(
+                CameraParameters.KEY_EX_FUSION_SUPPORTED_PICTURE_SIZES, sharedPreferences);
+        this.FUSION_SUPPORTED_VIDEO_CONFIGURATION = new VideoConfigurationListCapabilityItem(
+                CameraParameters.KEY_EX_FUSION_SUPPORTED_VIDEO_CONFIGURATION, sharedPreferences);
+        this.FUSION_ISO_RANGE = new IntegerRangeCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_FUSION_ISO_RANGE,
+                sharedPreferences);
+        this.ACTIVE_ARRAY_SIZE = new RectCapabilityItem(CameraParameters.KEY_ACTIVE_ARRAY_SIZE, sharedPreferences);
+        this.LENS_FACING = new IntegerCapabilityItem(CameraParameters.KEY_LENS_FACING, sharedPreferences);
+        this.SENSOR_NAME = new StringCapabilityItem(CameraParameters.KEY_SENSOR_NAME, sharedPreferences);
+        this.HDR_VIDEO_SUPPORTED = new BooleanCapabilityItem(CameraParameters.KEY_HDR_VIDEO_SUPPORTED,
+                sharedPreferences);
+        this.DISTORTION_CORRECTION = new StringListCapabilityItem(CameraParameters.KEY_DISTORTION_CORRECTION,
+                sharedPreferences);
         this.mValues = createList();
         this.RESOLUTION_CAPABILITY = new ResolutionCapabilityItem(getResolutionOptions(context));
     }
 
-    public CameraCapabilityList(Context context, CameraStaticParameters cameraStaticParameters, BypassCameraStaticParameters bypassCameraStaticParameters) {
+    public CameraCapabilityList(Context context, CameraStaticParameters cameraStaticParameters,
+            BypassCameraStaticParameters bypassCameraStaticParameters) {
         boolean z;
-        this.EV_MAX = new IntegerCapabilityItem("max-exposure-compensation", Integer.valueOf(cameraStaticParameters.getMaxExposureCompensation()));
-        this.EV_MIN = new IntegerCapabilityItem("min-exposure-compensation", Integer.valueOf(cameraStaticParameters.getMinExposureCompensation()));
-        this.EV_STEP = new FloatCapabilityItem("exposure-compensation-step", Float.valueOf(cameraStaticParameters.getExposureCompensationStep()));
-        this.FLASH = new StringListCapabilityItem("flash-mode", cameraStaticParameters.getSupportedFlashModes());
-        this.FOCUS_MODE = new StringListCapabilityItem("focus-mode", cameraStaticParameters.getSupportedFocusModes());
-        this.FPS_RANGE = new IntArrayListCapabilityItem("preview-fps-range", cameraStaticParameters.getSupportedPreviewFpsRange());
-        this.MAX_NUM_FACE = new IntegerCapabilityItem("max-num-detected-faces", Integer.valueOf(cameraStaticParameters.getMaxNumDetectedFaces()));
-        this.MAX_NUM_FOCUS_AREA = new IntegerCapabilityItem("max-num-focus-areas", Integer.valueOf(cameraStaticParameters.getMaxNumFocusAreas()));
-        this.MAX_ZOOM_RATIO = new FloatCapabilityItem("max-zoom-ratio", Float.valueOf(cameraStaticParameters.getMaxZoomRatio()));
-        this.WIDE_ZOOM_TARGET_RATIO = new FloatCapabilityItem("wide-zoom-target-ratio", Float.valueOf(cameraStaticParameters.getWideZoomTargetRatio()));
-        this.PICTURE_SIZE = new RectListCapabilityItem("picture-size", cameraStaticParameters.getSupportedPictureSizes());
-        this.MANUAL_ISO_SUPPORTED_PICTURE_SIZE = new RectListCapabilityItem("sony-manual-iso-size-values", cameraStaticParameters.getManualIsoSupportedPictureSizes());
-        this.STILL_HDR_SUPPORTED_PICTURE_SIZE = new RectListCapabilityItem("sony-still-hdr-size-values", cameraStaticParameters.getStillHdrSupportedPictureSizes());
-        this.PREVIEW_SIZE = new RectListCapabilityItem("preview-size", cameraStaticParameters.getSupportedPreviewSizes());
-        this.PREVIEW_SIZE_FOR_STILL = new RectCapabilityItem("sony-preferred-preview-size-for-still", cameraStaticParameters.getPreferredPreviewSizeForStill());
-        this.PREVIEW_SIZE_FOR_VIDEO = new RectCapabilityItem("sony-preferred-preview-size-for-video", cameraStaticParameters.getPreferredPreviewSizeForVideo());
-        this.PREVIEW_SIZE_FOR_HDR_VIDEO = new RectCapabilityItem("sony-preferred-preview-size-for-hdr-video", cameraStaticParameters.getPreferredPreviewSizeForHdrVideo());
+        this.EV_MAX = new IntegerCapabilityItem(CameraParameters.KEY_MAX_EXPOSURE_COMPENSATION,
+                Integer.valueOf(cameraStaticParameters.getMaxExposureCompensation()));
+        this.EV_MIN = new IntegerCapabilityItem(CameraParameters.KEY_MIN_EXPOSURE_COMPENSATION,
+                Integer.valueOf(cameraStaticParameters.getMinExposureCompensation()));
+        this.EV_STEP = new FloatCapabilityItem(CameraParameters.KEY_EXPOSURE_COMPENSATION_STEP,
+                Float.valueOf(cameraStaticParameters.getExposureCompensationStep()));
+        this.FLASH = new StringListCapabilityItem(CameraParameters.KEY_FLASH_MODE,
+                cameraStaticParameters.getSupportedFlashModes());
+        this.FOCUS_MODE = new StringListCapabilityItem(CameraParameters.KEY_FOCUS_MODE,
+                cameraStaticParameters.getSupportedFocusModes());
+        this.FPS_RANGE = new IntArrayListCapabilityItem(CameraParameters.KEY_PREVIEW_FPS_RANGE,
+                cameraStaticParameters.getSupportedPreviewFpsRange());
+        this.MAX_NUM_FACE = new IntegerCapabilityItem(CameraParameters.KEY_MAX_NUM_DETECTED_FACES,
+                Integer.valueOf(cameraStaticParameters.getMaxNumDetectedFaces()));
+        this.MAX_NUM_FOCUS_AREA = new IntegerCapabilityItem(CameraParameters.KEY_MAX_NUM_FOCUS_AREAS,
+                Integer.valueOf(cameraStaticParameters.getMaxNumFocusAreas()));
+        this.MAX_ZOOM_RATIO = new FloatCapabilityItem(CameraParameters.KEY_MAX_ZOOM_RATIO,
+                Float.valueOf(cameraStaticParameters.getMaxZoomRatio()));
+        this.WIDE_ZOOM_TARGET_RATIO = new FloatCapabilityItem(CameraParameters.KEY_WIDE_ZOOM_TARGET_RATIO,
+                Float.valueOf(cameraStaticParameters.getWideZoomTargetRatio()));
+        this.PICTURE_SIZE = new RectListCapabilityItem(CameraParameters.KEY_PICTURE_SIZE,
+                cameraStaticParameters.getSupportedPictureSizes());
+        this.MANUAL_ISO_SUPPORTED_PICTURE_SIZE = new RectListCapabilityItem(
+                CameraParameters.KEY_EX_MANUAL_ISO_SUPPORTED_SIZES,
+                cameraStaticParameters.getManualIsoSupportedPictureSizes());
+        this.STILL_HDR_SUPPORTED_PICTURE_SIZE = new RectListCapabilityItem(
+                CameraParameters.KEY_EX_STILL_HDR_SUPPORTED_SIZES,
+                cameraStaticParameters.getStillHdrSupportedPictureSizes());
+        this.PREVIEW_SIZE = new RectListCapabilityItem(CameraParameters.KEY_PREVIEW_SIZE,
+                cameraStaticParameters.getSupportedPreviewSizes());
+        this.PREVIEW_SIZE_FOR_STILL = new RectCapabilityItem(CameraParameters.KEY_PREFERRED_PREVIEW_SIZE_FOR_STILL,
+                cameraStaticParameters.getPreferredPreviewSizeForStill());
+        this.PREVIEW_SIZE_FOR_VIDEO = new RectCapabilityItem(CameraParameters.KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO,
+                cameraStaticParameters.getPreferredPreviewSizeForVideo());
+        this.PREVIEW_SIZE_FOR_HDR_VIDEO = new RectCapabilityItem(
+                CameraParameters.KEY_PREFERRED_PREVIEW_SIZE_FOR_HDR_VIDEO,
+                cameraStaticParameters.getPreferredPreviewSizeForHdrVideo());
         List<VideoConfiguration> supportedVideoConfiguration = cameraStaticParameters.getSupportedVideoConfiguration();
-        List<VideoConfiguration> supportedHighFrameRateVideoConfiguration = bypassCameraStaticParameters.getSupportedHighFrameRateVideoConfiguration();
+        List<VideoConfiguration> supportedHighFrameRateVideoConfiguration = bypassCameraStaticParameters
+                .getSupportedHighFrameRateVideoConfiguration();
         ArrayList arrayList = new ArrayList();
         if (supportedHighFrameRateVideoConfiguration != null && !supportedHighFrameRateVideoConfiguration.isEmpty()) {
             for (VideoConfiguration videoConfiguration : supportedHighFrameRateVideoConfiguration) {
@@ -171,44 +227,89 @@ public class CameraCapabilityList {
             }
         }
         supportedVideoConfiguration.addAll(arrayList);
-        this.VIDEO_CONFIGURATION = new VideoConfigurationListCapabilityItem("video-size", supportedVideoConfiguration);
-        this.WHITE_BALANCE = new StringListCapabilityItem("whitebalance", cameraStaticParameters.getSupportedWhiteBalance());
-        this.AE = new StringListCapabilityItem("sony-ae-mode-values", cameraStaticParameters.getSupportedAeModes());
-        this.PREDICTIVE_CAPTURE = new StringListCapabilityItem("climax-recognition-values", bypassCameraStaticParameters.getSupportedClimaxRecognition());
-        this.BURST = new StringListCapabilityItem("burst-values", bypassCameraStaticParameters.getSupportedBurst());
-        this.FOCUS_AREA = new StringListCapabilityItem("sony-focus-area-values", cameraStaticParameters.getSupportedFocusAreaModes());
-        this.HDR = new StringListCapabilityItem("sony-is-values", cameraStaticParameters.getSupportedStillHdrValues());
-        this.ISO_RANGE = new IntegerRangeCapabilityItem("sony-iso-range", cameraStaticParameters.getSupportedIsoRange());
-        this.METERING = new StringListCapabilityItem("sony-metering-mode-values", cameraStaticParameters.getSupportedAeRegionModes());
-        this.OBJECT_TRACKING = new BooleanCapabilityItem("sony-object-tracking-supported", Boolean.valueOf(cameraStaticParameters.isObjectTrackingSupported()));
-        this.TRACKING_FOCUS_DURING_LOCK = new BooleanCapabilityItem("sony-tracking-focus-during-lock-supported", Boolean.valueOf(cameraStaticParameters.isTrackingFocusDuringLockSupported()));
-        this.SCENE_RECOGNITION = new BooleanCapabilityItem("sony-scene-detect-supported", Boolean.valueOf(cameraStaticParameters.isSceneDetectionSupported() && cameraStaticParameters.isConditionDetectionSupported()));
-        this.SMILE_DETECTION = new BooleanCapabilityItem("sony-smile-detect-values", Boolean.valueOf(cameraStaticParameters.isSmileDetectionAvailable()));
-        this.VIDEO_STABILIZER = new StringListCapabilityItem("sony-vs-values", bypassCameraStaticParameters.getSupportedVideoStabilizer());
-        this.STEADY_SHOT_CONFIGURATION = new VideoConfigurationListCapabilityItem("sony-vs-steady-shot-config", bypassCameraStaticParameters.getSupportedSteadyShotConfiguration());
-        this.INTELLIGENT_ACTIVE_CONFIGURATION = new VideoConfigurationListCapabilityItem("sony-vs-intelligent-active-config", bypassCameraStaticParameters.getSupportedIntelligentActiveConfiguration());
-        this.MAX_SOFT_SKIN_LEVEL = new IntegerCapabilityItem("sony-max-soft-skin-level", Integer.valueOf(cameraStaticParameters.getMaxSoftSkinLevel()));
-        this.MIN_SOFT_SKIN_LEVEL = new IntegerCapabilityItem("sony-min-soft-skin-level", Integer.valueOf(cameraStaticParameters.getMinSoftSkinLevel()));
-        this.MAX_AWB_AB = new IntegerCapabilityItem("sony-max-awb-compensation-ab", Integer.valueOf(cameraStaticParameters.getMaxAwbColorCompensationAb()));
-        this.MIN_AWB_AB = new IntegerCapabilityItem("sony-min-awb-compensation-ab", Integer.valueOf(cameraStaticParameters.getMinAwbColorCompensationAb()));
-        this.MACRO_FOCUS_RANGE = new FloatCapabilityItem("sony-manual-focus-for-macro", Float.valueOf(cameraStaticParameters.getMacroValueForManualFocus()));
-        this.MANUAL_FOCUS = new BooleanCapabilityItem("manual-focus-supported", Boolean.valueOf(cameraStaticParameters.isManualFocusSupported()));
-        this.MAX_SHUTTER_SPEED = new LongCapabilityItem("sony-max-shutter-speed", Long.valueOf(cameraStaticParameters.getMaxShutterSpeed()));
-        this.MIN_SHUTTER_SPEED = new LongCapabilityItem("sony-min-shutter-speed", Long.valueOf(cameraStaticParameters.getMinShutterSpeed()));
-        this.SHUTTER_SPEED_VALUES = new StringListCapabilityItem("sony-shutter-speed-values", cameraStaticParameters.getSupportedShutterSpeedValues());
-        this.POWER_SAVING_MODE = new StringListCapabilityItem("sony-power-save-mode-values", cameraStaticParameters.getSupportedPowerSaveModes());
-        this.MIN_SHUTTER_SPEED_LIMIT = new LongCapabilityItem("sony-min-shutter-speed-limit", Long.valueOf(cameraStaticParameters.getMinExposureTimeLimit()));
-        this.SUPER_SLOW_CONFIGURATION = new VideoConfigurationListCapabilityItem("sony-super-slow-config", bypassCameraStaticParameters.getSupportedSuperSlowConfiguration());
-        this.SUPER_SLOW_VALUES = new StringListCapabilityItem("super-slow-values", bypassCameraStaticParameters.getSupportedSuperSlowmotion());
-        this.FUSION_MODE = new StringListCapabilityItem("sony-fusion", cameraStaticParameters.getSupportedFusionModes());
-        this.FUSION_SUPPORTED_PICTURE_SIZES = new RectListCapabilityItem("sony-fusion-supported-picture-size-values", cameraStaticParameters.getFusionSupportedPictureSizes());
-        this.FUSION_SUPPORTED_VIDEO_CONFIGURATION = new VideoConfigurationListCapabilityItem("sony-fusion-supported-video-config", cameraStaticParameters.getFusionSupportedVideoConfiguration());
-        this.FUSION_ISO_RANGE = new IntegerRangeCapabilityItem("sony-fusion-iso-range", cameraStaticParameters.getSupportedFusionIsoRange());
-        this.ACTIVE_ARRAY_SIZE = new RectCapabilityItem("active-array-size", cameraStaticParameters.getActiveArraySize());
-        this.LENS_FACING = new IntegerCapabilityItem("lens-facing", Integer.valueOf(cameraStaticParameters.getLensFacing()));
-        this.SENSOR_NAME = new StringCapabilityItem("sensor-name", cameraStaticParameters.getSensorName());
-        this.HDR_VIDEO_SUPPORTED = new BooleanCapabilityItem("hdr-video-supported", Boolean.valueOf(bypassCameraStaticParameters.isVideoHdrSupported()));
-        this.DISTORTION_CORRECTION = new StringListCapabilityItem("distortion-correction", cameraStaticParameters.getSupportedDistortionCorrection());
+        this.VIDEO_CONFIGURATION = new VideoConfigurationListCapabilityItem(CameraParameters.KEY_VIDEO_SIZE,
+                supportedVideoConfiguration);
+        this.WHITE_BALANCE = new StringListCapabilityItem(CameraParameters.KEY_WHITE_BALANCE,
+                cameraStaticParameters.getSupportedWhiteBalance());
+        this.AE = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_AE_MODES,
+                cameraStaticParameters.getSupportedAeModes());
+        this.PREDICTIVE_CAPTURE = new StringListCapabilityItem(BypassCameraParameters.KEY_CLIMAX_RECOGNITION_VALUES,
+                bypassCameraStaticParameters.getSupportedClimaxRecognition());
+        this.BURST = new StringListCapabilityItem(BypassCameraParameters.KEY_BURST_VALUES,
+                bypassCameraStaticParameters.getSupportedBurst());
+        this.FOCUS_AREA = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_FOCUS_AREAS,
+                cameraStaticParameters.getSupportedFocusAreaModes());
+        this.HDR = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_IMAGE_STABILIZERS,
+                cameraStaticParameters.getSupportedStillHdrValues());
+        this.ISO_RANGE = new IntegerRangeCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_ISO_RANGE,
+                cameraStaticParameters.getSupportedIsoRange());
+        this.METERING = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_METERING_MODES,
+                cameraStaticParameters.getSupportedAeRegionModes());
+        this.OBJECT_TRACKING = new BooleanCapabilityItem(CameraParameters.KEY_EX_OBJECT_TRACKING_SUPPORTED,
+                Boolean.valueOf(cameraStaticParameters.isObjectTrackingSupported()));
+        this.TRACKING_FOCUS_DURING_LOCK = new BooleanCapabilityItem(
+                CameraParameters.KEY_EX_TRACKING_FOCUS_DURING_LOCK_SUPPORTED,
+                Boolean.valueOf(cameraStaticParameters.isTrackingFocusDuringLockSupported()));
+        this.SCENE_RECOGNITION = new BooleanCapabilityItem(CameraParameters.KEY_EX_SCENE_DETECTION_SUPPORTED,
+                Boolean.valueOf(cameraStaticParameters.isSceneDetectionSupported()
+                        && cameraStaticParameters.isConditionDetectionSupported()));
+        this.SMILE_DETECTION = new BooleanCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_SMILE_DETECTIONS,
+                Boolean.valueOf(cameraStaticParameters.isSmileDetectionAvailable()));
+        this.VIDEO_STABILIZER = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_VIDEO_STABILIZERS,
+                bypassCameraStaticParameters.getSupportedVideoStabilizer());
+        this.STEADY_SHOT_CONFIGURATION = new VideoConfigurationListCapabilityItem(
+                CameraParameters.KEY_EX_STEADY_SHOT_CONFIGURATION,
+                bypassCameraStaticParameters.getSupportedSteadyShotConfiguration());
+        this.INTELLIGENT_ACTIVE_CONFIGURATION = new VideoConfigurationListCapabilityItem(
+                CameraParameters.KEY_EX_INTELLIGENT_ACTIVE_CONFIGURATION,
+                bypassCameraStaticParameters.getSupportedIntelligentActiveConfiguration());
+        this.MAX_SOFT_SKIN_LEVEL = new IntegerCapabilityItem(CameraParameters.KEY_EX_MAX_SOFT_SKIN_LEVEL,
+                Integer.valueOf(cameraStaticParameters.getMaxSoftSkinLevel()));
+        this.MIN_SOFT_SKIN_LEVEL = new IntegerCapabilityItem(CameraParameters.KEY_EX_MIN_SOFT_SKIN_LEVEL,
+                Integer.valueOf(cameraStaticParameters.getMinSoftSkinLevel()));
+        this.MAX_AWB_AB = new IntegerCapabilityItem(CameraParameters.KEY_EX_MAX_AWB_COMPENSATION_AB,
+                Integer.valueOf(cameraStaticParameters.getMaxAwbColorCompensationAb()));
+        this.MIN_AWB_AB = new IntegerCapabilityItem(CameraParameters.KEY_EX_MIN_AWB_COMPENSATION_AB,
+                Integer.valueOf(cameraStaticParameters.getMinAwbColorCompensationAb()));
+        this.MACRO_FOCUS_RANGE = new FloatCapabilityItem(CameraParameters.KEY_EX_MANUAL_FOCUS_FOR_MACRO,
+                Float.valueOf(cameraStaticParameters.getMacroValueForManualFocus()));
+        this.MANUAL_FOCUS = new BooleanCapabilityItem(CameraParameters.KEY_MANUAL_FOCUS_SUPPORTED,
+                Boolean.valueOf(cameraStaticParameters.isManualFocusSupported()));
+        this.MAX_SHUTTER_SPEED = new LongCapabilityItem(CameraParameters.KEY_EX_MAX_SHUTTER_SPEED,
+                Long.valueOf(cameraStaticParameters.getMaxShutterSpeed()));
+        this.MIN_SHUTTER_SPEED = new LongCapabilityItem(CameraParameters.KEY_EX_MIN_SHUTTER_SPEED,
+                Long.valueOf(cameraStaticParameters.getMinShutterSpeed()));
+        this.SHUTTER_SPEED_VALUES = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_SHUTTER_SPEED,
+                cameraStaticParameters.getSupportedShutterSpeedValues());
+        this.POWER_SAVING_MODE = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_POWER_SAVE_MODE,
+                cameraStaticParameters.getSupportedPowerSaveModes());
+        this.MIN_SHUTTER_SPEED_LIMIT = new LongCapabilityItem(CameraParameters.KEY_EX_MIN_SHUTTER_SPEED_LIMIT,
+                Long.valueOf(cameraStaticParameters.getMinExposureTimeLimit()));
+        this.SUPER_SLOW_CONFIGURATION = new VideoConfigurationListCapabilityItem(
+                CameraParameters.KEY_EX_SUPER_SLOW_CONFIGURATION,
+                bypassCameraStaticParameters.getSupportedSuperSlowConfiguration());
+        this.SUPER_SLOW_VALUES = new StringListCapabilityItem(BypassCameraParameters.KEY_SUPER_SLOW_VALUES,
+                bypassCameraStaticParameters.getSupportedSuperSlowmotion());
+        this.FUSION_MODE = new StringListCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_FUSION_MODES,
+                cameraStaticParameters.getSupportedFusionModes());
+        this.FUSION_SUPPORTED_PICTURE_SIZES = new RectListCapabilityItem(
+                CameraParameters.KEY_EX_FUSION_SUPPORTED_PICTURE_SIZES,
+                cameraStaticParameters.getFusionSupportedPictureSizes());
+        this.FUSION_SUPPORTED_VIDEO_CONFIGURATION = new VideoConfigurationListCapabilityItem(
+                CameraParameters.KEY_EX_FUSION_SUPPORTED_VIDEO_CONFIGURATION,
+                cameraStaticParameters.getFusionSupportedVideoConfiguration());
+        this.FUSION_ISO_RANGE = new IntegerRangeCapabilityItem(CameraParameters.KEY_EX_SUPPORTED_FUSION_ISO_RANGE,
+                cameraStaticParameters.getSupportedFusionIsoRange());
+        this.ACTIVE_ARRAY_SIZE = new RectCapabilityItem(CameraParameters.KEY_ACTIVE_ARRAY_SIZE,
+                cameraStaticParameters.getActiveArraySize());
+        this.LENS_FACING = new IntegerCapabilityItem(CameraParameters.KEY_LENS_FACING,
+                Integer.valueOf(cameraStaticParameters.getLensFacing()));
+        this.SENSOR_NAME = new StringCapabilityItem(CameraParameters.KEY_SENSOR_NAME,
+                cameraStaticParameters.getSensorName());
+        this.HDR_VIDEO_SUPPORTED = new BooleanCapabilityItem(CameraParameters.KEY_HDR_VIDEO_SUPPORTED,
+                Boolean.valueOf(bypassCameraStaticParameters.isVideoHdrSupported()));
+        this.DISTORTION_CORRECTION = new StringListCapabilityItem(CameraParameters.KEY_DISTORTION_CORRECTION,
+                cameraStaticParameters.getSupportedDistortionCorrection());
         this.mValues = createList();
         this.RESOLUTION_CAPABILITY = new ResolutionCapabilityItem(getResolutionOptions(context));
     }

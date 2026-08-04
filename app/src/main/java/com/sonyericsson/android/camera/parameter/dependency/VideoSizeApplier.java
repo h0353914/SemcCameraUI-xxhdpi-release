@@ -1,3 +1,26 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.parameter.dependency;
 
 import com.sonyericsson.android.camera.configuration.UserSettingSelectability;
@@ -7,7 +30,7 @@ import com.sonyericsson.android.camera.configuration.parameters.VideoHdr;
 import com.sonyericsson.android.camera.configuration.parameters.VideoShutterTrigger;
 import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
 import com.sonyericsson.android.camera.configuration.parameters.VideoStabilizer;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 import com.sonyericsson.android.camera.parameter.ParameterUtil;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
@@ -22,29 +45,29 @@ public class VideoSizeApplier extends DependencyApplier {
 
     @Override // com.sonyericsson.android.camera.parameter.dependency.DependencyApplier
     public void apply(CapturingModeParams capturingModeParams) {
-        CameraInfo$CameraId cameraInfo$CameraId = capturingModeParams.getActionMode().mCameraId;
+        CameraInfo.CameraId cameraId = capturingModeParams.getActionMode().mCameraId;
         VideoSize videoSize = (VideoSize) capturingModeParams.mVideoSize.get();
-        switch (VideoSizeApplier$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$VideoSize[this.mValue.ordinal()]) {
-            case 1:
-            case 2:
-                applyCollections(cameraInfo$CameraId, videoSize, capturingModeParams);
+        switch (this.mValue) {
+            case VGA:
+            case MMS:
+                applyCollections(cameraId, videoSize, capturingModeParams);
                 break;
-            case 3:
-                apply60Fps(cameraInfo$CameraId, videoSize, capturingModeParams);
+            case FULL_HD_60FPS:
+                apply60Fps(cameraId, videoSize, capturingModeParams);
                 break;
-            case 4:
-            case 5:
-                apply4k(cameraInfo$CameraId, videoSize, capturingModeParams);
+            case FOUR_K_UHD_H264:
+            case FOUR_K_UHD_H265:
+                apply4k(cameraId, videoSize, capturingModeParams);
                 break;
-            case 6:
-                apply30Fps(cameraInfo$CameraId, videoSize, capturingModeParams);
+            case FULL_HD:
+                apply30Fps(cameraId, videoSize, capturingModeParams);
                 break;
             default:
-                applyOther(cameraInfo$CameraId, videoSize, capturingModeParams);
+                applyOther(cameraId, videoSize, capturingModeParams);
                 break;
         }
         if (((FusionMode) capturingModeParams.mFusionMode.get()).getKey().getSelectability() != UserSettingSelectability.FIXED) {
-            if (!PlatformCapability.isFusionSupportedWith(cameraInfo$CameraId, videoSize) || capturingModeParams.mVideoHdr.get() == VideoHdr.HDR_ON) {
+            if (!PlatformCapability.isFusionSupportedWith(cameraId, videoSize) || capturingModeParams.mVideoHdr.get() == VideoHdr.HDR_ON) {
                 ParameterUtil.unavailable(capturingModeParams.mFusionMode, capturingModeParams.mFusionMode.get());
             } else {
                 ParameterUtil.reset(capturingModeParams.mFusionMode);
@@ -64,9 +87,9 @@ public class VideoSizeApplier extends DependencyApplier {
         }
     }
 
-    private void applyCollections(CameraInfo$CameraId cameraInfo$CameraId, VideoSize videoSize, CapturingModeParams capturingModeParams) {
-        boolean zIsSteadyShotSupported = VideoStabilizer.isSteadyShotSupported(cameraInfo$CameraId, videoSize);
-        boolean zIsIntelligentActiveAvailable = DependencyCheckUtil.isIntelligentActiveAvailable(cameraInfo$CameraId, videoSize, (VideoHdr) capturingModeParams.mVideoHdr.get());
+    private void applyCollections(CameraInfo.CameraId cameraId, VideoSize videoSize, CapturingModeParams capturingModeParams) {
+        boolean zIsSteadyShotSupported = VideoStabilizer.isSteadyShotSupported(cameraId, videoSize);
+        boolean zIsIntelligentActiveAvailable = DependencyCheckUtil.isIntelligentActiveAvailable(cameraId, videoSize, (VideoHdr) capturingModeParams.mVideoHdr.get());
         if (zIsSteadyShotSupported || zIsIntelligentActiveAvailable) {
             ParameterUtil.reset(capturingModeParams.mVideoStabilizer);
         } else {
@@ -78,8 +101,8 @@ public class VideoSizeApplier extends DependencyApplier {
         ParameterUtil.reset(capturingModeParams.mObjectTracking);
     }
 
-    private void apply60Fps(CameraInfo$CameraId cameraInfo$CameraId, VideoSize videoSize, CapturingModeParams capturingModeParams) {
-        if (VideoStabilizer.isSteadyShotSupported(cameraInfo$CameraId, videoSize)) {
+    private void apply60Fps(CameraInfo.CameraId cameraId, VideoSize videoSize, CapturingModeParams capturingModeParams) {
+        if (VideoStabilizer.isSteadyShotSupported(cameraId, videoSize)) {
             if (capturingModeParams.mVideoStabilizer.get() == VideoStabilizer.INTELLIGENT_ACTIVE) {
                 ParameterUtil.applyRecommendedValue(capturingModeParams.mVideoStabilizer, VideoStabilizer.STEADY_SHOT);
             } else {
@@ -94,11 +117,11 @@ public class VideoSizeApplier extends DependencyApplier {
         ParameterUtil.reset(capturingModeParams.mObjectTracking);
     }
 
-    private void apply4k(CameraInfo$CameraId cameraInfo$CameraId, VideoSize videoSize, CapturingModeParams capturingModeParams) {
+    private void apply4k(CameraInfo.CameraId cameraId, VideoSize videoSize, CapturingModeParams capturingModeParams) {
         ParameterUtil.unavailable(capturingModeParams.mObjectTracking, ObjectTracking.OFF);
         ParameterUtil.unavailable(capturingModeParams.mVideoShutterTrigger, VideoShutterTrigger.OFF);
         if (capturingModeParams.mVideoHdr.get() != VideoHdr.HDR_ON) {
-            if (VideoStabilizer.isSteadyShotSupported(cameraInfo$CameraId, videoSize)) {
+            if (VideoStabilizer.isSteadyShotSupported(cameraId, videoSize)) {
                 if (capturingModeParams.mVideoStabilizer.get() == VideoStabilizer.INTELLIGENT_ACTIVE) {
                     ParameterUtil.applyRecommendedValue(capturingModeParams.mVideoStabilizer, VideoStabilizer.STEADY_SHOT);
                 } else {
@@ -112,9 +135,9 @@ public class VideoSizeApplier extends DependencyApplier {
         ParameterUtil.reset(capturingModeParams.mVideoHdr);
     }
 
-    private void applyOther(CameraInfo$CameraId cameraInfo$CameraId, VideoSize videoSize, CapturingModeParams capturingModeParams) {
-        boolean zIsSteadyShotSupported = VideoStabilizer.isSteadyShotSupported(cameraInfo$CameraId, videoSize);
-        boolean zIsIntelligentActiveAvailable = DependencyCheckUtil.isIntelligentActiveAvailable(cameraInfo$CameraId, videoSize, (VideoHdr) capturingModeParams.mVideoHdr.get());
+    private void applyOther(CameraInfo.CameraId cameraId, VideoSize videoSize, CapturingModeParams capturingModeParams) {
+        boolean zIsSteadyShotSupported = VideoStabilizer.isSteadyShotSupported(cameraId, videoSize);
+        boolean zIsIntelligentActiveAvailable = DependencyCheckUtil.isIntelligentActiveAvailable(cameraId, videoSize, (VideoHdr) capturingModeParams.mVideoHdr.get());
         if (zIsSteadyShotSupported || zIsIntelligentActiveAvailable) {
             ParameterUtil.reset(capturingModeParams.mVideoStabilizer);
         } else {
@@ -126,10 +149,10 @@ public class VideoSizeApplier extends DependencyApplier {
         ParameterUtil.reset(capturingModeParams.mObjectTracking);
     }
 
-    private void apply30Fps(CameraInfo$CameraId cameraInfo$CameraId, VideoSize videoSize, CapturingModeParams capturingModeParams) {
+    private void apply30Fps(CameraInfo.CameraId cameraId, VideoSize videoSize, CapturingModeParams capturingModeParams) {
         if (capturingModeParams.mVideoHdr.get() != VideoHdr.HDR_ON) {
-            boolean zIsSteadyShotSupported = VideoStabilizer.isSteadyShotSupported(cameraInfo$CameraId, videoSize);
-            boolean zIsIntelligentActiveAvailable = DependencyCheckUtil.isIntelligentActiveAvailable(cameraInfo$CameraId, videoSize, (VideoHdr) capturingModeParams.mVideoHdr.get());
+            boolean zIsSteadyShotSupported = VideoStabilizer.isSteadyShotSupported(cameraId, videoSize);
+            boolean zIsIntelligentActiveAvailable = DependencyCheckUtil.isIntelligentActiveAvailable(cameraId, videoSize, (VideoHdr) capturingModeParams.mVideoHdr.get());
             if (zIsSteadyShotSupported || zIsIntelligentActiveAvailable) {
                 ParameterUtil.reset(capturingModeParams.mVideoStabilizer);
             } else {

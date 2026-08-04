@@ -2,25 +2,43 @@ package com.sonyericsson.android.camera.configuration.parameters;
 
 import android.graphics.Rect;
 import android.util.Range;
+import com.sonyericsson.android.camera.R;
+import com.sonyericsson.android.camera.Constants;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.capability.CameraCapabilityList;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
+import com.sonyericsson.cameracommon.device.SizeConstants;
+import com.sonymobile.android.media.MediaRecorder;
+import com.sonymobile.media.SomcMediaStore;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
+
+
+
+
+
+
+
+
+
 public enum Iso implements UserSettingValue {
-    ISO_AUTO(-1, 2131689894, "auto", -1),
-    ISO_50(-1, 2131689922, "iso-prio", 50),
-    ISO_100(-1, 2131689915, "iso-prio", 100),
-    ISO_200(-1, 2131689918, "iso-prio", 200),
-    ISO_400(-1, 2131689921, "iso-prio", 400),
-    ISO_800(-1, 2131689925, "iso-prio", 800),
-    ISO_1600(-1, 2131689917, "iso-prio", 1600),
-    ISO_3200(-1, 2131689920, "iso-prio", 3200),
-    ISO_6400(-1, 2131689924, "iso-prio", 6400),
-    ISO_12800(-1, 2131689916, "iso-prio", 12800),
-    ISO_25600(-1, 2131689919, "iso-prio", 25600),
-    ISO_51200(-1, 2131689923, "iso-prio", 51200);
+    ISO_AUTO(-1, R.string.cam_strings_image_quality_control_shutter_speed_auto_txt, "auto", -1),
+    ISO_50(-1, R.string.cam_strings_iso_50_txt, CameraParameters.AE_MODE_ISO_PRIO, 50),
+    ISO_100(-1, R.string.cam_strings_iso_100_txt, CameraParameters.AE_MODE_ISO_PRIO, 100),
+    ISO_200(-1, R.string.cam_strings_iso_200_txt, CameraParameters.AE_MODE_ISO_PRIO, 200),
+    ISO_400(-1, R.string.cam_strings_iso_400_txt, CameraParameters.AE_MODE_ISO_PRIO, SomcMediaStore.AUTHORITY_NEW_VERSION),
+    ISO_800(-1, R.string.cam_strings_iso_800_txt, CameraParameters.AE_MODE_ISO_PRIO, MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED),
+    ISO_1600(-1, R.string.cam_strings_iso_1600_txt, CameraParameters.AE_MODE_ISO_PRIO, Constants.WAITING_TIME_STOP_REC),
+    ISO_3200(-1, R.string.cam_strings_iso_3200_txt, CameraParameters.AE_MODE_ISO_PRIO, SizeConstants.WIDTH_5_8MP_WIDE),
+    ISO_6400(-1, R.string.cam_strings_iso_6400_txt, CameraParameters.AE_MODE_ISO_PRIO, 6400),
+    ISO_12800(-1, R.string.cam_strings_iso_12800_txt, CameraParameters.AE_MODE_ISO_PRIO, 12800),
+    ISO_25600(-1, R.string.cam_strings_iso_25600_txt, CameraParameters.AE_MODE_ISO_PRIO, 25600),
+    ISO_51200(-1, R.string.cam_strings_iso_51200_txt, CameraParameters.AE_MODE_ISO_PRIO, 51200);
 
     public static final String TAG = "Iso";
     private static int mIndexOfDefault = 1;
@@ -95,15 +113,15 @@ public enum Iso implements UserSettingValue {
         if (capturingMode == CapturingMode.SCENE_RECOGNITION || capturingMode == CapturingMode.SUPERIOR_FRONT || capturingMode == CapturingMode.FRONT_PHOTO || capturingMode.getType() == 2) {
             return (Iso[]) arrayList.toArray(new Iso[0]);
         }
-        if (!list.contains("iso-prio")) {
+        if (!list.contains(CameraParameters.AE_MODE_ISO_PRIO)) {
             return (Iso[]) arrayList.toArray(new Iso[0]);
         }
-        switch (Iso$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$FusionMode[fusionMode.ordinal()]) {
-            case 1:
+        switch (fusionMode) {
+            case AUTO:
                 range = new Range<>(Integer.valueOf(Math.min(((Integer) cameraCapability.ISO_RANGE.get().getLower()).intValue(), ((Integer) cameraCapability.FUSION_ISO_RANGE.get().getLower()).intValue())), Integer.valueOf(Math.max(((Integer) cameraCapability.ISO_RANGE.get().getUpper()).intValue(), ((Integer) cameraCapability.FUSION_ISO_RANGE.get().getUpper()).intValue())));
                 isoValue = ISO_1600.getIsoValue();
                 break;
-            case 2:
+            case ON:
                 range = cameraCapability.FUSION_ISO_RANGE.get();
                 isoValue = ISO_1600.getIsoValue();
                 break;
@@ -133,6 +151,9 @@ public enum Iso implements UserSettingValue {
     }
 
     public static Iso adjustToSupportedValue(Iso iso, Iso[] isoArr) {
+        if (isoArr == null || isoArr.length == 0) {
+            return ISO_AUTO;
+        }
         if ((iso == ISO_AUTO || isoArr.length == 1) && isoArr[0] == ISO_AUTO) {
             return ISO_AUTO;
         }

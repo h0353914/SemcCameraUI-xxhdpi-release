@@ -1,35 +1,34 @@
 package com.sonyericsson.cameracommon.focusview;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.app.Activity;
+import android.content.res.Resources;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View$OnTouchListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup$LayoutParams;
 import android.view.animation.PathInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout$LayoutParams;
-import com.sonyericsson.android.camera.device.CameraParameters$FaceDetectionResult;
-import com.sonyericsson.android.camera.device.CameraParameters$ObjectTrackingResult;
+import com.sonyericsson.android.camera.R;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
-import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver$ScreenAspect;
 import com.sonyericsson.cameracommon.animation.FocusRectanglesAnimation;
-import com.sonyericsson.cameracommon.animation.FocusRectanglesAnimation$AnimationConfig;
+import com.sonyericsson.cameracommon.focusview.Rectangle;
+import com.sonyericsson.cameracommon.utility.CommonUtility;
 import com.sonyericsson.cameracommon.utility.FaceDetectUtil;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
-import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 import com.sonyericsson.cameracommon.utility.PositionConverter;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map$Entry;
+import java.util.Map;
 
 public class FocusRectangles {
     private static final String ANIMATION_SCALE_X = "scaleX";
@@ -47,23 +46,23 @@ public class FocusRectangles {
     private int mDevicePreviewHeight;
     private int mDevicePreviewWidth;
     private HashMap<String, TaggedRectangle> mFaceRectangles;
-    private FocusRectangles$FaceReflectChecker mFaceReflectChecker;
+    private FaceReflectChecker mFaceReflectChecker;
     private FocusActionListener mFocusEventListener;
-    private CameraParameters$FaceDetectionResult mLastFaceDetectionResult;
-    private View$OnTouchListener mOnTouchListener;
+    private CameraParameters.FaceDetectionResult mLastFaceDetectionResult;
+    private View.OnTouchListener mOnTouchListener;
     private RelativeLayout mRectangles;
-    private LayoutDependencyResolver$ScreenAspect mScreenAspect;
+    private LayoutDependencyResolver.ScreenAspect mScreenAspect;
     private RelativeLayout mSingleAfRect;
     private int mSmileScore;
     private RelativeLayout mTouchAfRect;
     private TaggedRectangle mTrackedObjectRectangle;
     private Handler mHandler = new Handler();
     private TaggedRectangle mPressedRectangle = null;
-    private final FocusRectangles$RefreshTrackedObjectRectangleTask mRefreshTrackedObjectRectangleTask = new FocusRectangles$RefreshTrackedObjectRectangleTask(this);
-    private final FocusRectangles$OnFaceRectTouchListener mOnFaceRectTouchListener = new FocusRectangles$OnFaceRectTouchListener(this);
+    private final RefreshTrackedObjectRectangleTask mRefreshTrackedObjectRectangleTask = new RefreshTrackedObjectRectangleTask();
+    private final OnFaceRectTouchListener mOnFaceRectTouchListener = new OnFaceRectTouchListener();
     private boolean mIsFaceTouchCaptureEnabled = false;
     private boolean mIsFocusAnimationEnabled = false;
-    private FocusRectangles$State mCurrentState = new FocusRectangles$DefaultFocusState(this);
+    private State mCurrentState = new DefaultFocusState();
     private boolean mIsRecording = false;
     private String mLatestSelectedFaceUuid = null;
     private int mCurrentOrientation = 2;
@@ -72,161 +71,73 @@ public class FocusRectangles {
     private int mSmileCaptureLevel = -1;
     private boolean mIsManualFocus = false;
     private boolean mObjectTrackingRectSupported = false;
-    private FocusRectangles$ObJectTrackingFocusIconState mObJectTrackingFocusIconState = FocusRectangles$ObJectTrackingFocusIconState.NOT_DISPLAY;
+    private ObJectTrackingFocusIconState mObJectTrackingFocusIconState = ObJectTrackingFocusIconState.NOT_DISPLAY;
 
-    static /* synthetic */ void access$100(FocusRectangles focusRectangles, CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult, boolean z) {
-        focusRectangles.updateFaceRectanglesData(cameraParameters$FaceDetectionResult, z);
+    private interface FaceReflectedCallback {
+        void onFaceReflected();
     }
 
-    static /* synthetic */ RelativeLayout access$1000(FocusRectangles focusRectangles) {
-        return focusRectangles.mSingleAfRect;
+    public enum FocusSetType {
+        FIRST,
+        MOVE,
+        RELEASE
     }
 
-    static /* synthetic */ void access$1100(FocusRectangles focusRectangles) {
-        focusRectangles.resetRectanglesColor();
+    private enum ObJectTrackingFocusIconState {
+        NOT_DISPLAY,
+        TOUCH_ICON,
+        TRACKING_ICON
     }
 
-    static /* synthetic */ TaggedRectangle access$1200(FocusRectangles focusRectangles) {
-        return focusRectangles.mTrackedObjectRectangle;
+    private interface State {
+        void handleClearAllFocusExceptFace();
+
+        void handleClearExceptTouchFocus();
+
+        void handleClearObjectTracking();
+
+        void handleOnAutoFocusCanceled();
+
+        void handleOnAutoFocusDone(boolean z);
+
+        void handleOnAutoFocusStarted();
+
+        void handleOnFaceDetected(CameraParameters.FaceDetectionResult faceDetectionResult);
+
+        void handleOnObjectLost();
+
+        void handleOnObjectRemoved();
+
+        void handleOnTrackedObjectStateUpdated(CameraParameters.ObjectTrackingResult objectTrackingResult);
+
+        void handleOnUiComponentOverlaid();
+
+        void handleOnUiComponentRemoved();
+
+        void handleSetFocusPosition(Point point, FocusSetType focusSetType);
+
+        void handleStartAfLock();
+
+        void handleStartFaceDetection();
+
+        void handleStartObjectTracking();
+
+        void handleStopAfLock();
     }
 
-    static /* synthetic */ boolean access$1400(FocusRectangles focusRectangles) {
-        return focusRectangles.mObjectTrackingRectSupported;
-    }
-
-    static /* synthetic */ FocusRectangles$ObJectTrackingFocusIconState access$1500(FocusRectangles focusRectangles) {
-        return focusRectangles.mObJectTrackingFocusIconState;
-    }
-
-    static /* synthetic */ void access$1600(FocusRectangles focusRectangles, CameraParameters$ObjectTrackingResult cameraParameters$ObjectTrackingResult) {
-        focusRectangles.initObjectTrackingAnimation(cameraParameters$ObjectTrackingResult);
-    }
-
-    static /* synthetic */ void access$1700(FocusRectangles focusRectangles, CameraParameters$ObjectTrackingResult cameraParameters$ObjectTrackingResult, boolean z) {
-        focusRectangles.playObjectTrackingAnimation(cameraParameters$ObjectTrackingResult, z);
-    }
-
-    static /* synthetic */ void access$1800(FocusRectangles focusRectangles, CameraParameters$ObjectTrackingResult cameraParameters$ObjectTrackingResult, boolean z) {
-        focusRectangles.onObjectTrackedInternal(cameraParameters$ObjectTrackingResult, z);
-    }
-
-    static /* synthetic */ String access$1900(FocusRectangles focusRectangles) {
-        return focusRectangles.mLatestSelectedFaceUuid;
-    }
-
-    static /* synthetic */ String access$1902(FocusRectangles focusRectangles, String str) {
-        focusRectangles.mLatestSelectedFaceUuid = str;
-        return str;
-    }
-
-    static /* synthetic */ RelativeLayout access$200(FocusRectangles focusRectangles) {
-        return focusRectangles.mTouchAfRect;
-    }
-
-    static /* synthetic */ HashMap access$2000(FocusRectangles focusRectangles) {
-        return focusRectangles.mFaceRectangles;
-    }
-
-    static /* synthetic */ void access$2100(FocusRectangles focusRectangles, boolean z) {
-        focusRectangles.hideFaceRectangles(z);
-    }
-
-    static /* synthetic */ void access$2200(FocusRectangles focusRectangles) {
-        focusRectangles.hideTrackedObjectRecgantle();
-    }
-
-    static /* synthetic */ void access$2300(FocusRectangles focusRectangles) {
-        focusRectangles.removeObjectFocusRectAnimation();
-    }
-
-    static /* synthetic */ void access$2400(FocusRectangles focusRectangles, boolean z) {
-        focusRectangles.resetObjectTrackingRectangleColor(z);
-    }
-
-    static /* synthetic */ String access$2500(FocusRectangles focusRectangles, CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult) {
-        return focusRectangles.getSelectedFaceUuId(cameraParameters$FaceDetectionResult);
-    }
-
-    static /* synthetic */ void access$2600(FocusRectangles focusRectangles, CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult, boolean z, String str) {
-        focusRectangles.updateFaceRectanglesData(cameraParameters$FaceDetectionResult, z, str);
-    }
-
-    static /* synthetic */ TaggedRectangle access$2700(FocusRectangles focusRectangles) {
-        return focusRectangles.mPressedRectangle;
-    }
-
-    static /* synthetic */ TaggedRectangle access$2702(FocusRectangles focusRectangles, TaggedRectangle taggedRectangle) {
-        focusRectangles.mPressedRectangle = taggedRectangle;
-        return taggedRectangle;
-    }
-
-    static /* synthetic */ FocusRectangles$FaceReflectChecker access$2800(FocusRectangles focusRectangles) {
-        return focusRectangles.mFaceReflectChecker;
-    }
-
-    static /* synthetic */ CameraParameters$FaceDetectionResult access$2900(FocusRectangles focusRectangles) {
-        return focusRectangles.mLastFaceDetectionResult;
-    }
-
-    static /* synthetic */ FocusRectanglesAnimation access$300(FocusRectangles focusRectangles) {
-        return focusRectangles.mAnimation;
-    }
-
-    static /* synthetic */ void access$3000(FocusRectangles focusRectangles, CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult, boolean z, String str) {
-        focusRectangles.faceResultToRectangles(cameraParameters$FaceDetectionResult, z, str);
-    }
-
-    static /* synthetic */ void access$3100(FocusRectangles focusRectangles, String str) {
-        focusRectangles.changeFacePriority(str);
-    }
-
-    static /* synthetic */ FocusActionListener access$3200(FocusRectangles focusRectangles) {
-        return focusRectangles.mFocusEventListener;
-    }
-
-    static /* synthetic */ boolean access$3300(FocusRectangles focusRectangles) {
-        return focusRectangles.mIsFaceTouchCaptureEnabled;
-    }
-
-    static /* synthetic */ View access$3400(FocusRectangles focusRectangles) {
-        return focusRectangles.mCaptureArea;
-    }
-
-    static /* synthetic */ boolean access$3500(FocusRectangles focusRectangles) {
-        return focusRectangles.mIsFocusAnimationEnabled;
-    }
-
-    static /* synthetic */ Handler access$3700(FocusRectangles focusRectangles) {
-        return focusRectangles.mHandler;
-    }
-
-    static /* synthetic */ void access$400(FocusRectangles focusRectangles, boolean z) {
-        focusRectangles.setAFLocking(z);
-    }
-
-    static /* synthetic */ boolean access$500(FocusRectangles focusRectangles) {
-        return focusRectangles.mIsManualFocus;
-    }
-
-    static /* synthetic */ void access$600(FocusRectangles focusRectangles, Point point, FocusRectangles$FocusSetType focusRectangles$FocusSetType) {
-        focusRectangles.setFocusPositionInternal(point, focusRectangles$FocusSetType);
-    }
-
-    static /* synthetic */ void access$800(FocusRectangles focusRectangles, FocusRectangles$State focusRectangles$State) {
-        focusRectangles.changeState(focusRectangles$State);
-    }
-
-    public FocusRectangles(Activity activity, FocusActionListener focusActionListener, int i, int i2, FocusRectanglesViewList focusRectanglesViewList, View view, View$OnTouchListener view$OnTouchListener, LayoutDependencyResolver$ScreenAspect layoutDependencyResolver$ScreenAspect) {
+    public FocusRectangles(Activity activity, FocusActionListener focusActionListener, int i, int i2,
+            FocusRectanglesViewList focusRectanglesViewList, View view, View.OnTouchListener onTouchListener,
+            LayoutDependencyResolver.ScreenAspect screenAspect) {
         this.mActivity = activity;
-        this.mScreenAspect = layoutDependencyResolver$ScreenAspect;
+        this.mScreenAspect = screenAspect;
         this.mFocusEventListener = focusActionListener;
         this.mDevicePreviewWidth = i;
         this.mDevicePreviewHeight = i2;
         this.mAnimation = new FocusRectanglesAnimation(this.mActivity);
         this.mCaptureArea = view;
-        this.mOnTouchListener = view$OnTouchListener;
+        this.mOnTouchListener = onTouchListener;
         initialize(focusRectanglesViewList);
-        this.mFaceReflectChecker = new FocusRectangles$FaceReflectChecker(this, null);
+        this.mFaceReflectChecker = new FaceReflectChecker();
     }
 
     public void enableFaceTouchCapture() {
@@ -255,43 +166,55 @@ public class FocusRectangles {
         this.mRectangles.setOnTouchListener(this.mTouchEventDispatcher);
         View[] viewArr = focusRectanglesViewList.faceViewList != null ? focusRectanglesViewList.faceViewList : null;
         for (int i = 0; i < 5; i++) {
-            addTaggedRectangle(layoutInflater, Integer.toString(i), viewArr != null ? (TaggedRectangle) viewArr[i] : null);
+            TaggedRectangle taggedRectangle = null;
+            if (viewArr != null) {
+                taggedRectangle = (TaggedRectangle) viewArr[i];
+            }
+            addTaggedRectangle(layoutInflater, Integer.toString(i), taggedRectangle);
         }
         this.mTrackedObjectRectangle = focusRectanglesViewList.trackedObjectView;
         if (this.mTrackedObjectRectangle == null) {
-            this.mTrackedObjectRectangle = (TaggedRectangle) layoutInflater.inflate(2131492923, (ViewGroup) null);
+            this.mTrackedObjectRectangle = (TaggedRectangle) layoutInflater.inflate(R.layout.face_rectangle,
+                    null);
         }
         this.mTrackedObjectRectangle.setVisibility(4);
-        this.mRectangles.addView(this.mTrackedObjectRectangle, new ViewGroup$LayoutParams(-1, -1));
+        this.mRectangles.addView(this.mTrackedObjectRectangle, new ViewGroup.LayoutParams(-1, -1));
         this.mTrackedObjectRectangle.prepare(3);
-        this.mTrackedObjectRectangle.setRectImageSize(0, 0, this.mActivity.getResources().getDimensionPixelSize(2131165336), this.mActivity.getResources().getDimensionPixelSize(2131165335));
-        ((ImageView) this.mTrackedObjectRectangle.findViewById(2131296528)).setOnTouchListener(this.mOnTouchListener);
+        this.mTrackedObjectRectangle.setRectImageSize(0, 0,
+                this.mActivity.getResources().getDimensionPixelSize(R.dimen.focus_rect_object_width),
+                this.mActivity.getResources().getDimensionPixelSize(R.dimen.focus_rect_object_height));
+        ((ImageView) this.mTrackedObjectRectangle.findViewById(R.id.rect_image))
+                .setOnTouchListener(this.mOnTouchListener);
         this.mSingleAfRect = focusRectanglesViewList.singleAfView;
         if (this.mSingleAfRect == null) {
-            this.mSingleAfRect = (RelativeLayout) layoutInflater.inflate(2131492924, (ViewGroup) null);
+            this.mSingleAfRect = (RelativeLayout) layoutInflater.inflate(R.layout.fast_capturing_auto_focus_rectangles,
+                    null);
         }
         this.mSingleAfRect.setVisibility(4);
-        this.mRectangles.addView(this.mSingleAfRect, new RelativeLayout$LayoutParams(-1, -1));
+        this.mRectangles.addView(this.mSingleAfRect, new RelativeLayout.LayoutParams(-1, -1));
         this.mTouchAfRect = focusRectanglesViewList.touchAfView;
         if (this.mTouchAfRect == null) {
-            this.mTouchAfRect = (RelativeLayout) layoutInflater.inflate(2131492924, (ViewGroup) null);
+            this.mTouchAfRect = (RelativeLayout) layoutInflater.inflate(R.layout.fast_capturing_auto_focus_rectangles,
+                    null);
         }
         this.mTouchAfRect.setVisibility(4);
-        this.mRectangles.addView(this.mTouchAfRect, new RelativeLayout$LayoutParams(-1, -1));
-        ((ImageView) this.mTouchAfRect.findViewById(2131296347)).setOnTouchListener(this.mOnTouchListener);
+        this.mRectangles.addView(this.mTouchAfRect, new RelativeLayout.LayoutParams(-1, -1));
+        ((ImageView) this.mTouchAfRect.findViewById(R.id.center_auto_focus_rect))
+                .setOnTouchListener(this.mOnTouchListener);
         updateRectanglesCoordinates();
     }
 
-    private TaggedRectangle addTaggedRectangle(LayoutInflater layoutInflater, String str, TaggedRectangle taggedRectangle) {
+    private TaggedRectangle addTaggedRectangle(LayoutInflater layoutInflater, String str,
+            TaggedRectangle taggedRectangle) {
         if (this.mFaceRectangles.size() >= 5) {
             return null;
         }
         Rect rect = new Rect();
-        ViewGroup$LayoutParams viewGroup$LayoutParams = new ViewGroup$LayoutParams(-1, -1);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(-1, -1);
         if (taggedRectangle == null) {
-            taggedRectangle = (TaggedRectangle) layoutInflater.inflate(2131492923, (ViewGroup) null);
+            taggedRectangle = (TaggedRectangle) layoutInflater.inflate(R.layout.face_rectangle, (ViewGroup) null);
         }
-        this.mRectangles.addView(taggedRectangle, viewGroup$LayoutParams);
+        this.mRectangles.addView(taggedRectangle, layoutParams);
         taggedRectangle.prepare(0);
         taggedRectangle.setRectPosition(rect.centerX(), rect.centerY(), rect.width(), rect.height());
         taggedRectangle.setRectangleOnTouchListener(this.mOnFaceRectTouchListener);
@@ -300,13 +223,15 @@ public class FocusRectangles {
     }
 
     private void updateRectanglesCoordinates() {
-        Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity, this.mDevicePreviewWidth / this.mDevicePreviewHeight, this.mScreenAspect);
-        setRectSizeAndPosition(this.mRectangles, surfaceViewRect.left, surfaceViewRect.top, surfaceViewRect.width(), surfaceViewRect.height());
+        Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity,
+                (float) this.mDevicePreviewWidth / this.mDevicePreviewHeight, this.mScreenAspect);
+        setRectSizeAndPosition(this.mRectangles, surfaceViewRect.left, surfaceViewRect.top, surfaceViewRect.width(),
+                surfaceViewRect.height());
         Iterator<String> it = this.mFaceRectangles.keySet().iterator();
         while (it.hasNext()) {
             this.mFaceRectangles.get(it.next()).setSize(surfaceViewRect.width(), surfaceViewRect.height());
         }
-        changeState(new FocusRectangles$DefaultFocusState(this));
+        changeState(new DefaultFocusState());
     }
 
     public void release() {
@@ -326,27 +251,27 @@ public class FocusRectangles {
         this.mCurrentState.handleOnAutoFocusCanceled();
     }
 
-    public void setFocusPosition(Point point, FocusRectangles$FocusSetType focusRectangles$FocusSetType) {
+    public void setFocusPosition(Point point, FocusSetType focusSetType) {
         int[] iArr = new int[2];
         this.mRectangles.getLocationOnScreen(iArr);
-        this.mCurrentState.handleSetFocusPosition(new Point(point.x - iArr[0], point.y - iArr[1]), focusRectangles$FocusSetType);
+        this.mCurrentState.handleSetFocusPosition(new Point(point.x - iArr[0], point.y - iArr[1]), focusSetType);
     }
 
     public void startFaceDetection() {
         this.mCurrentState.handleStartFaceDetection();
     }
 
-    public void onFaceDetected(CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult) {
-        this.mCurrentState.handleOnFaceDetected(cameraParameters$FaceDetectionResult);
+    public void onFaceDetected(CameraParameters.FaceDetectionResult faceDetectionResult) {
+        this.mCurrentState.handleOnFaceDetected(faceDetectionResult);
     }
 
     public void startObjectTracking() {
-        this.mObJectTrackingFocusIconState = FocusRectangles$ObJectTrackingFocusIconState.NOT_DISPLAY;
+        this.mObJectTrackingFocusIconState = ObJectTrackingFocusIconState.NOT_DISPLAY;
         this.mCurrentState.handleStartObjectTracking();
     }
 
-    public void onObjectTracked(CameraParameters$ObjectTrackingResult cameraParameters$ObjectTrackingResult) {
-        this.mCurrentState.handleOnTrackedObjectStateUpdated(cameraParameters$ObjectTrackingResult);
+    public void onObjectTracked(CameraParameters.ObjectTrackingResult objectTrackingResult) {
+        this.mCurrentState.handleOnTrackedObjectStateUpdated(objectTrackingResult);
     }
 
     public void onObjectRemoved() {
@@ -378,7 +303,7 @@ public class FocusRectangles {
     }
 
     public void clearTouchFocus() {
-        changeState(new FocusRectangles$DefaultFocusState(this));
+        changeState(new DefaultFocusState());
         setFocusPositionInternal(null, null);
         this.mTouchAfRect.setVisibility(4);
         removeTouchFocusRectAnimation();
@@ -423,6 +348,7 @@ public class FocusRectangles {
         this.mIsRecording = false;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void setAFLocking(boolean z) {
         if (z) {
             this.mCurrentState.handleStartAfLock();
@@ -440,22 +366,675 @@ public class FocusRectangles {
         if (this.mFaceRectangles == null) {
             return;
         }
-        Iterator<Map$Entry<String, TaggedRectangle>> it = this.mFaceRectangles.entrySet().iterator();
+        Iterator<Map.Entry<String, TaggedRectangle>> it = this.mFaceRectangles.entrySet().iterator();
         while (it.hasNext()) {
             TaggedRectangle value = it.next().getValue();
             value.setRectangleOnTouchListener((z || value.isPressed()) ? this.mOnFaceRectTouchListener : null);
         }
     }
 
-    private void updateFaceRectanglesData(CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult, boolean z) {
-        updateFaceRectanglesData(cameraParameters$FaceDetectionResult, z, null);
+    private class TouchFocusState extends DefaultFocusState {
+        private boolean mIsAutoFocusStarted;
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnObjectRemoved() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnTrackedObjectStateUpdated(CameraParameters.ObjectTrackingResult objectTrackingResult) {
+        }
+
+        private TouchFocusState() {
+            super();
+            this.mIsAutoFocusStarted = false;
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnAutoFocusStarted() {
+            this.mIsAutoFocusStarted = true;
+            FocusRectangles.this.updateFaceRectanglesData(null, true);
+            FocusRectangles.this.mAnimation.startFocusAnimation(
+                    FocusRectangles.this.mTouchAfRect.findViewById(R.id.center_auto_focus_rect),
+                    FocusRectangles.this.getTouchAfFocusingIcon());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnAutoFocusDone(boolean z) {
+            this.mIsAutoFocusStarted = false;
+            FocusRectangles.this.setAFLocking(true);
+            ImageView imageView = (ImageView) FocusRectangles.this.mTouchAfRect
+                    .findViewById(R.id.center_auto_focus_rect);
+            imageView.setVisibility(0);
+            if (!z) {
+                if (FocusRectangles.this.mIsManualFocus) {
+                    return;
+                }
+                FocusRectangles.this.mAnimation.playAfFadeOutAnimationTouch(imageView);
+            } else {
+                imageView.setBackgroundResource(FocusRectangles.this.getTouchAfSuccessIcon());
+                FocusRectangles.this.mAnimation.playAfFocusInAnimationTouch(imageView,
+                        FocusRectangles.this.getTouchAfSuccessIcon());
+            }
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnAutoFocusCanceled() {
+            this.mIsAutoFocusStarted = false;
+            ((ImageView) FocusRectangles.this.mTouchAfRect.findViewById(R.id.center_auto_focus_rect)).setVisibility(0);
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleSetFocusPosition(Point point, FocusSetType focusSetType) {
+            this.mIsAutoFocusStarted = false;
+            FocusRectangles.this.setFocusPositionInternal(point, focusSetType);
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartFaceDetection() {
+            FocusRectangles.this.clearSingleAutoFocus();
+            FocusRectangles.this.clearObjectTracking();
+            FocusRectangles.this.changeState(new FaceDetectionState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnFaceDetected(CameraParameters.FaceDetectionResult faceDetectionResult) {
+            FocusRectangles focusRectangles = FocusRectangles.this;
+            if (this.mIsAutoFocusStarted) {
+                faceDetectionResult = null;
+            }
+            focusRectangles.updateFaceRectanglesData(faceDetectionResult, true);
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartObjectTracking() {
+            FocusRectangles.this.clearExceptTouchFocus();
+            FocusRectangles.this.changeState(new ObjectTrackingState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleClearExceptTouchFocus() {
+            FocusRectangles.this.mAnimation.stopFocusAnimation(
+                    (ImageView) FocusRectangles.this.mTouchAfRect.findViewById(R.id.center_auto_focus_rect));
+            super.handleClearExceptTouchFocus();
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnUiComponentRemoved() {
+            FocusRectangles.this.mTouchAfRect.setVisibility(0);
+            FocusRectangles.this.mSingleAfRect.setVisibility(4);
+            FocusRectangles.this.resetRectanglesColor();
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartAfLock() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new TouchFocusInLockedState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStopAfLock() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new TouchFocusState());
+        }
     }
 
-    private void updateFaceRectanglesData(CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult, boolean z, String str) {
-        this.mLastFaceDetectionResult = cameraParameters$FaceDetectionResult;
-        faceResultToRectangles(cameraParameters$FaceDetectionResult, z, str);
+    private class ObjectTrackingState extends DefaultFocusState {
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartObjectTracking() {
+        }
+
+        protected boolean isAFLocking() {
+            return false;
+        }
+
+        private ObjectTrackingState() {
+            super();
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnAutoFocusStarted() {
+            FocusRectangles.this.setAFLocking(true);
+            FocusRectangles.this.mAnimation.startFocusAnimation(
+                    FocusRectangles.this.mTrackedObjectRectangle.findViewById(R.id.rect_image),
+                    FocusRectangles.this.getAfFocusingIcon());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnAutoFocusDone(boolean z) {
+            FocusRectangles.this.mTrackedObjectRectangle.setVisibility(0);
+            if (z) {
+                FocusRectangles.this.mTrackedObjectRectangle
+                        .changeRectangleResource(FocusRectangles.this.getSuccessIcon());
+            } else {
+                FocusRectangles.this.mAnimation
+                        .playAfFadeOutAnimationObject(FocusRectangles.this.mTrackedObjectRectangle);
+            }
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleSetFocusPosition(Point point, FocusSetType focusSetType) {
+            FocusRectangles.this.setFocusPositionInternal(point, focusSetType);
+            FocusRectangles.this.changeState(new TouchFocusState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartFaceDetection() {
+            FocusRectangles.this.clearExceptTouchFocus();
+            FocusRectangles.this.changeState(new FaceDetectionState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnFaceDetected(CameraParameters.FaceDetectionResult faceDetectionResult) {
+            FocusRectangles.this.updateFaceRectanglesData(faceDetectionResult, true);
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnTrackedObjectStateUpdated(CameraParameters.ObjectTrackingResult objectTrackingResult) {
+            if (FocusRectangles.this.mObjectTrackingRectSupported) {
+                if (FocusRectangles.this.mObJectTrackingFocusIconState == ObJectTrackingFocusIconState.NOT_DISPLAY) {
+                    FocusRectangles.this.initObjectTrackingAnimation(objectTrackingResult);
+                    return;
+                } else {
+                    FocusRectangles.this.playObjectTrackingAnimation(objectTrackingResult, isAFLocking());
+                    return;
+                }
+            }
+            FocusRectangles.this.onObjectTrackedInternal(objectTrackingResult, isAFLocking());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnObjectLost() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new ObjectLostState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnObjectRemoved() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new DefaultFocusState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartAfLock() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new ObjectTrackingInLockedState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStopAfLock() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new ObjectTrackingState());
+        }
+    }
+
+    class ObjectLostState extends ObjectTrackingState {
+        ObjectLostState() {
+            super();
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartAfLock() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new ObjectLostInLockedState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnTrackedObjectStateUpdated(CameraParameters.ObjectTrackingResult objectTrackingResult) {
+            FocusRectangles.this.changeState(new ObjectTrackingState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStopAfLock() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new ObjectLostState());
+        }
+    }
+
+    private class FaceDetectionState extends DefaultFocusState {
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnObjectRemoved() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartFaceDetection() {
+        }
+
+        private FaceDetectionState() {
+            super();
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnAutoFocusStarted() {
+            if (!isFaceRectAvailable()) {
+                FocusRectangles.this.changeState(FocusRectangles.this.new DefaultFocusState());
+                FocusRectangles.this.onAutoFocusStarted();
+            } else {
+                FocusRectangles.this.setAFLocking(true);
+            }
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnAutoFocusDone(boolean z) {
+            if (isFaceRectAvailable()) {
+                if (FocusRectangles.this.mLatestSelectedFaceUuid == null) {
+                    return;
+                }
+                Iterator it = FocusRectangles.this.mFaceRectangles.entrySet().iterator();
+                while (it.hasNext()) {
+                    TaggedRectangle taggedRectangle = (TaggedRectangle) ((Map.Entry) it.next()).getValue();
+                    if (FocusRectangles.this.mLatestSelectedFaceUuid.equals(taggedRectangle.getUuid())) {
+                        taggedRectangle.changeRectangleResource(2131230869);
+                        if (!taggedRectangle.isShown()) {
+                            taggedRectangle.setVisibility(0);
+                        }
+                    } else {
+                        taggedRectangle.setVisibility(4);
+                    }
+                }
+                return;
+            }
+            super.handleOnAutoFocusDone(z);
+        }
+
+        private boolean isFaceRectAvailable() {
+            Iterator it = FocusRectangles.this.mFaceRectangles.values().iterator();
+            while (it.hasNext()) {
+                if (((TaggedRectangle) it.next()).getVisibility() == 0) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleSetFocusPosition(Point point, FocusSetType focusSetType) {
+            if (focusSetType != FocusSetType.FIRST) {
+                return;
+            }
+            FocusRectangles.this.setFocusPositionInternal(point, focusSetType);
+            FocusRectangles.this.changeState(new TouchFocusState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnFaceDetected(CameraParameters.FaceDetectionResult faceDetectionResult) {
+            if (faceDetectionResult.extFaceList.size() != 0) {
+                FocusRectangles.this.updateFaceRectanglesData(faceDetectionResult, false);
+            } else {
+                FocusRectangles.this.clearFaceDetection();
+                FocusRectangles.this.changeState(FocusRectangles.this.new DefaultFocusState());
+            }
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartObjectTracking() {
+            FocusRectangles.this.clearSingleAutoFocus();
+            FocusRectangles.this.clearTouchFocus();
+            FocusRectangles.this.clearFaceDetection();
+            FocusRectangles.this.changeState(new ObjectTrackingState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnTrackedObjectStateUpdated(CameraParameters.ObjectTrackingResult objectTrackingResult) {
+            FocusRectangles.this.mSingleAfRect.setVisibility(4);
+            FocusRectangles.this.hideFaceRectangles(true);
+            FocusRectangles.this.onObjectTrackedInternal(objectTrackingResult, false);
+            FocusRectangles.this.changeState(new ObjectTrackingState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartAfLock() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new FaceDetectionInLockedState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStopAfLock() {
+            FocusRectangles.this.changeState(
+                    FocusRectangles.this.mLatestSelectedFaceUuid != null ? FocusRectangles.this.new FaceDetectionState()
+                            : FocusRectangles.this.new DefaultFocusState());
+        }
+    }
+
+    class DefaultFocusState implements State {
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnAutoFocusCanceled() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnObjectLost() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnObjectRemoved() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnTrackedObjectStateUpdated(CameraParameters.ObjectTrackingResult objectTrackingResult) {
+        }
+
+        DefaultFocusState() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnAutoFocusStarted() {
+            FocusRectangles.this.setAFLocking(true);
+            FocusRectangles.this.mSingleAfRect.setVisibility(0);
+            View viewFindViewById = FocusRectangles.this.mSingleAfRect.findViewById(R.id.center_auto_focus_rect);
+            if (viewFindViewById.getVisibility() != 0) {
+                viewFindViewById.setVisibility(0);
+            }
+            FocusRectangles.this.mAnimation.startFocusAnimation(viewFindViewById, 2131230866);
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnAutoFocusDone(boolean z) {
+            ImageView imageView = (ImageView) FocusRectangles.this.mSingleAfRect
+                    .findViewById(R.id.center_auto_focus_rect);
+            if (z) {
+                if (imageView.getVisibility() != 0) {
+                    imageView.setVisibility(0);
+                }
+                imageView.setBackgroundResource(2131230865);
+                FocusRectangles.this.mAnimation.playAfFocusInAnimationSingle(imageView);
+                return;
+            }
+            if (imageView.getVisibility() == 0) {
+                imageView.setVisibility(4);
+            }
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleSetFocusPosition(Point point, FocusSetType focusSetType) {
+            FocusRectangles.this.setFocusPositionInternal(point, focusSetType);
+            FocusRectangles.this.changeState(new TouchFocusState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartFaceDetection() {
+            FocusRectangles.this.clearSingleAutoFocus();
+            FocusRectangles.this.clearObjectTracking();
+            FocusRectangles.this.changeState(new FaceDetectionState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnFaceDetected(CameraParameters.FaceDetectionResult faceDetectionResult) {
+            if (faceDetectionResult.extFaceList.size() == 0) {
+                FocusRectangles.this.changeState(FocusRectangles.this.new DefaultFocusState());
+            } else {
+                FocusRectangles.this.updateFaceRectanglesData(faceDetectionResult, false);
+                FocusRectangles.this.changeState(new FaceDetectionState());
+            }
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartObjectTracking() {
+            FocusRectangles.this.clearExceptTouchFocus();
+            FocusRectangles.this.changeState(new ObjectTrackingState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleClearExceptTouchFocus() {
+            FocusRectangles.this.clearSingleAutoFocus();
+            FocusRectangles.this.clearObjectTracking();
+            FocusRectangles.this.clearFaceDetection();
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleClearAllFocusExceptFace() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new DefaultFocusState());
+            FocusRectangles.this.clearSingleAutoFocus();
+            FocusRectangles.this.clearTouchFocus();
+            FocusRectangles.this.clearObjectTracking();
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnUiComponentOverlaid() {
+            FocusRectangles.this.mSingleAfRect.setVisibility(4);
+            FocusRectangles.this.hideFaceRectangles(false);
+            FocusRectangles.this.hideTrackedObjectRecgantle();
+            FocusRectangles.this.mTouchAfRect.setVisibility(4);
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnUiComponentRemoved() {
+            FocusRectangles.this.mTouchAfRect.setVisibility(4);
+            FocusRectangles.this.mSingleAfRect.setVisibility(4);
+            FocusRectangles.this.resetRectanglesColor();
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleClearObjectTracking() {
+            FocusRectangles.this.hideTrackedObjectRecgantle();
+            FocusRectangles.this.removeObjectFocusRectAnimation();
+            FocusRectangles.this.resetObjectTrackingRectangleColor(false);
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartAfLock() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new DefaultFocusInLockedState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStopAfLock() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new DefaultFocusState());
+        }
+    }
+
+    class DefaultFocusInLockedState extends DefaultFocusState {
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnFaceDetected(CameraParameters.FaceDetectionResult faceDetectionResult) {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartFaceDetection() {
+        }
+
+        DefaultFocusInLockedState() {
+            super();
+        }
+    }
+
+    class TouchFocusInLockedState extends TouchFocusState {
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.TouchFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnFaceDetected(CameraParameters.FaceDetectionResult faceDetectionResult) {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.TouchFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartFaceDetection() {
+        }
+
+        TouchFocusInLockedState() {
+            super();
+        }
+    }
+
+    class FaceDetectionInLockedState extends FaceDetectionState {
+        FaceDetectionInLockedState() {
+            super();
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.FaceDetectionState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnFaceDetected(CameraParameters.FaceDetectionResult faceDetectionResult) {
+            if (faceDetectionResult.extFaceList.size() == 0) {
+                FocusRectangles.this.mLatestSelectedFaceUuid = null;
+            }
+            if (FocusRectangles.this.mLatestSelectedFaceUuid == null) {
+                return;
+            }
+            FocusRectangles.this.updateFaceRectanglesData(faceDetectionResult, false,
+                    FocusRectangles.this.getSelectedFaceUuId(faceDetectionResult));
+        }
+    }
+
+    class ObjectTrackingInLockedState extends ObjectTrackingState {
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleClearAllFocusExceptFace() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleClearObjectTracking() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnFaceDetected(CameraParameters.FaceDetectionResult faceDetectionResult) {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnObjectRemoved() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartFaceDetection() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingState
+        protected boolean isAFLocking() {
+            return true;
+        }
+
+        ObjectTrackingInLockedState() {
+            super();
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnAutoFocusDone(boolean z) {
+            if (z) {
+                super.handleOnAutoFocusDone(z);
+            }
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnObjectLost() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new ObjectLostInLockedState());
+        }
+    }
+
+    class ObjectLostInLockedState extends ObjectTrackingInLockedState {
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingInLockedState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnAutoFocusDone(boolean z) {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleOnTrackedObjectStateUpdated(CameraParameters.ObjectTrackingResult objectTrackingResult) {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStartAfLock() {
+        }
+
+        ObjectLostInLockedState() {
+            super();
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingInLockedState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleClearAllFocusExceptFace() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new ObjectTrackingStoppedInLockedState());
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStopAfLock() {
+            FocusRectangles.this.changeState(FocusRectangles.this.new ObjectLostState());
+        }
+    }
+
+    class ObjectTrackingStoppedInLockedState extends ObjectLostInLockedState {
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectLostInLockedState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingInLockedState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleClearAllFocusExceptFace() {
+        }
+
+        ObjectTrackingStoppedInLockedState() {
+            super();
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectLostInLockedState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.ObjectTrackingState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.DefaultFocusState,
+                  // com.sonyericsson.cameracommon.focusview.FocusRectangles.State
+        public void handleStopAfLock() {
+            FocusRectangles.this.hideTrackedObjectRecgantle();
+            FocusRectangles.this.removeObjectFocusRectAnimation();
+            FocusRectangles.this.resetObjectTrackingRectangleColor(false);
+            FocusRectangles.this.changeState(FocusRectangles.this.new DefaultFocusState());
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    private void updateFaceRectanglesData(CameraParameters.FaceDetectionResult faceDetectionResult, boolean z) {
+        updateFaceRectanglesData(faceDetectionResult, z, null);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    private void updateFaceRectanglesData(CameraParameters.FaceDetectionResult faceDetectionResult, boolean z,
+            String str) {
+        this.mLastFaceDetectionResult = faceDetectionResult;
+        faceResultToRectangles(faceDetectionResult, z, str);
         if (this.mFaceReflectChecker.isWaitingForFaceReflected()) {
-            this.mFaceReflectChecker.check(cameraParameters$FaceDetectionResult);
+            this.mFaceReflectChecker.check(faceDetectionResult);
         }
     }
 
@@ -514,22 +1093,29 @@ public class FocusRectangles {
         return i;
     }
 
-    private void updateSmileGauge(TaggedRectangle taggedRectangle, FaceInformationList faceInformationList, int i, int i2) {
+    private void updateSmileGauge(TaggedRectangle taggedRectangle, FaceInformationList faceInformationList, int i,
+            int i2) {
         NamedFace namedFaceByUuid = faceInformationList.getNamedFaceByUuid(taggedRectangle.getUuid());
         if (namedFaceByUuid == null) {
             return;
         }
-        Rect rectConvertFromActiveArrayToView = PositionConverter.getInstance().convertFromActiveArrayToView(namedFaceByUuid.mFacePosition);
-        taggedRectangle.setSmileGaugesPosition(rectConvertFromActiveArrayToView.left, rectConvertFromActiveArrayToView.top, rectConvertFromActiveArrayToView.right, rectConvertFromActiveArrayToView.bottom, i2);
+        Rect rectConvertFromActiveArrayToView = PositionConverter.getInstance()
+                .convertFromActiveArrayToView(namedFaceByUuid.mFacePosition);
+        taggedRectangle.setSmileGaugesPosition(rectConvertFromActiveArrayToView.left,
+                rectConvertFromActiveArrayToView.top, rectConvertFromActiveArrayToView.right,
+                rectConvertFromActiveArrayToView.bottom, i2);
         taggedRectangle.setSmileLevel(i);
         taggedRectangle.setSmileScore(namedFaceByUuid.mSmileScore);
         this.mSmileScore = namedFaceByUuid.mSmileScore;
     }
 
     private void updateRectangle(TaggedRectangle taggedRectangle, NamedFace namedFace, int i, boolean z) {
-        Rect rectConvertFromActiveArrayToView = PositionConverter.getInstance().convertFromActiveArrayToView(namedFace.mFacePosition);
+        Rect rectConvertFromActiveArrayToView = PositionConverter.getInstance()
+                .convertFromActiveArrayToView(namedFace.mFacePosition);
         CamLog.d("Converted rectangle: " + rectConvertFromActiveArrayToView);
-        taggedRectangle.setRectPosition(rectConvertFromActiveArrayToView.centerX(), rectConvertFromActiveArrayToView.centerY(), rectConvertFromActiveArrayToView.width(), rectConvertFromActiveArrayToView.height());
+        taggedRectangle.setRectPosition(rectConvertFromActiveArrayToView.centerX(),
+                rectConvertFromActiveArrayToView.centerY(), rectConvertFromActiveArrayToView.width(),
+                rectConvertFromActiveArrayToView.height());
         if (z) {
             taggedRectangle.changeRectangleResource(0);
             taggedRectangle.hide();
@@ -548,23 +1134,140 @@ public class FocusRectangles {
     }
 
     private void setRectSizeAndPosition(RelativeLayout relativeLayout, int i, int i2, int i3, int i4) {
-        RelativeLayout$LayoutParams relativeLayout$LayoutParams = (RelativeLayout$LayoutParams) relativeLayout.getLayoutParams();
-        if (relativeLayout$LayoutParams != null) {
-            relativeLayout$LayoutParams.leftMargin = i;
-            relativeLayout$LayoutParams.topMargin = i2;
-            relativeLayout$LayoutParams.width = i3;
-            relativeLayout$LayoutParams.height = i4;
-            if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver$LayoutOrientationType.LANDSCAPE) {
-                relativeLayout$LayoutParams.addRule(15, -1);
-                relativeLayout$LayoutParams.removeRule(14);
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) relativeLayout.getLayoutParams();
+        if (layoutParams != null) {
+            layoutParams.leftMargin = i;
+            layoutParams.topMargin = i2;
+            layoutParams.width = i3;
+            layoutParams.height = i4;
+            if (LayoutOrientationResolver.getInstance()
+                    .getOrientation() == LayoutOrientationResolver.LayoutOrientationType.LANDSCAPE) {
+                layoutParams.addRule(15, -1);
+                layoutParams.removeRule(14);
             } else {
-                relativeLayout$LayoutParams.removeRule(15);
-                relativeLayout$LayoutParams.addRule(14, -1);
+                layoutParams.removeRule(15);
+                layoutParams.addRule(14, -1);
             }
-            relativeLayout.setLayoutParams(relativeLayout$LayoutParams);
+            relativeLayout.setLayoutParams(layoutParams);
         }
     }
 
+    class OnFaceRectTouchListener implements Rectangle.RectangleOnTouchListener {
+        private boolean mIsForceTouchCanceled = false;
+
+        OnFaceRectTouchListener() {
+        }
+
+        protected void clearTouched() {
+            this.mIsForceTouchCanceled = true;
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.Rectangle.RectangleOnTouchListener
+        public void onRectTouchDown(View view, MotionEvent motionEvent) {
+            if (FocusRectangles.this.mPressedRectangle == null
+                    && !FocusRectangles.this.mFaceReflectChecker.isWaitingForCapturing()) {
+                Rectangle rectangle = (Rectangle) view.findViewById(R.id.rect);
+                if (rectangle.getVisibility() == 0) {
+                    for (Map.Entry entry : FocusRectangles.this.mFaceRectangles.entrySet()) {
+                        TaggedRectangle taggedRectangle = (TaggedRectangle) entry.getValue();
+                        if (taggedRectangle.equals(view)) {
+                            view.setPressed(false);
+                            FocusRectangles.this.mPressedRectangle = taggedRectangle;
+                            taggedRectangle.startRectanglePressAnimation();
+                            boolean zEquals = FocusRectangles.this.mLatestSelectedFaceUuid != null
+                                    ? FocusRectangles.this.mLatestSelectedFaceUuid.equals(taggedRectangle.getUuid())
+                                    : false;
+                            FocusRectangles.this.faceResultToRectangles(FocusRectangles.this.mLastFaceDetectionResult,
+                                    false, null);
+                            FocusRectangles.this.changeFacePriority((String) entry.getKey());
+                            if (isTouchAreaOnTouchCapture(rectangle, motionEvent) && zEquals) {
+                                FocusRectangles.this.mFocusEventListener.onTouched();
+                                return;
+                            }
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.Rectangle.RectangleOnTouchListener
+        public void onRectTouchUp(View view, MotionEvent motionEvent) {
+            if (FocusRectangles.this.mPressedRectangle == null
+                    || !FocusRectangles.this.mPressedRectangle.equals(view)) {
+                return;
+            }
+            view.setPressed(false);
+            FocusRectangles.this.mPressedRectangle = null;
+            if (this.mIsForceTouchCanceled) {
+                this.mIsForceTouchCanceled = false;
+                FocusRectangles.this.mFocusEventListener.onCanceled();
+                return;
+            }
+            Rectangle rectangle = (Rectangle) view.findViewById(R.id.rect);
+            if (rectangle.getVisibility() == 0) {
+                Iterator it = FocusRectangles.this.mFaceRectangles.values().iterator();
+                while (it.hasNext()) {
+                    if (((TaggedRectangle) it.next()).equals(view)) {
+                        if (isTouchAreaOnTouchCapture(rectangle, motionEvent)) {
+                            if (FocusRectangles.this.mFaceReflectChecker.isWaitingForFaceReflected()) {
+                                FocusRectangles.this.mFaceReflectChecker.setFaceReflectCb(new FaceReflectedCallback() { // from
+                                                                                                                        // class:
+                                                                                                                        // com.sonyericsson.cameracommon.focusview.FocusRectangles.OnFaceRectTouchListener.1
+                                    @Override // com.sonyericsson.cameracommon.focusview.FocusRectangles.FaceReflectedCallback
+                                    public void onFaceReflected() {
+                                        FocusRectangles.this.mFocusEventListener.onReleased();
+                                    }
+                                });
+                                return;
+                            } else {
+                                FocusRectangles.this.mFocusEventListener.onReleased();
+                                return;
+                            }
+                        }
+                        return;
+                    }
+                }
+            }
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.Rectangle.RectangleOnTouchListener
+        public void onRectTouchCancel(View view, MotionEvent motionEvent) {
+            if (FocusRectangles.this.mPressedRectangle == null
+                    || !FocusRectangles.this.mPressedRectangle.equals(view)) {
+                return;
+            }
+            view.setPressed(false);
+            FocusRectangles.this.mPressedRectangle = null;
+            this.mIsForceTouchCanceled = false;
+            FocusRectangles.this.mFocusEventListener.onCanceled();
+        }
+
+        private boolean isTouchAreaOnTouchCapture(View view, MotionEvent motionEvent) {
+            if (!FocusRectangles.this.mIsFaceTouchCaptureEnabled || FocusRectangles.this.mCaptureArea == null) {
+                return false;
+            }
+            Rect rect = new Rect();
+            view.getGlobalVisibleRect(rect);
+            return CommonUtility.isEventContainedInView(FocusRectangles.this.mCaptureArea,
+                    new Point(((int) motionEvent.getX()) + rect.left, ((int) motionEvent.getY()) + rect.top));
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.Rectangle.RectangleOnTouchListener
+        public void onRectTouchLongPress(View view, MotionEvent motionEvent) {
+            if (CamLog.VERBOSE) {
+                CamLog.d("onRectTouchLongPress.");
+            }
+            if (FocusRectangles.this.mPressedRectangle == null
+                    || !FocusRectangles.this.mPressedRectangle.equals(view)) {
+                return;
+            }
+            view.setPressed(true);
+            FocusRectangles.this.mFocusEventListener.onLongPressed();
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
     private void hideFaceRectangles(boolean z) {
         for (TaggedRectangle taggedRectangle : this.mFaceRectangles.values()) {
             if (z) {
@@ -574,12 +1277,13 @@ public class FocusRectangles {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void hideTrackedObjectRecgantle() {
         this.mTrackedObjectRectangle.setVisibility(4);
     }
 
     private void removeTouchFocusRectAnimation() {
-        ImageView imageView = (ImageView) this.mTouchAfRect.findViewById(2131296347);
+        ImageView imageView = (ImageView) this.mTouchAfRect.findViewById(R.id.center_auto_focus_rect);
         this.mIsFocusAnimationEnabled = false;
         if (imageView.getAnimation() == null) {
             return;
@@ -590,7 +1294,7 @@ public class FocusRectangles {
     }
 
     private void removeSingleFocusRectAnimation() {
-        ImageView imageView = (ImageView) this.mSingleAfRect.findViewById(2131296347);
+        ImageView imageView = (ImageView) this.mSingleAfRect.findViewById(R.id.center_auto_focus_rect);
         if (imageView.getAnimation() == null) {
             return;
         }
@@ -599,6 +1303,7 @@ public class FocusRectangles {
         imageView.setAnimation(null);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void removeObjectFocusRectAnimation() {
         if (this.mTrackedObjectRectangle.getAnimation() == null) {
             return;
@@ -608,6 +1313,7 @@ public class FocusRectangles {
         this.mTrackedObjectRectangle.setAnimation(null);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void resetRectanglesColor() {
         resetFaceRectangleColor();
         resetObjectTrackingRectangleColor(false);
@@ -622,32 +1328,35 @@ public class FocusRectangles {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void resetObjectTrackingRectangleColor(boolean z) {
         this.mTrackedObjectRectangle.changeRectangleResource(z ? getSuccessIcon() : getNormalIcon());
     }
 
     private void resetTouchFocusRectangleColor() {
-        ImageView imageView = (ImageView) this.mTouchAfRect.findViewById(2131296347);
+        ImageView imageView = (ImageView) this.mTouchAfRect.findViewById(R.id.center_auto_focus_rect);
         imageView.setVisibility(0);
         this.mAnimation.startFocusAnimation(imageView, 2131230866);
     }
 
     private void resetSingleFocusRectangleColor() {
-        ((ImageView) this.mSingleAfRect.findViewById(2131296347)).setBackgroundResource(2131230866);
+        ((ImageView) this.mSingleAfRect.findViewById(R.id.center_auto_focus_rect)).setBackgroundResource(2131230866);
     }
 
-    private void setFocusPositionInternal(Point point, FocusRectangles$FocusSetType focusRectangles$FocusSetType) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void setFocusPositionInternal(Point point, FocusSetType focusSetType) {
         if (point == null) {
             this.mTouchAfRect.scrollTo(0, 0);
             return;
         }
-        if (focusRectangles$FocusSetType == FocusRectangles$FocusSetType.FIRST) {
+        if (focusSetType == FocusSetType.FIRST) {
             hideFaceRectangles(true);
         }
         int iWidth = point.x;
         int iHeight = point.y;
-        Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity, this.mDevicePreviewWidth / this.mDevicePreviewHeight, this.mScreenAspect);
-        FocusRectanglesAnimation$AnimationConfig touchAnimationConfig = this.mAnimation.getTouchAnimationConfig();
+        Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity,
+                (float) this.mDevicePreviewWidth / this.mDevicePreviewHeight, this.mScreenAspect);
+        FocusRectanglesAnimation.AnimationConfig touchAnimationConfig = this.mAnimation.getTouchAnimationConfig();
         if (iWidth < touchAnimationConfig.mToWidth / 2) {
             iWidth = touchAnimationConfig.mToWidth / 2;
         } else if (surfaceViewRect.right - (touchAnimationConfig.mToWidth / 2) < iWidth) {
@@ -660,18 +1369,18 @@ public class FocusRectangles {
         }
         this.mTouchAfRect.scrollTo((surfaceViewRect.width() / 2) - iWidth, (surfaceViewRect.height() / 2) - iHeight);
         this.mTouchAfRect.setVisibility(0);
-        playTouchFocusStartAnimation(focusRectangles$FocusSetType);
+        playTouchFocusStartAnimation(focusSetType);
     }
 
-    private void playTouchFocusStartAnimation(FocusRectangles$FocusSetType focusRectangles$FocusSetType) {
+    private void playTouchFocusStartAnimation(FocusSetType focusSetType) {
         if (this.mIsFaceTouchCaptureEnabled) {
             return;
         }
-        switch (FocusRectangles$4.$SwitchMap$com$sonyericsson$cameracommon$focusview$FocusRectangles$FocusSetType[focusRectangles$FocusSetType.ordinal()]) {
-            case 1:
+        switch (focusSetType) {
+            case FIRST:
                 playOnTouchDownAnimationForTouchFocusRect();
                 break;
-            case 2:
+            case RELEASE:
                 playOnTouchUpAnimationForTouchFocusRect();
                 break;
         }
@@ -679,11 +1388,24 @@ public class FocusRectangles {
 
     private void playOnTouchDownAnimationForTouchFocusRect() {
         if (this.mTouchAfRect.getVisibility() == 0) {
-            ImageView imageView = (ImageView) this.mTouchAfRect.findViewById(2131296347);
+            ImageView imageView = (ImageView) this.mTouchAfRect.findViewById(R.id.center_auto_focus_rect);
             imageView.setBackgroundResource(2131230868);
             this.mIsFocusAnimationEnabled = true;
             imageView.setVisibility(4);
-            this.mFocusAnimationTask = new FocusRectangles$1(this);
+            this.mFocusAnimationTask = new Runnable() { // from class:
+                                                        // com.sonyericsson.cameracommon.focusview.FocusRectangles.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    ImageView imageView2 = (ImageView) FocusRectangles.this.mTouchAfRect
+                            .findViewById(R.id.center_auto_focus_rect);
+                    imageView2.setVisibility(0);
+                    if (FocusRectangles.this.mIsFocusAnimationEnabled) {
+                        FocusRectangles.this.mAnimation.playTouchDownAnimation(imageView2);
+                    } else {
+                        FocusRectangles.this.mTouchAfRect.setVisibility(4);
+                    }
+                }
+            };
             this.mHandler.postDelayed(this.mFocusAnimationTask, 100L);
         }
     }
@@ -693,52 +1415,77 @@ public class FocusRectangles {
             if (this.mFocusAnimationTask != null) {
                 this.mHandler.removeCallbacks(this.mFocusAnimationTask);
             }
-            this.mFocusAnimationTask = new FocusRectangles$2(this);
+            this.mFocusAnimationTask = new Runnable() { // from class:
+                                                        // com.sonyericsson.cameracommon.focusview.FocusRectangles.2
+                @Override // java.lang.Runnable
+                public void run() {
+                    ImageView imageView = (ImageView) FocusRectangles.this.mTouchAfRect
+                            .findViewById(R.id.center_auto_focus_rect);
+                    imageView.setVisibility(0);
+                    if (FocusRectangles.this.mIsFocusAnimationEnabled) {
+                        FocusRectangles.this.mAnimation.playTouchUpAnimation(imageView);
+                    } else {
+                        FocusRectangles.this.mTouchAfRect.setVisibility(4);
+                    }
+                }
+            };
             this.mHandler.post(this.mFocusAnimationTask);
             this.mIsFocusAnimationEnabled = true;
         }
     }
 
-    private void onObjectTrackedInternal(CameraParameters$ObjectTrackingResult cameraParameters$ObjectTrackingResult, boolean z) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void onObjectTrackedInternal(CameraParameters.ObjectTrackingResult objectTrackingResult, boolean z) {
         int iCenterX;
         int iCenterY;
-        if (cameraParameters$ObjectTrackingResult.mIsLost) {
+        if (objectTrackingResult.mIsLost) {
             this.mHandler.postDelayed(this.mRefreshTrackedObjectRectangleTask, 1000L);
             return;
         }
         this.mHandler.removeCallbacks(this.mRefreshTrackedObjectRectangleTask);
-        Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity, this.mDevicePreviewWidth / this.mDevicePreviewHeight, this.mScreenAspect);
-        float fWidth = surfaceViewRect.width() / this.mDevicePreviewWidth;
-        float fHeight = surfaceViewRect.height() / this.mDevicePreviewHeight;
-        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
-            iCenterX = (int) ((this.mDevicePreviewWidth - cameraParameters$ObjectTrackingResult.mRectOfTrackedObject.centerY()) * fWidth);
-            iCenterY = (int) (cameraParameters$ObjectTrackingResult.mRectOfTrackedObject.centerX() * fHeight);
+        Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity,
+                (float) this.mDevicePreviewWidth / this.mDevicePreviewHeight, this.mScreenAspect);
+        float fWidth = (float) surfaceViewRect.width() / this.mDevicePreviewWidth;
+        float fHeight = (float) surfaceViewRect.height() / this.mDevicePreviewHeight;
+        if (LayoutOrientationResolver.getInstance()
+                .getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
+            iCenterX = (int) ((this.mDevicePreviewWidth - objectTrackingResult.mRectOfTrackedObject.centerY())
+                    * fWidth);
+            iCenterY = (int) (objectTrackingResult.mRectOfTrackedObject.centerX() * fHeight);
         } else {
-            iCenterX = (int) (cameraParameters$ObjectTrackingResult.mRectOfTrackedObject.centerX() * fWidth);
-            iCenterY = (int) (cameraParameters$ObjectTrackingResult.mRectOfTrackedObject.centerY() * fHeight);
+            iCenterX = (int) (objectTrackingResult.mRectOfTrackedObject.centerX() * fWidth);
+            iCenterY = (int) (objectTrackingResult.mRectOfTrackedObject.centerY() * fHeight);
         }
-        FocusRectanglesAnimation$AnimationConfig objectAnimationConfig = this.mAnimation.getObjectAnimationConfig();
-        Rect rect = new Rect(iCenterX - (objectAnimationConfig.mFromWidth / 2), iCenterY - (objectAnimationConfig.mFromHeight / 2), iCenterX + (objectAnimationConfig.mFromWidth / 2), iCenterY + (objectAnimationConfig.mFromHeight / 2));
+        FocusRectanglesAnimation.AnimationConfig objectAnimationConfig = this.mAnimation.getObjectAnimationConfig();
+        Rect rect = new Rect(iCenterX - (objectAnimationConfig.mFromWidth / 2),
+                iCenterY - (objectAnimationConfig.mFromHeight / 2), iCenterX + (objectAnimationConfig.mFromWidth / 2),
+                iCenterY + (objectAnimationConfig.mFromHeight / 2));
         this.mTrackedObjectRectangle.setRectImageSize(rect.centerX(), rect.centerY(), -2, -2);
         resetObjectTrackingRectangleColor(z);
         this.mTrackedObjectRectangle.setVisibility(0);
         this.mTrackedObjectRectangle.requestLayout();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void changeFacePriority(String str) {
         TaggedRectangle taggedRectangle = this.mFaceRectangles.get(str);
         if (taggedRectangle == null) {
             CamLog.e("changeFacePriority() faceUuid " + str + " not found.");
             return;
         }
-        Rect rectConvertFromViewToActiveArray = PositionConverter.getInstance().convertFromViewToActiveArray(taggedRectangle.getFaceRect());
+        Rect rectConvertFromViewToActiveArray = PositionConverter.getInstance()
+                .convertFromViewToActiveArray(taggedRectangle.getFaceRect());
         Point point = new Point(rectConvertFromViewToActiveArray.centerX(), rectConvertFromViewToActiveArray.centerY());
         this.mFocusEventListener.onFaceSelected(point);
         this.mFaceReflectChecker.requestToWaitForFaceReflected(point);
     }
 
-    private void faceResultToRectangles(CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult, boolean z, String str) {
-        FaceInformationList faceInformationList = cameraParameters$FaceDetectionResult != null ? FaceDetectUtil.getFaceInformationList(cameraParameters$FaceDetectionResult, new Rect(0, 0, this.mDevicePreviewWidth, this.mDevicePreviewHeight), getSelectedFaceUuId(cameraParameters$FaceDetectionResult)) : null;
+    /* JADX INFO: Access modifiers changed from: private */
+    private void faceResultToRectangles(CameraParameters.FaceDetectionResult faceDetectionResult, boolean z,
+            String str) {
+        FaceInformationList faceInformationList = faceDetectionResult != null ? FaceDetectUtil.getFaceInformationList(
+                faceDetectionResult, new Rect(0, 0, this.mDevicePreviewWidth, this.mDevicePreviewHeight),
+                getSelectedFaceUuId(faceDetectionResult)) : null;
         this.mTouchEventDispatcher.updateFaceList(faceInformationList);
         if (faceInformationList == null || z) {
             return;
@@ -746,12 +1493,95 @@ public class FocusRectangles {
         updateFaceRectangles(faceInformationList, str, this.mCurrentOrientation, z);
     }
 
+    private class FaceReflectChecker {
+        private static final long WAIT_FOR_FACE_REFLECTED_TIME_MILLIS = 500;
+        private FaceReflectedCallback mCallback;
+        private Point mFaceAreaTriggerPoint;
+        private Runnable mTimeoutTask;
+
+        private FaceReflectChecker() {
+            this.mFaceAreaTriggerPoint = new Point(-1, -1);
+            this.mTimeoutTask = new Runnable() { // from class:
+                                                 // com.sonyericsson.cameracommon.focusview.FocusRectangles.FaceReflectChecker.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    FaceReflectChecker.this.notifyFaceReflected();
+                }
+            };
+        }
+
+        public void requestToWaitForFaceReflected(Point point) {
+            if (FocusRectangles.this.mIsFaceTouchCaptureEnabled) {
+                this.mFaceAreaTriggerPoint = point;
+                FocusRectangles.this.mHandler.removeCallbacks(this.mTimeoutTask);
+                FocusRectangles.this.mHandler.postDelayed(this.mTimeoutTask, WAIT_FOR_FACE_REFLECTED_TIME_MILLIS);
+            }
+        }
+
+        public void check(CameraParameters.FaceDetectionResult faceDetectionResult) {
+            if (FaceDetectUtil.isValidFaceDetectionResult(faceDetectionResult)) {
+                if (faceDetectionResult.extFaceList.get(faceDetectionResult.indexOfSelectedFace).rect
+                        .contains(this.mFaceAreaTriggerPoint.x, this.mFaceAreaTriggerPoint.y)) {
+                    notifyFaceReflected();
+                    return;
+                }
+                return;
+            }
+            notifyFaceReflected();
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void notifyFaceReflected() {
+            this.mFaceAreaTriggerPoint.x = -1;
+            this.mFaceAreaTriggerPoint.y = -1;
+            if (this.mCallback != null) {
+                this.mCallback.onFaceReflected();
+                setFaceReflectCb(null);
+            }
+            FocusRectangles.this.mHandler.removeCallbacks(this.mTimeoutTask);
+        }
+
+        public boolean isWaitingForFaceReflected() {
+            return this.mFaceAreaTriggerPoint.x >= 0 && this.mFaceAreaTriggerPoint.y >= 0;
+        }
+
+        public boolean isWaitingForCapturing() {
+            return this.mCallback != null;
+        }
+
+        public void setFaceReflectCb(FaceReflectedCallback faceReflectedCallback) {
+            this.mCallback = faceReflectedCallback;
+        }
+    }
+
+    class RefreshTrackedObjectRectangleTask implements Runnable {
+        RefreshTrackedObjectRectangleTask() {
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            if (CamLog.VERBOSE) {
+                CamLog.d("RefreshTrackedObjectRectangleTask.run():[IN]");
+            }
+            if (FocusRectangles.this.mFocusEventListener == null
+                    || FocusRectangles.this.mTrackedObjectRectangle == null) {
+                return;
+            }
+            FocusRectangles.this.mTrackedObjectRectangle.setVisibility(4);
+            FocusRectangles.this.onObjectRemoved();
+        }
+    }
+
     public boolean isTouchFocus() {
-        return this.mCurrentState.getClass().equals(FocusRectangles$TouchFocusState.class);
+        if (this.mCurrentState.getClass().equals(TouchFocusState.class)) {
+            return true;
+        }
+        return false;
     }
 
     public Rect getTouchFocusIconSize() {
-        return new Rect(0, 0, this.mActivity.getResources().getDimensionPixelSize(2131165338), this.mActivity.getResources().getDimensionPixelSize(2131165337));
+        return new Rect(0, 0, this.mActivity.getResources().getDimensionPixelSize(R.dimen.focus_rect_single_width),
+                this.mActivity.getResources().getDimensionPixelSize(R.dimen.focus_rect_single_height));
     }
 
     public void setOrientation(int i) {
@@ -762,19 +1592,22 @@ public class FocusRectangles {
         this.mRectangles.setVisibility(i);
     }
 
-    private void changeState(FocusRectangles$State focusRectangles$State) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void changeState(State state) {
         if (CamLog.VERBOSE) {
-            CamLog.d("changeState to: " + focusRectangles$State.getClass().getSimpleName());
+            CamLog.d("changeState to: " + state.getClass().getSimpleName());
         }
-        this.mCurrentState = focusRectangles$State;
+        this.mCurrentState = state;
     }
 
     protected int getNormalIcon() {
-        return this.mIsRecording ? this.mObjectTrackingRectSupported ? 2131230871 : 2131230865 : this.mObjectTrackingRectSupported ? 2131230871 : 2131230866;
+        return this.mIsRecording ? this.mObjectTrackingRectSupported ? 2131230871 : 2131230865
+                : this.mObjectTrackingRectSupported ? 2131230871 : 2131230866;
     }
 
     protected int getTouchIcon() {
-        return this.mIsRecording ? this.mObjectTrackingRectSupported ? 2131230870 : 2131230865 : this.mObjectTrackingRectSupported ? 2131230870 : 2131230866;
+        return this.mIsRecording ? this.mObjectTrackingRectSupported ? 2131230870 : 2131230865
+                : this.mObjectTrackingRectSupported ? 2131230870 : 2131230866;
     }
 
     protected int getTouchAfFocusingIcon() {
@@ -798,18 +1631,20 @@ public class FocusRectangles {
         this.mTrackedObjectRectangle.setScaleY(1.0f);
         this.mTrackedObjectRectangle.setRectImageSize(rect.centerX(), rect.centerY(), rect.width(), rect.height());
         this.mTrackedObjectRectangle.setVisibility(0);
-        ViewGroup$LayoutParams layoutParams = this.mTrackedObjectRectangle.getLayoutParams();
+        ViewGroup.LayoutParams layoutParams = this.mTrackedObjectRectangle.getLayoutParams();
         layoutParams.width = -1;
         layoutParams.height = -1;
         this.mTrackedObjectRectangle.requestLayout();
     }
 
-    private void initObjectTrackingAnimation(CameraParameters$ObjectTrackingResult cameraParameters$ObjectTrackingResult) {
-        Rect rectConvertFromActiveArrayToView = PositionConverter.getInstance().convertFromActiveArrayToView(cameraParameters$ObjectTrackingResult.mRectOfTrackedObject);
+    /* JADX INFO: Access modifiers changed from: private */
+    private void initObjectTrackingAnimation(CameraParameters.ObjectTrackingResult objectTrackingResult) {
+        Rect rectConvertFromActiveArrayToView = PositionConverter.getInstance()
+                .convertFromActiveArrayToView(objectTrackingResult.mRectOfTrackedObject);
         this.mTrackedObjectRectangle.changeRectangleResource(getTouchIcon());
-        this.mObJectTrackingFocusIconState = FocusRectangles$ObJectTrackingFocusIconState.TOUCH_ICON;
-        int dimensionPixelSize = this.mActivity.getResources().getDimensionPixelSize(2131165336);
-        int dimensionPixelSize2 = this.mActivity.getResources().getDimensionPixelSize(2131165335);
+        this.mObJectTrackingFocusIconState = ObJectTrackingFocusIconState.TOUCH_ICON;
+        int dimensionPixelSize = this.mActivity.getResources().getDimensionPixelSize(R.dimen.focus_rect_object_width);
+        int dimensionPixelSize2 = this.mActivity.getResources().getDimensionPixelSize(R.dimen.focus_rect_object_height);
         int i = rectConvertFromActiveArrayToView.left;
         int i2 = rectConvertFromActiveArrayToView.top;
         int i3 = rectConvertFromActiveArrayToView.right;
@@ -825,34 +1660,61 @@ public class FocusRectangles {
         displayObjectTrackingFocusFrame(rectConvertFromActiveArrayToView);
     }
 
-    private void playObjectTrackingAnimation(CameraParameters$ObjectTrackingResult cameraParameters$ObjectTrackingResult, boolean z) {
-        Rect rect = new Rect(0, 0, this.mTrackedObjectRectangle.getRectImageWidth(), this.mTrackedObjectRectangle.getRectImageHeight());
-        Rect rectConvertFromActiveArrayToView = PositionConverter.getInstance().convertFromActiveArrayToView(cameraParameters$ObjectTrackingResult.mRectOfTrackedObject);
+    /* JADX INFO: Access modifiers changed from: private */
+    private void playObjectTrackingAnimation(CameraParameters.ObjectTrackingResult objectTrackingResult, boolean z) {
+        Rect rect = new Rect(0, 0, this.mTrackedObjectRectangle.getRectImageWidth(),
+                this.mTrackedObjectRectangle.getRectImageHeight());
+        Rect rectConvertFromActiveArrayToView = PositionConverter.getInstance()
+                .convertFromActiveArrayToView(objectTrackingResult.mRectOfTrackedObject);
         resetObjectTrackingRectangleColor(z);
         displayObjectTrackingFocusFrame(rectConvertFromActiveArrayToView);
-        if (this.mObJectTrackingFocusIconState == FocusRectangles$ObJectTrackingFocusIconState.TOUCH_ICON) {
-            this.mObJectTrackingFocusIconState = FocusRectangles$ObJectTrackingFocusIconState.TRACKING_ICON;
-            ObjectAnimator objectTrackingAnimator = getObjectTrackingAnimator(this.mTrackedObjectRectangle, 300, rect, rectConvertFromActiveArrayToView);
+        if (this.mObJectTrackingFocusIconState == ObJectTrackingFocusIconState.TOUCH_ICON) {
+            this.mObJectTrackingFocusIconState = ObJectTrackingFocusIconState.TRACKING_ICON;
+            ObjectAnimator objectTrackingAnimator = getObjectTrackingAnimator(this.mTrackedObjectRectangle, 300, rect,
+                    rectConvertFromActiveArrayToView);
             AnimatorSet animatorSet = new AnimatorSet();
             animatorSet.playTogether(objectTrackingAnimator);
-            animatorSet.setInterpolator(new PathInterpolator(0.23f, 1.0f, 0.32f, 1.0f));
-            animatorSet.addListener(new FocusRectangles$3(this));
+            animatorSet.setInterpolator(
+                    new PathInterpolator(INTERPOLATOR_CONTROL_X1, 1.0f, INTERPOLATOR_CONTROL_X2, 1.0f));
+            animatorSet.addListener(new Animator.AnimatorListener() { // from class:
+                                                                      // com.sonyericsson.cameracommon.focusview.FocusRectangles.3
+                @Override // android.animation.Animator.AnimatorListener
+                public void onAnimationCancel(Animator animator) {
+                }
+
+                @Override // android.animation.Animator.AnimatorListener
+                public void onAnimationRepeat(Animator animator) {
+                }
+
+                @Override // android.animation.Animator.AnimatorListener
+                public void onAnimationStart(Animator animator) {
+                }
+
+                @Override // android.animation.Animator.AnimatorListener
+                public void onAnimationEnd(Animator animator) {
+                    animator.removeAllListeners();
+                }
+            });
             animatorSet.start();
         }
     }
 
-    private String getSelectedFaceUuId(CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult) {
-        if (cameraParameters$FaceDetectionResult.extFaceList.size() == 0) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private String getSelectedFaceUuId(CameraParameters.FaceDetectionResult faceDetectionResult) {
+        if (faceDetectionResult.extFaceList.size() == 0) {
             return null;
         }
-        return Integer.toString(cameraParameters$FaceDetectionResult.extFaceList.get(cameraParameters$FaceDetectionResult.indexOfSelectedFace).id);
+        return Integer.toString(faceDetectionResult.extFaceList.get(faceDetectionResult.indexOfSelectedFace).id);
     }
 
     private ObjectAnimator getObjectTrackingAnimator(TaggedRectangle taggedRectangle, int i, Rect rect, Rect rect2) {
-        PathInterpolator pathInterpolator = new PathInterpolator(0.23f, 1.0f, 0.32f, 1.0f);
-        this.mTrackedObjectRectangle.setScaleX(rect.width() / rect2.width());
-        this.mTrackedObjectRectangle.setScaleY(rect.height() / rect2.height());
-        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(taggedRectangle, PropertyValuesHolder.ofFloat("scaleX", 1.0f), PropertyValuesHolder.ofFloat("scaleY", 1.0f));
+        PathInterpolator pathInterpolator = new PathInterpolator(INTERPOLATOR_CONTROL_X1, 1.0f, INTERPOLATOR_CONTROL_X2,
+                1.0f);
+        this.mTrackedObjectRectangle.setScaleX((float) rect.width() / rect2.width());
+        this.mTrackedObjectRectangle.setScaleY((float) rect.height() / rect2.height());
+        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(taggedRectangle,
+                PropertyValuesHolder.ofFloat(ANIMATION_SCALE_X, 1.0f),
+                PropertyValuesHolder.ofFloat(ANIMATION_SCALE_Y, 1.0f));
         objectAnimatorOfPropertyValuesHolder.setDuration(i);
         objectAnimatorOfPropertyValuesHolder.setInterpolator(pathInterpolator);
         return objectAnimatorOfPropertyValuesHolder;

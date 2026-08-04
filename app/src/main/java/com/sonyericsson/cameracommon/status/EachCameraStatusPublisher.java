@@ -2,7 +2,7 @@ package com.sonyericsson.cameracommon.status;
 
 import android.content.Context;
 import android.graphics.Rect;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import com.sonyericsson.cameracommon.status.eachcamera.ArtFilter;
@@ -11,7 +11,6 @@ import com.sonyericsson.cameracommon.status.eachcamera.DeviceStatus;
 import com.sonyericsson.cameracommon.status.eachcamera.FaceDetection;
 import com.sonyericsson.cameracommon.status.eachcamera.FaceIdentification;
 import com.sonyericsson.cameracommon.status.eachcamera.Hdr;
-import com.sonyericsson.cameracommon.status.eachcamera.Hdr$Value;
 import com.sonyericsson.cameracommon.status.eachcamera.Metadata;
 import com.sonyericsson.cameracommon.status.eachcamera.ObjectTracking;
 import com.sonyericsson.cameracommon.status.eachcamera.OnlineRemote;
@@ -21,7 +20,6 @@ import com.sonyericsson.cameracommon.status.eachcamera.PreviewMaxFps;
 import com.sonyericsson.cameracommon.status.eachcamera.PreviewResolution;
 import com.sonyericsson.cameracommon.status.eachcamera.SceneRecognition;
 import com.sonyericsson.cameracommon.status.eachcamera.SlowMotion;
-import com.sonyericsson.cameracommon.status.eachcamera.SlowMotion$Value;
 import com.sonyericsson.cameracommon.status.eachcamera.SoundPhoto;
 import com.sonyericsson.cameracommon.status.eachcamera.TimeShift;
 import com.sonyericsson.cameracommon.status.eachcamera.VideoNoiseReduction;
@@ -32,22 +30,22 @@ import com.sonyericsson.cameracommon.status.eachcamera.VideoStabilizerStatus;
 public class EachCameraStatusPublisher extends CameraStatusPublisher<EachCameraStatusValue> {
     private final String mKeyPrefix;
 
-    public EachCameraStatusPublisher(Context context, CameraInfo$CameraId cameraInfo$CameraId) {
+    public EachCameraStatusPublisher(Context context, CameraInfo.CameraId cameraId) {
         super(context);
         if (getCameraCommonVersion() >= 10) {
-            this.mKeyPrefix = "camera" + cameraInfo$CameraId.getCameraDeviceIdApi1() + "_";
+            this.mKeyPrefix = "camera" + cameraId.getCameraDeviceIdApi1() + "_";
             return;
         }
         this.mKeyPrefix = null;
     }
 
-    public EachCameraStatusPublisher putFromParameter(CameraParameters cameraParameters, CameraInfo$CameraId cameraInfo$CameraId, boolean z) {
+    public EachCameraStatusPublisher putFromParameter(CameraParameters cameraParameters, CameraInfo.CameraId cameraId, boolean z) {
         Rect pictureSize;
         if (cameraParameters != null) {
             Rect previewSize = cameraParameters.getPreviewSize();
             if (previewSize != null) {
                 put(new PreviewResolution(previewSize));
-                put(new PreviewMaxFps(PlatformCapability.getMaxPreviewFps(cameraInfo$CameraId)));
+                put(new PreviewMaxFps(PlatformCapability.getMaxPreviewFps(cameraId)));
             }
             if (!z && (pictureSize = cameraParameters.getPictureSize()) != null) {
                 put(new PictureResolution(pictureSize));
@@ -77,8 +75,8 @@ public class EachCameraStatusPublisher extends CameraStatusPublisher<EachCameraS
         put(new TimeShift(TimeShift.DEFAULT_VALUE));
         put(new SoundPhoto(SoundPhoto.DEFAULT_VALUE));
         put(new OnlineRemote(OnlineRemote.DEFAULT_VALUE));
-        put(new SlowMotion(SlowMotion$Value.OFF));
-        put(new Hdr(Hdr$Value.OFF));
+        put(new SlowMotion(SlowMotion.Value.OFF));
+        put(new Hdr(Hdr.Value.OFF));
         return this;
     }
 

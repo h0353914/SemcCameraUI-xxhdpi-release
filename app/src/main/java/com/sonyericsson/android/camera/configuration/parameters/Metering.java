@@ -1,18 +1,20 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public enum Metering implements UserSettingValue {
-    FACE(-1, 2131689999, "face"),
-    MULTI(-1, 2131689947, "multi"),
-    CENTER(-1, 2131689998, "center-weighted"),
-    SPOT(-1, 2131690000, "spot"),
-    AVERAGE(-1, 2131689997, "frame-average"),
-    TOUCH(-1, 2131690002, "face");
+    FACE(-1, R.string.cam_strings_photometry_face_txt, "face"),
+    MULTI(-1, R.string.cam_strings_metering_multi_cy_txt, "multi"),
+    CENTER(-1, R.string.cam_strings_photometry_center_txt, CameraParameters.AE_REGION_MODE_CENTER_WEIGHTED),
+    SPOT(-1, R.string.cam_strings_photometry_spot_txt, CameraParameters.AE_REGION_MODE_SPOT),
+    AVERAGE(-1, R.string.cam_strings_photometry_average_txt, CameraParameters.AE_REGION_MODE_FRAME_AVERAGE),
+    TOUCH(-1, R.string.cam_strings_photometry_touch_txt, "face");
 
     public static final String TAG = "Metering";
     private static final int sParameterTextId = 2131690003;

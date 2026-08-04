@@ -18,12 +18,6 @@ public final class DescriptorProtos$FieldOptions extends ExtendableMessageNano<D
     public DescriptorProtos$UninterpretedOption[] uninterpretedOption;
     public DescriptorProtos$FieldOptions$UpgradedOption[] upgradedOption;
     public boolean weak;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     @NanoEnumValue(legacy = false, value = DescriptorProtos$FieldOptions$CType.class)
     public static int checkCTypeOrThrow(int value) {
         if (value >= 0 && value <= 2) {
@@ -269,7 +263,6 @@ public final class DescriptorProtos$FieldOptions extends ExtendableMessageNano<D
                     if (!super.storeUnknownField(input, tag)) {
                         return this;
                     }
-                    break;
                     break;
             }
         }

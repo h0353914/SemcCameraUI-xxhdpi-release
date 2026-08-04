@@ -22,6 +22,6 @@ public class GammaCorrection {
     }
 
     private int correctSample(int i, double d, double d2) {
-        return (int) Math.round(255.0d * Math.pow(((double) i) / 255.0d, d / d2));
+        return (int) Math.round(255.0d * Math.pow(i / 255.0d, d / d2));
     }
 }

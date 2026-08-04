@@ -1,10 +1,10 @@
 package com.google.android.gms.auth.api.proxy;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import android.os.Parcelable;
 
-public class zza implements Parcelable$Creator<ProxyGrpcRequest> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zza implements Parcelable.Creator<ProxyGrpcRequest> {
     static void zza(ProxyGrpcRequest proxyGrpcRequest, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zza(parcel, 1, proxyGrpcRequest.hostname, false);
@@ -16,17 +16,9 @@ public class zza implements Parcelable$Creator<ProxyGrpcRequest> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ProxyGrpcRequest createFromParcel(Parcel parcel) {
-        return zzL(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ProxyGrpcRequest[] newArray(int i) {
-        return zzaC(i);
-    }
-
-    public ProxyGrpcRequest zzL(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzL, reason: merged with bridge method [inline-methods] */
+    public ProxyGrpcRequest createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         int iZzg2 = 0;
@@ -65,10 +57,12 @@ public class zza implements Parcelable$Creator<ProxyGrpcRequest> {
         if (parcel.dataPosition() == iZzap) {
             return new ProxyGrpcRequest(iZzg, strZzp, iZzg2, jZzi, bArrZzs, strZzp2);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new com.google.android.gms.common.internal.safeparcel.zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public ProxyGrpcRequest[] zzaC(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaC, reason: merged with bridge method [inline-methods] */
+    public ProxyGrpcRequest[] newArray(int i) {
         return new ProxyGrpcRequest[i];
     }
 }

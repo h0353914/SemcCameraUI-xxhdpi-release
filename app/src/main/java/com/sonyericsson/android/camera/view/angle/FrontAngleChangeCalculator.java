@@ -1,10 +1,12 @@
 package com.sonyericsson.android.camera.view.angle;
 
-public class FrontAngleChangeCalculator implements VariableIndex$Calculator {
+import com.sonyericsson.android.camera.view.angle.VariableIndex;
+
+public class FrontAngleChangeCalculator implements VariableIndex.Calculator {
     public static final int ZOOM_CHANGE_ANGLE_LOOP_COUNT = 1;
     private int mStepInterval = -1;
 
-    @Override // com.sonyericsson.android.camera.view.angle.VariableIndex$Calculator
+    @Override // com.sonyericsson.android.camera.view.angle.VariableIndex.Calculator
     public VariableIndex calculate(VariableIndex variableIndex, Object... objArr) {
         int iIntValue = ((Integer) objArr[0]).intValue();
         if (this.mStepInterval == -1) {

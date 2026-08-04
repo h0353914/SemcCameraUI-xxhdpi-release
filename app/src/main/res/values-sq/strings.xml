@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Fotografimi nuk mund të kryhej. Zhvendoseni më ngadalë.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Fotografimi nuk mund të kryhej. Zhvendoseni më shpejt.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Nxirrni një foto panoramike duke e lëvizur horizontalisht kamerën</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Krijimi i skedarëve në vijim:\n- Imazh shumëkëndor\n- Imazh 3D\nShënim: Këta skedarë përmbajnë një zonë gri.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Krijimi i skedarëve në vijim:\n- Imazh shumëkëndor\n- Imazh 3D</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Duke përpunuar...\nKy imazh përmban një zonë gri</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Krijimi i skedarëve në vijim:
+- Imazh shumëkëndor
+- Imazh 3D
+Shënim: Këta skedarë përmbajnë një zonë gri."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Krijimi i skedarëve në vijim:
+- Imazh shumëkëndor
+- Imazh 3D"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Duke përpunuar...
+Ky imazh përmban një zonë gri"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Duke ruajtur imazhin</string>
     <string name="cam_3d_strings_dialog_processing_txt">Duke përpunuar...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Pritni disa sekonda për nisjen e kamerës 3D.</string>
@@ -48,7 +54,7 @@
     <string name="cam_3d_strings_setting_shooting_direction_title_txt">Drejtimi i fotografimit</string>
     <string name="cam_3d_strings_setting_shooting_direction_up_txt">Lart</string>
     <string name="cam_3d_strings_shooting_direction_guide_txt">Ndrysh. drejtim. duke trokitur ikonën majtas</string>
-    <string name="cam_3d_strings_shooting_failure_title_txt">S\'mund të fotografohej</string>
+    <string name="cam_3d_strings_shooting_failure_title_txt">"S'mund të fotografohej"</string>
     <string name="cam_3d_strings_shooting_guide_down_to_up_txt">Zhvendoseni nga poshtë lart</string>
     <string name="cam_3d_strings_shooting_guide_left_to_right_txt">Zhvendoseni nga e majta në të djathtë</string>
     <string name="cam_3d_strings_shooting_guide_pan_too_fast_txt">Zhvendoseni më ngadalë</string>
@@ -239,7 +245,7 @@
     <string name="cam_strings_dialog_high_temp_txt">Nëse temperatura e pajisjes rritet, aplikacioni mund të mbyllet gjatë përdorimit. Regjistrimi juaj do të ruhet automatikisht.</string>
     <string name="cam_strings_dialog_high_temp_vzw_txt">Ky regjim i kamerës përdor shumë burime të telefonit dhe mund të shkaktojë rritjen e temperaturës së telefonit. Për të parandaluar nxehjen e tepërt, regjistrimi i videos mund të ndalojë dhe aplikacioni i kamerës mund të mbyllet. Regjistrimi do të ruhet automatikisht.</string>
     <string name="cam_strings_dialog_storage_full_burst_txt">Regjistrimi në seri ndaloi për shkak të mbarimit të kujtesës. Fshini disa skedarë për të liruar pak hapësirë në hapësirën ruajtëse të brendshme.</string>
-    <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">Mund të regjistroni video edhe me skenën me kontrast të lartë dhe t\'i bëni ato më emocionuese dhe më afër nga sa i shikoni në jetë reale. Përdorni pajisje/shërbime të mbështetura për t\'i shijuar përmbajtjet me ngjyrën dhe ndriçimin e tyre origjinal.</string>
+    <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">"Mund të regjistroni video edhe me skenën me kontrast të lartë dhe t'i bëni ato më emocionuese dhe më afër nga sa i shikoni në jetë reale. Përdorni pajisje/shërbime të mbështetura për t'i shijuar përmbajtjet me ngjyrën dhe ndriçimin e tyre origjinal."</string>
     <string name="cam_strings_distortion_correction_photo_video_txt">Lidhja për shformimin</string>
     <string name="cam_strings_distortion_correction_txt">Korrigj. për shformim imazhi</string>
     <string name="cam_strings_do_not_show_again_txt">Mos e afisho përsëri</string>
@@ -291,7 +297,7 @@
     <string name="cam_strings_error_message_during_voice_call_txt">Kamera e pavlefshme gjatë një telefonate</string>
     <string name="cam_strings_error_mms_rec_size_limit_txt">Nuk mund të shtohen skedarë të tjerë. Skedari ka madhësi të madhe.</string>
     <string name="cam_strings_error_save_file_in_progress_txt">Duke ruajtur. Veprimi aktualisht i padisponueshëm.</string>
-    <string name="cam_strings_error_save_file_txt">Regjistrimi duke u kryer në një aplikacion tjetër. S\'mund të regjistrohej.</string>
+    <string name="cam_strings_error_save_file_txt">"Regjistrimi duke u kryer në një aplikacion tjetër. S'mund të regjistrohej."</string>
     <string name="cam_strings_error_storage_changing_to_internal_txt">Nuk ka asnjë kartë SD të disponueshme. Hapësira ruajtëse e paracaktuar e të dhënave u ndryshua te Hapësira ruajtëse e brendshme.</string>
     <string name="cam_strings_error_video_rec_txt">Nuk mund të regjistrohet. Regjistrimi ose një funksion në lidhje me regjistrimin mund të jenë në përdorim nga një aplikacion tjetër.</string>
     <string name="cam_strings_exposure_level_m03_txt">EV -0,3</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Bëni që lëkura juaj të duket e ndritshme dhe e butë. Efekti funksionon në aplikacionet që përdorin kamerën e përparme. Kjo gjë mund të zbatohet te fotografitë dhe te videot. Mund të rregulloni edhe nivelin e saj.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Rregullimi i nivelit</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Lëkurë e lëmuar</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Aplikacioni nuk mund të niset.\nSigurohuni që versioni më i fundit i %1$s është i instaluar dhe i aktivizuar në pajisjen tuaj.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Aplikacioni nuk mund të niset.
+Sigurohuni që versioni më i fundit i %1$s është i instaluar dhe i aktivizuar në pajisjen tuaj."</string>
     <string name="cam_strings_gridline_txt">Vijat e rrjetës</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Kthejeni pëllëmbën drejt kamerës. Kohëmatësi automatik do të aktivizohet kur të dallohet pëllëmba. Për ta bërë më të lehtë njohjen e saj, zgjatini gishtat lart.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Kthejeni pëllëmbën drejt kamerës</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Cilësimet e zakonshme</string>
     <string name="cam_strings_more_txt">Më shumë</string>
     <string name="cam_strings_multi_window_txt">Zvarritni mesin e shiritit të ndarjes për të kaluar te përdorimi i %1$s në ekranin e plotë</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Tani është lidhur një pajisje tjetër.\nDëshironi të bashkëndani imazhin me pajisjen nëpërmjet pamorit?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Tani është lidhur një pajisje tjetër.
+Dëshironi të bashkëndani imazhin me pajisjen nëpërmjet pamorit?"</string>
     <string name="cam_strings_multicam_add_device_txt">Shto një pajisje</string>
     <string name="cam_strings_multicam_add_more_txt">Shto më shumë</string>
     <string name="cam_strings_multicam_apply_txt">U krye</string>
@@ -416,7 +424,7 @@
     <string name="cam_strings_multicam_error_wifi_txt">Ky regjim është i padisponueshëm gjatë bashkëndarjes së internetit me Wi-Fi.</string>
     <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">U shtua numri maksimal i pajisjeve.</string>
     <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Vetëm një kamerë Wi-Fi/NFC e Sony mund të lidhet me pajisjen tuaj Xperia çdo herë.</string>
-    <string name="cam_strings_multicam_nfc_connect_title_txt">Prekni pajisjet me njëra-tjetrën për t\'u lidhur</string>
+    <string name="cam_strings_multicam_nfc_connect_title_txt">"Prekni pajisjet me njëra-tjetrën për t'u lidhur"</string>
     <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Kamera Wi-Fi/NFC e Sony</string>
     <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
     <string name="cam_strings_multicam_nfc_touch_to_beam_title_txt">Prekni ekranin</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Dritëmatja</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Parashikuar</string>
     <string name="cam_strings_predictive_capture_txt">Regjistrimi i parashikuar</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Kamera është hapur automatikisht duke zbuluar lëvizjen e ngritjes së telefonit në regjimin peizazh dhe drejtimin e tij drejt një objekti.\nMund të përzgjidhni mënyrën tuaj të preferuar për ta përdorur këtë funksion nga Lëshimi inteligjent te cilësimet e kamerës.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Kamera është hapur automatikisht duke zbuluar lëvizjen e ngritjes së telefonit në regjimin peizazh dhe drejtimin e tij drejt një objekti.
+Mund të përzgjidhni mënyrën tuaj të preferuar për ta përdorur këtë funksion nga Lëshimi inteligjent te cilësimet e kamerës."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Prekni brenda rrethit për të regjistruar</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Prekni ekranin për të regjistruar</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Trokitni lehtë brenda rrethit për të shfaqur në ekranin e plotë</string>
     <string name="cam_strings_predictive_launch_guide_txt">Prekni brenda rrethit për të hapur kamerën</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Prekni për të lëshuar dhe regj.</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Prekni për të lëshuar</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Mund ta hapni kamerën me shpejtësi. Ngrijeni me shpejtësi pajisjen në regjimin e peizazhit dhe drejtojeni kamerën drejt një objekti. Kamera do të hapet automatikisht.\nMund të përzgjidhni mënyrën tuaj të preferuar për të përdorur këtë tipar nga Lëshimi inteligjent te cilësimet e kamerës.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Mund ta hapni kamerën me shpejtësi. Ngrijeni me shpejtësi pajisjen në regjimin e peizazhit dhe drejtojeni kamerën drejt një objekti. Kamera do të hapet automatikisht.
+Mund të përzgjidhni mënyrën tuaj të preferuar për të përdorur këtë tipar nga Lëshimi inteligjent te cilësimet e kamerës."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Lëshimi inteligjent</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Mund ta hapni me shpejtësi kamerën. Ngrijeni lart pajisjen në regjimin e peizazhit dhe drejtojeni kamerën drejt një objekti. Kamera do të hapet automatikisht.\nMund ta çaktivizoni këtë tipar nga Lëshimi inteligjent te cilësimet e kamerës.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Mund ta hapni me shpejtësi kamerën. Ngrijeni lart pajisjen në regjimin e peizazhit dhe drejtojeni kamerën drejt një objekti. Kamera do të hapet automatikisht.
+Mund ta çaktivizoni këtë tipar nga Lëshimi inteligjent te cilësimet e kamerës."</string>
     <string name="cam_strings_predictive_launch_txt">Lëshimi inteligjent</string>
     <string name="cam_strings_preview_always_txt">Aktiv</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 sekonda</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s kërkon lejen(t) e mëposhtme</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Leja për %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Aplikacioni kërkon lejen(t) e mëposhtme për të kryer këtë veprim.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Për të dhënë lejet, shkoni tek Informacionet e aplikacionit &gt; Lejet.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Për të dhënë lejet, shkoni tek Informacionet e aplikacionit > Lejet.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Nuk mund të vazhdojë</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Për të nxjerrë fotografi dhe video</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Për të përnxjerrë vendndodhjen</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">U ruajt në hapësirën ruajtëse të brendshme</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">LËVIZNI</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Aplikacioni kërkon lejen(t) e mëposhtme për të kryer këtë veprim.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Për të përdorur një kartë SD, kamera ka nevojë për leje për t\'u qasur te karta SD.\nNdryshoni përsëri hapësirën ruajtëse të të dhënave te karta SD ose lejoni që kamera të qaset te karta SD në ekranin tjetër.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Për të përdorur një kartë SD, kamera ka nevojë për leje për t'u qasur te karta SD.
+Ndryshoni përsëri hapësirën ruajtëse të të dhënave te karta SD ose lejoni që kamera të qaset te karta SD në ekranin tjetër."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">Karta SD e padisponueshme</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Është zbuluar një kartë e re SD që kërkon leje.\n\nPër ta përdorur kartën SD si hapësirë ruajtëse për të dhënat, përzgjidhni kartën SD ose direktorinë DCIM në ekranin tjetër.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Karta SD ose direktoria DCIM nuk janë përzgjedhur. Karta SD nuk mund të përdoret.\n\nPër të dhënë lejet, filloni duke ndryshuar vendndodhjen e ruajtjes në kartën SD ose përzgjidhni direktorinë e duhur në ekranin tjetër.</string>
-    <string name="cam_strings_sd_permission_info_txt">Është zbuluar një kartë e re SD që kërkon leje.\nPër këtë arsye hapësira ruajtëse e brendshme e pajisjes do të përdoret si hapësira ruajtëse e paracaktuar e të dhënave.\n\nPër ta përdorur kartën SD si hapësirë ruajtëse për të dhënat, shkoni te cilësimet e kamerës dhe ndryshoni opsionin e hapësirës ruajtëse te karta SD.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Është zbuluar një kartë e re SD që kërkon leje.
+
+Për ta përdorur kartën SD si hapësirë ruajtëse për të dhënat, përzgjidhni kartën SD ose direktorinë DCIM në ekranin tjetër."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Karta SD ose direktoria DCIM nuk janë përzgjedhur. Karta SD nuk mund të përdoret.
+
+Për të dhënë lejet, filloni duke ndryshuar vendndodhjen e ruajtjes në kartën SD ose përzgjidhni direktorinë e duhur në ekranin tjetër."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Është zbuluar një kartë e re SD që kërkon leje.
+Për këtë arsye hapësira ruajtëse e brendshme e pajisjes do të përdoret si hapësira ruajtëse e paracaktuar e të dhënave.
+
+Për ta përdorur kartën SD si hapësirë ruajtëse për të dhënat, shkoni te cilësimet e kamerës dhe ndryshoni opsionin e hapësirës ruajtëse te karta SD."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Për të ruajtur fotografitë dhe videot në kartën SD</string>
     <string name="cam_strings_select_picture_txt">Përzgjidhni foton</string>
     <string name="cam_strings_self_timer_05_txt">0,5 sek.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Regjistrimi automatik</string>
     <string name="cam_strings_side_touch_not_supported_txt">Sensori anësor nuk mbështetet në këtë ekran</string>
     <string name="cam_strings_side_touch_on_title_txt">Sensori anësor</string>
-    <string name="cam_strings_side_touch_on_txt">Për të përdorur këtë funksion, shkoni te Cilësimet &gt; Ekrani dhe aktivizoni Sensorin anësor. Do ta aktivizoni tani?</string>
+    <string name="cam_strings_side_touch_on_txt">Për të përdorur këtë funksion, shkoni te Cilësimet > Ekrani dhe aktivizoni Sensorin anësor. Do ta aktivizoni tani?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Sensori anësor</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Mund të nxirrni një fotografi ose një video thjesht duke trokitur lehtë dy herë te sensori në anë të ekranit në vend të butonit të obturatorit. Mund ta zmadhoni dhe ta zvogëloni po ashtu duke rrëshqitur gishtin përgjatë sensorit anësor.\nKy funksion mbështetet nga regjimi i fotografisë dhe i videos. Mund ta çaktivizoni këtë nga Sensori anësor në cilësimet e kamerës.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Mund të nxirrni një fotografi ose një video thjesht duke trokitur lehtë dy herë te sensori në anë të ekranit në pamjen e portretit në vend të butonit të obturatorit. Mund ta zmadhoni dhe ta zvogëloni po ashtu duke rrëshqitur gishtin përgjatë këtij sensori anësor.\nKy funksion mbështetet nga regjimi i fotografisë dhe i videos. Mund ta çaktivizoni këtë nga Sensori anësor në cilësimet e kamerës.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Mund të nxirrni një fotografi ose një video thjesht duke trokitur lehtë dy herë te sensori në anë të ekranit në pamjen e portretit në vend të butonit të obturatorit.\nKy funksion mbështetet nga regjimi i fotografisë dhe i videos. Mund ta çaktivizoni këtë nga Sensori anësor në cilësimet e kamerës.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Mund të nxirrni një fotografi ose një video thjesht duke trokitur lehtë dy herë te sensori në anë të ekranit në vend të butonit të obturatorit.\nKy funksion mbështetet nga regjimi i fotografisë dhe i videos. Mund ta çaktivizoni këtë nga Sensori anësor në cilësimet e kamerës.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Mund të nxirrni një fotografi ose një video thjesht duke trokitur lehtë dy herë te sensori në anë të ekranit në vend të butonit të obturatorit. Mund ta zmadhoni dhe ta zvogëloni po ashtu duke rrëshqitur gishtin përgjatë sensorit anësor.
+Ky funksion mbështetet nga regjimi i fotografisë dhe i videos. Mund ta çaktivizoni këtë nga Sensori anësor në cilësimet e kamerës."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Mund të nxirrni një fotografi ose një video thjesht duke trokitur lehtë dy herë te sensori në anë të ekranit në pamjen e portretit në vend të butonit të obturatorit. Mund ta zmadhoni dhe ta zvogëloni po ashtu duke rrëshqitur gishtin përgjatë këtij sensori anësor.
+Ky funksion mbështetet nga regjimi i fotografisë dhe i videos. Mund ta çaktivizoni këtë nga Sensori anësor në cilësimet e kamerës."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Mund të nxirrni një fotografi ose një video thjesht duke trokitur lehtë dy herë te sensori në anë të ekranit në pamjen e portretit në vend të butonit të obturatorit.
+Ky funksion mbështetet nga regjimi i fotografisë dhe i videos. Mund ta çaktivizoni këtë nga Sensori anësor në cilësimet e kamerës."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Mund të nxirrni një fotografi ose një video thjesht duke trokitur lehtë dy herë te sensori në anë të ekranit në vend të butonit të obturatorit.
+Ky funksion mbështetet nga regjimi i fotografisë dhe i videos. Mund ta çaktivizoni këtë nga Sensori anësor në cilësimet e kamerës."</string>
     <string name="cam_strings_side_touch_txt">Sensori anësor</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Stili i regjistrimit dhe rezolucioni i ekranit mund të ndryshohen te cilësimet e kamerës</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Super e ngadaltë (një shkrepje)</string>
@@ -565,18 +588,20 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Lëvizja super e ngadaltë</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Mund të ndryshoni shpejtësinë fps dhe stilin e regjistrimit për lëvizjet e ngadalta</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Opsione të tjera</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Regjistroni në çast një moment të çmuar me lëvizje të ngadalta me %1$s fps duke trokitur lehtë te butoni në qendër të ekranit.\nRegjistrimi në kushte me ndriçim do t\'ju ndihmojë të krijoni një video më të mirë.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Regjistroni në çast një moment të çmuar me lëvizje të ngadalta me %1$s fps duke trokitur lehtë te butoni në qendër të ekranit.
+Regjistrimi në kushte me ndriçim do t'ju ndihmojë të krijoni një video më të mirë."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Mund të regjistroni momentin e duhur me %1$s fps duke trokitur te butoni në qendër</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Regjistroni në çast një moment të çmuar me lëvizje të ngadalta me %1$s fps duke trokitur lehtë te butoni në qendër të ekranit</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Lëvizja super e ngadaltë (një shkrepje)</string>
     <string name="cam_strings_slow_motion_shot_txt">Lëvizja super e ngadaltë (një shkrepje)</string>
     <string name="cam_strings_slow_motion_standard_hint_1_txt">Regjistroni një video me %1$s fps dhe zbatoni efektet e lëvizjes së ngadaltë</string>
     <string name="cam_strings_slow_motion_standard_tutorial_1_txt">Mund të regjistroni një video me shumë pjesë me lëvizje të ngadalta (lëvizja e ngad. 120 fps)</string>
-    <string name="cam_strings_slow_motion_standard_tutorial_2_txt">Regj. video e më pas modifikojeni për t\'i bërë disa pjesë me lëvizje të ngadalta. Trokitni te butoni në qendër të ekranit për t\'i cilësuar me lëvizje të ngad.</string>
+    <string name="cam_strings_slow_motion_standard_tutorial_2_txt">"Regj. video e më pas modifikojeni për t'i bërë disa pjesë me lëvizje të ngadalta. Trokitni te butoni në qendër të ekranit për t'i cilësuar me lëvizje të ngad."</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Lëvizja e ngadaltë</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Si të regjistroni</string>
     <string name="cam_strings_slow_motion_standard_txt">Lëvizja e ngadaltë</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Krijoni një video mbresëlënëse duke shfaqur një moment të çmuar me lëvizje të ngadalta.\nRegjistrimi në kushte me ndriçim do t\'ju ndihmojë të krijoni një video më të mirë.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Krijoni një video mbresëlënëse duke shfaqur një moment të çmuar me lëvizje të ngadalta.
+Regjistrimi në kushte me ndriçim do t'ju ndihmojë të krijoni një video më të mirë."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Mund të regjistroni video me shpejtësi të ndryshme duke kaluar te %1$s fps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Trokitni lehtë te butoni në qendër në momentin e duhur</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">U regjistrua me lëvizje të ngadalta</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Licencat e softuerit</string>
     <string name="cam_strings_take_photo_txt">Nxirr një foto</string>
     <string name="cam_strings_term_of_use_accept_txt">Prano</string>
-    <string name="cam_strings_term_of_use_consent_txt">Unë pranoj &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Kushtet e përdorimit&lt;/a&gt; të Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Unë pranoj &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Kushtet e përdorimit&lt;/a> të Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Përdorimi i këtij shërbimi prej jush mund të jetë objekt i tarifave për të dhënat celulare, në varësi të planit tuaj të të dhënave.</string>
-    <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile do të mbledhë identifikuesin tuaj unik të ID-së së kodifikuar të pajisjes Android, të dhënat e bazuara në vendndodhje dhe vulën orare, në mënyrë që t\'ju japë rezultatet e përshtatshme si pjesë e shërbimit dhe për përmirësimet e shërbimit.</string>
+    <string name="cam_strings_term_of_use_data_collection_txt">"Sony Mobile do të mbledhë identifikuesin tuaj unik të ID-së së kodifikuar të pajisjes Android, të dhënat e bazuara në vendndodhje dhe vulën orare, në mënyrë që t'ju japë rezultatet e përshtatshme si pjesë e shërbimit dhe për përmirësimet e shërbimit."</string>
     <string name="cam_strings_term_of_use_decline_txt">Refuzo</string>
     <string name="cam_strings_term_of_use_title_txt">Kushtet e përgjithshme</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Kushtet e përdorimit&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Kushtet e përdorimit&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Shpërzgjidh fotot</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Ruajtja e pamundur</string>
     <string name="cam_strings_timeshift_save_complete_txt">U ruajt</string>
@@ -626,7 +651,7 @@
     <string name="cam_strings_touch_to_focus_adjust_exposure_focus_and_exposure_txt">Fokusi dhe ndriçimi</string>
     <string name="cam_strings_touch_to_focus_adjust_exposure_only_focus_txt">Vetëm fokusi</string>
     <string name="cam_strings_touch_to_focus_adjust_exposure_txt">Prekni për të rregulluar</string>
-    <string name="cam_strings_tutorial_bright_place_txt">Regjistrimi në kushte të ndritshme do t\'ju ndihmojë të krijoni një video më të mirë</string>
+    <string name="cam_strings_tutorial_bright_place_txt">"Regjistrimi në kushte të ndritshme do t'ju ndihmojë të krijoni një video më të mirë"</string>
     <string name="cam_strings_tutorial_button_next_txt">Përpara</string>
     <string name="cam_strings_tutorial_button_skip_txt">Kapërce</string>
     <string name="cam_strings_tutorial_button_txt">E kuptova</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Nuk duhet ta ndryshoni këtë cilësim për një regjistrim të qëndrueshëm të videos në 4K, përveçse nëse përdorni një kartë SD me shpejtësi të lartë (rekomandohet klasa e shpejtësisë UHS 1 ose më e lartë ose klasa e shpejtësisë 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Nuk duhet ta ndryshoni këtë cilësim për një regjistrim të qëndrueshëm të videos së Timeshift, përveçse nëse përdorni një kartë SD me shpejtësi të lartë (rekomandohet klasa e shpejtësisë UHS 1 ose më e lartë ose klasa e shpejtësisë 10). Të ndryshohet sidoqoftë?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Mos e ndryshoni këtë cilësim për një regjistrim të qëndrueshëm të videos me lëvizje të ngadaltë, përveçse nëse përdorni një kartë SD me shpejtësi të lartë (rekomandohet klasa e shpejtësisë UHS 1 ose më e lartë ose klasa e shpejtësisë 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Për një regjistrim të qëndrueshëm të videos, rekomandojmë që të ndryshoni ruajtjen e të dhënave te hapësira ruajtëse e brendshme. Dëshironi që ta ndryshoni tani?\n\nNëse vazhdoni të përdorni kartën SD për ruajtjen e të dhënave, sigurohuni që të përdorni një kartë SD me shpejtësi të lartë (rekomandohet klasa e shpejtësisë UHS 1 ose më e lartë ose klasa e shpejtësisë 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Për një regjistrim të qëndrueshëm të videos, rekomandojmë që të ndryshoni ruajtjen e të dhënave te hapësira ruajtëse e brendshme. Dëshironi që ta ndryshoni tani?
+
+Nëse vazhdoni të përdorni kartën SD për ruajtjen e të dhënave, sigurohuni që të përdorni një kartë SD me shpejtësi të lartë (rekomandohet klasa e shpejtësisë UHS 1 ose më e lartë ose klasa e shpejtësisë 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Kamera e dyfishtë</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Mund të regjistroni video të bukura me nivel të ulët të zhurmës duke përdorur kamerën e dyfishtë, edhe gjatë natës ose në një dhomë me ndriçim të dobët. Kamera kalon automatikisht mes regjimeve të kamerës së zakonshme dhe kamerës së dyfishtë bazuar në skenat që do të regjistrohen me ndjeshmëri jashtëzakonisht të lartë.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Regjistrimi i videos me kamerën e dyfishtë</string>

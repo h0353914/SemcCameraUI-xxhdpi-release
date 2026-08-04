@@ -2,14 +2,15 @@ package com.google.android.gms.common.images;
 
 import android.net.Uri;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzw;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class WebImage implements SafeParcelable {
-    public static final Parcelable$Creator<WebImage> CREATOR = new zzb();
+    public static final Parcelable.Creator<WebImage> CREATOR = new zzb();
     private final int mVersionCode;
     private final Uri zzaeg;
     private final int zznQ;
@@ -87,7 +88,7 @@ public final class WebImage implements SafeParcelable {
         return zzw.hashCode(this.zzaeg, Integer.valueOf(this.zznQ), Integer.valueOf(this.zznR));
     }
 
-    public JSONObject toJson() {
+    public JSONObject toJson() throws JSONException {
         JSONObject jSONObject = new JSONObject();
         try {
             jSONObject.put("url", this.zzaeg.toString());

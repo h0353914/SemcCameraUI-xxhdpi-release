@@ -2,9 +2,11 @@ package com.google.android.gms.playlog.internal;
 
 import android.os.Bundle;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzc implements Parcelable$Creator<LogEvent> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzc implements Parcelable.Creator<LogEvent> {
     static void zza(LogEvent logEvent, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, logEvent.versionCode);
@@ -16,17 +18,9 @@ public class zzc implements Parcelable$Creator<LogEvent> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ LogEvent createFromParcel(Parcel parcel) {
-        return zzgi(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ LogEvent[] newArray(int i) {
-        return zziU(i);
-    }
-
-    public LogEvent zzgi(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzgi, reason: merged with bridge method [inline-methods] */
+    public LogEvent createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         long jZzi = 0;
         long jZzi2 = 0;
@@ -63,10 +57,12 @@ public class zzc implements Parcelable$Creator<LogEvent> {
         if (parcel.dataPosition() == iZzap) {
             return new LogEvent(iZzg, jZzi, jZzi2, strZzp, bArrZzs, bundleZzr);
         }
-        throw new com.google.android.gms.common.internal.safeparcel.zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public LogEvent[] zziU(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zziU, reason: merged with bridge method [inline-methods] */
+    public LogEvent[] newArray(int i) {
         return new LogEvent[i];
     }
 }

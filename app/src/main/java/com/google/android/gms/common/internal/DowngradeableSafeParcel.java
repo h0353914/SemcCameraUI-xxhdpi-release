@@ -2,6 +2,7 @@ package com.google.android.gms.common.internal;
 
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public abstract class DowngradeableSafeParcel implements SafeParcelable {
     private static final Object zzafm = new Object();
     private static ClassLoader zzafn;
@@ -10,7 +11,7 @@ public abstract class DowngradeableSafeParcel implements SafeParcelable {
 
     private static boolean zza(Class<?> cls) {
         try {
-            return "SAFE_PARCELABLE_NULL_STRING".equals(cls.getField("NULL").get(null));
+            return SafeParcelable.NULL.equals(cls.getField("NULL").get(null));
         } catch (IllegalAccessException | NoSuchFieldException unused) {
             return false;
         }

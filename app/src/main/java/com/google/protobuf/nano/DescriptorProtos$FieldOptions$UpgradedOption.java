@@ -6,12 +6,6 @@ public final class DescriptorProtos$FieldOptions$UpgradedOption extends Extendab
     private static volatile DescriptorProtos$FieldOptions$UpgradedOption[] _emptyArray;
     public String name;
     public String value;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$FieldOptions$UpgradedOption[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

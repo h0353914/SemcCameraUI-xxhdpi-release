@@ -15,13 +15,12 @@ import java.util.Map;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.ImageInfo;
-import org.apache.commons.imaging.ImageInfo$ColorType;
-import org.apache.commons.imaging.ImageInfo$CompressionAlgorithm;
 import org.apache.commons.imaging.ImageParser;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFunctions;
-import org.apache.commons.imaging.common.ImageMetadata;
 import org.apache.commons.imaging.common.bytesource.ByteSource;
+import org.apache.commons.imaging.formats.pnm.PnmConstants;
+
 import org.apache.commons.imaging.formats.psd.dataparsers.DataParser;
 import org.apache.commons.imaging.formats.psd.dataparsers.DataParserBitmap;
 import org.apache.commons.imaging.formats.psd.dataparsers.DataParserCmyk;
@@ -35,106 +34,63 @@ import org.apache.commons.imaging.formats.psd.datareaders.UncompressedDataReader
 import org.apache.commons.imaging.util.IoUtils;
 
 public class PsdImageParser extends ImageParser {
-    private static final String[] ACCEPTED_EXTENSIONS = {".psd"};
-    public static final String BLOCK_NAME_XMP = "XMP";
-    private static final int COLOR_MODE_INDEXED = 2;
     private static final String DEFAULT_EXTENSION = ".psd";
-    public static final int IMAGE_RESOURCE_ID_ICC_PROFILE = 1039;
-    public static final int IMAGE_RESOURCE_ID_XMP = 1060;
-    private static final int PSD_HEADER_LENGTH = 26;
-    private static final int PSD_SECTION_COLOR_MODE = 1;
-    private static final int PSD_SECTION_HEADER = 0;
-    private static final int PSD_SECTION_IMAGE_DATA = 4;
-    private static final int PSD_SECTION_IMAGE_RESOURCES = 2;
-    private static final int PSD_SECTION_LAYER_AND_MASK_DATA = 3;
+    private static final String[] ACCEPTED_EXTENSIONS = {DEFAULT_EXTENSION};
+    public static final String BLOCK_NAME_XMP = "XMP";
 
-    private int getChannelsPerMode(int i) {
-        switch (i) {
-            case 0:
-                return 1;
-            case 1:
-                return 1;
-            case 2:
-                return -1;
-            case 3:
-                return 3;
-            case 4:
-                return 4;
-            case 5:
-            case 6:
-            default:
-                return -1;
-            case 7:
-                return -1;
-            case 8:
-                return -1;
-            case 9:
-                return 4;
-        }
-    }
-
-    @Override // org.apache.commons.imaging.ImageParser
-    public String getDefaultExtension() {
-        return ".psd";
-    }
-
-    @Override // org.apache.commons.imaging.ImageParser
-    public ImageMetadata getMetadata(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
-        return null;
-    }
-
-    @Override // org.apache.commons.imaging.ImageParser
+    @Override
     public String getName() {
         return "PSD-Custom";
     }
 
-    public PsdImageParser() {
-        super.setByteOrder(ByteOrder.BIG_ENDIAN);
+    @Override
+    public String getDefaultExtension() {
+        return DEFAULT_EXTENSION;
     }
 
-    @Override // org.apache.commons.imaging.ImageParser
+    @Override
     protected String[] getAcceptedExtensions() {
         return ACCEPTED_EXTENSIONS;
     }
 
-    @Override // org.apache.commons.imaging.ImageParser
+    @Override
     protected ImageFormat[] getAcceptedTypes() {
         return new ImageFormat[]{ImageFormats.PSD};
     }
 
-    private PsdHeaderInfo readHeader(ByteSource byteSource) throws Throwable {
-        InputStream inputStream;
-        try {
-            inputStream = byteSource.getInputStream();
-            try {
-                PsdHeaderInfo header = readHeader(inputStream);
-                IoUtils.closeQuietly(true, inputStream);
-                return header;
-            } catch (Throwable th) {
-                th = th;
-                IoUtils.closeQuietly(false, inputStream);
-                throw th;
-            }
-        } catch (Throwable th2) {
-            th = th2;
-            inputStream = null;
+    @Override
+    public org.apache.commons.imaging.common.ImageMetadata getMetadata(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
+        return null;
+    }
+
+    private PsdHeaderInfo readHeader(ByteSource byteSource) throws IOException, ImageReadException {
+        try (InputStream inputStream = byteSource.getInputStream()) {
+            return readHeader(inputStream);
         }
     }
 
     private PsdHeaderInfo readHeader(InputStream inputStream) throws IOException, ImageReadException {
-        BinaryFunctions.readAndVerifyBytes(inputStream, new byte[]{56, 66, 80, 83}, "Not a Valid PSD File");
-        return new PsdHeaderInfo(BinaryFunctions.read2Bytes("Version", inputStream, "Not a Valid PSD File", getByteOrder()), BinaryFunctions.readBytes("Reserved", inputStream, 6, "Not a Valid PSD File"), BinaryFunctions.read2Bytes("Channels", inputStream, "Not a Valid PSD File", getByteOrder()), BinaryFunctions.read4Bytes("Rows", inputStream, "Not a Valid PSD File", getByteOrder()), BinaryFunctions.read4Bytes("Columns", inputStream, "Not a Valid PSD File", getByteOrder()), BinaryFunctions.read2Bytes("Depth", inputStream, "Not a Valid PSD File", getByteOrder()), BinaryFunctions.read2Bytes("Mode", inputStream, "Not a Valid PSD File", getByteOrder()));
+        BinaryFunctions.readAndVerifyBytes(inputStream, new byte[]{56, 66, PnmConstants.PNM_PREFIX_BYTE, 83}, "Not a Valid PSD File");
+        return new PsdHeaderInfo(
+            BinaryFunctions.read2Bytes("Version", inputStream, "Not a Valid PSD File", getByteOrder()),
+            BinaryFunctions.readBytes("Reserved", inputStream, 6, "Not a Valid PSD File"),
+            BinaryFunctions.read2Bytes("Channels", inputStream, "Not a Valid PSD File", getByteOrder()),
+            BinaryFunctions.read4Bytes("Rows", inputStream, "Not a Valid PSD File", getByteOrder()),
+            BinaryFunctions.read4Bytes("Columns", inputStream, "Not a Valid PSD File", getByteOrder()),
+            BinaryFunctions.read2Bytes("Depth", inputStream, "Not a Valid PSD File", getByteOrder()),
+            BinaryFunctions.read2Bytes("Mode", inputStream, "Not a Valid PSD File", getByteOrder())
+        );
     }
 
     private ImageContents readImageContents(InputStream inputStream) throws IOException, ImageReadException {
         PsdHeaderInfo header = readHeader(inputStream);
-        int i = BinaryFunctions.read4Bytes("ColorModeDataLength", inputStream, "Not a Valid PSD File", getByteOrder());
-        BinaryFunctions.skipBytes(inputStream, i);
-        int i2 = BinaryFunctions.read4Bytes("ImageResourcesLength", inputStream, "Not a Valid PSD File", getByteOrder());
-        BinaryFunctions.skipBytes(inputStream, i2);
-        int i3 = BinaryFunctions.read4Bytes("LayerAndMaskDataLength", inputStream, "Not a Valid PSD File", getByteOrder());
-        BinaryFunctions.skipBytes(inputStream, i3);
-        return new ImageContents(header, i, i2, i3, BinaryFunctions.read2Bytes("Compression", inputStream, "Not a Valid PSD File", getByteOrder()));
+        int colorModeDataLength = BinaryFunctions.read4Bytes("ColorModeDataLength", inputStream, "Not a Valid PSD File", getByteOrder());
+        BinaryFunctions.skipBytes(inputStream, colorModeDataLength);
+        int imageResourcesLength = BinaryFunctions.read4Bytes("ImageResourcesLength", inputStream, "Not a Valid PSD File", getByteOrder());
+        BinaryFunctions.skipBytes(inputStream, imageResourcesLength);
+        int layerAndMaskDataLength = BinaryFunctions.read4Bytes("LayerAndMaskDataLength", inputStream, "Not a Valid PSD File", getByteOrder());
+        BinaryFunctions.skipBytes(inputStream, layerAndMaskDataLength);
+        return new ImageContents(header, colorModeDataLength, imageResourcesLength, layerAndMaskDataLength, BinaryFunctions.read2Bytes("Compression", inputStream, "Not a Valid PSD File", getByteOrder()));
     }
 
     private List<ImageResourceBlock> readImageResourceBlocks(byte[] bArr, int[] iArr, int i) throws IOException, ImageReadException {
@@ -154,26 +110,26 @@ public class PsdImageParser extends ImageParser {
     }
 
     private List<ImageResourceBlock> readImageResourceBlocks(InputStream inputStream, int[] iArr, int i, int i2) throws IOException, ImageReadException {
-        ArrayList arrayList = new ArrayList();
+        ArrayList<ImageResourceBlock> arrayList = new ArrayList<>();
         while (i2 > 0) {
             BinaryFunctions.readAndVerifyBytes(inputStream, new byte[]{56, 66, 73, 77}, "Not a Valid PSD File");
-            int i3 = BinaryFunctions.read2Bytes("ID", inputStream, "Not a Valid PSD File", getByteOrder());
-            byte b = BinaryFunctions.readByte("NameLength", inputStream, "Not a Valid PSD File");
-            byte[] bytes = BinaryFunctions.readBytes("NameData", inputStream, b, "Not a Valid PSD File");
-            int i4 = (((i2 - 4) - 2) - 1) - b;
-            if ((b + 1) % 2 != 0) {
+            int id = BinaryFunctions.read2Bytes("ID", inputStream, "Not a Valid PSD File", getByteOrder());
+            byte nameLength = BinaryFunctions.readByte("NameLength", inputStream, "Not a Valid PSD File");
+            byte[] nameData = BinaryFunctions.readBytes("NameData", inputStream, nameLength, "Not a Valid PSD File");
+            int remaining = (((i2 - 4) - 2) - 1) - nameLength;
+            if ((nameLength + 1) % 2 != 0) {
                 BinaryFunctions.readByte("NameDiscard", inputStream, "Not a Valid PSD File");
-                i4--;
+                remaining--;
             }
-            int i5 = BinaryFunctions.read4Bytes("Size", inputStream, "Not a Valid PSD File", getByteOrder());
-            byte[] bytes2 = BinaryFunctions.readBytes("Data", inputStream, i5, "Not a Valid PSD File");
-            i2 = (i4 - 4) - i5;
-            if (i5 % 2 != 0) {
+            int size = BinaryFunctions.read4Bytes("Size", inputStream, "Not a Valid PSD File", getByteOrder());
+            byte[] data = BinaryFunctions.readBytes("Data", inputStream, size, "Not a Valid PSD File");
+            i2 = (remaining - 4) - size;
+            if (size % 2 != 0) {
                 BinaryFunctions.readByte("DataDiscard", inputStream, "Not a Valid PSD File");
                 i2--;
             }
-            if (keepImageResourceBlock(i3, iArr)) {
-                arrayList.add(new ImageResourceBlock(i3, bytes, bytes2));
+            if (keepImageResourceBlock(id, iArr)) {
+                arrayList.add(new ImageResourceBlock(id, nameData, data));
                 if (i >= 0 && arrayList.size() >= i) {
                     return arrayList;
                 }
@@ -182,32 +138,14 @@ public class PsdImageParser extends ImageParser {
         return arrayList;
     }
 
-    private List<ImageResourceBlock> readImageResourceBlocks(ByteSource byteSource, int[] iArr, int i) throws Throwable {
-        InputStream inputStream;
-        InputStream inputStream2;
-        try {
-            inputStream2 = byteSource.getInputStream();
-            try {
-                ImageContents imageContents = readImageContents(inputStream2);
-                inputStream = getInputStream(byteSource, 2);
-                try {
-                    List<ImageResourceBlock> imageResourceBlocks = readImageResourceBlocks(BinaryFunctions.readBytes("ImageResources", inputStream, imageContents.ImageResourcesLength, "Not a Valid PSD File"), iArr, i);
-                    IoUtils.closeQuietly(true, inputStream2, inputStream);
-                    return imageResourceBlocks;
-                } catch (Throwable th) {
-                    th = th;
-                    IoUtils.closeQuietly(false, inputStream2, inputStream);
-                    throw th;
-                }
-            } catch (Throwable th2) {
-                th = th2;
-                inputStream = null;
-            }
-        } catch (Throwable th3) {
-            th = th3;
-            inputStream = null;
-            inputStream2 = null;
-        }
+    private List<ImageResourceBlock> readImageResourceBlocks(ByteSource byteSource, int[] iArr, int i) throws IOException, ImageReadException {
+         try (InputStream inputStream = byteSource.getInputStream()) {
+             ImageContents imageContents = readImageContents(inputStream);
+             try (InputStream is2 = getInputStream(byteSource, 2)) {
+                 byte[] bytes = BinaryFunctions.readBytes("ImageResources", is2, imageContents.ImageResourcesLength, "Not a Valid PSD File");
+                 return readImageResourceBlocks(bytes, iArr, i);
+             }
+         }
     }
 
     private InputStream getInputStream(ByteSource byteSource, int i) throws IOException, ImageReadException {
@@ -216,123 +154,77 @@ public class PsdImageParser extends ImageParser {
             return inputStream;
         }
         BinaryFunctions.skipBytes(inputStream, 26L);
-        int i2 = BinaryFunctions.read4Bytes("ColorModeDataLength", inputStream, "Not a Valid PSD File", getByteOrder());
+        int colorModeDataLength = BinaryFunctions.read4Bytes("ColorModeDataLength", inputStream, "Not a Valid PSD File", getByteOrder());
         if (i == 1) {
             return inputStream;
         }
-        BinaryFunctions.skipBytes(inputStream, i2);
-        int i3 = BinaryFunctions.read4Bytes("ImageResourcesLength", inputStream, "Not a Valid PSD File", getByteOrder());
+        BinaryFunctions.skipBytes(inputStream, colorModeDataLength);
+        int imageResourcesLength = BinaryFunctions.read4Bytes("ImageResourcesLength", inputStream, "Not a Valid PSD File", getByteOrder());
         if (i == 2) {
             return inputStream;
         }
-        BinaryFunctions.skipBytes(inputStream, i3);
-        int i4 = BinaryFunctions.read4Bytes("LayerAndMaskDataLength", inputStream, "Not a Valid PSD File", getByteOrder());
+        BinaryFunctions.skipBytes(inputStream, imageResourcesLength);
+        int layerAndMaskDataLength = BinaryFunctions.read4Bytes("LayerAndMaskDataLength", inputStream, "Not a Valid PSD File", getByteOrder());
         if (i == 3) {
             return inputStream;
         }
-        BinaryFunctions.skipBytes(inputStream, i4);
+        BinaryFunctions.skipBytes(inputStream, layerAndMaskDataLength);
         BinaryFunctions.read2Bytes("Compression", inputStream, "Not a Valid PSD File", getByteOrder());
         if (i == 4) {
             return inputStream;
         }
-        if (inputStream != null) {
-            inputStream.close();
-        }
+        IoUtils.closeQuietly(true, inputStream);
         throw new ImageReadException("getInputStream: Unknown Section: " + i);
     }
 
-    private byte[] getData(ByteSource byteSource, int i) throws Throwable {
-        InputStream inputStream;
-        InputStream inputStream2;
-        boolean z;
-        byte[] bytes;
-        Closeable[] closeableArr;
-        try {
-            inputStream = byteSource.getInputStream();
-            try {
-                if (i == 0) {
-                    bytes = BinaryFunctions.readBytes("Header", inputStream, 26, "Not a Valid PSD File");
-                    closeableArr = new Closeable[]{inputStream};
-                } else {
-                    try {
-                        BinaryFunctions.skipBytes(inputStream, 26L);
-                        int i2 = BinaryFunctions.read4Bytes("ColorModeDataLength", inputStream, "Not a Valid PSD File", getByteOrder());
-                        if (i == 1) {
-                            bytes = BinaryFunctions.readBytes("ColorModeData", inputStream, i2, "Not a Valid PSD File");
-                            closeableArr = new Closeable[]{inputStream};
-                        } else {
-                            BinaryFunctions.skipBytes(inputStream, i2);
-                            int i3 = BinaryFunctions.read4Bytes("ImageResourcesLength", inputStream, "Not a Valid PSD File", getByteOrder());
-                            if (i == 2) {
-                                bytes = BinaryFunctions.readBytes("ImageResources", inputStream, i3, "Not a Valid PSD File");
-                                closeableArr = new Closeable[]{inputStream};
-                            } else {
-                                BinaryFunctions.skipBytes(inputStream, i3);
-                                int i4 = BinaryFunctions.read4Bytes("LayerAndMaskDataLength", inputStream, "Not a Valid PSD File", getByteOrder());
-                                if (i != 3) {
-                                    BinaryFunctions.skipBytes(inputStream, i4);
-                                    BinaryFunctions.read2Bytes("Compression", inputStream, "Not a Valid PSD File", getByteOrder());
-                                    IoUtils.closeQuietly(true, inputStream);
-                                    throw new ImageReadException("getInputStream: Unknown Section: " + i);
-                                }
-                                bytes = BinaryFunctions.readBytes("LayerAndMaskData", inputStream, i4, "Not a Valid PSD File");
-                                closeableArr = new Closeable[]{inputStream};
-                            }
-                        }
-                    } catch (Throwable th) {
-                        th = th;
-                        inputStream2 = inputStream;
-                        z = false;
-                        IoUtils.closeQuietly(z, inputStream2);
-                        throw th;
-                    }
-                }
-                IoUtils.closeQuietly(true, closeableArr);
-                return bytes;
-            } catch (Throwable th2) {
-                th = th2;
-                inputStream2 = inputStream;
-                z = true;
-                IoUtils.closeQuietly(z, inputStream2);
-                throw th;
-            }
-        } catch (Throwable th3) {
-            th = th3;
-            inputStream = null;
+    private byte[] getData(ByteSource byteSource, int i) throws IOException, ImageReadException {
+        try (InputStream inputStream = byteSource.getInputStream()) {
+             if (i == 0) {
+                 return BinaryFunctions.readBytes("Header", inputStream, 26, "Not a Valid PSD File");
+             }
+             BinaryFunctions.skipBytes(inputStream, 26L);
+             int colorModeDataLength = BinaryFunctions.read4Bytes("ColorModeDataLength", inputStream, "Not a Valid PSD File", getByteOrder());
+             if (i == 1) {
+                 return BinaryFunctions.readBytes("ColorModeData", inputStream, colorModeDataLength, "Not a Valid PSD File");
+             }
+             BinaryFunctions.skipBytes(inputStream, colorModeDataLength);
+             int imageResourcesLength = BinaryFunctions.read4Bytes("ImageResourcesLength", inputStream, "Not a Valid PSD File", getByteOrder());
+             if (i == 2) {
+                 return BinaryFunctions.readBytes("ImageResources", inputStream, imageResourcesLength, "Not a Valid PSD File");
+             }
+             BinaryFunctions.skipBytes(inputStream, imageResourcesLength);
+             int layerAndMaskDataLength = BinaryFunctions.read4Bytes("LayerAndMaskDataLength", inputStream, "Not a Valid PSD File", getByteOrder());
+             if (i == 3) {
+                 return BinaryFunctions.readBytes("LayerAndMaskData", inputStream, layerAndMaskDataLength, "Not a Valid PSD File");
+             }
+             BinaryFunctions.skipBytes(inputStream, layerAndMaskDataLength);
+             BinaryFunctions.read2Bytes("Compression", inputStream, "Not a Valid PSD File", getByteOrder());
+             
+             throw new ImageReadException("getInputStream: Unknown Section: " + i);
         }
     }
 
-    private ImageContents readImageContents(ByteSource byteSource) throws Throwable {
-        InputStream inputStream;
-        try {
-            inputStream = byteSource.getInputStream();
-            try {
-                ImageContents imageContents = readImageContents(inputStream);
-                IoUtils.closeQuietly(true, inputStream);
-                return imageContents;
-            } catch (Throwable th) {
-                th = th;
-                IoUtils.closeQuietly(false, inputStream);
-                throw th;
-            }
-        } catch (Throwable th2) {
-            th = th2;
-            inputStream = null;
+    private ImageContents readImageContents(ByteSource byteSource) throws IOException, ImageReadException {
+        try (InputStream inputStream = byteSource.getInputStream()) {
+            return readImageContents(inputStream);
         }
     }
 
-    @Override // org.apache.commons.imaging.ImageParser
-    public byte[] getICCProfileBytes(ByteSource byteSource, Map<String, Object> map) throws Throwable {
-        byte[] bArr;
+    @Override
+    public byte[] getICCProfileBytes(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
         List<ImageResourceBlock> imageResourceBlocks = readImageResourceBlocks(byteSource, new int[]{1039}, 1);
-        if (imageResourceBlocks == null || imageResourceBlocks.size() < 1 || (bArr = imageResourceBlocks.get(0).data) == null || bArr.length < 1) {
+        if (imageResourceBlocks == null || imageResourceBlocks.size() < 1) {
+            return null;
+        }
+        byte[] bArr = imageResourceBlocks.get(0).data;
+        if (bArr == null || bArr.length < 1) {
             return null;
         }
         return bArr;
     }
 
-    @Override // org.apache.commons.imaging.ImageParser
-    public Dimension getImageSize(ByteSource byteSource, Map<String, Object> map) throws Throwable {
+    @Override
+    public Dimension getImageSize(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
         PsdHeaderInfo header = readHeader(byteSource);
         if (header == null) {
             throw new ImageReadException("PSD: couldn't read header");
@@ -340,9 +232,9 @@ public class PsdImageParser extends ImageParser {
         return new Dimension(header.columns, header.rows);
     }
 
-    @Override // org.apache.commons.imaging.ImageParser
-    public ImageInfo getImageInfo(ByteSource byteSource, Map<String, Object> map) throws Throwable {
-        ImageInfo$CompressionAlgorithm imageInfo$CompressionAlgorithm;
+    @Override
+    public ImageInfo getImageInfo(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
+        ImageInfo.CompressionAlgorithm compressionAlgorithm;
         ImageContents imageContents = readImageContents(byteSource);
         if (imageContents == null) {
             throw new ImageReadException("PSD: Couldn't read blocks");
@@ -351,32 +243,32 @@ public class PsdImageParser extends ImageParser {
         if (psdHeaderInfo == null) {
             throw new ImageReadException("PSD: Couldn't read Header");
         }
-        int i = psdHeaderInfo.columns;
-        int i2 = psdHeaderInfo.rows;
-        ArrayList arrayList = new ArrayList();
+        int columns = psdHeaderInfo.columns;
+        int rows = psdHeaderInfo.rows;
+        ArrayList<String> comments = new ArrayList<>();
         int channelsPerMode = psdHeaderInfo.depth * getChannelsPerMode(psdHeaderInfo.mode);
-        int i3 = channelsPerMode < 0 ? 0 : channelsPerMode;
-        ImageFormats imageFormats = ImageFormats.PSD;
-        float f = (float) (((double) i) / 72.0d);
-        float f2 = (float) (((double) i2) / 72.0d);
-        boolean z = psdHeaderInfo.mode == 2;
-        ImageInfo$ColorType imageInfo$ColorType = ImageInfo$ColorType.UNKNOWN;
+        int bitsPerPixel = channelsPerMode < 0 ? 0 : channelsPerMode;
+        ImageFormats format = ImageFormats.PSD;
+        float physicalWidth = (float) (columns / 72.0d);
+        float physicalHeight = (float) (rows / 72.0d);
+        boolean isProgressive = psdHeaderInfo.mode == 2;
+        ImageInfo.ColorType colorType = ImageInfo.ColorType.UNKNOWN;
         switch (imageContents.Compression) {
             case 0:
-                imageInfo$CompressionAlgorithm = ImageInfo$CompressionAlgorithm.NONE;
+                compressionAlgorithm = ImageInfo.CompressionAlgorithm.NONE;
                 break;
             case 1:
-                imageInfo$CompressionAlgorithm = ImageInfo$CompressionAlgorithm.PSD;
+                compressionAlgorithm = ImageInfo.CompressionAlgorithm.PSD;
                 break;
             default:
-                imageInfo$CompressionAlgorithm = ImageInfo$CompressionAlgorithm.UNKNOWN;
+                compressionAlgorithm = ImageInfo.CompressionAlgorithm.UNKNOWN;
                 break;
         }
-        return new ImageInfo("Psd", i3, arrayList, imageFormats, "Photoshop", i2, "image/x-photoshop", -1, 72, f2, 72, f, i, false, false, z, imageInfo$ColorType, imageInfo$CompressionAlgorithm);
+        return new ImageInfo("Psd", bitsPerPixel, comments, format, "Photoshop", rows, "image/x-photoshop", -1, 72, physicalHeight, 72, physicalWidth, columns, false, false, isProgressive, colorType, compressionAlgorithm);
     }
 
-    @Override // org.apache.commons.imaging.ImageParser
-    public boolean dumpImageFile(PrintWriter printWriter, ByteSource byteSource) throws Throwable {
+    @Override
+    public boolean dumpImageFile(PrintWriter printWriter, ByteSource byteSource) throws IOException, ImageReadException {
         printWriter.println("gif.dumpImageFile");
         ImageInfo imageInfo = getImageInfo(byteSource);
         if (imageInfo == null) {
@@ -396,11 +288,10 @@ public class PsdImageParser extends ImageParser {
         return true;
     }
 
-    @Override // org.apache.commons.imaging.ImageParser
-    public BufferedImage getBufferedImage(ByteSource byteSource, Map<String, Object> map) throws Throwable {
-        DataParser dataParserBitmap;
-        DataReader uncompressedDataReader;
-        InputStream inputStream;
+    @Override
+    public BufferedImage getBufferedImage(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
+        DataParser dataParser;
+        DataReader dataReader;
         ImageContents imageContents = readImageContents(byteSource);
         if (imageContents == null) {
             throw new ImageReadException("PSD: Couldn't read blocks");
@@ -413,59 +304,49 @@ public class PsdImageParser extends ImageParser {
         BufferedImage colorBufferedImage = getBufferedImageFactory(map).getColorBufferedImage(psdHeaderInfo.columns, psdHeaderInfo.rows, false);
         switch (imageContents.header.mode) {
             case 0:
-                dataParserBitmap = new DataParserBitmap();
+                dataParser = new DataParserBitmap();
                 break;
             case 1:
             case 8:
-                dataParserBitmap = new DataParserGrayscale();
+                dataParser = new DataParserGrayscale();
                 break;
             case 2:
-                dataParserBitmap = new DataParserIndexed(getData(byteSource, 1));
+                dataParser = new DataParserIndexed(getData(byteSource, 1));
                 break;
             case 3:
-                dataParserBitmap = new DataParserRgb();
+                dataParser = new DataParserRgb();
                 break;
             case 4:
-                dataParserBitmap = new DataParserCmyk();
+                dataParser = new DataParserCmyk();
+                break;
+            case 9:
+                dataParser = new DataParserLab();
                 break;
             case 5:
             case 6:
             case 7:
             default:
                 throw new ImageReadException("Unknown Mode: " + imageContents.header.mode);
-            case 9:
-                dataParserBitmap = new DataParserLab();
-                break;
         }
         switch (imageContents.Compression) {
             case 0:
-                uncompressedDataReader = new UncompressedDataReader(dataParserBitmap);
+                dataReader = new UncompressedDataReader(dataParser);
                 break;
             case 1:
-                uncompressedDataReader = new CompressedDataReader(dataParserBitmap);
+                dataReader = new CompressedDataReader(dataParser);
                 break;
             default:
                 throw new ImageReadException("Unknown Compression: " + imageContents.Compression);
         }
-        try {
-            inputStream = getInputStream(byteSource, 4);
-            try {
-                uncompressedDataReader.readData(inputStream, colorBufferedImage, imageContents, this);
-                IoUtils.closeQuietly(true, inputStream);
-                return colorBufferedImage;
-            } catch (Throwable th) {
-                th = th;
-                IoUtils.closeQuietly(false, inputStream);
-                throw th;
-            }
-        } catch (Throwable th2) {
-            th = th2;
-            inputStream = null;
+        
+        try (InputStream inputStream = getInputStream(byteSource, 4)) {
+            dataReader.readData(inputStream, colorBufferedImage, imageContents, this);
+            return colorBufferedImage;
         }
     }
 
-    @Override // org.apache.commons.imaging.ImageParser
-    public String getXmpXml(ByteSource byteSource, Map<String, Object> map) throws Throwable {
+    @Override
+    public String getXmpXml(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
         ImageContents imageContents = readImageContents(byteSource);
         if (imageContents == null) {
             throw new ImageReadException("PSD: Couldn't read blocks");
@@ -477,19 +358,26 @@ public class PsdImageParser extends ImageParser {
         if (imageResourceBlocks == null || imageResourceBlocks.size() < 1) {
             return null;
         }
-        ArrayList arrayList = new ArrayList();
-        arrayList.addAll(imageResourceBlocks);
-        if (arrayList.size() < 1) {
-            return null;
-        }
-        if (arrayList.size() > 1) {
+        if (imageResourceBlocks.size() > 1) {
             throw new ImageReadException("PSD contains more than one XMP block.");
         }
-        ImageResourceBlock imageResourceBlock = (ImageResourceBlock) arrayList.get(0);
+        ImageResourceBlock imageResourceBlock = imageResourceBlocks.get(0);
         try {
             return new String(imageResourceBlock.data, 0, imageResourceBlock.data.length, "utf-8");
         } catch (UnsupportedEncodingException e) {
             throw new ImageReadException("Invalid JPEG XMP Segment.", e);
+        }
+    }
+    
+    private int getChannelsPerMode(int mode) {
+        switch (mode) {
+            case 0: return 1;
+            case 1: return 1;
+            case 2: return 1;
+            case 3: return 3;
+            case 4: return 4;
+            case 9: return 3;
+            default: return -1;
         }
     }
 }

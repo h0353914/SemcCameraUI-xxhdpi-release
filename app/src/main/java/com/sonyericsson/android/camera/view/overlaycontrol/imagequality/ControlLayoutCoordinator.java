@@ -1,22 +1,21 @@
 package com.sonyericsson.android.camera.view.overlaycontrol.imagequality;
 
 import android.graphics.Rect;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
-import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver$ScreenAspect;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
-import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 import com.sonyericsson.cameracommon.utility.ResourceUtil;
 
 class ControlLayoutCoordinator implements LayoutCoordinator {
     private final Rect mContainerRect;
     public Rect mDialogRect;
-    private final LayoutDependencyResolver$ScreenAspect mScreenAspect;
+    private final LayoutDependencyResolver.ScreenAspect mScreenAspect;
     private final ImageQualityControlView mView;
 
-    public ControlLayoutCoordinator(ImageQualityControlView imageQualityControlView, Rect rect, LayoutDependencyResolver$ScreenAspect layoutDependencyResolver$ScreenAspect) {
+    public ControlLayoutCoordinator(ImageQualityControlView imageQualityControlView, Rect rect, LayoutDependencyResolver.ScreenAspect screenAspect) {
         this.mView = imageQualityControlView;
         this.mContainerRect = rect;
-        this.mScreenAspect = layoutDependencyResolver$ScreenAspect;
+        this.mScreenAspect = screenAspect;
     }
 
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.LayoutCoordinator
@@ -30,8 +29,8 @@ class ControlLayoutCoordinator implements LayoutCoordinator {
 
     private void coordinatePositionPhone() {
         int iHeight = LayoutDependencyResolver.getViewFinderSize(this.mView.getContext()).height();
-        int dimensionPixelSize = this.mScreenAspect == LayoutDependencyResolver$ScreenAspect.EIGHTEEN_NINE ? ResourceUtil.getDimensionPixelSize(this.mView.getContext(), this.mView.getContext().getPackageName(), 2131165428) : 0;
-        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
+        int dimensionPixelSize = this.mScreenAspect == LayoutDependencyResolver.ScreenAspect.EIGHTEEN_NINE ? ResourceUtil.getDimensionPixelSize(this.mView.getContext(), this.mView.getContext().getPackageName(), R.dimen.left_icon_area_height) : 0;
+        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
             this.mView.setX((((iHeight * 4) / 3) + dimensionPixelSize) - this.mView.getWidth());
             this.mView.setY(this.mContainerRect.top + ((this.mContainerRect.width() - this.mView.getHeight()) / 2.0f));
         } else {

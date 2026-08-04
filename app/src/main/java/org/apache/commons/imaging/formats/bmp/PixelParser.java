@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.bmp;
 
+import android.support.v4.view.ViewCompat;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,6 +25,6 @@ abstract class PixelParser {
     int getColorTableRGB(int i) {
         int i2 = i * 4;
         int i3 = this.colorTable[i2 + 0] & 255;
-        return ((this.colorTable[i2 + 2] & 255) << 16) | (-16777216) | ((this.colorTable[i2 + 1] & 255) << 8) | (i3 << 0);
+        return ((this.colorTable[i2 + 2] & 255) << 16) | ViewCompat.MEASURED_STATE_MASK | ((this.colorTable[i2 + 1] & 255) << 8) | (i3 << 0);
     }
 }

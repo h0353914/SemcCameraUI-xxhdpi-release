@@ -1,11 +1,52 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.CamLog;
 
 public enum VideoCodec implements UserSettingValue {
-    H264(-1, 2131690209),
-    H265(-1, 2131690210);
+    H264(-1, R.string.cam_strings_video_codec_for_4k_h264_txt),
+    H265(-1, R.string.cam_strings_video_codec_for_4k_h265_txt);
 
     private static final String TAG = "VideoCodec";
     private static final int sParameterTextId = 2131690228;
@@ -38,11 +79,12 @@ public enum VideoCodec implements UserSettingValue {
     }
 
     public static VideoCodec[] getOptions(CapturingMode capturingMode) {
-        if (VideoCodec$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()] == 1) {
-            if (CamLog.VERBOSE) {
-                CamLog.d("getOptions : H264, H265");
-            }
-            return new VideoCodec[]{H264, H265};
+        switch (capturingMode) {
+            case VIDEO:
+                if (CamLog.VERBOSE) {
+                    CamLog.d("getOptions : H264, H265");
+                }
+                return new VideoCodec[] { H264, H265 };
         }
         return new VideoCodec[0];
     }

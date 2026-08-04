@@ -1,13 +1,14 @@
 package com.google.android.gms.auth;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzw;
 import com.google.android.gms.common.internal.zzx;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class AccountChangeEvent implements SafeParcelable {
-    public static final Parcelable$Creator<AccountChangeEvent> CREATOR = new zza();
+    public static final Parcelable.Creator<AccountChangeEvent> CREATOR = new zza();
     final int mVersion;
     final long zzRr;
     final String zzRs;

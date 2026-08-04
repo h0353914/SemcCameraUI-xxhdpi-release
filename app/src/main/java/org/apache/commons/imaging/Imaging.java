@@ -1,11 +1,11 @@
 package org.apache.commons.imaging;
 
+import org.apache.commons.imaging.ImageReadException;
+
 import java.awt.Dimension;
-import java.awt.color.ICC_Profile;
 import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.Closeable;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,9 +13,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import org.apache.commons.imaging.common.ImageMetadata;
+import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.common.bytesource.ByteSource;
 import org.apache.commons.imaging.common.bytesource.ByteSourceArray;
 import org.apache.commons.imaging.common.bytesource.ByteSourceFile;
@@ -23,187 +22,42 @@ import org.apache.commons.imaging.common.bytesource.ByteSourceInputStream;
 import org.apache.commons.imaging.icc.IccProfileInfo;
 import org.apache.commons.imaging.icc.IccProfileParser;
 import org.apache.commons.imaging.util.IoUtils;
+import org.apache.commons.imaging.common.ImageMetadata;
+import java.awt.color.ICC_Profile;
+import java.util.Locale;
 
 public final class Imaging {
-    private static final int[] MAGIC_NUMBERS_GIF = {71, 73};
-    private static final int[] MAGIC_NUMBERS_PNG = {137, 80};
-    private static final int[] MAGIC_NUMBERS_JPEG = {255, 216};
-    private static final int[] MAGIC_NUMBERS_BMP = {66, 77};
-    private static final int[] MAGIC_NUMBERS_TIFF_MOTOROLA = {77, 77};
-    private static final int[] MAGIC_NUMBERS_TIFF_INTEL = {73, 73};
-    private static final int[] MAGIC_NUMBERS_PAM = {80, 55};
-    private static final int[] MAGIC_NUMBERS_PSD = {56, 66};
-    private static final int[] MAGIC_NUMBERS_PBM_A = {80, 49};
-    private static final int[] MAGIC_NUMBERS_PBM_B = {80, 52};
-    private static final int[] MAGIC_NUMBERS_PGM_A = {80, 50};
-    private static final int[] MAGIC_NUMBERS_PGM_B = {80, 53};
-    private static final int[] MAGIC_NUMBERS_PPM_A = {80, 51};
-    private static final int[] MAGIC_NUMBERS_PPM_B = {80, 54};
-    private static final int[] MAGIC_NUMBERS_JBIG2_1 = {151, 74};
-    private static final int[] MAGIC_NUMBERS_JBIG2_2 = {66, 50};
-    private static final int[] MAGIC_NUMBERS_ICNS = {105, 99};
-    private static final int[] MAGIC_NUMBERS_DCX = {177, 104};
-    private static final int[] MAGIC_NUMBERS_RGBE = {35, 63};
+    private static final int[] MAGIC_NUMBERS_BMP = { 66, 77 };
+    private static final int[] MAGIC_NUMBERS_DCX = { 177, 104 };
+    private static final int[] MAGIC_NUMBERS_GIF = { 71, 73 };
+    private static final int[] MAGIC_NUMBERS_ICNS = { 105, 99 };
+    private static final int[] MAGIC_NUMBERS_JBIG2_1 = { 151, 74 };
+    private static final int[] MAGIC_NUMBERS_JBIG2_2 = { 66, 50 };
+    private static final int[] MAGIC_NUMBERS_JPEG = { 255, 216 };
+    private static final int[] MAGIC_NUMBERS_PAM = { 80, 55 };
+    private static final int[] MAGIC_NUMBERS_PBM_A = { 80, 49 };
+    private static final int[] MAGIC_NUMBERS_PBM_B = { 80, 52 };
+    private static final int[] MAGIC_NUMBERS_PGM_A = { 80, 50 };
+    private static final int[] MAGIC_NUMBERS_PGM_B = { 80, 53 };
+    private static final int[] MAGIC_NUMBERS_PNG = { 137, 80 };
+    private static final int[] MAGIC_NUMBERS_PPM_A = { 80, 51 };
+    private static final int[] MAGIC_NUMBERS_PPM_B = { 80, 54 };
+    private static final int[] MAGIC_NUMBERS_PSD = { 56, 66 };
+    private static final int[] MAGIC_NUMBERS_RGBE = { 35, 63 };
+    private static final int[] MAGIC_NUMBERS_TIFF_INTEL = { 73, 73 };
+    private static final int[] MAGIC_NUMBERS_TIFF_MOTOROLA = { 77, 77 };
 
     private Imaging() {
     }
 
-    public static boolean hasImageFileExtension(File file) {
-        if (file == null || !file.isFile()) {
-            return false;
-        }
-        return hasImageFileExtension(file.getName());
+    /* ───────── getICCProfile ───────── */
+
+    public static ICC_Profile getICCProfile(File file) throws IOException, ImageReadException {
+        return getICCProfile(file, null);
     }
 
-    public static boolean hasImageFileExtension(String str) {
-        if (str == null) {
-            return false;
-        }
-        String lowerCase = str.toLowerCase(Locale.ENGLISH);
-        for (ImageParser imageParser : ImageParser.getAllImageParsers()) {
-            for (String str2 : imageParser.getAcceptedExtensions()) {
-                if (lowerCase.endsWith(str2.toLowerCase(Locale.ENGLISH))) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public static ImageFormat guessFormat(byte[] bArr) throws IOException, ImageReadException {
-        return guessFormat(new ByteSourceArray(bArr));
-    }
-
-    public static ImageFormat guessFormat(File file) throws IOException, ImageReadException {
-        return guessFormat(new ByteSourceFile(file));
-    }
-
-    private static boolean compareBytePair(int[] iArr, int[] iArr2) {
-        if (iArr.length == 2 || iArr2.length == 2) {
-            return iArr[0] == iArr2[0] && iArr[1] == iArr2[1];
-        }
-        throw new RuntimeException("Invalid Byte Pair.");
-    }
-
-    /* JADX WARN: Removed duplicated region for block: B:95:0x016c A[Catch: all -> 0x0037, TRY_ENTER, TRY_LEAVE, TryCatch #0 {all -> 0x0037, blocks: (B:13:0x002d, B:21:0x0044, B:25:0x0053, B:29:0x0062, B:33:0x0071, B:37:0x0080, B:41:0x008f, B:45:0x009e, B:49:0x00ad, B:53:0x00bd, B:57:0x00cd, B:61:0x00dd, B:65:0x00ed, B:69:0x00fd, B:79:0x012c, B:95:0x016c, B:85:0x0144, B:89:0x0154, B:93:0x0164), top: B:106:0x002b }] */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    public static ImageFormat guessFormat(ByteSource byteSource) throws Throwable {
-        InputStream inputStream;
-        Throwable th;
-        boolean z;
-        ImageFormats imageFormats;
-        Closeable[] closeableArr;
-        if (byteSource == null) {
-            return ImageFormats.UNKNOWN;
-        }
-        try {
-            InputStream inputStream2 = byteSource.getInputStream();
-            try {
-                int i = inputStream2.read();
-                int i2 = inputStream2.read();
-                if (i >= 0 && i2 >= 0) {
-                    int[] iArr = {i & 255, i2 & 255};
-                    try {
-                        if (compareBytePair(MAGIC_NUMBERS_GIF, iArr)) {
-                            imageFormats = ImageFormats.GIF;
-                            closeableArr = new Closeable[]{inputStream2};
-                        } else if (compareBytePair(MAGIC_NUMBERS_PNG, iArr)) {
-                            imageFormats = ImageFormats.PNG;
-                            closeableArr = new Closeable[]{inputStream2};
-                        } else if (compareBytePair(MAGIC_NUMBERS_JPEG, iArr)) {
-                            imageFormats = ImageFormats.JPEG;
-                            closeableArr = new Closeable[]{inputStream2};
-                        } else if (compareBytePair(MAGIC_NUMBERS_BMP, iArr)) {
-                            imageFormats = ImageFormats.BMP;
-                            closeableArr = new Closeable[]{inputStream2};
-                        } else if (compareBytePair(MAGIC_NUMBERS_TIFF_MOTOROLA, iArr)) {
-                            imageFormats = ImageFormats.TIFF;
-                            closeableArr = new Closeable[]{inputStream2};
-                        } else if (compareBytePair(MAGIC_NUMBERS_TIFF_INTEL, iArr)) {
-                            imageFormats = ImageFormats.TIFF;
-                            closeableArr = new Closeable[]{inputStream2};
-                        } else if (compareBytePair(MAGIC_NUMBERS_PSD, iArr)) {
-                            imageFormats = ImageFormats.PSD;
-                            closeableArr = new Closeable[]{inputStream2};
-                        } else if (compareBytePair(MAGIC_NUMBERS_PAM, iArr)) {
-                            imageFormats = ImageFormats.PAM;
-                            closeableArr = new Closeable[]{inputStream2};
-                        } else if (compareBytePair(MAGIC_NUMBERS_PBM_A, iArr)) {
-                            imageFormats = ImageFormats.PBM;
-                            closeableArr = new Closeable[]{inputStream2};
-                        } else if (compareBytePair(MAGIC_NUMBERS_PBM_B, iArr)) {
-                            imageFormats = ImageFormats.PBM;
-                            closeableArr = new Closeable[]{inputStream2};
-                        } else if (compareBytePair(MAGIC_NUMBERS_PGM_A, iArr)) {
-                            imageFormats = ImageFormats.PGM;
-                            closeableArr = new Closeable[]{inputStream2};
-                        } else if (compareBytePair(MAGIC_NUMBERS_PGM_B, iArr)) {
-                            imageFormats = ImageFormats.PGM;
-                            closeableArr = new Closeable[]{inputStream2};
-                        } else if (compareBytePair(MAGIC_NUMBERS_PPM_A, iArr)) {
-                            imageFormats = ImageFormats.PPM;
-                            closeableArr = new Closeable[]{inputStream2};
-                        } else if (compareBytePair(MAGIC_NUMBERS_PPM_B, iArr)) {
-                            imageFormats = ImageFormats.PPM;
-                            closeableArr = new Closeable[]{inputStream2};
-                        } else {
-                            if (compareBytePair(MAGIC_NUMBERS_JBIG2_1, iArr)) {
-                                int i3 = inputStream2.read();
-                                int i4 = inputStream2.read();
-                                if (i3 >= 0 && i4 >= 0) {
-                                    if (compareBytePair(MAGIC_NUMBERS_JBIG2_2, new int[]{i3 & 255, i4 & 255})) {
-                                        imageFormats = ImageFormats.JBIG2;
-                                        closeableArr = new Closeable[]{inputStream2};
-                                    } else {
-                                        imageFormats = ImageFormats.UNKNOWN;
-                                        closeableArr = new Closeable[]{inputStream2};
-                                    }
-                                }
-                                throw new ImageReadException("Couldn't read magic numbers to guess format.");
-                            }
-                            if (compareBytePair(MAGIC_NUMBERS_ICNS, iArr)) {
-                                imageFormats = ImageFormats.ICNS;
-                                closeableArr = new Closeable[]{inputStream2};
-                            } else if (compareBytePair(MAGIC_NUMBERS_DCX, iArr)) {
-                                imageFormats = ImageFormats.DCX;
-                                closeableArr = new Closeable[]{inputStream2};
-                            } else if (compareBytePair(MAGIC_NUMBERS_RGBE, iArr)) {
-                                imageFormats = ImageFormats.RGBE;
-                                closeableArr = new Closeable[]{inputStream2};
-                            }
-                        }
-                        IoUtils.closeQuietly(true, closeableArr);
-                        return imageFormats;
-                    } catch (Throwable th2) {
-                        th = th2;
-                        inputStream = inputStream2;
-                        z = true;
-                        IoUtils.closeQuietly(z, inputStream);
-                        throw th;
-                    }
-                }
-                throw new ImageReadException("Couldn't read magic numbers to guess format.");
-            } catch (Throwable th3) {
-                th = th3;
-                inputStream = inputStream2;
-                z = false;
-                IoUtils.closeQuietly(z, inputStream);
-                throw th;
-            }
-        } catch (Throwable th4) {
-            inputStream = null;
-            th = th4;
-        }
-    }
-
-    public static ICC_Profile getICCProfile(byte[] bArr) throws IOException, ImageReadException {
-        return getICCProfile(bArr, (Map<String, Object>) null);
-    }
-
-    public static ICC_Profile getICCProfile(byte[] bArr, Map<String, Object> map) throws IOException, ImageReadException {
-        return getICCProfile(new ByteSourceArray(bArr), map);
+    public static ICC_Profile getICCProfile(File file, Map<String, Object> map) throws IOException, ImageReadException {
+        return getICCProfile(new ByteSourceFile(file), map);
     }
 
     public static ICC_Profile getICCProfile(InputStream inputStream, String str) throws IOException, ImageReadException {
@@ -214,25 +68,33 @@ public final class Imaging {
         return getICCProfile(new ByteSourceInputStream(inputStream, str), map);
     }
 
-    public static ICC_Profile getICCProfile(File file) throws IOException, ImageReadException {
-        return getICCProfile(file, (Map<String, Object>) null);
+    public static ICC_Profile getICCProfile(byte[] bArr) throws IOException, ImageReadException {
+        return getICCProfile(bArr, null);
     }
 
-    public static ICC_Profile getICCProfile(File file, Map<String, Object> map) throws IOException, ImageReadException {
-        return getICCProfile(new ByteSourceFile(file), map);
+    public static ICC_Profile getICCProfile(byte[] bArr, Map<String, Object> map) throws IOException, ImageReadException {
+        return getICCProfile(new ByteSourceArray(bArr), map);
     }
 
     protected static ICC_Profile getICCProfile(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
-        IccProfileInfo iCCProfileInfo;
-        byte[] iCCProfileBytes = getICCProfileBytes(byteSource, map);
-        if (iCCProfileBytes == null || (iCCProfileInfo = new IccProfileParser().getICCProfileInfo(iCCProfileBytes)) == null || iCCProfileInfo.issRGB()) {
+        byte[] data = getICCProfileBytes(byteSource, map);
+        if (data == null) {
             return null;
         }
-        return ICC_Profile.getInstance(iCCProfileBytes);
+        IccProfileInfo info = new IccProfileParser().getICCProfileInfo(data);
+        if (info == null) {
+            return null;
+        }
+        if (info.issRGB()) {
+            return null;
+        }
+        return ICC_Profile.getInstance(data);
     }
 
+    /* ───────── getICCProfileBytes ───────── */
+
     public static byte[] getICCProfileBytes(byte[] bArr) throws IOException, ImageReadException {
-        return getICCProfileBytes(bArr, (Map<String, Object>) null);
+        return getICCProfileBytes(bArr, null);
     }
 
     public static byte[] getICCProfileBytes(byte[] bArr, Map<String, Object> map) throws IOException, ImageReadException {
@@ -240,7 +102,7 @@ public final class Imaging {
     }
 
     public static byte[] getICCProfileBytes(File file) throws IOException, ImageReadException {
-        return getICCProfileBytes(file, (Map<String, Object>) null);
+        return getICCProfileBytes(file, null);
     }
 
     public static byte[] getICCProfileBytes(File file, Map<String, Object> map) throws IOException, ImageReadException {
@@ -251,61 +113,101 @@ public final class Imaging {
         return getImageParser(byteSource).getICCProfileBytes(byteSource, map);
     }
 
-    public static ImageInfo getImageInfo(String str, byte[] bArr, Map<String, Object> map) throws IOException, ImageReadException {
-        return getImageInfo(new ByteSourceArray(str, bArr), map);
+    /* ───────── guessFormat ───────── */
+
+    public static ImageFormat guessFormat(byte[] bArr) throws IOException, ImageReadException {
+        return guessFormat(new ByteSourceArray(bArr));
     }
 
-    public static ImageInfo getImageInfo(String str, byte[] bArr) throws IOException, ImageReadException {
-        return getImageInfo(new ByteSourceArray(str, bArr), (Map<String, Object>) null);
+    public static ImageFormat guessFormat(File file) throws IOException, ImageReadException {
+        return guessFormat(new ByteSourceFile(file));
     }
 
-    public static ImageInfo getImageInfo(InputStream inputStream, String str) throws IOException, ImageReadException {
-        return getImageInfo(new ByteSourceInputStream(inputStream, str), (Map<String, Object>) null);
-    }
-
-    public static ImageInfo getImageInfo(InputStream inputStream, String str, Map<String, Object> map) throws IOException, ImageReadException {
-        return getImageInfo(new ByteSourceInputStream(inputStream, str), map);
-    }
-
-    public static ImageInfo getImageInfo(byte[] bArr) throws IOException, ImageReadException {
-        return getImageInfo(new ByteSourceArray(bArr), (Map<String, Object>) null);
-    }
-
-    public static ImageInfo getImageInfo(byte[] bArr, Map<String, Object> map) throws IOException, ImageReadException {
-        return getImageInfo(new ByteSourceArray(bArr), map);
-    }
-
-    public static ImageInfo getImageInfo(File file, Map<String, Object> map) throws IOException, ImageReadException {
-        return getImageInfo(new ByteSourceFile(file), map);
-    }
-
-    public static ImageInfo getImageInfo(File file) throws IOException, ImageReadException {
-        return getImageInfo(file, (Map<String, Object>) null);
-    }
-
-    private static ImageInfo getImageInfo(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
-        return getImageParser(byteSource).getImageInfo(byteSource, map);
-    }
-
-    private static ImageParser getImageParser(ByteSource byteSource) throws Throwable {
-        ImageFormat imageFormatGuessFormat = guessFormat(byteSource);
-        if (!imageFormatGuessFormat.equals(ImageFormats.UNKNOWN)) {
-            for (ImageParser imageParser : ImageParser.getAllImageParsers()) {
-                if (imageParser.canAcceptType(imageFormatGuessFormat)) {
-                    return imageParser;
+    public static ImageFormat guessFormat(ByteSource byteSource) throws IOException, ImageReadException {
+        if (byteSource == null) {
+            return ImageFormats.UNKNOWN;
+        }
+        InputStream inputStream = null;
+        try {
+            inputStream = byteSource.getInputStream();
+            int read = inputStream.read();
+            int read2 = inputStream.read();
+            if (read < 0 || read2 < 0) {
+                throw new ImageReadException("Couldn't read magic numbers to guess format.");
+            }
+            int[] iArr = { read & 255, read2 & 255 };
+            if (compareBytePair(MAGIC_NUMBERS_GIF, iArr)) {
+                return ImageFormats.GIF;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_PNG, iArr)) {
+                return ImageFormats.PNG;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_JPEG, iArr)) {
+                return ImageFormats.JPEG;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_BMP, iArr)) {
+                return ImageFormats.BMP;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_TIFF_MOTOROLA, iArr)) {
+                return ImageFormats.TIFF;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_TIFF_INTEL, iArr)) {
+                return ImageFormats.TIFF;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_PSD, iArr)) {
+                return ImageFormats.PSD;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_PAM, iArr)) {
+                return ImageFormats.PAM;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_PBM_A, iArr)) {
+                return ImageFormats.PBM;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_PBM_B, iArr)) {
+                return ImageFormats.PBM;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_PGM_A, iArr)) {
+                return ImageFormats.PGM;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_PGM_B, iArr)) {
+                return ImageFormats.PGM;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_PPM_A, iArr)) {
+                return ImageFormats.PPM;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_PPM_B, iArr)) {
+                return ImageFormats.PPM;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_JBIG2_1, iArr)) {
+                int read3 = inputStream.read();
+                int read4 = inputStream.read();
+                if (read3 < 0 || read4 < 0) {
+                    throw new ImageReadException("Couldn't read magic numbers to guess format.");
+                }
+                if (compareBytePair(MAGIC_NUMBERS_JBIG2_2, new int[] { read3 & 255, read4 & 255 })) {
+                    return ImageFormats.JBIG2;
                 }
             }
-        }
-        String filename = byteSource.getFilename();
-        if (filename != null) {
-            for (ImageParser imageParser2 : ImageParser.getAllImageParsers()) {
-                if (imageParser2.canAcceptExtension(filename)) {
-                    return imageParser2;
-                }
+            if (compareBytePair(MAGIC_NUMBERS_ICNS, iArr)) {
+                return ImageFormats.ICNS;
             }
+            if (compareBytePair(MAGIC_NUMBERS_DCX, iArr)) {
+                return ImageFormats.DCX;
+            }
+            if (compareBytePair(MAGIC_NUMBERS_RGBE, iArr)) {
+                return ImageFormats.RGBE;
+            }
+            return ImageFormats.UNKNOWN;
+        } finally {
+            IoUtils.closeQuietly(true, inputStream);
         }
-        throw new ImageReadException("Can't parse this format.");
     }
+
+    private static boolean compareBytePair(int[] iArr, int[] iArr2) {
+        return iArr[0] == iArr2[0] && iArr[1] == iArr2[1];
+    }
+
+    /* ───────── getImageSize ───────── */
 
     public static Dimension getImageSize(InputStream inputStream, String str) throws IOException, ImageReadException {
         return getImageSize(inputStream, str, null);
@@ -316,7 +218,7 @@ public final class Imaging {
     }
 
     public static Dimension getImageSize(byte[] bArr) throws IOException, ImageReadException {
-        return getImageSize(bArr, (Map<String, Object>) null);
+        return getImageSize(bArr, null);
     }
 
     public static Dimension getImageSize(byte[] bArr, Map<String, Object> map) throws IOException, ImageReadException {
@@ -324,7 +226,7 @@ public final class Imaging {
     }
 
     public static Dimension getImageSize(File file) throws IOException, ImageReadException {
-        return getImageSize(file, (Map<String, Object>) null);
+        return getImageSize(file, null);
     }
 
     public static Dimension getImageSize(File file, Map<String, Object> map) throws IOException, ImageReadException {
@@ -335,6 +237,8 @@ public final class Imaging {
         return getImageParser(byteSource).getImageSize(byteSource, map);
     }
 
+    /* ───────── getXmpXml ───────── */
+
     public static String getXmpXml(InputStream inputStream, String str) throws IOException, ImageReadException {
         return getXmpXml(inputStream, str, null);
     }
@@ -344,7 +248,7 @@ public final class Imaging {
     }
 
     public static String getXmpXml(byte[] bArr) throws IOException, ImageReadException {
-        return getXmpXml(bArr, (Map<String, Object>) null);
+        return getXmpXml(bArr, null);
     }
 
     public static String getXmpXml(byte[] bArr, Map<String, Object> map) throws IOException, ImageReadException {
@@ -352,7 +256,7 @@ public final class Imaging {
     }
 
     public static String getXmpXml(File file) throws IOException, ImageReadException {
-        return getXmpXml(file, (Map<String, Object>) null);
+        return getXmpXml(file, null);
     }
 
     public static String getXmpXml(File file, Map<String, Object> map) throws IOException, ImageReadException {
@@ -363,24 +267,28 @@ public final class Imaging {
         return getImageParser(byteSource).getXmpXml(byteSource, map);
     }
 
+    /* ───────── getMetadata ───────── */
+
+    public static ImageMetadata getMetadata(InputStream inputStream, String str)
+            throws IOException, ImageReadException {
+        return getMetadata(inputStream, str, null);
+    }
+
+    public static ImageMetadata getMetadata(InputStream inputStream, String str, Map<String, Object> map)
+            throws IOException, ImageReadException {
+        return getMetadata(new ByteSourceInputStream(inputStream, str), map);
+    }
+
     public static ImageMetadata getMetadata(byte[] bArr) throws IOException, ImageReadException {
-        return getMetadata(bArr, (Map<String, Object>) null);
+        return getMetadata(bArr, null);
     }
 
     public static ImageMetadata getMetadata(byte[] bArr, Map<String, Object> map) throws IOException, ImageReadException {
         return getMetadata(new ByteSourceArray(bArr), map);
     }
 
-    public static ImageMetadata getMetadata(InputStream inputStream, String str) throws IOException, ImageReadException {
-        return getMetadata(inputStream, str, null);
-    }
-
-    public static ImageMetadata getMetadata(InputStream inputStream, String str, Map<String, Object> map) throws IOException, ImageReadException {
-        return getMetadata(new ByteSourceInputStream(inputStream, str), map);
-    }
-
     public static ImageMetadata getMetadata(File file) throws IOException, ImageReadException {
-        return getMetadata(file, (Map<String, Object>) null);
+        return getMetadata(file, null);
     }
 
     public static ImageMetadata getMetadata(File file, Map<String, Object> map) throws IOException, ImageReadException {
@@ -390,6 +298,70 @@ public final class Imaging {
     private static ImageMetadata getMetadata(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
         return getImageParser(byteSource).getMetadata(byteSource, map);
     }
+
+    /* ───────── getImageInfo ───────── */
+
+    public static ImageInfo getImageInfo(InputStream inputStream, String str) throws IOException, ImageReadException {
+        return getImageInfo(inputStream, str, null);
+    }
+
+    public static ImageInfo getImageInfo(InputStream inputStream, String str, Map<String, Object> map) throws IOException, ImageReadException {
+        return getImageInfo(new ByteSourceInputStream(inputStream, str), map);
+    }
+
+    public static ImageInfo getImageInfo(byte[] bArr) throws IOException, ImageReadException {
+        return getImageInfo(bArr, null);
+    }
+
+    public static ImageInfo getImageInfo(byte[] bArr, Map<String, Object> map) throws IOException, ImageReadException {
+        return getImageInfo(new ByteSourceArray(bArr), map);
+    }
+
+    public static ImageInfo getImageInfo(File file) throws IOException, ImageReadException {
+        return getImageInfo(file, null);
+    }
+
+    public static ImageInfo getImageInfo(File file, Map<String, Object> map) throws IOException, ImageReadException {
+        return getImageInfo(new ByteSourceFile(file), map);
+    }
+
+    public static ImageInfo getImageInfo(String str, byte[] bArr) throws IOException, ImageReadException {
+        return getImageInfo(str, bArr, null);
+    }
+
+    public static ImageInfo getImageInfo(String str, byte[] bArr, Map<String, Object> map) throws IOException, ImageReadException {
+        return getImageInfo(new ByteSourceArray(str, bArr), map);
+    }
+
+    private static ImageInfo getImageInfo(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
+        return getImageParser(byteSource).getImageInfo(byteSource, map);
+    }
+
+    /* ───────── getImageParser ───────── */
+
+    private static ImageParser getImageParser(ByteSource byteSource) throws IOException, ImageReadException {
+        ImageFormat imageFormat = guessFormat(byteSource);
+        if (!imageFormat.equals(ImageFormats.UNKNOWN)) {
+            ImageParser[] allImageParsers = ImageParser.getAllImageParsers();
+            for (ImageParser imageParser : allImageParsers) {
+                if (imageParser.canAcceptType(imageFormat)) {
+                    return imageParser;
+                }
+            }
+        }
+        String fileName = byteSource.getFilename();
+        if (fileName != null) {
+            ImageParser[] allImageParsers2 = ImageParser.getAllImageParsers();
+            for (ImageParser imageParser2 : allImageParsers2) {
+                if (imageParser2.canAcceptExtension(fileName)) {
+                    return imageParser2;
+                }
+            }
+        }
+        throw new ImageReadException("Can't parse this format.");
+    }
+
+    /* ───────── dumpImageFile ───────── */
 
     public static String dumpImageFile(byte[] bArr) throws IOException, ImageReadException {
         return dumpImageFile(new ByteSourceArray(bArr));
@@ -403,6 +375,8 @@ public final class Imaging {
         return getImageParser(byteSource).dumpImageFile(byteSource);
     }
 
+    /* ───────── getFormatCompliance ───────── */
+
     public static FormatCompliance getFormatCompliance(byte[] bArr) throws IOException, ImageReadException {
         return getFormatCompliance(new ByteSourceArray(bArr));
     }
@@ -415,7 +389,10 @@ public final class Imaging {
         return getImageParser(byteSource).getFormatCompliance(byteSource);
     }
 
-    public static List<BufferedImage> getAllBufferedImages(InputStream inputStream, String str) throws IOException, ImageReadException {
+    /* ───────── getAllBufferedImages ───────── */
+
+    public static List<BufferedImage> getAllBufferedImages(InputStream inputStream, String str)
+            throws IOException, ImageReadException {
         return getAllBufferedImages(new ByteSourceInputStream(inputStream, str));
     }
 
@@ -427,23 +404,30 @@ public final class Imaging {
         return getAllBufferedImages(new ByteSourceFile(file));
     }
 
-    private static List<BufferedImage> getAllBufferedImages(ByteSource byteSource) throws IOException, ImageReadException {
+    private static List<BufferedImage> getAllBufferedImages(ByteSource byteSource)
+            throws IOException, ImageReadException {
         return getImageParser(byteSource).getAllBufferedImages(byteSource);
     }
+
+    /* ───────── getBufferedImage ───────── */
 
     public static BufferedImage getBufferedImage(InputStream inputStream) throws IOException, ImageReadException {
         return getBufferedImage(inputStream, (Map<String, Object>) null);
     }
 
-    public static BufferedImage getBufferedImage(InputStream inputStream, Map<String, Object> map) throws IOException, ImageReadException {
-        return getBufferedImage(new ByteSourceInputStream(inputStream, (map == null || !map.containsKey("FILENAME")) ? null : (String) map.get("FILENAME")), map);
+    public static BufferedImage getBufferedImage(InputStream inputStream, Map<String, Object> map)
+            throws IOException, ImageReadException {
+        String filename = (map == null || !map.containsKey(ImagingConstants.PARAM_KEY_FILENAME)) ? null
+                : (String) map.get(ImagingConstants.PARAM_KEY_FILENAME);
+        return getBufferedImage(new ByteSourceInputStream(inputStream, filename), map);
     }
 
     public static BufferedImage getBufferedImage(byte[] bArr) throws IOException, ImageReadException {
         return getBufferedImage(new ByteSourceArray(bArr), (Map<String, Object>) null);
     }
 
-    public static BufferedImage getBufferedImage(byte[] bArr, Map<String, Object> map) throws IOException, ImageReadException {
+    public static BufferedImage getBufferedImage(byte[] bArr, Map<String, Object> map)
+            throws IOException, ImageReadException {
         return getBufferedImage(new ByteSourceArray(bArr), map);
     }
 
@@ -451,11 +435,13 @@ public final class Imaging {
         return getBufferedImage(new ByteSourceFile(file), (Map<String, Object>) null);
     }
 
-    public static BufferedImage getBufferedImage(File file, Map<String, Object> map) throws IOException, ImageReadException {
+    public static BufferedImage getBufferedImage(File file, Map<String, Object> map)
+            throws IOException, ImageReadException {
         return getBufferedImage(new ByteSourceFile(file), map);
     }
 
-    private static BufferedImage getBufferedImage(ByteSource byteSource, Map<String, Object> map) throws Throwable {
+    private static BufferedImage getBufferedImage(ByteSource byteSource, Map<String, Object> map)
+            throws IOException, ImageReadException {
         ImageParser imageParser = getImageParser(byteSource);
         if (map == null) {
             map = new HashMap<>();
@@ -463,55 +449,61 @@ public final class Imaging {
         return imageParser.getBufferedImage(byteSource, map);
     }
 
-    public static void writeImage(BufferedImage bufferedImage, File file, ImageFormat imageFormat, Map<String, Object> map) throws Throwable {
-        OutputStream bufferedOutputStream = null;
-        try {
-            OutputStream fileOutputStream = new FileOutputStream(file);
-            try {
-                bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
-                writeImage(bufferedImage, bufferedOutputStream, imageFormat, map);
-                IoUtils.closeQuietly(true, bufferedOutputStream);
-            } catch (Throwable th) {
-                th = th;
-                bufferedOutputStream = fileOutputStream;
-                IoUtils.closeQuietly(false, bufferedOutputStream);
-                throw th;
-            }
-        } catch (Throwable th2) {
-            th = th2;
+    /* ───────── writeImage ───────── */
+
+    public static void writeImage(BufferedImage bufferedImage, File file, ImageFormat imageFormat,
+            Map<String, Object> map) throws IOException, ImageWriteException {
+        try (OutputStream os = new BufferedOutputStream(new FileOutputStream(file))) {
+            writeImage(bufferedImage, os, imageFormat, map);
         }
     }
 
-    public static byte[] writeImageToBytes(BufferedImage bufferedImage, ImageFormat imageFormat, Map<String, Object> map) throws ImageWriteException, IOException {
+    public static byte[] writeImageToBytes(BufferedImage bufferedImage, ImageFormat imageFormat,
+            Map<String, Object> map) throws ImageWriteException, IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         writeImage(bufferedImage, byteArrayOutputStream, imageFormat, map);
         return byteArrayOutputStream.toByteArray();
     }
 
-    public static void writeImage(BufferedImage bufferedImage, OutputStream outputStream, ImageFormat imageFormat, Map<String, Object> map) throws ImageWriteException, IOException {
+    public static void writeImage(BufferedImage bufferedImage, OutputStream outputStream, ImageFormat imageFormat,
+            Map<String, Object> map) throws ImageWriteException, IOException {
         ImageParser[] allImageParsers = ImageParser.getAllImageParsers();
         if (map == null) {
             map = new HashMap<>();
         }
-        map.put("FORMAT", imageFormat);
-        ImageParser imageParser = null;
-        int length = allImageParsers.length;
-        int i = 0;
-        while (true) {
-            if (i >= length) {
-                break;
+        map.put(ImagingConstants.PARAM_KEY_FORMAT, imageFormat);
+        for (ImageParser imageParser : allImageParsers) {
+            if (imageParser.canAcceptType(imageFormat)) {
+                imageParser.writeImage(bufferedImage, outputStream, map);
+                return;
             }
-            ImageParser imageParser2 = allImageParsers[i];
-            if (imageParser2.canAcceptType(imageFormat)) {
-                imageParser = imageParser2;
-                break;
-            }
-            i++;
-        }
-        if (imageParser != null) {
-            imageParser.writeImage(bufferedImage, outputStream, map);
-            return;
         }
         throw new ImageWriteException("Unknown Format: " + imageFormat);
+    }
+
+    /* ───────── hasImageFileExtension ───────── */
+
+    public static boolean hasImageFileExtension(File file) {
+        if (file == null || !file.isFile()) {
+            return false;
+        }
+        return hasImageFileExtension(file.getName());
+    }
+
+    public static boolean hasImageFileExtension(String fileName) {
+        if (fileName == null) {
+            return false;
+        }
+        fileName = fileName.toLowerCase(Locale.ENGLISH);
+        ImageParser[] allImageParsers = ImageParser.getAllImageParsers();
+        for (ImageParser imageParser : allImageParsers) {
+            String[] acceptedExtensions = imageParser.getAcceptedExtensions();
+            for (String extension : acceptedExtensions) {
+                if (fileName.endsWith(extension.toLowerCase(Locale.ENGLISH))) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

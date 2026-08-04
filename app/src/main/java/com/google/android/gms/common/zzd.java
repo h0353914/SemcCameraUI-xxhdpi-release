@@ -2,10 +2,11 @@ package com.google.android.gms.common;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager$NameNotFoundException;
 import android.util.Base64;
 import android.util.Log;
+import com.google.android.gms.common.zzc;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzd {
     private static final zzd zzaas = new zzd();
 
@@ -17,12 +18,12 @@ public class zzd {
             Log.w("GoogleSignatureVerifier", "Package has more than one signature.");
             return false;
         }
-        zzc$zzb zzc_zzb = new zzc$zzb(packageInfo.signatures[0].toByteArray());
-        if ((z ? zzc.zznp() : zzc.zznq()).contains(zzc_zzb)) {
+        zzc.zzb zzbVar = new zzc.zzb(packageInfo.signatures[0].toByteArray());
+        if ((z ? zzc.zznp() : zzc.zznq()).contains(zzbVar)) {
             return true;
         }
         if (Log.isLoggable("GoogleSignatureVerifier", 2)) {
-            Log.v("GoogleSignatureVerifier", "Signature not valid.  Found: \n" + Base64.encodeToString(zzc_zzb.getBytes(), 0));
+            Log.v("GoogleSignatureVerifier", "Signature not valid.  Found: \n" + Base64.encodeToString(zzbVar.getBytes(), 0));
         }
         return false;
     }
@@ -31,19 +32,19 @@ public class zzd {
         return zzaas;
     }
 
-    zzc$zza zza(PackageInfo packageInfo, zzc$zza... zzc_zzaArr) {
+    zzc.zza zza(PackageInfo packageInfo, zzc.zza... zzaVarArr) {
         if (packageInfo.signatures.length != 1) {
             Log.w("GoogleSignatureVerifier", "Package has more than one signature.");
             return null;
         }
-        zzc$zzb zzc_zzb = new zzc$zzb(packageInfo.signatures[0].toByteArray());
-        for (int i = 0; i < zzc_zzaArr.length; i++) {
-            if (zzc_zzaArr[i].equals(zzc_zzb)) {
-                return zzc_zzaArr[i];
+        zzc.zzb zzbVar = new zzc.zzb(packageInfo.signatures[0].toByteArray());
+        for (int i = 0; i < zzaVarArr.length; i++) {
+            if (zzaVarArr[i].equals(zzbVar)) {
+                return zzaVarArr[i];
             }
         }
         if (Log.isLoggable("GoogleSignatureVerifier", 2)) {
-            Log.v("GoogleSignatureVerifier", "Signature not valid.  Found: \n" + Base64.encodeToString(zzc_zzb.getBytes(), 0));
+            Log.v("GoogleSignatureVerifier", "Signature not valid.  Found: \n" + Base64.encodeToString(zzbVar.getBytes(), 0));
         }
         return null;
     }
@@ -65,7 +66,7 @@ public class zzd {
     public boolean zzb(PackageManager packageManager, String str) {
         try {
             return zza(packageManager, packageManager.getPackageInfo(str, 64));
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             if (!Log.isLoggable("GoogleSignatureVerifier", 3)) {
                 return false;
             }

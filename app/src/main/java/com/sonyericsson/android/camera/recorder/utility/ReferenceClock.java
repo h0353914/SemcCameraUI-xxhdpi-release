@@ -9,25 +9,17 @@ public class ReferenceClock {
     private long mElapsedTimeOffsetMillis;
     private long mInitialUptimeMillis;
     private boolean mIsMeasuring;
-    private final ReferenceClock$TickCallback mTickCallback;
-    private final ReferenceClock$TickEvent mTickEvent;
+    private final TickCallback mTickCallback;
+    private final TickEvent mTickEvent;
     private final Handler mTickHandler;
     private final long mTickInterval;
 
-    static /* synthetic */ ReferenceClock$TickCallback access$100(ReferenceClock referenceClock) {
-        return referenceClock.mTickCallback;
-    }
-
-    static /* synthetic */ long access$200(ReferenceClock referenceClock) {
-        return referenceClock.now();
-    }
-
-    static /* synthetic */ void access$300(ReferenceClock referenceClock, long j) {
-        referenceClock.scheduleNextTickEvent(j);
+    public interface TickCallback {
+        void onTick(long j);
     }
 
     public ReferenceClock() {
-        this.mTickEvent = new ReferenceClock$TickEvent(this, null);
+        this.mTickEvent = new TickEvent();
         this.mElapsedTimeOffsetMillis = 0L;
         this.mInitialUptimeMillis = 0L;
         this.mTickHandler = null;
@@ -36,12 +28,12 @@ public class ReferenceClock {
         this.mIsMeasuring = false;
     }
 
-    public ReferenceClock(Handler handler, ReferenceClock$TickCallback referenceClock$TickCallback, long j) {
-        this.mTickEvent = new ReferenceClock$TickEvent(this, null);
+    public ReferenceClock(Handler handler, TickCallback tickCallback, long j) {
+        this.mTickEvent = new TickEvent();
         this.mElapsedTimeOffsetMillis = 0L;
         this.mInitialUptimeMillis = 0L;
         this.mTickHandler = handler;
-        this.mTickCallback = referenceClock$TickCallback;
+        this.mTickCallback = tickCallback;
         this.mTickInterval = j;
         this.mIsMeasuring = false;
         if (this.mTickInterval <= 0) {
@@ -113,6 +105,7 @@ public class ReferenceClock {
         return z;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private long now() {
         return SystemClock.uptimeMillis();
     }
@@ -134,6 +127,7 @@ public class ReferenceClock {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void scheduleNextTickEvent(long j) {
         if (this.mTickHandler != null) {
             synchronized (this) {
@@ -149,6 +143,53 @@ public class ReferenceClock {
     private void cancelTickEvent() {
         if (this.mTickHandler != null) {
             this.mTickHandler.removeCallbacks(this.mTickEvent);
+        }
+    }
+
+    private class TickEvent implements Runnable {
+        public long requestElapsedTime;
+
+        private TickEvent() {
+            this.requestElapsedTime = 0L;
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+
+
+            ReferenceClock.this.mTickCallback.onTick(this.requestElapsedTime);
+            ReferenceClock.this.scheduleNextTickEvent(ReferenceClock.this.now());
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private class NotifyTickEvent implements Runnable {
+        public final long requestElapsedTime;
+
+        public NotifyTickEvent(long j) {
+            this.requestElapsedTime = j;
+        }
+
+
+
+        @Override // java.lang.Runnable
+        public void run() {
+            ReferenceClock.this.mTickCallback.onTick(this.requestElapsedTime);
         }
     }
 }

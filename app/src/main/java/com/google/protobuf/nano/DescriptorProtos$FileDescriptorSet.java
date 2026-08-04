@@ -5,12 +5,6 @@ import java.io.IOException;
 public final class DescriptorProtos$FileDescriptorSet extends ExtendableMessageNano<DescriptorProtos$FileDescriptorSet> {
     private static volatile DescriptorProtos$FileDescriptorSet[] _emptyArray;
     public DescriptorProtos$FileDescriptorProto[] file;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$FileDescriptorSet[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

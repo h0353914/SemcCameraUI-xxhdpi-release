@@ -1,9 +1,9 @@
 package com.sonyericsson.android.camera.util;
 
+import android.support.v4.media.session.PlaybackStateCompat;
 import com.sonyericsson.android.camera.configuration.Configurations;
 import com.sonyericsson.android.camera.recorder.RecordingProfile;
 import com.sonyericsson.cameracommon.storage.Storage;
-import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import com.sonyericsson.cameracommon.utility.RecordingUtil;
 
 public class MaxVideoSize {
@@ -35,7 +35,7 @@ public class MaxVideoSize {
     }
 
     private static long getDurationFromSizeInMillis(RecordingProfile recordingProfile, long j) {
-        long j2 = (recordingProfile.averageFileSize * 1024) / 60;
+        long j2 = (recordingProfile.averageFileSize * PlaybackStateCompat.ACTION_PLAY_FROM_MEDIA_ID) / 60;
         long jFloor = (long) Math.floor(j / j2);
         if (CamLog.VERBOSE) {
             CamLog.d("sizePerSecond(Byte): " + j2);
@@ -44,8 +44,8 @@ public class MaxVideoSize {
         return jFloor * 1000;
     }
 
-    public static MaxVideoSize create(Configurations configurations, RecordingProfile recordingProfile, Storage storage, Storage$StorageType storage$StorageType) {
-        long jMin = Math.min(RecordingUtil.getRecordableSizeKBytes(storage, storage$StorageType), 256000000L);
+    public static MaxVideoSize create(Configurations configurations, RecordingProfile recordingProfile, Storage storage, Storage.StorageType storageType) {
+        long jMin = Math.min(RecordingUtil.getRecordableSizeKBytes(storage, storageType), 256000000L);
         MaxVideoSize maxVideoSizeCreateMaxVideoSize = createMaxVideoSize(configurations, recordingProfile, jMin);
         if (CamLog.VERBOSE) {
             CamLog.d("Recordable storage size(kbytes): " + jMin);
@@ -73,13 +73,13 @@ public class MaxVideoSize {
             CamLog.d("Config Max size: " + videoMaxFileSizeInBytes);
         }
         if (videoMaxFileSizeInBytes <= 0 && videoMaxDurationInMillisecs <= 0) {
-            maxVideoSize.setMaxDurationMillis(21600000L);
+            maxVideoSize.setMaxDurationMillis(MAX_RECORDING_DURATION_IN_MILLIS);
             maxVideoSize.setMaxFileSizeBytes(j2);
         }
         if (videoMaxFileSizeInBytes > 0 || videoMaxDurationInMillisecs <= 0) {
             jMin = 21600000;
         } else {
-            jMin = Math.min(videoMaxDurationInMillisecs, 21600000L);
+            jMin = Math.min(videoMaxDurationInMillisecs, MAX_RECORDING_DURATION_IN_MILLIS);
             maxVideoSize.setMaxDurationMillis(jMin);
             maxVideoSize.setMaxFileSizeBytes(j2);
         }
@@ -88,7 +88,7 @@ public class MaxVideoSize {
             maxVideoSize.setMaxFileSizeBytes(Math.min(videoMaxFileSizeInBytes, j2));
         }
         if (videoMaxFileSizeInBytes > 0 && videoMaxDurationInMillisecs > 0) {
-            maxVideoSize.setMaxDurationMillis(Math.min(Math.min(videoMaxDurationInMillisecs, 21600000L), getDurationFromSizeInMillis(recordingProfile, videoMaxFileSizeInBytes)));
+            maxVideoSize.setMaxDurationMillis(Math.min(Math.min(videoMaxDurationInMillisecs, MAX_RECORDING_DURATION_IN_MILLIS), getDurationFromSizeInMillis(recordingProfile, videoMaxFileSizeInBytes)));
             maxVideoSize.setMaxFileSizeBytes(Math.min(videoMaxFileSizeInBytes, j2));
         }
         return maxVideoSize;
@@ -96,7 +96,7 @@ public class MaxVideoSize {
 
     private static MaxVideoSize createQualityLowMaxVideoSize(Configurations configurations, RecordingProfile recordingProfile, long j) {
         MaxVideoSize maxVideoSize = new MaxVideoSize();
-        long j2 = 1024 * j;
+        long j2 = PlaybackStateCompat.ACTION_PLAY_FROM_MEDIA_ID * j;
         long videoMaxFileSizeInBytes = configurations.getVideoMaxFileSizeInBytes();
         if (CamLog.VERBOSE) {
             CamLog.d("Max size: " + j2);
@@ -120,9 +120,9 @@ public class MaxVideoSize {
         }
         if (CamLog.VERBOSE) {
             CamLog.d("Quality Low Max duration: 2147483647");
-            CamLog.d("Quality Low Max size: 300000");
+            CamLog.d("Quality Low Max size: " + QUALITY_LOW_MAX_FILE_SIZE);
         }
-        maxVideoSize.setMaxFileSizeBytes(Math.min(300000L, maxVideoSize.getMaxFileSize()));
+        maxVideoSize.setMaxFileSizeBytes(Math.min(QUALITY_LOW_MAX_FILE_SIZE, maxVideoSize.getMaxFileSize()));
         long durationFromSizeInMillis = getDurationFromSizeInMillis(recordingProfile, maxVideoSize.getMaxFileSize());
         if (videoMaxDurationInMillisecs > 0) {
             durationFromSizeInMillis = Math.min(videoMaxDurationInMillisecs, durationFromSizeInMillis);

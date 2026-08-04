@@ -27,7 +27,7 @@ class PngCrc {
             make_crc_table();
         }
         for (byte b : bArr) {
-            j = (j >> 8) ^ this.crc_table[(int) ((((long) b) ^ j) & 255)];
+            j = (j >> 8) ^ this.crc_table[(int) ((b ^ j) & 255)];
         }
         return j;
     }

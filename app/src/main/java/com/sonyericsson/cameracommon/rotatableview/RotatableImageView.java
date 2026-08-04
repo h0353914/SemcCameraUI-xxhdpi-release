@@ -5,9 +5,8 @@ import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.AttributeSet;
-import android.view.ViewGroup$LayoutParams;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ImageView$ScaleType;
 
 public class RotatableImageView extends ImageView {
     public static final String TAG = "RotatableImageView";
@@ -24,7 +23,7 @@ public class RotatableImageView extends ImageView {
         this.mWidth = 0;
         this.mHeight = 0;
         this.mPrepared = false;
-        setScaleType(ImageView$ScaleType.MATRIX);
+        setScaleType(ImageView.ScaleType.MATRIX);
     }
 
     public RotatableImageView(Context context, AttributeSet attributeSet) {
@@ -34,7 +33,7 @@ public class RotatableImageView extends ImageView {
         this.mWidth = 0;
         this.mHeight = 0;
         this.mPrepared = false;
-        setScaleType(ImageView$ScaleType.MATRIX);
+        setScaleType(ImageView.ScaleType.MATRIX);
     }
 
     public RotatableImageView(Context context, AttributeSet attributeSet, int i) {
@@ -44,7 +43,7 @@ public class RotatableImageView extends ImageView {
         this.mWidth = 0;
         this.mHeight = 0;
         this.mPrepared = false;
-        setScaleType(ImageView$ScaleType.MATRIX);
+        setScaleType(ImageView.ScaleType.MATRIX);
     }
 
     public void setWidthHeight(int i, int i2) {
@@ -99,7 +98,7 @@ public class RotatableImageView extends ImageView {
                 i2 = this.mHeight;
             }
             setImageMatrix(matrix);
-            ViewGroup$LayoutParams layoutParams = getLayoutParams();
+            ViewGroup.LayoutParams layoutParams = getLayoutParams();
             layoutParams.height = i2;
             layoutParams.width = i;
             setLayoutParams(layoutParams);

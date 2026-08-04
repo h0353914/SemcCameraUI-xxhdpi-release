@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.psd.dataparsers;
 
+import android.support.v4.view.ViewCompat;
 import org.apache.commons.imaging.formats.psd.ImageContents;
 
 public class DataParserRgb extends DataParser {
@@ -12,6 +13,6 @@ public class DataParserRgb extends DataParser {
     protected int getRGB(int[][][] iArr, int i, int i2, ImageContents imageContents) {
         int i3 = iArr[0][i2][i] & 255;
         int i4 = iArr[1][i2][i] & 255;
-        return (((iArr[2][i2][i] & 255) & 255) << 0) | ((255 & i3) << 16) | (-16777216) | ((255 & i4) << 8);
+        return (((iArr[2][i2][i] & 255) & 255) << 0) | ((255 & i3) << 16) | ViewCompat.MEASURED_STATE_MASK | ((255 & i4) << 8);
     }
 }

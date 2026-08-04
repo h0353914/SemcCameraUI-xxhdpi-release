@@ -1,3 +1,34 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.parameter.dependency;
 
 import android.support.annotation.NonNull;
@@ -27,32 +58,32 @@ public abstract class DependencyApplier {
 
     @Nullable
     public static DependencyApplier create(@NonNull UserSettingValue userSettingValue) {
-        switch (DependencyApplier$1.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingValue.getKey().ordinal()]) {
-            case 1:
+        switch (userSettingValue.getKey()) {
+            case HDR:
                 return new HdrApplier((Hdr) userSettingValue);
-            case 2:
+            case ISO:
                 return new IsoApplier((Iso) userSettingValue);
-            case 3:
+            case SHUTTER_TRIGGER:
                 return new ShutterTriggerApplier((ShutterTrigger) userSettingValue);
-            case 4:
+            case VIDEO_SHUTTER_TRIGGER:
                 return new VideoShutterTriggerApplier((VideoShutterTrigger) userSettingValue);
-            case 5:
+            case FOCUS_MODE:
                 return new FocusModeApplier((FocusMode) userSettingValue);
-            case 6:
+            case OBJECT_TRACKING:
                 return new ObjectTrackingApplier((ObjectTracking) userSettingValue);
-            case 7:
+            case VIDEO_SIZE:
                 return new VideoSizeApplier((VideoSize) userSettingValue);
-            case 8:
+            case RESOLUTION:
                 return new ResolutionApplier((Resolution) userSettingValue);
-            case 9:
+            case SHUTTER_SPEED:
                 return new ShutterSpeedApplier((ShutterSpeed) userSettingValue);
-            case 10:
+            case TOUCH_INTENTION:
                 return new TouchIntentionApplier((TouchIntention) userSettingValue);
-            case 11:
+            case VIDEO_HDR:
                 return new VideoHdrApplier((VideoHdr) userSettingValue);
-            case 12:
+            case FUSION_MODE:
                 return new FusionModeApplier((FusionMode) userSettingValue);
-            case 13:
+            case ASPECT_RATIO:
                 return new AspectRatioApplier((AspectRatio) userSettingValue);
             default:
                 return null;

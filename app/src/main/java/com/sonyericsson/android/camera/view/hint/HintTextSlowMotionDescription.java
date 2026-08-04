@@ -1,14 +1,14 @@
 package com.sonyericsson.android.camera.view.hint;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController;
-import com.sonyericsson.android.camera.view.tutorial.TutorialController$TutorialType;
 
 public abstract class HintTextSlowMotionDescription extends HintTextContent {
     private static final long HINT_TIMEOUT_MILLIS = 10000;
     private final String mDescription;
     private final int mNameId;
     private final TutorialController mTutorial;
-    private final TutorialController$TutorialType mTutorialType;
+    private final TutorialController.TutorialType mTutorialType;
 
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
     public int getButtonDescriptionResourceId() {
@@ -17,7 +17,7 @@ public abstract class HintTextSlowMotionDescription extends HintTextContent {
 
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
     public int getButtonMessageResourceId() {
-        return 2131689704;
+        return R.string.cam_strings_cooling_mode_learn_more_txt;
     }
 
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
@@ -27,17 +27,17 @@ public abstract class HintTextSlowMotionDescription extends HintTextContent {
 
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
     public long getTimedOutDuration() {
-        return 10000L;
+        return HINT_TIMEOUT_MILLIS;
     }
 
-    public HintTextSlowMotionDescription(TutorialController tutorialController, TutorialController$TutorialType tutorialController$TutorialType, int i, String str) {
+    public HintTextSlowMotionDescription(TutorialController tutorialController, TutorialController.TutorialType tutorialType, int i, String str) {
         this.mTutorial = tutorialController;
-        this.mTutorialType = tutorialController$TutorialType;
+        this.mTutorialType = tutorialType;
         this.mNameId = i;
         this.mDescription = str;
     }
 
-    public TutorialController$TutorialType getTutorialType() {
+    public TutorialController.TutorialType getTutorialType() {
         return this.mTutorialType;
     }
 

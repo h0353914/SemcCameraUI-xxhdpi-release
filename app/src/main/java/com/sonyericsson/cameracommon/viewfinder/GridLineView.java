@@ -4,7 +4,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
-import android.view.ViewGroup$LayoutParams;
+import android.view.ViewGroup;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
 
 public class GridLineView extends View {
@@ -24,8 +25,8 @@ public class GridLineView extends View {
         this.mViewHeight = 0;
         this.mPaint = new Paint();
         this.mIsGridLineEnabled = false;
-        this.mPaint.setColor(getResources().getColor(2131099712, null));
-        this.mPaint.setStrokeWidth(getResources().getDimensionPixelSize(2131165736));
+        this.mPaint.setColor(getResources().getColor(R.color.gridline_color, null));
+        this.mPaint.setStrokeWidth(getResources().getDimensionPixelSize(R.dimen.viewfinder_grid_line_width));
     }
 
     public void setViewSize(int i, int i2) {
@@ -41,7 +42,7 @@ public class GridLineView extends View {
         this.mRightVerticalLinePositionX = (this.mViewWidth * 2) / 3.0f;
         this.mTopHorizontalLinePositionY = this.mViewHeight / 3.0f;
         this.mBottomHorizontalLinePositionY = (this.mViewHeight * 2) / 3.0f;
-        ViewGroup$LayoutParams layoutParams = getLayoutParams();
+        ViewGroup.LayoutParams layoutParams = getLayoutParams();
         if (layoutParams != null) {
             layoutParams.width = i;
             layoutParams.height = i2;

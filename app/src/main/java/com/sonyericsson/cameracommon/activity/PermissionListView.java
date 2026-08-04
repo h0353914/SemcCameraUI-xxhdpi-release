@@ -1,8 +1,9 @@
 package com.sonyericsson.cameracommon.activity;
 
 import android.content.Context;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
-import android.view.View$MeasureSpec;
+import android.view.View;
 import android.widget.ListView;
 
 public class PermissionListView extends ListView {
@@ -20,7 +21,7 @@ public class PermissionListView extends ListView {
 
     @Override // android.widget.ListView, android.widget.AbsListView, android.view.View
     protected void onMeasure(int i, int i2) {
-        super.onMeasure(i, View$MeasureSpec.makeMeasureSpec(16777215, Integer.MIN_VALUE));
+        super.onMeasure(i, View.MeasureSpec.makeMeasureSpec(ViewCompat.MEASURED_SIZE_MASK, Integer.MIN_VALUE));
         getLayoutParams().height = getMeasuredHeight();
     }
 }

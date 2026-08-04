@@ -1,12 +1,14 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
 import android.content.Context;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
+import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
 public enum SoftSkin implements UserSettingValue {
-    ON(-1, 2131690116, 0.5f),
-    OFF(-1, 2131690115, 0.0f);
+    ON(-1, R.string.cam_strings_settings_on_txt, 0.5f),
+    OFF(-1, R.string.cam_strings_settings_off_txt, 0.0f);
 
     public static final String TAG = "SoftSkin";
     private static final int sParameterTextId = 2131690167;
@@ -20,7 +22,7 @@ public enum SoftSkin implements UserSettingValue {
     }
 
     public int getParameterkeyTitleTextId() {
-        return 2131690168;
+        return R.string.cam_strings_soft_skin_effect_title_cy_txt;
     }
 
     SoftSkin(int i, int i2, float f) {
@@ -75,7 +77,7 @@ public enum SoftSkin implements UserSettingValue {
 
     public static SoftSkin getDefaultValue(Context context, CapturingMode capturingMode) {
         if (capturingMode.isFront()) {
-            return valueOf(context.getResources().getString(2131690316));
+            return valueOf(context.getResources().getString(R.string.default_frontcamera_softskin_setting));
         }
         return ON;
     }

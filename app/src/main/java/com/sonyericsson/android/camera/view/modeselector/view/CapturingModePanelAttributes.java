@@ -1,50 +1,14 @@
 package com.sonyericsson.android.camera.view.modeselector.view;
 
-public class CapturingModePanelAttributes implements AbsPanelView$PanelAttributes {
+import com.sonyericsson.android.camera.view.modeselector.view.AbsPanelView;
+
+public class CapturingModePanelAttributes implements AbsPanelView.PanelAttributes {
     private String mActivityName;
     private String mDescription;
     private String mIconUri;
     private String mModeName;
     private String mPackageName;
     private String mTitle;
-
-    /* synthetic */ CapturingModePanelAttributes(CapturingModePanelAttributes$1 capturingModePanelAttributes$1) {
-        this();
-    }
-
-    /* synthetic */ CapturingModePanelAttributes(CapturingModePanelAttributes capturingModePanelAttributes, CapturingModePanelAttributes$1 capturingModePanelAttributes$1) {
-        this(capturingModePanelAttributes);
-    }
-
-    static /* synthetic */ String access$102(CapturingModePanelAttributes capturingModePanelAttributes, String str) {
-        capturingModePanelAttributes.mPackageName = str;
-        return str;
-    }
-
-    static /* synthetic */ String access$202(CapturingModePanelAttributes capturingModePanelAttributes, String str) {
-        capturingModePanelAttributes.mActivityName = str;
-        return str;
-    }
-
-    static /* synthetic */ String access$302(CapturingModePanelAttributes capturingModePanelAttributes, String str) {
-        capturingModePanelAttributes.mModeName = str;
-        return str;
-    }
-
-    static /* synthetic */ String access$402(CapturingModePanelAttributes capturingModePanelAttributes, String str) {
-        capturingModePanelAttributes.mIconUri = str;
-        return str;
-    }
-
-    static /* synthetic */ String access$502(CapturingModePanelAttributes capturingModePanelAttributes, String str) {
-        capturingModePanelAttributes.mTitle = str;
-        return str;
-    }
-
-    static /* synthetic */ String access$602(CapturingModePanelAttributes capturingModePanelAttributes, String str) {
-        capturingModePanelAttributes.mDescription = str;
-        return str;
-    }
 
     private CapturingModePanelAttributes() {
     }
@@ -70,12 +34,12 @@ public class CapturingModePanelAttributes implements AbsPanelView$PanelAttribute
         return this.mModeName;
     }
 
-    @Override // com.sonyericsson.android.camera.view.modeselector.view.AbsPanelView$PanelAttributes
+    @Override // com.sonyericsson.android.camera.view.modeselector.view.AbsPanelView.PanelAttributes
     public String getIconUri() {
         return this.mIconUri;
     }
 
-    @Override // com.sonyericsson.android.camera.view.modeselector.view.AbsPanelView$PanelAttributes
+    @Override // com.sonyericsson.android.camera.view.modeselector.view.AbsPanelView.PanelAttributes
     public String getTitle() {
         return this.mTitle;
     }
@@ -115,5 +79,43 @@ public class CapturingModePanelAttributes implements AbsPanelView$PanelAttribute
             return false;
         }
         return true;
+    }
+
+    public static class AttributesBuilder {
+        CapturingModePanelAttributes mAttributes = new CapturingModePanelAttributes();
+
+        public AttributesBuilder setPackageName(String str) {
+            this.mAttributes.mPackageName = str;
+            return this;
+        }
+
+        public AttributesBuilder setActivityName(String str) {
+            this.mAttributes.mActivityName = str;
+            return this;
+        }
+
+        public AttributesBuilder setModeName(String str) {
+            this.mAttributes.mModeName = str;
+            return this;
+        }
+
+        public AttributesBuilder setIconUri(String str) {
+            this.mAttributes.mIconUri = str;
+            return this;
+        }
+
+        public AttributesBuilder setTitle(String str) {
+            this.mAttributes.mTitle = str;
+            return this;
+        }
+
+        public AttributesBuilder setDescription(String str) {
+            this.mAttributes.mDescription = str;
+            return this;
+        }
+
+        public CapturingModePanelAttributes build() {
+            return new CapturingModePanelAttributes(this.mAttributes);
+        }
     }
 }

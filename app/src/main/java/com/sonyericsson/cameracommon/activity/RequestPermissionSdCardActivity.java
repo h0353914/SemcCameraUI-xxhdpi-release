@@ -9,6 +9,7 @@ import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
 import android.provider.DocumentsContract;
 import android.text.TextUtils;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.io.File;
 
@@ -25,8 +26,8 @@ public class RequestPermissionSdCardActivity extends Activity {
             CamLog.d("onCreate() start");
         }
         super.onCreate(bundle);
-        setContentView(2131492892);
-        String stringExtra = getIntent().getStringExtra("extra_key_uuid");
+        setContentView(R.layout.activity_request_permission);
+        String stringExtra = getIntent().getStringExtra(EXTRA_UUID);
         if (!TextUtils.isEmpty(stringExtra)) {
             requestPermissionSdCard(stringExtra);
         } else {
@@ -45,7 +46,7 @@ public class RequestPermissionSdCardActivity extends Activity {
     private void requestPermissionSdCard(String str) {
         for (StorageVolume storageVolume : ((StorageManager) getSystemService("storage")).getStorageVolumes()) {
             if (storageVolume != null && storageVolume.isRemovable() && storageVolume.getUuid().equals(str)) {
-                startActivityForResult(new Intent("android.intent.action.OPEN_DOCUMENT_TREE").putExtra("android.provider.extra.INITIAL_URI", DocumentsContract.buildRootUri("com.android.externalstorage.documents", str)).putExtra("android.provider.extra.SHOW_ADVANCED", true), 256);
+                startActivityForResult(new Intent("android.intent.action.OPEN_DOCUMENT_TREE").putExtra("android.provider.extra.INITIAL_URI", DocumentsContract.buildRootUri(EXTERNAL_STORAGE_PROVIDER_AUTHORITY, str)).putExtra(EXTRA_SHOW_ADVANCED, true), 256);
                 return;
             }
         }
@@ -74,11 +75,12 @@ public class RequestPermissionSdCardActivity extends Activity {
         switch (i2) {
             case -1:
                 Uri data = intent.getData();
-                String stringExtra = getIntent().getStringExtra("extra_key_uuid");
+                String stringExtra = getIntent().getStringExtra(EXTRA_UUID);
                 File file = new File(data.getPath());
                 if (!file.getName().equals(stringExtra + ":")) {
                     if (!file.getName().equals(stringExtra + ":" + Environment.DIRECTORY_DCIM)) {
                         finish(0);
+                        break;
                     }
                 }
                 getContentResolver().takePersistableUriPermission(data, intent.getFlags() & 3);

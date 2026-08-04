@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.png;
 
+import android.support.v4.view.ViewCompat;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -56,15 +57,15 @@ abstract class ScanExpediter {
     }
 
     protected int getRGB(BitParser bitParser, int i) throws IOException, ImageReadException {
-        switch (ScanExpediter$1.$SwitchMap$org$apache$commons$imaging$formats$png$PngColorType[this.pngColorType.ordinal()]) {
-            case 1:
+        switch (this.pngColorType) {
+            case GREYSCALE:
                 int sampleAsByte = bitParser.getSampleAsByte(i, 0);
                 if (this.gammaCorrection != null) {
                     sampleAsByte = this.gammaCorrection.correctSample(sampleAsByte);
                 }
                 int pixelRGB = getPixelRGB(sampleAsByte, sampleAsByte, sampleAsByte);
                 return this.transparencyFilter != null ? this.transparencyFilter.filter(pixelRGB, sampleAsByte) : pixelRGB;
-            case 2:
+            case TRUE_COLOR:
                 int sampleAsByte2 = bitParser.getSampleAsByte(i, 0);
                 int sampleAsByte3 = bitParser.getSampleAsByte(i, 1);
                 int sampleAsByte4 = bitParser.getSampleAsByte(i, 2);
@@ -72,19 +73,19 @@ abstract class ScanExpediter {
                 if (this.transparencyFilter != null) {
                     pixelRGB2 = this.transparencyFilter.filter(pixelRGB2, -1);
                 }
-                return this.gammaCorrection != null ? getPixelARGB((pixelRGB2 & (-16777216)) >> 24, this.gammaCorrection.correctSample(sampleAsByte2), this.gammaCorrection.correctSample(sampleAsByte3), this.gammaCorrection.correctSample(sampleAsByte4)) : pixelRGB2;
-            case 3:
+                return this.gammaCorrection != null ? getPixelARGB((pixelRGB2 & ViewCompat.MEASURED_STATE_MASK) >> 24, this.gammaCorrection.correctSample(sampleAsByte2), this.gammaCorrection.correctSample(sampleAsByte3), this.gammaCorrection.correctSample(sampleAsByte4)) : pixelRGB2;
+            case INDEXED_COLOR:
                 int sample = bitParser.getSample(i, 0);
                 int rgb = this.pngChunkPLTE.getRGB(sample);
                 return this.transparencyFilter != null ? this.transparencyFilter.filter(rgb, sample) : rgb;
-            case 4:
+            case GREYSCALE_WITH_ALPHA:
                 int sampleAsByte5 = bitParser.getSampleAsByte(i, 0);
                 int sampleAsByte6 = bitParser.getSampleAsByte(i, 1);
                 if (this.gammaCorrection != null) {
                     sampleAsByte5 = this.gammaCorrection.correctSample(sampleAsByte5);
                 }
                 return getPixelARGB(sampleAsByte6, sampleAsByte5, sampleAsByte5, sampleAsByte5);
-            case 5:
+            case TRUE_COLOR_WITH_ALPHA:
                 int sampleAsByte7 = bitParser.getSampleAsByte(i, 0);
                 int sampleAsByte8 = bitParser.getSampleAsByte(i, 1);
                 int sampleAsByte9 = bitParser.getSampleAsByte(i, 2);
@@ -101,16 +102,16 @@ abstract class ScanExpediter {
     }
 
     protected ScanlineFilter getScanlineFilter(FilterType filterType, int i) throws ImageReadException {
-        switch (ScanExpediter$1.$SwitchMap$org$apache$commons$imaging$formats$png$FilterType[filterType.ordinal()]) {
-            case 1:
+        switch (filterType) {
+            case NONE:
                 return new ScanlineFilterNone();
-            case 2:
+            case SUB:
                 return new ScanlineFilterSub(i);
-            case 3:
+            case UP:
                 return new ScanlineFilterUp();
-            case 4:
+            case AVERAGE:
                 return new ScanlineFilterAverage(i);
-            case 5:
+            case PAETH:
                 return new ScanlineFilterPaeth(i);
             default:
                 return null;

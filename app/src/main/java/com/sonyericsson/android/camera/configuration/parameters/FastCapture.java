@@ -1,12 +1,13 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import java.util.ArrayList;
 
 public enum FastCapture implements UserSettingValue {
-    LAUNCH_AND_CAPTURE(-1, 2131689820, 1, true),
-    LAUNCH_ONLY(-1, 2131689822, 1, true),
-    OFF(-1, 2131690115, 0, false);
+    LAUNCH_AND_CAPTURE(-1, R.string.cam_strings_fast_capturing_launch_and_capture_photo_txt, 1, true),
+    LAUNCH_ONLY(-1, R.string.cam_strings_fast_capturing_launch_only_txt, 1, true),
+    OFF(-1, R.string.cam_strings_settings_off_txt, 0, false);
 
     public static final String TAG = "FastCapture";
     private static final int sParameterTextId = 2131689828;
@@ -22,7 +23,7 @@ public enum FastCapture implements UserSettingValue {
     }
 
     public int getParameterkeyTitleTextId() {
-        return 2131689827;
+        return R.string.cam_strings_fast_capturing_title_txt;
     }
 
     FastCapture(int i, int i2, int i3, boolean z) {

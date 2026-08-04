@@ -6,10 +6,12 @@ import java.io.IOException;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
+import org.apache.commons.imaging.ImagingConstants;
 import org.apache.commons.imaging.common.BinaryFileParser;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.common.BinaryOutputStream;
@@ -35,14 +37,14 @@ public class IptcParser extends BinaryFileParser {
 
     public PhotoshopApp13Data parsePhotoshopSegment(byte[] bArr, Map<String, Object> map) throws IOException, ImageReadException {
         boolean z = false;
-        boolean z2 = map != null && Boolean.TRUE.equals(map.get("STRICT"));
-        if (map != null && Boolean.TRUE.equals(map.get("VERBOSE"))) {
+        boolean z2 = map != null && Boolean.TRUE.equals(map.get(ImagingConstants.PARAM_KEY_STRICT));
+        if (map != null && Boolean.TRUE.equals(map.get(ImagingConstants.PARAM_KEY_VERBOSE))) {
             z = true;
         }
         return parsePhotoshopSegment(bArr, z, z2);
     }
 
-    public PhotoshopApp13Data parsePhotoshopSegment(byte[] bArr, boolean z, boolean z2) throws Throwable {
+    public PhotoshopApp13Data parsePhotoshopSegment(byte[] bArr, boolean z, boolean z2) throws IOException, ImageReadException {
         ArrayList arrayList = new ArrayList();
         List<IptcBlock> allBlocks = parseAllBlocks(bArr, z, z2);
         for (IptcBlock iptcBlock : allBlocks) {
@@ -84,7 +86,7 @@ public class IptcParser extends BinaryFileParser {
             int uInt16 = ByteConversions.toUInt16(bArr, i7, getByteOrder());
             int i8 = i7 + 2;
             boolean z2 = uInt16 > 32767;
-            int i9 = uInt16 & 32767;
+            int i9 = uInt16 & IptcConstants.IPTC_NON_EXTENDED_RECORD_MAXIMUM_SIZE;
             if (z2 && z) {
                 Debug.debug("extendedDataset. dataFieldCountLength: " + i9);
             }
@@ -103,7 +105,7 @@ public class IptcParser extends BinaryFileParser {
         }
     }
 
-    protected List<IptcBlock> parseAllBlocks(byte[] bArr, boolean z, boolean z2) throws Throwable {
+    protected List<IptcBlock> parseAllBlocks(byte[] bArr, boolean z, boolean z2) throws IOException, ImageReadException {
         ByteArrayInputStream byteArrayInputStream;
         byte[] bArr2;
         ArrayList arrayList = new ArrayList();
@@ -164,14 +166,14 @@ public class IptcParser extends BinaryFileParser {
                     }
                 }
                 throw new ImageReadException("Invalid Image Resource Block Signature");
-            } catch (Throwable th) {
-                th = th;
+            } catch (Exception th) {
+                
                 IoUtils.closeQuietly(false, byteArrayInputStream);
-                throw th;
+                throw new ImageReadException("Error", th);
             }
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (Exception th2) {
             byteArrayInputStream = null;
+            throw new ImageReadException("Error", th2);
         }
     }
 
@@ -206,7 +208,7 @@ public class IptcParser extends BinaryFileParser {
         return byteArrayOutputStream.toByteArray();
     }
 
-    public byte[] writeIPTCBlock(List<IptcRecord> list) throws Throwable {
+    public byte[] writeIPTCBlock(List<IptcRecord> list) throws IOException, ImageReadException {
         BinaryOutputStream binaryOutputStream;
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {
@@ -218,7 +220,12 @@ public class IptcParser extends BinaryFileParser {
                 binaryOutputStream.write2Bytes(2);
                 binaryOutputStream.write2Bytes(2);
                 ArrayList<IptcRecord> arrayList = new ArrayList(list);
-                Collections.sort(arrayList, new IptcParser$1(this));
+                Collections.sort(arrayList, new Comparator<IptcRecord>() { // from class: org.apache.commons.imaging.formats.jpeg.iptc.IptcParser.1
+                    @Override // java.util.Comparator
+                    public int compare(IptcRecord iptcRecord, IptcRecord iptcRecord2) {
+                        return iptcRecord2.iptcType.getType() - iptcRecord.iptcType.getType();
+                    }
+                });
                 for (IptcRecord iptcRecord : arrayList) {
                     if (iptcRecord.iptcType != IptcTypes.RECORD_VERSION) {
                         binaryOutputStream.write(28);
@@ -237,14 +244,14 @@ public class IptcParser extends BinaryFileParser {
                 }
                 IoUtils.closeQuietly(true, binaryOutputStream);
                 return byteArrayOutputStream.toByteArray();
-            } catch (Throwable th) {
-                th = th;
+            } catch (Exception th) {
+                
                 IoUtils.closeQuietly(false, binaryOutputStream);
-                throw th;
+                throw new ImageReadException("Error", th);
             }
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (Exception th2) {
             binaryOutputStream = null;
+            throw new ImageReadException("Error", th2);
         }
     }
 }

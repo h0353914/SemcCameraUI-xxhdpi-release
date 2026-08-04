@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">പടമെടുക്കല്‍ പൂര്‍ത്തിയാക്കാന്‍ കഴിഞ്ഞില്ല. ദയവായി കുറച്ചുകൂടി സാവധാനത്തില്‍ പാന്‍ ചെയ്യുക.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">പടമെടുക്കല്‍ പൂര്‍ത്തിയാക്കാന്‍ കഴിഞ്ഞില്ല. ദയവായി വേഗത്തില്‍ പാന്‍ ചെയ്യുക.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">ക്യാമറ സ്വൈപ്പുചെയ്ത് പനോരമിക്ക് ഫോട്ടോ എടുക്കൂ</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">ഇനിപ്പറയുന്ന ഫയലുകള്‍ സൃഷ്ടിക്കുന്നു:\n- മള്‍ട്ടി ആംഗിള്‍ ഇമേജ്\n- 3D ഇമേജ്\nശ്രദ്ധിക്കുക: ഈ ഫയലുകളില്‍ ഒരു ഗ്രേ ഏരിയ അടങ്ങിയിട്ടുണ്ട്.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">ഇനിപ്പറയുന്ന ഫയലുകള്‍ സൃഷ്ടിക്കുന്നു:\n- മള്‍ട്ടി ആംഗിള്‍ ഇമേജ്\n- 3D ഇമേജ്</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">പ്രോസസ്സ് ചെയ്യുന്നു...\nഈ ഇമേജില്‍ ഒരു ഗ്രേ ഏരിയ അടങ്ങിയിട്ടുണ്ട്</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"ഇനിപ്പറയുന്ന ഫയലുകള്‍ സൃഷ്ടിക്കുന്നു:
+- മള്‍ട്ടി ആംഗിള്‍ ഇമേജ്
+- 3D ഇമേജ്
+ശ്രദ്ധിക്കുക: ഈ ഫയലുകളില്‍ ഒരു ഗ്രേ ഏരിയ അടങ്ങിയിട്ടുണ്ട്."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"ഇനിപ്പറയുന്ന ഫയലുകള്‍ സൃഷ്ടിക്കുന്നു:
+- മള്‍ട്ടി ആംഗിള്‍ ഇമേജ്
+- 3D ഇമേജ്"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"പ്രോസസ്സ് ചെയ്യുന്നു...
+ഈ ഇമേജില്‍ ഒരു ഗ്രേ ഏരിയ അടങ്ങിയിട്ടുണ്ട്"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">ഇമേജ് സേവ് ചെയ്യുന്നു</string>
     <string name="cam_3d_strings_dialog_processing_txt">പ്രോസസ്സ് ചെയ്യുന്നു...</string>
     <string name="cam_3d_strings_error_application_busy_txt">3D ക്യാമറ ആരംഭിക്കാന്‍ ഏതാനും സെക്കന്‍റുകള്‍ കാത്തിരിക്കുക</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">നിങ്ങളുടെ ചർമ്മം തെളിച്ചമുള്ളതും മൃദുലവുമാക്കുക. ആപ്ലിക്കേഷനുകളിൽ പ്രവർത്തിക്കുന്ന ഇഫക്‌ട് ഫ്രണ്ട് ക്യാമറ ഉപയോഗിക്കുന്നു. ഇത് ഫോട്ടോകളിലും വീഡിയോകളിലും പ്രയോഗിക്കാം. നിങ്ങൾക്ക് ലെവൽ ക്രമീകരിക്കാനുമാകും.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">ലെവൽ ക്രമീകരിക്കൽ</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">മൃദു ചർമ്മം</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">ആപ്പ് ആരംഭിക്കാനാകുന്നില്ല.\nനിങ്ങളുടെ ഉപകരണത്തിൽ ഏറ്റവും പുതിയ %1$s പതിപ്പ് ഇൻസ്റ്റാൾ ചെയ്‌ത് പ്രവർത്തനസജ്ജമാക്കിയിട്ടുണ്ടെന്ന് ഉറപ്പുവരുത്തുക.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"ആപ്പ് ആരംഭിക്കാനാകുന്നില്ല.
+നിങ്ങളുടെ ഉപകരണത്തിൽ ഏറ്റവും പുതിയ %1$s പതിപ്പ് ഇൻസ്റ്റാൾ ചെയ്‌ത് പ്രവർത്തനസജ്ജമാക്കിയിട്ടുണ്ടെന്ന് ഉറപ്പുവരുത്തുക."</string>
     <string name="cam_strings_gridline_txt">ഗ്രിഡ് ലൈനുകൾ</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">ക്യാമറയ്ക്ക് നേരെ ഉള്ളംകൈ തിരിക്കുക. ഉള്ളംകൈ തിരിച്ചറിയപ്പെടുമ്പോൾ സെൽഫ്-ടൈമർ ഓണാകും. തിരിച്ചറിയൽ എളുപ്പമാക്കാൻ, വിരലുകൾ മുകളിലേക്ക് നീട്ടുക.</string>
     <string name="cam_strings_hand_shutter_hint_txt">ക്യാമറയ്ക്ക് നേരെ ഉള്ളംകൈ തിരിക്കുക</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">പൊതുവായ ക്രമീകരണങ്ങള്‍</string>
     <string name="cam_strings_more_txt">കൂടുതൽ</string>
     <string name="cam_strings_multi_window_txt">%1$s ഉപയോഗിക്കുന്നതിന് ഫുൾസ്ക്രീനിലേക്ക് മാറാൻ സ്പ്ലിറ്റ് ബാറിന്റെ മധ്യഭാഗം ഡ്രാഗ് ചെയ്യുക</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">മറ്റൊരു ഉപകരണം ഇപ്പോൾ കണക്ടു ചെയ്തു.\nഉപകരണവുമൊത്ത് വ്യൂ‌ഫൈൻഡറിലൂടെ ഇമേജ് പങ്കിടാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"മറ്റൊരു ഉപകരണം ഇപ്പോൾ കണക്ടു ചെയ്തു.
+ഉപകരണവുമൊത്ത് വ്യൂ‌ഫൈൻഡറിലൂടെ ഇമേജ് പങ്കിടാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ?"</string>
     <string name="cam_strings_multicam_add_device_txt">ഉപകര. കൂട്ടി.</string>
     <string name="cam_strings_multicam_add_more_txt">കൂടുതൽ ചേർക്കുക</string>
     <string name="cam_strings_multicam_apply_txt">കഴിഞ്ഞു</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">മീറ്ററിങ്ങ്</string>
     <string name="cam_strings_predictive_capture_feedback_txt">പ്രവചിതം</string>
     <string name="cam_strings_predictive_capture_txt">പ്രവചിത ക്യാപ്ചർ</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">ഫോൺ ലാൻഡ്‌സ്‌കേപ്പ് മോഡിൽ ഉയർത്തി അത് ഒരു ഒബ്‌ജക്‌ടിന് നേരെ പിടിക്കുന്ന നിങ്ങളുടെ ചലനം തിരിച്ചറിഞ്ഞുകൊണ്ട് ക്യാമറ സ്വയമേവ സമാരംഭിച്ചിരിക്കുന്നു.\nക്യാമറ ക്രമീകരണത്തിലെ സ്‌മാർട്ട് സമാരംഭിക്കൽ എന്നതിൽ നിന്നും ഈ സവിശേഷത ഉപയോഗിക്കാനുള്ള പ്രിയപ്പെട്ട മാർഗ്ഗം തിരഞ്ഞെടുക്കാവുന്നതാണ്.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"ഫോൺ ലാൻഡ്‌സ്‌കേപ്പ് മോഡിൽ ഉയർത്തി അത് ഒരു ഒബ്‌ജക്‌ടിന് നേരെ പിടിക്കുന്ന നിങ്ങളുടെ ചലനം തിരിച്ചറിഞ്ഞുകൊണ്ട് ക്യാമറ സ്വയമേവ സമാരംഭിച്ചിരിക്കുന്നു.
+ക്യാമറ ക്രമീകരണത്തിലെ സ്‌മാർട്ട് സമാരംഭിക്കൽ എന്നതിൽ നിന്നും ഈ സവിശേഷത ഉപയോഗിക്കാനുള്ള പ്രിയപ്പെട്ട മാർഗ്ഗം തിരഞ്ഞെടുക്കാവുന്നതാണ്."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">ചിത്രമെടുക്കാൻ വൃത്തത്തിനകത്ത് തൊടുക</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">ചിത്രമെടുക്കാൻ സ്‌ക്രീനിൽ തൊടുക</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">ഫുൾസ്‌ക്രീനിൽ കാണാൻ വൃത്തത്തിനുള്ളിൽ ടാപ് ചെയ്യുക</string>
     <string name="cam_strings_predictive_launch_guide_txt">ക്യാമറ സമാരംഭിക്കാൻ വൃത്തത്തിനുള്ളിൽ തൊടുക</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">സമാരംഭിച്ച് ചിത്ര. തൊടുക</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">സമാരംഭിക്കാൻ തൊടുക</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">നിങ്ങൾക്ക് ക്യാമറ നേരിട്ട് സമാരംഭിക്കാവുന്നതാണ്. നിങ്ങളുടെ ഉപകരണം ലാൻഡ്‌സ്‌കേപ്പ് മോഡിൽ വേഗത്തിൽ എടുത്ത് ക്യാമറ ഒബ്‌ജക്റ്റിന് നേരെ പിടിക്കുക. ക്യാമറ സ്വയമേവ സമാരംഭിക്കും.\nനിങ്ങൾക്ക് ക്യാമറ ക്രമീ. സ്‌മാർട്ട് ലോഞ്ചിൽ നിന്നും ഈ സവി. ഉപ. പ്രിയപ്പെട്ട മാർഗ്ഗം തിരഞ്ഞെടുക്കാവുന്നതാണ്.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"നിങ്ങൾക്ക് ക്യാമറ നേരിട്ട് സമാരംഭിക്കാവുന്നതാണ്. നിങ്ങളുടെ ഉപകരണം ലാൻഡ്‌സ്‌കേപ്പ് മോഡിൽ വേഗത്തിൽ എടുത്ത് ക്യാമറ ഒബ്‌ജക്റ്റിന് നേരെ പിടിക്കുക. ക്യാമറ സ്വയമേവ സമാരംഭിക്കും.
+നിങ്ങൾക്ക് ക്യാമറ ക്രമീ. സ്‌മാർട്ട് ലോഞ്ചിൽ നിന്നും ഈ സവി. ഉപ. പ്രിയപ്പെട്ട മാർഗ്ഗം തിരഞ്ഞെടുക്കാവുന്നതാണ്."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">സ്മാർട്ട് ലോഞ്ച്</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">ക്യാമറ നേരിട്ട് സമാരംഭിക്കാവുന്നതാണ്. ഉപകരണം ലാൻഡ്‌സ്കേപ്പ് മോഡിൽ മുകളിലേക്ക് തൂക്കി ക്യാമറ ഒബ്‌ജക്‌റ്റിന് നേരെ പിടിക്കുക. ക്യാമറ സ്വയമേവ സമാരംഭിക്കും.\nക്യാമറ ക്രമീകരണത്തിലെ സ്‌മാർട്ട് ലോഞ്ചിൽ ഈ സവിശേഷത ഓഫാക്കാം.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"ക്യാമറ നേരിട്ട് സമാരംഭിക്കാവുന്നതാണ്. ഉപകരണം ലാൻഡ്‌സ്കേപ്പ് മോഡിൽ മുകളിലേക്ക് തൂക്കി ക്യാമറ ഒബ്‌ജക്‌റ്റിന് നേരെ പിടിക്കുക. ക്യാമറ സ്വയമേവ സമാരംഭിക്കും.
+ക്യാമറ ക്രമീകരണത്തിലെ സ്‌മാർട്ട് ലോഞ്ചിൽ ഈ സവിശേഷത ഓഫാക്കാം."</string>
     <string name="cam_strings_predictive_launch_txt">സ്മാർട്ട് ലോഞ്ച്</string>
     <string name="cam_strings_preview_always_txt">ഓണ്‍</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 സെക്കന്‍ഡ്</string>
@@ -458,7 +469,7 @@
     <string name="cam_strings_previous_txt">മുമ്പത്തേത്</string>
     <string name="cam_strings_recording_txt">REC</string>
     <string name="cam_strings_remember_geotag_title_txt">സ്ഥാനം സംരക്ഷിക്കണോ?</string>
-    <string name="cam_strings_remember_geotag_txt">നിങ്ങളുടെ ഫോട്ടോകളും വീഡിയോകളും എടുത്ത സ്ഥാനങ്ങൾ ഉപയോഗിച്ച് അവ ടാഗുചെയ്യുക. നിങ്ങൾക്ക് ഈ ക്രമീകരണം, ക്യാമറ ക്രമീകരണത്തിലെ \'സ്ഥാനം സംരക്ഷിക്കുക\' എന്നതിൽ പിന്നീട് മാറ്റാനാകും.</string>
+    <string name="cam_strings_remember_geotag_txt">"നിങ്ങളുടെ ഫോട്ടോകളും വീഡിയോകളും എടുത്ത സ്ഥാനങ്ങൾ ഉപയോഗിച്ച് അവ ടാഗുചെയ്യുക. നിങ്ങൾക്ക് ഈ ക്രമീകരണം, ക്യാമറ ക്രമീകരണത്തിലെ 'സ്ഥാനം സംരക്ഷിക്കുക' എന്നതിൽ പിന്നീട് മാറ്റാനാകും."</string>
     <string name="cam_strings_remote_touch_to_start_txt">ആരംഭിക്കുന്നതിന് സ്പർശിക്കുക</string>
     <string name="cam_strings_reset_color_brightness_txt">വർണ്ണവും തെളിച്ചവും പുനഃക്ര.</string>
     <string name="cam_strings_reset_settings_confirm_title_txt">ക്യാമറ ക്രമീകരണം ഡിഫോൾട്ടിലേക്ക് പുനഃക്രമീകരിക്കണോ?</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s എന്നതിന് ഈ അനുമതി(കൾ) ആവശ്യമാണ്</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s അനുമതി</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">ഈ പ്രവർത്തനം നടത്താൻ, ആപ്പിന് ഈ അനുമതി(കൾ) ആവശ്യമാണ്.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">അനുമതികൾ നൽകാൻ, ആപ്‌ വിവരം &gt; അനുമതികൾ എന്നതിലേക്ക് പോകുക.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">അനുമതികൾ നൽകാൻ, ആപ്‌ വിവരം > അനുമതികൾ എന്നതിലേക്ക് പോകുക.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">തുടരാനായില്ല</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">ഫോട്ടോകളും വീഡിയോകളും എടുക്കാൻ</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">സ്ഥാനം വീണ്ടെടുക്കാൻ</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">ആന്തരിക സംഭരണത്തിലേക്ക് സേവ് ചെയ്തു</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">നീങ്ങുക</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">ഈ പ്രവർത്തനം നടത്താൻ, ആപ്പിന് ഈ അനുമതി(കൾ) ആവശ്യമാണ്.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">ഒരു SD കാർഡ് ഉപയോഗിക്കാൻ, ക്യാമറയ്‌ക്ക് SD കാർഡ് ആക്‌സസ് ചെയ്യാനുള്ള അനുമതികൾ ആവശ്യമാണ്.\nഡാറ്റാ സംഭരണം വീണ്ടും SD കാർഡിലേക്ക് മാറ്റുക, അല്ലെങ്കിൽ SD കാർഡ് ആക്‌സസ് ചെയ്യാൻ അടുത്ത സ്‌ക്രീനിൽ ക്യാമറയെ അനുവദിക്കുക.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"ഒരു SD കാർഡ് ഉപയോഗിക്കാൻ, ക്യാമറയ്‌ക്ക് SD കാർഡ് ആക്‌സസ് ചെയ്യാനുള്ള അനുമതികൾ ആവശ്യമാണ്.
+ഡാറ്റാ സംഭരണം വീണ്ടും SD കാർഡിലേക്ക് മാറ്റുക, അല്ലെങ്കിൽ SD കാർഡ് ആക്‌സസ് ചെയ്യാൻ അടുത്ത സ്‌ക്രീനിൽ ക്യാമറയെ അനുവദിക്കുക."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD കാര്‍ഡ് ലഭ്യമല്ല</string>
-    <string name="cam_strings_sd_permission_info_2_txt">അനുമതികൾ ആവശ്യമായ ഒരു SD കാർഡ് കണ്ടെത്തി.\n\nSD കാർഡ് ഡാറ്റാ സംഭരണമായി ഉപയോഗിക്കാൻ, അടുത്ത സ്‌ക്രീനിൽ SD കാർഡോ DCIM ഡയറക്‌ടറിയോ തിരഞ്ഞെടുക്കുക.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SD കാർഡോ DCIM ഡയറക്‌ടറിയോ തിരഞ്ഞെടുത്തിട്ടില്ല. SD കാർഡ് ഉപയോഗിക്കാനാകില്ല.\n\nഅനുമതികൾ നൽകാൻ, സേവ് ചെയ്യുന്ന സ്ഥാനം SD കാർഡിലേക്ക് മാറ്റുന്നതിലൂടെയോ അടുത്ത സ്‌ക്രീനിൽ ഉചിതമായ ഡയറക്‌ടറി തിരഞ്ഞെടുക്കുന്നതിലൂടെയോ ആരംഭിക്കുക.</string>
-    <string name="cam_strings_sd_permission_info_txt">അനുമതികൾ ആവശ്യമായ പുതിയ SD കാർഡ് കണ്ടെത്തി.\nആയതിനാൽ, ഡിഫോൾട്ട് ഡാറ്റാ സംഭരണമായി ആന്തരിക ഉപകരണ സംഭരണം ഉപയോഗിക്കുന്നതാണ്.\n\nഡാറ്റാ സംഭരണമായി SD കാർഡ് ഉപയോഗിക്കാൻ, ക്യാമറ ക്രമീകരണത്തിലേക്ക് പോയി സംഭരണ ഐച്ഛികം SD കാർഡിലേക്ക് മാറ്റുക.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"അനുമതികൾ ആവശ്യമായ ഒരു SD കാർഡ് കണ്ടെത്തി.
+
+SD കാർഡ് ഡാറ്റാ സംഭരണമായി ഉപയോഗിക്കാൻ, അടുത്ത സ്‌ക്രീനിൽ SD കാർഡോ DCIM ഡയറക്‌ടറിയോ തിരഞ്ഞെടുക്കുക."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD കാർഡോ DCIM ഡയറക്‌ടറിയോ തിരഞ്ഞെടുത്തിട്ടില്ല. SD കാർഡ് ഉപയോഗിക്കാനാകില്ല.
+
+അനുമതികൾ നൽകാൻ, സേവ് ചെയ്യുന്ന സ്ഥാനം SD കാർഡിലേക്ക് മാറ്റുന്നതിലൂടെയോ അടുത്ത സ്‌ക്രീനിൽ ഉചിതമായ ഡയറക്‌ടറി തിരഞ്ഞെടുക്കുന്നതിലൂടെയോ ആരംഭിക്കുക."</string>
+    <string name="cam_strings_sd_permission_info_txt">"അനുമതികൾ ആവശ്യമായ പുതിയ SD കാർഡ് കണ്ടെത്തി.
+ആയതിനാൽ, ഡിഫോൾട്ട് ഡാറ്റാ സംഭരണമായി ആന്തരിക ഉപകരണ സംഭരണം ഉപയോഗിക്കുന്നതാണ്.
+
+ഡാറ്റാ സംഭരണമായി SD കാർഡ് ഉപയോഗിക്കാൻ, ക്യാമറ ക്രമീകരണത്തിലേക്ക് പോയി സംഭരണ ഐച്ഛികം SD കാർഡിലേക്ക് മാറ്റുക."</string>
     <string name="cam_strings_sd_permission_rationale_txt">SD കാർഡിൽ ഫോട്ടോകളും വീഡിയോകളും സേവ് ചെയ്യാൻ</string>
     <string name="cam_strings_select_picture_txt">ഫോട്ടോ തിരഞ്ഞെടുക്കുക</string>
     <string name="cam_strings_self_timer_05_txt">0.5 സെ.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">സ്വയം ഫോ. എടു.</string>
     <string name="cam_strings_side_touch_not_supported_txt">ഈ സ്‌ക്രീനിൽ സൈഡ് സെൻസിനെ പിന്തുണയ്‌ക്കുന്നില്ല</string>
     <string name="cam_strings_side_touch_on_title_txt">സൈഡ് സെൻസ്</string>
-    <string name="cam_strings_side_touch_on_txt">ഈ പ്രവർത്തനം ഉപയോഗിക്കാൻ, ക്രമീകരണം &gt; ഡിസ്‌പ്ലേ എന്നതിലേക്ക് പോയി സൈഡ് സെൻസ് ഓൺ ചെയ്യുക. ഇപ്പോൾ പ്രവർത്തനസജ്ജമാക്കണോ?</string>
+    <string name="cam_strings_side_touch_on_txt">ഈ പ്രവർത്തനം ഉപയോഗിക്കാൻ, ക്രമീകരണം > ഡിസ്‌പ്ലേ എന്നതിലേക്ക് പോയി സൈഡ് സെൻസ് ഓൺ ചെയ്യുക. ഇപ്പോൾ പ്രവർത്തനസജ്ജമാക്കണോ?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">സൈഡ് സെൻസ്</string>
-    <string name="cam_strings_side_touch_tutorial_txt">ഷട്ടർ ബട്ടണിന് പകരം, സ്‌ക്രീനിന് വശത്തുള്ള സെൻസർ രണ്ടുത. തട്ടുന്നതിലൂടെ ഒരു ഫോട്ടോ / വീഡിയോ എടുക്കാനാകും. ഈ സൈഡ് സെൻസറിൽ വിരൽ സ്ലൈഡ് ചെയ്യുന്നതിലൂടെ സൂം ഇൻ / ഔട്ട് ചെയ്യാനും കഴിയും.\nഫോട്ടോ, വീഡിയോ മോഡുകൾ രണ്ടും ഈ പ്രവ. പിന്തുണയ്‌ക്കുന്നു. ക്യാമറ ക്രമീകര. സൈഡ് സെൻസിൽ ഇത് ഓഫ് ചെയ്യാം.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">ഷട്ടർ ബട്ടണിന് പകരം, പോർട്രയിറ്റ് കാഴ്‌ചയിൽ സ്‌ക്രീനിന് വശ. സെൻ. രണ്ടുത. തട്ടു. ഒരു ഫോട്ടോ / വീഡിയോ എടുക്കാനാകും. ഈ സൈഡ് സെൻ. വിരൽ സ്ലൈഡ് ചെയ്യു. സൂം ഇൻ / ഔട്ട് ചെയ്യാനും കഴിയും.\nഫോ., വീഡി. മോഡു. രണ്ടും ഈ പ്രവ. പിന്തു. ക്യാമ. ക്രമീ. സൈഡ് സെൻ. ഇത് ഓഫ് ചെയ്യാം.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">ഷട്ടർ ബട്ടണിന് പകരം, പോർട്രയിറ്റ് കാഴ്‌ചയിൽ സ്‌ക്രീനിന് വശത്തുള്ള സെൻസർ രണ്ടുതവണ തട്ടുന്നതിലൂടെ ഒരു ഫോട്ടോ അല്ലെങ്കിൽ വീഡിയോ എടുക്കാനാകും.\nഫോട്ടോ, വീഡിയോ മോഡുകൾ രണ്ടും ഈ പ്രവർത്തനത്തെ പിന്തുണയ്‌ക്കുന്നു. ക്യാമറ ക്രമീകരണത്തിലെ സൈഡ് സെൻസിൽ ഇത് ഓഫ് ചെയ്യാം.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">ഷട്ടർ ബട്ടണിന് പകരം, സ്‌ക്രീനിന് വശത്തുള്ള സെൻസർ രണ്ടുതവണ തട്ടുന്നതിലൂടെ ഒരു ഫോട്ടോ അല്ലെങ്കിൽ വീഡിയോ എടുക്കാനാകും.\nഫോട്ടോ, വീഡിയോ മോഡുകൾ രണ്ടും ഈ പ്രവർത്തനത്തെ പിന്തുണയ്‌ക്കുന്നു. ക്യാമറ ക്രമീകരണത്തിലെ സൈഡ് സെൻസിൽ ഇത് ഓഫ് ചെയ്യാം.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"ഷട്ടർ ബട്ടണിന് പകരം, സ്‌ക്രീനിന് വശത്തുള്ള സെൻസർ രണ്ടുത. തട്ടുന്നതിലൂടെ ഒരു ഫോട്ടോ / വീഡിയോ എടുക്കാനാകും. ഈ സൈഡ് സെൻസറിൽ വിരൽ സ്ലൈഡ് ചെയ്യുന്നതിലൂടെ സൂം ഇൻ / ഔട്ട് ചെയ്യാനും കഴിയും.
+ഫോട്ടോ, വീഡിയോ മോഡുകൾ രണ്ടും ഈ പ്രവ. പിന്തുണയ്‌ക്കുന്നു. ക്യാമറ ക്രമീകര. സൈഡ് സെൻസിൽ ഇത് ഓഫ് ചെയ്യാം."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"ഷട്ടർ ബട്ടണിന് പകരം, പോർട്രയിറ്റ് കാഴ്‌ചയിൽ സ്‌ക്രീനിന് വശ. സെൻ. രണ്ടുത. തട്ടു. ഒരു ഫോട്ടോ / വീഡിയോ എടുക്കാനാകും. ഈ സൈഡ് സെൻ. വിരൽ സ്ലൈഡ് ചെയ്യു. സൂം ഇൻ / ഔട്ട് ചെയ്യാനും കഴിയും.
+ഫോ., വീഡി. മോഡു. രണ്ടും ഈ പ്രവ. പിന്തു. ക്യാമ. ക്രമീ. സൈഡ് സെൻ. ഇത് ഓഫ് ചെയ്യാം."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"ഷട്ടർ ബട്ടണിന് പകരം, പോർട്രയിറ്റ് കാഴ്‌ചയിൽ സ്‌ക്രീനിന് വശത്തുള്ള സെൻസർ രണ്ടുതവണ തട്ടുന്നതിലൂടെ ഒരു ഫോട്ടോ അല്ലെങ്കിൽ വീഡിയോ എടുക്കാനാകും.
+ഫോട്ടോ, വീഡിയോ മോഡുകൾ രണ്ടും ഈ പ്രവർത്തനത്തെ പിന്തുണയ്‌ക്കുന്നു. ക്യാമറ ക്രമീകരണത്തിലെ സൈഡ് സെൻസിൽ ഇത് ഓഫ് ചെയ്യാം."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"ഷട്ടർ ബട്ടണിന് പകരം, സ്‌ക്രീനിന് വശത്തുള്ള സെൻസർ രണ്ടുതവണ തട്ടുന്നതിലൂടെ ഒരു ഫോട്ടോ അല്ലെങ്കിൽ വീഡിയോ എടുക്കാനാകും.
+ഫോട്ടോ, വീഡിയോ മോഡുകൾ രണ്ടും ഈ പ്രവർത്തനത്തെ പിന്തുണയ്‌ക്കുന്നു. ക്യാമറ ക്രമീകരണത്തിലെ സൈഡ് സെൻസിൽ ഇത് ഓഫ് ചെയ്യാം."</string>
     <string name="cam_strings_side_touch_txt">സൈഡ് സെൻസ്</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">ക്യാമറ ക്രമീകരണത്തിൽ റെക്കോർഡിംഗ് ശൈലിയും സ്‌ക്രീൻ റെസലൂഷനും മാറ്റാനാകും</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">സൂപ്പർ സ്ലോ (ഒരു ഷോട്ട്)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">സൂപ്പർ സ്ലോ മോഷൻ</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">സ്ലോ മോഷനായി fps-ഉം റെക്കോർഡിംഗ് ശൈലിയും മാറ്റാം</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">കൂടുതൽ ഐച്ഛിക.</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">സ്ക്രീനിന്റെ മധ്യ. ബ. ടാപ് ചെയ്ത് %1$s fps സ്ലോ മോഷനിൽ അമൂ. നിമിഷം തൽ. റെക്കോ. ചെയ്യുക.\nതെളിച്ച. അവ. റെക്കോ. ചെയ്യു. മികച്ച വീഡി. സൃ. സഹായിക്കും.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"സ്ക്രീനിന്റെ മധ്യ. ബ. ടാപ് ചെയ്ത് %1$s fps സ്ലോ മോഷനിൽ അമൂ. നിമിഷം തൽ. റെക്കോ. ചെയ്യുക.
+തെളിച്ച. അവ. റെക്കോ. ചെയ്യു. മികച്ച വീഡി. സൃ. സഹായിക്കും."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">മധ്യബ. ടാപ് ചെയ്ത് %1$s fps-ൽ ഒരു ശരിയായ നിമിഷം റെക്കോർഡ് ചെ.</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">സ്ക്രീനിന്റെ മധ്യത്തിലുള്ള ബ. ടാപ് ചെയ്ത് %1$s fps സ്ലോ മോഷനിൽ ഒരു അമൂല്യമായ നിമിഷം തൽക്ഷണം റെക്കോർഡ് ചെയ്യുക</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">സൂപ്പർ സ്ലോ മോഷൻ (വൺ-ഷോട്ട്)</string>
@@ -576,13 +600,14 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">സ്ലോ മോഷൻ</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">റെ. ചെ. വിധം</string>
     <string name="cam_strings_slow_motion_standard_txt">സ്ലോ മോഷൻ</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">അമൂല്യമായ ഒരു നിമിഷം സ്ലോ മോഷ. കാണിച്ച് മതിപ്പുളവാക്കുന്ന വീഡി. സൃഷ്‌ടിക്കുക.\nതെളിച്ചമു. അവ. റെക്കോ. ചെയ്യു. മികച്ച വീഡി. സൃ. സഹായിക്കും.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"അമൂല്യമായ ഒരു നിമിഷം സ്ലോ മോഷ. കാണിച്ച് മതിപ്പുളവാക്കുന്ന വീഡി. സൃഷ്‌ടിക്കുക.
+തെളിച്ചമു. അവ. റെക്കോ. ചെയ്യു. മികച്ച വീഡി. സൃ. സഹായിക്കും."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">%1$s fps-ലേക്ക് മാറി വ്യത്യസ്ത വേഗതകളിൽ വീഡിയോ റെക്കോ.</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">ശരിയായ നിമിഷത്തിൽ മധ്യത്തിലുള്ള ബട്ടൺ ടാപ് ചെയ്യുക</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">സ്ലോ മോഷൻ റെക്കോർഡുചെയ്തു</string>
     <string name="cam_strings_slow_motion_super_tutorial_1_txt">ഒരു അമൂല്യ നിമിഷം സ്ലോ മോഷ. കാണിച്ച് മതിപ്പുളവാക്കുന്ന ഒരു വീഡിയോ സൃഷ്‌.</string>
     <string name="cam_strings_slow_motion_super_tutorial_2_txt">റെക്കോർഡ് ബട്ടൺ ടാപ് ചെയ്ത് വീഡിയോ റെക്കോ. ആരംഭിക്കുക</string>
-    <string name="cam_strings_slow_motion_super_tutorial_3_txt">സ്ലോ മോഷ. റെക്കോ. ചെയ്യാൻ സ്ക്രീൻ മധ്യ. ബ. ടാപ് ചെ. റെക്കോ. ചെയ്യൽ നിർ. \'നിർത്തുക\' ബട്ടൺ ടാപ് ചെയ്യുക.</string>
+    <string name="cam_strings_slow_motion_super_tutorial_3_txt">"സ്ലോ മോഷ. റെക്കോ. ചെയ്യാൻ സ്ക്രീൻ മധ്യ. ബ. ടാപ് ചെ. റെക്കോ. ചെയ്യൽ നിർ. 'നിർത്തുക' ബട്ടൺ ടാപ് ചെയ്യുക."</string>
     <string name="cam_strings_slow_motion_super_tutorial_title_1_txt">സൂപ്പർ സ്ലോ മോഷൻ</string>
     <string name="cam_strings_slow_motion_super_txt">സൂപ്പർ സ്ലോ മോഷൻ</string>
     <string name="cam_strings_slow_motion_txt">സ്ലോ മോഷൻ മോ.</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">സോഫ്‌റ്റ്‌വെയർ ലൈസ.</string>
     <string name="cam_strings_take_photo_txt">ഫോട്ടോ എടുക്കുക</string>
     <string name="cam_strings_term_of_use_accept_txt">സ്വീകരിക്കുക</string>
-    <string name="cam_strings_term_of_use_consent_txt">Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;ഉപയോഗ വ്യവസ്ഥകൾ&lt;/a&gt; സമ്മതിക്കുന്നു.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">ഉപയോഗ വ്യവസ്ഥകൾ&lt;/a> സമ്മതിക്കുന്നു.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">ഡാറ്റാ പ്ലാനിനെ അടിസ്ഥാനമാക്കി, ഈ സേവനത്തിന്റെ നിങ്ങളുടെ ഉപയോഗത്തിന് മൊബൈൽ ഡാറ്റാ നിരക്കുകള്‍ ബാധകമായേക്കാം.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">സേവനത്തിന്റെ ഭാഗമെന്ന നിലയില്‍ നിങ്ങള്‍ക്ക് അനുയോജ്യമായ ഫലങ്ങള്‍ നല്‍കുന്നതിനും സേവന മെച്ചപ്പെടുത്തലുകള്‍ക്കുമായി നിങ്ങളുടെ ഹാഷ്ഡ് Android ID അദ്വിതീയ ഉപകരണ ഐഡന്റിഫയര്‍, സ്ഥാനത്തെ അടിസ്ഥാനമാക്കിയുള്ള ഡാറ്റ, ടൈം സ്റ്റാമ്പ് എന്നിവ Sony Mobile ശേഖരിക്കും.</string>
     <string name="cam_strings_term_of_use_decline_txt">നിരസിക്കുക</string>
     <string name="cam_strings_term_of_use_title_txt">വ്യവസ്ഥകളും നിബന്ധനകളും</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;ഉപയോഗ വ്യവസ്ഥകള്‍&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">ഉപയോഗ വ്യവസ്ഥകള്‍&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">ഫോട്ടോ. തിര. മാറ്റുക</string>
     <string name="cam_strings_timeshift_operation_failed_txt">സേവ് ചെയ്യാൻ കഴിഞ്ഞില്ല</string>
     <string name="cam_strings_timeshift_save_complete_txt">സേവ് ചെയ്തു</string>
@@ -639,13 +664,15 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">സുസ്ഥിര 4K വീഡിയോ റെക്കോർഡിംഗിനായി, അതിവേഗ SD കാർഡ് (UHS വേഗതാ ക്ലാസ് 1 അല്ലെങ്കിൽ അതിലും ഉയർന്നത്, അല്ലെങ്കിൽ വേഗതാ ക്ലാസ് 10 ശുപാർശചെയ്യുന്നു) ഉപയോഗിക്കുന്നില്ലെങ്കിൽ ഈ ക്രമീകരണം മാറ്റരുത്.</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">സുസ്ഥിര Timeshift video റെക്കോർഡിംഗിനായി, അതിവേഗ SD കാർഡ് (UHS വേഗതാ ക്ലാസ് 1 അല്ലെങ്കിൽ അതിലും ഉയർന്നത്, അല്ലെങ്കിൽ വേഗതാ ക്ലാസ് 10 ശുപാർശചെയ്യുന്നു) ഉപയോഗിക്കുന്നില്ലെങ്കിൽ ഈ ക്രമീകരണം മാറ്റരുത്. ഏതുവിധേനയും മാറ്റണോ?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">സുസ്ഥിരമായ സ്ലോ മോഷൻ വീഡിയോ റെക്കോർഡിംഗിന്, നിങ്ങൾ ഒരു അതിവേഗ SD കാർഡ് (UHS വേഗതാ ക്ലാസ് 1 അല്ലെങ്കിൽ അതിലും ഉയർന്നത്, അല്ലെങ്കിൽ വേഗതാ ക്ലാസ് 10 ശുപാർശചെയ്യുന്നു) ഉപയോഗിക്കുന്നില്ലെങ്കിൽ ഈ ക്രമീകരണം മാറ്റരുത്.</string>
-    <string name="cam_strings_video_explanatory_txt">സുസ്ഥിരമായ വീഡിയോ റെക്കോർഡിംഗിന്, ഡാറ്റാ സംഭരണം ആന്തരിക സംഭരണത്തിലേക്ക് മാറ്റാൻ ഞങ്ങൾ ശുപാർശചെയ്യുന്നു. അത് ഇപ്പോൾ മാറ്റണോ?\n\nനിങ്ങൾ തുടർന്നും ഡാറ്റാ സംഭരണമായി SD കാർഡ് ഉപയോഗിക്കുകയാണെങ്കിൽ, ഒരു അതിവേഗ SD കാർഡ് (UHS വേഗതാ ക്ലാസ് 1 അല്ലെങ്കിൽ അതിലും ഉയർന്നത്, അല്ലെങ്കിൽ വേഗതാ ക്ലാസ് 10 ശുപാർശചെയ്യുന്നു) ഉപയോഗിക്കുന്നത് ഉറപ്പുവരുത്തുക.</string>
+    <string name="cam_strings_video_explanatory_txt">"സുസ്ഥിരമായ വീഡിയോ റെക്കോർഡിംഗിന്, ഡാറ്റാ സംഭരണം ആന്തരിക സംഭരണത്തിലേക്ക് മാറ്റാൻ ഞങ്ങൾ ശുപാർശചെയ്യുന്നു. അത് ഇപ്പോൾ മാറ്റണോ?
+
+നിങ്ങൾ തുടർന്നും ഡാറ്റാ സംഭരണമായി SD കാർഡ് ഉപയോഗിക്കുകയാണെങ്കിൽ, ഒരു അതിവേഗ SD കാർഡ് (UHS വേഗതാ ക്ലാസ് 1 അല്ലെങ്കിൽ അതിലും ഉയർന്നത്, അല്ലെങ്കിൽ വേഗതാ ക്ലാസ് 10 ശുപാർശചെയ്യുന്നു) ഉപയോഗിക്കുന്നത് ഉറപ്പുവരുത്തുക."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">ഡ്യുവൽ ക്യാമറ</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">രാത്രിയിലോ വെളിച്ചം കുറഞ്ഞ മുറിയിലോ പോലും ഡ്യുവൽ ക്യാമറ ഉപയോഗിച്ച് കുറഞ്ഞ നോയ്‌സിൽ മനോഹരമായ വീഡിയോകൾ റെക്കോർഡ് ചെയ്യാനാകും. വളരെ-ഉയർന്ന സെൻസിറ്റീവിറ്റി ഉപയോഗിച്ച് റെക്കോർഡ് ചെയ്യുന്ന ദൃശ്യങ്ങളെ അടിസ്ഥാനമാക്കി ക്യാമറ സിംഗിൾ ക്യാമറയ്‌ക്കും ഡ്യുവൽ ക്യാമറയ്‌ക്കും ഇടയിൽ സ്വയമേവ മാറുന്നു.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">ഡ്യുവൽ ക്യാമറ ഉപ. വീഡിയോ റെക്കോർ.</string>
     <string name="cam_strings_video_fusion_tutorial_1_txt">ഡ്യുവൽ ക്യാമറ ഉപയോഗിച്ച് റെക്കോർഡ് ചെയ്യുമ്പോൾ ഒബ്‌ജക്റ്റിൽ നിന്നും കുറഞ്ഞത് 1 മീറ്ററെങ്കിലും അകലം പാലിക്കുക. ഒബ്‌ജക്റ്റിനോട് കൂടുതൽ അടുക്കുന്നത്, വളരെ-ഉയർന്ന സെൻസിറ്റീവിറ്റിയിൽ റെക്കോർഡുചെയ്യുമ്പോൾ വ്യൂ പോയിന്റോ വർണ്ണമോ മാറാൻ ഇടയാക്കാം.</string>
     <string name="cam_strings_video_fusion_tutorial_2_title_txt">വീഡിയോ റെക്കോർ. ഡ്യുവൽ ക്യാമറ ഉപ.?</string>
-    <string name="cam_strings_video_fusion_tutorial_2_txt">മികച്ച ക്ലോസപ്പ് ഫോട്ടോകളെടുക്കാൻ, \'ഇല്ല\' ടാപ് ചെയ്‌ത് സിംഗിൾ ക്യാമറയിലേക്ക് മാറുക. വ്യൂഫൈൻഡറിലെ ബട്ടൺ ടാപ് ചെയ്‌തുകൊണ്ട് ഏതുസമയത്തും നിങ്ങൾക്ക് ഡ്യുവൽ ക്യാമറയിലേക്ക് തിരികെ മാറാവുന്നതാണ്.</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">"മികച്ച ക്ലോസപ്പ് ഫോട്ടോകളെടുക്കാൻ, 'ഇല്ല' ടാപ് ചെയ്‌ത് സിംഗിൾ ക്യാമറയിലേക്ക് മാറുക. വ്യൂഫൈൻഡറിലെ ബട്ടൺ ടാപ് ചെയ്‌തുകൊണ്ട് ഏതുസമയത്തും നിങ്ങൾക്ക് ഡ്യുവൽ ക്യാമറയിലേക്ക് തിരികെ മാറാവുന്നതാണ്."</string>
     <string name="cam_strings_video_hdr_hlg_txt">HDR ഓണാണ്</string>
     <string name="cam_strings_video_hdr_setting_hlg_txt">HDR</string>
     <string name="cam_strings_video_hdr_title_txt">HDR വീഡിയോ</string>

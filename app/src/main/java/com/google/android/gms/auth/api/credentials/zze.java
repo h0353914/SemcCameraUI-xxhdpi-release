@@ -1,11 +1,12 @@
 package com.google.android.gms.auth.api.credentials;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import android.os.Parcelable;
+import com.google.android.gms.common.internal.safeparcel.zza;
 import java.util.ArrayList;
 
-public class zze implements Parcelable$Creator<PasswordSpecification> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zze implements Parcelable.Creator<PasswordSpecification> {
     static void zza(PasswordSpecification passwordSpecification, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zza(parcel, 1, passwordSpecification.zzSv, false);
@@ -17,17 +18,9 @@ public class zze implements Parcelable$Creator<PasswordSpecification> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ PasswordSpecification createFromParcel(Parcel parcel) {
-        return zzI(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ PasswordSpecification[] newArray(int i) {
-        return zzaz(i);
-    }
-
-    public PasswordSpecification zzI(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzI, reason: merged with bridge method [inline-methods] */
+    public PasswordSpecification createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         String strZzp = null;
         ArrayList<String> arrayListZzD = null;
@@ -66,10 +59,12 @@ public class zze implements Parcelable$Creator<PasswordSpecification> {
         if (parcel.dataPosition() == iZzap) {
             return new PasswordSpecification(iZzg, strZzp, arrayListZzD, arrayListZzC, iZzg2, iZzg3);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public PasswordSpecification[] zzaz(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaz, reason: merged with bridge method [inline-methods] */
+    public PasswordSpecification[] newArray(int i) {
         return new PasswordSpecification[i];
     }
 }

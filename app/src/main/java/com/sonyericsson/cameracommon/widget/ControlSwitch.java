@@ -23,7 +23,6 @@ public class ControlSwitch extends Switch {
                     this.mText.setRotation(-90.0f);
                     synchronized (this.mSwitchBundle) {
                         this.mSwitchBundle.setRotation(-90.0f);
-                        break;
                     }
                     this.mIsUpsideDown = true;
                 }
@@ -34,7 +33,6 @@ public class ControlSwitch extends Switch {
                     this.mText.setRotation(0.0f);
                     synchronized (this.mSwitchBundle) {
                         this.mSwitchBundle.setRotation(0.0f);
-                        break;
                     }
                     this.mIsUpsideDown = false;
                 }

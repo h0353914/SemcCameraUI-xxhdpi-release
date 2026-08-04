@@ -8,8 +8,8 @@ import java.nio.ByteOrder;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.ImageBuilder;
 import org.apache.commons.imaging.formats.tiff.TiffDirectory;
-import org.apache.commons.imaging.formats.tiff.TiffElement$DataElement;
-import org.apache.commons.imaging.formats.tiff.TiffImageData$Tiles;
+import org.apache.commons.imaging.formats.tiff.TiffElement;
+import org.apache.commons.imaging.formats.tiff.TiffImageData;
 import org.apache.commons.imaging.formats.tiff.photometricinterpreters.PhotometricInterpreter;
 import org.apache.commons.imaging.formats.tiff.photometricinterpreters.PhotometricInterpreterRgb;
 
@@ -17,17 +17,17 @@ public final class DataReaderTiled extends DataReader {
     private final int bitsPerPixel;
     private final ByteOrder byteOrder;
     private final int compression;
-    private final TiffImageData$Tiles imageData;
+    private final TiffImageData.Tiles imageData;
     private final int tileLength;
     private final int tileWidth;
 
-    public DataReaderTiled(TiffDirectory tiffDirectory, PhotometricInterpreter photometricInterpreter, int i, int i2, int i3, int[] iArr, int i4, int i5, int i6, int i7, int i8, ByteOrder byteOrder, TiffImageData$Tiles tiffImageData$Tiles) {
+    public DataReaderTiled(TiffDirectory tiffDirectory, PhotometricInterpreter photometricInterpreter, int i, int i2, int i3, int[] iArr, int i4, int i5, int i6, int i7, int i8, ByteOrder byteOrder, TiffImageData.Tiles tiles) {
         super(tiffDirectory, photometricInterpreter, iArr, i4, i5, i6, i7);
         this.tileWidth = i;
         this.tileLength = i2;
         this.bitsPerPixel = i3;
         this.compression = i8;
-        this.imageData = tiffImageData$Tiles;
+        this.imageData = tiles;
         this.byteOrder = byteOrder;
     }
 
@@ -105,8 +105,8 @@ public final class DataReaderTiled extends DataReader {
         int i = (((this.tileWidth * this.bitsPerPixel) + 7) / 8) * this.tileLength;
         int i2 = 0;
         int i3 = 0;
-        for (TiffElement$DataElement tiffElement$DataElement : this.imageData.tiles) {
-            interpretTile(imageBuilder, decompress(tiffElement$DataElement.getData(), this.compression, i, this.tileWidth, this.tileLength), i2, i3, this.width, this.height);
+        for (TiffElement.DataElement dataElement : this.imageData.tiles) {
+            interpretTile(imageBuilder, decompress(dataElement.getData(), this.compression, i, this.tileWidth, this.tileLength), i2, i3, this.width, this.height);
             int i4 = this.tileWidth + i2;
             if (i4 >= this.width) {
                 i3 += this.tileLength;

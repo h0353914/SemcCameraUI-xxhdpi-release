@@ -4,6 +4,22 @@ class HuffmanTreeException extends Exception {
     private static final long serialVersionUID = 1;
 
     public HuffmanTreeException(String str) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         super(str);
     }
 

@@ -4,10 +4,10 @@ import android.app.PendingIntent;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzc implements Parcelable$Creator<ProxyResponse> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzc implements Parcelable.Creator<ProxyResponse> {
     static void zza(ProxyResponse proxyResponse, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, proxyResponse.googlePlayServicesStatusCode);
@@ -19,17 +19,9 @@ public class zzc implements Parcelable$Creator<ProxyResponse> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ProxyResponse createFromParcel(Parcel parcel) {
-        return zzN(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ProxyResponse[] newArray(int i) {
-        return zzaE(i);
-    }
-
-    public ProxyResponse zzN(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzN, reason: merged with bridge method [inline-methods] */
+    public ProxyResponse createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         PendingIntent pendingIntent = null;
         Bundle bundleZzr = null;
@@ -68,10 +60,12 @@ public class zzc implements Parcelable$Creator<ProxyResponse> {
         if (parcel.dataPosition() == iZzap) {
             return new ProxyResponse(iZzg, iZzg2, pendingIntent, iZzg3, bundleZzr, bArrZzs);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public ProxyResponse[] zzaE(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaE, reason: merged with bridge method [inline-methods] */
+    public ProxyResponse[] newArray(int i) {
         return new ProxyResponse[i];
     }
 }

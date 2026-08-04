@@ -1,27 +1,25 @@
 package com.sonyericsson.android.camera.util;
 
 import android.app.ActivityManager;
-import android.app.ActivityManager$MemoryInfo;
-import android.app.ActivityManager$RunningAppProcessInfo;
 import android.content.Context;
 import android.os.Debug;
-import android.os.Debug$MemoryInfo;
+import com.sonyericsson.android.camera.view.modeselector.CameraCommonProviderConstants;
 import java.util.List;
 
 public class MemoryAnalyzer {
     public static final String TAG = "MemoryAnalyzer";
 
     public static synchronized void logMemoryInfo(Context context, String str, String str2) {
-        ActivityManager activityManager = (ActivityManager) context.getSystemService("activity");
-        ActivityManager$MemoryInfo activityManager$MemoryInfo = new ActivityManager$MemoryInfo();
-        activityManager.getMemoryInfo(activityManager$MemoryInfo);
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(CameraCommonProviderConstants.CapturingModeColumns.ACTIVITY);
+        ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
+        activityManager.getMemoryInfo(memoryInfo);
         if (CamLog.VERBOSE) {
-            CamLog.d("System Memory Info : availMem = " + activityManager$MemoryInfo.availMem);
+            CamLog.d("System Memory Info : availMem = " + memoryInfo.availMem);
         }
         if (CamLog.VERBOSE) {
-            CamLog.d("System Memory Info : threshold = " + activityManager$MemoryInfo.threshold);
+            CamLog.d("System Memory Info : threshold = " + memoryInfo.threshold);
         }
-        List<ActivityManager$RunningAppProcessInfo> runningAppProcesses = activityManager.getRunningAppProcesses();
+        List<ActivityManager.RunningAppProcessInfo> runningAppProcesses = activityManager.getRunningAppProcesses();
         if (runningAppProcesses != null) {
             int i = 0;
             while (true) {
@@ -41,6 +39,7 @@ public class MemoryAnalyzer {
                     if (CamLog.VERBOSE) {
                         CamLog.d("Process Info : processName = " + runningAppProcesses.get(i).processName);
                     }
+                    break;
                 } else {
                     i++;
                 }
@@ -50,43 +49,43 @@ public class MemoryAnalyzer {
                     CamLog.d("Info : Can not find Camera Process Info");
                 }
             } else {
-                Debug$MemoryInfo debug$MemoryInfo = new Debug$MemoryInfo();
-                Debug.getMemoryInfo(debug$MemoryInfo);
+                Debug.MemoryInfo memoryInfo2 = new Debug.MemoryInfo();
+                Debug.getMemoryInfo(memoryInfo2);
                 if (CamLog.VERBOSE) {
-                    CamLog.d("Proc Memory Info : dalvikPrivateDirty   = " + debug$MemoryInfo.dalvikPrivateDirty);
+                    CamLog.d("Proc Memory Info : dalvikPrivateDirty   = " + memoryInfo2.dalvikPrivateDirty);
                 }
                 if (CamLog.VERBOSE) {
-                    CamLog.d("Proc Memory Info : dalvikPss            = " + debug$MemoryInfo.dalvikPss);
+                    CamLog.d("Proc Memory Info : dalvikPss            = " + memoryInfo2.dalvikPss);
                 }
                 if (CamLog.VERBOSE) {
-                    CamLog.d("Proc Memory Info : dalvikSharedDirty    = " + debug$MemoryInfo.dalvikSharedDirty);
+                    CamLog.d("Proc Memory Info : dalvikSharedDirty    = " + memoryInfo2.dalvikSharedDirty);
                 }
                 if (CamLog.VERBOSE) {
-                    CamLog.d("Proc Memory Info : nativePrivateDirty   = " + debug$MemoryInfo.nativePrivateDirty);
+                    CamLog.d("Proc Memory Info : nativePrivateDirty   = " + memoryInfo2.nativePrivateDirty);
                 }
                 if (CamLog.VERBOSE) {
-                    CamLog.d("Proc Memory Info : nativePss            = " + debug$MemoryInfo.nativePss);
+                    CamLog.d("Proc Memory Info : nativePss            = " + memoryInfo2.nativePss);
                 }
                 if (CamLog.VERBOSE) {
-                    CamLog.d("Proc Memory Info : nativeSharedDirty    = " + debug$MemoryInfo.nativeSharedDirty);
+                    CamLog.d("Proc Memory Info : nativeSharedDirty    = " + memoryInfo2.nativeSharedDirty);
                 }
                 if (CamLog.VERBOSE) {
-                    CamLog.d("Proc Memory Info : otherPrivateDirty    = " + debug$MemoryInfo.otherPrivateDirty);
+                    CamLog.d("Proc Memory Info : otherPrivateDirty    = " + memoryInfo2.otherPrivateDirty);
                 }
                 if (CamLog.VERBOSE) {
-                    CamLog.d("Proc Memory Info : otherPss             = " + debug$MemoryInfo.otherPss);
+                    CamLog.d("Proc Memory Info : otherPss             = " + memoryInfo2.otherPss);
                 }
                 if (CamLog.VERBOSE) {
-                    CamLog.d("Proc Memory Info : otherSharedDirty     = " + debug$MemoryInfo.otherSharedDirty);
+                    CamLog.d("Proc Memory Info : otherSharedDirty     = " + memoryInfo2.otherSharedDirty);
                 }
                 if (CamLog.VERBOSE) {
-                    CamLog.d("Proc Memory Info : getTotalPrivateDirty = " + debug$MemoryInfo.getTotalPrivateDirty());
+                    CamLog.d("Proc Memory Info : getTotalPrivateDirty = " + memoryInfo2.getTotalPrivateDirty());
                 }
                 if (CamLog.VERBOSE) {
-                    CamLog.d("Proc Memory Info : getTotalPss          = " + debug$MemoryInfo.getTotalPss());
+                    CamLog.d("Proc Memory Info : getTotalPss          = " + memoryInfo2.getTotalPss());
                 }
                 if (CamLog.VERBOSE) {
-                    CamLog.d("Proc Memory Info : getTotalSharedDirty  = " + debug$MemoryInfo.getTotalSharedDirty());
+                    CamLog.d("Proc Memory Info : getTotalSharedDirty  = " + memoryInfo2.getTotalSharedDirty());
                 }
             }
         } else if (CamLog.VERBOSE) {

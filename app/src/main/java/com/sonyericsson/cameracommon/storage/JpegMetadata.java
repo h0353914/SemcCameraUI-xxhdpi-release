@@ -106,7 +106,10 @@ public class JpegMetadata {
     }
 
     void add(TagInfoByte tagInfoByte, byte... bArr) throws ImageWriteException {
-        getDirectoryForTag(tagInfoByte).add(tagInfoByte, bArr);
+        TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoByte);
+        for (byte b : bArr) {
+            directoryForTag.add(tagInfoByte, b);
+        }
     }
 
     void add(TagInfoAscii tagInfoAscii, String... strArr) throws ImageWriteException {
@@ -114,39 +117,66 @@ public class JpegMetadata {
     }
 
     void add(TagInfoShort tagInfoShort, short... sArr) throws ImageWriteException {
-        getDirectoryForTag(tagInfoShort).add(tagInfoShort, sArr);
+        TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoShort);
+        for (short s : sArr) {
+            directoryForTag.add(tagInfoShort, s);
+        }
     }
 
     void add(TagInfoLong tagInfoLong, int... iArr) throws ImageWriteException {
-        getDirectoryForTag(tagInfoLong).add(tagInfoLong, iArr);
+        TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoLong);
+        for (int i : iArr) {
+            directoryForTag.add(tagInfoLong, i);
+        }
     }
 
     void add(TagInfoRational tagInfoRational, RationalNumber... rationalNumberArr) throws ImageWriteException {
-        getDirectoryForTag(tagInfoRational).add(tagInfoRational, rationalNumberArr);
+        TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoRational);
+        for (RationalNumber rationalNumber : rationalNumberArr) {
+            directoryForTag.add(tagInfoRational, rationalNumber);
+        }
     }
 
     void add(TagInfoSByte tagInfoSByte, byte... bArr) throws ImageWriteException {
-        getDirectoryForTag(tagInfoSByte).add(tagInfoSByte, bArr);
+        TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoSByte);
+        for (byte b : bArr) {
+            directoryForTag.add(tagInfoSByte, b);
+        }
     }
 
     void add(TagInfoSShort tagInfoSShort, short... sArr) throws ImageWriteException {
-        getDirectoryForTag(tagInfoSShort).add(tagInfoSShort, sArr);
+        TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoSShort);
+        for (short s : sArr) {
+            directoryForTag.add(tagInfoSShort, s);
+        }
     }
 
     void add(TagInfoSLong tagInfoSLong, int... iArr) throws ImageWriteException {
-        getDirectoryForTag(tagInfoSLong).add(tagInfoSLong, iArr);
+        TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoSLong);
+        for (int i : iArr) {
+            directoryForTag.add(tagInfoSLong, i);
+        }
     }
 
     void add(TagInfoSRational tagInfoSRational, RationalNumber... rationalNumberArr) throws ImageWriteException {
-        getDirectoryForTag(tagInfoSRational).add(tagInfoSRational, rationalNumberArr);
+        TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoSRational);
+        for (RationalNumber rationalNumber : rationalNumberArr) {
+            directoryForTag.add(tagInfoSRational, rationalNumber);
+        }
     }
 
     void add(TagInfoFloat tagInfoFloat, float... fArr) throws ImageWriteException {
-        getDirectoryForTag(tagInfoFloat).add(tagInfoFloat, fArr);
+        TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoFloat);
+        for (float f : fArr) {
+            directoryForTag.add(tagInfoFloat, f);
+        }
     }
 
     void add(TagInfoDouble tagInfoDouble, double... dArr) throws ImageWriteException {
-        getDirectoryForTag(tagInfoDouble).add(tagInfoDouble, dArr);
+        TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoDouble);
+        for (double d : dArr) {
+            directoryForTag.add(tagInfoDouble, d);
+        }
     }
 
     void add(TagInfoByteOrShort tagInfoByteOrShort, byte... bArr) throws ImageWriteException {
@@ -212,7 +242,9 @@ public class JpegMetadata {
     void set(TagInfoByte tagInfoByte, byte... bArr) throws ImageWriteException {
         TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoByte);
         directoryForTag.removeField(tagInfoByte);
-        directoryForTag.add(tagInfoByte, bArr);
+        for (byte b : bArr) {
+            directoryForTag.add(tagInfoByte, b);
+        }
     }
 
     void set(TagInfoAscii tagInfoAscii, String... strArr) throws ImageWriteException {
@@ -224,55 +256,73 @@ public class JpegMetadata {
     void set(TagInfoShort tagInfoShort, short... sArr) throws ImageWriteException {
         TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoShort);
         directoryForTag.removeField(tagInfoShort);
-        directoryForTag.add(tagInfoShort, sArr);
+        for (short s : sArr) {
+            directoryForTag.add(tagInfoShort, s);
+        }
     }
 
     void set(TagInfoLong tagInfoLong, int... iArr) throws ImageWriteException {
         TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoLong);
         directoryForTag.removeField(tagInfoLong);
-        directoryForTag.add(tagInfoLong, iArr);
+        for (int i : iArr) {
+            directoryForTag.add(tagInfoLong, i);
+        }
     }
 
     void set(TagInfoRational tagInfoRational, RationalNumber... rationalNumberArr) throws ImageWriteException {
         TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoRational);
         directoryForTag.removeField(tagInfoRational);
-        directoryForTag.add(tagInfoRational, rationalNumberArr);
+        for (RationalNumber rationalNumber : rationalNumberArr) {
+            directoryForTag.add(tagInfoRational, rationalNumber);
+        }
     }
 
     void set(TagInfoSByte tagInfoSByte, byte... bArr) throws ImageWriteException {
         TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoSByte);
         directoryForTag.removeField(tagInfoSByte);
-        directoryForTag.add(tagInfoSByte, bArr);
+        for (byte b : bArr) {
+            directoryForTag.add(tagInfoSByte, b);
+        }
     }
 
     void set(TagInfoSShort tagInfoSShort, short... sArr) throws ImageWriteException {
         TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoSShort);
         directoryForTag.removeField(tagInfoSShort);
-        directoryForTag.add(tagInfoSShort, sArr);
+        for (short s : sArr) {
+            directoryForTag.add(tagInfoSShort, s);
+        }
     }
 
     void set(TagInfoSLong tagInfoSLong, int... iArr) throws ImageWriteException {
         TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoSLong);
         directoryForTag.removeField(tagInfoSLong);
-        directoryForTag.add(tagInfoSLong, iArr);
+        for (int i : iArr) {
+            directoryForTag.add(tagInfoSLong, i);
+        }
     }
 
     void set(TagInfoSRational tagInfoSRational, RationalNumber... rationalNumberArr) throws ImageWriteException {
         TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoSRational);
         directoryForTag.removeField(tagInfoSRational);
-        directoryForTag.add(tagInfoSRational, rationalNumberArr);
+        for (RationalNumber rationalNumber : rationalNumberArr) {
+            directoryForTag.add(tagInfoSRational, rationalNumber);
+        }
     }
 
     void set(TagInfoFloat tagInfoFloat, float... fArr) throws ImageWriteException {
         TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoFloat);
         directoryForTag.removeField(tagInfoFloat);
-        directoryForTag.add(tagInfoFloat, fArr);
+        for (float f : fArr) {
+            directoryForTag.add(tagInfoFloat, f);
+        }
     }
 
     void set(TagInfoDouble tagInfoDouble, double... dArr) throws ImageWriteException {
         TiffOutputDirectory directoryForTag = getDirectoryForTag(tagInfoDouble);
         directoryForTag.removeField(tagInfoDouble);
-        directoryForTag.add(tagInfoDouble, dArr);
+        for (double d : dArr) {
+            directoryForTag.add(tagInfoDouble, d);
+        }
     }
 
     void set(TagInfoByteOrShort tagInfoByteOrShort, byte... bArr) throws ImageWriteException {

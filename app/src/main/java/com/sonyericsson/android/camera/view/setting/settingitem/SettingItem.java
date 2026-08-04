@@ -1,9 +1,30 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.view.setting.settingitem;
 
 import android.content.res.Resources;
 import java.util.List;
 
 public interface SettingItem {
+
+    public enum Selectability {
+        SELECTABLE,
+        UNSELECTABLE,
+        RESTRICTED
+    }
+
     boolean compareData(SettingItem settingItem);
 
     boolean compareData(Object obj);
@@ -16,7 +37,7 @@ public interface SettingItem {
 
     int getIconId();
 
-    SettingItem$Selectability getSelectability();
+    Selectability getSelectability();
 
     String getSubText(Resources resources);
 
@@ -30,7 +51,7 @@ public interface SettingItem {
 
     void select();
 
-    void setSelectability(SettingItem$Selectability settingItem$Selectability);
+    void setSelectability(Selectability selectability);
 
     void setSelected(boolean z);
 }

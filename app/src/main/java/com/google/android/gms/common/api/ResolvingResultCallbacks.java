@@ -4,6 +4,7 @@ import android.app.Activity;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.internal.zzx;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public abstract class ResolvingResultCallbacks<R extends Result> extends ResultCallbacks<R> {
     private final Activity mActivity;
     private final int zzaaY;

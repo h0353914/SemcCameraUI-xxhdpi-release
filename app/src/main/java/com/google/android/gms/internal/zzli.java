@@ -1,39 +1,33 @@
 package com.google.android.gms.internal;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.os.DeadObjectException;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.os.Message;
 import android.os.RemoteException;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.Api;
-import com.google.android.gms.common.api.Api$ApiOptions;
-import com.google.android.gms.common.api.Api$zza;
-import com.google.android.gms.common.api.Api$zzb;
-import com.google.android.gms.common.api.Api$zzc;
-import com.google.android.gms.common.api.Api$zzd;
-import com.google.android.gms.common.api.Api$zze;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.GoogleApiClient$Builder;
-import com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Result;
+import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.common.api.zza;
 import com.google.android.gms.common.internal.zzac;
 import com.google.android.gms.common.internal.zzf;
-import com.google.android.gms.common.internal.zzf$zza;
 import com.google.android.gms.common.internal.zzk;
-import com.google.android.gms.common.internal.zzk$zza;
 import com.google.android.gms.common.internal.zzx;
+import com.google.android.gms.internal.zzlb;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -51,62 +45,228 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzli extends GoogleApiClient {
     private final Context mContext;
     private final int zzaaM;
     private final Looper zzaaO;
     private final GoogleApiAvailability zzaaP;
-    final Api$zza<? extends zzqw, zzqx> zzaaQ;
-    final zzf zzabI;
+    final Api.zza<? extends zzqw, zzqx> zzaaQ;
+    final com.google.android.gms.common.internal.zzf zzabI;
     final zzk zzabZ;
     private volatile boolean zzacb;
-    private final zzli$zza zzace;
-    zzli$zzd zzacf;
-    private zza zzacn;
+    private final zza zzace;
+    zzd zzacf;
+    private com.google.android.gms.common.api.zza zzacn;
     private final Lock zzabt = new ReentrantLock();
-    final Queue<zzli$zzf<?>> zzaca = new LinkedList();
+    final Queue<zzf<?>> zzaca = new LinkedList();
     private long zzacc = 120000;
     private long zzacd = 5000;
-    final Map<Api$zzc<?>, Api$zzb> zzacg = new HashMap();
-    final Map<Api$zzc<?>, ConnectionResult> zzach = new HashMap();
+    final Map<Api.zzc<?>, Api.zzb> zzacg = new HashMap();
+    final Map<Api.zzc<?>, ConnectionResult> zzach = new HashMap();
     Set<Scope> zzaci = new HashSet();
     private ConnectionResult zzack = null;
     private final Set<zzlm<?>> zzacl = Collections.newSetFromMap(new WeakHashMap());
-    final Set<zzli$zzf<?>> zzacm = Collections.newSetFromMap(new ConcurrentHashMap(16, 0.75f, 2));
-    private final zzli$zze zzaco = new zzli$1(this);
-    private final GoogleApiClient$ConnectionCallbacks zzacp = new zzli$2(this);
-    private final zzk$zza zzacq = new zzli$3(this);
+    final Set<zzf<?>> zzacm = Collections.newSetFromMap(new ConcurrentHashMap(16, 0.75f, 2));
+    private final zze zzaco = new zze() { // from class: com.google.android.gms.internal.zzli.1
+        @Override // com.google.android.gms.internal.zzli.zze
+        public void zzc(zzf<?> zzfVar) {
+            zzli.this.zzacm.remove(zzfVar);
+            if (zzfVar.zznF() == null || zzli.this.zzacn == null) {
+                return;
+            }
+            zzli.this.zzacn.remove(zzfVar.zznF().intValue());
+        }
+    };
+    private final GoogleApiClient.ConnectionCallbacks zzacp = new GoogleApiClient.ConnectionCallbacks() { // from class: com.google.android.gms.internal.zzli.2
+        @Override // com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks
+        public void onConnected(Bundle bundle) {
+            zzli.this.zzabt.lock();
+            try {
+                zzli.this.zzacj.onConnected(bundle);
+            } finally {
+                zzli.this.zzabt.unlock();
+            }
+        }
+
+        @Override // com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks
+        public void onConnectionSuspended(int i) {
+            zzli.this.zzabt.lock();
+            try {
+                zzli.this.zzacj.onConnectionSuspended(i);
+            } finally {
+                zzli.this.zzabt.unlock();
+            }
+        }
+    };
+    private final zzk.zza zzacq = new zzk.zza() { // from class: com.google.android.gms.internal.zzli.3
+        @Override // com.google.android.gms.common.internal.zzk.zza
+        public boolean isConnected() {
+            return zzli.this.isConnected();
+        }
+
+        @Override // com.google.android.gms.common.internal.zzk.zza
+        public Bundle zzmS() {
+            return null;
+        }
+    };
     final Map<Api<?>, Integer> zzabJ = new HashMap();
     private final Condition zzabY = this.zzabt.newCondition();
     private volatile zzlj zzacj = new zzlh(this);
 
-    public zzli(Context context, Looper looper, zzf zzfVar, GoogleApiAvailability googleApiAvailability, Api$zza<? extends zzqw, zzqx> api$zza, Map<Api<?>, Api$ApiOptions> map, ArrayList<GoogleApiClient$ConnectionCallbacks> arrayList, ArrayList<GoogleApiClient$OnConnectionFailedListener> arrayList2, int i) {
+    final class zza extends Handler {
+        zza(Looper looper) {
+            super(looper);
+        }
+
+        @Override // android.os.Handler
+        public void handleMessage(Message message) {
+            switch (message.what) {
+                case 1:
+                    zzli.this.zzod();
+                    return;
+                case 2:
+                    zzli.this.resume();
+                    return;
+                case 3:
+                    ((zzb) message.obj).zzg(zzli.this);
+                    return;
+                case 4:
+                    throw ((RuntimeException) message.obj);
+                default:
+                    Log.w("GoogleApiClientImpl", "Unknown message id: " + message.what);
+                    return;
+            }
+        }
+    }
+
+    static abstract class zzb {
+        private final zzlj zzacy;
+
+        protected zzb(zzlj zzljVar) {
+            this.zzacy = zzljVar;
+        }
+
+        public final void zzg(zzli zzliVar) {
+            zzliVar.zzabt.lock();
+            try {
+                if (zzliVar.zzacj != this.zzacy) {
+                    return;
+                }
+                zznO();
+            } finally {
+                zzliVar.zzabt.unlock();
+            }
+        }
+
+        protected abstract void zznO();
+    }
+
+    private static class zzc implements IBinder.DeathRecipient, zze {
+        private final WeakReference<com.google.android.gms.common.api.zza> zzacA;
+        private final WeakReference<IBinder> zzacB;
+        private final WeakReference<zzf<?>> zzacz;
+
+        private zzc(zzf zzfVar, com.google.android.gms.common.api.zza zzaVar, IBinder iBinder) {
+            this.zzacA = new WeakReference<>(zzaVar);
+            this.zzacz = new WeakReference<>(zzfVar);
+            this.zzacB = new WeakReference<>(iBinder);
+        }
+
+        private void zzoh() {
+            zzf<?> zzfVar = this.zzacz.get();
+            com.google.android.gms.common.api.zza zzaVar = this.zzacA.get();
+            if (zzaVar != null && zzfVar != null) {
+                zzaVar.remove(zzfVar.zznF().intValue());
+            }
+            IBinder iBinder = this.zzacB.get();
+            if (this.zzacB != null) {
+                iBinder.unlinkToDeath(this, 0);
+            }
+        }
+
+        @Override // android.os.IBinder.DeathRecipient
+        public void binderDied() {
+            zzoh();
+        }
+
+        @Override // com.google.android.gms.internal.zzli.zze
+        public void zzc(zzf<?> zzfVar) {
+            zzoh();
+        }
+    }
+
+    static class zzd extends zzll {
+        private WeakReference<zzli> zzacC;
+
+        zzd(zzli zzliVar) {
+            this.zzacC = new WeakReference<>(zzliVar);
+        }
+
+        @Override // com.google.android.gms.internal.zzll
+        public void zzoi() {
+            zzli zzliVar = this.zzacC.get();
+            if (zzliVar == null) {
+                return;
+            }
+            zzliVar.resume();
+        }
+    }
+
+    interface zze {
+        void zzc(zzf<?> zzfVar);
+    }
+
+    interface zzf<A extends Api.zzb> {
+        void cancel();
+
+        boolean isReady();
+
+        void zza(zze zzeVar);
+
+        void zzb(A a) throws DeadObjectException;
+
+        Integer zznF();
+
+        void zznJ();
+
+        int zznK();
+
+        Api.zzc<A> zznx();
+
+        void zzv(Status status);
+
+        void zzw(Status status);
+    }
+
+    public zzli(Context context, Looper looper, com.google.android.gms.common.internal.zzf zzfVar, GoogleApiAvailability googleApiAvailability, Api.zza<? extends zzqw, zzqx> zzaVar, Map<Api<?>, Api.ApiOptions> map, ArrayList<GoogleApiClient.ConnectionCallbacks> arrayList, ArrayList<GoogleApiClient.OnConnectionFailedListener> arrayList2, int i) {
         this.mContext = context;
         this.zzabZ = new zzk(looper, this.zzacq);
         this.zzaaO = looper;
-        this.zzace = new zzli$zza(this, looper);
+        this.zzace = new zza(looper);
         this.zzaaP = googleApiAvailability;
         this.zzaaM = i;
-        Iterator<GoogleApiClient$ConnectionCallbacks> it = arrayList.iterator();
+        Iterator<GoogleApiClient.ConnectionCallbacks> it = arrayList.iterator();
         while (it.hasNext()) {
             this.zzabZ.registerConnectionCallbacks(it.next());
         }
-        Iterator<GoogleApiClient$OnConnectionFailedListener> it2 = arrayList2.iterator();
+        Iterator<GoogleApiClient.OnConnectionFailedListener> it2 = arrayList2.iterator();
         while (it2.hasNext()) {
             this.zzabZ.registerConnectionFailedListener(it2.next());
         }
-        Map<Api<?>, zzf$zza> mapZzoM = zzfVar.zzoM();
+        Map<Api<?>, com.google.android.gms.common.internal.zzf.zza> mapZzoM = zzfVar.zzoM();
         for (Api<?> api : map.keySet()) {
-            Api$ApiOptions api$ApiOptions = map.get(api);
+            Api.ApiOptions apiOptions = map.get(api);
             int i2 = mapZzoM.get(api) != null ? mapZzoM.get(api).zzafk ? 1 : 2 : 0;
             this.zzabJ.put(api, Integer.valueOf(i2));
-            this.zzacg.put(api.zznx(), api.zzny() ? zza(api.zznw(), api$ApiOptions, context, looper, zzfVar, this.zzacp, zza(api, i2)) : zza(api.zznv(), api$ApiOptions, context, looper, zzfVar, this.zzacp, zza(api, i2)));
+            this.zzacg.put(api.zznx(), api.zzny() ? zza(api.zznw(), apiOptions, context, looper, zzfVar, this.zzacp, zza(api, i2)) : zza(api.zznv(), apiOptions, context, looper, zzfVar, this.zzacp, zza(api, i2)));
         }
         this.zzabI = zzfVar;
-        this.zzaaQ = api$zza;
+        this.zzaaQ = zzaVar;
     }
 
-    private void resume() {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void resume() {
         this.zzabt.lock();
         try {
             if (zzoc()) {
@@ -118,72 +278,51 @@ public final class zzli extends GoogleApiClient {
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    private static <C extends Api$zzb, O> C zza(Api$zza<C, O> api$zza, Object obj, Context context, Looper looper, zzf zzfVar, GoogleApiClient$ConnectionCallbacks googleApiClient$ConnectionCallbacks, GoogleApiClient$OnConnectionFailedListener googleApiClient$OnConnectionFailedListener) {
-        return (C) api$zza.zza(context, looper, zzfVar, obj, googleApiClient$ConnectionCallbacks, googleApiClient$OnConnectionFailedListener);
+    private static <C extends Api.zzb, O> C zza(Api.zza<C, O> zzaVar, Object obj, Context context, Looper looper, com.google.android.gms.common.internal.zzf zzfVar, GoogleApiClient.ConnectionCallbacks connectionCallbacks, GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener) {
+        return (C) zzaVar.zza(context, looper, zzfVar, (O) obj, connectionCallbacks, onConnectionFailedListener);
     }
 
-    private GoogleApiClient$OnConnectionFailedListener zza(Api<?> api, int i) {
-        return new zzli$4(this, api, i);
-    }
-
-    static /* synthetic */ zza zza(zzli zzliVar) {
-        return zzliVar.zzacn;
+    private GoogleApiClient.OnConnectionFailedListener zza(final Api<?> api, final int i) {
+        return new GoogleApiClient.OnConnectionFailedListener() { // from class: com.google.android.gms.internal.zzli.4
+            @Override // com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener
+            public void onConnectionFailed(ConnectionResult connectionResult) {
+                zzli.this.zzabt.lock();
+                try {
+                    zzli.this.zzacj.zza(connectionResult, api, i);
+                } finally {
+                    zzli.this.zzabt.unlock();
+                }
+            }
+        };
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    private static <C extends Api$zzd, O> zzac zza(Api$zze<C, O> api$zze, Object obj, Context context, Looper looper, zzf zzfVar, GoogleApiClient$ConnectionCallbacks googleApiClient$ConnectionCallbacks, GoogleApiClient$OnConnectionFailedListener googleApiClient$OnConnectionFailedListener) {
-        return new zzac(context, looper, api$zze.zznA(), googleApiClient$ConnectionCallbacks, googleApiClient$OnConnectionFailedListener, zzfVar, api$zze.zzn(obj));
+    private static <C extends Api.zzd, O> zzac zza(Api.zze<C, O> zzeVar, Object obj, Context context, Looper looper, com.google.android.gms.common.internal.zzf zzfVar, GoogleApiClient.ConnectionCallbacks connectionCallbacks, GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener) {
+        return new zzac(context, looper, zzeVar.zznA(), connectionCallbacks, onConnectionFailedListener, zzfVar, zzeVar.zzn((O) obj));
     }
 
-    private void zza(GoogleApiClient googleApiClient, zzlo zzloVar, boolean z) {
-        zzlx.zzagw.zzb(googleApiClient).setResultCallback(new zzli$7(this, zzloVar, z, googleApiClient));
-    }
-
-    private static void zza(zzli$zzf<?> zzli_zzf, zza zzaVar, IBinder iBinder) {
-        if (zzli_zzf.isReady()) {
-            zzli_zzf.zza(new zzli$zzc(zzli_zzf, zzaVar, iBinder, null));
+    private static void zza(zzf<?> zzfVar, com.google.android.gms.common.api.zza zzaVar, IBinder iBinder) {
+        if (zzfVar.isReady()) {
+            zzfVar.zza(new zzc(zzfVar, zzaVar, iBinder));
             return;
         }
         if (iBinder == null || !iBinder.isBinderAlive()) {
-            zzli_zzf.zza(null);
+            zzfVar.zza(null);
         } else {
-            zzli$zzc zzli_zzc = new zzli$zzc(zzli_zzf, zzaVar, iBinder, null);
-            zzli_zzf.zza(zzli_zzc);
+            zzc zzcVar = new zzc(zzfVar, zzaVar, iBinder);
+            zzfVar.zza(zzcVar);
             try {
-                iBinder.linkToDeath(zzli_zzc, 0);
+                iBinder.linkToDeath(zzcVar, 0);
                 return;
             } catch (RemoteException unused) {
             }
         }
-        zzli_zzf.cancel();
-        zzaVar.remove(zzli_zzf.zznF().intValue());
+        zzfVar.cancel();
+        zzaVar.remove(zzfVar.zznF().intValue());
     }
 
-    static /* synthetic */ void zza(zzli zzliVar, GoogleApiClient googleApiClient, zzlo zzloVar, boolean z) {
-        zzliVar.zza(googleApiClient, zzloVar, z);
-    }
-
-    static /* synthetic */ Lock zzb(zzli zzliVar) {
-        return zzliVar.zzabt;
-    }
-
-    static /* synthetic */ zzlj zzc(zzli zzliVar) {
-        return zzliVar.zzacj;
-    }
-
-    static /* synthetic */ void zzd(zzli zzliVar) {
-        zzliVar.resume();
-    }
-
-    static /* synthetic */ void zze(zzli zzliVar) {
-        zzliVar.zzod();
-    }
-
-    static /* synthetic */ int zzf(zzli zzliVar) {
-        return zzliVar.zzaaM;
-    }
-
-    private void zzod() {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void zzod() {
         this.zzabt.lock();
         try {
             if (zzof()) {
@@ -225,7 +364,8 @@ public final class zzli extends GoogleApiClient {
         Code decompiled incorrectly, please refer to instructions dump.
     */
     public ConnectionResult blockingConnect(long j, TimeUnit timeUnit) {
-        ConnectionResult connectionResult;
+
+        ConnectionResult connectionResult = new ConnectionResult(14, null);
         zzx.zza(Looper.myLooper() != Looper.getMainLooper(), "blockingConnect must not be called on the UI thread");
         zzx.zzb(timeUnit, "TimeUnit must not be null");
         this.zzabt.lock();
@@ -256,17 +396,48 @@ public final class zzli extends GoogleApiClient {
     @Override // com.google.android.gms.common.api.GoogleApiClient
     public PendingResult<Status> clearDefaultAccountAndReconnect() {
         zzx.zza(isConnected(), "GoogleApiClient is not connected yet.");
-        zzlo zzloVar = new zzlo(this);
+        final zzlo zzloVar = new zzlo(this);
         if (this.zzacg.containsKey(zzlx.zzRk)) {
             zza((GoogleApiClient) this, zzloVar, false);
             return zzloVar;
         }
-        AtomicReference atomicReference = new AtomicReference();
-        zzli$5 zzli_5 = new zzli$5(this, atomicReference, zzloVar);
-        GoogleApiClient googleApiClientBuild = new GoogleApiClient$Builder(this.mContext).addApi(zzlx.API).addConnectionCallbacks(zzli_5).addOnConnectionFailedListener(new zzli$6(this, zzloVar)).setHandler(this.zzace).build();
+        final AtomicReference atomicReference = new AtomicReference();
+        GoogleApiClient.ConnectionCallbacks connectionCallbacks = new GoogleApiClient.ConnectionCallbacks() { // from class: com.google.android.gms.internal.zzli.5
+            @Override // com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks
+            public void onConnected(Bundle bundle) {
+                zzli.this.zza((GoogleApiClient) atomicReference.get(), zzloVar, true);
+            }
+
+            @Override // com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks
+            public void onConnectionSuspended(int i) {
+            }
+        };
+        GoogleApiClient googleApiClientBuild = new GoogleApiClient.Builder(this.mContext).addApi(zzlx.API).addConnectionCallbacks(connectionCallbacks).addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() { // from class: com.google.android.gms.internal.zzli.6
+            @Override // com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener
+            public void onConnectionFailed(ConnectionResult connectionResult) {
+                zzloVar.zzb(new Status(8));
+            }
+        }).setHandler(this.zzace).build();
         atomicReference.set(googleApiClientBuild);
         googleApiClientBuild.connect();
         return zzloVar;
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public void zza(final GoogleApiClient googleApiClient, final zzlo zzloVar, final boolean z) {
+        zzlx.zzagw.zzb(googleApiClient).setResultCallback(new ResultCallback<Status>() { // from class: com.google.android.gms.internal.zzli.7
+            @Override // com.google.android.gms.common.api.ResultCallback
+            /* renamed from: zzo, reason: merged with bridge method [inline-methods] */
+            public void onResult(Status status) {
+                if (status.isSuccess() && zzli.this.isConnected()) {
+                    zzli.this.reconnect();
+                }
+                zzloVar.zzb(status);
+                if (z) {
+                    googleApiClient.disconnect();
+                }
+            }
+        });
     }
 
     @Override // com.google.android.gms.common.api.GoogleApiClient
@@ -306,20 +477,20 @@ public final class zzli extends GoogleApiClient {
     @Override // com.google.android.gms.common.api.GoogleApiClient
     public ConnectionResult getConnectionResult(Api<?> api) {
         ConnectionResult connectionResult;
-        Api$zzc<?> api$zzcZznx = api.zznx();
+        Api.zzc<?> zzcVarZznx = api.zznx();
         this.zzabt.lock();
         try {
             if (!isConnected() && !zzoc()) {
                 throw new IllegalStateException("Cannot invoke getConnectionResult unless GoogleApiClient is connected");
             }
-            if (!this.zzacg.containsKey(api$zzcZznx)) {
+            if (!this.zzacg.containsKey(zzcVarZznx)) {
                 this.zzabt.unlock();
                 throw new IllegalArgumentException(api.getName() + " was never registered with GoogleApiClient");
             }
-            if (this.zzacg.get(api$zzcZznx).isConnected()) {
+            if (this.zzacg.get(zzcVarZznx).isConnected()) {
                 connectionResult = ConnectionResult.zzZY;
-            } else if (this.zzach.containsKey(api$zzcZznx)) {
-                connectionResult = this.zzach.get(api$zzcZznx);
+            } else if (this.zzach.containsKey(zzcVarZznx)) {
+                connectionResult = this.zzach.get(zzcVarZznx);
             } else {
                 Log.i("GoogleApiClientImpl", zzog());
                 Log.wtf("GoogleApiClientImpl", api.getName() + " requested in getConnectionResult is not connected but is not present in the failed connections map", new Exception());
@@ -348,8 +519,8 @@ public final class zzli extends GoogleApiClient {
 
     @Override // com.google.android.gms.common.api.GoogleApiClient
     public boolean hasConnectedApi(Api<?> api) {
-        Api$zzb api$zzb = this.zzacg.get(api.zznx());
-        return api$zzb != null && api$zzb.isConnected();
+        Api.zzb zzbVar = this.zzacg.get(api.zznx());
+        return zzbVar != null && zzbVar.isConnected();
     }
 
     @Override // com.google.android.gms.common.api.GoogleApiClient
@@ -363,13 +534,13 @@ public final class zzli extends GoogleApiClient {
     }
 
     @Override // com.google.android.gms.common.api.GoogleApiClient
-    public boolean isConnectionCallbacksRegistered(GoogleApiClient$ConnectionCallbacks googleApiClient$ConnectionCallbacks) {
-        return this.zzabZ.isConnectionCallbacksRegistered(googleApiClient$ConnectionCallbacks);
+    public boolean isConnectionCallbacksRegistered(GoogleApiClient.ConnectionCallbacks connectionCallbacks) {
+        return this.zzabZ.isConnectionCallbacksRegistered(connectionCallbacks);
     }
 
     @Override // com.google.android.gms.common.api.GoogleApiClient
-    public boolean isConnectionFailedListenerRegistered(GoogleApiClient$OnConnectionFailedListener googleApiClient$OnConnectionFailedListener) {
-        return this.zzabZ.isConnectionFailedListenerRegistered(googleApiClient$OnConnectionFailedListener);
+    public boolean isConnectionFailedListenerRegistered(GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener) {
+        return this.zzabZ.isConnectionFailedListenerRegistered(onConnectionFailedListener);
     }
 
     @Override // com.google.android.gms.common.api.GoogleApiClient
@@ -379,47 +550,55 @@ public final class zzli extends GoogleApiClient {
     }
 
     @Override // com.google.android.gms.common.api.GoogleApiClient
-    public void registerConnectionCallbacks(GoogleApiClient$ConnectionCallbacks googleApiClient$ConnectionCallbacks) {
-        this.zzabZ.registerConnectionCallbacks(googleApiClient$ConnectionCallbacks);
+    public void registerConnectionCallbacks(GoogleApiClient.ConnectionCallbacks connectionCallbacks) {
+        this.zzabZ.registerConnectionCallbacks(connectionCallbacks);
     }
 
     @Override // com.google.android.gms.common.api.GoogleApiClient
-    public void registerConnectionFailedListener(GoogleApiClient$OnConnectionFailedListener googleApiClient$OnConnectionFailedListener) {
-        this.zzabZ.registerConnectionFailedListener(googleApiClient$OnConnectionFailedListener);
+    public void registerConnectionFailedListener(GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener) {
+        this.zzabZ.registerConnectionFailedListener(onConnectionFailedListener);
     }
 
     @Override // com.google.android.gms.common.api.GoogleApiClient
-    public void stopAutoManage(FragmentActivity fragmentActivity) {
+    public void stopAutoManage(final FragmentActivity fragmentActivity) {
         if (this.zzaaM < 0) {
             throw new IllegalStateException("Called stopAutoManage but automatic lifecycle management is not enabled.");
         }
         zzlp zzlpVarZza = zzlp.zza(fragmentActivity);
         if (zzlpVarZza == null) {
-            new Handler(this.mContext.getMainLooper()).post(new zzli$8(this, fragmentActivity));
+            new Handler(this.mContext.getMainLooper()).post(new Runnable() { // from class: com.google.android.gms.internal.zzli.8
+                @Override // java.lang.Runnable
+                public void run() {
+                    if (fragmentActivity.isFinishing() || fragmentActivity.getSupportFragmentManager().isDestroyed()) {
+                        return;
+                    }
+                    zzlp.zzb(fragmentActivity).zzbp(zzli.this.zzaaM);
+                }
+            });
         } else {
             zzlpVarZza.zzbp(this.zzaaM);
         }
     }
 
     @Override // com.google.android.gms.common.api.GoogleApiClient
-    public void unregisterConnectionCallbacks(GoogleApiClient$ConnectionCallbacks googleApiClient$ConnectionCallbacks) {
-        this.zzabZ.unregisterConnectionCallbacks(googleApiClient$ConnectionCallbacks);
+    public void unregisterConnectionCallbacks(GoogleApiClient.ConnectionCallbacks connectionCallbacks) {
+        this.zzabZ.unregisterConnectionCallbacks(connectionCallbacks);
     }
 
     @Override // com.google.android.gms.common.api.GoogleApiClient
-    public void unregisterConnectionFailedListener(GoogleApiClient$OnConnectionFailedListener googleApiClient$OnConnectionFailedListener) {
-        this.zzabZ.unregisterConnectionFailedListener(googleApiClient$OnConnectionFailedListener);
+    public void unregisterConnectionFailedListener(GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener) {
+        this.zzabZ.unregisterConnectionFailedListener(onConnectionFailedListener);
     }
 
     @Override // com.google.android.gms.common.api.GoogleApiClient
-    public <C extends Api$zzb> C zza(Api$zzc<C> api$zzc) {
-        C c = (C) this.zzacg.get(api$zzc);
+    public <C extends Api.zzb> C zza(Api.zzc<C> zzcVar) {
+        C c = (C) this.zzacg.get(zzcVar);
         zzx.zzb(c, "Appropriate Api was not requested.");
         return c;
     }
 
     @Override // com.google.android.gms.common.api.GoogleApiClient
-    public <A extends Api$zzb, R extends Result, T extends zzlb$zza<R, A>> T zza(T t) {
+    public <A extends Api.zzb, R extends Result, T extends zzlb.zza<R, A>> T zza(T t) {
         zzx.zzb(t.zznx() != null, "This task can not be enqueued (it's probably a Batch or malformed)");
         zzx.zzb(this.zzacg.containsKey(t.zznx()), "GoogleApiClient is not configured to use the API required for this call.");
         this.zzabt.lock();
@@ -430,8 +609,8 @@ public final class zzli extends GoogleApiClient {
         }
     }
 
-    void zza(zzli$zzb zzli_zzb) {
-        this.zzace.sendMessage(this.zzace.obtainMessage(3, zzli_zzb));
+    void zza(zzb zzbVar) {
+        this.zzace.sendMessage(this.zzace.obtainMessage(3, zzbVar));
     }
 
     void zza(RuntimeException runtimeException) {
@@ -444,16 +623,16 @@ public final class zzli extends GoogleApiClient {
     }
 
     @Override // com.google.android.gms.common.api.GoogleApiClient
-    public <A extends Api$zzb, T extends zzlb$zza<? extends Result, A>> T zzb(T t) {
+    public <A extends Api.zzb, T extends zzlb.zza<? extends Result, A>> T zzb(T t) {
         zzx.zzb(t.zznx() != null, "This task can not be executed (it's probably a Batch or malformed)");
         this.zzabt.lock();
         try {
             if (zzoc()) {
                 this.zzaca.add(t);
                 while (!this.zzaca.isEmpty()) {
-                    zzli$zzf<A> zzli_zzf = (zzli$zzf) this.zzaca.remove();
-                    zzb(zzli_zzf);
-                    zzli_zzf.zzv(Status.zzabd);
+                    zzf<A> zzfVar = (zzf) this.zzaca.remove();
+                    zzb(zzfVar);
+                    zzfVar.zzv(Status.zzabd);
                 }
             } else {
                 t = (T) this.zzacj.zzb(t);
@@ -464,9 +643,9 @@ public final class zzli extends GoogleApiClient {
         }
     }
 
-    <A extends Api$zzb> void zzb(zzli$zzf<A> zzli_zzf) {
-        this.zzacm.add(zzli_zzf);
-        zzli_zzf.zza(this.zzaco);
+    <A extends Api.zzb> void zzb(zzf<A> zzfVar) {
+        this.zzacm.add(zzfVar);
+        zzfVar.zza(this.zzaco);
     }
 
     void zzg(ConnectionResult connectionResult) {
@@ -482,13 +661,13 @@ public final class zzli extends GoogleApiClient {
     }
 
     void zznY() {
-        for (zzli$zzf<?> zzli_zzf : this.zzacm) {
-            zzli_zzf.zza(null);
-            if (zzli_zzf.zznF() == null) {
-                zzli_zzf.cancel();
+        for (zzf<?> zzfVar : this.zzacm) {
+            zzfVar.zza(null);
+            if (zzfVar.zznF() == null) {
+                zzfVar.cancel();
             } else {
-                zzli_zzf.zznJ();
-                zza(zzli_zzf, this.zzacn, zza((Api$zzc) zzli_zzf.zznx()).zznz());
+                zzfVar.zznJ();
+                zza(zzfVar, this.zzacn, zza((Api.zzc) zzfVar.zznx()).zznz());
             }
         }
         this.zzacm.clear();
@@ -500,7 +679,7 @@ public final class zzli extends GoogleApiClient {
     }
 
     void zznZ() {
-        Iterator<Api$zzb> it = this.zzacg.values().iterator();
+        Iterator<Api.zzb> it = this.zzacg.values().iterator();
         while (it.hasNext()) {
             it.next().disconnect();
         }
@@ -552,7 +731,7 @@ public final class zzli extends GoogleApiClient {
         }
         this.zzacb = true;
         if (this.zzacf == null) {
-            this.zzacf = (zzli$zzd) zzll.zza(this.mContext.getApplicationContext(), new zzli$zzd(this), this.zzaaP);
+            this.zzacf = (zzd) zzll.zza(this.mContext.getApplicationContext(), new zzd(this), this.zzaaP);
         }
         this.zzace.sendMessageDelayed(this.zzace.obtainMessage(1), this.zzacc);
         this.zzace.sendMessageDelayed(this.zzace.obtainMessage(2), this.zzacd);

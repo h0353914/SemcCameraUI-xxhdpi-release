@@ -3,7 +3,7 @@ package com.sonyericsson.android.camera.parameter.dependency;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.configuration.parameters.ObjectTracking;
 import com.sonyericsson.android.camera.configuration.parameters.TouchIntention;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 import com.sonyericsson.android.camera.parameter.ParameterUtil;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
@@ -26,7 +26,7 @@ public class ObjectTrackingApplier extends DependencyApplier {
             return;
         }
         CapturingMode capturingMode = (CapturingMode) capturingModeParams.mCapturingMode.get();
-        CameraInfo$CameraId cameraId = capturingMode.getCameraId();
+        CameraInfo.CameraId cameraId = capturingMode.getCameraId();
         if (capturingMode == CapturingMode.SCENE_RECOGNITION && PlatformCapability.isTouchFocusSupported(cameraId) && PlatformCapability.isTouchAeSupported(cameraId)) {
             ParameterUtil.applyRecommendedValue(capturingModeParams.mTouchIntention, TouchIntention.FOCUS_AND_EXPOSURE);
         }

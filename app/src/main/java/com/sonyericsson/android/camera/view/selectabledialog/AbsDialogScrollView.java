@@ -1,7 +1,10 @@
 package com.sonyericsson.android.camera.view.selectabledialog;
 
-import android.animation.Animator$AnimatorListener;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.database.DataSetObserver;
 import android.support.annotation.NonNull;
 import android.view.MotionEvent;
 import android.view.View;
@@ -10,16 +13,18 @@ import android.view.animation.Interpolator;
 import android.view.animation.PathInterpolator;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout$LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog;
+import com.sonyericsson.android.camera.view.selectabledialog.ScrollContainer;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public abstract class AbsDialogScrollView extends FrameLayout {
-    protected final List<AbsDialogScrollView$ContentArrange> mArranges;
+    protected final List<ContentArrange> mArranges;
     protected FrameLayout mBackground;
     protected int mBottomMarginHint;
     protected LinearLayout mContentsBinder;
@@ -27,9 +32,15 @@ public abstract class AbsDialogScrollView extends FrameLayout {
     private final Interpolator mInterporater;
     protected boolean mIsExpandedWhenOpened;
     protected int mOrientation;
-    protected AbsSelectableDialog$Params mParams;
+    protected AbsSelectableDialog.Params mParams;
     protected ScrollContainer mSomcScroller;
     protected int mTopMarginHint;
+
+    protected interface AnimationFactory {
+        void close(int i, int i2, Animator.AnimatorListener animatorListener);
+
+        void open(int i, int i2, Animator.AnimatorListener animatorListener);
+    }
 
     protected abstract void addContent(String str, ArrayAdapter arrayAdapter);
 
@@ -39,10 +50,6 @@ public abstract class AbsDialogScrollView extends FrameLayout {
     }
 
     public abstract void updateRotatableLayout(ViewGroup viewGroup, int i, int i2);
-
-    static /* synthetic */ Interpolator access$200(AbsDialogScrollView absDialogScrollView) {
-        return absDialogScrollView.mInterporater;
-    }
 
     public AbsDialogScrollView(@NonNull Context context) {
         super(context);
@@ -63,27 +70,32 @@ public abstract class AbsDialogScrollView extends FrameLayout {
         return true;
     }
 
-    protected void setup(boolean z, AbsSelectableDialog$Params absSelectableDialog$Params, ScrollContainer$OnScrollListener scrollContainer$OnScrollListener, int i, int i2, boolean z2) {
+    protected void setup(boolean z, AbsSelectableDialog.Params params, ScrollContainer.OnScrollListener onScrollListener, int i, int i2, boolean z2) {
         this.mIsExpandedWhenOpened = z2;
-        this.mParams = new AbsSelectableDialog$Params(absSelectableDialog$Params);
-        inflate(getContext(), 2131492994, this);
-        this.mBackground = (FrameLayout) findViewById(2131296573);
+        this.mParams = new AbsSelectableDialog.Params(params);
+        inflate(getContext(), R.layout.selectable_dialog_layout, this);
+        this.mBackground = (FrameLayout) findViewById(R.id.selectable_dialog_inner_background);
         this.mBackground.getLayoutParams().width = i;
-        ((FrameLayout$LayoutParams) this.mBackground.getLayoutParams()).gravity = i2;
+        ((FrameLayout.LayoutParams) this.mBackground.getLayoutParams()).gravity = i2;
         if (this.mParams.dropShadowSpace > 0) {
-            this.mBackground.setBackgroundResource(2131231020);
+            this.mBackground.setBackgroundResource(R.drawable.cam_core_dialog_dropshadow_icn);
             this.mBackground.setPadding(this.mParams.dropShadowSpace, this.mParams.dropShadowSpace, this.mParams.dropShadowSpace, this.mParams.dropShadowSpace);
         }
         if (z) {
-            this.mSomcScroller = (ScrollContainer) findViewById(2131296619);
+            this.mSomcScroller = (ScrollContainer) findViewById(R.id.somc_scroller);
             this.mSomcScroller.setSettingMenuParams(this.mParams);
-            this.mSomcScroller.setOnScrollListener(scrollContainer$OnScrollListener);
+            this.mSomcScroller.setOnScrollListener(onScrollListener);
             this.mSomcScroller.setVisibility(0);
-            this.mContentsBinder = (LinearLayout) this.mSomcScroller.findViewById(2131296620);
-            this.mSomcScroller.post(new AbsDialogScrollView$1(this));
+            this.mContentsBinder = (LinearLayout) this.mSomcScroller.findViewById(R.id.somc_scroller_content_binder);
+            this.mSomcScroller.post(new Runnable() { // from class: com.sonyericsson.android.camera.view.selectabledialog.AbsDialogScrollView.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    AbsDialogScrollView.this.onInitializeScroll();
+                }
+            });
             return;
         }
-        this.mDefaultScroller = (ScrollView) findViewById(2131296382);
+        this.mDefaultScroller = (ScrollView) findViewById(R.id.default_scroller);
         this.mDefaultScroller.setVisibility(0);
         if (this.mParams.scrollbarFadeDuration > 0) {
             this.mDefaultScroller.setScrollBarFadeDuration(this.mParams.scrollbarFadeDuration);
@@ -91,12 +103,12 @@ public abstract class AbsDialogScrollView extends FrameLayout {
         if (this.mParams.scrollBarDefaultDelayBeforeFade > 0) {
             this.mDefaultScroller.setScrollBarDefaultDelayBeforeFade(this.mParams.scrollBarDefaultDelayBeforeFade);
         }
-        this.mContentsBinder = (LinearLayout) this.mDefaultScroller.findViewById(2131296383);
+        this.mContentsBinder = (LinearLayout) this.mDefaultScroller.findViewById(R.id.default_scroller_content_binder);
     }
 
     @Override // android.view.ViewGroup, android.view.View
     public void onDetachedFromWindow() {
-        Iterator<AbsDialogScrollView$ContentArrange> it = this.mArranges.iterator();
+        Iterator<ContentArrange> it = this.mArranges.iterator();
         while (it.hasNext()) {
             it.next().release();
         }
@@ -154,8 +166,8 @@ public abstract class AbsDialogScrollView extends FrameLayout {
         }
     }
 
-    protected void setScrollStatus(ScrollContainer$Status scrollContainer$Status) {
-        this.mSomcScroller.setCurrentStatus(scrollContainer$Status);
+    protected void setScrollStatus(ScrollContainer.Status status) {
+        this.mSomcScroller.setCurrentStatus(status);
     }
 
     protected void addContentView(View view) {
@@ -198,7 +210,7 @@ public abstract class AbsDialogScrollView extends FrameLayout {
     }
 
     protected int getInitialDisplayHeight() {
-        return calculateInitialDisplayHeight(2131165581);
+        return calculateInitialDisplayHeight(R.dimen.setting_1st_layer_value_default_height);
     }
 
     protected int calculateInitialDisplayHeight(int i) {
@@ -214,7 +226,7 @@ public abstract class AbsDialogScrollView extends FrameLayout {
         return this.mSomcScroller.getScrolledHeight();
     }
 
-    protected ScrollContainer$Status getScrollStatus() {
+    protected ScrollContainer.Status getScrollStatus() {
         if (this.mSomcScroller == null) {
             return null;
         }
@@ -222,7 +234,7 @@ public abstract class AbsDialogScrollView extends FrameLayout {
     }
 
     protected View findItemViewWithTag(Object obj) {
-        Iterator<AbsDialogScrollView$ContentArrange> it = this.mArranges.iterator();
+        Iterator<ContentArrange> it = this.mArranges.iterator();
         while (it.hasNext()) {
             View viewFindViewWithTag = it.next().findViewWithTag(obj);
             if (viewFindViewWithTag != null) {
@@ -232,22 +244,180 @@ public abstract class AbsDialogScrollView extends FrameLayout {
         return null;
     }
 
-    protected void startOpenAnimation(int i, int i2, Animator$AnimatorListener animator$AnimatorListener) {
-        getAnimationFactory().open(i, i2, animator$AnimatorListener);
+    protected void startOpenAnimation(int i, int i2, Animator.AnimatorListener animatorListener) {
+        getAnimationFactory().open(i, i2, animatorListener);
     }
 
-    protected void startCloseAnimation(int i, int i2, Animator$AnimatorListener animator$AnimatorListener) {
-        getAnimationFactory().close(i, i2, animator$AnimatorListener);
+    protected void startCloseAnimation(int i, int i2, Animator.AnimatorListener animatorListener) {
+        getAnimationFactory().close(i, i2, animatorListener);
     }
 
-    protected AbsDialogScrollView$AnimationFactory getAnimationFactory() {
-        switch (AbsDialogScrollView$3.$SwitchMap$com$sonyericsson$android$camera$view$selectabledialog$AbsSelectableDialog$AnimationType[this.mParams.animationType.ordinal()]) {
-            case 1:
-                return new AbsDialogScrollView$FadeAnimation(this, null);
-            case 2:
-                return new AbsDialogScrollView$SliderAnimation(this, null);
+    protected AnimationFactory getAnimationFactory() {
+        switch (this.mParams.animationType) {
+            case FADE:
+                return new FadeAnimation();
+            case SLIDER:
+                return new SliderAnimation();
             default:
-                return new AbsDialogScrollView$2(this);
+                return new AnimationFactory() { // from class: com.sonyericsson.android.camera.view.selectabledialog.AbsDialogScrollView.2
+                    @Override // com.sonyericsson.android.camera.view.selectabledialog.AbsDialogScrollView.AnimationFactory
+                    public void open(int i, int i2, Animator.AnimatorListener animatorListener) {
+                    }
+
+                    @Override // com.sonyericsson.android.camera.view.selectabledialog.AbsDialogScrollView.AnimationFactory
+                    public void close(int i, int i2, Animator.AnimatorListener animatorListener) {
+                        if (animatorListener != null) {
+                            animatorListener.onAnimationEnd(null);
+                        }
+                    }
+                };
+        }
+    }
+
+    private class FadeAnimation implements AnimationFactory {
+        private final int mDuration;
+
+        private FadeAnimation() {
+            this.mDuration = AbsDialogScrollView.this.getResources().getInteger(R.integer.setting_fade_animation_duration);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.selectabledialog.AbsDialogScrollView.AnimationFactory
+        public void open(int i, int i2, Animator.AnimatorListener animatorListener) {
+            AnimatorSet animatorSet = new AnimatorSet();
+            animatorSet.playTogether(ObjectAnimator.ofFloat(AbsDialogScrollView.this.getBackgroundLayout(), "alpha", 0.0f, 1.0f), ObjectAnimator.ofFloat(AbsDialogScrollView.this.getBackgroundLayout(), "translationY", i2 / 4.0f, 0.0f));
+            animatorSet.setDuration(this.mDuration);
+            animatorSet.setInterpolator(AbsDialogScrollView.this.mInterporater);
+            if (animatorListener != null) {
+                animatorSet.addListener(animatorListener);
+            }
+            animatorSet.start();
+        }
+
+        @Override // com.sonyericsson.android.camera.view.selectabledialog.AbsDialogScrollView.AnimationFactory
+        public void close(int i, int i2, Animator.AnimatorListener animatorListener) {
+            AnimatorSet animatorSet = new AnimatorSet();
+            animatorSet.playTogether(ObjectAnimator.ofFloat(AbsDialogScrollView.this.getBackgroundLayout(), "alpha", 1.0f, 0.0f), ObjectAnimator.ofFloat(AbsDialogScrollView.this.getBackgroundLayout(), "translationY", 0.0f, i2 / 4.0f));
+            animatorSet.setDuration(this.mDuration);
+            animatorSet.setInterpolator(AbsDialogScrollView.this.mInterporater);
+            if (animatorListener != null) {
+                animatorSet.addListener(animatorListener);
+            }
+            animatorSet.start();
+        }
+    }
+
+    private class SliderAnimation implements AnimationFactory {
+        private final int mDuration;
+
+        private SliderAnimation() {
+            this.mDuration = AbsDialogScrollView.this.getResources().getInteger(R.integer.setting_fade_animation_duration);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.selectabledialog.AbsDialogScrollView.AnimationFactory
+        public void open(int i, int i2, Animator.AnimatorListener animatorListener) {
+            ObjectAnimator objectAnimatorOfFloat = ObjectAnimator.ofFloat(AbsDialogScrollView.this.getBackgroundLayout(), "translationY", i2, 0.0f);
+            objectAnimatorOfFloat.setDuration(this.mDuration);
+            objectAnimatorOfFloat.setInterpolator(AbsDialogScrollView.this.mInterporater);
+            if (animatorListener != null) {
+                objectAnimatorOfFloat.addListener(animatorListener);
+            }
+            objectAnimatorOfFloat.start();
+        }
+
+        @Override // com.sonyericsson.android.camera.view.selectabledialog.AbsDialogScrollView.AnimationFactory
+        public void close(int i, int i2, Animator.AnimatorListener animatorListener) {
+            ObjectAnimator objectAnimatorOfFloat = ObjectAnimator.ofFloat(AbsDialogScrollView.this.getBackgroundLayout(), "translationY", 0.0f, i2);
+            objectAnimatorOfFloat.setDuration(this.mDuration);
+            objectAnimatorOfFloat.setInterpolator(AbsDialogScrollView.this.mInterporater);
+            if (animatorListener != null) {
+                objectAnimatorOfFloat.addListener(animatorListener);
+            }
+            objectAnimatorOfFloat.start();
+        }
+    }
+
+    protected static abstract class ContentArrange extends DataSetObserver {
+        protected ViewGroup container;
+        protected ArrayAdapter mAdapter;
+        protected LinearLayout mRowItems;
+
+        protected int computeArrangeHeight() {
+            return 0;
+        }
+
+        protected int computeHeight() {
+            return 0;
+        }
+
+        protected int computeScrollOffset() {
+            return 0;
+        }
+
+        protected View findViewWithTag(Object obj) {
+            return null;
+        }
+
+        protected abstract void setup();
+
+        protected ContentArrange(ArrayAdapter arrayAdapter) {
+            this.mAdapter = arrayAdapter;
+            this.mAdapter.registerDataSetObserver(this);
+        }
+
+        protected View getPositionItemView(int i) {
+            return this.mRowItems.getChildAt(i);
+        }
+
+        protected ViewGroup getPositionItemContainerView(int i) {
+            return this.mRowItems;
+        }
+
+        protected void addItemView(View view, int i) {
+            this.mRowItems.addView(view);
+        }
+
+        protected void updateItems(ArrayAdapter arrayAdapter) {
+            this.mAdapter.unregisterDataSetObserver(this);
+            this.mAdapter = arrayAdapter;
+            this.mAdapter.registerDataSetObserver(this);
+            fetchItems();
+        }
+
+        protected int getItemCount() {
+            return this.mAdapter.getCount();
+        }
+
+        protected View getView() {
+            return this.container;
+        }
+
+        protected void fetchItems() {
+            if (CamLog.VERBOSE) {
+                CamLog.d("fetchItems() E prev-items:" + this.mRowItems.getChildCount() + " adapter-size:" + this.mAdapter.getCount());
+            }
+            if (this.mRowItems.getChildCount() > this.mAdapter.getCount()) {
+                this.mRowItems.removeViews(this.mAdapter.getCount(), this.mRowItems.getChildCount() - this.mAdapter.getCount());
+            }
+            for (int i = 0; i < this.mAdapter.getCount(); i++) {
+                if (i < this.mRowItems.getChildCount()) {
+                    this.mAdapter.getView(i, getPositionItemView(i), getPositionItemContainerView(i));
+                    if (CamLog.VERBOSE) {
+                        CamLog.d("Update existing item, size:" + this.mRowItems.getChildCount());
+                    }
+                } else {
+                    addItemView(this.mAdapter.getView(i, null, getPositionItemContainerView(i)), i);
+                    if (CamLog.VERBOSE) {
+                        CamLog.d("Add new item, size:" + this.mRowItems.getChildCount());
+                    }
+                }
+            }
+            if (CamLog.VERBOSE) {
+                CamLog.d("fetchItems() X");
+            }
+        }
+
+        protected void release() {
+            this.mAdapter.unregisterDataSetObserver(this);
         }
     }
 }

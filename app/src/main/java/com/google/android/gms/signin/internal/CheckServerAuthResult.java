@@ -1,7 +1,7 @@
 package com.google.android.gms.signin.internal;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import java.util.ArrayList;
@@ -9,8 +9,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class CheckServerAuthResult implements SafeParcelable {
-    public static final Parcelable$Creator<CheckServerAuthResult> CREATOR = new zzc();
+    public static final Parcelable.Creator<CheckServerAuthResult> CREATOR = new zzc();
     final int mVersionCode;
     final boolean zzaVi;
     final List<Scope> zzaVj;

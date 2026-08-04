@@ -5,20 +5,42 @@ import android.content.Context;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.view.selectabledialog.ScrollContainer;
 import com.sonyericsson.android.camera.view.setting.SettingDialogStack;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingDialogInterface;
 
-public abstract class AbsSelectableDialog implements SettingDialogInterface, ScrollContainer$OnScrollListener {
+public abstract class AbsSelectableDialog implements SettingDialogInterface, ScrollContainer.OnScrollListener {
     private Animator mAnimation;
     protected final Context mContext;
     protected AbsDialogScrollView mDialogScrollView;
-    protected AbsSelectableDialog$SelectableDialogType mDialogType;
+    protected SelectableDialogType mDialogType;
     protected boolean mIsExpandedWhenOpened;
     protected int mOrientation;
-    protected final AbsSelectableDialog$Params mParams;
+    protected final Params mParams;
     protected FrameLayout mParent;
     protected SettingDialogStack mSettingDialogStack = null;
     protected int mBottomMarginHint = 0;
+
+    public enum AnimationType {
+        NONE,
+        FADE,
+        SLIDER
+    }
+
+    public enum SelectableDialogType {
+        SETTING_MENU,
+        SETTING_SECOND_LAYER,
+        SETTING_SECOND_LAYER_DETAIL,
+        SETTING_FLASH,
+        SETTING_MONOCHROME,
+        SETTING_SELFTIMER,
+        SETTING_ASPECT_RATIO,
+        SETTING_FUSION_MODE,
+        SETTING_VIDEO_HDR,
+        SETTING_HDR,
+        SETTING_SCENE,
+        MODE_SELECTOR
+    }
 
     @Override // com.sonyericsson.android.camera.view.setting.dialog.SettingDialogInterface
     public boolean hitTest(int i, int i2) {
@@ -29,18 +51,71 @@ public abstract class AbsSelectableDialog implements SettingDialogInterface, Scr
         return true;
     }
 
-    @Override // com.sonyericsson.android.camera.view.selectabledialog.ScrollContainer$OnScrollListener
-    public void onScrollFinished(ScrollContainer$Status scrollContainer$Status) {
+    @Override // com.sonyericsson.android.camera.view.selectabledialog.ScrollContainer.OnScrollListener
+    public void onScrollFinished(ScrollContainer.Status status) {
     }
 
-    static /* synthetic */ Animator access$002(AbsSelectableDialog absSelectableDialog, Animator animator) {
-        absSelectableDialog.mAnimation = animator;
-        return animator;
+    public enum HorizontalGravity {
+        LEFT(3),
+        RIGHT(5);
+
+        public final int value;
+
+        HorizontalGravity(int i) {
+            this.value = i;
+        }
     }
 
-    public AbsSelectableDialog(Context context, AbsSelectableDialog$Params absSelectableDialog$Params, boolean z) {
+    public static class Params {
+        public int bottomMarginLandscape;
+        public int bottomMarginPortrait;
+        public int dropShadowSpace;
+        public int itemHeight;
+        public int itemWidth;
+        public int leftMarginLandscape;
+        public int leftMarginPortrait;
+        public int maxHeightLandscape;
+        public int maxHeightPortrait;
+        public int panelBackgroundColor;
+        public int rightMarginLandscape;
+        public int rightMarginPortrait;
+        public int scrollBarDefaultDelayBeforeFade;
+        public int scrollbarFadeDuration;
+
+
+
+
+
+        public AnimationType animationType = AnimationType.NONE;
+        public HorizontalGravity horizontalGavity = HorizontalGravity.RIGHT;
+
+        public Params() {
+        }
+
+
+        public Params(Params params) {
+            this.itemWidth = params.itemWidth;
+            this.itemHeight = params.itemHeight;
+            this.maxHeightLandscape = params.maxHeightLandscape;
+            this.maxHeightPortrait = params.maxHeightPortrait;
+            this.rightMarginLandscape = params.rightMarginLandscape;
+            this.rightMarginPortrait = params.rightMarginPortrait;
+            this.leftMarginLandscape = params.leftMarginLandscape;
+            this.leftMarginPortrait = params.leftMarginPortrait;
+            this.bottomMarginLandscape = params.bottomMarginLandscape;
+            this.bottomMarginPortrait = params.bottomMarginPortrait;
+            this.panelBackgroundColor = params.panelBackgroundColor;
+            this.scrollbarFadeDuration = params.scrollbarFadeDuration;
+            this.scrollBarDefaultDelayBeforeFade = params.scrollBarDefaultDelayBeforeFade;
+            this.dropShadowSpace = params.dropShadowSpace;
+            this.animationType = params.animationType;
+            this.horizontalGavity = params.horizontalGavity;
+        }
+    }
+
+    public AbsSelectableDialog(Context context, Params params, boolean z) {
         this.mContext = context;
-        this.mParams = new AbsSelectableDialog$Params(absSelectableDialog$Params);
+        this.mParams = new Params(params);
         this.mIsExpandedWhenOpened = z;
     }
 
@@ -49,7 +124,7 @@ public abstract class AbsSelectableDialog implements SettingDialogInterface, Scr
         if (this.mParent == null) {
             return;
         }
-        if (this.mDialogScrollView.getScrollStatus() == ScrollContainer$Status.EXIT) {
+        if (this.mDialogScrollView.getScrollStatus() == ScrollContainer.Status.EXIT) {
             closeImmediate();
         } else {
             startCloseAnimation();
@@ -128,12 +203,55 @@ public abstract class AbsSelectableDialog implements SettingDialogInterface, Scr
     }
 
     protected void startOpenAnimation() {
-        this.mDialogScrollView.startOpenAnimation(computeWidth(), computeHeight(), new AbsSelectableDialog$1(this));
+        this.mDialogScrollView.startOpenAnimation(computeWidth(), computeHeight(), new Animator.AnimatorListener() { // from class: com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog.1
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationCancel(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationRepeat(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationStart(Animator animator) {
+                AbsSelectableDialog.this.mAnimation = animator;
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationEnd(Animator animator) {
+                AbsSelectableDialog.this.setEnabled(true);
+                AbsSelectableDialog.this.mAnimation = null;
+            }
+        });
     }
 
     protected void startCloseAnimation() {
         setEnabled(false);
-        this.mDialogScrollView.startCloseAnimation(computeWidth(), computeHeight(), new AbsSelectableDialog$2(this));
+        this.mDialogScrollView.startCloseAnimation(computeWidth(), computeHeight(), new Animator.AnimatorListener() { // from class: com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog.2
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationCancel(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationRepeat(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationStart(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationEnd(Animator animator) {
+                if (AbsSelectableDialog.this.mParams.animationType == AnimationType.SLIDER) {
+                    if (AbsSelectableDialog.this.isPortrait()) {
+                        AbsSelectableDialog.this.mSettingDialogStack.getBackground().setTranslationX(0.0f);
+                    } else {
+                        AbsSelectableDialog.this.mSettingDialogStack.getBackground().setTranslationY(0.0f);
+                    }
+                }
+                AbsSelectableDialog.this.closeImmediate();
+            }
+        });
     }
 
     protected int computeWidth() {
@@ -159,7 +277,7 @@ public abstract class AbsSelectableDialog implements SettingDialogInterface, Scr
         return this.mIsExpandedWhenOpened;
     }
 
-    @Override // com.sonyericsson.android.camera.view.selectabledialog.ScrollContainer$OnScrollListener
+    @Override // com.sonyericsson.android.camera.view.selectabledialog.ScrollContainer.OnScrollListener
     public void onScrollProgressChanged(float f) {
         if (CamLog.VERBOSE) {
             CamLog.d("scrollcontainer currentProgress:" + f);

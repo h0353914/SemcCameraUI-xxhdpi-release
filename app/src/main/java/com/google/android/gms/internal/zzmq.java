@@ -3,6 +3,7 @@ package com.google.android.gms.internal;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzmq {
     public static boolean zzb(Resources resources) {
         if (resources == null) {

@@ -18,12 +18,6 @@ public final class DescriptorProtos$FieldDescriptorProto extends ExtendableMessa
     @NanoEnumValue(legacy = false, value = DescriptorProtos$FieldDescriptorProto$Type.class)
     public int type;
     public String typeName;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     @NanoEnumValue(legacy = false, value = DescriptorProtos$FieldDescriptorProto$Type.class)
     public static int checkTypeOrThrow(int value) {
         if (value >= 1 && value <= 18) {
@@ -219,7 +213,6 @@ public final class DescriptorProtos$FieldDescriptorProto extends ExtendableMessa
                     if (!super.storeUnknownField(input, tag)) {
                         return this;
                     }
-                    break;
                     break;
             }
         }

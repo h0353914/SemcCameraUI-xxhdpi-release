@@ -1,17 +1,19 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public enum WhiteBalance implements UserSettingValue {
-    INCANDESCENT(2131231088, 2131690259, "incandescent", 2131231093),
-    FLUORESCENT(2131231087, 2131690258, "fluorescent", 2131231092),
-    DAYLIGHT(2131231086, 2131690257, "daylight", 2131231091),
-    CLOUDY_DAYLIGHT(2131231085, 2131690256, "cloudy-daylight", 2131231090),
-    AUTO(2131231082, 2131690255, "auto", 2131231089);
+    INCANDESCENT(R.drawable.cam_core_image_quality_control_white_balance_incandescent_icn, R.string.cam_strings_white_balance_incandescent_txt, CameraParameters.WHITE_BALANCE_INCANDESCENT, R.drawable.cam_core_image_quality_control_white_balance_tab_incandescent_icn),
+    FLUORESCENT(R.drawable.cam_core_image_quality_control_white_balance_fluorescent_icn, R.string.cam_strings_white_balance_fluorescent_txt, CameraParameters.WHITE_BALANCE_FLUORESCENT, R.drawable.cam_core_image_quality_control_white_balance_tab_fluorescent_icn),
+    DAYLIGHT(R.drawable.cam_core_image_quality_control_white_balance_daylight_icn, R.string.cam_strings_white_balance_day_light_txt, CameraParameters.WHITE_BALANCE_DAYLIGHT, R.drawable.cam_core_image_quality_control_white_balance_tab_daylight_icn),
+    CLOUDY_DAYLIGHT(R.drawable.cam_core_image_quality_control_white_balance_cloudy_icn, R.string.cam_strings_white_balance_cloudy_txt, CameraParameters.WHITE_BALANCE_CLOUDY_DAYLIGHT, R.drawable.cam_core_image_quality_control_white_balance_tab_cloudy_icn),
+    AUTO(R.drawable.cam_core_image_quality_control_white_balance_auto_icn, R.string.cam_strings_white_balance_auto_txt, "auto", R.drawable.cam_core_image_quality_control_white_balance_tab_auto_icn);
 
     public static final String TAG = "WhiteBalance";
     private static final int sParameterTextId = 2131690261;
@@ -66,12 +68,10 @@ public enum WhiteBalance implements UserSettingValue {
             } else {
                 for (WhiteBalance whiteBalance : values()) {
                     Iterator<String> it = list.iterator();
-                    while (true) {
-                        if (it.hasNext()) {
-                            if (whiteBalance.getValue().equals(it.next())) {
-                                arrayList.add(whiteBalance);
-                                break;
-                            }
+                    while (it.hasNext()) {
+                        if (whiteBalance.getValue().equals(it.next())) {
+                            arrayList.add(whiteBalance);
+                            break;
                         }
                     }
                 }

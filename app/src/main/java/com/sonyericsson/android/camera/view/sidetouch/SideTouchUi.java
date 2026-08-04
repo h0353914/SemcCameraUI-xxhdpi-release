@@ -1,3 +1,24 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.view.sidetouch;
 
 import android.content.Context;
@@ -5,32 +26,62 @@ import android.graphics.Point;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
-import com.sonyericsson.android.camera.view.ViewFinderImpl$AutoReviewContentReceiverProxy;
-import com.sonyericsson.android.camera.view.ViewFinderImpl$RecordingTimeReceiverProxy;
-import com.sonyericsson.android.camera.view.ViewFinderImpl$SideTouchUiButtonListenerFactory;
-import com.sonyericsson.android.camera.view.ViewFinderImpl$ZoomBarUpdateProxy;
+import com.sonyericsson.android.camera.view.ViewFinderImpl;
+import com.sonyericsson.android.camera.view.sidetouch.SideTouchUiIcon;
 
 public class SideTouchUi {
-    private ViewFinderImpl$AutoReviewContentReceiverProxy mAutoReviewProxy;
-    private ViewFinderImpl$SideTouchUiButtonListenerFactory mButtonListenerFactory;
-    private final SparseArray<SideTouchUi$IconLayer> mIconLayer;
+    private ViewFinderImpl.AutoReviewContentReceiverProxy mAutoReviewProxy;
+    private ViewFinderImpl.SideTouchUiButtonListenerFactory mButtonListenerFactory;
+    private final SparseArray<IconLayer> mIconLayer;
     private final boolean mIsOneShot;
     private ViewGroup mMovableArea;
-    private final SideTouchUi$Icon$OnDetachedListener mOnDetachedListener;
+    private final Icon.OnDetachedListener mOnDetachedListener;
     private int mOrientation;
-    private ViewFinderImpl$RecordingTimeReceiverProxy mRecordingTimeReceiverProxy;
-    private ViewFinderImpl$ZoomBarUpdateProxy mZoomBarUpdateProxy;
+    private ViewFinderImpl.RecordingTimeReceiverProxy mRecordingTimeReceiverProxy;
+    private ViewFinderImpl.ZoomBarUpdateProxy mZoomBarUpdateProxy;
 
-    static /* synthetic */ void access$000(SideTouchUi sideTouchUi, int i) {
-        sideTouchUi.destroyIcon(i);
+    public interface Icon {
+
+        public interface OnDetachedListener {
+            void onDetached(Icon icon);
+        }
+
+        View attach(ViewGroup viewGroup, Point point);
+
+        void detach(ViewGroup viewGroup);
+
+        void onFocusChanged(boolean z);
+
+        void setOnDetachedListener(OnDetachedListener onDetachedListener);
+
+        void setUiOrientation(int i);
+
+        void show();
     }
 
-    static /* synthetic */ void access$100(SideTouchUi sideTouchUi, int i) {
-        sideTouchUi.attemptLayerFocusChange(i);
-    }
+    private static class IconLayer {
+        private Point mAttachPoint;
+        private boolean mFocused;
+        private Icon mIcon;
+        private Type mIconType;
 
-    static /* synthetic */ SparseArray access$200(SideTouchUi sideTouchUi) {
-        return sideTouchUi.mIconLayer;
+        private IconLayer() {
+            this.mIconType = Type.NONE;
+            this.mFocused = false;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void invalid() {
+            this.mIconType = Type.NONE;
+            this.mFocused = false;
+            this.mIcon = null;
+            this.mAttachPoint = null;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private boolean isValid() {
+            return this.mIcon != null;
+        }
     }
 
     public SideTouchUi(ViewGroup viewGroup) {
@@ -39,127 +90,148 @@ public class SideTouchUi {
 
     public SideTouchUi(ViewGroup viewGroup, boolean z) {
         this.mIconLayer = new SparseArray<>();
-        this.mOnDetachedListener = new SideTouchUi$1(this);
+        this.mOnDetachedListener = new Icon.OnDetachedListener() { // from class: com.sonyericsson.android.camera.view.sidetouch.SideTouchUi.1
+            @Override // com.sonyericsson.android.camera.view.sidetouch.SideTouchUi.Icon.OnDetachedListener
+            public void onDetached(Icon icon) {
+                int iFindIconLayerNum = findIconLayerNum(icon);
+                if (iFindIconLayerNum != -1) {
+                    SideTouchUi.this.destroyIcon(iFindIconLayerNum);
+                    SideTouchUi.this.attemptLayerFocusChange(iFindIconLayerNum);
+                }
+            }
+
+            private int findIconLayerNum(Icon icon) {
+                for (int i = 0; i < SideTouchUi.this.mIconLayer.size(); i++) {
+                    int iKeyAt = SideTouchUi.this.mIconLayer.keyAt(i);
+                    if (((IconLayer) SideTouchUi.this.mIconLayer.get(iKeyAt)).mIcon == icon) {
+                        return iKeyAt;
+                    }
+                }
+                return -1;
+            }
+        };
         this.mMovableArea = viewGroup;
         this.mIsOneShot = z;
     }
 
-    public void setScreenButtonListenerFactory(ViewFinderImpl$SideTouchUiButtonListenerFactory viewFinderImpl$SideTouchUiButtonListenerFactory) {
-        this.mButtonListenerFactory = viewFinderImpl$SideTouchUiButtonListenerFactory;
+    public void setScreenButtonListenerFactory(ViewFinderImpl.SideTouchUiButtonListenerFactory sideTouchUiButtonListenerFactory) {
+        this.mButtonListenerFactory = sideTouchUiButtonListenerFactory;
     }
 
-    public void setZoomBarUpdateProxy(ViewFinderImpl$ZoomBarUpdateProxy viewFinderImpl$ZoomBarUpdateProxy) {
-        this.mZoomBarUpdateProxy = viewFinderImpl$ZoomBarUpdateProxy;
+    public void setZoomBarUpdateProxy(ViewFinderImpl.ZoomBarUpdateProxy zoomBarUpdateProxy) {
+        this.mZoomBarUpdateProxy = zoomBarUpdateProxy;
     }
 
-    public void setRecordingTimeReceiverProxy(ViewFinderImpl$RecordingTimeReceiverProxy viewFinderImpl$RecordingTimeReceiverProxy) {
-        this.mRecordingTimeReceiverProxy = viewFinderImpl$RecordingTimeReceiverProxy;
+    public void setRecordingTimeReceiverProxy(ViewFinderImpl.RecordingTimeReceiverProxy recordingTimeReceiverProxy) {
+        this.mRecordingTimeReceiverProxy = recordingTimeReceiverProxy;
     }
 
-    public void setAutoReviewProxy(ViewFinderImpl$AutoReviewContentReceiverProxy viewFinderImpl$AutoReviewContentReceiverProxy) {
-        this.mAutoReviewProxy = viewFinderImpl$AutoReviewContentReceiverProxy;
+    public void setAutoReviewProxy(ViewFinderImpl.AutoReviewContentReceiverProxy autoReviewContentReceiverProxy) {
+        this.mAutoReviewProxy = autoReviewContentReceiverProxy;
     }
 
     public void setUiOrientation(int i) {
         this.mOrientation = i;
         for (int i2 = 0; i2 < this.mIconLayer.size(); i2++) {
-            SideTouchUi$IconLayer sideTouchUi$IconLayerValueAt = this.mIconLayer.valueAt(i2);
-            if (sideTouchUi$IconLayerValueAt != null && SideTouchUi$IconLayer.access$400(sideTouchUi$IconLayerValueAt)) {
-                SideTouchUi$IconLayer.access$300(sideTouchUi$IconLayerValueAt).setUiOrientation(this.mOrientation);
+            IconLayer iconLayerValueAt = this.mIconLayer.valueAt(i2);
+            if (iconLayerValueAt != null && iconLayerValueAt.isValid()) {
+                iconLayerValueAt.mIcon.setUiOrientation(this.mOrientation);
             }
         }
     }
 
     public boolean showIcon() {
         for (int i = 0; i < this.mIconLayer.size(); i++) {
-            SideTouchUi$IconLayer sideTouchUi$IconLayerValueAt = this.mIconLayer.valueAt(i);
-            if (SideTouchUi$IconLayer.access$500(sideTouchUi$IconLayerValueAt)) {
-                SideTouchUi$IconLayer.access$300(sideTouchUi$IconLayerValueAt).show();
+            IconLayer iconLayerValueAt = this.mIconLayer.valueAt(i);
+            if (iconLayerValueAt.mFocused) {
+                iconLayerValueAt.mIcon.show();
                 return true;
             }
         }
         return false;
     }
 
-    public boolean containsIn(SideTouchUi$Type... sideTouchUi$TypeArr) {
-        for (SideTouchUi$Type sideTouchUi$Type : sideTouchUi$TypeArr) {
-            if (compareTo(sideTouchUi$Type)) {
+    public boolean containsIn(Type... typeArr) {
+        for (Type type : typeArr) {
+            if (compareTo(type)) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean containsAll(SideTouchUi$Type... sideTouchUi$TypeArr) {
-        for (SideTouchUi$Type sideTouchUi$Type : sideTouchUi$TypeArr) {
-            if (!compareTo(sideTouchUi$Type)) {
+    public boolean containsAll(Type... typeArr) {
+        for (Type type : typeArr) {
+            if (!compareTo(type)) {
                 return false;
             }
         }
         return true;
     }
 
-    public void attachIcon(SideTouchUi$Type sideTouchUi$Type, Point point) {
-        SideTouchUi$Icon sideTouchUiIcon$CountDownIcon;
+    public void attachIcon(Type type, Point point) {
+        Icon countDownIcon;
         Context context = this.mMovableArea.getContext();
-        switch (SideTouchUi$2.$SwitchMap$com$sonyericsson$android$camera$view$sidetouch$SideTouchUi$Type[sideTouchUi$Type.ordinal()]) {
-            case 1:
-            case 2:
-                sideTouchUiIcon$CountDownIcon = new SideTouchUiIcon$CountDownIcon(context);
+        switch (type) {
+            case CAPTURE_COUNTDOWN:
+            case VIDEO_COUNTDOWN:
+                countDownIcon = new SideTouchUiIcon.CountDownIcon(context);
                 break;
-            case 3:
-                sideTouchUiIcon$CountDownIcon = new SideTouchUiIcon$SelfTimerCancelIcon(context, this.mOrientation, this.mButtonListenerFactory);
+            case SELF_TIMER_COUNTDOWN_CANCEL:
+                countDownIcon = new SideTouchUiIcon.SelfTimerCancelIcon(context, this.mOrientation, this.mButtonListenerFactory);
                 break;
-            case 4:
-                sideTouchUiIcon$CountDownIcon = new SideTouchUiIcon$AutoReviewIcon(context, this.mAutoReviewProxy);
-                sideTouchUiIcon$CountDownIcon.setOnDetachedListener(this.mOnDetachedListener);
+            case AUTO_REVIEW:
+                countDownIcon = new SideTouchUiIcon.AutoReviewIcon(context, this.mAutoReviewProxy);
+                countDownIcon.setOnDetachedListener(this.mOnDetachedListener);
                 break;
-            case 5:
-                sideTouchUiIcon$CountDownIcon = new SideTouchUiIcon$ZoomIcon(context, this.mZoomBarUpdateProxy);
-                sideTouchUiIcon$CountDownIcon.setOnDetachedListener(this.mOnDetachedListener);
+            case ZOOM_BAR:
+                countDownIcon = new SideTouchUiIcon.ZoomIcon(context, this.mZoomBarUpdateProxy);
+                countDownIcon.setOnDetachedListener(this.mOnDetachedListener);
                 break;
-            case 6:
+            case RECORDING:
                 if (!this.mIsOneShot) {
-                    sideTouchUiIcon$CountDownIcon = new SideTouchUiIcon$RecordingIcon(context, this.mOrientation, this.mButtonListenerFactory, this.mRecordingTimeReceiverProxy);
+                    countDownIcon = new SideTouchUiIcon.RecordingIcon(context, this.mOrientation, this.mButtonListenerFactory, this.mRecordingTimeReceiverProxy);
+                    break;
                 } else {
-                    sideTouchUiIcon$CountDownIcon = new SideTouchUiIcon$RestrictedRecordingIcon(context, this.mOrientation, this.mButtonListenerFactory, this.mRecordingTimeReceiverProxy);
+                    countDownIcon = new SideTouchUiIcon.RestrictedRecordingIcon(context, this.mOrientation, this.mButtonListenerFactory, this.mRecordingTimeReceiverProxy);
+                    break;
                 }
+            case RECORDING_HDR:
+                countDownIcon = new SideTouchUiIcon.RestrictedRecordingIcon(context, this.mOrientation, this.mButtonListenerFactory, this.mRecordingTimeReceiverProxy);
                 break;
-            case 7:
-                sideTouchUiIcon$CountDownIcon = new SideTouchUiIcon$RestrictedRecordingIcon(context, this.mOrientation, this.mButtonListenerFactory, this.mRecordingTimeReceiverProxy);
-                break;
-            case 8:
+            case RECORDING_PAUSE:
                 if (!this.mIsOneShot) {
-                    sideTouchUiIcon$CountDownIcon = new SideTouchUiIcon$RecordingPauseIcon(context, this.mOrientation, this.mButtonListenerFactory, this.mRecordingTimeReceiverProxy);
+                    countDownIcon = new SideTouchUiIcon.RecordingPauseIcon(context, this.mOrientation, this.mButtonListenerFactory, this.mRecordingTimeReceiverProxy);
+                    break;
                 } else {
-                    sideTouchUiIcon$CountDownIcon = new SideTouchUiIcon$RestrictedRecordingPauseIcon(context, this.mOrientation, this.mButtonListenerFactory, this.mRecordingTimeReceiverProxy);
+                    countDownIcon = new SideTouchUiIcon.RestrictedRecordingPauseIcon(context, this.mOrientation, this.mButtonListenerFactory, this.mRecordingTimeReceiverProxy);
+                    break;
                 }
+            case RECORDING_HDR_PAUSE:
+                countDownIcon = new SideTouchUiIcon.RestrictedRecordingPauseIcon(context, this.mOrientation, this.mButtonListenerFactory, this.mRecordingTimeReceiverProxy);
                 break;
-            case 9:
-                sideTouchUiIcon$CountDownIcon = new SideTouchUiIcon$RestrictedRecordingPauseIcon(context, this.mOrientation, this.mButtonListenerFactory, this.mRecordingTimeReceiverProxy);
-                break;
-            case 10:
-                SideTouchUiIcon$TransparentCoverIcon sideTouchUiIcon$TransparentCoverIcon = new SideTouchUiIcon$TransparentCoverIcon(context);
-                sideTouchUiIcon$TransparentCoverIcon.setOnDetachedListener(this.mOnDetachedListener);
-                sideTouchUiIcon$CountDownIcon = sideTouchUiIcon$TransparentCoverIcon;
+            case COVERING:
+                SideTouchUiIcon.TransparentCoverIcon transparentCoverIcon = new SideTouchUiIcon.TransparentCoverIcon(context);
+                transparentCoverIcon.setOnDetachedListener(this.mOnDetachedListener);
+                countDownIcon = transparentCoverIcon;
                 point = new Point(0, 0);
                 break;
             default:
                 return;
         }
-        attachInternal(sideTouchUiIcon$CountDownIcon, point, sideTouchUi$Type);
+        attachInternal(countDownIcon, point, type);
     }
 
-    public boolean detachTo(SideTouchUi$Type sideTouchUi$Type) {
-        if (!compareTo(sideTouchUi$Type)) {
+    public boolean detachTo(Type type) {
+        if (!compareTo(type)) {
             return false;
         }
-        detachIcon(sideTouchUi$Type.layer);
+        detachIcon(type.layer);
         return true;
     }
 
     private void detachIcon(int i) {
-        SideTouchUi$Icon icon = getIcon(i);
+        Icon icon = getIcon(i);
         if (icon == null) {
             return;
         }
@@ -172,81 +244,82 @@ public class SideTouchUi {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void destroyIcon(int i) {
-        SideTouchUi$IconLayer sideTouchUi$IconLayer = this.mIconLayer.get(i);
+        IconLayer iconLayer = this.mIconLayer.get(i);
         removeIconView(i);
-        SideTouchUi$IconLayer.access$600(sideTouchUi$IconLayer);
+        iconLayer.invalid();
     }
 
-    public boolean destroyTo(SideTouchUi$Type sideTouchUi$Type) {
-        if (!compareTo(sideTouchUi$Type)) {
+    public boolean destroyTo(Type type) {
+        if (!compareTo(type)) {
             return false;
         }
-        destroyIcon(sideTouchUi$Type.layer);
+        destroyIcon(type.layer);
         return true;
     }
 
-    private boolean compareTo(SideTouchUi$Type sideTouchUi$Type) {
-        return getIconType(sideTouchUi$Type.layer) == sideTouchUi$Type;
+    private boolean compareTo(Type type) {
+        return getIconType(type.layer) == type;
     }
 
-    private SideTouchUi$Type getIconType(int i) {
+    private Type getIconType(int i) {
         if (this.mIconLayer.get(i) == null) {
             return null;
         }
-        return SideTouchUi$IconLayer.access$700(this.mIconLayer.get(i));
+        return this.mIconLayer.get(i).mIconType;
     }
 
-    private SideTouchUi$Icon getIcon(int i) {
+    private Icon getIcon(int i) {
         if (this.mIconLayer.get(i) == null) {
             return null;
         }
-        return SideTouchUi$IconLayer.access$300(this.mIconLayer.get(i));
+        return this.mIconLayer.get(i).mIcon;
     }
 
     private Point getAttachPoint(int i) {
         if (this.mIconLayer.get(i) == null) {
             return null;
         }
-        return SideTouchUi$IconLayer.access$800(this.mIconLayer.get(i));
+        return this.mIconLayer.get(i).mAttachPoint;
     }
 
-    private SideTouchUi$IconLayer getIconLayer(int i) {
-        SideTouchUi$IconLayer sideTouchUi$IconLayer = this.mIconLayer.get(i);
-        if (sideTouchUi$IconLayer != null) {
-            return sideTouchUi$IconLayer;
+    private IconLayer getIconLayer(int i) {
+        IconLayer iconLayer = this.mIconLayer.get(i);
+        if (iconLayer != null) {
+            return iconLayer;
         }
-        SideTouchUi$IconLayer sideTouchUi$IconLayer2 = new SideTouchUi$IconLayer(null);
-        this.mIconLayer.append(i, sideTouchUi$IconLayer2);
-        return sideTouchUi$IconLayer2;
+        IconLayer iconLayer2 = new IconLayer();
+        this.mIconLayer.append(i, iconLayer2);
+        return iconLayer2;
     }
 
-    private boolean attachInternal(SideTouchUi$Icon sideTouchUi$Icon, Point point, SideTouchUi$Type sideTouchUi$Type) {
-        Point attachPoint = getAttachPoint(sideTouchUi$Type.layer);
+    private boolean attachInternal(Icon icon, Point point, Type type) {
+        Point attachPoint = getAttachPoint(type.layer);
         if (point == null && attachPoint == null) {
             return false;
         }
-        removeIconView(sideTouchUi$Type.layer);
-        SideTouchUi$IconLayer iconLayer = getIconLayer(sideTouchUi$Type.layer);
-        SideTouchUi$IconLayer.access$302(iconLayer, sideTouchUi$Icon);
-        SideTouchUi$IconLayer.access$702(iconLayer, sideTouchUi$Type);
+        removeIconView(type.layer);
+        IconLayer iconLayer = getIconLayer(type.layer);
+        iconLayer.mIcon = icon;
+        iconLayer.mIconType = type;
         if (point == null) {
-            SideTouchUi$IconLayer.access$802(iconLayer, attachPoint);
+            iconLayer.mAttachPoint = attachPoint;
         } else {
-            SideTouchUi$IconLayer.access$802(iconLayer, point);
+            iconLayer.mAttachPoint = point;
         }
-        View viewAttach = sideTouchUi$Icon.attach(this.mMovableArea, SideTouchUi$IconLayer.access$800(iconLayer));
+        View viewAttach = icon.attach(this.mMovableArea, iconLayer.mAttachPoint);
         if (viewAttach != null) {
-            viewAttach.setTag(sideTouchUi$Icon);
+            viewAttach.setTag(icon);
         }
-        sideTouchUi$Icon.setUiOrientation(this.mOrientation);
-        requestLayerFocus(sideTouchUi$Type.layer);
+        icon.setUiOrientation(this.mOrientation);
+        requestLayerFocus(type.layer);
         return true;
     }
 
     private void removeIconView(int i) {
         View viewFindViewWithTag;
-        SideTouchUi$Icon icon = getIcon(i);
+        Icon icon = getIcon(i);
         if (icon == null || (viewFindViewWithTag = this.mMovableArea.findViewWithTag(icon)) == null) {
             return;
         }
@@ -256,42 +329,60 @@ public class SideTouchUi {
     private void requestLayerFocus(int i) {
         for (int i2 = 0; i2 < this.mIconLayer.size(); i2++) {
             int iKeyAt = this.mIconLayer.keyAt(i2);
-            SideTouchUi$IconLayer sideTouchUi$IconLayerValueAt = this.mIconLayer.valueAt(i2);
-            if (sideTouchUi$IconLayerValueAt != null && SideTouchUi$IconLayer.access$400(sideTouchUi$IconLayerValueAt)) {
-                SideTouchUi$IconLayer.access$502(sideTouchUi$IconLayerValueAt, i == iKeyAt);
-                SideTouchUi$IconLayer.access$300(sideTouchUi$IconLayerValueAt).onFocusChanged(SideTouchUi$IconLayer.access$500(sideTouchUi$IconLayerValueAt));
+            IconLayer iconLayerValueAt = this.mIconLayer.valueAt(i2);
+            if (iconLayerValueAt != null && iconLayerValueAt.isValid()) {
+                iconLayerValueAt.mFocused = i == iKeyAt;
+                iconLayerValueAt.mIcon.onFocusChanged(iconLayerValueAt.mFocused);
             }
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void attemptLayerFocusChange(int i) {
-        SideTouchUi$IconLayer sideTouchUi$IconLayerSearchNextIconLayer = searchNextIconLayer(i);
-        if (sideTouchUi$IconLayerSearchNextIconLayer == null || !SideTouchUi$IconLayer.access$400(sideTouchUi$IconLayerSearchNextIconLayer)) {
+        IconLayer iconLayerSearchNextIconLayer = searchNextIconLayer(i);
+        if (iconLayerSearchNextIconLayer == null || !iconLayerSearchNextIconLayer.isValid()) {
             return;
         }
-        SideTouchUi$IconLayer.access$502(sideTouchUi$IconLayerSearchNextIconLayer, true);
-        SideTouchUi$IconLayer.access$300(sideTouchUi$IconLayerSearchNextIconLayer).onFocusChanged(SideTouchUi$IconLayer.access$500(sideTouchUi$IconLayerSearchNextIconLayer));
+        iconLayerSearchNextIconLayer.mFocused = true;
+        iconLayerSearchNextIconLayer.mIcon.onFocusChanged(iconLayerSearchNextIconLayer.mFocused);
     }
 
-    private SideTouchUi$IconLayer searchNextIconLayer(int i) {
-        SideTouchUi$IconLayer sideTouchUi$IconLayerFindNextIconLayer = findNextIconLayer(i, true);
-        return (sideTouchUi$IconLayerFindNextIconLayer == null || !SideTouchUi$IconLayer.access$400(sideTouchUi$IconLayerFindNextIconLayer)) ? findNextIconLayer(i, false) : sideTouchUi$IconLayerFindNextIconLayer;
+    private IconLayer searchNextIconLayer(int i) {
+        IconLayer iconLayerFindNextIconLayer = findNextIconLayer(i, true);
+        return (iconLayerFindNextIconLayer == null || !iconLayerFindNextIconLayer.isValid()) ? findNextIconLayer(i, false) : iconLayerFindNextIconLayer;
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:10:0x0016  */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    private SideTouchUi$IconLayer findNextIconLayer(int i, boolean z) {
-        for (int i2 = 0; i2 < this.mIconLayer.size(); i2++) {
-            int iKeyAt = this.mIconLayer.keyAt(i2);
-            if (z) {
-                if (i < iKeyAt) {
-                    i = iKeyAt;
+    private com.sonyericsson.android.camera.view.sidetouch.SideTouchUi.IconLayer findNextIconLayer(int r3, boolean r4) {
+        for (int i = 0; i < this.mIconLayer.size(); i++) {
+            int key = this.mIconLayer.keyAt(i);
+            if (r4) {
+                if (r3 < key) {
+                    r3 = key;
                 }
-            } else if (iKeyAt < i) {
+            } else if (key < r3) {
+                r3 = key;
             }
         }
-        return this.mIconLayer.get(i);
+        return (IconLayer) this.mIconLayer.get(r3);
+    }
+
+    public enum Type {
+        NONE(-1),
+        CAPTURE_COUNTDOWN(0),
+        VIDEO_COUNTDOWN(0),
+        SELF_TIMER_COUNTDOWN_CANCEL(0),
+        AUTO_REVIEW(0),
+        RECORDING(0),
+        RECORDING_HDR(0),
+        RECORDING_PAUSE(0),
+        RECORDING_HDR_PAUSE(0),
+        ZOOM_BAR(1),
+        COVERING(9);
+
+        final int layer;
+
+        Type(int i) {
+            this.layer = i;
+        }
     }
 }

@@ -27,21 +27,33 @@
     <string name="abc_shareactionprovider_share_with">共有</string>
     <string name="abc_shareactionprovider_share_with_application">%sと共有</string>
     <string name="abc_toolbar_collapse_description">折りたたむ</string>
-    <string name="cam_3d_strings_creating_but_incorrect_direction_txt">撮影できませんでした。\n矢印方向にまっすぐ動かしてください。</string>
-    <string name="cam_3d_strings_creating_but_too_quick_txt">撮影できませんでした。\nゆっくりカメラを動かしてください。</string>
-    <string name="cam_3d_strings_creating_but_too_slow_txt">撮影できませんでした。\nもっと速く動かしてください。</string>
+    <string name="cam_3d_strings_creating_but_incorrect_direction_txt">"撮影できませんでした。
+矢印方向にまっすぐ動かしてください。"</string>
+    <string name="cam_3d_strings_creating_but_too_quick_txt">"撮影できませんでした。
+ゆっくりカメラを動かしてください。"</string>
+    <string name="cam_3d_strings_creating_but_too_slow_txt">"撮影できませんでした。
+もっと速く動かしてください。"</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">本体を動かしてパノラマ写真を撮影できます</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">次のファイルを作成します:\n-マルチアングル画像 \n-3D画像 \n注:これらのファイルはグレーエリアを含みます。</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">次のファイルを作成します:\n-マルチアングル画像 \n-3D画像</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">処理中...\n保存される画像にはグレーエリアが含まれます</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"次のファイルを作成します:
+-マルチアングル画像 
+-3D画像 
+注:これらのファイルはグレーエリアを含みます。"</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"次のファイルを作成します:
+-マルチアングル画像 
+-3D画像"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"処理中...
+保存される画像にはグレーエリアが含まれます"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">画像保存中</string>
     <string name="cam_3d_strings_dialog_processing_txt">処理中...</string>
     <string name="cam_3d_strings_error_application_busy_txt">3Dカメラを起動するには少し待ってから再度試してください</string>
     <string name="cam_3d_strings_error_capturing_during_connecting_tv_title_txt">エラー</string>
     <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">ケーブルを外してください。このモードではケーブルを接続中に撮影できません。</string>
-    <string name="cam_3d_strings_error_direction_txt">撮影できませんでした。\n矢印方向にまっすぐ動かしてください。</string>
-    <string name="cam_3d_strings_error_too_quick_txt">撮影できませんでした。\nゆっくりカメラを動かしてください。</string>
-    <string name="cam_3d_strings_error_too_slow_txt">撮影できませんでした。\nもっと速く動かしてください。</string>
+    <string name="cam_3d_strings_error_direction_txt">"撮影できませんでした。
+矢印方向にまっすぐ動かしてください。"</string>
+    <string name="cam_3d_strings_error_too_quick_txt">"撮影できませんでした。
+ゆっくりカメラを動かしてください。"</string>
+    <string name="cam_3d_strings_error_too_slow_txt">"撮影できませんでした。
+もっと速く動かしてください。"</string>
     <string name="cam_3d_strings_setting_shooting_direction_down_txt">下</string>
     <string name="cam_3d_strings_setting_shooting_direction_left_txt">左</string>
     <string name="cam_3d_strings_setting_shooting_direction_right_txt">右</string>
@@ -56,7 +68,8 @@
     <string name="cam_3d_strings_shooting_guide_right_to_left_txt">右から左に動かしてください</string>
     <string name="cam_3d_strings_shooting_guide_touch_cap_txt">撮影を開始してゆっくり本体を動かしてください</string>
     <string name="cam_3d_strings_shooting_guide_up_to_down_txt">上から下に動かしてください</string>
-    <string name="cam_3d_strings_sweep_panorama_short_txt">スイング\nパノラマ</string>
+    <string name="cam_3d_strings_sweep_panorama_short_txt">"スイング
+パノラマ"</string>
     <string name="cam_app_shortcut_front_photo_txt">フロントフォト</string>
     <string name="cam_app_shortcut_manual_txt">マニュアル</string>
     <string name="cam_app_shortcut_video_txt">ビデオ</string>
@@ -172,20 +185,25 @@
     <string name="cam_strings_capturing_mode_auto_txt">フォト</string>
     <string name="cam_strings_capturing_mode_button_txt">モード</string>
     <string name="cam_strings_capturing_mode_camera_txt">カメラ</string>
-    <string name="cam_strings_capturing_mode_creative_effect_txt">クリエイティブ\nエフェクト</string>
-    <string name="cam_strings_capturing_mode_dualrec_txt">フェイスイン\nピクチャー</string>
+    <string name="cam_strings_capturing_mode_creative_effect_txt">"クリエイティブ
+エフェクト"</string>
+    <string name="cam_strings_capturing_mode_dualrec_txt">"フェイスイン
+ピクチャー"</string>
     <string name="cam_strings_capturing_mode_facefusion_txt">ARマスク</string>
     <string name="cam_strings_capturing_mode_google_lens_txt">Google Lens</string>
-    <string name="cam_strings_capturing_mode_high_frame_rate_txt">タイムシフト\nビデオ</string>
+    <string name="cam_strings_capturing_mode_high_frame_rate_txt">"タイムシフト
+ビデオ"</string>
     <string name="cam_strings_capturing_mode_manual_txt">マニュアル</string>
     <string name="cam_strings_capturing_mode_multicam_txt">マルチカメラ</string>
     <string name="cam_strings_capturing_mode_network_error_txt">データのダウンロードを完了できませんでした</string>
     <string name="cam_strings_capturing_mode_portraitselfie_txt">ポートレートセルフィー</string>
     <string name="cam_strings_capturing_mode_slow_motion_txt">ビデオ(スローモーション)</string>
     <string name="cam_strings_capturing_mode_soundphoto_txt">サウンドフォト</string>
-    <string name="cam_strings_capturing_mode_superior_auto_cy_txt">プレミアム\nおまかせオート</string>
+    <string name="cam_strings_capturing_mode_superior_auto_cy_txt">"プレミアム
+おまかせオート"</string>
     <string name="cam_strings_capturing_mode_superior_auto_txt">プレミアムおまかせオート</string>
-    <string name="cam_strings_capturing_mode_timeshift_txt">タイムシフト\n連写</string>
+    <string name="cam_strings_capturing_mode_timeshift_txt">"タイムシフト
+連写"</string>
     <string name="cam_strings_capturing_mode_title_txt">撮影モード</string>
     <string name="cam_strings_change_full_storage_to_internal_txt">SDカードがいっぱいです。標準の保存先が内部ストレージに変更されました。</string>
     <string name="cam_strings_change_save_destination_high_frame_rate_title_txt">タイムシフトビデオ</string>
@@ -206,7 +224,8 @@
     <string name="cam_strings_cooling_mode_message1_txt">現在、以下の機能が利用できません。</string>
     <string name="cam_strings_cooling_mode_message2_txt">本体の温度が下がってから、カメラを再起動してください。</string>
     <string name="cam_strings_cooling_mode_title_txt">以下の機能が無効になりました</string>
-    <string name="cam_strings_cooling_mode_txt">本体の温度が上昇したため、\n一部のカメラ機能が利用できません</string>
+    <string name="cam_strings_cooling_mode_txt">"本体の温度が上昇したため、
+一部のカメラ機能が利用できません"</string>
     <string name="cam_strings_core_intelligentactive_txt">インテリジェントアクティブ</string>
     <string name="cam_strings_cta_description_txt">以下のアクセス要求を許可しますか?</string>
     <string name="cam_strings_cta_title_txt">注意</string>
@@ -310,7 +329,8 @@
     <string name="cam_strings_exposure_level_title_txt">明るさ(EV補正)</string>
     <string name="cam_strings_exposure_level_txt">明るさ(EV補正)</string>
     <string name="cam_strings_eye_position_tutorial_title_txt">カメラ目線</string>
-    <string name="cam_strings_eye_position_tutorial_txt">フロントカメラに視線を向けてください。\nフロントカメラは受話口(スピーカー)の近くにあります。</string>
+    <string name="cam_strings_eye_position_tutorial_txt">"フロントカメラに視線を向けてください。
+フロントカメラは受話口(スピーカー)の近くにあります。"</string>
     <string name="cam_strings_facefusion_add_face_txt">顔を追加</string>
     <string name="cam_strings_facefusion_delete_mask_txt">顔を削除しますか? この操作は元に戻せません。</string>
     <string name="cam_strings_facefusion_no_face_detected_txt">顔を検出できませんでした</string>
@@ -360,7 +380,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">フロントカメラを使う様々なアプリケーションで、顔を明るく滑らかにします。この効果は静止画にも動画にも反映され、明るさや滑らかさを調整することもできます。</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">レベル調整</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">肌の滑らかさ</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">アプリを起動できません。\n最新の%1$sがインストールされているか、また有効になっているかを確認してください。</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"アプリを起動できません。
+最新の%1$sがインストールされているか、また有効になっているかを確認してください。"</string>
     <string name="cam_strings_gridline_txt">グリッドライン</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">カメラに手のひらを向けてください。手のひらが認識されるとセルフタイマーがONになります。指を真上に向けると認識されやすくなります。</string>
     <string name="cam_strings_hand_shutter_hint_txt">カメラに手のひらを向けてください</string>
@@ -404,13 +425,15 @@
     <string name="cam_strings_more_common_setting_title_txt">共通設定</string>
     <string name="cam_strings_more_txt">その他の設定</string>
     <string name="cam_strings_multi_window_txt">%1$sを使うには、分割線の中央をドラッグして%1$sを全画面表示にしてください</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">もう一台の端末がマルチカメラに参加しました。\nあなたの端末のビューファインダーを共有してもよいですか？</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"もう一台の端末がマルチカメラに参加しました。
+あなたの端末のビューファインダーを共有してもよいですか？"</string>
     <string name="cam_strings_multicam_add_device_txt">機器を追加</string>
     <string name="cam_strings_multicam_add_more_txt">さらに追加</string>
     <string name="cam_strings_multicam_apply_txt">完了</string>
     <string name="cam_strings_multicam_connection_failure_dialog_txt">接続に失敗しました</string>
     <string name="cam_strings_multicam_di_connection_err_dialog_txt">Xperiaが接続されているときは、ソニーのWi-Fi/NFCカメラを接続できません。</string>
-    <string name="cam_strings_multicam_error_app_ver_old_txt">アプリケーションのバージョンが違うため接続できません。\nお使いのアプリケーションバージョンが古い可能性があります。</string>
+    <string name="cam_strings_multicam_error_app_ver_old_txt">"アプリケーションのバージョンが違うため接続できません。
+お使いのアプリケーションバージョンが古い可能性があります。"</string>
     <string name="cam_strings_multicam_error_disconnect_txt">切断されました</string>
     <string name="cam_strings_multicam_error_nfc_txt">NFCがロックされているため、開始できません。</string>
     <string name="cam_strings_multicam_error_wifi_txt">Wi-Fiテザリング中は、このモードは利用できません。</string>
@@ -436,16 +459,19 @@
     <string name="cam_strings_photometry_txt">測光</string>
     <string name="cam_strings_predictive_capture_feedback_txt">先読み撮影</string>
     <string name="cam_strings_predictive_capture_txt">先読み撮影</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">機器を横向きで振り上げて、カメラを構える動作を認識してカメラが起動しました。\nこの機能はカメラ設定の[スマートカメラ起動]から挙動を変更できます。</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"機器を横向きで振り上げて、カメラを構える動作を認識してカメラが起動しました。
+この機能はカメラ設定の[スマートカメラ起動]から挙動を変更できます。"</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">円の中をタッチして撮影</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">画面をタッチして撮影</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">円の中をタップして全画面表示</string>
     <string name="cam_strings_predictive_launch_guide_txt">円の中をタッチしてカメラ起動</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">タッチして起動＆撮影</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">タッチして起動</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">スリープ状態やロック画面からでも簡単に素早くカメラを起動できます。対象に向けてカメラを横持ちで振り上げて構えてください。ジェスチャーを認識してカメラが起動します。\nこの機能はカメラ設定の[スマートカメラ起動]で挙動を変更することができます。</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"スリープ状態やロック画面からでも簡単に素早くカメラを起動できます。対象に向けてカメラを横持ちで振り上げて構えてください。ジェスチャーを認識してカメラが起動します。
+この機能はカメラ設定の[スマートカメラ起動]で挙動を変更することができます。"</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">スマートカメラ起動</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">スリープ状態やロック画面からでも簡単に素早くカメラを起動できます。対象に向けてカメラを横持ちで振り上げて構えてください。ジェスチャーを認識してカメラが起動します。\nこの機能はカメラ設定の[スマートカメラ起動]でOFFにすることができます。</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"スリープ状態やロック画面からでも簡単に素早くカメラを起動できます。対象に向けてカメラを横持ちで振り上げて構えてください。ジェスチャーを認識してカメラが起動します。
+この機能はカメラ設定の[スマートカメラ起動]でOFFにすることができます。"</string>
     <string name="cam_strings_predictive_launch_txt">スマートカメラ起動</string>
     <string name="cam_strings_preview_always_txt">ON</string>
     <string name="cam_strings_preview_duration_3sec_txt">3秒</string>
@@ -478,7 +504,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$sは次の権限が必要です</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$sの権限</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">アプリがこの操作を実行するには、次の権限の許可が必要です。</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">権限を許可するには、[アプリ情報]&gt;[許可]に移動してください。</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">権限を許可するには、[アプリ情報]>[許可]に移動してください。</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">実行できませんでした</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">写真および動画を撮影するため</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">位置情報を取得するため</string>
@@ -525,11 +551,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">内部ストレージに保存されました</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">移動する</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">アプリがこの操作を実行するには、次の権限の許可が必要です。</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">SDカードを使用するためには、SDカードへのアクセス許可が必要です。\n再度保存先をSDカードに変更するところから始めるか、移動先の画面でSDカードへのアクセスをアプリに許可してください。</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"SDカードを使用するためには、SDカードへのアクセス許可が必要です。
+再度保存先をSDカードに変更するところから始めるか、移動先の画面でSDカードへのアクセスをアプリに許可してください。"</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SDカードが利用できません</string>
-    <string name="cam_strings_sd_permission_info_2_txt">新しいSDカードが認識されたため、アクセス許可が必要です。\n\n移動先の画面でSDカード、もしくはDCIMディレクトリを選択してアクセスを許可してください。</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SDカードもしくはDCIMディレクトリが選択されなかったため、SDカードを使用できません。\n\n再度保存先をSDカードに変更するところから始めるか、移動先の画面で適切なディレクトリを選択してアクセスを許可してください。</string>
-    <string name="cam_strings_sd_permission_info_txt">新しいSDカードが認識されたため、アクセスの許可が必要です。\nそのため、保存先が内部ストレージに変更されました。\n\nSDカードを使用する場合は、カメラの設定から保存先をSDカードに設定してください。</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"新しいSDカードが認識されたため、アクセス許可が必要です。
+
+移動先の画面でSDカード、もしくはDCIMディレクトリを選択してアクセスを許可してください。"</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SDカードもしくはDCIMディレクトリが選択されなかったため、SDカードを使用できません。
+
+再度保存先をSDカードに変更するところから始めるか、移動先の画面で適切なディレクトリを選択してアクセスを許可してください。"</string>
+    <string name="cam_strings_sd_permission_info_txt">"新しいSDカードが認識されたため、アクセスの許可が必要です。
+そのため、保存先が内部ストレージに変更されました。
+
+SDカードを使用する場合は、カメラの設定から保存先をSDカードに設定してください。"</string>
     <string name="cam_strings_sd_permission_rationale_txt">写真および動画をSDカードに保存するため</string>
     <string name="cam_strings_select_picture_txt">画像を選択</string>
     <string name="cam_strings_self_timer_05_txt">0.5秒</string>
@@ -554,10 +588,14 @@
     <string name="cam_strings_side_touch_on_title_txt">サイドセンス</string>
     <string name="cam_strings_side_touch_on_txt">この機能を利用するためには、機器のサイドセンス設定を有効にする必要があります。今すぐ有効にしますか?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">サイドセンス</string>
-    <string name="cam_strings_side_touch_tutorial_txt">画面外側の縁を2回タップすると静止画や動画の撮影ができます。撮影ボタンが押しづらいときにも便利です。なぞるとズーム操作もできます。\nこの機能はフォトモードとビデオモードで使えます。後からカメラ設定の[サイドセンス]でOFFにすることができます。</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">機器を縦に持った状態で、画面外側の縁を2回タップすると静止画や動画の撮影ができます。撮影ボタンが押しづらいときにも便利です。なぞるとズーム操作もできます。\nこの機能はフォトモードとビデオモードで使えます。後からカメラ設定の[サイドセンス]でOFFにすることができます。</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">機器を縦に持った状態で、画面外側の縁を2回タップすると静止画や動画の撮影ができます。撮影ボタンが押しづらいときにも便利です。\nこの機能はフォトモードとビデオモードで使えます。後からカメラ設定の[サイドセンス]でOFFにすることができます。</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">画面外側の縁を2回タップすると静止画や動画の撮影ができます。撮影ボタンが押しづらいときにも便利です。\nこの機能はフォトモードとビデオモードで使えます。後からカメラ設定の[サイドセンス]でOFFにすることができます。</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"画面外側の縁を2回タップすると静止画や動画の撮影ができます。撮影ボタンが押しづらいときにも便利です。なぞるとズーム操作もできます。
+この機能はフォトモードとビデオモードで使えます。後からカメラ設定の[サイドセンス]でOFFにすることができます。"</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"機器を縦に持った状態で、画面外側の縁を2回タップすると静止画や動画の撮影ができます。撮影ボタンが押しづらいときにも便利です。なぞるとズーム操作もできます。
+この機能はフォトモードとビデオモードで使えます。後からカメラ設定の[サイドセンス]でOFFにすることができます。"</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"機器を縦に持った状態で、画面外側の縁を2回タップすると静止画や動画の撮影ができます。撮影ボタンが押しづらいときにも便利です。
+この機能はフォトモードとビデオモードで使えます。後からカメラ設定の[サイドセンス]でOFFにすることができます。"</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"画面外側の縁を2回タップすると静止画や動画の撮影ができます。撮影ボタンが押しづらいときにも便利です。
+この機能はフォトモードとビデオモードで使えます。後からカメラ設定の[サイドセンス]でOFFにすることができます。"</string>
     <string name="cam_strings_side_touch_txt">サイドセンス</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">カメラ設定から撮影方法や解像度を変更できます</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">スーパースロー (ワンショット)</string>
@@ -565,7 +603,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">スーパースロー</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">他にも撮影方法を用意しています。設定から変更できるのでお試しください。</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">その他のオプション</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">一瞬をスローモーションにして、目ではとらえられない瞬間を簡単に撮影する事ができます。スローにしたい瞬間に中央のボタンを押してください。\n明るい場所ではよりきれいに撮影できます</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"一瞬をスローモーションにして、目ではとらえられない瞬間を簡単に撮影する事ができます。スローにしたい瞬間に中央のボタンを押してください。
+明るい場所ではよりきれいに撮影できます"</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">決定的な瞬間を%1$s fpsの高速撮影で記録することで、印象的な動画を残します</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">一瞬をスローモーションにして、目ではとらえられない瞬間を簡単に撮影する事ができます。スローにしたい瞬間に中央のボタンを押してください。</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">スーパースローモーション (ワンショット)</string>
@@ -576,9 +615,11 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">スローモーション</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">撮影方法</string>
     <string name="cam_strings_slow_motion_standard_txt">スローモーション</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">動画の中の一瞬をスローモーションにして、目でとらえられない瞬間を撮影できます。\n明るい場所ではよりきれいに撮影できます。</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"動画の中の一瞬をスローモーションにして、目でとらえられない瞬間を撮影できます。
+明るい場所ではよりきれいに撮影できます。"</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">通常の動画撮影中に%1$s fpsの高速撮影に切り替え、変化のある撮影ができます</string>
-    <string name="cam_strings_slow_motion_super_hint_2_txt">スローで残したい瞬間に、\n中央のボタンを押してください</string>
+    <string name="cam_strings_slow_motion_super_hint_2_txt">"スローで残したい瞬間に、
+中央のボタンを押してください"</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">スローモーション部分を撮影しました</string>
     <string name="cam_strings_slow_motion_super_tutorial_1_txt">動画の中の一瞬をスローモーションにして、目でとらえられない瞬間を撮影できます</string>
     <string name="cam_strings_slow_motion_super_tutorial_2_txt">録画ボタンを押して、録画を開始します</string>
@@ -607,12 +648,12 @@
     <string name="cam_strings_sw_licence_title_txt">ソフトウェアライセンス</string>
     <string name="cam_strings_take_photo_txt">写真を撮影</string>
     <string name="cam_strings_term_of_use_accept_txt">承諾</string>
-    <string name="cam_strings_term_of_use_consent_txt">Sony Mobile&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;使用条件&lt;/a&gt;に同意します。</string>
+    <string name="cam_strings_term_of_use_consent_txt">Sony Mobile&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">使用条件&lt;/a>に同意します。</string>
     <string name="cam_strings_term_of_use_data_charge_txt">このサービスを利用すると、通信事業者とのご契約のデータプランによってはデータ通信料が発生する場合があります。</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobileは、サービスの向上およびサービスの一環として、適切な結果を提供するため、ハッシュ化されたAndroid ID(機器固有の識別子)、位置情報およびタイムスタンプを収集します。</string>
     <string name="cam_strings_term_of_use_decline_txt">拒否</string>
     <string name="cam_strings_term_of_use_title_txt">利用規約</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;利用規約&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">利用規約&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">写真を選択解除</string>
     <string name="cam_strings_timeshift_operation_failed_txt">保存できませんでした</string>
     <string name="cam_strings_timeshift_save_complete_txt">保存しました</string>
@@ -639,7 +680,8 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">4K ビデオモードで安定したビデオを録画するには、保存先を内部ストレージに設定するか、高速書き込み可能なSDカード(スピードクラス10またはUHSスピードクラス1以上推奨)を挿入してください。</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">タイムシフトビデオモードで安定したビデオを録画するには、保存先を内部ストレージに設定するか、高速書き込み可能なSDカード(スピードクラス10またはUHSスピードクラス1以上推奨)を挿入してください。</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">スローモーションビデオモードで安定したビデオを録画するには、保存先を内部ストレージに設定するか、高速書き込み可能なSDカード(スピードクラス10またはUHSスピードクラス1以上推奨)を挿入してください。</string>
-    <string name="cam_strings_video_explanatory_txt">安定したビデオを撮影するために、高速書き込み可能なSDカード(スピードクラス10またはUHSスピードクラス1以上推奨)かどうかをご確認ください。\nそうでない場合は、内部ストレージの使用をお勧めします。保存先を変更しますか?</string>
+    <string name="cam_strings_video_explanatory_txt">"安定したビデオを撮影するために、高速書き込み可能なSDカード(スピードクラス10またはUHSスピードクラス1以上推奨)かどうかをご確認ください。
+そうでない場合は、内部ストレージの使用をお勧めします。保存先を変更しますか?"</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">デュアルカメラ</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">デュアルカメラを使用すると、室内や夜景などの暗いシーンでノイズを抑えた美しい動画を撮影できます。2つのカメラは必要に応じて同時に動作し、撮影シーンに合わせて超高感度で撮影するように自動的に切り替わります。</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">デュアルカメラによる動画撮影</string>
@@ -679,7 +721,8 @@
     <string name="cam_strings_white_balance_fluorescent_txt">蛍光灯</string>
     <string name="cam_strings_white_balance_incandescent_txt">電球</string>
     <string name="cam_strings_white_balance_title_txt">ホワイトバランス</string>
-    <string name="cam_strings_white_balance_txt">ホワイト\nバランス</string>
+    <string name="cam_strings_white_balance_txt">"ホワイト
+バランス"</string>
     <string name="cam_strings_zoom_help_txt">音量キーでズームできます</string>
     <string name="cam_strings_zoom_not_supported_txt">ズームは現在利用できません</string>
     <string name="common_android_wear_notification_needs_update_text">%1$sにはAndroid Wearアプリの更新が必要です。</string>

@@ -1,11 +1,11 @@
 package com.sonyericsson.android.camera.view.hint;
 
 import android.content.Context;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController;
-import com.sonyericsson.android.camera.view.tutorial.TutorialController$TutorialType;
 
 public class HintTextStandardSlowMotionDescription extends HintTextSlowMotionDescription {
     public HintTextStandardSlowMotionDescription(TutorialController tutorialController, Context context) {
-        super(tutorialController, TutorialController$TutorialType.STANDARD_SLOW_MOTION, 2131690148, String.format(context.getString(2131690143), "120"));
+        super(tutorialController, TutorialController.TutorialType.STANDARD_SLOW_MOTION, R.string.cam_strings_slow_motion_standard_txt, String.format(context.getString(R.string.cam_strings_slow_motion_standard_hint_1_txt), "120"));
     }
 }

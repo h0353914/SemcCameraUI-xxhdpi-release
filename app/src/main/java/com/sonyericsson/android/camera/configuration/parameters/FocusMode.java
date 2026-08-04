@@ -1,19 +1,22 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.capability.CameraCapabilityList;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public enum FocusMode implements UserSettingValue {
-    SINGLE(-1, 2131689848, "continuous-picture", "continuous-video", "center", true),
-    FIXED(-1, 2131689848, "fixed", "fixed", "center", false),
-    FACE_DETECTION(-1, 2131689843, "continuous-picture", "continuous-video", "center", true),
-    TOUCH_FOCUS(-1, 2131689850, "continuous-picture", "continuous-video", "center", true),
-    INFINITY(-1, 2131689848, "infinity", "infinity", "center", true),
-    OBJECT_TRACKING(-1, 2131689847, "continuous-picture", "continuous-video", "center", true);
+    SINGLE(-1, R.string.cam_strings_focus_mode_single_af_txt, CameraParameters.FOCUS_MODE_CONTINUOUS_PICTURE, CameraParameters.FOCUS_MODE_CONTINUOUS_VIDEO, CameraParameters.FOCUS_AREA_CENTER, true),
+    FIXED(-1, R.string.cam_strings_focus_mode_single_af_txt, CameraParameters.FOCUS_MODE_FIXED, CameraParameters.FOCUS_MODE_FIXED, CameraParameters.FOCUS_AREA_CENTER, false),
+    FACE_DETECTION(-1, R.string.cam_strings_focus_mode_face_detection_txt, CameraParameters.FOCUS_MODE_CONTINUOUS_PICTURE, CameraParameters.FOCUS_MODE_CONTINUOUS_VIDEO, CameraParameters.FOCUS_AREA_CENTER, true),
+    TOUCH_FOCUS(-1, R.string.cam_strings_focus_mode_touch_focus_txt, CameraParameters.FOCUS_MODE_CONTINUOUS_PICTURE, CameraParameters.FOCUS_MODE_CONTINUOUS_VIDEO, CameraParameters.FOCUS_AREA_CENTER, true),
+    INFINITY(-1, R.string.cam_strings_focus_mode_single_af_txt, CameraParameters.FOCUS_MODE_INFINITY, CameraParameters.FOCUS_MODE_INFINITY, CameraParameters.FOCUS_AREA_CENTER, true),
+    OBJECT_TRACKING(-1, R.string.cam_strings_focus_mode_object_tracking_txt, CameraParameters.FOCUS_MODE_CONTINUOUS_PICTURE, CameraParameters.FOCUS_MODE_CONTINUOUS_VIDEO, CameraParameters.FOCUS_AREA_CENTER, true);
 
     public static final String TAG = "FocusMode";
     private static final int sParameterTextId = 2131689851;
@@ -81,7 +84,7 @@ public enum FocusMode implements UserSettingValue {
         List<String> list = cameraCapability.FOCUS_MODE.get();
         List<String> list2 = cameraCapability.FOCUS_AREA.get();
         if (!list.isEmpty()) {
-            ArrayList<FocusMode> arrayList2 = new ArrayList();
+            ArrayList arrayList2 = new ArrayList();
             for (FocusMode focusMode : values()) {
                 if (list.contains(focusMode.getValue())) {
                     arrayList2.add(focusMode);
@@ -90,7 +93,9 @@ public enum FocusMode implements UserSettingValue {
             if (list2.isEmpty()) {
                 arrayList = arrayList2;
             } else {
-                for (FocusMode focusMode2 : arrayList2) {
+                Iterator it = arrayList2.iterator();
+                while (it.hasNext()) {
+                    FocusMode focusMode2 = (FocusMode) it.next();
                     if (list2.contains(focusMode2.getFocusArea())) {
                         arrayList.add(focusMode2);
                     }
@@ -131,21 +136,23 @@ public enum FocusMode implements UserSettingValue {
         return getClass().getName();
     }
 
-    public static void updateValue(CameraInfo$CameraId cameraInfo$CameraId, List<String> list) {
-        if (cameraInfo$CameraId != CameraInfo$CameraId.BACK || list.contains(SINGLE.getValue())) {
+    public static void updateValue(CameraInfo.CameraId cameraId, List<String> list) {
+        if (cameraId != CameraInfo.CameraId.BACK || list.contains(SINGLE.getValue())) {
             return;
         }
         SINGLE.mValue = "auto";
     }
 
     public static FocusMode getDefaultValue(CapturingMode capturingMode) {
-        switch (FocusMode$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()]) {
-            case 4:
-            case 5:
-            case 6:
+        switch (capturingMode) {
+            case FRONT_VIDEO:
+            case SUPERIOR_FRONT:
+            case FRONT_PHOTO:
                 if (!PlatformCapability.isFocusSupported(capturingMode.getCameraId())) {
+                    return FIXED;
+                } else {
+                    return FACE_DETECTION;
                 }
-                break;
         }
         return FACE_DETECTION;
     }

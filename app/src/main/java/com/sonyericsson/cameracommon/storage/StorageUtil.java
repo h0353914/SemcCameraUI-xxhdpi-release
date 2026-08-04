@@ -1,9 +1,11 @@
 package com.sonyericsson.cameracommon.storage;
 
 import android.content.Context;
+import android.content.ContentResolver;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.StatFs;
 import android.os.UserHandle;
 import android.os.storage.DiskInfo;
 import android.os.storage.StorageManager;
@@ -13,9 +15,14 @@ import android.provider.DocumentsContract;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
+import com.sonyericsson.android.camera.configuration.SharedPreferencesConstants;
 import com.sonyericsson.android.camera.setting.SharedPreferencesAccessor;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.util.capability.SharedPrefsTranslator;
 import com.sonyericsson.cameracommon.mediasaving.StorageManagerProxy;
+import com.sonyericsson.cameracommon.storage.CameraStorageManager;
+import com.sonyericsson.cameracommon.storage.Storage;
+import com.sonymobile.media.SomcMediaStore;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
@@ -23,11 +30,12 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 public class StorageUtil {
     private static final String DUMMY_FILE_MIME_TYPE = "text/plane";
     private static final String DUMMY_FILE_NAME = "sdcard_write_test";
-    private static final List<Storage$StorageType> MOUNTABLE_STORAGE_TYPES;
+    private static final List<Storage.StorageType> MOUNTABLE_STORAGE_TYPES;
     public static final String TAG = "StorageUtil";
     private static Method mMethodMyUserId;
 
@@ -38,14 +46,14 @@ public class StorageUtil {
         try {
             mMethodMyUserId = UserHandle.class.getMethod("myUserId", new Class[0]);
             MOUNTABLE_STORAGE_TYPES = new ArrayList();
-            MOUNTABLE_STORAGE_TYPES.add(Storage$StorageType.EXTERNAL_CARD);
-            MOUNTABLE_STORAGE_TYPES.add(Storage$StorageType.INTERNAL);
+            MOUNTABLE_STORAGE_TYPES.add(Storage.StorageType.EXTERNAL_CARD);
+            MOUNTABLE_STORAGE_TYPES.add(Storage.StorageType.INTERNAL);
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static String getVolumeState(Storage$StorageType storage$StorageType, Context context) {
+    public static String getVolumeState(Storage.StorageType storageType, Context context) {
         String environmentForState = "removed";
         Iterator<VolumeInfo> it = getStorageManager(context).getVolumes().iterator();
         while (true) {
@@ -53,13 +61,13 @@ public class StorageUtil {
                 break;
             }
             VolumeInfo next = it.next();
-            if (getVolumeType(next) == storage$StorageType) {
+            if (getVolumeType(next) == storageType) {
                 environmentForState = VolumeInfo.getEnvironmentForState(next.getState());
                 break;
             }
         }
         if (CamLog.VERBOSE) {
-            CamLog.d("getVolumeState type: " + storage$StorageType + " = " + environmentForState);
+            CamLog.d("getVolumeState type: " + storageType + " = " + environmentForState);
         }
         return environmentForState;
     }
@@ -79,14 +87,14 @@ public class StorageUtil {
         return (String[]) arrayList.toArray(new String[0]);
     }
 
-    public static Storage$StorageType getStorageTypeFromPath(String str, Context context) {
+    public static Storage.StorageType getStorageTypeFromPath(String str, Context context) {
         if (CamLog.VERBOSE) {
             CamLog.d("getStorageTypeFromPath: " + str);
         }
         if (str == null) {
-            return Storage$StorageType.UNKNOWN;
+            return Storage.StorageType.UNKNOWN;
         }
-        Storage$StorageType volumeType = Storage$StorageType.UNKNOWN;
+        Storage.StorageType volumeType = Storage.StorageType.UNKNOWN;
         for (VolumeInfo volumeInfo : getStorageManager(context).getVolumes()) {
             String volumePath = getVolumePath(volumeInfo);
             if (volumePath != null && str.startsWith(volumePath)) {
@@ -99,28 +107,33 @@ public class StorageUtil {
         return volumeType;
     }
 
-    public static Storage$StorageType getStorageTypeFromUri(Uri uri, Context context) {
+    public static Storage.StorageType getStorageTypeFromUri(Uri uri, Context context) {
         if (CamLog.VERBOSE) {
             CamLog.d("getStorageTypeFromUri uri: " + uri);
         }
-        Storage$StorageType storageTypeFromPath = getStorageTypeFromPath(getPathFromUri(context, uri), context);
+        Storage.StorageType storageTypeFromPath = getStorageTypeFromPath(getPathFromUri(context, uri), context);
         if (CamLog.VERBOSE) {
             CamLog.d("getStorageTypeFromUri type: " + storageTypeFromPath);
         }
         return storageTypeFromPath;
     }
 
-    public static String getPathFromType(Storage$StorageType storage$StorageType, Context context) {
+    public static String getPathFromType(Storage.StorageType storageType, Context context) {
         for (VolumeInfo volumeInfo : getStorageManager(context).getVolumes()) {
-            if (storage$StorageType.equals(getVolumeType(volumeInfo))) {
+            if (storageType.equals(getVolumeType(volumeInfo))) {
                 return getVolumePath(volumeInfo);
+            }
+        }
+        if (storageType == Storage.StorageType.INTERNAL) {
+            File externalStorageDirectory = Environment.getExternalStorageDirectory();
+            if (externalStorageDirectory != null) {
+                return externalStorageDirectory.getPath();
             }
         }
         return null;
     }
 
     static String getPathFromUri(Context context, Uri uri) {
-        String pathFromUriByMediaDb;
         if (uri == null) {
             if (CamLog.VERBOSE) {
                 CamLog.d("uri: null");
@@ -144,75 +157,51 @@ public class StorageUtil {
                 return volumePath;
             }
         }
-        if ("content".equalsIgnoreCase(uri.getScheme()) && "media".equalsIgnoreCase(uri.getAuthority()) && (pathFromUriByMediaDb = getPathFromUriByMediaDb(context, uri)) != null) {
-            return pathFromUriByMediaDb;
+        if ("content".equalsIgnoreCase(uri.getScheme()) && SomcMediaStore.AUTHORITY_OLD.equalsIgnoreCase(uri.getAuthority())) {
+            String pathFromUriByMediaDb = getPathFromUriByMediaDb(context, uri);
+            if (pathFromUriByMediaDb != null) {
+                return pathFromUriByMediaDb;
+            }
         }
-        String pathFromType = getPathFromType(Storage$StorageType.INTERNAL, context);
+        String pathFromType = getPathFromType(Storage.StorageType.INTERNAL, context);
         if (CamLog.VERBOSE) {
             CamLog.d("extracted path: " + pathFromType);
         }
         return pathFromType;
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:43:0x00c9 A[PHI: r8
-      0x00c9: PHI (r8v5 android.database.Cursor) = (r8v4 android.database.Cursor), (r8v6 android.database.Cursor) binds: [B:42:0x00c7, B:34:0x00b9] A[DONT_GENERATE, DONT_INLINE]] */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    private static String getPathFromUriByMediaDb(Context context, Uri uri) throws Throwable {
-        Cursor cursorQuery;
+    private static String getPathFromUriByMediaDb(Context context, Uri uri) {
+        ContentResolver contentResolver = context.getContentResolver();
+        Cursor cursor = null;
         try {
-            cursorQuery = context.getContentResolver().query(uri, new String[]{"_data"}, null, null, null);
-            if (cursorQuery != null) {
-                try {
-                    if (cursorQuery.moveToFirst()) {
-                        int columnIndexOrThrow = cursorQuery.getColumnIndexOrThrow("_data");
-                        if (cursorQuery.getType(columnIndexOrThrow) != 3) {
-                            if (CamLog.VERBOSE) {
-                                CamLog.d("no path in content: " + cursorQuery.getType(0));
-                            }
-                            if (cursorQuery != null) {
-                                cursorQuery.close();
-                            }
-                            return null;
-                        }
-                        String string = cursorQuery.getString(columnIndexOrThrow);
-                        Iterator<VolumeInfo> it = getStorageManager(context).getVolumes().iterator();
-                        while (it.hasNext()) {
-                            String volumePath = getVolumePath(it.next());
-                            if (volumePath != null && string.contains(volumePath)) {
-                                if (CamLog.VERBOSE) {
-                                    CamLog.d("valid content: " + volumePath);
-                                }
-                                if (cursorQuery != null) {
-                                    cursorQuery.close();
-                                }
-                                return volumePath;
-                            }
-                        }
+            cursor = contentResolver.query(uri, new String[]{"_data"}, null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                int columnIndexOrThrow = cursor.getColumnIndexOrThrow("_data");
+                if (cursor.getType(columnIndexOrThrow) != Cursor.FIELD_TYPE_STRING) {
+                    if (CamLog.VERBOSE) {
+                        CamLog.d("no path in content: " + cursor.getType(0));
+                    }
+                    return null;
+                }
+                String string = cursor.getString(columnIndexOrThrow);
+                for (VolumeInfo volumeInfo : getStorageManager(context).getVolumes()) {
+                    String volumePath = getVolumePath(volumeInfo);
+                    if (volumePath != null && string.contains(volumePath)) {
                         if (CamLog.VERBOSE) {
-                            CamLog.d("invalid content path: " + string);
+                            CamLog.d("valid content: " + volumePath);
                         }
+                        return volumePath;
                     }
-                } catch (Exception unused) {
-                    if (cursorQuery != null) {
-                    }
-                } catch (Throwable th) {
-                    th = th;
-                    if (cursorQuery != null) {
-                        cursorQuery.close();
-                    }
-                    throw th;
+                }
+                if (CamLog.VERBOSE) {
+                    CamLog.d("invalid content path: " + string);
                 }
             }
-        } catch (Exception unused2) {
-            cursorQuery = null;
-        } catch (Throwable th2) {
-            th = th2;
-            cursorQuery = null;
-        }
-        if (cursorQuery != null) {
-            cursorQuery.close();
+        } catch (Exception unused) {
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
         return null;
     }
@@ -221,26 +210,48 @@ public class StorageUtil {
         return StorageManagerProxy.createProxy((StorageManager) context.getSystemService("storage"));
     }
 
-    private static Storage$StorageType getVolumeType(VolumeInfo volumeInfo) {
+    public static class GetStatFsTask implements Callable<StatFs> {
+        private final String mPath;
+
+        public GetStatFsTask(String str) {
+            if (str == null) {
+                throw new IllegalArgumentException("Target path is null.");
+            }
+            this.mPath = str;
+        }
+
+        /* JADX WARN: Can't rename method to resolve collision */
+        @Override // java.util.concurrent.Callable
+        public StatFs call() {
+            try {
+                return new StatFs(this.mPath);
+            } catch (IllegalArgumentException e) {
+                CamLog.e("Create StatFs failed.", e);
+                return null;
+            }
+        }
+    }
+
+    private static Storage.StorageType getVolumeType(VolumeInfo volumeInfo) {
         int type = volumeInfo.getType();
         if (type == 2) {
-            return Storage$StorageType.INTERNAL;
+            return Storage.StorageType.INTERNAL;
         }
         if (type == 0) {
             DiskInfo disk = volumeInfo.getDisk();
             int i = disk != null ? disk.flags : 0;
             if ((i & 4) != 0) {
-                return Storage$StorageType.EXTERNAL_CARD;
+                return Storage.StorageType.EXTERNAL_CARD;
             }
             if ((i & 8) != 0) {
-                return Storage$StorageType.USB;
+                return Storage.StorageType.USB;
             }
         }
-        return Storage$StorageType.UNKNOWN;
+        return Storage.StorageType.UNKNOWN;
     }
 
     @NonNull
-    public static List<Storage$StorageType> getMountableStorageTypes() {
+    public static List<Storage.StorageType> getMountableStorageTypes() {
         return MOUNTABLE_STORAGE_TYPES;
     }
 
@@ -260,7 +271,7 @@ public class StorageUtil {
         return path.getPath();
     }
 
-    public static String getVolumeUuid(Storage$StorageType storage$StorageType, Context context) {
+    public static String getVolumeUuid(Storage.StorageType storageType, Context context) {
         String fsUuid;
         Iterator<VolumeInfo> it = getStorageManager(context).getVolumes().iterator();
         while (true) {
@@ -269,7 +280,7 @@ public class StorageUtil {
                 break;
             }
             VolumeInfo next = it.next();
-            if (getVolumeType(next) == storage$StorageType) {
+            if (getVolumeType(next) == storageType) {
                 fsUuid = next.getFsUuid();
                 break;
             }
@@ -281,7 +292,7 @@ public class StorageUtil {
     }
 
     public static Uri getSdCardGrantedUri(Context context) {
-        String string = new SharedPreferencesAccessor(context, "com.sonyericsson.android.camera.shared_preferences").readString("KEY_SD_CARD_GRANT_URI", null);
+        String string = new SharedPreferencesAccessor(context, SharedPreferencesConstants.CAMERA_SHARED_PREFERENCES_NAME).readString(SharedPreferencesConstants.KEY_SD_CARD_GRANT_URI, null);
         if (string != null) {
             return Uri.parse(string);
         }
@@ -290,27 +301,27 @@ public class StorageUtil {
 
     public static void setSdCardGranted(Context context, Uri uri) {
         if (uri != null) {
-            new SharedPreferencesAccessor(context, "com.sonyericsson.android.camera.shared_preferences").writeString("KEY_SD_CARD_GRANT_URI", uri.toString(), true);
+            new SharedPreferencesAccessor(context, SharedPreferencesConstants.CAMERA_SHARED_PREFERENCES_NAME).writeString(SharedPreferencesConstants.KEY_SD_CARD_GRANT_URI, uri.toString(), true);
         }
     }
 
-    static CameraStorageManager$GrantCheckResult checkSdCardGranted(Context context, Uri uri) {
+    static CameraStorageManager.GrantCheckResult checkSdCardGranted(Context context, Uri uri) {
         if (CamLog.DEBUG) {
             CamLog.d("isSdCardGranted()");
         }
-        CameraStorageManager$GrantCheckResult cameraStorageManager$GrantCheckResult = CameraStorageManager$GrantCheckResult.UNGRANTED;
+        CameraStorageManager.GrantCheckResult grantCheckResult = CameraStorageManager.GrantCheckResult.UNGRANTED;
         if (uri == null) {
             CamLog.w("checkUri is null");
-            return cameraStorageManager$GrantCheckResult;
+            return grantCheckResult;
         }
         try {
-            Uri uriCreateDocument = DocumentsContract.createDocument(context.getContentResolver(), DocumentsContract.buildDocumentUriUsingTree(uri, DocumentsContract.getTreeDocumentId(uri)), "text/plane", "sdcard_write_test");
+            Uri uriCreateDocument = DocumentsContract.createDocument(context.getContentResolver(), DocumentsContract.buildDocumentUriUsingTree(uri, DocumentsContract.getTreeDocumentId(uri)), DUMMY_FILE_MIME_TYPE, DUMMY_FILE_NAME);
             if (uriCreateDocument != null) {
                 if (DocumentsContract.deleteDocument(context.getContentResolver(), uriCreateDocument)) {
                     if (CamLog.DEBUG) {
                         CamLog.d("SD Card is granted.");
                     }
-                    cameraStorageManager$GrantCheckResult = CameraStorageManager$GrantCheckResult.GRANTED;
+                    grantCheckResult = CameraStorageManager.GrantCheckResult.GRANTED;
                 } else {
                     CamLog.e("SD Card is no granted for delete error.");
                 }
@@ -321,16 +332,16 @@ public class StorageUtil {
             CamLog.w("file create failed", e);
         } catch (IllegalStateException e2) {
             CamLog.w("file create failed", e2);
-            cameraStorageManager$GrantCheckResult = CameraStorageManager$GrantCheckResult.READ_ONLY;
+            grantCheckResult = CameraStorageManager.GrantCheckResult.READ_ONLY;
         }
         if (CamLog.DEBUG) {
-            CamLog.d("isSDCardGranted() result :" + cameraStorageManager$GrantCheckResult);
+            CamLog.d("isSDCardGranted() result :" + grantCheckResult);
         }
-        return cameraStorageManager$GrantCheckResult;
+        return grantCheckResult;
     }
 
     public static synchronized Uri createFile(Context context, Uri uri, String str) {
-        Uri uriCreateDocument;
+        Uri uriCreateDocument = null;
         Uri uriChild = child(uri, str);
         if (exists(context, uriChild)) {
             return uriChild;
@@ -342,14 +353,11 @@ public class StorageUtil {
         }
         String ext = getExt(uriChild);
         String documentName = getDocumentName(uriChild);
-        if (TextUtils.isEmpty(ext) || TextUtils.isEmpty(documentName)) {
-            uriCreateDocument = null;
-        } else {
+        if (!TextUtils.isEmpty(ext) && !TextUtils.isEmpty(documentName)) {
             try {
                 uriCreateDocument = DocumentsContract.createDocument(context.getContentResolver(), uriBuildDocumentUriUsingTree, MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext), documentName);
             } catch (FileNotFoundException | SecurityException e) {
                 CamLog.w("createFile() failed", e);
-                uriCreateDocument = null;
             }
         }
         return uriCreateDocument;
@@ -385,53 +393,28 @@ public class StorageUtil {
     }
 
     private static Uri child(Uri uri, String str) {
-        return DocumentsContract.buildDocumentUriUsingTree(uri, DocumentsContract.getTreeDocumentId(uri) + "/" + str);
+        return DocumentsContract.buildDocumentUriUsingTree(uri, DocumentsContract.getTreeDocumentId(uri) + SharedPrefsTranslator.CONNECTOR_SLASH + str);
     }
 
-    public static boolean exists(Context context, Uri uri) throws Throwable {
+    public static boolean exists(Context context, Uri uri) {
         Cursor cursor = null;
         try {
-            try {
-                Cursor cursorQuery = context.getContentResolver().query(uri, null, null, null, null);
-                if (cursorQuery != null) {
-                    try {
-                        boolean zMoveToNext = cursorQuery.moveToNext();
-                        cursorQuery.close();
-                        if (zMoveToNext) {
-                            if (cursorQuery != null) {
-                                cursorQuery.close();
-                            }
-                            return true;
-                        }
-                    } catch (RuntimeException e) {
-                        e = e;
-                        cursor = cursorQuery;
-                        CamLog.w("exists not found", e);
-                        if (cursor == null) {
-                            return false;
-                        }
-                        cursor.close();
-                        return false;
-                    } catch (Throwable th) {
-                        th = th;
-                        cursor = cursorQuery;
-                        if (cursor != null) {
-                            cursor.close();
-                        }
-                        throw th;
-                    }
+            cursor = context.getContentResolver().query(uri, null, null, null, null);
+            if (cursor != null) {
+                boolean result = cursor.moveToNext();
+                cursor.close();
+                if (result) {
+                    return true;
                 }
-                if (cursorQuery == null) {
-                    return false;
-                }
-                cursorQuery.close();
-                return false;
-            } catch (RuntimeException e2) {
-                e = e2;
             }
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (RuntimeException e) {
+            CamLog.w("exists not found", e);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
+        return false;
     }
 
     private static String getExt(Uri uri) {
@@ -454,7 +437,7 @@ public class StorageUtil {
             return null;
         }
         if (string.contains(Environment.DIRECTORY_DCIM)) {
-            return str.split(Environment.DIRECTORY_DCIM + "/", 0)[1];
+            return str.split(Environment.DIRECTORY_DCIM + SharedPrefsTranslator.CONNECTOR_SLASH, 0)[1];
         }
         return str.substring(str.indexOf(Environment.DIRECTORY_DCIM));
     }
@@ -489,10 +472,10 @@ public class StorageUtil {
         return false;
     }
 
-    public static long getStorageMaximumFileSize(Context context, Storage$StorageType storage$StorageType) {
-        long maxFileSize;
-        if (storage$StorageType == Storage$StorageType.EXTERNAL_CARD) {
-            String volumeUuid = getVolumeUuid(storage$StorageType, context);
+    public static long getStorageMaximumFileSize(Context context, Storage.StorageType storageType) {
+        long maxFileSize = Long.MAX_VALUE;
+        if (storageType == Storage.StorageType.EXTERNAL_CARD) {
+            String volumeUuid = getVolumeUuid(storageType, context);
             Iterator<StorageVolume> it = ((StorageManager) context.getSystemService("storage")).getStorageVolumes().iterator();
             while (it.hasNext()) {
                 StorageVolumeWrapper storageVolumeWrapper = new StorageVolumeWrapper(it.next());
@@ -501,9 +484,6 @@ public class StorageUtil {
                     break;
                 }
             }
-            maxFileSize = Long.MAX_VALUE;
-        } else {
-            maxFileSize = Long.MAX_VALUE;
         }
         if (maxFileSize == 0) {
             maxFileSize = Long.MAX_VALUE;

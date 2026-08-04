@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v4.internal.view.SupportMenu;
 import java.util.List;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzb {
     private static int zzG(Parcel parcel, int i) {
-        parcel.writeInt(i | (-65536));
+        parcel.writeInt(i | SupportMenu.CATEGORY_MASK);
         parcel.writeInt(0);
         return parcel.dataPosition();
     }
@@ -270,7 +272,7 @@ public class zzb {
         if (i2 < 65535) {
             parcel.writeInt(i | (i2 << 16));
         } else {
-            parcel.writeInt(i | (-65536));
+            parcel.writeInt(i | SupportMenu.CATEGORY_MASK);
             parcel.writeInt(i2);
         }
     }

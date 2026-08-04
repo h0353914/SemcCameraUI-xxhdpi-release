@@ -1,9 +1,12 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Rect;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.parameter.dependency.DependencyCheckUtil;
 import com.sonyericsson.android.camera.recorder.RecordingProfile;
 import com.sonyericsson.android.camera.util.CamLog;
@@ -13,10 +16,10 @@ import com.sonyericsson.android.camera.util.capability.VideoConfiguration;
 import java.util.ArrayList;
 
 public enum VideoStabilizer implements UserSettingValue {
-    STEADY_SHOT(-1, 2131690169, "on"),
-    INTELLIGENT_ACTIVE(-1, 2131689709, "intelligent_active"),
-    ON(-1, 2131690116, "on"),
-    OFF(-1, 2131690115, "off");
+    STEADY_SHOT(-1, R.string.cam_strings_standard_txt, "on"),
+    INTELLIGENT_ACTIVE(-1, R.string.cam_strings_core_intelligentactive_txt, CameraParameters.VS_ON_INTELLIGENT_ACTIVE),
+    ON(-1, R.string.cam_strings_settings_on_txt, "on"),
+    OFF(-1, R.string.cam_strings_settings_off_txt, "off");
 
     public static final String TAG = "VideoStabilizer";
     private static final int TEXT_ID_SS = 2131690170;
@@ -76,12 +79,15 @@ public enum VideoStabilizer implements UserSettingValue {
     }
 
     public static VideoStabilizer[] getVideoStabilizerOptions(CapturingMode capturingMode) {
-        if (VideoStabilizer$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()] == 1) {
-            return new VideoStabilizer[]{OFF};
+        switch (capturingMode) {
+            case SLOW_MOTION:
+                return new VideoStabilizer[] { OFF };
+            default:
+                break;
         }
         CameraCapabilityList cameraCapability = PlatformCapability.getCameraCapability(capturingMode.getCameraId());
         ArrayList arrayList = new ArrayList();
-        if (cameraCapability.VIDEO_STABILIZER.get().contains("intelligent_active")) {
+        if (cameraCapability.VIDEO_STABILIZER.get().contains(CameraParameters.VS_ON_INTELLIGENT_ACTIVE)) {
             arrayList.add(INTELLIGENT_ACTIVE);
         }
         if (cameraCapability.VIDEO_STABILIZER.get().contains("on")) {
@@ -96,65 +102,79 @@ public enum VideoStabilizer implements UserSettingValue {
         return getClass().getName();
     }
 
-    public static VideoStabilizer getRecommendedVideoStabilizerValue(Context context, CapturingMode capturingMode, VideoSize videoSize) {
+    public static VideoStabilizer getRecommendedVideoStabilizerValue(Context context, CapturingMode capturingMode,
+            VideoSize videoSize) throws Resources.NotFoundException {
         if (CamLog.VERBOSE) {
-            CamLog.d("getRecommendedVideoStabilizerValue() mode:" + capturingMode.name() + " size:" + videoSize.name());
+            CamLog.d(
+                    "getRecommendedVideoStabilizerValue() mode:" + capturingMode.name() + " size:" + videoSize.name());
         }
-        if (VideoStabilizer$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()] == 1) {
-            return OFF;
+        switch (capturingMode) {
+            case SLOW_MOTION:
+                return OFF;
+            default:
+                break;
         }
         if (capturingMode.isFront()) {
             if (CamLog.VERBOSE) {
                 CamLog.d("getRecommendedVideoStabilizerValue() size:" + videoSize.name());
             }
             Rect maxPixelsPictureSize = PlatformCapability.getMaxPixelsPictureSize(capturingMode.getCameraId());
-            if (maxPixelsPictureSize.width() == 4160 && maxPixelsPictureSize.height() == 3120 && isIntelligentActiveSupported(capturingMode.getCameraId(), videoSize)) {
+            if (maxPixelsPictureSize.width() == 4160 && maxPixelsPictureSize.height() == 3120
+                    && isIntelligentActiveSupported(capturingMode.getCameraId(), videoSize)) {
                 return INTELLIGENT_ACTIVE;
             }
             if (isSteadyShotSupported(capturingMode.getCameraId(), videoSize)) {
                 return STEADY_SHOT;
             }
         } else {
-            String string = context.getResources().getString(2131690315);
+            String string = context.getResources().getString(R.string.default_backcamera_videostabilizer_setting);
             if (CamLog.VERBOSE) {
-                CamLog.d("getRecommendedVideoStabilizerValue() mode:" + capturingMode.name() + " size:" + videoSize.name() + " default:" + string);
+                CamLog.d("getRecommendedVideoStabilizerValue() mode:" + capturingMode.name() + " size:"
+                        + videoSize.name() + " default:" + string);
             }
-            if ("INTELLIGENT_ACTIVE".equals(string)) {
+            if (VIDEOSTABILIZER_TYPE_INTELLIGENT_ACTIVE.equals(string)) {
                 if (isIntelligentActiveSupported(capturingMode.getCameraId(), videoSize)) {
                     return INTELLIGENT_ACTIVE;
                 }
                 if (isSteadyShotSupported(capturingMode.getCameraId(), videoSize)) {
                     return STEADY_SHOT;
                 }
-            } else if ("STEADY_SHOT".equals(string) && isSteadyShotSupported(capturingMode.getCameraId(), videoSize)) {
+            } else if (VIDEOSTABILIZER_TYPE_STEADY_SHOT.equals(string)
+                    && isSteadyShotSupported(capturingMode.getCameraId(), videoSize)) {
                 return STEADY_SHOT;
             }
         }
         return OFF;
     }
 
-    public boolean isValueEnabled(CameraInfo$CameraId cameraInfo$CameraId, VideoSize videoSize, VideoHdr videoHdr) {
+    public boolean isValueEnabled(CameraInfo.CameraId cameraId, VideoSize videoSize, VideoHdr videoHdr) {
         if (this == INTELLIGENT_ACTIVE) {
-            return DependencyCheckUtil.isIntelligentActiveAvailable(cameraInfo$CameraId, videoSize, videoHdr);
+            return DependencyCheckUtil.isIntelligentActiveAvailable(cameraId, videoSize, videoHdr);
         }
         if (this == STEADY_SHOT) {
-            return isSteadyShotSupported(cameraInfo$CameraId, videoSize);
+            return isSteadyShotSupported(cameraId, videoSize);
         }
         return true;
     }
 
-    public static boolean isSteadyShotSupported(CameraInfo$CameraId cameraInfo$CameraId, VideoSize videoSize) {
-        for (VideoConfiguration videoConfiguration : PlatformCapability.getCameraCapability(cameraInfo$CameraId).STEADY_SHOT_CONFIGURATION.get()) {
-            if (videoSize.getVideoRect().width() == videoConfiguration.mWidth && videoSize.getVideoRect().height() == videoConfiguration.mHeight && RecordingProfile.getVideoFrameRate(videoSize, VideoHdr.HDR_OFF) <= videoConfiguration.mFps) {
+    public static boolean isSteadyShotSupported(CameraInfo.CameraId cameraId, VideoSize videoSize) {
+        for (VideoConfiguration videoConfiguration : PlatformCapability
+                .getCameraCapability(cameraId).STEADY_SHOT_CONFIGURATION.get()) {
+            if (videoSize.getVideoRect().width() == videoConfiguration.mWidth
+                    && videoSize.getVideoRect().height() == videoConfiguration.mHeight
+                    && RecordingProfile.getVideoFrameRate(videoSize, VideoHdr.HDR_OFF) <= videoConfiguration.mFps) {
                 return true;
             }
         }
         return false;
     }
 
-    public static boolean isIntelligentActiveSupported(CameraInfo$CameraId cameraInfo$CameraId, VideoSize videoSize) {
-        for (VideoConfiguration videoConfiguration : PlatformCapability.getCameraCapability(cameraInfo$CameraId).INTELLIGENT_ACTIVE_CONFIGURATION.get()) {
-            if (videoSize.getVideoRect().width() == videoConfiguration.mWidth && videoSize.getVideoRect().height() == videoConfiguration.mHeight && RecordingProfile.getVideoFrameRate(videoSize, VideoHdr.HDR_OFF) <= videoConfiguration.mFps) {
+    public static boolean isIntelligentActiveSupported(CameraInfo.CameraId cameraId, VideoSize videoSize) {
+        for (VideoConfiguration videoConfiguration : PlatformCapability
+                .getCameraCapability(cameraId).INTELLIGENT_ACTIVE_CONFIGURATION.get()) {
+            if (videoSize.getVideoRect().width() == videoConfiguration.mWidth
+                    && videoSize.getVideoRect().height() == videoConfiguration.mHeight
+                    && RecordingProfile.getVideoFrameRate(videoSize, VideoHdr.HDR_OFF) <= videoConfiguration.mFps) {
                 return true;
             }
         }

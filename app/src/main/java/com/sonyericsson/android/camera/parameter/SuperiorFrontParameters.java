@@ -1,3 +1,23 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.parameter;
 
 import android.content.Context;
@@ -89,9 +109,9 @@ public class SuperiorFrontParameters extends FrontParameters {
         ArrayList arrayList = new ArrayList();
         for (UserSettingKey userSettingKey : this.mHolders.keySet()) {
             if (this.mHolders.get(userSettingKey).hasChanged()) {
-                switch (SuperiorFrontParameters$1.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()]) {
-                    case 1:
-                    case 2:
+                switch (userSettingKey) {
+                    case VIDEO_SHUTTER_TRIGGER:
+                    case VIDEO_SIZE:
                         break;
                     default:
                         arrayList.add(this.mHolders.get(userSettingKey).get());
@@ -107,9 +127,9 @@ public class SuperiorFrontParameters extends FrontParameters {
         EnumMap<UserSettingKey, UserSettingValue> enumMap = new EnumMap<>(UserSettingKey.class);
         for (UserSettingKey userSettingKey : this.mHolders.keySet()) {
             UserSettingValue userSettingValue = this.mHolders.get(userSettingKey).get();
-            switch (SuperiorFrontParameters$1.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()]) {
-                case 1:
-                case 2:
+            switch (userSettingKey) {
+                case VIDEO_SHUTTER_TRIGGER:
+                case VIDEO_SIZE:
                     break;
                 default:
                     if (userSettingValue == null) {

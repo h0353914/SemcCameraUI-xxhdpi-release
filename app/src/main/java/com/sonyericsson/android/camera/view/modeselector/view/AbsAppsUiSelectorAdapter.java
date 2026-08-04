@@ -7,32 +7,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import com.sonyericsson.android.camera.view.modeselector.ImageLoader;
+import com.sonyericsson.android.camera.view.modeselector.view.AbsPanelView;
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbsAppsUiSelectorAdapter extends ArrayAdapter<AbsPanelView$PanelAttributes> {
+public abstract class AbsAppsUiSelectorAdapter extends ArrayAdapter<AbsPanelView.PanelAttributes> {
     public static final int DRAWABLE_RESOURCE_LOADING = 2131230944;
     private LayoutInflater mInflater;
     private boolean mIsItemClickEnabled;
-    private List<AbsPanelView$PanelAttributes> mList;
+    private List<AbsPanelView.PanelAttributes> mList;
     private int mOrientation;
 
     protected abstract View onCreateItemView(int i, ViewGroup viewGroup);
 
-    @Override // android.widget.ArrayAdapter, android.widget.Adapter
-    public /* bridge */ /* synthetic */ Object getItem(int i) {
-        return getItem(i);
-    }
-
-    public AbsAppsUiSelectorAdapter(Context context, int i, List<AbsPanelView$PanelAttributes> list) {
+    public AbsAppsUiSelectorAdapter(Context context, int i, List<AbsPanelView.PanelAttributes> list) {
         super(context, i, list);
         this.mOrientation = 0;
         this.mIsItemClickEnabled = true;
         this.mList = list;
         this.mInflater = (LayoutInflater) context.getSystemService("layout_inflater");
-        AbsAppsUiSelectorAdapter$IconCacheManager.registerClient(this, context.getApplicationContext());
+        IconCacheManager.registerClient(this, context.getApplicationContext());
     }
 
-    public void updateItems(List<AbsPanelView$PanelAttributes> list) {
+    public void updateItems(List<AbsPanelView.PanelAttributes> list) {
         this.mList = list;
         notifyDataSetChanged();
     }
@@ -47,7 +44,7 @@ public abstract class AbsAppsUiSelectorAdapter extends ArrayAdapter<AbsPanelView
     }
 
     @Override // android.widget.ArrayAdapter, android.widget.Adapter
-    public AbsPanelView$PanelAttributes getItem(int i) {
+    public AbsPanelView.PanelAttributes getItem(int i) {
         if (this.mList == null || this.mList.isEmpty()) {
             return null;
         }
@@ -77,7 +74,7 @@ public abstract class AbsAppsUiSelectorAdapter extends ArrayAdapter<AbsPanelView
 
     protected View onPrepareItemView(int i, AbsPanelView absPanelView, ViewGroup viewGroup) {
         ImageLoader imageLoader;
-        AbsPanelView$PanelAttributes item = getItem(i);
+        AbsPanelView.PanelAttributes item = getItem(i);
         absPanelView.setItem(item);
         absPanelView.setUiOrientation(getUiOrientation());
         absPanelView.setContentDescription("");
@@ -93,12 +90,12 @@ public abstract class AbsAppsUiSelectorAdapter extends ArrayAdapter<AbsPanelView
     }
 
     public void release() {
-        AbsAppsUiSelectorAdapter$IconCacheManager.unregisterClient(this, this.mList);
+        IconCacheManager.unregisterClient(this, this.mList);
         this.mList = null;
     }
 
     public void releaseToUntil() {
-        AbsAppsUiSelectorAdapter$IconCacheManager.unregisterToUntilClient(this, this.mList);
+        IconCacheManager.unregisterToUntilClient(this, this.mList);
         this.mList = null;
     }
 
@@ -107,6 +104,72 @@ public abstract class AbsAppsUiSelectorAdapter extends ArrayAdapter<AbsPanelView
     }
 
     public ImageLoader getImageLoader() {
-        return AbsAppsUiSelectorAdapter$IconCacheManager.getImageLoader();
+        return IconCacheManager.getImageLoader();
+    }
+
+    private static class IconCacheManager {
+        private static ArrayList<AbsAppsUiSelectorAdapter> sCacheClientStack;
+        private static ImageLoader sImageLoader;
+
+        private IconCacheManager() {
+        }
+
+        public static void registerClient(AbsAppsUiSelectorAdapter absAppsUiSelectorAdapter, Context context) {
+            if (sCacheClientStack == null) {
+                sCacheClientStack = new ArrayList<>();
+            }
+            if (!sCacheClientStack.contains(absAppsUiSelectorAdapter)) {
+                sCacheClientStack.add(absAppsUiSelectorAdapter);
+            }
+            if (sImageLoader == null) {
+                sImageLoader = ImageLoader.getInstance(context);
+                sImageLoader.setImageFadeIn(true);
+                sImageLoader.setLoadingImage(2131230944);
+            }
+        }
+
+        public static ImageLoader getImageLoader() {
+            return sImageLoader;
+        }
+
+        public static void unregisterClient(AbsAppsUiSelectorAdapter absAppsUiSelectorAdapter, List<AbsPanelView.PanelAttributes> list) {
+            if (sCacheClientStack == null) {
+                return;
+            }
+            sCacheClientStack.remove(absAppsUiSelectorAdapter);
+            if (sCacheClientStack.isEmpty()) {
+                sCacheClientStack = null;
+                releaseCache(list);
+            }
+        }
+
+        public static void unregisterToUntilClient(AbsAppsUiSelectorAdapter absAppsUiSelectorAdapter, List<AbsPanelView.PanelAttributes> list) {
+            if (sCacheClientStack == null) {
+                return;
+            }
+            int iIndexOf = sCacheClientStack.indexOf(absAppsUiSelectorAdapter);
+            for (int i = 0; i <= iIndexOf; i++) {
+                sCacheClientStack.remove(0);
+            }
+            if (sCacheClientStack.isEmpty()) {
+                sCacheClientStack = null;
+                releaseCache(list);
+            }
+        }
+
+        private static void releaseCache(List<AbsPanelView.PanelAttributes> list) {
+            if (sImageLoader != null) {
+                if (list != null && !list.isEmpty()) {
+                    for (int i = 0; i < list.size(); i++) {
+                        String iconUri = list.get(i).getIconUri();
+                        if (iconUri != null) {
+                            sImageLoader.removeCache(iconUri);
+                        }
+                    }
+                }
+                sImageLoader.release();
+                sImageLoader = null;
+            }
+        }
     }
 }

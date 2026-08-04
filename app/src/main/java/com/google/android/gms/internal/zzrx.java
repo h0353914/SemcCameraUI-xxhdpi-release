@@ -6,8 +6,15 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.ReadOnlyBufferException;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzrx {
     private final ByteBuffer zzbij;
+
+    public static class zza extends IOException {
+        zza(int i, int i2) {
+            super("CodedOutputStream was writing to a flat byte array and ran out of space (pos " + i + " limit " + i2 + ").");
+        }
+    }
 
     private zzrx(ByteBuffer byteBuffer) {
         this.zzbij = byteBuffer;
@@ -79,6 +86,7 @@ public final class zzrx {
                     bArr[i8] = (byte) (960 | (cCharAt2 >>> 6));
                     i8 = i9 + 1;
                     bArr[i9] = (byte) ((cCharAt2 & '?') | 128);
+                    i3 = i8;
                 } else {
                     if ((cCharAt2 >= 55296 && 57343 >= cCharAt2) || i8 > i6 - 3) {
                         if (i8 > i6 - 4) {
@@ -101,6 +109,7 @@ public final class zzrx {
                                 i8 = i13 + 1;
                                 bArr[i13] = (byte) ((codePoint & 63) | 128);
                                 i7 = i10;
+                                i3 = i8;
                             } else {
                                 i7 = i10;
                             }
@@ -109,13 +118,14 @@ public final class zzrx {
                         sb.append("Unpaired surrogate at index ");
                         sb.append(i7 - 1);
                         throw new IllegalArgumentException(sb.toString());
+                    } else {
+                        int i14 = i8 + 1;
+                        bArr[i8] = (byte) (480 | (cCharAt2 >>> '\f'));
+                        int i15 = i14 + 1;
+                        bArr[i14] = (byte) (((cCharAt2 >>> 6) & 63) | 128);
+                        i3 = i15 + 1;
+                        bArr[i15] = (byte) ((cCharAt2 & '?') | 128);
                     }
-                    int i14 = i8 + 1;
-                    bArr[i8] = (byte) (480 | (cCharAt2 >>> '\f'));
-                    int i15 = i14 + 1;
-                    bArr[i14] = (byte) (((cCharAt2 >>> 6) & 63) | 128);
-                    i3 = i15 + 1;
-                    bArr[i15] = (byte) ((cCharAt2 & '?') | 128);
                 }
                 i7++;
             } else {
@@ -205,30 +215,32 @@ public final class zzrx {
         return new zzrx(bArr, i, i2);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
+    /* JADX WARN: Type inference failed for: r2v13 */
     private static void zzb(CharSequence charSequence, ByteBuffer byteBuffer) {
         int i;
         int length = charSequence.length();
         int i2 = 0;
         while (i2 < length) {
             char cCharAt = charSequence.charAt(i2);
-            int i3 = cCharAt;
+            char c = cCharAt;
             if (cCharAt >= 128) {
                 if (cCharAt < 2048) {
                     i = 960 | (cCharAt >>> 6);
                 } else {
                     if (cCharAt >= 55296 && 57343 >= cCharAt) {
-                        int i4 = i2 + 1;
-                        if (i4 != charSequence.length()) {
-                            char cCharAt2 = charSequence.charAt(i4);
+                        int i3 = i2 + 1;
+                        if (i3 != charSequence.length()) {
+                            char cCharAt2 = charSequence.charAt(i3);
                             if (Character.isSurrogatePair(cCharAt, cCharAt2)) {
                                 int codePoint = Character.toCodePoint(cCharAt, cCharAt2);
                                 byteBuffer.put((byte) (240 | (codePoint >>> 18)));
                                 byteBuffer.put((byte) (((codePoint >>> 12) & 63) | 128));
                                 byteBuffer.put((byte) (((codePoint >>> 6) & 63) | 128));
                                 byteBuffer.put((byte) ((codePoint & 63) | 128));
-                                i2 = i4;
+                                i2 = i3;
                             } else {
-                                i2 = i4;
+                                i2 = i3;
                             }
                         }
                         StringBuilder sb = new StringBuilder();
@@ -240,10 +252,10 @@ public final class zzrx {
                     i = ((cCharAt >>> 6) & 63) | 128;
                 }
                 byteBuffer.put((byte) i);
-                i3 = (cCharAt & '?') | 128;
-                byteBuffer.put((byte) i3);
+                c = (char) ((cCharAt & 63) | 128);
+                byteBuffer.put((byte) c);
             } else {
-                byteBuffer.put((byte) i3);
+                byteBuffer.put((byte) c);
             }
             i2++;
         }
@@ -284,7 +296,7 @@ public final class zzrx {
         if (iZza >= length) {
             return iZza;
         }
-        throw new IllegalArgumentException("UTF-8 length does not fit in int: " + (((long) iZza) + 4294967296L));
+        throw new IllegalArgumentException("UTF-8 length does not fit in int: " + (iZza + 4294967296L));
     }
 
     public static int zzd(int i, long j) {
@@ -409,7 +421,7 @@ public final class zzrx {
 
     public void zzae(long j) throws IOException {
         if (this.zzbij.remaining() < 8) {
-            throw new zzrx$zza(this.zzbij.position(), this.zzbij.limit());
+            throw new zza(this.zzbij.position(), this.zzbij.limit());
         }
         this.zzbij.putLong(j);
     }
@@ -420,7 +432,7 @@ public final class zzrx {
 
     public void zzb(byte b) throws IOException {
         if (!this.zzbij.hasRemaining()) {
-            throw new zzrx$zza(this.zzbij.position(), this.zzbij.limit());
+            throw new zza(this.zzbij.position(), this.zzbij.limit());
         }
         this.zzbij.put(b);
     }
@@ -461,7 +473,7 @@ public final class zzrx {
 
     public void zzc(byte[] bArr, int i, int i2) throws IOException {
         if (this.zzbij.remaining() < i2) {
-            throw new zzrx$zza(this.zzbij.position(), this.zzbij.limit());
+            throw new zza(this.zzbij.position(), this.zzbij.limit());
         }
         this.zzbij.put(bArr, i, i2);
     }
@@ -476,7 +488,7 @@ public final class zzrx {
             }
             int iPosition = this.zzbij.position();
             if (this.zzbij.remaining() < iZzlO) {
-                throw new zzrx$zza(iPosition + iZzlO, this.zzbij.limit());
+                throw new zza(iPosition + iZzlO, this.zzbij.limit());
             }
             this.zzbij.position(iPosition + iZzlO);
             zza(str, this.zzbij);
@@ -485,9 +497,9 @@ public final class zzrx {
             zzlN((iPosition2 - iPosition) - iZzlO);
             this.zzbij.position(iPosition2);
         } catch (BufferOverflowException e) {
-            zzrx$zza zzrx_zza = new zzrx$zza(this.zzbij.position(), this.zzbij.limit());
-            zzrx_zza.initCause(e);
-            throw zzrx_zza;
+            zza zzaVar = new zza(this.zzbij.position(), this.zzbij.limit());
+            zzaVar.initCause(e);
+            throw zzaVar;
         }
     }
 
@@ -525,7 +537,7 @@ public final class zzrx {
 
     public void zzlP(int i) throws IOException {
         if (this.zzbij.remaining() < 4) {
-            throw new zzrx$zza(this.zzbij.position(), this.zzbij.limit());
+            throw new zza(this.zzbij.position(), this.zzbij.limit());
         }
         this.zzbij.putInt(i);
     }

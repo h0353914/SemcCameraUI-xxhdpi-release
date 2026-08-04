@@ -13,8 +13,32 @@ class ImageDescriptor extends GifBlock {
     final byte sizeOfLocalColorTable;
     final boolean sortFlag;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ImageDescriptor(int i, int i2, int i3, int i4, int i5, byte b, boolean z, boolean z2, boolean z3, byte b2, byte[] bArr, byte[] bArr2) {
         super(i);
+
         this.imageLeftPosition = i2;
         this.imageTopPosition = i3;
         this.imageWidth = i4;
@@ -24,6 +48,7 @@ class ImageDescriptor extends GifBlock {
         this.interlaceFlag = z2;
         this.sortFlag = z3;
         this.sizeOfLocalColorTable = b2;
+
         this.localColorTable = bArr;
         this.imageData = bArr2;
     }

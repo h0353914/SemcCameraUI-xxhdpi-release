@@ -8,6 +8,7 @@ import java.nio.ByteOrder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.imaging.ImageReadException;
+import org.apache.commons.imaging.ImagingConstants;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.common.ByteConversions;
 import org.apache.commons.imaging.common.GenericImageMetadata;
@@ -76,7 +77,7 @@ class RgbeInfo implements Closeable {
             if (iIndexOf > 0) {
                 String strSubstring = nextLine.substring(0, iIndexOf);
                 String strSubstring2 = nextLine.substring(iIndexOf + 1);
-                if ("FORMAT".equals(strSubstring2) && !"32-bit_rle_rgbe".equals(strSubstring2)) {
+                if (ImagingConstants.PARAM_KEY_FORMAT.equals(strSubstring2) && !"32-bit_rle_rgbe".equals(strSubstring2)) {
                     throw new ImageReadException("Only 32-bit_rle_rgbe images are supported, trying to read " + strSubstring2);
                 }
                 this.metadata.add(strSubstring, strSubstring2);
@@ -115,7 +116,7 @@ class RgbeInfo implements Closeable {
                         i = height;
                     } else {
                         i = height;
-                        fArr[i4][i8] = ((bArr[i7 + i5] & 255) + 0.5f) * ((float) Math.pow(2.0d, r13 - 136));
+                        fArr[i4][i8] = ((bArr[i7 + i5] & 255) + 0.5f) * ((float) Math.pow(2.0d, (bArr[i7 + i6] & 255) - 136));
                     }
                     i7++;
                     height = i;

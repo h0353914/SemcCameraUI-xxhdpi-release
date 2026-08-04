@@ -4,11 +4,10 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable$Callback;
-import android.graphics.drawable.Drawable$ConstantState;
 import android.os.SystemClock;
 
-public final class zzls extends Drawable implements Drawable$Callback {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public final class zzls extends Drawable implements Drawable.Callback {
     private int mFrom;
     private long zzNY;
     private boolean zzaea;
@@ -18,7 +17,7 @@ public final class zzls extends Drawable implements Drawable$Callback {
     private int zzaek;
     private int zzael;
     private boolean zzaem;
-    private zzls$zzb zzaen;
+    private zzb zzaen;
     private Drawable zzaeo;
     private Drawable zzaep;
     private boolean zzaeq;
@@ -26,25 +25,93 @@ public final class zzls extends Drawable implements Drawable$Callback {
     private boolean zzaes;
     private int zzaet;
 
+    private static final class zza extends Drawable {
+        private static final zza zzaeu = new zza();
+        private static final C0028zza zzaev = new C0028zza();
+
+        /* renamed from: com.google.android.gms.internal.zzls$zza$zza, reason: collision with other inner class name */
+        private static final class C0028zza extends Drawable.ConstantState {
+            private C0028zza() {
+            }
+
+            @Override // android.graphics.drawable.Drawable.ConstantState
+            public int getChangingConfigurations() {
+                return 0;
+            }
+
+            @Override // android.graphics.drawable.Drawable.ConstantState
+            public Drawable newDrawable() {
+                return zza.zzaeu;
+            }
+        }
+
+        private zza() {
+        }
+
+        @Override // android.graphics.drawable.Drawable
+        public void draw(Canvas canvas) {
+        }
+
+        @Override // android.graphics.drawable.Drawable
+        public Drawable.ConstantState getConstantState() {
+            return zzaev;
+        }
+
+        @Override // android.graphics.drawable.Drawable
+        public int getOpacity() {
+            return -2;
+        }
+
+        @Override // android.graphics.drawable.Drawable
+        public void setAlpha(int i) {
+        }
+
+        @Override // android.graphics.drawable.Drawable
+        public void setColorFilter(ColorFilter colorFilter) {
+        }
+    }
+
+    static final class zzb extends Drawable.ConstantState {
+        int zzaew;
+        int zzaex;
+
+        zzb(zzb zzbVar) {
+            if (zzbVar != null) {
+                this.zzaew = zzbVar.zzaew;
+                this.zzaex = zzbVar.zzaex;
+            }
+        }
+
+        @Override // android.graphics.drawable.Drawable.ConstantState
+        public int getChangingConfigurations() {
+            return this.zzaew;
+        }
+
+        @Override // android.graphics.drawable.Drawable.ConstantState
+        public Drawable newDrawable() {
+            return new zzls(this);
+        }
+    }
+
     public zzls(Drawable drawable, Drawable drawable2) {
         this(null);
-        drawable = drawable == null ? zzls$zza.zzoG() : drawable;
+        drawable = drawable == null ? zza.zzaeu : drawable;
         this.zzaeo = drawable;
         drawable.setCallback(this);
-        zzls$zzb zzls_zzb = this.zzaen;
-        zzls_zzb.zzaex = drawable.getChangingConfigurations() | zzls_zzb.zzaex;
-        drawable2 = drawable2 == null ? zzls$zza.zzoG() : drawable2;
+        zzb zzbVar = this.zzaen;
+        zzbVar.zzaex = drawable.getChangingConfigurations() | zzbVar.zzaex;
+        drawable2 = drawable2 == null ? zza.zzaeu : drawable2;
         this.zzaep = drawable2;
         drawable2.setCallback(this);
         this.zzaen.zzaex |= drawable2.getChangingConfigurations();
     }
 
-    zzls(zzls$zzb zzls_zzb) {
+    zzls(zzb zzbVar) {
         this.zzaeh = 0;
         this.zzaej = 255;
         this.zzael = 0;
         this.zzaea = true;
-        this.zzaen = new zzls$zzb(zzls_zzb);
+        this.zzaen = new zzb(zzbVar);
     }
 
     public boolean canConstantState() {
@@ -57,6 +124,7 @@ public final class zzls extends Drawable implements Drawable$Callback {
 
     @Override // android.graphics.drawable.Drawable
     public void draw(Canvas canvas) {
+        boolean z = false;
         switch (this.zzaeh) {
             case 1:
                 this.zzNY = SystemClock.uptimeMillis();
@@ -71,15 +139,16 @@ public final class zzls extends Drawable implements Drawable$Callback {
                         this.zzaeh = 0;
                     }
                     this.zzael = (int) (this.mFrom + ((this.zzaei - this.mFrom) * Math.min(fUptimeMillis, 1.0f)));
+                    break;
                 }
                 break;
         }
         int i = this.zzael;
-        boolean z = this.zzaea;
+        boolean z2 = this.zzaea;
         Drawable drawable = this.zzaeo;
         Drawable drawable2 = this.zzaep;
-        if (z) {
-            if (!z || i == 0) {
+        if (z2) {
+            if (!z2 || i == 0) {
                 drawable.draw(canvas);
             }
             if (i == this.zzaej) {
@@ -89,11 +158,11 @@ public final class zzls extends Drawable implements Drawable$Callback {
             }
             return;
         }
-        if (z) {
+        if (z2) {
             drawable.setAlpha(this.zzaej - i);
         }
         drawable.draw(canvas);
-        if (z) {
+        if (z2) {
             drawable.setAlpha(this.zzaej);
         }
         if (i > 0) {
@@ -110,7 +179,7 @@ public final class zzls extends Drawable implements Drawable$Callback {
     }
 
     @Override // android.graphics.drawable.Drawable
-    public Drawable$ConstantState getConstantState() {
+    public Drawable.ConstantState getConstantState() {
         if (!canConstantState()) {
             return null;
         }
@@ -137,9 +206,9 @@ public final class zzls extends Drawable implements Drawable$Callback {
         return this.zzaet;
     }
 
-    @Override // android.graphics.drawable.Drawable$Callback
+    @Override // android.graphics.drawable.Drawable.Callback
     public void invalidateDrawable(Drawable drawable) {
-        Drawable$Callback callback;
+        Drawable.Callback callback;
         if (!zzmx.zzqu() || (callback = getCallback()) == null) {
             return;
         }
@@ -165,9 +234,9 @@ public final class zzls extends Drawable implements Drawable$Callback {
         this.zzaep.setBounds(rect);
     }
 
-    @Override // android.graphics.drawable.Drawable$Callback
+    @Override // android.graphics.drawable.Drawable.Callback
     public void scheduleDrawable(Drawable drawable, Runnable runnable, long j) {
-        Drawable$Callback callback;
+        Drawable.Callback callback;
         if (!zzmx.zzqu() || (callback = getCallback()) == null) {
             return;
         }
@@ -198,9 +267,9 @@ public final class zzls extends Drawable implements Drawable$Callback {
         invalidateSelf();
     }
 
-    @Override // android.graphics.drawable.Drawable$Callback
+    @Override // android.graphics.drawable.Drawable.Callback
     public void unscheduleDrawable(Drawable drawable, Runnable runnable) {
-        Drawable$Callback callback;
+        Drawable.Callback callback;
         if (!zzmx.zzqu() || (callback = getCallback()) == null) {
             return;
         }

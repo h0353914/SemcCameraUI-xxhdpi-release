@@ -14,12 +14,6 @@ public final class DescriptorProtos$DescriptorProto extends ExtendableMessageNan
     public DescriptorProtos$MessageOptions options;
     public String[] reservedName;
     public DescriptorProtos$DescriptorProto$ReservedRange[] reservedRange;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$DescriptorProto[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {
@@ -374,7 +368,6 @@ public final class DescriptorProtos$DescriptorProto extends ExtendableMessageNan
                     if (!super.storeUnknownField(input, tag)) {
                         return this;
                     }
-                    break;
                     break;
             }
         }

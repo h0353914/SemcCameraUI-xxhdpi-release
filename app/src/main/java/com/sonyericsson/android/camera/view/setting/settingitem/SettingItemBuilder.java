@@ -1,6 +1,7 @@
 package com.sonyericsson.android.camera.view.setting.settingitem;
 
 import com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInterface;
+import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,7 +17,7 @@ public class SettingItemBuilder<T> {
     private int mDialogItemType = -1;
     private SettingExecutorInterface<T> mExecutor = null;
     private List<SettingItem> mItems = null;
-    private SettingItem$Selectability mSelectability = SettingItem$Selectability.SELECTABLE;
+    private SettingItem.Selectability mSelectability = SettingItem.Selectability.SELECTABLE;
     private boolean mSelected = false;
     private boolean mIsSoundEnabled = true;
 
@@ -94,8 +95,8 @@ public class SettingItemBuilder<T> {
         return this;
     }
 
-    public SettingItemBuilder<T> selectability(SettingItem$Selectability settingItem$Selectability) {
-        this.mSelectability = settingItem$Selectability;
+    public SettingItemBuilder<T> selectability(SettingItem.Selectability selectability) {
+        this.mSelectability = selectability;
         return this;
     }
 

@@ -6,8 +6,10 @@ import android.os.Binder;
 import android.os.RemoteException;
 import android.util.Log;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.internal.zzp;
 
-public class zza extends zzp$zza {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zza extends zzp.zza {
     private Context mContext;
     private Account zzQd;
     int zzaeG;
@@ -32,7 +34,7 @@ public class zza extends zzp$zza {
             return true;
         }
         if (obj instanceof zza) {
-            return this.zzQd.equals(((zza) obj).zzQd);
+            return this.zzQd.equals(((com.google.android.gms.common.internal.zza) obj).zzQd);
         }
         return false;
     }

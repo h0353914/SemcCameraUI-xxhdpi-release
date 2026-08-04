@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Tidak dapat menyelesaikan memotret. Lihat kiri-kanan dengan lebih lambat.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Tidak dapat menyelesaikan memotret. Lihat kiri-kanan dengan lebih cepat.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Mengambil foto panorama dengan menggerakkan kamera</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Membuat berkas berikut ini:\n- Gambar Multi Sudut\n- Gambar 3D\nCatatan: Berkas ini berisi area abu-abu.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Membuat berkas berikut ini:\n- Gambar Multi Sudut\n- Gambar 3D</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Memproses...\nGambar ini berisi area abu-abu</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Membuat berkas berikut ini:
+- Gambar Multi Sudut
+- Gambar 3D
+Catatan: Berkas ini berisi area abu-abu."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Membuat berkas berikut ini:
+- Gambar Multi Sudut
+- Gambar 3D"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Memproses...
+Gambar ini berisi area abu-abu"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Menyimpan gambar</string>
     <string name="cam_3d_strings_dialog_processing_txt">Memproses...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Tunggu beberapa saat untuk meluncurkan kamera 3D</string>
@@ -96,7 +102,7 @@
     <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_deselected_txt">Batalkan pilihan otomatis</string>
     <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_selected_txt">Dipilih otomatis</string>
     <string name="cam_strings_accessibility_image_quality_control_shutter_speed_txt">Kecepatan rana</string>
-    <string name="cam_strings_accessibility_image_quality_control_white_balance_txt">K\'smbngn putih</string>
+    <string name="cam_strings_accessibility_image_quality_control_white_balance_txt">"K'smbngn putih"</string>
     <string name="cam_strings_accessibility_information_txt">Informasi</string>
     <string name="cam_strings_accessibility_menu_txt">Menu</string>
     <string name="cam_strings_accessibility_not_configurable_txt">Tidak dapat dikonfigurasi</string>
@@ -197,7 +203,7 @@
     <string name="cam_strings_color_brightness_txt">Warna dan kecerahan</string>
     <string name="cam_strings_common_error_internal_memory_full_txt">Penyimpanan internal penuh. Simpan data di kartu SD?</string>
     <string name="cam_strings_common_error_internal_memory_unavailable_txt">Penyimpanan internal rusak atau tidak dapat ditulis. Simpan data di kartu SD?</string>
-    <string name="cam_strings_common_error_open_txt">Tdk dpt m\'buka %1$s</string>
+    <string name="cam_strings_common_error_open_txt">"Tdk dpt m'buka %1$s"</string>
     <string name="cam_strings_common_error_sdcard_full_txt">Kartu SD penuh. Simpan data di penyimpanan internal?</string>
     <string name="cam_strings_common_error_sdcard_unavailable_txt">Tidak dapat menggunakan kartu SD. Simpan data di penyimpanan internal?</string>
     <string name="cam_strings_common_explanatory_sdcard_setting_txt">Untuk kestabilan pemotretan atau rekaman, kami sarankan Anda mengubah penyimpanan data ke penyimpanan internal atau gunakan kartu SD kecepatan tinggi (disarankan Kelas 10 atau lebih tinggi)</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Membuat kulit Anda terlihat cerah dan halus. Efek ini berfungsi di aplikasi yang menggunakan kamera depan. Ini dapat diterapkan pada foto dan video. Anda juga dapat mengatur tingkatnya.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Pengaturan tingkat</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Kulit lembut</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Tidak dapat memulai apikasi.\nPastikan versi terbaru dari %1$s telah terpasang dan diaktifkan pada perangkat Anda.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Tidak dapat memulai apikasi.
+Pastikan versi terbaru dari %1$s telah terpasang dan diaktifkan pada perangkat Anda."</string>
     <string name="cam_strings_gridline_txt">Garis grid</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Hadapkan telapak tangan ke kamera. Timer sendiri akan diaktifkan saat telapak tangan Anda dikenali. Agar mudah dikenali, rentangkan jari Anda ke atas.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Hadapkan telapak tangan ke kamera</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Setelan umum</string>
     <string name="cam_strings_more_txt">Lainnya</string>
     <string name="cam_strings_multi_window_txt">Tarik bagian tengah bilah pemisah untuk beralih ke layar penuh %1$s untuk menggunakan</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Perangkat lain sekarang tersambung.\nAnda ingin berbagi gambar melalui jendela bidik dengan perangkat?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Perangkat lain sekarang tersambung.
+Anda ingin berbagi gambar melalui jendela bidik dengan perangkat?"</string>
     <string name="cam_strings_multicam_add_device_txt">Tambah prkt</string>
     <string name="cam_strings_multicam_add_more_txt">Tambah lainnya</string>
     <string name="cam_strings_multicam_apply_txt">Selesai</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Penghitung jarak</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Diperediksi</string>
     <string name="cam_strings_predictive_capture_txt">Tangkapan Prediktif</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Kamera telah diluncurkan secara otomatis dengan mendeteksi gerakan mengangkat ponsel dalam mode lanskap. dan mengarahkannya ke objek.\nAnda dapat memilih cara favorit untuk menggunakan fitur ini dari Peluncuran pintar di setelan kamera.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Kamera telah diluncurkan secara otomatis dengan mendeteksi gerakan mengangkat ponsel dalam mode lanskap. dan mengarahkannya ke objek.
+Anda dapat memilih cara favorit untuk menggunakan fitur ini dari Peluncuran pintar di setelan kamera."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Sentuh di dalam lingkaran untuk memfoto</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Sentuh layar untuk memfoto</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Ketuk di dalam lingkaran untuk melihat layar penuh</string>
     <string name="cam_strings_predictive_launch_guide_txt">Ketuk di dalam lingkaran untuk menjalankan kamera</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Snth utk jalankan dan tangkap</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Sentuh untuk jalankan</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Anda dapat meluncurkan kamera dengan cepat. Angkat cepat perangkat Anda dalam mode lanskap dan arahkan kamera ke suatu objek. Kamera akan diluncurkan secara otomatis.\nAnda dapat memilih cara favorit untuk menggunakan fitur ini dari Luncurkan cerdas di setelan kamera.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Anda dapat meluncurkan kamera dengan cepat. Angkat cepat perangkat Anda dalam mode lanskap dan arahkan kamera ke suatu objek. Kamera akan diluncurkan secara otomatis.
+Anda dapat memilih cara favorit untuk menggunakan fitur ini dari Luncurkan cerdas di setelan kamera."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Peluncuran cerdas</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Anda dpt luncurkan kamera dgn cepat. Usap ke atas perangkat Anda dalam mode lanskap, hadapkan kamera ke objek. Kamera akan diluncurkan secara otomatis.\nAnda dapat nonaktifkan fitur ini dari Peluncuran cerdas di setelan kamera.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Anda dpt luncurkan kamera dgn cepat. Usap ke atas perangkat Anda dalam mode lanskap, hadapkan kamera ke objek. Kamera akan diluncurkan secara otomatis.
+Anda dapat nonaktifkan fitur ini dari Peluncuran cerdas di setelan kamera."</string>
     <string name="cam_strings_predictive_launch_txt">Peluncuran cerdas</string>
     <string name="cam_strings_preview_always_txt">Aktif</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 detik</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s memerlukan izin berikut ini</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Izin %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Aplikasi ini memerlukan izin berikut untuk melakukan tindakan ini.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Untuk memberikan izin, buka Info aplikasi &gt; Izin.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Untuk memberikan izin, buka Info aplikasi > Izin.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Tidak dapat melanjutkan</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Untuk mengambil foto dan video</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Untuk mengambil lokasi</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Simpan ke penyimpanan internal</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">PINDAHKAN</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Aplikasi ini memerlukan izin berikut untuk melakukan tindakan ini.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Untuk menggunakan kartu SD, kamera memerlukan izin untuk mengakses kartu SD.\nUbah penyimpanan data ke kartu SD lagi, atau izinkan kamera untuk mengakses kartu SD di layar berikutnya.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Untuk menggunakan kartu SD, kamera memerlukan izin untuk mengakses kartu SD.
+Ubah penyimpanan data ke kartu SD lagi, atau izinkan kamera untuk mengakses kartu SD di layar berikutnya."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">Kartu SD tidak tersedia</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Kartu SD baru yang memerlukan izin telah terdeteksi.\n\nUntuk menggunakan kartu SD sebagai penyimpanan data, pilih kartu SD atau direktori DCIM pada layar berikutnya.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Kartu SD atau direktori DCIM tidak dipilih. Kartu SD tidak dapat digunakan.\n\nUntuk memberikan izin, mulai dengan mengubah lokasi penyimpanan ke kartu SD, atau pilih direktori yang sesuai di layar berikutnya.</string>
-    <string name="cam_strings_sd_permission_info_txt">Kartu SD baru yang memerlukan izin telah terdeteksi.\nPenyimpanan internal akan selanjutnya digunakan sebagai penyimpanan data default.\n\nUntuk menggunakan kartu SD sebagai penyimpanan data, buka setelan kamera lalu ubah opsi penyimpanan ke kartu SD.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Kartu SD baru yang memerlukan izin telah terdeteksi.
+
+Untuk menggunakan kartu SD sebagai penyimpanan data, pilih kartu SD atau direktori DCIM pada layar berikutnya."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Kartu SD atau direktori DCIM tidak dipilih. Kartu SD tidak dapat digunakan.
+
+Untuk memberikan izin, mulai dengan mengubah lokasi penyimpanan ke kartu SD, atau pilih direktori yang sesuai di layar berikutnya."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Kartu SD baru yang memerlukan izin telah terdeteksi.
+Penyimpanan internal akan selanjutnya digunakan sebagai penyimpanan data default.
+
+Untuk menggunakan kartu SD sebagai penyimpanan data, buka setelan kamera lalu ubah opsi penyimpanan ke kartu SD."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Untuk menyimpan foto dan video pada kartu SD</string>
     <string name="cam_strings_select_picture_txt">Pilih foto</string>
     <string name="cam_strings_self_timer_05_txt">0,5 dtk.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Pengambilan otom.</string>
     <string name="cam_strings_side_touch_not_supported_txt">Sensor samping tidak didukung pada layar ini</string>
     <string name="cam_strings_side_touch_on_title_txt">Sensor samping</string>
-    <string name="cam_strings_side_touch_on_txt">Untuk menggunakan fungsi ini, buka Setelan &gt; Tampilan dan nyalakan Sensor samping. Aktifkan sekarang?</string>
+    <string name="cam_strings_side_touch_on_txt">Untuk menggunakan fungsi ini, buka Setelan > Tampilan dan nyalakan Sensor samping. Aktifkan sekarang?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Sensor samping</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Anda dapat mengambil foto atau video hanya dengan mengetuk dua kali sensor di samping layar tanpa menggunakan tombol rana. Anda juga dapat memperbesar atau memperkecil dengan menggeser jari Anda pada sensor samping.\nMode foto dan video mendukung fungsi ini. Anda dapat menonaktifkannya dari Sensor samping di setelan kamera.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Anda dapat mengambil foto atau video hanya dengan mengetuk dua kali sensor di samping layar dalam tampilan potret tanpa menggunakan tombol rana. Anda juga dapat memperbesar atau memperkecil dengan menggeser jari Anda di sensor samping ini.\nMode foto dan video mendukung fungsi ini. Anda dapat menonaktifkannya dari Sensor samping di setelan kamera.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Anda dapat mengambil foto atau video hanya dengan mengetuk dua kali sensor di samping layar dalam tampilan potret tanpa mengetuk tombol rana.\nMode foto dan video mendukung fungsi ini. Anda dapat menonaktifkannya dari Sensor samping di setelan kamera.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Anda dapat mengambil foto atau video hanya dengan mengetuk dua kali pada sisi layar tanpa menggunakan tombol rana.\nMode foto dan video mendukung fungsi ini. Anda dapat menonaktifkannya dari Sensor samping di setelan kamera.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Anda dapat mengambil foto atau video hanya dengan mengetuk dua kali sensor di samping layar tanpa menggunakan tombol rana. Anda juga dapat memperbesar atau memperkecil dengan menggeser jari Anda pada sensor samping.
+Mode foto dan video mendukung fungsi ini. Anda dapat menonaktifkannya dari Sensor samping di setelan kamera."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Anda dapat mengambil foto atau video hanya dengan mengetuk dua kali sensor di samping layar dalam tampilan potret tanpa menggunakan tombol rana. Anda juga dapat memperbesar atau memperkecil dengan menggeser jari Anda di sensor samping ini.
+Mode foto dan video mendukung fungsi ini. Anda dapat menonaktifkannya dari Sensor samping di setelan kamera."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Anda dapat mengambil foto atau video hanya dengan mengetuk dua kali sensor di samping layar dalam tampilan potret tanpa mengetuk tombol rana.
+Mode foto dan video mendukung fungsi ini. Anda dapat menonaktifkannya dari Sensor samping di setelan kamera."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Anda dapat mengambil foto atau video hanya dengan mengetuk dua kali pada sisi layar tanpa menggunakan tombol rana.
+Mode foto dan video mendukung fungsi ini. Anda dapat menonaktifkannya dari Sensor samping di setelan kamera."</string>
     <string name="cam_strings_side_touch_txt">Sensor samping</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Gaya perekaman dan resolusi layar bisa diubah dalam setelan Camera</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Super lambat (sekali jepret)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Gerakan super lambat</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Anda dapat mengubah fps dan gaya rekaman untuk gerak lambat</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Opsi lainnya</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Secara langsung merekam momen berharga dalam gerak lambat %1$s fps dengan mengetuk tombol di tengah layar.\nMerekam dalam kondisi terang membantu Anda membuat video yang lebih baik.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Secara langsung merekam momen berharga dalam gerak lambat %1$s fps dengan mengetuk tombol di tengah layar.
+Merekam dalam kondisi terang membantu Anda membuat video yang lebih baik."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Anda dpt merekam momen yg tepat dgn %1$s fps dgn mengetuk tombol tengah</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Secara instan merekam momen berharga dalam gerak lambat %1$s fps dengan mengetuk tombol di tengah layar</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Gerakan super lambat (satu tangkapan)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Gerakan lambat</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Cara merekam</string>
     <string name="cam_strings_slow_motion_standard_txt">Gerakan lambat</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Membuat video mengesankan dengan impresif momen berharga dalam gerak lambat.\nMerekam dalam kondisi terang membantu Anda membuat video yang lebih baik.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Membuat video mengesankan dengan impresif momen berharga dalam gerak lambat.
+Merekam dalam kondisi terang membantu Anda membuat video yang lebih baik."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Anda dapat merekam video pada kec. berbeda dgn beralih ke %1$s fps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Ketuk tombol di tengah pada momen yang tepat</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Gerak lambat direkam</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Lisensi Perangkat Lunak</string>
     <string name="cam_strings_take_photo_txt">Ambil foto</string>
     <string name="cam_strings_term_of_use_accept_txt">Terima</string>
-    <string name="cam_strings_term_of_use_consent_txt">Saya menyetujui &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Ketentuan Penggunaan&lt;/a&gt; Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Saya menyetujui &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Ketentuan Penggunaan&lt;/a> Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Menggunakan layanan ini dapat dikenakan biaya data seluler tergantung paket data Anda.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile akan mengumpulkan pengidentifikasi perangkat unik Android ID diacak Anda, data berbasis lokasi, dan stempel waktu untuk memberikan hasil yang sesuai sebagai bagian dari layanan dan untuk peningkatan layanan.</string>
     <string name="cam_strings_term_of_use_decline_txt">Tolak</string>
     <string name="cam_strings_term_of_use_title_txt">Syarat dan Ketentuan</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Syarat Penggunaan&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Syarat Penggunaan&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Batalkan pilihan foto</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Tidak dapat menyimpan</string>
     <string name="cam_strings_timeshift_save_complete_txt">Disimpan</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Untuk rekaman video 4K yang stabil, Anda tidak boleh mengubah setelan ini kecuali menggunakan kartu SD kecepatan tinggi (Kelas Kecepatan UHS 1 atau lebih tinggi, atau Kelas Kecepatan 10 disarankan).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Untuk rekaman Timeshift video yang stabil, Anda tidak boleh mengubah setelan ini kecuali menggunakan kartu SD kecepatan tinggi (Kelas Kecepatan UHS 1, atau Kelas Kecepatan 10 disarankan). Ubah?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Untuk rekaman gerak lambat yang stabil, Anda tidak boleh mengubah setelan ini kecuali menggunakan kartu SD kecepatan tinggi (Kelas Kecepatan UHS 1 atau lebih tinggi, atau Kelas Kecepatan 10 disarankan).</string>
-    <string name="cam_strings_video_explanatory_txt">Untuk rekaman video yang stabil, kami sarankan Anda mengubah penyimpanan data ke penyimpanan internal. Anda ingin mengubahnya sekarang?\n\nJika Anda melanjutkan menggunakan kartu SD sebagai penyimpanan data, pastikan menggunakan kartu SD kecepatan tinggi (Kelas Kecepatan UHS 1, atau Kelas Kecepatan 10 disarankan).</string>
+    <string name="cam_strings_video_explanatory_txt">"Untuk rekaman video yang stabil, kami sarankan Anda mengubah penyimpanan data ke penyimpanan internal. Anda ingin mengubahnya sekarang?
+
+Jika Anda melanjutkan menggunakan kartu SD sebagai penyimpanan data, pastikan menggunakan kartu SD kecepatan tinggi (Kelas Kecepatan UHS 1, atau Kelas Kecepatan 10 disarankan)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Kamera ganda</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Anda bisa merekam video cantik dengan suara rendah bising dengan menggunakan kamera ganda, bahkan di malam hari atau di ruangan bercahaya rendah. Kamera secara otomatis beralih antara satu kamera dan kamera ganda berdasarkan pada gambar yang direkam dengan sensitivitas Ultra tinggi.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Rekaman video dengan kamera ganda</string>

@@ -13,27 +13,6 @@ public final class LensServiceEventData extends ExtendableMessageNano<LensServic
     private int bitField0_;
     private int serviceApiVersion_;
 
-    @Override // com.google.protobuf.nano.ExtendableMessageNano, com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ ExtendableMessageNano clone() throws CloneNotSupportedException {
-        return clone();
-    }
-
-    @Override // com.google.protobuf.nano.ExtendableMessageNano, com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano clone() throws CloneNotSupportedException {
-        return clone();
-    }
-
-    @Override // com.google.protobuf.nano.ExtendableMessageNano, com.google.protobuf.nano.MessageNano
-    /* JADX INFO: renamed from: clone */
-    public /* bridge */ /* synthetic */ Object mo6clone() throws CloneNotSupportedException {
-        return clone();
-    }
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static LensServiceEventData[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

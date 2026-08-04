@@ -2,7 +2,6 @@ package com.sonyericsson.cameracommon.utility;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager$NameNotFoundException;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import com.sonyericsson.android.camera.util.CamLog;
@@ -22,8 +21,8 @@ public class ResourceUtil {
     public static String getString(Context context, String str, int i) {
         try {
             return context.getPackageManager().getResourcesForApplication(str).getString(i);
-        } catch (PackageManager$NameNotFoundException e) {
-            CamLog.e("ResourceUtil", e);
+        } catch (PackageManager.NameNotFoundException e) {
+            CamLog.e(TAG, e);
             return null;
         }
     }
@@ -35,8 +34,8 @@ public class ResourceUtil {
     public static int getInteger(Context context, String str, int i) {
         try {
             return context.getPackageManager().getResourcesForApplication(str).getInteger(i);
-        } catch (PackageManager$NameNotFoundException e) {
-            CamLog.e("ResourceUtil", e);
+        } catch (PackageManager.NameNotFoundException e) {
+            CamLog.e(TAG, e);
             throw new RuntimeException();
         }
     }
@@ -52,8 +51,8 @@ public class ResourceUtil {
     public static boolean getBoolean(Context context, String str, int i) {
         try {
             return context.getPackageManager().getResourcesForApplication(str).getBoolean(i);
-        } catch (PackageManager$NameNotFoundException e) {
-            CamLog.e("ResourceUtil", e);
+        } catch (PackageManager.NameNotFoundException e) {
+            CamLog.e(TAG, e);
             throw new RuntimeException();
         }
     }
@@ -65,8 +64,8 @@ public class ResourceUtil {
     public static Drawable getDrawable(Context context, String str, int i) {
         try {
             return context.getPackageManager().getResourcesForApplication(str).getDrawable(i, null);
-        } catch (PackageManager$NameNotFoundException e) {
-            CamLog.e("ResourceUtil", e);
+        } catch (PackageManager.NameNotFoundException e) {
+            CamLog.e(TAG, e);
             throw new RuntimeException();
         }
     }
@@ -78,8 +77,8 @@ public class ResourceUtil {
     public static int getDimensionPixelSize(Context context, String str, int i) {
         try {
             return context.getPackageManager().getResourcesForApplication(str).getDimensionPixelSize(i);
-        } catch (PackageManager$NameNotFoundException e) {
-            CamLog.e("ResourceUtil", e);
+        } catch (PackageManager.NameNotFoundException e) {
+            CamLog.e(TAG, e);
             throw new RuntimeException();
         }
     }
@@ -91,8 +90,8 @@ public class ResourceUtil {
     public static int getDimensionPixelOffset(Context context, String str, int i) {
         try {
             return context.getPackageManager().getResourcesForApplication(str).getDimensionPixelOffset(i);
-        } catch (PackageManager$NameNotFoundException e) {
-            CamLog.e("ResourceUtil", e);
+        } catch (PackageManager.NameNotFoundException e) {
+            CamLog.e(TAG, e);
             throw new RuntimeException();
         }
     }
@@ -108,8 +107,8 @@ public class ResourceUtil {
     public static float getDimension(Context context, String str, int i) {
         try {
             return context.getPackageManager().getResourcesForApplication(str).getDimension(i);
-        } catch (PackageManager$NameNotFoundException e) {
-            CamLog.e("ResourceUtil", e);
+        } catch (PackageManager.NameNotFoundException e) {
+            CamLog.e(TAG, e);
             throw new RuntimeException();
         }
     }
@@ -121,8 +120,8 @@ public class ResourceUtil {
     public static ColorStateList getColorStateList(Context context, String str, int i) {
         try {
             return context.getPackageManager().getResourcesForApplication(str).getColorStateList(i, null);
-        } catch (PackageManager$NameNotFoundException e) {
-            CamLog.e("ResourceUtil", e);
+        } catch (PackageManager.NameNotFoundException e) {
+            CamLog.e(TAG, e);
             throw new RuntimeException();
         }
     }
@@ -131,8 +130,8 @@ public class ResourceUtil {
         PackageManager packageManager = context.getPackageManager();
         try {
             return (String) packageManager.getApplicationLabel(packageManager.getApplicationInfo(str, 0));
-        } catch (PackageManager$NameNotFoundException e) {
-            CamLog.e("ResourceUtil", e);
+        } catch (PackageManager.NameNotFoundException e) {
+            CamLog.e(TAG, e);
             throw new RuntimeException();
         }
     }

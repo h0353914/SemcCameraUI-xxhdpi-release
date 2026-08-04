@@ -1,3 +1,4 @@
+
 package org.apache.commons.imaging.formats.bmp;
 
 class BmpHeaderInfo {
@@ -7,7 +8,7 @@ class BmpHeaderInfo {
     public final int bitmapHeaderSize;
     public final int bitsPerPixel;
     public final int blueMask;
-    public final BmpHeaderInfo$ColorSpace colorSpace;
+    public final ColorSpace colorSpace;
     public final int colorSpaceType;
     public final int colorsImportant;
     public final int colorsUsed;
@@ -31,7 +32,44 @@ class BmpHeaderInfo {
     public final int vResolution;
     public final int width;
 
-    public BmpHeaderInfo(byte b, byte b2, int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9, int i10, int i11, int i12, int i13, int i14, int i15, int i16, int i17, int i18, int i19, BmpHeaderInfo$ColorSpace bmpHeaderInfo$ColorSpace, int i20, int i21, int i22, int i23, int i24, int i25, int i26) {
+    static class ColorSpaceCoordinate {
+
+        /* renamed from: x */
+        /* renamed from: x */
+        int x;
+
+        /* renamed from: y */
+        int y;
+        /* renamed from: z */
+        int z;
+        // @formatter:off
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // @formatter:on
+        ColorSpaceCoordinate() {
+        }
+    }
+
+    static class ColorSpace {
+        ColorSpaceCoordinate blue, green, red;
+        ColorSpace() {
+        }
+    }
+
+    public BmpHeaderInfo(byte b, byte b2, int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9,
+            int i10, int i11, int i12, int i13, int i14, int i15, int i16, int i17, int i18, int i19,
+            ColorSpace colorSpace, int i20, int i21, int i22, int i23, int i24, int i25, int i26) {
         this.identifier1 = b;
         this.identifier2 = b2;
         this.fileSize = i;
@@ -53,7 +91,7 @@ class BmpHeaderInfo {
         this.blueMask = i17;
         this.alphaMask = i18;
         this.colorSpaceType = i19;
-        this.colorSpace = bmpHeaderInfo$ColorSpace;
+        this.colorSpace = colorSpace;
         this.gammaRed = i20;
         this.gammaGreen = i21;
         this.gammaBlue = i22;

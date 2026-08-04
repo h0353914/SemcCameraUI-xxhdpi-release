@@ -1101,39 +1101,39 @@
     <public type="dimen" name="viewfinder_grid_line_width" id="0x7f070228" />
     <public type="dimen" name="zoom_container_height" id="0x7f070229" />
     <public type="dimen" name="zoom_container_width" id="0x7f07022a" />
-    <public type="drawable" name="__predictivelaunch_animation_1__1__0_res_0x7f080000" id="0x7f080000" />
-    <public type="drawable" name="__predictivelaunch_animation_1__1__1_res_0x7f080001" id="0x7f080001" />
-    <public type="drawable" name="__predictivelaunch_animation_1__2__0_res_0x7f080002" id="0x7f080002" />
-    <public type="drawable" name="__predictivelaunch_animation_1__2__1_res_0x7f080003" id="0x7f080003" />
-    <public type="drawable" name="__predictivelaunch_animation_1__2__2_res_0x7f080004" id="0x7f080004" />
-    <public type="drawable" name="__predictivelaunch_animation_1__3__0_res_0x7f080005" id="0x7f080005" />
-    <public type="drawable" name="__predictivelaunch_animation_1__3__1_res_0x7f080006" id="0x7f080006" />
-    <public type="drawable" name="__predictivelaunch_animation_1__3__2_res_0x7f080007" id="0x7f080007" />
-    <public type="drawable" name="__predictivelaunch_animation_1__4__0_res_0x7f080008" id="0x7f080008" />
-    <public type="drawable" name="__predictivelaunch_animation_1__4__1_res_0x7f080009" id="0x7f080009" />
-    <public type="drawable" name="__predictivelaunch_animation_1__4__2_res_0x7f08000a" id="0x7f08000a" />
-    <public type="drawable" name="__predictivelaunch_animation_1__5__0_res_0x7f08000b" id="0x7f08000b" />
-    <public type="drawable" name="__predictivelaunch_animation_1__5__1_res_0x7f08000c" id="0x7f08000c" />
-    <public type="drawable" name="__predictivelaunch_animation_1__5__2_res_0x7f08000d" id="0x7f08000d" />
-    <public type="drawable" name="__predictivelaunch_animation_1__6__0_res_0x7f08000e" id="0x7f08000e" />
-    <public type="drawable" name="__predictivelaunch_animation_1__6__1_res_0x7f08000f" id="0x7f08000f" />
-    <public type="drawable" name="__predictivelaunch_animation_1__6__2_res_0x7f080010" id="0x7f080010" />
-    <public type="drawable" name="__predictivelaunch_animation_1__7__0_res_0x7f080011" id="0x7f080011" />
-    <public type="drawable" name="__predictivelaunch_animation_1__7__1_res_0x7f080012" id="0x7f080012" />
-    <public type="drawable" name="__predictivelaunch_animation_1__7__2_res_0x7f080013" id="0x7f080013" />
-    <public type="drawable" name="__predictivelaunch_animation_2__1__0_res_0x7f080014" id="0x7f080014" />
-    <public type="drawable" name="_predictivelaunch_animation_1__0_res_0x7f080015" id="0x7f080015" />
-    <public type="drawable" name="_predictivelaunch_animation_1__1_res_0x7f080016" id="0x7f080016" />
-    <public type="drawable" name="_predictivelaunch_animation_1__2_res_0x7f080017" id="0x7f080017" />
-    <public type="drawable" name="_predictivelaunch_animation_1__3_res_0x7f080018" id="0x7f080018" />
-    <public type="drawable" name="_predictivelaunch_animation_1__4_res_0x7f080019" id="0x7f080019" />
-    <public type="drawable" name="_predictivelaunch_animation_1__5_res_0x7f08001a" id="0x7f08001a" />
-    <public type="drawable" name="_predictivelaunch_animation_1__6_res_0x7f08001b" id="0x7f08001b" />
-    <public type="drawable" name="_predictivelaunch_animation_1__7_res_0x7f08001c" id="0x7f08001c" />
-    <public type="drawable" name="_predictivelaunch_animation_1__8_res_0x7f08001d" id="0x7f08001d" />
-    <public type="drawable" name="_predictivelaunch_animation_2__0_res_0x7f08001e" id="0x7f08001e" />
-    <public type="drawable" name="_predictivelaunch_animation_2__1_res_0x7f08001f" id="0x7f08001f" />
-    <public type="drawable" name="_predictivelaunch_animation_2__2_res_0x7f080020" id="0x7f080020" />
+    <public type="drawable" name="predictivelaunch_animation_1__1__0" id="0x7f080000" />
+    <public type="drawable" name="predictivelaunch_animation_1__1__1" id="0x7f080001" />
+    <public type="drawable" name="predictivelaunch_animation_1__2__0" id="0x7f080002" />
+    <public type="drawable" name="predictivelaunch_animation_1__2__1" id="0x7f080003" />
+    <public type="drawable" name="predictivelaunch_animation_1__2__2" id="0x7f080004" />
+    <public type="drawable" name="predictivelaunch_animation_1__3__0" id="0x7f080005" />
+    <public type="drawable" name="predictivelaunch_animation_1__3__1" id="0x7f080006" />
+    <public type="drawable" name="predictivelaunch_animation_1__3__2" id="0x7f080007" />
+    <public type="drawable" name="predictivelaunch_animation_1__4__0" id="0x7f080008" />
+    <public type="drawable" name="predictivelaunch_animation_1__4__1" id="0x7f080009" />
+    <public type="drawable" name="predictivelaunch_animation_1__4__2" id="0x7f08000a" />
+    <public type="drawable" name="predictivelaunch_animation_1__5__0" id="0x7f08000b" />
+    <public type="drawable" name="predictivelaunch_animation_1__5__1" id="0x7f08000c" />
+    <public type="drawable" name="predictivelaunch_animation_1__5__2" id="0x7f08000d" />
+    <public type="drawable" name="predictivelaunch_animation_1__6__0" id="0x7f08000e" />
+    <public type="drawable" name="predictivelaunch_animation_1__6__1" id="0x7f08000f" />
+    <public type="drawable" name="predictivelaunch_animation_1__6__2" id="0x7f080010" />
+    <public type="drawable" name="predictivelaunch_animation_1__7__0" id="0x7f080011" />
+    <public type="drawable" name="predictivelaunch_animation_1__7__1" id="0x7f080012" />
+    <public type="drawable" name="predictivelaunch_animation_1__7__2" id="0x7f080013" />
+    <public type="drawable" name="predictivelaunch_animation_2__1__0" id="0x7f080014" />
+    <public type="drawable" name="predictivelaunch_animation_1__0" id="0x7f080015" />
+    <public type="drawable" name="predictivelaunch_animation_1__1" id="0x7f080016" />
+    <public type="drawable" name="predictivelaunch_animation_1__2" id="0x7f080017" />
+    <public type="drawable" name="predictivelaunch_animation_1__3" id="0x7f080018" />
+    <public type="drawable" name="predictivelaunch_animation_1__4" id="0x7f080019" />
+    <public type="drawable" name="predictivelaunch_animation_1__5" id="0x7f08001a" />
+    <public type="drawable" name="predictivelaunch_animation_1__6" id="0x7f08001b" />
+    <public type="drawable" name="predictivelaunch_animation_1__7" id="0x7f08001c" />
+    <public type="drawable" name="predictivelaunch_animation_1__8" id="0x7f08001d" />
+    <public type="drawable" name="predictivelaunch_animation_2__0" id="0x7f08001e" />
+    <public type="drawable" name="predictivelaunch_animation_2__1" id="0x7f08001f" />
+    <public type="drawable" name="predictivelaunch_animation_2__2" id="0x7f080020" />
     <public type="drawable" name="abc_ab_share_pack_mtrl_alpha" id="0x7f080021" />
     <public type="drawable" name="abc_action_bar_item_background_material" id="0x7f080022" />
     <public type="drawable" name="abc_btn_borderless_material" id="0x7f080023" />

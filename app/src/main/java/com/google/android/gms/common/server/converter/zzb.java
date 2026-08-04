@@ -1,11 +1,13 @@
 package com.google.android.gms.common.server.converter;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import android.os.Parcelable;
+import com.google.android.gms.common.internal.safeparcel.zza;
+import com.google.android.gms.common.server.converter.StringToIntConverter;
 import java.util.ArrayList;
 
-public class zzb implements Parcelable$Creator<StringToIntConverter> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzb implements Parcelable.Creator<StringToIntConverter> {
     static void zza(StringToIntConverter stringToIntConverter, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, stringToIntConverter.getVersionCode());
@@ -13,17 +15,9 @@ public class zzb implements Parcelable$Creator<StringToIntConverter> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ StringToIntConverter createFromParcel(Parcel parcel) {
-        return zzat(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ StringToIntConverter[] newArray(int i) {
-        return zzbR(i);
-    }
-
-    public StringToIntConverter zzat(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzat, reason: merged with bridge method [inline-methods] */
+    public StringToIntConverter createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         ArrayList arrayListZzc = null;
@@ -34,7 +28,7 @@ public class zzb implements Parcelable$Creator<StringToIntConverter> {
                     iZzg = com.google.android.gms.common.internal.safeparcel.zza.zzg(parcel, iZzao);
                     break;
                 case 2:
-                    arrayListZzc = com.google.android.gms.common.internal.safeparcel.zza.zzc(parcel, iZzao, StringToIntConverter$Entry.CREATOR);
+                    arrayListZzc = com.google.android.gms.common.internal.safeparcel.zza.zzc(parcel, iZzao, StringToIntConverter.Entry.CREATOR);
                     break;
                 default:
                     com.google.android.gms.common.internal.safeparcel.zza.zzb(parcel, iZzao);
@@ -44,10 +38,12 @@ public class zzb implements Parcelable$Creator<StringToIntConverter> {
         if (parcel.dataPosition() == iZzap) {
             return new StringToIntConverter(iZzg, arrayListZzc);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public StringToIntConverter[] zzbR(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbR, reason: merged with bridge method [inline-methods] */
+    public StringToIntConverter[] newArray(int i) {
         return new StringToIntConverter[i];
     }
 }

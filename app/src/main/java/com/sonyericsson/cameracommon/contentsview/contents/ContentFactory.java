@@ -1,14 +1,15 @@
 package com.sonyericsson.cameracommon.contentsview.contents;
 
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.cameracommon.contentsview.contents.Content;
 
 public class ContentFactory {
     public static final String TAG = "ContentFactory";
 
-    public static Content create(Content$ContentInfo content$ContentInfo) {
+    public static Content create(Content.ContentInfo contentInfo) {
         if (CamLog.VERBOSE) {
-            CamLog.d("create() has been called. Content type = " + content$ContentInfo.mContentType);
+            CamLog.d("create() has been called. Content type = " + contentInfo.mContentType);
         }
-        return new Content(content$ContentInfo, ExtraIconResources.get(content$ContentInfo.mContentType), PlayIconResources.get(content$ContentInfo.mContentType));
+        return new Content(contentInfo, ExtraIconResources.get(contentInfo.mContentType), PlayIconResources.get(contentInfo.mContentType));
     }
 }

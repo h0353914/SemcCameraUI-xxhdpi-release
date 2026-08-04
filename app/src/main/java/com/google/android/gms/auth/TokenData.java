@@ -8,6 +8,7 @@ import com.google.android.gms.common.internal.zzw;
 import com.google.android.gms.common.internal.zzx;
 import java.util.List;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class TokenData implements SafeParcelable {
     public static final zzd CREATOR = new zzd();
     final int mVersionCode;

@@ -3,6 +3,7 @@ package com.google.android.gms.common.api;
 import com.google.android.gms.common.internal.zzx;
 import java.util.concurrent.TimeUnit;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class BatchResult implements Result {
     private final Status zzSC;
     private final PendingResult<?>[] zzaaB;

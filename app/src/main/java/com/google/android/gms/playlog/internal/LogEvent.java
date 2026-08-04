@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class LogEvent implements SafeParcelable {
     public static final zzc CREATOR = new zzc();
     public final String tag;

@@ -1,5 +1,7 @@
 package org.apache.commons.imaging;
 
+import org.apache.commons.imaging.ImageReadException;
+
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.StringWriter;

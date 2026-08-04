@@ -2,6 +2,7 @@ package com.google.android.gms.internal;
 
 import java.io.IOException;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public abstract class zzse {
     protected volatile int zzbiv = -1;
 
@@ -38,10 +39,6 @@ public abstract class zzse {
         return bArr;
     }
 
-    public /* synthetic */ Object clone() throws CloneNotSupportedException {
-        return zzFG();
-    }
-
     public String toString() {
         return zzsf.zzg(this);
     }
@@ -50,7 +47,9 @@ public abstract class zzse {
         return 0;
     }
 
-    public zzse zzFG() throws CloneNotSupportedException {
+    @Override // 
+    /* renamed from: zzFG, reason: merged with bridge method [inline-methods] */
+    public zzse clone() throws CloneNotSupportedException {
         return (zzse) super.clone();
     }
 

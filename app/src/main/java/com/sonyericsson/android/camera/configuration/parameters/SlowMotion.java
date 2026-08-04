@@ -1,15 +1,80 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.configuration.parameters;
 
 import android.content.Context;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 
 public enum SlowMotion implements UserSettingValue {
-    SUPER_SLOW_MOTION(-1, 2131690135, 2131690150, VideoSize.HD),
-    SUPER_SLOW_SHOT(-1, 2131690133, 2131690139, VideoSize.HD),
-    STANDARD_SLOW_MOTION(-1, 2131690134, 2131690143, VideoSize.HD_120FPS),
-    OFF(-1, 2131690115, 2131690115, VideoSize.HD);
+    SUPER_SLOW_MOTION(-1, R.string.cam_strings_slow_motion_settings_super_txt, R.string.cam_strings_slow_motion_super_hint_1_txt, VideoSize.HD),
+    SUPER_SLOW_SHOT(-1, R.string.cam_strings_slow_motion_settings_shot_txt, R.string.cam_strings_slow_motion_shot_hint_1_txt, VideoSize.HD),
+    STANDARD_SLOW_MOTION(-1, R.string.cam_strings_slow_motion_settings_standard_txt, R.string.cam_strings_slow_motion_standard_hint_1_txt, VideoSize.HD_120FPS),
+    OFF(-1, R.string.cam_strings_settings_off_txt, R.string.cam_strings_settings_off_txt, VideoSize.HD);
 
     public static final String TAG = "SlowMotion";
     private static final int sParameterTextId = 2131690158;

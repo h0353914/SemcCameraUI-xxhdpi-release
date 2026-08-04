@@ -9,6 +9,11 @@ import com.sonyericsson.cameracommon.storage.Storage;
 import java.util.Map;
 
 public interface UserSettingsLoader {
+
+    public interface OnLoadCompletedListener {
+        void onLoadCompleted();
+    }
+
     void clearMasterData();
 
     SharedPreferencesAccessor getSharedPreferencesAccessor();
@@ -17,11 +22,11 @@ public interface UserSettingsLoader {
 
     void load();
 
-    void registerLoadCompletedListener(UserSettingsLoader$OnLoadCompletedListener userSettingsLoader$OnLoadCompletedListener);
+    void registerLoadCompletedListener(OnLoadCompletedListener onLoadCompletedListener);
 
     void release();
 
     void save(Map<CapturingMode, Parameters> map, CapturingMode capturingMode);
 
-    void unregisterLoadCompletedListener(UserSettingsLoader$OnLoadCompletedListener userSettingsLoader$OnLoadCompletedListener);
+    void unregisterLoadCompletedListener(OnLoadCompletedListener onLoadCompletedListener);
 }

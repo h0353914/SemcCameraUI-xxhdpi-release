@@ -3,11 +3,10 @@ package com.google.android.gms.auth.api.credentials;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
 import java.util.ArrayList;
 
-public class zza implements Parcelable$Creator<Credential> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zza implements Parcelable.Creator<Credential> {
     static void zza(Credential credential, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zza(parcel, 1, credential.getId(), false);
@@ -22,17 +21,9 @@ public class zza implements Parcelable$Creator<Credential> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ Credential createFromParcel(Parcel parcel) {
-        return zzE(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ Credential[] newArray(int i) {
-        return zzav(i);
-    }
-
-    public Credential zzE(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzE, reason: merged with bridge method [inline-methods] */
+    public Credential createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         String strZzp = null;
         String strZzp2 = null;
@@ -83,10 +74,12 @@ public class zza implements Parcelable$Creator<Credential> {
         if (parcel.dataPosition() == iZzap) {
             return new Credential(iZzg, strZzp, strZzp2, uri, arrayListZzc, strZzp3, strZzp4, strZzp5, strZzp6);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new com.google.android.gms.common.internal.safeparcel.zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public Credential[] zzav(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzav, reason: merged with bridge method [inline-methods] */
+    public Credential[] newArray(int i) {
         return new Credential[i];
     }
 }

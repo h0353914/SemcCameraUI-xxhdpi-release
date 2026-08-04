@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Nepavyko nufotografuoti. Lėčiau judinkite kamerą.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Nepavyko nufotografuoti. Greičiau judinkite kamerą.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Nufotografuokite panoramą sukdami kamerą</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Kuriami šie failai:\n- įvairiakampis vaizdas;\n- 3D vaizdas.\nPastaba: šiuose failuose yra pilkoji sritis.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Kuriami šie failai:\n- įvairiakampis vaizdas;\n- 3D vaizdas.</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Apdorojama...\nŠiame vaizde yra pilkoji sritis</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Kuriami šie failai:
+- įvairiakampis vaizdas;
+- 3D vaizdas.
+Pastaba: šiuose failuose yra pilkoji sritis."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Kuriami šie failai:
+- įvairiakampis vaizdas;
+- 3D vaizdas."</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Apdorojama...
+Šiame vaizde yra pilkoji sritis"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Išsaugomas vaizdas</string>
     <string name="cam_3d_strings_dialog_processing_txt">Apdorojama...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Palaukite kelias sekundes, kol bus įjungta 3D kamera</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Tegul jūsų oda atrodo šviesi ir lygi. Efektas veikia programose, kurios naudoja priekinę kamerą. Jį galima taikyti nuotraukoms ir vaizdo įrašams. Be to, galima reguliuoti efekto lygį.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Lygio reguliavimas</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Lygi oda</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Nepavyksta paleisti programos.\nĮsitikinkite, kad įrenginyje įdiegta ir įgalinta naujausia %1$s versija.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Nepavyksta paleisti programos.
+Įsitikinkite, kad įrenginyje įdiegta ir įgalinta naujausia %1$s versija."</string>
     <string name="cam_strings_gridline_txt">Tinklelio linijos</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Pasukite delną į fotoaparatą. Atpažinus delną bus įjungtas laikmatis. Kad jį būtų lengva atpažinti, ištieskite pirštus į viršų.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Pasukite delną į fotoaparatą</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Įprasti nustatymai</string>
     <string name="cam_strings_more_txt">Daugiau</string>
     <string name="cam_strings_multi_window_txt">Vilkite skiriamosios linijos vidurį norėdami pereiti į visą ekraną ir naudoti %1$s</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Dabar prijungtas kitas prietaisas.\nAr norite bendrai naudoti vaizdą per prietaiso vaizdo ieškiklį?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Dabar prijungtas kitas prietaisas.
+Ar norite bendrai naudoti vaizdą per prietaiso vaizdo ieškiklį?"</string>
     <string name="cam_strings_multicam_add_device_txt">Prietaiso įtrauk.</string>
     <string name="cam_strings_multicam_add_more_txt">Pridėti daugiau</string>
     <string name="cam_strings_multicam_apply_txt">Atlikta</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Matavimas</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Spėjama</string>
     <string name="cam_strings_predictive_capture_txt">Nuspėjamas fiksavimas</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Fotoaparatas įjungtas automatiškai, nustačius, kad pakėlėte jį horizontalios padėties ir nukreipėte į objektą.\nNustatyti mėgstamiausią funkcijos „Išman. paleidimas“ naudojimo būdą galite apsilankę fotoaparato nustatymuose.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Fotoaparatas įjungtas automatiškai, nustačius, kad pakėlėte jį horizontalios padėties ir nukreipėte į objektą.
+Nustatyti mėgstamiausią funkcijos „Išman. paleidimas“ naudojimo būdą galite apsilankę fotoaparato nustatymuose."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Palieskite apskritimo viduryje, kad užfiksuotumėte</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Palieskite ekraną, kad užfiksuotumėte</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Bakstelėkite apskritimo viduje, kad galėtumėte peržiūrėti viso ekrano režimu</string>
     <string name="cam_strings_predictive_launch_guide_txt">Palieskite apskritimo viduryje, kad įjungtumėte fotoaparatą (vaizdo kamerą)</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Įjung. ir fiksavim. palietus</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Įjungimas palietus</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Galite greitai įjungti fotoaparatą. Kilstelėkite įrenginį į viršų ir laikydami jį horizontalioje padėtyje nukreipkite fotoaparatą į objektą. Fotoaparatas įsijungs automatiškai.\nFotoaparato nustatymuose galite pasirinkti, kaip norėtumėte naudoti šią išmaniojo paleidimo funkciją.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Galite greitai įjungti fotoaparatą. Kilstelėkite įrenginį į viršų ir laikydami jį horizontalioje padėtyje nukreipkite fotoaparatą į objektą. Fotoaparatas įsijungs automatiškai.
+Fotoaparato nustatymuose galite pasirinkti, kaip norėtumėte naudoti šią išmaniojo paleidimo funkciją."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Išman. paleidimas</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Galite greitai įjungti fotoaparatą. Pasukite įrenginį į viršų ir laikydami jį horizontalioje padėtyje nukreipkite fotoaparatą į objektą. Fotoaparatas įsijungs automatiškai. \nFotoaparato nustatymuose galite išjungti šią funkciją.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Galite greitai įjungti fotoaparatą. Pasukite įrenginį į viršų ir laikydami jį horizontalioje padėtyje nukreipkite fotoaparatą į objektą. Fotoaparatas įsijungs automatiškai. 
+Fotoaparato nustatymuose galite išjungti šią funkciją."</string>
     <string name="cam_strings_predictive_launch_txt">Išmanusis paleidimas</string>
     <string name="cam_strings_preview_always_txt">Įjungt.</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 sek.</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">„%1$s“ reikia toliau nurodyto (-ų) leidimo (-ų)</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">„%1$s“ leidimas</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Norint atlikti šį veiksmą programai reikia toliau nurodyto (-ų) leidimo (-ų).</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Norėdami suteikti leidimų eikite į „Programų informacija“ &gt; „Leidimai“.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Norėdami suteikti leidimų eikite į „Programų informacija“ > „Leidimai“.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Nepavyko tęsti</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Nuotraukoms ir vaizdo įrašams daryti</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Vietovės informacijai gauti</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Išsaugota vidinėje atmintyje</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">PEREITI</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Norint atlikti šį veiksmą programai reikia toliau nurodyto (-ų) leidimo (-ų).</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Leisti fotoaparatui (vaizdo kamerai) naudoti SD kortelę.\nDar kartą pakeiskite duomenų saugyklą į SD kortelę arba suteikite fotoaparatui (vaizdo kamerai) prieigą prie SD kortelės kitame ekrane.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Leisti fotoaparatui (vaizdo kamerai) naudoti SD kortelę.
+Dar kartą pakeiskite duomenų saugyklą į SD kortelę arba suteikite fotoaparatui (vaizdo kamerai) prieigą prie SD kortelės kitame ekrane."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD kortelė nepasiekiama</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Aptikti naujai SD kortelei reikalingi leidimai.\n\nNorėdami SD kortelę naudoti kaip duomenų atmintį, pasirinkite SD kortelę arba DCIM katalogą kitame ekrane.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Nepasirinkta SD kortelė arba DCIM katalogas. SD kortelės negalima naudoti.\n\nNorėdami pateikti leidimus, pradėkite nuo išsaugotos vietos SD kortelėje keitimo arba pasirinkite atitinkamą katalogą kitame ekrane.</string>
-    <string name="cam_strings_sd_permission_info_txt">Aptikta nauja SD kortelė, kuriai reikia suteikti leidimus.\nĮrenginio vidinė saugykla bus naudojama kaip numatytoji duomenų saugykla.\n\nNorėdami naudoti SD kortelę kaip duomenų saugyklą, eikite į kameros nustatymus ir pakeiskite saugyklos parinktį į „SD kortelė“.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Aptikti naujai SD kortelei reikalingi leidimai.
+
+Norėdami SD kortelę naudoti kaip duomenų atmintį, pasirinkite SD kortelę arba DCIM katalogą kitame ekrane."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Nepasirinkta SD kortelė arba DCIM katalogas. SD kortelės negalima naudoti.
+
+Norėdami pateikti leidimus, pradėkite nuo išsaugotos vietos SD kortelėje keitimo arba pasirinkite atitinkamą katalogą kitame ekrane."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Aptikta nauja SD kortelė, kuriai reikia suteikti leidimus.
+Įrenginio vidinė saugykla bus naudojama kaip numatytoji duomenų saugykla.
+
+Norėdami naudoti SD kortelę kaip duomenų saugyklą, eikite į kameros nustatymus ir pakeiskite saugyklos parinktį į „SD kortelė“."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Išsaugoti nuotraukas ir vaizdo įrašus SD kortelėje</string>
     <string name="cam_strings_select_picture_txt">Pasirinkite nuotrauką</string>
     <string name="cam_strings_self_timer_05_txt">0,5 sek.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Autom. fiksavimas</string>
     <string name="cam_strings_side_touch_not_supported_txt">Optimizuotas šonas šiame ekrane nepalaikomas</string>
     <string name="cam_strings_side_touch_on_title_txt">Optimizuotas šonas</string>
-    <string name="cam_strings_side_touch_on_txt">Norėdami naudoti šią funkciją, eikite į „Nustatymai“ &gt; „Ekranas“ ir įjunkite optimizuotą šoną. Įjungti dabar?</string>
+    <string name="cam_strings_side_touch_on_txt">Norėdami naudoti šią funkciją, eikite į „Nustatymai“ > „Ekranas“ ir įjunkite optimizuotą šoną. Įjungti dabar?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Optimizuotas šonas</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Galite fotografuoti ar filmuoti tiesiog dukart bakstelėdami ekrano šone esantį jutiklį vietoj fotografavimo mygtuko. Be to, galite keisti mastelį slysdami pirštu per šoninį jutiklį.\nTiek nuotraukų, tiek vaizdo įrašų režimas palaiko šią funkciją. Ją išjungti galite kameros nustatymų srityje pasirinkę „Šoninis jutiklis“.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Galite fotografuoti ar filmuoti tiesiog dukart bakstelėdami ekrano šone esantį jutiklį vertikaliuoju peržiūros režimu nepaspausdami fotografavimo mygtuko. Be to, galite keisti mastelį slysdami pirštu per šoninį jutiklį.\nTiek nuotraukų, tiek vaizdo įrašų režimas palaiko šią funkciją. Ją išjungti galite kameros nustatymų srityje pasirinkę „Šoninis jutiklis“.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Galite fotografuoti ar filmuoti tiesiog dukart bakstelėdami ekrano šone esantį jutiklį vertikaliuoju peržiūros režimu nepaliesdami fotografavimo mygtuko.\nTiek nuotraukų, tiek vaizdo įrašų režimas palaiko šią funkciją. Ją išjungti galite kameros nustatymų srityje pasirinkę „Šoninis jutiklis“.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Galite fotografuoti ar filmuoti tiesiog dukart bakstelėdami ekrano šone esantį jutiklį nepaspausdami fotografavimo mygtuko.\nTiek nuotraukų, tiek vaizdo įrašų režimas palaiko šią funkciją. Ją išjungti galite kameros nustatymų srityje pasirinkę „Šoninis jutiklis“.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Galite fotografuoti ar filmuoti tiesiog dukart bakstelėdami ekrano šone esantį jutiklį vietoj fotografavimo mygtuko. Be to, galite keisti mastelį slysdami pirštu per šoninį jutiklį.
+Tiek nuotraukų, tiek vaizdo įrašų režimas palaiko šią funkciją. Ją išjungti galite kameros nustatymų srityje pasirinkę „Šoninis jutiklis“."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Galite fotografuoti ar filmuoti tiesiog dukart bakstelėdami ekrano šone esantį jutiklį vertikaliuoju peržiūros režimu nepaspausdami fotografavimo mygtuko. Be to, galite keisti mastelį slysdami pirštu per šoninį jutiklį.
+Tiek nuotraukų, tiek vaizdo įrašų režimas palaiko šią funkciją. Ją išjungti galite kameros nustatymų srityje pasirinkę „Šoninis jutiklis“."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Galite fotografuoti ar filmuoti tiesiog dukart bakstelėdami ekrano šone esantį jutiklį vertikaliuoju peržiūros režimu nepaliesdami fotografavimo mygtuko.
+Tiek nuotraukų, tiek vaizdo įrašų režimas palaiko šią funkciją. Ją išjungti galite kameros nustatymų srityje pasirinkę „Šoninis jutiklis“."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Galite fotografuoti ar filmuoti tiesiog dukart bakstelėdami ekrano šone esantį jutiklį nepaspausdami fotografavimo mygtuko.
+Tiek nuotraukų, tiek vaizdo įrašų režimas palaiko šią funkciją. Ją išjungti galite kameros nustatymų srityje pasirinkę „Šoninis jutiklis“."</string>
     <string name="cam_strings_side_touch_txt">Optimizuotas šonas</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Įrašymo stilių ir ekrano skiriamąją gebą galima pakeisti fotoaparato (kameros) nustatymuose</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Itin lėtai (vienas kadras)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Labai sulėtintai</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Norėdami sulėtinti galite pakeisti kadr./s skaičių ir įrašymo stilių</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Daugiau parinkčių</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Akimirksniu įrašykite svarbų momentą sulėtinta %1$s kadr./s sparta, bakstelėję ekrano centre esantį mygtuką.\nVaizdo įrašo kokybė bus geresnė, jei įrašysite esant geram apšvietimui.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Akimirksniu įrašykite svarbų momentą sulėtinta %1$s kadr./s sparta, bakstelėję ekrano centre esantį mygtuką.
+Vaizdo įrašo kokybė bus geresnė, jei įrašysite esant geram apšvietimui."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Spustelėdami vidur. mygt. galite įrašyti norimą akimirką %1$s kadrų per sek. sparta</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Akimirksniu įrašykite svarbų momentą sulėtinta %1$s kadr./s sparta, bakstelėję ekrano centre esantį mygtuką</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Labai sulėtintai (vienas kadras)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Sulėtintai</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Kaip įrašyti</string>
     <string name="cam_strings_slow_motion_standard_txt">Sulėtintai</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Sukurkite įspūdingą vaizdo įrašą svarbią akimirką pateikdami sulėtintai.\nVaizdo įrašo kokybė bus geresnė, jei įrašysite esant geram apšvietimui.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Sukurkite įspūdingą vaizdo įrašą svarbią akimirką pateikdami sulėtintai.
+Vaizdo įrašo kokybė bus geresnė, jei įrašysite esant geram apšvietimui."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Vaizdo įrašą galima įrašyti skirtinga sparta, perjungus %1$s kadr./s</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Tinkamu metu bakstelėkite centre esantį mygtuką</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Įrašyta sulėtintai</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Programinės įrangos licencijos</string>
     <string name="cam_strings_take_photo_txt">Fotografuoti</string>
     <string name="cam_strings_term_of_use_accept_txt">Priimti</string>
-    <string name="cam_strings_term_of_use_consent_txt">Sutinku su „Sony Mobile“ &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;naudojimo sąlygomis&lt;/a&gt;.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Sutinku su „Sony Mobile“ &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">naudojimo sąlygomis&lt;/a>.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Naudojantis šia paslauga, atsižvelgiant į naudojamą duomenų planą, gali būti taikomi mobiliųjų duomenų mokesčiai.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">„Sony Mobile“ rinks maiša užkoduotą „Android“ ID unikalų prietaiso identifikatorių, vietos informacija pagrįstus duomenis ir laiko žymę, kad galėtų pateikti tinkamus rezultatus teikdama paslaugą ir ją tobulindama.</string>
     <string name="cam_strings_term_of_use_decline_txt">Atsisakyti</string>
     <string name="cam_strings_term_of_use_title_txt">Nuostatos ir sąlygos</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Naudojimo sąlygos&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Naudojimo sąlygos&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Panaikinti nuotraukų pasirinkimą</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Nepavyko išsaugoti</string>
     <string name="cam_strings_timeshift_save_complete_txt">Išsaugota</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Norėdami užtikrinti stabilų 4K vaizdo įrašymą, neturėtumėte keisti šio nustatymo, nebent naudojate didelės spartos SD kortelę (rekomenduojama 1 ar aukštesnė UHS spartos klasė arba 10 spartos klasė).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Norėdami užtikrinti stabilų „Timeshift video“ įrašymą, neturėtumėte keisti šio nustatymo, nebent naudojate didelės spartos SD kortelę (rekomenduojama1 ar aukštesnė UHS spartos klasė arba 10 spartos klasė). Vis tiek pakeisti?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Norėdami užtikrinti stabilų sulėtintą filmavimą, nekeiskite šio nustatymo, nebent naudojate didelės spartos SD kortelę (rekomenduojama 1 ar aukštesnė UHS spartos klasė arba 10 spartos klasė).</string>
-    <string name="cam_strings_video_explanatory_txt">Jei norite užtikrinti stabilų vaizdo įrašymą, rekomenduojame pakeisti duomenų saugyklą į vidinę atmintį. Ar norėtumėte pakeisti dabar?\n\nJei norite kaip duomenų saugyklą ir toliau naudoti SD kortelę, naudokite didelės spartos SD kortelę (rekomenduojama 1 ar aukštesnė UHS spartos klasė arba 10 spartos klasė)</string>
+    <string name="cam_strings_video_explanatory_txt">"Jei norite užtikrinti stabilų vaizdo įrašymą, rekomenduojame pakeisti duomenų saugyklą į vidinę atmintį. Ar norėtumėte pakeisti dabar?
+
+Jei norite kaip duomenų saugyklą ir toliau naudoti SD kortelę, naudokite didelės spartos SD kortelę (rekomenduojama 1 ar aukštesnė UHS spartos klasė arba 10 spartos klasė)"</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Dvigubas fotoaparatas</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Galite įrašyti nuostabius vaizdo įrašus be jokio triukšmo naudodami dvigubą fotoaparatą net nakties metu arba menkai apšviestame kambaryje. Fotoaparatas automatiškai perjungiamas į viengubą arba dvigubą, priklausomai nuo scenos, kurią ruošiamasi įrašyti naudodami itin didelio jautrumo režimą.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Vaizdo įrašymas naudojant dvigubą fotoaparatą</string>

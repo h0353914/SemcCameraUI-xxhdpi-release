@@ -1,13 +1,14 @@
 package com.sonyericsson.android.camera.view.overlaycontrol.imagequality;
 
 import android.content.Context;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.parameters.ShutterSpeed;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 
 class ShutterSpeedSlider extends SettingItemSlider {
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider
     protected int getBackgroundImageResource(int i) {
-        return i == 2 ? 2131231068 : 2131231069;
+        return i == 2 ? R.drawable.cam_core_image_quality_control_shutter_speed_slider_icn : R.drawable.cam_core_image_quality_control_shutter_speed_slider_port_icn;
     }
 
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider

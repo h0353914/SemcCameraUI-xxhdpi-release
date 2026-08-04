@@ -3,11 +3,11 @@ package com.google.android.gms.signin.internal;
 import android.accounts.Account;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
 import com.google.android.gms.common.api.Scope;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzg implements Parcelable$Creator<RecordConsentRequest> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzg implements Parcelable.Creator<RecordConsentRequest> {
     static void zza(RecordConsentRequest recordConsentRequest, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, recordConsentRequest.mVersionCode);
@@ -17,17 +17,9 @@ public class zzg implements Parcelable$Creator<RecordConsentRequest> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ RecordConsentRequest createFromParcel(Parcel parcel) {
-        return zzgD(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ RecordConsentRequest[] newArray(int i) {
-        return zzjr(i);
-    }
-
-    public RecordConsentRequest zzgD(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzgD, reason: merged with bridge method [inline-methods] */
+    public RecordConsentRequest createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         Account account = null;
         int iZzg = 0;
@@ -56,10 +48,12 @@ public class zzg implements Parcelable$Creator<RecordConsentRequest> {
         if (parcel.dataPosition() == iZzap) {
             return new RecordConsentRequest(iZzg, account, scopeArr, strZzp);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public RecordConsentRequest[] zzjr(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzjr, reason: merged with bridge method [inline-methods] */
+    public RecordConsentRequest[] newArray(int i) {
         return new RecordConsentRequest[i];
     }
 }

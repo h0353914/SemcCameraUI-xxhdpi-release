@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.common;
 
+import com.sonyericsson.android.camera.util.capability.SharedPrefsTranslator;
 import java.text.NumberFormat;
 
 public class RationalNumber extends Number {
@@ -16,7 +17,8 @@ public class RationalNumber extends Number {
     static RationalNumber factoryMethod(long j, long j2) {
         if (j > 2147483647L || j < -2147483648L || j2 > 2147483647L || j2 < -2147483648L) {
             while (true) {
-                if ((j <= 2147483647L && j >= -2147483648L && j2 <= 2147483647L && j2 >= -2147483648L) || Math.abs(j) <= 1 || Math.abs(j2) <= 1) {
+                if ((j <= 2147483647L && j >= -2147483648L && j2 <= 2147483647L && j2 >= -2147483648L)
+                        || Math.abs(j) <= 1 || Math.abs(j2) <= 1) {
                     break;
                 }
                 j >>= 1;
@@ -40,12 +42,12 @@ public class RationalNumber extends Number {
 
     @Override // java.lang.Number
     public double doubleValue() {
-        return ((double) this.numerator) / ((double) this.divisor);
+        return (double) this.numerator / (double) this.divisor;
     }
 
     @Override // java.lang.Number
     public float floatValue() {
-        return this.numerator / this.divisor;
+        return (float) this.numerator / (float) this.divisor;
     }
 
     @Override // java.lang.Number
@@ -55,18 +57,19 @@ public class RationalNumber extends Number {
 
     @Override // java.lang.Number
     public long longValue() {
-        return ((long) this.numerator) / ((long) this.divisor);
+        return (long) this.numerator / (long) this.divisor;
     }
 
     public String toString() {
         if (this.divisor == 0) {
-            return "Invalid rational (" + this.numerator + "/" + this.divisor + ")";
+            return "Invalid rational (" + this.numerator + SharedPrefsTranslator.CONNECTOR_SLASH + this.divisor + ")";
         }
         NumberFormat numberFormat = NumberFormat.getInstance();
         if (this.numerator % this.divisor == 0) {
             return numberFormat.format(this.numerator / this.divisor);
         }
-        return this.numerator + "/" + this.divisor + " (" + numberFormat.format(((double) this.numerator) / ((double) this.divisor)) + ")";
+        return this.numerator + SharedPrefsTranslator.CONNECTOR_SLASH + this.divisor + " ("
+                + numberFormat.format((double) this.numerator / (double) this.divisor) + ")";
     }
 
     public String toDisplayString() {
@@ -75,77 +78,91 @@ public class RationalNumber extends Number {
         }
         NumberFormat numberFormat = NumberFormat.getInstance();
         numberFormat.setMaximumFractionDigits(3);
-        return numberFormat.format(((double) this.numerator) / ((double) this.divisor));
+        return numberFormat.format((double) this.numerator / (double) this.divisor);
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:49:0x00e9  */
-    /* JADX WARN: Removed duplicated region for block: B:60:0x00ea A[SYNTHETIC] */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
+    private static class Option {
+        public final double error;
+        public final RationalNumber rationalNumber;
+
+        private Option(RationalNumber rationalNumber, double d) {
+            this.rationalNumber = rationalNumber;
+            this.error = d;
+        }
+
+        public static Option factory(RationalNumber rationalNumber, double d) {
+            return new Option(rationalNumber, Math.abs(rationalNumber.doubleValue() - d));
+        }
+
+        public String toString() {
+            return this.rationalNumber.toString();
+        }
+    }
+
     public static RationalNumber valueOf(double d) {
-        boolean z;
-        RationalNumber rationalNumber;
-        RationalNumber rationalNumber2;
-        RationalNumber rationalNumber3;
         if (d >= 2.147483647E9d) {
             return new RationalNumber(Integer.MAX_VALUE, 1);
         }
         if (d <= -2.147483647E9d) {
             return new RationalNumber(-2147483647, 1);
         }
+        boolean negative = false;
         if (d < 0.0d) {
+            negative = true;
             d = Math.abs(d);
-            z = true;
-        } else {
-            z = false;
         }
         if (d == 0.0d) {
             return new RationalNumber(0, 1);
         }
+        RationalNumber low;
+        RationalNumber high;
         if (d >= 1.0d) {
             int i = (int) d;
             if (i < d) {
-                rationalNumber = new RationalNumber(i, 1);
-                rationalNumber3 = new RationalNumber(i + 1, 1);
+                low = new RationalNumber(i, 1);
+                high = new RationalNumber(i + 1, 1);
             } else {
-                rationalNumber = new RationalNumber(i - 1, 1);
-                rationalNumber3 = new RationalNumber(i, 1);
+                low = new RationalNumber(i - 1, 1);
+                high = new RationalNumber(i, 1);
             }
-            rationalNumber2 = rationalNumber3;
         } else {
             int i2 = (int) (1.0d / d);
-            if (1.0d / ((double) i2) < d) {
-                rationalNumber = new RationalNumber(1, i2);
-                rationalNumber2 = new RationalNumber(1, i2 - 1);
+            if (1.0d / i2 < d) {
+                low = new RationalNumber(1, i2);
+                high = new RationalNumber(1, i2 - 1);
             } else {
-                rationalNumber = new RationalNumber(1, i2 + 1);
-                rationalNumber2 = new RationalNumber(1, i2);
+                low = new RationalNumber(1, i2 + 1);
+                high = new RationalNumber(1, i2);
             }
         }
-        RationalNumber$Option rationalNumber$OptionFactory = RationalNumber$Option.factory(rationalNumber, d);
-        RationalNumber$Option rationalNumber$OptionFactory2 = RationalNumber$Option.factory(rationalNumber2, d);
-        RationalNumber$Option rationalNumber$Option = rationalNumber$OptionFactory.error < rationalNumber$OptionFactory2.error ? rationalNumber$OptionFactory : rationalNumber$OptionFactory2;
-        for (int i3 = 0; rationalNumber$Option.error > 1.0E-8d && i3 < 100; i3++) {
-            RationalNumber rationalNumberFactoryMethod = factoryMethod(((long) rationalNumber$OptionFactory.rationalNumber.numerator) + ((long) rationalNumber$OptionFactory2.rationalNumber.numerator), ((long) rationalNumber$OptionFactory.rationalNumber.divisor) + ((long) rationalNumber$OptionFactory2.rationalNumber.divisor));
-            RationalNumber$Option rationalNumber$OptionFactory3 = RationalNumber$Option.factory(rationalNumberFactoryMethod, d);
-            if (d < rationalNumberFactoryMethod.doubleValue()) {
-                if (rationalNumber$OptionFactory2.error <= rationalNumber$OptionFactory3.error) {
+
+        Option lowOption = Option.factory(low, d);
+        Option highOption = Option.factory(high, d);
+        Option bestOption = lowOption.error < highOption.error ? lowOption : highOption;
+
+        for (int i = 0; bestOption.error > TOLERANCE && i < 100; i++) {
+            RationalNumber mid = factoryMethod(
+                    (long) lowOption.rationalNumber.numerator + (long) highOption.rationalNumber.numerator,
+                    (long) lowOption.rationalNumber.divisor + (long) highOption.rationalNumber.divisor);
+            Option midOption = Option.factory(mid, d);
+
+            if (d < mid.doubleValue()) {
+                if (highOption.error <= midOption.error) {
                     break;
                 }
-                rationalNumber$OptionFactory2 = rationalNumber$OptionFactory3;
-                if (rationalNumber$OptionFactory3.error >= rationalNumber$Option.error) {
-                    rationalNumber$Option = rationalNumber$OptionFactory3;
-                }
+                highOption = midOption;
             } else {
-                if (rationalNumber$OptionFactory.error <= rationalNumber$OptionFactory3.error) {
+                if (lowOption.error <= midOption.error) {
                     break;
                 }
-                rationalNumber$OptionFactory = rationalNumber$OptionFactory3;
-                if (rationalNumber$OptionFactory3.error >= rationalNumber$Option.error) {
-                }
+                lowOption = midOption;
+            }
+
+            if (midOption.error < bestOption.error) {
+                bestOption = midOption;
             }
         }
-        return z ? rationalNumber$Option.rationalNumber.negate() : rationalNumber$Option.rationalNumber;
+
+        return negative ? bestOption.rationalNumber.negate() : bestOption.rationalNumber;
     }
 }

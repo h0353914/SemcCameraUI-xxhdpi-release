@@ -2,20 +2,31 @@ package com.sonyericsson.cameracommon.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AlertDialog$Builder;
 import android.app.KeyguardManager;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager$NameNotFoundException;
+import android.content.pm.PackageManager;
 import android.content.pm.PermissionGroupInfo;
+import android.content.res.Resources;
+import android.database.DataSetObserver;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.view.InputDeviceCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.cameracommon.intent.IntentConstants;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -26,39 +37,142 @@ public class RequestPermissionActivity extends Activity {
     private static int LOWEST_PRIORITY = 2147483646;
     public static final String TAG = "RequestPermissionActivity";
     private final int REQUEST_CODE_FOR_PERMISSION = 256;
-    private final int ID_FOR_PRE_DIALOG = 513;
+    private final int ID_FOR_PRE_DIALOG = InputDeviceCompat.SOURCE_DPAD;
     private final int ID_FOR_POST_DIALOG = 514;
-    private List<RequestPermissionActivity$PermissionState> mPermissionStateList = null;
-    private RequestPermissionActivity$PermissionState mCurrentPermissionState = null;
+    private List<PermissionState> mPermissionStateList = null;
+    private PermissionState mCurrentPermissionState = null;
     private AlertDialog mCurrentShownDialog = null;
 
-    static /* synthetic */ int access$000() {
-        return INVALID_ID;
+    enum PermissionAction {
+        UPDATE_STATE,
+        DO_NOTHING,
+        REQUEST_PERMISSIONS,
+        SHOW_POST_DIALOG,
+        FINISH
     }
 
-    static /* synthetic */ int access$100() {
-        return HIGHEST_PRIORITY;
+    enum PermissionGroup {
+        CAMERA("android.permission-group.CAMERA", Arrays.asList("android.permission.CAMERA"),
+                RequestPermissionActivity.INVALID_ID, R.string.cam_strings_runtime_permission_rationale_camera_txt),
+        MIC("android.permission-group.MICROPHONE", Arrays.asList("android.permission.RECORD_AUDIO"),
+                RequestPermissionActivity.INVALID_ID, R.string.cam_strings_runtime_permission_rationale_microphone_txt),
+        STORAGE("android.permission-group.STORAGE",
+                Arrays.asList("android.permission.WRITE_EXTERNAL_STORAGE"),
+                RequestPermissionActivity.INVALID_ID, R.string.cam_strings_runtime_permission_rationale_storage_txt),
+        LOCATION("android.permission-group.LOCATION",
+                Arrays.asList("android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION"),
+                R.string.cam_strings_runtime_permission_rationale_location_txt,
+                R.string.cam_strings_runtime_permission_rationale_location_txt);
+
+        private String mPermissionGroupName;
+        private List<String> mPermissionList;
+        private int mPostDialogMessageId;
+        private int mPreDialogMessageId;
+
+        PermissionGroup(String str, @NonNull List list, int i, int i2) {
+            this.mPermissionGroupName = str;
+            this.mPermissionList = list;
+            this.mPreDialogMessageId = i;
+            this.mPostDialogMessageId = i2;
+        }
+
+        public String getGroupName() {
+            return this.mPermissionGroupName;
+        }
+
+        public List<String> getPermissionList() {
+            return this.mPermissionList;
+        }
+
+        public boolean contains(String str) {
+            return this.mPermissionList.contains(str);
+        }
+
+        public int getPreDialogMessageId() {
+            return this.mPreDialogMessageId;
+        }
+
+        public int getPostDialogMessageId() {
+            return this.mPostDialogMessageId;
+        }
     }
 
-    static /* synthetic */ RequestPermissionActivity$PermissionState access$200(RequestPermissionActivity requestPermissionActivity) {
-        return requestPermissionActivity.mCurrentPermissionState;
+    enum PermissionCategory {
+        MANDATORY(Arrays.asList(PermissionGroup.CAMERA, PermissionGroup.MIC, PermissionGroup.STORAGE),
+                RequestPermissionActivity.HIGHEST_PRIORITY),
+        OPTIONAL(Arrays.asList(PermissionGroup.LOCATION), RequestPermissionActivity.HIGHEST_PRIORITY + 1);
+
+        private List<PermissionGroup> mGroupList;
+        private int mPriority;
+
+        PermissionCategory(List list, int i) {
+            this.mGroupList = list;
+            this.mPriority = i;
+        }
+
+        public List<PermissionGroup> getGroupList() {
+            return this.mGroupList;
+        }
+
+        public int getPriority() {
+            return this.mPriority;
+        }
     }
 
-    static /* synthetic */ void access$300(RequestPermissionActivity requestPermissionActivity, String[] strArr) {
-        requestPermissionActivity.requestPermissions(strArr);
-    }
+    class PermissionState {
+        private final PermissionCategory mCategory;
+        private final List<PermissionGroup> mRequestGroupList;
+        private boolean mRequested = false;
 
-    static /* synthetic */ AlertDialog access$402(RequestPermissionActivity requestPermissionActivity, AlertDialog alertDialog) {
-        requestPermissionActivity.mCurrentShownDialog = alertDialog;
-        return alertDialog;
-    }
+        PermissionState(PermissionCategory permissionCategory, List<PermissionGroup> list) {
+            this.mCategory = permissionCategory;
+            this.mRequestGroupList = list;
+        }
 
-    static /* synthetic */ void access$500(RequestPermissionActivity requestPermissionActivity) {
-        requestPermissionActivity.doNextAction();
-    }
+        public PermissionCategory getCategory() {
+            return this.mCategory;
+        }
 
-    static /* synthetic */ String access$600(RequestPermissionActivity requestPermissionActivity, RequestPermissionActivity$PermissionGroup requestPermissionActivity$PermissionGroup) {
-        return requestPermissionActivity.getPermissionGroupLabel(requestPermissionActivity$PermissionGroup);
+        public List<PermissionGroup> getRequestGroupList() {
+            return this.mRequestGroupList;
+        }
+
+        public boolean isRequested() {
+            return this.mRequested;
+        }
+
+        public void setRequested() {
+            this.mRequested = true;
+        }
+
+        public String[] getRequestPermissionList() {
+            ArrayList arrayList = new ArrayList();
+            if (this.mRequestGroupList != null) {
+                Iterator<PermissionGroup> it = this.mRequestGroupList.iterator();
+                while (it.hasNext()) {
+                    Iterator<String> it2 = it.next().getPermissionList().iterator();
+                    while (it2.hasNext()) {
+                        arrayList.add(it2.next());
+                    }
+                }
+                return (String[]) arrayList.toArray(new String[0]);
+            }
+            return new String[0];
+        }
+
+        public boolean areAllPermissionsGranted() {
+            for (String str : getRequestPermissionList()) {
+                if (RequestPermissionActivity.this.checkSelfPermission(str) != 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public String toString() {
+            return this.mCategory.name() + ": Group num=" + this.mRequestGroupList.size() + ", requested="
+                    + this.mRequested;
+        }
     }
 
     @Override // android.app.Activity
@@ -67,7 +181,7 @@ public class RequestPermissionActivity extends Activity {
             CamLog.d("onCreate() start");
         }
         super.onCreate(bundle);
-        setContentView(2131492892);
+        setContentView(R.layout.activity_request_permission);
         if (isRestrictedMode()) {
             if (isSecure()) {
                 getWindow().addFlags(524288);
@@ -83,7 +197,8 @@ public class RequestPermissionActivity extends Activity {
             finishActivity();
             return;
         }
-        this.mPermissionStateList = createPermissionStateList(intent.getStringArrayListExtra("permissions_list"));
+        this.mPermissionStateList = createPermissionStateList(
+                intent.getStringArrayListExtra(IntentConstants.EXTRA_PERMISSIONS_LIST));
         updateCurrentState();
         if (this.mCurrentPermissionState == null) {
             finishActivity();
@@ -107,33 +222,30 @@ public class RequestPermissionActivity extends Activity {
         finish();
     }
 
-    private List<RequestPermissionActivity$PermissionState> createPermissionStateList(List<String> list) {
+    private List<PermissionState> createPermissionStateList(List<String> list) {
         if (CamLog.VERBOSE) {
             CamLog.d("createPermissionStateList() start");
         }
         ArrayList arrayList = new ArrayList();
-        for (RequestPermissionActivity$PermissionCategory requestPermissionActivity$PermissionCategory : RequestPermissionActivity$PermissionCategory.values()) {
+        for (PermissionCategory permissionCategory : PermissionCategory.values()) {
             ArrayList arrayList2 = new ArrayList();
-            for (RequestPermissionActivity$PermissionGroup requestPermissionActivity$PermissionGroup : requestPermissionActivity$PermissionCategory.getGroupList()) {
+            for (PermissionGroup permissionGroup : permissionCategory.getGroupList()) {
                 if (list != null) {
-                    Iterator<String> it = list.iterator();
-                    while (true) {
-                        if (it.hasNext()) {
-                            String next = it.next();
-                            if (requestPermissionActivity$PermissionGroup.contains(next) && checkSelfPermission(next) != 0) {
-                                arrayList2.add(requestPermissionActivity$PermissionGroup);
-                                break;
-                            }
+                    for (String next : list) {
+                        if (permissionGroup.contains(next) && checkSelfPermission(next) != 0) {
+                            arrayList2.add(permissionGroup);
+                            break;
                         }
                     }
                 }
             }
             if (arrayList2.size() != 0) {
-                arrayList.add(new RequestPermissionActivity$PermissionState(this, requestPermissionActivity$PermissionCategory, arrayList2));
+                arrayList.add(new PermissionState(permissionCategory, arrayList2));
             }
         }
         if (CamLog.VERBOSE) {
-            CamLog.d("createPermissionStateList() end:PermissionState num:" + arrayList.size() + ", " + arrayList.toString());
+            CamLog.d("createPermissionStateList() end:PermissionState num:" + arrayList.size() + ", "
+                    + arrayList.toString());
         }
         return arrayList;
     }
@@ -153,19 +265,19 @@ public class RequestPermissionActivity extends Activity {
         }
         int i = LOWEST_PRIORITY + 1;
         int i2 = i;
-        RequestPermissionActivity$PermissionState requestPermissionActivity$PermissionState = null;
-        for (RequestPermissionActivity$PermissionState requestPermissionActivity$PermissionState2 : this.mPermissionStateList) {
-            int priority2 = requestPermissionActivity$PermissionState2.getCategory().getPriority();
-            boolean zIsRequested = requestPermissionActivity$PermissionState2.isRequested();
+        PermissionState permissionState = null;
+        for (PermissionState permissionState2 : this.mPermissionStateList) {
+            int priority2 = permissionState2.getCategory().getPriority();
+            boolean zIsRequested = permissionState2.isRequested();
             if (priority < priority2 && priority2 < i2 && !zIsRequested) {
-                requestPermissionActivity$PermissionState = requestPermissionActivity$PermissionState2;
+                permissionState = permissionState2;
                 i2 = priority2;
             }
         }
-        if (this.mCurrentPermissionState == requestPermissionActivity$PermissionState) {
+        if (this.mCurrentPermissionState == permissionState) {
             this.mCurrentPermissionState = null;
         } else {
-            this.mCurrentPermissionState = requestPermissionActivity$PermissionState;
+            this.mCurrentPermissionState = permissionState;
         }
         if (CamLog.VERBOSE) {
             if (this.mCurrentPermissionState != null) {
@@ -180,7 +292,7 @@ public class RequestPermissionActivity extends Activity {
     }
 
     @Override // android.app.Activity
-    protected void onResume() {
+    protected void onResume() throws Resources.NotFoundException {
         if (CamLog.VERBOSE) {
             CamLog.d("onResume() start");
         }
@@ -215,24 +327,24 @@ public class RequestPermissionActivity extends Activity {
         }
     }
 
-    private void doNextAction() {
-        RequestPermissionActivity$PermissionAction requestPermissionActivity$PermissionActionDecideNextAction = decideNextAction();
-        while (requestPermissionActivity$PermissionActionDecideNextAction == RequestPermissionActivity$PermissionAction.UPDATE_STATE) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void doNextAction() throws Resources.NotFoundException {
+        PermissionAction permissionActionDecideNextAction = decideNextAction();
+        while (permissionActionDecideNextAction == PermissionAction.UPDATE_STATE) {
             updateCurrentState();
-            requestPermissionActivity$PermissionActionDecideNextAction = decideNextAction();
+            permissionActionDecideNextAction = decideNextAction();
         }
-        boolean zDoAction = doAction(requestPermissionActivity$PermissionActionDecideNextAction);
-        if (requestPermissionActivity$PermissionActionDecideNextAction == RequestPermissionActivity$PermissionAction.SHOW_POST_DIALOG) {
+        boolean zDoAction = doAction(permissionActionDecideNextAction);
+        if (permissionActionDecideNextAction == PermissionAction.SHOW_POST_DIALOG) {
             updateCurrentState();
         }
-        if (zDoAction) {
-            return;
+        if (!zDoAction) {
+            doNextAction();
         }
-        doNextAction();
     }
 
-    private RequestPermissionActivity$PermissionAction decideNextAction() {
-        RequestPermissionActivity$PermissionAction requestPermissionActivity$PermissionAction;
+    private PermissionAction decideNextAction() {
+        PermissionAction permissionAction;
         if (CamLog.VERBOSE) {
             CamLog.d("decideNextAction() start");
         }
@@ -240,72 +352,67 @@ public class RequestPermissionActivity extends Activity {
             if (CamLog.VERBOSE) {
                 CamLog.d("decideNextAction() end:DO_NOTHING");
             }
-            return RequestPermissionActivity$PermissionAction.DO_NOTHING;
+            return PermissionAction.DO_NOTHING;
         }
         if (this.mCurrentPermissionState == null) {
             if (CamLog.VERBOSE) {
                 CamLog.d("decideNextAction() end:FINISH");
             }
-            return RequestPermissionActivity$PermissionAction.FINISH;
+            return PermissionAction.FINISH;
         }
         if (this.mCurrentPermissionState.isRequested()) {
             if (this.mCurrentPermissionState.areAllPermissionsGranted()) {
-                requestPermissionActivity$PermissionAction = RequestPermissionActivity$PermissionAction.UPDATE_STATE;
+                permissionAction = PermissionAction.UPDATE_STATE;
             } else {
-                requestPermissionActivity$PermissionAction = RequestPermissionActivity$PermissionAction.SHOW_POST_DIALOG;
+                permissionAction = PermissionAction.SHOW_POST_DIALOG;
             }
         } else if (isSecure() && isRestrictedMode()) {
-            requestPermissionActivity$PermissionAction = RequestPermissionActivity$PermissionAction.SHOW_POST_DIALOG;
+            permissionAction = PermissionAction.SHOW_POST_DIALOG;
         } else {
-            requestPermissionActivity$PermissionAction = RequestPermissionActivity$PermissionAction.REQUEST_PERMISSIONS;
+            permissionAction = PermissionAction.REQUEST_PERMISSIONS;
         }
         if (CamLog.VERBOSE) {
-            CamLog.d("decideNextAction() end:" + requestPermissionActivity$PermissionAction.name());
+            CamLog.d("decideNextAction() end:" + permissionAction.name());
         }
-        return requestPermissionActivity$PermissionAction;
+        return permissionAction;
     }
 
-    private boolean doAction(RequestPermissionActivity$PermissionAction requestPermissionActivity$PermissionAction) {
+    private boolean doAction(PermissionAction permissionAction) throws Resources.NotFoundException {
         if (CamLog.VERBOSE) {
-            CamLog.d("doAction() start:" + requestPermissionActivity$PermissionAction.name());
+            CamLog.d("doAction() start:" + permissionAction.name());
         }
         String[] requestPermissionList = new String[0];
         if (this.mCurrentPermissionState != null) {
             requestPermissionList = this.mCurrentPermissionState.getRequestPermissionList();
         }
-        switch (requestPermissionActivity$PermissionAction) {
+        switch (permissionAction) {
             case REQUEST_PERMISSIONS:
-                ArrayList arrayList = new ArrayList();
+                List<PermissionGroup> arrayList = new ArrayList<>();
                 for (String str : requestPermissionList) {
                     if (shouldShowRequestPermissionRationale(str)) {
-                        Iterator<RequestPermissionActivity$PermissionGroup> it = this.mCurrentPermissionState.getRequestGroupList().iterator();
-                        while (true) {
-                            if (it.hasNext()) {
-                                RequestPermissionActivity$PermissionGroup next = it.next();
-                                if (next.contains(str) && next.getPreDialogMessageId() != INVALID_ID && !arrayList.contains(next)) {
-                                    arrayList.add(next);
-                                }
+                        for (PermissionGroup next : this.mCurrentPermissionState.getRequestGroupList()) {
+                            if (next.contains(str) && next.getPreDialogMessageId() != INVALID_ID
+                                    && !arrayList.contains(next)) {
+                                arrayList.add(next);
                             }
                         }
                     }
                 }
                 if (arrayList.size() == 0) {
                     requestPermissions(requestPermissionList);
+                    break;
                 } else {
                     showPermissionPreDialog(arrayList);
+                    break;
                 }
-                break;
             case SHOW_POST_DIALOG:
-                ArrayList arrayList2 = new ArrayList();
+                List<PermissionGroup> arrayList2 = new ArrayList<>();
                 for (String str2 : requestPermissionList) {
                     if (checkSelfPermission(str2) != 0) {
-                        Iterator<RequestPermissionActivity$PermissionGroup> it2 = this.mCurrentPermissionState.getRequestGroupList().iterator();
-                        while (true) {
-                            if (it2.hasNext()) {
-                                RequestPermissionActivity$PermissionGroup next2 = it2.next();
-                                if (next2.contains(str2) && next2.getPostDialogMessageId() != INVALID_ID && !arrayList2.contains(next2)) {
-                                    arrayList2.add(next2);
-                                }
+                        for (PermissionGroup next2 : this.mCurrentPermissionState.getRequestGroupList()) {
+                            if (next2.contains(str2) && next2.getPostDialogMessageId() != INVALID_ID
+                                    && !arrayList2.contains(next2)) {
+                                arrayList2.add(next2);
                             }
                         }
                     }
@@ -318,7 +425,6 @@ public class RequestPermissionActivity extends Activity {
                 }
                 showPermissionPostDialog(arrayList2);
                 break;
-                break;
             case FINISH:
                 finishActivity();
                 break;
@@ -329,6 +435,7 @@ public class RequestPermissionActivity extends Activity {
         return true;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void requestPermissions(String[] strArr) {
         if (CamLog.VERBOSE) {
             CamLog.d("requestPermissions() start");
@@ -340,50 +447,191 @@ public class RequestPermissionActivity extends Activity {
         }
     }
 
-    private void showPermissionPreDialog(List<RequestPermissionActivity$PermissionGroup> list) {
-        showPermissionDialog(513, list);
+    private void showPermissionPreDialog(List<PermissionGroup> list) throws Resources.NotFoundException {
+        showPermissionDialog(InputDeviceCompat.SOURCE_DPAD, list);
     }
 
-    private void showPermissionPostDialog(List<RequestPermissionActivity$PermissionGroup> list) {
+    private void showPermissionPostDialog(List<PermissionGroup> list) throws Resources.NotFoundException {
         showPermissionDialog(514, list);
     }
 
-    private void showPermissionDialog(int i, List<RequestPermissionActivity$PermissionGroup> list) {
+    private void showPermissionDialog(int i, List<PermissionGroup> list) throws Resources.NotFoundException {
         if (CamLog.VERBOSE) {
             CamLog.d("showPermissionDialog() start");
         }
         LayoutInflater layoutInflaterFrom = LayoutInflater.from(this);
-        AlertDialog$Builder alertDialog$Builder = new AlertDialog$Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         String string = getResources().getString(getApplicationInfo().labelRes);
         if (i == 513) {
-            ViewGroup viewGroup = (ViewGroup) layoutInflaterFrom.inflate(2131492967, (ViewGroup) null);
-            ((TextView) viewGroup.findViewById(2131296289)).setText(String.format(Locale.US, getResources().getString(2131690047), string));
-            ListView listView = (ListView) viewGroup.findViewById(2131296493);
+            ViewGroup viewGroup = (ViewGroup) layoutInflaterFrom.inflate(R.layout.permission_pre_dialog,
+                    (ViewGroup) null);
+            ((TextView) viewGroup.findViewById(R.id.alert_dialog_header_txt)).setText(String.format(Locale.US,
+                    getResources().getString(R.string.cam_strings_runtime_permission_dialog1_message_txt), string));
+            ListView listView = (ListView) viewGroup.findViewById(R.id.permission_list);
             if (listView != null) {
-                listView.setAdapter((ListAdapter) new RequestPermissionActivity$PermissionAdapter(this, this, i, list));
+                listView.setAdapter((ListAdapter) new PermissionAdapter(this, i, list));
             }
-            alertDialog$Builder.setTitle(String.format(Locale.US, getResources().getString(2131690048), string));
-            alertDialog$Builder.setView(viewGroup);
-            alertDialog$Builder.setOnDismissListener(new RequestPermissionActivity$1(this));
-            alertDialog$Builder.setPositiveButton(2131689975, new RequestPermissionActivity$2(this));
-            this.mCurrentShownDialog = alertDialog$Builder.create();
+            builder.setTitle(String.format(Locale.US,
+                    getResources().getString(R.string.cam_strings_runtime_permission_dialog1_title_txt), string));
+            builder.setView(viewGroup);
+            builder.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class:
+                                                                                   // com.sonyericsson.cameracommon.activity.RequestPermissionActivity.1
+                @Override // android.content.DialogInterface.OnDismissListener
+                public void onDismiss(DialogInterface dialogInterface) {
+                    RequestPermissionActivity.this.requestPermissions(
+                            RequestPermissionActivity.this.mCurrentPermissionState.getRequestPermissionList());
+                    RequestPermissionActivity.this.mCurrentShownDialog = null;
+                }
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            builder.setPositiveButton(R.string.cam_strings_ok_txt, new DialogInterface.OnClickListener() { // from
+                                                                                                           // class:
+                                                                                                           // com.sonyericsson.cameracommon.activity.RequestPermissionActivity.2
+                @Override // android.content.DialogInterface.OnClickListener
+                public void onClick(DialogInterface dialogInterface, int i2) {
+                }
+            });
+            this.mCurrentShownDialog = builder.create();
             this.mCurrentShownDialog.getWindow().addFlags(128);
             this.mCurrentShownDialog.show();
         } else if (i == 514) {
-            ViewGroup viewGroup2 = (ViewGroup) layoutInflaterFrom.inflate(2131492964, (ViewGroup) null);
-            ((TextView) viewGroup2.findViewById(2131296289)).setText(2131690049);
-            ListView listView2 = (ListView) viewGroup2.findViewById(2131296493);
+            ViewGroup viewGroup2 = (ViewGroup) layoutInflaterFrom.inflate(R.layout.permission_post_dialog,
+                    (ViewGroup) null);
+            ((TextView) viewGroup2.findViewById(R.id.alert_dialog_header_txt))
+                    .setText(R.string.cam_strings_runtime_permission_dialog2_message1_txt);
+            ListView listView2 = (ListView) viewGroup2.findViewById(R.id.permission_list);
             if (listView2 != null) {
-                listView2.setAdapter((ListAdapter) new RequestPermissionActivity$PermissionAdapter(this, this, i, list));
+                listView2.setAdapter((ListAdapter) new PermissionAdapter(this, i, list));
             }
-            ((TextView) viewGroup2.findViewById(2131296288)).setText(2131690050);
-            alertDialog$Builder.setTitle(String.format(Locale.US, getResources().getString(2131690051), string));
-            alertDialog$Builder.setView(viewGroup2);
-            alertDialog$Builder.setCancelable(false);
-            alertDialog$Builder.setPositiveButton(2131690046, new RequestPermissionActivity$3(this));
-            alertDialog$Builder.setNegativeButton(2131689666, new RequestPermissionActivity$4(this));
-            alertDialog$Builder.setOnDismissListener(new RequestPermissionActivity$5(this));
-            this.mCurrentShownDialog = alertDialog$Builder.create();
+            ((TextView) viewGroup2.findViewById(R.id.alert_dialog_footer_txt))
+                    .setText(R.string.cam_strings_runtime_permission_dialog2_message2_txt);
+            builder.setTitle(String.format(Locale.US,
+                    getResources().getString(R.string.cam_strings_runtime_permission_dialog2_title_txt), string));
+            builder.setView(viewGroup2);
+            builder.setCancelable(false);
+            builder.setPositiveButton(R.string.cam_strings_runtime_permission_continue_button_txt,
+                    new DialogInterface.OnClickListener() { // from class:
+                                                            // com.sonyericsson.cameracommon.activity.RequestPermissionActivity.3
+                        @Override // android.content.DialogInterface.OnClickListener
+                        public void onClick(DialogInterface dialogInterface, int i2) {
+                            Intent intent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS",
+                                    Uri.parse("package:" + RequestPermissionActivity.this.getPackageName()));
+                            RequestPermissionActivity.this.startActivity(intent);
+                            if (CamLog.VERBOSE) {
+                                CamLog.d("showPermissionDialog() launchApplicationSettings: " + intent);
+                            }
+                            RequestPermissionActivity.this.mCurrentShownDialog = null;
+                        }
+                    });
+            builder.setNegativeButton(R.string.cam_strings_cancel_txt, new DialogInterface.OnClickListener() { // from
+                                                                                                               // class:
+                                                                                                               // com.sonyericsson.cameracommon.activity.RequestPermissionActivity.4
+                @Override // android.content.DialogInterface.OnClickListener
+                public void onClick(DialogInterface dialogInterface, int i2) throws Resources.NotFoundException {
+                    if (CamLog.VERBOSE) {
+                        CamLog.d("showPermissionDialog() don't show global settings dialog");
+                    }
+                    RequestPermissionActivity.this.mCurrentShownDialog = null;
+                    RequestPermissionActivity.this.doNextAction();
+                }
+            });
+            builder.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class:
+                                                                                   // com.sonyericsson.cameracommon.activity.RequestPermissionActivity.5
+                @Override // android.content.DialogInterface.OnDismissListener
+                public void onDismiss(DialogInterface dialogInterface) {
+                    RequestPermissionActivity.this.mCurrentShownDialog = null;
+                }
+            });
+            this.mCurrentShownDialog = builder.create();
             this.mCurrentShownDialog.show();
         }
         if (CamLog.VERBOSE) {
@@ -391,42 +639,31 @@ public class RequestPermissionActivity extends Activity {
         }
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:17:0x0052  */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    private String getPermissionGroupLabel(RequestPermissionActivity$PermissionGroup requestPermissionActivity$PermissionGroup) {
-        String string;
+    private String getPermissionGroupLabel(PermissionGroup permissionGroup) {
         if (CamLog.VERBOSE) {
             CamLog.d("getPermissionGroupLabel() start");
         }
-        String groupName = requestPermissionActivity$PermissionGroup.getGroupName();
+        String label = "";
+        String groupName = permissionGroup.getGroupName();
         try {
-            PermissionGroupInfo permissionGroupInfo = getPackageManager().getPermissionGroupInfo(groupName, 128);
-            if (permissionGroupInfo != null) {
-                CharSequence charSequenceLoadLabel = permissionGroupInfo.loadLabel(getPackageManager());
-                if (TextUtils.isEmpty(charSequenceLoadLabel)) {
-                    string = "";
-                } else {
-                    string = charSequenceLoadLabel.toString();
-                    try {
-                        if (CamLog.VERBOSE) {
-                            CamLog.d("getPermissionGroupLabel label :" + groupName);
-                        }
-                    } catch (PackageManager$NameNotFoundException e) {
-                        e = e;
-                        CamLog.e("getPermissionGroupLabel(): " + e);
+            PackageManager packageManager = getPackageManager();
+            PermissionGroupInfo groupInfo = packageManager.getPermissionGroupInfo(groupName, 128);
+            if (groupInfo != null) {
+                CharSequence groupLabel = groupInfo.loadLabel(packageManager);
+                if (!TextUtils.isEmpty(groupLabel)) {
+                    label = groupLabel.toString();
+                    if (CamLog.VERBOSE) {
+                        CamLog.d("getPermissionGroupLabel label :" + groupName);
                     }
                 }
             }
-        } catch (PackageManager$NameNotFoundException e2) {
-            e = e2;
-            string = "";
+        } catch (PackageManager.NameNotFoundException e) {
+            CamLog.e("getPermissionGroupLabel(): " + e);
         }
         if (CamLog.VERBOSE) {
             CamLog.d("getPermissionGroupLabel() end");
         }
-        return string;
+        return label;
     }
 
     @Override // android.app.Activity
@@ -449,5 +686,98 @@ public class RequestPermissionActivity extends Activity {
 
     private boolean isSecure() {
         return ((KeyguardManager) getSystemService("keyguard")).isKeyguardSecure();
+    }
+
+    private class PermissionAdapter implements ListAdapter {
+        private final Context mContext;
+        private List<PermissionGroup> mGroupList;
+        private final int mId;
+
+        @Override // android.widget.ListAdapter
+        public boolean areAllItemsEnabled() {
+            return false;
+        }
+
+        @Override // android.widget.Adapter
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override // android.widget.Adapter
+        public int getItemViewType(int i) {
+            return 0;
+        }
+
+        @Override // android.widget.Adapter
+        public int getViewTypeCount() {
+            return 1;
+        }
+
+        @Override // android.widget.Adapter
+        public boolean hasStableIds() {
+            return false;
+        }
+
+        @Override // android.widget.ListAdapter
+        public boolean isEnabled(int i) {
+            return false;
+        }
+
+        @Override // android.widget.Adapter
+        public void registerDataSetObserver(DataSetObserver dataSetObserver) {
+        }
+
+        @Override // android.widget.Adapter
+        public void unregisterDataSetObserver(DataSetObserver dataSetObserver) {
+        }
+
+        public PermissionAdapter(Context context, int i, List<PermissionGroup> list) {
+            this.mContext = context;
+            this.mId = i;
+            this.mGroupList = list;
+        }
+
+        @Override // android.widget.Adapter
+        public int getCount() {
+            if (this.mGroupList == null) {
+                return 0;
+            }
+            return this.mGroupList.size();
+        }
+
+        @Override // android.widget.Adapter
+        public Object getItem(int i) {
+            if (this.mGroupList == null) {
+                return null;
+            }
+            return this.mGroupList.get(i);
+        }
+
+        @Override // android.widget.Adapter
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            if (view == null) {
+                view = LayoutInflater.from(this.mContext).inflate(R.layout.list_item_permission, (ViewGroup) null);
+            }
+            PermissionGroup permissionGroup = (PermissionGroup) getItem(i);
+            TextView textView = (TextView) view.findViewById(R.id.name);
+            TextView textView2 = (TextView) view.findViewById(R.id.description);
+            if (this.mId == 513 && permissionGroup != null
+                    && permissionGroup.getPreDialogMessageId() != RequestPermissionActivity.INVALID_ID) {
+                textView.setText(RequestPermissionActivity.this.getPermissionGroupLabel(permissionGroup));
+                textView2.setText(RequestPermissionActivity.this.getResources()
+                        .getString(permissionGroup.getPreDialogMessageId()));
+            } else if (this.mId == 514 && permissionGroup != null
+                    && permissionGroup.getPostDialogMessageId() != RequestPermissionActivity.INVALID_ID) {
+                textView.setText(RequestPermissionActivity.this.getPermissionGroupLabel(permissionGroup));
+                textView2.setText(RequestPermissionActivity.this.getResources()
+                        .getString(permissionGroup.getPostDialogMessageId()));
+            }
+            return view;
+        }
+
+        @Override // android.widget.Adapter
+        public boolean isEmpty() {
+            return getCount() < 1;
+        }
     }
 }

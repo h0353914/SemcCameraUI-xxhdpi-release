@@ -2,33 +2,33 @@ package com.google.android.gms.common;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnCancelListener;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import com.google.android.gms.common.internal.zzx;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class SupportErrorDialogFragment extends DialogFragment {
     private Dialog mDialog = null;
-    private DialogInterface$OnCancelListener zzaaa = null;
+    private DialogInterface.OnCancelListener zzaaa = null;
 
     public static SupportErrorDialogFragment newInstance(Dialog dialog) {
         return newInstance(dialog, null);
     }
 
-    public static SupportErrorDialogFragment newInstance(Dialog dialog, DialogInterface$OnCancelListener dialogInterface$OnCancelListener) {
+    public static SupportErrorDialogFragment newInstance(Dialog dialog, DialogInterface.OnCancelListener onCancelListener) {
         SupportErrorDialogFragment supportErrorDialogFragment = new SupportErrorDialogFragment();
         Dialog dialog2 = (Dialog) zzx.zzb(dialog, "Cannot display null dialog");
         dialog2.setOnCancelListener(null);
         dialog2.setOnDismissListener(null);
         supportErrorDialogFragment.mDialog = dialog2;
-        if (dialogInterface$OnCancelListener != null) {
-            supportErrorDialogFragment.zzaaa = dialogInterface$OnCancelListener;
+        if (onCancelListener != null) {
+            supportErrorDialogFragment.zzaaa = onCancelListener;
         }
         return supportErrorDialogFragment;
     }
 
-    @Override // android.support.v4.app.DialogFragment, android.content.DialogInterface$OnCancelListener
+    @Override // android.support.v4.app.DialogFragment, android.content.DialogInterface.OnCancelListener
     public void onCancel(DialogInterface dialogInterface) {
         if (this.zzaaa != null) {
             this.zzaaa.onCancel(dialogInterface);

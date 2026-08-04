@@ -2,7 +2,7 @@ package com.sonyericsson.cameracommon.capturefeedback.contextview;
 
 import android.content.Context;
 import android.opengl.GLES20;
-import android.opengl.GLSurfaceView$Renderer;
+import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-public class GLSurfaceContextView extends ExtendedGlSurfaceView implements GLSurfaceView$Renderer, CaptureFeedback {
+public class GLSurfaceContextView extends ExtendedGlSurfaceView implements GLSurfaceView.Renderer, CaptureFeedback {
     private static final long ANIMATION_CANCEL_WAITING_DURATION = 100;
     private static final float CENTER_X_POS = 0.0f;
     private static final float CENTER_Y_POS = 0.0f;
@@ -30,7 +30,7 @@ public class GLSurfaceContextView extends ExtendedGlSurfaceView implements GLSur
     private final ReferenceClock mAnimationElapsedTimeCount;
     private CountDownLatch mCountDownLatch;
     private SimpleFrame mFlashFeedback;
-    private final GLSurfaceContextView$SetInvisibleTask mSetInvisibleTask;
+    private final SetInvisibleTask mSetInvisibleTask;
     private int mSimpleFrameShader;
     private static final float[] EYE_SIGHT_MATRIX = new float[16];
     private static final float[] PERSPECTIVE_PROJECTION_MATRIX = new float[16];
@@ -40,33 +40,8 @@ public class GLSurfaceContextView extends ExtendedGlSurfaceView implements GLSur
     public static final void preload() {
     }
 
-    @Override // android.opengl.GLSurfaceView$Renderer
+    @Override // android.opengl.GLSurfaceView.Renderer
     public void onSurfaceCreated(GL10 gl10, EGLConfig eGLConfig) {
-    }
-
-    static /* synthetic */ SimpleFrame access$300(GLSurfaceContextView gLSurfaceContextView) {
-        return gLSurfaceContextView.mFlashFeedback;
-    }
-
-    static /* synthetic */ SimpleFrame access$302(GLSurfaceContextView gLSurfaceContextView, SimpleFrame simpleFrame) {
-        gLSurfaceContextView.mFlashFeedback = simpleFrame;
-        return simpleFrame;
-    }
-
-    static /* synthetic */ void access$400(GLSurfaceContextView gLSurfaceContextView) {
-        gLSurfaceContextView.releaseAllShaders();
-    }
-
-    static /* synthetic */ void access$600(GLSurfaceContextView gLSurfaceContextView, int i, int i2) {
-        gLSurfaceContextView.setupDynamicConfig(i, i2);
-    }
-
-    static /* synthetic */ void access$700(GLSurfaceContextView gLSurfaceContextView) {
-        gLSurfaceContextView.createAllShaders();
-    }
-
-    static /* synthetic */ int access$800(GLSurfaceContextView gLSurfaceContextView) {
-        return gLSurfaceContextView.mSimpleFrameShader;
     }
 
     static {
@@ -79,8 +54,8 @@ public class GLSurfaceContextView extends ExtendedGlSurfaceView implements GLSur
         super(context, attributeSet);
         this.mFlashFeedback = null;
         this.mSimpleFrameShader = 0;
-        this.mSetInvisibleTask = new GLSurfaceContextView$SetInvisibleTask(this, null);
-        this.mAnimationCanvas = new GLSurfaceContextView$AnimationCanvas(this, null);
+        this.mSetInvisibleTask = new SetInvisibleTask();
+        this.mAnimationCanvas = new AnimationCanvas();
         if (CamLog.VERBOSE) {
             CamLog.d("AnimationContextView()");
         }
@@ -92,7 +67,7 @@ public class GLSurfaceContextView extends ExtendedGlSurfaceView implements GLSur
         getHolder().setFormat(-2);
     }
 
-    @Override // android.opengl.GLSurfaceView$Renderer
+    @Override // android.opengl.GLSurfaceView.Renderer
     public void onSurfaceChanged(GL10 gl10, int i, int i2) {
         if (CamLog.VERBOSE) {
             CamLog.d("onSurfaceChanged() : width = " + i + ", height = " + i2);
@@ -100,7 +75,7 @@ public class GLSurfaceContextView extends ExtendedGlSurfaceView implements GLSur
         setupRelatedToSurfaceSize();
     }
 
-    @Override // android.opengl.GLSurfaceView$Renderer
+    @Override // android.opengl.GLSurfaceView.Renderer
     public void onDrawFrame(GL10 gl10) {
         render();
     }
@@ -119,7 +94,7 @@ public class GLSurfaceContextView extends ExtendedGlSurfaceView implements GLSur
         requestRender();
     }
 
-    @Override // android.opengl.GLSurfaceView, android.view.SurfaceHolder$Callback
+    @Override // android.opengl.GLSurfaceView, android.view.SurfaceHolder.Callback
     public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
         if (CamLog.VERBOSE) {
             CamLog.d("surfaceDestroyed() : E");
@@ -136,13 +111,45 @@ public class GLSurfaceContextView extends ExtendedGlSurfaceView implements GLSur
         if (CamLog.VERBOSE) {
             CamLog.d("release()");
         }
-        queueEvent(new GLSurfaceContextView$ReleaseTask(this, null));
+        queueEvent(new ReleaseTask());
+    }
+
+    private class ReleaseTask implements Runnable {
+        private ReleaseTask() {
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            if (GLSurfaceContextView.this.mFlashFeedback != null) {
+                GLSurfaceContextView.this.mFlashFeedback.release();
+                GLSurfaceContextView.this.mFlashFeedback = null;
+            }
+            GLSurfaceContextView.this.releaseAllShaders();
+        }
     }
 
     public void setupRelatedToSurfaceSize() {
-        queueEvent(new GLSurfaceContextView$SetupRelatedToSurfaceSizeTask(this, null));
+        queueEvent(new SetupRelatedToSurfaceSizeTask());
     }
 
+    private class SetupRelatedToSurfaceSizeTask implements Runnable {
+        private SetupRelatedToSurfaceSizeTask() {
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            GLSurfaceContextView.this.setupDynamicConfig(GLSurfaceContextView.this.getWidth(), GLSurfaceContextView.this.getHeight());
+            if (GLSurfaceContextView.this.mFlashFeedback == null) {
+                GLSurfaceContextView.this.createAllShaders();
+                GLSurfaceContextView.this.mFlashFeedback = new SimpleFrame(GLSurfaceContextView.this.getContext(), GLSurfaceContextView.this);
+                GLSurfaceContextView.this.mFlashFeedback.setColor(0.0f, 0.0f, 0.0f, 0.0f);
+                GLSurfaceContextView.this.mFlashFeedback.setShaderProgram(GLSurfaceContextView.this.mSimpleFrameShader);
+                GLSurfaceContextView.this.mFlashFeedback.setVisibility(true);
+            }
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
     private void setupDynamicConfig(int i, int i2) {
         if (i2 < i) {
             GLES20.glViewport(0, (-1) * ((i - i2) / 2), i, i);
@@ -186,7 +193,7 @@ public class GLSurfaceContextView extends ExtendedGlSurfaceView implements GLSur
         if (isShown() && this.mAnimation != null && this.mCountDownLatch == null) {
             this.mCountDownLatch = new CountDownLatch(1);
             try {
-                if (!this.mCountDownLatch.await(100L, TimeUnit.MILLISECONDS)) {
+                if (!this.mCountDownLatch.await(ANIMATION_CANCEL_WAITING_DURATION, TimeUnit.MILLISECONDS)) {
                     CamLog.d("onPause() : timed-out");
                 }
             } catch (InterruptedException unused) {
@@ -242,6 +249,7 @@ public class GLSurfaceContextView extends ExtendedGlSurfaceView implements GLSur
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void createAllShaders() {
         if (CamLog.VERBOSE) {
             CamLog.d("createAllShaders() : E");
@@ -255,6 +263,7 @@ public class GLSurfaceContextView extends ExtendedGlSurfaceView implements GLSur
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void releaseAllShaders() {
         if (CamLog.VERBOSE) {
             CamLog.d("releaseAllShaders() : E");
@@ -263,6 +272,29 @@ public class GLSurfaceContextView extends ExtendedGlSurfaceView implements GLSur
         this.mSimpleFrameShader = 0;
         if (CamLog.VERBOSE) {
             CamLog.d("releaseAllShaders() : X");
+        }
+    }
+
+    private class SetInvisibleTask implements Runnable {
+        private SetInvisibleTask() {
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            GLSurfaceContextView.this.setVisibility(4);
+            GLSurfaceContextView.this.setRenderMode(0);
+        }
+    }
+
+    private class AnimationCanvas implements CaptureFeedbackAnimationCanvas {
+        private AnimationCanvas() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.capturefeedback.animation.CaptureFeedbackAnimationCanvas
+        public void drawColor(float f, float f2, float f3, float f4) {
+            GLSurfaceContextView.this.mFlashFeedback.translate(0.0f, 0.0f, GLSurfaceContextView.CENTER_Z_POS);
+            GLSurfaceContextView.this.mFlashFeedback.setColor(f2, f3, f4, f);
+            GLSurfaceContextView.this.mFlashFeedback.render();
         }
     }
 }

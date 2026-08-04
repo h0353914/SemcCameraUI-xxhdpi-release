@@ -1,6 +1,7 @@
 package org.apache.commons.imaging.formats.tiff.write;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,7 +13,7 @@ import org.apache.commons.imaging.common.BinaryOutputStream;
 import org.apache.commons.imaging.common.RationalNumber;
 import org.apache.commons.imaging.formats.tiff.JpegImageData;
 import org.apache.commons.imaging.formats.tiff.TiffDirectory;
-import org.apache.commons.imaging.formats.tiff.TiffElement$DataElement;
+import org.apache.commons.imaging.formats.tiff.TiffElement;
 import org.apache.commons.imaging.formats.tiff.TiffImageData;
 import org.apache.commons.imaging.formats.tiff.constants.TiffDirectoryType;
 import org.apache.commons.imaging.formats.tiff.constants.TiffTagConstants;
@@ -37,9 +38,18 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShortOrLong;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShortOrLongOrRational;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoShortOrRational;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoXpString;
+import org.apache.commons.imaging.formats.tiff.write.TiffOutputItem;
 
 public final class TiffOutputDirectory extends TiffOutputItem {
-    public static final Comparator<TiffOutputDirectory> COMPARATOR = new TiffOutputDirectory$1();
+    public static final Comparator<TiffOutputDirectory> COMPARATOR = new Comparator<TiffOutputDirectory>() { // from class: org.apache.commons.imaging.formats.tiff.write.TiffOutputDirectory.1
+        @Override // java.util.Comparator
+        public int compare(TiffOutputDirectory tiffOutputDirectory, TiffOutputDirectory tiffOutputDirectory2) {
+            if (tiffOutputDirectory.type < tiffOutputDirectory2.type) {
+                return -1;
+            }
+            return tiffOutputDirectory.type > tiffOutputDirectory2.type ? 1 : 0;
+        }
+    };
     private final ByteOrder byteOrder;
     private final List<TiffOutputField> fields = new ArrayList();
     private JpegImageData jpegImageData;
@@ -64,11 +74,15 @@ public final class TiffOutputDirectory extends TiffOutputItem {
     }
 
     public void add(TagInfoAscii tagInfoAscii, String... strArr) throws ImageWriteException {
-        byte[] bArrEncodeValue = tagInfoAscii.encodeValue(this.byteOrder, strArr);
-        if (tagInfoAscii.length > 0 && tagInfoAscii.length != bArrEncodeValue.length) {
-            throw new ImageWriteException("Tag expects " + tagInfoAscii.length + " byte(s), not " + strArr.length);
+        try {
+            byte[] bArrEncodeValue = tagInfoAscii.encodeValue(this.byteOrder, strArr);
+            if (tagInfoAscii.length > 0 && tagInfoAscii.length != bArrEncodeValue.length) {
+                throw new ImageWriteException("Tag expects " + tagInfoAscii.length + " byte(s), not " + strArr.length);
+            }
+            add(new TiffOutputField(tagInfoAscii.tag, tagInfoAscii, FieldType.ASCII, bArrEncodeValue.length, bArrEncodeValue));
+        } catch (UnsupportedEncodingException e) {
+            throw new ImageWriteException(e.getMessage(), (Throwable) e);
         }
-        add(new TiffOutputField(tagInfoAscii.tag, tagInfoAscii, FieldType.ASCII, bArrEncodeValue.length, bArrEncodeValue));
     }
 
     public void add(TagInfoShort tagInfoShort, short... sArr) throws ImageWriteException {
@@ -198,8 +212,12 @@ public final class TiffOutputDirectory extends TiffOutputItem {
     }
 
     public void add(TagInfoGpsText tagInfoGpsText, String str) throws ImageWriteException {
-        byte[] bArrEncodeValue = tagInfoGpsText.encodeValue(FieldType.UNDEFINED, str, this.byteOrder);
-        add(new TiffOutputField(tagInfoGpsText.tag, tagInfoGpsText, tagInfoGpsText.dataTypes.get(0), bArrEncodeValue.length, bArrEncodeValue));
+        try {
+            byte[] bArrEncodeValue = tagInfoGpsText.encodeValue(FieldType.UNDEFINED, str, this.byteOrder);
+            add(new TiffOutputField(tagInfoGpsText.tag, tagInfoGpsText, tagInfoGpsText.dataTypes.get(0), bArrEncodeValue.length, bArrEncodeValue));
+        } catch (UnsupportedEncodingException e) {
+            throw new ImageWriteException(e.getMessage(), (Throwable) e);
+        }
     }
 
     public void add(TagInfoXpString tagInfoXpString, String str) throws ImageWriteException {
@@ -208,27 +226,39 @@ public final class TiffOutputDirectory extends TiffOutputItem {
     }
 
     public void add(TagInfoAsciiOrByte tagInfoAsciiOrByte, String... strArr) throws ImageWriteException {
-        byte[] bArrEncodeValue = tagInfoAsciiOrByte.encodeValue(FieldType.ASCII, strArr, this.byteOrder);
-        if (tagInfoAsciiOrByte.length > 0 && tagInfoAsciiOrByte.length != bArrEncodeValue.length) {
-            throw new ImageWriteException("Tag expects " + tagInfoAsciiOrByte.length + " byte(s), not " + strArr.length);
+        try {
+            byte[] bArrEncodeValue = tagInfoAsciiOrByte.encodeValue(FieldType.ASCII, strArr, this.byteOrder);
+            if (tagInfoAsciiOrByte.length > 0 && tagInfoAsciiOrByte.length != bArrEncodeValue.length) {
+                throw new ImageWriteException("Tag expects " + tagInfoAsciiOrByte.length + " byte(s), not " + strArr.length);
+            }
+            add(new TiffOutputField(tagInfoAsciiOrByte.tag, tagInfoAsciiOrByte, FieldType.ASCII, bArrEncodeValue.length, bArrEncodeValue));
+        } catch (UnsupportedEncodingException e) {
+            throw new ImageWriteException(e.getMessage(), (Throwable) e);
         }
-        add(new TiffOutputField(tagInfoAsciiOrByte.tag, tagInfoAsciiOrByte, FieldType.ASCII, bArrEncodeValue.length, bArrEncodeValue));
     }
 
     public void add(TagInfoAsciiOrRational tagInfoAsciiOrRational, String... strArr) throws ImageWriteException {
-        byte[] bArrEncodeValue = tagInfoAsciiOrRational.encodeValue(FieldType.ASCII, strArr, this.byteOrder);
-        if (tagInfoAsciiOrRational.length > 0 && tagInfoAsciiOrRational.length != bArrEncodeValue.length) {
-            throw new ImageWriteException("Tag expects " + tagInfoAsciiOrRational.length + " byte(s), not " + strArr.length);
+        try {
+            byte[] bArrEncodeValue = tagInfoAsciiOrRational.encodeValue(FieldType.ASCII, strArr, this.byteOrder);
+            if (tagInfoAsciiOrRational.length > 0 && tagInfoAsciiOrRational.length != bArrEncodeValue.length) {
+                throw new ImageWriteException("Tag expects " + tagInfoAsciiOrRational.length + " byte(s), not " + strArr.length);
+            }
+            add(new TiffOutputField(tagInfoAsciiOrRational.tag, tagInfoAsciiOrRational, FieldType.ASCII, bArrEncodeValue.length, bArrEncodeValue));
+        } catch (UnsupportedEncodingException e) {
+            throw new ImageWriteException(e.getMessage(), (Throwable) e);
         }
-        add(new TiffOutputField(tagInfoAsciiOrRational.tag, tagInfoAsciiOrRational, FieldType.ASCII, bArrEncodeValue.length, bArrEncodeValue));
     }
 
     public void add(TagInfoAsciiOrRational tagInfoAsciiOrRational, RationalNumber... rationalNumberArr) throws ImageWriteException {
         if (tagInfoAsciiOrRational.length > 0 && tagInfoAsciiOrRational.length != rationalNumberArr.length) {
             throw new ImageWriteException("Tag expects " + tagInfoAsciiOrRational.length + " value(s), not " + rationalNumberArr.length);
         }
-        byte[] bArrEncodeValue = tagInfoAsciiOrRational.encodeValue(FieldType.RATIONAL, rationalNumberArr, this.byteOrder);
-        add(new TiffOutputField(tagInfoAsciiOrRational.tag, tagInfoAsciiOrRational, FieldType.RATIONAL, bArrEncodeValue.length, bArrEncodeValue));
+        try {
+            byte[] bArrEncodeValue = tagInfoAsciiOrRational.encodeValue(FieldType.RATIONAL, rationalNumberArr, this.byteOrder);
+            add(new TiffOutputField(tagInfoAsciiOrRational.tag, tagInfoAsciiOrRational, FieldType.RATIONAL, bArrEncodeValue.length, bArrEncodeValue));
+        } catch (UnsupportedEncodingException e) {
+            throw new ImageWriteException(e.getMessage(), (Throwable) e);
+        }
     }
 
     public void add(TiffOutputField tiffOutputField) {
@@ -267,7 +297,15 @@ public final class TiffOutputDirectory extends TiffOutputItem {
     }
 
     public void sortFields() {
-        Collections.sort(this.fields, new TiffOutputDirectory$2(this));
+        Collections.sort(this.fields, new Comparator<TiffOutputField>() { // from class: org.apache.commons.imaging.formats.tiff.write.TiffOutputDirectory.2
+            @Override // java.util.Comparator
+            public int compare(TiffOutputField tiffOutputField, TiffOutputField tiffOutputField2) {
+                if (tiffOutputField.tag != tiffOutputField2.tag) {
+                    return tiffOutputField.tag - tiffOutputField2.tag;
+                }
+                return tiffOutputField.getSortHint() - tiffOutputField2.getSortHint();
+            }
+        });
     }
 
     public String description() {
@@ -348,7 +386,7 @@ public final class TiffOutputDirectory extends TiffOutputItem {
                 tagInfo = TiffTagConstants.TIFF_TAG_TILE_OFFSETS;
                 tagInfoShortOrLong = TiffTagConstants.TIFF_TAG_TILE_BYTE_COUNTS;
             }
-            TiffElement$DataElement[] imageData = this.tiffImageData.getImageData();
+            TiffElement.DataElement[] imageData = this.tiffImageData.getImageData();
             int[] iArr = new int[imageData.length];
             int[] iArr2 = new int[imageData.length];
             for (int i = 0; i < imageData.length; i++) {
@@ -372,9 +410,9 @@ public final class TiffOutputDirectory extends TiffOutputItem {
             tiffOutputSummary.addTiffImageData(imageDataOffsets);
         }
         if (this.jpegImageData != null) {
-            TiffOutputItem$Value tiffOutputItem$Value = new TiffOutputItem$Value("JPEG image data", this.jpegImageData.getData());
-            arrayList.add(tiffOutputItem$Value);
-            tiffOutputSummary.add(tiffOutputItem$Value, tiffOutputField);
+            TiffOutputItem.Value value = new TiffOutputItem.Value("JPEG image data", this.jpegImageData.getData());
+            arrayList.add(value);
+            tiffOutputSummary.add(value, tiffOutputField);
         }
         return arrayList;
     }

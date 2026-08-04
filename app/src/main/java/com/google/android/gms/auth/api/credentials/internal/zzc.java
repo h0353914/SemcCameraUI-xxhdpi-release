@@ -1,5 +1,7 @@
 package com.google.android.gms.auth.api.credentials.internal;
 
+import android.content.Context;
+import android.os.RemoteException;
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.auth.api.credentials.CredentialRequest;
 import com.google.android.gms.auth.api.credentials.CredentialRequestResult;
@@ -7,25 +9,99 @@ import com.google.android.gms.auth.api.credentials.CredentialsApi;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.internal.zzlb;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzc implements CredentialsApi {
+
+    private static class zza extends com.google.android.gms.auth.api.credentials.internal.zza {
+        private zzlb.zzb<Status> zzSI;
+
+        zza(zzlb.zzb<Status> zzbVar) {
+            this.zzSI = zzbVar;
+        }
+
+        @Override // com.google.android.gms.auth.api.credentials.internal.zza, com.google.android.gms.auth.api.credentials.internal.zzg
+        public void zzg(Status status) {
+            this.zzSI.zzp(status);
+        }
+    }
+
     @Override // com.google.android.gms.auth.api.credentials.CredentialsApi
-    public PendingResult<Status> delete(GoogleApiClient googleApiClient, Credential credential) {
-        return googleApiClient.zzb(new zzc$3(this, googleApiClient, credential));
+    public PendingResult<CredentialRequestResult> request(GoogleApiClient googleApiClient, final CredentialRequest credentialRequest) {
+        return googleApiClient.zza(new zzd<CredentialRequestResult>(googleApiClient) { // from class: com.google.android.gms.auth.api.credentials.internal.zzc.1
+            @Override // com.google.android.gms.auth.api.credentials.internal.zzd
+            protected void zza(Context context, zzh zzhVar) throws RemoteException {
+                zzhVar.zza(new com.google.android.gms.auth.api.credentials.internal.zza() { // from class: com.google.android.gms.auth.api.credentials.internal.zzc.1.1
+                    @Override // com.google.android.gms.auth.api.credentials.internal.zza, com.google.android.gms.auth.api.credentials.internal.zzg
+                    public void zza(Status status, Credential credential) {
+                        zzb(new zzb(status, credential));
+                    }
+
+                    @Override // com.google.android.gms.auth.api.credentials.internal.zza, com.google.android.gms.auth.api.credentials.internal.zzg
+                    public void zzg(Status status) {
+                        zzb(zzb.zzh(status));
+                    }
+                }, credentialRequest);
+            }
+
+            /* JADX INFO: Access modifiers changed from: protected */
+            @Override // com.google.android.gms.internal.zzlc
+            /* renamed from: zzi, reason: merged with bridge method [inline-methods] */
+            public CredentialRequestResult zzc(Status status) {
+                return zzb.zzh(status);
+            }
+        });
+    }
+
+    @Override // com.google.android.gms.auth.api.credentials.CredentialsApi
+    public PendingResult<Status> save(GoogleApiClient googleApiClient, final Credential credential) {
+        return googleApiClient.zzb(new zzd<Status>(googleApiClient) { // from class: com.google.android.gms.auth.api.credentials.internal.zzc.2
+            @Override // com.google.android.gms.auth.api.credentials.internal.zzd
+            protected void zza(Context context, zzh zzhVar) throws RemoteException {
+                zzhVar.zza(new zzc.zza(this), new SaveRequest(credential));
+            }
+
+            /* JADX INFO: Access modifiers changed from: protected */
+            @Override // com.google.android.gms.internal.zzlc
+            /* renamed from: zzd, reason: merged with bridge method [inline-methods] */
+            public Status zzc(Status status) {
+                return status;
+            }
+        });
+    }
+
+    @Override // com.google.android.gms.auth.api.credentials.CredentialsApi
+    public PendingResult<Status> delete(GoogleApiClient googleApiClient, final Credential credential) {
+        return googleApiClient.zzb(new zzd<Status>(googleApiClient) { // from class: com.google.android.gms.auth.api.credentials.internal.zzc.3
+            @Override // com.google.android.gms.auth.api.credentials.internal.zzd
+            protected void zza(Context context, zzh zzhVar) throws RemoteException {
+                zzhVar.zza(new zzc.zza(this), new DeleteRequest(credential));
+            }
+
+            /* JADX INFO: Access modifiers changed from: protected */
+            @Override // com.google.android.gms.internal.zzlc
+            /* renamed from: zzd, reason: merged with bridge method [inline-methods] */
+            public Status zzc(Status status) {
+                return status;
+            }
+        });
     }
 
     @Override // com.google.android.gms.auth.api.credentials.CredentialsApi
     public PendingResult<Status> disableAutoSignIn(GoogleApiClient googleApiClient) {
-        return googleApiClient.zzb(new zzc$4(this, googleApiClient));
-    }
+        return googleApiClient.zzb(new zzd<Status>(googleApiClient) { // from class: com.google.android.gms.auth.api.credentials.internal.zzc.4
+            @Override // com.google.android.gms.auth.api.credentials.internal.zzd
+            protected void zza(Context context, zzh zzhVar) throws RemoteException {
+                zzhVar.zza(new zzc.zza(this));
+            }
 
-    @Override // com.google.android.gms.auth.api.credentials.CredentialsApi
-    public PendingResult<CredentialRequestResult> request(GoogleApiClient googleApiClient, CredentialRequest credentialRequest) {
-        return googleApiClient.zza(new zzc$1(this, googleApiClient, credentialRequest));
-    }
-
-    @Override // com.google.android.gms.auth.api.credentials.CredentialsApi
-    public PendingResult<Status> save(GoogleApiClient googleApiClient, Credential credential) {
-        return googleApiClient.zzb(new zzc$2(this, googleApiClient, credential));
+            /* JADX INFO: Access modifiers changed from: protected */
+            @Override // com.google.android.gms.internal.zzlc
+            /* renamed from: zzd, reason: merged with bridge method [inline-methods] */
+            public Status zzc(Status status) {
+                return status;
+            }
+        });
     }
 }

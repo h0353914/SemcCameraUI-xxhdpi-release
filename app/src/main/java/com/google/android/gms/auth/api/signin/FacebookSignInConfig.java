@@ -2,13 +2,14 @@ package com.google.android.gms.auth.api.signin;
 
 import android.content.Intent;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class FacebookSignInConfig implements SafeParcelable {
-    public static final Parcelable$Creator<FacebookSignInConfig> CREATOR = new zzb();
+    public static final Parcelable.Creator<FacebookSignInConfig> CREATOR = new zzb();
     private Intent mIntent;
     final int versionCode;
     private final ArrayList<String> zzSX;

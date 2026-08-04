@@ -3,6 +3,7 @@ package com.google.android.gms.internal;
 import android.database.CharArrayBuffer;
 import android.text.TextUtils;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzmo {
     public static void zzb(String str, CharArrayBuffer charArrayBuffer) {
         if (TextUtils.isEmpty(str)) {

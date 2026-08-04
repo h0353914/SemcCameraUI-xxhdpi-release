@@ -31,14 +31,20 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Kan het vastleggen niet voltooien. Draai langzamer.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Kan het vastleggen niet voltooien. Draai sneller.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Schuif met uw camera om een panoramafoto te maken</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">De volgende bestanden worden gemaakt:\n- Multi-angle-foto\n- 3D-foto\nOpmerking: deze bestanden bevatten een grijs gebied.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">De volgende bestanden worden gemaakt:\n- Multi-angle-foto\n- 3D-foto</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Verwerken...\nDeze foto bevat een grijs gebied</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"De volgende bestanden worden gemaakt:
+- Multi-angle-foto
+- 3D-foto
+Opmerking: deze bestanden bevatten een grijs gebied."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"De volgende bestanden worden gemaakt:
+- Multi-angle-foto
+- 3D-foto"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Verwerken...
+Deze foto bevat een grijs gebied"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Afbeelding opslaan</string>
     <string name="cam_3d_strings_dialog_processing_txt">Verwerken...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Wacht enkele seconden tot de 3D-camera is gestart</string>
     <string name="cam_3d_strings_error_capturing_during_connecting_tv_title_txt">Fout</string>
-    <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">Verwijder de kabel. U kunt in deze modus geen foto\'s maken wanneer er een kabel is aangesloten.</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">"Verwijder de kabel. U kunt in deze modus geen foto's maken wanneer er een kabel is aangesloten."</string>
     <string name="cam_3d_strings_error_direction_txt">Kan de foto niet maken. Draai in de juiste richting.</string>
     <string name="cam_3d_strings_error_too_quick_txt">Kan de foto niet maken. Draai langzamer.</string>
     <string name="cam_3d_strings_error_too_slow_txt">Kan de foto niet maken. Draai sneller.</string>
@@ -55,7 +61,7 @@
     <string name="cam_3d_strings_shooting_guide_press_key_txt">Druk op de cameratoets en draai de camera langzaam</string>
     <string name="cam_3d_strings_shooting_guide_right_to_left_txt">Draai van rechts naar links</string>
     <string name="cam_3d_strings_shooting_guide_touch_cap_txt">Tik op de cameraknop en draai de camera langzaam</string>
-    <string name="cam_3d_strings_shooting_guide_up_to_down_txt">Draai van boven naar beneden </string>
+    <string name="cam_3d_strings_shooting_guide_up_to_down_txt">"Draai van boven naar beneden "</string>
     <string name="cam_3d_strings_sweep_panorama_short_txt">Veegpanorama</string>
     <string name="cam_app_shortcut_front_photo_txt">Voorzijdefoto</string>
     <string name="cam_app_shortcut_manual_txt">Handmatig</string>
@@ -105,7 +111,7 @@
     <string name="cam_strings_accessibility_pause_button_txt">Pauzeren</string>
     <string name="cam_strings_accessibility_photo_setting_txt">Camera-instellingen</string>
     <string name="cam_strings_accessibility_predictive_capture_txt">Voorspellend vastleggen</string>
-    <string name="cam_strings_accessibility_recent_photo_txt">Een stapel recente foto\'s</string>
+    <string name="cam_strings_accessibility_recent_photo_txt">"Een stapel recente foto's"</string>
     <string name="cam_strings_accessibility_recording_button_txt">Opnemen</string>
     <string name="cam_strings_accessibility_recording_slow_motion_button_txt">Slow-motion</string>
     <string name="cam_strings_accessibility_recording_slow_motion_exti_button_txt">Slow-motion afsluiten</string>
@@ -212,19 +218,19 @@
     <string name="cam_strings_cta_title_txt">Opmerking</string>
     <string name="cam_strings_dependency_changed_txt">%1$s is gewijzigd in %2$s</string>
     <string name="cam_strings_description_4k2k_txt">Video in 4K ultra-hd opnemen</string>
-    <string name="cam_strings_description_camera_txt">Foto\'s en video\'s maken</string>
-    <string name="cam_strings_description_creative_effect_txt">Effecten voor artistieke foto\'s en video\'s selecteren</string>
-    <string name="cam_strings_description_dualrec_txt">Zet je gezicht in foto\'s en video\'s met de voorkant- en hoofdcamera</string>
+    <string name="cam_strings_description_camera_txt">"Foto's en video's maken"</string>
+    <string name="cam_strings_description_creative_effect_txt">"Effecten voor artistieke foto's en video's selecteren"</string>
+    <string name="cam_strings_description_dualrec_txt">"Zet je gezicht in foto's en video's met de voorkant- en hoofdcamera"</string>
     <string name="cam_strings_description_facefusion_txt">Maak een selfie waarin u uw gezicht bedekt met het gezicht van uw vriend</string>
     <string name="cam_strings_description_google_lens_txt">Met %1$s krijgt u meer informatie en kunt u acties uitvoeren met wat u ziet</string>
     <string name="cam_strings_description_high_frame_rate_txt">Met hoge framesnelheid en slowmotion-effecten opnemen</string>
     <string name="cam_strings_description_multicam_txt">Neem scène op een enkel scherm op vanuit verschillende hoeken</string>
-    <string name="cam_strings_description_shoundphoto_txt">Foto\'s met achtergrondgeluid maken (zingende vogels, enz.)</string>
+    <string name="cam_strings_description_shoundphoto_txt">"Foto's met achtergrondgeluid maken (zingende vogels, enz.)"</string>
     <string name="cam_strings_description_timeshift_short_txt">De beste foto zoeken in een burst vóór en na de opname</string>
     <string name="cam_strings_dialog_battery_level_low_info_txt">Onvoldoende batterijvermogen op de telefoon. Wanneer de batterij bijna leeg is, wordt de camera automatisch gesloten.</string>
     <string name="cam_strings_dialog_battery_level_low_recording_txt">Opnemen gestopt omdat de accu bijna leeg is. Laad uw apparaat op en probeer opnieuw.</string>
     <string name="cam_strings_dialog_battery_level_low_using_txt">Kan camera niet gebruiken omdat de accu bijna leeg is. Laad uw apparaat op en probeer opnieuw.</string>
-    <string name="cam_strings_dialog_burst_information_txt">Als u een reeks foto\'s wilt maken, selecteert u Timeshift burst in Camera-apps</string>
+    <string name="cam_strings_dialog_burst_information_txt">"Als u een reeks foto's wilt maken, selecteert u Timeshift burst in Camera-apps"</string>
     <string name="cam_strings_dialog_change_resolution_manual_txt">Handmatig (camera aan voorzijde)</string>
     <string name="cam_strings_dialog_change_resolution_superior_auto_txt">Superieur automatisch (camera aan voorzijde)</string>
     <string name="cam_strings_dialog_change_resolution_txt">Resolutie van de volgende opnamemodi is veranderd in 13MP (4:3) vanwege een software-update</string>
@@ -239,7 +245,7 @@
     <string name="cam_strings_dialog_high_temp_txt">Als de temperatuur van het apparaat stijgt, kan de app worden gesloten tijdens het gebruik. Uw opname wordt automatisch opgeslagen.</string>
     <string name="cam_strings_dialog_high_temp_vzw_txt">De cameramodus gebruikt veel energie zodat de temperatuur van de telefoon stijgt. Om oververhitting te voorkomen kan het opnemen van video stoppen en de camera worden afgesloten. De opname wordt automatisch opgeslagen.</string>
     <string name="cam_strings_dialog_storage_full_burst_txt">Burst-opname gestopt vanwege onvoldoende geheugen. Verwijder enkele bestanden om ruimte te maken in de interne opslag.</string>
-    <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">U kunt zelfs video\'s opnemen in scènes met veel contrast en ze nog dramatische en levensechter maken. Gebruik een ondersteund apparaat/service om van de originele kleuren en helderheid van de inhoud te genieten.</string>
+    <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">"U kunt zelfs video's opnemen in scènes met veel contrast en ze nog dramatische en levensechter maken. Gebruik een ondersteund apparaat/service om van de originele kleuren en helderheid van de inhoud te genieten."</string>
     <string name="cam_strings_distortion_correction_photo_video_txt">Correctie voor vervorming</string>
     <string name="cam_strings_distortion_correction_txt">Beeldvervormingscorrectie</string>
     <string name="cam_strings_do_not_show_again_txt">Niet meer tonen</string>
@@ -267,7 +273,7 @@
     <string name="cam_strings_error_capture_txt">Deze modus is niet beschikbaar wanneer in een andere app opnamen worden uitgevoerd.</string>
     <string name="cam_strings_error_device_not_available_txt">Kan de camera niet starten. Start de camera of het apparaat opnieuw op.</string>
     <string name="cam_strings_error_dialog_title_txt">Fout</string>
-    <string name="cam_strings_error_fatal_sd_photo_txt">Kan geen foto\'s opslaan. Mogelijk is er een probleem met de gegevensopslag. Controleer de SD-kaart als gegevensopslag hiervoor is ingesteld.</string>
+    <string name="cam_strings_error_fatal_sd_photo_txt">"Kan geen foto's opslaan. Mogelijk is er een probleem met de gegevensopslag. Controleer de SD-kaart als gegevensopslag hiervoor is ingesteld."</string>
     <string name="cam_strings_error_fatal_sd_video_txt">Kan opnemen niet starten. Mogelijk is er een probleem met de gegevensopslag. Controleer de SD-kaart als gegevensopslag hiervoor is ingesteld.</string>
     <string name="cam_strings_error_fatal_txt">Onbekende fout.</string>
     <string name="cam_strings_error_high_temp_already_high_txt">Uw Xperia moet afkoelen. Een ogenblik geduld.</string>
@@ -357,15 +363,16 @@
     <string name="cam_strings_get_more_modes_txt">Applicaties</string>
     <string name="cam_strings_global_setting_softskin_available_applications_txt">Beschikbare applicaties</string>
     <string name="cam_strings_global_setting_softskin_brighten_skin_txt">Levendige huid</string>
-    <string name="cam_strings_global_setting_softskin_detail_txt">Laat uw huid fris en glad ogen. Het effect werkt met de applicaties die de camera aan de voorzijde gebruiken. Dit kan worden toegepast op foto\'s en video\'s. U kunt ook het niveau aanpassen.</string>
+    <string name="cam_strings_global_setting_softskin_detail_txt">"Laat uw huid fris en glad ogen. Het effect werkt met de applicaties die de camera aan de voorzijde gebruiken. Dit kan worden toegepast op foto's en video's. U kunt ook het niveau aanpassen."</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Aanpassing niveau</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Gladde huid</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Kan de app niet starten.\nZorg dat de nieuwste versie van %1$s op het apparaat is geïnstalleerd en ingeschakeld.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Kan de app niet starten.
+Zorg dat de nieuwste versie van %1$s op het apparaat is geïnstalleerd en ingeschakeld."</string>
     <string name="cam_strings_gridline_txt">Rasterlijnen</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Draai uw handpalm richting de camera. De zelfontspanner wordt ingeschakeld wanneer uw handpalm wordt herkend. Strek uw vingers naar boven voor snellere herkenning</string>
     <string name="cam_strings_hand_shutter_hint_txt">Draai uw handpalm richting de camera</string>
     <string name="cam_strings_hand_shutter_txt">Handontspanner</string>
-    <string name="cam_strings_hdr_guide_txt">Omdat statische HDR twee foto\'s van hetzelfde vastlegt/combineert, is dit alleen geschikt voor stilstaande voorwerpen</string>
+    <string name="cam_strings_hdr_guide_txt">"Omdat statische HDR twee foto's van hetzelfde vastlegt/combineert, is dit alleen geschikt voor stilstaande voorwerpen"</string>
     <string name="cam_strings_hdr_title_txt">HDR</string>
     <string name="cam_strings_hdr_txt">HDR</string>
     <string name="cam_strings_help_txt">Help</string>
@@ -388,9 +395,9 @@
     <string name="cam_strings_long_press_burst_high_txt">Hoge snelheid</string>
     <string name="cam_strings_long_press_burst_txt">Burst met lang inhouden</string>
     <string name="cam_strings_manual_fusion_tutorial_2_title_txt">Fotograferen met dubbele camera</string>
-    <string name="cam_strings_manual_fusion_tutorial_2_txt">Blijf op een afstand van minstens één meter van het voorwerp als u foto\'s maakt als dubbele camera is ingeschakeld. Als u te dicht bij staat, kan het perspectief of de kleur verschieten.</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_txt">"Blijf op een afstand van minstens één meter van het voorwerp als u foto's maakt als dubbele camera is ingeschakeld. Als u te dicht bij staat, kan het perspectief of de kleur verschieten."</string>
     <string name="cam_strings_manual_fusion_tutorial_title_txt">Naar dubbele camera schakelen</string>
-    <string name="cam_strings_manual_fusion_tutorial_txt">U kunt de dubbele camera in- en uitschakelen in de handmatige modus. Schakel de dubbele camera in om foto\'s met weinig ruis te maken bij weinig verlichting en schakel deze uit om close-upfoto\'s te maken.</string>
+    <string name="cam_strings_manual_fusion_tutorial_txt">"U kunt de dubbele camera in- en uitschakelen in de handmatige modus. Schakel de dubbele camera in om foto's met weinig ruis te maken bij weinig verlichting en schakel deze uit om close-upfoto's te maken."</string>
     <string name="cam_strings_max_file_size_save_failed_txt">Opname is gestopt omdat de maximale bestandsgrootte is bereikt</string>
     <string name="cam_strings_max_recording_time_save_failed_txt">Opname is gestopt omdat de maximale opnametijd is bereikt</string>
     <string name="cam_strings_memory_full_save_failed_txt">Kan niet opslaan. Geheugen vol.</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Algemene instellingen</string>
     <string name="cam_strings_more_txt">Meer</string>
     <string name="cam_strings_multi_window_txt">Versleep het midden van de splitsbalk om naar het volledige scherm te schakelen en %1$s te gebruiken</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Er is nu verbinding met een ander apparaat.\nWilt u het beeld door de zoeker met het apparaat delen?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Er is nu verbinding met een ander apparaat.
+Wilt u het beeld door de zoeker met het apparaat delen?"</string>
     <string name="cam_strings_multicam_add_device_txt">Apparaat toev.</string>
     <string name="cam_strings_multicam_add_more_txt">Meer toevoegen</string>
     <string name="cam_strings_multicam_apply_txt">Gereed</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Lichtmeting</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Voorspeld</string>
     <string name="cam_strings_predictive_capture_txt">Voorspellend vastleggen</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">De camera is automatisch gestart omdat de beweging van het optillen van de telefoon in landschapsmodus is gedetecteerd en de telefoon op een voorwerp wordt gericht.\nSelecteer de gewenste methode voor deze functie selecteren via Slim starten in de camera-instellingen.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"De camera is automatisch gestart omdat de beweging van het optillen van de telefoon in landschapsmodus is gedetecteerd en de telefoon op een voorwerp wordt gericht.
+Selecteer de gewenste methode voor deze functie selecteren via Slim starten in de camera-instellingen."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Raak de binnenkant van de cirkel aan om vast te leggen</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Raak het scherm aan om vast te leggen</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Tik binnen de cirkel om op volledig scherm weer te geven</string>
     <string name="cam_strings_predictive_launch_guide_txt">Raak binnen de cirkel aan om de camera te starten</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Aanraken voor start en opname</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Aanraken om te starten</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Start de camera snel. Til het apparaat snel op in de liggende stand en richt de camera op een voorwerp. De camera wordt automatisch gestart.\nVia Slim starten in de camera-instellingen kunt u instellen hoe u deze functie het liefst gebruikt.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Start de camera snel. Til het apparaat snel op in de liggende stand en richt de camera op een voorwerp. De camera wordt automatisch gestart.
+Via Slim starten in de camera-instellingen kunt u instellen hoe u deze functie het liefst gebruikt."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Slim starten</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Start de camera snel. Zwaai het apparaat omhoog in de liggende stand en richt de camera op een voorwerp. De camera wordt automatisch gestart.\nSchakel dit uit via Slim starten in de camera-instellingen.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Start de camera snel. Zwaai het apparaat omhoog in de liggende stand en richt de camera op een voorwerp. De camera wordt automatisch gestart.
+Schakel dit uit via Slim starten in de camera-instellingen."</string>
     <string name="cam_strings_predictive_launch_txt">Slim starten</string>
     <string name="cam_strings_preview_always_txt">Aan</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 seconden</string>
@@ -458,7 +469,7 @@
     <string name="cam_strings_previous_txt">Vorige</string>
     <string name="cam_strings_recording_txt">REC</string>
     <string name="cam_strings_remember_geotag_title_txt">Locatie opslaan?</string>
-    <string name="cam_strings_remember_geotag_txt">Label uw foto\'s en video\'s met de locatie\'s waar ze zijn gemaakt. U kunt deze instelling later wijzigen vanuit Locatie opslaan in de Camera-instellingen.</string>
+    <string name="cam_strings_remember_geotag_txt">"Label uw foto's en video's met de locatie's waar ze zijn gemaakt. U kunt deze instelling later wijzigen vanuit Locatie opslaan in de Camera-instellingen."</string>
     <string name="cam_strings_remote_touch_to_start_txt">Tikken om te beginnen</string>
     <string name="cam_strings_reset_color_brightness_txt">Kleur en helderheid resetten</string>
     <string name="cam_strings_reset_settings_confirm_title_txt">Standaardinstellingen van de camera herstellen?</string>
@@ -478,12 +489,12 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s vereist de volgende machtiging(en)</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Machtiging voor %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">De app vereist de volgende machtigingen om deze actie uit te voeren.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Ga naar App-info &gt; Toestemmingen om toestemmingen te verlenen.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Ga naar App-info > Toestemmingen om toestemmingen te verlenen.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Kan niet doorgaan</string>
-    <string name="cam_strings_runtime_permission_rationale_camera_txt">Om foto\'s en video\'s vast te leggen</string>
+    <string name="cam_strings_runtime_permission_rationale_camera_txt">"Om foto's en video's vast te leggen"</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Om locatie op te halen</string>
     <string name="cam_strings_runtime_permission_rationale_microphone_txt">Om geluid op te nemen</string>
-    <string name="cam_strings_runtime_permission_rationale_storage_txt">Om foto\'s en video\'s op te slaan</string>
+    <string name="cam_strings_runtime_permission_rationale_storage_txt">"Om foto's en video's op te slaan"</string>
     <string name="cam_strings_save_destination_ims_txt">Intern geheugen</string>
     <string name="cam_strings_save_destination_sd_txt">SD-kaart</string>
     <string name="cam_strings_save_destination_title_txt">Gegevensopslag</string>
@@ -525,12 +536,20 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Opgeslagen in intern geheugen</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">VERDER</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">De app vereist de volgende machtigingen om deze actie uit te voeren.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Om een SD-karat te gebruiken, heeft de camera toestemming nodig voor toegang tot de SD-kaart.\nVerander de dataopslag weer naar SD-kaart, of geef de camera op het volgende scherm toegang tot de SD-kaart.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Om een SD-karat te gebruiken, heeft de camera toestemming nodig voor toegang tot de SD-kaart.
+Verander de dataopslag weer naar SD-kaart, of geef de camera op het volgende scherm toegang tot de SD-kaart."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD-kaart niet beschikbaar</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Een nieuwe SD-kaart is gedetecteerd en heeft toestemmingen nodig.\n\nSelecteer in het volgende scherm de SD-kaart of DCIM-map om de SD-kaart als gegevensopslag te gebruiken.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Er is geen SD-kaart of DCIM-map geselecteerd. De SD-kaart kan niet worden gebruikt.\n\nOm toestemmingen te verlenen, verandert u eerst de opslaglocatie in SD-kaart of selecteert u de passende map op het volgende scherm.</string>
-    <string name="cam_strings_sd_permission_info_txt">Er is een nieuwe SD-kaart gedetecteerd die toestemmingen vereist.\nHet interne geheugen wordt daarom gebruikt als standaardgegevensopslag.\n\nGa naar de camera-instellingen en verander de opslagoptie in SD-kaart als u de SD-kaart als gegevensopslag wilt gebruiken.</string>
-    <string name="cam_strings_sd_permission_rationale_txt">Hiermee kunnen foto\'s en video\'s op de SD-kaart worden opgeslagen</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Een nieuwe SD-kaart is gedetecteerd en heeft toestemmingen nodig.
+
+Selecteer in het volgende scherm de SD-kaart of DCIM-map om de SD-kaart als gegevensopslag te gebruiken."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Er is geen SD-kaart of DCIM-map geselecteerd. De SD-kaart kan niet worden gebruikt.
+
+Om toestemmingen te verlenen, verandert u eerst de opslaglocatie in SD-kaart of selecteert u de passende map op het volgende scherm."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Er is een nieuwe SD-kaart gedetecteerd die toestemmingen vereist.
+Het interne geheugen wordt daarom gebruikt als standaardgegevensopslag.
+
+Ga naar de camera-instellingen en verander de opslagoptie in SD-kaart als u de SD-kaart als gegevensopslag wilt gebruiken."</string>
+    <string name="cam_strings_sd_permission_rationale_txt">"Hiermee kunnen foto's en video's op de SD-kaart worden opgeslagen"</string>
     <string name="cam_strings_select_picture_txt">Foto selecteren</string>
     <string name="cam_strings_self_timer_05_txt">0,5 sec.</string>
     <string name="cam_strings_self_timer_10_txt">10 sec.</string>
@@ -540,24 +559,28 @@
     <string name="cam_strings_self_timer_front_hint_3_txt">Zelfontspanner: 3 sec.</string>
     <string name="cam_strings_self_timer_front_hint_off_txt">Zelfontspanner: Uit</string>
     <string name="cam_strings_self_timer_hint_countdown_txt">Kijk naar de camera</string>
-    <string name="cam_strings_self_timer_photo_txt">Zelfontspanner (foto\'s)</string>
+    <string name="cam_strings_self_timer_photo_txt">"Zelfontspanner (foto's)"</string>
     <string name="cam_strings_self_timer_txt">Zelfontspanner</string>
     <string name="cam_strings_settings_auto_txt">Automatisch</string>
     <string name="cam_strings_settings_off_txt">Uit</string>
     <string name="cam_strings_settings_on_txt">Aan</string>
-    <string name="cam_strings_settings_save_photos_all_txt">Alle foto\'s</string>
+    <string name="cam_strings_settings_save_photos_all_txt">"Alle foto's"</string>
     <string name="cam_strings_settings_save_photos_one_txt">Geselecteerde foto</string>
     <string name="cam_strings_settings_save_photos_txt">Opslaan</string>
     <string name="cam_strings_shortcut_video_camera_txt">Videocamera</string>
     <string name="cam_strings_shutter_trigger_txt">Autom. opname</string>
     <string name="cam_strings_side_touch_not_supported_txt">Zijsensor wordt op dit scherm niet ondersteund</string>
     <string name="cam_strings_side_touch_on_title_txt">Zijsensor</string>
-    <string name="cam_strings_side_touch_on_txt">Om deze functie te gebruiken, gaat u naar Instellingen &gt; Weergave en schakelt u Zijsensor in. Nu inschakelen?</string>
+    <string name="cam_strings_side_touch_on_txt">Om deze functie te gebruiken, gaat u naar Instellingen > Weergave en schakelt u Zijsensor in. Nu inschakelen?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Zijsensor</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Maak een foto of video door op de sensor aan de zijkant van het scherm te dubbeltikken in plaats van op de sluiterknop. U kunt ook in- en uitzoomen door met uw vinger over deze zijsensor te schuiven.\nZowel de foto- als de videomodus ondersteunen deze functie. Schakel de functie uit via Zijsensor in de camera-instellingen.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Maak een foto of video door in de staande weergave op de sensor aan de zijkant van het scherm te dubbeltikken in plaats van op de sluiterknop. U kunt ook in- en uitzoomen door met uw vinger langs deze zijsensor te schuiven.\nZowel de foto- als de videomodus ondersteunen deze functie. Schakel de functie uit via Zijsensor in de camera-instellingen.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Maak een foto of video door in de staande weergave op de sensor aan de zijkant van het scherm te dubbeltikken in plaats van op de sluiterknop.\nZowel de foto- als de videomodus ondersteunen deze functie. Schakel deze functie uit via Zijsensor in de camera-instellingen.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Maak een foto of video door op de sensor aan de zijkant van het scherm te dubbeltikken in plaats van op de sluiterknop.\nZowel de foto- als de videomodus ondersteunen deze functie. Schakel deze functie uit via Zijsensor in de camera-instellingen.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Maak een foto of video door op de sensor aan de zijkant van het scherm te dubbeltikken in plaats van op de sluiterknop. U kunt ook in- en uitzoomen door met uw vinger over deze zijsensor te schuiven.
+Zowel de foto- als de videomodus ondersteunen deze functie. Schakel de functie uit via Zijsensor in de camera-instellingen."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Maak een foto of video door in de staande weergave op de sensor aan de zijkant van het scherm te dubbeltikken in plaats van op de sluiterknop. U kunt ook in- en uitzoomen door met uw vinger langs deze zijsensor te schuiven.
+Zowel de foto- als de videomodus ondersteunen deze functie. Schakel de functie uit via Zijsensor in de camera-instellingen."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Maak een foto of video door in de staande weergave op de sensor aan de zijkant van het scherm te dubbeltikken in plaats van op de sluiterknop.
+Zowel de foto- als de videomodus ondersteunen deze functie. Schakel deze functie uit via Zijsensor in de camera-instellingen."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Maak een foto of video door op de sensor aan de zijkant van het scherm te dubbeltikken in plaats van op de sluiterknop.
+Zowel de foto- als de videomodus ondersteunen deze functie. Schakel deze functie uit via Zijsensor in de camera-instellingen."</string>
     <string name="cam_strings_side_touch_txt">Zijsensor</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Opnamestijl en schermresolutie kunnen worden veranderd in Camera-instellingen</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Superlangzaam (één opname)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Superslow-motion</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">U kunt de fps en opnamestijl van slow-motion veranderen</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Meer opties</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Neem een dierbaar moment direct op in slow-motion met %1$s fps door op de knop in het midden van het scherm te tikken.\nOpnemen bij heldere omstandigheden resulteert in een betere video.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Neem een dierbaar moment direct op in slow-motion met %1$s fps door op de knop in het midden van het scherm te tikken.
+Opnemen bij heldere omstandigheden resulteert in een betere video."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Neem een mooi moment op met %1$s fps door op de middelste knop te tikken</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Neem een dierbaar moment direct op in slow-motion met %1$s fps door op de knop in het midden van het scherm te tikken</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Superslow-motion (één opname)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Slow-motion</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Opnemen</string>
     <string name="cam_strings_slow_motion_standard_txt">Slow-motion</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Speel een dierbaar moment af in slow-motion voor een indrukwekkende video\nOpnemen bij heldere omstandigheden resulteert in een betere video.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Speel een dierbaar moment af in slow-motion voor een indrukwekkende video
+Opnemen bij heldere omstandigheden resulteert in een betere video."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">U kunt video op verschillende snelheden opnemen door naar %1$s fps te schakelen</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Tik op het juiste moment de knop in het midden</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Slow-motion opgenomen</string>
@@ -603,21 +628,21 @@
     <string name="cam_strings_superior_auto_brightness_txt">Helderheid</string>
     <string name="cam_strings_superior_auto_color_txt">Kleur</string>
     <string name="cam_strings_superior_auto_fusion_tutorial_title_txt">Dubbele camera</string>
-    <string name="cam_strings_superior_auto_fusion_tutorial_txt">U kunt schitterende foto\'s maken met weinig ruis door \'s avonds of in een slecht verlichte kamer de dubbele camera te gebruiken. De camera schakelt automatisch tussen de enkele en dubbele modus, afhankelijk van de scènes die u met ultrahoge gevoeligheid opneemt.</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_txt">"U kunt schitterende foto's maken met weinig ruis door 's avonds of in een slecht verlichte kamer de dubbele camera te gebruiken. De camera schakelt automatisch tussen de enkele en dubbele modus, afhankelijk van de scènes die u met ultrahoge gevoeligheid opneemt."</string>
     <string name="cam_strings_sw_licence_title_txt">Softwarelicenties</string>
     <string name="cam_strings_take_photo_txt">Foto maken</string>
     <string name="cam_strings_term_of_use_accept_txt">Accepteren</string>
-    <string name="cam_strings_term_of_use_consent_txt">Ik ga akkoord met de &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;voorwaarden&lt;/a&gt; van Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Ik ga akkoord met de &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">voorwaarden&lt;/a> van Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Voor het gebruik van deze service kunnen kosten voor mobiele gegevens in rekening worden gebracht, afhankelijk van uw data-abonnement.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile verzamelt de gehashte UDID (Unique Device Identifier) van uw Android ID, gegevens op basis van locatie en een tijdstempel om u te kunnen voorzien van gepaste resultaten als onderdeel van de service, en om de service te kunnen verbeteren.</string>
     <string name="cam_strings_term_of_use_decline_txt">Weigeren</string>
     <string name="cam_strings_term_of_use_title_txt">Algemene voorwaarden</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Gebruiksvoorwaarden&lt;/a&gt;</string>
-    <string name="cam_strings_timeshift_cancel_selection_txt">Foto\'s deselecteren</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Gebruiksvoorwaarden&lt;/a></string>
+    <string name="cam_strings_timeshift_cancel_selection_txt">"Foto's deselecteren"</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Kan niet opslaan</string>
     <string name="cam_strings_timeshift_save_complete_txt">Opgeslagen</string>
     <string name="cam_strings_timeshift_save_selection_txt">Apart opslaan</string>
-    <string name="cam_strings_timeshift_select_images_txt">Foto\'s selecteren</string>
+    <string name="cam_strings_timeshift_select_images_txt">"Foto's selecteren"</string>
     <string name="cam_strings_timeshift_share_txt">Delen</string>
     <string name="cam_strings_touch_capturing_always_txt">Aan</string>
     <string name="cam_strings_touch_capturing_only_front_txt">Alleen camera aan voorzijde</string>
@@ -632,20 +657,22 @@
     <string name="cam_strings_tutorial_button_txt">Ik snap het</string>
     <string name="cam_strings_tutorial_title_txt">Schakelmodus</string>
     <string name="cam_strings_tutorial_txt">Veeg om de opnamemodus te wijzigen, zoals Video of Handmatig</string>
-    <string name="cam_strings_unable_to_operate_txt">Kan niet functioneren als foto\'s worden opgeslagen</string>
+    <string name="cam_strings_unable_to_operate_txt">"Kan niet functioneren als foto's worden opgeslagen"</string>
     <string name="cam_strings_unlock_button_txt">Ontgrendelen</string>
     <string name="cam_strings_use_of_camera_not_authorized_txt">Gebruik van camera om beveiligingsredenen beperkt</string>
     <string name="cam_strings_video_codec_for_4k_txt">Bestandstype voor opname</string>
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Voor stabiele 4K-video-opnames mag u deze instelling niet veranderen, tenzij u een high-speed SD-kaart gebruikt (UHS Speed Class 1 of hoger of Speed Class 10 wordt aangeraden).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Voor stabiele Timeshift-video-opnames mag u deze instelling niet veranderen, tenzij u een high-speed SD-kaart gebruikt (UHS Speed Class 1 of hoger of Speed Class 10 wordt aangeraden). Toch veranderen?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Voor stabiele slow-motion video-opnames mag u deze instelling niet veranderen, tenzij u een high-speed SD-kaart gebruikt (UHS Speed Class 1 of hoger of Speed Class 10 wordt aangeraden).</string>
-    <string name="cam_strings_video_explanatory_txt">Voor stabiele video-opnames wordt aanbevolen dat u de gegevensopslag verandert in Interne opslag. Wilt u dit nu veranderen?\n\nAls u de SD-kaart als gegevensopslag blijft gebruiken, zorg dan dat u een high-speed SD-kaart gebruikt (UHS Speed Class 1 of hoger of Speed Class 10 wordt aangeraden).</string>
+    <string name="cam_strings_video_explanatory_txt">"Voor stabiele video-opnames wordt aanbevolen dat u de gegevensopslag verandert in Interne opslag. Wilt u dit nu veranderen?
+
+Als u de SD-kaart als gegevensopslag blijft gebruiken, zorg dan dat u een high-speed SD-kaart gebruikt (UHS Speed Class 1 of hoger of Speed Class 10 wordt aangeraden)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Dubbele camera</string>
-    <string name="cam_strings_video_fusion_tutorial_0_txt">U kunt schitterende video\'s maken met weinig ruis door \'s avonds of in een slecht verlichte kamer de dubbele camera te gebruiken. De camera schakelt automatisch tussen de enkele en dubbele modus, afhankelijk van de scènes die u met ultrahoge gevoeligheid opneemt.</string>
+    <string name="cam_strings_video_fusion_tutorial_0_txt">"U kunt schitterende video's maken met weinig ruis door 's avonds of in een slecht verlichte kamer de dubbele camera te gebruiken. De camera schakelt automatisch tussen de enkele en dubbele modus, afhankelijk van de scènes die u met ultrahoge gevoeligheid opneemt."</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Video-opname met de dubbele camera</string>
     <string name="cam_strings_video_fusion_tutorial_1_txt">Houd minimaal 1 meter afstand van het object wanneer u een video-opname maakt met de dubbele camera. Als u dichterbij komt, kan dit zorgen voor een verschuiving in het gezichtspunt of de kleur als u ultrahoge gevoeligheid gebruikt.</string>
     <string name="cam_strings_video_fusion_tutorial_2_title_txt">Dubbele camera gebruiken voor video-opnamen?</string>
-    <string name="cam_strings_video_fusion_tutorial_2_txt">Tik op Nee en schakel naar de enkele camera om geweldige close-upfoto\'s te maken. U kunt op elk moment terugschakelen naar de dubbele camera door op de knop in de zoeker te tikken.</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">"Tik op Nee en schakel naar de enkele camera om geweldige close-upfoto's te maken. U kunt op elk moment terugschakelen naar de dubbele camera door op de knop in de zoeker te tikken."</string>
     <string name="cam_strings_video_hdr_hlg_txt">HDR is ingeschakeld</string>
     <string name="cam_strings_video_hdr_setting_hlg_txt">HDR</string>
     <string name="cam_strings_video_hdr_title_txt">HDR video</string>

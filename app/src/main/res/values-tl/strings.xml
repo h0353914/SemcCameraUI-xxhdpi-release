@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Hindi makumpleto ang pagkuha. Mangyaring mag-pan nang mas mabagal.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Hindi makumpleto ang pagkuha. Mangyaring mag-pan nang mas mabilis.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Kumuha ng panoramic na litrato sa pag-sweep ng camera mo</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Nililikha ang mga sumusunod na file:\n- Maraming Angulong larawan\n- 3D na larawan\nPaalala: Naglalaman ang mga file na ito ng malabong bahagi.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Nililikha ang mga sumusunod na file:\n- Maraming Angulong larawan\n- 3D na larawan</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Pinoproseso...\nNaglalaman ang larawang ito ng malabong bahagi</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Nililikha ang mga sumusunod na file:
+- Maraming Angulong larawan
+- 3D na larawan
+Paalala: Naglalaman ang mga file na ito ng malabong bahagi."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Nililikha ang mga sumusunod na file:
+- Maraming Angulong larawan
+- 3D na larawan"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Pinoproseso...
+Naglalaman ang larawang ito ng malabong bahagi"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Sine-save ang imahe</string>
     <string name="cam_3d_strings_dialog_processing_txt">Pinoproseso...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Pakihintay ng ilang segundo upang ilunsad ang 3D camera.</string>
@@ -149,7 +155,7 @@
     <string name="cam_strings_auto_scene_recognition_txt">Awtomatikong pagkilala sa tanawin</string>
     <string name="cam_strings_auto_upload_all_title_txt">Auto upload</string>
     <string name="cam_strings_auto_upload_all_txt">Auto upload</string>
-    <string name="cam_strings_balloon_tips_modeselector_title_txt">Sumubok ng iba\'t ibang mode sa pagkuha</string>
+    <string name="cam_strings_balloon_tips_modeselector_title_txt">"Sumubok ng iba't ibang mode sa pagkuha"</string>
     <string name="cam_strings_balloon_tips_modeselector_txt">Tapikin ito upang pumili ng ibang mode</string>
     <string name="cam_strings_balloon_tips_timeshift_title_txt">Piliin ang pinakamagandang sandali</string>
     <string name="cam_strings_balloon_tips_timeshift_txt">Hanapin pinakamagandang kuha sa pag-slide ng mga thumbnail pataas o pababa</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Gawing makinis ang iyong balat. Gumagana ang effect sa mga application na gumagamit ng camera sa harapan. Maaari itong malapat sa mga larawan at video. Maaari mo ring isaayos ang antas.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Pagsasaayos ng antas</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Makinis na balat</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Hindi masimulan ang app.\nTiyaking naka-install ang pinakabagong bersyon ng %1$s at naka-enable ito sa iyong device.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Hindi masimulan ang app.
+Tiyaking naka-install ang pinakabagong bersyon ng %1$s at naka-enable ito sa iyong device."</string>
     <string name="cam_strings_gridline_txt">Mga grid line</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Itapat ang iyong palad sa camera. Mao-on ang self-timer kapag natukoy ang iyong palad. Upang mas madaling matukoy, ibuka nang maayos ang iyong kamay.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Itapat ang iyong palad sa camera</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Mga karaniwang setting</string>
     <string name="cam_strings_more_txt">Higit pa</string>
     <string name="cam_strings_multi_window_txt">I-drag ang gitna ng split bar upang ilipat sa full screen ang %1$s upang gamitin ang</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Nakakonekta na ngayon ang isa pang device.\nGusto mo bang ibahagi ang larawan sa pamamagitan ng viewfinder gamit ang device?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Nakakonekta na ngayon ang isa pang device.
+Gusto mo bang ibahagi ang larawan sa pamamagitan ng viewfinder gamit ang device?"</string>
     <string name="cam_strings_multicam_add_device_txt">Dagdag device</string>
     <string name="cam_strings_multicam_add_more_txt">Magdagdag pa</string>
     <string name="cam_strings_multicam_apply_txt">Tapos na</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Metering</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Predicted</string>
     <string name="cam_strings_predictive_capture_txt">Predictive Capture</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Awtomatikong nailunsad ang camera sa pamamagitan ng pag-detect sa iyong paggalaw na pag-angat ng iyong telepono sa landscape mode at pagtapat nito sa isang bagay.\nMaaari mong piliin ang paborito mong paraan na gamitin ang tampok na ito mula sa Smart launch sa mga setting ng camera.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Awtomatikong nailunsad ang camera sa pamamagitan ng pag-detect sa iyong paggalaw na pag-angat ng iyong telepono sa landscape mode at pagtapat nito sa isang bagay.
+Maaari mong piliin ang paborito mong paraan na gamitin ang tampok na ito mula sa Smart launch sa mga setting ng camera."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Mag-touch sa loob ng bilog para i-capture</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">I-touch ang screen para i-capture</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Tumapik sa loob ng bilog para tingnan nang fullscreen</string>
     <string name="cam_strings_predictive_launch_guide_txt">Mag-touch sa loob ng bilog para ilunsad ang camera</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">I-touch para ilunsad, i-capture</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">I-touch para ilunsad</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Maaari mong ilunsad ang camera nang mabilis. Mabilis na iangat ang iyong device sa landscape mode at itutok ang camera sa isang bagay. Awtomatikong ilulunsad ang camera.\nMaaari mong piliin ang paborito mong paraang gamitin ang tampok na ito mula sa Smart na paglunsad sa mga setting ng camera.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Maaari mong ilunsad ang camera nang mabilis. Mabilis na iangat ang iyong device sa landscape mode at itutok ang camera sa isang bagay. Awtomatikong ilulunsad ang camera.
+Maaari mong piliin ang paborito mong paraang gamitin ang tampok na ito mula sa Smart na paglunsad sa mga setting ng camera."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Smart na paglunsad</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Maaari mong ilunsad ang camera nang mabilis. I-swing pataas ang iyong device sa landscape mode at itutok ang camera sa isang bagay. Awtomatikong ilulunsad ang camera.\nMaaari mong i-off ang feature na ito sa Smart na paglunsad sa mga setting ng camera.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Maaari mong ilunsad ang camera nang mabilis. I-swing pataas ang iyong device sa landscape mode at itutok ang camera sa isang bagay. Awtomatikong ilulunsad ang camera.
+Maaari mong i-off ang feature na ito sa Smart na paglunsad sa mga setting ng camera."</string>
     <string name="cam_strings_predictive_launch_txt">Smart na paglunsad</string>
     <string name="cam_strings_preview_always_txt">I-on</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 segundo</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">Kailangan ng %1$s ang (mga) sumusunod na pahintulot</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Pahintulot sa %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Kailangan ng app ang (mga) sumusunod na pahintulot para magawa ito.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Upang magbigay ng mga pahintulot, pumunta sa Impormasyon ng app &gt; Mga Pahintulot.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Upang magbigay ng mga pahintulot, pumunta sa Impormasyon ng app > Mga Pahintulot.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Hindi makapagpatuloy</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Para kumuha ng mga larawan at video</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Para kunin ang lokasyon</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Naka-save sa panloob na storage</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">LUMIPAT</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Kailangan ng app ang (mga) sumusunod na pahintulot para magawa ito.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Para makagamit ng SD card, kailangan ng camera ng mga pahintulot para ma-access ang SD card.\nGawing SD card ulit ang data storage, o bigyan ang camera ng access sa SD card sa susunod na screen.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Para makagamit ng SD card, kailangan ng camera ng mga pahintulot para ma-access ang SD card.
+Gawing SD card ulit ang data storage, o bigyan ang camera ng access sa SD card sa susunod na screen."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">Hindi available ang SD card</string>
-    <string name="cam_strings_sd_permission_info_2_txt">May na-detect na bagong SD card na nangangailangan ng mga pahintulot.\n\nPara magamit ang SD card bilang data storage, pakipili ang SD card o DCIM directory sa susunod na screen.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Hindi napili ang SD card o DCIM directory. Hindi magagamit ang SD card.\n\nPara magbigay ng mga pahintulot, magsimula sa pamamagitan ng pagbabago sa lokasyon ng pag-save sa SD card, o piliin ang angkop na directory sa susunod na screen.</string>
-    <string name="cam_strings_sd_permission_info_txt">Naka-detect ng bagong SD card na nangangailangan ng mga pahintulot.\nDahil dito, ang internal na storage ng device ang gagamitin bilang default na storage ng data.\n\nPara magamit ang SD card bilang storage ng data, pumunta sa mga setting ng camera at gawing SD card ang opsyon sa storage.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"May na-detect na bagong SD card na nangangailangan ng mga pahintulot.
+
+Para magamit ang SD card bilang data storage, pakipili ang SD card o DCIM directory sa susunod na screen."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Hindi napili ang SD card o DCIM directory. Hindi magagamit ang SD card.
+
+Para magbigay ng mga pahintulot, magsimula sa pamamagitan ng pagbabago sa lokasyon ng pag-save sa SD card, o piliin ang angkop na directory sa susunod na screen."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Naka-detect ng bagong SD card na nangangailangan ng mga pahintulot.
+Dahil dito, ang internal na storage ng device ang gagamitin bilang default na storage ng data.
+
+Para magamit ang SD card bilang storage ng data, pumunta sa mga setting ng camera at gawing SD card ang opsyon sa storage."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Para mag-save ng mga larawan at video sa SD card</string>
     <string name="cam_strings_select_picture_txt">Pumili ng larawan</string>
     <string name="cam_strings_self_timer_05_txt">0.5 seg.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Awto pagkuha</string>
     <string name="cam_strings_side_touch_not_supported_txt">Hindi sinusuportahan ang Side sense sa screen na ito</string>
     <string name="cam_strings_side_touch_on_title_txt">Side sense</string>
-    <string name="cam_strings_side_touch_on_txt">Para gamitin ang function na ito, pumunta sa Mga Setting &gt; Display at i-on ang Side sense. I-enable ngayon?</string>
+    <string name="cam_strings_side_touch_on_txt">Para gamitin ang function na ito, pumunta sa Mga Setting > Display at i-on ang Side sense. I-enable ngayon?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Side sense</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Maaari kang kumuha ng litrato o video sa pamamagitan ng simpleng pag-double-tap sa sensor sa gilid ng screen sa halip na sa shutter button. Maaari ka ring mag-zoom in o mag-zoom out sa pamamagitan ng pag-slide sa iyong daliri sa side sensor na ito.\nSinusuportahan ng photo at video mode ang function na ito. Maaari mo itong i-off sa Side sense sa mga setting ng camera.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Maaari kang kumuha ng litrato o video sa pamamagitan ng simpleng pag-double-tap sa sensor sa gilid ng screen sa portrait view sa halip na sa shutter button. Maaari ka ring mag-zoom in o mag-zoom out sa pamamagitan ng pag-slide sa iyong daliri sa side sensor na ito.\nSinusuportahan ng photo at video mode ang function na ito. Maaari mo itong i-off sa Side sense sa mga setting ng camera.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Maaari kang kumuha ng litrato o video sa pamamagitan ng simpleng pag-double-tap sa sensor sa gilid ng screen sa portrait view sa halip na sa shutter button.\nSinusuportahan ng photo at video mode ang function na ito. Maaari mo itong i-off sa Side sense sa mga setting ng camera.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Maaari kang kumuha ng litrato o video sa pamamagitan ng simpleng pag-double-tap sa sensor sa gilid ng screen sa halip na sa shutter button.\nSinusuportahan ng photo at video mode ang function na ito. Maaari mo itong i-off sa Side sense sa mga setting ng camera.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Maaari kang kumuha ng litrato o video sa pamamagitan ng simpleng pag-double-tap sa sensor sa gilid ng screen sa halip na sa shutter button. Maaari ka ring mag-zoom in o mag-zoom out sa pamamagitan ng pag-slide sa iyong daliri sa side sensor na ito.
+Sinusuportahan ng photo at video mode ang function na ito. Maaari mo itong i-off sa Side sense sa mga setting ng camera."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Maaari kang kumuha ng litrato o video sa pamamagitan ng simpleng pag-double-tap sa sensor sa gilid ng screen sa portrait view sa halip na sa shutter button. Maaari ka ring mag-zoom in o mag-zoom out sa pamamagitan ng pag-slide sa iyong daliri sa side sensor na ito.
+Sinusuportahan ng photo at video mode ang function na ito. Maaari mo itong i-off sa Side sense sa mga setting ng camera."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Maaari kang kumuha ng litrato o video sa pamamagitan ng simpleng pag-double-tap sa sensor sa gilid ng screen sa portrait view sa halip na sa shutter button.
+Sinusuportahan ng photo at video mode ang function na ito. Maaari mo itong i-off sa Side sense sa mga setting ng camera."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Maaari kang kumuha ng litrato o video sa pamamagitan ng simpleng pag-double-tap sa sensor sa gilid ng screen sa halip na sa shutter button.
+Sinusuportahan ng photo at video mode ang function na ito. Maaari mo itong i-off sa Side sense sa mga setting ng camera."</string>
     <string name="cam_strings_side_touch_txt">Side sense</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Maaaring baguhin ang recording style at screen resolution sa mga setting ng Camera</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Super slow (one-shot)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Super slow motion</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Maaari mong baguhin ang fps at estilo ng recording para sa slow motion</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Higit pang opsyon</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Magrekord kaagad ng mahalagang sandali sa %1$s fps slow motion sa pagtapik sa button sa gitna ng screen.\nMas mapapaganda ang video kapag nagrekord sa maliwanag na lugar.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Magrekord kaagad ng mahalagang sandali sa %1$s fps slow motion sa pagtapik sa button sa gitna ng screen.
+Mas mapapaganda ang video kapag nagrekord sa maliwanag na lugar."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">I-record ang mahahalagang sandali sa %1$s fps sa pagtapik sa gitnang button</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Magrekord kaagad ng mahalagang sandali sa %1$s fps slow motion sa pamamagitan ng pagtapik sa button sa gitna ng screen</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Super slow motion (isang kuha)</string>
@@ -576,8 +600,9 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Slow motion</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Paano magrekord</string>
     <string name="cam_strings_slow_motion_standard_txt">Slow motion</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Gumawa ng magandang video sa pag-slow motion sa mahalagang sandali.\nMas mapapaganda ang video kapag nagrekord sa maliwanag na lugar.</string>
-    <string name="cam_strings_slow_motion_super_hint_1_txt">Maaari kang magrekord ng video sa iba\'t ibang bilis sa paglipat sa %1$s fps</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Gumawa ng magandang video sa pag-slow motion sa mahalagang sandali.
+Mas mapapaganda ang video kapag nagrekord sa maliwanag na lugar."</string>
+    <string name="cam_strings_slow_motion_super_hint_1_txt">"Maaari kang magrekord ng video sa iba't ibang bilis sa paglipat sa %1$s fps"</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Tapikin ang button sa gitna sa tamang sandali</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Nakapagrekord ng slow motion</string>
     <string name="cam_strings_slow_motion_super_tutorial_1_txt">Gumawa ng magandang video gamit ang slow motion</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Mga Lisensya ng Software</string>
     <string name="cam_strings_take_photo_txt">Kumuha ng larawan</string>
     <string name="cam_strings_term_of_use_accept_txt">Tanggapin</string>
-    <string name="cam_strings_term_of_use_consent_txt">Sang-ayon ako sa &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Mga Tuntunin ng Paggamit&lt;/a&gt; ng Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Sang-ayon ako sa &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Mga Tuntunin ng Paggamit&lt;/a> ng Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Ang paggamit mo ng serbisyong ito ay maaaring magresulta sa mga singil sa mobile data depende sa subscription ng iyong data plan.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Kokolektahin ng Sony Mobile ang iyong naka-hash na Android ID na pantukoy ng natatanging device, data na batay sa lokasyon at timestamp upang magbigay sa iyo ng mga naaakmang resulta bilang bahagi ng serbisyo at para sa mga pagpapahusay ng serbisyo.</string>
     <string name="cam_strings_term_of_use_decline_txt">Tanggihan</string>
     <string name="cam_strings_term_of_use_title_txt">Mga Tuntunin at Kundisyon</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Mga Tuntunin ng Paggamit&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Mga Tuntunin ng Paggamit&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">I-deselect ang mga larawan</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Hindi na-save</string>
     <string name="cam_strings_timeshift_save_complete_txt">Na-save</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Para sa stable na pagre-record ng 4K na video, hindi mo dapat palitan ang setting na ito maliban kung gumagamit ka ng high-speed na SD card (UHS Speed Class 1 o mas mataas, o inirerekomenda ang Speed Class 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Para sa stable na pagre-record ng Timeshift na video, hindi mo dapat palitan ang setting na ito maliban kung gumagamit ka ng high-speed na SD card (UHS Speed Class 1 o mas mataas, o inirerekomenda ang Speed Class 10). Palitan pa rin?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Para sa stable na pagre-record ng slow motion na video, huwag palitan ang setting na ito maliban kung gumagamit ka ng high-speed na SD card (UHS Speed Class 1 o mas mataas, o inirerekomenda ang Speed Class 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Para sa stable na pagre-record ng video, inirerekomenda naming ilipat mo ang storage ng data sa Internal storage. Gusto mo bang ilipat ngayon?\n\nKung patuloy mong gagamitin ang SD card bilang storage ng data, tiyaking gumamit ng high-speed na SD card (UHS Speed Class 1 o mas mataas, o inirerekomenda ang Speed Class 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Para sa stable na pagre-record ng video, inirerekomenda naming ilipat mo ang storage ng data sa Internal storage. Gusto mo bang ilipat ngayon?
+
+Kung patuloy mong gagamitin ang SD card bilang storage ng data, tiyaking gumamit ng high-speed na SD card (UHS Speed Class 1 o mas mataas, o inirerekomenda ang Speed Class 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Dual camera</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Makakapag-record ka ng magagandang video na may mababang noise sa pamamagitan ng paggamit sa dual camera, kahit sa gabi o sa madilim na silid. Awtomatikong nagpapalipat-lipat ang camera sa iisang camera at dual camera batay sa mga eksenang ire-record nang may Ultra-high sensitivity.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Pagre-record ng video gamit ang dual camera</string>

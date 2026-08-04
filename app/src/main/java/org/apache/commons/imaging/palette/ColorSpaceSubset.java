@@ -1,9 +1,11 @@
 package org.apache.commons.imaging.palette;
 
 import java.io.PrintStream;
+import java.io.Serializable;
+import java.util.Comparator;
 
 class ColorSpaceSubset {
-    public static final ColorSpaceSubset$RgbComparator RGB_COMPARATOR = new ColorSpaceSubset$RgbComparator();
+    public static final RgbComparator RGB_COMPARATOR = new RgbComparator();
     private int index;
     final int[] maxs;
     final int[] mins;
@@ -86,9 +88,9 @@ class ColorSpaceSubset {
                 int i4 = this.mins[2];
                 for (int i5 = 2; i4 <= this.maxs[i5]; i5 = 2) {
                     int i6 = iArr[(i4 << (this.precision * i5)) | (i3 << (this.precision * i2)) | (i << (this.precision * 0))];
-                    j += (long) ((i << (8 - this.precision)) * i6);
-                    j2 += (long) (i6 * (i3 << (8 - this.precision)));
-                    j3 += (long) (i6 * (i4 << (8 - this.precision)));
+                    j += (i << (8 - this.precision)) * i6;
+                    j2 += i6 * (i3 << (8 - this.precision));
+                    j3 += i6 * (i4 << (8 - this.precision));
                     i4++;
                     i2 = 1;
                 }
@@ -96,7 +98,7 @@ class ColorSpaceSubset {
                 i2 = 1;
             }
         }
-        this.rgb = (int) ((((j3 / ((long) this.total)) & 255) << 0) | (((j / ((long) this.total)) & 255) << 16) | (((j2 / ((long) this.total)) & 255) << 8));
+        this.rgb = (int) ((((j3 / this.total) & 255) << 0) | (((j / this.total) & 255) << 16) | (((j2 / this.total) & 255) << 8));
     }
 
     public final int getIndex() {
@@ -105,5 +107,14 @@ class ColorSpaceSubset {
 
     public final void setIndex(int i) {
         this.index = i;
+    }
+
+    public static class RgbComparator implements Comparator<ColorSpaceSubset>, Serializable {
+        private static final long serialVersionUID = 509214838111679029L;
+
+        @Override // java.util.Comparator
+        public int compare(ColorSpaceSubset colorSpaceSubset, ColorSpaceSubset colorSpaceSubset2) {
+            return colorSpaceSubset.rgb - colorSpaceSubset2.rgb;
+        }
     }
 }

@@ -1,16 +1,18 @@
 package com.sonyericsson.cameracommon.interaction;
 
 import android.graphics.Point;
+import android.graphics.PointF;
 import android.os.Handler;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class TouchMoveAndStopDetector {
     private static final float DIRECTION_TOLERANCE = 1.0471976f;
     public static final String TAG = "TouchMoveAndStopDetector";
-    private TouchMoveAndStopDetector$TouchStopDetectorListener mListener;
+    private TouchStopDetectorListener mListener;
     private final int mTouchSlop;
     private Timer mTouchStopDetectorTimer;
-    private TouchMoveAndStopDetector$TouchStopDetectorTimerTask mTouchStopDetectorTimerTask;
+    private TouchStopDetectorTimerTask mTouchStopDetectorTimerTask;
     private int TOUCH_STOP_DETECTION_TIMER_INTERVAL = 200;
     private Handler mUiThreadHandler = new Handler();
     private Point mDownPos = new Point(0, 0);
@@ -21,44 +23,10 @@ public class TouchMoveAndStopDetector {
     private Point mLatestCheckedTrackVec = new Point(0, 0);
     private boolean mIsFingerAlreadyMoved = false;
 
-    static /* synthetic */ Point access$100(TouchMoveAndStopDetector touchMoveAndStopDetector) {
-        return touchMoveAndStopDetector.mCurrentTouchPos;
-    }
+    public interface TouchStopDetectorListener {
+        void onSingleTouchMoveDetected(Point point, Point point2, Point point3);
 
-    static /* synthetic */ Point access$1000(TouchMoveAndStopDetector touchMoveAndStopDetector) {
-        return touchMoveAndStopDetector.mDownPos;
-    }
-
-    static /* synthetic */ Point access$200(TouchMoveAndStopDetector touchMoveAndStopDetector) {
-        return touchMoveAndStopDetector.mLatestCheckedPos;
-    }
-
-    static /* synthetic */ Point access$300(TouchMoveAndStopDetector touchMoveAndStopDetector) {
-        return touchMoveAndStopDetector.mLatestCheckedTrackVec;
-    }
-
-    static /* synthetic */ void access$400(TouchMoveAndStopDetector touchMoveAndStopDetector, int i, int i2, Point point) {
-        touchMoveAndStopDetector.updateLastCheckedParameters(i, i2, point);
-    }
-
-    static /* synthetic */ boolean access$500(TouchMoveAndStopDetector touchMoveAndStopDetector) {
-        return touchMoveAndStopDetector.mIsFingerAlreadyMoved;
-    }
-
-    static /* synthetic */ void access$600(TouchMoveAndStopDetector touchMoveAndStopDetector) {
-        touchMoveAndStopDetector.onTouchStopDetected();
-    }
-
-    static /* synthetic */ int access$700(TouchMoveAndStopDetector touchMoveAndStopDetector) {
-        return touchMoveAndStopDetector.mTouchSlop;
-    }
-
-    static /* synthetic */ TouchMoveAndStopDetector$TouchStopDetectorListener access$800(TouchMoveAndStopDetector touchMoveAndStopDetector) {
-        return touchMoveAndStopDetector.mListener;
-    }
-
-    static /* synthetic */ Point access$900(TouchMoveAndStopDetector touchMoveAndStopDetector) {
-        return touchMoveAndStopDetector.mPreviousTouchPos;
+        void onSingleTouchStopDetected(Point point, Point point2, Point point3);
     }
 
     public TouchMoveAndStopDetector(int i) {
@@ -70,8 +38,8 @@ public class TouchMoveAndStopDetector {
         this.mListener = null;
     }
 
-    public void setTouchStopDetectorListener(TouchMoveAndStopDetector$TouchStopDetectorListener touchMoveAndStopDetector$TouchStopDetectorListener) {
-        this.mListener = touchMoveAndStopDetector$TouchStopDetectorListener;
+    public void setTouchStopDetectorListener(TouchStopDetectorListener touchStopDetectorListener) {
+        this.mListener = touchStopDetectorListener;
     }
 
     public synchronized void startTouchStopDetection(int i, int i2) {
@@ -81,7 +49,7 @@ public class TouchMoveAndStopDetector {
         this.mIsFingerAlreadyMoved = false;
         killTimer();
         this.mTouchStopDetectorTimer = new Timer(true);
-        this.mTouchStopDetectorTimerTask = new TouchMoveAndStopDetector$TouchStopDetectorTimerTask(this, null);
+        this.mTouchStopDetectorTimerTask = new TouchStopDetectorTimerTask();
         this.mTouchStopDetectorTimer.scheduleAtFixedRate(this.mTouchStopDetectorTimerTask, this.TOUCH_STOP_DETECTION_TIMER_INTERVAL, this.TOUCH_STOP_DETECTION_TIMER_INTERVAL);
     }
 
@@ -123,14 +91,47 @@ public class TouchMoveAndStopDetector {
         }
     }
 
+    private class TouchStopDetectorTimerTask extends TimerTask {
+        private TouchStopDetectorTimerTask() {
+        }
+
+        @Override // java.util.TimerTask, java.lang.Runnable
+        public void run() {
+            int i = TouchMoveAndStopDetector.this.mCurrentTouchPos.x - TouchMoveAndStopDetector.this.mLatestCheckedPos.x;
+            int i2 = TouchMoveAndStopDetector.this.mCurrentTouchPos.y - TouchMoveAndStopDetector.this.mLatestCheckedPos.y;
+            Point point = new Point(i, i2);
+            float radianFrom2Vector = VectorCalculator.getRadianFrom2Vector(new PointF(point), new PointF(TouchMoveAndStopDetector.this.mLatestCheckedTrackVec));
+            TouchMoveAndStopDetector.this.updateLastCheckedParameters(TouchMoveAndStopDetector.this.mCurrentTouchPos.x, TouchMoveAndStopDetector.this.mCurrentTouchPos.y, point);
+            if (TouchMoveAndStopDetector.this.mIsFingerAlreadyMoved) {
+                if (i != 0 || i2 != 0) {
+                    if ((i * i) + (i2 * i2) >= TouchMoveAndStopDetector.this.mTouchSlop * TouchMoveAndStopDetector.this.mTouchSlop || Math.abs(radianFrom2Vector) < TouchMoveAndStopDetector.DIRECTION_TOLERANCE) {
+                        return;
+                    }
+                    TouchMoveAndStopDetector.this.onTouchStopDetected();
+                    return;
+                }
+                TouchMoveAndStopDetector.this.onTouchStopDetected();
+            }
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
     private void updateLastCheckedParameters(int i, int i2, Point point) {
         this.mLatestCheckedPos.set(i, i2);
         this.mLatestCheckedTrackVec.set(point.x, point.y);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void onTouchStopDetected() {
         this.mIsFingerAlreadyMoved = false;
         this.mTouchSlopAreaCenterPos.set(this.mCurrentTouchPos.x, this.mCurrentTouchPos.y);
-        this.mUiThreadHandler.post(new TouchMoveAndStopDetector$1(this));
+        this.mUiThreadHandler.post(new Runnable() { // from class: com.sonyericsson.cameracommon.interaction.TouchMoveAndStopDetector.1
+            @Override // java.lang.Runnable
+            public void run() {
+                if (TouchMoveAndStopDetector.this.mListener != null) {
+                    TouchMoveAndStopDetector.this.mListener.onSingleTouchStopDetected(TouchMoveAndStopDetector.this.mCurrentTouchPos, TouchMoveAndStopDetector.this.mPreviousTouchPos, TouchMoveAndStopDetector.this.mDownPos);
+                }
+            }
+        });
     }
 }

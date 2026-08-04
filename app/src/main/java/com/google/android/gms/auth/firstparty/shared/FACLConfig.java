@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzw;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class FACLConfig implements SafeParcelable {
     public static final zza CREATOR = new zza();
     final int version;

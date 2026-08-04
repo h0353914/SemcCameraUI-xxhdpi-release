@@ -3,10 +3,10 @@ package com.google.android.gms.common;
 import android.app.PendingIntent;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzb implements Parcelable$Creator<ConnectionResult> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzb implements Parcelable.Creator<ConnectionResult> {
     static void zza(ConnectionResult connectionResult, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, connectionResult.mVersionCode);
@@ -16,17 +16,9 @@ public class zzb implements Parcelable$Creator<ConnectionResult> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ConnectionResult createFromParcel(Parcel parcel) {
-        return zzac(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ConnectionResult[] newArray(int i) {
-        return zzbh(i);
-    }
-
-    public ConnectionResult zzac(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzac, reason: merged with bridge method [inline-methods] */
+    public ConnectionResult createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         PendingIntent pendingIntent = null;
@@ -55,10 +47,12 @@ public class zzb implements Parcelable$Creator<ConnectionResult> {
         if (parcel.dataPosition() == iZzap) {
             return new ConnectionResult(iZzg, iZzg2, pendingIntent, strZzp);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public ConnectionResult[] zzbh(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbh, reason: merged with bridge method [inline-methods] */
+    public ConnectionResult[] newArray(int i) {
         return new ConnectionResult[i];
     }
 }

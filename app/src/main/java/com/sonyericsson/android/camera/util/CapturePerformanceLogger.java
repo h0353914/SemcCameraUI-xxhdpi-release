@@ -1,9 +1,10 @@
 package com.sonyericsson.android.camera.util;
 
 import android.util.Log;
-import com.sonyericsson.cameracommon.storage.RequestFactory$RequestBuilder;
+import com.sonyericsson.cameracommon.storage.RequestFactory;
 import com.sonyericsson.cameracommon.storage.SavingRequest;
-import com.sonyericsson.cameracommon.storage.SavingTaskManager$SavedFileType;
+import com.sonyericsson.cameracommon.storage.SavingTaskManager;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,47 +13,47 @@ import java.util.Map;
 public class CapturePerformanceLogger {
     private static final String TAG = "CapturePerformance";
     private static int sNumOfBurstTaken;
-    private static final Map<Long, CapturePerformanceLogger$TimeLog> sCaptureTimeMap = new HashMap();
-    private static List<CapturePerformanceLogger$TimeLog> sBurstTimeList = new ArrayList();
+    private static final Map<Long, TimeLog> sCaptureTimeMap = new HashMap();
+    private static List<TimeLog> sBurstTimeList = new ArrayList();
 
     private CapturePerformanceLogger() {
     }
 
-    public static CapturePerformanceLogger$TimeLog create(RequestFactory$RequestBuilder requestFactory$RequestBuilder) {
-        CapturePerformanceLogger$TimeLog capturePerformanceLogger$TimeLog = new CapturePerformanceLogger$TimeLog(requestFactory$RequestBuilder.mCommonStatus.savedFileType);
+    public static TimeLog create(RequestFactory.RequestBuilder requestBuilder) {
+        TimeLog timeLog = new TimeLog(requestBuilder.mCommonStatus.savedFileType);
         synchronized (sCaptureTimeMap) {
-            sCaptureTimeMap.put(Long.valueOf(requestFactory$RequestBuilder.getDateTaken()), capturePerformanceLogger$TimeLog);
+            sCaptureTimeMap.put(Long.valueOf(requestBuilder.getDateTaken()), timeLog);
         }
-        return capturePerformanceLogger$TimeLog;
+        return timeLog;
     }
 
-    public static CapturePerformanceLogger$TimeLog create(SavingRequest savingRequest) {
-        CapturePerformanceLogger$TimeLog capturePerformanceLogger$TimeLog = new CapturePerformanceLogger$TimeLog();
+    public static TimeLog create(SavingRequest savingRequest) {
+        TimeLog timeLog = new TimeLog();
         synchronized (sCaptureTimeMap) {
-            sCaptureTimeMap.put(Long.valueOf(savingRequest.getDateTaken()), capturePerformanceLogger$TimeLog);
+            sCaptureTimeMap.put(Long.valueOf(savingRequest.getDateTaken()), timeLog);
         }
-        return capturePerformanceLogger$TimeLog;
+        return timeLog;
     }
 
-    public static CapturePerformanceLogger$TimeLog get(RequestFactory$RequestBuilder requestFactory$RequestBuilder) {
-        return sCaptureTimeMap.get(Long.valueOf(requestFactory$RequestBuilder.getDateTaken()));
+    public static TimeLog get(RequestFactory.RequestBuilder requestBuilder) {
+        return sCaptureTimeMap.get(Long.valueOf(requestBuilder.getDateTaken()));
     }
 
-    public static CapturePerformanceLogger$TimeLog get(SavingRequest savingRequest) {
+    public static TimeLog get(SavingRequest savingRequest) {
         return sCaptureTimeMap.get(Long.valueOf(savingRequest.getDateTaken()));
     }
 
-    public static void complete(RequestFactory$RequestBuilder requestFactory$RequestBuilder) {
-        sCaptureTimeMap.get(Long.valueOf(requestFactory$RequestBuilder.getDateTaken())).log();
-        sCaptureTimeMap.remove(Long.valueOf(requestFactory$RequestBuilder.getDateTaken()));
+    public static void complete(RequestFactory.RequestBuilder requestBuilder) {
+        sCaptureTimeMap.get(Long.valueOf(requestBuilder.getDateTaken())).log();
+        sCaptureTimeMap.remove(Long.valueOf(requestBuilder.getDateTaken()));
     }
 
     public static void complete(SavingRequest savingRequest) {
-        CapturePerformanceLogger$TimeLog capturePerformanceLogger$TimeLog = sCaptureTimeMap.get(Long.valueOf(savingRequest.getDateTaken()));
-        capturePerformanceLogger$TimeLog.burstNum = savingRequest.getCaptureIdForPredictiveCapture();
-        capturePerformanceLogger$TimeLog.log();
-        if (SavingTaskManager$SavedFileType.BURST == savingRequest.common.savedFileType) {
-            sBurstTimeList.add(capturePerformanceLogger$TimeLog);
+        TimeLog timeLog = sCaptureTimeMap.get(Long.valueOf(savingRequest.getDateTaken()));
+        timeLog.burstNum = savingRequest.getCaptureIdForPredictiveCapture();
+        timeLog.log();
+        if (SavingTaskManager.SavedFileType.BURST == savingRequest.common.savedFileType) {
+            sBurstTimeList.add(timeLog);
         }
         sCaptureTimeMap.remove(Long.valueOf(savingRequest.getDateTaken()));
         if (sNumOfBurstTaken <= 0 || sNumOfBurstTaken != sBurstTimeList.size()) {
@@ -66,21 +67,81 @@ public class CapturePerformanceLogger {
         sNumOfBurstTaken = i;
     }
 
+    public static class TimeLog {
+        public int burstNum;
+        public int fileSize;
+        private final SavingTaskManager.SavedFileType savingFileType;
+        public long scanFileDone;
+        public long shutterDone;
+        public long snapshotDone;
+        public long startSave;
+        public long startScan;
+        public long startSnapshot;
+        public long writeFileDone;
+
+        public TimeLog() {
+            this.savingFileType = SavingTaskManager.SavedFileType.PHOTO;
+        }
+
+        public TimeLog(SavingTaskManager.SavedFileType savedFileType) {
+            this.savingFileType = savedFileType;
+        }
+
+        void log() {
+            StringBuilder sb = new StringBuilder();
+            DecimalFormat decimalFormat = new DecimalFormat("#.0");
+            switch (this.savingFileType) {
+                case BURST:
+                    sb.append("Burst: ");
+                    sb.append("Num = ");
+                    sb.append(this.burstNum);
+                    sb.append("\tSize = ");
+                    sb.append(decimalFormat.format(this.fileSize / 1048576.0d));
+                    sb.append(" MB");
+                    sb.append("\tCapture = ");
+                    sb.append(this.snapshotDone - this.startSnapshot);
+                    sb.append("\tSave = ");
+                    sb.append(this.writeFileDone - this.startSave);
+                    sb.append("\tScan = ");
+                    sb.append(this.scanFileDone - this.startScan);
+                    break;
+                default:
+                    sb.append("[[[");
+                    sb.append(this.startSnapshot);
+                    sb.append(',');
+                    sb.append(this.shutterDone - this.startSnapshot);
+                    sb.append(',');
+                    sb.append(this.snapshotDone - this.startSnapshot);
+                    sb.append(',');
+                    sb.append(this.startSave - this.startSnapshot);
+                    sb.append(',');
+                    sb.append(this.writeFileDone - this.startSnapshot);
+                    sb.append(',');
+                    sb.append(this.startScan - this.startSnapshot);
+                    sb.append(',');
+                    sb.append(this.scanFileDone - this.startSnapshot);
+                    sb.append("]]]");
+                    break;
+            }
+            CamLog.d(sb.toString());
+        }
+    }
+
     private static void completeBurst() {
         long j = 0;
         long j2 = 0;
         long j3 = 0;
         long j4 = 0;
-        for (CapturePerformanceLogger$TimeLog capturePerformanceLogger$TimeLog : sBurstTimeList) {
-            j += capturePerformanceLogger$TimeLog.writeFileDone - capturePerformanceLogger$TimeLog.startSave;
-            j2 += capturePerformanceLogger$TimeLog.scanFileDone - capturePerformanceLogger$TimeLog.startScan;
+        for (TimeLog timeLog : sBurstTimeList) {
+            j += timeLog.writeFileDone - timeLog.startSave;
+            j2 += timeLog.scanFileDone - timeLog.startScan;
             if (j3 != 0) {
-                j4 += capturePerformanceLogger$TimeLog.snapshotDone - j3;
+                j4 += timeLog.snapshotDone - j3;
             }
-            j3 = capturePerformanceLogger$TimeLog.snapshotDone;
+            j3 = timeLog.snapshotDone;
         }
         long j5 = sBurstTimeList.get(0).startSnapshot;
-        Log.e("CapturePerformance", "===============================================\nTime spent to capture " + sBurstTimeList.size() + " images = " + (sBurstTimeList.get(sBurstTimeList.size() - 1).scanFileDone - j5) + " [ms]\nAverage Capture Duration = " + (j4 / ((long) (sBurstTimeList.size() - 1))) + " [ms]\nAverage Save Duration = " + (j / ((long) sBurstTimeList.size())) + " [ms]\nAverage ScanFile Duration = " + (j2 / ((long) sBurstTimeList.size())) + " [ms]\n===============================================");
+        Log.e(TAG, "===============================================\nTime spent to capture " + sBurstTimeList.size() + " images = " + (sBurstTimeList.get(sBurstTimeList.size() - 1).scanFileDone - j5) + " [ms]\nAverage Capture Duration = " + (j4 / (sBurstTimeList.size() - 1)) + " [ms]\nAverage Save Duration = " + (j / sBurstTimeList.size()) + " [ms]\nAverage ScanFile Duration = " + (j2 / sBurstTimeList.size()) + " [ms]\n===============================================");
         sBurstTimeList.clear();
     }
 }

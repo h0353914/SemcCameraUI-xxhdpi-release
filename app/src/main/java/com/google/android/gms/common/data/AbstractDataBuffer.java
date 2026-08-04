@@ -3,6 +3,7 @@ package com.google.android.gms.common.data;
 import android.os.Bundle;
 import java.util.Iterator;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public abstract class AbstractDataBuffer<T> implements DataBuffer<T> {
     protected final DataHolder zzabq;
 

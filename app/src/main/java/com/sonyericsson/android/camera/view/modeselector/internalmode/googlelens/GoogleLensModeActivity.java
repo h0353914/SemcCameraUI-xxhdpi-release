@@ -7,32 +7,35 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
 import com.google.lens.sdk.LensApi;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
 
 public class GoogleLensModeActivity extends Activity {
     private static final long START_TIMEOUT_MILLIS = 5000;
     private Handler mHandler;
     private LensApi mLensApi;
-    private GoogleLensModeActivity$State mState = GoogleLensModeActivity$State.READY;
-    private final Runnable mStartTimeoutTask = new GoogleLensModeActivity$1(this);
-
-    static /* synthetic */ void access$000(GoogleLensModeActivity googleLensModeActivity) {
-        googleLensModeActivity.showErrorToast();
-    }
-
-    static /* synthetic */ boolean access$200(GoogleLensModeActivity googleLensModeActivity) {
-        return googleLensModeActivity.startGoogleLensActivity();
-    }
-
-    static /* synthetic */ void access$300(GoogleLensModeActivity googleLensModeActivity, GoogleLensModeActivity$State googleLensModeActivity$State) {
-        googleLensModeActivity.changeTo(googleLensModeActivity$State);
-    }
-
-    private void changeTo(GoogleLensModeActivity$State googleLensModeActivity$State) {
-        if (CamLog.DEBUG) {
-            CamLog.d("prev:" + this.mState.name() + " next:" + googleLensModeActivity$State.name());
+    private State mState = State.READY;
+    private final Runnable mStartTimeoutTask = new Runnable() { // from class: com.sonyericsson.android.camera.view.modeselector.internalmode.googlelens.GoogleLensModeActivity.1
+        @Override // java.lang.Runnable
+        public void run() {
+            CamLog.e("Finish. Timeout of launch Google Lens.");
+            GoogleLensModeActivity.this.showErrorToast();
+            GoogleLensModeActivity.this.finish();
         }
-        this.mState = googleLensModeActivity$State;
+    };
+
+    private enum State {
+        READY,
+        KEYGUARD,
+        DONE
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    private void changeTo(State state) {
+        if (CamLog.DEBUG) {
+            CamLog.d("prev:" + this.mState.name() + " next:" + state.name());
+        }
+        this.mState = state;
     }
 
     @Override // android.app.Activity
@@ -44,7 +47,7 @@ public class GoogleLensModeActivity extends Activity {
         getWindow().addFlags(524288);
         this.mLensApi = new LensApi(this);
         this.mHandler = new Handler();
-        changeTo(GoogleLensModeActivity$State.READY);
+        changeTo(State.READY);
         if (CamLog.DEBUG) {
             CamLog.d("onCreate() : X");
         }
@@ -56,7 +59,7 @@ public class GoogleLensModeActivity extends Activity {
             CamLog.d("onNewIntent() : E state:" + this.mState.name());
         }
         super.onNewIntent(intent);
-        changeTo(GoogleLensModeActivity$State.READY);
+        changeTo(State.READY);
         if (CamLog.DEBUG) {
             CamLog.d("onNewIntent() : X");
         }
@@ -73,15 +76,17 @@ public class GoogleLensModeActivity extends Activity {
             case READY:
                 KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KeyguardManager.class);
                 if (keyguardManager.isDeviceLocked()) {
-                    changeTo(GoogleLensModeActivity$State.KEYGUARD);
-                    keyguardManager.requestDismissKeyguard(this, new GoogleLensModeActivity$KeyguardDismissCallbackImpl(this, null));
+                    changeTo(State.KEYGUARD);
+                    keyguardManager.requestDismissKeyguard(this, new KeyguardDismissCallbackImpl());
+                    break;
                 } else if (startGoogleLensActivity()) {
-                    changeTo(GoogleLensModeActivity$State.DONE);
+                    changeTo(State.DONE);
+                    break;
                 } else {
-                    changeTo(GoogleLensModeActivity$State.READY);
+                    changeTo(State.READY);
                     finish();
+                    break;
                 }
-                break;
             case DONE:
                 finish();
                 break;
@@ -96,7 +101,7 @@ public class GoogleLensModeActivity extends Activity {
         if (CamLog.DEBUG) {
             CamLog.d("onPause() : E state:" + this.mState.name());
         }
-        if (this.mState == GoogleLensModeActivity$State.DONE) {
+        if (this.mState == State.DONE) {
             this.mHandler.removeCallbacks(this.mStartTimeoutTask);
         }
         super.onPause();
@@ -106,13 +111,14 @@ public class GoogleLensModeActivity extends Activity {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean startGoogleLensActivity() {
         try {
             if (CamLog.DEBUG) {
                 CamLog.d("Launch Lens activity");
             }
             this.mLensApi.launchLensActivity(this);
-            this.mHandler.postDelayed(this.mStartTimeoutTask, 5000L);
+            this.mHandler.postDelayed(this.mStartTimeoutTask, 5000);
             return true;
         } catch (Exception unused) {
             CamLog.e("Fail to launch Lens activity.");
@@ -121,7 +127,44 @@ public class GoogleLensModeActivity extends Activity {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void showErrorToast() {
-        Toast.makeText(this, getString(2131689698, new Object[]{getString(2131689674)}), 0).show();
+        Toast.makeText(this, getString(R.string.cam_strings_common_error_open_txt, new Object[]{getString(R.string.cam_strings_capturing_mode_google_lens)}), 0).show();
+    }
+
+    private class KeyguardDismissCallbackImpl extends KeyguardManager.KeyguardDismissCallback {
+        private KeyguardDismissCallbackImpl() {
+        }
+
+        @Override // android.app.KeyguardManager.KeyguardDismissCallback
+        public void onDismissSucceeded() {
+            if (CamLog.DEBUG) {
+                CamLog.d("Keyguard successfully dismissed");
+            }
+            if (GoogleLensModeActivity.this.startGoogleLensActivity()) {
+                GoogleLensModeActivity.this.changeTo(State.DONE);
+            } else {
+                GoogleLensModeActivity.this.changeTo(State.READY);
+                GoogleLensModeActivity.this.finish();
+            }
+        }
+
+        @Override // android.app.KeyguardManager.KeyguardDismissCallback
+        public void onDismissError() {
+            if (CamLog.DEBUG) {
+                CamLog.d("Error dismissing keyguard");
+            }
+            GoogleLensModeActivity.this.changeTo(State.READY);
+            GoogleLensModeActivity.this.finish();
+        }
+
+        @Override // android.app.KeyguardManager.KeyguardDismissCallback
+        public void onDismissCancelled() {
+            if (CamLog.DEBUG) {
+                CamLog.d("Keyguard dismiss cancelled");
+            }
+            GoogleLensModeActivity.this.changeTo(State.READY);
+            GoogleLensModeActivity.this.finish();
+        }
     }
 }

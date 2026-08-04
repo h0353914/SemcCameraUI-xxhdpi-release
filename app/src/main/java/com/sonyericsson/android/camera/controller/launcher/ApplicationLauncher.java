@@ -1,3 +1,42 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.controller.launcher;
 
 import android.app.Activity;
@@ -6,24 +45,25 @@ import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager$NameNotFoundException;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.CameraActivity;
 import com.sonyericsson.android.camera.CameraApplication;
 import com.sonyericsson.android.camera.ExternalCameraAppSetting;
-import com.sonyericsson.android.camera.ExternalCameraAppSetting$ShareSettingCategory;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.controller.album.AlbumLauncher;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.setting.UserSettings;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.SignatureUtil;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
+import com.sonyericsson.cameracommon.mediasaving.MediaSavingConstants;
 import com.sonyericsson.cameracommon.mediasaving.StoreDataResult;
 import com.sonyericsson.cameracommon.storage.SavingRequest;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
 import java.util.HashMap;
-import java.util.Map$Entry;
+import java.util.Map;
 
 public final class ApplicationLauncher {
     private static String ACTION_EDIT_HIGH_FRAME_RATE = "com.sonymobile.moviecreator.intent.action.TIMESHIFT_VIDEO_EDITOR";
@@ -41,6 +81,11 @@ public final class ApplicationLauncher {
     private static final String PORTRAIT_SELFIE_PACKAGE = "com.sonymobile.addoncamera.portraitselfie";
     private static final String PORTRAIT_SELFIE_WIDE_ZOOM_TARGET_RATIO = "com.sonyericsson.android.camera.extra.WIDE_ZOOM_TARGET_RATIO";
     public static final String TAG = "ApplicationLauncher";
+
+    public enum MonochromeType {
+        MONOCHROME_PHOTO,
+        MONOCHROME_VIDEO
+    }
 
     private ApplicationLauncher() {
     }
@@ -60,7 +105,7 @@ public final class ApplicationLauncher {
             try {
                 activity.startActivity(intent);
                 if (CamLog.VERBOSE) {
-                    CamLog.d("ApplicationLauncher", "launchLocationSourceSettings: " + intent);
+                    CamLog.d(TAG, "launchLocationSourceSettings: " + intent);
                 }
             } catch (ActivityNotFoundException e) {
                 CamLog.e("launchLocationSourceSettings: failed.", e);
@@ -75,7 +120,7 @@ public final class ApplicationLauncher {
             try {
                 activity.startActivity(intent);
                 if (CamLog.VERBOSE) {
-                    CamLog.d("ApplicationLauncher", "launchSideSenseSettings: " + intent);
+                    CamLog.d(TAG, "launchSideSenseSettings: " + intent);
                 }
             } catch (ActivityNotFoundException e) {
                 CamLog.e("launchSideSenseSettings: failed.", e);
@@ -95,10 +140,10 @@ public final class ApplicationLauncher {
             Uri uri = storeDataResult.uri;
             SavingRequest savingRequest = storeDataResult.savingRequest;
             String str = savingRequest != null ? savingRequest.common.mimeType : null;
-            if (!"video/mp4".equals(str) || !isEditorAvailable(activity, uri, savingRequest.common.mimeType)) {
+            if (!MediaSavingConstants.MEDIA_TYPE_MPEG4_MIME.equals(str) || !isEditorAvailable(activity, uri, savingRequest.common.mimeType)) {
                 return false;
             }
-            ActivityOptions activityOptionsMakeCustomAnimation = ActivityOptions.makeCustomAnimation(activity, 2130771983, 2130771984);
+            ActivityOptions activityOptionsMakeCustomAnimation = ActivityOptions.makeCustomAnimation(activity, R.anim.edit_activity_fade_in, R.anim.edit_activity_fade_out);
             Intent intent = new Intent(ACTION_EDIT_HIGH_FRAME_RATE);
             intent.setDataAndType(uri, str);
             intent.setFlags(3);
@@ -115,14 +160,14 @@ public final class ApplicationLauncher {
 
     private static Intent getDualCameraEffectIntent(int i, CapturingMode capturingMode) {
         Intent intent = new Intent();
-        intent.setClassName("com.sonymobile.addoncamera.dualcameraeffect", "com.sonymobile.addoncamera.dualcameraeffect.ui.CameraActivity");
+        intent.setClassName(DUAL_EFFECT_PACKAGE, DUAL_EFFECT_CLASS);
         if (i == 16) {
-            intent.putExtra("effect_mode", "bokeh");
+            intent.putExtra(DUAL_EFFECT_LAUNCH_MODE_KEY, DUAL_EFFECT_LAUNCH_MODE_BOKEH);
         } else if (i == 17) {
             if (capturingMode == CapturingMode.VIDEO) {
-                intent.putExtra("effect_mode", "video");
+                intent.putExtra(DUAL_EFFECT_LAUNCH_MODE_KEY, DUAL_EFFECT_LAUNCH_MODE_VIDEO);
             } else {
-                intent.putExtra("effect_mode", "camera");
+                intent.putExtra(DUAL_EFFECT_LAUNCH_MODE_KEY, DUAL_EFFECT_LAUNCH_MODE_CAMERA);
             }
         }
         return intent;
@@ -130,76 +175,81 @@ public final class ApplicationLauncher {
 
     private static Intent getPortraitSelfieIntent(CameraActivity cameraActivity, UserSettings userSettings) {
         Intent intent = new Intent();
-        intent.setClassName("com.sonymobile.addoncamera.portraitselfie", "com.arcsoft.camera.CameraActivity");
+        intent.setClassName(PORTRAIT_SELFIE_PACKAGE, PORTRAIT_SELFIE_CLASS);
         if (PlatformCapability.isPrepared()) {
-            intent.putExtra("com.sonyericsson.android.camera.extra.WIDE_ZOOM_TARGET_RATIO", PlatformCapability.getWideZoomTargetRatio(CameraInfo$CameraId.FRONT));
+            intent.putExtra(PORTRAIT_SELFIE_WIDE_ZOOM_TARGET_RATIO, PlatformCapability.getWideZoomTargetRatio(CameraInfo.CameraId.FRONT));
         } else {
             CamLog.i("Platform capability is not prepared. Set 1.0 as default to PORTRAIT_SELFIE_WIDE_ZOOM_TARGET_RATIO");
-            intent.putExtra("com.sonyericsson.android.camera.extra.WIDE_ZOOM_TARGET_RATIO", 1.0f);
+            intent.putExtra(PORTRAIT_SELFIE_WIDE_ZOOM_TARGET_RATIO, 1.0f);
         }
         return intent;
     }
 
     public static boolean isPortraitSelfieAvailable(Context context) {
         Intent intent = new Intent();
-        intent.setClassName("com.sonymobile.addoncamera.portraitselfie", "com.arcsoft.camera.CameraActivity");
+        intent.setClassName(PORTRAIT_SELFIE_PACKAGE, PORTRAIT_SELFIE_CLASS);
         if (context.getPackageManager().resolveActivity(intent, 65536) == null) {
             return false;
         }
-        return SignatureUtil.isAvailable(context, "com.sonymobile.addoncamera.portraitselfie");
+        return SignatureUtil.isAvailable(context, PORTRAIT_SELFIE_PACKAGE);
     }
 
     public static boolean isBokehSupported() {
-        if (PlatformCapability.isHighSensitivityFusionSupported(CameraInfo$CameraId.BACK)) {
+        if (PlatformCapability.isHighSensitivityFusionSupported(CameraInfo.CameraId.BACK)) {
             try {
-                int i = CameraApplication.getContext().getPackageManager().getActivityInfo(new ComponentName("com.sonymobile.addoncamera.dualcameraeffect", "com.sonymobile.addoncamera.dualcameraeffect.ui.CameraActivity"), 128).metaData.getInt("com.sonymobile.addoncamera.dualcameraeffect.support_feature", 0);
+                int i = CameraApplication.getContext().getPackageManager().getActivityInfo(new ComponentName(DUAL_EFFECT_PACKAGE, DUAL_EFFECT_CLASS), 128).metaData.getInt(DUAL_EFFECT_META_DATA, 0);
                 if (i == 1 || i == 3) {
                     return true;
                 }
-            } catch (PackageManager$NameNotFoundException unused) {
-                CamLog.e("ApplicationLauncher", "DualEffect Component : com.sonymobile.addoncamera.dualcameraeffect Not Found");
+            } catch (PackageManager.NameNotFoundException unused) {
+                CamLog.e(TAG, "DualEffect Component : com.sonymobile.addoncamera.dualcameraeffect Not Found");
             }
         }
         return false;
     }
 
     public static boolean isMonochromeSupported() {
-        if (PlatformCapability.isHighSensitivityFusionSupported(CameraInfo$CameraId.BACK)) {
+        if (PlatformCapability.isHighSensitivityFusionSupported(CameraInfo.CameraId.BACK)) {
             try {
-                switch (CameraApplication.getContext().getPackageManager().getActivityInfo(new ComponentName("com.sonymobile.addoncamera.dualcameraeffect", "com.sonymobile.addoncamera.dualcameraeffect.ui.CameraActivity"), 128).metaData.getInt("com.sonymobile.addoncamera.dualcameraeffect.support_feature", 0)) {
+                switch (CameraApplication.getContext().getPackageManager().getActivityInfo(new ComponentName(DUAL_EFFECT_PACKAGE, DUAL_EFFECT_CLASS), 128).metaData.getInt(DUAL_EFFECT_META_DATA, 0)) {
                 }
                 return true;
-            } catch (PackageManager$NameNotFoundException unused) {
-                CamLog.e("ApplicationLauncher", "DualEffect Component : com.sonymobile.addoncamera.dualcameraeffect Not Found");
+            } catch (PackageManager.NameNotFoundException unused) {
+                CamLog.e(TAG, "DualEffect Component : com.sonymobile.addoncamera.dualcameraeffect Not Found");
             }
         }
         return false;
     }
 
     public static void launchExternalCamera(CameraActivity cameraActivity, int i, UserSettings userSettings, CapturingMode capturingMode, boolean z) {
-        ExternalCameraAppSetting$ShareSettingCategory externalCameraAppSetting$ShareSettingCategory;
+        ExternalCameraAppSetting.ShareSettingCategory shareSettingCategory;
         Intent dualCameraEffectIntent;
         Object intentValue;
-        HashMap map = new HashMap();
+        Map<String, Object> map = new HashMap<>();
         map.put(ExternalCameraAppSetting.DATA_STORAGE.intentKey, "internal");
         switch (i) {
             case 16:
-                externalCameraAppSetting$ShareSettingCategory = ExternalCameraAppSetting$ShareSettingCategory.PHOTO;
+                shareSettingCategory = ExternalCameraAppSetting.ShareSettingCategory.PHOTO;
                 dualCameraEffectIntent = getDualCameraEffectIntent(i, capturingMode);
                 break;
             case 17:
                 dualCameraEffectIntent = getDualCameraEffectIntent(i, capturingMode);
-                externalCameraAppSetting$ShareSettingCategory = capturingMode == CapturingMode.VIDEO ? ExternalCameraAppSetting$ShareSettingCategory.VIDEO : ExternalCameraAppSetting$ShareSettingCategory.PHOTO;
-                break;
+                if (capturingMode == CapturingMode.VIDEO) {
+                    shareSettingCategory = ExternalCameraAppSetting.ShareSettingCategory.VIDEO;
+                    break;
+                } else {
+                    shareSettingCategory = ExternalCameraAppSetting.ShareSettingCategory.PHOTO;
+                    break;
+                }
             case 18:
-                externalCameraAppSetting$ShareSettingCategory = ExternalCameraAppSetting$ShareSettingCategory.PHOTO;
+                shareSettingCategory = ExternalCameraAppSetting.ShareSettingCategory.PHOTO;
                 dualCameraEffectIntent = getPortraitSelfieIntent(cameraActivity, userSettings);
                 break;
             default:
                 throw new RuntimeException("The request code '" + i + "' is incorrect");
         }
         for (ExternalCameraAppSetting externalCameraAppSetting : ExternalCameraAppSetting.values()) {
-            if (!map.containsKey(externalCameraAppSetting.intentKey) && externalCameraAppSetting.isShared(externalCameraAppSetting$ShareSettingCategory)) {
+            if (!map.containsKey(externalCameraAppSetting.intentKey) && externalCameraAppSetting.isShared(shareSettingCategory)) {
                 if (i == 16 || i == 17) {
                     intentValue = externalCameraAppSetting.toIntentValue(userSettings.get(capturingMode, externalCameraAppSetting.key));
                 } else {
@@ -215,13 +265,13 @@ public final class ApplicationLauncher {
             }
         }
         if (!map.isEmpty()) {
-            for (Map$Entry map$Entry : map.entrySet()) {
-                if (map$Entry.getValue().getClass().equals(Boolean.class)) {
-                    dualCameraEffectIntent.putExtra((String) map$Entry.getKey(), ((Boolean) map$Entry.getValue()).booleanValue());
-                } else if (map$Entry.getValue().getClass().equals(String.class)) {
-                    dualCameraEffectIntent.putExtra((String) map$Entry.getKey(), (String) map$Entry.getValue());
+            for (Map.Entry<String, Object> entry : map.entrySet()) {
+                if (entry.getValue().getClass().equals(Boolean.class)) {
+                    dualCameraEffectIntent.putExtra((String) entry.getKey(), ((Boolean) entry.getValue()).booleanValue());
+                } else if (entry.getValue().getClass().equals(String.class)) {
+                    dualCameraEffectIntent.putExtra((String) entry.getKey(), (String) entry.getValue());
                 } else {
-                    throw new RuntimeException("One of the Force settings values was neither a boolean nor a String. It was a " + map$Entry.getClass() + ".");
+                    throw new RuntimeException("One of the Force settings values was neither a boolean nor a String. It was a " + entry.getClass() + ".");
                 }
             }
         }

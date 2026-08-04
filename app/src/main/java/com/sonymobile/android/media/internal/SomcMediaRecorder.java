@@ -1,18 +1,71 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonymobile.android.media.internal;
 
 import android.media.CamcorderProfile;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.Surface;
+import com.sonyericsson.android.camera.CameraActivity;
+import com.sonyericsson.cameracommon.intent.IntentConstants;
+import com.sonymobile.android.media.internal.MediaMuxerWrapper;
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.CountDownLatch;
 
-public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
+public class SomcMediaRecorder implements MediaMuxerWrapper.MuxerListener {
     public static final long DEFAULT_MAX_FILE_SIZE = 256000000000L;
     public static final int MEDIA_RECORDER_INFO_MASK = 268435455;
     private static final int MIN_DURATION_MS = 100;
@@ -25,7 +78,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     private AudioTrack mAudioTrack;
     private final Handler mCallback;
     private ClockInterface mClock;
-    private final SomcMediaRecorder$EventHandler mEventHandler;
+    private final EventHandler mEventHandler;
     private final HandlerThread mEventThread;
     private FileDescriptor mFd;
     private final HandlerThread mMuxerThread;
@@ -44,7 +97,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     private float mLatitude = -360.0f;
     private int mMaxDurationMs = -1;
     private long mMaxFileSize = -1;
-    private SomcMediaRecorder$States mState = SomcMediaRecorder$States.INITIAL;
+    private States mState = States.INITIAL;
     private boolean mVideoSourceSet = false;
     private boolean mMuxerVideoTrackSet = false;
     private boolean mMuxerAudioTrackSet = false;
@@ -56,27 +109,26 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     private boolean mVideoOnly = true;
     private int mRequestProgressInfoInterval = -1;
     private final Object mStateLock = new Object();
-    private final HandlerThread mSomcMediaRecorderThread = new HandlerThread("SomcMediaRecorder", -1);
+    private final HandlerThread mSomcMediaRecorderThread = new HandlerThread(TAG, -1);
+
+    private enum States {
+        INITIAL,
+        INITIALIZED,
+        DATA_SOURCE_CONFIGURED,
+        PREPARED,
+        RECORDING,
+        STOPPING,
+        RELEASED,
+        ERROR
+    }
 
     public static int getAudioSourceMax() {
         return 8;
     }
 
-    static /* synthetic */ void access$000(SomcMediaRecorder somcMediaRecorder, int i) {
-        somcMediaRecorder.reportError(i);
-    }
-
-    static /* synthetic */ void access$100(SomcMediaRecorder somcMediaRecorder, boolean z) {
-        somcMediaRecorder.muxerTrackSet(z);
-    }
-
-    static /* synthetic */ void access$200(SomcMediaRecorder somcMediaRecorder, boolean z) {
-        somcMediaRecorder.muxerTrackStopped(z);
-    }
-
     public SomcMediaRecorder(Handler handler) {
         this.mSomcMediaRecorderThread.start();
-        this.mEventHandler = new SomcMediaRecorder$EventHandler(new WeakReference(this), this.mSomcMediaRecorderThread.getLooper());
+        this.mEventHandler = new EventHandler(new WeakReference(this), this.mSomcMediaRecorderThread.getLooper());
         this.mAudioCodecThread = new HandlerThread("AudioCodecThread", -1);
         this.mAudioCodecThread.start();
         this.mVideoCodecThread = new HandlerThread("VideoCodecThread", -1);
@@ -92,24 +144,24 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
         this.mAudioTrack.stopAudioRecording();
     }
 
-    @Override // com.sonymobile.android.media.internal.MediaMuxerWrapper$MuxerListener
+    @Override // com.sonymobile.android.media.internal.MediaMuxerWrapper.MuxerListener
     public void onMaxDurationReached() {
         this.mCallback.obtainMessage(2).sendToTarget();
     }
 
-    @Override // com.sonymobile.android.media.internal.MediaMuxerWrapper$MuxerListener
+    @Override // com.sonymobile.android.media.internal.MediaMuxerWrapper.MuxerListener
     public void onMaxFileSizeReached() {
         this.mCallback.obtainMessage(3).sendToTarget();
     }
 
-    @Override // com.sonymobile.android.media.internal.MediaMuxerWrapper$MuxerListener
+    @Override // com.sonymobile.android.media.internal.MediaMuxerWrapper.MuxerListener
     public void onStopError() {
         this.mCallback.obtainMessage(4).sendToTarget();
     }
 
-    @Override // com.sonymobile.android.media.internal.MediaMuxerWrapper$MuxerListener
+    @Override // com.sonymobile.android.media.internal.MediaMuxerWrapper.MuxerListener
     public void onWriteError() {
-        Log.e("SomcMediaRecorder", "error while writing to muxer, assume OS file limit reached");
+        Log.e(TAG, "error while writing to muxer, assume OS file limit reached");
         this.mCallback.obtainMessage(3).sendToTarget();
         closeRecordingOnError();
     }
@@ -123,29 +175,28 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
         }
     }
 
-    @Override // com.sonymobile.android.media.internal.MediaMuxerWrapper$MuxerListener
+    @Override // com.sonymobile.android.media.internal.MediaMuxerWrapper.MuxerListener
     public void onInfo(int i, int i2) {
         reportInfo(i, i2);
     }
 
     public Surface getSurface() {
-        Surface surface;
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.PREPARED && this.mState != SomcMediaRecorder$States.RECORDING) {
+            if (this.mState != States.PREPARED && this.mState != States.RECORDING) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             if (this.mVideoSourceSet && this.mVideoSource == 2) {
-                surface = this.mVideoTrack.getSurface();
+                return this.mVideoTrack.getSurface();
             }
             throw new IllegalStateException("Video source not set to VideoSource.SURFACE");
         }
-        return surface;
     }
 
     public void setInputSurface(@NonNull Surface surface) {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.PREPARED && this.mState != SomcMediaRecorder$States.RECORDING && this.mState != SomcMediaRecorder$States.RELEASED && this.mState != SomcMediaRecorder$States.ERROR) {
+            if (this.mState == States.PREPARED || this.mState == States.RECORDING || this.mState == States.RELEASED || this.mState == States.ERROR) {
                 this.mVideoTrack.setInputSurface(surface);
+                return;
             }
             throw new IllegalStateException("Incorrect state " + this.mState.name());
         }
@@ -153,11 +204,11 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void setAudioSource(int i) throws IllegalStateException {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.INITIALIZED && this.mState != SomcMediaRecorder$States.INITIAL) {
+            if (this.mState != States.INITIALIZED && this.mState != States.INITIAL) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
-            if (this.mState == SomcMediaRecorder$States.INITIAL) {
-                this.mState = SomcMediaRecorder$States.INITIALIZED;
+            if (this.mState == States.INITIAL) {
+                this.mState = States.INITIALIZED;
             }
             this.mVideoOnly = false;
             createAudioTrack(i, this.mVideoOnly);
@@ -170,7 +221,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void setVideoSource(int i) throws IllegalStateException {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.INITIALIZED && this.mState != SomcMediaRecorder$States.INITIAL) {
+            if (this.mState != States.INITIALIZED && this.mState != States.INITIAL) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             if (i == 1) {
@@ -179,14 +230,14 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
             this.mVideoSource = i;
             this.mVideoTrack = new VideoTrack(this.mEventHandler, this.mVideoCodecThread, this.mEventThread, this.mMuxerThread);
             this.mVideoSourceSet = true;
-            if (this.mState == SomcMediaRecorder$States.INITIAL) {
-                this.mState = SomcMediaRecorder$States.INITIALIZED;
+            if (this.mState == States.INITIAL) {
+                this.mState = States.INITIALIZED;
             }
         }
     }
 
-    public void setProfile(CamcorderProfile camcorderProfile) {
-        Log.d("SomcMediaRecorder", "setProfile");
+    public void setProfile(CamcorderProfile camcorderProfile) throws IllegalStateException {
+        Log.d(TAG, "setProfile");
         if (camcorderProfile != null) {
             setOutputFormat(camcorderProfile.fileFormat);
             setVideoFrameRate(camcorderProfile.videoFrameRate);
@@ -203,9 +254,9 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void setOrientationHint(int i) {
-        Log.d("SomcMediaRecorder", "setOrientation:" + i);
+        Log.d(TAG, "setOrientation:" + i);
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.INITIAL && this.mState != SomcMediaRecorder$States.INITIALIZED && this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.INITIAL && this.mState != States.INITIALIZED && this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             if (i != 0 && i != 90 && i != 180 && i != 270) {
@@ -216,7 +267,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void setLocation(float f, float f2) {
-        Log.d("SomcMediaRecorder", "setLocation lat:" + f + " long:" + f2);
+        Log.d(TAG, "setLocation lat:" + f + " long:" + f2);
         int i = (int) (((double) (f * 10000.0f)) + 0.5d);
         int i2 = (int) (((double) (10000.0f * f2)) + 0.5d);
         if (i > 900000 || i < -900000) {
@@ -230,9 +281,9 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void setOutputFormat(int i) throws IllegalStateException {
-        Log.d("SomcMediaRecorder", "setOutputFormat:" + i);
+        Log.d(TAG, "setOutputFormat:" + i);
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.INITIALIZED) {
+            if (this.mState != States.INITIALIZED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             if (!this.mVideoSourceSet) {
@@ -242,13 +293,13 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
                 createAudioTrack(0, true);
             }
             this.mOutputFormat = i;
-            this.mState = SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED;
+            this.mState = States.DATA_SOURCE_CONFIGURED;
         }
     }
 
     public void setVideoSize(int i, int i2) throws IllegalStateException {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             this.mVideoTrack.setVideoSize(i, i2);
@@ -257,7 +308,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void setVideoFrameRate(int i) throws IllegalStateException {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             this.mVideoTrack.setFrameRate(i);
@@ -267,7 +318,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void setCaptureRate(double d) throws IllegalStateException {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             this.mCaptureRate = d;
@@ -276,11 +327,12 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void setVideoEncodingProfileLevel(int i, int i2) throws IllegalStateException {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             if (i >= 0 && i2 >= 0) {
                 this.mVideoTrack.setEncodingProfileLevel(i, i2);
+                return;
             }
             throw new IllegalArgumentException("Video encoding bit rate is not positive");
         }
@@ -288,7 +340,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void setVideoBitRateMode(int i) throws IllegalStateException {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             this.mVideoTrack.setBitRateMode(i);
@@ -297,7 +349,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void setVideoColorAspects(int i, int i2, int i3) throws IllegalStateException {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             this.mVideoTrack.setColorAspects(i, i2, i3);
@@ -305,9 +357,9 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void setMaxDuration(int i) throws IllegalArgumentException {
-        Log.d("SomcMediaRecorder", "setMaxDuration:" + i + " ms");
+        Log.d(TAG, "setMaxDuration:" + i + " ms");
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             if (i > 0 && i < 100) {
@@ -318,9 +370,9 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void setMaxFileSize(long j) throws IllegalArgumentException {
-        Log.d("SomcMediaRecorder", "setMaxFileSize:" + j);
+        Log.d(TAG, "setMaxFileSize:" + j);
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             this.mMaxFileSize = Math.min(j, 256000000000L);
@@ -329,7 +381,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void setAudioEncoder(int i) throws IllegalStateException {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             this.mAudioTrack.setAudioEncoder(i);
@@ -338,7 +390,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void setVideoEncoder(int i) throws IllegalStateException {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             this.mVideoTrack.setVideoEncoder(i);
@@ -347,7 +399,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void setAudioSamplingRate(int i) {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             if (i <= 0) {
@@ -359,7 +411,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void setAudioChannels(int i) {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             if (i <= 0) {
@@ -371,7 +423,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void setAudioEncodingBitRate(int i) {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             if (i <= 0) {
@@ -383,7 +435,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void setVideoEncodingBitRate(int i) {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             if (i <= 0) {
@@ -395,7 +447,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void setOutputFile(FileDescriptor fileDescriptor) throws IllegalStateException {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             this.mFd = fileDescriptor;
@@ -403,9 +455,9 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void setOutputFile(String str) throws IllegalStateException {
-        Log.d("SomcMediaRecorder", "setOutputFile:" + str);
+        Log.d(TAG, "setOutputFile:" + str);
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             this.mPath = str;
@@ -413,9 +465,9 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void requestProgressInfo(int i) {
-        Log.d("SomcMediaRecorder", "requestProgressInfo:" + i);
+        Log.d(TAG, "requestProgressInfo:" + i);
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             this.mRequestProgressInfoInterval = i;
@@ -423,9 +475,9 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void pause() throws IllegalStateException {
-        Log.d("SomcMediaRecorder", "pause");
+        Log.d(TAG, IntentConstants.BroadcastIntent.MUSICSERVICE_COMMAND_PAUSE);
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.RECORDING) {
+            if (this.mState != States.RECORDING) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             if (!this.mRecordingPaused) {
@@ -436,7 +488,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
                 try {
                     countDownLatch.await();
                 } catch (InterruptedException unused) {
-                    Log.d("SomcMediaRecorder", "wait for pause was interrupted");
+                    Log.d(TAG, "wait for pause was interrupted");
                 }
                 this.mRecordingPaused = true;
             }
@@ -444,15 +496,15 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void prepare() throws IllegalStateException, IOException {
-        Log.d("SomcMediaRecorder", "prepare");
+        Log.d(TAG, CameraActivity.INTENT_SUBJECT_PREPARE);
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             if (this.mPath == null && this.mFd == null) {
                 throw new IOException("No valid output file");
             }
-            this.mState = SomcMediaRecorder$States.PREPARED;
+            this.mState = States.PREPARED;
             this.mClock = this.mAudioTrack;
             try {
                 if (this.mFd != null) {
@@ -497,12 +549,12 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void start() throws IllegalStateException {
-        Log.d("SomcMediaRecorder", "start");
+        Log.d(TAG, CameraActivity.INTENT_SUBJECT_START);
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.PREPARED) {
+            if (this.mState != States.PREPARED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
-            this.mState = SomcMediaRecorder$States.RECORDING;
+            this.mState = States.RECORDING;
             this.mClock.setStartTime();
             this.mAudioTrack.start();
             this.mVideoTrack.start();
@@ -510,12 +562,12 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void stopAsync() throws IllegalStateException {
-        Log.d("SomcMediaRecorder", "stopAsync");
+        Log.d(TAG, "stopAsync");
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.RECORDING) {
+            if (this.mState != States.RECORDING) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
-            this.mState = SomcMediaRecorder$States.STOPPING;
+            this.mState = States.STOPPING;
             if (this.mMuxerRunning) {
                 this.mStopLatch = new CountDownLatch(1);
             }
@@ -526,12 +578,12 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void stop() throws IllegalStateException {
-        Log.d("SomcMediaRecorder", "stop");
+        Log.d(TAG, "stop");
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.RECORDING) {
+            if (this.mState != States.RECORDING) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
-            this.mState = SomcMediaRecorder$States.STOPPING;
+            this.mState = States.STOPPING;
             if (this.mMuxerRunning) {
                 this.mStopLatch = new CountDownLatch(1);
             }
@@ -543,16 +595,16 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void waitUntilStopCompleted() {
-        Log.d("SomcMediaRecorder", "waitUntilStopCompleted");
+        Log.d(TAG, "waitUntilStopCompleted");
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.STOPPING) {
+            if (this.mState != States.STOPPING) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             if (this.mStopLatch != null) {
                 try {
                     this.mStopLatch.await();
                 } catch (InterruptedException unused) {
-                    Log.e("SomcMediaRecorder", "wait for stop was interrupted");
+                    Log.e(TAG, "wait for stop was interrupted");
                 }
             }
             this.mMuxerStartPerformanceTimeMs = 0L;
@@ -570,23 +622,23 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
             this.mStopLatch = null;
             this.mVideoOnly = true;
             this.mRecordingPaused = false;
-            this.mState = SomcMediaRecorder$States.INITIAL;
+            this.mState = States.INITIAL;
         }
     }
 
     public void stopOnCameraError() {
-        Log.d("SomcMediaRecorder", "stopOnCameraError");
+        Log.d(TAG, "stopOnCameraError");
         closeRecordingOnError();
         stop();
     }
 
     public void reset() {
-        Log.d("SomcMediaRecorder", "reset");
+        Log.d(TAG, "reset");
         synchronized (this.mStateLock) {
-            if (this.mState == SomcMediaRecorder$States.RELEASED) {
+            if (this.mState == States.RELEASED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
-            this.mState = SomcMediaRecorder$States.INITIAL;
+            this.mState = States.INITIAL;
             if (this.mMuxerWrapper != null) {
                 if (this.mMuxerRunning) {
                     this.mMuxerWrapper.stop();
@@ -627,9 +679,9 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void resume() throws IllegalStateException {
-        Log.d("SomcMediaRecorder", "resume");
+        Log.d(TAG, "resume");
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.RECORDING) {
+            if (this.mState != States.RECORDING) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name());
             }
             if (this.mRecordingPaused) {
@@ -640,7 +692,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
                 try {
                     countDownLatch.await();
                 } catch (InterruptedException unused) {
-                    Log.e("SomcMediaRecorder", "wait for resume was interrupted");
+                    Log.e(TAG, "wait for resume was interrupted");
                 }
                 this.mRecordingPaused = false;
             }
@@ -648,12 +700,12 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
     }
 
     public void release() {
-        Log.d("SomcMediaRecorder", "release");
+        Log.d(TAG, "release");
         synchronized (this.mStateLock) {
-            if (this.mState == SomcMediaRecorder$States.RELEASED) {
+            if (this.mState == States.RELEASED) {
                 return;
             }
-            if (this.mState != SomcMediaRecorder$States.INITIAL) {
+            if (this.mState != States.INITIAL) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name() + ", call reset() before release()");
             }
             if (this.mVideoTrack != null) {
@@ -670,7 +722,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
             this.mVideoCodecThread.quitSafely();
             this.mMuxerThread.quitSafely();
             this.mSomcMediaRecorderThread.quitSafely();
-            this.mState = SomcMediaRecorder$States.RELEASED;
+            this.mState = States.RELEASED;
         }
     }
 
@@ -680,7 +732,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void adjustAudioTimestamp(long j) {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name() + " Can only be called in DATA_SOURCE_CONFIGURED");
             }
             this.mAudioTrack.adjustAudioTimeStamp(j);
@@ -689,7 +741,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
 
     public void adjustAudioStartVolume(int i) {
         synchronized (this.mStateLock) {
-            if (this.mState != SomcMediaRecorder$States.DATA_SOURCE_CONFIGURED) {
+            if (this.mState != States.DATA_SOURCE_CONFIGURED) {
                 throw new IllegalStateException("Incorrect state " + this.mState.name() + " Can only be called in DATA_SOURCE_CONFIGURED");
             }
             this.mAudioTrack.adjustStartVolume(i);
@@ -708,7 +760,7 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
                 sb.append("State = ");
                 sb.append(this.mState.name());
                 sb.append("\n");
-                if (this.mState == SomcMediaRecorder$States.RECORDING) {
+                if (this.mState == States.RECORDING) {
                     if (this.mLatestProgressTimeMs > 0) {
                         sb.append("Recorded ");
                         sb.append(this.mLatestProgressTimeMs);
@@ -735,19 +787,21 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
         return "" + this.mMuxerStopPerformanceTimeMs;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void reportError(int i) {
         synchronized (this.mStateLock) {
-            this.mState = SomcMediaRecorder$States.ERROR;
+            this.mState = States.ERROR;
             this.mCallback.obtainMessage(1, 4, i).sendToTarget();
         }
     }
 
     private void reportInfo(int i, int i2) {
-        Log.e("SomcMediaRecorder", "reportInfo info=" + i + " extra=" + i2);
+        Log.e(TAG, "reportInfo info=" + i + " extra=" + i2);
         this.mCallback.obtainMessage(1, i, i2).sendToTarget();
         this.mLatestProgressTimeMs = i2;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void muxerTrackSet(boolean z) {
         if (z) {
             this.mMuxerVideoTrackSet = true;
@@ -766,13 +820,17 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void muxerTrackStopped(boolean z) {
         if (z) {
             this.mMuxerVideoTrackSet = false;
         } else {
             this.mMuxerAudioTrackSet = false;
         }
-        if (this.mMuxerAudioTrackSet || this.mMuxerVideoTrackSet) {
+        if (this.mMuxerAudioTrackSet) {
+            return;
+        }
+        if (this.mMuxerVideoTrackSet) {
             return;
         }
         long jNanoTime = System.nanoTime();
@@ -783,6 +841,40 @@ public class SomcMediaRecorder implements MediaMuxerWrapper$MuxerListener {
         this.mMuxerRunning = false;
         if (this.mStopLatch != null) {
             this.mStopLatch.countDown();
+        }
+    }
+
+    static class EventHandler extends Handler {
+        private final WeakReference<SomcMediaRecorder> mRecorder;
+
+        EventHandler(WeakReference<SomcMediaRecorder> weakReference, Looper looper) {
+            super(looper);
+            this.mRecorder = weakReference;
+        }
+
+        @Override // android.os.Handler
+        public void handleMessage(Message message) {
+            SomcMediaRecorder somcMediaRecorder = this.mRecorder.get();
+            int i = message.arg1 & SomcMediaRecorder.MEDIA_RECORDER_INFO_MASK;
+            int i2 = message.what;
+            if (i2 == 1) {
+                if (i == 4) {
+                    somcMediaRecorder.reportError(message.arg2);
+                } else {
+                    switch (i) {
+                        case 10:
+                            somcMediaRecorder.muxerTrackSet(true);
+                            break;
+                        case 11:
+                            somcMediaRecorder.muxerTrackSet(false);
+                            break;
+                    }
+                }
+            } else if (i2 == 101) {
+                somcMediaRecorder.muxerTrackStopped(true);
+            } else if (i2 == 103) {
+                somcMediaRecorder.muxerTrackStopped(false);
+            }
         }
     }
 }

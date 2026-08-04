@@ -1,7 +1,10 @@
 package com.sonyericsson.android.camera.view.setting;
 
 import android.content.Context;
+import android.content.res.Resources;
 import com.sonyericsson.android.camera.CameraActivity;
+import com.sonyericsson.android.camera.LaunchCondition;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.configuration.UserSettingSelectability;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
@@ -10,9 +13,10 @@ import com.sonyericsson.android.camera.configuration.parameters.Ev;
 import com.sonyericsson.android.camera.configuration.parameters.FocusRange;
 import com.sonyericsson.android.camera.configuration.parameters.Geotag;
 import com.sonyericsson.android.camera.configuration.parameters.Iso;
+import com.sonyericsson.android.camera.configuration.parameters.ShutterSound;
 import com.sonyericsson.android.camera.configuration.parameters.ShutterSpeed;
-import com.sonyericsson.android.camera.configuration.parameters.SideSense;
 import com.sonyericsson.android.camera.configuration.parameters.SlowMotion;
+import com.sonyericsson.android.camera.configuration.parameters.SideSense;
 import com.sonyericsson.android.camera.configuration.parameters.TouchCapture;
 import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue;
 import com.sonyericsson.android.camera.configuration.parameters.VideoCodec;
@@ -21,33 +25,42 @@ import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
 import com.sonyericsson.android.camera.configuration.parameters.VideoStabilizer;
 import com.sonyericsson.android.camera.configuration.parameters.WhiteBalance;
 import com.sonyericsson.android.camera.controller.StateMachine;
-import com.sonyericsson.android.camera.controller.launcher.ApplicationLauncher$MonochromeType;
+import com.sonyericsson.android.camera.controller.launcher.ApplicationLauncher;
 import com.sonyericsson.android.camera.device.CameraDeviceHandler;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.parameter.Parameters;
+import com.sonyericsson.android.camera.research.LocalResearchUtil;
 import com.sonyericsson.android.camera.setting.UserSettings;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.util.HelpGuide;
 import com.sonyericsson.android.camera.util.SettingUtil;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
+import com.sonyericsson.android.camera.view.ViewFinder;
 import com.sonyericsson.android.camera.view.ViewFinderImpl;
 import com.sonyericsson.android.camera.view.messagedialog.DialogId;
 import com.sonyericsson.android.camera.view.modeselector.Mode;
 import com.sonyericsson.android.camera.view.modeselector.ModeLoader;
-import com.sonyericsson.android.camera.view.selectabledialog.ModeSelector$OnModeSelectListener;
+import com.sonyericsson.android.camera.view.modeselector.ModeSelectorInternalMode;
+import com.sonyericsson.android.camera.view.selectabledialog.ModeSelector;
 import com.sonyericsson.android.camera.view.selectabledialog.SettingMenu;
+import com.sonyericsson.android.camera.view.setting.ContextualSettingList;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingDialogFactory;
+import com.sonyericsson.android.camera.view.setting.dialog.SettingDialogListener;
 import com.sonyericsson.android.camera.view.setting.dialogitem.SettingDialogItemFactory;
 import com.sonyericsson.android.camera.view.setting.executor.SettingChangeExecutor;
+import com.sonyericsson.android.camera.view.setting.executor.SettingChangerInterface;
 import com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInterface;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
-import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem$Selectability;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItemBuilder;
+import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem;
+import com.sonyericsson.android.camera.view.tutorial.TutorialController;
 import com.sonyericsson.cameracommon.mediasaving.location.GeotagManager;
 import com.sonyericsson.cameracommon.storage.Storage;
-import com.sonyericsson.cameracommon.storage.Storage$StorageState;
-import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
+import com.sonyericsson.cameracommon.utility.RegionConfig;
+import com.sonymobile.cameracommon.research.ResearchUtil;
+import java.util.concurrent.ExecutionException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -67,59 +80,13 @@ public class SettingUi {
     private final StateMachine mStateMachine;
     private final ViewFinderImpl mViewFinder;
 
-    static /* synthetic */ void access$100(SettingUi settingUi) {
-        settingUi.clearSettingMenuAdapter();
-    }
-
-    static /* synthetic */ StateMachine access$1000(SettingUi settingUi) {
-        return settingUi.mStateMachine;
-    }
-
-    static /* synthetic */ boolean access$1100(SettingUi settingUi) {
-        return settingUi.mIsDeviceInSecurityLock;
-    }
-
-    static /* synthetic */ SettingAdapter access$1200(SettingUi settingUi, UserSettingKey userSettingKey, Storage storage) {
-        return settingUi.generateParameterItemAdapter(userSettingKey, storage);
-    }
-
-    static /* synthetic */ void access$1300(SettingUi settingUi, SettingAdapter settingAdapter, Object obj) {
-        settingUi.openSecondLayerDialog(settingAdapter, obj);
-    }
-
-    static /* synthetic */ UserSettings access$200(SettingUi settingUi) {
-        return settingUi.mSetting;
-    }
-
-    static /* synthetic */ CameraActivity access$300(SettingUi settingUi) {
-        return settingUi.mActivity;
-    }
-
-    static /* synthetic */ ViewFinderImpl access$400(SettingUi settingUi) {
-        return settingUi.mViewFinder;
-    }
-
-    static /* synthetic */ void access$500(SettingUi settingUi) {
-        settingUi.setVideoStabilizerByVideoHdrChanged();
-    }
-
-    static /* synthetic */ SettingDialogStack access$600(SettingUi settingUi) {
-        return settingUi.mSettingDialogStack;
-    }
-
-    static /* synthetic */ CameraDeviceHandler access$700(SettingUi settingUi) {
-        return settingUi.mCameraDevice;
-    }
-
-    static /* synthetic */ void access$800(SettingUi settingUi, TouchCapture touchCapture) {
-        settingUi.updateTouchCapture(touchCapture);
-    }
-
-    public SettingUi(CameraActivity cameraActivity, SettingDialogStack settingDialogStack, StateMachine stateMachine, ViewFinderImpl viewFinderImpl, CameraDeviceHandler cameraDeviceHandler, boolean z) {
+    public SettingUi(CameraActivity cameraActivity, SettingDialogStack settingDialogStack, StateMachine stateMachine,
+            ViewFinderImpl viewFinderImpl, CameraDeviceHandler cameraDeviceHandler, boolean z) {
         this.mActivity = cameraActivity;
-        this.mSettingMenuList = new ContextualSettingList(this.mActivity.getResources().getBoolean(2131034117));
+        this.mSettingMenuList = new ContextualSettingList(
+                this.mActivity.getResources().getBoolean(R.bool.enable_4k_videosize));
         this.mSettingDialogStack = settingDialogStack;
-        this.mSettingDialogStack.setContextualMenuListener(new SettingUi$SettingDialogListenerImpl(this, null));
+        this.mSettingDialogStack.setContextualMenuListener(new SettingDialogListenerImpl());
         this.mStateMachine = stateMachine;
         this.mViewFinder = viewFinderImpl;
         this.mCameraDevice = cameraDeviceHandler;
@@ -130,6 +97,121 @@ public class SettingUi {
 
     public void setDeviceInSecurityLock(boolean z) {
         this.mIsDeviceInSecurityLock = z;
+    }
+
+    private class SettingDialogListenerImpl implements SettingDialogListener {
+        @Override // com.sonyericsson.android.camera.view.setting.dialog.SettingDialogListener
+        public void onOpenSettingDialog(Object obj) {
+        }
+
+        private SettingDialogListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.setting.dialog.SettingDialogListener
+        public void onCloseSettingDialog(Object obj) {
+            if (obj == UserSettingKey.SETTING_MENU) {
+                SettingUi.this.clearSettingMenuAdapter();
+            }
+        }
+    }
+
+    private class ParameterChanger implements SettingChangerInterface<UserSettingValue> {
+        private ParameterChanger() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.setting.executor.SettingChangerInterface
+        public void changeValue(TypedSettingItem<UserSettingValue> typedSettingItem) {
+            UserSettingValue userSettingValue = SettingUi.this.mSetting.get(typedSettingItem.getData().getKey());
+            UserSettingValue data = typedSettingItem.getData();
+            if (userSettingValue == data) {
+                return;
+            }
+            UserSettingKey key = data.getKey();
+            if (CamLog.VERBOSE) {
+                CamLog.d("ParameterChanger#changeValue() Key : " + key + " value : " + data);
+            }
+            if (!UserSettingKey.DESTINATION_TO_SAVE.equals(key) || userSettingValue != DestinationToSave.EMMC
+                    || data != DestinationToSave.SDCARD || Storage.StorageState.UNGRANTED != SettingUi.this.mActivity
+                            .getStorage().getCurrentState(Storage.StorageType.EXTERNAL_CARD)) {
+                SettingUi.this.mSetting.set(data);
+                CapturingMode capturingMode = (CapturingMode) SettingUi.this.mSetting
+                        .get(UserSettingKey.CAPTURING_MODE);
+                switch (key) {
+                    case VIDEO_HDR:
+                        if (userSettingValue == VideoHdr.HDR_ON && data == VideoHdr.HDR_OFF) {
+                            SettingUi.this.setVideoStabilizerByVideoHdrChanged();
+                            break;
+                        }
+                        break;
+                    case VIDEO_SIZE:
+                        VideoSize videoSize = (VideoSize) userSettingValue;
+                        if (((VideoSize) data).is4KVideo() && !videoSize.is4KVideo()) {
+                            SettingUi.this.mViewFinder.showMessageDialog(DialogId.THERMAL_NOTE, new Object[0]);
+                            break;
+                        }
+                        break;
+                    case SIDE_SENSE:
+                        if (!SettingUtil.isSideSenseEnabled(true)) {
+                            SettingUi.this.mSettingDialogStack.closeCurrentDialog();
+                            SettingUi.this.mViewFinder.showMessageDialog(
+                                    DialogId.SIDE_SENSE_DISABLE_ON_CONTEXTUAL_SETTINGS, new Object[0]);
+                            break;
+                        }
+                        break;
+                    case GRID_LINE:
+                        SettingUi.this.mViewFinder.sendViewUpdateEvent(
+                                ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_GRID_LINE, new Object[0]);
+                        break;
+                    case SHUTTER_SOUND:
+                        if (data != ShutterSound.OFF) {
+                            SettingUi.this.mCameraDevice.playShutterSound(capturingMode.getType());
+                            break;
+                        }
+                        break;
+                    case GEO_TAG:
+                        if (data == Geotag.ON && RegionConfig.isChinaRegion(SettingUi.this.mActivity)) {
+                            SettingUi.this.mSettingDialogStack.closeAllSettingDialogs();
+                        }
+                        if (!SettingUi.this.mActivity.getGeoTagManager().setGeotag((Geotag) data,
+                                SettingUi.this.mActivity, SettingUi.this.mViewFinder)) {
+                            SettingUi.this.mSettingDialogStack.closeCurrentDialog();
+                            SettingUi.this.mViewFinder.showMessageDialog(
+                                    DialogId.LOCATION_SERVICE_DISABLE_ON_CONTEXTUAL_SETTINGS, new Object[0]);
+                            break;
+                        }
+                        break;
+                    case DESTINATION_TO_SAVE:
+                        if (userSettingValue == DestinationToSave.EMMC) {
+                            SettingUi.this.mViewFinder.showHiSpeedSdCardRecommendDialogOnDestinationChange();
+                        }
+                        Storage.StorageType type = ((DestinationToSave) data).getType();
+                        SettingUi.this.mViewFinder.notifyStorageStateChanged(type,
+                                SettingUi.this.mActivity.getStorage().getCurrentState(type), false, false);
+                        break;
+                    case TOUCH_CAPTURE:
+                        SettingUi.this.updateTouchCapture((TouchCapture) data);
+                        break;
+                    case VIDEO_CODEC:
+                        VideoSize videoSize2 = (VideoSize) SettingUi.this.mSetting.get(UserSettingKey.VIDEO_SIZE);
+                        if (data == VideoCodec.H264) {
+                            if (videoSize2 == VideoSize.FOUR_K_UHD_H265) {
+                                SettingUi.this.mSetting.set(VideoSize.FOUR_K_UHD_H264);
+                                break;
+                            }
+                        } else if (data == VideoCodec.H265 && videoSize2 == VideoSize.FOUR_K_UHD_H264) {
+                            SettingUi.this.mSetting.set(VideoSize.FOUR_K_UHD_H265);
+                            break;
+                        }
+                        break;
+                }
+                SettingUi.this.updateSettingMenu(false);
+                ResearchUtil.getInstance().sendSettingsCommon(typedSettingItem.getData());
+                LocalResearchUtil.getInstance().setSettingsValue(userSettingValue, typedSettingItem.getData(),
+                        capturingMode);
+                return;
+            }
+            SettingUi.this.mViewFinder.showMessageDialog(DialogId.REQUEST_SD_CARD_PERMISSION, new Object[0]);
+        }
     }
 
     private void updateTouchCapture(TouchCapture touchCapture) {
@@ -157,17 +239,22 @@ public class SettingUi {
 
     private SettingMenu openSettingMenuDialog(boolean z, boolean z2) {
         CapturingMode currentCapturingMode = this.mStateMachine.getCurrentCapturingMode();
-        ContextualSettingList$Group contextualSettingList$Group = this.mSettingMenuList.get(currentCapturingMode, this.mActivity.isOneShot());
+        ContextualSettingList.Group group = this.mSettingMenuList.get(currentCapturingMode, this.mActivity.isOneShot());
         CameraActivity cameraActivity = this.mActivity;
         updateSaveDestinationSelectability(this.mActivity.hasExtraOutputPath());
-        SettingMenu settingMenuCreateSettingMenuDialog = SettingDialogFactory.createSettingMenuDialog(cameraActivity, this.mSettingDialogStack.getBackgroundWidth(), this.mSettingDialogStack.getBackgroundHeight(), z2);
-        SettingAdapter settingAdapterGenerateSettingMenuItemAdapter = generateSettingMenuItemAdapter(cameraActivity, contextualSettingList$Group.priorityHigh.keys);
-        settingMenuCreateSettingMenuDialog.addPanel(getString(contextualSettingList$Group.priorityHigh.titleResource), settingAdapterGenerateSettingMenuItemAdapter);
-        this.mSettingMenuAdapter.put(settingAdapterGenerateSettingMenuItemAdapter, contextualSettingList$Group.priorityHigh.keys);
-        if (contextualSettingList$Group.common.keys.length > 0) {
-            SettingAdapter settingAdapterGenerateSettingMenuItemAdapter2 = generateSettingMenuItemAdapter(cameraActivity, contextualSettingList$Group.common.keys);
-            settingMenuCreateSettingMenuDialog.addPanel(getString(contextualSettingList$Group.common.titleResource), settingAdapterGenerateSettingMenuItemAdapter2);
-            this.mSettingMenuAdapter.put(settingAdapterGenerateSettingMenuItemAdapter2, contextualSettingList$Group.common.keys);
+        SettingMenu settingMenuCreateSettingMenuDialog = SettingDialogFactory.createSettingMenuDialog(cameraActivity,
+                this.mSettingDialogStack.getBackgroundWidth(), this.mSettingDialogStack.getBackgroundHeight(), z2);
+        SettingAdapter settingAdapterGenerateSettingMenuItemAdapter = generateSettingMenuItemAdapter(cameraActivity,
+                group.priorityHigh.keys);
+        settingMenuCreateSettingMenuDialog.addPanel(getString(group.priorityHigh.titleResource),
+                settingAdapterGenerateSettingMenuItemAdapter);
+        this.mSettingMenuAdapter.put(settingAdapterGenerateSettingMenuItemAdapter, group.priorityHigh.keys);
+        if (group.common.keys.length > 0) {
+            SettingAdapter settingAdapterGenerateSettingMenuItemAdapter2 = generateSettingMenuItemAdapter(
+                    cameraActivity, group.common.keys);
+            settingMenuCreateSettingMenuDialog.addPanel(getString(group.common.titleResource),
+                    settingAdapterGenerateSettingMenuItemAdapter2);
+            this.mSettingMenuAdapter.put(settingAdapterGenerateSettingMenuItemAdapter2, group.common.keys);
         }
         if (!this.mSettingDialogStack.openMenuDialog(settingMenuCreateSettingMenuDialog, currentCapturingMode, z)) {
             this.mSettingDialogStack.closeAllSettingDialogs(true);
@@ -175,8 +262,9 @@ public class SettingUi {
         return settingMenuCreateSettingMenuDialog;
     }
 
-    public void openModeSelectDialog(ModeLoader modeLoader, ModeSelector$OnModeSelectListener modeSelector$OnModeSelectListener) {
-        if (this.mSettingDialogStack.openModeSelectorDialog(modeLoader, modeSelector$OnModeSelectListener)) {
+    public void openModeSelectDialog(ModeLoader modeLoader, ModeSelector.OnModeSelectListener onModeSelectListener) {
+        boolean opened = this.mSettingDialogStack.openModeSelectorDialog(modeLoader, onModeSelectListener);
+        if (opened) {
             return;
         }
         this.mSettingDialogStack.closeCurrentDialog();
@@ -187,12 +275,75 @@ public class SettingUi {
     }
 
     private SettingAdapter generateMonochromeAdpter(boolean z, Mode mode) {
-        SettingAdapter settingAdapter = new SettingAdapter(this.mActivity, this.mDialogItemFactory, this.mIsDeviceInSecurityLock);
+        SettingAdapter settingAdapter = new SettingAdapter(this.mActivity, this.mDialogItemFactory,
+                this.mIsDeviceInSecurityLock);
         ArrayList arrayList = new ArrayList();
-        arrayList.add(SettingItemBuilder.build(ApplicationLauncher$MonochromeType.MONOCHROME_PHOTO).iconId(2131231216).textId(2131689950).dialogItemType(2).executor(new SettingUi$MonochromeExecutor(this, z, mode, null)).selected(false).selectability(SettingItem$Selectability.SELECTABLE).commit());
-        arrayList.add(SettingItemBuilder.build(ApplicationLauncher$MonochromeType.MONOCHROME_VIDEO).iconId(2131231217).textId(2131689952).dialogItemType(2).executor(new SettingUi$MonochromeExecutor(this, z, mode, null)).selected(false).selectability(SettingItem$Selectability.SELECTABLE).commit());
+        arrayList.add(SettingItemBuilder.build(ApplicationLauncher.MonochromeType.MONOCHROME_PHOTO)
+                .iconId(R.drawable.cam_dual_effect_monochrome_photo_icn)
+                .textId(R.string.cam_strings_monochrome_photo_txt).dialogItemType(2)
+                .executor(new MonochromeExecutor(z, mode)).selected(false)
+                .selectability(SettingItem.Selectability.SELECTABLE).commit());
+        arrayList.add(SettingItemBuilder.build(ApplicationLauncher.MonochromeType.MONOCHROME_VIDEO)
+                .iconId(R.drawable.cam_dual_effect_monochrome_video_icn)
+                .textId(R.string.cam_strings_monochrome_video_txt).dialogItemType(2)
+                .executor(new MonochromeExecutor(z, mode)).selected(false)
+                .selectability(SettingItem.Selectability.SELECTABLE).commit());
         settingAdapter.addAll(arrayList);
         return settingAdapter;
+    }
+
+    private class MonochromeExecutor<T> implements SettingExecutorInterface<T> {
+        boolean mIsMostRecentlyUsed;
+        Mode mMode;
+
+        private MonochromeExecutor(boolean z, Mode mode) {
+            this.mIsMostRecentlyUsed = false;
+            this.mIsMostRecentlyUsed = z;
+            this.mMode = mode;
+        }
+
+        @Override // com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInterface
+        public void onExecute(TypedSettingItem<T> typedSettingItem) throws Resources.NotFoundException {
+            SettingUi.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_MRU_SHORTCUT,
+                    this.mMode);
+            if (this.mIsMostRecentlyUsed) {
+                LocalResearchUtil.getInstance().setModeChangeMethod(LocalResearchUtil.ModeChangeMethod.MRU_SHORTCUT);
+                LocalResearchUtil.getInstance().setLaunchBy(LaunchCondition.LaunchTrigger.MRU_SHORTCUT);
+            } else {
+                LocalResearchUtil.getInstance().setModeChangeMethod(LocalResearchUtil.ModeChangeMethod.MODE_SELECTOR);
+                LocalResearchUtil.getInstance().setLaunchBy(LaunchCondition.LaunchTrigger.MODE_SELECTOR);
+            }
+            CapturingMode capturingMode = (CapturingMode) SettingUi.this.mSetting.get(UserSettingKey.CAPTURING_MODE);
+            switch ((ApplicationLauncher.MonochromeType) typedSettingItem.getData()) {
+                case MONOCHROME_PHOTO:
+                    if (SettingUi.this.mActivity.isDeviceInSecurityLock()) {
+                        SettingUi.this.mViewFinder.sendViewUpdateEvent(
+                                ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SHOW_UNLOCK_SCREEN_DIALOG,
+                                CapturingMode.SCENE_RECOGNITION, this.mMode);
+                        break;
+                    } else {
+                        LocalResearchUtil.getInstance().sendEventInternalModeChange(capturingMode,
+                                ModeSelectorInternalMode.DUAL_MONOCHROME);
+                        ApplicationLauncher.launchExternalCamera(SettingUi.this.mActivity, 17,
+                                SettingUi.this.mStateMachine.getUserSetting(), CapturingMode.SCENE_RECOGNITION, true);
+                        break;
+                    }
+                case MONOCHROME_VIDEO:
+                    if (SettingUi.this.mActivity.isDeviceInSecurityLock()) {
+                        SettingUi.this.mViewFinder.sendViewUpdateEvent(
+                                ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SHOW_UNLOCK_SCREEN_DIALOG, CapturingMode.VIDEO,
+                                this.mMode);
+                        break;
+                    } else {
+                        LocalResearchUtil.getInstance().sendEventInternalModeChange(capturingMode,
+                                ModeSelectorInternalMode.DUAL_MONOCHROME);
+                        ApplicationLauncher.launchExternalCamera(SettingUi.this.mActivity, 17,
+                                SettingUi.this.mStateMachine.getUserSetting(), CapturingMode.VIDEO, true);
+                        break;
+                    }
+            }
+            SettingUi.this.mSettingDialogStack.closeAllSettingDialogs();
+        }
     }
 
     private void openSecondLayerDialog(SettingAdapter settingAdapter, Object obj) {
@@ -200,14 +351,18 @@ public class SettingUi {
     }
 
     public void openShortcutSettingDialog(UserSettingKey userSettingKey) {
-        SettingAdapter settingAdapter = new SettingAdapter(this.mActivity, this.mDialogItemFactory, this.mIsDeviceInSecurityLock);
+        SettingAdapter settingAdapter = new SettingAdapter(this.mActivity, this.mDialogItemFactory,
+                this.mIsDeviceInSecurityLock);
         Iterator<SettingItem> it = generateChildrenSettingItem(userSettingKey, this.mActivity.getStorage()).iterator();
         while (it.hasNext()) {
             settingAdapter.add(it.next());
         }
-        SettingMenu settingMenuCreateShortcutDialog = SettingDialogFactory.createShortcutDialog(this.mActivity, userSettingKey, this.mSettingDialogStack.getBackgroundWidth(), this.mSettingDialogStack.getBackgroundHeight());
+        SettingMenu settingMenuCreateShortcutDialog = SettingDialogFactory.createShortcutDialog(this.mActivity,
+                userSettingKey, this.mSettingDialogStack.getBackgroundWidth(),
+                this.mSettingDialogStack.getBackgroundHeight());
         if (settingMenuCreateShortcutDialog != null) {
-            settingMenuCreateShortcutDialog.addPanel(this.mActivity.getResources().getString(userSettingKey.getTitleTextId()), settingAdapter);
+            settingMenuCreateShortcutDialog
+                    .addPanel(this.mActivity.getResources().getString(userSettingKey.getTitleTextId()), settingAdapter);
             if (this.mSettingDialogStack.openShortcutDialog(settingMenuCreateShortcutDialog, userSettingKey)) {
                 return;
             }
@@ -251,7 +406,8 @@ public class SettingUi {
     }
 
     private SettingAdapter generateSettingMenuItemAdapter(Context context, UserSettingKey[] userSettingKeyArr) {
-        SettingAdapter settingAdapter = new SettingAdapter(this.mActivity, this.mDialogItemFactory, this.mIsDeviceInSecurityLock);
+        SettingAdapter settingAdapter = new SettingAdapter(this.mActivity, this.mDialogItemFactory,
+                this.mIsDeviceInSecurityLock);
         for (UserSettingKey userSettingKey : userSettingKeyArr) {
             if (isVisible(context, userSettingKey)) {
                 settingAdapter.add(generateParameterKeyItem(userSettingKey, this.mActivity.getStorage()));
@@ -266,16 +422,20 @@ public class SettingUi {
         String text = selectedSettingItem != null ? selectedSettingItem.getText(this.mActivity.getResources()) : "";
         boolean zIsSelectableKey = isSelectableKey(userSettingKey);
         DialogId restrictMessageDialogId = userSettingKey.getRestrictMessageDialogId(this.mSetting);
-        SettingItem$Selectability settingItem$Selectability = SettingItem$Selectability.SELECTABLE;
+        SettingItem.Selectability selectability = SettingItem.Selectability.SELECTABLE;
         if (!zIsSelectableKey) {
             if (restrictMessageDialogId == DialogId.DLG_INVALID) {
-                settingItem$Selectability = SettingItem$Selectability.UNSELECTABLE;
+                selectability = SettingItem.Selectability.UNSELECTABLE;
             } else {
-                settingItem$Selectability = SettingItem$Selectability.RESTRICTED;
+                selectability = SettingItem.Selectability.RESTRICTED;
             }
         }
-        SettingItemBuilder settingItemBuilderExecutor = SettingItemBuilder.build(userSettingKey).textId(userSettingKey.getTitleTextId()).additionalTextForAccessibility(text).dialogItemType(getDialogItemType(userSettingKey)).selectability(settingItem$Selectability).executor(generateSettingItemExecutor(userSettingKey, settingItem$Selectability, storage));
-        if (!userSettingKey.equals(UserSettingKey.HELP_GUIDE) && !userSettingKey.equals(UserSettingKey.RESET_SETTINGS)) {
+        SettingItemBuilder settingItemBuilderExecutor = SettingItemBuilder.build(userSettingKey)
+                .textId(userSettingKey.getTitleTextId()).additionalTextForAccessibility(text)
+                .dialogItemType(getDialogItemType(userSettingKey)).selectability(selectability)
+                .executor(generateSettingItemExecutor(userSettingKey, selectability, storage));
+        if (!userSettingKey.equals(UserSettingKey.HELP_GUIDE)
+                && !userSettingKey.equals(UserSettingKey.RESET_SETTINGS)) {
             Iterator<SettingItem> it = listGenerateChildrenSettingItem.iterator();
             while (it.hasNext()) {
                 settingItemBuilderExecutor.item(it.next());
@@ -284,13 +444,64 @@ public class SettingUi {
         return settingItemBuilderExecutor.commit();
     }
 
-    private SettingExecutorInterface<UserSettingKey> generateSettingItemExecutor(UserSettingKey userSettingKey, SettingItem$Selectability settingItem$Selectability, Storage storage) {
-        CameraActivity cameraActivity = this.mActivity;
-        switch (SettingUi$3.$SwitchMap$com$sonyericsson$android$camera$view$setting$settingitem$SettingItem$Selectability[settingItem$Selectability.ordinal()]) {
-            case 1:
-                return new SettingUi$1(this, userSettingKey, cameraActivity, storage);
-            case 2:
-                return new SettingUi$2(this, userSettingKey);
+    private SettingExecutorInterface<UserSettingKey> generateSettingItemExecutor(final UserSettingKey userSettingKey,
+            SettingItem.Selectability selectability, final Storage storage) {
+        final CameraActivity cameraActivity = this.mActivity;
+        switch (selectability) {
+            case SELECTABLE:
+                return new SettingExecutorInterface<UserSettingKey>() { // from class:
+                                                                        // com.sonyericsson.android.camera.view.setting.SettingUi.1
+                    @Override // com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInterface
+                    public void onExecute(TypedSettingItem<UserSettingKey> typedSettingItem) {
+                        if (userSettingKey == UserSettingKey.HELP_GUIDE) {
+                            if (SettingUi.this.mIsDeviceInSecurityLock) {
+                                SettingUi.this.mViewFinder.showMessageDialog(
+                                        DialogId.UNLOCK_REQUEST_FOR_OPENING_OPTION_MENU, userSettingKey.name());
+                                return;
+                            }
+                            if (HelpGuide.isHelpAppAvailable(cameraActivity)) {
+                                HelpGuide.startHelpApp(cameraActivity);
+                            } else {
+                                HelpGuide.startOnlineHelp(cameraActivity);
+                            }
+                            ResearchUtil.getInstance().sendSettingsCommon(typedSettingItem.getData().toString());
+                            return;
+                        }
+                        if (userSettingKey == UserSettingKey.RESET_SETTINGS) {
+                            if (!SettingUi.this.mIsDeviceInSecurityLock) {
+                                SettingUi.this.mSettingDialogStack.closeCurrentDialog();
+                                SettingUi.this.mViewFinder.showMessageDialog(DialogId.RESET_CONFIRMATION,
+                                        new Object[0]);
+                                return;
+                            } else {
+                                SettingUi.this.mViewFinder.showMessageDialog(
+                                        DialogId.UNLOCK_REQUEST_FOR_OPENING_OPTION_MENU, userSettingKey.name());
+                                return;
+                            }
+                        }
+                        if (!SettingUi.this.mIsDeviceInSecurityLock
+                                || (userSettingKey != UserSettingKey.DESTINATION_TO_SAVE
+                                        && userSettingKey != UserSettingKey.GEO_TAG
+                                        && (SettingUtil.isSideSenseEnabled(true)
+                                                || userSettingKey != UserSettingKey.SIDE_SENSE))) {
+                            SettingUi.this.openSecondLayerDialog(
+                                    SettingUi.this.generateParameterItemAdapter(typedSettingItem.getData(), storage),
+                                    userSettingKey);
+                        } else {
+                            SettingUi.this.mViewFinder.showMessageDialog(
+                                    DialogId.UNLOCK_REQUEST_FOR_OPENING_OPTION_MENU, userSettingKey.name());
+                        }
+                    }
+                };
+            case RESTRICTED:
+                return new SettingExecutorInterface<UserSettingKey>() { // from class:
+                                                                        // com.sonyericsson.android.camera.view.setting.SettingUi.2
+                    @Override // com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInterface
+                    public void onExecute(TypedSettingItem<UserSettingKey> typedSettingItem) {
+                        SettingUi.this.mViewFinder.showMessageDialog(
+                                userSettingKey.getRestrictMessageDialogId(SettingUi.this.mSetting), new Object[0]);
+                    }
+                };
             default:
                 return null;
         }
@@ -298,13 +509,14 @@ public class SettingUi {
 
     private boolean isSelectableKey(UserSettingKey userSettingKey) {
         boolean zIsSelectable = userSettingKey.isSelectable();
-        int i = SettingUi$3.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()];
-        if (i == 3) {
+        if (userSettingKey == UserSettingKey.VIDEO_SIZE) {
             CapturingMode capturingMode = (CapturingMode) this.mSetting.get(UserSettingKey.CAPTURING_MODE);
-            if (capturingMode == CapturingMode.SLOW_MOTION && (((SlowMotion) this.mSetting.get(UserSettingKey.SLOW_MOTION)) == SlowMotion.STANDARD_SLOW_MOTION || !PlatformCapability.isSuperSlowFullHdSupported(capturingMode.getCameraId()))) {
+            if (capturingMode == CapturingMode.SLOW_MOTION
+                    && (((SlowMotion) this.mSetting.get(UserSettingKey.SLOW_MOTION)) == SlowMotion.STANDARD_SLOW_MOTION
+                            || !PlatformCapability.isSuperSlowFullHdSupported(capturingMode.getCameraId()))) {
                 return false;
             }
-        } else if (i == 11 && ((VideoHdr) this.mSetting.get(UserSettingKey.VIDEO_HDR)) == VideoHdr.HDR_ON) {
+        } else if (userSettingKey == UserSettingKey.VIDEO_CODEC && ((VideoHdr) this.mSetting.get(UserSettingKey.VIDEO_HDR)) == VideoHdr.HDR_ON) {
             return false;
         }
         return zIsSelectable;
@@ -312,47 +524,51 @@ public class SettingUi {
 
     private boolean isVisible(Context context, UserSettingKey userSettingKey) {
         CapturingMode capturingMode = (CapturingMode) this.mSetting.get(UserSettingKey.CAPTURING_MODE);
-        switch (SettingUi$3.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()]) {
-            case 2:
+        switch (userSettingKey) {
+            case VIDEO_HDR:
                 return false;
-            case 3:
+            case VIDEO_SIZE:
                 if (this.mActivity.isOneShotVideo() && this.mSetting.get(userSettingKey) == VideoSize.MMS) {
                     return false;
                 }
                 break;
-            case 4:
-            case 6:
-            case 8:
-            case 10:
-            case 11:
+            case SLOW_MOTION:
+            case GRID_LINE:
+            case GEO_TAG:
+            case TOUCH_CAPTURE:
+            case VIDEO_CODEC:
             default:
                 if (userSettingKey.isCommon()) {
                     return true;
                 }
                 break;
-            case 5:
+            case SIDE_SENSE:
                 return PlatformCapability.isSideTouchSupported();
-            case 7:
+            case SHUTTER_SOUND:
                 return !PlatformCapability.isForceSound(this.mStateMachine.getCurrentCameraId());
-            case 9:
+            case DESTINATION_TO_SAVE:
                 if (userSettingKey.getSelectability() == UserSettingSelectability.FIXED) {
                     return false;
                 }
                 return !CommonUtility.shouldStorageForceInternal(context);
-            case 12:
+            case PREDICTIVE_LAUNCH:
                 return PlatformCapability.isLiftTriggerSupported();
-            case 13:
-                return PlatformCapability.isManualBurstSupported(CameraInfo$CameraId.BACK) || PlatformCapability.isManualBurstSupported(CameraInfo$CameraId.FRONT);
-            case 14:
-                return !capturingMode.isVideo() && PlatformCapability.isDistortionCorrectionSupported(capturingMode.getCameraId());
-            case 15:
+            case CAMERA_KEY:
+                return PlatformCapability.isManualBurstSupported(CameraInfo.CameraId.BACK)
+                        || PlatformCapability.isManualBurstSupported(CameraInfo.CameraId.FRONT);
+            case DISTORTION_CORRECTION:
+                return !capturingMode.isVideo()
+                        && PlatformCapability.isDistortionCorrectionSupported(capturingMode.getCameraId());
+            case FUSION_MODE:
                 return PlatformCapability.isHighSensitivityFusionSupported(capturingMode.getCameraId());
         }
-        if (this.mSetting.getOptions(userSettingKey).length <= 1) {
+        int optionsLength = this.mSetting.getOptions(userSettingKey).length;
+        if (optionsLength <= 1) {
             return false;
         }
         UserSettingSelectability selectability = userSettingKey.getSelectability();
-        return selectability == UserSettingSelectability.SELECTABLE || selectability == UserSettingSelectability.UNAVAILABLE;
+        return selectability == UserSettingSelectability.SELECTABLE
+                || selectability == UserSettingSelectability.UNAVAILABLE;
     }
 
     private SettingItem getSelectedSettingItem(List<SettingItem> list) {
@@ -372,115 +588,164 @@ public class SettingUi {
     }
 
     private SettingAdapter generateParameterItemAdapter(UserSettingKey userSettingKey, Storage storage) {
-        SettingAdapter settingAdapter = new SettingAdapter(this.mActivity, this.mDialogItemFactory, this.mIsDeviceInSecurityLock);
+        SettingAdapter settingAdapter = new SettingAdapter(this.mActivity, this.mDialogItemFactory,
+                this.mIsDeviceInSecurityLock);
         settingAdapter.addAll(generateChildrenSettingItem(userSettingKey, storage));
         return settingAdapter;
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:83:0x0214  */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
     private List<SettingItem> generateChildrenSettingItem(UserSettingKey userSettingKey, Storage storage) {
-        UserSettingValue[] userSettingValueArr;
-        ArrayList arrayList = new ArrayList();
-        UserSettingValue userSettingValue = this.mSetting.get(userSettingKey);
-        boolean z = true;
-        if (this.mStateMachine.getCurrentCapturingMode() == CapturingMode.SLOW_MOTION && userSettingKey == UserSettingKey.VIDEO_SIZE) {
+        ArrayList<SettingItem> items = new ArrayList<>();
+        UserSettingValue currentValue = this.mSetting.get(userSettingKey);
+
+        CapturingMode currentMode = this.mStateMachine.getCurrentCapturingMode();
+        if (currentMode == CapturingMode.SLOW_MOTION && userSettingKey == UserSettingKey.VIDEO_SIZE) {
             SlowMotion slowMotion = (SlowMotion) this.mSetting.get(UserSettingKey.SLOW_MOTION);
-            boolean zIsSuperSlowFullHdSupported = PlatformCapability.isSuperSlowFullHdSupported(this.mStateMachine.getCurrentCameraId());
-            if (slowMotion != SlowMotion.STANDARD_SLOW_MOTION && zIsSuperSlowFullHdSupported) {
-                VideoSize videoSize = VideoSize.FULL_HD;
-                String string = getString(2131690233);
-                arrayList.add(SettingItemBuilder.build(videoSize).iconId(videoSize.getIconId()).textId(2131690234).dialogItemType(getDialogItemTypeForSecondLayer(userSettingKey)).executor(createSettingChangeExecutor(userSettingKey)).selected(userSettingValue == videoSize).subText(string).additionalTextForAccessibility(string).selectability(SettingItem$Selectability.SELECTABLE).commit());
+            boolean fullHdSupported = PlatformCapability
+                    .isSuperSlowFullHdSupported(this.mStateMachine.getCurrentCameraId());
+
+            if (slowMotion != SlowMotion.STANDARD_SLOW_MOTION && fullHdSupported) {
+                UserSettingValue fullHd = VideoSize.FULL_HD;
+                String desc = getString(R.string.cam_strings_video_resolution_full_hd_super_slow_desc_txt);
+                items.add(
+                        SettingItemBuilder.build(fullHd)
+                                .iconId(fullHd.getIconId())
+                                .textId(R.string.cam_strings_video_resolution_full_hd_txt)
+                                .dialogItemType(getDialogItemTypeForSecondLayer(userSettingKey))
+                                .executor(createSettingChangeExecutor(userSettingKey))
+                                .selected(currentValue == fullHd)
+                                .subText(desc)
+                                .additionalTextForAccessibility(desc)
+                                .selectability(SettingItem.Selectability.SELECTABLE)
+                                .commit());
             }
-            VideoSize videoSize2 = VideoSize.HD;
-            String string2 = getString(2131690237);
-            arrayList.add(SettingItemBuilder.build(videoSize2).iconId(videoSize2.getIconId()).textId(videoSize2.getTextId()).dialogItemType(getDialogItemTypeForSecondLayer(userSettingKey)).executor(createSettingChangeExecutor(userSettingKey)).selected(userSettingValue == videoSize2 || slowMotion == SlowMotion.STANDARD_SLOW_MOTION).subText(string2).additionalTextForAccessibility(string2).selectability(SettingItem$Selectability.SELECTABLE).commit());
-            return arrayList;
+
+            UserSettingValue hd = VideoSize.HD;
+            String desc = getString(R.string.cam_strings_video_resolution_hd_super_slow_desc_txt);
+            items.add(
+                    SettingItemBuilder.build(hd)
+                            .iconId(hd.getIconId())
+                            .textId(hd.getTextId())
+                            .dialogItemType(getDialogItemTypeForSecondLayer(userSettingKey))
+                            .executor(createSettingChangeExecutor(userSettingKey))
+                            .selected(currentValue == hd || slowMotion == SlowMotion.STANDARD_SLOW_MOTION)
+                            .subText(desc)
+                            .additionalTextForAccessibility(desc)
+                            .selectability(SettingItem.Selectability.SELECTABLE)
+                            .commit());
+            return items;
         }
+
         UserSettingValue[] options = getOptions(userSettingKey);
-        if (userSettingKey == UserSettingKey.GEO_TAG && !GeotagManager.isGeoTagEnabled((Geotag) userSettingValue, this.mActivity)) {
-            userSettingValue = Geotag.OFF;
+
+        if (userSettingKey == UserSettingKey.GEO_TAG) {
+            Geotag geotag = (Geotag) currentValue;
+            if (!GeotagManager.isGeoTagEnabled(geotag, this.mActivity)) {
+                currentValue = Geotag.OFF;
+            }
         }
-        if (userSettingKey == UserSettingKey.SIDE_SENSE && !SettingUtil.isSideSenseEnabled(true)) {
-            userSettingValue = SideSense.OFF;
+
+        if (userSettingKey == UserSettingKey.SIDE_SENSE) {
+            if (!SettingUtil.isSideSenseEnabled(true)) {
+                currentValue = SideSense.OFF;
+            }
         }
-        VideoSize videoSize3 = (VideoSize) this.mSetting.get(UserSettingKey.VIDEO_SIZE);
+
+        VideoSize videoSize = (VideoSize) this.mSetting.get(UserSettingKey.VIDEO_SIZE);
         VideoCodec videoCodec = (VideoCodec) this.mSetting.get(UserSettingKey.VIDEO_CODEC);
         CapturingMode capturingMode = (CapturingMode) this.mSetting.get(UserSettingKey.CAPTURING_MODE);
         VideoHdr videoHdr = (VideoHdr) this.mSetting.get(UserSettingKey.VIDEO_HDR);
-        int length = options.length;
-        int i = 0;
-        while (i < length) {
-            UserSettingValue userSettingValue2 = options[i];
-            if (userSettingValue2 == null) {
-                userSettingValueArr = options;
-            } else {
-                boolean z2 = userSettingValue == userSettingValue2 ? z : false;
-                boolean zIsVideoSelectableValues = isVideoSelectableValues(userSettingValue2, capturingMode, videoSize3, videoHdr);
-                SettingItem$Selectability settingItem$Selectability = SettingItem$Selectability.SELECTABLE;
-                if ((userSettingValue2 != VideoSize.FOUR_K_UHD_H264 || videoCodec != VideoCodec.H265) && (userSettingValue2 != VideoSize.FOUR_K_UHD_H265 || videoCodec != VideoCodec.H264)) {
-                    if (userSettingKey == UserSettingKey.DESTINATION_TO_SAVE) {
-                        DestinationToSave destinationToSave = (DestinationToSave) userSettingValue2;
-                        boolean zContains = storage.getAvailableStorage().contains(destinationToSave.getType());
-                        if (zContains) {
-                            userSettingValueArr = options;
-                        } else {
-                            userSettingValueArr = options;
-                            if ((destinationToSave.getType() == Storage$StorageType.INTERNAL && ((DestinationToSave) userSettingValue).getType() == Storage$StorageType.INTERNAL && !storage.getAvailableStorage().contains(Storage$StorageType.EXTERNAL_CARD)) || ((destinationToSave.getType() == Storage$StorageType.EXTERNAL_CARD && ((DestinationToSave) userSettingValue).getType() == Storage$StorageType.EXTERNAL_CARD && !storage.getAvailableStorage().contains(Storage$StorageType.INTERNAL)) || (destinationToSave.getType() == Storage$StorageType.EXTERNAL_CARD && Storage$StorageState.UNGRANTED == this.mActivity.getStorage().getCurrentState(Storage$StorageType.EXTERNAL_CARD)))) {
-                                zIsVideoSelectableValues = true;
-                            }
-                        }
-                        zIsVideoSelectableValues = zContains;
-                    } else {
-                        userSettingValueArr = options;
-                    }
-                    if (!zIsVideoSelectableValues) {
-                        settingItem$Selectability = SettingItem$Selectability.UNSELECTABLE;
-                    }
-                    SettingItemBuilder settingItemBuilderSelectability = SettingItemBuilder.build(userSettingValue2).iconId(userSettingValue2.getIconId()).textId(userSettingValue2.getTextId()).dialogItemType(getDialogItemTypeForSecondLayer(userSettingKey)).executor(createSettingChangeExecutor(userSettingKey)).selected(z2).selectability(settingItem$Selectability);
-                    if (SettingUi$3.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()] == 4) {
-                        SlowMotion slowMotion2 = (SlowMotion) userSettingValue2;
-                        settingItemBuilderSelectability.subText(slowMotion2.getDescriptionText(this.mActivity));
-                        settingItemBuilderSelectability.additionalTextForAccessibility(slowMotion2.getDescriptionText(this.mActivity));
-                    }
-                    arrayList.add(settingItemBuilderSelectability.commit());
-                }
+
+        for (UserSettingValue option : options) {
+            if (option == null) {
+                continue;
             }
-            i++;
-            options = userSettingValueArr;
-            z = true;
+
+            if (option == VideoSize.FOUR_K_UHD_H264 && videoCodec == VideoCodec.H265) {
+                continue;
+            }
+            if (option == VideoSize.FOUR_K_UHD_H265 && videoCodec == VideoCodec.H264) {
+                continue;
+            }
+
+            boolean selected = currentValue == option;
+            boolean selectable = isVideoSelectableValues(option, capturingMode, videoSize, videoHdr);
+
+            if (userSettingKey == UserSettingKey.DESTINATION_TO_SAVE) {
+                DestinationToSave destination = (DestinationToSave) option;
+                boolean available = storage.getAvailableStorage().contains(destination.getType());
+                if (!available) {
+                    DestinationToSave currentDestination = (DestinationToSave) currentValue;
+                    if (destination.getType() == Storage.StorageType.INTERNAL) {
+                        if (currentDestination.getType() == Storage.StorageType.INTERNAL
+                                && !storage.getAvailableStorage().contains(Storage.StorageType.EXTERNAL_CARD)) {
+                            available = true;
+                        }
+                    } else if (destination.getType() == Storage.StorageType.EXTERNAL_CARD) {
+                        if (currentDestination.getType() == Storage.StorageType.EXTERNAL_CARD
+                                && !storage.getAvailableStorage().contains(Storage.StorageType.INTERNAL)) {
+                            available = true;
+                        } else if (storage
+                                .getCurrentState(Storage.StorageType.EXTERNAL_CARD) == Storage.StorageState.UNGRANTED) {
+                            available = true;
+                        }
+                    }
+                }
+                selectable = available;
+            }
+
+            SettingItemBuilder builder = SettingItemBuilder.build(option)
+                    .iconId(option.getIconId())
+                    .textId(option.getTextId())
+                    .dialogItemType(getDialogItemTypeForSecondLayer(userSettingKey))
+                    .executor(createSettingChangeExecutor(userSettingKey))
+                    .selected(selected)
+                    .selectability(
+                            selectable ? SettingItem.Selectability.SELECTABLE : SettingItem.Selectability.UNSELECTABLE);
+
+            if (userSettingKey == UserSettingKey.SLOW_MOTION) {
+                String desc = ((SlowMotion) option).getDescriptionText(this.mActivity);
+                builder.subText(desc).additionalTextForAccessibility(desc);
+            }
+
+            items.add(builder.commit());
         }
-        return arrayList;
+
+        return items;
     }
 
-    public static boolean isSelectableValues(UserSettingKey userSettingKey, Parameters parameters, UserSettingValue userSettingValue) {
-        return userSettingKey.isSelectable() && (SettingUi$3.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()] != 16 ? true : isVideoSelectableValues(userSettingValue, parameters.capturingMode, parameters.getVideoSize(), parameters.getVideoHdr()));
+    public static boolean isSelectableValues(UserSettingKey userSettingKey, Parameters parameters,
+            UserSettingValue userSettingValue) {
+        return userSettingKey.isSelectable()
+                && (userSettingKey != UserSettingKey.VIDEO_STABILIZER ? true
+                                : isVideoSelectableValues(userSettingValue, parameters.capturingMode,
+                                        parameters.getVideoSize(), parameters.getVideoHdr()));
     }
 
-    private static boolean isVideoSelectableValues(UserSettingValue userSettingValue, CapturingMode capturingMode, VideoSize videoSize, VideoHdr videoHdr) {
+    private static boolean isVideoSelectableValues(UserSettingValue userSettingValue, CapturingMode capturingMode,
+            VideoSize videoSize, VideoHdr videoHdr) {
         if (videoSize.is4KVideo() && userSettingValue == VideoCodec.H265 && videoHdr != VideoHdr.HDR_ON) {
             return true;
         }
         UserSettingKey key = userSettingValue.getKey();
         if (UserSettingKey.VIDEO_STABILIZER == key && key.isSelectable()) {
-            return ((VideoStabilizer) userSettingValue).isValueEnabled(capturingMode.getCameraId(), videoSize, videoHdr);
+            return ((VideoStabilizer) userSettingValue).isValueEnabled(capturingMode.getCameraId(), videoSize,
+                    videoHdr);
         }
         return key.isSelectable();
     }
 
     public static UserSettingValue getImageQualityControlDefaultValue(UserSettingKey userSettingKey) {
-        switch (SettingUi$3.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()]) {
-            case 17:
+        switch (userSettingKey) {
+            case WHITE_BALANCE:
                 return WhiteBalance.AUTO;
-            case 18:
+            case ISO:
                 return Iso.ISO_AUTO;
-            case 19:
+            case EV:
                 return Ev.ZERO;
-            case 20:
+            case SHUTTER_SPEED:
                 return ShutterSpeed.AUTO;
-            case 21:
+            case FOCUS_RANGE:
                 return FocusRange.AF;
             default:
                 throw new IllegalArgumentException("Undefined default value for " + userSettingKey);
@@ -488,98 +753,136 @@ public class SettingUi {
     }
 
     public static int getImageQualityControlTabDescription(UserSettingKey userSettingKey) {
-        switch (SettingUi$3.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()]) {
-            case 17:
-                return 2131689589;
-            case 18:
-                return 2131689584;
-            case 19:
-                return 2131689577;
-            case 20:
-                return 2131689588;
-            case 21:
-                return 2131689583;
+        switch (userSettingKey) {
+            case WHITE_BALANCE:
+                return R.string.cam_strings_accessibility_image_quality_control_white_balance_txt;
+            case ISO:
+                return R.string.cam_strings_accessibility_image_quality_control_iso_txt;
+            case EV:
+                return R.string.cam_strings_accessibility_image_quality_control_exposure_value_txt;
+            case SHUTTER_SPEED:
+                return R.string.cam_strings_accessibility_image_quality_control_shutter_speed_txt;
+            case FOCUS_RANGE:
+                return R.string.cam_strings_accessibility_image_quality_control_focus_txt;
             default:
                 throw new IllegalArgumentException("Undefined description for " + userSettingKey);
         }
     }
 
     private int getDialogItemType(UserSettingKey userSettingKey) {
-        switch (SettingUi$3.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()]) {
-            case 16:
-                if (getOptions(userSettingKey).length > 2) {
-                }
-                break;
+        switch (userSettingKey) {
+            case VIDEO_STABILIZER:
+                return getOptions(userSettingKey).length > 2 ? 2 : 4;
+            case GRID_LINE:
+            case SHUTTER_SOUND:
+            case GEO_TAG:
+                return 4;
+            case DESTINATION_TO_SAVE:
+            case TOUCH_CAPTURE:
+                return 3;
+            case OBJECT_TRACKING:
+                return 4;
         }
         return 3;
     }
 
     private int getDialogItemTypeForSecondLayer(UserSettingKey userSettingKey) {
-        int i = SettingUi$3.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()];
-        if (i != 1 && i != 9 && i != 12) {
-            if (i == 16) {
+        switch (userSettingKey) {
+            case VIDEO_STABILIZER:
                 return getOptions(userSettingKey).length > 2 ? 2 : 4;
-            }
-            switch (i) {
-                case 3:
-                    return this.mStateMachine.getCurrentCapturingMode() != CapturingMode.SLOW_MOTION ? 2 : 5;
-                case 4:
-                    return 5;
-                default:
-                    switch (i) {
-                        case 22:
-                        case 23:
-                        case 24:
-                        case 25:
-                            return 4;
-                        case 26:
-                        case 27:
-                        case 28:
-                            return 1;
-                        default:
-                            switch (i) {
-                                case 31:
-                                case 32:
-                                case 33:
-                                    break;
-                                default:
-                                    return 2;
-                            }
-                            break;
-                    }
-                    break;
-            }
+            case VIDEO_SIZE:
+                return this.mStateMachine.getCurrentCapturingMode() != CapturingMode.SLOW_MOTION ? 2 : 5;
+            case SLOW_MOTION:
+                return 5;
+            case GRID_LINE:
+            case SHUTTER_SOUND:
+            case GEO_TAG:
+            case TOUCH_CAPTURE:
+                return 2;
+            case WHITE_BALANCE:
+            case ISO:
+            case EV:
+            case SHUTTER_SPEED:
+            case FOCUS_RANGE:
+            case MICROPHONE:
+            case SOFT_SKIN:
+            case SUPER_RESOLUTION:
+            case OBJECT_TRACKING:
+                return 4;
+            case FLASH:
+            case DISPLAY_FLASH:
+            case PHOTO_LIGHT:
+                return 1;
+            default:
+                return 2;
         }
-        return 2;
     }
 
     private SettingExecutorInterface<UserSettingValue> createSettingChangeExecutor(UserSettingKey userSettingKey) {
-        SettingUi$ParameterChanger settingUi$ParameterChanger = new SettingUi$ParameterChanger(this, null);
-        int i = SettingUi$3.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()];
-        if (i != 13 && i != 23 && i != 25) {
-            switch (i) {
-                case 4:
-                    return new SettingUi$SlowMotionExecutor(this, new SettingChangeExecutor(settingUi$ParameterChanger), null);
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                    break;
+        ParameterChanger parameterChanger = new ParameterChanger();
+        switch (userSettingKey) {
+            case SLOW_MOTION:
+                return new SlowMotionExecutor(new SettingChangeExecutor(parameterChanger));
+            case CAMERA_KEY:
+            case SOFT_SKIN:
+            case OBJECT_TRACKING:
+            case SIDE_SENSE:
+            case GRID_LINE:
+            case SHUTTER_SOUND:
+            case GEO_TAG:
+            case WHITE_BALANCE:
+            case ISO:
+            case EV:
+            case SHUTTER_SPEED:
+            case FOCUS_RANGE:
+                return new SettingChangeExecutor(parameterChanger);
+            default:
+                return new CloseExecutor(new SettingChangeExecutor(parameterChanger));
+        }
+    }
+
+    private class CloseExecutor<T> implements SettingExecutorInterface<T> {
+        private final SettingExecutorInterface<T> mExecutor;
+
+        private CloseExecutor(SettingExecutorInterface<T> settingExecutorInterface) {
+            this.mExecutor = settingExecutorInterface;
+        }
+
+        @Override // com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInterface
+        public void onExecute(TypedSettingItem<T> typedSettingItem) {
+            this.mExecutor.onExecute(typedSettingItem);
+            SettingUi.this.mSettingDialogStack.closeCurrentDialog();
+        }
+    }
+
+    private class SlowMotionExecutor<T> implements SettingExecutorInterface<T> {
+        private final SettingExecutorInterface<T> mExecutor;
+
+        private SlowMotionExecutor(SettingExecutorInterface<T> settingExecutorInterface) {
+            this.mExecutor = settingExecutorInterface;
+        }
+
+        @Override // com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInterface
+        public void onExecute(TypedSettingItem<T> typedSettingItem) {
+            TutorialController.DisplayTrigger displayTrigger;
+            this.mExecutor.onExecute(typedSettingItem);
+            switch ((SlowMotion) SettingUi.this.mSetting.get(UserSettingKey.SLOW_MOTION)) {
+                case SUPER_SLOW_MOTION:
                 default:
-                    switch (i) {
-                        case 17:
-                        case 18:
-                        case 19:
-                        case 20:
-                        case 21:
-                            break;
-                        default:
-                            return new SettingUi$CloseExecutor(this, new SettingChangeExecutor(settingUi$ParameterChanger), null);
-                    }
+                    displayTrigger = null;
+                    break;
+                case SUPER_SLOW_SHOT:
+                    displayTrigger = TutorialController.DisplayTrigger.CHANGE_TO_SUPER_SLOW_MOTION_SHOT;
+                    break;
+                case STANDARD_SLOW_MOTION:
+                    displayTrigger = TutorialController.DisplayTrigger.CHANGE_TO_STANDARD_SLOW_MOTION;
                     break;
             }
+            if (displayTrigger != null && SettingUi.this.mStateMachine.isTutorialNeededToBeShownForCurrentMode()) {
+                SettingUi.this.mViewFinder.openTutorial(displayTrigger);
+            }
+            SettingUi.this.mSettingDialogStack.closeAllSettingDialogs();
         }
-        return new SettingChangeExecutor(settingUi$ParameterChanger);
     }
 
     private UserSettingValue[] getOptions(UserSettingKey userSettingKey) {
@@ -597,7 +900,7 @@ public class SettingUi {
     private void setVideoStabilizerByVideoHdrChanged() {
         VideoStabilizer videoStabilizer;
         VideoStabilizer videoStabilizer2 = (VideoStabilizer) this.mSetting.get(UserSettingKey.VIDEO_STABILIZER);
-        CameraInfo$CameraId cameraId = ((CapturingMode) this.mSetting.get(UserSettingKey.CAPTURING_MODE)).getCameraId();
+        CameraInfo.CameraId cameraId = ((CapturingMode) this.mSetting.get(UserSettingKey.CAPTURING_MODE)).getCameraId();
         VideoSize videoSize = (VideoSize) this.mSetting.get(UserSettingKey.VIDEO_SIZE);
         if (videoStabilizer2 == VideoStabilizer.OFF || !VideoStabilizer.isSteadyShotSupported(cameraId, videoSize)) {
             return;

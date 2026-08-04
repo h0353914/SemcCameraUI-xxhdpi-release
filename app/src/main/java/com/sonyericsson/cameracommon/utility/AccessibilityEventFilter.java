@@ -1,12 +1,11 @@
 package com.sonyericsson.cameracommon.utility;
 
 import android.view.View;
-import android.view.View$AccessibilityDelegate;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 import com.sonyericsson.android.camera.util.CamLog;
 
-public class AccessibilityEventFilter extends View$AccessibilityDelegate {
+public class AccessibilityEventFilter extends View.AccessibilityDelegate {
     public static final String TAG = "AccessibilityEventFilter";
     private String mAllowedClassName;
 
@@ -19,7 +18,7 @@ public class AccessibilityEventFilter extends View$AccessibilityDelegate {
         this.mAllowedClassName = String.copyValueOf(cls.getName().toCharArray());
     }
 
-    @Override // android.view.View$AccessibilityDelegate
+    @Override // android.view.View.AccessibilityDelegate
     public boolean onRequestSendAccessibilityEvent(ViewGroup viewGroup, View view, AccessibilityEvent accessibilityEvent) {
         int eventType = accessibilityEvent.getEventType();
         boolean z = eventType == 8 || eventType == 65536 || eventType == 32768;

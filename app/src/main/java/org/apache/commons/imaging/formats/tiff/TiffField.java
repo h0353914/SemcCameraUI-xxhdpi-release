@@ -2,6 +2,7 @@ package org.apache.commons.imaging.formats.tiff;
 
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
@@ -80,11 +81,25 @@ public class TiffField {
         return BinaryFunctions.head(this.value, getBytesLength());
     }
 
+    public final class OversizeValueElement extends TiffElement {
+        public OversizeValueElement(int i, int i2) {
+            super(i, i2);
+        }
+
+        @Override // org.apache.commons.imaging.formats.tiff.TiffElement
+        public String getElementDescription(boolean z) {
+            if (z) {
+                return null;
+            }
+            return "OversizeValueElement, tag: " + TiffField.this.getTagInfo().name + ", fieldType: " + TiffField.this.getFieldType().getName();
+        }
+    }
+
     public TiffElement getOversizeValueElement() {
         if (isLocalValue()) {
             return null;
         }
-        return new TiffField$OversizeValueElement(this, getOffset(), this.value.length);
+        return new OversizeValueElement(getOffset(), this.value.length);
     }
 
     public String getValueDescription() {
@@ -313,7 +328,11 @@ public class TiffField {
     }
 
     public Object getValue() throws ImageReadException {
-        return getTagInfo().getValue(this);
+        try {
+            return getTagInfo().getValue(this);
+        } catch (UnsupportedEncodingException e) {
+            throw new ImageReadException(e.getMessage(), e);
+        }
     }
 
     public String getStringValue() throws ImageReadException {

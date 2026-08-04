@@ -7,16 +7,11 @@ import java.util.Arrays;
 public class BinaryConstant implements Cloneable {
     private final byte[] value;
 
-    public /* bridge */ /* synthetic */ Object clone() throws CloneNotSupportedException {
-        return m22clone();
-    }
-
     public BinaryConstant(byte[] bArr) {
         this.value = (byte[]) bArr.clone();
     }
 
-    /* JADX INFO: renamed from: clone, reason: collision with other method in class */
-    public BinaryConstant m22clone() throws CloneNotSupportedException {
+    public BinaryConstant clone() throws CloneNotSupportedException {
         return (BinaryConstant) super.clone();
     }
 

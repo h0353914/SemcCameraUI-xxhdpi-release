@@ -1,25 +1,36 @@
 package com.sonyericsson.android.camera.view.overlaycontrol.semiauto;
 
 import android.content.Context;
+import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View$OnTouchListener;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.LinearLayout;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.CameraActivity;
 
-class SemiAutoSeekBarView extends LinearLayout implements View$OnTouchListener {
+class SemiAutoSeekBarView extends LinearLayout implements View.OnTouchListener {
     private static final long FADE_ANIMATION_DURATION = 100;
     private static final int NON_TRACKING_POSITION = -1;
     private View mArea;
     private int mCurrentProgress;
-    private SemiAutoSeekBarView$SemiAutoViewFadeAnimation mFadeAnimation;
+    private SemiAutoViewFadeAnimation mFadeAnimation;
     private boolean mIsAscending;
     private View mKnob;
     private float mLastPositionY;
-    private SemiAutoSeekBarView$OnSemiAutoSeekBarChangeListener mListener;
+    private OnSemiAutoSeekBarChangeListener mListener;
     private int mMaximum;
     private int mMinimum;
+
+    public interface OnSemiAutoSeekBarChangeListener {
+        void onProgressChanged(SemiAutoSeekBarView semiAutoSeekBarView, int i, boolean z);
+
+        void onStartTrackingTouch(SemiAutoSeekBarView semiAutoSeekBarView, int i);
+
+        void onStopTrackingTouch(SemiAutoSeekBarView semiAutoSeekBarView, int i);
+    }
 
     public void setUiOrientation(int i) {
     }
@@ -45,12 +56,12 @@ class SemiAutoSeekBarView extends LinearLayout implements View$OnTouchListener {
     @Override // android.view.ViewGroup, android.view.View
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
-        this.mArea = findViewById(2131296591);
+        this.mArea = findViewById(R.id.semi_auto_seek_area);
         this.mArea.setOnTouchListener(this);
-        this.mKnob = findViewById(2131296592);
+        this.mKnob = findViewById(R.id.semi_auto_seek_knob);
     }
 
-    @Override // android.view.View$OnTouchListener
+    @Override // android.view.View.OnTouchListener
     public boolean onTouch(View view, MotionEvent motionEvent) {
         if (getVisibility() != 0) {
             return false;
@@ -75,7 +86,7 @@ class SemiAutoSeekBarView extends LinearLayout implements View$OnTouchListener {
                 }
                 break;
         }
-        return false;
+        return true;
     }
 
     @Override // android.view.View
@@ -126,8 +137,8 @@ class SemiAutoSeekBarView extends LinearLayout implements View$OnTouchListener {
         setVisibility(8);
     }
 
-    public void setOnSemiAutoSeekBarChangeListener(SemiAutoSeekBarView$OnSemiAutoSeekBarChangeListener semiAutoSeekBarView$OnSemiAutoSeekBarChangeListener) {
-        this.mListener = semiAutoSeekBarView$OnSemiAutoSeekBarChangeListener;
+    public void setOnSemiAutoSeekBarChangeListener(OnSemiAutoSeekBarChangeListener onSemiAutoSeekBarChangeListener) {
+        this.mListener = onSemiAutoSeekBarChangeListener;
     }
 
     public void setMaximum(int i) {
@@ -159,7 +170,7 @@ class SemiAutoSeekBarView extends LinearLayout implements View$OnTouchListener {
     }
 
     public void setSeekBarResource(int i) {
-        findViewById(2131296591).setBackgroundResource(i);
+        findViewById(R.id.semi_auto_seek_area).setBackgroundResource(i);
     }
 
     public void setAscending(boolean z) {
@@ -188,7 +199,8 @@ class SemiAutoSeekBarView extends LinearLayout implements View$OnTouchListener {
         if (y >= padding) {
             padding = y;
         }
-        float measuredHeight = (this.mArea.getMeasuredHeight() - getPadding()) - (this.mKnob.getMeasuredHeight() / 2.0f);
+        float measuredHeight = (this.mArea.getMeasuredHeight() - getPadding())
+                - (this.mKnob.getMeasuredHeight() / 2.0f);
         if (padding > measuredHeight) {
             padding = measuredHeight;
         }
@@ -209,20 +221,22 @@ class SemiAutoSeekBarView extends LinearLayout implements View$OnTouchListener {
     }
 
     private int getPadding() {
-        return getResources().getDimensionPixelSize(2131165569);
+        return getResources().getDimensionPixelSize(R.dimen.seek_bar_view_seek_area_padding);
     }
 
     private int convertPositionToProgress(float f) {
         float measuredHeight;
-        if (0.0f >= getStrokeRange()) {
+        float strokeRange = getStrokeRange();
+        if (0.0f >= strokeRange) {
             return 0;
         }
         if (this.mIsAscending) {
             measuredHeight = (f - getPadding()) + (this.mKnob.getMeasuredHeight() / 2.0f);
         } else {
-            measuredHeight = ((this.mArea.getMeasuredHeight() - getPadding()) - (this.mKnob.getMeasuredHeight() / 2.0f)) - f;
+            measuredHeight = ((this.mArea.getMeasuredHeight() - getPadding()) - (this.mKnob.getMeasuredHeight() / 2.0f))
+                    - f;
         }
-        int iCeil = ((int) Math.ceil(measuredHeight / r0)) + this.mMinimum;
+        int iCeil = ((int) Math.ceil(measuredHeight / strokeRange)) + this.mMinimum;
         if (this.mMaximum < iCeil) {
             return this.mMaximum;
         }
@@ -247,7 +261,8 @@ class SemiAutoSeekBarView extends LinearLayout implements View$OnTouchListener {
         if (!this.mIsAscending) {
             return (f + getPadding()) - (this.mKnob.getMeasuredHeight() / 2.0f);
         }
-        return (((f * (-1.0f)) + this.mArea.getMeasuredHeight()) - getPadding()) - (this.mKnob.getMeasuredHeight() / 2.0f);
+        return (((f * (-1.0f)) + this.mArea.getMeasuredHeight()) - getPadding())
+                - (this.mKnob.getMeasuredHeight() / 2.0f);
     }
 
     private float getStrokeRange() {
@@ -269,17 +284,54 @@ class SemiAutoSeekBarView extends LinearLayout implements View$OnTouchListener {
         float f;
         float f2 = z ? 0.0f : 1.0f;
         float f3 = z ? 1.0f : 0.0f;
-        long j = 100;
-        if (this.mFadeAnimation == null || !SemiAutoSeekBarView$SemiAutoViewFadeAnimation.access$000(this.mFadeAnimation)) {
+        long j = FADE_ANIMATION_DURATION;
+        if (this.mFadeAnimation == null || !this.mFadeAnimation.isRunning()) {
             f = f2;
         } else {
             this.mFadeAnimation.cancel();
-            float fAccess$100 = SemiAutoSeekBarView$SemiAutoViewFadeAnimation.access$100(this.mFadeAnimation);
-            f = z ? 1.0f - fAccess$100 : fAccess$100;
-            j = (long) (100.0f * fAccess$100);
+            float currentProgress = this.mFadeAnimation.getCurrentProgress();
+            f = z ? 1.0f - currentProgress : currentProgress;
+            j = (long) (100.0f * currentProgress);
         }
-        this.mFadeAnimation = new SemiAutoSeekBarView$SemiAutoViewFadeAnimation(f, f3, null);
+        this.mFadeAnimation = new SemiAutoViewFadeAnimation(f, f3);
         this.mFadeAnimation.setDuration(j);
         startAnimation(this.mFadeAnimation);
+    }
+
+    private static class SemiAutoViewFadeAnimation extends AlphaAnimation implements Animation.AnimationListener {
+        private long mStartTime;
+
+        @Override // android.view.animation.Animation.AnimationListener
+        public void onAnimationEnd(Animation animation) {
+        }
+
+        @Override // android.view.animation.Animation.AnimationListener
+        public void onAnimationRepeat(Animation animation) {
+        }
+
+        private SemiAutoViewFadeAnimation(float f, float f2) {
+            super(f, f2);
+            this.mStartTime = -1L;
+            setAnimationListener(this);
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private float getCurrentProgress() {
+            long jUptimeMillis = SystemClock.uptimeMillis() - this.mStartTime;
+            if (jUptimeMillis < getDuration()) {
+                return jUptimeMillis / getDuration();
+            }
+            return -1.0f;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private boolean isRunning() {
+            return 0 < this.mStartTime && SystemClock.uptimeMillis() - this.mStartTime < getDuration();
+        }
+
+        @Override // android.view.animation.Animation.AnimationListener
+        public void onAnimationStart(Animation animation) {
+            this.mStartTime = SystemClock.uptimeMillis();
+        }
     }
 }

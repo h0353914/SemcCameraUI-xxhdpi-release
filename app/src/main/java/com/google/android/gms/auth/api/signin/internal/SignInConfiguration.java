@@ -1,7 +1,7 @@
 package com.google.android.gms.auth.api.signin.internal;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import com.google.android.gms.auth.api.signin.EmailSignInConfig;
 import com.google.android.gms.auth.api.signin.FacebookSignInConfig;
@@ -9,12 +9,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInConfig;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzx;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class SignInConfiguration implements SafeParcelable {
-    public static final Parcelable$Creator<SignInConfiguration> CREATOR = new zzh();
+    public static final Parcelable.Creator<SignInConfiguration> CREATOR = new zzh();
     private static int zzTr = 31;
     final int versionCode;
     private String zzTl;
-    private final String zzTs;
+    private String zzTs;
     private EmailSignInConfig zzTt;
     private GoogleSignInConfig zzTu;
     private FacebookSignInConfig zzTv;
@@ -47,6 +48,7 @@ public final class SignInConfiguration implements SafeParcelable {
         Code decompiled incorrectly, please refer to instructions dump.
     */
     public boolean equals(Object obj) {
+
         SignInConfiguration signInConfiguration;
         boolean z = false;
         if (obj == null) {
@@ -55,6 +57,7 @@ public final class SignInConfiguration implements SafeParcelable {
         try {
             signInConfiguration = (SignInConfiguration) obj;
         } catch (ClassCastException unused) {
+            return false;
         }
         if (this.zzTs.equals(signInConfiguration.zzme())) {
             if (TextUtils.isEmpty(this.zzTl)) {

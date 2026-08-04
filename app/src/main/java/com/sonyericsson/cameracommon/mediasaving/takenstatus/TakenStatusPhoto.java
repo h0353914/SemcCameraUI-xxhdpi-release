@@ -1,3 +1,25 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.cameracommon.mediasaving.takenstatus;
 
 import com.sonyericsson.android.camera.util.CamLog;
@@ -5,26 +27,32 @@ import java.util.Arrays;
 
 public class TakenStatusPhoto {
     public static final String TAG = "TakenStatusPhoto";
-    protected TakenStatusPhoto$Facing mFacing;
+    protected Facing mFacing;
     public byte[] mImage;
 
+    public enum Facing {
+        FRONT,
+        BACK,
+        UNKNOWN
+    }
+
     public TakenStatusPhoto() {
-        this.mFacing = TakenStatusPhoto$Facing.UNKNOWN;
+        this.mFacing = Facing.UNKNOWN;
     }
 
     public TakenStatusPhoto(TakenStatusPhoto takenStatusPhoto) {
-        this.mFacing = TakenStatusPhoto$Facing.UNKNOWN;
+        this.mFacing = Facing.UNKNOWN;
         this.mImage = takenStatusPhoto.mImage;
         this.mFacing = takenStatusPhoto.mFacing;
     }
 
-    public TakenStatusPhoto(TakenStatusPhoto$Facing takenStatusPhoto$Facing) {
-        this.mFacing = TakenStatusPhoto$Facing.UNKNOWN;
-        this.mFacing = takenStatusPhoto$Facing;
+    public TakenStatusPhoto(Facing facing) {
+        this.mFacing = Facing.UNKNOWN;
+        this.mFacing = facing;
     }
 
     public boolean isFront() {
-        return this.mFacing == TakenStatusPhoto$Facing.FRONT;
+        return this.mFacing == Facing.FRONT;
     }
 
     public void log() {

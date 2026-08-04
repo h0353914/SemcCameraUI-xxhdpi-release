@@ -1,3 +1,21 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package org.apache.commons.imaging.formats.jpeg.segments;
 
 import java.io.ByteArrayInputStream;
@@ -6,12 +24,24 @@ import java.io.InputStream;
 import org.apache.commons.imaging.common.BinaryFunctions;
 
 public class SosSegment extends Segment {
-    private final SosSegment$Component[] components;
+    private final Component[] components;
     public final int endOfSpectralSelection;
     public final int numberOfComponents;
     public final int startOfSpectralSelection;
     public final int successiveApproximationBitHigh;
     public final int successiveApproximationBitLow;
+
+    public static class Component {
+        public final int acCodingTableSelector;
+        public final int dcCodingTableSelector;
+        public final int scanComponentSelector;
+
+        public Component(int i, int i2, int i3) {
+            this.scanComponentSelector = i;
+            this.dcCodingTableSelector = i2;
+            this.acCodingTableSelector = i3;
+        }
+    }
 
     public SosSegment(int i, byte[] bArr) throws IOException {
         this(i, bArr.length, new ByteArrayInputStream(bArr));
@@ -23,11 +53,11 @@ public class SosSegment extends Segment {
             System.out.println("SosSegment marker_length: " + i2);
         }
         this.numberOfComponents = BinaryFunctions.readByte("number_of_components_in_scan", inputStream, "Not a Valid JPEG File");
-        this.components = new SosSegment$Component[this.numberOfComponents];
+        this.components = new Component[this.numberOfComponents];
         for (int i3 = 0; i3 < this.numberOfComponents; i3++) {
             byte b = BinaryFunctions.readByte("scanComponentSelector", inputStream, "Not a Valid JPEG File");
             byte b2 = BinaryFunctions.readByte("acDcEntropoyCodingTableSelector", inputStream, "Not a Valid JPEG File");
-            this.components[i3] = new SosSegment$Component(b, (b2 >> 4) & 15, b2 & 15);
+            this.components[i3] = new Component(b, (b2 >> 4) & 15, b2 & 15);
         }
         this.startOfSpectralSelection = BinaryFunctions.readByte("start_of_spectral_selection", inputStream, "Not a Valid JPEG File");
         this.endOfSpectralSelection = BinaryFunctions.readByte("end_of_spectral_selection", inputStream, "Not a Valid JPEG File");
@@ -39,11 +69,11 @@ public class SosSegment extends Segment {
         }
     }
 
-    public SosSegment$Component[] getComponents() {
-        return (SosSegment$Component[]) this.components.clone();
+    public Component[] getComponents() {
+        return (Component[]) this.components.clone();
     }
 
-    public SosSegment$Component getComponents(int i) {
+    public Component getComponents(int i) {
         return this.components[i];
     }
 

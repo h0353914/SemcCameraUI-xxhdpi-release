@@ -6,10 +6,15 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.sonymobile.cameracommon.font.FontUtil;
-import com.sonymobile.cameracommon.font.FontUtil$RobotoFontType;
 
 public abstract class AbsPanelView extends FrameLayout {
-    public static final Typeface REGULAR_ROBOTO = FontUtil.createTypeface(FontUtil$RobotoFontType.REGULAR);
+    public static final Typeface REGULAR_ROBOTO = FontUtil.createTypeface(FontUtil.RobotoFontType.REGULAR);
+
+    public interface PanelAttributes {
+        String getIconUri();
+
+        String getTitle();
+    }
 
     public int getAppIconHeight() {
         return 0;
@@ -23,7 +28,7 @@ public abstract class AbsPanelView extends FrameLayout {
         return 0;
     }
 
-    public void setItem(AbsPanelView$PanelAttributes absPanelView$PanelAttributes) {
+    public void setItem(PanelAttributes panelAttributes) {
     }
 
     public void setUiOrientation(int i) {

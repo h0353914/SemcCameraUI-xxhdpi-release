@@ -4,6 +4,7 @@ import android.os.Parcel;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import java.util.List;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class ScopeDetail implements SafeParcelable {
     public static final zzc CREATOR = new zzc();
     String description;

@@ -1,9 +1,11 @@
 package com.google.android.gms.dynamic;
 
 import android.os.IBinder;
+import com.google.android.gms.dynamic.zzd;
 import java.lang.reflect.Field;
 
-public final class zze<T> extends zzd$zza {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public final class zze<T> extends zzd.zza {
     private final T mWrappedObject;
 
     private zze(T t) {
@@ -12,7 +14,7 @@ public final class zze<T> extends zzd$zza {
 
     public static <T> T zzp(zzd zzdVar) {
         if (zzdVar instanceof zze) {
-            return ((zze) zzdVar).mWrappedObject;
+            return (T) ((zze) zzdVar).mWrappedObject;
         }
         IBinder iBinderAsBinder = zzdVar.asBinder();
         Field[] declaredFields = iBinderAsBinder.getClass().getDeclaredFields();

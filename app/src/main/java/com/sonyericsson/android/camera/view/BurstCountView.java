@@ -1,5 +1,6 @@
 package com.sonyericsson.android.camera.view;
 
+import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -13,7 +14,27 @@ public class BurstCountView extends TextView {
         super(context, attributeSet);
         this.mFadeOutAnimator = ObjectAnimator.ofFloat(this, "alpha", 1.0f, 0.0f);
         this.mFadeOutAnimator.setDuration(1000L);
-        this.mFadeOutAnimator.addListener(new BurstCountView$1(this));
+        this.mFadeOutAnimator.addListener(new Animator.AnimatorListener() { // from class: com.sonyericsson.android.camera.view.BurstCountView.1
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationRepeat(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationStart(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationEnd(Animator animator) {
+                BurstCountView.this.setVisibility(4);
+                BurstCountView.this.setAlpha(1.0f);
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationCancel(Animator animator) {
+                BurstCountView.this.setVisibility(4);
+                BurstCountView.this.setAlpha(1.0f);
+            }
+        });
     }
 
     public void update(int i) {

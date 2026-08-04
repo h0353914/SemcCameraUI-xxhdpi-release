@@ -4,31 +4,33 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.storage.CameraStorageManager;
-import com.sonyericsson.cameracommon.storage.CameraStorageManager$UpdateRequestReason;
 import com.sonyericsson.cameracommon.storage.SavingTaskInquiry;
-import com.sonyericsson.cameracommon.storage.Storage$StorageType;
+import com.sonyericsson.cameracommon.storage.Storage;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
 
 public abstract class StorageUpdateTask implements Callable {
-    private final StorageUpdateTask$OnTaskFinishCallback mCallback;
+    private final OnTaskFinishCallback mCallback;
     private final SavingTaskInquiry mInquiry;
-    private final CameraStorageManager$UpdateRequestReason mRequestReason;
+    private final CameraStorageManager.UpdateRequestReason mRequestReason;
     private final Semaphore mStorageAccessSemaphore;
     private final CameraStorageManager mStorageManager;
-    private final Storage$StorageType mStorageType;
+    private final Storage.StorageType mStorageType;
 
-    public StorageUpdateTask(@NonNull Storage$StorageType storage$StorageType, @NonNull CameraStorageManager cameraStorageManager, @NonNull SavingTaskInquiry savingTaskInquiry, @NonNull Semaphore semaphore, @Nullable StorageUpdateTask$OnTaskFinishCallback storageUpdateTask$OnTaskFinishCallback, @NonNull CameraStorageManager$UpdateRequestReason cameraStorageManager$UpdateRequestReason) {
-        this.mStorageType = storage$StorageType;
+    public interface OnTaskFinishCallback {
+        void onFinish(Storage.StorageType storageType, int i);
+    }
+
+    public StorageUpdateTask(@NonNull Storage.StorageType storageType, @NonNull CameraStorageManager cameraStorageManager, @NonNull SavingTaskInquiry savingTaskInquiry, @NonNull Semaphore semaphore, @Nullable OnTaskFinishCallback onTaskFinishCallback, @NonNull CameraStorageManager.UpdateRequestReason updateRequestReason) {
+        this.mStorageType = storageType;
         this.mStorageManager = cameraStorageManager;
         this.mInquiry = savingTaskInquiry;
         this.mStorageAccessSemaphore = semaphore;
-        this.mCallback = storageUpdateTask$OnTaskFinishCallback;
-        this.mRequestReason = cameraStorageManager$UpdateRequestReason;
+        this.mCallback = onTaskFinishCallback;
+        this.mRequestReason = updateRequestReason;
     }
 
-    protected Storage$StorageType getType() {
+    protected Storage.StorageType getType() {
         return this.mStorageType;
     }
 
@@ -40,35 +42,29 @@ public abstract class StorageUpdateTask implements Callable {
         return this.mInquiry;
     }
 
-    protected CameraStorageManager$UpdateRequestReason getRequestReason() {
+    protected CameraStorageManager.UpdateRequestReason getRequestReason() {
         return this.mRequestReason;
     }
 
-    protected boolean acquire() {
-        boolean zTryAcquire;
+    protected boolean acquire() throws InterruptedException {
         if (CamLog.DEBUG) {
             CamLog.d("invoke: id: " + hashCode());
         }
+        boolean acquired = false;
         try {
-            zTryAcquire = this.mStorageAccessSemaphore.tryAcquire(4000L, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            e = e;
-            zTryAcquire = false;
-        }
-        try {
+            acquired = this.mStorageAccessSemaphore.tryAcquire(4000, java.util.concurrent.TimeUnit.MILLISECONDS);
             if (CamLog.DEBUG) {
                 CamLog.d("Semaphore acquired.");
             }
-        } catch (InterruptedException e2) {
-            e = e2;
+        } catch (InterruptedException e) {
             CamLog.e("Unintended interrupt occurred.", e);
         }
-        if (zTryAcquire) {
-            return true;
+        if (!acquired) {
+            RuntimeException runtimeException = new RuntimeException("Semaphore could not be acquired due to timeout");
+            runtimeException.fillInStackTrace();
+            throw runtimeException;
         }
-        RuntimeException runtimeException = new RuntimeException("Semaphore could not be acquired due to timeout");
-        runtimeException.fillInStackTrace();
-        throw runtimeException;
+        return true;
     }
 
     protected boolean tryAcquire() {

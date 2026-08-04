@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abc_action_bar_home_description">ਹੋਮ \'ਤੇ ਜਾਓ</string>
+    <string name="abc_action_bar_home_description">"ਹੋਮ 'ਤੇ ਜਾਓ"</string>
     <string name="abc_action_bar_up_description">ਉੱਪਰ ਜਾਓ</string>
     <string name="abc_action_menu_overflow_description">ਹੋਰ ਚੋਣਾਂ</string>
     <string name="abc_action_mode_done">ਹੋ ਗਿਆ</string>
@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">ਕੈਪਚਰਿੰਗ ਪੂਰੀ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ। ਕਿਰਪਾ ਕਰਕੇ ਹੌਲੀ-ਹੌਲੀ ਪੈਨ ਕਰੋ।</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">ਕੈਪਚਰਿੰਗ ਪੂਰੀ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ। ਕਿਰਪਾ ਕਰਕੇ ਤੇਜ਼ੀ ਨਾਲ ਪੈਨ ਕਰੋ।</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">ਆਪਣੇ ਕੈਮਰੇ ਨੂੰ ਸਵੀਪ ਕਰਕੇ ਇੱਕ ਚਿੱਤਰਾਵਲੀ ਫੋਟੋ ਲਓ</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">ਹੇਠਲੀਆਂ ਫ਼ਾਈਲਾਂ ਨੂੰ ਬਣਾ ਰਿਹਾ ਹੈ:\n- ਬਹੁ-ਕੋਣੀ ਤਸਵੀਰ\n- 3D ਤਸਵੀਰ\nਨੋਟ: ਇਨ੍ਹਾਂ ਫ਼ਾਈਲਾਂ ਵਿੱਚ ਸਲੇਟੀ ਖੇਤਰ ਹੁੰਦਾ ਹੈ।</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">ਹੇਠਲੀਆਂ ਫ਼ਾਈਲਾਂ ਨੂੰ ਬਣਾ ਰਿਹਾ ਹੈ:\n- ਬਹੁ-ਕੋਣੀ ਤਸਵੀਰ\n- 3D ਤਸਵੀਰ</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">ਪ੍ਰਕਿਰਿਆ ਕਰ ਰਿਹਾ ਹੈ...\nਇਸ ਤਸਵੀਰ ਵਿੱਚ ਸਲੇਟੀ ਖੇਤਰ ਹੁੰਦਾ ਹੈ</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"ਹੇਠਲੀਆਂ ਫ਼ਾਈਲਾਂ ਨੂੰ ਬਣਾ ਰਿਹਾ ਹੈ:
+- ਬਹੁ-ਕੋਣੀ ਤਸਵੀਰ
+- 3D ਤਸਵੀਰ
+ਨੋਟ: ਇਨ੍ਹਾਂ ਫ਼ਾਈਲਾਂ ਵਿੱਚ ਸਲੇਟੀ ਖੇਤਰ ਹੁੰਦਾ ਹੈ।"</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"ਹੇਠਲੀਆਂ ਫ਼ਾਈਲਾਂ ਨੂੰ ਬਣਾ ਰਿਹਾ ਹੈ:
+- ਬਹੁ-ਕੋਣੀ ਤਸਵੀਰ
+- 3D ਤਸਵੀਰ"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"ਪ੍ਰਕਿਰਿਆ ਕਰ ਰਿਹਾ ਹੈ...
+ਇਸ ਤਸਵੀਰ ਵਿੱਚ ਸਲੇਟੀ ਖੇਤਰ ਹੁੰਦਾ ਹੈ"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">ਤਸਵੀਰ ਨੂੰ ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ</string>
     <string name="cam_3d_strings_dialog_processing_txt">ਪ੍ਰਕਿਰਿਆ ਕਰ ਰਿਹਾ ਹੈ...</string>
     <string name="cam_3d_strings_error_application_busy_txt">3D ਕੈਮਰਾ ਲਾਂਚ ਕਰਨ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਕੁਝ ਸਕਿੰਟਾਂ ਲਈ ਉਡੀਕ ਕਰੋ</string>
@@ -83,7 +89,7 @@
     <string name="cam_strings_accessibility_dual_effect_menu_txt">ਡੂਅਲ ਕੈਮਰਾ ਪ੍ਰਭਾਵ</string>
     <string name="cam_strings_accessibility_flash_torch_txt">ਫਲੈਸ਼ਲਾਈਟ</string>
     <string name="cam_strings_accessibility_flash_txt">ਫ਼ਲੈਸ਼</string>
-    <string name="cam_strings_accessibility_fusion_auto_txt">ਆਟੋ ਡੂਅਲ ਕੈਮਰਾ \'ਤੇ ਸਵਿੱਚ ਕਰਨ ਲਈ ਡਬਲ-ਟੈਪ ਕਰੋ</string>
+    <string name="cam_strings_accessibility_fusion_auto_txt">"ਆਟੋ ਡੂਅਲ ਕੈਮਰਾ 'ਤੇ ਸਵਿੱਚ ਕਰਨ ਲਈ ਡਬਲ-ਟੈਪ ਕਰੋ"</string>
     <string name="cam_strings_accessibility_fusion_off_txt">ਡੂਅਲ ਕੈਮਰਾ ਚਾਲੂ ਕਰਨ ਲਈ ਡਬਲ ਟੈਪ ਕਰੋ</string>
     <string name="cam_strings_accessibility_fusion_on_txt">ਡੂਅਲ ਕੈਮਰਾ ਬੰਦ ਕਰਨ ਲਈ ਡਬਲ ਟੈਪ ਕਰੋ</string>
     <string name="cam_strings_accessibility_image_quality_control_exposure_value_txt">ਐਕਸਪੋਜ਼ਰ ਮਾਨ</string>
@@ -108,7 +114,7 @@
     <string name="cam_strings_accessibility_recent_photo_txt">ਨਵੇਂ ਚਿੱਤਰਾਂ ਦਾ ਸਟੈਕ</string>
     <string name="cam_strings_accessibility_recording_button_txt">ਰਿਕਾਰਡ ਕਰੋ</string>
     <string name="cam_strings_accessibility_recording_slow_motion_button_txt">ਹੌਲੀ ਗਤੀ</string>
-    <string name="cam_strings_accessibility_recording_slow_motion_exti_button_txt">ਹੌਲੀ ਗਤੀ \'ਚੋਂ ਬਾਹਰ ਨਿੱਕਲੋ</string>
+    <string name="cam_strings_accessibility_recording_slow_motion_exti_button_txt">"ਹੌਲੀ ਗਤੀ 'ਚੋਂ ਬਾਹਰ ਨਿੱਕਲੋ"</string>
     <string name="cam_strings_accessibility_recording_stop_button_txt">ਬੰਦ ਕਰੋ</string>
     <string name="cam_strings_accessibility_self_timer_stop_button_txt">ਉਲਟੀ ਗਿਣਤੀ ਬੰਦ ਕਰੋ</string>
     <string name="cam_strings_accessibility_shutter_button_txt">ਕੈਮਰਾ ਕੁੰਜੀ</string>
@@ -116,10 +122,10 @@
     <string name="cam_strings_accessibility_superior_auto_color_brightness_txt">ਰੰਗ ਅਤੇ ਚਮਕ ਅਨੁਕੂਲਣ</string>
     <string name="cam_strings_accessibility_swf_normal_txt">ਸਧਾਰਨ ਮੋਡ ਤੇ ਬਦਲੀ ਕਰਨ ਲਈ ਦੋ ਵਾਰ ਟੈਪ ਕਰੋ</string>
     <string name="cam_strings_accessibility_swf_wide_txt">ਵੱਡੀ ਦਿੱਖ ਵਾਲੇ ਮੋਡ ਤੇ ਬਦਲੀ ਕਰਨ ਲਈ ਦੋ ਵਾਰ ਟੈਪ ਕਰੋ</string>
-    <string name="cam_strings_accessibility_switch_to_front_by_swiping_txt">ਫਰੰਟ ਕੈਮਰੇ \'ਤੇ ਬਦਲਿਆ ਗਿਆ</string>
+    <string name="cam_strings_accessibility_switch_to_front_by_swiping_txt">"ਫਰੰਟ ਕੈਮਰੇ 'ਤੇ ਬਦਲਿਆ ਗਿਆ"</string>
     <string name="cam_strings_accessibility_switch_to_front_txt">ਫਰੰਟ ਕੈਮਰੇ ਤੇ ਬਦਲਣ ਲਈ ਡਬਲ-ਟੈਪ ਕਰੋ</string>
-    <string name="cam_strings_accessibility_switch_to_main_by_swiping_txt">ਮੁੱਖ ਕੈਮਰੇ \'ਤੇ ਬਦਲਿਆ ਗਿਆ</string>
-    <string name="cam_strings_accessibility_switch_to_main_txt">ਮੁੱਖ ਕੈਮਰੇ \'ਤੇ ਬਦਲਣ ਲਈ ਡਬਲ-ਟੈਪ ਕਰੋ</string>
+    <string name="cam_strings_accessibility_switch_to_main_by_swiping_txt">"ਮੁੱਖ ਕੈਮਰੇ 'ਤੇ ਬਦਲਿਆ ਗਿਆ"</string>
+    <string name="cam_strings_accessibility_switch_to_main_txt">"ਮੁੱਖ ਕੈਮਰੇ 'ਤੇ ਬਦਲਣ ਲਈ ਡਬਲ-ਟੈਪ ਕਰੋ"</string>
     <string name="cam_strings_accessibility_switch_to_photo_txt">ਕੈਮਰੇ ਤੇ ਬਦਲਣ ਲਈ ਡਬਲ-ਟੈਪ ਕਰੋ</string>
     <string name="cam_strings_accessibility_switch_to_video_txt">ਵੀਡੀਓ ਤੇ ਬਦਲਣ ਲਈ ਡਬਲ-ਟੈਪ ਕਰੋ</string>
     <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">HDR ਨੂੰ ਚਾਲੂ ਕਰਨ ਲਈ ਡਬਲ ਟੈਪ ਕਰੋ</string>
@@ -157,7 +163,7 @@
     <string name="cam_strings_burst_change_camera_key_setting_txt">ਬਰਸਟ ਸ਼ੌਟ ਨੂੰ ਯੋਗ ਬਣਾਉਣ ਲਈ ਕੈਮਰਾ ਕੁੰਜੀ ਨਾਲ ਬਰਸਟ ਨੂੰ ਚਾਲੂ ਕਰੋ</string>
     <string name="cam_strings_burst_in_dark_condition_txt">ਹਨੇਰੇ ਵਿੱਚ ਬਰਸਟ ਨਹੀਂ ਲਈ ਜਾ ਸਕਦੀ</string>
     <string name="cam_strings_burst_not_supported_front_camera_txt">ਅਗਲੇ ਕੈਮਰੇ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਬਰਸਟ ਫੋਟੋ ਨਹੀਂ ਲੈ ਸਕਦੇ</string>
-    <string name="cam_strings_burst_not_supported_fusion_on_txt">ਡੂਅਲ ਕੈਮਰਾ ਚਾਲੂ ਹੋਣ \'ਤੇ ਬਰਸਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ</string>
+    <string name="cam_strings_burst_not_supported_fusion_on_txt">"ਡੂਅਲ ਕੈਮਰਾ ਚਾਲੂ ਹੋਣ 'ਤੇ ਬਰਸਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ"</string>
     <string name="cam_strings_burst_saved_internal_storage_txt">ਬਰਸਟ ਚਿੱਤਰਾਂ ਨੂੰ ਅੰਦਰੂਨੀ ਸਟੋਰੇਜ ਵਿੱਚ ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ</string>
     <string name="cam_strings_burst_shooting_txt">ਬਰਸਟ ਸਪੀਡ</string>
     <string name="cam_strings_camera_apps_tab_txt">ਕੈਮਰਾ ਐਪਸ</string>
@@ -208,18 +214,18 @@
     <string name="cam_strings_core_intelligentactive_txt">ਇੰਟੈਂਲੀਜੈਂਟ ਐਕਟਿਵ</string>
     <string name="cam_strings_cta_description_txt">ਹੇਠਾਂ ਐਕਸੈਸ ਬੇਨਤੀ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣੀ ਹੈ?</string>
     <string name="cam_strings_cta_title_txt">ਨੋਟ</string>
-    <string name="cam_strings_dependency_changed_txt">%1$s ਨੂੰ %2$s \'ਤੇ ਬਦਲਿਆ ਗਿਆ ਸੀ</string>
+    <string name="cam_strings_dependency_changed_txt">"%1$s ਨੂੰ %2$s 'ਤੇ ਬਦਲਿਆ ਗਿਆ ਸੀ"</string>
     <string name="cam_strings_description_4k2k_txt">ਵੀਡੀਓ ਨੂੰ 4K ਅਲਟ੍ਰਾ ਹਾਈ-ਡੈਫੀਨੇਸ਼ਨ ਵਿੱਚ ਰਿਕਾਰਡ ਕਰੋ</string>
     <string name="cam_strings_description_camera_txt">ਫੋਟੋ ਅਤੇ ਵੀਡੀਓ ਲਓ</string>
     <string name="cam_strings_description_creative_effect_txt">ਕਲਾਤਮਿਕ ਚਿੱਤਰ ਅਤੇ ਵੀਡੀਓ ਲਈ ਇਫੈਕਟ ਚੁਣੋ</string>
     <string name="cam_strings_description_dualrec_txt">ਫਰੰਟ ਅਤੇ ਮੁੱਖ ਕੈਮਰੇ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹੋਏ ਆਪਣੇ ਚਿਹਰੇ ਨੂੰ ਚਿੱਤਰਾਂ ਅਤੇ ਵੀਡੀਓ ਵਿੱਚ ਰੱਖੋ।</string>
     <string name="cam_strings_description_facefusion_txt">ਪ੍ਰਭਾਵਸ਼ਾਲੀ ਸੈਲਫ਼ੀ ਲੈਣ ਲਈ ਆਪਣੇ ਚਿਹਰੇ ਨੂੰ ਆਪਣੇ ਦੋਸਤ ਦੇ ਚਿਹਰੇ ਨਾਲ ਲੁਕਾਉ</string>
-    <string name="cam_strings_description_google_lens_txt">ਤੁਸੀਂ %1$s ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਹੋਰ ਵੇਰਵੇ ਪ੍ਰਾਪਤ ਕਰ ਸਕਦੇ ਹੋ ਜਾਂ ਤੁਸੀਂ ਜੋ ਦੇਖਦੇ ਹੋ ਉਸ \'ਤੇ ਕਾਰਵਾਈ ਕਰ ਸਕਦੇ ਹੋ</string>
+    <string name="cam_strings_description_google_lens_txt">"ਤੁਸੀਂ %1$s ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਹੋਰ ਵੇਰਵੇ ਪ੍ਰਾਪਤ ਕਰ ਸਕਦੇ ਹੋ ਜਾਂ ਤੁਸੀਂ ਜੋ ਦੇਖਦੇ ਹੋ ਉਸ 'ਤੇ ਕਾਰਵਾਈ ਕਰ ਸਕਦੇ ਹੋ"</string>
     <string name="cam_strings_description_high_frame_rate_txt">ਉੱਚ ਫ਼੍ਰੇਮ ਰੇਟ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰੋ ਅਤੇ ਮੰਦ ਗਤੀ ਇਫੈਕਟ ਲਾਗੂ ਕਰੋ</string>
     <string name="cam_strings_description_multicam_txt">ਇੱਕ ਸਕ੍ਰੀਨ ਤੇ ਇੱਕੋ ਦ੍ਰਿਸ਼ ਨੂੰ ਕਈ ਕੋਣਾਂ ਤੋਂ ਰਿਕਾਰਡ ਕਰੋ</string>
     <string name="cam_strings_description_shoundphoto_txt">ਪਿਛੋਕੜ ਆਵਾਜ਼ (ਪੰਛੀਆਂ ਦੀ ਚਹਿਕ, ਆਦਿ) ਨਾਲ ਫੋਟੋ ਲਉ</string>
     <string name="cam_strings_description_timeshift_short_txt">ਤੁਹਾਡੇ ਸ਼ੌਟ ਤੋਂ ਪਹਿਲਾਂ ਅਤੇ ਬਾਅਦ ਵਿੱਚ ਲਏ ਗਏ ਬਰਸਟ ਚਿੱਤਰ ਤੋਂ ਬਿਹਤਰ ਫੋਟੋ ਪ੍ਰਾਪਤ ਕਰੋ</string>
-    <string name="cam_strings_dialog_battery_level_low_info_txt">ਫ਼ੋਨ \'ਚ ਲੋੜੀਂਦੀ ਬੈਟਰੀ ਨਹੀਂ ਹੈ। ਬੈਟਰੀ ਘੱਟ ਹੋਣ \'ਤੇ ਕੈਮਰਾ ਆਪਣੇ ਆਪ ਬੰਦ ਹੋ ਜਾਵੇਗਾ।</string>
+    <string name="cam_strings_dialog_battery_level_low_info_txt">"ਫ਼ੋਨ 'ਚ ਲੋੜੀਂਦੀ ਬੈਟਰੀ ਨਹੀਂ ਹੈ। ਬੈਟਰੀ ਘੱਟ ਹੋਣ 'ਤੇ ਕੈਮਰਾ ਆਪਣੇ ਆਪ ਬੰਦ ਹੋ ਜਾਵੇਗਾ।"</string>
     <string name="cam_strings_dialog_battery_level_low_recording_txt">ਘੱਟ ਬੈਟਰੀ ਦੇ ਕਾਰਨ ਰਿਕਾਰਡਿੰਗ ਬੰਦ ਹੋ ਗਈ। ਆਪਣੇ ਉਪਕਰਣ ਨੂੰ ਚਾਰਜ ਕਰੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।</string>
     <string name="cam_strings_dialog_battery_level_low_using_txt">ਘੱਟ ਬੈਟਰੀ ਦੇ ਕਾਰਨ ਕੈਮਰੇ ਦੀ ਵਰਤੋਂ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ। ਆਪਣੇ ਉਪਕਰਣ ਨੂੰ ਚਾਰਜ ਕਰੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।</string>
     <string name="cam_strings_dialog_burst_information_txt">ਲਗਾਤਾਰ ਸ਼ਾਟ ਲੈਣ ਲਈ, ਕੈਮਰਾ ਐਪਸ ਵਿੱਚ Timeshift burst ਨੂੰ ਚੁਣੋ</string>
@@ -324,7 +330,7 @@
     <string name="cam_strings_fast_capturing_title_txt">ਤੁਰੰਤ ਲਾਂਚ</string>
     <string name="cam_strings_fast_capturing_txt">ਤੁਰੰਤ ਲਾਂਚ</string>
     <string name="cam_strings_fast_switch_mode_camera_wizard_title_txt">ਕੈਪਚਰ ਕਰਨ ਵਾਲਾ ਮੋਡ ਅਤੇ ਕੈਮਰਾ ਸਵਿੱਚ ਕਰੋ</string>
-    <string name="cam_strings_fast_switch_mode_camera_wizard_txt">ਕਿਸੇ ਹੋਰ ਕੈਪਚਰ ਮੋਡ ਜਿਵੇਂ ਕਿ ਵੀਡੀਓ ਜਾਂ ਮੈਨੁਅਲ \'ਤੇ ਸਵਿੱਚ ਕਰਨ ਲਈ ਅਤੇ ਮੁੱਖ ਅਤੇ ਅਗਲੇ ਕੈਮਰੇ ਵਿਚਕਾਰ ਸਵਿੱਚ ਕਰਨ ਲਈ ਸਕ੍ਰੀਨ ਤੇ ਸਵਾਈਪ ਕਰੋ।</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_txt">"ਕਿਸੇ ਹੋਰ ਕੈਪਚਰ ਮੋਡ ਜਿਵੇਂ ਕਿ ਵੀਡੀਓ ਜਾਂ ਮੈਨੁਅਲ 'ਤੇ ਸਵਿੱਚ ਕਰਨ ਲਈ ਅਤੇ ਮੁੱਖ ਅਤੇ ਅਗਲੇ ਕੈਮਰੇ ਵਿਚਕਾਰ ਸਵਿੱਚ ਕਰਨ ਲਈ ਸਕ੍ਰੀਨ ਤੇ ਸਵਾਈਪ ਕਰੋ।"</string>
     <string name="cam_strings_fast_switch_tutorial_title_txt">ਕੈਮਰਾ ਬਦਲੋ</string>
     <string name="cam_strings_fast_switch_tutorial_txt">ਸਕ੍ਰੀਨ ਨੂੰ ਸਵੈਪ ਕਰਕੇ ਤੁਸੀਂ ਮੁੱਖ ਅਤੇ ਫਰੰਟ ਕੈਮਰਿਆਂ ਵਿਚਕਾਰ ਬਦਲ ਸਕਦੇ ਹੋ</string>
     <string name="cam_strings_file_delete_confirm_title_txt">ਹਟਾਓ</string>
@@ -358,7 +364,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">ਆਪਣੀ ਚਮੜੀ ਨੂੰ ਗੋਰਾ ਅਤੇ ਮੁਲਾਇਮ ਬਣਾਓ। ਇਹ ਪ੍ਰਭਾਵ ਉਸ ਅਨੁਪ੍ਰਯੋਗ ਵਿੱਚ ਕੰਮ ਕਰਦਾ ਹੈ ਜੋ ਕਿ ਅਗਲੇਰੇ ਕੈਮਰੇ ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ। ਇਹ ਤਸਵੀਰਾਂ ਅਤੇ ਵੀਡੀਓ ਉਤੇ ਲਾਗੂ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। ਤੁਸੀਂ ਲੇਵਲ ਨੂੰ ਵੀ ਇਕਸਾਰ ਕਰ ਸਕਦੇ ਹੋ।</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">ਪੱਧਰ ਸਮਾਯੋਜਨ</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">ਮੁਲਾਇਮ ਤਵਚਾ</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">ਐਪ ਸ਼ੁਰੂ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ।\nਯਕੀਨੀ ਬਣਾਓ ਕਿ %1$s ਦਾ ਨਵੀਨਤਮ ਸੰਸਕਰਣ ਸਥਾਪਤ ਹੈ ਅਤੇ ਤੁਹਾਡੇ ਉਪਕਰਣ \'ਤੇ ਸਮਰੱਥ ਬਣਾਇਆ ਗਿਆ ਹੈ।</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"ਐਪ ਸ਼ੁਰੂ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ।
+ਯਕੀਨੀ ਬਣਾਓ ਕਿ %1$s ਦਾ ਨਵੀਨਤਮ ਸੰਸਕਰਣ ਸਥਾਪਤ ਹੈ ਅਤੇ ਤੁਹਾਡੇ ਉਪਕਰਣ 'ਤੇ ਸਮਰੱਥ ਬਣਾਇਆ ਗਿਆ ਹੈ।"</string>
     <string name="cam_strings_gridline_txt">ਗ੍ਰਿਡ ਲਾਈਨਾਂ</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">ਆਪਣੀ ਹਥੇਲੀ ਨੂੰ ਕੈਮਰੇ ਦੇ ਵੱਲ ਮੋੜੋ। ਜਦੋਂ ਤੁਹਾਡੀ ਹਥੇਲੀ ਨੂੰ ਮਾਨਤਾ ਮਿਲ ਜਾਂਦੀ ਹੈ ਤਾਂ ਸਵੈ-ਟਾਈਮਰ ਚਾਲੂ ਹੋ ਜਾਵੇਗਾ। ਮਾਨਤਾ ਪ੍ਰਾਪਤ ਕਰਨ ਨੂੰ ਆਸਾਨ ਬਣਾਉਣ ਲਈ, ਆਪਣੀਆਂ ਉਂਗਲਾਂ ਦਾ ਉੱਪਰ ਵੱਲ ਨੂੰ ਵਿਸਤਾਰ ਕਰੋ।</string>
     <string name="cam_strings_hand_shutter_hint_txt">ਆਪਣੀ ਹਥੇਲੀ ਨੂੰ ਕੈਮਰੇ ਦੇ ਵੱਲ ਮੋੜੋ</string>
@@ -386,8 +393,8 @@
     <string name="cam_strings_long_press_burst_high_txt">ਉੱਚ ਰਫ਼ਤਾਰ</string>
     <string name="cam_strings_long_press_burst_txt">ਦੇਰ ਤਕ ਦਬਾ ਕੇ ਬਰਸਟ ਕਰੋ</string>
     <string name="cam_strings_manual_fusion_tutorial_2_title_txt">ਡੂਅਲ ਕੈਮਰੇ ਨਾਲ ਚਿੱਤਰ ਲੈਣਾ</string>
-    <string name="cam_strings_manual_fusion_tutorial_2_txt">ਡੂਅਲ ਕੈਮਰਾ ਚਾਲੂ ਹੋਣ \'ਤੇ ਚਿੱਤਰ ਲੈਂਦੇ ਸਮੇਂ ਔਬਜੈਕਟ ਤੋਂ ਘੱਟੋ-ਘੱਟ 1 ਮੀਟਰ ਦੀ ਦੂਰੀ \'ਤੇ ਰਹੋ। ਔਬਜੈਕਟ ਦੇ ਨੇੜੇ ਜਾਣ ਦੇ ਕਾਰਨ ਵਿਊਪੁਆਇੰਟ ਜਾਂ ਰੰਗ ਬਦਲ ਸਕਦਾ ਹੈ।</string>
-    <string name="cam_strings_manual_fusion_tutorial_title_txt">ਡੂਅਲ ਕੈਮਰੇ \'ਤੇ ਬਦਲੋ</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_txt">"ਡੂਅਲ ਕੈਮਰਾ ਚਾਲੂ ਹੋਣ 'ਤੇ ਚਿੱਤਰ ਲੈਂਦੇ ਸਮੇਂ ਔਬਜੈਕਟ ਤੋਂ ਘੱਟੋ-ਘੱਟ 1 ਮੀਟਰ ਦੀ ਦੂਰੀ 'ਤੇ ਰਹੋ। ਔਬਜੈਕਟ ਦੇ ਨੇੜੇ ਜਾਣ ਦੇ ਕਾਰਨ ਵਿਊਪੁਆਇੰਟ ਜਾਂ ਰੰਗ ਬਦਲ ਸਕਦਾ ਹੈ।"</string>
+    <string name="cam_strings_manual_fusion_tutorial_title_txt">"ਡੂਅਲ ਕੈਮਰੇ 'ਤੇ ਬਦਲੋ"</string>
     <string name="cam_strings_manual_fusion_tutorial_txt">ਤੁਸੀਂ ਡੂਅਲ ਕੈਮਰੇ ਨੂੰ ਮੈਨੂਅਲ ਮੋਡ ਵਿੱਚ ਚਾਲੂ ਜਾਂ ਬੰਦ ਕਰ ਸਕਦੇ ਹੋ। ਘੱਟ ਰੌਸ਼ਨੀ ਵਾਲੀਆਂ ਸਥਿਤੀਆਂ ਵਿੱਚ ਘੱਟ-ਸ਼ੋਰ ਵਾਲੇ ਫੋਟੋ ਲੈਣ ਲਈ ਇਸ ਨੂੰ ਚਾਲੂ ਕਰੋ। ਕਲੋਜ਼-ਅਪ ਫੋਟੋ ਲੈਣ ਲਈ ਇਸ ਨੂੰ ਬੰਦ ਕਰੋ।</string>
     <string name="cam_strings_max_file_size_save_failed_txt">ਅਧਿਕਤਮ ਫਾਈਲ ਆਕਾਰ ਦੀਆਂ ਸੀਮਾਵਾਂ ਦੇ ਕਾਰਨ ਰਿਕਾਰਡਿੰਗ ਨੂੰ ਰੋਕਿਆ ਗਿਆ</string>
     <string name="cam_strings_max_recording_time_save_failed_txt">ਅਧਿਕਤਮ ਰਿਕਾਰਡਿੰਗ ਸਮੇਂ ਦੀ ਸੀਮਾ ਦੇ ਕਾਰਨ ਰਿਕਾਰਡਿੰਗ ਨੂੰ ਰੋਕਿਆ ਗਿਆ</string>
@@ -399,8 +406,9 @@
     <string name="cam_strings_monochrome_title_txt">ਮੋਨੋਕ੍ਰੋਮ</string>
     <string name="cam_strings_more_common_setting_title_txt">ਆਮ ਸੈਟਿੰਗ</string>
     <string name="cam_strings_more_txt">ਹੋਰ</string>
-    <string name="cam_strings_multi_window_txt">ਵਰਤੋਂ ਲਈ %1$s ਨੂੰ ਪੂਰੀ ਸਕ੍ਰੀਨ \'ਤੇ ਬਦਲਣ ਲਈ ਸਪਲਿਟ ਬਾਰ ਦੇ ਮੱਧ ਭਾਗ ਨੂੰ ਖਿੱਚੋ</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">ਇੱਕ ਹੋਰ ਉਪਕਰਣ ਹੁਣ ਕਨੈਕਟ ਹੈ।\nਕੀ ਤੁਸੀਂ ਉਪਕਰਣ ਦੇ ਨਾਲ ਵਿਊਫਾਈਂਡਰ ਰਾਹੀਂ ਤਸਵੀਰ ਨੂੰ ਸਾਂਝਾ ਕਰਨਾ ਚਾਹੋਗੇ?</string>
+    <string name="cam_strings_multi_window_txt">"ਵਰਤੋਂ ਲਈ %1$s ਨੂੰ ਪੂਰੀ ਸਕ੍ਰੀਨ 'ਤੇ ਬਦਲਣ ਲਈ ਸਪਲਿਟ ਬਾਰ ਦੇ ਮੱਧ ਭਾਗ ਨੂੰ ਖਿੱਚੋ"</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"ਇੱਕ ਹੋਰ ਉਪਕਰਣ ਹੁਣ ਕਨੈਕਟ ਹੈ।
+ਕੀ ਤੁਸੀਂ ਉਪਕਰਣ ਦੇ ਨਾਲ ਵਿਊਫਾਈਂਡਰ ਰਾਹੀਂ ਤਸਵੀਰ ਨੂੰ ਸਾਂਝਾ ਕਰਨਾ ਚਾਹੋਗੇ?"</string>
     <string name="cam_strings_multicam_add_device_txt">ਉਪਕਰਣ ਜੋੜੋ</string>
     <string name="cam_strings_multicam_add_more_txt">ਹੋਰ ਜੋੜੋ</string>
     <string name="cam_strings_multicam_apply_txt">ਸੰਪੰਨ</string>
@@ -410,8 +418,8 @@
     <string name="cam_strings_multicam_error_disconnect_txt">ਡਿਸਕੁਨੈਕਟ ਕੀਤਾ</string>
     <string name="cam_strings_multicam_error_nfc_txt">NFC ਲੌਕ ਹੋਣ ਨਾਲ ਸ਼ੁਰੂ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ।</string>
     <string name="cam_strings_multicam_error_wifi_txt">Wi-Fi ਟੈਦਰਿੰਗ ਦੌਰਾਨ ਇਹ ਮੋਡ ਅਣਉਪਲਬਧ ਹੁੰਦਾ ਹੈ।</string>
-    <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">ਅਧਿਕਤਮ ਗਿਣਤੀ \'ਚ ਉਪਕਰਣ ਜੁੜ ਗਏ ਹਨ।</string>
-    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">ਇੱਕ ਵਾਰ \'ਚ Sony ਦਾ ਕੇਵਲ ਇੱਕ Wi-Fi/NFC ਕੈਮਰਾ ਹੀ ਤੁਹਾਡੇ Xperia ਨਾਲ ਕਨੈਕਟ ਹੋ ਸਕਦਾ ਹੈ।</string>
+    <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">"ਅਧਿਕਤਮ ਗਿਣਤੀ 'ਚ ਉਪਕਰਣ ਜੁੜ ਗਏ ਹਨ।"</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">"ਇੱਕ ਵਾਰ 'ਚ Sony ਦਾ ਕੇਵਲ ਇੱਕ Wi-Fi/NFC ਕੈਮਰਾ ਹੀ ਤੁਹਾਡੇ Xperia ਨਾਲ ਕਨੈਕਟ ਹੋ ਸਕਦਾ ਹੈ।"</string>
     <string name="cam_strings_multicam_nfc_connect_title_txt">ਕਨੈਕਟ ਕਰਨ ਲਈ ਉਪਕਰਣਾਂ ਨੂੰ ਸਪਰਸ਼ ਕਰੋ</string>
     <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Sony ਦਾ Wi-Fi/NFC ਕੈਮਰਾ</string>
     <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
@@ -432,9 +440,10 @@
     <string name="cam_strings_photometry_txt">ਮੀਟਰਿੰਗ</string>
     <string name="cam_strings_predictive_capture_feedback_txt">ਅਨੁਮਾਨਿਤ</string>
     <string name="cam_strings_predictive_capture_txt">ਅਨੁਮਾਨਯੋਗ ਕੈਪਚਰ</string>
-    <string name="cam_strings_predictive_launch_guide_txt">ਪੂਰੀ ਸਕ੍ਰੀਨ ਦੇਖਣ ਲਈ ਸਕ੍ਰੀਨ \'ਤੇ ਟੈਪ ਕਰੋ</string>
+    <string name="cam_strings_predictive_launch_guide_txt">"ਪੂਰੀ ਸਕ੍ਰੀਨ ਦੇਖਣ ਲਈ ਸਕ੍ਰੀਨ 'ਤੇ ਟੈਪ ਕਰੋ"</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">ਅਨੁਮਾਨਯੋਗ ਲਾਂਚ</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">ਤੁਸੀਂ ਤੇਜ਼ੀ ਨਾਲ ਕੈਮਰਾ ਲਾਂਚ ਕਰ ਸਕਦੇ ਹੋ। ਆਪਣੇ ਉਪਕਰਣ ਨੂੰ ਲੈਂਡਸਕੇਪ ਦ੍ਰਿਸ਼ ਵਿੱਚ ਘੁਮਾ ਕੇ ਰੱਖੋ ਅਤੇ ਕੈਮਰੇ ਦਾ ਮੂੰਹ ਔਬਜੈਕਟ ਵੱਲ ਕਰੋ। ਉਪਕਰਣ ਆਪਣੇ-ਆਪ ਹੀ ਕੈਮਰਾ ਲਾਂਚ ਕਰੇਗਾ।\nਤੁਸੀਂ ਇਸ ਵਿਸ਼ੇਸ਼ਤਾ ਨੂੰ ਕੈਮਰਾ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਅਨੁਮਾਨਯੋਗ ਲਾਂਚ ਤੋਂ ਬੰਦ ਕਰ ਸਕਦੇ ਹੋ।</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"ਤੁਸੀਂ ਤੇਜ਼ੀ ਨਾਲ ਕੈਮਰਾ ਲਾਂਚ ਕਰ ਸਕਦੇ ਹੋ। ਆਪਣੇ ਉਪਕਰਣ ਨੂੰ ਲੈਂਡਸਕੇਪ ਦ੍ਰਿਸ਼ ਵਿੱਚ ਘੁਮਾ ਕੇ ਰੱਖੋ ਅਤੇ ਕੈਮਰੇ ਦਾ ਮੂੰਹ ਔਬਜੈਕਟ ਵੱਲ ਕਰੋ। ਉਪਕਰਣ ਆਪਣੇ-ਆਪ ਹੀ ਕੈਮਰਾ ਲਾਂਚ ਕਰੇਗਾ।
+ਤੁਸੀਂ ਇਸ ਵਿਸ਼ੇਸ਼ਤਾ ਨੂੰ ਕੈਮਰਾ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਅਨੁਮਾਨਯੋਗ ਲਾਂਚ ਤੋਂ ਬੰਦ ਕਰ ਸਕਦੇ ਹੋ।"</string>
     <string name="cam_strings_predictive_launch_txt">ਅਨੁਮਾਨਯੋਗ ਲਾਂਚ</string>
     <string name="cam_strings_preview_always_txt">ਚਾਲੂ</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 ਸਕਿੰਟ</string>
@@ -450,7 +459,7 @@
     <string name="cam_strings_remember_geotag_txt">ਆਪਣੀ ਚਿੱਤਰ ਅਤੇ ਵੀਡੀਓਜ਼ ਨੂੰ ਟੈਗ਼ ਕਰੋ ਜਿਥੇ ਉਹ ਲਈਆਂ ਗਈਆਂ ਹਨ। ਤੁਸੀਂ ਬਾਅਦ ਵਿੱਚ ਕੈਮਰਾ ਸੈਟਿੰਗ ਤੋਂ ਇਸ ਸੈਟਿੰਗ ਨੂੰ ਬਦਲ ਸਕਦੇ ਹੋ।</string>
     <string name="cam_strings_remote_touch_to_start_txt">ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ</string>
     <string name="cam_strings_reset_color_brightness_txt">ਰੰਗ ਅਤੇ ਚਮਕ ਰੀਸੈਟ ਕਰੋ</string>
-    <string name="cam_strings_reset_settings_confirm_title_txt">ਕੈਮਰਾ ਸੈਟਿੰਗਾਂ ਨੂੰ ਡਿਫੌਲਟ \'ਤੇ ਰੀਸੈਟ ਕਰਨਾ ਹੈ?</string>
+    <string name="cam_strings_reset_settings_confirm_title_txt">"ਕੈਮਰਾ ਸੈਟਿੰਗਾਂ ਨੂੰ ਡਿਫੌਲਟ 'ਤੇ ਰੀਸੈਟ ਕਰਨਾ ਹੈ?"</string>
     <string name="cam_strings_reset_settings_txt">ਸੈਟਿੰਗ ਰੀਸੈੱਟ ਕਰੋ</string>
     <string name="cam_strings_reset_txt">ਰੀਸੈੱਟ ਕਰੋ</string>
     <string name="cam_strings_resolution_title_txt">ਰਿਜ਼ੋਲਯੂਸ਼ਨ</string>
@@ -460,14 +469,14 @@
     <string name="cam_strings_restricted_setting_photo_resolution_txt">ਇਹ ਸੈਟਿੰਗ ਵਰਤਮਾਨ ਰਿਜ਼ੋਲਯੂਸ਼ਨ ਲਈ ਸਮਰਥਿਤ ਨਹੀਂ ਹੈ। ਇਸ ਸੈਟਿੰਗ ਨੂੰ ਕੌਨਫਿਗਰ ਕਰਨ ਲਈ, ਰਿਜ਼ੋਲਯੂਸ਼ਨ ਨੂੰ ਬਦਲੋ।</string>
     <string name="cam_strings_restricted_setting_scene_txt">ਇਹ ਸੈਟਿੰਗ ਵਰਤਮਾਨ ਦ੍ਰਿਸ਼ ਲਈ ਸਮਰਥਿਤ ਨਹੀਂ ਹੈ। ਇਸ ਸੈਟਿੰਗ ਨੂੰ ਕੌਨਫਿਗਰ ਕਰਨ ਲਈ, ਦ੍ਰਿਸ਼ ਚੋਣ ਨੂੰ ਬਦਲੋ।</string>
     <string name="cam_strings_restricted_setting_slow_motion_txt">ਸਲੋ ਮੋਸ਼ਨ ਮੋਡ ਵਿੱਚ ਰਿਜ਼ੋਲਿਉਸ਼ਨ ਨੂੰ ਬਦਲਣ ਵਿੱਚ ਅਸਮਰੱਥ। ਇਸ ਸੈਟਿੰਗ ਨੂੰ ਕੌਨਫਿਗਰ ਕਰਨ ਲਈ, ਸਲੋ ਮੋਸ਼ਨ ਮੋਡ ਵਿੱਚੋਂ ਬਾਹਰ ਆਓ।</string>
-    <string name="cam_strings_restricted_setting_video_hdr_hlg_txt">ਇਹ ਸੈਟਿੰਗ HDR ਚਾਲੂ ਹੋਣ \'ਤੇ ਉਪਲਬਧ ਨਹੀਂ ਹੈ। ਇਸ ਨੂੰ ਕੌਨਫਿਗਰ ਕਰਨ ਲਈ, HDR ਨੂੰ ਬੰਦ ਕਰੋ।</string>
+    <string name="cam_strings_restricted_setting_video_hdr_hlg_txt">"ਇਹ ਸੈਟਿੰਗ HDR ਚਾਲੂ ਹੋਣ 'ਤੇ ਉਪਲਬਧ ਨਹੀਂ ਹੈ। ਇਸ ਨੂੰ ਕੌਨਫਿਗਰ ਕਰਨ ਲਈ, HDR ਨੂੰ ਬੰਦ ਕਰੋ।"</string>
     <string name="cam_strings_restricted_setting_video_resolution_or_scene_txt">ਇਹ ਸੈਟਿੰਗ ਵਰਤਮਾਨ ਵੀਡੀਓ ਰਿਜ਼ੋਲਯੂਸ਼ਨ ਜਾਂ ਦ੍ਰਿਸ਼ ਲਈ ਸਮਰਥਿਤ ਨਹੀਂ ਹੈ। ਇਸ ਸੈਟਿੰਗ ਨੂੰ ਕੌਨਫਿਗਰ ਕਰਨ ਲਈ, ਵੀਡੀਓ ਰਿਜ਼ੋਲਯੂਸ਼ਨ ਜਾਂ ਦ੍ਰਿਸ਼ ਚੋਣ ਨੂੰ ਬਦਲੋ।</string>
     <string name="cam_strings_restricted_setting_video_resolution_txt">ਇਹ ਸੈਟਿੰਗ ਵਰਤਮਾਨ ਵੀਡੀਓ ਰਿਜ਼ੋਲਯੂਸ਼ਨ ਲਈ ਸਮਰਥਿਤ ਨਹੀਂ ਹੈ। ਇਸ ਸੈਟਿੰਗ ਨੂੰ ਕੌਨਫਿਗਰ ਕਰਨ ਲਈ, ਵੀਡੀਓ ਰਿਜ਼ੋਲਯੂਸ਼ਨ ਨੂੰ ਬਦਲੋ।</string>
     <string name="cam_strings_runtime_permission_continue_button_txt">ਐਪ ਜਾਣਕਾਰੀ</string>
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s ਨੂੰ ਨਿਮਨਲਿਖਤ ਇਜਾਜ਼ਤ(ਤਾਂ) ਦੀ ਲੋੜ ਹੈ</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s ਇਜਾਜ਼ਤ</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">ਇਹ ਕਿਰਿਆ ਕਰਨ ਲਈ ਐਪ ਨੂੰ ਨਿਮਨਲਿਖਤ ਇਜਾਜ਼ਤ(ਤਾਂ) ਦੀ ਲੋੜ ਹੈ।</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">ਆਗਿਆ ਦੇਣ ਲਈ, ਐਪ ਜਾਣਕਾਰੀ &gt; ਇਜਾਜ਼ਤਾਂ ਉੱਤੇ ਜਾਓ।</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">ਆਗਿਆ ਦੇਣ ਲਈ, ਐਪ ਜਾਣਕਾਰੀ > ਇਜਾਜ਼ਤਾਂ ਉੱਤੇ ਜਾਓ।</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">ਜਾਰੀ ਨਹੀਂ ਰਹਿ ਸਕਿਆ</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">ਚਿੱਤਰ ਅਤੇ ਵੀਡੀਓ ਲੈਣ ਲਈ</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">ਸਥਾਨ ਮੁੜ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ</string>
@@ -536,9 +545,10 @@
     <string name="cam_strings_slow_motion_settings_super_txt">ਸੁਪਰ ਹੌਲੀ ਗਤੀ</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">ਤੁਸੀਂ ਹੌਲੀ ਗਤੀ ਲਈ fps ਅਤੇ ਰਿਕਾਰਡਿੰਗ ਸ਼ੈਲੀ ਨੂੰ ਬਦਲ ਸਕਦੇ ਹੋ</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">ਵਧੇਰੇ ਵਿਕਲਪ</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">ਸਕ੍ਰੀਨ ਦੇ ਕੇਂਦਰ ਵਿਚਲੇ ਬਟਨ ਤੇ ਟੈਪ ਕਰਕੇ ਕਿਸੇ ਅਨਮੋਲ ਪਲ ਨੂੰ ਤੁਰੰਤ %1$s fps ਸਲੋ ਮੋਸ਼ਨ ਵਿੱਚ ਰਿਕਾਰਡ ਕਰੋ।\nਚੰਗੀ ਰੋਸ਼ਨੀ ਵਿੱਚ ਰਿਕਾਰਡਿੰਗ ਕਰਨ ਨਾਲ ਤੁਹਾਨੂੰ ਇੱਕ ਵਧੀਆ ਵੀਡੀਓ ਤਿਆਰ ਕਰਨ ਵਿੱਚ ਮਦਦ ਮਿਲੇਗੀ।</string>
-    <string name="cam_strings_slow_motion_shot_hint_1_txt">ਤੁਸੀਂ %1$s fps ਦੇ ਨਾਲ ਕੇਂਦਰ ਬਟਨ \'ਤੇ ਟੈਪ ਕਰਕੇ ਸਹੀ ਸਮੇਂ ਨੂੰ ਰਿਕਾਰਡ ਕਰ ਸਕਦੇ ਹੋ</string>
-    <string name="cam_strings_slow_motion_shot_tutorial_1_txt">ਸਕ੍ਰੀਨ ਦੇ ਕੇਂਦਰ ਵਿਚਲੇ ਬਟਨ \'ਤੇ ਟੈਪ ਕਰਕੇ ਕਿਸੇ ਅਨਮੋਲ ਪਲ ਨੂੰ ਤੁਰੰਤ %1$s fps ਹੌਲੀ ਗਤੀ ਵਿੱਚ ਰਿਕਾਰਡ ਕਰੋ</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"ਸਕ੍ਰੀਨ ਦੇ ਕੇਂਦਰ ਵਿਚਲੇ ਬਟਨ ਤੇ ਟੈਪ ਕਰਕੇ ਕਿਸੇ ਅਨਮੋਲ ਪਲ ਨੂੰ ਤੁਰੰਤ %1$s fps ਸਲੋ ਮੋਸ਼ਨ ਵਿੱਚ ਰਿਕਾਰਡ ਕਰੋ।
+ਚੰਗੀ ਰੋਸ਼ਨੀ ਵਿੱਚ ਰਿਕਾਰਡਿੰਗ ਕਰਨ ਨਾਲ ਤੁਹਾਨੂੰ ਇੱਕ ਵਧੀਆ ਵੀਡੀਓ ਤਿਆਰ ਕਰਨ ਵਿੱਚ ਮਦਦ ਮਿਲੇਗੀ।"</string>
+    <string name="cam_strings_slow_motion_shot_hint_1_txt">"ਤੁਸੀਂ %1$s fps ਦੇ ਨਾਲ ਕੇਂਦਰ ਬਟਨ 'ਤੇ ਟੈਪ ਕਰਕੇ ਸਹੀ ਸਮੇਂ ਨੂੰ ਰਿਕਾਰਡ ਕਰ ਸਕਦੇ ਹੋ"</string>
+    <string name="cam_strings_slow_motion_shot_tutorial_1_txt">"ਸਕ੍ਰੀਨ ਦੇ ਕੇਂਦਰ ਵਿਚਲੇ ਬਟਨ 'ਤੇ ਟੈਪ ਕਰਕੇ ਕਿਸੇ ਅਨਮੋਲ ਪਲ ਨੂੰ ਤੁਰੰਤ %1$s fps ਹੌਲੀ ਗਤੀ ਵਿੱਚ ਰਿਕਾਰਡ ਕਰੋ"</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">ਸੁਪਰ ਹੌਲੀ ਗਤੀ (ਇੱਕ-ਸ਼ਾਟ)</string>
     <string name="cam_strings_slow_motion_shot_txt">ਸੁਪਰ ਹੌਲੀ ਗਤੀ (ਇੱਕ-ਸ਼ਾਟ)</string>
     <string name="cam_strings_slow_motion_standard_hint_1_txt">%1$s fps ਦੇ ਨਾਲ ਕੋਈ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰੋ ਅਤੇ ਹੌਲੀ ਗਤੀ ਪ੍ਰਭਾਵ ਲਾਗੂ ਕਰੋ</string>
@@ -547,12 +557,13 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">ਹੌਲੀ ਗਤੀ</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">ਰਿਕਾਰਡ ਕਰਨ ਦਾ ਤਰੀਕਾ</string>
     <string name="cam_strings_slow_motion_standard_txt">ਹੌਲੀ ਗਤੀ</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">ਕਿਸੇ ਅਨਮੋਲ ਪਲ ਨੂੰ ਸਲੋ ਮੋਸ਼ਨ ਵਿੱਚ ਦਿਖਾ ਕੇ ਪ੍ਰਭਾਵਸ਼ਾਲ ਵੀਡੀਓ ਬਣਾਓ।\nਚੰਗੀ ਰੋਸ਼ਨੀ ਵਿੱਚ ਰਿਕਾਰਡਿੰਗ ਕਰਨ ਨਾਲ ਤੁਹਾਨੂੰ ਇੱਕ ਵਧੀਆ ਵੀਡੀਓ ਤਿਆਰ ਕਰਨ ਵਿੱਚ ਮਦਦ ਮਿਲੇਗੀ।</string>
-    <string name="cam_strings_slow_motion_super_hint_1_txt">ਤੁਸੀਂ %1$s fps \'ਤੇ ਬਦਲੀ ਕਰਕੇ ਵੱਖ-ਵੱਖ ਗਤੀਆਂ \'ਤੇ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰ ਸਕਦੇ ਹੋ</string>
-    <string name="cam_strings_slow_motion_super_hint_2_txt">ਸਹੀ ਸਮੇਂ \'ਤੇ ਕੇਂਦਰ ਵਾਲੇ ਬਟਨ \'ਤੇ ਟੈਪ ਕਰੋ</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"ਕਿਸੇ ਅਨਮੋਲ ਪਲ ਨੂੰ ਸਲੋ ਮੋਸ਼ਨ ਵਿੱਚ ਦਿਖਾ ਕੇ ਪ੍ਰਭਾਵਸ਼ਾਲ ਵੀਡੀਓ ਬਣਾਓ।
+ਚੰਗੀ ਰੋਸ਼ਨੀ ਵਿੱਚ ਰਿਕਾਰਡਿੰਗ ਕਰਨ ਨਾਲ ਤੁਹਾਨੂੰ ਇੱਕ ਵਧੀਆ ਵੀਡੀਓ ਤਿਆਰ ਕਰਨ ਵਿੱਚ ਮਦਦ ਮਿਲੇਗੀ।"</string>
+    <string name="cam_strings_slow_motion_super_hint_1_txt">"ਤੁਸੀਂ %1$s fps 'ਤੇ ਬਦਲੀ ਕਰਕੇ ਵੱਖ-ਵੱਖ ਗਤੀਆਂ 'ਤੇ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰ ਸਕਦੇ ਹੋ"</string>
+    <string name="cam_strings_slow_motion_super_hint_2_txt">"ਸਹੀ ਸਮੇਂ 'ਤੇ ਕੇਂਦਰ ਵਾਲੇ ਬਟਨ 'ਤੇ ਟੈਪ ਕਰੋ"</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">ਹੌਲੀ ਗਤੀ ਰਿਕਾਰਡ ਕੀਤੀ ਗਈ</string>
     <string name="cam_strings_slow_motion_super_tutorial_1_txt">ਹੌਲੀ ਗਤੀ ਵਿੱਚ ਕੋਈ ਅਨਮੋਲ ਪਲ ਦਿਖਾ ਕੇ ਪ੍ਰਭਾਵਸ਼ਾਲੀ ਵੀਡੀਓ ਬਣਾਓ</string>
-    <string name="cam_strings_slow_motion_super_tutorial_2_txt">ਰਿਕਾਰਡ ਕਰੋ ਬਟਨ \'ਤੇ ਟੈਪ ਕਰਕੇ ਵੀਡੀਓ ਰਿਕਾਰਡਿੰਗ ਸ਼ੁਰੂ ਕਰੋ</string>
+    <string name="cam_strings_slow_motion_super_tutorial_2_txt">"ਰਿਕਾਰਡ ਕਰੋ ਬਟਨ 'ਤੇ ਟੈਪ ਕਰਕੇ ਵੀਡੀਓ ਰਿਕਾਰਡਿੰਗ ਸ਼ੁਰੂ ਕਰੋ"</string>
     <string name="cam_strings_slow_motion_super_tutorial_3_txt">ਹੌਲੀ ਗਤੀ ਵਿੱਚ ਰਿਕਾਰਡ ਕਰਨ ਲਈ ਸਕ੍ਰੀਨ ਦੇ ਕੇਂਦਰ ਵਿੱਚ ਦਿੱਤੇ ਬਟਨ ਉੱਤੇ ਟੈਪ ਕਰੋ। ਰਿਕਾਰਡਿੰਗ ਰੋਕਣ ਲਈ ਰੋਕੋ ਬਟਨ ਉੱਤੇ ਟੈਪ ਕਰੋ।</string>
     <string name="cam_strings_slow_motion_super_tutorial_title_1_txt">ਸੁਪਰ ਹੌਲੀ ਗਤੀ</string>
     <string name="cam_strings_slow_motion_super_txt">ਸੁਪਰ ਹੌਲੀ ਗਤੀ</string>
@@ -574,16 +585,16 @@
     <string name="cam_strings_superior_auto_brightness_txt">ਚਮਕ</string>
     <string name="cam_strings_superior_auto_color_txt">ਰੰਗ</string>
     <string name="cam_strings_superior_auto_fusion_tutorial_title_txt">ਡੂਅਲ ਕੈਮਰਾ</string>
-    <string name="cam_strings_superior_auto_fusion_tutorial_txt">ਤੁਸੀਂ ਰਾਤ ਨੂੰ ਜਾਂ ਘੱਟ-ਰੌਸ਼ਨੀ ਵਾਲੇ ਕਮਰੇ ਵਿੱਚ ਵੀ ਡੂਅਲ ਕੈਮਰੇ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਘੱਟ ਸ਼ੋਰ ਵਾਲੇ ਸੁੰਦਰ ਚਿੱਤਰ ਲੈ ਸਕਦੇ ਹੋ। ਕੈਮਰਾ ਆਪਣੇ-ਆਪ ਹੀ ਅਤਿ-ਉੱਚ ਸੰਵੇਦਨਸ਼ੀਲਤਾ ਨਾਲ ਲਏ ਜਾਣ ਵਾਲੇ ਦ੍ਰਿਸ਼ਾਂ ਦੇ ਆਧਾਰ \'ਤੇ ਸਿੰਗਲ ਕੈਮਰੇ ਅਤੇ ਡੂਅਲ ਕੈਮਰੇ ਵਿਚਕਾਰ ਬਦਲਦਾ ਹੈ।</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_txt">"ਤੁਸੀਂ ਰਾਤ ਨੂੰ ਜਾਂ ਘੱਟ-ਰੌਸ਼ਨੀ ਵਾਲੇ ਕਮਰੇ ਵਿੱਚ ਵੀ ਡੂਅਲ ਕੈਮਰੇ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਘੱਟ ਸ਼ੋਰ ਵਾਲੇ ਸੁੰਦਰ ਚਿੱਤਰ ਲੈ ਸਕਦੇ ਹੋ। ਕੈਮਰਾ ਆਪਣੇ-ਆਪ ਹੀ ਅਤਿ-ਉੱਚ ਸੰਵੇਦਨਸ਼ੀਲਤਾ ਨਾਲ ਲਏ ਜਾਣ ਵਾਲੇ ਦ੍ਰਿਸ਼ਾਂ ਦੇ ਆਧਾਰ 'ਤੇ ਸਿੰਗਲ ਕੈਮਰੇ ਅਤੇ ਡੂਅਲ ਕੈਮਰੇ ਵਿਚਕਾਰ ਬਦਲਦਾ ਹੈ।"</string>
     <string name="cam_strings_sw_licence_title_txt">ਸੌਫਟਵੇਅਰ ਲਾਇਸੰਸ</string>
     <string name="cam_strings_take_photo_txt">ਚਿੱਤਰ ਲਵੋ</string>
     <string name="cam_strings_term_of_use_accept_txt">ਸਵੀਕਾਰ ਕਰੋ</string>
-    <string name="cam_strings_term_of_use_consent_txt">ਮੈਂ Sony Mobile ਦੀਆਂ &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;ਉਪਯੋਗ ਦੀਆਂ ਸ਼ਰਤਾਂ&lt;/a&gt; ਨਾਲ ਰਜ਼ਾਮੰਦ ਹਾਂ।</string>
-    <string name="cam_strings_term_of_use_data_charge_txt">ਤੁਹਾਡੇ ਵੱਲੋਂ ਇਸ ਸੇਵਾ ਦੀ ਵਰਤੋਂ ਤੁਹਾਡੇ ਡੇਟਾ ਪਲਾਨ ਦੇ ਆਧਾਰ \'ਤੇ ਮੋਬਾਈਲ ਡੇਟਾ ਖਰਚਿਆਂ ਦੇ ਅਧੀਨ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ।</string>
+    <string name="cam_strings_term_of_use_consent_txt">ਮੈਂ Sony Mobile ਦੀਆਂ &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">ਉਪਯੋਗ ਦੀਆਂ ਸ਼ਰਤਾਂ&lt;/a> ਨਾਲ ਰਜ਼ਾਮੰਦ ਹਾਂ।</string>
+    <string name="cam_strings_term_of_use_data_charge_txt">"ਤੁਹਾਡੇ ਵੱਲੋਂ ਇਸ ਸੇਵਾ ਦੀ ਵਰਤੋਂ ਤੁਹਾਡੇ ਡੇਟਾ ਪਲਾਨ ਦੇ ਆਧਾਰ 'ਤੇ ਮੋਬਾਈਲ ਡੇਟਾ ਖਰਚਿਆਂ ਦੇ ਅਧੀਨ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ।"</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile ਸੇਵਾ ਦੇ ਹਿੱਸੇ ਵਜੋਂ ਤੁਹਾਨੂੰ ਉਪਯੁਕਤ ਨਤੀਜੇ ਪ੍ਰਦਾਨ ਕਰਨ ਲਈ ਅਤੇ ਸੇਵਾ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਲਈ ਤੁਹਾਡਾ ਹੈਸ਼ਡ Android ID ਯੂਨੀਕ ਉਪਕਰਣ ਆਈਡੈਂਟੀਫਾਈਰ, ਸਥਾਨ-ਆਧਾਰਿਤ ਡੇਟਾ ਅਤੇ ਟਾਈਮਸਟੈਂਪ ਇਕੱਤਰ ਕਰੇਗਾ।</string>
     <string name="cam_strings_term_of_use_decline_txt">ਜਵਾਃ ਦਵੋ</string>
     <string name="cam_strings_term_of_use_title_txt">ਨਿਯਮ ਅਤੇ ਸ਼ਰਤਾਂ</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;ਉਪਯੋਗ ਦੀਆਂ ਸ਼ਰਤਾਂ&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">ਉਪਯੋਗ ਦੀਆਂ ਸ਼ਰਤਾਂ&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">ਚਿੱਤਰਾਂ ਤੋਂ ਚੋਣ ਹਟਾਓ</string>
     <string name="cam_strings_timeshift_operation_failed_txt">ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ</string>
     <string name="cam_strings_timeshift_save_complete_txt">ਸੁਰੱਖਿਅਤ ਕੀਤੀ</string>
@@ -593,7 +604,7 @@
     <string name="cam_strings_touch_capturing_always_txt">ਚਾਲੂ</string>
     <string name="cam_strings_touch_capturing_only_front_txt">ਕੇਵਲ ਫਰੰਟ ਕੈਮਰਾ</string>
     <string name="cam_strings_touch_capturing_title_txt">ਛੋਹ ਨਾਲ ਖਿੱਚਣਾ</string>
-    <string name="cam_strings_touch_focus_in_manual_focus_txt">ਟੱਚ ਫੋਕਸ ਦੀ ਵਰਤੋਂ ਕਰਨ ਲਈ, ਫੋਕਸ ਸੈਟਿੰਗ ਨੂੰ AF (ਆਟੋ ਫੋਕਸ) \'ਤੇ ਬਦਲੋ।</string>
+    <string name="cam_strings_touch_focus_in_manual_focus_txt">"ਟੱਚ ਫੋਕਸ ਦੀ ਵਰਤੋਂ ਕਰਨ ਲਈ, ਫੋਕਸ ਸੈਟਿੰਗ ਨੂੰ AF (ਆਟੋ ਫੋਕਸ) 'ਤੇ ਬਦਲੋ।"</string>
     <string name="cam_strings_touch_to_focus_adjust_exposure_focus_and_exposure_txt">ਫੋਕਸ ਅਤੇ ਚਮਕ</string>
     <string name="cam_strings_touch_to_focus_adjust_exposure_only_focus_txt">ਸਿਰਫ ਫੋਕਸ</string>
     <string name="cam_strings_touch_to_focus_adjust_exposure_txt">ਇਕਸਾਰ ਕਰਨ ਲਈ ਸਪਰਸ਼ ਕਰੋ</string>
@@ -602,7 +613,7 @@
     <string name="cam_strings_tutorial_button_skip_txt">ਛੱਡ ਦਿਓ</string>
     <string name="cam_strings_tutorial_button_txt">ਸਮਝ ਗਏ</string>
     <string name="cam_strings_tutorial_title_txt">ਮੋਡ ਬਦਲੋ</string>
-    <string name="cam_strings_tutorial_txt">ਦੂਜੇ ਕੈਪਚਰ ਮੋਡ ਜਿਵੇਂ ਕਿ ਵੀਡੀਓ ਜਾਂ ਮੈਨੁਅਲ \'ਤੇ ਬਦਲਣ ਕਰਨ ਲਈ ਸਵਾਈਪ ਕਰੋ</string>
+    <string name="cam_strings_tutorial_txt">"ਦੂਜੇ ਕੈਪਚਰ ਮੋਡ ਜਿਵੇਂ ਕਿ ਵੀਡੀਓ ਜਾਂ ਮੈਨੁਅਲ 'ਤੇ ਬਦਲਣ ਕਰਨ ਲਈ ਸਵਾਈਪ ਕਰੋ"</string>
     <string name="cam_strings_unable_to_operate_txt">ਚਿੱਤਰ ਸੁਰੱਖਿਅਤ ਕਰਦੇ ਸਮੇਂ ਸੰਚਾਲਿਤ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ</string>
     <string name="cam_strings_unlock_button_txt">ਤਾਲਾ ਖੋਲ੍ਹੋ</string>
     <string name="cam_strings_use_of_camera_not_authorized_txt">ਸੁਰੱਖਿਆ ਕਾਰਨਾਂ ਲਈ ਕੈਮਰੇ ਦੀ ਵਰਤੋਂ ਪ੍ਰਤਿਬੰਧਿਤ ਹੈ</string>
@@ -610,13 +621,15 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">ਸਥਿਰ 4K ਵੀਡੀਓ ਰਿਕਾਰਡਿੰਗ ਲਈ, ਜੇਕਰ ਤੁਸੀਂ ਉੱਚ-ਗਤੀ SD ਕਾਰਡ (UHS ਗਤੀ ਕਲਾਸ 1 ਜਾਂ ਉੱਚ, ਜਾਂ ਗਤੀ ਕਲਾਸ 10 ਦੀ ਸ਼ਿਫਾਰਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ) ਦੀ ਵਰਤੋਂ ਨਹੀਂ ਕਰਦੇ ਤਾਂ ਤੁਹਾਨੂੰ ਇਸ ਸੈਟਿੰਗ ਨੂੰ ਨਹੀਂ ਬਦਲਣਾ ਚਾਹੀਦਾ।</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">ਸਥਾਈ ਟਾਈਮਸ਼ਿਫਟ ਵੀਡੀਓ ਰਿਕਾਰਡਿੰਗ ਲਈ, ਤੁਹਾਨੂੰ ਉਦੋਂ ਤੱਕ ਇਸ ਸੈਟਿੰਗ ਨੂੰ ਨਹੀਂ ਬਦਲਣਾ ਚਾਹੀਦਾ ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਉੱਚ-ਗਤੀ SD ਕਾਰਡ ਦੀ ਵਰਤੋਂ ਨਹੀਂ ਕਰਦੇ (UHS ਗਤੀ ਕਲਾਸ 1 ਜਾਂ ਉੱਚ, ਜਾਂ ਗਤੀ ਕਲਾਸ 10 ਦੀ ਸ਼ਿਫਾਰਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ)। ਕੀ ਤੁਸੀਂ ਫਿਰ ਵੀ ਬਦਲਣਾ ਚਾਹੁੰਦੇ ਹੋ?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">ਸਥਿਰ ਸਲੋ ਮੋਸ਼ਨ ਵੀਡੀਓ ਰਿਕਾਰਡਿੰਗ ਲਈ, ਜੇਕਰ ਤੁਸੀਂ ਉੱਚ-ਗਤੀ SD ਕਾਰਡ (UHS ਗਤੀ ਕਲਾਸ 1 ਜਾਂ ਉੱਚ, ਜਾਂ ਗਤੀ ਕਲਾਸ 10 ਦੀ ਸ਼ਿਫਾਰਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ) ਦੀ ਵਰਤੋਂ ਨਹੀਂ ਕਰਦੇ ਤਾਂ ਤੁਹਾਨੂੰ ਇਸ ਸੈਟਿੰਗ ਨੂੰ ਨਹੀਂ ਬਦਲਣਾ ਚਾਹੀਦਾ।</string>
-    <string name="cam_strings_video_explanatory_txt">ਸਥਾਈ ਵੀਡੀਓ ਰਿਕਾਰਡਿੰਗ ਲਈ, ਅਸੀਂ ਸ਼ਿਫਾਰਸ਼ ਕਰਦੇ ਹਨ ਕਿ ਤੁਸੀਂ ਡੇਟਾ ਸਟੋਰੇਜ ਨੂੰ ਅੰਦਰੂਨੀ ਸਟੋਰੇਜ ਤੇ ਬਦਲ ਲਓ। ਕੀ ਤੁਸੀਂ ਹੁਣੀ ਬਦਲਣਾ ਚਾਹੁੰਦੇ ਹੋ?\n\nਜੇਕਰ ਤੁਸੀਂ ਡੇਟਾ ਸਟੋਰੇਜ ਲਈ SD ਕਾਰਡ ਦੀ ਵਰਤੋਂ ਕਰਨਾ ਜਾਰੀ ਰੱਖਦੇ ਹੋ, ਤਾਂ ਉੱਚ-ਗਤੀ ਵਾਲੇ SD ਕਾਰਡ ਦੀ ਵਰਤੋਂ ਕਰਨਾ ਯਕੀਨੀ ਬਣਾਓ (UHS ਗਤੀ ਕਲਾਸ 1 ਜਾਂ ਉੱਚ, ਜਾਂ ਗਤੀ ਕਲਾਸ 10 ਦੀ ਸ਼ਿਫਾਰਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ)।</string>
+    <string name="cam_strings_video_explanatory_txt">"ਸਥਾਈ ਵੀਡੀਓ ਰਿਕਾਰਡਿੰਗ ਲਈ, ਅਸੀਂ ਸ਼ਿਫਾਰਸ਼ ਕਰਦੇ ਹਨ ਕਿ ਤੁਸੀਂ ਡੇਟਾ ਸਟੋਰੇਜ ਨੂੰ ਅੰਦਰੂਨੀ ਸਟੋਰੇਜ ਤੇ ਬਦਲ ਲਓ। ਕੀ ਤੁਸੀਂ ਹੁਣੀ ਬਦਲਣਾ ਚਾਹੁੰਦੇ ਹੋ?
+
+ਜੇਕਰ ਤੁਸੀਂ ਡੇਟਾ ਸਟੋਰੇਜ ਲਈ SD ਕਾਰਡ ਦੀ ਵਰਤੋਂ ਕਰਨਾ ਜਾਰੀ ਰੱਖਦੇ ਹੋ, ਤਾਂ ਉੱਚ-ਗਤੀ ਵਾਲੇ SD ਕਾਰਡ ਦੀ ਵਰਤੋਂ ਕਰਨਾ ਯਕੀਨੀ ਬਣਾਓ (UHS ਗਤੀ ਕਲਾਸ 1 ਜਾਂ ਉੱਚ, ਜਾਂ ਗਤੀ ਕਲਾਸ 10 ਦੀ ਸ਼ਿਫਾਰਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ)।"</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">ਡੂਅਲ ਕੈਮਰਾ</string>
-    <string name="cam_strings_video_fusion_tutorial_0_txt">ਤੁਸੀਂ ਡੂਅਲ ਕੈਮਰੇ ਦੀ ਵਰਤੋ ਕਰਕੇ, ਰਾਤ ਵੇਲੇ ਜਾਂ ਘੱਟ ਰੌਸ਼ਨੀ ਵਾਲੇ ਕਮਰੇ ਵਿੱਚ ਘੱਟ ਸ਼ੋਰ ਵਾਲੇ ਸੁੰਦਰ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰ ਸਕਦੇ ਹੋ। ਕੈਮਰਾ ਆਪਣੇ-ਆਪ ਹੀ ਅਤਿ-ਉੱਚ ਸੰਵੇਦਨਸ਼ੀਲਤਾ ਨਾਲ ਰਿਕਾਰਡ ਕਰਨ ਲਈ ਦ੍ਰਿਸ਼ਾਂ ਦੇ ਅਧਾਰ \'ਤੇ ਸਿੰਗਲ ਕੈਮਰੇ ਅਤੇ ਡੂਅਲ ਕੈਮਰੇ ਦੇ ਵਿਚਕਾਰ ਸਵਿਚ ਕਰਦਾ ਹੈ।</string>
+    <string name="cam_strings_video_fusion_tutorial_0_txt">"ਤੁਸੀਂ ਡੂਅਲ ਕੈਮਰੇ ਦੀ ਵਰਤੋ ਕਰਕੇ, ਰਾਤ ਵੇਲੇ ਜਾਂ ਘੱਟ ਰੌਸ਼ਨੀ ਵਾਲੇ ਕਮਰੇ ਵਿੱਚ ਘੱਟ ਸ਼ੋਰ ਵਾਲੇ ਸੁੰਦਰ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰ ਸਕਦੇ ਹੋ। ਕੈਮਰਾ ਆਪਣੇ-ਆਪ ਹੀ ਅਤਿ-ਉੱਚ ਸੰਵੇਦਨਸ਼ੀਲਤਾ ਨਾਲ ਰਿਕਾਰਡ ਕਰਨ ਲਈ ਦ੍ਰਿਸ਼ਾਂ ਦੇ ਅਧਾਰ 'ਤੇ ਸਿੰਗਲ ਕੈਮਰੇ ਅਤੇ ਡੂਅਲ ਕੈਮਰੇ ਦੇ ਵਿਚਕਾਰ ਸਵਿਚ ਕਰਦਾ ਹੈ।"</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">ਡੂਅਲ ਕੈਮਰੇ ਨਾਲ ਵੀਡੀਓ ਰਿਕਾਰਡਿੰਗ</string>
     <string name="cam_strings_video_fusion_tutorial_1_txt">ਡੂਅਲ ਕੈਮਰੇ ਨਾਲ ਰਿਕਾਰਡਿੰਗ ਕਰਦੇ ਸਮੇਂ ਆਬਜੈਕਟ ਤੋਂ ਘੱਟੋ-ਘੱਟ 1 ਮੀਟਰ ਦੂਰ ਰੱਖੋ। ਆਬਜੈਕਟ ਦੇ ਨੇੜੇ ਜਾਣ ਨਾਲ ਅਤਿ-ਉੱਚ ਸੰਵੇਦਨਸ਼ੀਲਤਾ ਵਿੱਚ ਰਿਕਾਰਡਿੰਗ ਕਰਦੇ ਸਮੇਂ ਦ੍ਰਿਸ਼ ਬਿੰਦੂ ਜਾਂ ਰੰਗ ਬਦਲ ਸਕਦਾ ਹੈ।</string>
     <string name="cam_strings_video_fusion_tutorial_2_title_txt">ਵੀਡੀਓ ਰਿਕਾਰਡਿੰਗ ਲਈ ਡੂਅਲ ਕੈਮਰਾ ਵਰਤਣਾ ਹੈ?</string>
-    <string name="cam_strings_video_fusion_tutorial_2_txt">ਵਧੀਆ ਕਲੋਜ਼-ਅਪ ਚਿੱਤਰ ਲੈਣ ਲਈ, ਨਹੀਂ ਟੈਪ ਕਰੋ ਅਤੇ ਸਿੰਗਲ ਕੈਮਰੇ \'ਤੇ ਬਦਲੋ। ਤੁਸੀਂ ਵਿਊਫਾਈਂਡਰ \'ਤੇ ਦਿੱਤੇ ਬਟਨ ਨੂੰ ਟੈਪ ਕਰਕੇ ਕਿਸੇ ਵੀ ਸਮੇਂ ਵਾਪਸ ਇਸ ਨੂੰ ਡੂਅਲ ਕੈਮਰੇ \'ਤੇ ਬਦਲ ਸਕਦੇ ਹੋ।</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">"ਵਧੀਆ ਕਲੋਜ਼-ਅਪ ਚਿੱਤਰ ਲੈਣ ਲਈ, ਨਹੀਂ ਟੈਪ ਕਰੋ ਅਤੇ ਸਿੰਗਲ ਕੈਮਰੇ 'ਤੇ ਬਦਲੋ। ਤੁਸੀਂ ਵਿਊਫਾਈਂਡਰ 'ਤੇ ਦਿੱਤੇ ਬਟਨ ਨੂੰ ਟੈਪ ਕਰਕੇ ਕਿਸੇ ਵੀ ਸਮੇਂ ਵਾਪਸ ਇਸ ਨੂੰ ਡੂਅਲ ਕੈਮਰੇ 'ਤੇ ਬਦਲ ਸਕਦੇ ਹੋ।"</string>
     <string name="cam_strings_video_hdr_hlg_txt">HDR ਚਾਲੂ ਹੈ</string>
     <string name="cam_strings_video_hdr_setting_hlg_txt">HDR</string>
     <string name="cam_strings_video_hdr_title_txt">HDR ਵੀਡੀਓ</string>

@@ -1,21 +1,20 @@
 package com.google.android.gms.common.internal;
 
+import android.R;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.Button;
-import com.google.android.gms.R$color;
-import com.google.android.gms.R$drawable;
-import com.google.android.gms.R$string;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzab extends Button {
     public zzab(Context context) {
         this(context, null);
     }
 
     public zzab(Context context, AttributeSet attributeSet) {
-        super(context, attributeSet, 16842824);
+        super(context, attributeSet, R.attr.buttonStyle);
     }
 
     private void zza(Resources resources) {
@@ -32,12 +31,12 @@ public final class zzab extends Button {
         switch (i) {
             case 0:
             case 1:
-                i3 = R$drawable.common_signin_btn_text_dark;
-                i4 = R$drawable.common_signin_btn_text_light;
+                i3 = com.google.android.gms.R.drawable.common_signin_btn_text_dark;
+                i4 = com.google.android.gms.R.drawable.common_signin_btn_text_light;
                 break;
             case 2:
-                i3 = R$drawable.common_signin_btn_icon_dark;
-                i4 = R$drawable.common_signin_btn_icon_light;
+                i3 = com.google.android.gms.R.drawable.common_signin_btn_icon_dark;
+                i4 = com.google.android.gms.R.drawable.common_signin_btn_icon_light;
                 break;
             default:
                 throw new IllegalStateException("Unknown button size: " + i);
@@ -49,18 +48,18 @@ public final class zzab extends Button {
         setBackgroundDrawable(resources.getDrawable(iZzd));
     }
 
-    private void zzc(Resources resources, int i, int i2) {
+    private void zzc(Resources resources, int i, int i2) throws Resources.NotFoundException {
         int i3;
         String string;
-        setTextColor(resources.getColorStateList(zzd(i2, R$color.common_signin_btn_text_dark, R$color.common_signin_btn_text_light)));
+        setTextColor(resources.getColorStateList(zzd(i2, com.google.android.gms.R.color.common_signin_btn_text_dark, com.google.android.gms.R.color.common_signin_btn_text_light)));
         switch (i) {
             case 0:
-                i3 = R$string.common_signin_button_text;
+                i3 = com.google.android.gms.R.string.common_signin_button_text;
                 string = resources.getString(i3);
                 setText(string);
                 return;
             case 1:
-                i3 = R$string.common_signin_button_text_long;
+                i3 = com.google.android.gms.R.string.common_signin_button_text_long;
                 string = resources.getString(i3);
                 setText(string);
                 return;
@@ -84,7 +83,7 @@ public final class zzab extends Button {
         }
     }
 
-    public void zza(Resources resources, int i, int i2) {
+    public void zza(Resources resources, int i, int i2) throws Resources.NotFoundException {
         zzx.zza(i >= 0 && i < 3, "Unknown button size %d", Integer.valueOf(i));
         zzx.zza(i2 >= 0 && i2 < 2, "Unknown color scheme %s", Integer.valueOf(i2));
         zza(resources);

@@ -10,7 +10,7 @@ public class RemovableCameraClients extends IntegerValue implements GlobalCamera
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusValue
     public String getKey() {
-        return "removable_camera_clients";
+        return KEY;
     }
 
     public RemovableCameraClients(int i) {

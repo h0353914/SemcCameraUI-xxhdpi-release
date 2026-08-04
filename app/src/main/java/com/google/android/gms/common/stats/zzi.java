@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
+import com.google.android.gms.common.stats.zzc;
 import com.google.android.gms.internal.zzmm;
 import com.google.android.gms.internal.zzmr;
 import java.util.List;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzi {
     private static String TAG = "WakeLockTracker";
     private static Integer zzahE;
@@ -16,7 +18,7 @@ public class zzi {
 
     private static int getLogLevel() {
         try {
-            return zzmm.zzjA() ? zzc$zzb.zzahH.get().intValue() : zzd.LOG_LEVEL_OFF;
+            return zzmm.zzjA() ? zzc.zzb.zzahH.get().intValue() : zzd.LOG_LEVEL_OFF;
         } catch (SecurityException unused) {
             return zzd.LOG_LEVEL_OFF;
         }

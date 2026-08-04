@@ -1,13 +1,31 @@
 package com.sonyericsson.android.camera.device;
 
-import android.hardware.camera2.CaptureRequest$Key;
-import android.hardware.camera2.CaptureResult$Key;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.CaptureResult;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+
+
+
+
+
+
+
+
+
+
+
 public final class SomcCameraDeviceInfo {
     private static HashSet<String> getAllCharacteristicsKeyNames() {
+
+
+
+
+
+
+
         HashSet<String> hashSet = new HashSet<>();
         hashSet.add(SomcCameraCharacteristicsKeys.SONYMOBILE_STATISTICS_INFO_AVAILABLE_OBJECT_TRACKING.getName());
         hashSet.add(SomcCameraCharacteristicsKeys.SONYMOBILE_STATISTICS_INFO_AVAILABLE_FACE_SMILE_SCORES_MODE.getName());
@@ -47,7 +65,17 @@ public final class SomcCameraDeviceInfo {
         return hashSet;
     }
 
-    public static List<CaptureResult$Key<?>> getAllCaptureResultKeys() {
+    public static List<CaptureResult.Key<?>> getAllCaptureResultKeys() {
+
+
+
+
+
+
+
+
+
+
         ArrayList arrayList = new ArrayList();
         arrayList.add(SomcCaptureResultKeys.SONYMOBILE_STATISTICS_OBJECT_SELECT_TRIGGER);
         arrayList.add(SomcCaptureResultKeys.SONYMOBILE_STATISTICS_OBJECT_SELECT_TRIGGER_AREA);
@@ -95,7 +123,17 @@ public final class SomcCameraDeviceInfo {
         return arrayList;
     }
 
-    public static List<CaptureRequest$Key<?>> getAllCaptureRequestKeys() {
+    public static List<CaptureRequest.Key<?>> getAllCaptureRequestKeys() {
+
+
+
+
+
+
+
+
+
+
         ArrayList arrayList = new ArrayList();
         arrayList.add(SomcCaptureRequestKeys.SONYMOBILE_STATISTICS_OBJECT_SELECT_TRIGGER);
         arrayList.add(SomcCaptureRequestKeys.SONYMOBILE_STATISTICS_OBJECT_SELECT_TRIGGER_AREA);

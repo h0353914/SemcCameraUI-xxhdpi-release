@@ -4,10 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import android.widget.ImageView$ScaleType;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout$LayoutParams;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 
 public class RotatableTextViewInLayout extends RelativeLayout {
     private static final int ROTATE_DEGREE = -90;
@@ -38,10 +37,10 @@ public class RotatableTextViewInLayout extends RelativeLayout {
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mText = (TextView) findViewById(2131296542);
+        this.mText = (TextView) findViewById(R.id.rotatable_text_view_text);
         this.mText.setGravity(17);
-        this.mBackground = (ImageView) findViewById(2131296540);
-        this.mBackground.setScaleType(ImageView$ScaleType.FIT_XY);
+        this.mBackground = (ImageView) findViewById(R.id.rotatable_text_view_background);
+        this.mBackground.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
     @Override // android.view.View
@@ -70,8 +69,8 @@ public class RotatableTextViewInLayout extends RelativeLayout {
     }
 
     public void updateLayout() {
-        ((RelativeLayout$LayoutParams) this.mText.getLayoutParams()).addRule(13);
-        ((RelativeLayout$LayoutParams) this.mBackground.getLayoutParams()).addRule(13);
+        ((RelativeLayout.LayoutParams) this.mText.getLayoutParams()).addRule(13);
+        ((RelativeLayout.LayoutParams) this.mBackground.getLayoutParams()).addRule(13);
         if (this.mSensorOrientation == 1) {
             this.mText.getLayoutParams().width = this.mTextViewWidthOnPortrait;
             this.mBackground.getLayoutParams().width = this.mLayoutHeight;

@@ -1,13 +1,12 @@
 package com.sonyericsson.android.camera.recorder.utility.encoder.source;
 
 import android.media.AudioRecord;
-import android.media.AudioRecord$OnRecordPositionUpdateListener;
 import android.media.MediaCodec;
 import com.sonyericsson.android.camera.recorder.utility.encoder.InputDataSource;
 import com.sonyericsson.android.camera.util.BackgroundWorker;
 import com.sonyericsson.android.camera.util.CamLog;
 
-public abstract class AudioSampleDataSourceBase implements InputDataSource, AudioRecord$OnRecordPositionUpdateListener {
+public abstract class AudioSampleDataSourceBase implements InputDataSource, AudioRecord.OnRecordPositionUpdateListener {
     protected static final long INPUTBUFFER_TIMEOUT_MICROSECONDS = 100000;
     protected static final int NOTIFICATION_COUNT_PER_SECOND = 10;
     private volatile boolean mAlreadyEos;
@@ -21,15 +20,11 @@ public abstract class AudioSampleDataSourceBase implements InputDataSource, Audi
     private final int mSampleRate;
     private final BackgroundWorker mWorker;
 
-    @Override // android.media.AudioRecord$OnRecordPositionUpdateListener
+    @Override // android.media.AudioRecord.OnRecordPositionUpdateListener
     public void onMarkerReached(AudioRecord audioRecord) {
     }
 
     protected abstract long pushToEncoder(byte[] bArr, int i, boolean z);
-
-    static /* synthetic */ void access$000(AudioSampleDataSourceBase audioSampleDataSourceBase, boolean z) {
-        audioSampleDataSourceBase.readSampleData(z);
-    }
 
     public AudioSampleDataSourceBase(MediaCodec mediaCodec, int i, int i2, int i3) {
         if (mediaCodec == null) {
@@ -46,7 +41,12 @@ public abstract class AudioSampleDataSourceBase implements InputDataSource, Audi
         }
         this.mAudioBuffer = new byte[getAudioBufferSize()];
         this.mNotificationPeriod = this.mSampleRate / 10;
-        this.mWorker = new BackgroundWorker("AudioSampleDataReaderThread");
+        try {
+            this.mWorker = new BackgroundWorker("AudioSampleDataReaderThread");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("Failed to start audio sample worker", e);
+        }
     }
 
     @Override // com.sonyericsson.android.camera.recorder.utility.encoder.InputDataSource
@@ -65,7 +65,7 @@ public abstract class AudioSampleDataSourceBase implements InputDataSource, Audi
     }
 
     @Override // com.sonyericsson.android.camera.recorder.utility.encoder.InputDataSource
-    public void start() {
+    public void start() throws IllegalStateException {
         this.mSampleCount = 0L;
         if (this.mAudioRecord.setPositionNotificationPeriod(this.mNotificationPeriod) != 0) {
             CamLog.e("setPositionNotificationPeriod:failed");
@@ -76,7 +76,7 @@ public abstract class AudioSampleDataSourceBase implements InputDataSource, Audi
     }
 
     @Override // com.sonyericsson.android.camera.recorder.utility.encoder.InputDataSource
-    public void stop() {
+    public void stop() throws IllegalStateException {
         this.mAudioRecord.stop();
         requestToReadSampleData(true);
         try {
@@ -91,7 +91,7 @@ public abstract class AudioSampleDataSourceBase implements InputDataSource, Audi
         }
     }
 
-    @Override // android.media.AudioRecord$OnRecordPositionUpdateListener
+    @Override // android.media.AudioRecord.OnRecordPositionUpdateListener
     public void onPeriodicNotification(AudioRecord audioRecord) {
         readSampleData(false);
     }
@@ -101,7 +101,7 @@ public abstract class AudioSampleDataSourceBase implements InputDataSource, Audi
     }
 
     protected long getPresentationTime(long j) {
-        return (1000000 * (this.mSampleCount + j)) / ((long) this.mSampleRate);
+        return (1000000 * (this.mSampleCount + j)) / this.mSampleRate;
     }
 
     protected AudioRecord getAudioRecord() {
@@ -140,8 +140,13 @@ public abstract class AudioSampleDataSourceBase implements InputDataSource, Audi
         return this.mMinBufferSize;
     }
 
-    private void requestToReadSampleData(boolean z) {
-        this.mWorker.getHandler().post(new AudioSampleDataSourceBase$1(this, z));
+    private void requestToReadSampleData(final boolean z) {
+        this.mWorker.getHandler().post(new Runnable() { // from class: com.sonyericsson.android.camera.recorder.utility.encoder.source.AudioSampleDataSourceBase.1
+            @Override // java.lang.Runnable
+            public void run() {
+                AudioSampleDataSourceBase.this.readSampleData(z);
+            }
+        });
     }
 
     private int bytesInFrame(int i) {
@@ -155,6 +160,7 @@ public abstract class AudioSampleDataSourceBase implements InputDataSource, Audi
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void readSampleData(boolean z) {
         if (this.mAlreadyEos) {
             if (CamLog.VERBOSE) {

@@ -1,8 +1,9 @@
 package com.google.android.gms.internal;
 
 import java.util.LinkedHashMap;
-import java.util.Map$Entry;
+import java.util.Map;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzmg<K, V> {
     private int size;
     private final LinkedHashMap<K, V> zzagB;
@@ -116,6 +117,7 @@ public class zzmg<K, V> {
         Code decompiled incorrectly, please refer to instructions dump.
     */
     public void trimToSize(int i) {
+
         K key;
         V value;
         while (true) {
@@ -126,7 +128,7 @@ public class zzmg<K, V> {
                 if (this.size <= i || this.zzagB.isEmpty()) {
                     break;
                 }
-                Map$Entry<K, V> next = this.zzagB.entrySet().iterator().next();
+                Map.Entry<K, V> next = this.zzagB.entrySet().iterator().next();
                 key = next.getKey();
                 value = next.getValue();
                 this.zzagB.remove(key);

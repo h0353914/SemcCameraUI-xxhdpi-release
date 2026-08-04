@@ -2,13 +2,20 @@ package com.sonyericsson.cameracommon.storage;
 
 import android.net.Uri;
 import android.os.Environment;
-import android.os.SystemClock;
 import com.sonyericsson.android.camera.CameraApplication;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.android.camera.util.ThreadUtil;
+import com.sonyericsson.android.camera.util.capability.SharedPrefsTranslator;
+import com.sonyericsson.cameracommon.constants.CommonConstants;
+import com.sonyericsson.cameracommon.mediasaving.MediaSavingConstants;
+import com.sonyericsson.cameracommon.storage.Storage;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
@@ -25,46 +32,144 @@ public class DcfPathBuilder {
     public static final int MAX_FILE_NAME = 9999;
     public static final int MIN_DIR_NAME = 100;
     public static final int MIN_FILE_NAME = 1;
-    private static final DcfPathBuilder$ScanResult SCAN_RESULT_FAILED = new DcfPathBuilder$ScanResult(DcfPathBuilder$ScanResultState.SCAN_FAILED, -1, -1);
+    private static final ScanResult SCAN_RESULT_FAILED = new ScanResult(ScanResultState.SCAN_FAILED, -1, -1);
     private static final int SCAN_WAIT_TIME = 60000;
     public static final String TAG = "DcfPathBuilder";
     public static final int TYPE_PICTURE = 0;
     public static final int TYPE_VIDEO = 1;
     public static final String VOLUME_EXTERNAL = "external";
+    private DcfImageDirNameFilter mDirNameFilter;
     private int mDirNo;
+    private DcfImageFileNameFilter mFileNameFilter;
     private int mFileNo;
     private final String mRoot;
     private Future<?> mScanFuture;
-    private DcfPathBuilder$ScanResult mScanResult = null;
-    private DcfPathBuilder$DcfImageDirNameFilter mDirNameFilter = new DcfPathBuilder$DcfImageDirNameFilter(null);
-    private DcfPathBuilder$DcfImageFileNameFilter mFileNameFilter = new DcfPathBuilder$DcfImageFileNameFilter(null);
-    private ExecutorService mScanExecutor = ThreadUtil.buildExecutor("DCF Path Builder");
+    private ScanResult mScanResult = null;
+    private ExecutorService mScanExecutor;
 
-    private static boolean checkStorageWritable(String str) {
-        if (str == null) {
-            return false;
+    private enum ScanResultState {
+        SCAN_SUCCEEDED,
+        SCAN_FAILED
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private static class ScanResult {
+        final int resultDirNo;
+        final int resultFileNo;
+        final ScanResultState resultState;
+
+
+
+
+
+
+
+        ScanResult(ScanResultState scanResultState, int i, int i2) {
+            this.resultState = scanResultState;
+            this.resultDirNo = i;
+            this.resultFileNo = i2;
         }
-        try {
-            return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState(new File(str)));
-        } catch (Throwable unused) {
-            return false;
+    }
+
+    private static class DcfImageDirNameFilter implements FilenameFilter {
+        private String mFilterDirName;
+        private int mFilterDirNo;
+
+        private DcfImageDirNameFilter() {
+        }
+
+        @Override // java.io.FilenameFilter
+        public boolean accept(File file, String str) {
+            int i;
+            try {
+                if (str.length() == 8 && (i = Integer.parseInt((String) str.subSequence(0, 3))) >= this.mFilterDirNo && 100 <= i && i <= 999) {
+                    if ((String.format(Locale.US, "%03d", Integer.valueOf(i)) + DcfPathBuilder.DCF_DIR_NAME_FREE_WORD).equalsIgnoreCase(str)) {
+                        File file2 = new File(file, str);
+                        if (file2.isDirectory()) {
+                            this.mFilterDirNo = i;
+                            this.mFilterDirName = file2.getAbsolutePath();
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            } catch (NumberFormatException unused) {
+                return false;
+            }
         }
     }
 
-    static /* synthetic */ String access$200(DcfPathBuilder dcfPathBuilder) {
-        return dcfPathBuilder.mRoot;
-    }
+    private static class DcfImageFileNameFilter implements FilenameFilter {
+        private int mFilterFileNo;
 
-    static /* synthetic */ DcfPathBuilder$DcfImageDirNameFilter access$300(DcfPathBuilder dcfPathBuilder) {
-        return dcfPathBuilder.mDirNameFilter;
-    }
+        private DcfImageFileNameFilter() {
+        }
 
-    static /* synthetic */ DcfPathBuilder$DcfImageFileNameFilter access$600(DcfPathBuilder dcfPathBuilder) {
-        return dcfPathBuilder.mFileNameFilter;
+        @Override // java.io.FilenameFilter
+        public boolean accept(File file, String str) {
+            int i;
+            try {
+                if (str.length() != 12) {
+                    return false;
+                }
+                i = Integer.parseInt((String) str.subSequence(4, 8));
+                if (1 > i || i > 9999) {
+                    return false;
+                }
+                if (i > this.mFilterFileNo) {
+                    this.mFilterFileNo = i;
+                }
+                return true;
+            } catch (NumberFormatException unused) {
+                return false;
+            }
+        }
     }
 
     public DcfPathBuilder(String str) {
         this.mRoot = str;
+        this.mDirNameFilter = new DcfImageDirNameFilter();
+        this.mFileNameFilter = new DcfImageFileNameFilter();
+        this.mScanExecutor = ThreadUtil.buildExecutor(CommonConstants.THREAD_SCAN_STORAGE);
     }
 
     public void startScan() {
@@ -86,11 +191,92 @@ public class DcfPathBuilder {
                 }
             }
             if (this.mScanFuture == null) {
-                this.mScanFuture = this.mScanExecutor.submit(new DcfPathBuilder$ScanTask(this));
+                this.mScanFuture = this.mScanExecutor.submit(new ScanTask());
                 if (CamLog.VERBOSE) {
                     CamLog.d("Scan has submitted: " + this.mRoot);
                 }
             }
+        }
+    }
+
+    class ScanTask implements Callable<ScanResult> {
+        private int mScanDirNo = 100;
+        private int mScanFileNo = 1;
+
+        ScanTask() {
+        }
+
+        /* JADX WARN: Can't rename method to resolve collision */
+        @Override // java.util.concurrent.Callable
+        public ScanResult call() {
+            ScanResultState scanResultState;
+            if (CamLog.VERBOSE) {
+                CamLog.d("ScanTask in: " + DcfPathBuilder.this.mRoot);
+            }
+            if (CamLog.VERBOSE) {
+                CamLog.d("start: " + System.currentTimeMillis());
+            }
+            PerfLog.DCF_PATH_BUILDER_SCAN.begin();
+            if (search()) {
+                scanResultState = ScanResultState.SCAN_SUCCEEDED;
+            } else {
+                CamLog.e("Scan failed.");
+                scanResultState = ScanResultState.SCAN_FAILED;
+                this.mScanDirNo = -1;
+                this.mScanFileNo = -1;
+            }
+            PerfLog.DCF_PATH_BUILDER_SCAN.end();
+            if (CamLog.VERBOSE) {
+                CamLog.d("end  : " + System.currentTimeMillis());
+            }
+            if (CamLog.VERBOSE) {
+                CamLog.d("ScanTask out:" + DcfPathBuilder.this.mRoot);
+            }
+            if (CamLog.VERBOSE) {
+                CamLog.d("ScanTask result dirNo: " + this.mScanDirNo + ", fileNo: " + this.mScanFileNo);
+            }
+            return new ScanResult(scanResultState, this.mScanDirNo, this.mScanFileNo);
+        }
+
+        private final boolean search() {
+            if (!DcfPathBuilder.checkAndCreateDirectory(DcfPathBuilder.this.mRoot)) {
+                CamLog.e("search error DCIM is not exist. " + DcfPathBuilder.this.mRoot);
+                return false;
+            }
+            return searchImageDir();
+        }
+
+        private boolean searchImageDir() {
+            File file = new File(DcfPathBuilder.getDcimDirectory(DcfPathBuilder.this.mRoot));
+            DcfPathBuilder.this.mDirNameFilter.mFilterDirNo = 100;
+            String[] list = file.list(DcfPathBuilder.this.mDirNameFilter);
+            if (list != null && list.length != 0) {
+                this.mScanDirNo = DcfPathBuilder.this.mDirNameFilter.mFilterDirNo;
+                return searchImageNo(DcfPathBuilder.getDcimDirectory(DcfPathBuilder.this.mRoot) + SharedPrefsTranslator.CONNECTOR_SLASH + new File(DcfPathBuilder.this.mDirNameFilter.mFilterDirName).getName());
+            }
+            this.mScanDirNo = 100;
+            this.mScanFileNo = 1;
+            return true;
+        }
+
+        private boolean searchImageNo(String str) {
+            File file = new File(str);
+            DcfPathBuilder.this.mFileNameFilter.mFilterFileNo = 1;
+            String[] list = file.list(DcfPathBuilder.this.mFileNameFilter);
+            if (list != null && list.length != 0) {
+                this.mScanFileNo = DcfPathBuilder.this.mFileNameFilter.mFilterFileNo + 1;
+            } else {
+                this.mScanFileNo = 1;
+            }
+            if (this.mScanFileNo > 9999) {
+                this.mScanDirNo++;
+                this.mScanFileNo = 1;
+            }
+            if (this.mScanDirNo <= 999) {
+                return true;
+            }
+            CamLog.e("searchImageNo over max dir. " + this.mScanDirNo);
+            return false;
         }
     }
 
@@ -100,7 +286,7 @@ public class DcfPathBuilder {
             if (CamLog.VERBOSE) {
                 CamLog.d("mkdirs(): " + file);
             }
-            if (StorageUtil.getStorageTypeFromPath(str, CameraApplication.getContext()) != Storage$StorageType.EXTERNAL_CARD) {
+            if (StorageUtil.getStorageTypeFromPath(str, CameraApplication.getContext()) != Storage.StorageType.EXTERNAL_CARD) {
                 if (!file.mkdirs()) {
                     CamLog.e("Failed mkdirs() : " + file.getPath());
                     return false;
@@ -120,24 +306,23 @@ public class DcfPathBuilder {
 
     public static boolean isAlreadyLastFileExist(String str) {
         String dcimDirectory = getDcimDirectory(str);
-        if (!new File(dcimDirectory + "/" + String.format(Locale.US, "%03d", 999) + "ANDRO").isDirectory()) {
+        if (!new File(dcimDirectory + SharedPrefsTranslator.CONNECTOR_SLASH + String.format(Locale.US, "%03d", 999) + DCF_DIR_NAME_FREE_WORD).isDirectory()) {
             return false;
         }
-        if (new File((dcimDirectory + "/" + String.format(Locale.US, "%03d", 999) + "ANDRO") + "/DSC_" + String.format(Locale.US, "%04d", 9999) + ".JPG").isFile()) {
+        if (new File((dcimDirectory + SharedPrefsTranslator.CONNECTOR_SLASH + String.format(Locale.US, "%03d", 999) + DCF_DIR_NAME_FREE_WORD) + "/DSC_" + String.format(Locale.US, "%04d", Integer.valueOf(MAX_FILE_NAME)) + MediaSavingConstants.MEDIA_TYPE_JPEG_EXT).isFile()) {
             return true;
         }
-        String str2 = (dcimDirectory + "/" + String.format(Locale.US, "%03d", 999) + "ANDRO") + "/MOV_" + String.format(Locale.US, "%04d", 9999);
-        if (new File(str2 + ".mp4").isFile()) {
+        String str2 = (dcimDirectory + SharedPrefsTranslator.CONNECTOR_SLASH + String.format(Locale.US, "%03d", 999) + DCF_DIR_NAME_FREE_WORD) + "/MOV_" + String.format(Locale.US, "%04d", Integer.valueOf(MAX_FILE_NAME));
+        if (new File(str2 + MediaSavingConstants.MEDIA_TYPE_MPEG4_EXT).isFile()) {
             return true;
         }
         StringBuilder sb = new StringBuilder();
         sb.append(str2);
-        sb.append(".3gp");
+        sb.append(MediaSavingConstants.MEDIA_TYPE_3GP_EXT);
         return new File(sb.toString()).isFile();
     }
 
-    /* JADX WARN: Unreachable blocks removed: 3, instructions: 10 */
-    private String assignImageFilePath(int i, Storage$StorageType storage$StorageType) throws IOException {
+    private String assignImageFilePath(int i, Storage.StorageType storageType) throws IOException {
         Future<?> future;
         String str;
         synchronized (this) {
@@ -147,7 +332,7 @@ public class DcfPathBuilder {
         if (future != null) {
             try {
                 this.mScanResult = SCAN_RESULT_FAILED;
-                this.mScanResult = (DcfPathBuilder$ScanResult) future.get(60000L, TimeUnit.MILLISECONDS);
+                this.mScanResult = (ScanResult) future.get(60000L, TimeUnit.MILLISECONDS);
                 this.mDirNo = this.mScanResult.resultDirNo;
                 this.mFileNo = this.mScanResult.resultFileNo;
                 if (CamLog.VERBOSE) {
@@ -155,13 +340,13 @@ public class DcfPathBuilder {
                 }
             } catch (InterruptedException e) {
                 throw new IOException("Failed to scan." + e);
-            } catch (ExecutionException e2) {
-                throw new IOException("Failed to scan." + e2);
             } catch (TimeoutException e3) {
                 throw new IOException("Failed to scan." + e3);
+            } catch (ExecutionException e2) {
+                throw new IOException("Failed to scan." + e2);
             }
         }
-        if (this.mScanResult.resultState != DcfPathBuilder$ScanResultState.SCAN_SUCCEEDED) {
+        if (this.mScanResult.resultState != ScanResultState.SCAN_SUCCEEDED) {
             CamLog.e("assignImageFilePath scan failed.");
             return null;
         }
@@ -169,9 +354,9 @@ public class DcfPathBuilder {
             CamLog.e("assignImageFilePath over max dir. " + this.mDirNo);
             return null;
         }
-        String str2 = String.format(Locale.US, "%03d", Integer.valueOf(this.mDirNo)) + "ANDRO";
-        String str3 = getDcimDirectory(this.mRoot) + "/" + str2;
-        if (storage$StorageType != Storage$StorageType.EXTERNAL_CARD) {
+        String str2 = String.format(Locale.US, "%03d", Integer.valueOf(this.mDirNo)) + DCF_DIR_NAME_FREE_WORD;
+        String str3 = getDcimDirectory(this.mRoot) + SharedPrefsTranslator.CONNECTOR_SLASH + str2;
+        if (storageType != Storage.StorageType.EXTERNAL_CARD) {
             File file = new File(str3);
             if (!file.exists() && !file.mkdirs()) {
                 CamLog.e("assignImageFilePath create dir failed: " + file);
@@ -180,13 +365,12 @@ public class DcfPathBuilder {
         } else {
             Uri sdCardGrantedUri = StorageUtil.getSdCardGrantedUri(CameraApplication.getContext());
             if (!StorageUtil.isExistDcimDirectory(sdCardGrantedUri)) {
-                str2 = Environment.DIRECTORY_DCIM + "/" + str2;
+                str2 = Environment.DIRECTORY_DCIM + SharedPrefsTranslator.CONNECTOR_SLASH + str2;
             }
             if (StorageUtil.createDirectory(CameraApplication.getContext(), sdCardGrantedUri, str2) == null) {
                 return null;
             }
         }
-        this.mFileNo = (((int) SystemClock.uptimeMillis()) % 9999) + 1;
         switch (i) {
             case 0:
                 str = str3 + "/DSC_";
@@ -198,29 +382,29 @@ public class DcfPathBuilder {
                 CamLog.e("assignImageFilePath type failed. " + i);
                 return null;
         }
-        while (true) {
-            String str4 = str + String.format(Locale.US, "%04d", Integer.valueOf(this.mFileNo));
-            if (!new File(str4).exists()) {
-                return str4;
-            }
-            this.mFileNo++;
+        String str4 = str + String.format(Locale.US, "%04d", Integer.valueOf(this.mFileNo));
+        this.mFileNo++;
+        if (this.mFileNo > 9999) {
+            this.mDirNo++;
+            this.mFileNo = 1;
         }
+        return str4;
     }
 
     public static String getDcimDirectory(String str) {
-        return str + "/" + Environment.DIRECTORY_DCIM;
+        return str + SharedPrefsTranslator.CONNECTOR_SLASH + Environment.DIRECTORY_DCIM;
     }
 
-    public String getPhotoPath(Storage$StorageType storage$StorageType) throws IOException {
+    public String getPhotoPath(Storage.StorageType storageType) {
         String strAssignImageFilePath = null;
         while (true) {
             try {
-                strAssignImageFilePath = assignImageFilePath(0, storage$StorageType);
+                strAssignImageFilePath = assignImageFilePath(0, storageType);
             } catch (IOException e) {
                 CamLog.e("getPhotoPath failed.", e);
             }
             if (strAssignImageFilePath != null) {
-                strAssignImageFilePath = strAssignImageFilePath + ".JPG";
+                strAssignImageFilePath = strAssignImageFilePath + MediaSavingConstants.MEDIA_TYPE_JPEG_EXT;
             }
             if (CamLog.VERBOSE) {
                 CamLog.d("getPhotoPath: " + strAssignImageFilePath);
@@ -236,23 +420,23 @@ public class DcfPathBuilder {
         return strAssignImageFilePath;
     }
 
-    public String getVideoPath(String str, Storage$StorageType storage$StorageType) throws IOException {
-        String strAssignImageFilePath = "/dev/null";
+    public String getVideoPath(String str, Storage.StorageType storageType) {
+        String strAssignImageFilePath = MediaSavingConstants.INVALID_FILE_PATH;
         while (true) {
             try {
-                strAssignImageFilePath = assignImageFilePath(1, storage$StorageType);
+                strAssignImageFilePath = assignImageFilePath(1, storageType);
             } catch (IOException e) {
                 CamLog.e("getVideoPath failed.", e);
             }
             if (strAssignImageFilePath == null) {
-                strAssignImageFilePath = "/dev/null";
+                strAssignImageFilePath = MediaSavingConstants.INVALID_FILE_PATH;
             } else {
                 strAssignImageFilePath = strAssignImageFilePath + str;
             }
             if (CamLog.VERBOSE) {
                 CamLog.d("getVideoPath: " + strAssignImageFilePath);
             }
-            if (strAssignImageFilePath == "/dev/null" || !isAssignedFileAlreadyExist(strAssignImageFilePath)) {
+            if (strAssignImageFilePath == MediaSavingConstants.INVALID_FILE_PATH || !isAssignedFileAlreadyExist(strAssignImageFilePath)) {
                 break;
             }
             if (CamLog.VERBOSE) {
@@ -280,5 +464,36 @@ public class DcfPathBuilder {
         }
         String dcimDirectory = getDcimDirectory(str);
         return new File(dcimDirectory).canWrite() && checkStorageWritable(dcimDirectory);
+    }
+
+    private static boolean checkStorageWritable(String str) {
+        String prefix = String.valueOf(new Date().getTime());
+        File tempFile = null;
+        boolean writable = false;
+        if (str != null) {
+            try {
+                tempFile = File.createTempFile(prefix, null, new File(str));
+                writable = true;
+            } catch (IllegalArgumentException e) {
+                CamLog.e("Failed createTempFile() parameter error : " + str);
+                return false;
+            } catch (IOException e2) {
+                CamLog.e("Failed createTempFile() : " + str);
+                return false;
+            } catch (SecurityException e3) {
+                CamLog.e("Failed createTempFile() not allowed : " + str);
+                return false;
+            }
+        }
+        if (tempFile != null) {
+            try {
+                if (!tempFile.delete()) {
+                    CamLog.e("tempFile delete error");
+                }
+            } catch (SecurityException e4) {
+                CamLog.e("Failed delete() not allowed");
+            }
+        }
+        return writable;
     }
 }

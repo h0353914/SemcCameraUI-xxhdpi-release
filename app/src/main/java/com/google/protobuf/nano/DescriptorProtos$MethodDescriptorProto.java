@@ -10,12 +10,6 @@ public final class DescriptorProtos$MethodDescriptorProto extends ExtendableMess
     public DescriptorProtos$MethodOptions options;
     public String outputType;
     public boolean serverStreaming;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$MethodDescriptorProto[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

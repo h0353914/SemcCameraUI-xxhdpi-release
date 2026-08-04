@@ -4,9 +4,9 @@ import android.content.Context;
 import android.net.Uri;
 import com.sonyericsson.android.camera.ActionMode;
 import com.sonyericsson.android.camera.CameraApplication;
-import com.sonyericsson.android.camera.LaunchCondition$OneShotMode;
+import com.sonyericsson.android.camera.LaunchCondition;
 import com.sonyericsson.android.camera.configuration.Configurations;
-import com.sonyericsson.android.camera.configuration.IntentReader$VideoQualityConfigurations;
+import com.sonyericsson.android.camera.configuration.IntentReader;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.configuration.UserSettingSelectability;
 import com.sonyericsson.android.camera.configuration.parameters.AutoReview;
@@ -29,14 +29,12 @@ import com.sonyericsson.android.camera.research.LocalResearchUtil;
 import com.sonyericsson.android.camera.setting.ExtraSettings;
 import com.sonyericsson.android.camera.setting.UserSettings;
 import com.sonyericsson.android.camera.setting.UserSettingsLoader;
-import com.sonyericsson.android.camera.setting.UserSettingsLoader$OnLoadCompletedListener;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.MaxVideoSize;
 import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import com.sonyericsson.cameracommon.mediasaving.location.GeotagManager;
 import com.sonyericsson.cameracommon.storage.Storage;
-import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import com.sonyericsson.cameracommon.storage.StorageUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,12 +49,21 @@ public class UserSettingManager implements UserSettings {
     private final Context mContext;
     private Parameters mCurrentParameters;
     private ExtraSettings mExtraSettings;
-    private LaunchCondition$OneShotMode mOneShotMode;
+    private LaunchCondition.OneShotMode mOneShotMode;
     private final SecureSetting mSecureSetting;
     private final Storage mStorage;
     private final UserSettingsLoader mUserSettingLoader;
     private DestinationToSave mRequestedDestination = null;
-    private final UserSettingsLoader$OnLoadCompletedListener mLoadCompletedListener = new UserSettingManager$1(this);
+    private final UserSettingsLoader.OnLoadCompletedListener mLoadCompletedListener = new UserSettingsLoader.OnLoadCompletedListener() { // from
+                                                                                                                                         // class:
+                                                                                                                                         // com.sonyericsson.android.camera.parameter.UserSettingManager.1
+        @Override // com.sonyericsson.android.camera.setting.UserSettingsLoader.OnLoadCompletedListener
+        public void onLoadCompleted() {
+            if (CamLog.VERBOSE) {
+                CamLog.d("all user settings load completed");
+            }
+        }
+    };
     private final List<UserSettingApplicable> mUserSettingApplicableEntries = new ArrayList();
     private volatile Map<CapturingMode, Parameters> mParametersEntries = new HashMap();
     private final ModeIndependentParams mIndependentParams = new ModeIndependentParams();
@@ -70,17 +77,18 @@ public class UserSettingManager implements UserSettings {
     }
 
     @Override // com.sonyericsson.android.camera.setting.UserSettings
-    public void prepare(Context context, LaunchCondition$OneShotMode launchCondition$OneShotMode, Uri uri, IntentReader$VideoQualityConfigurations intentReader$VideoQualityConfigurations, ExtraSettings extraSettings) {
+    public void prepare(Context context, LaunchCondition.OneShotMode oneShotMode, Uri uri,
+            IntentReader.VideoQualityConfigurations videoQualityConfigurations, ExtraSettings extraSettings) {
         if (!PlatformCapability.isPrepared()) {
             throw new IllegalStateException("UseSettings has been used before PlatformCapability is prepared.");
         }
-        this.mOneShotMode = launchCondition$OneShotMode;
+        this.mOneShotMode = oneShotMode;
         this.mConfig = new Configurations();
-        this.mConfig.initInSync(intentReader$VideoQualityConfigurations);
+        this.mConfig.initInSync(videoQualityConfigurations);
         this.mExtraSettings = extraSettings;
         if (this.mOneShotMode.isEnabled() && uri != null) {
             this.mRequestedDestination = DestinationToSave.EMMC;
-            if (StorageUtil.getStorageTypeFromUri(uri, this.mContext) == Storage$StorageType.EXTERNAL_CARD) {
+            if (StorageUtil.getStorageTypeFromUri(uri, this.mContext) == Storage.StorageType.EXTERNAL_CARD) {
                 this.mRequestedDestination = DestinationToSave.SDCARD;
             }
         }
@@ -100,7 +108,10 @@ public class UserSettingManager implements UserSettings {
     private void loadCurrentCapturingMode(CapturingMode capturingMode) {
         if (capturingMode != null && needReload(capturingMode)) {
             PerfLog.LOAD_USER_SETTING_CURRENT.begin();
-            Parameters userSettingParameters = this.mUserSettingLoader.getUserSettingParameters(this.mContext, capturingMode, this.mStorage, this.mConfig, this.mOneShotMode.isEnabled(), this.mIndependentParams, this.mParametersEntries.isEmpty());
+            boolean oneShotEnabled = this.mOneShotMode.isEnabled();
+            Parameters userSettingParameters = this.mUserSettingLoader.getUserSettingParameters(this.mContext,
+                    capturingMode, this.mStorage, this.mConfig, oneShotEnabled, this.mIndependentParams,
+                    this.mParametersEntries.isEmpty());
             for (UserSettingKey userSettingKey : UserSettingKey.values()) {
                 if (!isNeededToLoad(userSettingKey, this.mOneShotMode)) {
                     userSettingParameters.mHolders.remove(userSettingKey);
@@ -110,10 +121,12 @@ public class UserSettingManager implements UserSettings {
             setDefaultToNonExistentResolution(userSettingParameters);
             setDefaultToNonExistentVideoSize(userSettingParameters);
             setDefaultToNonExistentVideoShutterTrigger(userSettingParameters);
-            if (this.mOneShotMode.isEnabled()) {
+            if (oneShotEnabled) {
                 setDefaultToUserSettingForOneshot(userSettingParameters);
             }
-            userSettingParameters.set(GeotagManager.isGeoTagEnabled((Geotag) userSettingParameters.mIndependentParams.mGeoTag.get(), this.mContext) ? Geotag.ON : Geotag.OFF);
+            userSettingParameters
+                    .set(GeotagManager.isGeoTagEnabled((Geotag) userSettingParameters.mIndependentParams.mGeoTag.get(),
+                            this.mContext) ? Geotag.ON : Geotag.OFF);
             if (capturingMode.getType() == 2) {
                 setupVideoOption(userSettingParameters);
             }
@@ -125,12 +138,17 @@ public class UserSettingManager implements UserSettings {
     }
 
     private boolean needReload(CapturingMode capturingMode) {
-        return (this.mParametersEntries.size() == 1 && this.mParametersEntries.containsKey(capturingMode)) || !this.mParametersEntries.containsKey(capturingMode);
+        return (this.mParametersEntries.size() == 1 && this.mParametersEntries.containsKey(capturingMode))
+                || !this.mParametersEntries.containsKey(capturingMode);
     }
 
-    boolean isNeededToLoad(UserSettingKey userSettingKey, LaunchCondition$OneShotMode launchCondition$OneShotMode) {
+    boolean isNeededToLoad(UserSettingKey userSettingKey, LaunchCondition.OneShotMode oneShotMode) {
         if (userSettingKey.isSaved()) {
-            return launchCondition$OneShotMode.isVideo() ? UserSettingManager$2.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()] != 1 : (launchCondition$OneShotMode.isPhoto() && UserSettingManager$2.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()] == 2) ? false : true;
+            if (oneShotMode == null) {
+                return true;
+            }
+            return oneShotMode.isVideo() ? userSettingKey != UserSettingKey.VIDEO_SHUTTER_TRIGGER
+                    : (oneShotMode.isPhoto() && userSettingKey == UserSettingKey.PREDICTIVE_CAPTURE) ? false : true;
         }
         return userSettingKey.isCommon();
     }
@@ -166,13 +184,17 @@ public class UserSettingManager implements UserSettings {
     }
 
     void setupVideoOption(Parameters parameters) {
-        ActionMode actionMode = new ActionMode(this.mOneShotMode.isEnabled(), parameters.capturingMode.getType(), parameters.capturingMode.getCameraId());
+        boolean oneShotEnabled = this.mOneShotMode.isEnabled();
+        boolean oneShotVideo = this.mOneShotMode.isVideo();
+        ActionMode actionMode = new ActionMode(oneShotEnabled, parameters.capturingMode.getType(),
+                parameters.capturingMode.getCameraId());
         VideoSize[] options = VideoSize.getOptions(actionMode, this.mConfig);
-        if (this.mOneShotMode.isVideo()) {
+        if (oneShotVideo) {
             if (options.length == 1) {
                 parameters.set(options[0]);
             } else {
-                parameters.set(VideoSize.getDefaultValue(actionMode, this.mConfig, this.mStorage, ((DestinationToSave) this.mIndependentParams.mDestinationToSave.get()).getType()));
+                parameters.set(VideoSize.getDefaultValue(actionMode, this.mConfig, this.mStorage,
+                        ((DestinationToSave) this.mIndependentParams.mDestinationToSave.get()).getType()));
                 parameters.set(VideoHdr.HDR_OFF);
             }
         }
@@ -180,12 +202,17 @@ public class UserSettingManager implements UserSettings {
     }
 
     private void updateVideoOption() {
-        this.mCurrentParameters.mCapturingModeParams.mVideoSize.setOptions(VideoSize.getOptions(new ActionMode(this.mOneShotMode.isEnabled(), this.mCurrentParameters.capturingMode.getType(), this.mCurrentParameters.capturingMode.getCameraId()), this.mConfig));
+        boolean oneShotEnabled = this.mOneShotMode.isEnabled();
+        this.mCurrentParameters.mCapturingModeParams.mVideoSize.setOptions(VideoSize.getOptions(
+                new ActionMode(oneShotEnabled, this.mCurrentParameters.capturingMode.getType(),
+                        this.mCurrentParameters.capturingMode.getCameraId()),
+                this.mConfig));
     }
 
     private void setDefaultToUserSettingForOneshot(Parameters parameters) {
-        parameters.set(PredictiveCapture.getDefaultValue(this.mOneShotMode.isEnabled(), parameters.capturingMode));
-        parameters.set(AutoReview.getDefaultValue(this.mOneShotMode.isEnabled()));
+        boolean oneShotEnabled = this.mOneShotMode.isEnabled();
+        parameters.set(PredictiveCapture.getDefaultValue(oneShotEnabled, parameters.capturingMode));
+        parameters.set(AutoReview.getDefaultValue(oneShotEnabled));
         parameters.set(CameraKey.getDefaultValue());
     }
 
@@ -217,17 +244,23 @@ public class UserSettingManager implements UserSettings {
     }
 
     private void setDefaultToNonExistentVideoSize(Parameters parameters) {
-        ActionMode actionMode = new ActionMode(this.mOneShotMode.isEnabled(), parameters.capturingMode.getType(), parameters.capturingMode.getCameraId());
+        boolean oneShotEnabled = this.mOneShotMode.isEnabled();
+        ActionMode actionMode = new ActionMode(oneShotEnabled, parameters.capturingMode.getType(),
+                parameters.capturingMode.getCameraId());
         boolean z = false;
-        for (VideoSize videoSize : VideoSize.getOptions(actionMode, this.mConfig)) {
-            if (videoSize.equals(parameters.getVideoSize())) {
+        VideoSize currentSize = parameters.getVideoSize();
+        VideoSize[] options = VideoSize.getOptions(actionMode, this.mConfig);
+        for (VideoSize videoSize : options) {
+            if (videoSize.equals(currentSize)) {
                 z = true;
             }
         }
         if (z) {
             return;
         }
-        parameters.set(VideoSize.getDefaultValue(actionMode, this.mConfig, null, ((DestinationToSave) this.mIndependentParams.mDestinationToSave.get()).getType()));
+        VideoSize defaultValue = VideoSize.getDefaultValue(actionMode, this.mConfig, null,
+                ((DestinationToSave) this.mIndependentParams.mDestinationToSave.get()).getType());
+        parameters.set(defaultValue);
     }
 
     void setDefaultToNonExistentVideoShutterTrigger(List<Parameters> list) {
@@ -239,7 +272,9 @@ public class UserSettingManager implements UserSettings {
 
     private void setDefaultToNonExistentVideoShutterTrigger(Parameters parameters) {
         boolean z = false;
-        for (VideoShutterTrigger videoShutterTrigger : VideoShutterTrigger.getOptions(parameters.capturingMode, this.mOneShotMode.isVideo())) {
+        boolean oneShotVideo = this.mOneShotMode.isVideo();
+        for (VideoShutterTrigger videoShutterTrigger : VideoShutterTrigger.getOptions(parameters.capturingMode,
+                oneShotVideo)) {
             if (videoShutterTrigger.equals(parameters.getVideoShutterTrigger())) {
                 z = true;
             }
@@ -247,12 +282,12 @@ public class UserSettingManager implements UserSettings {
         if (z) {
             return;
         }
-        parameters.set(VideoShutterTrigger.getDefaultValue(parameters.capturingMode, this.mOneShotMode.isVideo()));
+        parameters.set(VideoShutterTrigger.getDefaultValue(parameters.capturingMode, oneShotVideo));
     }
 
     private void suspend() {
         this.mCanWrite = false;
-        if (!this.mOneShotMode.isEnabled()) {
+        if (this.mOneShotMode == null || !this.mOneShotMode.isEnabled()) {
             this.mUserSettingLoader.save(this.mParametersEntries, this.mCurrentParameters.capturingMode);
         }
         clearParametersEntries(false);
@@ -346,10 +381,11 @@ public class UserSettingManager implements UserSettings {
 
     private void saveImmediatelyIfNeeded(UserSettingValue userSettingValue) {
         UserSettingKey key = userSettingValue.getKey();
-        switch (UserSettingManager$2.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[key.ordinal()]) {
-            case 3:
-            case 4:
-            case 5:
+        switch (key) {
+            case RESOLUTION:
+            case VIDEO_SIZE:
+            case VIDEO_STABILIZER:
+            case SLOW_MOTION:
                 if (!this.mOneShotMode.isEnabled() && !this.mCanWrite) {
                     throw new IllegalStateException("Settings SHOULD not be saved after pausing");
                 }
@@ -372,7 +408,9 @@ public class UserSettingManager implements UserSettings {
         this.mCurrentParameters = this.mParametersEntries.get(capturingMode);
         this.mCurrentParameters.updateFocusParameters();
         this.mCurrentParameters.capturingMode.apply(this.mCurrentParameters);
-        ActionMode actionMode = new ActionMode(this.mOneShotMode.isEnabled(), capturingMode.getType(), capturingMode.getCameraId());
+        boolean oneShotEnabled = this.mOneShotMode.isEnabled();
+        ActionMode actionMode = new ActionMode(oneShotEnabled, capturingMode.getType(),
+                capturingMode.getCameraId());
         this.mIndependentParams.mPhotoLight.setDefaultValue();
         if (this.mIndependentParams.mFlash.get() == Flash.LED_ON) {
             this.mIndependentParams.mFlash.setDefaultValue();
@@ -387,7 +425,8 @@ public class UserSettingManager implements UserSettings {
         this.mIndependentParams.mPhotoLight.setOptions(PhotoLight.getOptions(actionMode));
         this.mCurrentParameters.updateHolder(this.mIndependentParams.mPhotoLight);
         for (UserSettingKey userSettingKey : UserSettingKey.values()) {
-            userSettingKey.setSelectability(UserSettingSelectability.getSelectability(this.mCurrentParameters.getOptions(userSettingKey).length));
+            userSettingKey.setSelectability(UserSettingSelectability
+                    .getSelectability(this.mCurrentParameters.getOptions(userSettingKey).length));
         }
         this.mCurrentParameters.updateSelectability();
         LocalResearchUtil.getInstance().clearAllSettings();
@@ -424,8 +463,9 @@ public class UserSettingManager implements UserSettings {
     }
 
     @Override // com.sonyericsson.android.camera.setting.UserSettings
-    public MaxVideoSize getMaxVideoSize(Storage storage, Storage$StorageType storage$StorageType, RecordingProfile recordingProfile) {
-        return MaxVideoSize.create(this.mConfig, recordingProfile, storage, storage$StorageType);
+    public MaxVideoSize getMaxVideoSize(Storage storage, Storage.StorageType storageType,
+            RecordingProfile recordingProfile) {
+        return MaxVideoSize.create(this.mConfig, recordingProfile, storage, storageType);
     }
 
     @Override // com.sonyericsson.android.camera.setting.UserSettings
@@ -437,4 +477,5 @@ public class UserSettingManager implements UserSettings {
     public void resetTempParameters() {
         this.mCurrentParameters.resetTempParameters();
     }
+
 }

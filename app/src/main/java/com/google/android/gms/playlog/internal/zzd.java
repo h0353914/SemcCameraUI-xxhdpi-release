@@ -2,20 +2,20 @@ package com.google.android.gms.playlog.internal;
 
 import android.os.Bundle;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener;
-import com.google.android.gms.internal.zzqd$zza;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.internal.zzqd;
 
-public class zzd implements GoogleApiClient$ConnectionCallbacks, GoogleApiClient$OnConnectionFailedListener {
-    private final zzqd$zza zzaRP;
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzd implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+    private final zzqd.zza zzaRP;
     private zzf zzaRE = null;
     private boolean zzaRQ = true;
 
-    public zzd(zzqd$zza zzqd_zza) {
-        this.zzaRP = zzqd_zza;
+    public zzd(zzqd.zza zzaVar) {
+        this.zzaRP = zzaVar;
     }
 
-    @Override // com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks
+    @Override // com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks
     public void onConnected(Bundle bundle) {
         this.zzaRE.zzap(false);
         if (this.zzaRQ && this.zzaRP != null) {
@@ -24,7 +24,7 @@ public class zzd implements GoogleApiClient$ConnectionCallbacks, GoogleApiClient
         this.zzaRQ = false;
     }
 
-    @Override // com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener
+    @Override // com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener
     public void onConnectionFailed(ConnectionResult connectionResult) {
         this.zzaRE.zzap(true);
         if (this.zzaRQ && this.zzaRP != null) {
@@ -37,7 +37,7 @@ public class zzd implements GoogleApiClient$ConnectionCallbacks, GoogleApiClient
         this.zzaRQ = false;
     }
 
-    @Override // com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks
+    @Override // com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks
     public void onConnectionSuspended(int i) {
         this.zzaRE.zzap(true);
     }

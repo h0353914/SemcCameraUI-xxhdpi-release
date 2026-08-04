@@ -1,5 +1,6 @@
 package com.google.android.gms.internal;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzsa implements Cloneable {
     private static final zzsb zzbin = new zzsb();
     private int mSize;
@@ -19,6 +20,7 @@ public final class zzsa implements Cloneable {
         this.mSize = 0;
     }
 
+    /* renamed from: gc */
     private void gc() {
         int i = this.mSize;
         int[] iArr = this.zzbip;
@@ -89,10 +91,6 @@ public final class zzsa implements Cloneable {
         return ~i3;
     }
 
-    public /* synthetic */ Object clone() throws CloneNotSupportedException {
-        return zzFH();
-    }
-
     public boolean equals(Object obj) {
         if (obj == this) {
             return true;
@@ -129,13 +127,14 @@ public final class zzsa implements Cloneable {
         return this.mSize;
     }
 
-    public final zzsa zzFH() {
+    /* renamed from: zzFH, reason: merged with bridge method [inline-methods] */
+    public final zzsa clone() {
         int size = size();
         zzsa zzsaVar = new zzsa(size);
         System.arraycopy(this.zzbip, 0, zzsaVar.zzbip, 0, size);
         for (int i = 0; i < size; i++) {
             if (this.zzbiq[i] != null) {
-                zzsaVar.zzbiq[i] = this.zzbiq[i].zzFI();
+                zzsaVar.zzbiq[i] = this.zzbiq[i].clone();
             }
         }
         zzsaVar.mSize = size;

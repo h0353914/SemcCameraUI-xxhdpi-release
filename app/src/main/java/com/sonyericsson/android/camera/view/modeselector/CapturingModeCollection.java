@@ -4,17 +4,18 @@ import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.content.OperationApplicationException;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager$NameNotFoundException;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.RemoteException;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.view.modeselector.CameraCommonProviderConstants;
+import com.sonyericsson.android.camera.view.modeselector.CapturingModeAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CapturingModeCollection {
     private static final int INVALID_POSITION = -1;
-    private static final String[] PROTECTION = {"_id", "package", "activity", "mode_name", "selectoricon_id", "selectorlabel_id", "shortcuticon_id", "shortcutlabel_id", "descriptionlabel_id", "capture_type", "visibility_normal", "visibility_oneshot", "visibility_shortcut"};
+    private static final String[] PROTECTION = {"_id", CameraCommonProviderConstants.CapturingModeColumns.PACKAGE, CameraCommonProviderConstants.CapturingModeColumns.ACTIVITY, CameraCommonProviderConstants.CapturingModeColumns.MODE_NAME, CameraCommonProviderConstants.CapturingModeColumns.SELECTORICON_ID, CameraCommonProviderConstants.CapturingModeColumns.SELECTORLABEL_ID, CameraCommonProviderConstants.CapturingModeColumns.SHORTCUTICON_ID, CameraCommonProviderConstants.CapturingModeColumns.SHORTCUTLABEL_ID, CameraCommonProviderConstants.CapturingModeColumns.DESCRIPTIONLABEL_ID, CameraCommonProviderConstants.CapturingModeColumns.CAPTURE_TYPE, CameraCommonProviderConstants.CapturingModeColumns.VISIBILITY_NORMAL, CameraCommonProviderConstants.CapturingModeColumns.VISIBILITY_ONESHOT, CameraCommonProviderConstants.CapturingModeColumns.VISIBILITY_SHORTCUT};
     private static final String SORT_ASC = "sort_order ASC";
     private static final String TAG = "CapturingModeCollection";
     private static final String WHERE_WITH_ID = "_id=?";
@@ -25,82 +26,247 @@ public class CapturingModeCollection {
 
     private static CapturingModeAttributes convert(Cursor cursor) {
         int columnIndex = cursor.getColumnIndex("_id");
-        int columnIndex2 = cursor.getColumnIndex("package");
-        int columnIndex3 = cursor.getColumnIndex("activity");
-        int columnIndex4 = cursor.getColumnIndex("mode_name");
-        int columnIndex5 = cursor.getColumnIndex("selectoricon_id");
-        int columnIndex6 = cursor.getColumnIndex("selectorlabel_id");
-        int columnIndex7 = cursor.getColumnIndex("descriptionlabel_id");
-        int columnIndex8 = cursor.getColumnIndex("shortcuticon_id");
-        int columnIndex9 = cursor.getColumnIndex("shortcutlabel_id");
-        int columnIndex10 = cursor.getColumnIndex("capture_type");
-        int columnIndex11 = cursor.getColumnIndex("visibility_normal");
-        int columnIndex12 = cursor.getColumnIndex("visibility_oneshot");
-        int columnIndex13 = cursor.getColumnIndex("visibility_shortcut");
+        int columnIndex2 = cursor.getColumnIndex(CameraCommonProviderConstants.CapturingModeColumns.PACKAGE);
+        int columnIndex3 = cursor.getColumnIndex(CameraCommonProviderConstants.CapturingModeColumns.ACTIVITY);
+        int columnIndex4 = cursor.getColumnIndex(CameraCommonProviderConstants.CapturingModeColumns.MODE_NAME);
+        int columnIndex5 = cursor.getColumnIndex(CameraCommonProviderConstants.CapturingModeColumns.SELECTORICON_ID);
+        int columnIndex6 = cursor.getColumnIndex(CameraCommonProviderConstants.CapturingModeColumns.SELECTORLABEL_ID);
+        int columnIndex7 = cursor.getColumnIndex(CameraCommonProviderConstants.CapturingModeColumns.DESCRIPTIONLABEL_ID);
+        int columnIndex8 = cursor.getColumnIndex(CameraCommonProviderConstants.CapturingModeColumns.SHORTCUTICON_ID);
+        int columnIndex9 = cursor.getColumnIndex(CameraCommonProviderConstants.CapturingModeColumns.SHORTCUTLABEL_ID);
+        int columnIndex10 = cursor.getColumnIndex(CameraCommonProviderConstants.CapturingModeColumns.CAPTURE_TYPE);
+        int columnIndex11 = cursor.getColumnIndex(CameraCommonProviderConstants.CapturingModeColumns.VISIBILITY_NORMAL);
+        int columnIndex12 = cursor.getColumnIndex(CameraCommonProviderConstants.CapturingModeColumns.VISIBILITY_ONESHOT);
+        int columnIndex13 = cursor.getColumnIndex(CameraCommonProviderConstants.CapturingModeColumns.VISIBILITY_SHORTCUT);
         long j = cursor.getLong(columnIndex);
-        return new CapturingModeAttributes(Long.valueOf(j), cursor.getString(columnIndex2), cursor.getString(columnIndex3), cursor.getString(columnIndex4), cursor.getInt(columnIndex5), cursor.getInt(columnIndex6), cursor.getInt(columnIndex7), cursor.getInt(columnIndex8), cursor.getInt(columnIndex9), CapturingModeCollection$CaptureTypeCode.toCaptureType(cursor.getInt(columnIndex10)), CapturingModeCollection$VisibilityTypeCode.toVisibilityType(cursor.getInt(columnIndex11)), CapturingModeCollection$VisibilityTypeCode.toVisibilityType(cursor.getInt(columnIndex12)), CapturingModeCollection$VisibilityTypeCode.toVisibilityType(cursor.getInt(columnIndex13)));
+        return new CapturingModeAttributes(Long.valueOf(j), cursor.getString(columnIndex2), cursor.getString(columnIndex3), cursor.getString(columnIndex4), cursor.getInt(columnIndex5), cursor.getInt(columnIndex6), cursor.getInt(columnIndex7), cursor.getInt(columnIndex8), cursor.getInt(columnIndex9), CaptureTypeCode.toCaptureType(cursor.getInt(columnIndex10)), VisibilityTypeCode.toVisibilityType(cursor.getInt(columnIndex11)), VisibilityTypeCode.toVisibilityType(cursor.getInt(columnIndex12)), VisibilityTypeCode.toVisibilityType(cursor.getInt(columnIndex13)));
     }
 
     private static ContentProviderOperation createUpdateSortOrderOperation(CapturingModeAttributes capturingModeAttributes, int i) {
         if (CamLog.VERBOSE) {
             CamLog.d("createUpdateSortOrderOperation()");
         }
-        return ContentProviderOperation.newUpdate(CameraCommonProviderConstants.CAPTURINGMODE_CONTENT_URI).withSelection("_id=?", new String[]{Long.toString(capturingModeAttributes.getId().longValue())}).withValue("sort_order", Integer.valueOf(i)).build();
+        return ContentProviderOperation.newUpdate(CameraCommonProviderConstants.CAPTURINGMODE_CONTENT_URI).withSelection(WHERE_WITH_ID, new String[]{Long.toString(capturingModeAttributes.getId().longValue())}).withValue(CameraCommonProviderConstants.CapturingModeColumns.SORT_ORDER, Integer.valueOf(i)).build();
     }
 
     private static ContentProviderOperation createInsertOperation(CapturingModeAttributes capturingModeAttributes, int i) {
         if (CamLog.VERBOSE) {
             CamLog.d("createUpdateSortOrderOperation()");
         }
-        return ContentProviderOperation.newUpdate(CameraCommonProviderConstants.CAPTURINGMODE_CONTENT_URI).withValue("package", capturingModeAttributes.getPackageName()).withValue("activity", capturingModeAttributes.getActivityName()).withValue("mode_name", capturingModeAttributes.getModeName()).withValue("sort_order", Integer.valueOf(i)).withValue("capture_type", Integer.valueOf(CapturingModeCollection$CaptureTypeCode.toCode(capturingModeAttributes.getInternalCaptureType()))).withValue("visibility_normal", Integer.valueOf(CapturingModeCollection$VisibilityTypeCode.toCode(capturingModeAttributes.isVisibleNormal()))).withValue("visibility_oneshot", Integer.valueOf(CapturingModeCollection$VisibilityTypeCode.toCode(capturingModeAttributes.isVisibleOneshot()))).withValue("visibility_shortcut", Integer.valueOf(CapturingModeCollection$VisibilityTypeCode.toCode(capturingModeAttributes.isVisibleShortcut()))).withValue("selectoricon_id", Integer.valueOf(capturingModeAttributes.getSelectorIconId())).withValue("selectorlabel_id", Integer.valueOf(capturingModeAttributes.getSelectorLabelId())).withValue("descriptionlabel_id", Integer.valueOf(capturingModeAttributes.getDescriptionLabelId())).withValue("shortcuticon_id", Integer.valueOf(capturingModeAttributes.getShortcutIconId())).withValue("shortcutlabel_id", Integer.valueOf(capturingModeAttributes.getShortcutLabelId())).build();
+        return ContentProviderOperation.newUpdate(CameraCommonProviderConstants.CAPTURINGMODE_CONTENT_URI).withValue(CameraCommonProviderConstants.CapturingModeColumns.PACKAGE, capturingModeAttributes.getPackageName()).withValue(CameraCommonProviderConstants.CapturingModeColumns.ACTIVITY, capturingModeAttributes.getActivityName()).withValue(CameraCommonProviderConstants.CapturingModeColumns.MODE_NAME, capturingModeAttributes.getModeName()).withValue(CameraCommonProviderConstants.CapturingModeColumns.SORT_ORDER, Integer.valueOf(i)).withValue(CameraCommonProviderConstants.CapturingModeColumns.CAPTURE_TYPE, Integer.valueOf(CaptureTypeCode.toCode(capturingModeAttributes.getInternalCaptureType()))).withValue(CameraCommonProviderConstants.CapturingModeColumns.VISIBILITY_NORMAL, Integer.valueOf(VisibilityTypeCode.toCode(capturingModeAttributes.isVisibleNormal()))).withValue(CameraCommonProviderConstants.CapturingModeColumns.VISIBILITY_ONESHOT, Integer.valueOf(VisibilityTypeCode.toCode(capturingModeAttributes.isVisibleOneshot()))).withValue(CameraCommonProviderConstants.CapturingModeColumns.VISIBILITY_SHORTCUT, Integer.valueOf(VisibilityTypeCode.toCode(capturingModeAttributes.isVisibleShortcut()))).withValue(CameraCommonProviderConstants.CapturingModeColumns.SELECTORICON_ID, Integer.valueOf(capturingModeAttributes.getSelectorIconId())).withValue(CameraCommonProviderConstants.CapturingModeColumns.SELECTORLABEL_ID, Integer.valueOf(capturingModeAttributes.getSelectorLabelId())).withValue(CameraCommonProviderConstants.CapturingModeColumns.DESCRIPTIONLABEL_ID, Integer.valueOf(capturingModeAttributes.getDescriptionLabelId())).withValue(CameraCommonProviderConstants.CapturingModeColumns.SHORTCUTICON_ID, Integer.valueOf(capturingModeAttributes.getShortcutIconId())).withValue(CameraCommonProviderConstants.CapturingModeColumns.SHORTCUTLABEL_ID, Integer.valueOf(capturingModeAttributes.getShortcutLabelId())).build();
     }
 
     private static ContentProviderOperation createDeleteOperation(long j) {
         if (CamLog.VERBOSE) {
             CamLog.d("createDeleteOperation()");
         }
-        return ContentProviderOperation.newDelete(CameraCommonProviderConstants.CAPTURINGMODE_CONTENT_URI).withSelection("_id=?", new String[]{Long.toString(j)}).build();
+        return ContentProviderOperation.newDelete(CameraCommonProviderConstants.CAPTURINGMODE_CONTENT_URI).withSelection(WHERE_WITH_ID, new String[]{Long.toString(j)}).build();
+    }
+    private static class CaptureTypeCode {
+        static final int PHOTO = 1;
+        static final int VIDEO = 2;
+        private CaptureTypeCode() {
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        static int toCode(CapturingModeAttributes.InternalCaptureType internalCaptureType) {
+            if (internalCaptureType.equals(CapturingModeAttributes.InternalCaptureType.Photo)) {
+                return 1;
+            }
+
+            if (internalCaptureType.equals(CapturingModeAttributes.InternalCaptureType.Video)) {
+                return 2;
+            }
+            throw new IllegalArgumentException();
+        }
+        static CapturingModeAttributes.InternalCaptureType toCaptureType(int i) {
+
+            if (i == 1) {
+                return CapturingModeAttributes.InternalCaptureType.Photo;
+            }
+            if (i == 2) {
+                return CapturingModeAttributes.InternalCaptureType.Video;
+
+            }
+            throw new IllegalArgumentException();
+        }
+    }
+    private static class VisibilityTypeCode {
+
+        static final int FALSE = 0;
+        static final int TRUE = 1;
+        static int toCode(boolean z) {
+            return z ? 1 : 0;
+        }
+        static boolean toVisibilityType(int i) {
+            return i == 1;
+        }
+        private VisibilityTypeCode() {
+        }
     }
 
     public CapturingModeCollection(ContentResolver contentResolver) {
         this.mResolver = contentResolver;
     }
 
-    public List<CapturingModeAttributes> getCapturingModeList(CapturingModeAttributes$InternalCaptureType[] capturingModeAttributes$InternalCaptureTypeArr, CapturingModeAttributes$VisibilityType[] capturingModeAttributes$VisibilityTypeArr) {
+    public List<CapturingModeAttributes> getCapturingModeList(CapturingModeAttributes.InternalCaptureType[] internalCaptureTypeArr, CapturingModeAttributes.VisibilityType[] visibilityTypeArr) {
         StringBuffer stringBuffer = new StringBuffer();
-        if (capturingModeAttributes$InternalCaptureTypeArr.length > 0) {
+        if (internalCaptureTypeArr.length > 0) {
             stringBuffer.append("(");
-            for (CapturingModeAttributes$InternalCaptureType capturingModeAttributes$InternalCaptureType : capturingModeAttributes$InternalCaptureTypeArr) {
-                int code = CapturingModeCollection$CaptureTypeCode.toCode(capturingModeAttributes$InternalCaptureType);
-                if (capturingModeAttributes$InternalCaptureTypeArr[0] != capturingModeAttributes$InternalCaptureType) {
+            for (CapturingModeAttributes.InternalCaptureType internalCaptureType : internalCaptureTypeArr) {
+                int code = CaptureTypeCode.toCode(internalCaptureType);
+                if (internalCaptureTypeArr[0] != internalCaptureType) {
                     stringBuffer.append(" OR ");
                 }
-                stringBuffer.append("(capture_type=" + code + ")");
+                stringBuffer.append("(" + CameraCommonProviderConstants.CapturingModeColumns.CAPTURE_TYPE + "=" + code + ")");
             }
             stringBuffer.append(")");
         }
-        if (capturingModeAttributes$InternalCaptureTypeArr.length > 0 && capturingModeAttributes$VisibilityTypeArr.length > 0) {
+        if (internalCaptureTypeArr.length > 0 && visibilityTypeArr.length > 0) {
             stringBuffer.append(" AND ");
         }
-        if (capturingModeAttributes$VisibilityTypeArr.length > 0) {
+        if (visibilityTypeArr.length > 0) {
             stringBuffer.append("(");
-            for (CapturingModeAttributes$VisibilityType capturingModeAttributes$VisibilityType : capturingModeAttributes$VisibilityTypeArr) {
-                if (capturingModeAttributes$VisibilityTypeArr[0] != capturingModeAttributes$VisibilityType) {
+            for (CapturingModeAttributes.VisibilityType visibilityType : visibilityTypeArr) {
+                if (visibilityTypeArr[0] != visibilityType) {
                     stringBuffer.append(" OR ");
                 }
-                stringBuffer.append("(" + capturingModeAttributes$VisibilityType.mColumn + "=1)");
+                stringBuffer.append("(" + visibilityType.mColumn + "=1)");
             }
             stringBuffer.append(")");
         }
         ArrayList arrayList = new ArrayList();
-        Cursor cursorQuery = this.mResolver.query(CameraCommonProviderConstants.CAPTURINGMODE_CONTENT_URI, PROTECTION, stringBuffer.toString(), null, "sort_order ASC");
+        Cursor cursorQuery = this.mResolver.query(CameraCommonProviderConstants.CAPTURINGMODE_CONTENT_URI, PROTECTION, stringBuffer.toString(), null, SORT_ASC);
         if (cursorQuery != null) {
-            while (cursorQuery.moveToNext()) {
-                try {
+            try {
+                while (cursorQuery.moveToNext()) {
                     arrayList.add(convert(cursorQuery));
-                } finally {
-                    cursorQuery.close();
                 }
+            } finally {
+                cursorQuery.close();
             }
         } else if (CamLog.VERBOSE) {
             CamLog.w("Fail to retrieve the capturing mode list from CameraCommonProvider.");
@@ -119,7 +285,7 @@ public class CapturingModeCollection {
             return;
         }
         try {
-            this.mResolver.applyBatch("com.sonymobile.camerauicommon.provider", arrayList);
+            this.mResolver.applyBatch(CameraCommonProviderConstants.AUTHORITY, arrayList);
         } catch (OperationApplicationException e) {
             CamLog.e("Failed to unregister modes. Message : " + e.getMessage());
         } catch (RemoteException e2) {
@@ -141,7 +307,7 @@ public class CapturingModeCollection {
             }
         }
         try {
-            this.mResolver.applyBatch("com.sonymobile.camerauicommon.provider", arrayList);
+            this.mResolver.applyBatch(CameraCommonProviderConstants.AUTHORITY, arrayList);
         } catch (OperationApplicationException e) {
             CamLog.e("Failed to save mode order. Message : " + e.getMessage());
         } catch (RemoteException e2) {
@@ -153,7 +319,7 @@ public class CapturingModeCollection {
 
     public static void register(ContentResolver contentResolver, List<CapturingModeAttributes> list, PackageManager packageManager) {
         CapturingModeCollection capturingModeCollection = new CapturingModeCollection(contentResolver);
-        List<CapturingModeAttributes> capturingModeList = capturingModeCollection.getCapturingModeList(new CapturingModeAttributes$InternalCaptureType[0], new CapturingModeAttributes$VisibilityType[0]);
+        List<CapturingModeAttributes> capturingModeList = capturingModeCollection.getCapturingModeList(new CapturingModeAttributes.InternalCaptureType[0], new CapturingModeAttributes.VisibilityType[0]);
         list.removeAll(findIllegalCapturingMode(packageManager, list));
         List<CapturingModeAttributes> listFindIllegalCapturingMode = findIllegalCapturingMode(packageManager, capturingModeList);
         capturingModeList.removeAll(listFindIllegalCapturingMode);
@@ -225,7 +391,7 @@ public class CapturingModeCollection {
         Resources resourcesForApplication;
         try {
             resourcesForApplication = packageManager.getResourcesForApplication(capturingModeAttributes.getPackageName());
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             resourcesForApplication = null;
         }
         if (resourcesForApplication == null) {

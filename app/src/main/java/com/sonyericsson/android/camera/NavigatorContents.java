@@ -1,11 +1,25 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera;
 
 import android.content.Context;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 
 public enum NavigatorContents {
-    SUPERIOR_AUTO(2131230936, 2131230937, 2131689668),
-    VIDEO(2131230938, 2131230939, 2131689631);
+    SUPERIOR_AUTO(R.drawable.cam_core_application_navigator_superior_auto_icn, R.drawable.cam_core_application_navigator_superior_auto_large_icn, R.string.cam_strings_capturing_mode_auto_txt),
+    VIDEO(R.drawable.cam_core_application_navigator_video_icn, R.drawable.cam_core_application_navigator_video_large_icn, R.string.cam_strings_application_name_video_txt);
 
     private final int mIconId;
     private final int mLargeIconId;
@@ -76,6 +90,13 @@ public enum NavigatorContents {
 
     public static NavigatorContents valueOf(CapturingMode capturingMode) {
         switch (capturingMode) {
+            case SCENE_RECOGNITION:
+            case SUPERIOR_FRONT:
+                return SUPERIOR_AUTO;
+            case SLOW_MOTION:
+            case VIDEO:
+            case FRONT_VIDEO:
+                return VIDEO;
         }
         return SUPERIOR_AUTO;
     }

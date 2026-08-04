@@ -8,25 +8,52 @@ import java.io.File;
 public class FontUtil {
     public static final String TAG = "FontUtil";
 
-    public static Typeface createTypeface(FontUtil$RobotoFontType fontUtil$RobotoFontType) {
-        if (fontUtil$RobotoFontType == null || !new File(FontUtil$RobotoFontType.access$000(fontUtil$RobotoFontType)).exists()) {
-            return null;
+    public enum RobotoFontType {
+        THIN("/system/fonts/Roboto-Thin.ttf"),
+        THIN_ITALIC("/system/fonts/Roboto-ThinItalic.ttf"),
+        LIGHT("/system/fonts/Roboto-Light.ttf"),
+        LIGHT_ITALIC("/system/fonts/Roboto-LightItalic.ttf"),
+        REGULAR("/system/fonts/Roboto-Regular.ttf"),
+        REGULAR_ITALIC("/system/fonts/Roboto-Italic.ttf"),
+        MEDIUM("/system/fonts/Roboto-Medium.ttf"),
+        MEDIUM_ITALIC("/system/fonts/Roboto-MediumItalic.ttf"),
+        BLACK("/system/fonts/Roboto-Black.ttf"),
+        BLACK_ITALIC("/system/fonts/Roboto-BlackItalic.ttf"),
+        BOLD("/system/fonts/Roboto-Bold.ttf"),
+        BOLD_ITALIC("/system/fonts/Roboto-BoldItalic.ttf"),
+        CONDENSED_LIGHT("/system/fonts/RobotoCondensed-Light.ttf"),
+        CONDENSED_LIGHT_ITALIC("/system/fonts/RobotoCondensed-LightItalic.ttf"),
+        CONDENSED("/system/fonts/RobotoCondensed-Regular.ttf"),
+        CONDENSED_ITALIC("/system/fonts/RobotoCondensed-Italic.ttf"),
+        CONDENSED_BOLD("/system/fonts/RobotoCondensed-Bold.ttf"),
+        CONDENSED_BOLD_ITALIC("/system/fonts/RobotoCondensed-BoldItalic.ttf");
+
+        private final String mPath;
+
+        RobotoFontType(String str) {
+            this.mPath = str;
         }
-        return Typeface.createFromFile(FontUtil$RobotoFontType.access$000(fontUtil$RobotoFontType));
     }
 
-    public static boolean setRobotoFont(TextView textView, FontUtil$RobotoFontType fontUtil$RobotoFontType) {
+    public static Typeface createTypeface(RobotoFontType robotoFontType) {
+        if (robotoFontType == null || !new File(robotoFontType.mPath).exists()) {
+            return null;
+        }
+        return Typeface.createFromFile(robotoFontType.mPath);
+    }
+
+    public static boolean setRobotoFont(TextView textView, RobotoFontType robotoFontType) {
         Typeface typefaceCreateTypeface;
-        if (textView == null || fontUtil$RobotoFontType == null || (typefaceCreateTypeface = createTypeface(fontUtil$RobotoFontType)) == null) {
+        if (textView == null || robotoFontType == null || (typefaceCreateTypeface = createTypeface(robotoFontType)) == null) {
             return false;
         }
         textView.setTypeface(typefaceCreateTypeface);
         return true;
     }
 
-    public static boolean setRobotoFont(Button button, FontUtil$RobotoFontType fontUtil$RobotoFontType) {
+    public static boolean setRobotoFont(Button button, RobotoFontType robotoFontType) {
         Typeface typefaceCreateTypeface;
-        if (button == null || fontUtil$RobotoFontType == null || (typefaceCreateTypeface = createTypeface(fontUtil$RobotoFontType)) == null) {
+        if (button == null || robotoFontType == null || (typefaceCreateTypeface = createTypeface(robotoFontType)) == null) {
             return false;
         }
         button.setTypeface(typefaceCreateTypeface);

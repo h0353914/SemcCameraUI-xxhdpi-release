@@ -1,6 +1,7 @@
 package com.sonyericsson.android.camera.gestureshutter;
 
 import android.util.Log;
+import com.sonyericsson.android.camera.gestureshutter.HandSignsDetector;
 import java.nio.ByteBuffer;
 
 public class HandSignsNativeWrapper {
@@ -9,9 +10,9 @@ public class HandSignsNativeWrapper {
 
     private native long nativeCreate();
 
-    private native boolean nativeDetect(long j, int i, int i2, ByteBuffer byteBuffer, int i3, HandSignsDetector$DetectResult handSignsDetector$DetectResult);
+    private native boolean nativeDetect(long j, int i, int i2, ByteBuffer byteBuffer, int i3, HandSignsDetector.DetectResult detectResult);
 
-    private native boolean nativeDetect(long j, int i, int i2, byte[] bArr, int i3, HandSignsDetector$DetectResult handSignsDetector$DetectResult);
+    private native boolean nativeDetect(long j, int i, int i2, byte[] bArr, int i3, HandSignsDetector.DetectResult detectResult);
 
     private native void nativeRelease(long j);
 
@@ -21,7 +22,7 @@ public class HandSignsNativeWrapper {
         try {
             System.loadLibrary("handsigns_jni");
         } catch (UnsatisfiedLinkError unused) {
-            Log.i("HandSignsNativeWrapper", "GestureShutter is not supported.");
+            Log.i(TAG, "GestureShutter is not supported.");
         }
     }
 
@@ -35,18 +36,18 @@ public class HandSignsNativeWrapper {
         }
     }
 
-    public synchronized boolean detect(int i, int i2, byte[] bArr, int i3, HandSignsDetector$DetectResult handSignsDetector$DetectResult) {
+    public synchronized boolean detect(int i, int i2, byte[] bArr, int i3, HandSignsDetector.DetectResult detectResult) {
         if (this.mNativeHandle == 0) {
             return false;
         }
-        return nativeDetect(this.mNativeHandle, i, i2, bArr, i3, handSignsDetector$DetectResult);
+        return nativeDetect(this.mNativeHandle, i, i2, bArr, i3, detectResult);
     }
 
-    public synchronized boolean detect(int i, int i2, ByteBuffer byteBuffer, int i3, HandSignsDetector$DetectResult handSignsDetector$DetectResult) {
+    public synchronized boolean detect(int i, int i2, ByteBuffer byteBuffer, int i3, HandSignsDetector.DetectResult detectResult) {
         if (this.mNativeHandle == 0) {
             return false;
         }
-        return nativeDetect(this.mNativeHandle, i, i2, byteBuffer, i3, handSignsDetector$DetectResult);
+        return nativeDetect(this.mNativeHandle, i, i2, byteBuffer, i3, detectResult);
     }
 
     public synchronized void release() {
@@ -56,8 +57,21 @@ public class HandSignsNativeWrapper {
         }
     }
 
-    public static final void shrinkYvu420Sp(byte[] bArr, int i, int i2, byte[] bArr2, HandSignsNativeWrapper$ShrinkRatio handSignsNativeWrapper$ShrinkRatio) {
-        int iNativeShrinkByteArrayYvu420Sp = nativeShrinkByteArrayYvu420Sp(bArr, i, i2, bArr2, handSignsNativeWrapper$ShrinkRatio.shrinkSize);
+    public enum ShrinkRatio {
+        ONE(1),
+        HALF(2),
+        QUARTER(4),
+        ONE_EIGHTH(8);
+
+        public final int shrinkSize;
+
+        ShrinkRatio(int i) {
+            this.shrinkSize = i;
+        }
+    }
+
+    public static final void shrinkYvu420Sp(byte[] bArr, int i, int i2, byte[] bArr2, ShrinkRatio shrinkRatio) {
+        int iNativeShrinkByteArrayYvu420Sp = nativeShrinkByteArrayYvu420Sp(bArr, i, i2, bArr2, shrinkRatio.shrinkSize);
         if (iNativeShrinkByteArrayYvu420Sp != 0) {
             throw new RuntimeException("Error Code Returned : " + iNativeShrinkByteArrayYvu420Sp);
         }

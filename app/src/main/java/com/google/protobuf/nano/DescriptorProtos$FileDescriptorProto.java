@@ -16,12 +16,6 @@ public final class DescriptorProtos$FileDescriptorProto extends ExtendableMessag
     public DescriptorProtos$SourceCodeInfo sourceCodeInfo;
     public String syntax;
     public int[] weakDependency;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$FileDescriptorProto[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {
@@ -396,7 +390,6 @@ public final class DescriptorProtos$FileDescriptorProto extends ExtendableMessag
                     if (!super.storeUnknownField(input, tag)) {
                         return this;
                     }
-                    break;
                     break;
             }
         }

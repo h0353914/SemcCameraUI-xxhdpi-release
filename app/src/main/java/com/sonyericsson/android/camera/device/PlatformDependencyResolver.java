@@ -4,11 +4,14 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.util.Size;
 import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import com.sonyericsson.android.camera.util.capability.ResolutionDependence;
+import com.sonyericsson.android.camera.util.capability.SharedPrefsTranslator;
 import com.sonyericsson.android.camera.util.capability.VideoConfiguration;
 import com.sonyericsson.cameracommon.device.CommonPlatformDependencyResolver;
+import com.sonyericsson.cameracommon.device.SizeConstants;
 import java.util.List;
 
 public class PlatformDependencyResolver extends CommonPlatformDependencyResolver {
@@ -34,10 +37,10 @@ public class PlatformDependencyResolver extends CommonPlatformDependencyResolver
         return iWidth;
     }
 
-    public static VideoSize getDefaultVideoSize(CameraInfo$CameraId cameraInfo$CameraId) {
+    public static VideoSize getDefaultVideoSize(CameraInfo.CameraId cameraId) {
         boolean z;
         boolean z2;
-        List<VideoConfiguration> supportedVideoConfiguration = PlatformCapability.getSupportedVideoConfiguration(cameraInfo$CameraId);
+        List<VideoConfiguration> supportedVideoConfiguration = PlatformCapability.getSupportedVideoConfiguration(cameraId);
         boolean z3 = false;
         if (supportedVideoConfiguration != null) {
             z = false;
@@ -69,11 +72,11 @@ public class PlatformDependencyResolver extends CommonPlatformDependencyResolver
         return null;
     }
 
-    public static String getDefaultFocusModeForFastCapturePhoto(CameraParameters cameraParameters, CameraInfo$CameraId cameraInfo$CameraId) {
-        List<String> supportedFocusModes = PlatformCapability.getSupportedFocusModes(cameraInfo$CameraId);
+    public static String getDefaultFocusModeForFastCapturePhoto(CameraParameters cameraParameters, CameraInfo.CameraId cameraId) {
+        List<String> supportedFocusModes = PlatformCapability.getSupportedFocusModes(cameraId);
         if (supportedFocusModes != null) {
-            if (supportedFocusModes.contains("continuous-picture")) {
-                return "continuous-picture";
+            if (supportedFocusModes.contains(CameraParameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
+                return CameraParameters.FOCUS_MODE_CONTINUOUS_PICTURE;
             }
             if (supportedFocusModes.contains("auto")) {
                 return "auto";
@@ -82,26 +85,32 @@ public class PlatformDependencyResolver extends CommonPlatformDependencyResolver
         return cameraParameters.getFocusMode();
     }
 
-    public static Rect getOptimalPreviewSize(CameraInfo$CameraId cameraInfo$CameraId, int i, Rect rect) {
+    public static Rect getOptimalPreviewSize(CameraInfo.CameraId cameraId, int i, Rect rect) {
         if (CamLog.VERBOSE) {
             CamLog.d("E: Base rect(" + rect.width() + " x " + rect.height() + ")");
         }
-        List<Rect> supportedPreviewSizes = PlatformCapability.getSupportedPreviewSizes(cameraInfo$CameraId);
+        List<Rect> supportedPreviewSizes = PlatformCapability.getSupportedPreviewSizes(cameraId);
         if (i == 2) {
-            Rect preferredPreviewSizeForVideo = PlatformCapability.getPreferredPreviewSizeForVideo(cameraInfo$CameraId);
+            Rect preferredPreviewSizeForVideo = PlatformCapability.getPreferredPreviewSizeForVideo(cameraId);
             if (preferredPreviewSizeForVideo.width() == 0 || preferredPreviewSizeForVideo.height() == 0) {
                 preferredPreviewSizeForVideo = getPreferredPreviewSizeFromCaptureSize(rect);
                 CamLog.w("preferredPreviewSize is invalid. Get preferredPreviewSize from videoSize: " + preferredPreviewSizeForVideo);
             }
+            if (supportedPreviewSizes == null || supportedPreviewSizes.isEmpty()) {
+                return preferredPreviewSizeForVideo;
+            }
             return getOptimalVideoPreviewRect(rect, preferredPreviewSizeForVideo, supportedPreviewSizes);
         }
-        Rect preferredPreviewSizeForStill = PlatformCapability.getPreferredPreviewSizeForStill(cameraInfo$CameraId);
+        Rect preferredPreviewSizeForStill = PlatformCapability.getPreferredPreviewSizeForStill(cameraId);
         if (preferredPreviewSizeForStill == null) {
-            preferredPreviewSizeForStill = PlatformCapability.getPreferredPreviewSizeForVideo(cameraInfo$CameraId);
+            preferredPreviewSizeForStill = PlatformCapability.getPreferredPreviewSizeForVideo(cameraId);
         }
         if (preferredPreviewSizeForStill.width() == 0 || preferredPreviewSizeForStill.height() == 0) {
             preferredPreviewSizeForStill = getPreferredPreviewSizeFromCaptureSize(rect);
             CamLog.w("preferredPreviewSize is invalid. Get preferredPreviewSize from captureSize: " + preferredPreviewSizeForStill);
+        }
+        if (supportedPreviewSizes == null || supportedPreviewSizes.isEmpty()) {
+            return preferredPreviewSizeForStill;
         }
         return getOptimalStillPreviewRect(rect, preferredPreviewSizeForStill, supportedPreviewSizes);
     }
@@ -110,20 +119,20 @@ public class PlatformDependencyResolver extends CommonPlatformDependencyResolver
         if (checkAspectRatio(rect, 16, 9)) {
             if (z) {
                 CamLog.d("getSurfaceSize: video HDR enable, return 1080");
-                return new Size(1920, 1080);
+                return new Size(SizeConstants.WIDTH_PREVIEW_FULL_HD, SizeConstants.HEIGHT_PREVIEW_FULL_HD);
             }
-            return new Size(1280, 720);
+            return new Size(SizeConstants.WIDTH_PREVIEW_HD, SizeConstants.HEIGHT_PREVIEW_HD);
         }
         if (checkAspectRatio(rect, 4, 3)) {
-            return new Size(960, 720);
+            return new Size(960, SizeConstants.HEIGHT_PREVIEW_HD);
         }
         if (checkAspectRatio(rect, 1, 1)) {
-            return new Size(720, 720);
+            return new Size(SizeConstants.HEIGHT_PREVIEW_HD, SizeConstants.HEIGHT_PREVIEW_HD);
         }
         if (checkAspectRatio(rect, 11, 9)) {
             return new Size(176, 144);
         }
-        throw new RuntimeException("The specified preview size is not supported. (" + rect.width() + "x" + rect.height() + ")");
+        throw new RuntimeException("The specified preview size is not supported. (" + rect.width() + SharedPrefsTranslator.CONNECTOR_CROSS + rect.height() + ")");
     }
 
     private static boolean checkAspectRatio(Rect rect, int i, int i2) {

@@ -9,13 +9,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout$LayoutParams;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue;
 import com.sonyericsson.android.camera.configuration.parameters.WhiteBalance;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.CoordinateUtil;
-import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver$ScreenAspect;
+import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
 import com.sonyericsson.android.camera.view.overlaycontrol.EnumValueAccessor;
 import com.sonyericsson.android.camera.view.setting.SettingUi;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter;
@@ -24,22 +24,17 @@ import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Map$Entry;
 
 public class ImageQualityControlView extends SettingDialog {
     private SettingAdapter mAdapter;
     private final Context mContext;
-    private ImageQualityControlView$OnImageQualityControlDialogTabSelectListener mListener;
+    private OnImageQualityControlDialogTabSelectListener mListener;
     private View mResetButton;
     private LinearLayout mTabContainer;
     private LinearLayout mWidgetContainer;
 
-    static /* synthetic */ ImageQualityControlView$OnImageQualityControlDialogTabSelectListener access$000(ImageQualityControlView imageQualityControlView) {
-        return imageQualityControlView.mListener;
-    }
-
-    static /* synthetic */ void access$100(ImageQualityControlView imageQualityControlView) {
-        imageQualityControlView.onResetButtonClicked();
+    public interface OnImageQualityControlDialogTabSelectListener {
+        void onSelect(UserSettingKey userSettingKey);
     }
 
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingDialog, com.sonyericsson.android.camera.view.setting.dialog.SettingDialogInterface
@@ -72,9 +67,9 @@ public class ImageQualityControlView extends SettingDialog {
         super.setLayoutCoordinator(layoutCoordinator);
     }
 
-    public static ImageQualityControlView create(ViewGroup viewGroup, Rect rect, LayoutDependencyResolver$ScreenAspect layoutDependencyResolver$ScreenAspect) {
-        ImageQualityControlView imageQualityControlView = (ImageQualityControlView) ((LayoutInflater) viewGroup.getContext().getSystemService("layout_inflater")).inflate(2131492998, (ViewGroup) null);
-        imageQualityControlView.setLayoutCoordinator(new ControlLayoutCoordinator(imageQualityControlView, new Rect(0, 0, rect.height(), rect.width()), layoutDependencyResolver$ScreenAspect));
+    public static ImageQualityControlView create(ViewGroup viewGroup, Rect rect, LayoutDependencyResolver.ScreenAspect screenAspect) {
+        ImageQualityControlView imageQualityControlView = (ImageQualityControlView) ((LayoutInflater) viewGroup.getContext().getSystemService("layout_inflater")).inflate(R.layout.setting_dialog_image_quality_control, (ViewGroup) null);
+        imageQualityControlView.setLayoutCoordinator(new ControlLayoutCoordinator(imageQualityControlView, new Rect(0, 0, rect.height(), rect.width()), screenAspect));
         viewGroup.addView(imageQualityControlView);
         imageQualityControlView.setVisibility(4);
         return imageQualityControlView;
@@ -89,8 +84,8 @@ public class ImageQualityControlView extends SettingDialog {
     protected void onFinishInflate() {
         super.onFinishInflate();
         setWillNotDraw(false);
-        this.mTabContainer = (LinearLayout) findViewById(2131296644);
-        this.mWidgetContainer = (LinearLayout) findViewById(2131296697);
+        this.mTabContainer = (LinearLayout) findViewById(R.id.tab_container);
+        this.mWidgetContainer = (LinearLayout) findViewById(R.id.widget_container);
     }
 
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingDialog, com.sonyericsson.android.camera.view.setting.dialog.SettingDialogInterface
@@ -118,38 +113,48 @@ public class ImageQualityControlView extends SettingDialog {
         this.mAdapter = settingAdapter;
         this.mTabContainer.removeAllViews();
         this.mWidgetContainer.removeAllViews();
-        LinearLayout$LayoutParams linearLayout$LayoutParams = new LinearLayout$LayoutParams(-2, -2);
-        linearLayout$LayoutParams.gravity = 17;
-        linearLayout$LayoutParams.width = getDimensionPixelSize(2131165381);
-        linearLayout$LayoutParams.height = getDimensionPixelSize(2131165380);
-        LinearLayout$LayoutParams linearLayout$LayoutParams2 = new LinearLayout$LayoutParams(-2, -2);
-        linearLayout$LayoutParams2.gravity = 17;
-        linearLayout$LayoutParams2.width = getDimensionPixelSize(2131165386);
-        linearLayout$LayoutParams2.height = getDimensionPixelSize(2131165385);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-2, -2);
+        layoutParams.gravity = 17;
+        layoutParams.width = getDimensionPixelSize(R.dimen.image_quality_control_tab_width);
+        layoutParams.height = getDimensionPixelSize(R.dimen.image_quality_control_tab_height);
+        LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(-2, -2);
+        layoutParams2.gravity = 17;
+        layoutParams2.width = getDimensionPixelSize(R.dimen.image_quality_control_widget_width);
+        layoutParams2.height = getDimensionPixelSize(R.dimen.image_quality_control_widget_height);
         if (getResources().getDisplayMetrics().densityDpi > DisplayMetrics.DENSITY_DEVICE_STABLE) {
             float f = (DisplayMetrics.DENSITY_DEVICE_STABLE * 1.0f) / 160.0f;
-            linearLayout$LayoutParams.height = (int) (CoordinateUtil.convertPx2Dip(this.mContext, linearLayout$LayoutParams.height) * f);
-            linearLayout$LayoutParams2.width = (int) (CoordinateUtil.convertPx2Dip(this.mContext, linearLayout$LayoutParams2.width) * f);
-            linearLayout$LayoutParams2.height = (int) (CoordinateUtil.convertPx2Dip(this.mContext, linearLayout$LayoutParams2.height) * f);
+            layoutParams.height = (int) (CoordinateUtil.convertPx2Dip(this.mContext, layoutParams.height) * f);
+            layoutParams2.width = (int) (CoordinateUtil.convertPx2Dip(this.mContext, layoutParams2.width) * f);
+            layoutParams2.height = (int) (CoordinateUtil.convertPx2Dip(this.mContext, layoutParams2.height) * f);
         }
         LayoutInflater layoutInflaterFrom = LayoutInflater.from(this.mContext);
         for (int i = 0; i < this.mAdapter.getCount(); i++) {
             UserSettingKey userSettingKey = (UserSettingKey) ((TypedSettingItem) this.mAdapter.getItem(i)).getData();
-            View viewInflate = layoutInflaterFrom.inflate(2131493009, (ViewGroup) null);
+            View viewInflate = layoutInflaterFrom.inflate(R.layout.setting_tab_image_quality_control, (ViewGroup) null);
             viewInflate.setClickable(true);
             viewInflate.setTag(userSettingKey);
-            viewInflate.setOnClickListener(new ImageQualityControlView$1(this));
-            viewInflate.setBackgroundResource(2131231558);
+            viewInflate.setOnClickListener(new View.OnClickListener() { // from class: com.sonyericsson.android.camera.view.overlaycontrol.imagequality.ImageQualityControlView.1
+                @Override // android.view.View.OnClickListener
+                public void onClick(View view) {
+                    ImageQualityControlView.this.mListener.onSelect((UserSettingKey) view.getTag());
+                }
+            });
+            viewInflate.setBackgroundResource(R.drawable.setting_tab_selector);
             setTabIcon((ImageQualityControlTab) viewInflate, userSettingKey);
-            this.mTabContainer.addView(viewInflate, i, linearLayout$LayoutParams);
+            this.mTabContainer.addView(viewInflate, i, layoutParams);
             View view = this.mAdapter.getView(i, null, this.mWidgetContainer);
             view.setVisibility(8);
-            this.mWidgetContainer.addView(view, linearLayout$LayoutParams2);
+            this.mWidgetContainer.addView(view, layoutParams2);
         }
-        this.mResetButton = layoutInflaterFrom.inflate(2131493008, (ViewGroup) null);
+        this.mResetButton = layoutInflaterFrom.inflate(R.layout.setting_reset_button_image_quality_control, (ViewGroup) null);
         this.mResetButton.setClickable(true);
-        this.mResetButton.setOnClickListener(new ImageQualityControlView$2(this));
-        this.mTabContainer.addView(this.mResetButton, linearLayout$LayoutParams);
+        this.mResetButton.setOnClickListener(new View.OnClickListener() { // from class: com.sonyericsson.android.camera.view.overlaycontrol.imagequality.ImageQualityControlView.2
+            @Override // android.view.View.OnClickListener
+            public void onClick(View view2) {
+                ImageQualityControlView.this.onResetButtonClicked();
+            }
+        });
+        this.mTabContainer.addView(this.mResetButton, layoutParams);
     }
 
     private void setTabIcon(ImageQualityControlTab imageQualityControlTab, UserSettingKey userSettingKey) {
@@ -159,15 +164,15 @@ public class ImageQualityControlView extends SettingDialog {
     private int getImageQualityControlTabIcon(UserSettingKey userSettingKey) {
         switch (userSettingKey) {
             case WHITE_BALANCE:
-                return 2131231081;
+                return R.drawable.cam_core_image_quality_control_tab_white_balance_icn;
             case ISO:
-                return 2131231079;
+                return R.drawable.cam_core_image_quality_control_tab_iso_icn;
             case EV:
-                return 2131231077;
+                return R.drawable.cam_core_image_quality_control_tab_exposure_value_icn;
             case SHUTTER_SPEED:
-                return 2131231080;
+                return R.drawable.cam_core_image_quality_control_tab_shutter_speed_icn;
             case FOCUS_RANGE:
-                return 2131231078;
+                return R.drawable.cam_core_image_quality_control_tab_focus_icn;
             default:
                 throw new IllegalArgumentException("Undefined title for " + userSettingKey);
         }
@@ -194,7 +199,7 @@ public class ImageQualityControlView extends SettingDialog {
     }
 
     private boolean isUpdateAdapterNeeded(Map<UserSettingKey, EnumValueAccessor<? extends UserSettingValue>> map) {
-        Iterator<Map$Entry<UserSettingKey, EnumValueAccessor<? extends UserSettingValue>>> it = map.entrySet().iterator();
+        Iterator<Map.Entry<UserSettingKey, EnumValueAccessor<? extends UserSettingValue>>> it = map.entrySet().iterator();
         int i = 0;
         while (it.hasNext()) {
             if (it.next().getKey().isSelectable()) {
@@ -264,7 +269,8 @@ public class ImageQualityControlView extends SettingDialog {
                 View childAt2 = this.mWidgetContainer.getChildAt(i);
                 Object tag = childAt2.getTag();
                 if (tag instanceof SettingDialogItem) {
-                    for (SettingItem settingItem : typedSettingItem.getChildren()) {
+                    for (Object child : typedSettingItem.getChildren()) {
+                        SettingItem settingItem = (SettingItem) child;
                         if (settingItem.compareData(userSettingValue)) {
                             settingItem.setSelected(true);
                         } else {
@@ -290,10 +296,11 @@ public class ImageQualityControlView extends SettingDialog {
         return this.mContext.getResources().getDimensionPixelSize(i);
     }
 
-    public void setOnImageQualityControlDialogTabSelectListener(ImageQualityControlView$OnImageQualityControlDialogTabSelectListener imageQualityControlView$OnImageQualityControlDialogTabSelectListener) {
-        this.mListener = imageQualityControlView$OnImageQualityControlDialogTabSelectListener;
+    public void setOnImageQualityControlDialogTabSelectListener(OnImageQualityControlDialogTabSelectListener onImageQualityControlDialogTabSelectListener) {
+        this.mListener = onImageQualityControlDialogTabSelectListener;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void onResetButtonClicked() {
         for (int i = 0; i < this.mWidgetContainer.getChildCount(); i++) {
             Object tag = this.mWidgetContainer.getChildAt(i).getTag();

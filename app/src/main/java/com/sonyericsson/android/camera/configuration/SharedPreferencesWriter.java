@@ -1,14 +1,12 @@
 package com.sonyericsson.android.camera.configuration;
 
 import android.content.SharedPreferences;
-import android.content.SharedPreferences$Editor;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.Map;
-import java.util.Map$Entry;
 
 public class SharedPreferencesWriter {
     public static final String TAG = "SharedPreferencesWriter";
-    private SharedPreferences$Editor mPreferencesEditor;
+    private SharedPreferences.Editor mPreferencesEditor;
     private final SharedPreferences mPrefs;
 
     public SharedPreferencesWriter(SharedPreferences sharedPreferences) {
@@ -19,8 +17,8 @@ public class SharedPreferencesWriter {
     }
 
     public void writeString(Map<String, String> map, String str) {
-        for (Map$Entry<String, String> map$Entry : map.entrySet()) {
-            writeString(str + map$Entry.getKey(), map$Entry.getValue());
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            writeString(str + entry.getKey(), entry.getValue());
         }
     }
 
@@ -31,7 +29,7 @@ public class SharedPreferencesWriter {
         getEditor().putString(str, str2);
     }
 
-    private SharedPreferences$Editor getEditor() {
+    private SharedPreferences.Editor getEditor() {
         if (this.mPreferencesEditor == null) {
             this.mPreferencesEditor = this.mPrefs.edit();
         }

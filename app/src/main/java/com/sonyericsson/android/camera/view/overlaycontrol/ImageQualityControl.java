@@ -1,7 +1,58 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.view.overlaycontrol;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.view.View;
 import android.view.ViewGroup;
 import com.sonyericsson.android.camera.CameraActivity;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
@@ -14,14 +65,16 @@ import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue
 import com.sonyericsson.android.camera.configuration.parameters.WhiteBalance;
 import com.sonyericsson.android.camera.setting.UiControlSettings;
 import com.sonyericsson.android.camera.util.CamLog;
-import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver$ScreenAspect;
+import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
+import com.sonyericsson.android.camera.view.overlaycontrol.OverlayControl;
 import com.sonyericsson.android.camera.view.overlaycontrol.imagequality.ImageQualityControlView;
 import com.sonyericsson.android.camera.view.overlaycontrol.imagequality.ImageQualityWidgetFactory;
 import com.sonyericsson.android.camera.view.overlaycontrol.imagequality.OnSlideListener;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter;
+import com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInterface;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
-import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem$Selectability;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItemBuilder;
+import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -40,42 +93,61 @@ public class ImageQualityControl extends OverlayControl {
     private final UiControlSettings mUiSettings;
     private final Map<UserSettingKey, EnumValueAccessor<? extends UserSettingValue>> mValueAccessor;
     private ImageQualityControlView mView;
-    private final ImageQualityControl$ViewFactory mViewFactory;
+    private final ViewFactory mViewFactory;
 
-    static /* synthetic */ boolean access$000(ImageQualityControl imageQualityControl) {
-        return imageQualityControl.mIsSliderPressed;
+    private class ViewFactory {
+        private static final String VIEW_TAG = "Imagequalitycontrol-view";
+        private final Rect mContainerRect;
+        private final ViewGroup mParent;
+        private final LayoutDependencyResolver.ScreenAspect mScreenAspect;
+
+        public ViewFactory(ViewGroup viewGroup, Rect rect, LayoutDependencyResolver.ScreenAspect screenAspect) {
+            this.mParent = viewGroup;
+            this.mContainerRect = rect;
+            this.mScreenAspect = screenAspect;
+        }
+
+        public ImageQualityControlView create() {
+            View viewFindViewWithTag = this.mParent.findViewWithTag(VIEW_TAG);
+            if (viewFindViewWithTag != null) {
+                if (ImageQualityControl.this.mIsSliderPressed) {
+                    ImageQualityControl.this.mOnSlideListener.onSlideStopped();
+                }
+                this.mParent.removeView(viewFindViewWithTag);
+            }
+            ImageQualityControlView imageQualityControlViewCreate = ImageQualityControlView.create(this.mParent, this.mContainerRect, this.mScreenAspect);
+            imageQualityControlViewCreate.setTag(VIEW_TAG);
+            imageQualityControlViewCreate.setAdapter(ImageQualityControl.this.createAdapter(this.mParent.getContext()));
+            imageQualityControlViewCreate.setOnImageQualityControlDialogTabSelectListener(new ImageQualityControlView.OnImageQualityControlDialogTabSelectListener() { // from class: com.sonyericsson.android.camera.view.overlaycontrol.ImageQualityControl.ViewFactory.1
+                @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.ImageQualityControlView.OnImageQualityControlDialogTabSelectListener
+                public void onSelect(UserSettingKey userSettingKey) {
+                    if (ImageQualityControl.this.mIsSliderPressed) {
+                        return;
+                    }
+                    ImageQualityControl.this.update(userSettingKey);
+                }
+            });
+            return imageQualityControlViewCreate;
+        }
     }
 
-    static /* synthetic */ boolean access$002(ImageQualityControl imageQualityControl, boolean z) {
-        imageQualityControl.mIsSliderPressed = z;
-        return z;
-    }
-
-    static /* synthetic */ OnSlideListener access$100(ImageQualityControl imageQualityControl) {
-        return imageQualityControl.mOnSlideListener;
-    }
-
-    static /* synthetic */ SettingAdapter access$200(ImageQualityControl imageQualityControl, Context context) {
-        return imageQualityControl.createAdapter(context);
-    }
-
-    static /* synthetic */ void access$300(ImageQualityControl imageQualityControl, UserSettingKey userSettingKey) {
-        imageQualityControl.update(userSettingKey);
-    }
-
-    static /* synthetic */ void access$400(ImageQualityControl imageQualityControl, UserSettingValue userSettingValue) {
-        imageQualityControl.applyValue(userSettingValue);
-    }
-
-    static /* synthetic */ UserSettingKey access$500(ImageQualityControl imageQualityControl) {
-        return imageQualityControl.mSelectedTab;
-    }
-
-    public ImageQualityControl(ViewGroup viewGroup, UiControlSettings uiControlSettings, Rect rect, LayoutDependencyResolver$ScreenAspect layoutDependencyResolver$ScreenAspect, OverlayControl$StateListener overlayControl$StateListener, EnumValueAccessor<CapturingMode> enumValueAccessor, EnumValueAccessor<FocusRange> enumValueAccessor2, EnumValueAccessor<ShutterSpeed> enumValueAccessor3, EnumValueAccessor<Iso> enumValueAccessor4, EnumValueAccessor<Ev> enumValueAccessor5, EnumValueAccessor<WhiteBalance> enumValueAccessor6) {
-        super(overlayControl$StateListener);
+    public ImageQualityControl(ViewGroup viewGroup, UiControlSettings uiControlSettings, Rect rect, LayoutDependencyResolver.ScreenAspect screenAspect, OverlayControl.StateListener stateListener, EnumValueAccessor<CapturingMode> enumValueAccessor, EnumValueAccessor<FocusRange> enumValueAccessor2, EnumValueAccessor<ShutterSpeed> enumValueAccessor3, EnumValueAccessor<Iso> enumValueAccessor4, EnumValueAccessor<Ev> enumValueAccessor5, EnumValueAccessor<WhiteBalance> enumValueAccessor6) {
+        super(stateListener);
         this.mValueAccessor = new HashMap();
         this.mIsSliderPressed = false;
-        this.mOnSlideListener = new ImageQualityControl$1(this);
+        this.mOnSlideListener = new OnSlideListener() { // from class: com.sonyericsson.android.camera.view.overlaycontrol.ImageQualityControl.1
+            @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.OnSlideListener
+            public void onSlideStarted() {
+                ImageQualityControl.this.mIsSliderPressed = true;
+                ImageQualityControl.this.notifyValueUpdateStart();
+            }
+
+            @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.OnSlideListener
+            public void onSlideStopped() {
+                ImageQualityControl.this.mIsSliderPressed = false;
+                ImageQualityControl.this.notifyValueUpdateEnd();
+            }
+        };
         this.mOrientation = 2;
         this.mUiSettings = uiControlSettings;
         this.mCapturingMode = enumValueAccessor;
@@ -84,7 +156,7 @@ public class ImageQualityControl extends OverlayControl {
         this.mValueAccessor.put(UserSettingKey.ISO, enumValueAccessor4);
         this.mValueAccessor.put(UserSettingKey.EV, enumValueAccessor5);
         this.mValueAccessor.put(UserSettingKey.WHITE_BALANCE, enumValueAccessor6);
-        this.mViewFactory = new ImageQualityControl$ViewFactory(this, viewGroup, rect, layoutDependencyResolver$ScreenAspect);
+        this.mViewFactory = new ViewFactory(viewGroup, rect, screenAspect);
         this.mView = this.mViewFactory.create();
     }
 
@@ -110,6 +182,7 @@ public class ImageQualityControl extends OverlayControl {
         ((ViewGroup) this.mView.getParent()).removeView(this.mView);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void update(UserSettingKey userSettingKey) {
         this.mSelectedTab = userSettingKey;
         if (!this.mView.update(this.mSelectedTab, this.mValueAccessor)) {
@@ -141,6 +214,7 @@ public class ImageQualityControl extends OverlayControl {
         this.mView.setSensorOrientation(i);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private SettingAdapter createAdapter(Context context) {
         SettingAdapter settingAdapter = new SettingAdapter(context, new ImageQualityWidgetFactory(this.mOnSlideListener, ((CameraActivity) context).getCameraDevice().getCameraId()), false);
         for (UserSettingKey userSettingKey : KEYS) {
@@ -150,7 +224,7 @@ public class ImageQualityControl extends OverlayControl {
                 z = false;
             }
             if (userSettingKey.isSelectable() && z) {
-                SettingItemBuilder settingItemBuilderSelectability = SettingItemBuilder.build(userSettingKey).textId(userSettingKey.getTitleTextId()).additionalTextForAccessibility("").selectability(SettingItem$Selectability.SELECTABLE);
+                SettingItemBuilder settingItemBuilderSelectability = SettingItemBuilder.build(userSettingKey).textId(userSettingKey.getTitleTextId()).additionalTextForAccessibility("").selectability(SettingItem.Selectability.SELECTABLE);
                 Iterator<SettingItem> it = generateValueItems(userSettingKey).iterator();
                 while (it.hasNext()) {
                     settingItemBuilderSelectability.item(it.next());
@@ -161,8 +235,9 @@ public class ImageQualityControl extends OverlayControl {
         return settingAdapter;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void applyValue(UserSettingValue userSettingValue) {
-        this.mValueAccessor.get(userSettingValue.getKey()).set(userSettingValue);
+        ((EnumValueAccessor) this.mValueAccessor.get(userSettingValue.getKey())).set(userSettingValue);
     }
 
     private List<SettingItem> generateValueItems(UserSettingKey userSettingKey) {
@@ -177,11 +252,17 @@ public class ImageQualityControl extends OverlayControl {
             UserSettingValue userSettingValue2 = userSettingValueArr[i];
             if (userSettingValue2 != null) {
                 boolean z = userSettingValue == userSettingValue2;
-                SettingItem$Selectability settingItem$Selectability = SettingItem$Selectability.SELECTABLE;
+                SettingItem.Selectability selectability = SettingItem.Selectability.SELECTABLE;
                 if (!userSettingKey.isSelectable()) {
-                    settingItem$Selectability = SettingItem$Selectability.UNSELECTABLE;
+                    selectability = SettingItem.Selectability.UNSELECTABLE;
                 }
-                arrayList.add(SettingItemBuilder.build(userSettingValue2).iconId(userSettingValue2.getIconId()).textId(userSettingValue2.getTextId()).executor(new ImageQualityControl$2(this)).selected(z).selectability(settingItem$Selectability).commit());
+                arrayList.add(SettingItemBuilder.build(userSettingValue2).iconId(userSettingValue2.getIconId()).textId(userSettingValue2.getTextId()).executor(new SettingExecutorInterface<UserSettingValue>() { // from class: com.sonyericsson.android.camera.view.overlaycontrol.ImageQualityControl.2
+                    @Override // com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInterface
+                    public void onExecute(TypedSettingItem<UserSettingValue> typedSettingItem) {
+                        ImageQualityControl.this.applyValue(typedSettingItem.getData());
+                        ImageQualityControl.this.update(ImageQualityControl.this.mSelectedTab);
+                    }
+                }).selected(z).selectability(selectability).commit());
             }
         }
         return arrayList;

@@ -16,14 +16,15 @@ import org.apache.commons.imaging.FormatCompliance;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.ImageInfo;
-import org.apache.commons.imaging.ImageInfo$ColorType;
-import org.apache.commons.imaging.ImageInfo$CompressionAlgorithm;
 import org.apache.commons.imaging.ImageParser;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
 import org.apache.commons.imaging.common.ImageBuilder;
 import org.apache.commons.imaging.common.ImageMetadata;
 import org.apache.commons.imaging.common.bytesource.ByteSource;
+import org.apache.commons.imaging.formats.tiff.TiffDirectory;
+import org.apache.commons.imaging.formats.tiff.TiffImageMetadata;
+import org.apache.commons.imaging.formats.tiff.constants.TiffConstants;
 import org.apache.commons.imaging.formats.tiff.constants.TiffEpTagConstants;
 import org.apache.commons.imaging.formats.tiff.constants.TiffTagConstants;
 import org.apache.commons.imaging.formats.tiff.datareaders.DataReader;
@@ -39,12 +40,12 @@ import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoByte;
 import org.apache.commons.imaging.formats.tiff.write.TiffImageWriterLossy;
 
 public class TiffImageParser extends ImageParser {
-    private static final String[] ACCEPTED_EXTENSIONS = {".tif", ".tiff"};
     private static final String DEFAULT_EXTENSION = ".tif";
+    private static final String[] ACCEPTED_EXTENSIONS = {DEFAULT_EXTENSION, ".tiff"};
 
     @Override // org.apache.commons.imaging.ImageParser
     public String getDefaultExtension() {
-        return ".tif";
+        return DEFAULT_EXTENSION;
     }
 
     @Override // org.apache.commons.imaging.ImageParser
@@ -86,12 +87,12 @@ public class TiffImageParser extends ImageParser {
         List<TiffDirectory> list = contents.directories;
         TiffImageMetadata tiffImageMetadata = new TiffImageMetadata(contents);
         for (TiffDirectory tiffDirectory : list) {
-            TiffImageMetadata$Directory tiffImageMetadata$Directory = new TiffImageMetadata$Directory(tiffReader.getByteOrder(), tiffDirectory);
+            TiffImageMetadata.Directory directory = new TiffImageMetadata.Directory(tiffReader.getByteOrder(), tiffDirectory);
             Iterator<TiffField> it = tiffDirectory.getDirectoryEntries().iterator();
             while (it.hasNext()) {
-                tiffImageMetadata$Directory.add(it.next());
+                directory.add(it.next());
             }
-            tiffImageMetadata.add(tiffImageMetadata$Directory);
+            tiffImageMetadata.add(directory);
         }
         return tiffImageMetadata;
     }
@@ -102,7 +103,7 @@ public class TiffImageParser extends ImageParser {
         float f;
         int i;
         float f2;
-        ImageInfo$CompressionAlgorithm imageInfo$CompressionAlgorithm;
+        ImageInfo.CompressionAlgorithm compressionAlgorithm;
         int iRound2;
         float f3;
         TiffContents directories = new TiffReader(isStrict(map)).readDirectories(byteSource, false, FormatCompliance.getDefault());
@@ -137,7 +138,7 @@ public class TiffImageParser extends ImageParser {
             } else {
                 double doubleValue = tiffFieldFindField4.getDoubleValue() * d;
                 iRound2 = (int) Math.round(doubleValue);
-                f3 = (float) (((double) intValue2) / doubleValue);
+                f3 = (float) (intValue2 / doubleValue);
             }
             if (tiffFieldFindField5 == null || tiffFieldFindField5.getValue() == null) {
                 i = iRound2;
@@ -147,7 +148,7 @@ public class TiffImageParser extends ImageParser {
             } else {
                 double doubleValue2 = tiffFieldFindField5.getDoubleValue() * d;
                 i = iRound2;
-                f = (float) (((double) intValue) / doubleValue2);
+                f = (float) (intValue / doubleValue2);
                 iRound = (int) Math.round(doubleValue2);
                 f2 = f3;
             }
@@ -168,38 +169,38 @@ public class TiffImageParser extends ImageParser {
         int size = directories.directories.size();
         String str = "Tiff v." + directories.header.tiffVersion;
         boolean z = tiffDirectory.findField(TiffTagConstants.TIFF_TAG_COLOR_MAP) != null;
-        ImageInfo$ColorType imageInfo$ColorType = ImageInfo$ColorType.RGB;
+        ImageInfo.ColorType colorType = ImageInfo.ColorType.RGB;
         int singleFieldValue = 65535 & tiffDirectory.getSingleFieldValue(TiffTagConstants.TIFF_TAG_COMPRESSION);
         if (singleFieldValue == 32771) {
-            imageInfo$CompressionAlgorithm = ImageInfo$CompressionAlgorithm.NONE;
+            compressionAlgorithm = ImageInfo.CompressionAlgorithm.NONE;
         } else if (singleFieldValue != 32773) {
             switch (singleFieldValue) {
                 case 1:
-                    imageInfo$CompressionAlgorithm = ImageInfo$CompressionAlgorithm.NONE;
+                    compressionAlgorithm = ImageInfo.CompressionAlgorithm.NONE;
                     break;
                 case 2:
-                    imageInfo$CompressionAlgorithm = ImageInfo$CompressionAlgorithm.CCITT_1D;
+                    compressionAlgorithm = ImageInfo.CompressionAlgorithm.CCITT_1D;
                     break;
                 case 3:
-                    imageInfo$CompressionAlgorithm = ImageInfo$CompressionAlgorithm.CCITT_GROUP_3;
+                    compressionAlgorithm = ImageInfo.CompressionAlgorithm.CCITT_GROUP_3;
                     break;
                 case 4:
-                    imageInfo$CompressionAlgorithm = ImageInfo$CompressionAlgorithm.CCITT_GROUP_4;
+                    compressionAlgorithm = ImageInfo.CompressionAlgorithm.CCITT_GROUP_4;
                     break;
                 case 5:
-                    imageInfo$CompressionAlgorithm = ImageInfo$CompressionAlgorithm.LZW;
+                    compressionAlgorithm = ImageInfo.CompressionAlgorithm.LZW;
                     break;
                 case 6:
-                    imageInfo$CompressionAlgorithm = ImageInfo$CompressionAlgorithm.JPEG;
+                    compressionAlgorithm = ImageInfo.CompressionAlgorithm.JPEG;
                     break;
                 default:
-                    imageInfo$CompressionAlgorithm = ImageInfo$CompressionAlgorithm.UNKNOWN;
+                    compressionAlgorithm = ImageInfo.CompressionAlgorithm.UNKNOWN;
                     break;
             }
         } else {
-            imageInfo$CompressionAlgorithm = ImageInfo$CompressionAlgorithm.PACKBITS;
+            compressionAlgorithm = ImageInfo.CompressionAlgorithm.PACKBITS;
         }
-        return new ImageInfo(str, intValueOrArraySum, arrayList, imageFormats, "TIFF Tag-based Image File Format", intValue, "image/tiff", size, iRound, f, i, f2, intValue2, false, false, z, imageInfo$ColorType, imageInfo$CompressionAlgorithm);
+        return new ImageInfo(str, intValueOrArraySum, arrayList, imageFormats, "TIFF Tag-based Image File Format", intValue, "image/tiff", size, iRound, f, i, f2, intValue2, false, false, z, colorType, compressionAlgorithm);
     }
 
     @Override // org.apache.commons.imaging.ImageParser
@@ -255,8 +256,8 @@ public class TiffImageParser extends ImageParser {
         TiffContents directories = new TiffReader(isStrict(map)).readDirectories(byteSource, true, FormatCompliance.getDefault());
         ArrayList arrayList = new ArrayList();
         for (int i = 0; i < directories.directories.size(); i++) {
-            for (TiffDirectory$ImageDataElement tiffDirectory$ImageDataElement : directories.directories.get(i).getTiffRawImageDataElements()) {
-                arrayList.add(byteSource.getBlock(tiffDirectory$ImageDataElement.offset, tiffDirectory$ImageDataElement.length));
+            for (TiffDirectory.ImageDataElement imageDataElement : directories.directories.get(i).getTiffRawImageDataElements()) {
+                arrayList.add(byteSource.getBlock(imageDataElement.offset, imageDataElement.length));
             }
         }
         return arrayList;
@@ -301,10 +302,10 @@ public class TiffImageParser extends ImageParser {
     }
 
     private Rectangle checkForSubImage(Map<String, Object> map) throws ImageReadException {
-        Integer integerParameter = getIntegerParameter("SUBIMAGE_X", map);
-        Integer integerParameter2 = getIntegerParameter("SUBIMAGE_Y", map);
-        Integer integerParameter3 = getIntegerParameter("SUBIMAGE_WIDTH", map);
-        Integer integerParameter4 = getIntegerParameter("SUBIMAGE_HEIGHT", map);
+        Integer integerParameter = getIntegerParameter(TiffConstants.PARAM_KEY_SUBIMAGE_X, map);
+        Integer integerParameter2 = getIntegerParameter(TiffConstants.PARAM_KEY_SUBIMAGE_Y, map);
+        Integer integerParameter3 = getIntegerParameter(TiffConstants.PARAM_KEY_SUBIMAGE_WIDTH, map);
+        Integer integerParameter4 = getIntegerParameter(TiffConstants.PARAM_KEY_SUBIMAGE_HEIGHT, map);
         if (integerParameter == null && integerParameter2 == null && integerParameter3 == null && integerParameter4 == null) {
             return null;
         }
@@ -410,8 +411,8 @@ public class TiffImageParser extends ImageParser {
                 return new PhotometricInterpreterYCbCr(i4, iArr, i3, i5, i6);
             case 8:
                 return new PhotometricInterpreterCieLab(i4, iArr, i3, i5, i6);
-            case 32844:
-            case 32845:
+            case TiffTagConstants.PHOTOMETRIC_INTERPRETATION_VALUE_PIXAR_LOG_L /* 32844 */:
+            case TiffTagConstants.PHOTOMETRIC_INTERPRETATION_VALUE_PIXAR_LOG_LUV /* 32845 */:
                 return new PhotometricInterpreterLogLuv(i4, iArr, i3, i5, i6);
             default:
                 throw new ImageReadException("TIFF: Unknown fPhotometricInterpretation: " + i);
@@ -420,6 +421,10 @@ public class TiffImageParser extends ImageParser {
 
     @Override // org.apache.commons.imaging.ImageParser
     public void writeImage(BufferedImage bufferedImage, OutputStream outputStream, Map<String, Object> map) throws ImageWriteException, IOException {
-        new TiffImageWriterLossy().writeImage(bufferedImage, outputStream, map);
+        try {
+            new TiffImageWriterLossy().writeImage(bufferedImage, outputStream, map);
+        } catch (ImageReadException e) {
+            throw new ImageWriteException(e.getMessage(), e);
+        }
     }
 }

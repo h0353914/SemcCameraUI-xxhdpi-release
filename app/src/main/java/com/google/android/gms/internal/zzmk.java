@@ -2,6 +2,7 @@ package com.google.android.gms.internal;
 
 import android.util.Base64;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzmk {
     public static String zzi(byte[] bArr) {
         if (bArr == null) {

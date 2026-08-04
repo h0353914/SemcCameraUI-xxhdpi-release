@@ -1,10 +1,39 @@
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.recorder;
 
 import android.location.Location;
 import android.support.annotation.Nullable;
-import com.sonyericsson.cameracommon.storage.Storage$StorageWriteNotifier;
+import com.sonyericsson.cameracommon.storage.RequestFactory;
+import com.sonyericsson.cameracommon.storage.Storage;
 
 public interface RecorderController {
+
+    public interface RecorderListener {
+        void onRecordError(int i, int i2);
+
+        void onRecordFinished(Result result);
+
+        void onRecordProgress(long j);
+
+        void setSavingRequestBuilder(RequestFactory.VideoSavingRequestBuilder videoSavingRequestBuilder);
+    }
+
+    public enum Result {
+        SUCCESS,
+        FAIL,
+        MAX_DURATION_REACHED,
+        MAX_FILESIZE_REACHED
+    }
+
     long getRecordingTimeMillis();
 
     boolean isPaused();
@@ -35,7 +64,7 @@ public interface RecorderController {
 
     void setOutputFilePath(String str);
 
-    void setStorageWriteNotifier(@Nullable Storage$StorageWriteNotifier storage$StorageWriteNotifier);
+    void setStorageWriteNotifier(@Nullable Storage.StorageWriteNotifier storageWriteNotifier);
 
     void setUserSoundSetting(boolean z);
 

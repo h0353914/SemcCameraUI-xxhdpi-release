@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import com.google.android.gms.dynamic.zzc;
 
-public final class zzh extends zzc$zza {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public final class zzh extends zzc.zza {
     private Fragment zzafl;
 
     private zzh(Fragment fragment) {

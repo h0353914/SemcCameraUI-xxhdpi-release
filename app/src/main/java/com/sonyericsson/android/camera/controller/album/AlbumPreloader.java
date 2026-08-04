@@ -3,9 +3,13 @@ package com.sonyericsson.android.camera.controller.album;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.sonyericsson.album.fastview.FastViewManager;
 import com.sonyericsson.album.fastview.FastViewUnavailableException;
 import com.sonyericsson.android.camera.util.CamLog;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -15,29 +19,49 @@ public class AlbumPreloader {
     private Context mContext;
     private FastViewManager mFastViewManager;
     private boolean mIsAvailable;
-    private final Map<Uri, AlbumPreloader$PrepareBitmapTask> mRequestTasks = new LinkedHashMap();
-    private final AlbumPreloader$PreloadedCacheHolder mPreloadedCache = new AlbumPreloader$PreloadedCacheHolder(null);
+    private final Map<Uri, PrepareBitmapTask> mRequestTasks = new LinkedHashMap();
+    private final PreloadedCacheHolder mPreloadedCache = new PreloadedCacheHolder();
     private boolean mIsReleased = false;
     private Object mPreloadingLock = new Object();
 
-    static /* synthetic */ boolean access$100(AlbumPreloader albumPreloader) {
-        return albumPreloader.mIsReleased;
-    }
+    private static class PreloadedCacheHolder {
+        private Bitmap mBitmap;
+        private Uri mUri;
 
-    static /* synthetic */ FastViewManager access$200(AlbumPreloader albumPreloader) {
-        return albumPreloader.mFastViewManager;
-    }
+        private PreloadedCacheHolder() {
+        }
 
-    static /* synthetic */ Object access$500(AlbumPreloader albumPreloader) {
-        return albumPreloader.mPreloadingLock;
-    }
+        public void update(@NonNull Uri uri, @NonNull Bitmap bitmap) {
+            if (isSameUri(uri) && bitmap == this.mBitmap) {
+                return;
+            }
+            clear();
+            this.mUri = uri;
+            this.mBitmap = bitmap;
+        }
 
-    static /* synthetic */ AlbumPreloader$PreloadedCacheHolder access$600(AlbumPreloader albumPreloader) {
-        return albumPreloader.mPreloadedCache;
-    }
+        @Nullable
+        public Bitmap get() {
+            Bitmap bitmap = this.mBitmap;
+            this.mUri = null;
+            this.mBitmap = null;
+            return bitmap;
+        }
 
-    static /* synthetic */ Map access$700(AlbumPreloader albumPreloader) {
-        return albumPreloader.mRequestTasks;
+        public void clear() {
+            if (this.mBitmap != null) {
+                this.mBitmap.recycle();
+                this.mBitmap = null;
+            }
+            this.mUri = null;
+        }
+
+        public boolean isSameUri(Uri uri) {
+            if (this.mUri != null) {
+                return this.mUri.equals(uri);
+            }
+            return this.mUri == uri;
+        }
     }
 
     public AlbumPreloader(Context context) {
@@ -45,7 +69,20 @@ public class AlbumPreloader {
         this.mContext = context;
         try {
             this.mFastViewManager = new FastViewManager(this.mContext);
-            this.mFastViewManager.setOnPrewarmedListener(new AlbumPreloader$1(this));
+            this.mFastViewManager.setOnPrewarmedListener(new FastViewManager.OnPrewarmedListener() { // from class: com.sonyericsson.android.camera.controller.album.AlbumPreloader.1
+                @Override // com.sonyericsson.album.fastview.FastViewManager.OnPrewarmedListener
+                public void onPrewarmed() {
+                    if (CamLog.VERBOSE) {
+                        CamLog.d("Prewarm album");
+                    }
+                    if (AlbumPreloader.this.mIsReleased) {
+                        if (CamLog.VERBOSE) {
+                            CamLog.d("Activity is already stopped.");
+                        }
+                        AlbumPreloader.this.mFastViewManager.cooldown();
+                    }
+                }
+            });
             this.mIsAvailable = true;
         } catch (FastViewUnavailableException unused) {
             CamLog.e("Failed to open FastViewManager");
@@ -54,7 +91,7 @@ public class AlbumPreloader {
 
     public void prewarmAlbum() {
         if (this.mIsAvailable) {
-            new AlbumPreloader$PrewarmAlbumTask(this, null).execute(new Object[0]);
+            new PrewarmAlbumTask().execute(new Object[0]);
         }
     }
 
@@ -62,9 +99,9 @@ public class AlbumPreloader {
         if (this.mIsAvailable && uri != null) {
             synchronized (this.mPreloadingLock) {
                 if (!this.mRequestTasks.containsKey(uri)) {
-                    AlbumPreloader$PrepareBitmapTask albumPreloader$PrepareBitmapTask = new AlbumPreloader$PrepareBitmapTask(this, null);
-                    this.mRequestTasks.put(uri, albumPreloader$PrepareBitmapTask);
-                    albumPreloader$PrepareBitmapTask.execute(uri);
+                    PrepareBitmapTask prepareBitmapTask = new PrepareBitmapTask();
+                    this.mRequestTasks.put(uri, prepareBitmapTask);
+                    prepareBitmapTask.execute(uri);
                 }
             }
         }
@@ -84,7 +121,12 @@ public class AlbumPreloader {
             if (this.mRequestTasks.containsKey(uri)) {
                 this.mRequestTasks.remove(uri).cancel(false);
             }
-            return this.mFastViewManager.getBitmap(uri);
+            try {
+                return this.mFastViewManager.getBitmap(uri);
+            } catch (IllegalAccessException | InvocationTargetException e) {
+                CamLog.w("getBitmap failed: " + e.getMessage());
+                return null;
+            }
         }
     }
 
@@ -105,6 +147,50 @@ public class AlbumPreloader {
                 this.mFastViewManager.cooldown();
             }
             this.mIsReleased = true;
+        }
+    }
+
+    private final class PrewarmAlbumTask extends AsyncTask {
+        private static final String THREAD_NAME = "PrewarmAlbum";
+
+        private PrewarmAlbumTask() {
+        }
+
+        @Override // android.os.AsyncTask
+        protected Object doInBackground(Object[] objArr) {
+            Thread.currentThread().setName(THREAD_NAME);
+            AlbumPreloader.this.mFastViewManager.prewarm();
+            return null;
+        }
+    }
+
+    private final class PrepareBitmapTask extends AsyncTask {
+        private static final String THREAD_NAME = "PrepareBitmap";
+
+        private PrepareBitmapTask() {
+        }
+
+        @Override // android.os.AsyncTask
+        protected Object doInBackground(Object[] objArr) {
+            Thread.currentThread().setName(THREAD_NAME);
+            try {
+                Uri uri = (Uri) objArr[0];
+                Bitmap bitmap = AlbumPreloader.this.mFastViewManager.getBitmap(uri);
+                synchronized (AlbumPreloader.this.mPreloadingLock) {
+                    if (CamLog.VERBOSE) {
+                        CamLog.d("Prepare bitmap : " + uri.toString());
+                    }
+                    AlbumPreloader.this.mPreloadedCache.update(uri, bitmap);
+                    AlbumPreloader.this.mRequestTasks.remove(uri);
+                }
+                if (AlbumPreloader.this.mFastViewManager == null) {
+                    return null;
+                }
+                AlbumPreloader.this.mFastViewManager.prepare(uri);
+            } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+                CamLog.e("PrepareBitmapTask failed", e);
+            }
+            return null;
         }
     }
 }

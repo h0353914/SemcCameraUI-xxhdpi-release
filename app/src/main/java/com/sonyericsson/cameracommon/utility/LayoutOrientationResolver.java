@@ -1,3 +1,19 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.cameracommon.utility;
 
 import android.graphics.Point;
@@ -7,7 +23,13 @@ import android.util.Size;
 public class LayoutOrientationResolver {
     public static final String TAG = "LayoutOrientationResolver";
     private static final LayoutOrientationResolver sInstance = new LayoutOrientationResolver();
-    private LayoutOrientationResolver$LayoutOrientationType mLayoutOrientation = LayoutOrientationResolver$LayoutOrientationType.PORTRAIT;
+    private LayoutOrientationType mLayoutOrientation = LayoutOrientationType.PORTRAIT;
+
+    public enum LayoutOrientationType {
+        PORTRAIT,
+        LANDSCAPE,
+        BEHIND
+    }
 
     public int getConfigurationOrientation() {
         return 1;
@@ -20,7 +42,7 @@ public class LayoutOrientationResolver {
         return sInstance;
     }
 
-    public LayoutOrientationResolver$LayoutOrientationType getOrientation() {
+    public LayoutOrientationType getOrientation() {
         return this.mLayoutOrientation;
     }
 
@@ -28,7 +50,7 @@ public class LayoutOrientationResolver {
         if (rect == null) {
             return null;
         }
-        if (this.mLayoutOrientation == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
+        if (this.mLayoutOrientation == LayoutOrientationType.PORTRAIT) {
             return new Rect(0, 0, rect.height(), rect.width());
         }
         return new Rect(rect);
@@ -37,7 +59,7 @@ public class LayoutOrientationResolver {
     public Size getSizeAccordingToLayoutOrientation(Size size) {
         int width;
         int height;
-        if (this.mLayoutOrientation == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
+        if (this.mLayoutOrientation == LayoutOrientationType.PORTRAIT) {
             width = size.getHeight();
             height = size.getWidth();
         } else {
@@ -51,7 +73,7 @@ public class LayoutOrientationResolver {
         if (point == null) {
             return point;
         }
-        if (this.mLayoutOrientation == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
+        if (this.mLayoutOrientation == LayoutOrientationType.PORTRAIT) {
             return new Point(point.y, point.x);
         }
         return new Point(point);

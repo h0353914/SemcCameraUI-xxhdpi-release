@@ -8,7 +8,7 @@ import com.sonyericsson.android.camera.configuration.parameters.VideoHdr;
 import com.sonyericsson.android.camera.configuration.parameters.VideoShutterTrigger;
 import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
 import com.sonyericsson.android.camera.configuration.parameters.VideoStabilizer;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 import com.sonyericsson.android.camera.parameter.ParameterUtil;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
@@ -50,7 +50,7 @@ public class VideoHdrApplier extends DependencyApplier {
             }
             return;
         }
-        CameraInfo$CameraId cameraInfo$CameraId = capturingModeParams.getActionMode().mCameraId;
+        CameraInfo.CameraId cameraId = capturingModeParams.getActionMode().mCameraId;
         ParameterUtil.reset(capturingModeParams.mVideoCodec);
         if (videoSize != VideoSize.FOUR_K_UHD_H264 && videoSize != VideoSize.FOUR_K_UHD_H265) {
             ParameterUtil.reset(capturingModeParams.mVideoShutterTrigger);
@@ -59,7 +59,7 @@ public class VideoHdrApplier extends DependencyApplier {
             ParameterUtil.unavailable(capturingModeParams.mObjectTracking, ObjectTracking.OFF);
         }
         ParameterUtil.reset(capturingModeParams.mVideoCodec, capturingModeParams.mVideoCodec.get());
-        if (((FusionMode) capturingModeParams.mFusionMode.get()).getKey().getSelectability() == UserSettingSelectability.FIXED || !PlatformCapability.isFusionSupportedWith(cameraInfo$CameraId, (VideoSize) capturingModeParams.mVideoSize.get())) {
+        if (((FusionMode) capturingModeParams.mFusionMode.get()).getKey().getSelectability() == UserSettingSelectability.FIXED || !PlatformCapability.isFusionSupportedWith(cameraId, (VideoSize) capturingModeParams.mVideoSize.get())) {
             return;
         }
         ParameterUtil.reset(capturingModeParams.mFusionMode);

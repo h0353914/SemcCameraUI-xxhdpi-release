@@ -4,7 +4,6 @@ import java.io.IOException;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.formats.png.PngText;
-import org.apache.commons.imaging.formats.png.PngText$Text;
 
 public class PngChunkText extends PngTextChunk {
     public final String keyword;
@@ -37,6 +36,6 @@ public class PngChunkText extends PngTextChunk {
 
     @Override // org.apache.commons.imaging.formats.png.chunks.PngTextChunk
     public PngText getContents() {
-        return new PngText$Text(this.keyword, this.text);
+        return new PngText.Text(this.keyword, this.text);
     }
 }

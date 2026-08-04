@@ -1,9 +1,11 @@
 package com.google.android.gms.internal;
 
+import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnCancelListener;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -14,13 +16,14 @@ import android.util.Log;
 import android.util.SparseArray;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener;
 import com.google.android.gms.common.internal.zzx;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-public class zzlp extends Fragment implements DialogInterface$OnCancelListener {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzlp extends Fragment implements DialogInterface.OnCancelListener {
     private static final GoogleApiAvailability zzacJ = GoogleApiAvailability.getInstance();
     private boolean mStarted;
     private boolean zzacK;
@@ -28,21 +31,84 @@ public class zzlp extends Fragment implements DialogInterface$OnCancelListener {
     private zzll zzacO;
     private int zzacL = -1;
     private final Handler zzacN = new Handler(Looper.getMainLooper());
-    private final SparseArray<zzlp$zza> zzacP = new SparseArray<>();
+    private final SparseArray<zza> zzacP = new SparseArray<>();
 
-    static /* synthetic */ int zza(zzlp zzlpVar, int i) {
-        zzlpVar.zzacL = i;
-        return i;
+    private class zza implements GoogleApiClient.OnConnectionFailedListener {
+        public final int zzacQ;
+        public final GoogleApiClient zzacR;
+        public final GoogleApiClient.OnConnectionFailedListener zzacS;
+
+        public zza(int i, GoogleApiClient googleApiClient, GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener) {
+            this.zzacQ = i;
+            this.zzacR = googleApiClient;
+            this.zzacS = onConnectionFailedListener;
+            googleApiClient.registerConnectionFailedListener(this);
+        }
+
+        public void dump(String str, FileDescriptor fileDescriptor, PrintWriter printWriter, String[] strArr) {
+            printWriter.append((CharSequence) str).append("GoogleApiClient #").print(this.zzacQ);
+            printWriter.println(":");
+            this.zzacR.dump(str + "  ", fileDescriptor, printWriter, strArr);
+        }
+
+        @Override // com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener
+        public void onConnectionFailed(ConnectionResult connectionResult) {
+            zzlp.this.zzacN.post(zzlp.this.new zzb(this.zzacQ, connectionResult));
+        }
+
+        public void zzom() {
+            this.zzacR.unregisterConnectionFailedListener(this);
+            this.zzacR.disconnect();
+        }
     }
 
-    static /* synthetic */ ConnectionResult zza(zzlp zzlpVar, ConnectionResult connectionResult) {
-        zzlpVar.zzacM = connectionResult;
-        return connectionResult;
-    }
+    private class zzb implements Runnable {
+        private final int zzacU;
+        private final ConnectionResult zzacV;
 
-    static /* synthetic */ zzll zza(zzlp zzlpVar, zzll zzllVar) {
-        zzlpVar.zzacO = zzllVar;
-        return zzllVar;
+        public zzb(int i, ConnectionResult connectionResult) {
+            this.zzacU = i;
+            this.zzacV = connectionResult;
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            try {
+                if (!zzlp.this.mStarted || zzlp.this.zzacK) {
+                    return;
+                }
+            zzlp.this.zzacK = true;
+            zzlp.this.zzacL = this.zzacU;
+            zzlp.this.zzacM = this.zzacV;
+            if (this.zzacV.hasResolution()) {
+                try {
+                    this.zzacV.startResolutionForResult(zzlp.this.getActivity(), 1 + ((zzlp.this.getActivity().getSupportFragmentManager().getFragments().indexOf(zzlp.this) + 1) << 16));
+                    return;
+                } catch (IntentSender.SendIntentException unused) {
+                    zzlp.this.zzok();
+                    return;
+                }
+            }
+            if (zzlp.zzacJ.isUserResolvableError(this.zzacV.getErrorCode())) {
+                GooglePlayServicesUtil.showErrorDialogFragment(this.zzacV.getErrorCode(), zzlp.this.getActivity(), zzlp.this, 2, zzlp.this);
+            } else {
+                if (this.zzacV.getErrorCode() != 18) {
+                    zzlp.this.zza(this.zzacU, this.zzacV);
+                    return;
+                }
+                final Dialog dialogZza = zzlp.zzacJ.zza(zzlp.this.getActivity(), zzlp.this);
+                zzlp.this.zzacO = zzll.zza(zzlp.this.getActivity().getApplicationContext(), new zzll() { // from class: com.google.android.gms.internal.zzlp.zzb.1
+                    @Override // com.google.android.gms.internal.zzll
+                    protected void zzoi() {
+                        zzlp.this.zzok();
+                        dialogZza.dismiss();
+                    }
+                });
+            }
+            } catch (Exception e) {
+               // Ignore
+            }
+        }
     }
 
     public static zzlp zza(FragmentActivity fragmentActivity) {
@@ -58,30 +124,18 @@ public class zzlp extends Fragment implements DialogInterface$OnCancelListener {
         }
     }
 
-    private void zza(int i, ConnectionResult connectionResult) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void zza(int i, ConnectionResult connectionResult) {
         Log.w("GmsSupportLifecycleFragment", "Unresolved error while connecting client. Stopping auto-manage.");
-        zzlp$zza zzlp_zza = this.zzacP.get(i);
-        if (zzlp_zza != null) {
+        zza zzaVar = this.zzacP.get(i);
+        if (zzaVar != null) {
             zzbp(i);
-            GoogleApiClient$OnConnectionFailedListener googleApiClient$OnConnectionFailedListener = zzlp_zza.zzacS;
-            if (googleApiClient$OnConnectionFailedListener != null) {
-                googleApiClient$OnConnectionFailedListener.onConnectionFailed(connectionResult);
+            GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener = zzaVar.zzacS;
+            if (onConnectionFailedListener != null) {
+                onConnectionFailedListener.onConnectionFailed(connectionResult);
             }
         }
         zzok();
-    }
-
-    static /* synthetic */ void zza(zzlp zzlpVar, int i, ConnectionResult connectionResult) {
-        zzlpVar.zza(i, connectionResult);
-    }
-
-    static /* synthetic */ boolean zza(zzlp zzlpVar) {
-        return zzlpVar.mStarted;
-    }
-
-    static /* synthetic */ boolean zza(zzlp zzlpVar, boolean z) {
-        zzlpVar.zzacK = z;
-        return z;
     }
 
     public static zzlp zzb(FragmentActivity fragmentActivity) {
@@ -96,19 +150,8 @@ public class zzlp extends Fragment implements DialogInterface$OnCancelListener {
         return zzlpVar;
     }
 
-    static /* synthetic */ boolean zzb(zzlp zzlpVar) {
-        return zzlpVar.zzacK;
-    }
-
-    static /* synthetic */ void zzc(zzlp zzlpVar) {
-        zzlpVar.zzok();
-    }
-
-    static /* synthetic */ Handler zzd(zzlp zzlpVar) {
-        return zzlpVar.zzacN;
-    }
-
-    private void zzok() {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void zzok() {
         this.zzacK = false;
         this.zzacL = -1;
         this.zzacM = null;
@@ -119,10 +162,6 @@ public class zzlp extends Fragment implements DialogInterface$OnCancelListener {
         for (int i = 0; i < this.zzacP.size(); i++) {
             this.zzacP.valueAt(i).zzacR.connect();
         }
-    }
-
-    static /* synthetic */ GoogleApiAvailability zzol() {
-        return zzacJ;
     }
 
     @Override // android.support.v4.app.Fragment
@@ -140,6 +179,7 @@ public class zzlp extends Fragment implements DialogInterface$OnCancelListener {
         Code decompiled incorrectly, please refer to instructions dump.
     */
     public void onActivityResult(int i, int i2, Intent intent) {
+
         boolean z = true;
         switch (i) {
             case 1:
@@ -148,11 +188,13 @@ public class zzlp extends Fragment implements DialogInterface$OnCancelListener {
                         this.zzacM = new ConnectionResult(13, null);
                     }
                     z = false;
+                    break;
                 }
                 break;
             case 2:
                 if (zzacJ.isGooglePlayServicesAvailable(getActivity()) != 0) {
                     z = false;
+                    break;
                 }
                 break;
         }
@@ -163,7 +205,7 @@ public class zzlp extends Fragment implements DialogInterface$OnCancelListener {
         }
     }
 
-    @Override // android.content.DialogInterface$OnCancelListener
+    @Override // android.content.DialogInterface.OnCancelListener
     public void onCancel(DialogInterface dialogInterface) {
         zza(this.zzacL, new ConnectionResult(13, null));
     }
@@ -212,10 +254,10 @@ public class zzlp extends Fragment implements DialogInterface$OnCancelListener {
         }
     }
 
-    public void zza(int i, GoogleApiClient googleApiClient, GoogleApiClient$OnConnectionFailedListener googleApiClient$OnConnectionFailedListener) {
+    public void zza(int i, GoogleApiClient googleApiClient, GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener) {
         zzx.zzb(googleApiClient, "GoogleApiClient instance cannot be null");
         zzx.zza(this.zzacP.indexOfKey(i) < 0, "Already managing a GoogleApiClient with id " + i);
-        this.zzacP.put(i, new zzlp$zza(this, i, googleApiClient, googleApiClient$OnConnectionFailedListener));
+        this.zzacP.put(i, new zza(i, googleApiClient, onConnectionFailedListener));
         if (!this.mStarted || this.zzacK) {
             return;
         }
@@ -223,10 +265,10 @@ public class zzlp extends Fragment implements DialogInterface$OnCancelListener {
     }
 
     public void zzbp(int i) {
-        zzlp$zza zzlp_zza = this.zzacP.get(i);
+        zza zzaVar = this.zzacP.get(i);
         this.zzacP.remove(i);
-        if (zzlp_zza != null) {
-            zzlp_zza.zzom();
+        if (zzaVar != null) {
+            zzaVar.zzom();
         }
     }
 }

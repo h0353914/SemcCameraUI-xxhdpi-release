@@ -4,14 +4,31 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 import com.sonymobile.cameracommon.font.FontUtil;
-import com.sonymobile.cameracommon.font.FontUtil$RobotoFontType;
 
 public class ModeSelectorButton extends TextView {
     private boolean mIsAvailable;
     private int mOrientation;
     private boolean mRequestVisible;
+
+    private enum Type {
+        MODE_SELECTOR(R.drawable.mode_selector_button, R.string.cam_strings_capturing_mode_button_txt, R.string.cam_strings_capturing_mode_button_txt, R.dimen.mode_selector_button_minimum_width),
+        RETURN(R.drawable.close_app, -1, R.string.cam_strings_accessibility_back_main_txt, -1);
+
+        private final int mBackgroundId;
+        private final int mContentDescriptionId;
+        private final int mMinWidthId;
+        private final int mStringId;
+
+        Type(int i, int i2, int i3, int i4) {
+            this.mBackgroundId = i;
+            this.mStringId = i2;
+            this.mContentDescriptionId = i3;
+            this.mMinWidthId = i4;
+        }
+    }
 
     public ModeSelectorButton(Context context) {
         super(context);
@@ -43,17 +60,17 @@ public class ModeSelectorButton extends TextView {
     }
 
     public void update(boolean z) {
-        ModeSelectorButton$Type modeSelectorButton$Type;
+        Type type;
         Resources resources = getResources();
         if (z) {
-            modeSelectorButton$Type = ModeSelectorButton$Type.RETURN;
+            type = Type.RETURN;
         } else {
-            modeSelectorButton$Type = ModeSelectorButton$Type.MODE_SELECTOR;
+            type = Type.MODE_SELECTOR;
         }
-        setBackgroundResource(ModeSelectorButton$Type.access$000(modeSelectorButton$Type));
-        setTextResource(ModeSelectorButton$Type.access$100(modeSelectorButton$Type));
-        setContentDescription(resources.getString(ModeSelectorButton$Type.access$200(modeSelectorButton$Type)));
-        setMinimumWidth(ModeSelectorButton$Type.access$300(modeSelectorButton$Type) != -1 ? resources.getDimensionPixelSize(ModeSelectorButton$Type.access$300(modeSelectorButton$Type)) : 0);
+        setBackgroundResource(type.mBackgroundId);
+        setTextResource(type.mStringId);
+        setContentDescription(resources.getString(type.mContentDescriptionId));
+        setMinimumWidth(type.mMinWidthId != -1 ? resources.getDimensionPixelSize(type.mMinWidthId) : 0);
     }
 
     public void show() {
@@ -74,7 +91,7 @@ public class ModeSelectorButton extends TextView {
     private void init() {
         this.mIsAvailable = false;
         this.mRequestVisible = false;
-        FontUtil.setRobotoFont(this, FontUtil$RobotoFontType.MEDIUM);
+        FontUtil.setRobotoFont(this, FontUtil.RobotoFontType.MEDIUM);
         update();
     }
 

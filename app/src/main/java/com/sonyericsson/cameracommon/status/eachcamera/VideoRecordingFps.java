@@ -10,7 +10,7 @@ public class VideoRecordingFps extends IntegerValue implements EachCameraStatusV
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusValue
     public String getKey() {
-        return "video_recording_fps";
+        return KEY;
     }
 
     public VideoRecordingFps(int i) {

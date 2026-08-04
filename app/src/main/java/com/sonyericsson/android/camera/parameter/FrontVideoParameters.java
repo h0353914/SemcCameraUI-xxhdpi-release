@@ -111,11 +111,15 @@ public class FrontVideoParameters extends FrontParameters {
         EnumMap<UserSettingKey, UserSettingValue> enumMap = new EnumMap<>(UserSettingKey.class);
         for (UserSettingKey userSettingKey : this.mHolders.keySet()) {
             UserSettingValue userSettingValue = this.mHolders.get(userSettingKey).get();
-            if (FrontVideoParameters$1.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()] != 1) {
-                if (userSettingValue == null) {
-                    CamLog.d("[" + getClass().getSimpleName() + "] getTargetParameters() invalid value of key: " + userSettingKey);
-                }
-                enumMap.put(userSettingKey, userSettingValue);
+            switch (userSettingKey) {
+                case VIDEO_SHUTTER_TRIGGER:
+                    break;
+                default:
+                    if (userSettingValue == null) {
+                        CamLog.d("[" + getClass().getSimpleName() + "] getTargetParameters() invalid value of key: " + userSettingKey);
+                    }
+                    enumMap.put(userSettingKey, userSettingValue);
+                    break;
             }
         }
         return enumMap;

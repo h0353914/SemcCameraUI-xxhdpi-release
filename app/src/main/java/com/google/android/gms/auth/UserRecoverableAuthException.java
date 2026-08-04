@@ -2,6 +2,7 @@ package com.google.android.gms.auth;
 
 import android.content.Intent;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class UserRecoverableAuthException extends GoogleAuthException {
     private final Intent mIntent;
 

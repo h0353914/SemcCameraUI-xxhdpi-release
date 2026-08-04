@@ -5,9 +5,9 @@ import android.graphics.Color;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 import com.sonymobile.cameracommon.font.FontUtil;
-import com.sonymobile.cameracommon.font.FontUtil$RobotoFontType;
 
 class ImageQualityControlResetButton extends RelativeLayout {
     private RelativeLayout mContainer;
@@ -20,12 +20,12 @@ class ImageQualityControlResetButton extends RelativeLayout {
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mContainer = (RelativeLayout) findViewById(2131296363);
-        this.mTextView = (TextView) findViewById(2131296532);
+        this.mContainer = (RelativeLayout) findViewById(R.id.container);
+        this.mTextView = (TextView) findViewById(R.id.reset_button_text);
         if ("Reset".equalsIgnoreCase(this.mTextView.getText().toString())) {
             this.mTextView.setText("RESET");
         }
-        FontUtil.setRobotoFont(this.mTextView, FontUtil$RobotoFontType.CONDENSED_BOLD);
+        FontUtil.setRobotoFont(this.mTextView, FontUtil.RobotoFontType.CONDENSED_BOLD);
     }
 
     public void setUiOrientation(int i) {

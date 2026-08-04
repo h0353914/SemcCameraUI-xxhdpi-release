@@ -1,43 +1,79 @@
+
+
+
+
+
+
+
+
 package com.sonyericsson.cameracommon.utility;
 
 import android.graphics.Rect;
-import com.sonyericsson.android.camera.device.CameraParameters$ExtFace;
-import com.sonyericsson.android.camera.device.CameraParameters$FaceDetectionResult;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.focusview.FaceInformationList;
 import com.sonyericsson.cameracommon.focusview.NamedFace;
 import com.sonyericsson.cameracommon.focusview.TaggedRectangle;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map$Entry;
+import java.util.Map;
 
 public class FaceDetectUtil {
     public static final String TAG = "FaceDetectUtil";
 
-    public static void dumpDistanceMapList(List<FaceDetectUtil$DistanceMapItem> list) {
+    private static class DistanceMapItem {
+        private final int mArrayIndex;
+        private final int mDistance;
+
+        public DistanceMapItem(int i, int i2) {
+            this.mArrayIndex = i;
+            this.mDistance = i2;
+        }
+
+        public int getArrayIndex() {
+            return this.mArrayIndex;
+        }
+
+        public int getDistance() {
+            return this.mDistance;
+        }
+    }
+
+    public static void dumpDistanceMapList(List<DistanceMapItem> list) {
         if (CamLog.VERBOSE) {
             CamLog.d("dumpDistanceMapList");
-            for (FaceDetectUtil$DistanceMapItem faceDetectUtil$DistanceMapItem : list) {
-                CamLog.d("item.arrayIndex = " + faceDetectUtil$DistanceMapItem.getArrayIndex() + " item.distance = " + faceDetectUtil$DistanceMapItem.getDistance());
+            for (DistanceMapItem distanceMapItem : list) {
+                CamLog.d("item.arrayIndex = " + distanceMapItem.getArrayIndex() + " item.distance = " + distanceMapItem.getDistance());
             }
         }
     }
 
-    private static List<FaceDetectUtil$DistanceMapItem> createSortedDistanceList(CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult, Rect rect) {
-        if (cameraParameters$FaceDetectionResult == null || cameraParameters$FaceDetectionResult.extFaceList == null) {
+    private static class DistanceComparator implements Comparator<DistanceMapItem> {
+        private DistanceComparator() {
+        }
+
+        @Override // java.util.Comparator
+        public int compare(DistanceMapItem distanceMapItem, DistanceMapItem distanceMapItem2) {
+            return distanceMapItem.getDistance() - distanceMapItem2.getDistance();
+        }
+    }
+
+    private static List<DistanceMapItem> createSortedDistanceList(CameraParameters.FaceDetectionResult faceDetectionResult, Rect rect) {
+        if (faceDetectionResult == null || faceDetectionResult.extFaceList == null) {
             return null;
         }
         ArrayList arrayList = new ArrayList();
         int i = 0;
-        Iterator<CameraParameters$ExtFace> it = cameraParameters$FaceDetectionResult.extFaceList.iterator();
+        Iterator<CameraParameters.ExtFace> it = faceDetectionResult.extFaceList.iterator();
         while (it.hasNext()) {
-            arrayList.add(new FaceDetectUtil$DistanceMapItem(i, computeClosesDistance(it.next().rect, rect)));
+            arrayList.add(new DistanceMapItem(i, computeClosesDistance(it.next().rect, rect)));
             i++;
         }
-        Collections.sort(arrayList, new FaceDetectUtil$DistanceComparator(null));
+        Collections.sort(arrayList, new DistanceComparator());
         return arrayList;
     }
 
@@ -60,19 +96,19 @@ public class FaceDetectUtil {
         return iCenterX + iCenterY;
     }
 
-    public static void logFaceDetectionResult(CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult) {
-        if (cameraParameters$FaceDetectionResult == null) {
+    public static void logFaceDetectionResult(CameraParameters.FaceDetectionResult faceDetectionResult) {
+        if (faceDetectionResult == null) {
             CamLog.v("onFaceDetection: result is null");
             return;
         }
-        CamLog.v("onFaceDetection: Number of faces: " + cameraParameters$FaceDetectionResult.extFaceList.size());
-        CamLog.v("onFaceDetection: Selected index : " + cameraParameters$FaceDetectionResult.indexOfSelectedFace);
-        if (cameraParameters$FaceDetectionResult.extFaceList.isEmpty()) {
+        CamLog.v("onFaceDetection: Number of faces: " + faceDetectionResult.extFaceList.size());
+        CamLog.v("onFaceDetection: Selected index : " + faceDetectionResult.indexOfSelectedFace);
+        if (faceDetectionResult.extFaceList.isEmpty()) {
             return;
         }
         int i = 0;
-        for (CameraParameters$ExtFace cameraParameters$ExtFace : cameraParameters$FaceDetectionResult.extFaceList) {
-            CamLog.v((((("ExtFACE[" + i + "]") + " face = " + cameraParameters$ExtFace + " ") + " face.id = " + cameraParameters$ExtFace.id + " ") + " face.rect = " + cameraParameters$ExtFace.rect + " ") + " SmileScore = " + cameraParameters$ExtFace.smileScore + " ");
+            for (CameraParameters.ExtFace extFace : faceDetectionResult.extFaceList) {
+                CamLog.v((((("ExtFACE[" + i + "]") + " face = " + extFace + " ") + " face.id = " + extFace.id + " ") + " face.rect = " + extFace.rect + " ") + " SmileScore = " + extFace.smileScore + " ");
             i++;
         }
     }
@@ -80,14 +116,14 @@ public class FaceDetectUtil {
     public static TaggedRectangle overwriteTaggedRectangle(HashMap<String, TaggedRectangle> map, String str, FaceInformationList faceInformationList) {
         String key;
         TaggedRectangle value;
-        Iterator<Map$Entry<String, TaggedRectangle>> it = map.entrySet().iterator();
+        Iterator<Map.Entry<String, TaggedRectangle>> it = map.entrySet().iterator();
         while (true) {
             key = null;
             if (!it.hasNext()) {
                 value = null;
                 break;
             }
-            Map$Entry<String, TaggedRectangle> next = it.next();
+            Map.Entry<String, TaggedRectangle> next = it.next();
             key = next.getKey();
             boolean z = false;
             Iterator<NamedFace> it2 = faceInformationList.getNamedFaceList().iterator();
@@ -112,17 +148,17 @@ public class FaceDetectUtil {
         return value;
     }
 
-    public static FaceInformationList getFaceInformationList(CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult, Rect rect, String str) {
+    public static FaceInformationList getFaceInformationList(CameraParameters.FaceDetectionResult faceDetectionResult, Rect rect, String str) {
         if (CamLog.VERBOSE) {
             CamLog.d("getFaceInformationSortList centerPosition = " + rect);
         }
-        if (cameraParameters$FaceDetectionResult == null) {
+        if (faceDetectionResult == null) {
             if (CamLog.VERBOSE) {
                 CamLog.d("getFaceInformationListt faceDetectResultList is null");
             }
             return null;
         }
-        List<FaceDetectUtil$DistanceMapItem> listCreateSortedDistanceList = createSortedDistanceList(cameraParameters$FaceDetectionResult, rect);
+        List<DistanceMapItem> listCreateSortedDistanceList = createSortedDistanceList(faceDetectionResult, rect);
         if (listCreateSortedDistanceList == null) {
             if (CamLog.VERBOSE) {
                 CamLog.d("createSortedDistanceList() return null");
@@ -131,20 +167,20 @@ public class FaceDetectUtil {
         }
         FaceInformationList faceInformationList = new FaceInformationList();
         faceInformationList.setUserTouchUuid(str);
-        Iterator<FaceDetectUtil$DistanceMapItem> it = listCreateSortedDistanceList.iterator();
+        Iterator<DistanceMapItem> it = listCreateSortedDistanceList.iterator();
         while (it.hasNext()) {
-            CameraParameters$ExtFace cameraParameters$ExtFace = cameraParameters$FaceDetectionResult.extFaceList.get(it.next().getArrayIndex());
-            faceInformationList.addNamedFace(new NamedFace(null, String.valueOf(cameraParameters$ExtFace.id), cameraParameters$ExtFace.rect, cameraParameters$ExtFace.smileScore));
+            CameraParameters.ExtFace extFace = faceDetectionResult.extFaceList.get(it.next().getArrayIndex());
+                faceInformationList.addNamedFace(new NamedFace(null, String.valueOf(extFace.id), extFace.rect, extFace.smileScore));
         }
-        logFaceDetectionResult(cameraParameters$FaceDetectionResult);
+        logFaceDetectionResult(faceDetectionResult);
         return faceInformationList;
     }
 
-    public static Boolean hasValidFaceId(CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult) {
+    public static Boolean hasValidFaceId(CameraParameters.FaceDetectionResult faceDetectionResult) {
         Boolean bool = Boolean.TRUE;
-        Iterator<CameraParameters$ExtFace> it = cameraParameters$FaceDetectionResult.extFaceList.iterator();
+        Iterator<CameraParameters.ExtFace> it = faceDetectionResult.extFaceList.iterator();
         while (it.hasNext()) {
-            if (it.next().id == -1) {
+                if (it.next().id == -1) {
                 if (CamLog.VERBOSE) {
                     CamLog.d("FaceDetection ID is not supported.");
                 }
@@ -154,17 +190,17 @@ public class FaceDetectUtil {
         return bool;
     }
 
-    public static CameraParameters$FaceDetectionResult setUuidFaceDetectionResult(CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult) {
-        Iterator<CameraParameters$ExtFace> it = cameraParameters$FaceDetectionResult.extFaceList.iterator();
+    public static CameraParameters.FaceDetectionResult setUuidFaceDetectionResult(CameraParameters.FaceDetectionResult faceDetectionResult) {
+        Iterator<CameraParameters.ExtFace> it = faceDetectionResult.extFaceList.iterator();
         int i = 0;
         while (it.hasNext()) {
-            it.next().id = i;
+                it.next().id = i;
             i++;
         }
-        return cameraParameters$FaceDetectionResult;
+        return faceDetectionResult;
     }
 
-    public static boolean isValidFaceDetectionResult(CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult) {
-        return cameraParameters$FaceDetectionResult != null && cameraParameters$FaceDetectionResult.extFaceList.size() > cameraParameters$FaceDetectionResult.indexOfSelectedFace && cameraParameters$FaceDetectionResult.indexOfSelectedFace >= 0;
+    public static boolean isValidFaceDetectionResult(CameraParameters.FaceDetectionResult faceDetectionResult) {
+        return faceDetectionResult != null && faceDetectionResult.extFaceList.size() > faceDetectionResult.indexOfSelectedFace && faceDetectionResult.indexOfSelectedFace >= 0;
     }
 }

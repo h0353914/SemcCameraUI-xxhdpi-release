@@ -3,9 +3,11 @@ package com.google.android.gms.internal;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.util.Log;
+import com.google.android.gms.internal.zzqd;
 
 @Deprecated
-public class zzqc implements zzqd$zza {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzqc implements zzqd.zza {
     private final zzqd zzaRC;
     private boolean zzaRD;
 
@@ -34,12 +36,12 @@ public class zzqc implements zzqd$zza {
         this.zzaRD = false;
     }
 
-    @Override // com.google.android.gms.internal.zzqd$zza
+    @Override // com.google.android.gms.internal.zzqd.zza
     public void zzBr() {
         this.zzaRC.stop();
     }
 
-    @Override // com.google.android.gms.internal.zzqd$zza
+    @Override // com.google.android.gms.internal.zzqd.zza
     public void zzBs() {
         Log.w("OneTimePlayLogger", "logger connection failed");
     }
@@ -49,7 +51,7 @@ public class zzqc implements zzqd$zza {
         this.zzaRC.zzb(str, bArr, strArr);
     }
 
-    @Override // com.google.android.gms.internal.zzqd$zza
+    @Override // com.google.android.gms.internal.zzqd.zza
     public void zzf(PendingIntent pendingIntent) {
         Log.w("OneTimePlayLogger", "logger connection failed: " + pendingIntent);
     }

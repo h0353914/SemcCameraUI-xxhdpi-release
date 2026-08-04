@@ -2,12 +2,13 @@ package com.google.android.gms.common;
 
 import android.app.Activity;
 import android.app.PendingIntent;
-import android.content.IntentSender$SendIntentException;
+import android.content.IntentSender;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzw;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class ConnectionResult implements SafeParcelable {
     public static final int API_UNAVAILABLE = 16;
     public static final int CANCELED = 13;
@@ -36,7 +37,7 @@ public final class ConnectionResult implements SafeParcelable {
     private final int zzYm;
     private final String zzZZ;
     public static final ConnectionResult zzZY = new ConnectionResult(0);
-    public static final Parcelable$Creator<ConnectionResult> CREATOR = new zzb();
+    public static final Parcelable.Creator<ConnectionResult> CREATOR = new zzb();
 
     public ConnectionResult(int i) {
         this(i, null, null);
@@ -143,7 +144,7 @@ public final class ConnectionResult implements SafeParcelable {
         return this.zzYm == 0;
     }
 
-    public void startResolutionForResult(Activity activity, int i) throws IntentSender$SendIntentException {
+    public void startResolutionForResult(Activity activity, int i) throws IntentSender.SendIntentException {
         if (hasResolution()) {
             activity.startIntentSenderForResult(this.mPendingIntent.getIntentSender(), i, null, 0, 0, 0);
         }

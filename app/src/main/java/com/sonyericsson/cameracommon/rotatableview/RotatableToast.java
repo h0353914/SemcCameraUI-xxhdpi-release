@@ -1,3 +1,70 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.cameracommon.rotatableview;
 
 import android.app.Activity;
@@ -10,23 +77,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.animation.Animation;
-import android.view.animation.Animation$AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
-import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-public class RotatableToast extends FrameLayout implements Animation$AnimationListener {
+public class RotatableToast extends FrameLayout implements Animation.AnimationListener {
     private static final long FADEOUT_OFFSET_LONG = 4500;
     private static final long FADEOUT_OFFSET_SHORT = 2500;
     public static final int LENGTH_LONG = 1;
     public static final int LENGTH_SHORT = 0;
     public static final String TAG = "RotatableToast";
-    private static RotatableToast$ToastLayoutParams mLayoutParamsLandscape;
-    private static RotatableToast$ToastLayoutParams mLayoutParamsPortrait;
+    private static ToastLayoutParams mLayoutParamsLandscape;
+    private static ToastLayoutParams mLayoutParamsPortrait;
     private ViewGroup mBackgroundView;
     private ViewGroup mBaseView;
     private int mDuration;
@@ -36,23 +102,35 @@ public class RotatableToast extends FrameLayout implements Animation$AnimationLi
     private int mSensorOrientation;
     private final Runnable mStartAnimation;
     private TextView mTextView;
-    private RotatableToast$ToastPosition mToastPosition;
+    private ToastPosition mToastPosition;
 
-    @Override // android.view.animation.Animation$AnimationListener
+    public enum ToastPosition {
+        TOP,
+        CENTER,
+        BOTTOM
+    }
+
+    @Override // android.view.animation.Animation.AnimationListener
     public void onAnimationRepeat(Animation animation) {
     }
 
-    static /* synthetic */ Animation access$000(RotatableToast rotatableToast) {
-        return rotatableToast.mFadeoutAnimation;
+    public static class ToastLayoutParams {
+        public final Rect bottomContainer;
+        public final Rect topContainer;
+
+        public ToastLayoutParams(int i, int i2, Rect rect, Rect rect2) {
+            this.topContainer = rect;
+            int i3 = (-i) / 2;
+            int i4 = (-i2) / 2;
+            this.topContainer.offset(i3, i4);
+            this.bottomContainer = rect2;
+            this.bottomContainer.offset(i3, i4);
+        }
     }
 
-    static /* synthetic */ ViewGroup access$100(RotatableToast rotatableToast) {
-        return rotatableToast.mBaseView;
-    }
-
-    public static void setToastLayoutParams(RotatableToast$ToastLayoutParams rotatableToast$ToastLayoutParams, RotatableToast$ToastLayoutParams rotatableToast$ToastLayoutParams2) {
-        mLayoutParamsLandscape = rotatableToast$ToastLayoutParams;
-        mLayoutParamsPortrait = rotatableToast$ToastLayoutParams2;
+    public static void setToastLayoutParams(ToastLayoutParams toastLayoutParams, ToastLayoutParams toastLayoutParams2) {
+        mLayoutParamsLandscape = toastLayoutParams;
+        mLayoutParamsPortrait = toastLayoutParams2;
     }
 
     public RotatableToast(Context context, AttributeSet attributeSet) {
@@ -62,9 +140,14 @@ public class RotatableToast extends FrameLayout implements Animation$AnimationLi
         this.mTextView = null;
         this.mSensorOrientation = 2;
         this.mDuration = 0;
-        this.mToastPosition = RotatableToast$ToastPosition.CENTER;
+        this.mToastPosition = ToastPosition.CENTER;
         this.mHandler = new Handler();
-        this.mStartAnimation = new RotatableToast$1(this);
+        this.mStartAnimation = new Runnable() { // from class: com.sonyericsson.cameracommon.rotatableview.RotatableToast.1
+            @Override // java.lang.Runnable
+            public void run() {
+                RotatableToast.this.mBaseView.startAnimation(RotatableToast.this.mFadeoutAnimation);
+            }
+        };
     }
 
     @Override // android.view.View
@@ -74,10 +157,10 @@ public class RotatableToast extends FrameLayout implements Animation$AnimationLi
         }
         super.onFinishInflate();
         this.mLayoutRoot = (ViewGroup) ((Activity) getContext()).getWindow().getDecorView();
-        this.mBaseView = (ViewGroup) findViewById(2131296544);
-        this.mBackgroundView = (ViewGroup) findViewById(2131296546);
-        this.mTextView = (TextView) findViewById(2131296545);
-        this.mFadeoutAnimation = AnimationUtils.loadAnimation(getContext(), 2130771990);
+        this.mBaseView = (ViewGroup) findViewById(R.id.rotatable_toast_base);
+        this.mBackgroundView = (ViewGroup) findViewById(R.id.rotatable_toast_text_background);
+        this.mTextView = (TextView) findViewById(R.id.rotatable_toast_text);
+        this.mFadeoutAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.rotatable_toast_anime);
     }
 
     public void setTextResId(int i) {
@@ -101,27 +184,28 @@ public class RotatableToast extends FrameLayout implements Animation$AnimationLi
         return this.mDuration;
     }
 
-    public void setToastPosition(RotatableToast$ToastPosition rotatableToast$ToastPosition) {
-        this.mToastPosition = rotatableToast$ToastPosition;
+    public void setToastPosition(ToastPosition toastPosition) {
+        this.mToastPosition = toastPosition;
     }
 
     private void updateTextMaxWidth() {
         if (this.mSensorOrientation == 1) {
-            this.mTextView.setMaxWidth(getResources().getDimensionPixelSize(2131165544));
+            this.mTextView.setMaxWidth(getResources().getDimensionPixelSize(R.dimen.rotatable_toast_max_width_for_port));
         } else {
-            this.mTextView.setMaxWidth(getResources().getDimensionPixelSize(2131165543));
+            this.mTextView.setMaxWidth(getResources().getDimensionPixelSize(R.dimen.rotatable_toast_max_width_for_land));
         }
     }
 
     private void updatePosition() {
         float angle = RotationUtil.getAngle(this.mSensorOrientation);
-        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
+        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
             angle += 90.0f;
         }
         this.mBackgroundView.setRotation(angle);
-        if (getContainerRect() != null) {
-            this.mBackgroundView.setTranslationX(r0.centerX());
-            this.mBackgroundView.setTranslationY(r0.centerY());
+        Rect containerRect = getContainerRect();
+        if (containerRect != null) {
+            this.mBackgroundView.setTranslationX(containerRect.centerX());
+            this.mBackgroundView.setTranslationY(containerRect.centerY());
         } else {
             this.mBackgroundView.setTranslationX(0.0f);
             this.mBackgroundView.setTranslationY(0.0f);
@@ -129,11 +213,15 @@ public class RotatableToast extends FrameLayout implements Animation$AnimationLi
     }
 
     private Rect getContainerRect() {
-        RotatableToast$ToastLayoutParams rotatableToast$ToastLayoutParams = this.mSensorOrientation == 1 ? mLayoutParamsPortrait : mLayoutParamsLandscape;
-        if (rotatableToast$ToastLayoutParams == null) {
+        ToastLayoutParams toastLayoutParams = this.mSensorOrientation == 1 ? mLayoutParamsPortrait : mLayoutParamsLandscape;
+        if (toastLayoutParams == null) {
             return null;
         }
         switch (this.mToastPosition) {
+            case TOP:
+                return toastLayoutParams.topContainer;
+            case BOTTOM:
+                return toastLayoutParams.bottomContainer;
         }
         return null;
     }
@@ -146,7 +234,7 @@ public class RotatableToast extends FrameLayout implements Animation$AnimationLi
         addToWindow();
         updateTextMaxWidth();
         updatePosition();
-        long j = this.mDuration == 1 ? 4500L : 2500L;
+        long j = this.mDuration == 1 ? FADEOUT_OFFSET_LONG : FADEOUT_OFFSET_SHORT;
         this.mFadeoutAnimation.setAnimationListener(this);
         this.mHandler.postDelayed(this.mStartAnimation, j);
     }
@@ -194,7 +282,7 @@ public class RotatableToast extends FrameLayout implements Animation$AnimationLi
         }
     }
 
-    @Override // android.view.animation.Animation$AnimationListener
+    @Override // android.view.animation.Animation.AnimationListener
     public void onAnimationEnd(Animation animation) {
         if (CamLog.VERBOSE) {
             CamLog.d("onAnimationEnd() is called.");
@@ -202,7 +290,7 @@ public class RotatableToast extends FrameLayout implements Animation$AnimationLi
         removeFromWindow();
     }
 
-    @Override // android.view.animation.Animation$AnimationListener
+    @Override // android.view.animation.Animation.AnimationListener
     public void onAnimationStart(Animation animation) {
         if (CamLog.VERBOSE) {
             CamLog.d("onAnimationStart() is called.");
@@ -228,6 +316,6 @@ public class RotatableToast extends FrameLayout implements Animation$AnimationLi
         if (layoutInflater == null) {
             throw new AssertionError("LayoutInflater not found.");
         }
-        return (RotatableToast) layoutInflater.inflate(2131492990, (ViewGroup) null);
+        return (RotatableToast) layoutInflater.inflate(R.layout.rotatable_toast, (ViewGroup) null);
     }
 }

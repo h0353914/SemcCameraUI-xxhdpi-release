@@ -3,8 +3,12 @@
     <string name="cam_3d_strings_creating_but_incorrect_direction_txt">Could not complete capturing. Please pan in the correct direction.</string>
     <string name="cam_3d_strings_creating_but_too_quick_txt">Could not complete capturing. Please pan more slowly.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Could not complete capturing. Please pan faster.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Creating the following files:\n- Multi Angle image\n- 3D image\nNote: These files contain a grey area.</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Processing...\nThis image contains a grey area</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Creating the following files:
+- Multi Angle image
+- 3D image
+Note: These files contain a grey area."</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Processing...
+This image contains a grey area"</string>
     <string name="cam_string_dualrec_m_apr_txt">%1$td April %2$tY</string>
     <string name="cam_string_dualrec_m_aug_txt">%1$td August %2$tY</string>
     <string name="cam_string_dualrec_m_dec_txt">%1$td December %2$tY</string>
@@ -57,7 +61,8 @@
     <string name="cam_strings_focus_mode_multi_af_txt">Multi auto focus</string>
     <string name="cam_strings_focus_mode_single_af_txt">Single auto focus</string>
     <string name="cam_strings_fusion_error_too_close_txt">Move further away from the object</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Cannot start app.\nMake sure that the latest version of %1$s is installed and enabled on your device.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Cannot start app.
+Make sure that the latest version of %1$s is installed and enabled on your device."</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Turn your palm towards the camera. Self-timer will be turned on when your palm is recognised. To help with recognition, extend your fingers upwards.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Turn your palm towards the camera</string>
     <string name="cam_strings_image_stabilizer_title_txt">Image stabiliser</string>
@@ -72,10 +77,13 @@
     <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Sony Wi-Fi/NFC camera</string>
     <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Cannot connect with another Xperia when your Xperia is connected with a Sony Wi-Fi/NFC camera.</string>
     <string name="cam_strings_photometry_center_txt">Centre</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">The camera has been launched automatically by detecting your motion of lifting up your phone in landscape mode and aiming it towards an object.\nYou can select your favourite way to use this feature from Smart launch in camera settings.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"The camera has been launched automatically by detecting your motion of lifting up your phone in landscape mode and aiming it towards an object.
+You can select your favourite way to use this feature from Smart launch in camera settings."</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Tap inside the circle to view full screen</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">You can launch the camera quickly. Swiftly lift your device in landscape mode and aim the camera towards an object. The camera will be launched automatically.\nYou can select your favourite way to use this feature from Smart launch in camera settings.</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">You can launch the camera quickly. Swing your device up in landscape mode and aim the camera towards an object. The camera will be launched automatically.\nYou can turn off this feature from Smart launch in camera settings.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"You can launch the camera quickly. Swiftly lift your device in landscape mode and aim the camera towards an object. The camera will be launched automatically.
+You can select your favourite way to use this feature from Smart launch in camera settings."</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"You can launch the camera quickly. Swing your device up in landscape mode and aim the camera towards an object. The camera will be launched automatically.
+You can turn off this feature from Smart launch in camera settings."</string>
     <string name="cam_strings_preview_only_front_txt">Front camera only</string>
     <string name="cam_strings_reset_color_brightness_txt">Reset colour and brightness</string>
     <string name="cam_strings_restricted_setting_photo_resolution_or_scene_txt">This setting is not supported for the current resolution or scene. To configure this setting, change the resolution or scene selection.</string>
@@ -86,7 +94,8 @@
     <string name="cam_strings_runtime_permission_rationale_microphone_txt">To record sounds</string>
     <string name="cam_strings_scenes_soft_skin_cy_txt">Soft Skin</string>
     <string name="cam_strings_shutter_trigger_txt">Auto-capturing</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Instantly record a precious moment in %1$s fps slow motion by tapping the button in the centre of the screen.\nRecording in bright conditions will help you create a better video.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Instantly record a precious moment in %1$s fps slow motion by tapping the button in the centre of the screen.
+Recording in bright conditions will help you create a better video."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">You can record a right moment with %1$s fps by tapping the centre button</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Instantly record a precious moment in %1$s fps slow motion by tapping the button in the centre of the screen</string>
     <string name="cam_strings_slow_motion_standard_tutorial_2_txt">Record a video and then edit it to make select parts in slow motion. Tap the button in centre of the screen to set the parts as slow motion.</string>
@@ -97,8 +106,10 @@
     <string name="cam_strings_sw_licence_title_txt">Software Licences</string>
     <string name="cam_strings_touch_capturing_only_front_txt">Front camera only</string>
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">For stable 4K video recording, you must not change this setting unless you use a high-speed SD card (UHS Speed Class 1 or higher, or Speed Class 10 are recommended).</string>
-    <string name="cam_strings_video_explanatory_slowmotion_setting_txt">For stable slow-motion video recording, don\'t change this setting unless you use a high-speed SD card (UHS Speed Class 1 or higher, or Speed Class 10 are recommended).</string>
-    <string name="cam_strings_video_explanatory_txt">For stable video recording, we recommend that you change data storage to Internal storage. Would you like to change now?\n\nIf you continue to use SD card as data storage, make sure that you use a high-speed SD card (UHS Speed Class 1 or higher, or Speed Class 10 recommended).</string>
+    <string name="cam_strings_video_explanatory_slowmotion_setting_txt">"For stable slow-motion video recording, don't change this setting unless you use a high-speed SD card (UHS Speed Class 1 or higher, or Speed Class 10 are recommended)."</string>
+    <string name="cam_strings_video_explanatory_txt">"For stable video recording, we recommend that you change data storage to Internal storage. Would you like to change now?
+
+If you continue to use SD card as data storage, make sure that you use a high-speed SD card (UHS Speed Class 1 or higher, or Speed Class 10 recommended)."</string>
     <string name="cam_strings_video_fusion_tutorial_1_txt">Keep at least 1 metre away from the object when recording with dual camera. Getting close to the object may cause a shift of the view point or colour when recording in Ultra-high sensitivity.</string>
     <string name="cam_strings_video_fusion_tutorial_2_txt">To take great close-up photos, tap No and switch to single camera. You can change it back to dual camera at any time by tapping the button on the viewfinder.</string>
     <string name="cam_strings_video_resolution_4k_file_type_txt">File format (4K)</string>

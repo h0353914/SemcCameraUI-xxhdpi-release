@@ -4,16 +4,16 @@ import android.content.Context;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Looper;
-import com.google.android.gms.common.api.Api$zzd;
-import com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener;
+import com.google.android.gms.common.api.Api;
+import com.google.android.gms.common.api.GoogleApiClient;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzac<T extends IInterface> extends zzj<T> {
-    private final Api$zzd<T> zzagt;
+    private final Api.zzd<T> zzagt;
 
-    public zzac(Context context, Looper looper, int i, GoogleApiClient$ConnectionCallbacks googleApiClient$ConnectionCallbacks, GoogleApiClient$OnConnectionFailedListener googleApiClient$OnConnectionFailedListener, zzf zzfVar, Api$zzd api$zzd) {
-        super(context, looper, i, zzfVar, googleApiClient$ConnectionCallbacks, googleApiClient$OnConnectionFailedListener);
-        this.zzagt = api$zzd;
+    public zzac(Context context, Looper looper, int i, GoogleApiClient.ConnectionCallbacks connectionCallbacks, GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener, com.google.android.gms.common.internal.zzf zzfVar, Api.zzd zzdVar) {
+        super(context, looper, i, zzfVar, connectionCallbacks, onConnectionFailedListener);
+        this.zzagt = zzdVar;
     }
 
     @Override // com.google.android.gms.common.internal.zzj

@@ -3,10 +3,10 @@ package com.google.android.gms.common.api;
 import android.app.PendingIntent;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzd implements Parcelable$Creator<Status> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzd implements Parcelable.Creator<Status> {
     static void zza(Status status, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, status.getStatusCode());
@@ -16,17 +16,9 @@ public class zzd implements Parcelable$Creator<Status> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ Status createFromParcel(Parcel parcel) {
-        return zzae(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ Status[] newArray(int i) {
-        return zzbm(i);
-    }
-
-    public Status zzae(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzae, reason: merged with bridge method [inline-methods] */
+    public Status createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         String strZzp = null;
@@ -57,10 +49,12 @@ public class zzd implements Parcelable$Creator<Status> {
         if (parcel.dataPosition() == iZzap) {
             return new Status(iZzg, iZzg2, strZzp, pendingIntent);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public Status[] zzbm(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbm, reason: merged with bridge method [inline-methods] */
+    public Status[] newArray(int i) {
         return new Status[i];
     }
 }

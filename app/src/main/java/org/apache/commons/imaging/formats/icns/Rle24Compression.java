@@ -1,5 +1,7 @@
 package org.apache.commons.imaging.formats.icns;
 
+import kotlin.jvm.internal.ByteCompanionObject;
+
 final class Rle24Compression {
     private Rle24Compression() {
     }
@@ -14,7 +16,7 @@ final class Rle24Compression {
             int i7 = i4;
             int i8 = i3;
             while (i8 > 0) {
-                if ((bArr[i7] & 128) != 0) {
+                if ((bArr[i7] & ByteCompanionObject.MIN_VALUE) != 0) {
                     int i9 = (bArr[i7] & 255) - 125;
                     int i10 = i6;
                     int i11 = 0;

@@ -9,11 +9,6 @@ import org.apache.commons.imaging.formats.tiff.constants.TiffDirectoryType;
 import org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType;
 
 public class TagInfoXpString extends TagInfo {
-    @Override // org.apache.commons.imaging.formats.tiff.taginfos.TagInfo
-    public /* bridge */ /* synthetic */ Object getValue(TiffField tiffField) throws ImageReadException {
-        return getValue(tiffField);
-    }
-
     public TagInfoXpString(String str, int i, int i2, TiffDirectoryType tiffDirectoryType) {
         super(str, i, FieldType.BYTE, i2, tiffDirectoryType);
     }

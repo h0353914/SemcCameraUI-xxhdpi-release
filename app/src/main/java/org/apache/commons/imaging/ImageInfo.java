@@ -1,3 +1,5 @@
+
+
 package org.apache.commons.imaging;
 
 import java.io.PrintWriter;
@@ -7,9 +9,9 @@ import java.util.List;
 
 public class ImageInfo {
     private final int bitsPerPixel;
-    private final ImageInfo$ColorType colorType;
+    private final ColorType colorType;
     private final List<String> comments;
-    private final ImageInfo$CompressionAlgorithm compressionAlgorithm;
+    private final CompressionAlgorithm compressionAlgorithm;
     private final ImageFormat format;
     private final String formatDetails;
     private final String formatName;
@@ -25,7 +27,56 @@ public class ImageInfo {
     private final boolean usesPalette;
     private final int width;
 
-    public ImageInfo(String str, int i, List<String> list, ImageFormat imageFormat, String str2, int i2, String str3, int i3, int i4, float f, int i5, float f2, int i6, boolean z, boolean z2, boolean z3, ImageInfo$ColorType imageInfo$ColorType, ImageInfo$CompressionAlgorithm imageInfo$CompressionAlgorithm) {
+    public enum ColorType {
+        BW("Black and White"),
+        GRAYSCALE("Grayscale"),
+        RGB("RGB"),
+        CMYK("CMYK"),
+        YCbCr("YCbCr"),
+        YCCK("YCCK"),
+        YCC("YCC"),
+        OTHER("Other"),
+        UNKNOWN("Unknown");
+
+        private String description;
+
+        ColorType(String str) {
+            this.description = str;
+        }
+
+        @Override // java.lang.Enum
+        public String toString() {
+            return this.description;
+        }
+    }
+
+    public enum CompressionAlgorithm {
+        UNKNOWN("Unknown"),
+        NONE("None"),
+        LZW("LZW"),
+        PACKBITS("PackBits"),
+        JPEG("JPEG"),
+        RLE("RLE: Run-Length Encoding"),
+        ADAPTIVE_RLE("Adaptive RLE"),
+        PSD("Photoshop"),
+        PNG_FILTER("PNG Filter"),
+        CCITT_GROUP_3("CCITT Group 3 1-Dimensional Modified Huffman run-length encoding."),
+        CCITT_GROUP_4("CCITT Group 4"),
+        CCITT_1D("CCITT 1D");
+
+        private String description;
+
+        CompressionAlgorithm(String str) {
+            this.description = str;
+        }
+
+        @Override // java.lang.Enum
+        public String toString() {
+            return this.description;
+        }
+    }
+
+    public ImageInfo(String str, int i, List<String> list, ImageFormat imageFormat, String str2, int i2, String str3, int i3, int i4, float f, int i5, float f2, int i6, boolean z, boolean z2, boolean z3, ColorType colorType, CompressionAlgorithm compressionAlgorithm) {
         this.formatDetails = str;
         this.bitsPerPixel = i;
         this.comments = list;
@@ -42,8 +93,8 @@ public class ImageInfo {
         this.progressive = z;
         this.transparent = z2;
         this.usesPalette = z3;
-        this.colorType = imageInfo$ColorType;
-        this.compressionAlgorithm = imageInfo$CompressionAlgorithm;
+        this.colorType = colorType;
+        this.compressionAlgorithm = compressionAlgorithm;
     }
 
     public int getBitsPerPixel() {
@@ -98,7 +149,7 @@ public class ImageInfo {
         return this.progressive;
     }
 
-    public ImageInfo$ColorType getColorType() {
+    public ColorType getColorType() {
         return this.colorType;
     }
 
@@ -155,7 +206,7 @@ public class ImageInfo {
         return this.usesPalette;
     }
 
-    public ImageInfo$CompressionAlgorithm getCompressionAlgorithm() {
+    public CompressionAlgorithm getCompressionAlgorithm() {
         return this.compressionAlgorithm;
     }
 }

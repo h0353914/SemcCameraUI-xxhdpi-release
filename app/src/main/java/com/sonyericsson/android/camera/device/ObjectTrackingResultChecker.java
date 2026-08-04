@@ -1,15 +1,49 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.device;
 
 import android.graphics.Rect;
 import android.os.Handler;
 import android.os.SystemClock;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.CamLog;
 
 class ObjectTrackingResultChecker extends CaptureResultCheckerBase {
     public static final int LOW_PASS_FILTER_STRENGTH = 0;
     public static final int MINIMUM_INTERVAL_MILLIS = 100;
     private static final String TAG = "ObjectTrackingResultChecker";
-    private final CameraParameters$ObjectTrackingCallback mObjectTrackingCallback;
+    private final CameraParameters.ObjectTrackingCallback mObjectTrackingCallback;
     private Rect mPreviousObjectSelectArea;
     private long mPreviousObjectSelectTime;
     private boolean mStart;
@@ -18,16 +52,12 @@ class ObjectTrackingResultChecker extends CaptureResultCheckerBase {
         return (int) ((i * 1.0f) + (i2 * 0.0f));
     }
 
-    static /* synthetic */ CameraParameters$ObjectTrackingCallback access$000(ObjectTrackingResultChecker objectTrackingResultChecker) {
-        return objectTrackingResultChecker.mObjectTrackingCallback;
-    }
-
-    public ObjectTrackingResultChecker(Handler handler, CameraParameters$ObjectTrackingCallback cameraParameters$ObjectTrackingCallback) {
+    public ObjectTrackingResultChecker(Handler handler, CameraParameters.ObjectTrackingCallback objectTrackingCallback) {
         super(handler);
         this.mPreviousObjectSelectArea = null;
         this.mPreviousObjectSelectTime = 0L;
         this.mStart = false;
-        this.mObjectTrackingCallback = cameraParameters$ObjectTrackingCallback;
+        this.mObjectTrackingCallback = objectTrackingCallback;
     }
 
     @Override // com.sonyericsson.android.camera.device.CaptureResultCheckerBase
@@ -63,7 +93,15 @@ class ObjectTrackingResultChecker extends CaptureResultCheckerBase {
         }
         Rect lowPassFilteredArea = getLowPassFilteredArea(rect, z);
         if (lowPassFilteredArea != null) {
-            this.mHandler.post(new ObjectTrackingResultChecker$1(this, new CameraParameters$ObjectTrackingResult(lowPassFilteredArea, z)));
+            final CameraParameters.ObjectTrackingResult objectTrackingResult = new CameraParameters.ObjectTrackingResult(lowPassFilteredArea, z);
+            this.mHandler.post(new Runnable() { // from class: com.sonyericsson.android.camera.device.ObjectTrackingResultChecker.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    if (ObjectTrackingResultChecker.this.mObjectTrackingCallback != null) {
+                        ObjectTrackingResultChecker.this.mObjectTrackingCallback.onObjectTracked(objectTrackingResult);
+                    }
+                }
+            });
         }
     }
 

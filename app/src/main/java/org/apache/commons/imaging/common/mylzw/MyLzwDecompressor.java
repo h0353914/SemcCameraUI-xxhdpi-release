@@ -14,25 +14,31 @@ public final class MyLzwDecompressor {
     private int codes;
     private final int eoiCode;
     private final int initialCodeSize;
-    private final MyLzwDecompressor$Listener listener;
+    private final Listener listener;
     private final byte[][] table;
     private boolean tiffLZWMode;
     private int written;
+
+    public interface Listener {
+        void code(int i);
+
+        void init(int i, int i2);
+    }
 
     public MyLzwDecompressor(int i, ByteOrder byteOrder) {
         this(i, byteOrder, null);
     }
 
-    public MyLzwDecompressor(int i, ByteOrder byteOrder, MyLzwDecompressor$Listener myLzwDecompressor$Listener) {
+    public MyLzwDecompressor(int i, ByteOrder byteOrder, Listener listener) {
         this.codes = -1;
-        this.listener = myLzwDecompressor$Listener;
+        this.listener = listener;
         this.byteOrder = byteOrder;
         this.initialCodeSize = i;
         this.table = new byte[4096][];
         this.clearCode = 1 << i;
         this.eoiCode = this.clearCode + 1;
-        if (myLzwDecompressor$Listener != null) {
-            myLzwDecompressor$Listener.init(this.clearCode, this.eoiCode);
+        if (listener != null) {
+            listener.init(this.clearCode, this.eoiCode);
         }
         initializeTable();
     }

@@ -5,20 +5,23 @@ import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout$LayoutParams;
+import com.sonyericsson.android.camera.R;
+import com.sonyericsson.android.camera.CameraActivity;
+import com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog;
+import com.sonyericsson.android.camera.view.selectabledialog.ScrollContainer;
 
 public class SettingMenu extends AbsSelectableDialog {
-    public SettingMenu(Context context, AbsSelectableDialog$Params absSelectableDialog$Params, AbsSelectableDialog$SelectableDialogType absSelectableDialog$SelectableDialogType) {
-        this(context, absSelectableDialog$Params, 80, false, absSelectableDialog$SelectableDialogType);
+    public SettingMenu(Context context, AbsSelectableDialog.Params params, AbsSelectableDialog.SelectableDialogType selectableDialogType) {
+        this(context, params, 80, false, selectableDialogType);
     }
 
-    public SettingMenu(Context context, AbsSelectableDialog$Params absSelectableDialog$Params, int i, boolean z, AbsSelectableDialog$SelectableDialogType absSelectableDialog$SelectableDialogType) {
-        super(context, absSelectableDialog$Params, z);
-        this.mDialogType = absSelectableDialog$SelectableDialogType;
-        this.mDialogScrollView = new SettingMenuView(context, absSelectableDialog$SelectableDialogType);
-        this.mDialogScrollView.setup(AbsSelectableDialog$SelectableDialogType.SETTING_MENU == absSelectableDialog$SelectableDialogType, absSelectableDialog$Params, this, computeWidth(), i, z);
-        if (AbsSelectableDialog$SelectableDialogType.SETTING_MENU == absSelectableDialog$SelectableDialogType && z) {
-            this.mDialogScrollView.setScrollStatus(ScrollContainer$Status.FULLSCREEN);
+    public SettingMenu(Context context, AbsSelectableDialog.Params params, int i, boolean z, AbsSelectableDialog.SelectableDialogType selectableDialogType) {
+        super(context, params, z);
+        this.mDialogType = selectableDialogType;
+        this.mDialogScrollView = new SettingMenuView(context, selectableDialogType);
+        this.mDialogScrollView.setup(AbsSelectableDialog.SelectableDialogType.SETTING_MENU == selectableDialogType, params, this, computeWidth(), i, z);
+        if (AbsSelectableDialog.SelectableDialogType.SETTING_MENU == selectableDialogType && z) {
+            this.mDialogScrollView.setScrollStatus(ScrollContainer.Status.FULLSCREEN);
         }
     }
 
@@ -33,14 +36,14 @@ public class SettingMenu extends AbsSelectableDialog {
         this.mParent.addView(this.mDialogScrollView);
         this.mDialogScrollView.getLayoutParams().width = this.mParent.getMeasuredHeight();
         this.mDialogScrollView.getLayoutParams().height = Math.max(this.mParent.getMeasuredWidth(), this.mParent.getMeasuredHeight());
-        ((FrameLayout$LayoutParams) this.mDialogScrollView.getLayoutParams()).gravity = this.mParams.horizontalGavity.value | 80;
+        ((FrameLayout.LayoutParams) this.mDialogScrollView.getLayoutParams()).gravity = this.mParams.horizontalGavity.value | 80;
         adjustLayout();
     }
 
     @Override // com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog
     protected void onOrientationChanged(int i) {
         if (isSettingMenu()) {
-            if (this.mSettingDialogStack.isSecondLayerDialogOpened() && this.mDialogScrollView.getScrollStatus() == ScrollContainer$Status.IDLE) {
+            if (this.mSettingDialogStack.isSecondLayerDialogOpened() && this.mDialogScrollView.getScrollStatus() == ScrollContainer.Status.IDLE) {
                 this.mSettingDialogStack.reopenSecondLayerDialog();
             }
             if (isPortrait()) {
@@ -72,7 +75,7 @@ public class SettingMenu extends AbsSelectableDialog {
     }
 
     private boolean isSettingMenu() {
-        return this.mDialogType == AbsSelectableDialog$SelectableDialogType.SETTING_MENU;
+        return this.mDialogType == AbsSelectableDialog.SelectableDialogType.SETTING_MENU;
     }
 
     @Override // com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog
@@ -80,7 +83,11 @@ public class SettingMenu extends AbsSelectableDialog {
         if (this.mDialogScrollView.getScrollStatus() == null) {
             return false;
         }
-        switch (SettingMenu$2.$SwitchMap$com$sonyericsson$android$camera$view$selectabledialog$ScrollContainer$Status[this.mDialogScrollView.getScrollStatus().ordinal()]) {
+        switch (this.mDialogScrollView.getScrollStatus()) {
+            case EXIT:
+            case OPENING:
+            case CLOSING:
+                return true;
         }
         return false;
     }
@@ -93,10 +100,15 @@ public class SettingMenu extends AbsSelectableDialog {
         return false;
     }
 
-    @Override // com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog, com.sonyericsson.android.camera.view.selectabledialog.ScrollContainer$OnScrollListener
-    public void onScrollFinished(ScrollContainer$Status scrollContainer$Status) {
-        if (scrollContainer$Status == ScrollContainer$Status.EXIT) {
-            this.mDialogScrollView.post(new SettingMenu$1(this));
+    @Override // com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog, com.sonyericsson.android.camera.view.selectabledialog.ScrollContainer.OnScrollListener
+    public void onScrollFinished(ScrollContainer.Status status) {
+        if (status == ScrollContainer.Status.EXIT) {
+            this.mDialogScrollView.post(new Runnable() { // from class: com.sonyericsson.android.camera.view.selectabledialog.SettingMenu.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    ((CameraActivity) SettingMenu.this.mContext).findViewById(R.id.contextual_setting_shortcut).callOnClick();
+                }
+            });
         }
     }
 

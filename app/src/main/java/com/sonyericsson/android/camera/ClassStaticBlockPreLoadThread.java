@@ -17,10 +17,14 @@ import com.sonyericsson.cameracommon.focusview.SmileScore;
 class ClassStaticBlockPreLoadThread extends Thread {
     private static final boolean IS_CLASS_LOAD_TIME_MEASUREMENT = false;
     public static final String TAG = "ClassStaticBlockPreLoadThread";
-    private final ClassStaticBlockPreLoadThread$PreloadDoneCallback mCallback;
+    private final PreloadDoneCallback mCallback;
 
-    public ClassStaticBlockPreLoadThread(ClassStaticBlockPreLoadThread$PreloadDoneCallback classStaticBlockPreLoadThread$PreloadDoneCallback) {
-        this.mCallback = classStaticBlockPreLoadThread$PreloadDoneCallback;
+    interface PreloadDoneCallback {
+        void onPreloadDone();
+    }
+
+    public ClassStaticBlockPreLoadThread(PreloadDoneCallback preloadDoneCallback) {
+        this.mCallback = preloadDoneCallback;
     }
 
     @Override // java.lang.Thread, java.lang.Runnable

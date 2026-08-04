@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 class zzsb implements Cloneable {
     private zzrz<?, ?> zzbir;
     private Object zzbis;
@@ -14,14 +15,10 @@ class zzsb implements Cloneable {
     zzsb() {
     }
 
-    private byte[] toByteArray() throws IOException {
+    private byte[] toByteArray() throws IOException, ArrayIndexOutOfBoundsException, IllegalArgumentException {
         byte[] bArr = new byte[zzB()];
         zza(zzrx.zzC(bArr));
         return bArr;
-    }
-
-    public /* synthetic */ Object clone() throws CloneNotSupportedException {
-        return zzFI();
     }
 
     public boolean equals(Object obj) {
@@ -68,7 +65,8 @@ class zzsb implements Cloneable {
         return iZzB;
     }
 
-    public final zzsb zzFI() {
+    /* renamed from: zzFI, reason: merged with bridge method [inline-methods] */
+    public final zzsb clone() {
         Object objClone;
         zzsb zzsbVar = new zzsb();
         try {
@@ -82,7 +80,7 @@ class zzsb implements Cloneable {
                 return zzsbVar;
             }
             if (this.zzbis instanceof zzse) {
-                objClone = ((zzse) this.zzbis).zzFG();
+                objClone = ((zzse) this.zzbis).clone();
             } else {
                 if (!(this.zzbis instanceof byte[])) {
                     int i = 0;
@@ -109,7 +107,7 @@ class zzsb implements Cloneable {
                         zzse[] zzseVarArr2 = new zzse[zzseVarArr.length];
                         zzsbVar.zzbis = zzseVarArr2;
                         while (i < zzseVarArr.length) {
-                            zzseVarArr2[i] = zzseVarArr[i].zzFG();
+                            zzseVarArr2[i] = zzseVarArr[i].clone();
                             i++;
                         }
                     }
@@ -124,7 +122,7 @@ class zzsb implements Cloneable {
         }
     }
 
-    void zza(zzrx zzrxVar) throws IOException {
+    void zza(zzrx zzrxVar) throws IOException, ArrayIndexOutOfBoundsException, IllegalArgumentException {
         if (this.zzbis != null) {
             this.zzbir.zza(this.zzbis, zzrxVar);
             return;

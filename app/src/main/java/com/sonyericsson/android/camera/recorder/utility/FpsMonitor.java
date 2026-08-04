@@ -37,7 +37,7 @@ public class FpsMonitor {
     }
 
     private void addResult(long j) {
-        this.mResult.add(Double.valueOf(((double) (this.mSampleCount - 1)) / ((j - this.mHeadSampleTime) / 1.0E9d)));
+        this.mResult.add(Double.valueOf((this.mSampleCount - 1) / ((j - this.mHeadSampleTime) / 1.0E9d)));
     }
 
     public String dump() {

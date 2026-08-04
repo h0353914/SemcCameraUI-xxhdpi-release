@@ -12,9 +12,28 @@ public class IntentReader {
     int mVideoQuality;
     boolean mhasLimit = false;
 
-    public IntentReader$VideoQualityConfigurations getVideoQualityConfigurations(Intent intent) {
+    public static class VideoQualityConfigurations {
+        private static final int EXTRA_VIDEO_QUALITY_LOW = 0;
+        public final boolean hasSizeLimit;
+        public final long maxDuration;
+        public final long maxFileSize;
+        public final int quality;
+
+        public VideoQualityConfigurations(long j, long j2, int i, boolean z) {
+            this.maxFileSize = j;
+            this.maxDuration = j2;
+            this.quality = i;
+            this.hasSizeLimit = z;
+        }
+
+        public boolean isQualityLow() {
+            return this.quality == 0;
+        }
+    }
+
+    public VideoQualityConfigurations getVideoQualityConfigurations(Intent intent) {
         readIntent(intent);
-        return new IntentReader$VideoQualityConfigurations(this.mVideoMaxFileSizeInBytes, this.mVideoMaxDurationInMillisecs, this.mVideoQuality, this.mhasLimit);
+        return new VideoQualityConfigurations(this.mVideoMaxFileSizeInBytes, this.mVideoMaxDurationInMillisecs, this.mVideoQuality, this.mhasLimit);
     }
 
     private void readIntent(Intent intent) {
@@ -25,7 +44,7 @@ public class IntentReader {
         if (CamLog.VERBOSE) {
             CamLog.d("#### dump all extra: " + intent.getExtras());
         }
-        if (action.equals("android.media.action.VIDEO_CAPTURE")) {
+        if ("android.media.action.VIDEO_CAPTURE".equals(action)) {
             long longExtra = intent.getLongExtra("android.intent.extra.sizeLimit", -1L);
             if (CamLog.VERBOSE) {
                 CamLog.d("#### extra MediaStore.EXTRA_SIZE_LIMIT long: " + longExtra);

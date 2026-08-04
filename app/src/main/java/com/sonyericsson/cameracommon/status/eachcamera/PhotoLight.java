@@ -1,20 +1,49 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.cameracommon.status.eachcamera;
 
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 import com.sonyericsson.cameracommon.status.EnumValue;
 
-public class PhotoLight extends EnumValue<PhotoLight$Value> implements EachCameraStatusValue {
-    public static final PhotoLight$Value DEFAULT_VALUE = PhotoLight$Value.OFF;
+public class PhotoLight extends EnumValue implements EachCameraStatusValue {
+    public static final Value DEFAULT_VALUE = Value.OFF;
     public static final String KEY = "photo_light";
     private static int REQUIRED_PROVIDER_VERSION = 1;
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusValue
     public String getKey() {
-        return "photo_light";
+        return KEY;
     }
 
-    public PhotoLight(PhotoLight$Value photoLight$Value) {
-        super(photoLight$Value);
+    public enum Value {
+        ON("on"),
+        OFF("off");
+
+        private final String mStringExpression;
+
+        Value(String str) {
+            this.mStringExpression = str;
+        }
+
+        @Override // java.lang.Enum
+        public String toString() {
+            return this.mStringExpression;
+        }
+    }
+
+    public PhotoLight(Value value) {
+        super(value);
     }
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusValue

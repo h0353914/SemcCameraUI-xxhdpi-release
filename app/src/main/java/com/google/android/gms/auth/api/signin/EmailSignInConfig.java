@@ -2,14 +2,15 @@ package com.google.android.gms.auth.api.signin;
 
 import android.net.Uri;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Patterns;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzx;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class EmailSignInConfig implements SafeParcelable {
-    public static final Parcelable$Creator<EmailSignInConfig> CREATOR = new zza();
+    public static final Parcelable.Creator<EmailSignInConfig> CREATOR = new zza();
     final int versionCode;
     private final Uri zzSU;
     private String zzSV;
@@ -36,6 +37,7 @@ public class EmailSignInConfig implements SafeParcelable {
         Code decompiled incorrectly, please refer to instructions dump.
     */
     public boolean equals(Object obj) {
+
         EmailSignInConfig emailSignInConfig;
         boolean z = false;
         if (obj == null) {
@@ -44,6 +46,7 @@ public class EmailSignInConfig implements SafeParcelable {
         try {
             emailSignInConfig = (EmailSignInConfig) obj;
         } catch (ClassCastException unused) {
+            return false;
         }
         if (this.zzSU.equals(emailSignInConfig.zzlO())) {
             if (this.zzSW == null) {

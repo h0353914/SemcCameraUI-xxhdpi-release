@@ -5,6 +5,7 @@ import com.sonyericsson.android.camera.configuration.parameters.Hdr;
 import com.sonyericsson.android.camera.configuration.parameters.Iso;
 import com.sonyericsson.android.camera.configuration.parameters.Resolution;
 import com.sonyericsson.android.camera.configuration.parameters.ShutterSpeed;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 import com.sonyericsson.android.camera.parameter.ParameterUtil;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
@@ -26,7 +27,7 @@ public class IsoApplier extends DependencyApplier {
             }
             return;
         }
-        if (!PlatformCapability.getSupportedAeModes(((CapturingMode) capturingModeParams.mCapturingMode.get()).getCameraId()).contains("semi-auto")) {
+        if (!PlatformCapability.getSupportedAeModes(((CapturingMode) capturingModeParams.mCapturingMode.get()).getCameraId()).contains(CameraParameters.AE_MODE_SEMI_AUTO)) {
             ParameterUtil.applyRecommendedValue(capturingModeParams.mShutterSpeed, ShutterSpeed.AUTO);
         }
         if (PlatformCapability.isStillHdrSupportedWith(((CapturingMode) capturingModeParams.mCapturingMode.get()).getCameraId(), (Resolution) capturingModeParams.mResolution.get())) {

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
-import org.apache.commons.imaging.ImageInfo$ColorType;
+import org.apache.commons.imaging.ImageInfo;
 import org.apache.commons.imaging.ImageReadException;
 
 class PamFileInfo extends FileInfo {
@@ -13,7 +13,7 @@ class PamFileInfo extends FileInfo {
     private final boolean hasAlpha;
     private final int maxval;
     private final float scale;
-    private final PamFileInfo$TupleReader tupleReader;
+    private final TupleReader tupleReader;
 
     @Override // org.apache.commons.imaging.formats.pnm.FileInfo
     public String getImageTypeDescription() {
@@ -23,22 +23,6 @@ class PamFileInfo extends FileInfo {
     @Override // org.apache.commons.imaging.formats.pnm.FileInfo
     public String getMIMEType() {
         return "image/x-portable-arbitrary-map";
-    }
-
-    static /* synthetic */ int access$200(PamFileInfo pamFileInfo) {
-        return pamFileInfo.bytesPerSample;
-    }
-
-    static /* synthetic */ float access$300(PamFileInfo pamFileInfo) {
-        return pamFileInfo.scale;
-    }
-
-    static /* synthetic */ int access$400(PamFileInfo pamFileInfo) {
-        return pamFileInfo.maxval;
-    }
-
-    static /* synthetic */ boolean access$500(PamFileInfo pamFileInfo) {
-        return pamFileInfo.hasAlpha;
     }
 
     PamFileInfo(int i, int i2, int i3, int i4, String str) throws ImageReadException {
@@ -59,15 +43,15 @@ class PamFileInfo extends FileInfo {
         }
         this.hasAlpha = str.endsWith("_ALPHA");
         if ("BLACKANDWHITE".equals(str) || "BLACKANDWHITE_ALPHA".equals(str)) {
-            this.tupleReader = new PamFileInfo$GrayscaleTupleReader(this, ImageInfo$ColorType.BW);
+            this.tupleReader = new GrayscaleTupleReader(ImageInfo.ColorType.BW);
             return;
         }
         if ("GRAYSCALE".equals(str) || "GRAYSCALE_ALPHA".equals(str)) {
-            this.tupleReader = new PamFileInfo$GrayscaleTupleReader(this, ImageInfo$ColorType.GRAYSCALE);
+            this.tupleReader = new GrayscaleTupleReader(ImageInfo.ColorType.GRAYSCALE);
             return;
         }
         if ("RGB".equals(str) || "RGB_ALPHA".equals(str)) {
-            this.tupleReader = new PamFileInfo$ColorTupleReader(this, null);
+            this.tupleReader = new ColorTupleReader();
             return;
         }
         throw new ImageReadException("Unknown PAM tupletype '" + str + "'");
@@ -94,7 +78,7 @@ class PamFileInfo extends FileInfo {
     }
 
     @Override // org.apache.commons.imaging.formats.pnm.FileInfo
-    public ImageInfo$ColorType getColorType() {
+    public ImageInfo.ColorType getColorType() {
         return this.tupleReader.getColorType();
     }
 
@@ -106,5 +90,64 @@ class PamFileInfo extends FileInfo {
     @Override // org.apache.commons.imaging.formats.pnm.FileInfo
     public int getRGB(InputStream inputStream) throws IOException {
         return this.tupleReader.getRGB(inputStream);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private abstract class TupleReader { public abstract ImageInfo.ColorType getColorType(); public abstract int getRGB(InputStream inputStream) throws IOException; private TupleReader() { } }
+
+    private class GrayscaleTupleReader extends TupleReader {
+        private final ImageInfo.ColorType colorType;
+
+        public GrayscaleTupleReader(ImageInfo.ColorType colorType) {
+            super();
+            this.colorType = colorType;
+        }
+
+        @Override // org.apache.commons.imaging.formats.pnm.PamFileInfo.TupleReader
+        public ImageInfo.ColorType getColorType() {
+            return this.colorType;
+        }
+
+        @Override // org.apache.commons.imaging.formats.pnm.PamFileInfo.TupleReader
+        public int getRGB(InputStream inputStream) throws IOException {
+            int iScaleSample = FileInfo.scaleSample(FileInfo.readSample(inputStream, PamFileInfo.this.bytesPerSample), PamFileInfo.this.scale, PamFileInfo.this.maxval);
+            int iScaleSample2 = PamFileInfo.this.hasAlpha ? FileInfo.scaleSample(FileInfo.readSample(inputStream, PamFileInfo.this.bytesPerSample), PamFileInfo.this.scale, PamFileInfo.this.maxval) : 255;
+            int i = 255 & iScaleSample;
+            return ((iScaleSample2 & 255) << 24) | (i << 16) | (i << 8) | (i << 0);
+        }
+    }
+
+    private class ColorTupleReader extends TupleReader {
+        private ColorTupleReader() {
+            super();
+        }
+
+        @Override // org.apache.commons.imaging.formats.pnm.PamFileInfo.TupleReader
+        public ImageInfo.ColorType getColorType() {
+            return ImageInfo.ColorType.RGB;
+        }
+
+        @Override // org.apache.commons.imaging.formats.pnm.PamFileInfo.TupleReader
+        public int getRGB(InputStream inputStream) throws IOException {
+            int sample = FileInfo.readSample(inputStream, PamFileInfo.this.bytesPerSample);
+            int sample2 = FileInfo.readSample(inputStream, PamFileInfo.this.bytesPerSample);
+            int sample3 = FileInfo.readSample(inputStream, PamFileInfo.this.bytesPerSample);
+            return (((PamFileInfo.this.hasAlpha ? FileInfo.scaleSample(FileInfo.readSample(inputStream, PamFileInfo.this.bytesPerSample), PamFileInfo.this.scale, PamFileInfo.this.maxval) : 255) & 255) << 24) | ((255 & FileInfo.scaleSample(sample, PamFileInfo.this.scale, PamFileInfo.this.maxval)) << 16) | ((255 & FileInfo.scaleSample(sample2, PamFileInfo.this.scale, PamFileInfo.this.maxval)) << 8) | ((255 & FileInfo.scaleSample(sample3, PamFileInfo.this.scale, PamFileInfo.this.maxval)) << 0);
+        }
     }
 }

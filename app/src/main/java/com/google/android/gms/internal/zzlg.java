@@ -2,19 +2,23 @@ package com.google.android.gms.internal;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.Api;
-import com.google.android.gms.common.api.Api$zza;
-import com.google.android.gms.common.api.Api$zzb;
-import com.google.android.gms.common.api.Api$zzc;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.ResolveAccountResponse;
 import com.google.android.gms.common.internal.zzf;
-import com.google.android.gms.common.internal.zzf$zza;
 import com.google.android.gms.common.internal.zzp;
+import com.google.android.gms.common.internal.zzt;
+import com.google.android.gms.common.internal.zzx;
+import com.google.android.gms.internal.zzlb;
+import com.google.android.gms.internal.zzli;
+import com.google.android.gms.signin.internal.AuthAccountResult;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -25,10 +29,11 @@ import java.util.Set;
 import java.util.concurrent.Future;
 import java.util.concurrent.locks.Lock;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzlg implements zzlj {
     private final Context mContext;
     private final GoogleApiAvailability zzaaP;
-    private final Api$zza<? extends zzqw, zzqx> zzaaQ;
+    private final Api.zza<? extends zzqw, zzqx> zzaaQ;
     private zzqw zzabB;
     private int zzabC;
     private boolean zzabD;
@@ -36,7 +41,7 @@ public class zzlg implements zzlj {
     private zzp zzabF;
     private boolean zzabG;
     private boolean zzabH;
-    private final zzf zzabI;
+    private final com.google.android.gms.common.internal.zzf zzabI;
     private final Map<Api<?>, Integer> zzabJ;
     private final zzli zzabr;
     private final Lock zzabt;
@@ -46,15 +51,248 @@ public class zzlg implements zzlj {
     private int zzabw = 0;
     private boolean zzabx = false;
     private final Bundle zzabz = new Bundle();
-    private final Set<Api$zzc> zzabA = new HashSet();
+    private final Set<Api.zzc> zzabA = new HashSet();
     private ArrayList<Future<?>> zzabK = new ArrayList<>();
 
-    public zzlg(zzli zzliVar, zzf zzfVar, Map<Api<?>, Integer> map, GoogleApiAvailability googleApiAvailability, Api$zza<? extends zzqw, zzqx> api$zza, Lock lock, Context context) {
+    private static class zza extends com.google.android.gms.signin.internal.zzb {
+        private final WeakReference<zzlg> zzabM;
+
+        zza(zzlg zzlgVar) {
+            this.zzabM = new WeakReference<>(zzlgVar);
+        }
+
+        @Override // com.google.android.gms.signin.internal.zzb, com.google.android.gms.signin.internal.zze
+        public void zza(final ConnectionResult connectionResult, AuthAccountResult authAccountResult) {
+            final zzlg zzlgVar = this.zzabM.get();
+            if (zzlgVar == null) {
+                return;
+            }
+            zzlgVar.zzabr.zza(new zzli.zzb(zzlgVar) { // from class: com.google.android.gms.internal.zzlg.zza.1
+                @Override // com.google.android.gms.internal.zzli.zzb
+                public void zznO() {
+                    zzlgVar.zzc(connectionResult);
+                }
+            });
+        }
+    }
+
+    private static class zzb extends zzt.zza {
+        private final WeakReference<zzlg> zzabM;
+
+        zzb(zzlg zzlgVar) {
+            this.zzabM = new WeakReference<>(zzlgVar);
+        }
+
+        @Override // com.google.android.gms.common.internal.zzt
+        public void zzb(final ResolveAccountResponse resolveAccountResponse) {
+            final zzlg zzlgVar = this.zzabM.get();
+            if (zzlgVar == null) {
+                return;
+            }
+            zzlgVar.zzabr.zza(new zzli.zzb(zzlgVar) { // from class: com.google.android.gms.internal.zzlg.zzb.1
+                @Override // com.google.android.gms.internal.zzli.zzb
+                public void zznO() {
+                    zzlgVar.zza(resolveAccountResponse);
+                }
+            });
+        }
+    }
+
+    private class zzc extends zzi {
+        private zzc() {
+            super();
+        }
+
+        @Override // com.google.android.gms.internal.zzlg.zzi
+        public void zznO() {
+            zzlg.this.zzabB.zza(zzlg.this.zzabF, zzlg.this.zzabr.zzaci, new zza(zzlg.this));
+        }
+    }
+
+    private static class zzd implements GoogleApiClient.zza {
+        private final WeakReference<zzlg> zzabM;
+        private final Api<?> zzabS;
+        private final int zzabT;
+
+        public zzd(zzlg zzlgVar, Api<?> api, int i) {
+            this.zzabM = new WeakReference<>(zzlgVar);
+            this.zzabS = api;
+            this.zzabT = i;
+        }
+
+        @Override // com.google.android.gms.common.api.GoogleApiClient.zza
+        public void zza(ConnectionResult connectionResult) {
+            zzlg zzlgVar = this.zzabM.get();
+            if (zzlgVar == null) {
+                return;
+            }
+            zzx.zza(Looper.myLooper() == zzlgVar.zzabr.getLooper(), "onReportServiceBinding must be called on the GoogleApiClient handler thread");
+            zzlgVar.zzabt.lock();
+            try {
+                if (zzlgVar.zzbn(0)) {
+                    if (!connectionResult.isSuccess()) {
+                        zzlgVar.zzb(connectionResult, this.zzabS, this.zzabT);
+                    }
+                    if (zzlgVar.zznP()) {
+                        zzlgVar.zznQ();
+                    }
+                }
+            } finally {
+                zzlgVar.zzabt.unlock();
+            }
+        }
+
+        @Override // com.google.android.gms.common.api.GoogleApiClient.zza
+        public void zzb(ConnectionResult connectionResult) {
+            zzlg zzlgVar = this.zzabM.get();
+            if (zzlgVar == null) {
+                return;
+            }
+            zzx.zza(Looper.myLooper() == zzlgVar.zzabr.getLooper(), "onReportAccountValidation must be called on the GoogleApiClient handler thread");
+            zzlgVar.zzabt.lock();
+            try {
+                if (zzlgVar.zzbn(1)) {
+                    if (!connectionResult.isSuccess()) {
+                        zzlgVar.zzb(connectionResult, this.zzabS, this.zzabT);
+                    }
+                    if (zzlgVar.zznP()) {
+                        zzlgVar.zznS();
+                    }
+                }
+            } finally {
+                zzlgVar.zzabt.unlock();
+            }
+        }
+    }
+
+    private class zze extends zzi {
+        private final Map<Api.zzb, GoogleApiClient.zza> zzabU;
+
+        public zze(Map<Api.zzb, GoogleApiClient.zza> map) {
+            super();
+            this.zzabU = map;
+        }
+
+        @Override // com.google.android.gms.internal.zzlg.zzi
+        public void zznO() {
+            int iIsGooglePlayServicesAvailable = zzlg.this.zzaaP.isGooglePlayServicesAvailable(zzlg.this.mContext);
+            if (iIsGooglePlayServicesAvailable != 0) {
+                final ConnectionResult connectionResult = new ConnectionResult(iIsGooglePlayServicesAvailable, null);
+                zzlg.this.zzabr.zza(new zzli.zzb(zzlg.this) { // from class: com.google.android.gms.internal.zzlg.zze.1
+                    @Override // com.google.android.gms.internal.zzli.zzb
+                    public void zznO() {
+                        zzlg.this.zzf(connectionResult);
+                    }
+                });
+                return;
+            }
+            if (zzlg.this.zzabD) {
+                zzlg.this.zzabB.connect();
+            }
+            for (Api.zzb zzbVar : this.zzabU.keySet()) {
+                zzbVar.zza(this.zzabU.get(zzbVar));
+            }
+        }
+    }
+
+    private class zzf extends zzi {
+        private final ArrayList<Api.zzb> zzabX;
+
+        public zzf(ArrayList<Api.zzb> arrayList) {
+            super();
+            this.zzabX = arrayList;
+        }
+
+        @Override // com.google.android.gms.internal.zzlg.zzi
+        public void zznO() {
+            Set<Scope> setZznX = zzlg.this.zzabr.zzaci;
+            if (setZznX.isEmpty()) {
+                setZznX = zzlg.this.zznX();
+            }
+            Iterator<Api.zzb> it = this.zzabX.iterator();
+            while (it.hasNext()) {
+                it.next().zza(zzlg.this.zzabF, setZznX);
+            }
+        }
+    }
+
+    private class zzg implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+        private zzg() {
+        }
+
+        @Override // com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks
+        public void onConnected(Bundle bundle) {
+            zzlg.this.zzabB.zza(new zzb(zzlg.this));
+        }
+
+        @Override // com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener
+        public void onConnectionFailed(ConnectionResult connectionResult) {
+            zzlg.this.zzabt.lock();
+            try {
+                if (zzlg.this.zze(connectionResult)) {
+                    zzlg.this.zznV();
+                    zzlg.this.zznT();
+                } else {
+                    zzlg.this.zzf(connectionResult);
+                }
+            } finally {
+                zzlg.this.zzabt.unlock();
+            }
+        }
+
+        @Override // com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks
+        public void onConnectionSuspended(int i) {
+        }
+    }
+
+    private class zzh extends zzi {
+        private final ArrayList<Api.zzb> zzabX;
+
+        public zzh(ArrayList<Api.zzb> arrayList) {
+            super();
+            this.zzabX = arrayList;
+        }
+
+        @Override // com.google.android.gms.internal.zzlg.zzi
+        public void zznO() {
+            Iterator<Api.zzb> it = this.zzabX.iterator();
+            while (it.hasNext()) {
+                it.next().zza(zzlg.this.zzabF);
+            }
+        }
+    }
+
+    private abstract class zzi implements Runnable {
+        private zzi() {
+        }
+
+        /* JADX WARN: Unreachable blocks removed: 1, instructions: 1 */
+        @Override // java.lang.Runnable
+        public void run() {
+            zzlg.this.zzabt.lock();
+            try {
+                try {
+                } catch (RuntimeException e) {
+                    zzlg.this.zzabr.zza(e);
+                }
+                if (Thread.interrupted()) {
+                    return;
+                }
+                zznO();
+            } finally {
+                zzlg.this.zzabt.unlock();
+            }
+        }
+
+        protected abstract void zznO();
+    }
+
+    public zzlg(zzli zzliVar, com.google.android.gms.common.internal.zzf zzfVar, Map<Api<?>, Integer> map, GoogleApiAvailability googleApiAvailability, Api.zza<? extends zzqw, zzqx> zzaVar, Lock lock, Context context) {
         this.zzabr = zzliVar;
         this.zzabI = zzfVar;
         this.zzabJ = map;
         this.zzaaP = googleApiAvailability;
-        this.zzaaQ = api$zza;
+        this.zzaaQ = zzaVar;
         this.zzabt = lock;
         this.mContext = context;
     }
@@ -69,11 +307,8 @@ public class zzlg implements zzlj {
         }
     }
 
-    static /* synthetic */ Context zza(zzlg zzlgVar) {
-        return zzlgVar.mContext;
-    }
-
-    private void zza(ResolveAccountResponse resolveAccountResponse) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void zza(ResolveAccountResponse resolveAccountResponse) {
         if (zzbn(0)) {
             ConnectionResult connectionResultZzpr = resolveAccountResponse.zzpr();
             if (connectionResultZzpr.isSuccess()) {
@@ -92,18 +327,6 @@ public class zzlg implements zzlj {
         }
     }
 
-    static /* synthetic */ void zza(zzlg zzlgVar, ConnectionResult connectionResult) {
-        zzlgVar.zzf(connectionResult);
-    }
-
-    static /* synthetic */ void zza(zzlg zzlgVar, ConnectionResult connectionResult, Api api, int i) {
-        zzlgVar.zzb(connectionResult, api, i);
-    }
-
-    static /* synthetic */ void zza(zzlg zzlgVar, ResolveAccountResponse resolveAccountResponse) {
-        zzlgVar.zza(resolveAccountResponse);
-    }
-
     private boolean zza(int i, int i2, ConnectionResult connectionResult) {
         if (i2 != 1 || zzd(connectionResult)) {
             return this.zzabu == null || i < this.zzabv;
@@ -111,15 +334,8 @@ public class zzlg implements zzlj {
         return false;
     }
 
-    static /* synthetic */ boolean zza(zzlg zzlgVar, int i) {
-        return zzlgVar.zzbn(i);
-    }
-
-    static /* synthetic */ GoogleApiAvailability zzb(zzlg zzlgVar) {
-        return zzlgVar.zzaaP;
-    }
-
-    private void zzb(ConnectionResult connectionResult, Api<?> api, int i) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void zzb(ConnectionResult connectionResult, Api<?> api, int i) {
         if (i != 2) {
             int priority = api.zznv().getPriority();
             if (zza(priority, i, connectionResult)) {
@@ -130,11 +346,8 @@ public class zzlg implements zzlj {
         this.zzabr.zzach.put(api.zznx(), connectionResult);
     }
 
-    static /* synthetic */ boolean zzb(zzlg zzlgVar, ConnectionResult connectionResult) {
-        return zzlgVar.zze(connectionResult);
-    }
-
-    private boolean zzbn(int i) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public boolean zzbn(int i) {
         if (this.zzabw == i) {
             return true;
         }
@@ -159,11 +372,8 @@ public class zzlg implements zzlj {
         }
     }
 
-    static /* synthetic */ Lock zzc(zzlg zzlgVar) {
-        return zzlgVar.zzabt;
-    }
-
-    private void zzc(ConnectionResult connectionResult) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void zzc(ConnectionResult connectionResult) {
         if (zzbn(2)) {
             if (!connectionResult.isSuccess()) {
                 if (!zze(connectionResult)) {
@@ -176,34 +386,20 @@ public class zzlg implements zzlj {
         }
     }
 
-    static /* synthetic */ void zzc(zzlg zzlgVar, ConnectionResult connectionResult) {
-        zzlgVar.zzc(connectionResult);
-    }
-
-    static /* synthetic */ zzli zzd(zzlg zzlgVar) {
-        return zzlgVar.zzabr;
-    }
-
     private boolean zzd(ConnectionResult connectionResult) {
         return connectionResult.hasResolution() || this.zzaaP.zzbi(connectionResult.getErrorCode()) != null;
     }
 
-    private boolean zze(ConnectionResult connectionResult) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public boolean zze(ConnectionResult connectionResult) {
         if (this.zzabC != 2) {
             return this.zzabC == 1 && !connectionResult.hasResolution();
         }
         return true;
     }
 
-    static /* synthetic */ boolean zze(zzlg zzlgVar) {
-        return zzlgVar.zzabD;
-    }
-
-    static /* synthetic */ zzqw zzf(zzlg zzlgVar) {
-        return zzlgVar.zzabB;
-    }
-
-    private void zzf(ConnectionResult connectionResult) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void zzf(ConnectionResult connectionResult) {
         zznW();
         zzY(!connectionResult.hasResolution());
         this.zzabr.zzach.clear();
@@ -218,35 +414,8 @@ public class zzlg implements zzlj {
         this.zzabr.zzabZ.zzpk();
     }
 
-    static /* synthetic */ zzp zzg(zzlg zzlgVar) {
-        return zzlgVar.zzabF;
-    }
-
-    static /* synthetic */ Set zzh(zzlg zzlgVar) {
-        return zzlgVar.zznX();
-    }
-
-    static /* synthetic */ void zzi(zzlg zzlgVar) {
-        zzlgVar.zznV();
-    }
-
-    static /* synthetic */ void zzj(zzlg zzlgVar) {
-        zzlgVar.zznT();
-    }
-
-    static /* synthetic */ boolean zzk(zzlg zzlgVar) {
-        return zzlgVar.zznP();
-    }
-
-    static /* synthetic */ void zzl(zzlg zzlgVar) {
-        zzlgVar.zznQ();
-    }
-
-    static /* synthetic */ void zzm(zzlg zzlgVar) {
-        zzlgVar.zznS();
-    }
-
-    private boolean zznP() {
+    /* JADX INFO: Access modifiers changed from: private */
+    public boolean zznP() {
         ConnectionResult connectionResult;
         this.zzaby--;
         if (this.zzaby > 0) {
@@ -266,7 +435,8 @@ public class zzlg implements zzlj {
         return false;
     }
 
-    private void zznQ() {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void zznQ() {
         if (this.zzaby != 0) {
             return;
         }
@@ -281,9 +451,9 @@ public class zzlg implements zzlj {
         ArrayList arrayList = new ArrayList();
         this.zzabw = 1;
         this.zzaby = this.zzabr.zzacg.size();
-        for (Api$zzc<?> api$zzc : this.zzabr.zzacg.keySet()) {
-            if (!this.zzabr.zzach.containsKey(api$zzc)) {
-                arrayList.add(this.zzabr.zzacg.get(api$zzc));
+        for (Api.zzc<?> zzcVar : this.zzabr.zzacg.keySet()) {
+            if (!this.zzabr.zzach.containsKey(zzcVar)) {
+                arrayList.add(this.zzabr.zzacg.get(zzcVar));
             } else if (zznP()) {
                 zznS();
             }
@@ -291,22 +461,24 @@ public class zzlg implements zzlj {
         if (arrayList.isEmpty()) {
             return;
         }
-        this.zzabK.add(zzlk.zzoj().submit(new zzlg$zzh(this, arrayList)));
+        this.zzabK.add(zzlk.zzoj().submit(new zzh(arrayList)));
     }
 
-    private void zznS() {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void zznS() {
         this.zzabw = 2;
         this.zzabr.zzaci = zznX();
-        this.zzabK.add(zzlk.zzoj().submit(new zzlg$zzc(this, null)));
+        this.zzabK.add(zzlk.zzoj().submit(new zzc()));
     }
 
-    private void zznT() {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void zznT() {
         ArrayList arrayList = new ArrayList();
         this.zzabw = 3;
         this.zzaby = this.zzabr.zzacg.size();
-        for (Api$zzc<?> api$zzc : this.zzabr.zzacg.keySet()) {
-            if (!this.zzabr.zzach.containsKey(api$zzc)) {
-                arrayList.add(this.zzabr.zzacg.get(api$zzc));
+        for (Api.zzc<?> zzcVar : this.zzabr.zzacg.keySet()) {
+            if (!this.zzabr.zzach.containsKey(zzcVar)) {
+                arrayList.add(this.zzabr.zzacg.get(zzcVar));
             } else if (zznP()) {
                 zznU();
             }
@@ -314,19 +486,24 @@ public class zzlg implements zzlj {
         if (arrayList.isEmpty()) {
             return;
         }
-        this.zzabK.add(zzlk.zzoj().submit(new zzlg$zzf(this, arrayList)));
+        this.zzabK.add(zzlk.zzoj().submit(new zzf(arrayList)));
     }
 
     private void zznU() {
         this.zzabr.zzob();
-        zzlk.zzoj().execute(new zzlg$1(this));
+        zzlk.zzoj().execute(new Runnable() { // from class: com.google.android.gms.internal.zzlg.1
+            @Override // java.lang.Runnable
+            public void run() {
+                zzlg.this.zzaaP.zzac(zzlg.this.mContext);
+            }
+        });
         if (this.zzabB != null) {
             if (this.zzabG) {
                 this.zzabB.zza(this.zzabF, this.zzabH);
             }
             zzY(false);
         }
-        Iterator<Api$zzc<?>> it = this.zzabr.zzach.keySet().iterator();
+        Iterator<Api.zzc<?>> it = this.zzabr.zzach.keySet().iterator();
         while (it.hasNext()) {
             this.zzabr.zzacg.get(it.next()).disconnect();
         }
@@ -338,12 +515,13 @@ public class zzlg implements zzlj {
         }
     }
 
-    private void zznV() {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void zznV() {
         this.zzabD = false;
         this.zzabr.zzaci = Collections.emptySet();
-        for (Api$zzc<?> api$zzc : this.zzabA) {
-            if (!this.zzabr.zzach.containsKey(api$zzc)) {
-                this.zzabr.zzach.put(api$zzc, new ConnectionResult(17, null));
+        for (Api.zzc<?> zzcVar : this.zzabA) {
+            if (!this.zzabr.zzach.containsKey(zzcVar)) {
+                this.zzabr.zzach.put(zzcVar, new ConnectionResult(17, null));
             }
         }
     }
@@ -356,9 +534,10 @@ public class zzlg implements zzlj {
         this.zzabK.clear();
     }
 
-    private Set<Scope> zznX() {
+    /* JADX INFO: Access modifiers changed from: private */
+    public Set<Scope> zznX() {
         HashSet hashSet = new HashSet(this.zzabI.zzoK());
-        Map<Api<?>, zzf$zza> mapZzoM = this.zzabI.zzoM();
+        Map<Api<?>, com.google.android.gms.common.internal.zzf.zza> mapZzoM = this.zzabI.zzoM();
         for (Api<?> api : mapZzoM.keySet()) {
             if (!this.zzabr.zzach.containsKey(api.zznx())) {
                 hashSet.addAll(mapZzoM.get(api).zzTm);
@@ -381,10 +560,10 @@ public class zzlg implements zzlj {
         HashMap map = new HashMap();
         boolean z = false;
         for (Api<?> api : this.zzabJ.keySet()) {
-            Api$zzb api$zzb = this.zzabr.zzacg.get(api.zznx());
+            Api.zzb zzbVar = this.zzabr.zzacg.get(api.zznx());
             int iIntValue = this.zzabJ.get(api).intValue();
             z |= api.zznv().getPriority() == 1;
-            if (api$zzb.zzlN()) {
+            if (zzbVar.zzlN()) {
                 this.zzabD = true;
                 if (iIntValue < this.zzabC) {
                     this.zzabC = iIntValue;
@@ -393,18 +572,18 @@ public class zzlg implements zzlj {
                     this.zzabA.add(api.zznx());
                 }
             }
-            map.put(api$zzb, new zzlg$zzd(this, api, iIntValue));
+            map.put(zzbVar, new zzd(this, api, iIntValue));
         }
         if (z) {
             this.zzabD = false;
         }
         if (this.zzabD) {
             this.zzabI.zza(Integer.valueOf(this.zzabr.getSessionId()));
-            zzlg$zzg zzlg_zzg = new zzlg$zzg(this, null);
-            this.zzabB = (zzqw) this.zzaaQ.zza(this.mContext, this.zzabr.getLooper(), this.zzabI, this.zzabI.zzoQ(), zzlg_zzg, zzlg_zzg);
+            zzg zzgVar = new zzg();
+            this.zzabB = (zzqw) this.zzaaQ.zza(this.mContext, this.zzabr.getLooper(), this.zzabI, this.zzabI.zzoQ(), zzgVar, zzgVar);
         }
         this.zzaby = this.zzabr.zzacg.size();
-        this.zzabK.add(zzlk.zzoj().submit(new zzlg$zze(this, map)));
+        this.zzabK.add(zzlk.zzoj().submit(new zze(map)));
     }
 
     @Override // com.google.android.gms.internal.zzlj
@@ -414,9 +593,9 @@ public class zzlg implements zzlj {
 
     @Override // com.google.android.gms.internal.zzlj
     public void disconnect() {
-        Iterator<zzli$zzf<?>> it = this.zzabr.zzaca.iterator();
+        Iterator<zzli.zzf<?>> it = this.zzabr.zzaca.iterator();
         while (it.hasNext()) {
-            zzli$zzf<?> next = it.next();
+            zzli.zzf<?> next = it.next();
             if (next.zznK() != 1) {
                 next.cancel();
                 it.remove();
@@ -457,7 +636,7 @@ public class zzlg implements zzlj {
     }
 
     @Override // com.google.android.gms.internal.zzlj
-    public <A extends Api$zzb, R extends Result, T extends zzlb$zza<R, A>> T zza(T t) {
+    public <A extends Api.zzb, R extends Result, T extends zzlb.zza<R, A>> T zza(T t) {
         this.zzabr.zzaca.add(t);
         return t;
     }
@@ -473,7 +652,7 @@ public class zzlg implements zzlj {
     }
 
     @Override // com.google.android.gms.internal.zzlj
-    public <A extends Api$zzb, T extends zzlb$zza<? extends Result, A>> T zzb(T t) {
+    public <A extends Api.zzb, T extends zzlb.zza<? extends Result, A>> T zzb(T t) {
         throw new IllegalStateException("GoogleApiClient is not connected yet.");
     }
 }

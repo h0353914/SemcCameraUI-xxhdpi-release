@@ -3,10 +3,10 @@ package com.google.android.gms.auth.api.signin;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzc implements Parcelable$Creator<GoogleSignInAccount> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzc implements Parcelable.Creator<GoogleSignInAccount> {
     static void zza(GoogleSignInAccount googleSignInAccount, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, googleSignInAccount.versionCode);
@@ -20,17 +20,9 @@ public class zzc implements Parcelable$Creator<GoogleSignInAccount> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ GoogleSignInAccount createFromParcel(Parcel parcel) {
-        return zzQ(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ GoogleSignInAccount[] newArray(int i) {
-        return zzaH(i);
-    }
-
-    public GoogleSignInAccount zzQ(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzQ, reason: merged with bridge method [inline-methods] */
+    public GoogleSignInAccount createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         String strZzp = null;
         String strZzp2 = null;
@@ -75,10 +67,12 @@ public class zzc implements Parcelable$Creator<GoogleSignInAccount> {
         if (parcel.dataPosition() == iZzap) {
             return new GoogleSignInAccount(iZzg, strZzp, strZzp2, strZzp3, strZzp4, uri, strZzp5, jZzi);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public GoogleSignInAccount[] zzaH(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaH, reason: merged with bridge method [inline-methods] */
+    public GoogleSignInAccount[] newArray(int i) {
         return new GoogleSignInAccount[i];
     }
 }

@@ -2,8 +2,6 @@ package com.sonymobile.android.media;
 
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
-import android.media.MediaRecorder$OnErrorListener;
-import android.media.MediaRecorder$OnInfoListener;
 import android.view.Surface;
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -65,7 +63,7 @@ public class MediaRecorderWrapper {
         this.mOldRecorder.setPreviewDisplay(surface);
     }
 
-    public void setAudioSource(int i) {
+    public void setAudioSource(int i) throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.setAudioSource(i);
         } else {
@@ -77,7 +75,7 @@ public class MediaRecorderWrapper {
         return android.media.MediaRecorder.getAudioSourceMax();
     }
 
-    public void setVideoSource(int i) {
+    public void setVideoSource(int i) throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.setVideoSource(i);
         } else {
@@ -85,7 +83,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void setProfile(CamcorderProfile camcorderProfile) {
+    public void setProfile(CamcorderProfile camcorderProfile) throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.setProfile(camcorderProfile);
         } else {
@@ -93,7 +91,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void setCaptureRate(double d) {
+    public void setCaptureRate(double d) throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.setCaptureRate(d);
         } else {
@@ -117,7 +115,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void setOutputFormat(int i) {
+    public void setOutputFormat(int i) throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.setOutputFormat(i);
         } else {
@@ -125,7 +123,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void setVideoSize(int i, int i2) {
+    public void setVideoSize(int i, int i2) throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.setVideoSize(i, i2);
         } else {
@@ -133,7 +131,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void setVideoFrameRate(int i) {
+    public void setVideoFrameRate(int i) throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.setVideoFrameRate(i);
         } else {
@@ -141,7 +139,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void setVideoEncodingProfileLevel(int i, int i2) {
+    public void setVideoEncodingProfileLevel(int i, int i2) throws IllegalStateException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException {
         if (this.mUseNew) {
             this.mNewRecorder.setVideoEncodingProfileLevel(i, i2);
             return;
@@ -154,7 +152,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void setVideoBitRateMode(int i) throws UnsupportedOperationException {
+    public void setVideoBitRateMode(int i) throws IllegalStateException, UnsupportedOperationException {
         if (this.mUseNew) {
             this.mNewRecorder.setVideoBitRateMode(i);
             return;
@@ -162,7 +160,7 @@ public class MediaRecorderWrapper {
         throw new UnsupportedOperationException("setVideoBitRateMode unsupported");
     }
 
-    public void setVideoColorAspects(int i, int i2, int i3) throws UnsupportedOperationException {
+    public void setVideoColorAspects(int i, int i2, int i3) throws IllegalStateException, UnsupportedOperationException {
         if (this.mUseNew) {
             this.mNewRecorder.setVideoColorAspects(i, i2, i3);
             return;
@@ -170,7 +168,7 @@ public class MediaRecorderWrapper {
         throw new UnsupportedOperationException("setVideoColorAspects unsupported");
     }
 
-    public void setMaxDuration(int i) {
+    public void setMaxDuration(int i) throws IllegalArgumentException {
         if (this.mUseNew) {
             this.mNewRecorder.setMaxDuration(i);
         } else {
@@ -178,7 +176,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void setMaxFileSize(long j) {
+    public void setMaxFileSize(long j) throws IllegalArgumentException {
         if (this.mUseNew) {
             this.mNewRecorder.setMaxFileSize(j);
         } else {
@@ -186,7 +184,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void setAudioEncoder(int i) {
+    public void setAudioEncoder(int i) throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.setAudioEncoder(i);
         } else {
@@ -194,7 +192,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void setVideoEncoder(int i) {
+    public void setVideoEncoder(int i) throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.setVideoEncoder(i);
         } else {
@@ -234,7 +232,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void setOutputFile(FileDescriptor fileDescriptor) {
+    public void setOutputFile(FileDescriptor fileDescriptor) throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.setOutputFile(fileDescriptor);
         } else {
@@ -242,7 +240,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void setOutputFile(String str) {
+    public void setOutputFile(String str) throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.setOutputFile(str);
         } else {
@@ -250,7 +248,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void prepare() throws IOException {
+    public void prepare() throws IllegalStateException, IOException {
         if (this.mUseNew) {
             this.mNewRecorder.prepare();
         } else {
@@ -258,7 +256,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void start() {
+    public void start() throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.start();
         } else {
@@ -266,7 +264,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void stop() {
+    public void stop() throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.stop();
         } else {
@@ -274,7 +272,7 @@ public class MediaRecorderWrapper {
         }
     }
 
-    public void stopOnError() {
+    public void stopOnError() throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.stopOnError();
         } else {
@@ -286,19 +284,19 @@ public class MediaRecorderWrapper {
         return this.mUseNew;
     }
 
-    public void stopAsync() {
+    public void stopAsync() throws IllegalStateException {
         if (isAsyncStopSupported()) {
             this.mNewRecorder.stopAsync();
         }
     }
 
-    public void waitUntilStopCompleted() {
+    public void waitUntilStopCompleted() throws IllegalStateException {
         if (isAsyncStopSupported()) {
             this.mNewRecorder.waitUntilStopCompleted();
         }
     }
 
-    public boolean pause() {
+    public boolean pause() throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.pause();
             return true;
@@ -307,7 +305,7 @@ public class MediaRecorderWrapper {
         return true;
     }
 
-    public boolean resume() {
+    public boolean resume() throws IllegalStateException {
         if (this.mUseNew) {
             this.mNewRecorder.resume();
             return true;
@@ -339,23 +337,23 @@ public class MediaRecorderWrapper {
         return this.mOldRecorder.getMaxAmplitude();
     }
 
-    public void setOnErrorListener(MediaRecorder$OnErrorListener mediaRecorder$OnErrorListener) {
+    public void setOnErrorListener(android.media.MediaRecorder.OnErrorListener onErrorListener) {
         if (this.mUseNew) {
-            this.mNewRecorder.setOnErrorListener(mediaRecorder$OnErrorListener);
+            this.mNewRecorder.setOnErrorListener(onErrorListener);
         } else {
-            this.mOldRecorder.setOnErrorListener(mediaRecorder$OnErrorListener);
+            this.mOldRecorder.setOnErrorListener(onErrorListener);
         }
     }
 
-    public void setOnInfoListener(MediaRecorder$OnInfoListener mediaRecorder$OnInfoListener) {
+    public void setOnInfoListener(android.media.MediaRecorder.OnInfoListener onInfoListener) {
         if (this.mUseNew) {
-            this.mNewRecorder.setOnInfoListener(mediaRecorder$OnInfoListener);
+            this.mNewRecorder.setOnInfoListener(onInfoListener);
         } else {
-            this.mOldRecorder.setOnInfoListener(mediaRecorder$OnInfoListener);
+            this.mOldRecorder.setOnInfoListener(onInfoListener);
         }
     }
 
-    public boolean requestProgressInfo(int i) {
+    public boolean requestProgressInfo(int i) throws IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException {
         if (this.mUseNew) {
             this.mNewRecorder.requestProgressInfo(i);
             return true;

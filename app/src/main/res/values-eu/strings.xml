@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Ezin izan da argazkia atera. Mugitu mantsoago.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Ezin izan da argazkia atera. Mugitu bizkorrago.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Atera arg. panoramikoak kam. alde batetik bestera eramanda</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Fitxategi hauek sortzen:\n- Irudi angelu anitza\n- 3D irudia\nOharra: irudiok eremu gris bat dute.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Fitxategi hauek sortzen:\n- Irudi angelu anitza\n- 3D irudia</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Prozesatzen...\nIrudiak eremu grisak ditu</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Fitxategi hauek sortzen:
+- Irudi angelu anitza
+- 3D irudia
+Oharra: irudiok eremu gris bat dute."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Fitxategi hauek sortzen:
+- Irudi angelu anitza
+- 3D irudia"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Prozesatzen...
+Irudiak eremu grisak ditu"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Irudia gordetzen</string>
     <string name="cam_3d_strings_dialog_processing_txt">Prozesatzen...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Itxaron segundo batzuk 3D kamera abiarazi arte</string>
@@ -359,7 +365,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Egiaztatu zure azalak itxura distiratsu eta leuna duela. Aurreko kamera erabiltzen duten aplikazioekin funtzionatzen du efektuak. Argazki eta bideoetan erabil daiteke. Maila ere doi dezakezu.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Maila doitzea</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Azal suabea</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Ezin da abiarazi aplikazioa.\nEgiaztatu %1$s aplikazioaren azken bertsioa instalatuta eta gaituta duzula gailuan.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Ezin da abiarazi aplikazioa.
+Egiaztatu %1$s aplikazioaren azken bertsioa instalatuta eta gaituta duzula gailuan."</string>
     <string name="cam_strings_gridline_txt">Sareta lerroak</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Biratu ahurra kamerarantz. Tenporizadorea aktibatuko da zure ahurra ezagutu bezain laster. Modu errazean detektatzeko, zabaldu eskua.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Biratu ahurra kamerarantz</string>
@@ -401,7 +408,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Ezarpen arruntak</string>
     <string name="cam_strings_more_txt">Gehiago</string>
     <string name="cam_strings_multi_window_txt">Arrastatu barra zatitzailearen erdialdea pantaila osora pasatzeko eta %1$s erabiltzeko</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Beste gailu bat konektatuta dago orain.\nBisorearen bidez irudia partekatu nahi duzu gailuarekin?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Beste gailu bat konektatuta dago orain.
+Bisorearen bidez irudia partekatu nahi duzu gailuarekin?"</string>
     <string name="cam_strings_multicam_add_device_txt">Gehitu gailua</string>
     <string name="cam_strings_multicam_add_more_txt">Gehitu gehiago</string>
     <string name="cam_strings_multicam_apply_txt">Eginda</string>
@@ -435,7 +443,8 @@
     <string name="cam_strings_predictive_capture_txt">Iragarritako kapturatzea</string>
     <string name="cam_strings_predictive_launch_guide_txt">Punteatu pantaila osoa ikusteko</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Abiarazte igarlea</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Kamera azkar abiarazteko, pasatu hatza gora, eduki gailua ikuspegi panoramikoan eta ipini kamera objektuari begira. Autom. abiaraziko da kamera.\nDesaktibatzeko, joan hona: Kameraren ezarp. &gt; Abiarazte igarlea.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Kamera azkar abiarazteko, pasatu hatza gora, eduki gailua ikuspegi panoramikoan eta ipini kamera objektuari begira. Autom. abiaraziko da kamera.
+Desaktibatzeko, joan hona: Kameraren ezarp. > Abiarazte igarlea."</string>
     <string name="cam_strings_predictive_launch_txt">Abiarazte igarlea</string>
     <string name="cam_strings_preview_always_txt">Aktibatuta</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 segundo</string>
@@ -468,7 +477,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s aplikazioak baimen hau(ek) behar d(it)u</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s baimena</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Ekintza hau egiteko, aplikazioak baimen hau(ek) behar d(it)u.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Baimenak emateko, joan Aplikazioaren informazioa &gt; Baimenak atalera.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Baimenak emateko, joan Aplikazioaren informazioa > Baimenak atalera.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Ezin izan da jarraitu</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Argazkiak ateratzeko eta bideoak grabatzeko</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Kokapena berreskuratzeko</string>
@@ -537,7 +546,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Kamera super geldoa</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Kamera geldorako fps abiadura eta grabazio estiloa alda ditzakezu</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Aukera gehiago</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Grabatatu berehala une gogoangarri bat kamera geldoan (%1$s fps), pantailaren erdialdeko botoia punteatuta.\nArgitasun handiagoz grabatzen baduzu, bideo hobeak sortuko dituzu.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Grabatatu berehala une gogoangarri bat kamera geldoan (%1$s fps), pantailaren erdialdeko botoia punteatuta.
+Argitasun handiagoz grabatzen baduzu, bideo hobeak sortuko dituzu."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">%1$s fps-ko une jakinak graba ditzakezu, erdialdeko botoia punteatuta</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Grabatatu berehala une gogoangarri bat kamera geldoan (%1$s fps), pantailaren erdialdeko botoia punteatuta</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Kamera super geldoa (hartualdi bakarra)</string>
@@ -548,7 +558,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Kamera geldoa</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Nola grabatu</string>
     <string name="cam_strings_slow_motion_standard_txt">Kamera geldoa</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Egin bideo zoragarriak, kamera geldoan une gogoangarriak erakusteko.\nArgitasun handiagoz grabatzen baduzu, bideo hobeak sortuko dituzu.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Egin bideo zoragarriak, kamera geldoan une gogoangarriak erakusteko.
+Argitasun handiagoz grabatzen baduzu, bideo hobeak sortuko dituzu."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Bideoa zenbait abiaduratan graba dezakezu, hau ezarrita: %1$s fps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Punteatu erdialdeko botoia, une egokian</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Kamera geldoan grabatua</string>
@@ -579,12 +590,12 @@
     <string name="cam_strings_sw_licence_title_txt">Software lizentziak</string>
     <string name="cam_strings_take_photo_txt">Atera argazkia</string>
     <string name="cam_strings_term_of_use_accept_txt">Onartu</string>
-    <string name="cam_strings_term_of_use_consent_txt">Sony Mobile-ren &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Erabilera baldintzak&lt;/a&gt; onartzen ditut.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Sony Mobile-ren &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Erabilera baldintzak&lt;/a> onartzen ditut.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Zerbitzu hau erabiliz gero, datuak sare mugikorraren bidez transmititzeagatiko kostuak ordaindu behar izan ditzakezu, zure datu planaren arabera.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile-k hash-dun Android ID gailuaren identifikatzaile esklusiboa, kokapenean oinarritutako datuak eta data bilduko ditu, zerbitzuaren parte gisa emaitza egokiak eskaintzeko eta zerbitzua hobetzeko.</string>
     <string name="cam_strings_term_of_use_decline_txt">Ezetsi</string>
     <string name="cam_strings_term_of_use_title_txt">Baldintzak</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Erabilera baldintzak&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Erabilera baldintzak&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Desautatu argazkiak</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Ezin izan da gorde</string>
     <string name="cam_strings_timeshift_save_complete_txt">Gordea</string>
@@ -611,7 +622,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">4K bideo egonkorrak grabatzeko ez duzu ezarpen hau aldatu behar, abiadura handiko SD txartela badarabilzu salbu (UHS Speed Class 1 edo berriagoa, edo Speed Class 10 gomendatzen dira).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Timeshift bideo egonkorrak grabatzeko ez duzu ezarpen hau aldatu behar, abiadura handiko SD txartela badarabilzu salbu (UHS Speed Class 1 edo berriagoa, edo Speed Class 10 gomendatzen dira). Halere, aldatu egin nahi duzu?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Kamera geldoko bideo egonkorrak grabatzeko ez duzu ezarpen hau aldatu behar, abiadura handiko SD txartela badarabilzu salbu (UHS Speed Class 1 edo berriagoa, edo Speed Class 10 gomendatzen dira).</string>
-    <string name="cam_strings_video_explanatory_txt">Bideo egonkorrak grabatzeko, datuen biltegi gisa Barneko biltegia ezartzea gomendatzen dizugu. Orain aldatu nahi duzu?\n\nSD txartela datuen biltegi gisa erabiltzen jarraitzen baduzu, egiaztatu abiadura handiko SD txartela erabiltzen duzula (UHS Speed Class 1 edo berriagoa, edo Speed Class 10 gomendatzen dira).</string>
+    <string name="cam_strings_video_explanatory_txt">"Bideo egonkorrak grabatzeko, datuen biltegi gisa Barneko biltegia ezartzea gomendatzen dizugu. Orain aldatu nahi duzu?
+
+SD txartela datuen biltegi gisa erabiltzen jarraitzen baduzu, egiaztatu abiadura handiko SD txartela erabiltzen duzula (UHS Speed Class 1 edo berriagoa, edo Speed Class 10 gomendatzen dira)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Kamera bikoitza</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Garbitasun handiko argazki ederrak atera ahalko dituzu kamera bikoitza erabilita, gauez eta argi gutxiko tokietan ere bai. Sentikortasun ultrahandiko argazkiak ateratzeko, Kamera aplikazioak automatikoki aldatuko du kamera bakarraren eta kamera bikoitzaren artean eszenetan oinarrituta.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Kamera bikoitzarekin bideoak grabatzeko aukera</string>

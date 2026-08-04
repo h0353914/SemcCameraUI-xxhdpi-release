@@ -25,7 +25,7 @@ public class VectorCalculator {
 
     public static boolean isParallel(PointF pointF, PointF pointF2) {
         float radianFrom2Vector = getRadianFrom2Vector(pointF, pointF2);
-        return isNearlyEquals(3.1415927f, radianFrom2Vector, 1.0471976f) || isNearlyEquals(0.0f, radianFrom2Vector, 1.0471976f);
+        return isNearlyEquals(PARALLEL_ANGLE_INVERSE_DIRECTION, radianFrom2Vector, 1.0471976f) || isNearlyEquals(0.0f, radianFrom2Vector, 1.0471976f);
     }
 
     private static boolean isNearlyEquals(float f, float f2, float f3) {

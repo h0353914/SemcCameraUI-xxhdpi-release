@@ -1,12 +1,13 @@
 package com.sonyericsson.android.camera.view.baselayout.zoombar;
 
-import android.animation.Animator$AnimatorListener;
+import android.animation.Animator;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 import com.sonymobile.cameracommon.research.ResearchUtil;
@@ -23,24 +24,22 @@ public class Zoombar extends FrameLayout {
     public static final String TAG = "Zoombar";
     private static final float VISIBLE_ALPHA = 1.0f;
     private static final long VISIBLE_ANIMATION_DURATION_IN_MILLIS = 100;
-    private Animator$AnimatorListener mHideAnimationlistener;
+    private Animator.AnimatorListener mHideAnimationlistener;
     private final Runnable mHideEvent;
     private ImageView mLeftIndicator;
     private ImageView mRightIndicator;
     private TextView mValueIndicator;
     private List<Integer> mZoomRatios;
-    private Zoombar$ZoombarDisplayChangedListener mZoombarDisplayChangedListener;
+    private ZoombarDisplayChangedListener mZoombarDisplayChangedListener;
 
-    static /* synthetic */ Zoombar$ZoombarDisplayChangedListener access$000(Zoombar zoombar) {
-        return zoombar.mZoombarDisplayChangedListener;
+    public interface ZoombarDisplayChangedListener {
+        void onShowZoombar();
+
+        void onZoombarHidden();
     }
 
-    static /* synthetic */ void access$100(Zoombar zoombar, boolean z) {
-        zoombar.hideWithAnimation(z);
-    }
-
-    public void setZoombarDisplayChangedListener(Zoombar$ZoombarDisplayChangedListener zoombar$ZoombarDisplayChangedListener) {
-        this.mZoombarDisplayChangedListener = zoombar$ZoombarDisplayChangedListener;
+    public void setZoombarDisplayChangedListener(ZoombarDisplayChangedListener zoombarDisplayChangedListener) {
+        this.mZoombarDisplayChangedListener = zoombarDisplayChangedListener;
     }
 
     public Zoombar(Context context) {
@@ -54,16 +53,43 @@ public class Zoombar extends FrameLayout {
     public Zoombar(Context context, AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
         this.mZoombarDisplayChangedListener = null;
-        this.mHideAnimationlistener = new Zoombar$1(this);
-        this.mHideEvent = new Zoombar$2(this);
+        this.mHideAnimationlistener = new Animator.AnimatorListener() { // from class: com.sonyericsson.android.camera.view.baselayout.zoombar.Zoombar.1
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationRepeat(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationStart(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationCancel(Animator animator) {
+                if (Zoombar.this.mZoombarDisplayChangedListener != null) {
+                    Zoombar.this.mZoombarDisplayChangedListener.onZoombarHidden();
+                }
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationEnd(Animator animator) {
+                if (Zoombar.this.mZoombarDisplayChangedListener != null) {
+                    Zoombar.this.mZoombarDisplayChangedListener.onZoombarHidden();
+                }
+            }
+        };
+        this.mHideEvent = new Runnable() { // from class: com.sonyericsson.android.camera.view.baselayout.zoombar.Zoombar.2
+            @Override // java.lang.Runnable
+            public void run() {
+                Zoombar.this.hideWithAnimation(true);
+            }
+        };
     }
 
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mLeftIndicator = (ImageView) findViewById(2131296444);
-        this.mRightIndicator = (ImageView) findViewById(2131296536);
-        this.mValueIndicator = (TextView) findViewById(2131296692);
+        this.mLeftIndicator = (ImageView) findViewById(R.id.left_indicator);
+        this.mRightIndicator = (ImageView) findViewById(R.id.right_indicator);
+        this.mValueIndicator = (TextView) findViewById(R.id.value_indicator);
     }
 
     public void setZoomRatios(List<Integer> list) {
@@ -89,7 +115,7 @@ public class Zoombar extends FrameLayout {
             i = 120;
         }
         Integer num = this.mZoomRatios.get(i);
-        int dimension = (int) getResources().getDimension(2131165435);
+        int dimension = (int) getResources().getDimension(R.dimen.max_zoom_indicator_width);
         int intrinsicWidth = this.mLeftIndicator.getDrawable().getIntrinsicWidth();
         int i2 = (((dimension - intrinsicWidth) * (120 - i)) / 120) + intrinsicWidth;
         String str = String.format(Locale.getDefault(), "%.1f", Float.valueOf(num.intValue() / 100.0f));
@@ -144,9 +170,10 @@ public class Zoombar extends FrameLayout {
         if (this.mZoombarDisplayChangedListener != null) {
             this.mZoombarDisplayChangedListener.onShowZoombar();
         }
-        animate().setListener(null).alpha(1.0f).setDuration(z ? 100L : 0L).start();
+        animate().setListener(null).alpha(VISIBLE_ALPHA).setDuration(z ? 100L : 0L).start();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void hideWithAnimation(boolean z) {
         animate().alpha(0.0f).setDuration(z ? 100L : 0L).setListener(this.mHideAnimationlistener).start();
     }

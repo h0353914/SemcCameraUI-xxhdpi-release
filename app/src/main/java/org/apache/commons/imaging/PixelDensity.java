@@ -59,41 +59,41 @@ public final class PixelDensity {
         if (isInInches()) {
             return this.horizontalDensity;
         }
-        return (this.horizontalDensity * 254.0d) / ((double) this.unitLength);
+        return (this.horizontalDensity * 254.0d) / this.unitLength;
     }
 
     public double verticalDensityInches() {
         if (isInInches()) {
             return this.verticalDensity;
         }
-        return (this.verticalDensity * 254.0d) / ((double) this.unitLength);
+        return (this.verticalDensity * 254.0d) / this.unitLength;
     }
 
     public double horizontalDensityMetres() {
         if (isInMetres()) {
             return this.horizontalDensity;
         }
-        return (this.horizontalDensity * 10000.0d) / ((double) this.unitLength);
+        return (this.horizontalDensity * 10000.0d) / this.unitLength;
     }
 
     public double verticalDensityMetres() {
         if (isInMetres()) {
             return this.verticalDensity;
         }
-        return (this.verticalDensity * 10000.0d) / ((double) this.unitLength);
+        return (this.verticalDensity * 10000.0d) / this.unitLength;
     }
 
     public double horizontalDensityCentimetres() {
         if (isInCentimetres()) {
             return this.horizontalDensity;
         }
-        return (this.horizontalDensity * 100.0d) / ((double) this.unitLength);
+        return (this.horizontalDensity * 100.0d) / this.unitLength;
     }
 
     public double verticalDensityCentimetres() {
         if (isInCentimetres()) {
             return this.verticalDensity;
         }
-        return (this.verticalDensity * 100.0d) / ((double) this.unitLength);
+        return (this.verticalDensity * 100.0d) / this.unitLength;
     }
 }

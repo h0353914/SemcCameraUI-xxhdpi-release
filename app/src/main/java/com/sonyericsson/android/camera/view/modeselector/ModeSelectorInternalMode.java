@@ -1,15 +1,27 @@
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.view.modeselector;
 
 import android.content.Context;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.controller.launcher.ApplicationLauncher;
 
 public enum ModeSelectorInternalMode {
     MANUAL(CapturingMode.NORMAL),
     SLOW_MOTION(CapturingMode.SLOW_MOTION),
-    PORTRAIT_SELFIE(2131230875, 2131689680),
-    DUAL_BACKGROUND_DEFOCUS(2131230876, 2131689650),
-    DUAL_MONOCHROME(2131230882, 2131689951);
+    PORTRAIT_SELFIE(R.drawable.cam_cap_mode_beauty_portrait_icn, R.string.cam_strings_capturing_mode_portraitselfie_txt),
+    DUAL_BACKGROUND_DEFOCUS(R.drawable.cam_cap_mode_bokeh_icn, R.string.cam_strings_bokeh_title_txt),
+    DUAL_MONOCHROME(R.drawable.cam_cap_mode_monochrome_icn, R.string.cam_strings_monochrome_title_txt);
 
     public final int iconId;
     public final boolean isExternalApp;

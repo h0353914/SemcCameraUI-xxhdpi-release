@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager$NameNotFoundException;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.status.CameraStatusValue;
 
@@ -52,9 +51,9 @@ public abstract class CameraStatusPublisher<T extends CameraStatusValue> {
         if (context == null) {
             return;
         }
-        Intent intent = new Intent("com.sonymobile.cameracommon.action.CAMERA_STATUS_UPDATE");
+        Intent intent = new Intent(ACTION_CAMERA_STATUS_UPDATE);
         intent.setPackage("com.sonymobile.cameracommon");
-        intent.putExtra("CAMERA_STATUS", contentValues);
+        intent.putExtra(EXTRA_CAMERA_STATUS, contentValues);
         try {
             context.startService(intent);
         } catch (SecurityException e) {
@@ -77,7 +76,7 @@ public abstract class CameraStatusPublisher<T extends CameraStatusValue> {
             if (packageInfo != null) {
                 return packageInfo.versionCode;
             }
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             CamLog.e("com.sonymobile.cameracommon package doesn't exist.");
         }
         return 0;

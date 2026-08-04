@@ -1,5 +1,7 @@
 package org.apache.commons.imaging.common;
 
+import android.support.v4.view.MotionEventCompat;
+import android.support.v4.view.ViewCompat;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -83,11 +85,11 @@ public class ImageBuilder {
         WritableRaster writableRasterCreatePackedRaster;
         DataBufferInt dataBufferInt = new DataBufferInt(iArr, i * i2);
         if (z) {
-            directColorModel = new DirectColorModel(32, 16711680, 65280, 255, -16777216);
-            writableRasterCreatePackedRaster = Raster.createPackedRaster(dataBufferInt, i, i2, i, new int[]{16711680, 65280, 255, -16777216}, (Point) null);
+            directColorModel = new DirectColorModel(32, 16711680, MotionEventCompat.ACTION_POINTER_INDEX_MASK, 255, ViewCompat.MEASURED_STATE_MASK);
+            writableRasterCreatePackedRaster = Raster.createPackedRaster(dataBufferInt, i, i2, i, new int[]{16711680, MotionEventCompat.ACTION_POINTER_INDEX_MASK, 255, ViewCompat.MEASURED_STATE_MASK}, (Point) null);
         } else {
-            directColorModel = new DirectColorModel(24, 16711680, 65280, 255);
-            writableRasterCreatePackedRaster = Raster.createPackedRaster(dataBufferInt, i, i2, i, new int[]{16711680, 65280, 255}, (Point) null);
+            directColorModel = new DirectColorModel(24, 16711680, MotionEventCompat.ACTION_POINTER_INDEX_MASK, 255);
+            writableRasterCreatePackedRaster = Raster.createPackedRaster(dataBufferInt, i, i2, i, new int[]{16711680, MotionEventCompat.ACTION_POINTER_INDEX_MASK, 255}, (Point) null);
         }
         return new BufferedImage(directColorModel, writableRasterCreatePackedRaster, directColorModel.isAlphaPremultiplied(), new Properties());
     }

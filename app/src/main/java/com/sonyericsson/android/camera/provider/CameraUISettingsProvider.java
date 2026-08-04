@@ -4,16 +4,18 @@ import android.content.ContentProvider;
 import android.content.ContentProviderOperation;
 import android.content.ContentProviderResult;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.OperationApplicationException;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.SQLException;
-import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.util.SparseArray;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.view.modeselector.CameraCommonProviderConstants;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -32,13 +34,48 @@ public class CameraUISettingsProvider extends ContentProvider {
     private static final SparseArray<String> MIMETYPE_LIST = new SparseArray<>();
     private static final UriMatcher URI_MATCHER = new UriMatcher(-1);
 
+    interface CapturingMode {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public static final Uri CONTENT_URI = CameraCommonProviderConstants.CAPTURINGMODE_CONTENT_URI;
+        public static final String MIME_TYPE = "capturingmode";
+        public static final String NAME = "capturingmodes";
+        public static final String PATH = "capturingmodes";
+    }
+
+    interface Path {
+        public static final int CAPTURINGMODE_DIR = 1;
+        public static final int CAPTURINGMODE_ITEM = 2;
+    }
+
     protected String getDataBaseName() {
-        return "cameraui.db";
+        return DATABASE_NAME;
     }
 
     static {
-        URI_MATCHER.addURI("com.sonymobile.camerauicommon.provider", "capturingmodes", 1);
-        URI_MATCHER.addURI("com.sonymobile.camerauicommon.provider", "capturingmodes/#", 2);
+        URI_MATCHER.addURI(CameraCommonProviderConstants.AUTHORITY, "capturingmodes", 1);
+        URI_MATCHER.addURI(CameraCommonProviderConstants.AUTHORITY, "capturingmodes/#", 2);
         MIMETYPE_LIST.put(1, "vnd.android.cursor.dir/capturingmode");
         MIMETYPE_LIST.put(2, "vnd.android.cursor.item/capturingmode");
     }
@@ -63,9 +100,78 @@ public class CameraUISettingsProvider extends ContentProvider {
         return z;
     }
 
+    static class MyOpenHelper extends SQLiteOpenHelper {
+        private final Context mContext;
+
+        public MyOpenHelper(Context context, String str) {
+            super(context, str, (SQLiteDatabase.CursorFactory) null, 5);
+            this.mContext = context;
+        }
+
+        @Override // android.database.sqlite.SQLiteOpenHelper
+        public void onCreate(SQLiteDatabase sQLiteDatabase) throws SQLException {
+            if (existTable(sQLiteDatabase, "capturingmodes")) {
+                return;
+            }
+            createCapturingModeTable(sQLiteDatabase);
+        }
+
+        @Override // android.database.sqlite.SQLiteOpenHelper
+        public void onUpgrade(SQLiteDatabase sQLiteDatabase, int i, int i2) throws SQLException {
+            if (CamLog.VERBOSE) {
+                CamLog.d("onUpgrade()");
+                CamLog.d("  oldVersion:" + i);
+                CamLog.d("  newVersion:" + i2);
+            }
+            deleteTables(sQLiteDatabase);
+            createCapturingModeTable(sQLiteDatabase);
+        }
+
+        static void createCapturingModeTable(SQLiteDatabase sQLiteDatabase) throws SQLException {
+            sQLiteDatabase.execSQL("CREATE TABLE capturingmodes (_id INTEGER PRIMARY KEY AUTOINCREMENT,package TEXT, activity TEXT, mode_name TEXT, capture_type INTEGER, visibility_normal INTEGER, visibility_oneshot INTEGER, visibility_shortcut INTEGER, sort_order INTEGER, selectorlabel_id INTEGER, selectoricon_id INTEGER, shortcutlabel_id INTEGER, shortcuticon_id INTEGER, descriptionlabel_id INTEGER, UNIQUE(package,mode_name));");
+        }
+
+        static void deleteTables(SQLiteDatabase sQLiteDatabase) throws SQLException {
+            sQLiteDatabase.execSQL("DROP TABLE IF EXISTS capturingmodes");
+        }
+
+        static boolean existTable(SQLiteDatabase sQLiteDatabase, String str) {
+            Cursor cursor = null;
+            try {
+                Cursor cursorRawQuery = sQLiteDatabase.rawQuery("SELECT name FROM sqlite_master WHERE type='table' AND name='" + str + "'", null);
+                if (cursorRawQuery != null) {
+                    try {
+                        if (cursorRawQuery.getCount() > 0) {
+                            if (cursorRawQuery != null) {
+                                cursorRawQuery.close();
+                            }
+                            return true;
+                        }
+                    } catch (Throwable th) {
+                        cursor = cursorRawQuery;
+                        if (cursor != null) {
+                            cursor.close();
+                        }
+                        throw th;
+                    }
+                }
+                if (cursorRawQuery == null) {
+                    return false;
+                }
+                cursorRawQuery.close();
+                return false;
+            } catch (Throwable th) {
+                if (cursor != null) {
+                    cursor.close();
+                }
+                return false;
+            }
+        }
+    }
+
     @Override // android.content.ContentProvider
     public boolean onCreate() {
-        this.mOpenHelper = new CameraUISettingsProvider$MyOpenHelper(getContext(), getDataBaseName());
+        this.mOpenHelper = new MyOpenHelper(getContext(), getDataBaseName());
         return true;
     }
 
@@ -122,42 +228,38 @@ public class CameraUISettingsProvider extends ContentProvider {
     }
 
     @Override // android.content.ContentProvider
-    public int update(Uri uri, ContentValues contentValues, String str, String[] strArr) {
-        int iUpdate;
+    public int update(Uri uri, ContentValues contentValues, String where, String[] whereArgs) {
         if (CamLog.VERBOSE) {
             in(uri);
         }
-        SQLiteDatabase writableDatabase = this.mOpenHelper.getWritableDatabase();
+        SQLiteDatabase db = this.mOpenHelper.getWritableDatabase();
         String tableName = getTableName(uri);
-        if (str != null) {
+        int result;
+        if (where != null) {
             try {
-                iUpdate = writableDatabase.update(tableName, contentValues, str, strArr);
-                if (iUpdate > 0) {
-                    try {
-                        if (!isProcessingBatch()) {
-                            onCompleteOperation(uri);
-                        }
-                    } catch (SQLiteConstraintException e) {
-                        e = e;
-                        CamLog.e("Failed to update the record. Message : " + e.getMessage());
-                    }
+                result = db.update(tableName, contentValues, where, whereArgs);
+                if (result > 0 && !isProcessingBatch()) {
+                    onCompleteOperation(uri);
                 }
-            } catch (SQLiteConstraintException e2) {
-                e = e2;
-                iUpdate = 0;
+            } catch (SQLiteConstraintException e) {
+                CamLog.e("Failed to update the record. Message : " + e.getMessage());
+                result = 0;
             }
-        } else if (writableDatabase.replace(getTableName(uri), null, contentValues) != -1) {
-            if (!isProcessingBatch()) {
-                onCompleteOperation(uri);
-            }
-            iUpdate = 1;
         } else {
-            iUpdate = 0;
+            long replaced = db.replace(getTableName(uri), null, contentValues);
+            if (replaced != -1) {
+                if (!isProcessingBatch()) {
+                    onCompleteOperation(uri);
+                }
+                result = 1;
+            } else {
+                result = 0;
+            }
         }
         if (CamLog.VERBOSE) {
             out();
         }
-        return iUpdate;
+        return result;
     }
 
     @Override // android.content.ContentProvider
@@ -169,14 +271,16 @@ public class CameraUISettingsProvider extends ContentProvider {
         ContentProviderResult[] contentProviderResultArrApplyBatch = super.applyBatch(arrayList);
         decrementProcessingBatchCount();
         HashSet hashSet = new HashSet();
-        for (ContentProviderOperation contentProviderOperation : arrayList) {
-            if (contentProviderOperation.getUri() != null) {
-                hashSet.add(contentProviderOperation.getUri());
+        Iterator<ContentProviderOperation> it = arrayList.iterator();
+        while (it.hasNext()) {
+            ContentProviderOperation next = it.next();
+            if (next.getUri() != null) {
+                hashSet.add(next.getUri());
             }
         }
-        Iterator it = hashSet.iterator();
-        while (it.hasNext()) {
-            onCompleteOperation((Uri) it.next());
+        Iterator it2 = hashSet.iterator();
+        while (it2.hasNext()) {
+            onCompleteOperation((Uri) it2.next());
         }
         if (CamLog.VERBOSE) {
             out();
@@ -197,16 +301,11 @@ public class CameraUISettingsProvider extends ContentProvider {
     }
 
     private void onCompleteOperation(Uri uri) {
-        boolean z;
         if (CamLog.VERBOSE) {
             in(uri);
         }
         if (uri == null) {
-            if (z) {
-                return;
-            } else {
-                return;
-            }
+            return;
         }
         try {
             if (CamLog.VERBOSE) {
@@ -233,6 +332,7 @@ public class CameraUISettingsProvider extends ContentProvider {
         return count;
     }
 
+    /* renamed from: in */
     private void in(Uri uri) {
         String methodName = Thread.currentThread().getStackTrace()[3].getMethodName();
         long id = Thread.currentThread().getId();

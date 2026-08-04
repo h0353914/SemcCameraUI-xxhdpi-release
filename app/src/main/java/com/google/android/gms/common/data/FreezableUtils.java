@@ -1,33 +1,34 @@
 package com.google.android.gms.common.data;
 
-import com.sonyericsson.android.camera.view.modeselector.CapturingModeUtil$1;
+import com.sonyericsson.android.camera.view.modeselector.CapturingModeUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class FreezableUtils {
     public static <T, E extends Freezable<T>> ArrayList<T> freeze(ArrayList<E> arrayList) {
-        CapturingModeUtil$1 capturingModeUtil$1 = (ArrayList<T>) new ArrayList(arrayList.size());
+        ArrayList<T> arrayList2 = new ArrayList<>(arrayList.size());
         int size = arrayList.size();
         for (int i = 0; i < size; i++) {
-            capturingModeUtil$1.add(arrayList.get(i).freeze());
+            arrayList2.add(arrayList.get(i).freeze());
         }
-        return capturingModeUtil$1;
+        return arrayList2;
     }
 
     public static <T, E extends Freezable<T>> ArrayList<T> freeze(E[] eArr) {
-        CapturingModeUtil$1 capturingModeUtil$1 = (ArrayList<T>) new ArrayList(eArr.length);
+        ArrayList<T> arrayList = new ArrayList<>(eArr.length);
         for (E e : eArr) {
-            capturingModeUtil$1.add(e.freeze());
+            arrayList.add(e.freeze());
         }
-        return capturingModeUtil$1;
+        return arrayList;
     }
 
     public static <T, E extends Freezable<T>> ArrayList<T> freezeIterable(Iterable<E> iterable) {
-        CapturingModeUtil$1 capturingModeUtil$1 = (ArrayList<T>) new ArrayList();
+        ArrayList<T> arrayList = new ArrayList<>();
         Iterator<E> it = iterable.iterator();
         while (it.hasNext()) {
-            capturingModeUtil$1.add(it.next().freeze());
+            arrayList.add(it.next().freeze());
         }
-        return capturingModeUtil$1;
+        return arrayList;
     }
 }

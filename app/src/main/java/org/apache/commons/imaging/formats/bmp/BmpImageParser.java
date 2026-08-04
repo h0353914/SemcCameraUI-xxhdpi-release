@@ -16,17 +16,17 @@ import org.apache.commons.imaging.FormatCompliance;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.ImageInfo;
-import org.apache.commons.imaging.ImageInfo$ColorType;
-import org.apache.commons.imaging.ImageInfo$CompressionAlgorithm;
 import org.apache.commons.imaging.ImageParser;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
+import org.apache.commons.imaging.ImagingConstants;
 import org.apache.commons.imaging.PixelDensity;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.common.BinaryOutputStream;
 import org.apache.commons.imaging.common.ImageBuilder;
 import org.apache.commons.imaging.common.ImageMetadata;
 import org.apache.commons.imaging.common.bytesource.ByteSource;
+import org.apache.commons.imaging.formats.bmp.BmpHeaderInfo;
 import org.apache.commons.imaging.palette.PaletteFactory;
 import org.apache.commons.imaging.palette.SimplePalette;
 import org.apache.commons.imaging.util.IoUtils;
@@ -39,25 +39,32 @@ public class BmpImageParser extends ImageParser {
     private static final int BI_RLE4 = 2;
     private static final int BI_RLE8 = 1;
     private static final String DEFAULT_EXTENSION = ".bmp";
-    private static final String[] ACCEPTED_EXTENSIONS = {".bmp"};
-    private static final byte[] BMP_HEADER_SIGNATURE = {66, 77};
+    private static final String[] ACCEPTED_EXTENSIONS = { DEFAULT_EXTENSION };
+    private static final byte[] BMP_HEADER_SIGNATURE = { 66, 77 };
 
     private String getBmpTypeDescription(int i, int i2) {
-        return (i == 66 && i2 == 77) ? "Windows 3.1x, 95, NT," : (i == 66 && i2 == 65) ? "OS/2 Bitmap Array" : (i == 67 && i2 == 73) ? "OS/2 Color Icon" : (i == 67 && i2 == 80) ? "OS/2 Color Pointer" : (i == 73 && i2 == 67) ? "OS/2 Icon" : (i == 80 && i2 == 84) ? "OS/2 Pointer" : "Unknown";
+        return (i == 66 && i2 == 77) ? "Windows 3.1x, 95, NT,"
+                : (i == 66 && i2 == 65) ? "OS/2 Bitmap Array"
+                        : (i == 67 && i2 == 73) ? "OS/2 Color Icon"
+                                : (i == 67 && i2 == 80) ? "OS/2 Color Pointer"
+                                        : (i == 73 && i2 == 67) ? "OS/2 Icon"
+                                                : (i == 80 && i2 == 84) ? "OS/2 Pointer" : "Unknown";
     }
 
     @Override // org.apache.commons.imaging.ImageParser
     public String getDefaultExtension() {
-        return ".bmp";
+        return DEFAULT_EXTENSION;
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public byte[] getICCProfileBytes(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
+    public byte[] getICCProfileBytes(ByteSource byteSource, Map<String, Object> map)
+            throws IOException, ImageReadException {
         return null;
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public ImageMetadata getMetadata(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
+    public ImageMetadata getMetadata(ByteSource byteSource, Map<String, Object> map)
+            throws IOException, ImageReadException {
         return null;
     }
 
@@ -82,10 +89,11 @@ public class BmpImageParser extends ImageParser {
 
     @Override // org.apache.commons.imaging.ImageParser
     protected ImageFormat[] getAcceptedTypes() {
-        return new ImageFormat[]{ImageFormats.BMP};
+        return new ImageFormat[] { ImageFormats.BMP };
     }
 
-    private BmpHeaderInfo readBmpHeaderInfo(InputStream inputStream, FormatCompliance formatCompliance, boolean z) throws IOException, ImageReadException {
+    private BmpHeaderInfo readBmpHeaderInfo(InputStream inputStream, FormatCompliance formatCompliance, boolean z)
+            throws IOException, ImageReadException {
         int i;
         int i2;
         int i3;
@@ -105,7 +113,7 @@ public class BmpImageParser extends ImageParser {
         int i17;
         int i18;
         int i19;
-        BmpHeaderInfo$ColorSpace bmpHeaderInfo$ColorSpace;
+        BmpHeaderInfo.ColorSpace colorSpace;
         int i20;
         int i21;
         int i22;
@@ -131,27 +139,29 @@ public class BmpImageParser extends ImageParser {
         byte b = BinaryFunctions.readByte("Identifier1", inputStream, "Not a Valid BMP File");
         byte b2 = BinaryFunctions.readByte("Identifier2", inputStream, "Not a Valid BMP File");
         if (formatCompliance != null) {
-            formatCompliance.compareBytes("Signature", BMP_HEADER_SIGNATURE, new byte[]{b, b2});
+            formatCompliance.compareBytes("Signature", BMP_HEADER_SIGNATURE, new byte[] { b, b2 });
         }
         int i42 = BinaryFunctions.read4Bytes("File Size", inputStream, "Not a Valid BMP File", getByteOrder());
         int i43 = BinaryFunctions.read4Bytes("Reserved", inputStream, "Not a Valid BMP File", getByteOrder());
         int i44 = BinaryFunctions.read4Bytes("Bitmap Data Offset", inputStream, "Not a Valid BMP File", getByteOrder());
         int i45 = BinaryFunctions.read4Bytes("Bitmap Header Size", inputStream, "Not a Valid BMP File", getByteOrder());
-        BmpHeaderInfo$ColorSpace bmpHeaderInfo$ColorSpace2 = new BmpHeaderInfo$ColorSpace();
-        bmpHeaderInfo$ColorSpace2.red = new BmpHeaderInfo$ColorSpaceCoordinate();
-        bmpHeaderInfo$ColorSpace2.green = new BmpHeaderInfo$ColorSpaceCoordinate();
-        bmpHeaderInfo$ColorSpace2.blue = new BmpHeaderInfo$ColorSpaceCoordinate();
+        BmpHeaderInfo.ColorSpace colorSpace2 = new BmpHeaderInfo.ColorSpace();
+        colorSpace2.red = new BmpHeaderInfo.ColorSpaceCoordinate();
+        colorSpace2.green = new BmpHeaderInfo.ColorSpaceCoordinate();
+        colorSpace2.blue = new BmpHeaderInfo.ColorSpaceCoordinate();
         if (i45 >= 40) {
             int i46 = BinaryFunctions.read4Bytes("Width", inputStream, "Not a Valid BMP File", getByteOrder());
             int i47 = BinaryFunctions.read4Bytes("Height", inputStream, "Not a Valid BMP File", getByteOrder());
             int i48 = BinaryFunctions.read2Bytes("Planes", inputStream, "Not a Valid BMP File", getByteOrder());
             int i49 = BinaryFunctions.read2Bytes("Bits Per Pixel", inputStream, "Not a Valid BMP File", getByteOrder());
             int i50 = BinaryFunctions.read4Bytes("Compression", inputStream, "Not a Valid BMP File", getByteOrder());
-            int i51 = BinaryFunctions.read4Bytes("Bitmap Data Size", inputStream, "Not a Valid BMP File", getByteOrder());
+            int i51 = BinaryFunctions.read4Bytes("Bitmap Data Size", inputStream, "Not a Valid BMP File",
+                    getByteOrder());
             int i52 = BinaryFunctions.read4Bytes("HResolution", inputStream, "Not a Valid BMP File", getByteOrder());
             int i53 = BinaryFunctions.read4Bytes("VResolution", inputStream, "Not a Valid BMP File", getByteOrder());
             int i54 = BinaryFunctions.read4Bytes("ColorsUsed", inputStream, "Not a Valid BMP File", getByteOrder());
-            int i55 = BinaryFunctions.read4Bytes("ColorsImportant", inputStream, "Not a Valid BMP File", getByteOrder());
+            int i55 = BinaryFunctions.read4Bytes("ColorsImportant", inputStream, "Not a Valid BMP File",
+                    getByteOrder());
             if (i45 >= 52 || i50 == 3) {
                 i = i55;
                 int i56 = BinaryFunctions.read4Bytes("RedMask", inputStream, "Not a Valid BMP File", getByteOrder());
@@ -176,17 +186,27 @@ public class BmpImageParser extends ImageParser {
             }
             if (i45 >= 108) {
                 i9 = i7;
-                int i58 = BinaryFunctions.read4Bytes("ColorSpaceType", inputStream, "Not a Valid BMP File", getByteOrder());
+                int i58 = BinaryFunctions.read4Bytes("ColorSpaceType", inputStream, "Not a Valid BMP File",
+                        getByteOrder());
                 i8 = i50;
-                bmpHeaderInfo$ColorSpace2.red.x = BinaryFunctions.read4Bytes("ColorSpaceRedX", inputStream, "Not a Valid BMP File", getByteOrder());
-                bmpHeaderInfo$ColorSpace2.red.y = BinaryFunctions.read4Bytes("ColorSpaceRedY", inputStream, "Not a Valid BMP File", getByteOrder());
-                bmpHeaderInfo$ColorSpace2.red.z = BinaryFunctions.read4Bytes("ColorSpaceRedZ", inputStream, "Not a Valid BMP File", getByteOrder());
-                bmpHeaderInfo$ColorSpace2.green.x = BinaryFunctions.read4Bytes("ColorSpaceGreenX", inputStream, "Not a Valid BMP File", getByteOrder());
-                bmpHeaderInfo$ColorSpace2.green.y = BinaryFunctions.read4Bytes("ColorSpaceGreenY", inputStream, "Not a Valid BMP File", getByteOrder());
-                bmpHeaderInfo$ColorSpace2.green.z = BinaryFunctions.read4Bytes("ColorSpaceGreenZ", inputStream, "Not a Valid BMP File", getByteOrder());
-                bmpHeaderInfo$ColorSpace2.blue.x = BinaryFunctions.read4Bytes("ColorSpaceBlueX", inputStream, "Not a Valid BMP File", getByteOrder());
-                bmpHeaderInfo$ColorSpace2.blue.y = BinaryFunctions.read4Bytes("ColorSpaceBlueY", inputStream, "Not a Valid BMP File", getByteOrder());
-                bmpHeaderInfo$ColorSpace2.blue.z = BinaryFunctions.read4Bytes("ColorSpaceBlueZ", inputStream, "Not a Valid BMP File", getByteOrder());
+                colorSpace2.red.x = BinaryFunctions.read4Bytes("ColorSpaceRedX", inputStream, "Not a Valid BMP File",
+                        getByteOrder());
+                colorSpace2.red.y = BinaryFunctions.read4Bytes("ColorSpaceRedY", inputStream, "Not a Valid BMP File",
+                        getByteOrder());
+                colorSpace2.red.z = BinaryFunctions.read4Bytes("ColorSpaceRedZ", inputStream, "Not a Valid BMP File",
+                        getByteOrder());
+                colorSpace2.green.x = BinaryFunctions.read4Bytes("ColorSpaceGreenX", inputStream,
+                        "Not a Valid BMP File", getByteOrder());
+                colorSpace2.green.y = BinaryFunctions.read4Bytes("ColorSpaceGreenY", inputStream,
+                        "Not a Valid BMP File", getByteOrder());
+                colorSpace2.green.z = BinaryFunctions.read4Bytes("ColorSpaceGreenZ", inputStream,
+                        "Not a Valid BMP File", getByteOrder());
+                colorSpace2.blue.x = BinaryFunctions.read4Bytes("ColorSpaceBlueX", inputStream, "Not a Valid BMP File",
+                        getByteOrder());
+                colorSpace2.blue.y = BinaryFunctions.read4Bytes("ColorSpaceBlueY", inputStream, "Not a Valid BMP File",
+                        getByteOrder());
+                colorSpace2.blue.z = BinaryFunctions.read4Bytes("ColorSpaceBlueZ", inputStream, "Not a Valid BMP File",
+                        getByteOrder());
                 int i59 = BinaryFunctions.read4Bytes("GammaRed", inputStream, "Not a Valid BMP File", getByteOrder());
                 int i60 = BinaryFunctions.read4Bytes("GammaGreen", inputStream, "Not a Valid BMP File", getByteOrder());
                 i13 = BinaryFunctions.read4Bytes("GammaBlue", inputStream, "Not a Valid BMP File", getByteOrder());
@@ -205,8 +225,10 @@ public class BmpImageParser extends ImageParser {
                 i15 = i12;
                 i14 = i11;
                 int i61 = BinaryFunctions.read4Bytes("Intent", inputStream, "Not a Valid BMP File", getByteOrder());
-                int i62 = BinaryFunctions.read4Bytes("ProfileData", inputStream, "Not a Valid BMP File", getByteOrder());
-                int i63 = BinaryFunctions.read4Bytes("ProfileSize", inputStream, "Not a Valid BMP File", getByteOrder());
+                int i62 = BinaryFunctions.read4Bytes("ProfileData", inputStream, "Not a Valid BMP File",
+                        getByteOrder());
+                int i63 = BinaryFunctions.read4Bytes("ProfileSize", inputStream, "Not a Valid BMP File",
+                        getByteOrder());
                 i19 = BinaryFunctions.read4Bytes("Reserved", inputStream, "Not a Valid BMP File", getByteOrder());
                 i16 = i61;
                 i18 = i62;
@@ -274,26 +296,26 @@ public class BmpImageParser extends ImageParser {
                 if (i45 >= 108) {
                     debugNumber("colorSpaceType", i10, 4);
                     i29 = i39;
-                    debugNumber("colorSpace.red.x", bmpHeaderInfo$ColorSpace2.red.x, 1);
-                    debugNumber("colorSpace.red.y", bmpHeaderInfo$ColorSpace2.red.y, 1);
-                    debugNumber("colorSpace.red.z", bmpHeaderInfo$ColorSpace2.red.z, 1);
-                    debugNumber("colorSpace.green.x", bmpHeaderInfo$ColorSpace2.green.x, 1);
-                    debugNumber("colorSpace.green.y", bmpHeaderInfo$ColorSpace2.green.y, 1);
-                    debugNumber("colorSpace.green.z", bmpHeaderInfo$ColorSpace2.green.z, 1);
-                    debugNumber("colorSpace.blue.x", bmpHeaderInfo$ColorSpace2.blue.x, 1);
-                    debugNumber("colorSpace.blue.y", bmpHeaderInfo$ColorSpace2.blue.y, 1);
-                    debugNumber("colorSpace.blue.z", bmpHeaderInfo$ColorSpace2.blue.z, 1);
+                    debugNumber("colorSpace.red.x", colorSpace2.red.x, 1);
+                    debugNumber("colorSpace.red.y", colorSpace2.red.y, 1);
+                    debugNumber("colorSpace.red.z", colorSpace2.red.z, 1);
+                    debugNumber("colorSpace.green.x", colorSpace2.green.x, 1);
+                    debugNumber("colorSpace.green.y", colorSpace2.green.y, 1);
+                    debugNumber("colorSpace.green.z", colorSpace2.green.z, 1);
+                    debugNumber("colorSpace.blue.x", colorSpace2.blue.x, 1);
+                    debugNumber("colorSpace.blue.y", colorSpace2.blue.y, 1);
+                    debugNumber("colorSpace.blue.z", colorSpace2.blue.z, 1);
                     i36 = i14;
                     i40 = 4;
                     debugNumber("gammaRed", i36, 4);
-                    bmpHeaderInfo$ColorSpace = bmpHeaderInfo$ColorSpace2;
+                    colorSpace = colorSpace2;
                     int i68 = i15;
                     debugNumber("gammaGreen", i68, 4);
                     i35 = i68;
                     i41 = i13;
                     debugNumber("gammaBlue", i41, 4);
                 } else {
-                    bmpHeaderInfo$ColorSpace = bmpHeaderInfo$ColorSpace2;
+                    colorSpace = colorSpace2;
                     i29 = i39;
                     i40 = 4;
                     i41 = i13;
@@ -314,7 +336,7 @@ public class BmpImageParser extends ImageParser {
                     i20 = i64;
                 }
             } else {
-                bmpHeaderInfo$ColorSpace = bmpHeaderInfo$ColorSpace2;
+                colorSpace = colorSpace2;
                 i20 = i17;
                 i21 = i47;
                 i22 = i48;
@@ -334,7 +356,8 @@ public class BmpImageParser extends ImageParser {
                 i36 = i14;
                 i37 = i19;
             }
-            return new BmpHeaderInfo(b, b2, i42, i43, i44, i45, i46, i21, i22, i23, i33, i24, i25, i26, i27, i28, i31, i30, i29, i32, i10, bmpHeaderInfo$ColorSpace, i36, i35, i34, i16, i18, i20, i37);
+            return new BmpHeaderInfo(b, b2, i42, i43, i44, i45, i46, i21, i22, i23, i33, i24, i25, i26, i27, i28, i31,
+                    i30, i29, i32, i10, colorSpace, i36, i35, i34, i16, i18, i20, i37);
         }
         throw new ImageReadException("Invalid/unsupported BMP file");
     }
@@ -355,8 +378,10 @@ public class BmpImageParser extends ImageParser {
                         z = true;
                         break;
                     case 2:
-                        byteArrayOutputStream.write(BinaryFunctions.readByte("RLE c", inputStream, "BMP: Bad RLE") & 255);
-                        byteArrayOutputStream.write(BinaryFunctions.readByte("RLE d", inputStream, "BMP: Bad RLE") & 255);
+                        byteArrayOutputStream
+                                .write(BinaryFunctions.readByte("RLE c", inputStream, "BMP: Bad RLE") & 255);
+                        byteArrayOutputStream
+                                .write(BinaryFunctions.readByte("RLE d", inputStream, "BMP: Bad RLE") & 255);
                         break;
                     default:
                         int i4 = i3 / i;
@@ -366,7 +391,8 @@ public class BmpImageParser extends ImageParser {
                         if (i4 % 2 != 0) {
                             i4++;
                         }
-                        byteArrayOutputStream.write(BinaryFunctions.readBytes("bytes", inputStream, i4, "RLE: Absolute Mode"));
+                        byteArrayOutputStream
+                                .write(BinaryFunctions.readBytes("bytes", inputStream, i4, "RLE: Absolute Mode"));
                         break;
                 }
             }
@@ -374,250 +400,87 @@ public class BmpImageParser extends ImageParser {
         return byteArrayOutputStream.toByteArray();
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:33:0x008f  */
-    /* JADX WARN: Removed duplicated region for block: B:35:0x0099  */
-    /* JADX WARN: Removed duplicated region for block: B:42:0x00cd  */
-    /* JADX WARN: Removed duplicated region for block: B:45:0x00e9 A[LOOP:0: B:43:0x00e5->B:45:0x00e9, LOOP_END] */
-    /* JADX WARN: Removed duplicated region for block: B:48:0x00f7  */
-    /* JADX WARN: Removed duplicated region for block: B:53:0x0103  */
-    /* JADX WARN: Removed duplicated region for block: B:56:0x0114  */
-    /* JADX WARN: Removed duplicated region for block: B:58:0x014a  */
+    /* JADX WARN: Removed duplicated region for block: B:33:0x008f */
+    /* JADX WARN: Removed duplicated region for block: B:35:0x0099 */
+    /* JADX WARN: Removed duplicated region for block: B:42:0x00cd */
     /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    private ImageContents readImageContents(InputStream inputStream, FormatCompliance formatCompliance, boolean z) throws IOException, ImageReadException {
-        int i;
-        int i2;
-        int i3;
-        int i4;
-        byte[] bytes;
-        PixelParser pixelParserRgb;
+     * JADX WARN: Removed duplicated region for block: B:45:0x00e9 A[LOOP:0:
+     * B:43:0x00e5->B:45:0x00e9, LOOP_END]
+     */
+    /* JADX WARN: Removed duplicated region for block: B:48:0x00f7 */
+    /* JADX WARN: Removed duplicated region for block: B:53:0x0103 */
+    /* JADX WARN: Removed duplicated region for block: B:56:0x0114 */
+    /* JADX WARN: Removed duplicated region for block: B:58:0x014a */
+    /*
+     * Code decompiled incorrectly, please refer to instructions dump.
+     */
+    private ImageContents readImageContents(InputStream inputStream, FormatCompliance formatCompliance, boolean z)
+            throws IOException, ImageReadException {
         BmpHeaderInfo bmpHeaderInfo = readBmpHeaderInfo(inputStream, formatCompliance, z);
-        int i5 = bmpHeaderInfo.colorsUsed;
-        int i6 = 1;
-        if (i5 == 0) {
-            i5 = 1 << bmpHeaderInfo.bitsPerPixel;
+        int iColorsUsed = bmpHeaderInfo.colorsUsed;
+        if (iColorsUsed == 0) {
+            iColorsUsed = 1 << bmpHeaderInfo.bitsPerPixel;
         }
         if (z) {
             debugNumber("ColorsUsed", bmpHeaderInfo.colorsUsed, 4);
             debugNumber("BitsPerPixel", bmpHeaderInfo.bitsPerPixel, 4);
-            debugNumber("ColorTableSize", i5, 4);
-            debugNumber("bhi.colorsUsed", bmpHeaderInfo.colorsUsed, 4);
+            debugNumber("ColorTableSize", iColorsUsed, 4);
             debugNumber("Compression", bmpHeaderInfo.compression, 4);
         }
-        int i7 = 0;
+        int iPaletteLength = 0;
+        if (bmpHeaderInfo.bitsPerPixel <= 8) {
+            iPaletteLength = iColorsUsed * 4;
+        }
+        byte[] bytes2 = iPaletteLength > 0
+                ? BinaryFunctions.readBytes("ColorTable", inputStream, iPaletteLength, "Not a Valid BMP File")
+                : null;
+        if (z && bytes2 != null) {
+            debugNumber("paletteLength", iPaletteLength, 4);
+        }
+        int iWidth = bmpHeaderInfo.width;
+        int iHeight = bmpHeaderInfo.height;
+        int iImageLineLength = ((bmpHeaderInfo.bitsPerPixel * iWidth) + 7) / 8;
+        while (iImageLineLength % 4 != 0) {
+            iImageLineLength++;
+        }
+        int iHeaderSize = 14 + bmpHeaderInfo.bitmapHeaderSize;
+        int iExtraHeaderSize = 0;
+        if (bmpHeaderInfo.bitmapHeaderSize == 40 && bmpHeaderInfo.compression == 3) {
+            iExtraHeaderSize = 12;
+        }
+        int iExpectedDataOffset = iHeaderSize + iExtraHeaderSize + iPaletteLength;
+        int iSkip = bmpHeaderInfo.bitmapDataOffset - iExpectedDataOffset;
+        if (iSkip < 0 && bmpHeaderInfo.bitmapDataOffset > 0) {
+            throw new ImageReadException("BMP has invalid image data offset: " + bmpHeaderInfo.bitmapDataOffset + " (expected: " + iExpectedDataOffset + ")");
+        }
+        if (iSkip > 0) {
+            BinaryFunctions.readBytes("BitmapDataOffset", inputStream, iSkip, "Not a Valid BMP File");
+        }
+        byte[] bytes;
+        if (bmpHeaderInfo.compression == 1 || bmpHeaderInfo.compression == 2) {
+            bytes = getRLEBytes(inputStream, bmpHeaderInfo.compression == 1 ? 1 : 2);
+        } else {
+            bytes = BinaryFunctions.readBytes("ImageData", inputStream, iHeight * iImageLineLength, "Not a Valid BMP File");
+        }
+        PixelParser pixelParser;
         switch (bmpHeaderInfo.compression) {
             case 0:
-                if (z) {
-                    System.out.println("Compression: BI_RGB");
-                }
-                if (bmpHeaderInfo.bitsPerPixel <= 8) {
-                    i = i5 * 4;
-                    i6 = 0;
-                    i2 = i6;
-                    byte[] bytes2 = i > 0 ? BinaryFunctions.readBytes("ColorTable", inputStream, i, "Not a Valid BMP File") : null;
-                    if (z) {
-                        debugNumber("paletteLength", i, 4);
-                        PrintStream printStream = System.out;
-                        StringBuilder sb = new StringBuilder();
-                        sb.append("ColorTable: ");
-                        sb.append(bytes2 == null ? "null" : Integer.toString(bytes2.length));
-                        printStream.println(sb.toString());
-                    }
-                    int i8 = bmpHeaderInfo.width * bmpHeaderInfo.height;
-                    i3 = ((bmpHeaderInfo.bitsPerPixel * bmpHeaderInfo.width) + 7) / 8;
-                    if (z) {
-                        debugNumber("bhi.Width", bmpHeaderInfo.width, 4);
-                        debugNumber("bhi.Height", bmpHeaderInfo.height, 4);
-                        debugNumber("ImageLineLength", i3, 4);
-                        debugNumber("PixelCount", i8, 4);
-                    }
-                    while (i3 % 4 != 0) {
-                        i3++;
-                    }
-                    int i9 = 14 + bmpHeaderInfo.bitmapHeaderSize;
-                    if (bmpHeaderInfo.bitmapHeaderSize == 40 && bmpHeaderInfo.compression == 3) {
-                        i7 = 12;
-                    }
-                    int i10 = i9 + i7;
-                    int i11 = i10 + i;
-                    if (z) {
-                        debugNumber("bhi.BitmapDataOffset", bmpHeaderInfo.bitmapDataOffset, 4);
-                        debugNumber("expectedDataOffset", i11, 4);
-                    }
-                    i4 = bmpHeaderInfo.bitmapDataOffset - i11;
-                    if (i4 >= 0) {
-                        throw new ImageReadException("BMP has invalid image data offset: " + bmpHeaderInfo.bitmapDataOffset + " (expected: " + i11 + ", paletteLength: " + i + ", headerSize: " + i10 + ")");
-                    }
-                    if (i4 > 0) {
-                        BinaryFunctions.readBytes("BitmapDataOffset", inputStream, i4, "Not a Valid BMP File");
-                    }
-                    int i12 = bmpHeaderInfo.height * i3;
-                    if (z) {
-                        debugNumber("imageDataSize", i12, 4);
-                    }
-                    if (i6 != 0) {
-                        bytes = getRLEBytes(inputStream, i2);
-                    } else {
-                        bytes = BinaryFunctions.readBytes("ImageData", inputStream, i12, "Not a Valid BMP File");
-                    }
-                    if (z) {
-                        debugNumber("ImageData.length", bytes.length, 4);
-                    }
-                    switch (bmpHeaderInfo.compression) {
-                        case 0:
-                            pixelParserRgb = new PixelParserRgb(bmpHeaderInfo, bytes2, bytes);
-                            break;
-                        case 1:
-                        case 2:
-                            pixelParserRgb = new PixelParserRle(bmpHeaderInfo, bytes2, bytes);
-                            break;
-                        case 3:
-                            pixelParserRgb = new PixelParserBitFields(bmpHeaderInfo, bytes2, bytes);
-                            break;
-                        default:
-                            throw new ImageReadException("BMP: Unknown Compression: " + bmpHeaderInfo.compression);
-                    }
-                    return new ImageContents(bmpHeaderInfo, bytes2, bytes, pixelParserRgb);
-                }
-                i = 0;
-                i6 = 0;
-                i2 = i6;
-                if (i > 0) {
-                }
-                if (z) {
-                }
-                int i82 = bmpHeaderInfo.width * bmpHeaderInfo.height;
-                i3 = ((bmpHeaderInfo.bitsPerPixel * bmpHeaderInfo.width) + 7) / 8;
-                if (z) {
-                }
-                while (i3 % 4 != 0) {
-                }
-                int i92 = 14 + bmpHeaderInfo.bitmapHeaderSize;
-                if (bmpHeaderInfo.bitmapHeaderSize == 40) {
-                    i7 = 12;
-                }
-                int i102 = i92 + i7;
-                int i112 = i102 + i;
-                if (z) {
-                }
-                i4 = bmpHeaderInfo.bitmapDataOffset - i112;
-                if (i4 >= 0) {
-                }
+                pixelParser = new PixelParserRgb(bmpHeaderInfo, bytes2, bytes);
                 break;
             case 1:
-                if (z) {
-                    System.out.println("Compression: BI_RLE8");
-                }
-                i = i5 * 4;
-                i2 = i6;
-                if (i > 0) {
-                }
-                if (z) {
-                }
-                int i822 = bmpHeaderInfo.width * bmpHeaderInfo.height;
-                i3 = ((bmpHeaderInfo.bitsPerPixel * bmpHeaderInfo.width) + 7) / 8;
-                if (z) {
-                }
-                while (i3 % 4 != 0) {
-                }
-                int i922 = 14 + bmpHeaderInfo.bitmapHeaderSize;
-                if (bmpHeaderInfo.bitmapHeaderSize == 40) {
-                }
-                int i1022 = i922 + i7;
-                int i1122 = i1022 + i;
-                if (z) {
-                }
-                i4 = bmpHeaderInfo.bitmapDataOffset - i1122;
-                if (i4 >= 0) {
-                }
-                break;
             case 2:
-                if (z) {
-                    System.out.println("Compression: BI_RLE4");
-                }
-                i = i5 * 4;
-                i2 = 2;
-                if (i > 0) {
-                }
-                if (z) {
-                }
-                int i8222 = bmpHeaderInfo.width * bmpHeaderInfo.height;
-                i3 = ((bmpHeaderInfo.bitsPerPixel * bmpHeaderInfo.width) + 7) / 8;
-                if (z) {
-                }
-                while (i3 % 4 != 0) {
-                }
-                int i9222 = 14 + bmpHeaderInfo.bitmapHeaderSize;
-                if (bmpHeaderInfo.bitmapHeaderSize == 40) {
-                }
-                int i10222 = i9222 + i7;
-                int i11222 = i10222 + i;
-                if (z) {
-                }
-                i4 = bmpHeaderInfo.bitmapDataOffset - i11222;
-                if (i4 >= 0) {
-                }
+                pixelParser = new PixelParserRle(bmpHeaderInfo, bytes2, bytes);
                 break;
             case 3:
-                if (z) {
-                    System.out.println("Compression: BI_BITFIELDS");
-                }
-                if (bmpHeaderInfo.bitsPerPixel <= 8) {
-                    i = i5 * 4;
-                    i6 = 0;
-                    i2 = i6;
-                    if (i > 0) {
-                    }
-                    if (z) {
-                    }
-                    int i82222 = bmpHeaderInfo.width * bmpHeaderInfo.height;
-                    i3 = ((bmpHeaderInfo.bitsPerPixel * bmpHeaderInfo.width) + 7) / 8;
-                    if (z) {
-                    }
-                    while (i3 % 4 != 0) {
-                    }
-                    int i92222 = 14 + bmpHeaderInfo.bitmapHeaderSize;
-                    if (bmpHeaderInfo.bitmapHeaderSize == 40) {
-                    }
-                    int i102222 = i92222 + i7;
-                    int i112222 = i102222 + i;
-                    if (z) {
-                    }
-                    i4 = bmpHeaderInfo.bitmapDataOffset - i112222;
-                    if (i4 >= 0) {
-                    }
-                }
-                i = 0;
-                i6 = 0;
-                i2 = i6;
-                if (i > 0) {
-                }
-                if (z) {
-                }
-                int i822222 = bmpHeaderInfo.width * bmpHeaderInfo.height;
-                i3 = ((bmpHeaderInfo.bitsPerPixel * bmpHeaderInfo.width) + 7) / 8;
-                if (z) {
-                }
-                while (i3 % 4 != 0) {
-                }
-                int i922222 = 14 + bmpHeaderInfo.bitmapHeaderSize;
-                if (bmpHeaderInfo.bitmapHeaderSize == 40) {
-                }
-                int i1022222 = i922222 + i7;
-                int i1122222 = i1022222 + i;
-                if (z) {
-                }
-                i4 = bmpHeaderInfo.bitmapDataOffset - i1122222;
-                if (i4 >= 0) {
-                }
+                pixelParser = new PixelParserBitFields(bmpHeaderInfo, bytes2, bytes);
                 break;
             default:
                 throw new ImageReadException("BMP: Unknown Compression: " + bmpHeaderInfo.compression);
         }
+        return new ImageContents(bmpHeaderInfo, bytes2, bytes, pixelParser);
     }
 
-    private BmpHeaderInfo readBmpHeaderInfo(ByteSource byteSource, boolean z) throws Throwable {
+    private BmpHeaderInfo readBmpHeaderInfo(ByteSource byteSource, boolean z) throws IOException, ImageReadException {
         InputStream inputStream;
         try {
             inputStream = byteSource.getInputStream();
@@ -625,23 +488,23 @@ public class BmpImageParser extends ImageParser {
                 BmpHeaderInfo bmpHeaderInfo = readBmpHeaderInfo(inputStream, null, z);
                 IoUtils.closeQuietly(true, inputStream);
                 return bmpHeaderInfo;
-            } catch (Throwable th) {
-                th = th;
+            } catch (Exception th) {
+                
                 IoUtils.closeQuietly(false, inputStream);
-                throw th;
+                throw new ImageReadException("Error", th);
             }
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (Exception th2) {
             inputStream = null;
+            throw new ImageReadException("Error", th2);
         }
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public Dimension getImageSize(ByteSource byteSource, Map<String, Object> map) throws Throwable {
+    public Dimension getImageSize(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
         HashMap map2 = map == null ? new HashMap() : new HashMap(map);
-        boolean zEquals = Boolean.TRUE.equals(map2.get("VERBOSE"));
-        if (map2.containsKey("VERBOSE")) {
-            map2.remove("VERBOSE");
+        boolean zEquals = Boolean.TRUE.equals(map2.get(ImagingConstants.PARAM_KEY_VERBOSE));
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_VERBOSE)) {
+            map2.remove(ImagingConstants.PARAM_KEY_VERBOSE);
         }
         if (!map2.isEmpty()) {
             throw new ImageReadException("Unknown parameter: " + map2.keySet().iterator().next());
@@ -654,13 +517,13 @@ public class BmpImageParser extends ImageParser {
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public ImageInfo getImageInfo(ByteSource byteSource, Map<String, Object> map) throws Throwable {
+    public ImageInfo getImageInfo(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
         Throwable th;
         InputStream inputStream;
         HashMap map2 = map == null ? new HashMap() : new HashMap(map);
-        boolean zEquals = Boolean.TRUE.equals(map2.get("VERBOSE"));
-        if (map2.containsKey("VERBOSE")) {
-            map2.remove("VERBOSE");
+        boolean zEquals = Boolean.TRUE.equals(map2.get(ImagingConstants.PARAM_KEY_VERBOSE));
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_VERBOSE)) {
+            map2.remove(ImagingConstants.PARAM_KEY_VERBOSE);
         }
         if (!map2.isEmpty()) {
             throw new ImageReadException("Unknown parameter: " + map2.keySet().iterator().next());
@@ -681,25 +544,27 @@ public class BmpImageParser extends ImageParser {
                 int i = bmpHeaderInfo.height;
                 int i2 = bmpHeaderInfo.width;
                 ArrayList arrayList = new ArrayList();
-                int i3 = bmpHeaderInfo.bitsPerPixel;
-                ImageFormats imageFormats = ImageFormats.BMP;
-                int i4 = (int) (((double) bmpHeaderInfo.hResolution) * 0.0254d);
-                float f = (float) (((double) i2) / ((double) i4));
-                int i5 = (int) (((double) bmpHeaderInfo.vResolution) * 0.0254d);
-                return new ImageInfo("Bmp (" + ((char) bmpHeaderInfo.identifier1) + ((char) bmpHeaderInfo.identifier2) + ": " + getBmpTypeDescription(bmpHeaderInfo.identifier1, bmpHeaderInfo.identifier2) + ")", i3, arrayList, imageFormats, "BMP Windows Bitmap", i, "image/x-ms-bmp", -1, i5, (float) (((double) i) / ((double) i5)), i4, f, i2, false, false, bArr != null, ImageInfo$ColorType.RGB, ImageInfo$CompressionAlgorithm.RLE);
-            } catch (Throwable th2) {
-                th = th2;
+                int i3 = (int) (bmpHeaderInfo.hResolution * 0.0254d);
+                int i4 = (int) (bmpHeaderInfo.vResolution * 0.0254d);
+                return new ImageInfo(
+                        "Bmp (" + ((char) bmpHeaderInfo.identifier1) + ((char) bmpHeaderInfo.identifier2) + ": "
+                                + getBmpTypeDescription(bmpHeaderInfo.identifier1, bmpHeaderInfo.identifier2) + ")",
+                        bmpHeaderInfo.bitsPerPixel, arrayList, ImageFormats.BMP, "BMP Windows Bitmap", i,
+                        "image/x-ms-bmp", -1, i4, (float) (i / i4), i3, (float) (i2 / i3), i2, false, false,
+                        bArr != null, ImageInfo.ColorType.RGB, ImageInfo.CompressionAlgorithm.RLE);
+            } catch (Exception th2) {
                 IoUtils.closeQuietly(false, inputStream);
-                throw th;
+                throw new ImageReadException("Error", th2);
             }
-        } catch (Throwable th3) {
-            th = th3;
+        } catch (Exception th3) {
             inputStream = null;
+            throw new ImageReadException("Error", th3);
         }
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public boolean dumpImageFile(PrintWriter printWriter, ByteSource byteSource) throws IOException, ImageReadException {
+    public boolean dumpImageFile(PrintWriter printWriter, ByteSource byteSource)
+            throws IOException, ImageReadException {
         printWriter.println("bmp.dumpImageFile");
         getImageInfo(byteSource, (Map<String, Object>) null).toString(printWriter, "");
         printWriter.println("");
@@ -707,7 +572,7 @@ public class BmpImageParser extends ImageParser {
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public FormatCompliance getFormatCompliance(ByteSource byteSource) throws Throwable {
+    public FormatCompliance getFormatCompliance(ByteSource byteSource) throws IOException, ImageReadException {
         InputStream inputStream;
         FormatCompliance formatCompliance = new FormatCompliance(byteSource.getDescription());
         try {
@@ -716,19 +581,19 @@ public class BmpImageParser extends ImageParser {
                 readImageContents(inputStream, formatCompliance, false);
                 IoUtils.closeQuietly(true, inputStream);
                 return formatCompliance;
-            } catch (Throwable th) {
-                th = th;
+            } catch (Exception th) {
+                
                 IoUtils.closeQuietly(false, inputStream);
-                throw th;
+                throw new ImageReadException("Error", th);
             }
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (Exception th2) {
             inputStream = null;
+            throw new ImageReadException("Error", th2);
         }
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public BufferedImage getBufferedImage(ByteSource byteSource, Map<String, Object> map) throws Throwable {
+    public BufferedImage getBufferedImage(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
         InputStream inputStream;
         try {
             inputStream = byteSource.getInputStream();
@@ -736,25 +601,26 @@ public class BmpImageParser extends ImageParser {
                 BufferedImage bufferedImage = getBufferedImage(inputStream, map);
                 IoUtils.closeQuietly(true, inputStream);
                 return bufferedImage;
-            } catch (Throwable th) {
-                th = th;
+            } catch (Exception th) {
+                
                 IoUtils.closeQuietly(false, inputStream);
-                throw th;
+                throw new ImageReadException("Error", th);
             }
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (Exception th2) {
             inputStream = null;
+            throw new ImageReadException("Error", th2);
         }
     }
 
-    public BufferedImage getBufferedImage(InputStream inputStream, Map<String, Object> map) throws IOException, ImageReadException {
+    public BufferedImage getBufferedImage(InputStream inputStream, Map<String, Object> map)
+            throws IOException, ImageReadException {
         HashMap map2 = map == null ? new HashMap() : new HashMap(map);
-        boolean zEquals = Boolean.TRUE.equals(map2.get("VERBOSE"));
-        if (map2.containsKey("VERBOSE")) {
-            map2.remove("VERBOSE");
+        boolean zEquals = Boolean.TRUE.equals(map2.get(ImagingConstants.PARAM_KEY_VERBOSE));
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_VERBOSE)) {
+            map2.remove(ImagingConstants.PARAM_KEY_VERBOSE);
         }
-        if (map2.containsKey("BUFFERED_IMAGE_FACTORY")) {
-            map2.remove("BUFFERED_IMAGE_FACTORY");
+        if (map2.containsKey(ImagingConstants.BUFFERED_IMAGE_FACTORY)) {
+            map2.remove(ImagingConstants.BUFFERED_IMAGE_FACTORY);
         }
         if (!map2.isEmpty()) {
             throw new ImageReadException("Unknown parameter: " + map2.keySet().iterator().next());
@@ -784,17 +650,21 @@ public class BmpImageParser extends ImageParser {
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public void writeImage(BufferedImage bufferedImage, OutputStream outputStream, Map<String, Object> map) throws ImageWriteException, IOException {
+    public void writeImage(BufferedImage bufferedImage, OutputStream outputStream, Map<String, Object> map)
+            throws ImageWriteException, IOException {
         BmpWriter bmpWriterPalette;
         HashMap map2 = map == null ? new HashMap() : new HashMap(map);
-        if (map2.containsKey("FORMAT")) {
-            map2.remove("FORMAT");
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_FORMAT)) {
+            map2.remove(ImagingConstants.PARAM_KEY_FORMAT);
         }
-        PixelDensity pixelDensity = map2.containsKey("PIXEL_DENSITY") ? (PixelDensity) map2.remove("PIXEL_DENSITY") : null;
+        PixelDensity pixelDensity = map2.containsKey(ImagingConstants.PARAM_KEY_PIXEL_DENSITY)
+                ? (PixelDensity) map2.remove(ImagingConstants.PARAM_KEY_PIXEL_DENSITY)
+                : null;
         if (!map2.isEmpty()) {
             throw new ImageWriteException("Unknown parameter: " + map2.keySet().iterator().next());
         }
-        SimplePalette simplePaletteMakeExactRgbPaletteSimple = new PaletteFactory().makeExactRgbPaletteSimple(bufferedImage, 256);
+        SimplePalette simplePaletteMakeExactRgbPaletteSimple = new PaletteFactory()
+                .makeExactRgbPaletteSimple(bufferedImage, 256);
         if (simplePaletteMakeExactRgbPaletteSimple == null) {
             bmpWriterPalette = new BmpWriterRgb();
         } else {
@@ -816,8 +686,10 @@ public class BmpImageParser extends ImageParser {
         binaryOutputStream.write2Bytes(bmpWriterPalette.getBitsPerPixel());
         binaryOutputStream.write4Bytes(0);
         binaryOutputStream.write4Bytes(imageData.length);
-        binaryOutputStream.write4Bytes(pixelDensity != null ? (int) Math.round(pixelDensity.horizontalDensityMetres()) : 0);
-        binaryOutputStream.write4Bytes(pixelDensity != null ? (int) Math.round(pixelDensity.verticalDensityMetres()) : 0);
+        binaryOutputStream
+                .write4Bytes(pixelDensity != null ? (int) Math.round(pixelDensity.horizontalDensityMetres()) : 0);
+        binaryOutputStream
+                .write4Bytes(pixelDensity != null ? (int) Math.round(pixelDensity.verticalDensityMetres()) : 0);
         if (simplePaletteMakeExactRgbPaletteSimple == null) {
             binaryOutputStream.write4Bytes(0);
         } else {

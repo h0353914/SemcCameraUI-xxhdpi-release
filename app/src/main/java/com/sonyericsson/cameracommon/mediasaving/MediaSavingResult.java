@@ -1,9 +1,11 @@
 package com.sonyericsson.cameracommon.mediasaving;
 
+import com.sonyericsson.android.camera.R;
+
 public enum MediaSavingResult {
     SUCCESS(true, -1, -1),
-    FAIL(false, 2131690172, 0),
-    FAIL_MEMORY_FULL(false, 2131689945, 0);
+    FAIL(false, R.string.cam_strings_store_fail_txt, 0),
+    FAIL_MEMORY_FULL(false, R.string.cam_strings_memory_full_save_failed_txt, 0);
 
     public final int mResultCode;
     public final boolean mSuccess;

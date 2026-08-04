@@ -2,12 +2,14 @@ package com.google.android.gms.common.internal;
 
 import android.os.IBinder;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
+import com.google.android.gms.common.internal.zzp;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class ResolveAccountResponse implements SafeParcelable {
-    public static final Parcelable$Creator<ResolveAccountResponse> CREATOR = new zzz();
+    public static final Parcelable.Creator<ResolveAccountResponse> CREATOR = new zzz();
     final int mVersionCode;
     private boolean zzabG;
     IBinder zzaeH;
@@ -52,7 +54,7 @@ public class ResolveAccountResponse implements SafeParcelable {
     }
 
     public zzp zzpq() {
-        return zzp$zza.zzaH(this.zzaeH);
+        return zzp.zza.zzaH(this.zzaeH);
     }
 
     public ConnectionResult zzpr() {

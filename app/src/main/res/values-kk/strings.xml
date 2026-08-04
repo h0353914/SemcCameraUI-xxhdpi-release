@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Түсіру мүмкін болмады. Камераны ақырынырақ бұрыңыз.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Түсіру мүмкін болмады. Камераны жылдамырақ бұрыңыз.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Камераны панорамалау арқылы панорамалық фотосуретті түсіру</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Келесі файлдарды жасау:\n- Multi Angle кескіні\n- 3D кескіні\nЕскертпе: Бұл файлдарда сұр аумақ бар.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Келесі файлдарды жасау:\n- Multi Angle кескіні\n- 3D кескіні</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Өңделуде...\nБұл кескінде сұр аумақ бар</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Келесі файлдарды жасау:
+- Multi Angle кескіні
+- 3D кескіні
+Ескертпе: Бұл файлдарда сұр аумақ бар."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Келесі файлдарды жасау:
+- Multi Angle кескіні
+- 3D кескіні"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Өңделуде...
+Бұл кескінде сұр аумақ бар"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Сурет сақталуда</string>
     <string name="cam_3d_strings_dialog_processing_txt">Өңделуде...</string>
     <string name="cam_3d_strings_error_application_busy_txt">3D камерасын іске қосу үшін бірнеше секунд күте тұрыңыз</string>
@@ -41,7 +47,7 @@
     <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">Кабелді ажыратыңыз. Жалғанған кабельмен бұл режимде суретке түсіре алмайсыз.</string>
     <string name="cam_3d_strings_error_direction_txt">Суретке түсіру мүмкін болмады. Камераны дұрыс бағытқа бұрыңыз.</string>
     <string name="cam_3d_strings_error_too_quick_txt">Суретке түсіру мүмкін болмады. Камераны ақырынырақ бұрыңыз.</string>
-    <string name="cam_3d_strings_error_too_slow_txt">Суретке түсіру мүмкін болмады. Камераны жылдамырақ бұрыңыз. </string>
+    <string name="cam_3d_strings_error_too_slow_txt">"Суретке түсіру мүмкін болмады. Камераны жылдамырақ бұрыңыз. "</string>
     <string name="cam_3d_strings_setting_shooting_direction_down_txt">Төменге</string>
     <string name="cam_3d_strings_setting_shooting_direction_left_txt">Солға</string>
     <string name="cam_3d_strings_setting_shooting_direction_right_txt">Оңға</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Тері ашық және тегіс көрініп тұрғанын тексеріңіз. Бұл әсер алдыңғы камераны пайдаланатын қолданбаларда жұмыс істейді. Мұны фотосуреттерде және бейнелерде қолдануға болады. Сондай-ақ, деңгейді реттеуге болады.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Деңгейді реттеу</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Тегіс тері</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Қолданбаны іске қосу мүмкін емес.\nҚұрылғыңызда %1$s қолданбасының соңғы нұсқасы орнатылғанын және қосылғанын тексеріңіз.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Қолданбаны іске қосу мүмкін емес.
+Құрылғыңызда %1$s қолданбасының соңғы нұсқасы орнатылғанын және қосылғанын тексеріңіз."</string>
     <string name="cam_strings_gridline_txt">Тор сызықтары</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Алақанды камераға қарай бұрыңыз. Алақаныңыз танылғанда кідірісті таймер қосылады. Оны тануды оңай ету үшін саусақтарыңызды жоғары қарай созыңыз.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Алақанды камераға қарай бұрыңыз</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Жалпы параметрлер</string>
     <string name="cam_strings_more_txt">Көбірек</string>
     <string name="cam_strings_multi_window_txt">%1$s толық экранда пайдалануға ауысу үшін бөлу жолағының ортасын сүйреңіз</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Қазір басқа құрылғы қосылған.\nКескінді құрылғы көмегімен көрсеткіш тетік арқылы ортақтасу керек пе?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Қазір басқа құрылғы қосылған.
+Кескінді құрылғы көмегімен көрсеткіш тетік арқылы ортақтасу керек пе?"</string>
     <string name="cam_strings_multicam_add_device_txt">Құрылғы қосу</string>
     <string name="cam_strings_multicam_add_more_txt">Қосымша қосу</string>
     <string name="cam_strings_multicam_apply_txt">Дайын</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Өлшеу</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Болжанған</string>
     <string name="cam_strings_predictive_capture_txt">Болжалды түсіру</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Камера телефонды пейзаж режимінде көтеру қозғалысын анықтап және оны нысанға қарай бағыттап, автоматты түрде іске қосылды.\nОсы мүмкіндікті пайдаланудың таңдаулы жолын камера параметрлері ішіндегі Зерделі іске қосу ішінен таңдауға болады.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Камера телефонды пейзаж режимінде көтеру қозғалысын анықтап және оны нысанға қарай бағыттап, автоматты түрде іске қосылды.
+Осы мүмкіндікті пайдаланудың таңдаулы жолын камера параметрлері ішіндегі Зерделі іске қосу ішінен таңдауға болады."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Түсіру үшін шеңбер ішінде түртіңіз</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Түсіру үшін экранды түртіңіз</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Толық экранды көру үшін шеңбер ішінде түртіңіз</string>
     <string name="cam_strings_predictive_launch_guide_txt">Камераны іске қосу үшін шеңбер ішінде түртіңіз</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Іске қосу және түсіру үшін түр.</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Іске қосу үшін түртіңіз</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Камераны тез іске қосуға болады. Құрылғыңызды альбомдық режимде тез көтеріңіз және камераны нысанға бағыттаңыз. Камера автоматты түрде іске қосылады.\nСіз камера параметрлеріндегі «Зерделі іске қосу» тармағынан осы мүмкіндікті пайдаланудың таңдаулы жолын таңдай аласыз.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Камераны тез іске қосуға болады. Құрылғыңызды альбомдық режимде тез көтеріңіз және камераны нысанға бағыттаңыз. Камера автоматты түрде іске қосылады.
+Сіз камера параметрлеріндегі «Зерделі іске қосу» тармағынан осы мүмкіндікті пайдаланудың таңдаулы жолын таңдай аласыз."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Зерделі іске қосу</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Камераны тез іске қосуға болады. Пейзаждық режимде құрылғыны жоғары айналдырыңыз және камераны нысанға бағыттаңыз. Камера автоматты түрде іске қосылады.\nБұл мүмкіндікті камера параметріндегі «Зерделі іске қосу» параметрі арқылы өшіруге болады.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Камераны тез іске қосуға болады. Пейзаждық режимде құрылғыны жоғары айналдырыңыз және камераны нысанға бағыттаңыз. Камера автоматты түрде іске қосылады.
+Бұл мүмкіндікті камера параметріндегі «Зерделі іске қосу» параметрі арқылы өшіруге болады."</string>
     <string name="cam_strings_predictive_launch_txt">Зерделі іске қосу</string>
     <string name="cam_strings_preview_always_txt">Қосулы</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 секунд</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s келесі рұқсатт(ард)ы қажет етеді</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s рұқсаты</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Қолданба осы әрекетті орындау үшін келесі рұқсатт(ард)ы қажет етеді.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Рұқсаттарды беру үшін «Қолданба туралы ақпарат» &gt; «Рұқсаттар» тармағына өтіңіз.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Рұқсаттарды беру үшін «Қолданба туралы ақпарат» > «Рұқсаттар» тармағына өтіңіз.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Жалғастыру мүмкін болмады</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Фотосуреттер және бейнелер түсіру үшін</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Орынды шығарып алу үшін</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Ішкі жадқа сақталды</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">ЖЫЛЖЫТУ</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Қолданба осы әрекетті орындау үшін келесі рұқсатт(ард)ы қажет етеді.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">SD картасын пайдалану үшін камераға SD картасына қатынасу рұқсаттары керек.\nДеректер қоймасын SD картасына қайтадан өзгертіңіз немесе келесі экранда камераға SD картасына қатынасуға рұқсат етіңіз.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"SD картасын пайдалану үшін камераға SD картасына қатынасу рұқсаттары керек.
+Деректер қоймасын SD картасына қайтадан өзгертіңіз немесе келесі экранда камераға SD картасына қатынасуға рұқсат етіңіз."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD картасы қол жетімді емес</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Рұқсаттар қажет жаңа SD картасы анықталды.\n\nSD картасын деректер жады ретінде пайдалану үшін, келесі экранда SD картасын не DCIM каталогын таңдаңыз.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SD картасы не DCIM каталогы таңдалмаған. SD картасын пайдалану мүмкін емес.\n\nРұқсаттар беру үшін, сақтау орнын SD картасына өзгерту арқылы бастаңыз немесе келесі экранда тиісті каталогты таңдаңыз.</string>
-    <string name="cam_strings_sd_permission_info_txt">Рұқсаттарды қажет ететін жаңа SD картасы табылды.\nСондықтан әдепкі деректер қоймасы ретінде ішкі құрылғы қоймасы пайдаланылады.\n\nДеректер қоймасы ретінде SD картасын пайдалану үшін фотокамера параметрлеріне өтіп, қойма параметрін SD картасына өзгертіңіз.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Рұқсаттар қажет жаңа SD картасы анықталды.
+
+SD картасын деректер жады ретінде пайдалану үшін, келесі экранда SD картасын не DCIM каталогын таңдаңыз."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD картасы не DCIM каталогы таңдалмаған. SD картасын пайдалану мүмкін емес.
+
+Рұқсаттар беру үшін, сақтау орнын SD картасына өзгерту арқылы бастаңыз немесе келесі экранда тиісті каталогты таңдаңыз."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Рұқсаттарды қажет ететін жаңа SD картасы табылды.
+Сондықтан әдепкі деректер қоймасы ретінде ішкі құрылғы қоймасы пайдаланылады.
+
+Деректер қоймасы ретінде SD картасын пайдалану үшін фотокамера параметрлеріне өтіп, қойма параметрін SD картасына өзгертіңіз."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Фотосуреттерді және бейнелерді SD картасында сақтау</string>
     <string name="cam_strings_select_picture_txt">Фотосуретті бөлектеу</string>
     <string name="cam_strings_self_timer_05_txt">0,5 сек.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Авто түсіру</string>
     <string name="cam_strings_side_touch_not_supported_txt">Бұл экранда «Бүйірлік сенсор» қолданбасына қолдау көрсетілмейді</string>
     <string name="cam_strings_side_touch_on_title_txt">Бүйірлік сенсор</string>
-    <string name="cam_strings_side_touch_on_txt">Бұл функцияны пайдалану үшін «Параметрлер» &gt; «Дисплей» тармағына өтіп, «Бүйірлік сенсор» параметрін қосыңыз. Қазір қосу керек пе?</string>
+    <string name="cam_strings_side_touch_on_txt">Бұл функцияны пайдалану үшін «Параметрлер» > «Дисплей» тармағына өтіп, «Бүйірлік сенсор» параметрін қосыңыз. Қазір қосу керек пе?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Бүйірлік сенсор</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Фотосуретті немесе бейнені ысырма түймесінің орнына бар болғаны портреттік көріністе экран бүйіріндегі сенсорды екі рет түрту арқылы түсіре аласыз. Сондай-ақ осы бүйірлік сенсор бойымен саусақты сырғыту арқылы ұлғайтуға немесе кішірейтуге болады.\nФотосурет және бейне режимдерінің екеуі де бұл функцияны қолдайды. Оны фотокамера параметр-дегі «Бүйірлік сенсор» тарм. өш. бол.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Фотосуретті немесе бейнені ысырма түймесінің орнына бар болғаны портреттік көріністе экран бүйіріндегі сенсорды екі рет түрту арқылы түсіре аласыз. Сондай-ақ осы бүйірлік сенсор бойымен саусақты сырғыту арқылы ұлғайтуға немесе кішірейтуге болады.\nФотосурет және бейне режимдерінің екеуі де бұл функцияны қолдайды. Оны фотокамера параметр-дегі «Бүйірлік сенсор» тарм. өш. бол.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Фотосуретті немесе бейнені ысырма түймесінің орнына бар болғаны портреттік көріністе экран бүйіріндегі сенсорды екі рет түрту арқылы түсіре аласыз.\nФотосурет және бейне режимдерінің екеуі де бұл функцияны қолдайды. Оны фотокамера параметрлеріндегі «Бүйірлік сенсор» тармағында өшіруге болады.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Фотосуретті немесе бейнені ысырма түймесінің орнына бар болғаны экран бүйіріндегі сенсорды екі рет түрту арқылы түсіре аласыз.\nФотосурет және бейне режимдерінің екеуі де бұл функцияны қолдайды. Оны фотокамера параметрлеріндегі «Бүйірлік сенсор» тармағында өшіруге болады.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Фотосуретті немесе бейнені ысырма түймесінің орнына бар болғаны портреттік көріністе экран бүйіріндегі сенсорды екі рет түрту арқылы түсіре аласыз. Сондай-ақ осы бүйірлік сенсор бойымен саусақты сырғыту арқылы ұлғайтуға немесе кішірейтуге болады.
+Фотосурет және бейне режимдерінің екеуі де бұл функцияны қолдайды. Оны фотокамера параметр-дегі «Бүйірлік сенсор» тарм. өш. бол."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Фотосуретті немесе бейнені ысырма түймесінің орнына бар болғаны портреттік көріністе экран бүйіріндегі сенсорды екі рет түрту арқылы түсіре аласыз. Сондай-ақ осы бүйірлік сенсор бойымен саусақты сырғыту арқылы ұлғайтуға немесе кішірейтуге болады.
+Фотосурет және бейне режимдерінің екеуі де бұл функцияны қолдайды. Оны фотокамера параметр-дегі «Бүйірлік сенсор» тарм. өш. бол."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Фотосуретті немесе бейнені ысырма түймесінің орнына бар болғаны портреттік көріністе экран бүйіріндегі сенсорды екі рет түрту арқылы түсіре аласыз.
+Фотосурет және бейне режимдерінің екеуі де бұл функцияны қолдайды. Оны фотокамера параметрлеріндегі «Бүйірлік сенсор» тармағында өшіруге болады."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Фотосуретті немесе бейнені ысырма түймесінің орнына бар болғаны экран бүйіріндегі сенсорды екі рет түрту арқылы түсіре аласыз.
+Фотосурет және бейне режимдерінің екеуі де бұл функцияны қолдайды. Оны фотокамера параметрлеріндегі «Бүйірлік сенсор» тармағында өшіруге болады."</string>
     <string name="cam_strings_side_touch_txt">Бүйірлік сенсор</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Жазу мәнерін және экран ажыратымдылығын «Камера параметрлері» тармағында өзгертуге болады</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Өте баяу (бір кадр)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Супер баяу қозғалыс</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Баяу қозғалыс үшін кадр/сек мәнін және жазу мәнерін өзгертуге болады</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Қосымша опциялар</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Экран ортасындағы түймені түрту арқылы қымбат сәтті %1$s кадр/сек баяу қозғалыспен лезде жазыңыз.\nЖарық жағдайда жазу жақсырақ бейнені жасайды.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Экран ортасындағы түймені түрту арқылы қымбат сәтті %1$s кадр/сек баяу қозғалыспен лезде жазыңыз.
+Жарық жағдайда жазу жақсырақ бейнені жасайды."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Ортаңғы түй. түрту арқылы %1$s кадр/сек жылд. дұрыс сәтті жаза алас.</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Экран ортасындағы түймені түрту арқылы %1$s кадр/сек баяу қозғалыста қымбат сәтті лезде жазыңыз</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Супер баяу қозғалыс (бір түсірілім)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Баяу қозғалыс</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Жазу әдісі</string>
     <string name="cam_strings_slow_motion_standard_txt">Баяу қозғалыс</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Қымбат сәтті баяу қозғалыста көрсету арқылы әсерлі бейне жасаңыз.\nЖарық жағдайда жазу жақсырақ бейнені жасайды.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Қымбат сәтті баяу қозғалыста көрсету арқылы әсерлі бейне жасаңыз.
+Жарық жағдайда жазу жақсырақ бейнені жасайды."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">%1$s кадр/сек мәніне ауысу арқылы бейнені әр түрлі жылд-мен жаз. болады</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Ортадағы түймені дұрыс сәтте түртіңіз</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Баяу қозғалыс жазылды</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Бағдар-лық құрал лиценз-ры</string>
     <string name="cam_strings_take_photo_txt">Суретке түсіру</string>
     <string name="cam_strings_term_of_use_accept_txt">Қабылдау</string>
-    <string name="cam_strings_term_of_use_consent_txt">Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Пайдалану шарттарымен&lt;/a&gt; келісемін.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Пайдалану шарттарымен&lt;/a> келісемін.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Деректер жоспарыңызға байланысты бұл қызметті пайдалануыңызға мобильді деректер үшін ақы алынуы мүмкін.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile қызметтің бөлігі ретінде және қызметті жақсарту мақсатында тиісті нәтижелерді ұсыну үшін хештелген Android ID бірегей құрылғы идентификаторын, орынға және белгіленген уақытқа негізделген деректерді жинайды.</string>
     <string name="cam_strings_term_of_use_decline_txt">Қабылдамау</string>
     <string name="cam_strings_term_of_use_title_txt">Талаптар мен шарттар</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Пайдалану шарттары&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Пайдалану шарттары&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Фотосуреттерден таңдауды алу</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Сақтау мүмкін болмады</string>
     <string name="cam_strings_timeshift_save_complete_txt">Сақталды</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Тұрақты 4K бейнесін жазу үшін жылдамдығы жоғары SD картасын (UHS 1 немесе жоғарырақ сыныбы, я болмаса, 10-шы жылдамдық сыныбы ұсынылады) пайдаланбасаңыз, бұл параметрді өзгертпеу керек.</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Тұрақты Timeshift бейнесін жазу үшін жылдамдығы жоғары SD картасын (UHS 1 немесе жоғарырақ сыныбы, я болмаса, 10-шы жылдамдық сыныбы ұсынылады) пайдаланбасаңыз, бұл параметрді өзгертпеу керек. Бәрібір өзгерту керек пе?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Тұрақты баяу қозғалысты бейнені жазу үшін жылдамдығы жоғары SD картасын (UHS 1 немесе жоғарырақ сыныбы, я болмаса, 10-шы жылдамдық сыныбы ұсынылады) пайдаланбасаңыз, бұл параметрді өзгертпеңіз.</string>
-    <string name="cam_strings_video_explanatory_txt">Тұрақты бейнені жазу үшін деректер қоймасын ішкі жадқа өзгерту ұсынылады. Қазір өзгерту керек пе?\n\nSD картасын деректер қоймасы ретінде пайдалануды жалғастырсаңыз, жылдамдығы жоғары SD картасын (UHS 1 немесе жоғарырақ сыныбы, я болмаса, 10-шы жылдамдық сыныбы ұсынылады) пайдаланыңыз.</string>
+    <string name="cam_strings_video_explanatory_txt">"Тұрақты бейнені жазу үшін деректер қоймасын ішкі жадқа өзгерту ұсынылады. Қазір өзгерту керек пе?
+
+SD картасын деректер қоймасы ретінде пайдалануды жалғастырсаңыз, жылдамдығы жоғары SD картасын (UHS 1 немесе жоғарырақ сыныбы, я болмаса, 10-шы жылдамдық сыныбы ұсынылады) пайдаланыңыз."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Қос камера</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Тіпті түнде де немесе жарық аз бөлмеде де бұрмалануы төмен әдемі бейнелерді жаза аласыз. Камера ультра жоғары сезімталдықпен жазатын көріністердің негізінде бір камера және қос камера арасында автоматты түрде ауысады.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Қос камерамен бейне жазу</string>

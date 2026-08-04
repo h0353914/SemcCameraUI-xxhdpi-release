@@ -1,4 +1,5 @@
 package org.apache.commons.imaging.formats.tiff.taginfos;
+import java.io.UnsupportedEncodingException;
 
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -53,11 +54,11 @@ public class TagInfo {
         this.isOffset = z;
     }
 
-    public Object getValue(TiffField tiffField) throws ImageReadException {
+    public Object getValue(TiffField tiffField) throws ImageReadException, UnsupportedEncodingException {
         return tiffField.getFieldType().getValue(tiffField);
     }
 
-    public byte[] encodeValue(FieldType fieldType, Object obj, ByteOrder byteOrder) throws ImageWriteException {
+    public byte[] encodeValue(FieldType fieldType, Object obj, ByteOrder byteOrder) throws ImageWriteException, UnsupportedEncodingException {
         return fieldType.writeData(obj, byteOrder);
     }
 

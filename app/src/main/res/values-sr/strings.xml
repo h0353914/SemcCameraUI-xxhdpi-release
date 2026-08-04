@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Nije moguće dovršiti snimanje. Okrećite uređaj sporije.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Nije moguće dovršiti snimanje. Okrećite uređaj brže.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Snimite panoramsku fotografiju okretanjem kamere</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Pravljenje sledećih datoteka:\n- slika iz više uglova\n- 3D slika\nNapomena: ove datoteke sadrže sivu oblast.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Pravljenje sledećih datoteka:\n- slika iz više uglova\n- 3D slika</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Obrada...\nOva slika sadrži sivu oblast</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Pravljenje sledećih datoteka:
+- slika iz više uglova
+- 3D slika
+Napomena: ove datoteke sadrže sivu oblast."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Pravljenje sledećih datoteka:
+- slika iz više uglova
+- 3D slika"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Obrada...
+Ova slika sadrži sivu oblast"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Čuvanje slike</string>
     <string name="cam_3d_strings_dialog_processing_txt">Obrada...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Sačekajte nekoliko sekundi dok se 3D kamera ne pokrene</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Neka vam koža izgleda svetlo i glatko. Efekat funkcioniše u aplikacijama koje koriste prednju kameru. Može se primeniti na fotografije i video zapise. Možete i da prilagodite nivo.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Prilagođavanje nivoa</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Glatka koža</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Nije moguće pokrenuti aplikaciju.\nUverite se da je najnovija verzija aplikacije %1$s instalirana i omogućena na uređaju.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Nije moguće pokrenuti aplikaciju.
+Uverite se da je najnovija verzija aplikacije %1$s instalirana i omogućena na uređaju."</string>
     <string name="cam_strings_gridline_txt">Linije koord. mreže</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Okrenite dlan ka kameri. Samostalni tajmer će se uključiti kada uređaj prepozna dlan. Da biste olakšali prepoznavanje, ispružite prste nagore.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Okrenite dlan ka kameri</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Opšta podešavanja</string>
     <string name="cam_strings_more_txt">Još</string>
     <string name="cam_strings_multi_window_txt">Prevucite sredinu razdelne trake da biste koristili aplikaciju %1$s preko celog ekrana</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Drugi uređaj je sada povezan.\nŽelite li da delite sliku preko vizira sa uređajem?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Drugi uređaj je sada povezan.
+Želite li da delite sliku preko vizira sa uređajem?"</string>
     <string name="cam_strings_multicam_add_device_txt">Dodaj uređaj</string>
     <string name="cam_strings_multicam_add_more_txt">Dodaj još</string>
     <string name="cam_strings_multicam_apply_txt">Gotovo</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Merenje</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Prediktivno</string>
     <string name="cam_strings_predictive_capture_txt">Prediktivno snimanje</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Kamera je automatski pokrenuta nakon otkrivanja vašeg pokreta podizanja telefona u režimu horizontalnog prikaza i njegovog usmeravanja prema nekom objektu.\nSvoj omiljeni način korišćenja ove funkcije možete izabrati iz Pametnog pokretanja u podešavanjima kamere.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Kamera je automatski pokrenuta nakon otkrivanja vašeg pokreta podizanja telefona u režimu horizontalnog prikaza i njegovog usmeravanja prema nekom objektu.
+Svoj omiljeni način korišćenja ove funkcije možete izabrati iz Pametnog pokretanja u podešavanjima kamere."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Dodirnite unutar kruga da biste snimili</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Dodirnite ekran da biste snimili</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Tapnite unutar kruga da biste prešli u prikaz preko celog ekrana</string>
     <string name="cam_strings_predictive_launch_guide_txt">Dodirnite unutar kruga da biste pokrenuli kameru</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Dodirnite za pokr. i snimanje</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Dodirnite da biste pokrenuli</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Možete brzo da pokrenete kameru. Brzo podignite uređaj u položenom režimu i usmerite kameru ka predmetu. Kamera će se automatski pokrenuti.\nMožete izabrati omiljeni način korišćenja ove funkcije putem pametnog pokretanja u podešavanjima kamere.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Možete brzo da pokrenete kameru. Brzo podignite uređaj u položenom režimu i usmerite kameru ka predmetu. Kamera će se automatski pokrenuti.
+Možete izabrati omiljeni način korišćenja ove funkcije putem pametnog pokretanja u podešavanjima kamere."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Pametno pokretanje</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Možete brzo da pokrenete kameru. Zamahnite uređajem nagore dok je u položenom režimu i usmerite kameru ka predmetu. Kamera će se automatski pokrenuti.\nOvu funkciju možete da isključite u aplikaciji Pametno pokretanje u podešavanjima kamere.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Možete brzo da pokrenete kameru. Zamahnite uređajem nagore dok je u položenom režimu i usmerite kameru ka predmetu. Kamera će se automatski pokrenuti.
+Ovu funkciju možete da isključite u aplikaciji Pametno pokretanje u podešavanjima kamere."</string>
     <string name="cam_strings_predictive_launch_txt">Pametno pokretanje</string>
     <string name="cam_strings_preview_always_txt">Uključeno</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 sekunde</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s zahteva sledeće dozvole</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s dozvola</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Ova aplikacija zahteva sledeće dozvole za izvršavanje ove radnje.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Da biste dali dozvole, idite u odeljak Informacije o aplikaciji &gt; Dozvole.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Da biste dali dozvole, idite u odeljak Informacije o aplikaciji > Dozvole.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Nije moguće nastaviti</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Da biste snimili fotografije i video zapise</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Da biste preuzeli lokaciju</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Sačuvano u unutrašnjem skladištu</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">PREĐI</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Ova aplikacija zahteva sledeće dozvole za izvršavanje ove radnje.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Da biste koristili SD karticu, kameri su potrebne dozvole za pristup SD kartici.\nPonovo promenite skladište podataka na SD karticu ili dozvolite kameri da pristupa SD kartici na sledećem ekranu.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Da biste koristili SD karticu, kameri su potrebne dozvole za pristup SD kartici.
+Ponovo promenite skladište podataka na SD karticu ili dozvolite kameri da pristupa SD kartici na sledećem ekranu."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD kartica nije dostupna</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Otkrivena je nova SD kartica koja zahteva dozvole.\n\nDa biste koristili tu SD karticu kao skladište podataka, na sledećem ekranu izaberite direktorijum SD kartica ili DCIM.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Direktorijum SD kartica ili DCIM nije izabran. Nije moguće koristiti SD karticu.\n\nDa biste dodelili dozvole, prvo promenite lokaciju čuvanja na SD karticu ili izaberite odgovarajući direktorijum na sledećem ekranu.</string>
-    <string name="cam_strings_sd_permission_info_txt">Otkrivena je nova SD kartica koja zahteva dozvole.\nZato će se unutrašnje skladište uređaja koristiti kao podrazumevano skladište podataka.\n\nDa biste koristili SD karticu kao skladište podataka, idite u podešavanja kamere i promenite opciju za skladište u SD karticu.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Otkrivena je nova SD kartica koja zahteva dozvole.
+
+Da biste koristili tu SD karticu kao skladište podataka, na sledećem ekranu izaberite direktorijum SD kartica ili DCIM."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Direktorijum SD kartica ili DCIM nije izabran. Nije moguće koristiti SD karticu.
+
+Da biste dodelili dozvole, prvo promenite lokaciju čuvanja na SD karticu ili izaberite odgovarajući direktorijum na sledećem ekranu."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Otkrivena je nova SD kartica koja zahteva dozvole.
+Zato će se unutrašnje skladište uređaja koristiti kao podrazumevano skladište podataka.
+
+Da biste koristili SD karticu kao skladište podataka, idite u podešavanja kamere i promenite opciju za skladište u SD karticu."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Da biste sačuvali fotografije i video zapise na SD kartici</string>
     <string name="cam_strings_select_picture_txt">Izaberi fotografiju</string>
     <string name="cam_strings_self_timer_05_txt">0,5 sek.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Automatsko snimanje</string>
     <string name="cam_strings_side_touch_not_supported_txt">Bočni senzor nije podržan na ovom ekranu</string>
     <string name="cam_strings_side_touch_on_title_txt">Bočni senzor</string>
-    <string name="cam_strings_side_touch_on_txt">Da biste koristili ovu funkciju, idite u „Podešavanja &gt; Prikaz“ i uključite Bočni senzor. Omogućiti odmah?</string>
+    <string name="cam_strings_side_touch_on_txt">Da biste koristili ovu funkciju, idite u „Podešavanja > Prikaz“ i uključite Bočni senzor. Omogućiti odmah?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Bočni senzor</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Možete da snimite fotografiju ili video tako što ćete jednostavno tapnuti dvaput na senzor na bočnoj strani uređaja umesto da tapnete na dugme blende. Takođe možete da uvećavate i umanjujete prevlačenjem prsta duž ovog bočnog senzora.\nOvu funkciju podržavaju režimi fotografija i video zapisa. Možete da je isključite u aplikaciji Bočni senzor u podešavanjima kamere.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Možete da snimite fotografiju ili video tako što ćete jednostavno tapnuti dvaput na senzor na bočnoj strani uređaja u uspravnom prikazu umesto da tapnete na dugme blende. Takođe možete da uvećavate i umanjujete prevlačenjem prsta duž ovog bočnog senzora.\nOvu funkciju podržavaju režimi fotografija i video zapisa. Možete da je isključite u aplikaciji Bočni senzor u podešavanjima kamere.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Možete da snimite fotografiju ili video tako što ćete jednostavno tapnuti dvaput na senzor na bočnoj strani uređaja u uspravnom prikazu umesto da tapnete na dugme blende.\nOvu funkciju podržavaju režimi fotografija i video zapisa. Možete da je isključite u aplikaciji Bočni senzor u podešavanjima kamere.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Možete da snimite fotografiju ili video tako što ćete jednostavno tapnuti dvaput na senzor na bočnoj strani uređaja umesto da tapnete na dugme blende.\nOvu funkciju podržavaju režimi fotografija i video zapisa. Možete da je isključite u aplikaciji Bočni senzor u podešavanjima kamere.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Možete da snimite fotografiju ili video tako što ćete jednostavno tapnuti dvaput na senzor na bočnoj strani uređaja umesto da tapnete na dugme blende. Takođe možete da uvećavate i umanjujete prevlačenjem prsta duž ovog bočnog senzora.
+Ovu funkciju podržavaju režimi fotografija i video zapisa. Možete da je isključite u aplikaciji Bočni senzor u podešavanjima kamere."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Možete da snimite fotografiju ili video tako što ćete jednostavno tapnuti dvaput na senzor na bočnoj strani uređaja u uspravnom prikazu umesto da tapnete na dugme blende. Takođe možete da uvećavate i umanjujete prevlačenjem prsta duž ovog bočnog senzora.
+Ovu funkciju podržavaju režimi fotografija i video zapisa. Možete da je isključite u aplikaciji Bočni senzor u podešavanjima kamere."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Možete da snimite fotografiju ili video tako što ćete jednostavno tapnuti dvaput na senzor na bočnoj strani uređaja u uspravnom prikazu umesto da tapnete na dugme blende.
+Ovu funkciju podržavaju režimi fotografija i video zapisa. Možete da je isključite u aplikaciji Bočni senzor u podešavanjima kamere."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Možete da snimite fotografiju ili video tako što ćete jednostavno tapnuti dvaput na senzor na bočnoj strani uređaja umesto da tapnete na dugme blende.
+Ovu funkciju podržavaju režimi fotografija i video zapisa. Možete da je isključite u aplikaciji Bočni senzor u podešavanjima kamere."</string>
     <string name="cam_strings_side_touch_txt">Bočni senzor</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Stil snimanja i rezolucija ekrana se mogu promeniti u podešavanjima kamere</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Veoma sporo (jedan kadar)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Izuzetno usporeno kretanje</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Možete da promenite fps i stil snimanja za usporeni snimak</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Još opcija</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Odmah snimite dragoceni trenutak u %1$s fps usporenom snimku tako što ćete tapnuti na dugme u centru ekrana.\nAko snimate u osvetljenoj sredini, napravićete bolji video.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Odmah snimite dragoceni trenutak u %1$s fps usporenom snimku tako što ćete tapnuti na dugme u centru ekrana.
+Ako snimate u osvetljenoj sredini, napravićete bolji video."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Pravi momenat možete da snimite sa %1$s o/s tapom na dugme u centru</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Odmah snimite dragoceni trenutak u %1$s fps usporenom snimku tako što ćete tapnuti na dugme u centru ekrana</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Izuzetno usporeno kretanje (jedan snimak)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Usporeno kretanje</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Kako da snimate</string>
     <string name="cam_strings_slow_motion_standard_txt">Usporeno kretanje</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Napravite impresivan video prikazujući divan trenutak u usporenom snimku.\nAko snimate u osvetljenoj sredini, napravićete bolji video.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Napravite impresivan video prikazujući divan trenutak u usporenom snimku.
+Ako snimate u osvetljenoj sredini, napravićete bolji video."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Možete da snimite video u različitim brzinama prebacivanjem na %1$s fps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Tapnite na dugme u centru u pravom trenutku</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Snimljen je usporeni snimak</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Licence za softver</string>
     <string name="cam_strings_take_photo_txt">Fotografiši</string>
     <string name="cam_strings_term_of_use_accept_txt">Prihvati</string>
-    <string name="cam_strings_term_of_use_consent_txt">Pristajem na Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;uslove korišćenja&lt;/a&gt;.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Pristajem na Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">uslove korišćenja&lt;/a>.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Korišćenje ove usluge može podleći naplati mobilnih podataka u zavisnosti od vašeg plana podataka.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile će prikupljati heširani Android ID jedinstveni identifikator uređaja, podatke zasnovane na lokaciji i vremenski žig u cilju pružanja odgovarajućih rezultata kao deo usluge i u cilju poboljšanja usluge.</string>
     <string name="cam_strings_term_of_use_decline_txt">Odbij</string>
     <string name="cam_strings_term_of_use_title_txt">Odredbe i uslovi</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Uslovi korišćenja&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Uslovi korišćenja&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Opoziv izbora fotografija</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Nije moguće sačuvati</string>
     <string name="cam_strings_timeshift_save_complete_txt">Sačuvano</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Da bi snimanje 4K video zapisa bilo stabilno, ne smete da menjate ovo podešavanje ako ne koristite SD karticu velike brzine (preporučuje se UHS klasa brzine 1 ili novija, odnosno klasa brzine 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Da bi snimanje Timeshift video zapisa bilo stabilno, ne smete da menjate ovo podešavanje ako ne koristite SD karticu velike brzine (preporučuje se UHS klasa brzine 1 ili novija, ili klasa brzine 10). Želite li da ipak promenite?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Da bi snimanje usporenog video zapisa bilo stabilno, nemojte menjati ovo podešavanje ako ne koristite SD karticu velike brzine (preporučuje se UHS klasa brzine 1 ili novija, odnosno klasa brzine 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Da bi snimanje video zapisa bilo stabilno, preporučujemo da kao skladište podataka izaberete unutrašnje skladište. Želite li da to odmah promenite?\n\nAko nastavite da koristite SD karticu kao skladište podataka, obavezno koristite SD karticu velike brzine (preporučuje se UHS klasa brzine 1 ili novija, ili klasa brzine 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Da bi snimanje video zapisa bilo stabilno, preporučujemo da kao skladište podataka izaberete unutrašnje skladište. Želite li da to odmah promenite?
+
+Ako nastavite da koristite SD karticu kao skladište podataka, obavezno koristite SD karticu velike brzine (preporučuje se UHS klasa brzine 1 ili novija, ili klasa brzine 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Dvojna kamera</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Možete da snimite prelepe video zapise sa malo šuma tako što ćete koristiti dvojnu kameru, čak i noću ili u slabo osvetljenoj sobi. Kamera se automatski prebacuje između jedne kamere i dvojne kamere na osnovu scena za snimanje pomoću izuzetno velike osetljivosti.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Snimanje video zapisa pomoću dvojne kamere</string>

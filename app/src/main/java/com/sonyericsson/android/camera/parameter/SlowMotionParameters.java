@@ -25,47 +25,59 @@ public class SlowMotionParameters extends MainParameters {
     protected void prepare() {
     }
 
-    @Override // com.sonyericsson.android.camera.parameter.Parameters, com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+    @Override // com.sonyericsson.android.camera.parameter.Parameters,
+              // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(AspectRatio aspectRatio) {
     }
 
-    @Override // com.sonyericsson.android.camera.parameter.Parameters, com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+    @Override // com.sonyericsson.android.camera.parameter.Parameters,
+              // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(Flash flash) {
     }
 
-    @Override // com.sonyericsson.android.camera.parameter.Parameters, com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+    @Override // com.sonyericsson.android.camera.parameter.Parameters,
+              // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(FocusRange focusRange) {
     }
 
-    @Override // com.sonyericsson.android.camera.parameter.Parameters, com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+    @Override // com.sonyericsson.android.camera.parameter.Parameters,
+              // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(Hdr hdr) {
     }
 
-    @Override // com.sonyericsson.android.camera.parameter.Parameters, com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+    @Override // com.sonyericsson.android.camera.parameter.Parameters,
+              // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(Iso iso) {
     }
 
-    @Override // com.sonyericsson.android.camera.parameter.Parameters, com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+    @Override // com.sonyericsson.android.camera.parameter.Parameters,
+              // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(Resolution resolution) {
     }
 
-    @Override // com.sonyericsson.android.camera.parameter.Parameters, com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+    @Override // com.sonyericsson.android.camera.parameter.Parameters,
+              // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(SelfTimer selfTimer) {
     }
 
-    @Override // com.sonyericsson.android.camera.parameter.Parameters, com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+    @Override // com.sonyericsson.android.camera.parameter.Parameters,
+              // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(ShutterSpeed shutterSpeed) {
     }
 
-    @Override // com.sonyericsson.android.camera.parameter.Parameters, com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+    @Override // com.sonyericsson.android.camera.parameter.Parameters,
+              // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(ShutterTrigger shutterTrigger) {
     }
 
-    @Override // com.sonyericsson.android.camera.parameter.MainParameters, com.sonyericsson.android.camera.parameter.Parameters, com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+    @Override // com.sonyericsson.android.camera.parameter.MainParameters,
+              // com.sonyericsson.android.camera.parameter.Parameters,
+              // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(SoftSkin softSkin) {
     }
 
-    @Override // com.sonyericsson.android.camera.parameter.Parameters, com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+    @Override // com.sonyericsson.android.camera.parameter.Parameters,
+              // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(TouchIntention touchIntention) {
     }
 
@@ -73,7 +85,8 @@ public class SlowMotionParameters extends MainParameters {
     protected void updateSelectability() {
     }
 
-    public SlowMotionParameters(Context context, CapturingMode capturingMode, boolean z, ModeIndependentParams modeIndependentParams) {
+    public SlowMotionParameters(Context context, CapturingMode capturingMode, boolean z,
+            ModeIndependentParams modeIndependentParams) {
         super(context, capturingMode, z, modeIndependentParams);
     }
 
@@ -84,7 +97,8 @@ public class SlowMotionParameters extends MainParameters {
             UserSettingValue userSettingValue = this.mHolders.get(userSettingKey).get();
             if (userSettingKey != UserSettingKey.RESOLUTION && userSettingKey != UserSettingKey.VIDEO_SIZE) {
                 if (userSettingValue == null) {
-                    CamLog.d("[" + getClass().getSimpleName() + "] getTargetParameters() invalid value of key: " + userSettingKey);
+                    CamLog.d("[" + getClass().getSimpleName() + "] getTargetParameters() invalid value of key: "
+                            + userSettingKey);
                 }
                 enumMap.put(userSettingKey, userSettingValue);
             }
@@ -92,7 +106,8 @@ public class SlowMotionParameters extends MainParameters {
         return enumMap;
     }
 
-    @Override // com.sonyericsson.android.camera.parameter.Parameters, com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+    @Override // com.sonyericsson.android.camera.parameter.Parameters,
+              // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(VideoCodec videoCodec) {
         this.mCapturingModeParams.mVideoCodec.set(videoCodec);
     }

@@ -8,5 +8,5 @@ import org.apache.commons.imaging.common.BinaryFileParser;
 import org.apache.commons.imaging.formats.psd.ImageContents;
 
 public interface DataReader {
-    void readData(InputStream inputStream, BufferedImage bufferedImage, ImageContents imageContents, BinaryFileParser binaryFileParser) throws IOException, ImageReadException;
+    void readData(InputStream inputStream, BufferedImage bufferedImage, ImageContents imageContents, BinaryFileParser binaryFileParser) throws ImageReadException, IOException;
 }

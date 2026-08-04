@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.png.transparencyfilters;
 
+import android.support.v4.view.ViewCompat;
 import java.io.IOException;
 import org.apache.commons.imaging.ImageReadException;
 
@@ -17,6 +18,6 @@ public class TransparencyFilterIndexedColor extends TransparencyFilter {
         if (i2 < 0 || i2 > length) {
             throw new ImageReadException("TransparencyFilterIndexedColor index: " + i2 + ", bytes.length: " + length);
         }
-        return ((getByte(i2) & 255) << 24) | (i & 16777215);
+        return ((getByte(i2) & 255) << 24) | (i & ViewCompat.MEASURED_SIZE_MASK);
     }
 }

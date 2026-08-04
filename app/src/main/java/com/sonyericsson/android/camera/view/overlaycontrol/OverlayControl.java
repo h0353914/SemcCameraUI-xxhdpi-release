@@ -5,7 +5,13 @@ import com.sonyericsson.android.camera.util.CamLog;
 public abstract class OverlayControl {
     private boolean mIsAllowedToShow;
     private boolean mIsEnabled;
-    private OverlayControl$StateListener mStateListener;
+    private StateListener mStateListener;
+
+    public interface StateListener {
+        void onValueUpdateEnd();
+
+        void onValueUpdateStart();
+    }
 
     protected abstract void onOrientationChanged(int i);
 
@@ -15,11 +21,11 @@ public abstract class OverlayControl {
 
     public abstract void release();
 
-    public OverlayControl(OverlayControl$StateListener overlayControl$StateListener) {
+    public OverlayControl(StateListener stateListener) {
         if (CamLog.DEBUG) {
             CamLog.d("init");
         }
-        this.mStateListener = overlayControl$StateListener;
+        this.mStateListener = stateListener;
     }
 
     public void enable() {

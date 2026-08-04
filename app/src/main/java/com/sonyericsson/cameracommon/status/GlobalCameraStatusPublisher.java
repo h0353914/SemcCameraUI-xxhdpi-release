@@ -7,11 +7,39 @@ import com.sonyericsson.cameracommon.status.global.RemovableCameraClients;
 
 public class GlobalCameraStatusPublisher extends CameraStatusPublisher<GlobalCameraStatusValue> {
     public GlobalCameraStatusPublisher(Context context) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         super(context);
     }
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusPublisher
     public CameraStatusPublisher<GlobalCameraStatusValue> putDefaultAll() {
+
+
+
+
+
+
         put(new CameraId(CameraId.defaultValue(getCameraCommonVersion())));
         put(new BuiltInCameraIds(BuiltInCameraIds.DEFAULT_VALUE));
         put(new RemovableCameraClients(0));

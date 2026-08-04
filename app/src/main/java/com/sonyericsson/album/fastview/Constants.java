@@ -6,6 +6,13 @@ class Constants {
     static final String FAST_VIEW_SERVICE_CLASS_NAME = "com.sonyericsson.album.fastview.FastViewService";
     static final String METHOD_KEY = "com.sonyericsson.album.fastview.method";
 
+
+
+
+
+
+
+
     private Constants() {
     }
 }

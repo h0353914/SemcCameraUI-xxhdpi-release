@@ -1,11 +1,12 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import java.util.ArrayList;
 
 public enum ShutterSound implements UserSettingValue {
-    SOUND1(-1, 2131690116, true, "sound1/"),
-    OFF(-1, 2131690115, false, "sound0/");
+    SOUND1(-1, R.string.cam_strings_settings_on_txt, true, "sound1/"),
+    OFF(-1, R.string.cam_strings_settings_off_txt, false, "sound0/");
 
     public static final String TAG = "ShutterSound";
     private static final int sParameterTextId = 2131689664;

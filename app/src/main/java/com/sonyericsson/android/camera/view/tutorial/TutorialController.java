@@ -1,21 +1,31 @@
 package com.sonyericsson.android.camera.view.tutorial;
 
+import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Handler;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.view.animation.PathInterpolator;
-import android.widget.FrameLayout$LayoutParams;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.research.LocalResearchUtil;
+import com.sonyericsson.android.camera.setting.MessageType;
 import com.sonyericsson.android.camera.setting.StoredSettings;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.view.tutorial.PagingTutorialContentView;
+import com.sonyericsson.android.camera.view.tutorial.TutorialContainerView;
+import com.sonyericsson.android.camera.view.tutorial.TutorialContentView;
+import com.sonymobile.cameracommon.research.parameters.Event;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TutorialController {
@@ -25,14 +35,14 @@ public class TutorialController {
     private static final String TAG = "TutorialController";
     private static final boolean TRACE = true;
     private ObjectAnimator mAnimator;
-    private TutorialController$OnClickSetupWizardButtonListener mButtonListener;
+    private OnClickSetupWizardButtonListener mButtonListener;
     private TutorialContainerView mContainer;
     private final Context mContext;
-    private TutorialController$TutorialType mCurrentType;
+    private TutorialType mCurrentType;
     private Runnable mPostStartAnimationTask;
-    private TutorialController$TutorialType mPreviousType;
+    private TutorialType mPreviousType;
     private final ViewGroup mRootView;
-    private TutorialController$SystemUiAccessor mSystemUiAccessor;
+    private SystemUiAccessor mSystemUiAccessor;
     private ViewFlipper mViewFlipper;
     private Window mWindow;
     private boolean mIsOpened = false;
@@ -40,96 +50,159 @@ public class TutorialController {
     private final TutorialFactory mTutorialFactory = new TutorialFactory();
     private final Handler mHandler = new Handler();
 
-    static /* synthetic */ void access$000(TutorialController tutorialController) {
-        tutorialController.startSlideInAnimation();
+    public enum DisplayTrigger {
+        SETUP_WIZARD,
+        CHANGE_MODE,
+        CHANGE_TO_SUPER_SLOW_MOTION_SHOT,
+        CHANGE_TO_STANDARD_SLOW_MOTION,
+        CHANGE_MANUAL_FUSION_SETTING
     }
 
-    static /* synthetic */ TutorialContainerView access$100(TutorialController tutorialController) {
-        return tutorialController.mContainer;
+    public interface OnClickSetupWizardButtonListener {
+        void onAccepted(TutorialType tutorialType);
+
+        void onClose(List<TutorialType> list);
+
+        void onDenied(TutorialType tutorialType);
     }
 
-    static /* synthetic */ void access$200(TutorialController tutorialController, boolean z) {
-        tutorialController.setNavigationBarThemeLight(z);
+    public interface SystemUiAccessor {
+        void onAddFlags(int i);
+
+        void onClearFlags(int i);
     }
 
-    static /* synthetic */ void access$300(String str) {
-        trace(str);
-    }
-
-    static /* synthetic */ void access$400(TutorialController tutorialController) {
-        tutorialController.updateUiOrientation();
-    }
-
-    static /* synthetic */ void access$500(TutorialController tutorialController) {
-        tutorialController.release();
-    }
-
-    static /* synthetic */ void access$600(TutorialController tutorialController) {
-        tutorialController.hide();
-    }
-
-    static /* synthetic */ TutorialController$OnClickSetupWizardButtonListener access$700(TutorialController tutorialController) {
-        return tutorialController.mButtonListener;
-    }
-
+    /* JADX INFO: Access modifiers changed from: private */
     private static void trace(String str) {
         CamLog.d(str);
     }
 
-    public TutorialController(ViewGroup viewGroup, Window window) {
+    public enum TutorialType {
+        SAVE_LOCATION(MessageType.NO_MESSAGE),
+        PREDICTIVE_LAUNCH(MessageType.NO_MESSAGE),
+        DUAL_CAMERA(MessageType.NO_MESSAGE),
+        EYE_GUIDE(MessageType.TUTORIAL_EYE_GUIDE),
+        HAND_SHUTTER(MessageType.TUTORIAL_HAND_SHUTTER),
+        SUPER_SLOW_MOTION_MORE_OPTIONS(MessageType.TUTORIAL_SUPER_SLOW_MOTION),
+        SUPER_SLOW_MOTION(MessageType.NO_MESSAGE),
+        SUPER_SLOW_MOTION_SHOT(MessageType.TUTORIAL_SUPER_SLOW_MOTION_SHOT),
+        STANDARD_SLOW_MOTION(MessageType.TUTORIAL_STANDARD_SLOW_MOTION),
+        MANUAL_FUSION(MessageType.TUTORIAL_MANUAL_FUSION),
+        VIDEO_FUSION(MessageType.TUTORIAL_VIDEO_FUSION),
+        SIDE_SENSE(MessageType.NO_MESSAGE);
+
+        public final List<MessageType> messageTypes;
+
+        TutorialType(MessageType... messageTypeArr) {
+            this.messageTypes = new ArrayList(Arrays.asList(messageTypeArr));
+        }
+    }
+
+    public static class OpenType {
+        public final boolean isReadMore;
+        public final List<TutorialType> tutorialTypes;
+
+        public OpenType(List<TutorialType> list, boolean z) {
+            this.tutorialTypes = list;
+            this.isReadMore = z;
+        }
+
+        public static OpenType create(DisplayTrigger displayTrigger) {
+            ArrayList arrayList = new ArrayList();
+            switch (displayTrigger) {
+                case SETUP_WIZARD:
+                    arrayList.add(TutorialType.SAVE_LOCATION);
+                    arrayList.add(TutorialType.PREDICTIVE_LAUNCH);
+                    arrayList.add(TutorialType.DUAL_CAMERA);
+                    arrayList.add(TutorialType.SIDE_SENSE);
+                    break;
+                case CHANGE_MODE:
+                    arrayList.add(TutorialType.EYE_GUIDE);
+                    arrayList.add(TutorialType.HAND_SHUTTER);
+                    arrayList.add(TutorialType.SUPER_SLOW_MOTION_MORE_OPTIONS);
+                    arrayList.add(TutorialType.SUPER_SLOW_MOTION_SHOT);
+                    arrayList.add(TutorialType.STANDARD_SLOW_MOTION);
+                    arrayList.add(TutorialType.VIDEO_FUSION);
+                    break;
+                case CHANGE_TO_SUPER_SLOW_MOTION_SHOT:
+                    arrayList.add(TutorialType.SUPER_SLOW_MOTION_SHOT);
+                    break;
+                case CHANGE_TO_STANDARD_SLOW_MOTION:
+                    arrayList.add(TutorialType.STANDARD_SLOW_MOTION);
+                    break;
+                case CHANGE_MANUAL_FUSION_SETTING:
+                    arrayList.add(TutorialType.MANUAL_FUSION);
+                    break;
+            }
+            return new OpenType(arrayList, false);
+        }
+
+        public static OpenType createByReadMore(TutorialType tutorialType) {
+            ArrayList arrayList = new ArrayList();
+            arrayList.add(tutorialType);
+            return new OpenType(arrayList, true);
+        }
+    }
+
+    public TutorialController(ViewGroup viewGroup, Window window) throws Resources.NotFoundException {
         this.mRootView = viewGroup;
         this.mContext = viewGroup.getContext();
         this.mWindow = window;
         prepareTutorial();
     }
 
-    private void prepareTutorial() {
-        this.mContainer = (TutorialContainerView) ((ViewStub) this.mRootView.findViewById(2131296674)).inflate().findViewById(2131296675);
+    private void prepareTutorial() throws Resources.NotFoundException {
+        this.mContainer = (TutorialContainerView) ((ViewStub) this.mRootView.findViewById(R.id.tutorial_container_stub)).inflate().findViewById(R.id.tutorial_container_view);
         this.mViewFlipper = this.mContainer.getViewFlipper();
         if (this.mViewFlipper == null) {
-            this.mViewFlipper = (ViewFlipper) this.mContainer.findViewById(2131296403);
+            this.mViewFlipper = (ViewFlipper) this.mContainer.findViewById(R.id.flipper_view);
         }
         updateFlipperAnimation();
     }
 
-    public boolean open(TutorialController$OpenType tutorialController$OpenType, StoredSettings storedSettings, TutorialContentView$OnClickCloseButtonListener tutorialContentView$OnClickCloseButtonListener) {
+    public boolean open(OpenType openType, StoredSettings storedSettings, TutorialContentView.OnClickCloseButtonListener onClickCloseButtonListener) {
         if (isOpened()) {
             trace("open()  :  is already accepted.In the middle of starting to open tutorial...");
             return false;
         }
-        if (!setContentToView(tutorialController$OpenType, storedSettings, tutorialContentView$OnClickCloseButtonListener)) {
+        if (!setContentToView(openType, storedSettings, onClickCloseButtonListener)) {
             return false;
         }
         if (getTutorialCount() != 0) {
             trace("open()  :  is requested.");
             this.mIsOpened = true;
-            LocalResearchUtil.getInstance().initSetupwizard(tutorialController$OpenType.isReadMore);
+            LocalResearchUtil.getInstance().initSetupwizard(openType.isReadMore);
             LocalResearchUtil.getInstance().startSetupWizard(this.mCurrentType, 0);
-            this.mPostStartAnimationTask = new TutorialController$1(this);
+            this.mPostStartAnimationTask = new Runnable() { // from class: com.sonyericsson.android.camera.view.tutorial.TutorialController.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    TutorialController.this.startSlideInAnimation();
+                }
+            };
             this.mHandler.post(this.mPostStartAnimationTask);
         }
         return true;
     }
 
-    private boolean setContentToView(TutorialController$OpenType tutorialController$OpenType, StoredSettings storedSettings, TutorialContentView$OnClickCloseButtonListener tutorialContentView$OnClickCloseButtonListener) {
+    private boolean setContentToView(OpenType openType, StoredSettings storedSettings, TutorialContentView.OnClickCloseButtonListener onClickCloseButtonListener) {
         ArrayList arrayList = new ArrayList();
         ArrayList arrayList2 = new ArrayList();
         ArrayList arrayList3 = new ArrayList();
         ArrayList arrayList4 = new ArrayList();
         ArrayList arrayList5 = new ArrayList();
         ArrayList arrayList6 = new ArrayList();
-        for (TutorialController$TutorialType tutorialController$TutorialType : tutorialController$OpenType.tutorialTypes) {
-            TutorialContentView$TutorialContent tutorialContentView$TutorialContentCreate = this.mTutorialFactory.create(tutorialController$TutorialType, this.mOrientation);
-            if (tutorialContentView$TutorialContentCreate.isSimpleTutorialContent()) {
-                arrayList5.add(tutorialController$TutorialType);
-                arrayList6.add(tutorialContentView$TutorialContentCreate);
-            } else if (tutorialController$OpenType.isReadMore || tutorialContentView$TutorialContentCreate.canShowContent(storedSettings)) {
-                if (((PagingTutorialContentView$PagingTutorialContent) tutorialContentView$TutorialContentCreate).getNavigatorType() == PagingTutorialContentView$TutorialNavigatorType.NORMAL) {
-                    arrayList.add(tutorialController$TutorialType);
-                    arrayList2.add(tutorialContentView$TutorialContentCreate);
+        for (TutorialType tutorialType : openType.tutorialTypes) {
+            TutorialContentView.TutorialContent tutorialContentCreate = this.mTutorialFactory.create(tutorialType, this.mOrientation);
+            if (tutorialContentCreate.isSimpleTutorialContent()) {
+                arrayList5.add(tutorialType);
+                arrayList6.add(tutorialContentCreate);
+            } else if (openType.isReadMore || tutorialContentCreate.canShowContent(storedSettings)) {
+                if (((PagingTutorialContentView.PagingTutorialContent) tutorialContentCreate).getNavigatorType() == PagingTutorialContentView.TutorialNavigatorType.NORMAL) {
+                    arrayList.add(tutorialType);
+                    arrayList2.add(tutorialContentCreate);
                 } else {
-                    arrayList3.add(tutorialController$TutorialType);
-                    arrayList4.add(tutorialContentView$TutorialContentCreate);
+                    arrayList3.add(tutorialType);
+                    arrayList4.add(tutorialContentCreate);
                 }
             }
         }
@@ -137,47 +210,48 @@ public class TutorialController {
             return false;
         }
         for (int i = 0; i < arrayList5.size(); i++) {
-            addContent((TutorialContentView$TutorialContent) arrayList6.get(i), new TutorialController$OnClickCloseButtonListenerImpl(this, (TutorialContentView$TutorialContent) arrayList6.get(i)));
+            addContent((TutorialContentView.TutorialContent) arrayList6.get(i), new OnClickCloseButtonListenerImpl((TutorialContentView.TutorialContent) arrayList6.get(i)));
         }
         if (arrayList.size() > 0) {
-            TutorialContentView$TutorialContent tutorialContentView$TutorialContentCreate2 = this.mTutorialFactory.create(this.mOrientation, arrayList, arrayList2);
-            addContent(tutorialContentView$TutorialContentCreate2, tutorialContentView$OnClickCloseButtonListener == null ? new TutorialController$OnClickCloseButtonListenerImpl(this, tutorialContentView$TutorialContentCreate2) : tutorialContentView$OnClickCloseButtonListener);
+            TutorialContentView.TutorialContent tutorialContentCreate2 = this.mTutorialFactory.create(this.mOrientation, arrayList, arrayList2);
+            addContent(tutorialContentCreate2, onClickCloseButtonListener == null ? new OnClickCloseButtonListenerImpl(tutorialContentCreate2) : onClickCloseButtonListener);
         }
         if (arrayList3.size() > 0) {
-            TutorialContentView$TutorialContent tutorialContentView$TutorialContentCreate3 = this.mTutorialFactory.create(this.mOrientation, arrayList3, arrayList4);
-            if (tutorialContentView$OnClickCloseButtonListener == null) {
-                tutorialContentView$OnClickCloseButtonListener = new TutorialController$OnClickCloseButtonListenerImpl(this, tutorialContentView$TutorialContentCreate3);
+            TutorialContentView.TutorialContent tutorialContentCreate3 = this.mTutorialFactory.create(this.mOrientation, arrayList3, arrayList4);
+            if (onClickCloseButtonListener == null) {
+                onClickCloseButtonListener = new OnClickCloseButtonListenerImpl(tutorialContentCreate3);
             }
-            addContent(tutorialContentView$TutorialContentCreate3, tutorialContentView$OnClickCloseButtonListener);
+            addContent(tutorialContentCreate3, onClickCloseButtonListener);
         }
         if (arrayList5.size() > 0) {
-            this.mCurrentType = (TutorialController$TutorialType) arrayList5.get(0);
+            this.mCurrentType = (TutorialType) arrayList5.get(0);
             return true;
         }
         if (arrayList.size() > 0) {
-            this.mCurrentType = (TutorialController$TutorialType) arrayList.get(0);
+            this.mCurrentType = (TutorialType) arrayList.get(0);
             return true;
         }
         if (arrayList3.size() <= 0) {
             return true;
         }
-        this.mCurrentType = (TutorialController$TutorialType) arrayList3.get(0);
+        this.mCurrentType = (TutorialType) arrayList3.get(0);
         return true;
     }
 
-    private void addContent(TutorialContentView$TutorialContent tutorialContentView$TutorialContent, TutorialContentView$OnClickCloseButtonListener tutorialContentView$OnClickCloseButtonListener) {
-        TutorialContainerView$TutorialView tutorialContainerView$TutorialView = new TutorialContainerView$TutorialView(this.mContext);
-        FrameLayout$LayoutParams frameLayout$LayoutParams = new FrameLayout$LayoutParams(-1, -1);
-        frameLayout$LayoutParams.gravity = 3;
-        tutorialContainerView$TutorialView.setLayoutParams(frameLayout$LayoutParams);
-        this.mViewFlipper.addView(tutorialContainerView$TutorialView);
-        tutorialContainerView$TutorialView.setContent(tutorialContentView$TutorialContent);
-        tutorialContainerView$TutorialView.setOnClickCloseButtonListener(tutorialContentView$OnClickCloseButtonListener);
+    private void addContent(TutorialContentView.TutorialContent tutorialContent, TutorialContentView.OnClickCloseButtonListener onClickCloseButtonListener) {
+        TutorialContainerView.TutorialView tutorialView = new TutorialContainerView.TutorialView(this.mContext);
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(-1, -1);
+        layoutParams.gravity = 3;
+        tutorialView.setLayoutParams(layoutParams);
+        this.mViewFlipper.addView(tutorialView);
+        tutorialView.setContent(tutorialContent);
+        tutorialView.setOnClickCloseButtonListener(onClickCloseButtonListener);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void startSlideInAnimation() {
         show();
-        this.mAnimator = getSlideInAnimator(isPortrait() ? 1000L : 700L);
+        this.mAnimator = getSlideInAnimator(isPortrait() ? 1000L : SLIDE_IN_ANIMATION_DURATION_LAND_MILLIS);
         this.mAnimator.start();
     }
 
@@ -192,15 +266,16 @@ public class TutorialController {
     public void close() {
         trace("close()");
         if (getTutorialCount() != 0) {
-            getFadeOutAnimator(300L).start();
+            getFadeOutAnimator(FADE_OUT_ANIMATION_DURATION_MILLIS).start();
         }
         this.mIsOpened = false;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void release() {
         trace("release()");
         for (int i = 0; i < getTutorialCount(); i++) {
-            ((TutorialContainerView$TutorialView) this.mViewFlipper.getChildAt(i)).release();
+            ((TutorialContainerView.TutorialView) this.mViewFlipper.getChildAt(i)).release();
         }
         setNavigationBarThemeLight(false);
         this.mViewFlipper.removeAllViews();
@@ -220,6 +295,7 @@ public class TutorialController {
         this.mContainer.setVisibility(0);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void hide() {
         trace("hide()");
         this.mContainer.setVisibility(4);
@@ -229,7 +305,7 @@ public class TutorialController {
         return this.mIsOpened;
     }
 
-    public void setUiOrientation(int i) {
+    public void setUiOrientation(int i) throws Resources.NotFoundException {
         trace("setUiOrientation() E orientation = " + i);
         if (this.mOrientation != i) {
             this.mOrientation = i;
@@ -242,11 +318,12 @@ public class TutorialController {
         trace("setUiOrientation() X");
     }
 
-    private void updateUiOrientation() {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void updateUiOrientation() throws Resources.NotFoundException {
         trace("updateUiOrientation() E orientation = " + this.mOrientation);
         if (this.mViewFlipper != null) {
             for (int i = 0; i < getTutorialCount(); i++) {
-                ((TutorialContainerView$TutorialView) this.mViewFlipper.getChildAt(i)).setUiOrientation(this.mOrientation);
+                ((TutorialContainerView.TutorialView) this.mViewFlipper.getChildAt(i)).setUiOrientation(this.mOrientation);
             }
         }
         updateFlipperAnimation();
@@ -260,12 +337,12 @@ public class TutorialController {
         return this.mViewFlipper.getChildCount();
     }
 
-    public void doNextAction(TutorialController$TutorialType tutorialController$TutorialType) {
+    public void doNextAction(TutorialType tutorialType) {
         trace("doNextAction()");
-        if (canHandleNextAction(tutorialController$TutorialType)) {
-            this.mPreviousType = tutorialController$TutorialType;
+        if (canHandleNextAction(tutorialType)) {
+            this.mPreviousType = tutorialType;
             this.mCurrentType = getNextTutorialType(this.mPreviousType);
-            if (hasNext(tutorialController$TutorialType)) {
+            if (hasNext(tutorialType)) {
                 LocalResearchUtil.getInstance().startSetupWizard(this.mCurrentType, 0);
                 this.mViewFlipper.showNext();
             } else {
@@ -274,20 +351,20 @@ public class TutorialController {
         }
     }
 
-    public TutorialController$TutorialType getCurrentType() {
+    public TutorialType getCurrentType() {
         return this.mCurrentType;
     }
 
-    public List<TutorialController$TutorialType> getTutorialTypes() {
-        return ((TutorialContainerView$TutorialView) this.mViewFlipper.getCurrentView()).getContent().getTutorialTypes();
+    public List<TutorialType> getTutorialTypes() {
+        return ((TutorialContainerView.TutorialView) this.mViewFlipper.getCurrentView()).getContent().getTutorialTypes();
     }
 
-    private TutorialController$TutorialType getNextTutorialType(TutorialController$TutorialType tutorialController$TutorialType) {
+    private TutorialType getNextTutorialType(TutorialType tutorialType) {
         if (this.mViewFlipper != null && getTutorialCount() > 0) {
             for (int i = 0; i < getTutorialCount(); i++) {
-                List<TutorialController$TutorialType> tutorialTypes = ((TutorialContainerView$TutorialView) this.mViewFlipper.getChildAt(i)).getContent().getTutorialTypes();
+                List<TutorialType> tutorialTypes = ((TutorialContainerView.TutorialView) this.mViewFlipper.getChildAt(i)).getContent().getTutorialTypes();
                 for (int i2 = 0; i2 < tutorialTypes.size(); i2++) {
-                    if (tutorialController$TutorialType == tutorialTypes.get(i2)) {
+                    if (tutorialType == tutorialTypes.get(i2)) {
                         int i3 = i2 + 1;
                         if (i3 < tutorialTypes.size()) {
                             return tutorialTypes.get(i3);
@@ -296,7 +373,7 @@ public class TutorialController {
                         if (i4 >= getTutorialCount()) {
                             return null;
                         }
-                        tutorialTypes = ((TutorialContainerView$TutorialView) this.mViewFlipper.getChildAt(i4)).getContent().getTutorialTypes();
+                        tutorialTypes = ((TutorialContainerView.TutorialView) this.mViewFlipper.getChildAt(i4)).getContent().getTutorialTypes();
                         if (tutorialTypes.size() > 0) {
                             return tutorialTypes.get(0);
                         }
@@ -307,45 +384,45 @@ public class TutorialController {
         return null;
     }
 
-    private TutorialContainerView$TutorialView getTutorialView(TutorialController$TutorialType tutorialController$TutorialType) {
-        TutorialContainerView$TutorialView tutorialContainerView$TutorialView = null;
+    private TutorialContainerView.TutorialView getTutorialView(TutorialType tutorialType) {
+        TutorialContainerView.TutorialView tutorialView = null;
         if (this.mViewFlipper != null) {
             for (int i = 0; i < getTutorialCount(); i++) {
-                tutorialContainerView$TutorialView = (TutorialContainerView$TutorialView) this.mViewFlipper.getChildAt(i);
-                if (tutorialContainerView$TutorialView.getTag() == tutorialController$TutorialType) {
-                    return tutorialContainerView$TutorialView;
+                tutorialView = (TutorialContainerView.TutorialView) this.mViewFlipper.getChildAt(i);
+                if (tutorialView.getTag() == tutorialType) {
+                    return tutorialView;
                 }
             }
         }
-        return tutorialContainerView$TutorialView;
+        return tutorialView;
     }
 
-    private boolean canHandleNextAction(TutorialController$TutorialType tutorialController$TutorialType) {
-        return this.mPreviousType != tutorialController$TutorialType;
+    private boolean canHandleNextAction(TutorialType tutorialType) {
+        return this.mPreviousType != tutorialType;
     }
 
-    public boolean hasNext(TutorialController$TutorialType tutorialController$TutorialType) {
+    public boolean hasNext(TutorialType tutorialType) {
         if (this.mViewFlipper != null && getTutorialCount() > 0) {
-            List<TutorialController$TutorialType> tutorialTypes = ((TutorialContainerView$TutorialView) this.mViewFlipper.getChildAt(getTutorialCount() - 1)).getContent().getTutorialTypes();
-            if (tutorialTypes.get(tutorialTypes.size() - 1) == tutorialController$TutorialType) {
+            List<TutorialType> tutorialTypes = ((TutorialContainerView.TutorialView) this.mViewFlipper.getChildAt(getTutorialCount() - 1)).getContent().getTutorialTypes();
+            if (tutorialTypes.get(tutorialTypes.size() - 1) == tutorialType) {
                 return false;
             }
         }
         return true;
     }
 
-    private void updateFlipperAnimation() {
+    private void updateFlipperAnimation() throws Resources.NotFoundException {
         int i;
         int i2;
         if (this.mViewFlipper == null) {
             return;
         }
         if (this.mOrientation != 1) {
-            i = 2130771997;
-            i2 = 2130771995;
+            i = R.anim.setup_wizard_slide_out_landscape;
+            i2 = R.anim.setup_wizard_slide_in_landscape;
         } else {
-            i = 2130771998;
-            i2 = 2130771996;
+            i = R.anim.setup_wizard_slide_out_portrait;
+            i2 = R.anim.setup_wizard_slide_in_portrait;
         }
         this.mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(this.mContext, i));
         this.mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(this.mContext, i2));
@@ -353,7 +430,7 @@ public class TutorialController {
 
     private ObjectAnimator getSlideInAnimator(long j) {
         PathInterpolator pathInterpolator = new PathInterpolator(0.645f, 0.045f, 0.355f, 1.0f);
-        int dimension = (int) this.mContainer.getResources().getDimension(2131165701);
+        int dimension = (int) this.mContainer.getResources().getDimension(R.dimen.tutorial_port_height);
         String str = isPortrait() ? "translationY" : "translationX";
         float[] fArr = new float[2];
         if (isPortrait()) {
@@ -364,7 +441,29 @@ public class TutorialController {
         ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(this.mContainer, PropertyValuesHolder.ofFloat(str, fArr));
         objectAnimatorOfPropertyValuesHolder.setDuration(j);
         objectAnimatorOfPropertyValuesHolder.setInterpolator(pathInterpolator);
-        objectAnimatorOfPropertyValuesHolder.addListener(new TutorialController$2(this));
+        objectAnimatorOfPropertyValuesHolder.addListener(new Animator.AnimatorListener() { // from class: com.sonyericsson.android.camera.view.tutorial.TutorialController.2
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationCancel(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationRepeat(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationStart(Animator animator) {
+                if (TutorialController.this.mContainer.getVisibility() != 0) {
+                    TutorialController.this.mContainer.setVisibility(0);
+                }
+                TutorialController.this.setNavigationBarThemeLight(true);
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationEnd(Animator animator) throws Resources.NotFoundException {
+                TutorialController.trace("open()  : Tutorial is opened.");
+                TutorialController.this.updateUiOrientation();
+            }
+        });
         return objectAnimatorOfPropertyValuesHolder;
     }
 
@@ -373,16 +472,109 @@ public class TutorialController {
         ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(this.mContainer, PropertyValuesHolder.ofFloat("alpha", 1.0f, 0.0f));
         objectAnimatorOfPropertyValuesHolder.setDuration(j);
         objectAnimatorOfPropertyValuesHolder.setInterpolator(pathInterpolator);
-        objectAnimatorOfPropertyValuesHolder.addListener(new TutorialController$3(this));
+        objectAnimatorOfPropertyValuesHolder.addListener(new Animator.AnimatorListener() { // from class: com.sonyericsson.android.camera.view.tutorial.TutorialController.3
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationCancel(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationRepeat(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationStart(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationEnd(Animator animator) {
+                TutorialController.this.release();
+                TutorialController.this.hide();
+                TutorialController.this.mContainer.setAlpha(1.0f);
+                TutorialController.trace("close() : Tutorial is closed.");
+            }
+        });
         return objectAnimatorOfPropertyValuesHolder;
     }
 
-    public void setOnClickTutorialButtonListener(TutorialController$OnClickSetupWizardButtonListener tutorialController$OnClickSetupWizardButtonListener) {
-        this.mButtonListener = tutorialController$OnClickSetupWizardButtonListener;
+    private class OnClickCloseButtonListenerImpl implements TutorialContentView.OnClickCloseButtonListener {
+        private final TutorialContentView.TutorialContent mTutorialContent;
+
+        public OnClickCloseButtonListenerImpl(TutorialContentView.TutorialContent tutorialContent) {
+            this.mTutorialContent = tutorialContent;
+        }
+
+        @Override // com.sonyericsson.android.camera.view.tutorial.TutorialContentView.OnClickCloseButtonListener
+        public void onClickCloseButton(View view) {
+            if (TutorialController.this.isOpened()) {
+                TutorialType tutorialType = this.mTutorialContent.getCurrentTutorialPageInfo().type;
+                int id = view.getId();
+                if (id == R.id.page_tutorial_gotit_button) {
+                    LocalResearchUtil.getInstance().sendSetupWizardEvent(Event.WizardResult.GOT_IT);
+                    LocalResearchUtil.getInstance().closeSetupWizard();
+                    if (tutorialType == TutorialType.SIDE_SENSE) {
+                        if (TutorialController.this.mButtonListener != null) {
+                            TutorialController.this.mButtonListener.onAccepted(tutorialType);
+                            return;
+                        }
+                        return;
+                    } else {
+                        TutorialController.this.doNextAction(tutorialType);
+                        if (TutorialController.this.mButtonListener != null) {
+                            TutorialController.this.mButtonListener.onClose(this.mTutorialContent.getTutorialTypes());
+                            return;
+                        }
+                        return;
+                    }
+                }
+                if (id == R.id.page_tutorial_skip_button) {
+                    LocalResearchUtil.getInstance().sendSetupWizardEvent(Event.WizardResult.SKIP);
+                    LocalResearchUtil.getInstance().closeSetupWizard();
+                    TutorialController.this.close();
+                    if (TutorialController.this.mButtonListener != null) {
+                        TutorialController.this.mButtonListener.onClose(this.mTutorialContent.getTutorialTypes());
+                        return;
+                    }
+                    return;
+                }
+                if (id == R.id.tutorial_no_button) {
+                    LocalResearchUtil.getInstance().sendSetupWizardEvent(Event.WizardResult.NO);
+                    LocalResearchUtil.getInstance().closeSetupWizard();
+                    TutorialController.this.doNextAction(tutorialType);
+                    if (TutorialController.this.mButtonListener != null) {
+                        TutorialController.this.mButtonListener.onDenied(tutorialType);
+                        if (TutorialController.this.hasNext(tutorialType)) {
+                            return;
+                        }
+                        TutorialController.this.mButtonListener.onClose(this.mTutorialContent.getTutorialTypes());
+                        return;
+                    }
+                    return;
+                }
+                if (id != R.id.tutorial_yes_button) {
+                    return;
+                }
+                LocalResearchUtil.getInstance().sendSetupWizardEvent(Event.WizardResult.YES);
+                LocalResearchUtil.getInstance().closeSetupWizard();
+                if (tutorialType != TutorialType.SAVE_LOCATION) {
+                    TutorialController.this.doNextAction(tutorialType);
+                }
+                if (TutorialController.this.mButtonListener != null) {
+                    TutorialController.this.mButtonListener.onAccepted(tutorialType);
+                    if (tutorialType == TutorialType.SAVE_LOCATION || TutorialController.this.hasNext(tutorialType)) {
+                        return;
+                    }
+                    TutorialController.this.mButtonListener.onClose(this.mTutorialContent.getTutorialTypes());
+                }
+            }
+        }
     }
 
-    public void setSystemUiAccessor(TutorialController$SystemUiAccessor tutorialController$SystemUiAccessor) {
-        this.mSystemUiAccessor = tutorialController$SystemUiAccessor;
+    public void setOnClickTutorialButtonListener(OnClickSetupWizardButtonListener onClickSetupWizardButtonListener) {
+        this.mButtonListener = onClickSetupWizardButtonListener;
+    }
+
+    public void setSystemUiAccessor(SystemUiAccessor systemUiAccessor) {
+        this.mSystemUiAccessor = systemUiAccessor;
     }
 
     private void addFlags(int i) {
@@ -399,13 +591,14 @@ public class TutorialController {
 
     public boolean backToPreviousPage() {
         ImageView imageView;
-        if (this.mViewFlipper == null || (imageView = (ImageView) this.mViewFlipper.findViewById(2131296490)) == null || !imageView.isShown()) {
+        if (this.mViewFlipper == null || (imageView = (ImageView) this.mViewFlipper.findViewById(R.id.page_tutorial_prev_icon_button)) == null || !imageView.isShown()) {
             return false;
         }
         imageView.callOnClick();
         return true;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void setNavigationBarThemeLight(boolean z) {
         if (this.mWindow != null) {
             int systemUiVisibility = this.mWindow.getDecorView().getSystemUiVisibility();

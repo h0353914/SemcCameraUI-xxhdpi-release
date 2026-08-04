@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Не атрымалася зрабіць здымак. Зрушце тэлефон павольней.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Не атрымалася зрабіць здымак. Зрушце тэлефон хутчэй.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Зрабіце панарамную фатаграфію, рухаючы камеру</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Стварыць наступныя файлы:\n- Выява Multi Angle\n- 3D-выява\nНататка! Гэтыя файлы утрымліваюць шэрую вобласць.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Стварыць наступныя файлы:\n- Выява Multi Angle\n- 3D-выява</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Апрацоўка…\nГэтая выява ўтрымлівае шэрую вобласць</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Стварыць наступныя файлы:
+- Выява Multi Angle
+- 3D-выява
+Нататка! Гэтыя файлы утрымліваюць шэрую вобласць."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Стварыць наступныя файлы:
+- Выява Multi Angle
+- 3D-выява"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Апрацоўка…
+Гэтая выява ўтрымлівае шэрую вобласць"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Захаванне выявы</string>
     <string name="cam_3d_strings_dialog_processing_txt">Апрацоўка…</string>
     <string name="cam_3d_strings_error_application_busy_txt">Пачакайце некалькі секунд, каб запусціць 3D-камеру</string>
@@ -80,12 +86,12 @@
     <string name="cam_strings_accessibility_capturing_mode_txt">Рэжым здымка</string>
     <string name="cam_strings_accessibility_close_color_button_txt">Закрыць настройку колеру</string>
     <string name="cam_strings_accessibility_color_brightness_button_txt">Закрыць настройку колеру і яркасці</string>
-    <string name="cam_strings_accessibility_dual_effect_menu_txt">Эфект двайнога аб\'ектыва</string>
+    <string name="cam_strings_accessibility_dual_effect_menu_txt">"Эфект двайнога аб'ектыва"</string>
     <string name="cam_strings_accessibility_flash_torch_txt">Успышка</string>
     <string name="cam_strings_accessibility_flash_txt">Успышка</string>
-    <string name="cam_strings_accessibility_fusion_auto_txt">Краніце двойчы, каб пераключыцца на аўтаматычны двайны аб\'ектыў</string>
-    <string name="cam_strings_accessibility_fusion_off_txt">Двойчы краніце, каб уключыць эфект двайнога аб\'ектыва</string>
-    <string name="cam_strings_accessibility_fusion_on_txt">Двойчы краніце, каб выключыць эфект двайнога аб\'ектыва</string>
+    <string name="cam_strings_accessibility_fusion_auto_txt">"Краніце двойчы, каб пераключыцца на аўтаматычны двайны аб'ектыў"</string>
+    <string name="cam_strings_accessibility_fusion_off_txt">"Двойчы краніце, каб уключыць эфект двайнога аб'ектыва"</string>
+    <string name="cam_strings_accessibility_fusion_on_txt">"Двойчы краніце, каб выключыць эфект двайнога аб'ектыва"</string>
     <string name="cam_strings_accessibility_image_quality_control_exposure_value_txt">Значэнне экспазіцыі</string>
     <string name="cam_strings_accessibility_image_quality_control_focus_auto_deselected_txt">Адмена аўтаматычнага выбару</string>
     <string name="cam_strings_accessibility_image_quality_control_focus_auto_selected_txt">Выбраны рэжым «Аўта»</string>
@@ -158,7 +164,7 @@
     <string name="cam_strings_burst_change_camera_key_setting_txt">Уключыце параметр «Серыя здымкаў клавішай камеры», каб выканаць серыйную здымку</string>
     <string name="cam_strings_burst_in_dark_condition_txt">Серыйная здымка немагчыма ва ўмовах дрэннага асвятлення</string>
     <string name="cam_strings_burst_not_supported_front_camera_txt">Пярэдняя камера не падтрымлівае серыйныя здымкі</string>
-    <string name="cam_strings_burst_not_supported_fusion_on_txt">Немагчыма зняць серыю здымкаў, калі ўключаны эфект двайнога аб\'ектыва</string>
+    <string name="cam_strings_burst_not_supported_fusion_on_txt">"Немагчыма зняць серыю здымкаў, калі ўключаны эфект двайнога аб'ектыва"</string>
     <string name="cam_strings_burst_saved_internal_storage_txt">Серыя здымкаў захоўваецца ва ўнутраную памяць</string>
     <string name="cam_strings_burst_shooting_txt">Хутк здымкі</string>
     <string name="cam_strings_camera_apps_tab_txt">ДАДАТКІ КАМЕРЫ</string>
@@ -215,7 +221,7 @@
     <string name="cam_strings_description_creative_effect_txt">Выберыце эфекты для мастацкіх фатаграфій і відэа</string>
     <string name="cam_strings_description_dualrec_txt">Устаўце свой твар на фота і відэа з дапамогай франт. і галоўнай камеры</string>
     <string name="cam_strings_description_facefusion_txt">Схавайце свой твар за маскай твару сябра, каб стварыць цікавае сэлфі</string>
-    <string name="cam_strings_description_google_lens_txt">З дапамогай %1$s можна атрымаць дадатк. інфармацыю аб аб\'екце здымкі</string>
+    <string name="cam_strings_description_google_lens_txt">"З дапамогай %1$s можна атрымаць дадатк. інфармацыю аб аб'екце здымкі"</string>
     <string name="cam_strings_description_high_frame_rate_txt">Запіс відэа з выс частатой кадраў і прым эфектаў запавольв</string>
     <string name="cam_strings_description_multicam_txt">Запішыце тую ж сцэну пад рознымі вугламі на адным экране</string>
     <string name="cam_strings_description_shoundphoto_txt">Рабіце фота з фонавымі гукамі (спевы птушак і інш.)</string>
@@ -261,7 +267,7 @@
     <string name="cam_strings_effect_old_film_txt">Стары фільм</string>
     <string name="cam_strings_effect_partical_color_txt">Частковы колер</string>
     <string name="cam_strings_effect_pencil_txt">Эскіз алоўкам</string>
-    <string name="cam_strings_effect_selector_txt">Эфект двайнога аб\'ектыва</string>
+    <string name="cam_strings_effect_selector_txt">"Эфект двайнога аб'ектыва"</string>
     <string name="cam_strings_effect_vivid_txt">Яркасць</string>
     <string name="cam_strings_error_capture_txt">Гэты рэжым недаступны, калі запіс выконваецца ў другім прыкладанні.</string>
     <string name="cam_strings_error_device_not_available_txt">Немагчыма ўключыць камеру. Перазапусціце камеру або прыладу.</string>
@@ -342,15 +348,15 @@
     <string name="cam_strings_focus_mode_infinity_txt">Бясконцасць</string>
     <string name="cam_strings_focus_mode_macro_txt">Макра</string>
     <string name="cam_strings_focus_mode_multi_af_txt">Шматпунктавы аўтафокус</string>
-    <string name="cam_strings_focus_mode_object_tracking_txt">Адсочванне аб\'екта</string>
+    <string name="cam_strings_focus_mode_object_tracking_txt">"Адсочванне аб'екта"</string>
     <string name="cam_strings_focus_mode_single_af_txt">Аднапунктавы аўтафокус</string>
     <string name="cam_strings_focus_mode_title_txt">Рэжым фокуса</string>
     <string name="cam_strings_focus_mode_touch_focus_txt">Факусіроўка дотыкам</string>
     <string name="cam_strings_focus_mode_txt">Рэжым фокуса</string>
-    <string name="cam_strings_front_cam_location_guide_txt">Месцазнаходжанне аб\'ектыва камеры паказана на малюнку</string>
-    <string name="cam_strings_fusion_error_too_close_txt">Адыдзіце далей ад аб\'екта</string>
+    <string name="cam_strings_front_cam_location_guide_txt">"Месцазнаходжанне аб'ектыва камеры паказана на малюнку"</string>
+    <string name="cam_strings_fusion_error_too_close_txt">"Адыдзіце далей ад аб'екта"</string>
     <string name="cam_strings_fusion_on_txt">Звышвысокая адчувальнасць</string>
-    <string name="cam_strings_fusion_setting_txt">Пераключэнне двайнога аб\'ектыва</string>
+    <string name="cam_strings_fusion_setting_txt">"Пераключэнне двайнога аб'ектыва"</string>
     <string name="cam_strings_geotagging_title_txt">Захаваць месцазнаходжанне</string>
     <string name="cam_strings_geotagging_txt">Захаваць месцазнаходжанне</string>
     <string name="cam_strings_get_more_modes_txt">Прыкладанні</string>
@@ -359,12 +365,13 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Скура будзе выглядаць яркай і гладкай. Эфект даступны ў дадатках, якія выкарыстоўваюць франтальную камеру. Ён можа быць ужыты для фота і відэа. Можна наладзіць узровень эфекту.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Наладка ўзроўню</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Гладкая скура</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Немагчыма запусціць праграму.\nПераканайцеся, што на вашай прыладзе ўсталявана і ўключана апошняя версія %1$s.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Немагчыма запусціць праграму.
+Пераканайцеся, што на вашай прыладзе ўсталявана і ўключана апошняя версія %1$s."</string>
     <string name="cam_strings_gridline_txt">Лініі сеткі</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Павярніце далонь у накірунку камеры. Пасля распазнавання далоні ўключыцца аўтатаймер. Каб спрасціць распазнаванне, выцягніце пальцы ўгару.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Павярніце далонь у накірунку камеры</string>
     <string name="cam_strings_hand_shutter_txt">Датчык рукі</string>
-    <string name="cam_strings_hdr_guide_txt">Паколькі Статычны HDR здымае і аб\'ядноўвае дзве выявы аднолькавай сцэны, гэты рэжым падыходзіць толькі для статычных аб\'ектаў.</string>
+    <string name="cam_strings_hdr_guide_txt">"Паколькі Статычны HDR здымае і аб'ядноўвае дзве выявы аднолькавай сцэны, гэты рэжым падыходзіць толькі для статычных аб'ектаў."</string>
     <string name="cam_strings_hdr_title_txt">HDR</string>
     <string name="cam_strings_hdr_txt">HDR</string>
     <string name="cam_strings_help_txt">Даведка</string>
@@ -386,10 +393,10 @@
     <string name="cam_strings_long_press_burst_best_txt">Стандартны</string>
     <string name="cam_strings_long_press_burst_high_txt">Высокая хуткасць</string>
     <string name="cam_strings_long_press_burst_txt">Серыя доўгім націск</string>
-    <string name="cam_strings_manual_fusion_tutorial_2_title_txt">Фотаздымка двайным аб\'ектывам</string>
-    <string name="cam_strings_manual_fusion_tutorial_2_txt">Пры фотаздымцы двайным аб\'ектывам адлегласць ад аб\'екта здымкі павінна быць не менш за 1 метр. На меншай адлегласці зрушваецца кропка здымкі і змяняюцца колеры.</string>
-    <string name="cam_strings_manual_fusion_tutorial_title_txt">Пераключэнне рэжыму двайнога аб\'ектыва</string>
-    <string name="cam_strings_manual_fusion_tutorial_txt">Вы можаце ўручную ўключаць і выключаць двайны аб\'ектыў. Уключайце яго для высакаякаснай здымкі ва ўмовах слабага асвятлення і выключайце падчас здымкі буйных планаў.</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_title_txt">"Фотаздымка двайным аб'ектывам"</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_txt">"Пры фотаздымцы двайным аб'ектывам адлегласць ад аб'екта здымкі павінна быць не менш за 1 метр. На меншай адлегласці зрушваецца кропка здымкі і змяняюцца колеры."</string>
+    <string name="cam_strings_manual_fusion_tutorial_title_txt">"Пераключэнне рэжыму двайнога аб'ектыва"</string>
+    <string name="cam_strings_manual_fusion_tutorial_txt">"Вы можаце ўручную ўключаць і выключаць двайны аб'ектыў. Уключайце яго для высакаякаснай здымкі ва ўмовах слабага асвятлення і выключайце падчас здымкі буйных планаў."</string>
     <string name="cam_strings_max_file_size_save_failed_txt">Запіс спынены з-за абмежавання максімальнага памеру файла</string>
     <string name="cam_strings_max_recording_time_save_failed_txt">Запіс спынены з-за абмежавання максімальнай працягласці запісу</string>
     <string name="cam_strings_memory_full_save_failed_txt">Не атрымалася захаваць. Памяць запоўнена.</string>
@@ -401,7 +408,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Агульныя параметры</string>
     <string name="cam_strings_more_txt">Больш</string>
     <string name="cam_strings_multi_window_txt">Перацягніце сярэдзіну лініі разбіўкі, каб пераключыцца на поўны экран для %1$s</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Падлучана іншая прылада.\nЖадаеце абмяняцца выявай праз відашукальнік з гэтай прыладай?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Падлучана іншая прылада.
+Жадаеце абмяняцца выявай праз відашукальнік з гэтай прыладай?"</string>
     <string name="cam_strings_multicam_add_device_txt">Дадаць прыладу</string>
     <string name="cam_strings_multicam_add_more_txt">Дадаць больш</string>
     <string name="cam_strings_multicam_apply_txt">Гатова</string>
@@ -418,7 +426,7 @@
     <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
     <string name="cam_strings_multicam_nfc_touch_to_beam_title_txt">Дакраніцеся да экрана</string>
     <string name="cam_strings_multicam_security_info_txt">Калі прылада, да якой вы падлучаецеся, таксама падлучана да іншых прылад Xperia праз гэтае прыкладанне, ваша Xperia таксама будзе аўтаматычна падлучана да гэтых прылад, і кожная выява праз відашукальнік будзе падзелена паміж вашай Xperia і ўсімі падлучанымі прыладамі.</string>
-    <string name="cam_strings_multicam_touch_add_camera_desc_txt">Крані, каб дад. прыладу. Выява праз відашукальнік з\'явіцца тут.</string>
+    <string name="cam_strings_multicam_touch_add_camera_desc_txt">"Крані, каб дад. прыладу. Выява праз відашукальнік з'явіцца тут."</string>
     <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Нельга падлучыцца ні да якой Xperia, калі ваша Xperia падлучана да камеры Sony Wi-Fi/NFC.</string>
     <string name="cam_strings_ok_txt">ОК</string>
     <string name="cam_strings_permgroupdesc_thermalmitigation_message_txt">Дазваляе дадатку кіраваць сістэмай для забеспячэння стабільнай здымкі ў залежнасці ад тэмпературы прылады.</string>
@@ -435,7 +443,8 @@
     <string name="cam_strings_predictive_capture_txt">Прагназаваная здымка</string>
     <string name="cam_strings_predictive_launch_guide_txt">Дакраніцеся да экрана, каб уключыць поўнаэкранны рэжым</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Прэдыкт. запуск</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Хуткае ўключэнне камеры. Падыміце прыладу, павярніце гарызантальна і накіруйце ў бок аб\'екта. Камера запусціцца аўтаматычна.\nГэта функцыя выключаецца ў прэдыкт. запуску ў наладах камеры.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Хуткае ўключэнне камеры. Падыміце прыладу, павярніце гарызантальна і накіруйце ў бок аб'екта. Камера запусціцца аўтаматычна.
+Гэта функцыя выключаецца ў прэдыкт. запуску ў наладах камеры."</string>
     <string name="cam_strings_predictive_launch_txt">Прэдыкт. запуск</string>
     <string name="cam_strings_preview_always_txt">Укл</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 секунды</string>
@@ -468,7 +477,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s патрабуе наступныя дазволы</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Дазволы для %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Дадатак патрабуе наступныя дазволы, каб выканаць гэта дзеянне.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Каб даць дазвол, перайдзіце ў меню Аб праграме &gt; Дазволы.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Каб даць дазвол, перайдзіце ў меню Аб праграме > Дазволы.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Не атрымалася працягнуць</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Рабіць фота і відэа</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Вызначаць месцазнаходжанне</string>
@@ -548,7 +557,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Запаволены рух</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Як запісваць</string>
     <string name="cam_strings_slow_motion_standard_txt">Запаволены рух</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Стварыце ўражальнае відэа, запісаўшы лепшыя моманты ў запаволеным рэжыме.\nЗапіс ва ўмовах добрага асвятлення дапаможа стварыць лепшае відэа.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Стварыце ўражальнае відэа, запісаўшы лепшыя моманты ў запаволеным рэжыме.
+Запіс ва ўмовах добрага асвятлення дапаможа стварыць лепшае відэа."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Вы можаце запісваць відэа на рознай хуткасці, пераключаючыся на %1$s к/с</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Націсніце на кнопку ў цэнтры ў трапны момант</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Запаволены рух запісаны</string>
@@ -574,17 +584,17 @@
     <string name="cam_strings_store_fail_txt">Не атрымалася захаваць</string>
     <string name="cam_strings_superior_auto_brightness_txt">Яркасць</string>
     <string name="cam_strings_superior_auto_color_txt">Колер</string>
-    <string name="cam_strings_superior_auto_fusion_tutorial_title_txt">Двайны аб\'ектыў</string>
-    <string name="cam_strings_superior_auto_fusion_tutorial_txt">З дапамогай двайнога аб\'ектыва можна рабіць прыгожыя фота з нізкімі шумамі нават уначы або ва ўмовах слабага асвятлення. Камера аўтаматычна пераключаецца паміж рэжымам аднаго аб\'ектыва і двайнога аб\'ектыва, у залежнасці ад навакольных умоў здымкі са звышвысокай адчувальнасцю.</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_title_txt">"Двайны аб'ектыў"</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_txt">"З дапамогай двайнога аб'ектыва можна рабіць прыгожыя фота з нізкімі шумамі нават уначы або ва ўмовах слабага асвятлення. Камера аўтаматычна пераключаецца паміж рэжымам аднаго аб'ектыва і двайнога аб'ектыва, у залежнасці ад навакольных умоў здымкі са звышвысокай адчувальнасцю."</string>
     <string name="cam_strings_sw_licence_title_txt">Ліцэнзіі на ПЗ</string>
     <string name="cam_strings_take_photo_txt">Зрабіць здымак</string>
     <string name="cam_strings_term_of_use_accept_txt">Прыняць</string>
-    <string name="cam_strings_term_of_use_consent_txt">Я пагаджаюся з &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Правіламі выкарыстання&lt;/a&gt; Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Я пагаджаюся з &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Правіламі выкарыстання&lt;/a> Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Выкарыстанне дадзенага сэрвіса можа быць прычынай выдаткаў на мабільныя дадзеныя, у залежнасці ад вашага плана перадачы дадзеных.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile збірае дадзеныя, такія як хэшаваны ўнікальны ідэнтыфікатар прылады Android, дадзеныя месцазнаходжання і часавыя меткі, каб забяспечваць вам належныя вынікі, а таксама каб паляпшаць працу службы.</string>
     <string name="cam_strings_term_of_use_decline_txt">Адхіліць</string>
     <string name="cam_strings_term_of_use_title_txt">Тэрміны і ўмовы</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Умовы выкарыстання&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Умовы выкарыстання&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Адмяніць выбар фота</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Не захавана</string>
     <string name="cam_strings_timeshift_save_complete_txt">Захавана</string>
@@ -611,13 +621,15 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Для стабільнага запісу відэа ў якасці 4K не трэба змяняць гэты параметр, акрамя выпадку, калі вы выкарыстоўваеце высакахуткасную SD-карту (рэкамендуецца клас хуткасці перадачы дадзеных UHS 1 ці вышэй або клас 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Для стабільнага запісу Timeshift video не трэба змяняць гэты параметр, акрамя выпадку, калі вы выкарыстоўваеце высакахуткасную SD-карту (рэкамендуецца клас хуткасці перадачы дадзеных UHS 1 ці вышэй або клас 10). Змяніць усё роўна?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Для стабільнага запісу відэа запаволенага руху не змяняйце гэты параметр, акрамя выпадку, калі вы выкарыстоўваеце высакахуткасную SD-карту (рэкамендуецца клас хуткасці перадачы дадзеных UHS 1 ці вышэй або клас 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Для стабільнага запісу відэа рэкамендуецца змяніць сховішча дадзеных на ўнутраную памяць. Змяніць зараз?\n\nКалі вы будзеце працягваць выкарыстоўваць SD-карту ў якасці сховішча дадзеных, пераканайцеся, каб гэта была высакахуткасная SD-карта (рэкамендуецца клас хуткасці перадачы дадзеных UHS 1 ці вышэй або клас 10).</string>
-    <string name="cam_strings_video_fusion_tutorial_0_title_txt">Двайны аб\'ектыў</string>
-    <string name="cam_strings_video_fusion_tutorial_0_txt">З дапамогай двайнога аб\'ектыва можна здымаць якаснае відэа з нізкімі шумамі нават уначы або ва ўмовах слабага асвятлення. Камера аўтаматычна пераключаецца паміж рэжымам аднаго аб\'ектыва і двайнога аб\'ектыва, у залежнасці ад навакольных умоў здымкі са звышвысокай адчувальнасцю.</string>
-    <string name="cam_strings_video_fusion_tutorial_1_title_txt">Запіс відэа ў рэжыме двайнога аб\'ектыва</string>
-    <string name="cam_strings_video_fusion_tutorial_1_txt">Падчас запісу відэа ў рэжыме двайнога аб\'ектыва захоўвайце дыстанцыю ад аб\'екта мінімум 1 метр. Выкананне відэазапісу ў звышвысокай адчувальнасці на малой адлегласці ад аб\'екта можа выклікаць зрух кропкі здымкі або колеру.</string>
-    <string name="cam_strings_video_fusion_tutorial_2_title_txt">Выкарыстоўваць двайны аб\'ектыў для запісу відэа?</string>
-    <string name="cam_strings_video_fusion_tutorial_2_txt">Каб здымаць буйным планам, краніце «Не» і пераключыцеся на адзін аб\'етыў. Каб вярнуцца да двайнога аб\'ектыва, краніце кнопку на відашукальніку.</string>
+    <string name="cam_strings_video_explanatory_txt">"Для стабільнага запісу відэа рэкамендуецца змяніць сховішча дадзеных на ўнутраную памяць. Змяніць зараз?
+
+Калі вы будзеце працягваць выкарыстоўваць SD-карту ў якасці сховішча дадзеных, пераканайцеся, каб гэта была высакахуткасная SD-карта (рэкамендуецца клас хуткасці перадачы дадзеных UHS 1 ці вышэй або клас 10)."</string>
+    <string name="cam_strings_video_fusion_tutorial_0_title_txt">"Двайны аб'ектыў"</string>
+    <string name="cam_strings_video_fusion_tutorial_0_txt">"З дапамогай двайнога аб'ектыва можна здымаць якаснае відэа з нізкімі шумамі нават уначы або ва ўмовах слабага асвятлення. Камера аўтаматычна пераключаецца паміж рэжымам аднаго аб'ектыва і двайнога аб'ектыва, у залежнасці ад навакольных умоў здымкі са звышвысокай адчувальнасцю."</string>
+    <string name="cam_strings_video_fusion_tutorial_1_title_txt">"Запіс відэа ў рэжыме двайнога аб'ектыва"</string>
+    <string name="cam_strings_video_fusion_tutorial_1_txt">"Падчас запісу відэа ў рэжыме двайнога аб'ектыва захоўвайце дыстанцыю ад аб'екта мінімум 1 метр. Выкананне відэазапісу ў звышвысокай адчувальнасці на малой адлегласці ад аб'екта можа выклікаць зрух кропкі здымкі або колеру."</string>
+    <string name="cam_strings_video_fusion_tutorial_2_title_txt">"Выкарыстоўваць двайны аб'ектыў для запісу відэа?"</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">"Каб здымаць буйным планам, краніце «Не» і пераключыцеся на адзін аб'етыў. Каб вярнуцца да двайнога аб'ектыва, краніце кнопку на відашукальніку."</string>
     <string name="cam_strings_video_hdr_hlg_txt">HDR уключана</string>
     <string name="cam_strings_video_hdr_setting_hlg_txt">HDR</string>
     <string name="cam_strings_video_hdr_title_txt">Відэа HDR</string>

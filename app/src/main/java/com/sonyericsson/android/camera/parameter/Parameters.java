@@ -93,33 +93,36 @@ public abstract class Parameters implements UserSettingApplicable {
 
     protected abstract void updateSelectability();
 
-    public static Parameters create(Context context, CapturingMode capturingMode, boolean z, ModeIndependentParams modeIndependentParams) {
-        switch (Parameters$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()]) {
-            case 1:
+    public static Parameters create(Context context, CapturingMode capturingMode, boolean z,
+            ModeIndependentParams modeIndependentParams) {
+        switch (capturingMode) {
+            case SCENE_RECOGNITION:
                 return new SuperiorParameters(context, capturingMode, z, modeIndependentParams);
-            case 2:
+            case SUPERIOR_FRONT:
                 return new SuperiorFrontParameters(context, capturingMode, z, modeIndependentParams);
-            case 3:
+            case FRONT_PHOTO:
                 return new FrontPhotoParameters(context, capturingMode, z, modeIndependentParams);
-            case 4:
+            case VIDEO:
                 return new VideoParameters(context, capturingMode, z, modeIndependentParams);
-            case 5:
+            case SLOW_MOTION:
                 return new SlowMotionParameters(context, capturingMode, z, modeIndependentParams);
-            case 6:
+            case FRONT_VIDEO:
                 return new FrontVideoParameters(context, capturingMode, z, modeIndependentParams);
             default:
                 return new NormalParameters(context, capturingMode, z, modeIndependentParams);
         }
     }
 
-    public Parameters(CapturingMode capturingMode, boolean z, Context context, ModeIndependentParams modeIndependentParams) {
+    public Parameters(CapturingMode capturingMode, boolean z, Context context,
+            ModeIndependentParams modeIndependentParams) {
         this.capturingMode = capturingMode;
         this.mIsOneShot = z;
         this.mContext = context;
         this.mIndependentParams = modeIndependentParams;
     }
 
-    public Parameters copy(Context context, CapturingMode capturingMode, Configurations configurations, Storage storage, boolean z, ModeIndependentParams modeIndependentParams, boolean z2) {
+    public Parameters copy(Context context, CapturingMode capturingMode, Configurations configurations, Storage storage,
+            boolean z, ModeIndependentParams modeIndependentParams, boolean z2) {
         Parameters parametersCreate = create(context, capturingMode, z, modeIndependentParams);
         parametersCreate.prepareHolder(configurations, null, storage);
         ParameterUtil.copy(this.mHolders, parametersCreate.mHolders);
@@ -129,19 +132,23 @@ public abstract class Parameters implements UserSettingApplicable {
         return parametersCreate;
     }
 
-    public void prepareHolder(Configurations configurations, SharedPreferencesAccessor sharedPreferencesAccessor, Storage storage) {
+    public void prepareHolder(Configurations configurations, SharedPreferencesAccessor sharedPreferencesAccessor,
+            Storage storage) {
         if (CamLog.VERBOSE) {
             CamLog.d("init: mode: " + this.capturingMode);
         }
         this.mCapturingModeParams = new CapturingModeParams(this.mContext, this.capturingMode, this.mIsOneShot);
         this.mCapturingModeParams.init(this.mIsOneShot, configurations);
-        this.mIndependentParams.init(new ActionMode(this.mIsOneShot, this.capturingMode.getType(), this.capturingMode.getCameraId()), storage);
+        this.mIndependentParams.init(
+                new ActionMode(this.mIsOneShot, this.capturingMode.getType(), this.capturingMode.getCameraId()),
+                storage);
         List<UserSettingValueHolder<?>> listValues = this.mCapturingModeParams.values();
         listValues.addAll(this.mIndependentParams.values());
         putHolders(listValues);
         prepare();
         if (sharedPreferencesAccessor != null) {
-            sharedPreferencesAccessor.registerKey(SharedPreferencesAccessor.createPrefix(ParameterCategory.CAPTURING_MODE, this.capturingMode, ""));
+            sharedPreferencesAccessor.registerKey(
+                    SharedPreferencesAccessor.createPrefix(ParameterCategory.CAPTURING_MODE, this.capturingMode, ""));
         }
     }
 
@@ -154,7 +161,8 @@ public abstract class Parameters implements UserSettingApplicable {
 
     protected void updateHolder(UserSettingValueHolder<?> userSettingValueHolder) {
         UserSettingKey key = userSettingValueHolder.get().getKey();
-        if (UserSettingSelectability.getSelectability(userSettingValueHolder.getOptions().length) != UserSettingSelectability.INVALID) {
+        if (UserSettingSelectability
+                .getSelectability(userSettingValueHolder.getOptions().length) != UserSettingSelectability.INVALID) {
             this.mHolders.put(key, userSettingValueHolder);
             if (CamLog.VERBOSE) {
                 CamLog.d("put: Param has been put: " + key);
@@ -184,7 +192,8 @@ public abstract class Parameters implements UserSettingApplicable {
     }
 
     public void readSharedPrefs(SharedPreferencesAccessor sharedPreferencesAccessor) {
-        Map<String, String> stringMap = sharedPreferencesAccessor.getStringMap(SharedPreferencesAccessor.createPrefix(ParameterCategory.CAPTURING_MODE, this.capturingMode, ""));
+        Map<String, String> stringMap = sharedPreferencesAccessor.getStringMap(
+                SharedPreferencesAccessor.createPrefix(ParameterCategory.CAPTURING_MODE, this.capturingMode, ""));
         List<UserSettingValueHolder<?>> listValues = this.mCapturingModeParams.values();
         listValues.addAll(this.mIndependentParams.values());
         parseStringMap(listValues, stringMap);
@@ -194,7 +203,8 @@ public abstract class Parameters implements UserSettingApplicable {
         if (this.mIsOneShot) {
             return;
         }
-        String strCreatePrefix = SharedPreferencesAccessor.createPrefix(ParameterCategory.CAPTURING_MODE, this.capturingMode, "");
+        String strCreatePrefix = SharedPreferencesAccessor.createPrefix(ParameterCategory.CAPTURING_MODE,
+                this.capturingMode, "");
         List<UserSettingValueHolder<?>> listValues = this.mCapturingModeParams.values();
         listValues.addAll(this.mIndependentParams.values());
         sharedPreferencesAccessor.setStringMap(strCreatePrefix, createStringMap(listValues));
@@ -226,11 +236,14 @@ public abstract class Parameters implements UserSettingApplicable {
         }
     }
 
-    protected void writeSharedPrefs(SharedPreferencesAccessor sharedPreferencesAccessor, UserSettingKey userSettingKey) {
+    protected void writeSharedPrefs(SharedPreferencesAccessor sharedPreferencesAccessor,
+            UserSettingKey userSettingKey) {
         if (this.mIsOneShot || !userSettingKey.isSaved()) {
             return;
         }
-        sharedPreferencesAccessor.writeString(SharedPreferencesAccessor.createPrefix(userSettingKey.getCategory(), this.capturingMode, "") + userSettingKey, this.mHolders.get(userSettingKey).createValueString(), true);
+        String valueString = this.mHolders.get(userSettingKey).createValueString();
+        String prefix = SharedPreferencesAccessor.createPrefix(userSettingKey.getCategory(), this.capturingMode, "");
+        sharedPreferencesAccessor.writeString(prefix + userSettingKey, valueString, true);
     }
 
     public List<UserSettingValue> getChangedValues() {
@@ -303,8 +316,8 @@ public abstract class Parameters implements UserSettingApplicable {
     }
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
-    public void set(Ev ev) {
-        this.mCapturingModeParams.mEv.set(ev);
+    public void set(Ev enumC0739Ev) {
+        this.mCapturingModeParams.mEv.set(enumC0739Ev);
     }
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
@@ -319,7 +332,8 @@ public abstract class Parameters implements UserSettingApplicable {
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(AspectRatio aspectRatio) {
-        DependencyApplier dependencyApplierCreate = DependencyApplier.create(this.mCapturingModeParams.mAspectRatio.get());
+        DependencyApplier dependencyApplierCreate = DependencyApplier
+                .create(this.mCapturingModeParams.mAspectRatio.get());
         if (dependencyApplierCreate != null) {
             dependencyApplierCreate.reset(this.mCapturingModeParams);
         }
@@ -332,7 +346,8 @@ public abstract class Parameters implements UserSettingApplicable {
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(FocusMode focusMode) {
-        DependencyApplier dependencyApplierCreate = DependencyApplier.create(this.mCapturingModeParams.mFocusMode.get());
+        DependencyApplier dependencyApplierCreate = DependencyApplier
+                .create(this.mCapturingModeParams.mFocusMode.get());
         if (dependencyApplierCreate != null) {
             dependencyApplierCreate.reset(this.mCapturingModeParams);
         }
@@ -345,7 +360,8 @@ public abstract class Parameters implements UserSettingApplicable {
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(SelfTimer selfTimer) {
-        DependencyApplier dependencyApplierCreate = DependencyApplier.create(this.mCapturingModeParams.mSelfTimer.get());
+        DependencyApplier dependencyApplierCreate = DependencyApplier
+                .create(this.mCapturingModeParams.mSelfTimer.get());
         if (dependencyApplierCreate != null) {
             dependencyApplierCreate.reset(this.mCapturingModeParams);
         }
@@ -358,7 +374,8 @@ public abstract class Parameters implements UserSettingApplicable {
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(ShutterTrigger shutterTrigger) {
-        DependencyApplier dependencyApplierCreate = DependencyApplier.create(this.mCapturingModeParams.mShutterTrigger.get());
+        DependencyApplier dependencyApplierCreate = DependencyApplier
+                .create(this.mCapturingModeParams.mShutterTrigger.get());
         if (dependencyApplierCreate != null) {
             dependencyApplierCreate.reset(this.mCapturingModeParams);
         }
@@ -422,7 +439,8 @@ public abstract class Parameters implements UserSettingApplicable {
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(ObjectTracking objectTracking) {
-        DependencyApplier dependencyApplierCreate = DependencyApplier.create(this.mCapturingModeParams.mObjectTracking.get());
+        DependencyApplier dependencyApplierCreate = DependencyApplier
+                .create(this.mCapturingModeParams.mObjectTracking.get());
         if (dependencyApplierCreate != null) {
             dependencyApplierCreate.reset(this.mCapturingModeParams);
         }
@@ -435,7 +453,8 @@ public abstract class Parameters implements UserSettingApplicable {
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(VideoSize videoSize) {
-        DependencyApplier dependencyApplierCreate = DependencyApplier.create(this.mCapturingModeParams.mVideoSize.get());
+        DependencyApplier dependencyApplierCreate = DependencyApplier
+                .create(this.mCapturingModeParams.mVideoSize.get());
         if (dependencyApplierCreate != null) {
             dependencyApplierCreate.reset(this.mCapturingModeParams);
         }
@@ -457,7 +476,8 @@ public abstract class Parameters implements UserSettingApplicable {
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(VideoShutterTrigger videoShutterTrigger) {
-        DependencyApplier dependencyApplierCreate = DependencyApplier.create(this.mCapturingModeParams.mVideoShutterTrigger.get());
+        DependencyApplier dependencyApplierCreate = DependencyApplier
+                .create(this.mCapturingModeParams.mVideoShutterTrigger.get());
         if (dependencyApplierCreate != null) {
             dependencyApplierCreate.reset(this.mCapturingModeParams);
         }
@@ -480,7 +500,8 @@ public abstract class Parameters implements UserSettingApplicable {
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(TouchIntention touchIntention) {
-        DependencyApplier dependencyApplierCreate = DependencyApplier.create(this.mCapturingModeParams.mTouchIntention.get());
+        DependencyApplier dependencyApplierCreate = DependencyApplier
+                .create(this.mCapturingModeParams.mTouchIntention.get());
         if (dependencyApplierCreate != null) {
             dependencyApplierCreate.reset(this.mCapturingModeParams);
         }
@@ -493,7 +514,8 @@ public abstract class Parameters implements UserSettingApplicable {
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(FocusRange focusRange) {
-        DependencyApplier dependencyApplierCreate = DependencyApplier.create(this.mCapturingModeParams.mFocusRange.get());
+        DependencyApplier dependencyApplierCreate = DependencyApplier
+                .create(this.mCapturingModeParams.mFocusRange.get());
         if (dependencyApplierCreate != null) {
             dependencyApplierCreate.reset(this.mCapturingModeParams);
         }
@@ -509,7 +531,8 @@ public abstract class Parameters implements UserSettingApplicable {
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(ShutterSpeed shutterSpeed) {
-        DependencyApplier dependencyApplierCreate = DependencyApplier.create(this.mCapturingModeParams.mShutterSpeed.get());
+        DependencyApplier dependencyApplierCreate = DependencyApplier
+                .create(this.mCapturingModeParams.mShutterSpeed.get());
         if (dependencyApplierCreate != null) {
             dependencyApplierCreate.reset(this.mCapturingModeParams);
         }
@@ -523,7 +546,8 @@ public abstract class Parameters implements UserSettingApplicable {
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(FusionMode fusionMode) {
         ParameterUtil.reset(this.mCapturingModeParams.mFusionMode, fusionMode);
-        DependencyApplier dependencyApplierCreate = DependencyApplier.create(this.mCapturingModeParams.mFusionMode.get());
+        DependencyApplier dependencyApplierCreate = DependencyApplier
+                .create(this.mCapturingModeParams.mFusionMode.get());
         if (dependencyApplierCreate != null) {
             dependencyApplierCreate.reset(this.mCapturingModeParams);
         }
@@ -604,92 +628,92 @@ public abstract class Parameters implements UserSettingApplicable {
     }
 
     UserSettingValue get(UserSettingKey userSettingKey) {
-        switch (Parameters$1.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()]) {
-            case 1:
+        switch (userSettingKey) {
+            case CAPTURING_MODE:
                 return this.capturingMode;
-            case 2:
+            case CAMERA_KEY:
                 return this.mIndependentParams.mBurstByCameraKey.get();
-            case 3:
+            case PREDICTIVE_CAPTURE:
                 return getPredictiveCapture();
-            case 4:
+            case EV:
                 return getEv();
-            case 5:
+            case FACING:
                 return getFacing();
-            case 6:
+            case FLASH:
                 return getFlash();
-            case 7:
+            case DISPLAY_FLASH:
                 return getDisplayFlash();
-            case 8:
+            case FOCUS_MODE:
                 return getFocusMode();
-            case 9:
+            case OBJECT_TRACKING:
                 return getObjectTracking();
-            case 10:
+            case HDR:
                 return getHdr();
-            case 11:
+            case ISO:
                 return getIso();
-            case 12:
+            case METERING:
                 return getMetering();
-            case 13:
+            case PHOTO_LIGHT:
                 return getPhotoLight();
-            case 14:
+            case RESOLUTION:
                 return getResolution();
-            case 15:
+            case ASPECT_RATIO:
                 return getAspectRatio();
-            case 16:
+            case SELF_TIMER:
                 return getSelfTimer();
-            case 17:
+            case SMILE_CAPTURE:
                 return getSmileCapture();
-            case 18:
+            case SHUTTER_TRIGGER:
                 return getShutterTrigger();
-            case 19:
+            case SOFT_SKIN:
                 return getSoftSkin();
-            case 20:
+            case VIDEO_SHUTTER_TRIGGER:
                 return getVideoShutterTrigger();
-            case 21:
+            case VIDEO_STABILIZER:
                 return getVideoStabilizer();
-            case 22:
+            case VIDEO_SIZE:
                 return getVideoSize();
-            case 23:
+            case VIDEO_HDR:
                 return getVideoHdr();
-            case 24:
+            case WHITE_BALANCE:
                 return getWhiteBalance();
-            case 25:
+            case VIDEO_SMILE_CAPTURE:
                 return getVideoSmileCapture();
-            case 26:
+            case VIDEO_CODEC:
                 return getVideoCodec();
-            case 27:
+            case SHUTTER_SPEED:
                 return getShutterSpeed();
-            case 28:
+            case FOCUS_RANGE:
                 return getFocusRange();
-            case 29:
+            case TOUCH_INTENTION:
                 return getTouchIntention();
-            case 30:
+            case AUTO_REVIEW:
                 return this.mIndependentParams.mAutoReview.get();
-            case 31:
+            case GEO_TAG:
                 return this.mIndependentParams.mGeoTag.get();
-            case 32:
+            case FAST_CAPTURE:
                 return this.mIndependentParams.mFastCapture.get();
-            case 33:
+            case TOUCH_CAPTURE:
                 return this.mIndependentParams.mTouchCapture.get();
-            case 34:
+            case SHUTTER_SOUND:
                 return this.mIndependentParams.mShutterSound.get();
-            case 35:
+            case DESTINATION_TO_SAVE:
                 return this.mIndependentParams.mDestinationToSave.get();
-            case 36:
+            case VOLUME_KEY:
                 return this.mIndependentParams.mVolumeKey.get();
-            case 37:
+            case GRID_LINE:
                 return this.mIndependentParams.mGridLine.get();
-            case 38:
+            case SIDE_SENSE:
                 return this.mIndependentParams.mSideSense.get();
-            case 39:
+            case SLOW_MOTION:
                 return getSlowMotion();
-            case 40:
+            case FRONT_ANGLE:
                 return this.mIndependentParams.mFrontAngle.get();
-            case 41:
+            case FUSION_MODE:
                 return getFusionMode();
-            case 42:
+            case DISTORTION_CORRECTION:
                 return this.mIndependentParams.mDistortionCorrection.get();
-            case 43:
+            case PREDICTIVE_LAUNCH:
                 return this.mIndependentParams.mPredictiveLaunch.get();
             default:
                 return null;

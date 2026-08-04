@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import com.sonyericsson.android.camera.configuration.ParameterCategory;
+import com.sonyericsson.android.camera.configuration.SharedPreferencesConstants;
 import com.sonyericsson.android.camera.configuration.SharedPreferencesReader;
 import com.sonyericsson.android.camera.configuration.SharedPreferencesWriter;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
@@ -122,7 +123,7 @@ public class SharedPreferencesAccessor {
 
     public void writeLong(String str, long j, boolean z) {
         if (CamLog.VERBOSE) {
-            CamLog.d("SharedPreferencesAccessor", "writeLong: key: " + str + ", value: " + j);
+            CamLog.d(TAG, "writeLong: key: " + str + ", value: " + j);
         }
         this.mWriter.writeLong(str, j);
         apply(z);
@@ -131,7 +132,7 @@ public class SharedPreferencesAccessor {
     public long readLong(String str, long j) {
         long jLongValue = this.mReader.readLong(str, j).longValue();
         if (CamLog.VERBOSE) {
-            CamLog.d("SharedPreferencesAccessor", "readLong: key: " + str + ", value: " + jLongValue);
+            CamLog.d(TAG, "readLong: key: " + str + ", value: " + jLongValue);
         }
         return jLongValue;
     }
@@ -193,7 +194,7 @@ public class SharedPreferencesAccessor {
             sb.append(str);
             sb.append('_');
         }
-        sb.append("PARAMS_");
+        sb.append(SharedPreferencesConstants.KEY_PARAMS);
         return sb.toString();
     }
 

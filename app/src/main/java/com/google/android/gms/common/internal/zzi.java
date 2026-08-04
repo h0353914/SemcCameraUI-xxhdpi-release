@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
 import com.google.android.gms.common.api.Scope;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzi implements Parcelable$Creator<GetServiceRequest> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzi implements Parcelable.Creator<GetServiceRequest> {
     static void zza(GetServiceRequest getServiceRequest, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, getServiceRequest.version);
@@ -23,17 +23,9 @@ public class zzi implements Parcelable$Creator<GetServiceRequest> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ GetServiceRequest createFromParcel(Parcel parcel) {
-        return zzak(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ GetServiceRequest[] newArray(int i) {
-        return zzbD(i);
-    }
-
-    public GetServiceRequest zzak(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzak, reason: merged with bridge method [inline-methods] */
+    public GetServiceRequest createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         int iZzg2 = 0;
@@ -78,10 +70,12 @@ public class zzi implements Parcelable$Creator<GetServiceRequest> {
         if (parcel.dataPosition() == iZzap) {
             return new GetServiceRequest(iZzg, iZzg2, iZzg3, strZzp, iBinderZzq, scopeArr, bundleZzr, account);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public GetServiceRequest[] zzbD(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbD, reason: merged with bridge method [inline-methods] */
+    public GetServiceRequest[] newArray(int i) {
         return new GetServiceRequest[i];
     }
 }

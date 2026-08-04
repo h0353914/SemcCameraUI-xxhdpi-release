@@ -1,6 +1,6 @@
 package org.apache.commons.imaging;
 
-public final class ImagingConstants {
+public interface ImagingConstants {
     public static final String BUFFERED_IMAGE_FACTORY = "BUFFERED_IMAGE_FACTORY";
     public static final String PARAM_KEY_COMPRESSION = "COMPRESSION";
     public static final String PARAM_KEY_EXIF = "EXIF";
@@ -11,7 +11,4 @@ public final class ImagingConstants {
     public static final String PARAM_KEY_STRICT = "STRICT";
     public static final String PARAM_KEY_VERBOSE = "VERBOSE";
     public static final String PARAM_KEY_XMP_XML = "XMP_XML";
-
-    private ImagingConstants() {
-    }
 }

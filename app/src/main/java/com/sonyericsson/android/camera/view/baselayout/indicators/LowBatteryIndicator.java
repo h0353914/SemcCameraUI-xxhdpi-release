@@ -2,12 +2,12 @@ package com.sonyericsson.android.camera.view.baselayout.indicators;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.LinearLayout$LayoutParams;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.cameracommon.systemmonitor.BatteryChangedReceiver;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 import com.sonymobile.cameracommon.font.FontUtil;
-import com.sonymobile.cameracommon.font.FontUtil$RobotoFontType;
 
 public class LowBatteryIndicator extends BaseIndicator {
     private final int mIconWidth;
@@ -18,9 +18,9 @@ public class LowBatteryIndicator extends BaseIndicator {
 
     public LowBatteryIndicator(Context context, String str) {
         super(str);
-        this.mIconWidth = context.getResources().getDimensionPixelSize(2131165675);
-        this.mTextWidth = context.getResources().getDimensionPixelSize(2131165282);
-        this.mRightMargin = context.getResources().getDimensionPixelSize(2131165676);
+        this.mIconWidth = context.getResources().getDimensionPixelSize(R.dimen.top_indicator_image_size);
+        this.mTextWidth = context.getResources().getDimensionPixelSize(R.dimen.battery_indicator_text_max_width);
+        this.mRightMargin = context.getResources().getDimensionPixelSize(R.dimen.top_indicators_interval);
         this.mLevel = 0;
     }
 
@@ -37,8 +37,8 @@ public class LowBatteryIndicator extends BaseIndicator {
     protected void onUpdated(View view, boolean z, int i) {
         if (z) {
             view.setVisibility(0);
-            ((LinearLayout$LayoutParams) view.getLayoutParams()).width = this.mIconWidth + this.mTextWidth;
-            ((LinearLayout$LayoutParams) view.getLayoutParams()).rightMargin = this.mRightMargin;
+            ((LinearLayout.LayoutParams) view.getLayoutParams()).width = this.mIconWidth + this.mTextWidth;
+            ((LinearLayout.LayoutParams) view.getLayoutParams()).rightMargin = this.mRightMargin;
             view.setRotation(RotationUtil.getAngle(i));
             view.setPivotX(this.mTextWidth + (this.mIconWidth / 2));
             view.setPivotY(this.mIconWidth / 2.0f);
@@ -47,16 +47,16 @@ public class LowBatteryIndicator extends BaseIndicator {
             return;
         }
         view.setVisibility(4);
-        ((LinearLayout$LayoutParams) view.getLayoutParams()).width = this.mTextWidth;
-        ((LinearLayout$LayoutParams) view.getLayoutParams()).rightMargin = 0;
+        ((LinearLayout.LayoutParams) view.getLayoutParams()).width = this.mTextWidth;
+        ((LinearLayout.LayoutParams) view.getLayoutParams()).rightMargin = 0;
         view.setRotation(0.0f);
         view.requestLayout();
     }
 
     private void updateTextView(View view) {
         if (this.mTextView == null) {
-            this.mTextView = (TextView) view.findViewById(2131296318);
-            FontUtil.setRobotoFont(this.mTextView, FontUtil$RobotoFontType.MEDIUM);
+            this.mTextView = (TextView) view.findViewById(R.id.battery_indicator_text);
+            FontUtil.setRobotoFont(this.mTextView, FontUtil.RobotoFontType.MEDIUM);
         }
         this.mTextView.setText(this.mLevel + "%");
     }

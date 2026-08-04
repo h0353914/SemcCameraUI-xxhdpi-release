@@ -5,14 +5,16 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup$LayoutParams;
+import android.view.ViewGroup;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.cameracommon.focusview.Rectangle;
 
-public class TaggedRectangle extends RelativeLayout implements Rectangle$RectangleOnTouchListener {
+public class TaggedRectangle extends RelativeLayout implements Rectangle.RectangleOnTouchListener {
     public static final int FACEDETECT_CAPTURE = 1;
     public static final int FACERECOGNITION_REVIEW = 2;
     private static final int GAUGE_DIR_BOTTOM = 2;
@@ -32,7 +34,7 @@ public class TaggedRectangle extends RelativeLayout implements Rectangle$Rectang
     private int mRectImageHeight;
     private int mRectImageWidth;
     private Rectangle mRectangle;
-    private Rectangle$RectangleOnTouchListener mRectangleOnTouchListener;
+    private Rectangle.RectangleOnTouchListener mRectangleOnTouchListener;
     private SmileGauge[] mSmileGauges;
 
     public TaggedRectangle(Context context) {
@@ -63,11 +65,11 @@ public class TaggedRectangle extends RelativeLayout implements Rectangle$Rectang
         if (CamLog.VERBOSE) {
             CamLog.d("prepare() is called.");
         }
-        this.mRectangle = (Rectangle) findViewById(2131296527);
+        this.mRectangle = (Rectangle) findViewById(R.id.rect);
         this.mSmileGauges = new SmileGauge[3];
-        this.mSmileGauges[0] = (SmileGauge) findViewById(2131296615);
-        this.mSmileGauges[1] = (SmileGauge) findViewById(2131296618);
-        this.mSmileGauges[2] = (SmileGauge) findViewById(2131296613);
+        this.mSmileGauges[0] = (SmileGauge) findViewById(R.id.smile_gauge_left);
+        this.mSmileGauges[1] = (SmileGauge) findViewById(R.id.smile_gauge_top);
+        this.mSmileGauges[2] = (SmileGauge) findViewById(R.id.smile_gauge_bottom);
     }
 
     public void prepare(int i) {
@@ -97,8 +99,8 @@ public class TaggedRectangle extends RelativeLayout implements Rectangle$Rectang
     }
 
     public void setRectImageSize(int i, int i2, int i3, int i4) {
-        ImageView imageView = (ImageView) this.mRectangle.findViewById(2131296528);
-        ViewGroup$LayoutParams layoutParams = imageView.getLayoutParams();
+        ImageView imageView = (ImageView) this.mRectangle.findViewById(R.id.rect_image);
+        ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
         this.mRectImageWidth = i3;
         this.mRectImageHeight = i4;
         if (layoutParams != null) {
@@ -111,7 +113,7 @@ public class TaggedRectangle extends RelativeLayout implements Rectangle$Rectang
     }
 
     private void setRectSize(int i, int i2) {
-        ViewGroup$LayoutParams layoutParams = this.mRectangle.getLayoutParams();
+        ViewGroup.LayoutParams layoutParams = this.mRectangle.getLayoutParams();
         if (layoutParams != null) {
             layoutParams.height = i2;
             layoutParams.width = i;
@@ -124,7 +126,7 @@ public class TaggedRectangle extends RelativeLayout implements Rectangle$Rectang
     }
 
     public void setSize(int i, int i2) {
-        ViewGroup$LayoutParams layoutParams = getLayoutParams();
+        ViewGroup.LayoutParams layoutParams = getLayoutParams();
         layoutParams.height = i2;
         layoutParams.width = i;
         setLayoutParams(layoutParams);
@@ -155,8 +157,8 @@ public class TaggedRectangle extends RelativeLayout implements Rectangle$Rectang
         this.mRectangle.changeChildBackgroundResource(i);
     }
 
-    public void setRectangleOnTouchListener(Rectangle$RectangleOnTouchListener rectangle$RectangleOnTouchListener) {
-        this.mRectangleOnTouchListener = rectangle$RectangleOnTouchListener;
+    public void setRectangleOnTouchListener(Rectangle.RectangleOnTouchListener rectangleOnTouchListener) {
+        this.mRectangleOnTouchListener = rectangleOnTouchListener;
     }
 
     @Override // android.view.ViewGroup, android.view.View
@@ -169,7 +171,7 @@ public class TaggedRectangle extends RelativeLayout implements Rectangle$Rectang
         super.onDetachedFromWindow();
     }
 
-    @Override // com.sonyericsson.cameracommon.focusview.Rectangle$RectangleOnTouchListener
+    @Override // com.sonyericsson.cameracommon.focusview.Rectangle.RectangleOnTouchListener
     public void onRectTouchDown(View view, MotionEvent motionEvent) {
         if (this.mIsLockedBySelfTimer || this.mRectangleOnTouchListener == null || !this.mIsAbleToTouch) {
             return;
@@ -177,7 +179,7 @@ public class TaggedRectangle extends RelativeLayout implements Rectangle$Rectang
         this.mRectangleOnTouchListener.onRectTouchDown(this, motionEvent);
     }
 
-    @Override // com.sonyericsson.cameracommon.focusview.Rectangle$RectangleOnTouchListener
+    @Override // com.sonyericsson.cameracommon.focusview.Rectangle.RectangleOnTouchListener
     public void onRectTouchUp(View view, MotionEvent motionEvent) {
         if (this.mIsLockedBySelfTimer || this.mRectangleOnTouchListener == null || !this.mIsAbleToTouch) {
             return;
@@ -185,7 +187,7 @@ public class TaggedRectangle extends RelativeLayout implements Rectangle$Rectang
         this.mRectangleOnTouchListener.onRectTouchUp(this, motionEvent);
     }
 
-    @Override // com.sonyericsson.cameracommon.focusview.Rectangle$RectangleOnTouchListener
+    @Override // com.sonyericsson.cameracommon.focusview.Rectangle.RectangleOnTouchListener
     public void onRectTouchCancel(View view, MotionEvent motionEvent) {
         if (this.mIsLockedBySelfTimer || this.mRectangleOnTouchListener == null || !this.mIsAbleToTouch) {
             return;
@@ -269,11 +271,11 @@ public class TaggedRectangle extends RelativeLayout implements Rectangle$Rectang
     }
 
     public void startRectangleAnimation(int i) {
-        this.mRectangle.startAnimation((AnimationSet) AnimationUtils.loadAnimation(getContext(), 2130772001));
+        this.mRectangle.startAnimation((AnimationSet) AnimationUtils.loadAnimation(getContext(), R.anim.tagged_rectangle_show));
     }
 
     public void startRectanglePressAnimation() {
-        this.mRectangle.startAnimation((AnimationSet) AnimationUtils.loadAnimation(getContext(), 2130772000));
+        this.mRectangle.startAnimation((AnimationSet) AnimationUtils.loadAnimation(getContext(), R.anim.tagged_rectangle_press));
     }
 
     public void setRectOrientation(int i) {
@@ -301,7 +303,7 @@ public class TaggedRectangle extends RelativeLayout implements Rectangle$Rectang
             setSmileGaugeVisibility(4);
         }
         if (getVisibility() != 4) {
-            ViewGroup$LayoutParams layoutParams = this.mRectangle.getLayoutParams();
+            ViewGroup.LayoutParams layoutParams = this.mRectangle.getLayoutParams();
             if (layoutParams != null) {
                 layoutParams.height = 0;
                 layoutParams.width = 0;
@@ -312,7 +314,7 @@ public class TaggedRectangle extends RelativeLayout implements Rectangle$Rectang
         }
     }
 
-    @Override // com.sonyericsson.cameracommon.focusview.Rectangle$RectangleOnTouchListener
+    @Override // com.sonyericsson.cameracommon.focusview.Rectangle.RectangleOnTouchListener
     public void onRectTouchLongPress(View view, MotionEvent motionEvent) {
         if (this.mIsLockedBySelfTimer || this.mRectangleOnTouchListener == null || !this.mIsAbleToTouch) {
             return;

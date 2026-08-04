@@ -1,10 +1,11 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
 public enum DistortionCorrection implements UserSettingValue {
-    OFF(-1, 2131689931, "off"),
-    ON(-1, 2131689932, "on");
+    OFF(-1, R.string.cam_strings_lens_correction_off_txt, "off"),
+    ON(-1, R.string.cam_strings_lens_correction_on_txt, "on");
 
     private static final int sParameterTextId = UserSettingKey.DISTORTION_CORRECTION.getTitleTextId();
     private final int mIconId;

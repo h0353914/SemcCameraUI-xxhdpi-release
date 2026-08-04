@@ -1,7 +1,8 @@
 package com.google.android.gms.internal;
 
+import android.app.PendingIntent;
 import android.content.Context;
-import android.content.pm.PackageManager$NameNotFoundException;
+import android.content.pm.PackageManager;
 import android.util.Log;
 import com.google.android.gms.playlog.internal.LogEvent;
 import com.google.android.gms.playlog.internal.PlayLoggerContext;
@@ -9,21 +10,30 @@ import com.google.android.gms.playlog.internal.zzd;
 import com.google.android.gms.playlog.internal.zzf;
 
 @Deprecated
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzqd {
     private final zzf zzaRE;
     private PlayLoggerContext zzaRF;
 
-    public zzqd(Context context, int i, String str, String str2, zzqd$zza zzqd_zza, boolean z, String str3) {
+    public interface zza {
+        void zzBr();
+
+        void zzBs();
+
+        void zzf(PendingIntent pendingIntent);
+    }
+
+    public zzqd(Context context, int i, String str, String str2, zza zzaVar, boolean z, String str3) {
         int i2;
         String packageName = context.getPackageName();
         try {
             i2 = context.getPackageManager().getPackageInfo(packageName, 0).versionCode;
-        } catch (PackageManager$NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException e) {
             Log.wtf("PlayLogger", "This can't happen.", e);
             i2 = 0;
         }
         this.zzaRF = new PlayLoggerContext(packageName, i2, i, str, str2, z);
-        this.zzaRE = new zzf(context, context.getMainLooper(), new zzd(zzqd_zza), new com.google.android.gms.common.internal.zzf(null, null, null, 49, null, packageName, str3, null));
+        this.zzaRE = new zzf(context, context.getMainLooper(), new zzd(zzaVar), new com.google.android.gms.common.internal.zzf(null, null, null, 49, null, packageName, str3, null));
     }
 
     public void start() {

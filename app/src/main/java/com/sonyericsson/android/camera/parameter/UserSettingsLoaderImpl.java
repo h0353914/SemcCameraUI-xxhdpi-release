@@ -4,13 +4,14 @@ import android.content.Context;
 import android.os.Build;
 import android.os.SystemClock;
 import com.sonyericsson.android.camera.configuration.Configurations;
+import com.sonyericsson.android.camera.configuration.SharedPreferencesConstants;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.setting.SharedPreferencesAccessor;
 import com.sonyericsson.android.camera.setting.UserSettingsLoader;
-import com.sonyericsson.android.camera.setting.UserSettingsLoader$OnLoadCompletedListener;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.android.camera.util.ThreadUtil;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import com.sonyericsson.cameracommon.storage.Storage;
@@ -20,7 +21,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.Map$Entry;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
@@ -33,67 +33,64 @@ public class UserSettingsLoaderImpl implements UserSettingsLoader {
     private final Storage mStorage;
     private final Map<CapturingMode, Parameters> mParametersEntries = new HashMap();
     private final Map<CapturingMode, Parameters> mMigrateParametersEntries = new HashMap();
-    private final LinkedList<UserSettingsLoader$OnLoadCompletedListener> mListeners = new LinkedList<>();
+    private final LinkedList<UserSettingsLoader.OnLoadCompletedListener> mListeners = new LinkedList<>();
     private final Object mEntryLock = new Object();
     private boolean mIsCompleted = false;
     private Future<?> mLoadTaskFuture = null;
     private final ModeIndependentParams mCommonParameters = new ModeIndependentParams();
 
-    static /* synthetic */ boolean access$000(UserSettingsLoaderImpl userSettingsLoaderImpl) {
-        return userSettingsLoaderImpl.mIsCompleted;
-    }
+    private class LoadTask implements Runnable {
+        private LoadTask() {
+        }
 
-    static /* synthetic */ boolean access$002(UserSettingsLoaderImpl userSettingsLoaderImpl, boolean z) {
-        userSettingsLoaderImpl.mIsCompleted = z;
-        return z;
-    }
-
-    static /* synthetic */ Context access$100(UserSettingsLoaderImpl userSettingsLoaderImpl) {
-        return userSettingsLoaderImpl.mContext;
-    }
-
-    static /* synthetic */ Object access$1100(UserSettingsLoaderImpl userSettingsLoaderImpl) {
-        return userSettingsLoaderImpl.mEntryLock;
-    }
-
-    static /* synthetic */ Storage access$200(UserSettingsLoaderImpl userSettingsLoaderImpl) {
-        return userSettingsLoaderImpl.mStorage;
-    }
-
-    static /* synthetic */ void access$300(UserSettingsLoaderImpl userSettingsLoaderImpl, Context context, Storage storage) {
-        userSettingsLoaderImpl.applyDefaultParameters(context, storage);
-    }
-
-    static /* synthetic */ Map access$400(UserSettingsLoaderImpl userSettingsLoaderImpl) {
-        return userSettingsLoaderImpl.mMigrateParametersEntries;
-    }
-
-    static /* synthetic */ ModeIndependentParams access$500(UserSettingsLoaderImpl userSettingsLoaderImpl) {
-        return userSettingsLoaderImpl.mCommonParameters;
-    }
-
-    static /* synthetic */ SharedPreferencesAccessor access$600(UserSettingsLoaderImpl userSettingsLoaderImpl) {
-        return userSettingsLoaderImpl.mSharedPrefsAccessor;
-    }
-
-    static /* synthetic */ Map access$700(UserSettingsLoaderImpl userSettingsLoaderImpl) {
-        return userSettingsLoaderImpl.mParametersEntries;
-    }
-
-    static /* synthetic */ void access$800(UserSettingsLoaderImpl userSettingsLoaderImpl, Map map) {
-        userSettingsLoaderImpl.loadInternal(map);
-    }
-
-    static /* synthetic */ LinkedList access$900(UserSettingsLoaderImpl userSettingsLoaderImpl) {
-        return userSettingsLoaderImpl.mListeners;
+        @Override // java.lang.Runnable
+        public void run() {
+            LinkedList linkedList;
+            synchronized (UserSettingsLoaderImpl.this) {
+                if (UserSettingsLoaderImpl.this.mIsCompleted) {
+                    return;
+                }
+            }
+            PerfLog.LOAD_USER_SETTING_ALL.begin();
+            String str = Build.FINGERPRINT;
+            String string = UserSettingsLoaderImpl.this.getSharedPreferencesAccessor()
+                    .readString("android.os.Build.FINGERPRINT", "");
+            if ("".equals(string)) {
+                CamLog.d("Initialize UserSettings data by default values due to no fingerprint.");
+                UserSettingsLoaderImpl.this.applyDefaultParameters(UserSettingsLoaderImpl.this.mContext,
+                        UserSettingsLoaderImpl.this.mStorage);
+            } else if (!str.equals(string)) {
+                CamLog.d("Migrate UserSettings. stored-fingerprint:" + string + " current-fingerprint:" + str);
+                CameraSettingsMigrator.migrate(UserSettingsLoaderImpl.this.mContext,
+                        UserSettingsLoaderImpl.this.mStorage, UserSettingsLoaderImpl.this);
+                UserSettingsLoaderImpl.this.getSharedPreferencesAccessor().writeString("android.os.Build.FINGERPRINT",
+                        str, true);
+                synchronized (UserSettingsLoaderImpl.this) {
+                    UserSettingsLoaderImpl.this.mMigrateParametersEntries.clear();
+                    UserSettingsLoaderImpl.this.mCommonParameters.clear(UserSettingsLoaderImpl.this.mStorage);
+                }
+                UserSettingsLoaderImpl.this.mSharedPrefsAccessor.reset();
+            }
+            UserSettingsLoaderImpl.this.loadInternal(UserSettingsLoaderImpl.this.mParametersEntries);
+            PerfLog.LOAD_USER_SETTING_ALL.end();
+            synchronized (UserSettingsLoaderImpl.this) {
+                UserSettingsLoaderImpl.this.mIsCompleted = true;
+                linkedList = UserSettingsLoaderImpl.this.mListeners;
+            }
+            Iterator it = linkedList.iterator();
+            while (it.hasNext()) {
+                ((UserSettingsLoader.OnLoadCompletedListener) it.next()).onLoadCompleted();
+            }
+        }
     }
 
     public UserSettingsLoaderImpl(Context context, Storage storage) {
         this.mContext = context;
         this.mStorage = storage;
         this.mCommonParameters.clear(storage);
-        this.mSharedPrefsAccessor = new SharedPreferencesAccessor(context, "com.sonyericsson.android.camera.shared_preferences");
-        this.mSetupExecutor = ThreadUtil.buildExecutor("SettingLoadTask");
+        this.mSharedPrefsAccessor = new SharedPreferencesAccessor(context,
+                SharedPreferencesConstants.CAMERA_SHARED_PREFERENCES_NAME);
+        this.mSetupExecutor = ThreadUtil.buildExecutor(THREAD_NAME);
     }
 
     @Override // com.sonyericsson.android.camera.setting.UserSettingsLoader
@@ -101,7 +98,7 @@ public class UserSettingsLoaderImpl implements UserSettingsLoader {
         if (this.mLoadTaskFuture != null && !this.mLoadTaskFuture.isDone()) {
             CamLog.d("duplicated load call");
         } else {
-            this.mLoadTaskFuture = this.mSetupExecutor.submit(new UserSettingsLoaderImpl$LoadTask(this, null));
+            this.mLoadTaskFuture = this.mSetupExecutor.submit(new LoadTask());
         }
     }
 
@@ -125,20 +122,23 @@ public class UserSettingsLoaderImpl implements UserSettingsLoader {
     }
 
     @Override // com.sonyericsson.android.camera.setting.UserSettingsLoader
-    public Parameters getUserSettingParameters(Context context, CapturingMode capturingMode, Storage storage, Configurations configurations, boolean z, ModeIndependentParams modeIndependentParams, boolean z2) {
+    public Parameters getUserSettingParameters(Context context, CapturingMode capturingMode, Storage storage,
+            Configurations configurations, boolean z, ModeIndependentParams modeIndependentParams, boolean z2) {
         CamLog.d("invoked");
-        long jUptimeMillis = SystemClock.uptimeMillis();
+        long startTime = SystemClock.uptimeMillis();
         while (!this.mParametersEntries.containsKey(capturingMode)) {
             synchronized (this.mEntryLock) {
                 try {
-                    this.mEntryLock.wait(5L);
-                } catch (InterruptedException unused) {
+                    this.mEntryLock.wait(5);
+                } catch (InterruptedException e) {
                     CamLog.d("Interrupted to wait");
                 }
             }
         }
-        CamLog.d("getUserSettingParameters(): wait loading for " + (SystemClock.uptimeMillis() - jUptimeMillis) + "ms");
-        return this.mParametersEntries.get(capturingMode).copy(context, capturingMode, configurations, storage, z, modeIndependentParams, z2);
+        long waitTime = SystemClock.uptimeMillis() - startTime;
+        CamLog.d("getUserSettingParameters(): wait loading for " + waitTime + "ms");
+        Parameters parameters = this.mParametersEntries.get(capturingMode);
+        return parameters.copy(context, capturingMode, configurations, storage, z, modeIndependentParams, z2);
     }
 
     @Override // com.sonyericsson.android.camera.setting.UserSettingsLoader
@@ -147,18 +147,20 @@ public class UserSettingsLoaderImpl implements UserSettingsLoader {
     }
 
     @Override // com.sonyericsson.android.camera.setting.UserSettingsLoader
-    public synchronized void registerLoadCompletedListener(UserSettingsLoader$OnLoadCompletedListener userSettingsLoader$OnLoadCompletedListener) {
-        if (userSettingsLoader$OnLoadCompletedListener != null) {
-            this.mListeners.add(userSettingsLoader$OnLoadCompletedListener);
+    public synchronized void registerLoadCompletedListener(
+            UserSettingsLoader.OnLoadCompletedListener onLoadCompletedListener) {
+        if (onLoadCompletedListener != null) {
+            this.mListeners.add(onLoadCompletedListener);
             if (this.mIsCompleted) {
-                userSettingsLoader$OnLoadCompletedListener.onLoadCompleted();
+                onLoadCompletedListener.onLoadCompleted();
             }
         }
     }
 
     @Override // com.sonyericsson.android.camera.setting.UserSettingsLoader
-    public synchronized void unregisterLoadCompletedListener(UserSettingsLoader$OnLoadCompletedListener userSettingsLoader$OnLoadCompletedListener) {
-        this.mListeners.remove(userSettingsLoader$OnLoadCompletedListener);
+    public synchronized void unregisterLoadCompletedListener(
+            UserSettingsLoader.OnLoadCompletedListener onLoadCompletedListener) {
+        this.mListeners.remove(onLoadCompletedListener);
     }
 
     Map<CapturingMode, Parameters> loadMigrateParameters() {
@@ -170,10 +172,12 @@ public class UserSettingsLoaderImpl implements UserSettingsLoader {
         saveInternal(map, capturingMode, this.mMigrateParametersEntries);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void loadInternal(Map<CapturingMode, Parameters> map) {
-        HashMap map2 = new HashMap();
+        Map<CapturingMode, Parameters> map2 = new HashMap<>();
         for (CapturingMode capturingMode : CapturingMode.getValidOptions()) {
-            Parameters parametersCreate = Parameters.create(this.mContext, capturingMode, false, this.mCommonParameters);
+            Parameters parametersCreate = Parameters.create(this.mContext, capturingMode, false,
+                    this.mCommonParameters);
             parametersCreate.prepareHolder(new Configurations(), this.mSharedPrefsAccessor, this.mStorage);
             map2.put(capturingMode, parametersCreate);
         }
@@ -189,39 +193,45 @@ public class UserSettingsLoaderImpl implements UserSettingsLoader {
         map2.clear();
     }
 
-    private void saveInternal(Map<CapturingMode, Parameters> map, CapturingMode capturingMode, Map<CapturingMode, Parameters> map2) {
+    private void saveInternal(Map<CapturingMode, Parameters> map, CapturingMode capturingMode,
+            Map<CapturingMode, Parameters> map2) {
         CapturingMode capturingMode2;
-        for (Map$Entry<CapturingMode, Parameters> map$Entry : map.entrySet()) {
-            if (map2.containsKey(map$Entry.getKey())) {
-                ParameterUtil.copy(map$Entry.getValue().mHolders, map2.get(map$Entry.getKey()).mHolders);
+        for (Map.Entry<CapturingMode, Parameters> entry : map.entrySet()) {
+            if (map2.containsKey(entry.getKey())) {
+                ParameterUtil.copy(entry.getValue().mHolders, map2.get(entry.getKey()).mHolders);
             }
-            if (map$Entry.getKey() == capturingMode) {
-                this.mCommonParameters.setValues(map$Entry.getValue().mIndependentParams);
+            if (entry.getKey() == capturingMode) {
+                this.mCommonParameters.setValues(entry.getValue().mIndependentParams);
             }
         }
-        for (Map$Entry<CapturingMode, Parameters> map$Entry2 : map2.entrySet()) {
-            map$Entry2.getValue().mIndependentParams.setValues(this.mCommonParameters);
-            map$Entry2.getValue().writeSharedPrefs(this.mSharedPrefsAccessor);
+        for (Map.Entry<CapturingMode, Parameters> entry2 : map2.entrySet()) {
+            entry2.getValue().mIndependentParams.setValues(this.mCommonParameters);
+            entry2.getValue().writeSharedPrefs(this.mSharedPrefsAccessor);
         }
         this.mSharedPrefsAccessor.writeParameters(false);
-        if (PlatformCapability.isFrontCameraSupported() && !this.mSharedPrefsAccessor.getSharedPreferences().contains("FRONT_FAST")) {
-            if (PlatformCapability.isSceneRecognitionSupported(CameraInfo$CameraId.FRONT)) {
+        if (PlatformCapability.isFrontCameraSupported() && !this.mSharedPrefsAccessor.getSharedPreferences()
+                .contains(SharedPreferencesConstants.KEY_FRONT_FAST)) {
+            if (PlatformCapability.isSceneRecognitionSupported(CameraInfo.CameraId.FRONT)) {
                 capturingMode2 = CapturingMode.SUPERIOR_FRONT;
             } else {
                 capturingMode2 = CapturingMode.FRONT_PHOTO;
             }
-            this.mSharedPrefsAccessor.writeString("FRONT_FAST", capturingMode2.name(), false);
+            this.mSharedPrefsAccessor.writeString(SharedPreferencesConstants.KEY_FRONT_FAST, capturingMode2.name(),
+                    false);
         }
         this.mSharedPrefsAccessor.apply();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void applyDefaultParameters(Context context, Storage storage) {
         Configurations configurations = new Configurations();
-        SharedPreferencesAccessor sharedPreferencesAccessor = new SharedPreferencesAccessor(context, "com.sonyericsson.android.camera.shared_preferences");
+        SharedPreferencesAccessor sharedPreferencesAccessor = new SharedPreferencesAccessor(context,
+                SharedPreferencesConstants.CAMERA_SHARED_PREFERENCES_NAME);
         ModeIndependentParams modeIndependentParams = new ModeIndependentParams();
         Iterator<CapturingMode> it = CapturingMode.getValidOptions().iterator();
         while (it.hasNext()) {
-            Parameters parametersCreate = Parameters.create(this.mContext, it.next(), false, modeIndependentParams);
+            CapturingMode mode = it.next();
+            Parameters parametersCreate = Parameters.create(this.mContext, mode, false, modeIndependentParams);
             parametersCreate.prepareHolder(configurations, sharedPreferencesAccessor, storage);
             parametersCreate.writeSharedPrefs(sharedPreferencesAccessor);
         }
@@ -231,6 +241,14 @@ public class UserSettingsLoaderImpl implements UserSettingsLoader {
     }
 
     private void notifyEntryReady() {
-        new Thread(new UserSettingsLoaderImpl$1(this)).start();
+        new Thread(new Runnable() { // from class:
+                                    // com.sonyericsson.android.camera.parameter.UserSettingsLoaderImpl.1
+            @Override // java.lang.Runnable
+            public void run() {
+                synchronized (UserSettingsLoaderImpl.this.mEntryLock) {
+                    UserSettingsLoaderImpl.this.mEntryLock.notifyAll();
+                }
+            }
+        }).start();
     }
 }

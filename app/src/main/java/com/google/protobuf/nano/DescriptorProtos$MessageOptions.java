@@ -12,12 +12,6 @@ public final class DescriptorProtos$MessageOptions extends ExtendableMessageNano
     public boolean messageSetWireFormat;
     public boolean noStandardDescriptorAccessor;
     public DescriptorProtos$UninterpretedOption[] uninterpretedOption;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$MessageOptions[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

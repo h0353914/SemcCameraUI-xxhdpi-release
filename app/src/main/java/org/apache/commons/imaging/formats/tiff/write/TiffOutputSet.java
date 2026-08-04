@@ -100,9 +100,9 @@ public final class TiffOutputSet {
         orCreateGPSDirectory.removeField(GpsTagConstants.GPS_TAG_GPS_LATITUDE_REF);
         orCreateGPSDirectory.add(GpsTagConstants.GPS_TAG_GPS_LATITUDE_REF, str2);
         orCreateGPSDirectory.removeField(GpsTagConstants.GPS_TAG_GPS_LONGITUDE);
-        orCreateGPSDirectory.add(GpsTagConstants.GPS_TAG_GPS_LONGITUDE, RationalNumber.valueOf((long) dAbs), RationalNumber.valueOf((long) r3), RationalNumber.valueOf((((dAbs % 1.0d) * 60.0d) % 1.0d) * 60.0d));
+        orCreateGPSDirectory.add(GpsTagConstants.GPS_TAG_GPS_LONGITUDE, RationalNumber.valueOf((long) dAbs), RationalNumber.valueOf((long) ((dAbs % 1.0d) * 60.0d)), RationalNumber.valueOf((((dAbs % 1.0d) * 60.0d) % 1.0d) * 60.0d));
         orCreateGPSDirectory.removeField(GpsTagConstants.GPS_TAG_GPS_LATITUDE);
-        orCreateGPSDirectory.add(GpsTagConstants.GPS_TAG_GPS_LATITUDE, RationalNumber.valueOf((long) dAbs2), RationalNumber.valueOf((long) r6), RationalNumber.valueOf((((dAbs2 % 1.0d) * 60.0d) % 1.0d) * 60.0d));
+        orCreateGPSDirectory.add(GpsTagConstants.GPS_TAG_GPS_LATITUDE, RationalNumber.valueOf((long) dAbs2), RationalNumber.valueOf((long) ((dAbs2 % 1.0d) * 60.0d)), RationalNumber.valueOf((((dAbs2 % 1.0d) * 60.0d) % 1.0d) * 60.0d));
     }
 
     public void removeField(TagInfo tagInfo) {

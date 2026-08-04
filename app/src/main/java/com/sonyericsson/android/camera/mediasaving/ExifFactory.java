@@ -10,12 +10,19 @@ import java.util.TimeZone;
 public class ExifFactory {
     private static final int MAKER_NAME_LIMITATION = 14;
     public static final String TAG = "ExifFactory";
+    private static final byte PNM_PBM_TEXT_CODE = 49;
+    private static final byte PNM_PGM_TEXT_CODE = 50;
+    private static final byte PNM_PPM_TEXT_CODE = 51;
+    private static final byte PNM_PBM_RAW_CODE = 52;
+    private static final byte PNM_PGM_RAW_CODE = 53;
+    private static final byte PNM_PPM_RAW_CODE = 54;
+    private static final byte PNM_SEPARATOR = 32;
     private static byte[] APP1_HEADER = {-1, -31, 3, 27, 69, 120, 105, 102, 0, 0};
     private static byte[] TIFF_HEADER = {77, 77, 0, 42, 0, 0, 0, 8};
-    private static byte[] ZERO_IFD = {0, 10, 1, 15, 0, 2, 0, 0, 0, 0, 0, 0, 0, -122, 1, 16, 0, 2, 0, 0, 0, 30, 0, 0, 0, -108, 1, 18, 0, 3, 0, 0, 0, 1, 0, 6, 0, 0, 1, 26, 0, 5, 0, 0, 0, 1, 0, 0, 0, -78, 1, 27, 0, 5, 0, 0, 0, 1, 0, 0, 0, -70, 1, 40, 0, 3, 0, 0, 0, 1, 0, 2, 0, 0, 1, 50, 0, 2, 0, 0, 0, 20, 0, 0, 0, -62, 2, 19, 0, 3, 0, 0, 0, 1, 0, 1, 0, 0, -121, 105, 0, 4, 0, 0, 0, 1, 0, 0, 0, -42, -120, 37, 0, 4, 0, 0, 0, 1, 0, 0, 1, -102, 0, 0, 2, -86, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 0, 0, 0, 1, 0, 0, 0, 72, 0, 0, 0, 1, 50, 48, 49, 49, 58, 48, 49, 58, 50, 51, 32, 49, 50, 58, 51, 52, 58, 53, 54, 0};
-    private static byte[] EXIF_IFD = {0, 9, -112, 0, 0, 7, 0, 0, 0, 4, 48, 50, 50, 48, -112, 3, 0, 2, 0, 0, 0, 20, 0, 0, 1, 84, -112, 4, 0, 2, 0, 0, 0, 20, 0, 0, 1, 104, -111, 1, 0, 7, 0, 0, 0, 4, 1, 2, 3, 0, -96, 0, 0, 7, 0, 0, 0, 4, 48, 49, 48, 48, -96, 1, 0, 3, 0, 0, 0, 1, 0, 1, 0, 0, -96, 2, 0, 4, 0, 0, 0, 1, 0, 0, 12, -64, -96, 3, 0, 4, 0, 0, 0, 1, 0, 0, 0, 0, -96, 5, 0, 4, 0, 0, 0, 1, 0, 0, 1, 124, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 48, 49, 49, 58, 48, 49, 58, 50, 51, 32, 49, 50, 58, 51, 52, 58, 53, 54, 0, 50, 48, 49, 49, 58, 48, 49, 58, 50, 51, 32, 49, 50, 58, 51, 52, 58, 53, 54, 0};
-    private static byte[] ZERO_IFD_INT = {0, 2, 0, 1, 0, 2, 0, 0, 0, 4, 82, 57, 56, 0, 0, 2, 0, 7, 0, 0, 0, 4, 48, 49, 48, 48, 0, 0, 0, 0};
-    private static byte[] GPS_IFD = {0, 12, 0, 0, 0, 1, 0, 0, 0, 4, 2, 2, 0, 0, 0, 1, 0, 2, 0, 0, 0, 2, 78, 0, 0, 0, 0, 2, 0, 5, 0, 0, 0, 3, 0, 0, 2, 48, 0, 3, 0, 2, 0, 0, 0, 2, 69, 0, 0, 0, 0, 4, 0, 5, 0, 0, 0, 3, 0, 0, 2, 72, 0, 5, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 6, 0, 5, 0, 0, 0, 1, 0, 0, 2, 96, 0, 7, 0, 5, 0, 0, 0, 3, 0, 0, 2, 104, 0, 9, 0, 2, 0, 0, 0, 2, 65, 0, 0, 0, 0, 18, 0, 2, 0, 0, 0, 7, 0, 0, 2, -128, 0, 27, 0, 7, 0, 0, 0, 0, 0, 0, 2, -118, 0, 29, 0, 2, 0, 0, 0, 11, 0, 0, 2, -98, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 87, 71, 83, 45, 56, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 48, 49, 49, 58, 48, 49, 58, 50, 51, 0, 0};
+    private static byte[] ZERO_IFD = {0, 10, 1, 15, 0, 2, 0, 0, 0, 0, 0, 0, 0, -122, 1, 16, 0, 2, 0, 0, 0, 30, 0, 0, 0, -108, 1, 18, 0, 3, 0, 0, 0, 1, 0, 6, 0, 0, 1, 26, 0, 5, 0, 0, 0, 1, 0, 0, 0, -78, 1, 27, 0, 5, 0, 0, 0, 1, 0, 0, 0, -70, 1, 40, 0, 3, 0, 0, 0, 1, 0, 2, 0, 0, 1, PNM_PGM_TEXT_CODE, 0, 2, 0, 0, 0, 20, 0, 0, 0, -62, 2, 19, 0, 3, 0, 0, 0, 1, 0, 1, 0, 0, -121, 105, 0, 4, 0, 0, 0, 1, 0, 0, 0, -42, -120, 37, 0, 4, 0, 0, 0, 1, 0, 0, 1, -102, 0, 0, 2, -86, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 0, 0, 0, 1, 0, 0, 0, 72, 0, 0, 0, 1, PNM_PGM_TEXT_CODE, 48, PNM_PBM_TEXT_CODE, PNM_PBM_TEXT_CODE, 58, 48, PNM_PBM_TEXT_CODE, 58, PNM_PGM_TEXT_CODE, PNM_PPM_TEXT_CODE, PNM_SEPARATOR, PNM_PBM_TEXT_CODE, PNM_PGM_TEXT_CODE, 58, PNM_PPM_TEXT_CODE, PNM_PBM_RAW_CODE, 58, PNM_PGM_RAW_CODE, PNM_PPM_RAW_CODE, 0};
+    private static byte[] EXIF_IFD = {0, 9, -112, 0, 0, 7, 0, 0, 0, 4, 48, PNM_PGM_TEXT_CODE, PNM_PGM_TEXT_CODE, 48, -112, 3, 0, 2, 0, 0, 0, 20, 0, 0, 1, 84, -112, 4, 0, 2, 0, 0, 0, 20, 0, 0, 1, 104, -111, 1, 0, 7, 0, 0, 0, 4, 1, 2, 3, 0, -96, 0, 0, 7, 0, 0, 0, 4, 48, PNM_PBM_TEXT_CODE, 48, 48, -96, 1, 0, 3, 0, 0, 0, 1, 0, 1, 0, 0, -96, 2, 0, 4, 0, 0, 0, 1, 0, 0, 12, -64, -96, 3, 0, 4, 0, 0, 0, 1, 0, 0, 0, 0, -96, 5, 0, 4, 0, 0, 0, 1, 0, 0, 1, 124, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, PNM_PGM_TEXT_CODE, 48, PNM_PBM_TEXT_CODE, PNM_PBM_TEXT_CODE, 58, 48, PNM_PBM_TEXT_CODE, 58, PNM_PGM_TEXT_CODE, PNM_PPM_TEXT_CODE, PNM_SEPARATOR, PNM_PBM_TEXT_CODE, PNM_PGM_TEXT_CODE, 58, PNM_PPM_TEXT_CODE, PNM_PBM_RAW_CODE, 58, PNM_PGM_RAW_CODE, PNM_PPM_RAW_CODE, 0, PNM_PGM_TEXT_CODE, 48, PNM_PBM_TEXT_CODE, PNM_PBM_TEXT_CODE, 58, 48, PNM_PBM_TEXT_CODE, 58, PNM_PGM_TEXT_CODE, PNM_PPM_TEXT_CODE, PNM_SEPARATOR, PNM_PBM_TEXT_CODE, PNM_PGM_TEXT_CODE, 58, PNM_PPM_TEXT_CODE, PNM_PBM_RAW_CODE, 58, PNM_PGM_RAW_CODE, PNM_PPM_RAW_CODE, 0};
+    private static byte[] ZERO_IFD_INT = {0, 2, 0, 1, 0, 2, 0, 0, 0, 4, 82, 57, 56, 0, 0, 2, 0, 7, 0, 0, 0, 4, 48, PNM_PBM_TEXT_CODE, 48, 48, 0, 0, 0, 0};
+    private static byte[] GPS_IFD = {0, 12, 0, 0, 0, 1, 0, 0, 0, 4, 2, 2, 0, 0, 0, 1, 0, 2, 0, 0, 0, 2, 78, 0, 0, 0, 0, 2, 0, 5, 0, 0, 0, 3, 0, 0, 2, 48, 0, 3, 0, 2, 0, 0, 0, 2, 69, 0, 0, 0, 0, 4, 0, 5, 0, 0, 0, 3, 0, 0, 2, 72, 0, 5, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 6, 0, 5, 0, 0, 0, 1, 0, 0, 2, 96, 0, 7, 0, 5, 0, 0, 0, 3, 0, 0, 2, 104, 0, 9, 0, 2, 0, 0, 0, 2, 65, 0, 0, 0, 0, 18, 0, 2, 0, 0, 0, 7, 0, 0, 2, Byte.MIN_VALUE, 0, 27, 0, 7, 0, 0, 0, 0, 0, 0, 2, -118, 0, 29, 0, 2, 0, 0, 0, 11, 0, 0, 2, -98, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 87, 71, 83, 45, 56, PNM_PBM_RAW_CODE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, PNM_PGM_TEXT_CODE, 48, PNM_PBM_TEXT_CODE, PNM_PBM_TEXT_CODE, 58, 48, PNM_PBM_TEXT_CODE, 58, PNM_PGM_TEXT_CODE, PNM_PPM_TEXT_CODE, 0, 0};
     private static byte[] FIRST_IFD = {0, 7, 1, 3, 0, 3, 0, 0, 0, 1, 0, 6, 0, 0, 1, 18, 0, 3, 0, 0, 0, 1, 0, 6, 0, 0, 1, 26, 0, 5, 0, 0, 0, 1, 0, 0, 3, 4, 1, 27, 0, 5, 0, 0, 0, 1, 0, 0, 3, 12, 1, 40, 0, 3, 0, 0, 0, 1, 0, 2, 0, 0, 2, 1, 0, 4, 0, 0, 0, 1, 0, 0, 3, 20, 2, 2, 0, 4, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 0, 0, 0, 1, 0, 0, 0, 72, 0, 0, 0, 1};
     private static int APP1_LENGTH = (((((APP1_HEADER.length + TIFF_HEADER.length) + ZERO_IFD.length) + EXIF_IFD.length) + ZERO_IFD_INT.length) + GPS_IFD.length) + FIRST_IFD.length;
 
@@ -35,7 +42,7 @@ public class ExifFactory {
         updateGpsFields(bArr, exifOption.mGPSOption);
         updateJpegInterchangeFormatLength(bArr, exifOption.mThumbnailDataLength);
         System.arraycopy(exifOption.mThumbnailData, 0, bArr, iWriteTemplate, (int) exifOption.mThumbnailDataLength);
-        int i = (int) (((long) iWriteTemplate) + exifOption.mThumbnailDataLength);
+        int i = (int) (iWriteTemplate + exifOption.mThumbnailDataLength);
         updateExifSize(bArr, i - 2);
         return i;
     }
@@ -50,7 +57,7 @@ public class ExifFactory {
         if (exifOption.mThumbnailData.length < exifOption.mThumbnailDataLength) {
             throw new IllegalArgumentException("thumbnail data length too big");
         }
-        if (bArr.length < ((long) APP1_LENGTH) + exifOption.mThumbnailDataLength) {
+        if (bArr.length < APP1_LENGTH + exifOption.mThumbnailDataLength) {
             throw new IllegalArgumentException("buffer too short");
         }
         if (exifOption.mModel.length() == 0 || exifOption.mDateTime.length() < "YYYY:MM:DD hh:mm:ss".length()) {
@@ -131,7 +138,7 @@ public class ExifFactory {
                         try {
                             writeRationalValue(bArr, APP1_HEADER.length + 616, calendar.get(11), 1L);
                             writeRationalValue(bArr, APP1_HEADER.length + 624, calendar.get(12) + 1, 1L);
-                            writeRationalValue(bArr, APP1_HEADER.length + 632, ((long) calendar.get(13)) * 1000, 1000L);
+                            writeRationalValue(bArr, APP1_HEADER.length + 632, calendar.get(13) * 1000, 1000L);
                             writeASCIIValue(bArr, APP1_HEADER.length + 670, String.format(Locale.US, "%04d:%02d:%02d", Integer.valueOf(calendar.get(1)), Integer.valueOf(calendar.get(2) + 1), Integer.valueOf(calendar.get(5))));
                             return true;
                         } catch (IllegalArgumentException unused) {

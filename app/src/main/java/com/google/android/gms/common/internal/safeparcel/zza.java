@@ -4,13 +4,22 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
+import android.support.v4.internal.view.SupportMenu;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zza {
+
+    /* renamed from: com.google.android.gms.common.internal.safeparcel.zza$zza, reason: collision with other inner class name */
+    public static class C0010zza extends RuntimeException {
+        public C0010zza(String str, Parcel parcel) {
+            super(str + " Parcel: pos=" + parcel.dataPosition() + " size=" + parcel.dataSize());
+        }
+    }
+
     public static BigDecimal[] zzA(Parcel parcel, int i) {
         int iZza = zza(parcel, i);
         int iDataPosition = parcel.dataPosition();
@@ -101,16 +110,16 @@ public class zza {
     }
 
     public static int zza(Parcel parcel, int i) {
-        return (i & (-65536)) != -65536 ? (i >> 16) & 65535 : parcel.readInt();
+        return (i & SupportMenu.CATEGORY_MASK) != -65536 ? (i >> 16) & 65535 : parcel.readInt();
     }
 
-    public static <T extends Parcelable> T zza(Parcel parcel, int i, Parcelable$Creator<T> parcelable$Creator) {
+    public static <T extends Parcelable> T zza(Parcel parcel, int i, Parcelable.Creator<T> creator) {
         int iZza = zza(parcel, i);
         int iDataPosition = parcel.dataPosition();
         if (iZza == 0) {
             return null;
         }
-        T tCreateFromParcel = parcelable$Creator.createFromParcel(parcel);
+        T tCreateFromParcel = creator.createFromParcel(parcel);
         parcel.setDataPosition(iDataPosition + iZza);
         return tCreateFromParcel;
     }
@@ -118,13 +127,13 @@ public class zza {
     private static void zza(Parcel parcel, int i, int i2) {
         int iZza = zza(parcel, i);
         if (iZza != i2) {
-            throw new zza$zza("Expected size " + i2 + " got " + iZza + " (0x" + Integer.toHexString(iZza) + ")", parcel);
+            throw new C0010zza("Expected size " + i2 + " got " + iZza + " (0x" + Integer.toHexString(iZza) + ")", parcel);
         }
     }
 
     private static void zza(Parcel parcel, int i, int i2, int i3) {
         if (i2 != i3) {
-            throw new zza$zza("Expected size " + i3 + " got " + i2 + " (0x" + Integer.toHexString(i2) + ")", parcel);
+            throw new C0010zza("Expected size " + i3 + " got " + i2 + " (0x" + Integer.toHexString(i2) + ")", parcel);
         }
     }
 
@@ -147,26 +156,26 @@ public class zza {
         int iZza = zza(parcel, iZzao);
         int iDataPosition = parcel.dataPosition();
         if (zzbM(iZzao) != 20293) {
-            throw new zza$zza("Expected object header. Got 0x" + Integer.toHexString(iZzao), parcel);
+            throw new C0010zza("Expected object header. Got 0x" + Integer.toHexString(iZzao), parcel);
         }
         int i = iZza + iDataPosition;
         if (i >= iDataPosition && i <= parcel.dataSize()) {
             return i;
         }
-        throw new zza$zza("Size read is invalid start=" + iDataPosition + " end=" + i, parcel);
+        throw new C0010zza("Size read is invalid start=" + iDataPosition + " end=" + i, parcel);
     }
 
     public static void zzb(Parcel parcel, int i) {
         parcel.setDataPosition(parcel.dataPosition() + zza(parcel, i));
     }
 
-    public static <T> T[] zzb(Parcel parcel, int i, Parcelable$Creator<T> parcelable$Creator) {
+    public static <T> T[] zzb(Parcel parcel, int i, Parcelable.Creator<T> creator) {
         int iZza = zza(parcel, i);
         int iDataPosition = parcel.dataPosition();
         if (iZza == 0) {
             return null;
         }
-        T[] tArr = (T[]) parcel.createTypedArray(parcelable$Creator);
+        T[] tArr = (T[]) parcel.createTypedArray(creator);
         parcel.setDataPosition(iDataPosition + iZza);
         return tArr;
     }
@@ -175,13 +184,13 @@ public class zza {
         return i & 65535;
     }
 
-    public static <T> ArrayList<T> zzc(Parcel parcel, int i, Parcelable$Creator<T> parcelable$Creator) {
+    public static <T> ArrayList<T> zzc(Parcel parcel, int i, Parcelable.Creator<T> creator) {
         int iZza = zza(parcel, i);
         int iDataPosition = parcel.dataPosition();
         if (iZza == 0) {
             return null;
         }
-        ArrayList<T> arrayListCreateTypedArrayList = parcel.createTypedArrayList(parcelable$Creator);
+        ArrayList<T> arrayListCreateTypedArrayList = parcel.createTypedArrayList(creator);
         parcel.setDataPosition(iDataPosition + iZza);
         return arrayListCreateTypedArrayList;
     }

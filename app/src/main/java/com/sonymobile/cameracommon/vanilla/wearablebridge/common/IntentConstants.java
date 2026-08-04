@@ -1,5 +1,14 @@
 package com.sonymobile.cameracommon.vanilla.wearablebridge.common;
 
+
+
+
+
+
+
+
+
+
 public class IntentConstants {
     public static final String BRIDGE_APK_PACKAGE_NAME = "com.sonymobile.cameracommon.wearablebridge";
     public static final String CLIENT_LIFECYCLE_NOTIFIER_ON_PAUSE = "com.sonymobile.cameracommon.wearablebridge.CLIENT_LIFECYCLE_ON_PAUSE";

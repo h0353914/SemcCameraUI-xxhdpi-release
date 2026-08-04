@@ -2,13 +2,13 @@ package com.google.android.gms.auth.api.signin.internal;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
 import com.google.android.gms.auth.api.signin.EmailSignInConfig;
 import com.google.android.gms.auth.api.signin.FacebookSignInConfig;
 import com.google.android.gms.auth.api.signin.GoogleSignInConfig;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzh implements Parcelable$Creator<SignInConfiguration> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzh implements Parcelable.Creator<SignInConfiguration> {
     static void zza(SignInConfiguration signInConfiguration, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, signInConfiguration.versionCode);
@@ -21,17 +21,9 @@ public class zzh implements Parcelable$Creator<SignInConfiguration> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ SignInConfiguration createFromParcel(Parcel parcel) {
-        return zzS(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ SignInConfiguration[] newArray(int i) {
-        return zzaJ(i);
-    }
-
-    public SignInConfiguration zzS(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzS, reason: merged with bridge method [inline-methods] */
+    public SignInConfiguration createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         String strZzp = null;
         String strZzp2 = null;
@@ -72,10 +64,12 @@ public class zzh implements Parcelable$Creator<SignInConfiguration> {
         if (parcel.dataPosition() == iZzap) {
             return new SignInConfiguration(iZzg, strZzp, strZzp2, emailSignInConfig, googleSignInConfig, facebookSignInConfig, strZzp3);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public SignInConfiguration[] zzaJ(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaJ, reason: merged with bridge method [inline-methods] */
+    public SignInConfiguration[] newArray(int i) {
         return new SignInConfiguration[i];
     }
 }

@@ -1,13 +1,14 @@
 package com.google.android.gms.common.stats;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import java.util.List;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class WakeLockEvent extends zzf implements SafeParcelable {
-    public static final Parcelable$Creator<WakeLockEvent> CREATOR = new zzh();
+    public static final Parcelable.Creator<WakeLockEvent> CREATOR = new zzh();
     private final long mTimeout;
     final int mVersionCode;
     private final long zzahn;

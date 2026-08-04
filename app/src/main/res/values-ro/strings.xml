@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Imposibil de finalizat captura. Panoramaţi mai lent.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Imposibil de finalizat captura. Panoramaţi mai rapid.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Faceţi o fotografie panoramică rotind aparatul foto</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Se creează următoarele fişiere:\n- imagine multiunghiulară;\n- imagine 3D.\nNotă: aceste fişiere conţin o zonă gri.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Se creează următoarele fişiere:\n- imagine multiunghiulară;\n- imagine 3D.</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Se procesează...\nAceastă imagine conţine o zonă gri</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Se creează următoarele fişiere:
+- imagine multiunghiulară;
+- imagine 3D.
+Notă: aceste fişiere conţin o zonă gri."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Se creează următoarele fişiere:
+- imagine multiunghiulară;
+- imagine 3D."</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Se procesează...
+Această imagine conţine o zonă gri"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Se salvează imaginea</string>
     <string name="cam_3d_strings_dialog_processing_txt">Se procesează...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Aşteptaţi câteva secunde pentru a se lansa aplicaţia Aparat foto 3D</string>
@@ -47,7 +53,7 @@
     <string name="cam_3d_strings_setting_shooting_direction_right_txt">Dreapta</string>
     <string name="cam_3d_strings_setting_shooting_direction_title_txt">Direcţie fotografiere</string>
     <string name="cam_3d_strings_setting_shooting_direction_up_txt">Sus</string>
-    <string name="cam_3d_strings_shooting_direction_guide_txt">Schimbaţi direcţia imaginea din stânga </string>
+    <string name="cam_3d_strings_shooting_direction_guide_txt">"Schimbaţi direcţia imaginea din stânga "</string>
     <string name="cam_3d_strings_shooting_failure_title_txt">Imposibil de fotografiat</string>
     <string name="cam_3d_strings_shooting_guide_down_to_up_txt">Panoramare de jos în sus</string>
     <string name="cam_3d_strings_shooting_guide_left_to_right_txt">Panoramare de la stânga la dreapta</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Faceţi pielea dvs. să arate luminoasă şi netedă. Efectul funcţionează în aplicaţiile care utilizează aparatul foto frontal. Efectul poate fi aplicat la fotografii şi clipuri video. De asemenea, puteţi să reglaţi nivelul aplicat.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Reglare nivel</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Piele fină</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Nu se poate porni aplicaţia.\nAsiguraţi-vă că aveţi instalată şi activată pe dispozitiv cea mai recentă versiune de %1$s.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Nu se poate porni aplicaţia.
+Asiguraţi-vă că aveţi instalată şi activată pe dispozitiv cea mai recentă versiune de %1$s."</string>
     <string name="cam_strings_gridline_txt">Linii grilă</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Întoarceţi-vă palma către aparatul foto. Atunci când palma dvs. este recunoscută, este pornit temporizatorul automat. Pentru a facilita recunoaşterea, întindeţi degetele în sus.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Întoarceţi-vă palma către aparatul foto</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Setări comune</string>
     <string name="cam_strings_more_txt">Mai multe</string>
     <string name="cam_strings_multi_window_txt">Trageţi mijlocul barei de divizare pentru a utiliza %1$s pe ecran complet</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Alt dispozitiv este acum conectat.\nDoriţi să partajaţi imaginea cu dispozitivul prin intermediul vizorului?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Alt dispozitiv este acum conectat.
+Doriţi să partajaţi imaginea cu dispozitivul prin intermediul vizorului?"</string>
     <string name="cam_strings_multicam_add_device_txt">Adăug. dispozit.</string>
     <string name="cam_strings_multicam_add_more_txt">Adăugare mai multe</string>
     <string name="cam_strings_multicam_apply_txt">Efectuat</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Dozare</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Anticipată</string>
     <string name="cam_strings_predictive_capture_txt">Capturare anticipată</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Aparatul foto a fost lansată automat prin detectarea mişcării dvs. de ridicare a telefonului în modul peisaj şi orientarea acestuia către un obiect.\nPuteți selecta modul preferat de utilizare a acestei caracteristici din Lansare inteligentă în setările aparatului foto.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Aparatul foto a fost lansată automat prin detectarea mişcării dvs. de ridicare a telefonului în modul peisaj şi orientarea acestuia către un obiect.
+Puteți selecta modul preferat de utilizare a acestei caracteristici din Lansare inteligentă în setările aparatului foto."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Atingeţi în interiorul cercului pentru capturare</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Atingeţi ecranul pentru capturare</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Atingeţi uşor în interiorul cercului pentru vizualizare pe tot ecranul</string>
     <string name="cam_strings_predictive_launch_guide_txt">Atingeți în interiorul cercului pentru a lansa camera</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Ating. pt. lans. şi captură</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Atingeţi pentru lansare</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Puteţi lansa rapid aparatul foto. Ridicaţi rapid dispozitivul în modul tip peisaj şi orientaţi aparatul foto spre un obiect. Aparatul foto se va lansa automat.\nPuteţi selecta modul preferat de utilizare a funcţiei din Lansare inteligentă în setările aparatului foto.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Puteţi lansa rapid aparatul foto. Ridicaţi rapid dispozitivul în modul tip peisaj şi orientaţi aparatul foto spre un obiect. Aparatul foto se va lansa automat.
+Puteţi selecta modul preferat de utilizare a funcţiei din Lansare inteligentă în setările aparatului foto."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Lansare inteligentă</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Puteți lansa rapid aparatul foto. Balansați dispozitivul în vizualizarea de tip peisaj şi orientaţi aparatul foto spre obiect. Aparatul foto se va lansa automat.\nPuteți dezactiva caracteristica în Lansare predictivă din setările aparatului foto.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Puteți lansa rapid aparatul foto. Balansați dispozitivul în vizualizarea de tip peisaj şi orientaţi aparatul foto spre obiect. Aparatul foto se va lansa automat.
+Puteți dezactiva caracteristica în Lansare predictivă din setările aparatului foto."</string>
     <string name="cam_strings_predictive_launch_txt">Lansare inteligentă</string>
     <string name="cam_strings_preview_always_txt">Activat</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 secunde</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s necesită permisiunile următoare</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Permisiune %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Aplicaţia are nevoie de permisiunile următoare pentru a efectua această acţiune.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Pentru a acorda permisiuni, mergeţi la Informaţii aplicaţie &gt; Permisiuni.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Pentru a acorda permisiuni, mergeţi la Informaţii aplicaţie > Permisiuni.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Nu s-a putut continua</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Pentru a realiza fotografii şi clipuri video</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Pentru a prelua locaţia</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Salvat în memoria internă</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">MUTARE</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Aplicaţia are nevoie de permisiunile următoare pentru a efectua această acţiune.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Pentru a utiliza o cartelă SD, camera are nevoie de permisiuni de acces la cartela SD.\nSchimbaţi din nou stocarea de date la cartela SD sau permiteţi camerei să acceseze cartela SD în următorul ecran.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Pentru a utiliza o cartelă SD, camera are nevoie de permisiuni de acces la cartela SD.
+Schimbaţi din nou stocarea de date la cartela SD sau permiteţi camerei să acceseze cartela SD în următorul ecran."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">Cartelă SD indisponibilă</string>
-    <string name="cam_strings_sd_permission_info_2_txt">A fost detectată o cartelă SD nouă care solicită permisiuni.\n\nPentru a utiliza cartela SD ca spaţiu de stocare a datelor, selectaţi-o ca director DCIM în ecranul următor.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Cartela SD sau directorul DCIM nu a fost selectat. Cartela SD nu poate fi utilizată.\n\nPentru a acorda permisiuni, începeţi prin a stabili cartela SD drept locaţie de salvare sau selectaţi directorul adecvat în ecranul următor.</string>
-    <string name="cam_strings_sd_permission_info_txt">A fost detectată o cartelă SD nouă care necesită permisiuni.\nPrin urmare, se foloseşte în mod implicit spaţiul de stocare intern pentru stocarea datelor.\n\nPentru a folosi cartela SD pentru stocarea datelor, accesaţi setările camerei şi modificaţi opţiunea de stocare la Cartelă SD.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"A fost detectată o cartelă SD nouă care solicită permisiuni.
+
+Pentru a utiliza cartela SD ca spaţiu de stocare a datelor, selectaţi-o ca director DCIM în ecranul următor."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Cartela SD sau directorul DCIM nu a fost selectat. Cartela SD nu poate fi utilizată.
+
+Pentru a acorda permisiuni, începeţi prin a stabili cartela SD drept locaţie de salvare sau selectaţi directorul adecvat în ecranul următor."</string>
+    <string name="cam_strings_sd_permission_info_txt">"A fost detectată o cartelă SD nouă care necesită permisiuni.
+Prin urmare, se foloseşte în mod implicit spaţiul de stocare intern pentru stocarea datelor.
+
+Pentru a folosi cartela SD pentru stocarea datelor, accesaţi setările camerei şi modificaţi opţiunea de stocare la Cartelă SD."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Pentru a salva fotografii şi conţinut video pe cartela SD</string>
     <string name="cam_strings_select_picture_txt">Selectare fotografie</string>
     <string name="cam_strings_self_timer_05_txt">0,5 sec.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Captură automată</string>
     <string name="cam_strings_side_touch_not_supported_txt">Funcţia Detecţie laterală nu este acceptată pe acest ecran</string>
     <string name="cam_strings_side_touch_on_title_txt">Detecţie laterală</string>
-    <string name="cam_strings_side_touch_on_txt">Pentru a utiliza această funcţie, accesaţi Setări &gt; Afişaj şi activaţi opţiunea Detecţie laterală. Activaţi acum?</string>
+    <string name="cam_strings_side_touch_on_txt">Pentru a utiliza această funcţie, accesaţi Setări > Afişaj şi activaţi opţiunea Detecţie laterală. Activaţi acum?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Detecţie laterală</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Puteţi face o fotografie sau un clip video prin simpla atingere uşoară dublă pe senzorul din partea laterală a ecranului în loc să atingeţi butonul declanşatorului. De asemenea, puteţi mări sau micşora glisând degetul de-a lungul senzorului lateral.\nAtât modul foto, cât şi cel video acceptă această funcţie. Puteţi dezactiva această caracteristică în Detecţie laterală din setările pentru cameră.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Puteţi face o fotografie sau un clip video prin simpla atingere uşoară dublă pe senzorul din partea laterală a ecranului în vizualizarea tip portret în loc să atingeţi butonul declanşatorului. De asemenea, puteţi mări sau micşora glisând degetul de-a lungul senzorului.\nModurile foto şi video acceptă această funcţie. Puteţi dezactiva funcţia în Detecţie laterală din setările pentru aparatul foto.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Puteţi face o fotografie sau un clip video prin simpla atingere uşoară dublă pe senzorul din partea laterală a ecranului în vizualizarea tip portret în loc să atingeţi butonul declanşatorului.\nModurile foto şi video acceptă această funcţie. Puteţi dezactiva funcţia în Detecţie laterală din setările pentru aparatul foto.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Puteţi face o fotografie sau un clip video prin simpla atingere uşoară dublă pe senzorul din partea laterală a ecranului în loc să atingeţi butonul declanşatorului.\nModurile foto şi video acceptă această funcţie. Puteţi dezactiva funcţia în Detecţie laterală din setările pentru aparatul foto.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Puteţi face o fotografie sau un clip video prin simpla atingere uşoară dublă pe senzorul din partea laterală a ecranului în loc să atingeţi butonul declanşatorului. De asemenea, puteţi mări sau micşora glisând degetul de-a lungul senzorului lateral.
+Atât modul foto, cât şi cel video acceptă această funcţie. Puteţi dezactiva această caracteristică în Detecţie laterală din setările pentru cameră."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Puteţi face o fotografie sau un clip video prin simpla atingere uşoară dublă pe senzorul din partea laterală a ecranului în vizualizarea tip portret în loc să atingeţi butonul declanşatorului. De asemenea, puteţi mări sau micşora glisând degetul de-a lungul senzorului.
+Modurile foto şi video acceptă această funcţie. Puteţi dezactiva funcţia în Detecţie laterală din setările pentru aparatul foto."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Puteţi face o fotografie sau un clip video prin simpla atingere uşoară dublă pe senzorul din partea laterală a ecranului în vizualizarea tip portret în loc să atingeţi butonul declanşatorului.
+Modurile foto şi video acceptă această funcţie. Puteţi dezactiva funcţia în Detecţie laterală din setările pentru aparatul foto."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Puteţi face o fotografie sau un clip video prin simpla atingere uşoară dublă pe senzorul din partea laterală a ecranului în loc să atingeţi butonul declanşatorului.
+Modurile foto şi video acceptă această funcţie. Puteţi dezactiva funcţia în Detecţie laterală din setările pentru aparatul foto."</string>
     <string name="cam_strings_side_touch_txt">Detecţie laterală</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Stilul înregistrării și rezoluția ecranului pot fi schimbate în setările aparatului foto</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Foarte încet (un cadru)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Rulare cu încetinitorul extremă</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Puteţi schimba frecvenţa cadrelor pe secundă şi stilul de înreg. cu încetinitorul</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Mai multe opţiuni</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Înregistraţi instantaneu un moment preţios în reluare cu %1$s cadre/s atingând butonul din centru ecranului.\nÎnregistrarea în lumină puternică vă va ajuta să creaţi cu clip video mai bun.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Înregistraţi instantaneu un moment preţios în reluare cu %1$s cadre/s atingând butonul din centru ecranului.
+Înregistrarea în lumină puternică vă va ajuta să creaţi cu clip video mai bun."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Puteţi înregistra un moment potrivit cu %1$s cadre/s atingând uşor butonul central</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Înregistraţi instantaneu un moment preţios în reluare cu %1$s cadre/s atingând butonul din centru ecranului</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Rulare cu încetinitorul extremă (un cadru)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Rulare cu încetinitorul</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Cum se înregistrează</string>
     <string name="cam_strings_slow_motion_standard_txt">Rulare cu încetinitorul</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Creaţi un clip video impresionant prezentând un moment preţios cu încetinitorul.\nÎnregistrarea în lumină puternică vă va ajuta să creaţi cu clip video mai bun.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Creaţi un clip video impresionant prezentând un moment preţios cu încetinitorul.
+Înregistrarea în lumină puternică vă va ajuta să creaţi cu clip video mai bun."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Puteţi înregistra un clip video la viteze diferite comutând la %1$s cadre/s</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Atingeţi uşor butonul din mijloc la momentul potrivit</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Rulare cu încetinitorul înregistrată</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Licenţe software</string>
     <string name="cam_strings_take_photo_txt">Fotografiere</string>
     <string name="cam_strings_term_of_use_accept_txt">Acceptare</string>
-    <string name="cam_strings_term_of_use_consent_txt">Sunt de acord cu &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;termenii de utilizare&lt;/a&gt; Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Sunt de acord cu &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">termenii de utilizare&lt;/a> Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Este posibil ca, în funcţie de planul dvs. de date, să vi se perceapă taxe pentru date de telefonie mobilă pentru utilizarea acestui serviciu.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile va colecta identificatorul unic codificat al dispozitivului dvs. Android, precum şi datele şi marcajul temporal bazate pe locaţie, pentru a vă oferi rezultate corespunzătoare la utilizarea serviciului şi pentru a aduce îmbunătăţiri acestui serviciu.</string>
     <string name="cam_strings_term_of_use_decline_txt">Respingere</string>
     <string name="cam_strings_term_of_use_title_txt">Termeni şi condiţii</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Termeni de utilizare&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Termeni de utilizare&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Deselectare fotografii</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Nu s-a putut salva</string>
     <string name="cam_strings_timeshift_save_complete_txt">Salvată</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Pentru o înregistrare video 4K stabilă, nu trebuie să modificaţi această setare decât dacă utilizaţi o cartelă SD de mare viteză (se recomandă UHS Speed Class 1 sau o clasă superioară ori Speed Class 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Pentru o înregistrare Timeshift video stabilă, nu trebuie să modificaţi această setare decât dacă utilizaţi o cartelă SD de mare viteză (se recomandă UHS Speed Class 1 sau o clasă superioară ori Speed Class 10). O modificaţi oricum?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Pentru o înregistrare video cu încetinitorul stabilă, nu modificaţi această setare decât dacă utilizaţi o cartelă SD de mare viteză (se recomandă UHS Speed Class 1 sau o clasă superioară ori Speed Class 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Pentru o înregistrare video stabilă, vă recomandăm să alegeţi memoria internă pentru stocarea datelor. Doriţi să alegeţi acum?\n\nDacă utilizaţi în continuare cartela SD ca spaţiu de stocare a datelor, asiguraţi-vă că folosiţi o cartelă SD de mare viteză (se recomandă UHS Speed Class 1 sau o clasă superioară ori Speed Class 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Pentru o înregistrare video stabilă, vă recomandăm să alegeţi memoria internă pentru stocarea datelor. Doriţi să alegeţi acum?
+
+Dacă utilizaţi în continuare cartela SD ca spaţiu de stocare a datelor, asiguraţi-vă că folosiţi o cartelă SD de mare viteză (se recomandă UHS Speed Class 1 sau o clasă superioară ori Speed Class 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Aparat foto dual</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Puteţi înregistra clipuri video frumoase cu zgomot redus folosind aparatul foto dual chiar şi noaptea sau într-o cameră slab iluminată. Aparatul foto comută automat între un singur aparat foto şi aparatul foto dual în funcţie de scenele de înregistrat la sensibilitate ultraînaltă.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Înregistrare video cu aparatul foto dual</string>

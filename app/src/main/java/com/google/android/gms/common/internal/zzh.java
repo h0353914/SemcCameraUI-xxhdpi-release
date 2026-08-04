@@ -3,12 +3,12 @@ package com.google.android.gms.common.internal;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
-public class zzh implements DialogInterface$OnClickListener {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzh implements DialogInterface.OnClickListener {
     private final Activity mActivity;
     private final Intent mIntent;
     private final int zzaaY;
@@ -28,7 +28,7 @@ public class zzh implements DialogInterface$OnClickListener {
         this.zzaaY = i;
     }
 
-    @Override // android.content.DialogInterface$OnClickListener
+    @Override // android.content.DialogInterface.OnClickListener
     public void onClick(DialogInterface dialogInterface, int i) {
         try {
             if (this.mIntent != null && this.zzafl != null) {

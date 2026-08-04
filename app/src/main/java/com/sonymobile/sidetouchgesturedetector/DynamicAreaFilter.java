@@ -5,13 +5,14 @@ import android.database.ContentObserver;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Handler;
-import android.provider.Settings$System;
+import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
-import android.view.MotionEvent$PointerCoords;
 import android.view.WindowManager;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class DynamicAreaFilter {
     private static final float DEFAULT_HEIGHT_PX = 864.0f;
@@ -23,10 +24,6 @@ public class DynamicAreaFilter {
     private static final int INT_DYNAMIC_FILTER_TYPE_HIGH = 2;
     private static final int INT_DYNAMIC_FILTER_TYPE_LOW = 0;
     private static final int INT_DYNAMIC_FILTER_TYPE_MID = 1;
-    public static final String KEY_INT_DYNAMIC_FILTER_LIMIT_SCALE = "somc.side_sense_dynamic_filer_limit_scale";
-    public static final String KEY_INT_DYNAMIC_FILTER_TOP_LIMIT_SCALE = "somc.side_sense_dynamic_filer_top_limit_scale";
-    private static final String KEY_INT_DYNAMIC_FILTER_TYPE = "somc.side_sense_dynamic_filter_type";
-    private static final String KEY_INT_SMOOTH_FACTOR = "somc.side_sense_smooth_factor";
     private static final int POLLING_DURATION = 50;
     private static final float SMOOTH_FACTOR = 0.95f;
     private static final float SMOOTH_FACTOR_NOW = 0.050000012f;
@@ -45,7 +42,7 @@ public class DynamicAreaFilter {
     private int mLeftMinHeightSuperLPF;
     private int mLimitScale;
     private MotionEvent mMotionEvent;
-    private DynamicAreaFilter$OnDynamicAreaListener mOnDynamicAreaListener;
+    private OnDynamicAreaListener mOnDynamicAreaListener;
     private int mRightMinHeight;
     private int mRightMinHeightLPF;
     private int mRightMinHeightSuperLPF;
@@ -55,106 +52,42 @@ public class DynamicAreaFilter {
     private int mValidScreenHeightMax;
     private int mValidScreenHeightMin;
     private WindowManager mWindowManager;
-    private static final Uri DYNAMIC_FILTER_TOP_LIMIT_SCALE_URI = Settings$System.getUriFor("somc.side_sense_dynamic_filer_top_limit_scale");
-    private static final Uri DYNAMIC_FILTER_LIMIT_SCALE_URI = Settings$System.getUriFor("somc.side_sense_dynamic_filer_limit_scale");
-    private static final Uri DYNAMIC_FILTER_TYPE_URI = Settings$System.getUriFor("somc.side_sense_dynamic_filter_type");
-    private static final Uri SMOOTH_FACTOR_TYPE_URI = Settings$System.getUriFor("somc.side_sense_smooth_factor");
+    public static final String KEY_INT_DYNAMIC_FILTER_TOP_LIMIT_SCALE = "somc.side_sense_dynamic_filer_top_limit_scale";
+    private static final Uri DYNAMIC_FILTER_TOP_LIMIT_SCALE_URI = Settings.System.getUriFor(KEY_INT_DYNAMIC_FILTER_TOP_LIMIT_SCALE);
+    public static final String KEY_INT_DYNAMIC_FILTER_LIMIT_SCALE = "somc.side_sense_dynamic_filer_limit_scale";
+    private static final Uri DYNAMIC_FILTER_LIMIT_SCALE_URI = Settings.System.getUriFor(KEY_INT_DYNAMIC_FILTER_LIMIT_SCALE);
+    private static final String KEY_INT_DYNAMIC_FILTER_TYPE = "somc.side_sense_dynamic_filter_type";
+    private static final Uri DYNAMIC_FILTER_TYPE_URI = Settings.System.getUriFor(KEY_INT_DYNAMIC_FILTER_TYPE);
+    private static final String KEY_INT_SMOOTH_FACTOR = "somc.side_sense_smooth_factor";
+    private static final Uri SMOOTH_FACTOR_TYPE_URI = Settings.System.getUriFor(KEY_INT_SMOOTH_FACTOR);
     private static float sSuperSmoothFactor = 0.995f;
     private static float sSuperSmoothFactorNow = 1.0f - sSuperSmoothFactor;
-    private MotionEvent$PointerCoords mCoords = new MotionEvent$PointerCoords();
-    private Runnable mPollingRunnable = new DynamicAreaFilter$1(this);
+    private MotionEvent.PointerCoords mCoords = new MotionEvent.PointerCoords();
+    private Runnable mPollingRunnable = new Runnable() { // from class: com.sonymobile.sidetouchgesturedetector.DynamicAreaFilter.1
+        @Override // java.lang.Runnable
+        public void run() {
+            DynamicAreaFilter.this.calculateValidHeight(DynamicAreaFilter.this.mMotionEvent);
+        }
+    };
 
-    static /* synthetic */ MotionEvent access$000(DynamicAreaFilter dynamicAreaFilter) {
-        return dynamicAreaFilter.mMotionEvent;
-    }
+    public interface OnDynamicAreaListener {
+        void onDynamicLimitScaleChanged(int i);
 
-    static /* synthetic */ void access$100(DynamicAreaFilter dynamicAreaFilter, MotionEvent motionEvent) {
-        dynamicAreaFilter.calculateValidHeight(motionEvent);
-    }
+        void onDynamicScaleChanged(int i);
 
-    static /* synthetic */ int access$1000(DynamicAreaFilter dynamicAreaFilter) {
-        return dynamicAreaFilter.getDynamicFilterTopLimitScale();
-    }
+        void onLeftMinHeightChanged(int i);
 
-    static /* synthetic */ int access$1102(DynamicAreaFilter dynamicAreaFilter, int i) {
-        dynamicAreaFilter.mValidScreenHeightMin = i;
-        return i;
-    }
+        void onRightMinHeightChanged(int i);
 
-    static /* synthetic */ int access$1200(DynamicAreaFilter dynamicAreaFilter, int i) {
-        return dynamicAreaFilter.getValidScreenHeightMin(i);
-    }
-
-    static /* synthetic */ DynamicAreaFilter$OnDynamicAreaListener access$1300(DynamicAreaFilter dynamicAreaFilter) {
-        return dynamicAreaFilter.mOnDynamicAreaListener;
-    }
-
-    static /* synthetic */ Uri access$1400() {
-        return DYNAMIC_FILTER_TYPE_URI;
-    }
-
-    static /* synthetic */ int access$1502(DynamicAreaFilter dynamicAreaFilter, int i) {
-        dynamicAreaFilter.mDynamicFilterType = i;
-        return i;
-    }
-
-    static /* synthetic */ int access$1600(DynamicAreaFilter dynamicAreaFilter) {
-        return dynamicAreaFilter.getDynamicFilterType();
-    }
-
-    static /* synthetic */ Uri access$1700() {
-        return SMOOTH_FACTOR_TYPE_URI;
-    }
-
-    static /* synthetic */ void access$1800(DynamicAreaFilter dynamicAreaFilter) {
-        dynamicAreaFilter.setSmoothFactor();
-    }
-
-    static /* synthetic */ Uri access$300() {
-        return DYNAMIC_FILTER_LIMIT_SCALE_URI;
-    }
-
-    static /* synthetic */ int access$400(DynamicAreaFilter dynamicAreaFilter) {
-        return dynamicAreaFilter.mLimitScale;
-    }
-
-    static /* synthetic */ int access$402(DynamicAreaFilter dynamicAreaFilter, int i) {
-        dynamicAreaFilter.mLimitScale = i;
-        return i;
-    }
-
-    static /* synthetic */ int access$500(DynamicAreaFilter dynamicAreaFilter) {
-        return dynamicAreaFilter.getDynamicFilterLimitScale();
-    }
-
-    static /* synthetic */ int access$602(DynamicAreaFilter dynamicAreaFilter, int i) {
-        dynamicAreaFilter.mValidScreenHeightMax = i;
-        return i;
-    }
-
-    static /* synthetic */ int access$700(DynamicAreaFilter dynamicAreaFilter, int i) {
-        return dynamicAreaFilter.getValidScreenHeightMax(i);
-    }
-
-    static /* synthetic */ Uri access$800() {
-        return DYNAMIC_FILTER_TOP_LIMIT_SCALE_URI;
-    }
-
-    static /* synthetic */ int access$900(DynamicAreaFilter dynamicAreaFilter) {
-        return dynamicAreaFilter.mTopLimitScale;
-    }
-
-    static /* synthetic */ int access$902(DynamicAreaFilter dynamicAreaFilter, int i) {
-        dynamicAreaFilter.mTopLimitScale = i;
-        return i;
+        void onTopLimitScaleChanged(int i);
     }
 
     public DynamicAreaFilter(Context context) {
         init(context);
     }
 
-    public DynamicAreaFilter(Context context, DynamicAreaFilter$OnDynamicAreaListener dynamicAreaFilter$OnDynamicAreaListener) {
-        this.mOnDynamicAreaListener = dynamicAreaFilter$OnDynamicAreaListener;
+    public DynamicAreaFilter(Context context, OnDynamicAreaListener onDynamicAreaListener) {
+        this.mOnDynamicAreaListener = onDynamicAreaListener;
         init(context);
     }
 
@@ -203,7 +136,7 @@ public class DynamicAreaFilter {
     }
 
     private void startPolling() {
-        if (DynamicAreaFilter$HandlerHelper.access$200(this.mHandler, this.mPollingRunnable)) {
+        if (HandlerHelper.hasCallbacks(this.mHandler, this.mPollingRunnable)) {
             return;
         }
         this.mHandler.postDelayed(this.mPollingRunnable, 50L);
@@ -213,6 +146,7 @@ public class DynamicAreaFilter {
         this.mHandler.removeCallbacksAndMessages(null);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void calculateValidHeight(MotionEvent motionEvent) {
         if (this.mCurDown) {
             int pointerCount = motionEvent.getPointerCount();
@@ -269,23 +203,26 @@ public class DynamicAreaFilter {
         return (int) ((i * sSuperSmoothFactor) + (i2 * sSuperSmoothFactorNow));
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private int getDynamicFilterLimitScale() {
-        int i = Settings$System.getInt(this.mContext.getContentResolver(), "somc.side_sense_dynamic_filer_limit_scale", 70);
+        int i = Settings.System.getInt(this.mContext.getContentResolver(), KEY_INT_DYNAMIC_FILTER_LIMIT_SCALE, 70);
         return 70 == i ? changeLimitScaleForDevice() : i;
     }
 
     private int changeLimitScaleForDevice() {
-        return Math.round(100.0f - ((((int) ((864.0f * this.mDeviceYDpi) / 537.882f)) * 100.0f) / this.mScreenHeight));
+        return Math.round(100.0f - ((((int) ((DEFAULT_HEIGHT_PX * this.mDeviceYDpi) / DEFAULT_Y_DPI)) * 100.0f) / this.mScreenHeight));
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private int getDynamicFilterTopLimitScale() {
-        return Settings$System.getInt(this.mContext.getContentResolver(), "somc.side_sense_dynamic_filer_top_limit_scale", 10);
+        return Settings.System.getInt(this.mContext.getContentResolver(), KEY_INT_DYNAMIC_FILTER_TOP_LIMIT_SCALE, 10);
     }
 
     private int getSmoothFactor() {
-        return Settings$System.getInt(this.mContext.getContentResolver(), "somc.side_sense_smooth_factor", 90);
+        return Settings.System.getInt(this.mContext.getContentResolver(), KEY_INT_SMOOTH_FACTOR, 90);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void setSmoothFactor() {
         sSmoothFactor = getSmoothFactor() / 100.0f;
         if (0.99f < sSmoothFactor) {
@@ -294,8 +231,9 @@ public class DynamicAreaFilter {
         sSmoothFactorNow = 1.0f - sSmoothFactor;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private int getDynamicFilterType() {
-        return Settings$System.getInt(this.mContext.getContentResolver(), "somc.side_sense_dynamic_filter_type", 2);
+        return Settings.System.getInt(this.mContext.getContentResolver(), KEY_INT_DYNAMIC_FILTER_TYPE, 2);
     }
 
     private boolean isDynamicLimitUsed() {
@@ -308,7 +246,34 @@ public class DynamicAreaFilter {
 
     private void registerSettingsObserver() {
         if (this.mSettingsObserver == null) {
-            this.mSettingsObserver = new DynamicAreaFilter$2(this, new Handler());
+            this.mSettingsObserver = new ContentObserver(new Handler()) { // from class: com.sonymobile.sidetouchgesturedetector.DynamicAreaFilter.2
+                @Override // android.database.ContentObserver
+                public void onChange(boolean z, Uri uri) {
+                    if (!DynamicAreaFilter.DYNAMIC_FILTER_LIMIT_SCALE_URI.equals(uri)) {
+                        if (!DynamicAreaFilter.DYNAMIC_FILTER_TOP_LIMIT_SCALE_URI.equals(uri)) {
+                            if (!DynamicAreaFilter.DYNAMIC_FILTER_TYPE_URI.equals(uri)) {
+                                if (DynamicAreaFilter.SMOOTH_FACTOR_TYPE_URI.equals(uri)) {
+                                    DynamicAreaFilter.this.setSmoothFactor();
+                                    return;
+                                }
+                                return;
+                            } else {
+                                DynamicAreaFilter.this.mDynamicFilterType = DynamicAreaFilter.this.getDynamicFilterType();
+                                return;
+                            }
+                        }
+                        DynamicAreaFilter.this.mTopLimitScale = DynamicAreaFilter.this.getDynamicFilterTopLimitScale();
+                        DynamicAreaFilter.this.mValidScreenHeightMin = DynamicAreaFilter.this.getValidScreenHeightMin(DynamicAreaFilter.this.mTopLimitScale);
+                        if (DynamicAreaFilter.this.mOnDynamicAreaListener != null) {
+                            DynamicAreaFilter.this.mOnDynamicAreaListener.onTopLimitScaleChanged(DynamicAreaFilter.this.mTopLimitScale);
+                            return;
+                        }
+                        return;
+                    }
+                    DynamicAreaFilter.this.mLimitScale = DynamicAreaFilter.this.getDynamicFilterLimitScale();
+                    DynamicAreaFilter.this.mValidScreenHeightMax = DynamicAreaFilter.this.getValidScreenHeightMax(DynamicAreaFilter.this.mLimitScale);
+                }
+            };
             this.mContext.getContentResolver().registerContentObserver(DYNAMIC_FILTER_LIMIT_SCALE_URI, false, this.mSettingsObserver);
             this.mContext.getContentResolver().registerContentObserver(DYNAMIC_FILTER_TOP_LIMIT_SCALE_URI, false, this.mSettingsObserver);
             this.mContext.getContentResolver().registerContentObserver(DYNAMIC_FILTER_TYPE_URI, false, this.mSettingsObserver);
@@ -340,10 +305,12 @@ public class DynamicAreaFilter {
         return (int) (this.mScreenHeight * (this.mDynamicScale / 100.0f));
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private int getValidScreenHeightMax(int i) {
         return (int) (this.mScreenHeight * (i / 100.0f));
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private int getValidScreenHeightMin(int i) {
         return (int) (this.mScreenHeight * (i / 100.0f));
     }
@@ -351,5 +318,25 @@ public class DynamicAreaFilter {
     private boolean isPortrait() {
         int rotation = this.mWindowManager.getDefaultDisplay().getRotation();
         return rotation == 0 || rotation == 2;
+    }
+
+    private static class HandlerHelper {
+        private static final String METHOD_HAS_CALLBACKS = "hasCallbacks";
+        private static Method sMethod;
+
+        private HandlerHelper() {
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        public static boolean hasCallbacks(Handler handler, Runnable runnable) {
+            try {
+                if (sMethod == null) {
+                    sMethod = Handler.class.getDeclaredMethod(METHOD_HAS_CALLBACKS, Runnable.class);
+                }
+                return ((Boolean) sMethod.invoke(handler, runnable)).booleanValue();
+            } catch (IllegalAccessException | IllegalArgumentException | NoSuchMethodException | InvocationTargetException unused) {
+                return false;
+            }
+        }
     }
 }

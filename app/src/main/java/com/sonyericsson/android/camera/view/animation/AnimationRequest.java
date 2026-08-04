@@ -3,14 +3,50 @@ package com.sonyericsson.android.camera.view.animation;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 
 public class AnimationRequest {
-    public final AnimationRequest$AnimationDegree mDegree;
+    public final AnimationDegree mDegree;
     public final CapturingMode mFrom;
     public final CapturingMode mTarget;
-    public final AnimationRequest$AnimationType mType;
+    public final AnimationType mType;
 
-    public AnimationRequest(AnimationRequest$AnimationType animationRequest$AnimationType, AnimationRequest$AnimationDegree animationRequest$AnimationDegree, CapturingMode capturingMode, CapturingMode capturingMode2) {
-        this.mType = animationRequest$AnimationType;
-        this.mDegree = animationRequest$AnimationDegree;
+    public enum AnimationType {
+        NONE,
+        MODE_TOUCH,
+        MODE_ICON,
+        MODE_SELECTOR,
+        MRU_SHORTCUT,
+        SWITCH_TOUCH
+    }
+
+    public enum AnimationDegree {
+        START,
+        CANCEL,
+        EXEC,
+        FINISH
+    }
+    // @formatter:off
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // @formatter:on
+    public AnimationRequest(AnimationType animationType, AnimationDegree animationDegree, CapturingMode capturingMode,
+            CapturingMode capturingMode2) {
+        this.mType = animationType;
+        this.mDegree = animationDegree;
         this.mFrom = capturingMode;
         this.mTarget = capturingMode2;
     }

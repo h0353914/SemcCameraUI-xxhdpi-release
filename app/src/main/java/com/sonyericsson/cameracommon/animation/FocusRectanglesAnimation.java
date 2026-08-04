@@ -8,6 +8,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
+import com.sonyericsson.android.camera.R;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,27 +17,39 @@ public class FocusRectanglesAnimation {
     private final Context mContext;
     private AlphaAnimation mFadeOutAnimation;
     private final Map<Animation, View> mAnimationMap = new HashMap();
-    private final FocusRectanglesAnimation$AnimationConfig mSingleConfig = new FocusRectanglesAnimation$AnimationConfig(this, 2131165338, 2131165337, 2131690319, 2131361800);
-    private final FocusRectanglesAnimation$AnimationConfig mTouchConfig = new FocusRectanglesAnimation$AnimationConfig(this, 2131165338, 2131165337, 2131690320, 2131361800);
-    private final FocusRectanglesAnimation$AnimationConfig mObjectConfig = new FocusRectanglesAnimation$AnimationConfig(this, 2131165336, 2131165335, 2131690318, 2131361800);
+    private final AnimationConfig mSingleConfig;
+    private final AnimationConfig mTouchConfig;
+    private final AnimationConfig mObjectConfig;
 
-    static /* synthetic */ Context access$000(FocusRectanglesAnimation focusRectanglesAnimation) {
-        return focusRectanglesAnimation.mContext;
-    }
+    public class AnimationConfig {
+        public final int mDuration;
+        public final int mFromHeight;
+        public final int mFromWidth;
+        public final int mToHeight;
+        public final int mToWidth;
 
-    static /* synthetic */ Map access$200(FocusRectanglesAnimation focusRectanglesAnimation) {
-        return focusRectanglesAnimation.mAnimationMap;
+        public AnimationConfig(int i, int i2, int i3, int i4) {
+            float fFloatValue = Float.valueOf(FocusRectanglesAnimation.this.mContext.getResources().getString(i3)).floatValue();
+            this.mToWidth = FocusRectanglesAnimation.this.mContext.getResources().getDimensionPixelSize(i);
+            this.mToHeight = FocusRectanglesAnimation.this.mContext.getResources().getDimensionPixelSize(i2);
+            this.mFromWidth = (int) (this.mToWidth * fFloatValue);
+            this.mFromHeight = (int) (this.mToHeight * fFloatValue);
+            this.mDuration = FocusRectanglesAnimation.this.mContext.getResources().getInteger(i4);
+        }
     }
 
     public FocusRectanglesAnimation(Context context) {
         this.mContext = context;
+        this.mSingleConfig = new AnimationConfig(R.dimen.focus_rect_single_width, R.dimen.focus_rect_single_height, R.string.focus_indicator_animation_mag_single, R.integer.focus_indicator_animation_focusin_duration);
+        this.mTouchConfig = new AnimationConfig(R.dimen.focus_rect_single_width, R.dimen.focus_rect_single_height, R.string.focus_indicator_animation_mag_touch, R.integer.focus_indicator_animation_focusin_duration);
+        this.mObjectConfig = new AnimationConfig(R.dimen.focus_rect_object_width, R.dimen.focus_rect_object_height, R.string.focus_indicator_animation_mag_object, R.integer.focus_indicator_animation_focusin_duration);
     }
 
-    public FocusRectanglesAnimation$AnimationConfig getObjectAnimationConfig() {
+    public AnimationConfig getObjectAnimationConfig() {
         return this.mObjectConfig;
     }
 
-    public FocusRectanglesAnimation$AnimationConfig getTouchAnimationConfig() {
+    public AnimationConfig getTouchAnimationConfig() {
         return this.mTouchConfig;
     }
 
@@ -87,37 +100,59 @@ public class FocusRectanglesAnimation {
 
     private void playAfFadeOutAnimation(View view) {
         AlphaAnimation fadeOutAnimation = getFadeOutAnimation();
-        fadeOutAnimation.setAnimationListener(new FocusRectanglesAnimation$FadeOutAnimationListener(this, null));
+        fadeOutAnimation.setAnimationListener(new FadeOutAnimationListener());
         view.startAnimation(fadeOutAnimation);
         this.mAnimationMap.put(fadeOutAnimation, view);
     }
 
-    private AnimationSet playTouchDownAnimation(View view, AnimationSet animationSet, FocusRectanglesAnimation$AnimationConfig focusRectanglesAnimation$AnimationConfig) {
-        AnimationSet touchDownAnimation = getTouchDownAnimation(view, animationSet, focusRectanglesAnimation$AnimationConfig);
+    private AnimationSet playTouchDownAnimation(View view, AnimationSet animationSet, AnimationConfig animationConfig) {
+        AnimationSet touchDownAnimation = getTouchDownAnimation(view, animationSet, animationConfig);
         view.startAnimation(touchDownAnimation);
         return touchDownAnimation;
     }
 
-    private AnimationSet playTouchUpAnimation(View view, AnimationSet animationSet, FocusRectanglesAnimation$AnimationConfig focusRectanglesAnimation$AnimationConfig) {
-        AnimationSet touchUpAnimation = getTouchUpAnimation(view, animationSet, focusRectanglesAnimation$AnimationConfig);
+    private AnimationSet playTouchUpAnimation(View view, AnimationSet animationSet, AnimationConfig animationConfig) {
+        AnimationSet touchUpAnimation = getTouchUpAnimation(view, animationSet, animationConfig);
         view.startAnimation(touchUpAnimation);
         return touchUpAnimation;
     }
 
-    public AnimationSet getTouchDownAnimation(View view, AnimationSet animationSet, FocusRectanglesAnimation$AnimationConfig focusRectanglesAnimation$AnimationConfig) {
-        return animationSet == null ? (AnimationSet) AnimationUtils.loadAnimation(this.mContext, 2130771986) : animationSet;
+    public AnimationSet getTouchDownAnimation(View view, AnimationSet animationSet, AnimationConfig animationConfig) {
+        return animationSet == null ? (AnimationSet) AnimationUtils.loadAnimation(this.mContext, R.anim.focus_touch_down) : animationSet;
     }
 
-    public AnimationSet getTouchUpAnimation(View view, AnimationSet animationSet, FocusRectanglesAnimation$AnimationConfig focusRectanglesAnimation$AnimationConfig) {
-        return animationSet == null ? (AnimationSet) AnimationUtils.loadAnimation(this.mContext, 2130771987) : animationSet;
+    public AnimationSet getTouchUpAnimation(View view, AnimationSet animationSet, AnimationConfig animationConfig) {
+        return animationSet == null ? (AnimationSet) AnimationUtils.loadAnimation(this.mContext, R.anim.focus_touch_up) : animationSet;
     }
 
     private AlphaAnimation getFadeOutAnimation() {
         if (this.mFadeOutAnimation == null) {
-            this.mFadeOutAnimation = (AlphaAnimation) AnimationUtils.loadAnimation(this.mContext, 2130771985);
-            this.mFadeOutAnimation.setAnimationListener(new FocusRectanglesAnimation$FadeOutAnimationListener(this, null));
+            this.mFadeOutAnimation = (AlphaAnimation) AnimationUtils.loadAnimation(this.mContext, R.anim.focus_indicator_fade_out);
+            this.mFadeOutAnimation.setAnimationListener(new FadeOutAnimationListener());
         }
         return this.mFadeOutAnimation;
+    }
+
+    private class FadeOutAnimationListener implements Animation.AnimationListener {
+        @Override // android.view.animation.Animation.AnimationListener
+        public void onAnimationRepeat(Animation animation) {
+        }
+
+        @Override // android.view.animation.Animation.AnimationListener
+        public void onAnimationStart(Animation animation) {
+        }
+
+        private FadeOutAnimationListener() {
+        }
+
+        @Override // android.view.animation.Animation.AnimationListener
+        public void onAnimationEnd(Animation animation) {
+            View view = (View) FocusRectanglesAnimation.this.mAnimationMap.get(animation);
+            if (view != null) {
+                view.setVisibility(4);
+            }
+            FocusRectanglesAnimation.this.mAnimationMap.remove(animation);
+        }
     }
 
     public void cancelAfFocusAnimationObject(View view) {

@@ -74,11 +74,11 @@ class ColorGroup {
         long j4 = 0;
         long j5 = 0;
         for (ColorCount colorCount : this.colorCounts) {
-            j += (long) colorCount.count;
-            j2 += (long) (colorCount.count * colorCount.alpha);
-            j3 += (long) (colorCount.count * colorCount.red);
-            j4 += (long) (colorCount.count * colorCount.green);
-            j5 += (long) (colorCount.count * colorCount.blue);
+            j += colorCount.count;
+            j2 += colorCount.count * colorCount.alpha;
+            j3 += colorCount.count * colorCount.red;
+            j4 += colorCount.count * colorCount.green;
+            j5 += colorCount.count * colorCount.blue;
         }
         double d = j;
         return ((this.ignoreAlpha ? 255 : (int) Math.round(j2 / j)) << 24) | (((int) Math.round(j3 / d)) << 16) | (((int) Math.round(j4 / d)) << 8) | ((int) Math.round(j5 / d));

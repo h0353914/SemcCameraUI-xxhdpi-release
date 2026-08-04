@@ -8,7 +8,7 @@ import java.nio.BufferOverflowException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.ReadOnlyBufferException;
-import java.util.Map$Entry;
+import java.util.Map;
 
 public final class CodedOutputByteBufferNano {
     public static final int LITTLE_ENDIAN_32_SIZE = 4;
@@ -193,7 +193,7 @@ public final class CodedOutputByteBufferNano {
         this.codedOutputStreamPosition = this.buffer.position();
     }
 
-    public <K, V> void writeMapEntry(final int fieldNumber, MapEntryLite<K, V> defaultEntry, Map$Entry<K, V> entry) throws IOException {
+    public <K, V> void writeMapEntry(final int fieldNumber, MapEntryLite<K, V> defaultEntry, Map.Entry<K, V> entry) throws IOException {
         CodedOutputStream codedOutputStream = getCodedOutputStream();
         defaultEntry.serializeTo(codedOutputStream, fieldNumber, entry.getKey(), entry.getValue());
         codedOutputStream.flush();
@@ -420,14 +420,11 @@ public final class CodedOutputByteBufferNano {
     }
 
     private static int encode(CharSequence sequence, byte[] bytes, int offset, int length) {
-        int i;
-        int i2;
-        char cCharAt;
         int length2 = sequence.length();
         int i3 = length + offset;
         int i4 = 0;
-        while (i4 < length2 && (i2 = i4 + offset) < i3 && (cCharAt = sequence.charAt(i4)) < 128) {
-            bytes[i2] = (byte) cCharAt;
+        while (i4 < length2 && (i4 + offset) < i3 && sequence.charAt(i4) < 128) {
+            bytes[i4 + offset] = (byte) sequence.charAt(i4);
             i4++;
         }
         if (i4 == length2) {
@@ -436,59 +433,66 @@ public final class CodedOutputByteBufferNano {
         int i5 = offset + i4;
         while (i4 < length2) {
             char cCharAt2 = sequence.charAt(i4);
-            if (cCharAt2 >= 128 || i5 >= i3) {
-                if (cCharAt2 < 2048 && i5 <= i3 - 2) {
-                    int i6 = i5 + 1;
-                    bytes[i5] = (byte) (960 | (cCharAt2 >>> 6));
-                    i5 = i6 + 1;
-                    bytes[i6] = (byte) ((cCharAt2 & '?') | 128);
-                } else {
-                    if ((cCharAt2 >= 55296 && 57343 >= cCharAt2) || i5 > i3 - 3) {
-                        if (i5 <= i3 - 4) {
-                            int i7 = i4 + 1;
-                            if (i7 != sequence.length()) {
-                                char cCharAt3 = sequence.charAt(i7);
-                                if (Character.isSurrogatePair(cCharAt2, cCharAt3)) {
-                                    int codePoint = Character.toCodePoint(cCharAt2, cCharAt3);
-                                    int i8 = i5 + 1;
-                                    bytes[i5] = (byte) (240 | (codePoint >>> 18));
-                                    int i9 = i8 + 1;
-                                    bytes[i8] = (byte) (((codePoint >>> 12) & 63) | 128);
-                                    int i10 = i9 + 1;
-                                    bytes[i9] = (byte) (((codePoint >>> 6) & 63) | 128);
-                                    i5 = i10 + 1;
-                                    bytes[i10] = (byte) ((codePoint & 63) | 128);
-                                    i4 = i7;
-                                } else {
-                                    i4 = i7;
-                                }
-                            }
-                            StringBuilder sb = new StringBuilder(39);
-                            sb.append("Unpaired surrogate at index ");
-                            sb.append(i4 - 1);
-                            throw new IllegalArgumentException(sb.toString());
-                        }
-                        StringBuilder sb2 = new StringBuilder(37);
-                        sb2.append("Failed writing ");
-                        sb2.append(cCharAt2);
-                        sb2.append(" at index ");
-                        sb2.append(i5);
-                        throw new ArrayIndexOutOfBoundsException(sb2.toString());
-                    }
-                    int i11 = i5 + 1;
-                    bytes[i5] = (byte) (480 | (cCharAt2 >>> '\f'));
-                    int i12 = i11 + 1;
-                    bytes[i11] = (byte) (((cCharAt2 >>> 6) & 63) | 128);
-                    i = i12 + 1;
-                    bytes[i12] = (byte) ((cCharAt2 & '?') | 128);
-                }
-                i4++;
-            } else {
-                i = i5 + 1;
+            if (cCharAt2 < 128 && i5 < i3) {
+                // ASCII path (smali: goto_2 → goto_3)
+                int i_next = i5 + 1;
                 bytes[i5] = (byte) cCharAt2;
+                i5 = i_next;
+                i4++;
+                continue;
             }
-            i5 = i;
-            i4++;
+            if (cCharAt2 < 2048 && i5 <= i3 - 2) {
+                // 2-byte UTF-8 (smali: goto_3 directly, skip i5=i)
+                int i6 = i5 + 1;
+                bytes[i5] = (byte) (960 | (cCharAt2 >>> 6));
+                i5 = i6 + 1;
+                bytes[i6] = (byte) ((cCharAt2 & '?') | 128);
+                i4++;
+                continue;
+            }
+            if ((cCharAt2 < 55296 || cCharAt2 > 57343) && i5 <= i3 - 3) {
+                // 3-byte UTF-8 (smali: goto_2 → goto_3)
+                int i11 = i5 + 1;
+                bytes[i5] = (byte) (480 | (cCharAt2 >>> '\f'));
+                int i12 = i11 + 1;
+                bytes[i11] = (byte) (((cCharAt2 >>> 6) & 63) | 128);
+                i5 = i12 + 1;
+                bytes[i12] = (byte) ((cCharAt2 & '?') | 128);
+                i4++;
+                continue;
+            }
+            if (i5 <= i3 - 4) {
+                // Potential 4-byte surrogate pair
+                int i7 = i4 + 1;
+                if (i7 != sequence.length()) {
+                    char cCharAt3 = sequence.charAt(i7);
+                    if (Character.isSurrogatePair(cCharAt2, cCharAt3)) {
+                        int codePoint = Character.toCodePoint(cCharAt2, cCharAt3);
+                        int i8 = i5 + 1;
+                        bytes[i5] = (byte) (240 | (codePoint >>> 18));
+                        int i9 = i8 + 1;
+                        bytes[i8] = (byte) (((codePoint >>> 12) & 63) | 128);
+                        int i10 = i9 + 1;
+                        bytes[i9] = (byte) (((codePoint >>> 6) & 63) | 128);
+                        i5 = i10 + 1;
+                        bytes[i10] = (byte) ((codePoint & 63) | 128);
+                        i4 = i7;
+                        i4++;
+                        continue;
+                    }
+                    i4 = i7;
+                }
+                StringBuilder sb = new StringBuilder(39);
+                sb.append("Unpaired surrogate at index ");
+                sb.append(i4 - 1);
+                throw new IllegalArgumentException(sb.toString());
+            }
+            StringBuilder sb2 = new StringBuilder(37);
+            sb2.append("Failed writing ");
+            sb2.append(cCharAt2);
+            sb2.append(" at index ");
+            sb2.append(i5);
+            throw new ArrayIndexOutOfBoundsException(sb2.toString());
         }
         return i5;
     }

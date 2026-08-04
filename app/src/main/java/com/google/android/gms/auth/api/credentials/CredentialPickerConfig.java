@@ -1,14 +1,34 @@
 package com.google.android.gms.auth.api.credentials;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class CredentialPickerConfig implements SafeParcelable {
-    public static final Parcelable$Creator<CredentialPickerConfig> CREATOR = new zzb();
+    public static final Parcelable.Creator<CredentialPickerConfig> CREATOR = new zzb();
     private final boolean mShowCancelButton;
     final int mVersionCode;
     private final boolean zzSn;
+
+    public static class Builder {
+        private boolean zzSn = false;
+        private boolean mShowCancelButton = true;
+
+        public CredentialPickerConfig build() {
+            return new CredentialPickerConfig(this);
+        }
+
+        public Builder setShowAddAccountButton(boolean z) {
+            this.zzSn = z;
+            return this;
+        }
+
+        public Builder setShowCancelButton(boolean z) {
+            this.mShowCancelButton = z;
+            return this;
+        }
+    }
 
     CredentialPickerConfig(int i, boolean z, boolean z2) {
         this.mVersionCode = i;
@@ -16,12 +36,8 @@ public final class CredentialPickerConfig implements SafeParcelable {
         this.mShowCancelButton = z2;
     }
 
-    private CredentialPickerConfig(CredentialPickerConfig$Builder credentialPickerConfig$Builder) {
-        this(1, CredentialPickerConfig$Builder.zza(credentialPickerConfig$Builder), CredentialPickerConfig$Builder.zzb(credentialPickerConfig$Builder));
-    }
-
-    /* synthetic */ CredentialPickerConfig(CredentialPickerConfig$Builder credentialPickerConfig$Builder, CredentialPickerConfig$1 credentialPickerConfig$1) {
-        this(credentialPickerConfig$Builder);
+    private CredentialPickerConfig(Builder builder) {
+        this(1, builder.zzSn, builder.mShowCancelButton);
     }
 
     @Override // android.os.Parcelable

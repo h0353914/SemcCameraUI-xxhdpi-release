@@ -2,6 +2,7 @@ package com.google.android.gms.internal;
 
 import java.io.IOException;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzsd extends IOException {
     public zzsd(String str) {
         super(str);

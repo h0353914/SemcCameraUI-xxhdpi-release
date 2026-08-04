@@ -1,3 +1,33 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.view.overlaycontrol.imagequality;
 
 import android.content.Context;
@@ -17,10 +47,6 @@ abstract class SettingDialog extends RelativeLayout implements SettingDialogInte
     private ViewGroup mParentView;
 
     public abstract void setAdapter(SettingAdapter settingAdapter);
-
-    static /* synthetic */ ViewGroup access$000(SettingDialog settingDialog) {
-        return settingDialog.mParentView;
-    }
 
     public SettingDialog(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -61,7 +87,14 @@ abstract class SettingDialog extends RelativeLayout implements SettingDialogInte
     public void close() {
         Handler handler = getHandler();
         if (handler != null) {
-            handler.post(new SettingDialog$1(this));
+            handler.post(new Runnable() { // from class: com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingDialog.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    if (SettingDialog.this.mParentView != null) {
+                        SettingDialog.this.mParentView.removeView(SettingDialog.this);
+                    }
+                }
+            });
         }
     }
 

@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.tiff.photometricinterpreters;
 
+import android.support.v4.view.ViewCompat;
 import java.io.IOException;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.ImageBuilder;
@@ -14,7 +15,7 @@ public class PhotometricInterpreterPalette extends PhotometricInterpreter {
         for (int i5 = 0; i5 < bitsPerSample; i5++) {
             int i6 = (iArr2[i5] >> 8) & 255;
             int i7 = (iArr2[i5 + bitsPerSample] >> 8) & 255;
-            this.indexColorMap[i5] = (i6 << 16) | (-16777216) | (i7 << 8) | ((iArr2[(2 * bitsPerSample) + i5] >> 8) & 255);
+            this.indexColorMap[i5] = (i6 << 16) | ViewCompat.MEASURED_STATE_MASK | (i7 << 8) | ((iArr2[(2 * bitsPerSample) + i5] >> 8) & 255);
         }
     }
 

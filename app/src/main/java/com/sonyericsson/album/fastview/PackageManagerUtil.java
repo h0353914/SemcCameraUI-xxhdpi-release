@@ -2,7 +2,7 @@ package com.sonyericsson.album.fastview;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager$NameNotFoundException;
+import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -19,8 +19,8 @@ public class PackageManagerUtil {
                 return null;
             }
             return applicationInfo.metaData.getString(str2);
-        } catch (PackageManager$NameNotFoundException e) {
-            Log.d("PackageManagerUtil", "NameNotFoundException : " + e);
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.d(LOG_TAG, "NameNotFoundException : " + e);
             return null;
         }
     }
@@ -28,8 +28,8 @@ public class PackageManagerUtil {
     public static String getApkPath(@NonNull Context context, String str) {
         try {
             return context.getPackageManager().getApplicationInfo(str, 0).sourceDir;
-        } catch (PackageManager$NameNotFoundException e) {
-            Log.d("PackageManagerUtil", "NameNotFoundException : " + e);
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.d(LOG_TAG, "NameNotFoundException : " + e);
             return null;
         }
     }
@@ -40,8 +40,8 @@ public class PackageManagerUtil {
         }
         try {
             return context.createPackageContext(str, 3);
-        } catch (PackageManager$NameNotFoundException e) {
-            Log.e("PackageManagerUtil", "NameNotFoundException : " + e);
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(LOG_TAG, "NameNotFoundException : " + e);
             return null;
         }
     }

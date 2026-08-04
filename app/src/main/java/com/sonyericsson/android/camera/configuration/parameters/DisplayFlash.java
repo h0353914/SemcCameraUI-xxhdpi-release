@@ -1,17 +1,19 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
 import com.sonyericsson.android.camera.ActionMode;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public enum DisplayFlash implements UserSettingValue {
-    DISPLAY_AUTO(2131231047, 2131690114, "display-auto"),
-    DISPLAY_ON(2131231048, 2131689836, "display-on"),
-    DISPLAY_OFF(2131231049, 2131690115, "off");
+    DISPLAY_AUTO(R.drawable.cam_core_flash_auto_icn, R.string.cam_strings_settings_auto_txt, CameraParameters.DISPLAY_FLASH_MODE_AUTO),
+    DISPLAY_ON(R.drawable.cam_core_flash_fill_flash_icn, R.string.cam_strings_flash_fill_flash_txt, CameraParameters.DISPLAY_FLASH_MODE_ON),
+    DISPLAY_OFF(R.drawable.cam_core_flash_off_icn, R.string.cam_strings_settings_off_txt, "off");
 
     public static final String TAG = "DisplayFlash";
     private final int mIconId;
@@ -56,12 +58,10 @@ public enum DisplayFlash implements UserSettingValue {
             if (!list.isEmpty()) {
                 for (DisplayFlash displayFlash : LedOptionsResolver.getInstance().getDisplayFlashOptions(actionMode, list)) {
                     Iterator<String> it = list.iterator();
-                    while (true) {
-                        if (it.hasNext()) {
-                            if (displayFlash.getValue().equals(it.next())) {
-                                arrayList.add(displayFlash);
-                                break;
-                            }
+                    while (it.hasNext()) {
+                        if (displayFlash.getValue().equals(it.next())) {
+                            arrayList.add(displayFlash);
+                            break;
                         }
                     }
                 }
@@ -70,8 +70,8 @@ public enum DisplayFlash implements UserSettingValue {
         return (DisplayFlash[]) arrayList.toArray(new DisplayFlash[0]);
     }
 
-    public static boolean isSupported(CameraInfo$CameraId cameraInfo$CameraId) {
-        return PlatformCapability.isDisplayFlashModeSupported(cameraInfo$CameraId);
+    public static boolean isSupported(CameraInfo.CameraId cameraId) {
+        return PlatformCapability.isDisplayFlashModeSupported(cameraId);
     }
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValue

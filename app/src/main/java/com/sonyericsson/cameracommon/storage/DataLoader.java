@@ -7,16 +7,19 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Environment;
-import android.provider.MediaStore$Images$Media;
-import android.provider.MediaStore$Video$Media;
+import android.provider.MediaStore;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.util.capability.SharedPrefsTranslator;
+import com.sonyericsson.cameracommon.constants.SomcFileTypeConstants;
 import com.sonyericsson.cameracommon.contentsview.PhotoStackQueryHelper;
 import com.sonyericsson.cameracommon.contentsview.QueryParameterAdapter;
 import com.sonyericsson.cameracommon.contentsview.ThumbnailFactory;
-import com.sonyericsson.cameracommon.contentsview.contents.Content$ContentInfo;
-import com.sonyericsson.cameracommon.contentsview.contents.Content$ContentsType;
+import com.sonyericsson.cameracommon.contentsview.contents.Content;
+import com.sonyericsson.cameracommon.mediasaving.MediaSavingConstants;
 import com.sonyericsson.cameracommon.mediasaving.updator.CrQueryParameter;
+import com.sonyericsson.cameracommon.storage.Storage;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
+import com.sonymobile.media.SomcMediaStore;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -33,12 +36,12 @@ public class DataLoader implements Callable<Long> {
     private static final int COLUMN_INDEX_ORIENTATION = 6;
     private static final int COLUMN_INDEX_WIDTH = 4;
     public static final String EXTENDED_FILES_COLUMN_ID = "files_id";
-    public static final Uri EXTENDED_FILES_CONTENT_URI = Uri.parse("content://media/external/file");
+    public static final Uri EXTENDED_FILES_CONTENT_URI = SomcMediaStore.ExtendedFiles.getContentUri("external");
     public static final float PANORAMA_ASPECT_THRESHOLD = 1.8777778f;
     public static final String TAG = "DataLoader";
     private final String[] CONTENT_EXTENSIONS;
     private Context mContext;
-    private Storage$OnLoadCompletedListener mDataLoadCallback;
+    private Storage.OnLoadCompletedListener mDataLoadCallback;
     private boolean mIsRegisterCache;
     private int mMediaId;
     private ArrayList<Uri> mMediaUris;
@@ -46,35 +49,36 @@ public class DataLoader implements Callable<Long> {
     private int mRequestId;
     private final ContentResolver mResolver;
 
-    @Override // java.util.concurrent.Callable
-    public /* bridge */ /* synthetic */ Long call() throws Exception {
-        return call();
+    public interface DataLoadCallback {
+        void onDataLoaded(boolean z, LinkedList<Content.ContentInfo> linkedList, int i, boolean z2, Bitmap bitmap);
     }
 
-    public DataLoader(Context context, List<String> list, int i, Storage$OnLoadCompletedListener storage$OnLoadCompletedListener, boolean z) {
-        this.CONTENT_EXTENSIONS = new String[]{".JPG", ".3gp", ".mp4"};
+    public DataLoader(Context context, List<String> list, int i, Storage.OnLoadCompletedListener onLoadCompletedListener, boolean z) {
+        this.CONTENT_EXTENSIONS = new String[]{MediaSavingConstants.MEDIA_TYPE_JPEG_EXT, MediaSavingConstants.MEDIA_TYPE_3GP_EXT, MediaSavingConstants.MEDIA_TYPE_MPEG4_EXT};
         this.mParam = null;
         this.mRequestId = -1;
         this.mParam = setupQueryParam(list, i);
         this.mContext = context;
-        this.mResolver = this.mContext.getContentResolver();
-        this.mDataLoadCallback = storage$OnLoadCompletedListener;
+        Context ctx = this.mContext;
+        this.mResolver = ctx.getContentResolver();
+        this.mDataLoadCallback = onLoadCompletedListener;
         this.mIsRegisterCache = z;
     }
 
-    public DataLoader(Context context, List<String> list, int i, int i2, Storage$OnLoadCompletedListener storage$OnLoadCompletedListener, boolean z) {
-        this.CONTENT_EXTENSIONS = new String[]{".JPG", ".3gp", ".mp4"};
+    public DataLoader(Context context, List<String> list, int i, int i2, Storage.OnLoadCompletedListener onLoadCompletedListener, boolean z) {
+        this.CONTENT_EXTENSIONS = new String[]{MediaSavingConstants.MEDIA_TYPE_JPEG_EXT, MediaSavingConstants.MEDIA_TYPE_3GP_EXT, MediaSavingConstants.MEDIA_TYPE_MPEG4_EXT};
         this.mParam = null;
         this.mRequestId = i;
         this.mParam = setupQueryParam(list, i2);
         this.mContext = context;
-        this.mResolver = this.mContext.getContentResolver();
-        this.mDataLoadCallback = storage$OnLoadCompletedListener;
+        Context ctx = this.mContext;
+        this.mResolver = ctx.getContentResolver();
+        this.mDataLoadCallback = onLoadCompletedListener;
         this.mIsRegisterCache = z;
     }
 
-    public DataLoader(int i, Uri uri, Context context, Storage$OnLoadCompletedListener storage$OnLoadCompletedListener, boolean z) {
-        this.CONTENT_EXTENSIONS = new String[]{".JPG", ".3gp", ".mp4"};
+    public DataLoader(int i, Uri uri, Context context, Storage.OnLoadCompletedListener onLoadCompletedListener, boolean z) {
+        this.CONTENT_EXTENSIONS = new String[]{MediaSavingConstants.MEDIA_TYPE_JPEG_EXT, MediaSavingConstants.MEDIA_TYPE_3GP_EXT, MediaSavingConstants.MEDIA_TYPE_MPEG4_EXT};
         this.mParam = null;
         this.mRequestId = i;
         try {
@@ -83,19 +87,21 @@ public class DataLoader implements Callable<Long> {
             CamLog.w("mediaId is not corrected.");
         }
         this.mContext = context;
-        this.mResolver = this.mContext.getContentResolver();
-        this.mDataLoadCallback = storage$OnLoadCompletedListener;
+        Context ctx = this.mContext;
+        this.mResolver = ctx.getContentResolver();
+        this.mDataLoadCallback = onLoadCompletedListener;
         this.mIsRegisterCache = z;
     }
 
-    public DataLoader(Context context, ArrayList<Uri> arrayList, Storage$OnLoadCompletedListener storage$OnLoadCompletedListener, boolean z) {
-        this.CONTENT_EXTENSIONS = new String[]{".JPG", ".3gp", ".mp4"};
+    public DataLoader(Context context, ArrayList<Uri> arrayList, Storage.OnLoadCompletedListener onLoadCompletedListener, boolean z) {
+        this.CONTENT_EXTENSIONS = new String[]{MediaSavingConstants.MEDIA_TYPE_JPEG_EXT, MediaSavingConstants.MEDIA_TYPE_3GP_EXT, MediaSavingConstants.MEDIA_TYPE_MPEG4_EXT};
         this.mParam = null;
         this.mRequestId = -1;
         this.mContext = context;
-        this.mResolver = this.mContext.getContentResolver();
+        Context ctx = this.mContext;
+        this.mResolver = ctx.getContentResolver();
         this.mMediaUris = arrayList;
-        this.mDataLoadCallback = storage$OnLoadCompletedListener;
+        this.mDataLoadCallback = onLoadCompletedListener;
         this.mIsRegisterCache = z;
     }
 
@@ -105,121 +111,80 @@ public class DataLoader implements Callable<Long> {
     /* JADX WARN: Removed duplicated region for block: B:40:0x0096  */
     /* JADX WARN: Removed duplicated region for block: B:59:0x00bb  */
     @Override // java.util.concurrent.Callable
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
     public Long call() throws Exception {
-        Cursor coverImageInfo;
-        Throwable th;
-        Throwable th2;
-        Throwable th3;
         if (CamLog.VERBOSE) {
             CamLog.d("call() has been called.");
         }
         long j = 0;
-        LinkedList<Content$ContentInfo> linkedList = new LinkedList<>();
-        if (this.mParam != null) {
-            coverImageInfo = getLatestImageInfo();
-        } else if (this.mMediaUris != null) {
-            coverImageInfo = getImagesInfo(this.mMediaUris);
-        } else {
-            coverImageInfo = getCoverImageInfo(this.mMediaId);
+        LinkedList<Content.ContentInfo> linkedList = new LinkedList<>();
+        Cursor cursor = null;
+        try {
+            if (this.mParam != null) {
+                cursor = getLatestImageInfo();
+            } else if (this.mMediaUris != null) {
+                cursor = getImagesInfo(this.mMediaUris);
+            } else {
+                cursor = getCoverImageInfo(this.mMediaId);
+            }
+            if (cursor != null) {
+                if (CamLog.VERBOSE) {
+                    CamLog.d("cursor count = " + cursor.getCount());
+                }
+                if (this.mMediaUris != null) {
+                    while (!cursor.isAfterLast()) {
+                        Content.ContentInfo createContentInfoForMediaUris = createContentInfoForMediaUris(cursor);
+                        if (createContentInfoForMediaUris != null) {
+                            linkedList.addLast(createContentInfoForMediaUris);
+                        }
+                        cursor.moveToNext();
+                    }
+                } else {
+                    Content.ContentInfo createContentInfo = createContentInfo(cursor);
+                    if (createContentInfo != null && PredictiveCapturePathBuilder.isPredictiveCaptureImage(createContentInfo.mOriginalPath)) {
+                        String timeStamp = PredictiveCapturePathBuilder.getTimeStamp(createContentInfo.mOriginalPath);
+                        int i = createContentInfo.mBucketId;
+                        Cursor predictiveCaptureImageInfo = getPredictiveCaptureImageInfo(timeStamp, i);
+                        try {
+                            if (predictiveCaptureImageInfo != null) {
+                                createContentInfo = createContentInfo(predictiveCaptureImageInfo);
+                            }
+                        } finally {
+                            if (predictiveCaptureImageInfo != null) {
+                                predictiveCaptureImageInfo.close();
+                            }
+                        }
+                    }
+                    if (createContentInfo != null) {
+                        linkedList.addLast(createContentInfo);
+                    }
+                }
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            this.mParam = null;
+            this.mMediaUris = null;
         }
         boolean z = false;
         Bitmap bitmap = null;
-        try {
-            if (coverImageInfo != null) {
-                try {
-                    try {
-                        if (CamLog.VERBOSE) {
-                            CamLog.d("cursor count = " + coverImageInfo.getCount());
-                        }
-                        if (this.mMediaUris != null) {
-                            while (!coverImageInfo.isAfterLast()) {
-                                Content$ContentInfo content$ContentInfoCreateContentInfoForMediaUris = createContentInfoForMediaUris(coverImageInfo);
-                                if (content$ContentInfoCreateContentInfoForMediaUris != null) {
-                                    linkedList.addLast(content$ContentInfoCreateContentInfoForMediaUris);
-                                }
-                                coverImageInfo.moveToNext();
-                            }
-                        } else {
-                            Content$ContentInfo content$ContentInfoCreateContentInfo = createContentInfo(coverImageInfo);
-                            if (content$ContentInfoCreateContentInfo != null && PredictiveCapturePathBuilder.isPredictiveCaptureImage(content$ContentInfoCreateContentInfo.mOriginalPath)) {
-                                Cursor predictiveCaptureImageInfo = getPredictiveCaptureImageInfo(PredictiveCapturePathBuilder.getTimeStamp(content$ContentInfoCreateContentInfo.mOriginalPath), content$ContentInfoCreateContentInfo.mBucketId);
-                                if (predictiveCaptureImageInfo != null) {
-                                    try {
-                                        content$ContentInfoCreateContentInfo = createContentInfo(predictiveCaptureImageInfo);
-                                    } catch (Throwable th4) {
-                                        th = th4;
-                                        th3 = null;
-                                        if (predictiveCaptureImageInfo != null) {
-                                        }
-                                    }
-                                }
-                                if (predictiveCaptureImageInfo != null) {
-                                    predictiveCaptureImageInfo.close();
-                                }
-                            }
-                            if (content$ContentInfoCreateContentInfo != null) {
-                                linkedList.addLast(content$ContentInfoCreateContentInfo);
-                            }
-                        }
-                    } catch (Throwable th5) {
-                        th2 = th5;
-                        th = null;
-                        if (coverImageInfo != null) {
-                            throw th2;
-                        }
-                        if (th == null) {
-                            coverImageInfo.close();
-                            throw th2;
-                        }
-                        try {
-                            coverImageInfo.close();
-                            throw th2;
-                        } catch (Throwable th6) {
-                            th.addSuppressed(th6);
-                            throw th2;
-                        }
-                    }
-                } catch (Throwable th7) {
-                    try {
-                        throw th7;
-                    } catch (Throwable th8) {
-                        th = th7;
-                        th2 = th8;
-                        if (coverImageInfo != null) {
-                        }
-                    }
+        if (!linkedList.isEmpty()) {
+            j = linkedList.getLast().mId;
+            if (linkedList.getLast().mIsContainDetails) {
+                Bitmap decodeThumbnail = decodeThumbnail(linkedList.getLast());
+                if (decodeThumbnail != null) {
+                    linkedList.getLast().mIsMediaDataVerified = true;
                 }
+                bitmap = decodeThumbnail;
             }
-            if (coverImageInfo != null) {
-                coverImageInfo.close();
-            }
-            this.mParam = null;
-            this.mMediaUris = null;
-            if (!linkedList.isEmpty()) {
-                j = linkedList.getLast().mId;
-                if (linkedList.getLast().mIsContainDetails) {
-                    Bitmap bitmapDecodeThumbnail = decodeThumbnail(linkedList.getLast());
-                    if (bitmapDecodeThumbnail != null) {
-                        linkedList.getLast().mIsMediaDataVerified = true;
-                    }
-                    bitmap = bitmapDecodeThumbnail;
-                }
-                z = true;
-            }
-            if (z) {
-                this.mDataLoadCallback.onDataLoadCompleted(this.mRequestId, this.mIsRegisterCache, linkedList, bitmap);
-            } else {
-                this.mDataLoadCallback.onDataLoadFailed(this.mRequestId);
-            }
-            return Long.valueOf(j);
-        } catch (Throwable th9) {
-            this.mParam = null;
-            this.mMediaUris = null;
-            throw th9;
+            z = true;
         }
+        if (z) {
+            this.mDataLoadCallback.onDataLoadCompleted(this.mRequestId, this.mIsRegisterCache, linkedList, bitmap);
+        } else {
+            this.mDataLoadCallback.onDataLoadFailed(this.mRequestId);
+        }
+        return Long.valueOf(j);
     }
 
     private CrQueryParameter setupQueryParam(List<String> list, int i) {
@@ -234,9 +199,11 @@ public class DataLoader implements Callable<Long> {
         crQueryParameter.limit = 1;
         crQueryParameter.sortOrder = String.format(Locale.US, "%s DESC, %s DESC", "datetaken", "_id");
         StringBuilder sb = new StringBuilder();
-        sb.append("(media_type==1 OR media_type==3)");
+        sb.append("(somctype!=129)");
+        sb.append(" AND (media_type==1 OR media_type==3)");
         sb.append(" AND ");
-        sb.append("(");
+        sb.append("(somctype!=130)");
+        sb.append(" AND (");
         for (int i2 = 0; i2 < arrayList.size(); i2++) {
             if (i2 != 0) {
                 sb.append(" OR ");
@@ -269,7 +236,7 @@ public class DataLoader implements Callable<Long> {
         sb.append("_data");
         sb.append(" like '");
         for (String str : strArr) {
-            if (!str.startsWith("/")) {
+            if (!str.startsWith(SharedPrefsTranslator.CONNECTOR_SLASH)) {
                 sb.append('/');
             }
             sb.append(str);
@@ -281,7 +248,7 @@ public class DataLoader implements Callable<Long> {
         return sb.toString();
     }
 
-    private Content$ContentInfo createContentInfo(Cursor cursor, boolean z) {
+    private Content.ContentInfo createContentInfo(Cursor cursor, boolean z) {
         Uri uriWithAppendedPath;
         int mediaId = getMediaId(cursor);
         int i = 2;
@@ -291,68 +258,70 @@ public class DataLoader implements Callable<Long> {
         int i3 = cursor.getInt(5);
         int i4 = cursor.getInt(7);
         String fileExtension = CommonUtility.getFileExtension(string2);
-        if (string.equals("image/jpeg") || isSupportedFileExtension(".JPG", fileExtension)) {
-            uriWithAppendedPath = Uri.withAppendedPath(MediaStore$Images$Media.EXTERNAL_CONTENT_URI, String.valueOf(mediaId));
+        if (string.equals(MediaSavingConstants.MEDIA_TYPE_JPEG_MIME) || isSupportedFileExtension(MediaSavingConstants.MEDIA_TYPE_JPEG_EXT, fileExtension)) {
+            uriWithAppendedPath = Uri.withAppendedPath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, String.valueOf(mediaId));
             i = 1;
-        } else if (string.equals("video/mp4") || isSupportedFileExtension(".mp4", fileExtension) || string.equals("video/3gpp") || isSupportedFileExtension(".3gp", fileExtension)) {
-            uriWithAppendedPath = Uri.withAppendedPath(MediaStore$Video$Media.EXTERNAL_CONTENT_URI, String.valueOf(mediaId));
-        } else if (string.equals("image/mpo")) {
+        } else if (string.equals(MediaSavingConstants.MEDIA_TYPE_MPEG4_MIME) || isSupportedFileExtension(MediaSavingConstants.MEDIA_TYPE_MPEG4_EXT, fileExtension)) {
+            uriWithAppendedPath = Uri.withAppendedPath(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, String.valueOf(mediaId));
+        } else if (string.equals(MediaSavingConstants.MEDIA_TYPE_3GP_MIME) || isSupportedFileExtension(MediaSavingConstants.MEDIA_TYPE_3GP_EXT, fileExtension)) {
+            uriWithAppendedPath = Uri.withAppendedPath(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, String.valueOf(mediaId));
+        } else if (string.equals(MediaSavingConstants.MEDIA_TYPE_MPO_MIME)) {
             uriWithAppendedPath = Uri.withAppendedPath(QueryParameterAdapter.MPO_3DPICTURES_CONTENT_URI, String.valueOf(mediaId));
             i = 3;
         } else {
-            if (!CamLog.VERBOSE) {
-                return null;
+            if (CamLog.VERBOSE) {
+                CamLog.d("query error : mime = " + string);
             }
-            CamLog.d("query error : mime = " + string);
             return null;
         }
         int i5 = i == 1 ? cursor.getInt(6) : 0;
-        Content$ContentInfo content$ContentInfo = new Content$ContentInfo();
-        content$ContentInfo.mId = mediaId;
-        content$ContentInfo.mOriginalUri = uriWithAppendedPath;
-        content$ContentInfo.mOriginalPath = string2;
-        content$ContentInfo.mType = i;
-        content$ContentInfo.mWidth = i2;
-        content$ContentInfo.mHeight = i3;
-        content$ContentInfo.mOrientation = i5;
-        content$ContentInfo.mMimeType = string;
-        content$ContentInfo.mBucketId = i4;
-        content$ContentInfo.mIsContainDetails = z;
+        Content.ContentInfo contentInfo = new Content.ContentInfo();
+        contentInfo.mId = mediaId;
+        contentInfo.mOriginalUri = uriWithAppendedPath;
+        contentInfo.mOriginalPath = string2;
+        contentInfo.mType = i;
+        contentInfo.mWidth = i2;
+        contentInfo.mHeight = i3;
+        contentInfo.mOrientation = i5;
+        contentInfo.mMimeType = string;
+        contentInfo.mBucketId = i4;
+        contentInfo.mIsContainDetails = z;
         if (z) {
-            content$ContentInfo.mGroupedImage = getGroupedImageCount(i4);
-            content$ContentInfo.mSomcType = getSomcType(string2);
-            content$ContentInfo.mIsVideoHdr = isVideoHdr(string2);
-            content$ContentInfo.mContentType = getContentType(content$ContentInfo);
-            if (content$ContentInfo.mContentType == Content$ContentsType.BURST) {
-                content$ContentInfo.mMediaStoreIds = getGroupedImageMediaID(i4, content$ContentInfo);
+            contentInfo.mGroupedImage = getGroupedImageCount(i4);
+            contentInfo.mSomcType = getSomcType(string2);
+            contentInfo.mIsVideoHdr = isVideoHdr(string2);
+            contentInfo.mContentType = getContentType(contentInfo);
+            Content.ContentsType contentType = contentInfo.mContentType;
+            if (contentType == Content.ContentsType.BURST) {
+                contentInfo.mMediaStoreIds = getGroupedImageMediaID(i4, contentInfo);
             }
         }
-        return content$ContentInfo;
+        return contentInfo;
     }
 
-    private List<Long> getGroupedImageMediaID(int i, Content$ContentInfo content$ContentInfo) {
-        ArrayList arrayList = new ArrayList();
+    private List<Long> getGroupedImageMediaID(int i, Content.ContentInfo contentInfo) {
+        List<Long> arrayList = new ArrayList<>();
         CrQueryParameter crQueryParameter = new CrQueryParameter();
         crQueryParameter.projection = new String[]{"bucket_id", "_id"};
         crQueryParameter.sortOrder = String.format(Locale.US, "%s DESC, %s DESC", "datetaken", "_id");
         crQueryParameter.where = String.format(Locale.US, "%s like '%s'", "bucket_id", Integer.valueOf(i));
         Cursor cursorCrQuery = PhotoStackQueryHelper.crQuery(this.mResolver, EXTENDED_FILES_CONTENT_URI, crQueryParameter);
         if (cursorCrQuery == null) {
-            arrayList.add(Long.valueOf(content$ContentInfo.mId));
-        } else {
-            while (cursorCrQuery.moveToNext()) {
-                arrayList.add(Long.valueOf(Long.valueOf(cursorCrQuery.getString(cursorCrQuery.getColumnIndex("_id"))).longValue()));
-            }
+            arrayList.add(Long.valueOf(contentInfo.mId));
+            return arrayList;
+        }
+        while (cursorCrQuery.moveToNext()) {
+            arrayList.add(Long.valueOf(Long.valueOf(cursorCrQuery.getString(cursorCrQuery.getColumnIndex("_id"))).longValue()));
         }
         cursorCrQuery.close();
         return arrayList;
     }
 
-    private Content$ContentInfo createContentInfo(Cursor cursor) {
+    private Content.ContentInfo createContentInfo(Cursor cursor) {
         return createContentInfo(cursor, true);
     }
 
-    private Content$ContentInfo createContentInfoForMediaUris(Cursor cursor) {
+    private Content.ContentInfo createContentInfoForMediaUris(Cursor cursor) {
         return createContentInfo(cursor, false);
     }
 
@@ -386,14 +355,14 @@ public class DataLoader implements Callable<Long> {
             CamLog.d("getSomcType path : " + str);
         }
         CrQueryParameter crQueryParameter = new CrQueryParameter();
-        crQueryParameter.projection = new String[]{"_data", "somctype"};
+        crQueryParameter.projection = new String[]{"_data", SomcMediaStore.ExtendedFiles.ExtendedFileColumns.SOMC_FILE_TYPE};
         crQueryParameter.sortOrder = String.format(Locale.US, "%s DESC, %s DESC", "datetaken", "_id");
         crQueryParameter.where = String.format(Locale.US, "%s like '%s'", "_data", str);
         Cursor cursorCrQuery = PhotoStackQueryHelper.crQuery(this.mResolver, EXTENDED_FILES_CONTENT_URI, crQueryParameter);
         if (cursorCrQuery == null) {
             return 0;
         }
-        int i = cursorCrQuery.moveToFirst() ? cursorCrQuery.getInt(cursorCrQuery.getColumnIndex("somctype")) : 0;
+        int i = cursorCrQuery.moveToFirst() ? cursorCrQuery.getInt(cursorCrQuery.getColumnIndex(SomcMediaStore.ExtendedFiles.ExtendedFileColumns.SOMC_FILE_TYPE)) : 0;
         cursorCrQuery.close();
         if (CamLog.VERBOSE) {
             CamLog.d("somcType = " + i);
@@ -403,7 +372,7 @@ public class DataLoader implements Callable<Long> {
 
     private boolean isVideoHdr(String str) {
         CrQueryParameter crQueryParameter = new CrQueryParameter();
-        crQueryParameter.projection = new String[]{"_data", "is_hdr"};
+        crQueryParameter.projection = new String[]{"_data", SomcFileTypeConstants.IS_HDR};
         boolean z = false;
         crQueryParameter.sortOrder = String.format(Locale.US, "%s DESC, %s DESC", "datetaken", "_id");
         crQueryParameter.where = String.format(Locale.US, "%s like '%s'", "_data", str);
@@ -411,7 +380,7 @@ public class DataLoader implements Callable<Long> {
         if (cursorCrQuery != null) {
             try {
                 if (cursorCrQuery.moveToFirst()) {
-                    if (cursorCrQuery.getInt(cursorCrQuery.getColumnIndex("is_hdr")) == 1) {
+                    if (cursorCrQuery.getInt(cursorCrQuery.getColumnIndex(SomcFileTypeConstants.IS_HDR)) == 1) {
                         z = true;
                     }
                 }
@@ -424,68 +393,68 @@ public class DataLoader implements Callable<Long> {
         return z;
     }
 
-    private Content$ContentsType getContentType(Content$ContentInfo content$ContentInfo) {
-        if (content$ContentInfo.mType == 1) {
-            if (PredictiveCapturePathBuilder.isPredictiveCaptureImage(content$ContentInfo.mOriginalPath)) {
-                return Content$ContentsType.PREDICTIVE_CAPTURE;
+    private Content.ContentsType getContentType(Content.ContentInfo contentInfo) {
+        if (contentInfo.mType == 1) {
+            if (PredictiveCapturePathBuilder.isPredictiveCaptureImage(contentInfo.mOriginalPath)) {
+                return Content.ContentsType.PREDICTIVE_CAPTURE;
             }
-            if (content$ContentInfo.mSomcType == 129 || content$ContentInfo.mSomcType == 2) {
-                return Content$ContentsType.BURST;
+            if (contentInfo.mSomcType == 129 || contentInfo.mSomcType == 2) {
+                return Content.ContentsType.BURST;
             }
-            if (content$ContentInfo.mSomcType == 130 || content$ContentInfo.mSomcType == 4) {
-                return Content$ContentsType.TIME_SHIFT;
+            if (contentInfo.mSomcType == 130 || contentInfo.mSomcType == 4) {
+                return Content.ContentsType.TIME_SHIFT;
             }
-            if (content$ContentInfo.mSomcType == 42) {
-                return Content$ContentsType.SOUND_PHOTO;
+            if (contentInfo.mSomcType == 42) {
+                return Content.ContentsType.SOUND_PHOTO;
             }
-            return Content$ContentsType.PHOTO;
+            return Content.ContentsType.PHOTO;
         }
-        if (content$ContentInfo.mType == 2) {
-            if (content$ContentInfo.mSomcType == 12) {
-                return Content$ContentsType.TIME_SHIFT_VIDEO;
+        if (contentInfo.mType == 2) {
+            if (contentInfo.mSomcType == 12) {
+                return Content.ContentsType.TIME_SHIFT_VIDEO;
             }
-            if (content$ContentInfo.mSomcType == 11) {
-                return Content$ContentsType.TIME_SHIFT_VIDEO_120F;
+            if (contentInfo.mSomcType == 11) {
+                return Content.ContentsType.TIME_SHIFT_VIDEO_120F;
             }
-            if (SlowMotionPathBuilder.isSuperSlowMotionVideo(content$ContentInfo.mOriginalPath)) {
-                return Content$ContentsType.SUPER_SLOW_MOTION_VIDEO;
+            if (SlowMotionPathBuilder.isSuperSlowMotionVideo(contentInfo.mOriginalPath)) {
+                return Content.ContentsType.SUPER_SLOW_MOTION_VIDEO;
             }
-            if (SlowMotionPathBuilder.isSuperSlowShotVideo(content$ContentInfo.mOriginalPath)) {
-                return Content$ContentsType.SUPER_SLOW_SHOT_VIDEO;
+            if (SlowMotionPathBuilder.isSuperSlowShotVideo(contentInfo.mOriginalPath)) {
+                return Content.ContentsType.SUPER_SLOW_SHOT_VIDEO;
             }
-            if (SlowMotionPathBuilder.isStandardSlowMotionVideo(content$ContentInfo.mOriginalPath)) {
-                return Content$ContentsType.STANDARD_SLOW_MOTION_VIDEO;
+            if (SlowMotionPathBuilder.isStandardSlowMotionVideo(contentInfo.mOriginalPath)) {
+                return Content.ContentsType.STANDARD_SLOW_MOTION_VIDEO;
             }
-            if (SlowMotionPathBuilder.isHFRVideo(content$ContentInfo.mOriginalPath)) {
-                return Content$ContentsType.HIGH_FRAME_RATE_VIDEO;
+            if (SlowMotionPathBuilder.isHFRVideo(contentInfo.mOriginalPath)) {
+                return Content.ContentsType.HIGH_FRAME_RATE_VIDEO;
             }
-            if (content$ContentInfo.mWidth >= 3840 || content$ContentInfo.mHeight >= 3840) {
-                if (content$ContentInfo.mIsVideoHdr) {
-                    return Content$ContentsType.HDR_VIDEO_4K;
+            if (contentInfo.mWidth >= 3840 || contentInfo.mHeight >= 3840) {
+                if (contentInfo.mIsVideoHdr) {
+                    return Content.ContentsType.HDR_VIDEO_4K;
                 }
-                return Content$ContentsType.VIDEO_4K;
+                return Content.ContentsType.VIDEO_4K;
             }
-            if (content$ContentInfo.mIsVideoHdr) {
-                return Content$ContentsType.HDR_VIDEO;
+            if (contentInfo.mIsVideoHdr) {
+                return Content.ContentsType.HDR_VIDEO;
             }
-            return Content$ContentsType.VIDEO;
+            return Content.ContentsType.VIDEO;
         }
         if (CamLog.VERBOSE) {
             CamLog.d("Unsupported file type");
         }
-        return Content$ContentsType.NONE;
+        return Content.ContentsType.NONE;
     }
 
-    private Bitmap decodeThumbnail(Content$ContentInfo content$ContentInfo) {
+    private Bitmap decodeThumbnail(Content.ContentInfo contentInfo) {
         if (CamLog.VERBOSE) {
             CamLog.d("decodeThumbnail() has been called.");
         }
         Bitmap bitmapCreateAntiAliasBitmap = null;
-        if (content$ContentInfo != null) {
-            if (content$ContentInfo.mOriginalPath == null) {
-                content$ContentInfo.mOriginalPath = getMediaPath(content$ContentInfo.mId, content$ContentInfo.mType);
+        if (contentInfo != null) {
+            if (contentInfo.mOriginalPath == null) {
+                contentInfo.mOriginalPath = getMediaPath(contentInfo.mId, contentInfo.mType);
             }
-            Bitmap bitmapCreateMicroThumbnail = ThumbnailFactory.createMicroThumbnail(content$ContentInfo);
+            Bitmap bitmapCreateMicroThumbnail = ThumbnailFactory.createMicroThumbnail(contentInfo);
             bitmapCreateAntiAliasBitmap = bitmapCreateMicroThumbnail != null ? createAntiAliasBitmap(bitmapCreateMicroThumbnail, bitmapCreateMicroThumbnail.getWidth()) : bitmapCreateMicroThumbnail;
             if (CamLog.VERBOSE) {
                 CamLog.d("decodeThumbnail(): thumbnail = " + bitmapCreateAntiAliasBitmap);
@@ -507,14 +476,14 @@ public class DataLoader implements Callable<Long> {
         switch (i) {
             case 1:
             case 3:
-                uri = MediaStore$Images$Media.EXTERNAL_CONTENT_URI;
+                uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
                 crQueryParameter.projection = new String[]{"_data"};
                 crQueryParameter.where = String.format(Locale.US, "%s=%s", "_id", Long.valueOf(j));
                 crQueryParameter.offset = 0;
                 crQueryParameter.limit = 1;
                 break;
             case 2:
-                uri = MediaStore$Video$Media.EXTERNAL_CONTENT_URI;
+                uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
                 crQueryParameter.projection = new String[]{"_data"};
                 crQueryParameter.where = String.format(Locale.US, "%s=%s", "_id", Long.valueOf(j));
                 crQueryParameter.offset = 0;
@@ -524,10 +493,10 @@ public class DataLoader implements Callable<Long> {
                 return null;
         }
         Cursor cursorCrQuery = PhotoStackQueryHelper.crQuery(this.mResolver, uri, crQueryParameter);
+        if (cursorCrQuery == null) {
+            return null;
+        }
         try {
-            if (cursorCrQuery == null) {
-                return null;
-            }
             if (cursorCrQuery.moveToPosition(0)) {
                 return cursorCrQuery.getString(0);
             }
@@ -545,7 +514,7 @@ public class DataLoader implements Callable<Long> {
         crQueryParameter.projection = new String[]{"_id", "_data", "mime_type", "datetaken", "width", "height", "orientation", "bucket_id"};
         crQueryParameter.sortOrder = String.format(Locale.US, "%s DESC", "title");
         StringBuilder sb = new StringBuilder();
-        sb.append("(_data REGEXP '.*/DSCPDC_\\d{4}_BURST" + str + "(|_COVER).[jJ][pP][eE]?[gG]')");
+        sb.append("(_data REGEXP '.*/DSCPDC_\\d{4}_BURST" + str + "(|_" + PredictiveCapturePathBuilder.DCF_FILE_NAME_FREE_WORD_COVER + ").[jJ][pP][eE]?[gG]')");
         sb.append(" AND ");
         StringBuilder sb2 = new StringBuilder();
         sb2.append("(bucket_id==");
@@ -590,7 +559,7 @@ public class DataLoader implements Callable<Long> {
 
     private Cursor getCoverImageInfo(int i) {
         CrQueryParameter crQueryParameter = new CrQueryParameter();
-        crQueryParameter.projection = new String[]{"_id", "_data", "mime_type", "datetaken", "width", "height", "orientation", "bucket_id"};
+        crQueryParameter.projection = new String[]{"_id", "_data", "mime_type", "datetaken", "width", "height", "orientation", "bucket_id", SomcMediaStore.ExtendedFiles.ExtendedFileColumns.SOMC_FILE_TYPE};
         crQueryParameter.where = String.format(Locale.US, "%s like '%s'", "_id", Integer.valueOf(i));
         Cursor cursorCrQuery = PhotoStackQueryHelper.crQuery(this.mResolver, EXTENDED_FILES_CONTENT_URI, crQueryParameter);
         if (cursorCrQuery == null) {
@@ -618,7 +587,7 @@ public class DataLoader implements Callable<Long> {
         int iMin = Math.min(i, i2);
         int iMax = Math.max(i, i2);
         CrQueryParameter crQueryParameter = new CrQueryParameter();
-        crQueryParameter.projection = new String[]{"_id", "_data", "mime_type", "datetaken", "width", "height", "orientation", "bucket_id", "somctype"};
+        crQueryParameter.projection = new String[]{"_id", "_data", "mime_type", "datetaken", "width", "height", "orientation", "bucket_id", SomcMediaStore.ExtendedFiles.ExtendedFileColumns.SOMC_FILE_TYPE};
         crQueryParameter.where = String.format(Locale.US, "%s >= '%s' AND %s <= '%s'", "_id", Integer.valueOf(iMin), "_id", Integer.valueOf(iMax));
         Cursor cursorCrQuery = PhotoStackQueryHelper.crQuery(this.mResolver, EXTENDED_FILES_CONTENT_URI, crQueryParameter);
         if (cursorCrQuery == null) {

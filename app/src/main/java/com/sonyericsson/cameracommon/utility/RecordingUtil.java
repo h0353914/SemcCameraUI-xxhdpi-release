@@ -3,8 +3,8 @@ package com.sonyericsson.cameracommon.utility;
 import android.content.Context;
 import android.os.UserManager;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.cameracommon.constants.CommonConstants;
 import com.sonyericsson.cameracommon.storage.Storage;
-import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 
 public class RecordingUtil {
     private static final String DISALLOW_RECORD_AUDIO = "no_record_audio";
@@ -24,8 +24,8 @@ public class RecordingUtil {
         return j3;
     }
 
-    public static long getRecordableSizeKBytes(Storage storage, Storage$StorageType storage$StorageType) {
-        long remainStorage = (storage.getRemainStorage(storage$StorageType) - 61440) + 15360;
+    public static long getRecordableSizeKBytes(Storage storage, Storage.StorageType storageType) {
+        long remainStorage = (storage.getRemainStorage(storageType) - CommonConstants.STORAGE_REMAIN_MIN) + CommonConstants.EXTRA_RECORDABLE_FILESIZE;
         if (remainStorage < 0) {
             return 0L;
         }
@@ -36,7 +36,7 @@ public class RecordingUtil {
         if (CamLog.VERBOSE) {
             CamLog.d("isAudioPolicyActive: Android N or later");
         }
-        boolean zHasUserRestriction = ((UserManager) context.getSystemService(UserManager.class)).hasUserRestriction("no_record_audio");
+        boolean zHasUserRestriction = ((UserManager) context.getSystemService(UserManager.class)).hasUserRestriction(DISALLOW_RECORD_AUDIO);
         SomcDevicePolicyManager somcDevicePolicyManager = SomcDevicePolicyManager.getInstance(context);
         return (somcDevicePolicyManager == null ? false : somcDevicePolicyManager.hasUserRestriction(SomcDevicePolicyManager.DISALLOW_RECORD_AUDIO)) | zHasUserRestriction;
     }

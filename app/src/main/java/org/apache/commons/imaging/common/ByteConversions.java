@@ -282,14 +282,14 @@ public final class ByteConversions {
 
     private static double toDouble(byte[] bArr, int i, ByteOrder byteOrder) {
         long j;
-        long j2 = ((long) bArr[i + 0]) & 255;
-        long j3 = ((long) bArr[i + 1]) & 255;
-        long j4 = ((long) bArr[i + 2]) & 255;
-        long j5 = ((long) bArr[i + 3]) & 255;
-        long j6 = ((long) bArr[i + 4]) & 255;
-        long j7 = ((long) bArr[i + 5]) & 255;
-        long j8 = ((long) bArr[i + 6]) & 255;
-        long j9 = ((long) bArr[i + 7]) & 255;
+        long j2 = bArr[i + 0] & 255;
+        long j3 = bArr[i + 1] & 255;
+        long j4 = bArr[i + 2] & 255;
+        long j5 = bArr[i + 3] & 255;
+        long j6 = bArr[i + 4] & 255;
+        long j7 = bArr[i + 5] & 255;
+        long j8 = bArr[i + 6] & 255;
+        long j9 = bArr[i + 7] & 255;
         if (byteOrder == ByteOrder.BIG_ENDIAN) {
             j = (j9 << 0) | (j2 << 56) | (j3 << 48) | (j4 << 40) | (j5 << 32) | (j6 << 24) | (j7 << 16) | (j8 << 8);
         } else {

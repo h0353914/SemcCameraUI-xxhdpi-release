@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.setting;
 
 import android.content.Context;

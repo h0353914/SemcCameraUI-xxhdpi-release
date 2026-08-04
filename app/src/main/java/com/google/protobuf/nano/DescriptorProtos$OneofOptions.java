@@ -5,12 +5,6 @@ import java.io.IOException;
 public final class DescriptorProtos$OneofOptions extends ExtendableMessageNano<DescriptorProtos$OneofOptions> {
     private static volatile DescriptorProtos$OneofOptions[] _emptyArray;
     public DescriptorProtos$UninterpretedOption[] uninterpretedOption;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$OneofOptions[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

@@ -2,6 +2,7 @@ package com.sonyericsson.cameracommon.viewfinder.indicators;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.widget.ImageView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.cameracommon.utility.BrandConfig;
 
 public class GeotagIndicator extends Indicator {
@@ -25,10 +26,10 @@ public class GeotagIndicator extends Indicator {
     }
 
     private int getAcquiringGpsResource() {
-        return BrandConfig.isVerizonBrand() ? 2131230849 : 2131230848;
+        return BrandConfig.isVerizonBrand() ? R.drawable.cam_acquiring_gps_vzw_anim : R.drawable.cam_acquiring_gps_anim;
     }
 
     private int getAcquiredGpsIcon() {
-        return BrandConfig.isVerizonBrand() ? 2131230842 : 2131230841;
+        return BrandConfig.isVerizonBrand() ? R.drawable.cam_acquired_gps_vzw_icn : R.drawable.cam_acquired_gps_icn;
     }
 }

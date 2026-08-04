@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.jpeg.decoder;
 
+import android.support.v4.view.MotionEventCompat;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBuffer;
@@ -14,26 +15,22 @@ import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFileParser;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.common.bytesource.ByteSource;
+import org.apache.commons.imaging.formats.jpeg.JpegConstants;
 import org.apache.commons.imaging.formats.jpeg.JpegUtils;
-import org.apache.commons.imaging.formats.jpeg.JpegUtils$Visitor;
 import org.apache.commons.imaging.formats.jpeg.segments.DhtSegment;
-import org.apache.commons.imaging.formats.jpeg.segments.DhtSegment$HuffmanTable;
 import org.apache.commons.imaging.formats.jpeg.segments.DqtSegment;
-import org.apache.commons.imaging.formats.jpeg.segments.DqtSegment$QuantizationTable;
 import org.apache.commons.imaging.formats.jpeg.segments.SofnSegment;
-import org.apache.commons.imaging.formats.jpeg.segments.SofnSegment$Component;
 import org.apache.commons.imaging.formats.jpeg.segments.SosSegment;
-import org.apache.commons.imaging.formats.jpeg.segments.SosSegment$Component;
 
-public class JpegDecoder extends BinaryFileParser implements JpegUtils$Visitor {
+public class JpegDecoder extends BinaryFileParser implements JpegUtils.Visitor {
     private BufferedImage image;
     private ImageReadException imageReadException;
     private IOException ioException;
     private SofnSegment sofnSegment;
     private SosSegment sosSegment;
-    private final DqtSegment$QuantizationTable[] quantizationTables = new DqtSegment$QuantizationTable[4];
-    private final DhtSegment$HuffmanTable[] huffmanDCTables = new DhtSegment$HuffmanTable[4];
-    private final DhtSegment$HuffmanTable[] huffmanACTables = new DhtSegment$HuffmanTable[4];
+    private final DqtSegment.QuantizationTable[] quantizationTables = new DqtSegment.QuantizationTable[4];
+    private final DhtSegment.HuffmanTable[] huffmanDCTables = new DhtSegment.HuffmanTable[4];
+    private final DhtSegment.HuffmanTable[] huffmanACTables = new DhtSegment.HuffmanTable[4];
     private final float[][] scaledQuantizationTables = new float[4][];
     private final int[] zz = new int[64];
     private final int[] blockInt = new int[64];
@@ -52,13 +49,13 @@ public class JpegDecoder extends BinaryFileParser implements JpegUtils$Visitor {
         return (int) (f + 0.5f);
     }
 
-    @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils$Visitor
+    @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
     public boolean beginSOS() {
         return true;
     }
 
-    @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils$Visitor
-    public void visitSOS(int i, byte[] bArr, byte[] bArr2) {
+    @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+    public void visitSOS(int i, byte[] bArr, byte[] bArr2) throws ImageReadException {
         int i2;
         WritableRaster writableRaster;
         JpegInputStream jpegInputStream;
@@ -87,8 +84,8 @@ public class JpegDecoder extends BinaryFileParser implements JpegUtils$Visitor {
             }
             int[] iArr2 = new int[this.sofnSegment.numberOfComponents];
             if (this.sofnSegment.numberOfComponents == 3 || this.sofnSegment.numberOfComponents == 1) {
-                DirectColorModel directColorModel = new DirectColorModel(24, 16711680, 65280, 255);
-                WritableRaster writableRasterCreatePackedRaster = Raster.createPackedRaster(3, this.sofnSegment.width, this.sofnSegment.height, new int[]{16711680, 65280, 255}, (Point) null);
+                DirectColorModel directColorModel = new DirectColorModel(24, 16711680, MotionEventCompat.ACTION_POINTER_INDEX_MASK, 255);
+                WritableRaster writableRasterCreatePackedRaster = Raster.createPackedRaster(3, this.sofnSegment.width, this.sofnSegment.height, new int[]{16711680, MotionEventCompat.ACTION_POINTER_INDEX_MASK, 255}, (Point) null);
                 DataBuffer dataBuffer = writableRasterCreatePackedRaster.getDataBuffer();
                 int i10 = 0;
                 while (i10 < i6 * i8) {
@@ -177,41 +174,42 @@ public class JpegDecoder extends BinaryFileParser implements JpegUtils$Visitor {
         }
     }
 
-    @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils$Visitor
+    @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
     public boolean visitSegment(int i, byte[] bArr, int i2, byte[] bArr2, byte[] bArr3) throws IOException, ImageReadException {
-        DhtSegment$HuffmanTable[] dhtSegment$HuffmanTableArr;
-        if (Arrays.binarySearch(new int[]{65472, 65473, 65474, 65475, 65477, 65478, 65479, 65481, 65482, 65483, 65485, 65486, 65487}, i) < 0) {
+        DhtSegment.HuffmanTable[] huffmanTableArr;
+        if (Arrays.binarySearch(new int[]{JpegConstants.SOF0_MARKER, JpegConstants.SOF1_MARKER, JpegConstants.SOF2_MARKER, JpegConstants.SOF3_MARKER, JpegConstants.SOF5_MARKER, JpegConstants.SOF6_MARKER, JpegConstants.SOF7_MARKER, JpegConstants.SOF9_MARKER, JpegConstants.SOF10_MARKER, JpegConstants.SOF11_MARKER, JpegConstants.SOF13_MARKER, JpegConstants.SOF14_MARKER, JpegConstants.SOF15_MARKER}, i) < 0) {
             if (i == 65499) {
                 DqtSegment dqtSegment = new DqtSegment(i, bArr3);
                 for (int i3 = 0; i3 < dqtSegment.quantizationTables.size(); i3++) {
-                    DqtSegment$QuantizationTable dqtSegment$QuantizationTable = dqtSegment.quantizationTables.get(i3);
-                    if (dqtSegment$QuantizationTable.destinationIdentifier < 0 || dqtSegment$QuantizationTable.destinationIdentifier >= this.quantizationTables.length) {
-                        throw new ImageReadException("Invalid quantization table identifier " + dqtSegment$QuantizationTable.destinationIdentifier);
+                    DqtSegment.QuantizationTable quantizationTable = dqtSegment.quantizationTables.get(i3);
+                    if (quantizationTable.destinationIdentifier < 0 || quantizationTable.destinationIdentifier >= this.quantizationTables.length) {
+                        throw new ImageReadException("Invalid quantization table identifier " + quantizationTable.destinationIdentifier);
                     }
-                    this.quantizationTables[dqtSegment$QuantizationTable.destinationIdentifier] = dqtSegment$QuantizationTable;
-                    ZigZag.zigZagToBlock(dqtSegment$QuantizationTable.getElements(), new int[64]);
+                    this.quantizationTables[quantizationTable.destinationIdentifier] = quantizationTable;
+                    int[] blockInt = new int[64];
+                    ZigZag.zigZagToBlock(quantizationTable.getElements(), blockInt);
                     float[] fArr = new float[64];
                     for (int i4 = 0; i4 < 64; i4++) {
-                        fArr[i4] = r1[i4];
+                        fArr[i4] = blockInt[i4];
                     }
                     Dct.scaleDequantizationMatrix(fArr);
-                    this.scaledQuantizationTables[dqtSegment$QuantizationTable.destinationIdentifier] = fArr;
+                    this.scaledQuantizationTables[quantizationTable.destinationIdentifier] = fArr;
                 }
             } else if (i == 65476) {
                 DhtSegment dhtSegment = new DhtSegment(i, bArr3);
                 for (int i5 = 0; i5 < dhtSegment.huffmanTables.size(); i5++) {
-                    DhtSegment$HuffmanTable dhtSegment$HuffmanTable = dhtSegment.huffmanTables.get(i5);
-                    if (dhtSegment$HuffmanTable.tableClass == 0) {
-                        dhtSegment$HuffmanTableArr = this.huffmanDCTables;
-                    } else if (dhtSegment$HuffmanTable.tableClass == 1) {
-                        dhtSegment$HuffmanTableArr = this.huffmanACTables;
+                    DhtSegment.HuffmanTable huffmanTable = dhtSegment.huffmanTables.get(i5);
+                    if (huffmanTable.tableClass == 0) {
+                        huffmanTableArr = this.huffmanDCTables;
+                    } else if (huffmanTable.tableClass == 1) {
+                        huffmanTableArr = this.huffmanACTables;
                     } else {
-                        throw new ImageReadException("Invalid huffman table class " + dhtSegment$HuffmanTable.tableClass);
+                        throw new ImageReadException("Invalid huffman table class " + huffmanTable.tableClass);
                     }
-                    if (dhtSegment$HuffmanTable.destinationIdentifier < 0 || dhtSegment$HuffmanTable.destinationIdentifier >= dhtSegment$HuffmanTableArr.length) {
-                        throw new ImageReadException("Invalid huffman table identifier " + dhtSegment$HuffmanTable.destinationIdentifier);
+                    if (huffmanTable.destinationIdentifier < 0 || huffmanTable.destinationIdentifier >= huffmanTableArr.length) {
+                        throw new ImageReadException("Invalid huffman table identifier " + huffmanTable.destinationIdentifier);
                     }
-                    dhtSegment$HuffmanTableArr[dhtSegment$HuffmanTable.destinationIdentifier] = dhtSegment$HuffmanTable;
+                    huffmanTableArr[huffmanTable.destinationIdentifier] = huffmanTable;
                 }
             }
         } else {
@@ -268,8 +266,8 @@ public class JpegDecoder extends BinaryFileParser implements JpegUtils$Visitor {
     private Block[] allocateMCUMemory() throws ImageReadException {
         Block[] blockArr = new Block[this.sosSegment.numberOfComponents];
         for (int i = 0; i < this.sosSegment.numberOfComponents; i++) {
-            SosSegment$Component components = this.sosSegment.getComponents(i);
-            SofnSegment$Component components2 = null;
+            SosSegment.Component components = this.sosSegment.getComponents(i);
+            SofnSegment.Component components2 = null;
             int i2 = 0;
             while (true) {
                 if (i2 >= this.sofnSegment.numberOfComponents) {
@@ -295,8 +293,8 @@ public class JpegDecoder extends BinaryFileParser implements JpegUtils$Visitor {
         int i = 0;
         int i2 = 0;
         while (i2 < jpegDecoder.sosSegment.numberOfComponents) {
-            SosSegment$Component components = jpegDecoder.sosSegment.getComponents(i2);
-            SofnSegment$Component components2 = null;
+            SosSegment.Component components = jpegDecoder.sosSegment.getComponents(i2);
+            SofnSegment.Component components2 = null;
             int i3 = i;
             while (true) {
                 if (i3 >= jpegDecoder.sofnSegment.numberOfComponents) {
@@ -403,14 +401,14 @@ public class JpegDecoder extends BinaryFileParser implements JpegUtils$Visitor {
         return iNextBit;
     }
 
-    private int decode(JpegInputStream jpegInputStream, DhtSegment$HuffmanTable dhtSegment$HuffmanTable) throws IOException, ImageReadException {
+    private int decode(JpegInputStream jpegInputStream, DhtSegment.HuffmanTable huffmanTable) throws IOException, ImageReadException {
         int iNextBit = jpegInputStream.nextBit();
         int i = 1;
-        while (iNextBit > dhtSegment$HuffmanTable.getMaxCode()[i]) {
+        while (iNextBit > huffmanTable.getMaxCode()[i]) {
             i++;
             iNextBit = (iNextBit << 1) | jpegInputStream.nextBit();
         }
-        return dhtSegment$HuffmanTable.getHuffVal()[dhtSegment$HuffmanTable.getValPtr()[i] + (iNextBit - dhtSegment$HuffmanTable.getMinCode()[i])];
+        return huffmanTable.getHuffVal()[huffmanTable.getValPtr()[i] + (iNextBit - huffmanTable.getMinCode()[i])];
     }
 
     public BufferedImage decode(ByteSource byteSource) throws IOException, ImageReadException {

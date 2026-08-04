@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
 
 public class RecordingProgressBar extends ImageView {
@@ -34,12 +35,12 @@ public class RecordingProgressBar extends ImageView {
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mProgressIcon = getResources().getDrawable(2131231418, null);
-        this.mProgressBarWidth = getResources().getDimensionPixelSize(2131165513);
+        this.mProgressIcon = getResources().getDrawable(R.drawable.cam_video_recording_progress_indicator_icn, null);
+        this.mProgressBarWidth = getResources().getDimensionPixelSize(R.dimen.rec_constraint_progress_width);
     }
 
     public void setProgress(int i, int i2) {
-        this.mProgressRatio = i2 != 0 ? (int) ((((double) i) / ((double) i2)) * ((double) ((this.mProgressBarWidth - getPaddingLeft()) - getPaddingRight()))) : 0;
+        this.mProgressRatio = i2 != 0 ? (int) ((i / i2) * ((this.mProgressBarWidth - getPaddingLeft()) - getPaddingRight())) : 0;
         invalidate();
     }
 

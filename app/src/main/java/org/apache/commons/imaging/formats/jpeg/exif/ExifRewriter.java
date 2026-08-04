@@ -35,11 +35,137 @@ public class ExifRewriter extends BinaryFileParser {
         setByteOrder(byteOrder);
     }
 
-    private ExifRewriter$JFIFPieces analyzeJFIF(ByteSource byteSource) throws IOException, ImageReadException {
-        ArrayList arrayList = new ArrayList();
-        ArrayList arrayList2 = new ArrayList();
-        new JpegUtils().traverseJFIF(byteSource, new ExifRewriter$1(this, arrayList, arrayList2));
-        return new ExifRewriter$JFIFPieces(arrayList, arrayList2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private static class JFIFPieces {
+        public final List<JFIFPiece> exifPieces;
+        public final List<JFIFPiece> pieces;
+
+        public JFIFPieces(List<JFIFPiece> list, List<JFIFPiece> list2) {
+            this.pieces = list;
+            this.exifPieces = list2;
+        }
+    }
+
+
+    private static abstract class JFIFPiece { protected abstract void write(OutputStream outputStream) throws IOException; private JFIFPiece() { } }
+
+
+
+
+
+    private static class JFIFPieceSegment extends JFIFPiece {
+        public final int marker;
+        public final byte[] markerBytes;
+        public final byte[] markerLengthBytes;
+        public final byte[] segmentData;
+
+        public JFIFPieceSegment(int i, byte[] bArr, byte[] bArr2, byte[] bArr3) {
+            super();
+            this.marker = i;
+            this.markerBytes = bArr;
+            this.markerLengthBytes = bArr2;
+            this.segmentData = bArr3;
+        }
+
+        @Override // org.apache.commons.imaging.formats.jpeg.exif.ExifRewriter.JFIFPiece
+        protected void write(OutputStream outputStream) throws IOException {
+            outputStream.write(this.markerBytes);
+            outputStream.write(this.markerLengthBytes);
+            outputStream.write(this.segmentData);
+        }
+    }
+
+    private static class JFIFPieceSegmentExif extends JFIFPieceSegment {
+        public JFIFPieceSegmentExif(int i, byte[] bArr, byte[] bArr2, byte[] bArr3) {
+            super(i, bArr, bArr2, bArr3);
+        }
+    }
+
+    private static class JFIFPieceImageData extends JFIFPiece {
+        public final byte[] imageData;
+        public final byte[] markerBytes;
+
+        public JFIFPieceImageData(byte[] bArr, byte[] bArr2) {
+            super();
+            this.markerBytes = bArr;
+            this.imageData = bArr2;
+        }
+
+        @Override // org.apache.commons.imaging.formats.jpeg.exif.ExifRewriter.JFIFPiece
+        protected void write(OutputStream outputStream) throws IOException {
+            outputStream.write(this.markerBytes);
+            outputStream.write(this.imageData);
+        }
+    }
+
+    private JFIFPieces analyzeJFIF(ByteSource byteSource) throws IOException, ImageReadException {
+        final ArrayList arrayList = new ArrayList();
+        final ArrayList arrayList2 = new ArrayList();
+        new JpegUtils().traverseJFIF(byteSource, new JpegUtils.Visitor() { // from class: org.apache.commons.imaging.formats.jpeg.exif.ExifRewriter.1
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public boolean beginSOS() {
+                return true;
+            }
+
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public void visitSOS(int i, byte[] bArr, byte[] bArr2) {
+                arrayList.add(new JFIFPieceImageData(bArr, bArr2));
+            }
+
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public boolean visitSegment(int i, byte[] bArr, int i2, byte[] bArr2, byte[] bArr3) throws IOException, ImageReadException {
+                if (i != 65505) {
+                    arrayList.add(new JFIFPieceSegment(i, bArr, bArr2, bArr3));
+                    return true;
+                }
+                if (!BinaryFunctions.startsWith(bArr3, JpegConstants.EXIF_IDENTIFIER_CODE)) {
+                    arrayList.add(new JFIFPieceSegment(i, bArr, bArr2, bArr3));
+                    return true;
+                }
+                JFIFPieceSegmentExif jFIFPieceSegmentExif = new JFIFPieceSegmentExif(i, bArr, bArr2, bArr3);
+                arrayList.add(jFIFPieceSegmentExif);
+                arrayList2.add(jFIFPieceSegmentExif);
+                return true;
+            }
+        });
+        return new JFIFPieces(arrayList, arrayList2);
     }
 
     public void removeExifMetadata(File file, OutputStream outputStream) throws ImageWriteException, IOException, ImageReadException {
@@ -72,10 +198,10 @@ public class ExifRewriter extends BinaryFileParser {
 
     public void updateExifMetadataLossless(ByteSource byteSource, OutputStream outputStream, TiffOutputSet tiffOutputSet) throws ImageWriteException, IOException, ImageReadException {
         TiffImageWriterBase tiffImageWriterLossy;
-        ExifRewriter$JFIFPieces exifRewriter$JFIFPiecesAnalyzeJFIF = analyzeJFIF(byteSource);
-        List<ExifRewriter$JFIFPiece> list = exifRewriter$JFIFPiecesAnalyzeJFIF.pieces;
-        if (exifRewriter$JFIFPiecesAnalyzeJFIF.exifPieces.size() > 0) {
-            tiffImageWriterLossy = new TiffImageWriterLossless(tiffOutputSet.byteOrder, BinaryFunctions.remainingBytes("trimmed exif bytes", ((ExifRewriter$JFIFPieceSegment) exifRewriter$JFIFPiecesAnalyzeJFIF.exifPieces.get(0)).segmentData, 6));
+        JFIFPieces jFIFPiecesAnalyzeJFIF = analyzeJFIF(byteSource);
+        List<JFIFPiece> list = jFIFPiecesAnalyzeJFIF.pieces;
+        if (jFIFPiecesAnalyzeJFIF.exifPieces.size() > 0) {
+            tiffImageWriterLossy = new TiffImageWriterLossless(tiffOutputSet.byteOrder, BinaryFunctions.remainingBytes("trimmed exif bytes", ((JFIFPieceSegment) jFIFPiecesAnalyzeJFIF.exifPieces.get(0)).segmentData, 6));
         } else {
             tiffImageWriterLossy = new TiffImageWriterLossy(tiffOutputSet.byteOrder);
         }
@@ -98,32 +224,32 @@ public class ExifRewriter extends BinaryFileParser {
         writeSegmentsReplacingExif(outputStream, analyzeJFIF(byteSource).pieces, writeExifSegment(new TiffImageWriterLossy(tiffOutputSet.byteOrder), tiffOutputSet, true));
     }
 
-    private void writeSegmentsReplacingExif(OutputStream outputStream, List<ExifRewriter$JFIFPiece> list, byte[] bArr) throws ImageWriteException, IOException {
+    private void writeSegmentsReplacingExif(OutputStream outputStream, List<JFIFPiece> list, byte[] bArr) throws ImageWriteException, IOException {
         try {
             JpegConstants.SOI.writeTo(outputStream);
-            Iterator<ExifRewriter$JFIFPiece> it = list.iterator();
+            Iterator<JFIFPiece> it = list.iterator();
             boolean z = false;
             while (it.hasNext()) {
-                if (it.next() instanceof ExifRewriter$JFIFPieceSegmentExif) {
+                if (it.next() instanceof JFIFPieceSegmentExif) {
                     z = true;
                 }
             }
             if (!z && bArr != null) {
                 byte[] bytes = ByteConversions.toBytes((short) -31, getByteOrder());
                 if (bArr.length > 65535) {
-                    throw new ExifRewriter$ExifOverflowException("APP1 Segment is too long: " + bArr.length);
+                    throw new ExifOverflowException("APP1 Segment is too long: " + bArr.length);
                 }
-                list.add(((ExifRewriter$JFIFPieceSegment) list.get(0)).marker == 65504 ? 1 : 0, new ExifRewriter$JFIFPieceSegmentExif(65505, bytes, ByteConversions.toBytes((short) (bArr.length + 2), getByteOrder()), bArr));
+                list.add(((JFIFPieceSegment) list.get(0)).marker == 65504 ? 1 : 0, new JFIFPieceSegmentExif(JpegConstants.JPEG_APP1_MARKER, bytes, ByteConversions.toBytes((short) (bArr.length + 2), getByteOrder()), bArr));
             }
             boolean z2 = false;
-            for (ExifRewriter$JFIFPiece exifRewriter$JFIFPiece : list) {
-                if (!(exifRewriter$JFIFPiece instanceof ExifRewriter$JFIFPieceSegmentExif)) {
-                    exifRewriter$JFIFPiece.write(outputStream);
+            for (JFIFPiece jFIFPiece : list) {
+                if (!(jFIFPiece instanceof JFIFPieceSegmentExif)) {
+                    jFIFPiece.write(outputStream);
                 } else if (!z2) {
                     if (bArr != null) {
                         byte[] bytes2 = ByteConversions.toBytes((short) -31, getByteOrder());
                         if (bArr.length > 65535) {
-                            throw new ExifRewriter$ExifOverflowException("APP1 Segment is too long: " + bArr.length);
+                            throw new ExifOverflowException("APP1 Segment is too long: " + bArr.length);
                         }
                         byte[] bytes3 = ByteConversions.toBytes((short) (bArr.length + 2), getByteOrder());
                         outputStream.write(bytes2);
@@ -134,9 +260,315 @@ public class ExifRewriter extends BinaryFileParser {
                 }
             }
             IoUtils.closeQuietly(true, outputStream);
-        } catch (Throwable th) {
+        } catch (Exception th) {
             IoUtils.closeQuietly(false, outputStream);
-            throw th;
+            throw new ImageWriteException("Error", th);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static class ExifOverflowException extends ImageWriteException {
+        private static final long serialVersionUID = 1401484357224931218L;
+
+        public ExifOverflowException(String str) {
+            super(str);
         }
     }
 

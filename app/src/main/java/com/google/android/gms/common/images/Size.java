@@ -1,5 +1,8 @@
 package com.google.android.gms.common.images;
 
+import com.sonyericsson.android.camera.util.capability.SharedPrefsTranslator;
+
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class Size {
     private final int zznQ;
     private final int zznR;
@@ -58,6 +61,6 @@ public final class Size {
     }
 
     public String toString() {
-        return this.zznQ + "x" + this.zznR;
+        return this.zznQ + SharedPrefsTranslator.CONNECTOR_CROSS + this.zznR;
     }
 }

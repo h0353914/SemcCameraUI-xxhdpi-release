@@ -5,6 +5,7 @@ import android.net.Uri;
 import com.google.android.gms.common.internal.zzw;
 import com.google.android.gms.common.internal.zzx;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public abstract class zzc {
     protected final DataHolder zzabq;
     protected int zzadl;

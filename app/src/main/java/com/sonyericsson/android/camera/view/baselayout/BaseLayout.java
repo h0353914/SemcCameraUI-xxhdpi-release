@@ -1,25 +1,31 @@
 package com.sonyericsson.android.camera.view.baselayout;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Point;
 import android.graphics.Rect;
-import android.graphics.drawable.Animatable2$AnimationCallback;
+import android.graphics.drawable.Animatable2;
 import android.support.annotation.NonNull;
+import android.support.v4.view.ViewCompat;
 import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup$MarginLayoutParams;
 import android.view.ViewStub;
 import android.view.Window;
-import android.view.WindowManager$LayoutParams;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout$LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout$LayoutParams;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.CameraActivity;
-import com.sonyericsson.android.camera.SideTouchEventDetector$SideTouchArea;
+import com.sonyericsson.android.camera.SideTouchEventDetector;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.configuration.parameters.Ev;
 import com.sonyericsson.android.camera.configuration.parameters.FocusRange;
@@ -28,7 +34,7 @@ import com.sonyericsson.android.camera.configuration.parameters.ShutterSpeed;
 import com.sonyericsson.android.camera.configuration.parameters.WhiteBalance;
 import com.sonyericsson.android.camera.debug.DebugParameterUtils;
 import com.sonyericsson.android.camera.debug.SideTouchEmulateViewFactory;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.setting.UiControlSettings;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.PerfLog;
@@ -39,6 +45,9 @@ import com.sonyericsson.android.camera.view.FrontAngleSwitchButton;
 import com.sonyericsson.android.camera.view.PredictiveCaptureIndicatorController;
 import com.sonyericsson.android.camera.view.PrimaryShortcutGroup;
 import com.sonyericsson.android.camera.view.SuperSlowMotionTriggerAnimationController;
+import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
+import com.sonyericsson.android.camera.view.baselayout.PredictiveLaunchCoverView;
+import com.sonyericsson.android.camera.view.baselayout.ViewFinderGestureDetector;
 import com.sonyericsson.android.camera.view.baselayout.indicators.IconIndicator;
 import com.sonyericsson.android.camera.view.baselayout.indicators.IconTextIndicator;
 import com.sonyericsson.android.camera.view.baselayout.indicators.LowBatteryIndicator;
@@ -49,16 +58,17 @@ import com.sonyericsson.android.camera.view.baselayout.settingshortcut.MruButton
 import com.sonyericsson.android.camera.view.baselayout.zoombar.Zoombar;
 import com.sonyericsson.android.camera.view.modeselector.ModeSelectorInternalMode;
 import com.sonyericsson.android.camera.view.overlaycontrol.EnumValueAccessor;
+import com.sonyericsson.android.camera.view.overlaycontrol.ImageQualityControl;
 import com.sonyericsson.android.camera.view.overlaycontrol.OverlayControl;
-import com.sonyericsson.android.camera.view.overlaycontrol.OverlayControl$StateListener;
+import com.sonyericsson.android.camera.view.overlaycontrol.SemiAutoControl;
 import com.sonyericsson.android.camera.view.overlaycontrol.ValueAccessor;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController;
-import com.sonyericsson.cameracommon.contentsview.ContentLoader$SecurityLevel;
-import com.sonyericsson.cameracommon.contentsview.ContentPallet$ThumbnailStateListener;
+import com.sonyericsson.cameracommon.contentsview.ContentLoader;
+import com.sonyericsson.cameracommon.contentsview.ContentPallet;
 import com.sonyericsson.cameracommon.contentsview.ContentsContainer;
 import com.sonyericsson.cameracommon.contentsview.ContentsViewController;
+import com.sonyericsson.cameracommon.utility.AccessibilityHelper;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
-import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 import com.sonyericsson.cameracommon.utility.ResourceUtil;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 import com.sonyericsson.cameracommon.viewfinder.GridLineView;
@@ -94,12 +104,12 @@ public class BaseLayout {
     private PredictiveLaunchCoverView mPredictiveLaunchCoverView;
     private View mPreferredFocusView;
     private View mPreview;
-    private BaseLayout$PreviewContainerLayout mPreviewContainerLayout;
+    private PreviewContainerLayout mPreviewContainerLayout;
     private PrimaryShortcutGroup mPrimaryShortcut;
     private RecordingIndicator mRecordingIndicator;
     private ViewGroup mRootView;
     private IconTextIndicator mSceneIndicator;
-    private final LayoutDependencyResolver$ScreenAspect mScreenAspect;
+    private final LayoutDependencyResolver.ScreenAspect mScreenAspect;
     private OnScreenButton mSubButton;
     private final SuperSlowMotionTriggerAnimationController mSuperSlowMotionTriggerAnimation;
     private FrameLayout mSwitchAnimationContainer;
@@ -111,66 +121,80 @@ public class BaseLayout {
     private View mWindowCover;
     private Zoombar mZoombar;
     private FrameLayout mZoombarGroup;
-    public static final BaseLayout$LazyInitializer EMPTY_LAZY_INITIALIZER = new BaseLayout$1();
-    private static BaseLayout$IsTalkbackEffective mIsTalkbackEffective = BaseLayout$IsTalkbackEffective.UNKNOWN;
+    public static final LazyInitializer EMPTY_LAZY_INITIALIZER = new LazyInitializer<OverlayControl>() { // from class: com.sonyericsson.android.camera.view.baselayout.BaseLayout.1
+@Override // com.sonyericsson.android.camera.view.baselayout.BaseLayout.LazyInitializer
+        public OverlayControl initView() {
+            return null;
+        }
+    };
+    private static IsTalkbackEffective mIsTalkbackEffective = IsTalkbackEffective.UNKNOWN;
     private FrameLayout mLazyInflatedUiComponentContainerFront = null;
     private FrameLayout mLazyInflatedUiComponentContainerFullScreen = null;
-    private BaseLayout$LazyInitializer<OverlayControl> mSemiAutoControl = EMPTY_LAZY_INITIALIZER;
-    private BaseLayout$LazyInitializer<OverlayControl> mImageQualityControl = EMPTY_LAZY_INITIALIZER;
+    private LazyInitializer<OverlayControl> mSemiAutoControl = EMPTY_LAZY_INITIALIZER;
+    private LazyInitializer<OverlayControl> mImageQualityControl = EMPTY_LAZY_INITIALIZER;
     private boolean mIsBlackScreenShowing = false;
     private int mCurrentOrientation = 0;
     private GridLineView mGridLineView = null;
     private SwitchAnimationView mSwitchAnimationView = null;
     private boolean mIsCameraSwitching = false;
     private boolean mIsFirstDrawn = false;
-    private BaseLayout$NavigationBarVisibility mNavigationBarVisibility = null;
+    private NavigationBarVisibility mNavigationBarVisibility = null;
 
-    static /* synthetic */ ViewFinderGestureDetector access$000(BaseLayout baseLayout) {
-        return baseLayout.mGestureDetector;
+    public enum IsTalkbackEffective {
+        UNKNOWN,
+        TALKBACK_ON,
+        TALKBACK_OFF
     }
 
-    static /* synthetic */ ViewGroup access$100(BaseLayout baseLayout) {
-        return baseLayout.mRootView;
+    public enum NavigationBarVisibility {
+        VISIBLE,
+        LOW_PROFILE
     }
 
-    static /* synthetic */ BaseLayout$IsTalkbackEffective access$200() {
-        return mIsTalkbackEffective;
+    private enum ViewRootChild {
+        PREFERRED_FOCUS(0),
+        PREVIEW_CONTAINER_LAYOUT(1),
+        SWITCH_ANIMATION_CONTAINER(2),
+        CAPTURE_BUTTON_LAYOUT(3),
+        HEAD_UP_DISPLAY_CONTAINER(4),
+        PREDICTIVE_LAUNCH_COVER_CONTAINER(5);
+
+        private int mIndex;
+
+        ViewRootChild(int i) {
+            this.mIndex = i;
+        }
+
+        public int getIndex() {
+            return this.mIndex;
+        }
     }
 
-    static /* synthetic */ BaseLayout$IsTalkbackEffective access$202(BaseLayout$IsTalkbackEffective baseLayout$IsTalkbackEffective) {
-        mIsTalkbackEffective = baseLayout$IsTalkbackEffective;
-        return baseLayout$IsTalkbackEffective;
+    public static abstract class LazyInitializer<T> {
+        private T mView;
+
+        abstract T initView();
+
+        public boolean isInitialized() {
+            return this.mView != null;
+        }
+
+        public T get() {
+            if (this.mView == null) {
+                this.mView = initView();
+            }
+            return this.mView;
+        }
     }
 
-    static /* synthetic */ CameraActivity access$300(BaseLayout baseLayout) {
-        return baseLayout.mActivity;
-    }
-
-    static /* synthetic */ boolean access$400(BaseLayout baseLayout) {
-        return baseLayout.mIsFirstDrawn;
-    }
-
-    static /* synthetic */ boolean access$402(BaseLayout baseLayout, boolean z) {
-        baseLayout.mIsFirstDrawn = z;
-        return z;
-    }
-
-    static /* synthetic */ Rect access$500(BaseLayout baseLayout) {
-        return baseLayout.mViewFinderRect;
-    }
-
-    static /* synthetic */ LayoutDependencyResolver$ScreenAspect access$600(BaseLayout baseLayout) {
-        return baseLayout.mScreenAspect;
-    }
-
-    public BaseLayout(CameraActivity cameraActivity, LayoutDependencyResolver$ScreenAspect layoutDependencyResolver$ScreenAspect) {
+    public BaseLayout(CameraActivity cameraActivity, LayoutDependencyResolver.ScreenAspect screenAspect) {
         this.mViewFinderRect = null;
         this.mActivity = cameraActivity;
-        this.mScreenAspect = layoutDependencyResolver$ScreenAspect;
+        this.mScreenAspect = screenAspect;
         if (PerfLog.IS_ENABLE) {
-            this.mRootView = new BaseLayout$RootViewForRefLogEnabled(this, this.mActivity);
+            this.mRootView = new RootViewForRefLogEnabled(this.mActivity);
         } else {
-            this.mRootView = new BaseLayout$RootView(this, this.mActivity);
+            this.mRootView = new RootView(this.mActivity);
         }
         this.mViewFinderRect = LayoutDependencyResolver.getViewFinderSize(cameraActivity);
         for (View view : createContainer(this.mActivity)) {
@@ -188,15 +212,78 @@ public class BaseLayout {
         LayoutDependencyResolver.requestToDimSystemUi(this.mRootView);
     }
 
-    public void setOnViewFinderGestureDetector(ViewFinderGestureDetector$OnViewFinderGestureDetectorListener viewFinderGestureDetector$OnViewFinderGestureDetectorListener) {
+    private class RootView extends AccessibilityHelper.HoverEventInterceptView {
+        public RootView(Activity activity) {
+            super(activity);
+        }
+
+        @Override // android.view.ViewGroup
+        public boolean onInterceptTouchEvent(MotionEvent motionEvent) {
+            if (BaseLayout.this.mGestureDetector == null) {
+                return false;
+            }
+            return BaseLayout.this.mGestureDetector.onInterceptTouchEvent(motionEvent);
+        }
+
+        @Override // android.view.View
+        public boolean onTouchEvent(MotionEvent motionEvent) {
+            if (BaseLayout.this.mGestureDetector == null) {
+                return false;
+            }
+            return BaseLayout.this.mGestureDetector.onTouchEvent(motionEvent);
+        }
+
+        @Override // android.widget.FrameLayout, android.view.View
+        protected void onMeasure(int i, int i2) {
+            super.onMeasure(i, i2);
+            int width = BaseLayout.this.mRootView.getWidth();
+            int height = BaseLayout.this.mRootView.getHeight();
+            if (BaseLayout.mIsTalkbackEffective != IsTalkbackEffective.UNKNOWN) {
+                if (width < height) {
+                    IsTalkbackEffective unused = BaseLayout.mIsTalkbackEffective = IsTalkbackEffective.UNKNOWN;
+                }
+            } else if (width > height) {
+                Display defaultDisplay = BaseLayout.this.mActivity.getWindowManager().getDefaultDisplay();
+                Point point = new Point();
+                defaultDisplay.getRealSize(point);
+                if (width < point.x) {
+                    IsTalkbackEffective unused2 = BaseLayout.mIsTalkbackEffective = IsTalkbackEffective.TALKBACK_ON;
+                } else {
+                    IsTalkbackEffective unused3 = BaseLayout.mIsTalkbackEffective = IsTalkbackEffective.TALKBACK_OFF;
+                }
+                BaseLayout.this.updateAppsUiMarginsForTalkBack();
+            }
+        }
+    }
+
+    private class RootViewForRefLogEnabled extends RootView {
+        public RootViewForRefLogEnabled(Activity activity) {
+            super(activity);
+            BaseLayout.this.mIsFirstDrawn = false;
+        }
+
+        @Override // android.view.ViewGroup, android.view.View
+        protected void dispatchDraw(Canvas canvas) {
+            if (!BaseLayout.this.mIsFirstDrawn) {
+                BaseLayout.this.mIsFirstDrawn = true;
+                PerfLog.VIEWFINDER_FIRST_DRAW.begin();
+                super.dispatchDraw(canvas);
+                PerfLog.VIEWFINDER_FIRST_DRAW.end();
+                return;
+            }
+            super.dispatchDraw(canvas);
+        }
+    }
+
+    public void setOnViewFinderGestureDetector(ViewFinderGestureDetector.OnViewFinderGestureDetectorListener onViewFinderGestureDetectorListener) {
         if (this.mGestureDetector == null) {
             this.mGestureDetector = new ViewFinderGestureDetector(this.mActivity);
         }
-        this.mGestureDetector.setOnGestureDetectorListener(viewFinderGestureDetector$OnViewFinderGestureDetectorListener);
+        this.mGestureDetector.setOnGestureDetectorListener(onViewFinderGestureDetectorListener);
     }
 
     public void setViewFinderGestureDetectorEnabled(boolean z, boolean z2) {
-        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
+        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
             z2 = z;
             z = z2;
         }
@@ -205,17 +292,17 @@ public class BaseLayout {
         }
         if (z) {
             if (z2) {
-                this.mGestureDetector.setAcceptDragDirection(ViewFinderGestureDetector$Direction.VERTICAL, ViewFinderGestureDetector$Direction.HORIZONTAL);
+                this.mGestureDetector.setAcceptDragDirection(ViewFinderGestureDetector.Direction.VERTICAL, ViewFinderGestureDetector.Direction.HORIZONTAL);
                 return;
             } else {
-                this.mGestureDetector.setAcceptDragDirection(ViewFinderGestureDetector$Direction.HORIZONTAL);
+                this.mGestureDetector.setAcceptDragDirection(ViewFinderGestureDetector.Direction.HORIZONTAL);
                 return;
             }
         }
         if (z2) {
-            this.mGestureDetector.setAcceptDragDirection(ViewFinderGestureDetector$Direction.VERTICAL);
+            this.mGestureDetector.setAcceptDragDirection(ViewFinderGestureDetector.Direction.VERTICAL);
         } else {
-            this.mGestureDetector.setAcceptDragDirection(ViewFinderGestureDetector$Direction.NONE);
+            this.mGestureDetector.setAcceptDragDirection(ViewFinderGestureDetector.Direction.NONE);
         }
     }
 
@@ -246,39 +333,39 @@ public class BaseLayout {
     }
 
     private View[] createContainer(@NonNull Context context) {
-        View[] viewArr = new View[BaseLayout$ViewRootChild.values().length];
+        View[] viewArr = new View[ViewRootChild.values().length];
         this.mPreferredFocusView = new View(context);
-        this.mPreviewContainerLayout = new BaseLayout$PreviewContainerLayout(context);
+        this.mPreviewContainerLayout = new PreviewContainerLayout(context);
         this.mSwitchAnimationContainer = new FrameLayout(context);
-        this.mCapturingButtonLayout = (FrameLayout) LayoutInflater.from(context).inflate(2131492906, (ViewGroup) null);
+        this.mCapturingButtonLayout = (FrameLayout) LayoutInflater.from(context).inflate(R.layout.capturing_button_layout, (ViewGroup) null);
         this.mHeadUpDisplayContainer = new FrameLayout(context);
         this.mPredictiveLaunchCoverContainer = new FrameLayout(context);
-        viewArr[BaseLayout$ViewRootChild.PREFERRED_FOCUS.getIndex()] = this.mPreferredFocusView;
-        viewArr[BaseLayout$ViewRootChild.PREVIEW_CONTAINER_LAYOUT.getIndex()] = this.mPreviewContainerLayout;
-        viewArr[BaseLayout$ViewRootChild.SWITCH_ANIMATION_CONTAINER.getIndex()] = this.mSwitchAnimationContainer;
-        viewArr[BaseLayout$ViewRootChild.CAPTURE_BUTTON_LAYOUT.getIndex()] = this.mCapturingButtonLayout;
-        viewArr[BaseLayout$ViewRootChild.HEAD_UP_DISPLAY_CONTAINER.getIndex()] = this.mHeadUpDisplayContainer;
-        viewArr[BaseLayout$ViewRootChild.PREDICTIVE_LAUNCH_COVER_CONTAINER.getIndex()] = this.mPredictiveLaunchCoverContainer;
+        viewArr[ViewRootChild.PREFERRED_FOCUS.getIndex()] = this.mPreferredFocusView;
+        viewArr[ViewRootChild.PREVIEW_CONTAINER_LAYOUT.getIndex()] = this.mPreviewContainerLayout;
+        viewArr[ViewRootChild.SWITCH_ANIMATION_CONTAINER.getIndex()] = this.mSwitchAnimationContainer;
+        viewArr[ViewRootChild.CAPTURE_BUTTON_LAYOUT.getIndex()] = this.mCapturingButtonLayout;
+        viewArr[ViewRootChild.HEAD_UP_DISPLAY_CONTAINER.getIndex()] = this.mHeadUpDisplayContainer;
+        viewArr[ViewRootChild.PREDICTIVE_LAUNCH_COVER_CONTAINER.getIndex()] = this.mPredictiveLaunchCoverContainer;
         return viewArr;
     }
 
     private void setupPreviewContainer() {
-        FrameLayout$LayoutParams frameLayout$LayoutParams = new FrameLayout$LayoutParams(-1, -1);
-        frameLayout$LayoutParams.setLayoutDirection(0);
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(-1, -1);
+        layoutParams.setLayoutDirection(0);
         Rect rectAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance().getRectAccordingToLayoutOrientation(this.mViewFinderRect);
-        frameLayout$LayoutParams.width = rectAccordingToLayoutOrientation.width();
-        frameLayout$LayoutParams.height = rectAccordingToLayoutOrientation.height();
-        frameLayout$LayoutParams.gravity = 80;
-        this.mPreviewContainerLayout.setLayoutParams(frameLayout$LayoutParams);
+        layoutParams.width = rectAccordingToLayoutOrientation.width();
+        layoutParams.height = rectAccordingToLayoutOrientation.height();
+        layoutParams.gravity = 80;
+        this.mPreviewContainerLayout.setLayoutParams(layoutParams);
         this.mCapturingButtonLayout.setVisibility(4);
     }
 
     private void setupSwitchAnimationContainer() {
-        this.mSwitchAnimationContainer.setLayoutParams(new FrameLayout$LayoutParams(-1, -1));
+        this.mSwitchAnimationContainer.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
     }
 
     public void attachToWindow() {
-        this.mActivity.getWindow().addContentView(this.mRootView, new WindowManager$LayoutParams(-1, -1));
+        this.mActivity.getWindow().addContentView(this.mRootView, new WindowManager.LayoutParams(-1, -1));
     }
 
     public void setPreviewSurface(View view) {
@@ -308,7 +395,7 @@ public class BaseLayout {
         }
         if (isHeadUpDisplayReady()) {
             float fHeight2 = 0.0f;
-            if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
+            if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
                 if (CamLog.VERBOSE) {
                     CamLog.d("ActivityInfo.SCREEN_ORIENTATION_PORTRAIT");
                 }
@@ -366,26 +453,34 @@ public class BaseLayout {
         if (navigationBarMargin <= 0) {
             return;
         }
-        for (int i : new int[]{2131296426, 2131296611, 2131296313, 2131296438}) {
-            ((ViewGroup$MarginLayoutParams) ((ViewGroup) this.mHeadUpDisplay.findViewById(i)).getLayoutParams()).setMargins(0, 0, navigationBarMargin, 0);
+        for (int i : new int[]{R.id.icons, R.id.side_touch_ui_layout, R.id.autoreview_layout, R.id.lazy_inflated_ui_component_container}) {
+            View view = this.mHeadUpDisplay.findViewById(i);
+            if (!(view instanceof ViewGroup)) {
+                continue;
+            }
+            ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+            if (!(layoutParams instanceof ViewGroup.MarginLayoutParams)) {
+                continue;
+            }
+            ((ViewGroup.MarginLayoutParams) layoutParams).setMargins(0, 0, navigationBarMargin, 0);
         }
     }
 
     public void setupPreferentialHeadUpDisplays() {
         CamLog.d("[APP DETAIL] setup on-screen button : E");
-        if (setupCaptureButtonGroup(this.mCapturingButtonLayout.findViewById(2131296342))) {
+        if (setupCaptureButtonGroup(this.mCapturingButtonLayout.findViewById(R.id.capture_button_group))) {
             this.mRootView.setBackgroundColor(0);
             this.mCapturingButtonLayout.getLayoutParams().width = this.mViewFinderRect.width();
             this.mCapturingButtonLayout.getLayoutParams().height = this.mViewFinderRect.height();
-            View viewFindViewById = this.mCapturingButtonLayout.findViewById(2131296344);
+            View viewFindViewById = this.mCapturingButtonLayout.findViewById(R.id.capturing_button_container);
             if (viewFindViewById != null) {
                 int navigationBarMargin = LayoutDependencyResolver.getNavigationBarMargin(this.mActivity);
-                if (this.mScreenAspect != LayoutDependencyResolver$ScreenAspect.SIXTEEN_NINE) {
+                if (this.mScreenAspect != LayoutDependencyResolver.ScreenAspect.SIXTEEN_NINE) {
                     viewFindViewById.getLayoutParams().width = calculateCaptureButtonAreaHeight() - navigationBarMargin;
                 } else {
                     viewFindViewById.getLayoutParams().width = calculateCaptureButtonAreaHeight();
                 }
-                ((ViewGroup$MarginLayoutParams) viewFindViewById.getLayoutParams()).setMargins(0, 0, navigationBarMargin, 0);
+                ((ViewGroup.MarginLayoutParams) viewFindViewById.getLayoutParams()).setMargins(0, 0, navigationBarMargin, 0);
             }
             updateOnScreenButtonLayout();
         } else {
@@ -394,8 +489,11 @@ public class BaseLayout {
         CamLog.d("[APP DETAIL] setup on-screen button : X");
     }
 
-    public void setup(ContentPallet$ThumbnailStateListener contentPallet$ThumbnailStateListener) {
+    public void setup(ContentPallet.ThumbnailStateListener thumbnailStateListener) throws Resources.NotFoundException {
         boolean z;
+        if (this.mRootView.getParent() == null) {
+            attachToWindow();
+        }
         if (isHeadUpDisplayReady()) {
             z = false;
         } else {
@@ -406,16 +504,18 @@ public class BaseLayout {
             updateLayout();
             z = true;
         }
+
         LayoutDependencyResolver.resolveLayoutDependencyOnDevice(this.mActivity, this.mHeadUpDisplay);
         if (this.mGestureDetector == null) {
             this.mGestureDetector = new ViewFinderGestureDetector(this.mActivity);
             setViewFinderGestureDetectorEnabled(true, true);
         }
         setupTutorial();
+
         switchCaptureButtonGroupContainer();
         setupCaptureButtonGroup();
         if (z || !this.mContentsViewController.isLoading()) {
-            setupContentsView(contentPallet$ThumbnailStateListener);
+            setupContentsView(thumbnailStateListener);
         }
         setupSettingIndicators();
         setupTopIndicators();
@@ -431,16 +531,17 @@ public class BaseLayout {
         updateAppsUiMarginsForTalkBack();
         setupSwitchAnimationView();
         if (DebugParameterUtils.INSTANCE.isEmulateSideTouchEnabled(this.mActivity)) {
-            View viewCreate = SideTouchEmulateViewFactory.INSTANCE.create(this.mHeadUpDisplay, SideTouchEventDetector$SideTouchArea.LEFT);
+            View viewCreate = SideTouchEmulateViewFactory.INSTANCE.create(this.mHeadUpDisplay, SideTouchEventDetector.SideTouchArea.LEFT);
             if (viewCreate != null) {
                 addViewFinderGestureDetectorExclusiveView(viewCreate);
             }
-            if (SideTouchEmulateViewFactory.INSTANCE.create(this.mHeadUpDisplay, SideTouchEventDetector$SideTouchArea.RIGHT) != null) {
+            if (SideTouchEmulateViewFactory.INSTANCE.create(this.mHeadUpDisplay, SideTouchEventDetector.SideTouchArea.RIGHT) != null) {
                 addViewFinderGestureDetectorExclusiveView(viewCreate);
             }
         }
         this.mSuperSlowMotionTriggerAnimation.setup(this.mPreviewContainerLayout.mPreviewContainer);
     }
+
 
     public void release() {
         if (this.mContentsViewController != null) {
@@ -513,48 +614,84 @@ public class BaseLayout {
         return this.mMruButtonContainer;
     }
 
-    public BaseLayout$LazyInitializer<OverlayControl> getSemiAutoControl() {
+    public LazyInitializer<OverlayControl> getSemiAutoControl() {
         return this.mSemiAutoControl;
     }
 
-    public BaseLayout$LazyInitializer<OverlayControl> getImageQualityControl() {
+    public LazyInitializer<OverlayControl> getImageQualityControl() {
         return this.mImageQualityControl;
     }
 
-    public void setOrientation(int i) {
+    public void setOrientation(int i) throws Resources.NotFoundException {
         if (CamLog.VERBOSE) {
             CamLog.d("setOrientation: ");
         }
         setOrientation(i, i);
     }
 
-    public void setOrientation(int i, int i2) {
+    public void setOrientation(int i, int i2) throws Resources.NotFoundException {
         this.mCurrentOrientation = i;
         if (this.mPredictiveLaunchCoverView != null) {
             this.mPredictiveLaunchCoverView.updateLayout(i);
         }
-        if (this.mCapturingButtonLayout != null) {
+        if (this.mCapturingButtonLayout != null && this.mOnScreenButtonGroup != null) {
             this.mOnScreenButtonGroup.setUiOrientation(i);
         }
         if (this.mHeadUpDisplay != null) {
-            this.mTutorial.setUiOrientation(i);
-            this.mOnScreenButtonGroup.setUiOrientation(i);
-            this.mContentsViewController.setSensorOrientation(i);
-            this.mGeoTag.setSensorOrientation(i2);
-            this.mThermal.setSensorOrientation(i2);
-            this.mSceneIndicator.setSensorOrientation(i2);
-            this.mConditionIndicator.setSensorOrientation(i2);
-            this.mZoombar.setSensorOrientation(i2);
-            this.mRecordingIndicator.setOrientation(i2);
-            this.mPrimaryShortcut.setUiOrientation(i);
-            this.mPredictiveCaptureIndicatorController.setOrientation(i);
-            this.mLowBattery.setSensorOrientation(i);
-            this.mLowInternalStorage.setSensorOrientation(i);
-            this.mLowSdCard.setSensorOrientation(i);
-            this.mPhotoSmileCapture.setSensorOrientation(i);
-            this.mVideoSmileCapture.setSensorOrientation(i);
-            this.mModeButtonShortcut.setUiOrientation(i);
-            this.mMruButtonContainer.setRotation(RotationUtil.getAngle(i));
+            if (this.mTutorial != null) {
+                this.mTutorial.setUiOrientation(i);
+            }
+            if (this.mOnScreenButtonGroup != null) {
+                this.mOnScreenButtonGroup.setUiOrientation(i);
+            }
+            if (this.mContentsViewController != null) {
+                this.mContentsViewController.setSensorOrientation(i);
+            }
+            if (this.mGeoTag != null) {
+                this.mGeoTag.setSensorOrientation(i2);
+            }
+            if (this.mThermal != null) {
+                this.mThermal.setSensorOrientation(i2);
+            }
+            if (this.mSceneIndicator != null) {
+                this.mSceneIndicator.setSensorOrientation(i2);
+            }
+            if (this.mConditionIndicator != null) {
+                this.mConditionIndicator.setSensorOrientation(i2);
+            }
+            if (this.mZoombar != null) {
+                this.mZoombar.setSensorOrientation(i2);
+            }
+            if (this.mRecordingIndicator != null) {
+                this.mRecordingIndicator.setOrientation(i2);
+            }
+            if (this.mPrimaryShortcut != null) {
+                this.mPrimaryShortcut.setUiOrientation(i);
+            }
+            if (this.mPredictiveCaptureIndicatorController != null) {
+                this.mPredictiveCaptureIndicatorController.setOrientation(i);
+            }
+            if (this.mLowBattery != null) {
+                this.mLowBattery.setSensorOrientation(i);
+            }
+            if (this.mLowInternalStorage != null) {
+                this.mLowInternalStorage.setSensorOrientation(i);
+            }
+            if (this.mLowSdCard != null) {
+                this.mLowSdCard.setSensorOrientation(i);
+            }
+            if (this.mPhotoSmileCapture != null) {
+                this.mPhotoSmileCapture.setSensorOrientation(i);
+            }
+            if (this.mVideoSmileCapture != null) {
+                this.mVideoSmileCapture.setSensorOrientation(i);
+            }
+            if (this.mModeButtonShortcut != null) {
+                this.mModeButtonShortcut.setUiOrientation(i);
+            }
+            if (this.mMruButtonContainer != null) {
+                this.mMruButtonContainer.setRotation(RotationUtil.getAngle(i));
+            }
             if (this.mFrontAngleSwitchButton != null) {
                 this.mFrontAngleSwitchButton.setUiOrientation(i);
             }
@@ -579,22 +716,34 @@ public class BaseLayout {
         return this.mViewFinderRect;
     }
 
-    public void setupImageQualityControl(UiControlSettings uiControlSettings, OverlayControl$StateListener overlayControl$StateListener, EnumValueAccessor<CapturingMode> enumValueAccessor, EnumValueAccessor<FocusRange> enumValueAccessor2, EnumValueAccessor<ShutterSpeed> enumValueAccessor3, EnumValueAccessor<Iso> enumValueAccessor4, EnumValueAccessor<Ev> enumValueAccessor5, EnumValueAccessor<WhiteBalance> enumValueAccessor6) {
+    public void setupImageQualityControl(final UiControlSettings uiControlSettings, final OverlayControl.StateListener stateListener, final EnumValueAccessor<CapturingMode> enumValueAccessor, final EnumValueAccessor<FocusRange> enumValueAccessor2, final EnumValueAccessor<ShutterSpeed> enumValueAccessor3, final EnumValueAccessor<Iso> enumValueAccessor4, final EnumValueAccessor<Ev> enumValueAccessor5, final EnumValueAccessor<WhiteBalance> enumValueAccessor6) {
         if (this.mImageQualityControl.isInitialized()) {
             this.mImageQualityControl.get().release();
         }
-        this.mImageQualityControl = new BaseLayout$2(this, (ViewGroup) getActivity().findViewById(2131296486), uiControlSettings, overlayControl$StateListener, enumValueAccessor, enumValueAccessor2, enumValueAccessor3, enumValueAccessor4, enumValueAccessor5, enumValueAccessor6);
+        final ViewGroup viewGroup = (ViewGroup) getActivity().findViewById(R.id.overlay_control_view_container);
+        this.mImageQualityControl = new LazyInitializer<OverlayControl>() { // from class: com.sonyericsson.android.camera.view.baselayout.BaseLayout.2
+            @Override // com.sonyericsson.android.camera.view.baselayout.BaseLayout.LazyInitializer
+            public ImageQualityControl initView() {
+                return new ImageQualityControl(viewGroup, uiControlSettings, BaseLayout.this.mViewFinderRect, BaseLayout.this.mScreenAspect, stateListener, enumValueAccessor, enumValueAccessor2, enumValueAccessor3, enumValueAccessor4, enumValueAccessor5, enumValueAccessor6);
+            }
+        };
     }
 
-    public void setupSemiAutoControl(OverlayControl$StateListener overlayControl$StateListener, ValueAccessor<Float> valueAccessor, ValueAccessor<Float> valueAccessor2, boolean z) {
+    public void setupSemiAutoControl(final OverlayControl.StateListener stateListener, final ValueAccessor<Float> valueAccessor, final ValueAccessor<Float> valueAccessor2, final boolean z) {
         if (this.mSemiAutoControl.isInitialized()) {
             this.mSemiAutoControl.get().release();
         }
-        this.mSemiAutoControl = new BaseLayout$3(this, (ViewGroup) getActivity().findViewById(2131296412), overlayControl$StateListener, valueAccessor, valueAccessor2, z);
+        final ViewGroup viewGroup = (ViewGroup) getActivity().findViewById(R.id.head_up_display);
+        this.mSemiAutoControl = new LazyInitializer<OverlayControl>() { // from class: com.sonyericsson.android.camera.view.baselayout.BaseLayout.3
+            @Override // com.sonyericsson.android.camera.view.baselayout.BaseLayout.LazyInitializer
+            public OverlayControl initView() {
+                return new SemiAutoControl(viewGroup, BaseLayout.this.mScreenAspect, stateListener, valueAccessor, valueAccessor2, z);
+            }
+        };
     }
 
     private void setupCaptureButtonGroup() {
-        if (setupCaptureButtonGroup(this.mActivity.findViewById(2131296342)) || !CamLog.VERBOSE) {
+        if (setupCaptureButtonGroup(this.mActivity.findViewById(R.id.capture_button_group)) || !CamLog.VERBOSE) {
             return;
         }
         CamLog.w("setupCaptureButtonGroup: fails to setup");
@@ -610,7 +759,7 @@ public class BaseLayout {
         int top = (int) (this.mPreview.getTop() * f2);
         int height = (int) (this.mPreview.getHeight() * f2);
         int width = (int) (this.mPreview.getWidth() * f2);
-        int dimensionPixelSize = this.mScreenAspect != LayoutDependencyResolver$ScreenAspect.SIXTEEN_NINE ? getActivity().getResources().getDimensionPixelSize(2131165456) : 0;
+        int dimensionPixelSize = this.mScreenAspect != LayoutDependencyResolver.ScreenAspect.SIXTEEN_NINE ? getActivity().getResources().getDimensionPixelSize(R.dimen.navigator_container_width) : 0;
         if (width == height) {
             top = (top + height) - iMin;
         }
@@ -624,14 +773,17 @@ public class BaseLayout {
         if (this.mOnScreenButtonGroup == null) {
             this.mOnScreenButtonGroup = (OnScreenButtonGroup) view;
         }
-        this.mSubButton = (OnScreenButton) this.mOnScreenButtonGroup.findViewById(2131296632);
-        this.mExtraButton = (OnScreenButton) this.mOnScreenButtonGroup.findViewById(2131296396);
+        if (this.mOnScreenButtonGroup != null) {
+            this.mOnScreenButtonGroup.setVisibility(0);
+        }
+        this.mSubButton = (OnScreenButton) this.mOnScreenButtonGroup.findViewById(R.id.sub_button);
+        this.mExtraButton = (OnScreenButton) this.mOnScreenButtonGroup.findViewById(R.id.extra_button);
         if (this.mGestureDetector == null) {
             return true;
         }
         this.mGestureDetector.addExclusiveView(this.mExtraButton);
         this.mGestureDetector.addExclusiveView(this.mSubButton);
-        this.mGestureDetector.addExclusiveView(this.mOnScreenButtonGroup.findViewById(2131296460));
+        this.mGestureDetector.addExclusiveView(this.mOnScreenButtonGroup.findViewById(R.id.main_button));
         return true;
     }
 
@@ -654,17 +806,17 @@ public class BaseLayout {
     }
 
     private void setupFrontAngleSwitchButton() {
-        if (this.mFrontAngleSwitchButton == null && PlatformCapability.isSuperWideSupported(CameraInfo$CameraId.FRONT)) {
-            this.mFrontAngleSwitchButton = (FrontAngleSwitchButton) this.mActivity.findViewById(2131296408);
-            FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) this.mFrontAngleSwitchButton.getLayoutParams();
-            frameLayout$LayoutParams.rightMargin = calculateCaptureButtonAreaHeight();
-            this.mFrontAngleSwitchButton.setLayoutParams(frameLayout$LayoutParams);
+        if (this.mFrontAngleSwitchButton == null && PlatformCapability.isSuperWideSupported(CameraInfo.CameraId.FRONT)) {
+            this.mFrontAngleSwitchButton = (FrontAngleSwitchButton) this.mActivity.findViewById(R.id.front_angle_switch_button);
+            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) this.mFrontAngleSwitchButton.getLayoutParams();
+            layoutParams.rightMargin = calculateCaptureButtonAreaHeight();
+            this.mFrontAngleSwitchButton.setLayoutParams(layoutParams);
         }
     }
 
     private void setupPreferredFocusView() {
         if (this.mPreferredFocusView != null) {
-            this.mPreferredFocusView.setLayoutParams(new FrameLayout$LayoutParams(1, 1));
+            this.mPreferredFocusView.setLayoutParams(new FrameLayout.LayoutParams(1, 1));
             this.mPreferredFocusView.setFocusable(true);
             this.mPreferredFocusView.setFocusableInTouchMode(true);
             this.mPreferredFocusView.requestFocus();
@@ -687,12 +839,12 @@ public class BaseLayout {
         return this.mAutoReview;
     }
 
-    private void setupContentsView(ContentPallet$ThumbnailStateListener contentPallet$ThumbnailStateListener) {
-        ContentLoader$SecurityLevel contentLoader$SecurityLevel;
+    private void setupContentsView(ContentPallet.ThumbnailStateListener thumbnailStateListener) {
+        ContentLoader.SecurityLevel securityLevel;
         if (this.mActivity.isDeviceInSecurityLock()) {
-            contentLoader$SecurityLevel = ContentLoader$SecurityLevel.NEWLY_ADDED_CONTENT_ONLY;
+            securityLevel = ContentLoader.SecurityLevel.NEWLY_ADDED_CONTENT_ONLY;
         } else {
-            contentLoader$SecurityLevel = ContentLoader$SecurityLevel.NORMAL;
+            securityLevel = ContentLoader.SecurityLevel.NORMAL;
         }
         LinkedList linkedList = null;
         if (isCameraSwitching()) {
@@ -703,13 +855,13 @@ public class BaseLayout {
             linkedList.addAll(this.mContentsViewController.getLocalContentInfo());
             this.mContentsViewController.release();
         }
-        this.mContentsViewController = new ContentsViewController(this.mActivity, this.mActivity.getStorage(), contentLoader$SecurityLevel, contentPallet$ThumbnailStateListener);
+        this.mContentsViewController = new ContentsViewController(this.mActivity, this.mActivity.getStorage(), securityLevel, thumbnailStateListener);
         if (linkedList != null) {
             this.mContentsViewController.getLocalContentInfo().addAll(linkedList);
         }
         this.mContentsViewController.setSensorOrientation(this.mCurrentOrientation);
         this.mContentsViewController.reload();
-        addViewFinderGestureDetectorExclusiveView((ContentsContainer) this.mActivity.findViewById(2131296370));
+        addViewFinderGestureDetectorExclusiveView((ContentsContainer) this.mActivity.findViewById(R.id.contents_container));
     }
 
     public int getCurrentOrientation() {
@@ -721,43 +873,74 @@ public class BaseLayout {
     }
 
     private void setupModeShortcut() {
-        this.mModeButtonShortcut = (ModeSelectorButton) this.mHeadUpDisplay.findViewById(2131296467);
-        boolean zExists = ModeSelectorInternalMode.exists(getActivity().getLaunchCondition().getCapturingMode());
+        this.mModeButtonShortcut = (ModeSelectorButton) this.mHeadUpDisplay.findViewById(R.id.mode_button_shortcut);
+        if (this.mModeButtonShortcut == null) {
+            return;
+        }
+        CapturingMode capturingMode = getActivity().getLaunchCondition().getCapturingMode();
+        boolean zExists = ModeSelectorInternalMode.exists(capturingMode) || capturingMode.isVideo();
         this.mModeButtonShortcut.update(zExists);
-        this.mMruButtonContainer = (MruButtonContainer) this.mHeadUpDisplay.findViewById(2131296474);
-        this.mMruButtonContainer.setAvailability(!zExists);
+        this.mMruButtonContainer = (MruButtonContainer) this.mHeadUpDisplay.findViewById(R.id.mru_button_container);
+        if (this.mMruButtonContainer != null) {
+            this.mMruButtonContainer.setAvailability(!zExists);
+        }
     }
 
     private void setupTopIndicators() {
-        this.mTopIndicatorsContainer = this.mActivity.findViewById(2131296668);
-        this.mLowBattery.setup((ViewStub) this.mTopIndicatorsContainer.findViewById(2131296455));
-        this.mLowInternalStorage.setup((ViewStub) this.mTopIndicatorsContainer.findViewById(2131296457));
-        this.mLowSdCard.setup((ViewStub) this.mTopIndicatorsContainer.findViewById(2131296459));
-        this.mPhotoSmileCapture.setup((ViewStub) this.mTopIndicatorsContainer.findViewById(2131296494));
-        this.mVideoSmileCapture.setup((ViewStub) this.mTopIndicatorsContainer.findViewById(2131296695));
+        this.mTopIndicatorsContainer = this.mActivity.findViewById(R.id.top_indicator_container);
+        this.mLowBattery.setup((ViewStub) this.mTopIndicatorsContainer.findViewById(R.id.low_battery_indicator_stub));
+        this.mLowInternalStorage.setup((ViewStub) this.mTopIndicatorsContainer.findViewById(R.id.low_internal_storage_indicator_stub));
+        this.mLowSdCard.setup((ViewStub) this.mTopIndicatorsContainer.findViewById(R.id.low_sd_card_indicator_stub));
+        this.mPhotoSmileCapture.setup((ViewStub) this.mTopIndicatorsContainer.findViewById(R.id.photo_smile_capture_indicator_stub));
+        this.mVideoSmileCapture.setup((ViewStub) this.mTopIndicatorsContainer.findViewById(R.id.video_smile_capture_indicator_stub));
     }
 
     private void setupSettingIndicators() {
-        this.mGeoTag = new GeotagIndicator((ImageView) this.mActivity.findViewById(2131296410));
-        this.mGeoTag.setSensorOrientation(this.mCurrentOrientation);
-        this.mThermal = new Indicator((ImageView) this.mActivity.findViewById(2131296658));
-        this.mThermal.setSensorOrientation(this.mCurrentOrientation);
+        ImageView geoTagView = (ImageView) this.mActivity.findViewById(R.id.geo_tag_indicator);
+        if (geoTagView != null) {
+            this.mGeoTag = new GeotagIndicator(geoTagView);
+            this.mGeoTag.setSensorOrientation(this.mCurrentOrientation);
+        }
+        ImageView thermalView = (ImageView) this.mActivity.findViewById(R.id.thermal_indicator);
+        if (thermalView != null) {
+            this.mThermal = new Indicator(thermalView);
+            this.mThermal.setSensorOrientation(this.mCurrentOrientation);
+        }
     }
 
     private void setupSceneIndicators() {
-        this.mSceneIndicator = new IconTextIndicator((ImageView) this.mActivity.findViewById(2131296551), (TextView) this.mActivity.findViewById(2131296552));
-        this.mSceneIndicator.setSensorOrientation(this.mCurrentOrientation);
-        this.mConditionIndicator = new Indicator((ImageView) this.mActivity.findViewById(2131296550));
-        this.mConditionIndicator.setSensorOrientation(this.mCurrentOrientation);
+        ImageView sceneIcon = (ImageView) this.mActivity.findViewById(R.id.scene_indicator_icon);
+        TextView sceneText = (TextView) this.mActivity.findViewById(R.id.scene_indicator_text);
+        if (sceneIcon != null && sceneText != null) {
+            this.mSceneIndicator = new IconTextIndicator(sceneIcon, sceneText);
+            this.mSceneIndicator.setSensorOrientation(this.mCurrentOrientation);
+        }
+        ImageView conditionView = (ImageView) this.mActivity.findViewById(R.id.scene_indicator_condition);
+        if (conditionView != null) {
+            this.mConditionIndicator = new Indicator(conditionView);
+            this.mConditionIndicator.setSensorOrientation(this.mCurrentOrientation);
+        }
     }
 
     private void setupZoombar() {
         if (this.mZoombarGroup == null) {
-            this.mZoombarGroup = (FrameLayout) this.mActivity.getLayoutInflater().inflate(2131493030, (ViewGroup) null);
-            this.mZoombar = (Zoombar) this.mZoombarGroup.findViewById(2131296700);
-            this.mZoombar.setSensorOrientation(this.mCurrentOrientation);
-            this.mZoombar.hideImmediately();
-            getLazyInflatedUiComponentContainerBack().addView(this.mZoombarGroup);
+            View zoombarView = this.mActivity.getLayoutInflater().inflate(R.layout.zoombar, (ViewGroup) null);
+            if (zoombarView instanceof FrameLayout) {
+                this.mZoombarGroup = (FrameLayout) zoombarView;
+            } else {
+                FrameLayout wrapper = new FrameLayout(this.mActivity);
+                wrapper.addView(zoombarView);
+                this.mZoombarGroup = wrapper;
+            }
+            this.mZoombar = (Zoombar) this.mZoombarGroup.findViewById(R.id.zoombar);
+            if (this.mZoombar != null) {
+                this.mZoombar.setSensorOrientation(this.mCurrentOrientation);
+                this.mZoombar.hideImmediately();
+            }
+            FrameLayout backContainer = getLazyInflatedUiComponentContainerBack();
+            if (backContainer != null) {
+                backContainer.addView(this.mZoombarGroup);
+            }
         }
         repositionZoombar();
     }
@@ -765,20 +948,27 @@ public class BaseLayout {
     public void repositionZoombar() {
         int width;
         if (isHeadUpDisplayReady()) {
-            FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) this.mZoombarGroup.getLayoutParams();
-            if (this.mPreview.getWidth() == this.mPreview.getHeight()) {
-                frameLayout$LayoutParams.leftMargin = LayoutDependencyResolver.getViewFinderSize(this.mActivity).height() / 3;
-            } else {
-                frameLayout$LayoutParams.leftMargin = 0;
+            if (this.mZoombarGroup == null) {
+                return;
             }
-            int i = frameLayout$LayoutParams.width;
-            if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
+            ViewGroup.LayoutParams params = this.mZoombarGroup.getLayoutParams();
+            if (!(params instanceof FrameLayout.LayoutParams)) {
+                return;
+            }
+            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) params;
+            if (this.mPreview.getWidth() == this.mPreview.getHeight()) {
+                layoutParams.leftMargin = LayoutDependencyResolver.getViewFinderSize(this.mActivity).height() / 3;
+            } else {
+                layoutParams.leftMargin = 0;
+            }
+            int i = layoutParams.width;
+            if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
                 width = this.mPreview.getHeight();
             } else {
                 width = this.mPreview.getWidth();
             }
             if (width != i) {
-                frameLayout$LayoutParams.width = width;
+                layoutParams.width = width;
                 this.mZoombarGroup.requestLayout();
             }
         }
@@ -790,7 +980,10 @@ public class BaseLayout {
 
     private void setupRecordingIndicator() {
         if (this.mRecordingIndicator == null) {
-            this.mRecordingIndicator = (RecordingIndicator) this.mActivity.findViewById(2131296523);
+            this.mRecordingIndicator = (RecordingIndicator) this.mActivity.findViewById(R.id.recording_progress_indicator);
+            if (this.mRecordingIndicator == null) {
+                return;
+            }
             this.mRecordingIndicator.setScreenAspect(this.mScreenAspect);
             this.mRecordingIndicator.setOrientation(this.mCurrentOrientation);
             this.mRecordingIndicator.setVisibility(8);
@@ -815,9 +1008,9 @@ public class BaseLayout {
         }
     }
 
-    public void reloadContentsViewController(ContentPallet$ThumbnailStateListener contentPallet$ThumbnailStateListener) {
+    public void reloadContentsViewController(ContentPallet.ThumbnailStateListener thumbnailStateListener) {
         if (this.mContentsViewController == null) {
-            setupContentsView(contentPallet$ThumbnailStateListener);
+            setupContentsView(thumbnailStateListener);
         } else {
             this.mContentsViewController.reload();
         }
@@ -873,7 +1066,7 @@ public class BaseLayout {
             return;
         }
         this.mIsBlackScreenShowing = true;
-        this.mRootView.setBackgroundColor(-16777216);
+        this.mRootView.setBackgroundColor(ViewCompat.MEASURED_STATE_MASK);
     }
 
     public void hideBlackScreen() {
@@ -888,7 +1081,7 @@ public class BaseLayout {
         if (this.mWindowCover != null || (layoutInflater = this.mActivity.getLayoutInflater()) == null) {
             return;
         }
-        this.mWindowCover = layoutInflater.inflate(2131492905, (ViewGroup) null);
+        this.mWindowCover = layoutInflater.inflate(R.layout.camera_window_cover, (ViewGroup) null);
         Window window = this.mActivity.getWindow();
         window.addContentView(this.mWindowCover, window.getAttributes());
     }
@@ -915,13 +1108,25 @@ public class BaseLayout {
             if (CamLog.VERBOSE) {
                 CamLog.d("HeadUpDisplay is not inflated.");
             }
-            this.mHeadUpDisplay = (ViewGroup) layoutInflaterFrom.inflate(2131492899, (ViewGroup) null);
+            this.mHeadUpDisplay = (ViewGroup) layoutInflaterFrom.inflate(R.layout.baselayout, (ViewGroup) null);
         }
         this.mHeadUpDisplayContainer.addView(this.mHeadUpDisplay);
         this.mHeadUpDisplay.getLayoutParams().width = this.mViewFinderRect.width();
         this.mHeadUpDisplay.getLayoutParams().height = this.mViewFinderRect.height();
-        this.mLazyInflatedUiComponentContainerFront = (FrameLayout) this.mActivity.findViewById(2131296438);
-        this.mLazyInflatedUiComponentContainerFullScreen = (FrameLayout) this.mActivity.findViewById(2131296441);
+        View rightContainerView = this.mHeadUpDisplay.findViewById(R.id.right_container);
+        if (rightContainerView instanceof ViewGroup) {
+            ViewGroup rightContainer = (ViewGroup) rightContainerView;
+            if (rightContainer.findViewById(R.id.capture_button_container) == null) {
+                FrameLayout captureButtonContainer = new FrameLayout(this.mActivity);
+                captureButtonContainer.setId(R.id.capture_button_container);
+                FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(-2, -2);
+                layoutParams.gravity = Gravity.CENTER;
+                captureButtonContainer.setLayoutParams(layoutParams);
+                rightContainer.addView(captureButtonContainer);
+            }
+        }
+        this.mLazyInflatedUiComponentContainerFront = (FrameLayout) this.mActivity.findViewById(R.id.lazy_inflated_ui_component_container);
+        this.mLazyInflatedUiComponentContainerFullScreen = (FrameLayout) this.mActivity.findViewById(R.id.lazy_inflated_ui_component_container_fullscreen);
     }
 
     public void setPreInflatedHeadUpDisplay(View view) {
@@ -930,32 +1135,34 @@ public class BaseLayout {
 
     public void requestToDimSystemUi() {
         LayoutDependencyResolver.requestToDimSystemUi(this.mRootView);
-        setCurrentNavigationBarVisibility(BaseLayout$NavigationBarVisibility.LOW_PROFILE);
+        setCurrentNavigationBarVisibility(NavigationBarVisibility.LOW_PROFILE);
     }
 
     public void requestToRecoverSystemUi() {
         LayoutDependencyResolver.requestToRecoverSystemUi(this.mRootView);
-        setCurrentNavigationBarVisibility(BaseLayout$NavigationBarVisibility.VISIBLE);
+        setCurrentNavigationBarVisibility(NavigationBarVisibility.VISIBLE);
     }
 
     public void requestToRestoreSystemUi() {
         if (this.mNavigationBarVisibility == null) {
+            requestToRecoverSystemUi();
+            return;
         }
-        switch (BaseLayout$4.$SwitchMap$com$sonyericsson$android$camera$view$baselayout$BaseLayout$NavigationBarVisibility[getPreviousNavigationBarVisibility().ordinal()]) {
-            case 1:
+        switch (getPreviousNavigationBarVisibility()) {
+            case VISIBLE:
                 requestToRecoverSystemUi();
                 break;
-            case 2:
+            case LOW_PROFILE:
                 requestToDimSystemUi();
                 break;
         }
     }
 
-    void setCurrentNavigationBarVisibility(BaseLayout$NavigationBarVisibility baseLayout$NavigationBarVisibility) {
-        this.mNavigationBarVisibility = baseLayout$NavigationBarVisibility;
+    void setCurrentNavigationBarVisibility(NavigationBarVisibility navigationBarVisibility) {
+        this.mNavigationBarVisibility = navigationBarVisibility;
     }
 
-    private BaseLayout$NavigationBarVisibility getPreviousNavigationBarVisibility() {
+    private NavigationBarVisibility getPreviousNavigationBarVisibility() {
         return this.mNavigationBarVisibility;
     }
 
@@ -964,14 +1171,14 @@ public class BaseLayout {
     }
 
     public FrameLayout getCenterContainer() {
-        return (FrameLayout) this.mActivity.findViewById(2131296348);
+        return (FrameLayout) this.mActivity.findViewById(R.id.center_container);
     }
 
     public FrameLayout getHintTextViewContainer() {
         if (this.mHintTextViewContainer != null) {
             return this.mHintTextViewContainer;
         }
-        this.mHintTextViewContainer = (FrameLayout) this.mActivity.findViewById(2131296419);
+        this.mHintTextViewContainer = (FrameLayout) this.mActivity.findViewById(R.id.hint_text_view_container);
         return this.mHintTextViewContainer;
     }
 
@@ -984,9 +1191,12 @@ public class BaseLayout {
     }
 
     public FrameLayout getLazyInflatedUiComponentContainerBack() {
-        FrameLayout frameLayout = (FrameLayout) this.mActivity.findViewById(2131296440);
-        if (this.mScreenAspect == LayoutDependencyResolver$ScreenAspect.EIGHTEEN_NINE) {
-            frameLayout.setPadding(ResourceUtil.getDimensionPixelSize(this.mActivity, this.mActivity.getPackageName(), 2131165428), 0, 0, 0);
+        FrameLayout frameLayout = (FrameLayout) this.mActivity.findViewById(R.id.lazy_inflated_ui_component_container_back);
+        if (frameLayout == null) {
+            return null;
+        }
+        if (this.mScreenAspect == LayoutDependencyResolver.ScreenAspect.EIGHTEEN_NINE) {
+            frameLayout.setPadding(ResourceUtil.getDimensionPixelSize(this.mActivity, this.mActivity.getPackageName(), R.dimen.left_icon_area_height), 0, 0, 0);
         }
         return frameLayout;
     }
@@ -997,20 +1207,26 @@ public class BaseLayout {
 
     public BurstCountView getBurstCountView() {
         FrameLayout centerContainer = getCenterContainer();
-        View viewFindViewById = centerContainer.findViewById(2131296322);
+        View viewFindViewById = centerContainer.findViewById(R.id.burst_count_view);
         if (viewFindViewById == null) {
-            View.inflate(this.mActivity, 2131493010, centerContainer);
-            viewFindViewById = centerContainer.findViewById(2131296322);
+            View.inflate(this.mActivity, R.layout.shutter_burst_count_view, centerContainer);
+            viewFindViewById = centerContainer.findViewById(R.id.burst_count_view);
         }
         return (BurstCountView) viewFindViewById;
     }
 
     public void showLeftIconContainer() {
-        this.mActivity.findViewById(2131296443).setVisibility(0);
+        View viewFindViewById = this.mActivity.findViewById(R.id.left_container);
+        if (viewFindViewById != null) {
+            viewFindViewById.setVisibility(0);
+        }
     }
 
     public void hideLeftIconContainer() {
-        this.mActivity.findViewById(2131296443).setVisibility(4);
+        View viewFindViewById = this.mActivity.findViewById(R.id.left_container);
+        if (viewFindViewById != null) {
+            viewFindViewById.setVisibility(4);
+        }
     }
 
     public void hideAutoReview() {
@@ -1057,7 +1273,7 @@ public class BaseLayout {
     }
 
     private void setupPrimaryShortcut() {
-        this.mPrimaryShortcut = (PrimaryShortcutGroup) this.mActivity.findViewById(2131296509);
+        this.mPrimaryShortcut = (PrimaryShortcutGroup) this.mActivity.findViewById(R.id.primary_shortcut_group);
     }
 
     public PrimaryShortcutGroup getPrimaryShortcut() {
@@ -1068,32 +1284,102 @@ public class BaseLayout {
         return this.mGridLineView;
     }
 
+    private static class PreviewContainerLayout extends RelativeLayout {
+        private Context mContext;
+        public final FrameLayout mPreviewContainer;
+        public final FrameLayout mPreviewOverlayContainer;
+
+        public PreviewContainerLayout(Context context) {
+            super(context);
+            this.mContext = context;
+            this.mPreviewContainer = new FrameLayout(context);
+            addView(this.mPreviewContainer);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-2, -1);
+            layoutParams.addRule(9, -1);
+            layoutParams.addRule(10, -1);
+            layoutParams.setMargins(0, 0, 0, 0);
+            this.mPreviewContainer.setPadding(0, 0, 0, 0);
+            this.mPreviewContainer.setLayoutParams(layoutParams);
+            this.mPreviewContainer.setId(View.generateViewId());
+            FrameLayout frameLayout = new FrameLayout(context);
+            addView(frameLayout);
+            frameLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+            this.mPreviewOverlayContainer = new FrameLayout(context);
+            frameLayout.addView(this.mPreviewOverlayContainer);
+            FrameLayout.LayoutParams layoutParams2 = new FrameLayout.LayoutParams(-1, -1);
+            layoutParams2.gravity = 3;
+            layoutParams2.setMargins(0, 0, 0, 0);
+            this.mPreviewOverlayContainer.setPadding(0, 0, 0, 0);
+            this.mPreviewOverlayContainer.setLayoutParams(layoutParams2);
+            View recordingIndicator = LayoutInflater.from(context).inflate(R.layout.viewfinder_recording_indicator, (ViewGroup) null);
+            frameLayout.addView(recordingIndicator);
+        }
+
+        public void updatePreviewContainerLayout(Rect rect, LayoutDependencyResolver.ScreenAspect screenAspect) {
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) this.mPreviewContainer.getLayoutParams();
+            ViewGroup.LayoutParams layoutParams2 = getLayoutParams();
+            if (layoutParams2 == null || layoutParams == null) {
+                return;
+            }
+            int dimensionPixelSize = ResourceUtil.getDimensionPixelSize(this.mContext, this.mContext.getPackageName(), R.dimen.left_icon_area_height);
+            int dimensionPixelSize2 = ResourceUtil.getDimensionPixelSize(this.mContext, this.mContext.getPackageName(), R.dimen.navigator_container_width);
+            if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
+                if (screenAspect == LayoutDependencyResolver.ScreenAspect.EIGHTEEN_NINE) {
+                    setPadding(0, dimensionPixelSize, 0, dimensionPixelSize2);
+                    layoutParams.addRule(9, 0);
+                    layoutParams.addRule(10, -1);
+                    layoutParams.addRule(15, 0);
+                    layoutParams.addRule(14, -1);
+                }
+                if (layoutParams2.width != rect.height()) {
+                    layoutParams2.width = rect.height();
+                    layoutParams2.height = rect.width();
+                    requestLayout();
+                    return;
+                }
+                return;
+            }
+            if (screenAspect == LayoutDependencyResolver.ScreenAspect.EIGHTEEN_NINE) {
+                setPadding(dimensionPixelSize, 0, dimensionPixelSize2, 0);
+                layoutParams.addRule(9, -1);
+                layoutParams.addRule(10, 0);
+                layoutParams.addRule(14, 0);
+                layoutParams.addRule(15, -1);
+            }
+            if (layoutParams2.width != rect.width()) {
+                layoutParams2.width = rect.width();
+                layoutParams2.height = rect.height();
+                requestLayout();
+            }
+        }
+    }
+
     public void updatePreviewContainer(int i, int i2) {
-        RelativeLayout$LayoutParams relativeLayout$LayoutParams = (RelativeLayout$LayoutParams) getPreviewContainer().getLayoutParams();
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) getPreviewContainer().getLayoutParams();
         if (i == i2) {
             Rect viewFinderSize = LayoutDependencyResolver.getViewFinderSize(this.mActivity);
             if (LayoutOrientationResolver.getInstance().getConfigurationOrientation() == 1) {
-                relativeLayout$LayoutParams.leftMargin = 0;
-                relativeLayout$LayoutParams.topMargin = viewFinderSize.height() / 3;
+                layoutParams.leftMargin = 0;
+                layoutParams.topMargin = viewFinderSize.height() / 3;
             } else {
-                relativeLayout$LayoutParams.topMargin = 0;
-                relativeLayout$LayoutParams.leftMargin = viewFinderSize.height() / 3;
+                layoutParams.topMargin = 0;
+                layoutParams.leftMargin = viewFinderSize.height() / 3;
             }
         } else if (LayoutOrientationResolver.getInstance().getConfigurationOrientation() == 1) {
-            relativeLayout$LayoutParams.topMargin = 0;
+            layoutParams.topMargin = 0;
         } else {
-            relativeLayout$LayoutParams.leftMargin = 0;
+            layoutParams.leftMargin = 0;
         }
-        relativeLayout$LayoutParams.width = i;
-        relativeLayout$LayoutParams.height = i2;
-        getPreviewContainer().setLayoutParams(relativeLayout$LayoutParams);
+        layoutParams.width = i;
+        layoutParams.height = i2;
+        getPreviewContainer().setLayoutParams(layoutParams);
     }
 
     public void updateAppsUiMarginsForTalkBack() {
-        int navigationBarMargin = mIsTalkbackEffective == BaseLayout$IsTalkbackEffective.TALKBACK_ON ? LayoutDependencyResolver.getNavigationBarMargin(this.mActivity) : 0;
-        View viewFindViewById = this.mActivity.findViewById(2131296439);
+        int navigationBarMargin = mIsTalkbackEffective == IsTalkbackEffective.TALKBACK_ON ? LayoutDependencyResolver.getNavigationBarMargin(this.mActivity) : 0;
+        View viewFindViewById = this.mActivity.findViewById(R.id.lazy_inflated_ui_component_container_apps_ui);
         if (viewFindViewById != null) {
-            ((ViewGroup$MarginLayoutParams) viewFindViewById.getLayoutParams()).setMargins(0, 0, navigationBarMargin, 0);
+            ((ViewGroup.MarginLayoutParams) viewFindViewById.getLayoutParams()).setMargins(0, 0, navigationBarMargin, 0);
             viewFindViewById.requestLayout();
         }
     }
@@ -1119,7 +1405,7 @@ public class BaseLayout {
     private void switchCaptureButtonGroupContainer() {
         ViewGroup viewGroup;
         ViewGroup viewGroup2;
-        if (this.mCapturingButtonLayout == null || this.mOnScreenButtonGroup == null || (viewGroup = (ViewGroup) this.mHeadUpDisplay.findViewById(2131296341)) == null || (viewGroup2 = (ViewGroup) this.mCapturingButtonLayout.findViewById(2131296500)) == null) {
+        if (this.mCapturingButtonLayout == null || this.mOnScreenButtonGroup == null || (viewGroup = (ViewGroup) this.mHeadUpDisplay.findViewById(R.id.capture_button_container)) == null || (viewGroup2 = (ViewGroup) this.mCapturingButtonLayout.findViewById(R.id.preloaded_capture_button_container)) == null) {
             return;
         }
         viewGroup2.removeView(this.mOnScreenButtonGroup);
@@ -1147,11 +1433,11 @@ public class BaseLayout {
         return this.mIsCameraSwitching;
     }
 
-    public void setupPredictiveLaunchCoverView(PredictiveLaunchCoverView$PredictiveLaunchCoverTouchListener predictiveLaunchCoverView$PredictiveLaunchCoverTouchListener, PredictiveLaunchCoverView$PredictiveLaunchCoverType predictiveLaunchCoverView$PredictiveLaunchCoverType) {
+    public void setupPredictiveLaunchCoverView(PredictiveLaunchCoverView.PredictiveLaunchCoverTouchListener predictiveLaunchCoverTouchListener, PredictiveLaunchCoverView.PredictiveLaunchCoverType predictiveLaunchCoverType) {
         if (this.mPredictiveLaunchCoverContainer == null || this.mPredictiveLaunchCoverView != null) {
             return;
         }
-        this.mPredictiveLaunchCoverView = PredictiveLaunchCoverView.inflate(getActivity(), predictiveLaunchCoverView$PredictiveLaunchCoverTouchListener, predictiveLaunchCoverView$PredictiveLaunchCoverType);
+        this.mPredictiveLaunchCoverView = PredictiveLaunchCoverView.inflate(getActivity(), predictiveLaunchCoverTouchListener, predictiveLaunchCoverType);
         this.mPredictiveLaunchCoverContainer.addView(this.mPredictiveLaunchCoverView);
         this.mPredictiveLaunchCoverView.updateLayout(2);
     }
@@ -1169,9 +1455,9 @@ public class BaseLayout {
         }
     }
 
-    public void hidePredictiveLaunchCover(Animatable2$AnimationCallback animatable2$AnimationCallback) {
+    public void hidePredictiveLaunchCover(Animatable2.AnimationCallback animationCallback) {
         if (this.mPredictiveLaunchCoverView != null) {
-            this.mPredictiveLaunchCoverView.hide(animatable2$AnimationCallback);
+            this.mPredictiveLaunchCoverView.hide(animationCallback);
         }
     }
 }

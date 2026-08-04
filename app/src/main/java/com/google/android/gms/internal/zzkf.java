@@ -2,25 +2,23 @@ package com.google.android.gms.internal;
 
 import android.content.Context;
 import android.os.IBinder;
-import android.os.IInterface;
 import android.os.Looper;
-import com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.internal.zzf;
 import com.google.android.gms.common.internal.zzj;
+import com.google.android.gms.internal.zzkg;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzkf extends zzj<zzkg> {
-    public zzkf(Context context, Looper looper, zzf zzfVar, GoogleApiClient$ConnectionCallbacks googleApiClient$ConnectionCallbacks, GoogleApiClient$OnConnectionFailedListener googleApiClient$OnConnectionFailedListener) {
-        super(context, looper, 92, zzfVar, googleApiClient$ConnectionCallbacks, googleApiClient$OnConnectionFailedListener);
+    public zzkf(Context context, Looper looper, com.google.android.gms.common.internal.zzf zzfVar, GoogleApiClient.ConnectionCallbacks connectionCallbacks, GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener) {
+        super(context, looper, 92, zzfVar, connectionCallbacks, onConnectionFailedListener);
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     @Override // com.google.android.gms.common.internal.zzj
-    protected /* synthetic */ IInterface zzW(IBinder iBinder) {
-        return zzap(iBinder);
-    }
-
-    protected zzkg zzap(IBinder iBinder) {
-        return zzkg$zza.zzaq(iBinder);
+    /* renamed from: zzap, reason: merged with bridge method [inline-methods] */
+    public zzkg zzW(IBinder iBinder) {
+        return zzkg.zza.zzaq(iBinder);
     }
 
     @Override // com.google.android.gms.common.internal.zzj

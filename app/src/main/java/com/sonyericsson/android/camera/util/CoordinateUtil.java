@@ -38,18 +38,18 @@ public final class CoordinateUtil {
         if (CamLog.VERBOSE) {
             CamLog.d("scale2Dev: origWidth: " + iWidth + ", showWidth: " + iWidth2);
         }
-        double d = ((double) iWidth) / ((double) iWidth2);
-        double d2 = ((double) iHeight) / ((double) iHeight2);
+        double d = iWidth / iWidth2;
+        double d2 = iHeight / iHeight2;
         if (CamLog.VERBOSE) {
             CamLog.d("scale2Dev: ratio: width: " + d + ", height: " + d2);
         }
         if (CamLog.VERBOSE) {
             CamLog.d("scale2Dev: Display position:top,left,right,bottom   :" + rect.top + "," + rect.left + "," + rect.right + "," + rect.bottom + ")");
         }
-        double d3 = ((double) rect.top) * d2;
-        double d4 = ((double) rect.left) * d;
-        double d5 = ((double) rect.bottom) * d2;
-        double d6 = ((double) rect.right) * d;
+        double d3 = rect.top * d2;
+        double d4 = rect.left * d;
+        double d5 = rect.bottom * d2;
+        double d6 = rect.right * d;
         if (CamLog.VERBOSE) {
             CamLog.d("scale2Dev: Device position:top,left,right,bottom   :" + d3 + "," + d4 + "," + d6 + "," + d5 + ")");
         }
@@ -110,31 +110,31 @@ public final class CoordinateUtil {
     }
 
     public static int convertDip2Px(Context context, int i) {
-        return (int) ((i * context.getResources().getDisplayMetrics().density) + 0.5f);
+        return (int) ((i * context.getResources().getDisplayMetrics().density) + ROUNDING);
     }
 
     public static Point convertDip2Px(Context context, Point point) {
         float f = context.getResources().getDisplayMetrics().density;
-        return new Point((int) ((point.x * f) + 0.5f), (int) ((point.y * f) + 0.5f));
+        return new Point((int) ((point.x * f) + ROUNDING), (int) ((point.y * f) + ROUNDING));
     }
 
     public static Rect convertDip2Px(Context context, Rect rect) {
         float f = context.getResources().getDisplayMetrics().density;
-        return new Rect((int) ((rect.left * f) + 0.5f), (int) ((rect.top * f) + 0.5f), (int) ((rect.right * f) + 0.5f), (int) ((rect.bottom * f) + 0.5f));
+        return new Rect((int) ((rect.left * f) + ROUNDING), (int) ((rect.top * f) + ROUNDING), (int) ((rect.right * f) + ROUNDING), (int) ((rect.bottom * f) + ROUNDING));
     }
 
     public static int convertPx2Dip(Context context, int i) {
-        return (int) ((i / context.getResources().getDisplayMetrics().density) + 0.5f);
+        return (int) ((i / context.getResources().getDisplayMetrics().density) + ROUNDING);
     }
 
     public static Point convertPx2Dip(Context context, Point point) {
         float f = context.getResources().getDisplayMetrics().density;
-        return new Point((int) ((point.x / f) + 0.5f), (int) ((point.y / f) + 0.5f));
+        return new Point((int) ((point.x / f) + ROUNDING), (int) ((point.y / f) + ROUNDING));
     }
 
     public static Rect convertPx2Dip(Context context, Rect rect) {
         float f = context.getResources().getDisplayMetrics().density;
-        return new Rect((int) ((rect.left / f) + 0.5f), (int) ((rect.top / f) + 0.5f), (int) ((rect.right / f) + 0.5f), (int) ((rect.bottom / f) + 0.5f));
+        return new Rect((int) ((rect.left / f) + ROUNDING), (int) ((rect.top / f) + ROUNDING), (int) ((rect.right / f) + ROUNDING), (int) ((rect.bottom / f) + ROUNDING));
     }
 
     public static Rect convertPositionToAligned(int i, int i2, Rect rect, Rect rect2, int i3, int i4) {

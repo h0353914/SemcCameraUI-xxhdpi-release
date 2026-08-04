@@ -2,6 +2,7 @@ package com.google.android.gms.common.api;
 
 import com.google.android.gms.common.internal.zzx;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class BooleanResult implements Result {
     private final Status zzSC;
     private final boolean zzaaE;

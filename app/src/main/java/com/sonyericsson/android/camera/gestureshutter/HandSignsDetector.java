@@ -1,11 +1,88 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.gestureshutter;
 
+import android.graphics.Rect;
 import android.os.Handler;
-import com.sonyericsson.android.camera.CameraActivity$LayoutOrientation;
+import com.sonyericsson.android.camera.CameraActivity;
 import com.sonyericsson.android.camera.device.ImageRetriever;
-import com.sonyericsson.android.camera.device.ImageRetriever$OnImageRetrieverCallback;
+import com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface;
+import com.sonyericsson.android.camera.gestureshutter.HandSignsNativeWrapper;
 import com.sonyericsson.android.camera.util.BackgroundWorker;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.util.MaxVideoSize;
 import java.nio.ByteBuffer;
 
 public class HandSignsDetector implements HandSignsDetectorInterface {
@@ -15,66 +92,150 @@ public class HandSignsDetector implements HandSignsDetectorInterface {
     private static final int MAX_DETECT_FRAME_WIDTH = 640;
     private static final float NV21_BUFFER_SIZE_MULTIPLIER = 1.5f;
     public static final String TAG = "HandSignsDetector";
-    private HandSignsDetector$DetectRunnable mCurrentDetect;
+    private DetectRunnable mCurrentDetect;
     private ImageRetriever mImageRetriever;
-    private final HandSignsDetectorInterface$DetectResultListener mListener;
+    private final HandSignsDetectorInterface.DetectResultListener mListener;
     private final Handler mResultScheduler;
     private int mRoll;
     private boolean mIsStarted = false;
-    private final HandSignsDetector$DetectContext mDetectContext = new HandSignsDetector$DetectContext(null);
-    private final HandSignsDetector$FpsLimiter mFpsLimiter = new HandSignsDetector$FpsLimiter(10);
-    private final Runnable mGetFrameTask = new HandSignsDetector$1(this);
-    private ImageRetriever$OnImageRetrieverCallback mImageCallback = new HandSignsDetector$2(this);
+    private final DetectContext mDetectContext = new DetectContext();
+    private final FpsLimiter mFpsLimiter = new FpsLimiter(10);
+    private final Runnable mGetFrameTask = new Runnable() { // from class: com.sonyericsson.android.camera.gestureshutter.HandSignsDetector.1
+        @Override // java.lang.Runnable
+        public void run() {
+            synchronized (HandSignsDetector.this.mDetectContext) {
+                if (HandSignsDetector.this.mIsStarted) {
+                    HandSignsDetector.this.mImageRetriever.registerPreviewStreamingCallback(HandSignsDetector.this.mImageCallback, HandSignsDetector.this.mWorker.getHandler());
+                    if (CamLog.VERBOSE) {
+                        CamLog.d("Get frame requested");
+                    }
+                }
+            }
+        }
+    };
+    private ImageRetriever.OnImageRetrieverCallback mImageCallback = new ImageRetriever.OnImageRetrieverCallback() { // from class: com.sonyericsson.android.camera.gestureshutter.HandSignsDetector.2
+        @Override // com.sonyericsson.android.camera.device.ImageRetriever.OnImageRetrieverCallback
+        public void onRetrieved(ByteBuffer byteBuffer, int i, Rect rect) {
+            synchronized (HandSignsDetector.this.mDetectContext) {
+                if (HandSignsDetector.this.mIsStarted) {
+                    if (byteBuffer != null && i == 17) {
+                        HandSignsDetector.this.mImageRetriever.unregisterPreviewStreamingCallback(this);
+                        HandSignsDetector.this.postDetect(rect.width(), rect.height(), byteBuffer);
+                    }
+                }
+            }
+        }
+    };
     private HandSignsNativeWrapper mNativeWrapper = new HandSignsNativeWrapper();
-    private BackgroundWorker mWorker = new BackgroundWorker("HandSignsDetector");
+    private final BackgroundWorker mWorker;
 
-    static /* synthetic */ HandSignsDetector$DetectContext access$100(HandSignsDetector handSignsDetector) {
-        return handSignsDetector.mDetectContext;
+    private static class FpsLimiter {
+        private final int mExpectedInterval;
+        private long mFrameStartTimeStamp = 0;
+        private int mFrames = 0;
+        private long mFpsDetectStartTime = 0;
+
+        FpsLimiter(int i) {
+            if (i > 0) {
+                this.mExpectedInterval = 1000 / i;
+            } else {
+                this.mExpectedInterval = 0;
+            }
+        }
+
+        long hit() {
+            if (this.mExpectedInterval == 0) {
+                return 0L;
+            }
+            long jCurrentTimeMillis = System.currentTimeMillis();
+            if (CamLog.VERBOSE) {
+                logFps(jCurrentTimeMillis);
+            }
+            long j = jCurrentTimeMillis - this.mFrameStartTimeStamp;
+            long j2 = j < ((long) this.mExpectedInterval) ? this.mExpectedInterval - j : 0L;
+            this.mFrameStartTimeStamp = jCurrentTimeMillis + j2;
+            return j2;
+        }
+
+        private void logFps(long j) {
+            if (this.mFpsDetectStartTime == 0) {
+                this.mFpsDetectStartTime = j;
+            } else if (j - this.mFpsDetectStartTime >= MaxVideoSize.GUARANTEED_MIN_DURATION_IN_MILLIS) {
+                CamLog.d("Detect FPS = " + ((this.mFrames * 1000.0f) / (j - this.mFpsDetectStartTime)));
+                this.mFpsDetectStartTime = j;
+                this.mFrames = 0;
+            }
+            this.mFrames++;
+        }
     }
 
-    static /* synthetic */ Handler access$1000(HandSignsDetector handSignsDetector) {
-        return handSignsDetector.mResultScheduler;
+    private static class DetectContext {
+        private int mDetectHeight;
+        private int mDetectWidth;
+        private byte[] mFrame;
+        private boolean mIsInitialized;
+        private HandSignsNativeWrapper.ShrinkRatio mShrinkRatio;
+
+        private DetectContext() {
+        }
+
+        void initialize(int i, int i2) {
+            int i3 = 0;
+            do {
+                if (i <= 640 && i2 <= 480) {
+                    break;
+                }
+                i /= 2;
+                i2 /= 2;
+                i3++;
+            } while (i3 != HandSignsNativeWrapper.ShrinkRatio.values().length - 1);
+            if (this.mDetectWidth != i || this.mDetectHeight != i2) {
+                this.mDetectWidth = i;
+                this.mDetectHeight = i2;
+                this.mFrame = null;
+            }
+            if (this.mFrame == null) {
+                this.mFrame = new byte[(int) (this.mDetectWidth * this.mDetectHeight * HandSignsDetector.NV21_BUFFER_SIZE_MULTIPLIER)];
+            }
+            this.mShrinkRatio = HandSignsNativeWrapper.ShrinkRatio.values()[i3];
+            this.mIsInitialized = true;
+        }
+
+        boolean isInitialized() {
+            return this.mIsInitialized;
+        }
+
+        byte[] getFrame() {
+            return this.mFrame;
+        }
+
+        int getDetectWidth() {
+            return this.mDetectWidth;
+        }
+
+        int getDetectHeight() {
+            return this.mDetectHeight;
+        }
+
+        HandSignsNativeWrapper.ShrinkRatio getShrinkRatio() {
+            return this.mShrinkRatio;
+        }
+
+        void reset() {
+            this.mShrinkRatio = null;
+            this.mIsInitialized = false;
+        }
     }
 
-    static /* synthetic */ void access$1100(HandSignsDetector handSignsDetector) {
-        handSignsDetector.postGetFrame();
-    }
-
-    static /* synthetic */ boolean access$200(HandSignsDetector handSignsDetector) {
-        return handSignsDetector.mIsStarted;
-    }
-
-    static /* synthetic */ ImageRetriever$OnImageRetrieverCallback access$300(HandSignsDetector handSignsDetector) {
-        return handSignsDetector.mImageCallback;
-    }
-
-    static /* synthetic */ BackgroundWorker access$400(HandSignsDetector handSignsDetector) {
-        return handSignsDetector.mWorker;
-    }
-
-    static /* synthetic */ ImageRetriever access$500(HandSignsDetector handSignsDetector) {
-        return handSignsDetector.mImageRetriever;
-    }
-
-    static /* synthetic */ void access$600(HandSignsDetector handSignsDetector, int i, int i2, ByteBuffer byteBuffer) {
-        handSignsDetector.postDetect(i, i2, byteBuffer);
-    }
-
-    static /* synthetic */ HandSignsNativeWrapper access$700(HandSignsDetector handSignsDetector) {
-        return handSignsDetector.mNativeWrapper;
-    }
-
-    static /* synthetic */ int access$800(HandSignsDetector handSignsDetector) {
-        return handSignsDetector.mRoll;
-    }
-
-    static /* synthetic */ HandSignsDetectorInterface$DetectResultListener access$900(HandSignsDetector handSignsDetector) {
-        return handSignsDetector.mListener;
-    }
-
-    public HandSignsDetector(HandSignsDetectorInterface$DetectResultListener handSignsDetectorInterface$DetectResultListener, Handler handler) {
-        this.mListener = handSignsDetectorInterface$DetectResultListener;
+    public HandSignsDetector(HandSignsDetectorInterface.DetectResultListener detectResultListener, Handler handler) {
+        this.mListener = detectResultListener;
         this.mResultScheduler = handler;
+        try {
+            this.mWorker = new BackgroundWorker(TAG);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("Failed to start hand signs worker", e);
+        }
     }
 
     @Override // com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface
@@ -116,22 +277,22 @@ public class HandSignsDetector implements HandSignsDetectorInterface {
     }
 
     @Override // com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface
-    public void setLayoutOrientation(CameraActivity$LayoutOrientation cameraActivity$LayoutOrientation) {
-        switch (HandSignsDetector$3.$SwitchMap$com$sonyericsson$android$camera$CameraActivity$LayoutOrientation[cameraActivity$LayoutOrientation.ordinal()]) {
-            case 1:
+    public void setLayoutOrientation(CameraActivity.LayoutOrientation layoutOrientation) {
+        switch (layoutOrientation) {
+            case Portrait:
                 this.mRoll = 270;
                 break;
-            case 2:
+            case Landscape:
                 this.mRoll = 0;
                 break;
-            case 3:
+            case ReversePortrait:
                 this.mRoll = 90;
                 break;
-            case 4:
+            case ReverseLandscape:
                 this.mRoll = 180;
                 break;
             default:
-                throw new RuntimeException("Abnormal orientation: " + cameraActivity$LayoutOrientation);
+                throw new RuntimeException("Abnormal orientation: " + layoutOrientation);
         }
         if (CamLog.VERBOSE) {
             CamLog.d("Rotation updated to:" + this.mRoll);
@@ -152,6 +313,7 @@ public class HandSignsDetector implements HandSignsDetectorInterface {
         this.mNativeWrapper.release();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void postGetFrame() {
         long jHit = this.mFpsLimiter.hit();
         this.mWorker.getHandler().postDelayed(this.mGetFrameTask, jHit);
@@ -160,11 +322,92 @@ public class HandSignsDetector implements HandSignsDetectorInterface {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void postDetect(int i, int i2, ByteBuffer byteBuffer) {
-        this.mCurrentDetect = new HandSignsDetector$DetectRunnable(this, i, i2, byteBuffer);
+        this.mCurrentDetect = new DetectRunnable(i, i2, byteBuffer);
         this.mWorker.getHandler().post(this.mCurrentDetect);
         if (CamLog.VERBOSE) {
             CamLog.d("detection posted");
+        }
+    }
+
+    static class DetectResult implements HandSignsDetectorInterface.DetectResultInterface {
+        public static final int AHS_STATUS_CLICKDOWN = 2097152;
+        public static final int AHS_STATUS_CLICKUP = 4194304;
+        public static final int AHS_STATUS_NONE = 0;
+        public static final int AHS_STATUS_PALM = 16;
+        private Rect mArea = new Rect();
+        private HandSignsDetectorInterface.DetectResultInterface.HandStatus mStatus;
+
+        DetectResult() {
+        }
+
+        public void setAreaAndStatus(int i, int i2, int i3, int i4, int i5) {
+            this.mArea.left = i;
+            this.mArea.right = i3;
+            this.mArea.top = i2;
+            this.mArea.bottom = i4;
+            this.mStatus = i5 == 16 ? HandSignsDetectorInterface.DetectResultInterface.HandStatus.PALM : HandSignsDetectorInterface.DetectResultInterface.HandStatus.NONE;
+        }
+
+        @Override // com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface.DetectResultInterface
+        public Rect getArea() {
+            return this.mArea;
+        }
+
+        @Override // com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface.DetectResultInterface
+        public HandSignsDetectorInterface.DetectResultInterface.HandStatus getStatus() {
+            return this.mStatus;
+        }
+
+        public String toString() {
+            return getStatus() + " - " + getArea();
+        }
+    }
+
+    private class DetectRunnable implements Runnable {
+        private int height;
+        private ByteBuffer mYuvBuffer;
+        private int width;
+
+        public DetectRunnable(int i, int i2, ByteBuffer byteBuffer) {
+            this.width = i;
+            this.height = i2;
+            this.mYuvBuffer = byteBuffer;
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            if (HandSignsDetector.this.mIsStarted) {
+                if (CamLog.VERBOSE) {
+                    CamLog.d("Starting detection");
+                }
+                if (!HandSignsDetector.this.mDetectContext.isInitialized()) {
+                    HandSignsDetector.this.mDetectContext.initialize(this.width, this.height);
+                }
+                byte[] bArr = new byte[this.mYuvBuffer.remaining()];
+                this.mYuvBuffer.get(bArr);
+                HandSignsNativeWrapper unused = HandSignsDetector.this.mNativeWrapper;
+                HandSignsNativeWrapper.shrinkYvu420Sp(bArr, this.width, this.height, HandSignsDetector.this.mDetectContext.getFrame(), HandSignsDetector.this.mDetectContext.getShrinkRatio());
+                final DetectResult detectResult = new DetectResult();
+                HandSignsDetector.this.mNativeWrapper.detect(HandSignsDetector.this.mDetectContext.getDetectWidth(), HandSignsDetector.this.mDetectContext.getDetectHeight(), HandSignsDetector.this.mDetectContext.getFrame(), HandSignsDetector.this.mRoll, detectResult);
+                if (CamLog.VERBOSE) {
+                    CamLog.d("Detect result: " + detectResult);
+                }
+                if (HandSignsDetector.this.mListener != null) {
+                    if (HandSignsDetector.this.mResultScheduler != null) {
+                        HandSignsDetector.this.mResultScheduler.post(new Runnable() { // from class: com.sonyericsson.android.camera.gestureshutter.HandSignsDetector.DetectRunnable.1
+                            @Override // java.lang.Runnable
+                            public void run() {
+                                HandSignsDetector.this.mListener.onDetectResult(detectResult);
+                            }
+                        });
+                    } else {
+                        HandSignsDetector.this.mListener.onDetectResult(detectResult);
+                    }
+                }
+                HandSignsDetector.this.postGetFrame();
+            }
         }
     }
 }

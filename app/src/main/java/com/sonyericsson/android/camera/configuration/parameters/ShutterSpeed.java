@@ -1,26 +1,35 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
+import com.sonyericsson.android.camera.Constants;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.capability.CameraCapabilityList;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
+import com.sonymobile.android.media.MediaRecorder;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
+
+
 public enum ShutterSpeed implements UserSettingValue {
-    AUTO(-1, 2131689894, "auto", -1),
-    D1(-1, 2131689893, "shutter-prio", 1),
-    D2(-1, 2131689892, "shutter-prio", 2),
-    D4(-1, 2131689902, "shutter-prio", 4),
-    D8(-1, 2131689905, "shutter-prio", 8),
-    D15(-1, 2131689897, "shutter-prio", 15),
-    D30(-1, 2131689900, "shutter-prio", 30),
-    D60(-1, 2131689904, "shutter-prio", 60),
-    D125(-1, 2131689896, "shutter-prio", 125),
-    D250(-1, 2131689899, "shutter-prio", 250),
-    D500(-1, 2131689903, "shutter-prio", 500),
-    D1000(-1, 2131689895, "shutter-prio", 1000),
-    D2000(-1, 2131689898, "shutter-prio", 2000),
-    D4000(-1, 2131689901, "shutter-prio", 4000);
+    AUTO(-1, R.string.cam_strings_image_quality_control_shutter_speed_auto_txt, "auto", -1),
+    D1(-1, R.string.cam_strings_image_quality_control_shutter_speed_1_txt, CameraParameters.AE_MODE_SHUTTER_PRIO, 1),
+    D2(-1, R.string.cam_strings_image_quality_control_shutter_speed_0_5_txt, CameraParameters.AE_MODE_SHUTTER_PRIO, 2),
+    D4(-1, R.string.cam_strings_image_quality_control_shutter_speed_denominator_4_txt, CameraParameters.AE_MODE_SHUTTER_PRIO, 4),
+    D8(-1, R.string.cam_strings_image_quality_control_shutter_speed_denominator_8_txt, CameraParameters.AE_MODE_SHUTTER_PRIO, 8),
+    D15(-1, R.string.cam_strings_image_quality_control_shutter_speed_denominator_15_txt, CameraParameters.AE_MODE_SHUTTER_PRIO, 15),
+    D30(-1, R.string.cam_strings_image_quality_control_shutter_speed_denominator_30_txt, CameraParameters.AE_MODE_SHUTTER_PRIO, 30),
+    D60(-1, R.string.cam_strings_image_quality_control_shutter_speed_denominator_60_txt, CameraParameters.AE_MODE_SHUTTER_PRIO, 60),
+    D125(-1, R.string.cam_strings_image_quality_control_shutter_speed_denominator_125_txt, CameraParameters.AE_MODE_SHUTTER_PRIO, 125),
+    D250(-1, R.string.cam_strings_image_quality_control_shutter_speed_denominator_250_txt, CameraParameters.AE_MODE_SHUTTER_PRIO, 250),
+    D500(-1, R.string.cam_strings_image_quality_control_shutter_speed_denominator_500_txt, CameraParameters.AE_MODE_SHUTTER_PRIO, Constants.INTERVAL_OPEN_CAMERA),
+    D1000(-1, R.string.cam_strings_image_quality_control_shutter_speed_denominator_1000_txt, CameraParameters.AE_MODE_SHUTTER_PRIO, 1000),
+    D2000(-1, R.string.cam_strings_image_quality_control_shutter_speed_denominator_2000_txt, CameraParameters.AE_MODE_SHUTTER_PRIO, MediaRecorder.MEDIA_RECORDER_TRACK_INFO_LIST_END),
+    D4000(-1, R.string.cam_strings_image_quality_control_shutter_speed_denominator_4000_txt, CameraParameters.AE_MODE_SHUTTER_PRIO, 4000);
 
     private static final int INVALID_VALUE = -1;
     private static int mIndexOfDefault = 1;
@@ -96,7 +105,7 @@ public enum ShutterSpeed implements UserSettingValue {
                 return (ShutterSpeed[]) arrayList.toArray(new ShutterSpeed[0]);
             }
         }
-        if (!list.contains("shutter-prio")) {
+        if (!list.contains(CameraParameters.AE_MODE_SHUTTER_PRIO)) {
             return (ShutterSpeed[]) arrayList.toArray(new ShutterSpeed[0]);
         }
         List<String> list2 = cameraCapability.SHUTTER_SPEED_VALUES.get();

@@ -1,6 +1,23 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package org.apache.commons.imaging.formats.tiff;
 
-public class JpegImageData extends TiffElement$DataElement {
+import org.apache.commons.imaging.formats.tiff.TiffElement;
+
+public class JpegImageData extends TiffElement.DataElement {
     public JpegImageData(long j, int i, byte[] bArr) {
         super(j, i, bArr);
     }

@@ -1,4 +1,7 @@
 package org.apache.commons.imaging.formats.psd.datareaders;
+import java.io.IOException;
+
+import org.apache.commons.imaging.ImageReadException;
 
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
@@ -19,36 +22,28 @@ public class UncompressedDataReader implements DataReader {
         this.dataParser = dataParser;
     }
 
-    @Override // org.apache.commons.imaging.formats.psd.datareaders.DataReader
-    public void readData(InputStream inputStream, BufferedImage bufferedImage, ImageContents imageContents, BinaryFileParser binaryFileParser) throws Throwable {
-        BitsToByteInputStream bitsToByteInputStream;
+    @Override
+    public void readData(InputStream inputStream, BufferedImage bufferedImage, ImageContents imageContents, BinaryFileParser binaryFileParser) throws IOException, ImageReadException {
         PsdHeaderInfo psdHeaderInfo = imageContents.header;
-        int i = psdHeaderInfo.columns;
-        int i2 = psdHeaderInfo.rows;
+        int width = psdHeaderInfo.columns;
+        int height = psdHeaderInfo.rows;
         binaryFileParser.setDebug(false);
         int basicChannelsCount = this.dataParser.getBasicChannelsCount();
-        int i3 = psdHeaderInfo.depth;
+        int depth = psdHeaderInfo.depth;
+        
+        BitsToByteInputStream bitsToByteInputStream = new BitsToByteInputStream(new MyBitInputStream(inputStream, ByteOrder.BIG_ENDIAN), 8);
         try {
-            bitsToByteInputStream = new BitsToByteInputStream(new MyBitInputStream(inputStream, ByteOrder.BIG_ENDIAN), 8);
-            try {
-                int[][][] iArr = (int[][][]) Array.newInstance((Class<?>) int.class, basicChannelsCount, i2, i);
-                for (int i4 = 0; i4 < basicChannelsCount; i4++) {
-                    for (int i5 = 0; i5 < i2; i5++) {
-                        for (int i6 = 0; i6 < i; i6++) {
-                            iArr[i4][i5][i6] = (byte) bitsToByteInputStream.readBits(i3);
-                        }
+            int[][][] data = (int[][][]) Array.newInstance(int.class, basicChannelsCount, height, width);
+            for (int channel = 0; channel < basicChannelsCount; channel++) {
+                for (int y = 0; y < height; y++) {
+                    for (int x = 0; x < width; x++) {
+                        data[channel][y][x] = (int) bitsToByteInputStream.readBits(depth);
                     }
                 }
-                this.dataParser.parseData(iArr, bufferedImage, imageContents);
-                IoUtils.closeQuietly(true, bitsToByteInputStream);
-            } catch (Throwable th) {
-                th = th;
-                IoUtils.closeQuietly(false, bitsToByteInputStream);
-                throw th;
             }
-        } catch (Throwable th2) {
-            th = th2;
-            bitsToByteInputStream = null;
+            this.dataParser.parseData(data, bufferedImage, imageContents);
+        } finally {
+            IoUtils.closeQuietly(true, bitsToByteInputStream);
         }
     }
 }

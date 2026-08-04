@@ -1,20 +1,18 @@
 package com.sonyericsson.android.camera.view.hint;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout$LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
-import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver$ScreenAspect;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 import com.sonymobile.cameracommon.font.FontUtil;
-import com.sonymobile.cameracommon.font.FontUtil$RobotoFontType;
 
 public class HintTextView extends FrameLayout {
     private Button mButton;
@@ -29,31 +27,36 @@ public class HintTextView extends FrameLayout {
     public HintTextView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         this.mTransparentBackground = true;
-        this.mSendAccessibilityEventTask = new HintTextView$1(this);
+        this.mSendAccessibilityEventTask = new Runnable() { // from class: com.sonyericsson.android.camera.view.hint.HintTextView.1
+            @Override // java.lang.Runnable
+            public void run() {
+                HintTextView.this.sendAccessibilityEvent(32);
+            }
+        };
     }
 
     public static HintTextView inflate(Context context) {
-        return (HintTextView) View.inflate(context, 2131492928, null);
+        return (HintTextView) View.inflate(context, R.layout.hint_text_indicator, null);
     }
 
     @Override // android.view.View
     public void onFinishInflate() {
         super.onFinishInflate();
-        this.mLayoutContainer = (LinearLayout) findViewById(2131296415);
-        this.mMessage = (TextView) findViewById(2131296416);
-        this.mSubMessage = (TextView) findViewById(2131296418);
-        this.mButton = (Button) findViewById(2131296325);
-        this.mMessageBackground = findViewById(2131296417);
-        FontUtil.setRobotoFont(this.mMessage, FontUtil$RobotoFontType.MEDIUM);
-        FontUtil.setRobotoFont(this.mSubMessage, FontUtil$RobotoFontType.MEDIUM);
-        FontUtil.setRobotoFont(this.mButton, FontUtil$RobotoFontType.MEDIUM);
+        this.mLayoutContainer = (LinearLayout) findViewById(R.id.hint_text_layout_container);
+        this.mMessage = (TextView) findViewById(R.id.hint_text_message);
+        this.mSubMessage = (TextView) findViewById(R.id.hint_text_sub_message);
+        this.mButton = (Button) findViewById(R.id.button_show_hint_text_dialog);
+        this.mMessageBackground = findViewById(R.id.hint_text_message_background);
+        FontUtil.setRobotoFont(this.mMessage, FontUtil.RobotoFontType.MEDIUM);
+        FontUtil.setRobotoFont(this.mSubMessage, FontUtil.RobotoFontType.MEDIUM);
+        FontUtil.setRobotoFont(this.mButton, FontUtil.RobotoFontType.MEDIUM);
     }
 
-    public void setOnButtonClickListener(View$OnClickListener view$OnClickListener) {
-        this.mButton.setOnClickListener(view$OnClickListener);
+    public void setOnButtonClickListener(View.OnClickListener onClickListener) {
+        this.mButton.setOnClickListener(onClickListener);
     }
 
-    public void setContent(HintTextContent hintTextContent) {
+    public void setContent(HintTextContent hintTextContent) throws Resources.NotFoundException {
         setMessageContents(hintTextContent.getMessageResourceId());
         setSubMessage(hintTextContent.getSubMessage());
         setButtonMessage(hintTextContent.getButtonMessageResourceId());
@@ -84,8 +87,8 @@ public class HintTextView extends FrameLayout {
     }
 
     private void setSubMessage(String str) {
-        View viewFindViewById = findViewById(2131296464);
-        View viewFindViewById2 = findViewById(2131296633);
+        View viewFindViewById = findViewById(R.id.message_space);
+        View viewFindViewById2 = findViewById(R.id.sub_message_space);
         if (str == null) {
             this.mSubMessage.setVisibility(8);
             viewFindViewById.setVisibility(8);
@@ -101,8 +104,8 @@ public class HintTextView extends FrameLayout {
     }
 
     private void setButtonMessage(int i) {
-        FrameLayout frameLayout = (FrameLayout) findViewById(2131296407);
-        View viewFindViewById = findViewById(2131296326);
+        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frameLayout_button_container);
+        View viewFindViewById = findViewById(R.id.button_space);
         if (i == -1) {
             this.mButton.setVisibility(8);
             frameLayout.setVisibility(8);
@@ -117,14 +120,14 @@ public class HintTextView extends FrameLayout {
         }
     }
 
-    private void setMessageDescription(int i) {
+    private void setMessageDescription(int i) throws Resources.NotFoundException {
         if (i == -1) {
             return;
         }
         this.mMessage.setContentDescription(getResources().getString(i));
     }
 
-    private void setButtonDescription(int i) {
+    private void setButtonDescription(int i) throws Resources.NotFoundException {
         if (i == -1) {
             this.mButton.setContentDescription("");
         } else {
@@ -151,20 +154,20 @@ public class HintTextView extends FrameLayout {
         super.onMeasure(i, i2);
         updateRotation();
         if (getHeight() < this.mLayoutContainer.getWidth()) {
-            FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) this.mLayoutContainer.getLayoutParams();
-            frameLayout$LayoutParams.width = getHeight();
-            this.mLayoutContainer.setLayoutParams(frameLayout$LayoutParams);
+            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) this.mLayoutContainer.getLayoutParams();
+            layoutParams.width = getHeight();
+            this.mLayoutContainer.setLayoutParams(layoutParams);
             super.onMeasure(i, i2);
         }
     }
 
-    public void setUiOrientation(Rect rect, Context context, LayoutDependencyResolver$ScreenAspect layoutDependencyResolver$ScreenAspect, int i) {
+    public void setUiOrientation(Rect rect, Context context, LayoutDependencyResolver.ScreenAspect screenAspect, int i) {
         this.mOrientation = i;
-        findViewById(2131296326).getLayoutParams().height = getBottomMarginPixelSize(i);
-        findViewById(2131296326).requestLayout();
+        findViewById(R.id.button_space).getLayoutParams().height = getBottomMarginPixelSize(i);
+        findViewById(R.id.button_space).requestLayout();
         float fMax = Math.max(rect.width(), rect.height()) * 1.0f;
         if ((Math.min(rect.width(), rect.height()) * 1.0f) / fMax < 0.75f && this.mOrientation == 1) {
-            setPadding(0, 0, 0, ((int) fMax) - LayoutDependencyResolver.getSurfaceViewRect(context, 0.75f, layoutDependencyResolver$ScreenAspect).height());
+            setPadding(0, 0, 0, ((int) fMax) - LayoutDependencyResolver.getSurfaceViewRect(context, 0.75f, screenAspect).height());
         } else {
             setPadding(0, 0, 0, 0);
         }
@@ -173,9 +176,9 @@ public class HintTextView extends FrameLayout {
 
     private int getBottomMarginPixelSize(int i) {
         if (i == 1) {
-            return getResources().getDimensionPixelSize(2131165358);
+            return getResources().getDimensionPixelSize(R.dimen.hint_text_button_margin_portrait);
         }
-        return getResources().getDimensionPixelSize(2131165357);
+        return getResources().getDimensionPixelSize(R.dimen.hint_text_button_margin_landscape);
     }
 
     private void updateRotation() {
@@ -198,7 +201,7 @@ public class HintTextView extends FrameLayout {
         if (this.mMessage != null && this.mTransparentBackground) {
             this.mMessageBackground.setBackground(null);
         } else {
-            this.mMessageBackground.setBackgroundResource(2131231213);
+            this.mMessageBackground.setBackgroundResource(R.drawable.cam_dialog_background_icn_for_toast);
         }
     }
 }

@@ -2,6 +2,7 @@ package com.sonyericsson.cameracommon.storage;
 
 import android.content.ContentValues;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.util.capability.SharedPrefsTranslator;
 import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusCommon;
 import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusVideo;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
@@ -61,7 +62,7 @@ public class VideoSavingRequest extends SavingRequest {
         contentValues.put("artist", "<unknown>");
         contentValues.put("album", "<unknown>");
         contentValues.put("duration", Long.valueOf(getDuration()).toString());
-        contentValues.put("resolution", this.common.width + "x" + this.common.height);
+        contentValues.put("resolution", this.common.width + SharedPrefsTranslator.CONNECTOR_CROSS + this.common.height);
         contentValues.put("width", Integer.valueOf(this.common.width));
         contentValues.put("height", Integer.valueOf(this.common.height));
         contentValues.put("_data", getFilePath());

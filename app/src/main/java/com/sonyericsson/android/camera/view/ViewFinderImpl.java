@@ -11,37 +11,34 @@ import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.YuvImage;
+import android.graphics.drawable.Animatable2;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Process;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.support.v4.view.ViewCompat;
 import android.util.Log;
 import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.view.View$OnTouchListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup$LayoutParams;
 import android.view.Window;
-import android.view.WindowManager$LayoutParams;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout$LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout$LayoutParams;
 import com.sonyericsson.android.camera.CameraActivity;
-import com.sonyericsson.android.camera.CameraActivity$LayoutOrientation;
-import com.sonyericsson.android.camera.CameraActivity$LayoutOrientationChangedListener;
 import com.sonyericsson.android.camera.CameraApplication;
-import com.sonyericsson.android.camera.LaunchCondition$LaunchTrigger;
+import com.sonyericsson.android.camera.LaunchCondition;
 import com.sonyericsson.android.camera.NavigatorContents;
-import com.sonyericsson.android.camera.SideTouchEventDetector$SideTouchEvent;
+import com.sonyericsson.android.camera.R;
+import com.sonyericsson.android.camera.SideTouchEventDetector;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.configuration.parameters.AutoReview;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
@@ -57,6 +54,7 @@ import com.sonyericsson.android.camera.configuration.parameters.PredictiveLaunch
 import com.sonyericsson.android.camera.configuration.parameters.Resolution;
 import com.sonyericsson.android.camera.configuration.parameters.SelfTimer;
 import com.sonyericsson.android.camera.configuration.parameters.ShutterTrigger;
+import com.sonyericsson.android.camera.configuration.parameters.SideSense;
 import com.sonyericsson.android.camera.configuration.parameters.SlowMotion;
 import com.sonyericsson.android.camera.configuration.parameters.SmileCapture;
 import com.sonyericsson.android.camera.configuration.parameters.TouchCapture;
@@ -64,60 +62,53 @@ import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue
 import com.sonyericsson.android.camera.configuration.parameters.VideoHdr;
 import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
 import com.sonyericsson.android.camera.configuration.parameters.VideoSmileCapture;
-import com.sonyericsson.android.camera.controller.AbstractDraggingEventHandler$Direction;
+import com.sonyericsson.android.camera.controller.AbstractDraggingEventHandler;
 import com.sonyericsson.android.camera.controller.ChapterThumbnail;
+import com.sonyericsson.android.camera.controller.GestureShutter;
 import com.sonyericsson.android.camera.controller.StateMachine;
-import com.sonyericsson.android.camera.controller.StateMachine$CaptureState;
-import com.sonyericsson.android.camera.controller.StateMachine$OnStateChangedListener;
-import com.sonyericsson.android.camera.controller.StateMachine$StaticEvent;
-import com.sonyericsson.android.camera.controller.StateMachine$TransitterEvent;
 import com.sonyericsson.android.camera.controller.VibrationManager;
-import com.sonyericsson.android.camera.controller.VibrationManager$VibrationPattern;
 import com.sonyericsson.android.camera.controller.launcher.ApplicationLauncher;
 import com.sonyericsson.android.camera.controller.xperiaxloops.XperiaXLoopsManager;
 import com.sonyericsson.android.camera.device.CameraDeviceHandler;
-import com.sonyericsson.android.camera.device.CameraParameters$FaceDetectionResult;
-import com.sonyericsson.android.camera.device.CameraParameters$FusionCondition;
-import com.sonyericsson.android.camera.device.CameraParameters$FusionResult;
-import com.sonyericsson.android.camera.device.CameraParameters$FusionStatus;
-import com.sonyericsson.android.camera.device.CameraParameters$ObjectTrackingResult;
-import com.sonyericsson.android.camera.device.CameraParameters$SceneRecognitionResult;
+import com.sonyericsson.android.camera.device.CameraInfo;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.research.LocalResearchUtil;
-import com.sonyericsson.android.camera.research.LocalResearchUtil$MeasurementKey;
-import com.sonyericsson.android.camera.research.LocalResearchUtil$ModeChangeMethod;
 import com.sonyericsson.android.camera.setting.MessageSettings;
 import com.sonyericsson.android.camera.setting.MessageType;
 import com.sonyericsson.android.camera.setting.UiControlSettings;
 import com.sonyericsson.android.camera.setting.UserSettings;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.CoordinateUtil;
+import com.sonyericsson.android.camera.util.HelpGuide;
 import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.android.camera.util.ThreadUtil;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
+import com.sonyericsson.android.camera.view.AutoReviewContent;
+import com.sonyericsson.android.camera.view.AutoReviewController;
+import com.sonyericsson.android.camera.view.CaptureArea;
+import com.sonyericsson.android.camera.view.LayoutAsyncInflateItems;
+import com.sonyericsson.android.camera.view.SuperSlowMotionTriggerAnimationController;
+import com.sonyericsson.android.camera.view.ToastContent;
+import com.sonyericsson.android.camera.view.UserEventHandler;
+import com.sonyericsson.android.camera.view.ViewFinder;
 import com.sonyericsson.android.camera.view.animation.AnimationRequest;
-import com.sonyericsson.android.camera.view.animation.AnimationRequest$AnimationDegree;
-import com.sonyericsson.android.camera.view.animation.AnimationRequest$AnimationType;
 import com.sonyericsson.android.camera.view.animation.TransitionAnimationController;
 import com.sonyericsson.android.camera.view.baselayout.BaseLayout;
-import com.sonyericsson.android.camera.view.baselayout.BaseLayout$LazyInitializer;
 import com.sonyericsson.android.camera.view.baselayout.BaseLayoutPattern;
 import com.sonyericsson.android.camera.view.baselayout.BaseLayoutPatternApplier;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
-import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver$ScreenAspect;
 import com.sonyericsson.android.camera.view.baselayout.LayoutPatternApplier;
 import com.sonyericsson.android.camera.view.baselayout.PredictiveLaunchCoverView;
-import com.sonyericsson.android.camera.view.baselayout.PredictiveLaunchCoverView$PredictiveLaunchCoverType;
+import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButton;
 import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonGroup;
-import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonGroup$Item;
-import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonGroup$MutableButtonItem;
 import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonItemFactory;
-import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonItemFactory$ButtonType;
+import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener;
 import com.sonyericsson.android.camera.view.baselayout.zoombar.Zoombar;
 import com.sonyericsson.android.camera.view.hint.HintTextAutoPowerOff;
 import com.sonyericsson.android.camera.view.hint.HintTextContent;
-import com.sonyericsson.android.camera.view.hint.HintTextContent$HintPriority;
 import com.sonyericsson.android.camera.view.hint.HintTextHighSensitivityFusionCondition;
 import com.sonyericsson.android.camera.view.hint.HintTextHighSensitivityFusionStatus;
+import com.sonyericsson.android.camera.view.hint.HintTextSlowMotionDescription;
 import com.sonyericsson.android.camera.view.hint.HintTextStandardSlowMotion;
 import com.sonyericsson.android.camera.view.hint.HintTextStandardSlowMotionDescription;
 import com.sonyericsson.android.camera.view.hint.HintTextSuperSlowMotion;
@@ -125,56 +116,55 @@ import com.sonyericsson.android.camera.view.hint.HintTextSuperSlowMotionDescript
 import com.sonyericsson.android.camera.view.hint.HintTextSuperSlowMotionVideoRecording;
 import com.sonyericsson.android.camera.view.hint.HintTextSuperSlowShot;
 import com.sonyericsson.android.camera.view.hint.HintTextSuperSlowShotDescription;
+import com.sonyericsson.android.camera.view.hint.HintTextThermal;
 import com.sonyericsson.android.camera.view.hint.HintTextThermalWarning;
 import com.sonyericsson.android.camera.view.hint.HintTextTimedOutMessage;
-import com.sonyericsson.android.camera.view.hint.HintTextTimedOutMessage$MessageType;
 import com.sonyericsson.android.camera.view.hint.HintTextViewController;
 import com.sonyericsson.android.camera.view.messagedialog.DialogId;
 import com.sonyericsson.android.camera.view.messagedialog.MessageDialogController;
+import com.sonyericsson.android.camera.view.messagedialog.MessageDialogRequest;
+import com.sonyericsson.android.camera.view.modeselector.AddonMode;
+import com.sonyericsson.android.camera.view.modeselector.CapturingModeAttributes;
 import com.sonyericsson.android.camera.view.modeselector.CapturingModeUtil;
 import com.sonyericsson.android.camera.view.modeselector.InternalMode;
 import com.sonyericsson.android.camera.view.modeselector.LaunchCameraIntentBuilder;
 import com.sonyericsson.android.camera.view.modeselector.Mode;
+import com.sonyericsson.android.camera.view.overlaycontrol.ImageQualityControl;
 import com.sonyericsson.android.camera.view.modeselector.ModeLoader;
 import com.sonyericsson.android.camera.view.modeselector.ModeSelectorInternalMode;
-import com.sonyericsson.android.camera.view.overlaycontrol.ImageQualityControl;
+import com.sonyericsson.android.camera.view.overlaycontrol.EnumValueAccessor;
 import com.sonyericsson.android.camera.view.overlaycontrol.OverlayControl;
 import com.sonyericsson.android.camera.view.overlaycontrol.ValueAccessor;
-import com.sonyericsson.android.camera.view.selectabledialog.ModeSelector$OnModeSelectListener;
+import com.sonyericsson.android.camera.view.selectabledialog.ModeSelector;
 import com.sonyericsson.android.camera.view.setting.SettingDialogStack;
 import com.sonyericsson.android.camera.view.setting.SettingUi;
+import com.sonyericsson.android.camera.view.setting.dialog.SettingDialogListener;
 import com.sonyericsson.android.camera.view.sidetouch.SideTouchUi;
-import com.sonyericsson.android.camera.view.sidetouch.SideTouchUi$Type;
+import com.sonyericsson.android.camera.view.tutorial.TutorialContentView;
 import com.sonyericsson.android.camera.view.tutorial.TutorialController;
-import com.sonyericsson.android.camera.view.tutorial.TutorialController$DisplayTrigger;
-import com.sonyericsson.android.camera.view.tutorial.TutorialController$OnClickSetupWizardButtonListener;
-import com.sonyericsson.android.camera.view.tutorial.TutorialController$OpenType;
-import com.sonyericsson.android.camera.view.tutorial.TutorialController$SystemUiAccessor;
-import com.sonyericsson.android.camera.view.tutorial.TutorialController$TutorialType;
 import com.sonyericsson.cameracommon.capturefeedback.CaptureFeedback;
 import com.sonyericsson.cameracommon.capturefeedback.animation.CaptureFeedbackAnimationFactory;
 import com.sonyericsson.cameracommon.capturefeedback.contextview.GLSurfaceContextView;
-import com.sonyericsson.cameracommon.contentsview.ContentPallet$ThumbnailStateListener;
+import com.sonyericsson.cameracommon.contentsview.ContentPallet;
 import com.sonyericsson.cameracommon.contentsview.ContentsViewController;
 import com.sonyericsson.cameracommon.contentsview.contents.Content;
-import com.sonyericsson.cameracommon.contentsview.contents.Content$ContentInfo;
-import com.sonyericsson.cameracommon.contentsview.contents.Content$ContentsType;
+import com.sonyericsson.cameracommon.focusview.FocusActionListener;
 import com.sonyericsson.cameracommon.focusview.FocusRectangles;
-import com.sonyericsson.cameracommon.focusview.FocusRectangles$FocusSetType;
 import com.sonyericsson.cameracommon.focusview.FocusRectanglesViewList;
 import com.sonyericsson.cameracommon.focusview.TaggedRectangle;
+import com.sonyericsson.cameracommon.mediasaving.MediaSavingConstants;
 import com.sonyericsson.cameracommon.mediasaving.StoreDataResult;
 import com.sonyericsson.cameracommon.mediasaving.location.GeotagManager;
+import com.sonyericsson.cameracommon.mediasaving.location.LocationAcquiredListener;
+import com.sonyericsson.cameracommon.review.ReviewWindowListener;
 import com.sonyericsson.cameracommon.storage.PhotoSavingRequest;
 import com.sonyericsson.cameracommon.storage.SavingRequest;
-import com.sonyericsson.cameracommon.storage.Storage$StorageState;
-import com.sonyericsson.cameracommon.storage.Storage$StorageStateListener;
-import com.sonyericsson.cameracommon.storage.Storage$StorageType;
+import com.sonyericsson.cameracommon.storage.SavingTaskManager;
+import com.sonyericsson.cameracommon.storage.Storage;
+import com.sonyericsson.cameracommon.storage.StorageUtil;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
-import com.sonyericsson.cameracommon.utility.CommonUtility$DefaultGallerySetting;
 import com.sonyericsson.cameracommon.utility.FaceDetectUtil;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
-import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 import com.sonyericsson.cameracommon.utility.MeasurePerformance;
 import com.sonyericsson.cameracommon.utility.PermissionsUtil;
 import com.sonyericsson.cameracommon.utility.PositionConverter;
@@ -186,11 +176,10 @@ import com.sonyericsson.cameracommon.viewfinder.InflateTask;
 import com.sonyericsson.cameracommon.viewfinder.LayoutPattern;
 import com.sonyericsson.cameracommon.viewfinder.ViewFinderInterface;
 import com.sonyericsson.cameracommon.viewfinder.recordingindicator.RecordingIndicator;
+import com.sonyericsson.cameracommon.viewfinder.recordingindicator.RecordingTimeIndicator;
 import com.sonymobile.cameracommon.evf.Evf;
-import com.sonymobile.cameracommon.evf.Evf$EvfFactory;
-import com.sonymobile.cameracommon.evf.Evf$LifeCycleCallback;
 import com.sonymobile.cameracommon.research.ResearchUtil;
-import com.sonymobile.cameracommon.research.parameters.Event$WizardResult;
+import com.sonymobile.cameracommon.research.parameters.Event;
 import com.sonymobile.cameracommon.view.RecognizedCondition;
 import com.sonymobile.cameracommon.view.RecognizedScene;
 import com.sonymobile.cameracommon.view.SelfTimerCountDownView;
@@ -201,33 +190,37 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map$Entry;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
-public class ViewFinderImpl implements StateMachine$OnStateChangedListener, ViewFinder, ViewFinderInterface, CameraActivity$LayoutOrientationChangedListener {
+public class ViewFinderImpl implements StateMachine.OnStateChangedListener, ViewFinder, ViewFinderInterface,
+        CameraActivity.LayoutOrientationChangedListener {
     private static final int AUTO_POWER_OFF_HINT_TEXT_TIME_OUT_TIME_MILLIS = 10000;
     private static final int COLOR_VALUE_MAX = 255;
-    private static final List<DialogId> STORAGE_DIALOG_LIST = Arrays.asList(DialogId.MEMORY_FULL_PROPOSE_CHANGE_TO_INTERNAL, DialogId.MEMORY_UNAVAILABLE_PROPOSE_CHANGE_TO_INTERNAL, DialogId.MEMORY_FULL, DialogId.MEMORY_SD_UNAVAILABLE, DialogId.MEMORY_FULL_PROPOSE_CHANGE_TO_SD, DialogId.MEMORY_INTERNAL_UNAVAILABLE, DialogId.MEMORY_UNAVAILABLE_PROPOSE_CHANGE_TO_SD);
+    private static final List<DialogId> STORAGE_DIALOG_LIST = Arrays.asList(
+            DialogId.MEMORY_FULL_PROPOSE_CHANGE_TO_INTERNAL, DialogId.MEMORY_UNAVAILABLE_PROPOSE_CHANGE_TO_INTERNAL,
+            DialogId.MEMORY_FULL, DialogId.MEMORY_SD_UNAVAILABLE, DialogId.MEMORY_FULL_PROPOSE_CHANGE_TO_SD,
+            DialogId.MEMORY_INTERNAL_UNAVAILABLE, DialogId.MEMORY_UNAVAILABLE_PROPOSE_CHANGE_TO_SD);
     private static final String TAG = "ViewFinderImpl";
     private static final String THREAD_NAME = "InflateTask";
     private static final float VIEW_FINDER_DUSKY = 0.5f;
     private CameraActivity mActivity;
     private TransitionAnimationController mAnimationController;
     private ApplicationNavigator mApplicationNavigator;
-    private ViewFinderImpl$AutoReviewContentReceiverProxy mAutoReviewProxy;
+    private AutoReviewContentReceiverProxy mAutoReviewProxy;
     private StoreDataResult mAutoReviewStoreData;
     private BaseLayout mBaseLayout;
     private BurstCountView mBurstCountView;
     private CapturingMode mCapturingModeWhenLastSetupHeadDisplay;
-    private ViewFinder$UiComponentKind mCurrentDisplayingUiComponent;
+    private ViewFinder.UiComponentKind mCurrentDisplayingUiComponent;
     private Evf mEvf;
+    private final Evf.LifeCycleCallback mEvfLifeCycleCallback;
     private FocusRectangles mFocusRectangles;
     private FrontAngleSwitchButton mFrontAngleSwitchButton;
-    private OnScreenButtonGroup$MutableButtonItem mHighSensitivityFusionButtonItem;
+    private OnScreenButtonGroup.MutableButtonItem mHighSensitivityFusionButtonItem;
     private HintTextViewController mHintText;
-    private OnScreenButtonGroup$MutableButtonItem mImageQualityControlButtonItem;
+    private OnScreenButtonGroup.MutableButtonItem mImageQualityControlButtonItem;
     private Future<Map<InflateItem, List<View>>> mInflateFuture;
     private Map<InflateItem, List<View>> mInflateItemMap;
     private InstantViewer mInstantViewer;
@@ -243,17 +236,19 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     private XperiaXLoopsManager mLoopsManager;
     private final MessageDialogController mMessageDialog;
     private ModeLoader mModeLoader;
-    private View$OnTouchListener mOnFocusRectangleTouchListener;
+    private View.OnTouchListener mOnFocusRectangleTouchListener;
+    private final PostUiInflatedTask mPostUiInflatedTask;
     private View mPreInflatedHeadUpDisplay;
     private View mPreviewCover;
     private PrimaryShortcutGroup mPrimaryShortcutGroup;
-    private ViewFinderImpl$RecordingTimeReceiverProxy mRecordingTimeProxy;
+    private RecordingTimeReceiverProxy mRecordingTimeProxy;
     private View mSavingProgressBar;
-    private final LayoutDependencyResolver$ScreenAspect mScreenAspect;
+    private final LayoutDependencyResolver.ScreenAspect mScreenAspect;
+    private final ScreenButtonHandler mScreenButtonHandler;
     private SelfTimerCountDownView mSelfTimerCountDownView;
     private SelfTimerCountDownView mSelfTimerCountDownViewNext;
     private SettingDialogStack mSettingDialogStack;
-    private ViewFinderImpl$SettingMenuExclusiveListener mSettingMenuExclusiveListener;
+    private SettingMenuExclusiveListener mSettingMenuExclusiveListener;
     private SettingUi mSettingUi;
     private SideTouchUi mSideTouchUi;
     private StateMachine mStateMachine;
@@ -262,9 +257,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     private final UiControlSettings mUiControlSettings;
     private CaptureArea mViewFinderCaptureArea;
     private View mWindowDisplayFlashScreen;
-    private ViewFinderImpl$ZoomBarUpdateProxy mZoomBarProxy;
+    private ZoomBarUpdateProxy mZoomBarProxy;
     private CameraDeviceHandler mCameraDevice = null;
-    private final Evf$LifeCycleCallback mEvfLifeCycleCallback = new ViewFinderImpl$EvfLifeCycleCallback(this, null);
     private SelfTimer mPhotoSelfTimerSetting = SelfTimer.OFF;
     private ShutterTrigger mShutterTrigger = ShutterTrigger.OFF;
     private TouchCapture mTouchCapture = null;
@@ -273,7 +267,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     private int mRecordingOrientation = 0;
     private boolean mIsSurfaceViewHideWhileAspectChanging = false;
     private boolean mIsAutoReviewRequested = false;
-    private ViewFinder$BurstRejectedReason mBurstShootingRejectedReason = ViewFinder$BurstRejectedReason.NONE;
+    private ViewFinder.BurstRejectedReason mBurstShootingRejectedReason = ViewFinder.BurstRejectedReason.NONE;
     private boolean mIsEvfPrepared = true;
     private boolean mCanFocusRectanglesBeUpdated = true;
     private int mOrientation = 2;
@@ -285,24 +279,193 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     private boolean mHintCannotBurstUsingFrontCameraAlreadyDisplayed = false;
     private boolean mHintBurstChangeCameraKeySettingAlreadyDisplayed = false;
     private boolean mHintCannotBurstUsingFusionModeAlreadyDisplayed = false;
-    private final ViewFinderImpl$ScreenButtonHandler mScreenButtonHandler = new ViewFinderImpl$ScreenButtonHandler(this, null);
     private List<Runnable> mDelayUpdatedViewTaskList = new LinkedList();
     private boolean mIsNeedDisplayToastChangeInternalStoarge = false;
-    private Storage$StorageStateListener mStorageStateListener = new ViewFinderImpl$1(this);
-    private ModeSelector$OnModeSelectListener mModeSelectListener = new ViewFinderImpl$2(this);
-    private final UserEventHandler$TouchEventDispatcher mTouchEventDispatcher = new UserEventHandler$TouchEventDispatcher();
-    private final Runnable mCheckEvfPreparationTask = new ViewFinderImpl$3(this);
-    private final ViewFinderImpl$PostUiInflatedTask mPostUiInflatedTask = new ViewFinderImpl$PostUiInflatedTask(this, null);
-    private final View$OnClickListener mFrontAngleSwitchButtonClickListener = new ViewFinderImpl$8(this);
+    private Storage.StorageStateListener mStorageStateListener = new Storage.StorageStateListener() { // from class:
+                                                                                                      // com.sonyericsson.android.camera.view.ViewFinderImpl.1
+        @Override // com.sonyericsson.cameracommon.storage.Storage.StorageStateListener
+        public void onStorageStateChanged(Storage.StorageType storageType, Storage.StorageState storageState,
+                Storage.StorageReadyState storageReadyState) {
+        }
+
+        @Override // com.sonyericsson.cameracommon.storage.Storage.StorageStateListener
+        public void onStorageSizeChanged(Storage.StorageType storageType, long j) {
+            if (CamLog.VERBOSE) {
+                CamLog.d("onAvailableSizeUpdated: ");
+            }
+            CameraApplication.getUiThreadHandler().post(new Runnable() { // from
+                                                                         // class:
+                                                                         // com.sonyericsson.android.camera.view.ViewFinderImpl.1.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    ViewFinderImpl.this.mBaseLayout.getLowMemoryInternalIndicator()
+                            .set(!ViewFinderImpl.this.hasEnoughFreeSpace(Storage.StorageType.INTERNAL));
+                    ViewFinderImpl.this.mBaseLayout.getLowMemorySdIndicator()
+                            .set(!ViewFinderImpl.this.hasEnoughFreeSpace(Storage.StorageType.EXTERNAL_CARD));
+                }
+            });
+        }
+    };
+    private ModeSelector.OnModeSelectListener mModeSelectListener = new ModeSelector.OnModeSelectListener() { // from
+                                                                                                              // class:
+                                                                                                              // com.sonyericsson.android.camera.view.ViewFinderImpl.2
+        @Override // com.sonyericsson.android.camera.view.selectabledialog.ModeSelector.OnModeSelectListener
+        public void onModeSelected(Mode mode, boolean z) {
+            if (ViewFinderImpl.this.mIsSettingChangeAcceptable && ViewFinderImpl.this.isUserOperable()) {
+                CameraActivity cameraActivity = ViewFinderImpl.this.mActivity;
+                ActivityOptions makeCustomAnimation = ActivityOptions.makeCustomAnimation(cameraActivity, 0, 0);
+                if (mode instanceof InternalMode) {
+                    if (ViewFinderImpl.this.mIsRequestingStartActivity) {
+                        return;
+                    }
+                    ModeSelectorInternalMode tag = ((InternalMode) mode).getTag();
+                    if (tag != ModeSelectorInternalMode.DUAL_MONOCHROME) {
+                        if (ViewFinderImpl.this.mActivity.isDeviceInSecurityLock() && tag.isExternalApp) {
+                            Intent commit = LaunchCameraIntentBuilder.create()
+                                    .mode(ViewFinderImpl.this.getCapturingMode().name())
+                                    .activity("com.sonyericsson.android.camera", CapturingModeUtil.CAMERA_ACTIVITY)
+                                    .callingMode(CapturingModeUtil
+                                            .filteringPrevName(ViewFinderImpl.this.getCapturingMode().name()))
+                                    .callingActivity(cameraActivity.getPackageName(),
+                                            CapturingModeUtil
+                                                    .filteringPrevActivity(cameraActivity.getClass().getName()))
+                                    .commit();
+                            commit.putExtra(LaunchCondition.EXTRA_LAUNCH_INTERNAL_MODE, tag.ordinal());
+                            commit.putExtra(LaunchCondition.EXTRA_LAUNCH_INTERNAL_CALLING_CAPTURING_MODE,
+                                    ViewFinderImpl.this.mStateMachine.getCurrentCapturingMode().ordinal());
+                            ViewFinderImpl.this.showMessageDialog(DialogId.UNLOCK_REQUEST_FOR_OPENING_ADD_ON_APP,
+                                    commit, makeCustomAnimation.toBundle(), mode);
+                            return;
+                        }
+                        if (tag.isExternalApp) {
+                            int requestCodeFromMode = getRequestCodeFromMode(tag);
+                            if (requestCodeFromMode != -1) {
+                                if (z) {
+                                    LocalResearchUtil.getInstance()
+                                            .setModeChangeMethod(LocalResearchUtil.ModeChangeMethod.MRU_SHORTCUT);
+                                    LocalResearchUtil.getInstance()
+                                            .setLaunchBy(LaunchCondition.LaunchTrigger.MRU_SHORTCUT);
+                                } else {
+                                    LocalResearchUtil.getInstance()
+                                            .setModeChangeMethod(LocalResearchUtil.ModeChangeMethod.MODE_SELECTOR);
+                                    LocalResearchUtil.getInstance()
+                                            .setLaunchBy(LaunchCondition.LaunchTrigger.MODE_SELECTOR);
+                                }
+                                LocalResearchUtil.getInstance()
+                                        .sendEventInternalModeChange(ViewFinderImpl.this.getCapturingMode(), tag);
+                                if (CapturingModeUtil.MODE_WHITE_LIST.contains(tag.name())) {
+                                    if (tag == ModeSelectorInternalMode.DUAL_BACKGROUND_DEFOCUS) {
+                                        ApplicationLauncher.launchExternalCamera(ViewFinderImpl.this.mActivity,
+                                                requestCodeFromMode, ViewFinderImpl.this.mStateMachine.getUserSetting(),
+                                                CapturingMode.SCENE_RECOGNITION, true);
+                                    } else {
+                                        ApplicationLauncher.launchExternalCamera(ViewFinderImpl.this.mActivity,
+                                                requestCodeFromMode, ViewFinderImpl.this.mStateMachine.getUserSetting(),
+                                                ViewFinderImpl.this.mStateMachine.getCurrentCapturingMode(), true);
+                                    }
+                                } else {
+                                    if (tag == ModeSelectorInternalMode.DUAL_BACKGROUND_DEFOCUS) {
+                                        ApplicationLauncher.launchExternalCamera(ViewFinderImpl.this.mActivity,
+                                                requestCodeFromMode, ViewFinderImpl.this.mStateMachine.getUserSetting(),
+                                                CapturingMode.SCENE_RECOGNITION, false);
+                                    } else {
+                                        ApplicationLauncher.launchExternalCamera(ViewFinderImpl.this.mActivity,
+                                                requestCodeFromMode, ViewFinderImpl.this.mStateMachine.getUserSetting(),
+                                                ViewFinderImpl.this.mStateMachine.getCurrentCapturingMode(), false);
+                                    }
+                                    ViewFinderImpl.this.onAppsUiModeFinish();
+                                }
+                            }
+                        } else {
+                            AnimationRequest animationRequest = new AnimationRequest(
+                                    z ? AnimationRequest.AnimationType.MRU_SHORTCUT
+                                            : AnimationRequest.AnimationType.MODE_SELECTOR,
+                                    AnimationRequest.AnimationDegree.START, ViewFinderImpl.this.getCapturingMode(),
+                                    (CapturingMode) tag.tag);
+                            if (ViewFinderImpl.this.requestAnimation(animationRequest)) {
+                                ViewFinderImpl.this.hideSurface();
+                                ViewFinderImpl.this.setApplicationNavigatorEnabled(false);
+                                ViewFinderImpl.this.mStateMachine.sendEvent(
+                                        StateMachine.TransitterEvent.EVENT_START_TRANSITION_OPERATION,
+                                        animationRequest);
+                            }
+                        }
+                        ViewFinderImpl.this.sendViewUpdateEvent(
+                                ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_MRU_SHORTCUT, mode);
+                        return;
+                    }
+                    ViewFinderImpl.this.mSettingUi.openMonochromeDialog(z,
+                            ViewFinderImpl.this.getBaseLayout().calculateCaptureButtonAreaHeight(), mode);
+                    return;
+                }
+                if (mode instanceof AddonMode) {
+                    CapturingModeAttributes tag2 = ((AddonMode) mode).getTag();
+                    Intent commit2 = LaunchCameraIntentBuilder.create().mode(tag2.getModeName())
+                            .activity(tag2.getPackageName(), tag2.getActivityName())
+                            .callingMode(
+                                    CapturingModeUtil.filteringPrevName(ViewFinderImpl.this.getCapturingMode().name()))
+                            .callingActivity(cameraActivity.getPackageName(),
+                                    CapturingModeUtil.filteringPrevActivity(cameraActivity.getClass().getName()))
+                            .commit();
+                    if (ViewFinderImpl.this.mActivity.isDeviceInSecurityLock()) {
+                        ViewFinderImpl.this.showMessageDialog(DialogId.UNLOCK_REQUEST_FOR_OPENING_ADD_ON_APP, commit2,
+                                makeCustomAnimation.toBundle(), mode);
+                        return;
+                    }
+                    if (CapturingModeUtil.isActivityAvailable(cameraActivity, commit2)) {
+                        if (ViewFinderImpl.this.requestStartActivity(commit2,
+                                (makeCustomAnimation == null || makeCustomAnimation.toBundle() == null) ? null
+                                        : makeCustomAnimation.toBundle())) {
+                            if (z) {
+                                LocalResearchUtil.getInstance()
+                                        .setModeChangeMethod(LocalResearchUtil.ModeChangeMethod.MRU_SHORTCUT);
+                                LocalResearchUtil.getInstance().setLaunchBy(LaunchCondition.LaunchTrigger.MRU_SHORTCUT);
+                            } else {
+                                LocalResearchUtil.getInstance()
+                                        .setModeChangeMethod(LocalResearchUtil.ModeChangeMethod.MODE_SELECTOR);
+                                LocalResearchUtil.getInstance()
+                                        .setLaunchBy(LaunchCondition.LaunchTrigger.MODE_SELECTOR);
+                            }
+                            LocalResearchUtil.getInstance().sendEventAddonModeChange(Event.Category.ADDON_FW,
+                                    Event.AddonFW.APP_SELECTED_ON_MODE_SELECTOR.toString(),
+                                    AddonMode.generateId(tag2.getPackageName(), tag2.getModeName()));
+                            ViewFinderImpl.this.sendViewUpdateEvent(
+                                    ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_MRU_SHORTCUT, mode);
+                        }
+                    }
+                }
+            }
+        }
+
+        private int getRequestCodeFromMode(ModeSelectorInternalMode modeSelectorInternalMode) {
+            switch (modeSelectorInternalMode) {
+                case PORTRAIT_SELFIE:
+                    return 18;
+                case DUAL_BACKGROUND_DEFOCUS:
+                    return 16;
+                case DUAL_MONOCHROME:
+                    return 17;
+                default:
+                    return -1;
+            }
+        }
+    };
+    private final UserEventHandler.TouchEventDispatcher mTouchEventDispatcher = new UserEventHandler.TouchEventDispatcher();
+    private final Runnable mCheckEvfPreparationTask = new Runnable() { // from class:
+                                                                       // com.sonyericsson.android.camera.view.ViewFinderImpl.3
+        @Override // java.lang.Runnable
+        public void run() {
+            if (ViewFinderImpl.this.mEvf != null) {
+                ViewFinderImpl.this.notifyOnEvfPrepared();
+            } else {
+                CamLog.w("All reference of ViewFinderImpl has aleady been released.");
+            }
+        }
+    };
     private final Handler mHandler = new Handler();
-    private final Runnable mAfterSwitchAnimationTask = new ViewFinderImpl$19(this);
-    private final TutorialController$OnClickSetupWizardButtonListener mOnClickTutorialButtonListener = new ViewFinderImpl$25(this);
-    private TutorialController$SystemUiAccessor mSystemUiAccessor = new ViewFinderImpl$26(this);
     private boolean mRequireDisplayFlash = false;
     private boolean mIsDisplayFlashScreenDisplayed = false;
     private int mDisplayFlashColor = -1;
-    private final ValueAccessor<Float> mColorValueAccessor = new ViewFinderImpl$29(this);
-    private final ValueAccessor<Float> mBrightnessValueAccessor = new ViewFinderImpl$30(this);
 
     public static final void preload() {
     }
@@ -312,315 +475,38 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return 10000;
     }
 
-    static /* synthetic */ StateMachine access$1000(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mStateMachine;
-    }
-
-    static /* synthetic */ void access$10000(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.onToggleCameraSwitch();
-    }
-
-    static /* synthetic */ void access$1100(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.onAppsUiModeFinish();
-    }
-
-    static /* synthetic */ boolean access$1200(ViewFinderImpl viewFinderImpl, AnimationRequest animationRequest) {
-        return viewFinderImpl.requestAnimation(animationRequest);
-    }
-
-    static /* synthetic */ void access$1300(ViewFinderImpl viewFinderImpl, boolean z) {
-        viewFinderImpl.setApplicationNavigatorEnabled(z);
-    }
-
-    static /* synthetic */ boolean access$1400(ViewFinderImpl viewFinderImpl, Intent intent, Bundle bundle) {
-        return viewFinderImpl.requestStartActivity(intent, bundle);
-    }
-
-    static /* synthetic */ boolean access$200(ViewFinderImpl viewFinderImpl, Storage$StorageType storage$StorageType) {
-        return viewFinderImpl.hasEnoughFreeSpace(storage$StorageType);
-    }
-
-    static /* synthetic */ UserEventHandler$TouchEventDispatcher access$2000(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mTouchEventDispatcher;
-    }
-
-    static /* synthetic */ void access$2100(ViewFinderImpl viewFinderImpl, Rect rect) {
-        viewFinderImpl.notifyOnEvfPrepared(rect);
-    }
-
-    static /* synthetic */ CameraDeviceHandler access$2200(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mCameraDevice;
-    }
-
-    static /* synthetic */ Evf access$2300(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mEvf;
-    }
-
-    static /* synthetic */ FocusRectangles access$2400(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mFocusRectangles;
-    }
-
-    static /* synthetic */ boolean access$2502(ViewFinderImpl viewFinderImpl, boolean z) {
-        viewFinderImpl.mCanFocusRectanglesBeUpdated = z;
-        return z;
-    }
-
-    static /* synthetic */ void access$2600(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.setupAutoReview();
-    }
-
-    static /* synthetic */ BaseLayout access$300(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mBaseLayout;
-    }
-
-    static /* synthetic */ boolean access$3000(ViewFinderImpl viewFinderImpl, View view, MotionEvent motionEvent) {
-        return viewFinderImpl.isExclusiveViewEvent(view, motionEvent);
-    }
-
-    static /* synthetic */ boolean access$3100(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.isAllDialogClosed();
-    }
-
-    static /* synthetic */ void access$3200(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.setupAnimations();
-    }
-
-    static /* synthetic */ void access$3400(ViewFinderImpl viewFinderImpl, UserSettingKey userSettingKey) {
-        viewFinderImpl.openUserSelectMenu(userSettingKey);
-    }
-
-    static /* synthetic */ boolean access$3500(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.isTouchCaptureEnabled();
-    }
-
-    static /* synthetic */ boolean access$3600(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.isZooming();
-    }
-
-    static /* synthetic */ HintTextViewController access$3900(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mHintText;
-    }
-
-    static /* synthetic */ boolean access$400(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mIsSettingChangeAcceptable;
-    }
-
-    static /* synthetic */ NavigatorContents access$4000(ViewFinderImpl viewFinderImpl, NavigatorContents navigatorContents, AbstractDraggingEventHandler$Direction abstractDraggingEventHandler$Direction) {
-        return viewFinderImpl.getNextContent(navigatorContents, abstractDraggingEventHandler$Direction);
-    }
-
-    static /* synthetic */ void access$4100(ViewFinderImpl viewFinderImpl, NavigatorContents navigatorContents, NavigatorContents navigatorContents2, int i, float f) {
-        viewFinderImpl.onModeControllableDraggingMove(navigatorContents, navigatorContents2, i, f);
-    }
-
-    static /* synthetic */ void access$4200(ViewFinderImpl viewFinderImpl, float f) {
-        viewFinderImpl.startDraggingSwitchAnimation(f);
-    }
-
-    static /* synthetic */ void access$4300(ViewFinderImpl viewFinderImpl, boolean z) {
-        viewFinderImpl.setIsSwitchingAnimationProgress(z);
-    }
-
-    static /* synthetic */ ApplicationNavigator access$4400(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mApplicationNavigator;
-    }
-
-    static /* synthetic */ Handler access$4800(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mHandler;
-    }
-
-    static /* synthetic */ void access$4900(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.resetAnimationProperty();
-    }
-
-    static /* synthetic */ CameraActivity access$500(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mActivity;
-    }
-
-    static /* synthetic */ Runnable access$5000(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mAfterSwitchAnimationTask;
-    }
-
-    static /* synthetic */ View access$5100(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mPreviewCover;
-    }
-
-    static /* synthetic */ TransitionAnimationController access$5200(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mAnimationController;
-    }
-
-    static /* synthetic */ boolean access$5700(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.isFront();
-    }
-
-    static /* synthetic */ LayoutPattern access$5800(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.getCurrentLayoutPattern();
-    }
-
-    static /* synthetic */ SettingDialogStack access$5900(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mSettingDialogStack;
-    }
-
-    static /* synthetic */ boolean access$600(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mIsRequestingStartActivity;
-    }
-
-    static /* synthetic */ void access$6000(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.updateHighSensitivityFusionModeForManual();
-    }
-
-    static /* synthetic */ ViewFinder$BurstRejectedReason access$6302(ViewFinderImpl viewFinderImpl, ViewFinder$BurstRejectedReason viewFinder$BurstRejectedReason) {
-        viewFinderImpl.mBurstShootingRejectedReason = viewFinder$BurstRejectedReason;
-        return viewFinder$BurstRejectedReason;
-    }
-
-    static /* synthetic */ boolean access$6400(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.isPhotoSelfTimerEnabled();
-    }
-
-    static /* synthetic */ boolean access$6500(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.isInternalStorageWritable();
-    }
-
-    static /* synthetic */ boolean access$6600(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mIsFrontAngleChanging;
-    }
-
-    static /* synthetic */ void access$6700(ViewFinderImpl viewFinderImpl, Uri uri, String str, int i, int i2, int i3, boolean z) {
-        viewFinderImpl.clickThumbnail(uri, str, i, i2, i3, z);
-    }
-
-    static /* synthetic */ InstantViewer access$6800(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mInstantViewer;
-    }
-
-    static /* synthetic */ void access$6900(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.updateAllOverlayControlVisibility();
-    }
-
-    static /* synthetic */ BaseLayout access$700(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.getBaseLayout();
-    }
-
-    static /* synthetic */ void access$7000(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.updateVisibilityForSpecificDisplaySize();
-    }
-
-    static /* synthetic */ void access$7100(ViewFinderImpl viewFinderImpl, BaseLayout$LazyInitializer baseLayout$LazyInitializer) {
-        viewFinderImpl.disableOverlayControl(baseLayout$LazyInitializer);
-    }
-
-    static /* synthetic */ void access$7200(ViewFinderImpl viewFinderImpl, BaseLayout$LazyInitializer baseLayout$LazyInitializer) {
-        viewFinderImpl.enableOverlayControl(baseLayout$LazyInitializer);
-    }
-
-    static /* synthetic */ void access$7400(ViewFinderImpl viewFinderImpl, int i) {
-        viewFinderImpl.transitionModeOnNavigator(i);
-    }
-
-    static /* synthetic */ CameraActivity access$7500(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.getActivity();
-    }
-
-    static /* synthetic */ SideTouchUi access$7900(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mSideTouchUi;
-    }
-
-    static /* synthetic */ SettingUi access$800(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mSettingUi;
-    }
-
-    static /* synthetic */ void access$8000(ViewFinderImpl viewFinderImpl, LayoutPattern layoutPattern, boolean z) {
-        viewFinderImpl.changeLayoutTo(layoutPattern, z);
-    }
-
-    static /* synthetic */ boolean access$8100(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mIsSetupHeadupDisplayInvoked;
-    }
-
-    static /* synthetic */ MessageDialogController access$8200(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.mMessageDialog;
-    }
-
-    static /* synthetic */ void access$8300(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.showHiSpeedSdCardRecommendDialogOnVideoSizeChange();
-    }
-
-    static /* synthetic */ void access$8400(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.launchLocationSourceSettings();
-    }
-
-    static /* synthetic */ void access$8500(ViewFinderImpl viewFinderImpl, Intent intent, Bundle bundle) {
-        viewFinderImpl.requestStartActivityForMessageDialog(intent, bundle);
-    }
-
-    static /* synthetic */ void access$8600(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.launchSideSenseSettings();
-    }
-
-    static /* synthetic */ void access$8700(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.updateLocation();
-    }
-
-    static /* synthetic */ void access$8800(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.openSettingMenuDialogInChina();
-    }
-
-    static /* synthetic */ void access$8900(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.exitByError();
-    }
-
-    static /* synthetic */ CapturingMode access$900(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.getCapturingMode();
-    }
-
-    static /* synthetic */ void access$9000(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.onCloseStorageDialog();
-    }
-
-    static /* synthetic */ void access$9100(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.onOpenStorageDialog();
-    }
-
-    static /* synthetic */ void access$9200(ViewFinderImpl viewFinderImpl, LayoutPattern layoutPattern) {
-        viewFinderImpl.changeLayoutTo(layoutPattern);
-    }
-
-    static /* synthetic */ String access$9300(ViewFinderImpl viewFinderImpl, int i) {
-        return viewFinderImpl.getString(i);
-    }
-
-    static /* synthetic */ boolean access$9400(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.isPredictiveCaptureAvailable();
-    }
-
-    static /* synthetic */ void access$9600(ViewFinderImpl viewFinderImpl, StoreDataResult storeDataResult) {
-        viewFinderImpl.clickAutoReview(storeDataResult);
-    }
-
-    static /* synthetic */ void access$9700(ViewFinderImpl viewFinderImpl) {
-        viewFinderImpl.disableSemiAutoControl();
-    }
-
-    static /* synthetic */ boolean access$9800(ViewFinderImpl viewFinderImpl) {
-        return viewFinderImpl.isFocusing();
-    }
-
-    static /* synthetic */ void access$9900(ViewFinderImpl viewFinderImpl, boolean z) {
-        viewFinderImpl.setFrontAngleSwitchButtonClickable(z);
-    }
-
     private static void logPerformance(String str) {
-        Log.e("TraceLog", "[PERFORMANCE] [TIME = " + System.currentTimeMillis() + "] [ViewFinderImpl] [" + Thread.currentThread().getName() + " : " + str + "]");
+        Log.e("TraceLog", "[PERFORMANCE] [TIME = " + System.currentTimeMillis() + "] [" + TAG + "] ["
+                + Thread.currentThread().getName() + " : " + str + "]");
     }
 
-    public UserEventHandler$TouchEventDispatcher getTouchEventDispatcher() {
+    public UserEventHandler.TouchEventDispatcher getTouchEventDispatcher() {
         return this.mTouchEventDispatcher;
     }
 
-    public ViewFinderImpl(Context context, boolean z, LayoutDependencyResolver$ScreenAspect layoutDependencyResolver$ScreenAspect, UiControlSettings uiControlSettings) {
+    public enum PredictiveLaunchHideTrigger {
+        TOUCH_UP(Event.PredictiveLaunchAction.TOUCH_UP),
+        TOUCH_UP_CAPTURE(Event.PredictiveLaunchAction.TOUCH_UP),
+        HW_CAMERA_KEY(Event.PredictiveLaunchAction.HW_CAMERA_KEY),
+        VOLUME_KEY_SHUTTER(Event.PredictiveLaunchAction.VOLUME_KEY),
+        VOLUME_KEY_ZOOM(Event.PredictiveLaunchAction.VOLUME_KEY),
+        SIDE_SENSING(Event.PredictiveLaunchAction.SIDE_SENSING),
+        OTHER(Event.PredictiveLaunchAction.OTHER);
+
+        public final Event.PredictiveLaunchAction mAction;
+
+        PredictiveLaunchHideTrigger(Event.PredictiveLaunchAction predictiveLaunchAction) {
+            this.mAction = predictiveLaunchAction;
+        }
+    }
+
+    public ViewFinderImpl(Context context, boolean z, LayoutDependencyResolver.ScreenAspect screenAspect,
+            UiControlSettings uiControlSettings) {
         this.mEvf = null;
-        this.mScreenAspect = layoutDependencyResolver$ScreenAspect;
+        this.mEvfLifeCycleCallback = new EvfLifeCycleCallback();
+        this.mScreenButtonHandler = new ScreenButtonHandler();
+        this.mPostUiInflatedTask = new PostUiInflatedTask();
+        this.mScreenAspect = screenAspect;
         createViewFinder((CameraActivity) context, new BaseLayoutPatternApplier(), true);
         if (CamLog.VERBOSE) {
             CamLog.d("CONSTRUCTOR:[IN]");
@@ -635,7 +521,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         if (CamLog.DEBUG) {
             CamLog.d("CONSTRUCTOR : new Evf : E");
         }
-        this.mEvf = Evf$EvfFactory.generate();
+        this.mEvf = Evf.EvfFactory.generate();
         if (CamLog.DEBUG) {
             CamLog.d("CONSTRUCTOR : new Evf : X");
         }
@@ -650,16 +536,21 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
         ((View) this.mEvf.asView().getParent()).setLayoutDirection(0);
         if (this.mSelfTimerCountDownViewNext == null) {
-            this.mSelfTimerCountDownViewNext = (SelfTimerCountDownView) getActivity().getLayoutInflater().inflate(2131492995, (ViewGroup) null);
+            this.mSelfTimerCountDownViewNext = (SelfTimerCountDownView) getActivity().getLayoutInflater()
+                    .inflate(R.layout.selftimer_counter, (ViewGroup) null);
         }
         this.mToastContent = new ToastContent();
         this.mIsSetupHeadupDisplayInvoked = false;
-        this.mMessageDialog = new MessageDialogController(this.mActivity, this.mActivity.getStoredSettings().getMessageSettings(), new ViewFinderImpl$MessageDialogOnClickPositiveListenerImpl(this), new ViewFinderImpl$MessageDialogOnClickNegativeListenerImpl(this, null), new ViewFinderImpl$MessageDialogOnCancelListenerImpl(this, null), new ViewFinderImpl$MessageDialogOnDismissListenerImpl(this, null), new ViewFinderImpl$MessageDialogOnOpenListenerImpl(this, null));
+        this.mMessageDialog = new MessageDialogController(this.mActivity,
+                this.mActivity.getStoredSettings().getMessageSettings(), new MessageDialogOnClickPositiveListenerImpl(),
+                new MessageDialogOnClickNegativeListenerImpl(), new MessageDialogOnCancelListenerImpl(),
+                new MessageDialogOnDismissListenerImpl(), new MessageDialogOnOpenListenerImpl());
         this.mUiControlSettings = uiControlSettings;
     }
 
     private void dismissKeyguard() {
-        ((KeyguardManager) this.mActivity.getSystemService(KeyguardManager.class)).requestDismissKeyguard(this.mActivity, null);
+        ((KeyguardManager) this.mActivity.getSystemService(KeyguardManager.class))
+                .requestDismissKeyguard(this.mActivity, null);
     }
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
@@ -681,16 +572,16 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             CamLog.d("[APP DETAIL] setup shutter : E");
         }
         getBaseLayout().setupPreferentialHeadUpDisplays();
-        ViewFinder$HeadUpDisplaySetupState viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.PHOTO_READY;
+        ViewFinder.HeadUpDisplaySetupState headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.PHOTO_READY;
         CapturingMode capturingMode = getCapturingMode();
         if (capturingMode.isVideo()) {
-            viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.VIDEO_READY;
+            headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.VIDEO_READY;
         }
         this.mCapturingModeWhenLastSetupHeadDisplay = capturingMode;
         setOrientation(this.mActivity.getOrientation());
         setSelfTimer(capturingMode, this.mPhotoSelfTimerSetting);
-        setupOnScreenCaptureButton(viewFinder$HeadUpDisplaySetupState);
-        changeScreenButtonImage(viewFinder$HeadUpDisplaySetupState, false);
+        setupOnScreenCaptureButton(headUpDisplaySetupState);
+        changeScreenButtonImage(headUpDisplaySetupState, false);
         if (CamLog.VERBOSE) {
             CamLog.d("[APP DETAIL] setup shutter : X");
         }
@@ -711,7 +602,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
         if (stateMachine != null) {
             stateMachine.addOnStateChangedListener(this);
-            stateMachine.setGestureShutterWindowHost(new ViewFinderImpl$GestureShutterListener(this, null));
+            stateMachine.setGestureShutterWindowHost(new GestureShutterListener());
         } else if (this.mStateMachine != null) {
             this.mStateMachine.removeOnStateChangedListener(this);
         }
@@ -728,9 +619,9 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return this.mIsSetupHeadupDisplayInvoked;
     }
 
-    @Override // com.sonyericsson.android.camera.controller.StateMachine$OnStateChangedListener
-    public void onStateChanged(StateMachine$CaptureState stateMachine$CaptureState, Object... objArr) {
-        onViewFinderStateChanged(stateMachine$CaptureState, objArr);
+    @Override // com.sonyericsson.android.camera.controller.StateMachine.OnStateChangedListener
+    public void onStateChanged(StateMachine.CaptureState captureState, Object... objArr) {
+        onViewFinderStateChanged(captureState, objArr);
     }
 
     boolean predictiveLaunchCoverExists() {
@@ -738,9 +629,10 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return predictiveLaunchCoverView != null && predictiveLaunchCoverView.exists();
     }
 
-    @Override // com.sonyericsson.android.camera.CameraActivity$LayoutOrientationChangedListener
-    public void onLayoutOrientationChanged(CameraActivity$LayoutOrientation cameraActivity$LayoutOrientation) {
-        this.mStateMachine.sendStaticEvent(StateMachine$StaticEvent.EVENT_ON_ORIENTATION_CHANGED, Integer.valueOf(cameraActivity$LayoutOrientation == CameraActivity$LayoutOrientation.Portrait ? 1 : 2));
+    @Override // com.sonyericsson.android.camera.CameraActivity.LayoutOrientationChangedListener
+    public void onLayoutOrientationChanged(CameraActivity.LayoutOrientation layoutOrientation) {
+        this.mStateMachine.sendStaticEvent(StateMachine.StaticEvent.EVENT_ON_ORIENTATION_CHANGED,
+                Integer.valueOf(layoutOrientation == CameraActivity.LayoutOrientation.Portrait ? 1 : 2));
     }
 
     private void setOrientation(int i) {
@@ -794,89 +686,511 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private void updateHintTextUiOrientation() {
-        FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) this.mEvf.asView().getLayoutParams();
-        this.mHintText.setUiOrientation(new Rect(0, 0, frameLayout$LayoutParams.width, frameLayout$LayoutParams.height), this.mActivity, this.mScreenAspect, this.mOrientation);
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) this.mEvf.asView().getLayoutParams();
+        this.mHintText.setUiOrientation(new Rect(0, 0, layoutParams.width, layoutParams.height), this.mActivity,
+                this.mScreenAspect, this.mOrientation);
         updateVisibilityForSpecificDisplaySize();
     }
 
-    public ViewGroup$LayoutParams getPreviewLayoutParams() {
-        FrameLayout$LayoutParams frameLayout$LayoutParams = new FrameLayout$LayoutParams(-1, -1, 51);
-        if (this.mScreenAspect == LayoutDependencyResolver$ScreenAspect.EIGHTEEN_NINE) {
+    public ViewGroup.LayoutParams getPreviewLayoutParams() {
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(-1, -1, 51);
+        if (this.mScreenAspect == LayoutDependencyResolver.ScreenAspect.EIGHTEEN_NINE) {
             if (LayoutOrientationResolver.getInstance().getConfigurationOrientation() == 1) {
                 this.mPreviewOrientation = 1;
-                frameLayout$LayoutParams.gravity = 49;
-                frameLayout$LayoutParams.setMargins(0, ResourceUtil.getDimensionPixelSize(this.mActivity, this.mActivity.getPackageName(), 2131165428), 0, 0);
+                layoutParams.gravity = 49;
+                layoutParams.setMargins(0, ResourceUtil.getDimensionPixelSize(this.mActivity,
+                        this.mActivity.getPackageName(), R.dimen.left_icon_area_height), 0, 0);
             } else {
                 this.mPreviewOrientation = 2;
-                frameLayout$LayoutParams.gravity = 19;
-                frameLayout$LayoutParams.setMargins(ResourceUtil.getDimensionPixelSize(this.mActivity, this.mActivity.getPackageName(), 2131165428), 0, 0, 0);
+                layoutParams.gravity = 19;
+                layoutParams.setMargins(ResourceUtil.getDimensionPixelSize(this.mActivity,
+                        this.mActivity.getPackageName(), R.dimen.left_icon_area_height), 0, 0, 0);
             }
         }
-        return frameLayout$LayoutParams;
+        return layoutParams;
     }
 
     public void updatePreviewLayoutParams() {
-        if (this.mEvf == null || this.mEvf.asView() == null || this.mScreenAspect != LayoutDependencyResolver$ScreenAspect.EIGHTEEN_NINE || this.mPreviewOrientation == LayoutOrientationResolver.getInstance().getConfigurationOrientation()) {
+        if (this.mEvf == null) {
+            return;
+        }
+        if (this.mEvf.asView() == null) {
+            return;
+        }
+        if (this.mScreenAspect != LayoutDependencyResolver.ScreenAspect.EIGHTEEN_NINE) {
+            return;
+        }
+        if (this.mPreviewOrientation == LayoutOrientationResolver.getInstance().getConfigurationOrientation()) {
             return;
         }
         this.mEvf.asView().setLayoutParams(getPreviewLayoutParams());
     }
 
-    protected void onSideTouchZoom(SideTouchEventDetector$SideTouchEvent sideTouchEventDetector$SideTouchEvent, int i) {
-        Point sideTouchPoint = getSideTouchPoint(sideTouchEventDetector$SideTouchEvent);
+    /* JADX INFO: Access modifiers changed from: protected */
+    protected void onSideTouchZoom(SideTouchEventDetector.SideTouchEvent sideTouchEvent, int i) {
+        Point sideTouchPoint = getSideTouchPoint(sideTouchEvent);
         if (sideTouchPoint == null) {
             return;
         }
         hideZoomBar();
-        this.mSideTouchUi.destroyTo(SideTouchUi$Type.COVERING);
-        SideTouchUi$Type sideTouchUi$Type = SideTouchUi$Type.ZOOM_BAR;
+        this.mSideTouchUi.destroyTo(SideTouchUi.Type.COVERING);
+        SideTouchUi.Type type = SideTouchUi.Type.ZOOM_BAR;
         this.mSideTouchUi.setUiOrientation(this.mOrientation);
-        this.mSideTouchUi.attachIcon(sideTouchUi$Type, sideTouchPoint);
+        this.mSideTouchUi.attachIcon(type, sideTouchPoint);
         this.mSideTouchUi.showIcon();
         setZoomRatio(i);
     }
 
-    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-    protected boolean onSideTapped(SideTouchEventDetector$SideTouchEvent sideTouchEventDetector$SideTouchEvent) {
-        Point sideTouchPoint = getSideTouchPoint(sideTouchEventDetector$SideTouchEvent);
-        if (sideTouchPoint == null || this.mSideTouchUi.containsIn(SideTouchUi$Type.CAPTURE_COUNTDOWN, SideTouchUi$Type.VIDEO_COUNTDOWN, SideTouchUi$Type.SELF_TIMER_COUNTDOWN_CANCEL)) {
+    /* JADX INFO: Access modifiers changed from: protected */
+    protected boolean onSideTapped(SideTouchEventDetector.SideTouchEvent sideTouchEvent) {
+        Point sideTouchPoint = getSideTouchPoint(sideTouchEvent);
+        if (sideTouchPoint == null || this.mSideTouchUi.containsIn(SideTouchUi.Type.CAPTURE_COUNTDOWN,
+                SideTouchUi.Type.VIDEO_COUNTDOWN, SideTouchUi.Type.SELF_TIMER_COUNTDOWN_CANCEL)) {
             return false;
         }
         if (getBaseLayout().isAutoReviewShowing()) {
             getBaseLayout().hideAutoReview();
             return false;
         }
-        this.mSideTouchUi.destroyTo(SideTouchUi$Type.ZOOM_BAR);
+        this.mSideTouchUi.destroyTo(SideTouchUi.Type.ZOOM_BAR);
         this.mSideTouchUi.setUiOrientation(this.mOrientation);
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[getCapturingMode().ordinal()]) {
-            case 1:
-            case 2:
+        switch (getCapturingMode()) {
+            case SCENE_RECOGNITION:
+            case SUPERIOR_FRONT:
                 if (((SelfTimer) this.mStateMachine.getUserSetting().get(UserSettingKey.SELF_TIMER)) == SelfTimer.OFF) {
-                    this.mSideTouchUi.attachIcon(SideTouchUi$Type.CAPTURE_COUNTDOWN, sideTouchPoint);
+                    this.mSideTouchUi.attachIcon(SideTouchUi.Type.CAPTURE_COUNTDOWN, sideTouchPoint);
+                    break;
                 } else {
-                    this.mSideTouchUi.attachIcon(SideTouchUi$Type.SELF_TIMER_COUNTDOWN_CANCEL, sideTouchPoint);
+                    this.mSideTouchUi.attachIcon(SideTouchUi.Type.SELF_TIMER_COUNTDOWN_CANCEL, sideTouchPoint);
+                    break;
                 }
-                return true;
-            case 3:
-            case 4:
-                this.mSideTouchUi.attachIcon(SideTouchUi$Type.VIDEO_COUNTDOWN, sideTouchPoint);
-                return true;
+            case VIDEO:
+            case FRONT_VIDEO:
+                this.mSideTouchUi.attachIcon(SideTouchUi.Type.VIDEO_COUNTDOWN, sideTouchPoint);
+                break;
+        }
+        return true;
+    }
+
+    private Point getSideTouchPoint(SideTouchEventDetector.SideTouchEvent sideTouchEvent) {
+        switch (sideTouchEvent.area) {
+            case TOP:
+            case BOTTOM:
+                return null;
+            case LEFT:
+                return new Point(0, sideTouchEvent.position);
+            case RIGHT:
+                return new Point(1439, sideTouchEvent.position);
             default:
-                return true;
+                return null;
         }
     }
 
-    private Point getSideTouchPoint(SideTouchEventDetector$SideTouchEvent sideTouchEventDetector$SideTouchEvent) {
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$SideTouchEventDetector$SideTouchArea[sideTouchEventDetector$SideTouchEvent.area.ordinal()]) {
-            case 1:
-            case 2:
-                return null;
-            case 3:
-                return new Point(0, sideTouchEventDetector$SideTouchEvent.position);
-            case 4:
-                return new Point(1439, sideTouchEventDetector$SideTouchEvent.position);
-            default:
-                return null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public class SideTouchUiButtonListenerFactory {
+
+        public SideTouchUiButtonListenerFactory() {
+        }
+        public OnScreenButtonListener create(OnScreenButtonItemFactory.ButtonType buttonType) {
+            return new OnScreenButtonListenerImpl(buttonType);
+        }
+
+        private class OnScreenButtonListenerImpl implements OnScreenButtonListener {
+            private final OnScreenButtonItemFactory.ButtonType mButtonType;
+
+            @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+            public void onMove(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+            }
+
+            public OnScreenButtonListenerImpl(OnScreenButtonItemFactory.ButtonType buttonType) {
+                this.mButtonType = buttonType;
+            }
+
+            @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+            public void onDown(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+                ViewFinderImpl.this.mTouchEventDispatcher.sendTouchDown(this.mButtonType);
+            }
+
+            @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+            public void onUp(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+                ViewFinderImpl.this.mTouchEventDispatcher.sendTouchUp(this.mButtonType,
+                        new Point((int) motionEvent.getX(), (int) motionEvent.getY()));
+            }
+
+            @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+            public void onCancel(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+                ViewFinderImpl.this.mTouchEventDispatcher.sendCancel(this.mButtonType);
+            }
+
+            @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+            public void onLongPress(OnScreenButton onScreenButton) {
+                ViewFinderImpl.this.mTouchEventDispatcher.sendLongClick(this.mButtonType, null);
+            }
+        }
+    }
+
+    class EvfLifeCycleCallback implements Evf.LifeCycleCallback {
+        private EvfLifeCycleCallback() {
+        }
+
+        @Override // com.sonymobile.cameracommon.evf.Evf.LifeCycleCallback
+        public void onEvfInitialized(Evf evf, int i, int i2) {
+            PerfLog.SURFACE_CREATED.transit();
+            if (CamLog.DEBUG) {
+                CamLog.d("onEvfInitialized() : E");
+            }
+            if (CamLog.VERBOSE) {
+                CamLog.d("onEvfInitialized():[IN] width=" + i + ", height=" + i2);
+            }
+            ViewFinderImpl.this.notifyOnEvfPrepared(new Rect(0, 0, i, i2));
+            if (CamLog.VERBOSE) {
+                CamLog.d("onEvfInitialized():[OUT]");
+            }
+            if (CamLog.DEBUG) {
+                CamLog.d("onEvfInitialized() : X");
+            }
+        }
+
+        @Override // com.sonymobile.cameracommon.evf.Evf.LifeCycleCallback
+        public void onEvfSizeChanged(Evf evf, int i, int i2) {
+            PerfLog.SURFACE_CHANGED.transit();
+            if (CamLog.DEBUG) {
+                CamLog.d("onEvfSizeChanged() : E");
+            }
+            if (CamLog.VERBOSE) {
+                CamLog.d("surfaceChanged():[IN] width=" + i + ", height=" + i2);
+            }
+            ViewFinderImpl.this.notifyOnEvfPrepared(new Rect(0, 0, i, i2));
+            if (CamLog.VERBOSE) {
+                CamLog.d("surfaceChanged():[OUT]");
+            }
+            if (CamLog.DEBUG) {
+                CamLog.d("onEvfSizeChanged() : X");
+            }
+        }
+
+        @Override // com.sonymobile.cameracommon.evf.Evf.LifeCycleCallback
+        public void onEvfFinalized(Evf evf) {
+            PerfLog.SURFACE_DESTROYED.transit();
+            if (CamLog.DEBUG) {
+                CamLog.d("onEvfFinalized() : E");
+            }
+            if (ViewFinderImpl.this.mCameraDevice != null) {
+                ViewFinderImpl.this.mCameraDevice.stopPreview();
+                if (CamLog.DEBUG) {
+                    CamLog.d("onEvfFinalized() : X");
+                    return;
+                }
+                return;
+            }
+            CamLog.w("CameraDevice has already been released.");
         }
     }
 
@@ -907,14 +1221,18 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private static boolean isNearSameSize(Rect rect, Rect rect2) {
-        return ViewUtility.isSimilarAspect(rect.width() / rect.height(), rect2.width() / rect2.height());
+        return ViewUtility.isSimilarAspect((float) rect.width() / rect.height(),
+                (float) rect2.width() / rect2.height());
     }
 
     private boolean isNearSameSizeNavigationbar(Rect rect, Rect rect2) {
         if (isNearSameSize(rect, rect2)) {
             return true;
         }
-        return isNearSameSize(rect, new Rect(rect2.left, rect2.top, rect2.right + this.mActivity.getResources().getDimensionPixelSize(2131165455), rect2.bottom));
+        return isNearSameSize(rect,
+                new Rect(rect2.left, rect2.top,
+                        rect2.right + this.mActivity.getResources().getDimensionPixelSize(R.dimen.navigationbar_width),
+                        rect2.bottom));
     }
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
@@ -931,37 +1249,53 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         CameraApplication.getUiThreadHandler().removeCallbacks(this.mCheckEvfPreparationTask);
     }
 
-    private void notifyOnEvfPrepared(Rect rect) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void notifyOnEvfPrepared(final Rect rect) {
         setEvfPrepared(true);
-        this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_ON_EVF_PREPARED, this.mEvf);
+        this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_ON_EVF_PREPARED, this.mEvf);
         this.mCanFocusRectanglesBeUpdated = false;
         Handler handler = getBaseLayout().getRootView().getHandler();
         if (handler != null) {
-            handler.post(new ViewFinderImpl$4(this, rect));
+            handler.post(new Runnable() { // from class: com.sonyericsson.android.camera.view.ViewFinderImpl.4
+                @Override // java.lang.Runnable
+                public void run() {
+                    if (ViewFinderImpl.this.mFocusRectangles != null) {
+                        Size sizeAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance()
+                                .getSizeAccordingToLayoutOrientation(new Size(rect.width(), rect.height()));
+                        ViewFinderImpl.this.mFocusRectangles.updateDevicePreviewSize(
+                                sizeAccordingToLayoutOrientation.getWidth(),
+                                sizeAccordingToLayoutOrientation.getHeight());
+                    }
+                    ViewFinderImpl.this.mCanFocusRectanglesBeUpdated = true;
+                    ViewFinderImpl.this.updateCaptureAreaSize();
+                    ViewFinderImpl.this.setupAutoReview();
+                }
+            });
         }
     }
 
     private void resizeEvfScope(Rect rect) {
-        Rect rectAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance().getRectAccordingToLayoutOrientation(rect);
-        int iWidth = rectAccordingToLayoutOrientation.width();
-        int iHeight = rectAccordingToLayoutOrientation.height();
-        float f = iWidth / iHeight;
-        FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) getPreviewLayoutParams();
-        if (iWidth == iHeight) {
+        Rect rectAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance()
+                .getRectAccordingToLayoutOrientation(rect);
+        int width = rectAccordingToLayoutOrientation.width();
+        int height = rectAccordingToLayoutOrientation.height();
+        float f = (float) width / height; // Fixed: use float division instead of int division
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) getPreviewLayoutParams();
+        if (width == height) {
             Rect viewFinderSize = LayoutDependencyResolver.getViewFinderSize(this.mActivity);
             if (LayoutOrientationResolver.getInstance().getConfigurationOrientation() == 1) {
-                frameLayout$LayoutParams.topMargin += viewFinderSize.height() / 3;
+                layoutParams.topMargin += viewFinderSize.height() / 3;
             } else {
-                frameLayout$LayoutParams.leftMargin += viewFinderSize.height() / 3;
+                layoutParams.leftMargin += viewFinderSize.height() / 3;
             }
         }
-        this.mEvf.asView().setLayoutParams(frameLayout$LayoutParams);
+        this.mEvf.asView().setLayoutParams(layoutParams);
         Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity, f, this.mScreenAspect);
         this.mEvf.resize(surfaceViewRect.width(), surfaceViewRect.height());
         this.mEvf.setFixedSurfaceSize(rect.width(), rect.height());
     }
 
-    private void setupHeadUpDisplay(ViewFinder$HeadUpDisplaySetupState viewFinder$HeadUpDisplaySetupState) {
+    private void setupHeadUpDisplay(ViewFinder.HeadUpDisplaySetupState headUpDisplaySetupState) {
         PerfLog.VIEWFINDER_SETUP_HEADUP_DISPLAY.begin();
         if (CamLog.VERBOSE) {
             CamLog.d("setupHeadUpDisplay ");
@@ -970,7 +1304,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             this.mIsSetupHeadupDisplayInvoked = false;
         }
         if (CamLog.VERBOSE) {
-            CamLog.d("setupHeadUpDisplay() prev:" + this.mCapturingModeWhenLastSetupHeadDisplay + " current:" + getCapturingMode());
+            CamLog.d("setupHeadUpDisplay() prev:" + this.mCapturingModeWhenLastSetupHeadDisplay + " current:"
+                    + getCapturingMode());
         }
         if (this.mActivity.isDeviceInSecurityLock() && this.mIsSetupHeadupDisplayInvoked) {
             if (CamLog.VERBOSE) {
@@ -981,47 +1316,51 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
         this.mCapturingModeWhenLastSetupHeadDisplay = getCapturingMode();
         this.mSurfaceBlinderView = new View(this.mActivity);
-        this.mSurfaceBlinderView.setBackgroundColor(-16777216);
+        this.mSurfaceBlinderView.setBackgroundColor(ViewCompat.MEASURED_STATE_MASK);
         this.mSurfaceBlinderView.setVisibility(8);
         joinInflateTask();
         if (!isHeadUpDisplayReady()) {
             Rect rect = this.mEvf.getRect();
-            boolean z = LayoutOrientationResolver.getInstance().getOrientation() != LayoutOrientationResolver$LayoutOrientationType.PORTRAIT ? rect.width() >= rect.height() : rect.width() <= rect.height();
+            boolean z = LayoutOrientationResolver.getInstance()
+                    .getOrientation() != LayoutOrientationResolver.LayoutOrientationType.PORTRAIT
+                            ? rect.width() >= rect.height()
+                            : rect.width() <= rect.height();
             if (CamLog.VERBOSE) {
                 CamLog.d("isEvfReady : " + z);
             }
             if (!z) {
-                this.mActivity.postDelayedEvent(new ViewFinderImpl$ReTrySetupHeadUpDisplayTask(this, null), 100L);
+                this.mActivity.postDelayedEvent(new ReTrySetupHeadUpDisplayTask(), 100L);
                 return;
             }
         }
-        boolean zIsHeadUpDisplayReady = isHeadUpDisplayReady();
+        boolean isHeadUpDisplayReady = isHeadUpDisplayReady();
         if (isInflated()) {
-            setPreInflatedHeadUpDisplay(getPreInflatedView(LayoutAsyncInflateItems$CameraInflateItem.HEAD_UP_DISPLAY).get(0));
+            setPreInflatedHeadUpDisplay(
+                    getPreInflatedView(LayoutAsyncInflateItems.CameraInflateItem.HEAD_UP_DISPLAY).get(0));
         }
         requestSetupHeadUpDisplay();
-        if (!zIsHeadUpDisplayReady) {
+        if (!isHeadUpDisplayReady) {
             getBaseLayout().getPreviewOverlayContainer().addView(setupViewFinderLayout());
             this.mCaptureFeedback = setupFeedbackContextView();
             getBaseLayout().getRootView().addView((GLSurfaceContextView) this.mCaptureFeedback);
         }
         setupCaptureButtonArea();
-        setupApplicationNavigator(viewFinder$HeadUpDisplaySetupState);
+        setupApplicationNavigator(headUpDisplaySetupState);
         setupRightIndicatorArea();
-        setupTransitionAnimationController(this.mActivity, viewFinder$HeadUpDisplaySetupState);
+        setupTransitionAnimationController(this.mActivity, headUpDisplaySetupState);
         setupHintText();
         setupDraggingEventHandler();
         setupSettingUi();
         setupContentsView();
-        setupCaptureArea(viewFinder$HeadUpDisplaySetupState);
+        setupCaptureArea(headUpDisplaySetupState);
         setupFocusRectangles();
-        setupOnScreenCaptureButton(viewFinder$HeadUpDisplaySetupState);
+        setupOnScreenCaptureButton(headUpDisplaySetupState);
         setupInstantViewer();
         setupAutoReview();
         setupSelfTimerCountDownView();
-        this.mZoomBarProxy = new ViewFinderImpl$ZoomBarUpdateProxy();
-        this.mRecordingTimeProxy = new ViewFinderImpl$RecordingTimeReceiverProxy();
-        this.mAutoReviewProxy = new ViewFinderImpl$AutoReviewContentReceiverProxy();
+        this.mZoomBarProxy = new ZoomBarUpdateProxy();
+        this.mRecordingTimeProxy = new RecordingTimeReceiverProxy();
+        this.mAutoReviewProxy = new AutoReviewContentReceiverProxy();
         this.mZoomBarProxy.bindZoomBar(getBaseLayout().getZoomBar());
         this.mRecordingTimeProxy.bindReceiver(getBaseLayout().getRecordingIndicator());
         this.mAutoReviewProxy.bindReceiver(getBaseLayout().getAutoReview());
@@ -1033,20 +1372,23 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         updateGridLineView();
         updateFrontAngleSwitchButton();
         if (!isTutorialOpened()) {
-            updateVideoHdrCondition(this.mCapturingModeWhenLastSetupHeadDisplay, (VideoHdr) this.mStateMachine.getUserSetting().get(this.mCapturingModeWhenLastSetupHeadDisplay, UserSettingKey.VIDEO_HDR), true);
-            changeToLayoutWithSetupState(viewFinder$HeadUpDisplaySetupState);
+            updateVideoHdrCondition(this.mCapturingModeWhenLastSetupHeadDisplay, (VideoHdr) this.mStateMachine
+                    .getUserSetting().get(this.mCapturingModeWhenLastSetupHeadDisplay, UserSettingKey.VIDEO_HDR), true);
+            changeToLayoutWithSetupState(headUpDisplaySetupState);
         }
         Handler handler = getBaseLayout().getRootView().getHandler();
         if (handler != null) {
             handler.post(this.mPostUiInflatedTask);
         }
         if (!isCameraSwitching()) {
-            this.mStateMachine.sendStaticEvent(StateMachine$StaticEvent.EVENT_ON_HEAD_UP_DISPLAY_INITIALIZED, viewFinder$HeadUpDisplaySetupState);
+            this.mStateMachine.sendStaticEvent(StateMachine.StaticEvent.EVENT_ON_HEAD_UP_DISPLAY_INITIALIZED,
+                    headUpDisplaySetupState);
         }
         clearPreInflatedViews();
         this.mIsSetupHeadupDisplayInvoked = true;
         this.mCanFocusRectanglesBeUpdated = true;
-        if (this.mAutoReviewStoreData != null && this.mAutoReviewStoreData.savingRequest.common.takenByFastCapture && this.mAutoReviewStoreData.isSuccess()) {
+        if (this.mAutoReviewStoreData != null && this.mAutoReviewStoreData.savingRequest.common.takenByFastCapture
+                && this.mAutoReviewStoreData.isSuccess()) {
             if (CamLog.DEBUG) {
                 CamLog.d("Pending Auto review is shown when ViewFinder is ready.");
             }
@@ -1058,30 +1400,35 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private void setupSideTouchUI() {
-        this.mSideTouchUi = new SideTouchUi((FrameLayout) this.mActivity.findViewById(2131296611), this.mActivity.isOneShot());
+        this.mSideTouchUi = new SideTouchUi((FrameLayout) this.mActivity.findViewById(R.id.side_touch_ui_layout),
+                this.mActivity.isOneShot());
         this.mSideTouchUi.setUiOrientation(getOrientation());
         this.mSideTouchUi.setZoomBarUpdateProxy(this.mZoomBarProxy);
         this.mSideTouchUi.setRecordingTimeReceiverProxy(this.mRecordingTimeProxy);
         this.mSideTouchUi.setAutoReviewProxy(this.mAutoReviewProxy);
-        this.mSideTouchUi.setScreenButtonListenerFactory(new ViewFinderImpl$SideTouchUiButtonListenerFactory(this));
+        this.mSideTouchUi.setScreenButtonListenerFactory(new SideTouchUiButtonListenerFactory());
     }
 
     private void setupSettingUi() {
         if (this.mSettingDialogStack == null) {
-            this.mSettingDialogStack = new SettingDialogStack(this.mActivity, (ViewGroup) this.mActivity.findViewById(2131296599), getBaseLayout().getViewFinderRect());
-            this.mSettingDialogStack.addDialogListener(new ViewFinderImpl$SettingDialogListenerImpl(this, null));
+            this.mSettingDialogStack = new SettingDialogStack(this.mActivity,
+                    (ViewGroup) this.mActivity.findViewById(R.id.setting_container),
+                    getBaseLayout().getViewFinderRect());
+            this.mSettingDialogStack.addDialogListener(new SettingDialogListenerImpl());
             this.mSettingDialogStack.addDialogListener(getBaseLayout().getPrimaryShortcut());
             if (this.mSettingMenuExclusiveListener == null) {
-                this.mSettingMenuExclusiveListener = new ViewFinderImpl$SettingMenuExclusiveListener(this, null);
+                this.mSettingMenuExclusiveListener = new SettingMenuExclusiveListener();
                 this.mSettingDialogStack.setExclusiveViewListener(this.mSettingMenuExclusiveListener);
             }
         }
         if (this.mSettingUi == null) {
-            this.mSettingUi = new SettingUi(this.mActivity, this.mSettingDialogStack, this.mStateMachine, this, this.mCameraDevice, this.mActivity.isDeviceInSecurityLock());
+            this.mSettingUi = new SettingUi(this.mActivity, this.mSettingDialogStack, this.mStateMachine, this,
+                    this.mCameraDevice, this.mActivity.isDeviceInSecurityLock());
         } else {
             this.mSettingUi.setDeviceInSecurityLock(this.mActivity.isDeviceInSecurityLock());
         }
-        this.mSettingDialogStack.setCapturingMode((CapturingMode) this.mStateMachine.getUserSetting().get(UserSettingKey.CAPTURING_MODE));
+        this.mSettingDialogStack.setCapturingMode(
+                (CapturingMode) this.mStateMachine.getUserSetting().get(UserSettingKey.CAPTURING_MODE));
         Iterator<Runnable> it = this.mDelayUpdatedViewTaskList.iterator();
         while (it.hasNext()) {
             CameraApplication.getUiThreadHandler().post(it.next());
@@ -1089,25 +1436,39 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         this.mDelayUpdatedViewTaskList.clear();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    private class SettingMenuExclusiveListener implements SettingDialogStack.ExclusiveViewListener {
+        private SettingMenuExclusiveListener() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.setting.SettingDialogStack.ExclusiveViewListener
+        public boolean isExclusiveView(View view, MotionEvent motionEvent) {
+            return ViewFinderImpl.this.isExclusiveViewEvent(view, motionEvent);
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isExclusiveViewEvent(View view, MotionEvent motionEvent) {
-        boolean zIsOpened;
+        boolean isOpened;
         if (this.mSettingDialogStack != null && this.mPrimaryShortcutGroup != null) {
-            for (Map$Entry<UserSettingKey, View> map$Entry : this.mPrimaryShortcutGroup.getPrimaryShortcutViewMap().entrySet()) {
-                if (map$Entry.getKey() == UserSettingKey.SETTING_MENU) {
+            for (Map.Entry<UserSettingKey, View> entry : this.mPrimaryShortcutGroup.getPrimaryShortcutViewMap()
+                    .entrySet()) {
+                if (entry.getKey() == UserSettingKey.SETTING_MENU) {
                     if (this.mOrientation == 1 && this.mSettingDialogStack.isSecondLayerDialogOpened()) {
                         return false;
                     }
-                    zIsOpened = this.mSettingDialogStack.isMenuDialogOpened();
+                    isOpened = this.mSettingDialogStack.isMenuDialogOpened();
                 } else {
-                    zIsOpened = this.mSettingDialogStack.isOpened(map$Entry.getKey());
+                    isOpened = this.mSettingDialogStack.isOpened(entry.getKey());
                 }
-                if (zIsOpened) {
-                    View value = map$Entry.getValue();
+                if (isOpened) {
+                    View value = entry.getValue();
                     Rect rect = new Rect();
                     value.getGlobalVisibleRect(rect);
                     Rect rect2 = new Rect();
                     view.getGlobalVisibleRect(rect2);
-                    if (rect.contains(rect2.bottom - ((int) motionEvent.getY()), rect2.left + ((int) motionEvent.getX()))) {
+                    if (rect.contains(rect2.bottom - ((int) motionEvent.getY()),
+                            rect2.left + ((int) motionEvent.getX()))) {
                         return true;
                     }
                 }
@@ -1116,39 +1477,93 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return false;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    private class SettingDialogListenerImpl implements SettingDialogListener {
+        private SettingDialogListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.setting.dialog.SettingDialogListener
+        public void onOpenSettingDialog(Object obj) {
+            ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_OPENED,
+                    new Object[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.setting.dialog.SettingDialogListener
+        public void onCloseSettingDialog(Object obj) {
+            if (ViewFinderImpl.this.isAllDialogClosed() && !ViewFinderImpl.this.isTutorialOpened()) {
+                ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_CLOSED,
+                        new Object[0]);
+            }
+        }
+
+    }
+
     private RelativeLayout setupViewFinderLayout() {
-        RelativeLayout relativeLayout = isInflated() ? (RelativeLayout) getPreInflatedView(LayoutAsyncInflateItems$CameraInflateItem.FAST_CAPTURING_VIEWFINDER_ITEMS).get(0) : null;
-        return relativeLayout == null ? (RelativeLayout) LayoutInflater.from(this.mActivity).inflate(2131492925, (ViewGroup) null) : relativeLayout;
+        RelativeLayout relativeLayout = isInflated()
+                ? (RelativeLayout) getPreInflatedView(
+                        LayoutAsyncInflateItems.CameraInflateItem.FAST_CAPTURING_VIEWFINDER_ITEMS).get(0)
+                : null;
+        return relativeLayout == null
+                ? (RelativeLayout) LayoutInflater.from(this.mActivity).inflate(R.layout.fast_capturing_viewfinder_items,
+                        (ViewGroup) null)
+                : relativeLayout;
     }
 
     private GLSurfaceContextView setupFeedbackContextView() {
         GLSurfaceContextView gLSurfaceContextView = new GLSurfaceContextView(getActivity(), null);
-        gLSurfaceContextView.setLayoutParams(new RelativeLayout$LayoutParams(-1, -1));
+        gLSurfaceContextView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
         gLSurfaceContextView.setVisibility(4);
         return gLSurfaceContextView;
     }
 
-    private void changeToLayoutWithSetupState(ViewFinder$HeadUpDisplaySetupState viewFinder$HeadUpDisplaySetupState) {
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$ViewFinder$HeadUpDisplaySetupState[viewFinder$HeadUpDisplaySetupState.ordinal()]) {
-            case 1:
+    /* JADX INFO: Access modifiers changed from: private */
+    private class PostUiInflatedTask implements Runnable {
+        private PostUiInflatedTask() {
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            ViewFinderImpl.this.setupAnimations();
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    private class ReTrySetupHeadUpDisplayTask implements Runnable {
+        private ReTrySetupHeadUpDisplayTask() {
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            if (ViewFinderImpl.this.mStateMachine == null) {
+                return;
+            }
+            ViewFinderImpl.this.mStateMachine
+                    .sendEvent(StateMachine.TransitterEvent.EVENT_REQUEST_SETUP_HEAD_UP_DISPLAY, false);
+        }
+    }
+
+    private void changeToLayoutWithSetupState(ViewFinder.HeadUpDisplaySetupState headUpDisplaySetupState) {
+        switch (headUpDisplaySetupState) {
+            case PHOTO_READY:
                 changeToPhotoReadyView(true);
                 break;
-            case 2:
+            case PHOTO_CAPTURE:
                 changeToPhotoCaptureView();
                 break;
-            case 3:
+            case PHOTO_BURST_CAPTURE:
                 changeToBurstCaptureView();
                 break;
-            case 4:
+            case VIDEO_READY:
                 changeToVideoReadyView();
                 break;
-            case 5:
+            case VIDEO_RECORDING:
                 changeToVideoRecordingView();
                 break;
             default:
                 throw new IllegalStateException("setupHeadUpDisplay():[Illegal State]");
         }
-        if (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$LaunchCondition$ExtraOperation[this.mActivity.getLaunchCondition().getExtraOperation().ordinal()] != 1) {
+        if (this.mActivity
+                .getLaunchCondition().getExtraOperation() != LaunchCondition.ExtraOperation.OPEN_SETTINGS_MENU) {
             return;
         }
         String userSettingKeyName = this.mActivity.getLaunchCondition().getUserSettingKeyName();
@@ -1160,34 +1575,127 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private void PostActionToMainThread(UserSettingKey userSettingKey) {
-        CameraApplication.getUiThreadHandler().post(new ViewFinderImpl$ActionRunnable(this, userSettingKey));
+        CameraApplication.getUiThreadHandler().post(new ActionRunnable(userSettingKey));
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    private class ActionRunnable implements Runnable {
+        private UserSettingKey mUserSettingKey;
+
+        public ActionRunnable(UserSettingKey userSettingKey) {
+            this.mUserSettingKey = userSettingKey;
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            if (ViewFinderImpl.this.mStateMachine.isMenuAvailable()) {
+                if (this.mUserSettingKey != null) {
+                    switch (this.mUserSettingKey) {
+                        case SIDE_SENSE:
+                        case GEO_TAG:
+                        case DESTINATION_TO_SAVE:
+                            ViewFinderImpl.this.openUserSelectMenu(this.mUserSettingKey);
+                            return;
+                        case HELP_GUIDE:
+                            if (HelpGuide.isHelpAppAvailable(ViewFinderImpl.this.mActivity)) {
+                                HelpGuide.startHelpApp(ViewFinderImpl.this.mActivity);
+                            } else {
+                                HelpGuide.startOnlineHelp(ViewFinderImpl.this.mActivity);
+                            }
+                            ViewFinderImpl.this.mActivity.getLaunchCondition().clearExtraOperation();
+                            return;
+                        case RESET_SETTINGS:
+                            ViewFinderImpl.this.showMessageDialog(DialogId.RESET_CONFIRMATION, new Object[0]);
+                            return;
+                        default:
+                            ViewFinderImpl.this.openUserSelectMenu(null);
+                            return;
+                    }
+                }
+                ViewFinderImpl.this.openUserSelectMenu(null);
+            }
+        }
     }
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
     public void setupFocusRectangles() {
         int i;
-        int height;
+        int i2;
         if (this.mCameraDevice == null || this.mCameraDevice.getPreviewSize() == null) {
             i = 0;
-            height = 0;
+            i2 = 0;
         } else {
             Rect previewSize = this.mCameraDevice.getPreviewSize();
-            Size sizeAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance().getSizeAccordingToLayoutOrientation(new Size(previewSize.width(), previewSize.height()));
+            Size sizeAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance()
+                    .getSizeAccordingToLayoutOrientation(new Size(previewSize.width(), previewSize.height()));
             int width = sizeAccordingToLayoutOrientation.getWidth();
-            height = sizeAccordingToLayoutOrientation.getHeight();
+            i2 = sizeAccordingToLayoutOrientation.getHeight();
             i = width;
         }
-        this.mOnFocusRectangleTouchListener = new ViewFinderImpl$5(this);
+        this.mOnFocusRectangleTouchListener = new View.OnTouchListener() { // from class:
+                                                                           // com.sonyericsson.android.camera.view.ViewFinderImpl.5
+            @Override // android.view.View.OnTouchListener
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case 0:
+                        if (CamLog.VERBOSE) {
+                            CamLog.d("onTouch ACTION_DOWN");
+                        }
+                        if (ViewFinderImpl.this.isTouchCaptureEnabled()) {
+                            return false;
+                        }
+                        ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_CLEAR_FOCUS,
+                                new Object[0]);
+                        return true;
+                    case 1:
+                        if (CamLog.VERBOSE) {
+                            CamLog.d("onTouch ACTION_UP");
+                        }
+                        if (ViewFinderImpl.this.isTouchCaptureEnabled()) {
+                            return false;
+                        }
+                        ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_CLEAR_FOCUS,
+                                new Object[0]);
+                        if (ViewFinderImpl.this.mCameraDevice.isObjectTrackingRunning()
+                                && !ViewFinderImpl.this.isZooming()) {
+                            ViewFinderImpl.this.mStateMachine.sendEvent(
+                                    StateMachine.TransitterEvent.EVENT_DESELECT_OBJECT_POSITION, new Object[0]);
+                        }
+                        ViewFinderImpl.this.hideAutoReview();
+                        ViewFinderImpl.this.switchSemiAutoStateByTouch(false);
+                        return true;
+                    case 2:
+                        if (CamLog.VERBOSE) {
+                            CamLog.d("onTouch ACTION_MOVE");
+                        }
+                        if (ViewFinderImpl.this.isTouchCaptureEnabled()) {
+                            return false;
+                        }
+                        ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_CLEAR_FOCUS,
+                                new Object[0]);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        };
         FocusRectanglesViewList focusRectanglesViewList = new FocusRectanglesViewList();
         if (isInflated()) {
-            focusRectanglesViewList.rectanglesContainer = (RelativeLayout) this.mActivity.findViewById(2131296404);
-            focusRectanglesViewList.faceViewList = (View[]) getPreInflatedView(LayoutAsyncInflateItems$CameraInflateItem.RECTANGLE_FACE).toArray(new View[0]);
-            focusRectanglesViewList.trackedObjectView = (TaggedRectangle) getPreInflatedView(LayoutAsyncInflateItems$CameraInflateItem.RECTANGLE_FAST_OBJECT_TRACKING).get(0);
-            focusRectanglesViewList.singleAfView = (RelativeLayout) getPreInflatedView(LayoutAsyncInflateItems$CameraInflateItem.RECTANGLE_FAST_SINGLE).get(0);
-            focusRectanglesViewList.touchAfView = (RelativeLayout) getPreInflatedView(LayoutAsyncInflateItems$CameraInflateItem.RECTANGLE_FAST_TOUCH).get(0);
+            focusRectanglesViewList.rectanglesContainer = (RelativeLayout) this.mActivity
+                    .findViewById(R.id.focus_rectangles);
+            focusRectanglesViewList.faceViewList = (View[]) getPreInflatedView(
+                    LayoutAsyncInflateItems.CameraInflateItem.RECTANGLE_FACE).toArray(new View[0]);
+            focusRectanglesViewList.trackedObjectView = (TaggedRectangle) getPreInflatedView(
+                    LayoutAsyncInflateItems.CameraInflateItem.RECTANGLE_FAST_OBJECT_TRACKING).get(0);
+            focusRectanglesViewList.singleAfView = (RelativeLayout) getPreInflatedView(
+                    LayoutAsyncInflateItems.CameraInflateItem.RECTANGLE_FAST_SINGLE).get(0);
+            focusRectanglesViewList.touchAfView = (RelativeLayout) getPreInflatedView(
+                    LayoutAsyncInflateItems.CameraInflateItem.RECTANGLE_FAST_TOUCH).get(0);
         }
         if (this.mFocusRectangles == null) {
-            this.mFocusRectangles = new FocusRectangles(this.mActivity, new ViewFinderImpl$FocusActionListenerImpl(this, null), i, height, focusRectanglesViewList, this.mViewFinderCaptureArea, this.mOnFocusRectangleTouchListener, this.mScreenAspect);
+            this.mFocusRectangles = new FocusRectangles(this.mActivity, new FocusActionListenerImpl(), i, i2,
+                    focusRectanglesViewList, this.mViewFinderCaptureArea, this.mOnFocusRectangleTouchListener,
+                    this.mScreenAspect);
         }
         if (this.mStateMachine == null) {
             return;
@@ -1203,70 +1711,302 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         this.mFocusRectangles.setVisibility(0);
     }
 
-    private void setupCaptureArea(ViewFinder$HeadUpDisplaySetupState viewFinder$HeadUpDisplaySetupState) {
+    private void setupCaptureArea(ViewFinder.HeadUpDisplaySetupState headUpDisplaySetupState) {
         if (this.mViewFinderCaptureArea == null) {
-            this.mViewFinderCaptureArea = (CaptureArea) this.mActivity.findViewById(2131296696);
+            this.mViewFinderCaptureArea = (CaptureArea) this.mActivity.findViewById(R.id.viewfinder_capture);
             updateCaptureAreaSize();
         }
-        this.mViewFinderCaptureArea.setCaptureAreaStateListener(new ViewFinderImpl$ViewFinderStateListener(this, null));
+        this.mViewFinderCaptureArea.setCaptureAreaStateListener(new ViewFinderStateListener());
     }
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
     public void updateCaptureAreaSize() {
         if (this.mViewFinderCaptureArea != null) {
             Rect rect = this.mEvf.getRect();
-            int iWidth = rect.width();
-            int iHeight = rect.height();
-            RelativeLayout$LayoutParams relativeLayout$LayoutParams = (RelativeLayout$LayoutParams) this.mViewFinderCaptureArea.getLayoutParams();
-            if (iWidth == iHeight) {
+            int width = rect.width();
+            int height = rect.height();
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) this.mViewFinderCaptureArea
+                    .getLayoutParams();
+            if (width == height) {
                 Rect viewFinderSize = LayoutDependencyResolver.getViewFinderSize(this.mActivity);
                 if (LayoutOrientationResolver.getInstance().getConfigurationOrientation() == 1) {
-                    relativeLayout$LayoutParams.leftMargin = 0;
-                    relativeLayout$LayoutParams.topMargin = viewFinderSize.height() / 3;
+                    layoutParams.leftMargin = 0;
+                    layoutParams.topMargin = viewFinderSize.height() / 3;
                 } else {
-                    relativeLayout$LayoutParams.topMargin = 0;
-                    relativeLayout$LayoutParams.leftMargin = viewFinderSize.height() / 3;
+                    layoutParams.topMargin = 0;
+                    layoutParams.leftMargin = viewFinderSize.height() / 3;
                 }
             } else if (LayoutOrientationResolver.getInstance().getConfigurationOrientation() == 1) {
-                relativeLayout$LayoutParams.topMargin = 0;
+                layoutParams.topMargin = 0;
             } else {
-                relativeLayout$LayoutParams.leftMargin = 0;
+                layoutParams.leftMargin = 0;
             }
-            relativeLayout$LayoutParams.width = iWidth;
-            relativeLayout$LayoutParams.height = iHeight;
-            this.mViewFinderCaptureArea.setLayoutParams(relativeLayout$LayoutParams);
-            updatePreviewContainer(iWidth, iHeight);
-            this.mHintText.updateHintTextContainer(relativeLayout$LayoutParams.width, relativeLayout$LayoutParams.height);
+            layoutParams.width = width;
+            layoutParams.height = height;
+            this.mViewFinderCaptureArea.setLayoutParams(layoutParams);
+            updatePreviewContainer(width, height);
+            this.mHintText.updateHintTextContainer(layoutParams.width, layoutParams.height);
             getBaseLayout().repositionZoombar();
             PositionConverter.getInstance().setSurfaceSize(rect.width(), rect.height());
         }
     }
 
     private void setupDraggingEventHandler() {
-        getBaseLayout().setOnViewFinderGestureDetector(new ViewFinderImpl$6(this, this.mActivity, TransitionAnimationController.getSwipeThreshold(this.mActivity), TransitionAnimationController.getSwitchSwipeThreshold(this.mActivity)));
+        getBaseLayout().setOnViewFinderGestureDetector(new AbstractDraggingEventHandler(this.mActivity,
+                TransitionAnimationController.getSwipeThreshold(this.mActivity),
+                TransitionAnimationController.getSwitchSwipeThreshold(this.mActivity)) { // from class:
+                                                                                         // com.sonyericsson.android.camera.view.ViewFinderImpl.6
+            @Override // com.sonyericsson.android.camera.controller.AbstractDraggingEventHandler
+            protected boolean canDragging() {
+                return ViewFinderImpl.this.mIsSettingChangeAcceptable && ViewFinderImpl.this.isUserOperable();
+            }
+
+            @Override // com.sonyericsson.android.camera.controller.AbstractDraggingEventHandler
+            protected void sendTouchDownEvent(MotionEvent motionEvent) {
+                if (ViewFinderImpl.this.mHintText != null) {
+                    ViewFinderImpl.this.mHintText.clearToastContent();
+                }
+            }
+
+            @Override // com.sonyericsson.android.camera.controller.AbstractDraggingEventHandler
+            protected boolean sendStartEvent(AbstractDraggingEventHandler.Direction direction) {
+                CapturingMode capturingMode;
+                if (CamLog.DEBUG) {
+                    CamLog.d("invoke source:" + direction.name());
+                }
+                if (!isModeChangingEnable(direction)) {
+                    return false;
+                }
+                CapturingMode capturingMode2 = ViewFinderImpl.this.getCapturingMode();
+                if (direction == AbstractDraggingEventHandler.Direction.UP
+                        || direction == AbstractDraggingEventHandler.Direction.DOWN) {
+                    if (ViewFinderImpl.this.mActivity.isOneShot() || capturingMode2 == (capturingMode = ViewFinderImpl
+                            .getCapturingMode(ViewFinderImpl.this.getNextContent(
+                                    NavigatorContents.valueOf(ViewFinderImpl.this.getCapturingMode()), direction),
+                                    ViewFinderImpl.this.getCapturingMode()))) {
+                        return false;
+                    }
+                    AnimationRequest animationRequest = new AnimationRequest(AnimationRequest.AnimationType.MODE_TOUCH,
+                            AnimationRequest.AnimationDegree.START, capturingMode2, capturingMode);
+                    if (ViewFinderImpl.this.requestAnimation(animationRequest)) {
+                        ViewFinderImpl.this.mStateMachine.sendEvent(
+                                StateMachine.TransitterEvent.EVENT_START_TRANSITION_OPERATION, animationRequest);
+                        return true;
+                    }
+                }
+                if (PlatformCapability.isFrontCameraSupported()
+                        && direction == AbstractDraggingEventHandler.Direction.RIGHT) {
+                    AnimationRequest animationRequest2 = new AnimationRequest(
+                            AnimationRequest.AnimationType.SWITCH_TOUCH, AnimationRequest.AnimationDegree.START,
+                            capturingMode2, getSwitchTargetMode(capturingMode2));
+                    if (ViewFinderImpl.this.requestAnimation(animationRequest2)) {
+                        ViewFinderImpl.this.mStateMachine.sendEvent(
+                                StateMachine.TransitterEvent.EVENT_START_TRANSITION_OPERATION, animationRequest2);
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            @Override // com.sonyericsson.android.camera.controller.AbstractDraggingEventHandler
+            protected void sendProgressEvent(AbstractDraggingEventHandler.Direction direction, int progress,
+                    float position) {
+                if (CamLog.DEBUG) {
+                    CamLog.d("invoke source:" + direction.name());
+                }
+                if (!isModeChangingEnable(direction)) {
+                    return;
+                }
+                if (direction == AbstractDraggingEventHandler.Direction.UP
+                        || direction == AbstractDraggingEventHandler.Direction.DOWN) {
+                    if (ViewFinderImpl.this.mActivity.isOneShot()) {
+                        return;
+                    }
+                    NavigatorContents currentContent = NavigatorContents
+                            .valueOf(ViewFinderImpl.this.getCapturingMode());
+                    NavigatorContents targetContent;
+                    if (progress > 0) {
+                        if (currentContent.hasPrevious()) {
+                            targetContent = currentContent.previous();
+                        } else {
+                            targetContent = currentContent;
+                        }
+                    } else {
+                        if (currentContent.hasNext()) {
+                            targetContent = currentContent.next();
+                        } else {
+                            targetContent = currentContent;
+                        }
+                    }
+                    if (currentContent == targetContent) {
+                        return;
+                    }
+                    ViewFinderImpl.this.onModeControllableDraggingMove(currentContent, targetContent, progress,
+                            position);
+                }
+                if (direction == AbstractDraggingEventHandler.Direction.RIGHT && progress < 0) {
+                    ViewFinderImpl.this.startDraggingSwitchAnimation(position);
+                }
+            }
+
+            @Override // com.sonyericsson.android.camera.controller.AbstractDraggingEventHandler
+            protected void sendFinishEvent(AbstractDraggingEventHandler.Direction direction) {
+                AnimationRequest.AnimationDegree animationDegree;
+                if (CamLog.DEBUG) {
+                    CamLog.d("invoke source:" + direction.name());
+                }
+                if (isModeChangingEnable(direction)) {
+                    CapturingMode capturingMode = ViewFinderImpl.this.getCapturingMode();
+                    if (direction == AbstractDraggingEventHandler.Direction.UP
+                            || direction == AbstractDraggingEventHandler.Direction.DOWN) {
+                        if (ViewFinderImpl.this.mActivity.isOneShot()) {
+                            return;
+                        }
+                        CapturingMode capturingMode2 = ViewFinderImpl.getCapturingMode(
+                                ViewFinderImpl.this.getNextContent(
+                                        NavigatorContents.valueOf(ViewFinderImpl.this.getCapturingMode()), direction),
+                                ViewFinderImpl.this.getCapturingMode());
+                        if (CamLog.DEBUG) {
+                            CamLog.d("invoke current:" + capturingMode.name() + ", target:" + capturingMode2.name());
+                        }
+                        if (capturingMode == capturingMode2) {
+                            animationDegree = AnimationRequest.AnimationDegree.CANCEL;
+                        } else {
+                            animationDegree = AnimationRequest.AnimationDegree.EXEC;
+                        }
+                        if (ViewFinderImpl.this
+                                .requestAnimation(new AnimationRequest(AnimationRequest.AnimationType.MODE_TOUCH,
+                                        animationDegree, capturingMode, capturingMode2))) {
+                            ViewFinderImpl.this.sendViewUpdateEvent(
+                                    ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED, new Object[0]);
+                            PerfLog.SWIPE_ANIMATION_START.transit();
+                        }
+                    }
+                    if (direction == AbstractDraggingEventHandler.Direction.LEFT) {
+                        ViewFinderImpl.this.requestAnimation(new AnimationRequest(
+                                AnimationRequest.AnimationType.SWITCH_TOUCH, AnimationRequest.AnimationDegree.CANCEL,
+                                capturingMode, getSwitchTargetMode(capturingMode)));
+                    }
+                    if (direction == AbstractDraggingEventHandler.Direction.RIGHT
+                            && ViewFinderImpl.this.requestAnimation(new AnimationRequest(
+                                    AnimationRequest.AnimationType.SWITCH_TOUCH, AnimationRequest.AnimationDegree.EXEC,
+                                    capturingMode, getSwitchTargetMode(capturingMode)))) {
+                        ViewFinderImpl.this.setIsSwitchingAnimationProgress(true);
+                        ViewFinderImpl.this.setIsCameraSwitching(true);
+                        ViewFinderImpl.this.hideSurface();
+                    }
+                }
+            }
+
+            @Override // com.sonyericsson.android.camera.controller.AbstractDraggingEventHandler
+            protected void sendCancelEvent(AbstractDraggingEventHandler.Direction direction) {
+                if (CamLog.DEBUG) {
+                    CamLog.d("invoke source:" + direction.name());
+                }
+                if (isModeChangingEnable(direction)) {
+                    CapturingMode capturingMode = ViewFinderImpl.this.getCapturingMode();
+                    if (direction == AbstractDraggingEventHandler.Direction.UP
+                            || direction == AbstractDraggingEventHandler.Direction.DOWN) {
+                        if (ViewFinderImpl.this.mActivity.isOneShot()) {
+                            return;
+                        }
+                        if (ViewFinderImpl.this.requestAnimation(new AnimationRequest(
+                                AnimationRequest.AnimationType.MODE_TOUCH, AnimationRequest.AnimationDegree.CANCEL,
+                                capturingMode, ViewFinderImpl.this.getCapturingMode()))) {
+                            ViewFinderImpl.this.showViews();
+                        }
+                    }
+                    if (direction == AbstractDraggingEventHandler.Direction.RIGHT
+                            || direction == AbstractDraggingEventHandler.Direction.LEFT) {
+                        ViewFinderImpl.this.requestAnimation(new AnimationRequest(
+                                AnimationRequest.AnimationType.SWITCH_TOUCH, AnimationRequest.AnimationDegree.CANCEL,
+                                capturingMode, getSwitchTargetMode(capturingMode)));
+                    }
+                }
+            }
+
+            @Override // com.sonyericsson.android.camera.controller.AbstractDraggingEventHandler,
+                      // com.sonyericsson.android.camera.view.baselayout.ViewFinderGestureDetector.OnViewFinderGestureDetectorListener
+            public void onStartDragging(MotionEvent motionEvent, MotionEvent motionEvent2) {
+                super.onStartDragging(motionEvent, motionEvent2);
+                if (getModeIndexUnder(motionEvent) == -1) {
+                    LocalResearchUtil.getInstance().setModeChangeMethod(LocalResearchUtil.ModeChangeMethod.SWIPE);
+                } else {
+                    LocalResearchUtil.getInstance().setModeChangeMethod(LocalResearchUtil.ModeChangeMethod.ICON_SWIPE);
+                }
+            }
+
+            private int getModeIndexUnder(MotionEvent motionEvent) {
+                if (ViewFinderImpl.this.mApplicationNavigator == null) {
+                    return -1;
+                }
+                return ViewFinderImpl.this.mApplicationNavigator.getModeIndexUnder((int) motionEvent.getX(),
+                        (int) motionEvent.getY());
+            }
+
+            private boolean isModeChangingEnable(AbstractDraggingEventHandler.Direction direction) {
+                CapturingMode capturingMode = ViewFinderImpl.this.getCapturingMode();
+                switch (direction) {
+                    case UP:
+                    case DOWN:
+                        return (capturingMode == CapturingMode.NORMAL || capturingMode == CapturingMode.SLOW_MOTION
+                                || capturingMode == CapturingMode.FRONT_PHOTO) ? false : true;
+                    case LEFT:
+                    case RIGHT:
+                        return capturingMode != CapturingMode.SLOW_MOTION;
+                    default:
+                        return false;
+                }
+            }
+
+            private CapturingMode getSwitchTargetMode(CapturingMode capturingMode) {
+                switch (capturingMode) {
+                    case SCENE_RECOGNITION:
+                        return CapturingMode.SUPERIOR_FRONT;
+                    case SUPERIOR_FRONT:
+                        return CapturingMode.SCENE_RECOGNITION;
+                    case VIDEO:
+                        return CapturingMode.FRONT_VIDEO;
+                    case FRONT_VIDEO:
+                        return CapturingMode.VIDEO;
+                    case NORMAL:
+                        return CapturingMode.FRONT_PHOTO;
+                    case FRONT_PHOTO:
+                        return CapturingMode.NORMAL;
+                    default:
+                        return CapturingMode.SCENE_RECOGNITION;
+                }
+            }
+        });
     }
 
-    private NavigatorContents getNextContent(NavigatorContents navigatorContents, AbstractDraggingEventHandler$Direction abstractDraggingEventHandler$Direction) {
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$controller$AbstractDraggingEventHandler$Direction[abstractDraggingEventHandler$Direction.ordinal()]) {
-            case 1:
+    /* JADX INFO: Access modifiers changed from: private */
+    private NavigatorContents getNextContent(NavigatorContents navigatorContents,
+            AbstractDraggingEventHandler.Direction direction) {
+        switch (direction) {
+            case UP:
                 return navigatorContents.next();
-            case 2:
+            case DOWN:
                 return navigatorContents.previous();
             default:
                 return navigatorContents;
         }
     }
 
-    private void setupOnScreenCaptureButton(ViewFinder$HeadUpDisplaySetupState viewFinder$HeadUpDisplaySetupState) {
-        changeScreenButtonImage(viewFinder$HeadUpDisplaySetupState, false);
+    private void setupOnScreenCaptureButton(ViewFinder.HeadUpDisplaySetupState headUpDisplaySetupState) {
+        changeScreenButtonImage(headUpDisplaySetupState, false);
         if (isHeadUpDisplayReady()) {
             if (this.mImageQualityControlButtonItem == null) {
-                this.mImageQualityControlButtonItem = OnScreenButtonItemFactory.createMutableButton(new ViewFinderImpl$OnScreenImageQualityControlButtonListener(this));
-                this.mImageQualityControlButtonItem.update().background(2131231528).commit();
+                this.mImageQualityControlButtonItem = OnScreenButtonItemFactory
+                        .createMutableButton(new OnScreenImageQualityControlButtonListener());
+                this.mImageQualityControlButtonItem.update().background(R.drawable.secondary_shortcut_selector)
+                        .commit();
             }
             if (this.mHighSensitivityFusionButtonItem == null) {
-                this.mHighSensitivityFusionButtonItem = OnScreenButtonItemFactory.createMutableButton(new ViewFinderImpl$OnHighSensitivityFusionButtonStateListener(this, null));
-                this.mHighSensitivityFusionButtonItem.update().background(2131231528).commit();
+                this.mHighSensitivityFusionButtonItem = OnScreenButtonItemFactory
+                        .createMutableButton(new OnHighSensitivityFusionButtonStateListener());
+                this.mHighSensitivityFusionButtonItem.update().background(R.drawable.secondary_shortcut_selector)
+                        .commit();
             }
             updateSecondaryShortcutOnScreenButtonResource();
         }
@@ -1276,24 +2016,26 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         if (this.mPhotoSelfTimerSetting == null) {
             return;
         }
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SelfTimer[this.mPhotoSelfTimerSetting.ordinal()]) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
+        switch (this.mPhotoSelfTimerSetting) {
+            case LONG:
+            case GESTURE_SHUTTER_COUNT_DOWN:
+            case SHORT:
+            case LAUNCH_AND_CAPTURE_COUNT_DOWN:
                 createSelfTimerCountDownView(this.mPhotoSelfTimerSetting);
                 return;
-            case 5:
+            case OFF:
                 removeSelfTimerCountDownView();
                 return;
             default:
-                throw new IllegalArgumentException("ViewFinderImpl:setupSelfTimerCountDownView [Irregular value] : " + this.mPhotoSelfTimerSetting);
+                throw new IllegalArgumentException("ViewFinderImpl:setupSelfTimerCountDownView [Irregular value] : "
+                        + this.mPhotoSelfTimerSetting);
         }
     }
 
     private void createSelfTimerCountDownView(SelfTimer selfTimer) {
         if (this.mSelfTimerCountDownViewNext == null) {
-            this.mSelfTimerCountDownViewNext = (SelfTimerCountDownView) getActivity().getLayoutInflater().inflate(2131492995, (ViewGroup) null);
+            this.mSelfTimerCountDownViewNext = (SelfTimerCountDownView) getActivity().getLayoutInflater()
+                    .inflate(R.layout.selftimer_counter, (ViewGroup) null);
         }
         this.mSelfTimerCountDownViewNext.setSelfTimer(selfTimer);
     }
@@ -1313,41 +2055,52 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private void showSelfTimerCountDownView() {
-        Size sizeAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance().getSizeAccordingToLayoutOrientation(new Size(getBaseLayout().getPreview().getWidth(), getBaseLayout().getPreview().getHeight()));
-        RelativeLayout$LayoutParams relativeLayout$LayoutParams = new RelativeLayout$LayoutParams(sizeAccordingToLayoutOrientation.getWidth(), sizeAccordingToLayoutOrientation.getHeight());
-        relativeLayout$LayoutParams.addRule(13);
+        Size sizeAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance()
+                .getSizeAccordingToLayoutOrientation(
+                        new Size(getBaseLayout().getPreview().getWidth(), getBaseLayout().getPreview().getHeight()));
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                sizeAccordingToLayoutOrientation.getWidth(), sizeAccordingToLayoutOrientation.getHeight());
+        layoutParams.addRule(13);
         removeSelfTimerCountDownView();
         this.mSelfTimerCountDownView = this.mSelfTimerCountDownViewNext;
-        this.mSelfTimerCountDownView.setLayoutParams(relativeLayout$LayoutParams);
+        this.mSelfTimerCountDownView.setLayoutParams(layoutParams);
         this.mSelfTimerCountDownView.setVisibility(0);
         getBaseLayout().getLazyInflatedUiComponentContainerBack().addView(this.mSelfTimerCountDownView);
         getBaseLayout().getLazyInflatedUiComponentContainerBack().bringChildToFront(this.mSelfTimerCountDownView);
         if (LayoutDependencyResolver.isTenInch(getActivity())) {
-            FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) this.mSelfTimerCountDownView.getLayoutParams();
-            frameLayout$LayoutParams.gravity = 17;
-            this.mSelfTimerCountDownView.setLayoutParams(frameLayout$LayoutParams);
+            FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) this.mSelfTimerCountDownView
+                    .getLayoutParams();
+            layoutParams2.gravity = 17;
+            this.mSelfTimerCountDownView.setLayoutParams(layoutParams2);
         }
         applySmileFocusThreshold(false);
     }
 
     private boolean isInSelfTimerCountDown() {
-        return (getCapturingMode() == CapturingMode.FRONT_VIDEO || getCapturingMode() == CapturingMode.VIDEO || getCurrentLayoutPattern() != BaseLayoutPattern.SELFTIMER) ? false : true;
+        if (getCapturingMode() == CapturingMode.FRONT_VIDEO || getCapturingMode() == CapturingMode.VIDEO
+                || getCurrentLayoutPattern() != BaseLayoutPattern.SELFTIMER) {
+            return false;
+        }
+        return true;
     }
 
     private void startSelfTimerCountDownAnimation() {
         if (this.mSelfTimerCountDownView != null) {
-            this.mSelfTimerCountDownView.startSelfTimerCountDownAnimation(getCapturingMode() == CapturingMode.FRONT_PHOTO || getCapturingMode() == CapturingMode.SUPERIOR_FRONT);
+            this.mSelfTimerCountDownView
+                    .startSelfTimerCountDownAnimation(getCapturingMode() == CapturingMode.FRONT_PHOTO
+                            || getCapturingMode() == CapturingMode.SUPERIOR_FRONT);
         }
     }
 
     private void setupContentsView() {
-        this.mStateMachine.sendStaticEvent(StateMachine$StaticEvent.EVENT_ON_PHOTO_STACK_INITIALIZED, getBaseLayout().getContentsViewController());
+        this.mStateMachine.sendStaticEvent(StateMachine.StaticEvent.EVENT_ON_PHOTO_STACK_INITIALIZED,
+                getBaseLayout().getContentsViewController());
     }
 
     private void setupPrimaryShortcutIcons() {
         if (this.mPrimaryShortcutGroup == null) {
             this.mPrimaryShortcutGroup = getBaseLayout().getPrimaryShortcut();
-            this.mPrimaryShortcutGroup.setViewFinderAccessor(new ViewFinderImpl$ViewFinderAccessorForShortcut(this));
+            this.mPrimaryShortcutGroup.setViewFinderAccessor(new ViewFinderAccessorForShortcut());
         }
         if (isCameraSwitching()) {
             return;
@@ -1362,13 +2115,39 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             return;
         }
         getBaseLayout().getModeButtonShortcut().set(true);
-        getBaseLayout().getModeButtonShortcut().setOnClickListener(new ViewFinderImpl$7(this));
+        getBaseLayout().getModeButtonShortcut().setOnClickListener(new View.OnClickListener() { // from class:
+                                                                                                // com.sonyericsson.android.camera.view.ViewFinderImpl.7
+            @Override // android.view.View.OnClickListener
+            public void onClick(View view) {
+                if (ViewFinderImpl.this.mIsSettingChangeAcceptable && ViewFinderImpl.this.isUserOperable()) {
+                    if (!ModeSelectorInternalMode.exists(ViewFinderImpl.this.getCapturingMode())
+                            && !ViewFinderImpl.this.getCapturingMode().equals(CapturingMode.FRONT_PHOTO)) {
+                        ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_OPENED,
+                                ViewFinder.UiComponentKind.MODE_SELECTOR);
+                    } else {
+                        ViewFinderImpl.this.startReturnModeAnimation();
+                    }
+                }
+            }
+        });
         getBaseLayout().getMruButtonContainer().setOnModeSelectListener(this.mModeSelectListener);
-        FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) getBaseLayout().getMruButtonContainer().getLayoutParams();
-        frameLayout$LayoutParams.rightMargin = getBaseLayout().calculateCaptureButtonAreaHeight();
-        getBaseLayout().getMruButtonContainer().setLayoutParams(frameLayout$LayoutParams);
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) getBaseLayout().getMruButtonContainer()
+                .getLayoutParams();
+        layoutParams.rightMargin = getBaseLayout().calculateCaptureButtonAreaHeight();
+        getBaseLayout().getMruButtonContainer().setLayoutParams(layoutParams);
     }
 
+    private final View.OnClickListener mFrontAngleSwitchButtonClickListener = new View.OnClickListener() { // from
+                                                                                                           // class:
+                                                                                                           // com.sonyericsson.android.camera.view.ViewFinderImpl.8
+        @Override // android.view.View.OnClickListener
+        public void onClick(View view) {
+            if (CamLog.VERBOSE) {
+                CamLog.d("Wide front button is clicked, isCameraSwitching: " + ViewFinderImpl.this.isCameraSwitching());
+            }
+            ViewFinderImpl.this.mTouchEventDispatcher.sendClick(UserEventHandler.UiComponent.ANGLE_CHANGE_BUTTON, null);
+        }
+    };
     private void updateFrontAngleSwitchButton() {
         this.mFrontAngleSwitchButton = getBaseLayout().getFrontAngleSwitchButton();
         if (this.mFrontAngleSwitchButton == null) {
@@ -1389,37 +2168,43 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         updatePrimaryShortcutIcon(userSettingValue);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void transitionModeOnNavigator(int i) {
-        NavigatorContents navigatorContentsPrevious;
-        NavigatorContents navigatorContentsValueOf = NavigatorContents.valueOf(getCapturingMode());
-        int iIndexOf = NavigatorContents.indexOf(navigatorContentsValueOf);
+        NavigatorContents previous;
+        NavigatorContents valueOf = NavigatorContents.valueOf(getCapturingMode());
+        int indexOf = NavigatorContents.indexOf(valueOf);
         int length = (NavigatorContents.values().length - i) - 1;
         NavigatorContents navigatorContents = NavigatorContents.values()[length];
         if (CamLog.DEBUG) {
-            CamLog.d("invoke current:" + navigatorContentsValueOf.name() + ", target:" + navigatorContents.name());
+            CamLog.d("invoke current:" + valueOf.name() + ", target:" + navigatorContents.name());
         }
-        if (length > iIndexOf) {
-            navigatorContentsPrevious = navigatorContentsValueOf.next();
-        } else if (length >= iIndexOf) {
+        if (length > indexOf) {
+            previous = valueOf.next();
+        } else if (length >= indexOf) {
             return;
         } else {
-            navigatorContentsPrevious = navigatorContentsValueOf.previous();
+            previous = valueOf.previous();
         }
-        AnimationRequest animationRequest = new AnimationRequest(AnimationRequest$AnimationType.MODE_ICON, AnimationRequest$AnimationDegree.START, getCapturingMode(navigatorContentsValueOf, getCapturingMode()), getCapturingMode(navigatorContentsPrevious, getCapturingMode()));
+        AnimationRequest animationRequest = new AnimationRequest(AnimationRequest.AnimationType.MODE_ICON,
+                AnimationRequest.AnimationDegree.START, getCapturingMode(valueOf, getCapturingMode()),
+                getCapturingMode(previous, getCapturingMode()));
         if (requestAnimation(animationRequest)) {
-            this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_START_TRANSITION_OPERATION, animationRequest);
+            this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_START_TRANSITION_OPERATION,
+                    animationRequest);
         }
     }
 
     private void updatePrimaryShortcutIcons() {
         if (this.mPrimaryShortcutGroup != null) {
-            this.mPrimaryShortcutGroup.updatePrimaryShortcutIcons(getCapturingMode(), this.mStateMachine.getUserSetting(), this.mActivity.isOneShot());
+            this.mPrimaryShortcutGroup.updatePrimaryShortcutIcons(getCapturingMode(),
+                    this.mStateMachine.getUserSetting(), this.mActivity.isOneShot());
         }
     }
 
     private void updatePrimaryShortcutIcon(UserSettingValue userSettingValue) {
         if (this.mPrimaryShortcutGroup != null) {
-            this.mPrimaryShortcutGroup.updatePrimaryShortcutIcon(userSettingValue.getKey(), userSettingValue.getIconId());
+            this.mPrimaryShortcutGroup.updatePrimaryShortcutIcon(userSettingValue.getKey(),
+                    userSettingValue.getIconId());
         }
     }
 
@@ -1430,41 +2215,43 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private void updateScreenButtonImage(CapturingMode capturingMode) {
-        ViewFinder$HeadUpDisplaySetupState viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.PHOTO_READY;
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()]) {
-            case 1:
-            case 2:
-            case 5:
-            case 6:
-                viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.PHOTO_READY;
+        ViewFinder.HeadUpDisplaySetupState headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.PHOTO_READY;
+        switch (capturingMode) {
+            case SCENE_RECOGNITION:
+            case SUPERIOR_FRONT:
+            case NORMAL:
+            case FRONT_PHOTO:
+                headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.PHOTO_READY;
                 break;
-            case 3:
-            case 4:
-                viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.VIDEO_READY;
+            case VIDEO:
+            case FRONT_VIDEO:
+                headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.VIDEO_READY;
                 break;
-            case 7:
-                switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion[((SlowMotion) this.mStateMachine.getUserSetting().get(UserSettingKey.SLOW_MOTION)).ordinal()]) {
-                    case 1:
-                        viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.SUPER_SLOW_MOTION_STANDBY;
+            case SLOW_MOTION:
+                switch ((SlowMotion) this.mStateMachine.getUserSetting().get(UserSettingKey.SLOW_MOTION)) {
+                    case SUPER_SLOW_MOTION:
+                        headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.SUPER_SLOW_MOTION_STANDBY;
                         break;
-                    case 2:
-                        viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.SUPER_SLOW_SHOT_STANDBY;
+                    case SUPER_SLOW_SHOT:
+                        headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.SUPER_SLOW_SHOT_STANDBY;
                         break;
-                    case 3:
-                        viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.STANDARD_SLOW_MOTION_STANDBY;
+                    case STANDARD_SLOW_MOTION:
+                        headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.STANDARD_SLOW_MOTION_STANDBY;
                         break;
                 }
-                break;
         }
-        changeScreenButtonImage(viewFinder$HeadUpDisplaySetupState, false);
+        changeScreenButtonImage(headUpDisplaySetupState, false);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void onToggleCameraSwitch() {
-        this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_ON_SWITCH_CAMERA, AnimationRequest$AnimationType.NONE);
+        this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_ON_SWITCH_CAMERA,
+                AnimationRequest.AnimationType.NONE);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void setupAnimations() {
-        getBaseLayout().getRootView().findViewById(2131296370).getGlobalVisibleRect(new Rect());
+        getBaseLayout().getRootView().findViewById(R.id.contents_container).getGlobalVisibleRect(new Rect());
     }
 
     private boolean isEvfRotateRequired() {
@@ -1472,7 +2259,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             return false;
         }
         Rect rect = this.mEvf.getRect();
-        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
+        if (LayoutOrientationResolver.getInstance()
+                .getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
             if (rect.width() > rect.height()) {
                 return true;
             }
@@ -1495,12 +2283,17 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         if (this.mCaptureFeedback != null) {
             this.mCaptureFeedback.onResume();
         }
-        if (fastCapture != FastCapture.LAUNCH_AND_CAPTURE && this.mCapturingModeWhenLastSetupHeadDisplay == launchCapturingMode && !z) {
-            ViewFinderImpl$ScreenButtonHandler.access$4600(this.mScreenButtonHandler);
+        if (fastCapture != FastCapture.LAUNCH_AND_CAPTURE
+                && this.mCapturingModeWhenLastSetupHeadDisplay == launchCapturingMode && !z) {
+            this.mScreenButtonHandler.refreshButton();
         }
-        if (this.mActivity.getLaunchCondition().getLaunchTrigger() == LaunchCondition$LaunchTrigger.LIFT_TRIGGER) {
+        if (this.mActivity.getLaunchCondition().getLaunchTrigger() == LaunchCondition.LaunchTrigger.LIFT_TRIGGER) {
             showMessageDialog(DialogId.PREDICTIVE_LAUNCH_DESCRIPTION, new Object[0]);
-            getBaseLayout().setupPredictiveLaunchCoverView(new ViewFinderImpl$PredictiveLaunchCoverTouchListenerImpl(this, null), ((PredictiveLaunch) this.mStateMachine.getUserSetting().get(UserSettingKey.PREDICTIVE_LAUNCH)).doCapture() ? PredictiveLaunchCoverView$PredictiveLaunchCoverType.TOUCH_TO_LAUNCH_AND_CAPTURE : PredictiveLaunchCoverView$PredictiveLaunchCoverType.TOUCH_TO_LAUNCH);
+            getBaseLayout().setupPredictiveLaunchCoverView(new PredictiveLaunchCoverTouchListenerImpl(),
+                    ((PredictiveLaunch) this.mStateMachine.getUserSetting().get(UserSettingKey.PREDICTIVE_LAUNCH))
+                            .doCapture()
+                                    ? PredictiveLaunchCoverView.PredictiveLaunchCoverType.TOUCH_TO_LAUNCH_AND_CAPTURE
+                                    : PredictiveLaunchCoverView.PredictiveLaunchCoverType.TOUCH_TO_LAUNCH);
             changeLayoutTo(BaseLayoutPattern.CLEAR);
             setApplicationNavigatorEnabled(false);
             updateGridLineView();
@@ -1578,36 +2371,48 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         this.mInstantViewer = null;
     }
 
-    private void onViewFinderStateChanged(StateMachine$CaptureState stateMachine$CaptureState, Object... objArr) {
-        boolean zBooleanValue = false;
+    private void onViewFinderStateChanged(StateMachine.CaptureState captureState, Object... objArr) {
+        boolean z = false;
         if (CamLog.VERBOSE) {
-            CamLog.d("onViewFinderStateChanged():[IN][currentState=" + stateMachine$CaptureState + "]");
+            CamLog.d("onViewFinderStateChanged():[IN][currentState=" + captureState + "]");
         }
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$controller$StateMachine$CaptureState[stateMachine$CaptureState.ordinal()]) {
-            case 3:
+        switch (captureState) {
+            case STATE_NONE:
+            case STATE_INITIALIZE:
+            case STATE_VIDEO_CAPTURE_WHILE_RECORDING:
+            case STATE_VIDEO_STORE_PHOTO_WHILE_RECORDING:
+            default:
+                return;
+            case STATE_RESUME:
                 this.mTouchEventDispatcher.start();
                 this.mIsThermalWarningDialogShown = false;
                 if (this.mActivity.awaitViewFinderReady()) {
                     resumeView((FastCapture) objArr[0], ((Boolean) objArr[1]).booleanValue());
-                    break;
+                    return;
                 }
-                break;
-            case 4:
+                return;
+            case STATE_PHOTO_READY:
                 this.mCurrentDisplayingUiComponent = null;
-                this.mBurstShootingRejectedReason = ViewFinder$BurstRejectedReason.NONE;
+                this.mBurstShootingRejectedReason = ViewFinder.BurstRejectedReason.NONE;
                 changeToPhotoReadyView(false);
                 if (objArr == null || objArr.length == 0) {
                     requestToDimSystemUi();
-                } else if (objArr[0] != ViewFinder$UiComponentKind.ZOOM_BAR) {
-                    requestToDimSystemUi();
+                    return;
+                } else {
+                    if (objArr[0] != ViewFinder.UiComponentKind.ZOOM_BAR) {
+                        requestToDimSystemUi();
+                        return;
+                    }
+                    return;
                 }
-                break;
-            case 5:
+            case STATE_VIDEO_READY:
                 this.mCurrentDisplayingUiComponent = null;
-                if (getCapturingMode() == CapturingMode.SLOW_MOTION && !this.mActivity.getLaunchCondition().getLaunchCameraMode().isSlowMotion()) {
-                    SlowMotion slowMotion = (SlowMotion) this.mStateMachine.getUserSetting().get(UserSettingKey.SLOW_MOTION);
+                if (getCapturingMode() == CapturingMode.SLOW_MOTION
+                        && !this.mActivity.getLaunchCondition().getLaunchCameraMode().isSlowMotion()) {
+                    SlowMotion slowMotion = (SlowMotion) this.mStateMachine.getUserSetting()
+                            .get(UserSettingKey.SLOW_MOTION);
                     postSlowMotionHintText();
-                    if (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion[slowMotion.ordinal()] == 1 && this.mHintText != null) {
+                    if (slowMotion == SlowMotion.SUPER_SLOW_MOTION && this.mHintText != null) {
                         this.mHintText.cancel(HintTextSuperSlowMotionVideoRecording.createTag(true));
                         this.mHintText.cancel(HintTextSuperSlowMotionVideoRecording.createTag(false));
                     }
@@ -1617,60 +2422,66 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
                 }
                 if (objArr == null || objArr.length == 0) {
                     requestToDimSystemUi();
-                } else if (objArr[0] != ViewFinder$UiComponentKind.ZOOM_BAR) {
-                    requestToDimSystemUi();
+                    return;
+                } else {
+                    if (objArr[0] != ViewFinder.UiComponentKind.ZOOM_BAR) {
+                        requestToDimSystemUi();
+                        return;
+                    }
+                    return;
                 }
-                break;
-            case 6:
+            case STATE_CAPTURE_COUNTDOWN:
                 changeToSelftimerView(((Boolean) objArr[0]).booleanValue());
-                break;
-            case 7:
-                if (objArr != null && objArr.length != 0) {
-                    this.mCurrentDisplayingUiComponent = (ViewFinder$UiComponentKind) objArr[0];
-                    changeToDialogView(this.mCurrentDisplayingUiComponent);
-                    break;
+                return;
+            case STATE_OPERATION_RESTRICTED:
+                if (objArr == null || objArr.length == 0) {
+                    return;
                 }
-                break;
-            case 8:
+                this.mCurrentDisplayingUiComponent = (ViewFinder.UiComponentKind) objArr[0];
+                changeToDialogView(this.mCurrentDisplayingUiComponent);
+                return;
+            case STATE_PHOTO_AF_SEARCH:
                 changeToPhotoFocusSearchView();
-                break;
-            case 9:
+                return;
+            case STATE_PHOTO_AF_DONE:
                 changeToPhotoFocusDoneView((Boolean) objArr[0]);
-                break;
-            case 10:
+                return;
+            case STATE_PHOTO_CAPTURE_WAIT_FOR_AF_DONE:
                 changeToPhotoCaptureWaitForAfDoneView();
-                break;
-            case 11:
+                return;
+            case STATE_BURST_CAPTURE_WAIT_FOR_AF_DONE:
                 changeToBurstCaptureWaitForAfDoneView();
-                break;
-            case 12:
+                return;
+            case STATE_PHOTO_CAPTURE:
                 changeToPhotoCaptureView();
                 clearTouchedScreenButtonGroup();
-                break;
-            case 13:
+                return;
+            case STATE_BURST_CAPTURE:
                 changeToBurstCaptureView();
-                break;
-            case 14:
-                if (getCapturingMode() == CapturingMode.SLOW_MOTION && this.mStateMachine.getUserSetting().get(UserSettingKey.SLOW_MOTION) == SlowMotion.STANDARD_SLOW_MOTION) {
+                return;
+            case STATE_VIDEO_RECORDING:
+                if (getCapturingMode() == CapturingMode.SLOW_MOTION && this.mStateMachine.getUserSetting()
+                        .get(UserSettingKey.SLOW_MOTION) == SlowMotion.STANDARD_SLOW_MOTION) {
                     changeToStandardSlowMotionRecordingView();
+                    return;
                 } else {
                     changeToVideoRecordingView();
+                    return;
                 }
-                break;
-            case 17:
+            case STATE_VIDEO_STORE:
                 attachSideAutoReview();
-                break;
-            case 18:
+                return;
+            case STATE_FATAL:
                 showBlank();
                 hideAndCancelAllView();
-                break;
-            case 19:
+                return;
+            case STATE_PAUSE:
                 this.mIsRequestingStartActivity = false;
                 this.mHandler.removeCallbacks(this.mAfterSwitchAnimationTask);
                 this.mTouchEventDispatcher.start();
                 hideAndCancelAllView();
-                break;
-            case 20:
+                return;
+            case STATE_WARNING:
                 if (isHeadUpDisplayReady()) {
                     this.mSideTouchUi.destroyIcon();
                 }
@@ -1680,180 +2491,373 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
                     }
                     hideAutoReview();
                     this.mFocusRectangles.clearAllFocus();
-                    if (getCapturingMode() == CapturingMode.FRONT_VIDEO || getCapturingMode() == CapturingMode.VIDEO || getCapturingMode() == CapturingMode.SLOW_MOTION) {
+                    if (getCapturingMode() == CapturingMode.FRONT_VIDEO || getCapturingMode() == CapturingMode.VIDEO
+                            || getCapturingMode() == CapturingMode.SLOW_MOTION) {
                         changeToVideoReadyView();
                     } else {
                         changeToPhotoReadyView(false);
                     }
                 }
                 requestToDimSystemUi();
-                break;
-            case 21:
+                return;
+            case STATE_FINALIZE:
                 release();
                 getDownHeadUpDisplay();
-                break;
-            case 22:
+                return;
+            case STATE_VIDEO_RECORDING_PAUSING:
                 changeToVideoRecordingPauseView();
-                break;
-            case 23:
+                return;
+            case STATE_CAMERA_SWITCHING:
                 changeToModeTransitionView();
-                break;
-            case 24:
+                return;
+            case STATE_PHOTO_READY_FOR_RECORDING:
                 if (objArr != null && objArr.length != 0) {
-                    zBooleanValue = ((Boolean) objArr[0]).booleanValue();
+                    z = ((Boolean) objArr[0]).booleanValue();
                 }
-                changeToReadyForRecordView(zBooleanValue);
-                break;
-            case 25:
+                changeToReadyForRecordView(z);
+                return;
+            case STATE_MODE_CHANGING:
                 changeToModeTransitionView();
-                break;
-            case 26:
+                return;
+            case STATE_WAITING_EVF_PREPARED_IN_MODE_CHANGE:
                 if (this.mHintText != null) {
                     this.mHintText.clearAll();
+                    return;
                 }
-                break;
-            case 27:
+                return;
+            case STATE_HIGH_FRAME_RATE_VIDEO_RECORDING_IN_SUPER_SLOW_MOTION:
                 changeToSuperSlowMotionVideoHighFrameRateRecordingView();
-                break;
-            case 28:
+                return;
+            case STATE_LOW_FRAME_RATE_VIDEO_RECORDING_IN_SUPER_SLOW_MOTION:
                 changeToSuperSlowMotionVideoLowFrameRateRecordingView();
-                break;
-            case 29:
+                return;
+            case STATE_WAIT_FOR_HIGH_FRAME_RATE_VIDEO_RECORDING_DONE:
                 changeToWaitForHighFrameRateRecordingDoneView();
-                break;
+                return;
         }
     }
 
     public void startReturnModeAnimation() {
-        AnimationRequest animationRequest = new AnimationRequest(AnimationRequest$AnimationType.MODE_SELECTOR, AnimationRequest$AnimationDegree.START, getCapturingMode(), CapturingMode.SCENE_RECOGNITION);
+        AnimationRequest animationRequest = new AnimationRequest(AnimationRequest.AnimationType.MODE_SELECTOR,
+                AnimationRequest.AnimationDegree.START, getCapturingMode(), CapturingMode.SCENE_RECOGNITION);
         if (requestAnimation(animationRequest)) {
-            this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_START_TRANSITION_OPERATION, animationRequest);
+            this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_START_TRANSITION_OPERATION,
+                    animationRequest);
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean requestAnimation(AnimationRequest animationRequest) {
         if (CamLog.DEBUG) {
-            CamLog.d("invoke source:" + animationRequest.mType + ", type:" + animationRequest.mDegree + ", from:" + animationRequest.mFrom.name() + ", target:" + animationRequest.mTarget.name());
+            CamLog.d("invoke source:" + animationRequest.mType + ", type:" + animationRequest.mDegree + ", from:"
+                    + animationRequest.mFrom.name() + ", target:" + animationRequest.mTarget.name());
         }
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$animation$AnimationRequest$AnimationType[animationRequest.mType.ordinal()]) {
-            case 1:
+        switch (animationRequest.mType) {
+            case MODE_TOUCH:
                 return requestModeSwipeAnimation(animationRequest);
-            case 2:
+            case MODE_ICON:
                 return requestModeIconAnimation(animationRequest);
-            case 3:
+            case MODE_SELECTOR:
                 return requestModeSelectorAnimation(animationRequest);
-            case 4:
+            case MRU_SHORTCUT:
                 return requestMostRecentlyUsedAnimation(animationRequest);
-            case 5:
+            case SWITCH_TOUCH:
                 return requestSwitchAnimation(animationRequest);
             default:
                 return false;
         }
     }
 
-    private boolean requestModeSwipeAnimation(AnimationRequest animationRequest) {
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$animation$AnimationRequest$AnimationDegree[animationRequest.mDegree.ordinal()]) {
-            case 1:
-                boolean zRequestAnimation = this.mAnimationController.requestAnimation(animationRequest);
-                if (zRequestAnimation) {
+    private boolean requestModeSwipeAnimation(final AnimationRequest animationRequest) {
+        switch (animationRequest.mDegree) {
+            case START:
+                boolean requestAnimation = this.mAnimationController.requestAnimation(animationRequest);
+                if (requestAnimation) {
                     hideViews();
                 }
-                return zRequestAnimation;
-            case 2:
-                return this.mAnimationController.requestAnimation(animationRequest, new ViewFinderImpl$9(this, animationRequest));
-            case 3:
-                return this.mAnimationController.requestAnimation(animationRequest, new ViewFinderImpl$10(this, animationRequest));
-            case 4:
+                return requestAnimation;
+            case EXEC:
+                return this.mAnimationController.requestAnimation(animationRequest,
+                        new TransitionAnimationController.TransitionAnimationCallback() { // from class:
+                                                                                          // com.sonyericsson.android.camera.view.ViewFinderImpl.9
+                            @Override // com.sonyericsson.android.camera.view.animation.TransitionAnimationController.TransitionAnimationCallback
+                            public void onAnimationFinished() {
+                                PerfLog.SWIPE_ANIMATION_END.transit();
+                                ViewFinderImpl.this.mStateMachine.sendEvent(
+                                        StateMachine.TransitterEvent.EVENT_FINISH_TRANSITION_OPERATION,
+                                        animationRequest);
+                                LocalResearchUtil.getInstance().sendEventInternalModeChange(animationRequest.mFrom,
+                                        animationRequest.mTarget);
+                            }
+                        });
+            case CANCEL:
+                return this.mAnimationController.requestAnimation(animationRequest,
+                        new TransitionAnimationController.TransitionAnimationCallback() { // from class:
+                                                                                          // com.sonyericsson.android.camera.view.ViewFinderImpl.10
+                            @Override // com.sonyericsson.android.camera.view.animation.TransitionAnimationController.TransitionAnimationCallback
+                            public void onAnimationFinished() {
+                                ViewFinderImpl.this.mStateMachine.sendEvent(
+                                        StateMachine.TransitterEvent.EVENT_FINISH_TRANSITION_OPERATION,
+                                        animationRequest);
+                            }
+                        });
+            case FINISH:
                 return this.mAnimationController.requestAnimation(animationRequest);
             default:
                 return false;
         }
     }
 
-    private boolean requestModeIconAnimation(AnimationRequest animationRequest) {
-        int i = ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$animation$AnimationRequest$AnimationDegree[animationRequest.mDegree.ordinal()];
-        if (i != 4) {
-            switch (i) {
-                case 1:
-                    if (this.mAnimationController.requestAnimation(animationRequest)) {
-                        this.mActivity.runOnUiThread(new ViewFinderImpl$11(this, new AnimationRequest(AnimationRequest$AnimationType.MODE_ICON, AnimationRequest$AnimationDegree.EXEC, animationRequest.mFrom, animationRequest.mTarget)));
+    private boolean requestModeIconAnimation(final AnimationRequest animationRequest) {
+        switch (animationRequest.mDegree) {
+            case START:
+                    if (!this.mAnimationController.requestAnimation(animationRequest)) {
+                        return false;
                     }
-                    break;
-                case 2:
-                    if (this.mAnimationController.requestAnimation(animationRequest, new ViewFinderImpl$12(this, animationRequest))) {
-                        LocalResearchUtil.getInstance().setModeChangeMethod(LocalResearchUtil$ModeChangeMethod.ICON_TOUCH);
-                        LocalResearchUtil.getInstance().sendEventInternalModeChange(animationRequest.mFrom, animationRequest.mTarget);
+                    final AnimationRequest animationRequest2 = new AnimationRequest(
+                            AnimationRequest.AnimationType.MODE_ICON, AnimationRequest.AnimationDegree.EXEC,
+                            animationRequest.mFrom, animationRequest.mTarget);
+                    this.mActivity.runOnUiThread(new Runnable() { // from class:
+                                                                  // com.sonyericsson.android.camera.view.ViewFinderImpl.11
+                        @Override // java.lang.Runnable
+                        public void run() {
+                            if (CamLog.DEBUG) {
+                                CamLog.d("invoke current:" + animationRequest2.mFrom.name() + ", target:"
+                                        + animationRequest2.mTarget.name());
+                            }
+                            ViewFinderImpl.this.hideViews();
+                            ViewFinderImpl.this.sendViewUpdateEvent(
+                                    ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED, new Object[0]);
+                            ViewFinderImpl.this.requestAnimation(animationRequest2);
+                        }
+                    });
+                    return true;
+            case EXEC:
+                    if (!this.mAnimationController.requestAnimation(animationRequest,
+                            new TransitionAnimationController.TransitionAnimationCallback() { // from class:
+                                                                                              // com.sonyericsson.android.camera.view.ViewFinderImpl.12
+                                @Override // com.sonyericsson.android.camera.view.animation.TransitionAnimationController.TransitionAnimationCallback
+                                public void onAnimationFinished() {
+                                    ViewFinderImpl.this.mStateMachine.sendEvent(
+                                            StateMachine.TransitterEvent.EVENT_FINISH_TRANSITION_OPERATION,
+                                            animationRequest);
+                                }
+                            })) {
+                        return false;
                     }
-                    break;
-            }
-            return true;
+                    LocalResearchUtil.getInstance().setModeChangeMethod(LocalResearchUtil.ModeChangeMethod.ICON_TOUCH);
+                    LocalResearchUtil.getInstance().sendEventInternalModeChange(animationRequest.mFrom,
+                            animationRequest.mTarget);
+                    return true;
+            case FINISH:
+                return this.mAnimationController.requestAnimation(animationRequest);
+            default:
+                    return false;
         }
-        return this.mAnimationController.requestAnimation(animationRequest);
     }
 
-    private boolean requestModeSelectorAnimation(AnimationRequest animationRequest) {
-        int i = ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$animation$AnimationRequest$AnimationDegree[animationRequest.mDegree.ordinal()];
-        if (i != 4) {
-            switch (i) {
-                case 1:
-                    if (this.mAnimationController.requestAnimation(animationRequest)) {
-                        this.mHandler.post(new ViewFinderImpl$13(this, new AnimationRequest(AnimationRequest$AnimationType.MODE_SELECTOR, AnimationRequest$AnimationDegree.EXEC, animationRequest.mFrom, animationRequest.mTarget)));
+    private boolean requestModeSelectorAnimation(final AnimationRequest animationRequest) {
+        switch (animationRequest.mDegree) {
+            case START:
+                    if (!this.mAnimationController.requestAnimation(animationRequest)) {
+                        return false;
                     }
-                    break;
-                case 2:
-                    if (this.mAnimationController.requestAnimation(animationRequest, new ViewFinderImpl$14(this, animationRequest))) {
-                        LocalResearchUtil.getInstance().setModeChangeMethod(LocalResearchUtil$ModeChangeMethod.MODE_SELECTOR);
-                        LocalResearchUtil.getInstance().setLaunchBy(LaunchCondition$LaunchTrigger.MODE_SELECTOR);
-                        LocalResearchUtil.getInstance().sendEventInternalModeChange(animationRequest.mFrom, animationRequest.mTarget);
+                    final AnimationRequest animationRequest2 = new AnimationRequest(
+                            AnimationRequest.AnimationType.MODE_SELECTOR, AnimationRequest.AnimationDegree.EXEC,
+                            animationRequest.mFrom, animationRequest.mTarget);
+                    this.mHandler.post(new Runnable() { // from class:
+                                                        // com.sonyericsson.android.camera.view.ViewFinderImpl.13
+                        @Override // java.lang.Runnable
+                        public void run() {
+                            if (CamLog.DEBUG) {
+                                CamLog.d("invoke current:" + animationRequest2.mFrom.name() + ", target:"
+                                        + animationRequest2.mTarget.name());
+                            }
+                            ViewFinderImpl.this.hideSurface();
+                            ViewFinderImpl.this.hideViews();
+                            ViewFinderImpl.this.sendViewUpdateEvent(
+                                    ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED, new Object[0]);
+                            ViewFinderImpl.this.requestAnimation(animationRequest2);
+                        }
+                    });
+                    return true;
+            case EXEC:
+                    if (!this.mAnimationController.requestAnimation(animationRequest,
+                            new TransitionAnimationController.TransitionAnimationCallback() { // from class:
+                                                                                              // com.sonyericsson.android.camera.view.ViewFinderImpl.14
+                                @Override // com.sonyericsson.android.camera.view.animation.TransitionAnimationController.TransitionAnimationCallback
+                                public void onAnimationFinished() {
+                                    if (animationRequest.mFrom.isFront() != animationRequest.mTarget.isFront()) {
+                                        ViewFinderImpl.this.setIsCameraSwitching(true);
+                                        final AnimationRequest animationRequest3 = new AnimationRequest(
+                                                AnimationRequest.AnimationType.MODE_SELECTOR,
+                                                AnimationRequest.AnimationDegree.FINISH, animationRequest.mFrom,
+                                                animationRequest.mTarget);
+                                        ViewFinderImpl.this.mHandler.post(new Runnable() { // from class:
+                                                                                           // com.sonyericsson.android.camera.view.ViewFinderImpl.14.1
+                                            @Override // java.lang.Runnable
+                                            public void run() {
+                                                if (CamLog.DEBUG) {
+                                                    CamLog.d("invoke current:" + animationRequest3.mFrom.name()
+                                                            + ", target:" + animationRequest3.mTarget.name());
+                                                }
+                                                ViewFinderImpl.this.requestAnimation(animationRequest3);
+                                            }
+                                        });
+                                    }
+                                    ViewFinderImpl.this.mStateMachine.sendEvent(
+                                            StateMachine.TransitterEvent.EVENT_FINISH_TRANSITION_OPERATION,
+                                            animationRequest);
+                                }
+                            })) {
+                        return false;
                     }
-                    break;
-            }
-            return true;
+                    LocalResearchUtil.getInstance()
+                            .setModeChangeMethod(LocalResearchUtil.ModeChangeMethod.MODE_SELECTOR);
+                    LocalResearchUtil.getInstance().setLaunchBy(LaunchCondition.LaunchTrigger.MODE_SELECTOR);
+                    LocalResearchUtil.getInstance().sendEventInternalModeChange(animationRequest.mFrom,
+                            animationRequest.mTarget);
+                    return true;
+            case FINISH:
+                getBaseLayout().getModeButtonShortcut().update(ModeSelectorInternalMode.exists(animationRequest.mTarget));
+                getBaseLayout().getMruButtonContainer()
+                        .setAvailability(!ModeSelectorInternalMode.exists(animationRequest.mTarget));
+                return this.mAnimationController.requestAnimation(animationRequest);
+            default:
+                    return false;
         }
-        getBaseLayout().getModeButtonShortcut().update(ModeSelectorInternalMode.exists(animationRequest.mTarget));
-        getBaseLayout().getMruButtonContainer().setAvailability(!ModeSelectorInternalMode.exists(animationRequest.mTarget));
-        return this.mAnimationController.requestAnimation(animationRequest);
     }
 
-    private boolean requestMostRecentlyUsedAnimation(AnimationRequest animationRequest) {
-        int i = ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$animation$AnimationRequest$AnimationDegree[animationRequest.mDegree.ordinal()];
-        if (i != 4) {
-            switch (i) {
-                case 1:
-                    if (this.mAnimationController.requestAnimation(animationRequest)) {
-                        this.mHandler.post(new ViewFinderImpl$15(this, new AnimationRequest(AnimationRequest$AnimationType.MRU_SHORTCUT, AnimationRequest$AnimationDegree.EXEC, animationRequest.mFrom, animationRequest.mTarget)));
+    private boolean requestMostRecentlyUsedAnimation(final AnimationRequest animationRequest) {
+        switch (animationRequest.mDegree) {
+            case START:
+                    if (!this.mAnimationController.requestAnimation(animationRequest)) {
+                        return false;
                     }
-                    break;
-                case 2:
-                    if (this.mAnimationController.requestAnimation(animationRequest, new ViewFinderImpl$16(this, animationRequest))) {
-                        LocalResearchUtil.getInstance().setModeChangeMethod(LocalResearchUtil$ModeChangeMethod.MRU_SHORTCUT);
-                        LocalResearchUtil.getInstance().setLaunchBy(LaunchCondition$LaunchTrigger.MRU_SHORTCUT);
-                        LocalResearchUtil.getInstance().sendEventInternalModeChange(animationRequest.mFrom, animationRequest.mTarget);
+                    final AnimationRequest animationRequest2 = new AnimationRequest(
+                            AnimationRequest.AnimationType.MRU_SHORTCUT, AnimationRequest.AnimationDegree.EXEC,
+                            animationRequest.mFrom, animationRequest.mTarget);
+                    this.mHandler.post(new Runnable() { // from class:
+                                                        // com.sonyericsson.android.camera.view.ViewFinderImpl.15
+                        @Override // java.lang.Runnable
+                        public void run() {
+                            if (CamLog.DEBUG) {
+                                CamLog.d("invoke current:" + animationRequest2.mFrom.name() + ", target:"
+                                        + animationRequest2.mTarget.name());
+                            }
+                            ViewFinderImpl.this.hideSurface();
+                            ViewFinderImpl.this.hideViews();
+                            ViewFinderImpl.this.sendViewUpdateEvent(
+                                    ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED, new Object[0]);
+                            ViewFinderImpl.this.requestAnimation(animationRequest2);
+                        }
+                    });
+                    return true;
+            case EXEC:
+                    if (!this.mAnimationController.requestAnimation(animationRequest,
+                            new TransitionAnimationController.TransitionAnimationCallback() { // from class:
+                                                                                              // com.sonyericsson.android.camera.view.ViewFinderImpl.16
+                                @Override // com.sonyericsson.android.camera.view.animation.TransitionAnimationController.TransitionAnimationCallback
+                                public void onAnimationFinished() {
+                                    ViewFinderImpl.this.mStateMachine.sendEvent(
+                                            StateMachine.TransitterEvent.EVENT_FINISH_TRANSITION_OPERATION,
+                                            animationRequest);
+                                    if (animationRequest.mFrom.isFront() != animationRequest.mTarget.isFront()) {
+                                        final AnimationRequest animationRequest3 = new AnimationRequest(
+                                                AnimationRequest.AnimationType.MRU_SHORTCUT,
+                                                AnimationRequest.AnimationDegree.FINISH, animationRequest.mFrom,
+                                                animationRequest.mTarget);
+                                        ViewFinderImpl.this.mHandler.post(new Runnable() { // from class:
+                                                                                           // com.sonyericsson.android.camera.view.ViewFinderImpl.16.1
+                                            @Override // java.lang.Runnable
+                                            public void run() {
+                                                if (CamLog.DEBUG) {
+                                                    CamLog.d("invoke current:" + animationRequest3.mFrom.name()
+                                                            + ", target:" + animationRequest3.mTarget.name());
+                                                }
+                                                ViewFinderImpl.this.requestAnimation(animationRequest3);
+                                            }
+                                        });
+                                    }
+                                }
+                            })) {
+                        return false;
                     }
-                    break;
-            }
-            return true;
+                    LocalResearchUtil.getInstance()
+                            .setModeChangeMethod(LocalResearchUtil.ModeChangeMethod.MRU_SHORTCUT);
+                    LocalResearchUtil.getInstance().setLaunchBy(LaunchCondition.LaunchTrigger.MRU_SHORTCUT);
+                    LocalResearchUtil.getInstance().sendEventInternalModeChange(animationRequest.mFrom,
+                            animationRequest.mTarget);
+                    return true;
+            case FINISH:
+                getBaseLayout().getModeButtonShortcut().update(ModeSelectorInternalMode.exists(animationRequest.mTarget));
+                getBaseLayout().getMruButtonContainer()
+                        .setAvailability(!ModeSelectorInternalMode.exists(animationRequest.mTarget));
+                return this.mAnimationController.requestAnimation(animationRequest);
+            default:
+                    return false;
         }
-        getBaseLayout().getModeButtonShortcut().update(ModeSelectorInternalMode.exists(animationRequest.mTarget));
-        getBaseLayout().getMruButtonContainer().setAvailability(!ModeSelectorInternalMode.exists(animationRequest.mTarget));
-        return this.mAnimationController.requestAnimation(animationRequest);
     }
 
-    private boolean requestSwitchAnimation(AnimationRequest animationRequest) {
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$animation$AnimationRequest$AnimationDegree[animationRequest.mDegree.ordinal()]) {
-            case 1:
+    private boolean requestSwitchAnimation(final AnimationRequest animationRequest) {
+        switch (animationRequest.mDegree) {
+            case START:
                 return startDraggingSwitchStartedAnimation();
-            case 2:
-                return this.mAnimationController.requestAnimation(animationRequest, new ViewFinderImpl$18(this, animationRequest));
-            case 3:
-                return this.mAnimationController.requestAnimation(animationRequest, new ViewFinderImpl$17(this, animationRequest));
-            case 4:
+            case CANCEL:
+                return this.mAnimationController.requestAnimation(animationRequest,
+                        new TransitionAnimationController.TransitionAnimationCallback() { // from class:
+                                                                                          // com.sonyericsson.android.camera.view.ViewFinderImpl.17
+                            @Override // com.sonyericsson.android.camera.view.animation.TransitionAnimationController.TransitionAnimationCallback
+                            public void onAnimationFinished() {
+                                ViewFinderImpl.this.mStateMachine.sendEvent(
+                                        StateMachine.TransitterEvent.EVENT_FINISH_TRANSITION_OPERATION,
+                                        animationRequest);
+                                ViewFinderImpl.this.resetAnimationProperty();
+                            }
+                        });
+            case EXEC:
+                return this.mAnimationController.requestAnimation(animationRequest,
+                        new TransitionAnimationController.TransitionAnimationCallback() { // from class:
+                                                                                          // com.sonyericsson.android.camera.view.ViewFinderImpl.18
+                            @Override // com.sonyericsson.android.camera.view.animation.TransitionAnimationController.TransitionAnimationCallback
+                            public void onAnimationFinished() {
+                                ViewFinderImpl.this.mStateMachine.sendEvent(
+                                        StateMachine.TransitterEvent.EVENT_FINISH_TRANSITION_OPERATION,
+                                        animationRequest);
+                                ViewFinderImpl.this.mHandler.post(ViewFinderImpl.this.mAfterSwitchAnimationTask);
+                                ViewFinderImpl.this.showSurface();
+                            }
+                        });
+            case FINISH:
                 return this.mAnimationController.requestAnimation(animationRequest);
             default:
                 return false;
         }
     }
 
+    private final Runnable mAfterSwitchAnimationTask = new Runnable() { // from class:
+                                                                        // com.sonyericsson.android.camera.view.ViewFinderImpl.19
+        @Override // java.lang.Runnable
+        public void run() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke AfterSwitchAnimationTask");
+            }
+            ViewFinderImpl.this.mPreviewCover.setAlpha(0.0f);
+            ViewFinderImpl.this.mAnimationController.requestAnimation(
+                    new AnimationRequest(AnimationRequest.AnimationType.SWITCH_TOUCH,
+                            AnimationRequest.AnimationDegree.FINISH, ViewFinderImpl.this.getCapturingMode(),
+                            ViewFinderImpl.this.getCapturingMode()),
+                    new TransitionAnimationController.TransitionAnimationCallback() { // from
+                                                                                      // class:
+                                                                                      // com.sonyericsson.android.camera.view.ViewFinderImpl.19.1
+                        @Override // com.sonyericsson.android.camera.view.animation.TransitionAnimationController.TransitionAnimationCallback
+                        public void onAnimationFinished() {
+                            ViewFinderImpl.this.resetAnimationProperty();
+                            ViewFinderImpl.this.setIsSwitchingAnimationProgress(false);
+                        }
+                    });
+        }
+    };
     private void hideAndCancelAllView() {
         if (isInSelfTimerCountDown()) {
             cancelSelfTimerCountDownView();
@@ -1876,6 +2880,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         this.mHintCannotBurstUsingFusionModeAlreadyDisplayed = false;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void changeLayoutTo(LayoutPattern layoutPattern) {
         changeLayoutTo(layoutPattern, false);
     }
@@ -1884,6 +2889,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return !this.mActivity.isOneShot() || PermissionsUtil.areCallerGeoPermissionsGranted(this.mActivity);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void changeLayoutTo(LayoutPattern layoutPattern, boolean z) {
         if (isHeadUpDisplayReady()) {
             if (CamLog.VERBOSE) {
@@ -1897,7 +2903,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             this.mLayoutPattern = layoutPattern;
             if (isPreviewLayout(layoutPattern)) {
                 if (needToShowGeoTagIndicator()) {
-                    this.mBaseLayout.getGeoTagIndicator().set(GeotagManager.isGeoTagEnabled(this.mActivity.getStoredSettings().getUserSettings(), this.mActivity));
+                    this.mBaseLayout.getGeoTagIndicator().set(GeotagManager
+                            .isGeoTagEnabled(this.mActivity.getStoredSettings().getUserSettings(), this.mActivity));
                 }
                 if (this.mActivity.getGeoTagManager() != null) {
                     this.mBaseLayout.getGeoTagIndicator().isAcquired(isAcquired());
@@ -1916,64 +2923,68 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
 
     private void changeToPhotoReadyView(boolean z) {
         changeLayoutTo(selectLayoutPatternForPreview());
-        if (isHeadUpDisplayReady() && !predictiveLaunchCoverExists()) {
-            CapturingMode capturingMode = getCapturingMode();
-            if (this.mStateMachine.getCurrentCaptureState() == StateMachine$CaptureState.STATE_WARNING) {
-                this.mHintText.clearAll();
-            }
-            if (!isOverlayControlEnabled()) {
-                this.mHintText.showAll();
-            } else {
-                this.mHintText.show(HintTextContent$HintPriority.HIGH);
-            }
-            if (this.mInstantViewer != null && this.mInstantViewer.isOpened()) {
-                this.mInstantViewer.hide();
-            }
-            if (z) {
-                this.mFocusRectangles.clearAllFocusExceptFace();
-            } else {
-                this.mFocusRectangles.onUiComponentRemoved();
-            }
-            boolean z2 = true;
-            applySmileFocusThreshold(true);
-            this.mFocusRectangles.clearFaceDetection();
-            this.mFocusRectangles.reset();
-            showPhotoSmileCaptureIndicator();
-            hideVideoSmileCaptureIndicator();
-            setFrontAngleSwitchButtonVisibility(isFront());
-            setLeftIconsVisibility(true);
-            setOrientation(getOrientation());
-            if (capturingMode == CapturingMode.NORMAL || capturingMode == CapturingMode.FRONT_PHOTO) {
-                getBaseLayout().getSceneIndicator().set(false);
-                getBaseLayout().getConditionIndicator().set(false);
-                setApplicationNavigatorEnabled(false);
-            } else {
-                updateVisibilityForSpecificDisplaySize();
-            }
-            getBaseLayout().setViewFinderGestureDetectorEnabled(true, true);
-            changeScreenButtonImage(ViewFinder$HeadUpDisplaySetupState.PHOTO_READY, false);
-            CapturingMode capturingMode2 = getCapturingMode();
-            if (!ModeSelectorInternalMode.exists(capturingMode2) && !capturingMode2.equals(CapturingMode.FRONT_PHOTO)) {
-                z2 = false;
-            }
-            getBaseLayout().getModeButtonShortcut().update(z2);
-            this.mSideTouchUi.detachTo(SideTouchUi$Type.ZOOM_BAR);
-            this.mSideTouchUi.destroyTo(SideTouchUi$Type.SELF_TIMER_COUNTDOWN_CANCEL);
-            if (this.mIsNeedDisplayToastChangeInternalStoarge) {
-                this.mIsNeedDisplayToastChangeInternalStoarge = false;
-                showToastMessage(ToastContent$ToastID.CHANGE_DESTINATION_TO_SAVE);
-            }
+        if (!isHeadUpDisplayReady()) {
+            return;
+        }
+        if (predictiveLaunchCoverExists()) {
+            return;
+        }
+        CapturingMode capturingMode = getCapturingMode();
+        if (this.mStateMachine.getCurrentCaptureState() == StateMachine.CaptureState.STATE_WARNING) {
+            this.mHintText.clearAll();
+        }
+        if (!isOverlayControlEnabled()) {
+            this.mHintText.showAll();
+        } else {
+            this.mHintText.show(HintTextContent.HintPriority.HIGH);
+        }
+        if (this.mInstantViewer != null && this.mInstantViewer.isOpened()) {
+            this.mInstantViewer.hide();
+        }
+        if (z) {
+            this.mFocusRectangles.clearAllFocusExceptFace();
+        } else {
+            this.mFocusRectangles.onUiComponentRemoved();
+        }
+        boolean z2 = true;
+        applySmileFocusThreshold(true);
+        this.mFocusRectangles.clearFaceDetection();
+        this.mFocusRectangles.reset();
+        showPhotoSmileCaptureIndicator();
+        hideVideoSmileCaptureIndicator();
+        setFrontAngleSwitchButtonVisibility(isFront());
+        setLeftIconsVisibility(true);
+        setOrientation(getOrientation());
+        if (capturingMode == CapturingMode.NORMAL || capturingMode == CapturingMode.FRONT_PHOTO) {
+            getBaseLayout().getSceneIndicator().set(false);
+            getBaseLayout().getConditionIndicator().set(false);
+            setApplicationNavigatorEnabled(false);
+        } else {
+            updateVisibilityForSpecificDisplaySize();
+        }
+        getBaseLayout().setViewFinderGestureDetectorEnabled(true, true);
+        changeScreenButtonImage(ViewFinder.HeadUpDisplaySetupState.PHOTO_READY, false);
+        CapturingMode capturingMode2 = getCapturingMode();
+        if (!ModeSelectorInternalMode.exists(capturingMode2) && !capturingMode2.equals(CapturingMode.FRONT_PHOTO)) {
+            z2 = false;
+        }
+        getBaseLayout().getModeButtonShortcut().update(z2);
+        this.mSideTouchUi.detachTo(SideTouchUi.Type.ZOOM_BAR);
+        this.mSideTouchUi.destroyTo(SideTouchUi.Type.SELF_TIMER_COUNTDOWN_CANCEL);
+        if (this.mIsNeedDisplayToastChangeInternalStoarge) {
+            this.mIsNeedDisplayToastChangeInternalStoarge = false;
+            showToastMessage(ToastContent.ToastID.CHANGE_DESTINATION_TO_SAVE);
         }
     }
 
     private void changeToSelftimerView(boolean z) {
         changeLayoutTo(BaseLayoutPattern.SELFTIMER);
         if (isHeadUpDisplayReady()) {
-            if (this.mSideTouchUi.containsIn(SideTouchUi$Type.CAPTURE_COUNTDOWN, SideTouchUi$Type.VIDEO_COUNTDOWN)) {
+            if (this.mSideTouchUi.containsIn(SideTouchUi.Type.CAPTURE_COUNTDOWN, SideTouchUi.Type.VIDEO_COUNTDOWN)) {
                 this.mSideTouchUi.showIcon();
                 return;
             }
-            changeScreenButtonImage(ViewFinder$HeadUpDisplaySetupState.PHOTO_READY, true);
+            changeScreenButtonImage(ViewFinder.HeadUpDisplaySetupState.PHOTO_READY, true);
             this.mSettingDialogStack.closeAllSettingDialogs();
             setLeftIconsVisibility(false);
             setFrontAngleSwitchButtonVisibility(false);
@@ -1981,11 +2992,12 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
                 showSelfTimerCountDownView();
                 startSelfTimerCountDownAnimation();
             }
-            if (this.mSideTouchUi.containsIn(SideTouchUi$Type.SELF_TIMER_COUNTDOWN_CANCEL)) {
+            if (this.mSideTouchUi.containsIn(SideTouchUi.Type.SELF_TIMER_COUNTDOWN_CANCEL)) {
                 this.mSideTouchUi.showIcon();
-                ViewFinderImpl$ScreenButtonHandler.access$5300(this.mScreenButtonHandler);
+                this.mScreenButtonHandler.clearMain();
             } else {
-                this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory$ButtonType.CANCEL_SELFTIMER_LARGE, getOrientation(), true);
+                this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory.ButtonType.CANCEL_SELFTIMER_LARGE,
+                        getOrientation(), true);
             }
             hidePhotoSmileCaptureIndicator();
             setOrientation(getOrientation());
@@ -2009,30 +3021,35 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return this.mStateMachine.getUserSetting().get(UserSettingKey.OBJECT_TRACKING) == ObjectTracking.ON;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isTouchCaptureEnabled() {
         TouchCapture touchCapture;
         if (this.mTouchCapture != null) {
             touchCapture = this.mTouchCapture;
         } else {
-            touchCapture = (TouchCapture) this.mStateMachine.getUserSetting().get(getCapturingMode(), UserSettingKey.TOUCH_CAPTURE);
+            touchCapture = (TouchCapture) this.mStateMachine.getUserSetting().get(getCapturingMode(),
+                    UserSettingKey.TOUCH_CAPTURE);
         }
         if (touchCapture == null) {
             return false;
         }
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$TouchCapture[touchCapture.ordinal()]) {
-            case 1:
+        switch (touchCapture) {
+            case ON:
                 return true;
-            case 2:
+            case FRONT_ONLY:
                 if (isFront()) {
                     return true;
                 }
+                break;
             default:
                 return false;
         }
+        return false;
     }
 
     private boolean isSmileShutterEnabled() {
-        return ((SmileCapture) this.mStateMachine.getUserSetting().get(UserSettingKey.SMILE_CAPTURE)).isSmileCaptureOn();
+        return ((SmileCapture) this.mStateMachine.getUserSetting().get(UserSettingKey.SMILE_CAPTURE))
+                .isSmileCaptureOn();
     }
 
     private void hidePhotoSmileCaptureIndicator() {
@@ -2059,32 +3076,33 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         changeLayoutTo(selectLayoutPatternForPreview());
         if (isHeadUpDisplayReady()) {
             CapturingMode capturingMode = getCapturingMode();
-            if (this.mStateMachine.getCurrentCaptureState() == StateMachine$CaptureState.STATE_WARNING) {
+            if (this.mStateMachine.getCurrentCaptureState() == StateMachine.CaptureState.STATE_WARNING) {
                 this.mHintText.clearAll();
             }
             if (!isOverlayControlEnabled()) {
                 this.mHintText.showAll();
             } else {
-                this.mHintText.show(HintTextContent$HintPriority.HIGH);
+                this.mHintText.show(HintTextContent.HintPriority.HIGH);
             }
             getBaseLayout().getSceneIndicator().set(false);
             getBaseLayout().getConditionIndicator().set(false);
-            updateVideoHdrCondition(capturingMode, (VideoHdr) this.mStateMachine.getUserSetting().get(capturingMode, UserSettingKey.VIDEO_HDR), false);
+            updateVideoHdrCondition(capturingMode,
+                    (VideoHdr) this.mStateMachine.getUserSetting().get(capturingMode, UserSettingKey.VIDEO_HDR), false);
             if (this.mInstantViewer != null && this.mInstantViewer.isOpened()) {
                 this.mInstantViewer.hide();
             }
             if (capturingMode != CapturingMode.SLOW_MOTION) {
-                changeScreenButtonImage(ViewFinder$HeadUpDisplaySetupState.VIDEO_READY, false);
+                changeScreenButtonImage(ViewFinder.HeadUpDisplaySetupState.VIDEO_READY, false);
             } else {
-                switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion[((SlowMotion) this.mStateMachine.getUserSetting().get(UserSettingKey.SLOW_MOTION)).ordinal()]) {
-                    case 1:
-                        changeScreenButtonImage(ViewFinder$HeadUpDisplaySetupState.SUPER_SLOW_MOTION_STANDBY, false);
+                switch ((SlowMotion) this.mStateMachine.getUserSetting().get(UserSettingKey.SLOW_MOTION)) {
+                    case SUPER_SLOW_MOTION:
+                        changeScreenButtonImage(ViewFinder.HeadUpDisplaySetupState.SUPER_SLOW_MOTION_STANDBY, false);
                         break;
-                    case 2:
-                        changeScreenButtonImage(ViewFinder$HeadUpDisplaySetupState.SUPER_SLOW_SHOT_STANDBY, false);
+                    case SUPER_SLOW_SHOT:
+                        changeScreenButtonImage(ViewFinder.HeadUpDisplaySetupState.SUPER_SLOW_SHOT_STANDBY, false);
                         break;
-                    case 3:
-                        changeScreenButtonImage(ViewFinder$HeadUpDisplaySetupState.STANDARD_SLOW_MOTION_STANDBY, false);
+                    case STANDARD_SLOW_MOTION:
+                        changeScreenButtonImage(ViewFinder.HeadUpDisplaySetupState.STANDARD_SLOW_MOTION_STANDBY, false);
                         break;
                 }
                 this.mFocusRectangles.clearFaceDetection();
@@ -2105,8 +3123,10 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             setLeftIconsVisibility(true);
             getBaseLayout().setViewFinderGestureDetectorEnabled(true, true);
             CapturingMode capturingMode2 = getCapturingMode();
-            getBaseLayout().getModeButtonShortcut().update(ModeSelectorInternalMode.exists(capturingMode2) || capturingMode2.equals(CapturingMode.FRONT_PHOTO));
-            if (!this.mSideTouchUi.detachTo(SideTouchUi$Type.ZOOM_BAR) && !this.mSideTouchUi.containsIn(SideTouchUi$Type.AUTO_REVIEW)) {
+            getBaseLayout().getModeButtonShortcut().update(ModeSelectorInternalMode.exists(capturingMode2)
+                    || capturingMode2.equals(CapturingMode.FRONT_PHOTO));
+            if (!this.mSideTouchUi.detachTo(SideTouchUi.Type.ZOOM_BAR)
+                    && !this.mSideTouchUi.containsIn(SideTouchUi.Type.AUTO_REVIEW)) {
                 this.mSideTouchUi.destroyIcon();
             }
             this.mRecordingTimeProxy.bindReceiver(getBaseLayout().getRecordingIndicator());
@@ -2121,7 +3141,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         changeLayoutTo(BaseLayoutPattern.PAUSE_RECORDING);
         if (isHeadUpDisplayReady()) {
             applySmileFocusThreshold(true);
-            changeScreenButtonImage(ViewFinder$HeadUpDisplaySetupState.VIDEO_PAUSING, false);
+            changeScreenButtonImage(ViewFinder.HeadUpDisplaySetupState.VIDEO_PAUSING, false);
             if (getBaseLayout().getRecordingIndicator() != null) {
                 getBaseLayout().getRecordingIndicator().setIndicator(false);
             }
@@ -2135,18 +3155,21 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             if (this.mHintText != null) {
                 this.mHintText.showAll();
             }
-            if (this.mSideTouchUi.containsAll(SideTouchUi$Type.RECORDING_PAUSE, SideTouchUi$Type.RECORDING_HDR_PAUSE, SideTouchUi$Type.COVERING)) {
+            if (this.mSideTouchUi.containsAll(SideTouchUi.Type.RECORDING_PAUSE, SideTouchUi.Type.RECORDING_HDR_PAUSE,
+                    SideTouchUi.Type.COVERING)) {
                 changeLayoutTo(BaseLayoutPattern.ZOOMING_IN_PAUSE_RECORDING);
                 getBaseLayout().getZoomBar().hideDelayed();
                 return;
             }
-            if (this.mSideTouchUi.detachTo(SideTouchUi$Type.ZOOM_BAR)) {
-                if (this.mSideTouchUi.containsIn(SideTouchUi$Type.RECORDING_PAUSE, SideTouchUi$Type.RECORDING_HDR_PAUSE)) {
+            if (this.mSideTouchUi.detachTo(SideTouchUi.Type.ZOOM_BAR)) {
+                if (this.mSideTouchUi.containsIn(SideTouchUi.Type.RECORDING_PAUSE,
+                        SideTouchUi.Type.RECORDING_HDR_PAUSE)) {
                     changeLayoutTo(BaseLayoutPattern.PAUSE_RECORDING, true);
                 }
             } else {
-                if (!this.mSideTouchUi.containsIn(SideTouchUi$Type.RECORDING, SideTouchUi$Type.RECORDING_HDR)) {
-                    if (this.mSideTouchUi.containsIn(SideTouchUi$Type.RECORDING_PAUSE, SideTouchUi$Type.RECORDING_HDR_PAUSE)) {
+                if (!this.mSideTouchUi.containsIn(SideTouchUi.Type.RECORDING, SideTouchUi.Type.RECORDING_HDR)) {
+                    if (this.mSideTouchUi.containsIn(SideTouchUi.Type.RECORDING_PAUSE,
+                            SideTouchUi.Type.RECORDING_HDR_PAUSE)) {
                         changeLayoutTo(BaseLayoutPattern.PAUSE_RECORDING, true);
                         return;
                     }
@@ -2154,9 +3177,9 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
                 }
                 this.mSideTouchUi.setUiOrientation(this.mRecordingOrientation);
                 if (this.mStateMachine.getUserSetting().get(UserSettingKey.VIDEO_HDR) == VideoHdr.HDR_ON) {
-                    this.mSideTouchUi.attachIcon(SideTouchUi$Type.RECORDING_HDR_PAUSE, null);
+                    this.mSideTouchUi.attachIcon(SideTouchUi.Type.RECORDING_HDR_PAUSE, null);
                 } else {
-                    this.mSideTouchUi.attachIcon(SideTouchUi$Type.RECORDING_PAUSE, null);
+                    this.mSideTouchUi.attachIcon(SideTouchUi.Type.RECORDING_PAUSE, null);
                 }
                 this.mSideTouchUi.setUiOrientation(this.mOrientation);
                 this.mSideTouchUi.showIcon();
@@ -2226,7 +3249,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
                 }
             }
             setFrontAngleSwitchButtonVisibility(false);
-            this.mSideTouchUi.detachTo(SideTouchUi$Type.SELF_TIMER_COUNTDOWN_CANCEL);
+            this.mSideTouchUi.detachTo(SideTouchUi.Type.SELF_TIMER_COUNTDOWN_CANCEL);
         }
     }
 
@@ -2234,7 +3257,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         changeLayoutTo(BaseLayoutPattern.FOCUS_DONE);
         if (isHeadUpDisplayReady()) {
             changeToPhotoFocusView();
-            if (PlatformCapability.isFocusSupported(getCapturingMode().getCameraId()) && this.mStateMachine.getUserSetting().get(UserSettingKey.FOCUS_RANGE) == FocusRange.AF) {
+            if (PlatformCapability.isFocusSupported(getCapturingMode().getCameraId())
+                    && this.mStateMachine.getUserSetting().get(UserSettingKey.FOCUS_RANGE) == FocusRange.AF) {
                 this.mFocusRectangles.onAutoFocusDone(bool.booleanValue());
             }
             setFrontAngleSwitchButtonVisibility(false);
@@ -2245,12 +3269,16 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         changeLayoutTo(BaseLayoutPattern.CAPTURE);
         if (isHeadUpDisplayReady()) {
             changeToPhotoFocusView();
-            if (PlatformCapability.isFocusSupported(getCapturingMode().getCameraId()) && this.mStateMachine.getUserSetting().get(UserSettingKey.FOCUS_RANGE) == FocusRange.AF) {
+            if (PlatformCapability.isFocusSupported(getCapturingMode().getCameraId())
+                    && this.mStateMachine.getUserSetting().get(UserSettingKey.FOCUS_RANGE) == FocusRange.AF) {
                 this.mFocusRectangles.onAutoFocusStarted();
             }
             setFrontAngleSwitchButtonVisibility(false);
             getBaseLayout().setViewFinderGestureDetectorEnabled(false, false);
-            if (this.mSideTouchUi.detachTo(SideTouchUi$Type.CAPTURE_COUNTDOWN) || this.mSideTouchUi.detachTo(SideTouchUi$Type.SELF_TIMER_COUNTDOWN_CANCEL)) {
+            if (this.mSideTouchUi.detachTo(SideTouchUi.Type.CAPTURE_COUNTDOWN)) {
+                return;
+            }
+            if (this.mSideTouchUi.detachTo(SideTouchUi.Type.SELF_TIMER_COUNTDOWN_CANCEL)) {
                 return;
             }
             this.mSideTouchUi.destroyIcon();
@@ -2288,7 +3316,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         if (isHeadUpDisplayReady()) {
             getBaseLayout().getGeoTagIndicator().hide();
             if (getCapturingMode() != CapturingMode.SLOW_MOTION) {
-                changeScreenButtonImage(ViewFinder$HeadUpDisplaySetupState.VIDEO_RECORDING, false);
+                changeScreenButtonImage(ViewFinder.HeadUpDisplaySetupState.VIDEO_RECORDING, false);
             } else {
                 cancelSlowMotionHintText();
             }
@@ -2314,18 +3342,20 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             getBaseLayout().setViewFinderGestureDetectorEnabled(false, false);
             hideApplicationNavigator();
             hideAutoReview();
-            if (this.mSideTouchUi.containsAll(SideTouchUi$Type.RECORDING, SideTouchUi$Type.RECORDING_HDR, SideTouchUi$Type.COVERING)) {
+            if (this.mSideTouchUi.containsAll(SideTouchUi.Type.RECORDING, SideTouchUi.Type.RECORDING_HDR,
+                    SideTouchUi.Type.COVERING)) {
                 changeLayoutTo(BaseLayoutPattern.ZOOMING_IN_RECORDING);
                 getBaseLayout().getZoomBar().hideDelayed();
                 return;
             }
-            if (this.mSideTouchUi.detachTo(SideTouchUi$Type.ZOOM_BAR)) {
-                if (this.mSideTouchUi.containsIn(SideTouchUi$Type.RECORDING, SideTouchUi$Type.RECORDING_HDR)) {
+            if (this.mSideTouchUi.detachTo(SideTouchUi.Type.ZOOM_BAR)) {
+                if (this.mSideTouchUi.containsIn(SideTouchUi.Type.RECORDING, SideTouchUi.Type.RECORDING_HDR)) {
                     changeLayoutTo(BaseLayoutPattern.RECORDING, true);
                 }
             } else {
-                if (!this.mSideTouchUi.containsIn(SideTouchUi$Type.VIDEO_COUNTDOWN, SideTouchUi$Type.RECORDING_PAUSE, SideTouchUi$Type.RECORDING_HDR_PAUSE)) {
-                    if (this.mSideTouchUi.containsIn(SideTouchUi$Type.RECORDING, SideTouchUi$Type.RECORDING_HDR)) {
+                if (!this.mSideTouchUi.containsIn(SideTouchUi.Type.VIDEO_COUNTDOWN, SideTouchUi.Type.RECORDING_PAUSE,
+                        SideTouchUi.Type.RECORDING_HDR_PAUSE)) {
+                    if (this.mSideTouchUi.containsIn(SideTouchUi.Type.RECORDING, SideTouchUi.Type.RECORDING_HDR)) {
                         changeLayoutTo(BaseLayoutPattern.RECORDING, true);
                         return;
                     }
@@ -2333,9 +3363,9 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
                 }
                 this.mSideTouchUi.setUiOrientation(this.mRecordingOrientation);
                 if (this.mStateMachine.getUserSetting().get(UserSettingKey.VIDEO_HDR) == VideoHdr.HDR_ON) {
-                    this.mSideTouchUi.attachIcon(SideTouchUi$Type.RECORDING_HDR, null);
+                    this.mSideTouchUi.attachIcon(SideTouchUi.Type.RECORDING_HDR, null);
                 } else {
-                    this.mSideTouchUi.attachIcon(SideTouchUi$Type.RECORDING, null);
+                    this.mSideTouchUi.attachIcon(SideTouchUi.Type.RECORDING, null);
                 }
                 this.mSideTouchUi.setUiOrientation(this.mOrientation);
                 this.mSideTouchUi.showIcon();
@@ -2346,8 +3376,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
 
     private void changeToSuperSlowMotionVideoLowFrameRateRecordingView() {
         changeToVideoRecordingView();
-        ViewFinderImpl$ScreenButtonHandler.access$5400(this.mScreenButtonHandler, getOrientation(), false);
-        changeScreenButtonImage(ViewFinder$HeadUpDisplaySetupState.SUPER_SLOW_MOTION_RECORDING, false);
+        this.mScreenButtonHandler.setMainRotatability(getOrientation(), false);
+        changeScreenButtonImage(ViewFinder.HeadUpDisplaySetupState.SUPER_SLOW_MOTION_RECORDING, false);
         showSuperSlowMotionVideoRecordingHintText();
         setFrontAngleSwitchButtonVisibility(false);
     }
@@ -2355,12 +3385,15 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     private void changeToSuperSlowMotionVideoHighFrameRateRecordingView() {
         changeToVideoRecordingView();
         changeLayoutTo(BaseLayoutPattern.HIGH_FRAME_RATE_RECORDING_IN_SUPER_SLOW_MOTION);
-        ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
-        ViewFinderImpl$ScreenButtonHandler.access$5600(this.mScreenButtonHandler);
-        if (isTouchCaptureEnabled() && this.mStateMachine.getUserSetting().get(UserSettingKey.SLOW_MOTION) == SlowMotion.SUPER_SLOW_SHOT) {
-            this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory$ButtonType.TOUCH_CAPTURE, this.mRecordingOrientation, false, false);
+        this.mScreenButtonHandler.clearOption1();
+        this.mScreenButtonHandler.clearOption2();
+        if (isTouchCaptureEnabled()
+                && this.mStateMachine.getUserSetting().get(UserSettingKey.SLOW_MOTION) == SlowMotion.SUPER_SLOW_SHOT) {
+            this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory.ButtonType.TOUCH_CAPTURE,
+                    this.mRecordingOrientation, false, false);
         } else {
-            this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory$ButtonType.TRIGGER_SUPER_SLOW_MOTION_PRESSED, this.mRecordingOrientation, false, false);
+            this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory.ButtonType.TRIGGER_SUPER_SLOW_MOTION_PRESSED,
+                    this.mRecordingOrientation, false, false);
         }
         if (this.mHintText != null) {
             this.mHintText.hide();
@@ -2373,20 +3406,25 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
 
     private void changeToWaitForHighFrameRateRecordingDoneView() {
         changeToVideoRecordingView();
-        ViewFinderImpl$ScreenButtonHandler.access$5400(this.mScreenButtonHandler, getOrientation(), false);
+        this.mScreenButtonHandler.setMainRotatability(getOrientation(), false);
         if (this.mStateMachine.getUserSetting().get(UserSettingKey.SLOW_MOTION) == SlowMotion.SUPER_SLOW_SHOT) {
             changeLayoutTo(BaseLayoutPattern.HIGH_FRAME_RATE_RECORDING_IN_SUPER_SLOW_MOTION);
-            ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
-            ViewFinderImpl$ScreenButtonHandler.access$5600(this.mScreenButtonHandler);
+            this.mScreenButtonHandler.clearOption1();
+            this.mScreenButtonHandler.clearOption2();
             if (isTouchCaptureEnabled()) {
-                this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory$ButtonType.TOUCH_CAPTURE, this.mRecordingOrientation, false, false);
+                this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory.ButtonType.TOUCH_CAPTURE,
+                        this.mRecordingOrientation, false, false);
             } else {
-                this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory$ButtonType.TRIGGER_SUPER_SLOW_MOTION_DISABLED, this.mRecordingOrientation, false, false);
+                this.mScreenButtonHandler.setMain(
+                        OnScreenButtonItemFactory.ButtonType.TRIGGER_SUPER_SLOW_MOTION_DISABLED,
+                        this.mRecordingOrientation, false, false);
             }
         } else {
-            ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
-            this.mScreenButtonHandler.setOption2(OnScreenButtonItemFactory$ButtonType.STOP_RECORDING_SMALL, this.mRecordingOrientation, false);
-            this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory$ButtonType.TRIGGER_SUPER_SLOW_MOTION_DISABLED, this.mRecordingOrientation, false);
+            this.mScreenButtonHandler.clearOption1();
+            this.mScreenButtonHandler.setOption2(OnScreenButtonItemFactory.ButtonType.STOP_RECORDING_SMALL,
+                    this.mRecordingOrientation, false);
+            this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory.ButtonType.TRIGGER_SUPER_SLOW_MOTION_DISABLED,
+                    this.mRecordingOrientation, false);
             postHintText(new HintTextSuperSlowMotionVideoRecording(true));
             this.mHintText.showAll();
         }
@@ -2395,7 +3433,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
 
     private void changeToStandardSlowMotionRecordingView() {
         changeToVideoRecordingView();
-        changeScreenButtonImage(ViewFinder$HeadUpDisplaySetupState.STANDARD_SLOW_MOTION_RECORDING, false);
+        changeScreenButtonImage(ViewFinder.HeadUpDisplaySetupState.STANDARD_SLOW_MOTION_RECORDING, false);
     }
 
     private void changeToReadyForRecordView(boolean z) {
@@ -2423,13 +3461,13 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private void changeToVideoZoomingWhileRecordingView() {
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$baselayout$BaseLayoutPattern[((BaseLayoutPattern) this.mLayoutPattern).ordinal()]) {
-            case 1:
-            case 2:
+        switch ((BaseLayoutPattern) this.mLayoutPattern) {
+            case RECORDING:
+            case ZOOMING_IN_RECORDING:
                 changeLayoutTo(BaseLayoutPattern.ZOOMING_IN_RECORDING);
                 break;
-            case 3:
-            case 4:
+            case PAUSE_RECORDING:
+            case ZOOMING_IN_PAUSE_RECORDING:
                 changeLayoutTo(BaseLayoutPattern.ZOOMING_IN_PAUSE_RECORDING);
                 break;
         }
@@ -2443,42 +3481,44 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             setFrontAngleSwitchButtonVisibility(false);
             getBaseLayout().setViewFinderGestureDetectorEnabled(false, false);
             this.mFocusRectangles.setEnableFaceFocusTouch(false);
-            if (this.mSideTouchUi.containsIn(SideTouchUi$Type.RECORDING, SideTouchUi$Type.RECORDING_HDR, SideTouchUi$Type.RECORDING_PAUSE, SideTouchUi$Type.RECORDING_HDR_PAUSE, SideTouchUi$Type.ZOOM_BAR)) {
-                this.mSideTouchUi.attachIcon(SideTouchUi$Type.COVERING, null);
+            if (this.mSideTouchUi.containsIn(SideTouchUi.Type.RECORDING, SideTouchUi.Type.RECORDING_HDR,
+                    SideTouchUi.Type.RECORDING_PAUSE, SideTouchUi.Type.RECORDING_HDR_PAUSE,
+                    SideTouchUi.Type.ZOOM_BAR)) {
+                this.mSideTouchUi.attachIcon(SideTouchUi.Type.COVERING, null);
             }
         }
     }
 
-    private void changeToDialogView(ViewFinder$UiComponentKind viewFinder$UiComponentKind) {
+    private void changeToDialogView(ViewFinder.UiComponentKind uiComponentKind) {
         if (isHeadUpDisplayReady()) {
-            if (viewFinder$UiComponentKind != ViewFinder$UiComponentKind.OVERLAY_CONTROL_SEEKING || !isTouchFocus()) {
+            if (uiComponentKind != ViewFinder.UiComponentKind.OVERLAY_CONTROL_SEEKING || !isTouchFocus()) {
                 this.mFocusRectangles.onUiComponentOverlaid();
             }
-            switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$ViewFinder$UiComponentKind[viewFinder$UiComponentKind.ordinal()]) {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
+            switch (uiComponentKind) {
+                case NOTICE_DIALOG:
+                case FLASH_DIALOG:
+                case SELF_TIMER_DIALOG:
+                case ASPECT_RATIO_DIALOG:
+                case FUSION_MODE_DIALOG:
+                case VIDEO_HDR_DIALOG:
+                case HDR_DIALOG:
+                case SETTING_DIALOG:
+                case MODE_SELECTOR:
                     changeLayoutTo(BaseLayoutPattern.SETTING);
                     this.mHintText.hide();
                     break;
-                case 10:
+                case REVIEW_WINDOW:
                     changeLayoutTo(BaseLayoutPattern.CLEAR);
                     setLeftIconsVisibility(false);
                     break;
-                case 11:
+                case OVERLAY_CONTROL_SEEKING:
                     changeLayoutTo(BaseLayoutPattern.OVERLAY_CONTROL_SEEKING);
                     break;
-                case 12:
-                    openTutorial(TutorialController$DisplayTrigger.CHANGE_MODE);
+                case TUTORIAL:
+                    openTutorial(TutorialController.DisplayTrigger.CHANGE_MODE);
                     break;
             }
-            if (viewFinder$UiComponentKind == ViewFinder$UiComponentKind.OVERLAY_CONTROL_SEEKING) {
+            if (uiComponentKind == ViewFinder.UiComponentKind.OVERLAY_CONTROL_SEEKING) {
                 setFrontAngleSwitchButtonVisibility(isFront());
                 setFrontAngleSwitchButtonClickable(false);
             } else {
@@ -2489,16 +3529,21 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
     }
 
-    public boolean openTutorial(TutorialController$DisplayTrigger tutorialController$DisplayTrigger) {
-        if (this.mActivity.isOneShot() || this.mActivity.getLaunchCondition().getLaunchTrigger() == LaunchCondition$LaunchTrigger.GOOGLE_ASSISTANT) {
+    public boolean openTutorial(TutorialController.DisplayTrigger displayTrigger) {
+        if (this.mActivity.isOneShot()) {
             return false;
         }
-        boolean zOpen = getBaseLayout().getTutorial().open(TutorialController$OpenType.create(tutorialController$DisplayTrigger), this.mActivity.getStoredSettings(), null);
-        if (zOpen) {
+        if (this.mActivity.getLaunchCondition()
+                .getLaunchTrigger() == LaunchCondition.LaunchTrigger.GOOGLE_ASSISTANT) {
+            return false;
+        }
+        boolean open = getBaseLayout().getTutorial().open(TutorialController.OpenType.create(displayTrigger),
+                this.mActivity.getStoredSettings(), null);
+        if (open) {
             changeLayoutTo(BaseLayoutPattern.CLEAR);
             setApplicationNavigatorEnabled(false);
         }
-        return zOpen;
+        return open;
     }
 
     boolean isTutorialOpened() {
@@ -2510,7 +3555,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         hideViews();
         disablePrimaryShortcut();
         disableModeIconClickable();
-        sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_CLOSE_ALL_DIALOGS, new Object[0]);
+        sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_CLOSE_ALL_DIALOGS, new Object[0]);
         cancelPredictiveCaptureIndicatorAnimation();
         setFrontAngleSwitchButtonVisibility(false);
         if (this.mFocusRectangles != null) {
@@ -2527,16 +3572,19 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         this.mSideTouchUi.destroyIcon();
     }
 
-    private void onCapturingModeChanged(CapturingMode capturingMode, boolean z, AnimationRequest$AnimationType animationRequest$AnimationType) {
+    private void onCapturingModeChanged(CapturingMode capturingMode, boolean z,
+            AnimationRequest.AnimationType animationType) {
         if (CamLog.DEBUG) {
             CamLog.d("onCapturingModeChanged()  request:" + capturingMode.name());
         }
         Rect previewSize = this.mCameraDevice.getPreviewSize();
         if (previewSize != null && isHeadUpDisplayReady()) {
-            Size sizeAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance().getSizeAccordingToLayoutOrientation(new Size(previewSize.width(), previewSize.height()));
+            Size sizeAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance()
+                    .getSizeAccordingToLayoutOrientation(new Size(previewSize.width(), previewSize.height()));
             int width = sizeAccordingToLayoutOrientation.getWidth();
             int height = sizeAccordingToLayoutOrientation.getHeight();
-            Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity, width / height, this.mScreenAspect);
+            Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity, (float) width / height,
+                    this.mScreenAspect); // Fixed: use float division
             PositionConverter.getInstance().setSurfaceSize(surfaceViewRect.width(), surfaceViewRect.height());
             PositionConverter.getInstance().setPreviewSize(width, height);
             this.mFocusRectangles.updateDevicePreviewSize(width, height);
@@ -2548,23 +3596,23 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             setOrientation(this.mActivity.getOrientation());
             updateGridLineView(capturingMode);
             if (z) {
-                startModeChangedAnimation(getCapturingMode(), capturingMode, animationRequest$AnimationType);
+                startModeChangedAnimation(getCapturingMode(), capturingMode, animationType);
             }
-            switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()]) {
-                case 5:
-                case 6:
+            switch (capturingMode) {
+                case NORMAL:
+                case FRONT_PHOTO:
                     enableOverlayControl(getBaseLayout().getImageQualityControl());
                     setApplicationNavigatorEnabled(false);
                     setMruAvailability(false);
-                    break;
-                case 7:
+                    return;
+                case SLOW_MOTION:
                     getBaseLayout().getSuperSlowMotionTriggerAnimation().prepareViews();
                     setApplicationNavigatorEnabled(false);
                     if (!this.mStateMachine.isTutorialNeededToBeShownForCurrentMode()) {
                         showHiSpeedSdCardRecommendDialogOnModeChange();
                     }
                     setMruAvailability(false);
-                    break;
+                    return;
                 default:
                     resumeApplicationNavigator(NavigatorContents.valueOf(getCapturingMode()));
                     updateVisibilityForSpecificDisplaySize();
@@ -2572,41 +3620,41 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
                         setMruAvailability(true);
                     }
                     attemptSetupMruButton(capturingMode);
-                    break;
+                    return;
             }
         }
     }
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
-    public void sendViewUpdateEvent(ViewFinder$ViewUpdateEvent viewFinder$ViewUpdateEvent, Object... objArr) {
+    public void sendViewUpdateEvent(ViewFinder.ViewUpdateEvent viewUpdateEvent, Object... objArr) {
         UserSettingKey userSettingKey;
         if (CamLog.DEBUG) {
-            CamLog.d("sendViewUpdateEvent() event: " + viewFinder$ViewUpdateEvent);
+            CamLog.d("sendViewUpdateEvent() event: " + viewUpdateEvent);
         }
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$ViewFinder$ViewUpdateEvent[viewFinder$ViewUpdateEvent.ordinal()]) {
-            case 1:
-                setupHeadUpDisplay((ViewFinder$HeadUpDisplaySetupState) objArr[0]);
+        switch (viewUpdateEvent) {
+            case EVENT_REQUEST_SETUP_HEAD_UP_DISPLAY:
+                setupHeadUpDisplay((ViewFinder.HeadUpDisplaySetupState) objArr[0]);
                 checkupThermalCoolingRequest();
                 updateSecondaryShortcutOnScreenButtonResource();
-                break;
-            case 2:
-                if (this.mActivity != null) {
-                    resizeEvfScope((Rect) objArr[0]);
-                    if (this.mHintText != null) {
-                        updateHintTextContainer((Rect) objArr[0]);
-                    }
-                    boolean zBooleanValue = ((Boolean) objArr[1]).booleanValue();
-                    if (this.mIsSetupHeadupDisplayInvoked && zBooleanValue && !isTutorialOpened()) {
-                        this.mIsSurfaceViewHideWhileAspectChanging = true;
-                        this.mEvf.hide();
-                        updateCaptureAreaSize();
-                        updateGridLineView();
-                    }
-                    showSurface();
-                    break;
+                return;
+            case EVENT_REQUEST_RESIZE_EVF_SCOPE:
+                if (this.mActivity == null) {
+                    return;
                 }
-                break;
-            case 3:
+                resizeEvfScope((Rect) objArr[0]);
+                if (this.mHintText != null) {
+                    updateHintTextContainer((Rect) objArr[0]);
+                }
+                boolean booleanValue = ((Boolean) objArr[1]).booleanValue();
+                if (this.mIsSetupHeadupDisplayInvoked && booleanValue && !isTutorialOpened()) {
+                    this.mIsSurfaceViewHideWhileAspectChanging = true;
+                    this.mEvf.hide();
+                    updateCaptureAreaSize();
+                    updateGridLineView();
+                }
+                showSurface();
+                return;
+            case EVENT_REQUEST_PREPARE_RECORDING_INDICATOR:
                 RecordingIndicator recordingIndicator = getBaseLayout().getRecordingIndicator();
                 if (recordingIndicator != null) {
                     VideoHdr videoHdr = (VideoHdr) objArr[3];
@@ -2616,312 +3664,357 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
                         }
                         recordingIndicator.setConstraint(((Boolean) objArr[1]).booleanValue());
                         recordingIndicator.prepareBeforeRecording(((Integer) objArr[0]).intValue());
-                    } else {
-                        recordingIndicator.setSequenceMode(false);
-                        recordingIndicator.setConstraint(false);
-                        recordingIndicator.prepareBeforeRecording(((Integer) objArr[0]).intValue());
+                        return;
                     }
+                    recordingIndicator.setSequenceMode(false);
+                    recordingIndicator.setConstraint(false);
+                    recordingIndicator.prepareBeforeRecording(((Integer) objArr[0]).intValue());
+                    return;
                 }
-                break;
-            case 4:
+                return;
+            case EVENT_ON_CAPTURING_MODE_CHANGED:
                 if (!isCameraSwitching()) {
-                    onCapturingModeChanged((CapturingMode) objArr[0], ((Boolean) objArr[1]).booleanValue(), (AnimationRequest$AnimationType) objArr[2]);
+                    onCapturingModeChanged((CapturingMode) objArr[0], ((Boolean) objArr[1]).booleanValue(),
+                            (AnimationRequest.AnimationType) objArr[2]);
                 }
                 updatePrimaryShortcutIcons();
                 updateScreenButtonImage((CapturingMode) objArr[0]);
                 if (this.mSettingDialogStack != null) {
                     this.mSettingDialogStack.setCapturingMode((CapturingMode) objArr[0]);
+                    return;
                 }
-                break;
-            case 5:
-                onSceneModeChanged((CameraParameters$SceneRecognitionResult) objArr[0]);
-                break;
-            case 6:
+                return;
+            case EVENT_ON_DETECTED_SCENE_CHANGED:
+                onSceneModeChanged((CameraParameters.SceneRecognitionResult) objArr[0]);
+                return;
+            case EVENT_ON_FACE_DETECTION_STARTED:
                 this.mFocusRectangles.startFaceDetection();
-                break;
-            case 7:
-                CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult = (CameraParameters$FaceDetectionResult) objArr[0];
+                return;
+            case EVENT_ON_FACE_DETECTED:
+                CameraParameters.FaceDetectionResult faceDetectionResult = (CameraParameters.FaceDetectionResult) objArr[0];
                 if (this.mIsFaceDetectionIdSupported == null) {
-                    if (!cameraParameters$FaceDetectionResult.extFaceList.isEmpty()) {
-                        this.mIsFaceDetectionIdSupported = FaceDetectUtil.hasValidFaceId(cameraParameters$FaceDetectionResult);
+                    if (!faceDetectionResult.extFaceList.isEmpty()) {
+                        this.mIsFaceDetectionIdSupported = FaceDetectUtil.hasValidFaceId(faceDetectionResult);
                     }
                 } else if (!this.mIsFaceDetectionIdSupported.booleanValue()) {
-                    FaceDetectUtil.setUuidFaceDetectionResult(cameraParameters$FaceDetectionResult);
+                    FaceDetectUtil.setUuidFaceDetectionResult(faceDetectionResult);
                 }
-                if (!predictiveLaunchCoverExists()) {
-                    onFaceDetected(cameraParameters$FaceDetectionResult);
+                if (predictiveLaunchCoverExists()) {
+                    return;
                 }
-                break;
-            case 8:
+                onFaceDetected(faceDetectionResult);
+                return;
+            case EVENT_ON_OBJECT_TRACKING_STARTED:
                 hideAutoReview();
                 this.mFocusRectangles.setObjectTrackingRectSupported(true);
                 this.mFocusRectangles.startObjectTracking();
                 applySmileFocusThreshold(false);
                 getBaseLayout().getPhotoSmileCaptureIndicator().set(false);
                 getBaseLayout().getVideoSmileCaptureIndicator().set(false);
-                break;
-            case 9:
+                return;
+            case EVENT_ON_OBJECT_TRACKING_TIMEOUT:
                 this.mFocusRectangles.clearObjectTracking();
-                break;
-            case 10:
+                return;
+            case EVENT_ON_OBJECT_TRACKING_STOP:
                 applySmileFocusThreshold(true);
                 if (!getCapturingMode().isVideo()) {
-                    SmileCapture smileCapture = (SmileCapture) this.mStateMachine.getUserSetting().get(UserSettingKey.SMILE_CAPTURE);
+                    SmileCapture smileCapture = (SmileCapture) this.mStateMachine.getUserSetting()
+                            .get(UserSettingKey.SMILE_CAPTURE);
                     if (smileCapture != null) {
                         getBaseLayout().getPhotoSmileCaptureIndicator().set(smileCapture.isSmileCaptureOn());
+                        return;
                     }
-                } else {
-                    VideoSmileCapture videoSmileCapture = (VideoSmileCapture) this.mStateMachine.getUserSetting().get(UserSettingKey.VIDEO_SMILE_CAPTURE);
-                    if (videoSmileCapture != null) {
-                        getBaseLayout().getVideoSmileCaptureIndicator().set(videoSmileCapture.isSmileCaptureOn());
-                    }
+                    return;
                 }
-                break;
-            case 11:
-                onTrackedObjectStateUpdated((CameraParameters$ObjectTrackingResult) objArr[0]);
-                break;
-            case 12:
+                VideoSmileCapture videoSmileCapture = (VideoSmileCapture) this.mStateMachine.getUserSetting()
+                        .get(UserSettingKey.VIDEO_SMILE_CAPTURE);
+                if (videoSmileCapture != null) {
+                    getBaseLayout().getVideoSmileCaptureIndicator().set(videoSmileCapture.isSmileCaptureOn());
+                    return;
+                }
+                return;
+            case EVENT_ON_TRACKED_OBJECT_STATE_UPDATED:
+                onTrackedObjectStateUpdated((CameraParameters.ObjectTrackingResult) objArr[0]);
+                return;
+            case EVENT_ON_ZOOM_START:
                 this.mZoomBarProxy.bindZoomBar(getBaseLayout().getZoomBar());
-                this.mZoomBarProxy.update(getBaseLayout().getZoomBar().getZoomRatios(), ((Integer) objArr[0]).intValue());
+                this.mZoomBarProxy.update(getBaseLayout().getZoomBar().getZoomRatios(),
+                        ((Integer) objArr[0]).intValue());
                 if (!this.mStateMachine.isRecording()) {
                     changeToZoomingView();
+                    return;
                 } else {
                     changeToVideoZoomingWhileRecordingView();
+                    return;
                 }
-                break;
-            case 13:
-                int i = ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$baselayout$BaseLayoutPattern[((BaseLayoutPattern) this.mLayoutPattern).ordinal()];
-                if (i == 2) {
+            case EVENT_ON_ZOOM_STOP:
+                BaseLayoutPattern _blp = (BaseLayoutPattern) this.mLayoutPattern;
+                if (_blp == BaseLayoutPattern.ZOOMING_IN_RECORDING) {
                     if (getCapturingMode() == CapturingMode.SLOW_MOTION) {
-                        SlowMotion slowMotion = (SlowMotion) this.mStateMachine.getUserSetting().get(UserSettingKey.SLOW_MOTION);
+                        SlowMotion slowMotion = (SlowMotion) this.mStateMachine.getUserSetting()
+                                .get(UserSettingKey.SLOW_MOTION);
                         if (slowMotion == SlowMotion.STANDARD_SLOW_MOTION) {
                             changeToStandardSlowMotionRecordingView();
-                        } else if (slowMotion == SlowMotion.SUPER_SLOW_MOTION) {
-                            changeToSuperSlowMotionVideoLowFrameRateRecordingView();
-                        }
-                    } else {
-                        changeToVideoRecordingView();
-                    }
-                    break;
-                } else {
-                    switch (i) {
-                        case 4:
-                            changeToVideoRecordingPauseView();
-                            break;
-                        case 5:
-                            if (!getCapturingMode().isVideo()) {
-                                changeToPhotoReadyView(false);
-                            } else {
-                                if (getCapturingMode() == CapturingMode.SLOW_MOTION) {
-                                    postSlowMotionHintText();
-                                }
-                                changeToVideoReadyView();
+                            return;
+                        } else {
+                            if (slowMotion == SlowMotion.SUPER_SLOW_MOTION) {
+                                changeToSuperSlowMotionVideoLowFrameRateRecordingView();
+                                return;
                             }
-                            break;
+                            return;
+                        }
                     }
+                    changeToVideoRecordingView();
+                    return;
                 }
-                break;
-            case 14:
-                int iIntValue = ((Integer) objArr[0]).intValue();
+                switch (_blp) {
+                    case ZOOMING_IN_PAUSE_RECORDING:
+                        changeToVideoRecordingPauseView();
+                        return;
+                    case ZOOMING:
+                        if (!getCapturingMode().isVideo()) {
+                            changeToPhotoReadyView(false);
+                            return;
+                        }
+                        if (getCapturingMode() == CapturingMode.SLOW_MOTION) {
+                            postSlowMotionHintText();
+                        }
+                        changeToVideoReadyView();
+                        return;
+                    default:
+                        return;
+                }
+            case EVENT_ON_ZOOM_CHANGED:
+                int intValue = ((Integer) objArr[0]).intValue();
                 if (CamLog.VERBOSE) {
-                    CamLog.d("EVENT_ON_ZOOM_CHANGED  cur:" + iIntValue);
+                    CamLog.d("EVENT_ON_ZOOM_CHANGED  cur:" + intValue);
                 }
                 Zoombar zoomBar = getBaseLayout().getZoomBar();
-                if (zoomBar != null && zoomBar.getVisibility() == 0) {
-                    setZoomRatio(iIntValue);
-                    break;
+                if (zoomBar == null || zoomBar.getVisibility() != 0) {
+                    return;
                 }
-                break;
-            case 15:
+                setZoomRatio(intValue);
+                return;
+            case EVENT_ON_SELFTIMER_FINISHED:
                 cancelSelfTimerCountDownView();
-                break;
-            case 16:
+                return;
+            case EVENT_ON_FOCUS_POSITION_SELECTED:
                 hideAutoReview();
                 Point point = (Point) objArr[0];
-                FocusRectangles$FocusSetType focusRectangles$FocusSetType = (FocusRectangles$FocusSetType) objArr[1];
-                this.mFocusRectangles.setFocusPosition(point, focusRectangles$FocusSetType);
-                if (focusRectangles$FocusSetType == FocusRectangles$FocusSetType.FIRST) {
+                FocusRectangles.FocusSetType focusSetType = (FocusRectangles.FocusSetType) objArr[1];
+                this.mFocusRectangles.setFocusPosition(point, focusSetType);
+                if (focusSetType == FocusRectangles.FocusSetType.FIRST) {
                     this.mFocusRectangles.setVisibility(4);
                     if (PlatformCapability.isFocusSupported(getCapturingMode().getCameraId())) {
                         this.mFocusRectangles.onAutoFocusStarted();
+                        return;
                     }
-                } else if (focusRectangles$FocusSetType == FocusRectangles$FocusSetType.RELEASE) {
+                    return;
+                }
+                if (focusSetType == FocusRectangles.FocusSetType.RELEASE) {
                     this.mFocusRectangles.setVisibility(0);
+                    return;
                 } else {
                     this.mFocusRectangles.setVisibility(4);
+                    return;
                 }
-                break;
-            case 17:
+            case EVENT_ON_FOCUS_POSITION_RELEASED:
                 if (isTouchFocus()) {
                     disableSemiAutoControl();
                 }
                 if (this.mFocusRectangles != null) {
                     this.mFocusRectangles.clearAllFocus();
+                    return;
                 }
-                break;
-            case 18:
+                return;
+            case EVENT_ON_FOCUS_POSITION_RELEASED_EXCEPT_FACE:
                 if (isTouchFocus()) {
                     disableSemiAutoControl();
                 }
                 if (this.mFocusRectangles != null) {
                     this.mFocusRectangles.clearAllFocusExceptFace();
+                    return;
                 }
-                break;
-            case 19:
+                return;
+            case EVENT_ON_FOCUS_POSITION_RELEASED_TOUCH_FOCUS:
                 if (isTouchFocus()) {
                     disableSemiAutoControl();
                 }
-                if (this.mFocusRectangles != null && isTouchFocus()) {
-                    this.mFocusRectangles.clearTouchFocus();
-                    break;
+                if (this.mFocusRectangles == null || !isTouchFocus()) {
+                    return;
                 }
-                break;
-            case 20:
+                this.mFocusRectangles.clearTouchFocus();
+                return;
+            case EVENT_ON_FOCUS_POSITION_RELEASED_BY_SELECT_FACE:
                 if (this.mFocusRectangles != null) {
                     this.mFocusRectangles.clearAllFocusExceptFace();
+                    return;
                 }
-                break;
-            case 21:
+                return;
+            case EVENT_ON_RECORDING_PROGRESS:
                 this.mRecordingTimeProxy.notifyOnTimeTicked(((Integer) objArr[0]).intValue());
-                break;
-            case 22:
+                return;
+            case EVENT_ON_ORIENTATION_CHANGED:
                 setOrientation(((Integer) objArr[0]).intValue());
-                break;
-            case 23:
+                return;
+            case EVENT_UPDATE_DIALOGS:
                 hideAutoReview();
-                ViewFinder$UiComponentKind viewFinder$UiComponentKind = (ViewFinder$UiComponentKind) objArr[0];
-                updateUiComponent(viewFinder$UiComponentKind);
-                if (!isOverlayControlVisible() || !this.mStateMachine.isDialogOpened() || isSettingDialogOpened()) {
-                    switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$ViewFinder$UiComponentKind[viewFinder$UiComponentKind.ordinal()]) {
-                        case 1:
-                            if (getCapturingMode() == CapturingMode.FRONT_VIDEO || getCapturingMode() == CapturingMode.VIDEO || getCapturingMode() == CapturingMode.SLOW_MOTION) {
-                                changeToVideoReadyView();
-                            } else {
-                                changeToPhotoReadyView(false);
-                            }
-                            requestToDimSystemUi();
-                            break;
-                        case 2:
-                            requestToRecoverSystemUi();
-                            if (this.mSettingUi != null) {
-                                CapturingMode capturingMode = getCapturingMode();
-                                UserSettingKey userSettingKey2 = UserSettingKey.FLASH;
-                                if (capturingMode.getType() == 2) {
-                                    userSettingKey = UserSettingKey.PHOTO_LIGHT;
-                                } else if (capturingMode.isFront()) {
-                                    userSettingKey = UserSettingKey.DISPLAY_FLASH;
-                                } else {
-                                    userSettingKey = UserSettingKey.FLASH;
-                                }
-                                this.mSettingUi.openShortcutSettingDialog(userSettingKey);
-                            }
-                            break;
-                        case 3:
-                            requestToRecoverSystemUi();
-                            if (this.mSettingUi != null) {
-                                this.mSettingUi.openShortcutSettingDialog(UserSettingKey.SELF_TIMER);
-                            }
-                            break;
-                        case 4:
-                            requestToRecoverSystemUi();
-                            if (this.mSettingUi != null) {
-                                this.mSettingUi.openShortcutSettingDialog(UserSettingKey.ASPECT_RATIO);
-                            }
-                            break;
-                        case 5:
-                            requestToRecoverSystemUi();
-                            if (this.mSettingUi != null) {
-                                this.mSettingUi.openShortcutSettingDialog(UserSettingKey.FUSION_MODE);
-                            }
-                            break;
-                        case 6:
-                            requestToRecoverSystemUi();
-                            if (this.mSettingUi != null) {
-                                this.mSettingUi.openShortcutSettingDialog(UserSettingKey.VIDEO_HDR);
-                            }
-                            break;
-                        case 7:
-                            requestToRecoverSystemUi();
-                            if (this.mSettingUi != null) {
-                                this.mSettingUi.openShortcutSettingDialog(UserSettingKey.HDR);
-                            }
-                            break;
-                        case 8:
-                            requestToRecoverSystemUi();
-                            if (this.mSettingUi != null) {
-                                this.mSettingUi.openSettingMenuDialog();
-                            }
-                            break;
-                        case 9:
-                            requestToRecoverSystemUi();
-                            if (this.mSettingUi != null) {
-                                this.mSettingUi.openModeSelectDialog(this.mModeLoader, this.mModeSelectListener);
-                            }
-                            break;
-                        case 11:
-                            requestToDimSystemUi();
-                            break;
-                    }
+                ViewFinder.UiComponentKind uiComponentKind = (ViewFinder.UiComponentKind) objArr[0];
+                updateUiComponent(uiComponentKind);
+                if (uiComponentKind != ViewFinder.UiComponentKind.SETTING_DIALOG && isOverlayControlVisible()
+                        && this.mStateMachine.isDialogOpened() && !isSettingDialogOpened()) {
+                    return;
                 }
-                break;
-            case 24:
+                switch (uiComponentKind) {
+                    case NOTICE_DIALOG:
+                        if (getCapturingMode() == CapturingMode.FRONT_VIDEO || getCapturingMode() == CapturingMode.VIDEO
+                                || getCapturingMode() == CapturingMode.SLOW_MOTION) {
+                            changeToVideoReadyView();
+                        } else {
+                            changeToPhotoReadyView(false);
+                        }
+                        requestToDimSystemUi();
+                        return;
+                    case FLASH_DIALOG:
+                        requestToRecoverSystemUi();
+                        if (this.mSettingUi != null) {
+                            CapturingMode capturingMode = getCapturingMode();
+                            UserSettingKey userSettingKey2 = UserSettingKey.FLASH;
+                            if (capturingMode.getType() == 2) {
+                                userSettingKey = UserSettingKey.PHOTO_LIGHT;
+                            } else if (capturingMode.isFront()) {
+                                userSettingKey = UserSettingKey.DISPLAY_FLASH;
+                            } else {
+                                userSettingKey = UserSettingKey.FLASH;
+                            }
+                            this.mSettingUi.openShortcutSettingDialog(userSettingKey);
+                            return;
+                        }
+                        return;
+                    case SELF_TIMER_DIALOG:
+                        requestToRecoverSystemUi();
+                        if (this.mSettingUi != null) {
+                            this.mSettingUi.openShortcutSettingDialog(UserSettingKey.SELF_TIMER);
+                            return;
+                        }
+                        return;
+                    case ASPECT_RATIO_DIALOG:
+                        requestToRecoverSystemUi();
+                        if (this.mSettingUi != null) {
+                            this.mSettingUi.openShortcutSettingDialog(UserSettingKey.ASPECT_RATIO);
+                            return;
+                        }
+                        return;
+                    case FUSION_MODE_DIALOG:
+                        requestToRecoverSystemUi();
+                        if (this.mSettingUi != null) {
+                            this.mSettingUi.openShortcutSettingDialog(UserSettingKey.FUSION_MODE);
+                            return;
+                        }
+                        return;
+                    case VIDEO_HDR_DIALOG:
+                        requestToRecoverSystemUi();
+                        if (this.mSettingUi != null) {
+                            this.mSettingUi.openShortcutSettingDialog(UserSettingKey.VIDEO_HDR);
+                            return;
+                        }
+                        return;
+                    case HDR_DIALOG:
+                        requestToRecoverSystemUi();
+                        if (this.mSettingUi != null) {
+                            this.mSettingUi.openShortcutSettingDialog(UserSettingKey.HDR);
+                            return;
+                        }
+                        return;
+                    case SETTING_DIALOG:
+                        requestToRecoverSystemUi();
+                        if (this.mSettingUi != null) {
+                            this.mSettingUi.openSettingMenuDialog();
+                            return;
+                        }
+                        return;
+                    case MODE_SELECTOR:
+                        requestToRecoverSystemUi();
+                        if (this.mSettingUi != null) {
+                            this.mSettingUi.openModeSelectDialog(this.mModeLoader, this.mModeSelectListener);
+                            return;
+                        }
+                        return;
+                    case REVIEW_WINDOW:
+                    default:
+                        return;
+                    case OVERLAY_CONTROL_SEEKING:
+                        requestToDimSystemUi();
+                        return;
+                }
+            case EVENT_CLOSE_ALL_DIALOGS:
                 closeDialogs();
-                break;
-            case 25:
+                return;
+            case EVENT_REQUEST_SHOW_INSTANT_VIEWER:
                 SavingRequest savingRequest = (SavingRequest) objArr[1];
                 StoreDataResult storeDataResult = (StoreDataResult) objArr[2];
                 String str = savingRequest.common.mimeType;
-                Uri uri = (storeDataResult == null || storeDataResult.savingRequest.getRequestId() != savingRequest.getRequestId()) ? null : storeDataResult.uri;
+                Uri uri = (storeDataResult == null
+                        || storeDataResult.savingRequest.getRequestId() != savingRequest.getRequestId()) ? null
+                                : storeDataResult.uri;
                 if (uri != null) {
-                    if (str == "video/mp4" || str == "video/3gpp") {
+                    if (str == MediaSavingConstants.MEDIA_TYPE_MPEG4_MIME
+                            || str == MediaSavingConstants.MEDIA_TYPE_3GP_MIME) {
                         openInstantViewer(null, (String) objArr[0], savingRequest);
                     } else {
                         openInstantViewer((byte[]) objArr[0], null, savingRequest);
                     }
-                    InstantViewer.launchAlbum(this.mActivity, uri, str, true, this.mStateMachine.getPredictiveCaptureStoreInfo());
-                } else if (str == "video/mp4" || str == "video/3gpp") {
+                    InstantViewer.launchAlbum(this.mActivity, uri, str, true,
+                            this.mStateMachine.getPredictiveCaptureStoreInfo());
+                    return;
+                }
+                if (str == MediaSavingConstants.MEDIA_TYPE_MPEG4_MIME
+                        || str == MediaSavingConstants.MEDIA_TYPE_3GP_MIME) {
                     openInstantViewer(null, (String) objArr[0], savingRequest);
+                    return;
                 } else {
                     openInstantViewer((byte[]) objArr[0], null, savingRequest);
+                    return;
                 }
-                break;
-            case 26:
+            case EVENT_ON_STORE_COMPLETED:
                 onStoreCompleted((StoreDataResult) objArr[0], ((Boolean) objArr[1]).booleanValue());
-                break;
-            case 27:
+                return;
+            case EVENT_REQUEST_CAPTURE_FEEDBACK_ANIMATION:
                 startCaptureFeedbackAnimation();
-                break;
-            case 28:
+                return;
+            case EVENT_ON_LAZY_INITIALIZATION_TASK_RUN:
                 onLazyInitializationTaskRun();
-                break;
-            case 29:
+                return;
+            case EVENT_ON_ADD_VIDEO_CHAPTER:
                 addVideoChapter((ChapterThumbnail) objArr[0]);
-                break;
-            case 30:
+                return;
+            case EVENT_ON_NOTIFY_THERMAL_NORMAL:
                 onNotifyThermalStatus(false);
-                break;
-            case 31:
+                return;
+            case EVENT_ON_NOTIFY_THERMAL_WARNING:
                 onNotifyThermalStatus(true);
-                if (!this.mIsThermalWarningDialogShown) {
-                    showMessageDialog(DialogId.THERMAL_WARNING, new Object[0]);
-                    this.mIsThermalWarningDialogShown = true;
+                if (this.mIsThermalWarningDialogShown) {
+                    return;
                 }
-                break;
-            case 32:
+                showMessageDialog(DialogId.THERMAL_WARNING, new Object[0]);
+                this.mIsThermalWarningDialogShown = true;
+                return;
+            case EVENT_ON_NOTIFY_THERMAL_CRITICAL:
                 if (((Boolean) objArr[0]).booleanValue()) {
-                    showToastMessage(ToastContent$ToastID.NEEDS_TO_COOL_DOWN);
+                    showToastMessage(ToastContent.ToastID.NEEDS_TO_COOL_DOWN);
+                    return;
                 } else {
                     showMessageDialog(DialogId.THERMAL_CRITICAL, new Object[0]);
+                    return;
                 }
-                break;
-            case 33:
+            case EVENT_ON_NOTIFY_RESTORE_NAVIGATION_BAR_PREVIOUS_VISIBILITY:
                 requestToRestoreSystemUi();
                 updateGeotagIcon();
-                break;
-            case 34:
+                return;
+            case EVENT_REQUEST_UPDATE_GRID_LINE:
                 updateGridLineView();
-                break;
-            case 35:
+                return;
+            case EVENT_ANGLE_CHANGE_START:
                 this.mIsFrontAngleChanging = true;
                 if (this.mFocusRectangles != null) {
                     this.mFocusRectangles.clearFaceDetection();
@@ -2929,107 +4022,128 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
                 getBaseLayout().getSceneIndicator().set(false);
                 getBaseLayout().getConditionIndicator().set(false);
                 if (this.mFrontAngleSwitchButton != null) {
-                    this.mFrontAngleSwitchButton.switchFrontAngle((FrontAngle) this.mStateMachine.getUserSetting().get(UserSettingKey.FRONT_ANGLE));
+                    this.mFrontAngleSwitchButton.switchFrontAngle(
+                            (FrontAngle) this.mStateMachine.getUserSetting().get(UserSettingKey.FRONT_ANGLE));
+                    return;
                 }
-                break;
-            case 36:
+                return;
+            case EVENT_ANGLE_CHANGE_COMPLETED:
                 this.mIsFrontAngleChanging = false;
-                break;
-            case 37:
-                onBurstRejected((ViewFinder$BurstRejectedReason) objArr[0]);
-                break;
-            case 38:
+                return;
+            case EVENT_ON_BURST_REJECTED:
+                onBurstRejected((ViewFinder.BurstRejectedReason) objArr[0]);
+                return;
+            case EVENT_ON_BURST_SHUTTER_DONE:
                 onBurstShutterDone(((Boolean) objArr[0]).booleanValue(), ((Integer) objArr[1]).intValue());
-                break;
-            case 39:
+                return;
+            case EVENT_ON_BURST_FINISH:
                 onBurstFinished();
-                break;
-            case 40:
+                return;
+            case EVENT_ON_CAPTURE_FINISH:
                 onCaptureFinished();
-                break;
-            case 41:
+                return;
+            case EVENT_ON_CAPTURE_CANCEL:
                 onCaptureCanceled();
-                break;
-            case 42:
+                return;
+            case EVENT_ON_NOTIFY_MAX_DURATION_REACHED:
                 UserSettings userSetting = this.mStateMachine.getUserSetting();
-                if (!userSetting.isLimitForSizeOrDuration() && VideoSize.MMS != userSetting.get(UserSettingKey.VIDEO_SIZE) && !this.mMessageDialog.isOpened()) {
-                    showMessageDialog(DialogId.MAX_DURATION_REACHED, new Object[0]);
-                    break;
+                if (userSetting.isLimitForSizeOrDuration()
+                        || VideoSize.MMS == userSetting.get(UserSettingKey.VIDEO_SIZE)
+                        || this.mMessageDialog.isOpened()) {
+                    return;
                 }
-                break;
-            case 43:
-                if (!this.mMessageDialog.isOpened()) {
-                    showMessageDialog(DialogId.MAX_FILESIZE_REACHED, new Object[0]);
+                showMessageDialog(DialogId.MAX_DURATION_REACHED, new Object[0]);
+                return;
+            case EVENT_ON_NOTIFY_MAX_FILESIZE_REACHED:
+                if (this.mMessageDialog.isOpened()) {
+                    return;
                 }
-                break;
-            case 44:
+                showMessageDialog(DialogId.MAX_FILESIZE_REACHED, new Object[0]);
+                return;
+            case EVENT_ON_NOTIFY_BATTERY_CRITICAL:
                 if (((Boolean) objArr[0]).booleanValue()) {
                     showMessageDialog(DialogId.LOW_BATTERY_CRITICAL_ON_RECORDING, new Object[0]);
+                    return;
                 } else {
                     showMessageDialog(DialogId.LOW_BATTERY_CRITICAL_ON_PHOTO, new Object[0]);
+                    return;
                 }
-                break;
-            case 45:
-                if (getBaseLayout().getImageQualityControl().isInitialized() && getBaseLayout().getImageQualityControl().get().isVisible()) {
+            case EVENT_UPDATE_FUSION_MODE:
+                if (getBaseLayout().getImageQualityControl().isInitialized()
+                        && getBaseLayout().getImageQualityControl().get().isVisible()) {
                     getBaseLayout().getImageQualityControl().get().refresh();
                 }
                 if (getCapturingMode() == CapturingMode.VIDEO) {
                     FusionMode fusionMode = (FusionMode) objArr[0];
                     if (this.mPrimaryShortcutGroup != null) {
-                        this.mPrimaryShortcutGroup.updatePrimaryShortcutIcon(UserSettingKey.FUSION_MODE, fusionMode.getIconId());
+                        this.mPrimaryShortcutGroup.updatePrimaryShortcutIcon(UserSettingKey.FUSION_MODE,
+                                fusionMode.getIconId());
+                        return;
                     }
+                    return;
                 }
-                break;
-            case 46:
-                if (this.mSettingDialogStack != null && !this.mSettingDialogStack.isDialogOpened()) {
-                    postHintText(new HintTextTimedOutMessage(HintTextTimedOutMessage$MessageType.ISO_CHANGED_BY_FUSION));
-                    break;
+                return;
+            case EVENT_ON_ISO_CHANGED_BY_FUSION:
+                if (this.mSettingDialogStack == null || this.mSettingDialogStack.isDialogOpened()) {
+                    return;
                 }
-                break;
-            case 47:
+                postHintText(new HintTextTimedOutMessage(HintTextTimedOutMessage.MessageType.ISO_CHANGED_BY_FUSION));
+                return;
+            case EVENT_SHOW_BLACK_SCREEN:
                 getBaseLayout().showBlackScreen();
-                break;
-            case 48:
+                return;
+            case EVENT_HIDE_BLACK_SCREEN:
                 getBaseLayout().hideBlackScreen();
-                break;
-            case 49:
-                updateFusionHintText((CameraParameters$FusionResult) objArr[0]);
-                break;
-            case 50:
+                return;
+            case EVENT_REQUEST_UPDATE_FUSION_CONDITION:
+                updateFusionHintText((CameraParameters.FusionResult) objArr[0]);
+                return;
+            case EVENT_REQUEST_UPDATE_VIDEO_HDR_CONDITION:
                 updateVideoHdrCondition(getCapturingMode(), (VideoHdr) objArr[0], ((Boolean) objArr[1]).booleanValue());
-                break;
-            case 51:
+                return;
+            case EVENT_ON_CAPTURING_MODE_CHANGING:
                 onCapturingModeChanging();
-                break;
-            case 52:
+                return;
+            case EVENT_REQUEST_UPDATE_SETTING_CHANGE_ACCEPTABILITY:
                 this.mIsSettingChangeAcceptable = ((Boolean) objArr[0]).booleanValue();
-                break;
-            case 53:
+                return;
+            case EVENT_REQUEST_SHOW_CHANGE_INTERNAL_STORAGE_MESSAGE:
                 this.mIsNeedDisplayToastChangeInternalStoarge = ((Boolean) objArr[0]).booleanValue();
-                if (!this.mIsNeedDisplayToastChangeInternalStoarge) {
-                    showMessageDialog(DialogId.DESTINATION_TO_SAVE_CHANGED_INTERNAL, new Object[0]);
+                if (this.mIsNeedDisplayToastChangeInternalStoarge) {
+                    return;
                 }
-                break;
-            case 54:
+                showMessageDialog(DialogId.DESTINATION_TO_SAVE_CHANGED_INTERNAL, new Object[0]);
+                return;
+            case EVENT_REQUEST_UPDATE_MRU_SHORTCUT:
                 getBaseLayout().getMruButtonContainer().setMode((Mode) objArr[0]);
-                break;
-            case 55:
+                return;
+            case EVENT_APPS_UI_MODE_FINISH:
                 onAppsUiModeFinish();
-                break;
-            case 56:
+                return;
+            case EVENT_REQUEST_SHOW_UNLOCK_SCREEN_DIALOG:
                 CapturingMode capturingMode2 = (CapturingMode) objArr[0];
                 Object obj = (Mode) objArr[1];
                 ModeSelectorInternalMode tag = ((InternalMode) obj).getTag();
                 if (this.mActivity.isDeviceInSecurityLock() && tag == ModeSelectorInternalMode.DUAL_MONOCHROME) {
                     CameraActivity cameraActivity = this.mActivity;
-                    ActivityOptions activityOptionsMakeCustomAnimation = ActivityOptions.makeCustomAnimation(cameraActivity, 0, 0);
-                    Intent intentCommit = LaunchCameraIntentBuilder.create().mode(getCapturingMode().name()).activity("com.sonyericsson.android.camera", "com.sonyericsson.android.camera.CameraActivity").callingMode(CapturingModeUtil.filteringPrevName(getCapturingMode().name())).callingActivity(cameraActivity.getPackageName(), CapturingModeUtil.filteringPrevActivity(cameraActivity.getClass().getName())).commit();
-                    intentCommit.putExtra("internal_mode", ModeSelectorInternalMode.DUAL_MONOCHROME.ordinal());
-                    intentCommit.putExtra("capturing_mode", capturingMode2.ordinal());
-                    showMessageDialog(DialogId.UNLOCK_REQUEST_FOR_OPENING_ADD_ON_APP, intentCommit, activityOptionsMakeCustomAnimation.toBundle(), obj);
-                    break;
+                    ActivityOptions makeCustomAnimation = ActivityOptions.makeCustomAnimation(cameraActivity, 0, 0);
+                    Intent commit = LaunchCameraIntentBuilder.create().mode(getCapturingMode().name())
+                            .activity("com.sonyericsson.android.camera", CapturingModeUtil.CAMERA_ACTIVITY)
+                            .callingMode(CapturingModeUtil.filteringPrevName(getCapturingMode().name()))
+                            .callingActivity(cameraActivity.getPackageName(),
+                                    CapturingModeUtil.filteringPrevActivity(cameraActivity.getClass().getName()))
+                            .commit();
+                    commit.putExtra(LaunchCondition.EXTRA_LAUNCH_INTERNAL_MODE,
+                            ModeSelectorInternalMode.DUAL_MONOCHROME.ordinal());
+                    commit.putExtra(LaunchCondition.EXTRA_LAUNCH_INTERNAL_CALLING_CAPTURING_MODE,
+                            capturingMode2.ordinal());
+                    showMessageDialog(DialogId.UNLOCK_REQUEST_FOR_OPENING_ADD_ON_APP, commit,
+                            makeCustomAnimation.toBundle(), obj);
+                    return;
                 }
-                break;
+                return;
+            default:
+                return;
         }
     }
 
@@ -3047,50 +4161,52 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
     }
 
-    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-    /* JADX WARN: Removed duplicated region for block: B:15:0x002b  */
     /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    private void showBurstRejectedMessage(ViewFinder$BurstRejectedReason viewFinder$BurstRejectedReason) {
-        HintTextTimedOutMessage$MessageType hintTextTimedOutMessage$MessageType;
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$ViewFinder$BurstRejectedReason[viewFinder$BurstRejectedReason.ordinal()]) {
-            case 1:
-                hintTextTimedOutMessage$MessageType = HintTextTimedOutMessage$MessageType.CANNOT_BURST_IN_DARK_CONDITION;
+     */
+    private void showBurstRejectedMessage(ViewFinder.BurstRejectedReason burstRejectedReason) {
+        HintTextTimedOutMessage.MessageType messageType;
+        switch (burstRejectedReason) {
+            case CANNOT_BURST_IN_DARK_CONDITION:
+                messageType = HintTextTimedOutMessage.MessageType.CANNOT_BURST_IN_DARK_CONDITION;
                 break;
-            case 2:
+            case CANNOT_BURST_USING_FRONT_CAMERA:
                 if (!this.mHintCannotBurstUsingFrontCameraAlreadyDisplayed) {
                     this.mHintCannotBurstUsingFrontCameraAlreadyDisplayed = true;
-                    hintTextTimedOutMessage$MessageType = HintTextTimedOutMessage$MessageType.CANNOT_BURST_USING_FRONT_CAMERA;
-                } else {
-                    hintTextTimedOutMessage$MessageType = null;
+                    messageType = HintTextTimedOutMessage.MessageType.CANNOT_BURST_USING_FRONT_CAMERA;
+                    break;
                 }
+                messageType = null;
                 break;
-            case 3:
+            case CANNOT_BURST_DUE_TO_FUSION_MODE:
                 if (!this.mHintCannotBurstUsingFusionModeAlreadyDisplayed) {
                     this.mHintCannotBurstUsingFusionModeAlreadyDisplayed = true;
-                    hintTextTimedOutMessage$MessageType = HintTextTimedOutMessage$MessageType.CANNOT_BURST_DUE_TO_FUSION_MODE;
+                    messageType = HintTextTimedOutMessage.MessageType.CANNOT_BURST_DUE_TO_FUSION_MODE;
                     break;
                 }
+                messageType = null;
                 break;
-            case 4:
+            case BURST_IS_DISABLED_BY_CAMERA_KEY_ASSIGN_SETTING:
                 if (!this.mHintBurstChangeCameraKeySettingAlreadyDisplayed) {
                     this.mHintBurstChangeCameraKeySettingAlreadyDisplayed = true;
-                    hintTextTimedOutMessage$MessageType = HintTextTimedOutMessage$MessageType.BURST_CHANGE_CAMERA_KEY_SETTING;
+                    messageType = HintTextTimedOutMessage.MessageType.BURST_CHANGE_CAMERA_KEY_SETTING;
                     break;
                 }
+                messageType = null;
+                break;
+            default:
+                messageType = null;
                 break;
         }
-        if (hintTextTimedOutMessage$MessageType != null) {
-            postHintText(new HintTextTimedOutMessage(hintTextTimedOutMessage$MessageType));
+        if (messageType != null) {
+            postHintText(new HintTextTimedOutMessage(messageType));
         }
     }
 
-    private void onBurstRejected(ViewFinder$BurstRejectedReason viewFinder$BurstRejectedReason) {
+    private void onBurstRejected(ViewFinder.BurstRejectedReason burstRejectedReason) {
         if (isPreviewLayout(getCurrentLayoutPattern())) {
-            showBurstRejectedMessage(viewFinder$BurstRejectedReason);
+            showBurstRejectedMessage(burstRejectedReason);
         } else {
-            this.mBurstShootingRejectedReason = viewFinder$BurstRejectedReason;
+            this.mBurstShootingRejectedReason = burstRejectedReason;
         }
     }
 
@@ -3100,9 +4216,9 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
                 this.mIsAutoReviewRequested = true;
                 this.mAutoReviewProxy.bindReceiver(getBaseLayout().getAutoReview());
             }
-            if (this.mBurstShootingRejectedReason != ViewFinder$BurstRejectedReason.NONE) {
+            if (this.mBurstShootingRejectedReason != ViewFinder.BurstRejectedReason.NONE) {
                 showBurstRejectedMessage(this.mBurstShootingRejectedReason);
-                this.mBurstShootingRejectedReason = ViewFinder$BurstRejectedReason.NONE;
+                this.mBurstShootingRejectedReason = ViewFinder.BurstRejectedReason.NONE;
             }
             updateAllOverlayControlVisibility();
             updateVisibilityForSpecificDisplaySize();
@@ -3111,9 +4227,9 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
 
     private void onCaptureCanceled() {
         if (isHeadUpDisplayReady()) {
-            if (this.mBurstShootingRejectedReason != ViewFinder$BurstRejectedReason.NONE) {
+            if (this.mBurstShootingRejectedReason != ViewFinder.BurstRejectedReason.NONE) {
                 showBurstRejectedMessage(this.mBurstShootingRejectedReason);
-                this.mBurstShootingRejectedReason = ViewFinder$BurstRejectedReason.NONE;
+                this.mBurstShootingRejectedReason = ViewFinder.BurstRejectedReason.NONE;
             }
             updateAllOverlayControlVisibility();
             updateVisibilityForSpecificDisplaySize();
@@ -3121,16 +4237,24 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private void onBurstFinished() {
-        if (!isHeadUpDisplayReady() || this.mBurstCountView == null) {
+        if (!isHeadUpDisplayReady()) {
+            return;
+        }
+        if (this.mBurstCountView == null) {
             return;
         }
         this.mBurstCountView.hide();
         startCaptureFeedbackAnimation();
-        if (((DestinationToSave) this.mStateMachine.getUserSetting().get(UserSettingKey.DESTINATION_TO_SAVE)).getType() == Storage$StorageType.INTERNAL || this.mHintBurstImageSavedToInternalStorageAlreadyDisplayed) {
+        if (((DestinationToSave) this.mStateMachine.getUserSetting().get(UserSettingKey.DESTINATION_TO_SAVE))
+                .getType() == Storage.StorageType.INTERNAL) {
+            return;
+        }
+        if (this.mHintBurstImageSavedToInternalStorageAlreadyDisplayed) {
             return;
         }
         this.mHintBurstImageSavedToInternalStorageAlreadyDisplayed = true;
-        postHintText(new HintTextTimedOutMessage(HintTextTimedOutMessage$MessageType.BURST_IMAGES_ARE_SAVED_TO_INTERNAL_STORAGE));
+        postHintText(new HintTextTimedOutMessage(
+                HintTextTimedOutMessage.MessageType.BURST_IMAGES_ARE_SAVED_TO_INTERNAL_STORAGE));
     }
 
     private void onCapturingModeChanging() {
@@ -3139,47 +4263,50 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private boolean attachSideAutoReview() {
-        if (!this.mSideTouchUi.containsIn(SideTouchUi$Type.CAPTURE_COUNTDOWN, SideTouchUi$Type.RECORDING, SideTouchUi$Type.RECORDING_HDR, SideTouchUi$Type.RECORDING_PAUSE, SideTouchUi$Type.RECORDING_HDR_PAUSE, SideTouchUi$Type.SELF_TIMER_COUNTDOWN_CANCEL)) {
+        if (!this.mSideTouchUi.containsIn(SideTouchUi.Type.CAPTURE_COUNTDOWN, SideTouchUi.Type.RECORDING,
+                SideTouchUi.Type.RECORDING_HDR, SideTouchUi.Type.RECORDING_PAUSE, SideTouchUi.Type.RECORDING_HDR_PAUSE,
+                SideTouchUi.Type.SELF_TIMER_COUNTDOWN_CANCEL)) {
             return false;
         }
         this.mIsAutoReviewRequested = true;
-        this.mSideTouchUi.attachIcon(SideTouchUi$Type.AUTO_REVIEW, null);
+        this.mSideTouchUi.attachIcon(SideTouchUi.Type.AUTO_REVIEW, null);
         return true;
     }
 
     public void updateTouchCapture(TouchCapture touchCapture) {
-        boolean z = true;
+        boolean enableFaceTouchCapture = false;
+
         if (touchCapture != null) {
-            switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$TouchCapture[touchCapture.ordinal()]) {
-                case 1:
+            switch (touchCapture) {
+                case ON:
+                    enableFaceTouchCapture = true;
                     break;
-                case 2:
-                    if (!isFront()) {
-                        z = false;
+                case FRONT_ONLY:
+                    if (isFront()) {
+                        enableFaceTouchCapture = true;
                     }
                     break;
                 default:
-                    z = false;
                     break;
             }
-        } else {
-            z = false;
         }
-        if (z) {
+
+        if (enableFaceTouchCapture) {
             this.mFocusRectangles.enableFaceTouchCapture();
             if (this.mFocusRectangles.isTouchFocus() || this.mCameraDevice.isObjectTrackingRunning()) {
-                this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_DESELECT_OBJECT_POSITION, new Object[0]);
-                this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_CANCEL_TOUCHED_POSITION, new Object[0]);
-                return;
+                this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DESELECT_OBJECT_POSITION,
+                        new Object[0]);
+                this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_CANCEL_TOUCHED_POSITION, new Object[0]);
             }
-            return;
+        } else {
+            this.mFocusRectangles.disableFaceTouchCapture();
         }
-        this.mFocusRectangles.disableFaceTouchCapture();
     }
 
     private void addVideoChapter(ChapterThumbnail chapterThumbnail) {
         RecordingIndicator recordingIndicator = getBaseLayout().getRecordingIndicator();
-        YuvImage yuvImage = new YuvImage(chapterThumbnail.yuvData, chapterThumbnail.format.intValue(), chapterThumbnail.rect.width(), chapterThumbnail.rect.height(), null);
+        YuvImage yuvImage = new YuvImage(chapterThumbnail.yuvData, chapterThumbnail.format.intValue(),
+                chapterThumbnail.rect.width(), chapterThumbnail.rect.height(), null);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         if (yuvImage.compressToJpeg(chapterThumbnail.rect, 80, byteArrayOutputStream)) {
             recordingIndicator.addChapter(byteArrayOutputStream.toByteArray(), chapterThumbnail.orientation());
@@ -3207,38 +4334,41 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
 
     private void setupMruButton(CapturingMode capturingMode) {
         if (this.mActivity.isOneShot()) {
+            return;
         }
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()]) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
+        switch (capturingMode) {
+            case SCENE_RECOGNITION:
+            case SUPERIOR_FRONT:
+            case VIDEO:
+            case FRONT_VIDEO:
                 if (this.mModeLoader == null) {
                     this.mModeLoader = new ModeLoader(this.mActivity);
                 }
                 getBaseLayout().getMruButtonContainer().setup(this.mModeLoader);
-                break;
+                return;
+            default:
+                return;
         }
     }
 
-    private void onSceneModeChanged(CameraParameters$SceneRecognitionResult cameraParameters$SceneRecognitionResult) {
+    private void onSceneModeChanged(CameraParameters.SceneRecognitionResult sceneRecognitionResult) {
         if (isHeadUpDisplayReady() && !this.mActivity.isOneShot()) {
-            doChangeSceneMode(cameraParameters$SceneRecognitionResult);
-            doChangeCondition(cameraParameters$SceneRecognitionResult);
+            doChangeSceneMode(sceneRecognitionResult);
+            doChangeCondition(sceneRecognitionResult);
         }
     }
 
-    private void doChangeSceneMode(CameraParameters$SceneRecognitionResult cameraParameters$SceneRecognitionResult) {
-        RecognizedScene recognizedSceneCreate = RecognizedScene.create(cameraParameters$SceneRecognitionResult.sceneMode);
-        int iconId = recognizedSceneCreate.getIconId();
-        int textId = recognizedSceneCreate.getTextId();
+    private void doChangeSceneMode(CameraParameters.SceneRecognitionResult sceneRecognitionResult) {
+        RecognizedScene create = RecognizedScene.create(sceneRecognitionResult.sceneMode);
+        int iconId = create.getIconId();
+        int textId = create.getTextId();
         if (iconId <= 0 || textId <= 0) {
-            if (!cameraParameters$SceneRecognitionResult.isMacroRange) {
+            if (!sceneRecognitionResult.isMacroRange) {
                 getBaseLayout().getSceneIndicator().set(false);
                 return;
             } else {
-                iconId = 2131231273;
-                textId = 2131689845;
+                iconId = R.drawable.cam_scene_recog_macro_icn;
+                textId = R.string.cam_strings_focus_mode_macro_txt;
             }
         }
         getBaseLayout().getSceneIndicator().set(true);
@@ -3246,8 +4376,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         getBaseLayout().getSceneIndicator().setTextResource(textId);
     }
 
-    private void doChangeCondition(CameraParameters$SceneRecognitionResult cameraParameters$SceneRecognitionResult) {
-        int iconId = RecognizedCondition.create(cameraParameters$SceneRecognitionResult.deviceStabilityCondition).getIconId();
+    private void doChangeCondition(CameraParameters.SceneRecognitionResult sceneRecognitionResult) {
+        int iconId = RecognizedCondition.create(sceneRecognitionResult.deviceStabilityCondition).getIconId();
         if (iconId != -1) {
             getBaseLayout().getConditionIndicator().set(true);
             getBaseLayout().getConditionIndicator().setImageResource(iconId);
@@ -3256,15 +4386,15 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
     }
 
-    private void onFaceDetected(CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult) {
+    private void onFaceDetected(CameraParameters.FaceDetectionResult faceDetectionResult) {
         if (isHeadUpDisplayReady()) {
-            this.mFocusRectangles.onFaceDetected(cameraParameters$FaceDetectionResult);
+            this.mFocusRectangles.onFaceDetected(faceDetectionResult);
         }
     }
 
-    private void onTrackedObjectStateUpdated(CameraParameters$ObjectTrackingResult cameraParameters$ObjectTrackingResult) {
+    private void onTrackedObjectStateUpdated(CameraParameters.ObjectTrackingResult objectTrackingResult) {
         if (isHeadUpDisplayReady()) {
-            this.mFocusRectangles.onObjectTracked(cameraParameters$ObjectTrackingResult);
+            this.mFocusRectangles.onObjectTracked(objectTrackingResult);
         }
     }
 
@@ -3275,8 +4405,114 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    private class ViewFinderStateListener implements CaptureArea.CaptureAreaStateListener {
+        @Override // com.sonyericsson.android.camera.view.CaptureArea.CaptureAreaStateListener
+        public void onCaptureAreaMoved() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.CaptureArea.CaptureAreaStateListener
+        public void onCaptureAreaStopped() {
+        }
+
+        private ViewFinderStateListener() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.CaptureArea.CaptureAreaStateListener
+        public void onCaptureAreaTouched() {
+            ViewFinderImpl.this.mTouchEventDispatcher.sendTouchDown(UserEventHandler.UiComponent.CAPTURE_AREA);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.CaptureArea.CaptureAreaStateListener
+        public void onCaptureAreaSingleTapUp(Point point) {
+            ViewFinderImpl.this.mTouchEventDispatcher.sendClick(UserEventHandler.UiComponent.CAPTURE_AREA, point);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.CaptureArea.CaptureAreaStateListener
+        public void onCaptureAreaLongPressed(Point point) {
+            ViewFinderImpl.this.mTouchEventDispatcher.sendLongClick(UserEventHandler.UiComponent.CAPTURE_AREA, point);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.CaptureArea.CaptureAreaStateListener
+        public void onCaptureAreaReleased(Point point) {
+            ViewFinderImpl.this.mTouchEventDispatcher.sendTouchUp(UserEventHandler.UiComponent.CAPTURE_AREA, point);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.CaptureArea.CaptureAreaStateListener
+        public void onCaptureAreaCanceled() {
+            ViewFinderImpl.this.mTouchEventDispatcher.sendCancel(UserEventHandler.UiComponent.CAPTURE_AREA);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.CaptureArea.CaptureAreaStateListener
+        public void onCaptureAreaIsReadyToScale() {
+            if (ViewFinderImpl.this.isFront()) {
+                if (ViewFinderImpl.this.getCurrentLayoutPattern() != BaseLayoutPattern.SELFTIMER) {
+                    ViewFinderImpl.this.notifyZoomOperationRejected();
+                    return;
+                }
+                return;
+            }
+            ViewFinderImpl.this.mTouchEventDispatcher
+                    .sendCaptureAreaScaleReady(UserEventHandler.UiComponent.CAPTURE_AREA);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.CaptureArea.CaptureAreaStateListener
+        public void onCaptureAreaScaled(float f) {
+            if (ViewFinderImpl.this.isFront()) {
+                return;
+            }
+            ViewFinderImpl.this.mTouchEventDispatcher.sendCaptureAreaScaling(UserEventHandler.UiComponent.CAPTURE_AREA,
+                    f);
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    class OnHighSensitivityFusionButtonStateListener implements OnScreenButtonListener {
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onCancel(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onDown(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onLongPress(OnScreenButton onScreenButton) {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onMove(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+        }
+
+        private OnHighSensitivityFusionButtonStateListener() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onUp(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+            if (ViewFinderImpl.this.getCapturingMode() == CapturingMode.NORMAL
+                    && ViewFinderImpl.this.mStateMachine.isSettingChangeAcceptable()
+                    && ViewFinderImpl.this.isUserOperable()) {
+                ViewFinderImpl.this.mSettingDialogStack.closeCurrentDialog();
+                if (ViewFinderImpl.this.openTutorial(TutorialController.DisplayTrigger.CHANGE_MANUAL_FUSION_SETTING)) {
+                    ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_OPENED,
+                            new Object[0]);
+                    return;
+                } else {
+                    ViewFinderImpl.this.updateHighSensitivityFusionModeForManual();
+                    return;
+                }
+            }
+            if (CamLog.VERBOSE) {
+                CamLog.d("HighSensitivityFusion button was tapped in mode change");
+            }
+        }
+    }
+
     private void hideSurfaceBlinderView() {
-        if (this.mSurfaceBlinderView == null || this.mSurfaceBlinderView.getVisibility() != 0) {
+        if (this.mSurfaceBlinderView == null) {
+            return;
+        }
+        if (this.mSurfaceBlinderView.getVisibility() != 0) {
             return;
         }
         this.mSurfaceBlinderView.setVisibility(4);
@@ -3303,13 +4539,16 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     public RectF convertTouchPointToRectInDevicePreviewPositionRatio(Point point) {
-        PointF pointFConvertTouchPointToDevicePreviewPositionRatio = convertTouchPointToDevicePreviewPositionRatio(point);
+        PointF convertTouchPointToDevicePreviewPositionRatio = convertTouchPointToDevicePreviewPositionRatio(point);
         Rect rect = this.mEvf.getRect();
         Rect touchFocusIconSize = this.mFocusRectangles.getTouchFocusIconSize();
-        int iWidth = rect.width();
-        float fWidth = (touchFocusIconSize.width() / iWidth) / 2.0f;
-        float fHeight = (touchFocusIconSize.height() / rect.height()) / 2.0f;
-        return new RectF(pointFConvertTouchPointToDevicePreviewPositionRatio.x - fWidth, pointFConvertTouchPointToDevicePreviewPositionRatio.y - fHeight, pointFConvertTouchPointToDevicePreviewPositionRatio.x + fWidth, pointFConvertTouchPointToDevicePreviewPositionRatio.y + fHeight);
+        int width = rect.width();
+        float width2 = (touchFocusIconSize.width() / width) / 2.0f;
+        float height = (touchFocusIconSize.height() / rect.height()) / 2.0f;
+        return new RectF(convertTouchPointToDevicePreviewPositionRatio.x - width2,
+                convertTouchPointToDevicePreviewPositionRatio.y - height,
+                convertTouchPointToDevicePreviewPositionRatio.x + width2,
+                convertTouchPointToDevicePreviewPositionRatio.y + height);
     }
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
@@ -3317,24 +4556,23 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return getBaseLayout().getCurrentOrientation();
     }
 
-    private OnScreenButtonItemFactory$ButtonType getCaptureButtonTypeAccordingToSelfTimerSetting() {
-        int i = ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SelfTimer[this.mPhotoSelfTimerSetting.ordinal()];
-        if (i == 1) {
+    private OnScreenButtonItemFactory.ButtonType getCaptureButtonTypeAccordingToSelfTimerSetting() {
+        if (this.mPhotoSelfTimerSetting == SelfTimer.LONG) {
             if (isTouchCaptureEnabled()) {
-                return OnScreenButtonItemFactory$ButtonType.TOUCH_CAPTURE_WITH_SELFTIMER_LONG;
+                return OnScreenButtonItemFactory.ButtonType.TOUCH_CAPTURE_WITH_SELFTIMER_LONG;
             }
-            return OnScreenButtonItemFactory$ButtonType.CAPTURE_WITH_SELFTIMER_LONG;
+            return OnScreenButtonItemFactory.ButtonType.CAPTURE_WITH_SELFTIMER_LONG;
         }
-        if (i == 3) {
+        if (this.mPhotoSelfTimerSetting == SelfTimer.SHORT) {
             if (isTouchCaptureEnabled()) {
-                return OnScreenButtonItemFactory$ButtonType.TOUCH_CAPTURE_WITH_SELFTIMER_SHORT;
+                return OnScreenButtonItemFactory.ButtonType.TOUCH_CAPTURE_WITH_SELFTIMER_SHORT;
             }
-            return OnScreenButtonItemFactory$ButtonType.CAPTURE_WITH_SELFTIMER_SHORT;
+            return OnScreenButtonItemFactory.ButtonType.CAPTURE_WITH_SELFTIMER_SHORT;
         }
         if (isTouchCaptureEnabled()) {
-            return OnScreenButtonItemFactory$ButtonType.TOUCH_CAPTURE;
+            return OnScreenButtonItemFactory.ButtonType.TOUCH_CAPTURE;
         }
-        return OnScreenButtonItemFactory$ButtonType.CAPTURE_LARGE;
+        return OnScreenButtonItemFactory.ButtonType.CAPTURE_LARGE;
     }
 
     private void changeOnScreenCaptureButtonInManualMain() {
@@ -3342,113 +4580,122 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             CamLog.d("changeOnScreenCaptureButtonInManualMain()");
         }
         if (PlatformCapability.isHighSensitivityFusionSupported(getCapturingMode().getCameraId())) {
-            getBaseLayout().getOnScreenButtonGroup().setOption1(this.mHighSensitivityFusionButtonItem, getOrientation(), true);
+            getBaseLayout().getOnScreenButtonGroup().setOption1(this.mHighSensitivityFusionButtonItem, getOrientation(),
+                    true);
         } else {
-            ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
+            this.mScreenButtonHandler.clearOption1();
         }
         this.mScreenButtonHandler.setMain(getCaptureButtonTypeAccordingToSelfTimerSetting(), getOrientation(), true);
-        this.mScreenButtonHandler.setOption2((OnScreenButtonGroup$Item) this.mImageQualityControlButtonItem, getOrientation(), true);
+        this.mScreenButtonHandler.setOption2((OnScreenButtonGroup.Item) this.mImageQualityControlButtonItem,
+                getOrientation(), true);
     }
 
     private void changeOnScreenCaptureButtonInManualFront() {
         if (CamLog.VERBOSE) {
             CamLog.d("changeOnScreenCaptureButtonInManualFront()");
         }
-        ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
+        this.mScreenButtonHandler.clearOption1();
         this.mScreenButtonHandler.setMain(getCaptureButtonTypeAccordingToSelfTimerSetting(), getOrientation(), true);
-        this.mScreenButtonHandler.setOption2((OnScreenButtonGroup$Item) this.mImageQualityControlButtonItem, getOrientation(), true);
+        this.mScreenButtonHandler.setOption2((OnScreenButtonGroup.Item) this.mImageQualityControlButtonItem,
+                getOrientation(), true);
     }
 
     private void changeOnScreenCaptureButtonInAutoMain() {
         if (CamLog.VERBOSE) {
             CamLog.d("changeOnScreenCaptureButtonInAutoMain()");
         }
-        ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
+        this.mScreenButtonHandler.clearOption1();
         this.mScreenButtonHandler.setMain(getCaptureButtonTypeAccordingToSelfTimerSetting(), getOrientation(), true);
-        ViewFinderImpl$ScreenButtonHandler.access$5600(this.mScreenButtonHandler);
+        this.mScreenButtonHandler.clearOption2();
     }
 
     private void changeOnScreenCaptureButtonInAutoFront() {
-        ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
+        this.mScreenButtonHandler.clearOption1();
         this.mScreenButtonHandler.setMain(getCaptureButtonTypeAccordingToSelfTimerSetting(), getOrientation(), true);
-        ViewFinderImpl$ScreenButtonHandler.access$5600(this.mScreenButtonHandler);
+        this.mScreenButtonHandler.clearOption2();
     }
 
     private void changeOnScreenCaptureButtonInSelfTimerCoundDown() {
         if (CamLog.VERBOSE) {
             CamLog.d("changeOnScreenCaptureButtonInSelfTimerCoundDown()");
         }
-        ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
-        this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory$ButtonType.CAPTURE_LARGE, getOrientation(), true);
-        ViewFinderImpl$ScreenButtonHandler.access$5600(this.mScreenButtonHandler);
+        this.mScreenButtonHandler.clearOption1();
+        this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory.ButtonType.CAPTURE_LARGE, getOrientation(), true);
+        this.mScreenButtonHandler.clearOption2();
     }
 
-    private OnScreenButtonItemFactory$ButtonType createStartRecordingButton() {
+    private OnScreenButtonItemFactory.ButtonType createStartRecordingButton() {
         if (isTouchCaptureEnabled()) {
-            return OnScreenButtonItemFactory$ButtonType.TOUCH_RECORDING_START;
+            return OnScreenButtonItemFactory.ButtonType.TOUCH_RECORDING_START;
         }
         if (getCapturingMode() == CapturingMode.SLOW_MOTION) {
-            if (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion[((SlowMotion) this.mStateMachine.getUserSetting().get(getCapturingMode(), UserSettingKey.SLOW_MOTION)).ordinal()] == 2) {
-                return OnScreenButtonItemFactory$ButtonType.TRIGGER_SUPER_SLOW_MOTION;
+            if (((SlowMotion) this.mStateMachine
+                    .getUserSetting().get(getCapturingMode(), UserSettingKey.SLOW_MOTION)) == SlowMotion.SUPER_SLOW_SHOT) {
+                return OnScreenButtonItemFactory.ButtonType.TRIGGER_SUPER_SLOW_MOTION;
             }
-            return OnScreenButtonItemFactory$ButtonType.START_RECORDING_LARGE;
+            return OnScreenButtonItemFactory.ButtonType.START_RECORDING_LARGE;
         }
-        return OnScreenButtonItemFactory$ButtonType.START_RECORDING_LARGE;
+        return OnScreenButtonItemFactory.ButtonType.START_RECORDING_LARGE;
     }
 
     private void changeOnScreenCaptureButtonInVideo() {
         if (CamLog.VERBOSE) {
             CamLog.d("changeOnScreenCaptureButtonInVideo()");
         }
-        ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
-        this.mScreenButtonHandler.setMain(createStartRecordingButton(), getOrientation(), true);
-        ViewFinderImpl$ScreenButtonHandler.access$5600(this.mScreenButtonHandler);
-        LocalResearchUtil.getInstance().setMeasurementValid(LocalResearchUtil$MeasurementKey.VIDEO_RECORDING_STOP_READY_FOR_USE);
+        this.mScreenButtonHandler.clearOption1();
+        OnScreenButtonItemFactory.ButtonType buttonType = createStartRecordingButton();
+        this.mScreenButtonHandler.setMain(buttonType, getOrientation(), true);
+        this.mScreenButtonHandler.clearOption2();
+        LocalResearchUtil.getInstance()
+                .setMeasurementValid(LocalResearchUtil.MeasurementKey.VIDEO_RECORDING_STOP_READY_FOR_USE);
     }
 
     private void changeOnScreenSuperSlowMotionButtonInVideo() {
         if (CamLog.VERBOSE) {
             CamLog.d("changeOnScreenSuperSlowMotionButtonInVideo()");
         }
-        ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
+        this.mScreenButtonHandler.clearOption1();
         this.mScreenButtonHandler.setMain(createStartRecordingButton(), getOrientation(), true);
-        ViewFinderImpl$ScreenButtonHandler.access$5600(this.mScreenButtonHandler);
+        this.mScreenButtonHandler.clearOption2();
     }
 
     private void changeOnScreenSuperSlowMotionRecordingButtonInVideo() {
         if (CamLog.VERBOSE) {
             CamLog.d("changeOnScreenSuperSlowMotionRecordingButtonInVideo()");
         }
-        ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
-        this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory$ButtonType.TRIGGER_SUPER_SLOW_MOTION, this.mRecordingOrientation, false);
-        this.mScreenButtonHandler.setOption2(OnScreenButtonItemFactory$ButtonType.STOP_RECORDING_SMALL, this.mRecordingOrientation, false);
+        this.mScreenButtonHandler.clearOption1();
+        this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory.ButtonType.TRIGGER_SUPER_SLOW_MOTION,
+                this.mRecordingOrientation, false);
+        this.mScreenButtonHandler.setOption2(OnScreenButtonItemFactory.ButtonType.STOP_RECORDING_SMALL,
+                this.mRecordingOrientation, false);
     }
 
     private void changeOnScreenStandardSlowMotionButtonInVideo() {
         if (CamLog.VERBOSE) {
             CamLog.d("changeOnScreenStandardSlowMotionButtonInVideo()");
         }
-        ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
+        this.mScreenButtonHandler.clearOption1();
         this.mScreenButtonHandler.setMain(createStartRecordingButton(), getOrientation(), true);
-        ViewFinderImpl$ScreenButtonHandler.access$5600(this.mScreenButtonHandler);
+        this.mScreenButtonHandler.clearOption2();
     }
 
     private void changeOnScreenStandardSlowMotionButtonInVideoRecording() {
         if (CamLog.VERBOSE) {
             CamLog.d("changeOnScreenStandardSlowMotionButtonInVideoRecording()");
         }
-        ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
-        this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory$ButtonType.STOP_RECORDING_LARGE, this.mRecordingOrientation, false);
-        ViewFinderImpl$ScreenButtonHandler.access$5600(this.mScreenButtonHandler);
+        this.mScreenButtonHandler.clearOption1();
+        this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory.ButtonType.STOP_RECORDING_LARGE,
+                this.mRecordingOrientation, false);
+        this.mScreenButtonHandler.clearOption2();
     }
 
     private void changeOnScreenSuperSlowShotButtonInVideo() {
         if (CamLog.VERBOSE) {
             CamLog.d("changeOnScreenSuperSlowShotButtonInVideo()");
         }
-        ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
+        this.mScreenButtonHandler.clearOption1();
         this.mScreenButtonHandler.setMain(createStartRecordingButton(), getOrientation(), true);
-        ViewFinderImpl$ScreenButtonHandler.access$5600(this.mScreenButtonHandler);
+        this.mScreenButtonHandler.clearOption2();
     }
 
     private void changeOnScreenCaptureButtonInVideoRecording() {
@@ -3457,41 +4704,49 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
         VideoSize videoSize = (VideoSize) this.mStateMachine.getUserSetting().get(UserSettingKey.VIDEO_SIZE);
         if (!(videoSize != null && videoSize.isConstraint())) {
-            this.mScreenButtonHandler.setOption1(OnScreenButtonItemFactory$ButtonType.PAUSE_RECORDING_SMALL, this.mRecordingOrientation, false);
-            this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory$ButtonType.STOP_RECORDING_LARGE, this.mRecordingOrientation, false);
-            if (this.mActivity.isOneShotVideo()) {
-                ViewFinderImpl$ScreenButtonHandler.access$5600(this.mScreenButtonHandler);
-                return;
-            } else if (((VideoHdr) this.mStateMachine.getUserSetting().get(UserSettingKey.VIDEO_HDR)) != VideoHdr.HDR_ON) {
-                this.mScreenButtonHandler.setOption2(OnScreenButtonItemFactory$ButtonType.CAPTURE_SMALL, getOrientation(), true);
-                return;
-            } else {
-                getBaseLayout().getOnScreenButtonGroup().clearOption2();
-                return;
+            this.mScreenButtonHandler.setOption1(OnScreenButtonItemFactory.ButtonType.PAUSE_RECORDING_SMALL,
+                    this.mRecordingOrientation, false);
+            this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory.ButtonType.STOP_RECORDING_LARGE,
+                    this.mRecordingOrientation, false);
+            if (!this.mActivity.isOneShotVideo()) {
+                if (((VideoHdr) this.mStateMachine.getUserSetting().get(UserSettingKey.VIDEO_HDR)) != VideoHdr.HDR_ON) {
+                    this.mScreenButtonHandler.setOption2(OnScreenButtonItemFactory.ButtonType.CAPTURE_SMALL,
+                            getOrientation(), true);
+                    return;
+                } else {
+                    getBaseLayout().getOnScreenButtonGroup().clearOption2();
+                    return;
+                }
             }
+            this.mScreenButtonHandler.clearOption2();
+            return;
         }
-        ViewFinderImpl$ScreenButtonHandler.access$5500(this.mScreenButtonHandler);
-        this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory$ButtonType.STOP_RECORDING_LARGE, this.mRecordingOrientation, false);
-        ViewFinderImpl$ScreenButtonHandler.access$5600(this.mScreenButtonHandler);
+        this.mScreenButtonHandler.clearOption1();
+        this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory.ButtonType.STOP_RECORDING_LARGE,
+                this.mRecordingOrientation, false);
+        this.mScreenButtonHandler.clearOption2();
     }
 
     private void changeOnScreenCaptureButtonInVideoPausing() {
         if (CamLog.VERBOSE) {
             CamLog.d("changeOnScreenCaptureButtonInVideo()");
         }
-        this.mScreenButtonHandler.setOption1(OnScreenButtonItemFactory$ButtonType.RESUME_RECORDING_SMALL, this.mRecordingOrientation, false);
-        this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory$ButtonType.STOP_RECORDING_IN_PAUSE_LARGE, this.mRecordingOrientation, false);
+        this.mScreenButtonHandler.setOption1(OnScreenButtonItemFactory.ButtonType.RESUME_RECORDING_SMALL,
+                this.mRecordingOrientation, false);
+        this.mScreenButtonHandler.setMain(OnScreenButtonItemFactory.ButtonType.STOP_RECORDING_IN_PAUSE_LARGE,
+                this.mRecordingOrientation, false);
         VideoHdr videoHdr = (VideoHdr) this.mStateMachine.getUserSetting().get(UserSettingKey.VIDEO_HDR);
-        if (this.mActivity.isOneShotVideo() || videoHdr == VideoHdr.HDR_ON) {
-            ViewFinderImpl$ScreenButtonHandler.access$5600(this.mScreenButtonHandler);
+        if (!this.mActivity.isOneShotVideo() && videoHdr != VideoHdr.HDR_ON) {
+            this.mScreenButtonHandler.setOption2(OnScreenButtonItemFactory.ButtonType.CAPTURE_SMALL, getOrientation(),
+                    true);
         } else {
-            this.mScreenButtonHandler.setOption2(OnScreenButtonItemFactory$ButtonType.CAPTURE_SMALL, getOrientation(), true);
+            this.mScreenButtonHandler.clearOption2();
         }
     }
 
-    private void changeScreenButtonImage(ViewFinder$HeadUpDisplaySetupState viewFinder$HeadUpDisplaySetupState, boolean z) {
+    private void changeScreenButtonImage(ViewFinder.HeadUpDisplaySetupState headUpDisplaySetupState, boolean z) {
         if (CamLog.VERBOSE) {
-            CamLog.d("state : " + viewFinder$HeadUpDisplaySetupState);
+            CamLog.d("state : " + headUpDisplaySetupState);
         }
         if (getBaseLayout() == null || getBaseLayout().getOnScreenButtonGroup() == null) {
             if (CamLog.VERBOSE) {
@@ -3500,56 +4755,57 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             }
             return;
         }
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$ViewFinder$HeadUpDisplaySetupState[viewFinder$HeadUpDisplaySetupState.ordinal()]) {
-            case 1:
-            case 2:
-            case 3:
+        switch (headUpDisplaySetupState) {
+            case PHOTO_READY:
+            case PHOTO_CAPTURE:
+            case PHOTO_BURST_CAPTURE:
                 if (z) {
                     changeOnScreenCaptureButtonInSelfTimerCoundDown();
-                    break;
                 } else {
-                    switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[getCapturingMode().ordinal()]) {
-                        case 1:
+                    switch (getCapturingMode()) {
+                        case SCENE_RECOGNITION:
                             changeOnScreenCaptureButtonInAutoMain();
                             break;
-                        case 2:
+                        case SUPERIOR_FRONT:
                             changeOnScreenCaptureButtonInAutoFront();
                             break;
-                        case 5:
+                        case NORMAL:
                             changeOnScreenCaptureButtonInManualMain();
                             break;
-                        case 6:
+                        case FRONT_PHOTO:
                             changeOnScreenCaptureButtonInManualFront();
                             break;
                     }
                 }
                 break;
-            case 4:
+            case VIDEO_READY:
                 changeOnScreenCaptureButtonInVideo();
                 break;
-            case 5:
+            case VIDEO_RECORDING:
                 changeOnScreenCaptureButtonInVideoRecording();
                 break;
-            case 6:
+            case SUPER_SLOW_MOTION_STANDBY:
                 changeOnScreenSuperSlowMotionButtonInVideo();
                 break;
-            case 7:
+            case SUPER_SLOW_MOTION_RECORDING:
                 changeOnScreenSuperSlowMotionRecordingButtonInVideo();
                 break;
-            case 8:
+            case STANDARD_SLOW_MOTION_STANDBY:
                 changeOnScreenStandardSlowMotionButtonInVideo();
                 break;
-            case 9:
+            case STANDARD_SLOW_MOTION_RECORDING:
                 changeOnScreenStandardSlowMotionButtonInVideoRecording();
                 break;
-            case 10:
+            case SUPER_SLOW_SHOT_STANDBY:
                 changeOnScreenSuperSlowShotButtonInVideo();
                 break;
-            case 11:
+            case VIDEO_PAUSING:
                 changeOnScreenCaptureButtonInVideoPausing();
                 break;
             default:
-                throw new IllegalStateException("ViewFinder.changeScreenButtonBackground():[Unexpected system bar status.] state = " + viewFinder$HeadUpDisplaySetupState);
+                throw new IllegalStateException(
+                        "ViewFinder.changeScreenButtonBackground():[Unexpected system bar status.] state = "
+                                + headUpDisplaySetupState);
         }
         if (isHeadUpDisplayReady()) {
             return;
@@ -3566,32 +4822,39 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     private void setupInstantViewer() {
         if (this.mInstantViewer == null || this.mInstantViewer.getParent() == null) {
             if (isInflated()) {
-                this.mInstantViewer = (InstantViewer) getPreInflatedView(LayoutAsyncInflateItems$CameraInflateItem.AUTO_REVIEW).get(0);
+                this.mInstantViewer = (InstantViewer) getPreInflatedView(
+                        LayoutAsyncInflateItems.CameraInflateItem.AUTO_REVIEW).get(0);
                 this.mInstantViewer.setup(this.mActivity.getStoredSettings().getUserSettings());
             }
             if (this.mInstantViewer == null) {
-                this.mInstantViewer = (InstantViewer) LayoutInflater.from(getActivity()).inflate(2131492936, (ViewGroup) null);
+                this.mInstantViewer = (InstantViewer) LayoutInflater.from(getActivity())
+                        .inflate(R.layout.instant_viewer, (ViewGroup) null);
                 this.mInstantViewer.setup(this.mActivity.getStoredSettings().getUserSettings());
             }
-            getActivity().getWindow().addContentView(this.mInstantViewer, new WindowManager$LayoutParams(-1, -1));
+            getActivity().getWindow().addContentView(this.mInstantViewer, new WindowManager.LayoutParams(-1, -1));
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isFront() {
         return getCapturingMode().isFront();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private CapturingMode getCapturingMode() {
         return this.mStateMachine.getCurrentCapturingMode();
     }
 
     private boolean isNecessaryToReverseForAutoReview(StoreDataResult storeDataResult) {
-        if ((storeDataResult.savingRequest instanceof PhotoSavingRequest) && ((PhotoSavingRequest) storeDataResult.savingRequest).photo.isFront()) {
-            return storeDataResult.savingRequest.common.orientation == 90 || storeDataResult.savingRequest.common.orientation == 270;
+        if ((storeDataResult.savingRequest instanceof PhotoSavingRequest)
+                && ((PhotoSavingRequest) storeDataResult.savingRequest).photo.isFront()) {
+            return storeDataResult.savingRequest.common.orientation == 90
+                    || storeDataResult.savingRequest.common.orientation == 270;
         }
         return false;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void setupAutoReview() {
         getBaseLayout().setupAutoReview();
     }
@@ -3603,17 +4866,20 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             getBaseLayout().hideAutoReview();
         }
         if (this.mSideTouchUi != null) {
-            this.mSideTouchUi.destroyTo(SideTouchUi$Type.AUTO_REVIEW);
+            this.mSideTouchUi.destroyTo(SideTouchUi.Type.AUTO_REVIEW);
         } else {
             CamLog.e("Hiding the problem (mSideTouchUi = null). Modify the problem correctly.");
         }
         updateAllOverlayControlVisibility();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void clickAutoReview(StoreDataResult storeDataResult) {
         SavingRequest savingRequest = storeDataResult.savingRequest;
         Content currentContent = getCurrentContent();
-        clickThumbnail(storeDataResult.uri, savingRequest.common.mimeType, savingRequest.common.width, savingRequest.common.height, savingRequest.common.orientation, currentContent != null && currentContent.isMediaDataVerified());
+        clickThumbnail(storeDataResult.uri, savingRequest.common.mimeType, savingRequest.common.width,
+                savingRequest.common.height, savingRequest.common.orientation,
+                currentContent != null && currentContent.isMediaDataVerified());
     }
 
     private void openInstantViewer(byte[] bArr, String str, SavingRequest savingRequest) {
@@ -3621,7 +4887,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             CamLog.d("openInstantViewer: " + savingRequest);
         }
         if (this.mInstantViewer != null) {
-            if (!this.mInstantViewer.open(bArr, str, savingRequest.common.mimeType, 0, savingRequest.common.orientation, isFront(), new ViewFinderImpl$ReviewWindowListenerImpl(this, null), savingRequest.getRequestId())) {
+            if (!this.mInstantViewer.open(bArr, str, savingRequest.common.mimeType, 0, savingRequest.common.orientation,
+                    isFront(), new ReviewWindowListenerImpl(), savingRequest.getRequestId())) {
                 closeInstantViewer();
             } else {
                 hideApplicationNavigator();
@@ -3636,23 +4903,41 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         hideAutoReview();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    class ReviewWindowListenerImpl implements ReviewWindowListener {
+        private ReviewWindowListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.review.ReviewWindowListener
+        public void onReviewWindowOpen() {
+            ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_OPENED,
+                    ViewFinder.UiComponentKind.REVIEW_WINDOW);
+        }
+
+        @Override // com.sonyericsson.cameracommon.review.ReviewWindowListener
+        public void onReviewWindowClose() {
+            ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_CLOSED,
+                    new Object[0]);
+        }
+    }
+
     @Override // com.sonyericsson.android.camera.view.ViewFinder
     public int getRequestId(boolean z) {
-        int iCreateEmptyContentFrame;
+        int i;
         if (getBaseLayout().getContentsViewController() != null) {
             preparationForInstantViewer();
             if (z) {
-                iCreateEmptyContentFrame = getBaseLayout().getContentsViewController().createContentFrame();
+                i = getBaseLayout().getContentsViewController().createContentFrame();
             } else {
-                iCreateEmptyContentFrame = getBaseLayout().getContentsViewController().createEmptyContentFrame();
+                i = getBaseLayout().getContentsViewController().createEmptyContentFrame();
             }
         } else {
-            iCreateEmptyContentFrame = -1;
+            i = -1;
         }
         if (CamLog.VERBOSE) {
-            CamLog.d("New request ID: " + iCreateEmptyContentFrame);
+            CamLog.d("New request ID: " + i);
         }
-        return iCreateEmptyContentFrame;
+        return i;
     }
 
     private void preparationForInstantViewer() {
@@ -3660,9 +4945,13 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             CamLog.d("preparationForInstantViewer");
         }
         if (!this.mStateMachine.isRecording() && getBaseLayout().getContentsViewController() != null) {
-            getBaseLayout().getContentsViewController().setClickThumbnailProgressListener(new ViewFinderImpl$OnClickThumbnailProgressListenerImpl(this, null));
+            getBaseLayout().getContentsViewController()
+                    .setClickThumbnailProgressListener(new OnClickThumbnailProgressListenerImpl());
         }
-        if (this.mInstantViewer == null || this.mInstantViewer.isOpened()) {
+        if (this.mInstantViewer == null) {
+            return;
+        }
+        if (this.mInstantViewer.isOpened()) {
             return;
         }
         this.mInstantViewer.clear();
@@ -3677,12 +4966,29 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             return;
         }
         getBaseLayout().getContentsViewController().stopAnimation(false);
-        Animation animationLoadAnimation = AnimationUtils.loadAnimation(this.mActivity, 2130772002);
-        animationLoadAnimation.setAnimationListener(new ViewFinderImpl$20(this));
-        getBaseLayout().getContentsViewController().startHideAnimation(animationLoadAnimation);
+        Animation loadAnimation = AnimationUtils.loadAnimation(this.mActivity, R.anim.thumbnail_fade_out);
+        loadAnimation.setAnimationListener(new Animation.AnimationListener() { // from class:
+                                                                               // com.sonyericsson.android.camera.view.ViewFinderImpl.20
+            @Override // android.view.animation.Animation.AnimationListener
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+            @Override // android.view.animation.Animation.AnimationListener
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override // android.view.animation.Animation.AnimationListener
+            public void onAnimationEnd(Animation animation) {
+                if (ViewFinderImpl.this.mCameraDevice.isRecording()) {
+                    ViewFinderImpl.this.getBaseLayout().getContentsViewController().hide();
+                }
+            }
+        });
+        getBaseLayout().getContentsViewController().startHideAnimation(loadAnimation);
     }
 
-    @Override // com.sonyericsson.android.camera.view.ViewFinder, com.sonyericsson.cameracommon.viewfinder.ViewFinderInterface
+    @Override // com.sonyericsson.android.camera.view.ViewFinder,
+              // com.sonyericsson.cameracommon.viewfinder.ViewFinderInterface
     public void onCaptureDone() {
         if (isHeadUpDisplayReady()) {
             clearTouchedScreenButtonGroup();
@@ -3707,26 +5013,33 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return this.mFocusRectangles.isTouchFocus();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isZooming() {
         if (this.mLayoutPattern == null) {
             return false;
         }
-        int i = ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$baselayout$BaseLayoutPattern[((BaseLayoutPattern) this.mLayoutPattern).ordinal()];
-        if (i == 2) {
-            return true;
+        switch ((BaseLayoutPattern) this.mLayoutPattern) {
+            case ZOOMING_IN_RECORDING:
+            case ZOOMING_IN_PAUSE_RECORDING:
+            case ZOOMING:
+                return true;
+            default:
+                return false;
         }
-        switch (i) {
-        }
-        return false;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isFocusing() {
         if (this.mLayoutPattern == null) {
             return false;
         }
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$baselayout$BaseLayoutPattern[((BaseLayoutPattern) this.mLayoutPattern).ordinal()]) {
+        switch ((BaseLayoutPattern) this.mLayoutPattern) {
+            case FOCUS_SEARCHING:
+            case FOCUS_DONE:
+                return true;
+            default:
+                return false;
         }
-        return false;
     }
 
     private void closeSettingDialog() {
@@ -3735,9 +5048,14 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isAllDialogClosed() {
         if (this.mSettingDialogStack != null) {
-            return (this.mSettingDialogStack.isDialogOpened() || this.mMessageDialog.isCurrentDialogInList(STORAGE_DIALOG_LIST)) ? false : true;
+            if (this.mSettingDialogStack.isDialogOpened()
+                    || this.mMessageDialog.isCurrentDialogInList(STORAGE_DIALOG_LIST)) {
+                return false;
+            }
+            return true;
         }
         return true;
     }
@@ -3750,8 +5068,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return false;
     }
 
-    private void updateUiComponent(ViewFinder$UiComponentKind viewFinder$UiComponentKind) {
-        changeToDialogView(viewFinder$UiComponentKind);
+    private void updateUiComponent(ViewFinder.UiComponentKind uiComponentKind) {
+        changeToDialogView(uiComponentKind);
     }
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
@@ -3765,19 +5083,131 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    class FocusActionListenerImpl implements FocusActionListener {
+        @Override // com.sonyericsson.cameracommon.focusview.FocusActionListener
+        public void onTouched() {
+        }
+
+        private FocusActionListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusActionListener
+        public void onCanceled() {
+            ViewFinderImpl.this.mBurstShootingRejectedReason = ViewFinder.BurstRejectedReason.NONE;
+            ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_CAPTURE_CANCEL,
+                    new Object[0]);
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusActionListener
+        public void onReleased() {
+            if (!ViewFinderImpl.this.isAutoReviewShowing()) {
+                if (!ViewFinderImpl.this.getCapturingMode().isVideo()) {
+                    if (!ViewFinderImpl.this.isPhotoSelfTimerEnabled() || !ViewFinderImpl.this.isPreviewLayout()) {
+                        ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_CAPTURE,
+                                new Object[0]);
+                    } else {
+                        ViewFinderImpl.this.mStateMachine.sendEvent(
+                                StateMachine.TransitterEvent.EVENT_START_CAPTURE_COUNTDOWN,
+                                Event.SelfTimerTrigger.NORMAL);
+                    }
+                } else if (!ViewFinderImpl.this.mStateMachine.isRecording()) {
+                    ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_START_RECORDING,
+                            new Object[0]);
+                }
+                ResearchUtil.getInstance().setCaptureTrigger(Event.CaptureTrigger.TOUCH_CAPTURE);
+                return;
+            }
+            ViewFinderImpl.this.hideAutoReview();
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusActionListener
+        public void onLongPressed() {
+            boolean z = !ViewFinderImpl.this.mActivity.isOneShot();
+            if (ViewFinderImpl.this.isTouchCaptureEnabled() && ViewFinderImpl.this.isInternalStorageWritable() && z) {
+                if (!PlatformCapability.isManualBurstSupported(ViewFinderImpl.this.getCapturingMode().getCameraId())) {
+                    if (PlatformCapability.isManualBurstSupported(CameraInfo.CameraId.BACK)) {
+                        ViewFinderImpl.this.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_BURST_REJECTED,
+                                ViewFinder.BurstRejectedReason.CANNOT_BURST_USING_FRONT_CAMERA);
+                    }
+                } else {
+                    if (ViewFinderImpl.this.mStateMachine.getUserSetting()
+                            .get(UserSettingKey.FUSION_MODE) == FusionMode.ON) {
+                        ViewFinderImpl.this.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_BURST_REJECTED,
+                                ViewFinder.BurstRejectedReason.CANNOT_BURST_DUE_TO_FUSION_MODE);
+                        return;
+                    }
+                    ViewFinderImpl.this.hideAutoReview();
+                    ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_CAPTURE_BURST,
+                            new Object[0]);
+                    ResearchUtil.getInstance().setCaptureTrigger(Event.CaptureTrigger.TOUCH_CAPTURE);
+                }
+            }
+        }
+
+        @Override // com.sonyericsson.cameracommon.focusview.FocusActionListener
+        public void onFaceSelected(Point point) {
+            ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_CHANGE_SELECTED_FACE, point);
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    class OnClickThumbnailProgressListenerImpl implements ContentsViewController.OnClickThumbnailProgressListener {
+        private OnClickThumbnailProgressListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.contentsview.ContentsViewController.OnClickThumbnailProgressListener
+        public void onClickThumbnailProgress() {
+            if (CamLog.VERBOSE) {
+                CamLog.d("onClickThumbnailProgress");
+            }
+            ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_TOUCH_CONTENT_PROGRESS,
+                    new Object[0]);
+        }
+    }
+
     private void clearSurfaceView() {
         if (this.mEvf != null) {
             this.mEvf.clear();
         }
     }
 
-    private ContentPallet$ThumbnailStateListener getThumbnailStateListener() {
-        return new ViewFinderImpl$21(this);
+    private ContentPallet.ThumbnailStateListener getThumbnailStateListener() {
+        return new ContentPallet.ThumbnailStateListener() { // from class:
+                                                            // com.sonyericsson.android.camera.view.ViewFinderImpl.21
+            @Override // com.sonyericsson.cameracommon.contentsview.ContentPallet.ThumbnailStateListener
+            public void onThumbnailClicked(Content content) {
+                if (ViewFinderImpl.this.mIsFrontAngleChanging || content == null) {
+                    return;
+                }
+                Content.ContentInfo contentInfo = content.getContentInfo();
+                ViewFinderImpl.this.clickThumbnail(contentInfo.mOriginalUri, contentInfo.mMimeType, contentInfo.mWidth,
+                        contentInfo.mHeight, contentInfo.mOrientation, content.isMediaDataVerified());
+            }
+
+            @Override // com.sonyericsson.cameracommon.contentsview.ContentPallet.ThumbnailStateListener
+            public void onThumbnailCreated(Content content) {
+                if (ViewFinderImpl.this.mCameraDevice.getRemainSavingPhotoRequestCount() == 0
+                        || content.getContentInfo().mContentType == Content.ContentsType.PREDICTIVE_CAPTURE) {
+                    if (ViewFinderImpl.this.mInstantViewer != null) {
+                        ViewFinderImpl.this.mInstantViewer.prepareBitmap(content.getContentInfo().mOriginalUri);
+                    }
+                    if (content.getContentInfo().mContentType != Content.ContentsType.PREDICTIVE_CAPTURE
+                            || ViewFinderImpl.this.mStateMachine.getPredictiveCaptureStoreInfo() == null) {
+                        return;
+                    }
+                    content.getContentInfo().mPredictiveNum = ViewFinderImpl.this.mStateMachine
+                            .getPredictiveCaptureStoreInfo().getCaptureNum();
+                }
+            }
+        };
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void clickThumbnail(Uri uri, String str, int i, int i2, int i3, boolean z) {
         int currentRequestId = getCurrentRequestId();
-        if (CommonUtility.getDefaultGallery(this.mActivity.getApplicationContext(), uri, str) != CommonUtility$DefaultGallerySetting.SONY_ALBUM) {
+        if (CommonUtility.getDefaultGallery(this.mActivity.getApplicationContext(), uri,
+                str) != CommonUtility.DefaultGallerySetting.SONY_ALBUM) {
             launchAlbum(uri, str, z);
             return;
         }
@@ -3794,12 +5224,14 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     private void showInstantViewer(Uri uri, String str, int i, int i2, int i3, int i4) {
         hideApplicationNavigator();
         hideAutoReview();
-        this.mInstantViewer.open(this.mInstantViewer.isAlbumBitmapSetting() ? null : uri, str, 0, i3, isFront(), new ViewFinderImpl$ReviewWindowListenerImpl(this, null), i4);
+        this.mInstantViewer.open(this.mInstantViewer.isAlbumBitmapSetting() ? null : uri, str, 0, i3, isFront(),
+                new ReviewWindowListenerImpl(), i4);
     }
 
     private void launchAlbum(Uri uri, String str, boolean z) {
         if (this.mActivity.isDeviceInSecurityLock()) {
-            List<Content$ContentInfo> localContentInfo = getBaseLayout().getContentsViewController().getLocalContentInfo();
+            List<Content.ContentInfo> localContentInfo = getBaseLayout().getContentsViewController()
+                    .getLocalContentInfo();
             if (CamLog.VERBOSE) {
                 CamLog.d("onClick : contentInfoList = " + localContentInfo.size());
             }
@@ -3809,23 +5241,24 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             ArrayList arrayList = new ArrayList();
             ArrayList arrayList2 = new ArrayList();
             ArrayList arrayList3 = new ArrayList();
-            for (Content$ContentInfo content$ContentInfo : localContentInfo) {
-                arrayList.add(content$ContentInfo.mOriginalUri);
-                arrayList2.add(content$ContentInfo.mMimeType);
-                if (content$ContentInfo.mContentType == Content$ContentsType.BURST && content$ContentInfo.mGroupedImage > 0) {
-                    Iterator<Long> it = content$ContentInfo.mMediaStoreIds.iterator();
+            for (Content.ContentInfo contentInfo : localContentInfo) {
+                arrayList.add(contentInfo.mOriginalUri);
+                arrayList2.add(contentInfo.mMimeType);
+                if (contentInfo.mContentType == Content.ContentsType.BURST && contentInfo.mGroupedImage > 0) {
+                    Iterator<Long> it = contentInfo.mMediaStoreIds.iterator();
                     while (it.hasNext()) {
                         arrayList3.add(it.next());
                     }
                 } else {
-                    arrayList3.add(Long.valueOf(content$ContentInfo.mId));
+                    arrayList3.add(Long.valueOf(contentInfo.mId));
                 }
             }
             long[] jArr = new long[arrayList3.size()];
             for (int i = 0; i < arrayList3.size(); i++) {
                 jArr[i] = ((Long) arrayList3.get(i)).longValue();
             }
-            InstantViewer.launchAlbumSecure(this.mActivity, arrayList, arrayList2, this.mStateMachine.getPredictiveCaptureStoreInfo(), jArr);
+            InstantViewer.launchAlbumSecure(this.mActivity, arrayList, arrayList2,
+                    this.mStateMachine.getPredictiveCaptureStoreInfo(), jArr);
             return;
         }
         InstantViewer.launchAlbum(this.mActivity, uri, str, z, this.mStateMachine.getPredictiveCaptureStoreInfo());
@@ -3837,15 +5270,26 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private void updateGeotagIcon() {
-        if (getBaseLayout().getGeoTagIndicator() == null || this.mActivity == null || !needToShowGeoTagIndicator()) {
+        if (getBaseLayout().getGeoTagIndicator() == null) {
             return;
         }
-        getBaseLayout().getGeoTagIndicator().set(GeotagManager.isGeoTagEnabled(this.mActivity.getStoredSettings().getUserSettings(), this.mActivity));
+        if (this.mActivity == null) {
+            return;
+        }
+        if (!needToShowGeoTagIndicator()) {
+            return;
+        }
+        getBaseLayout().getGeoTagIndicator().set(
+                GeotagManager.isGeoTagEnabled(this.mActivity.getStoredSettings().getUserSettings(), this.mActivity));
     }
 
     public void switchSemiAutoAvailability() {
-        if (getBaseLayout().getSemiAutoControl().isInitialized() && getBaseLayout().getSemiAutoControl().get().isEnabled()) {
-            disableSemiAutoControl();
+        if (getBaseLayout().getSemiAutoControl().isInitialized()) {
+            if (getBaseLayout().getSemiAutoControl().get().isEnabled()) {
+                disableSemiAutoControl();
+            } else {
+                enableSemiAutoControl(false);
+            }
         } else {
             enableSemiAutoControl(false);
         }
@@ -3855,7 +5299,25 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     public void switchSemiAutoStateByTouch(boolean z) {
-        if (this.mStateMachine == null || !this.mStateMachine.isMenuAvailable() || !isPreviewLayout(getCurrentLayoutPattern()) || isTouchCaptureEnabled() || isObjectTrackingEnabled() || isSmileShutterEnabled() || !isSemiAutoControlAvailable(getCapturingMode())) {
+        if (this.mStateMachine == null) {
+            return;
+        }
+        if (!this.mStateMachine.isMenuAvailable()) {
+            return;
+        }
+        if (!isPreviewLayout(getCurrentLayoutPattern())) {
+            return;
+        }
+        if (isTouchCaptureEnabled()) {
+            return;
+        }
+        if (isObjectTrackingEnabled()) {
+            return;
+        }
+        if (isSmileShutterEnabled()) {
+            return;
+        }
+        if (!isSemiAutoControlAvailable(getCapturingMode())) {
             return;
         }
         if (z) {
@@ -3901,9 +5363,12 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         this.mFocusRectangles.onUiComponentRemoved();
     }
 
-    private void onModeControllableDraggingMove(NavigatorContents navigatorContents, NavigatorContents navigatorContents2, int i, float f) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void onModeControllableDraggingMove(NavigatorContents navigatorContents,
+            NavigatorContents navigatorContents2, int i, float f) {
         if (CamLog.VERBOSE) {
-            CamLog.d("onModeControllableDraggingMove()  from:" + navigatorContents.name() + " to:" + navigatorContents2.name() + " distance:" + i + " progress:" + f);
+            CamLog.d("onModeControllableDraggingMove()  from:" + navigatorContents.name() + " to:"
+                    + navigatorContents2.name() + " distance:" + i + " progress:" + f);
         }
         setPreviewAlpha(i);
         if (i > 0) {
@@ -3913,28 +5378,20 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:7:0x0015  */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    private void setupApplicationNavigator(ViewFinder$HeadUpDisplaySetupState viewFinder$HeadUpDisplaySetupState) {
+    private void setupApplicationNavigator(ViewFinder.HeadUpDisplaySetupState headUpDisplaySetupState) {
         NavigatorContents navigatorContents;
-        int i = ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$ViewFinder$HeadUpDisplaySetupState[viewFinder$HeadUpDisplaySetupState.ordinal()];
-        if (i != 11) {
-            switch (i) {
-                case 1:
-                case 2:
-                case 3:
-                    navigatorContents = NavigatorContents.SUPERIOR_AUTO;
-                    break;
-                case 4:
-                case 5:
-                    navigatorContents = NavigatorContents.VIDEO;
-                    break;
-                default:
-                    navigatorContents = NavigatorContents.SUPERIOR_AUTO;
-                    break;
-            }
+        switch (headUpDisplaySetupState) {
+            case VIDEO_PAUSING:
+            case VIDEO_READY:
+            case VIDEO_RECORDING:
+                navigatorContents = NavigatorContents.VIDEO;
+                break;
+            case PHOTO_READY:
+            case PHOTO_CAPTURE:
+            case PHOTO_BURST_CAPTURE:
+            default:
+                navigatorContents = NavigatorContents.SUPERIOR_AUTO;
+                break;
         }
         setupApplicationNavigator(this.mActivity, navigatorContents);
     }
@@ -3948,12 +5405,14 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         if (CamLog.VERBOSE) {
             CamLog.d("getPosition(x, y) = (" + point.x + ", " + point.y + ")");
         }
-        Rect rect = new Rect(0, 0, getActivity().getResources().getDimensionPixelSize(2131165338), getActivity().getResources().getDimensionPixelSize(2131165337));
-        Rect rectConvertPositionToAligned = CoordinateUtil.convertPositionToAligned(point.x, point.y, this.mEvf.getRect(), this.mEvf.getRect(), rect.width(), rect.height());
+        Rect rect = new Rect(0, 0, getActivity().getResources().getDimensionPixelSize(R.dimen.focus_rect_single_width),
+                getActivity().getResources().getDimensionPixelSize(R.dimen.focus_rect_single_height));
+        Rect convertPositionToAligned = CoordinateUtil.convertPositionToAligned(point.x, point.y, this.mEvf.getRect(),
+                this.mEvf.getRect(), rect.width(), rect.height());
         if (CamLog.VERBOSE) {
-            CamLog.d("getPosition: " + rectConvertPositionToAligned);
+            CamLog.d("getPosition: " + convertPositionToAligned);
         }
-        return rectConvertPositionToAligned;
+        return convertPositionToAligned;
     }
 
     private void setLeftIconsVisibility(boolean z) {
@@ -3981,6 +5440,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         this.mFrontAngleSwitchButton.setClickable(z);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void setFrontAngleSwitchButtonClickable(boolean z) {
         if (this.mFrontAngleSwitchButton == null) {
             return;
@@ -4015,33 +5475,46 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private void applyShutterTriggerSettings() {
-        this.mStateMachine.sendStaticEvent(StateMachine$StaticEvent.EVENT_ON_GESTURE_SHUTTER_SETTING_CHANGED, Boolean.valueOf(this.mShutterTrigger.isGestureShutterOn()));
-        SmileCapture smileCapture = (SmileCapture) this.mStateMachine.getUserSetting().get(UserSettingKey.SMILE_CAPTURE);
-        VideoSmileCapture videoSmileCapture = (VideoSmileCapture) this.mStateMachine.getUserSetting().get(UserSettingKey.VIDEO_SMILE_CAPTURE);
-        if (getBaseLayout() == null || smileCapture == null || videoSmileCapture == null) {
+        this.mStateMachine.sendStaticEvent(StateMachine.StaticEvent.EVENT_ON_GESTURE_SHUTTER_SETTING_CHANGED,
+                Boolean.valueOf(this.mShutterTrigger.isGestureShutterOn()));
+        SmileCapture smileCapture = (SmileCapture) this.mStateMachine.getUserSetting()
+                .get(UserSettingKey.SMILE_CAPTURE);
+        VideoSmileCapture videoSmileCapture = (VideoSmileCapture) this.mStateMachine.getUserSetting()
+                .get(UserSettingKey.VIDEO_SMILE_CAPTURE);
+        if (getBaseLayout() == null) {
+            return;
+        }
+        if (smileCapture == null) {
+            return;
+        }
+        if (videoSmileCapture == null) {
             return;
         }
         getBaseLayout().getPhotoSmileCaptureIndicator().set(smileCapture.isSmileCaptureOn());
         getBaseLayout().getPhotoSmileCaptureIndicator().setBackgroundResource(smileCapture.getNotificationIconId());
         getBaseLayout().getVideoSmileCaptureIndicator().set(videoSmileCapture.isSmileCaptureOn());
-        getBaseLayout().getVideoSmileCaptureIndicator().setBackgroundResource(videoSmileCapture.getNotificationIconId());
+        getBaseLayout().getVideoSmileCaptureIndicator()
+                .setBackgroundResource(videoSmileCapture.getNotificationIconId());
         applySmileFocusThreshold(true);
     }
 
     private void applySmileFocusThreshold(boolean z) {
         if (this.mFocusRectangles != null) {
-            int dimenId = -1;
+            int i = -1;
             if (z) {
-                SmileCapture smileCapture = (SmileCapture) this.mStateMachine.getUserSetting().get(UserSettingKey.SMILE_CAPTURE);
-                VideoSmileCapture videoSmileCapture = (VideoSmileCapture) this.mStateMachine.getUserSetting().get(UserSettingKey.VIDEO_SMILE_CAPTURE);
+                SmileCapture smileCapture = (SmileCapture) this.mStateMachine.getUserSetting()
+                        .get(UserSettingKey.SMILE_CAPTURE);
+                VideoSmileCapture videoSmileCapture = (VideoSmileCapture) this.mStateMachine.getUserSetting()
+                        .get(UserSettingKey.VIDEO_SMILE_CAPTURE);
                 if (smileCapture != SmileCapture.OFF && !isZooming() && !isInSelfTimerCountDown()) {
-                    dimenId = smileCapture.getDimenId();
+                    i = smileCapture.getDimenId();
                 }
-                if (videoSmileCapture != VideoSmileCapture.OFF && !isZooming() && !isInSelfTimerCountDown() && this.mStateMachine.isRecording()) {
-                    dimenId = videoSmileCapture.getDimenId();
+                if (videoSmileCapture != VideoSmileCapture.OFF && !isZooming() && !isInSelfTimerCountDown()
+                        && this.mStateMachine.isRecording()) {
+                    i = videoSmileCapture.getDimenId();
                 }
             }
-            this.mFocusRectangles.setSmileCaptureThreshold(dimenId);
+            this.mFocusRectangles.setSmileCaptureThreshold(i);
         }
     }
 
@@ -4059,21 +5532,30 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     public void reconstructLocalCache() {
-        if (getBaseLayout() == null || getBaseLayout().getContentsViewController() == null) {
+        if (getBaseLayout() == null) {
+            return;
+        }
+        if (getBaseLayout().getContentsViewController() == null) {
             return;
         }
         getBaseLayout().getContentsViewController().reconstructLocalCache();
     }
 
     public void saveLocalCache() {
-        if (getBaseLayout() == null || getBaseLayout().getContentsViewController() == null) {
+        if (getBaseLayout() == null) {
+            return;
+        }
+        if (getBaseLayout().getContentsViewController() == null) {
             return;
         }
         getBaseLayout().getContentsViewController().saveLocalCache();
     }
 
     public void requestCreateContentInfoSync(ArrayList<Uri> arrayList) {
-        if (getBaseLayout() == null || getBaseLayout().getContentsViewController() == null) {
+        if (getBaseLayout() == null) {
+            return;
+        }
+        if (getBaseLayout().getContentsViewController() == null) {
             return;
         }
         getBaseLayout().getContentsViewController().requestCreateContentInfoSync(arrayList);
@@ -4082,9 +5564,11 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     private void checkupThermalCoolingRequest() {
         if (PlatformCapability.isPowerSavingSupported(this.mStateMachine.getCurrentCameraId())) {
             if (this.mActivity.isThermalWarningReceived()) {
-                this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_ON_HEATED_OVER_COOLING_ULTRA_LOW, new Object[0]);
+                this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_ON_HEATED_OVER_COOLING_ULTRA_LOW,
+                        new Object[0]);
             } else if (this.mActivity.isThermalWarningExtraState()) {
-                this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_ON_HEATED_OVER_COOLING_LOW, new Object[0]);
+                this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_ON_HEATED_OVER_COOLING_LOW,
+                        new Object[0]);
             }
         }
     }
@@ -4136,15 +5620,15 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         if (slowMotion == SlowMotion.OFF) {
             return;
         }
-        HintTextContent hintTextSuperSlowMotionDescription = null;
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion[slowMotion.ordinal()]) {
-            case 1:
+        HintTextContent hintTextContent = null;
+        switch (slowMotion) {
+            case SUPER_SLOW_MOTION:
                 hintTextSuperSlowMotion = new HintTextSuperSlowMotion();
                 break;
-            case 2:
+            case SUPER_SLOW_SHOT:
                 hintTextSuperSlowMotion = new HintTextSuperSlowShot();
                 break;
-            case 3:
+            case STANDARD_SLOW_MOTION:
                 hintTextSuperSlowMotion = new HintTextStandardSlowMotion();
                 break;
             default:
@@ -4156,18 +5640,19 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             return;
         }
         this.mIsAlreadySlowMotionLearnMoreButtonDisplayed = true;
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion[slowMotion.ordinal()]) {
-            case 1:
-                hintTextSuperSlowMotionDescription = new HintTextSuperSlowMotionDescription(getBaseLayout().getTutorial(), this.mActivity);
+        switch (slowMotion) {
+            case SUPER_SLOW_MOTION:
+                hintTextContent = new HintTextSuperSlowMotionDescription(getBaseLayout().getTutorial(), this.mActivity);
                 break;
-            case 2:
-                hintTextSuperSlowMotionDescription = new HintTextSuperSlowShotDescription(getBaseLayout().getTutorial(), this.mActivity);
+            case SUPER_SLOW_SHOT:
+                hintTextContent = new HintTextSuperSlowShotDescription(getBaseLayout().getTutorial(), this.mActivity);
                 break;
-            case 3:
-                hintTextSuperSlowMotionDescription = new HintTextStandardSlowMotionDescription(getBaseLayout().getTutorial(), this.mActivity);
+            case STANDARD_SLOW_MOTION:
+                hintTextContent = new HintTextStandardSlowMotionDescription(getBaseLayout().getTutorial(),
+                        this.mActivity);
                 break;
         }
-        postHintText(hintTextSuperSlowMotionDescription);
+        postHintText(hintTextContent);
     }
 
     private void postHintText(HintTextContent hintTextContent) {
@@ -4195,96 +5680,163 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void updateAllOverlayControlVisibility() {
         updateOverlayControlVisibility(getBaseLayout().getImageQualityControl());
         updateOverlayControlVisibility(getBaseLayout().getSemiAutoControl());
     }
 
-    private void updateOverlayControlVisibility(BaseLayout$LazyInitializer<OverlayControl> baseLayout$LazyInitializer) {
-        if (baseLayout$LazyInitializer.isInitialized()) {
+    private void updateOverlayControlVisibility(BaseLayout.LazyInitializer<OverlayControl> lazyInitializer) {
+        if (lazyInitializer.isInitialized()) {
             if (isAutoReviewShowing() || this.mIsAutoReviewRequested) {
-                baseLayout$LazyInitializer.get().hide();
-            } else if (isPreviewLayout(getCurrentLayoutPattern()) || getCurrentLayoutPattern() == BaseLayoutPattern.OVERLAY_CONTROL_SEEKING) {
-                baseLayout$LazyInitializer.get().show();
+                lazyInitializer.get().hide();
+            } else if (isPreviewLayout(getCurrentLayoutPattern())
+                    || getCurrentLayoutPattern() == BaseLayoutPattern.OVERLAY_CONTROL_SEEKING) {
+                lazyInitializer.get().show();
             } else {
-                baseLayout$LazyInitializer.get().hide();
+                lazyInitializer.get().hide();
             }
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void updateVisibilityForSpecificDisplaySize() {
         if (isInLargerOrMoreDisplaySizeOr16_9Device()) {
-            BaseLayout$LazyInitializer<OverlayControl> semiAutoControl = getBaseLayout().getSemiAutoControl();
-            if (semiAutoControl.isInitialized() && (semiAutoControl.get().isVisible() || (semiAutoControl.get().isEnabled() && (this.mIsAutoReviewRequested || isAutoReviewShowing())))) {
+            BaseLayout.LazyInitializer<OverlayControl> semiAutoControl = getBaseLayout().getSemiAutoControl();
+            if (semiAutoControl.isInitialized() && (semiAutoControl.get().isVisible()
+                    || (semiAutoControl.get().isEnabled() && (this.mIsAutoReviewRequested || isAutoReviewShowing())))) {
                 hideApplicationNavigator();
                 hideMruButtonContainer();
                 return;
-            } else if (this.mHintText != null && this.mHintText.isNoTimeOutHinTextDisplayed() && this.mOrientation == 1 && getCurrentLayoutPattern() != BaseLayoutPattern.MODE_CHANGING) {
+            } else if (this.mHintText != null && this.mHintText.isNoTimeOutHinTextDisplayed() && this.mOrientation == 1
+                    && getCurrentLayoutPattern() != BaseLayoutPattern.MODE_CHANGING) {
                 hideApplicationNavigator();
                 hideMruButtonContainer();
                 return;
             }
         }
-        if (isPreviewLayout(getCurrentLayoutPattern()) || getCurrentLayoutPattern() == BaseLayoutPattern.MODE_CHANGING) {
+        if (isPreviewLayout(getCurrentLayoutPattern())
+                || getCurrentLayoutPattern() == BaseLayoutPattern.MODE_CHANGING) {
             showApplicationNavigator();
             showMruButtonContainer();
         }
     }
 
     private boolean isInLargerOrMoreDisplaySizeOr16_9Device() {
-        return this.mBaseLayout.isInLargerOrMoreDisplaySize() || this.mScreenAspect == LayoutDependencyResolver$ScreenAspect.SIXTEEN_NINE;
+        return this.mBaseLayout.isInLargerOrMoreDisplaySize()
+                || this.mScreenAspect == LayoutDependencyResolver.ScreenAspect.SIXTEEN_NINE;
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:56:0x007b A[SYNTHETIC] */
-    /* JADX WARN: Removed duplicated region for block: B:59:0x0030 A[SYNTHETIC] */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
+    /* JADX INFO: Access modifiers changed from: private */
+    class OnAutoReviewEventListenerImpl implements AutoReviewController.OnAutoReviewEventListener {
+        private OnAutoReviewEventListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.AutoReviewController.OnAutoReviewEventListener
+        public void onAutoReviewClosed() {
+            ViewFinderImpl.this.updateAllOverlayControlVisibility();
+            ViewFinderImpl.this.updateVisibilityForSpecificDisplaySize();
+        }
+    }
+
+    public class OnScreenImageQualityControlButtonListener implements OnScreenButtonListener {
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onCancel(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onDown(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onLongPress(OnScreenButton onScreenButton) {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onMove(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+        }
+
+        public OnScreenImageQualityControlButtonListener() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onUp(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+            if (ViewFinderImpl.this.getBaseLayout().getImageQualityControl().get().isEnabled()) {
+                ViewFinderImpl.this.disableOverlayControl(ViewFinderImpl.this.getBaseLayout().getImageQualityControl());
+            } else {
+                ViewFinderImpl.this.enableOverlayControl(ViewFinderImpl.this.getBaseLayout().getImageQualityControl());
+            }
+        }
+    }
+
     private void updateSecondaryShortcutOnScreenButtonResource() {
-        String string;
-        if (getBaseLayout() == null || getBaseLayout().getOnScreenButtonGroup() == null) {
+        if (getBaseLayout() == null) {
             return;
         }
+        OnScreenButtonGroup buttonGroup = getBaseLayout().getOnScreenButtonGroup();
+        if (buttonGroup == null) {
+            return;
+        }
+
         CapturingMode capturingMode = getCapturingMode();
-        if ((capturingMode == CapturingMode.NORMAL || capturingMode == CapturingMode.FRONT_PHOTO) && this.mImageQualityControlButtonItem != null) {
+        if ((capturingMode == CapturingMode.NORMAL || capturingMode == CapturingMode.FRONT_PHOTO)
+                && this.mImageQualityControlButtonItem != null) {
+
             StringBuilder sb = new StringBuilder();
-            boolean z = false;
-            for (UserSettingKey userSettingKey : ImageQualityControl.KEYS) {
-                if (this.mStateMachine.getUserSetting().get(userSettingKey) != SettingUi.getImageQualityControlDefaultValue(userSettingKey)) {
-                    z = true;
+            boolean hasNonDefaultValue = false;
+
+            for (UserSettingKey key : ImageQualityControl.KEYS) {
+                UserSettingValue defaultValue = SettingUi.getImageQualityControlDefaultValue(key);
+                UserSettingValue currentValue = this.mStateMachine.getUserSetting().get(key);
+
+                if (currentValue != defaultValue) {
+                    hasNonDefaultValue = true;
                 }
-                int imageQualityControlTabDescription = -1;
-                if (userSettingKey.isSelectable()) {
+
+                int descriptionResId = -1;
+                if (key.isSelectable()) {
                     if (capturingMode == CapturingMode.NORMAL) {
-                        imageQualityControlTabDescription = SettingUi.getImageQualityControlTabDescription(userSettingKey);
+                        descriptionResId = SettingUi.getImageQualityControlTabDescription(key);
                     } else if (capturingMode == CapturingMode.FRONT_PHOTO) {
-                        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()]) {
-                            case 6:
-                            case 7:
-                                imageQualityControlTabDescription = SettingUi.getImageQualityControlTabDescription(userSettingKey);
-                            default:
-                                string = getString(imageQualityControlTabDescription);
-                                if (TextUtils.isEmpty(string)) {
-                                    sb.append(" ");
-                                    sb.append(string);
-                                }
+                        switch (key) {
+                            case SETTING_MENU:
+                            case FAST_CAPTURE:
+                                descriptionResId = SettingUi.getImageQualityControlTabDescription(key);
                                 break;
                         }
                     }
-                    string = getString(imageQualityControlTabDescription);
-                    if (TextUtils.isEmpty(string)) {
-                    }
+                }
+
+                String text = getString(descriptionResId);
+                if (!TextUtils.isEmpty(text)) {
+                    sb.append(" ");
+                    sb.append(text);
                 }
             }
-            this.mImageQualityControlButtonItem.update().icon(z ? 2131231032 : 2131231031).text(sb.toString()).commit();
+
+            int iconResId = hasNonDefaultValue ? R.drawable.cam_core_ev_wb_selected_icn : R.drawable.cam_core_ev_wb_icn;
+            String sbText = sb.toString();
+            this.mImageQualityControlButtonItem.update()
+                    .icon(iconResId)
+                    .text(sbText)
+                    .commit();
         }
-        if (capturingMode != CapturingMode.NORMAL || this.mHighSensitivityFusionButtonItem == null) {
-            return;
+        if (capturingMode == CapturingMode.NORMAL && this.mHighSensitivityFusionButtonItem != null) {
+            boolean isFusionOn = this.mStateMachine.getUserSetting().get(UserSettingKey.FUSION_MODE) == FusionMode.ON;
+
+            int iconResId = isFusionOn ? R.drawable.cam_core_image_quality_control_high_sensitivity_selected_icn
+                    : R.drawable.cam_core_image_quality_control_high_sensitivity_icn;
+            int descriptionResId = isFusionOn ? R.string.cam_strings_accessibility_fusion_on_txt
+                    : R.string.cam_strings_accessibility_fusion_off_txt;
+
+            this.mHighSensitivityFusionButtonItem.update()
+                    .icon(iconResId)
+                    .description(descriptionResId)
+                    .commit();
         }
-        boolean z2 = this.mStateMachine.getUserSetting().get(UserSettingKey.FUSION_MODE) == FusionMode.ON;
-        this.mHighSensitivityFusionButtonItem.update().icon(z2 ? 2131231065 : 2131231064).description(z2 ? 2131689574 : 2131689573).commit();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private String getString(int i) {
         return ResourceUtil.getString(getActivity(), i);
     }
@@ -4308,59 +5860,62 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         if (this.mLayoutPattern == null) {
             return false;
         }
-        int i = ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$baselayout$BaseLayoutPattern[((BaseLayoutPattern) this.mLayoutPattern).ordinal()];
-        return i == 1 || i == 3;
+        BaseLayoutPattern _blp2 = (BaseLayoutPattern) this.mLayoutPattern;
+        return _blp2 == BaseLayoutPattern.RECORDING || _blp2 == BaseLayoutPattern.PAUSE_RECORDING;
     }
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
     public void commit() {
-        ViewFinder$HeadUpDisplaySetupState viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.PHOTO_READY;
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[getCapturingMode().ordinal()]) {
-            case 1:
-            case 2:
-            case 5:
-            case 6:
-                viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.PHOTO_READY;
+        ViewFinder.HeadUpDisplaySetupState headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.PHOTO_READY;
+        switch (getCapturingMode()) {
+            case SCENE_RECOGNITION:
+            case SUPERIOR_FRONT:
+            case NORMAL:
+            case FRONT_PHOTO:
+                headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.PHOTO_READY;
                 break;
-            case 3:
-            case 4:
+            case VIDEO:
+            case FRONT_VIDEO:
                 if (isRecording()) {
                     if (this.mLayoutPattern == BaseLayoutPattern.RECORDING) {
-                        viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.VIDEO_RECORDING;
+                        headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.VIDEO_RECORDING;
+                        break;
                     } else {
-                        viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.VIDEO_PAUSING;
+                        headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.VIDEO_PAUSING;
+                        break;
                     }
                 } else {
-                    viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.VIDEO_READY;
+                    headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.VIDEO_READY;
+                    break;
                 }
-                break;
-            case 7:
-                switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion[((SlowMotion) this.mStateMachine.getUserSetting().get(UserSettingKey.SLOW_MOTION)).ordinal()]) {
-                    case 1:
+            case SLOW_MOTION:
+                switch ((SlowMotion) this.mStateMachine.getUserSetting().get(UserSettingKey.SLOW_MOTION)) {
+                    case SUPER_SLOW_MOTION:
                         if (isRecording()) {
-                            viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.SUPER_SLOW_MOTION_RECORDING;
+                            headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.SUPER_SLOW_MOTION_RECORDING;
+                            break;
                         } else {
-                            viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.SUPER_SLOW_MOTION_STANDBY;
+                            headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.SUPER_SLOW_MOTION_STANDBY;
+                            break;
                         }
+                    case SUPER_SLOW_SHOT:
+                        headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.SUPER_SLOW_SHOT_STANDBY;
                         break;
-                    case 2:
-                        viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.SUPER_SLOW_SHOT_STANDBY;
-                        break;
-                    case 3:
+                    case STANDARD_SLOW_MOTION:
                         if (isRecording()) {
-                            viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.STANDARD_SLOW_MOTION_RECORDING;
+                            headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.STANDARD_SLOW_MOTION_RECORDING;
+                            break;
                         } else {
-                            viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.STANDARD_SLOW_MOTION_STANDBY;
+                            headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.STANDARD_SLOW_MOTION_STANDBY;
+                            break;
                         }
-                        break;
                 }
-                break;
             default:
-                viewFinder$HeadUpDisplaySetupState = ViewFinder$HeadUpDisplaySetupState.PHOTO_READY;
+                headUpDisplaySetupState = ViewFinder.HeadUpDisplaySetupState.PHOTO_READY;
                 break;
         }
         if (getCurrentLayoutPattern() != BaseLayoutPattern.SELFTIMER) {
-            changeScreenButtonImage(viewFinder$HeadUpDisplaySetupState, false);
+            changeScreenButtonImage(headUpDisplaySetupState, false);
         }
         updateSecondaryShortcutOnScreenButtonResource();
         if (this.mIsSurfaceViewHideWhileAspectChanging) {
@@ -4378,9 +5933,14 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         if (this.mActivity.isOneShot() || getCapturingMode().isVideo()) {
             return false;
         }
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$AutoReview[((AutoReview) this.mActivity.getStoredSettings().getUserSettings().get(UserSettingKey.AUTO_REVIEW)).ordinal()]) {
+        switch ((AutoReview) this.mActivity.getStoredSettings().getUserSettings().get(UserSettingKey.AUTO_REVIEW)) {
+            case ALWAYS:
+                return true;
+            case FRONT_ONLY:
+                return getCapturingMode().isFront();
+            default:
+                return false;
         }
-        return false;
     }
 
     public void closeDialogs() {
@@ -4407,14 +5967,16 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     @Override // com.sonyericsson.android.camera.view.ViewFinder
     public void showSavingProgressBar() {
         if (isHeadUpDisplayReady()) {
-            ViewFinderImpl$ScreenButtonHandler.access$7300(this.mScreenButtonHandler);
+            this.mScreenButtonHandler.clearAllButton();
         }
         if (this.mSavingProgressBar == null) {
-            int dimensionPixelSize = this.mActivity.getResources().getDimensionPixelSize(2131165547);
+            int dimensionPixelSize = this.mActivity.getResources()
+                    .getDimensionPixelSize(R.dimen.saving_progress_bar_size);
             this.mSavingProgressBar = new ProgressBar(this.mActivity);
-            FrameLayout$LayoutParams frameLayout$LayoutParams = new FrameLayout$LayoutParams(dimensionPixelSize, dimensionPixelSize);
-            frameLayout$LayoutParams.gravity = 17;
-            this.mActivity.getWindow().addContentView(this.mSavingProgressBar, frameLayout$LayoutParams);
+            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(dimensionPixelSize,
+                    dimensionPixelSize);
+            layoutParams.gravity = 17;
+            this.mActivity.getWindow().addContentView(this.mSavingProgressBar, layoutParams);
         }
         this.mSavingProgressBar.setVisibility(0);
     }
@@ -4441,15 +6003,15 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     @Override // com.sonyericsson.android.camera.view.ViewFinder
     public void updateSlowMotionView(SlowMotion slowMotion) {
         this.mIsAlreadySlowMotionLearnMoreButtonDisplayed = false;
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion[slowMotion.ordinal()]) {
-            case 1:
-                changeScreenButtonImage(ViewFinder$HeadUpDisplaySetupState.SUPER_SLOW_MOTION_STANDBY, false);
+        switch (slowMotion) {
+            case SUPER_SLOW_MOTION:
+                changeScreenButtonImage(ViewFinder.HeadUpDisplaySetupState.SUPER_SLOW_MOTION_STANDBY, false);
                 break;
-            case 2:
-                changeScreenButtonImage(ViewFinder$HeadUpDisplaySetupState.SUPER_SLOW_SHOT_STANDBY, false);
+            case SUPER_SLOW_SHOT:
+                changeScreenButtonImage(ViewFinder.HeadUpDisplaySetupState.SUPER_SLOW_SHOT_STANDBY, false);
                 break;
-            case 3:
-                changeScreenButtonImage(ViewFinder$HeadUpDisplaySetupState.STANDARD_SLOW_MOTION_STANDBY, false);
+            case STANDARD_SLOW_MOTION:
+                changeScreenButtonImage(ViewFinder.HeadUpDisplaySetupState.STANDARD_SLOW_MOTION_STANDBY, false);
                 break;
         }
         disableSemiAutoControl();
@@ -4460,7 +6022,15 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
     public void startSlowMotionFeedbackAnimation() {
-        getBaseLayout().getSuperSlowMotionTriggerAnimation().start(new ViewFinderImpl$22(this), this.mRecordingOrientation == 2);
+        getBaseLayout().getSuperSlowMotionTriggerAnimation()
+                .start(new SuperSlowMotionTriggerAnimationController.OnAnimationEndListener() { // from class:
+                                                                                                // com.sonyericsson.android.camera.view.ViewFinderImpl.22
+                    @Override // com.sonyericsson.android.camera.view.SuperSlowMotionTriggerAnimationController.OnAnimationEndListener
+                    public void onAnimationEnd() {
+                        ViewFinderImpl.this.mStateMachine.sendEvent(
+                                StateMachine.TransitterEvent.EVENT_SLOW_MOTION_FEEDBACK_ANIMATION_END, new Object[0]);
+                    }
+                }, this.mRecordingOrientation == 2);
     }
 
     private void showHintTextIfNeeded() {
@@ -4476,27 +6046,32 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private boolean isOverlayControlEnabled() {
-        if (getBaseLayout().getSemiAutoControl().isInitialized() && getBaseLayout().getSemiAutoControl().get().isEnabled()) {
+        if (getBaseLayout().getSemiAutoControl().isInitialized()
+                && getBaseLayout().getSemiAutoControl().get().isEnabled()) {
             return true;
         }
-        return getBaseLayout().getImageQualityControl().isInitialized() && getBaseLayout().getImageQualityControl().get().isEnabled();
+        return getBaseLayout().getImageQualityControl().isInitialized()
+                && getBaseLayout().getImageQualityControl().get().isEnabled();
     }
 
     private boolean isOverlayControlVisible() {
-        if (getBaseLayout().getSemiAutoControl().isInitialized() && getBaseLayout().getSemiAutoControl().get().isVisible()) {
+        if (getBaseLayout().getSemiAutoControl().isInitialized()
+                && getBaseLayout().getSemiAutoControl().get().isVisible()) {
             return true;
         }
-        return getBaseLayout().getImageQualityControl().isInitialized() && getBaseLayout().getImageQualityControl().get().isVisible();
+        return getBaseLayout().getImageQualityControl().isInitialized()
+                && getBaseLayout().getImageQualityControl().get().isVisible();
     }
 
     public boolean isSemiAutoEnabled() {
-        return getBaseLayout().getSemiAutoControl().isInitialized() && getBaseLayout().getSemiAutoControl().get().isEnabled();
+        return getBaseLayout().getSemiAutoControl().isInitialized()
+                && getBaseLayout().getSemiAutoControl().get().isEnabled();
     }
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
     public boolean isAutoReviewShowing() {
         if (this.mSideTouchUi != null) {
-            return getBaseLayout().isAutoReviewShowing() || this.mSideTouchUi.containsIn(SideTouchUi$Type.AUTO_REVIEW);
+            return getBaseLayout().isAutoReviewShowing() || this.mSideTouchUi.containsIn(SideTouchUi.Type.AUTO_REVIEW);
         }
         return getBaseLayout().isAutoReviewShowing();
     }
@@ -4538,7 +6113,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
         TutorialController tutorial = getBaseLayout().getTutorial();
         if (tutorial != null) {
-            LocalResearchUtil.getInstance().sendSetupWizardEvent(Event$WizardResult.OTHER);
+            LocalResearchUtil.getInstance().sendSetupWizardEvent(Event.WizardResult.OTHER);
             LocalResearchUtil.getInstance().closeSetupWizard();
             tutorial.pause();
         }
@@ -4552,21 +6127,19 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private static boolean isSemiAutoControlAvailable(CapturingMode capturingMode) {
-        int i = ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()];
-        if (i == 7) {
-            return true;
-        }
-        switch (i) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
+        switch (capturingMode) {
+            case SLOW_MOTION:
+            case SCENE_RECOGNITION:
+            case SUPERIOR_FRONT:
+            case VIDEO:
+            case FRONT_VIDEO:
                 return true;
             default:
                 return false;
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void onAppsUiModeFinish() {
         if (!getActivity().isInLockTaskMode()) {
             changeLayoutTo(BaseLayoutPattern.CLEAR);
@@ -4577,20 +6150,32 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         this.mActivity.abort();
     }
 
-    private void setupTransitionAnimationController(CameraActivity cameraActivity, ViewFinder$HeadUpDisplaySetupState viewFinder$HeadUpDisplaySetupState) {
+    private void setupTransitionAnimationController(CameraActivity cameraActivity,
+            ViewFinder.HeadUpDisplaySetupState headUpDisplaySetupState) {
         if (this.mAnimationController == null) {
-            this.mAnimationController = new TransitionAnimationController(this.mApplicationNavigator, getBaseLayout().getPrimaryShortcut().getAllPrimaryShortcutView(), cameraActivity.findViewById(2131296632), cameraActivity.findViewById(2131296396), cameraActivity.findViewById(2131296460), cameraActivity.findViewById(2131296433), getBaseLayout().getGridLineView(), getBaseLayout().getModeButtonShortcut(), getBaseLayout().getMruButtonContainer(), cameraActivity.findViewById(2131296370), getBaseLayout().getFrontAngleSwitchButton(), this.mBaseLayout.getSwitchAnimationView());
+            this.mAnimationController = new TransitionAnimationController(this.mApplicationNavigator,
+                    getBaseLayout().getPrimaryShortcut().getAllPrimaryShortcutView(),
+                    cameraActivity.findViewById(R.id.sub_button), cameraActivity.findViewById(R.id.extra_button),
+                    cameraActivity.findViewById(R.id.main_button), cameraActivity.findViewById(R.id.inner_cover),
+                    getBaseLayout().getGridLineView(), getBaseLayout().getModeButtonShortcut(),
+                    getBaseLayout().getMruButtonContainer(), cameraActivity.findViewById(R.id.contents_container),
+                    getBaseLayout().getFrontAngleSwitchButton(), this.mBaseLayout.getSwitchAnimationView());
         }
         this.mAnimationController.resume();
         if (this.mPreviewCover == null) {
-            this.mPreviewCover = getActivity().findViewById(2131296433);
+            this.mPreviewCover = getActivity().findViewById(R.id.inner_cover);
         }
         this.mPreviewCover.setAlpha(0.0f);
         this.mPreviewCover.setVisibility(0);
     }
 
-    private void startModeChangedAnimation(CapturingMode capturingMode, CapturingMode capturingMode2, AnimationRequest$AnimationType animationRequest$AnimationType) {
-        if (!requestAnimation(new AnimationRequest(animationRequest$AnimationType, AnimationRequest$AnimationDegree.FINISH, capturingMode, capturingMode2)) || this.mApplicationNavigator == null) {
+    private void startModeChangedAnimation(CapturingMode capturingMode, CapturingMode capturingMode2,
+            AnimationRequest.AnimationType animationType) {
+        if (!requestAnimation(new AnimationRequest(animationType, AnimationRequest.AnimationDegree.FINISH,
+                capturingMode, capturingMode2))) {
+            return;
+        }
+        if (this.mApplicationNavigator == null) {
             return;
         }
         this.mApplicationNavigator.resetContentDescriptionForModeName();
@@ -4621,22 +6206,23 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private void resumeApplicationNavigator(NavigatorContents navigatorContents) {
-        boolean zIsOneShot = getActivity().isOneShot();
+        boolean isOneShot = getActivity().isOneShot();
         if (this.mApplicationNavigator != null) {
-            setApplicationNavigatorEnabled(!zIsOneShot);
-            if (zIsOneShot) {
+            setApplicationNavigatorEnabled(!isOneShot);
+            if (isOneShot) {
                 return;
             }
             this.mApplicationNavigator.resume(navigatorContents);
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void setApplicationNavigatorEnabled(boolean z) {
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[getCapturingMode().ordinal()]) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
+        switch (getCapturingMode()) {
+            case SCENE_RECOGNITION:
+            case SUPERIOR_FRONT:
+            case VIDEO:
+            case FRONT_VIDEO:
                 break;
             default:
                 z = false;
@@ -4652,27 +6238,37 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
 
     private void setupApplicationNavigator(CameraActivity cameraActivity, NavigatorContents navigatorContents) {
         if (this.mApplicationNavigator == null) {
-            this.mApplicationNavigator = (ApplicationNavigator) cameraActivity.findViewById(2131296293);
-            FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) this.mApplicationNavigator.getLayoutParams();
-            ViewFinderImpl$23 viewFinderImpl$23 = new ViewFinderImpl$23(this);
-            frameLayout$LayoutParams.rightMargin = this.mBaseLayout.calculateCaptureButtonAreaHeight();
-            this.mApplicationNavigator.setLayoutParams(frameLayout$LayoutParams);
-            this.mApplicationNavigator.setup(navigatorContents, getBaseLayout().getViewFinderRect(), this.mBaseLayout.calculateCaptureButtonAreaHeight(), viewFinderImpl$23);
+            this.mApplicationNavigator = (ApplicationNavigator) cameraActivity.findViewById(R.id.application_navigator);
+            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) this.mApplicationNavigator
+                    .getLayoutParams();
+            View.OnClickListener onClickListener = new View.OnClickListener() { // from class:
+                                                                                // com.sonyericsson.android.camera.view.ViewFinderImpl.23
+                @Override // android.view.View.OnClickListener
+                public void onClick(View view) {
+                    ViewFinderImpl.this.transitionModeOnNavigator(((Integer) view.getTag()).intValue());
+                }
+            };
+            layoutParams.rightMargin = this.mBaseLayout.calculateCaptureButtonAreaHeight();
+            this.mApplicationNavigator.setLayoutParams(layoutParams);
+            this.mApplicationNavigator.setup(navigatorContents, getBaseLayout().getViewFinderRect(),
+                    this.mBaseLayout.calculateCaptureButtonAreaHeight(), onClickListener);
             this.mApplicationNavigator.setOrientation(this.mOrientation);
         }
         resumeApplicationNavigator(navigatorContents);
     }
 
     private void setupCaptureButtonArea() {
-        FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) this.mActivity.findViewById(2131296534).getLayoutParams();
-        frameLayout$LayoutParams.width = this.mBaseLayout.calculateCaptureButtonAreaHeight();
-        this.mActivity.findViewById(2131296534).setLayoutParams(frameLayout$LayoutParams);
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) this.mActivity
+                .findViewById(R.id.right_container).getLayoutParams();
+        layoutParams.width = this.mBaseLayout.calculateCaptureButtonAreaHeight();
+        this.mActivity.findViewById(R.id.right_container).setLayoutParams(layoutParams);
     }
 
     private void setupRightIndicatorArea() {
-        FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) this.mActivity.findViewById(2131296445).getLayoutParams();
-        frameLayout$LayoutParams.rightMargin = this.mBaseLayout.calculateCaptureButtonAreaHeight();
-        this.mActivity.findViewById(2131296445).setLayoutParams(frameLayout$LayoutParams);
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) this.mActivity
+                .findViewById(R.id.left_indicator_container).getLayoutParams();
+        layoutParams.rightMargin = this.mBaseLayout.calculateCaptureButtonAreaHeight();
+        this.mActivity.findViewById(R.id.left_indicator_container).setLayoutParams(layoutParams);
     }
 
     private void setApplicationNavigatorPosition(NavigatorContents navigatorContents, float f) {
@@ -4684,17 +6280,20 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     public static CapturingMode getCapturingMode(NavigatorContents navigatorContents, CapturingMode capturingMode) {
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$NavigatorContents[navigatorContents.ordinal()]) {
-            case 1:
-                if (!capturingMode.isFront()) {
+        switch (navigatorContents) {
+            case SUPERIOR_AUTO:
+                if (capturingMode.isFront()) {
+                    return CapturingMode.SUPERIOR_FRONT;
                 }
-                break;
-            case 2:
-                if (!capturingMode.isFront()) {
+                return CapturingMode.SCENE_RECOGNITION;
+            case VIDEO:
+                if (capturingMode.isFront()) {
+                    return CapturingMode.FRONT_VIDEO;
                 }
-                break;
+                return CapturingMode.VIDEO;
+            default:
+                return CapturingMode.SCENE_RECOGNITION;
         }
-        return CapturingMode.SCENE_RECOGNITION;
     }
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
@@ -4714,19 +6313,23 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private boolean startDraggingSwitchStartedAnimation() {
-        if (!this.mAnimationController.requestAnimation(new AnimationRequest(AnimationRequest$AnimationType.SWITCH_TOUCH, AnimationRequest$AnimationDegree.START, getCapturingMode(), getCapturingMode()))) {
+        if (!this.mAnimationController
+                .requestAnimation(new AnimationRequest(AnimationRequest.AnimationType.SWITCH_TOUCH,
+                        AnimationRequest.AnimationDegree.START, getCapturingMode(), getCapturingMode()))) {
             return false;
         }
         this.mBaseLayout.computeRadiusOfAnimation();
         return true;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void startDraggingSwitchAnimation(float f) {
         if (this.mAnimationController.startSwitchDraggingAnimation(f)) {
             this.mPreviewCover.setAlpha(f);
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void resetAnimationProperty() {
         this.mAnimationController.resume();
     }
@@ -4736,16 +6339,21 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return this.mIsSwitchingAnimationProgress;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void setIsSwitchingAnimationProgress(boolean z) {
         this.mIsSwitchingAnimationProgress = z;
     }
 
     private void setupHintText() {
         FrameLayout hintTextViewContainer;
-        if (this.mHintText != null || (hintTextViewContainer = getBaseLayout().getHintTextViewContainer()) == null) {
+        if (this.mHintText != null) {
             return;
         }
-        this.mHintText = new HintTextViewController(hintTextViewContainer, new ViewFinderImpl$HintTextListenerImpl(this), this.mScreenAspect);
+        if ((hintTextViewContainer = getBaseLayout().getHintTextViewContainer()) == null) {
+            return;
+        }
+        this.mHintText = new HintTextViewController(hintTextViewContainer, new HintTextListenerImpl(),
+                this.mScreenAspect);
         updateHintTextUiOrientation();
     }
 
@@ -4757,7 +6365,10 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private void updateThermalHintTextMessage(CapturingMode capturingMode) {
-        if (this.mHintText == null || capturingMode == CapturingMode.SLOW_MOTION) {
+        if (this.mHintText == null) {
+            return;
+        }
+        if (capturingMode == CapturingMode.SLOW_MOTION) {
             return;
         }
         postHintText(new HintTextThermalWarning());
@@ -4781,15 +6392,71 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return contentsViewController.getCurrentRequestId();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    class GestureShutterListener implements GestureShutter.WindowHost {
+        private GestureShutterView mGestureShutterView;
+
+        private GestureShutterListener() {
+            this.mGestureShutterView = null;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.WindowHost
+        public GestureShutterView getGestureShutterView() {
+            setupGestureShutterView();
+            return this.mGestureShutterView;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.WindowHost
+        public void showGestureShutterView() {
+            hideGestureShutterView();
+            setupGestureShutterView();
+            ViewFinderImpl.this.getBaseLayout().getLazyInflatedUiComponentContainerBack()
+                    .addView(this.mGestureShutterView);
+            ViewFinderImpl.this.getBaseLayout().getLazyInflatedUiComponentContainerBack()
+                    .bringChildToFront(this.mGestureShutterView);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.WindowHost
+        public void hideGestureShutterView() {
+            if (this.mGestureShutterView != null) {
+                ViewFinderImpl.this.getBaseLayout().getLazyInflatedUiComponentContainerBack()
+                        .removeView(this.mGestureShutterView);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.WindowHost
+        public Point getPreviewSize() {
+            return LayoutOrientationResolver.getInstance().getPointAccordingToLayoutOrientation(
+                    new Point(ViewFinderImpl.this.getBaseLayout().getPreviewContainer().getWidth(),
+                            ViewFinderImpl.this.getBaseLayout().getPreviewContainer().getHeight()));
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.WindowHost
+        public Rect getViewFinderSize() {
+            return LayoutDependencyResolver.getViewFinderSize(ViewFinderImpl.this.mActivity);
+        }
+
+        private void setupGestureShutterView() {
+            if (this.mGestureShutterView == null) {
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -1);
+                this.mGestureShutterView = new GestureShutterView(ViewFinderImpl.this.getActivity());
+                this.mGestureShutterView.setLayoutParams(layoutParams);
+            }
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
     private CameraActivity getActivity() {
         return this.mActivity;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private BaseLayout getBaseLayout() {
         return this.mBaseLayout;
     }
 
-    @Override // com.sonyericsson.android.camera.view.ViewFinder, com.sonyericsson.cameracommon.viewfinder.ViewFinderInterface
+    @Override // com.sonyericsson.android.camera.view.ViewFinder,
+              // com.sonyericsson.cameracommon.viewfinder.ViewFinderInterface
     public boolean isHeadUpDisplayReady() {
         return this.mBaseLayout != null && this.mBaseLayout.isHeadUpDisplayReady();
     }
@@ -4807,7 +6474,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private boolean isAcquired() {
-        return this.mActivity.getGeoTagManager().isNetworkAcquired() | this.mActivity.getGeoTagManager().isGpsAcquired();
+        return this.mActivity.getGeoTagManager().isNetworkAcquired()
+                | this.mActivity.getGeoTagManager().isGpsAcquired();
     }
 
     private void setPreInflatedHeadUpDisplay(View view) {
@@ -4830,7 +6498,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
     }
 
-    @Override // com.sonyericsson.android.camera.view.ViewFinder, com.sonyericsson.cameracommon.viewfinder.ViewFinderInterface
+    @Override // com.sonyericsson.android.camera.view.ViewFinder,
+              // com.sonyericsson.cameracommon.viewfinder.ViewFinderInterface
     public void onShutterDone(boolean z) {
         if (isHeadUpDisplayReady()) {
             clearTouchedScreenButtonGroup();
@@ -4865,7 +6534,14 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         this.mBaseLayout.getTutorial().setOnClickTutorialButtonListener(this.mOnClickTutorialButtonListener);
         this.mBaseLayout.getTutorial().setSystemUiAccessor(this.mSystemUiAccessor);
         UserSettings userSetting = this.mStateMachine.getUserSetting();
-        this.mBaseLayout.setupImageQualityControl(this.mUiControlSettings, new ViewFinderImpl$OverlayControlStateListener(this, ViewFinder$UiComponentKind.OVERLAY_CONTROL_SEEKING), new ViewFinderImpl$EnumValueAccessorImpl(userSetting, UserSettingKey.CAPTURING_MODE, null), new ViewFinderImpl$EnumValueAccessorImpl(userSetting, UserSettingKey.FOCUS_RANGE, null), new ViewFinderImpl$EnumValueAccessorImpl(userSetting, UserSettingKey.SHUTTER_SPEED, null), new ViewFinderImpl$EnumValueAccessorImpl(userSetting, UserSettingKey.ISO, null), new ViewFinderImpl$EnumValueAccessorImpl(userSetting, UserSettingKey.EV, null), new ViewFinderImpl$EnumValueAccessorImpl(userSetting, UserSettingKey.WHITE_BALANCE, null));
+        this.mBaseLayout.setupImageQualityControl(this.mUiControlSettings,
+                new OverlayControlStateListener(ViewFinder.UiComponentKind.OVERLAY_CONTROL_SEEKING),
+                new EnumValueAccessorImpl(userSetting, UserSettingKey.CAPTURING_MODE),
+                new EnumValueAccessorImpl(userSetting, UserSettingKey.FOCUS_RANGE),
+                new EnumValueAccessorImpl(userSetting, UserSettingKey.SHUTTER_SPEED),
+                new EnumValueAccessorImpl(userSetting, UserSettingKey.ISO),
+                new EnumValueAccessorImpl(userSetting, UserSettingKey.EV),
+                new EnumValueAccessorImpl(userSetting, UserSettingKey.WHITE_BALANCE));
         if (getCapturingMode() == CapturingMode.SLOW_MOTION) {
             this.mBaseLayout.getSuperSlowMotionTriggerAnimation().prepareViews();
         }
@@ -4874,20 +6550,79 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
             this.mBaseLayout.reloadContentsViewController(getThumbnailStateListener());
         }
         if (this.mActivity.getGeoTagManager() != null) {
-            this.mActivity.getGeoTagManager().setLocationAcquiredListener(new ViewFinderImpl$LocationAcquiredListenerImpl(this, null));
+            this.mActivity.getGeoTagManager().setLocationAcquiredListener(new LocationAcquiredListenerImpl());
         }
         if (this.mActivity.getStorage() != null) {
             this.mActivity.getStorage().addStorageStateListener(this.mStorageStateListener);
         }
-        getBaseLayout().getZoomBar().setZoombarDisplayChangedListener(new ViewFinderImpl$ZoombarDisplayChangedListenerImpl(this, null));
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[getCapturingMode().ordinal()]) {
-            case 5:
-            case 6:
+        getBaseLayout().getZoomBar().setZoombarDisplayChangedListener(new ZoombarDisplayChangedListenerImpl());
+        switch (getCapturingMode()) {
+            case NORMAL:
+            case FRONT_PHOTO:
                 enableOverlayControl(getBaseLayout().getImageQualityControl());
-                break;
-            case 7:
+                return;
+            case SLOW_MOTION:
                 getBaseLayout().getSuperSlowMotionTriggerAnimation().prepareViews();
-                break;
+                return;
+            default:
+                return;
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    class ZoombarDisplayChangedListenerImpl implements Zoombar.ZoombarDisplayChangedListener {
+        private ZoombarDisplayChangedListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.zoombar.Zoombar.ZoombarDisplayChangedListener
+        public void onShowZoombar() {
+            ViewFinderImpl.this.getBaseLayout().getTopIndicator().setVisibility(4);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.zoombar.Zoombar.ZoombarDisplayChangedListener
+        public void onZoombarHidden() {
+            ViewFinderImpl.this.getBaseLayout().getTopIndicator().setVisibility(0);
+            if (ViewFinderImpl.this.mSideTouchUi.detachTo(SideTouchUi.Type.COVERING)) {
+                if (ViewFinderImpl.this.mSideTouchUi.containsIn(SideTouchUi.Type.RECORDING,
+                        SideTouchUi.Type.RECORDING_HDR)) {
+                    ViewFinderImpl.this.changeLayoutTo(BaseLayoutPattern.RECORDING, true);
+                }
+                if (ViewFinderImpl.this.mSideTouchUi.containsIn(SideTouchUi.Type.RECORDING_PAUSE,
+                        SideTouchUi.Type.RECORDING_HDR_PAUSE)) {
+                    ViewFinderImpl.this.changeLayoutTo(BaseLayoutPattern.PAUSE_RECORDING, true);
+                }
+            }
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    private static class EnumValueAccessorImpl<T extends UserSettingValue> implements EnumValueAccessor<T> {
+        private final UserSettingKey mKey;
+        private final UserSettings mSettings;
+
+        @Override // com.sonyericsson.android.camera.view.overlaycontrol.ValueAccessor
+        public T reset() {
+            return null;
+        }
+
+        private EnumValueAccessorImpl(UserSettings userSettings, UserSettingKey userSettingKey) {
+            this.mSettings = userSettings;
+            this.mKey = userSettingKey;
+        }
+
+        @Override // com.sonyericsson.android.camera.view.overlaycontrol.ValueAccessor
+        public T get() {
+            return (T) this.mSettings.get(this.mKey);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.overlaycontrol.ValueAccessor
+        public void set(T t) {
+            this.mSettings.set(t);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.overlaycontrol.EnumValueAccessor
+        public T[] values() {
+            return (T[]) this.mSettings.getOptions(this.mKey);
         }
     }
 
@@ -4895,9 +6630,9 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         if (needToShowGeoTagIndicator()) {
             if (GeotagManager.isGeoTagEnabled(this.mActivity.getStoredSettings().getUserSettings(), this.mActivity)) {
                 if (this.mActivity.getGeoTagManager() != null) {
-                    boolean zIsAcquiring = this.mActivity.getGeoTagManager().isAcquiring();
+                    boolean isAcquiring = this.mActivity.getGeoTagManager().isAcquiring();
                     this.mBaseLayout.getGeoTagIndicator().set(true);
-                    this.mBaseLayout.getGeoTagIndicator().isAcquired(!zIsAcquiring);
+                    this.mBaseLayout.getGeoTagIndicator().isAcquired(!isAcquiring);
                 }
             } else {
                 this.mBaseLayout.getGeoTagIndicator().set(false);
@@ -4909,21 +6644,48 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private void updateLowMemoryIndicator() {
-        this.mBaseLayout.getLowMemoryInternalIndicator().set(!hasEnoughFreeSpace(Storage$StorageType.INTERNAL));
-        this.mBaseLayout.getLowMemorySdIndicator().set(!hasEnoughFreeSpace(Storage$StorageType.EXTERNAL_CARD));
+        this.mBaseLayout.getLowMemoryInternalIndicator().set(!hasEnoughFreeSpace(Storage.StorageType.INTERNAL));
+        this.mBaseLayout.getLowMemorySdIndicator().set(!hasEnoughFreeSpace(Storage.StorageType.EXTERNAL_CARD));
     }
 
     private void updateThermalIndicator() {
         this.mBaseLayout.getThermalIndicator().set(this.mActivity.isThermalWarningState());
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    class LocationAcquiredListenerImpl implements LocationAcquiredListener {
+        private LocationAcquiredListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.mediasaving.location.LocationAcquiredListener
+        public void onAcquired(boolean z, boolean z2) {
+            if (ViewFinderImpl.this.isHeadUpDisplayReady()) {
+                ViewFinderImpl.this.mBaseLayout.getGeoTagIndicator().isAcquired(z || z2);
+            }
+        }
+
+        @Override // com.sonyericsson.cameracommon.mediasaving.location.LocationAcquiredListener
+        public void onLost() {
+            if (ViewFinderImpl.this.isHeadUpDisplayReady()) {
+                ViewFinderImpl.this.mBaseLayout.getGeoTagIndicator().isAcquired(false);
+            }
+        }
+
+        @Override // com.sonyericsson.cameracommon.mediasaving.location.LocationAcquiredListener
+        public void onDisabled() {
+            ViewFinderImpl.this.mActivity.getStoredSettings().getUserSettings().set(Geotag.OFF);
+            ViewFinderImpl.this.mBaseLayout.getGeoTagIndicator().set(false);
+            ViewFinderImpl.this.mActivity.readLocationSettings();
+        }
+    }
+
     private void startInflateTask(LayoutInflater layoutInflater, List<InflateItem> list) {
         if (CamLog.VERBOSE) {
             CamLog.d("startInflateTask in");
         }
-        ExecutorService executorServiceBuildExecutor = ThreadUtil.buildExecutor("InflateTask");
-        this.mInflateFuture = executorServiceBuildExecutor.submit(new InflateTask(layoutInflater, list));
-        executorServiceBuildExecutor.shutdown();
+        ExecutorService buildExecutor = ThreadUtil.buildExecutor("InflateTask");
+        this.mInflateFuture = buildExecutor.submit(new InflateTask(layoutInflater, list));
+        buildExecutor.shutdown();
         if (CamLog.VERBOSE) {
             CamLog.d("startInflateTask out");
         }
@@ -4970,6 +6732,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return this.mLayoutPatternApplier;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private LayoutPattern getCurrentLayoutPattern() {
         return this.mLayoutPattern;
     }
@@ -5006,8 +6769,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         if (capturingMode == null) {
             capturingMode = (CapturingMode) userSetting.get(UserSettingKey.CAPTURING_MODE);
         }
-        Size sizeComputeGridSize = computeGridSize(capturingMode, userSetting);
-        this.mBaseLayout.updateGridLine(sizeComputeGridSize.getWidth(), sizeComputeGridSize.getHeight());
+        Size computeGridSize = computeGridSize(capturingMode, userSetting);
+        this.mBaseLayout.updateGridLine(computeGridSize.getWidth(), computeGridSize.getHeight());
         GridLine gridLine = (GridLine) userSetting.get(UserSettingKey.GRID_LINE);
         if (predictiveLaunchCoverExists()) {
             this.mBaseLayout.setGridLineViewEnabled(false);
@@ -5018,11 +6781,12 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
 
     private Size computeGridSize(CapturingMode capturingMode, UserSettings userSettings) {
         Rect viewFinderRectSetting = getViewFinderRectSetting(userSettings, capturingMode);
-        float fWidth = viewFinderRectSetting.width() / viewFinderRectSetting.height();
-        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
-            fWidth = 1.0f / fWidth;
+        float width = (float) viewFinderRectSetting.width() / viewFinderRectSetting.height();
+        if (LayoutOrientationResolver.getInstance()
+                .getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
+            width = 1.0f / width;
         }
-        Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity, fWidth, this.mScreenAspect);
+        Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity, width, this.mScreenAspect);
         return new Size(surfaceViewRect.width(), surfaceViewRect.height());
     }
 
@@ -5038,18 +6802,23 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private void updateHintTextContainer(Rect rect) {
-        Rect rectAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance().getRectAccordingToLayoutOrientation(rect);
-        Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity, rectAccordingToLayoutOrientation.width() / rectAccordingToLayoutOrientation.height(), this.mScreenAspect);
+        Rect rectAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance()
+                .getRectAccordingToLayoutOrientation(rect);
+        Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity,
+                (float) rectAccordingToLayoutOrientation.width() / rectAccordingToLayoutOrientation.height(),
+                this.mScreenAspect);
         this.mHintText.updateHintTextContainer(surfaceViewRect.width(), surfaceViewRect.height());
         this.mHintText.setUiOrientation(surfaceViewRect, this.mActivity, this.mScreenAspect, this.mOrientation);
     }
 
     public void showHiSpeedSdCardRecommendDialogOnModeChange() {
-        if (isNeedToShowHiSpeedSdCardRecommendation() && this.mStateMachine.getCurrentCapturingMode() == CapturingMode.SLOW_MOTION) {
+        if (isNeedToShowHiSpeedSdCardRecommendation()
+                && this.mStateMachine.getCurrentCapturingMode() == CapturingMode.SLOW_MOTION) {
             showMessageDialog(DialogId.HIGH_SPEED_SD_RECOMMENDATION_ON_MODE_CHANGE, new Object[0]);
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void showHiSpeedSdCardRecommendDialogOnVideoSizeChange() {
         VideoSize videoSize = (VideoSize) this.mStateMachine.getUserSetting().get(UserSettingKey.VIDEO_SIZE);
         if (isNeedToShowHiSpeedSdCardRecommendation() && videoSize.is4KVideo()) {
@@ -5070,12 +6839,14 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     private boolean isNeedToShowHiSpeedSdCardRecommendation() {
-        DestinationToSave destinationToSave = (DestinationToSave) this.mActivity.getStoredSettings().getUserSettings().get(UserSettingKey.DESTINATION_TO_SAVE);
-        if (destinationToSave.getType() != Storage$StorageType.EXTERNAL_CARD) {
+        DestinationToSave destinationToSave = (DestinationToSave) this.mActivity.getStoredSettings().getUserSettings()
+                .get(UserSettingKey.DESTINATION_TO_SAVE);
+        if (destinationToSave.getType() != Storage.StorageType.EXTERNAL_CARD) {
             return false;
         }
-        Storage$StorageState currentState = this.mActivity.getStorage().getCurrentState(destinationToSave.getType());
-        return currentState == Storage$StorageState.AVAILABLE || currentState == Storage$StorageState.AVAILABLE_NEAR_FULL;
+        Storage.StorageState currentState = this.mActivity.getStorage().getCurrentState(destinationToSave.getType());
+        return currentState == Storage.StorageState.AVAILABLE
+                || currentState == Storage.StorageState.AVAILABLE_NEAR_FULL;
     }
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
@@ -5093,99 +6864,321 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         if (CamLog.VERBOSE) {
             CamLog.d("showMessageDialog() E : " + dialogId);
         }
-        ViewFinderImpl$ShowMessageDialogTask viewFinderImpl$ShowMessageDialogTask = new ViewFinderImpl$ShowMessageDialogTask(this, dialogId, objArr);
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$messagedialog$DialogId[dialogId.ordinal()]) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-                if (this.mSettingUi == null) {
-                    this.mDelayUpdatedViewTaskList.add(viewFinderImpl$ShowMessageDialogTask);
-                } else {
-                    viewFinderImpl$ShowMessageDialogTask.run();
-                }
-                break;
-            default:
-                viewFinderImpl$ShowMessageDialogTask.run();
-                break;
+        ShowMessageDialogTask showMessageDialogTask = new ShowMessageDialogTask(dialogId, objArr);
+        if (dialogId == DialogId.MEMORY_FULL_PROPOSE_CHANGE_TO_INTERNAL
+                || dialogId == DialogId.MEMORY_UNAVAILABLE_PROPOSE_CHANGE_TO_INTERNAL
+                || dialogId == DialogId.MEMORY_FULL_PROPOSE_CHANGE_TO_SD
+                || dialogId == DialogId.MEMORY_UNAVAILABLE_PROPOSE_CHANGE_TO_SD) {
+            if (this.mSettingUi == null) {
+                this.mDelayUpdatedViewTaskList.add(showMessageDialogTask);
+                return;
+            } else {
+                showMessageDialogTask.run();
+                return;
+            }
+        } else {
+            showMessageDialogTask.run();
+            return;
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    class ShowMessageDialogTask implements Runnable {
+        private MessageDialogRequest mRequestParam = new MessageDialogRequest();
+
+        public ShowMessageDialogTask(DialogId dialogId, Object... objArr) {
+            this.mRequestParam.mDialogId = dialogId;
+            this.mRequestParam.mOptions = objArr;
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            if (!ViewFinderImpl.this.mIsSetupHeadupDisplayInvoked) {
+                ViewFinderImpl.this.mMessageDialog.setSensorOrientation(ViewFinderImpl.this.mActivity.getOrientation());
+            }
+            if (ViewFinderImpl.this.mMessageDialog.request(this.mRequestParam)) {
+                return;
+            }
+            if (this.mRequestParam.mDialogId == DialogId.UNLOCK_REQUEST_FOR_OPENING_OPTION_MENU) {
+                ViewFinderImpl.this.mActivity.requestLaunchAdvancedCamera(
+                        LaunchCondition.ExtraOperation.OPEN_SETTINGS_MENU, (String) this.mRequestParam.mOptions[0]);
+                return;
+            } else if (this.mRequestParam.mDialogId == DialogId.THERMAL_NOTE) {
+                ViewFinderImpl.this.showHiSpeedSdCardRecommendDialogOnVideoSizeChange();
+                return;
+            }
+        }
+    }
+
+    public class MessageDialogOnClickPositiveListenerImpl
+            implements MessageDialogController.MessageDialogOnClickListener {
+        public MessageDialogOnClickPositiveListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.messagedialog.MessageDialogController.MessageDialogOnClickListener
+        public void onClick(MessageDialogRequest messageDialogRequest) {
+            DialogId did = messageDialogRequest.mDialogId;
+            if (did == DialogId.MEMORY_FULL_PROPOSE_CHANGE_TO_INTERNAL
+                    || did == DialogId.MEMORY_UNAVAILABLE_PROPOSE_CHANGE_TO_INTERNAL
+                    || did == DialogId.MEMORY_FULL_PROPOSE_CHANGE_TO_SD
+                    || did == DialogId.MEMORY_UNAVAILABLE_PROPOSE_CHANGE_TO_SD
+                    || did == DialogId.HIGH_SPEED_SD_RECOMMENDATION_ON_MODE_CHANGE) {
+                ViewFinderImpl.this.openUserSelectMenu(UserSettingKey.DESTINATION_TO_SAVE);
+            } else if (did == DialogId.UNLOCK_REQUEST_FOR_OPENING_OPTION_MENU) {
+                Object[] objArr = messageDialogRequest.mOptions;
+                if (objArr != null) {
+                    ViewFinderImpl.this.mActivity.requestLaunchAdvancedCamera(
+                            LaunchCondition.ExtraOperation.OPEN_SETTINGS_MENU, (String) objArr[0]);
+                } else {
+                    ViewFinderImpl.this.mActivity
+                            .requestLaunchAdvancedCamera(LaunchCondition.ExtraOperation.OPEN_SETTINGS_MENU, null);
+                }
+            } else if (did == DialogId.THERMAL_NOTE) {
+                ViewFinderImpl.this.showHiSpeedSdCardRecommendDialogOnVideoSizeChange();
+            } else if (did == DialogId.LOCATION_SERVICE_DISABLE_ON_LAUNCH
+                    || did == DialogId.LOCATION_SERVICE_DISABLE_ON_CONTEXTUAL_SETTINGS) {
+                ViewFinderImpl.this.mStateMachine.getUserSetting().set(Geotag.ON);
+                ViewFinderImpl.this.launchLocationSourceSettings();
+            } else if (did == DialogId.UNLOCK_REQUEST_FOR_OPENING_ADD_ON_APP) {
+                Intent intent = (Intent) messageDialogRequest.mOptions[0];
+                Bundle bundle = (Bundle) messageDialogRequest.mOptions[1];
+                ViewFinderImpl.this.sendViewUpdateEvent(
+                        ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_MRU_SHORTCUT,
+                        (Mode) messageDialogRequest.mOptions[2]);
+                ViewFinderImpl.this.requestStartActivityForMessageDialog(intent, bundle);
+            } else if (did == DialogId.FOURK_HIGH_SPEED_SD_RECOMMENDATION_ON_VIDEOSIZE_CHANGE) {
+                ViewFinderImpl.this.openUserSelectMenu(UserSettingKey.DESTINATION_TO_SAVE);
+                ViewFinderImpl.this.mSettingUi.updateSettingMenu(false);
+            } else if (did == DialogId.SIDE_SENSE_DISABLE_ON_CONTEXTUAL_SETTINGS) {
+                ViewFinderImpl.this.launchSideSenseSettings();
+            } else if (did == DialogId.RESET_CONFIRMATION) {
+                ViewFinderImpl.this.mActivity.requestRestartCameraActivityAfterResetSettings();
+            } else if (did == DialogId.REQUEST_SD_CARD_PERMISSION
+                    || did == DialogId.SD_CARD_PERMISSION_UNAVAILABLE) {
+                PermissionsUtil.requestSdCardGranted(ViewFinderImpl.this.mActivity, 20, StorageUtil.getVolumeUuid(
+                        Storage.StorageType.EXTERNAL_CARD, ViewFinderImpl.this.mActivity.getApplicationContext()));
+            }
+        }
+    }
+
+    class MessageDialogOnClickNegativeListenerImpl implements MessageDialogController.MessageDialogOnClickListener {
+        private MessageDialogOnClickNegativeListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.messagedialog.MessageDialogController.MessageDialogOnClickListener
+        public void onClick(MessageDialogRequest messageDialogRequest) {
+            if (messageDialogRequest.mDialogId == DialogId.SIDE_SENSE_DISABLE_ON_CONTEXTUAL_SETTINGS) {
+                ViewFinderImpl.this.mStateMachine.getUserSetting().set(SideSense.OFF);
+            } else if (messageDialogRequest.mDialogId == DialogId.LOCATION_SERVICE_DISABLE_ON_LAUNCH) {
+                ViewFinderImpl.this.updateLocation();
+            } else if (messageDialogRequest.mDialogId == DialogId.LOCATION_SERVICE_DISABLE_ON_CONTEXTUAL_SETTINGS) {
+                ViewFinderImpl.this.openSettingMenuDialogInChina();
+                ViewFinderImpl.this.updateLocation();
+            }
+        }
+    }
+
+    class MessageDialogOnCancelListenerImpl implements MessageDialogController.MessageDialogOnCancelListener {
+        private MessageDialogOnCancelListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.messagedialog.MessageDialogController.MessageDialogOnCancelListener
+        public void onCancel(MessageDialogRequest messageDialogRequest) {
+            if (messageDialogRequest.mDialogId == DialogId.SIDE_SENSE_DISABLE_ON_CONTEXTUAL_SETTINGS) {
+                ViewFinderImpl.this.mStateMachine.getUserSetting().set(SideSense.OFF);
+            } else if (messageDialogRequest.mDialogId == DialogId.THERMAL_NOTE) {
+                ViewFinderImpl.this.showHiSpeedSdCardRecommendDialogOnVideoSizeChange();
+            } else if (messageDialogRequest.mDialogId == DialogId.LOCATION_SERVICE_DISABLE_ON_LAUNCH) {
+                ViewFinderImpl.this.updateLocation();
+            } else if (messageDialogRequest.mDialogId == DialogId.LOCATION_SERVICE_DISABLE_ON_CONTEXTUAL_SETTINGS) {
+                ViewFinderImpl.this.openSettingMenuDialogInChina();
+                ViewFinderImpl.this.updateLocation();
+            }
+        }
+    }
+
+    class MessageDialogOnDismissListenerImpl implements MessageDialogController.MessageDialogOnDismissListener {
+        private MessageDialogOnDismissListenerImpl() {
+        }
+
+        /*
+         * as an issue.
+         */
+        @Override // com.sonyericsson.android.camera.view.messagedialog.MessageDialogController.MessageDialogOnDismissListener
+        public void onDismiss(MessageDialogRequest messageDialogRequest) {
+            if (messageDialogRequest.mDialogId != DialogId.PREDICTIVE_LAUNCH_DESCRIPTION) {
+                ViewFinderImpl.this.hidePredictiveLaunchCover(PredictiveLaunchHideTrigger.OTHER);
+            }
+            switch (messageDialogRequest.mDialogId) {
+                case MEMORY_FULL_PROPOSE_CHANGE_TO_INTERNAL:
+                case MEMORY_UNAVAILABLE_PROPOSE_CHANGE_TO_INTERNAL:
+                case MEMORY_FULL_PROPOSE_CHANGE_TO_SD:
+                case MEMORY_UNAVAILABLE_PROPOSE_CHANGE_TO_SD:
+                case MEMORY_FULL:
+                case MEMORY_SD_UNAVAILABLE:
+                case MEMORY_INTERNAL_UNAVAILABLE:
+                    ViewFinderImpl.this.onCloseStorageDialog();
+                    break;
+                case LOCATION_SERVICE_DISABLE_ON_CONTEXTUAL_SETTINGS:
+                    ViewFinderImpl.this.openSettingMenuDialogInChina();
+                    break;
+                case RESET_CONFIRMATION:
+                case MAX_FILESIZE_REACHED:
+                case MAX_DURATION_REACHED:
+                    ViewFinderImpl.this.mStateMachine.sendEvent(
+                            StateMachine.TransitterEvent.EVENT_DIALOG_CLOSED,
+                            ViewFinder.UiComponentKind.NOTICE_DIALOG);
+                    break;
+                case ERROR_IN_USE_BY_ANOTHER_APPLICATION:
+                case ERROR_UNKNOWN:
+                    PlatformCapability.setDeviceError(true);
+                    ViewFinderImpl.this.exitByError();
+                    break;
+                case ERROR_USE_OF_CAMERA_RESTRICTED:
+                case MEMORY_SHORTAGE_ON_ONE_SHOT_VIDEO:
+                case COULD_NOT_SAVE_PHOTO:
+                case COULD_NOT_START_RECORDING:
+                    ViewFinderImpl.this.exitByError();
+                    break;
+                case THERMAL_CRITICAL:
+                case LOW_BATTERY_CRITICAL_ON_RECORDING:
+                case LOW_BATTERY_CRITICAL_ON_PHOTO:
+                case MEMORY_SD_UNAVAILABLE_FOR_CORRUPT:
+                    ViewFinderImpl.this.mStateMachine.sendEvent(
+                            StateMachine.TransitterEvent.EVENT_DIALOG_CLOSED,
+                            ViewFinder.UiComponentKind.FATAL_ALERT_DIALOG);
+                    break;
+                case PREDICTIVE_LAUNCH_DESCRIPTION:
+                    ViewFinderImpl.this.mActivity.setupAutoPowerOffTimeOutDuration(
+                            ViewFinderImpl.this.predictiveLaunchCoverExists());
+                    ViewFinderImpl.this.mActivity.restartAutoPowerOffTimer();
+                    break;
+            }
+        }
+    }
+
+    private class MessageDialogOnOpenListenerImpl implements MessageDialogController.MessageDialogOnOpenListener {
+        private MessageDialogOnOpenListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.messagedialog.MessageDialogController.MessageDialogOnOpenListener
+        public void onOpen(MessageDialogRequest messageDialogRequest) {
+            switch (messageDialogRequest.mDialogId) {
+                case MEMORY_FULL_PROPOSE_CHANGE_TO_INTERNAL:
+                case MEMORY_UNAVAILABLE_PROPOSE_CHANGE_TO_INTERNAL:
+                case MEMORY_FULL_PROPOSE_CHANGE_TO_SD:
+                case MEMORY_UNAVAILABLE_PROPOSE_CHANGE_TO_SD:
+                case MEMORY_FULL:
+                case MEMORY_SD_UNAVAILABLE:
+                case MEMORY_INTERNAL_UNAVAILABLE:
+                    ViewFinderImpl.this.onOpenStorageDialog();
+                    break;
+                case MAX_FILESIZE_REACHED:
+                case MAX_DURATION_REACHED:
+                case RESET_CONFIRMATION:
+                    ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_OPENED,
+                            ViewFinder.UiComponentKind.NOTICE_DIALOG);
+                    break;
+            }
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
     private void exitByError() {
         if (PlatformCapability.hasDeviceError()) {
             if (this.mActivity != null) {
                 this.mActivity.finishAndKillProcess();
-                return;
             } else {
                 Process.killProcess(Process.myPid());
-                return;
             }
+            return;
         }
-        if (this.mActivity == null || this.mIsPaused) {
+        if (this.mActivity == null) {
+            return;
+        }
+        if (this.mIsPaused) {
             return;
         }
         this.mActivity.finish();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void launchLocationSourceSettings() {
         ApplicationLauncher.launchLocationSourceSettings(this.mActivity);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void launchSideSenseSettings() {
         ApplicationLauncher.launchSideSenseSettings(this.mActivity);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void updateLocation() {
         this.mActivity.getGeoTagManager().updateLocation(Geotag.OFF);
         this.mStateMachine.getUserSetting().set(Geotag.OFF);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void openSettingMenuDialogInChina() {
         if (RegionConfig.isChinaRegion(this.mActivity)) {
             this.mSettingUi.openSettingMenuDialog();
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void onOpenStorageDialog() {
         if (this.mCurrentDisplayingUiComponent == null) {
             return;
         }
-        this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_DIALOG_OPENED, new Object[0]);
+        this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_OPENED, new Object[0]);
         if (this.mSettingUi != null) {
             this.mSettingUi.closeDialogs();
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void onCloseStorageDialog() {
         if (isAllDialogClosed()) {
-            this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_DIALOG_CLOSED, ViewFinder$UiComponentKind.SETTING_DIALOG);
+            this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_CLOSED,
+                    ViewFinder.UiComponentKind.SETTING_DIALOG);
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void openUserSelectMenu(UserSettingKey userSettingKey) {
-        if (userSettingKey != null && ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()] == 3) {
+        if (userSettingKey != null
+                && userSettingKey == UserSettingKey.DESTINATION_TO_SAVE) {
             if (((VideoSize) this.mStateMachine.getUserSetting().get(UserSettingKey.VIDEO_SIZE)).is4KVideo()) {
                 this.mSettingDialogStack.closeAllSettingDialogs(false);
             }
             requestToRecoverSystemUi();
         }
-        updateUiComponent(ViewFinder$UiComponentKind.SETTING_DIALOG);
+        updateUiComponent(ViewFinder.UiComponentKind.SETTING_DIALOG);
         this.mSettingUi.openUserSelectMenu(userSettingKey);
     }
 
-    private void requestStartActivityForMessageDialog(Intent intent, Bundle bundle) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void requestStartActivityForMessageDialog(final Intent intent, final Bundle bundle) {
         Handler handler = getBaseLayout().getRootView().getHandler();
         if (handler != null) {
-            handler.post(new ViewFinderImpl$24(this, intent, bundle));
+            handler.post(new Runnable() { // from class: com.sonyericsson.android.camera.view.ViewFinderImpl.24
+                @Override // java.lang.Runnable
+                public void run() {
+                    ViewFinderImpl.this.requestStartActivity(intent, bundle);
+                    ViewFinderImpl.this.mActivity.abort();
+                }
+            });
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean requestStartActivity(Intent intent, Bundle bundle) {
         if (!this.mActivity.isInLockTaskMode()) {
             this.mCameraDevice.closeCamera(true);
             this.mIsRequestingStartActivity = true;
             try {
-                if (!CapturingModeUtil.MODE_WHITE_LIST.contains(intent.getStringExtra("com.sonymobile.camera.addon.intent.extra.CAPTURING_MODE"))) {
+                if (!CapturingModeUtil.MODE_WHITE_LIST
+                        .contains(intent.getStringExtra("com.sonymobile.camera.addon.intent.extra.CAPTURING_MODE"))) {
                     this.mActivity.startActivity(intent);
                     onAppsUiModeFinish();
                 } else if (bundle != null) {
@@ -5203,14 +7196,162 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return false;
     }
 
+    private final TutorialController.OnClickSetupWizardButtonListener mOnClickTutorialButtonListener = new TutorialController.OnClickSetupWizardButtonListener() { // from
+                                                                                                                                                                   // class:
+                                                                                                                                                                   // com.sonyericsson.android.camera.view.ViewFinderImpl.25
+        private void doPostProcessing(List<TutorialController.TutorialType> list) {
+            MessageSettings messageSettings = ViewFinderImpl.this.mActivity.getStoredSettings().getMessageSettings();
+            Iterator<TutorialController.TutorialType> it = list.iterator();
+            while (it.hasNext()) {
+                Iterator<MessageType> it2 = it.next().messageTypes.iterator();
+                while (it2.hasNext()) {
+                    messageSettings.setNeverShow(it2.next(), true);
+                    messageSettings.save();
+                }
+            }
+            ViewFinderImpl.this.setApplicationNavigatorEnabled(!ViewFinderImpl.this.mActivity.isOneShot());
+            ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_CLOSED,
+                    new Object[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.tutorial.TutorialController.OnClickSetupWizardButtonListener
+        public void onAccepted(TutorialController.TutorialType tutorialType) {
+            if (tutorialType != TutorialController.TutorialType.VIDEO_FUSION) {
+                return;
+            }
+            ViewFinderImpl.this.mStateMachine.sendEvent(
+                    StateMachine.TransitterEvent.EVENT_REQUEST_UPDATE_HIGH_SENSITIVITY_FUSION_MODE, FusionMode.AUTO);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.tutorial.TutorialController.OnClickSetupWizardButtonListener
+        public void onDenied(TutorialController.TutorialType tutorialType) {
+            if (tutorialType != TutorialController.TutorialType.VIDEO_FUSION) {
+                return;
+            }
+            ViewFinderImpl.this.mStateMachine.sendEvent(
+                    StateMachine.TransitterEvent.EVENT_REQUEST_UPDATE_HIGH_SENSITIVITY_FUSION_MODE, FusionMode.OFF);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.tutorial.TutorialController.OnClickSetupWizardButtonListener
+        public void onClose(List<TutorialController.TutorialType> list) {
+            if (list.contains(TutorialController.TutorialType.SUPER_SLOW_MOTION_MORE_OPTIONS)) {
+                ViewFinderImpl.this.showHiSpeedSdCardRecommendDialogOnModeChange();
+            } else if (list.contains(TutorialController.TutorialType.MANUAL_FUSION)) {
+                ViewFinderImpl.this.updateHighSensitivityFusionModeForManual();
+            }
+            doPostProcessing(list);
+        }
+    };
+    private TutorialController.SystemUiAccessor mSystemUiAccessor = new TutorialController.SystemUiAccessor() { // from
+                                                                                                                // class:
+                                                                                                                // com.sonyericsson.android.camera.view.ViewFinderImpl.26
+        @Override // com.sonyericsson.android.camera.view.tutorial.TutorialController.SystemUiAccessor
+        public void onAddFlags(int i) {
+            ViewFinderImpl.this.mActivity.getWindow().addFlags(i);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.tutorial.TutorialController.SystemUiAccessor
+        public void onClearFlags(int i) {
+            ViewFinderImpl.this.mActivity.getWindow().clearFlags(i);
+        }
+    };
+    public class HintTextListenerImpl implements HintTextViewController.HintTextContentListener {
+        public HintTextListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.hint.HintTextViewController.HintTextContentListener
+        public void onContentButtonClick(HintTextViewController hintTextViewController,
+                HintTextContent hintTextContent) {
+            if (hintTextContent instanceof HintTextThermal) {
+                onClickThermalReadMore();
+            } else if (hintTextContent instanceof HintTextSlowMotionDescription) {
+                onClickSlowMotionDescription(hintTextViewController, (HintTextSlowMotionDescription) hintTextContent);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.view.hint.HintTextViewController.HintTextContentListener
+        public void onStateChanged() {
+            ViewFinderImpl.this.updateVisibilityForSpecificDisplaySize();
+        }
+
+        private void onClickSlowMotionDescription(final HintTextViewController hintTextViewController,
+                final HintTextSlowMotionDescription hintTextSlowMotionDescription) {
+            if (((SlowMotion) ViewFinderImpl.this.mStateMachine.getUserSetting()
+                    .get(UserSettingKey.SLOW_MOTION)) == SlowMotion.OFF) {
+                return;
+            }
+            hintTextViewController.hide();
+            final TutorialController tutorial = ViewFinderImpl.this.getBaseLayout().getTutorial();
+            tutorial.open(TutorialController.OpenType.createByReadMore(hintTextSlowMotionDescription.getTutorialType()),
+                    null, new TutorialContentView.OnClickCloseButtonListener() { // from class:
+                                                                                 // com.sonyericsson.android.camera.view.ViewFinderImpl.HintTextListenerImpl.1
+                        @Override // com.sonyericsson.android.camera.view.tutorial.TutorialContentView.OnClickCloseButtonListener
+                        public void onClickCloseButton(View view) {
+                            int id = view.getId();
+                            if (id == R.id.page_tutorial_gotit_button) {
+                                LocalResearchUtil.getInstance().sendSetupWizardEvent(Event.WizardResult.GOT_IT);
+                                LocalResearchUtil.getInstance().closeSetupWizard();
+                            } else if (id == R.id.page_tutorial_skip_button) {
+                                LocalResearchUtil.getInstance().sendSetupWizardEvent(Event.WizardResult.SKIP);
+                                LocalResearchUtil.getInstance().closeSetupWizard();
+                            }
+                            hintTextViewController.cancel(hintTextSlowMotionDescription.getTag());
+                            tutorial.close();
+                            if (ViewFinderImpl.this.mHintText != null) {
+                                ViewFinderImpl.this.mHintText.showAll();
+                            }
+                            ViewFinderImpl.this
+                                    .setApplicationNavigatorEnabled(!ViewFinderImpl.this.mActivity.isOneShot());
+                            ViewFinderImpl.this.mStateMachine
+                                    .sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_CLOSED, new Object[0]);
+                        }
+                    });
+            ViewFinderImpl.this.changeLayoutTo(BaseLayoutPattern.CLEAR);
+            ViewFinderImpl.this.setApplicationNavigatorEnabled(false);
+            ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_OPENED,
+                    new Object[0]);
+        }
+
+        private void onClickThermalReadMore() {
+            StringBuilder sb = new StringBuilder();
+            sb.append(ViewFinderImpl.this.getString(R.string.cam_strings_focus_mode_face_detection_txt));
+            if (ViewFinderImpl.this.getCapturingMode() == CapturingMode.SCENE_RECOGNITION
+                    || ViewFinderImpl.this.getCapturingMode() == CapturingMode.SUPERIOR_FRONT
+                    || ViewFinderImpl.this.getCapturingMode() == CapturingMode.VIDEO
+                    || ViewFinderImpl.this.getCapturingMode() == CapturingMode.FRONT_VIDEO) {
+                sb.append(System.lineSeparator());
+                sb.append(ViewFinderImpl.this.getString(R.string.cam_strings_auto_scene_recognition_txt));
+            }
+            if (!ViewFinderImpl.this.getCapturingMode().isFront()) {
+                sb.append(System.lineSeparator());
+                sb.append(ViewFinderImpl.this.getString(R.string.cam_strings_focus_mode_object_tracking_txt));
+            }
+            if (ViewFinderImpl.this.getCapturingMode().isFront() && !ViewFinderImpl.this.getCapturingMode().isVideo()) {
+                sb.append(System.lineSeparator());
+                sb.append(ViewFinderImpl.this.getString(R.string.cam_strings_hand_shutter_txt));
+            }
+            if (ViewFinderImpl.this.isPredictiveCaptureAvailable()) {
+                sb.append(System.lineSeparator());
+                sb.append(ViewFinderImpl.this.getString(R.string.cam_strings_predictive_capture_txt));
+            }
+            MessageDialogRequest messageDialogRequest = new MessageDialogRequest();
+            messageDialogRequest.mDialogId = DialogId.COOLING_MODE;
+            messageDialogRequest.mMessageList = sb.toString();
+            ViewFinderImpl.this.mMessageDialog.request(messageDialogRequest);
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isPredictiveCaptureAvailable() {
-        return getCapturingMode().isSuperiorAuto() && !getCapturingMode().isFront() && !getActivity().isOneShot() && PlatformCapability.isBypassCameraSupported() && PlatformCapability.isPredictiveCaptureShotSupported(getCapturingMode().getCameraId());
+        return getCapturingMode().isSuperiorAuto() && !getCapturingMode().isFront() && !getActivity().isOneShot()
+                && PlatformCapability.isBypassCameraSupported()
+                && PlatformCapability.isPredictiveCaptureShotSupported(getCapturingMode().getCameraId());
     }
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
     public void notifyZoomOperationRejected() {
         if (isAllDialogClosed()) {
-            postHintText(new HintTextTimedOutMessage(HintTextTimedOutMessage$MessageType.ZOOM_NOT_AVAILABLE));
+            postHintText(new HintTextTimedOutMessage(HintTextTimedOutMessage.MessageType.ZOOM_NOT_AVAILABLE));
         }
     }
 
@@ -5237,14 +7378,15 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
     }
 
-    private void updateFusionHintText(@Nullable CameraParameters$FusionResult cameraParameters$FusionResult) {
-        if (this.mHintText != null && PlatformCapability.isHighSensitivityFusionSupported(getCapturingMode().getCameraId())) {
+    private void updateFusionHintText(@Nullable CameraParameters.FusionResult fusionResult) {
+        if (this.mHintText != null
+                && PlatformCapability.isHighSensitivityFusionSupported(getCapturingMode().getCameraId())) {
             this.mHintText.cancel(HintTextHighSensitivityFusionStatus.class.getSimpleName());
             this.mHintText.cancel(HintTextHighSensitivityFusionCondition.class.getSimpleName());
-            if (cameraParameters$FusionResult != null) {
-                if (cameraParameters$FusionResult.getFusionCondition() == CameraParameters$FusionCondition.CLOSE_TO_SUBJECT) {
+            if (fusionResult != null) {
+                if (fusionResult.getFusionCondition() == CameraParameters.FusionCondition.CLOSE_TO_SUBJECT) {
                     postHintText(new HintTextHighSensitivityFusionCondition());
-                } else if (cameraParameters$FusionResult.getFusionStatus() == CameraParameters$FusionStatus.FUSION_SUB_1) {
+                } else if (fusionResult.getFusionStatus() == CameraParameters.FusionStatus.FUSION_SUB_1) {
                     postHintText(new HintTextHighSensitivityFusionStatus());
                 } else {
                     updateVisibilityForSpecificDisplaySize();
@@ -5253,55 +7395,71 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
     }
 
-    private void showToastMessage(ToastContent$ToastID toastContent$ToastID) {
+    private void showToastMessage(ToastContent.ToastID toastID) {
         if (!this.mIsSetupHeadupDisplayInvoked) {
             LayoutDependencyResolver.setupRotatableToast(this.mActivity);
             this.mToastContent.setSensorOrientation(this.mActivity.getOrientation());
         }
-        this.mToastContent.show(this.mActivity, toastContent$ToastID);
+        this.mToastContent.show(this.mActivity, toastID);
     }
 
     private boolean isStorageReady() {
-        Storage$StorageState currentState = this.mActivity.getStorage().getCurrentState(getCurrentStorage());
-        return currentState == Storage$StorageState.AVAILABLE || currentState == Storage$StorageState.AVAILABLE_NEAR_FULL;
+        Storage.StorageState currentState = this.mActivity.getStorage().getCurrentState(getCurrentStorage());
+        return currentState == Storage.StorageState.AVAILABLE
+                || currentState == Storage.StorageState.AVAILABLE_NEAR_FULL;
     }
 
-    private Storage$StorageType getCurrentStorage() {
+    private Storage.StorageType getCurrentStorage() {
         if (this.mActivity.isOneShot()) {
             return this.mActivity.getLaunchCondition().getStorageTypeForOneshot();
         }
         UserSettings userSettings = getActivity().getStoredSettings().getUserSettings();
         DestinationToSave destinationToSave = (DestinationToSave) userSettings.get(UserSettingKey.DESTINATION_TO_SAVE);
         if (destinationToSave == null) {
-            destinationToSave = (DestinationToSave) userSettings.get(this.mActivity.getLaunchCondition().getCapturingMode(), UserSettingKey.DESTINATION_TO_SAVE);
+            destinationToSave = (DestinationToSave) userSettings
+                    .get(this.mActivity.getLaunchCondition().getCapturingMode(), UserSettingKey.DESTINATION_TO_SAVE);
         }
         return destinationToSave.getType();
     }
 
-    private boolean hasEnoughFreeSpace(Storage$StorageType storage$StorageType) {
-        DestinationToSave destinationToSave = (DestinationToSave) this.mStateMachine.getUserSetting().get(UserSettingKey.DESTINATION_TO_SAVE);
-        Storage$StorageState currentState = this.mActivity.getStorage().getCurrentState(storage$StorageType);
-        return destinationToSave.getType() == storage$StorageType ? currentState == Storage$StorageState.AVAILABLE || currentState == Storage$StorageState.UNGRANTED : currentState == Storage$StorageState.AVAILABLE || currentState == Storage$StorageState.REMOVED || currentState == Storage$StorageState.UNGRANTED;
+    /* JADX INFO: Access modifiers changed from: private */
+    private boolean hasEnoughFreeSpace(Storage.StorageType storageType) {
+        DestinationToSave destinationToSave = (DestinationToSave) this.mStateMachine.getUserSetting()
+                .get(UserSettingKey.DESTINATION_TO_SAVE);
+        Storage.StorageState currentState = this.mActivity.getStorage().getCurrentState(storageType);
+        return destinationToSave.getType() == storageType
+                ? currentState == Storage.StorageState.AVAILABLE || currentState == Storage.StorageState.UNGRANTED
+                : currentState == Storage.StorageState.AVAILABLE || currentState == Storage.StorageState.REMOVED
+                        || currentState == Storage.StorageState.UNGRANTED;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isInternalStorageWritable() {
-        Storage$StorageState currentState = this.mActivity.getStorage().getCurrentState(Storage$StorageType.INTERNAL);
-        return currentState == Storage$StorageState.AVAILABLE || currentState == Storage$StorageState.AVAILABLE_NEAR_FULL;
+        Storage.StorageState currentState = this.mActivity.getStorage().getCurrentState(Storage.StorageType.INTERNAL);
+        return currentState == Storage.StorageState.AVAILABLE
+                || currentState == Storage.StorageState.AVAILABLE_NEAR_FULL;
     }
 
     private boolean isCurrentStorageExternal() {
-        return getCurrentStorage() == Storage$StorageType.EXTERNAL_CARD;
+        return getCurrentStorage() == Storage.StorageType.EXTERNAL_CARD;
     }
 
     private boolean isSdCardWritable() {
-        Storage$StorageState currentState = this.mActivity.getStorage().getCurrentState(Storage$StorageType.EXTERNAL_CARD);
-        return currentState == Storage$StorageState.AVAILABLE || currentState == Storage$StorageState.AVAILABLE_NEAR_FULL;
+        Storage.StorageState currentState = this.mActivity.getStorage()
+                .getCurrentState(Storage.StorageType.EXTERNAL_CARD);
+        return currentState == Storage.StorageState.AVAILABLE
+                || currentState == Storage.StorageState.AVAILABLE_NEAR_FULL;
     }
 
     private boolean isSdCardRemoved() {
-        return this.mActivity.getStorage().getCurrentState(Storage$StorageType.EXTERNAL_CARD) == Storage$StorageState.REMOVED;
+        return this.mActivity.getStorage()
+                .getCurrentState(Storage.StorageType.EXTERNAL_CARD) == Storage.StorageState.REMOVED;
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
+    /*
+     * report as an issue.
+     */
     protected boolean onHandleBackKeyTutorial() {
         if (this.mBaseLayout != null && this.mBaseLayout.getTutorial() != null) {
             TutorialController tutorial = this.mBaseLayout.getTutorial();
@@ -5310,32 +7468,35 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
                     return true;
                 }
                 MessageSettings messageSettings = this.mActivity.getStoredSettings().getMessageSettings();
-                for (TutorialController$TutorialType tutorialController$TutorialType : tutorial.getTutorialTypes()) {
-                    switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$tutorial$TutorialController$TutorialType[tutorialController$TutorialType.ordinal()]) {
-                        case 1:
-                            this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_REQUEST_UPDATE_HIGH_SENSITIVITY_FUSION_MODE, FusionMode.AUTO);
+                for (TutorialController.TutorialType tutorialType : tutorial.getTutorialTypes()) {
+                    switch (tutorialType) {
+                        case VIDEO_FUSION:
+                            this.mStateMachine.sendEvent(
+                                    StateMachine.TransitterEvent.EVENT_REQUEST_UPDATE_HIGH_SENSITIVITY_FUSION_MODE,
+                                    FusionMode.AUTO);
                             break;
-                        case 2:
+                        case MANUAL_FUSION:
                             updateHighSensitivityFusionModeForManual();
                             break;
                     }
-                    Iterator<MessageType> it = tutorialController$TutorialType.messageTypes.iterator();
+                    Iterator<MessageType> it = tutorialType.messageTypes.iterator();
                     while (it.hasNext()) {
                         messageSettings.setNeverShow(it.next(), true);
                         messageSettings.save();
                     }
                 }
-                LocalResearchUtil.getInstance().sendSetupWizardEvent(Event$WizardResult.BACK_KEY);
+                LocalResearchUtil.getInstance().sendSetupWizardEvent(Event.WizardResult.BACK_KEY);
                 LocalResearchUtil.getInstance().closeSetupWizard();
                 tutorial.close();
                 setApplicationNavigatorEnabled(!this.mActivity.isOneShot());
-                this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_DIALOG_CLOSED, new Object[0]);
+                this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_CLOSED, new Object[0]);
                 return true;
             }
         }
         return false;
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     protected boolean closeAutoReviewIfShowing() {
         if (!isAutoReviewShowing()) {
             return false;
@@ -5344,6 +7505,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return true;
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     protected boolean closeOverlayControlIfOpened() {
         if (!isOverlayControlVisible()) {
             return false;
@@ -5353,6 +7515,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         return true;
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     protected boolean closeSettingDialogIfOpened() {
         if (this.mSettingDialogStack != null) {
             return this.mSettingDialogStack.closeCurrentDialog();
@@ -5361,67 +7524,73 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
-    public void notifyStorageStateChanged(Storage$StorageType storage$StorageType, Storage$StorageState storage$StorageState, boolean z, boolean z2) {
+    public void notifyStorageStateChanged(Storage.StorageType storageType, Storage.StorageState storageState, boolean z,
+            boolean z2) {
         if (CamLog.VERBOSE) {
-            CamLog.d("onStorageStateChanged: StorageType = " + storage$StorageType + ", StorageState = " + storage$StorageState + ", isChangeable = " + z);
+            CamLog.d("onStorageStateChanged: StorageType = " + storageType + ", StorageState = " + storageState
+                    + ", isChangeable = " + z);
         }
-        if (storage$StorageState != Storage$StorageState.AVAILABLE && storage$StorageState != Storage$StorageState.AVAILABLE_NEAR_FULL && this.mFocusRectangles != null) {
+        if (storageState != Storage.StorageState.AVAILABLE && storageState != Storage.StorageState.AVAILABLE_NEAR_FULL
+                && this.mFocusRectangles != null) {
             this.mFocusRectangles.clearFaceDetection();
         }
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$cameracommon$storage$Storage$StorageState[storage$StorageState.ordinal()]) {
-            case 1:
-            case 2:
+        switch (storageState) {
+            case AVAILABLE:
+            case AVAILABLE_NEAR_FULL:
                 this.mMessageDialog.removeDialogsInList(STORAGE_DIALOG_LIST);
-                break;
-            case 3:
-                if (!z2) {
-                    if (z) {
-                        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$cameracommon$storage$Storage$StorageType[storage$StorageType.ordinal()]) {
-                            case 1:
-                                showMessageDialog(DialogId.MEMORY_FULL_PROPOSE_CHANGE_TO_INTERNAL, new Object[0]);
-                                break;
-                            case 2:
-                                showMessageDialog(DialogId.MEMORY_FULL_PROPOSE_CHANGE_TO_SD, new Object[0]);
-                                break;
-                        }
-                    } else {
-                        showMessageDialog(DialogId.MEMORY_FULL, new Object[0]);
-                        break;
-                    }
-                } else {
+                return;
+            case FULL:
+                if (z2) {
                     showMessageDialog(DialogId.MEMORY_FULL_IN_BURST_MODE, new Object[0]);
-                    break;
+                    return;
                 }
-                break;
-            case 4:
-            case 5:
-            case 6:
                 if (z) {
-                    switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$cameracommon$storage$Storage$StorageType[storage$StorageType.ordinal()]) {
-                        case 1:
+                    switch (storageType) {
+                        case EXTERNAL_CARD:
+                            showMessageDialog(DialogId.MEMORY_FULL_PROPOSE_CHANGE_TO_INTERNAL, new Object[0]);
+                            return;
+                        case INTERNAL:
+                            showMessageDialog(DialogId.MEMORY_FULL_PROPOSE_CHANGE_TO_SD, new Object[0]);
+                            return;
+                        default:
+                            return;
+                    }
+                }
+                showMessageDialog(DialogId.MEMORY_FULL, new Object[0]);
+                return;
+            case UNAVAILABLE:
+            case REMOVED:
+            case READ_ONLY:
+                if (z) {
+                    switch (storageType) {
+                        case EXTERNAL_CARD:
                             showMessageDialog(DialogId.MEMORY_UNAVAILABLE_PROPOSE_CHANGE_TO_INTERNAL, new Object[0]);
-                            break;
-                        case 2:
+                            return;
+                        case INTERNAL:
                             showMessageDialog(DialogId.MEMORY_UNAVAILABLE_PROPOSE_CHANGE_TO_SD, new Object[0]);
-                            break;
-                    }
-                } else {
-                    switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$cameracommon$storage$Storage$StorageType[storage$StorageType.ordinal()]) {
-                        case 1:
-                            showMessageDialog(DialogId.MEMORY_SD_UNAVAILABLE, new Object[0]);
-                            break;
-                        case 2:
-                            showMessageDialog(DialogId.MEMORY_INTERNAL_UNAVAILABLE, new Object[0]);
-                            break;
+                            return;
+                        default:
+                            return;
                     }
                 }
-                break;
-            case 7:
-                if (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$cameracommon$storage$Storage$StorageType[storage$StorageType.ordinal()] == 1) {
-                    showMessageDialog(DialogId.MEMORY_SD_UNAVAILABLE, new Object[0]);
-                    break;
+                switch (storageType) {
+                    case EXTERNAL_CARD:
+                        showMessageDialog(DialogId.MEMORY_SD_UNAVAILABLE, new Object[0]);
+                        return;
+                    case INTERNAL:
+                        showMessageDialog(DialogId.MEMORY_INTERNAL_UNAVAILABLE, new Object[0]);
+                        return;
+                    default:
+                        return;
                 }
-                break;
+            case CORRUPT:
+                if (storageType != Storage.StorageType.EXTERNAL_CARD) {
+                    return;
+                }
+                showMessageDialog(DialogId.MEMORY_SD_UNAVAILABLE, new Object[0]);
+                return;
+            default:
+                return;
         }
     }
 
@@ -5456,7 +7625,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
                 if (layoutInflater == null) {
                     return;
                 }
-                this.mWindowDisplayFlashScreen = layoutInflater.inflate(2131492921, (ViewGroup) null);
+                this.mWindowDisplayFlashScreen = layoutInflater.inflate(R.layout.display_flash_screen,
+                        (ViewGroup) null);
                 Window window = this.mActivity.getWindow();
                 window.addContentView(this.mWindowDisplayFlashScreen, window.getAttributes());
             }
@@ -5482,13 +7652,15 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         if (CamLog.VERBOSE) {
             CamLog.d("updateVideoHdrCondition : " + videoHdr);
         }
-        if (!PlatformCapability.isVideoHdrSupported(capturingMode.getCameraId()) || !capturingMode.isVideo() || capturingMode == CapturingMode.SLOW_MOTION || this.mActivity.isOneShotVideo()) {
+        if (!PlatformCapability.isVideoHdrSupported(capturingMode.getCameraId()) || !capturingMode.isVideo()
+                || capturingMode == CapturingMode.SLOW_MOTION || this.mActivity.isOneShotVideo()) {
             return;
         }
-        boolean zIsSelectable = UserSettingKey.VIDEO_HDR.isSelectable();
+        boolean isSelectable = UserSettingKey.VIDEO_HDR.isSelectable();
         boolean z2 = videoHdr == VideoHdr.HDR_ON;
-        VideoSize videoSize = VideoSize.FULL_HD;
-        if (z2 && zIsSelectable) {
+        VideoSize videoSize = (VideoSize) this.mStateMachine.getUserSetting().get(UserSettingKey.VIDEO_SIZE);
+        VideoSize fullHd = VideoSize.FULL_HD;
+        if (z2 && isSelectable) {
             if (this.mFocusRectangles != null) {
                 this.mFocusRectangles.clearAllFocus();
             }
@@ -5499,6 +7671,110 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    private class ScreenButtonHandler {
+        private ScreenButtonHandler() {
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        public class OnScreenButtonListenerImpl implements OnScreenButtonListener {
+            private final OnScreenButtonItemFactory.ButtonType mButtonType;
+
+            @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+            public void onMove(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+            }
+
+            public OnScreenButtonListenerImpl(OnScreenButtonItemFactory.ButtonType buttonType) {
+                this.mButtonType = buttonType;
+            }
+
+            @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+            public void onDown(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+                ViewFinderImpl.this.mTouchEventDispatcher.sendTouchDown(this.mButtonType);
+            }
+
+            @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+            public void onUp(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+                ViewFinderImpl.this.mTouchEventDispatcher.sendTouchUp(this.mButtonType,
+                        new Point((int) motionEvent.getX(), (int) motionEvent.getY()));
+            }
+
+            @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+            public void onCancel(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+                ViewFinderImpl.this.mTouchEventDispatcher.sendCancel(this.mButtonType);
+            }
+
+            @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+            public void onLongPress(OnScreenButton onScreenButton) {
+                ViewFinderImpl.this.mTouchEventDispatcher.sendLongClick(this.mButtonType, null);
+            }
+        }
+
+        protected void setMain(OnScreenButtonItemFactory.ButtonType buttonType, int i, boolean z) {
+            setMain(buttonType, i, z, true);
+        }
+
+        protected void setMain(OnScreenButtonItemFactory.ButtonType buttonType, int i, boolean z, boolean z2) {
+            ViewFinderImpl.this.getBaseLayout().getOnScreenButtonGroup().setMain(OnScreenButtonItemFactory
+                    .createButton(buttonType, z2 ? new OnScreenButtonListenerImpl(buttonType) : null), i, z);
+        }
+
+        protected void setOption1(OnScreenButtonItemFactory.ButtonType buttonType, int i, boolean z) {
+            ViewFinderImpl.this.getBaseLayout().getOnScreenButtonGroup().setOption1(
+                    OnScreenButtonItemFactory.createButton(buttonType, new OnScreenButtonListenerImpl(buttonType)), i,
+                    z);
+        }
+
+        protected void setOption1(OnScreenButtonGroup.Item item, int i, boolean z) {
+            ViewFinderImpl.this.getBaseLayout().getOnScreenButtonGroup().setOption1(item, i, z);
+        }
+
+        public void setOption2(OnScreenButtonItemFactory.ButtonType buttonType, int i, boolean z) {
+            ViewFinderImpl.this.getBaseLayout().getOnScreenButtonGroup().setOption2(
+                    OnScreenButtonItemFactory.createButton(buttonType, new OnScreenButtonListenerImpl(buttonType)), i,
+                    z);
+        }
+
+        public void setOption2(OnScreenButtonGroup.Item item, int i, boolean z) {
+            ViewFinderImpl.this.getBaseLayout().getOnScreenButtonGroup().setOption2(item, i, z);
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void clearMain() {
+            ViewFinderImpl.this.getBaseLayout().getOnScreenButtonGroup().clearMain();
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void clearOption1() {
+            ViewFinderImpl.this.getBaseLayout().getOnScreenButtonGroup().clearOption1();
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void clearOption2() {
+            ViewFinderImpl.this.getBaseLayout().getOnScreenButtonGroup().clearOption2();
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void clearAllButton() {
+            clearOption1();
+            clearOption2();
+            clearMain();
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void refreshButton() {
+            clearOption1();
+            clearOption2();
+            ViewFinderImpl.this.getBaseLayout().getOnScreenButtonGroup().show();
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void setMainRotatability(int i, boolean z) {
+            ViewFinderImpl.this.getBaseLayout().getOnScreenButtonGroup().setMainRotatability(i, z);
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isPhotoSelfTimerEnabled() {
         return ((SelfTimer) this.mStateMachine.getUserSetting().get(UserSettingKey.SELF_TIMER)) != SelfTimer.OFF;
     }
@@ -5512,7 +7788,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     public void clearCanceledSideTouchEventIcons() {
-        if (isSetupHeadupDisplayInvoked() && this.mSideTouchUi.containsIn(SideTouchUi$Type.CAPTURE_COUNTDOWN, SideTouchUi$Type.ZOOM_BAR)) {
+        if (isSetupHeadupDisplayInvoked()
+                && this.mSideTouchUi.containsIn(SideTouchUi.Type.CAPTURE_COUNTDOWN, SideTouchUi.Type.ZOOM_BAR)) {
             this.mSideTouchUi.destroyIcon();
         }
     }
@@ -5522,7 +7799,7 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
     }
 
     public void clearBurstShootingRejectedReason() {
-        this.mBurstShootingRejectedReason = ViewFinder$BurstRejectedReason.NONE;
+        this.mBurstShootingRejectedReason = ViewFinder.BurstRejectedReason.NONE;
     }
 
     public boolean canFocusRectanglesBeUpdated() {
@@ -5531,7 +7808,8 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
 
     @Override // com.sonyericsson.android.camera.view.ViewFinder
     public boolean isUserOperable() {
-        return isEvfPrepared() && isSetupHeadupDisplayInvoked() && isHeadUpDisplayReady() && !isFrontAngleChanging() && !isCameraSwitching() && !isSwitchingAnimationProgress();
+        return isEvfPrepared() && isSetupHeadupDisplayInvoked() && isHeadUpDisplayReady() && !isFrontAngleChanging()
+                && !isCameraSwitching() && !isSwitchingAnimationProgress();
     }
 
     private void onStoreCompleted(StoreDataResult storeDataResult, boolean z) {
@@ -5548,7 +7826,9 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
         if (isShownInInstantViewer(storeDataResult)) {
             CamLog.d("Potho which is shown in Instant viewer is saved and start Album for the photo.");
-            InstantViewer.launchAlbum(this.mActivity, storeDataResult.uri, storeDataResult.savingRequest.common.mimeType, true, this.mStateMachine.getPredictiveCaptureStoreInfo());
+            InstantViewer.launchAlbum(this.mActivity, storeDataResult.uri,
+                    storeDataResult.savingRequest.common.mimeType, true,
+                    this.mStateMachine.getPredictiveCaptureStoreInfo());
         } else {
             addThumbnail(storeDataResult);
             if (z) {
@@ -5557,144 +7837,232 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
     }
 
-    private void addThumbnail(StoreDataResult storeDataResult) {
-        boolean zIsPredictiveCaptureCoverImage;
-        int requestId = storeDataResult.savingRequest.getRequestId();
-        boolean zIsSuccess = storeDataResult.isSuccess();
-        Uri uri = storeDataResult.uri;
-        boolean zIsPredictiveCaptureImage = false;
+    private void addThumbnail(final StoreDataResult storeDataResult) {
+        boolean z;
+        final int requestId = storeDataResult.savingRequest.getRequestId();
+        final boolean isSuccess = storeDataResult.isSuccess();
+        final Uri uri = storeDataResult.uri;
+        boolean z2 = false;
+        Runnable thumbnailRunnable = new Runnable() { // from class:
+                                                      // com.sonyericsson.android.camera.view.ViewFinderImpl.27
+            @Override // java.lang.Runnable
+            public void run() {
+                if (ViewFinderImpl.this.getBaseLayout().getContentsViewController() != null) {
+                    switch (storeDataResult.savingRequest.common.savedFileType) {
+                        case BURST:
+                            if (storeDataResult.savingRequest.isFinalInSavingGroup()) {
+                                ViewFinderImpl.this.getBaseLayout().getContentsViewController()
+                                        .requestLastContentLoading(requestId);
+                                return;
+                            }
+                            return;
+                        case PHOTO_DURING_REC:
+                            LayoutPattern currentLayoutPattern = ViewFinderImpl.this
+                                    .getCurrentLayoutPattern();
+                            if (currentLayoutPattern == BaseLayoutPattern.RECORDING
+                                    || currentLayoutPattern == BaseLayoutPattern.PAUSE_RECORDING) {
+                                ViewFinderImpl.this.startHideThumbnail();
+                                break;
+                            }
+                            break;
+                    }
+                    if (requestId == -1) {
+                        ViewFinderImpl.this.getBaseLayout().getContentsViewController().remove();
+                        ViewFinderImpl.this.getBaseLayout().getContentsViewController().pause();
+                        ViewFinderImpl.this.getBaseLayout().getContentsViewController().reload();
+                    } else if (!isSuccess) {
+                        ViewFinderImpl.this.getBaseLayout().getContentsViewController().pause();
+                        ViewFinderImpl.this.getBaseLayout().getContentsViewController().reload();
+                    } else {
+                        PerfLog.STORE_COMPLETE.transit();
+                        ViewFinderImpl.this.getBaseLayout().getContentsViewController()
+                                .addContent(requestId, uri);
+                        PerfLog.THUMBNAIL_SHOW.transit();
+                    }
+                }
+            }
+        };
         if (storeDataResult.savingRequest.getFilePath() != null) {
             if (storeDataResult.savingRequest instanceof PhotoSavingRequest) {
-                zIsPredictiveCaptureImage = ((PhotoSavingRequest) storeDataResult.savingRequest).isPredictiveCaptureImage();
-                zIsPredictiveCaptureCoverImage = ((PhotoSavingRequest) storeDataResult.savingRequest).isPredictiveCaptureCoverImage();
+                z2 = ((PhotoSavingRequest) storeDataResult.savingRequest).isPredictiveCaptureImage();
+                z = ((PhotoSavingRequest) storeDataResult.savingRequest).isPredictiveCaptureCoverImage();
+                if (z2 || z) {
+                    this.mActivity.runOnUiThread(thumbnailRunnable);
+                }
+                return;
             }
-            if (zIsPredictiveCaptureImage || zIsPredictiveCaptureCoverImage) {
-                this.mActivity.runOnUiThread(new ViewFinderImpl$27(this, storeDataResult, requestId, zIsSuccess, uri));
-            }
+        } else {
+            CamLog.d("File path is not set by storage error.");
+        }
+        z = false;
+        if (z2 && !z) {
             return;
         }
-        CamLog.d("File path is not set by storage error.");
-        zIsPredictiveCaptureCoverImage = false;
-        if (zIsPredictiveCaptureImage) {
-        }
-        this.mActivity.runOnUiThread(new ViewFinderImpl$27(this, storeDataResult, requestId, zIsSuccess, uri));
+        this.mActivity.runOnUiThread(thumbnailRunnable);
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:24:0x0095  */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    private void showAutoReview(StoreDataResult storeDataResult) {
-        int duration;
-        byte[] imageData;
+    private void showAutoReview(final StoreDataResult storeDataResult) {
+        int i;
+        byte[] bArr;
         if (this.mActivity.isOneShot()) {
             return;
         }
         Uri uri = Uri.EMPTY;
-        int duration2 = AutoReview.ALWAYS.getDuration();
+        int duration = AutoReview.ALWAYS.getDuration();
         boolean z = true;
-        switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$cameracommon$storage$SavingTaskManager$SavedFileType[storeDataResult.savingRequest.common.savedFileType.ordinal()]) {
-            case 3:
-                if (!isPreviewLayout(getCurrentLayoutPattern()) || !isSetupHeadupDisplayInvoked() || getBaseLayout() == null) {
-                    duration = duration2;
-                    imageData = null;
-                    break;
-                } else {
+        switch (storeDataResult.savingRequest.common.savedFileType) {
+            case PHOTO:
+                if (isPreviewLayout(getCurrentLayoutPattern()) && isSetupHeadupDisplayInvoked()
+                        && getBaseLayout() != null) {
                     PhotoSavingRequest photoSavingRequest = (PhotoSavingRequest) storeDataResult.savingRequest;
-                    if (this.mSideTouchUi.containsIn(SideTouchUi$Type.AUTO_REVIEW)) {
-                        imageData = photoSavingRequest.getImageData();
+                    if (this.mSideTouchUi.containsIn(SideTouchUi.Type.AUTO_REVIEW)) {
+                        bArr = photoSavingRequest.getImageData();
                         uri = storeDataResult.uri;
-                        duration = duration2;
+                        i = duration;
                         break;
                     } else if (isAutoReviewEnabled()) {
-                        byte[] imageData2 = photoSavingRequest.getImageData();
+                        byte[] imageData = photoSavingRequest.getImageData();
                         Uri uri2 = storeDataResult.uri;
-                        duration = ((AutoReview) this.mStateMachine.getUserSetting().get(UserSettingKey.AUTO_REVIEW)).getDuration();
-                        imageData = imageData2;
+                        i = ((AutoReview) this.mStateMachine.getUserSetting().get(UserSettingKey.AUTO_REVIEW))
+                                .getDuration();
+                        bArr = imageData;
                         uri = uri2;
                         break;
                     }
                 }
+                i = duration;
+                bArr = null;
                 break;
-            case 4:
-                if (this.mSideTouchUi.containsIn(SideTouchUi$Type.AUTO_REVIEW)) {
+            case VIDEO:
+                if (this.mSideTouchUi.containsIn(SideTouchUi.Type.AUTO_REVIEW)) {
                     uri = storeDataResult.uri;
                     this.mSideTouchUi.setUiOrientation(this.mRecordingOrientation);
-                    break;
                 }
             default:
-                duration = duration2;
-                imageData = null;
+                i = duration;
+                bArr = null;
                 z = false;
                 break;
         }
-        if ((uri == null || Uri.EMPTY.equals(uri)) && imageData == null) {
+        if ((uri == null || Uri.EMPTY.equals(uri)) && bArr == null) {
             return;
         }
         AutoReviewContent autoReviewContent = new AutoReviewContent();
         autoReviewContent.mUri = uri;
-        autoReviewContent.mData = imageData;
+        autoReviewContent.mData = bArr;
         autoReviewContent.mIsPhoto = z;
         autoReviewContent.mIsReverse = isNecessaryToReverseForAutoReview(storeDataResult);
-        autoReviewContent.mDuration = duration;
-        autoReviewContent.mEventListener = new ViewFinderImpl$OnAutoReviewEventListenerImpl(this, null);
-        autoReviewContent.mClickListener = new ViewFinderImpl$28(this, storeDataResult);
+        autoReviewContent.mDuration = i;
+        autoReviewContent.mEventListener = new OnAutoReviewEventListenerImpl();
+        autoReviewContent.mClickListener = new View.OnClickListener() { // from class:
+                                                                        // com.sonyericsson.android.camera.view.ViewFinderImpl.28
+            @Override // android.view.View.OnClickListener
+            public void onClick(View view) {
+                if (ViewFinderImpl.this.mIsFrontAngleChanging) {
+                    return;
+                }
+                ViewFinderImpl.this.clickAutoReview(storeDataResult);
+            }
+        };
         this.mAutoReviewProxy.notifyContent(autoReviewContent);
     }
 
+    private final ValueAccessor<Float> mColorValueAccessor = new ValueAccessor<Float>() { // from class:
+                                                                                          // com.sonyericsson.android.camera.view.ViewFinderImpl.29
+@Override // com.sonyericsson.android.camera.view.overlaycontrol.ValueAccessor
+        public Float get() {
+            return Float.valueOf(ViewFinderImpl.VIEW_FINDER_DUSKY);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.overlaycontrol.ValueAccessor
+        public void set(Float f) {
+            ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_ON_AMBER_BLUE_COLOR_CHANGED,
+                    f);
+        }
+@Override // com.sonyericsson.android.camera.view.overlaycontrol.ValueAccessor
+        public Float reset() {
+            ViewFinderImpl.this.disableSemiAutoControl();
+            return Float.valueOf(ViewFinderImpl.VIEW_FINDER_DUSKY);
+        }
+    };
+    private final ValueAccessor<Float> mBrightnessValueAccessor = new ValueAccessor<Float>() { // from class:
+                                                                                               // com.sonyericsson.android.camera.view.ViewFinderImpl.30
+@Override // com.sonyericsson.android.camera.view.overlaycontrol.ValueAccessor
+        public Float get() {
+            return Float.valueOf(ViewFinderImpl.VIEW_FINDER_DUSKY);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.overlaycontrol.ValueAccessor
+        public void set(Float f) {
+            ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_ON_BRIGHTNESS_CHANGED, f);
+        }
+@Override // com.sonyericsson.android.camera.view.overlaycontrol.ValueAccessor
+        public Float reset() {
+            ViewFinderImpl.this.disableSemiAutoControl();
+            return Float.valueOf(ViewFinderImpl.VIEW_FINDER_DUSKY);
+        }
+    };
     private boolean isShownInInstantViewer(StoreDataResult storeDataResult) {
-        return this.mInstantViewer != null && this.mInstantViewer.isOpened() && storeDataResult.savingRequest.getRequestId() == this.mInstantViewer.getRequestId();
+        return this.mInstantViewer != null && this.mInstantViewer.isOpened()
+                && storeDataResult.savingRequest.getRequestId() == this.mInstantViewer.getRequestId();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void updateHighSensitivityFusionModeForManual() {
         if (UserSettingKey.FUSION_MODE.isSelectable()) {
             FusionMode fusionMode = (FusionMode) this.mStateMachine.getUserSetting().get(UserSettingKey.FUSION_MODE);
             StateMachine stateMachine = this.mStateMachine;
-            StateMachine$TransitterEvent stateMachine$TransitterEvent = StateMachine$TransitterEvent.EVENT_REQUEST_UPDATE_HIGH_SENSITIVITY_FUSION_MODE;
+            StateMachine.TransitterEvent transitterEvent = StateMachine.TransitterEvent.EVENT_REQUEST_UPDATE_HIGH_SENSITIVITY_FUSION_MODE;
             Object[] objArr = new Object[1];
             objArr[0] = fusionMode == FusionMode.OFF ? FusionMode.ON : FusionMode.OFF;
-            stateMachine.sendEvent(stateMachine$TransitterEvent, objArr);
+            stateMachine.sendEvent(transitterEvent, objArr);
             return;
         }
-        showMessageDialog(UserSettingKey.FUSION_MODE.getRestrictMessageDialogId(this.mStateMachine.getUserSetting()), new Object[0]);
+        showMessageDialog(UserSettingKey.FUSION_MODE.getRestrictMessageDialogId(this.mStateMachine.getUserSetting()),
+                new Object[0]);
     }
 
     private void enableSemiAutoControl(boolean z) {
-        if (getBaseLayout().getSemiAutoControl().isInitialized() && getBaseLayout().getSemiAutoControl().get().isEnabled()) {
+        if (getBaseLayout().getSemiAutoControl().isInitialized()
+                && getBaseLayout().getSemiAutoControl().get().isEnabled()) {
             return;
         }
-        getBaseLayout().setupSemiAutoControl(new ViewFinderImpl$OverlayControlStateListener(this, ViewFinder$UiComponentKind.OVERLAY_CONTROL_SEEKING), this.mColorValueAccessor, this.mBrightnessValueAccessor, z);
+        getBaseLayout().setupSemiAutoControl(
+                new OverlayControlStateListener(ViewFinder.UiComponentKind.OVERLAY_CONTROL_SEEKING),
+                this.mColorValueAccessor, this.mBrightnessValueAccessor, z);
         enableOverlayControl(getBaseLayout().getSemiAutoControl());
-        this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_ON_SEMIAUTO_ENABLED, new Object[0]);
+        this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_ON_SEMIAUTO_ENABLED, new Object[0]);
     }
 
-    private void enableOverlayControl(BaseLayout$LazyInitializer<OverlayControl> baseLayout$LazyInitializer) {
-        if (baseLayout$LazyInitializer.isInitialized() && baseLayout$LazyInitializer.get().isEnabled()) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void enableOverlayControl(BaseLayout.LazyInitializer<OverlayControl> lazyInitializer) {
+        if (lazyInitializer.isInitialized() && lazyInitializer.get().isEnabled()) {
             return;
         }
-        baseLayout$LazyInitializer.get().enable();
-        baseLayout$LazyInitializer.get().setOrientation(this.mOrientation);
+        lazyInitializer.get().enable();
+        lazyInitializer.get().setOrientation(this.mOrientation);
         updateAllOverlayControlVisibility();
         updateVisibilityForSpecificDisplaySize();
         getBaseLayout().getSceneIndicator().set(false);
         getBaseLayout().getConditionIndicator().set(false);
         if (this.mHintText != null) {
-            this.mHintText.show(HintTextContent$HintPriority.HIGH);
+            this.mHintText.show(HintTextContent.HintPriority.HIGH);
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void disableSemiAutoControl() {
         if (this.mStateMachine == null || getBaseLayout() == null) {
             return;
         }
-        BaseLayout$LazyInitializer<OverlayControl> semiAutoControl = getBaseLayout().getSemiAutoControl();
+        BaseLayout.LazyInitializer<OverlayControl> semiAutoControl = getBaseLayout().getSemiAutoControl();
         if (semiAutoControl.isInitialized() && semiAutoControl.get().isEnabled()) {
             if (isTouchFocus()) {
                 this.mFocusRectangles.clearTouchFocus();
-                this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_CLEAR_FOCUS, new Object[0]);
+                this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_CLEAR_FOCUS, new Object[0]);
             }
             disableOverlayControl(getBaseLayout().getSemiAutoControl());
-            this.mStateMachine.sendEvent(StateMachine$TransitterEvent.EVENT_ON_SEMIAUTO_DISABLED, new Object[0]);
+            this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_ON_SEMIAUTO_DISABLED, new Object[0]);
         }
     }
 
@@ -5702,9 +8070,10 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         this.mApplicationNavigator.setModeIconClickable(false);
     }
 
-    private void disableOverlayControl(BaseLayout$LazyInitializer<OverlayControl> baseLayout$LazyInitializer) {
-        if (baseLayout$LazyInitializer.isInitialized() && baseLayout$LazyInitializer.get().isEnabled()) {
-            baseLayout$LazyInitializer.get().disable();
+    /* JADX INFO: Access modifiers changed from: private */
+    private void disableOverlayControl(BaseLayout.LazyInitializer<OverlayControl> lazyInitializer) {
+        if (lazyInitializer.isInitialized() && lazyInitializer.get().isEnabled()) {
+            lazyInitializer.get().disable();
             if (this.mHintText != null && !isSettingDialogOpened()) {
                 this.mHintText.showAll();
             }
@@ -5712,21 +8081,50 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
         }
     }
 
-    public void hidePredictiveLaunchCover(ViewFinderImpl$PredictiveLaunchHideTrigger viewFinderImpl$PredictiveLaunchHideTrigger) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private class OverlayControlStateListener implements OverlayControl.StateListener {
+        private final ViewFinder.UiComponentKind mKind;
+
+        public OverlayControlStateListener(ViewFinder.UiComponentKind uiComponentKind) {
+            this.mKind = uiComponentKind;
+        }
+
+        @Override // com.sonyericsson.android.camera.view.overlaycontrol.OverlayControl.StateListener
+        public void onValueUpdateStart() {
+            ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_OPENED, this.mKind);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.overlaycontrol.OverlayControl.StateListener
+        public void onValueUpdateEnd() {
+            ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_CLOSED, this.mKind);
+        }
+    }
+
+    public void hidePredictiveLaunchCover(PredictiveLaunchHideTrigger predictiveLaunchHideTrigger) {
         if (predictiveLaunchCoverExists()) {
-            switch (ViewFinderImpl$32.$SwitchMap$com$sonyericsson$android$camera$view$ViewFinderImpl$PredictiveLaunchHideTrigger[viewFinderImpl$PredictiveLaunchHideTrigger.ordinal()]) {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                    VibrationManager.vibrate(this.mActivity, VibrationManager$VibrationPattern.EFFECT_FOR_CAPTURE);
+            switch (predictiveLaunchHideTrigger) {
+                case HW_CAMERA_KEY:
+                case SIDE_SENSING:
+                case VOLUME_KEY_SHUTTER:
+                case TOUCH_UP_CAPTURE:
+                    VibrationManager.vibrate(this.mActivity, VibrationManager.VibrationPattern.EFFECT_FOR_CAPTURE);
                     break;
                 default:
-                    VibrationManager.vibrate(this.mActivity, VibrationManager$VibrationPattern.EFFECT_STANDARD);
+                    VibrationManager.vibrate(this.mActivity, VibrationManager.VibrationPattern.EFFECT_STANDARD);
                     break;
             }
-            ResearchUtil.getInstance().sendPredictiveLaunchEvent(viewFinderImpl$PredictiveLaunchHideTrigger.mAction);
-            getBaseLayout().hidePredictiveLaunchCover(new ViewFinderImpl$31(this));
+            ResearchUtil.getInstance().sendPredictiveLaunchEvent(predictiveLaunchHideTrigger.mAction);
+            getBaseLayout().hidePredictiveLaunchCover(new Animatable2.AnimationCallback() { // from class:
+                                                                                            // com.sonyericsson.android.camera.view.ViewFinderImpl.31
+                @Override // android.graphics.drawable.Animatable2.AnimationCallback
+                public void onAnimationEnd(Drawable drawable) {
+                    ViewFinderImpl.this.mBaseLayout.releasePredictiveLaunchCover();
+                    if (ViewFinderImpl.this.isZooming() || ViewFinderImpl.this.isFocusing()) {
+                        return;
+                    }
+                    ViewFinderImpl.this.mBaseLayout.setViewFinderGestureDetectorEnabled(true, true);
+                }
+            });
             setApplicationNavigatorEnabled(true);
             updateGridLineView();
             changeToPhotoReadyView(true);
@@ -5736,6 +8134,118 @@ public class ViewFinderImpl implements StateMachine$OnStateChangedListener, View
                 this.mLoopsManager.disconnect();
             }
             this.mLoopsManager = null;
+        }
+    }
+
+    /*
+     * renamed from: com.sonyericsson.android.camera.view.ViewFinderImpl$32, reason:
+     * invalid class name
+     */
+
+    /* JADX INFO: Access modifiers changed from: private */
+    private class PredictiveLaunchCoverTouchListenerImpl
+            implements PredictiveLaunchCoverView.PredictiveLaunchCoverTouchListener {
+        private PredictiveLaunchCoverTouchListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.PredictiveLaunchCoverView.PredictiveLaunchCoverTouchListener
+        public void onCircleTouched() {
+            ViewFinderImpl.this.mTouchEventDispatcher.sendTouchUp(UserEventHandler.UiComponent.PREDICTIVE_LAUNCH_COVER,
+                    null);
+        }
+    }
+
+    public static class RecordingTimeReceiverProxy {
+        private int mCurrentTime;
+        private RecordingTimeIndicator mReceiver;
+
+        public void bindReceiver(RecordingTimeIndicator recordingTimeIndicator) {
+            this.mReceiver = recordingTimeIndicator;
+        }
+
+        public int getCurrentTime() {
+            return this.mCurrentTime;
+        }
+
+        protected void reset() {
+            this.mCurrentTime = 0;
+        }
+
+        protected void notifyOnTimeTicked(int i) {
+            this.mCurrentTime = i;
+            if (this.mReceiver == null) {
+                return;
+            }
+            this.mReceiver.onTimeTicked(i);
+        }
+    }
+
+    public static class ZoomBarUpdateProxy {
+        private Zoombar mZoomBar;
+
+        public void bindZoomBar(Zoombar zoombar) {
+            this.mZoomBar = zoombar;
+        }
+
+        protected int update(List<Integer> list, int i) {
+            this.mZoomBar.setZoomRatios(list);
+            return this.mZoomBar.zoom(i);
+        }
+    }
+
+    public static class AutoReviewContentReceiverProxy {
+        private AutoReviewContent.ContentReceiver mReceiver;
+
+        public void bindReceiver(AutoReviewContent.ContentReceiver contentReceiver) {
+            this.mReceiver = contentReceiver;
+        }
+
+        protected void notifyContent(AutoReviewContent autoReviewContent) {
+            this.mReceiver.onReceive(autoReviewContent);
+        }
+    }
+
+    public class ViewFinderAccessorForShortcut {
+        public ViewFinderAccessorForShortcut() {
+        }
+
+        public boolean isShortcutButtonClickable() {
+            return ViewFinderImpl.this.mIsSettingChangeAcceptable && !ViewFinderImpl.this.isTutorialOpened()
+                    && ViewFinderImpl.this.isUserOperable();
+        }
+
+        public void switchCamera() {
+            ViewFinderImpl.this.setFrontAngleSwitchButtonClickable(false);
+            ViewFinderImpl.this.hideAutoReview();
+            ViewFinderImpl.this.setIsCameraSwitching(true);
+            ViewFinderImpl.this.hideSurface();
+            CameraApplication.getUiThreadHandler().post(new Runnable() { // from class:
+                                                                         // com.sonyericsson.android.camera.view.ViewFinderImpl.ViewFinderAccessorForShortcut.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    ViewFinderImpl.this.onToggleCameraSwitch();
+                    ViewFinderImpl.this.setFrontAngleSwitchButtonClickable(ViewFinderImpl.this.isFront());
+                }
+            });
+        }
+
+        public void openShorcutDialog(ViewFinder.UiComponentKind uiComponentKind) {
+            ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_DIALOG_OPENED,
+                    uiComponentKind);
+        }
+
+        public void openSettingMenuDialog() {
+            ViewFinderImpl.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_KEY_MENU, new Object[0]);
+        }
+
+        public void showRestrictMessageDialog(UserSettingKey userSettingKey) {
+            ViewFinderImpl.this.showMessageDialog(
+                    userSettingKey.getRestrictMessageDialogId(ViewFinderImpl.this.mStateMachine.getUserSetting()),
+                    new Object[0]);
+        }
+
+        public void switchSemiAutoAvailability() {
+            ViewFinderImpl.this.switchSemiAutoAvailability();
         }
     }
 

@@ -10,7 +10,7 @@ public class PreviewMaxFps extends IntegerValue implements EachCameraStatusValue
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusValue
     public String getKey() {
-        return "preview_max_fps";
+        return KEY;
     }
 
     public PreviewMaxFps(int i) {

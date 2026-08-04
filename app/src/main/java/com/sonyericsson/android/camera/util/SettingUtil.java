@@ -1,6 +1,6 @@
 package com.sonyericsson.android.camera.util;
 
-import android.provider.Settings$System;
+import android.provider.Settings;
 import com.sonyericsson.android.camera.CameraApplication;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
@@ -9,6 +9,9 @@ public class SettingUtil {
     public static final String TAG = "SettingUtil";
 
     public static boolean isSideSenseEnabled(boolean z) {
-        return (!z || PlatformCapability.isSideTouchSupported()) && Settings$System.getInt(CameraApplication.getContext().getContentResolver(), "somc.side_sense", 0) == 1;
+        if (z && !PlatformCapability.isSideTouchSupported()) {
+            return false;
+        }
+        return Settings.System.getInt(CameraApplication.getContext().getContentResolver(), SYSTEM_SETTING_SIDE_TOUCH, 0) == 1;
     }
 }

@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">ضبط کامل نشد. لطفاً به آرامی حرکت کنید.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">ضبط کامل نشد. لطفاً سریع تر حرکت کنید.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">با حرکت دادن دوربین خود، یک عکس پانوراما بگیرید</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">ایجاد فایل های زیر:\n- تصویر چند زوایه ای\n- تصویر 3D\nنکته: این فایل ها دارای قسمت خاکستری رنگ هستند.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">ایجاد فایل های زیر:\n- تصویر چند زوایه ای\n- تصویر 3D</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">در حال پردازش کردن...\nنکته: این تصویر دارای یک قسمت خاکستری رنگ است</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"ایجاد فایل های زیر:
+- تصویر چند زوایه ای
+- تصویر 3D
+نکته: این فایل ها دارای قسمت خاکستری رنگ هستند."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"ایجاد فایل های زیر:
+- تصویر چند زوایه ای
+- تصویر 3D"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"در حال پردازش کردن...
+نکته: این تصویر دارای یک قسمت خاکستری رنگ است"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">ذخیره تصویر</string>
     <string name="cam_3d_strings_dialog_processing_txt">در حال پردازش کردن...</string>
     <string name="cam_3d_strings_error_application_busy_txt">تا راه اندازی دوربین 3D چند ثانیه صبر کنید</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">با این جلوه پوستتان روشن و صاف به نظر می‌رسد. این جلوه در برنامه‌هایی که از دوربین جلو استفاده می‌کنند، کار می‌کند. این جلوه می‌تواند روی عکس و ویدیو اعمال شود. همچنین می‌توانید سطح را تنظیم کنید.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">تنظیم سطح</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">پوست صاف</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">برنامه راه‌اندازی نشد.\nمطمئن شوید که جدیدترین نسخه %1$s در دستگاه شما نصب و فعال است.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"برنامه راه‌اندازی نشد.
+مطمئن شوید که جدیدترین نسخه %1$s در دستگاه شما نصب و فعال است."</string>
     <string name="cam_strings_gridline_txt">خطوط شبکه‌ای</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">کف دستتان را به سمت دوربین بگیرید. وقتی کف دستتان شناسایی شد، تایمر خودکار شروع می‌شود. برای اینکه شناسایی آسان شود، انگشتانتان را از هم باز کنید.</string>
     <string name="cam_strings_hand_shutter_hint_txt">کف دستتان را به سمت دوربین بگیرید</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">تنظیمات معمول</string>
     <string name="cam_strings_more_txt">بیشتر</string>
     <string name="cam_strings_multi_window_txt">وسط نوار تقسیم را برای رفتن به حالت تمام صفحه %1$s جهت استفاده بکشید</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">دستگاه دیگری اکنون وصل است.\nآیا مایلید تصویر منظره‌یاب را با دستگاه به اشتراک بگذارید؟</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"دستگاه دیگری اکنون وصل است.
+آیا مایلید تصویر منظره‌یاب را با دستگاه به اشتراک بگذارید؟"</string>
     <string name="cam_strings_multicam_add_device_txt">افزودن دستگاه</string>
     <string name="cam_strings_multicam_add_more_txt">افزودن بیشتر</string>
     <string name="cam_strings_multicam_apply_txt">انجام شد</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">اندازه گیری</string>
     <string name="cam_strings_predictive_capture_feedback_txt">پیش‌بینی شده</string>
     <string name="cam_strings_predictive_capture_txt">ضبط پیش‌بینی‌شده</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">دوربین پس از تشخیص اینکه تلفنتان را در حالت افقی بلند کرده‌اید و به سمت شیئی برده‌اید، به‌طور خودکار راه‌اندازی شده است.\nاز طریق راه‌اندازی هوشمند در تنظیمات دوربین می‌توانید روش دلخواهتان را برای استفاده از این قابلیت انتخاب کنید.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"دوربین پس از تشخیص اینکه تلفنتان را در حالت افقی بلند کرده‌اید و به سمت شیئی برده‌اید، به‌طور خودکار راه‌اندازی شده است.
+از طریق راه‌اندازی هوشمند در تنظیمات دوربین می‌توانید روش دلخواهتان را برای استفاده از این قابلیت انتخاب کنید."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">‌برای تصویربرداری، داخل دایره را لمس کنید</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">‌برای تصویربرداری، صفحه‌نمایش را لمس کنید</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">برای مشاهده تمام صفحه، در داخل حلقه ضربه بزنید</string>
     <string name="cam_strings_predictive_launch_guide_txt">برای اجرای دوربین، داخل دایره را لمس کنید</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">لمس برای اجرا و تصویرداری</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">ضربه برای اجرا</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">می‌توانید دوربین را فوراً اجرا کنید. دستگاه را سریعاً در حالت افقی، بالا بیاورید و دوربین را به سمت سوژه بگیرید. دوربین به‌طور خودکار اجرا می‌شود.\nمی‌توانید از قسمت اجرای هوشمند در تنظیمات دوربین، روش دلخواهتان را برای کار با این قابلیت انتخاب کنید.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"می‌توانید دوربین را فوراً اجرا کنید. دستگاه را سریعاً در حالت افقی، بالا بیاورید و دوربین را به سمت سوژه بگیرید. دوربین به‌طور خودکار اجرا می‌شود.
+می‌توانید از قسمت اجرای هوشمند در تنظیمات دوربین، روش دلخواهتان را برای کار با این قابلیت انتخاب کنید."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">اجرای هوشمند</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">می‌توانید دوربین را فوراً اجرا کنید. دستگاه را در حالت افقی بالا بیاورید و دوربین را به سمت سوژه بگیرید. دوربین به‌طور خودکار اجرا می‌شود.\nمی‌توانید از قسمت اجرای هوشمند در تنظیمات دوربین، این قابلیت را خاموش کنید.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"می‌توانید دوربین را فوراً اجرا کنید. دستگاه را در حالت افقی بالا بیاورید و دوربین را به سمت سوژه بگیرید. دوربین به‌طور خودکار اجرا می‌شود.
+می‌توانید از قسمت اجرای هوشمند در تنظیمات دوربین، این قابلیت را خاموش کنید."</string>
     <string name="cam_strings_predictive_launch_txt">اجرای هوشمند</string>
     <string name="cam_strings_preview_always_txt">روشن</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 ثانیه</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s به مجوز(های) زیر نیاز دارد</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">مجوز %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">برنامه برای انجام این فعالیت، به مجوز(های) زیر نیاز دارد.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">برای اعطای مجوزها، به اطلاعات برنامه‌ها &gt; مجوزها بروید.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">برای اعطای مجوزها، به اطلاعات برنامه‌ها > مجوزها بروید.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">ادامه امکان‌پذیر نیست</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">برای عکس‌برداری و فیلم‌برداری</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">برای بازیابی مکان</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">ذخیره شده در حافظه داخلی</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">رفتن</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">برنامه برای انجام این فعالیت، به مجوز(های) زیر نیاز دارد.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">دوربین برای استفاده از کارت SD، باید مجوز دسترسی به کارت SD را داشته باشد.\nمحل ذخیره‌سازی داده‌ها را مجدداً به کارت SD تغییر دهید یا به صفحه بعدی بروید و مجوز دسترسی به کارت SD را بدهید.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"دوربین برای استفاده از کارت SD، باید مجوز دسترسی به کارت SD را داشته باشد.
+محل ذخیره‌سازی داده‌ها را مجدداً به کارت SD تغییر دهید یا به صفحه بعدی بروید و مجوز دسترسی به کارت SD را بدهید."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">کارت SD در دسترس نیست</string>
-    <string name="cam_strings_sd_permission_info_2_txt">کارت SD جدیدی شناسایی شده است که به مجوز نیاز دارد.\n\nبرای استفاده از این کارت SD به‌عنوان محل ذخیره‌سازی اطلاعات، لطفاً این کارت SD یا دایرکتوری DCIM را در صفحه بعدی انتخاب کنید.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">کارت SD یا دایرکتوری DCIM انتخاب نشد. کارت SD قابل استفاده نیست.\n\nبرای اعطای مجوز، ابتدا محل ذخیره‌سازی را به کارت SD تغییر دهید یا دایرکتوری مناسب را در صفحه بعدی انتخاب کنید.</string>
-    <string name="cam_strings_sd_permission_info_txt">کارت SD جدیدی شناسایی شد که نیازمند مجوز است.\nبنابراین، از حافظه داخلی دستگاه به‌عنوان فضای ذخیره‌سازی داده‌های پیش‌فرض استفاده خواهد شد\n\nبرای استفاده از کارت SD به‌عنوان فضای ذخیره‌سازی داده‌ها، لطفاً به تنظیمات دوربین بروید و گزینه فضای ذخیره‌سازی داده‌ها را به کارت SD تغییر دهید.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"کارت SD جدیدی شناسایی شده است که به مجوز نیاز دارد.
+
+برای استفاده از این کارت SD به‌عنوان محل ذخیره‌سازی اطلاعات، لطفاً این کارت SD یا دایرکتوری DCIM را در صفحه بعدی انتخاب کنید."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"کارت SD یا دایرکتوری DCIM انتخاب نشد. کارت SD قابل استفاده نیست.
+
+برای اعطای مجوز، ابتدا محل ذخیره‌سازی را به کارت SD تغییر دهید یا دایرکتوری مناسب را در صفحه بعدی انتخاب کنید."</string>
+    <string name="cam_strings_sd_permission_info_txt">"کارت SD جدیدی شناسایی شد که نیازمند مجوز است.
+بنابراین، از حافظه داخلی دستگاه به‌عنوان فضای ذخیره‌سازی داده‌های پیش‌فرض استفاده خواهد شد
+
+برای استفاده از کارت SD به‌عنوان فضای ذخیره‌سازی داده‌ها، لطفاً به تنظیمات دوربین بروید و گزینه فضای ذخیره‌سازی داده‌ها را به کارت SD تغییر دهید."</string>
     <string name="cam_strings_sd_permission_rationale_txt">ذخیره عکس‌ها و فیلم‌ها روی کارت SD</string>
     <string name="cam_strings_select_picture_txt">انتخاب عکس</string>
     <string name="cam_strings_self_timer_05_txt">0.5 ثانیه</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">ضبط خودکار</string>
     <string name="cam_strings_side_touch_not_supported_txt">حسگر جانبی در این نمایشگر پشتیبانی نمی‌شود</string>
     <string name="cam_strings_side_touch_on_title_txt">حسگر جانبی</string>
-    <string name="cam_strings_side_touch_on_txt">برای کار با این قابلیت، به تنظیمات &gt; نمایشگر بروید و حسگرجانبی را فعال کنید. فعال شود؟</string>
+    <string name="cam_strings_side_touch_on_txt">برای کار با این قابلیت، به تنظیمات > نمایشگر بروید و حسگرجانبی را فعال کنید. فعال شود؟</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">حسگر جانبی</string>
-    <string name="cam_strings_side_touch_tutorial_txt">می‌توانید به‌جای ضربه زدن روی دکمه شاتر، به‌سادگی با دوبار ضربه زدن روی حسگر موجود در کنار صفحه‌نمایش، عکس یا فیلم بگیرید. می‌توانید با کشیدن انگشتتان در امتداد حسگر جانبی نیز بزرگ‌نمایی یا کوچک‌نمایی کنید.\nهردو حالت عکس و فیلم از این قابلیت پشتیبانی می‌کنند. می‌توانید این قابلیت را از طریق حسگر جانبی در تنظیمات دوربین غیرفعال کنید.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">می‌توانید به‌جای ضربه زدن روی دکمه شاتر، به‌سادگی با دوبار ضربه زدن روی حسگر موجود در کنار صفحه‌نمایش در نمای عمودی، عکس یا فیلم بگیرید. می‌توانید با کشیدن انگشتتان در کنار حسگر جانبی نیز بزرگ‌نمایی یا کوچک‌نمایی کنید.\nهر دو حالت عکس و فیلم از این قابلیت پشتیبانی می‌کنند. می‌توانید این قابلیت را از طریق حسگر جانبی در تنظیمات دوربین غیرفعال کنید.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">می‌توانید به‌جای ضربه زدن روی دکمه شاتر، به‌سادگی با دوبار ضربه زدن روی حسگر موجود در کنار صفحه‌نمایش در نمای عمودی، عکس یا فیلم بگیرید.\nهر دو حالت عکس و فیلم از این قابلیت پشتیبانی می‌کنند. می‌توانید این قابلیت را از طریق حسگر جانبی در تنظیمات دوربین غیرفعال کنید.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">می‌توانید به‌جای ضربه زدن روی دکمه شاتر، به‌سادگی با دوبار ضربه زدن روی حسگر موجود در کنار صفحه‌نمایش، عکس یا فیلم بگیرید.\nهردو حالت عکس و فیلم از این قابلیت پشتیبانی می‌کنند. می‌توانید این قابلیت را از طریق حسگر جانبی در تنظیمات دوربین غیرفعال کنید.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"می‌توانید به‌جای ضربه زدن روی دکمه شاتر، به‌سادگی با دوبار ضربه زدن روی حسگر موجود در کنار صفحه‌نمایش، عکس یا فیلم بگیرید. می‌توانید با کشیدن انگشتتان در امتداد حسگر جانبی نیز بزرگ‌نمایی یا کوچک‌نمایی کنید.
+هردو حالت عکس و فیلم از این قابلیت پشتیبانی می‌کنند. می‌توانید این قابلیت را از طریق حسگر جانبی در تنظیمات دوربین غیرفعال کنید."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"می‌توانید به‌جای ضربه زدن روی دکمه شاتر، به‌سادگی با دوبار ضربه زدن روی حسگر موجود در کنار صفحه‌نمایش در نمای عمودی، عکس یا فیلم بگیرید. می‌توانید با کشیدن انگشتتان در کنار حسگر جانبی نیز بزرگ‌نمایی یا کوچک‌نمایی کنید.
+هر دو حالت عکس و فیلم از این قابلیت پشتیبانی می‌کنند. می‌توانید این قابلیت را از طریق حسگر جانبی در تنظیمات دوربین غیرفعال کنید."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"می‌توانید به‌جای ضربه زدن روی دکمه شاتر، به‌سادگی با دوبار ضربه زدن روی حسگر موجود در کنار صفحه‌نمایش در نمای عمودی، عکس یا فیلم بگیرید.
+هر دو حالت عکس و فیلم از این قابلیت پشتیبانی می‌کنند. می‌توانید این قابلیت را از طریق حسگر جانبی در تنظیمات دوربین غیرفعال کنید."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"می‌توانید به‌جای ضربه زدن روی دکمه شاتر، به‌سادگی با دوبار ضربه زدن روی حسگر موجود در کنار صفحه‌نمایش، عکس یا فیلم بگیرید.
+هردو حالت عکس و فیلم از این قابلیت پشتیبانی می‌کنند. می‌توانید این قابلیت را از طریق حسگر جانبی در تنظیمات دوربین غیرفعال کنید."</string>
     <string name="cam_strings_side_touch_txt">حسگر جانبی</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">وضوح صفحه و سبک ضبط را می‌توان در تنظیمات «دوربین» ‌تغییر داد</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">بسیار کند (یک عکس)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">حرکت فوق‌العاده آهسته</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">می‌توانی فریم بر ثانیه و سبک ضبط برای حرکت آهسته را تغییر دهید</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">گزینه‌های بیشتر</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">با ضربه زدن روی دکمه در مرکز صفحه نمایش، فوراً یک لحظه ارزشمند را با تصویر آهسته %1$s فریم بر ثانیه ضبط کنید.\nضبط در شرایط دارای نور، به ساخت یک ویدیوی بهتر کمک می‌کند.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"با ضربه زدن روی دکمه در مرکز صفحه نمایش، فوراً یک لحظه ارزشمند را با تصویر آهسته %1$s فریم بر ثانیه ضبط کنید.
+ضبط در شرایط دارای نور، به ساخت یک ویدیوی بهتر کمک می‌کند."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">می‌توانید با ضربه زدن روی دکمه مرکز، لحظه درست را با %1$s فریم بر ثانیه ضبط کنید</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">با ضربه زدن روی دکمه در مرکز صفحه نمایش یک لحظه ارزشمند را فوراً در یک حرکت آهسته %1$s فریم بر ثانیه ضبط کنید</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">حرکت فوق‌العاده آهسته (تک ضبط)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">حرکت آهسته</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">چگونگی ضبط</string>
     <string name="cam_strings_slow_motion_standard_txt">حرکت آهسته</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">با نمایش یک لحظه ارزشمند در تصویر آهسته، یک ویدیوی تأثیرگذار بسازید.\nضبط در شرایط دارای نور، در ساخت یک ویدیوی بهتر کمک می‌کند.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"با نمایش یک لحظه ارزشمند در تصویر آهسته، یک ویدیوی تأثیرگذار بسازید.
+ضبط در شرایط دارای نور، در ساخت یک ویدیوی بهتر کمک می‌کند."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">می‌توانید ویدیو را با سرعت‌های مختلف با جابجایی به %1$s فریم بر ثانیه ضبط کنید</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">در لحظه درست، روی دکمه در مرکز ضربه بزنید</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">حرکت آهسته ضبط شد</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">مجوزهای نرم‌افزار</string>
     <string name="cam_strings_take_photo_txt">گرفتن عکس</string>
     <string name="cam_strings_term_of_use_accept_txt">پذیرش</string>
-    <string name="cam_strings_term_of_use_consent_txt">من با &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;شرایط استفاده&lt;/a&gt; برقرار شده توسط Sony Mobile موافقم.</string>
+    <string name="cam_strings_term_of_use_consent_txt">من با &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">شرایط استفاده&lt;/a> برقرار شده توسط Sony Mobile موافقم.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">بسته به طرح داده شما، استفاده شما از این سرویس ممکن است هزینه های داده تلفن همراه را اعمال کند.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">‏Sony Mobile شناسه رمزگذاری شده (هش شده) دستگاه Android‎ شما، داده های مبتنی بر مکان و مهر زمانی را جمع‌آوری می‌کند تا بتواند به عنوان بخشی از ارتقای سرویس خود، نتایج مناسبی را در اختیار شما قرار دهد.</string>
     <string name="cam_strings_term_of_use_decline_txt">رد کردن</string>
     <string name="cam_strings_term_of_use_title_txt">شرایط و مقررات</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;شرایط استفاده &lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">شرایط استفاده &lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">لغو انتخاب عکس‌ها</string>
     <string name="cam_strings_timeshift_operation_failed_txt">ذخیره نشد</string>
     <string name="cam_strings_timeshift_save_complete_txt">ذخیره شد</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">برای ضبط ویدیوی ‎4K‎ نباید تنظیمات را تغییر دهید، مگر آنکه از کارت SD سرعت بالا استفاده کنید ( کلاس سرعت UHS ۱ یا بالاتر یا کلاس سرعت ۱۰ توصیه می‌شود).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">برای ضبط ویدیوی تغییر زمان، نباید این تنظیمات را تغییر دهید مگر آنکه از کارت SD سرعت بالا استفاده می‌کنید (کلاس سرعت UHS ۱ یا بالاتر، یا کلاس سرعت ۱۰ توصیه می‌شود). به هر حال تغییر می‌دهید؟</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">برای ضبط ویدیوی حرکت آهسته ثابت، تنظیمات را تغییر ندهید، مگر آنکه از کارت SD سرعت بالا استفاده کنید ( کلاس سرعت UHS ۱ یا بالاتر یا کلاس سرعت ۱۰ توصیه می‌شود).</string>
-    <string name="cam_strings_video_explanatory_txt">برای ضبط ثابت ویدیو، توصیه می‌کنیم محل ذخیره داده‌ها را به حافظه داخلی تغییر دهید. آیا مایلید هم اکنون آن را تغییر بدهید؟\n\nاگر به استفاده از کارت SD به عنوان حافظه ذخیره داده‌ها ادامه می‌دهید، اطمینان پیدا کنید که از کارت SD سرعت بالا (UHS کلاس سرعت ۱ یا بالاتر، یا کلاس سرعت ۱۰ توصیه می‌شود) استفاده می‌شود.</string>
+    <string name="cam_strings_video_explanatory_txt">"برای ضبط ثابت ویدیو، توصیه می‌کنیم محل ذخیره داده‌ها را به حافظه داخلی تغییر دهید. آیا مایلید هم اکنون آن را تغییر بدهید؟
+
+اگر به استفاده از کارت SD به عنوان حافظه ذخیره داده‌ها ادامه می‌دهید، اطمینان پیدا کنید که از کارت SD سرعت بالا (UHS کلاس سرعت ۱ یا بالاتر، یا کلاس سرعت ۱۰ توصیه می‌شود) استفاده می‌شود."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">دوربین دوتایی</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">می‌توانید با حالت دوربین دوتایی ویدیوهای زیبایی را با نویز پایین حتی در شب یا اتاقی کم‌نور ضبط کنید. دوربین براساس صحنه‌ها به‌صورت خودکار بین حالت تک ‌دوربین و دوربین دوتایی جابه‌جا می‌شود تا ضبط با حساسیت بسیار بالا انجام شود.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">ضبط ویدیو با دوربین دوتایی</string>

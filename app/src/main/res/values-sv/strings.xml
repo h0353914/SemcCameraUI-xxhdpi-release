@@ -31,8 +31,13 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Det gick inte att slutföra tagningen. Panorera långsammare.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Det gick inte att slutföra tagningen. Panorera snabbare.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Panorera motivet för att ta panoramabilder</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Skapar följande filer:\n- Bild i flera vinklar\n- 3D-bild\nObs! Filerna innehåller ett grått område.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Skapa följande filer:\n- Bild i flera vinklar\n- Bild i 3D</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Skapar följande filer:
+- Bild i flera vinklar
+- 3D-bild
+Obs! Filerna innehåller ett grått område."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Skapa följande filer:
+- Bild i flera vinklar
+- Bild i 3D"</string>
     <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Bearbetar... Bilden innehåller ett grått område.</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Sparar bild</string>
     <string name="cam_3d_strings_dialog_processing_txt">Bearbetar...</string>
@@ -360,7 +365,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Gör att huden ser mjuk och ljusare ut. Effekten fungerar med appar som använder den främre kameran. Detta kan användas på bilder och video. Du kan även justera nivån.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Nivåjustering</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Len hy</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Appen kan inte startas.\nKontrollera att den senaste versionen av %1$s är installerad och aktiverad i enheten.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Appen kan inte startas.
+Kontrollera att den senaste versionen av %1$s är installerad och aktiverad i enheten."</string>
     <string name="cam_strings_gridline_txt">Rutnät</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Vrid handflatan mot kameran. Självutlösaren slås på när handflatan identifierats. Sträck fingrarna uppåt för att underlätta identifieringen.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Vrid handflatan mot kameran</string>
@@ -404,7 +410,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Vanliga inställningar</string>
     <string name="cam_strings_more_txt">Mer</string>
     <string name="cam_strings_multi_window_txt">Dra i mitten av delningsreglaget om du vill växla till och använda helskärmsläget för %1$s</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">En annan enhet är nu ansluten.\nVill du dela bilden i sökaren med enheten?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"En annan enhet är nu ansluten.
+Vill du dela bilden i sökaren med enheten?"</string>
     <string name="cam_strings_multicam_add_device_txt">Lägg till enhet</string>
     <string name="cam_strings_multicam_add_more_txt">Lägg till fler</string>
     <string name="cam_strings_multicam_apply_txt">Klar</string>
@@ -436,16 +443,19 @@
     <string name="cam_strings_photometry_txt">Mätning</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Förutsedd</string>
     <string name="cam_strings_predictive_capture_txt">Förutseende bildtagning</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Kameran har startats automatiskt genom att känna av att du har lyft telefonen i liggande läge och riktat den mot ett objekt.\nDu kan välja ditt favoritsätt att använda den här funktionen från Smart start i kamerainställningarna.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Kameran har startats automatiskt genom att känna av att du har lyft telefonen i liggande läge och riktat den mot ett objekt.
+Du kan välja ditt favoritsätt att använda den här funktionen från Smart start i kamerainställningarna."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Tryck inuti cirkeln för att ta ett foto</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Tryck på skärmen för att ta ett foto</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Tryck inuti cirkeln för att visa i helskärm</string>
     <string name="cam_strings_predictive_launch_guide_txt">Tryck inuti cirkeln för att starta kameran</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Tryck för att starta och fota</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Tryck för att starta</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Det går att starta kameran snabbt. Sväng enheten uppåt i liggande läge och rikta kameran mot ett objekt. Kameran startas automatiskt.\nDu kan välja ditt favoritsätt att använda den här funktionen på från Smart start i kamerainställningarna.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Det går att starta kameran snabbt. Sväng enheten uppåt i liggande läge och rikta kameran mot ett objekt. Kameran startas automatiskt.
+Du kan välja ditt favoritsätt att använda den här funktionen på från Smart start i kamerainställningarna."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Smart start</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Det går att starta kameran snabbt. Sväng enheten uppåt i liggande läge och rikta kameran mot ett objekt. Kameran startas automatiskt.\nFunktionen kan stängas av från Smart start i kamerainställningarna.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Det går att starta kameran snabbt. Sväng enheten uppåt i liggande läge och rikta kameran mot ett objekt. Kameran startas automatiskt.
+Funktionen kan stängas av från Smart start i kamerainställningarna."</string>
     <string name="cam_strings_predictive_launch_txt">Smart start</string>
     <string name="cam_strings_preview_always_txt">På</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 sekunder</string>
@@ -478,7 +488,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s kräver följande behörigheter.</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Behörighet för %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Appen kräver följande behörigheter för att utföra åtgärden.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Om du vill bevilja behörigheter går du till Info om appen &gt; Behörigheter.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Om du vill bevilja behörigheter går du till Info om appen > Behörigheter.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Det gick inte att fortsätta</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Ta foton och videor</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Hämta plats</string>
@@ -525,11 +535,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Sparat i internlagringen</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">GÅ VIDARE</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Appen kräver följande behörigheter för att utföra åtgärden.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Om du vill använda ett SD-kort behöver kameran åtkomstbehörighet till SD-kortet.\nÄndra datalagringen till SD-kort igen eller ge kameran åtkomst till SD-kortet på nästa skärm.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Om du vill använda ett SD-kort behöver kameran åtkomstbehörighet till SD-kortet.
+Ändra datalagringen till SD-kort igen eller ge kameran åtkomst till SD-kortet på nästa skärm."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD-kortet är inte tillgängligt</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Ett nytt SD-kort som kräver behörigheter har upptäckts.\n\nOm du vill använda SD-kortet för datalagring väljer du SD-kortet eller DCIM-katalogen på nästa skärm.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SD-kortet eller DCIM-katalogen valdes inte. SD-kortet kan inte användas.\n\nOm du vill bevilja behörigheter börjar du med att ändra platsen för att spara på SD-kortet eller väljer lämplig katalog på nästa skärm.</string>
-    <string name="cam_strings_sd_permission_info_txt">Ett nytt SD-kort som kräver behörigheter hittades.\nInternminnet kommer därför att användas som standardplats för datalagring.\n\nOm du vill använda SD-kortet för lagring öppnar du kamerainställningarna och ändrar lagringsalternativet till SD-kort.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Ett nytt SD-kort som kräver behörigheter har upptäckts.
+
+Om du vill använda SD-kortet för datalagring väljer du SD-kortet eller DCIM-katalogen på nästa skärm."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD-kortet eller DCIM-katalogen valdes inte. SD-kortet kan inte användas.
+
+Om du vill bevilja behörigheter börjar du med att ändra platsen för att spara på SD-kortet eller väljer lämplig katalog på nästa skärm."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Ett nytt SD-kort som kräver behörigheter hittades.
+Internminnet kommer därför att användas som standardplats för datalagring.
+
+Om du vill använda SD-kortet för lagring öppnar du kamerainställningarna och ändrar lagringsalternativet till SD-kort."</string>
     <string name="cam_strings_sd_permission_rationale_txt">För att spara foton och videor på SD-kort</string>
     <string name="cam_strings_select_picture_txt">Välj foto</string>
     <string name="cam_strings_self_timer_05_txt">0,5 sek.</string>
@@ -552,12 +570,16 @@
     <string name="cam_strings_shutter_trigger_txt">Autofotografering</string>
     <string name="cam_strings_side_touch_not_supported_txt">Sidosensor stöds inte på den här skärmen</string>
     <string name="cam_strings_side_touch_on_title_txt">Sidosensor</string>
-    <string name="cam_strings_side_touch_on_txt">Om du vill använda den här funktionen öppnar du Inställningar &gt; Visning och aktiverar Sidosensor. Vill du aktivera den nu?</string>
+    <string name="cam_strings_side_touch_on_txt">Om du vill använda den här funktionen öppnar du Inställningar > Visning och aktiverar Sidosensor. Vill du aktivera den nu?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Sidosensor</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Du kan ta ett foto eller spela in video genom att helt enkelt trycka två gånger på sensorn på sidan av enheten istället för på slutarknappen. Du kan dessutom zooma in eller ut genom att dra med fingret längs sidosensorn.\nFunktionen stöds av både foto- och videoläget, och kan stängas av från Sidosensor i kamerainställningarna.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Du kan ta ett foto eller spela in video genom att helt enkelt trycka två gånger på sensorn på sidan av enheten i stående läge istället för på slutarknappen. Du kan dessutom zooma in eller ut genom att dra med fingret längs sidosensorn.\nFunktionen stöds av både foto- och videoläget, och kan stängas av från Sidosensor i kamerainställningarna.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Du kan ta ett foto eller spela in video genom att helt enkelt trycka två gånger sensorn på sidan av enheten i stående läge istället för på slutarknappen.\nFunktionen stöds av både foto- och videoläget, och kan stängas av från Sidosensor i kamerainställningarna.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Du kan ta ett foto eller spela in video genom att helt enkelt trycka två gånger på sensorn på sidan av enheten istället för på slutarknappen.\nFunktionen stöds av både foto- och videoläget, och kan stängas av från Sidosensor i kamerainställningarna.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Du kan ta ett foto eller spela in video genom att helt enkelt trycka två gånger på sensorn på sidan av enheten istället för på slutarknappen. Du kan dessutom zooma in eller ut genom att dra med fingret längs sidosensorn.
+Funktionen stöds av både foto- och videoläget, och kan stängas av från Sidosensor i kamerainställningarna."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Du kan ta ett foto eller spela in video genom att helt enkelt trycka två gånger på sensorn på sidan av enheten i stående läge istället för på slutarknappen. Du kan dessutom zooma in eller ut genom att dra med fingret längs sidosensorn.
+Funktionen stöds av både foto- och videoläget, och kan stängas av från Sidosensor i kamerainställningarna."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Du kan ta ett foto eller spela in video genom att helt enkelt trycka två gånger sensorn på sidan av enheten i stående läge istället för på slutarknappen.
+Funktionen stöds av både foto- och videoläget, och kan stängas av från Sidosensor i kamerainställningarna."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Du kan ta ett foto eller spela in video genom att helt enkelt trycka två gånger på sensorn på sidan av enheten istället för på slutarknappen.
+Funktionen stöds av både foto- och videoläget, och kan stängas av från Sidosensor i kamerainställningarna."</string>
     <string name="cam_strings_side_touch_txt">Sidosensor</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Inspelningsstil och skärmupplösning kan ändras i Kamerainställningar</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Mycket långsamt (one-shot)</string>
@@ -565,7 +587,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Super-slow motion</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Du kan ändra fps och inspelningsstil för slow motion</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Fler alternativ</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Spela omedelbart in minnesvärda ögonblick i slow motion med %1$s fps med knappen i skärmens mitt.\nDet är lättare att spela in video under goda ljusförhållanden.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Spela omedelbart in minnesvärda ögonblick i slow motion med %1$s fps med knappen i skärmens mitt.
+Det är lättare att spela in video under goda ljusförhållanden."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Spela in ett speciellt ögonblick med %1$s fps genom att trycka på mittknappen</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Spela omedelbart in ett minnesvärt ögonblick i slow motion med %1$s fps genom att trycka på knappen i skärmens mitt</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Super-slow motion (one-shot)</string>
@@ -576,7 +599,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Slow motion</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Så spelar du in</string>
     <string name="cam_strings_slow_motion_standard_txt">Slow motion</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Gör en imponerande video genom att visa ett minnesvärt ögonblick i slow motion.\nDet är lättare att spela in video under goda ljusförhållanden.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Gör en imponerande video genom att visa ett minnesvärt ögonblick i slow motion.
+Det är lättare att spela in video under goda ljusförhållanden."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Du kan spela in video vid olika hastigheter genom att övergå till %1$s fps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Tryck på knappen i mitten i rätt ögonblick</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Slow motion har spelats in</string>
@@ -607,12 +631,12 @@
     <string name="cam_strings_sw_licence_title_txt">Programvarulicenser</string>
     <string name="cam_strings_take_photo_txt">Ta foto</string>
     <string name="cam_strings_term_of_use_accept_txt">Godkänn</string>
-    <string name="cam_strings_term_of_use_consent_txt">Jag samtycker till Sony Mobiles &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Användarvillkor&lt;/a&gt;.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Jag samtycker till Sony Mobiles &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Användarvillkor&lt;/a>.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Din användning av denna tjänst kan medföra debiteringar för mobildatatrafik beroende på din dataplan.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile kommer att samla in din hashade unika Android-ID-enhetsidentifierare, platsbaserade data och tidsstämplar för att tillhandahålla lämpliga resultat som en del av tjänsten och för tjänstförbättringar.</string>
     <string name="cam_strings_term_of_use_decline_txt">Avvisa</string>
     <string name="cam_strings_term_of_use_title_txt">Villkor</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Villkor&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Villkor&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Avmarkera foton</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Det gick inte att spara</string>
     <string name="cam_strings_timeshift_save_complete_txt">Sparad</string>
@@ -639,7 +663,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">För stabil 4K-videoinspelning får den här inställningen inte ändras om du inte använder ett höghastighets-SD-kort (UHS-hastighetsklass 1 eller högre, eller hastighetsklass 10, rekommenderas).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">För stabil Timeshift-videoinspelning får den här inställningen inte ändras om du inte använder ett höghastighets-SD-kort (UHS-hastighetsklass 1 eller högre, eller hastighetsklass 10, rekommenderas). Vill du ändra den ändå?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">För stabil inspelning av video i slow motion ska inte den här inställningen ändras om du inte använder höghastighets-SD-kort (UHS-hastighetsklass 1 eller högre, eller hastighetsklass 10, rekommenderas).</string>
-    <string name="cam_strings_video_explanatory_txt">För stabil videoinspelning bör lagringsmediet ändras till internminnet. Vill du ändra nu?\n\nOm du fortsätter att använda SD-kort som lagringsmedium ska ett höghastighets-SD-kort användas (UHS-hastighetsklass 1 eller högre, eller hastighetsklass 10, rekommenderas).</string>
+    <string name="cam_strings_video_explanatory_txt">"För stabil videoinspelning bör lagringsmediet ändras till internminnet. Vill du ändra nu?
+
+Om du fortsätter att använda SD-kort som lagringsmedium ska ett höghastighets-SD-kort användas (UHS-hastighetsklass 1 eller högre, eller hastighetsklass 10, rekommenderas)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Dubbelkamera</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Med dubbelkameran kan du spela in vackra videor med lågt brus även nattetid eller i rum med svag belysning. Kameran växlar automatiskt mellan enkel- och dubbelkamera baserat på motiven för att spela in med ultrahög känslighet.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Videoinspelning med dubbelkamera</string>

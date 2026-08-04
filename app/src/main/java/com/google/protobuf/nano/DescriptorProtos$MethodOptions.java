@@ -42,12 +42,6 @@ public final class DescriptorProtos$MethodOptions extends ExtendableMessageNano<
     public boolean serverStreaming;
     public String streamType;
     public DescriptorProtos$UninterpretedOption[] uninterpretedOption;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     @NanoEnumValue(legacy = false, value = DescriptorProtos$MethodOptions$Protocol.class)
     public static int checkProtocolOrThrow(int value) {
         if (value >= 0 && value <= 1) {
@@ -517,7 +511,6 @@ public final class DescriptorProtos$MethodOptions extends ExtendableMessageNano<
                     if (!super.storeUnknownField(input, tag)) {
                         return this;
                     }
-                    break;
                     break;
             }
         }

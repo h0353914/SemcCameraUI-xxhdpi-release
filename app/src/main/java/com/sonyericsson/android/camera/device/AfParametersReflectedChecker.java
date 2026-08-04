@@ -1,3 +1,28 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.device;
 
 import android.hardware.camera2.CaptureRequest;
@@ -5,32 +30,36 @@ import android.hardware.camera2.CaptureResult;
 import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.MeteringRectangle;
 import android.os.Handler;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.CamLog;
 
 class AfParametersReflectedChecker extends CaptureResultCheckerBase {
     private static final String TAG = "AfParametersReflectedChecker";
     private static final boolean TRACE = false;
-    private CameraParameters$AfParametersCallback mCallback;
+    private CameraParameters.AfParametersCallback mCallback;
     private CaptureRequestHolder mReqHolder;
-
-    static /* synthetic */ CameraParameters$AfParametersCallback access$000(AfParametersReflectedChecker afParametersReflectedChecker) {
-        return afParametersReflectedChecker.mCallback;
-    }
 
     private static void trace(String str) {
         CamLog.d(str);
     }
 
-    public AfParametersReflectedChecker(Handler handler, CameraParameters$AfParametersCallback cameraParameters$AfParametersCallback, CaptureRequestHolder captureRequestHolder) {
+    public AfParametersReflectedChecker(Handler handler, CameraParameters.AfParametersCallback afParametersCallback, CaptureRequestHolder captureRequestHolder) {
         super(handler);
-        this.mCallback = cameraParameters$AfParametersCallback;
+        this.mCallback = afParametersCallback;
         this.mReqHolder = captureRequestHolder;
     }
 
     @Override // com.sonyericsson.android.camera.device.CaptureResultCheckerBase
     public void check(CaptureResultHolder captureResultHolder) {
         if (checkSync(captureResultHolder.getLatest())) {
-            this.mHandler.post(new AfParametersReflectedChecker$1(this));
+            this.mHandler.post(new Runnable() { // from class: com.sonyericsson.android.camera.device.AfParametersReflectedChecker.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    if (AfParametersReflectedChecker.this.mCallback != null) {
+                        AfParametersReflectedChecker.this.mCallback.onReflected(AfParametersReflectedChecker.this);
+                    }
+                }
+            });
         }
     }
 

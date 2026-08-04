@@ -1,12 +1,13 @@
 package com.google.android.gms.auth.api.credentials.internal;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class SaveRequest implements SafeParcelable {
-    public static final Parcelable$Creator<SaveRequest> CREATOR = new zzi();
+    public static final Parcelable.Creator<SaveRequest> CREATOR = new zzi();
     final int mVersionCode;
     private final Credential zzSD;
 

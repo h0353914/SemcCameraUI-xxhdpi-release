@@ -1,19 +1,20 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
 public enum Facing implements UserSettingValue {
-    BACK(2131231095, 2131689610, CameraInfo$CameraId.BACK),
-    FRONT(2131231095, 2131689612, CameraInfo$CameraId.FRONT);
+    BACK(R.drawable.cam_core_main_front_toggle_icn, R.string.cam_strings_accessibility_switch_to_front_txt, CameraInfo.CameraId.BACK),
+    FRONT(R.drawable.cam_core_main_front_toggle_icn, R.string.cam_strings_accessibility_switch_to_main_txt, CameraInfo.CameraId.FRONT);
 
     public static final String TAG = "Facing";
     private static Facing[] sOptions = null;
     private static final int sParameterTextId = 2131689665;
     private final int mIconId;
     private final int mTextId;
-    private final CameraInfo$CameraId mValue;
+    private final CameraInfo.CameraId mValue;
 
     public static final void preload() {
     }
@@ -28,10 +29,10 @@ public enum Facing implements UserSettingValue {
         return null;
     }
 
-    Facing(int i, int i2, CameraInfo$CameraId cameraInfo$CameraId) {
+    Facing(int i, int i2, CameraInfo.CameraId cameraId) {
         this.mIconId = i;
         this.mTextId = i2;
-        this.mValue = cameraInfo$CameraId;
+        this.mValue = cameraId;
     }
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValue
@@ -59,7 +60,7 @@ public enum Facing implements UserSettingValue {
         return this.mTextId;
     }
 
-    public CameraInfo$CameraId getCameraId() {
+    public CameraInfo.CameraId getCameraId() {
         return this.mValue;
     }
 

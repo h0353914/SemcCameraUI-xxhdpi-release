@@ -10,12 +10,15 @@ import android.util.Log;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzx;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class DataHolder implements SafeParcelable {
     public static final zze CREATOR = new zze();
-    private static final DataHolder$zza zzadx = new DataHolder$1(new String[0], null);
+    private static final zza zzadx = new zza(new String[0], null) { // from class: com.google.android.gms.common.data.DataHolder.1
+    };
     boolean mClosed;
     private final int mVersionCode;
     private final int zzYm;
@@ -28,6 +31,30 @@ public final class DataHolder implements SafeParcelable {
     private Object zzadv;
     private boolean zzadw;
 
+    public static class zza {
+        private final HashMap<Object, Integer> zzadA;
+        private boolean zzadB;
+        private String zzadC;
+        private final String[] zzadp;
+        private final ArrayList<HashMap<String, Object>> zzady;
+        private final String zzadz;
+
+        private zza(String[] strArr, String str) {
+            this.zzadp = (String[]) zzx.zzw(strArr);
+            this.zzady = new ArrayList<>();
+            this.zzadz = str;
+            this.zzadA = new HashMap<>();
+            this.zzadB = false;
+            this.zzadC = null;
+        }
+    }
+
+    public static class zzb extends RuntimeException {
+        public zzb(String str) {
+            super(str);
+        }
+    }
+
     DataHolder(int i, String[] strArr, CursorWindow[] cursorWindowArr, int i2, Bundle bundle) {
         this.mClosed = false;
         this.zzadw = true;
@@ -38,8 +65,8 @@ public final class DataHolder implements SafeParcelable {
         this.zzads = bundle;
     }
 
-    private DataHolder(DataHolder$zza dataHolder$zza, int i, Bundle bundle) {
-        this(DataHolder$zza.zza(dataHolder$zza), zza(dataHolder$zza, -1), i, bundle);
+    private DataHolder(zza zzaVar, int i, Bundle bundle) {
+        this(zzaVar.zzadp, zza(zzaVar, -1), i, bundle);
     }
 
     public DataHolder(String[] strArr, CursorWindow[] cursorWindowArr, int i, Bundle bundle) {
@@ -57,17 +84,17 @@ public final class DataHolder implements SafeParcelable {
         return new DataHolder(zzadx, i, bundle);
     }
 
-    private static CursorWindow[] zza(DataHolder$zza dataHolder$zza, int i) {
-        long jLongValue;
-        if (DataHolder$zza.zza(dataHolder$zza).length == 0) {
+    private static CursorWindow[] zza(zza zzaVar, int i) {
+
+        if (zzaVar.zzadp.length == 0) {
             return new CursorWindow[0];
         }
-        List listZzb = (i < 0 || i >= DataHolder$zza.zzb(dataHolder$zza).size()) ? DataHolder$zza.zzb(dataHolder$zza) : DataHolder$zza.zzb(dataHolder$zza).subList(0, i);
-        int size = listZzb.size();
+        List listSubList = (i < 0 || i >= zzaVar.zzady.size()) ? zzaVar.zzady : zzaVar.zzady.subList(0, i);
+        int size = listSubList.size();
         CursorWindow cursorWindow = new CursorWindow(false);
         ArrayList arrayList = new ArrayList();
         arrayList.add(cursorWindow);
-        cursorWindow.setNumColumns(DataHolder$zza.zza(dataHolder$zza).length);
+        cursorWindow.setNumColumns(zzaVar.zzadp.length);
         boolean z = false;
         CursorWindow cursorWindow2 = cursorWindow;
         int i2 = 0;
@@ -77,7 +104,7 @@ public final class DataHolder implements SafeParcelable {
                     Log.d("DataHolder", "Allocating additional cursor window for large data set (row " + i2 + ")");
                     cursorWindow2 = new CursorWindow(false);
                     cursorWindow2.setStartPosition(i2);
-                    cursorWindow2.setNumColumns(DataHolder$zza.zza(dataHolder$zza).length);
+                    cursorWindow2.setNumColumns(zzaVar.zzadp.length);
                     arrayList.add(cursorWindow2);
                     if (!cursorWindow2.allocRow()) {
                         Log.e("DataHolder", "Unable to allocate row to hold data.");
@@ -85,10 +112,10 @@ public final class DataHolder implements SafeParcelable {
                         return (CursorWindow[]) arrayList.toArray(new CursorWindow[arrayList.size()]);
                     }
                 }
-                Map map = (Map) listZzb.get(i2);
+                Map map = (Map) listSubList.get(i2);
                 boolean zPutDouble = true;
-                for (int i3 = 0; i3 < DataHolder$zza.zza(dataHolder$zza).length && zPutDouble; i3++) {
-                    String str = DataHolder$zza.zza(dataHolder$zza)[i3];
+                for (int i3 = 0; i3 < zzaVar.zzadp.length && zPutDouble; i3++) {
+                    String str = zzaVar.zzadp[i3];
                     Object obj = map.get(str);
                     if (obj == null) {
                         zPutDouble = cursorWindow2.putNull(i2, i3);
@@ -96,11 +123,11 @@ public final class DataHolder implements SafeParcelable {
                         zPutDouble = cursorWindow2.putString((String) obj, i2, i3);
                     } else {
                         if (obj instanceof Long) {
-                            jLongValue = ((Long) obj).longValue();
+                            zPutDouble = cursorWindow2.putLong(((Long) obj).longValue(), i2, i3);
                         } else if (obj instanceof Integer) {
                             zPutDouble = cursorWindow2.putLong(((Integer) obj).intValue(), i2, i3);
                         } else if (obj instanceof Boolean) {
-                            jLongValue = ((Boolean) obj).booleanValue() ? 1L : 0L;
+                            zPutDouble = cursorWindow2.putLong(((Boolean) obj).booleanValue() ? 1L : 0L, i2, i3);
                         } else if (obj instanceof byte[]) {
                             zPutDouble = cursorWindow2.putBlob((byte[]) obj, i2, i3);
                         } else if (obj instanceof Double) {
@@ -111,20 +138,19 @@ public final class DataHolder implements SafeParcelable {
                             }
                             zPutDouble = cursorWindow2.putDouble(((Float) obj).floatValue(), i2, i3);
                         }
-                        zPutDouble = cursorWindow2.putLong(jLongValue, i2, i3);
                     }
                 }
                 if (zPutDouble) {
                     z = false;
                 } else {
                     if (z) {
-                        throw new DataHolder$zzb("Could not add the value to a new CursorWindow. The size of value may be larger than what a CursorWindow can handle.");
+                        throw new zzb("Could not add the value to a new CursorWindow. The size of value may be larger than what a CursorWindow can handle.");
                     }
                     Log.d("DataHolder", "Couldn't populate window data for row " + i2 + " - allocating new window.");
                     cursorWindow2.freeLastRow();
                     cursorWindow2 = new CursorWindow(false);
                     cursorWindow2.setStartPosition(i2);
-                    cursorWindow2.setNumColumns(DataHolder$zza.zza(dataHolder$zza).length);
+                    cursorWindow2.setNumColumns(zzaVar.zzadp.length);
                     arrayList.add(cursorWindow2);
                     i2--;
                     z = true;

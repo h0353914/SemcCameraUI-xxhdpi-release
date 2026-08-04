@@ -1,5 +1,6 @@
 package com.google.android.gms.internal;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzmw {
     public static int zza(byte[] bArr, int i, int i2, int i3) {
         int i4 = (i2 & (-4)) + i;

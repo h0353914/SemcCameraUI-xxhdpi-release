@@ -2,10 +2,11 @@ package com.sonymobile.android.media;
 
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
-import android.media.MediaRecorder$OnErrorListener;
-import android.media.MediaRecorder$OnInfoListener;
+import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.Surface;
 import com.sonymobile.android.media.internal.SomcMediaRecorder;
 import java.io.FileDescriptor;
@@ -32,32 +33,288 @@ public class MediaRecorder {
     public static final int MEDIA_RECORDER_TRACK_INTER_CHUNK_TIME_MS = 1006;
     private static final String TAG = "MediaRecorder";
     private boolean mIsAvailable;
-    private MediaRecorder$OnErrorListener mOnErrorListener;
-    private MediaRecorder$OnInfoListener mOnInfoListener;
+    private android.media.MediaRecorder.OnErrorListener mOnErrorListener;
+    private android.media.MediaRecorder.OnInfoListener mOnInfoListener;
     private SomcMediaRecorder mSomcMediaRecorder;
 
-    static /* synthetic */ MediaRecorder$OnErrorListener access$000(MediaRecorder mediaRecorder) {
-        return mediaRecorder.mOnErrorListener;
+    public static final class AudioSource {
+        public static final int AUDIO_SOURCE_INVALID = -1;
+        public static final int CAMCORDER = 5;
+        public static final int DEFAULT = 0;
+        public static final int HOTWORD = 1999;
+        public static final int MIC = 1;
+        public static final int RADIO_TUNER = 1998;
+        public static final int REMOTE_SUBMIX = 8;
+        public static final int VOICE_CALL = 4;
+        public static final int VOICE_COMMUNICATION = 7;
+        public static final int VOICE_DOWNLINK = 3;
+        public static final int VOICE_RECOGNITION = 6;
+        public static final int VOICE_UPLINK = 2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private AudioSource() {
+        }
     }
 
-    static /* synthetic */ boolean access$100(MediaRecorder mediaRecorder) {
-        return mediaRecorder.mIsAvailable;
+    public static final class VideoSource {
+        public static final int CAMERA = 1;
+        public static final int DEFAULT = 0;
+        public static final int SURFACE = 2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private VideoSource() {
+        }
     }
 
-    static /* synthetic */ MediaRecorder$OnInfoListener access$200(MediaRecorder mediaRecorder) {
-        return mediaRecorder.mOnInfoListener;
+    public static final class OutputFormat {
+        public static final int AAC_ADIF = 5;
+        public static final int AAC_ADTS = 6;
+        public static final int AMR_NB = 3;
+        public static final int AMR_WB = 3;
+        public static final int DEFAULT = 0;
+        public static final int MPEG_4 = 2;
+        public static final int OUTPUT_FORMAT_MPEG2TS = 8;
+        public static final int OUTPUT_FORMAT_RTP_AVP = 7;
+        public static final int RAW_AMR = 3;
+        public static final int THREE_GPP = 1;
+        public static final int WEBM = 9;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private OutputFormat() {
+        }
+    }
+
+    public static final class AudioEncoder {
+        public static final int AAC = 3;
+        public static final int AAC_ELD = 5;
+        public static final int AMR_NB = 1;
+        public static final int AMR_WB = 2;
+        public static final int DEFAULT = 0;
+        public static final int HE_AAC = 4;
+        public static final int VORBIS = 6;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private AudioEncoder() {
+        }
+    }
+
+    public static final class VideoEncoder {
+        public static final int DEFAULT = 0;
+        public static final int H263 = 1;
+        public static final int H264 = 2;
+        public static final int HEVC = 5;
+        public static final int MPEG_4_SP = 3;
+        public static final int VP8 = 4;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private VideoEncoder() {
+        }
     }
 
     public MediaRecorder() {
-        MediaRecorder$CallbackHandler mediaRecorder$CallbackHandler;
+        CallbackHandler callbackHandler;
         if (Looper.myLooper() != null) {
-            mediaRecorder$CallbackHandler = new MediaRecorder$CallbackHandler(this, new WeakReference(this), Looper.myLooper());
+            callbackHandler = new CallbackHandler(new WeakReference(this), Looper.myLooper());
         } else if (Looper.getMainLooper() != null) {
-            mediaRecorder$CallbackHandler = new MediaRecorder$CallbackHandler(this, new WeakReference(this), Looper.getMainLooper());
+            callbackHandler = new CallbackHandler(new WeakReference(this), Looper.getMainLooper());
         } else {
             throw new IllegalArgumentException("MediaRecorder must be created on thread with Looper running");
         }
-        this.mSomcMediaRecorder = new SomcMediaRecorder(mediaRecorder$CallbackHandler);
+        this.mSomcMediaRecorder = new SomcMediaRecorder(callbackHandler);
     }
 
     public void stopAudioRecording() {
@@ -92,11 +349,11 @@ public class MediaRecorder {
         this.mSomcMediaRecorder.setVideoSource(i);
     }
 
-    public void setProfile(CamcorderProfile camcorderProfile) {
+    public void setProfile(CamcorderProfile camcorderProfile) throws IllegalStateException {
         this.mSomcMediaRecorder.setProfile(camcorderProfile);
     }
 
-    public void setCaptureRate(double d) {
+    public void setCaptureRate(double d) throws IllegalStateException {
         this.mSomcMediaRecorder.setCaptureRate(d);
     }
 
@@ -120,15 +377,15 @@ public class MediaRecorder {
         this.mSomcMediaRecorder.setVideoFrameRate(i);
     }
 
-    public void setVideoEncodingProfileLevel(int i, int i2) {
+    public void setVideoEncodingProfileLevel(int i, int i2) throws IllegalStateException {
         this.mSomcMediaRecorder.setVideoEncodingProfileLevel(i, i2);
     }
 
-    public void setVideoBitRateMode(int i) {
+    public void setVideoBitRateMode(int i) throws IllegalStateException {
         this.mSomcMediaRecorder.setVideoBitRateMode(i);
     }
 
-    public void setVideoColorAspects(int i, int i2, int i3) {
+    public void setVideoColorAspects(int i, int i2, int i3) throws IllegalStateException {
         this.mSomcMediaRecorder.setVideoColorAspects(i, i2, i3);
     }
 
@@ -230,12 +487,12 @@ public class MediaRecorder {
         this.mSomcMediaRecorder.reset();
     }
 
-    public void setOnErrorListener(MediaRecorder$OnErrorListener mediaRecorder$OnErrorListener) {
-        this.mOnErrorListener = mediaRecorder$OnErrorListener;
+    public void setOnErrorListener(android.media.MediaRecorder.OnErrorListener onErrorListener) {
+        this.mOnErrorListener = onErrorListener;
     }
 
-    public void setOnInfoListener(MediaRecorder$OnInfoListener mediaRecorder$OnInfoListener) {
-        this.mOnInfoListener = mediaRecorder$OnInfoListener;
+    public void setOnInfoListener(android.media.MediaRecorder.OnInfoListener onInfoListener) {
+        this.mOnInfoListener = onInfoListener;
     }
 
     public void release() {
@@ -264,6 +521,71 @@ public class MediaRecorder {
 
     public String dump(String str) {
         return this.mSomcMediaRecorder.dump(str);
+    }
+
+    private class CallbackHandler extends Handler {
+        private final WeakReference<MediaRecorder> mRecorder;
+
+        public CallbackHandler(WeakReference<MediaRecorder> weakReference, Looper looper) {
+            super(looper);
+            this.mRecorder = weakReference;
+        }
+
+        @Override // android.os.Handler
+        public void handleMessage(Message message) {
+            int i = message.arg1 & SomcMediaRecorder.MEDIA_RECORDER_INFO_MASK;
+            switch (message.what) {
+                case 1:
+                    if (i != 4) {
+                        switch (i) {
+                            case 1000:
+                                if (MediaRecorder.this.mOnInfoListener != null) {
+                                    MediaRecorder.this.mOnInfoListener.onInfo(null, message.arg1, message.arg2);
+                                    break;
+                                }
+                                break;
+                            case 1001:
+                                if (MediaRecorder.this.mOnInfoListener != null) {
+                                    MediaRecorder.this.mOnInfoListener.onInfo(null, message.arg1, message.arg2);
+                                    break;
+                                }
+                                break;
+                        }
+                    } else if (MediaRecorder.this.mOnErrorListener != null) {
+                        if (MediaRecorder.this.mIsAvailable) {
+                            MediaRecorder.this.mOnErrorListener.onError(null, 1, 0);
+                            break;
+                        } else {
+                            Log.w(MediaRecorder.TAG, "Message is rejected because recorder is already stopped. what:" + message.what + " message:" + i);
+                            break;
+                        }
+                    }
+                    break;
+                case 2:
+                    if (MediaRecorder.this.mOnInfoListener != null) {
+                        MediaRecorder.this.mOnInfoListener.onInfo(null, MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED, 0);
+                        break;
+                    }
+                    break;
+                case 3:
+                    if (MediaRecorder.this.mOnInfoListener != null) {
+                        MediaRecorder.this.mOnInfoListener.onInfo(null, MediaRecorder.MEDIA_RECORDER_INFO_MAX_FILESIZE_REACHED, 0);
+                        break;
+                    }
+                    break;
+                case 4:
+                    if (MediaRecorder.this.mOnErrorListener != null) {
+                        if (MediaRecorder.this.mIsAvailable) {
+                            MediaRecorder.this.mOnErrorListener.onError(null, 1, 0);
+                            break;
+                        } else {
+                            Log.w(MediaRecorder.TAG, "Message is rejected because recorder is already stopped. what:" + message.what + " message:" + i);
+                            break;
+                        }
+                    }
+                    break;
+            }
+        }
     }
 
     protected void finalize() {

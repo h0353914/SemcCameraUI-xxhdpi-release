@@ -2,16 +2,17 @@ package com.sonyericsson.android.camera.util.capability;
 
 import android.graphics.Rect;
 import android.hardware.camera2.CameraCharacteristics;
-import android.hardware.camera2.CameraCharacteristics$Key;
 import android.hardware.camera2.params.StreamConfigurationMap;
-import android.media.MediaRecorder;
 import android.util.Range;
 import android.util.Rational;
 import android.util.Size;
 import android.view.SurfaceHolder;
-import com.sonyericsson.android.camera.device.CameraParameterConverter$AwbMode;
+import com.sonyericsson.android.camera.Constants;
+import com.sonyericsson.android.camera.device.CameraParameterConverter;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.device.SomcCameraCharacteristicsKeys;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonymobile.android.media.MediaRecorder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ final class CameraStaticParameters {
     public static final String SENSOR_NAME_COOPER = "SOS20FW0";
     public static final String SENSOR_NAME_COOPER_TMP = "SOI20BSA";
     public static final String SENSOR_NAME_NONE = "";
-    public static final Integer[] SHUTTER_SPEED_INVERSE_VALUES = {1, 2, 4, 8, 15, 30, 60, 125, 250, 500, 1000, 2000, 4000};
+    public static final Integer[] SHUTTER_SPEED_INVERSE_VALUES = {1, 2, 4, 8, 15, 30, 60, 125, 250, Integer.valueOf(Constants.INTERVAL_OPEN_CAMERA), 1000, Integer.valueOf(MediaRecorder.MEDIA_RECORDER_TRACK_INFO_LIST_END), 4000};
     private static final String TAG = "CameraStaticParameters";
     private CameraCharacteristics mCharacteristics;
     private StreamConfigurationMap mStreamConfigurationMap;
@@ -41,11 +42,11 @@ final class CameraStaticParameters {
         this.mStreamConfigurationMap = (StreamConfigurationMap) this.mCharacteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
     }
 
-    private <T> T tryGetCharacteristics(CameraCharacteristics$Key<T> cameraCharacteristics$Key) {
+    private <T> T tryGetCharacteristics(CameraCharacteristics.Key<T> key) {
         try {
-            return (T) this.mCharacteristics.get(cameraCharacteristics$Key);
+            return (T) this.mCharacteristics.get(key);
         } catch (IllegalArgumentException unused) {
-            CamLog.e("tryGetCharacteristics: Unknown key: " + cameraCharacteristics$Key.getName());
+            CamLog.e("tryGetCharacteristics: Unknown key: " + key.getName());
             return null;
         }
     }
@@ -60,10 +61,10 @@ final class CameraStaticParameters {
                         arrayList.add("off");
                         break;
                     case 1:
-                        arrayList.add("low");
+                        arrayList.add(CameraParameters.POWER_SAVING_MODE_LOW_POWER);
                         break;
                     case 2:
-                        arrayList.add("ultra-low");
+                        arrayList.add(CameraParameters.POWER_SAVING_MODE_ULTRA_LOW_POWER);
                         break;
                 }
             }
@@ -90,12 +91,16 @@ final class CameraStaticParameters {
         if (CamLog.VERBOSE) {
             CamLog.d("getMacroValueForManualFocus() : " + f);
         }
+        if (f == null) {
+            return 0.0f;
+        }
         return f.floatValue();
     }
 
     public boolean isManualFocusSupported() {
         for (int i : (int[]) this.mCharacteristics.get(CameraCharacteristics.CONTROL_AF_AVAILABLE_MODES)) {
-            if (i == 0 && ((Float) this.mCharacteristics.get(CameraCharacteristics.LENS_INFO_MINIMUM_FOCUS_DISTANCE)).floatValue() > 0.0f) {
+            Float minFocusDist = (Float) this.mCharacteristics.get(CameraCharacteristics.LENS_INFO_MINIMUM_FOCUS_DISTANCE);
+            if (i == 0 && minFocusDist != null && minFocusDist.floatValue() > 0.0f) {
                 return true;
             }
         }
@@ -107,26 +112,27 @@ final class CameraStaticParameters {
         for (int i : (int[]) this.mCharacteristics.get(CameraCharacteristics.CONTROL_AF_AVAILABLE_MODES)) {
             switch (i) {
                 case 0:
-                    if (((Float) this.mCharacteristics.get(CameraCharacteristics.LENS_INFO_MINIMUM_FOCUS_DISTANCE)).floatValue() == 0.0f) {
-                        arrayList.add("fixed");
+                    Float minFocusDist = (Float) this.mCharacteristics.get(CameraCharacteristics.LENS_INFO_MINIMUM_FOCUS_DISTANCE);
+                    if (minFocusDist == null || minFocusDist.floatValue() == 0.0f) {
+                        arrayList.add(CameraParameters.FOCUS_MODE_FIXED);
                     } else {
-                        arrayList.add("manual");
-                        arrayList.add("infinity");
+                        arrayList.add(CameraParameters.FOCUS_MODE_MANUAL);
+                        arrayList.add(CameraParameters.FOCUS_MODE_INFINITY);
                     }
                     break;
                 case 1:
                     arrayList.add("auto");
                     break;
                 case 3:
-                    arrayList.add("continuous-video");
+                    arrayList.add(CameraParameters.FOCUS_MODE_CONTINUOUS_VIDEO);
                     break;
                 case 4:
-                    arrayList.add("continuous-picture");
+                    arrayList.add(CameraParameters.FOCUS_MODE_CONTINUOUS_PICTURE);
                     break;
             }
         }
         if (arrayList.size() == 0) {
-            arrayList.add("fixed");
+            arrayList.add(CameraParameters.FOCUS_MODE_FIXED);
         }
         if (CamLog.VERBOSE) {
             CamLog.d("getSupportedFocusModes() : " + arrayList);
@@ -154,7 +160,7 @@ final class CameraStaticParameters {
         for (int i : iArr) {
             switch (i) {
                 case 0:
-                    arrayList.add("center");
+                    arrayList.add(CameraParameters.FOCUS_AREA_CENTER);
                     break;
                 case 1:
                     arrayList.add("multi");
@@ -194,13 +200,13 @@ final class CameraStaticParameters {
         for (int i : iArr) {
             switch (i) {
                 case 0:
-                    arrayList.add("center-weighted");
+                    arrayList.add(CameraParameters.AE_REGION_MODE_CENTER_WEIGHTED);
                     break;
                 case 1:
-                    arrayList.add("frame-average");
+                    arrayList.add(CameraParameters.AE_REGION_MODE_FRAME_AVERAGE);
                     break;
                 case 2:
-                    arrayList.add("spot");
+                    arrayList.add(CameraParameters.AE_REGION_MODE_SPOT);
                     break;
                 case 3:
                     arrayList.add("multi");
@@ -259,13 +265,13 @@ final class CameraStaticParameters {
             arrayList.add("auto");
         }
         if (z2) {
-            arrayList.add("iso-prio");
+            arrayList.add(CameraParameters.AE_MODE_ISO_PRIO);
         }
         if (z3) {
-            arrayList.add("shutter-prio");
+            arrayList.add(CameraParameters.AE_MODE_SHUTTER_PRIO);
         }
         if (z4) {
-            arrayList.add("semi-auto");
+            arrayList.add(CameraParameters.AE_MODE_SEMI_AUTO);
         }
         if (CamLog.VERBOSE) {
             CamLog.d("getSupportedAeModes() : " + arrayList);
@@ -276,7 +282,7 @@ final class CameraStaticParameters {
     public List<String> getSupportedWhiteBalance() {
         ArrayList arrayList = new ArrayList();
         for (int i : (int[]) this.mCharacteristics.get(CameraCharacteristics.CONTROL_AWB_AVAILABLE_MODES)) {
-            arrayList.add(CameraParameterConverter$AwbMode.getApi1Value(i));
+            arrayList.add(CameraParameterConverter.AwbMode.getApi1Value(i));
         }
         return arrayList;
     }
@@ -345,23 +351,22 @@ final class CameraStaticParameters {
                         arrayList.add("on");
                         break;
                     case 4:
-                        arrayList.add("red-eye");
+                        arrayList.add(CameraParameters.FLASH_MODE_RED_EYE);
                         break;
                     default:
                         switch (i) {
                             case 15:
-                                arrayList.add("display-auto");
+                                arrayList.add(CameraParameters.DISPLAY_FLASH_MODE_AUTO);
                                 break;
                             case 16:
-                                arrayList.add("display-on");
+                                arrayList.add(CameraParameters.DISPLAY_FLASH_MODE_ON);
                                 break;
                         }
-                        break;
                 }
             }
         }
         if (((Boolean) this.mCharacteristics.get(CameraCharacteristics.FLASH_INFO_AVAILABLE)).booleanValue()) {
-            arrayList.add("torch");
+            arrayList.add(CameraParameters.FLASH_MODE_TORCH);
         }
         if (CamLog.VERBOSE) {
             CamLog.d("getSupportedFlashModes() : " + arrayList);
@@ -379,7 +384,7 @@ final class CameraStaticParameters {
                         arrayList.add("off");
                         break;
                     case 1:
-                        arrayList.add("on-still-hdr");
+                        arrayList.add(CameraParameters.STILL_HDR_ON);
                         break;
                 }
             }
@@ -532,12 +537,13 @@ final class CameraStaticParameters {
             return false;
         }
         if (CamLog.VERBOSE) {
-            CamLog.d("isObjectTrackingSupported() : " + bool.booleanValue());
+            CamLog.d(new String[] { "isObjectTrackingSupported() : " + bool.booleanValue() });
         }
         return bool.booleanValue();
     }
 
     public boolean isTrackingFocusDuringLockSupported() {
+        // Restored to match Smali version behavior
         Boolean bool = (Boolean) tryGetCharacteristics(SomcCameraCharacteristicsKeys.SONYMOBILE_STATISTICS_INFO_AVAILABLE_TRACKING_FOCUS_DURING_LOCK);
         if (bool == null) {
             return false;
@@ -557,7 +563,7 @@ final class CameraStaticParameters {
         for (Size size : outputSizes) {
             arrayList.add(new Rect(0, 0, size.getWidth(), size.getHeight()));
             if (CamLog.VERBOSE) {
-                CamLog.d("getSupportedPreviewSizes() : size:  " + size.getWidth() + "x" + size.getHeight());
+                CamLog.d("getSupportedPreviewSizes() : size:  " + size.getWidth() + SharedPrefsTranslator.CONNECTOR_CROSS + size.getHeight());
             }
         }
         if (CamLog.VERBOSE) {
@@ -584,7 +590,7 @@ final class CameraStaticParameters {
         }
         Rect rect = new Rect(0, 0, iArr[0], iArr[1]);
         if (CamLog.VERBOSE) {
-            CamLog.d("getPreferredPreviewSizeForStill() : " + rect.width() + "x" + rect.height());
+            CamLog.d("getPreferredPreviewSizeForStill() : " + rect.width() + SharedPrefsTranslator.CONNECTOR_CROSS + rect.height());
         }
         return rect;
     }
@@ -633,19 +639,19 @@ final class CameraStaticParameters {
         }
         Rect rect = new Rect(0, 0, iArr[0], iArr[1]);
         if (CamLog.VERBOSE) {
-            CamLog.d("getPreferredPreviewSizeForVideo() : " + rect.width() + "x" + rect.height());
+            CamLog.d("getPreferredPreviewSizeForVideo() : " + rect.width() + SharedPrefsTranslator.CONNECTOR_CROSS + rect.height());
         }
         return rect;
     }
 
     public List<VideoConfiguration> getSupportedVideoConfiguration() {
-        Size[] outputSizes = this.mStreamConfigurationMap.getOutputSizes(MediaRecorder.class);
+        Size[] outputSizes = this.mStreamConfigurationMap.getOutputSizes(android.media.MediaRecorder.class);
         ArrayList arrayList = new ArrayList();
         if (outputSizes == null) {
             return arrayList;
         }
         for (Size size : outputSizes) {
-            int outputMinFrameDuration = (int) (1000000000 / this.mStreamConfigurationMap.getOutputMinFrameDuration(MediaRecorder.class, size));
+            int outputMinFrameDuration = (int) (1000000000 / this.mStreamConfigurationMap.getOutputMinFrameDuration(android.media.MediaRecorder.class, size));
             arrayList.add(new VideoConfiguration(size.getWidth(), size.getHeight(), 0, outputMinFrameDuration));
             if (CamLog.VERBOSE) {
                 CamLog.d("getSupportedVideoConfiguration() : (width, height, maxfps) = (" + size.getWidth() + ", " + size.getHeight() + ", " + outputMinFrameDuration + ")");
@@ -662,7 +668,7 @@ final class CameraStaticParameters {
         }
         Rect rect = new Rect(0, 0, iArr[0], iArr[1]);
         if (CamLog.VERBOSE) {
-            CamLog.d("getPreferredPreviewSizeForHdrVideo() : " + rect.width() + "x" + rect.height());
+            CamLog.d("getPreferredPreviewSizeForHdrVideo() : " + rect.width() + SharedPrefsTranslator.CONNECTOR_CROSS + rect.height());
         }
         return rect;
     }

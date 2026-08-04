@@ -1,15 +1,15 @@
 package com.sonyericsson.cameracommon.status;
 
 import android.content.ContentValues;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 
 public abstract class CameraIdArrayValue implements CameraStatusValue {
     private static final String INLALID_VALUE = "N/A";
     private static final char SEPARATOR = ',';
-    protected final CameraInfo$CameraId[] mValues;
+    protected final CameraInfo.CameraId[] mValues;
 
-    public CameraIdArrayValue(CameraInfo$CameraId... cameraInfo$CameraIdArr) {
-        this.mValues = cameraInfo$CameraIdArr;
+    public CameraIdArrayValue(CameraInfo.CameraId... cameraIdArr) {
+        this.mValues = cameraIdArr;
     }
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusValue
@@ -24,12 +24,12 @@ public abstract class CameraIdArrayValue implements CameraStatusValue {
 
     private String getValue() {
         if (this.mValues.length <= 0) {
-            return "N/A";
+            return INLALID_VALUE;
         }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < this.mValues.length; i++) {
             if (i != 0) {
-                sb.append(',');
+                sb.append(SEPARATOR);
             }
             sb.append(this.mValues[i].getCameraDeviceIdApi1());
         }

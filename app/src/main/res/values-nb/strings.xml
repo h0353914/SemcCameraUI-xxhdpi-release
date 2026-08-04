@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Kan ikke fullføre fotograferingen. Panorer langsommere.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Kan ikke fullføre fotograferingen. Panorer raskere.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Ta et panoramabilde ved å sveipe kameraet</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Oppretter følgende filer:\n- flervinkelsbilde\n- 3D-bilde\nMerk: Disse filene inneholder et grått område.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Oppretter følgende filer:\n- flervinkelsbile\n- 3D-bilde</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Behandler...\nDette bildet inneholder et grått område</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Oppretter følgende filer:
+- flervinkelsbilde
+- 3D-bilde
+Merk: Disse filene inneholder et grått område."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Oppretter følgende filer:
+- flervinkelsbile
+- 3D-bilde"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Behandler...
+Dette bildet inneholder et grått område"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Lagrer bilde</string>
     <string name="cam_3d_strings_dialog_processing_txt">Behandler...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Vent et par sekunder før du starter 3D-kamera</string>
@@ -160,7 +166,8 @@
     <string name="cam_strings_burst_not_supported_front_camera_txt">Kan ikke ta bildeserie med frontkamera</string>
     <string name="cam_strings_burst_not_supported_fusion_on_txt">Kan ikke ta bildeserie med dobbelt-kamera på</string>
     <string name="cam_strings_burst_saved_internal_storage_txt">Bildeserier lagres på intern lagring</string>
-    <string name="cam_strings_burst_shooting_txt">Bildeserie-\nhastighet</string>
+    <string name="cam_strings_burst_shooting_txt">"Bildeserie-
+hastighet"</string>
     <string name="cam_strings_camera_apps_tab_txt">KAMERAAPPER</string>
     <string name="cam_strings_camera_key_setting_burst_shot_txt">Bildeserie</string>
     <string name="cam_strings_camera_key_setting_take_photo_txt">Ta et bilde</string>
@@ -360,7 +367,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Gjør huden din lys og jevn. Effekten virker i apper som bruker frontkameraet. Dette kan brukes både på bilder og videoer. Du kan også justere nivået.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Nivåjustering</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Jevn hud</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Kan ikke starte app.\nSjekk at nyeste versjon av %1$s er installert og aktivert på enheten din.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Kan ikke starte app.
+Sjekk at nyeste versjon av %1$s er installert og aktivert på enheten din."</string>
     <string name="cam_strings_gridline_txt">Rutenettlinjer</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Vri håndflaten mot kameraet. Selvutløseren vil slås på når håndflaten gjenkjennes. For å gjøre det enkelt å gjenkjennes, strekk fingrene oppover.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Vri håndflaten mot kameraet</string>
@@ -404,7 +412,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Vanlige innstillinger</string>
     <string name="cam_strings_more_txt">Mer</string>
     <string name="cam_strings_multi_window_txt">Dra midten av den delte linjen for å bytte til fullskjerm for %1$s for å bruke</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">En annen enhet er nå tilkoblet.\nVil du dele bildet gjennom søkeren med enheten?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"En annen enhet er nå tilkoblet.
+Vil du dele bildet gjennom søkeren med enheten?"</string>
     <string name="cam_strings_multicam_add_device_txt">Legg til enhet</string>
     <string name="cam_strings_multicam_add_more_txt">Legg til mer</string>
     <string name="cam_strings_multicam_apply_txt">Utført</string>
@@ -436,16 +445,19 @@
     <string name="cam_strings_photometry_txt">Måling</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Forutsagt</string>
     <string name="cam_strings_predictive_capture_txt">Forutsigende innspilling</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Kameraet har blitt startet automatisk ved å registrere at du løftet opp enheten telefonen i liggende modus og rettet kameraet mot et motiv.\nDu kan velge favorittmåten din for å bruke denne funksjonen fra Smartstart i kamerainnstillingene.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Kameraet har blitt startet automatisk ved å registrere at du løftet opp enheten telefonen i liggende modus og rettet kameraet mot et motiv.
+Du kan velge favorittmåten din for å bruke denne funksjonen fra Smartstart i kamerainnstillingene."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Berør i sirkelen for å ta bilde</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Berør skjermen for å ta bilde</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Trykk på innsiden av sirkelen for å vise i fullskjerm</string>
     <string name="cam_strings_predictive_launch_guide_txt">Berør i sirkelen for å starte kameraet</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Trykk for å starte og ta bilder</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Trykk for å starte</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Du kan starte kameraet raskt. Løft raskt opp enheten i liggende modus og rett kameraet mot et motiv. Kameraet startes automatisk.\nDu kan velge favorittmåten din for å bruke denne funksjonen fra Smartstart i kamerainnstillingene.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Du kan starte kameraet raskt. Løft raskt opp enheten i liggende modus og rett kameraet mot et motiv. Kameraet startes automatisk.
+Du kan velge favorittmåten din for å bruke denne funksjonen fra Smartstart i kamerainnstillingene."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Smartstart</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Du kan starte kameraet raskt. Sving opp enheten i liggende modus og rett kameraet mot et motiv. Kameraet startes automatisk.\nDu kan slå av denne funksjonen fra Smartstart i kamerainnstillingene.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Du kan starte kameraet raskt. Sving opp enheten i liggende modus og rett kameraet mot et motiv. Kameraet startes automatisk.
+Du kan slå av denne funksjonen fra Smartstart i kamerainnstillingene."</string>
     <string name="cam_strings_predictive_launch_txt">Smartstart</string>
     <string name="cam_strings_preview_always_txt">På</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 sekunder</string>
@@ -478,7 +490,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s krever følgende rettighet(er)</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s-rettighet</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Appen krever følgende rettighet(er) for å utføre denne handlingen.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Gå til Appinfo &gt; Rettigheter for å gi rettigheter.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Gå til Appinfo > Rettigheter for å gi rettigheter.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Kunne ikke fortsette</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">For å ta bilder og videoer</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">For å hente posisjon</string>
@@ -525,11 +537,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Lagret på intern lagring</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">NESTE</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Appen krever følgende rettighet(er) for å utføre denne handlingen.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Hvis du vil bruke et SD-kort, trenger kameraet tillatelse for tilgang til SD-kortet.\nEndre datalagring til SD-kortet igjen, eller tillat kameraet tilgang til SD-kortet på neste skjermbilde.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Hvis du vil bruke et SD-kort, trenger kameraet tillatelse for tilgang til SD-kortet.
+Endre datalagring til SD-kortet igjen, eller tillat kameraet tilgang til SD-kortet på neste skjermbilde."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD-kort er ikke tilgjengelig</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Det har blitt oppdaget et nytt SD-kort som krever tillatelser.\n\nVelg SD-kortet eller DCIM-mappen på neste skjermbilde for å bruke SD-kortet til datalagring.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SD-kortet eller DCIM-mappen ble ikke valgt. SD-kortet kan ikke brukes.\n\nFor å gi tillatelser start med å endre lagringsstedet til SD-kortet, eller velg den aktuelle mappen på det neste skjermbildet.</string>
-    <string name="cam_strings_sd_permission_info_txt">Det ble oppdaget et nytt SD-kort som krever tillatelser.\nIntern lagring brukes derfor som standard lagringsplass i stedet.\n\nHvis du vil bruke SD-kortet som lagringsplass, må du gå til kamerainnstillingene og endre lagringsalternativet til SD-kortet.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Det har blitt oppdaget et nytt SD-kort som krever tillatelser.
+
+Velg SD-kortet eller DCIM-mappen på neste skjermbilde for å bruke SD-kortet til datalagring."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD-kortet eller DCIM-mappen ble ikke valgt. SD-kortet kan ikke brukes.
+
+For å gi tillatelser start med å endre lagringsstedet til SD-kortet, eller velg den aktuelle mappen på det neste skjermbildet."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Det ble oppdaget et nytt SD-kort som krever tillatelser.
+Intern lagring brukes derfor som standard lagringsplass i stedet.
+
+Hvis du vil bruke SD-kortet som lagringsplass, må du gå til kamerainnstillingene og endre lagringsalternativet til SD-kortet."</string>
     <string name="cam_strings_sd_permission_rationale_txt">For å lagre bilder og videoer på SD-kort</string>
     <string name="cam_strings_select_picture_txt">Velg bilde</string>
     <string name="cam_strings_self_timer_05_txt">0,5 sek</string>
@@ -552,12 +572,16 @@
     <string name="cam_strings_shutter_trigger_txt">Automat. bildetaking</string>
     <string name="cam_strings_side_touch_not_supported_txt">Sidesans støttes ikke på denne enheten</string>
     <string name="cam_strings_side_touch_on_title_txt">Sidesans</string>
-    <string name="cam_strings_side_touch_on_txt">Hvis du vil bruke denne funksjonen, gå til Innstillinger &gt; Skjerm og slå på Sidesans. Aktivere nå?</string>
+    <string name="cam_strings_side_touch_on_txt">Hvis du vil bruke denne funksjonen, gå til Innstillinger > Skjerm og slå på Sidesans. Aktivere nå?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Sidesans</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Du kan ta et bilde eller en video enkelt ved å dobbelttrykke på sensoren på siden av skjermen i stedet for utløserknappen. Du kan også zoome inn eller ut ved å skyve fingeren langs siden av denne sensoren.\nBåde bilde- og videomodus støtter denne funksjonen. Du kan slå den av fra Sidesans i kamerainnstillingene.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Du kan ta et bilde eller en video enkelt ved å dobbelttrykke på siden av skjermen i stående visning uten å trykke på utløserknappen. Du kan også zoome inn eller ut ved å skyve fingeren langs denne sidesensoren.\nBåde bilde- og videomodus støtter denne funksjonen. Du kan slå den av fra Sidesans i kamerainnstillingene.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Du kan ta et bilde eller en video enkelt ved å dobbelttrykke på sensoren på siden av skjermen i visning format uten å trykke på utløserknappen.\nBåde bilde- og videomodus støtter denne funksjonen. Du kan slå den av fra Sidesans i kamerainnstillingene.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Du kan ta et bilde eller en video enkelt ved å dobbelttrykke på sensoren på siden av skjermen i stedet for utløserknappen.\nBåde bilde- og videomodus støtter denne funksjonen. Du kan slå den av fra Sidesans i kamerainnstillingene.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Du kan ta et bilde eller en video enkelt ved å dobbelttrykke på sensoren på siden av skjermen i stedet for utløserknappen. Du kan også zoome inn eller ut ved å skyve fingeren langs siden av denne sensoren.
+Både bilde- og videomodus støtter denne funksjonen. Du kan slå den av fra Sidesans i kamerainnstillingene."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Du kan ta et bilde eller en video enkelt ved å dobbelttrykke på siden av skjermen i stående visning uten å trykke på utløserknappen. Du kan også zoome inn eller ut ved å skyve fingeren langs denne sidesensoren.
+Både bilde- og videomodus støtter denne funksjonen. Du kan slå den av fra Sidesans i kamerainnstillingene."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Du kan ta et bilde eller en video enkelt ved å dobbelttrykke på sensoren på siden av skjermen i visning format uten å trykke på utløserknappen.
+Både bilde- og videomodus støtter denne funksjonen. Du kan slå den av fra Sidesans i kamerainnstillingene."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Du kan ta et bilde eller en video enkelt ved å dobbelttrykke på sensoren på siden av skjermen i stedet for utløserknappen.
+Både bilde- og videomodus støtter denne funksjonen. Du kan slå den av fra Sidesans i kamerainnstillingene."</string>
     <string name="cam_strings_side_touch_txt">Sidesans</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Innspillingsstil og skjermoppløsning kan endres i Kamera-innstillinger</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Super-sakte film (ett opptak)</string>
@@ -565,7 +589,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Super-sakte film</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Du kan endre bps og innspillingsstilen for sakte film</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Flere valg</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Spill inn umiddelbart et viktig øyeblikk i %1$s bps sakte film ved å trykke på knappen i midten av skjermen.\nInnspilling under lyse forhold vil bidra til en bedre video.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Spill inn umiddelbart et viktig øyeblikk i %1$s bps sakte film ved å trykke på knappen i midten av skjermen.
+Innspilling under lyse forhold vil bidra til en bedre video."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Du kan spille inn det rette øyeblikket med %1$s BPS ved å trykke på knappen i midten.</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Spill inn umiddelbart et viktig øyeblikk i %1$s bps sakte film ved å trykke på knappen i midten av skjermen</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Super-sakte film (ett opptak)</string>
@@ -576,7 +601,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Sakte film</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Slik spiller du inn</string>
     <string name="cam_strings_slow_motion_standard_txt">Sakte film</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Lag en imponerende video ved å vise et viktig øyeblikk i sakte film.\nInnspilling under lyse forhold vil bidra til en bedre video.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Lag en imponerende video ved å vise et viktig øyeblikk i sakte film.
+Innspilling under lyse forhold vil bidra til en bedre video."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Du kan spille inn video med ulike hastigheter ved å bytte til %1$s bps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Trykk på knappen i midten i det rette øyeblikket</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Sakte film spilt inn</string>
@@ -607,12 +633,12 @@
     <string name="cam_strings_sw_licence_title_txt">Programvarelisenser</string>
     <string name="cam_strings_take_photo_txt">Ta foto</string>
     <string name="cam_strings_term_of_use_accept_txt">Godta</string>
-    <string name="cam_strings_term_of_use_consent_txt">Jeg godtar Sony Mobiles &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;vilkår for bruk&lt;/a&gt;.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Jeg godtar Sony Mobiles &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">vilkår for bruk&lt;/a>.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Når du bruker denne tjenesten, kan det medføre kostnader for datatrafikk, avhengig av abonnementet du har.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile kommer til å innhente den nøkkeltransformerte unike Android-ID-enhetsidentifikatoren din, stedsbaserte data og tidsstempel for å gi deg passende resultater som en del av tjenesten og for tjenesteforbedringer.</string>
     <string name="cam_strings_term_of_use_decline_txt">Avvis</string>
     <string name="cam_strings_term_of_use_title_txt">Vilkår for bruk</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Vilkår for bruk&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Vilkår for bruk&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Fjern valg av bilder</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Kunne ikke lagre</string>
     <string name="cam_strings_timeshift_save_complete_txt">Lagret</string>
@@ -639,7 +665,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">For stabil innspilling av 4K-video må du ikke endre denne innstillingen, bortsett fra hvis du bruker et SD-kort med høy hastighet (UHS hastighetsklasse 1 eller høyere, eller hastighetsklasse 10 anbefales).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">For stabil innspilling av Timeshift video må du ikke endre denne innstillingen, bortsett fra hvis du bruker et SD-kort med høy hastighet (UHS hastighetsklasse 1 eller høyere, eller hastighetsklasse 10 anbefales). Endre likevel?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">For stabil innspilling av video i sakte film må du ikke endre denne innstillingen, bortsett fra hvis du bruker et SD-kort med høy hastighet (UHS hastighetsklasse 1 eller høyere, eller hastighetsklasse 10 anbefales).</string>
-    <string name="cam_strings_video_explanatory_txt">For stabil videoinnspilling anbefaler vi at du endrer lagringsplassen til intern lagring. Vil du endre det nå?\n\nHvis du fortsetter å bruke SD-kortet til datalagring, er det viktig at du bruker et SD-kort med høy hastighet (UHS hastighetsklasse 1 eller høyere eller hastighetsklasse 10 anbefales).</string>
+    <string name="cam_strings_video_explanatory_txt">"For stabil videoinnspilling anbefaler vi at du endrer lagringsplassen til intern lagring. Vil du endre det nå?
+
+Hvis du fortsetter å bruke SD-kortet til datalagring, er det viktig at du bruker et SD-kort med høy hastighet (UHS hastighetsklasse 1 eller høyere eller hastighetsklasse 10 anbefales)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Dobbelt kamera</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Du kan spille inn vakre videoer med lite støy ved å bruke dobbelt kamera, også om natten eller i et rom med dårlig belysning. Kameraet bytter automatisk mellom enkelt kamera og dobbelt kamera basert på motivene som skal spilles inn med ultrahøy følsomhet.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Videoopptak med dobbelt kamera</string>

@@ -5,7 +5,6 @@ import com.sonyericsson.android.camera.configuration.UserSettingSelectability;
 import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue;
 import com.sonyericsson.android.camera.configuration.parameters.UserSettingValueHolder;
 import java.util.Map;
-import java.util.Map$Entry;
 
 public class ParameterUtil {
     public static final String TAG = "ParameterUtil";
@@ -20,10 +19,10 @@ public class ParameterUtil {
         UserSettingValue userSettingValue = options[0];
         if (selectability == UserSettingSelectability.FIXED) {
             if (defaultValue != userSettingValue) {
-                userSettingValueHolder.updateDefaultValue(userSettingValue);
+                userSettingValueHolder.updateDefaultValue((T) userSettingValue);
             }
         } else if (selectability == UserSettingSelectability.SELECTABLE && defaultValue != getPrimaryValue(defaultValue, userSettingValue, options)) {
-            userSettingValueHolder.updateDefaultValue(userSettingValue);
+            userSettingValueHolder.updateDefaultValue((T) userSettingValue);
         }
         return userSettingValueHolder;
     }
@@ -93,15 +92,15 @@ public class ParameterUtil {
     }
 
     public static void copy(Map<UserSettingKey, UserSettingValueHolder<?>> map, Map<UserSettingKey, UserSettingValueHolder<?>> map2) {
-        for (Map$Entry<UserSettingKey, UserSettingValueHolder<?>> map$Entry : map2.entrySet()) {
-            if (map.containsKey(map$Entry.getKey()) && !map$Entry.getKey().isCommon()) {
-                boolean zHasChanged = map.get(map$Entry.getKey()).hasChanged();
-                map$Entry.getValue().onApplied();
-                map$Entry.getValue().parseValueString(map.get(map$Entry.getKey()).createValueString());
+        for (Map.Entry<UserSettingKey, UserSettingValueHolder<?>> entry : map2.entrySet()) {
+            if (map.containsKey(entry.getKey()) && !entry.getKey().isCommon()) {
+                boolean zHasChanged = map.get(entry.getKey()).hasChanged();
+                entry.getValue().onApplied();
+                entry.getValue().parseValueString(map.get(entry.getKey()).createValueString());
                 if (zHasChanged) {
-                    map$Entry.getValue().canChanged();
+                    entry.getValue().canChanged();
                 } else {
-                    map$Entry.getValue().onApplied();
+                    entry.getValue().onApplied();
                 }
             }
         }

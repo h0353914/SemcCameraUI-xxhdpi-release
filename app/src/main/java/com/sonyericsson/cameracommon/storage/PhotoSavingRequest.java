@@ -7,6 +7,7 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusCommon;
 import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusPhoto;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
+import com.sonymobile.media.SomcMediaStore;
 import java.io.File;
 import java.nio.ByteBuffer;
 
@@ -14,9 +15,13 @@ public class PhotoSavingRequest extends SavingRequest {
     public static final String TAG = "PhotoSavingRequest";
     private Image mImage;
     private ImageReader mImageReader;
-    private PhotoSavingRequest$OnImageReaderDetachedListener mOnImageReaderDettachedListener;
+    private OnImageReaderDetachedListener mOnImageReaderDettachedListener;
     public final TakenStatusPhoto photo;
     public final boolean shouldUpdateOrientationBeforeStoring;
+
+    public interface OnImageReaderDetachedListener {
+        void onDetached(ImageReader imageReader);
+    }
 
     public PhotoSavingRequest(TakenStatusCommon takenStatusCommon, TakenStatusPhoto takenStatusPhoto, boolean z) {
         super(takenStatusCommon);
@@ -51,9 +56,9 @@ public class PhotoSavingRequest extends SavingRequest {
         this.photo.mImage = bArr;
     }
 
-    public void attachImageReader(ImageReader imageReader, PhotoSavingRequest$OnImageReaderDetachedListener photoSavingRequest$OnImageReaderDetachedListener) {
+    public void attachImageReader(ImageReader imageReader, OnImageReaderDetachedListener onImageReaderDetachedListener) {
         this.mImageReader = imageReader;
-        this.mOnImageReaderDettachedListener = photoSavingRequest$OnImageReaderDetachedListener;
+        this.mOnImageReaderDettachedListener = onImageReaderDetachedListener;
     }
 
     public boolean isImageReaderUsing() {
@@ -109,7 +114,7 @@ public class PhotoSavingRequest extends SavingRequest {
         }
         ContentValues contentValues = new ContentValues();
         if (this.common.mSomcType != 0) {
-            contentValues.put("somctype", Integer.valueOf(getSomcType()));
+            contentValues.put(SomcMediaStore.ExtendedFiles.ExtendedFileColumns.SOMC_FILE_TYPE, Integer.valueOf(getSomcType()));
         }
         File file = new File(getFilePath());
         contentValues.put("title", CommonUtility.removeFileExtension(file.getName()));

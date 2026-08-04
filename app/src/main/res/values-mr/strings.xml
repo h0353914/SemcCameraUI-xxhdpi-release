@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">कॅप्चरिंग पूर्ण करू शकलो नाही. कृपया अधिक संथपणे पॅन करा.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">कॅप्चरिंग पूर्ण करू शकलो नाही. कृपया अधिक जलदपणे पॅन करा.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">आपल्या कॅमेर्‍याच्या कक्षा पाहून पॅनोरामिक फोटो घ्या</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">पुढील फाईल्स निर्माण करीत आहे:\n- मल्टी अँगल प्रतिमा\n- 3D प्रतिमा\nटिप: ह्या फाईल्समध्ये करडे क्षेत्र आहे.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">पुढील फाईल्स निर्माण करीत आहे:\n- मल्टी अँगल प्रतिमा\n- 3D प्रतिमा</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">प्रक्रिया करीत आहे...\nह्या प्रतिमेमध्ये करडे क्षेत्र आहे</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"पुढील फाईल्स निर्माण करीत आहे:
+- मल्टी अँगल प्रतिमा
+- 3D प्रतिमा
+टिप: ह्या फाईल्समध्ये करडे क्षेत्र आहे."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"पुढील फाईल्स निर्माण करीत आहे:
+- मल्टी अँगल प्रतिमा
+- 3D प्रतिमा"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"प्रक्रिया करीत आहे...
+ह्या प्रतिमेमध्ये करडे क्षेत्र आहे"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">प्रतिमा जतन करीत आहे</string>
     <string name="cam_3d_strings_dialog_processing_txt">प्रक्रिया करीत आहे...</string>
     <string name="cam_3d_strings_error_application_busy_txt">3D कॅमेरा लॉंच करण्यासाठी कृपया काही सेकंद प्रतिक्षा करा</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">आपली स्कीन उजळ आणि सौम्य बनवा. फ्रंट कॅमेऱ्याचा वापर करत असलेल्या अनुप्रयोगामध्ये हा प्रभाव कार्य करतो. छायाचित्रे आणी व्हिडिओवर देखील हे लागू होऊ शकते. आपण पातळी देखील जुळवू शकता.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">पातळीचे समायोजन</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">मऊ स्कीन</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">अनुप्रयोग सुरू करणे शक्य होणार नाही.\nआपल्या उपकरणावर %1$s चे नवीनतम संस्करण प्रस्थापित करून सक्षम केले असल्याची खात्री करा.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"अनुप्रयोग सुरू करणे शक्य होणार नाही.
+आपल्या उपकरणावर %1$s चे नवीनतम संस्करण प्रस्थापित करून सक्षम केले असल्याची खात्री करा."</string>
     <string name="cam_strings_gridline_txt">जाळीरूप मेन्यू लाईन्स</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">कॅमेऱ्याच्या दिशेने आपला तळहात फिरवा. आपला तळहात ओळखला जाईल तेव्हा सेल्फ-टाइमर चालू होईल. सहजतेने ओळखता यावे यासाठी आपली बोटे ऊर्ध्वगामी करा.</string>
     <string name="cam_strings_hand_shutter_hint_txt">कॅमेऱ्याच्या दिशेने आपला तळहात फिरवा</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">सामाईक सेटींग</string>
     <string name="cam_strings_more_txt">अधिक</string>
     <string name="cam_strings_multi_window_txt">पूर्ण पडदा %1$s चा वापर करण्यासाठी त्यावर स्विच करण्याकरिता विभाजन आडकाठीच्या मध्यभागी ड्रॅग करा</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">आता दुसऱ्या उपकरणा सह जोडणी केली आहे.\nआपण उपकरणा सोबत दृश्यपूर्वदर्शकाद्वारे प्रतिमा शेअर करू इच्छिता?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"आता दुसऱ्या उपकरणा सह जोडणी केली आहे.
+आपण उपकरणा सोबत दृश्यपूर्वदर्शकाद्वारे प्रतिमा शेअर करू इच्छिता?"</string>
     <string name="cam_strings_multicam_add_device_txt">उपकरण जोडा</string>
     <string name="cam_strings_multicam_add_more_txt">आणखी सामील करा</string>
     <string name="cam_strings_multicam_apply_txt">झाले</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">मोजक</string>
     <string name="cam_strings_predictive_capture_feedback_txt">अनुमानित</string>
     <string name="cam_strings_predictive_capture_txt">अनुमानित कॅप्चर</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">लँडस्केप मोडमध्ये आपला फोन उचलून ऑब्जेक्टकडे त्याचे लक्ष्य करण्याच्या हालचाली शोधून कॅमेरा स्वयंचलितपणे लाँच केला आहे.\nहे वैशिष्ट्य वापरण्यासाठी आपण कॅमेरा सेटिंग्जमधील स्मार्ट लाँचमधून आपला मनपसंत मार्ग निवडू शकता.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"लँडस्केप मोडमध्ये आपला फोन उचलून ऑब्जेक्टकडे त्याचे लक्ष्य करण्याच्या हालचाली शोधून कॅमेरा स्वयंचलितपणे लाँच केला आहे.
+हे वैशिष्ट्य वापरण्यासाठी आपण कॅमेरा सेटिंग्जमधील स्मार्ट लाँचमधून आपला मनपसंत मार्ग निवडू शकता."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">कॅप्चर करण्यासाठी वर्तुळाच्या आत स्पर्श करा</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">कॅप्चर करण्यासाठी पडद्याला स्पर्श करा</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">संपूर्ण पडदा पाहण्यासाठी वर्तुळाच्या आतमध्ये टॅप करा</string>
     <string name="cam_strings_predictive_launch_guide_txt">पूर्ण पडदा पाहण्यासाठी वर्तुळाच्या आत स्पर्श करा</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">लाँच आणि कॅप्चर करण्यासाठी स्पर्श करा</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">लाँच करण्यासाठी स्पर्श करा</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">आपण त्वरीत कॅमेरा लाँच करू शकता. आपल्या उपकरणाला लँडस्केप मोडमध्ये त्वरित उचला आणि ऑब्जेक्टकडे कॅमेरा रोखा. कॅमेरा स्वयंचलितपणे लाँच केला जाईल.\nआपण कॅमेरा सेटिंग्जमधील स्मार्ट लाँचमधून हे वैशिष्ट्य वापरण्यासाठी आपला मनपसंत मार्ग निवडू शकता.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"आपण त्वरीत कॅमेरा लाँच करू शकता. आपल्या उपकरणाला लँडस्केप मोडमध्ये त्वरित उचला आणि ऑब्जेक्टकडे कॅमेरा रोखा. कॅमेरा स्वयंचलितपणे लाँच केला जाईल.
+आपण कॅमेरा सेटिंग्जमधील स्मार्ट लाँचमधून हे वैशिष्ट्य वापरण्यासाठी आपला मनपसंत मार्ग निवडू शकता."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">स्मार्ट लाँच</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">आपण त्वरीत कॅमेरा लाँच करू शकता. लँडस्केप मोडमध्ये आपले उपकरण वरती फिरवून ऑब्जेक्टच्या दिशेने कॅमेरा वळवा. स्वयंचलितपणे कॅमेरा लाँच होईल.\nआपण कॅमेरा सेटिंग्जमध्ये स्मार्ट लाँचमधून हे वैशिष्ट्य बंद करू शकता.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"आपण त्वरीत कॅमेरा लाँच करू शकता. लँडस्केप मोडमध्ये आपले उपकरण वरती फिरवून ऑब्जेक्टच्या दिशेने कॅमेरा वळवा. स्वयंचलितपणे कॅमेरा लाँच होईल.
+आपण कॅमेरा सेटिंग्जमध्ये स्मार्ट लाँचमधून हे वैशिष्ट्य बंद करू शकता."</string>
     <string name="cam_strings_predictive_launch_txt">स्मार्ट लाँच</string>
     <string name="cam_strings_preview_always_txt">चालू</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 सेकंद</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s साठी खालील परवानगी(ग्या)ची आवश्यकता आहे</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s परवानगी</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">हे कार्य करण्यासाठी अनुप्रयोगाला खालील परवानगी(ग्या)ची आवश्यकता आहे.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">परवानग्या मिळविण्यासाठी, अनुप्रयोग माहिती &gt; परवानग्या येथे जा.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">परवानग्या मिळविण्यासाठी, अनुप्रयोग माहिती > परवानग्या येथे जा.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">चालू ठेवता आले नाही</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">छायाचित्रे आणि व्हिडिओ घेण्याकरिता</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">स्थान परत मिळविण्याकरिता</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">अंतर्गत संचयामध्ये जतन केले</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">हलवा</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">हे कार्य करण्यासाठी अनुप्रयोगाला खालील परवानगी(ग्या)ची आवश्यकता आहे.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">SD कार्ड वापरण्यासाठी कॅमेऱ्याला SD कार्डमध्ये प्रवेश परवानगी आवश्यक आहे.\nपुन्हा डेटा संचयन SD कार्डवर बदला किंवा कॅमेऱ्याला पुढील पडद्यावरील SD कार्डवर प्रवेश परवानगी द्या.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"SD कार्ड वापरण्यासाठी कॅमेऱ्याला SD कार्डमध्ये प्रवेश परवानगी आवश्यक आहे.
+पुन्हा डेटा संचयन SD कार्डवर बदला किंवा कॅमेऱ्याला पुढील पडद्यावरील SD कार्डवर प्रवेश परवानगी द्या."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD कार्ड अनुपलब्ध</string>
-    <string name="cam_strings_sd_permission_info_2_txt">परवानग्या आवश्यक असलेले एक नवीन SD कार्ड आढळले आहे.\n\nडेटा संग्रहण म्हणून SD कार्ड वापरण्यासाठी, पुढील पडद्यावर कृपया SD कार्ड किंवा DCIM निर्देशिका निवडा.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SD कार्ड किंवा DCIM निर्देशिका निवडली गेली नाही. SD कार्ड वापरता येत नाही.\n\nपरवानग्या देण्यासाठी, SD कार्डवरील जतन केलेले स्थान बदलून सुरुवात करा किंवा पुढील पडद्यावर योग्य निर्देशिका निवडा.</string>
-    <string name="cam_strings_sd_permission_info_txt">परवानग्यांची आवश्यकता असलेले नवीन SD कार्ड आढळले आहे.\nयामुळे अंतर्गत उपकरण संचय मुलनिर्धारित डेटा संचय म्हणून वापरला जाईल.\n\nडेटा संचय म्हणून SD कार्ड वापरण्यासाठी, कृपया कॅमेरा सेटिंग्जवर जाऊन संचय पर्याय SD कार्डवर बदला.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"परवानग्या आवश्यक असलेले एक नवीन SD कार्ड आढळले आहे.
+
+डेटा संग्रहण म्हणून SD कार्ड वापरण्यासाठी, पुढील पडद्यावर कृपया SD कार्ड किंवा DCIM निर्देशिका निवडा."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD कार्ड किंवा DCIM निर्देशिका निवडली गेली नाही. SD कार्ड वापरता येत नाही.
+
+परवानग्या देण्यासाठी, SD कार्डवरील जतन केलेले स्थान बदलून सुरुवात करा किंवा पुढील पडद्यावर योग्य निर्देशिका निवडा."</string>
+    <string name="cam_strings_sd_permission_info_txt">"परवानग्यांची आवश्यकता असलेले नवीन SD कार्ड आढळले आहे.
+यामुळे अंतर्गत उपकरण संचय मुलनिर्धारित डेटा संचय म्हणून वापरला जाईल.
+
+डेटा संचय म्हणून SD कार्ड वापरण्यासाठी, कृपया कॅमेरा सेटिंग्जवर जाऊन संचय पर्याय SD कार्डवर बदला."</string>
     <string name="cam_strings_sd_permission_rationale_txt">SD कार्डवर छायाचित्रे आणि व्हिडिओ जतन करणे</string>
     <string name="cam_strings_select_picture_txt">छायाचित्र निवडा</string>
     <string name="cam_strings_self_timer_05_txt">0.5 सेकंद</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">स्ययं कॅप्चर करणे</string>
     <string name="cam_strings_side_touch_not_supported_txt">या पडद्यावर साइड सेन्स समर्थन देत नाही</string>
     <string name="cam_strings_side_touch_on_title_txt">साइड सेन्स</string>
-    <string name="cam_strings_side_touch_on_txt">हे कार्य वापरण्यासाठी, सेटिंग्ज &gt; प्रदर्शन येथे जाऊन साइड सेन्स चालू करा. आत्ता सक्षम करायचे?</string>
+    <string name="cam_strings_side_touch_on_txt">हे कार्य वापरण्यासाठी, सेटिंग्ज > प्रदर्शन येथे जाऊन साइड सेन्स चालू करा. आत्ता सक्षम करायचे?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">साइड सेन्स</string>
-    <string name="cam_strings_side_touch_tutorial_txt">आपण शटर बटणाऐवजी पडद्याच्या बाजूचा सेन्सर दुहेरी-टॅप करून छायचित्रे किंवा व्हिडिओ घेऊ शकता. या साइड सेन्सरवरून आपले बोट स्लाइड करून आपण झूम इन आणि आउट देखील करू शकता.\nछायाचित्र आणि व्हिडिओ मोड हे दोन्ही या कार्याला समर्थन देतात. आपण कॅमेरा सेटिंग्जमध्ये साइड सेन्समधून हे बंद करू शकता.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">आपण शटर बटणाऐवजी पोर्ट्रेट दृश्यामध्ये केवळ पडद्याच्या बाजूचा सेन्सर दुहेरी-टॅप करून छायचित्रे किंवा व्हिडिओ घेऊ शकता. या साइड सेन्सरवरून आपले बोट स्लाइड करून आपण झूम इन आणि आउट देखील करू शकता.\nछायाचित्र आणि व्हिडिओ मोड हे दोन्ही या कार्याला समर्थन देतात. आपण कॅमेरा सेटिंग्जमध्ये साइड सेन्समधून हे बंद करू शकता.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">आपण शटर बटणाऐवजी पोर्ट्रेट दृश्यामध्ये केवळ पडद्याच्या बाजूचा सेन्सर दुहेरी-टॅप करून छायचित्रे किंवा व्हिडिओ घेऊ शकता.\nछायाचित्र आणि व्हिडिओ मोड हे दोन्ही या कार्याला समर्थन देतात. आपण कॅमेरा सेटिंग्जमध्ये साइड सेन्समधून हे बंद करू शकता.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">आपण शटर बटणाऐवजी केवळ पडद्याच्या बाजूचा सेन्सर दुहेरी-टॅप करून छायचित्रे किंवा व्हिडिओ घेऊ शकता.\nछायाचित्र आणि व्हिडिओ मोड हे दोन्ही या कार्याला समर्थन देतात. आपण कॅमेरा सेटिंग्जमध्ये साइड सेन्समधून हे बंद करू शकता.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"आपण शटर बटणाऐवजी पडद्याच्या बाजूचा सेन्सर दुहेरी-टॅप करून छायचित्रे किंवा व्हिडिओ घेऊ शकता. या साइड सेन्सरवरून आपले बोट स्लाइड करून आपण झूम इन आणि आउट देखील करू शकता.
+छायाचित्र आणि व्हिडिओ मोड हे दोन्ही या कार्याला समर्थन देतात. आपण कॅमेरा सेटिंग्जमध्ये साइड सेन्समधून हे बंद करू शकता."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"आपण शटर बटणाऐवजी पोर्ट्रेट दृश्यामध्ये केवळ पडद्याच्या बाजूचा सेन्सर दुहेरी-टॅप करून छायचित्रे किंवा व्हिडिओ घेऊ शकता. या साइड सेन्सरवरून आपले बोट स्लाइड करून आपण झूम इन आणि आउट देखील करू शकता.
+छायाचित्र आणि व्हिडिओ मोड हे दोन्ही या कार्याला समर्थन देतात. आपण कॅमेरा सेटिंग्जमध्ये साइड सेन्समधून हे बंद करू शकता."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"आपण शटर बटणाऐवजी पोर्ट्रेट दृश्यामध्ये केवळ पडद्याच्या बाजूचा सेन्सर दुहेरी-टॅप करून छायचित्रे किंवा व्हिडिओ घेऊ शकता.
+छायाचित्र आणि व्हिडिओ मोड हे दोन्ही या कार्याला समर्थन देतात. आपण कॅमेरा सेटिंग्जमध्ये साइड सेन्समधून हे बंद करू शकता."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"आपण शटर बटणाऐवजी केवळ पडद्याच्या बाजूचा सेन्सर दुहेरी-टॅप करून छायचित्रे किंवा व्हिडिओ घेऊ शकता.
+छायाचित्र आणि व्हिडिओ मोड हे दोन्ही या कार्याला समर्थन देतात. आपण कॅमेरा सेटिंग्जमध्ये साइड सेन्समधून हे बंद करू शकता."</string>
     <string name="cam_strings_side_touch_txt">साइड सेन्स</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">कॅमेरा सेटिंग्जमध्ये ध्वनिमुद्रणाची शैली आणि पडद्याचे वियोजन बदलता येऊ शकते</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">अत्यंत मंद गती (एक-शॉट)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">अति मंद गती</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">आपण मंद गतीसाठी fps आणि ध्वनिमुद्रणाची शैली बदलू शकता</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">आणखी विकल्प</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">पडद्याच्या मध्यभागी असलेल्या बटणावर टॅप करून %1$s fps मंद गतीवर मौल्यवान क्षणांना त्वरित ध्वनिमुद्रित करा.\nप्रखर परिस्थितीमध्ये ध्वनिमुद्रण केल्यास आपणास चांगला व्हिडिओ तयार करण्यास मदत होईल.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"पडद्याच्या मध्यभागी असलेल्या बटणावर टॅप करून %1$s fps मंद गतीवर मौल्यवान क्षणांना त्वरित ध्वनिमुद्रित करा.
+प्रखर परिस्थितीमध्ये ध्वनिमुद्रण केल्यास आपणास चांगला व्हिडिओ तयार करण्यास मदत होईल."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">आपण केंद्र बटणावर टॅप करून %1$s fps द्वारे योग्य मुमेंट ध्वनिमुद्रित करू शकता</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">पडद्याच्या मध्यभागी असलेल्या बटणावर टॅप करून %1$s fps मंद गतीवर मौल्यवान क्षणांना त्वरित ध्वनिमुद्रित करा</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">अति मंद गती (एक-शॉट)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">मंद गती</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">ध्वनिमुद्रण पद्धती</string>
     <string name="cam_strings_slow_motion_standard_txt">मंद गती</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">मौल्यवान क्षणाला मंद गतीमध्ये दाखवून प्रभावी व्हिडिओ तयार करा.\nप्रखर परिस्थितीमध्ये ध्वनिमुद्रण केल्यास आपणास चांगला व्हिडिओ तयार करण्यास मदत होईल.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"मौल्यवान क्षणाला मंद गतीमध्ये दाखवून प्रभावी व्हिडिओ तयार करा.
+प्रखर परिस्थितीमध्ये ध्वनिमुद्रण केल्यास आपणास चांगला व्हिडिओ तयार करण्यास मदत होईल."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">आपण %1$s fps वर स्विच करून विभिन्न गतींवर व्हिडिओ ध्वनिमुद्रित करू शकता</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">योग्यवेळी मध्यभागी असलेल्या बटणावर टॅप करा</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">मंद गतीवर ध्वनिमुद्रित केले</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">सॉफ्टवेअर परवाने</string>
     <string name="cam_strings_take_photo_txt">फोटो घ्या</string>
     <string name="cam_strings_term_of_use_accept_txt">स्वीकारा</string>
-    <string name="cam_strings_term_of_use_consent_txt">माझी Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;वापर अटी&lt;/a&gt; ना संमती आहे.</string>
+    <string name="cam_strings_term_of_use_consent_txt">माझी Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">वापर अटी&lt;/a> ना संमती आहे.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">या सेवेचा वापर, आपल्या डेटा योजेनेनुसार असणाऱ्या मोबाईल डेटा शुल्काच्या अधीन असू शकतो.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">सेवेचा एक भाग म्हणून आपल्याला योग्य ते परिणाम प्रदान करण्यासाठी आणि सेवेतील सुधारणेसाठी Sony Mobile आपला हॅश केलेला Android ID अद्वितीय उपकरण परिचयदाता, स्थान आधारित डेटा आणि कालठसा यांचा संग्रह करेल.</string>
     <string name="cam_strings_term_of_use_decline_txt">नकार द्या</string>
     <string name="cam_strings_term_of_use_title_txt">अटी आणि शर्ती</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;वापर अटी&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">वापर अटी&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">छायाचित्रांवारची निवड रद्द करा</string>
     <string name="cam_strings_timeshift_operation_failed_txt">जतन करणे शक्य झाले नाही</string>
     <string name="cam_strings_timeshift_save_complete_txt">जतन केले</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">स्थिर 4K व्हिडिओ ध्वनिमुद्रणासाठी, जोवर आपण एक तीव्र-गतीमान SD कार्ड (UHS स्पीड क्लास 1 किंवा उच्चतर, किंवा स्पीड क्लास 10 यांची शिफारस केलेली आहे) चा वापर करीत नाही, तोपर्यंत आपण हे सेटिंग बदलू नये.</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">स्थिर Timeshift video ध्वनिमुद्रणासाठी, जोवर आपण एक तीव्र-गतीमान SD कार्ड (UHS स्पीड क्लास 1 किंवा उच्चतर, किंवा स्पीड क्लास 10 यांची शिफारस केलेली आहे) चा वापर करीत नाही, तोवर आपण हे सेटिंग बदलू नये. तरीही बदलायचे?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">स्थिर मंद गती व्हिडिओ ध्वनिमुद्रणासाठी, जोवर आपण एक तीव्र-गतीमान SD कार्ड (UHS स्पीड क्लास 1 किंवा उच्चतर, किंवा स्पीड क्लास 10 यांची शिफारस केलेली आहे) चा वापर करीत नाही, तोपर्यंत आपण हे सेटिंग बदलू नये.</string>
-    <string name="cam_strings_video_explanatory_txt">स्थिर व्हिडिओ ध्वनिमुद्रणासाठी, आम्ही आपणास अंतर्गत संचयाचे स्थान बदलण्याची शिफारस करतो. आपण आता बदलू इच्छिता?\n\nआपण डेटा संग्रहण म्हणून SD कार्ड वापरणे चालू ठेवल्यास, आपण तीव्र-गतीमान SD कार्ड (UHS स्पीड क्लास 1 किंवा उच्चतर, किंवा स्पीड क्लास 10 यांची शिफारस केलेली आहे) वापरत आहात याची खात्री करा.</string>
+    <string name="cam_strings_video_explanatory_txt">"स्थिर व्हिडिओ ध्वनिमुद्रणासाठी, आम्ही आपणास अंतर्गत संचयाचे स्थान बदलण्याची शिफारस करतो. आपण आता बदलू इच्छिता?
+
+आपण डेटा संग्रहण म्हणून SD कार्ड वापरणे चालू ठेवल्यास, आपण तीव्र-गतीमान SD कार्ड (UHS स्पीड क्लास 1 किंवा उच्चतर, किंवा स्पीड क्लास 10 यांची शिफारस केलेली आहे) वापरत आहात याची खात्री करा."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">ड्युअल कॅमेरा</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">रात्रीच्या वेळी किंवा मंद प्रकाश असलेल्या खोलीत ड्युअल कॅमेरा वापरून आपण कमी विरूपणासह सुंदर व्हिडिओ ध्वनिमुद्रित करू शकता. अल्ट्रा-उच्च संवेदनशीलता वापरून ध्वनिमुद्रण करण्यासाठी दृश्यांनुसार कॅमेरा एकल आणि ड्युअल कॅमेऱ्यादरम्यान स्वयंचलितपणे स्विच होतो.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">ड्युअल कॅमेऱ्यावरून व्हिडिओ ध्वनिमुद्रण</string>

@@ -2,6 +2,7 @@ package com.google.android.gms.common.data;
 
 import java.util.ArrayList;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public abstract class zzf<T> extends AbstractDataBuffer<T> {
     private boolean zzadD;
     private ArrayList<Integer> zzadE;

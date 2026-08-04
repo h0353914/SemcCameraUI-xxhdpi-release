@@ -1,13 +1,14 @@
 package com.sonyericsson.android.camera.view.overlaycontrol.imagequality;
 
 import android.content.Context;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.parameters.Ev;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 
 class EvSlider extends SettingItemSlider {
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider
     protected int getBackgroundImageResource(int i) {
-        return i == 2 ? 2131231060 : 2131231061;
+        return i == 2 ? R.drawable.cam_core_image_quality_control_exposure_value_slider_icn : R.drawable.cam_core_image_quality_control_exposure_value_slider_port_icn;
     }
 
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider

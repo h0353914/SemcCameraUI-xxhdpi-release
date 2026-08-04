@@ -3,8 +3,9 @@ package com.google.android.gms.common.server.response;
 import android.os.Bundle;
 import android.os.Parcel;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 import com.google.android.gms.common.internal.zzx;
+import com.google.android.gms.common.server.response.FastJsonResponse;
 import com.google.android.gms.internal.zzmj;
 import com.google.android.gms.internal.zzmk;
 import com.google.android.gms.internal.zzmu;
@@ -13,9 +14,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Map$Entry;
 import java.util.Set;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class SafeParcelResponse extends FastJsonResponse implements SafeParcelable {
     public static final zze CREATOR = new zze();
     private final String mClassName;
@@ -45,10 +46,10 @@ public class SafeParcelResponse extends FastJsonResponse implements SafeParcelab
         this.zzahl = 2;
     }
 
-    private static HashMap<Integer, Map$Entry<String, FastJsonResponse$Field<?, ?>>> zzG(Map<String, FastJsonResponse$Field<?, ?>> map) {
-        HashMap<Integer, Map$Entry<String, FastJsonResponse$Field<?, ?>>> map2 = new HashMap<>();
-        for (Map$Entry<String, FastJsonResponse$Field<?, ?>> map$Entry : map.entrySet()) {
-            map2.put(Integer.valueOf(map$Entry.getValue().zzpK()), map$Entry);
+    private static HashMap<Integer, Map.Entry<String, FastJsonResponse.Field<?, ?>>> zzG(Map<String, FastJsonResponse.Field<?, ?>> map) {
+        HashMap<Integer, Map.Entry<String, FastJsonResponse.Field<?, ?>>> map2 = new HashMap<>();
+        for (Map.Entry<String, FastJsonResponse.Field<?, ?>> entry : map.entrySet()) {
+            map2.put(Integer.valueOf(entry.getValue().zzpK()), entry);
         }
         return map2;
     }
@@ -61,22 +62,22 @@ public class SafeParcelResponse extends FastJsonResponse implements SafeParcelab
     /* JADX WARN: Multi-variable type inference failed */
     private static void zza(FieldMappingDictionary fieldMappingDictionary, FastJsonResponse fastJsonResponse) {
         Class<?> cls = fastJsonResponse.getClass();
-        if (fieldMappingDictionary.zzb(cls)) {
+        if (fieldMappingDictionary.zzb((Class<? extends FastJsonResponse>) cls)) {
             return;
         }
-        Map<String, FastJsonResponse$Field<?, ?>> mapZzpD = fastJsonResponse.zzpD();
-        fieldMappingDictionary.zza(cls, mapZzpD);
+        Map<String, FastJsonResponse.Field<?, ?>> mapZzpD = fastJsonResponse.zzpD();
+        fieldMappingDictionary.zza((Class<? extends FastJsonResponse>) cls, mapZzpD);
         Iterator<String> it = mapZzpD.keySet().iterator();
         while (it.hasNext()) {
-            FastJsonResponse$Field<?, ?> fastJsonResponse$Field = mapZzpD.get(it.next());
-            Class<? extends FastJsonResponse> clsZzpL = fastJsonResponse$Field.zzpL();
+            FastJsonResponse.Field<?, ?> field = mapZzpD.get(it.next());
+            Class<? extends FastJsonResponse> clsZzpL = field.zzpL();
             if (clsZzpL != null) {
                 try {
                     zza(fieldMappingDictionary, clsZzpL.newInstance());
                 } catch (IllegalAccessException e) {
-                    throw new IllegalStateException("Could not access object of type " + fastJsonResponse$Field.zzpL().getCanonicalName(), e);
+                    throw new IllegalStateException("Could not access object of type " + field.zzpL().getCanonicalName(), e);
                 } catch (InstantiationException e2) {
-                    throw new IllegalStateException("Could not instantiate an object of type " + fastJsonResponse$Field.zzpL().getCanonicalName(), e2);
+                    throw new IllegalStateException("Could not instantiate an object of type " + field.zzpL().getCanonicalName(), e2);
                 }
             }
         }
@@ -118,9 +119,9 @@ public class SafeParcelResponse extends FastJsonResponse implements SafeParcelab
         sb.append("\"");
     }
 
-    private void zza(StringBuilder sb, FastJsonResponse$Field<?, ?> fastJsonResponse$Field, Parcel parcel, int i) {
+    private void zza(StringBuilder sb, FastJsonResponse.Field<?, ?> field, Parcel parcel, int i) {
         Object objValueOf;
-        switch (fastJsonResponse$Field.zzpC()) {
+        switch (field.zzpC()) {
             case 0:
                 objValueOf = Integer.valueOf(com.google.android.gms.common.internal.safeparcel.zza.zzg(parcel, i));
                 break;
@@ -155,35 +156,35 @@ public class SafeParcelResponse extends FastJsonResponse implements SafeParcelab
             case 11:
                 throw new IllegalArgumentException("Method does not accept concrete type.");
             default:
-                throw new IllegalArgumentException("Unknown field out type = " + fastJsonResponse$Field.zzpC());
+                throw new IllegalArgumentException("Unknown field out type = " + field.zzpC());
         }
-        zzb(sb, fastJsonResponse$Field, zza(fastJsonResponse$Field, objValueOf));
+        zzb(sb, field, zza(field, objValueOf));
     }
 
-    private void zza(StringBuilder sb, String str, FastJsonResponse$Field<?, ?> fastJsonResponse$Field, Parcel parcel, int i) {
+    private void zza(StringBuilder sb, String str, FastJsonResponse.Field<?, ?> field, Parcel parcel, int i) {
         sb.append("\"");
         sb.append(str);
         sb.append("\":");
-        if (fastJsonResponse$Field.zzpN()) {
-            zza(sb, fastJsonResponse$Field, parcel, i);
+        if (field.zzpN()) {
+            zza(sb, field, parcel, i);
         } else {
-            zzb(sb, fastJsonResponse$Field, parcel, i);
+            zzb(sb, field, parcel, i);
         }
     }
 
-    private void zza(StringBuilder sb, Map<String, FastJsonResponse$Field<?, ?>> map, Parcel parcel) {
-        HashMap<Integer, Map$Entry<String, FastJsonResponse$Field<?, ?>>> mapZzG = zzG(map);
+    private void zza(StringBuilder sb, Map<String, FastJsonResponse.Field<?, ?>> map, Parcel parcel) {
+        HashMap<Integer, Map.Entry<String, FastJsonResponse.Field<?, ?>>> mapZzG = zzG(map);
         sb.append('{');
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         boolean z = false;
         while (parcel.dataPosition() < iZzap) {
             int iZzao = com.google.android.gms.common.internal.safeparcel.zza.zzao(parcel);
-            Map$Entry<String, FastJsonResponse$Field<?, ?>> map$Entry = mapZzG.get(Integer.valueOf(com.google.android.gms.common.internal.safeparcel.zza.zzbM(iZzao)));
-            if (map$Entry != null) {
+            Map.Entry<String, FastJsonResponse.Field<?, ?>> entry = mapZzG.get(Integer.valueOf(com.google.android.gms.common.internal.safeparcel.zza.zzbM(iZzao)));
+            if (entry != null) {
                 if (z) {
                     sb.append(",");
                 }
-                zza(sb, map$Entry.getKey(), map$Entry.getValue(), parcel, iZzao);
+                zza(sb, entry.getKey(), entry.getValue(), parcel, iZzao);
                 z = true;
             }
         }
@@ -191,7 +192,7 @@ public class SafeParcelResponse extends FastJsonResponse implements SafeParcelab
             sb.append('}');
             return;
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new com.google.android.gms.common.internal.safeparcel.zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
     private static FieldMappingDictionary zzb(FastJsonResponse fastJsonResponse) {
@@ -202,14 +203,14 @@ public class SafeParcelResponse extends FastJsonResponse implements SafeParcelab
         return fieldMappingDictionary;
     }
 
-    private void zzb(StringBuilder sb, FastJsonResponse$Field<?, ?> fastJsonResponse$Field, Parcel parcel, int i) {
+    private void zzb(StringBuilder sb, FastJsonResponse.Field<?, ?> field, Parcel parcel, int i) {
         Object objZzk;
         String strZzcz;
         String str;
         Object[] objArrZzx;
-        if (fastJsonResponse$Field.zzpI()) {
+        if (field.zzpI()) {
             sb.append("[");
-            switch (fastJsonResponse$Field.zzpC()) {
+            switch (field.zzpC()) {
                 case 0:
                     zzmj.zza(sb, com.google.android.gms.common.internal.safeparcel.zza.zzv(parcel, i));
                     str = "]";
@@ -256,7 +257,7 @@ public class SafeParcelResponse extends FastJsonResponse implements SafeParcelab
                             sb.append(",");
                         }
                         parcelArrZzF[i2].setDataPosition(0);
-                        zza(sb, fastJsonResponse$Field.zzpP(), parcelArrZzF[i2]);
+                        zza(sb, field.zzpP(), parcelArrZzF[i2]);
                     }
                     str = "]";
                     break;
@@ -264,7 +265,7 @@ public class SafeParcelResponse extends FastJsonResponse implements SafeParcelab
                     throw new IllegalStateException("Unknown field type out.");
             }
         } else {
-            switch (fastJsonResponse$Field.zzpC()) {
+            switch (field.zzpC()) {
                 case 0:
                     sb.append(com.google.android.gms.common.internal.safeparcel.zza.zzg(parcel, i));
                     return;
@@ -333,7 +334,7 @@ public class SafeParcelResponse extends FastJsonResponse implements SafeParcelab
                 case 11:
                     Parcel parcelZzE = com.google.android.gms.common.internal.safeparcel.zza.zzE(parcel, i);
                     parcelZzE.setDataPosition(0);
-                    zza(sb, fastJsonResponse$Field.zzpP(), parcelZzE);
+                    zza(sb, field.zzpP(), parcelZzE);
                     return;
                 default:
                     throw new IllegalStateException("Unknown field type out");
@@ -342,22 +343,22 @@ public class SafeParcelResponse extends FastJsonResponse implements SafeParcelab
         sb.append(str);
     }
 
-    private void zzb(StringBuilder sb, FastJsonResponse$Field<?, ?> fastJsonResponse$Field, Object obj) {
-        if (fastJsonResponse$Field.zzpH()) {
-            zzb(sb, fastJsonResponse$Field, (ArrayList<?>) obj);
+    private void zzb(StringBuilder sb, FastJsonResponse.Field<?, ?> field, Object obj) {
+        if (field.zzpH()) {
+            zzb(sb, field, (ArrayList<?>) obj);
         } else {
-            zza(sb, fastJsonResponse$Field.zzpB(), obj);
+            zza(sb, field.zzpB(), obj);
         }
     }
 
-    private void zzb(StringBuilder sb, FastJsonResponse$Field<?, ?> fastJsonResponse$Field, ArrayList<?> arrayList) {
+    private void zzb(StringBuilder sb, FastJsonResponse.Field<?, ?> field, ArrayList<?> arrayList) {
         sb.append("[");
         int size = arrayList.size();
         for (int i = 0; i < size; i++) {
             if (i != 0) {
                 sb.append(",");
             }
-            zza(sb, fastJsonResponse$Field.zzpB(), arrayList.get(i));
+            zza(sb, field.zzpB(), arrayList.get(i));
         }
         sb.append("]");
     }
@@ -407,7 +408,7 @@ public class SafeParcelResponse extends FastJsonResponse implements SafeParcelab
     }
 
     @Override // com.google.android.gms.common.server.response.FastJsonResponse
-    public Map<String, FastJsonResponse$Field<?, ?>> zzpD() {
+    public Map<String, FastJsonResponse.Field<?, ?>> zzpD() {
         if (this.zzahc == null) {
             return null;
         }

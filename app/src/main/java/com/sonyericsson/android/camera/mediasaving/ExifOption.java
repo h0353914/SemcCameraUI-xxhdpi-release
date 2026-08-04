@@ -4,7 +4,7 @@ import android.location.Location;
 import android.os.Build;
 import android.text.format.DateFormat;
 import com.sonyericsson.android.camera.util.CamLog;
-import com.sonyericsson.cameracommon.storage.RequestFactory$RequestBuilder;
+import com.sonyericsson.cameracommon.storage.RequestFactory;
 
 public class ExifOption {
     public static final String TAG = "ExifOption";
@@ -34,15 +34,15 @@ public class ExifOption {
         return (short) 3;
     }
 
-    public static ExifOption create(RequestFactory$RequestBuilder requestFactory$RequestBuilder, byte[] bArr) {
+    public static ExifOption create(RequestFactory.RequestBuilder requestBuilder, byte[] bArr) {
         ExifOption exifOption = new ExifOption();
         exifOption.mMake = Build.MANUFACTURER;
         exifOption.mModel = Build.MODEL;
-        exifOption.mOrientation = getExifOrientation(requestFactory$RequestBuilder.mCommonStatus.orientation);
-        exifOption.mDateTime = getExifDate(requestFactory$RequestBuilder.getDateTaken());
-        exifOption.mPixelXDimension = requestFactory$RequestBuilder.mCommonStatus.width;
-        exifOption.mPixelYDimension = requestFactory$RequestBuilder.mCommonStatus.height;
-        exifOption.mGPSOption = requestFactory$RequestBuilder.mCommonStatus.location;
+        exifOption.mOrientation = getExifOrientation(requestBuilder.mCommonStatus.orientation);
+        exifOption.mDateTime = getExifDate(requestBuilder.getDateTaken());
+        exifOption.mPixelXDimension = requestBuilder.mCommonStatus.width;
+        exifOption.mPixelYDimension = requestBuilder.mCommonStatus.height;
+        exifOption.mGPSOption = requestBuilder.mCommonStatus.location;
         if (CamLog.VERBOSE) {
             String[] strArr = new String[1];
             StringBuilder sb = new StringBuilder();

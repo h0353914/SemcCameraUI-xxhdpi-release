@@ -39,12 +39,12 @@ public abstract class FrameBase extends RenderBase implements AlphaBlendable {
     }
 
     protected void initializeShaderProgram() throws OpenGlException {
-        this.mVertexInGLSL = GLES20.glGetAttribLocation(this.mShaderProgram, "vertex");
+        this.mVertexInGLSL = GLES20.glGetAttribLocation(this.mShaderProgram, ShaderProgramFactory.GLSL_FIELD_ID_VERTEX);
         ExtendedGlSurfaceView.checkGlErrorWithException();
-        this.mTexCoordInGLSL = GLES20.glGetAttribLocation(this.mShaderProgram, "texCoord");
+        this.mTexCoordInGLSL = GLES20.glGetAttribLocation(this.mShaderProgram, ShaderProgramFactory.GLSL_FIELD_ID_TEXTURE_COORD);
         ExtendedGlSurfaceView.checkGlErrorWithException();
         checkAndBindAttriLocation();
-        this.mMvpMatrixInGLSL = GLES20.glGetUniformLocation(this.mShaderProgram, "mvpMatrix");
+        this.mMvpMatrixInGLSL = GLES20.glGetUniformLocation(this.mShaderProgram, ShaderProgramFactory.GLSL_FIELD_ID_VERTEX_MVP_MATRIX);
         ExtendedGlSurfaceView.checkGlErrorWithException();
         int[] iArr = new int[1];
         GLES20.glGetProgramiv(this.mShaderProgram, 35714, iArr, 0);
@@ -56,14 +56,14 @@ public abstract class FrameBase extends RenderBase implements AlphaBlendable {
         initializeVertexAndTextureCoordinatesBuffer();
     }
 
-    private void checkAndBindAttriLocation() {
+    private void checkAndBindAttriLocation() throws OpenGlException {
         if (this.mVertexInGLSL == -1 || this.mTexCoordInGLSL == -1) {
             CamLog.e("checkAndBindAttriLocation: mVertexInGLSL = " + this.mVertexInGLSL + "mTexCoordInGLSL = " + this.mTexCoordInGLSL);
             this.mVertexInGLSL = 0;
-            GLES20.glBindAttribLocation(this.mShaderProgram, this.mVertexInGLSL, "vertex");
+            GLES20.glBindAttribLocation(this.mShaderProgram, this.mVertexInGLSL, ShaderProgramFactory.GLSL_FIELD_ID_VERTEX);
             ExtendedGlSurfaceView.checkGlErrorWithException();
             this.mTexCoordInGLSL = 1;
-            GLES20.glBindAttribLocation(this.mShaderProgram, this.mTexCoordInGLSL, "texCoord");
+            GLES20.glBindAttribLocation(this.mShaderProgram, this.mTexCoordInGLSL, ShaderProgramFactory.GLSL_FIELD_ID_TEXTURE_COORD);
             ExtendedGlSurfaceView.checkGlErrorWithException();
             GLES20.glLinkProgram(this.mShaderProgram);
             ExtendedGlSurfaceView.checkGlErrorWithException();

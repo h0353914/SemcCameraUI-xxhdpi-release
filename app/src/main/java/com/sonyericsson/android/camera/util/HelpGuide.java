@@ -5,10 +5,9 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager$NameNotFoundException;
-import android.net.Uri$Builder;
+import android.net.Uri;
 import android.os.Build;
-import android.os.Build$VERSION;
+import com.sonyericsson.android.camera.view.modeselector.ResourceUtil;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
 import com.sonymobile.help.HelpUtils;
 import java.util.Locale;
@@ -39,7 +38,7 @@ public class HelpGuide {
         Intent helpAppStartIntent = getHelpAppStartIntent(context);
         PackageManager packageManager = context.getPackageManager();
         try {
-            if (packageManager.getApplicationInfo("com.sonymobile.support", 0) == null) {
+            if (packageManager.getApplicationInfo(HELP_APP_PKG_NAME, 0) == null) {
                 return false;
             }
             ComponentName componentNameResolveActivity = helpAppStartIntent.resolveActivity(packageManager);
@@ -50,47 +49,47 @@ public class HelpGuide {
                 helpAppStartIntent.setComponent(componentNameResolveActivity);
             }
             return CommonUtility.isActivityAvailable(context, helpAppStartIntent);
-        } catch (PackageManager$NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException e) {
             CamLog.e("Somc in-device help app not found.", e);
             return false;
         }
     }
 
     private static Intent getHelpAppStartIntent(Context context) {
-        Uri$Builder uri$BuilderAppendQueryParameter = HelpUtils.BASE_URI.buildUpon().appendQueryParameter("app", context.getPackageName()).appendQueryParameter("category", "Capture");
-        HelpUtils.uriWithAddedVersionParameter(context, uri$BuilderAppendQueryParameter);
+        Uri.Builder builderAppendQueryParameter = HelpUtils.BASE_URI.buildUpon().appendQueryParameter("app", context.getPackageName()).appendQueryParameter("category", "Capture");
+        HelpUtils.uriWithAddedVersionParameter(context, builderAppendQueryParameter);
         if (CamLog.VERBOSE) {
-            CamLog.d("Uri:" + uri$BuilderAppendQueryParameter.toString());
+            CamLog.d("Uri:" + builderAppendQueryParameter.toString());
         }
-        return new Intent("android.intent.action.VIEW", uri$BuilderAppendQueryParameter.build());
+        return new Intent("android.intent.action.VIEW", builderAppendQueryParameter.build());
     }
 
     private static Intent getOnlineHelpIntent(Context context) {
         if (context == null) {
             return null;
         }
-        Uri$Builder uri$Builder = new Uri$Builder();
-        uri$Builder.scheme("https");
-        uri$Builder.authority("ids.indevice.sonymobile.com");
-        uri$Builder.path("in-device/getSoftwareSupport.htm");
-        uri$Builder.appendQueryParameter("sourceAppName", context.getPackageName());
-        uri$Builder.appendQueryParameter("sourceAppVersion", getVersionName(context));
-        uri$Builder.appendQueryParameter("sourceAppView", "Capture");
-        uri$Builder.appendQueryParameter("androidVersion", Build$VERSION.RELEASE);
-        uri$Builder.appendQueryParameter("manufacturer", Build.MANUFACTURER);
-        uri$Builder.appendQueryParameter("model", Build.MODEL);
-        uri$Builder.appendQueryParameter("locale", Locale.getDefault().toString());
-        uri$Builder.appendQueryParameter("output", "html");
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme(ResourceUtil.HTTPS_SCHEME);
+        builder.authority("ids.indevice.sonymobile.com");
+        builder.path("in-device/getSoftwareSupport.htm");
+        builder.appendQueryParameter("sourceAppName", context.getPackageName());
+        builder.appendQueryParameter("sourceAppVersion", getVersionName(context));
+        builder.appendQueryParameter("sourceAppView", "Capture");
+        builder.appendQueryParameter("androidVersion", Build.VERSION.RELEASE);
+        builder.appendQueryParameter("manufacturer", Build.MANUFACTURER);
+        builder.appendQueryParameter("model", Build.MODEL);
+        builder.appendQueryParameter("locale", Locale.getDefault().toString());
+        builder.appendQueryParameter("output", "html");
         if (CamLog.VERBOSE) {
-            CamLog.d("Uri:" + uri$Builder.toString());
+            CamLog.d("Uri:" + builder.toString());
         }
-        return new Intent("android.intent.action.VIEW", uri$Builder.build());
+        return new Intent("android.intent.action.VIEW", builder.build());
     }
 
     private static String getVersionName(Context context) {
         try {
             return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             return null;
         }
     }

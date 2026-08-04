@@ -91,7 +91,7 @@ class FacingTransitionAnimation {
         float radius = this.mSwitchAnimationView.getRadius();
         PathInterpolator pathInterpolator = new PathInterpolator(0.39f, 0.575f, 0.565f, 1.0f);
         switchAnimationView.setAlpha(1.0f);
-        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(switchAnimationView, PropertyValuesHolder.ofFloat("radius", radius, maxRadius));
+        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(switchAnimationView, PropertyValuesHolder.ofFloat(ANIMATION_RADIUS, radius, maxRadius));
         objectAnimatorOfPropertyValuesHolder.setDuration(i);
         objectAnimatorOfPropertyValuesHolder.setInterpolator(pathInterpolator);
         return objectAnimatorOfPropertyValuesHolder;
@@ -101,7 +101,7 @@ class FacingTransitionAnimation {
         float maxRadius = this.mSwitchAnimationView.getMaxRadius();
         PathInterpolator pathInterpolator = new PathInterpolator(0.55f, 0.055f, 0.675f, 0.19f);
         switchAnimationView.setAlpha(1.0f);
-        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(switchAnimationView, PropertyValuesHolder.ofFloat("holeRadius", maxRadius / 10.0f, maxRadius));
+        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(switchAnimationView, PropertyValuesHolder.ofFloat(ANIMATION_HOLE_RADIUS, maxRadius / 10.0f, maxRadius));
         objectAnimatorOfPropertyValuesHolder.setDuration(i);
         objectAnimatorOfPropertyValuesHolder.setInterpolator(pathInterpolator);
         return objectAnimatorOfPropertyValuesHolder;
@@ -112,7 +112,7 @@ class FacingTransitionAnimation {
         float draggingStartRadius = this.mSwitchAnimationView.getDraggingStartRadius();
         PathInterpolator pathInterpolator = new PathInterpolator(0.39f, 0.575f, 0.565f, 1.0f);
         switchAnimationView.setAlpha(1.0f);
-        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(switchAnimationView, PropertyValuesHolder.ofFloat("radius", radius, draggingStartRadius));
+        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(switchAnimationView, PropertyValuesHolder.ofFloat(ANIMATION_RADIUS, radius, draggingStartRadius));
         objectAnimatorOfPropertyValuesHolder.setDuration(i);
         objectAnimatorOfPropertyValuesHolder.setInterpolator(pathInterpolator);
         return objectAnimatorOfPropertyValuesHolder;
@@ -120,7 +120,7 @@ class FacingTransitionAnimation {
 
     private ObjectAnimator getEaseOutAnimator(View view, int i, float f) {
         PathInterpolator pathInterpolator = new PathInterpolator(0.39f, 0.575f, 0.565f, 1.0f);
-        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat("alpha", f, 0.0f));
+        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat(ANIMATION_ALPHA, f, 0.0f));
         objectAnimatorOfPropertyValuesHolder.setDuration(i);
         objectAnimatorOfPropertyValuesHolder.setInterpolator(pathInterpolator);
         return objectAnimatorOfPropertyValuesHolder;
@@ -134,7 +134,7 @@ class FacingTransitionAnimation {
         if (CamLog.VERBOSE) {
             CamLog.d("getEaseInScaleAnimator");
         }
-        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat("alpha", 1.0f), PropertyValuesHolder.ofFloat("scaleX", 0.2f, 1.0f), PropertyValuesHolder.ofFloat("scaleY", 0.2f, 1.0f));
+        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat(ANIMATION_ALPHA, 1.0f), PropertyValuesHolder.ofFloat(ANIMATION_SCALE_X, 0.2f, 1.0f), PropertyValuesHolder.ofFloat(ANIMATION_SCALE_Y, 0.2f, 1.0f));
         objectAnimatorOfPropertyValuesHolder.setDuration(i);
         objectAnimatorOfPropertyValuesHolder.setInterpolator(EASE_OUT_IN);
         return objectAnimatorOfPropertyValuesHolder;
@@ -144,7 +144,7 @@ class FacingTransitionAnimation {
         if (CamLog.VERBOSE) {
             CamLog.d("getEaseOutScaleAnimator");
         }
-        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat("alpha", 0.0f), PropertyValuesHolder.ofFloat("scaleX", 0.0f), PropertyValuesHolder.ofFloat("scaleY", 0.0f));
+        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat(ANIMATION_ALPHA, 0.0f), PropertyValuesHolder.ofFloat(ANIMATION_SCALE_X, 0.0f), PropertyValuesHolder.ofFloat(ANIMATION_SCALE_Y, 0.0f));
         objectAnimatorOfPropertyValuesHolder.setDuration(i);
         objectAnimatorOfPropertyValuesHolder.setInterpolator(EASE_OUT_IN);
         return objectAnimatorOfPropertyValuesHolder;

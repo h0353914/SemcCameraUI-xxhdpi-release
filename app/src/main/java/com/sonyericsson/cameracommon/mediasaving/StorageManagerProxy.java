@@ -1,3 +1,59 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.cameracommon.mediasaving;
 
 import android.os.storage.StorageManager;
@@ -11,9 +67,16 @@ import java.util.List;
 public class StorageManagerProxy {
     private static Method mMethodGetVolumes;
     private static Class<?> mStorageTypeClass;
-    private static HashMap<Object, StorageManagerProxy$StorageType> mStorageTypeInverseMap;
-    private static HashMap<StorageManagerProxy$StorageType, Object> mStorageTypeMap;
+    private static HashMap<Object, StorageType> mStorageTypeInverseMap;
+    private static HashMap<StorageType, Object> mStorageTypeMap;
     private StorageManager mStorageManager;
+
+    public enum StorageType {
+        INTERNAL,
+        EXTERNAL_CARD,
+        EXTERNAL_USB,
+        UNKNOWN
+    }
 
     static {
         try {
@@ -22,27 +85,30 @@ public class StorageManagerProxy {
                 mStorageTypeClass = Class.forName("android.os.storage.StorageManager$StorageType");
                 if (mStorageTypeClass.getEnumConstants() != null) {
                     for (Object obj : mStorageTypeClass.getEnumConstants()) {
-                        StorageManagerProxy$StorageType[] storageManagerProxy$StorageTypeArrValues = StorageManagerProxy$StorageType.values();
-                        int length = storageManagerProxy$StorageTypeArrValues.length;
+                        StorageType[] storageTypeArrValues = StorageType.values();
+                        int length = storageTypeArrValues.length;
                         int i = 0;
                         while (true) {
                             if (i < length) {
-                                StorageManagerProxy$StorageType storageManagerProxy$StorageType = storageManagerProxy$StorageTypeArrValues[i];
-                                if (storageManagerProxy$StorageType.name().equals(obj.toString())) {
+                                StorageType storageType = storageTypeArrValues[i];
+                                if (storageType.name().equals(obj.toString())) {
                                     if (mStorageTypeMap == null) {
                                         mStorageTypeMap = new HashMap<>();
                                         mStorageTypeInverseMap = new HashMap<>();
                                     }
-                                    mStorageTypeMap.put(storageManagerProxy$StorageType, obj);
-                                    mStorageTypeInverseMap.put(obj, storageManagerProxy$StorageType);
+                                    mStorageTypeMap.put(storageType, obj);
+                                    mStorageTypeInverseMap.put(obj, storageType);
+                                    break;
                                 } else {
                                     i++;
                                 }
+                            } else {
+                                break;
                             }
                         }
                     }
                 }
-                if (mStorageTypeMap == null || !(mStorageTypeMap.isEmpty() || mStorageTypeMap.size() == StorageManagerProxy$StorageType.values().length)) {
+                if (mStorageTypeMap == null || !(mStorageTypeMap.isEmpty() || mStorageTypeMap.size() == StorageType.values().length)) {
                     throw new RuntimeException("Support StorageType is not expected");
                 }
             } catch (ClassNotFoundException unused) {

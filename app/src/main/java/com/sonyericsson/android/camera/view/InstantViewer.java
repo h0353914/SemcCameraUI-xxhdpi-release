@@ -1,19 +1,169 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.view;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
-import android.view.WindowManager$LayoutParams;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ImageView$ScaleType;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.CameraActivity;
-import com.sonyericsson.android.camera.CameraActivity$LayoutOrientation;
 import com.sonyericsson.android.camera.controller.album.AlbumLauncher;
 import com.sonyericsson.android.camera.controller.album.AlbumPreloader;
 import com.sonyericsson.android.camera.setting.UserSettings;
@@ -25,7 +175,6 @@ import com.sonyericsson.cameracommon.mediasaving.MediaSavingConstants;
 import com.sonyericsson.cameracommon.review.ReviewWindowListener;
 import com.sonyericsson.cameracommon.storage.ImageLoader;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
-import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 import com.sonyericsson.cameracommon.viewfinder.LayoutDependencyResolver;
 import com.sonymobile.cameracommon.research.ResearchUtil;
 import java.util.Arrays;
@@ -35,7 +184,7 @@ public class InstantViewer extends FrameLayout {
     private static final String ACTION_FAST_VIEW_MODE_LAUNCHED = "com.sonyericsson.album.intent.action.FAST_VIEW_MODE_LAUNCHED";
     public static final String TAG = "InstantViewer";
     private Bitmap mAlbumBmp;
-    private InstantViewer$AlbumNotifyReceiver mAlbumNotifyReceiver;
+    private AlbumNotifyReceiver mAlbumNotifyReceiver;
     private AlbumPreloader mAlbumPreloader;
     private CameraActivity mCameraActivity;
     private boolean mIsOpened;
@@ -93,7 +242,7 @@ public class InstantViewer extends FrameLayout {
             CamLog.d("onFinishInflate.");
         }
         super.onFinishInflate();
-        this.mPictureImage = (ImageView) findViewById(2131296297);
+        this.mPictureImage = (ImageView) findViewById(R.id.auto_review_picture_image);
     }
 
     public Uri getUri() {
@@ -131,7 +280,7 @@ public class InstantViewer extends FrameLayout {
             CamLog.d("onAttachedToWindow.");
         }
         super.onAttachedToWindow();
-        setBackgroundColor(-16777216);
+        setBackgroundColor(ViewCompat.MEASURED_STATE_MASK);
     }
 
     @Override // android.view.ViewGroup, android.view.View
@@ -194,10 +343,10 @@ public class InstantViewer extends FrameLayout {
         if (CamLog.VERBOSE) {
             CamLog.d("show()");
         }
-        WindowManager$LayoutParams attributes = this.mCameraActivity.getWindow().getAttributes();
+        WindowManager.LayoutParams attributes = this.mCameraActivity.getWindow().getAttributes();
         attributes.rotationAnimation = 2;
         this.mCameraActivity.getWindow().setAttributes(attributes);
-        if (CameraActivity$LayoutOrientation.ReverseLandscape == this.mCameraActivity.getLayoutOrientation()) {
+        if (CameraActivity.LayoutOrientation.ReverseLandscape == this.mCameraActivity.getLayoutOrientation()) {
             this.mCameraActivity.setRequestedOrientation(1);
         }
         this.mCameraActivity.setRequestedOrientation(2);
@@ -213,7 +362,7 @@ public class InstantViewer extends FrameLayout {
             CamLog.d("hide()");
         }
         if (this.mCameraActivity != null && this.mCameraActivity.getRequestedOrientation() != 3) {
-            if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
+            if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
                 this.mCameraActivity.setRequestedOrientation(1);
             } else {
                 this.mCameraActivity.setRequestedOrientation(0);
@@ -245,7 +394,7 @@ public class InstantViewer extends FrameLayout {
         return this.mAlbumBmp != null;
     }
 
-    private boolean setupScreen(Activity activity, Uri uri, byte[] bArr, String str, String str2, int i, int i2, boolean z, Bitmap bitmap) throws Throwable {
+    private boolean setupScreen(Activity activity, Uri uri, byte[] bArr, String str, String str2, int i, int i2, boolean z, Bitmap bitmap) {
         int width;
         int height;
         if (CamLog.VERBOSE) {
@@ -276,7 +425,7 @@ public class InstantViewer extends FrameLayout {
             } else if (bArr != null) {
                 bitmap = new ImageLoader(getContext(), bArr, i2).load();
             } else {
-                bitmap = (str == null || !("video/mp4".equals(str2) || "video/3gpp".equals(str2))) ? null : ThumbnailFactory.createVideoThumbnail(str);
+                bitmap = (str == null || !(MediaSavingConstants.MEDIA_TYPE_MPEG4_MIME.equals(str2) || MediaSavingConstants.MEDIA_TYPE_3GP_MIME.equals(str2))) ? null : ThumbnailFactory.createVideoThumbnail(str);
             }
         }
         if (bitmap == null) {
@@ -284,7 +433,7 @@ public class InstantViewer extends FrameLayout {
             return false;
         }
         this.mOrientedPictureSize = new Rect(LayoutDependencyResolver.getSurfaceRect(activity, bitmap.getWidth() / bitmap.getHeight()));
-        if ("image/jpeg".equals(str2)) {
+        if (MediaSavingConstants.MEDIA_TYPE_JPEG_MIME.equals(str2)) {
             width = this.mOrientedPictureSize.width();
             height = this.mOrientedPictureSize.height();
         } else {
@@ -292,7 +441,7 @@ public class InstantViewer extends FrameLayout {
             height = bitmap.getHeight();
         }
         Bitmap bitmapCreateScaledBitmap = Bitmap.createScaledBitmap(bitmap, width, height, true);
-        this.mPictureImage.setScaleType(ImageView$ScaleType.FIT_CENTER);
+        this.mPictureImage.setScaleType(ImageView.ScaleType.FIT_CENTER);
         this.mPictureImage.setImageBitmap(bitmapCreateScaledBitmap);
         this.mUri = uri;
         return true;
@@ -318,9 +467,7 @@ public class InstantViewer extends FrameLayout {
         }
         setVisibility(z ? 0 : 4);
     }
-
-    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-    @Override // android.view.View, android.view.KeyEvent$Callback
+@Override // android.view.View, android.view.KeyEvent.Callback
     public boolean onKeyDown(int i, KeyEvent keyEvent) {
         if (CamLog.VERBOSE) {
             CamLog.d("onKeyDown: " + i);
@@ -344,7 +491,7 @@ public class InstantViewer extends FrameLayout {
         }
     }
 
-    @Override // android.view.View, android.view.KeyEvent$Callback
+    @Override // android.view.View, android.view.KeyEvent.Callback
     public boolean onKeyUp(int i, KeyEvent keyEvent) {
         if (CamLog.VERBOSE) {
             CamLog.d("onKeyUp: " + i);
@@ -386,7 +533,7 @@ public class InstantViewer extends FrameLayout {
             CamLog.d("register AlbumNotifyReceiver");
         }
         if (this.mCameraActivity != null) {
-            this.mAlbumNotifyReceiver = new InstantViewer$AlbumNotifyReceiver(this, null);
+            this.mAlbumNotifyReceiver = new AlbumNotifyReceiver();
             this.mCameraActivity.registerReceiver(this.mAlbumNotifyReceiver, new IntentFilter("com.sonyericsson.album.intent.action.FAST_VIEW_MODE_LAUNCHED"));
         }
     }
@@ -400,6 +547,23 @@ public class InstantViewer extends FrameLayout {
                 this.mCameraActivity.unregisterReceiver(this.mAlbumNotifyReceiver);
             }
             this.mAlbumNotifyReceiver = null;
+        }
+    }
+
+    private class AlbumNotifyReceiver extends BroadcastReceiver {
+        public static final String TAG = "AlbumNotifyReceiver";
+
+        private AlbumNotifyReceiver() {
+        }
+
+        @Override // android.content.BroadcastReceiver
+        public void onReceive(Context context, Intent intent) {
+            if ("com.sonyericsson.album.intent.action.FAST_VIEW_MODE_LAUNCHED".equals(intent.getAction())) {
+                if (CamLog.VERBOSE) {
+                    CamLog.d("onReceive()");
+                }
+                InstantViewer.this.hide();
+            }
         }
     }
 

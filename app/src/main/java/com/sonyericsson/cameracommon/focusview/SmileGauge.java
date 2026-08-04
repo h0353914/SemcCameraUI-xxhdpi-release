@@ -5,11 +5,9 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout$LayoutParams;
-import com.sonyericsson.android.camera.R$styleable;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
-import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
 public class SmileGauge extends RelativeLayout {
@@ -32,7 +30,7 @@ public class SmileGauge extends RelativeLayout {
     public SmileGauge(Context context, AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
         this.mIsForLandscape = true;
-        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, R$styleable.SmileGauge);
+        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, com.sonyericsson.android.camera.R.styleable.SmileGauge);
         this.mIsForLandscape = typedArrayObtainStyledAttributes.getBoolean(0, true);
         typedArrayObtainStyledAttributes.recycle();
     }
@@ -59,18 +57,18 @@ public class SmileGauge extends RelativeLayout {
             i = 100;
         }
         this.mSmileScore = i;
-        SmileScore smileScore = (SmileScore) findViewById(2131296616);
+        SmileScore smileScore = (SmileScore) findViewById(R.id.smile_gauge_score);
         smileScore.setSmileScore(i);
         if (!isForLandscape()) {
-            RelativeLayout$LayoutParams relativeLayout$LayoutParams = (RelativeLayout$LayoutParams) smileScore.getLayoutParams();
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) smileScore.getLayoutParams();
             if (isLayoutOrientationLandscape()) {
-                relativeLayout$LayoutParams.removeRule(12);
-                relativeLayout$LayoutParams.addRule(10);
+                layoutParams.removeRule(12);
+                layoutParams.addRule(10);
             } else {
-                relativeLayout$LayoutParams.removeRule(10);
-                relativeLayout$LayoutParams.addRule(12);
+                layoutParams.removeRule(10);
+                layoutParams.addRule(12);
             }
-            smileScore.setLayoutParams(relativeLayout$LayoutParams);
+            smileScore.setLayoutParams(layoutParams);
         }
         smileScore.invalidate();
         if (CamLog.VERBOSE) {
@@ -90,26 +88,26 @@ public class SmileGauge extends RelativeLayout {
         if (CamLog.VERBOSE) {
             CamLog.v("drawThreshold() is called.");
         }
-        ImageView imageView = (ImageView) findViewById(2131296617);
-        RelativeLayout$LayoutParams relativeLayout$LayoutParams = new RelativeLayout$LayoutParams(-2, -2);
+        ImageView imageView = (ImageView) findViewById(R.id.smile_gauge_threshold);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-2, -2);
         if (isForLandscape()) {
-            relativeLayout$LayoutParams.topMargin = this.mMargin;
-            relativeLayout$LayoutParams.addRule(9);
+            layoutParams.topMargin = this.mMargin;
+            layoutParams.addRule(9);
         } else {
-            RelativeLayout$LayoutParams relativeLayout$LayoutParams2 = new RelativeLayout$LayoutParams(-2, -2);
-            ImageView imageView2 = (ImageView) findViewById(2131296614);
+            RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(-2, -2);
+            ImageView imageView2 = (ImageView) findViewById(R.id.smile_gauge_frame);
             if (isLayoutOrientationLandscape()) {
-                relativeLayout$LayoutParams2.addRule(10);
-                relativeLayout$LayoutParams.leftMargin = this.mMargin;
-                relativeLayout$LayoutParams.addRule(12);
+                layoutParams2.addRule(10);
+                layoutParams.leftMargin = this.mMargin;
+                layoutParams.addRule(12);
             } else {
-                relativeLayout$LayoutParams2.addRule(12);
-                relativeLayout$LayoutParams.rightMargin = this.mMargin;
-                relativeLayout$LayoutParams.addRule(11);
+                layoutParams2.addRule(12);
+                layoutParams.rightMargin = this.mMargin;
+                layoutParams.addRule(11);
             }
-            imageView2.setLayoutParams(relativeLayout$LayoutParams2);
+            imageView2.setLayoutParams(layoutParams2);
         }
-        imageView.setLayoutParams(relativeLayout$LayoutParams);
+        imageView.setLayoutParams(layoutParams);
     }
 
     @Override // android.view.View
@@ -152,17 +150,17 @@ public class SmileGauge extends RelativeLayout {
         clearLayoutParams();
         if (i == 2) {
             if (isLayoutOrientationLandscape()) {
-                moveToId(2131296615);
+                moveToId(R.id.smile_gauge_left);
                 alignToDirection(6);
             } else {
-                moveToId(2131296618);
+                moveToId(R.id.smile_gauge_top);
                 alignToDirection(7);
             }
         } else if (isLayoutOrientationLandscape()) {
-            moveToId(2131296613);
+            moveToId(R.id.smile_gauge_bottom);
             alignToDirection(5);
         } else {
-            moveToId(2131296615);
+            moveToId(R.id.smile_gauge_left);
             alignToDirection(6);
         }
         postInvalidate();
@@ -180,28 +178,28 @@ public class SmileGauge extends RelativeLayout {
         if (CamLog.VERBOSE) {
             CamLog.v("clearLayoutParams() is called.");
         }
-        RelativeLayout$LayoutParams relativeLayout$LayoutParams = (RelativeLayout$LayoutParams) getLayoutParams();
-        if (relativeLayout$LayoutParams == null) {
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) getLayoutParams();
+        if (layoutParams == null) {
             return;
         }
-        relativeLayout$LayoutParams.addRule(6, 0);
-        relativeLayout$LayoutParams.addRule(5, 0);
-        relativeLayout$LayoutParams.addRule(7, 0);
-        relativeLayout$LayoutParams.topMargin = 0;
-        relativeLayout$LayoutParams.leftMargin = 0;
-        setLayoutParams(relativeLayout$LayoutParams);
+        layoutParams.addRule(6, 0);
+        layoutParams.addRule(5, 0);
+        layoutParams.addRule(7, 0);
+        layoutParams.topMargin = 0;
+        layoutParams.leftMargin = 0;
+        setLayoutParams(layoutParams);
     }
 
     protected void alignToDirection(int i) {
         if (CamLog.VERBOSE) {
             CamLog.d("align direction = " + i);
         }
-        RelativeLayout$LayoutParams relativeLayout$LayoutParams = (RelativeLayout$LayoutParams) getLayoutParams();
-        if (relativeLayout$LayoutParams == null) {
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) getLayoutParams();
+        if (layoutParams == null) {
             return;
         }
-        relativeLayout$LayoutParams.addRule(i, 2131296527);
-        setLayoutParams(relativeLayout$LayoutParams);
+        layoutParams.addRule(i, R.id.rect);
+        setLayoutParams(layoutParams);
     }
 
     @Override // android.view.ViewGroup, android.view.View
@@ -214,6 +212,6 @@ public class SmileGauge extends RelativeLayout {
     }
 
     public boolean isLayoutOrientationLandscape() {
-        return LayoutOrientationResolver.getInstance().getOrientation() != LayoutOrientationResolver$LayoutOrientationType.PORTRAIT;
+        return LayoutOrientationResolver.getInstance().getOrientation() != LayoutOrientationResolver.LayoutOrientationType.PORTRAIT;
     }
 }

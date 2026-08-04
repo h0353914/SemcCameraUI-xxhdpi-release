@@ -8,12 +8,6 @@ public final class DescriptorProtos$ServiceDescriptorProto extends ExtendableMes
     public String name;
     public DescriptorProtos$ServiceOptions options;
     public DescriptorProtos$StreamDescriptorProto[] stream;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$ServiceDescriptorProto[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

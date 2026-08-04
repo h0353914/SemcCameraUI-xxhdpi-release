@@ -1,7 +1,22 @@
 package com.sonyericsson.android.camera.view.hint;
 
+import com.sonyericsson.android.camera.R;
+
 public class HintTextSuperSlowShot extends HintTextSlowMotion {
     public HintTextSuperSlowShot() {
-        super(2131690142);
+
+
+
+
+
+
+
+
+
+
+
+
+
+        super(R.string.cam_strings_slow_motion_shot_txt);
     }
 }

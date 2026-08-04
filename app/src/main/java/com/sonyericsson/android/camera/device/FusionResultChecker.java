@@ -1,12 +1,13 @@
 package com.sonyericsson.android.camera.device;
 
 import android.os.Handler;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.CamLog;
 
 class FusionResultChecker extends CaptureResultCheckerBase {
     private static final String TAG = "FusionResultChecker";
-    private CameraParameters$FusionResultCallback mCallback;
-    private CameraParameters$FusionResult mLatestResult;
+    private CameraParameters.FusionResultCallback mCallback;
+    private CameraParameters.FusionResult mLatestResult;
 
     private boolean isInvalidFusionResult(int i, int i2, int i3) {
         boolean z = i3 == 0;
@@ -18,20 +19,16 @@ class FusionResultChecker extends CaptureResultCheckerBase {
         return false;
     }
 
-    static /* synthetic */ CameraParameters$FusionResultCallback access$000(FusionResultChecker fusionResultChecker) {
-        return fusionResultChecker.mCallback;
-    }
-
-    public FusionResultChecker(Handler handler, CameraParameters$FusionResultCallback cameraParameters$FusionResultCallback) {
+    public FusionResultChecker(Handler handler, CameraParameters.FusionResultCallback fusionResultCallback) {
         super(handler);
-        this.mCallback = cameraParameters$FusionResultCallback;
-        this.mLatestResult = new CameraParameters$FusionResult();
+        this.mCallback = fusionResultCallback;
+        this.mLatestResult = new CameraParameters.FusionResult();
     }
 
     @Override // com.sonyericsson.android.camera.device.CaptureResultCheckerBase
     public void check(CaptureResultHolder captureResultHolder) {
-        CameraParameters$FusionStatus cameraParameters$FusionStatus;
-        CameraParameters$FusionCondition cameraParameters$FusionCondition;
+        CameraParameters.FusionStatus fusionStatus;
+        CameraParameters.FusionCondition fusionCondition;
         Integer num = (Integer) captureResultHolder.getLatestValue(SomcCaptureResultKeys.SONYMOBILE_CONTROL_PREVIEW_OUTPUT_STREAM_SOURCE);
         if (num == null) {
             num = 0;
@@ -53,41 +50,48 @@ class FusionResultChecker extends CaptureResultCheckerBase {
         }
         switch (num.intValue()) {
             case 1:
-                cameraParameters$FusionStatus = CameraParameters$FusionStatus.SUB_1;
+                fusionStatus = CameraParameters.FusionStatus.SUB_1;
                 break;
             case 2:
-                cameraParameters$FusionStatus = CameraParameters$FusionStatus.FUSION_MAIN;
+                fusionStatus = CameraParameters.FusionStatus.FUSION_MAIN;
                 break;
             case 3:
-                cameraParameters$FusionStatus = CameraParameters$FusionStatus.FUSION_SUB_1;
+                fusionStatus = CameraParameters.FusionStatus.FUSION_SUB_1;
                 break;
             default:
-                cameraParameters$FusionStatus = CameraParameters$FusionStatus.MAIN;
+                fusionStatus = CameraParameters.FusionStatus.MAIN;
                 break;
         }
         switch (num2.intValue()) {
             case 1:
-                cameraParameters$FusionCondition = CameraParameters$FusionCondition.CLOSE_TO_SUBJECT;
+                fusionCondition = CameraParameters.FusionCondition.CLOSE_TO_SUBJECT;
                 break;
             case 2:
-                cameraParameters$FusionCondition = CameraParameters$FusionCondition.LENS_COVERED;
+                fusionCondition = CameraParameters.FusionCondition.LENS_COVERED;
                 break;
             case 3:
-                cameraParameters$FusionCondition = CameraParameters$FusionCondition.LOW_CONTRAST;
+                fusionCondition = CameraParameters.FusionCondition.LOW_CONTRAST;
                 break;
             default:
-                cameraParameters$FusionCondition = CameraParameters$FusionCondition.NORMAL;
+                fusionCondition = CameraParameters.FusionCondition.NORMAL;
                 break;
         }
-        CameraParameters$FusionResult cameraParameters$FusionResult = new CameraParameters$FusionResult(cameraParameters$FusionStatus, cameraParameters$FusionCondition);
-        if (cameraParameters$FusionResult.getFusionStatus() == this.mLatestResult.getFusionStatus() && cameraParameters$FusionResult.getFusionCondition() == this.mLatestResult.getFusionCondition()) {
+        final CameraParameters.FusionResult fusionResult = new CameraParameters.FusionResult(fusionStatus, fusionCondition);
+        if (fusionResult.getFusionStatus() == this.mLatestResult.getFusionStatus() && fusionResult.getFusionCondition() == this.mLatestResult.getFusionCondition()) {
             return;
         }
-        this.mLatestResult = cameraParameters$FusionResult;
-        this.mHandler.post(new FusionResultChecker$1(this, cameraParameters$FusionResult));
+        this.mLatestResult = fusionResult;
+        this.mHandler.post(new Runnable() { // from class: com.sonyericsson.android.camera.device.FusionResultChecker.1
+            @Override // java.lang.Runnable
+            public void run() {
+                if (FusionResultChecker.this.mCallback != null) {
+                    FusionResultChecker.this.mCallback.onFusionResultChanged(fusionResult);
+                }
+            }
+        });
     }
 
-    public CameraParameters$FusionResult getLatestFusionResult() {
+    public CameraParameters.FusionResult getLatestFusionResult() {
         return this.mLatestResult;
     }
 }

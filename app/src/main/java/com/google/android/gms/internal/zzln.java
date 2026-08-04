@@ -2,11 +2,11 @@ package com.google.android.gms.internal;
 
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.PendingResult$zza;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.ResultCallback;
 import java.util.concurrent.TimeUnit;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzln<R extends Result> extends OptionalPendingResult<R> {
     private final zzlc<R> zzacI;
 
@@ -61,8 +61,8 @@ public final class zzln<R extends Result> extends OptionalPendingResult<R> {
     }
 
     @Override // com.google.android.gms.common.api.PendingResult
-    public void zza(PendingResult$zza pendingResult$zza) {
-        this.zzacI.zza(pendingResult$zza);
+    public void zza(PendingResult.zza zzaVar) {
+        this.zzacI.zza(zzaVar);
     }
 
     @Override // com.google.android.gms.common.api.PendingResult

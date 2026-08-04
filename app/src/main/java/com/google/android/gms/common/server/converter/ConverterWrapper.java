@@ -2,8 +2,9 @@ package com.google.android.gms.common.server.converter;
 
 import android.os.Parcel;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
-import com.google.android.gms.common.server.response.FastJsonResponse$zza;
+import com.google.android.gms.common.server.response.FastJsonResponse;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class ConverterWrapper implements SafeParcelable {
     public static final zza CREATOR = new zza();
     private final int mVersionCode;
@@ -19,9 +20,9 @@ public class ConverterWrapper implements SafeParcelable {
         this.zzagO = stringToIntConverter;
     }
 
-    public static ConverterWrapper zza(FastJsonResponse$zza<?, ?> fastJsonResponse$zza) {
-        if (fastJsonResponse$zza instanceof StringToIntConverter) {
-            return new ConverterWrapper((StringToIntConverter) fastJsonResponse$zza);
+    public static ConverterWrapper zza(FastJsonResponse.zza<?, ?> zzaVar) {
+        if (zzaVar instanceof StringToIntConverter) {
+            return new ConverterWrapper((StringToIntConverter) zzaVar);
         }
         throw new IllegalArgumentException("Unsupported safe parcelable field converter class.");
     }
@@ -46,7 +47,7 @@ public class ConverterWrapper implements SafeParcelable {
         return this.zzagO;
     }
 
-    public FastJsonResponse$zza<?, ?> zzpz() {
+    public FastJsonResponse.zza<?, ?> zzpz() {
         if (this.zzagO != null) {
             return this.zzagO;
         }

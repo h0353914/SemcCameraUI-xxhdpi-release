@@ -1,14 +1,15 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.controller.GestureShutter;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 
 public enum ShutterTrigger implements UserSettingValue {
-    SMILE_SHUTTER(2131690163, SmileCapture.MIDDLE, false),
-    GESTURE_SHUTTER(2131689868, SmileCapture.OFF, true),
-    OFF(2131690115, SmileCapture.OFF, false);
+    SMILE_SHUTTER(R.string.cam_strings_smile_shutter_cy_txt, SmileCapture.MIDDLE, false),
+    GESTURE_SHUTTER(R.string.cam_strings_hand_shutter_txt, SmileCapture.OFF, true),
+    OFF(R.string.cam_strings_settings_off_txt, SmileCapture.OFF, false);
 
     public static final String TAG = "ShutterTrigger";
     private static final int sParameterTextId = 2131690121;

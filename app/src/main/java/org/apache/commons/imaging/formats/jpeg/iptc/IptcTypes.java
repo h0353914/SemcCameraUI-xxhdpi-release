@@ -82,7 +82,22 @@ public enum IptcTypes implements IptcType {
         return this.name + " (" + this.type + ")";
     }
 
-    public static IptcType getUnknown(int i) {
-        return new IptcTypes$1(i);
+    public static IptcType getUnknown(final int i) {
+        return new IptcType() { // from class: org.apache.commons.imaging.formats.jpeg.iptc.IptcTypes.1
+            @Override // org.apache.commons.imaging.formats.jpeg.iptc.IptcType
+            public String getName() {
+                return "Unknown";
+            }
+
+            @Override // org.apache.commons.imaging.formats.jpeg.iptc.IptcType
+            public int getType() {
+                return i;
+            }
+
+            @Override // org.apache.commons.imaging.formats.jpeg.iptc.IptcType
+            public String toString() {
+                return "Unknown (" + i + ")";
+            }
+        };
     }
 }

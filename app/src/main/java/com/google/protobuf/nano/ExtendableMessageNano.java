@@ -1,22 +1,9 @@
 package com.google.protobuf.nano;
 
-import com.google.protobuf.nano.ExtendableMessageNano;
 import java.io.IOException;
 
 public abstract class ExtendableMessageNano<M extends ExtendableMessageNano<M>> extends MessageNano {
     protected FieldArray unknownFieldData;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano clone() throws CloneNotSupportedException {
-        return clone();
-    }
-
-    @Override // com.google.protobuf.nano.MessageNano
-    /* JADX INFO: renamed from: clone */
-    public /* bridge */ /* synthetic */ Object mo6clone() throws CloneNotSupportedException {
-        return clone();
-    }
-
     @Override // com.google.protobuf.nano.MessageNano
     protected int computeSerializedSize() {
         if (this.unknownFieldData == null) {
@@ -71,6 +58,7 @@ public abstract class ExtendableMessageNano<M extends ExtendableMessageNano<M>> 
         return (T) fieldData.getValue(extension);
     }
 
+    @SuppressWarnings("unchecked")
     public final <T> M setExtension(Extension<M, T> extension, T value) {
         int tagFieldNumber = WireFormatNano.getTagFieldNumber(extension.tag);
         FieldData fieldData = null;
@@ -93,7 +81,7 @@ public abstract class ExtendableMessageNano<M extends ExtendableMessageNano<M>> 
                 fieldData.setValue(extension, value);
             }
         }
-        return this;
+        return (M) this;
     }
 
     protected final boolean storeUnknownField(CodedInputByteBufferNano input, int tag) throws IOException {

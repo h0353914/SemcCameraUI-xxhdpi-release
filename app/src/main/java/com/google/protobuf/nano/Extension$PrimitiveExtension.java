@@ -276,133 +276,75 @@ class Extension$PrimitiveExtension<M extends ExtendableMessageNano<M>, T> extend
         throw new IllegalArgumentException(sb2.toString());
     }
 
-    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-    /*  JADX ERROR: JadxRuntimeException in pass: RegionMakerVisitor
-        jadx.core.utils.exceptions.JadxRuntimeException: Failed to find switch 'out' block (already processed)
-        	at jadx.core.dex.visitors.regions.maker.SwitchRegionMaker.calcSwitchOut(SwitchRegionMaker.java:217)
-        	at jadx.core.dex.visitors.regions.maker.SwitchRegionMaker.process(SwitchRegionMaker.java:68)
-        	at jadx.core.dex.visitors.regions.maker.RegionMaker.traverse(RegionMaker.java:112)
-        	at jadx.core.dex.visitors.regions.maker.RegionMaker.makeRegion(RegionMaker.java:66)
-        	at jadx.core.dex.visitors.regions.maker.SwitchRegionMaker.addCases(SwitchRegionMaker.java:123)
-        	at jadx.core.dex.visitors.regions.maker.SwitchRegionMaker.process(SwitchRegionMaker.java:71)
-        	at jadx.core.dex.visitors.regions.maker.RegionMaker.traverse(RegionMaker.java:112)
-        	at jadx.core.dex.visitors.regions.maker.RegionMaker.makeRegion(RegionMaker.java:66)
-        	at jadx.core.dex.visitors.regions.maker.RegionMaker.makeMthRegion(RegionMaker.java:48)
-        	at jadx.core.dex.visitors.regions.RegionMakerVisitor.visit(RegionMakerVisitor.java:25)
-        */
-    private int computePackedDataSize(java.lang.Object r6) {
-        /*
-            r5 = this;
-            int r0 = java.lang.reflect.Array.getLength(r6)
-            int r1 = r5.type
-            r2 = 0
-            switch(r1) {
-                case 1: goto L94;
-                case 2: goto L91;
-                case 3: goto L82;
-                case 4: goto L73;
-                case 5: goto L64;
-                case 6: goto L94;
-                case 7: goto L91;
-                case 8: goto L96;
-                default: goto La;
+    private int computePackedDataSize(Object array) {
+        int length = Array.getLength(array);
+        switch (this.type) {
+            case 1:
+            case 6:
+            case 16:
+                return length * 8;
+            case 2:
+            case 7:
+            case 15:
+                return length * 4;
+            case 3: {
+                int i = 0;
+                for (int i2 = 0; i2 < length; i2++) {
+                    i += CodedOutputByteBufferNano.computeInt64SizeNoTag(Array.getLong(array, i2));
+                }
+                return i;
             }
-        La:
-            switch(r1) {
-                case 13: goto L55;
-                case 14: goto L46;
-                case 15: goto L91;
-                case 16: goto L94;
-                case 17: goto L37;
-                case 18: goto L28;
-                default: goto Ld;
+            case 4: {
+                int i3 = 0;
+                for (int i4 = 0; i4 < length; i4++) {
+                    i3 += CodedOutputByteBufferNano.computeUInt64SizeNoTag(Array.getLong(array, i4));
+                }
+                return i3;
             }
-        Ld:
-            java.lang.IllegalArgumentException r6 = new java.lang.IllegalArgumentException
-            int r5 = r5.type
-            r0 = 40
-            java.lang.StringBuilder r1 = new java.lang.StringBuilder
-            r1.<init>(r0)
-            java.lang.String r0 = "Unexpected non-packable type "
-            r1.append(r0)
-            r1.append(r5)
-            java.lang.String r5 = r1.toString()
-            r6.<init>(r5)
-            throw r6
-        L28:
-            r5 = r2
-        L29:
-            if (r2 >= r0) goto L97
-            long r3 = java.lang.reflect.Array.getLong(r6, r2)
-            int r1 = com.google.protobuf.nano.CodedOutputByteBufferNano.computeSInt64SizeNoTag(r3)
-            int r5 = r5 + r1
-            int r2 = r2 + 1
-            goto L29
-        L37:
-            r5 = r2
-        L38:
-            if (r2 >= r0) goto L97
-            int r1 = java.lang.reflect.Array.getInt(r6, r2)
-            int r1 = com.google.protobuf.nano.CodedOutputByteBufferNano.computeSInt32SizeNoTag(r1)
-            int r5 = r5 + r1
-            int r2 = r2 + 1
-            goto L38
-        L46:
-            r5 = r2
-        L47:
-            if (r2 >= r0) goto L97
-            int r1 = java.lang.reflect.Array.getInt(r6, r2)
-            int r1 = com.google.protobuf.nano.CodedOutputByteBufferNano.computeEnumSizeNoTag(r1)
-            int r5 = r5 + r1
-            int r2 = r2 + 1
-            goto L47
-        L55:
-            r5 = r2
-        L56:
-            if (r2 >= r0) goto L97
-            int r1 = java.lang.reflect.Array.getInt(r6, r2)
-            int r1 = com.google.protobuf.nano.CodedOutputByteBufferNano.computeUInt32SizeNoTag(r1)
-            int r5 = r5 + r1
-            int r2 = r2 + 1
-            goto L56
-        L64:
-            r5 = r2
-        L65:
-            if (r2 >= r0) goto L97
-            int r1 = java.lang.reflect.Array.getInt(r6, r2)
-            int r1 = com.google.protobuf.nano.CodedOutputByteBufferNano.computeInt32SizeNoTag(r1)
-            int r5 = r5 + r1
-            int r2 = r2 + 1
-            goto L65
-        L73:
-            r5 = r2
-        L74:
-            if (r2 >= r0) goto L97
-            long r3 = java.lang.reflect.Array.getLong(r6, r2)
-            int r1 = com.google.protobuf.nano.CodedOutputByteBufferNano.computeUInt64SizeNoTag(r3)
-            int r5 = r5 + r1
-            int r2 = r2 + 1
-            goto L74
-        L82:
-            r5 = r2
-        L83:
-            if (r2 >= r0) goto L97
-            long r3 = java.lang.reflect.Array.getLong(r6, r2)
-            int r1 = com.google.protobuf.nano.CodedOutputByteBufferNano.computeInt64SizeNoTag(r3)
-            int r5 = r5 + r1
-            int r2 = r2 + 1
-            goto L83
-        L91:
-            int r0 = r0 * 4
-            goto L96
-        L94:
-            int r0 = r0 * 8
-        L96:
-            r5 = r0
-        L97:
-            return r5
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.google.protobuf.nano.Extension$PrimitiveExtension.computePackedDataSize(java.lang.Object):int");
+            case 5: {
+                int i5 = 0;
+                for (int i6 = 0; i6 < length; i6++) {
+                    i5 += CodedOutputByteBufferNano.computeInt32SizeNoTag(Array.getInt(array, i6));
+                }
+                return i5;
+            }
+            case 8:
+                return length;
+            case 13: {
+                int i7 = 0;
+                for (int i8 = 0; i8 < length; i8++) {
+                    i7 += CodedOutputByteBufferNano.computeUInt32SizeNoTag(Array.getInt(array, i8));
+                }
+                return i7;
+            }
+            case 14: {
+                int i9 = 0;
+                for (int i10 = 0; i10 < length; i10++) {
+                    i9 += CodedOutputByteBufferNano.computeEnumSizeNoTag(Array.getInt(array, i10));
+                }
+                return i9;
+            }
+            case 17: {
+                int i11 = 0;
+                for (int i12 = 0; i12 < length; i12++) {
+                    i11 += CodedOutputByteBufferNano.computeSInt32SizeNoTag(Array.getInt(array, i12));
+                }
+                return i11;
+            }
+            case 18: {
+                int i13 = 0;
+                for (int i14 = 0; i14 < length; i14++) {
+                    i13 += CodedOutputByteBufferNano.computeSInt64SizeNoTag(Array.getLong(array, i14));
+                }
+                return i13;
+            }
+            default:
+                int i15 = this.type;
+                StringBuilder sb = new StringBuilder(40);
+                sb.append("Unexpected non-packable type ");
+                sb.append(i15);
+                throw new IllegalArgumentException(sb.toString());
+        }
     }
 
     @Override // com.google.protobuf.nano.Extension

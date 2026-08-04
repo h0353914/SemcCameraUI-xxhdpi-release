@@ -4,14 +4,16 @@ import android.accounts.Account;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
+import com.google.android.gms.common.internal.zzp;
 import java.util.Collection;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class GetServiceRequest implements SafeParcelable {
-    public static final Parcelable$Creator<GetServiceRequest> CREATOR = new zzi();
+    public static final Parcelable.Creator<GetServiceRequest> CREATOR = new zzi();
     final int version;
     final int zzafq;
     int zzafr;
@@ -44,7 +46,7 @@ public class GetServiceRequest implements SafeParcelable {
 
     private Account zzaG(IBinder iBinder) {
         if (iBinder != null) {
-            return zza.zzb(zzp$zza.zzaH(iBinder));
+            return zza.zzb(zzp.zza.zzaH(iBinder));
         }
         return null;
     }

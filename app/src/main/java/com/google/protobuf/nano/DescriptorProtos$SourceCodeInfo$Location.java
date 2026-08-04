@@ -9,12 +9,6 @@ public final class DescriptorProtos$SourceCodeInfo$Location extends ExtendableMe
     public int[] path;
     public int[] span;
     public String trailingComments;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$SourceCodeInfo$Location[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

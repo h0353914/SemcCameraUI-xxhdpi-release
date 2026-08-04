@@ -7,32 +7,20 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
-import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 
 public class SuperSlowMotionTriggerAnimationController {
     private Animation mAlphaAnimation;
     private View mBackground;
     private View mLineLandscape;
     private View mLinePortrait;
-    private SuperSlowMotionTriggerAnimationController$OnAnimationEndListener mListener;
+    private OnAnimationEndListener mListener;
     private FrameLayout mPreviewContainer;
     private View mRoot;
 
-    static /* synthetic */ SuperSlowMotionTriggerAnimationController$OnAnimationEndListener access$000(SuperSlowMotionTriggerAnimationController superSlowMotionTriggerAnimationController) {
-        return superSlowMotionTriggerAnimationController.mListener;
-    }
-
-    static /* synthetic */ View access$100(SuperSlowMotionTriggerAnimationController superSlowMotionTriggerAnimationController) {
-        return superSlowMotionTriggerAnimationController.mBackground;
-    }
-
-    static /* synthetic */ View access$200(SuperSlowMotionTriggerAnimationController superSlowMotionTriggerAnimationController) {
-        return superSlowMotionTriggerAnimationController.mLineLandscape;
-    }
-
-    static /* synthetic */ View access$300(SuperSlowMotionTriggerAnimationController superSlowMotionTriggerAnimationController) {
-        return superSlowMotionTriggerAnimationController.mLinePortrait;
+    public interface OnAnimationEndListener {
+        void onAnimationEnd();
     }
 
     public void setup(FrameLayout frameLayout) {
@@ -44,21 +32,39 @@ public class SuperSlowMotionTriggerAnimationController {
             return;
         }
         Context context = this.mPreviewContainer.getContext();
-        this.mRoot = ((LayoutInflater) context.getSystemService("layout_inflater")).inflate(2131493021, this.mPreviewContainer);
-        this.mBackground = this.mRoot.findViewById(2131296316);
-        this.mLineLandscape = this.mRoot.findViewById(2131296450);
-        this.mLinePortrait = this.mRoot.findViewById(2131296451);
-        this.mAlphaAnimation = AnimationUtils.loadAnimation(context, 2130772003);
-        this.mAlphaAnimation.setAnimationListener(new SuperSlowMotionTriggerAnimationController$1(this));
+        this.mRoot = ((LayoutInflater) context.getSystemService("layout_inflater")).inflate(R.layout.trigger_view_layout, this.mPreviewContainer);
+        this.mBackground = this.mRoot.findViewById(R.id.background);
+        this.mLineLandscape = this.mRoot.findViewById(R.id.line_landscape);
+        this.mLinePortrait = this.mRoot.findViewById(R.id.line_portrait);
+        this.mAlphaAnimation = AnimationUtils.loadAnimation(context, R.anim.trigger_alpha_animation);
+        this.mAlphaAnimation.setAnimationListener(new Animation.AnimationListener() { // from class: com.sonyericsson.android.camera.view.SuperSlowMotionTriggerAnimationController.1
+            @Override // android.view.animation.Animation.AnimationListener
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+            @Override // android.view.animation.Animation.AnimationListener
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override // android.view.animation.Animation.AnimationListener
+            public void onAnimationEnd(Animation animation) {
+                if (SuperSlowMotionTriggerAnimationController.this.mListener != null) {
+                    SuperSlowMotionTriggerAnimationController.this.mListener.onAnimationEnd();
+                }
+                SuperSlowMotionTriggerAnimationController.this.mBackground.setVisibility(8);
+                SuperSlowMotionTriggerAnimationController.this.mLineLandscape.setVisibility(8);
+                SuperSlowMotionTriggerAnimationController.this.mLinePortrait.setVisibility(8);
+            }
+        });
     }
 
-    public void start(SuperSlowMotionTriggerAnimationController$OnAnimationEndListener superSlowMotionTriggerAnimationController$OnAnimationEndListener, boolean z) {
+    public void start(OnAnimationEndListener onAnimationEndListener, boolean z) {
         if (this.mRoot == null) {
             return;
         }
         this.mBackground.setVisibility(0);
-        this.mListener = superSlowMotionTriggerAnimationController$OnAnimationEndListener;
-        if (LayoutOrientationResolver.getInstance().getOrientation() == (z ? LayoutOrientationResolver$LayoutOrientationType.LANDSCAPE : LayoutOrientationResolver$LayoutOrientationType.PORTRAIT)) {
+        this.mListener = onAnimationEndListener;
+        if (LayoutOrientationResolver.getInstance().getOrientation() == (z ? LayoutOrientationResolver.LayoutOrientationType.LANDSCAPE : LayoutOrientationResolver.LayoutOrientationType.PORTRAIT)) {
             this.mLineLandscape.setVisibility(0);
             this.mLinePortrait.setVisibility(8);
             this.mLineLandscape.startAnimation(createLineAnimation(this.mRoot.getContext(), z));
@@ -72,7 +78,7 @@ public class SuperSlowMotionTriggerAnimationController {
 
     private Animation createLineAnimation(Context context, boolean z) {
         TranslateAnimation translateAnimation;
-        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
+        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
             if (!z) {
                 translateAnimation = new TranslateAnimation(2, 0.0f, 2, 1.0f, 2, 0.0f, 2, 0.0f);
             } else {
@@ -85,7 +91,7 @@ public class SuperSlowMotionTriggerAnimationController {
         }
         translateAnimation.setDuration(300L);
         translateAnimation.setFillAfter(false);
-        translateAnimation.setInterpolator(context, 2131427329);
+        translateAnimation.setInterpolator(context, R.interpolator.trigger_line_animation_interpolator);
         return translateAnimation;
     }
 }

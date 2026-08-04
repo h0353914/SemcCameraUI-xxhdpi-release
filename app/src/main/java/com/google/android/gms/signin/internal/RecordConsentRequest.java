@@ -2,12 +2,13 @@ package com.google.android.gms.signin.internal;
 
 import android.accounts.Account;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class RecordConsentRequest implements SafeParcelable {
-    public static final Parcelable$Creator<RecordConsentRequest> CREATOR = new zzg();
+    public static final Parcelable.Creator<RecordConsentRequest> CREATOR = new zzg();
     final int mVersionCode;
     private final Account zzQd;
     private final String zzTl;

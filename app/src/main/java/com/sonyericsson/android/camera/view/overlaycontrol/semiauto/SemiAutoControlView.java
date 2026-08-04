@@ -1,21 +1,24 @@
 package com.sonyericsson.android.camera.view.overlaycontrol.semiauto;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Rect;
+import android.os.SystemClock;
+import android.view.Choreographer;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.view.View$OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewStub;
-import android.widget.FrameLayout$LayoutParams;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
-import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver$ScreenAspect;
+import com.sonyericsson.android.camera.view.overlaycontrol.semiauto.SemiAutoSeekBarView;
 import com.sonyericsson.cameracommon.utility.ResourceUtil;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
+import java.lang.ref.WeakReference;
 
-public class SemiAutoControlView implements SemiAutoSeekBarView$OnSemiAutoSeekBarChangeListener, View$OnClickListener, View$OnTouchListener {
+public class SemiAutoControlView implements SemiAutoSeekBarView.OnSemiAutoSeekBarChangeListener, View.OnClickListener, View.OnTouchListener {
     private static final int SEEK_BAR_BRIGHTNESS = 2131296593;
     private static final int SEEK_BAR_COLORING = 2131296594;
     private static final int SEEK_BAR_MAXIMUM_VALUE = 100;
@@ -27,38 +30,54 @@ public class SemiAutoControlView implements SemiAutoSeekBarView$OnSemiAutoSeekBa
     private SemiAutoSeekBarView mColor;
     private ImageView mExpand;
     private View mIndicatorView;
-    private SemiAutoControlView$OnSemiAutoChangeListener mListener;
-    private SemiAutoControlView$OpacityReductionTask mOpacityReductionTask;
+    private OnSemiAutoChangeListener mListener;
+    private OpacityReductionTask mOpacityReductionTask;
     private ImageView mReset;
     private boolean mIsTracking = false;
     private boolean mIsExpanded = false;
 
-    public SemiAutoControlView(ViewGroup viewGroup, LayoutDependencyResolver$ScreenAspect layoutDependencyResolver$ScreenAspect) {
-        init(viewGroup, layoutDependencyResolver$ScreenAspect);
+    public interface OnSemiAutoChangeListener {
+        void onAmberBlueColorChanged(int i);
+
+        void onBrightnessChanged(int i);
+
+        void onSemiAutoControlStarted();
+
+        void onSemiAutoControlStopped();
+
+        void onSemiAutoDisabled();
+
+        void onSemiAutoEnabled();
+
+        void onSemiAutoReset();
     }
 
-    private void init(ViewGroup viewGroup, LayoutDependencyResolver$ScreenAspect layoutDependencyResolver$ScreenAspect) {
+    public SemiAutoControlView(ViewGroup viewGroup, LayoutDependencyResolver.ScreenAspect screenAspect) throws Resources.NotFoundException {
+        init(viewGroup, screenAspect);
+    }
+
+    private void init(ViewGroup viewGroup, LayoutDependencyResolver.ScreenAspect screenAspect) throws Resources.NotFoundException {
         Context context = viewGroup.getContext();
-        ViewStub viewStub = (ViewStub) viewGroup.findViewById(2131296587);
+        ViewStub viewStub = (ViewStub) viewGroup.findViewById(R.id.semi_auto_container_stub);
         if (viewStub != null) {
             Rect viewFinderSize = LayoutDependencyResolver.getViewFinderSize(context);
             int iMin = Math.min(viewFinderSize.width(), viewFinderSize.height());
             int iMax = Math.max(viewFinderSize.width(), viewFinderSize.height());
-            FrameLayout$LayoutParams frameLayout$LayoutParams = new FrameLayout$LayoutParams(-2, -1);
-            frameLayout$LayoutParams.gravity = 5;
-            frameLayout$LayoutParams.setMargins(0, 0, (iMax - ((iMin * 4) / 3)) - (layoutDependencyResolver$ScreenAspect == LayoutDependencyResolver$ScreenAspect.EIGHTEEN_NINE ? ResourceUtil.getDimensionPixelSize(context, context.getPackageName(), 2131165428) : 0), 0);
-            int dimensionPixelSize = context.getResources().getDimensionPixelSize(2131165568);
+            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(-2, -1);
+            layoutParams.gravity = 5;
+            layoutParams.setMargins(0, 0, (iMax - ((iMin * 4) / 3)) - (screenAspect == LayoutDependencyResolver.ScreenAspect.EIGHTEEN_NINE ? ResourceUtil.getDimensionPixelSize(context, context.getPackageName(), R.dimen.left_icon_area_height) : 0), 0);
+            int dimensionPixelSize = context.getResources().getDimensionPixelSize(R.dimen.seek_bar_view_seek_area_max_height);
             if (iMin > dimensionPixelSize) {
-                frameLayout$LayoutParams.height = dimensionPixelSize;
-                frameLayout$LayoutParams.gravity |= 16;
+                layoutParams.height = dimensionPixelSize;
+                layoutParams.gravity |= 16;
             }
             this.mIndicatorView = viewStub.inflate();
-            this.mIndicatorView.setLayoutParams(frameLayout$LayoutParams);
+            this.mIndicatorView.setLayoutParams(layoutParams);
         } else {
-            this.mIndicatorView = viewGroup.findViewById(2131296589);
+            this.mIndicatorView = viewGroup.findViewById(R.id.semi_auto_indicator_view);
         }
         this.mIndicatorView.setOnTouchListener(this);
-        this.mOpacityReductionTask = new SemiAutoControlView$OpacityReductionTask(this.mIndicatorView);
+        this.mOpacityReductionTask = new OpacityReductionTask(this.mIndicatorView);
         this.mBrightness = (SemiAutoSeekBarView) this.mIndicatorView.findViewById(2131296593);
         this.mColor = (SemiAutoSeekBarView) this.mIndicatorView.findViewById(2131296594);
         this.mReset = (ImageView) this.mIndicatorView.findViewById(2131296590);
@@ -67,10 +86,10 @@ public class SemiAutoControlView implements SemiAutoSeekBarView$OnSemiAutoSeekBa
         this.mColor.hide();
         this.mReset.setOnClickListener(this);
         this.mExpand.setOnClickListener(this);
-        this.mBrightness.setSeekBarResource(2131231536);
-        this.mColor.setSeekBarResource(2131231538);
-        this.mBrightness.setTextForAccessibility(2131690173);
-        this.mColor.setTextForAccessibility(2131690174);
+        this.mBrightness.setSeekBarResource(R.drawable.semi_auto_brightness_slider_track_background);
+        this.mColor.setSeekBarResource(R.drawable.semi_auto_color_slider_track_background);
+        this.mBrightness.setTextForAccessibility(R.string.cam_strings_superior_auto_brightness_txt);
+        this.mColor.setTextForAccessibility(R.string.cam_strings_superior_auto_color_txt);
         this.mBrightness.setMinimum(0);
         this.mBrightness.setMaximum(100);
         this.mColor.setMinimum(0);
@@ -91,7 +110,7 @@ public class SemiAutoControlView implements SemiAutoSeekBarView$OnSemiAutoSeekBa
         setOnSemiAutoChangeListener(null);
     }
 
-    @Override // com.sonyericsson.android.camera.view.overlaycontrol.semiauto.SemiAutoSeekBarView$OnSemiAutoSeekBarChangeListener
+    @Override // com.sonyericsson.android.camera.view.overlaycontrol.semiauto.SemiAutoSeekBarView.OnSemiAutoSeekBarChangeListener
     public void onProgressChanged(SemiAutoSeekBarView semiAutoSeekBarView, int i, boolean z) {
         switch (semiAutoSeekBarView.getId()) {
             case 2131296593:
@@ -111,7 +130,7 @@ public class SemiAutoControlView implements SemiAutoSeekBarView$OnSemiAutoSeekBa
         }
     }
 
-    @Override // com.sonyericsson.android.camera.view.overlaycontrol.semiauto.SemiAutoSeekBarView$OnSemiAutoSeekBarChangeListener
+    @Override // com.sonyericsson.android.camera.view.overlaycontrol.semiauto.SemiAutoSeekBarView.OnSemiAutoSeekBarChangeListener
     public void onStartTrackingTouch(SemiAutoSeekBarView semiAutoSeekBarView, int i) {
         this.mIsTracking = true;
         this.mOpacityReductionTask.stop(true);
@@ -120,7 +139,7 @@ public class SemiAutoControlView implements SemiAutoSeekBarView$OnSemiAutoSeekBa
         }
     }
 
-    @Override // com.sonyericsson.android.camera.view.overlaycontrol.semiauto.SemiAutoSeekBarView$OnSemiAutoSeekBarChangeListener
+    @Override // com.sonyericsson.android.camera.view.overlaycontrol.semiauto.SemiAutoSeekBarView.OnSemiAutoSeekBarChangeListener
     public void onStopTrackingTouch(SemiAutoSeekBarView semiAutoSeekBarView, int i) {
         this.mIsTracking = false;
         this.mOpacityReductionTask.start();
@@ -129,8 +148,8 @@ public class SemiAutoControlView implements SemiAutoSeekBarView$OnSemiAutoSeekBa
         }
     }
 
-    public void setOnSemiAutoChangeListener(SemiAutoControlView$OnSemiAutoChangeListener semiAutoControlView$OnSemiAutoChangeListener) {
-        this.mListener = semiAutoControlView$OnSemiAutoChangeListener;
+    public void setOnSemiAutoChangeListener(OnSemiAutoChangeListener onSemiAutoChangeListener) {
+        this.mListener = onSemiAutoChangeListener;
     }
 
     public void setExpanded(boolean z) {
@@ -194,7 +213,7 @@ public class SemiAutoControlView implements SemiAutoSeekBarView$OnSemiAutoSeekBa
         this.mReset.setRotation(RotationUtil.getAngle(i));
     }
 
-    @Override // android.view.View$OnClickListener
+    @Override // android.view.View.OnClickListener
     public void onClick(View view) {
         int id = view.getId();
         if (id != 2131296588) {
@@ -213,7 +232,7 @@ public class SemiAutoControlView implements SemiAutoSeekBarView$OnSemiAutoSeekBa
         this.mOpacityReductionTask.start();
     }
 
-    @Override // android.view.View$OnTouchListener
+    @Override // android.view.View.OnTouchListener
     public boolean onTouch(View view, MotionEvent motionEvent) {
         boolean z = this.mReset.getVisibility() == 0;
         if (z) {
@@ -224,5 +243,62 @@ public class SemiAutoControlView implements SemiAutoSeekBarView$OnSemiAutoSeekBa
             this.mIndicatorView.getParent().requestDisallowInterceptTouchEvent(false);
         }
         return z;
+    }
+
+    private static final class OpacityReductionTask implements Choreographer.FrameCallback {
+        private static final long DELAY = 3000;
+        private static final float DELTA = -0.5f;
+        private static final long DURATION = 300;
+        private static final float SOURCE_ALPHA = 1.0f;
+        private static final float TARGET_ALPHA = 0.5f;
+        private final Choreographer mChoreographer = Choreographer.getInstance();
+        private boolean mStarted;
+        private long mStartedTime;
+        private final WeakReference<View> mTargetView;
+
+        OpacityReductionTask(View view) {
+            this.mTargetView = new WeakReference<>(view);
+        }
+
+        @Override // android.view.Choreographer.FrameCallback
+        public void doFrame(long j) {
+            long j2;
+            View view = this.mTargetView.get();
+            if (!this.mStarted || view == null) {
+                return;
+            }
+            long jUptimeMillis = SystemClock.uptimeMillis() - this.mStartedTime;
+            if (jUptimeMillis <= 3000) {
+                j2 = 0;
+            } else {
+                j2 = jUptimeMillis - 3000;
+                if (j2 > DURATION) {
+                    j2 = 300;
+                }
+            }
+            view.setAlpha(SOURCE_ALPHA + ((DELTA * j2) / 300.0f));
+            if (j2 < DURATION) {
+                this.mChoreographer.postFrameCallback(this);
+            }
+        }
+
+        public void start() {
+            if (this.mStarted) {
+                stop(true);
+            }
+            this.mStarted = true;
+            this.mStartedTime = SystemClock.uptimeMillis();
+            this.mChoreographer.postFrameCallbackDelayed(this, 3000L);
+        }
+
+        public void stop(boolean z) {
+            View view;
+            this.mStarted = false;
+            this.mChoreographer.removeFrameCallback(this);
+            if (!z || (view = this.mTargetView.get()) == null) {
+                return;
+            }
+            view.setAlpha(SOURCE_ALPHA);
+        }
     }
 }

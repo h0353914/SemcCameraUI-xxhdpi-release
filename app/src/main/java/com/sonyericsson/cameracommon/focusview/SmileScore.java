@@ -1,11 +1,13 @@
 package com.sonyericsson.cameracommon.focusview;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
 
 public class SmileScore extends ImageView {
@@ -58,11 +60,11 @@ public class SmileScore extends ImageView {
         }
         super.onFinishInflate();
         this.mSmileScore = 0;
-        this.mFrameHeight = getResources().getDimensionPixelSize(2131165634);
+        this.mFrameHeight = getResources().getDimensionPixelSize(R.dimen.smile_gauge_frame_height);
         if (CamLog.VERBOSE) {
             CamLog.v("onFinishInflate: Frame :height: " + this.mFrameHeight);
         }
-        this.mIndicatorWidth = getResources().getDimensionPixelSize(2131165641);
+        this.mIndicatorWidth = getResources().getDimensionPixelSize(R.dimen.smile_gauge_indicator_width);
         this.mIndicatorStep = this.mFrameHeight / 100.0f;
         if (CamLog.VERBOSE) {
             CamLog.v("onFinishInflate: Indicator step: " + this.mIndicatorStep);
@@ -85,14 +87,14 @@ public class SmileScore extends ImageView {
     }
 
     @Override // android.view.View
-    public void draw(Canvas canvas) {
+    public void draw(Canvas canvas) throws Resources.NotFoundException {
         if (CamLog.VERBOSE) {
             CamLog.v("draw() is called.");
         }
-        int dimensionPixelSize = getResources().getDimensionPixelSize(2131165642);
-        int dimensionPixelSize2 = getResources().getDimensionPixelSize(2131165636);
-        int dimensionPixelSize3 = getResources().getDimensionPixelSize(2131165635);
-        int dimensionPixelSize4 = getResources().getDimensionPixelSize(2131165637);
+        int dimensionPixelSize = getResources().getDimensionPixelSize(R.dimen.smile_gauge_padding_left);
+        int dimensionPixelSize2 = getResources().getDimensionPixelSize(R.dimen.smile_gauge_frame_padding_left);
+        int dimensionPixelSize3 = getResources().getDimensionPixelSize(R.dimen.smile_gauge_frame_padding_bottom);
+        int dimensionPixelSize4 = getResources().getDimensionPixelSize(R.dimen.smile_gauge_frame_padding_top);
         if (!isLayoutOrientationLandscape() && !isForLandscape()) {
             float f = dimensionPixelSize + dimensionPixelSize2;
             float f2 = this.mIndicatorWidth + f;

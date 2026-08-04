@@ -14,10 +14,10 @@ import java.util.StringTokenizer;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.ImageInfo;
-import org.apache.commons.imaging.ImageInfo$CompressionAlgorithm;
 import org.apache.commons.imaging.ImageParser;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
+import org.apache.commons.imaging.ImagingConstants;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.common.ImageBuilder;
 import org.apache.commons.imaging.common.ImageMetadata;
@@ -26,15 +26,15 @@ import org.apache.commons.imaging.palette.PaletteFactory;
 import org.apache.commons.imaging.util.IoUtils;
 
 public class PnmImageParser extends ImageParser {
-    private static final String[] ACCEPTED_EXTENSIONS = {".pbm", ".pgm", ".ppm", ".pnm", ".pam"};
-    private static final String DEFAULT_EXTENSION = ".pnm";
     public static final String PARAM_KEY_PNM_RAWBITS = "PNM_RAWBITS";
     public static final String PARAM_VALUE_PNM_RAWBITS_NO = "NO";
     public static final String PARAM_VALUE_PNM_RAWBITS_YES = "YES";
+    private static final String DEFAULT_EXTENSION = ".pnm";
+    private static final String[] ACCEPTED_EXTENSIONS = {".pbm", ".pgm", ".ppm", DEFAULT_EXTENSION, ".pam"};
 
     @Override // org.apache.commons.imaging.ImageParser
     public String getDefaultExtension() {
-        return ".pnm";
+        return DEFAULT_EXTENSION;
     }
 
     @Override // org.apache.commons.imaging.ImageParser
@@ -71,7 +71,7 @@ public class PnmImageParser extends ImageParser {
         return new ImageFormat[]{ImageFormats.PBM, ImageFormats.PGM, ImageFormats.PPM, ImageFormats.PNM, ImageFormats.PAM};
     }
 
-    private FileInfo readHeader(InputStream inputStream) throws IOException, ImageReadException {
+    private FileInfo readHeader(InputStream inputStream) throws IOException, NumberFormatException, ImageReadException {
         byte b = BinaryFunctions.readByte("Identifier1", inputStream, "Not a Valid PNM File");
         byte b2 = BinaryFunctions.readByte("Identifier2", inputStream, "Not a Valid PNM File");
         if (b != 80) {
@@ -162,7 +162,7 @@ public class PnmImageParser extends ImageParser {
         throw new ImageReadException("PNM file has invalid prefix byte 2");
     }
 
-    private FileInfo readHeader(ByteSource byteSource) throws Throwable {
+    private FileInfo readHeader(ByteSource byteSource) throws IOException, ImageReadException {
         InputStream inputStream;
         try {
             inputStream = byteSource.getInputStream();
@@ -170,19 +170,19 @@ public class PnmImageParser extends ImageParser {
                 FileInfo header = readHeader(inputStream);
                 IoUtils.closeQuietly(true, inputStream);
                 return header;
-            } catch (Throwable th) {
-                th = th;
+            } catch (Exception th) {
+                
                 IoUtils.closeQuietly(false, inputStream);
-                throw th;
+                throw new ImageReadException("Error", th);
             }
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (Exception th2) {
             inputStream = null;
+            throw new ImageReadException("Error", th2);
         }
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public Dimension getImageSize(ByteSource byteSource, Map<String, Object> map) throws Throwable {
+    public Dimension getImageSize(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
         FileInfo header = readHeader(byteSource);
         if (header == null) {
             throw new ImageReadException("PNM: Couldn't read Header");
@@ -191,19 +191,13 @@ public class PnmImageParser extends ImageParser {
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public ImageInfo getImageInfo(ByteSource byteSource, Map<String, Object> map) throws Throwable {
+    public ImageInfo getImageInfo(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
         FileInfo header = readHeader(byteSource);
         if (header == null) {
             throw new ImageReadException("PNM: Couldn't read Header");
         }
         ArrayList arrayList = new ArrayList();
-        int bitDepth = header.getBitDepth() * header.getNumComponents();
-        ImageFormat imageType = header.getImageType();
-        String imageTypeDescription = header.getImageTypeDescription();
-        String mIMEType = header.getMIMEType();
-        float f = (float) (((double) header.width) / 72.0d);
-        float f2 = (float) (((double) header.height) / 72.0d);
-        return new ImageInfo(header.getImageTypeDescription(), bitDepth, arrayList, imageType, imageTypeDescription, header.height, mIMEType, 1, 72, f2, 72, f, header.width, false, header.hasAlpha(), false, header.getColorType(), ImageInfo$CompressionAlgorithm.NONE);
+        return new ImageInfo(header.getImageTypeDescription(), header.getBitDepth() * header.getNumComponents(), arrayList, header.getImageType(), header.getImageTypeDescription(), header.height, header.getMIMEType(), 1, 72, (float) (header.height / 72.0d), 72, (float) (header.width / 72.0d), header.width, false, header.hasAlpha(), false, header.getColorType(), ImageInfo.CompressionAlgorithm.NONE);
     }
 
     @Override // org.apache.commons.imaging.ImageParser
@@ -219,7 +213,7 @@ public class PnmImageParser extends ImageParser {
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public BufferedImage getBufferedImage(ByteSource byteSource, Map<String, Object> map) throws Throwable {
+    public BufferedImage getBufferedImage(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
         InputStream inputStream;
         try {
             inputStream = byteSource.getInputStream();
@@ -230,14 +224,14 @@ public class PnmImageParser extends ImageParser {
                 BufferedImage bufferedImage = imageBuilder.getBufferedImage();
                 IoUtils.closeQuietly(true, inputStream);
                 return bufferedImage;
-            } catch (Throwable th) {
-                th = th;
+            } catch (Exception th) {
+                
                 IoUtils.closeQuietly(false, inputStream);
-                throw th;
+                throw new ImageReadException("Error", th);
             }
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (Exception th2) {
             inputStream = null;
+            throw new ImageReadException("Error", th2);
         }
     }
 
@@ -248,11 +242,11 @@ public class PnmImageParser extends ImageParser {
         PnmWriter ppmWriter = null;
         boolean z = true;
         if (map != null) {
-            Object obj = map.get("PNM_RAWBITS");
-            if (obj != null && obj.equals("NO")) {
+            Object obj = map.get(PARAM_KEY_PNM_RAWBITS);
+            if (obj != null && obj.equals(PARAM_VALUE_PNM_RAWBITS_NO)) {
                 z = false;
             }
-            Object obj2 = map.get("FORMAT");
+            Object obj2 = map.get(ImagingConstants.PARAM_KEY_FORMAT);
             if (obj2 != null) {
                 if (obj2.equals(ImageFormats.PBM)) {
                     ppmWriter = new PbmWriter(z);
@@ -277,8 +271,8 @@ public class PnmImageParser extends ImageParser {
         } else {
             map2 = new HashMap();
         }
-        if (map2.containsKey("FORMAT")) {
-            map2.remove("FORMAT");
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_FORMAT)) {
+            map2.remove(ImagingConstants.PARAM_KEY_FORMAT);
         }
         if (!map2.isEmpty()) {
             throw new ImageWriteException("Unknown parameter: " + ((Object) map2.keySet().iterator().next()));

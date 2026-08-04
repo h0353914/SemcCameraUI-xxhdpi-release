@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Yakalama tamamlanamadı. Lütfen daha yavaş döndürün.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Yakalama tamamlanamadı. Lütfen daha hızlı döndürün.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Kameranızı kaydırarak panoramik fotoğraf çekin</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Şu dosyalar oluşturuluyor:\n- Çok Açılı görüntü\n- 3D görüntü\nNot: Bu dosyalarda gri alan var.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Şu dosyalar oluşturuluyor:\n- Çok Açılı görüntü\n- 3D görüntü</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">İşleniyor...\nBu görüntüde gri alan var</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Şu dosyalar oluşturuluyor:
+- Çok Açılı görüntü
+- 3D görüntü
+Not: Bu dosyalarda gri alan var."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Şu dosyalar oluşturuluyor:
+- Çok Açılı görüntü
+- 3D görüntü"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"İşleniyor...
+Bu görüntüde gri alan var"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Görüntü kaydediliyor</string>
     <string name="cam_3d_strings_dialog_processing_txt">İşleniyor...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Lütfen 3D kameranın başlatılması için birkaç saniye bekleyin</string>
@@ -122,11 +128,11 @@
     <string name="cam_strings_accessibility_switch_to_main_txt">Ana kameraya geçmek için iki kez dokunun</string>
     <string name="cam_strings_accessibility_switch_to_photo_txt">Kameraya geçmek için iki kez hafifçe vurun</string>
     <string name="cam_strings_accessibility_switch_to_video_txt">Videoya geçmek için iki kez hafifçe vurun</string>
-    <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">HDR\'yi açmak için iki kez dokunun</string>
-    <string name="cam_strings_accessibility_video_hdr_hlg_on_txt">HDR\'yi kapatmak için iki kez dokunun</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">"HDR'yi açmak için iki kez dokunun"</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_on_txt">"HDR'yi kapatmak için iki kez dokunun"</string>
     <string name="cam_strings_accessibility_video_setting_txt">Video ayarları</string>
     <string name="cam_strings_accessibility_viewer_txt">Resim görüntüleyiciyle açın</string>
-    <string name="cam_strings_advanced_setting_geo_tag_both_off_txt">Konumları kaydetmek için GPS\'i ve/veya kablosuz ağları etkinleştirmeniz gerekir. Şimdi etkinleştirilsin mi?</string>
+    <string name="cam_strings_advanced_setting_geo_tag_both_off_txt">"Konumları kaydetmek için GPS'i ve/veya kablosuz ağları etkinleştirmeniz gerekir. Şimdi etkinleştirilsin mi?"</string>
     <string name="cam_strings_advanced_setting_geo_tag_title_txt">Konumu kaydet</string>
     <string name="cam_strings_application_name_creative_effect_txt">Yaratıcı efekt</string>
     <string name="cam_strings_application_name_dualrec_txt">Resmin içerisinde yüz</string>
@@ -155,7 +161,7 @@
     <string name="cam_strings_balloon_tips_timeshift_txt">Küçük resimleri yukarı/aşağı kaydırıp en iyi çekimi bulun</string>
     <string name="cam_strings_bokeh_title_txt">Bokeh</string>
     <string name="cam_strings_burst_battery_level_low_txt">Düşük pil nedeniyle seri çekim yapılamıyor</string>
-    <string name="cam_strings_burst_change_camera_key_setting_txt">Seri çekimi etkinleştirmek için kamera tuşu ayarlarıyla Seri Çekim\'i açın</string>
+    <string name="cam_strings_burst_change_camera_key_setting_txt">"Seri çekimi etkinleştirmek için kamera tuşu ayarlarıyla Seri Çekim'i açın"</string>
     <string name="cam_strings_burst_in_dark_condition_txt">Karanlık koşulda seri çekim yapılamaz</string>
     <string name="cam_strings_burst_not_supported_front_camera_txt">Ön kamera kullanarak seri çekim yapılamaz</string>
     <string name="cam_strings_burst_not_supported_fusion_on_txt">Çift kamera Açık iken seri çekim yapılamaz</string>
@@ -224,7 +230,7 @@
     <string name="cam_strings_dialog_battery_level_low_info_txt">Telefonda yeterli pil yok. Pil düzeyi düşük olduğunda kamera otomatik olarak kapanır.</string>
     <string name="cam_strings_dialog_battery_level_low_recording_txt">Kayıt işlemi düşük pil seviyesi nedeniyle durduruldu. Cihazınızı şarj edip tekrar deneyin.</string>
     <string name="cam_strings_dialog_battery_level_low_using_txt">Kamera düşük pil seviyesi nedeniyle kullanılamıyor. Cihazınızı şarj edip tekrar deneyin.</string>
-    <string name="cam_strings_dialog_burst_information_txt">Sürekli çekim yapmak için Kamera uygulamalarında Timeshift burst\'u seçin</string>
+    <string name="cam_strings_dialog_burst_information_txt">"Sürekli çekim yapmak için Kamera uygulamalarında Timeshift burst'u seçin"</string>
     <string name="cam_strings_dialog_change_resolution_manual_txt">Elle (Ön kamera)</string>
     <string name="cam_strings_dialog_change_resolution_superior_auto_txt">Süper otomatik (Ön kamera)</string>
     <string name="cam_strings_dialog_change_resolution_txt">Aşağıdaki çekim modları için çözünürlük bir yazılım güncellemesi nedeniyle 13 MP (4:3) olarak değiştirildi</string>
@@ -232,8 +238,8 @@
     <string name="cam_strings_dialog_cta_allow_txt">İzin ver</string>
     <string name="cam_strings_dialog_cta_deny_txt">Reddet</string>
     <string name="cam_strings_dialog_cta_location_info_txt">Konum bilgilerini al</string>
-    <string name="cam_strings_dialog_cta_turn_on_nfc_txt">NFC\'yi aç</string>
-    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">Wi-Fi\'yi aç</string>
+    <string name="cam_strings_dialog_cta_turn_on_nfc_txt">"NFC'yi aç"</string>
+    <string name="cam_strings_dialog_cta_turn_on_wifi_txt">"Wi-Fi'yi aç"</string>
     <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">Wi-Fi ve mobil veri kullan</string>
     <string name="cam_strings_dialog_high_temp_title_txt">Dikkat</string>
     <string name="cam_strings_dialog_high_temp_txt">Cihazın sıcaklığı yükselirse uygulama, kullanım esnasında kapanabilir. Kaydınız otomatik olarak kaydedilir.</string>
@@ -270,7 +276,7 @@
     <string name="cam_strings_error_fatal_sd_photo_txt">Fotoğraflar kaydedilemedi. Veri depolamasıyla ilgili bir sorun oldu. Veri depolaması SD kart olarak ayarlanmışsa SD kartınızı kontrol edin.</string>
     <string name="cam_strings_error_fatal_sd_video_txt">Kayıt işlemine başlanamadı. Veri depolamasıyla ilgili bir sorun olabilir. Veri depolaması SD kart olarak ayarlanmışsa SD kartınızı kontrol edin.</string>
     <string name="cam_strings_error_fatal_txt">Bilinmeyen hata.</string>
-    <string name="cam_strings_error_high_temp_already_high_txt">Xperia\'nızın soğuması gerekiyor. Lütfen bekleyin.</string>
+    <string name="cam_strings_error_high_temp_already_high_txt">"Xperia'nızın soğuması gerekiyor. Lütfen bekleyin."</string>
     <string name="cam_strings_error_high_temp_info_txt">Cihaz sıcaklığı yükseliyor. Yükselmeye devam ederse uygulama, otomatik olarak kapanır.</string>
     <string name="cam_strings_error_high_temp_info_vzw_txt">Cihaz sıcaklığı yükseliyor. Yükselmeye devam ederse uygulama, otomatik olarak kapanır.</string>
     <string name="cam_strings_error_high_temp_shut_down_no_txt">Hayır</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Cildiniz parlak ve pürüzsüz görünsün. Bu efekt, ön kamera kullanan uygulamalarda çalışır. Fotoğraf ve videolara uygulanabilir. Ayrıca seviyeyi de ayarlayabilirsiniz.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Seviye ayarlaması</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Pürüzsüz cilt</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Uygulama başlatılamıyor.\nCihazınızda en son %1$s sürümünün yüklenmiş ve etkinleştirilmiş olduğundan emin olun.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Uygulama başlatılamıyor.
+Cihazınızda en son %1$s sürümünün yüklenmiş ve etkinleştirilmiş olduğundan emin olun."</string>
     <string name="cam_strings_gridline_txt">Izgara çizgileri</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Avcunuzu kameraya doğru döndürün. Otomatik zamanlayıcı avcunuzu algıladığında başlatılır. Kolay algılanmasını sağlamak için parmaklarınızı yukarı doğru kaldırın.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Avcunuzu kameraya doğru döndürün</string>
@@ -404,25 +411,26 @@
     <string name="cam_strings_more_common_setting_title_txt">Ortak ayarlar</string>
     <string name="cam_strings_more_txt">Diğer</string>
     <string name="cam_strings_multi_window_txt">%1$s uygulaması için tam ekrana geçiş yapmak üzere bölüm çizgisinin ortasını sürükleyin</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Başka bir cihaz şimdi bağlandı.\nResmi, vizör üzerinden cihazla paylaşmak ister misiniz?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Başka bir cihaz şimdi bağlandı.
+Resmi, vizör üzerinden cihazla paylaşmak ister misiniz?"</string>
     <string name="cam_strings_multicam_add_device_txt">Cihaz ekle</string>
     <string name="cam_strings_multicam_add_more_txt">Daha fazla ekle</string>
     <string name="cam_strings_multicam_apply_txt">Tamam</string>
     <string name="cam_strings_multicam_connection_failure_dialog_txt">Bağlanılamadı</string>
-    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Xperia\'nız başka bir Xperia cihazına bağlıyken hiçbir Sony\'s Wi-Fi/NFC kamerasına bağlanılamaz.</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">"Xperia'nız başka bir Xperia cihazına bağlıyken hiçbir Sony's Wi-Fi/NFC kamerasına bağlanılamaz."</string>
     <string name="cam_strings_multicam_error_app_ver_old_txt">Uygulama sürümü eşleşmiyor. Bağlanılamadı. Uygulamanızın güncellenmesi gerekiyor.</string>
     <string name="cam_strings_multicam_error_disconnect_txt">Bağlantı kesildi</string>
     <string name="cam_strings_multicam_error_nfc_txt">NFC kilitliylen başlatılamıyor.</string>
     <string name="cam_strings_multicam_error_wifi_txt">Wi-Fi paylaşımı esnasında bu mod kullanılamaz.</string>
     <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">Maksimum sayıda cihaz eklendi.</string>
-    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Aynı anda yalnızca bir Sony\'s Wi-Fi/NFC kamera Xperia\'nıza bağlanabilir.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">"Aynı anda yalnızca bir Sony's Wi-Fi/NFC kamera Xperia'nıza bağlanabilir."</string>
     <string name="cam_strings_multicam_nfc_connect_title_txt">Bağlanmak için cihazları birbirine dokundurun</string>
-    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Sony\'s Wi-Fi/NFC kamerası</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">"Sony's Wi-Fi/NFC kamerası"</string>
     <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
     <string name="cam_strings_multicam_nfc_touch_to_beam_title_txt">Ekrana dokunun</string>
     <string name="cam_strings_multicam_security_info_txt">Bağlanmak için kullandığınız cihaz bu uygulama üzerinden aynı zamanda başka Xperia cihazlarına da bağlıysa sizin Xperia cihazınız da söz konusu diğer cihazlara otomatik olarak bağlanır ve vizördeki her görüntü sizin Xperia cihazınız ve bağlı tüm cihazlar arasında paylaşılır.</string>
     <string name="cam_strings_multicam_touch_add_camera_desc_txt">Cihaz eklemek için dokunun. Resim vizörü aracılığıyla burada görüntülenir.</string>
-    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Xperia\'nız başka bir Sony\'s Wi-Fi/NFC kamerasına bağlıyken hiçbir Xperia ile bağlanılamaz.</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">"Xperia'nız başka bir Sony's Wi-Fi/NFC kamerasına bağlıyken hiçbir Xperia ile bağlanılamaz."</string>
     <string name="cam_strings_ok_txt">Tamam</string>
     <string name="cam_strings_permgroupdesc_thermalmitigation_message_txt">Cihazdaki sıcaklığa bağlı olarak, uygulamanın sabit yakalama için sistemi kontrol etmesine izin verin.</string>
     <string name="cam_strings_permgrouplab_thermalmitigation_txt">sistemi kontrol et</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Ölçüm</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Öngörülen</string>
     <string name="cam_strings_predictive_capture_txt">Öngörülebilir Yakalama</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Kamera, telefonunuzu yatay modda yukarı kaldırma ve bir nesneyi hedefleme hareketinizi algılayarak otomatik başlatıldı.\nKamera ayarlarındaki Akıllı başlatma ayarlarından bu özelliği istediğiniz şekilde kullanma yöntemini seçebilirsiniz.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Kamera, telefonunuzu yatay modda yukarı kaldırma ve bir nesneyi hedefleme hareketinizi algılayarak otomatik başlatıldı.
+Kamera ayarlarındaki Akıllı başlatma ayarlarından bu özelliği istediğiniz şekilde kullanma yöntemini seçebilirsiniz."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Çekmek için dairenin içine dokunun</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Çekmek için ekrana dokunun</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Tam ekran görünüm için dairenin içine dokunun</string>
     <string name="cam_strings_predictive_launch_guide_txt">Tam ekran görüntüleme için dairenin içine dokunun</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Başlatmak/çekmek için dokun</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Başlatmak için dokunun</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Kamerayı hızlıca başlatabilirsiniz. Cihazınızı yatay görünümde sallayın ve kamerayı nesneye doğrultun. Kamera otomatik olarak başlatılır. \nBu özelliği favori yönteminiz olarak seçmek için Kamera ayarlarındaki Akıllı başlatma bölümüne gidin.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Kamerayı hızlıca başlatabilirsiniz. Cihazınızı yatay görünümde sallayın ve kamerayı nesneye doğrultun. Kamera otomatik olarak başlatılır. 
+Bu özelliği favori yönteminiz olarak seçmek için Kamera ayarlarındaki Akıllı başlatma bölümüne gidin."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Akıllı başlatma</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Kamerayı hızlıca başlatabilirsiniz. Cihazınızı yatay görünümde sallayın ve kamerayı bir nesneye doğrultun. Kamera otomatik olarak başlatılır.\nKamera ayarlarında bu özelliği Akıllı başlatma bölümünden kapatabilirsiniz.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Kamerayı hızlıca başlatabilirsiniz. Cihazınızı yatay görünümde sallayın ve kamerayı bir nesneye doğrultun. Kamera otomatik olarak başlatılır.
+Kamera ayarlarında bu özelliği Akıllı başlatma bölümünden kapatabilirsiniz."</string>
     <string name="cam_strings_predictive_launch_txt">Akıllı başlatma</string>
     <string name="cam_strings_preview_always_txt">Açık</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 saniye</string>
@@ -471,14 +482,14 @@
     <string name="cam_strings_restricted_setting_photo_resolution_txt">Bu ayar, mevcut sabit resim boyutunu desteklenmiyor. Bu ayarı yapılandırmak için sabit resim boyutunu değiştirin.</string>
     <string name="cam_strings_restricted_setting_scene_txt">Bu ayar, halihazırdaki ekran için desteklenmiyor. Bu ayarı yapılandırmak için sahne seçimini değiştirin.</string>
     <string name="cam_strings_restricted_setting_slow_motion_txt">Yavaş çekim modunda video boyutu değiştirilemiyor. Bu ayarı yapılandırmak için yavaş çekim modundan çıkın.</string>
-    <string name="cam_strings_restricted_setting_video_hdr_hlg_txt">Bu ayar HDR Açık iken kullanılamıyor. Bunu yapılandırmak için HDR\'yi kapatın.</string>
+    <string name="cam_strings_restricted_setting_video_hdr_hlg_txt">"Bu ayar HDR Açık iken kullanılamıyor. Bunu yapılandırmak için HDR'yi kapatın."</string>
     <string name="cam_strings_restricted_setting_video_resolution_or_scene_txt">Bu ayar, halihazırdaki video çözünürlüğü veya ekran için desteklenmiyor. Bu ayarı yapılandırmak için video çözünürlüğünü veya sahne seçimini değiştirin.</string>
     <string name="cam_strings_restricted_setting_video_resolution_txt">Bu ayar, mevcut video boyutu için desteklenmiyor. Bu ayarı yapılandırmak için video boyutunu değiştirin.</string>
     <string name="cam_strings_runtime_permission_continue_button_txt">UYG BİLGİLERİ</string>
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s şu izinleri gerektirir</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s izin</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Uygulama, bu işlemi gerçekleştirmek için şu izinlere ihtiyaç duyuyor.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">İzinleri vermek için Uygulama bilgileri &gt; İzinler\'e gidin.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">"İzinleri vermek için Uygulama bilgileri > İzinler'e gidin."</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Devam edilemedi</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Fotoğraf ve video çekmek için</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Konum almak için</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Dahili depolama birimine kaydedildi</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">TAŞI</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Uygulama, bu işlemi gerçekleştirmek için şu izinlere ihtiyaç duyuyor.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">SD kart kullanılması için kameranın SD karta erişim izni olması gerekir.\nVeri depolama alanını tekrar SD kart olarak değiştirin veya bir sonraki ekranda kameranın SD karta erişmesine izin verin.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"SD kart kullanılması için kameranın SD karta erişim izni olması gerekir.
+Veri depolama alanını tekrar SD kart olarak değiştirin veya bir sonraki ekranda kameranın SD karta erişmesine izin verin."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD kart kullanılamıyor</string>
-    <string name="cam_strings_sd_permission_info_2_txt">İzinler gerektiren yeni bir SD kart algılandı.\n\nVeri depolaması olarak SD kartı kullanmak üzere bir sonraki ekranda lütfen SD kart veya DCIM dizinini seçin.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SD kart veya DCIM dizini seçilmedi. SD kart kullanılamıyor.\n\nİzinleri vermek için önce kaydetme yerini SD kart olarak değiştirin veya bir sonraki ekranda uygun dizini seçin.</string>
-    <string name="cam_strings_sd_permission_info_txt">İzinler gerektiren yeni SD kart bulundu.\nBu nedenle, dahili cihaz depolaması varsayılan veri depolaması olarak kullanılacak.\n\nVeri depolaması olarak SD kartı kullanıyorsanız lütfen kamera ayarlarına gidin ve depolama seçeneğini SD kart olarak değiştirin.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"İzinler gerektiren yeni bir SD kart algılandı.
+
+Veri depolaması olarak SD kartı kullanmak üzere bir sonraki ekranda lütfen SD kart veya DCIM dizinini seçin."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD kart veya DCIM dizini seçilmedi. SD kart kullanılamıyor.
+
+İzinleri vermek için önce kaydetme yerini SD kart olarak değiştirin veya bir sonraki ekranda uygun dizini seçin."</string>
+    <string name="cam_strings_sd_permission_info_txt">"İzinler gerektiren yeni SD kart bulundu.
+Bu nedenle, dahili cihaz depolaması varsayılan veri depolaması olarak kullanılacak.
+
+Veri depolaması olarak SD kartı kullanıyorsanız lütfen kamera ayarlarına gidin ve depolama seçeneğini SD kart olarak değiştirin."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Fotoğraf ve videoları SD karta kaydetmek için</string>
     <string name="cam_strings_select_picture_txt">Fotoğraf seç</string>
     <string name="cam_strings_self_timer_05_txt">0,5 sn.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Otomatik yakalama</string>
     <string name="cam_strings_side_touch_not_supported_txt">Yan sensör bu ekranda desteklenmiyor</string>
     <string name="cam_strings_side_touch_on_title_txt">Yan sensör</string>
-    <string name="cam_strings_side_touch_on_txt">Bu işlevi kullanmak için Ayarlar ve Ekran\'a gidin ve Yan sensörü açın. Şimdi etkinleştirilsin mi?</string>
+    <string name="cam_strings_side_touch_on_txt">"Bu işlevi kullanmak için Ayarlar ve Ekran'a gidin ve Yan sensörü açın. Şimdi etkinleştirilsin mi?"</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Yan sensör</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Deklanşör düğmesine dokunmadan, ekranın yan tarafındaki sensöre iki kez dokunarak fotoğraf veya video çekebilirsiniz. Ayrıca parmağınızla bu yan sensör boyunca kaydırarak uzaklaştırıp yakınlaştırabilirsiniz.\nHem fotoğraf hem de video modu bu işlevi destekler. İşlevi, kamera ayarlarındaki Yan sensör bölümünden kapatabilirsiniz.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Deklanşör düğmesine dokunmadan, ekranın yan tarafındaki sensöre iki kez dokunarak dikey görünümde fotoğraf veya video çekebilirsiniz. Ayrıca parmağınızla bu yan sensör boyunca kaydırarak uzaklaştırıp yakınlaştırabilirsiniz.\nHem fotoğraf hem de video modu bu işlevi destekler. İşlevi, kamera ayarlarındaki Yan sensör bölümünden kapatabilirsiniz.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Deklanşör düğmesine dokunmadan, ekranın yan tarafındaki sensöre iki kez dokunarak dikey görünümde fotoğraf veya video çekebilirsiniz.\nHem fotoğraf hem de video modu bu işlevi destekler. İşlevi, kamera ayarlarındaki Yan sensör bölümünden kapatabilirsiniz.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Deklanşör düğmesine dokunmadan, ekranın yan tarafındaki sensöre iki kez dokunarak fotoğraf veya video çekebilirsiniz.\nHem fotoğraf hem de video modu bu işlevi destekler. İşlevi, kamera ayarlarındaki Yan sensör bölümünden kapatabilirsiniz.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Deklanşör düğmesine dokunmadan, ekranın yan tarafındaki sensöre iki kez dokunarak fotoğraf veya video çekebilirsiniz. Ayrıca parmağınızla bu yan sensör boyunca kaydırarak uzaklaştırıp yakınlaştırabilirsiniz.
+Hem fotoğraf hem de video modu bu işlevi destekler. İşlevi, kamera ayarlarındaki Yan sensör bölümünden kapatabilirsiniz."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Deklanşör düğmesine dokunmadan, ekranın yan tarafındaki sensöre iki kez dokunarak dikey görünümde fotoğraf veya video çekebilirsiniz. Ayrıca parmağınızla bu yan sensör boyunca kaydırarak uzaklaştırıp yakınlaştırabilirsiniz.
+Hem fotoğraf hem de video modu bu işlevi destekler. İşlevi, kamera ayarlarındaki Yan sensör bölümünden kapatabilirsiniz."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Deklanşör düğmesine dokunmadan, ekranın yan tarafındaki sensöre iki kez dokunarak dikey görünümde fotoğraf veya video çekebilirsiniz.
+Hem fotoğraf hem de video modu bu işlevi destekler. İşlevi, kamera ayarlarındaki Yan sensör bölümünden kapatabilirsiniz."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Deklanşör düğmesine dokunmadan, ekranın yan tarafındaki sensöre iki kez dokunarak fotoğraf veya video çekebilirsiniz.
+Hem fotoğraf hem de video modu bu işlevi destekler. İşlevi, kamera ayarlarındaki Yan sensör bölümünden kapatabilirsiniz."</string>
     <string name="cam_strings_side_touch_txt">Yan sensör</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Kaydetme stili ve ekran çözünürlüğü Kamera ayarlarında değiştirilebilir</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Çok yavaş (tek çekim)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Süper ağır çekim</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Yavaş çekim için kare/saniye oranını ve kayıt tarzını değiştirebilirsiniz</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Diğer seçenekler</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Ekranın ortasındaki düğmeye dokunarak değerli bir anı %1$s kare/saniye yavaş çekimde anında kaydedin.\nParlak ışık koşullarında kayıt, daha iyi bir video elde etmenize yardımcı olur.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Ekranın ortasındaki düğmeye dokunarak değerli bir anı %1$s kare/saniye yavaş çekimde anında kaydedin.
+Parlak ışık koşullarında kayıt, daha iyi bir video elde etmenize yardımcı olur."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Ortadaki düğmeye dokunarak doğru anı %1$s fps ile kaydedebilirsiniz</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Ekranın ortasındaki düğmeye dokunarak değerli bir anı %1$s kare/saniye yavaş çekimde anında kaydedin</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Süper ağır çekim (tek çekim)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Yavaş çekim</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Kaydetme</string>
     <string name="cam_strings_slow_motion_standard_txt">Yavaş çekim</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Değerli bir anı yavaş çekimde göstererek etkileyici bir video hazırlayın.\nParlak ışık koşullarında kayıt, daha iyi bir video elde etmenize yardımcı olur.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Değerli bir anı yavaş çekimde göstererek etkileyici bir video hazırlayın.
+Parlak ışık koşullarında kayıt, daha iyi bir video elde etmenize yardımcı olur."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">%1$s kare/saniyeye geçerek farklı hızlarda video kaydedebilirsiniz</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Doğru anda ortadaki düğmeye dokunun</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Yavaş çekim kaydedildi</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Yazılım Lisansları</string>
     <string name="cam_strings_take_photo_txt">Fotoğraf çek</string>
     <string name="cam_strings_term_of_use_accept_txt">Kabul Et</string>
-    <string name="cam_strings_term_of_use_consent_txt">Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Kullanım Şartları&lt;/a&gt;\'nı onaylıyorum.</string>
+    <string name="cam_strings_term_of_use_consent_txt">"Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Kullanım Şartları&lt;/a>'nı onaylıyorum."</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Servis kullanımınız, veri planınıza bağlı olarak mobil veri ücretlerine tabi tutulabilir.</string>
-    <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile, servisin bir parçası olarak ve servis iyileştirmeleri yapmak için karma Android ID\'sini (cihazın benzersiz tanımlayıcısı), konum tabanlı verileri ve tarih damgası bilgilerini toplar.</string>
+    <string name="cam_strings_term_of_use_data_collection_txt">"Sony Mobile, servisin bir parçası olarak ve servis iyileştirmeleri yapmak için karma Android ID'sini (cihazın benzersiz tanımlayıcısı), konum tabanlı verileri ve tarih damgası bilgilerini toplar."</string>
     <string name="cam_strings_term_of_use_decline_txt">Reddet</string>
     <string name="cam_strings_term_of_use_title_txt">Hüküm ve Koşullar</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Kullanım Şartları&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Kullanım Şartları&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Fotoğraf seçimini kaldır</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Kaydedilemedi</string>
     <string name="cam_strings_timeshift_save_complete_txt">Kaydedildi</string>
@@ -639,13 +664,15 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Tutarlı 4K video kaydı için, hızlı bir SD kart (UHS Hız Sınıfı 1 veya üzeri ya da Hız Sınıfı 10 önerilir) kullanmıyorsanız bu ayarı değiştirmemelisiniz.</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Tutarlı Timeshift video kaydı için, hızlı bir SD kart (UHS Speed Sınıf 1 veya üzeri ya da Speed Sınıf 10 önerilir) kullanmıyorsanız bu ayarı değiştirmemelisiniz. Yine de değiştirilsin mi?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Tutarlı yavaş çekim video kaydı için, hızlı bir SD kart (UHS Hız Sınıfı 1 veya üzeri ya da Hız Sınıfı 10 önerilir) kullanmıyorsanız bu ayarı değiştirmeyin.</string>
-    <string name="cam_strings_video_explanatory_txt">Tutarlı bir video kaydı için, veri depolamasını Dahili depolama olarak değiştirmenizi öneririz. Şimdi değiştirmek ister misiniz?\n\nVeri depolaması olarak SD kart kullanmaya devam ederseniz, hızlı bir SD kart (UHS Speed Sınıf 1 veya üzeri ya da Speed Sınıf 10 önerilir).</string>
+    <string name="cam_strings_video_explanatory_txt">"Tutarlı bir video kaydı için, veri depolamasını Dahili depolama olarak değiştirmenizi öneririz. Şimdi değiştirmek ister misiniz?
+
+Veri depolaması olarak SD kart kullanmaya devam ederseniz, hızlı bir SD kart (UHS Speed Sınıf 1 veya üzeri ya da Speed Sınıf 10 önerilir)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">İkili kamera</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Geceleyin veya loş bir odada ikili kamerayı kullanarak kumluluk oranı çok düşük olan güzel fotoğraflar kaydedebilirsiniz. Kamera Ultra hassasiyetle kaydedilecek sahnelere bağlı olarak tek ve ikili kamera arasında otomatik geçiş yapar.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">İkili kamera ile video kaydı</string>
     <string name="cam_strings_video_fusion_tutorial_1_txt">İkili kamera ile kaydederken nesneden en az 1 metre mesafede durun. Nesneye yaklaşmak vizörün veya Ultra hassasiyetle kayıt yaparken rengin kaymasına neden olabilir.</string>
     <string name="cam_strings_video_fusion_tutorial_2_title_txt">Video kaydetmek için ikili kamera kullanılsın mı?</string>
-    <string name="cam_strings_video_fusion_tutorial_2_txt">Harika fotoğraflar çekmek için Hayır\'a dokunun ve tek kameraya geçiş yapın. Vizördeki düğmeye dokunarak dilediğiniz zaman ikili kameraya dönebilirsiniz.</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">"Harika fotoğraflar çekmek için Hayır'a dokunun ve tek kameraya geçiş yapın. Vizördeki düğmeye dokunarak dilediğiniz zaman ikili kameraya dönebilirsiniz."</string>
     <string name="cam_strings_video_hdr_hlg_txt">HDR Açık</string>
     <string name="cam_strings_video_hdr_setting_hlg_txt">HDR</string>
     <string name="cam_strings_video_hdr_title_txt">HDR video</string>
@@ -656,7 +683,7 @@
     <string name="cam_strings_video_resolution_full_hd_frame_rate_txt">Kare hızı (Tam HD)</string>
     <string name="cam_strings_video_resolution_full_hd_super_slow_desc_txt">HD moddan farklı olarak, yarı kaydetme süresinde daha geniş bir alanı yakalar.</string>
     <string name="cam_strings_video_resolution_full_hd_txt">Full HD</string>
-    <string name="cam_strings_video_resolution_hd_super_slow_desc_txt">Tam HD\'den farkı, iki kat uzun kayıt süresinde daha dar alanı yakalamasıdır.</string>
+    <string name="cam_strings_video_resolution_hd_super_slow_desc_txt">"Tam HD'den farkı, iki kat uzun kayıt süresinde daha dar alanı yakalamasıdır."</string>
     <string name="cam_strings_video_resolution_hd_txt">HD</string>
     <string name="cam_strings_video_resolution_mms_txt">MMS</string>
     <string name="cam_strings_video_resolution_qvga_txt">QVGA</string>
@@ -684,7 +711,7 @@
     <string name="cam_strings_zoom_not_supported_txt">Şu anda yakınlaştırılamıyor</string>
     <string name="common_android_wear_notification_needs_update_text">%1$s, Android Wear uygulamasında güncelleme yapılmasını gerektiriyor.</string>
     <string name="common_android_wear_update_text">%1$s, Android Wear uygulaması güncellenene kadar çalışmayacak.</string>
-    <string name="common_android_wear_update_title">Android Wear\'ı Güncelle</string>
+    <string name="common_android_wear_update_title">"Android Wear'ı Güncelle"</string>
     <string name="common_google_play_services_api_unavailable_text">%1$s şu anda kullanılamayan bir veya daha fazla Google Play hizmetini gerektiriyor. Lütfen yardım için geliştiriciyle iletişime geçin.</string>
     <string name="common_google_play_services_enable_button">Google Play hizmetlerini etkinleştir</string>
     <string name="common_google_play_services_enable_text">Google Play hizmetlerini etkinleştirmezseniz %1$s çalışmayacak.</string>
@@ -696,7 +723,7 @@
     <string name="common_google_play_services_install_title">Google Play hizmetlerini edinin</string>
     <string name="common_google_play_services_invalid_account_text">Belirtilen hesap bu cihazda mevcut değil. Lütfen farklı bir hesap seçin.</string>
     <string name="common_google_play_services_invalid_account_title">Geçersiz Hesap</string>
-    <string name="common_google_play_services_needs_enabling_title">Bir uygulama, Google Play Hizmetleri\'nin etkin olmasını gerektiriyor.</string>
+    <string name="common_google_play_services_needs_enabling_title">"Bir uygulama, Google Play Hizmetleri'nin etkin olmasını gerektiriyor."</string>
     <string name="common_google_play_services_network_error_text">Google Play hizmetlerine bağlanmak için bir veri bağlantısı gerekiyor.</string>
     <string name="common_google_play_services_network_error_title">Ağ Hatası</string>
     <string name="common_google_play_services_notification_needs_update_title">Bir uygulama, Google Play Hizmetleri için bir güncelleme gerektiriyor.</string>

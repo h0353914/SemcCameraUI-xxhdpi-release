@@ -3,7 +3,6 @@ package com.sonyericsson.cameracommon.utility;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap$Config;
 import android.graphics.Matrix;
 import android.net.Uri;
 import com.sonyericsson.android.camera.util.CamLog;
@@ -27,7 +26,7 @@ public class OneShotUtility {
             Matrix matrix = new Matrix();
             matrix.setScale(fComputeSampleSize, fComputeSampleSize);
             Bitmap bitmapCreateBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-            Bitmap bitmapCopy = bitmapCreateBitmap.copy(Bitmap$Config.ARGB_8888, false);
+            Bitmap bitmapCopy = bitmapCreateBitmap.copy(Bitmap.Config.ARGB_8888, false);
             bitmapCreateBitmap.recycle();
             intent.putExtra("data", bitmapCopy);
         }
@@ -49,7 +48,7 @@ public class OneShotUtility {
 
     private static int computeInitialSampleSize(double d, double d2, int i, int i2) {
         int iMin;
-        int iCeil = i2 < 0 ? 1 : (int) Math.ceil(Math.sqrt((d * d2) / ((double) i2)));
+        int iCeil = i2 < 0 ? 1 : (int) Math.ceil(Math.sqrt((d * d2) / i2));
         if (i < 0) {
             iMin = 128;
         } else {

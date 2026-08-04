@@ -2,6 +2,7 @@ package com.google.android.gms.internal;
 
 import java.util.Map;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzmi<K, V> {
     static Object[] mBaseCache;
     static int mBaseCacheSize;

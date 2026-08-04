@@ -11,8 +11,9 @@ import com.google.android.gms.common.api.zzb;
 import com.google.android.gms.common.api.zze;
 import com.google.android.gms.common.internal.zzx;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzlq<R extends Result> extends zze<R> implements ResultCallback<R> {
-    private final Object zzabh;
+    private final Object zzabh = new Object();
     private zzb<? super R, ? extends Result> zzacY;
     private zzlq<? extends Result> zzacZ;
     private ResultCallbacks<? super R> zzada;
@@ -43,8 +44,8 @@ public class zzlq<R extends Result> extends zze<R> implements ResultCallback<R> 
             if (!r.getStatus().isSuccess()) {
                 zzx(r.getStatus());
             } else if (this.zzacY != null) {
-                PendingResult<S> pendingResultZza = this.zzacY.zza(r);
-                if (pendingResultZza == 0) {
+                PendingResult<? extends Result> pendingResultZza = this.zzacY.zza(r);
+                if (pendingResultZza == null) {
                     zzx(new Status(13, "Transform returned null"));
                 } else {
                     this.zzacZ.zza(pendingResultZza);
@@ -59,7 +60,7 @@ public class zzlq<R extends Result> extends zze<R> implements ResultCallback<R> 
     /* JADX WARN: Multi-variable type inference failed */
     public void zza(PendingResult<?> pendingResult) {
         synchronized (this.zzabh) {
-            this.zzadb = pendingResult;
+            this.zzadb = (PendingResult<R>) pendingResult;
             zzon();
         }
     }

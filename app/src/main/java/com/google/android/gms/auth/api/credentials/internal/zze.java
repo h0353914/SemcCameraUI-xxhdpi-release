@@ -3,28 +3,26 @@ package com.google.android.gms.auth.api.credentials.internal;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.IInterface;
 import android.os.Looper;
-import com.google.android.gms.auth.api.Auth$AuthCredentialsOptions;
-import com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.credentials.internal.zzh;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.internal.zzj;
 
-public final class zze extends zzj<zzh> {
-    private final Auth$AuthCredentialsOptions zzSJ;
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public final class zze extends zzj<com.google.android.gms.auth.api.credentials.internal.zzh> {
+    private final Auth.AuthCredentialsOptions zzSJ;
 
-    public zze(Context context, Looper looper, com.google.android.gms.common.internal.zzf zzfVar, Auth$AuthCredentialsOptions auth$AuthCredentialsOptions, GoogleApiClient$ConnectionCallbacks googleApiClient$ConnectionCallbacks, GoogleApiClient$OnConnectionFailedListener googleApiClient$OnConnectionFailedListener) {
-        super(context, looper, 68, zzfVar, googleApiClient$ConnectionCallbacks, googleApiClient$OnConnectionFailedListener);
-        this.zzSJ = auth$AuthCredentialsOptions;
+    public zze(Context context, Looper looper, com.google.android.gms.common.internal.zzf zzfVar, Auth.AuthCredentialsOptions authCredentialsOptions, GoogleApiClient.ConnectionCallbacks connectionCallbacks, GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener) {
+        super(context, looper, 68, zzfVar, connectionCallbacks, onConnectionFailedListener);
+        this.zzSJ = authCredentialsOptions;
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     @Override // com.google.android.gms.common.internal.zzj
-    protected /* synthetic */ IInterface zzW(IBinder iBinder) {
-        return zzar(iBinder);
-    }
-
-    protected zzh zzar(IBinder iBinder) {
-        return zzh$zza.zzat(iBinder);
+    /* renamed from: zzar, reason: merged with bridge method [inline-methods] */
+    public com.google.android.gms.auth.api.credentials.internal.zzh zzW(IBinder iBinder) {
+        return com.google.android.gms.auth.api.credentials.internal.zzh.zza.zzat(iBinder);
     }
 
     @Override // com.google.android.gms.common.internal.zzj

@@ -1,11 +1,13 @@
 package com.google.android.gms.common.stats;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
+import com.sonyericsson.android.camera.util.capability.SharedPrefsTranslator;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class ConnectionEvent extends zzf implements SafeParcelable {
-    public static final Parcelable$Creator<ConnectionEvent> CREATOR = new zza();
+    public static final Parcelable.Creator<ConnectionEvent> CREATOR = new zza();
     final int mVersionCode;
     private final long zzahn;
     private int zzaho;
@@ -100,11 +102,11 @@ public final class ConnectionEvent extends zzf implements SafeParcelable {
         StringBuilder sb = new StringBuilder();
         sb.append("\t");
         sb.append(zzpX());
-        sb.append("/");
+        sb.append(SharedPrefsTranslator.CONNECTOR_SLASH);
         sb.append(zzpY());
         sb.append("\t");
         sb.append(zzpZ());
-        sb.append("/");
+        sb.append(SharedPrefsTranslator.CONNECTOR_SLASH);
         sb.append(zzqa());
         sb.append("\t");
         sb.append(this.zzaht == null ? "" : this.zzaht);

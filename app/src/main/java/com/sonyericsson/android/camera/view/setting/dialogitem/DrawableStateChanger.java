@@ -1,21 +1,21 @@
 package com.sonyericsson.android.camera.view.setting.dialogitem;
 
 import android.view.View;
-import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter$ItemLayoutParams;
+import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter;
 
-/* JADX INFO: compiled from: SettingDialogItem.java */
+/* compiled from: SettingDialogItem.java */
 class DrawableStateChanger {
     private static final int DRAWABLE_LEVEL_BOTTOM = 2;
     private static final int DRAWABLE_LEVEL_NORMAL = 0;
     private static final int DRAWABLE_LEVEL_TOP = 1;
-    private final SettingAdapter$ItemLayoutParams mParams;
+    private final SettingAdapter.ItemLayoutParams mParams;
     private View mDividerBottom = null;
     private View mDividerLeft = null;
     private View mDividerRight = null;
     private View mBackground = null;
 
-    public DrawableStateChanger(SettingAdapter$ItemLayoutParams settingAdapter$ItemLayoutParams) {
-        this.mParams = settingAdapter$ItemLayoutParams;
+    public DrawableStateChanger(SettingAdapter.ItemLayoutParams itemLayoutParams) {
+        this.mParams = itemLayoutParams;
     }
 
     public DrawableStateChanger dividerHorizontal(View view) {
@@ -61,10 +61,10 @@ class DrawableStateChanger {
         }
     }
 
-    private int getDrawableLevel(SettingAdapter$ItemLayoutParams settingAdapter$ItemLayoutParams) {
+    private int getDrawableLevel(SettingAdapter.ItemLayoutParams itemLayoutParams) {
         if (this.mParams.top) {
             return 1;
         }
-        return settingAdapter$ItemLayoutParams.bottom ? 2 : 0;
+        return itemLayoutParams.bottom ? 2 : 0;
     }
 }

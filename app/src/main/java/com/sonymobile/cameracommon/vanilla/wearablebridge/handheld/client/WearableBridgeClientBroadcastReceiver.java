@@ -5,33 +5,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonymobile.cameracommon.vanilla.wearablebridge.common.IntentConstants;
+import com.sonymobile.cameracommon.vanilla.wearablebridge.handheld.client.ObserveWearableInterface;
 
 class WearableBridgeClientBroadcastReceiver extends BroadcastReceiver {
     private static final String TAG = "WearableBridgeClientBroadcastReceiver";
     private Handler mCallbackHandler;
-    private ObserveWearableInterface$LifeCycleObserver mLifeCycleObserver;
-    private ObserveWearableInterface$PhotoEventObserver mPhotoEventObserver;
-    private ObserveWearableInterface$VideoEventObserver mVideoEventObserver;
-    private WearableBridgeClientBroadcastReceiver$NotifyOnResumeTask mNotifyOnResumeTask = new WearableBridgeClientBroadcastReceiver$NotifyOnResumeTask(this, null);
-    private WearableBridgeClientBroadcastReceiver$NotifyOnPauseTask mNotifyOnPauseTask = new WearableBridgeClientBroadcastReceiver$NotifyOnPauseTask(this, null);
-    private WearableBridgeClientBroadcastReceiver$NotifyPhotoCaptureRequestedTask mNotifyPhotoCaptureRequestedTask = new WearableBridgeClientBroadcastReceiver$NotifyPhotoCaptureRequestedTask(this, null);
-    private WearableBridgeClientBroadcastReceiver$NotifyVideoStartRecRequestedTask mNotifyVideoStartRecRequestedTask = new WearableBridgeClientBroadcastReceiver$NotifyVideoStartRecRequestedTask(this, null);
-    private WearableBridgeClientBroadcastReceiver$NotifyVideoStopRecRequestedTask mNotifyVideoStopRecRequestedTask = new WearableBridgeClientBroadcastReceiver$NotifyVideoStopRecRequestedTask(this, null);
+    private ObserveWearableInterface.LifeCycleObserver mLifeCycleObserver;
+    private NotifyOnPauseTask mNotifyOnPauseTask;
+    private NotifyOnResumeTask mNotifyOnResumeTask;
+    private NotifyPhotoCaptureRequestedTask mNotifyPhotoCaptureRequestedTask;
+    private NotifyVideoStartRecRequestedTask mNotifyVideoStartRecRequestedTask;
+    private NotifyVideoStopRecRequestedTask mNotifyVideoStopRecRequestedTask;
+    private ObserveWearableInterface.PhotoEventObserver mPhotoEventObserver;
+    private ObserveWearableInterface.VideoEventObserver mVideoEventObserver;
 
-    static /* synthetic */ ObserveWearableInterface$LifeCycleObserver access$500(WearableBridgeClientBroadcastReceiver wearableBridgeClientBroadcastReceiver) {
-        return wearableBridgeClientBroadcastReceiver.mLifeCycleObserver;
-    }
-
-    static /* synthetic */ ObserveWearableInterface$PhotoEventObserver access$600(WearableBridgeClientBroadcastReceiver wearableBridgeClientBroadcastReceiver) {
-        return wearableBridgeClientBroadcastReceiver.mPhotoEventObserver;
-    }
-
-    static /* synthetic */ ObserveWearableInterface$VideoEventObserver access$700(WearableBridgeClientBroadcastReceiver wearableBridgeClientBroadcastReceiver) {
-        return wearableBridgeClientBroadcastReceiver.mVideoEventObserver;
-    }
-
-    public WearableBridgeClientBroadcastReceiver(Handler handler, ObserveWearableInterface$LifeCycleObserver observeWearableInterface$LifeCycleObserver, ObserveWearableInterface$PhotoEventObserver observeWearableInterface$PhotoEventObserver, ObserveWearableInterface$VideoEventObserver observeWearableInterface$VideoEventObserver) {
+    public WearableBridgeClientBroadcastReceiver(Handler handler, ObserveWearableInterface.LifeCycleObserver lifeCycleObserver, ObserveWearableInterface.PhotoEventObserver photoEventObserver, ObserveWearableInterface.VideoEventObserver videoEventObserver) {
         this.mCallbackHandler = null;
+        this.mNotifyOnResumeTask = new NotifyOnResumeTask();
+        this.mNotifyOnPauseTask = new NotifyOnPauseTask();
+        this.mNotifyPhotoCaptureRequestedTask = new NotifyPhotoCaptureRequestedTask();
+        this.mNotifyVideoStartRecRequestedTask = new NotifyVideoStartRecRequestedTask();
+        this.mNotifyVideoStopRecRequestedTask = new NotifyVideoStopRecRequestedTask();
         this.mLifeCycleObserver = null;
         this.mPhotoEventObserver = null;
         this.mVideoEventObserver = null;
@@ -39,9 +34,9 @@ class WearableBridgeClientBroadcastReceiver extends BroadcastReceiver {
             CamLog.d("CONSTRUCTOR : E");
         }
         this.mCallbackHandler = handler;
-        this.mLifeCycleObserver = observeWearableInterface$LifeCycleObserver;
-        this.mPhotoEventObserver = observeWearableInterface$PhotoEventObserver;
-        this.mVideoEventObserver = observeWearableInterface$VideoEventObserver;
+        this.mLifeCycleObserver = lifeCycleObserver;
+        this.mPhotoEventObserver = photoEventObserver;
+        this.mVideoEventObserver = videoEventObserver;
         if (CamLog.DEBUG) {
             CamLog.d("CONSTRUCTOR : X");
         }
@@ -70,20 +65,70 @@ class WearableBridgeClientBroadcastReceiver extends BroadcastReceiver {
             CamLog.d("    ACTION = " + action);
         }
         if (action != null) {
-            if ("com.sonymobile.cameracommon.wearablebridge.SERVER_LIFECYCLE_ON_RESUME".equals(action)) {
+            if (IntentConstants.SERVER_LIFECYCLE_OBSERVER_ON_RESUME.equals(action)) {
                 this.mCallbackHandler.post(this.mNotifyOnResumeTask);
-            } else if ("com.sonymobile.cameracommon.wearablebridge.SERVER_LIFECYCLE_ON_PAUSE".equals(action)) {
+            } else if (IntentConstants.SERVER_LIFECYCLE_OBSERVER_ON_PAUSE.equals(action)) {
                 this.mCallbackHandler.post(this.mNotifyOnPauseTask);
-            } else if ("com.sonymobile.cameracommon.wearablebridge.SERVER_PHOTO_CAPTURE_REQUESTED".equals(action)) {
+            } else if (IntentConstants.SERVER_PHOTO_CAPTURE_REQUESTED.equals(action)) {
                 this.mCallbackHandler.post(this.mNotifyPhotoCaptureRequestedTask);
-            } else if ("com.sonymobile.cameracommon.wearablebridge.SERVER_VIDEO_START_REC_REQUESTED".equals(action)) {
+            } else if (IntentConstants.SERVER_VIDEO_START_REC_REQUESTED.equals(action)) {
                 this.mCallbackHandler.post(this.mNotifyVideoStartRecRequestedTask);
-            } else if ("com.sonymobile.cameracommon.wearablebridge.SERVER_VIDEO_STOP_REC_REQUESTED".equals(action)) {
+            } else if (IntentConstants.SERVER_VIDEO_STOP_REC_REQUESTED.equals(action)) {
                 this.mCallbackHandler.post(this.mNotifyVideoStopRecRequestedTask);
             }
         }
         if (CamLog.DEBUG) {
             CamLog.d("onReceive() : X");
+        }
+    }
+
+    private class NotifyOnResumeTask implements Runnable {
+        private NotifyOnResumeTask() {
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            WearableBridgeClientBroadcastReceiver.this.mLifeCycleObserver.onResume();
+        }
+    }
+
+    private class NotifyOnPauseTask implements Runnable {
+        private NotifyOnPauseTask() {
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            WearableBridgeClientBroadcastReceiver.this.mLifeCycleObserver.onPause();
+        }
+    }
+
+    private class NotifyPhotoCaptureRequestedTask implements Runnable {
+        private NotifyPhotoCaptureRequestedTask() {
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            WearableBridgeClientBroadcastReceiver.this.mPhotoEventObserver.onPhotoCaptureRequested();
+        }
+    }
+
+    private class NotifyVideoStartRecRequestedTask implements Runnable {
+        private NotifyVideoStartRecRequestedTask() {
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            WearableBridgeClientBroadcastReceiver.this.mVideoEventObserver.onStartVideoRecRequested();
+        }
+    }
+
+    private class NotifyVideoStopRecRequestedTask implements Runnable {
+        private NotifyVideoStopRecRequestedTask() {
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            WearableBridgeClientBroadcastReceiver.this.mVideoEventObserver.onStopVideoRecRequested();
         }
     }
 }

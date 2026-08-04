@@ -1,10 +1,10 @@
 package com.google.android.gms.common.stats;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import android.os.Parcelable;
 
-public class zza implements Parcelable$Creator<ConnectionEvent> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zza implements Parcelable.Creator<ConnectionEvent> {
     static void zza(ConnectionEvent connectionEvent, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, connectionEvent.mVersionCode);
@@ -21,17 +21,9 @@ public class zza implements Parcelable$Creator<ConnectionEvent> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ConnectionEvent createFromParcel(Parcel parcel) {
-        return zzaA(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ConnectionEvent[] newArray(int i) {
-        return zzbY(i);
-    }
-
-    public ConnectionEvent zzaA(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaA, reason: merged with bridge method [inline-methods] */
+    public ConnectionEvent createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         int iZzg2 = 0;
@@ -90,10 +82,12 @@ public class zza implements Parcelable$Creator<ConnectionEvent> {
         if (parcel.dataPosition() == iZzap) {
             return new ConnectionEvent(iZzg, jZzi, iZzg2, strZzp, strZzp2, strZzp3, strZzp4, strZzp5, strZzp6, jZzi2, jZzi3);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new com.google.android.gms.common.internal.safeparcel.zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public ConnectionEvent[] zzbY(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbY, reason: merged with bridge method [inline-methods] */
+    public ConnectionEvent[] newArray(int i) {
         return new ConnectionEvent[i];
     }
 }

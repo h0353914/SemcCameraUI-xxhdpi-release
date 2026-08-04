@@ -62,11 +62,11 @@ public class TiffContents {
             if (tiffElement.offset < j) {
                 Debug.debug("\toverlap");
             }
-            Debug.debug("element, start: " + tiffElement.offset + ", length: " + tiffElement.length + ", end: " + (tiffElement.offset + ((long) tiffElement.length)) + ": " + tiffElement.getElementDescription(false));
+            Debug.debug("element, start: " + tiffElement.offset + ", length: " + tiffElement.length + ", end: " + (tiffElement.offset + tiffElement.length) + ": " + tiffElement.getElementDescription(false));
             if (z && (elementDescription = tiffElement.getElementDescription(true)) != null) {
                 Debug.debug(elementDescription);
             }
-            j = tiffElement.offset + ((long) tiffElement.length);
+            j = tiffElement.offset + tiffElement.length;
         }
         Debug.debug("end: " + j);
         Debug.debug();

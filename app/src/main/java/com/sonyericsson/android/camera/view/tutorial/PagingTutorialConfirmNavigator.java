@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 
 public class PagingTutorialConfirmNavigator extends PagingTutorialNavigator {
 
@@ -110,15 +111,15 @@ public class PagingTutorialConfirmNavigator extends PagingTutorialNavigator {
     private void updateClickEventActivation() {
         updateClickEventListener(this.mNext);
         updateClickEventListener(this.mPrevIcon);
-        updateClickEventListener(findViewById(2131296676));
-        updateClickEventListener(findViewById(2131296684));
+        updateClickEventListener(findViewById(R.id.tutorial_no_button));
+        updateClickEventListener(findViewById(R.id.tutorial_yes_button));
     }
 
     @Override // android.view.View
     protected void onFinishInflate() {
-        this.mNext = (TextView) findViewById(2131296488);
-        this.mConfirm = findViewById(2131296327);
-        this.mPrevIcon = (ImageView) findViewById(2131296490);
+        this.mNext = (TextView) findViewById(R.id.page_tutorial_next_button);
+        this.mConfirm = findViewById(R.id.cam_core_tutorial_button_container);
+        this.mPrevIcon = (ImageView) findViewById(R.id.page_tutorial_prev_icon_button);
         super.onFinishInflate();
     }
 }

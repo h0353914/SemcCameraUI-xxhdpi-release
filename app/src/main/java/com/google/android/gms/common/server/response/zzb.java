@@ -2,33 +2,27 @@ package com.google.android.gms.common.server.response;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
+import com.google.android.gms.common.server.response.FastJsonResponse;
+import com.google.android.gms.common.server.response.FieldMappingDictionary;
 
-public class zzb implements Parcelable$Creator<FieldMappingDictionary$FieldMapPair> {
-    static void zza(FieldMappingDictionary$FieldMapPair fieldMappingDictionary$FieldMapPair, Parcel parcel, int i) {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzb implements Parcelable.Creator<FieldMappingDictionary.FieldMapPair> {
+    static void zza(FieldMappingDictionary.FieldMapPair fieldMapPair, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
-        com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, fieldMappingDictionary$FieldMapPair.versionCode);
-        com.google.android.gms.common.internal.safeparcel.zzb.zza(parcel, 2, fieldMappingDictionary$FieldMapPair.key, false);
-        com.google.android.gms.common.internal.safeparcel.zzb.zza(parcel, 3, (Parcelable) fieldMappingDictionary$FieldMapPair.zzahi, i, false);
+        com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, fieldMapPair.versionCode);
+        com.google.android.gms.common.internal.safeparcel.zzb.zza(parcel, 2, fieldMapPair.key, false);
+        com.google.android.gms.common.internal.safeparcel.zzb.zza(parcel, 3, (Parcelable) fieldMapPair.zzahi, i, false);
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ FieldMappingDictionary$FieldMapPair createFromParcel(Parcel parcel) {
-        return zzaw(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ FieldMappingDictionary$FieldMapPair[] newArray(int i) {
-        return zzbU(i);
-    }
-
-    public FieldMappingDictionary$FieldMapPair zzaw(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaw, reason: merged with bridge method [inline-methods] */
+    public FieldMappingDictionary.FieldMapPair createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         String strZzp = null;
         int iZzg = 0;
-        FastJsonResponse$Field fastJsonResponse$Field = null;
+        FastJsonResponse.Field field = null;
         while (parcel.dataPosition() < iZzap) {
             int iZzao = com.google.android.gms.common.internal.safeparcel.zza.zzao(parcel);
             switch (com.google.android.gms.common.internal.safeparcel.zza.zzbM(iZzao)) {
@@ -39,7 +33,7 @@ public class zzb implements Parcelable$Creator<FieldMappingDictionary$FieldMapPa
                     strZzp = com.google.android.gms.common.internal.safeparcel.zza.zzp(parcel, iZzao);
                     break;
                 case 3:
-                    fastJsonResponse$Field = (FastJsonResponse$Field) com.google.android.gms.common.internal.safeparcel.zza.zza(parcel, iZzao, FastJsonResponse$Field.CREATOR);
+                    field = (FastJsonResponse.Field) com.google.android.gms.common.internal.safeparcel.zza.zza(parcel, iZzao, FastJsonResponse.Field.CREATOR);
                     break;
                 default:
                     com.google.android.gms.common.internal.safeparcel.zza.zzb(parcel, iZzao);
@@ -47,12 +41,14 @@ public class zzb implements Parcelable$Creator<FieldMappingDictionary$FieldMapPa
             }
         }
         if (parcel.dataPosition() == iZzap) {
-            return new FieldMappingDictionary$FieldMapPair(iZzg, strZzp, fastJsonResponse$Field);
+            return new FieldMappingDictionary.FieldMapPair(iZzg, strZzp, field);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public FieldMappingDictionary$FieldMapPair[] zzbU(int i) {
-        return new FieldMappingDictionary$FieldMapPair[i];
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbU, reason: merged with bridge method [inline-methods] */
+    public FieldMappingDictionary.FieldMapPair[] newArray(int i) {
+        return new FieldMappingDictionary.FieldMapPair[i];
     }
 }

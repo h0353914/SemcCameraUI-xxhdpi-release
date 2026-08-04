@@ -4,9 +4,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Teu bisa ngarengsekeun motret. Mangga keserkeun leuwih laun.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Teu bisa ngarengsekeun motret. Mangga keserkeun leuwih gancang.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Nyokot poto panorama ku cara sapukeun kamera anjeun</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Nyieun payil di handap:\n- Gambar Multi Sudut\n- Gambar 3D\nCatetan: Payil ieu ngandung area abu-abu.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Nyieun payil ieu:\n- Gambar Multi Sudut\n- Gambar 3D</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Mroses..\n.Gambar ieu ngandung area abu-abu</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Nyieun payil di handap:
+- Gambar Multi Sudut
+- Gambar 3D
+Catetan: Payil ieu ngandung area abu-abu."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Nyieun payil ieu:
+- Gambar Multi Sudut
+- Gambar 3D"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Mroses..
+.Gambar ieu ngandung area abu-abu"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Nyimpen gambar</string>
     <string name="cam_3d_strings_dialog_processing_txt">Mroses...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Mangga antosan sababaraha detik jang ngajalankeun kamera 3D</string>
@@ -332,7 +338,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Jadikeun kulit anjeun katingali caang jeung lemes. Hasilna jalan dina aplikasi anu maké kaméra hareup. Ieu bisa diterapkeun pikeun poto jeung vidéo. Anjeun ogé bisa saluyukeun tingkatanana.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Nyaluyukeun tingkatan</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Kulit lemes</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Teu bisa mimitian aplikasi.\nPastikeun vérsi %1$s panganyarna dipasang jeung aktip dina alat anjeun.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Teu bisa mimitian aplikasi.
+Pastikeun vérsi %1$s panganyarna dipasang jeung aktip dina alat anjeun."</string>
     <string name="cam_strings_gridline_txt">Baris grid</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Arahkeun dampal panangan anjeun kana kaméra. Pangatur waktu otomatis bakal aktip nalima panangan anjeun dikenal. Pikeun gampang dikenal, arahkeun ramo anjeun ka luhur.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Arahkeun panangan kana kaméra</string>
@@ -374,7 +381,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Setelan umum</string>
     <string name="cam_strings_more_txt">Nu sejen</string>
     <string name="cam_strings_multi_window_txt">Séréd tengah wagel pamisah beulah keur pindah ka layar pinuh keur maké %1$s</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Alat sejen ayeuna nyambung.\nAnjeun hayang ngabagikeun gambar liwat tempo heula jeung alat?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Alat sejen ayeuna nyambung.
+Anjeun hayang ngabagikeun gambar liwat tempo heula jeung alat?"</string>
     <string name="cam_strings_multicam_add_device_txt">Tambah alat</string>
     <string name="cam_strings_multicam_add_more_txt">Tambah nu sejen</string>
     <string name="cam_strings_multicam_apply_txt">Rengse</string>
@@ -408,7 +416,8 @@
     <string name="cam_strings_predictive_capture_txt">Téwak Disangka</string>
     <string name="cam_strings_predictive_launch_guide_txt">Ketok layar keur ningali salayar</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Muka diprédiksi</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Anjeun bisa muka kaméra gancang. Ayun ka luhur tur tahan alat anjeun dina pintonan lansekap tur arahkeun kaméra ka objék. Alat bakal muka kaméra otomatis.\nAnjeun bisa pareuman fitur ieu tina Muka diprédiksi dina setélan kaméra.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Anjeun bisa muka kaméra gancang. Ayun ka luhur tur tahan alat anjeun dina pintonan lansekap tur arahkeun kaméra ka objék. Alat bakal muka kaméra otomatis.
+Anjeun bisa pareuman fitur ieu tina Muka diprédiksi dina setélan kaméra."</string>
     <string name="cam_strings_predictive_launch_txt">Muka diprédiksi</string>
     <string name="cam_strings_preview_always_txt">Hurung</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 detik</string>
@@ -441,7 +450,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s butuh idin(-idin) ieu</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Pangidinan %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Aplikasi peryogi idin ieu kanggo ngalakukeun tindakan ieu.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Keur masihkeun pangidinan, buka Inpo Aplikasi &gt; Pangidinan.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Keur masihkeun pangidinan, buka Inpo Aplikasi > Pangidinan.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Henteu bisa teruskeun</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Keur moto jeung vidéo</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Keur cokot deui lokasi</string>
@@ -510,7 +519,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Super gerak laun</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Anjeun bisa robah fps jeung gaya rékam keur gerak laun</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Opsi nu sejen</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Langsung rékam waktu spésial dina gerak laun %1$s fps ku ngetok kenop di tengah layar.\nNgarékam dina kaayaan caang bakal mantuan anjeun jieun vidéo leuwih alus.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Langsung rékam waktu spésial dina gerak laun %1$s fps ku ngetok kenop di tengah layar.
+Ngarékam dina kaayaan caang bakal mantuan anjeun jieun vidéo leuwih alus."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Anjeun bisa rékam di waktu anu pas jeung %1$s fps ku ngetok kenop tengah</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Langsung rékam waktu spésial dina gerak laun %1$s fps ku ngetok kenop di tengah layar</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Super gerak laun (sakali téwak)</string>
@@ -521,7 +531,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Gerak laun</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Cara ngarékam</string>
     <string name="cam_strings_slow_motion_standard_txt">Gerak laun</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Jieun vidéo anu alus ku ningalikeun waktu spésial dina gerak laun.\nNgarékam dina kaayaan caang bakal mantuan anjeun jieun vidéo leuwih alus.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Jieun vidéo anu alus ku ningalikeun waktu spésial dina gerak laun.
+Ngarékam dina kaayaan caang bakal mantuan anjeun jieun vidéo leuwih alus."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Anjeun bisa rékam vidéo dina kagancangan anu béda ku pindah ka %1$s fps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Ketok dina kenop di tengah dina waktu anu pas</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Gerak laun dirékam</string>
@@ -552,12 +563,12 @@
     <string name="cam_strings_sw_licence_title_txt">Lisénsi Software</string>
     <string name="cam_strings_take_photo_txt">Moto</string>
     <string name="cam_strings_term_of_use_accept_txt">Tarima</string>
-    <string name="cam_strings_term_of_use_consent_txt">Abdi satuju ka&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Sarat Pamakean&lt;/a&gt; Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Abdi satuju ka&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Sarat Pamakean&lt;/a> Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Pamakean laden ieu ku anjeun tunduk ka beaya tunduk ka beaya data gumantung ka paket data.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile bakal ngumpulkeun identipikasi alat unik Android ID diacak, dumasar ka data lokasi sareng stempel supados jang masihan Anjeun hasil nu saluyu minangka bagean laden sareng ningkatkeun ladenan.</string>
     <string name="cam_strings_term_of_use_decline_txt">Tampik</string>
     <string name="cam_strings_term_of_use_title_txt">Sarat sareng Katangtuan</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Sarat Pamakean&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Sarat Pamakean&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Wurung milih poto</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Teu tiasa nyimpen</string>
     <string name="cam_strings_timeshift_save_complete_txt">Disimpen</string>
@@ -584,7 +595,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Keur ngarékam vidéo 4K stabil, anjeun teu meunang robah pangaturan ieu iwal ti anjeun maké kartu SD gancang pisan (Kelas Kagancangan UHS 1 atawa leuwih luhur, atawa disarankeun Kelas Kagancangan 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Keur ngarékam vidéo Timeshift, anjeun teu meunang robah pangaturan ieu iwal ti anjeun maké kartu SD gancang pisan (Kelas Kagancangan UHS 1 atawa leuwih luhur, atawa disarankeun Kelas Kagancangan 10). Robah waé?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Keur ngarékam vidéo gerak laun, tong robah pangaturan ieu iwal ti anjeun maké kartu SD gancang pisan (Kelas Kagancangan UHS 1 atawa leuwih luhur, atawa disarankeun Kelas Kagancangan 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Pikeun ngarékam vidéo anu stabil, kami nyarankeun anjeun robah panyimpenan data kana panyimpenan Internal. Dupi badé anjeun robah ayeuna?\n\nLamun anjeun terus maké kartu SD jadi panyimpenan data, pastikeun maké kartu SD gancang pisan (Kelas Kagancangan UHS 1 atawa leuwih luhur, atawa disarankeun Kelas Kagancangan 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Pikeun ngarékam vidéo anu stabil, kami nyarankeun anjeun robah panyimpenan data kana panyimpenan Internal. Dupi badé anjeun robah ayeuna?
+
+Lamun anjeun terus maké kartu SD jadi panyimpenan data, pastikeun maké kartu SD gancang pisan (Kelas Kagancangan UHS 1 atawa leuwih luhur, atawa disarankeun Kelas Kagancangan 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Dua kaméra</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Anjeun bisa ngarékam vidéo anu indah tur noise handap ku maké dua kaméra sanajan peuting atawa rohangan poék. Kaméra otomatis pindah antara hiji kaméra jeung dua kaméra dumasarkeun kana kaayaan pikeun ngarékam maké sénsitipitas Ultra-luhur.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Ngarékam vidéo maké dua kaméra</string>

@@ -14,7 +14,7 @@ public class ContentsContainer extends FrameLayout {
 
     public void setSensorOrientation(int i) {
         if (CamLog.VERBOSE) {
-            CamLog.d("ContentsContainer", "setSensorOrientation() has been called. orientation = " + i);
+            CamLog.d(TAG, "setSensorOrientation() has been called. orientation = " + i);
         }
         int i2 = i == 1 ? -90 : 0;
         for (int i3 = 0; i3 < getChildCount(); i3++) {

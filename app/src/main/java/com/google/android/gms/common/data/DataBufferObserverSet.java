@@ -1,12 +1,14 @@
 package com.google.android.gms.common.data;
 
+import com.google.android.gms.common.data.DataBufferObserver;
 import java.util.HashSet;
 import java.util.Iterator;
 
-public final class DataBufferObserverSet implements DataBufferObserver, DataBufferObserver$Observable {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public final class DataBufferObserverSet implements DataBufferObserver, DataBufferObserver.Observable {
     private HashSet<DataBufferObserver> zzadk = new HashSet<>();
 
-    @Override // com.google.android.gms.common.data.DataBufferObserver$Observable
+    @Override // com.google.android.gms.common.data.DataBufferObserver.Observable
     public void addObserver(DataBufferObserver dataBufferObserver) {
         this.zzadk.add(dataBufferObserver);
     }
@@ -59,7 +61,7 @@ public final class DataBufferObserverSet implements DataBufferObserver, DataBuff
         }
     }
 
-    @Override // com.google.android.gms.common.data.DataBufferObserver$Observable
+    @Override // com.google.android.gms.common.data.DataBufferObserver.Observable
     public void removeObserver(DataBufferObserver dataBufferObserver) {
         this.zzadk.remove(dataBufferObserver);
     }

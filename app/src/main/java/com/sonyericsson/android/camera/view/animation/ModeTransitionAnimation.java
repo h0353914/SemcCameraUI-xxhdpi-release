@@ -137,9 +137,10 @@ class ModeTransitionAnimation {
         AnimatorSet animatorSet = new AnimatorSet();
         ArrayList arrayList = new ArrayList();
         float alpha = this.mViewFinderCover.getAlpha();
-        arrayList.add(getModeIconAutoTransitionAnimation(navigatorContents, (int) ((alpha < 1.0f ? (int) ((1.0f - alpha) * 200.0f) : 200) * 0.5f)));
-        int i = (int) (200.0f * (1.0f - alpha) * 0.5f);
-        arrayList.add(getLinearFadeInAnimator(this.mViewFinderCover, i, alpha, 1.0f));
+        arrayList.add(getModeIconAutoTransitionAnimation(navigatorContents, (int) ((alpha < 1.0f ? (int) ((1.0f - alpha) * 200.0f) : 200) * COMPLEMENT_ANIMATION_DURATION_RATIO)));
+        View view = this.mViewFinderCover;
+        int i = (int) (200.0f * (1.0f - alpha) * COMPLEMENT_ANIMATION_DURATION_RATIO);
+        arrayList.add(getLinearFadeInAnimator(view, i, alpha, 1.0f));
         Iterator<View> it = this.mPrimaryShortcutList.iterator();
         while (it.hasNext()) {
             arrayList.add(getEaseOutScaleAnimator(it.next(), 100));
@@ -242,33 +243,33 @@ class ModeTransitionAnimation {
     }
 
     private Animator getLinearFadeInAnimator(View view, int i, float f, float f2) {
-        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat("alpha", f, f2));
+        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat(ANIMATION_ALPHA, f, f2));
         objectAnimatorOfPropertyValuesHolder.setDuration(i);
         return objectAnimatorOfPropertyValuesHolder;
     }
 
     private Animator getLinearFadeOutAnimator(View view, int i, float f) {
-        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat("alpha", f, 0.0f));
+        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat(ANIMATION_ALPHA, f, 0.0f));
         objectAnimatorOfPropertyValuesHolder.setDuration(i);
         return objectAnimatorOfPropertyValuesHolder;
     }
 
     private ObjectAnimator getEaseOutAnimator(View view, int i) {
-        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat("alpha", 0.0f));
+        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat(ANIMATION_ALPHA, 0.0f));
         objectAnimatorOfPropertyValuesHolder.setDuration(i);
         objectAnimatorOfPropertyValuesHolder.setInterpolator(EASE_OUT_IN);
         return objectAnimatorOfPropertyValuesHolder;
     }
 
     private ObjectAnimator getEaseInScaleAnimator(View view, int i) {
-        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat("alpha", 1.0f), PropertyValuesHolder.ofFloat("scaleX", 0.2f, 1.0f), PropertyValuesHolder.ofFloat("scaleY", 0.2f, 1.0f));
+        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat(ANIMATION_ALPHA, 1.0f), PropertyValuesHolder.ofFloat(ANIMATION_SCALE_X, 0.2f, 1.0f), PropertyValuesHolder.ofFloat(ANIMATION_SCALE_Y, 0.2f, 1.0f));
         objectAnimatorOfPropertyValuesHolder.setDuration(i);
         objectAnimatorOfPropertyValuesHolder.setInterpolator(EASE_OUT_IN);
         return objectAnimatorOfPropertyValuesHolder;
     }
 
     private ObjectAnimator getEaseOutScaleAnimator(View view, int i) {
-        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat("alpha", 0.0f), PropertyValuesHolder.ofFloat("scaleX", 0.0f), PropertyValuesHolder.ofFloat("scaleY", 0.0f));
+        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(view, PropertyValuesHolder.ofFloat(ANIMATION_ALPHA, 0.0f), PropertyValuesHolder.ofFloat(ANIMATION_SCALE_X, 0.0f), PropertyValuesHolder.ofFloat(ANIMATION_SCALE_Y, 0.0f));
         objectAnimatorOfPropertyValuesHolder.setDuration(i);
         objectAnimatorOfPropertyValuesHolder.setInterpolator(EASE_OUT_IN);
         return objectAnimatorOfPropertyValuesHolder;

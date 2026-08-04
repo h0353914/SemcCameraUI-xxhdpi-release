@@ -32,7 +32,7 @@
     <string name="cam_3d_strings_creating_but_too_slow_txt">Ei saanud pildistamist lõpule viia. Panoraamige kiiremini.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Saate kaamerat liigutades panoraamfotosid teha</string>
     <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Järgmiste failide loomine: - pilt mitme nurga alt - 3D-pilt Märkus. Need failid sisaldavad halli ala.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Järgmiste failide loomine: - pilt mitme nurga alt - 3D-pilt </string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Järgmiste failide loomine: - pilt mitme nurga alt - 3D-pilt "</string>
     <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Töötlemine... See pilt sisaldab halli ala</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Pildi salvestamine</string>
     <string name="cam_3d_strings_dialog_processing_txt">Töötlemine...</string>
@@ -360,7 +360,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Saate anda oma nahale särava ja sileda ilme. See efekt töötab rakendustes, mis kasutavad esikaamerat. Seda saab rakendada nii fotodele kui ka videotele. Saate muuta ka taset.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Taseme reguleerimine</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Sile nahk</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Ei saa rakendust käivitada.\nVeenduge, et seadmes on installitud ja lubatud rakenduse %1$s uusim versioon.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Ei saa rakendust käivitada.
+Veenduge, et seadmes on installitud ja lubatud rakenduse %1$s uusim versioon."</string>
     <string name="cam_strings_gridline_txt">Ruudujooned</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Keerake peopesa kaamera poole. Teie peopesa tuvastamisel lülitub automaattaimer sisse. Hõlpsamaks tuvastamiseks sirutage sõrmed üles.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Keerake peopesa kaamera poole</string>
@@ -404,7 +405,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Ühisseaded</string>
     <string name="cam_strings_more_txt">Rohkem</string>
     <string name="cam_strings_multi_window_txt">Tõmba poolitusriba keskpaika, et lülitada %1$s täisekraanile</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Teine seade on nüüd ühendatud.\nKas tahate pilti pildinäidiku kaudu teise seadmega jagada?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Teine seade on nüüd ühendatud.
+Kas tahate pilti pildinäidiku kaudu teise seadmega jagada?"</string>
     <string name="cam_strings_multicam_add_device_txt">Lisa seade</string>
     <string name="cam_strings_multicam_add_more_txt">Lisamine</string>
     <string name="cam_strings_multicam_apply_txt">Valmis</string>
@@ -436,16 +438,19 @@
     <string name="cam_strings_photometry_txt">Mõõtmine</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Ennustatud</string>
     <string name="cam_strings_predictive_capture_txt">Ennustav jäädvustus</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Kaamera käivitati automaatselt, kuna tuvastati liigutus, kus tõstsite telefoni horisontaalrežiimis üles ja suunasite selle objektile.\nSelle funktsiooni lemmik kasutusviisi saate valida kaamera seadete jaotises Nutikas käivitamine.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Kaamera käivitati automaatselt, kuna tuvastati liigutus, kus tõstsite telefoni horisontaalrežiimis üles ja suunasite selle objektile.
+Selle funktsiooni lemmik kasutusviisi saate valida kaamera seadete jaotises Nutikas käivitamine."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Jäädvustamiseks puudutage ringi sees</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Jäädvustamiseks puudutage ekraani</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Täisekraanil kuvamiseks puudutage ringi sees</string>
     <string name="cam_strings_predictive_launch_guide_txt">Kaamera käivitamiseks puudutage ringi sees</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Käivit. ja jäädvust. puudu.</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Käivitamiseks puudutage</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Saate kaamera kiiresti käivitada. Tõstke seade horisontaalselt üles ja osutage kaamera objekti suunas. Kaamera käivitub automaatselt.\nFunkts.lemmikkasutusviisi saate valida kaamera seadete alt suvandi Nutikas käivitus kaudu.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Saate kaamera kiiresti käivitada. Tõstke seade horisontaalselt üles ja osutage kaamera objekti suunas. Kaamera käivitub automaatselt.
+Funkts.lemmikkasutusviisi saate valida kaamera seadete alt suvandi Nutikas käivitus kaudu."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Nutikas käivitus</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Saate kaamera kiiresti käivitada. Tõstke seade horisontaalselt üles ja osutage kaamera objekti suunas. Kaamera käivitub automaatselt.\nFunkts. saate välja lülitada kaamera seadete alt suvandi Nutikas käivitus kaudu.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Saate kaamera kiiresti käivitada. Tõstke seade horisontaalselt üles ja osutage kaamera objekti suunas. Kaamera käivitub automaatselt.
+Funkts. saate välja lülitada kaamera seadete alt suvandi Nutikas käivitus kaudu."</string>
     <string name="cam_strings_predictive_launch_txt">Nutikas käivitus</string>
     <string name="cam_strings_preview_always_txt">Sees</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 sekundit</string>
@@ -478,7 +483,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s vajab järgmisi lubasid</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Rakenduse %1$s luba</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Rakendus vajab toimingu sooritamiseks järgmisi lubasid.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Lubade andmiseks valige Rakenduse teave &gt; Load.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Lubade andmiseks valige Rakenduse teave > Load.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Ei saanud jätkata</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Fotode ja videote tegemine</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Asukohateabe toomine</string>
@@ -525,11 +530,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Salvestatud sisemällu</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">EDASI</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Rakendus vajab toimingu sooritamiseks järgmisi lubasid.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">SD-kaardi kasutamiseks on kaameral vaja SD-kaardi juurdepääsuluba.\nValige andmesalvestuskohaks uuesti SD-kaart või andke järgmisel ekraanil kaamerale SD-kaardi juurdepääsuluba.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"SD-kaardi kasutamiseks on kaameral vaja SD-kaardi juurdepääsuluba.
+Valige andmesalvestuskohaks uuesti SD-kaart või andke järgmisel ekraanil kaamerale SD-kaardi juurdepääsuluba."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD-kaart pole saadaval</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Tuvastati uus SD-kaart, mis vajab lubasid.\n\nSD-kaardi andmemäluna kasutamiseks valige järgmisel kuval SD-kaart või DCIM-kaust.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SD-kaarti või DCIM-kausta ei valitud. SD-kaarti ei saa kasutada.\n\nLubade andmiseks määrake esmalt salvestuskohaks SD-kaart või valige sobiv kaust järgmisel kuval.</string>
-    <string name="cam_strings_sd_permission_info_txt">Leiti uus SD-kaart, mille jaoks on vaja luba.\nSeetõttu kasutatakse vaikimisi andmesalvestina seadme sisemist mälu.\n\nAndmete salvestamiseks SD-kaardi kasutamiseks minge kaamera sätetesse ja muutke salvestusvalikuks SD-kaart.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Tuvastati uus SD-kaart, mis vajab lubasid.
+
+SD-kaardi andmemäluna kasutamiseks valige järgmisel kuval SD-kaart või DCIM-kaust."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD-kaarti või DCIM-kausta ei valitud. SD-kaarti ei saa kasutada.
+
+Lubade andmiseks määrake esmalt salvestuskohaks SD-kaart või valige sobiv kaust järgmisel kuval."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Leiti uus SD-kaart, mille jaoks on vaja luba.
+Seetõttu kasutatakse vaikimisi andmesalvestina seadme sisemist mälu.
+
+Andmete salvestamiseks SD-kaardi kasutamiseks minge kaamera sätetesse ja muutke salvestusvalikuks SD-kaart."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Fotode ja videote salvestamiseks SD-kaardile</string>
     <string name="cam_strings_select_picture_txt">Foto valimine</string>
     <string name="cam_strings_self_timer_05_txt">0,5 sekundit</string>
@@ -552,12 +565,16 @@
     <string name="cam_strings_shutter_trigger_txt">Aut. jäädvustamine</string>
     <string name="cam_strings_side_touch_not_supported_txt">Külgsensor pole sellel ekraanil toetatud</string>
     <string name="cam_strings_side_touch_on_title_txt">Külgsensor</string>
-    <string name="cam_strings_side_touch_on_txt">Funktsiooni kasutamiseks avage Seaded &gt; Ekraan ja lülitage külgsensor sisse. Kas lubada kohe?</string>
+    <string name="cam_strings_side_touch_on_txt">Funktsiooni kasutamiseks avage Seaded > Ekraan ja lülitage külgsensor sisse. Kas lubada kohe?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Külgsensor</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Saate pildistada või videot jäädvustada päästikunupu asemel lihtsalt seadme küljel sensorit topeltpuudutades. Samuti saate näpuga mööda küljesensorit libistades sisse või välja suumida.\nSeda funktsiooni toetavad nii foto- kui ka videorežiim. Saate selle välja lülitada kaamera seadetes valiku Külgsensor all.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Saate portreerežiimis pildistada või videot jäädvustada päästikunupu asemel lihtsalt seadme külgel sensorit topeltpuudutades. Samuti saate näpuga mööda seda külgsensorit libistades sisse või välja suumida.\nSeda funktsiooni toetavad nii foto- kui ka videorežiim. Saate selle välja lülitada kaamera seadetes valiku Külgsensor all.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Saate portreerežiimis pildistada või videot jäädvustada päästikunupu asemel lihtsalt seadme külgel sensorit topeltpuudutades.\nSeda funktsiooni toetavad nii foto- kui ka videorežiim. Saate selle välja lülitada kaamera seadetes valiku Külgsensor all.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Saate pildistada või videot jäädvustada päästikunupu asemel lihtsalt seadme külgel sensorit topeltpuudutades.\nSeda funktsiooni toetavad nii foto- kui ka videorežiim. Saate selle välja lülitada kaamera seadetes valiku Külgsensor all.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Saate pildistada või videot jäädvustada päästikunupu asemel lihtsalt seadme küljel sensorit topeltpuudutades. Samuti saate näpuga mööda küljesensorit libistades sisse või välja suumida.
+Seda funktsiooni toetavad nii foto- kui ka videorežiim. Saate selle välja lülitada kaamera seadetes valiku Külgsensor all."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Saate portreerežiimis pildistada või videot jäädvustada päästikunupu asemel lihtsalt seadme külgel sensorit topeltpuudutades. Samuti saate näpuga mööda seda külgsensorit libistades sisse või välja suumida.
+Seda funktsiooni toetavad nii foto- kui ka videorežiim. Saate selle välja lülitada kaamera seadetes valiku Külgsensor all."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Saate portreerežiimis pildistada või videot jäädvustada päästikunupu asemel lihtsalt seadme külgel sensorit topeltpuudutades.
+Seda funktsiooni toetavad nii foto- kui ka videorežiim. Saate selle välja lülitada kaamera seadetes valiku Külgsensor all."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Saate pildistada või videot jäädvustada päästikunupu asemel lihtsalt seadme külgel sensorit topeltpuudutades.
+Seda funktsiooni toetavad nii foto- kui ka videorežiim. Saate selle välja lülitada kaamera seadetes valiku Külgsensor all."</string>
     <string name="cam_strings_side_touch_txt">Külgsensor</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Salvestamisstiili ja ekraani eraldusvõimet saab muuta Kaameraseadete alt</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Üliaeglane (ühe võttega)</string>
@@ -565,7 +582,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Üliaegluup</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Saate muuta aegluubi kaadrisagedust ja salvestamisstiili</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Veel valikuid</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Salvestage tähtsad hetked kohe aegluubis %1$s kaadrit/s, koputades ekraani keskel olevat nuppu.\nValgusküllastes tingimustes salvestamine võimaldab saada parema video.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Salvestage tähtsad hetked kohe aegluubis %1$s kaadrit/s, koputades ekraani keskel olevat nuppu.
+Valgusküllastes tingimustes salvestamine võimaldab saada parema video."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Õige hetke salvestamiseks kiirusega %1$s kaadrit/s puudutage keskmist nuppu</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Salvestage tähtsad hetked koheselt aegluubis %1$s kaadrit/s, vajutades koputades ekraani keskel olevat nuppu</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Üliaegluup (ühe võttega)</string>
@@ -576,7 +594,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Aegluup</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Kuidas salvestada?</string>
     <string name="cam_strings_slow_motion_standard_txt">Aegluup</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Looge muljet avaldav video, näidates tähtsaid hetki aegluubis.\nValgusküllastes tingimustes salvestamine võimaldab saada parema video.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Looge muljet avaldav video, näidates tähtsaid hetki aegluubis.
+Valgusküllastes tingimustes salvestamine võimaldab saada parema video."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Video salvestamiseks erinevate kiirustega määrake kiiruseks %1$s kaadrit/s</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Koputage õigel hetkel keskel olevat nuppu.</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Aegluup-salvestatud</string>
@@ -607,12 +626,12 @@
     <string name="cam_strings_sw_licence_title_txt">Tarkvaralitsentsid</string>
     <string name="cam_strings_take_photo_txt">Pildista</string>
     <string name="cam_strings_term_of_use_accept_txt">Nõustu</string>
-    <string name="cam_strings_term_of_use_consent_txt">Nõustun Sony Mobile\'i &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;kasutustingimustega&lt;/a&gt;.</string>
+    <string name="cam_strings_term_of_use_consent_txt">"Nõustun Sony Mobile'i &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">kasutustingimustega&lt;/a>."</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Sõltuvalt andmesidelepingust võivad selle teenuse kasutamisel rakenduda mobiilandmesidetasud.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile kogub teenuse raames sobivate tulemuste pakkumiseks ja teenuse täiustamiseks teie Android ID seadme ainuidentifikaatori räsiväärtuse, asukohapõhised andmed ja ajatempli.</string>
     <string name="cam_strings_term_of_use_decline_txt">Keeldu</string>
     <string name="cam_strings_term_of_use_title_txt">Kasutustingimused</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Kasutustingimused&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Kasutustingimused&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Fotode valiku tühistamine</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Ei saanud salvestada</string>
     <string name="cam_strings_timeshift_save_complete_txt">Salvestatud</string>
@@ -639,7 +658,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">4K-video stabiilseks salvestamiseks ärge seda seadet muutke, v.a juhul, kui kasutate kiiret SD-kaarti (soovitatav on vähemalt UHS-kiirusklass 1 või kiirusklass 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Stabiilseks Timeshift-video salvestamiseks ei tohi te seda seadet muuta, v.a juhul, kui kasutate kiiret SD-kaarti (soovituslik on UHS-i kiirusklass 1 või suurem või kiirusklass 10). Kas muuta ikkagi?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Aegluubis video stabiilseks salvestamiseks ärge seda seadet muutke, v.a juhul, kui kasutate kiiret SD-kaarti (soovitatav on vähemalt UHS-kiirusklass 1 või kiirusklass 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Stabiilseks video salvestamiseks soovitame andmete talletamiseks valida sisemälu. Kas soovite kohe muuta?\n\nKui jätkate SD-kaardi mäluruumina kasutamist, kasutage kindlasti kiiret SD-kaarti (soovituslik on UHS-i kiirusklass 1 või suurem või kiirusklass 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Stabiilseks video salvestamiseks soovitame andmete talletamiseks valida sisemälu. Kas soovite kohe muuta?
+
+Kui jätkate SD-kaardi mäluruumina kasutamist, kasutage kindlasti kiiret SD-kaarti (soovituslik on UHS-i kiirusklass 1 või suurem või kiirusklass 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Topeltkaamera</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Topeltkaamerat kasutades saate salvestada madala müratasemega kauneid videoid ka öösel või hämara valgustusega ruumis. Kaamera lülitub stseenidele tuginedes automaatselt üksik- ja topeltkaamera vahel, et salvestada ülisuure valgustundlikkusega.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Video jäädvustamine topeltkaameraga</string>

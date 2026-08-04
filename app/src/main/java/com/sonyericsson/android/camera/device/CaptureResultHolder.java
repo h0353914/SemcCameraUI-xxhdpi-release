@@ -1,7 +1,6 @@
 package com.sonyericsson.android.camera.device;
 
 import android.hardware.camera2.CaptureResult;
-import android.hardware.camera2.CaptureResult$Key;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -47,16 +46,16 @@ class CaptureResultHolder {
         }
     }
 
-    <T> List<T> getValueList(CaptureResult$Key<T> captureResult$Key) {
+    <T> List<T> getValueList(CaptureResult.Key<T> key) {
         this.mReadWriteLock.readLock().lock();
         try {
             if (CamLog.VERBOSE) {
-                CamLog.d("getValueList(): " + captureResult$Key.getName());
+                CamLog.d("getValueList(): " + key.getName());
             }
             ArrayList arrayList = new ArrayList();
             Iterator<CaptureResult> it = this.mCaptureResultQueue.iterator();
             while (it.hasNext()) {
-                arrayList.add(it.next().get(captureResult$Key));
+                arrayList.add(it.next().get(key));
             }
             return arrayList;
         } finally {
@@ -64,15 +63,15 @@ class CaptureResultHolder {
         }
     }
 
-    <T> T getLatestValue(CaptureResult$Key<T> captureResult$Key) {
+    <T> T getLatestValue(CaptureResult.Key<T> key) {
         this.mReadWriteLock.readLock().lock();
         try {
             if (CamLog.VERBOSE) {
-                CamLog.d("getLatestValue(): " + captureResult$Key.getName());
+                CamLog.d("getLatestValue(): " + key.getName());
             }
             CaptureResult latest = getLatest();
             if (latest != null) {
-                return (T) latest.get(captureResult$Key);
+                return (T) latest.get(key);
             }
             return null;
         } finally {
@@ -93,9 +92,9 @@ class CaptureResultHolder {
                 }
                 return;
             }
-            Iterator<CaptureResult$Key<?>> it = captureResultPeekLast.getKeys().iterator();
+            Iterator<CaptureResult.Key<?>> it = captureResultPeekLast.getKeys().iterator();
             while (it.hasNext()) {
-                CaptureResult$Key<?> applicationCaptureResultKey = getApplicationCaptureResultKey(it.next());
+                CaptureResult.Key<?> applicationCaptureResultKey = getApplicationCaptureResultKey(it.next());
                 StringBuilder sb = new StringBuilder();
                 sb.append("key: ");
                 sb.append(applicationCaptureResultKey);
@@ -122,15 +121,15 @@ class CaptureResultHolder {
         }
     }
 
-    private CaptureResult$Key<?> getApplicationCaptureResultKey(CaptureResult$Key<?> captureResult$Key) {
-        String name = captureResult$Key.getName();
+    private CaptureResult.Key<?> getApplicationCaptureResultKey(CaptureResult.Key<?> key) {
+        String name = key.getName();
         if (name != null) {
-            for (CaptureResult$Key<?> captureResult$Key2 : SomcCameraDeviceInfo.getAllCaptureResultKeys()) {
-                if (captureResult$Key2.getName().equals(name)) {
-                    return captureResult$Key2;
+            for (CaptureResult.Key<?> key2 : SomcCameraDeviceInfo.getAllCaptureResultKeys()) {
+                if (key2.getName().equals(name)) {
+                    return key2;
                 }
             }
         }
-        return captureResult$Key;
+        return key;
     }
 }

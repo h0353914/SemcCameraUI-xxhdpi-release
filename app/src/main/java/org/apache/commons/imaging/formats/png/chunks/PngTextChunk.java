@@ -10,6 +10,17 @@ public abstract class PngTextChunk extends PngChunk {
     public abstract String getText();
 
     public PngTextChunk(int i, int i2, int i3, byte[] bArr) {
+
+
+
+
+
+
+
+
+
+
+
         super(i, i2, i3, bArr);
     }
 }

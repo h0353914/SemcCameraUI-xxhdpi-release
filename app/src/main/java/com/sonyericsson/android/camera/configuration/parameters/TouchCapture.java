@@ -1,11 +1,12 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
 public enum TouchCapture implements UserSettingValue {
-    ON(-1, 2131690116, -1, true),
-    FRONT_ONLY(-1, 2131690024, -1, false),
-    OFF(-1, 2131690115, -1, false);
+    ON(-1, R.string.cam_strings_settings_on_txt, -1, true),
+    FRONT_ONLY(-1, R.string.cam_strings_preview_only_front_txt, -1, false),
+    OFF(-1, R.string.cam_strings_settings_off_txt, -1, false);
 
     public static final String TAG = "TouchCapture";
     private static final int sParameterTextId = 2131690194;

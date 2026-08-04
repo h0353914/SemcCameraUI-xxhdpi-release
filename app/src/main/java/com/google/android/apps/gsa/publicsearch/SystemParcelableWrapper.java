@@ -2,10 +2,21 @@ package com.google.android.apps.gsa.publicsearch;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
 
 public final class SystemParcelableWrapper implements Parcelable {
-    public static final Parcelable$Creator<SystemParcelableWrapper> CREATOR = new SystemParcelableWrapper$1();
+    public static final Parcelable.Creator<SystemParcelableWrapper> CREATOR = new Parcelable.Creator<SystemParcelableWrapper>() { // from class: com.google.android.apps.gsa.publicsearch.SystemParcelableWrapper.1
+        /* JADX WARN: Can't rename method to resolve collision */
+        @Override // android.os.Parcelable.Creator
+        public SystemParcelableWrapper createFromParcel(Parcel source) {
+            return new SystemParcelableWrapper(source.readParcelable(null));
+        }
+
+        /* JADX WARN: Can't rename method to resolve collision */
+        @Override // android.os.Parcelable.Creator
+        public SystemParcelableWrapper[] newArray(int size) {
+            return new SystemParcelableWrapper[size];
+        }
+    };
     private final Parcelable parcelable;
 
     @Override // android.os.Parcelable

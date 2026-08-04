@@ -1,14 +1,16 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 import java.util.List;
 
 public enum Hdr implements UserSettingValue {
-    HDR_ON(2131231054, 2131690116, "on-still-hdr"),
-    HDR_AUTO(2131231054, 2131690116, "auto"),
-    HDR_OFF(2131231053, 2131690115, "off");
+    HDR_ON(R.drawable.cam_core_hdr_shortcut_on_icn, R.string.cam_strings_settings_on_txt, CameraParameters.STILL_HDR_ON),
+    HDR_AUTO(R.drawable.cam_core_hdr_shortcut_on_icn, R.string.cam_strings_settings_on_txt, "auto"),
+    HDR_OFF(R.drawable.cam_core_hdr_shortcut_off_icn, R.string.cam_strings_settings_off_txt, "off");
 
     public static final String TAG = "Hdr";
     private static final int sParameterTextId = 2131689871;

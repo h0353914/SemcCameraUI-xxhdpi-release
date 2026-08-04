@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
 import com.google.android.gms.common.api.Scope;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzad implements Parcelable$Creator<ValidateAccountRequest> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzad implements Parcelable.Creator<ValidateAccountRequest> {
     static void zza(ValidateAccountRequest validateAccountRequest, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, validateAccountRequest.mVersionCode);
@@ -20,17 +20,9 @@ public class zzad implements Parcelable$Creator<ValidateAccountRequest> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ValidateAccountRequest createFromParcel(Parcel parcel) {
-        return zzan(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ValidateAccountRequest[] newArray(int i) {
-        return zzbL(i);
-    }
-
-    public ValidateAccountRequest zzan(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzan, reason: merged with bridge method [inline-methods] */
+    public ValidateAccountRequest createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         int iZzg2 = 0;
@@ -67,10 +59,12 @@ public class zzad implements Parcelable$Creator<ValidateAccountRequest> {
         if (parcel.dataPosition() == iZzap) {
             return new ValidateAccountRequest(iZzg, iZzg2, iBinderZzq, scopeArr, bundleZzr, strZzp);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public ValidateAccountRequest[] zzbL(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbL, reason: merged with bridge method [inline-methods] */
+    public ValidateAccountRequest[] newArray(int i) {
         return new ValidateAccountRequest[i];
     }
 }

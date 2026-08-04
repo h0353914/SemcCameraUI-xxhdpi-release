@@ -6,12 +6,6 @@ public final class DescriptorProtos$EnumDescriptorProto$EnumReservedRange extend
     private static volatile DescriptorProtos$EnumDescriptorProto$EnumReservedRange[] _emptyArray;
     public int end;
     public int start;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$EnumDescriptorProto$EnumReservedRange[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

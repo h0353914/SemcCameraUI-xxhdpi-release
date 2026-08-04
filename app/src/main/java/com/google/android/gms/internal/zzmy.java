@@ -1,11 +1,12 @@
 package com.google.android.gms.internal;
 
 import android.app.ActivityManager;
-import android.app.ActivityManager$RunningAppProcessInfo;
 import android.content.Context;
 import android.os.Binder;
+import com.sonyericsson.android.camera.view.modeselector.CameraCommonProviderConstants;
 import java.util.List;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzmy {
     private static String zza(StackTraceElement[] stackTraceElementArr, int i) {
         int i2 = 4 + i;
@@ -21,13 +22,13 @@ public class zzmy {
     }
 
     public static String zzj(Context context, int i) {
-        List<ActivityManager$RunningAppProcessInfo> runningAppProcesses = ((ActivityManager) context.getSystemService("activity")).getRunningAppProcesses();
+        List<ActivityManager.RunningAppProcessInfo> runningAppProcesses = ((ActivityManager) context.getSystemService(CameraCommonProviderConstants.CapturingModeColumns.ACTIVITY)).getRunningAppProcesses();
         if (runningAppProcesses == null) {
             return null;
         }
-        for (ActivityManager$RunningAppProcessInfo activityManager$RunningAppProcessInfo : runningAppProcesses) {
-            if (activityManager$RunningAppProcessInfo.pid == i) {
-                return activityManager$RunningAppProcessInfo.processName;
+        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : runningAppProcesses) {
+            if (runningAppProcessInfo.pid == i) {
+                return runningAppProcessInfo.processName;
             }
         }
         return null;

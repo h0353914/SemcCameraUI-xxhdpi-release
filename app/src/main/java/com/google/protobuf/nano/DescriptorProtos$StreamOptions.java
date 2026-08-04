@@ -23,12 +23,6 @@ public final class DescriptorProtos$StreamOptions extends ExtendableMessageNano<
     @NanoEnumValue(legacy = false, value = DescriptorProtos$StreamOptions$TokenUnit.class)
     public int tokenUnit;
     public DescriptorProtos$UninterpretedOption[] uninterpretedOption;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     @NanoEnumValue(legacy = false, value = DescriptorProtos$StreamOptions$TokenUnit.class)
     public static int checkTokenUnitOrThrow(int value) {
         if (value >= 0 && value <= 1) {
@@ -264,7 +258,6 @@ public final class DescriptorProtos$StreamOptions extends ExtendableMessageNano<
                     if (!super.storeUnknownField(input, tag)) {
                         return this;
                     }
-                    break;
                     break;
             }
         }

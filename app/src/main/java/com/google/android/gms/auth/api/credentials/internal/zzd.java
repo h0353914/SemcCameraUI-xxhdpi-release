@@ -1,26 +1,23 @@
 package com.google.android.gms.auth.api.credentials.internal;
 
 import android.content.Context;
+import android.os.DeadObjectException;
 import android.os.RemoteException;
 import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.common.api.Api$zzb;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Result;
-import com.google.android.gms.internal.zzlb$zza;
+import com.google.android.gms.internal.zzlb;
 
-abstract class zzd<R extends Result> extends zzlb$zza<R, zze> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+abstract class zzd<R extends Result> extends zzlb.zza<R, zze> {
     zzd(GoogleApiClient googleApiClient) {
         super(Auth.zzRF, googleApiClient);
     }
 
-    protected abstract void zza(Context context, zzh zzhVar) throws RemoteException;
+    protected abstract void zza(Context context, zzh zzhVar) throws DeadObjectException, RemoteException;
 
-    protected final void zza(zze zzeVar) throws RemoteException {
+    @Override // com.google.android.gms.internal.zzlb.zza
+    protected final void zza(zze zzeVar) throws DeadObjectException, RemoteException {
         zza(zzeVar.getContext(), zzeVar.zzpc());
-    }
-
-    @Override // com.google.android.gms.internal.zzlb$zza
-    protected /* bridge */ /* synthetic */ void zza(Api$zzb api$zzb) throws RemoteException {
-        zza((zze) api$zzb);
     }
 }

@@ -6,7 +6,6 @@ import java.util.zip.InflaterInputStream;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.formats.png.PngText;
-import org.apache.commons.imaging.formats.png.PngText$Ztxt;
 
 public class PngChunkZtxt extends PngTextChunk {
     public final String keyword;
@@ -43,6 +42,6 @@ public class PngChunkZtxt extends PngTextChunk {
 
     @Override // org.apache.commons.imaging.formats.png.chunks.PngTextChunk
     public PngText getContents() {
-        return new PngText$Ztxt(this.keyword, this.text);
+        return new PngText.Ztxt(this.keyword, this.text);
     }
 }

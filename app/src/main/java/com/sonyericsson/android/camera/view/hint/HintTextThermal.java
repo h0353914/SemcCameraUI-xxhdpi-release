@@ -1,18 +1,21 @@
 package com.sonyericsson.android.camera.view.hint;
 
+import com.sonyericsson.android.camera.R;
+import com.sonyericsson.android.camera.view.hint.HintTextContent;
+
 public abstract class HintTextThermal extends HintTextContent {
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
     public int getButtonDescriptionResourceId() {
-        return 2131689704;
+        return R.string.cam_strings_cooling_mode_learn_more_txt;
     }
 
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
     public int getButtonMessageResourceId() {
-        return 2131689704;
+        return R.string.cam_strings_cooling_mode_learn_more_txt;
     }
 
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
-    public HintTextContent$HintPriority getPriority() {
-        return HintTextContent$HintPriority.MIDDLE;
+    public HintTextContent.HintPriority getPriority() {
+        return HintTextContent.HintPriority.MIDDLE;
     }
 }

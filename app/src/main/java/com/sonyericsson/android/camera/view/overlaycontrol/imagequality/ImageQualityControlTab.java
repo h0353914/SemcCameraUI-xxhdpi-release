@@ -6,12 +6,11 @@ import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout$LayoutParams;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CoordinateUtil;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 import com.sonymobile.cameracommon.font.FontUtil;
-import com.sonymobile.cameracommon.font.FontUtil$RobotoFontType;
 
 class ImageQualityControlTab extends LinearLayout {
     private RelativeLayout mContainer;
@@ -29,23 +28,23 @@ class ImageQualityControlTab extends LinearLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         setWillNotDraw(false);
-        this.mContainer = (RelativeLayout) findViewById(2131296363);
+        this.mContainer = (RelativeLayout) findViewById(R.id.container);
         this.mIcon = (ImageView) findViewById(2131296423);
-        this.mValueText = (TextView) findViewById(2131296691);
-        this.mValueIcon = (ImageView) findViewById(2131296690);
+        this.mValueText = (TextView) findViewById(R.id.valueText);
+        this.mValueIcon = (ImageView) findViewById(R.id.valueIcon);
         if (getResources().getDisplayMetrics().densityDpi > DisplayMetrics.DENSITY_DEVICE_STABLE) {
             float f = (DisplayMetrics.DENSITY_DEVICE_STABLE * 1.0f) / 160.0f;
-            RelativeLayout$LayoutParams relativeLayout$LayoutParams = (RelativeLayout$LayoutParams) this.mIcon.getLayoutParams();
-            relativeLayout$LayoutParams.height = (int) (CoordinateUtil.convertPx2Dip(this.mContext, relativeLayout$LayoutParams.height) * f);
-            this.mIcon.setLayoutParams(relativeLayout$LayoutParams);
-            RelativeLayout$LayoutParams relativeLayout$LayoutParams2 = (RelativeLayout$LayoutParams) this.mValueText.getLayoutParams();
-            relativeLayout$LayoutParams2.height = (int) (CoordinateUtil.convertPx2Dip(this.mContext, relativeLayout$LayoutParams2.height) * f);
-            this.mValueText.setLayoutParams(relativeLayout$LayoutParams2);
-            RelativeLayout$LayoutParams relativeLayout$LayoutParams3 = (RelativeLayout$LayoutParams) this.mValueIcon.getLayoutParams();
-            relativeLayout$LayoutParams3.height = (int) (CoordinateUtil.convertPx2Dip(this.mContext, relativeLayout$LayoutParams3.height) * f);
-            this.mValueIcon.setLayoutParams(relativeLayout$LayoutParams3);
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) this.mIcon.getLayoutParams();
+            layoutParams.height = (int) (CoordinateUtil.convertPx2Dip(this.mContext, layoutParams.height) * f);
+            this.mIcon.setLayoutParams(layoutParams);
+            RelativeLayout.LayoutParams layoutParams2 = (RelativeLayout.LayoutParams) this.mValueText.getLayoutParams();
+            layoutParams2.height = (int) (CoordinateUtil.convertPx2Dip(this.mContext, layoutParams2.height) * f);
+            this.mValueText.setLayoutParams(layoutParams2);
+            RelativeLayout.LayoutParams layoutParams3 = (RelativeLayout.LayoutParams) this.mValueIcon.getLayoutParams();
+            layoutParams3.height = (int) (CoordinateUtil.convertPx2Dip(this.mContext, layoutParams3.height) * f);
+            this.mValueIcon.setLayoutParams(layoutParams3);
         }
-        FontUtil.setRobotoFont(this.mValueText, FontUtil$RobotoFontType.MEDIUM);
+        FontUtil.setRobotoFont(this.mValueText, FontUtil.RobotoFontType.MEDIUM);
     }
 
     public void setIcon(int i) {
@@ -58,7 +57,7 @@ class ImageQualityControlTab extends LinearLayout {
         if (!z) {
             this.mValueText.setTextColor(-1);
         } else {
-            this.mValueText.setTextColor(getResources().getColor(2131099718));
+            this.mValueText.setTextColor(getResources().getColor(R.color.image_quality_control_tab_text_color_selected));
         }
         this.mValueText.setVisibility(0);
     }

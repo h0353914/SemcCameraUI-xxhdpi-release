@@ -9,14 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.cameracommon.contentsview.ContentLoader;
+import com.sonyericsson.cameracommon.contentsview.ContentPallet;
 import com.sonyericsson.cameracommon.contentsview.contents.Content;
-import com.sonyericsson.cameracommon.contentsview.contents.Content$ContentInfo;
 import com.sonyericsson.cameracommon.storage.Storage;
-import com.sonyericsson.cameracommon.storage.Storage$StorageReadyState;
-import com.sonyericsson.cameracommon.storage.Storage$StorageState;
-import com.sonyericsson.cameracommon.storage.Storage$StorageStateListener;
-import com.sonyericsson.cameracommon.storage.Storage$StorageType;
+import com.sonyericsson.cameracommon.storage.StorageUtil;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
 import com.sonyericsson.cameracommon.utility.IncrementalId;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ContentsViewController implements Storage$StorageStateListener, ContentLoader$ContentCreationCallback {
+public class ContentsViewController implements Storage.StorageStateListener, ContentLoader.ContentCreationCallback {
     public static final int MAX_CONTENT_NUMBER = 1;
     public static final String TAG = "ContentsViewController";
     private Activity mActivity;
@@ -33,50 +32,41 @@ public class ContentsViewController implements Storage$StorageStateListener, Con
     private ContentLoader mContentLoader;
     private boolean mIsCoreCamera;
     private int mOrientation;
-    private ContentLoader$SecurityLevel mSecurityLevel;
+    private ContentLoader.SecurityLevel mSecurityLevel;
     private Storage mStorage;
-    private ContentPallet$ThumbnailStateListener mThumbnailStateListener;
+    private ContentPallet.ThumbnailStateListener mThumbnailStateListener;
     private boolean mClickable = true;
-    private ContentsViewController$ClickListener mClickListener = null;
-    private ContentsViewController$OnClickThumbnailProgressListener mClickThumbnailProgressListener = null;
+    private ClickListener mClickListener = null;
+    private OnClickThumbnailProgressListener mClickThumbnailProgressListener = null;
     private Handler mHandler = new Handler(Looper.getMainLooper());
-    private final List<ContentsViewController$UpdateContentTask> mUpdateContentTaskList = Collections.synchronizedList(new LinkedList());
+    private final List<UpdateContentTask> mUpdateContentTaskList = Collections.synchronizedList(new LinkedList());
     private final IncrementalId mRequestIdGenerator = new IncrementalId();
 
-    @Override // com.sonyericsson.cameracommon.storage.Storage$StorageStateListener
-    public void onStorageSizeChanged(Storage$StorageType storage$StorageType, long j) {
+    public interface OnClickThumbnailProgressListener {
+        void onClickThumbnailProgress();
     }
 
-    static /* synthetic */ ContentsViewController$OnClickThumbnailProgressListener access$100(ContentsViewController contentsViewController) {
-        return contentsViewController.mClickThumbnailProgressListener;
-    }
-
-    static /* synthetic */ List access$200(ContentsViewController contentsViewController) {
-        return contentsViewController.mUpdateContentTaskList;
-    }
-
-    static /* synthetic */ ContentLoader access$300(ContentsViewController contentsViewController) {
-        return contentsViewController.mContentLoader;
-    }
-
-    static /* synthetic */ Activity access$400(ContentsViewController contentsViewController) {
-        return contentsViewController.mActivity;
+    @Override // com.sonyericsson.cameracommon.storage.Storage.StorageStateListener
+    public void onStorageSizeChanged(Storage.StorageType storageType, long j) {
     }
 
     public void requestLayout() {
         this.mContentContainer.requestLayout();
     }
 
-    public ContentsViewController(Activity activity, Storage storage, ContentLoader$SecurityLevel contentLoader$SecurityLevel, ContentPallet$ThumbnailStateListener contentPallet$ThumbnailStateListener) {
+    public ContentsViewController(Activity activity, Storage storage, ContentLoader.SecurityLevel securityLevel, ContentPallet.ThumbnailStateListener thumbnailStateListener) {
         this.mThumbnailStateListener = null;
         this.mIsCoreCamera = false;
         this.mActivity = activity;
-        this.mContentLoader = new ContentLoader(storage, contentLoader$SecurityLevel, this);
-        this.mContentContainer = (ContentsContainer) activity.findViewById(2131296370);
+        this.mContentLoader = new ContentLoader(storage, securityLevel, this);
+        this.mContentContainer = (ContentsContainer) activity.findViewById(R.id.contents_container);
         this.mStorage = storage;
-        this.mThumbnailStateListener = contentPallet$ThumbnailStateListener;
+        this.mThumbnailStateListener = thumbnailStateListener;
         this.mIsCoreCamera = CommonUtility.isCoreCameraApp(activity);
-        this.mSecurityLevel = contentLoader$SecurityLevel;
+        this.mSecurityLevel = securityLevel;
+        if (this.mContentContainer == null) {
+            CamLog.w("ContentsViewController: mContentContainer is null.");
+        }
     }
 
     public void pause() {
@@ -96,7 +86,7 @@ public class ContentsViewController implements Storage$StorageStateListener, Con
         this.mContentLoader.release();
         this.mContentLoader = null;
         this.mStorage.removeStorageStateListener(this);
-        Iterator<ContentsViewController$UpdateContentTask> it = this.mUpdateContentTaskList.iterator();
+        Iterator<UpdateContentTask> it = this.mUpdateContentTaskList.iterator();
         while (it.hasNext()) {
             this.mHandler.removeCallbacks(it.next());
         }
@@ -132,9 +122,9 @@ public class ContentsViewController implements Storage$StorageStateListener, Con
             CamLog.d("createEmptyContentFrame : create pallet. id = " + next);
         }
         if (this.mIsCoreCamera) {
-            contentPallet = (ContentPallet) layoutInflater.inflate(2131492913, (ViewGroup) null);
+            contentPallet = (ContentPallet) layoutInflater.inflate(R.layout.content_pallet_core_camera, (ViewGroup) null);
         } else {
-            contentPallet = (ContentPallet) layoutInflater.inflate(2131492912, (ViewGroup) null);
+            contentPallet = (ContentPallet) layoutInflater.inflate(R.layout.content_pallet, (ViewGroup) null);
         }
         contentPallet.initialize(next, this.mThumbnailStateListener);
         if (!this.mClickable) {
@@ -172,7 +162,7 @@ public class ContentsViewController implements Storage$StorageStateListener, Con
         if (this.mContentLoader == null) {
             return;
         }
-        if (searchPallet(i) != null || this.mSecurityLevel == ContentLoader$SecurityLevel.NEWLY_ADDED_CONTENT_ONLY) {
+        if (searchPallet(i) != null || this.mSecurityLevel == ContentLoader.SecurityLevel.NEWLY_ADDED_CONTENT_ONLY) {
             this.mContentLoader.request(i, uri);
         } else {
             if (i == -1 || this.mContentContainer.getChildCount() != 0) {
@@ -297,7 +287,7 @@ public class ContentsViewController implements Storage$StorageStateListener, Con
         return false;
     }
 
-    @Override // com.sonyericsson.cameracommon.contentsview.ContentLoader$ContentCreationCallback
+    @Override // com.sonyericsson.cameracommon.contentsview.ContentLoader.ContentCreationCallback
     public void onContentCreated(int i, Content content, Bitmap bitmap) {
         if (CamLog.VERBOSE) {
             CamLog.d("onContentCreated( " + i + " )");
@@ -319,7 +309,7 @@ public class ContentsViewController implements Storage$StorageStateListener, Con
         }
     }
 
-    @Override // com.sonyericsson.cameracommon.contentsview.ContentLoader$ContentCreationCallback
+    @Override // com.sonyericsson.cameracommon.contentsview.ContentLoader.ContentCreationCallback
     public void onNoContentLoaded() {
         remove();
     }
@@ -329,14 +319,14 @@ public class ContentsViewController implements Storage$StorageStateListener, Con
         this.mContentContainer.removeAllViews();
     }
 
-    @Override // com.sonyericsson.cameracommon.storage.Storage$StorageStateListener
-    public void onStorageStateChanged(Storage$StorageType storage$StorageType, Storage$StorageState storage$StorageState, Storage$StorageReadyState storage$StorageReadyState) {
+    @Override // com.sonyericsson.cameracommon.storage.Storage.StorageStateListener
+    public void onStorageStateChanged(Storage.StorageType storageType, Storage.StorageState storageState, Storage.StorageReadyState storageReadyState) {
         if (CamLog.VERBOSE) {
             CamLog.d("onStorageStateChanged");
         }
-        ContentsViewController$UpdateContentTask contentsViewController$UpdateContentTask = new ContentsViewController$UpdateContentTask(this, storage$StorageType, storage$StorageState);
-        this.mUpdateContentTaskList.add(contentsViewController$UpdateContentTask);
-        this.mHandler.post(contentsViewController$UpdateContentTask);
+        UpdateContentTask updateContentTask = new UpdateContentTask(storageType, storageState);
+        this.mUpdateContentTaskList.add(updateContentTask);
+        this.mHandler.post(updateContentTask);
     }
 
     public void showProgress(int i) {
@@ -345,13 +335,13 @@ public class ContentsViewController implements Storage$StorageStateListener, Con
         }
         ContentPallet contentPalletSearchPallet = searchPallet(i);
         if (contentPalletSearchPallet != null) {
-            View viewFindViewById = contentPalletSearchPallet.findViewById(2131296367);
+            View viewFindViewById = contentPalletSearchPallet.findViewById(R.id.content_progress_bar);
             if (viewFindViewById != null) {
                 viewFindViewById.setVisibility(0);
                 viewFindViewById.setOnClickListener(this.mClickListener);
             }
             if (CamLog.VERBOSE) {
-                CamLog.d("ContentsViewController", "progress = " + contentPalletSearchPallet.findViewById(2131296367));
+                CamLog.d(TAG, "progress = " + contentPalletSearchPallet.findViewById(R.id.content_progress_bar));
             }
         }
     }
@@ -372,19 +362,35 @@ public class ContentsViewController implements Storage$StorageStateListener, Con
         this.mClickable = false;
     }
 
-    public void setClickThumbnailProgressListener(ContentsViewController$OnClickThumbnailProgressListener contentsViewController$OnClickThumbnailProgressListener) {
+    public void setClickThumbnailProgressListener(OnClickThumbnailProgressListener onClickThumbnailProgressListener) {
         if (CamLog.VERBOSE) {
             CamLog.d("setClickThumbnailProgressListener");
         }
-        this.mClickThumbnailProgressListener = contentsViewController$OnClickThumbnailProgressListener;
-        if (contentsViewController$OnClickThumbnailProgressListener == null) {
+        this.mClickThumbnailProgressListener = onClickThumbnailProgressListener;
+        if (onClickThumbnailProgressListener == null) {
             this.mClickListener = null;
         } else {
-            this.mClickListener = new ContentsViewController$ClickListener(this, null);
+            this.mClickListener = new ClickListener();
         }
     }
 
-    public List<Content$ContentInfo> getLocalContentInfo() {
+    private class ClickListener implements View.OnClickListener {
+        private ClickListener() {
+        }
+
+        @Override // android.view.View.OnClickListener
+        public void onClick(View view) {
+            if (CamLog.VERBOSE) {
+                CamLog.d("onClick: " + view);
+            }
+            if (ContentsViewController.this.mClickThumbnailProgressListener == null || view == null || view.getId() != 2131296367) {
+                return;
+            }
+            ContentsViewController.this.mClickThumbnailProgressListener.onClickThumbnailProgress();
+        }
+    }
+
+    public List<Content.ContentInfo> getLocalContentInfo() {
         return this.mContentLoader.getLocalCache();
     }
 
@@ -429,5 +435,30 @@ public class ContentsViewController implements Storage$StorageStateListener, Con
             return -1;
         }
         return contentPallet.getRequestId();
+    }
+
+    private class UpdateContentTask implements Runnable {
+        private final Storage.StorageState mChangedStorageState;
+        private final Storage.StorageType mChangedStorageType;
+
+        UpdateContentTask(Storage.StorageType storageType, Storage.StorageState storageState) {
+            this.mChangedStorageType = storageType;
+            this.mChangedStorageState = storageState;
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            ContentsViewController.this.mUpdateContentTaskList.remove(this);
+            if (ContentsViewController.this.mContentLoader == null || ContentsViewController.this.mContentLoader.getLocalCache() == null) {
+                return;
+            }
+            if (!(this.mChangedStorageState == Storage.StorageState.AVAILABLE || this.mChangedStorageState == Storage.StorageState.AVAILABLE_NEAR_FULL || this.mChangedStorageState == Storage.StorageState.FULL || this.mChangedStorageState == Storage.StorageState.READ_ONLY) && ContentsViewController.this.mContentLoader.getLocalCache().size() > 0 && StorageUtil.getStorageTypeFromPath(ContentsViewController.this.mContentLoader.getLocalCache().getFirst().mOriginalPath, ContentsViewController.this.mActivity) == this.mChangedStorageType) {
+                ContentsViewController.this.clearContents();
+            }
+            if (ContentsViewController.this.isLoading()) {
+                return;
+            }
+            ContentsViewController.this.reload();
+        }
     }
 }

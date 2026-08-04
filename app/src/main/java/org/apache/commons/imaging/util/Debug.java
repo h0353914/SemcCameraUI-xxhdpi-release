@@ -25,13 +25,13 @@ public final class Debug {
     private static String getDebug(String str, int[] iArr) {
         StringBuilder sb = new StringBuilder();
         if (iArr == null) {
-            sb.append(str + " (" + ((Object) null) + ")\r\n");
+            sb.append(str + " (" + ((Object) null) + ")" + NEWLINE);
         } else {
-            sb.append(str + " (" + iArr.length + ")\r\n");
+            sb.append(str + " (" + iArr.length + ")" + NEWLINE);
             for (int i : iArr) {
-                sb.append("\t" + i + "\r\n");
+                sb.append("\t" + i + NEWLINE);
             }
-            sb.append("\r\n");
+            sb.append(NEWLINE);
         }
         return sb.toString();
     }
@@ -43,17 +43,17 @@ public final class Debug {
     private static String getDebug(String str, byte[] bArr, int i) {
         StringBuilder sb = new StringBuilder();
         if (bArr == null) {
-            sb.append(str + " (" + ((Object) null) + ")\r\n");
+            sb.append(str + " (" + ((Object) null) + ")" + NEWLINE);
         } else {
-            sb.append(str + " (" + bArr.length + ")\r\n");
+            sb.append(str + " (" + bArr.length + ")" + NEWLINE);
             for (int i2 = 0; i2 < i && i2 < bArr.length; i2++) {
                 int i3 = 255 & bArr[i2];
-                sb.append("\t" + i2 + ": " + i3 + " (" + ((i3 == 0 || i3 == 10 || i3 == 11 || i3 == 13) ? ' ' : (char) i3) + ", 0x" + Integer.toHexString(i3) + ")\r\n");
+                sb.append("\t" + i2 + ": " + i3 + " (" + ((i3 == 0 || i3 == 10 || i3 == 11 || i3 == 13) ? ' ' : (char) i3) + ", 0x" + Integer.toHexString(i3) + ")" + NEWLINE);
             }
             if (bArr.length > i) {
                 sb.append("\t...\r\n");
             }
-            sb.append("\r\n");
+            sb.append(NEWLINE);
         }
         return sb.toString();
     }
@@ -61,13 +61,13 @@ public final class Debug {
     private static String getDebug(String str, char[] cArr) {
         StringBuilder sb = new StringBuilder();
         if (cArr == null) {
-            sb.append(str + " (" + ((Object) null) + ")\r\n");
+            sb.append(str + " (" + ((Object) null) + ")" + NEWLINE);
         } else {
-            sb.append(str + " (" + cArr.length + ")\r\n");
+            sb.append(str + " (" + cArr.length + ")" + NEWLINE);
             for (char c : cArr) {
-                sb.append("\t" + c + " (" + (c & 255) + ")\r\n");
+                sb.append("\t" + c + " (" + (c & 255) + ")" + NEWLINE);
             }
-            sb.append("\r\n");
+            sb.append(NEWLINE);
         }
         return sb.toString();
     }
@@ -82,12 +82,12 @@ public final class Debug {
             return str + " map: " + ((Object) null);
         }
         ArrayList arrayList = new ArrayList(map.keySet());
-        sb.append(str + " map: " + arrayList.size() + "\r\n");
+        sb.append(str + " map: " + arrayList.size() + NEWLINE);
         for (int i = 0; i < arrayList.size(); i++) {
             Object obj = arrayList.get(i);
-            sb.append("\t" + i + ": '" + obj + "' -> '" + map.get(obj) + "'\r\n");
+            sb.append("\t" + i + ": '" + obj + "' -> '" + map.get(obj) + "'" + NEWLINE);
         }
-        sb.append("\r\n");
+        sb.append(NEWLINE);
         return sb.toString();
     }
 
@@ -235,7 +235,7 @@ public final class Debug {
         String str;
         StringBuilder sb = new StringBuilder(35);
         String lowerCase = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss:SSS", Locale.ENGLISH).format(new Date()).toLowerCase();
-        sb.append("\r\n");
+        sb.append(NEWLINE);
         StringBuilder sb2 = new StringBuilder();
         sb2.append("Throwable: ");
         if (th == null) {
@@ -246,18 +246,18 @@ public final class Debug {
         sb2.append(str);
         sb2.append(":");
         sb2.append(lowerCase);
-        sb2.append("\r\n");
+        sb2.append(NEWLINE);
         sb.append(sb2.toString());
         StringBuilder sb3 = new StringBuilder();
         sb3.append("Throwable: ");
         sb3.append(th == null ? "null" : th.getLocalizedMessage());
-        sb3.append("\r\n");
+        sb3.append(NEWLINE);
         sb.append(sb3.toString());
-        sb.append("\r\n");
+        sb.append(NEWLINE);
         sb.append(getStackTrace(th, i));
         sb.append("Caught here:\r\n");
         sb.append(getStackTrace(new Exception(), i, 1));
-        sb.append("\r\n");
+        sb.append(NEWLINE);
         return sb.toString();
     }
 
@@ -272,14 +272,14 @@ public final class Debug {
             if (stackTrace != null) {
                 while (i2 < stackTrace.length && (i < 0 || i2 < i)) {
                     StackTraceElement stackTraceElement = stackTrace[i2];
-                    sb.append("\tat " + stackTraceElement.getClassName() + "." + stackTraceElement.getMethodName() + "(" + stackTraceElement.getFileName() + ":" + stackTraceElement.getLineNumber() + ")\r\n");
+                    sb.append("\tat " + stackTraceElement.getClassName() + "." + stackTraceElement.getMethodName() + "(" + stackTraceElement.getFileName() + ":" + stackTraceElement.getLineNumber() + ")" + NEWLINE);
                     i2++;
                 }
                 if (i >= 0 && stackTrace.length > i) {
                     sb.append("\t...\r\n");
                 }
             }
-            sb.append("\r\n");
+            sb.append(NEWLINE);
         }
         return sb.toString();
     }

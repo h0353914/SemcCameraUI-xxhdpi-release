@@ -3,6 +3,7 @@ package com.google.android.gms.auth.firstparty.shared;
 import android.os.Parcel;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class FACLData implements SafeParcelable {
     public static final zzb CREATOR = new zzb();
     final int version;

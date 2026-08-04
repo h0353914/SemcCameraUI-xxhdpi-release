@@ -2,11 +2,11 @@ package com.google.android.gms.auth.firstparty.shared;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 import java.util.ArrayList;
 
-public class zzc implements Parcelable$Creator<ScopeDetail> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzc implements Parcelable.Creator<ScopeDetail> {
     static void zza(ScopeDetail scopeDetail, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, scopeDetail.version);
@@ -20,17 +20,9 @@ public class zzc implements Parcelable$Creator<ScopeDetail> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ScopeDetail createFromParcel(Parcel parcel) {
-        return zzV(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ScopeDetail[] newArray(int i) {
-        return zzaM(i);
-    }
-
-    public ScopeDetail zzV(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzV, reason: merged with bridge method [inline-methods] */
+    public ScopeDetail createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         ArrayList<String> arrayList = new ArrayList<>();
         String strZzp = null;
@@ -75,10 +67,12 @@ public class zzc implements Parcelable$Creator<ScopeDetail> {
         if (parcel.dataPosition() == iZzap) {
             return new ScopeDetail(iZzg, strZzp, strZzp2, strZzp3, strZzp4, strZzp5, arrayList, fACLData);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public ScopeDetail[] zzaM(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaM, reason: merged with bridge method [inline-methods] */
+    public ScopeDetail[] newArray(int i) {
         return new ScopeDetail[i];
     }
 }

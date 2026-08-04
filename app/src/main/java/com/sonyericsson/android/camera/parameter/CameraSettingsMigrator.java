@@ -4,13 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences$Editor;
 import android.os.Environment;
 import android.util.Log;
-import com.sonyericsson.android.camera.LaunchCondition$OneShotMode;
+import com.sonyericsson.android.camera.LaunchCondition;
 import com.sonyericsson.android.camera.configuration.IntentReader;
-import com.sonyericsson.android.camera.configuration.IntentReader$VideoQualityConfigurations;
 import com.sonyericsson.android.camera.configuration.ParameterCategory;
+import com.sonyericsson.android.camera.configuration.SharedPreferencesConstants;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.configuration.parameters.Metering;
@@ -36,13 +35,126 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map$Entry;
 import java.util.Objects;
 
 class CameraSettingsMigrator {
     private static final String TAG = "cameramigrator";
-    private static final boolean DEBUG_ENABLED = Log.isLoggable("cameramigrator", 3);
-    private static Map<CapturingMode, List<UserSettingKey>> SETTINGS = Collections.unmodifiableMap(new CameraSettingsMigrator$1());
+    private static final boolean DEBUG_ENABLED = Log.isLoggable(TAG, 3);
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+    private static Map<CapturingMode, List<UserSettingKey>> SETTINGS = Collections.unmodifiableMap(new HashMap<CapturingMode, List<UserSettingKey>>() { // from class: com.sonyericsson.android.camera.parameter.CameraSettingsMigrator.1
+        {
+// pad
+            put(CapturingMode.NORMAL, Arrays.asList(UserSettingKey.RESOLUTION, UserSettingKey.WHITE_BALANCE, UserSettingKey.EV, UserSettingKey.SHUTTER_SPEED, UserSettingKey.FOCUS_RANGE, UserSettingKey.SELF_TIMER, UserSettingKey.FUSION_MODE, UserSettingKey.ISO, UserSettingKey.HDR, UserSettingKey.TOUCH_INTENTION, UserSettingKey.OBJECT_TRACKING, UserSettingKey.METERING, UserSettingKey.SHUTTER_TRIGGER));
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+            put(CapturingMode.SCENE_RECOGNITION, Arrays.asList(UserSettingKey.RESOLUTION, UserSettingKey.SELF_TIMER, UserSettingKey.OBJECT_TRACKING, UserSettingKey.SHUTTER_TRIGGER, UserSettingKey.TOUCH_INTENTION, UserSettingKey.PREDICTIVE_CAPTURE, UserSettingKey.FUSION_MODE));
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+            put(CapturingMode.VIDEO, Arrays.asList(UserSettingKey.VIDEO_HDR, UserSettingKey.FUSION_MODE, UserSettingKey.VIDEO_SIZE, UserSettingKey.OBJECT_TRACKING, UserSettingKey.VIDEO_SHUTTER_TRIGGER, UserSettingKey.VIDEO_STABILIZER, UserSettingKey.VIDEO_CODEC));
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+            put(CapturingMode.FRONT_PHOTO, Arrays.asList(UserSettingKey.RESOLUTION, UserSettingKey.SELF_TIMER, UserSettingKey.WHITE_BALANCE, UserSettingKey.EV, UserSettingKey.HDR, UserSettingKey.SHUTTER_TRIGGER, UserSettingKey.SOFT_SKIN));
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+// pad
+            put(CapturingMode.SUPERIOR_FRONT, Arrays.asList(UserSettingKey.RESOLUTION, UserSettingKey.SELF_TIMER, UserSettingKey.SOFT_SKIN, UserSettingKey.SHUTTER_TRIGGER));
+// pad
+// pad
+// pad
+// pad
+// pad
+            put(CapturingMode.FRONT_VIDEO, Arrays.asList(UserSettingKey.VIDEO_SIZE, UserSettingKey.VIDEO_SHUTTER_TRIGGER, UserSettingKey.VIDEO_STABILIZER));
+// pad
+// pad
+// pad
+// pad
+            put(CapturingMode.SLOW_MOTION, Arrays.asList(UserSettingKey.VIDEO_SIZE, UserSettingKey.SLOW_MOTION));
+        }
+    });
     private static List<UserSettingKey> COMMON_SETTINGS = Collections.unmodifiableList(Arrays.asList(UserSettingKey.FLASH, UserSettingKey.PHOTO_LIGHT, UserSettingKey.DISPLAY_FLASH, UserSettingKey.FRONT_ANGLE, UserSettingKey.GEO_TAG, UserSettingKey.CAMERA_KEY, UserSettingKey.TOUCH_CAPTURE, UserSettingKey.GRID_LINE, UserSettingKey.SIDE_SENSE, UserSettingKey.AUTO_REVIEW, UserSettingKey.DISTORTION_CORRECTION, UserSettingKey.VOLUME_KEY, UserSettingKey.SHUTTER_SOUND, UserSettingKey.DESTINATION_TO_SAVE, UserSettingKey.PREDICTIVE_LAUNCH, UserSettingKey.FAST_CAPTURE));
 
     CameraSettingsMigrator() {
@@ -51,70 +163,70 @@ class CameraSettingsMigrator {
     @SuppressLint({"ApplySharedPref"})
     static void migrate(Context context, Storage storage, UserSettingsLoaderImpl userSettingsLoaderImpl) {
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "+ camera settings migration");
+            Log.d(TAG, "+ camera settings migration");
         }
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "+ backup shared preferences");
+            Log.d(TAG, "+ backup shared preferences");
         }
         backupSharedPrefs(context);
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "- backup shared preferences");
+            Log.d(TAG, "- backup shared preferences");
         }
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "+ cache all camera settings");
+            Log.d(TAG, "+ cache all camera settings");
         }
         Map<String, ?> all = getSharedPrefs(context, true).getAll();
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "- cache all camera settings");
+            Log.d(TAG, "- cache all camera settings");
         }
         if (all.isEmpty()) {
             if (DEBUG_ENABLED) {
-                Log.w("cameramigrator", "ignore migration since legacy camera settings is empty");
+                Log.w(TAG, "ignore migration since legacy camera settings is empty");
                 return;
             }
             return;
         }
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "+ cleanup shared preferences");
+            Log.d(TAG, "+ cleanup shared preferences");
         }
         SharedPreferences sharedPrefs = getSharedPrefs(context, false);
         sharedPrefs.edit().clear().commit();
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "- cleanup shared preferences");
+            Log.d(TAG, "- cleanup shared preferences");
         }
         if (context.checkSelfPermission("android.permission.CAMERA") != 0) {
             if (DEBUG_ENABLED) {
-                Log.w("cameramigrator", "ignore migration since not have camera permission");
+                Log.w(TAG, "ignore migration since not have camera permission");
                 return;
             }
             return;
         }
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "+ setup camera parameter manager");
+            Log.d(TAG, "+ setup camera parameter manager");
         }
-        IntentReader$VideoQualityConfigurations videoQualityConfigurations = new IntentReader().getVideoQualityConfigurations(new Intent("android.intent.action.MAIN").addCategory("android.intent.category.LAUNCHER"));
+        IntentReader.VideoQualityConfigurations videoQualityConfigurations = new IntentReader().getVideoQualityConfigurations(new Intent("android.intent.action.MAIN").addCategory("android.intent.category.LAUNCHER"));
         UserSettingManager userSettingManager = new UserSettingManager(context, storage);
-        userSettingManager.prepare(context, LaunchCondition$OneShotMode.NONE, null, videoQualityConfigurations, null);
+        userSettingManager.prepare(context, LaunchCondition.OneShotMode.NONE, null, videoQualityConfigurations, null);
         Map<CapturingMode, Parameters> mapLoadMigrationData = loadMigrationData(CapturingMode.NORMAL, userSettingManager, userSettingsLoaderImpl);
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "- setup camera parameter manager");
+            Log.d(TAG, "- setup camera parameter manager");
         }
         HashMap map = new HashMap();
         HashMap map2 = new HashMap();
         ArrayList arrayList = new ArrayList();
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "+ migrate capturing mode settings");
+            Log.d(TAG, "+ migrate capturing mode settings");
         }
         for (CapturingMode capturingMode : CapturingMode.getValidOptions()) {
             if (DEBUG_ENABLED) {
-                Log.d("cameramigrator", "+ migrate " + capturingMode.toString().toLowerCase() + " settings");
+                Log.d(TAG, "+ migrate " + capturingMode.toString().toLowerCase() + " settings");
             }
             userSettingManager.changeCapturingMode(capturingMode);
             userSettingManager.applyCapturingMode();
             String strCreateParameterKeyPrefixForCapturingMode = createParameterKeyPrefixForCapturingMode(capturingMode);
             if (DEBUG_ENABLED) {
-                for (Map$Entry<UserSettingKey, UserSettingValueHolder<?>> map$Entry : userSettingManager.getParameters().getHolder().entrySet()) {
-                    map2.put(strCreateParameterKeyPrefixForCapturingMode + map$Entry.getKey(), map$Entry.getValue().toString());
+                for (Map.Entry<UserSettingKey, UserSettingValueHolder<?>> entry : userSettingManager.getParameters().getHolder().entrySet()) {
+                    map2.put(strCreateParameterKeyPrefixForCapturingMode + entry.getKey(), entry.getValue().toString());
                 }
             }
             ArrayList<UserSettingKey> arrayList2 = new ArrayList();
@@ -122,8 +234,8 @@ class CameraSettingsMigrator {
             arrayList2.addAll(COMMON_SETTINGS);
             for (UserSettingKey userSettingKey : arrayList2) {
                 String str = strCreateParameterKeyPrefixForCapturingMode + userSettingKey;
-                String string = Objects.toString(all.get(str), "NO_VALUE");
-                if ("NO_VALUE".equals(string)) {
+                String string = Objects.toString(all.get(str), UserSettingValueHolder.NO_VALUE);
+                if (UserSettingValueHolder.NO_VALUE.equals(string)) {
                     if (DEBUG_ENABLED) {
                         map.put(str, "ignore-null-legacy-value");
                     }
@@ -156,48 +268,48 @@ class CameraSettingsMigrator {
                 }
             }
             if (DEBUG_ENABLED) {
-                Log.d("cameramigrator", "- migrate " + capturingMode.toString().toLowerCase() + " settings");
+                Log.d(TAG, "- migrate " + capturingMode.toString().toLowerCase() + " settings");
             }
         }
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "- migrate capturing mode settings");
+            Log.d(TAG, "- migrate capturing mode settings");
         }
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "+ release camera parameter manager");
+            Log.d(TAG, "+ release camera parameter manager");
         }
         userSettingsLoaderImpl.saveMigrateParameters(mapLoadMigrationData, CapturingMode.SCENE_RECOGNITION);
         userSettingManager.release();
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "- release camera parameter manager");
+            Log.d(TAG, "- release camera parameter manager");
         }
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "+ migrate non-capturing mode settings");
+            Log.d(TAG, "+ migrate non-capturing mode settings");
         }
         if (!migrateOtherSettingsToSharedPrefs(all, sharedPrefs) && DEBUG_ENABLED) {
-            Log.d("cameramigrator", "- failed to write non-capturing mode settings");
+            Log.d(TAG, "- failed to write non-capturing mode settings");
         }
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "- migrate non-capturing mode settings");
+            Log.d(TAG, "- migrate non-capturing mode settings");
         }
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "+ generate camera settings migration report");
+            Log.d(TAG, "+ generate camera settings migration report");
             createMigrationReport(all, map2, Collections.unmodifiableMap(sharedPrefs.getAll()), map);
-            Log.d("cameramigrator", "- generate camera settings migration report");
+            Log.d(TAG, "- generate camera settings migration report");
         }
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "- camera settings migration");
+            Log.d(TAG, "- camera settings migration");
         }
     }
 
     private static Map<CapturingMode, Parameters> loadMigrationData(CapturingMode capturingMode, UserSettingManager userSettingManager, UserSettingsLoaderImpl userSettingsLoaderImpl) {
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "loadMigrationDataSync() E");
+            Log.d(TAG, "loadMigrationDataSync() E");
         }
         Map<CapturingMode, Parameters> mapLoadMigrateParameters = userSettingsLoaderImpl.loadMigrateParameters();
         userSettingManager.replaceParameterEntries(mapLoadMigrateParameters);
         for (Parameters parameters : mapLoadMigrateParameters.values()) {
             for (UserSettingKey userSettingKey : UserSettingKey.values()) {
-                if (!userSettingManager.isNeededToLoad(userSettingKey, LaunchCondition$OneShotMode.NONE)) {
+                if (!userSettingManager.isNeededToLoad(userSettingKey, LaunchCondition.OneShotMode.NONE)) {
                     parameters.mHolders.remove(userSettingKey);
                 }
             }
@@ -221,96 +333,65 @@ class CameraSettingsMigrator {
             it.next().commit();
         }
         if (DEBUG_ENABLED) {
-            Log.d("cameramigrator", "loadMigrationDataSync() X");
+            Log.d(TAG, "loadMigrationDataSync() X");
         }
         return mapLoadMigrateParameters;
     }
 
     private static String createParameterKeyPrefixForCapturingMode(CapturingMode capturingMode) {
-        return ParameterCategory.CAPTURING_MODE + '_' + capturingMode + "_PARAMS_";
+        return String.valueOf(ParameterCategory.CAPTURING_MODE) + "_" + capturingMode + "_" + SharedPreferencesConstants.KEY_PARAMS;
     }
 
     private static SharedPreferences getSharedPrefs(Context context, boolean z) {
-        return context.getSharedPreferences(z ? "com.sonyericsson.android.camera.shared_preferences_legacy" : "com.sonyericsson.android.camera.shared_preferences", 0);
+        String str = SharedPreferencesConstants.CAMERA_SHARED_PREFERENCES_NAME;
+        if (z) {
+            str = SharedPreferencesConstants.LEGACY_CAMERA_SHARED_PREFERENCES_NAME;
+        }
+        return context.getSharedPreferences(str, 0);
     }
 
     private static File getSharedPrefsFile(Context context, boolean z) {
-        return new File(new File(context.getDataDir(), "shared_prefs"), (z ? "com.sonyericsson.android.camera.shared_preferences_legacy" : "com.sonyericsson.android.camera.shared_preferences") + ".xml");
+        File file = new File(context.getDataDir(), "shared_prefs");
+        String str = SharedPreferencesConstants.CAMERA_SHARED_PREFERENCES_NAME;
+        if (z) {
+            str = SharedPreferencesConstants.LEGACY_CAMERA_SHARED_PREFERENCES_NAME;
+        }
+        return new File(file, str + SharedPreferencesConstants.SHARED_PREFERENCES_FILE_EXTENSION);
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:22:0x0039  */
-    /* JADX WARN: Removed duplicated region for block: B:59:? A[Catch: all -> 0x0048, Throwable -> 0x004a, SYNTHETIC, TRY_LEAVE, TryCatch #0 {, blocks: (B:5:0x0014, B:11:0x0025, B:27:0x0044, B:26:0x0040, B:28:0x0047), top: B:47:0x0014, outer: #4 }] */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
     private static void backupSharedPrefs(Context context) {
-        Throwable th;
         File sharedPrefsFile = getSharedPrefsFile(context, false);
-        File sharedPrefsFile2 = getSharedPrefsFile(context, true);
-        byte[] bArr = new byte[4096];
-        try {
-            FileInputStream fileInputStream = new FileInputStream(sharedPrefsFile);
-            Throwable th2 = null;
-            try {
-                FileOutputStream fileOutputStream = new FileOutputStream(sharedPrefsFile2);
-                while (true) {
-                    try {
-                        int i = fileInputStream.read(bArr);
-                        if (i < 0) {
-                            break;
-                        } else {
-                            fileOutputStream.write(bArr, 0, i);
-                        }
-                    } catch (Throwable th3) {
-                        th = th3;
-                        th = null;
-                        if (fileOutputStream != null) {
-                        }
-                    }
-                }
-                if (fileOutputStream != null) {
-                    fileOutputStream.close();
-                }
-                if (fileInputStream != null) {
-                    fileInputStream.close();
-                }
-            } catch (Throwable th4) {
-                if (fileInputStream != null) {
-                    if (0 != 0) {
-                        try {
-                            fileInputStream.close();
-                        } catch (Throwable th5) {
-                            th2.addSuppressed(th5);
-                        }
-                    } else {
-                        fileInputStream.close();
-                    }
-                }
-                throw th4;
+        File backupFile = getSharedPrefsFile(context, true);
+        byte[] buffer = new byte[4096];
+        try (FileInputStream inputStream = new FileInputStream(sharedPrefsFile);
+             FileOutputStream outputStream = new FileOutputStream(backupFile)) {
+            int read;
+            while ((read = inputStream.read(buffer)) >= 0) {
+                outputStream.write(buffer, 0, read);
             }
         } catch (FileNotFoundException e) {
-            Log.e("cameramigrator", "backup shared preferences failed: " + e);
-        } catch (IOException e2) {
-            Log.d("cameramigrator", "backup shared preferences failed: " + e2);
+            Log.e(TAG, "backup shared preferences failed: " + e);
+        } catch (IOException e) {
+            Log.d(TAG, "backup shared preferences failed: " + e);
         }
     }
 
     private static boolean migrateOtherSettingsToSharedPrefs(Map<String, ?> map, SharedPreferences sharedPreferences) {
-        SharedPreferences$Editor sharedPreferences$EditorEdit = sharedPreferences.edit();
-        for (Map$Entry<String, ?> map$Entry : map.entrySet()) {
-            String key = map$Entry.getKey();
-            String string = Objects.toString(map$Entry.getValue(), "NO_VALUE");
-            if (!"NO_VALUE".equals(string) && !key.startsWith("CAPTURING_MODE_")) {
-                byte b = -1;
-                if (key.hashCode() == 2111842220 && key.equals("KEY_LAST_MODE")) {
-                    b = 0;
+        SharedPreferences.Editor editorEdit = sharedPreferences.edit();
+        for (Map.Entry<String, ?> entry : map.entrySet()) {
+            String key = entry.getKey();
+            String string = Objects.toString(entry.getValue(), UserSettingValueHolder.NO_VALUE);
+            if (!UserSettingValueHolder.NO_VALUE.equals(string) && !key.startsWith("CAPTURING_MODE_")) {
+                char c = 65535;
+                if (key.hashCode() == 2111842220 && key.equals(SharedPreferencesConstants.KEY_LAST_MODE)) {
+                    c = 0;
                 }
-                if (b == 0) {
-                    sharedPreferences$EditorEdit.putString(key, string);
+                if (c == 0) {
+                    editorEdit.putString(key, string);
                 }
             }
         }
-        return sharedPreferences$EditorEdit.commit();
+        return editorEdit.commit();
     }
 
     private static boolean isSupported(UserSettings userSettings, UserSettingValue userSettingValue) {
@@ -342,10 +423,10 @@ class CameraSettingsMigrator {
                     ArrayList<String> arrayList = new ArrayList(hashSet);
                     Collections.sort(arrayList);
                     for (String str : arrayList) {
-                        String string = Objects.toString(map.get(str), "NO_VALUE");
-                        String string2 = Objects.toString(map2.get(str), "NO_VALUE");
-                        String string3 = Objects.toString(map3.get(str), "NO_VALUE");
-                        String string4 = Objects.toString(map4.get(str), "NO_VALUE");
+                        String string = Objects.toString(map.get(str), UserSettingValueHolder.NO_VALUE);
+                        String string2 = Objects.toString(map2.get(str), UserSettingValueHolder.NO_VALUE);
+                        String string3 = Objects.toString(map3.get(str), UserSettingValueHolder.NO_VALUE);
+                        String string4 = Objects.toString(map4.get(str), UserSettingValueHolder.NO_VALUE);
                         if (str.startsWith("CAPTURING_MODE_")) {
                             string = parse(string).toString();
                             string3 = parse(string3).toString();
@@ -358,21 +439,25 @@ class CameraSettingsMigrator {
                         bufferedWriter.close();
                     }
                 } catch (Throwable th2) {
-                    th = th2;
-                    throw th;
+                    Log.e(TAG, "create migration report failed: " + th2);
                 }
             } finally {
             }
         } catch (IOException e) {
-            Log.e("cameramigrator", "create migration report failed: " + e);
+            Log.e(TAG, "create migration report failed: " + e);
         }
     }
 
-    private static UserSettingValue convertUnsupportedValue(UserSettingManager userSettingManager, UserSettingValue userSettingValue, CapturingMode capturingMode) {
-        if (CameraSettingsMigrator$2.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingValue.getKey().ordinal()] != 1 || capturingMode != CapturingMode.NORMAL || userSettingValue != Metering.TOUCH) {
-            return null;
+    private static UserSettingValue convertUnsupportedValue(UserSettingManager userSettingManager, UserSettingValue userSettingValue, CapturingMode capturingMode) throws IllegalArgumentException {
+        switch (userSettingValue.getKey()) {
+            case METERING:
+                if (capturingMode == CapturingMode.NORMAL && userSettingValue == Metering.TOUCH) {
+                    userSettingManager.set(TouchIntention.FOCUS_AND_EXPOSURE);
+                    return Metering.getDefaultValue(capturingMode);
+                }
+                return null;
+            default:
+                return null;
         }
-        userSettingManager.set(TouchIntention.FOCUS_AND_EXPOSURE);
-        return Metering.getDefaultValue(capturingMode);
     }
 }

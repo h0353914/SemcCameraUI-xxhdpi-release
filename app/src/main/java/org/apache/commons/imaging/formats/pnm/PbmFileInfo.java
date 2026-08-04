@@ -1,10 +1,11 @@
 package org.apache.commons.imaging.formats.pnm;
 
+import android.support.v4.view.ViewCompat;
 import java.io.IOException;
 import java.io.InputStream;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
-import org.apache.commons.imaging.ImageInfo$ColorType;
+import org.apache.commons.imaging.ImageInfo;
 
 class PbmFileInfo extends FileInfo {
     private int bitcache;
@@ -45,8 +46,8 @@ class PbmFileInfo extends FileInfo {
     }
 
     @Override // org.apache.commons.imaging.formats.pnm.FileInfo
-    public ImageInfo$ColorType getColorType() {
-        return ImageInfo$ColorType.BW;
+    public ImageInfo.ColorType getColorType() {
+        return ImageInfo.ColorType.BW;
     }
 
     @Override // org.apache.commons.imaging.formats.pnm.FileInfo
@@ -72,16 +73,16 @@ class PbmFileInfo extends FileInfo {
             return -1;
         }
         if (i2 == 1) {
-            return -16777216;
+            return ViewCompat.MEASURED_STATE_MASK;
         }
         throw new IOException("PBM: bad bit: " + i2);
     }
 
     @Override // org.apache.commons.imaging.formats.pnm.FileInfo
-    public int getRGB(WhiteSpaceReader whiteSpaceReader) throws IOException {
+    public int getRGB(WhiteSpaceReader whiteSpaceReader) throws NumberFormatException, IOException {
         int i = Integer.parseInt(whiteSpaceReader.readtoWhiteSpace());
         if (i == 0) {
-            return -16777216;
+            return ViewCompat.MEASURED_STATE_MASK;
         }
         if (i == 1) {
             return -1;

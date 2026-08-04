@@ -4,6 +4,9 @@ import android.net.Uri;
 import android.os.Environment;
 import com.sonyericsson.android.camera.CameraApplication;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.util.capability.SharedPrefsTranslator;
+import com.sonyericsson.cameracommon.mediasaving.MediaSavingConstants;
+import com.sonyericsson.cameracommon.storage.Storage;
 import java.io.File;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -11,20 +14,20 @@ import java.util.regex.Pattern;
 
 public class PredictiveCapturePathBuilder {
     public static final int CAPTURE_ID_STRING_LENGTH = 4;
-    public static final String DCF_FILE_NAME_CONTENT_TYPE_PREDICTIVE_CAPTURE = "DSCPDC";
     public static final String DCF_FILE_NAME_DATE_FORMAT = "yyyyMMddHHmmssSSS";
-    public static final String DCF_FILE_NAME_FREE_WORD_BURST = "BURST";
-    public static final String DCF_FILE_NAME_FREE_WORD_COVER = "COVER";
     public static final String TAG = "PredictiveCapturePathBuilder";
     private static final Pattern mBurstDirectoryDetector;
     private static final Pattern mBurstLastDetector;
     public static final String DCF_DIR_NAME_FREE_WORD_XPERIA_BURST = "XPERIA" + File.separator + "PREDICTIVE_CAPTURE";
-    private static final int FILE_TIMESTAMP_START_POS = ((("DSCPDC".length() + "_".length()) + 4) + "_".length()) + "BURST".length();
+    public static final String DCF_FILE_NAME_CONTENT_TYPE_PREDICTIVE_CAPTURE = "DSCPDC";
+    public static final String DCF_FILE_NAME_FREE_WORD_BURST = "BURST";
+    private static final int FILE_TIMESTAMP_START_POS = (((DCF_FILE_NAME_CONTENT_TYPE_PREDICTIVE_CAPTURE.length() + "_".length()) + 4) + "_".length()) + DCF_FILE_NAME_FREE_WORD_BURST.length();
     private static final int FILE_TIMESTAMP_END_POS = FILE_TIMESTAMP_START_POS + "yyyyMMddHHmmssSSS".length();
-    private static final int BURST_FILE_NAME_LENGTH = ((((("DSCPDC".length() + "_".length()) + 4) + "_".length()) + "BURST".length()) + "yyyyMMddHHmmssSSS".length()) + ".JPG".length();
-    private static final int BURST_COVER_FILE_NAME_LENGTH = ((((((("DSCPDC".length() + "_".length()) + 4) + "_".length()) + "BURST".length()) + "_".length()) + "COVER".length()) + "yyyyMMddHHmmssSSS".length()) + ".JPG".length();
-    private static final Pattern mBurstDetector = Pattern.compile("/DSCPDC_\\d{4}_BURST\\d{" + "yyyyMMddHHmmssSSS".length() + "}(|_COVER).(JPE?G|jpe?g)\\z");
-    private static final Pattern mBurstCoverDetector = Pattern.compile("/DSCPDC_\\d{4}_BURST\\d{" + "yyyyMMddHHmmssSSS".length() + "}_COVER.(JPE?G|jpe?g)\\z");
+    private static final int BURST_FILE_NAME_LENGTH = (((((DCF_FILE_NAME_CONTENT_TYPE_PREDICTIVE_CAPTURE.length() + "_".length()) + 4) + "_".length()) + DCF_FILE_NAME_FREE_WORD_BURST.length()) + "yyyyMMddHHmmssSSS".length()) + MediaSavingConstants.MEDIA_TYPE_JPEG_EXT.length();
+    public static final String DCF_FILE_NAME_FREE_WORD_COVER = "COVER";
+    private static final int BURST_COVER_FILE_NAME_LENGTH = (((((((DCF_FILE_NAME_CONTENT_TYPE_PREDICTIVE_CAPTURE.length() + "_".length()) + 4) + "_".length()) + DCF_FILE_NAME_FREE_WORD_BURST.length()) + "_".length()) + DCF_FILE_NAME_FREE_WORD_COVER.length()) + "yyyyMMddHHmmssSSS".length()) + MediaSavingConstants.MEDIA_TYPE_JPEG_EXT.length();
+    private static final Pattern mBurstDetector = Pattern.compile("/DSCPDC_\\d{4}_BURST\\d{" + "yyyyMMddHHmmssSSS".length() + "}(|_" + DCF_FILE_NAME_FREE_WORD_COVER + ").(JPE?G|jpe?g)\\z");
+    private static final Pattern mBurstCoverDetector = Pattern.compile("/DSCPDC_\\d{4}_BURST\\d{" + "yyyyMMddHHmmssSSS".length() + "}_" + DCF_FILE_NAME_FREE_WORD_COVER + ".(JPE?G|jpe?g)\\z");
 
     static {
         StringBuilder sb = new StringBuilder();
@@ -36,10 +39,10 @@ public class PredictiveCapturePathBuilder {
     }
 
     public static String getPhotoPath(String str, SavingRequest savingRequest) {
-        String str2 = DCF_DIR_NAME_FREE_WORD_XPERIA_BURST + File.separator + "DSC_" + savingRequest.getSaveTimeForPredictiveCapture();
+        String str2 = DCF_DIR_NAME_FREE_WORD_XPERIA_BURST + File.separator + DcfPathBuilder.DCF_FILE_NAME_FREE_WORD_PICTURE + savingRequest.getSaveTimeForPredictiveCapture();
         String str3 = str + File.separator + str2;
-        String str4 = "DSCPDC_" + String.format(Locale.US, "%04d", Integer.valueOf(savingRequest.getCaptureIdForPredictiveCapture())) + "_BURST" + savingRequest.getSaveTimeForPredictiveCapture().replaceAll("_", "") + (savingRequest.getSomcType() == 100 ? "_COVER" : "") + ".JPG";
-        if (savingRequest.getStorageType() != Storage$StorageType.EXTERNAL_CARD) {
+        String str4 = "DSCPDC_" + String.format(Locale.US, "%04d", Integer.valueOf(savingRequest.getCaptureIdForPredictiveCapture())) + "_" + DCF_FILE_NAME_FREE_WORD_BURST + savingRequest.getSaveTimeForPredictiveCapture().replaceAll("_", "") + (savingRequest.getSomcType() == 100 ? "_COVER" : "") + MediaSavingConstants.MEDIA_TYPE_JPEG_EXT;
+        if (savingRequest.getStorageType() != Storage.StorageType.EXTERNAL_CARD) {
             File file = new File(str3);
             if (!file.exists() && !file.mkdirs()) {
                 CamLog.e("getPhotoPath create dir failed: " + file);
@@ -48,7 +51,7 @@ public class PredictiveCapturePathBuilder {
         } else {
             Uri sdCardGrantedUri = StorageUtil.getSdCardGrantedUri(CameraApplication.getContext());
             if (!StorageUtil.isExistDcimDirectory(sdCardGrantedUri)) {
-                str2 = Environment.DIRECTORY_DCIM + "/" + str2;
+                str2 = Environment.DIRECTORY_DCIM + SharedPrefsTranslator.CONNECTOR_SLASH + str2;
             }
             if (StorageUtil.createDirectory(CameraApplication.getContext(), sdCardGrantedUri, str2) == null) {
                 CamLog.e("getPhotoPath create dir failed for sd: " + str2);

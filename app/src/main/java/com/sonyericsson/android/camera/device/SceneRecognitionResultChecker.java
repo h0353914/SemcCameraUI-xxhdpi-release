@@ -1,37 +1,68 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.device;
 
 import android.hardware.camera2.CaptureResult;
 import android.os.Handler;
+import com.sonyericsson.android.camera.device.CameraInfo;
+import com.sonyericsson.android.camera.device.CameraParameterConverter;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
 class SceneRecognitionResultChecker extends CaptureResultCheckerBase {
     private static final float MACRO_RANGE_IN_METER = 0.1455f;
     private static final String TAG = "SceneRecognitionResultChecker";
-    private CameraInfo$CameraId mCameraId;
+    private CameraInfo.CameraId mCameraId;
     private Integer mCondition;
     private Integer mLastCondition;
     private boolean mLastMacroRange;
     private Integer mLastScene;
     private boolean mMacroRange;
     private Integer mScene;
-    private final CameraParameters$SceneRecognitionCallback mSceneRecognitionCallback;
+    private final CameraParameters.SceneRecognitionCallback mSceneRecognitionCallback;
 
-    static /* synthetic */ CameraParameters$SceneRecognitionCallback access$000(SceneRecognitionResultChecker sceneRecognitionResultChecker) {
-        return sceneRecognitionResultChecker.mSceneRecognitionCallback;
-    }
-
-    public SceneRecognitionResultChecker(Handler handler, CameraParameters$SceneRecognitionCallback cameraParameters$SceneRecognitionCallback, CameraInfo$CameraId cameraInfo$CameraId) {
+    public SceneRecognitionResultChecker(Handler handler, CameraParameters.SceneRecognitionCallback sceneRecognitionCallback, CameraInfo.CameraId cameraId) {
         super(handler);
         this.mScene = null;
         this.mCondition = null;
         this.mMacroRange = false;
-        this.mCameraId = CameraInfo$CameraId.BACK;
+        this.mCameraId = CameraInfo.CameraId.BACK;
         this.mLastScene = 100;
         this.mLastCondition = 0;
         this.mLastMacroRange = false;
-        this.mSceneRecognitionCallback = cameraParameters$SceneRecognitionCallback;
-        this.mCameraId = cameraInfo$CameraId;
+        this.mSceneRecognitionCallback = sceneRecognitionCallback;
+        this.mCameraId = cameraId;
     }
 
     @Override // com.sonyericsson.android.camera.device.CaptureResultCheckerBase
@@ -51,7 +82,7 @@ class SceneRecognitionResultChecker extends CaptureResultCheckerBase {
             }
         }
         float fFloatValue = 1.0f / ((Float) captureResultHolder.getLatestValue(CaptureResult.LENS_FOCUS_DISTANCE)).floatValue();
-        if (isMacroDetectionSupported() && !Float.isInfinite(fFloatValue) && fFloatValue <= 0.1455f) {
+        if (isMacroDetectionSupported() && !Float.isInfinite(fFloatValue) && fFloatValue <= MACRO_RANGE_IN_METER) {
             this.mMacroRange = true;
         } else {
             this.mMacroRange = false;
@@ -66,18 +97,25 @@ class SceneRecognitionResultChecker extends CaptureResultCheckerBase {
             }
             return;
         }
-        CameraParameters$SceneRecognitionResult cameraParameters$SceneRecognitionResult = new CameraParameters$SceneRecognitionResult();
-        cameraParameters$SceneRecognitionResult.sceneMode = CameraParameterConverter$SceneMode.getSceneMode(this.mScene.intValue());
-        cameraParameters$SceneRecognitionResult.deviceStabilityCondition = CameraParameters$DeviceStabilityCondition.getCondition(this.mCondition.intValue());
-        cameraParameters$SceneRecognitionResult.isMacroRange = this.mMacroRange;
-        this.mHandler.post(new SceneRecognitionResultChecker$1(this, cameraParameters$SceneRecognitionResult));
+        final CameraParameters.SceneRecognitionResult sceneRecognitionResult = new CameraParameters.SceneRecognitionResult();
+        sceneRecognitionResult.sceneMode = CameraParameterConverter.SceneMode.getSceneMode(this.mScene.intValue());
+        sceneRecognitionResult.deviceStabilityCondition = CameraParameters.DeviceStabilityCondition.getCondition(this.mCondition.intValue());
+        sceneRecognitionResult.isMacroRange = this.mMacroRange;
+        this.mHandler.post(new Runnable() { // from class: com.sonyericsson.android.camera.device.SceneRecognitionResultChecker.1
+            @Override // java.lang.Runnable
+            public void run() {
+                if (SceneRecognitionResultChecker.this.mSceneRecognitionCallback != null) {
+                    SceneRecognitionResultChecker.this.mSceneRecognitionCallback.onSceneModeChanged(sceneRecognitionResult);
+                }
+            }
+        });
         this.mLastScene = this.mScene;
         this.mLastCondition = this.mCondition;
         this.mLastMacroRange = this.mMacroRange;
     }
 
     private boolean isMacroDetectionSupported() {
-        if (this.mCameraId == CameraInfo$CameraId.FRONT) {
+        if (this.mCameraId == CameraInfo.CameraId.FRONT) {
             return false;
         }
         return PlatformCapability.isFocusSupported(this.mCameraId);

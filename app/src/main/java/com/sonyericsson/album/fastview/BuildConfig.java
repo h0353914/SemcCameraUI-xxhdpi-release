@@ -1,5 +1,8 @@
 package com.sonyericsson.album.fastview;
 
+
+
+
 public final class BuildConfig {
     public static final String APPLICATION_ID = "com.sonyericsson.album.fastview";
     public static final String BUILD_TYPE = "release";

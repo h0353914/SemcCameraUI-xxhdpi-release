@@ -1,25 +1,61 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.device;
 
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureRequest$Key;
 import android.hardware.camera2.params.MeteringRectangle;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.lang.reflect.Array;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map$Entry;
 import java.util.TreeSet;
 
 public class CaptureRequestDumper {
     private Map<String, String> mLast;
     private Map<String, String> mPrev;
     private final String mTag;
-    private final CaptureRequestDumper$Type mType;
+    private final Type mType;
 
-    public CaptureRequestDumper(CaptureRequestDumper$Type captureRequestDumper$Type, CameraCaptureSession cameraCaptureSession) {
-        this.mType = captureRequestDumper$Type;
+    public enum Type {
+        LAST,
+        DIFF,
+        SILENT
+    }
+
+    public CaptureRequestDumper(Type type, CameraCaptureSession cameraCaptureSession) {
+        this.mType = type;
         this.mTag = "[CaptureRequest:" + cameraCaptureSession.hashCode() + "] ";
     }
 
@@ -47,8 +83,8 @@ public class CaptureRequestDumper {
             map = this.mLast;
         }
         CamLog.i(this.mTag + "== LAST ==");
-        for (Map$Entry<String, String> map$Entry : map.entrySet()) {
-            CamLog.i(this.mTag + map$Entry.getKey() + "=" + map$Entry.getValue());
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            CamLog.i(this.mTag + entry.getKey() + "=" + entry.getValue());
         }
     }
 
@@ -82,10 +118,10 @@ public class CaptureRequestDumper {
 
     private Map<String, String> toKeyValueMap(CaptureRequest captureRequest) {
         HashMap map = new HashMap();
-        for (CaptureRequest$Key<?> captureRequest$Key : captureRequest.getKeys()) {
-            String captureRequestValueString = toCaptureRequestValueString(captureRequest.get(captureRequest$Key));
+        for (CaptureRequest.Key<?> key : captureRequest.getKeys()) {
+            String captureRequestValueString = toCaptureRequestValueString(captureRequest.get(key));
             if (captureRequestValueString != null) {
-                map.put(captureRequest$Key.getName(), captureRequestValueString);
+                map.put(key.getName(), captureRequestValueString);
             }
         }
         return map;
@@ -115,7 +151,7 @@ public class CaptureRequestDumper {
         return obj.toString();
     }
 
-    private static <T> T[] convertPrimitiveArrayToObjectArray(Object obj, Class<T> cls) {
+    private static <T> T[] convertPrimitiveArrayToObjectArray(Object obj, Class<T> cls) throws ArrayIndexOutOfBoundsException, IllegalArgumentException {
         int length = Array.getLength(obj);
         if (length == 0) {
             throw new IllegalArgumentException("Input array shouldn't be empty");

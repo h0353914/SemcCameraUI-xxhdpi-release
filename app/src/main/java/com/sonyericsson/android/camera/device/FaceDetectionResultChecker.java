@@ -1,3 +1,29 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.device;
 
 import android.graphics.Rect;
@@ -5,24 +31,21 @@ import android.hardware.camera2.CaptureResult;
 import android.hardware.camera2.params.Face;
 import android.os.Handler;
 import android.os.SystemClock;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.CamLog;
 
 class FaceDetectionResultChecker extends CaptureResultCheckerBase {
     private static final int MINIMUM_INTERVAL_MILLIS = 100;
     private static final String TAG = "FaceDetectionResultChecker";
-    private final CameraParameters$FaceDetectionCallback mFaceDetectionCallback;
+    private final CameraParameters.FaceDetectionCallback mFaceDetectionCallback;
     private long mLastDataTimeMillis;
     private int mPreviousNumberOfFacesDetected;
 
-    static /* synthetic */ CameraParameters$FaceDetectionCallback access$000(FaceDetectionResultChecker faceDetectionResultChecker) {
-        return faceDetectionResultChecker.mFaceDetectionCallback;
-    }
-
-    public FaceDetectionResultChecker(Handler handler, CameraParameters$FaceDetectionCallback cameraParameters$FaceDetectionCallback) {
+    public FaceDetectionResultChecker(Handler handler, CameraParameters.FaceDetectionCallback faceDetectionCallback) {
         super(handler);
         this.mLastDataTimeMillis = 0L;
         this.mPreviousNumberOfFacesDetected = 0;
-        this.mFaceDetectionCallback = cameraParameters$FaceDetectionCallback;
+        this.mFaceDetectionCallback = faceDetectionCallback;
     }
 
     @Override // com.sonyericsson.android.camera.device.CaptureResultCheckerBase
@@ -39,7 +62,7 @@ class FaceDetectionResultChecker extends CaptureResultCheckerBase {
         Face[] faceArr = (Face[]) captureResultHolder.getLatestValue(CaptureResult.STATISTICS_FACES);
         int[] iArr = (int[]) captureResultHolder.getLatestValue(SomcCaptureResultKeys.SONYMOBILE_STATISTICS_FACE_SMILE_SCORES);
         int[] iArr2 = (int[]) captureResultHolder.getLatestValue(SomcCaptureResultKeys.SONYMOBILE_STATISTICS_FACE_SELECT_AREA);
-        CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult = new CameraParameters$FaceDetectionResult();
+        final CameraParameters.FaceDetectionResult faceDetectionResult = new CameraParameters.FaceDetectionResult();
         if (isValidResults(faceArr, iArr, iArr2)) {
             char c2 = 3;
             if (iArr2 != null) {
@@ -62,12 +85,12 @@ class FaceDetectionResultChecker extends CaptureResultCheckerBase {
                     }
                     int i7 = i4;
                     i2 = i5;
-                    cameraParameters$FaceDetectionResult.addFaceResult(i4, bounds.left, bounds.top, bounds.right, bounds.bottom, i6);
+                    faceDetectionResult.addFaceResult(i4, bounds.left, bounds.top, bounds.right, bounds.bottom, i6);
                     if (i != 0) {
                         c = 3;
                         if (bounds.contains(iArr2[0], iArr2[1], iArr2[2], iArr2[3])) {
                             i3 = i7;
-                            cameraParameters$FaceDetectionResult.setFrameResult(i3);
+                            faceDetectionResult.setFrameResult(i3);
                         } else {
                             i3 = i7;
                         }
@@ -84,7 +107,7 @@ class FaceDetectionResultChecker extends CaptureResultCheckerBase {
                 c2 = c;
             }
         }
-        if (cameraParameters$FaceDetectionResult.extFaceList.size() == 0) {
+        if (faceDetectionResult.extFaceList.size() == 0) {
             if (this.mPreviousNumberOfFacesDetected == 0) {
                 return;
             }
@@ -93,12 +116,19 @@ class FaceDetectionResultChecker extends CaptureResultCheckerBase {
             }
             this.mPreviousNumberOfFacesDetected = 0;
         } else {
-            this.mPreviousNumberOfFacesDetected = cameraParameters$FaceDetectionResult.extFaceList.size();
+            this.mPreviousNumberOfFacesDetected = faceDetectionResult.extFaceList.size();
         }
         if (CamLog.VERBOSE) {
-            CamLog.d("Detected Faces: " + cameraParameters$FaceDetectionResult);
+            CamLog.d("Detected Faces: " + faceDetectionResult);
         }
-        this.mHandler.post(new FaceDetectionResultChecker$1(this, cameraParameters$FaceDetectionResult));
+        this.mHandler.post(new Runnable() { // from class: com.sonyericsson.android.camera.device.FaceDetectionResultChecker.1
+            @Override // java.lang.Runnable
+            public void run() {
+                if (FaceDetectionResultChecker.this.mFaceDetectionCallback != null) {
+                    FaceDetectionResultChecker.this.mFaceDetectionCallback.onFaceDetection(faceDetectionResult);
+                }
+            }
+        });
     }
 
     private boolean isValidResults(Face[] faceArr, int[] iArr, int[] iArr2) {

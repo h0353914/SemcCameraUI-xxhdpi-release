@@ -3,10 +3,9 @@ package com.google.android.gms.auth.api.signin;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
 
-public class zza implements Parcelable$Creator<EmailSignInConfig> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zza implements Parcelable.Creator<EmailSignInConfig> {
     static void zza(EmailSignInConfig emailSignInConfig, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, emailSignInConfig.versionCode);
@@ -16,17 +15,9 @@ public class zza implements Parcelable$Creator<EmailSignInConfig> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ EmailSignInConfig createFromParcel(Parcel parcel) {
-        return zzO(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ EmailSignInConfig[] newArray(int i) {
-        return zzaF(i);
-    }
-
-    public EmailSignInConfig zzO(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzO, reason: merged with bridge method [inline-methods] */
+    public EmailSignInConfig createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         Uri uri = null;
         int iZzg = 0;
@@ -55,10 +46,12 @@ public class zza implements Parcelable$Creator<EmailSignInConfig> {
         if (parcel.dataPosition() == iZzap) {
             return new EmailSignInConfig(iZzg, uri, strZzp, uri2);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new com.google.android.gms.common.internal.safeparcel.zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public EmailSignInConfig[] zzaF(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaF, reason: merged with bridge method [inline-methods] */
+    public EmailSignInConfig[] newArray(int i) {
         return new EmailSignInConfig[i];
     }
 }

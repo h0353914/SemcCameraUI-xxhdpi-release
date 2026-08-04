@@ -1,5 +1,6 @@
 package com.google.android.gms.common;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class Scopes {
     public static final String APP_STATE = "https://www.googleapis.com/auth/appstate";
     public static final String CLOUD_SAVE = "https://www.googleapis.com/auth/datastoremobile";

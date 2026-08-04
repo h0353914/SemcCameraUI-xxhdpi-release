@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.bmp;
 
+import android.support.v4.view.ViewCompat;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -32,7 +33,7 @@ class BmpWriterRgb implements BmpWriter {
         for (int i2 = height - 1; i2 >= 0; i2--) {
             int i3 = i;
             for (int i4 = 0; i4 < width; i4++) {
-                int rgb = bufferedImage.getRGB(i4, i2) & 16777215;
+                int rgb = bufferedImage.getRGB(i4, i2) & ViewCompat.MEASURED_SIZE_MASK;
                 byteArrayOutputStream.write((rgb >> 0) & 255);
                 byteArrayOutputStream.write((rgb >> 8) & 255);
                 byteArrayOutputStream.write((rgb >> 16) & 255);

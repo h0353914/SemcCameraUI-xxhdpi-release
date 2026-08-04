@@ -1,132 +1,188 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.view.setting.dialog;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
-import com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog$AnimationType;
-import com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog$HorizontalGravity;
-import com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog$Params;
-import com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog$SelectableDialogType;
+import com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog;
 import com.sonyericsson.android.camera.view.selectabledialog.ModeSelector;
 import com.sonyericsson.android.camera.view.selectabledialog.SettingMenu;
 
 public class SettingDialogFactory {
     public static ModeSelector createModeSelector(Context context, int i, int i2, boolean z) {
-        AbsSelectableDialog$Params absSelectableDialog$Params = new AbsSelectableDialog$Params();
-        absSelectableDialog$Params.itemWidth = dimen(context, 2131165443);
-        absSelectableDialog$Params.itemHeight = dimen(context, 2131165442);
-        absSelectableDialog$Params.maxHeightLandscape = i2;
-        absSelectableDialog$Params.maxHeightPortrait = i;
-        absSelectableDialog$Params.rightMarginLandscape = dimen(context, 2131165617);
-        absSelectableDialog$Params.scrollBarDefaultDelayBeforeFade = context.getResources().getInteger(2131361798);
-        absSelectableDialog$Params.panelBackgroundColor = context.getResources().getColor(2131099756);
-        absSelectableDialog$Params.animationType = AbsSelectableDialog$AnimationType.SLIDER;
-        absSelectableDialog$Params.horizontalGavity = AbsSelectableDialog$HorizontalGravity.RIGHT;
-        return new ModeSelector(context, absSelectableDialog$Params, 80, z);
+        AbsSelectableDialog.Params params = new AbsSelectableDialog.Params();
+        params.itemWidth = dimen(context, R.dimen.mode_selector_grid_column_width);
+        params.itemHeight = dimen(context, R.dimen.mode_selector_grid_column_height);
+        params.maxHeightLandscape = i2;
+        params.maxHeightPortrait = i;
+        params.rightMarginLandscape = dimen(context, R.dimen.shortcut_dialog_padding);
+        params.scrollBarDefaultDelayBeforeFade = context.getResources().getInteger(R.integer.contextual_setting_scroll_bar_default_delay_before_fade);
+        params.panelBackgroundColor = context.getResources().getColor(R.color.setting_1st_layer_background_color);
+        params.animationType = AbsSelectableDialog.AnimationType.SLIDER;
+        params.horizontalGavity = AbsSelectableDialog.HorizontalGravity.RIGHT;
+        return new ModeSelector(context, params, 80, z);
     }
 
     public static SettingMenu createMonochromeDialog(Context context, boolean z, int i, int i2) {
-        AbsSelectableDialog$Params absSelectableDialog$Params = new AbsSelectableDialog$Params();
-        absSelectableDialog$Params.itemWidth = dimen(context, 2131165585);
-        absSelectableDialog$Params.itemHeight = dimen(context, 2131165586);
-        absSelectableDialog$Params.maxHeightLandscape = i2;
-        absSelectableDialog$Params.maxHeightPortrait = i;
+        AbsSelectableDialog.Params params = new AbsSelectableDialog.Params();
+        params.itemWidth = dimen(context, R.dimen.setting_2nd_layer_setting_width);
+        params.itemHeight = dimen(context, R.dimen.setting_common_height);
+        params.maxHeightLandscape = i2;
+        params.maxHeightPortrait = i;
         if (z) {
-            absSelectableDialog$Params.panelBackgroundColor = context.getResources().getColor(2131099756);
+            params.panelBackgroundColor = context.getResources().getColor(R.color.setting_1st_layer_background_color);
         } else {
-            absSelectableDialog$Params.panelBackgroundColor = context.getResources().getColor(2131099757);
+            params.panelBackgroundColor = context.getResources().getColor(R.color.setting_2st_layer_background_color);
         }
-        absSelectableDialog$Params.animationType = AbsSelectableDialog$AnimationType.FADE;
-        absSelectableDialog$Params.horizontalGavity = AbsSelectableDialog$HorizontalGravity.LEFT;
-        return new SettingMenu(context, absSelectableDialog$Params, AbsSelectableDialog$SelectableDialogType.SETTING_MONOCHROME);
+        params.animationType = AbsSelectableDialog.AnimationType.FADE;
+        params.horizontalGavity = AbsSelectableDialog.HorizontalGravity.LEFT;
+        return new SettingMenu(context, params, AbsSelectableDialog.SelectableDialogType.SETTING_MONOCHROME);
     }
 
     public static SettingMenu createSettingMenuDialog(Context context, int i, int i2, boolean z) {
-        AbsSelectableDialog$Params absSelectableDialog$Params = new AbsSelectableDialog$Params();
-        absSelectableDialog$Params.itemWidth = i2;
-        absSelectableDialog$Params.itemHeight = dimen(context, 2131165586);
-        absSelectableDialog$Params.maxHeightLandscape = i2;
-        absSelectableDialog$Params.maxHeightPortrait = i;
-        absSelectableDialog$Params.rightMarginLandscape = dimen(context, 2131165617);
-        absSelectableDialog$Params.scrollBarDefaultDelayBeforeFade = context.getResources().getInteger(2131361798);
-        absSelectableDialog$Params.panelBackgroundColor = context.getResources().getColor(2131099756);
-        absSelectableDialog$Params.animationType = AbsSelectableDialog$AnimationType.SLIDER;
-        absSelectableDialog$Params.horizontalGavity = AbsSelectableDialog$HorizontalGravity.RIGHT;
-        return new SettingMenu(context, absSelectableDialog$Params, 80, z, AbsSelectableDialog$SelectableDialogType.SETTING_MENU);
+        AbsSelectableDialog.Params params = new AbsSelectableDialog.Params();
+        params.itemWidth = i2;
+        params.itemHeight = dimen(context, R.dimen.setting_common_height);
+        params.maxHeightLandscape = i2;
+        params.maxHeightPortrait = i;
+        params.rightMarginLandscape = dimen(context, R.dimen.shortcut_dialog_padding);
+        params.scrollBarDefaultDelayBeforeFade = context.getResources().getInteger(R.integer.contextual_setting_scroll_bar_default_delay_before_fade);
+        params.panelBackgroundColor = context.getResources().getColor(R.color.setting_1st_layer_background_color);
+        params.animationType = AbsSelectableDialog.AnimationType.SLIDER;
+        params.horizontalGavity = AbsSelectableDialog.HorizontalGravity.RIGHT;
+        return new SettingMenu(context, params, 80, z, AbsSelectableDialog.SelectableDialogType.SETTING_MENU);
     }
 
     public static SettingMenu createSecondLayerDialog(Context context, int i, int i2, boolean z) {
-        AbsSelectableDialog$Params absSelectableDialog$Params = new AbsSelectableDialog$Params();
-        absSelectableDialog$Params.itemWidth = dimen(context, 2131165585);
-        absSelectableDialog$Params.itemHeight = dimen(context, 2131165586);
-        absSelectableDialog$Params.maxHeightLandscape = i2 - dimen(context, 2131165591);
-        absSelectableDialog$Params.maxHeightPortrait = i - dimen(context, 2131165292, 2131165591);
-        absSelectableDialog$Params.panelBackgroundColor = context.getResources().getColor(2131099757);
-        absSelectableDialog$Params.dropShadowSpace = dimen(context, 2131165610);
-        absSelectableDialog$Params.animationType = AbsSelectableDialog$AnimationType.FADE;
-        return new SettingMenu(context, absSelectableDialog$Params, 48, z, AbsSelectableDialog$SelectableDialogType.SETTING_SECOND_LAYER);
+        AbsSelectableDialog.Params params = new AbsSelectableDialog.Params();
+        params.itemWidth = dimen(context, R.dimen.setting_2nd_layer_setting_width);
+        params.itemHeight = dimen(context, R.dimen.setting_common_height);
+        params.maxHeightLandscape = i2 - dimen(context, R.dimen.setting_dialog_menu_max_height_margin_phone);
+        params.maxHeightPortrait = i - dimen(context, R.dimen.common_button_container_side_length, R.dimen.setting_dialog_menu_max_height_margin_phone);
+        params.panelBackgroundColor = context.getResources().getColor(R.color.setting_2st_layer_background_color);
+        params.dropShadowSpace = dimen(context, R.dimen.setting_menu_drop_shadow_size);
+        params.animationType = AbsSelectableDialog.AnimationType.FADE;
+        return new SettingMenu(context, params, 48, z, AbsSelectableDialog.SelectableDialogType.SETTING_SECOND_LAYER);
     }
 
     public static SettingMenu createSecondLayerDialogDetails(Context context, int i, int i2, boolean z) {
-        AbsSelectableDialog$Params absSelectableDialog$Params = new AbsSelectableDialog$Params();
-        absSelectableDialog$Params.itemWidth = dimen(context, 2131165585);
-        absSelectableDialog$Params.itemHeight = dimen(context, 2131165612, 2131165611);
-        absSelectableDialog$Params.maxHeightLandscape = i2 - dimen(context, 2131165591);
-        absSelectableDialog$Params.maxHeightPortrait = i - dimen(context, 2131165292, 2131165591);
-        absSelectableDialog$Params.panelBackgroundColor = context.getResources().getColor(2131099757);
-        absSelectableDialog$Params.dropShadowSpace = dimen(context, 2131165610);
-        absSelectableDialog$Params.animationType = AbsSelectableDialog$AnimationType.FADE;
-        return new SettingMenu(context, absSelectableDialog$Params, 48, z, AbsSelectableDialog$SelectableDialogType.SETTING_SECOND_LAYER_DETAIL);
+        AbsSelectableDialog.Params params = new AbsSelectableDialog.Params();
+        params.itemWidth = dimen(context, R.dimen.setting_2nd_layer_setting_width);
+        params.itemHeight = dimen(context, R.dimen.setting_menu_item_details_subject_height, R.dimen.setting_menu_item_details_description_height);
+        params.maxHeightLandscape = i2 - dimen(context, R.dimen.setting_dialog_menu_max_height_margin_phone);
+        params.maxHeightPortrait = i - dimen(context, R.dimen.common_button_container_side_length, R.dimen.setting_dialog_menu_max_height_margin_phone);
+        params.panelBackgroundColor = context.getResources().getColor(R.color.setting_2st_layer_background_color);
+        params.dropShadowSpace = dimen(context, R.dimen.setting_menu_drop_shadow_size);
+        params.animationType = AbsSelectableDialog.AnimationType.FADE;
+        return new SettingMenu(context, params, 48, z, AbsSelectableDialog.SelectableDialogType.SETTING_SECOND_LAYER_DETAIL);
     }
 
     public static SettingMenu createShortcutDialog(Context context, UserSettingKey userSettingKey, int i, int i2) {
-        AbsSelectableDialog$Params absSelectableDialog$Params = new AbsSelectableDialog$Params();
-        absSelectableDialog$Params.itemWidth = dimen(context, 2131165585);
-        absSelectableDialog$Params.itemHeight = dimen(context, 2131165586);
-        absSelectableDialog$Params.maxHeightLandscape = i2;
-        absSelectableDialog$Params.maxHeightPortrait = i;
-        absSelectableDialog$Params.leftMarginLandscape = dimen(context, 2131165617, 2131165428);
-        absSelectableDialog$Params.leftMarginPortrait = absSelectableDialog$Params.leftMarginLandscape;
-        absSelectableDialog$Params.bottomMarginLandscape = dimen(context, 2131165617);
-        absSelectableDialog$Params.bottomMarginPortrait = absSelectableDialog$Params.bottomMarginLandscape;
-        absSelectableDialog$Params.scrollBarDefaultDelayBeforeFade = context.getResources().getInteger(2131361798);
-        absSelectableDialog$Params.panelBackgroundColor = context.getResources().getColor(2131099756);
-        absSelectableDialog$Params.animationType = AbsSelectableDialog$AnimationType.FADE;
-        absSelectableDialog$Params.horizontalGavity = AbsSelectableDialog$HorizontalGravity.LEFT;
-        switch (SettingDialogFactory$1.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingKey.ordinal()]) {
-            case 1:
-            case 2:
-            case 3:
-                return new SettingMenu(context, absSelectableDialog$Params, AbsSelectableDialog$SelectableDialogType.SETTING_FLASH);
-            case 4:
-                return new SettingMenu(context, absSelectableDialog$Params, AbsSelectableDialog$SelectableDialogType.SETTING_SELFTIMER);
-            case 5:
-                return new SettingMenu(context, absSelectableDialog$Params, AbsSelectableDialog$SelectableDialogType.SETTING_ASPECT_RATIO);
-            case 6:
-                return new SettingMenu(context, absSelectableDialog$Params, AbsSelectableDialog$SelectableDialogType.SETTING_FUSION_MODE);
-            case 7:
-                return new SettingMenu(context, absSelectableDialog$Params, AbsSelectableDialog$SelectableDialogType.SETTING_VIDEO_HDR);
-            case 8:
-                return new SettingMenu(context, absSelectableDialog$Params, AbsSelectableDialog$SelectableDialogType.SETTING_HDR);
+        AbsSelectableDialog.Params params = new AbsSelectableDialog.Params();
+        params.itemWidth = dimen(context, R.dimen.setting_2nd_layer_setting_width);
+        params.itemHeight = dimen(context, R.dimen.setting_common_height);
+        params.maxHeightLandscape = i2;
+        params.maxHeightPortrait = i;
+        params.leftMarginLandscape = dimen(context, R.dimen.shortcut_dialog_padding, R.dimen.left_icon_area_height);
+        params.leftMarginPortrait = params.leftMarginLandscape;
+        params.bottomMarginLandscape = dimen(context, R.dimen.shortcut_dialog_padding);
+        params.bottomMarginPortrait = params.bottomMarginLandscape;
+        params.scrollBarDefaultDelayBeforeFade = context.getResources().getInteger(R.integer.contextual_setting_scroll_bar_default_delay_before_fade);
+        params.panelBackgroundColor = context.getResources().getColor(R.color.setting_1st_layer_background_color);
+        params.animationType = AbsSelectableDialog.AnimationType.FADE;
+        params.horizontalGavity = AbsSelectableDialog.HorizontalGravity.LEFT;
+        switch (userSettingKey) {
+            case FLASH:
+            case DISPLAY_FLASH:
+            case PHOTO_LIGHT:
+                return new SettingMenu(context, params, AbsSelectableDialog.SelectableDialogType.SETTING_FLASH);
+            case SELF_TIMER:
+                return new SettingMenu(context, params, AbsSelectableDialog.SelectableDialogType.SETTING_SELFTIMER);
+            case ASPECT_RATIO:
+                return new SettingMenu(context, params, AbsSelectableDialog.SelectableDialogType.SETTING_ASPECT_RATIO);
+            case FUSION_MODE:
+                return new SettingMenu(context, params, AbsSelectableDialog.SelectableDialogType.SETTING_FUSION_MODE);
+            case VIDEO_HDR:
+                return new SettingMenu(context, params, AbsSelectableDialog.SelectableDialogType.SETTING_VIDEO_HDR);
+            case HDR:
+                return new SettingMenu(context, params, AbsSelectableDialog.SelectableDialogType.SETTING_HDR);
             default:
                 return null;
         }
     }
 
     public static SettingMenu createSceneDialog(Context context, int i, int i2) {
-        AbsSelectableDialog$Params absSelectableDialog$Params = new AbsSelectableDialog$Params();
-        absSelectableDialog$Params.itemWidth = i2;
-        absSelectableDialog$Params.itemHeight = dimen(context, 2131165586);
-        absSelectableDialog$Params.maxHeightLandscape = i2;
-        absSelectableDialog$Params.maxHeightPortrait = i - dimen(context, 2131165428, 2131165565);
-        absSelectableDialog$Params.rightMarginLandscape = dimen(context, 2131165617);
-        absSelectableDialog$Params.scrollBarDefaultDelayBeforeFade = context.getResources().getInteger(2131361798);
-        absSelectableDialog$Params.panelBackgroundColor = context.getResources().getColor(2131099756);
-        absSelectableDialog$Params.animationType = AbsSelectableDialog$AnimationType.FADE;
-        absSelectableDialog$Params.horizontalGavity = AbsSelectableDialog$HorizontalGravity.RIGHT;
-        return new SettingMenu(context, absSelectableDialog$Params, AbsSelectableDialog$SelectableDialogType.SETTING_SCENE);
+        AbsSelectableDialog.Params params = new AbsSelectableDialog.Params();
+        params.itemWidth = i2;
+        params.itemHeight = dimen(context, R.dimen.setting_common_height);
+        params.maxHeightLandscape = i2;
+        params.maxHeightPortrait = i - dimen(context, R.dimen.left_icon_area_height, R.dimen.second_layer_dialog_padding);
+        params.rightMarginLandscape = dimen(context, R.dimen.shortcut_dialog_padding);
+        params.scrollBarDefaultDelayBeforeFade = context.getResources().getInteger(R.integer.contextual_setting_scroll_bar_default_delay_before_fade);
+        params.panelBackgroundColor = context.getResources().getColor(R.color.setting_1st_layer_background_color);
+        params.animationType = AbsSelectableDialog.AnimationType.FADE;
+        params.horizontalGavity = AbsSelectableDialog.HorizontalGravity.RIGHT;
+        return new SettingMenu(context, params, AbsSelectableDialog.SelectableDialogType.SETTING_SCENE);
     }
 
     private static View inflate(Context context, int i) {

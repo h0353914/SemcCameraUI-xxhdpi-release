@@ -10,16 +10,17 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
+import org.apache.commons.imaging.ImagingConstants;
 import org.apache.commons.imaging.PixelDensity;
 import org.apache.commons.imaging.common.BinaryOutputStream;
 import org.apache.commons.imaging.common.PackBits;
 import org.apache.commons.imaging.common.RationalNumber;
 import org.apache.commons.imaging.common.itu_t4.T4AndT6Compression;
 import org.apache.commons.imaging.common.mylzw.MyLzwCompressor;
-import org.apache.commons.imaging.formats.tiff.TiffElement$DataElement;
-import org.apache.commons.imaging.formats.tiff.TiffImageData$Data;
-import org.apache.commons.imaging.formats.tiff.TiffImageData$Strips;
+import org.apache.commons.imaging.formats.tiff.TiffElement;
+import org.apache.commons.imaging.formats.tiff.TiffImageData;
 import org.apache.commons.imaging.formats.tiff.constants.ExifTagConstants;
 import org.apache.commons.imaging.formats.tiff.constants.TiffConstants;
 import org.apache.commons.imaging.formats.tiff.constants.TiffTagConstants;
@@ -27,7 +28,8 @@ import org.apache.commons.imaging.formats.tiff.constants.TiffTagConstants;
 public abstract class TiffImageWriterBase {
     protected final ByteOrder byteOrder;
 
-    public abstract void write(OutputStream outputStream, TiffOutputSet tiffOutputSet) throws ImageWriteException, IOException;
+    public abstract void write(OutputStream outputStream, TiffOutputSet tiffOutputSet)
+            throws ImageWriteException, IOException;
 
     public TiffImageWriterBase() {
         this.byteOrder = TiffConstants.DEFAULT_TIFF_BYTE_ORDER;
@@ -65,20 +67,17 @@ public abstract class TiffImageWriterBase {
                         }
                         tiffOutputDirectory = tiffOutputDirectory3;
                         break;
-                        break;
                     case -3:
                         if (tiffOutputDirectory2 != null) {
                             throw new ImageWriteException("More than one GPS directory.");
                         }
                         tiffOutputDirectory2 = tiffOutputDirectory3;
                         break;
-                        break;
                     case -2:
                         if (tiffOutputDirectoryAddExifDirectory != null) {
                             throw new ImageWriteException("More than one EXIF directory.");
                         }
                         tiffOutputDirectoryAddExifDirectory = tiffOutputDirectory3;
-                        break;
                         break;
                     default:
                         throw new ImageWriteException("Unknown directory: " + i);
@@ -92,7 +91,8 @@ public abstract class TiffImageWriterBase {
             HashSet hashSet = new HashSet();
             for (TiffOutputField tiffOutputField : tiffOutputDirectory3.getFields()) {
                 if (hashSet.contains(Integer.valueOf(tiffOutputField.tag))) {
-                    throw new ImageWriteException("Tag (" + tiffOutputField.tagInfo.getDescription() + ") appears twice in directory.");
+                    throw new ImageWriteException(
+                            "Tag (" + tiffOutputField.tagInfo.getDescription() + ") appears twice in directory.");
                 }
                 hashSet.add(Integer.valueOf(tiffOutputField.tag));
                 if (tiffOutputField.tag == ExifTagConstants.EXIF_TAG_EXIF_OFFSET.tag) {
@@ -136,14 +136,16 @@ public abstract class TiffImageWriterBase {
         TiffOutputDirectory tiffOutputDirectory6 = (TiffOutputDirectory) map.get(0);
         TiffOutputSummary tiffOutputSummary = new TiffOutputSummary(this.byteOrder, tiffOutputDirectory6, map);
         if (tiffOutputDirectory == null && tiffOutputFieldCreateOffsetField != null) {
-            throw new ImageWriteException("Output set has Interoperability Directory Offset field, but no Interoperability Directory");
+            throw new ImageWriteException(
+                    "Output set has Interoperability Directory Offset field, but no Interoperability Directory");
         }
         if (tiffOutputDirectory != null) {
             if (tiffOutputDirectoryAddExifDirectory == null) {
                 tiffOutputDirectoryAddExifDirectory = tiffOutputSet.addExifDirectory();
             }
             if (tiffOutputFieldCreateOffsetField == null) {
-                tiffOutputFieldCreateOffsetField = TiffOutputField.createOffsetField(ExifTagConstants.EXIF_TAG_INTEROP_OFFSET, this.byteOrder);
+                tiffOutputFieldCreateOffsetField = TiffOutputField
+                        .createOffsetField(ExifTagConstants.EXIF_TAG_INTEROP_OFFSET, this.byteOrder);
                 tiffOutputDirectoryAddExifDirectory.add(tiffOutputFieldCreateOffsetField);
             }
             tiffOutputSummary.add(tiffOutputDirectory, tiffOutputFieldCreateOffsetField);
@@ -153,7 +155,8 @@ public abstract class TiffImageWriterBase {
         }
         if (tiffOutputDirectoryAddExifDirectory != null) {
             if (tiffOutputFieldCreateOffsetField2 == null) {
-                tiffOutputFieldCreateOffsetField2 = TiffOutputField.createOffsetField(ExifTagConstants.EXIF_TAG_EXIF_OFFSET, this.byteOrder);
+                tiffOutputFieldCreateOffsetField2 = TiffOutputField
+                        .createOffsetField(ExifTagConstants.EXIF_TAG_EXIF_OFFSET, this.byteOrder);
                 tiffOutputDirectory6.add(tiffOutputFieldCreateOffsetField2);
             }
             tiffOutputSummary.add(tiffOutputDirectoryAddExifDirectory, tiffOutputFieldCreateOffsetField2);
@@ -163,7 +166,8 @@ public abstract class TiffImageWriterBase {
         }
         if (tiffOutputDirectory2 != null) {
             if (tiffOutputFieldCreateOffsetField3 == null) {
-                tiffOutputFieldCreateOffsetField3 = TiffOutputField.createOffsetField(ExifTagConstants.EXIF_TAG_GPSINFO, this.byteOrder);
+                tiffOutputFieldCreateOffsetField3 = TiffOutputField.createOffsetField(ExifTagConstants.EXIF_TAG_GPSINFO,
+                        this.byteOrder);
                 tiffOutputDirectory6.add(tiffOutputFieldCreateOffsetField3);
             }
             tiffOutputSummary.add(tiffOutputDirectory2, tiffOutputFieldCreateOffsetField3);
@@ -171,19 +175,23 @@ public abstract class TiffImageWriterBase {
         return tiffOutputSummary;
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:119:0x025e A[LOOP:1: B:117:0x025b->B:119:0x025e, LOOP_END] */
-    /* JADX WARN: Removed duplicated region for block: B:122:0x02bd  */
-    /* JADX WARN: Removed duplicated region for block: B:123:0x02cd  */
-    /* JADX WARN: Removed duplicated region for block: B:127:0x02ea  */
-    /* JADX WARN: Removed duplicated region for block: B:128:0x0316  */
-    /* JADX WARN: Removed duplicated region for block: B:133:0x0376  */
-    /* JADX WARN: Removed duplicated region for block: B:135:0x0381  */
-    /* JADX WARN: Removed duplicated region for block: B:137:0x038c  */
-    /* JADX WARN: Removed duplicated region for block: B:140:0x03a3  */
     /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    public void writeImage(BufferedImage bufferedImage, OutputStream outputStream, Map<String, Object> map) throws ImageWriteException, IOException {
+     * JADX WARN: Removed duplicated region for block: B:119:0x025e A[LOOP:1:
+     * B:117:0x025b->B:119:0x025e, LOOP_END]
+     */
+    /* JADX WARN: Removed duplicated region for block: B:122:0x02bd */
+    /* JADX WARN: Removed duplicated region for block: B:123:0x02cd */
+    /* JADX WARN: Removed duplicated region for block: B:127:0x02ea */
+    /* JADX WARN: Removed duplicated region for block: B:128:0x0316 */
+    /* JADX WARN: Removed duplicated region for block: B:133:0x0376 */
+    /* JADX WARN: Removed duplicated region for block: B:135:0x0381 */
+    /* JADX WARN: Removed duplicated region for block: B:137:0x038c */
+    /* JADX WARN: Removed duplicated region for block: B:140:0x03a3 */
+    /*
+     * Code decompiled incorrectly, please refer to instructions dump.
+     */
+    public void writeImage(BufferedImage bufferedImage, OutputStream outputStream, Map<String, Object> map)
+            throws ImageWriteException, IOException, ImageReadException {
         int iIntValue;
         int i;
         int i2;
@@ -196,24 +204,27 @@ public abstract class TiffImageWriterBase {
         String str;
         PixelDensity pixelDensity;
         HashMap map2 = new HashMap(map);
-        if (map2.containsKey("FORMAT")) {
-            map2.remove("FORMAT");
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_FORMAT)) {
+            map2.remove(ImagingConstants.PARAM_KEY_FORMAT);
         }
         String str2 = null;
-        TiffOutputSet tiffOutputSet2 = map2.containsKey("EXIF") ? (TiffOutputSet) map2.remove("EXIF") : null;
-        if (map2.containsKey("XMP_XML")) {
-            str2 = (String) map2.get("XMP_XML");
-            map2.remove("XMP_XML");
+        TiffOutputSet tiffOutputSet2 = map2.containsKey(ImagingConstants.PARAM_KEY_EXIF)
+                ? (TiffOutputSet) map2.remove(ImagingConstants.PARAM_KEY_EXIF)
+                : null;
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_XMP_XML)) {
+            str2 = (String) map2.get(ImagingConstants.PARAM_KEY_XMP_XML);
+            map2.remove(ImagingConstants.PARAM_KEY_XMP_XML);
         }
-        PixelDensity pixelDensityCreateFromPixelsPerInch = (PixelDensity) map2.remove("PIXEL_DENSITY");
+        PixelDensity pixelDensityCreateFromPixelsPerInch = (PixelDensity) map2
+                .remove(ImagingConstants.PARAM_KEY_PIXEL_DENSITY);
         if (pixelDensityCreateFromPixelsPerInch == null) {
             pixelDensityCreateFromPixelsPerInch = PixelDensity.createFromPixelsPerInch(72.0d, 72.0d);
         }
         int width = bufferedImage.getWidth();
         int height = bufferedImage.getHeight();
         int i7 = 64000;
-        if (map2.containsKey("COMPRESSION")) {
-            Object obj = map2.get("COMPRESSION");
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_COMPRESSION)) {
+            Object obj = map2.get(ImagingConstants.PARAM_KEY_COMPRESSION);
             if (obj == null) {
                 iIntValue = 5;
             } else {
@@ -222,9 +233,9 @@ public abstract class TiffImageWriterBase {
                 }
                 iIntValue = ((Number) obj).intValue();
             }
-            map2.remove("COMPRESSION");
-            if (map2.containsKey("PARAM_KEY_LZW_COMPRESSION_BLOCK_SIZE")) {
-                Object obj2 = map2.get("PARAM_KEY_LZW_COMPRESSION_BLOCK_SIZE");
+            map2.remove(ImagingConstants.PARAM_KEY_COMPRESSION);
+            if (map2.containsKey(TiffConstants.PARAM_KEY_LZW_COMPRESSION_BLOCK_SIZE)) {
+                Object obj2 = map2.get(TiffConstants.PARAM_KEY_LZW_COMPRESSION_BLOCK_SIZE);
                 if (!(obj2 instanceof Number)) {
                     throw new ImageWriteException("Invalid compression block-size parameter: " + obj);
                 }
@@ -233,14 +244,14 @@ public abstract class TiffImageWriterBase {
                     throw new ImageWriteException("Block size parameter " + iIntValue3 + " is less than 8000 minimum");
                 }
                 i7 = iIntValue3 * 8;
-                map2.remove("PARAM_KEY_LZW_COMPRESSION_BLOCK_SIZE");
+                map2.remove(TiffConstants.PARAM_KEY_LZW_COMPRESSION_BLOCK_SIZE);
             }
         } else {
             iIntValue = 5;
         }
         HashMap map3 = new HashMap(map2);
-        map2.remove("T4_OPTIONS");
-        map2.remove("T6_OPTIONS");
+        map2.remove(TiffConstants.PARAM_KEY_T4_OPTIONS);
+        map2.remove(TiffConstants.PARAM_KEY_T6_OPTIONS);
         if (!map2.isEmpty()) {
             throw new ImageWriteException("Unknown parameter: " + map2.keySet().iterator().next());
         }
@@ -257,25 +268,29 @@ public abstract class TiffImageWriterBase {
         byte[][] strips = getStrips(bufferedImage, i, i2, iMax);
         if (iIntValue == 2) {
             for (int i8 = 0; i8 < strips.length; i8++) {
-                strips[i8] = T4AndT6Compression.compressModifiedHuffman(strips[i8], width, strips[i8].length / ((width + 7) / 8));
+                strips[i8] = T4AndT6Compression.compressModifiedHuffman(strips[i8], width,
+                        strips[i8].length / ((width + 7) / 8));
             }
         } else {
             if (iIntValue == 3) {
-                Integer num = (Integer) map3.get("T4_OPTIONS");
+                Integer num = (Integer) map3.get(TiffConstants.PARAM_KEY_T4_OPTIONS);
                 int iIntValue4 = (num != null ? num.intValue() : 0) & 7;
                 boolean z = (iIntValue4 & 1) != 0;
                 if ((iIntValue4 & 2) != 0) {
-                    throw new ImageWriteException("T.4 compression with the uncompressed mode extension is not yet supported");
+                    throw new ImageWriteException(
+                            "T.4 compression with the uncompressed mode extension is not yet supported");
                 }
                 boolean z2 = (iIntValue4 & 4) != 0;
                 int i9 = 0;
                 while (i9 < strips.length) {
                     if (z) {
                         i5 = iIntValue4;
-                        strips[i9] = T4AndT6Compression.compressT4_2D(strips[i9], width, strips[i9].length / ((width + 7) / 8), z2, iMax);
+                        strips[i9] = T4AndT6Compression.compressT4_2D(strips[i9], width,
+                                strips[i9].length / ((width + 7) / 8), z2, iMax);
                     } else {
                         i5 = iIntValue4;
-                        strips[i9] = T4AndT6Compression.compressT4_1D(strips[i9], width, strips[i9].length / ((width + 7) / 8), z2);
+                        strips[i9] = T4AndT6Compression.compressT4_1D(strips[i9], width,
+                                strips[i9].length / ((width + 7) / 8), z2);
                     }
                     i9++;
                     iIntValue4 = i5;
@@ -283,10 +298,10 @@ public abstract class TiffImageWriterBase {
                 i4 = iIntValue4;
                 tiffOutputSet = tiffOutputSet2;
                 iIntValue2 = 0;
-                TiffElement$DataElement[] tiffElement$DataElementArr = new TiffElement$DataElement[strips.length];
+                TiffElement.DataElement[] dataElementArr = new TiffElement.DataElement[strips.length];
                 i6 = 0;
                 while (i6 < strips.length) {
-                    tiffElement$DataElementArr[i6] = new TiffImageData$Data(0L, strips[i6].length, strips[i6]);
+                    dataElementArr[i6] = new TiffImageData.Data(0L, strips[i6].length, strips[i6]);
                     i6++;
                     str2 = str2;
                     pixelDensityCreateFromPixelsPerInch = pixelDensityCreateFromPixelsPerInch;
@@ -297,7 +312,8 @@ public abstract class TiffImageWriterBase {
                 TiffOutputDirectory tiffOutputDirectoryAddRootDirectory = tiffOutputSet3.addRootDirectory();
                 tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_IMAGE_WIDTH, width);
                 tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_IMAGE_LENGTH, height);
-                tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_PHOTOMETRIC_INTERPRETATION, (short) i3);
+                tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_PHOTOMETRIC_INTERPRETATION,
+                        (short) i3);
                 tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_COMPRESSION, (short) iIntValue);
                 tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_SAMPLES_PER_PIXEL, (short) i);
                 if (i != 3) {
@@ -308,17 +324,23 @@ public abstract class TiffImageWriterBase {
                 }
                 tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_ROWS_PER_STRIP, iMax);
                 if (!pixelDensity.isUnitless()) {
-                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_RESOLUTION_UNIT, 0);
-                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_XRESOLUTION, RationalNumber.valueOf(pixelDensity.getRawHorizontalDensity()));
-                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_YRESOLUTION, RationalNumber.valueOf(pixelDensity.getRawVerticalDensity()));
+                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_RESOLUTION_UNIT, (short) 0);
+                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_XRESOLUTION,
+                            RationalNumber.valueOf(pixelDensity.getRawHorizontalDensity()));
+                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_YRESOLUTION,
+                            RationalNumber.valueOf(pixelDensity.getRawVerticalDensity()));
                 } else if (pixelDensity.isInInches()) {
-                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_RESOLUTION_UNIT, 2);
-                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_XRESOLUTION, RationalNumber.valueOf(pixelDensity.horizontalDensityInches()));
-                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_YRESOLUTION, RationalNumber.valueOf(pixelDensity.verticalDensityInches()));
+                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_RESOLUTION_UNIT, (short) 2);
+                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_XRESOLUTION,
+                            RationalNumber.valueOf(pixelDensity.horizontalDensityInches()));
+                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_YRESOLUTION,
+                            RationalNumber.valueOf(pixelDensity.verticalDensityInches()));
                 } else {
-                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_RESOLUTION_UNIT, 1);
-                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_XRESOLUTION, RationalNumber.valueOf(pixelDensity.horizontalDensityCentimetres()));
-                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_YRESOLUTION, RationalNumber.valueOf(pixelDensity.verticalDensityCentimetres()));
+                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_RESOLUTION_UNIT, (short) 1);
+                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_XRESOLUTION,
+                            RationalNumber.valueOf(pixelDensity.horizontalDensityCentimetres()));
+                    tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_YRESOLUTION,
+                            RationalNumber.valueOf(pixelDensity.verticalDensityCentimetres()));
                 }
                 if (i4 != 0) {
                     tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_T4_OPTIONS, i4);
@@ -329,24 +351,26 @@ public abstract class TiffImageWriterBase {
                 if (str != null) {
                     tiffOutputDirectoryAddRootDirectory.add(TiffTagConstants.TIFF_TAG_XMP, str.getBytes("utf-8"));
                 }
-                tiffOutputDirectoryAddRootDirectory.setTiffImageData(new TiffImageData$Strips(tiffElement$DataElementArr, iMax));
+                tiffOutputDirectoryAddRootDirectory.setTiffImageData(new TiffImageData.Strips(dataElementArr, iMax));
                 if (tiffOutputSet != null) {
                     combineUserExifIntoFinalExif(tiffOutputSet, tiffOutputSet3);
                 }
                 write(outputStream, tiffOutputSet3);
             }
             if (iIntValue == 4) {
-                Integer num2 = (Integer) map3.get("T6_OPTIONS");
+                Integer num2 = (Integer) map3.get(TiffConstants.PARAM_KEY_T6_OPTIONS);
                 iIntValue2 = 4 & (num2 != null ? num2.intValue() : 0);
                 if ((iIntValue2 & 2) != 0) {
-                    throw new ImageWriteException("T.6 compression with the uncompressed mode extension is not yet supported");
+                    throw new ImageWriteException(
+                            "T.6 compression with the uncompressed mode extension is not yet supported");
                 }
                 for (int i10 = 0; i10 < strips.length; i10++) {
-                    strips[i10] = T4AndT6Compression.compressT6(strips[i10], width, strips[i10].length / ((width + 7) / 8));
+                    strips[i10] = T4AndT6Compression.compressT6(strips[i10], width,
+                            strips[i10].length / ((width + 7) / 8));
                 }
                 tiffOutputSet = tiffOutputSet2;
                 i4 = 0;
-                TiffElement$DataElement[] tiffElement$DataElementArr2 = new TiffElement$DataElement[strips.length];
+                TiffElement.DataElement[] dataElementArr2 = new TiffElement.DataElement[strips.length];
                 i6 = 0;
                 while (i6 < strips.length) {
                 }
@@ -356,7 +380,8 @@ public abstract class TiffImageWriterBase {
                 TiffOutputDirectory tiffOutputDirectoryAddRootDirectory2 = tiffOutputSet32.addRootDirectory();
                 tiffOutputDirectoryAddRootDirectory2.add(TiffTagConstants.TIFF_TAG_IMAGE_WIDTH, width);
                 tiffOutputDirectoryAddRootDirectory2.add(TiffTagConstants.TIFF_TAG_IMAGE_LENGTH, height);
-                tiffOutputDirectoryAddRootDirectory2.add(TiffTagConstants.TIFF_TAG_PHOTOMETRIC_INTERPRETATION, (short) i3);
+                tiffOutputDirectoryAddRootDirectory2.add(TiffTagConstants.TIFF_TAG_PHOTOMETRIC_INTERPRETATION,
+                        (short) i3);
                 tiffOutputDirectoryAddRootDirectory2.add(TiffTagConstants.TIFF_TAG_COMPRESSION, (short) iIntValue);
                 tiffOutputDirectoryAddRootDirectory2.add(TiffTagConstants.TIFF_TAG_SAMPLES_PER_PIXEL, (short) i);
                 if (i != 3) {
@@ -370,7 +395,7 @@ public abstract class TiffImageWriterBase {
                 }
                 if (str != null) {
                 }
-                tiffOutputDirectoryAddRootDirectory2.setTiffImageData(new TiffImageData$Strips(tiffElement$DataElementArr2, iMax));
+                tiffOutputDirectoryAddRootDirectory2.setTiffImageData(new TiffImageData.Strips(dataElementArr2, iMax));
                 if (tiffOutputSet != null) {
                 }
                 write(outputStream, tiffOutputSet32);
@@ -389,11 +414,12 @@ public abstract class TiffImageWriterBase {
             } else {
                 tiffOutputSet = tiffOutputSet2;
                 if (iIntValue != 1) {
-                    throw new ImageWriteException("Invalid compression parameter (Only CCITT 1D/Group 3/Group 4, LZW, Packbits and uncompressed supported).");
+                    throw new ImageWriteException(
+                            "Invalid compression parameter (Only CCITT 1D/Group 3/Group 4, LZW, Packbits and uncompressed supported).");
                 }
                 iIntValue2 = 0;
                 i4 = 0;
-                TiffElement$DataElement[] tiffElement$DataElementArr22 = new TiffElement$DataElement[strips.length];
+                TiffElement.DataElement[] dataElementArr22 = new TiffElement.DataElement[strips.length];
                 i6 = 0;
                 while (i6 < strips.length) {
                 }
@@ -403,7 +429,8 @@ public abstract class TiffImageWriterBase {
                 TiffOutputDirectory tiffOutputDirectoryAddRootDirectory22 = tiffOutputSet322.addRootDirectory();
                 tiffOutputDirectoryAddRootDirectory22.add(TiffTagConstants.TIFF_TAG_IMAGE_WIDTH, width);
                 tiffOutputDirectoryAddRootDirectory22.add(TiffTagConstants.TIFF_TAG_IMAGE_LENGTH, height);
-                tiffOutputDirectoryAddRootDirectory22.add(TiffTagConstants.TIFF_TAG_PHOTOMETRIC_INTERPRETATION, (short) i3);
+                tiffOutputDirectoryAddRootDirectory22.add(TiffTagConstants.TIFF_TAG_PHOTOMETRIC_INTERPRETATION,
+                        (short) i3);
                 tiffOutputDirectoryAddRootDirectory22.add(TiffTagConstants.TIFF_TAG_COMPRESSION, (short) iIntValue);
                 tiffOutputDirectoryAddRootDirectory22.add(TiffTagConstants.TIFF_TAG_SAMPLES_PER_PIXEL, (short) i);
                 if (i != 3) {
@@ -417,7 +444,8 @@ public abstract class TiffImageWriterBase {
                 }
                 if (str != null) {
                 }
-                tiffOutputDirectoryAddRootDirectory22.setTiffImageData(new TiffImageData$Strips(tiffElement$DataElementArr22, iMax));
+                tiffOutputDirectoryAddRootDirectory22
+                        .setTiffImageData(new TiffImageData.Strips(dataElementArr22, iMax));
                 if (tiffOutputSet != null) {
                 }
                 write(outputStream, tiffOutputSet322);
@@ -426,7 +454,7 @@ public abstract class TiffImageWriterBase {
         tiffOutputSet = tiffOutputSet2;
         iIntValue2 = 0;
         i4 = 0;
-        TiffElement$DataElement[] tiffElement$DataElementArr222 = new TiffElement$DataElement[strips.length];
+        TiffElement.DataElement[] dataElementArr222 = new TiffElement.DataElement[strips.length];
         i6 = 0;
         while (i6 < strips.length) {
         }
@@ -450,17 +478,19 @@ public abstract class TiffImageWriterBase {
         }
         if (str != null) {
         }
-        tiffOutputDirectoryAddRootDirectory222.setTiffImageData(new TiffImageData$Strips(tiffElement$DataElementArr222, iMax));
+        tiffOutputDirectoryAddRootDirectory222.setTiffImageData(new TiffImageData.Strips(dataElementArr222, iMax));
         if (tiffOutputSet != null) {
         }
         write(outputStream, tiffOutputSet3222);
     }
 
-    private void combineUserExifIntoFinalExif(TiffOutputSet tiffOutputSet, TiffOutputSet tiffOutputSet2) throws ImageWriteException {
+    private void combineUserExifIntoFinalExif(TiffOutputSet tiffOutputSet, TiffOutputSet tiffOutputSet2)
+            throws ImageWriteException {
         List<TiffOutputDirectory> directories = tiffOutputSet2.getDirectories();
         Collections.sort(directories, TiffOutputDirectory.COMPARATOR);
         for (TiffOutputDirectory tiffOutputDirectory : tiffOutputSet.getDirectories()) {
-            int iBinarySearch = Collections.binarySearch(directories, tiffOutputDirectory, TiffOutputDirectory.COMPARATOR);
+            int iBinarySearch = Collections.binarySearch(directories, tiffOutputDirectory,
+                    TiffOutputDirectory.COMPARATOR);
             if (iBinarySearch < 0) {
                 tiffOutputSet2.addDirectory(tiffOutputDirectory);
             } else {

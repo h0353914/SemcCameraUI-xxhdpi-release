@@ -4,84 +4,141 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
-import android.widget.CompoundButton$OnCheckedChangeListener;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.SettingUtil;
-import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter$ItemLayoutParams;
+import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
-import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem$Selectability;
 import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
 import com.sonyericsson.cameracommon.widget.CategorySwitch;
 
 class SettingButton extends SettingDialogItem {
     private static final int DISABLED_FILTER = 2131099706;
-    private final SettingButton$ViewHolder mHolder;
+    private final ViewHolder mHolder;
     private final boolean mIsDeviceInSecurityLock;
-    private final CompoundButton$OnCheckedChangeListener mOnCheckedChangeListener;
-    private final View$OnClickListener mOnClickListener;
+    private final CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener;
+    private final View.OnClickListener mOnClickListener;
     private final Resources mResources;
 
-    static /* synthetic */ SettingButton$ViewHolder access$100(SettingButton settingButton) {
-        return settingButton.mHolder;
+    private final class SwitchOnCheckedChangeListener implements CompoundButton.OnCheckedChangeListener {
+        private SwitchOnCheckedChangeListener() {
+        }
+
+        @Override // android.widget.CompoundButton.OnCheckedChangeListener
+        public void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+            if (SettingButton.this.getView().isShown()) {
+                if (!SettingButton.this.getItem().isSelectable()) {
+                    SettingButton.this.mHolder.mBackground.setChecked(false);
+                    return;
+                }
+                SettingItem onItem = SettingButton.this.getOnItem();
+                SettingItem offItem = SettingButton.this.getOffItem();
+                if (onItem == null || offItem == null) {
+                    SettingButton.this.mHolder.mBackground.setChecked(false);
+                    return;
+                }
+                if (z) {
+                    SettingButton.this.select(onItem);
+                } else {
+                    SettingButton.this.select(offItem);
+                }
+                SettingButton.this.updateContentDescription(z);
+            }
+        }
     }
 
-    static /* synthetic */ SettingItem access$200(SettingButton settingButton) {
-        return settingButton.getOnItem();
-    }
 
-    static /* synthetic */ SettingItem access$300(SettingButton settingButton) {
-        return settingButton.getOffItem();
-    }
 
-    static /* synthetic */ void access$400(SettingButton settingButton, boolean z) {
-        settingButton.updateContentDescription(z);
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private static class ViewHolder { CategorySwitch mBackground; View mContainer; ImageView mImage; FrameLayout mSwitch; TextView mText; TextView mValue; private ViewHolder() { } }
 
     public SettingButton(Context context, SettingItem settingItem, boolean z) {
         super(settingItem);
-        this.mOnClickListener = new SettingButton$1(this);
-        this.mOnCheckedChangeListener = new SettingButton$SwitchOnCheckedChangeListener(this, null);
+        this.mOnClickListener = new View.OnClickListener() { // from class: com.sonyericsson.android.camera.view.setting.dialogitem.SettingButton.1
+            @Override // android.view.View.OnClickListener
+            public void onClick(View view) {
+                if (SettingButton.this.getView().isShown()) {
+                    switch (SettingButton.this.getItem().getSelectability()) {
+                        case SELECTABLE:
+                            SettingButton.this.select(SettingButton.this.getItem());
+                            break;
+                        case RESTRICTED:
+                            SettingButton.this.select(SettingButton.this.getItem());
+                            break;
+                    }
+                }
+            }
+        };
+        this.mOnCheckedChangeListener = new SwitchOnCheckedChangeListener();
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService("layout_inflater");
-        this.mHolder = new SettingButton$ViewHolder(null);
-        this.mHolder.mContainer = layoutInflater.inflate(2131492999, (ViewGroup) null);
+        this.mHolder = new ViewHolder();
+        this.mHolder.mContainer = layoutInflater.inflate(R.layout.setting_dialog_item, (ViewGroup) null);
         this.mResources = this.mHolder.mContainer.getContext().getResources();
-        this.mHolder.mBackground = (CategorySwitch) this.mHolder.mContainer.findViewById(2131296316);
+        this.mHolder.mBackground = (CategorySwitch) this.mHolder.mContainer.findViewById(R.id.background);
         this.mHolder.mImage = (ImageView) this.mHolder.mContainer.findViewById(2131296423);
         this.mHolder.mText = (TextView) this.mHolder.mContainer.findViewById(2131296648);
-        this.mHolder.mValue = (TextView) this.mHolder.mContainer.findViewById(2131296689);
-        this.mHolder.mSwitch = (FrameLayout) this.mHolder.mContainer.findViewById(2131296638);
+        this.mHolder.mValue = (TextView) this.mHolder.mContainer.findViewById(R.id.value);
+        this.mHolder.mSwitch = (FrameLayout) this.mHolder.mContainer.findViewById(R.id.switch_bundle);
         this.mHolder.mText.setTextSize(1, 16.0f);
         this.mHolder.mValue.setTextSize(1, 14.0f);
         this.mIsDeviceInSecurityLock = z;
     }
 
     @Override // com.sonyericsson.android.camera.view.setting.dialogitem.SettingDialogItem
-    public void update(ViewGroup viewGroup, SettingAdapter$ItemLayoutParams settingAdapter$ItemLayoutParams) {
-        if (getItem().getSelectability() != SettingItem$Selectability.RESTRICTED) {
+    public void update(ViewGroup viewGroup, SettingAdapter.ItemLayoutParams itemLayoutParams) {
+        if (getItem().getSelectability() != SettingItem.Selectability.RESTRICTED) {
             switch (getItem().getDialogItemType()) {
                 case 1:
-                    changeToButtonFormat(viewGroup, settingAdapter$ItemLayoutParams);
+                    changeToButtonFormat(viewGroup, itemLayoutParams);
                     break;
                 case 2:
-                    changeToValueButtonFormat(viewGroup, settingAdapter$ItemLayoutParams);
+                    changeToValueButtonFormat(viewGroup, itemLayoutParams);
                     break;
                 case 3:
-                    changeToCategoryButtonFormat(viewGroup, settingAdapter$ItemLayoutParams);
+                    changeToCategoryButtonFormat(viewGroup, itemLayoutParams);
                     break;
                 case 4:
-                    changeToCategorySwitchFormat(viewGroup, settingAdapter$ItemLayoutParams);
+                    changeToCategorySwitchFormat(viewGroup, itemLayoutParams);
                     break;
             }
             setTextColorGrayOrNot();
             setIconColorGrayOrNot();
         } else {
-            changeToRestrictFormat(viewGroup, settingAdapter$ItemLayoutParams);
+            changeToRestrictFormat(viewGroup, itemLayoutParams);
         }
         if (CommonUtility.isMirroringRequired(this.mHolder.mContainer.getContext())) {
             this.mHolder.mText.setGravity(21);
@@ -108,11 +165,11 @@ class SettingButton extends SettingDialogItem {
 
     private void setTextColorGrayOrNot() {
         if (getItem().isSelectable()) {
-            this.mHolder.mText.setTextColor(this.mResources.getColor(2131099700));
-            this.mHolder.mValue.setTextColor(this.mResources.getColor(2131099759));
+            this.mHolder.mText.setTextColor(this.mResources.getColor(R.color.default_text_col));
+            this.mHolder.mValue.setTextColor(this.mResources.getColor(R.color.setting_menu_value_color));
         } else {
-            this.mHolder.mText.setTextColor(this.mResources.getColor(2131099711));
-            this.mHolder.mValue.setTextColor(this.mResources.getColor(2131099760));
+            this.mHolder.mText.setTextColor(this.mResources.getColor(R.color.grayout_text_col));
+            this.mHolder.mValue.setTextColor(this.mResources.getColor(R.color.setting_menu_value_grayout_color));
         }
     }
 
@@ -124,7 +181,7 @@ class SettingButton extends SettingDialogItem {
         }
     }
 
-    private void changeToButtonFormat(ViewGroup viewGroup, SettingAdapter$ItemLayoutParams settingAdapter$ItemLayoutParams) {
+    private void changeToButtonFormat(ViewGroup viewGroup, SettingAdapter.ItemLayoutParams itemLayoutParams) {
         setText();
         setImage();
         this.mHolder.mBackground.setOnClickListener(this.mOnClickListener);
@@ -132,22 +189,22 @@ class SettingButton extends SettingDialogItem {
         this.mHolder.mBackground.setContentDescription(getItem().getContentDescription(this.mResources));
     }
 
-    private void changeToCategoryButtonFormat(ViewGroup viewGroup, SettingAdapter$ItemLayoutParams settingAdapter$ItemLayoutParams) {
+    private void changeToCategoryButtonFormat(ViewGroup viewGroup, SettingAdapter.ItemLayoutParams itemLayoutParams) {
         int i;
         setText();
         setImage();
         setValue();
         if (this.mHolder.mImage.getVisibility() == 0) {
-            i = this.mHolder.mValue.getVisibility() == 0 ? 2131165609 : 2131165605;
+            i = this.mHolder.mValue.getVisibility() == 0 ? R.dimen.setting_menu_category_max_width_with_value_and_icon : R.dimen.setting_menu_category_max_width_with_icon;
         } else {
-            i = this.mHolder.mValue.getVisibility() == 0 ? 2131165608 : 2131165604;
+            i = this.mHolder.mValue.getVisibility() == 0 ? R.dimen.setting_menu_category_max_width_with_value : R.dimen.setting_menu_category_max_width;
         }
         this.mHolder.mText.setMaxWidth(this.mResources.getDimensionPixelSize(i));
         this.mHolder.mBackground.setOnClickListener(this.mOnClickListener);
         this.mHolder.mBackground.setContentDescription(getItem().getContentDescription(this.mResources));
     }
 
-    private void changeToValueButtonFormat(ViewGroup viewGroup, SettingAdapter$ItemLayoutParams settingAdapter$ItemLayoutParams) {
+    private void changeToValueButtonFormat(ViewGroup viewGroup, SettingAdapter.ItemLayoutParams itemLayoutParams) {
         setText();
         setImage();
         this.mHolder.mBackground.setOnClickListener(this.mOnClickListener);
@@ -155,13 +212,19 @@ class SettingButton extends SettingDialogItem {
         this.mHolder.mBackground.setContentDescription(getItem().getContentDescription(this.mResources));
     }
 
-    private void changeToCategorySwitchFormat(ViewGroup viewGroup, SettingAdapter$ItemLayoutParams settingAdapter$ItemLayoutParams) {
+    private void changeToCategorySwitchFormat(ViewGroup viewGroup, SettingAdapter.ItemLayoutParams itemLayoutParams) {
         setText();
         setImage();
-        this.mHolder.mText.setMaxWidth(this.mResources.getDimensionPixelSize(this.mHolder.mImage.getVisibility() == 0 ? 2131165607 : 2131165606));
-        updateContentDescription(getOnItem().isSelected());
+        this.mHolder.mText.setMaxWidth(this.mResources.getDimensionPixelSize(this.mHolder.mImage.getVisibility() == 0 ? R.dimen.setting_menu_category_max_width_with_switch_and_icon : R.dimen.setting_menu_category_max_width_with_switch));
+        SettingItem onItem = getOnItem();
+        SettingItem offItem = getOffItem();
+        if (onItem == null || offItem == null) {
+            changeToCategoryButtonFormat(viewGroup, itemLayoutParams);
+            return;
+        }
+        updateContentDescription(onItem.isSelected());
         this.mHolder.mBackground.setOnCheckedChangeListener(null);
-        this.mHolder.mBackground.setChecked(getOnItem().isSelected());
+        this.mHolder.mBackground.setChecked(onItem.isSelected());
         if (this.mIsDeviceInSecurityLock && (getItem().compareData(UserSettingKey.GEO_TAG) || (!SettingUtil.isSideSenseEnabled(true) && getItem().compareData(UserSettingKey.SIDE_SENSE)))) {
             this.mHolder.mBackground.setOnClickListener(this.mOnClickListener);
         } else {
@@ -170,11 +233,11 @@ class SettingButton extends SettingDialogItem {
         this.mHolder.mSwitch.setVisibility(0);
     }
 
-    private void changeToRestrictFormat(ViewGroup viewGroup, SettingAdapter$ItemLayoutParams settingAdapter$ItemLayoutParams) {
+    private void changeToRestrictFormat(ViewGroup viewGroup, SettingAdapter.ItemLayoutParams itemLayoutParams) {
         setText();
         setImage();
         if (getSelectedItem() == null) {
-            this.mHolder.mValue.setText(2131690038);
+            this.mHolder.mValue.setText(R.string.cam_strings_restricted_setting_hyphen_txt);
         } else {
             setValue();
         }
@@ -184,17 +247,30 @@ class SettingButton extends SettingDialogItem {
         this.mHolder.mBackground.setContentDescription(getItem().getContentDescription(this.mResources));
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private SettingItem getOnItem() {
+        if (getItem().getChildren() == null || getItem().getChildren().isEmpty()) {
+            return null;
+        }
         return getItem().getChildren().get(0);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private SettingItem getOffItem() {
+        if (getItem().getChildren() == null || getItem().getChildren().size() < 2) {
+            return null;
+        }
         return getItem().getChildren().get(1);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void updateContentDescription(boolean z) {
         String str;
         String text = getItem().getText(this.mResources);
+        if (getOnItem() == null || getOffItem() == null) {
+            this.mHolder.mContainer.setContentDescription(text);
+            return;
+        }
         if (z) {
             str = text + " " + getOnItem().getContentDescription(this.mResources);
         } else {

@@ -1,20 +1,22 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
 import com.sonyericsson.android.camera.ActionMode;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public enum Flash implements UserSettingValue {
-    AUTO(2131231047, 2131690114, "auto", true),
-    ON(2131231048, 2131689836, "on", false),
-    RED_EYE(2131231050, 2131689839, "red-eye", true),
-    OFF(2131231049, 2131690115, "off", false),
-    LED_ON(2131231051, 2131689841, "torch", false),
-    LED_OFF(2131231052, 2131690115, "off", false),
+    AUTO(R.drawable.cam_core_flash_auto_icn, R.string.cam_strings_settings_auto_txt, "auto", true),
+    ON(R.drawable.cam_core_flash_fill_flash_icn, R.string.cam_strings_flash_fill_flash_txt, "on", false),
+    RED_EYE(R.drawable.cam_core_flash_red_eye_reduc_icn, R.string.cam_strings_flash_red_eye_reduc_txt, CameraParameters.FLASH_MODE_RED_EYE, true),
+    OFF(R.drawable.cam_core_flash_off_icn, R.string.cam_strings_settings_off_txt, "off", false),
+    LED_ON(R.drawable.cam_core_flash_torch_icn, R.string.cam_strings_flash_torch_txt, CameraParameters.FLASH_MODE_TORCH, false),
+    LED_OFF(R.drawable.cam_core_flash_torch_off_icn, R.string.cam_strings_settings_off_txt, "off", false),
     PHOTO_LIGHT_ON_AS_FLASH(PhotoLight.ON.getIconId(), PhotoLight.ON.getTextId(), PhotoLight.ON.getValue(), false);
 
     public static final String TAG = "Flash";
@@ -66,12 +68,10 @@ public enum Flash implements UserSettingValue {
             if (!list.isEmpty()) {
                 for (Flash flash : LedOptionsResolver.getInstance().getFlashOptions(actionMode, list)) {
                     Iterator<String> it = list.iterator();
-                    while (true) {
-                        if (it.hasNext()) {
-                            if (flash.getValue().equals(it.next())) {
-                                arrayList.add(flash);
-                                break;
-                            }
+                    while (it.hasNext()) {
+                        if (flash.getValue().equals(it.next())) {
+                            arrayList.add(flash);
+                            break;
                         }
                     }
                 }
@@ -80,8 +80,8 @@ public enum Flash implements UserSettingValue {
         return (Flash[]) arrayList.toArray(new Flash[0]);
     }
 
-    public static boolean isSupported(CameraInfo$CameraId cameraInfo$CameraId) {
-        return PlatformCapability.isFlashModeSupported(cameraInfo$CameraId);
+    public static boolean isSupported(CameraInfo.CameraId cameraId) {
+        return PlatformCapability.isFlashModeSupported(cameraId);
     }
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValue

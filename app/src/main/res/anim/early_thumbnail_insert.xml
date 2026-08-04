@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set xmlns:android="http://schemas.android.com/apk/res/android"
-    android:duration="700"
-    android:shareInterpolator="false">
-    <alpha
-        android:fromAlpha="0.3"
-        android:toAlpha="1"/>
-    <scale
-        android:interpolator="@anim/early_thumbnail_insert_scale_overshoot_interpolator"
-        android:pivotX="50%"
-        android:pivotY="50%"
-        android:fromXScale="1.5"
-        android:toXScale="1"
-        android:fromYScale="1.5"
-        android:toYScale="1"/>
+<set android:duration="700" android:shareInterpolator="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <alpha android:fromAlpha="0.3" android:toAlpha="1.0" />
+    <scale android:interpolator="@anim/early_thumbnail_insert_scale_overshoot_interpolator" android:pivotX="50.0%" android:pivotY="50.0%" android:fromXScale="1.5" android:toXScale="1.0" android:fromYScale="1.5" android:toYScale="1.0" />
 </set>

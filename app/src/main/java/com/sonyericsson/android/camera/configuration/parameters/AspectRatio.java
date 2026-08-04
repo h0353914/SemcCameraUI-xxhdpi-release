@@ -1,12 +1,13 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import java.util.ArrayList;
 
 public enum AspectRatio implements UserSettingValue {
-    SIXTEEN_TO_NINE(2131230945, 2131689638),
-    FOUR_TO_THREE(2131230947, 2131689640),
-    ONE_TO_ONE(2131230946, 2131689639);
+    SIXTEEN_TO_NINE(R.drawable.cam_core_aspect_ratio_shortcut_16x9_icn, R.string.cam_strings_aspect_ratio_16x9_txt),
+    FOUR_TO_THREE(R.drawable.cam_core_aspect_ratio_shortcut_4x3_icn, R.string.cam_strings_aspect_ratio_4x3_txt),
+    ONE_TO_ONE(R.drawable.cam_core_aspect_ratio_shortcut_1x1_icn, R.string.cam_strings_aspect_ratio_1x1_txt);
 
     public static final String TAG = "AspectRatio";
     private static final int sParameterTextId = 2131689641;

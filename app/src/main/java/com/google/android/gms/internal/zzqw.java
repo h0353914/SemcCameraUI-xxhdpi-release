@@ -1,13 +1,14 @@
 package com.google.android.gms.internal;
 
-import com.google.android.gms.common.api.Api$zzb;
+import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.zzp;
 import com.google.android.gms.common.internal.zzt;
 import com.google.android.gms.signin.internal.zze;
 import java.util.Set;
 
-public interface zzqw extends Api$zzb {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public interface zzqw extends Api.zzb {
     void connect();
 
     void zzCe();

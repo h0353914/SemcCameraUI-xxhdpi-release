@@ -7,15 +7,15 @@ import com.sonyericsson.android.camera.configuration.parameters.Resolution;
 import com.sonyericsson.android.camera.configuration.parameters.VideoHdr;
 import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
 import com.sonyericsson.android.camera.configuration.parameters.VideoStabilizer;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
 public class DependencyCheckUtil {
-    public static boolean isIntelligentActiveAvailable(@NonNull CameraInfo$CameraId cameraInfo$CameraId, @NonNull VideoSize videoSize, @NonNull VideoHdr videoHdr) {
+    public static boolean isIntelligentActiveAvailable(@NonNull CameraInfo.CameraId cameraId, @NonNull VideoSize videoSize, @NonNull VideoHdr videoHdr) {
         if (videoHdr == VideoHdr.HDR_ON) {
             return false;
         }
-        return VideoStabilizer.isIntelligentActiveSupported(cameraInfo$CameraId, videoSize);
+        return VideoStabilizer.isIntelligentActiveSupported(cameraId, videoSize);
     }
 
     public static boolean isFaceDetectionAvailable(@NonNull CapturingMode capturingMode, @NonNull VideoSize videoSize, @NonNull VideoHdr videoHdr) {
@@ -28,17 +28,17 @@ public class DependencyCheckUtil {
         return true;
     }
 
-    public static boolean isFusionAvailableOnStill(@NonNull CameraInfo$CameraId cameraInfo$CameraId, @NonNull Resolution resolution, @NonNull Hdr hdr) {
+    public static boolean isFusionAvailableOnStill(@NonNull CameraInfo.CameraId cameraId, @NonNull Resolution resolution, @NonNull Hdr hdr) {
         if (hdr == Hdr.HDR_ON) {
             return false;
         }
-        return PlatformCapability.isFusionSupportedWith(cameraInfo$CameraId, resolution);
+        return PlatformCapability.isFusionSupportedWith(cameraId, resolution);
     }
 
-    public static boolean isFusionAvailableOnVideo(@NonNull CameraInfo$CameraId cameraInfo$CameraId, @NonNull VideoSize videoSize, @NonNull VideoHdr videoHdr) {
+    public static boolean isFusionAvailableOnVideo(@NonNull CameraInfo.CameraId cameraId, @NonNull VideoSize videoSize, @NonNull VideoHdr videoHdr) {
         if (videoHdr == VideoHdr.HDR_ON) {
             return false;
         }
-        return PlatformCapability.isFusionSupportedWith(cameraInfo$CameraId, videoSize);
+        return PlatformCapability.isFusionSupportedWith(cameraId, videoSize);
     }
 }

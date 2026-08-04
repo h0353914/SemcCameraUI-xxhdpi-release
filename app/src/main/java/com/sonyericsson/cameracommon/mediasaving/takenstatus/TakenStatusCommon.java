@@ -3,8 +3,8 @@ package com.sonyericsson.cameracommon.mediasaving.takenstatus;
 import android.location.Location;
 import android.net.Uri;
 import com.sonyericsson.android.camera.util.CamLog;
-import com.sonyericsson.cameracommon.storage.SavingTaskManager$SavedFileType;
-import com.sonyericsson.cameracommon.storage.Storage$OnStoreCompletedListener;
+import com.sonyericsson.cameracommon.storage.SavingTaskManager;
+import com.sonyericsson.cameracommon.storage.Storage;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class TakenStatusCommon {
     public final String fileExtension;
     public final int height;
     public final Location location;
-    public List<WeakReference<Storage$OnStoreCompletedListener>> mCallbacks;
+    public List<WeakReference<Storage.OnStoreCompletedListener>> mCallbacks;
     public int mCaptureIdForPredictiveCapture;
     public long mDateTaken;
     public Uri mExtraOutput;
@@ -27,11 +27,11 @@ public class TakenStatusCommon {
     public int mSomcType;
     public final String mimeType;
     public int orientation;
-    public final SavingTaskManager$SavedFileType savedFileType;
+    public final SavingTaskManager.SavedFileType savedFileType;
     public final boolean takenByFastCapture;
     public final int width;
 
-    public TakenStatusCommon(long j, int i, Location location, int i2, int i3, String str, String str2, SavingTaskManager$SavedFileType savingTaskManager$SavedFileType, String str3, String str4, boolean z, boolean z2) {
+    public TakenStatusCommon(long j, int i, Location location, int i2, int i3, String str, String str2, SavingTaskManager.SavedFileType savedFileType, String str3, String str4, boolean z, boolean z2) {
         this.mRequestId = -1;
         this.mDateTaken = 0L;
         this.mCallbacks = new ArrayList();
@@ -44,7 +44,7 @@ public class TakenStatusCommon {
         this.height = i3;
         this.mimeType = str;
         this.fileExtension = str2;
-        this.savedFileType = savingTaskManager$SavedFileType;
+        this.savedFileType = savedFileType;
         this.mFilePath = str3;
         this.cropValue = str4;
         this.addToMediaStore = z;

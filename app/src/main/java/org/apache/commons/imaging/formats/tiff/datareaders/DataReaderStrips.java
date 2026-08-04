@@ -8,7 +8,7 @@ import java.nio.ByteOrder;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.ImageBuilder;
 import org.apache.commons.imaging.formats.tiff.TiffDirectory;
-import org.apache.commons.imaging.formats.tiff.TiffImageData$Strips;
+import org.apache.commons.imaging.formats.tiff.TiffImageData;
 import org.apache.commons.imaging.formats.tiff.photometricinterpreters.PhotometricInterpreter;
 import org.apache.commons.imaging.formats.tiff.photometricinterpreters.PhotometricInterpreterRgb;
 
@@ -16,17 +16,17 @@ public final class DataReaderStrips extends DataReader {
     private final int bitsPerPixel;
     private final ByteOrder byteOrder;
     private final int compression;
-    private final TiffImageData$Strips imageData;
+    private final TiffImageData.Strips imageData;
     private final int rowsPerStrip;
     private int x;
     private int y;
 
-    public DataReaderStrips(TiffDirectory tiffDirectory, PhotometricInterpreter photometricInterpreter, int i, int[] iArr, int i2, int i3, int i4, int i5, int i6, ByteOrder byteOrder, int i7, TiffImageData$Strips tiffImageData$Strips) {
+    public DataReaderStrips(TiffDirectory tiffDirectory, PhotometricInterpreter photometricInterpreter, int i, int[] iArr, int i2, int i3, int i4, int i5, int i6, ByteOrder byteOrder, int i7, TiffImageData.Strips strips) {
         super(tiffDirectory, photometricInterpreter, iArr, i2, i3, i4, i5);
         this.bitsPerPixel = i;
         this.compression = i6;
         this.rowsPerStrip = i7;
-        this.imageData = tiffImageData$Strips;
+        this.imageData = strips;
         this.byteOrder = byteOrder;
     }
 
@@ -130,9 +130,9 @@ public final class DataReaderStrips extends DataReader {
     @Override // org.apache.commons.imaging.formats.tiff.datareaders.DataReader
     public void readImageData(ImageBuilder imageBuilder) throws IOException, ImageReadException {
         for (int i = 0; i < this.imageData.getImageDataLength(); i++) {
-            long j = 4294967295L & ((long) this.rowsPerStrip);
-            long jMin = Math.min(((long) this.height) - (((long) i) * j), j);
-            interpretStrip(imageBuilder, decompress(this.imageData.getImageData(i).getData(), this.compression, (int) (((long) (((this.bitsPerPixel * this.width) + 7) / 8)) * jMin), this.width, (int) jMin), (int) (((long) this.width) * jMin), this.height);
+            long j = 4294967295L & this.rowsPerStrip;
+            long jMin = Math.min(this.height - (i * j), j);
+            interpretStrip(imageBuilder, decompress(this.imageData.getImageData(i).getData(), this.compression, (int) ((((this.bitsPerPixel * this.width) + 7) / 8) * jMin), this.width, (int) jMin), (int) (this.width * jMin), this.height);
         }
     }
 
@@ -145,9 +145,9 @@ public final class DataReaderStrips extends DataReader {
         int i5 = (rectangle.y - i4) + rectangle.height;
         ImageBuilder imageBuilder = new ImageBuilder(this.width, i3, false);
         for (int i6 = i; i6 <= i2; i6++) {
-            long j = 4294967295L & ((long) this.rowsPerStrip);
-            long jMin = Math.min(((long) this.height) - (((long) i6) * j), j);
-            interpretStrip(imageBuilder, decompress(this.imageData.getImageData(i6).getData(), this.compression, (int) (((long) (((this.bitsPerPixel * this.width) + 7) / 8)) * jMin), this.width, (int) jMin), (int) (jMin * ((long) this.width)), i5);
+            long j = 4294967295L & this.rowsPerStrip;
+            long jMin = Math.min(this.height - (i6 * j), j);
+            interpretStrip(imageBuilder, decompress(this.imageData.getImageData(i6).getData(), this.compression, (int) ((((this.bitsPerPixel * this.width) + 7) / 8) * jMin), this.width, (int) jMin), (int) (jMin * this.width), i5);
         }
         if (rectangle.x == 0 && rectangle.y == i4 && rectangle.width == this.width && rectangle.height == i3) {
             return imageBuilder.getBufferedImage();

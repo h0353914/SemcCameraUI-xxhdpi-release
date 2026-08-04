@@ -2,14 +2,15 @@ package com.google.android.gms.internal;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap$Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.PorterDuff$Mode;
+import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v4.view.ViewCompat;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzlt {
     public static Bitmap zza(Bitmap bitmap) {
         int i;
@@ -26,13 +27,13 @@ public final class zzlt {
         } else {
             i = (width - height) / 2;
         }
-        Bitmap bitmapCreateBitmap = Bitmap.createBitmap(width, width, Bitmap$Config.ARGB_8888);
+        Bitmap bitmapCreateBitmap = Bitmap.createBitmap(width, width, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmapCreateBitmap);
         Paint paint = new Paint(1);
-        paint.setColor(-16777216);
+        paint.setColor(ViewCompat.MEASURED_STATE_MASK);
         float f = width / 2;
         canvas.drawCircle(f, f, f, paint);
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff$Mode.SRC_IN));
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, i2, i, paint);
         return bitmapCreateBitmap;
     }
@@ -44,7 +45,7 @@ public final class zzlt {
         if (drawable instanceof BitmapDrawable) {
             return ((BitmapDrawable) drawable).getBitmap();
         }
-        Bitmap bitmapCreateBitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap$Config.ARGB_8888);
+        Bitmap bitmapCreateBitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmapCreateBitmap);
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);

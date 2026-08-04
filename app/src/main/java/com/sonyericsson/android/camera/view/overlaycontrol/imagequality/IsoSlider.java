@@ -1,6 +1,7 @@
 package com.sonyericsson.android.camera.view.overlaycontrol.imagequality;
 
 import android.content.Context;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.parameters.Iso;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem;
@@ -8,7 +9,7 @@ import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem
 class IsoSlider extends SettingItemSlider {
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider
     public final int getBackgroundImageResource(int i) {
-        return i == 2 ? 2131231066 : 2131231067;
+        return i == 2 ? R.drawable.cam_core_image_quality_control_iso_slider_icn : R.drawable.cam_core_image_quality_control_iso_slider_port_icn;
     }
 
     public IsoSlider(Context context, SettingItem settingItem, OnSlideListener onSlideListener) {

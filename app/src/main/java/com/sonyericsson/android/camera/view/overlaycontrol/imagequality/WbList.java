@@ -7,43 +7,53 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ImageView$ScaleType;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout$LayoutParams;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.parameters.WhiteBalance;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.CoordinateUtil;
-import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter$ItemLayoutParams;
+import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter;
 import com.sonyericsson.android.camera.view.setting.dialogitem.SettingDialogItem;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
 class WbList extends SettingDialogItem {
     private final Context mContext;
-    private final WbList$ViewHolder mHolder;
+    private final ViewHolder mHolder;
 
-    static /* synthetic */ void access$100(WbList wbList, SettingItem settingItem) {
-        wbList.updateSelected(settingItem);
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private static class ViewHolder { ViewGroup mContainer; LinearLayout mList; private ViewHolder() { } }
 
     public WbList(Context context, SettingItem settingItem) {
         super(settingItem);
         this.mContext = context;
-        this.mHolder = new WbList$ViewHolder(null);
-        this.mHolder.mContainer = (ViewGroup) LayoutInflater.from(context).inflate(2131493005, (ViewGroup) null);
-        this.mHolder.mList = (LinearLayout) this.mHolder.mContainer.findViewById(2131296452);
+        this.mHolder = new ViewHolder();
+        this.mHolder.mContainer = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.setting_item_icon_list, (ViewGroup) null);
+        this.mHolder.mList = (LinearLayout) this.mHolder.mContainer.findViewById(R.id.list);
     }
 
     @Override // com.sonyericsson.android.camera.view.setting.dialogitem.SettingDialogItem
-    public void update(ViewGroup viewGroup, SettingAdapter$ItemLayoutParams settingAdapter$ItemLayoutParams) {
+    public void update(ViewGroup viewGroup, SettingAdapter.ItemLayoutParams itemLayoutParams) throws Resources.NotFoundException {
         if (CamLog.VERBOSE) {
             CamLog.d("update()");
         }
         Resources resources = this.mContext.getResources();
-        int dimensionPixelSize = resources.getDimensionPixelSize(2131165384);
-        int dimensionPixelSize2 = resources.getDimensionPixelSize(2131165382);
-        int dimensionPixelSize3 = resources.getDimensionPixelSize(2131165383);
-        int dimensionPixelSize4 = resources.getDimensionPixelSize(2131165369) - dimensionPixelSize2;
+        int dimensionPixelSize = resources.getDimensionPixelSize(R.dimen.image_quality_control_wb_icon_width);
+        int dimensionPixelSize2 = resources.getDimensionPixelSize(R.dimen.image_quality_control_wb_icon_height);
+        int dimensionPixelSize3 = resources.getDimensionPixelSize(R.dimen.image_quality_control_wb_icon_margin);
+        int dimensionPixelSize4 = resources.getDimensionPixelSize(R.dimen.image_quality_control_ev_wb_height) - dimensionPixelSize2;
         if (resources.getDisplayMetrics().densityDpi > DisplayMetrics.DENSITY_DEVICE_STABLE) {
             float f = (DisplayMetrics.DENSITY_DEVICE_STABLE * 1.0f) / 160.0f;
             dimensionPixelSize = (int) (CoordinateUtil.convertPx2Dip(this.mContext, dimensionPixelSize) * f);
@@ -55,12 +65,12 @@ class WbList extends SettingDialogItem {
         for (int i = 0; i < getItem().getChildren().size(); i++) {
             ImageView imageViewCreateIcon = createIcon(getItem().getChildren().get(i));
             this.mHolder.mList.addView(imageViewCreateIcon);
-            LinearLayout$LayoutParams linearLayout$LayoutParams = (LinearLayout$LayoutParams) imageViewCreateIcon.getLayoutParams();
-            linearLayout$LayoutParams.width = dimensionPixelSize;
-            linearLayout$LayoutParams.height = dimensionPixelSize2;
-            linearLayout$LayoutParams.setMargins(dimensionPixelSize4, dimensionPixelSize4, dimensionPixelSize4, dimensionPixelSize4);
+            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) imageViewCreateIcon.getLayoutParams();
+            layoutParams.width = dimensionPixelSize;
+            layoutParams.height = dimensionPixelSize2;
+            layoutParams.setMargins(dimensionPixelSize4, dimensionPixelSize4, dimensionPixelSize4, dimensionPixelSize4);
             if (i != getItem().getChildren().size() - 1) {
-                linearLayout$LayoutParams.bottomMargin = dimensionPixelSize3;
+                layoutParams.bottomMargin = dimensionPixelSize3;
             }
         }
     }
@@ -78,6 +88,7 @@ class WbList extends SettingDialogItem {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void updateSelected(SettingItem settingItem) {
         for (SettingItem settingItem2 : getItem().getChildren()) {
             if (settingItem2 != settingItem) {
@@ -95,17 +106,24 @@ class WbList extends SettingDialogItem {
         }
     }
 
-    private ImageView createIcon(SettingItem settingItem) {
+    private ImageView createIcon(final SettingItem settingItem) {
         Context context = this.mHolder.mContainer.getContext();
         ImageView imageView = new ImageView(context);
         imageView.setTag(settingItem);
         imageView.setSelected(settingItem.isSelected());
         imageView.setImageResource(settingItem.getIconId());
-        imageView.setBackgroundResource(2131231544);
-        imageView.setScaleType(ImageView$ScaleType.CENTER);
+        imageView.setBackgroundResource(R.drawable.setting_item_icon_selector);
+        imageView.setScaleType(ImageView.ScaleType.CENTER);
         imageView.setContentDescription(settingItem.getContentDescription(context.getResources()));
         imageView.setClickable(true);
-        imageView.setOnClickListener(new WbList$1(this, settingItem));
+        imageView.setOnClickListener(new View.OnClickListener() { // from class: com.sonyericsson.android.camera.view.overlaycontrol.imagequality.WbList.1
+            @Override // android.view.View.OnClickListener
+            public void onClick(View view) {
+                if (WbList.this.getView().isShown()) {
+                    WbList.this.updateSelected(settingItem);
+                }
+            }
+        });
         return imageView;
     }
 

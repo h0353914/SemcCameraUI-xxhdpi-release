@@ -1,17 +1,18 @@
 package com.sonyericsson.android.camera.configuration;
 
 import android.view.KeyCharacterMap;
+import com.sonyericsson.android.camera.configuration.IntentReader;
 
 public class Configurations {
     public static final String TAG = "Configurations";
     static final boolean sHasShutterKey = KeyCharacterMap.deviceHasKey(27);
-    private IntentReader$VideoQualityConfigurations mVideoConfig;
+    private IntentReader.VideoQualityConfigurations mVideoConfig;
 
     public static final void preload() {
     }
 
-    public void initInSync(IntentReader$VideoQualityConfigurations intentReader$VideoQualityConfigurations) {
-        this.mVideoConfig = intentReader$VideoQualityConfigurations;
+    public void initInSync(IntentReader.VideoQualityConfigurations videoQualityConfigurations) {
+        this.mVideoConfig = videoQualityConfigurations;
     }
 
     public long getVideoMaxFileSizeInBytes() {

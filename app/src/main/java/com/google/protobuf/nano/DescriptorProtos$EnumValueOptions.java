@@ -6,12 +6,6 @@ public final class DescriptorProtos$EnumValueOptions extends ExtendableMessageNa
     private static volatile DescriptorProtos$EnumValueOptions[] _emptyArray;
     public boolean deprecated;
     public DescriptorProtos$UninterpretedOption[] uninterpretedOption;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$EnumValueOptions[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

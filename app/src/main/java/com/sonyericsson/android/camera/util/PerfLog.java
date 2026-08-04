@@ -57,9 +57,9 @@ public enum PerfLog {
     PREPARE_IMAGE_READER_VIDEO_THUMBNAIL,
     PREPARE_IMAGE_READER_STREAMING;
 
-    public static final boolean IS_ENABLE = Log.isLoggable("CAMPERF", 3);
-    private static final String TAG = "CAMPERF";
     private final String mText = name();
+    private static final String TAG = "CAMPERF";
+    public static final boolean IS_ENABLE = Log.isLoggable(TAG, 3);
 
     PerfLog() {
     }
@@ -83,6 +83,6 @@ public enum PerfLog {
     }
 
     private void log(String str) {
-        Log.e("CAMPERF", '{' + SystemClock.uptimeMillis() + ',' + str + '}');
+        Log.e(TAG, '{' + SystemClock.uptimeMillis() + ',' + str + '}');
     }
 }

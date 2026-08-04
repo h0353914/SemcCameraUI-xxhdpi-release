@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 package com.sonyericsson.cameracommon.focusview;
 
 import android.graphics.Rect;

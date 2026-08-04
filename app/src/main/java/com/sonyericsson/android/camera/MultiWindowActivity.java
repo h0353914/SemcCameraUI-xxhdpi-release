@@ -2,10 +2,13 @@ package com.sonyericsson.android.camera;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AlertDialog$Builder;
 import android.app.admin.DevicePolicyManager;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Process;
+import android.support.annotation.NonNull;
 import android.util.SparseArray;
 import android.widget.TextView;
 import com.sonyericsson.android.camera.util.CamLog;
@@ -16,31 +19,21 @@ public class MultiWindowActivity extends Activity {
     private static final String TAG = "MultiWindowActivity";
     private SparseArray<OnActivityResultListener> mActivityResultListeners;
     private TextView mMultiWindowMessage;
-    private final String[] REQUESTED_PERMISSIONS = getPermissionList();
+    private final String[] REQUESTED_PERMISSIONS = { "android.permission.CAMERA", "android.permission.RECORD_AUDIO",
+            "android.permission.WRITE_EXTERNAL_STORAGE" };
     private boolean isForeground = false;
     private boolean grantedPermission = true;
     private boolean isCameraActivityLaunched = false;
 
-    private String[] getPermissionList() {
-        return new String[]{"android.permission.CAMERA", "android.permission.RECORD_AUDIO", "android.permission.READ_MEDIA_IMAGES", "android.permission.READ_MEDIA_VIDEO"};
-    }
-
-    static /* synthetic */ boolean access$000(MultiWindowActivity multiWindowActivity) {
-        return multiWindowActivity.grantedPermission;
-    }
-
-    static /* synthetic */ boolean access$002(MultiWindowActivity multiWindowActivity, boolean z) {
-        multiWindowActivity.grantedPermission = z;
-        return z;
-    }
-
     @Override // android.app.Activity
-    protected void onCreate(Bundle bundle) {
+    protected void onCreate(Bundle bundle) throws Resources.NotFoundException {
         super.onCreate(bundle);
-        setContentView(2131492902);
+        setContentView(R.layout.camera_multi_window_mode);
         String string = getResources().getString(getApplicationInfo().labelRes);
-        this.mMultiWindowMessage = (TextView) findViewById(2131296475);
-        this.mMultiWindowMessage.setText(String.format(getResources().getString(2131689955), string));
+        this.mMultiWindowMessage = (TextView) findViewById(R.id.multi_window_message);
+        TextView textView = this.mMultiWindowMessage;
+        String string2 = getResources().getString(R.string.cam_strings_multi_window_txt);
+        textView.setText(String.format(string2, string));
     }
 
     @Override // android.app.Activity
@@ -87,7 +80,8 @@ public class MultiWindowActivity extends Activity {
         } else if (action == "android.media.action.VIDEO_CAPTURE") {
             intent.setClass(getApplicationContext(), OneshotVideoActivity.class);
             resetNewTaskFlag(intent);
-        } else if (action == "android.media.action.STILL_IMAGE_CAMERA" || action == "android.media.action.VIDEO_CAMERA") {
+        } else if (action == "android.media.action.STILL_IMAGE_CAMERA"
+                || action == "android.media.action.VIDEO_CAMERA") {
             intent.setClass(getApplicationContext(), CameraActivity.class);
         } else {
             if (CamLog.VERBOSE) {
@@ -111,12 +105,25 @@ public class MultiWindowActivity extends Activity {
         }
     }
 
-    public boolean checkAndRequestSelfPermissions(int i, String[] strArr) {
-        boolean zCheckAndRequestSelfPermissions = PermissionsUtil.checkAndRequestSelfPermissions(this, i, strArr);
-        if (zCheckAndRequestSelfPermissions) {
-            addActivityResultListener(i, new MultiWindowActivity$1(this, strArr));
+    public boolean checkAndRequestSelfPermissions(int i, final String[] strArr) {
+        boolean result = PermissionsUtil.checkAndRequestSelfPermissions(this, i, strArr);
+        if (result) {
+            addActivityResultListener(i, new OnActivityResultListener() {
+                @Override
+                public boolean onActivityResult(int requestCode, int resultCode, Intent data) {
+                    if (requestCode == 12) {
+                        if (resultCode == -1) {
+                            MultiWindowActivity.this.grantedPermission = PermissionsUtil.arePermissionsGranted(MultiWindowActivity.this, strArr);
+                            if (!MultiWindowActivity.this.grantedPermission) {
+                                MultiWindowActivity.this.finish();
+                            }
+                        }
+                    }
+                    return true;
+                }
+            });
         }
-        return zCheckAndRequestSelfPermissions;
+        return result;
     }
 
     private boolean addActivityResultListener(int i, OnActivityResultListener onActivityResultListener) {
@@ -133,7 +140,8 @@ public class MultiWindowActivity extends Activity {
     @Override // android.app.Activity
     protected void onActivityResult(int i, int i2, Intent intent) {
         super.onActivityResult(i, i2, intent);
-        if (this.mActivityResultListeners == null) {
+        SparseArray<OnActivityResultListener> sparseArray = this.mActivityResultListeners;
+        if (sparseArray == null) {
             return;
         }
         OnActivityResultListener onActivityResultListener = this.mActivityResultListeners.get(i);
@@ -154,14 +162,20 @@ public class MultiWindowActivity extends Activity {
     }
 
     private void showCameraNotAvailableError() {
-        AlertDialog$Builder alertDialog$Builder = new AlertDialog$Builder(this);
-        alertDialog$Builder.setTitle(2131689770);
-        alertDialog$Builder.setMessage(2131690207);
-        AlertDialog alertDialogCreate = alertDialog$Builder.create();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.cam_strings_error_dialog_title_txt);
+        builder.setMessage(R.string.cam_strings_use_of_camera_not_authorized_txt);
+        AlertDialog alertDialogCreate = builder.create();
         alertDialogCreate.getWindow().addFlags(128);
         alertDialogCreate.setCancelable(true);
         alertDialogCreate.setCanceledOnTouchOutside(false);
-        alertDialogCreate.setOnCancelListener(new MultiWindowActivity$2(this));
+        alertDialogCreate.setOnCancelListener(new DialogInterface.OnCancelListener() { // from class:
+                                                                                       // com.sonyericsson.android.camera.MultiWindowActivity.2
+            @Override // android.content.DialogInterface.OnCancelListener
+            public void onCancel(DialogInterface dialogInterface) {
+                Process.killProcess(Process.myPid());
+            }
+        });
         alertDialogCreate.show();
     }
 }

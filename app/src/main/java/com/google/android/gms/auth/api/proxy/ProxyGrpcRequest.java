@@ -1,11 +1,12 @@
 package com.google.android.gms.auth.api.proxy;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class ProxyGrpcRequest implements SafeParcelable {
-    public static final Parcelable$Creator<ProxyGrpcRequest> CREATOR = new zza();
+    public static final Parcelable.Creator<ProxyGrpcRequest> CREATOR = new zza();
     public final byte[] body;
     public final String hostname;
     public final String method;

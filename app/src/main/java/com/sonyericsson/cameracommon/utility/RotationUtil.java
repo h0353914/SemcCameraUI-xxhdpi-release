@@ -27,7 +27,7 @@ public class RotationUtil {
         int i2 = i % 360;
         int i3 = (45 >= i2 || i2 > 135) ? (135 > i2 || i2 > 225) ? (225 > i2 || i2 > 315) ? 0 : 270 : 180 : 90;
         if (CamLog.VERBOSE) {
-            CamLog.d("RotationUtil", "ORIENTATION: normalized value is " + i3);
+            CamLog.d(TAG, "ORIENTATION: normalized value is " + i3);
         }
         return i3;
     }

@@ -1,14 +1,18 @@
 package com.sonymobile.android.media.internal;
 
+import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaCodec;
 import android.media.MediaCodecList;
-import android.media.MediaCrypto;
 import android.media.MediaFormat;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.support.annotation.NonNull;
 import android.util.Log;
-import android.view.Surface;
+import com.sonyericsson.android.camera.recorder.RecordingProfile;
+import com.sonymobile.android.media.internal.Track;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
@@ -27,21 +31,21 @@ class AudioTrack extends Track implements ClockInterface {
     private String mAudioMime;
     private long mAudioOffset;
     private boolean mAudioRecord;
-    private final AudioTrack$AudioRecordHandler mAudioRecordHandler;
+    private final AudioRecordHandler mAudioRecordHandler;
     private final HandlerThread mAudioRecordThread;
     private int mAudioSource;
     private int mBytesPerSample;
     private final Handler mCallback;
     private long mClockTotalPauseDurationUs;
-    private final AudioTrack$CodecHandler mCodecHandler;
+    private final CodecHandler mCodecHandler;
     private int mInputBufferSize;
-    private final Track$MuxerHandler mMuxerHandler;
+    private final Track.MuxerHandler mMuxerHandler;
     private int mPauseArrayIndex;
     private long[] mPauseResumeIndices;
     private AudioRecord mAudioRecorder = null;
     private int mAudioSamplingRate = 44100;
     private int mNumAudioChannels = 2;
-    private int mAudioBitRate = 156000;
+    private int mAudioBitRate = RecordingProfile.VIDEO_AUDIO_BIT_RATE_AAC;
     private boolean mEosFlagged = false;
     private int mStartVolumeDelayUs = 0;
     private final String[] audioMimeTypes = {"", "audio/3gpp", "audio/amr-wb", "audio/mp4a-latm", "audio/mp4a-latm", "audio/mp4a-latm", "audio/vorbis"};
@@ -53,102 +57,21 @@ class AudioTrack extends Track implements ClockInterface {
     private boolean mFirstCodecFrame = true;
     private boolean mStopAudioRecording = false;
 
-    static /* synthetic */ long access$100(AudioTrack audioTrack) {
-        return audioTrack.mAudioDurationUs;
-    }
-
-    static /* synthetic */ AudioTrack$AudioRecordHandler access$1000(AudioTrack audioTrack) {
-        return audioTrack.mAudioRecordHandler;
-    }
-
-    static /* synthetic */ long access$102(AudioTrack audioTrack, long j) {
-        audioTrack.mAudioDurationUs = j;
-        return j;
-    }
-
-    static /* synthetic */ int access$1100(AudioTrack audioTrack) {
-        return audioTrack.mStartVolumeDelayUs;
-    }
-
-    static /* synthetic */ boolean access$1200(AudioTrack audioTrack) {
-        return audioTrack.mFirstCodecFrame;
-    }
-
-    static /* synthetic */ boolean access$1202(AudioTrack audioTrack, boolean z) {
-        audioTrack.mFirstCodecFrame = z;
-        return z;
-    }
-
-    static /* synthetic */ Track$MuxerHandler access$1300(AudioTrack audioTrack) {
-        return audioTrack.mMuxerHandler;
-    }
-
-    static /* synthetic */ AudioTrack$CodecHandler access$1400(AudioTrack audioTrack) {
-        return audioTrack.mCodecHandler;
-    }
-
-    static /* synthetic */ long access$200(AudioTrack audioTrack) {
-        return audioTrack.mAudioOffset;
-    }
-
-    static /* synthetic */ int access$300(AudioTrack audioTrack) {
-        return audioTrack.mInputBufferSize;
-    }
-
-    static /* synthetic */ int access$302(AudioTrack audioTrack, int i) {
-        audioTrack.mInputBufferSize = i;
-        return i;
-    }
-
-    static /* synthetic */ AudioRecord access$400(AudioTrack audioTrack) {
-        return audioTrack.mAudioRecorder;
-    }
-
-    static /* synthetic */ AudioRecord access$402(AudioTrack audioTrack, AudioRecord audioRecord) {
-        audioTrack.mAudioRecorder = audioRecord;
-        return audioRecord;
-    }
-
-    static /* synthetic */ int access$500(AudioTrack audioTrack) {
-        return audioTrack.mNumAudioChannels;
-    }
-
-    static /* synthetic */ int access$600(AudioTrack audioTrack) {
-        return audioTrack.mBytesPerSample;
-    }
-
-    static /* synthetic */ int access$700(AudioTrack audioTrack) {
-        return audioTrack.mAudioSamplingRate;
-    }
-
-    static /* synthetic */ boolean access$800(AudioTrack audioTrack) {
-        return audioTrack.mEosFlagged;
-    }
-
-    static /* synthetic */ boolean access$802(AudioTrack audioTrack, boolean z) {
-        audioTrack.mEosFlagged = z;
-        return z;
-    }
-
-    static /* synthetic */ Handler access$900(AudioTrack audioTrack) {
-        return audioTrack.mCallback;
-    }
-
     AudioTrack(int i, Handler handler, HandlerThread handlerThread, HandlerThread handlerThread2, HandlerThread handlerThread3, boolean z) {
         this.mAudioSource = 0;
         this.mBytesPerSample = 2;
         this.mAudioRecord = true;
         this.mAudioSource = i;
-        this.mCodecHandler = new AudioTrack$CodecHandler(this, handlerThread.getLooper());
-        this.mEventHandler = new Track$EventHandler(this, handlerThread2.getLooper());
-        this.mMuxerHandler = new Track$MuxerHandler(this, handlerThread3.getLooper());
+        this.mCodecHandler = new CodecHandler(handlerThread.getLooper());
+        this.mEventHandler = new Track.EventHandler(handlerThread2.getLooper());
+        this.mMuxerHandler = new Track.MuxerHandler(handlerThread3.getLooper());
         this.mAudioRecordThread = new HandlerThread("AudioRecord", -1);
         this.mAudioRecordThread.start();
-        this.mAudioRecordHandler = new AudioTrack$AudioRecordHandler(this, this.mAudioRecordThread.getLooper());
+        this.mAudioRecordHandler = new AudioRecordHandler(this.mAudioRecordThread.getLooper());
         this.mHandlerHelper = new HandlerHelper();
         this.mCallback = handler;
         this.mAudioMime = this.audioMimeTypes[3];
-        this.mState = Track$States.STOPPED;
+        this.mState = Track.States.STOPPED;
         this.mBytesPerSample = 2;
         this.mAudioRecord = z;
     }
@@ -159,7 +82,7 @@ class AudioTrack extends Track implements ClockInterface {
 
     @Override // com.sonymobile.android.media.internal.Track
     protected void doPause() {
-        this.mState = Track$States.PAUSED;
+        this.mState = Track.States.PAUSED;
         if (this.mAudioRecord || this.mIsPauseLatchDown) {
             return;
         }
@@ -167,17 +90,11 @@ class AudioTrack extends Track implements ClockInterface {
         this.mIsPauseLatchDown = true;
     }
 
+    @Override // com.sonymobile.android.media.internal.Track
     /* JADX WARN: Removed duplicated region for block: B:24:0x007f  */
     /* JADX WARN: Removed duplicated region for block: B:25:0x008c  */
     /* JADX WARN: Removed duplicated region for block: B:41:0x0061 A[EXC_TOP_SPLITTER, SYNTHETIC] */
-    @Override // com.sonymobile.android.media.internal.Track
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
     protected void doPrepare() {
-        int i;
-        int i2;
-        boolean z = false;
         MediaCodecList mediaCodecList = new MediaCodecList(0);
         MediaFormat mediaFormatCreateAudioFormat = MediaFormat.createAudioFormat(this.mAudioMime, this.mAudioSamplingRate, this.mNumAudioChannels);
         mediaFormatCreateAudioFormat.setInteger("bitrate", this.mAudioBitRate);
@@ -185,64 +102,57 @@ class AudioTrack extends Track implements ClockInterface {
             mediaFormatCreateAudioFormat.setInteger("operating-rate", this.mOperatingRate);
         }
         if (checkFormat(mediaCodecList, mediaFormatCreateAudioFormat, this.mAudioMime)) {
+            int i = this.mNumAudioChannels;
+            int i2 = AudioFormat.CHANNEL_IN_DEFAULT;
+            if (i == 1) {
+                i2 = AudioFormat.CHANNEL_IN_MONO;
+            } else if (i == 2) {
+                i2 = AudioFormat.CHANNEL_IN_STEREO;
+            }
             try {
-                if (this.mNumAudioChannels == 1) {
-                    i2 = 16;
-                } else {
-                    if (this.mNumAudioChannels != 2) {
-                        i = 1;
-                        this.mInputBufferSize = AudioRecord.getMinBufferSize(this.mAudioSamplingRate, this.mNumAudioChannels, 2) * 2;
-                        this.mAudioRecorder = new AudioRecord(this.mAudioSource, this.mAudioSamplingRate, i, 2, this.mInputBufferSize);
-                        if (this.mAudioMime.equals("audio/mp4a-latm")) {
-                            try {
-                                this.mEncoder = MediaCodec.createByCodecName("OMX.qcom.audio.encoder.aac");
-                                z = true;
-                            } catch (IOException | NullPointerException e) {
-                                Log.e("AudioTrack", "Unable to create encoder", e);
-                                this.mCallback.obtainMessage(1, 4, 2).sendToTarget();
-                                return;
-                            } catch (IllegalArgumentException unused) {
-                            }
-                        }
-                        if (!z) {
-                            this.mAudioBitRate = 156000;
-                            mediaFormatCreateAudioFormat.setInteger("bitrate", this.mAudioBitRate);
-                        } else {
-                            try {
-                                this.mEncoder = MediaCodec.createByCodecName(mediaCodecList.findEncoderForFormat(mediaFormatCreateAudioFormat));
-                            } catch (IOException | IllegalArgumentException | NullPointerException e2) {
-                                Log.e("AudioTrack", "Unable to create encoder", e2);
-                                this.mCallback.obtainMessage(1, 4, 2).sendToTarget();
-                                return;
-                            }
-                        }
-                        this.mBufferList = new LinkedBlockingDeque<>();
-                        this.mEncoder.setCallback(new AudioTrack$AudioEncoderCallback(this, null));
-                        this.mEncoder.configure(mediaFormatCreateAudioFormat, (Surface) null, (MediaCrypto) null, 1);
-                        return;
-                    }
-                    i2 = 12;
-                }
-                this.mInputBufferSize = AudioRecord.getMinBufferSize(this.mAudioSamplingRate, this.mNumAudioChannels, 2) * 2;
-                this.mAudioRecorder = new AudioRecord(this.mAudioSource, this.mAudioSamplingRate, i, 2, this.mInputBufferSize);
-                if (this.mAudioMime.equals("audio/mp4a-latm")) {
-                }
-                if (!z) {
-                }
-                this.mBufferList = new LinkedBlockingDeque<>();
-                this.mEncoder.setCallback(new AudioTrack$AudioEncoderCallback(this, null));
-                this.mEncoder.configure(mediaFormatCreateAudioFormat, (Surface) null, (MediaCrypto) null, 1);
-                return;
-            } catch (IllegalArgumentException e3) {
-                Log.e("AudioTrack", "Unable to create AudioRecord", e3);
-                this.mCallback.obtainMessage(1, 4, 0).sendToTarget();
+                this.mInputBufferSize = AudioRecord.getMinBufferSize(this.mAudioSamplingRate, i2, ENCODING_PCM_SETTING) * 2;
+                this.mAudioRecorder = new AudioRecord(this.mAudioSource, this.mAudioSamplingRate, i2, ENCODING_PCM_SETTING, this.mInputBufferSize);
+            } catch (IllegalArgumentException e) {
+                Log.e(TAG, "Unable to create AudioRecord", e);
+                Message obtainMessage = this.mCallback.obtainMessage(1, 4, 0);
+                obtainMessage.sendToTarget();
                 return;
             }
-            i = i2;
-        } else {
-            Log.e("AudioTrack", "Audio format is not supported " + mediaFormatCreateAudioFormat.toString());
-            this.mCallback.obtainMessage(1, 4, 2).sendToTarget();
+            boolean z = false;
+            if ("audio/mp4a-latm".equals(this.mAudioMime)) {
+                try {
+                    this.mEncoder = MediaCodec.createByCodecName("OMX.qcom.audio.encoder.aac");
+                    z = true;
+                } catch (IOException | NullPointerException e2) {
+                    Log.e(TAG, "Unable to create encoder", e2);
+                    Message obtainMessage2 = this.mCallback.obtainMessage(1, 4, 2);
+                    obtainMessage2.sendToTarget();
+                    return;
+                } catch (IllegalArgumentException unused) {
+                }
+            }
+            if (z) {
+                this.mAudioBitRate = HW_ENCODER_BITRATE;
+                mediaFormatCreateAudioFormat.setInteger("bitrate", this.mAudioBitRate);
+            } else {
+                String findEncoderForFormat = mediaCodecList.findEncoderForFormat(mediaFormatCreateAudioFormat);
+                try {
+                    this.mEncoder = MediaCodec.createByCodecName(findEncoderForFormat);
+                } catch (IOException | NullPointerException | IllegalArgumentException e3) {
+                    Log.e(TAG, "Unable to create encoder", e3);
+                    Message obtainMessage3 = this.mCallback.obtainMessage(1, 4, 2);
+                    obtainMessage3.sendToTarget();
+                    return;
+                }
+            }
+            this.mBufferList = new LinkedBlockingDeque<>();
+            this.mEncoder.setCallback(new AudioEncoderCallback());
+            this.mEncoder.configure(mediaFormatCreateAudioFormat, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE);
+            return;
         }
+        Log.e(TAG, "Audio format is not supported " + mediaFormatCreateAudioFormat.toString());
+        Message obtainMessage4 = this.mCallback.obtainMessage(1, 4, 2);
+        obtainMessage4.sendToTarget();
     }
 
     @Override // com.sonymobile.android.media.internal.Track
@@ -299,7 +209,7 @@ class AudioTrack extends Track implements ClockInterface {
             this.mEncoder.release();
             this.mEncoder = null;
         }
-        this.mState = Track$States.STOPPED;
+        this.mState = Track.States.STOPPED;
     }
 
     void adjustAudioTimeStamp(long j) {
@@ -312,13 +222,13 @@ class AudioTrack extends Track implements ClockInterface {
 
     @Override // com.sonymobile.android.media.internal.Track
     protected void doResume(CountDownLatch countDownLatch) {
-        this.mState = Track$States.STARTED;
+        this.mState = Track.States.STARTED;
         countDownLatch.countDown();
     }
 
     @Override // com.sonymobile.android.media.internal.Track
     protected void doReset() {
-        if (this.mState == Track$States.STOPPED || !this.mAudioRecord) {
+        if (this.mState == Track.States.STOPPED || !this.mAudioRecord) {
             return;
         }
         this.mHandlerHelper.sendMessageAndAwaitResponse(this.mAudioRecordHandler.obtainMessage(107));
@@ -328,22 +238,22 @@ class AudioTrack extends Track implements ClockInterface {
     protected void doWriteOutputBuffer() throws IllegalStateException {
         ByteBuffer outputBuffer;
         if (this.mClock.isStarted() && !this.mBufferList.isEmpty() && isMuxerStarted()) {
-            Track$EncodedBuffer track$EncodedBufferRemove = this.mBufferList.remove();
-            if (track$EncodedBufferRemove.containsCopiedBuffer) {
-                outputBuffer = track$EncodedBufferRemove.byteBuffer;
+            Track.EncodedBuffer encodedBufferRemove = this.mBufferList.remove();
+            if (encodedBufferRemove.containsCopiedBuffer) {
+                outputBuffer = encodedBufferRemove.byteBuffer;
             } else {
-                outputBuffer = this.mEncoder.getOutputBuffer(track$EncodedBufferRemove.bufferIndex);
+                outputBuffer = this.mEncoder.getOutputBuffer(encodedBufferRemove.bufferIndex);
             }
-            if (outputBuffer != null && (!this.mStopAudioRecording || track$EncodedBufferRemove.bufferInfo.presentationTimeUs < 2000000)) {
-                this.mMuxerWrapper.writeSampleData(this.mMuxerTrackIndex, outputBuffer, track$EncodedBufferRemove.bufferInfo);
+            if (outputBuffer != null && (!this.mStopAudioRecording || encodedBufferRemove.bufferInfo.presentationTimeUs < 2000000)) {
+                this.mMuxerWrapper.writeSampleData(this.mMuxerTrackIndex, outputBuffer, encodedBufferRemove.bufferInfo);
             }
-            if (!track$EncodedBufferRemove.containsCopiedBuffer) {
-                this.mEncoder.releaseOutputBuffer(track$EncodedBufferRemove.bufferIndex, false);
+            if (!encodedBufferRemove.containsCopiedBuffer) {
+                this.mEncoder.releaseOutputBuffer(encodedBufferRemove.bufferIndex, false);
             }
-            if ((track$EncodedBufferRemove.bufferInfo.flags & 4) != 0) {
+            if ((encodedBufferRemove.bufferInfo.flags & 4) != 0) {
                 this.mEncoder.stop();
                 this.mCallback.sendMessage(this.mCallback.obtainMessage(103));
-                this.mState = Track$States.STOPPED;
+                this.mState = Track.States.STOPPED;
                 this.mMuxerWrapper.endTrack(this.mMuxerTrackIndex);
             }
         }
@@ -461,5 +371,207 @@ class AudioTrack extends Track implements ClockInterface {
     public void setMediaMuxerStarted() {
         super.setMediaMuxerStarted();
         this.mMuxerHandler.obtainMessage(110).sendToTarget();
+    }
+
+    private class AudioRecordHandler extends Handler {
+        AudioRecordHandler(Looper looper) {
+            super(looper);
+        }
+
+        private void doHandleInputBuffer(int i) throws IllegalStateException {
+            int i2;
+            int i3;
+            ByteBuffer inputBuffer = AudioTrack.this.mEncoder.getInputBuffer(i);
+            long j = AudioTrack.this.mAudioDurationUs + AudioTrack.this.mAudioOffset;
+            int i4 = AudioTrack.this.mAudioRecorder.read(inputBuffer, AudioTrack.this.mInputBufferSize);
+            long j2 = (1000000L * ((i4 / AudioTrack.this.mNumAudioChannels) / AudioTrack.this.mBytesPerSample)) / AudioTrack.this.mAudioSamplingRate;
+            if (AudioTrack.this.mState == Track.States.PAUSED && AudioTrack.this.mAudioDurationUs + j2 > AudioTrack.this.mClock.getDurationAtPauseUs()) {
+                if (!AudioTrack.this.mIsPauseLatchDown) {
+                    AudioTrack.this.mPauseLatch.countDown();
+                    AudioTrack.this.mIsPauseLatchDown = true;
+                }
+                if (inputBuffer == null || AudioTrack.this.mEosFlagged) {
+                    return;
+                }
+                if (AudioTrack.this.mInputBufferSize > inputBuffer.limit()) {
+                    AudioTrack.this.mInputBufferSize = inputBuffer.limit();
+                }
+                if (i4 >= 0) {
+                    AudioTrack.this.mAudioRecordHandler.sendMessageDelayed(AudioTrack.this.mAudioRecordHandler.obtainMessage(102, i, 0), 1L);
+                    return;
+                } else {
+                    Log.e(AudioTrack.TAG, "Read audio data is empty.");
+                    AudioTrack.this.mCallback.obtainMessage(1, 4, 0).sendToTarget();
+                    return;
+                }
+            }
+            if (AudioTrack.this.mState == Track.States.STOPPED || inputBuffer == null || AudioTrack.this.mEosFlagged) {
+                return;
+            }
+            if (AudioTrack.this.mInputBufferSize > inputBuffer.limit()) {
+                AudioTrack.this.mInputBufferSize = inputBuffer.limit();
+            }
+            if (j < AudioTrack.this.mStartVolumeDelayUs) {
+                byte[] bArr = new byte[i4];
+                Arrays.fill(bArr, (byte) 0);
+                inputBuffer.put(bArr);
+            }
+            AudioTrack.this.mAudioDurationUs += j2;
+            if (AudioTrack.this.mState == Track.States.STOPPING) {
+                AudioTrack.this.mEosFlagged = true;
+                i3 = i4 >= 0 ? i4 : 0;
+                i2 = 4;
+            } else if (i4 < 0) {
+                Log.e(AudioTrack.TAG, "Read audio data is empty.");
+                AudioTrack.this.mCallback.obtainMessage(1, 4, 0).sendToTarget();
+                return;
+            } else {
+                i2 = 0;
+                i3 = i4;
+            }
+            AudioTrack.this.mEncoder.queueInputBuffer(i, 0, i3, j, i2);
+        }
+
+        private void doStartAudioRecorder() {
+            AudioTrack.this.mEosFlagged = false;
+            AudioTrack.this.mFirstCodecFrame = true;
+            try {
+                AudioTrack.this.mAudioRecorder.startRecording();
+            } catch (IllegalStateException unused) {
+                Log.e(AudioTrack.TAG, "Could not start audio recorder, illegal state");
+                AudioTrack.this.mCallback.obtainMessage(1, 4, 3);
+            }
+            AudioTrack.this.mEncoder.start();
+            AudioTrack.this.mState = Track.States.STARTED;
+        }
+
+        private void doStopAudioRecorder() {
+            if (AudioTrack.this.mAudioRecorder != null) {
+                try {
+                    AudioTrack.this.mAudioRecorder.stop();
+                } catch (IllegalStateException unused) {
+                    Log.e(AudioTrack.TAG, "Could not stop audio recorder, illegal state");
+                    AudioTrack.this.mCallback.obtainMessage(1, 4, 3);
+                }
+            }
+            AudioTrack.this.mState = Track.States.STOPPING;
+        }
+
+        private void doReleaseAudioRecorder() {
+            if (AudioTrack.this.mAudioRecorder != null) {
+                AudioTrack.this.mAudioRecorder.release();
+                AudioTrack.this.mAudioRecorder = null;
+            }
+        }
+
+        @Override // android.os.Handler
+        public void handleMessage(Message message) {
+            int i = message.what;
+            if (i == 102) {
+                try {
+                    doHandleInputBuffer(message.arg1);
+                } catch (IllegalStateException unused) {
+                    return;
+                }
+            }
+            switch (i) {
+                case 107:
+                    doStopAudioRecorder();
+                    Message messageObtainMessage = ((Handler) message.obj).obtainMessage();
+                    messageObtainMessage.obj = new Object();
+                    messageObtainMessage.sendToTarget();
+                    break;
+                case 108:
+                    doReleaseAudioRecorder();
+                    Message messageObtainMessage2 = ((Handler) message.obj).obtainMessage();
+                    messageObtainMessage2.obj = new Object();
+                    messageObtainMessage2.sendToTarget();
+                    break;
+                case 109:
+                    doStartAudioRecorder();
+                    Message messageObtainMessage3 = ((Handler) message.obj).obtainMessage();
+                    messageObtainMessage3.obj = new Object();
+                    messageObtainMessage3.sendToTarget();
+                    break;
+            }
+        }
+    }
+
+    private class CodecHandler extends Handler {
+        CodecHandler(Looper looper) {
+            super(looper);
+        }
+
+        private void doQueueOutputBuffer(int i, MediaCodec.BufferInfo bufferInfo) throws IllegalStateException {
+            if (AudioTrack.this.mFirstCodecFrame) {
+                boolean z = (bufferInfo.flags & 2) == 2;
+                addTrack();
+                AudioTrack.this.mFirstCodecFrame = false;
+                if (z) {
+                    AudioTrack.this.mEncoder.releaseOutputBuffer(i, false);
+                    return;
+                }
+            }
+            Track.EncodedBuffer encodedBuffer = new Track.EncodedBuffer(i, bufferInfo);
+            if (AudioTrack.this.mMuxerState == Track.MuxerState.IDLE) {
+                ByteBuffer outputBuffer = AudioTrack.this.mEncoder.getOutputBuffer(i);
+                if (outputBuffer != null) {
+                    encodedBuffer.byteBuffer = ByteBuffer.allocate(outputBuffer.limit());
+                    outputBuffer.rewind();
+                    encodedBuffer.byteBuffer.put(outputBuffer);
+                    encodedBuffer.containsCopiedBuffer = true;
+                }
+                AudioTrack.this.mEncoder.releaseOutputBuffer(i, false);
+            }
+            AudioTrack.this.mBufferList.add(encodedBuffer);
+            if ((encodedBuffer.bufferInfo.flags & 4) != 0) {
+                AudioTrack.this.mMuxerHandler.obtainMessage(110).sendToTarget();
+            } else {
+                AudioTrack.this.mMuxerHandler.obtainMessage(104).sendToTarget();
+            }
+        }
+
+        private void addTrack() {
+            if (AudioTrack.this.mMuxerTrackIndex < 0) {
+                AudioTrack.this.mMuxerTrackIndex = AudioTrack.this.mMuxerWrapper.addTrack(AudioTrack.this.mEncoder.getOutputFormat());
+                AudioTrack.this.mCallback.obtainMessage(1, 11, 0).sendToTarget();
+            }
+        }
+
+        @Override // android.os.Handler
+        public void handleMessage(Message message) {
+            if (message.what != 105) {
+                return;
+            }
+            try {
+                doQueueOutputBuffer(message.arg1, (MediaCodec.BufferInfo) message.obj);
+            } catch (IllegalStateException unused) {
+            }
+        }
+    }
+
+    private class AudioEncoderCallback extends MediaCodec.Callback {
+        @Override // android.media.MediaCodec.Callback
+        public void onOutputFormatChanged(@NonNull MediaCodec mediaCodec, @NonNull MediaFormat mediaFormat) {
+        }
+
+        private AudioEncoderCallback() {
+        }
+
+        @Override // android.media.MediaCodec.Callback
+        public void onInputBufferAvailable(@NonNull MediaCodec mediaCodec, int i) {
+            AudioTrack.this.mAudioRecordHandler.obtainMessage(102, i, 0).sendToTarget();
+        }
+
+        @Override // android.media.MediaCodec.Callback
+        public void onOutputBufferAvailable(@NonNull MediaCodec mediaCodec, int i, @NonNull MediaCodec.BufferInfo bufferInfo) {
+            AudioTrack.this.mCodecHandler.obtainMessage(105, i, 0, bufferInfo).sendToTarget();
+        }
+
+        @Override // android.media.MediaCodec.Callback
+        public void onError(@NonNull MediaCodec mediaCodec, @NonNull MediaCodec.CodecException codecException) {
+            Log.e(AudioTrack.TAG, "Error from encoder", codecException);
+            AudioTrack.this.mCallback.obtainMessage(1, 4, 0).sendToTarget();
+        }
     }
 }

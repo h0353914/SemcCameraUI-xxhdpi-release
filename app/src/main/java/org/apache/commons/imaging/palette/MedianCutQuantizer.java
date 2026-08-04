@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.palette;
 
+import android.support.v4.view.ViewCompat;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,7 +25,7 @@ public class MedianCutQuantizer {
             for (int i4 = 0; i4 < width; i4++) {
                 int i5 = iArr[i4];
                 if (this.ignoreAlpha) {
-                    i5 &= 16777215;
+                    i5 &= ViewCompat.MEASURED_SIZE_MASK;
                 }
                 int i6 = i5 & i2;
                 ColorCount colorCount = (ColorCount) map.get(Integer.valueOf(i6));
@@ -67,7 +68,7 @@ public class MedianCutQuantizer {
             while (i2 < arrayList.size()) {
                 iArr[i2] = ((ColorCount) arrayList.get(i2)).argb;
                 if (this.ignoreAlpha) {
-                    iArr[i2] = iArr[i2] | (-16777216);
+                    iArr[i2] = iArr[i2] | ViewCompat.MEASURED_STATE_MASK;
                 }
                 i2++;
             }
@@ -87,7 +88,7 @@ public class MedianCutQuantizer {
         }
         int[] iArr2 = new int[size2];
         while (i2 < arrayList2.size()) {
-            ColorGroup colorGroup2 = arrayList2.get(i2);
+            ColorGroup colorGroup2 = (ColorGroup) arrayList2.get(i2);
             iArr2[i2] = colorGroup2.getMedianValue();
             colorGroup2.paletteIndex = i2;
             if (colorGroup2.colorCounts.size() < 1) {

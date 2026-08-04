@@ -1,7 +1,7 @@
 package com.sonyericsson.android.camera.parameter;
 
 import android.content.Context;
-import android.provider.Settings$Secure;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.util.ArrayMap;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
@@ -15,7 +15,7 @@ class SecureSetting {
     private final Context mContext;
 
     static {
-        KEY_MAP.put(UserSettingKey.PREDICTIVE_LAUNCH, "camera_lift_trigger_enabled");
+        KEY_MAP.put(UserSettingKey.PREDICTIVE_LAUNCH, KEY_LIFT_TRIGGER);
     }
 
     public SecureSetting(@NonNull Context context) {
@@ -29,13 +29,21 @@ class SecureSetting {
         if (!KEY_MAP.containsKey(userSettingValue.getKey())) {
             throw new IllegalArgumentException("Cannot handle this key : key = " + userSettingValue.getKey());
         }
-        String secureValue = SecureSetting$1.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[userSettingValue.getKey().ordinal()] == 1 ? ((PredictiveLaunch) userSettingValue).getSecureValue() : null;
+        String secureValue;
+        switch (userSettingValue.getKey()) {
+            case PREDICTIVE_LAUNCH:
+                secureValue = ((PredictiveLaunch) userSettingValue).getSecureValue();
+                break;
+            default:
+                secureValue = null;
+                break;
+        }
         if (secureValue != null) {
-            Settings$Secure.putString(this.mContext.getContentResolver(), KEY_MAP.get(userSettingValue.getKey()), secureValue);
+            Settings.Secure.putString(this.mContext.getContentResolver(), KEY_MAP.get(userSettingValue.getKey()), secureValue);
         }
     }
 
-    public void clear() {
+    public void clear() throws IllegalArgumentException {
         set(PredictiveLaunch.getDefaultValue());
     }
 }

@@ -1,6 +1,8 @@
 package com.sonyericsson.android.camera.view.angle;
 
-public class KeyZoomStepCalculator implements VariableIndex$Calculator {
+import com.sonyericsson.android.camera.view.angle.VariableIndex;
+
+public class KeyZoomStepCalculator implements VariableIndex.Calculator {
     private static final int ZOOM_STEP_THRESHOLD_FOR_ZOOM_LEVER_1_MILLIS = 500;
     private static final int ZOOM_STEP_THRESHOLD_FOR_ZOOM_LEVER_2_MILLIS = 750;
     private static final int ZOOM_STEP_THRESHOLD_FOR_ZOOM_LEVER_3_MILLIS = 1000;
@@ -11,7 +13,7 @@ public class KeyZoomStepCalculator implements VariableIndex$Calculator {
         this.mIsZoomIn = z;
     }
 
-    @Override // com.sonyericsson.android.camera.view.angle.VariableIndex$Calculator
+    @Override // com.sonyericsson.android.camera.view.angle.VariableIndex.Calculator
     public VariableIndex calculate(VariableIndex variableIndex, Object... objArr) {
         long jLongValue = ((Long) objArr[0]).longValue();
         int i = this.mIsZoomIn ? variableIndex.mMaxIndex : variableIndex.mMinIndex;

@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
+import org.apache.commons.imaging.common.itu_t4.T4_T6_Tables;
 import org.apache.commons.imaging.util.IoUtils;
 
 public final class T4AndT6Compression {
@@ -11,25 +12,25 @@ public final class T4AndT6Compression {
     public static final int WHITE = 0;
     private static final HuffmanTree<Integer> WHITE_RUN_LENGTHS = new HuffmanTree<>();
     private static final HuffmanTree<Integer> BLACK_RUN_LENGTHS = new HuffmanTree<>();
-    private static final HuffmanTree<T4_T6_Tables$Entry> CONTROL_CODES = new HuffmanTree<>();
+    private static final HuffmanTree<T4_T6_Tables.Entry> CONTROL_CODES = new HuffmanTree<>();
 
     static {
         try {
-            for (T4_T6_Tables$Entry t4_T6_Tables$Entry : T4_T6_Tables.WHITE_TERMINATING_CODES) {
-                WHITE_RUN_LENGTHS.insert(t4_T6_Tables$Entry.bitString, t4_T6_Tables$Entry.value);
+            for (T4_T6_Tables.Entry entry : T4_T6_Tables.WHITE_TERMINATING_CODES) {
+                WHITE_RUN_LENGTHS.insert(entry.bitString, entry.value);
             }
-            for (T4_T6_Tables$Entry t4_T6_Tables$Entry2 : T4_T6_Tables.WHITE_MAKE_UP_CODES) {
-                WHITE_RUN_LENGTHS.insert(t4_T6_Tables$Entry2.bitString, t4_T6_Tables$Entry2.value);
+            for (T4_T6_Tables.Entry entry2 : T4_T6_Tables.WHITE_MAKE_UP_CODES) {
+                WHITE_RUN_LENGTHS.insert(entry2.bitString, entry2.value);
             }
-            for (T4_T6_Tables$Entry t4_T6_Tables$Entry3 : T4_T6_Tables.BLACK_TERMINATING_CODES) {
-                BLACK_RUN_LENGTHS.insert(t4_T6_Tables$Entry3.bitString, t4_T6_Tables$Entry3.value);
+            for (T4_T6_Tables.Entry entry3 : T4_T6_Tables.BLACK_TERMINATING_CODES) {
+                BLACK_RUN_LENGTHS.insert(entry3.bitString, entry3.value);
             }
-            for (T4_T6_Tables$Entry t4_T6_Tables$Entry4 : T4_T6_Tables.BLACK_MAKE_UP_CODES) {
-                BLACK_RUN_LENGTHS.insert(t4_T6_Tables$Entry4.bitString, t4_T6_Tables$Entry4.value);
+            for (T4_T6_Tables.Entry entry4 : T4_T6_Tables.BLACK_MAKE_UP_CODES) {
+                BLACK_RUN_LENGTHS.insert(entry4.bitString, entry4.value);
             }
-            for (T4_T6_Tables$Entry t4_T6_Tables$Entry5 : T4_T6_Tables.ADDITIONAL_MAKE_UP_CODES) {
-                WHITE_RUN_LENGTHS.insert(t4_T6_Tables$Entry5.bitString, t4_T6_Tables$Entry5.value);
-                BLACK_RUN_LENGTHS.insert(t4_T6_Tables$Entry5.bitString, t4_T6_Tables$Entry5.value);
+            for (T4_T6_Tables.Entry entry5 : T4_T6_Tables.ADDITIONAL_MAKE_UP_CODES) {
+                WHITE_RUN_LENGTHS.insert(entry5.bitString, entry5.value);
+                BLACK_RUN_LENGTHS.insert(entry5.bitString, entry5.value);
             }
             CONTROL_CODES.insert(T4_T6_Tables.EOL.bitString, T4_T6_Tables.EOL);
             CONTROL_CODES.insert(T4_T6_Tables.EOL13.bitString, T4_T6_Tables.EOL13);
@@ -56,7 +57,8 @@ public final class T4AndT6Compression {
     private T4AndT6Compression() {
     }
 
-    private static void compress1DLine(BitInputStreamFlexible bitInputStreamFlexible, BitArrayOutputStream bitArrayOutputStream, int[] iArr, int i) throws ImageWriteException {
+    private static void compress1DLine(BitInputStreamFlexible bitInputStreamFlexible,
+            BitArrayOutputStream bitArrayOutputStream, int[] iArr, int i) throws ImageWriteException {
         int i2 = 0;
         int i3 = 0;
         for (int i4 = 0; i4 < i; i4++) {
@@ -73,7 +75,7 @@ public final class T4AndT6Compression {
                     i3 = bits;
                 }
             } catch (IOException e) {
-                throw new ImageWriteException("Error reading image to compress", (Throwable) e);
+                throw new ImageWriteException("Error reading image to compress", e);
             }
         }
         writeRunLength(bitArrayOutputStream, i2, i3);
@@ -90,50 +92,27 @@ public final class T4AndT6Compression {
         return bitArrayOutputStream.toByteArray();
     }
 
-    public static byte[] decompressModifiedHuffman(byte[] bArr, int i, int i2) throws Throwable {
-        BitArrayOutputStream bitArrayOutputStream;
-        BitInputStreamFlexible bitInputStreamFlexible = new BitInputStreamFlexible(new ByteArrayInputStream(bArr));
-        try {
-            bitArrayOutputStream = new BitArrayOutputStream();
-            for (int i3 = 0; i3 < i2; i3++) {
-                int i4 = 0;
-                int i5 = 0;
-                while (i4 < i) {
-                    try {
-                        int totalRunLength = readTotalRunLength(bitInputStreamFlexible, i5);
-                        for (int i6 = 0; i6 < totalRunLength; i6++) {
-                            bitArrayOutputStream.writeBit(i5);
-                        }
-                        i5 = 1 - i5;
-                        i4 += totalRunLength;
-                    } catch (Throwable th) {
-                        th = th;
-                        try {
-                            IoUtils.closeQuietly(false, bitArrayOutputStream);
-                            throw th;
-                        } catch (IOException e) {
-                            throw new ImageReadException("I/O error", e);
-                        }
-                    }
+    public static byte[] decompressModifiedHuffman(byte[] bArr, int width, int height) throws ImageReadException {
+        BitInputStreamFlexible bis = new BitInputStreamFlexible(new ByteArrayInputStream(bArr));
+        BitArrayOutputStream baous = new BitArrayOutputStream();
+        for (int y = 0; y < height; y++) {
+            int x = 0;
+            int color = 0;
+            while (x < width) {
+                int runLength = readTotalRunLength(bis, color);
+                for (int i = 0; i < runLength; i++) {
+                    baous.writeBit(color);
                 }
-                if (i4 == i) {
-                    bitInputStreamFlexible.flushCache();
-                    bitArrayOutputStream.flush();
-                } else if (i4 > i) {
-                    throw new ImageReadException("Unrecoverable row length error in image row " + i3);
-                }
+                color = 1 - color;
+                x += runLength;
             }
-            byte[] byteArray = bitArrayOutputStream.toByteArray();
-            try {
-                IoUtils.closeQuietly(true, bitArrayOutputStream);
-                return byteArray;
-            } catch (IOException e2) {
-                throw new ImageReadException("I/O error", e2);
+            if (x != width) {
+                throw new ImageReadException("Unrecoverable row length error in image row " + y);
             }
-        } catch (Throwable th2) {
-            th = th2;
-            bitArrayOutputStream = null;
+            bis.flushCache();
+            baous.flush();
         }
+        return baous.toByteArray();
     }
 
     public static byte[] compressT4_1D(byte[] bArr, int i, int i2, boolean z) throws ImageWriteException {
@@ -163,62 +142,37 @@ public final class T4AndT6Compression {
         return bitArrayOutputStream.toByteArray();
     }
 
-    public static byte[] decompressT4_1D(byte[] bArr, int i, int i2, boolean z) throws Throwable {
-        BitArrayOutputStream bitArrayOutputStream;
-        BitInputStreamFlexible bitInputStreamFlexible = new BitInputStreamFlexible(new ByteArrayInputStream(bArr));
-        try {
-            bitArrayOutputStream = new BitArrayOutputStream();
-            for (int i3 = 0; i3 < i2; i3++) {
-                try {
-                    try {
-                        if (!isEOL(CONTROL_CODES.decode(bitInputStreamFlexible), z)) {
-                            throw new ImageReadException("Expected EOL not found");
-                        }
-                        int i4 = 0;
-                        int i5 = 0;
-                        while (i4 < i) {
-                            int totalRunLength = readTotalRunLength(bitInputStreamFlexible, i5);
-                            for (int i6 = 0; i6 < totalRunLength; i6++) {
-                                bitArrayOutputStream.writeBit(i5);
-                            }
-                            i5 = 1 - i5;
-                            i4 += totalRunLength;
-                        }
-                        if (i4 == i) {
-                            bitArrayOutputStream.flush();
-                        } else if (i4 > i) {
-                            throw new ImageReadException("Unrecoverable row length error in image row " + i3);
-                        }
-                    } catch (Throwable th) {
-                        th = th;
-                        try {
-                            IoUtils.closeQuietly(false, bitArrayOutputStream);
-                            throw th;
-                        } catch (IOException e) {
-                            throw new ImageReadException("I/O error", e);
-                        }
-                    }
-                } catch (HuffmanTreeException e2) {
-                    throw new ImageReadException("Decompression error", e2);
-                }
-            }
-            byte[] byteArray = bitArrayOutputStream.toByteArray();
+    public static byte[] decompressT4_1D(byte[] bArr, int width, int height, boolean hasFill)
+            throws ImageReadException {
+        BitInputStreamFlexible bis = new BitInputStreamFlexible(new ByteArrayInputStream(bArr));
+        BitArrayOutputStream baous = new BitArrayOutputStream();
+        for (int y = 0; y < height; y++) {
             try {
-                IoUtils.closeQuietly(true, bitArrayOutputStream);
-                return byteArray;
-            } catch (IOException e3) {
-                throw new ImageReadException("I/O error", e3);
+                if (!isEOL(CONTROL_CODES.decode(bis), hasFill)) {
+                    throw new ImageReadException("Expected EOL not found");
+                }
+                int x = 0;
+                int color = 0;
+                while (x < width) {
+                    int runLength = readTotalRunLength(bis, color);
+                    for (int i = 0; i < runLength; i++) {
+                        baous.writeBit(color);
+                    }
+                    color = 1 - color;
+                    x += runLength;
+                }
+                if (x != width) {
+                    throw new ImageReadException("Unrecoverable row length error in image row " + y);
+                }
+                baous.flush();
+            } catch (HuffmanTreeException e2) {
+                throw new ImageReadException("Decompression error", e2);
             }
-        } catch (Throwable th2) {
-            th = th2;
-            bitArrayOutputStream = null;
         }
+        return baous.toByteArray();
     }
 
     public static byte[] compressT4_2D(byte[] bArr, int i, int i2, boolean z, int i3) throws ImageWriteException {
-        T4_T6_Tables$Entry t4_T6_Tables$Entry;
-        T4_T6_Tables$Entry t4_T6_Tables$Entry2;
-        int iNextChangingElement;
         BitInputStreamFlexible bitInputStreamFlexible = new BitInputStreamFlexible(new ByteArrayInputStream(bArr));
         BitArrayOutputStream bitArrayOutputStream = new BitArrayOutputStream();
         int[] iArr = new int[i];
@@ -229,84 +183,75 @@ public final class T4AndT6Compression {
             T4_T6_Tables.EOL.writeBits(bitArrayOutputStream);
         }
         int i4 = 0;
-        int[] iArr3 = iArr;
-        int[] iArr4 = iArr2;
-        int i5 = 0;
-        int i6 = 0;
-        while (i5 < i2) {
-            if (i6 > 0) {
-                bitArrayOutputStream.writeBit(i4);
-                for (int i7 = i4; i7 < i; i7++) {
+        for (int i5 = 0; i5 < i2; i5++) {
+            if (i4 > 0) {
+                bitArrayOutputStream.writeBit(0);
+                for (int i6 = 0; i6 < i; i6++) {
                     try {
-                        iArr4[i7] = bitInputStreamFlexible.readBits(1);
+                        iArr2[i6] = bitInputStreamFlexible.readBits(1);
                     } catch (IOException e) {
-                        throw new ImageWriteException("Error reading image to compress", (Throwable) e);
+                        throw new ImageWriteException("Error reading image to compress", e);
                     }
                 }
-                int iNextChangingElement2 = nextChangingElement(iArr4, i4, i4);
-                int iNextChangingElement3 = nextChangingElement(iArr3, i4, i4);
-                int iNextChangingElement4 = nextChangingElement(iArr3, 1, iNextChangingElement3 + 1);
-                int i8 = iNextChangingElement3;
-                int i9 = iNextChangingElement2;
-                int i10 = i4;
-                while (i10 < i) {
-                    if (iNextChangingElement4 < i9) {
+                int i7 = 0;
+                int i8 = 0;
+                int i9 = nextChangingElement(iArr2, 0, 0);
+                int i10 = nextChangingElement(iArr, 0, 0);
+                int i11 = nextChangingElement(iArr, 1, i10 + 1);
+                while (i7 < i) {
+                    if (i11 < i9) {
                         T4_T6_Tables.P.writeBits(bitArrayOutputStream);
-                        i10 = iNextChangingElement4;
+                        i7 = i11;
                     } else {
-                        int i11 = i9 - i8;
-                        if (-3 <= i11 && i11 <= 3) {
-                            if (i11 == -3) {
-                                t4_T6_Tables$Entry2 = T4_T6_Tables.VL3;
-                            } else if (i11 == -2) {
-                                t4_T6_Tables$Entry2 = T4_T6_Tables.VL2;
-                            } else if (i11 == -1) {
-                                t4_T6_Tables$Entry2 = T4_T6_Tables.VL1;
-                            } else if (i11 == 0) {
-                                t4_T6_Tables$Entry2 = T4_T6_Tables.V0;
+                        int i12 = i9 - i10;
+                        if (i12 >= -3 && i12 <= 3) {
+                            T4_T6_Tables.Entry entry;
+                            if (i12 == -3) {
+                                entry = T4_T6_Tables.VL3;
+                            } else if (i12 == -2) {
+                                entry = T4_T6_Tables.VL2;
+                            } else if (i12 == -1) {
+                                entry = T4_T6_Tables.VL1;
+                            } else if (i12 == 0) {
+                                entry = T4_T6_Tables.V0;
+                            } else if (i12 == 1) {
+                                entry = T4_T6_Tables.VR1;
+                            } else if (i12 == 2) {
+                                entry = T4_T6_Tables.VR2;
                             } else {
-                                if (i11 == 1) {
-                                    t4_T6_Tables$Entry = T4_T6_Tables.VR1;
-                                } else if (i11 == 2) {
-                                    t4_T6_Tables$Entry = T4_T6_Tables.VR2;
-                                } else {
-                                    t4_T6_Tables$Entry = T4_T6_Tables.VR3;
-                                }
-                                t4_T6_Tables$Entry.writeBits(bitArrayOutputStream);
-                                i4 = 1 - i4;
-                                i10 = i9;
+                                entry = T4_T6_Tables.VR3;
                             }
-                            t4_T6_Tables$Entry = t4_T6_Tables$Entry2;
-                            t4_T6_Tables$Entry.writeBits(bitArrayOutputStream);
-                            i4 = 1 - i4;
-                            i10 = i9;
+                            entry.writeBits(bitArrayOutputStream);
+                            i8 = 1 - i8;
+                            i7 = i9;
                         } else {
-                            int i12 = 1 - i4;
-                            int iNextChangingElement5 = nextChangingElement(iArr4, i12, i9 + 1);
+                            int i13 = 1 - i8;
+                            int i14 = nextChangingElement(iArr2, i13, i9 + 1);
+                            int i15 = i9 - i7;
+                            int i16 = i14 - i9;
                             T4_T6_Tables.H.writeBits(bitArrayOutputStream);
-                            writeRunLength(bitArrayOutputStream, i9 - i10, i4);
-                            writeRunLength(bitArrayOutputStream, iNextChangingElement5 - i9, i12);
-                            i10 = iNextChangingElement5;
+                            writeRunLength(bitArrayOutputStream, i15, i8);
+                            writeRunLength(bitArrayOutputStream, i16, i13);
+                            i7 = i14;
                         }
                     }
-                    int iChangingElementAt = changingElementAt(iArr3, i10);
-                    int i13 = i10 + 1;
-                    int iNextChangingElement6 = nextChangingElement(iArr4, i4, i13);
-                    if (i4 == iChangingElementAt) {
-                        iNextChangingElement = nextChangingElement(iArr3, iChangingElementAt, i13);
+                    int i17 = changingElementAt(iArr, i7);
+                    int i18 = nextChangingElement(iArr2, i8, i7 + 1);
+                    if (i8 == i17) {
+                        i10 = nextChangingElement(iArr, i17, i7 + 1);
                     } else {
-                        iNextChangingElement = nextChangingElement(iArr3, 1 - iChangingElementAt, nextChangingElement(iArr3, iChangingElementAt, i13) + 1);
+                        int i19 = nextChangingElement(iArr, i17, i7 + 1);
+                        i10 = nextChangingElement(iArr, 1 - i17, i19 + 1);
                     }
-                    i8 = iNextChangingElement;
-                    iNextChangingElement4 = nextChangingElement(iArr3, 1 - i4, iNextChangingElement + 1);
-                    i9 = iNextChangingElement6;
+                    i11 = nextChangingElement(iArr, 1 - i8, i10 + 1);
+                    i9 = i18;
                 }
-                int[] iArr5 = iArr4;
-                iArr4 = iArr3;
-                iArr3 = iArr5;
+                int[] iArr3 = iArr2;
+                iArr2 = iArr;
+                iArr = iArr3;
             } else {
                 bitArrayOutputStream.writeBit(1);
-                compress1DLine(bitInputStreamFlexible, bitArrayOutputStream, iArr3, i);
+                compress1DLine(bitInputStreamFlexible, bitArrayOutputStream, iArr, i);
             }
             if (z) {
                 int bitsAvailableInCurrentByte = bitArrayOutputStream.getBitsAvailableInCurrentByte();
@@ -320,393 +265,316 @@ public final class T4AndT6Compression {
                 }
             }
             T4_T6_Tables.EOL.writeBits(bitArrayOutputStream);
-            i6++;
-            if (i6 == i3) {
-                i6 = 0;
+            i4++;
+            if (i4 == i3) {
+                i4 = 0;
             }
             bitInputStreamFlexible.flushCache();
-            i5++;
-            i4 = 0;
         }
         return bitArrayOutputStream.toByteArray();
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:43:0x00a2 A[Catch: HuffmanTreeException -> 0x0118, IOException -> 0x0121, TryCatch #2 {IOException -> 0x0121, HuffmanTreeException -> 0x0118, blocks: (B:4:0x0015, B:6:0x0023, B:7:0x002a, B:8:0x002b, B:10:0x0032, B:12:0x0043, B:14:0x004f, B:41:0x009c, B:43:0x00a2, B:46:0x00b8, B:45:0x00aa, B:16:0x0054, B:18:0x0058, B:19:0x006b, B:40:0x0094, B:22:0x0071, B:25:0x0077, B:28:0x007d, B:31:0x0083, B:34:0x0089, B:37:0x008f, B:47:0x00c3, B:48:0x00db, B:51:0x00e0, B:53:0x00e7), top: B:70:0x0015 }] */
-    /* JADX WARN: Removed duplicated region for block: B:45:0x00aa A[Catch: HuffmanTreeException -> 0x0118, IOException -> 0x0121, TryCatch #2 {IOException -> 0x0121, HuffmanTreeException -> 0x0118, blocks: (B:4:0x0015, B:6:0x0023, B:7:0x002a, B:8:0x002b, B:10:0x0032, B:12:0x0043, B:14:0x004f, B:41:0x009c, B:43:0x00a2, B:46:0x00b8, B:45:0x00aa, B:16:0x0054, B:18:0x0058, B:19:0x006b, B:40:0x0094, B:22:0x0071, B:25:0x0077, B:28:0x007d, B:31:0x0083, B:34:0x0089, B:37:0x008f, B:47:0x00c3, B:48:0x00db, B:51:0x00e0, B:53:0x00e7), top: B:70:0x0015 }] */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    public static byte[] decompressT4_2D(byte[] bArr, int i, int i2, boolean z) throws ImageReadException {
-        int i3;
-        int i4;
-        int iChangingElementAt;
-        int iNextChangingElement;
-        BitInputStreamFlexible bitInputStreamFlexible = new BitInputStreamFlexible(new ByteArrayInputStream(bArr));
-        BitArrayOutputStream bitArrayOutputStream = new BitArrayOutputStream();
-        int[] iArr = new int[i];
-        for (int i5 = 0; i5 < i2; i5++) {
+    public static byte[] decompressT4_2D(byte[] bArr, int width, int height, boolean hasFill)
+            throws ImageReadException {
+        BitInputStreamFlexible bis = new BitInputStreamFlexible(new ByteArrayInputStream(bArr));
+        BitArrayOutputStream baous = new BitArrayOutputStream();
+        int[] referenceLine = new int[width];
+        for (int y = 0; y < height; y++) {
             try {
-                if (!isEOL(CONTROL_CODES.decode(bitInputStreamFlexible), z)) {
+                if (!isEOL(CONTROL_CODES.decode(bis), hasFill)) {
                     throw new ImageReadException("Expected EOL not found");
                 }
-                if (bitInputStreamFlexible.readBits(1) == 0) {
-                    int iNextChangingElement2 = nextChangingElement(iArr, 0, 0);
-                    int i6 = 0;
-                    int i7 = iNextChangingElement2;
-                    int iNextChangingElement3 = nextChangingElement(iArr, 1, iNextChangingElement2 + 1);
-                    int i8 = 0;
-                    i3 = 0;
-                    while (i8 < i) {
-                        T4_T6_Tables$Entry t4_T6_Tables$EntryDecode = CONTROL_CODES.decode(bitInputStreamFlexible);
-                        if (t4_T6_Tables$EntryDecode == T4_T6_Tables.P) {
-                            fillRange(bitArrayOutputStream, iArr, i8, iNextChangingElement3, i6);
-                        } else if (t4_T6_Tables$EntryDecode == T4_T6_Tables.H) {
-                            int totalRunLength = readTotalRunLength(bitInputStreamFlexible, i6) + i8;
-                            fillRange(bitArrayOutputStream, iArr, i8, totalRunLength, i6);
-                            int i9 = 1 - i6;
-                            iNextChangingElement3 = readTotalRunLength(bitInputStreamFlexible, i9) + totalRunLength;
-                            fillRange(bitArrayOutputStream, iArr, totalRunLength, iNextChangingElement3, i9);
+                int tag = bis.readBits(1);
+                if (tag == 0) {
+                    int a0 = 0;
+                    int color = 0;
+                    int b1 = nextChangingElement(referenceLine, 0, 0);
+                    int b2 = nextChangingElement(referenceLine, 1, b1 + 1);
+
+                    while (a0 < width) {
+                        T4_T6_Tables.Entry entry = CONTROL_CODES.decode(bis);
+                        if (entry == T4_T6_Tables.P) {
+                            fillRange(baous, referenceLine, a0, b2, color);
+                            a0 = b2;
+                        } else if (entry == T4_T6_Tables.H) {
+                            int a0a1 = readTotalRunLength(bis, color);
+                            fillRange(baous, referenceLine, a0, a0 + a0a1, color);
+                            a0 += a0a1;
+                            color = 1 - color;
+                            int a1a2 = readTotalRunLength(bis, color);
+                            fillRange(baous, referenceLine, a0, a0 + a1a2, color);
+                            a0 += a1a2;
+                            color = 1 - color;
                         } else {
-                            if (t4_T6_Tables$EntryDecode == T4_T6_Tables.V0) {
-                                i4 = 0;
-                            } else if (t4_T6_Tables$EntryDecode == T4_T6_Tables.VL1) {
-                                i4 = -1;
-                            } else if (t4_T6_Tables$EntryDecode == T4_T6_Tables.VL2) {
-                                i4 = -2;
-                            } else if (t4_T6_Tables$EntryDecode == T4_T6_Tables.VL3) {
-                                i4 = -3;
-                            } else if (t4_T6_Tables$EntryDecode == T4_T6_Tables.VR1) {
-                                i4 = 1;
-                            } else if (t4_T6_Tables$EntryDecode == T4_T6_Tables.VR2) {
-                                i4 = 2;
-                            } else {
-                                if (t4_T6_Tables$EntryDecode != T4_T6_Tables.VR3) {
-                                    throw new ImageReadException("Invalid/unknown T.4 control code " + t4_T6_Tables$EntryDecode.bitString);
-                                }
-                                i4 = 3;
-                            }
-                            int i10 = i7 + i4;
-                            fillRange(bitArrayOutputStream, iArr, i8, i10, i6);
-                            i6 = 1 - i6;
-                            i3 = i10;
-                            iChangingElementAt = changingElementAt(iArr, i3);
-                            if (i6 != iChangingElementAt) {
-                                iNextChangingElement = nextChangingElement(iArr, iChangingElementAt, i3 + 1);
-                            } else {
-                                iNextChangingElement = nextChangingElement(iArr, 1 - iChangingElementAt, nextChangingElement(iArr, iChangingElementAt, i3 + 1) + 1);
-                            }
-                            i7 = iNextChangingElement;
-                            iNextChangingElement3 = nextChangingElement(iArr, 1 - i6, i7 + 1);
-                            i8 = i3;
+                            int verticalDelta;
+                            if (entry == T4_T6_Tables.V0)
+                                verticalDelta = 0;
+                            else if (entry == T4_T6_Tables.VL1)
+                                verticalDelta = -1;
+                            else if (entry == T4_T6_Tables.VL2)
+                                verticalDelta = -2;
+                            else if (entry == T4_T6_Tables.VL3)
+                                verticalDelta = -3;
+                            else if (entry == T4_T6_Tables.VR1)
+                                verticalDelta = 1;
+                            else if (entry == T4_T6_Tables.VR2)
+                                verticalDelta = 2;
+                            else if (entry == T4_T6_Tables.VR3)
+                                verticalDelta = 3;
+                            else
+                                throw new ImageReadException("Invalid T.4 code");
+
+                            int a1 = b1 + verticalDelta;
+                            fillRange(baous, referenceLine, a0, a1, color);
+                            a0 = a1;
+                            color = 1 - color;
                         }
-                        i3 = iNextChangingElement3;
-                        iChangingElementAt = changingElementAt(iArr, i3);
-                        if (i6 != iChangingElementAt) {
+                        if (a0 < width) {
+                            b1 = nextChangingElement(referenceLine, 1 - color, a0 + (a0 == 0 ? 0 : 1));
+                            if (changingElementAt(referenceLine, b1) == color) {
+                                b1 = nextChangingElement(referenceLine, color, b1 + 1);
+                            }
+                            b2 = nextChangingElement(referenceLine, 1 - color, b1 + 1);
                         }
-                        i7 = iNextChangingElement;
-                        iNextChangingElement3 = nextChangingElement(iArr, 1 - i6, i7 + 1);
-                        i8 = i3;
                     }
                 } else {
-                    int i11 = 0;
-                    i3 = 0;
-                    while (i3 < i) {
-                        int totalRunLength2 = readTotalRunLength(bitInputStreamFlexible, i11);
-                        for (int i12 = 0; i12 < totalRunLength2; i12++) {
-                            bitArrayOutputStream.writeBit(i11);
-                            iArr[i3 + i12] = i11;
-                        }
-                        i11 = 1 - i11;
-                        i3 += totalRunLength2;
+                    int color = 0;
+                    int x = 0;
+                    while (x < width) {
+                        int runLength = readTotalRunLength(bis, color);
+                        fillRange(baous, referenceLine, x, x + runLength, color);
+                        x += runLength;
+                        color = 1 - color;
                     }
                 }
-                if (i3 == i) {
-                    bitArrayOutputStream.flush();
-                } else if (i3 > i) {
-                    throw new ImageReadException("Unrecoverable row length error in image row " + i5);
-                }
-            } catch (IOException e) {
+                baous.flush();
+            } catch (IOException | HuffmanTreeException e) {
                 throw new ImageReadException("Decompression error", e);
-            } catch (HuffmanTreeException e2) {
-                throw new ImageReadException("Decompression error", e2);
             }
         }
-        return bitArrayOutputStream.toByteArray();
+        return baous.toByteArray();
     }
 
-    public static byte[] compressT6(byte[] bArr, int i, int i2) throws Throwable {
-        BitInputStreamFlexible bitInputStreamFlexible;
-        T4_T6_Tables$Entry t4_T6_Tables$Entry;
-        int iNextChangingElement;
-        try {
-            bitInputStreamFlexible = new BitInputStreamFlexible(new ByteArrayInputStream(bArr));
-            try {
-                BitArrayOutputStream bitArrayOutputStream = new BitArrayOutputStream();
-                int[] iArr = new int[i];
-                int[] iArr2 = new int[i];
-                int i3 = 0;
-                while (i3 < i2) {
-                    for (int i4 = 0; i4 < i; i4++) {
-                        try {
-                            iArr[i4] = bitInputStreamFlexible.readBits(1);
-                        } catch (IOException e) {
-                            throw new ImageWriteException("Error reading image to compress", (Throwable) e);
-                        }
-                    }
-                    int iNextChangingElement2 = nextChangingElement(iArr, 0, 0);
-                    int iNextChangingElement3 = nextChangingElement(iArr2, 0, 0);
-                    int iNextChangingElement4 = nextChangingElement(iArr2, 1, iNextChangingElement3 + 1);
-                    int i5 = 0;
-                    int i6 = iNextChangingElement3;
-                    int i7 = iNextChangingElement2;
-                    int i8 = 0;
-                    while (i8 < i) {
-                        if (iNextChangingElement4 < i7) {
-                            T4_T6_Tables.P.writeBits(bitArrayOutputStream);
-                            i8 = iNextChangingElement4;
-                        } else {
-                            int i9 = i7 - i6;
-                            if (-3 <= i9 && i9 <= 3) {
-                                if (i9 == -3) {
-                                    t4_T6_Tables$Entry = T4_T6_Tables.VL3;
-                                } else if (i9 == -2) {
-                                    t4_T6_Tables$Entry = T4_T6_Tables.VL2;
-                                } else if (i9 == -1) {
-                                    t4_T6_Tables$Entry = T4_T6_Tables.VL1;
-                                } else if (i9 == 0) {
-                                    t4_T6_Tables$Entry = T4_T6_Tables.V0;
-                                } else if (i9 == 1) {
-                                    t4_T6_Tables$Entry = T4_T6_Tables.VR1;
-                                } else if (i9 == 2) {
-                                    t4_T6_Tables$Entry = T4_T6_Tables.VR2;
-                                } else {
-                                    t4_T6_Tables$Entry = T4_T6_Tables.VR3;
-                                }
-                                t4_T6_Tables$Entry.writeBits(bitArrayOutputStream);
-                                i5 = 1 - i5;
-                                i8 = i7;
-                            } else {
-                                int i10 = 1 - i5;
-                                int iNextChangingElement5 = nextChangingElement(iArr, i10, i7 + 1);
-                                T4_T6_Tables.H.writeBits(bitArrayOutputStream);
-                                writeRunLength(bitArrayOutputStream, i7 - i8, i5);
-                                writeRunLength(bitArrayOutputStream, iNextChangingElement5 - i7, i10);
-                                i8 = iNextChangingElement5;
-                            }
-                        }
-                        int iChangingElementAt = changingElementAt(iArr2, i8);
-                        int i11 = i8 + 1;
-                        int iNextChangingElement6 = nextChangingElement(iArr, i5, i11);
-                        if (i5 == iChangingElementAt) {
-                            iNextChangingElement = nextChangingElement(iArr2, iChangingElementAt, i11);
-                        } else {
-                            iNextChangingElement = nextChangingElement(iArr2, 1 - iChangingElementAt, nextChangingElement(iArr2, iChangingElementAt, i11) + 1);
-                        }
-                        iNextChangingElement4 = nextChangingElement(iArr2, 1 - i5, iNextChangingElement + 1);
-                        i6 = iNextChangingElement;
-                        i7 = iNextChangingElement6;
-                    }
-                    bitInputStreamFlexible.flushCache();
-                    i3++;
-                    int[] iArr3 = iArr;
-                    iArr = iArr2;
-                    iArr2 = iArr3;
-                }
-                T4_T6_Tables.EOL.writeBits(bitArrayOutputStream);
-                T4_T6_Tables.EOL.writeBits(bitArrayOutputStream);
-                byte[] byteArray = bitArrayOutputStream.toByteArray();
-                try {
-                    IoUtils.closeQuietly(true, bitInputStreamFlexible);
-                    return byteArray;
-                } catch (IOException e2) {
-                    throw new ImageWriteException("I/O error", (Throwable) e2);
-                }
-            } catch (Throwable th) {
-                th = th;
-                try {
-                    IoUtils.closeQuietly(false, bitInputStreamFlexible);
-                    throw th;
-                } catch (IOException e3) {
-                    throw new ImageWriteException("I/O error", (Throwable) e3);
-                }
-            }
-        } catch (Throwable th2) {
-            th = th2;
-            bitInputStreamFlexible = null;
-        }
-    }
-
-    /* JADX WARN: Removed duplicated region for block: B:37:0x0086 A[Catch: HuffmanTreeException -> 0x00e3, TryCatch #0 {HuffmanTreeException -> 0x00e3, blocks: (B:4:0x0015, B:6:0x0027, B:8:0x0033, B:35:0x0080, B:37:0x0086, B:40:0x009c, B:39:0x008e, B:10:0x0038, B:12:0x003c, B:13:0x004f, B:34:0x0078, B:16:0x0055, B:19:0x005b, B:22:0x0061, B:25:0x0067, B:28:0x006d, B:31:0x0073, B:41:0x00a7, B:42:0x00bf), top: B:54:0x0015 }] */
-    /* JADX WARN: Removed duplicated region for block: B:39:0x008e A[Catch: HuffmanTreeException -> 0x00e3, TryCatch #0 {HuffmanTreeException -> 0x00e3, blocks: (B:4:0x0015, B:6:0x0027, B:8:0x0033, B:35:0x0080, B:37:0x0086, B:40:0x009c, B:39:0x008e, B:10:0x0038, B:12:0x003c, B:13:0x004f, B:34:0x0078, B:16:0x0055, B:19:0x005b, B:22:0x0061, B:25:0x0067, B:28:0x006d, B:31:0x0073, B:41:0x00a7, B:42:0x00bf), top: B:54:0x0015 }] */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    public static byte[] decompressT6(byte[] bArr, int i, int i2) throws ImageReadException {
-        int i3;
-        int iChangingElementAt;
-        int iNextChangingElement;
+    public static byte[] compressT6(byte[] bArr, int width, int height) throws ImageWriteException {
         BitInputStreamFlexible bitInputStreamFlexible = new BitInputStreamFlexible(new ByteArrayInputStream(bArr));
-        BitArrayOutputStream bitArrayOutputStream = new BitArrayOutputStream();
-        int[] iArr = new int[i];
-        for (int i4 = 0; i4 < i2; i4++) {
-            try {
-                int iNextChangingElement2 = nextChangingElement(iArr, 0, 0);
-                int i5 = 0;
-                int i6 = iNextChangingElement2;
-                int iNextChangingElement3 = nextChangingElement(iArr, 1, iNextChangingElement2 + 1);
-                int i7 = 0;
-                int i8 = 0;
-                while (i7 < i) {
-                    T4_T6_Tables$Entry t4_T6_Tables$EntryDecode = CONTROL_CODES.decode(bitInputStreamFlexible);
-                    if (t4_T6_Tables$EntryDecode == T4_T6_Tables.P) {
-                        fillRange(bitArrayOutputStream, iArr, i7, iNextChangingElement3, i5);
-                    } else if (t4_T6_Tables$EntryDecode == T4_T6_Tables.H) {
-                        int totalRunLength = readTotalRunLength(bitInputStreamFlexible, i5) + i7;
-                        fillRange(bitArrayOutputStream, iArr, i7, totalRunLength, i5);
-                        int i9 = 1 - i5;
-                        iNextChangingElement3 = readTotalRunLength(bitInputStreamFlexible, i9) + totalRunLength;
-                        fillRange(bitArrayOutputStream, iArr, totalRunLength, iNextChangingElement3, i9);
+        try {
+            BitArrayOutputStream bitArrayOutputStream = new BitArrayOutputStream();
+            int[] iArr = new int[width];
+            int[] iArr2 = new int[width];
+            for (int i = 0; i < height; i++) {
+                for (int i2 = 0; i2 < width; i2++) {
+                    try {
+                        iArr2[i2] = bitInputStreamFlexible.readBits(1);
+                    } catch (IOException e) {
+                        throw new ImageWriteException("Error reading image to compress", e);
+                    }
+                }
+                int i3 = 0;
+                int i4 = 0;
+                int i5 = nextChangingElement(iArr2, 0, 0);
+                int i6 = nextChangingElement(iArr, 0, 0);
+                int i7 = nextChangingElement(iArr, 1, i6 + 1);
+                while (i3 < width) {
+                    if (i7 < i5) {
+                        T4_T6_Tables.P.writeBits(bitArrayOutputStream);
+                        i3 = i7;
                     } else {
-                        if (t4_T6_Tables$EntryDecode == T4_T6_Tables.V0) {
-                            i3 = 0;
-                        } else if (t4_T6_Tables$EntryDecode == T4_T6_Tables.VL1) {
-                            i3 = -1;
-                        } else if (t4_T6_Tables$EntryDecode == T4_T6_Tables.VL2) {
-                            i3 = -2;
-                        } else if (t4_T6_Tables$EntryDecode == T4_T6_Tables.VL3) {
-                            i3 = -3;
-                        } else if (t4_T6_Tables$EntryDecode == T4_T6_Tables.VR1) {
-                            i3 = 1;
-                        } else if (t4_T6_Tables$EntryDecode == T4_T6_Tables.VR2) {
-                            i3 = 2;
-                        } else {
-                            if (t4_T6_Tables$EntryDecode != T4_T6_Tables.VR3) {
-                                throw new ImageReadException("Invalid/unknown T.6 control code " + t4_T6_Tables$EntryDecode.bitString);
+                        int i8 = i5 - i6;
+                        if (i8 >= -3 && i8 <= 3) {
+                            T4_T6_Tables.Entry entry;
+                            if (i8 == -3) {
+                                entry = T4_T6_Tables.VL3;
+                            } else if (i8 == -2) {
+                                entry = T4_T6_Tables.VL2;
+                            } else if (i8 == -1) {
+                                entry = T4_T6_Tables.VL1;
+                            } else if (i8 == 0) {
+                                entry = T4_T6_Tables.V0;
+                            } else if (i8 == 1) {
+                                entry = T4_T6_Tables.VR1;
+                            } else if (i8 == 2) {
+                                entry = T4_T6_Tables.VR2;
+                            } else {
+                                entry = T4_T6_Tables.VR3;
                             }
-                            i3 = 3;
-                        }
-                        int i10 = i6 + i3;
-                        fillRange(bitArrayOutputStream, iArr, i7, i10, i5);
-                        i5 = 1 - i5;
-                        i8 = i10;
-                        iChangingElementAt = changingElementAt(iArr, i8);
-                        if (i5 != iChangingElementAt) {
-                            iNextChangingElement = nextChangingElement(iArr, iChangingElementAt, i8 + 1);
+                            entry.writeBits(bitArrayOutputStream);
+                            i4 = 1 - i4;
+                            i3 = i5;
                         } else {
-                            iNextChangingElement = nextChangingElement(iArr, 1 - iChangingElementAt, nextChangingElement(iArr, iChangingElementAt, i8 + 1) + 1);
+                            int i9 = 1 - i4;
+                            int i10 = nextChangingElement(iArr2, i9, i5 + 1);
+                            int i11 = i5 - i3;
+                            int i12 = i10 - i5;
+                            T4_T6_Tables.H.writeBits(bitArrayOutputStream);
+                            writeRunLength(bitArrayOutputStream, i11, i4);
+                            writeRunLength(bitArrayOutputStream, i12, i9);
+                            i3 = i10;
                         }
-                        i6 = iNextChangingElement;
-                        iNextChangingElement3 = nextChangingElement(iArr, 1 - i5, i6 + 1);
-                        i7 = i8;
                     }
-                    i8 = iNextChangingElement3;
-                    iChangingElementAt = changingElementAt(iArr, i8);
-                    if (i5 != iChangingElementAt) {
+                    int i13 = changingElementAt(iArr, i3);
+                    int i14 = nextChangingElement(iArr2, i4, i3 + 1);
+                    if (i4 == i13) {
+                        i6 = nextChangingElement(iArr, i13, i3 + 1);
+                    } else {
+                        int i15 = nextChangingElement(iArr, i13, i3 + 1);
+                        i6 = nextChangingElement(iArr, 1 - i13, i15 + 1);
                     }
-                    i6 = iNextChangingElement;
-                    iNextChangingElement3 = nextChangingElement(iArr, 1 - i5, i6 + 1);
-                    i7 = i8;
+                    i7 = nextChangingElement(iArr, 1 - i4, i6 + 1);
+                    i5 = i14;
                 }
-                if (i8 == i) {
-                    bitArrayOutputStream.flush();
-                } else if (i8 > i) {
-                    throw new ImageReadException("Unrecoverable row length error in image row " + i4);
+                bitInputStreamFlexible.flushCache();
+                int[] iArr3 = iArr2;
+                iArr2 = iArr;
+                iArr = iArr3;
+            }
+            T4_T6_Tables.EOL.writeBits(bitArrayOutputStream);
+            T4_T6_Tables.EOL.writeBits(bitArrayOutputStream);
+            return bitArrayOutputStream.toByteArray();
+        } finally {
+            IoUtils.closeQuietly(true, bitInputStreamFlexible);
+        }
+    }
+
+    public static byte[] decompressT6(byte[] bArr, int width, int height) throws ImageReadException {
+        BitInputStreamFlexible bis = new BitInputStreamFlexible(new ByteArrayInputStream(bArr));
+        BitArrayOutputStream baous = new BitArrayOutputStream();
+        int[] referenceLine = new int[width];
+        for (int y = 0; y < height; y++) {
+            try {
+                int a0 = 0;
+                int color = 0;
+                int b1 = nextChangingElement(referenceLine, 0, 0);
+                int b2 = nextChangingElement(referenceLine, 1, b1 + 1);
+
+                while (a0 < width) {
+                    T4_T6_Tables.Entry entry = CONTROL_CODES.decode(bis);
+                    if (entry == T4_T6_Tables.P) {
+                        fillRange(baous, referenceLine, a0, b2, color);
+                        a0 = b2;
+                    } else if (entry == T4_T6_Tables.H) {
+                        int a0a1 = readTotalRunLength(bis, color);
+                        fillRange(baous, referenceLine, a0, a0 + a0a1, color);
+                        a0 += a0a1;
+                        color = 1 - color;
+                        int a1a2 = readTotalRunLength(bis, color);
+                        fillRange(baous, referenceLine, a0, a0 + a1a2, color);
+                        a0 += a1a2;
+                        color = 1 - color;
+                    } else {
+                        int verticalDelta;
+                        if (entry == T4_T6_Tables.V0)
+                            verticalDelta = 0;
+                        else if (entry == T4_T6_Tables.VL1)
+                            verticalDelta = -1;
+                        else if (entry == T4_T6_Tables.VL2)
+                            verticalDelta = -2;
+                        else if (entry == T4_T6_Tables.VL3)
+                            verticalDelta = -3;
+                        else if (entry == T4_T6_Tables.VR1)
+                            verticalDelta = 1;
+                        else if (entry == T4_T6_Tables.VR2)
+                            verticalDelta = 2;
+                        else if (entry == T4_T6_Tables.VR3)
+                            verticalDelta = 3;
+                        else
+                            throw new ImageReadException("Invalid T.6 code");
+
+                        int a1 = b1 + verticalDelta;
+                        fillRange(baous, referenceLine, a0, a1, color);
+                        a0 = a1;
+                        color = 1 - color;
+                    }
+                    if (a0 < width) {
+                        b1 = nextChangingElement(referenceLine, 1 - color, a0 + (a0 == 0 ? 0 : 1));
+                        if (changingElementAt(referenceLine, b1) == color) {
+                            b1 = nextChangingElement(referenceLine, color, b1 + 1);
+                        }
+                        b2 = nextChangingElement(referenceLine, 1 - color, b1 + 1);
+                    }
                 }
+                baous.flush();
             } catch (HuffmanTreeException e) {
                 throw new ImageReadException("Decompression error", e);
             }
         }
-        return bitArrayOutputStream.toByteArray();
+        return baous.toByteArray();
     }
 
-    private static boolean isEOL(T4_T6_Tables$Entry t4_T6_Tables$Entry, boolean z) {
-        if (t4_T6_Tables$Entry == T4_T6_Tables.EOL) {
+    private static boolean isEOL(T4_T6_Tables.Entry entry, boolean z) {
+        if (entry == T4_T6_Tables.EOL)
             return true;
-        }
         if (z) {
-            return t4_T6_Tables$Entry == T4_T6_Tables.EOL13 || t4_T6_Tables$Entry == T4_T6_Tables.EOL14 || t4_T6_Tables$Entry == T4_T6_Tables.EOL15 || t4_T6_Tables$Entry == T4_T6_Tables.EOL16 || t4_T6_Tables$Entry == T4_T6_Tables.EOL17 || t4_T6_Tables$Entry == T4_T6_Tables.EOL18 || t4_T6_Tables$Entry == T4_T6_Tables.EOL19;
+            return entry == T4_T6_Tables.EOL13 || entry == T4_T6_Tables.EOL14 || entry == T4_T6_Tables.EOL15
+                    || entry == T4_T6_Tables.EOL16 || entry == T4_T6_Tables.EOL17 || entry == T4_T6_Tables.EOL18
+                    || entry == T4_T6_Tables.EOL19;
         }
         return false;
     }
 
-    private static void writeRunLength(BitArrayOutputStream bitArrayOutputStream, int i, int i2) {
-        T4_T6_Tables$Entry[] t4_T6_Tables$EntryArr;
-        T4_T6_Tables$Entry[] t4_T6_Tables$EntryArr2;
-        if (i2 == 0) {
-            t4_T6_Tables$EntryArr = T4_T6_Tables.WHITE_MAKE_UP_CODES;
-            t4_T6_Tables$EntryArr2 = T4_T6_Tables.WHITE_TERMINATING_CODES;
-        } else {
-            t4_T6_Tables$EntryArr = T4_T6_Tables.BLACK_MAKE_UP_CODES;
-            t4_T6_Tables$EntryArr2 = T4_T6_Tables.BLACK_TERMINATING_CODES;
+    private static void writeRunLength(BitArrayOutputStream baous, int count, int color) {
+        T4_T6_Tables.Entry[] makeUp = (color == 0) ? T4_T6_Tables.WHITE_MAKE_UP_CODES
+                : T4_T6_Tables.BLACK_MAKE_UP_CODES;
+        T4_T6_Tables.Entry[] term = (color == 0) ? T4_T6_Tables.WHITE_TERMINATING_CODES
+                : T4_T6_Tables.BLACK_TERMINATING_CODES;
+
+        while (count >= 1792) {
+            T4_T6_Tables.Entry entry = lowerBound(T4_T6_Tables.ADDITIONAL_MAKE_UP_CODES, count);
+            entry.writeBits(baous);
+            count -= entry.value;
         }
-        while (i >= 1792) {
-            T4_T6_Tables$Entry t4_T6_Tables$EntryLowerBound = lowerBound(T4_T6_Tables.ADDITIONAL_MAKE_UP_CODES, i);
-            t4_T6_Tables$EntryLowerBound.writeBits(bitArrayOutputStream);
-            i -= t4_T6_Tables$EntryLowerBound.value.intValue();
+        while (count >= 64) {
+            T4_T6_Tables.Entry entry = lowerBound(makeUp, count);
+            entry.writeBits(baous);
+            count -= entry.value;
         }
-        while (i >= 64) {
-            T4_T6_Tables$Entry t4_T6_Tables$EntryLowerBound2 = lowerBound(t4_T6_Tables$EntryArr, i);
-            t4_T6_Tables$EntryLowerBound2.writeBits(bitArrayOutputStream);
-            i -= t4_T6_Tables$EntryLowerBound2.value.intValue();
-        }
-        t4_T6_Tables$EntryArr2[i].writeBits(bitArrayOutputStream);
+        term[count].writeBits(baous);
     }
 
-    private static T4_T6_Tables$Entry lowerBound(T4_T6_Tables$Entry[] t4_T6_Tables$EntryArr, int i) {
-        int i2;
-        int length = t4_T6_Tables$EntryArr.length - 1;
-        int i3 = 0;
+    private static T4_T6_Tables.Entry lowerBound(T4_T6_Tables.Entry[] entries, int value) {
+        int low = 0;
+        int high = entries.length - 1;
+        while (low < high) {
+            int mid = (low + high + 1) >>> 1;
+            if (entries[mid].value <= value)
+                low = mid;
+            else
+                high = mid - 1;
+        }
+        return entries[low];
+    }
+
+    private static int readTotalRunLength(BitInputStreamFlexible bis, int color) throws ImageReadException {
+        int total = 0;
+        Integer val;
         do {
-            int i4 = (i3 + length) >>> 1;
-            if (t4_T6_Tables$EntryArr[i4].value.intValue() <= i && ((i2 = i4 + 1) >= t4_T6_Tables$EntryArr.length || i < t4_T6_Tables$EntryArr[i2].value.intValue())) {
-                return t4_T6_Tables$EntryArr[i4];
+            try {
+                val = (color == 0) ? WHITE_RUN_LENGTHS.decode(bis) : BLACK_RUN_LENGTHS.decode(bis);
+                total += val;
+            } catch (HuffmanTreeException e) {
+                throw new ImageReadException("Decompression error", e);
             }
-            if (t4_T6_Tables$EntryArr[i4].value.intValue() > i) {
-                length = i4 - 1;
-            } else {
-                i3 = i4 + 1;
-            }
-        } while (i3 < length);
-        return t4_T6_Tables$EntryArr[i3];
+        } while (val >= 64);
+        return total;
     }
 
-    private static int readTotalRunLength(BitInputStreamFlexible bitInputStreamFlexible, int i) throws ImageReadException {
-        Integer numDecode;
-        int iIntValue = 0;
-        do {
-            if (i == 0) {
-                try {
-                    numDecode = WHITE_RUN_LENGTHS.decode(bitInputStreamFlexible);
-                } catch (HuffmanTreeException e) {
-                    throw new ImageReadException("Decompression error", e);
-                }
-            } else {
-                numDecode = BLACK_RUN_LENGTHS.decode(bitInputStreamFlexible);
-            }
-            iIntValue += numDecode.intValue();
-        } while (numDecode.intValue() > 63);
-        return iIntValue;
-    }
-
-    private static int changingElementAt(int[] iArr, int i) {
-        if (i < 0 || i >= iArr.length) {
+    private static int changingElementAt(int[] line, int index) {
+        if (index < 0 || index >= line.length)
             return 0;
-        }
-        return iArr[i];
+        return line[index];
     }
 
-    private static int nextChangingElement(int[] iArr, int i, int i2) {
-        while (i2 < iArr.length && iArr[i2] == i) {
-            i2++;
+    private static int nextChangingElement(int[] line, int color, int start) {
+        for (int i = start; i < line.length; i++) {
+            if (line[i] != color)
+                return i;
         }
-        return i2 < iArr.length ? i2 : iArr.length;
+        return line.length;
     }
 
-    private static void fillRange(BitArrayOutputStream bitArrayOutputStream, int[] iArr, int i, int i2, int i3) {
-        while (i < i2) {
-            iArr[i] = i3;
-            bitArrayOutputStream.writeBit(i3);
-            i++;
+    private static void fillRange(BitArrayOutputStream baous, int[] line, int start, int end, int color) {
+        for (int i = start; i < end && i < line.length; i++) {
+            line[i] = color;
+            baous.writeBit(color);
         }
     }
 }

@@ -2,11 +2,11 @@ package com.google.android.gms.auth.api.credentials.internal;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
 import com.google.android.gms.auth.api.credentials.Credential;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzf implements Parcelable$Creator<DeleteRequest> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzf implements Parcelable.Creator<DeleteRequest> {
     static void zza(DeleteRequest deleteRequest, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zza(parcel, 1, (Parcelable) deleteRequest.getCredential(), i, false);
@@ -14,17 +14,9 @@ public class zzf implements Parcelable$Creator<DeleteRequest> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ DeleteRequest createFromParcel(Parcel parcel) {
-        return zzJ(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ DeleteRequest[] newArray(int i) {
-        return zzaA(i);
-    }
-
-    public DeleteRequest zzJ(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzJ, reason: merged with bridge method [inline-methods] */
+    public DeleteRequest createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         Credential credential = null;
@@ -42,10 +34,12 @@ public class zzf implements Parcelable$Creator<DeleteRequest> {
         if (parcel.dataPosition() == iZzap) {
             return new DeleteRequest(iZzg, credential);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public DeleteRequest[] zzaA(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaA, reason: merged with bridge method [inline-methods] */
+    public DeleteRequest[] newArray(int i) {
         return new DeleteRequest[i];
     }
 }

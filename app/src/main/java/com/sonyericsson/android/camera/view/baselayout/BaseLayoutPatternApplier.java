@@ -10,18 +10,16 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
     public static final int N = 0;
     public static final int S = 1;
     private BaseLayout mLayout;
-    private final Map<LayoutPattern, BaseLayoutPatternApplier$Visibilities> mMap = new HashMap();
-
+    private final Map<LayoutPattern, Visibilities> mMap = new HashMap();
     @Override // com.sonyericsson.android.camera.view.baselayout.LayoutPatternApplier
     public void setup(BaseLayout baseLayout, boolean z) {
         this.mLayout = baseLayout;
         setupVisibilities(z);
     }
-
     @Override // com.sonyericsson.android.camera.view.baselayout.LayoutPatternApplier
     public void apply(LayoutPattern layoutPattern) {
-        BaseLayoutPatternApplier$Visibilities baseLayoutPatternApplier$Visibilities = this.mMap.get(layoutPattern);
-        switch (baseLayoutPatternApplier$Visibilities.captureButton) {
+        Visibilities visibilities = this.mMap.get(layoutPattern);
+        switch (visibilities.captureButton) {
             case 1:
                 this.mLayout.getOnScreenButtonGroup().setVisibility(0);
                 break;
@@ -36,7 +34,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 }
                 break;
         }
-        switch (baseLayoutPatternApplier$Visibilities.contentView) {
+        switch (visibilities.contentView) {
             case 1:
                 this.mLayout.showContentsViewController();
                 break;
@@ -44,7 +42,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 this.mLayout.hideContentsViewController();
                 break;
         }
-        switch (baseLayoutPatternApplier$Visibilities.modeButtonShortcut) {
+        switch (visibilities.modeButtonShortcut) {
             case 1:
                 this.mLayout.getModeButtonShortcut().show();
                 break;
@@ -52,7 +50,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 this.mLayout.getModeButtonShortcut().hide();
                 break;
         }
-        switch (baseLayoutPatternApplier$Visibilities.mruShortcut) {
+        switch (visibilities.mruShortcut) {
             case 1:
                 this.mLayout.getMruButtonContainer().show();
                 break;
@@ -60,7 +58,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 this.mLayout.getMruButtonContainer().hide();
                 break;
         }
-        switch (baseLayoutPatternApplier$Visibilities.captureMethodIndicator) {
+        switch (visibilities.captureMethodIndicator) {
             case 1:
                 this.mLayout.getPhotoSmileCaptureIndicator().show();
                 break;
@@ -68,7 +66,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 this.mLayout.getPhotoSmileCaptureIndicator().hide();
                 break;
         }
-        switch (baseLayoutPatternApplier$Visibilities.sceneIndicator) {
+        switch (visibilities.sceneIndicator) {
             case 1:
                 this.mLayout.getSceneIndicator().show();
                 this.mLayout.getConditionIndicator().show();
@@ -78,7 +76,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 this.mLayout.getConditionIndicator().hide();
                 break;
         }
-        switch (baseLayoutPatternApplier$Visibilities.geotagIndicator) {
+        switch (visibilities.geotagIndicator) {
             case 1:
                 this.mLayout.getGeoTagIndicator().show();
                 break;
@@ -86,7 +84,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 this.mLayout.getGeoTagIndicator().hide();
                 break;
         }
-        switch (baseLayoutPatternApplier$Visibilities.storageIndicator) {
+        switch (visibilities.storageIndicator) {
             case 1:
                 this.mLayout.getLowMemoryInternalIndicator().show();
                 this.mLayout.getLowMemorySdIndicator().show();
@@ -96,7 +94,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 this.mLayout.getLowMemorySdIndicator().hide();
                 break;
         }
-        switch (baseLayoutPatternApplier$Visibilities.zoombar) {
+        switch (visibilities.zoombar) {
             case 1:
                 this.mLayout.getZoomBar().show();
                 break;
@@ -107,7 +105,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 this.mLayout.getZoomBar().hideDelayed();
                 break;
         }
-        switch (baseLayoutPatternApplier$Visibilities.recordingProgress) {
+        switch (visibilities.recordingProgress) {
             case 1:
                 this.mLayout.getRecordingIndicator().setVisibility(0);
                 break;
@@ -115,7 +113,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 this.mLayout.getRecordingIndicator().setVisibility(4);
                 break;
         }
-        switch (baseLayoutPatternApplier$Visibilities.thermalIndicator) {
+        switch (visibilities.thermalIndicator) {
             case 1:
                 this.mLayout.getThermalIndicator().show();
                 break;
@@ -123,7 +121,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 this.mLayout.getThermalIndicator().hide();
                 break;
         }
-        switch (baseLayoutPatternApplier$Visibilities.primarySettingShortcut) {
+        switch (visibilities.primarySettingShortcut) {
             case 1:
                 this.mLayout.getPrimaryShortcut().show();
                 break;
@@ -131,7 +129,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 this.mLayout.getPrimaryShortcut().hide();
                 break;
         }
-        switch (baseLayoutPatternApplier$Visibilities.secondarySettingShortcut) {
+        switch (visibilities.secondarySettingShortcut) {
             case 1:
                 this.mLayout.getOnScreenSubButton().setVisibility(0);
                 this.mLayout.getOnScreenExtraButton().setVisibility(0);
@@ -141,7 +139,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 this.mLayout.getOnScreenExtraButton().setVisibility(4);
                 break;
         }
-        switch (baseLayoutPatternApplier$Visibilities.batteryIndicator) {
+        switch (visibilities.batteryIndicator) {
             case 1:
                 this.mLayout.getBatteryIndicator().show();
                 break;
@@ -149,7 +147,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 this.mLayout.getBatteryIndicator().hide();
                 break;
         }
-        switch (baseLayoutPatternApplier$Visibilities.predictiveCaptureIndicator) {
+        switch (visibilities.predictiveCaptureIndicator) {
             case 1:
                 this.mLayout.getPredictiveCaptureIndicatorController().show();
                 break;
@@ -158,6 +156,113 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
                 break;
         }
         this.mLayout.refresh();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private static class Visibilities {
+        public final int batteryIndicator;
+        public final int captureButton;
+        public final int captureMethodIndicator;
+        public final int contentView;
+        public final int geotagIndicator;
+        public final int modeButtonShortcut;
+        public final int mruShortcut;
+        public final int predictiveCaptureIndicator;
+        public final int primarySettingShortcut;
+        public final int recordingProgress;
+        public final int sceneIndicator;
+        public final int secondarySettingShortcut;
+        public final int storageIndicator;
+        public final int thermalIndicator;
+        public final int zoombar;
+
+
+
+        public Visibilities(int[] iArr) {
+            this.captureButton = iArr[0];
+            this.captureMethodIndicator = iArr[1];
+            this.sceneIndicator = iArr[2];
+            this.geotagIndicator = iArr[3];
+            this.storageIndicator = iArr[4];
+            this.zoombar = iArr[5];
+            this.contentView = iArr[6];
+            this.recordingProgress = iArr[7];
+            this.thermalIndicator = iArr[8];
+            this.primarySettingShortcut = iArr[9];
+            this.secondarySettingShortcut = iArr[10];
+            this.batteryIndicator = iArr[11];
+            this.predictiveCaptureIndicator = iArr[12];
+            this.modeButtonShortcut = iArr[13];
+            this.mruShortcut = iArr[14];
+        }
     }
 
     private void setupVisibilities(boolean z) {
@@ -202,7 +307,7 @@ public class BaseLayoutPatternApplier implements LayoutPatternApplier {
     }
 
     private void set(LayoutPattern layoutPattern, int... iArr) {
-        this.mMap.put(layoutPattern, new BaseLayoutPatternApplier$Visibilities(iArr));
+        this.mMap.put(layoutPattern, new Visibilities(iArr));
     }
 
     private void set(LayoutPattern layoutPattern, LayoutPattern layoutPattern2) {

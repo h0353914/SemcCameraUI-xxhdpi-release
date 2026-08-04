@@ -1,14 +1,15 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
 public enum FocusRange implements UserSettingIntValue {
-    AF(-1, 2131689890),
-    MF(-1, 2131689891),
-    DEFAULT(-1, 2131689891);
+    AF(-1, R.string.cam_strings_image_quality_control_focus_auto_txt),
+    MF(-1, R.string.cam_strings_image_quality_control_focus_manual_txt),
+    DEFAULT(-1, R.string.cam_strings_image_quality_control_focus_manual_txt);
 
     public static final int NUMBER_OF_DIVISION_FOR_THE_WHOLE_RANGE = 99;
     public static final int RATIO_OF_THE_RANGE_FROM_1M_TO_INFINITY = 1;
@@ -71,8 +72,8 @@ public enum FocusRange implements UserSettingIntValue {
         return this.mValue;
     }
 
-    public float getFocusRange(CameraInfo$CameraId cameraInfo$CameraId) {
-        float fFloatValue = PlatformCapability.getCameraCapability(cameraInfo$CameraId).MACRO_FOCUS_RANGE.get().floatValue();
+    public float getFocusRange(CameraInfo.CameraId cameraId) {
+        float fFloatValue = PlatformCapability.getCameraCapability(cameraId).MACRO_FOCUS_RANGE.get().floatValue();
         float fFloatValue2 = CameraParameters.MANUAL_FOCUS_INFINITY.floatValue();
         float fFloatValue3 = CameraParameters.MANUAL_FOCUS_1M.floatValue();
         float f = this.mValue;
@@ -86,8 +87,8 @@ public enum FocusRange implements UserSettingIntValue {
         return fFloatValue3 + ((Math.abs(fFloatValue3 - fFloatValue) / (99.0f - threshold)) * (f - threshold));
     }
 
-    public static FocusRange[] getOptions(CameraInfo$CameraId cameraInfo$CameraId) {
-        if (PlatformCapability.isManualFocusSupported(cameraInfo$CameraId) && CameraInfo$CameraId.BACK == cameraInfo$CameraId) {
+    public static FocusRange[] getOptions(CameraInfo.CameraId cameraId) {
+        if (PlatformCapability.isManualFocusSupported(cameraId) && CameraInfo.CameraId.BACK == cameraId) {
             return values();
         }
         return new FocusRange[0];

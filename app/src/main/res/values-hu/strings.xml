@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Nem fejezhető be a felvétel. Pásztázzon lassabban.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Nem fejezhető be a felvétel. Pásztázzon gyorsabban.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Panorámakép készítése a kamera pásztázásával</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Az alábbi fájlok létrehozása:\n- Több látószögű kép\n- 3D kép\nMegjegyzés: Ezek a fájlok egy szürke területet tartalmaznak.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Az alábbi fájlok létrehozása:\n- Több látószögű kép\n- 3D kép</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Feldolgozás...\nEz a kép egy szürke területet tartalmaz</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Az alábbi fájlok létrehozása:
+- Több látószögű kép
+- 3D kép
+Megjegyzés: Ezek a fájlok egy szürke területet tartalmaznak."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Az alábbi fájlok létrehozása:
+- Több látószögű kép
+- 3D kép"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Feldolgozás...
+Ez a kép egy szürke területet tartalmaz"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Kép mentése</string>
     <string name="cam_3d_strings_dialog_processing_txt">Feldolgozás...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Várjon néhány másodpercig a 3D kamera elindításához</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Ragyogóvá és simává varázsolja a bőrét. Az effektus az előlapi kamerát használó alkalmazásokban működik. Fényképeken és videókon is alkalmazható. A szint módosítására is lehetősége van.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Szint módosítása</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Sima bőr</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Nem indítható el az alkalmazás.\nGyőződjön meg arról, hogy a %1$s telepítve és engedélyezve van a készülékén.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Nem indítható el az alkalmazás.
+Győződjön meg arról, hogy a %1$s telepítve és engedélyezve van a készülékén."</string>
     <string name="cam_strings_gridline_txt">Rácsvonalak</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Fordítsa tenyerét a kamera felé. Az önkioldó bekapcsol, amikor felismeri a tenyerét. A felismerés megkönnyítéséhez nyújtsa ki az ujjait felfelé.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Fordítsa tenyerét a kamera felé</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Általános beállítások</string>
     <string name="cam_strings_more_txt">Továbbiak</string>
     <string name="cam_strings_multi_window_txt">A felosztósáv közepét húzva váltson teljes képernyőre a %1$s számára</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Csatlakozott egy másik eszköz.\nSzeretné megosztani a képet a keresőn keresztül az eszközzel?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Csatlakozott egy másik eszköz.
+Szeretné megosztani a képet a keresőn keresztül az eszközzel?"</string>
     <string name="cam_strings_multicam_add_device_txt">Eszköz felvétele</string>
     <string name="cam_strings_multicam_add_more_txt">Továbbiak felvétele</string>
     <string name="cam_strings_multicam_apply_txt">Kész</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Fénymérés</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Előre jelzett</string>
     <string name="cam_strings_predictive_capture_txt">Prediktív rögzítés</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">A kamera automatikusan elindult, mivel észlelte, hogy felemeli a telefonját fekvő módban, és egy tárgy felé irányítja.\nA kamerabeállítások Intelligens indítás pontjában kiválaszthatja a funkció használatának kedvenc módját.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"A kamera automatikusan elindult, mivel észlelte, hogy felemeli a telefonját fekvő módban, és egy tárgy felé irányítja.
+A kamerabeállítások Intelligens indítás pontjában kiválaszthatja a funkció használatának kedvenc módját."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">A rögzítéshez érintse meg a kör belsejét</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">A rögzítéshez érintse meg a képernyőt</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Teljes képernyős nézethez koppintson a körbe</string>
     <string name="cam_strings_predictive_launch_guide_txt">Érintse meg a kör belsejét a kamera indításához</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Indítás/rögzítés érintéssel</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Indítás érintéssel</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Gyorsan elindíthatja a kamerát. Emelje fel gyorsan a készüléket fekvő módban, és irányítsa a kamerát egy tárgy felé. A kamera automatikusan elindul.\nKiválaszthatja a funkció használatának kedvelt módját a kamerabeállítások között az Intelligens indítás pontban.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Gyorsan elindíthatja a kamerát. Emelje fel gyorsan a készüléket fekvő módban, és irányítsa a kamerát egy tárgy felé. A kamera automatikusan elindul.
+Kiválaszthatja a funkció használatának kedvelt módját a kamerabeállítások között az Intelligens indítás pontban."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Intelligens indítás</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Gyorsan elindíthatja a kamerát. Forgassa el a készüléket fekvő módban, és irányítsa a kamerát egy tárgy felé. A kamera automatikusan elindul.\nEz a funkció a kamerabeállítások között az Intelligens indítás pontban kapcsolható ki.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Gyorsan elindíthatja a kamerát. Forgassa el a készüléket fekvő módban, és irányítsa a kamerát egy tárgy felé. A kamera automatikusan elindul.
+Ez a funkció a kamerabeállítások között az Intelligens indítás pontban kapcsolható ki."</string>
     <string name="cam_strings_predictive_launch_txt">Intelligens indítás</string>
     <string name="cam_strings_preview_always_txt">Be</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 másodperc</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">A(z) %1$s alkalmazásnak az alábbi engedélyekre van szüksége</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s-engedély</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Az alkalmazásnak szüksége van az alábbi engedély(ek)re a művelet végrehajtásához.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Az engedélyek megadásához lépjen az Alkalmazásinformáció &gt; Engedélyek részre.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Az engedélyek megadásához lépjen az Alkalmazásinformáció > Engedélyek részre.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Nem sikerült folytatni</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Fényképek és videók készítéséhez</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Tartózkodási hely beolvasásához</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Belső tárhelyre mentve</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">TOVÁBB</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Az alkalmazásnak szüksége van az alábbi engedély(ek)re a művelet végrehajtásához.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Az SD-kártya használatához a kamerának engedélyekre van szüksége az SD-kártya eléréséhez.\nMódosítsa az adattárolót ismét SD-kártyára, vagy a következő képernyőn engedélyezze a kamerának a hozzáférést az SD-kártyához.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Az SD-kártya használatához a kamerának engedélyekre van szüksége az SD-kártya eléréséhez.
+Módosítsa az adattárolót ismét SD-kártyára, vagy a következő képernyőn engedélyezze a kamerának a hozzáférést az SD-kártyához."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">Nem érhető el az SD-kártya</string>
-    <string name="cam_strings_sd_permission_info_2_txt">A rendszer új SD-kártyát észlelt, amelyhez engedélyek szükségesek.\n\nAz SD-kártya adattárolóként való használatához a következő képernyőn válassza ki az SD-kártyát vagy a DCIM könyvtárat.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Nem lett kiválasztva az SD-kártya vagy a DCIM könyvtár. Az SD-kártya nem használható.\n\nAz engedélyek megadásához módosítsa a mentési helyet az SD-kártyára, vagy a következő képernyőn válassza ki a megfelelő könyvtárat.</string>
-    <string name="cam_strings_sd_permission_info_txt">Új SD-kártya észlelhető, amelyhez engedélyek szükségesek.\nEzért a belső tárhely lesz alapértelmezett adattárolóként használva.\n\nHa adattárolóként SD-kártyát szeretne használni, a kamera beállításai között módosítsa az adattárolási lehetőséget SD-kártyára.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"A rendszer új SD-kártyát észlelt, amelyhez engedélyek szükségesek.
+
+Az SD-kártya adattárolóként való használatához a következő képernyőn válassza ki az SD-kártyát vagy a DCIM könyvtárat."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Nem lett kiválasztva az SD-kártya vagy a DCIM könyvtár. Az SD-kártya nem használható.
+
+Az engedélyek megadásához módosítsa a mentési helyet az SD-kártyára, vagy a következő képernyőn válassza ki a megfelelő könyvtárat."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Új SD-kártya észlelhető, amelyhez engedélyek szükségesek.
+Ezért a belső tárhely lesz alapértelmezett adattárolóként használva.
+
+Ha adattárolóként SD-kártyát szeretne használni, a kamera beállításai között módosítsa az adattárolási lehetőséget SD-kártyára."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Fényképek és videók mentéséhez SD-kártyára</string>
     <string name="cam_strings_select_picture_txt">Fénykép kiválasztása</string>
     <string name="cam_strings_self_timer_05_txt">0,5 másodperc</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Automatikus felvétel</string>
     <string name="cam_strings_side_touch_not_supported_txt">Az Oldalérzékelő nem támogatott ezen a képernyőn</string>
     <string name="cam_strings_side_touch_on_title_txt">Oldalérzékelő</string>
-    <string name="cam_strings_side_touch_on_txt">A funkció engedélyezéséhez nyissa meg a Beállítások &gt; Megjelenítés panelt, és kapcsolja be az Oldalérzékelőt. Engedélyezi most?</string>
+    <string name="cam_strings_side_touch_on_txt">A funkció engedélyezéséhez nyissa meg a Beállítások > Megjelenítés panelt, és kapcsolja be az Oldalérzékelőt. Engedélyezi most?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Oldalérzékelő</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Fényképet vagy videót készíthet egyszerűen a képernyő szélén az érzékelőre duplán koppintva, anélkül hogy az exponálógombra kellene koppintania. Nagyíthat és kicsinyítheti is az ujja csúsztatásával az oldalérzékelő mentén.\nA fénykép és a videó mód is támogatja ezt a funkciót, amelyet a kamerabeállítások Oldalérzékelő részén kapcsolhat ki.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Fényképet vagy videót készíthet álló nézetben egyszerűen a képernyő szélén az érzékelőre duplán koppintva, anélkül hogy az exponálógombra kellene koppintania. Nagyíthat és kicsinyíthet is az ujja csúsztatásával az oldalérzékelő mentén.\nA fénykép és a videó mód is támogatja ezt a funkciót, amelyet a kamerabeállítások Oldalérzékelő részén kapcsolhat ki.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Fényképet vagy videót készíthet álló nézetben egyszerűen a képernyő szélén az érzékelőre duplán koppintva, anélkül hogy az exponálógombra kellene koppintania.\nA fénykép és a videó mód is támogatja ezt a funkciót, amelyet a kamerabeállítások Oldalérzékelő részén kapcsolhat ki.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Fényképet vagy videót készíthet egyszerűen a képernyő szélén az érzékelőre duplán koppintva, anélkül hogy az exponálógombra kellene koppintania.\nA fénykép és a videó mód is támogatja ezt a funkciót, amelyet a kamerabeállítások Oldalérzékelő részén kapcsolhat ki.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Fényképet vagy videót készíthet egyszerűen a képernyő szélén az érzékelőre duplán koppintva, anélkül hogy az exponálógombra kellene koppintania. Nagyíthat és kicsinyítheti is az ujja csúsztatásával az oldalérzékelő mentén.
+A fénykép és a videó mód is támogatja ezt a funkciót, amelyet a kamerabeállítások Oldalérzékelő részén kapcsolhat ki."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Fényképet vagy videót készíthet álló nézetben egyszerűen a képernyő szélén az érzékelőre duplán koppintva, anélkül hogy az exponálógombra kellene koppintania. Nagyíthat és kicsinyíthet is az ujja csúsztatásával az oldalérzékelő mentén.
+A fénykép és a videó mód is támogatja ezt a funkciót, amelyet a kamerabeállítások Oldalérzékelő részén kapcsolhat ki."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Fényképet vagy videót készíthet álló nézetben egyszerűen a képernyő szélén az érzékelőre duplán koppintva, anélkül hogy az exponálógombra kellene koppintania.
+A fénykép és a videó mód is támogatja ezt a funkciót, amelyet a kamerabeállítások Oldalérzékelő részén kapcsolhat ki."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Fényképet vagy videót készíthet egyszerűen a képernyő szélén az érzékelőre duplán koppintva, anélkül hogy az exponálógombra kellene koppintania.
+A fénykép és a videó mód is támogatja ezt a funkciót, amelyet a kamerabeállítások Oldalérzékelő részén kapcsolhat ki."</string>
     <string name="cam_strings_side_touch_txt">Oldalérzékelő</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">A rögzítési stílus és a képernyőfelbontás a Kamera beállításai között módosítható</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Szuper lassított (egyképes)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Szuper lassított felvétel</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">A lassított mozgás képkocka/mp értéke és a rögzítési stílus módosítható</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">További beállítások</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">A képernyő közepén lévő gombra koppintva azonnal rögzíthet egy értékes pillanatot %1$s képkocka/mp lassított felvétellel.\nA jó megvilágítású környezetben rögzített videó minősége jobb lesz.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"A képernyő közepén lévő gombra koppintva azonnal rögzíthet egy értékes pillanatot %1$s képkocka/mp lassított felvétellel.
+A jó megvilágítású környezetben rögzített videó minősége jobb lesz."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">A középső gombra koppintva %1$s képk./mp seb.-gel rögzítheti a kellő pillanatot</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">A képernyő közepén lévő gombra koppintva azonnal rögzíthet egy értékes pillanatot %1$s képkocka/mp lassított mozgással</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Szuper lassított felvétel (egyképes)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Lassított felvétel</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">A rögzítés módja</string>
     <string name="cam_strings_slow_motion_standard_txt">Lassított felvétel</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Hatásos videó készítése egy értékes pillanat lassított megjelenítésével.\nA jó megvilágítású környezetben rögzített videó minősége jobb lesz.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Hatásos videó készítése egy értékes pillanat lassított megjelenítésével.
+A jó megvilágítású környezetben rögzített videó minősége jobb lesz."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">%1$s képk./mp sebességre váltva különböző sebességeken is rögzíthet videót</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">A megfelelő pillanatban koppintson a gombra középen</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Lassított mozgás rögzítve</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Szoftverlicencek</string>
     <string name="cam_strings_take_photo_txt">Fénykép készítése</string>
     <string name="cam_strings_term_of_use_accept_txt">Elfogadom</string>
-    <string name="cam_strings_term_of_use_consent_txt">Elfogadom a Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;használati feltételeit&lt;/a&gt;.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Elfogadom a Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">használati feltételeit&lt;/a>.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">A szolgáltatás igénybe vétele díjcsomagjától függően mobil adatforgalmi díjak felszámításával járhat.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">A Sony Mobile összegyűjti a kivonatolt Android-azonosítóját (az egyedi eszközazonosítót), a helyre vonatkozó adatokat és az időbélyegzőt annak érdekében, hogy a szolgáltatás és a szolgáltatás javításának részeként megfelelő eredményeket biztosítsunk Önnek.</string>
     <string name="cam_strings_term_of_use_decline_txt">Nem fogadom el</string>
     <string name="cam_strings_term_of_use_title_txt">Feltételek</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Használati feltételek&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Használati feltételek&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Képek kiválasztásának törlése</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Nem lehet menteni</string>
     <string name="cam_strings_timeshift_save_complete_txt">Mentve</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">A stabil 4K videorögzítéshez nem szabad módosítania ezt a beállítást, kivéve ha nagy sebességű SD-kártyát használ (UHS Speed Class 1 vagy gyorsabb, illetve Speed Class 10 ajánlott).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">A stabil Timeshift videorögzítéshez nem szabad módosítania ezt a beállítást, kivéve ha nagy sebességű SD-kártyát használ (UHS Speed Class 1 vagy gyorsabb, illetve Speed Class 10 ajánlott). Mindenképpen módosítja?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">A stabil lassított felvételű videorögzítéshez nem szabad módosítania ezt a beállítást, kivéve ha nagy sebességű SD-kártyát használ (UHS Speed Class 1 vagy gyorsabb, illetve Speed Class 10 ajánlott).</string>
-    <string name="cam_strings_video_explanatory_txt">A stabil videorögzítéshez azt javasoljuk, hogy az adattárolót módosítsa belső tárhelyre. Szeretné most módosítani?\n\nHa továbbra is SD-kártyát használ adattárolóként, feltétlenül nagy sebességű SD-kártyát válasszon (UHS Speed Class 1 vagy gyorsabb, illetve Speed Class 10 javasolt).</string>
+    <string name="cam_strings_video_explanatory_txt">"A stabil videorögzítéshez azt javasoljuk, hogy az adattárolót módosítsa belső tárhelyre. Szeretné most módosítani?
+
+Ha továbbra is SD-kártyát használ adattárolóként, feltétlenül nagy sebességű SD-kártyát válasszon (UHS Speed Class 1 vagy gyorsabb, illetve Speed Class 10 javasolt)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Dupla kamera</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">A dupla kamerával gyönyörű, alacsony zajszintű videókat rögzíthet még éjszaka vagy gyenge megvilágítású szobában is. A kamera a helyszíntől függően automatikusan vált az egyetlen kamera és a dupla kamera között az ultranagy érzékenységű rögzítéshez.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Videorögzítés dupla kamerával</string>

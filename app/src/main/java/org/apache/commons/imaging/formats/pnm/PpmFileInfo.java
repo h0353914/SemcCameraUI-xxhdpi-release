@@ -1,10 +1,11 @@
 package org.apache.commons.imaging.formats.pnm;
 
+import android.support.v4.view.ViewCompat;
 import java.io.IOException;
 import java.io.InputStream;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
-import org.apache.commons.imaging.ImageInfo$ColorType;
+import org.apache.commons.imaging.ImageInfo;
 import org.apache.commons.imaging.ImageReadException;
 
 class PpmFileInfo extends FileInfo {
@@ -60,8 +61,8 @@ class PpmFileInfo extends FileInfo {
     }
 
     @Override // org.apache.commons.imaging.formats.pnm.FileInfo
-    public ImageInfo$ColorType getColorType() {
-        return ImageInfo$ColorType.RGB;
+    public ImageInfo.ColorType getColorType() {
+        return ImageInfo.ColorType.RGB;
     }
 
     @Override // org.apache.commons.imaging.formats.pnm.FileInfo
@@ -71,16 +72,16 @@ class PpmFileInfo extends FileInfo {
         int sample3 = readSample(inputStream, this.bytesPerSample);
         int iScaleSample = scaleSample(sample, this.scale, this.max);
         int iScaleSample2 = scaleSample(sample2, this.scale, this.max);
-        return ((scaleSample(sample3, this.scale, this.max) & 255) << 0) | ((iScaleSample & 255) << 16) | (-16777216) | ((iScaleSample2 & 255) << 8);
+        return ((scaleSample(sample3, this.scale, this.max) & 255) << 0) | ((iScaleSample & 255) << 16) | ViewCompat.MEASURED_STATE_MASK | ((iScaleSample2 & 255) << 8);
     }
 
     @Override // org.apache.commons.imaging.formats.pnm.FileInfo
-    public int getRGB(WhiteSpaceReader whiteSpaceReader) throws IOException {
+    public int getRGB(WhiteSpaceReader whiteSpaceReader) throws NumberFormatException, IOException {
         int i = Integer.parseInt(whiteSpaceReader.readtoWhiteSpace());
         int i2 = Integer.parseInt(whiteSpaceReader.readtoWhiteSpace());
         int i3 = Integer.parseInt(whiteSpaceReader.readtoWhiteSpace());
         int iScaleSample = scaleSample(i, this.scale, this.max);
         int iScaleSample2 = scaleSample(i2, this.scale, this.max);
-        return ((scaleSample(i3, this.scale, this.max) & 255) << 0) | ((iScaleSample & 255) << 16) | (-16777216) | ((iScaleSample2 & 255) << 8);
+        return ((scaleSample(i3, this.scale, this.max) & 255) << 0) | ((iScaleSample & 255) << 16) | ViewCompat.MEASURED_STATE_MASK | ((iScaleSample2 & 255) << 8);
     }
 }

@@ -10,6 +10,7 @@ import android.os.Debug;
 import android.os.Process;
 import android.os.SystemClock;
 import android.util.Log;
+import com.google.android.gms.common.stats.zzc;
 import com.google.android.gms.internal.zzmm;
 import com.google.android.gms.internal.zzmy;
 import java.util.Arrays;
@@ -17,6 +18,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzb {
     private static final Object zzafW = new Object();
     private static Integer zzahE;
@@ -36,22 +38,22 @@ public class zzb {
             this.zzahC = Collections.EMPTY_LIST;
             return;
         }
-        String str = zzc$zza.zzahI.get();
+        String str = zzc.zza.zzahI.get();
         this.zzahz = str == null ? Collections.EMPTY_LIST : Arrays.asList(str.split(","));
-        String str2 = zzc$zza.zzahJ.get();
+        String str2 = zzc.zza.zzahJ.get();
         this.zzahA = str2 == null ? Collections.EMPTY_LIST : Arrays.asList(str2.split(","));
-        String str3 = zzc$zza.zzahK.get();
+        String str3 = zzc.zza.zzahK.get();
         this.zzahB = str3 == null ? Collections.EMPTY_LIST : Arrays.asList(str3.split(","));
-        String str4 = zzc$zza.zzahL.get();
+        String str4 = zzc.zza.zzahL.get();
         this.zzahC = str4 == null ? Collections.EMPTY_LIST : Arrays.asList(str4.split(","));
-        this.zzahD = new zze(1024, zzc$zza.zzahM.get().longValue());
-        this.zzahF = new zze(1024, zzc$zza.zzahM.get().longValue());
+        this.zzahD = new zze(1024, zzc.zza.zzahM.get().longValue());
+        this.zzahF = new zze(1024, zzc.zza.zzahM.get().longValue());
     }
 
     private static int getLogLevel() {
         if (zzahE == null) {
             try {
-                zzahE = Integer.valueOf(zzmm.zzjA() ? zzc$zza.zzahH.get().intValue() : zzd.LOG_LEVEL_OFF);
+                zzahE = Integer.valueOf(zzmm.zzjA() ? zzc.zza.zzahH.get().intValue() : zzd.LOG_LEVEL_OFF);
             } catch (SecurityException unused) {
                 zzahE = Integer.valueOf(zzd.LOG_LEVEL_OFF);
             }
@@ -101,7 +103,7 @@ public class zzb {
     }
 
     private String zzb(ServiceConnection serviceConnection) {
-        return String.valueOf(((long) System.identityHashCode(serviceConnection)) | (((long) Process.myPid()) << 32));
+        return String.valueOf(System.identityHashCode(serviceConnection) | (Process.myPid() << 32));
     }
 
     private boolean zzb(String str, String str2, String str3, String str4) {

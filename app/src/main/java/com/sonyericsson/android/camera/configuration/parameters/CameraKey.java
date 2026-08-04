@@ -1,11 +1,12 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
 import com.sonyericsson.android.camera.ActionMode;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
 public enum CameraKey implements UserSettingValue {
-    BURST_SHOT(2131690116),
-    TAKE_PHOTO(2131690115);
+    BURST_SHOT(R.string.cam_strings_settings_on_txt),
+    TAKE_PHOTO(R.string.cam_strings_settings_off_txt);
 
     public static final String TAG = "CameraKey";
     private static final int sParameterTextId = 2131689663;

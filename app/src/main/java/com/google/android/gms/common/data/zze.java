@@ -4,10 +4,10 @@ import android.database.CursorWindow;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zze implements Parcelable$Creator<DataHolder> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zze implements Parcelable.Creator<DataHolder> {
     static void zza(DataHolder dataHolder, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zza(parcel, 1, dataHolder.zzow(), false);
@@ -18,17 +18,9 @@ public class zze implements Parcelable$Creator<DataHolder> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ DataHolder createFromParcel(Parcel parcel) {
-        return zzag(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ DataHolder[] newArray(int i) {
-        return zzbv(i);
-    }
-
-    public DataHolder zzag(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzag, reason: merged with bridge method [inline-methods] */
+    public DataHolder createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         int iZzg2 = 0;
@@ -65,10 +57,12 @@ public class zze implements Parcelable$Creator<DataHolder> {
             dataHolder.zzov();
             return dataHolder;
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public DataHolder[] zzbv(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbv, reason: merged with bridge method [inline-methods] */
+    public DataHolder[] newArray(int i) {
         return new DataHolder[i];
     }
 }

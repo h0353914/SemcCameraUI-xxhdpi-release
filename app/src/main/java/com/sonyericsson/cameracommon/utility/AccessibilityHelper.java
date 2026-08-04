@@ -1,9 +1,144 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.cameracommon.utility;
 
+import android.content.Context;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import com.sonyericsson.android.camera.util.CamLog;
 
 public class AccessibilityHelper {
@@ -71,5 +206,18 @@ public class AccessibilityHelper {
             CamLog.d("checkToTouch: Point = (" + i + "," + i2 + ")");
         }
         return sRectForHit.contains(i, i2);
+    }
+
+    public static class HoverEventInterceptView extends FrameLayout {
+        public HoverEventInterceptView(Context context) {
+            super(context);
+        }
+
+        @Override // android.view.ViewGroup
+        public boolean onInterceptHoverEvent(MotionEvent motionEvent) {
+            super.onInterceptHoverEvent(motionEvent);
+            AccessibilityHelper.requestAccessibilityFocus(this, motionEvent);
+            return true;
+        }
     }
 }

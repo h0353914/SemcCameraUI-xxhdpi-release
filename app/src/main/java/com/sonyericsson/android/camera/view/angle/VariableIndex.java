@@ -5,6 +5,10 @@ public class VariableIndex {
     protected final int mMaxIndex;
     protected final int mMinIndex;
 
+    public interface Calculator {
+        VariableIndex calculate(VariableIndex variableIndex, Object... objArr);
+    }
+
     public VariableIndex(int i, int i2, int i3) {
         this.mMaxIndex = i;
         this.mMinIndex = i2;

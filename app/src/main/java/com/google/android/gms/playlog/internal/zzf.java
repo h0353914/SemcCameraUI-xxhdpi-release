@@ -2,26 +2,29 @@ package com.google.android.gms.playlog.internal;
 
 import android.content.Context;
 import android.os.IBinder;
-import android.os.IInterface;
 import android.os.Looper;
 import android.os.RemoteException;
 import android.util.Log;
 import com.google.android.gms.common.internal.zzj;
 import com.google.android.gms.common.internal.zzx;
 import com.google.android.gms.internal.zzse;
+import com.google.android.gms.playlog.internal.zza;
+import com.google.android.gms.playlog.internal.zzb;
 import java.util.ArrayList;
+import java.util.Iterator;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzf extends zzj<zza> {
     private final String zzQe;
-    private final zzd zzaRZ;
+    private final com.google.android.gms.playlog.internal.zzd zzaRZ;
     private final zzb zzaSa;
     private boolean zzaSb;
     private final Object zzpd;
 
-    public zzf(Context context, Looper looper, zzd zzdVar, com.google.android.gms.common.internal.zzf zzfVar) {
+    public zzf(Context context, Looper looper, com.google.android.gms.playlog.internal.zzd zzdVar, com.google.android.gms.common.internal.zzf zzfVar) {
         super(context, looper, 24, zzfVar, zzdVar, zzdVar);
         this.zzQe = context.getPackageName();
-        this.zzaRZ = (zzd) zzx.zzw(zzdVar);
+        this.zzaRZ = (com.google.android.gms.playlog.internal.zzd) zzx.zzw(zzdVar);
         this.zzaRZ.zza(this);
         this.zzaSa = new zzb();
         this.zzpd = new Object();
@@ -36,18 +39,20 @@ public class zzf extends zzj<zza> {
         PlayLoggerContext playLoggerContext = null;
         try {
             ArrayList arrayList = new ArrayList();
-            for (zzb$zza zzb_zza : this.zzaSa.zzBt()) {
-                if (zzb_zza.zzaRO != null) {
-                    zzpc().zza(this.zzQe, zzb_zza.zzaRM, zzse.zzf(zzb_zza.zzaRO));
+            Iterator<zzb.zza> it = this.zzaSa.zzBt().iterator();
+            while (it.hasNext()) {
+                zzb.zza next = it.next();
+                if (next.zzaRO != null) {
+                    zzpc().zza(this.zzQe, next.zzaRM, zzse.zzf(next.zzaRO));
                 } else {
-                    if (!zzb_zza.zzaRM.equals(playLoggerContext)) {
+                    if (!next.zzaRM.equals(playLoggerContext)) {
                         if (!arrayList.isEmpty()) {
                             zzpc().zza(this.zzQe, playLoggerContext, arrayList);
                             arrayList.clear();
                         }
-                        playLoggerContext = zzb_zza.zzaRM;
+                        playLoggerContext = next.zzaRM;
                     }
-                    arrayList.add(zzb_zza.zzaRN);
+                    arrayList.add(next.zzaRN);
                 }
             }
             if (!arrayList.isEmpty()) {
@@ -98,11 +103,6 @@ public class zzf extends zzj<zza> {
         }
     }
 
-    @Override // com.google.android.gms.common.internal.zzj
-    protected /* synthetic */ IInterface zzW(IBinder iBinder) {
-        return zzdA(iBinder);
-    }
-
     void zzap(boolean z) {
         synchronized (this.zzpd) {
             boolean z2 = this.zzaSb;
@@ -123,8 +123,11 @@ public class zzf extends zzj<zza> {
         }
     }
 
-    protected zza zzdA(IBinder iBinder) {
-        return zza$zza.zzdz(iBinder);
+    /* JADX INFO: Access modifiers changed from: protected */
+    @Override // com.google.android.gms.common.internal.zzj
+    /* renamed from: zzdA, reason: merged with bridge method [inline-methods] */
+    public zza zzW(IBinder iBinder) {
+        return zza.AbstractBinderC0031zza.zzdz(iBinder);
     }
 
     @Override // com.google.android.gms.common.internal.zzj

@@ -2,7 +2,6 @@ package com.sonymobile.sidetouchgesturedetector;
 
 import android.graphics.PointF;
 import android.view.InputDevice;
-import android.view.InputDevice$MotionRange;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -26,8 +25,8 @@ public class SideTouchUtils {
         InputDevice device = motionEvent.getDevice();
         float x = motionEvent.getX(i);
         float y = motionEvent.getY(i);
-        InputDevice$MotionRange motionRange = device.getMotionRange(0, 536870912);
-        InputDevice$MotionRange motionRange2 = device.getMotionRange(1, 536870912);
+        InputDevice.MotionRange motionRange = device.getMotionRange(0, SOURCE_SIDETOUCH);
+        InputDevice.MotionRange motionRange2 = device.getMotionRange(1, SOURCE_SIDETOUCH);
         if (motionRange == null || motionRange2 == null) {
             return 0;
         }
@@ -54,9 +53,10 @@ public class SideTouchUtils {
     }
 
     public static void getLocalPos(PointF pointF, View view, float f, float f2, boolean z) {
-        view.getLocationOnScreen(new int[2]);
-        float fClip = f - r0[0];
-        float fClip2 = f2 - r0[1];
+        int[] locationOnScreen = new int[2];
+        view.getLocationOnScreen(locationOnScreen);
+        float fClip = f - locationOnScreen[0];
+        float fClip2 = f2 - locationOnScreen[1];
         if (z) {
             fClip = clip(fClip, 0.0f, view.getWidth());
             fClip2 = clip(fClip2, 0.0f, view.getHeight());

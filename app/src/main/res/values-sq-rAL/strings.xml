@@ -14,8 +14,8 @@
     <string name="common_google_play_services_install_title">Merr shërbimet e \"Luaj me Google\"</string>
     <string name="common_google_play_services_invalid_account_text">Llogaria e specifikuar nuk ekziston në këtë pajisje. Zgjidh një llogari tjetër.</string>
     <string name="common_google_play_services_invalid_account_title">Llogari e pavlefshme</string>
-    <string name="common_google_play_services_needs_enabling_title">Një aplikacion kërkon shërbimet e \"Luaj me Google\" për t\'u aktivizuar.</string>
-    <string name="common_google_play_services_network_error_text">Kërkohet një lidhje të dhënash për t\'u lidhur me shërbimet e \"Luaj me Google\".</string>
+    <string name="common_google_play_services_needs_enabling_title">"Një aplikacion kërkon shërbimet e \"Luaj me Google\" për t'u aktivizuar."</string>
+    <string name="common_google_play_services_network_error_text">"Kërkohet një lidhje të dhënash për t'u lidhur me shërbimet e \"Luaj me Google\"."</string>
     <string name="common_google_play_services_network_error_title">Gabim rrjeti</string>
     <string name="common_google_play_services_notification_needs_update_title">Një aplikacion kërkon përditësim për shërbimet e \"Luaj me Google\".</string>
     <string name="common_google_play_services_notification_ticker">Gabim në shërbimet e \"Luaj me Google\"</string>

@@ -3,6 +3,7 @@ package com.sonyericsson.cameracommon.rotatableview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
+import com.sonyericsson.android.camera.R;
 
 public class RotatableContainerView extends FrameLayout {
     public static final String TAG = "RotatableContainerView";
@@ -18,8 +19,8 @@ public class RotatableContainerView extends FrameLayout {
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mContainerView = (FrameLayout) findViewById(2131296363);
-        this.mCustomizableView = (FrameLayout) findViewById(2131296485);
+        this.mContainerView = (FrameLayout) findViewById(R.id.container);
+        this.mCustomizableView = (FrameLayout) findViewById(R.id.overlay);
     }
 
     @Override // android.widget.FrameLayout, android.view.View

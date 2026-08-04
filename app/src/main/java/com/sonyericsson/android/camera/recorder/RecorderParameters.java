@@ -1,3 +1,32 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.recorder;
 
 import android.location.Location;
@@ -9,7 +38,7 @@ public class RecorderParameters {
     public static final long DEFAULT_MAX_FILE_SIZE = 256000000000L;
     private static final int INVALID_VALUE = -1;
     public static final String TAG = "RecorderParameters";
-    private RecorderParameters$DataSpace mDataSpace;
+    private DataSpace mDataSpace;
     private boolean mIsHdr;
     private boolean mIsMicrophoneEnabled;
     private Location mLocation;
@@ -23,43 +52,29 @@ public class RecorderParameters {
         return j != -1;
     }
 
-    /* synthetic */ RecorderParameters(Uri uri, CamcorderProfile camcorderProfile, RecorderParameters$1 recorderParameters$1) {
-        this(uri, camcorderProfile);
-    }
+    public static class DataSpace {
+        public final int range;
+        public final int standard;
+        public final int transfer;
 
-    static /* synthetic */ Location access$102(RecorderParameters recorderParameters, Location location) {
-        recorderParameters.mLocation = location;
-        return location;
-    }
+        public DataSpace(int i, int i2, int i3) {
+            this.standard = i;
+            this.transfer = i2;
+            this.range = i3;
+        }
 
-    static /* synthetic */ int access$202(RecorderParameters recorderParameters, int i) {
-        recorderParameters.mOrientationHint = i;
-        return i;
-    }
-
-    static /* synthetic */ long access$302(RecorderParameters recorderParameters, long j) {
-        recorderParameters.mMaxFileSize = j;
-        return j;
-    }
-
-    static /* synthetic */ int access$402(RecorderParameters recorderParameters, int i) {
-        recorderParameters.mMaxDuration = i;
-        return i;
-    }
-
-    static /* synthetic */ boolean access$502(RecorderParameters recorderParameters, boolean z) {
-        recorderParameters.mIsMicrophoneEnabled = z;
-        return z;
-    }
-
-    static /* synthetic */ RecorderParameters$DataSpace access$602(RecorderParameters recorderParameters, RecorderParameters$DataSpace recorderParameters$DataSpace) {
-        recorderParameters.mDataSpace = recorderParameters$DataSpace;
-        return recorderParameters$DataSpace;
-    }
-
-    static /* synthetic */ boolean access$702(RecorderParameters recorderParameters, boolean z) {
-        recorderParameters.mIsHdr = z;
-        return z;
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append('[');
+            sb.append("standard:" + this.standard + ",");
+            sb.append("transfer:" + this.transfer + ",");
+            StringBuilder sb2 = new StringBuilder();
+            sb2.append("range:");
+            sb2.append(this.range);
+            sb.append(sb2.toString());
+            sb.append(']');
+            return sb.toString();
+        }
     }
 
     private RecorderParameters(Uri uri, CamcorderProfile camcorderProfile) {
@@ -110,7 +125,7 @@ public class RecorderParameters {
         return this.mIsHdr;
     }
 
-    public RecorderParameters$DataSpace dataSpace() {
+    public DataSpace dataSpace() {
         return this.mDataSpace;
     }
 
@@ -124,6 +139,53 @@ public class RecorderParameters {
 
     public Uri outputUri() {
         return this.mUri;
+    }
+
+    public static class Builder {
+        private final RecorderParameters mParameters;
+
+        public Builder(Uri uri, CamcorderProfile camcorderProfile) {
+            this.mParameters = new RecorderParameters(uri, camcorderProfile);
+        }
+
+        public Builder setLocation(Location location) {
+            this.mParameters.mLocation = location;
+            return this;
+        }
+
+        public Builder setOrientationHint(int i) {
+            this.mParameters.mOrientationHint = i;
+            return this;
+        }
+
+        public Builder setMaxFileSize(long j) {
+            this.mParameters.mMaxFileSize = Math.min(j, 256000000000L);
+            return this;
+        }
+
+        public Builder setMaxDuration(int i) {
+            this.mParameters.mMaxDuration = i;
+            return this;
+        }
+
+        public Builder setMicrophoneEnabled(boolean z) {
+            this.mParameters.mIsMicrophoneEnabled = z;
+            return this;
+        }
+
+        public Builder setDataSpace(DataSpace dataSpace) {
+            this.mParameters.mDataSpace = dataSpace;
+            return this;
+        }
+
+        public Builder setHdr(boolean z) {
+            this.mParameters.mIsHdr = z;
+            return this;
+        }
+
+        public RecorderParameters build() {
+            return this.mParameters;
+        }
     }
 
     public void dump() {

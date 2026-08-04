@@ -9,7 +9,23 @@ import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.BinaryFunctions;
 
 public class DqtSegment extends Segment {
-    public final List<DqtSegment$QuantizationTable> quantizationTables;
+    public final List<QuantizationTable> quantizationTables;
+
+    public static class QuantizationTable {
+        public final int destinationIdentifier;
+        private final int[] elements;
+        public final int precision;
+
+        public QuantizationTable(int i, int i2, int[] iArr) {
+            this.precision = i;
+            this.destinationIdentifier = i2;
+            this.elements = iArr;
+        }
+
+        public int[] getElements() {
+            return this.elements;
+        }
+    }
 
     public DqtSegment(int i, byte[] bArr) throws IOException, ImageReadException {
         this(i, bArr.length, new ByteArrayInputStream(bArr));
@@ -35,7 +51,7 @@ public class DqtSegment extends Segment {
                     throw new ImageReadException("Quantization table precision '" + i3 + "' is invalid");
                 }
             }
-            this.quantizationTables.add(new DqtSegment$QuantizationTable(i3, i4, iArr));
+            this.quantizationTables.add(new QuantizationTable(i3, i4, iArr));
         }
     }
 

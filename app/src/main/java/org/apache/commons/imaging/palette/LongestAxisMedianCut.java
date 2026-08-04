@@ -1,3 +1,19 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package org.apache.commons.imaging.palette;
 
 import java.util.ArrayList;
@@ -7,7 +23,15 @@ import java.util.List;
 import org.apache.commons.imaging.ImageWriteException;
 
 public class LongestAxisMedianCut implements MedianCut {
-    private static final Comparator<ColorGroup> COMPARATOR = new LongestAxisMedianCut$1();
+    private static final Comparator<ColorGroup> COMPARATOR = new Comparator<ColorGroup>() { // from class: org.apache.commons.imaging.palette.LongestAxisMedianCut.1
+        @Override // java.util.Comparator
+        public int compare(ColorGroup colorGroup, ColorGroup colorGroup2) {
+            if (colorGroup.maxDiff == colorGroup2.maxDiff) {
+                return colorGroup2.diffTotal - colorGroup.diffTotal;
+            }
+            return colorGroup2.maxDiff - colorGroup.maxDiff;
+        }
+    };
 
     @Override // org.apache.commons.imaging.palette.MedianCut
     public boolean performNextMedianCut(List<ColorGroup> list, boolean z) throws ImageWriteException {
@@ -32,11 +56,27 @@ public class LongestAxisMedianCut implements MedianCut {
         return true;
     }
 
-    private void doCut(ColorGroup colorGroup, ColorComponent colorComponent, List<ColorGroup> list, boolean z) throws ImageWriteException {
+    private void doCut(ColorGroup colorGroup, final ColorComponent colorComponent, List<ColorGroup> list, boolean z) throws ImageWriteException {
         int i;
         int i2;
-        Collections.sort(colorGroup.colorCounts, new LongestAxisMedianCut$2(this, colorComponent));
-        int iRound = (int) Math.round(((double) colorGroup.totalPoints) / 2.0d);
+        Collections.sort(colorGroup.colorCounts, new Comparator<ColorCount>() {
+            @Override
+            public int compare(ColorCount colorCount, ColorCount colorCount2) {
+                switch (colorComponent) {
+                    case ALPHA:
+                        return colorCount.alpha - colorCount2.alpha;
+                    case RED:
+                        return colorCount.red - colorCount2.red;
+                    case GREEN:
+                        return colorCount.green - colorCount2.green;
+                    case BLUE:
+                        return colorCount.blue - colorCount2.blue;
+                    default:
+                        return 0;
+                }
+            }
+        });
+        int iRound = (int) Math.round(colorGroup.totalPoints / 2.0d);
         int i3 = 0;
         int i4 = 0;
         while (true) {

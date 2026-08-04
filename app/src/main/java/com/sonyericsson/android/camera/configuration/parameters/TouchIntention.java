@@ -1,14 +1,15 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.capability.CameraCapabilityList;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 
 public enum TouchIntention implements UserSettingValue {
-    OBJECT_TRACKING(-1, 2131689847),
-    FOCUS_ONLY(-1, 2131690197),
-    FOCUS_AND_EXPOSURE(-1, 2131690196);
+    OBJECT_TRACKING(-1, R.string.cam_strings_focus_mode_object_tracking_txt),
+    FOCUS_ONLY(-1, R.string.cam_strings_touch_to_focus_adjust_exposure_only_focus_txt),
+    FOCUS_AND_EXPOSURE(-1, R.string.cam_strings_touch_to_focus_adjust_exposure_focus_and_exposure_txt);
 
     public static final String TAG = "TouchIntention";
     private static final int sParameterTextId = 2131690198;

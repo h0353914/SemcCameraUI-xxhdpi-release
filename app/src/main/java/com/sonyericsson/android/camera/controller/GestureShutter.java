@@ -4,121 +4,100 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Handler;
-import com.sonyericsson.android.camera.CameraActivity$LayoutOrientation;
-import com.sonyericsson.android.camera.CameraActivity$LayoutOrientationChangedListener;
+import com.sonyericsson.android.camera.CameraActivity;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.device.ImageRetriever;
 import com.sonyericsson.android.camera.gestureshutter.HandSignsDetector;
 import com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface;
-import com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface$DetectResultInterface;
-import com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface$DetectResultListener;
+import com.sonyericsson.android.camera.research.LocalResearchUtil;
 import com.sonyericsson.android.camera.util.CamLog;
-import com.sonyericsson.android.camera.view.GestureShutterView$AnimationStatusListener;
+import com.sonyericsson.android.camera.view.GestureShutterView;
 
 public class GestureShutter {
     private static final boolean IS_GESTURE_SHUTTER_SUPPORTED = !"".equalsIgnoreCase("noGesture");
     private static final String TAG = "GestureShutter";
-    private GestureShutter$ControllerHost mControllerHost;
-    private GestureShutter$WindowHost mWindowHost;
+    private ControllerHost mControllerHost;
+    private WindowHost mWindowHost;
     private boolean mIsEnabled = true;
     private boolean mIsGestureShutterOn = false;
     private boolean mIsPreviewing = false;
     private CapturingMode mCapturingMode = CapturingMode.UNKNOWN;
     private boolean mIsSelftimerRunning = false;
-    private CameraActivity$LayoutOrientation mLayoutOrientation = CameraActivity$LayoutOrientation.Unknown;
+    private CameraActivity.LayoutOrientation mLayoutOrientation = CameraActivity.LayoutOrientation.Unknown;
     private ImageRetriever mImageRetriever = null;
     private Handler mUIScheduler = new Handler();
     private HandSignsDetectorInterface mHandSignsDetector = null;
-    private GestureShutter$State mState = null;
-    private GestureShutterView$AnimationStatusListener mAnimationListener = new GestureShutter$1(this);
-    private HandSignsDetectorInterface$DetectResultListener mDetectResultListener = new GestureShutter$2(this);
-    private CameraActivity$LayoutOrientationChangedListener mOrientationListener = new GestureShutter$3(this);
+    private State mState = null;
+    private GestureShutterView.AnimationStatusListener mAnimationListener = new GestureShutterView.AnimationStatusListener() { // from class: com.sonyericsson.android.camera.controller.GestureShutter.1
+        @Override // com.sonyericsson.android.camera.view.GestureShutterView.AnimationStatusListener
+        public void handleRewindFinished() {
+            GestureShutter.this.mState.handleRewindFinished();
+        }
 
-    static /* synthetic */ GestureShutter$State access$000(GestureShutter gestureShutter) {
-        return gestureShutter.mState;
+        @Override // com.sonyericsson.android.camera.view.GestureShutterView.AnimationStatusListener
+        public void handleProceedFinished() {
+            GestureShutter.this.mState.handleProceedFinished();
+        }
+
+        @Override // com.sonyericsson.android.camera.view.GestureShutterView.AnimationStatusListener
+        public void handleConfirmingFinished() {
+            GestureShutter.this.mState.handleConfirmingFinished();
+        }
+    };
+    private HandSignsDetectorInterface.DetectResultListener mDetectResultListener = new HandSignsDetectorInterface.DetectResultListener() { // from class: com.sonyericsson.android.camera.controller.GestureShutter.2
+        @Override // com.sonyericsson.android.camera.gestureshutter.HandSignsDetectorInterface.DetectResultListener
+        public void onDetectResult(HandSignsDetectorInterface.DetectResultInterface detectResultInterface) {
+            GestureShutter.this.handleDetectResult(detectResultInterface);
+        }
+    };
+    private CameraActivity.LayoutOrientationChangedListener mOrientationListener = new CameraActivity.LayoutOrientationChangedListener() { // from class: com.sonyericsson.android.camera.controller.GestureShutter.3
+        @Override // com.sonyericsson.android.camera.CameraActivity.LayoutOrientationChangedListener
+        public void onLayoutOrientationChanged(CameraActivity.LayoutOrientation layoutOrientation) {
+            if (layoutOrientation != GestureShutter.this.mLayoutOrientation) {
+                GestureShutter.this.mLayoutOrientation = layoutOrientation;
+                if (GestureShutter.this.mHandSignsDetector != null) {
+                    GestureShutter.this.mHandSignsDetector.setLayoutOrientation(GestureShutter.this.mLayoutOrientation);
+                }
+            }
+        }
+    };
+
+    public interface ControllerHost {
+        void addOrientationListener(CameraActivity.LayoutOrientationChangedListener layoutOrientationChangedListener);
+
+        CameraActivity.LayoutOrientation getLayoutOrientation();
+
+        void prepareGestureShutterCountDown();
+
+        void removeOrientationListener(CameraActivity.LayoutOrientationChangedListener layoutOrientationChangedListener);
+
+        void resetGestureShutterCountDown();
+
+        void startGestureShutterCountDown();
     }
 
-    static /* synthetic */ CameraActivity$LayoutOrientation access$100(GestureShutter gestureShutter) {
-        return gestureShutter.mLayoutOrientation;
-    }
+    public interface WindowHost {
+        GestureShutterView getGestureShutterView();
 
-    static /* synthetic */ boolean access$1000(GestureShutter gestureShutter) {
-        return gestureShutter.mIsEnabled;
-    }
+        Point getPreviewSize();
 
-    static /* synthetic */ CameraActivity$LayoutOrientation access$102(GestureShutter gestureShutter, CameraActivity$LayoutOrientation cameraActivity$LayoutOrientation) {
-        gestureShutter.mLayoutOrientation = cameraActivity$LayoutOrientation;
-        return cameraActivity$LayoutOrientation;
-    }
+        Rect getViewFinderSize();
 
-    static /* synthetic */ HandSignsDetectorInterface access$1100(GestureShutter gestureShutter) {
-        return gestureShutter.createDetector();
-    }
+        void hideGestureShutterView();
 
-    static /* synthetic */ ImageRetriever access$1200(GestureShutter gestureShutter) {
-        return gestureShutter.mImageRetriever;
-    }
-
-    static /* synthetic */ RectF access$1300(GestureShutter gestureShutter, Rect rect, int i, int i2) {
-        return gestureShutter.translateFromDetectToPreview(rect, i, i2);
-    }
-
-    static /* synthetic */ GestureShutterView$AnimationStatusListener access$1400(GestureShutter gestureShutter) {
-        return gestureShutter.mAnimationListener;
-    }
-
-    static /* synthetic */ HandSignsDetectorInterface access$200(GestureShutter gestureShutter) {
-        return gestureShutter.mHandSignsDetector;
-    }
-
-    static /* synthetic */ HandSignsDetectorInterface access$202(GestureShutter gestureShutter, HandSignsDetectorInterface handSignsDetectorInterface) {
-        gestureShutter.mHandSignsDetector = handSignsDetectorInterface;
-        return handSignsDetectorInterface;
-    }
-
-    static /* synthetic */ boolean access$300(GestureShutter gestureShutter) {
-        return gestureShutter.shouldPerformDetection();
-    }
-
-    static /* synthetic */ void access$400(GestureShutter gestureShutter, GestureShutter$State gestureShutter$State) {
-        gestureShutter.changeState(gestureShutter$State);
-    }
-
-    static /* synthetic */ GestureShutter$WindowHost access$500(GestureShutter gestureShutter) {
-        return gestureShutter.mWindowHost;
-    }
-
-    static /* synthetic */ GestureShutter$WindowHost access$502(GestureShutter gestureShutter, GestureShutter$WindowHost gestureShutter$WindowHost) {
-        gestureShutter.mWindowHost = gestureShutter$WindowHost;
-        return gestureShutter$WindowHost;
-    }
-
-    static /* synthetic */ CameraActivity$LayoutOrientationChangedListener access$600(GestureShutter gestureShutter) {
-        return gestureShutter.mOrientationListener;
-    }
-
-    static /* synthetic */ GestureShutter$ControllerHost access$700(GestureShutter gestureShutter) {
-        return gestureShutter.mControllerHost;
-    }
-
-    static /* synthetic */ boolean access$800(GestureShutter gestureShutter) {
-        return gestureShutter.mIsGestureShutterOn;
-    }
-
-    static /* synthetic */ boolean access$900(GestureShutter gestureShutter) {
-        return gestureShutter.isOperableMode();
+        void showGestureShutterView();
     }
 
     public static boolean isGestureShutterSupported() {
         return IS_GESTURE_SHUTTER_SUPPORTED;
     }
 
-    public GestureShutter(GestureShutter$ControllerHost gestureShutter$ControllerHost, GestureShutter$WindowHost gestureShutter$WindowHost) {
+    public GestureShutter(ControllerHost controllerHost, WindowHost windowHost) {
         this.mWindowHost = null;
         this.mControllerHost = null;
-        this.mControllerHost = gestureShutter$ControllerHost;
-        this.mWindowHost = gestureShutter$WindowHost;
-        changeState(new GestureShutter$StateInitializing(this));
+        this.mControllerHost = controllerHost;
+        this.mWindowHost = windowHost;
+        changeState(new StateInitializing());
     }
 
     public void setEnabled(boolean z) {
@@ -126,17 +105,19 @@ public class GestureShutter {
         if (z) {
             return;
         }
-        changeState(new GestureShutter$StateStopped(this, false));
+        changeState(new StateStopped(false));
     }
 
-    private void changeState(GestureShutter$State gestureShutter$State) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void changeState(State state) {
         if (CamLog.VERBOSE) {
-            CamLog.d("State is changing from " + this.mState + " to " + gestureShutter$State, new Exception());
+            CamLog.d("State is changing from " + this.mState + " to " + state, new Exception());
         }
-        this.mState = gestureShutter$State;
+        this.mState = state;
         this.mState.entry();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private HandSignsDetectorInterface createDetector() {
         if (CamLog.VERBOSE) {
             CamLog.d("Creating HandSignsDetector");
@@ -144,6 +125,7 @@ public class GestureShutter {
         return new HandSignsDetector(this.mDetectResultListener, this.mUIScheduler);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean shouldPerformDetection() {
         if (CamLog.VERBOSE) {
             String[] strArr = new String[1];
@@ -162,10 +144,12 @@ public class GestureShutter {
         return this.mIsGestureShutterOn && this.mIsPreviewing && !this.mIsSelftimerRunning && isOperableMode();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isOperableMode() {
         return this.mCapturingMode == CapturingMode.FRONT_PHOTO || this.mCapturingMode == CapturingMode.SUPERIOR_FRONT;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private RectF translateFromDetectToPreview(Rect rect, int i, int i2) {
         if (i == 0 || i2 == 0) {
             return null;
@@ -187,8 +171,8 @@ public class GestureShutter {
         return rectF;
     }
 
-    public void setWindowHost(GestureShutter$WindowHost gestureShutter$WindowHost) {
-        this.mState.setWindowHost(gestureShutter$WindowHost);
+    public void setWindowHost(WindowHost windowHost) {
+        this.mState.setWindowHost(windowHost);
     }
 
     public void handlePreviewStarted(CapturingMode capturingMode, ImageRetriever imageRetriever) {
@@ -223,11 +207,247 @@ public class GestureShutter {
         this.mState.updateDetectionStatus();
     }
 
-    public void handleDetectResult(HandSignsDetectorInterface$DetectResultInterface handSignsDetectorInterface$DetectResultInterface) {
-        this.mState.handleDetectResult(handSignsDetectorInterface$DetectResultInterface);
+    public void handleDetectResult(HandSignsDetectorInterface.DetectResultInterface detectResultInterface) {
+        this.mState.handleDetectResult(detectResultInterface);
     }
 
     public void release() {
-        changeState(new GestureShutter$StateStopped(this, true));
+        changeState(new StateStopped(true));
+    }
+
+    private abstract class State {
+        final boolean mCanStartDetection;
+        final boolean mCanStopDetection;
+
+        void entry() {
+        }
+
+        void handleConfirmingFinished() {
+        }
+
+        void handleDetectResult(HandSignsDetectorInterface.DetectResultInterface detectResultInterface) {
+        }
+
+        void handleProceedFinished() {
+        }
+
+        void handleRewindFinished() {
+        }
+
+        void setWindowHost(WindowHost windowHost) {
+        }
+
+        protected State(boolean z, boolean z2) {
+            this.mCanStartDetection = z;
+            this.mCanStopDetection = z2;
+        }
+
+        void updateDetectionStatus() {
+            if (this.mCanStartDetection && GestureShutter.this.shouldPerformDetection()) {
+                LocalResearchUtil.getInstance().startHandSignLostNumCounting();
+                GestureShutter.this.changeState(GestureShutter.this.new StateStandBy());
+            } else {
+                if (!this.mCanStopDetection || GestureShutter.this.shouldPerformDetection()) {
+                    return;
+                }
+                LocalResearchUtil.getInstance().resetHandSignLostNum();
+                GestureShutter.this.changeState(GestureShutter.this.new StateStopped(false));
+            }
+        }
+
+        public String toString() {
+            return getClass().getSimpleName();
+        }
+    }
+
+    private class StateInitializing extends State {
+        StateInitializing() {
+            super(false, false);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void setWindowHost(WindowHost windowHost) {
+            GestureShutter.this.mWindowHost = windowHost;
+            GestureShutter.this.changeState(GestureShutter.this.new StateStopped(false));
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void entry() {
+            GestureShutter.this.mControllerHost.addOrientationListener(GestureShutter.this.mOrientationListener);
+            if (GestureShutter.this.mWindowHost != null) {
+                GestureShutter.this.changeState(GestureShutter.this.new StateStopped(false));
+            }
+        }
+    }
+
+    private class StateReleasing extends State {
+        StateReleasing() {
+            super(false, false);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void entry() {
+            GestureShutter.this.mControllerHost.removeOrientationListener(GestureShutter.this.mOrientationListener);
+        }
+    }
+
+    private class StateStopped extends State {
+        private final boolean mStopForRelease;
+
+        StateStopped(boolean z) {
+            super(true, false);
+            this.mStopForRelease = z;
+        }
+
+        private void releaseDetectorIfNeeded() {
+            if (GestureShutter.this.mHandSignsDetector != null) {
+                if (GestureShutter.this.mIsGestureShutterOn && !this.mStopForRelease && GestureShutter.this.isOperableMode() && GestureShutter.this.mIsEnabled) {
+                    return;
+                }
+                GestureShutter.this.mHandSignsDetector.release();
+                GestureShutter.this.mHandSignsDetector = null;
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void entry() {
+            if (GestureShutter.this.mWindowHost != null) {
+                GestureShutter.this.mWindowHost.hideGestureShutterView();
+            }
+            if (GestureShutter.this.mHandSignsDetector != null) {
+                if (GestureShutter.this.mHandSignsDetector.isStarted()) {
+                    GestureShutter.this.mHandSignsDetector.stopDetect();
+                }
+                releaseDetectorIfNeeded();
+            }
+            if (this.mStopForRelease) {
+                GestureShutter.this.changeState(GestureShutter.this.new StateReleasing());
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void updateDetectionStatus() {
+            releaseDetectorIfNeeded();
+            super.updateDetectionStatus();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        public String toString() {
+            return super.toString() + " [mStopForRelease=" + this.mStopForRelease + "]";
+        }
+    }
+
+    private class StateStandBy extends State {
+        protected StateStandBy() {
+            super(false, true);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void entry() {
+            GestureShutter.this.mWindowHost.hideGestureShutterView();
+            if (GestureShutter.this.mHandSignsDetector == null) {
+                GestureShutter.this.mHandSignsDetector = GestureShutter.this.createDetector();
+            }
+            if (!GestureShutter.this.mHandSignsDetector.isStarted()) {
+                if (CamLog.VERBOSE) {
+                    CamLog.d("Detection not started, start it now");
+                }
+                GestureShutter.this.mHandSignsDetector.startDetect(GestureShutter.this.mImageRetriever);
+            }
+            if (GestureShutter.this.mLayoutOrientation == CameraActivity.LayoutOrientation.Unknown) {
+                GestureShutter.this.mLayoutOrientation = GestureShutter.this.mControllerHost.getLayoutOrientation();
+            }
+            GestureShutter.this.mHandSignsDetector.setLayoutOrientation(GestureShutter.this.mLayoutOrientation);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void handleDetectResult(HandSignsDetectorInterface.DetectResultInterface detectResultInterface) {
+            RectF rectFTranslateFromDetectToPreview;
+            if (detectResultInterface.getStatus() != HandSignsDetectorInterface.DetectResultInterface.HandStatus.PALM || GestureShutter.this.mHandSignsDetector == null || !GestureShutter.this.mIsEnabled || (rectFTranslateFromDetectToPreview = GestureShutter.this.translateFromDetectToPreview(detectResultInterface.getArea(), GestureShutter.this.mHandSignsDetector.getDetectWidth(), GestureShutter.this.mHandSignsDetector.getDetectHeight())) == null) {
+                return;
+            }
+            GestureShutter.this.changeState(GestureShutter.this.new StateRecognitionProceeding(rectFTranslateFromDetectToPreview));
+        }
+    }
+
+    private class StateRecognitionProceeding extends State {
+        final RectF mInitialFrame;
+
+        StateRecognitionProceeding(RectF rectF) {
+            super(false, true);
+            this.mInitialFrame = new RectF();
+            this.mInitialFrame.set(rectF);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void entry() {
+            GestureShutter.this.mWindowHost.showGestureShutterView();
+            GestureShutter.this.mWindowHost.getGestureShutterView().setListener(GestureShutter.this.mAnimationListener);
+            GestureShutter.this.mWindowHost.getGestureShutterView().startProceed(this.mInitialFrame);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void handleProceedFinished() {
+            GestureShutter.this.changeState(GestureShutter.this.new StateConfirming());
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void handleDetectResult(HandSignsDetectorInterface.DetectResultInterface detectResultInterface) {
+            if (GestureShutter.this.mIsEnabled) {
+                if (detectResultInterface.getStatus() != HandSignsDetectorInterface.DetectResultInterface.HandStatus.PALM || GestureShutter.this.mHandSignsDetector == null) {
+                    GestureShutter.this.changeState(GestureShutter.this.new StateRecognitionRewinding());
+                    return;
+                }
+                RectF rectFTranslateFromDetectToPreview = GestureShutter.this.translateFromDetectToPreview(detectResultInterface.getArea(), GestureShutter.this.mHandSignsDetector.getDetectWidth(), GestureShutter.this.mHandSignsDetector.getDetectHeight());
+                if (rectFTranslateFromDetectToPreview != null) {
+                    GestureShutter.this.mWindowHost.getGestureShutterView().updateFrame(rectFTranslateFromDetectToPreview);
+                }
+            }
+        }
+    }
+
+    private class StateRecognitionRewinding extends State {
+        protected StateRecognitionRewinding() {
+            super(false, true);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void entry() {
+            LocalResearchUtil.getInstance().countUpHandSignLostNum();
+            GestureShutter.this.mWindowHost.getGestureShutterView().startRewind();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void handleRewindFinished() {
+            GestureShutter.this.changeState(GestureShutter.this.new StateStandBy());
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void handleDetectResult(HandSignsDetectorInterface.DetectResultInterface detectResultInterface) {
+            RectF rectFTranslateFromDetectToPreview;
+            if (GestureShutter.this.mIsEnabled && detectResultInterface.getStatus() == HandSignsDetectorInterface.DetectResultInterface.HandStatus.PALM && GestureShutter.this.mHandSignsDetector != null && (rectFTranslateFromDetectToPreview = GestureShutter.this.translateFromDetectToPreview(detectResultInterface.getArea(), GestureShutter.this.mHandSignsDetector.getDetectWidth(), GestureShutter.this.mHandSignsDetector.getDetectHeight())) != null) {
+                GestureShutter.this.changeState(GestureShutter.this.new StateRecognitionProceeding(rectFTranslateFromDetectToPreview));
+            }
+        }
+    }
+
+    private class StateConfirming extends State {
+        protected StateConfirming() {
+            super(false, true);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void entry() {
+            GestureShutter.this.mWindowHost.getGestureShutterView().startConfirming();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.State
+        void handleConfirmingFinished() {
+            GestureShutter.this.changeState(GestureShutter.this.new StateStopped(false));
+            if (GestureShutter.this.mIsEnabled) {
+                GestureShutter.this.mControllerHost.prepareGestureShutterCountDown();
+                GestureShutter.this.mControllerHost.startGestureShutterCountDown();
+            }
+        }
     }
 }

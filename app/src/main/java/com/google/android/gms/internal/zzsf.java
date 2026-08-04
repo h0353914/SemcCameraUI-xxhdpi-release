@@ -1,12 +1,15 @@
 package com.google.android.gms.internal;
 
+import com.sonyericsson.android.camera.view.modeselector.ResourceUtil;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import kotlin.text.Typography;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzsf {
-    private static void zza(String str, Object obj, StringBuffer stringBuffer, StringBuffer stringBuffer2) throws IllegalAccessException, InvocationTargetException {
+    private static void zza(String str, Object obj, StringBuffer stringBuffer, StringBuffer stringBuffer2) throws IllegalAccessException, SecurityException, IllegalArgumentException, InvocationTargetException {
         String str2;
         if (obj == null) {
             return;
@@ -79,7 +82,7 @@ public final class zzsf {
             stringBuffer.append("\"\"");
             return;
         }
-        stringBuffer.append('\"');
+        stringBuffer.append(Typography.quote);
         for (byte b : bArr) {
             int i = b & 255;
             if (i == 92 || i == 34) {
@@ -91,7 +94,7 @@ public final class zzsf {
             }
             stringBuffer.append((char) i);
         }
-        stringBuffer.append('\"');
+        stringBuffer.append(Typography.quote);
     }
 
     private static String zzcz(String str) {
@@ -124,13 +127,13 @@ public final class zzsf {
     }
 
     private static String zzfC(String str) {
-        if (!str.startsWith("http") && str.length() > 200) {
+        if (!str.startsWith(ResourceUtil.HTTP_SCHEME) && str.length() > 200) {
             str = str.substring(0, 200) + "[...]";
         }
         return zzcz(str);
     }
 
-    public static <T extends zzse> String zzg(T t) {
+    public static <T extends zzse> String zzg(T t) throws SecurityException, IllegalArgumentException {
         StringBuilder sb;
         String message;
         if (t == null) {

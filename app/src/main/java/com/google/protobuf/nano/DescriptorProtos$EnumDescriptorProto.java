@@ -9,12 +9,6 @@ public final class DescriptorProtos$EnumDescriptorProto extends ExtendableMessag
     public String[] reservedName;
     public DescriptorProtos$EnumDescriptorProto$EnumReservedRange[] reservedRange;
     public DescriptorProtos$EnumValueDescriptorProto[] value;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$EnumDescriptorProto[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

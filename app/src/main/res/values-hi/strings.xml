@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">कैप्चर करना पूर्ण नहीं किया जा सका. कृपया और धीरे पैन करें.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">कैप्चर करना पूर्ण नहीं किया जा सका. कृपया और तेज पैन करें.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">अपने कैमरे को घुमाते हुए पैनरैमिक फ़ोटो लें</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">निम्न फ़ाइलें बनाना:\n- मल्टी एंगल छवि\n- 3D छवि\nनोट: इन फ़ाइलों में एक स्लेटी क्षेत्र होता है.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">निम्न फ़ाइलें बनाना:\n- मल्टी एंगल छवि\n- 3D छवि</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">प्रोसेस कर रहा है...\nइस छवि में एक स्लेटी क्षेत्र है</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"निम्न फ़ाइलें बनाना:
+- मल्टी एंगल छवि
+- 3D छवि
+नोट: इन फ़ाइलों में एक स्लेटी क्षेत्र होता है."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"निम्न फ़ाइलें बनाना:
+- मल्टी एंगल छवि
+- 3D छवि"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"प्रोसेस कर रहा है...
+इस छवि में एक स्लेटी क्षेत्र है"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">छवि रक्षित करना</string>
     <string name="cam_3d_strings_dialog_processing_txt">प्रोसेस कर रहा है...</string>
     <string name="cam_3d_strings_error_application_busy_txt">3D कै. लॉन्च करने के लिए कृ. कुछ से. प्र. करें</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">अपनी त्वचा को उज्ज्वल और सौम्य बनाएँ। प्रभाव फ्रंट कैमरे का उपयोग करने वाले अनुप्रयोगों में कार्य करते हैं। ये फ़ोटो और वीडियो में प्रयोग में लाए जा सकते हैं। आप स्तर भी समायोजित कर सकते हैं।</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">स्तर समायोजन</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">कोमल त्वचा</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">अनुप्रयोग आरंभ नहीं किया जा सकता।\nसुनिश्‍चित करें कि %1$s का नवीनतम संस्‍करण आपके डिवाइस पर स्‍थापित और सक्षम है।</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"अनुप्रयोग आरंभ नहीं किया जा सकता।
+सुनिश्‍चित करें कि %1$s का नवीनतम संस्‍करण आपके डिवाइस पर स्‍थापित और सक्षम है।"</string>
     <string name="cam_strings_gridline_txt">ग्रिड लाइन</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">कैमरे को अपने हथेली को ओर घुमाएँ। आपकी हथेली की पहचान किए जाने के बाद सेल्फ-टाइमर चालू किया जाएगा। यह आसानी से आपकी पहचान कर पाए इसके लिए अपनी उँगलियाँ ऊपर की ओर फैलाएँ।</string>
     <string name="cam_strings_hand_shutter_hint_txt">अपनी हथेली को कैमरे की ओर घुमाएँ</string>
@@ -386,7 +393,7 @@
     <string name="cam_strings_lens_correction_txt">लैंस सुधार</string>
     <string name="cam_strings_long_press_burst_best_txt">मानक</string>
     <string name="cam_strings_long_press_burst_high_txt">उच्च गति</string>
-    <string name="cam_strings_long_press_burst_txt">लंबे समय तक दबाए रखनेवाला बर्स्ट </string>
+    <string name="cam_strings_long_press_burst_txt">"लंबे समय तक दबाए रखनेवाला बर्स्ट "</string>
     <string name="cam_strings_manual_fusion_tutorial_2_title_txt">ड्यूअल कैमरे से फोटो लेना</string>
     <string name="cam_strings_manual_fusion_tutorial_2_txt">ड्यूअल कैमरे से फोटो लेते समय ऑब्जेक्ट से कम से कम 1 मीटर की दूरी पर रहें। ऑब्जेक्ट के समीप जाने से व्‍यूपॉइंट या रंग में बदलाव हो सकता है।</string>
     <string name="cam_strings_manual_fusion_tutorial_title_txt">ड्यूल कैमरा पर स्विच करें</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">सामान्य सेटिंग</string>
     <string name="cam_strings_more_txt">अधिक</string>
     <string name="cam_strings_multi_window_txt">पूर्ण स्क्रीन %1$s का उपयोग करने के लिए अदल-बदल हेतु विभाजन बार के मध्य को खींचें</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">एक अन्‍य डिवाइस अब कनेक्‍ट किया गया है।\nक्‍या आप डिवाइस के साथ दृश्यदर्शी द्वारा छवि साझा करना चाहेंगे?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"एक अन्‍य डिवाइस अब कनेक्‍ट किया गया है।
+क्‍या आप डिवाइस के साथ दृश्यदर्शी द्वारा छवि साझा करना चाहेंगे?"</string>
     <string name="cam_strings_multicam_add_device_txt">डिवाइस जोड़ें</string>
     <string name="cam_strings_multicam_add_more_txt">और अधिक जोड़ें</string>
     <string name="cam_strings_multicam_apply_txt">पूर्ण</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">मापक</string>
     <string name="cam_strings_predictive_capture_feedback_txt">पूर्वानुमान</string>
     <string name="cam_strings_predictive_capture_txt">पूर्वानुमान कैप्चर</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">कैमरे को लैंडस्केप मोड में अपने फ़ोन को उठाने और इसे किसी ऑब्जेक्ट की ओर लक्षित करने की आपकी गति का पता लगाकर स्वचालित रूप से लॉन्च किया गया है।\nकैमरे सेटिंग में स्मार्ट लॉन्च से इस सुविधा का उपयोग करने के लिए आप अपना पसंदीदा तरीका चुन सकते हैं।</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"कैमरे को लैंडस्केप मोड में अपने फ़ोन को उठाने और इसे किसी ऑब्जेक्ट की ओर लक्षित करने की आपकी गति का पता लगाकर स्वचालित रूप से लॉन्च किया गया है।
+कैमरे सेटिंग में स्मार्ट लॉन्च से इस सुविधा का उपयोग करने के लिए आप अपना पसंदीदा तरीका चुन सकते हैं।"</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">कैप्‍चर करने के लिए गोले के अंदर स्पर्श करें</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">कैप्‍चर करने के लिए स्‍क्रीन स्पर्श करें</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">फुलस्क्रीन देखने के लिए चक्र के अंदर टैप करें</string>
     <string name="cam_strings_predictive_launch_guide_txt">कैमरा लॉन्‍च करने के लिए गोले के अंदर स्‍पर्श करें</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">लॉन्‍च करने हेतु स्‍पर्श करें, फिर कैप्‍चर करें</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">लॉन्‍च करने के लिए स्‍पर्श करें</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">आप कैमरे को तुरंत लॉन्‍च कर सकते हैं। अपने डिवाइस को लैंडस्केप मोड में तेज़ी से उठाएँ और कैमरे को ऑब्जेक्ट की ओर रखें। कैमरा स्‍वचालित रूप से लॉन्‍च हो जाएगा।\nकैमरा सेटिंग में स्मार्ट लॉन्च से इस सुविधा का उपयोग करने के लिए आप अपना पसंदीदा तरीका चुन सकते हैं।</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"आप कैमरे को तुरंत लॉन्‍च कर सकते हैं। अपने डिवाइस को लैंडस्केप मोड में तेज़ी से उठाएँ और कैमरे को ऑब्जेक्ट की ओर रखें। कैमरा स्‍वचालित रूप से लॉन्‍च हो जाएगा।
+कैमरा सेटिंग में स्मार्ट लॉन्च से इस सुविधा का उपयोग करने के लिए आप अपना पसंदीदा तरीका चुन सकते हैं।"</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">स्‍मार्ट लॉन्च</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">आप कैमरे को तुरंत लॉन्‍च कर सकते हैं। अपने डिवाइस को लैंडस्केप मोड में हवा में उठाएँ और कैमरे को ऑब्जेक्ट की ओर रखें। कैमरा स्‍वचालित रूप से लॉन्‍च हो जाएगा।\nआप इस सुविधा को कैमरा सेटिंग में जाकर स्‍मार्ट लॉन्च से बंद कर सकते हैं।</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"आप कैमरे को तुरंत लॉन्‍च कर सकते हैं। अपने डिवाइस को लैंडस्केप मोड में हवा में उठाएँ और कैमरे को ऑब्जेक्ट की ओर रखें। कैमरा स्‍वचालित रूप से लॉन्‍च हो जाएगा।
+आप इस सुविधा को कैमरा सेटिंग में जाकर स्‍मार्ट लॉन्च से बंद कर सकते हैं।"</string>
     <string name="cam_strings_predictive_launch_txt">स्‍मार्ट लॉन्च</string>
     <string name="cam_strings_preview_always_txt">चालू करें</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 सेकंड</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s को निम्न अनुमति(यों) की आवश्यकता है</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s अनुमति</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">ऐप को यह कार्रवाई करने के लिए निम्न अनुमति(यों) की आवश्यकता है।</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">अनुमतियां देने के लिए एप्‍लिकेशन जानकारी &gt; अनुमतियां पर जाएँ</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">अनुमतियां देने के लिए एप्‍लिकेशन जानकारी > अनुमतियां पर जाएँ</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">जारी नहीं किया जा सका</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">फोटो और वीडियो लेने के लिए</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">स्थान पुनः प्राप्त करने के लिए</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">फ़ोन मेमोरी में रक्षित</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">ले जाएं</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">ऐप को यह कार्रवाई करने के लिए निम्न अनुमति(यों) की आवश्यकता है।</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">SD कार्ड का उपयोग करने के लिए, कैमरे को SD कार्ड को एक्सेस करने की अनुमति की आवश्यकता होती है।\nडेटा संग्रहण को फिर से SD कार्ड में बदलें या अगली स्क्रीन पर कैमरे को SD कार्ड को एक्सेस करने की अनुमति दें।</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"SD कार्ड का उपयोग करने के लिए, कैमरे को SD कार्ड को एक्सेस करने की अनुमति की आवश्यकता होती है।
+डेटा संग्रहण को फिर से SD कार्ड में बदलें या अगली स्क्रीन पर कैमरे को SD कार्ड को एक्सेस करने की अनुमति दें।"</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD कार्ड अनुपलब्ध</string>
-    <string name="cam_strings_sd_permission_info_2_txt">अनुमतियों के लिए SD कार्ड की पहचान हुई।\n\nSD कार्ड को डेटा संग्रहण के रूप में उपयोग करने के लिए, कृपया अगली स्क्रीन पर SD कार्ड या DCIM निर्देशिका का चयन करें।</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SD कार्ड या DCIM निर्देशिका का चयन नहीं किया गया था। SD कार्ड का उपयोग नहीं किया जा सकता।\n\nअनुमतियां देने के लिए, सहेजने के स्थान को SD कार्ड में बदलकर शुरू करें या अगली स्क्रीन पर उपयुक्त निर्देशिका का चयन करें।</string>
-    <string name="cam_strings_sd_permission_info_txt">नया SD कार्ड मिला जिसके लिए अनुमतियों की आवश्यकता है।\nइसलिए, फ़ोन मेमोरी को डिफ़ॉल्ट डेटा संग्रहण के रूप में उपयोग किया जाएगा।\n\nडेटा संग्रहण के रूप में SD कार्ड का उपयोग करने के लिए, कृपया कैमरा सेटिंग पर जाएँ और संग्रहण विकल्‍प को SD कार्ड में बदलें।</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"अनुमतियों के लिए SD कार्ड की पहचान हुई।
+
+SD कार्ड को डेटा संग्रहण के रूप में उपयोग करने के लिए, कृपया अगली स्क्रीन पर SD कार्ड या DCIM निर्देशिका का चयन करें।"</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD कार्ड या DCIM निर्देशिका का चयन नहीं किया गया था। SD कार्ड का उपयोग नहीं किया जा सकता।
+
+अनुमतियां देने के लिए, सहेजने के स्थान को SD कार्ड में बदलकर शुरू करें या अगली स्क्रीन पर उपयुक्त निर्देशिका का चयन करें।"</string>
+    <string name="cam_strings_sd_permission_info_txt">"नया SD कार्ड मिला जिसके लिए अनुमतियों की आवश्यकता है।
+इसलिए, फ़ोन मेमोरी को डिफ़ॉल्ट डेटा संग्रहण के रूप में उपयोग किया जाएगा।
+
+डेटा संग्रहण के रूप में SD कार्ड का उपयोग करने के लिए, कृपया कैमरा सेटिंग पर जाएँ और संग्रहण विकल्‍प को SD कार्ड में बदलें।"</string>
     <string name="cam_strings_sd_permission_rationale_txt">SD कार्ड पर फ़ोटो और वीडियो को सहेजने के लिए</string>
     <string name="cam_strings_select_picture_txt">फोटो का चयन करें</string>
     <string name="cam_strings_self_timer_05_txt">0.5 सेकंड</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">स्वतः कैप्चरिंग</string>
     <string name="cam_strings_side_touch_not_supported_txt">इस स्क्रीन पर साइड सेंस समर्थित नहीं है</string>
     <string name="cam_strings_side_touch_on_title_txt">साइड सेंस</string>
-    <string name="cam_strings_side_touch_on_txt">इस फ़ंक्‍शन का उपयोग करने के लिए, सेटिंग &gt; डिस्प्ले पर जाएँ और साइड सेंस चालू करें। अभी सक्षम करें?</string>
+    <string name="cam_strings_side_touch_on_txt">इस फ़ंक्‍शन का उपयोग करने के लिए, सेटिंग > डिस्प्ले पर जाएँ और साइड सेंस चालू करें। अभी सक्षम करें?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">साइड सेंस</string>
-    <string name="cam_strings_side_touch_tutorial_txt">आप शटर बटन की बजाय स्क्रीन के साइड में सेंसर को दो बार टैप करके फोटो या वीडियो ले सकते हैं। इसके अलावा, आप इस साइड सेंसर में अपनी उंगली को स्लाइड करके ज़ूम इन और आउट भी कर सकते हैं।\nफोटो और वीडियो मोड दोनों, इस फ़ंक्‍शन का समर्थन करते हैं। आप इसे कैमरा सेटिंग में साइड सेंस पर जाकर बंद कर सकते हैं।</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">आप शटर बटन की बजाय पोर्ट्रेट दृश्य में स्क्रीन के साइड में सेंसर को दो बार टैप करके फोटो या वीडियो ले सकते हैं। इसके अलावा, आप इस साइड सेंसर में अपनी उंगली को स्लाइड करके ज़ूम इन और आउट कर सकते हैं।\nफोटो और वीडियो मोड दोनों इस फ़ंक्‍शन का समर्थन करते हैं। आप इसे कैमरा सेटिंग में साइड सेंस पर जाकर बंद कर सकते हैं।</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">आप शटर बटन की बजाय पोर्ट्रेट दृश्य में स्क्रीन के साइड में सेंसर को दो बार टैप करके फोटो या वीडियो ले सकते हैं।\nफोटो और वीडियो मोड दोनों, इस फ़ंक्‍शन का समर्थन करते हैं। आप इसे कैमरा सेटिंग में जाकर साइड सेंस से बंद कर सकते हैं।</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">आप शटर बटन की बजाय स्क्रीन के साइड में सेंसर को दो बार टैप करके फोटो या वीडियो ले सकते हैं।\nफोटो और वीडियो मोड दोनों इस फ़ंक्‍शन का समर्थन करते हैं। आप इसे कैमरा सेटिंग में जाकर साइड सेंस से बंद कर सकते हैं।</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"आप शटर बटन की बजाय स्क्रीन के साइड में सेंसर को दो बार टैप करके फोटो या वीडियो ले सकते हैं। इसके अलावा, आप इस साइड सेंसर में अपनी उंगली को स्लाइड करके ज़ूम इन और आउट भी कर सकते हैं।
+फोटो और वीडियो मोड दोनों, इस फ़ंक्‍शन का समर्थन करते हैं। आप इसे कैमरा सेटिंग में साइड सेंस पर जाकर बंद कर सकते हैं।"</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"आप शटर बटन की बजाय पोर्ट्रेट दृश्य में स्क्रीन के साइड में सेंसर को दो बार टैप करके फोटो या वीडियो ले सकते हैं। इसके अलावा, आप इस साइड सेंसर में अपनी उंगली को स्लाइड करके ज़ूम इन और आउट कर सकते हैं।
+फोटो और वीडियो मोड दोनों इस फ़ंक्‍शन का समर्थन करते हैं। आप इसे कैमरा सेटिंग में साइड सेंस पर जाकर बंद कर सकते हैं।"</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"आप शटर बटन की बजाय पोर्ट्रेट दृश्य में स्क्रीन के साइड में सेंसर को दो बार टैप करके फोटो या वीडियो ले सकते हैं।
+फोटो और वीडियो मोड दोनों, इस फ़ंक्‍शन का समर्थन करते हैं। आप इसे कैमरा सेटिंग में जाकर साइड सेंस से बंद कर सकते हैं।"</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"आप शटर बटन की बजाय स्क्रीन के साइड में सेंसर को दो बार टैप करके फोटो या वीडियो ले सकते हैं।
+फोटो और वीडियो मोड दोनों इस फ़ंक्‍शन का समर्थन करते हैं। आप इसे कैमरा सेटिंग में जाकर साइड सेंस से बंद कर सकते हैं।"</string>
     <string name="cam_strings_side_touch_txt">साइड सेंस</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">रिकॉर्डिंग शैली और स्‍क्रीन रिज़ॉल्‍यूशन को कैमरा सेटिंग में बदला जा सकता है।</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">बहुत-धीमा (एक स्लॉट)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">अति-धीमी गति</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">आप धीमी गति के लिए fps और रिकॉर्डिंग स्टाइल बदल सकते हैं</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">अधिक विकल्प</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">स्क्रीन के बीच में स्थित बटन को टैप कर अपने सुनहरे पलों को %1$s fps धीमी गति में तेज़ी से रिकॉर्ड करें\nपर्याप्त प्रकाश की स्थिति में रिकॉर्डिंग करने से आपको बेहतर वीडियो बनाने में सहायता मिलेगी.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"स्क्रीन के बीच में स्थित बटन को टैप कर अपने सुनहरे पलों को %1$s fps धीमी गति में तेज़ी से रिकॉर्ड करें
+पर्याप्त प्रकाश की स्थिति में रिकॉर्डिंग करने से आपको बेहतर वीडियो बनाने में सहायता मिलेगी."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">आप %1$s fps के ज़रिए बीच में स्थित बटन दबाकर उपयुक्त समय रिकॉर्ड कर सकते हैं</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">स्क्रीन के बीच में स्थित बटन को टैप कर अपने सुनहरे पलों को %1$s fps धीमी गति में तेज़ी से रिकॉर्ड करें</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">अति-धीमी गति (एक-शॉट)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">धीमी गति</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">कैसे रिकॉर्ड करें</string>
     <string name="cam_strings_slow_motion_standard_txt">धीमी गति</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">किसी कीमती पल को धीमी गति में दिखाकर एक प्रभावशाली वीडियो बनाएँ.\nपर्याप्त प्रकाश की स्थिति में रिकॉर्डिंग करने से आपको बेहतर वीडियो बनाने में सहायता मिलेगी.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"किसी कीमती पल को धीमी गति में दिखाकर एक प्रभावशाली वीडियो बनाएँ.
+पर्याप्त प्रकाश की स्थिति में रिकॉर्डिंग करने से आपको बेहतर वीडियो बनाने में सहायता मिलेगी."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">आप %1$s fps पर स्विच कर अलग-अलग गति पर वीडियो रिकॉर्ड कर सकते हैं</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">उपयुक्त समय पर बीच में स्थित बटन को टैप करें</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">धीमी गति रिकॉर्ड की गई</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">सॉफ़्टवेयर लाइसेंस</string>
     <string name="cam_strings_take_photo_txt">फ़ोटो लें</string>
     <string name="cam_strings_term_of_use_accept_txt">स्वीकार करें</string>
-    <string name="cam_strings_term_of_use_consent_txt">मैं Sony Mobile की &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;उपयोग शर्तों&lt;/a&gt; से सहमत हूं।</string>
+    <string name="cam_strings_term_of_use_consent_txt">मैं Sony Mobile की &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">उपयोग शर्तों&lt;/a> से सहमत हूं।</string>
     <string name="cam_strings_term_of_use_data_charge_txt">इस सेवा का उपयोग अपने डेटा योजना के आधार पर मोबाइल डेटा शुल्क के अधीन किया जा सकता है।</string>
     <string name="cam_strings_term_of_use_data_collection_txt">सेवा और सेवा में सुधार के एक भाग के रूप में आपको उपयुक्त परिणाम प्रदान करने के लिए Sony Mobile आपका हैश्ड Android ID अद्वितीय डिवाइस अभिज्ञापक, स्थान आधारित डेटा और समय-मोहर एकत्रित करेगा।</string>
     <string name="cam_strings_term_of_use_decline_txt">मना करें</string>
     <string name="cam_strings_term_of_use_title_txt">नियम और शर्तें</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;उपयोग की शर्तें&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">उपयोग की शर्तें&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">फ़ोटो का चयन हटाएँ</string>
     <string name="cam_strings_timeshift_operation_failed_txt">रक्षित नहीं किया जा सका</string>
     <string name="cam_strings_timeshift_save_complete_txt">रक्षित</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">स्थिर 4K वीडियो रिकार्डिंग के लिए, आपको तब तक इस सेटिंग को नहीं बदलना चाहिए जब तक आप हाई-स्पीड SD कार्ड (UHS स्पीड क्लास 1 या इससे उच्च या स्पीड क्लास 10 अनुशंसित) का उपयोग नहीं करते हैं.</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Timeshift वीडियो रिकार्डिंग स्थिर रखने के लिए, आपको तब तक इस सेटिंग को बदलना नहीं चाहिए जब तक आप हाई-स्पीड SD कार्ड (UHS स्पीड क्लास 1 या इससे उच्च या स्पीड क्लास 10 अनुशंसित) का उपयोग नहीं करते हैं. फिर भी बदलें?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">स्थिर धीमी गति की वीडियो रिकार्डिंग के लिए, इस सेटिंग को तब तक न बदलें जब तक आप हाई-स्पीड SD कार्ड (UHS स्पीड क्लास 1 या इससे उच्च या स्पीड क्लास 10 अनुशंसित) का उपयोग नहीं करते हैं.</string>
-    <string name="cam_strings_video_explanatory_txt">स्थिर वीडियो रिकॉर्डिंग के लिए, हम आपको डेटा संग्रह को फ़ोन मेमोरी से बदलने का सुझाव देते हैं. क्या आप अभी बदलना चाहेंगे?\n\nयदि आप डेटा संग्रहण के रूप में SD कार्ड का प्रयोग जारी रखते हैं, तो यह सुनिश्चित करें कि आप उच्च-गति वाले SD कार्ड का प्रयोग कर रहे हैं (UHS स्पीड क्लास 1 या इससे उच्च या स्पीड क्लास 10 अनुशंसित).</string>
+    <string name="cam_strings_video_explanatory_txt">"स्थिर वीडियो रिकॉर्डिंग के लिए, हम आपको डेटा संग्रह को फ़ोन मेमोरी से बदलने का सुझाव देते हैं. क्या आप अभी बदलना चाहेंगे?
+
+यदि आप डेटा संग्रहण के रूप में SD कार्ड का प्रयोग जारी रखते हैं, तो यह सुनिश्चित करें कि आप उच्च-गति वाले SD कार्ड का प्रयोग कर रहे हैं (UHS स्पीड क्लास 1 या इससे उच्च या स्पीड क्लास 10 अनुशंसित)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">ड्यूल कैमरा</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">आप ड्यूल कैमरे का उपयोग करके कम शोर वाले सुंदर वीडियो, रात में या कम रोशनी वाले कमरे में भी रिकॉर्ड कर सकते हैं। अल्ट्रा-उच्च संवेदनशीलता के साथ रिकॉर्ड करने के लिए दृश्‍य के आधार पर कैमरा स्वचालित रूप से सिंगल कैमरे और ड्यूल कैमरे के बीच स्विच होता है।</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">ड्यूल कैमरे के साथ वीडियो रिकॉर्ड करना</string>
@@ -680,7 +707,7 @@
     <string name="cam_strings_white_balance_incandescent_txt">बहुत चमकीला</string>
     <string name="cam_strings_white_balance_title_txt">श्वेत संतुलन</string>
     <string name="cam_strings_white_balance_txt">श्वेत संतुलन</string>
-    <string name="cam_strings_zoom_help_txt"> ज़ूम इन/ आउट करने के लिए वॉल्यूम कुंजी का उपयोग करें</string>
+    <string name="cam_strings_zoom_help_txt">" ज़ूम इन/ आउट करने के लिए वॉल्यूम कुंजी का उपयोग करें"</string>
     <string name="cam_strings_zoom_not_supported_txt">वर्तमान में ज़ूम उपलब्द नहीं है</string>
     <string name="common_android_wear_notification_needs_update_text">%1$s को Android Wear ऐप की नई जानकारी पाने की आवश्यकता है.</string>
     <string name="common_android_wear_update_text">%1$s तब तक नहीं चलेगा, जब तक कि आप Android Wear ऐप के लिए नई जानकारी प्राप्त नहीं कर लेते.</string>

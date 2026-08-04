@@ -17,8 +17,11 @@ final class BypassCameraStaticParameters {
     public List<String> getSupportedSuperSlowmotion() {
         String[] strArrSplit;
         ArrayList arrayList = new ArrayList();
-        String str = this.mParams.get("super-slow-values");
-        if (str != null && (strArrSplit = str.split(",")) != null) {
+        if (this.mParams == null) {
+            return arrayList;
+        }
+        String str = this.mParams.get(BypassCameraParameters.KEY_SUPER_SLOW_VALUES);
+        if (str != null && (strArrSplit = str.split(DELIMITER_COMMA)) != null) {
             for (String str2 : strArrSplit) {
                 arrayList.add(str2);
             }
@@ -30,14 +33,20 @@ final class BypassCameraStaticParameters {
     }
 
     public List<VideoConfiguration> getSupportedSuperSlowConfiguration() {
-        return VideoConfiguration.parse(this.mParams.get("video-super-slow-configuration"));
+        if (this.mParams == null) {
+            return new ArrayList();
+        }
+        return VideoConfiguration.parse(this.mParams.get(BypassCameraParameters.KEY_VIDEO_SUPER_SLOW_CONFIGURATION));
     }
 
     public List<String> getSupportedClimaxRecognition() {
         String[] strArrSplit;
         ArrayList arrayList = new ArrayList();
-        String str = this.mParams.get("climax-recognition-values");
-        if (str != null && (strArrSplit = str.split(",")) != null) {
+        if (this.mParams == null) {
+            return arrayList;
+        }
+        String str = this.mParams.get(BypassCameraParameters.KEY_CLIMAX_RECOGNITION_VALUES);
+        if (str != null && (strArrSplit = str.split(DELIMITER_COMMA)) != null) {
             for (String str2 : strArrSplit) {
                 arrayList.add(str2);
             }
@@ -51,8 +60,11 @@ final class BypassCameraStaticParameters {
     public List<String> getSupportedBurst() {
         String[] strArrSplit;
         ArrayList arrayList = new ArrayList();
-        String str = this.mParams.get("burst-values");
-        if (str != null && (strArrSplit = str.split(",")) != null) {
+        if (this.mParams == null) {
+            return arrayList;
+        }
+        String str = this.mParams.get(BypassCameraParameters.KEY_BURST_VALUES);
+        if (str != null && (strArrSplit = str.split(DELIMITER_COMMA)) != null) {
             for (String str2 : strArrSplit) {
                 arrayList.add(str2);
             }
@@ -66,8 +78,11 @@ final class BypassCameraStaticParameters {
     public List<String> getSupportedVideoStabilizer() {
         String[] strArrSplit;
         ArrayList arrayList = new ArrayList();
-        String str = this.mParams.get("vs-values");
-        if (str != null && (strArrSplit = str.split(",")) != null) {
+        if (this.mParams == null) {
+            return arrayList;
+        }
+        String str = this.mParams.get(BypassCameraParameters.KEY_VIDEO_STABILIZERS_VALUES);
+        if (str != null && (strArrSplit = str.split(DELIMITER_COMMA)) != null) {
             for (String str2 : strArrSplit) {
                 arrayList.add(str2);
             }
@@ -79,23 +94,35 @@ final class BypassCameraStaticParameters {
     }
 
     public List<VideoConfiguration> getSupportedHighFrameRateVideoConfiguration() {
-        return VideoConfiguration.parse(this.mParams.get("video-high-frame-rate-configuration"));
+        if (this.mParams == null) {
+            return new ArrayList();
+        }
+        return VideoConfiguration.parse(this.mParams.get(BypassCameraParameters.KEY_VIDEO_HIGH_FRAME_RATE_CONFIGURATION));
     }
 
     public List<VideoConfiguration> getSupportedSteadyShotConfiguration() {
-        return VideoConfiguration.parse(this.mParams.get("vs-steady-shot-configuration"));
+        if (this.mParams == null) {
+            return new ArrayList();
+        }
+        return VideoConfiguration.parse(this.mParams.get(BypassCameraParameters.KEY_VIDEO_STABILIZERS_STEADY_SHOT_CONFIGURATION));
     }
 
     public List<VideoConfiguration> getSupportedIntelligentActiveConfiguration() {
-        return VideoConfiguration.parse(this.mParams.get("vs-intelligent-active-configuration"));
+        if (this.mParams == null) {
+            return new ArrayList();
+        }
+        return VideoConfiguration.parse(this.mParams.get(BypassCameraParameters.KEY_VIDEO_STABILIZERS_INTELLIGENT_ACTIVE_CONFIGURATION));
     }
 
     public boolean isVideoHdrSupported() {
-        String str = this.mParams.get("video-hdr-values");
+        if (this.mParams == null) {
+            return false;
+        }
+        String str = this.mParams.get(BypassCameraParameters.KEY_VIDEO_HDR_VALUES);
         if (str == null) {
             return false;
         }
-        for (String str2 : str.split(",")) {
+        for (String str2 : str.split(DELIMITER_COMMA)) {
             if ("on".equals(str2)) {
                 return true;
             }

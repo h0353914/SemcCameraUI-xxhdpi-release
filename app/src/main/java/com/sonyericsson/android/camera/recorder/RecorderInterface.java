@@ -6,6 +6,25 @@ import android.view.Surface;
 import java.io.IOException;
 
 public interface RecorderInterface {
+
+    public interface OnErrorListener {
+        void onError();
+    }
+
+    public interface OnMaxReachedListener {
+        void onMaxDurationReached();
+
+        void onMaxFileSizeReached();
+    }
+
+    public interface RecordTrackListener {
+        void onCompleted();
+
+        void onProgress(long j);
+
+        void onStarted();
+    }
+
     Surface getSurface();
 
     boolean isAsyncStopSupported();
@@ -20,7 +39,7 @@ public interface RecorderInterface {
 
     void resume();
 
-    void setListener(RecorderInterface$RecordTrackListener recorderInterface$RecordTrackListener, RecorderInterface$RecordTrackListener recorderInterface$RecordTrackListener2, RecorderInterface$OnErrorListener recorderInterface$OnErrorListener, RecorderInterface$OnMaxReachedListener recorderInterface$OnMaxReachedListener);
+    void setListener(RecordTrackListener recordTrackListener, RecordTrackListener recordTrackListener2, OnErrorListener onErrorListener, OnMaxReachedListener onMaxReachedListener);
 
     void setLocation(Location location);
 

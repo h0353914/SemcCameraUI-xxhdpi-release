@@ -1,8 +1,35 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.util.capability;
 
 import android.media.MediaCodecInfo;
-import android.media.MediaCodecInfo$CodecCapabilities;
-import android.media.MediaCodecInfo$CodecProfileLevel;
 import android.media.MediaCodecList;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,6 +42,10 @@ public class MediaCodecParametersHolder implements ParameterHolder {
     public static final int INVALID_PROFILE = 0;
     private Bundle mParameters;
 
+    private enum Key {
+        HDR_VIDEO_RECORDING_PROFILE
+    }
+
     @Override // com.sonyericsson.android.camera.util.capability.ParameterHolder
     public void prepare() {
         if (this.mParameters == null) {
@@ -22,7 +53,7 @@ public class MediaCodecParametersHolder implements ParameterHolder {
                 CamLog.d("prepare parameters from media codec: E");
             }
             this.mParameters = new Bundle();
-            this.mParameters.putInt(MediaCodecParametersHolder$Key.HDR_VIDEO_RECORDING_PROFILE.name(), decideVideoHdrProfile());
+            this.mParameters.putInt(Key.HDR_VIDEO_RECORDING_PROFILE.name(), decideVideoHdrProfile());
             if (CamLog.DEBUG) {
                 CamLog.d("prepare parameters from media codec: X");
                 return;
@@ -35,7 +66,7 @@ public class MediaCodecParametersHolder implements ParameterHolder {
     }
 
     public int getVideoHdrProfile() {
-        return getParameters().getInt(MediaCodecParametersHolder$Key.HDR_VIDEO_RECORDING_PROFILE.name(), 1);
+        return getParameters().getInt(Key.HDR_VIDEO_RECORDING_PROFILE.name(), 1);
     }
 
     @NonNull
@@ -70,7 +101,7 @@ public class MediaCodecParametersHolder implements ParameterHolder {
             CamLog.e("codec is not found: type = " + str);
             return arrayList;
         }
-        MediaCodecInfo$CodecCapabilities capabilitiesForType = mediaCodecInfoFindEncoderCodec.getCapabilitiesForType(str);
+        MediaCodecInfo.CodecCapabilities capabilitiesForType = mediaCodecInfoFindEncoderCodec.getCapabilitiesForType(str);
         if (capabilitiesForType == null) {
             CamLog.e("capabilities is not found: type = " + str + ", codec = " + mediaCodecInfoFindEncoderCodec.getName());
             return arrayList;
@@ -79,8 +110,8 @@ public class MediaCodecParametersHolder implements ParameterHolder {
             CamLog.e("profileLevel is not found: type = " + str + ", codec = " + mediaCodecInfoFindEncoderCodec.getName());
             return arrayList;
         }
-        for (MediaCodecInfo$CodecProfileLevel mediaCodecInfo$CodecProfileLevel : capabilitiesForType.profileLevels) {
-            arrayList.add(Integer.valueOf(mediaCodecInfo$CodecProfileLevel.profile));
+        for (MediaCodecInfo.CodecProfileLevel codecProfileLevel : capabilitiesForType.profileLevels) {
+            arrayList.add(Integer.valueOf(codecProfileLevel.profile));
         }
         return arrayList;
     }

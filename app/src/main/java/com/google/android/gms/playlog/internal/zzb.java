@@ -1,10 +1,25 @@
 package com.google.android.gms.playlog.internal;
 
+import com.google.android.gms.common.internal.zzx;
+import com.google.android.gms.internal.zzsi;
 import java.util.ArrayList;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzb {
-    private final ArrayList<zzb$zza> zzaRK;
+    private final ArrayList<zza> zzaRK;
     private int zzaRL;
+
+    public static class zza {
+        public final PlayLoggerContext zzaRM;
+        public final LogEvent zzaRN;
+        public final zzsi.zzd zzaRO;
+
+        private zza(PlayLoggerContext playLoggerContext, LogEvent logEvent) {
+            this.zzaRM = (PlayLoggerContext) zzx.zzw(playLoggerContext);
+            this.zzaRN = (LogEvent) zzx.zzw(logEvent);
+            this.zzaRO = null;
+        }
+    }
 
     public zzb() {
         this(100);
@@ -37,12 +52,12 @@ public class zzb {
         return this.zzaRK.isEmpty();
     }
 
-    public ArrayList<zzb$zza> zzBt() {
+    public ArrayList<zza> zzBt() {
         return this.zzaRK;
     }
 
     public void zza(PlayLoggerContext playLoggerContext, LogEvent logEvent) {
-        this.zzaRK.add(new zzb$zza(playLoggerContext, logEvent, null));
+        this.zzaRK.add(new zza(playLoggerContext, logEvent));
         zzBu();
     }
 }

@@ -3,6 +3,7 @@ package com.sonyericsson.cameracommon.utility;
 import android.content.Context;
 import android.graphics.Point;
 import android.view.WindowManager;
+import com.sonyericsson.android.camera.R;
 
 public class ProductConfig {
     public static final String TAG = "ProductConfig";
@@ -11,7 +12,7 @@ public class ProductConfig {
     }
 
     public static boolean isTablet(Context context) {
-        return context.getResources().getBoolean(2131034120);
+        return context.getResources().getBoolean(R.bool.is_tablet);
     }
 
     public static boolean isPhone(Context context) {

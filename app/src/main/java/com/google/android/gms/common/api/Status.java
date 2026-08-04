@@ -2,12 +2,13 @@ package com.google.android.gms.common.api;
 
 import android.app.Activity;
 import android.app.PendingIntent;
-import android.content.IntentSender$SendIntentException;
+import android.content.IntentSender;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzw;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class Status implements Result, SafeParcelable {
     private final PendingIntent mPendingIntent;
     private final int mVersionCode;
@@ -18,7 +19,7 @@ public final class Status implements Result, SafeParcelable {
     public static final Status zzabd = new Status(8);
     public static final Status zzabe = new Status(15);
     public static final Status zzabf = new Status(16);
-    public static final Parcelable$Creator<Status> CREATOR = new zzd();
+    public static final Parcelable.Creator<Status> CREATOR = new zzd();
 
     public Status(int i) {
         this(i, null);
@@ -97,7 +98,7 @@ public final class Status implements Result, SafeParcelable {
         return this.zzYm <= 0;
     }
 
-    public void startResolutionForResult(Activity activity, int i) throws IntentSender$SendIntentException {
+    public void startResolutionForResult(Activity activity, int i) throws IntentSender.SendIntentException {
         if (hasResolution()) {
             activity.startIntentSenderForResult(this.mPendingIntent.getIntentSender(), i, null, 0, 0, 0);
         }

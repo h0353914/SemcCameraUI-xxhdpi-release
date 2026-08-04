@@ -9,7 +9,10 @@ import com.sonyericsson.android.camera.configuration.parameters.ShutterTrigger;
 import com.sonyericsson.android.camera.configuration.parameters.SlowMotion;
 import com.sonyericsson.android.camera.configuration.parameters.VideoHdr;
 import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
+import com.sonyericsson.android.camera.device.CameraInfo;
+import com.sonyericsson.android.camera.device.CameraParameterConverter;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.cameracommon.device.SizeConstants;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -198,7 +201,7 @@ public class CameraParameters {
     public static final String WHITE_BALANCE_FLUORESCENT = "fluorescent";
     public static final String WHITE_BALANCE_INCANDESCENT = "incandescent";
     public static final String WHITE_BALANCE_OFF = "off";
-    private CameraInfo$CameraId mCameraId;
+    private CameraInfo.CameraId mCameraId;
     private ShutterTrigger mShutterTrigger;
     private SlowMotion mSlowMotion;
     private VideoHdr mVideoHdr;
@@ -219,65 +222,638 @@ public class CameraParameters {
     private boolean mNeedCreatePreviewSession = false;
     private final Map<String, Object> mParameters = new HashMap();
 
-    public CameraParameters(CameraInfo$CameraId cameraInfo$CameraId) {
-        this.mCameraId = CameraInfo$CameraId.BACK;
-        this.mCameraId = cameraInfo$CameraId;
-        this.mParameters.put("focus-mode", "auto");
-        this.mParameters.put("sony-focus-area", "center");
-        this.mParameters.put("sony-manual-focus", Float.valueOf(DEFAULT_FOCUS_RANGE));
-        this.mParameters.put("sony-iso", 50);
-        this.mParameters.put("sony-shutter-speed", 4000000L);
-        this.mParameters.put("sony-ae-mode", "auto");
-        this.mParameters.put("flash-mode", "off");
-        this.mParameters.put("whitebalance", "off");
-        this.mParameters.put("sony-is", "off");
-        this.mParameters.put("sony-metering-mode", "center-weighted");
-        this.mParameters.put("sony-power-save-mode", "off");
-        this.mParameters.put("sony-awb-compensation-ab", 0);
-        this.mParameters.put("climax-recognition", "auto");
-        this.mParameters.put("sony-shutter-speed-limit", 0L);
-        this.mParameters.put("sony-soft-skin-level", 0);
-        this.mParameters.put("exposure-compensation-step", 0);
-        this.mParameters.put("sony-fusion-mode", "off");
-        this.mParameters.put("distortion-correction", "off");
-        this.mParameters.put("preview-size", new Rect(0, 0, 1280, 720));
-        this.mParameters.put("picture-size", new Rect(0, 0, 1280, 720));
+    public interface AfParametersCallback {
+        void onReflected(AfParametersReflectedChecker afParametersReflectedChecker);
     }
 
-    public CameraInfo$CameraId getCameraId() {
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    // pad
+    public static class ExtFace {
+        // pad
+        // pad
+        // pad
+        // pad
+        // pad
+        public int id = -1;
+        public Rect rect;
+        public int smileScore;
+    }
+
+    interface FaceDetectionCallback {
+        void onFaceDetection(FaceDetectionResult faceDetectionResult);
+    }
+
+    public enum FusionCondition {
+        NORMAL,
+        CLOSE_TO_SUBJECT,
+        LENS_COVERED,
+        LOW_CONTRAST
+    }
+
+    public interface FusionResultCallback {
+        void onFusionResultChanged(FusionResult fusionResult);
+    }
+
+    public enum FusionStatus {
+        UNKNOWN,
+        MAIN,
+        SUB_1,
+        FUSION_MAIN,
+        FUSION_SUB_1
+    }
+
+    public interface ObjectTrackingCallback {
+        void onObjectTracked(ObjectTrackingResult objectTrackingResult);
+    }
+
+    interface SceneRecognitionCallback {
+        void onSceneModeChanged(SceneRecognitionResult sceneRecognitionResult);
+    }
+
+    public CameraParameters(CameraInfo.CameraId cameraId) {
+        this.mCameraId = CameraInfo.CameraId.BACK;
+        this.mCameraId = cameraId;
+        this.mParameters.put(KEY_FOCUS_MODE, "auto");
+        this.mParameters.put(KEY_EX_FOCUS_AREA, "center");
+        this.mParameters.put(KEY_EX_MANUAL_FOCUS, Float.valueOf(DEFAULT_FOCUS_RANGE));
+        this.mParameters.put(KEY_EX_ISO, 50);
+        this.mParameters.put(KEY_EX_SHUTTER_SPEED, Long.valueOf(DEFAULT_SHUTTER_SPEED));
+        this.mParameters.put(KEY_EX_AE_MODE, "auto");
+        this.mParameters.put(KEY_FLASH_MODE, "off");
+        this.mParameters.put(KEY_WHITE_BALANCE, "off");
+        this.mParameters.put(KEY_EX_IMAGE_STABILIZER, "off");
+        this.mParameters.put(KEY_EX_METERING_MODE, "center-weighted");
+        this.mParameters.put(KEY_EX_POWER_SAVE_MODE, "off");
+        this.mParameters.put(KEY_EX_AWB_COMPENSATION_AB, 0);
+        this.mParameters.put("climax-recognition", "auto");
+        this.mParameters.put(KEY_EX_SHUTTER_SPEED_LIMIT, 0L);
+        this.mParameters.put(KEY_EX_SOFT_SKIN_LEVEL, 0);
+        this.mParameters.put(KEY_EXPOSURE_COMPENSATION_STEP, 0);
+        this.mParameters.put(KEY_EX_FUSION_MODE, "off");
+        this.mParameters.put(KEY_DISTORTION_CORRECTION, "off");
+        this.mParameters.put(KEY_PREVIEW_SIZE,
+                new Rect(0, 0, SizeConstants.WIDTH_PREVIEW_HD, SizeConstants.HEIGHT_PREVIEW_HD));
+        this.mParameters.put(KEY_PICTURE_SIZE,
+                new Rect(0, 0, SizeConstants.WIDTH_PREVIEW_HD, SizeConstants.HEIGHT_PREVIEW_HD));
+    }
+
+    public CameraInfo.CameraId getCameraId() {
         return this.mCameraId;
     }
 
     public void setPowerMode(String str) {
-        setKeyValue("sony-power-save-mode", str);
+        setKeyValue(KEY_EX_POWER_SAVE_MODE, str);
     }
 
     public String getPowerMode() {
-        return (String) getKeyValue("sony-power-save-mode");
+        return (String) getKeyValue(KEY_EX_POWER_SAVE_MODE);
     }
 
     public void setExposureTimeLimit(long j) {
-        setKeyValue("sony-shutter-speed-limit", Long.valueOf(j));
+        setKeyValue(KEY_EX_SHUTTER_SPEED_LIMIT, Long.valueOf(j));
     }
 
     public long getExposureTimeLimit() {
-        return ((Long) getKeyValue("sony-shutter-speed-limit")).longValue();
+        return ((Long) getKeyValue(KEY_EX_SHUTTER_SPEED_LIMIT)).longValue();
     }
 
     public void setFocusRange(float f) {
-        setKeyValue("sony-manual-focus", Float.valueOf(f));
+        setKeyValue(KEY_EX_MANUAL_FOCUS, Float.valueOf(f));
     }
 
     public float getFocusRange() {
-        return ((Float) getKeyValue("sony-manual-focus")).floatValue();
+        return ((Float) getKeyValue(KEY_EX_MANUAL_FOCUS)).floatValue();
     }
 
     public void setFocusMode(String str) {
-        setKeyValue("focus-mode", str);
+        setKeyValue(KEY_FOCUS_MODE, str);
     }
 
     public String getFocusMode() {
-        return (String) getKeyValue("focus-mode");
+        return (String) getKeyValue(KEY_FOCUS_MODE);
     }
 
     public void setFocusRectangles(@Nullable List<Rect> list) {
@@ -288,7 +864,6 @@ public class CameraParameters {
         boolean z = false;
         if (this.mFocusRects.size() != list.size()) {
             z = true;
-            break;
         }
         for (int i = 0; i < this.mFocusRects.size(); i++) {
             if (!this.mFocusRects.get(i).equals(list.get(i))) {
@@ -312,27 +887,27 @@ public class CameraParameters {
     }
 
     public void setFocusArea(String str) {
-        setKeyValue("sony-focus-area", str);
+        setKeyValue(KEY_EX_FOCUS_AREA, str);
     }
 
     public String getFocusArea() {
-        return (String) getKeyValue("sony-focus-area");
+        return (String) getKeyValue(KEY_EX_FOCUS_AREA);
     }
 
     public void setExposureCompensation(int i) {
-        setKeyValue("exposure-compensation-step", Integer.valueOf(i));
+        setKeyValue(KEY_EXPOSURE_COMPENSATION_STEP, Integer.valueOf(i));
     }
 
     public int getExposureCompensation() {
-        return ((Integer) getKeyValue("exposure-compensation-step")).intValue();
+        return ((Integer) getKeyValue(KEY_EXPOSURE_COMPENSATION_STEP)).intValue();
     }
 
     public void setMeteringMode(String str) {
-        setKeyValue("sony-metering-mode", str);
+        setKeyValue(KEY_EX_METERING_MODE, str);
     }
 
     public String getMeteringMode() {
-        return (String) getKeyValue("sony-metering-mode");
+        return (String) getKeyValue(KEY_EX_METERING_MODE);
     }
 
     public void setMeteringArea(List<Rect> list) {
@@ -345,7 +920,8 @@ public class CameraParameters {
         int iCenterX = list.get(0).centerX();
         int iCenterY = list.get(0).centerY();
         Rect rect = new Rect(iCenterX, iCenterY, iCenterX + 1, iCenterY + 1);
-        if (rect.left == this.mMeteringArea.left && rect.top == this.mMeteringArea.top && rect.right == this.mMeteringArea.right && rect.bottom == this.mMeteringArea.bottom) {
+        if (rect.left == this.mMeteringArea.left && rect.top == this.mMeteringArea.top
+                && rect.right == this.mMeteringArea.right && rect.bottom == this.mMeteringArea.bottom) {
             return;
         }
         this.mNeedApply = true;
@@ -360,51 +936,51 @@ public class CameraParameters {
     }
 
     public void setAeMode(String str) {
-        setKeyValue("sony-ae-mode", str);
+        setKeyValue(KEY_EX_AE_MODE, str);
     }
 
     public String getAeMode() {
-        return (String) getKeyValue("sony-ae-mode");
+        return (String) getKeyValue(KEY_EX_AE_MODE);
     }
 
     public void setWhiteBalance(String str) {
-        setKeyValue("whitebalance", str);
+        setKeyValue(KEY_WHITE_BALANCE, str);
     }
 
     public String getWhiteBalance() {
-        return (String) getKeyValue("whitebalance");
+        return (String) getKeyValue(KEY_WHITE_BALANCE);
     }
 
     public void setShutterSpeed(long j) {
-        setKeyValue("sony-shutter-speed", Long.valueOf(j));
+        setKeyValue(KEY_EX_SHUTTER_SPEED, Long.valueOf(j));
     }
 
     public long getShutterSpeed() {
-        return ((Long) getKeyValue("sony-shutter-speed")).longValue();
+        return ((Long) getKeyValue(KEY_EX_SHUTTER_SPEED)).longValue();
     }
 
     public void setIso(int i) {
-        setKeyValue("sony-iso", Integer.valueOf(i));
+        setKeyValue(KEY_EX_ISO, Integer.valueOf(i));
     }
 
     public int getIso() {
-        return ((Integer) getKeyValue("sony-iso")).intValue();
+        return ((Integer) getKeyValue(KEY_EX_ISO)).intValue();
     }
 
     public void setFlashMode(String str) {
-        setKeyValue("flash-mode", str);
+        setKeyValue(KEY_FLASH_MODE, str);
     }
 
     public String getFlashMode() {
-        return (String) getKeyValue("flash-mode");
+        return (String) getKeyValue(KEY_FLASH_MODE);
     }
 
     public void setStillHdr(String str) {
-        setKeyValue("sony-is", str);
+        setKeyValue(KEY_EX_IMAGE_STABILIZER, str);
     }
 
     public String getStillHdr() {
-        return (String) getKeyValue("sony-is");
+        return (String) getKeyValue(KEY_EX_IMAGE_STABILIZER);
     }
 
     public void setZoom(float f) {
@@ -422,26 +998,147 @@ public class CameraParameters {
     }
 
     public void setAwbColorCompensationAb(int i) {
-        setKeyValue("sony-awb-compensation-ab", Integer.valueOf(i));
+        setKeyValue(KEY_EX_AWB_COMPENSATION_AB, Integer.valueOf(i));
     }
 
     public int getAwbColorCompensationAb() {
-        return ((Integer) getKeyValue("sony-awb-compensation-ab")).intValue();
+        return ((Integer) getKeyValue(KEY_EX_AWB_COMPENSATION_AB)).intValue();
+    }
+
+    public static class SceneRecognitionResult {
+        public DeviceStabilityCondition deviceStabilityCondition;
+        public boolean isMacroRange;
+        public CameraParameterConverter.SceneMode sceneMode;
+
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append('[');
+            sb.append(this.sceneMode);
+            sb.append(',');
+            sb.append(this.deviceStabilityCondition);
+            sb.append(',');
+            sb.append(this.isMacroRange);
+            sb.append(']');
+            return sb.toString();
+        }
+    }
+
+    public enum DeviceStabilityCondition {
+        AUTO(0),
+        MOTION(1),
+        STABLE(2),
+        WALK(3);
+
+        private final int mConditionValue;
+
+        DeviceStabilityCondition(int i) {
+            this.mConditionValue = i;
+        }
+
+        private int getConditionValue() {
+            return this.mConditionValue;
+        }
+
+        public static DeviceStabilityCondition getCondition(int i) {
+            DeviceStabilityCondition[] deviceStabilityConditionArrValues = values();
+            for (int i2 = 0; i2 < deviceStabilityConditionArrValues.length; i2++) {
+                if (deviceStabilityConditionArrValues[i2].getConditionValue() == i) {
+                    return deviceStabilityConditionArrValues[i2];
+                }
+            }
+            return null;
+        }
     }
 
     public void setSoftSkin(int i) {
-        setKeyValue("sony-soft-skin-level", Integer.valueOf(i));
+        setKeyValue(KEY_EX_SOFT_SKIN_LEVEL, Integer.valueOf(i));
     }
 
     public int getSoftSkin() {
-        return ((Integer) getKeyValue("sony-soft-skin-level")).intValue();
+        return ((Integer) getKeyValue(KEY_EX_SOFT_SKIN_LEVEL)).intValue();
+    }
+
+    public static class FaceDetectionResult {
+        public List<ExtFace> extFaceList = new ArrayList();
+        public int faceNum;
+        public int indexOfSelectedFace;
+
+        void setFrameResult(int i) {
+            this.indexOfSelectedFace = i;
+        }
+
+        void addFaceResult(int i, int i2, int i3, int i4, int i5, int i6) {
+            ExtFace extFace = new ExtFace();
+            extFace.smileScore = i6;
+            extFace.id = i;
+            extFace.rect = new Rect(i2, i3, i4, i5);
+            this.extFaceList.add(extFace);
+        }
+
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append('[');
+            sb.append(this.faceNum);
+            sb.append(',');
+            sb.append(this.indexOfSelectedFace);
+            sb.append(',');
+            for (ExtFace extFace : this.extFaceList) {
+                sb.append('[');
+                sb.append(extFace.id);
+                sb.append(',');
+                sb.append(extFace.rect.toString());
+                sb.append(',');
+                sb.append(extFace.smileScore);
+                sb.append("]");
+            }
+            sb.append(']');
+            return sb.toString();
+        }
+    }
+
+    public static class ObjectTrackingResult {
+        public boolean mIsLost;
+        public Rect mRectOfTrackedObject;
+
+        protected ObjectTrackingResult(Rect rect, boolean z) {
+            this.mRectOfTrackedObject = rect;
+            this.mIsLost = z;
+        }
+    }
+
+    public static class FusionResult {
+        private FusionCondition mFusionCondition;
+        private FusionStatus mFusionStatus;
+
+        public FusionResult() {
+            this.mFusionStatus = FusionStatus.UNKNOWN;
+            this.mFusionCondition = FusionCondition.NORMAL;
+        }
+
+        public FusionResult(FusionStatus fusionStatus, FusionCondition fusionCondition) {
+            this.mFusionStatus = fusionStatus;
+            this.mFusionCondition = fusionCondition;
+        }
+
+        public FusionStatus getFusionStatus() {
+            return this.mFusionStatus;
+        }
+
+        public FusionCondition getFusionCondition() {
+            return this.mFusionCondition;
+        }
+
+        public String toString() {
+            return "[FusionStatus=" + this.mFusionStatus + "][FusionCondition=" + this.mFusionCondition + "]";
+        }
     }
 
     public void setPreviewFpsRange(int i, int i2) {
         if (CamLog.VERBOSE) {
             CamLog.d("setPreviewFpsRange() : min = " + i + ", max = " + i2);
         }
-        if (((Integer) this.mPreviewFpsRange.getLower()).intValue() == i && ((Integer) this.mPreviewFpsRange.getUpper()).intValue() == i2) {
+        if (((Integer) this.mPreviewFpsRange.getLower()).intValue() == i
+                && ((Integer) this.mPreviewFpsRange.getUpper()).intValue() == i2) {
             return;
         }
         this.mNeedApply = true;
@@ -453,23 +1150,23 @@ public class CameraParameters {
     }
 
     public void setPreviewSize(Rect rect) {
-        if (setKeyValue("preview-size", rect)) {
+        if (setKeyValue(KEY_PREVIEW_SIZE, rect)) {
             this.mNeedCreatePreviewSession = true;
         }
     }
 
     public Rect getPreviewSize() {
-        return (Rect) getKeyValue("preview-size");
+        return (Rect) getKeyValue(KEY_PREVIEW_SIZE);
     }
 
     public void setPictureSize(Rect rect) {
-        if (setKeyValue("picture-size", rect)) {
+        if (setKeyValue(KEY_PICTURE_SIZE, rect)) {
             this.mNeedCreatePreviewSession = true;
         }
     }
 
     public Rect getPictureSize() {
-        return (Rect) getKeyValue("picture-size");
+        return (Rect) getKeyValue(KEY_PICTURE_SIZE);
     }
 
     public void setPredictiveCaptureNum(int i) {
@@ -497,7 +1194,7 @@ public class CameraParameters {
     }
 
     public void setVideoStabilizer(String str) {
-        setKeyValue("sony-vs", str);
+        setKeyValue(KEY_EX_VIDEO_STABILIZER, str);
     }
 
     public void setVideoHdr(VideoHdr videoHdr) {
@@ -513,7 +1210,7 @@ public class CameraParameters {
     }
 
     public String getVideoStabilizer() {
-        return (String) getKeyValue("sony-vs");
+        return (String) getKeyValue(KEY_EX_VIDEO_STABILIZER);
     }
 
     public void setShutterTrigger(ShutterTrigger shutterTrigger) {
@@ -567,19 +1264,19 @@ public class CameraParameters {
     }
 
     public void setFusionMode(String str) {
-        setKeyValue("sony-fusion-mode", str);
+        setKeyValue(KEY_EX_FUSION_MODE, str);
     }
 
     public String getFusionMode() {
-        return (String) getKeyValue("sony-fusion-mode");
+        return (String) getKeyValue(KEY_EX_FUSION_MODE);
     }
 
     public void setDistortionCorrection(String str) {
-        setKeyValue("distortion-correction", str);
+        setKeyValue(KEY_DISTORTION_CORRECTION, str);
     }
 
     public String getDistortionCorrection() {
-        return (String) getKeyValue("distortion-correction");
+        return (String) getKeyValue(KEY_DISTORTION_CORRECTION);
     }
 
     public void setRotation(int i) {

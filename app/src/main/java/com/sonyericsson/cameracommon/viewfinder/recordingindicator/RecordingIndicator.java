@@ -1,23 +1,21 @@
 package com.sonyericsson.cameracommon.viewfinder.recordingindicator;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap$Config;
 import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory$Options;
 import android.media.ThumbnailUtils;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout$LayoutParams;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout$LayoutParams;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
-import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver$ScreenAspect;
+import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
 import com.sonyericsson.cameracommon.contentsview.ThumbnailUtil;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
-import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 import com.sonyericsson.cameracommon.utility.ResourceUtil;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 import com.sonymobile.cameracommon.extendedview.RoundRectImageView;
@@ -43,7 +41,7 @@ public class RecordingIndicator extends RelativeLayout implements RecordingTimeI
     private RecordingProgressBar mProgressBar;
     private final float mRadius;
     private DurationParameterSet mRecordingTime;
-    private LayoutDependencyResolver$ScreenAspect mScreenAspect;
+    private LayoutDependencyResolver.ScreenAspect mScreenAspect;
     private LinearLayout mSequenceIndicator;
     private TextView mSequenceRec;
     private TextView mSequenceRecordingTimeText;
@@ -53,7 +51,7 @@ public class RecordingIndicator extends RelativeLayout implements RecordingTimeI
     private LinearLayout mThumbnailContainer;
     private final int mThumbnailMaxNum;
     private final int mThumbnailPadding;
-    private final RelativeLayout$LayoutParams mThumbnailParams;
+    private final RelativeLayout.LayoutParams mThumbnailParams;
     private final int mThumbnailSize;
     private final Bitmap[] mThumbnails;
     private LinearLayout mTimeContainer;
@@ -76,11 +74,11 @@ public class RecordingIndicator extends RelativeLayout implements RecordingTimeI
         this.mTimeContainer = null;
         this.mSequenceRec = null;
         this.mProgressBar = null;
-        this.mThumbnailMaxNum = getResources().getInteger(2131361803);
-        this.mThumbnailSize = getResources().getDimensionPixelSize(2131165525);
-        this.mRadius = getResources().getDimension(2131165524);
-        this.mThumbnailParams = new RelativeLayout$LayoutParams(-2, this.mThumbnailSize);
-        this.mThumbnailPadding = getResources().getDimensionPixelSize(2131165523);
+        this.mThumbnailMaxNum = getResources().getInteger(R.integer.rec_sequence_thumbnail_max_num);
+        this.mThumbnailSize = getResources().getDimensionPixelSize(R.dimen.rec_sequence_thumbnail_width_height);
+        this.mRadius = getResources().getDimension(R.dimen.rec_sequence_thumbnail_radius);
+        this.mThumbnailParams = new RelativeLayout.LayoutParams(-2, this.mThumbnailSize);
+        this.mThumbnailPadding = getResources().getDimensionPixelSize(R.dimen.rec_sequence_thumbnail_padding);
         this.mStringFormatRemainConstraintTime = null;
         this.mStringFormatRecordingTime = null;
         this.mIsConstraint = false;
@@ -92,36 +90,36 @@ public class RecordingIndicator extends RelativeLayout implements RecordingTimeI
         this.mDuration = 0;
         this.mMaxTime = null;
         this.mRecordingTime = null;
-        this.mPivotForRotationUnConstraint = context.getResources().getDimensionPixelSize(2131165528) / 2;
-        this.mPivotForRotationConstraint = context.getResources().getDimensionPixelSize(2131165510) / 2;
-        this.mPivotForRotationSequence = context.getResources().getDimensionPixelSize(2131165518) / 2;
+        this.mPivotForRotationUnConstraint = context.getResources().getDimensionPixelSize(R.dimen.rec_unconstraint_height) / 2;
+        this.mPivotForRotationConstraint = context.getResources().getDimensionPixelSize(R.dimen.rec_constraint_height) / 2;
+        this.mPivotForRotationSequence = context.getResources().getDimensionPixelSize(R.dimen.rec_sequence_height) / 2;
     }
 
     @Override // android.view.View
     public void onFinishInflate() {
         super.onFinishInflate();
-        this.mUnConstraintIndicator = (LinearLayout) findViewById(2131296685);
-        this.mUnConstraintRecordingTimeText = (TextView) this.mUnConstraintIndicator.findViewById(2131296524);
+        this.mUnConstraintIndicator = (LinearLayout) findViewById(R.id.unconstraint);
+        this.mUnConstraintRecordingTimeText = (TextView) this.mUnConstraintIndicator.findViewById(R.id.recording_time);
         FontUtil.setBold(this.mUnConstraintRecordingTimeText);
-        FontUtil.setBold((TextView) this.mUnConstraintIndicator.findViewById(2131296522));
-        this.mConstraintIndicator = (LinearLayout) findViewById(2131296362);
-        this.mConstraintRecordingTimeText = (TextView) this.mConstraintIndicator.findViewById(2131296524);
+        FontUtil.setBold((TextView) this.mUnConstraintIndicator.findViewById(R.id.recording_indicator_rec));
+        this.mConstraintIndicator = (LinearLayout) findViewById(R.id.constraint);
+        this.mConstraintRecordingTimeText = (TextView) this.mConstraintIndicator.findViewById(R.id.recording_time);
         FontUtil.setBold(this.mConstraintRecordingTimeText);
-        FontUtil.setBold((TextView) this.mConstraintIndicator.findViewById(2131296522));
-        FontUtil.setBold((TextView) this.mConstraintIndicator.findViewById(2131296521));
-        this.mMaxDurationText = (TextView) this.mConstraintIndicator.findViewById(2131296530);
+        FontUtil.setBold((TextView) this.mConstraintIndicator.findViewById(R.id.recording_indicator_rec));
+        FontUtil.setBold((TextView) this.mConstraintIndicator.findViewById(R.id.recording_devider));
+        this.mMaxDurationText = (TextView) this.mConstraintIndicator.findViewById(R.id.remain_time);
         FontUtil.setBold(this.mMaxDurationText);
-        this.mProgressBar = (RecordingProgressBar) findViewById(2131296516);
-        this.mSequenceIndicator = (LinearLayout) findViewById(2131296596);
-        this.mSequenceRecordingTimeText = (TextView) this.mSequenceIndicator.findViewById(2131296524);
+        this.mProgressBar = (RecordingProgressBar) findViewById(R.id.progressbar);
+        this.mSequenceIndicator = (LinearLayout) findViewById(R.id.sequence_video);
+        this.mSequenceRecordingTimeText = (TextView) this.mSequenceIndicator.findViewById(R.id.recording_time);
         FontUtil.setBold(this.mSequenceRecordingTimeText);
-        this.mSequenceRec = (TextView) this.mSequenceIndicator.findViewById(2131296522);
+        this.mSequenceRec = (TextView) this.mSequenceIndicator.findViewById(R.id.recording_indicator_rec);
         FontUtil.setBold(this.mSequenceRec);
-        this.mThumbnailContainer = (LinearLayout) this.mSequenceIndicator.findViewById(2131296660);
-        this.mTimeContainer = (LinearLayout) this.mSequenceIndicator.findViewById(2131296662);
+        this.mThumbnailContainer = (LinearLayout) this.mSequenceIndicator.findViewById(R.id.thumbnail_container);
+        this.mTimeContainer = (LinearLayout) this.mSequenceIndicator.findViewById(R.id.time_container);
         this.mMaxTime = new DurationParameterSet();
         this.mRecordingTime = new DurationParameterSet();
-        this.mContainer = findViewById(2131296520);
+        this.mContainer = findViewById(R.id.recording);
     }
 
     public void setConstraint(boolean z) {
@@ -135,17 +133,17 @@ public class RecordingIndicator extends RelativeLayout implements RecordingTimeI
     public void prepareBeforeRecording(int i) {
         this.mRecordingTime.update(0);
         this.mContainer.setVisibility(4);
-        int dimensionPixelSize = getContext().getResources().getDimensionPixelSize(2131165517);
+        int dimensionPixelSize = getContext().getResources().getDimensionPixelSize(R.dimen.rec_record_time_width);
         if (this.mIsConstraint) {
             this.mDuration = i;
             this.mMaxTime.update(this.mDuration);
             this.mProgressBar.setProgress(0, 0);
-            this.mStringFormatRemainConstraintTime = getContext().getString(2131689547);
+            this.mStringFormatRemainConstraintTime = getContext().getString(R.string.cam_status_recoding_time_format_txt);
             this.mMaxDurationText.setText(String.format(Locale.US, this.mStringFormatRemainConstraintTime, Integer.valueOf(this.mMaxTime.min), Integer.valueOf(this.mMaxTime.sec)));
-            this.mStringFormatRecordingTime = getContext().getString(2131689547);
+            this.mStringFormatRecordingTime = getContext().getString(R.string.cam_status_recoding_time_format_txt);
             this.mConstraintRecordingTimeText.setText(String.format(Locale.US, this.mStringFormatRecordingTime, Integer.valueOf(this.mRecordingTime.min), Integer.valueOf(this.mRecordingTime.sec)));
         } else {
-            this.mStringFormatRecordingTime = getContext().getString(2131689547);
+            this.mStringFormatRecordingTime = getContext().getString(R.string.cam_status_recoding_time_format_txt);
             if (this.mIsSequence) {
                 resetThumbnails();
                 setIndicator(this.mIsRecording);
@@ -179,19 +177,19 @@ public class RecordingIndicator extends RelativeLayout implements RecordingTimeI
         this.mProgressBar.setProgress(i, this.mDuration);
     }
 
-    public void updateRecordingTime(int i) {
+    public void updateRecordingTime(int i) throws Resources.NotFoundException {
         String str;
         int dimensionPixelSize;
         this.mRecordingTime.update(i);
         this.mContainer.setVisibility(0);
         if (this.mRecordingTime.hour < 1) {
-            this.mStringFormatRecordingTime = getContext().getString(2131689547);
+            this.mStringFormatRecordingTime = getContext().getString(R.string.cam_status_recoding_time_format_txt);
             str = String.format(Locale.US, this.mStringFormatRecordingTime, Integer.valueOf(this.mRecordingTime.min), Integer.valueOf(this.mRecordingTime.sec));
-            dimensionPixelSize = getContext().getResources().getDimensionPixelSize(2131165517);
+            dimensionPixelSize = getContext().getResources().getDimensionPixelSize(R.dimen.rec_record_time_width);
         } else {
-            this.mStringFormatRecordingTime = getContext().getString(2131689546);
+            this.mStringFormatRecordingTime = getContext().getString(R.string.cam_status_recoding_hours_time_format_txt);
             str = String.format(Locale.US, this.mStringFormatRecordingTime, Integer.valueOf(this.mRecordingTime.hour), Integer.valueOf(this.mRecordingTime.min), Integer.valueOf(this.mRecordingTime.sec));
-            dimensionPixelSize = getContext().getResources().getDimensionPixelSize(2131165516);
+            dimensionPixelSize = getContext().getResources().getDimensionPixelSize(R.dimen.rec_record_hours_time_width);
         }
         if (this.mIsConstraint) {
             this.mConstraintRecordingTimeText.setText(str);
@@ -210,20 +208,20 @@ public class RecordingIndicator extends RelativeLayout implements RecordingTimeI
             CamLog.d("addChapter: orientation=" + i);
         }
         if (this.mIsSequence) {
-            BitmapFactory$Options bitmapFactory$Options = new BitmapFactory$Options();
-            bitmapFactory$Options.inJustDecodeBounds = true;
-            BitmapFactory.decodeByteArray(bArr, 0, bArr.length, bitmapFactory$Options);
-            int i2 = bitmapFactory$Options.outHeight;
-            int i3 = bitmapFactory$Options.outWidth;
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true;
+            BitmapFactory.decodeByteArray(bArr, 0, bArr.length, options);
+            int i2 = options.outHeight;
+            int i3 = options.outWidth;
             if (i2 < i3) {
-                bitmapFactory$Options.inSampleSize = Math.round(i2 / this.mThumbnailSize);
+                options.inSampleSize = Math.round(i2 / this.mThumbnailSize);
             } else if (i3 < i2) {
-                bitmapFactory$Options.inSampleSize = Math.round(i3 / this.mThumbnailSize);
+                options.inSampleSize = Math.round(i3 / this.mThumbnailSize);
             }
-            bitmapFactory$Options.inJustDecodeBounds = false;
-            bitmapFactory$Options.inPreferredConfig = Bitmap$Config.RGB_565;
-            bitmapFactory$Options.inPurgeable = true;
-            updateThumbnails(ThumbnailUtil.rotateThumbnail(ThumbnailUtils.extractThumbnail(BitmapFactory.decodeByteArray(bArr, 0, bArr.length, bitmapFactory$Options), this.mThumbnailSize, this.mThumbnailSize), i));
+            options.inJustDecodeBounds = false;
+            options.inPreferredConfig = Bitmap.Config.RGB_565;
+            options.inPurgeable = true;
+            updateThumbnails(ThumbnailUtil.rotateThumbnail(ThumbnailUtils.extractThumbnail(BitmapFactory.decodeByteArray(bArr, 0, bArr.length, options), this.mThumbnailSize, this.mThumbnailSize), i));
         }
     }
 
@@ -290,8 +288,8 @@ public class RecordingIndicator extends RelativeLayout implements RecordingTimeI
         if (CamLog.VERBOSE) {
             CamLog.d("setUnconstraintIndicator:" + z);
         }
-        this.mUnConstraintIndicator.setBackgroundResource(z ? 2131231305 : 2131231304);
-        this.mUnConstraintIndicator.setPadding(getResources().getDimensionPixelSize(2131165521), 0, getResources().getDimensionPixelSize(2131165521), 0);
+        this.mUnConstraintIndicator.setBackgroundResource(z ? R.drawable.cam_sequential_video_slow_motion_rec_bg_rec_icn : R.drawable.cam_sequential_video_slow_motion_rec_bg_pause_icn);
+        this.mUnConstraintIndicator.setPadding(getResources().getDimensionPixelSize(R.dimen.rec_sequence_text_margin_width), 0, getResources().getDimensionPixelSize(R.dimen.rec_sequence_text_margin_width), 0);
     }
 
     private void setSequentialIndicator(boolean z) {
@@ -308,17 +306,17 @@ public class RecordingIndicator extends RelativeLayout implements RecordingTimeI
             this.mIsThumbnailReady = false;
         }
         if (z) {
-            i = 2131231302;
+            i = R.drawable.cam_sequential_video_rec_bg_rec_icn;
             i2 = 0;
         } else {
-            i = 2131231301;
+            i = R.drawable.cam_sequential_video_rec_bg_pause_right_icn;
             i2 = 8;
         }
         this.mTimeContainer.setBackgroundResource(i);
-        this.mTimeContainer.setPadding(getResources().getDimensionPixelSize(2131165521), 0, getResources().getDimensionPixelSize(2131165521), 0);
-        LinearLayout$LayoutParams linearLayout$LayoutParams = (LinearLayout$LayoutParams) this.mTimeContainer.getLayoutParams();
-        linearLayout$LayoutParams.width = -2;
-        this.mTimeContainer.setLayoutParams(linearLayout$LayoutParams);
+        this.mTimeContainer.setPadding(getResources().getDimensionPixelSize(R.dimen.rec_sequence_text_margin_width), 0, getResources().getDimensionPixelSize(R.dimen.rec_sequence_text_margin_width), 0);
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) this.mTimeContainer.getLayoutParams();
+        layoutParams.width = -2;
+        this.mTimeContainer.setLayoutParams(layoutParams);
         this.mSequenceRec.setVisibility(i2);
     }
 
@@ -334,8 +332,8 @@ public class RecordingIndicator extends RelativeLayout implements RecordingTimeI
     }
 
     private void addEmptyThumbnails() {
-        Bitmap bitmapCreateBitmap = Bitmap.createBitmap(this.mThumbnailSize, this.mThumbnailSize, Bitmap$Config.RGB_565);
-        bitmapCreateBitmap.eraseColor(-16777216);
+        Bitmap bitmapCreateBitmap = Bitmap.createBitmap(this.mThumbnailSize, this.mThumbnailSize, Bitmap.Config.RGB_565);
+        bitmapCreateBitmap.eraseColor(ViewCompat.MEASURED_STATE_MASK);
         RoundRectImageView roundRectImageViewCreateRoundRectImageView = createRoundRectImageView(bitmapCreateBitmap);
         roundRectImageViewCreateRoundRectImageView.setRadius(this.mRadius, 0.0f, 0.0f, this.mRadius);
         this.mThumbnailContainer.addView(roundRectImageViewCreateRoundRectImageView);
@@ -350,28 +348,28 @@ public class RecordingIndicator extends RelativeLayout implements RecordingTimeI
     }
 
     private void updateLayoutParams(LinearLayout linearLayout) {
-        RelativeLayout$LayoutParams relativeLayout$LayoutParams = (RelativeLayout$LayoutParams) linearLayout.getLayoutParams();
-        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
-            relativeLayout$LayoutParams.removeRule(12);
-            relativeLayout$LayoutParams.addRule(10, -1);
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) linearLayout.getLayoutParams();
+        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
+            layoutParams.removeRule(12);
+            layoutParams.addRule(10, -1);
         } else {
-            relativeLayout$LayoutParams.removeRule(10);
-            relativeLayout$LayoutParams.addRule(12, -1);
+            layoutParams.removeRule(10);
+            layoutParams.addRule(12, -1);
         }
         linearLayout.requestLayout();
     }
 
     private void updateLayout() {
         float angle = RotationUtil.getAngle(this.mDisplayOrientation);
-        LayoutOrientationResolver$LayoutOrientationType orientation = LayoutOrientationResolver.getInstance().getOrientation();
-        if (orientation == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
+        LayoutOrientationResolver.LayoutOrientationType orientation = LayoutOrientationResolver.getInstance().getOrientation();
+        if (orientation == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
             angle += 90.0f;
         }
-        if (this.mScreenAspect != null && this.mScreenAspect == LayoutDependencyResolver$ScreenAspect.EIGHTEEN_NINE) {
-            if (orientation == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
-                this.mContainer.setPadding(ResourceUtil.getDimensionPixelSize(getContext(), getContext().getPackageName(), 2131165531), 0, 0, 0);
+        if (this.mScreenAspect != null && this.mScreenAspect == LayoutDependencyResolver.ScreenAspect.EIGHTEEN_NINE) {
+            if (orientation == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
+                this.mContainer.setPadding(ResourceUtil.getDimensionPixelSize(getContext(), getContext().getPackageName(), R.dimen.recording_indicator_offset_18_9), 0, 0, 0);
             } else {
-                this.mContainer.setPadding(0, 0, 0, ResourceUtil.getDimensionPixelSize(getContext(), getContext().getPackageName(), 2131165531));
+                this.mContainer.setPadding(0, 0, 0, ResourceUtil.getDimensionPixelSize(getContext(), getContext().getPackageName(), R.dimen.recording_indicator_offset_18_9));
             }
         }
         if (this.mUnConstraintIndicator != null) {
@@ -418,12 +416,12 @@ public class RecordingIndicator extends RelativeLayout implements RecordingTimeI
         this.mSequenceIndicator.setVisibility(8);
     }
 
-    public void setScreenAspect(LayoutDependencyResolver$ScreenAspect layoutDependencyResolver$ScreenAspect) {
-        this.mScreenAspect = layoutDependencyResolver$ScreenAspect;
+    public void setScreenAspect(LayoutDependencyResolver.ScreenAspect screenAspect) {
+        this.mScreenAspect = screenAspect;
     }
 
     @Override // com.sonyericsson.cameracommon.viewfinder.recordingindicator.RecordingTimeIndicator
-    public void onTimeTicked(int i) {
+    public void onTimeTicked(int i) throws Resources.NotFoundException {
         updateRecordingTime(i);
     }
 }

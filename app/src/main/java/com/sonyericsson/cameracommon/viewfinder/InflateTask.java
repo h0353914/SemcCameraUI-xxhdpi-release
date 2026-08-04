@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.cameracommon.utility.MeasurePerformance;
-import com.sonyericsson.cameracommon.utility.MeasurePerformance$PerformanceIds;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,24 +19,18 @@ public class InflateTask implements Callable<Map<InflateItem, List<View>>> {
     private Map<InflateItem, List<View>> mInflatedItemMap = new HashMap();
     private LayoutInflater mLayoutInflater;
 
-    @Override // java.util.concurrent.Callable
-    public /* bridge */ /* synthetic */ Map<InflateItem, List<View>> call() throws Exception {
-        return call2();
-    }
-
     public InflateTask(LayoutInflater layoutInflater, List<InflateItem> list) {
         this.mLayoutInflater = layoutInflater;
         this.mInflateItemList = list;
     }
 
     @Override // java.util.concurrent.Callable
-    /* JADX INFO: renamed from: call, reason: avoid collision after fix types in other method */
-    public Map<InflateItem, List<View>> call2() {
+    public Map<InflateItem, List<View>> call() {
         if (CamLog.VERBOSE) {
             CamLog.d("InflateTask.call in");
         }
         if (CamLog.VERBOSE) {
-            MeasurePerformance.measureTime(MeasurePerformance$PerformanceIds.INFLATE_VIEWS, true);
+            MeasurePerformance.measureTime(MeasurePerformance.PerformanceIds.INFLATE_VIEWS, true);
         }
         PerfLog.TASK_INFLATE.begin();
         Iterator<InflateItem> it = this.mInflateItemList.iterator();
@@ -46,7 +39,7 @@ public class InflateTask implements Callable<Map<InflateItem, List<View>>> {
         }
         PerfLog.TASK_INFLATE.end();
         if (CamLog.VERBOSE) {
-            MeasurePerformance.measureTime(MeasurePerformance$PerformanceIds.INFLATE_VIEWS, false);
+            MeasurePerformance.measureTime(MeasurePerformance.PerformanceIds.INFLATE_VIEWS, false);
         }
         if (CamLog.VERBOSE) {
             CamLog.d("InflateTask.call out");

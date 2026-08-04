@@ -14,24 +14,34 @@ public class MyLzwCompressor {
     private final boolean earlyLimit;
     private final int eoiCode;
     private final int initialCodeSize;
-    private final MyLzwCompressor$Listener listener;
-    private final Map<MyLzwCompressor$ByteArray, Integer> map;
+    private final Listener listener;
+    private final Map<ByteArray, Integer> map;
+
+    public interface Listener {
+        void clearCode(int i);
+
+        void dataCode(int i);
+
+        void eoiCode(int i);
+
+        void init(int i, int i2);
+    }
 
     public MyLzwCompressor(int i, ByteOrder byteOrder, boolean z) {
         this(i, byteOrder, z, null);
     }
 
-    public MyLzwCompressor(int i, ByteOrder byteOrder, boolean z, MyLzwCompressor$Listener myLzwCompressor$Listener) {
+    public MyLzwCompressor(int i, ByteOrder byteOrder, boolean z, Listener listener) {
         this.codes = -1;
         this.map = new HashMap();
-        this.listener = myLzwCompressor$Listener;
+        this.listener = listener;
         this.byteOrder = byteOrder;
         this.earlyLimit = z;
         this.initialCodeSize = i;
         this.clearCode = 1 << i;
         this.eoiCode = this.clearCode + 1;
-        if (myLzwCompressor$Listener != null) {
-            myLzwCompressor$Listener.init(this.clearCode, this.eoiCode);
+        if (listener != null) {
+            listener.init(this.clearCode, this.eoiCode);
         }
         initializeStringTable();
     }
@@ -64,12 +74,50 @@ public class MyLzwCompressor {
         }
     }
 
-    private MyLzwCompressor$ByteArray arrayToKey(byte b) {
+    private ByteArray arrayToKey(byte b) {
         return arrayToKey(new byte[]{b}, 0, 1);
     }
 
-    private MyLzwCompressor$ByteArray arrayToKey(byte[] bArr, int i, int i2) {
-        return new MyLzwCompressor$ByteArray(bArr, i, i2);
+    private static final class ByteArray {
+        private final byte[] bytes;
+        private final int hash;
+        private final int length;
+        private final int start;
+
+        public ByteArray(byte[] bArr, int i, int i2) {
+            this.bytes = bArr;
+            this.start = i;
+            this.length = i2;
+            int i3 = i2;
+            for (int i4 = 0; i4 < i2; i4++) {
+                i3 = ((i3 + (i3 << 8)) ^ (255 & bArr[i4 + i])) ^ i4;
+            }
+            this.hash = i3;
+        }
+
+        public int hashCode() {
+            return this.hash;
+        }
+
+        public boolean equals(Object obj) {
+            if (!(obj instanceof ByteArray)) {
+                return false;
+            }
+            ByteArray byteArray = (ByteArray) obj;
+            if (byteArray.hash != this.hash || byteArray.length != this.length) {
+                return false;
+            }
+            for (int i = 0; i < this.length; i++) {
+                if (byteArray.bytes[byteArray.start + i] != this.bytes[this.start + i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    private ByteArray arrayToKey(byte[] bArr, int i, int i2) {
+        return new ByteArray(bArr, i, i2);
     }
 
     private void writeDataCode(MyBitOutputStream myBitOutputStream, int i) throws IOException {
@@ -113,7 +161,7 @@ public class MyLzwCompressor {
         return addTableEntry(myBitOutputStream, arrayToKey(bArr, i, i2));
     }
 
-    private boolean addTableEntry(MyBitOutputStream myBitOutputStream, MyLzwCompressor$ByteArray myLzwCompressor$ByteArray) throws IOException {
+    private boolean addTableEntry(MyBitOutputStream myBitOutputStream, ByteArray byteArray) throws IOException {
         boolean z;
         int i = 1 << this.codeSize;
         if (this.earlyLimit) {
@@ -130,7 +178,7 @@ public class MyLzwCompressor {
             z = true;
         }
         if (!z) {
-            this.map.put(myLzwCompressor$ByteArray, Integer.valueOf(this.codes));
+            this.map.put(byteArray, Integer.valueOf(this.codes));
             this.codes++;
         }
         return z;

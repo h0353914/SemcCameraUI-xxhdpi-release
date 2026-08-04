@@ -3,8 +3,6 @@ package com.sonyericsson.android.camera.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Paint$Cap;
-import android.graphics.Paint$Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
@@ -20,16 +18,42 @@ public class GestureShutterView extends View {
     private static final int STROKE_COLOR = -1;
     private static final int STROKE_WIDTH_DP = 4;
     private int mAnimationDuration;
-    private GestureShutterView$AnimationStatusListener mAnimationListener;
+    private AnimationStatusListener mAnimationListener;
     private final RectF mCircleFrame;
     private long mLastTimeStamp;
     private final Paint mPaint;
-    private GestureShutterView$AnimationState mState;
+    private AnimationState mState;
     private float mTimeProgress;
-    private GestureShutterView$AnimationType mType;
+    private AnimationType mType;
+
+    public interface AnimationStatusListener {
+        void handleConfirmingFinished();
+
+        void handleProceedFinished();
+
+        void handleRewindFinished();
+    }
+
+    private enum AnimationType {
+        NONE,
+        GROWING_CIRCLE,
+        CONFRIMING
+    }
 
     private static int calcConfirmingAlpha() {
         return 255;
+    }
+
+    private enum AnimationState {
+        IDLE(0),
+        PROCEEDING(1),
+        REWINDING(-1);
+
+        final int sign;
+
+        AnimationState(int i) {
+            this.sign = i;
+        }
     }
 
     public GestureShutterView(Context context) {
@@ -45,13 +69,13 @@ public class GestureShutterView extends View {
         this.mLastTimeStamp = -1L;
         this.mTimeProgress = 0.0f;
         this.mAnimationDuration = 200;
-        this.mState = GestureShutterView$AnimationState.IDLE;
-        this.mType = GestureShutterView$AnimationType.NONE;
+        this.mState = AnimationState.IDLE;
+        this.mType = AnimationType.NONE;
         this.mCircleFrame = new RectF();
         this.mAnimationListener = null;
         this.mPaint = new Paint();
-        this.mPaint.setStyle(Paint$Style.STROKE);
-        this.mPaint.setStrokeCap(Paint$Cap.ROUND);
+        this.mPaint.setStyle(Paint.Style.STROKE);
+        this.mPaint.setStrokeCap(Paint.Cap.ROUND);
         this.mPaint.setColor(-1);
         this.mPaint.setStrokeWidth(context.getResources().getDisplayMetrics().density * 4.0f);
     }
@@ -61,8 +85,8 @@ public class GestureShutterView extends View {
     }
 
     public synchronized void startProceed(RectF rectF) {
-        this.mState = GestureShutterView$AnimationState.PROCEEDING;
-        this.mType = GestureShutterView$AnimationType.GROWING_CIRCLE;
+        this.mState = AnimationState.PROCEEDING;
+        this.mType = AnimationType.GROWING_CIRCLE;
         this.mLastTimeStamp = -1L;
         this.mAnimationDuration = 200;
         updateFrame(rectF);
@@ -70,8 +94,8 @@ public class GestureShutterView extends View {
     }
 
     public synchronized void startRewind() {
-        if (this.mType == GestureShutterView$AnimationType.GROWING_CIRCLE) {
-            this.mState = GestureShutterView$AnimationState.REWINDING;
+        if (this.mType == AnimationType.GROWING_CIRCLE) {
+            this.mState = AnimationState.REWINDING;
             this.mLastTimeStamp = -1L;
             this.mAnimationDuration = 200;
             invalidate();
@@ -79,23 +103,23 @@ public class GestureShutterView extends View {
     }
 
     public synchronized void startConfirming() {
-        this.mState = GestureShutterView$AnimationState.PROCEEDING;
-        this.mType = GestureShutterView$AnimationType.CONFRIMING;
+        this.mState = AnimationState.PROCEEDING;
+        this.mType = AnimationType.CONFRIMING;
         this.mLastTimeStamp = -1L;
         this.mAnimationDuration = 100;
         invalidate();
     }
 
     public synchronized void reset() {
-        this.mState = GestureShutterView$AnimationState.IDLE;
-        this.mType = GestureShutterView$AnimationType.NONE;
+        this.mState = AnimationState.IDLE;
+        this.mType = AnimationType.NONE;
         this.mLastTimeStamp = -1L;
         this.mTimeProgress = 0.0f;
         invalidate();
     }
 
-    public synchronized void setListener(GestureShutterView$AnimationStatusListener gestureShutterView$AnimationStatusListener) {
-        this.mAnimationListener = gestureShutterView$AnimationStatusListener;
+    public synchronized void setListener(AnimationStatusListener animationStatusListener) {
+        this.mAnimationListener = animationStatusListener;
     }
 
     protected void onRewindFinished() {
@@ -121,22 +145,22 @@ public class GestureShutterView extends View {
         super.onDraw(canvas);
         long jCurrentTimeMillis = System.currentTimeMillis();
         if (this.mLastTimeStamp > 0) {
-            this.mTimeProgress += (((long) this.mState.sign) * (jCurrentTimeMillis - this.mLastTimeStamp)) / this.mAnimationDuration;
+            this.mTimeProgress += (this.mState.sign * (jCurrentTimeMillis - this.mLastTimeStamp)) / this.mAnimationDuration;
         }
         this.mLastTimeStamp = jCurrentTimeMillis;
         float f = this.mTimeProgress;
         if (f < 0.0f) {
             f = 0.0f;
         }
-        if (f > 1.0f) {
+        if (f > ANIMATION_PROGRESS_END) {
             f = 1.0f;
         }
         switch (this.mType) {
             case GROWING_CIRCLE:
-                float f2 = f * 0.5f;
-                this.mPaint.setAlpha((int) ((0.5f + f2) * 255.0f));
+                float f2 = f * STARTING_ALPHA;
+                this.mPaint.setAlpha((int) ((STARTING_ALPHA + f2) * 255.0f));
                 for (int i = 0; i < 4; i++) {
-                    canvas.drawArc(this.mCircleFrame, 45.0f + ((i - f2) * 90.0f), (90.0f * f) + 0.01f, false, this.mPaint);
+                    canvas.drawArc(this.mCircleFrame, ARC_ANGLE_OFFSET + ((i - f2) * 90.0f), (90.0f * f) + 0.01f, false, this.mPaint);
                 }
                 break;
             case CONFRIMING:
@@ -144,18 +168,18 @@ public class GestureShutterView extends View {
                 canvas.drawArc(this.mCircleFrame, 0.0f, 360.0f, false, this.mPaint);
                 break;
         }
-        if (this.mTimeProgress >= 1.0f && this.mState == GestureShutterView$AnimationState.PROCEEDING) {
-            GestureShutterView$AnimationType gestureShutterView$AnimationType = this.mType;
+        if (this.mTimeProgress >= ANIMATION_PROGRESS_END && this.mState == AnimationState.PROCEEDING) {
+            AnimationType animationType = this.mType;
             reset();
-            if (gestureShutterView$AnimationType == GestureShutterView$AnimationType.GROWING_CIRCLE) {
+            if (animationType == AnimationType.GROWING_CIRCLE) {
                 onProceedFinished();
-            } else if (gestureShutterView$AnimationType == GestureShutterView$AnimationType.CONFRIMING) {
+            } else if (animationType == AnimationType.CONFRIMING) {
                 onConfirmingFinished();
             }
-        } else if (this.mTimeProgress <= 0.0f && this.mState == GestureShutterView$AnimationState.REWINDING) {
+        } else if (this.mTimeProgress <= 0.0f && this.mState == AnimationState.REWINDING) {
             reset();
             onRewindFinished();
-        } else if (this.mState != GestureShutterView$AnimationState.IDLE) {
+        } else if (this.mState != AnimationState.IDLE) {
             invalidate();
         }
     }

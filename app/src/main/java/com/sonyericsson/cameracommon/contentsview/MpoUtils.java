@@ -31,39 +31,12 @@ public class MpoUtils {
     private MpoUtils() {
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:52:0x0122, code lost:
-    
-        if (r3 == null) goto L65;
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:53:0x0124, code lost:
-    
-        r3.close();
-     */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    public static int getType(String str) throws Throwable {
-        RandomAccessFile randomAccessFile;
-        RandomAccessFile randomAccessFile2 = null;
+    public static int getType(String str) {
+        RandomAccessFile randomAccessFile = null;
         try {
-            try {
-                try {
-                    randomAccessFile = new RandomAccessFile(str, "r");
-                } catch (IOException unused) {
-                }
-            } catch (IOException e) {
-                e = e;
-            }
-        } catch (Throwable th) {
-            th = th;
-            randomAccessFile = randomAccessFile2;
-        }
-        try {
+            randomAccessFile = new RandomAccessFile(str, "r");
             byte[] bArr = new byte[2];
-            while (true) {
-                if (2 > randomAccessFile.read(bArr)) {
-                    break;
-                }
+            while (randomAccessFile.read(bArr) >= 2) {
                 if (CamLog.VERBOSE) {
                     CamLog.d("read:" + Integer.toHexString(bArr[0] & 255) + " " + Integer.toHexString(bArr[1] & 255));
                 }
@@ -79,28 +52,29 @@ public class MpoUtils {
                     if (CamLog.VERBOSE) {
                         CamLog.d(String.format(Locale.UK, "This segments is APP%d.", Integer.valueOf(bArr[1] + 32)));
                     }
-                    long filePointer = randomAccessFile.getFilePointer() + ((long) randomAccessFile.readShort());
+                    long filePointer = randomAccessFile.getFilePointer();
+                    filePointer += randomAccessFile.readShort();
                     if (isAPP2(bArr[0], bArr[1]) && checkFormatIdentifier(randomAccessFile)) {
                         if (CamLog.VERBOSE) {
                             CamLog.d("This section has MPF.");
                         }
                         randomAccessFile.readShort();
                         skip(randomAccessFile, 6);
-                        short s = randomAccessFile.readShort();
-                        for (int i = 0; i < s; i++) {
+                        int readShort = randomAccessFile.readShort();
+                        for (int i = 0; i < readShort; i++) {
                             if (checkMPEntryTag(randomAccessFile)) {
                                 if (CamLog.VERBOSE) {
                                     CamLog.d("This tag is MP entry.");
                                 }
                                 skip(randomAccessFile, 2);
-                                int iTypeFromEntries = typeFromEntries(randomAccessFile.readInt() / 16);
+                                int typeFromEntries = typeFromEntries(randomAccessFile.readInt() / 16);
                                 if (randomAccessFile != null) {
                                     try {
                                         randomAccessFile.close();
-                                    } catch (IOException unused2) {
+                                    } catch (IOException unused) {
                                     }
                                 }
-                                return iTypeFromEntries;
+                                return typeFromEntries;
                             }
                             if (CamLog.VERBOSE) {
                                 CamLog.d("This tag is not MP entry.");
@@ -109,30 +83,47 @@ public class MpoUtils {
                         }
                     }
                     randomAccessFile.seek(filePointer);
-                } else if (CamLog.VERBOSE) {
-                    CamLog.d("Found unknown marker.");
+                } else {
+                    if (CamLog.VERBOSE) {
+                        CamLog.d("Found unknown marker.");
+                    }
+                    break;
                 }
             }
-        } catch (IOException e2) {
-            e = e2;
-            randomAccessFile2 = randomAccessFile;
+        } catch (IOException e) {
             CamLog.e("Fail to analize a mpo file by IO Exception. message:" + e.getMessage());
-            if (randomAccessFile2 != null) {
-                randomAccessFile2.close();
-            }
-            if (CamLog.VERBOSE) {
-                CamLog.d("This mpo is unknown image.");
-            }
-            return 0;
-        } catch (Throwable th2) {
-            th = th2;
+        } finally {
             if (randomAccessFile != null) {
                 try {
                     randomAccessFile.close();
-                } catch (IOException unused3) {
+                } catch (IOException unused2) {
                 }
             }
-            throw th;
+        }
+        if (CamLog.VERBOSE) {
+            CamLog.d("This mpo is unknown image.");
+        }
+        return 0;
+    }
+
+    private static class JpegMaker {
+        static final byte APP0 = -32;
+        static final byte APP15 = -17;
+        static final byte APP2 = -30;
+        static final byte EOI = -39;
+        static final byte MARKER = -1;
+        static final byte SOI = -40;
+
+
+
+
+
+
+
+
+
+
+        private JpegMaker() {
         }
     }
 

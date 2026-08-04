@@ -6,12 +6,6 @@ public final class DescriptorProtos$OneofDescriptorProto extends ExtendableMessa
     private static volatile DescriptorProtos$OneofDescriptorProto[] _emptyArray;
     public String name;
     public DescriptorProtos$OneofOptions options;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$OneofDescriptorProto[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

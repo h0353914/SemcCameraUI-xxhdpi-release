@@ -1,6 +1,128 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonymobile.imageprocessor.bypasscamera2;
 
+import com.sonyericsson.android.camera.device.CameraParameters;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public final class BypassCameraParameters {
@@ -39,5 +161,160 @@ public final class BypassCameraParameters {
 
     public int getInt(String str) {
         return Integer.parseInt(this.mMap.get(str));
+    }
+
+    static class Capability {
+        public List<String> mVideoStabilizationMode = new ArrayList();
+        public List<String> mSuperSlowMode = new ArrayList();
+        public List<String> mClimaxRecognitionMode = new ArrayList();
+        public List<String> mBurstMode = new ArrayList();
+        public List<String> mVideoHdrMode = new ArrayList();
+        public List<Integer> mSuperSlowFrameNumList = new ArrayList();
+        public List<SupportedInfo> mHighFrameRateSupportedInfoList = new ArrayList();
+        public List<SupportedInfo> mSteadyShotSupportedInfoList = new ArrayList();
+        public List<SupportedInfo> mIntelligentActiveSupportedInfoList = new ArrayList();
+        public List<SupportedInfo> mSuperSlowSupportedInfoList = new ArrayList();
+
+        Capability() {
+        }
+
+        public static class SupportedInfo {
+            public final int fps;
+            public final int height;
+            public final int width;
+
+            public SupportedInfo(int i, int i2, int i3) {
+                this.width = i;
+                this.height = i2;
+                this.fps = i3;
+            }
+        }
+
+        public enum VideoStabilizationMode {
+            OFF(0, "off"),
+            STEADY_SHOT(1, "on"),
+            INTELLIGENT_ACTIVE(2, CameraParameters.VS_ON_INTELLIGENT_ACTIVE);
+
+            public final int code;
+            public final String value;
+
+            VideoStabilizationMode(int i, String str) {
+                this.code = i;
+                this.value = str;
+            }
+        }
+
+        public enum SuperSlowMode {
+            OFF(0, "off"),
+            ON(1, "on");
+
+            public final int code;
+            public final String value;
+
+            SuperSlowMode(int i, String str) {
+                this.code = i;
+                this.value = str;
+            }
+        }
+
+        public enum ClimaxRecognitionMode {
+            OFF(0, "off"),
+            AUTO(1, "auto"),
+            ON(2, "on");
+
+            public final int code;
+            public final String value;
+
+            ClimaxRecognitionMode(int i, String str) {
+                this.code = i;
+                this.value = str;
+            }
+        }
+
+        public enum BurstMode {
+            OFF(0, "off"),
+            ON(1, "on");
+
+            public final int code;
+            public final String value;
+
+            BurstMode(int i, String str) {
+                this.code = i;
+                this.value = str;
+            }
+        }
+
+        public enum VideoHdrMode {
+            OFF(0, "off"),
+            ON(1, "on");
+
+            public final int code;
+            public final String value;
+
+            VideoHdrMode(int i, String str) {
+                this.code = i;
+                this.value = str;
+            }
+        }
+
+        public void setVideoStabilizationMode(int i) {
+            for (VideoStabilizationMode videoStabilizationMode : VideoStabilizationMode.values()) {
+                if (videoStabilizationMode.code == (videoStabilizationMode.code & i)) {
+                    this.mVideoStabilizationMode.add(videoStabilizationMode.value);
+                }
+            }
+        }
+
+        public void setSuperSlowMode(int i) {
+            for (SuperSlowMode superSlowMode : SuperSlowMode.values()) {
+                if (superSlowMode.code == (superSlowMode.code & i)) {
+                    this.mSuperSlowMode.add(superSlowMode.value);
+                }
+            }
+        }
+
+        public void setClimaxRecognitionMode(int i) {
+            for (ClimaxRecognitionMode climaxRecognitionMode : ClimaxRecognitionMode.values()) {
+                if (climaxRecognitionMode.code == (climaxRecognitionMode.code & i)) {
+                    this.mClimaxRecognitionMode.add(climaxRecognitionMode.value);
+                }
+            }
+        }
+
+        public void setBurstMode(int i) {
+            for (BurstMode burstMode : BurstMode.values()) {
+                if (burstMode.code == (burstMode.code & i)) {
+                    this.mBurstMode.add(burstMode.value);
+                }
+            }
+        }
+
+        public void setVideoHdrMode(int i) {
+            for (VideoHdrMode videoHdrMode : VideoHdrMode.values()) {
+                if (videoHdrMode.code == (videoHdrMode.code & i)) {
+                    this.mVideoHdrMode.add(videoHdrMode.value);
+                }
+            }
+        }
+
+        public void addSuperSlowFrameNum(int i) {
+            this.mSuperSlowFrameNumList.add(Integer.valueOf(i));
+        }
+
+        public void addHighFrameRateSupportedInfo(int i, int i2, int i3) {
+            this.mHighFrameRateSupportedInfoList.add(new SupportedInfo(i, i2, i3));
+        }
+
+        public void addSteadyShotSupportedInfo(int i, int i2, int i3) {
+            this.mSteadyShotSupportedInfoList.add(new SupportedInfo(i, i2, i3));
+        }
+
+        public void addIntelligentActiveSupportedInfo(int i, int i2, int i3) {
+            this.mIntelligentActiveSupportedInfoList.add(new SupportedInfo(i, i2, i3));
+        }
+
+        public void addSuperSlowSupportedInfo(int i, int i2, int i3) {
+            this.mSuperSlowSupportedInfoList.add(new SupportedInfo(i, i2, i3));
+        }
     }
 }

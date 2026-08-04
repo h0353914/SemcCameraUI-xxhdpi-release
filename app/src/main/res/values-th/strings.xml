@@ -31,14 +31,22 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">ไม่สามารถถ่ายภาพได้ โปรดเลื่อนช้าลง</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">ไม่สามารถถ่ายภาพได้ โปรดเลื่อนเร็วขึ้น</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">แพนกล้องของคุณเพื่อถ่ายภาพพาโนรามา</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">กำลังสร้างไฟล์ต่อไปนี้: \n- ภาพแบบหลายมุม\n- ภาพ 3 มิติ \nหมายเหตุ: ไฟล์เหล่านี้มีพื้นที่สีเทา</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">กำลังสร้างไฟล์ต่อไปนี้: \n- ภาพแบบหลายมุม \n- ภาพ 3 มิติ </string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">กำลังประมวลผล...\nภาพนี้มีพื้นที่สีเทา</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"กำลังสร้างไฟล์ต่อไปนี้: 
+- ภาพแบบหลายมุม
+- ภาพ 3 มิติ 
+หมายเหตุ: ไฟล์เหล่านี้มีพื้นที่สีเทา"</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"กำลังสร้างไฟล์ต่อไปนี้: 
+- ภาพแบบหลายมุม 
+- ภาพ 3 มิติ "</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"กำลังประมวลผล...
+ภาพนี้มีพื้นที่สีเทา"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">กำลังบันทึกภาพ</string>
     <string name="cam_3d_strings_dialog_processing_txt">กำลังประมวลผล...</string>
     <string name="cam_3d_strings_error_application_busy_txt">โปรดรอสักครู่เพื่อเปิดใช้กล้อง 3 มิติ</string>
     <string name="cam_3d_strings_error_capturing_during_connecting_tv_title_txt">เกิดข้อผิดพลาด</string>
-    <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">ถอดสายเคเบิล คุณไม่สามารถ\nถ่ายภาพในโหมดนี้ได้โดยที่\nสายเคเบิลยังเชื่อมต่ออยู่</string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">"ถอดสายเคเบิล คุณไม่สามารถ
+ถ่ายภาพในโหมดนี้ได้โดยที่
+สายเคเบิลยังเชื่อมต่ออยู่"</string>
     <string name="cam_3d_strings_error_direction_txt">ไม่สามารถถ่ายภาพได้ โปรดเลื่อนในทิศทางที่ถูกต้อง</string>
     <string name="cam_3d_strings_error_too_quick_txt">ไม่สามารถถ่ายภาพได้ โปรดเลื่อนช้าลง</string>
     <string name="cam_3d_strings_error_too_slow_txt">ไม่สามารถถ่ายภาพได้ โปรดเลื่อนเร็วขึ้น</string>
@@ -160,7 +168,8 @@
     <string name="cam_strings_burst_not_supported_front_camera_txt">ถ่ายภาพต่อเนื่องโดยใช้กล้องด้านหน้าไม่ได้</string>
     <string name="cam_strings_burst_not_supported_fusion_on_txt">ถ่ายภาพต่อเนื่องไม่ได้เมื่อเปิดกล้องเลนส์คู่ไว้</string>
     <string name="cam_strings_burst_saved_internal_storage_txt">บันทึกภาพต่อเนื่องลงที่เก็บข้อมูลในเครื่องแล้ว</string>
-    <string name="cam_strings_burst_shooting_txt">ความเร็วของ\nภาพต่อเนื่อง</string>
+    <string name="cam_strings_burst_shooting_txt">"ความเร็วของ
+ภาพต่อเนื่อง"</string>
     <string name="cam_strings_camera_apps_tab_txt">แอปกล้อง</string>
     <string name="cam_strings_camera_key_setting_burst_shot_txt">ภาพต่อเนื่อง</string>
     <string name="cam_strings_camera_key_setting_take_photo_txt">ถ่ายรูป</string>
@@ -281,7 +290,8 @@
     <string name="cam_strings_error_internal_memory_unavailable_txt">ที่เก็บข้อมูลภายในเสียหายหรือป้องกันการเขียนไว้ เปลี่ยนที่เก็บข้อมูลเป็นการ์ด SD แล้ว</string>
     <string name="cam_strings_error_internal_sd_full_txt">หน่วยความจำเต็ม ลบบางไฟล์จากการ์ด SD หรือที่เก็บข้อมูลภายใน</string>
     <string name="cam_strings_error_max_faces_exceeded_txt">เลือกใบหน้าถึงจำนวนสูงสุดแล้ว โปรดยกเลิกการเลือกอย่างน้อยหนึ่งใบหน้าแล้วลองอีกครั้ง</string>
-    <string name="cam_strings_error_memory_full_txt">หน่วยความจำเต็ม ลบบางไฟล์\nออกจากการ์ด SD</string>
+    <string name="cam_strings_error_memory_full_txt">"หน่วยความจำเต็ม ลบบางไฟล์
+ออกจากการ์ด SD"</string>
     <string name="cam_strings_error_memory_ims_access_error_txt">หน่วยความจำเกิดข้อผิดพลาด</string>
     <string name="cam_strings_error_memory_ims_full_txt">หน่วยความจำเต็ม ให้ลบบางไฟล์ออกจากหน่วยความจำหรือเปลี่ยนที่เก็บข้อมูลเริ่มต้น</string>
     <string name="cam_strings_error_memory_ims_unavailable_txt">หน่วยความจำไม่พร้อมใช้งาน</string>
@@ -360,7 +370,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">ปรับผิวของคุณให้ดูกระจ่างและเรียบเนียน เอฟเฟ็คจะทำงานในแอปพลิเคชันที่ใช้กล้องหน้าและใช้ได้กับภาพถ่ายและวิดีโอ คุณยังสามารถปรับระดับได้ด้วย</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">การปรับระดับ</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">ผิวเรียบเนียน</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">เริ่มใช้แอปไม่ได้\nโปรดตรวจสอบว่าอุปกรณ์มี %1$s เวอร์ชันล่าสุดติดตั้งไว้แล้วและเปิดอยู่</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"เริ่มใช้แอปไม่ได้
+โปรดตรวจสอบว่าอุปกรณ์มี %1$s เวอร์ชันล่าสุดติดตั้งไว้แล้วและเปิดอยู่"</string>
     <string name="cam_strings_gridline_txt">เส้นตาราง</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">หันฝ่ามือเข้าหากล้อง เมื่อกล้องตรวจจับฝ่ามือ การตั้งเวลาจะเปิดขึ้น ขอให้ยืดนิ้วมือขึ้นเพื่อให้กล้องตรวจจับได้ง่าย</string>
     <string name="cam_strings_hand_shutter_hint_txt">หันฝ่ามือเข้าหากล้อง</string>
@@ -404,7 +415,8 @@
     <string name="cam_strings_more_common_setting_title_txt">การตั้งค่าทั่วไป</string>
     <string name="cam_strings_more_txt">เพิ่มเติม</string>
     <string name="cam_strings_multi_window_txt">ลากเส้นแบ่งตรงกลางเพื่อสลับเป็นเต็มหน้าจอให้ %1$s ใช้</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">ขณะนี้อุปกรณ์อื่นได้เชื่อมต่อแล้ว\nคุณต้องการแชร์ภาพผ่านช่องมองภาพกับอุปกรณ์นี้หรือไม่</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"ขณะนี้อุปกรณ์อื่นได้เชื่อมต่อแล้ว
+คุณต้องการแชร์ภาพผ่านช่องมองภาพกับอุปกรณ์นี้หรือไม่"</string>
     <string name="cam_strings_multicam_add_device_txt">เพิ่มอุปกรณ์</string>
     <string name="cam_strings_multicam_add_more_txt">เพิ่มอีก</string>
     <string name="cam_strings_multicam_apply_txt">เสร็จ</string>
@@ -436,16 +448,19 @@
     <string name="cam_strings_photometry_txt">การวัดแสง</string>
     <string name="cam_strings_predictive_capture_feedback_txt">คาดเดา</string>
     <string name="cam_strings_predictive_capture_txt">ถ่ายภาพแบบคาดเดา</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">กล้องจะเปิดโดยอัตโนมัติจากการตรวจจับการเคลื่อนไหวของคุณในการปัดโทรศัพท์ขึ้นในโหมดแนวนอนและหันกล้องไปที่วัตถุ\nคุณสามารถเลือกวิธีที่คุณชื่นชอบในการใช้คุณลักษณะนี้ได้จากการเปิดใช้งานอัจฉริยะในการตั้งค่ากล้อง</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"กล้องจะเปิดโดยอัตโนมัติจากการตรวจจับการเคลื่อนไหวของคุณในการปัดโทรศัพท์ขึ้นในโหมดแนวนอนและหันกล้องไปที่วัตถุ
+คุณสามารถเลือกวิธีที่คุณชื่นชอบในการใช้คุณลักษณะนี้ได้จากการเปิดใช้งานอัจฉริยะในการตั้งค่ากล้อง"</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">แตะในวงกลมเพื่อถ่ายภาพ</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">แตะหน้าจอเพื่อถ่ายภาพ</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">แตะในวงกลมเพื่อดูมุมมองเต็มหน้าจอ</string>
     <string name="cam_strings_predictive_launch_guide_txt">แตะในวงกลมเพื่อเปิดกล้อง</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">แตะเพื่อเปิดและถ่ายภาพ</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">แตะเพื่อเปิด</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">คุณสามารถเปิดกล้องได้อย่างรวดเร็ว ปัดอุปกรณ์ขึ้นในโหมดแนวนอนและหันกล้องไปทางวัตถุ กล้องจะเปิดโดยอัตโนมัติ\nคุณสามารถเลือกวิธีที่คุณชื่นชอบในการใช้คุณสมบัตินี้ได้จากการเปิดใช้งานอัจฉริยะในการตั้งค่ากล้อง</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"คุณสามารถเปิดกล้องได้อย่างรวดเร็ว ปัดอุปกรณ์ขึ้นในโหมดแนวนอนและหันกล้องไปทางวัตถุ กล้องจะเปิดโดยอัตโนมัติ
+คุณสามารถเลือกวิธีที่คุณชื่นชอบในการใช้คุณสมบัตินี้ได้จากการเปิดใช้งานอัจฉริยะในการตั้งค่ากล้อง"</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">เปิดใช้งานอัจฉริยะ</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">คุณสามารถเปิดใช้กล้องได้รวดเร็ว ปัดอุปกรณ์ในโหมดแนวนอนและหันกล้องไปทางวัตถุ กล้องจะเปิดโดยอัตโนมัติ\nคุณสามารถปิดคุณลักษณะนี้จากเปิดใช้งานอัจฉริยะในการตั้งค่ากล้อง</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"คุณสามารถเปิดใช้กล้องได้รวดเร็ว ปัดอุปกรณ์ในโหมดแนวนอนและหันกล้องไปทางวัตถุ กล้องจะเปิดโดยอัตโนมัติ
+คุณสามารถปิดคุณลักษณะนี้จากเปิดใช้งานอัจฉริยะในการตั้งค่ากล้อง"</string>
     <string name="cam_strings_predictive_launch_txt">เปิดใช้งานอัจฉริยะ</string>
     <string name="cam_strings_preview_always_txt">เปิด</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 วินาที</string>
@@ -478,7 +493,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s กำหนดให้ต้องมีการอนุญาตต่อไปนี้</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">การอนุญาต %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">แอปต้องได้รับการอนุญาตต่อไปนี้เพื่อดำเนินการนี้</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">ให้อนุญาตโดยไปที่ ข้อมูลแอปพลิเคชัน &gt; การอนุญาต</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">ให้อนุญาตโดยไปที่ ข้อมูลแอปพลิเคชัน > การอนุญาต</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">ทำต่อไม่ได้</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">เพื่อถ่ายภาพและวิดีโอ</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">เพื่อเรียกใช้ตำแหน่งที่ตั้ง</string>
@@ -525,11 +540,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">บันทึกลงในที่เก็บข้อมูลภายในแล้ว</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">ไปต่อ</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">แอปต้องได้รับการอนุญาตต่อไปนี้เพื่อดำเนินการนี้</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">กล้องต้องใช้สิทธิ์การเข้าถึงการ์ด SD เพื่อใช้การ์ด SD\nเปลี่ยนที่เก็บข้อมูลเป็นการ์ด SD อีกครั้ง หรืออนุญาตให้กล้องเข้าถึงการ์ด SD ในหน้าจอถัดไป</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"กล้องต้องใช้สิทธิ์การเข้าถึงการ์ด SD เพื่อใช้การ์ด SD
+เปลี่ยนที่เก็บข้อมูลเป็นการ์ด SD อีกครั้ง หรืออนุญาตให้กล้องเข้าถึงการ์ด SD ในหน้าจอถัดไป"</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">ไม่มีการ์ด SD</string>
-    <string name="cam_strings_sd_permission_info_2_txt">ตรวจพบการ์ด SD ใหม่ที่จำเป็นต้องขออนุญาต\n\nหากต้องการใช้การ์ด SD เป็นที่เก็บข้อมูล โปรดเลือกการ์ด SD หรือไดเรกทอรี DCIM ในหน้าจอถัดไป</string>
-    <string name="cam_strings_sd_permission_info_3_txt">ไม่ได้เลือกการ์ด SD หรือไดเรกทอรี DCIM ไว้ จึงใช้การ์ด SD ไม่ได้\n\nหากจะอนุญาต ให้เริ่มจากเปลี่ยนตำแหน่งที่ตั้งที่จะบันทึกเป็นการ์ด SD หรือเลือกไดเรกทอรีที่เหมาะสมในหน้าจอถัดไป</string>
-    <string name="cam_strings_sd_permission_info_txt">ตรวจพบการ์ด SD ใหม่ที่ต้องการขออนุญาต\nดังนั้น ที่เก็บข้อมูลภายในของอุปกรณ์จึงใช้เป็นที่เก็บข้อมูลค่าเริ่มต้นแทน\n\nหากต้องการใช้การ์ด SD เป็นที่เก็บข้อมูล โปรดไปที่การตั้งค่ากล้องและเปลี่ยนตัวเลือกที่เก็บข้อมูลเป็นการ์ด SD</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"ตรวจพบการ์ด SD ใหม่ที่จำเป็นต้องขออนุญาต
+
+หากต้องการใช้การ์ด SD เป็นที่เก็บข้อมูล โปรดเลือกการ์ด SD หรือไดเรกทอรี DCIM ในหน้าจอถัดไป"</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"ไม่ได้เลือกการ์ด SD หรือไดเรกทอรี DCIM ไว้ จึงใช้การ์ด SD ไม่ได้
+
+หากจะอนุญาต ให้เริ่มจากเปลี่ยนตำแหน่งที่ตั้งที่จะบันทึกเป็นการ์ด SD หรือเลือกไดเรกทอรีที่เหมาะสมในหน้าจอถัดไป"</string>
+    <string name="cam_strings_sd_permission_info_txt">"ตรวจพบการ์ด SD ใหม่ที่ต้องการขออนุญาต
+ดังนั้น ที่เก็บข้อมูลภายในของอุปกรณ์จึงใช้เป็นที่เก็บข้อมูลค่าเริ่มต้นแทน
+
+หากต้องการใช้การ์ด SD เป็นที่เก็บข้อมูล โปรดไปที่การตั้งค่ากล้องและเปลี่ยนตัวเลือกที่เก็บข้อมูลเป็นการ์ด SD"</string>
     <string name="cam_strings_sd_permission_rationale_txt">เพื่อบันทึกรูปถ่ายและวิดีโอในการ์ด SD</string>
     <string name="cam_strings_select_picture_txt">เลือกภาพถ่าย</string>
     <string name="cam_strings_self_timer_05_txt">0.5 วิ</string>
@@ -552,12 +575,16 @@
     <string name="cam_strings_shutter_trigger_txt">ถ่ายภาพอัตโนมัติ</string>
     <string name="cam_strings_side_touch_not_supported_txt">ไม่รองรับ Side sense ในหน้าจอนี้</string>
     <string name="cam_strings_side_touch_on_title_txt">Side sense</string>
-    <string name="cam_strings_side_touch_on_txt">หากต้องการใช้ฟังก์ชันนี้ ให้ไปที่การตั้งค่า &gt; การแสดงผลและเปิดใช้งาน Side sense ต้องการเปิดใช้เลยไหม</string>
+    <string name="cam_strings_side_touch_on_txt">หากต้องการใช้ฟังก์ชันนี้ ให้ไปที่การตั้งค่า > การแสดงผลและเปิดใช้งาน Side sense ต้องการเปิดใช้เลยไหม</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Side sense</string>
-    <string name="cam_strings_side_touch_tutorial_txt">คุณถ่ายรูปหรือวิดีโอได้ง่ายๆ เพียงแตะสองครั้งที่เซ็นเซอร์ด้านข้างหน้าจอแทนปุ่มชัตเตอร์ อีกทั้งยังซูมเข้าหรือออกได้ด้วยการเลื่อนนิ้วไปตามเซ็นเซอร์ด้านข้างนี้\nโหมดรูปภาพและวิดีโอต่างก็รองรับฟังก์ชันนี้ ทั้งนี้คุณปิดใช้งานฟังก์ชันนี้ได้จาก Side sense ในการตั้งค่ากล้อง</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">คุณถ่ายรูปหรือวิดีโอได้ง่ายๆ เพียงแตะสองครั้งที่เซ็นเซอร์ด้านข้างหน้าจออุปกรณ์ในมุมมองแนวตั้งแทนปุ่มชัตเตอร์ อีกทั้งยังซูมเข้าและออกได้ด้วยการเลื่อนนิ้วไปตามเซ็นเซอร์ด้านข้าง\nโหมดรูปภาพและวิดีโอต่างก็รองรับฟังก์ชันนี้ ทั้งนี้คุณปิดใช้งานฟังก์ชันนี้ได้จาก Side sense ในการตั้งค่ากล้อง</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">คุณถ่ายรูปหรือวิดีโอได้ง่ายๆ เพียงแตะสองครั้งที่เซ็นเซอร์ด้านข้างหน้าจอในมุมมองแนวตั้งแทนปุ่มชัตเตอร์\nโหมดรูปภาพและวิดีโอต่างก็รองรับฟังก์ชันนี้ ทั้งนี้คุณปิดใช้งานฟังก์ชันนี้ได้จาก Side sense ในการตั้งค่ากล้อง</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">คุณถ่ายรูปหรือวิดีโอได้ง่ายๆ เพียงแตะสองครั้งที่เซ็นเซอร์ด้านข้างหน้าจอแทนปุ่มชัตเตอร์\nโหมดรูปภาพและวิดีโอต่างก็รองรับฟังก์ชันนี้ ทั้งนี้คุณปิดใช้งานฟังก์ชันนี้ได้จาก Side sense ในการตั้งค่ากล้อง</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"คุณถ่ายรูปหรือวิดีโอได้ง่ายๆ เพียงแตะสองครั้งที่เซ็นเซอร์ด้านข้างหน้าจอแทนปุ่มชัตเตอร์ อีกทั้งยังซูมเข้าหรือออกได้ด้วยการเลื่อนนิ้วไปตามเซ็นเซอร์ด้านข้างนี้
+โหมดรูปภาพและวิดีโอต่างก็รองรับฟังก์ชันนี้ ทั้งนี้คุณปิดใช้งานฟังก์ชันนี้ได้จาก Side sense ในการตั้งค่ากล้อง"</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"คุณถ่ายรูปหรือวิดีโอได้ง่ายๆ เพียงแตะสองครั้งที่เซ็นเซอร์ด้านข้างหน้าจออุปกรณ์ในมุมมองแนวตั้งแทนปุ่มชัตเตอร์ อีกทั้งยังซูมเข้าและออกได้ด้วยการเลื่อนนิ้วไปตามเซ็นเซอร์ด้านข้าง
+โหมดรูปภาพและวิดีโอต่างก็รองรับฟังก์ชันนี้ ทั้งนี้คุณปิดใช้งานฟังก์ชันนี้ได้จาก Side sense ในการตั้งค่ากล้อง"</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"คุณถ่ายรูปหรือวิดีโอได้ง่ายๆ เพียงแตะสองครั้งที่เซ็นเซอร์ด้านข้างหน้าจอในมุมมองแนวตั้งแทนปุ่มชัตเตอร์
+โหมดรูปภาพและวิดีโอต่างก็รองรับฟังก์ชันนี้ ทั้งนี้คุณปิดใช้งานฟังก์ชันนี้ได้จาก Side sense ในการตั้งค่ากล้อง"</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"คุณถ่ายรูปหรือวิดีโอได้ง่ายๆ เพียงแตะสองครั้งที่เซ็นเซอร์ด้านข้างหน้าจอแทนปุ่มชัตเตอร์
+โหมดรูปภาพและวิดีโอต่างก็รองรับฟังก์ชันนี้ ทั้งนี้คุณปิดใช้งานฟังก์ชันนี้ได้จาก Side sense ในการตั้งค่ากล้อง"</string>
     <string name="cam_strings_side_touch_txt">Side sense</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">เปลี่ยนรูปแบบการถ่ายและความละเอียดหน้าจอได้ในการตั้งค่ากล้องถ่ายรูป</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">ช้ามาก (ถ่ายครั้งเดียว)</string>
@@ -565,7 +592,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">ภาพช้ามาก</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">คุณสามารถเปลี่ยน fps และสไตล์การบันทึกภาพเคลื่อนไหวช้าได้</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">ตัวเลือกเพิ่มเติม</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">บันทึกช่วงเวลาสำคัญได้ทันทีในอัตราภาพเคลื่อนไหวช้า %1$s fps โดยแตะปุ่มกลางหน้าจอ\nการถ่ายวิดีโอในที่สว่างช่วยให้ได้ภาพที่ดีขึ้น</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"บันทึกช่วงเวลาสำคัญได้ทันทีในอัตราภาพเคลื่อนไหวช้า %1$s fps โดยแตะปุ่มกลางหน้าจอ
+การถ่ายวิดีโอในที่สว่างช่วยให้ได้ภาพที่ดีขึ้น"</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">คุณสามารถบันทึกช่วงเวลาที่เหมาะแบบ %1$s fps โดยแตะปุ่มกลาง</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">บันทึกช่วงเวลาสำคัญได้ทันทีในอัตราภาพเคลื่อนไหวช้า %1$s fps โดยแตะปุ่มกลางหน้าจอ</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">ภาพช้ามาก (ภาพเดียว)</string>
@@ -576,7 +604,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">ภาพช้า</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">วิธีบันทึก</string>
     <string name="cam_strings_slow_motion_standard_txt">ภาพช้า</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">ถ่ายวิดีโอที่ดูดีโดยแสดงช่วงเวลาสำคัญแบบเคลื่อนไหวช้า\nการถ่ายวิดีโอในที่สว่างช่วยให้ได้ภาพที่ดีขึ้น</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"ถ่ายวิดีโอที่ดูดีโดยแสดงช่วงเวลาสำคัญแบบเคลื่อนไหวช้า
+การถ่ายวิดีโอในที่สว่างช่วยให้ได้ภาพที่ดีขึ้น"</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">คุณสามารถบันทึกวิดีโอด้วยความเร็วต่างๆ โดยสลับเป็น %1$s fps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">แตะปุ่มกลางในช่วงเวลาที่เหมาะ</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">บันทึกภาพเคลื่อนไหวช้าแล้ว</string>
@@ -607,12 +636,12 @@
     <string name="cam_strings_sw_licence_title_txt">สิทธิ์การใช้งานซอฟต์แวร์</string>
     <string name="cam_strings_take_photo_txt">ถ่ายภาพ</string>
     <string name="cam_strings_term_of_use_accept_txt">ยอมรับ</string>
-    <string name="cam_strings_term_of_use_consent_txt">ข้าพเจ้ายินยอมตาม&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;ข้อกำหนดการใช้งาน&lt;/a&gt;ของ Sony Mobile</string>
+    <string name="cam_strings_term_of_use_consent_txt">ข้าพเจ้ายินยอมตาม&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">ข้อกำหนดการใช้งาน&lt;/a>ของ Sony Mobile</string>
     <string name="cam_strings_term_of_use_data_charge_txt">การใช้บริการนี้ของคุณอาจมีค่าบริการข้อมูลโทรศัพท์เคลื่อนที่ ทั้งนี้ขึ้นอยู่กับแผนการใช้ข้อมูลของคุณ</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile จะรวบรวมรหัสเฉพาะของอุปกรณ์ของ Android ID แบบย่อ ข้อมูลที่ยึดตามตำแหน่งที่ตั้ง และการประทับเวลาเพื่อให้คุณได้ผลลัพธ์ที่ถูกต้องซึ่งเป็นส่วนหนึ่งของการบริการและเพื่อการปรับปรุงบริการ</string>
     <string name="cam_strings_term_of_use_decline_txt">ปฏิเสธ</string>
     <string name="cam_strings_term_of_use_title_txt">ข้อกำหนดและเงื่อนไข</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;ข้อกำหนดในการใช้งาน&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">ข้อกำหนดในการใช้งาน&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">เลือกรูปถ่ายออก</string>
     <string name="cam_strings_timeshift_operation_failed_txt">ไม่สามารถบันทึก</string>
     <string name="cam_strings_timeshift_save_complete_txt">บันทึกแล้ว</string>
@@ -639,7 +668,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">คุณต้องไม่เปลี่ยนการตั้งค่านี้เพื่อให้บันทึกวิดีโอ 4K ได้เสถียร ยกเว้นกรณีที่ใช้ SD การ์ดความเร็วสูง (UHS Speed Class 1 เป็นต้นไป ขอแนะนำ Speed Class 10)</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">คุณต้องไม่เปลี่ยนการตั้งค่านี้เพื่อให้บันทึกวิดีโอ Timeshift ได้เสถียร ยกเว้นกรณีที่ใช้ SD การ์ดความเร็วสูง (UHS Speed Class 1 เป็นต้นไป ขอแนะนำ Speed Class 10) ต้องการเปลี่ยนการตั้งค่าไหม</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">อย่าเปลี่ยนการตั้งค่านี้เพื่อให้บันทึกวิดีโอภาพเคลื่อนไหวช้าได้เสถียร ยกเว้นกรณีที่ใช้ SD การ์ดความเร็วสูง (UHS Speed Class 1 เป็นต้นไป ขอแนะนำ Speed Class 10)</string>
-    <string name="cam_strings_video_explanatory_txt">ขอแนะนำให้คุณเปลี่ยนที่เก็บข้อมูลเป็นที่เก็บข้อมูลภายในเครื่องเพื่อให้บันทึกวิดีโอได้เสถียร ต้องการเปลี่ยนเลยไหม\n\nถ้าคุณใช้ SD การ์ดเป็นที่เก็บข้อมูล โปรดใช้ SD การ์ดความเร็วสูง (UHS Speed Class 1 เป็นต้นไป ขอแนะนำ Speed Class 10)</string>
+    <string name="cam_strings_video_explanatory_txt">"ขอแนะนำให้คุณเปลี่ยนที่เก็บข้อมูลเป็นที่เก็บข้อมูลภายในเครื่องเพื่อให้บันทึกวิดีโอได้เสถียร ต้องการเปลี่ยนเลยไหม
+
+ถ้าคุณใช้ SD การ์ดเป็นที่เก็บข้อมูล โปรดใช้ SD การ์ดความเร็วสูง (UHS Speed Class 1 เป็นต้นไป ขอแนะนำ Speed Class 10)"</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">กล้องคู่</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">บันทึกวิดีโอสวยๆ ได้คมชัดด้วยกล้องคู่ แม้ในช่วงกลางคืนหรือห้องที่มีแสงน้อย กล้องจะสลับใช้กล้องเดี่ยวและกล้องคู่เองตามฉากเพื่อบันทึกภาพแบบความไวสูง</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">ถ่ายวิดีโอจากกล้องคู่</string>

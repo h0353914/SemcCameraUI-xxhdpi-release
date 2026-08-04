@@ -1,39 +1,448 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.view.baselayout.onscreenbutton;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.OvershootInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout$LayoutParams;
 import android.widget.ImageView;
-import android.widget.ImageView$ScaleType;
 import com.sonyericsson.android.camera.research.LocalResearchUtil;
-import com.sonyericsson.android.camera.research.LocalResearchUtil$MeasurementKey;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonGroup;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
-public class OnScreenButton extends FrameLayout implements OnScreenButtonGroup$OnItemUpdatedListener {
+public class OnScreenButton extends FrameLayout implements OnScreenButtonGroup.OnItemUpdatedListener {
     private static final int DISABLED_FILTER = 2131099706;
-    public static final OnScreenButtonListener EMPTY_LISTENER = new OnScreenButton$1();
-    public static final OnScreenButton$Resource EMPTY_RESOURCE = new OnScreenButton$Resource(-1, -1, -1, -1, null);
+    public static final OnScreenButtonListener EMPTY_LISTENER = new OnScreenButtonListener() { // from class: com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButton.1
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onCancel(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onDown(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onLongPress(OnScreenButton onScreenButton) {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onMove(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonListener
+        public void onUp(OnScreenButton onScreenButton, MotionEvent motionEvent) {
+        }
+    };
+    public static final Resource EMPTY_RESOURCE = new Resource(-1, -1, -1, -1, null);
     private static final String TAG = "OnScreenButton";
     private final ImageView mIcon;
     private boolean mIsCanceled;
     private boolean mIsRotatable;
     private boolean mIsTouched;
-    private OnScreenButtonGroup$Item mItem;
+    private OnScreenButtonGroup.Item mItem;
     private OnScreenButtonListener mListener;
     private int mOrientation;
-    private OnScreenButton$Resource mResource;
+    private Resource mResource;
     private int mStaticOrientation;
 
-    static /* synthetic */ OnScreenButtonListener access$000(OnScreenButton onScreenButton) {
-        return onScreenButton.mListener;
+    public static class Resource {
+        public static final int NONE = -1;
+        final int mBackground;
+        final int mDescription;
+        final int mIcon;
+        final int mIconPortrait;
+        final String mText;
+
+        public Resource(int i, int i2, int i3, int i4, String str) {
+            this.mIcon = i;
+            this.mIconPortrait = i2;
+            this.mBackground = i3;
+            this.mDescription = i4;
+            this.mText = str;
+        }
+
+        boolean shouldRotateByView() {
+            return this.mIconPortrait == -1;
+        }
+
+        int getIconResource(int i) {
+            if (i == 2) {
+                return this.mIcon;
+            }
+            if (shouldRotateByView()) {
+                return this.mIcon;
+            }
+            return this.mIconPortrait;
+        }
+
+        int getBackgroundResource() {
+            return this.mBackground;
+        }
+
+        String getDescription(Context context) {
+            if (this.mDescription == -1) {
+                return this.mText != null ? this.mText : "";
+            }
+            return context.getResources().getString(this.mDescription);
+        }
+    }
+
+    private class LongClickListener implements View.OnLongClickListener {
+        private LongClickListener() {
+        }
+
+        @Override // android.view.View.OnLongClickListener
+        public boolean onLongClick(View view) {
+            if (CamLog.VERBOSE) {
+                CamLog.d("onLongClick()");
+            }
+            if (OnScreenButton.this.mListener == OnScreenButton.EMPTY_LISTENER) {
+                return false;
+            }
+            OnScreenButton.this.mListener.onLongPress(OnScreenButton.this);
+            return false;
+        }
     }
 
     public OnScreenButton(Context context) {
@@ -63,27 +472,27 @@ public class OnScreenButton extends FrameLayout implements OnScreenButtonGroup$O
         setFocusableInTouchMode(false);
         setOnClickListener(null);
         setClickable(false);
-        setOnLongClickListener(new OnScreenButton$LongClickListener(this, null));
+        setOnLongClickListener(new LongClickListener());
         setSoundEffectsEnabled(false);
         addView(this.mIcon);
-        this.mIcon.setScaleType(ImageView$ScaleType.CENTER);
+        this.mIcon.setScaleType(ImageView.ScaleType.CENTER);
         this.mIcon.getLayoutParams().width = -2;
         this.mIcon.getLayoutParams().height = -2;
-        ((FrameLayout$LayoutParams) this.mIcon.getLayoutParams()).gravity = 17;
+        ((FrameLayout.LayoutParams) this.mIcon.getLayoutParams()).gravity = 17;
     }
 
-    public void setItem(OnScreenButtonGroup$Item onScreenButtonGroup$Item) {
-        if (onScreenButtonGroup$Item == this.mItem) {
+    public void setItem(OnScreenButtonGroup.Item item) {
+        if (item == this.mItem) {
             return;
         }
-        if (onScreenButtonGroup$Item == null || !onScreenButtonGroup$Item.equals(this.mItem)) {
+        if (item == null || !item.equals(this.mItem)) {
             if (this.mItem != null) {
                 setPressed(false);
                 this.mIsCanceled = true;
                 this.mListener.onCancel(this, null);
                 this.mItem.removeOnUpdatedListener(this);
             }
-            this.mItem = onScreenButtonGroup$Item;
+            this.mItem = item;
             if (this.mItem != null) {
                 setListener(this.mItem.getOnScreenButtonListener());
                 setSoundEffectsEnabled(this.mItem.isSoundEffectsEnabled());
@@ -102,14 +511,14 @@ public class OnScreenButton extends FrameLayout implements OnScreenButtonGroup$O
     }
 
     @Deprecated
-    public void set(OnScreenButton$Resource onScreenButton$Resource) {
-        if (onScreenButton$Resource == this.mResource) {
+    public void set(Resource resource) {
+        if (resource == this.mResource) {
             return;
         }
-        if (onScreenButton$Resource == null) {
+        if (resource == null) {
             this.mResource = EMPTY_RESOURCE;
         } else {
-            this.mResource = onScreenButton$Resource;
+            this.mResource = resource;
         }
         update();
     }
@@ -170,9 +579,7 @@ public class OnScreenButton extends FrameLayout implements OnScreenButtonGroup$O
             this.mIcon.setColorFilter(2131099706);
         }
     }
-
-    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-    @Override // android.view.View
+@Override // android.view.View
     public boolean onTouchEvent(MotionEvent motionEvent) {
         super.onTouchEvent(motionEvent);
         if (CamLog.VERBOSE) {
@@ -247,8 +654,9 @@ public class OnScreenButton extends FrameLayout implements OnScreenButtonGroup$O
         }
     }
 
+
     private boolean contains(MotionEvent motionEvent) {
-        return getGlobalVisibleRect(new Rect()) && motionEvent.getX() >= 0.0f && motionEvent.getX() <= ((float) (getHeight() - 1)) && motionEvent.getY() >= 0.0f && motionEvent.getY() <= ((float) (getWidth() - 1));
+        return motionEvent.getX() >= 0.0f && motionEvent.getX() < ((float) getWidth()) && motionEvent.getY() >= 0.0f && motionEvent.getY() < ((float) getHeight());
     }
 
     public void changeRotatability(int i, boolean z) {
@@ -259,12 +667,12 @@ public class OnScreenButton extends FrameLayout implements OnScreenButtonGroup$O
         setUiOrientation(i);
     }
 
-    @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonGroup$OnItemUpdatedListener
-    public void onUpdated(OnScreenButtonGroup$Item onScreenButtonGroup$Item) {
-        boolean z = this.mResource.getIconResource(this.mOrientation) != onScreenButtonGroup$Item.getResource().getIconResource(this.mOrientation);
-        setSoundEffectsEnabled(onScreenButtonGroup$Item.isSoundEffectsEnabled());
-        setEnabled(onScreenButtonGroup$Item.isEnabled());
-        set(onScreenButtonGroup$Item.getResource());
+    @Override // com.sonyericsson.android.camera.view.baselayout.onscreenbutton.OnScreenButtonGroup.OnItemUpdatedListener
+    public void onUpdated(OnScreenButtonGroup.Item item) {
+        boolean z = this.mResource.getIconResource(this.mOrientation) != item.getResource().getIconResource(this.mOrientation);
+        setSoundEffectsEnabled(item.isSoundEffectsEnabled());
+        setEnabled(item.isEnabled());
+        set(item.getResource());
         if (isShown() && z) {
             this.mIcon.startAnimation(createIconAnimation());
         }
@@ -290,15 +698,15 @@ public class OnScreenButton extends FrameLayout implements OnScreenButtonGroup$O
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
         sendStartupPerformanceDataForReadyForUse();
-        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil$MeasurementKey.VIDEO_RECORDING_STOP_READY_FOR_USE);
+        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil.MeasurementKey.VIDEO_RECORDING_STOP_READY_FOR_USE);
     }
 
     private void sendStartupPerformanceDataForReadyForUse() {
-        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil$MeasurementKey.LAUNCH_COLD_BOOT_FROM_HOME_READY_FOR_USE);
-        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil$MeasurementKey.LAUNCH_WARM_BOOT_FROM_HOME_READY_FOR_USE);
-        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil$MeasurementKey.LAUNCH_COLD_BOOT_FROM_CAMERAKEY_READY_FOR_USE);
-        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil$MeasurementKey.LAUNCH_WARM_BOOT_FROM_CAMERAKEY_READY_FOR_USE);
-        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil$MeasurementKey.LAUNCH_COLD_BOOT_FROM_LOCKSCREEN_READY_FOR_USE);
-        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil$MeasurementKey.LAUNCH_WARM_BOOT_FROM_LOCKSCREEN_READY_FOR_USE);
+        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil.MeasurementKey.LAUNCH_COLD_BOOT_FROM_HOME_READY_FOR_USE);
+        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil.MeasurementKey.LAUNCH_WARM_BOOT_FROM_HOME_READY_FOR_USE);
+        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil.MeasurementKey.LAUNCH_COLD_BOOT_FROM_CAMERAKEY_READY_FOR_USE);
+        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil.MeasurementKey.LAUNCH_WARM_BOOT_FROM_CAMERAKEY_READY_FOR_USE);
+        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil.MeasurementKey.LAUNCH_COLD_BOOT_FROM_LOCKSCREEN_READY_FOR_USE);
+        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil.MeasurementKey.LAUNCH_WARM_BOOT_FROM_LOCKSCREEN_READY_FOR_USE);
     }
 }

@@ -1,12 +1,14 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 
 public enum VideoHdr implements UserSettingValue {
-    HDR_ON(2131231054, 2131690116, "on-video-hdr"),
-    HDR_OFF(2131231053, 2131690115, "off");
+    HDR_ON(R.drawable.cam_core_hdr_shortcut_on_icn, R.string.cam_strings_settings_on_txt, CameraParameters.VIDEO_HDR_ON),
+    HDR_OFF(R.drawable.cam_core_hdr_shortcut_off_icn, R.string.cam_strings_settings_off_txt, "off");
 
     private static final int sParameterTextId = 2131690222;
     private final int mIconId;

@@ -1,11 +1,72 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.cameracommon.sound;
 
 import android.content.Context;
-import android.media.AudioAttributes$Builder;
+import android.media.AudioAttributes;
 import android.media.SoundPool;
-import android.media.SoundPool$Builder;
-import android.media.SoundPool$OnLoadCompleteListener;
 import android.support.annotation.NonNull;
+import com.sonyericsson.android.camera.R;
+import java.io.File;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -17,65 +78,76 @@ public class SoundPlayer {
     private Context mApplicationContext;
     private int mSoundIDToPlay = 0;
     private int mSoundIDPlayed = 0;
-    private final Map<SoundPlayer$Type, SoundPlayer$SoundLoad> mSoundMap = new ConcurrentHashMap();
-    private SoundPool$OnLoadCompleteListener mLoadCompleteListener = new SoundPlayer$1(this);
-    private SoundPool mSoundPool = new SoundPool$Builder().setMaxStreams(1).setAudioAttributes(new AudioAttributes$Builder().setUsage(13).setFlags(1).setContentType(4).build()).build();
-
-    static /* synthetic */ SoundPool access$200(SoundPlayer soundPlayer) {
-        return soundPlayer.mSoundPool;
-    }
-
-    static /* synthetic */ Map access$300(SoundPlayer soundPlayer) {
-        return soundPlayer.mSoundMap;
-    }
-
-    static /* synthetic */ int access$400(SoundPlayer soundPlayer) {
-        return soundPlayer.mSoundIDToPlay;
-    }
-
-    static /* synthetic */ int access$402(SoundPlayer soundPlayer, int i) {
-        soundPlayer.mSoundIDToPlay = i;
-        return i;
-    }
-
-    static /* synthetic */ int access$502(SoundPlayer soundPlayer, int i) {
-        soundPlayer.mSoundIDPlayed = i;
-        return i;
-    }
+    private final Map<Type, SoundLoad> mSoundMap = new ConcurrentHashMap();
+    private SoundPool.OnLoadCompleteListener mLoadCompleteListener = new SoundPool.OnLoadCompleteListener() { // from class: com.sonyericsson.cameracommon.sound.SoundPlayer.1
+        @Override // android.media.SoundPool.OnLoadCompleteListener
+        public void onLoadComplete(SoundPool soundPool, int i, int i2) {
+            if (SoundPlayer.this.mSoundPool == null) {
+                return;
+            }
+            if (i2 != 0) {
+                for (Type type : SoundPlayer.this.mSoundMap.keySet()) {
+                    if (((SoundLoad) SoundPlayer.this.mSoundMap.get(type)).soundID == i) {
+                        ((SoundLoad) SoundPlayer.this.mSoundMap.get(type)).soundID = 0;
+                        return;
+                    }
+                }
+                return;
+            }
+            Iterator it = SoundPlayer.this.mSoundMap.keySet().iterator();
+            while (true) {
+                if (!it.hasNext()) {
+                    break;
+                }
+                Type type2 = (Type) it.next();
+                if (((SoundLoad) SoundPlayer.this.mSoundMap.get(type2)).soundID == i) {
+                    ((SoundLoad) SoundPlayer.this.mSoundMap.get(type2)).isLoaded = true;
+                    break;
+                }
+            }
+            if (i == SoundPlayer.this.mSoundIDToPlay) {
+                SoundPlayer.this.mSoundIDToPlay = 0;
+                SoundPlayer.this.mSoundIDPlayed = SoundPlayer.this.mSoundPool.play(i, 1.0f, 1.0f, 0, 0, 1.0f);
+            }
+        }
+    };
+    private SoundPool mSoundPool = new SoundPool.Builder().setMaxStreams(1).setAudioAttributes(new AudioAttributes.Builder().setUsage(13).setFlags(1).setContentType(4).build()).build();
 
     public SoundPlayer(Context context) {
         int iLoad;
         this.mApplicationContext = context;
         this.mSoundPool.setOnLoadCompleteListener(this.mLoadCompleteListener);
-        for (SoundPlayer$Type soundPlayer$Type : SoundPlayer$Type.values()) {
-            String strAccess$000 = SoundPlayer$Type.access$000(soundPlayer$Type);
-            if (strAccess$000 != null) {
-                iLoad = this.mSoundPool.load(strAccess$000, 1);
+        for (Type type : Type.values()) {
+            String soundFile = type.getSoundFile();
+            if (soundFile != null) {
+                iLoad = this.mSoundPool.load(soundFile, 1);
             } else {
-                iLoad = this.mSoundPool.load(this.mApplicationContext, SoundPlayer$Type.access$100(soundPlayer$Type), 1);
+                iLoad = this.mSoundPool.load(this.mApplicationContext, type.resourceId, 1);
             }
-            this.mSoundMap.put(soundPlayer$Type, new SoundPlayer$SoundLoad(iLoad, false));
+            this.mSoundMap.put(type, new SoundLoad(iLoad, false));
         }
     }
 
-    public synchronized void play(@NonNull SoundPlayer$Type soundPlayer$Type) {
+    public synchronized void play(@NonNull Type type) {
         if (this.mSoundPool == null) {
             return;
         }
-        if (this.mSoundMap.get(soundPlayer$Type).soundID == 0) {
-            String strAccess$000 = SoundPlayer$Type.access$000(soundPlayer$Type);
-            if (strAccess$000 != null) {
-                this.mSoundMap.get(soundPlayer$Type).soundID = this.mSoundPool.load(strAccess$000, 1);
+        if (this.mSoundMap.get(type).soundID != 0) {
+            if (!this.mSoundMap.get(type).isLoaded) {
+                this.mSoundIDToPlay = this.mSoundMap.get(type).soundID;
+                this.mSoundIDPlayed = 0;
             } else {
-                this.mSoundMap.get(soundPlayer$Type).soundID = this.mSoundPool.load(this.mApplicationContext, SoundPlayer$Type.access$100(soundPlayer$Type), 1);
+                this.mSoundIDPlayed = this.mSoundPool.play(this.mSoundMap.get(type).soundID, 1.0f, 1.0f, 0, 0, 1.0f);
             }
-            this.mSoundIDToPlay = this.mSoundMap.get(soundPlayer$Type).soundID;
-            this.mSoundIDPlayed = 0;
-        } else if (!this.mSoundMap.get(soundPlayer$Type).isLoaded) {
-            this.mSoundIDToPlay = this.mSoundMap.get(soundPlayer$Type).soundID;
-            this.mSoundIDPlayed = 0;
         } else {
-            this.mSoundIDPlayed = this.mSoundPool.play(this.mSoundMap.get(soundPlayer$Type).soundID, 1.0f, 1.0f, 0, 0, 1.0f);
+            String soundFile = type.getSoundFile();
+            if (soundFile != null) {
+                this.mSoundMap.get(type).soundID = this.mSoundPool.load(soundFile, 1);
+            } else {
+                this.mSoundMap.get(type).soundID = this.mSoundPool.load(this.mApplicationContext, type.resourceId, 1);
+            }
+            this.mSoundIDToPlay = this.mSoundMap.get(type).soundID;
+            this.mSoundIDPlayed = 0;
         }
     }
 
@@ -91,6 +163,39 @@ public class SoundPlayer {
             this.mSoundMap.clear();
             this.mSoundPool.release();
             this.mSoundPool = null;
+        }
+    }
+
+    private static class SoundLoad {
+        public boolean isLoaded;
+        public int soundID;
+
+        public SoundLoad(int i, boolean z) {
+            this.soundID = i;
+            this.isLoaded = z;
+        }
+    }
+
+    public enum Type {
+        SELF_TIMER_1SEC("selftimer_1sec.m4a", R.raw.selftimer_1sec),
+        SELF_TIMER_3SEC("selftimer_3sec.m4a", R.raw.selftimer_3sec),
+        SELF_TIMER_4SEC("selftimer_4sec.m4a", R.raw.selftimer_4sec);
+
+        private final String[] SOUND_DIRS = {"/system/media/audio/ui/common/"};
+        private final int resourceId;
+        private final String soundName;
+
+        Type(String str, int i) {
+            this.soundName = str;
+            this.resourceId = i;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private String getSoundFile() {
+            if (!new File(this.SOUND_DIRS[0] + this.soundName).exists()) {
+                return null;
+            }
+            return this.SOUND_DIRS[0] + this.soundName;
         }
     }
 }

@@ -31,8 +31,13 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">ক্যাপচারিং শেষ করতে পারেনি৷ দয়া করে, আরও ধীরে প্যান পরিদৃশ্য৷</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">ক্যাপচারিং শেষ করতে পারেনি৷ দয়া করে দ্রুত প্যান করুন৷</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">আপনার ক্যামেরা সম্পূর্ণ মাত্রায় ঘুরিয়ে একটি সামগ্রিক ফটো তুলুন</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">নিম্নলিখিত ফাইলগুলি তৈরি হচ্ছে:\n- একাধিক কোণ চিত্র\n- 3D চিত্র\nনোট: এই ফাইলগুলিতে একটি ধূসর ক্ষেত্র আছে৷</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">নিম্নলিখিত ফাইলগুলি তৈরি হচ্ছে:\n- একাধিক কোণ চিত্র\n- 3D চিত্র</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"নিম্নলিখিত ফাইলগুলি তৈরি হচ্ছে:
+- একাধিক কোণ চিত্র
+- 3D চিত্র
+নোট: এই ফাইলগুলিতে একটি ধূসর ক্ষেত্র আছে৷"</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"নিম্নলিখিত ফাইলগুলি তৈরি হচ্ছে:
+- একাধিক কোণ চিত্র
+- 3D চিত্র"</string>
     <string name="cam_3d_strings_dialog_processing_include_black_area_txt">প্রক্রিয়াকরণ হচ্ছে...এই চিত্রটিতে একটি ধূসর ক্ষেত্র আছে</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">চিত্র সঞ্চিত হচ্ছে</string>
     <string name="cam_3d_strings_dialog_processing_txt">প্রক্রিয়াকরণ হচ্ছে...</string>
@@ -50,7 +55,7 @@
     <string name="cam_3d_strings_shooting_direction_guide_txt">বামের আইকনটিতে আলতো চাপে দিকটি পরিবর্তন করুন</string>
     <string name="cam_3d_strings_shooting_failure_title_txt">শ্যুট করতে পারেনি</string>
     <string name="cam_3d_strings_shooting_guide_down_to_up_txt">নীচ থেকে উপরে প্যান করুন</string>
-    <string name="cam_3d_strings_shooting_guide_left_to_right_txt">বাম  থেকে ডান দিকে প্যান করুন</string>
+    <string name="cam_3d_strings_shooting_guide_left_to_right_txt">"বাম  থেকে ডান দিকে প্যান করুন"</string>
     <string name="cam_3d_strings_shooting_guide_pan_too_fast_txt">আরো ধীরে ঘোরান</string>
     <string name="cam_3d_strings_shooting_guide_press_key_txt">ক্যামেরাটিকে টিপুন এবং ক্যামেরাটি ধীরে ধীরে ঘোরান</string>
     <string name="cam_3d_strings_shooting_guide_right_to_left_txt">ডান থেকে বাম দিকে প্যান করুন</string>
@@ -119,7 +124,7 @@
     <string name="cam_strings_accessibility_switch_to_front_by_swiping_txt">সম্মুখ ক্যামেরাতে পাল্টানো হয়েছে</string>
     <string name="cam_strings_accessibility_switch_to_front_txt">সম্মুখ ক্যামেরায় পাল্টাতে দুইবার আলতো চাপুন</string>
     <string name="cam_strings_accessibility_switch_to_main_by_swiping_txt">মুখ্য ক্যামেরাতে পাল্টানো হয়েছে</string>
-    <string name="cam_strings_accessibility_switch_to_main_txt">মুখ্য ক্যামেরাতে পাল্টাতে দু\'বার আলতো চাপুন</string>
+    <string name="cam_strings_accessibility_switch_to_main_txt">"মুখ্য ক্যামেরাতে পাল্টাতে দু'বার আলতো চাপুন"</string>
     <string name="cam_strings_accessibility_switch_to_photo_txt">ক্যামেরায় পাল্টাতে দুইবার আলতো চাপুন</string>
     <string name="cam_strings_accessibility_switch_to_video_txt">ভিডিওতে পাল্টাতে দুইবার আলতো চাপুন</string>
     <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">HDR চালু করতে দুবার আলতো চাপুন</string>
@@ -342,7 +347,7 @@
     <string name="cam_strings_focus_mode_face_detection_txt">মুখ চিহ্নায়ন</string>
     <string name="cam_strings_focus_mode_infinity_txt">সীমাহীন</string>
     <string name="cam_strings_focus_mode_macro_txt">ম্যাক্রো</string>
-    <string name="cam_strings_focus_mode_multi_af_txt">একাধিক AF </string>
+    <string name="cam_strings_focus_mode_multi_af_txt">"একাধিক AF "</string>
     <string name="cam_strings_focus_mode_object_tracking_txt">বস্তুর খেই রাখা</string>
     <string name="cam_strings_focus_mode_single_af_txt">একক স্বয়ংক্রিয় ফোকাস</string>
     <string name="cam_strings_focus_mode_title_txt">ফোকাস মোড</string>
@@ -360,7 +365,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">আপনার স্কিনকে উজ্জ্বল ও মসৃণ করুন। প্রভাবটি সম্মুখ ক্যামেরা ব্যবহারকারী অ্যাপ্লিকেশনগুলিতে কাজ করে। এটি ফটো ও ভিডিওগুলিতে প্রয়োগ করা যেতে পারে। আপনি স্তরও সুবিন্যস্ত করতে পারেন।</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">স্তরের সামঞ্জস্য</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">কোমল রূপ</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">অ্যাপ সূচনা করা যাচ্ছে না।\nআপনার যন্ত্রে %1$s-এর সর্বশেষ সংস্করণ ইনস্টল ও সক্ষম করা আছে কিনা নিশ্চিত করুন।</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"অ্যাপ সূচনা করা যাচ্ছে না।
+আপনার যন্ত্রে %1$s-এর সর্বশেষ সংস্করণ ইনস্টল ও সক্ষম করা আছে কিনা নিশ্চিত করুন।"</string>
     <string name="cam_strings_gridline_txt">গ্রিড লাইনগুলি</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">ক্যামেরার দিকে আপনার হাতের তালু ঘোরান। আপনার হাতের তালু চিনতে পারলে নিজস্ব-টাইমার চালু হবে। এটিকে চেনা সহজ করতে, আপনার আঙুলগুলি উপরের দিকে বাড়ান।</string>
     <string name="cam_strings_hand_shutter_hint_txt">ক্যামেরার দিকে আপনার হাতের তালু ঘোরান</string>
@@ -404,25 +410,26 @@
     <string name="cam_strings_more_common_setting_title_txt">সাধারণ সেটিংস</string>
     <string name="cam_strings_more_txt">আরও</string>
     <string name="cam_strings_multi_window_txt">ব্যবহার করার জন্য %1$s পূর্ণ স্ক্রীনে পাল্টাতে বিভাজন বারের মধ্যভাগ টেনে আনুন</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">এখন অন্য যন্ত্র সংযুক্ত হয়েছে।\nআপনি কি যন্ত্রে ভিউফাইন্ডারের মাধ্যমে প্রতিচ্ছবি অংশীদারি করতে চান?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"এখন অন্য যন্ত্র সংযুক্ত হয়েছে।
+আপনি কি যন্ত্রে ভিউফাইন্ডারের মাধ্যমে প্রতিচ্ছবি অংশীদারি করতে চান?"</string>
     <string name="cam_strings_multicam_add_device_txt">যন্ত্র যুক্ত করুন</string>
     <string name="cam_strings_multicam_add_more_txt">আরও যুক্ত করুন</string>
     <string name="cam_strings_multicam_apply_txt">সম্পন্ন হয়েছে</string>
     <string name="cam_strings_multicam_connection_failure_dialog_txt">সংযোগ করা গেল না</string>
-    <string name="cam_strings_multicam_di_connection_err_dialog_txt">আপনার Xperia যখন অন্য Xperia এর সঙ্গে সংযুক্ত হবে তখন Sony\'র কোন Wi-Fi/NFC ক্যামেরার সঙ্গে সংযোগ করতে পারবে না।</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">"আপনার Xperia যখন অন্য Xperia এর সঙ্গে সংযুক্ত হবে তখন Sony'র কোন Wi-Fi/NFC ক্যামেরার সঙ্গে সংযোগ করতে পারবে না।"</string>
     <string name="cam_strings_multicam_error_app_ver_old_txt">অ্যাপের সংস্করণ মেলে নি। সংযোগ করা যাবে না। আপনার অ্যাপ আপডেট করা প্রয়োজন।</string>
     <string name="cam_strings_multicam_error_disconnect_txt">সংযোগ বিচ্ছিন্ন হয়েছে</string>
     <string name="cam_strings_multicam_error_nfc_txt">NFC লকের মাধ্যমে সূচনা করা যাবে না।</string>
     <string name="cam_strings_multicam_error_wifi_txt">Wi-Fi -এ সংযোগকরণের সময় এই মোডটি অনুপলভ্য।</string>
     <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">সর্বোচ্চ সংখ্যক যন্ত্র যুক্ত করা হয়েছে।</string>
-    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">একই সময়ে আপনার Xperia এর সাথে কেবলমাত্র একটি Sony\'র Wi-Fi/NFC ক্যামেরার সংযোগ ঘটানো যায়।</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">"একই সময়ে আপনার Xperia এর সাথে কেবলমাত্র একটি Sony'র Wi-Fi/NFC ক্যামেরার সংযোগ ঘটানো যায়।"</string>
     <string name="cam_strings_multicam_nfc_connect_title_txt">সংযোগ করতে যন্ত্র একসঙ্গে স্পর্শ করুন</string>
-    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Sony\'র Wi-Fi/NFC ক্যামেরা</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">"Sony'র Wi-Fi/NFC ক্যামেরা"</string>
     <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
     <string name="cam_strings_multicam_nfc_touch_to_beam_title_txt">পর্দায় স্পর্শ করুন</string>
     <string name="cam_strings_multicam_security_info_txt">আপনি যে যন্ত্রটিতে সংযোগ করেছেন সেটি যদি এই অ্যাপের মাধ্যমে অন্য Xperia যন্ত্রগুলির সঙ্গে সংযুক্ত হয়, তাহলে আপনার Xperia ও স্বয়ংক্রিয়ভাবে এই যন্ত্রগুলির সঙ্গে সংযুক্ত হবে এবং আপনার Xperia এবং সংযুক্ত সমস্ত যন্ত্রগুলির মধ্যে ভিউ ফাইন্ডারের মাধ্যমে প্রতিটি প্রতিচ্ছবি অংশীদারি করা হবে।</string>
     <string name="cam_strings_multicam_touch_add_camera_desc_txt">একটি যন্ত্র যুক্ত করতে আলতো চাপুন। এর ভিউ ফাইন্ডার দিয়ে ছবিটি এখানে দৃষ্টিগোচর হবে।</string>
-    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">আপনার Xperia যখন কোন Sony\'র Wi-Fi/NFC ক্যামেরার সাথে সংযুক্ত হয় তখন কোন Xperia এর সাথে সংযোগ করতে পারে না।</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">"আপনার Xperia যখন কোন Sony'র Wi-Fi/NFC ক্যামেরার সাথে সংযুক্ত হয় তখন কোন Xperia এর সাথে সংযোগ করতে পারে না।"</string>
     <string name="cam_strings_ok_txt">ঠিক আছে</string>
     <string name="cam_strings_permgroupdesc_thermalmitigation_message_txt">যন্ত্রের তাপমাত্রার উপরে ভিত্তি করে অ্যাপটিকে স্থিতিশীল ক্যাপচারিংয়ের জন্য সিস্টেম নিয়ন্ত্রণ করার অনুমোদন দিন।</string>
     <string name="cam_strings_permgrouplab_thermalmitigation_txt">সিস্টেম নিয়ন্ত্রণ করুন</string>
@@ -436,16 +443,19 @@
     <string name="cam_strings_photometry_txt">মিটারিং</string>
     <string name="cam_strings_predictive_capture_feedback_txt">পূর্বানুমান করা</string>
     <string name="cam_strings_predictive_capture_txt">পূর্বানুমানভিত্তিক ক্যাপচার</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">আপনার ফোন ল্যান্ডস্কেপ মোডে তুলে ধরার গতি শনাক্ত করে ও কোনো বস্তুর সম্মুখে রাখার নিশানা করে ক্যামেরা স্বয়ংক্রিয়ভাবে চালু করা হয়েছে।\nআপনি ক্যামেরা সেটিংসের স্মার্ট লঞ্চ থেকে এই বৈশিষ্ট্যটি ব্যবহারের আপনার পছন্দসই উপায় নির্বাচন করতে পারবেন।</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"আপনার ফোন ল্যান্ডস্কেপ মোডে তুলে ধরার গতি শনাক্ত করে ও কোনো বস্তুর সম্মুখে রাখার নিশানা করে ক্যামেরা স্বয়ংক্রিয়ভাবে চালু করা হয়েছে।
+আপনি ক্যামেরা সেটিংসের স্মার্ট লঞ্চ থেকে এই বৈশিষ্ট্যটি ব্যবহারের আপনার পছন্দসই উপায় নির্বাচন করতে পারবেন।"</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">তোলার জন্য বৃত্তের ভিতরে স্পর্শ করুন</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">তোলার জন্য স্ক্রীনে স্পর্শ করুন</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">সম্পূর্ণ স্ক্রীনে দেখতে বৃত্তের ভিতরে আলতো চাপুন</string>
     <string name="cam_strings_predictive_launch_guide_txt">ক্যামেরা চালু করতে বৃত্তের ভিতরে স্পর্শ করুন</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">চালু করতে ও তুলতে স্পর্শ করুন</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">চালু করতে স্পর্শ করুন</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">আপনি দ্রুত ক্যামেরা চালু করতে পারবেন। দ্রুত আপনার যন্ত্র ল্যান্ডস্কেপ মোডে নিন এবং ক্যামেরাকে কোনো বস্তুর দিকে তাক করে রাখুন। ক্যামেরা স্বয়ক্রিয়ভাবে শুরু হবে।\nআপনি ক্যামেরা সেটিংসের স্মার্ট লঞ্চ থেকে এই বৈশিষ্ট্যটি ব্যবহার করার জন্য আপনার পছন্দমত উপায় নির্বাচন করতে পারেন।</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"আপনি দ্রুত ক্যামেরা চালু করতে পারবেন। দ্রুত আপনার যন্ত্র ল্যান্ডস্কেপ মোডে নিন এবং ক্যামেরাকে কোনো বস্তুর দিকে তাক করে রাখুন। ক্যামেরা স্বয়ক্রিয়ভাবে শুরু হবে।
+আপনি ক্যামেরা সেটিংসের স্মার্ট লঞ্চ থেকে এই বৈশিষ্ট্যটি ব্যবহার করার জন্য আপনার পছন্দমত উপায় নির্বাচন করতে পারেন।"</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">স্মার্ট লঞ্চ</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">আপনি দ্রুত ক্যামেরা চালু করতে পারবেন। ল্যান্ডস্কেপ ভ্যিউতে বস্তুর দিকে ক্যামেরার মুখ রেখে আপনার যন্ত্র সুইং আপ করুন ও ধরে রাখুন। যন্ত্রটি স্বয়ংক্রিয়ভাবে ক্যামেরা চালু করবে।\nআপনি ক্যামেরা সেটিংসের মধ্যে স্মার্ট লঞ্চ থেকে এই বৈশিষ্ট্যটি বন্ধ করতে পারবেন।</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"আপনি দ্রুত ক্যামেরা চালু করতে পারবেন। ল্যান্ডস্কেপ ভ্যিউতে বস্তুর দিকে ক্যামেরার মুখ রেখে আপনার যন্ত্র সুইং আপ করুন ও ধরে রাখুন। যন্ত্রটি স্বয়ংক্রিয়ভাবে ক্যামেরা চালু করবে।
+আপনি ক্যামেরা সেটিংসের মধ্যে স্মার্ট লঞ্চ থেকে এই বৈশিষ্ট্যটি বন্ধ করতে পারবেন।"</string>
     <string name="cam_strings_predictive_launch_txt">স্মার্ট লঞ্চ</string>
     <string name="cam_strings_preview_always_txt">চালু</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 সেকেন্ড</string>
@@ -478,7 +488,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s এর নিম্নোক্ত অনুমতি(গুলি) প্রয়োজন</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s অনুমতি</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">এই ক্রিয়াটি সম্পন্ন করতে অ্যাপটির নিম্নোক্ত অনুমতির(গুলির) প্রয়োজন হয়।</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">অনুমতি প্রদান করতে, অ্যাপ তথ্য &gt; অনুমতিতে যান।</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">অনুমতি প্রদান করতে, অ্যাপ তথ্য > অনুমতিতে যান।</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">অবিরত করা যায়নি</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">ছবি এবং ভিডিওগুলি তোলা</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">অবস্থান পুনরুদ্ধার করা</string>
@@ -525,11 +535,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">আভ্যন্তরীণ সঞ্চয় স্থানে সঞ্চিত</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">সরান</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">এই ক্রিয়াটি সম্পন্ন করতে অ্যাপটির নিম্নোক্ত অনুমতির(গুলির) প্রয়োজন হয়।</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">একটি SD কার্ড ব্যবহার করতে, ক্যামেরার SD কার্ডে অ্যাক্সেস করা প্রয়োজন। \nSD কার্ডে আবার ডেটা স্টোরেজ পরিবর্তন করুন বা ক্যামেরাকে পরবর্তী স্ক্রীনে SD কার্ডের অ্যাক্সেস দেওয়ার অনুমতি দিন।</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"একটি SD কার্ড ব্যবহার করতে, ক্যামেরার SD কার্ডে অ্যাক্সেস করা প্রয়োজন। 
+SD কার্ডে আবার ডেটা স্টোরেজ পরিবর্তন করুন বা ক্যামেরাকে পরবর্তী স্ক্রীনে SD কার্ডের অ্যাক্সেস দেওয়ার অনুমতি দিন।"</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD কার্ড অনুপলব্ধ</string>
-    <string name="cam_strings_sd_permission_info_2_txt">একটি SD কার্ডের জন্য যে অনুমতির প্রয়োজন তা সনাক্ত করা হয়েছে\n\nSD কার্ডটি ডাটা সঞ্চয়স্থান হিসাবে ব্যবহার করতে, পরবর্তী স্ক্রীনে SD কার্ড বা DCIM ডিরেক্টরি নির্বাচন করুন।</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SD কার্ড বা DCIM ডিরেক্টরি নির্বাচন করা হয় নি। SD কার্ড ব্যবহার করা যাবে না।\n\nঅনুমতি প্রদান করতে, SD কার্ডে সংরক্ষণের অবস্থান পরিবর্তন করা শুরু করুন, বা পরবর্তী পর্দায় যথাযথ ডিরেক্টরি নির্বাচন করুন।</string>
-    <string name="cam_strings_sd_permission_info_txt">নতুন SD কার্ড শনাক্ত হয়েছে যাতে অনুমতির প্রয়োজন বলে জানা গেছে। \nডিফল্ট ডেটা স্টোরেজ হিসেবে অভ্যন্তরীণ ডিভাইসের স্টোরেজ ব্যবহৃত হবে।\n\nআপনি যদি ডেটা স্টোরেজ হিসেবে SD কার্ড ব্যবহার করেন তাহলে দয়া করে ক্যামেরা সেটিংসের মধ্যে যান এবং SD কার্ডে স্টোরেজ বিকল্প পরিবর্তন করুন।</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"একটি SD কার্ডের জন্য যে অনুমতির প্রয়োজন তা সনাক্ত করা হয়েছে
+
+SD কার্ডটি ডাটা সঞ্চয়স্থান হিসাবে ব্যবহার করতে, পরবর্তী স্ক্রীনে SD কার্ড বা DCIM ডিরেক্টরি নির্বাচন করুন।"</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD কার্ড বা DCIM ডিরেক্টরি নির্বাচন করা হয় নি। SD কার্ড ব্যবহার করা যাবে না।
+
+অনুমতি প্রদান করতে, SD কার্ডে সংরক্ষণের অবস্থান পরিবর্তন করা শুরু করুন, বা পরবর্তী পর্দায় যথাযথ ডিরেক্টরি নির্বাচন করুন।"</string>
+    <string name="cam_strings_sd_permission_info_txt">"নতুন SD কার্ড শনাক্ত হয়েছে যাতে অনুমতির প্রয়োজন বলে জানা গেছে। 
+ডিফল্ট ডেটা স্টোরেজ হিসেবে অভ্যন্তরীণ ডিভাইসের স্টোরেজ ব্যবহৃত হবে।
+
+আপনি যদি ডেটা স্টোরেজ হিসেবে SD কার্ড ব্যবহার করেন তাহলে দয়া করে ক্যামেরা সেটিংসের মধ্যে যান এবং SD কার্ডে স্টোরেজ বিকল্প পরিবর্তন করুন।"</string>
     <string name="cam_strings_sd_permission_rationale_txt">SD কার্ডে ফটো ও ভিডিওগুলি সংরক্ষণ করতে</string>
     <string name="cam_strings_select_picture_txt">ছবি নির্বাচন করুন</string>
     <string name="cam_strings_self_timer_05_txt">0.5 সেকেন্ড।</string>
@@ -552,12 +570,16 @@
     <string name="cam_strings_shutter_trigger_txt">অটো ক্যাপচারিং</string>
     <string name="cam_strings_side_touch_not_supported_txt">এই স্ক্রীনে স্লাইড সেন্স সমর্থিত নয়</string>
     <string name="cam_strings_side_touch_on_title_txt">স্লাইড সেন্স</string>
-    <string name="cam_strings_side_touch_on_txt">এই ফাংশনটি ব্যবহার করতে, সেটিংস &gt; ডিসপ্লেতে যান ও স্লাইড সেন্স চালু করুন। এখনই সক্ষম করবেন?</string>
+    <string name="cam_strings_side_touch_on_txt">এই ফাংশনটি ব্যবহার করতে, সেটিংস > ডিসপ্লেতে যান ও স্লাইড সেন্স চালু করুন। এখনই সক্ষম করবেন?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">স্লাইড সেন্স</string>
-    <string name="cam_strings_side_touch_tutorial_txt">আপনি শাটার বোতামের পরিবর্তে শুধুমাত্র স্ক্রীনের সাইড সেন্সরে দুবার আলতো চেপে কোনো ফটো বা ভিডিও তুলতে পারেন। এছাড়া, আপনি সাইড সেন্সরের পাশে আপনার আঙুল স্লাইড করে জুম বাড়াতে বা কমাতে পারেন।\nএই ফাংশনে ফটো ও ভিডিও উভয় মোডই সহায়তা করে। আপনি ক্যামেরা সেটিংসের মধ্যে স্লাইড সেন্স থেকে এটি বন্ধ করতে পারেন।</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">আপনি শাটার বোতামের পরিবর্তে পোর্ট্রেট দৃশ্যে শুধুমাত্র সাইড সেন্সরে দুবার আলতো চেপে একটি ফটো বা ভিডিও তুলতে পারেন। এছাড়া, আপনি সাইড সেন্সরে আপনার আঙুল স্লাইড করে জুম বাড়াতে বা কমাতে পারেন।\nএই ফাংশনে ফটো ও ভিডিও উভয় মোডই সহায়তা করে। আপনি ক্যামেরা সেটিংসের মধ্যে স্লাইড সেন্স থেকে এটি বন্ধ করতে পারেন।</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">আপনি শাটার বোতামের পরিবর্তে পোর্ট্রেট দৃশ্যে স্ক্রীনের সাইড সেন্সরে শুধুমাত্র দুবার আলতো চেপে একটি ফটো বা ভিডিও তুলতে পারেন।\nএই ফাংশনে ফটো ও ভিডিও উভয় মোডই সহায়তা করে। আপনি ক্যামেরা সেটিংসের মধ্যে স্লাইড সেন্স থেকে এটি বন্ধ করতে পারেন।</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">আপনি শাটার বোতামের পরিবর্তে শুধুমাত্র স্ক্রীনের সাইড সেন্সরে দুবার আলতো চেপে কোনো ফটো বা ভিডিও তুলতে পারেন। এছাড়া, আপনি সাইড সেন্সরের পাশে আপনার আঙুল স্লাইড করে জুম বাড়াতে বা কমাতে পারেন।\nএই ফাংশনে ফটো ও ভিডিও উভয় মোডই সহায়তা করে। আপনি ক্যামেরা সেটিংসের মধ্যে স্লাইড সেন্স থেকে এটি বন্ধ করতে পারেন।</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"আপনি শাটার বোতামের পরিবর্তে শুধুমাত্র স্ক্রীনের সাইড সেন্সরে দুবার আলতো চেপে কোনো ফটো বা ভিডিও তুলতে পারেন। এছাড়া, আপনি সাইড সেন্সরের পাশে আপনার আঙুল স্লাইড করে জুম বাড়াতে বা কমাতে পারেন।
+এই ফাংশনে ফটো ও ভিডিও উভয় মোডই সহায়তা করে। আপনি ক্যামেরা সেটিংসের মধ্যে স্লাইড সেন্স থেকে এটি বন্ধ করতে পারেন।"</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"আপনি শাটার বোতামের পরিবর্তে পোর্ট্রেট দৃশ্যে শুধুমাত্র সাইড সেন্সরে দুবার আলতো চেপে একটি ফটো বা ভিডিও তুলতে পারেন। এছাড়া, আপনি সাইড সেন্সরে আপনার আঙুল স্লাইড করে জুম বাড়াতে বা কমাতে পারেন।
+এই ফাংশনে ফটো ও ভিডিও উভয় মোডই সহায়তা করে। আপনি ক্যামেরা সেটিংসের মধ্যে স্লাইড সেন্স থেকে এটি বন্ধ করতে পারেন।"</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"আপনি শাটার বোতামের পরিবর্তে পোর্ট্রেট দৃশ্যে স্ক্রীনের সাইড সেন্সরে শুধুমাত্র দুবার আলতো চেপে একটি ফটো বা ভিডিও তুলতে পারেন।
+এই ফাংশনে ফটো ও ভিডিও উভয় মোডই সহায়তা করে। আপনি ক্যামেরা সেটিংসের মধ্যে স্লাইড সেন্স থেকে এটি বন্ধ করতে পারেন।"</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"আপনি শাটার বোতামের পরিবর্তে শুধুমাত্র স্ক্রীনের সাইড সেন্সরে দুবার আলতো চেপে কোনো ফটো বা ভিডিও তুলতে পারেন। এছাড়া, আপনি সাইড সেন্সরের পাশে আপনার আঙুল স্লাইড করে জুম বাড়াতে বা কমাতে পারেন।
+এই ফাংশনে ফটো ও ভিডিও উভয় মোডই সহায়তা করে। আপনি ক্যামেরা সেটিংসের মধ্যে স্লাইড সেন্স থেকে এটি বন্ধ করতে পারেন।"</string>
     <string name="cam_strings_side_touch_txt">স্লাইড সেন্স</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">ক্যামেরা সেটিংসে রেকর্ডিং শৈলী এবং স্ক্রীন রেজোলিউশন পরিবর্তন করা যেতে পারে</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">অতি ধীর (এক-শট)</string>
@@ -565,7 +587,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">অতি ধীর গতি</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">আপনি ধীর গতির জন্য fps ও রেকর্ডিং স্টাইল পরিবর্তন করতে পারেন</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">আরও বিকল্পসমূহ</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">স্ক্রীনের কেন্দ্রের বোতামটি আলতো চেপে %1$s fps ধীর গতিতে অবিলম্বে একটি অত্যন্ত সুন্দর মুহূর্ত রেকর্ড করুন।\nউজ্জ্বল স্থিতিতে রেকর্ডিং করা হলে তা আপনাকে একটি উত্তম ভিডিও তৈরি করতে সাহায্য করবে।</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"স্ক্রীনের কেন্দ্রের বোতামটি আলতো চেপে %1$s fps ধীর গতিতে অবিলম্বে একটি অত্যন্ত সুন্দর মুহূর্ত রেকর্ড করুন।
+উজ্জ্বল স্থিতিতে রেকর্ডিং করা হলে তা আপনাকে একটি উত্তম ভিডিও তৈরি করতে সাহায্য করবে।"</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">কেন্দ্রের বোতামটি আলতো চেপে %1$s দিয়ে একটি সঠিক মুহূর্ত রেকর্ড করুন</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">স্ক্রীনের কেন্দ্রের বোতামটি আলতো চেপে %1$s fps ধীর গতিতে অবিলম্বে একটি অত্যন্ত সুন্দর মুহূর্ত রেকর্ড করুন</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">অতি ধীর গতি (এক-শট)</string>
@@ -576,7 +599,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">ধীর গতি</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">রেকর্ড করার উপায়</string>
     <string name="cam_strings_slow_motion_standard_txt">ধীর গতি</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">ধীর গতিতে একটি অত্যন্ত সুন্দর মুহূর্তকে দেখিয়ে একটি চিত্তাকর্ষক ভিডিও তৈরি করুন।\nউজ্জ্বল স্থিতিতে রেকর্ডিং করা হলে তা আপনাকে একটি উত্তম ভিডিও তৈরি করতে সাহায্য করবে।</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"ধীর গতিতে একটি অত্যন্ত সুন্দর মুহূর্তকে দেখিয়ে একটি চিত্তাকর্ষক ভিডিও তৈরি করুন।
+উজ্জ্বল স্থিতিতে রেকর্ডিং করা হলে তা আপনাকে একটি উত্তম ভিডিও তৈরি করতে সাহায্য করবে।"</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">আপনি %1$s fps-এ পাল্টে ভিন্ন গতিতে ভিডিও রেকর্ড করতে পারেন</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">সঠিক মুহূর্তে কেন্দ্রের বোতামটি আলতো চাপুন</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">ধীর গতিতে রেকর্ড করা হয়েছে</string>
@@ -607,12 +631,12 @@
     <string name="cam_strings_sw_licence_title_txt">সফ্টওয়্যার লাইসেন্স</string>
     <string name="cam_strings_take_photo_txt">ফটো তুলুন</string>
     <string name="cam_strings_term_of_use_accept_txt">স্বীকার করুন</string>
-    <string name="cam_strings_term_of_use_consent_txt">আমি Sony Mobile এর &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;পরিষেবার শর্তাদিতে&lt;/a&gt;সম্মত।</string>
+    <string name="cam_strings_term_of_use_consent_txt">আমি Sony Mobile এর &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">পরিষেবার শর্তাদিতে&lt;/a>সম্মত।</string>
     <string name="cam_strings_term_of_use_data_charge_txt">আপনার ডেটা প্ল্যানের উপর নির্ভর করে মোবাইল ডেটার মাশুল দেওয়ার জন্য আপনি এই পরিষেবাটি ব্যবহার করতে পারেন।</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile আপনার হ্যাশড Android আইডি স্বতন্ত্র ডিভাইস সনাক্তকারী, অবস্থান ভিত্তিক ডেটা এবং টাইমস্ট্যাম্প সংগ্রহ করবে যাতে পরিষেবার অংশ হিসাবে আপনার হাতে যথাযথ ফলাফল তুলে দেওয়া যায় এবং পরিষেবার উন্নতি সাধন করতে পারা যায়।</string>
     <string name="cam_strings_term_of_use_decline_txt">খারিজ করুন</string>
     <string name="cam_strings_term_of_use_title_txt">বিধি ও শর্তাবলী</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;ব্যবহারের শর্তাবলী&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">ব্যবহারের শর্তাবলী&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">ছবিগুলি নির্বাচনমুক্ত করুন</string>
     <string name="cam_strings_timeshift_operation_failed_txt">সঞ্চয় করা যায় নি</string>
     <string name="cam_strings_timeshift_save_complete_txt">সঞ্চিত</string>
@@ -639,7 +663,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">স্থিতিশীল 4K ভিডিও রেকর্ডিংয়ের জন্য, আপনি এই সেটিংসটি একেবারেই পরিবর্তন করবেন না যদি না আপনি একটি উচ্চ-গতিসম্পন্ন SD কার্ড ব্যবহার করেন (UHS গতির শ্রেণী 1 বা উচ্চতর, বা গতির শ্রেণী 10 সুপারিশকৃত)।</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">স্থিতিশীল Timeshift ভিডিও রেকর্ডিংয়ের জন্য, আপনি এই সেটিংসটি একেবারেই পরিবর্তন করবেন না যদি না আপনি একটি উচ্চ-গতিসম্পন্ন SD কার্ড ব্যবহার করেন (UHS গতির শ্রেণী 1 বা উচ্চতর, বা গতির শ্রেণী 10 সুপারিশকৃত)। যেভাবেই হোক পরিবর্তন করবেন?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">স্থিতিশীল ধীর গতির ভিডিও রেকর্ডিংয়ের জন্য, আপনি এই সেটিংসটি একেবারেই পরিবর্তন করবেন না যদি না আপনি একটি উচ্চ-গতিসম্পন্ন SD কার্ড ব্যবহার করেন (UHS গতির শ্রেণী 1 বা উচ্চতর, বা গতির শ্রেণী 10 সুপারিশকৃত)।</string>
-    <string name="cam_strings_video_explanatory_txt">স্থিতিশীল ভিডিও রেকর্ডিংয়ের জন্য, আমরা ডেটার সঞ্চয়স্থান আভ্যন্তরীণ সঞ্চয়স্থানে পরিবর্তন করার সুপারিশ করি। আপনি কি এখনই পরিবর্তন করতে চান?\n\nআপনি যদি ডেটার সঞ্চয়স্থান হিসাবে SD কার্ড ব্যবহার করা অবিরত রাখতে চান, একটি উচ্চ-গতিসম্পন্ন SD কার্ড ব্যবহার করা নিশ্চিত করুন (UHS গতির শ্রেণী 1 বা উচ্চতর, বা গতির শ্রেণী 10 সুপারিশকৃত)।</string>
+    <string name="cam_strings_video_explanatory_txt">"স্থিতিশীল ভিডিও রেকর্ডিংয়ের জন্য, আমরা ডেটার সঞ্চয়স্থান আভ্যন্তরীণ সঞ্চয়স্থানে পরিবর্তন করার সুপারিশ করি। আপনি কি এখনই পরিবর্তন করতে চান?
+
+আপনি যদি ডেটার সঞ্চয়স্থান হিসাবে SD কার্ড ব্যবহার করা অবিরত রাখতে চান, একটি উচ্চ-গতিসম্পন্ন SD কার্ড ব্যবহার করা নিশ্চিত করুন (UHS গতির শ্রেণী 1 বা উচ্চতর, বা গতির শ্রেণী 10 সুপারিশকৃত)।"</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">ডুয়েল ক্যামেরা</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">আপনি ডুয়েল ক্যামেরা ব্যবহার করে রাতে বা কম আলো থাকা রুমেও কম আওয়াজের সাথে সুন্দর ভিডিও রেকর্ড করতে পারবেন। অতি-উচ্চ সংবেদনশীলতায় দৃশ্য রেকর্ড করার উপর ভিত্তি করে ক্যামেরা স্বয়ংক্রিয়ভাবে একক ক্যামেরা বা ডুয়েল ক্যামেরাতে পাল্টাবে।</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">ডুয়েল ক্যামেরা দিয়ে ভিডিও রেকর্ডিং</string>

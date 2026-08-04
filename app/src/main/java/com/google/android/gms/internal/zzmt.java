@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzmt {
     public static long zza(InputStream inputStream, OutputStream outputStream, boolean z) throws IOException {
         return zza(inputStream, outputStream, z, 1024);
@@ -21,7 +22,7 @@ public final class zzmt {
                 if (i2 == -1) {
                     break;
                 }
-                j += (long) i2;
+                j += i2;
                 outputStream.write(bArr, 0, i2);
             } finally {
                 if (z) {
@@ -33,7 +34,7 @@ public final class zzmt {
         return j;
     }
 
-    public static void zza(ParcelFileDescriptor parcelFileDescriptor) {
+    public static void zza(ParcelFileDescriptor parcelFileDescriptor) throws IOException {
         if (parcelFileDescriptor != null) {
             try {
                 parcelFileDescriptor.close();
@@ -48,7 +49,7 @@ public final class zzmt {
         return byteArrayOutputStream.toByteArray();
     }
 
-    public static void zzb(Closeable closeable) {
+    public static void zzb(Closeable closeable) throws IOException {
         if (closeable != null) {
             try {
                 closeable.close();

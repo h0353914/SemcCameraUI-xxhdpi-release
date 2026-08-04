@@ -1,29 +1,107 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.configuration.parameters;
 
 import android.graphics.Rect;
 import com.sonyericsson.android.camera.ActionMode;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.Configurations;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.recorder.RecordingProfile;
-import com.sonyericsson.android.camera.recorder.RecordingProfile$Builder;
 import com.sonyericsson.android.camera.util.MaxVideoSize;
 import com.sonyericsson.android.camera.util.capability.CameraCapabilityList;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import com.sonyericsson.android.camera.util.capability.VideoConfiguration;
+import com.sonyericsson.cameracommon.device.SizeConstants;
 import com.sonyericsson.cameracommon.storage.Storage;
-import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import java.util.ArrayList;
 import java.util.List;
 
 public enum VideoSize implements UserSettingValue {
-    FOUR_K_UHD_H264(-1, 2131690229, new Rect(0, 0, 3840, 2160), false),
-    FOUR_K_UHD_H265(-1, 2131690229, new Rect(0, 0, 3840, 2160), false),
-    FULL_HD_60FPS(-1, 2131690231, new Rect(0, 0, 1920, 1080), false),
-    FULL_HD(-1, 2131690234, new Rect(0, 0, 1920, 1080), false),
-    HD_120FPS(-1, -1, new Rect(0, 0, 1280, 720), false),
-    HD(-1, 2131690238, new Rect(0, 0, 1280, 720), false),
-    VGA(-1, 2131690243, new Rect(0, 0, 640, 480), false),
-    MMS(-1, 2131690239, new Rect(0, 0, 176, 144), true);
+    FOUR_K_UHD_H264(-1, R.string.cam_strings_video_resolution_4k_txt,
+            new Rect(0, 0, 3840, SizeConstants.HEIGHT_PREVIEW_4K_UHD), false),
+    FOUR_K_UHD_H265(-1, R.string.cam_strings_video_resolution_4k_txt,
+            new Rect(0, 0, 3840, SizeConstants.HEIGHT_PREVIEW_4K_UHD), false),
+    FULL_HD_60FPS(-1, R.string.cam_strings_video_resolution_full_hd_60fps_txt,
+            new Rect(0, 0, SizeConstants.WIDTH_PREVIEW_FULL_HD, SizeConstants.HEIGHT_PREVIEW_FULL_HD), false),
+    FULL_HD(-1, R.string.cam_strings_video_resolution_full_hd_txt,
+            new Rect(0, 0, SizeConstants.WIDTH_PREVIEW_FULL_HD, SizeConstants.HEIGHT_PREVIEW_FULL_HD), false),
+    HD_120FPS(-1, -1, new Rect(0, 0, SizeConstants.WIDTH_PREVIEW_HD, SizeConstants.HEIGHT_PREVIEW_HD), false),
+    HD(-1, R.string.cam_strings_video_resolution_hd_txt,
+            new Rect(0, 0, SizeConstants.WIDTH_PREVIEW_HD, SizeConstants.HEIGHT_PREVIEW_HD), false),
+    VGA(-1, R.string.cam_strings_video_resolution_vga_txt, new Rect(0, 0, 640, 480), false),
+    MMS(-1, R.string.cam_strings_video_resolution_mms_txt, new Rect(0, 0, 176, 144), true);
 
     public static final String TAG = "VideoSize";
     private static final int sParameterTextId = 2131690248;
@@ -37,7 +115,7 @@ public enum VideoSize implements UserSettingValue {
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValue
     public int getKeyTextId() {
-        return 2131690248;
+        return R.string.cam_strings_video_size_txt;
     }
 
     VideoSize(int i, int i2, Rect rect, boolean z) {
@@ -79,27 +157,33 @@ public enum VideoSize implements UserSettingValue {
     public static VideoSize[] getOptions(ActionMode actionMode, Configurations configurations) {
         CameraCapabilityList cameraCapability = PlatformCapability.getCameraCapability(actionMode.mCameraId);
         List<VideoConfiguration> list = cameraCapability.VIDEO_CONFIGURATION.get();
-        Boolean boolValueOf = Boolean.valueOf(PlatformCapability.isFullHdVideoFpsSupported(actionMode.mCameraId, RecordingProfile.getVideoFrameRate(FULL_HD_60FPS, VideoHdr.HDR_OFF)));
-        VideoSize[] expectedOptions = getExpectedOptions(cameraCapability.RESOLUTION_CAPABILITY.get().getVideoSizeOptions());
+        Boolean boolValueOf = Boolean.valueOf(PlatformCapability.isFullHdVideoFpsSupported(actionMode.mCameraId,
+                RecordingProfile.getVideoFrameRate(FULL_HD_60FPS, VideoHdr.HDR_OFF)));
+        VideoSize[] expectedOptions = getExpectedOptions(
+                cameraCapability.RESOLUTION_CAPABILITY.get().getVideoSizeOptions());
+
         ArrayList arrayList = new ArrayList();
         for (VideoSize videoSize : expectedOptions) {
             for (VideoConfiguration videoConfiguration : list) {
-                if (equals(videoSize.mVideoRect, new Rect(0, 0, videoConfiguration.mWidth, videoConfiguration.mHeight))) {
-                    switch (VideoSize$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$VideoSize[videoSize.ordinal()]) {
-                        case 1:
+                if (equals(videoSize.mVideoRect,
+                        new Rect(0, 0, videoConfiguration.mWidth, videoConfiguration.mHeight))) {
+                    switch (videoSize) {
+                        case MMS:
                             break;
-                        case 2:
+                        case FULL_HD_60FPS:
                             if (boolValueOf.booleanValue()) {
                                 arrayList.add(videoSize);
+                                break;
+                            } else {
+                                break;
                             }
-                            break;
-                        case 3:
+                        case FULL_HD:
                             arrayList.add(videoSize);
                             break;
-                        case 4:
+                        case FOUR_K_UHD_H264:
                             arrayList.add(videoSize);
                             break;
-                        case 5:
+                        case FOUR_K_UHD_H265:
                             arrayList.add(videoSize);
                             break;
                         default:
@@ -131,18 +215,22 @@ public enum VideoSize implements UserSettingValue {
         return values();
     }
 
-    public static VideoSize getDefaultValue(ActionMode actionMode, Configurations configurations, Storage storage, Storage$StorageType storage$StorageType) {
+    public static VideoSize getDefaultValue(ActionMode actionMode, Configurations configurations, Storage storage,
+            Storage.StorageType storageType) {
         String defaultVideoSize;
         CameraCapabilityList cameraCapability = PlatformCapability.getCameraCapability(actionMode.mCameraId);
         if (actionMode.mIsOneShot) {
-            defaultVideoSize = findVideoSizeWithConfiguration(configurations, cameraCapability, getOptions(actionMode, configurations), storage, storage$StorageType);
+            defaultVideoSize = findVideoSizeWithConfiguration(configurations, cameraCapability,
+                    getOptions(actionMode, configurations), storage, storageType);
         } else {
             defaultVideoSize = cameraCapability.RESOLUTION_CAPABILITY.get().getDefaultVideoSize();
         }
         return valueOf(defaultVideoSize);
     }
 
-    private static String findVideoSizeWithConfiguration(Configurations configurations, CameraCapabilityList cameraCapabilityList, VideoSize[] videoSizeArr, Storage storage, Storage$StorageType storage$StorageType) {
+    private static String findVideoSizeWithConfiguration(Configurations configurations,
+            CameraCapabilityList cameraCapabilityList, VideoSize[] videoSizeArr, Storage storage,
+            Storage.StorageType storageType) {
         VideoSize videoSizeWithRecordTimeMoreThanGuaranteedTime;
         long videoQuality = configurations.getVideoQuality();
         if (videoQuality == 1 && isContents(videoSizeArr, FULL_HD)) {
@@ -152,13 +240,15 @@ public enum VideoSize implements UserSettingValue {
         } else if (videoQuality == 0 && isContents(videoSizeArr, MMS)) {
             videoSizeWithRecordTimeMoreThanGuaranteedTime = MMS;
         } else {
-            videoSizeWithRecordTimeMoreThanGuaranteedTime = (videoQuality == 4 && isContents(videoSizeArr, VGA)) ? VGA : null;
+            videoSizeWithRecordTimeMoreThanGuaranteedTime = (videoQuality == 4 && isContents(videoSizeArr, VGA)) ? VGA
+                    : null;
         }
         if (videoSizeWithRecordTimeMoreThanGuaranteedTime == null) {
             return cameraCapabilityList.RESOLUTION_CAPABILITY.get().getDefaultVideoSize();
         }
         if (storage != null) {
-            videoSizeWithRecordTimeMoreThanGuaranteedTime = getVideoSizeWithRecordTimeMoreThanGuaranteedTime(configurations, videoSizeWithRecordTimeMoreThanGuaranteedTime, videoSizeArr, storage, storage$StorageType);
+            videoSizeWithRecordTimeMoreThanGuaranteedTime = getVideoSizeWithRecordTimeMoreThanGuaranteedTime(
+                    configurations, videoSizeWithRecordTimeMoreThanGuaranteedTime, videoSizeArr, storage, storageType);
         }
         if (videoSizeWithRecordTimeMoreThanGuaranteedTime != null) {
             return videoSizeWithRecordTimeMoreThanGuaranteedTime.name();
@@ -175,28 +265,32 @@ public enum VideoSize implements UserSettingValue {
         return false;
     }
 
-    private static VideoSize getVideoSizeWithRecordTimeMoreThanGuaranteedTime(Configurations configurations, VideoSize videoSize, VideoSize[] videoSizeArr, Storage storage, Storage$StorageType storage$StorageType) {
-        long maxDuration = MaxVideoSize.create(configurations, new RecordingProfile$Builder().videoSize(videoSize).setOneShot(true).build(), storage, storage$StorageType).getMaxDuration();
+    private static VideoSize getVideoSizeWithRecordTimeMoreThanGuaranteedTime(Configurations configurations,
+            VideoSize videoSize, VideoSize[] videoSizeArr, Storage storage, Storage.StorageType storageType) {
+        long maxDuration = MaxVideoSize.create(configurations,
+                new RecordingProfile.Builder().videoSize(videoSize).setOneShot(true).build(), storage, storageType)
+                .getMaxDuration();
         if (maxDuration == configurations.getVideoMaxDurationInMillisecs()) {
             return videoSize;
         }
-        if (!isContents(videoSizeArr, videoSize) || maxDuration < 3000) {
-            int i = VideoSize$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$VideoSize[videoSize.ordinal()];
-            if (i == 1) {
-                return MMS;
-            }
-            if (i == 3) {
-                return getVideoSizeWithRecordTimeMoreThanGuaranteedTime(configurations, HD, videoSizeArr, storage, storage$StorageType);
-            }
-            switch (i) {
-                case 6:
+        if (!isContents(videoSizeArr, videoSize) || maxDuration < MaxVideoSize.GUARANTEED_MIN_DURATION_IN_MILLIS) {
+            switch (videoSize) {
+                case MMS:
+                    return MMS;
+                case FULL_HD:
+                    return getVideoSizeWithRecordTimeMoreThanGuaranteedTime(configurations, HD, videoSizeArr, storage,
+                            storageType);
+                case HD:
                     if (isContents(videoSizeArr, VGA)) {
-                        return getVideoSizeWithRecordTimeMoreThanGuaranteedTime(configurations, VGA, videoSizeArr, storage, storage$StorageType);
+                        return getVideoSizeWithRecordTimeMoreThanGuaranteedTime(configurations, VGA, videoSizeArr,
+                                storage, storageType);
                     }
-                    return getVideoSizeWithRecordTimeMoreThanGuaranteedTime(configurations, MMS, videoSizeArr, storage, storage$StorageType);
-                case 7:
+                    return getVideoSizeWithRecordTimeMoreThanGuaranteedTime(configurations, MMS, videoSizeArr, storage,
+                            storageType);
+                case VGA:
                     if (isContents(videoSizeArr, MMS)) {
-                        return getVideoSizeWithRecordTimeMoreThanGuaranteedTime(configurations, MMS, videoSizeArr, storage, storage$StorageType);
+                        return getVideoSizeWithRecordTimeMoreThanGuaranteedTime(configurations, MMS, videoSizeArr,
+                                storage, storageType);
                     }
                 default:
                     return videoSize;
@@ -217,4 +311,5 @@ public enum VideoSize implements UserSettingValue {
     public boolean is4KVideo() {
         return this.mVideoRect.width() == 3840 && this.mVideoRect.height() == 2160;
     }
+
 }

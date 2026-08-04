@@ -1,3 +1,96 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.google.android.apps.gsa.search.shared.service.proto;
 
 import com.google.protobuf.ByteString;
@@ -5,8 +98,6 @@ import com.google.protobuf.CodedInputStream;
 import com.google.protobuf.ExtensionRegistryLite;
 import com.google.protobuf.FieldType;
 import com.google.protobuf.GeneratedMessageLite;
-import com.google.protobuf.GeneratedMessageLite$DefaultInstanceBasedParser;
-import com.google.protobuf.GeneratedMessageLite$MethodToInvoke;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Parser;
 import com.google.protobuf.ProtoField;
@@ -19,7 +110,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 
 @ProtoMessage(checkInitialized = {}, messageSetWireFormat = false, protoSyntax = ProtoSyntax.PROTO2)
-public final class LensServiceEventData extends GeneratedMessageLite<LensServiceEventData, LensServiceEventData$Builder> implements LensServiceEventDataOrBuilder {
+public final class LensServiceEventData extends GeneratedMessageLite<LensServiceEventData, LensServiceEventData.Builder> implements LensServiceEventDataOrBuilder {
     private static final LensServiceEventData DEFAULT_INSTANCE = new LensServiceEventData();
     private static volatile Parser<LensServiceEventData> PARSER = null;
     public static final int SERVICE_API_VERSION_FIELD_NUMBER = 1;
@@ -30,18 +121,6 @@ public final class LensServiceEventData extends GeneratedMessageLite<LensService
     @ProtoField(fieldNumber = 1, isRequired = false, type = FieldType.INT32)
     @ProtoPresenceCheckedField(mask = 1, presenceBitsId = 0)
     private int serviceApiVersion_;
-
-    static /* synthetic */ LensServiceEventData access$000() {
-        return DEFAULT_INSTANCE;
-    }
-
-    static /* synthetic */ void access$100(LensServiceEventData lensServiceEventData, int i) {
-        lensServiceEventData.setServiceApiVersion(i);
-    }
-
-    static /* synthetic */ void access$200(LensServiceEventData lensServiceEventData) {
-        lensServiceEventData.clearServiceApiVersion();
-    }
 
     private LensServiceEventData() {
     }
@@ -56,12 +135,14 @@ public final class LensServiceEventData extends GeneratedMessageLite<LensService
         return this.serviceApiVersion_;
     }
 
-    private void setServiceApiVersion(int value) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void setServiceApiVersion(int value) {
         this.bitField0_ |= 1;
         this.serviceApiVersion_ = value;
     }
 
-    private void clearServiceApiVersion() {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void clearServiceApiVersion() {
         this.bitField0_ &= -2;
         this.serviceApiVersion_ = 0;
     }
@@ -114,40 +195,72 @@ public final class LensServiceEventData extends GeneratedMessageLite<LensService
         return (LensServiceEventData) GeneratedMessageLite.parseFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
 
-    public static LensServiceEventData$Builder newBuilder() {
-        return (LensServiceEventData$Builder) DEFAULT_INSTANCE.createBuilder();
+    public static Builder newBuilder() {
+        return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
 
-    public static LensServiceEventData$Builder newBuilder(LensServiceEventData prototype) {
-        return (LensServiceEventData$Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    public static Builder newBuilder(LensServiceEventData prototype) {
+        return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
     }
 
-    protected final Object dynamicMethod(GeneratedMessageLite$MethodToInvoke method, Object arg0, Object arg1) {
-        switch (LensServiceEventData$1.$SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke[method.ordinal()]) {
-            case 1:
+    public static final class Builder extends GeneratedMessageLite.Builder<LensServiceEventData, Builder> implements LensServiceEventDataOrBuilder {
+        /* synthetic */ Builder(Object unused) {
+            this();
+        }
+
+        private Builder() {
+            super(LensServiceEventData.DEFAULT_INSTANCE);
+        }
+
+        @Override // com.google.android.apps.gsa.search.shared.service.proto.LensServiceEventDataOrBuilder
+        public boolean hasServiceApiVersion() {
+            return ((LensServiceEventData) this.instance).hasServiceApiVersion();
+        }
+
+        @Override // com.google.android.apps.gsa.search.shared.service.proto.LensServiceEventDataOrBuilder
+        public int getServiceApiVersion() {
+            return ((LensServiceEventData) this.instance).getServiceApiVersion();
+        }
+
+        public Builder setServiceApiVersion(int value) {
+            copyOnWrite();
+            ((LensServiceEventData) this.instance).setServiceApiVersion(value);
+            return this;
+        }
+
+        public Builder clearServiceApiVersion() {
+            copyOnWrite();
+            ((LensServiceEventData) this.instance).clearServiceApiVersion();
+            return this;
+        }
+    }
+
+
+    protected final Object dynamicMethod(GeneratedMessageLite.MethodToInvoke method, Object arg0, Object arg1) {
+        switch (method) {
+            case NEW_MUTABLE_INSTANCE:
                 return new LensServiceEventData();
-            case 2:
-                return new LensServiceEventData$Builder(null);
-            case 3:
+            case NEW_BUILDER:
+                return new Builder(null);
+            case BUILD_MESSAGE_INFO:
                 return newMessageInfo(DEFAULT_INSTANCE, "\u0001\u0001\u0000\u0001\u0001\u0001\u0001\u0002\u0000\u0000\u0000\u0001\u0004\u0000", new Object[]{"bitField0_", "serviceApiVersion_"});
-            case 4:
+            case GET_DEFAULT_INSTANCE:
                 return DEFAULT_INSTANCE;
-            case 5:
-                GeneratedMessageLite$DefaultInstanceBasedParser generatedMessageLite$DefaultInstanceBasedParser = PARSER;
-                if (generatedMessageLite$DefaultInstanceBasedParser == null) {
-                    synchronized (LensServiceEventData.class) {
-                        generatedMessageLite$DefaultInstanceBasedParser = PARSER;
-                        if (generatedMessageLite$DefaultInstanceBasedParser == null) {
-                            generatedMessageLite$DefaultInstanceBasedParser = new GeneratedMessageLite$DefaultInstanceBasedParser(DEFAULT_INSTANCE);
-                            PARSER = generatedMessageLite$DefaultInstanceBasedParser;
+            case GET_PARSER:
+                    GeneratedMessageLite.DefaultInstanceBasedParser defaultInstanceBasedParser = (GeneratedMessageLite.DefaultInstanceBasedParser) PARSER;
+                    if (defaultInstanceBasedParser == null) {
+                        synchronized (LensServiceEventData.class) {
+                            defaultInstanceBasedParser = (GeneratedMessageLite.DefaultInstanceBasedParser) PARSER;
+                        if (defaultInstanceBasedParser == null) {
+                            defaultInstanceBasedParser = new GeneratedMessageLite.DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                            PARSER = defaultInstanceBasedParser;
                         }
-                        break;
                     }
                 }
-                return generatedMessageLite$DefaultInstanceBasedParser;
-            case 6:
+                return defaultInstanceBasedParser;
+            case GET_MEMOIZED_IS_INITIALIZED:
                 return (byte) 1;
-            case 7:
+            case SET_MEMOIZED_IS_INITIALIZED:
                 return null;
             default:
                 throw new UnsupportedOperationException();

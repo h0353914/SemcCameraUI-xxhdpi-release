@@ -4,23 +4,23 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.storage.CameraStorageManager;
-import com.sonyericsson.cameracommon.storage.CameraStorageManager$UpdateRequestReason;
 import com.sonyericsson.cameracommon.storage.SavingTaskInquiry;
-import com.sonyericsson.cameracommon.storage.Storage$StorageType;
+import com.sonyericsson.cameracommon.storage.Storage;
+import com.sonyericsson.cameracommon.storage.updater.StorageUpdateTask;
 import java.util.concurrent.Semaphore;
 
 public class StateUpdateTask extends StorageUpdateTask {
-    public StateUpdateTask(@NonNull Storage$StorageType storage$StorageType, @NonNull CameraStorageManager cameraStorageManager, @NonNull SavingTaskInquiry savingTaskInquiry, @NonNull Semaphore semaphore, @Nullable StorageUpdateTask$OnTaskFinishCallback storageUpdateTask$OnTaskFinishCallback, @NonNull CameraStorageManager$UpdateRequestReason cameraStorageManager$UpdateRequestReason) {
-        super(storage$StorageType, cameraStorageManager, savingTaskInquiry, semaphore, storageUpdateTask$OnTaskFinishCallback, cameraStorageManager$UpdateRequestReason);
+    public StateUpdateTask(@NonNull Storage.StorageType storageType, @NonNull CameraStorageManager cameraStorageManager, @NonNull SavingTaskInquiry savingTaskInquiry, @NonNull Semaphore semaphore, @Nullable StorageUpdateTask.OnTaskFinishCallback onTaskFinishCallback, @NonNull CameraStorageManager.UpdateRequestReason updateRequestReason) {
+        super(storageType, cameraStorageManager, savingTaskInquiry, semaphore, onTaskFinishCallback, updateRequestReason);
     }
 
     @Override // java.util.concurrent.Callable
     @Nullable
     public Object call() throws Exception {
-        Storage$StorageType type = getType();
+        Storage.StorageType type = getType();
         long reservedSize = getInquiry().getReservedSize(type);
-        CameraStorageManager$UpdateRequestReason requestReason = getRequestReason();
-        if (requestReason == CameraStorageManager$UpdateRequestReason.APP_LAUNCH) {
+        CameraStorageManager.UpdateRequestReason requestReason = getRequestReason();
+        if (requestReason == CameraStorageManager.UpdateRequestReason.APP_LAUNCH) {
             if (acquire()) {
                 try {
                     try {
@@ -53,7 +53,7 @@ public class StateUpdateTask extends StorageUpdateTask {
             } else if (CamLog.DEBUG) {
                 CamLog.d("StateUpdateTask[" + type + "]: SKIP");
             }
-            getStorageManager().requestVolumeCheck(type, getStorageManager().calculateNextPollingInterval(getType()), CameraStorageManager$UpdateRequestReason.PERIODIC_UPDATE);
+            getStorageManager().requestVolumeCheck(type, getStorageManager().calculateNextPollingInterval(getType()), CameraStorageManager.UpdateRequestReason.PERIODIC_UPDATE);
         }
         notifyFinished();
         return null;

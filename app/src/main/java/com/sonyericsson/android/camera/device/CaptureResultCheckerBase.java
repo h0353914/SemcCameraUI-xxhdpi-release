@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.device;
 
 import android.os.Handler;

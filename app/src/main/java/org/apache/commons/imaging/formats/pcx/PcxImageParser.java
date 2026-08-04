@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.pcx;
 
+import android.support.v4.view.ViewCompat;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.color.ColorSpace;
@@ -22,11 +23,10 @@ import java.util.Properties;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.ImageInfo;
-import org.apache.commons.imaging.ImageInfo$ColorType;
-import org.apache.commons.imaging.ImageInfo$CompressionAlgorithm;
 import org.apache.commons.imaging.ImageParser;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
+import org.apache.commons.imaging.ImagingConstants;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.common.ByteConversions;
 import org.apache.commons.imaging.common.ImageMetadata;
@@ -34,21 +34,23 @@ import org.apache.commons.imaging.common.bytesource.ByteSource;
 import org.apache.commons.imaging.util.IoUtils;
 
 public class PcxImageParser extends ImageParser {
-    private static final String[] ACCEPTED_EXTENSIONS = {".pcx", ".pcc"};
     private static final String DEFAULT_EXTENSION = ".pcx";
+    private static final String[] ACCEPTED_EXTENSIONS = { DEFAULT_EXTENSION, ".pcc" };
 
     @Override // org.apache.commons.imaging.ImageParser
     public String getDefaultExtension() {
-        return ".pcx";
+        return DEFAULT_EXTENSION;
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public byte[] getICCProfileBytes(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
+    public byte[] getICCProfileBytes(ByteSource byteSource, Map<String, Object> map)
+            throws IOException, ImageReadException {
         return null;
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public ImageMetadata getMetadata(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
+    public ImageMetadata getMetadata(ByteSource byteSource, Map<String, Object> map)
+            throws IOException, ImageReadException {
         return null;
     }
 
@@ -73,19 +75,24 @@ public class PcxImageParser extends ImageParser {
 
     @Override // org.apache.commons.imaging.ImageParser
     protected ImageFormat[] getAcceptedTypes() {
-        return new ImageFormat[]{ImageFormats.PCX};
+        return new ImageFormat[] { ImageFormats.PCX };
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public ImageInfo getImageInfo(ByteSource byteSource, Map<String, Object> map) throws Throwable {
-        PcxImageParser$PcxHeader pcxHeader = readPcxHeader(byteSource);
+    public ImageInfo getImageInfo(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
+        PcxHeader pcxHeader = readPcxHeader(byteSource);
         Dimension imageSize = getImageSize(byteSource, map);
-        return new ImageInfo("PCX", pcxHeader.bitsPerPixel * pcxHeader.nPlanes, new ArrayList(), ImageFormats.PCX, "ZSoft PCX Image", imageSize.height, "image/x-pcx", 1, pcxHeader.vDpi, Math.round(imageSize.getHeight() / ((double) pcxHeader.vDpi)), pcxHeader.hDpi, Math.round(imageSize.getWidth() / ((double) pcxHeader.hDpi)), imageSize.width, false, false, (pcxHeader.nPlanes == 3 && pcxHeader.bitsPerPixel == 8) ? false : true, ImageInfo$ColorType.RGB, pcxHeader.encoding == 1 ? ImageInfo$CompressionAlgorithm.RLE : ImageInfo$CompressionAlgorithm.NONE);
+        return new ImageInfo("PCX", pcxHeader.bitsPerPixel * pcxHeader.nPlanes, new ArrayList(), ImageFormats.PCX,
+                "ZSoft PCX Image", imageSize.height, "image/x-pcx", 1, pcxHeader.vDpi,
+                Math.round(imageSize.getHeight() / pcxHeader.vDpi), pcxHeader.hDpi,
+                Math.round(imageSize.getWidth() / pcxHeader.hDpi), imageSize.width, false, false,
+                (pcxHeader.nPlanes == 3 && pcxHeader.bitsPerPixel == 8) ? false : true, ImageInfo.ColorType.RGB,
+                pcxHeader.encoding == 1 ? ImageInfo.CompressionAlgorithm.RLE : ImageInfo.CompressionAlgorithm.NONE);
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public Dimension getImageSize(ByteSource byteSource, Map<String, Object> map) throws Throwable {
-        PcxImageParser$PcxHeader pcxHeader = readPcxHeader(byteSource);
+    public Dimension getImageSize(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
+        PcxHeader pcxHeader = readPcxHeader(byteSource);
         int i = (pcxHeader.xMax - pcxHeader.xMin) + 1;
         if (i < 0) {
             throw new ImageReadException("Image width is negative");
@@ -97,26 +104,101 @@ public class PcxImageParser extends ImageParser {
         return new Dimension(i, i2);
     }
 
-    private PcxImageParser$PcxHeader readPcxHeader(ByteSource byteSource) throws Throwable {
+    static class PcxHeader {
+        public static final int ENCODING_RLE = 1;
+        public static final int ENCODING_UNCOMPRESSED = 0;
+        public static final int PALETTE_INFO_COLOR = 1;
+        public static final int PALETTE_INFO_GRAYSCALE = 2;
+        public final int bitsPerPixel;
+        public final int bytesPerLine;
+        public final int[] colormap;
+        public final int encoding;
+        public final int hDpi;
+        public final int hScreenSize;
+        public final int manufacturer;
+        public final int nPlanes;
+        public final int paletteInfo;
+        public final int reserved;
+        public final int vDpi;
+        public final int vScreenSize;
+        public final int version;
+        public final int xMax;
+        public final int xMin;
+        public final int yMax;
+        public final int yMin;
+
+        public PcxHeader(int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9, int i10, int[] iArr,
+                int i11, int i12, int i13, int i14, int i15, int i16) {
+            this.manufacturer = i;
+            this.version = i2;
+            this.encoding = i3;
+            this.bitsPerPixel = i4;
+            this.xMin = i5;
+            this.yMin = i6;
+            this.xMax = i7;
+            this.yMax = i8;
+            this.hDpi = i9;
+            this.vDpi = i10;
+            this.colormap = iArr;
+            this.reserved = i11;
+            this.nPlanes = i12;
+            this.bytesPerLine = i13;
+            this.paletteInfo = i14;
+            this.hScreenSize = i15;
+            this.vScreenSize = i16;
+        }
+
+        public void dump(PrintWriter printWriter) {
+            printWriter.println("PcxHeader");
+            printWriter.println("Manufacturer: " + this.manufacturer);
+            printWriter.println("Version: " + this.version);
+            printWriter.println("Encoding: " + this.encoding);
+            printWriter.println("BitsPerPixel: " + this.bitsPerPixel);
+            printWriter.println("xMin: " + this.xMin);
+            printWriter.println("yMin: " + this.yMin);
+            printWriter.println("xMax: " + this.xMax);
+            printWriter.println("yMax: " + this.yMax);
+            printWriter.println("hDpi: " + this.hDpi);
+            printWriter.println("vDpi: " + this.vDpi);
+            printWriter.print("ColorMap: ");
+            for (int i = 0; i < this.colormap.length; i++) {
+                if (i > 0) {
+                    printWriter.print(",");
+                }
+                printWriter.print("(" + ((this.colormap[i] >> 16) & 255) + "," + ((this.colormap[i] >> 8) & 255) + ","
+                        + (this.colormap[i] & 255) + ")");
+            }
+            printWriter.println();
+            printWriter.println("Reserved: " + this.reserved);
+            printWriter.println("nPlanes: " + this.nPlanes);
+            printWriter.println("BytesPerLine: " + this.bytesPerLine);
+            printWriter.println("PaletteInfo: " + this.paletteInfo);
+            printWriter.println("hScreenSize: " + this.hScreenSize);
+            printWriter.println("vScreenSize: " + this.vScreenSize);
+            printWriter.println();
+        }
+    }
+
+    private PcxHeader readPcxHeader(ByteSource byteSource) throws IOException, ImageReadException {
         InputStream inputStream;
         try {
             inputStream = byteSource.getInputStream();
             try {
-                PcxImageParser$PcxHeader pcxHeader = readPcxHeader(inputStream, false);
+                PcxHeader pcxHeader = readPcxHeader(inputStream, false);
                 IoUtils.closeQuietly(true, inputStream);
                 return pcxHeader;
-            } catch (Throwable th) {
-                th = th;
+            } catch (Exception th) {
+                
                 IoUtils.closeQuietly(false, inputStream);
-                throw th;
+                throw new ImageReadException("Error", th);
             }
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (Exception th2) {
             inputStream = null;
+            throw new ImageReadException("Error", th2);
         }
     }
 
-    private PcxImageParser$PcxHeader readPcxHeader(InputStream inputStream, boolean z) throws IOException, ImageReadException {
+    private PcxHeader readPcxHeader(InputStream inputStream, boolean z) throws IOException, ImageReadException {
         byte[] bytes = BinaryFunctions.readBytes("PcxHeader", inputStream, 128, "Not a Valid PCX File");
         int i = 255 & bytes[0];
         int i2 = 255 & bytes[1];
@@ -145,19 +227,22 @@ public class PcxImageParser extends ImageParser {
         if (z && uInt167 % 2 != 0) {
             throw new ImageReadException("Not a Valid PCX File: bytesPerLine is odd");
         }
-        return new PcxImageParser$PcxHeader(i, i2, i3, i4, uInt16, uInt162, uInt163, uInt164, uInt165, uInt166, iArr, i7, i8, uInt167, uInt168, uInt169, uInt1610);
+        return new PcxHeader(i, i2, i3, i4, uInt16, uInt162, uInt163, uInt164, uInt165, uInt166, iArr, i7, i8, uInt167,
+                uInt168, uInt169, uInt1610);
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public boolean dumpImageFile(PrintWriter printWriter, ByteSource byteSource) throws IOException, ImageReadException {
+    public boolean dumpImageFile(PrintWriter printWriter, ByteSource byteSource)
+            throws IOException, ImageReadException {
         readPcxHeader(byteSource).dump(printWriter);
         return true;
     }
 
-    private void readScanLine(PcxImageParser$PcxHeader pcxImageParser$PcxHeader, InputStream inputStream, byte[] bArr) throws IOException, ImageReadException {
+    private void readScanLine(PcxHeader pcxHeader, InputStream inputStream, byte[] bArr)
+            throws IOException, ImageReadException {
         int i;
         int i2 = 0;
-        if (pcxImageParser$PcxHeader.encoding == 0) {
+        if (pcxHeader.encoding == 0) {
             while (i2 < bArr.length) {
                 int i3 = inputStream.read(bArr, i2, bArr.length - i2);
                 if (i3 < 0) {
@@ -167,7 +252,7 @@ public class PcxImageParser extends ImageParser {
             }
             return;
         }
-        if (pcxImageParser$PcxHeader.encoding == 1) {
+        if (pcxHeader.encoding == 1) {
             int i4 = 0;
             while (i4 < bArr.length) {
                 byte b = BinaryFunctions.readByte("Pixel", inputStream, "Error reading image data");
@@ -187,7 +272,7 @@ public class PcxImageParser extends ImageParser {
             }
             return;
         }
-        throw new ImageReadException("Invalid PCX encoding " + pcxImageParser$PcxHeader.encoding);
+        throw new ImageReadException("Invalid PCX encoding " + pcxHeader.encoding);
     }
 
     private int[] read256ColorPalette(InputStream inputStream) throws IOException {
@@ -203,87 +288,88 @@ public class PcxImageParser extends ImageParser {
         return iArr;
     }
 
-    private int[] read256ColorPaletteFromEndOfFile(ByteSource byteSource) throws Throwable {
-        InputStream inputStream;
+    private int[] read256ColorPaletteFromEndOfFile(ByteSource byteSource) throws IOException, ImageReadException {
+        InputStream inputStream = null;
         try {
             inputStream = byteSource.getInputStream();
-        } catch (Throwable th) {
-            th = th;
-            inputStream = null;
-        }
-        try {
             BinaryFunctions.skipBytes(inputStream, (int) (byteSource.getLength() - 769));
             int[] iArr = read256ColorPalette(inputStream);
             IoUtils.closeQuietly(true, inputStream);
             return iArr;
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (Exception th2) {
             IoUtils.closeQuietly(false, inputStream);
-            throw th;
+            throw new ImageReadException("Error", th2);
         }
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:87:0x01fd  */
+    /* JADX WARN: Removed duplicated region for block: B:87:0x01fd */
     /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    private BufferedImage readImage(PcxImageParser$PcxHeader pcxImageParser$PcxHeader, InputStream inputStream, ByteSource byteSource) throws IOException, ImageReadException {
+     * Code decompiled incorrectly, please refer to instructions dump.
+     */
+    private BufferedImage readImage(PcxHeader pcxHeader, InputStream inputStream, ByteSource byteSource)
+            throws IOException, ImageReadException {
         int[] iArr;
         WritableRaster writableRasterCreatePackedRaster;
-        int i;
-        int i2;
-        int i3 = (pcxImageParser$PcxHeader.xMax - pcxImageParser$PcxHeader.xMin) + 1;
+        int i = 0;
+        int i2 = 0;
+        int i3 = (pcxHeader.xMax - pcxHeader.xMin) + 1;
         if (i3 < 0) {
             throw new ImageReadException("Image width is negative");
         }
-        int i4 = (pcxImageParser$PcxHeader.yMax - pcxImageParser$PcxHeader.yMin) + 1;
+        int i4 = (pcxHeader.yMax - pcxHeader.yMin) + 1;
         if (i4 < 0) {
             throw new ImageReadException("Image height is negative");
         }
-        byte[] bArr = new byte[pcxImageParser$PcxHeader.bytesPerLine * pcxImageParser$PcxHeader.nPlanes];
+        byte[] bArr = new byte[pcxHeader.bytesPerLine * pcxHeader.nPlanes];
         int i5 = 8;
         byte b = 0;
-        if ((pcxImageParser$PcxHeader.bitsPerPixel == 1 || pcxImageParser$PcxHeader.bitsPerPixel == 2 || pcxImageParser$PcxHeader.bitsPerPixel == 4 || pcxImageParser$PcxHeader.bitsPerPixel == 8) && pcxImageParser$PcxHeader.nPlanes == 1) {
-            int i6 = ((pcxImageParser$PcxHeader.bitsPerPixel * i3) + 7) / 8;
+        if ((pcxHeader.bitsPerPixel == 1 || pcxHeader.bitsPerPixel == 2 || pcxHeader.bitsPerPixel == 4
+                || pcxHeader.bitsPerPixel == 8) && pcxHeader.nPlanes == 1) {
+            int i6 = ((pcxHeader.bitsPerPixel * i3) + 7) / 8;
             byte[] bArr2 = new byte[i4 * i6];
             for (int i7 = 0; i7 < i4; i7++) {
-                readScanLine(pcxImageParser$PcxHeader, inputStream, bArr);
+                readScanLine(pcxHeader, inputStream, bArr);
                 System.arraycopy(bArr, 0, bArr2, i7 * i6, i6);
             }
             DataBufferByte dataBufferByte = new DataBufferByte(bArr2, bArr2.length);
-            if (pcxImageParser$PcxHeader.bitsPerPixel == 1) {
-                iArr = new int[]{0, 16777215};
-            } else if (pcxImageParser$PcxHeader.bitsPerPixel == 8) {
+            if (pcxHeader.bitsPerPixel == 1) {
+                iArr = new int[] { 0, ViewCompat.MEASURED_SIZE_MASK };
+            } else if (pcxHeader.bitsPerPixel == 8) {
                 int[] iArr2 = read256ColorPalette(inputStream);
                 iArr = iArr2 == null ? read256ColorPaletteFromEndOfFile(byteSource) : iArr2;
                 if (iArr == null) {
                     throw new ImageReadException("No 256 color palette found in image that needs it");
                 }
             } else {
-                iArr = pcxImageParser$PcxHeader.colormap;
+                iArr = pcxHeader.colormap;
             }
             int[] iArr3 = iArr;
-            if (pcxImageParser$PcxHeader.bitsPerPixel == 8) {
-                writableRasterCreatePackedRaster = Raster.createInterleavedRaster(dataBufferByte, i3, i4, i6, 1, new int[]{0}, (Point) null);
+            if (pcxHeader.bitsPerPixel == 8) {
+                writableRasterCreatePackedRaster = Raster.createInterleavedRaster(dataBufferByte, i3, i4, i6, 1,
+                        new int[] { 0 }, (Point) null);
             } else {
-                writableRasterCreatePackedRaster = Raster.createPackedRaster(dataBufferByte, i3, i4, pcxImageParser$PcxHeader.bitsPerPixel, (Point) null);
+                writableRasterCreatePackedRaster = Raster.createPackedRaster(dataBufferByte, i3, i4,
+                        pcxHeader.bitsPerPixel, (Point) null);
             }
-            IndexColorModel indexColorModel = new IndexColorModel(pcxImageParser$PcxHeader.bitsPerPixel, 1 << pcxImageParser$PcxHeader.bitsPerPixel, iArr3, 0, false, -1, 0);
-            return new BufferedImage(indexColorModel, writableRasterCreatePackedRaster, indexColorModel.isAlphaPremultiplied(), new Properties());
+            IndexColorModel indexColorModel = new IndexColorModel(pcxHeader.bitsPerPixel, 1 << pcxHeader.bitsPerPixel,
+                    iArr3, 0, false, -1, 0);
+            return new BufferedImage(indexColorModel, writableRasterCreatePackedRaster,
+                    indexColorModel.isAlphaPremultiplied(), new Properties());
         }
-        if (pcxImageParser$PcxHeader.bitsPerPixel == 1 && 2 <= pcxImageParser$PcxHeader.nPlanes && pcxImageParser$PcxHeader.nPlanes <= 4) {
-            BufferedImage bufferedImage = new BufferedImage(i3, i4, 12, new IndexColorModel(pcxImageParser$PcxHeader.nPlanes, 1 << pcxImageParser$PcxHeader.nPlanes, pcxImageParser$PcxHeader.colormap, 0, false, -1, 0));
+        if (pcxHeader.bitsPerPixel == 1 && 2 <= pcxHeader.nPlanes && pcxHeader.nPlanes <= 4) {
+            BufferedImage bufferedImage = new BufferedImage(i3, i4, 12, new IndexColorModel(pcxHeader.nPlanes,
+                    1 << pcxHeader.nPlanes, pcxHeader.colormap, 0, false, -1, 0));
             byte[] bArr3 = new byte[i3];
             int i8 = 0;
             while (i8 < i4) {
-                readScanLine(pcxImageParser$PcxHeader, inputStream, bArr);
+                readScanLine(pcxHeader, inputStream, bArr);
                 Arrays.fill(bArr3, b);
                 int i9 = b;
                 int i10 = i9;
-                while (i9 < pcxImageParser$PcxHeader.nPlanes) {
+                while (i9 < pcxHeader.nPlanes) {
                     int i11 = i10;
                     int i12 = b;
-                    while (i12 < pcxImageParser$PcxHeader.bytesPerLine) {
+                    while (i12 < pcxHeader.bytesPerLine) {
                         int i13 = i11 + 1;
                         int i14 = bArr[i11] & 255;
                         int i15 = b;
@@ -312,35 +398,39 @@ public class PcxImageParser extends ImageParser {
             }
             return bufferedImage;
         }
-        if (pcxImageParser$PcxHeader.bitsPerPixel == 8 && pcxImageParser$PcxHeader.nPlanes == 3) {
+        if (pcxHeader.bitsPerPixel == 8 && pcxHeader.nPlanes == 3) {
             int i17 = i3 * i4;
             int i18 = 0;
             char c = 1;
-            byte[][] bArr4 = {new byte[i17], new byte[i17], new byte[i17]};
+            byte[][] bArr4 = { new byte[i17], new byte[i17], new byte[i17] };
             int i19 = 0;
             while (i19 < i4) {
-                readScanLine(pcxImageParser$PcxHeader, inputStream, bArr);
+                readScanLine(pcxHeader, inputStream, bArr);
                 int i20 = i19 * i3;
                 System.arraycopy(bArr, i18, bArr4[i18], i20, i3);
-                System.arraycopy(bArr, pcxImageParser$PcxHeader.bytesPerLine, bArr4[c], i20, i3);
-                System.arraycopy(bArr, pcxImageParser$PcxHeader.bytesPerLine * 2, bArr4[2], i20, i3);
+                System.arraycopy(bArr, pcxHeader.bytesPerLine, bArr4[c], i20, i3);
+                System.arraycopy(bArr, pcxHeader.bytesPerLine * 2, bArr4[2], i20, i3);
                 i19++;
                 i18 = 0;
                 c = 1;
             }
-            WritableRaster writableRasterCreateBandedRaster = Raster.createBandedRaster(new DataBufferByte(bArr4, bArr4[0].length), i3, i4, i3, new int[]{0, 1, 2}, new int[]{0, 0, 0}, (Point) null);
-            ComponentColorModel componentColorModel = new ComponentColorModel(ColorSpace.getInstance(1000), false, false, 1, 0);
-            return new BufferedImage(componentColorModel, writableRasterCreateBandedRaster, componentColorModel.isAlphaPremultiplied(), new Properties());
+            WritableRaster writableRasterCreateBandedRaster = Raster.createBandedRaster(
+                    new DataBufferByte(bArr4, bArr4[0].length), i3, i4, i3, new int[] { 0, 1, 2 },
+                    new int[] { 0, 0, 0 }, (Point) null);
+            ComponentColorModel componentColorModel = new ComponentColorModel(ColorSpace.getInstance(1000), false,
+                    false, 1, 0);
+            return new BufferedImage(componentColorModel, writableRasterCreateBandedRaster,
+                    componentColorModel.isAlphaPremultiplied(), new Properties());
         }
-        if (pcxImageParser$PcxHeader.bitsPerPixel == 24) {
+        if (pcxHeader.bitsPerPixel == 24) {
             i = 1;
-            if (pcxImageParser$PcxHeader.nPlanes != 1) {
+            if (pcxHeader.nPlanes != 1) {
             }
             int i21 = 3 * i3;
             byte[] bArr5 = new byte[i21 * i4];
             for (i2 = 0; i2 < i4; i2++) {
-                readScanLine(pcxImageParser$PcxHeader, inputStream, bArr);
-                if (pcxImageParser$PcxHeader.bitsPerPixel == 24) {
+                readScanLine(pcxHeader, inputStream, bArr);
+                if (pcxHeader.bitsPerPixel == 24) {
                     System.arraycopy(bArr, 0, bArr5, i2 * i21, i21);
                 } else {
                     for (int i22 = 0; i22 < i3; i22++) {
@@ -352,27 +442,34 @@ public class PcxImageParser extends ImageParser {
                     }
                 }
             }
-            WritableRaster writableRasterCreateInterleavedRaster = Raster.createInterleavedRaster(new DataBufferByte(bArr5, bArr5.length), i3, i4, i21, 3, new int[]{2, 1, 0}, (Point) null);
-            ComponentColorModel componentColorModel2 = new ComponentColorModel(ColorSpace.getInstance(1000), false, false, 1, 0);
-            return new BufferedImage(componentColorModel2, writableRasterCreateInterleavedRaster, componentColorModel2.isAlphaPremultiplied(), new Properties());
+            WritableRaster writableRasterCreateInterleavedRaster = Raster.createInterleavedRaster(
+                    new DataBufferByte(bArr5, bArr5.length), i3, i4, i21, 3, new int[] { 2, 1, 0 }, (Point) null);
+            ComponentColorModel componentColorModel2 = new ComponentColorModel(ColorSpace.getInstance(1000), false,
+                    false, 1, 0);
+            return new BufferedImage(componentColorModel2, writableRasterCreateInterleavedRaster,
+                    componentColorModel2.isAlphaPremultiplied(), new Properties());
         }
         i = 1;
-        if (pcxImageParser$PcxHeader.bitsPerPixel != 32 || pcxImageParser$PcxHeader.nPlanes != i) {
-            throw new ImageReadException("Invalid/unsupported image with bitsPerPixel " + pcxImageParser$PcxHeader.bitsPerPixel + " and planes " + pcxImageParser$PcxHeader.nPlanes);
+        if (pcxHeader.bitsPerPixel != 32 || pcxHeader.nPlanes != i) {
+            throw new ImageReadException("Invalid/unsupported image with bitsPerPixel " + pcxHeader.bitsPerPixel
+                    + " and planes " + pcxHeader.nPlanes);
         }
         int i212 = 3 * i3;
         byte[] bArr52 = new byte[i212 * i4];
         while (i2 < i4) {
         }
-        WritableRaster writableRasterCreateInterleavedRaster2 = Raster.createInterleavedRaster(new DataBufferByte(bArr52, bArr52.length), i3, i4, i212, 3, new int[]{2, 1, 0}, (Point) null);
-        ComponentColorModel componentColorModel22 = new ComponentColorModel(ColorSpace.getInstance(1000), false, false, 1, 0);
-        return new BufferedImage(componentColorModel22, writableRasterCreateInterleavedRaster2, componentColorModel22.isAlphaPremultiplied(), new Properties());
+        WritableRaster writableRasterCreateInterleavedRaster2 = Raster.createInterleavedRaster(
+                new DataBufferByte(bArr52, bArr52.length), i3, i4, i212, 3, new int[] { 2, 1, 0 }, (Point) null);
+        ComponentColorModel componentColorModel22 = new ComponentColorModel(ColorSpace.getInstance(1000), false, false,
+                1, 0);
+        return new BufferedImage(componentColorModel22, writableRasterCreateInterleavedRaster2,
+                componentColorModel22.isAlphaPremultiplied(), new Properties());
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public final BufferedImage getBufferedImage(ByteSource byteSource, Map<String, Object> map) throws Throwable {
+    public final BufferedImage getBufferedImage(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
         InputStream inputStream;
-        Object obj = (map == null ? new HashMap() : new HashMap(map)).get("STRICT");
+        Object obj = (map == null ? new HashMap() : new HashMap(map)).get(ImagingConstants.PARAM_KEY_STRICT);
         boolean zBooleanValue = obj != null ? ((Boolean) obj).booleanValue() : false;
         try {
             inputStream = byteSource.getInputStream();
@@ -380,19 +477,20 @@ public class PcxImageParser extends ImageParser {
                 BufferedImage image = readImage(readPcxHeader(inputStream, zBooleanValue), inputStream, byteSource);
                 IoUtils.closeQuietly(true, inputStream);
                 return image;
-            } catch (Throwable th) {
-                th = th;
+            } catch (Exception th) {
+                
                 IoUtils.closeQuietly(false, inputStream);
-                throw th;
+                throw new ImageReadException("Error", th);
             }
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (Exception th2) {
             inputStream = null;
+            throw new ImageReadException("Error", th2);
         }
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public void writeImage(BufferedImage bufferedImage, OutputStream outputStream, Map<String, Object> map) throws ImageWriteException, IOException {
+    public void writeImage(BufferedImage bufferedImage, OutputStream outputStream, Map<String, Object> map)
+            throws ImageWriteException, IOException {
         new PcxWriter(map).writeImage(bufferedImage, outputStream);
     }
 }

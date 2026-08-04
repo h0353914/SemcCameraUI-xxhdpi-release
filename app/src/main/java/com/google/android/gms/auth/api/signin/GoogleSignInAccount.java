@@ -2,7 +2,7 @@ package com.google.android.gms.auth.api.signin;
 
 import android.net.Uri;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzx;
 import com.google.android.gms.internal.zzmn;
@@ -10,8 +10,9 @@ import com.google.android.gms.internal.zzmp;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class GoogleSignInAccount implements SafeParcelable {
-    public static final Parcelable$Creator<GoogleSignInAccount> CREATOR = new zzc();
+    public static final Parcelable.Creator<GoogleSignInAccount> CREATOR = new zzc();
     public static zzmn zzSY = zzmp.zzqt();
     final int versionCode;
     private String zzSZ;

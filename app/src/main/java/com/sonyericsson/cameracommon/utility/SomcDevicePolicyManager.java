@@ -24,7 +24,7 @@ public class SomcDevicePolicyManager {
         }
     }
 
-    private static void initStringField(String str) throws IllegalAccessException, NoSuchFieldException {
+    private static void initStringField(String str) throws IllegalAccessException, NoSuchFieldException, IllegalArgumentException {
         try {
             String str2 = (String) somcDevicePolicyManagerClass.getField(str).get(null);
             Field declaredField = SomcDevicePolicyManager.class.getDeclaredField(str);

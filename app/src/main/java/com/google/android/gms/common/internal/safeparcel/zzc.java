@@ -2,24 +2,25 @@ package com.google.android.gms.common.internal.safeparcel;
 
 import android.content.Intent;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.zzx;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzc {
-    public static <T extends SafeParcelable> T zza(Intent intent, String str, Parcelable$Creator<T> parcelable$Creator) {
+    public static <T extends SafeParcelable> T zza(Intent intent, String str, Parcelable.Creator<T> creator) {
         byte[] byteArrayExtra = intent.getByteArrayExtra(str);
         if (byteArrayExtra == null) {
             return null;
         }
-        return (T) zza(byteArrayExtra, parcelable$Creator);
+        return (T) zza(byteArrayExtra, creator);
     }
 
-    public static <T extends SafeParcelable> T zza(byte[] bArr, Parcelable$Creator<T> parcelable$Creator) {
-        zzx.zzw(parcelable$Creator);
+    public static <T extends SafeParcelable> T zza(byte[] bArr, Parcelable.Creator<T> creator) {
+        zzx.zzw(creator);
         Parcel parcelObtain = Parcel.obtain();
         parcelObtain.unmarshall(bArr, 0, bArr.length);
         parcelObtain.setDataPosition(0);
-        T tCreateFromParcel = parcelable$Creator.createFromParcel(parcelObtain);
+        T tCreateFromParcel = creator.createFromParcel(parcelObtain);
         parcelObtain.recycle();
         return tCreateFromParcel;
     }

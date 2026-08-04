@@ -2,6 +2,7 @@ package com.google.android.gms.internal;
 
 import java.io.IOException;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzsh {
     public static final int[] zzbix = new int[0];
     public static final long[] zzbiy = new long[0];

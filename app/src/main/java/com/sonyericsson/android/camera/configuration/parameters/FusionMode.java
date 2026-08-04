@@ -1,13 +1,53 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.List;
 
 public enum FusionMode implements UserSettingValue {
-    OFF(2131231102, 2131690115, "off"),
-    ON(2131231097, 2131690116, "on"),
-    AUTO(2131231097, 2131690114, "auto");
+    OFF(R.drawable.cam_core_main_high_sensitivity_off_icn, R.string.cam_strings_settings_off_txt, "off"),
+    ON(R.drawable.cam_core_main_high_sensitivity_auto_icn, R.string.cam_strings_settings_on_txt, "on"),
+    AUTO(R.drawable.cam_core_main_high_sensitivity_auto_icn, R.string.cam_strings_settings_auto_txt, "auto");
 
     private static final String TAG = "FusionMode";
     private final int mIconId;
@@ -57,17 +97,17 @@ public enum FusionMode implements UserSettingValue {
                 case VIDEO:
                 case SCENE_RECOGNITION:
                     if (list.contains("auto")) {
-                        return new FusionMode[]{AUTO, OFF};
+                        return new FusionMode[] { AUTO, OFF };
                     }
                     break;
                 case NORMAL:
                     if (list.contains("on")) {
-                        return new FusionMode[]{OFF, ON};
+                        return new FusionMode[] { OFF, ON };
                     }
                     break;
             }
         }
-        return new FusionMode[]{OFF};
+        return new FusionMode[] { OFF };
     }
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValue
@@ -78,10 +118,11 @@ public enum FusionMode implements UserSettingValue {
     public static FusionMode getDefaultValue(CapturingMode capturingMode) {
         if (PlatformCapability.isHighSensitivityFusionSupported(capturingMode.getCameraId())) {
             List<String> list = PlatformCapability.getCameraCapability(capturingMode.getCameraId()).FUSION_MODE.get();
-            if (FusionMode$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()] == 2 && list.contains("auto")) {
+            if (capturingMode == CapturingMode.SCENE_RECOGNITION && list.contains("auto")) {
                 return AUTO;
             }
         }
         return OFF;
     }
+
 }

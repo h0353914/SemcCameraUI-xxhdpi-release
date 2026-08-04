@@ -1,7 +1,9 @@
 package com.sonyericsson.android.camera.view.setting.settingitem;
 
 import android.content.res.Resources;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.view.setting.executor.SettingExecutorInterface;
+import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class TypedSettingItem<T> implements SettingItem {
     private final int mIconId;
     private boolean mIsSelected;
     private final boolean mIsSoundEnabled;
-    private SettingItem$Selectability mSelectability;
+    private SettingItem.Selectability mSelectability;
     private final String mSubText;
     private final String mText;
     private final int mTextId;
@@ -32,7 +34,7 @@ public class TypedSettingItem<T> implements SettingItem {
         this.mSubText = str;
         this.mAdditionalTextForAccessibility = str2;
         this.mIsSelected = false;
-        this.mSelectability = SettingItem$Selectability.UNSELECTABLE;
+        this.mSelectability = SettingItem.Selectability.UNSELECTABLE;
     }
 
     public TypedSettingItem(T t, int i, String str, String str2, String str3, int i2, SettingExecutorInterface<T> settingExecutorInterface, boolean z) {
@@ -47,7 +49,7 @@ public class TypedSettingItem<T> implements SettingItem {
         this.mIsSoundEnabled = z;
         this.mChildren = new ArrayList();
         this.mIsSelected = false;
-        this.mSelectability = SettingItem$Selectability.UNSELECTABLE;
+        this.mSelectability = SettingItem.Selectability.UNSELECTABLE;
     }
 
     @Override // com.sonyericsson.android.camera.view.setting.settingitem.SettingItem
@@ -77,7 +79,7 @@ public class TypedSettingItem<T> implements SettingItem {
         }
         if (!isSelectable()) {
             sb.append(' ');
-            sb.append(resources.getString(2131689592));
+            sb.append(resources.getString(R.string.cam_strings_accessibility_not_configurable_txt));
         }
         return sb.toString();
     }
@@ -94,11 +96,11 @@ public class TypedSettingItem<T> implements SettingItem {
 
     @Override // com.sonyericsson.android.camera.view.setting.settingitem.SettingItem
     public boolean isSelectable() {
-        return this.mSelectability == SettingItem$Selectability.SELECTABLE;
+        return this.mSelectability == SettingItem.Selectability.SELECTABLE;
     }
 
     @Override // com.sonyericsson.android.camera.view.setting.settingitem.SettingItem
-    public SettingItem$Selectability getSelectability() {
+    public SettingItem.Selectability getSelectability() {
         return this.mSelectability;
     }
 
@@ -108,8 +110,8 @@ public class TypedSettingItem<T> implements SettingItem {
     }
 
     @Override // com.sonyericsson.android.camera.view.setting.settingitem.SettingItem
-    public void setSelectability(SettingItem$Selectability settingItem$Selectability) {
-        this.mSelectability = settingItem$Selectability;
+    public void setSelectability(SettingItem.Selectability selectability) {
+        this.mSelectability = selectability;
     }
 
     @Override // com.sonyericsson.android.camera.view.setting.settingitem.SettingItem

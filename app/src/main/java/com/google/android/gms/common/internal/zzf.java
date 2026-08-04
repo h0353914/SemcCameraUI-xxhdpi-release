@@ -3,8 +3,9 @@ package com.google.android.gms.common.internal;
 import android.accounts.Account;
 import android.content.Context;
 import android.view.View;
+import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.common.api.Api;
-import com.google.android.gms.common.api.GoogleApiClient$Builder;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.internal.zzqx;
 import java.util.Collections;
@@ -13,6 +14,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzf {
     private final Account zzQd;
     private final String zzRq;
@@ -22,10 +24,21 @@ public final class zzf {
     private final String zzaaI;
     private final zzqx zzaaT;
     private final Set<Scope> zzafh;
-    private final Map<Api<?>, zzf$zza> zzafi;
+    private final Map<Api<?>, zza> zzafi;
     private Integer zzafj;
 
-    public zzf(Account account, Set<Scope> set, Map<Api<?>, zzf$zza> map, int i, View view, String str, String str2, zzqx zzqxVar) {
+    public static final class zza {
+        public final Set<Scope> zzTm;
+        public final boolean zzafk;
+
+        public zza(Set<Scope> set, boolean z) {
+            zzx.zzw(set);
+            this.zzTm = Collections.unmodifiableSet(set);
+            this.zzafk = z;
+        }
+    }
+
+    public zzf(Account account, Set<Scope> set, Map<Api<?>, zza> map, int i, View view, String str, String str2, zzqx zzqxVar) {
         this.zzQd = account;
         this.zzaaF = set == null ? Collections.EMPTY_SET : Collections.unmodifiableSet(set);
         this.zzafi = map == null ? Collections.EMPTY_MAP : map;
@@ -35,7 +48,7 @@ public final class zzf {
         this.zzaaI = str2;
         this.zzaaT = zzqxVar;
         HashSet hashSet = new HashSet(this.zzaaF);
-        Iterator<zzf$zza> it = this.zzafi.values().iterator();
+        Iterator<zza> it = this.zzafi.values().iterator();
         while (it.hasNext()) {
             hashSet.addAll(it.next().zzTm);
         }
@@ -43,7 +56,7 @@ public final class zzf {
     }
 
     public static zzf zzak(Context context) {
-        return new GoogleApiClient$Builder(context).zznB();
+        return new GoogleApiClient.Builder(context).zznB();
     }
 
     public Account getAccount() {
@@ -63,17 +76,17 @@ public final class zzf {
     }
 
     public Set<Scope> zzb(Api<?> api) {
-        zzf$zza zzf_zza = this.zzafi.get(api);
-        if (zzf_zza == null || zzf_zza.zzTm.isEmpty()) {
+        zza zzaVar = this.zzafi.get(api);
+        if (zzaVar == null || zzaVar.zzTm.isEmpty()) {
             return this.zzaaF;
         }
         HashSet hashSet = new HashSet(this.zzaaF);
-        hashSet.addAll(zzf_zza.zzTm);
+        hashSet.addAll(zzaVar.zzTm);
         return hashSet;
     }
 
     public Account zzoI() {
-        return this.zzQd != null ? this.zzQd : new Account("<<default account>>", "com.google");
+        return this.zzQd != null ? this.zzQd : new Account("<<default account>>", GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE);
     }
 
     public int zzoJ() {
@@ -88,7 +101,7 @@ public final class zzf {
         return this.zzafh;
     }
 
-    public Map<Api<?>, zzf$zza> zzoM() {
+    public Map<Api<?>, zza> zzoM() {
         return this.zzafi;
     }
 

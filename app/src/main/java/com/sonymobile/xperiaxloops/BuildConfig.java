@@ -1,5 +1,8 @@
 package com.sonymobile.xperiaxloops;
 
+
+
+
 public final class BuildConfig {
     public static final String APPLICATION_ID = "com.sonymobile.xperiaxloops";
     public static final String BUILD_TYPE = "release";

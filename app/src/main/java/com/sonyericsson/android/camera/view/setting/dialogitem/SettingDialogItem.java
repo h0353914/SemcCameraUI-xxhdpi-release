@@ -2,7 +2,7 @@ package com.sonyericsson.android.camera.view.setting.dialogitem;
 
 import android.view.View;
 import android.view.ViewGroup;
-import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter$ItemLayoutParams;
+import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 
 public abstract class SettingDialogItem {
@@ -22,7 +22,7 @@ public abstract class SettingDialogItem {
     public void setUiOrientation(int i) {
     }
 
-    public abstract void update(ViewGroup viewGroup, SettingAdapter$ItemLayoutParams settingAdapter$ItemLayoutParams);
+    public abstract void update(ViewGroup viewGroup, SettingAdapter.ItemLayoutParams itemLayoutParams);
 
     public SettingDialogItem(SettingItem settingItem) {
         this.mItem = settingItem;
@@ -40,7 +40,7 @@ public abstract class SettingDialogItem {
         settingItem.select();
     }
 
-    protected DrawableStateChanger changeDrawableState(SettingAdapter$ItemLayoutParams settingAdapter$ItemLayoutParams) {
-        return new DrawableStateChanger(settingAdapter$ItemLayoutParams);
+    protected DrawableStateChanger changeDrawableState(SettingAdapter.ItemLayoutParams itemLayoutParams) {
+        return new DrawableStateChanger(itemLayoutParams);
     }
 }

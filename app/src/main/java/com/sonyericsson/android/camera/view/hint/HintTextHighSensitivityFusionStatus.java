@@ -1,4 +1,19 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.view.hint;
+
+import com.sonyericsson.android.camera.R;
 
 public class HintTextHighSensitivityFusionStatus extends HintTextContent {
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
@@ -8,6 +23,6 @@ public class HintTextHighSensitivityFusionStatus extends HintTextContent {
 
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
     public int getMessageResourceId() {
-        return 2131689854;
+        return R.string.cam_strings_fusion_on_txt;
     }
 }

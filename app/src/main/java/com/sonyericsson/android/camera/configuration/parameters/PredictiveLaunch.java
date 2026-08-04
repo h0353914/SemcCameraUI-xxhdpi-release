@@ -1,11 +1,12 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
 public enum PredictiveLaunch implements UserSettingValue {
-    TOUCH_TO_LAUNCH(-1, 2131690012, "1", false),
-    TOUCH_TO_LAUNCH_AND_CAPTURE(-1, 2131690011, "1", true),
-    OFF(-1, 2131690115, "0", false);
+    TOUCH_TO_LAUNCH(-1, R.string.cam_strings_predictive_launch_launch_only_txt, "1", false),
+    TOUCH_TO_LAUNCH_AND_CAPTURE(-1, R.string.cam_strings_predictive_launch_launch_and_capture_txt, "1", true),
+    OFF(-1, R.string.cam_strings_settings_off_txt, "0", false);
 
     private static final String TAG = "PredictiveLaunch";
     private final boolean mDoCapture;

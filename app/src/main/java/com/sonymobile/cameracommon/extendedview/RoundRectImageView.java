@@ -3,8 +3,6 @@ package com.sonymobile.cameracommon.extendedview;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Path;
-import android.graphics.Path$Direction;
-import android.graphics.Path$FillType;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
@@ -32,7 +30,7 @@ public class RoundRectImageView extends ImageView {
     }
 
     private void initialize() {
-        this.mClipPath.setFillType(Path$FillType.WINDING);
+        this.mClipPath.setFillType(Path.FillType.WINDING);
     }
 
     public void setRadius(float f) {
@@ -62,7 +60,7 @@ public class RoundRectImageView extends ImageView {
     }
 
     private void updateClipPath() {
-        this.mClipPath.addRoundRect(this.mDstRect, this.mRadiusSet, Path$Direction.CCW);
+        this.mClipPath.addRoundRect(this.mDstRect, this.mRadiusSet, Path.Direction.CCW);
     }
 
     @Override // android.widget.ImageView, android.view.View

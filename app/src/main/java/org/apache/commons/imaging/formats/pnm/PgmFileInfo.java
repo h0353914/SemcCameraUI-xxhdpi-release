@@ -1,10 +1,11 @@
 package org.apache.commons.imaging.formats.pnm;
 
+import android.support.v4.view.ViewCompat;
 import java.io.IOException;
 import java.io.InputStream;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
-import org.apache.commons.imaging.ImageInfo$ColorType;
+import org.apache.commons.imaging.ImageInfo;
 import org.apache.commons.imaging.ImageReadException;
 
 class PgmFileInfo extends FileInfo {
@@ -60,19 +61,19 @@ class PgmFileInfo extends FileInfo {
     }
 
     @Override // org.apache.commons.imaging.formats.pnm.FileInfo
-    public ImageInfo$ColorType getColorType() {
-        return ImageInfo$ColorType.GRAYSCALE;
+    public ImageInfo.ColorType getColorType() {
+        return ImageInfo.ColorType.GRAYSCALE;
     }
 
     @Override // org.apache.commons.imaging.formats.pnm.FileInfo
     public int getRGB(InputStream inputStream) throws IOException {
         int iScaleSample = scaleSample(readSample(inputStream, this.bytesPerSample), this.scale, this.max) & 255;
-        return (iScaleSample << 0) | (iScaleSample << 16) | (-16777216) | (iScaleSample << 8);
+        return (iScaleSample << 0) | (iScaleSample << 16) | ViewCompat.MEASURED_STATE_MASK | (iScaleSample << 8);
     }
 
     @Override // org.apache.commons.imaging.formats.pnm.FileInfo
     public int getRGB(WhiteSpaceReader whiteSpaceReader) throws IOException {
         int iScaleSample = scaleSample(Integer.parseInt(whiteSpaceReader.readtoWhiteSpace()), this.scale, this.max) & 255;
-        return (iScaleSample << 0) | (iScaleSample << 16) | (-16777216) | (iScaleSample << 8);
+        return (iScaleSample << 0) | (iScaleSample << 16) | ViewCompat.MEASURED_STATE_MASK | (iScaleSample << 8);
     }
 }

@@ -1,5 +1,6 @@
 package com.sonyericsson.android.camera.device;
 
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.Collections;
@@ -9,14 +10,39 @@ import java.util.List;
 
 class CameraDeviceUtil {
     public static final String TAG = "CameraDeviceUtil";
-    private static final Comparator<int[]> mSupportedFpsComparator = new CameraDeviceUtil$1();
+    private static final Comparator<int[]> mSupportedFpsComparator = new Comparator<int[]>() { // from class:
+                                                                                               // com.sonyericsson.android.camera.device.CameraDeviceUtil.1
+        @Override // java.util.Comparator
+        public int compare(int[] iArr, int[] iArr2) {
+            int i = iArr[1];
+            int i2 = iArr[0];
+            int i3 = iArr[1];
+            int i4 = iArr[0];
+            if (i > i3) {
+                return 1;
+            }
+            if (i < i3) {
+                return -1;
+            }
+            if (i2 < i4) {
+                return 1;
+            }
+            return i2 > i4 ? -1 : 0;
+        }
+    };
 
     CameraDeviceUtil() {
     }
 
-    static int[] computePreviewFpsRange(CameraInfo$CameraId cameraInfo$CameraId, int i, List<int[]> list) {
+    static int[] computePreviewFpsRange(CameraInfo.CameraId cameraId, int i, List<int[]> list) {
         if (CamLog.VERBOSE) {
             CamLog.d("computePreviewFpsRange: " + i);
+        }
+        if (list == null || list.isEmpty()) {
+            if (i <= 0) {
+                i = PlatformCapability.getMaxPreviewFps(cameraId);
+            }
+            return getFpsRange(i, list);
         }
         if (CamLog.VERBOSE) {
             CamLog.d("computePreviewFpsRange: the number of supported values: " + list.size());
@@ -28,11 +54,14 @@ class CameraDeviceUtil {
                 CamLog.d("Max fps: " + i2 + ", Min fps: " + i3);
             }
             if (i2 > 0) {
-                return new int[]{i3, i2};
+                return new int[] { i3, i2 };
             }
-            return new int[0];
+            if (i <= 0) {
+                i = PlatformCapability.getMaxPreviewFps(cameraId);
+            }
+            return getFpsRange(i, list);
         }
-        int maxPreviewFps = PlatformCapability.getMaxPreviewFps(cameraInfo$CameraId);
+        int maxPreviewFps = PlatformCapability.getMaxPreviewFps(cameraId);
         if (i <= maxPreviewFps) {
             maxPreviewFps = i;
         } else if (CamLog.VERBOSE) {
@@ -77,7 +106,7 @@ class CameraDeviceUtil {
             CamLog.d("Max: " + i3 + ", Min: " + i2);
         }
         if (i3 > 0) {
-            return new int[]{i2, i3};
+            return new int[] { i2, i3 };
         }
         return new int[0];
     }

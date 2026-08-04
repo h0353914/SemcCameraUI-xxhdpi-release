@@ -4,6 +4,7 @@ import android.os.SystemClock;
 import android.support.v4.util.SimpleArrayMap;
 import android.util.Log;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zze {
     private final long zzahV;
     private final int zzahW;

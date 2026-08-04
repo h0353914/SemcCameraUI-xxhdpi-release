@@ -1,9 +1,11 @@
 package com.google.android.gms.playlog.internal;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zze implements Parcelable$Creator<PlayLoggerContext> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zze implements Parcelable.Creator<PlayLoggerContext> {
     static void zza(PlayLoggerContext playLoggerContext, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, playLoggerContext.versionCode);
@@ -19,17 +21,9 @@ public class zze implements Parcelable$Creator<PlayLoggerContext> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ PlayLoggerContext createFromParcel(Parcel parcel) {
-        return zzgj(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ PlayLoggerContext[] newArray(int i) {
-        return zziV(i);
-    }
-
-    public PlayLoggerContext zzgj(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzgj, reason: merged with bridge method [inline-methods] */
+    public PlayLoggerContext createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         String strZzp = null;
         String strZzp2 = null;
@@ -82,10 +76,12 @@ public class zze implements Parcelable$Creator<PlayLoggerContext> {
         if (parcel.dataPosition() == iZzap) {
             return new PlayLoggerContext(iZzg, strZzp, iZzg2, iZzg3, strZzp2, strZzp3, zZzc2, strZzp4, zZzc, iZzg4);
         }
-        throw new com.google.android.gms.common.internal.safeparcel.zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public PlayLoggerContext[] zziV(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zziV, reason: merged with bridge method [inline-methods] */
+    public PlayLoggerContext[] newArray(int i) {
         return new PlayLoggerContext[i];
     }
 }

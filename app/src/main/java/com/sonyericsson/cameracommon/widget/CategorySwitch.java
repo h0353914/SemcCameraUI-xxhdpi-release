@@ -7,6 +7,15 @@ public class CategorySwitch extends Switch {
     public static final String TAG = "CategorySwitch";
 
     public CategorySwitch(Context context, AttributeSet attributeSet) {
+
+
+
+
+
+
+
+
+
         super(context, attributeSet);
     }
 }

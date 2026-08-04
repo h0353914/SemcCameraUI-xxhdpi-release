@@ -18,6 +18,24 @@ public final class TiffDirectoryConstants {
     public static final int DIRECTORY_TYPE_THUMBNAIL = 2;
     public static final int DIRECTORY_TYPE_UNKNOWN = -1;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private TiffDirectoryConstants() {
     }
 }

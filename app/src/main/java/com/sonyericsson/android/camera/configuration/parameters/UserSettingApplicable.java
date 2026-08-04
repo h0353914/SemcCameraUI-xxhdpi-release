@@ -17,7 +17,7 @@ public interface UserSettingApplicable {
 
     void set(DistortionCorrection distortionCorrection);
 
-    void set(Ev ev);
+    void set(Ev enumC0739Ev);
 
     void set(Facing facing);
 

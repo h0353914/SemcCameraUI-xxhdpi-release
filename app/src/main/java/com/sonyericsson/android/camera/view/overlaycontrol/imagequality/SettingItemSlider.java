@@ -3,27 +3,28 @@ package com.sonyericsson.android.camera.view.overlaycontrol.imagequality;
 import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout$LayoutParams;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.CoordinateUtil;
-import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter$ItemLayoutParams;
+import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter;
 import com.sonyericsson.android.camera.view.setting.dialogitem.SettingDialogItem;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 import com.sonyericsson.android.camera.view.setting.settingitem.TypedSettingItem;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 import com.sonymobile.cameracommon.font.FontUtil;
-import com.sonymobile.cameracommon.font.FontUtil$RobotoFontType;
 import java.util.Iterator;
 
 abstract class SettingItemSlider extends SettingDialogItem {
     private int mBottomPadding;
     private final Context mContext;
     private int mCurrentPosition;
-    private final SettingItemSlider$ViewHolder mHolder;
+    private final ViewHolder mHolder;
     private final OnSlideListener mOnSlideListener;
     private final boolean mShowAutoSettingItemAsButton;
     private final boolean mShowMaxMinValue;
@@ -39,14 +40,6 @@ abstract class SettingItemSlider extends SettingDialogItem {
 
     protected abstract String getMinValue();
 
-    static /* synthetic */ String access$100(SettingItemSlider settingItemSlider) {
-        return settingItemSlider.getTag();
-    }
-
-    static /* synthetic */ OnSlideListener access$200(SettingItemSlider settingItemSlider) {
-        return settingItemSlider.mOnSlideListener;
-    }
-
     public SettingItemSlider(Context context, SettingItem settingItem, boolean z, boolean z2, OnSlideListener onSlideListener) {
         super(settingItem);
         this.mTopPadding = -1;
@@ -56,35 +49,76 @@ abstract class SettingItemSlider extends SettingDialogItem {
         this.mShowAutoSettingItemAsButton = z;
         this.mShowMaxMinValue = z2;
         this.mOnSlideListener = onSlideListener;
-        this.mHolder = new SettingItemSlider$ViewHolder(null);
-        this.mHolder.mContainer = new SettingItemSlider$1(this, context);
-        View viewInflate = LayoutInflater.from(context).inflate(2131493006, (ViewGroup) null);
+        this.mHolder = new ViewHolder();
+        this.mHolder.mContainer = new FrameLayout(context) { // from class: com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider.1
+            @Override // android.widget.FrameLayout, android.view.ViewGroup, android.view.View
+            public void onLayout(boolean z3, int i, int i2, int i3, int i4) {
+                super.onLayout(z3, i, i2, i3, i4);
+                if (CamLog.VERBOSE) {
+                    CamLog.d(SettingItemSlider.this.getTag(), "onLayout(): refresh");
+                }
+                SettingItemSlider.this.refresh();
+            }
+        };
+        View viewInflate = LayoutInflater.from(context).inflate(R.layout.setting_item_slider, (ViewGroup) null);
         this.mHolder.mContainer.addView(viewInflate);
-        this.mHolder.mBackground = viewInflate.findViewById(2131296316);
-        this.mHolder.mBackground.setOnTouchListener(new SettingItemSlider$2(this));
-        this.mHolder.mIndicator = (ImageView) viewInflate.findViewById(2131296429);
+        this.mHolder.mBackground = viewInflate.findViewById(R.id.background);
+        this.mHolder.mBackground.setOnTouchListener(new View.OnTouchListener() { // from class: com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider.2
+@Override // android.view.View.OnTouchListener
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case 0:
+                        view.setPressed(true);
+                        SettingItemSlider.this.mOnSlideListener.onSlideStarted();
+                        SettingItemSlider.this.update(motionEvent.getY());
+                        return true;
+                    case 1:
+                        if (view.isPressed() && view.isShown()) {
+                            SettingItemSlider.this.update(motionEvent.getY());
+                            SettingItemSlider.this.mOnSlideListener.onSlideStopped();
+                        }
+                        view.setPressed(false);
+                        return false;
+                    case 2:
+                        if (view.isPressed() && view.isShown()) {
+                            SettingItemSlider.this.update(motionEvent.getY());
+                        }
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+        });
+        this.mHolder.mIndicator = (ImageView) viewInflate.findViewById(R.id.indicator);
         this.mHolder.mIndicator.setVisibility(0);
         if (this.mShowAutoSettingItemAsButton) {
-            this.mHolder.mAutoButton = (ImageView) viewInflate.findViewById(2131296296);
+            this.mHolder.mAutoButton = (ImageView) viewInflate.findViewById(R.id.auto_button);
             this.mHolder.mAutoButton.setVisibility(0);
-            this.mHolder.mAutoButton.setOnClickListener(new SettingItemSlider$3(this));
+            this.mHolder.mAutoButton.setOnClickListener(new View.OnClickListener() { // from class: com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider.3
+                @Override // android.view.View.OnClickListener
+                public void onClick(View view) {
+                    boolean z3 = !view.isSelected();
+                    SettingItemSlider.this.onAutoCheckedChanged(z3);
+                    view.setSelected(z3);
+                }
+            });
         }
         if (this.mShowMaxMinValue) {
-            this.mHolder.mMaxValue = (TextView) viewInflate.findViewById(2131296461);
-            this.mHolder.mMinValue = (TextView) viewInflate.findViewById(2131296466);
+            this.mHolder.mMaxValue = (TextView) viewInflate.findViewById(R.id.max_value);
+            this.mHolder.mMinValue = (TextView) viewInflate.findViewById(R.id.min_value);
             if (this.mContext.getResources().getDisplayMetrics().densityDpi > DisplayMetrics.DENSITY_DEVICE_STABLE) {
                 float f = (DisplayMetrics.DENSITY_DEVICE_STABLE * 1.0f) / 160.0f;
-                FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) this.mHolder.mMaxValue.getLayoutParams();
-                FrameLayout$LayoutParams frameLayout$LayoutParams2 = (FrameLayout$LayoutParams) this.mHolder.mMinValue.getLayoutParams();
-                frameLayout$LayoutParams.setMargins(0, (int) (CoordinateUtil.convertPx2Dip(this.mContext, frameLayout$LayoutParams.leftMargin) * f), 0, 0);
-                frameLayout$LayoutParams2.setMargins(0, 0, 0, (int) (CoordinateUtil.convertPx2Dip(this.mContext, frameLayout$LayoutParams2.leftMargin) * f));
-                frameLayout$LayoutParams.height = (int) (CoordinateUtil.convertPx2Dip(this.mContext, frameLayout$LayoutParams.height) * f);
-                frameLayout$LayoutParams2.height = (int) (CoordinateUtil.convertPx2Dip(this.mContext, frameLayout$LayoutParams2.height) * f);
-                this.mHolder.mMaxValue.setLayoutParams(frameLayout$LayoutParams);
-                this.mHolder.mMinValue.setLayoutParams(frameLayout$LayoutParams2);
+                FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) this.mHolder.mMaxValue.getLayoutParams();
+                FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) this.mHolder.mMinValue.getLayoutParams();
+                layoutParams.setMargins(0, (int) (CoordinateUtil.convertPx2Dip(this.mContext, layoutParams.leftMargin) * f), 0, 0);
+                layoutParams2.setMargins(0, 0, 0, (int) (CoordinateUtil.convertPx2Dip(this.mContext, layoutParams2.leftMargin) * f));
+                layoutParams.height = (int) (CoordinateUtil.convertPx2Dip(this.mContext, layoutParams.height) * f);
+                layoutParams2.height = (int) (CoordinateUtil.convertPx2Dip(this.mContext, layoutParams2.height) * f);
+                this.mHolder.mMaxValue.setLayoutParams(layoutParams);
+                this.mHolder.mMinValue.setLayoutParams(layoutParams2);
             }
-            FontUtil.setRobotoFont(this.mHolder.mMaxValue, FontUtil$RobotoFontType.MEDIUM);
-            FontUtil.setRobotoFont(this.mHolder.mMinValue, FontUtil$RobotoFontType.MEDIUM);
+            FontUtil.setRobotoFont(this.mHolder.mMaxValue, FontUtil.RobotoFontType.MEDIUM);
+            FontUtil.setRobotoFont(this.mHolder.mMinValue, FontUtil.RobotoFontType.MEDIUM);
             this.mHolder.mMaxValue.setText(getMaxValue());
             this.mHolder.mMinValue.setText(getMinValue());
             this.mHolder.mMaxValue.setVisibility(0);
@@ -123,7 +157,7 @@ abstract class SettingItemSlider extends SettingDialogItem {
     }
 
     @Override // com.sonyericsson.android.camera.view.setting.dialogitem.SettingDialogItem
-    public void update(ViewGroup viewGroup, SettingAdapter$ItemLayoutParams settingAdapter$ItemLayoutParams) {
+    public void update(ViewGroup viewGroup, SettingAdapter.ItemLayoutParams itemLayoutParams) {
         refresh();
     }
 
@@ -190,7 +224,7 @@ abstract class SettingItemSlider extends SettingDialogItem {
     }
 
     protected String getAutoButtonContentDescription(boolean z) {
-        return getString(z ? 2131689576 : 2131689575);
+        return getString(z ? R.string.cam_strings_accessibility_image_quality_control_auto_button_selected_txt : R.string.cam_strings_accessibility_image_quality_control_auto_button_deselected_txt);
     }
 
     protected String getIndicatorContentDescription(int i) {
@@ -198,7 +232,7 @@ abstract class SettingItemSlider extends SettingDialogItem {
     }
 
     protected int getIndicatorImageResource(int i) {
-        return (this.mShowAutoSettingItemAsButton || i != getDefaultSettingItemPosition()) ? 2131231540 : 2131231541;
+        return (this.mShowAutoSettingItemAsButton || i != getDefaultSettingItemPosition()) ? R.drawable.setting_customized_indicator_selector : R.drawable.setting_default_indicator_selector;
     }
 
     protected void updateSelectedSettingItem(int i, boolean z) {
@@ -272,7 +306,7 @@ abstract class SettingItemSlider extends SettingDialogItem {
 
     protected int getTopPadding() {
         if (this.mTopPadding == -1) {
-            this.mTopPadding = getDimension(2131165630);
+            this.mTopPadding = getDimension(R.dimen.slider_memory_top_padding);
             if (this.mContext.getResources().getDisplayMetrics().densityDpi > DisplayMetrics.DENSITY_DEVICE_STABLE) {
                 this.mTopPadding = (int) (CoordinateUtil.convertPx2Dip(this.mContext, this.mTopPadding) * ((DisplayMetrics.DENSITY_DEVICE_STABLE * 1.0f) / 160.0f));
             }
@@ -283,9 +317,9 @@ abstract class SettingItemSlider extends SettingDialogItem {
     protected int getBottomPadding() {
         if (this.mBottomPadding == -1) {
             if (!this.mShowAutoSettingItemAsButton) {
-                this.mBottomPadding = getDimension(2131165629);
+                this.mBottomPadding = getDimension(R.dimen.slider_memory_bottom_padding);
             } else {
-                this.mBottomPadding = getDimension(2131165628);
+                this.mBottomPadding = getDimension(R.dimen.slider_auto_button_memory_bottom_padding);
             }
             if (this.mContext.getResources().getDisplayMetrics().densityDpi > DisplayMetrics.DENSITY_DEVICE_STABLE) {
                 this.mBottomPadding = (int) (CoordinateUtil.convertPx2Dip(this.mContext, this.mBottomPadding) * ((DisplayMetrics.DENSITY_DEVICE_STABLE * 1.0f) / 160.0f));
@@ -302,7 +336,93 @@ abstract class SettingItemSlider extends SettingDialogItem {
         return this.mContext.getResources().getDimensionPixelSize(i);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private String getTag() {
         return getClass().getSimpleName();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private static final class ViewHolder { ImageView mAutoButton; View mBackground; ViewGroup mContainer; ImageView mIndicator; TextView mMaxValue; TextView mMinValue; private ViewHolder() { } }
 }

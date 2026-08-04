@@ -1,22 +1,23 @@
 package com.google.android.gms.common.data;
 
 import android.os.Bundle;
-import com.sonyericsson.android.camera.view.modeselector.CapturingModeUtil$1;
+import com.sonyericsson.android.camera.view.modeselector.CapturingModeUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class DataBufferUtils {
     private DataBufferUtils() {
     }
 
     public static <T, E extends Freezable<T>> ArrayList<T> freezeAndClose(DataBuffer<E> dataBuffer) {
-        CapturingModeUtil$1 capturingModeUtil$1 = (ArrayList<T>) new ArrayList(dataBuffer.getCount());
+        ArrayList<T> arrayList = new ArrayList<>(dataBuffer.getCount());
         try {
             Iterator<E> it = dataBuffer.iterator();
             while (it.hasNext()) {
-                capturingModeUtil$1.add(it.next().freeze());
+                arrayList.add(it.next().freeze());
             }
-            return capturingModeUtil$1;
+            return arrayList;
         } finally {
             dataBuffer.close();
         }

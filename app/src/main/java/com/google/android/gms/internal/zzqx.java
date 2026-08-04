@@ -1,35 +1,60 @@
 package com.google.android.gms.internal;
 
-import com.google.android.gms.common.api.Api$ApiOptions$Optional;
-import com.google.android.gms.common.api.GoogleApiClient$ServerAuthCodeCallbacks;
+import com.google.android.gms.common.api.Api;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.internal.zzx;
 
-public final class zzqx implements Api$ApiOptions$Optional {
-    public static final zzqx zzaUZ = new zzqx$zza().zzCi();
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public final class zzqx implements Api.ApiOptions.Optional {
+    public static final zzqx zzaUZ = new zza().zzCi();
     private final boolean zzTi;
     private final boolean zzTk;
     private final String zzTl;
     private final boolean zzaVa;
-    private final GoogleApiClient$ServerAuthCodeCallbacks zzaVb;
+    private final GoogleApiClient.ServerAuthCodeCallbacks zzaVb;
     private final boolean zzaVc;
 
-    private zzqx(boolean z, boolean z2, String str, GoogleApiClient$ServerAuthCodeCallbacks googleApiClient$ServerAuthCodeCallbacks, boolean z3, boolean z4) {
+    public static final class zza {
+        private String zzaSe;
+        private boolean zzaVd;
+        private boolean zzaVe;
+        private GoogleApiClient.ServerAuthCodeCallbacks zzaVf;
+        private boolean zzaVg;
+        private boolean zzaVh;
+
+        private String zzet(String str) {
+            zzx.zzw(str);
+            zzx.zzb(this.zzaSe == null || this.zzaSe.equals(str), "two different server client ids provided");
+            return str;
+        }
+
+        public zzqx zzCi() {
+            return new zzqx(this.zzaVd, this.zzaVe, this.zzaSe, this.zzaVf, this.zzaVg, this.zzaVh);
+        }
+
+        public zza zza(String str, GoogleApiClient.ServerAuthCodeCallbacks serverAuthCodeCallbacks) {
+            this.zzaVd = true;
+            this.zzaVe = true;
+            this.zzaSe = zzet(str);
+            this.zzaVf = (GoogleApiClient.ServerAuthCodeCallbacks) zzx.zzw(serverAuthCodeCallbacks);
+            return this;
+        }
+    }
+
+    private zzqx(boolean z, boolean z2, String str, GoogleApiClient.ServerAuthCodeCallbacks serverAuthCodeCallbacks, boolean z3, boolean z4) {
         this.zzaVa = z;
         this.zzTi = z2;
         this.zzTl = str;
-        this.zzaVb = googleApiClient$ServerAuthCodeCallbacks;
+        this.zzaVb = serverAuthCodeCallbacks;
         this.zzaVc = z3;
         this.zzTk = z4;
-    }
-
-    /* synthetic */ zzqx(boolean z, boolean z2, String str, GoogleApiClient$ServerAuthCodeCallbacks googleApiClient$ServerAuthCodeCallbacks, boolean z3, boolean z4, zzqx$1 zzqx_1) {
-        this(z, z2, str, googleApiClient$ServerAuthCodeCallbacks, z3, z4);
     }
 
     public boolean zzCf() {
         return this.zzaVa;
     }
 
-    public GoogleApiClient$ServerAuthCodeCallbacks zzCg() {
+    public GoogleApiClient.ServerAuthCodeCallbacks zzCg() {
         return this.zzaVb;
     }
 

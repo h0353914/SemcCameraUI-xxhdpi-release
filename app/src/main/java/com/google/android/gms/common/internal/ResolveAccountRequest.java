@@ -2,11 +2,12 @@ package com.google.android.gms.common.internal;
 
 import android.accounts.Account;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class ResolveAccountRequest implements SafeParcelable {
-    public static final Parcelable$Creator<ResolveAccountRequest> CREATOR = new zzy();
+    public static final Parcelable.Creator<ResolveAccountRequest> CREATOR = new zzy();
     final int mVersionCode;
     private final Account zzQd;
     private final int zzagp;

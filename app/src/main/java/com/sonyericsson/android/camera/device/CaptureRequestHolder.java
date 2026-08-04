@@ -4,9 +4,8 @@ import android.graphics.Rect;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraDevice;
 import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureRequest$Builder;
-import android.hardware.camera2.CaptureRequest$Key;
 import android.view.Surface;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.HashMap;
@@ -18,14 +17,14 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 class CaptureRequestHolder {
     private static final String TAG = "CaptureRequestHolder";
     private final ReadWriteLock mReadWriteLock = new ReentrantReadWriteLock(true);
-    private final Map<CaptureRequest$Key<?>, Object> mCaptureRequests = new HashMap();
+    private final Map<CaptureRequest.Key<?>, Object> mCaptureRequests = new HashMap();
 
     CaptureRequestHolder() {
     }
 
-    void setDefault(CameraInfo$CameraId cameraInfo$CameraId) {
+    void setDefault(CameraInfo.CameraId cameraId) {
         clear();
-        Rect activeArraySize = PlatformCapability.getActiveArraySize(cameraInfo$CameraId);
+        Rect activeArraySize = PlatformCapability.getActiveArraySize(cameraId);
         set(SomcCaptureRequestKeys.SONYMOBILE_STATISTICS_OBJECT_SELECT_TRIGGER, 0);
         set(SomcCaptureRequestKeys.SONYMOBILE_STATISTICS_OBJECT_SELECT_TRIGGER_AREA, new int[]{activeArraySize.left, activeArraySize.top, activeArraySize.right, activeArraySize.bottom});
         set(SomcCaptureRequestKeys.SONYMOBILE_STATISTICS_FACE_SELECT_TRIGGER, 0);
@@ -42,9 +41,9 @@ class CaptureRequestHolder {
         set(SomcCaptureRequestKeys.SONYMOBILE_CONTROL_STILL_SKIN_SMOOTH_LEVEL, 0);
         set(SomcCaptureRequestKeys.SONYMOBILE_CONTROL_STILL_HDR_MODE, 0);
         set(SomcCaptureRequestKeys.SONYMOBILE_CONTROL_POWER_SAVE_MODE, 0);
-        set(SomcCaptureRequestKeys.SONYMOBILE_CONTROL_EXPOSURE_TIME_LIMIT, Long.valueOf(PlatformCapability.getMinExposureTimeLimit(cameraInfo$CameraId)));
+        set(SomcCaptureRequestKeys.SONYMOBILE_CONTROL_EXPOSURE_TIME_LIMIT, Long.valueOf(PlatformCapability.getMinExposureTimeLimit(cameraId)));
         set(SomcCaptureRequestKeys.SONYMOBILE_SENSOR_SENSITIVITY_HINT, 50);
-        set(SomcCaptureRequestKeys.SONYMOBILE_SENSOR_EXPOSURE_TIME_HINT, Long.valueOf(PlatformCapability.getMaxShutterSpeed(cameraInfo$CameraId)));
+        set(SomcCaptureRequestKeys.SONYMOBILE_SENSOR_EXPOSURE_TIME_HINT, Long.valueOf(PlatformCapability.getMaxShutterSpeed(cameraId)));
         set(SomcCaptureRequestKeys.SONYMOBILE_CONTROL_FUSION_MODE, 0);
     }
 
@@ -59,13 +58,13 @@ class CaptureRequestHolder {
         this.mCaptureRequests.clear();
     }
 
-    synchronized <T> void set(CaptureRequest$Key<T> captureRequest$Key, T t) {
+    synchronized <T> void set(CaptureRequest.Key<T> key, T t) {
         this.mReadWriteLock.writeLock().lock();
         try {
-            this.mCaptureRequests.put(captureRequest$Key, t);
+            this.mCaptureRequests.put(key, t);
             this.mReadWriteLock.writeLock().unlock();
             if (CamLog.VERBOSE) {
-                CamLog.d("set() : key = " + captureRequest$Key.getName() + ", value = " + t);
+                CamLog.d("set() : key = " + key.getName() + ", value = " + t);
             }
         } catch (Throwable th) {
             this.mReadWriteLock.writeLock().unlock();
@@ -73,13 +72,13 @@ class CaptureRequestHolder {
         }
     }
 
-    synchronized <T> T get(CaptureRequest$Key<T> captureRequest$Key) {
+    synchronized <T> T get(CaptureRequest.Key<T> key) {
         T t;
         this.mReadWriteLock.readLock().lock();
         try {
-            t = (T) this.mCaptureRequests.get(captureRequest$Key);
+            t = (T) this.mCaptureRequests.get(key);
             if (CamLog.VERBOSE) {
-                CamLog.d("get() : key = " + captureRequest$Key.getName() + ", value = " + t);
+                CamLog.d("get() : key = " + key.getName() + ", value = " + t);
             }
         } finally {
             this.mReadWriteLock.readLock().unlock();
@@ -92,20 +91,20 @@ class CaptureRequestHolder {
     }
 
     synchronized CaptureRequest createCaptureRequest(CameraDevice cameraDevice, int i, Object obj, Surface... surfaceArr) {
-        CaptureRequest$Builder captureRequest$BuilderCreateCaptureRequest;
+        CaptureRequest.Builder builderCreateCaptureRequest;
         if (CamLog.VERBOSE) {
             CamLog.d("createCaptureRequest() E");
         }
         try {
-            captureRequest$BuilderCreateCaptureRequest = cameraDevice.createCaptureRequest(i);
-            Iterator<CaptureRequest$Key<?>> it = this.mCaptureRequests.keySet().iterator();
+            builderCreateCaptureRequest = cameraDevice.createCaptureRequest(i);
+            Iterator<CaptureRequest.Key<?>> it = this.mCaptureRequests.keySet().iterator();
             while (it.hasNext()) {
-                setRequest(captureRequest$BuilderCreateCaptureRequest, it.next());
+                setRequest(builderCreateCaptureRequest, it.next());
             }
             for (Surface surface : surfaceArr) {
-                captureRequest$BuilderCreateCaptureRequest.addTarget(surface);
+                builderCreateCaptureRequest.addTarget(surface);
             }
-            captureRequest$BuilderCreateCaptureRequest.setTag(obj);
+            builderCreateCaptureRequest.setTag(obj);
             if (CamLog.VERBOSE) {
                 CamLog.d("createCaptureRequest() X");
             }
@@ -113,15 +112,13 @@ class CaptureRequestHolder {
             CamLog.e("createCaptureRequest() X : Exception", e);
             return null;
         }
-        return captureRequest$BuilderCreateCaptureRequest.build();
+        return builderCreateCaptureRequest.build();
     }
-
-    /* JADX WARN: Multi-variable type inference failed */
-    private <T> void setRequest(CaptureRequest$Builder captureRequest$Builder, CaptureRequest$Key<T> captureRequest$Key) {
+private <T> void setRequest(CaptureRequest.Builder builder, CaptureRequest.Key<T> key) {
         try {
-            captureRequest$Builder.set(captureRequest$Key, get(captureRequest$Key));
+            builder.set(key, get(key));
         } catch (IllegalArgumentException unused) {
-            CamLog.e("setRequest(): key (" + captureRequest$Key.getName() + ") is not valid.");
+            CamLog.e("setRequest(): key (" + key.getName() + ") is not valid.");
         }
     }
 }

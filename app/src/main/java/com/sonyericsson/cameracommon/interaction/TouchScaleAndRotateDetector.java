@@ -5,7 +5,7 @@ import android.graphics.PointF;
 public class TouchScaleAndRotateDetector {
     private static final int ROTATE_DETECTION_THRESHOLD_DEGREE = 1;
     public static final String TAG = "TouchScaleAndRotateDetector";
-    private TouchScaleAndRotateDetector$ScaleAndRotateDetectorListener mListener;
+    private ScaleAndRotateDetectorListener mListener;
     private PointF mPreviousAxisVec;
     private PointF mPreviousTouchPos0;
     private PointF mPreviousTouchPos1;
@@ -17,12 +17,18 @@ public class TouchScaleAndRotateDetector {
     private float mAxisRotateDeg = 0.0f;
     private float mOriginalAxisLen = 0.0f;
 
+    public interface ScaleAndRotateDetectorListener {
+        void onDoubleTouchRotateDetected(float f, float f2);
+
+        void onDoubleTouchScaleDetected(float f, float f2, float f3);
+    }
+
     void release() {
         this.mListener = null;
     }
 
-    public void setScaleAndRotateDetectorListener(TouchScaleAndRotateDetector$ScaleAndRotateDetectorListener touchScaleAndRotateDetector$ScaleAndRotateDetectorListener) {
-        this.mListener = touchScaleAndRotateDetector$ScaleAndRotateDetectorListener;
+    public void setScaleAndRotateDetectorListener(ScaleAndRotateDetectorListener scaleAndRotateDetectorListener) {
+        this.mListener = scaleAndRotateDetectorListener;
     }
 
     public void startScaleAndRotateDetection(PointF pointF, PointF pointF2) {
@@ -39,9 +45,8 @@ public class TouchScaleAndRotateDetector {
         this.mTouchVec1.set(this.mCurrentTouchPos1.x - this.mPreviousTouchPos1.x, this.mCurrentTouchPos1.y - this.mPreviousTouchPos1.y);
         this.mCurrentAxisVec.set(this.mCurrentTouchPos1.x - this.mCurrentTouchPos0.x, this.mCurrentTouchPos1.y - this.mCurrentTouchPos0.y);
         if (VectorCalculator.isSquare(this.mCurrentAxisVec, this.mTouchVec0) && VectorCalculator.isSquare(this.mCurrentAxisVec, this.mTouchVec1)) {
-            float radianFrom2Vector = (float) ((((double) ((VectorCalculator.getRadianFrom2Vector(this.mPreviousAxisVec, this.mCurrentAxisVec) * 360.0f) / 2.0f)) / 3.141592653589793d) * ((double) (0.0f <= (this.mPreviousAxisVec.x * this.mCurrentAxisVec.y) - (this.mCurrentAxisVec.x * this.mPreviousAxisVec.y) ? 1.0f : -1.0f)));
             float f = this.mAxisRotateDeg;
-            this.mAxisRotateDeg += radianFrom2Vector;
+            this.mAxisRotateDeg += (float) ((((VectorCalculator.getRadianFrom2Vector(this.mPreviousAxisVec, this.mCurrentAxisVec) * 360.0f) / 2.0f) / 3.141592653589793d) * (0.0f <= (this.mPreviousAxisVec.x * this.mCurrentAxisVec.y) - (this.mCurrentAxisVec.x * this.mPreviousAxisVec.y) ? 1.0f : -1.0f));
             if (1.0f <= Math.abs(this.mAxisRotateDeg - f)) {
                 this.mListener.onDoubleTouchRotateDetected(this.mAxisRotateDeg, this.mAxisRotateDeg - f);
             }

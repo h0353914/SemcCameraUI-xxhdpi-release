@@ -16,8 +16,6 @@ import java.util.Map;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.ImageInfo;
-import org.apache.commons.imaging.ImageInfo$ColorType;
-import org.apache.commons.imaging.ImageInfo$CompressionAlgorithm;
 import org.apache.commons.imaging.ImageParser;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.ImageMetadata;
@@ -66,9 +64,9 @@ public class RgbeImageParser extends ImageParser {
             ImageMetadata metadata = rgbeInfo.getMetadata();
             IoUtils.closeQuietly(true, rgbeInfo);
             return metadata;
-        } catch (Throwable th) {
+        } catch (Exception th) {
             IoUtils.closeQuietly(false, rgbeInfo);
-            throw th;
+            throw new ImageReadException("Error", th);
         }
     }
 
@@ -76,12 +74,12 @@ public class RgbeImageParser extends ImageParser {
     public ImageInfo getImageInfo(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
         RgbeInfo rgbeInfo = new RgbeInfo(byteSource);
         try {
-            ImageInfo imageInfo = new ImageInfo(getName(), 32, new ArrayList(), ImageFormats.RGBE, getName(), rgbeInfo.getHeight(), "image/vnd.radiance", 1, -1, -1.0f, -1, -1.0f, rgbeInfo.getWidth(), false, false, false, ImageInfo$ColorType.RGB, ImageInfo$CompressionAlgorithm.ADAPTIVE_RLE);
+            ImageInfo imageInfo = new ImageInfo(getName(), 32, new ArrayList(), ImageFormats.RGBE, getName(), rgbeInfo.getHeight(), "image/vnd.radiance", 1, -1, -1.0f, -1, -1.0f, rgbeInfo.getWidth(), false, false, false, ImageInfo.ColorType.RGB, ImageInfo.CompressionAlgorithm.ADAPTIVE_RLE);
             IoUtils.closeQuietly(true, rgbeInfo);
             return imageInfo;
-        } catch (Throwable th) {
+        } catch (Exception th) {
             IoUtils.closeQuietly(false, rgbeInfo);
-            throw th;
+            throw new ImageReadException("Error", th);
         }
     }
 
@@ -93,9 +91,9 @@ public class RgbeImageParser extends ImageParser {
             BufferedImage bufferedImage = new BufferedImage(new ComponentColorModel(ColorSpace.getInstance(1000), false, false, 1, dataBufferFloat.getDataType()), Raster.createWritableRaster(new BandedSampleModel(dataBufferFloat.getDataType(), rgbeInfo.getWidth(), rgbeInfo.getHeight(), 3), dataBufferFloat, new Point()), false, (Hashtable) null);
             IoUtils.closeQuietly(true, rgbeInfo);
             return bufferedImage;
-        } catch (Throwable th) {
+        } catch (Exception th) {
             IoUtils.closeQuietly(false, rgbeInfo);
-            throw th;
+            throw new ImageReadException("Error", th);
         }
     }
 
@@ -106,9 +104,9 @@ public class RgbeImageParser extends ImageParser {
             Dimension dimension = new Dimension(rgbeInfo.getWidth(), rgbeInfo.getHeight());
             IoUtils.closeQuietly(true, rgbeInfo);
             return dimension;
-        } catch (Throwable th) {
+        } catch (Exception th) {
             IoUtils.closeQuietly(false, rgbeInfo);
-            throw th;
+            throw new ImageReadException("Error", th);
         }
     }
 }

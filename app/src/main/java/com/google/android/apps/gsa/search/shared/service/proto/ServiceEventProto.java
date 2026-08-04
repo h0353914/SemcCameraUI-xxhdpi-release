@@ -1,3 +1,90 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.google.android.apps.gsa.search.shared.service.proto;
 
 import com.google.protobuf.ByteString;
@@ -5,9 +92,6 @@ import com.google.protobuf.CodedInputStream;
 import com.google.protobuf.ExtensionRegistryLite;
 import com.google.protobuf.FieldType;
 import com.google.protobuf.GeneratedMessageLite;
-import com.google.protobuf.GeneratedMessageLite$DefaultInstanceBasedParser;
-import com.google.protobuf.GeneratedMessageLite$ExtendableMessage;
-import com.google.protobuf.GeneratedMessageLite$MethodToInvoke;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Parser;
 import com.google.protobuf.ProtoField;
@@ -20,7 +104,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 
 @ProtoMessage(checkInitialized = {}, messageSetWireFormat = false, protoSyntax = ProtoSyntax.PROTO2)
-public final class ServiceEventProto extends GeneratedMessageLite$ExtendableMessage<ServiceEventProto, ServiceEventProto$Builder> implements ServiceEventProtoOrBuilder {
+public final class ServiceEventProto extends GeneratedMessageLite.ExtendableMessage<ServiceEventProto, ServiceEventProto.Builder> implements ServiceEventProtoOrBuilder {
     private static final ServiceEventProto DEFAULT_INSTANCE = new ServiceEventProto();
     public static final int EVENT_ID_FIELD_NUMBER = 1;
     private static volatile Parser<ServiceEventProto> PARSER;
@@ -32,18 +116,6 @@ public final class ServiceEventProto extends GeneratedMessageLite$ExtendableMess
     @ProtoPresenceCheckedField(mask = 1, presenceBitsId = 0)
     private int eventId_;
     private byte memoizedIsInitialized = 2;
-
-    static /* synthetic */ ServiceEventProto access$000() {
-        return DEFAULT_INSTANCE;
-    }
-
-    static /* synthetic */ void access$100(ServiceEventProto serviceEventProto, int i) {
-        serviceEventProto.setEventId(i);
-    }
-
-    static /* synthetic */ void access$200(ServiceEventProto serviceEventProto) {
-        serviceEventProto.clearEventId();
-    }
 
     private ServiceEventProto() {
     }
@@ -58,12 +130,14 @@ public final class ServiceEventProto extends GeneratedMessageLite$ExtendableMess
         return this.eventId_;
     }
 
-    private void setEventId(int value) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void setEventId(int value) {
         this.bitField0_ |= 1;
         this.eventId_ = value;
     }
 
-    private void clearEventId() {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void clearEventId() {
         this.bitField0_ &= -2;
         this.eventId_ = 0;
     }
@@ -101,11 +175,11 @@ public final class ServiceEventProto extends GeneratedMessageLite$ExtendableMess
     }
 
     public static ServiceEventProto parseDelimitedFrom(InputStream input) throws IOException {
-        return parseDelimitedFrom((GeneratedMessageLite) DEFAULT_INSTANCE, input);
+        return (ServiceEventProto) parseDelimitedFrom((GeneratedMessageLite) DEFAULT_INSTANCE, input);
     }
 
     public static ServiceEventProto parseDelimitedFrom(InputStream input, ExtensionRegistryLite extensionRegistry) throws IOException {
-        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+        return (ServiceEventProto) parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
 
     public static ServiceEventProto parseFrom(CodedInputStream input) throws IOException {
@@ -116,40 +190,72 @@ public final class ServiceEventProto extends GeneratedMessageLite$ExtendableMess
         return GeneratedMessageLite.parseFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
 
-    public static ServiceEventProto$Builder newBuilder() {
+    public static Builder newBuilder() {
         return DEFAULT_INSTANCE.createBuilder();
     }
 
-    public static ServiceEventProto$Builder newBuilder(ServiceEventProto prototype) {
+    public static Builder newBuilder(ServiceEventProto prototype) {
         return DEFAULT_INSTANCE.createBuilder(prototype);
     }
 
-    protected final Object dynamicMethod(GeneratedMessageLite$MethodToInvoke method, Object arg0, Object arg1) {
-        switch (ServiceEventProto$1.$SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke[method.ordinal()]) {
-            case 1:
+    public static final class Builder extends GeneratedMessageLite.ExtendableBuilder<ServiceEventProto, Builder> implements ServiceEventProtoOrBuilder {
+        /* synthetic */ Builder(Object unused) {
+            this();
+        }
+
+        private Builder() {
+            super(ServiceEventProto.DEFAULT_INSTANCE);
+        }
+
+        @Override // com.google.android.apps.gsa.search.shared.service.proto.ServiceEventProtoOrBuilder
+        public boolean hasEventId() {
+            return this.instance.hasEventId();
+        }
+
+        @Override // com.google.android.apps.gsa.search.shared.service.proto.ServiceEventProtoOrBuilder
+        public int getEventId() {
+            return this.instance.getEventId();
+        }
+
+        public Builder setEventId(int value) {
+            copyOnWrite();
+            this.instance.setEventId(value);
+            return this;
+        }
+
+        public Builder clearEventId() {
+            copyOnWrite();
+            this.instance.clearEventId();
+            return this;
+        }
+    }
+
+
+    protected final Object dynamicMethod(GeneratedMessageLite.MethodToInvoke method, Object arg0, Object arg1) {
+        switch (method) {
+            case NEW_MUTABLE_INSTANCE:
                 return new ServiceEventProto();
-            case 2:
-                return new ServiceEventProto$Builder(null);
-            case 3:
+            case NEW_BUILDER:
+                return new Builder(null);
+            case BUILD_MESSAGE_INFO:
                 return newMessageInfo(DEFAULT_INSTANCE, "\u0001\u0001\u0000\u0001\u0001\u0001\u0001\u0002\u0000\u0000\u0000\u0001\u0004\u0000", new Object[]{"bitField0_", "eventId_"});
-            case 4:
+            case GET_DEFAULT_INSTANCE:
                 return DEFAULT_INSTANCE;
-            case 5:
-                GeneratedMessageLite$DefaultInstanceBasedParser generatedMessageLite$DefaultInstanceBasedParser = PARSER;
-                if (generatedMessageLite$DefaultInstanceBasedParser == null) {
+            case GET_PARSER:
+                GeneratedMessageLite.DefaultInstanceBasedParser defaultInstanceBasedParser = (GeneratedMessageLite.DefaultInstanceBasedParser) PARSER;
+                if (defaultInstanceBasedParser == null) {
                     synchronized (ServiceEventProto.class) {
-                        generatedMessageLite$DefaultInstanceBasedParser = PARSER;
-                        if (generatedMessageLite$DefaultInstanceBasedParser == null) {
-                            generatedMessageLite$DefaultInstanceBasedParser = new GeneratedMessageLite$DefaultInstanceBasedParser(DEFAULT_INSTANCE);
-                            PARSER = generatedMessageLite$DefaultInstanceBasedParser;
+                        defaultInstanceBasedParser = (GeneratedMessageLite.DefaultInstanceBasedParser) PARSER;
+                        if (defaultInstanceBasedParser == null) {
+                            defaultInstanceBasedParser = new GeneratedMessageLite.DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                            PARSER = defaultInstanceBasedParser;
                         }
-                        break;
                     }
                 }
-                return generatedMessageLite$DefaultInstanceBasedParser;
-            case 6:
+                return defaultInstanceBasedParser;
+            case GET_MEMOIZED_IS_INITIALIZED:
                 return Byte.valueOf(this.memoizedIsInitialized);
-            case 7:
+            case SET_MEMOIZED_IS_INITIALIZED:
                 this.memoizedIsInitialized = (byte) (arg0 == null ? 0 : 1);
                 return null;
             default:

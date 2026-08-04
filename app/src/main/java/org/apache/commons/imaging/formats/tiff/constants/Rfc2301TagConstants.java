@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.tiff.constants;
 
+import com.sonymobile.media.SomcMediaStore;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -33,7 +34,7 @@ public final class Rfc2301TagConstants {
     public static final TagInfoShortOrLong TIFF_TAG_BAD_FAX_LINES = new TagInfoShortOrLong("BadFaxLines", 326, 1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);
     public static final TagInfoShort TIFF_TAG_CLEAN_FAX_DATA = new TagInfoShort("CleanFaxData", 327, 1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);
     public static final TagInfoShortOrLong TIFF_TAG_CONSECUTIVE_BAD_FAX_LINES = new TagInfoShortOrLong("ConsecutiveBadFaxLines", 328, 1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);
-    public static final TagInfoDirectory TIFF_TAG_GLOBAL_PARAMETERS_IFD = new TagInfoDirectory("GlobalParametersIFD", 400, 1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);
+    public static final TagInfoDirectory TIFF_TAG_GLOBAL_PARAMETERS_IFD = new TagInfoDirectory("GlobalParametersIFD", SomcMediaStore.AUTHORITY_NEW_VERSION, 1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);
     public static final TagInfoLong TIFF_TAG_PROFILE_TYPE = new TagInfoLong("ProfileType", 401, 1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);
     public static final TagInfoByte TIFF_TAG_FAX_PROFILE = new TagInfoByte("FaxProfile", 402, 1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);
     public static final TagInfoLong TIFF_TAG_CODING_METHODS = new TagInfoLong("CodingMethods", 403, 1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);

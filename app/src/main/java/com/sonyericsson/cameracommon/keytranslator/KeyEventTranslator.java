@@ -7,27 +7,54 @@ import com.sonyericsson.android.camera.util.CamLog;
 
 public class KeyEventTranslator {
     public static final String TAG = "KeyEventTranslator";
-    private KeyEventTranslator$KeyType mCurrentKeyType = KeyEventTranslator$KeyType.NON;
+    private KeyType mCurrentKeyType = KeyType.NON;
     private final UserSettings mSetting;
+
+    private enum KeyAction {
+        DOWN,
+        UP,
+        LONG_PRESS
+    }
+
+    private enum KeyType {
+        NON,
+        CAMERA_KEY,
+        VOLUME_UP_KEY,
+        VOLUME_DOWN_KEY
+    }
+
+    public enum TranslatedKeyCode {
+        NON,
+        ZOOM,
+        VOLUME,
+        FOCUS,
+        SHUTTER,
+        FOCUS_AND_SHUTTER_UP_KEY,
+        FOCUS_AND_SHUTTER_DOWN_KEY,
+        BACK,
+        MENU,
+        IGNORED,
+        ENTER
+    }
 
     public KeyEventTranslator(UserSettings userSettings) {
         this.mSetting = userSettings;
     }
 
     public void reset() {
-        this.mCurrentKeyType = KeyEventTranslator$KeyType.NON;
+        this.mCurrentKeyType = KeyType.NON;
     }
 
-    public KeyEventTranslator$TranslatedKeyCode translateKeyCode(int i) {
+    public TranslatedKeyCode translateKeyCode(int i) {
         if (i == 4) {
-            return KeyEventTranslator$TranslatedKeyCode.BACK;
+            return TranslatedKeyCode.BACK;
         }
         if (i == 27) {
-            return KeyEventTranslator$TranslatedKeyCode.SHUTTER;
+            return TranslatedKeyCode.SHUTTER;
         }
         if (i != 66) {
             if (i == 80) {
-                return KeyEventTranslator$TranslatedKeyCode.FOCUS;
+                return TranslatedKeyCode.FOCUS;
             }
             if (i != 82) {
                 switch (i) {
@@ -37,78 +64,78 @@ public class KeyEventTranslator {
                     case 25:
                         VolumeKey volumeKey = (VolumeKey) this.mSetting.get(UserSettingKey.VOLUME_KEY);
                         if (volumeKey == null) {
-                            return KeyEventTranslator$TranslatedKeyCode.ZOOM;
+                            return TranslatedKeyCode.ZOOM;
                         }
-                        switch (KeyEventTranslator$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$VolumeKey[volumeKey.ordinal()]) {
-                            case 1:
-                                return KeyEventTranslator$TranslatedKeyCode.ZOOM;
-                            case 2:
-                                return KeyEventTranslator$TranslatedKeyCode.VOLUME;
-                            case 3:
+                        switch (volumeKey) {
+                            case ZOOM:
+                                return TranslatedKeyCode.ZOOM;
+                            case VOLUME:
+                                return TranslatedKeyCode.VOLUME;
+                            case HW_CAMERA_KEY:
                                 if (i == 24) {
-                                    return KeyEventTranslator$TranslatedKeyCode.FOCUS_AND_SHUTTER_UP_KEY;
+                                    return TranslatedKeyCode.FOCUS_AND_SHUTTER_UP_KEY;
                                 }
-                                return KeyEventTranslator$TranslatedKeyCode.FOCUS_AND_SHUTTER_DOWN_KEY;
+                                return TranslatedKeyCode.FOCUS_AND_SHUTTER_DOWN_KEY;
                             default:
                                 CamLog.e("Volume key parameter is invalid state.");
-                                return KeyEventTranslator$TranslatedKeyCode.ZOOM;
+                                return TranslatedKeyCode.ZOOM;
                         }
                     default:
-                        return KeyEventTranslator$TranslatedKeyCode.NON;
+                        return TranslatedKeyCode.NON;
                 }
             } else {
-                return KeyEventTranslator$TranslatedKeyCode.MENU;
+                return TranslatedKeyCode.MENU;
             }
         }
-        return KeyEventTranslator$TranslatedKeyCode.FOCUS_AND_SHUTTER_UP_KEY;
+        return TranslatedKeyCode.FOCUS_AND_SHUTTER_UP_KEY;
     }
 
-    public KeyEventTranslator$TranslatedKeyCode translateKeyCodeOnDown(int i) {
-        KeyEventTranslator$TranslatedKeyCode keyEventTranslator$TranslatedKeyCodeTranslateKeyCode = translateKeyCode(i);
-        return !isAvailableNow(keyEventTranslator$TranslatedKeyCodeTranslateKeyCode, KeyEventTranslator$KeyAction.DOWN) ? KeyEventTranslator$TranslatedKeyCode.IGNORED : keyEventTranslator$TranslatedKeyCodeTranslateKeyCode;
+    public TranslatedKeyCode translateKeyCodeOnDown(int i) {
+        TranslatedKeyCode translatedKeyCodeTranslateKeyCode = translateKeyCode(i);
+        return !isAvailableNow(translatedKeyCodeTranslateKeyCode, KeyAction.DOWN) ? TranslatedKeyCode.IGNORED : translatedKeyCodeTranslateKeyCode;
     }
 
-    public KeyEventTranslator$TranslatedKeyCode translateKeyCodeOnUp(int i) {
-        KeyEventTranslator$TranslatedKeyCode keyEventTranslator$TranslatedKeyCodeTranslateKeyCode = translateKeyCode(i);
-        return !isAvailableNow(keyEventTranslator$TranslatedKeyCodeTranslateKeyCode, KeyEventTranslator$KeyAction.UP) ? KeyEventTranslator$TranslatedKeyCode.IGNORED : keyEventTranslator$TranslatedKeyCodeTranslateKeyCode;
+    public TranslatedKeyCode translateKeyCodeOnUp(int i) {
+        TranslatedKeyCode translatedKeyCodeTranslateKeyCode = translateKeyCode(i);
+        return !isAvailableNow(translatedKeyCodeTranslateKeyCode, KeyAction.UP) ? TranslatedKeyCode.IGNORED : translatedKeyCodeTranslateKeyCode;
     }
 
-    public KeyEventTranslator$TranslatedKeyCode translateKeyCodeOnLongPress(int i) {
-        KeyEventTranslator$TranslatedKeyCode keyEventTranslator$TranslatedKeyCodeTranslateKeyCode = translateKeyCode(i);
-        return !isAvailableNow(keyEventTranslator$TranslatedKeyCodeTranslateKeyCode, KeyEventTranslator$KeyAction.LONG_PRESS) ? KeyEventTranslator$TranslatedKeyCode.IGNORED : keyEventTranslator$TranslatedKeyCodeTranslateKeyCode;
+    public TranslatedKeyCode translateKeyCodeOnLongPress(int i) {
+        TranslatedKeyCode translatedKeyCodeTranslateKeyCode = translateKeyCode(i);
+        return !isAvailableNow(translatedKeyCodeTranslateKeyCode, KeyAction.LONG_PRESS) ? TranslatedKeyCode.IGNORED : translatedKeyCodeTranslateKeyCode;
     }
 
-    private boolean isAvailableNow(KeyEventTranslator$TranslatedKeyCode keyEventTranslator$TranslatedKeyCode, KeyEventTranslator$KeyAction keyEventTranslator$KeyAction) {
-        switch (KeyEventTranslator$1.$SwitchMap$com$sonyericsson$cameracommon$keytranslator$KeyEventTranslator$TranslatedKeyCode[keyEventTranslator$TranslatedKeyCode.ordinal()]) {
-            case 1:
-                return isExpectedKeyType(keyEventTranslator$KeyAction, KeyEventTranslator$KeyType.NON, KeyEventTranslator$KeyType.CAMERA_KEY, KeyEventTranslator$KeyType.CAMERA_KEY, KeyEventTranslator$KeyType.NON);
-            case 2:
-                return isExpectedKeyType(keyEventTranslator$KeyAction, KeyEventTranslator$KeyType.CAMERA_KEY, KeyEventTranslator$KeyType.CAMERA_KEY, KeyEventTranslator$KeyType.CAMERA_KEY, KeyEventTranslator$KeyType.CAMERA_KEY);
-            case 3:
-                return isExpectedKeyType(keyEventTranslator$KeyAction, KeyEventTranslator$KeyType.NON, KeyEventTranslator$KeyType.VOLUME_UP_KEY, KeyEventTranslator$KeyType.VOLUME_UP_KEY, KeyEventTranslator$KeyType.NON);
-            case 4:
-                return isExpectedKeyType(keyEventTranslator$KeyAction, KeyEventTranslator$KeyType.NON, KeyEventTranslator$KeyType.VOLUME_DOWN_KEY, KeyEventTranslator$KeyType.VOLUME_DOWN_KEY, KeyEventTranslator$KeyType.NON);
+    private boolean isAvailableNow(TranslatedKeyCode translatedKeyCode, KeyAction keyAction) {
+        switch (translatedKeyCode) {
+            case FOCUS:
+                return isExpectedKeyType(keyAction, KeyType.NON, KeyType.CAMERA_KEY, KeyType.CAMERA_KEY, KeyType.NON);
+            case SHUTTER:
+                return isExpectedKeyType(keyAction, KeyType.CAMERA_KEY, KeyType.CAMERA_KEY, KeyType.CAMERA_KEY, KeyType.CAMERA_KEY);
+            case FOCUS_AND_SHUTTER_UP_KEY:
+                return isExpectedKeyType(keyAction, KeyType.NON, KeyType.VOLUME_UP_KEY, KeyType.VOLUME_UP_KEY, KeyType.NON);
+            case FOCUS_AND_SHUTTER_DOWN_KEY:
+                return isExpectedKeyType(keyAction, KeyType.NON, KeyType.VOLUME_DOWN_KEY, KeyType.VOLUME_DOWN_KEY, KeyType.NON);
             default:
                 return true;
         }
     }
 
-    private boolean isExpectedKeyType(KeyEventTranslator$KeyAction keyEventTranslator$KeyAction, KeyEventTranslator$KeyType keyEventTranslator$KeyType, KeyEventTranslator$KeyType keyEventTranslator$KeyType2, KeyEventTranslator$KeyType keyEventTranslator$KeyType3, KeyEventTranslator$KeyType keyEventTranslator$KeyType4) {
-        switch (KeyEventTranslator$1.$SwitchMap$com$sonyericsson$cameracommon$keytranslator$KeyEventTranslator$KeyAction[keyEventTranslator$KeyAction.ordinal()]) {
-            case 1:
-                if (this.mCurrentKeyType != keyEventTranslator$KeyType) {
+    private boolean isExpectedKeyType(KeyAction keyAction, KeyType keyType, KeyType keyType2, KeyType keyType3, KeyType keyType4) {
+        switch (keyAction) {
+            case DOWN:
+                if (this.mCurrentKeyType != keyType) {
                     return false;
                 }
-                this.mCurrentKeyType = keyEventTranslator$KeyType2;
+                this.mCurrentKeyType = keyType2;
                 return true;
-            case 2:
-                if (this.mCurrentKeyType != keyEventTranslator$KeyType3) {
+            case UP:
+                if (this.mCurrentKeyType != keyType3) {
                     return false;
                 }
-                this.mCurrentKeyType = keyEventTranslator$KeyType4;
+                this.mCurrentKeyType = keyType4;
                 return true;
-            case 3:
-                return this.mCurrentKeyType == keyEventTranslator$KeyType3;
+            case LONG_PRESS:
+                return this.mCurrentKeyType == keyType3;
             default:
                 return false;
         }

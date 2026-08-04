@@ -2,15 +2,20 @@ package com.sonyericsson.cameracommon.systemmonitor;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
 import com.sonyericsson.android.camera.debug.DebugParameterUtils;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.psm.sysmonservice.ISysmonService;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ThermalAlertReceiver extends BroadcastReceiver {
     private static final String ACTION_CAMERA_COOLED_DOWN_NORMAL = "com.sonyericsson.psm.action.CAMERA_COOLED_DOWN_NORMAL";
@@ -35,40 +40,24 @@ public class ThermalAlertReceiver extends BroadcastReceiver {
     private static final int VARIABLE_LOW_TEMP_BURN_TIMEOUT_DURATION_NOT_SUPPORTED = 0;
     private final Activity mActivity;
     private boolean mIsBindSysmonService;
-    private final ThermalAlertReceiver$ThermalAlertReceiverListener mListener;
+    private final ThermalAlertReceiverListener mListener;
+    private final LowTempBurnTimeoutTimerWrapper mLowTempBurnTimerFixedDuration;
+    private final LowTempBurnTimeoutTimerWrapper mLowTempBurnTimerVariableDuration;
     private ISysmonService mSysmonService;
     private boolean mIsAlreadyHighTemperature = false;
     private boolean mIsWarningState = false;
     private boolean mIsWarningExtraState = false;
     private boolean mIsWarningReceived = false;
-    private final ServiceConnection mServiceConnectionSysmon = new ThermalAlertReceiver$ServiceConnectionSysmon(this);
-    private final ThermalAlertReceiver$LowTempBurnTimeoutTimerWrapper mLowTempBurnTimerFixedDuration = new ThermalAlertReceiver$LowTempBurnTimeoutTimerWrapper(this, null);
-    private final ThermalAlertReceiver$LowTempBurnTimeoutTimerWrapper mLowTempBurnTimerVariableDuration = new ThermalAlertReceiver$LowTempBurnTimeoutTimerWrapper(this, null);
+    private final ServiceConnection mServiceConnectionSysmon = new ServiceConnectionSysmon();
 
-    static /* synthetic */ ISysmonService access$000(ThermalAlertReceiver thermalAlertReceiver) {
-        return thermalAlertReceiver.mSysmonService;
-    }
+    public interface ThermalAlertReceiverListener {
+        void onNotifyThermalNormal();
 
-    static /* synthetic */ ISysmonService access$002(ThermalAlertReceiver thermalAlertReceiver, ISysmonService iSysmonService) {
-        thermalAlertReceiver.mSysmonService = iSysmonService;
-        return iSysmonService;
-    }
+        void onNotifyThermalWarning(boolean z);
 
-    static /* synthetic */ void access$100(ThermalAlertReceiver thermalAlertReceiver, int i, String str) {
-        thermalAlertReceiver.checkStartupStatus(i, str);
-    }
+        void onNotifyThermalWarningExtra(boolean z);
 
-    static /* synthetic */ void access$200(ThermalAlertReceiver thermalAlertReceiver, int i, int i2) {
-        thermalAlertReceiver.checkLowTempBurnTimeoutTimerDuration(i, i2);
-    }
-
-    static /* synthetic */ boolean access$502(ThermalAlertReceiver thermalAlertReceiver, boolean z) {
-        thermalAlertReceiver.mIsAlreadyHighTemperature = z;
-        return z;
-    }
-
-    static /* synthetic */ ThermalAlertReceiver$ThermalAlertReceiverListener access$600(ThermalAlertReceiver thermalAlertReceiver) {
-        return thermalAlertReceiver.mListener;
+        void onReachCriticalTemperature(boolean z);
     }
 
     public boolean isAlreadyHighTemperature() {
@@ -87,36 +76,37 @@ public class ThermalAlertReceiver extends BroadcastReceiver {
         return this.mIsWarningState | this.mIsWarningExtraState;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void checkStartupStatus(int i, String str) {
         this.mIsAlreadyHighTemperature = false;
         switch (i) {
-            case 600:
+            case CAMERA_NORMAL /* 600 */:
                 if (CamLog.VERBOSE) {
                     CamLog.d("Startup status of service[" + str + "] is NORMAL.");
                 }
                 changeToNormalState();
                 break;
-            case 601:
+            case CAMERA_WARNING_EXTRA /* 601 */:
                 if (CamLog.VERBOSE) {
                     CamLog.d("Startup status of service[" + str + "] is CAMERA_WARNING_EXTRA.");
                 }
                 changeToWarningExtraState(true);
                 break;
-            case 603:
+            case CAMERA_WARNING /* 603 */:
                 if (CamLog.VERBOSE) {
                     CamLog.d("Startup status of service[" + str + "] is WARNING.");
                 }
                 this.mIsAlreadyHighTemperature = true;
                 finishOnStartup();
                 break;
-            case 604:
+            case CAMERA_CRITICAL /* 604 */:
                 if (CamLog.VERBOSE) {
                     CamLog.d("Startup status of service[" + str + "] is CRITICAL.");
                 }
                 this.mIsAlreadyHighTemperature = true;
                 finishOnStartup();
                 break;
-            case 620:
+            case CAMERA_HEATED_CLOSE_TO_SHUTDOWN /* 620 */:
                 if (CamLog.VERBOSE) {
                     CamLog.d("Startup status of service[" + str + "] is CLOSE_TO_SHUTDOWN.");
                 }
@@ -125,14 +115,16 @@ public class ThermalAlertReceiver extends BroadcastReceiver {
             default:
                 if (CamLog.VERBOSE) {
                     CamLog.d("Startup status of service[" + str + "] is unknown.");
+                    break;
                 }
                 break;
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void checkLowTempBurnTimeoutTimerDuration(int i, int i2) {
         if (i2 == 0) {
-            if (i == 610) {
+            if (i == CAMERA_LOW_TEMP_BURN) {
                 this.mLowTempBurnTimerFixedDuration.requestTimeMillis(1800000L);
             }
         } else if (i2 != -1) {
@@ -143,21 +135,47 @@ public class ThermalAlertReceiver extends BroadcastReceiver {
         }
     }
 
-    public ThermalAlertReceiver(Activity activity, ThermalAlertReceiver$ThermalAlertReceiverListener thermalAlertReceiver$ThermalAlertReceiverListener) {
+    class ServiceConnectionSysmon implements ServiceConnection {
+        ServiceConnectionSysmon() {
+        }
+
+        @Override // android.content.ServiceConnection
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            ThermalAlertReceiver.this.mSysmonService = ISysmonService.Stub.asInterface(iBinder);
+            if (ThermalAlertReceiver.this.mSysmonService != null) {
+                try {
+                    int thermalLevelForCamera = ThermalAlertReceiver.this.mSysmonService.getThermalLevelForCamera();
+                    ThermalAlertReceiver.this.checkStartupStatus(thermalLevelForCamera, "sysmon");
+                    ThermalAlertReceiver.this.checkLowTempBurnTimeoutTimerDuration(thermalLevelForCamera, ThermalAlertReceiver.this.mSysmonService.getCameraLowTempBurnTimeoutSec());
+                } catch (Exception e) {
+                    CamLog.e("sysmon ServiceConnection failed.", e);
+                }
+            }
+        }
+
+        @Override // android.content.ServiceConnection
+        public void onServiceDisconnected(ComponentName componentName) {
+            ThermalAlertReceiver.this.mSysmonService = null;
+        }
+    }
+
+    public ThermalAlertReceiver(Activity activity, ThermalAlertReceiverListener thermalAlertReceiverListener) {
         this.mActivity = activity;
-        this.mListener = thermalAlertReceiver$ThermalAlertReceiverListener;
+        this.mListener = thermalAlertReceiverListener;
+        this.mLowTempBurnTimerFixedDuration = new LowTempBurnTimeoutTimerWrapper();
+        this.mLowTempBurnTimerVariableDuration = new LowTempBurnTimeoutTimerWrapper();
     }
 
     public void onCreate() {
         IntentFilter intentFilter = new IntentFilter();
         if (!DebugParameterUtils.INSTANCE.isLowPowerModeDisabled(this.mActivity)) {
-            intentFilter.addAction("com.sonyericsson.psm.action.CAMERA_HEATED_OVER_CRITICAL");
-            intentFilter.addAction("com.sonyericsson.psm.action.CAMERA_HEATED_OVER_WARNING_EXTRA_FUNC");
-            intentFilter.addAction("com.sonyericsson.psm.action.CAMERA_HEATED_OVER_LOW_TEMP_BURN");
-            intentFilter.addAction("com.sonyericsson.psm.action.CAMERA_COOLED_DOWN_NORMAL");
-            intentFilter.addAction("com.sonyericsson.psm.action.CAMERA_HEATED_CLOSE_TO_SHUTDOWN");
-            intentFilter.addAction("com.sonyericsson.psm.action.CAMERA_LOW_TEMP_BURN_TIMER_SET");
-            intentFilter.addAction("com.sonyericsson.psm.action.CAMERA_LOW_TEMP_BURN_TIMER_RESET");
+            intentFilter.addAction(ACTION_CAMERA_HEATED_OVER_CRITICAL);
+            intentFilter.addAction(CAMERA_HEATED_OVER_WARNING_EXTRA_FUNC);
+            intentFilter.addAction(ACTION_CAMERA_HEATED_OVER_LOW_TEMP_BURN);
+            intentFilter.addAction(ACTION_CAMERA_COOLED_DOWN_NORMAL);
+            intentFilter.addAction(ACTION_CAMERA_HEATED_CLOSE_TO_SHUTDOWN);
+            intentFilter.addAction(ACTION_CAMERA_LOW_TEMP_BURN_TIMER_SET);
+            intentFilter.addAction(ACTION_CAMERA_LOW_TEMP_BURN_TIMER_RESET);
         }
         this.mActivity.registerReceiver(this, intentFilter);
         this.mIsWarningExtraState = false;
@@ -171,7 +189,7 @@ public class ThermalAlertReceiver extends BroadcastReceiver {
         this.mIsAlreadyHighTemperature = false;
         this.mIsWarningExtraState = false;
         Intent intent = new Intent();
-        intent.setClassName("com.sonyericsson.psm.sysmonservice", "com.sonyericsson.psm.sysmonservice.SysmonService");
+        intent.setClassName(SYSMON_SERVICE, SYSMON_SERVICE_CLASS);
         PerfLog.BIND_SYSMON_SERVICE.begin();
         this.mIsBindSysmonService = this.mActivity.bindService(intent, this.mServiceConnectionSysmon, 0);
         PerfLog.BIND_SYSMON_SERVICE.end();
@@ -214,43 +232,122 @@ public class ThermalAlertReceiver extends BroadcastReceiver {
             return;
         }
         String action = intent.getAction();
-        if ("com.sonyericsson.psm.action.CAMERA_HEATED_OVER_CRITICAL".equals(action)) {
+        if (ACTION_CAMERA_HEATED_OVER_CRITICAL.equals(action)) {
             this.mLowTempBurnTimerFixedDuration.cancel();
             this.mLowTempBurnTimerVariableDuration.cancel();
             this.mIsAlreadyHighTemperature = true;
             this.mListener.onReachCriticalTemperature(false);
             return;
         }
-        if ("com.sonyericsson.psm.action.CAMERA_COOLED_DOWN_NORMAL".equals(action)) {
+        if (ACTION_CAMERA_COOLED_DOWN_NORMAL.equals(action)) {
             this.mLowTempBurnTimerFixedDuration.cancel();
             changeToNormalState();
             return;
         }
-        if ("com.sonyericsson.psm.action.CAMERA_HEATED_OVER_LOW_TEMP_BURN".equals(action)) {
+        if (ACTION_CAMERA_HEATED_OVER_LOW_TEMP_BURN.equals(action)) {
             this.mLowTempBurnTimerFixedDuration.requestTimeMillis(1800000L);
             return;
         }
-        if ("com.sonyericsson.psm.action.CAMERA_HEATED_CLOSE_TO_SHUTDOWN".equals(action)) {
+        if (ACTION_CAMERA_HEATED_CLOSE_TO_SHUTDOWN.equals(action)) {
             changeToWarningState(false);
             return;
         }
-        if ("com.sonyericsson.psm.action.CAMERA_LOW_TEMP_BURN_TIMER_SET".equals(action)) {
+        if (ACTION_CAMERA_LOW_TEMP_BURN_TIMER_SET.equals(action)) {
             Bundle extras = intent.getExtras();
-            if (extras == null || (i = extras.getInt("com.sonyericsson.psm.extra.TIMEOUT_SEC", -1)) == -1) {
+            if (extras == null || (i = extras.getInt(KEY_LOW_TEMP_BURN_TIMER_DURATION_SEC, -1)) == -1) {
                 return;
             }
             this.mLowTempBurnTimerVariableDuration.requestTimeMillis(i * 1000);
             return;
         }
-        if ("com.sonyericsson.psm.action.CAMERA_LOW_TEMP_BURN_TIMER_RESET".equals(action)) {
+        if (ACTION_CAMERA_LOW_TEMP_BURN_TIMER_RESET.equals(action)) {
             this.mLowTempBurnTimerVariableDuration.cancel();
-        } else if ("com.sonyericsson.psm.action.CAMERA_HEATED_OVER_WARNING_EXTRA_FUNC".equals(action)) {
+        } else if (CAMERA_HEATED_OVER_WARNING_EXTRA_FUNC.equals(action)) {
             changeToWarningExtraState(false);
         }
     }
 
     private void finishOnStartup() {
         this.mListener.onReachCriticalTemperature(true);
+    }
+
+    private class LowTempBurnTimeoutTimerWrapper {
+        static final long INVALID_TIMER_TIME = -1;
+        private Timer mTimer;
+        private long mTimerToBeExpiredTimeMillis;
+
+        private LowTempBurnTimeoutTimerWrapper() {
+            this.mTimer = null;
+            this.mTimerToBeExpiredTimeMillis = -1L;
+        }
+
+        private long getRemainedTimeMillis() {
+            if (this.mTimerToBeExpiredTimeMillis == -1) {
+                return -1L;
+            }
+            long jCurrentTimeMillis = this.mTimerToBeExpiredTimeMillis - System.currentTimeMillis();
+            if (jCurrentTimeMillis <= 0) {
+                return -1L;
+            }
+            return jCurrentTimeMillis;
+        }
+
+        public final synchronized void requestTimeMillis(long j) {
+            if (CamLog.VERBOSE) {
+                CamLog.d("Request low temp burn timer millis : " + j);
+            }
+            long remainedTimeMillis = getRemainedTimeMillis();
+            if (remainedTimeMillis != -1 && remainedTimeMillis < j) {
+                if (CamLog.VERBOSE) {
+                    CamLog.d("Current timer is valid.");
+                }
+            } else {
+                cancel();
+                this.mTimer = new Timer(true);
+                this.mTimer.schedule(new LowTempBurnTimerTask(), j);
+                this.mTimerToBeExpiredTimeMillis = System.currentTimeMillis() + j;
+            }
+        }
+
+        public final synchronized void cancel() {
+            if (CamLog.VERBOSE) {
+                CamLog.d("Cancel low temp burn timer.");
+            }
+            if (this.mTimer != null) {
+                this.mTimer.cancel();
+                this.mTimer.purge();
+                this.mTimer = null;
+                this.mTimerToBeExpiredTimeMillis = -1L;
+            } else if (CamLog.VERBOSE) {
+                CamLog.d("LowTempBurnTimer is already cancel.");
+            }
+        }
+
+        private class LowTempBurnTimerTask extends TimerTask {
+            private final Handler mHandler;
+
+            private LowTempBurnTimerTask() {
+                this.mHandler = new Handler();
+            }
+
+            @Override // java.util.TimerTask, java.lang.Runnable
+            public void run() {
+                if (CamLog.VERBOSE) {
+                    CamLog.d("LowTempBurn timer expired.");
+                }
+                cancel();
+                this.mHandler.post(new Runnable() { // from class: com.sonyericsson.cameracommon.systemmonitor.ThermalAlertReceiver.LowTempBurnTimeoutTimerWrapper.LowTempBurnTimerTask.1
+                    @Override // java.lang.Runnable
+                    public void run() {
+                        if (CamLog.VERBOSE) {
+                            CamLog.d("LowTempBurnTimerTask finish");
+                        }
+                        ThermalAlertReceiver.this.mIsAlreadyHighTemperature = true;
+                        ThermalAlertReceiver.this.mListener.onReachCriticalTemperature(false);
+                    }
+                });
+            }
+        }
     }
 
     private void changeToNormalState() {

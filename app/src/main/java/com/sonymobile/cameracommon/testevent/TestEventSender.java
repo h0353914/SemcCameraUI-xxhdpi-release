@@ -1,3 +1,32 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonymobile.cameracommon.testevent;
 
 public class TestEventSender {
@@ -20,6 +49,14 @@ public class TestEventSender {
     }
 
     private static TestEventListener getBlankListener() {
-        return new TestEventSender$1();
+        return new TestEventListener() { // from class: com.sonymobile.cameracommon.testevent.TestEventSender.1
+            @Override // com.sonymobile.cameracommon.testevent.TestEventListener
+            public void onCapturedFrameStored(long j) {
+            }
+
+            @Override // com.sonymobile.cameracommon.testevent.TestEventListener
+            public void onPictureTaken() {
+            }
+        };
     }
 }

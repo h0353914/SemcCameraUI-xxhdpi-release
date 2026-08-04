@@ -1,10 +1,10 @@
 package com.google.android.gms.auth;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import android.os.Parcelable;
 
-public class zza implements Parcelable$Creator<AccountChangeEvent> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zza implements Parcelable.Creator<AccountChangeEvent> {
     static void zza(AccountChangeEvent accountChangeEvent, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, accountChangeEvent.mVersion);
@@ -16,21 +16,15 @@ public class zza implements Parcelable$Creator<AccountChangeEvent> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ AccountChangeEvent createFromParcel(Parcel parcel) {
-        return zzz(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ AccountChangeEvent[] newArray(int i) {
-        return zzaq(i);
-    }
-
-    public AccountChangeEvent[] zzaq(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaq, reason: merged with bridge method [inline-methods] */
+    public AccountChangeEvent[] newArray(int i) {
         return new AccountChangeEvent[i];
     }
 
-    public AccountChangeEvent zzz(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzz, reason: merged with bridge method [inline-methods] */
+    public AccountChangeEvent createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         String strZzp = null;
         String strZzp2 = null;
@@ -67,6 +61,6 @@ public class zza implements Parcelable$Creator<AccountChangeEvent> {
         if (parcel.dataPosition() == iZzap) {
             return new AccountChangeEvent(iZzg, jZzi, strZzp, iZzg2, iZzg3, strZzp2);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new com.google.android.gms.common.internal.safeparcel.zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 }

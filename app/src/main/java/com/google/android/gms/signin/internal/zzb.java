@@ -4,8 +4,10 @@ import android.os.RemoteException;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.signin.internal.zze;
 
-public class zzb extends zze$zza {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzb extends zze.zza {
     public void zza(ConnectionResult connectionResult, AuthAccountResult authAccountResult) {
     }
 

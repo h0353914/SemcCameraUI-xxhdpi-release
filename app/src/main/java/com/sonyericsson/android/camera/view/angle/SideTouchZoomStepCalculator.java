@@ -1,6 +1,8 @@
 package com.sonyericsson.android.camera.view.angle;
 
-public class SideTouchZoomStepCalculator implements VariableIndex$Calculator {
+import com.sonyericsson.android.camera.view.angle.VariableIndex;
+
+public class SideTouchZoomStepCalculator implements VariableIndex.Calculator {
     private static final int ZOOM_STEP_THRESHOLD_FOR_SIDE_TOUCH_1_DISTANCE = 100;
     private static final int ZOOM_STEP_THRESHOLD_FOR_SIDE_TOUCH_2_DISTANCE = 200;
     private static final int ZOOM_STEP_THRESHOLD_FOR_SIDE_TOUCH_3_DISTANCE = 300;
@@ -9,7 +11,7 @@ public class SideTouchZoomStepCalculator implements VariableIndex$Calculator {
         return i > 0 ? 1 : -1;
     }
 
-    @Override // com.sonyericsson.android.camera.view.angle.VariableIndex$Calculator
+    @Override // com.sonyericsson.android.camera.view.angle.VariableIndex.Calculator
     public VariableIndex calculate(VariableIndex variableIndex, Object... objArr) {
         int iIntValue = ((Integer) objArr[0]).intValue();
         variableIndex.setIndex(variableIndex.mIndex + (getIncrementDirection(iIntValue) * getIncrementLength(iIntValue)));

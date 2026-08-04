@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.sonyericsson.android.camera.view.modeselector.CameraCommonProviderConstants;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 abstract class zzll extends BroadcastReceiver {
     protected Context mContext;
 
@@ -19,7 +21,7 @@ abstract class zzll extends BroadcastReceiver {
 
     public static <T extends zzll> T zza(Context context, T t, GoogleApiAvailability googleApiAvailability) {
         IntentFilter intentFilter = new IntentFilter("android.intent.action.PACKAGE_ADDED");
-        intentFilter.addDataScheme("package");
+        intentFilter.addDataScheme(CameraCommonProviderConstants.CapturingModeColumns.PACKAGE);
         context.registerReceiver(t, intentFilter);
         t.mContext = context;
         if (googleApiAvailability.zzj(context, "com.google.android.gms")) {

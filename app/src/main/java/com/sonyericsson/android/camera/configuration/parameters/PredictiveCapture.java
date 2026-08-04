@@ -1,14 +1,16 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
+import com.sonyericsson.android.camera.util.CamLog;
 import java.util.Iterator;
 import java.util.List;
 
 public enum PredictiveCapture implements UserSettingValue {
-    AUTO(2131690114, "auto", 4),
-    OFF(2131690115, "off", 1),
-    ON(2131690116, "on", 4);
+    AUTO(R.string.cam_strings_settings_auto_txt, "auto", 4),
+    OFF(R.string.cam_strings_settings_off_txt, "off", 1),
+    ON(R.string.cam_strings_settings_on_txt, "on", 4);
 
     public static final String TAG = "PredictiveCapture";
     private static final int sParameterTextId = 2131690005;
@@ -38,7 +40,8 @@ public enum PredictiveCapture implements UserSettingValue {
             if (list.size() != 0) {
                 Iterator<String> it = list.iterator();
                 while (it.hasNext()) {
-                    if (it.next().equals(AUTO.getValue())) {
+                    String val = it.next();
+                    if (val.equals(AUTO.getValue())) {
                         return new PredictiveCapture[]{AUTO, OFF};
                     }
                 }

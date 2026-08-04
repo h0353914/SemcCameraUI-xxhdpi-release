@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.tiff.photometricinterpreters;
 
+import android.support.v4.view.ViewCompat;
 import java.io.IOException;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.common.ImageBuilder;
@@ -41,6 +42,6 @@ public class PhotometricInterpreterLogLuv extends PhotometricInterpreter {
         double d2 = f8;
         float fPow2 = d2 > 0.0031308d ? (((float) Math.pow(d2, 0.4166666666666667d)) * 1.055f) - 0.055f : 12.92f * f8;
         double d3 = f9;
-        imageBuilder.setRGB(i, i2, (Math.min(255, Math.max(0, (int) (fPow * 255.0f))) << 16) | (-16777216) | (Math.min(255, Math.max(0, (int) (fPow2 * 255.0f))) << 8) | (Math.min(255, Math.max(0, (int) ((d3 > 0.0031308d ? (1.055f * ((float) Math.pow(d3, 0.4166666666666667d))) - 0.055f : 12.92f * f9) * 255.0f))) << 0));
+        imageBuilder.setRGB(i, i2, (Math.min(255, Math.max(0, (int) (fPow * 255.0f))) << 16) | ViewCompat.MEASURED_STATE_MASK | (Math.min(255, Math.max(0, (int) (fPow2 * 255.0f))) << 8) | (Math.min(255, Math.max(0, (int) ((d3 > 0.0031308d ? (1.055f * ((float) Math.pow(d3, 0.4166666666666667d))) - 0.055f : 12.92f * f9) * 255.0f))) << 0));
     }
 }

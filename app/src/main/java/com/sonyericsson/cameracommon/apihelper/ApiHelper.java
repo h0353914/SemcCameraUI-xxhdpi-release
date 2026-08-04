@@ -19,7 +19,7 @@ public class ApiHelper {
         }
     }
 
-    private static boolean hasField(Class<?> cls, String str) {
+    private static boolean hasField(Class<?> cls, String str) throws NoSuchFieldException {
         try {
             cls.getDeclaredField(str);
             return true;

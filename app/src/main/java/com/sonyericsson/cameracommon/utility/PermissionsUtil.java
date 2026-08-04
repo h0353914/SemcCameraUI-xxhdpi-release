@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager$NameNotFoundException;
+import android.content.pm.PackageManager;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.activity.RequestPermissionActivity;
 import com.sonyericsson.cameracommon.activity.RequestPermissionSdCardActivity;
@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PermissionsUtil {
-    private static final String[] REQUEST_LOCATION_PERMISSION = {"android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION"};
+    private static final String[] REQUEST_LOCATION_PERMISSION = { "android.permission.ACCESS_FINE_LOCATION",
+            "android.permission.ACCESS_COARSE_LOCATION" };
     public static final String TAG = "PermissionsUtil";
 
     public static boolean checkAndRequestSelfPermissions(Activity activity, int i, String[] strArr) {
@@ -27,7 +28,7 @@ public class PermissionsUtil {
         if (CamLog.VERBOSE) {
             CamLog.d("start RequestPermissionActivity");
         }
-        Intent intent = new Intent(activity, (Class<?>) RequestPermissionActivity.class);
+        Intent intent = new Intent(activity, RequestPermissionActivity.class);
         intent.putStringArrayListExtra("permissions_list", arrayList);
         activity.startActivityForResult(intent, i);
         return true;
@@ -64,7 +65,7 @@ public class PermissionsUtil {
 
     public static void requestSdCardGranted(Activity activity, int i, String str) {
         Intent intent = new Intent(activity, (Class<?>) RequestPermissionSdCardActivity.class);
-        intent.putExtra("extra_key_uuid", str);
+        intent.putExtra(RequestPermissionSdCardActivity.EXTRA_UUID, str);
         activity.startActivityForResult(intent, i);
     }
 
@@ -79,7 +80,8 @@ public class PermissionsUtil {
 
     private static boolean checkCallerPermission(Activity activity, String str) {
         try {
-            PackageInfo packageInfo = activity.getApplicationContext().getPackageManager().getPackageInfo(activity.getCallingPackage(), 4096);
+            PackageInfo packageInfo = activity.getApplicationContext().getPackageManager()
+                    .getPackageInfo(activity.getCallingPackage(), 4096);
             if (packageInfo == null || packageInfo.requestedPermissions == null) {
                 return false;
             }
@@ -92,10 +94,12 @@ public class PermissionsUtil {
                     i++;
                 } else if ((packageInfo.requestedPermissionsFlags[i] & 2) != 0) {
                     return true;
+                } else {
+                    break;
                 }
             }
             return false;
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             return false;
         }
     }

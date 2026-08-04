@@ -2,8 +2,11 @@ package com.sonyericsson.android.camera.view.modeselector;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import com.sonyericsson.android.camera.util.ThreadUtil;
+import com.sonyericsson.android.camera.view.modeselector.CapturingModeAttributes;
+import com.sonyericsson.android.camera.view.modeselector.CapturingModeListLoader;
 import com.sonyericsson.android.camera.view.modeselector.internalmode.googlelens.GoogleLensCapturingModeAttributes;
 import com.sonyericsson.android.camera.view.modeselector.internalmode.googlelens.GoogleLensMode;
 import java.util.ArrayList;
@@ -11,31 +14,35 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
-public class ModeLoader implements CapturingModeListLoader$OnCapturingModeListChangedListener {
+public class ModeLoader implements CapturingModeListLoader.OnCapturingModeListChangedListener {
     private static final String THREAD_NAME = "AddonAppsLoader";
-    private static ExecutorService mExecutor = ThreadUtil.buildExecutor("AddonAppsLoader");
+    private static ExecutorService mExecutor = ThreadUtil.buildPoolExecutor(THREAD_NAME, 2);
     private CapturingModeListLoader mCapturingModeListLoader;
     private final Context mContext;
     private final List<Mode> mModes = new ArrayList();
-    private final List<ModeLoader$OnModeListChangeListener> mListeners = new ArrayList();
+    private final List<OnModeListChangeListener> mListeners = new ArrayList();
+
+    public interface OnModeListChangeListener {
+        void onModeListChanged(List<Mode> list, List<CapturingModeAttributes> list2);
+    }
 
     public ModeLoader(Context context) {
         this.mContext = context;
     }
 
-    public void addModeChangeListener(ModeLoader$OnModeListChangeListener modeLoader$OnModeListChangeListener) {
-        if (!this.mListeners.contains(modeLoader$OnModeListChangeListener)) {
-            this.mListeners.add(modeLoader$OnModeListChangeListener);
+    public void addModeChangeListener(OnModeListChangeListener onModeListChangeListener) {
+        if (!this.mListeners.contains(onModeListChangeListener)) {
+            this.mListeners.add(onModeListChangeListener);
         }
         this.mModes.clear();
         load();
     }
 
-    public void removeModeChangeListener(ModeLoader$OnModeListChangeListener modeLoader$OnModeListChangeListener) {
-        this.mListeners.remove(modeLoader$OnModeListChangeListener);
+    public void removeModeChangeListener(OnModeListChangeListener onModeListChangeListener) {
+        this.mListeners.remove(onModeListChangeListener);
     }
 
-    @Override // com.sonyericsson.android.camera.view.modeselector.CapturingModeListLoader$OnCapturingModeListChangedListener
+    @Override // com.sonyericsson.android.camera.view.modeselector.CapturingModeListLoader.OnCapturingModeListChangedListener
     public void onCapturingModeListChanged(List<CapturingModeAttributes> list) {
         Mode addonMode;
         this.mModes.clear();
@@ -58,18 +65,18 @@ public class ModeLoader implements CapturingModeListLoader$OnCapturingModeListCh
         if (this.mListeners.isEmpty()) {
             return;
         }
-        Iterator<ModeLoader$OnModeListChangeListener> it = this.mListeners.iterator();
+        Iterator<OnModeListChangeListener> it = this.mListeners.iterator();
         while (it.hasNext()) {
             it.next().onModeListChanged(this.mModes, arrayList);
         }
     }
 
     public void load() {
-        this.mCapturingModeListLoader = new CapturingModeListLoader(this.mContext, CapturingModeAttributes$InternalCaptureType.values(), CapturingModeAttributes$VisibilityType.Normal, this, mExecutor);
+        this.mCapturingModeListLoader = new CapturingModeListLoader(this.mContext, CapturingModeAttributes.InternalCaptureType.values(), CapturingModeAttributes.VisibilityType.Normal, this, mExecutor);
         ArrayList arrayList = new ArrayList();
         for (ModeSelectorInternalMode modeSelectorInternalMode : ModeSelectorInternalMode.values()) {
             if (modeSelectorInternalMode.isSupported(this.mContext)) {
-                arrayList.add(new CapturingModeAttributes(this.mContext.getPackageName(), ((Activity) this.mContext).getLocalClassName(), modeSelectorInternalMode.name(), modeSelectorInternalMode.iconId, modeSelectorInternalMode.textId, -1, -1, -1, CapturingModeAttributes$InternalCaptureType.Photo, true, false, false, (Object) modeSelectorInternalMode));
+                arrayList.add(new CapturingModeAttributes(this.mContext.getPackageName(), ((Activity) this.mContext).getLocalClassName(), modeSelectorInternalMode.name(), modeSelectorInternalMode.iconId, modeSelectorInternalMode.textId, -1, -1, -1, CapturingModeAttributes.InternalCaptureType.Photo, true, false, false, (Object) modeSelectorInternalMode));
             }
         }
         this.mCapturingModeListLoader.setLocalCapturingMode(arrayList);
@@ -87,6 +94,27 @@ public class ModeLoader implements CapturingModeListLoader$OnCapturingModeListCh
     }
 
     public static void updatePluginsDatabase(Context context) {
-        new ModeLoader$UpdatePluginsDBTask(context).executeOnExecutor(mExecutor, new Void[0]);
+        new UpdatePluginsDBTask(context).executeOnExecutor(mExecutor, new Void[0]);
+    }
+
+    private static class UpdatePluginsDBTask extends AsyncTask<Void, Void, Void> {
+        private static final String THREAD_NAME = "PluginsDBTask";
+        private Context mContext;
+
+        @Override // android.os.AsyncTask
+        protected void onPostExecute(Void r1) {
+        }
+
+        public UpdatePluginsDBTask(Context context) {
+            this.mContext = context;
+        }
+
+        /* JADX INFO: Access modifiers changed from: protected */
+        @Override // android.os.AsyncTask
+        protected Void doInBackground(Void... voidArr) {
+            Thread.currentThread().setName(THREAD_NAME);
+            new CapturingModePluginsPMLoader(this.mContext).updatePluginsInDB();
+            return null;
+        }
     }
 }

@@ -1,12 +1,13 @@
 package com.google.android.gms.common.api;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzx;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class Scope implements SafeParcelable {
-    public static final Parcelable$Creator<Scope> CREATOR = new zzc();
+    public static final Parcelable.Creator<Scope> CREATOR = new zzc();
     final int mVersionCode;
     private final String zzaba;
 

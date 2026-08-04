@@ -1,7 +1,6 @@
 package com.sonyericsson.android.camera.util.capability;
 
 import android.content.SharedPreferences;
-import android.content.SharedPreferences$Editor;
 import com.sonyericsson.android.camera.util.CamLog;
 
 public abstract class CapabilityItem<T> {
@@ -15,7 +14,7 @@ public abstract class CapabilityItem<T> {
         return null;
     }
 
-    void write(SharedPreferences$Editor sharedPreferences$Editor) {
+    void write(SharedPreferences.Editor editor) {
     }
 
     CapabilityItem(String str, T t) {

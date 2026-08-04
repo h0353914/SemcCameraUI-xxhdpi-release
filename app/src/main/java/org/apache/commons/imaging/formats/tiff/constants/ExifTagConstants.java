@@ -1,5 +1,8 @@
 package org.apache.commons.imaging.formats.tiff.constants;
 
+import android.support.v4.view.InputDeviceCompat;
+import com.sonyericsson.android.camera.configuration.parameters.Flash;
+import com.sonyericsson.android.camera.configuration.parameters.WhiteBalance;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -134,10 +137,10 @@ public final class ExifTagConstants {
     public static final TagInfoLong EXIF_TAG_PREVIEW_IMAGE_LENGTH_IFD0 = new TagInfoLong("PreviewImageLength", 279, 1, TiffDirectoryType.EXIF_DIRECTORY_IFD0);
     public static final TagInfoLong EXIF_TAG_PREVIEW_IMAGE_LENGTH_SUB_IFD1 = new TagInfoLong("PreviewImageLength", 279, 1, TiffDirectoryType.EXIF_DIRECTORY_SUB_IFD1);
     public static final TagInfoLong EXIF_TAG_JPG_FROM_RAW_LENGTH_SUB_IFD2 = new TagInfoLong("JpgFromRawLength", 279, 1, TiffDirectoryType.EXIF_DIRECTORY_SUB_IFD2);
-    public static final TagInfoLong EXIF_TAG_PREVIEW_IMAGE_START_MAKER_NOTES = new TagInfoLong("PreviewImageStart", 513, 1, TiffDirectoryType.EXIF_DIRECTORY_MAKER_NOTES);
-    public static final TagInfoLong EXIF_TAG_JPG_FROM_RAW_START_SUB_IFD = new TagInfoLong("JpgFromRawStart", 513, 1, TiffDirectoryType.EXIF_DIRECTORY_SUB_IFD, true);
-    public static final TagInfoLong EXIF_TAG_JPG_FROM_RAW_START_IFD2 = new TagInfoLong("JpgFromRawStart", 513, 1, TiffDirectoryType.EXIF_DIRECTORY_IFD2, true);
-    public static final TagInfoLong EXIF_TAG_OTHER_IMAGE_START = new TagInfoLong("OtherImageStart", 513, 1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN, true);
+    public static final TagInfoLong EXIF_TAG_PREVIEW_IMAGE_START_MAKER_NOTES = new TagInfoLong("PreviewImageStart", InputDeviceCompat.SOURCE_DPAD, 1, TiffDirectoryType.EXIF_DIRECTORY_MAKER_NOTES);
+    public static final TagInfoLong EXIF_TAG_JPG_FROM_RAW_START_SUB_IFD = new TagInfoLong("JpgFromRawStart", InputDeviceCompat.SOURCE_DPAD, 1, TiffDirectoryType.EXIF_DIRECTORY_SUB_IFD, true);
+    public static final TagInfoLong EXIF_TAG_JPG_FROM_RAW_START_IFD2 = new TagInfoLong("JpgFromRawStart", InputDeviceCompat.SOURCE_DPAD, 1, TiffDirectoryType.EXIF_DIRECTORY_IFD2, true);
+    public static final TagInfoLong EXIF_TAG_OTHER_IMAGE_START = new TagInfoLong("OtherImageStart", InputDeviceCompat.SOURCE_DPAD, 1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN, true);
     public static final TagInfoLong EXIF_TAG_PREVIEW_IMAGE_LENGTH_MAKER_NOTES = new TagInfoLong("PreviewImageLength", 514, 1, TiffDirectoryType.EXIF_DIRECTORY_MAKER_NOTES);
     public static final TagInfoLong EXIF_TAG_JPG_FROM_RAW_LENGTH_SUB_IFD = new TagInfoLong("JpgFromRawLength", 514, 1, TiffDirectoryType.EXIF_DIRECTORY_SUB_IFD);
     public static final TagInfoLong EXIF_TAG_JPG_FROM_RAW_LENGTH_IFD2 = new TagInfoLong("JpgFromRawLength", 514, 1, TiffDirectoryType.EXIF_DIRECTORY_IFD2);
@@ -192,7 +195,7 @@ public final class ExifTagConstants {
     public static final TagInfoRational EXIF_TAG_SUBJECT_DISTANCE = new TagInfoRational("Subject Distance", 37382, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoShort EXIF_TAG_METERING_MODE = new TagInfoShort("MeteringMode", 37383, 1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoShort EXIF_TAG_LIGHT_SOURCE = new TagInfoShort("LightSource", 37384, 1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
-    public static final TagInfoShort EXIF_TAG_FLASH = new TagInfoShort("Flash", 37385, 1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
+    public static final TagInfoShort EXIF_TAG_FLASH = new TagInfoShort(Flash.TAG, 37385, 1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoRational EXIF_TAG_FOCAL_LENGTH = new TagInfoRational("FocalLength", 37386, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoShort EXIF_TAG_SUBJECT_AREA = new TagInfoShort("SubjectArea", 37396, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoDouble EXIF_TAG_STO_NITS = new TagInfoDouble("StoNits", 37439, 1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);
@@ -224,7 +227,7 @@ public final class ExifTagConstants {
     public static final TagInfoUndefined EXIF_TAG_CFAPATTERN = new TagInfoUndefined("CFAPattern", 41730, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoShort EXIF_TAG_CUSTOM_RENDERED = new TagInfoShort("CustomRendered", 41985, 1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoShort EXIF_TAG_EXPOSURE_MODE = new TagInfoShort("ExposureMode", 41986, 1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
-    public static final TagInfoShort EXIF_TAG_WHITE_BALANCE_1 = new TagInfoShort("WhiteBalance", 41987, 1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
+    public static final TagInfoShort EXIF_TAG_WHITE_BALANCE_1 = new TagInfoShort(WhiteBalance.TAG, 41987, 1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoRational EXIF_TAG_DIGITAL_ZOOM_RATIO = new TagInfoRational("DigitalZoomRatio", 41988, 1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoShort EXIF_TAG_FOCAL_LENGTH_IN_35MM_FORMAT = new TagInfoShort("FocalLengthIn35mmFormat", 41989, 1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoShort EXIF_TAG_SCENE_CAPTURE_TYPE = new TagInfoShort("SceneCaptureType", 41990, 1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
@@ -239,12 +242,12 @@ public final class ExifTagConstants {
     public static final TagInfoUnknown EXIF_TAG_ANNOTATIONS = new TagInfoUnknown("Annotations", 50255, -1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);
     public static final TagInfoUndefined EXIF_TAG_PRINT_IM = new TagInfoUndefined("PrintIM", 50341, 1, TiffDirectoryType.EXIF_DIRECTORY_IFD0);
     public static final TagInfoSLong EXIF_TAG_OFFSET_SCHEMA = new TagInfoSLong("OffsetSchema", 59933, 1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
-    public static final TagInfoAscii EXIF_TAG_OWNER_NAME = new TagInfoAscii("OwnerName", 65000, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
+    public static final TagInfoAscii EXIF_TAG_OWNER_NAME = new TagInfoAscii("OwnerName", TiffTagConstants.COMPRESSION_VALUE_KODAK_DCR_COMPRESSED, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoAscii EXIF_TAG_SERIAL_NUMBER = new TagInfoAscii("SerialNumber", 65001, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoAscii EXIF_TAG_LENS = new TagInfoAscii("Lens", 65002, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoAscii EXIF_TAG_RAW_FILE = new TagInfoAscii("RawFile", 65100, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoAscii EXIF_TAG_CONVERTER = new TagInfoAscii("Converter", 65101, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
-    public static final TagInfoAscii EXIF_TAG_WHITE_BALANCE_2 = new TagInfoAscii("WhiteBalance", 65102, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
+    public static final TagInfoAscii EXIF_TAG_WHITE_BALANCE_2 = new TagInfoAscii(WhiteBalance.TAG, 65102, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoAscii EXIF_TAG_EXPOSURE = new TagInfoAscii("Exposure", 65105, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoAscii EXIF_TAG_SHADOWS = new TagInfoAscii("Shadows", 65106, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);
     public static final TagInfoAscii EXIF_TAG_BRIGHTNESS = new TagInfoAscii("Brightness", 65107, -1, TiffDirectoryType.EXIF_DIRECTORY_EXIF_IFD);

@@ -1,16 +1,35 @@
 package com.google.android.gms.internal;
 
+import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import com.google.android.gms.common.internal.zzx;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzlm<L> {
     private volatile L mListener;
+    private final zzlm<L>.zza zzacG;
 
-    /* JADX WARN: Incorrect inner types in field signature: Lcom/google/android/gms/internal/zzlm<TL;>.zza; */
-    private final zzlm$zza zzacG;
+    private final class zza extends Handler {
+        public zza(Looper looper) {
+            super(looper);
+        }
+
+        @Override // android.os.Handler
+        public void handleMessage(Message message) {
+            zzx.zzaa(message.what == 1);
+            zzlm.this.zzb((zzb) message.obj);
+        }
+    }
+
+    public interface zzb<L> {
+        void zznN();
+
+        void zzq(L l);
+    }
 
     public zzlm(Looper looper, L l) {
-        this.zzacG = new zzlm$zza(this, looper);
+        this.zzacG = new zza(looper);
         this.mListener = (L) zzx.zzb(l, "Listener must not be null");
     }
 
@@ -18,21 +37,21 @@ public final class zzlm<L> {
         this.mListener = null;
     }
 
-    public void zza(zzlm$zzb<? super L> zzlm_zzb) {
-        zzx.zzb(zzlm_zzb, "Notifier must not be null");
-        this.zzacG.sendMessage(this.zzacG.obtainMessage(1, zzlm_zzb));
+    public void zza(zzb<? super L> zzbVar) {
+        zzx.zzb(zzbVar, "Notifier must not be null");
+        this.zzacG.sendMessage(this.zzacG.obtainMessage(1, zzbVar));
     }
 
-    void zzb(zzlm$zzb<? super L> zzlm_zzb) {
+    void zzb(zzb<? super L> zzbVar) {
         L l = this.mListener;
         if (l == null) {
-            zzlm_zzb.zznN();
+            zzbVar.zznN();
             return;
         }
         try {
-            zzlm_zzb.zzq(l);
+            zzbVar.zzq(l);
         } catch (RuntimeException e) {
-            zzlm_zzb.zznN();
+            zzbVar.zznN();
             throw e;
         }
     }

@@ -1,12 +1,13 @@
 package com.google.android.gms.signin.internal;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.api.Scope;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 import java.util.ArrayList;
 
-public class zzc implements Parcelable$Creator<CheckServerAuthResult> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzc implements Parcelable.Creator<CheckServerAuthResult> {
     static void zza(CheckServerAuthResult checkServerAuthResult, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, checkServerAuthResult.mVersionCode);
@@ -15,17 +16,9 @@ public class zzc implements Parcelable$Creator<CheckServerAuthResult> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ CheckServerAuthResult createFromParcel(Parcel parcel) {
-        return zzgC(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ CheckServerAuthResult[] newArray(int i) {
-        return zzjp(i);
-    }
-
-    public CheckServerAuthResult zzgC(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzgC, reason: merged with bridge method [inline-methods] */
+    public CheckServerAuthResult createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         ArrayList arrayListZzc = null;
@@ -50,10 +43,12 @@ public class zzc implements Parcelable$Creator<CheckServerAuthResult> {
         if (parcel.dataPosition() == iZzap) {
             return new CheckServerAuthResult(iZzg, zZzc, arrayListZzc);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public CheckServerAuthResult[] zzjp(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzjp, reason: merged with bridge method [inline-methods] */
+    public CheckServerAuthResult[] newArray(int i) {
         return new CheckServerAuthResult[i];
     }
 }

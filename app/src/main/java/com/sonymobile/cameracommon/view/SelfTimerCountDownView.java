@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.cameracommon.settings.SelfTimerInterface;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
 
@@ -26,16 +27,30 @@ public class SelfTimerCountDownView extends FrameLayout {
     @Override // android.view.View
     public void onFinishInflate() {
         super.onFinishInflate();
-        this.mSelfTimerCountDownCircleView = (SelfTimerCountDownCircleView) findViewById(2131296578);
-        this.mSelfTimerCountDownCircleViewPort = (SelfTimerCountDownCircleView) findViewById(2131296579);
-        this.mLeftSelfTimerCountDownNumberView = (SelfTimerCountDownNumberView) findViewById(2131296446);
-        this.mLeftSelfTimerCountDownNumberView.setIsTenDigit(true);
-        this.mRightSelfTimerCountDownNumberView = (SelfTimerCountDownNumberView) findViewById(2131296537);
-        this.mRightSelfTimerCountDownNumberView.setIsTenDigit(false);
-        this.mLeftSelfTimerCountDownNumberViewPort = (SelfTimerCountDownNumberView) findViewById(2131296447);
-        this.mLeftSelfTimerCountDownNumberViewPort.setIsTenDigit(true);
-        this.mRightSelfTimerCountDownNumberViewPort = (SelfTimerCountDownNumberView) findViewById(2131296538);
-        this.mRightSelfTimerCountDownNumberViewPort.setIsTenDigit(false);
+        this.mSelfTimerCountDownCircleView = (SelfTimerCountDownCircleView) findViewById(R.id.selftimer_countdown_circle);
+        this.mSelfTimerCountDownCircleViewPort = (SelfTimerCountDownCircleView) findViewById(R.id.selftimer_countdown_circle_port);
+        this.mLeftSelfTimerCountDownNumberView = (SelfTimerCountDownNumberView) findViewById(R.id.left_selftimer_countdown_text);
+        if (this.mLeftSelfTimerCountDownNumberView == null) {
+            this.mLeftSelfTimerCountDownNumberView = (SelfTimerCountDownNumberView) findViewById(R.id.selftimer_countdown_text);
+        }
+        if (this.mLeftSelfTimerCountDownNumberView != null) {
+            this.mLeftSelfTimerCountDownNumberView.setIsTenDigit(true);
+        }
+        this.mRightSelfTimerCountDownNumberView = (SelfTimerCountDownNumberView) findViewById(R.id.right_selftimer_countdown_text);
+        if (this.mRightSelfTimerCountDownNumberView != null) {
+            this.mRightSelfTimerCountDownNumberView.setIsTenDigit(false);
+        }
+        this.mLeftSelfTimerCountDownNumberViewPort = (SelfTimerCountDownNumberView) findViewById(R.id.left_selftimer_countdown_text_port);
+        if (this.mLeftSelfTimerCountDownNumberViewPort == null) {
+            this.mLeftSelfTimerCountDownNumberViewPort = (SelfTimerCountDownNumberView) findViewById(R.id.selftimer_countdown_text_port);
+        }
+        if (this.mLeftSelfTimerCountDownNumberViewPort != null) {
+            this.mLeftSelfTimerCountDownNumberViewPort.setIsTenDigit(true);
+        }
+        this.mRightSelfTimerCountDownNumberViewPort = (SelfTimerCountDownNumberView) findViewById(R.id.right_selftimer_countdown_text_port);
+        if (this.mRightSelfTimerCountDownNumberViewPort != null) {
+            this.mRightSelfTimerCountDownNumberViewPort.setIsTenDigit(false);
+        }
     }
 
     @Override // android.view.View
@@ -44,8 +59,8 @@ public class SelfTimerCountDownView extends FrameLayout {
     }
 
     public void startSelfTimerCountDownAnimation(boolean z) {
-        TextView textView = (TextView) findViewById(2131296585);
-        TextView textView2 = (TextView) findViewById(2131296586);
+        TextView textView = (TextView) findViewById(R.id.selftimer_hint_text);
+        TextView textView2 = (TextView) findViewById(R.id.selftimer_hint_text_port);
         if (z && !this.mIsHideHintText) {
             textView.setVisibility(0);
             textView2.setVisibility(0);
@@ -123,8 +138,8 @@ public class SelfTimerCountDownView extends FrameLayout {
 
     public void setSensorOrientation(int i) {
         setRotation(RotationUtil.getAngle(i));
-        LinearLayout linearLayout = (LinearLayout) findViewById(2131296581);
-        LinearLayout linearLayout2 = (LinearLayout) findViewById(2131296582);
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.selftimer_countdown_layout_base_landscape);
+        LinearLayout linearLayout2 = (LinearLayout) findViewById(R.id.selftimer_countdown_layout_base_port);
         if (i == 2) {
             linearLayout.setVisibility(0);
             linearLayout2.setVisibility(4);

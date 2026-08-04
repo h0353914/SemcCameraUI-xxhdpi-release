@@ -6,24 +6,25 @@ import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.mediasaving.MediaSavingResult;
 import com.sonyericsson.cameracommon.mediasaving.StoreDataResult;
 import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusCommon;
+import com.sonyericsson.cameracommon.storage.Storage;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 
 public abstract class SavingRequest {
     public static final String TAG = "SavingRequest";
     public final TakenStatusCommon common;
-    private Storage$StorageType mStorageType = Storage$StorageType.INTERNAL;
+    private Storage.StorageType mStorageType = Storage.StorageType.INTERNAL;
     private boolean mFinalRequest = true;
     private boolean mIsOneShot = false;
     public boolean mIsNecessaryMediaUpload = false;
 
     public abstract ContentValues createContentValues(String str);
 
-    void setStorageType(Storage$StorageType storage$StorageType) {
-        this.mStorageType = storage$StorageType;
+    void setStorageType(Storage.StorageType storageType) {
+        this.mStorageType = storageType;
     }
 
-    public Storage$StorageType getStorageType() {
+    public Storage.StorageType getStorageType() {
         return this.mStorageType;
     }
 
@@ -48,14 +49,15 @@ public abstract class SavingRequest {
         this.common.mCallbacks = savingRequest.common.mCallbacks;
     }
 
-    public void addCallback(Storage$OnStoreCompletedListener storage$OnStoreCompletedListener) {
-        Iterator<WeakReference<Storage$OnStoreCompletedListener>> it = this.common.mCallbacks.iterator();
+    public void addCallback(Storage.OnStoreCompletedListener onStoreCompletedListener) {
+        Iterator<WeakReference<Storage.OnStoreCompletedListener>> it = this.common.mCallbacks.iterator();
         while (it.hasNext()) {
-            if (it.next().get() == storage$OnStoreCompletedListener) {
+            Storage.OnStoreCompletedListener existing = it.next().get();
+            if (existing == onStoreCompletedListener) {
                 return;
             }
         }
-        this.common.mCallbacks.add(new WeakReference<>(storage$OnStoreCompletedListener));
+        this.common.mCallbacks.add(new WeakReference<>(onStoreCompletedListener));
     }
 
     public int getRequestId() {
@@ -146,11 +148,11 @@ public abstract class SavingRequest {
     }
 
     public void notifyStoreFailed(MediaSavingResult mediaSavingResult) {
-        Storage$OnStoreCompletedListener storage$OnStoreCompletedListener;
+        Storage.OnStoreCompletedListener onStoreCompletedListener;
         StoreDataResult storeDataResult = new StoreDataResult(MediaSavingResult.FAIL, Uri.EMPTY, this);
-        Iterator<WeakReference<Storage$OnStoreCompletedListener>> it = this.common.mCallbacks.iterator();
-        while (it.hasNext() && (storage$OnStoreCompletedListener = it.next().get()) != null) {
-            storage$OnStoreCompletedListener.onStoreFailed(storeDataResult.uri, storeDataResult.savingRequest, mediaSavingResult.mResultCode);
+        Iterator<WeakReference<Storage.OnStoreCompletedListener>> it = this.common.mCallbacks.iterator();
+        while (it.hasNext() && (onStoreCompletedListener = it.next().get()) != null) {
+            onStoreCompletedListener.onStoreFailed(storeDataResult.uri, storeDataResult.savingRequest, mediaSavingResult.mResultCode);
         }
     }
 
@@ -158,19 +160,19 @@ public abstract class SavingRequest {
         if (CamLog.VERBOSE) {
             CamLog.d("notifyStoreResult E");
         }
-        Iterator<WeakReference<Storage$OnStoreCompletedListener>> it = this.common.mCallbacks.iterator();
+        Iterator<WeakReference<Storage.OnStoreCompletedListener>> it = this.common.mCallbacks.iterator();
         while (it.hasNext()) {
-            Storage$OnStoreCompletedListener storage$OnStoreCompletedListener = it.next().get();
-            if (storage$OnStoreCompletedListener == null) {
+            Storage.OnStoreCompletedListener onStoreCompletedListener = it.next().get();
+            if (onStoreCompletedListener == null) {
                 if (CamLog.VERBOSE) {
                     CamLog.d("notifyStoreResult X - 1");
                     return;
                 }
                 return;
             } else if (storeDataResult.isSuccess()) {
-                storage$OnStoreCompletedListener.onStoreCompleted(storeDataResult.uri, storeDataResult.savingRequest, storeDataResult.savingRequest.getStorageType());
+                onStoreCompletedListener.onStoreCompleted(storeDataResult.uri, storeDataResult.savingRequest, storeDataResult.savingRequest.getStorageType());
             } else {
-                storage$OnStoreCompletedListener.onStoreFailed(storeDataResult.uri, storeDataResult.savingRequest, storeDataResult.getResultCode());
+                onStoreCompletedListener.onStoreFailed(storeDataResult.uri, storeDataResult.savingRequest, storeDataResult.getResultCode());
             }
         }
     }

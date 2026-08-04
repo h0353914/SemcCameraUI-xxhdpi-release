@@ -1,13 +1,16 @@
 package com.sonyericsson.android.camera.view.sidetouch;
 
+import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Paint$Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+import com.sonyericsson.android.camera.R;
+import com.sonyericsson.android.camera.Constants;
 import com.sonyericsson.cameracommon.settings.SelfTimerInterface;
 
 public class SideTouchCountDownCircleView extends View {
@@ -25,21 +28,21 @@ public class SideTouchCountDownCircleView extends View {
 
     private void init() {
         this.mPaint = new Paint();
-        this.mPaint.setStyle(Paint$Style.STROKE);
+        this.mPaint.setStyle(Paint.Style.STROKE);
         this.mPaint.setStrokeWidth(6.0f);
         this.mPaint.setAntiAlias(true);
-        this.mPaint.setColor(getResources().getColor(2131099775, null));
+        this.mPaint.setColor(getResources().getColor(R.color.viewfinder_countdown_circle_color, null));
     }
 
     private void setAnimator(SelfTimerInterface selfTimerInterface) {
         init();
-        this.mValueAnimator = ValueAnimator.ofFloat(0.0f, 360.0f);
-        this.mValueAnimator.setInterpolator(new SideTouchCountDownCircleView$CircleDecelerateInterpolator(null));
+        this.mValueAnimator = ValueAnimator.ofFloat(0.0f, ANIMATION_VALUE);
+        this.mValueAnimator.setInterpolator(new CircleDecelerateInterpolator());
         this.mValueAnimator.setRepeatMode(1);
         this.mValueAnimator.setDuration(getRotateDuration(selfTimerInterface));
-        this.mValueAnimator.setRepeatCount((int) (Math.ceil(((double) selfTimerInterface.getDurationInMillisecond()) / 1000.0d) - 1.0d));
-        this.mValueAnimator.addUpdateListener(new SideTouchCountDownCircleView$ValueAnimationUpdater(this, null));
-        this.mValueAnimator.addListener(new SideTouchCountDownCircleView$AnimationEventHandler(null));
+        this.mValueAnimator.setRepeatCount((int) (Math.ceil(selfTimerInterface.getDurationInMillisecond() / 1000.0d) - 1.0d));
+        this.mValueAnimator.addUpdateListener(new ValueAnimationUpdater());
+        this.mValueAnimator.addListener(new AnimationEventHandler());
     }
 
     @Override // android.view.View
@@ -50,9 +53,12 @@ public class SideTouchCountDownCircleView extends View {
 
     private int getRotateDuration(SelfTimerInterface selfTimerInterface) {
         if (selfTimerInterface.getDurationInMillisecond() < 1000) {
-            return 500;
+            return Constants.INTERVAL_OPEN_CAMERA;
         }
-        return selfTimerInterface.getDurationInMillisecond() == 1500 ? 1500 : 1000;
+        if (selfTimerInterface.getDurationInMillisecond() == 1500) {
+            return 1500;
+        }
+        return 1000;
     }
 
     private void drawArc(Canvas canvas) {
@@ -79,5 +85,51 @@ public class SideTouchCountDownCircleView extends View {
             return;
         }
         this.mValueAnimator.start();
+    }
+
+    private class ValueAnimationUpdater implements ValueAnimator.AnimatorUpdateListener {
+        private ValueAnimationUpdater() {
+        }
+
+        @Override // android.animation.ValueAnimator.AnimatorUpdateListener
+        public void onAnimationUpdate(ValueAnimator valueAnimator) {
+            SideTouchCountDownCircleView.this.invalidate();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private static class AnimationEventHandler implements Animator.AnimatorListener { @Override public void onAnimationCancel(Animator animator) { } @Override public void onAnimationEnd(Animator animator) { } @Override public void onAnimationRepeat(Animator animator) { } @Override public void onAnimationStart(Animator animator) { } private AnimationEventHandler() { } }
+
+    private static class CircleDecelerateInterpolator extends DecelerateInterpolator {
+        private CircleDecelerateInterpolator() {
+        }
+
+        @Override // android.view.animation.DecelerateInterpolator, android.animation.TimeInterpolator
+        public float getInterpolation(float f) {
+            float f2 = f * 1.6666666f;
+            if (1.0f <= f2) {
+                f2 = 1.0f;
+            }
+            return super.getInterpolation(f2);
+        }
     }
 }

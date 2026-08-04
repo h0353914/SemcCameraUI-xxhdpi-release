@@ -6,6 +6,7 @@ import com.sonyericsson.android.camera.configuration.parameters.Resolution;
 import com.sonyericsson.android.camera.parameter.CapturingModeParams;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class AspectRatioApplier extends DependencyApplier {
@@ -41,19 +42,22 @@ public class AspectRatioApplier extends DependencyApplier {
         if (arrayList2.size() > 0) {
             int iIndexOf = arrayList.indexOf(resolution);
             if (arrayList2.size() > iIndexOf) {
-                capturingModeParams.mResolution.applyRecommendedValue(arrayList2.get(iIndexOf));
+                capturingModeParams.mResolution.applyRecommendedValue((Resolution) arrayList2.get(iIndexOf));
             } else {
-                capturingModeParams.mResolution.applyRecommendedValue(arrayList2.get(arrayList2.size() - 1));
+                capturingModeParams.mResolution.applyRecommendedValue((Resolution) arrayList2.get(arrayList2.size() - 1));
             }
         }
     }
 
     private void sortResolutionList(List<Resolution> list) {
-        Collections.sort(list, new AspectRatioApplier$1(this));
+        Collections.sort(list, new Comparator<Resolution>() { // from class: com.sonyericsson.android.camera.parameter.dependency.AspectRatioApplier.1
+            @Override // java.util.Comparator
+            public int compare(Resolution resolution, Resolution resolution2) {
+                return -(resolution.getPictureRect().width() - resolution2.getPictureRect().width());
+            }
+        });
     }
 
-    @Override // com.sonyericsson.android.camera.parameter.dependency.DependencyApplier
     public void reset(CapturingModeParams capturingModeParams) {
-        capturingModeParams.mResolution.reset();
     }
 }

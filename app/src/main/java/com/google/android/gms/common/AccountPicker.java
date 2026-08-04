@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import java.util.ArrayList;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class AccountPicker {
     private AccountPicker() {
     }

@@ -8,12 +8,6 @@ public final class DescriptorProtos$GeneratedCodeInfo$Annotation extends Extenda
     public int end;
     public int[] path;
     public String sourceFile;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$GeneratedCodeInfo$Annotation[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

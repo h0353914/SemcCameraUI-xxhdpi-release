@@ -2,14 +2,16 @@ package com.google.android.gms.internal;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager$NameNotFoundException;
+import android.content.pm.PackageManager;
 import android.os.WorkSource;
 import android.util.Log;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zznc {
     private static final Method zzaip = zzqG();
     private static final Method zzaiq = zzqH();
@@ -40,7 +42,7 @@ public class zznc {
         }
     }
 
-    public static void zza(WorkSource workSource, int i, String str) {
+    public static void zza(WorkSource workSource, int i, String str) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         if (zzaiq != null) {
             if (str == null) {
                 str = "";
@@ -81,29 +83,34 @@ public class zznc {
         return arrayList;
     }
 
-    public static WorkSource zzf(int i, String str) {
+    public static WorkSource zzf(int i, String str) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         WorkSource workSource = new WorkSource();
         zza(workSource, i, str);
         return workSource;
     }
 
-    public static WorkSource zzm(Context context, String str) {
+    public static WorkSource zzm(Context context, String str) throws PackageManager.NameNotFoundException {
         String str2;
         StringBuilder sb;
         String str3;
-        ApplicationInfo applicationInfo;
+        ApplicationInfo applicationInfo = null;
         if (context == null || context.getPackageManager() == null) {
             return null;
         }
         try {
             applicationInfo = context.getPackageManager().getApplicationInfo(str, 0);
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             str2 = "WorkSourceUtil";
             sb = new StringBuilder();
             str3 = "Could not find package: ";
         }
         if (applicationInfo != null) {
-            return zzf(applicationInfo.uid, str);
+            try {
+                return zzf(applicationInfo.uid, str);
+            } catch (Exception e) {
+                Log.e("WorkSourceUtil", "Unable to assign blame through WorkSource", e);
+                return null;
+            }
         }
         str2 = "WorkSourceUtil";
         sb = new StringBuilder();

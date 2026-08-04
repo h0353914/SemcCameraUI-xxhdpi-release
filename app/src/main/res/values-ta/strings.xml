@@ -31,9 +31,14 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">படம் எடுத்தலை முடிக்க முடியவில்லை. குறைவான வேகத்தில் நகர்த்தவும்.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">படம் எடுத்தலை முடிக்க முடியவில்லை. வேகமாக நகர்த்தவும்.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">உங். கேமரா. ஸ்வீப் செய்து ஒரு பனோ. புகைப்பட. எடுக்கலாம்</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">பின்வரும் கோப்புகளை உருவாக்குகிறது:\n- பல கோண படம்\n- 3D படம் குறிப்பு: இந்தப் பகுதியில் கிரே பகுதி உள்ளது.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">பின்வரும் கோப்புகளை உருவாக்குகிறது:\n- பல கோண படம்\n- 3D படம்</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">செயலாக்குகிறது...\nஇந்த படத்தில் கிரே பகுதி உள்ளது</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"பின்வரும் கோப்புகளை உருவாக்குகிறது:
+- பல கோண படம்
+- 3D படம் குறிப்பு: இந்தப் பகுதியில் கிரே பகுதி உள்ளது."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"பின்வரும் கோப்புகளை உருவாக்குகிறது:
+- பல கோண படம்
+- 3D படம்"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"செயலாக்குகிறது...
+இந்த படத்தில் கிரே பகுதி உள்ளது"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">படத்தைச் சேமிக்கிறது</string>
     <string name="cam_3d_strings_dialog_processing_txt">செயலாக்குகிறது...</string>
     <string name="cam_3d_strings_error_application_busy_txt">3D கேமராவைத் தொடங்க சில நொடிகள் காத்திருக்கவும்</string>
@@ -360,7 +365,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">உங்கள் சருமத்தை பிரகாசமாகவும், மென்மையாகவும் தோன்றச் செய்யுங்கள். முன்பக்க கேமராவுக்குப் பயன்படுத்தும் பயன்பாடுகளில் இந்த விளைவு வேலை செய்யும். இதை புகைப்படங்களிலும், வீடியோக்களிலும் பயன்படுத்தலாம். மேலும் நீங்கள் அளவையும் சரிசெய்யலாம்.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">அளவு சரிசெய்தல்</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">மென். தோல்</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">பயன்பாட்டைத் தொடங்க முடியவில்லை.\n%1$s -இன் சமீபத்திய பதிப்பு நிறுவப்பட்டுள்ளதையும் அது உங்கள் சாதனத்தில் செயல்பெறச் செய்யப்பட்டுள்ளதையும் உறுதிசெய்யவும்.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"பயன்பாட்டைத் தொடங்க முடியவில்லை.
+%1$s -இன் சமீபத்திய பதிப்பு நிறுவப்பட்டுள்ளதையும் அது உங்கள் சாதனத்தில் செயல்பெறச் செய்யப்பட்டுள்ளதையும் உறுதிசெய்யவும்."</string>
     <string name="cam_strings_gridline_txt">கட்ட வரிசைகள்</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">உங். உள்ளங்கை. கேமரா. நோக். திருப்ப. உங். உள்ளங்கை அடையா. காணப்படும். சுய-டைமர் இயக்கப்ப. அடையா. காணப்படு. எளிதாக்க, உங்களது விரல்களை மேல்நோக்கி நீட்டவும்.</string>
     <string name="cam_strings_hand_shutter_hint_txt">உங். உள்ளங்கை. கேமரா. நோக். திருப்ப.</string>
@@ -404,7 +410,8 @@
     <string name="cam_strings_more_common_setting_title_txt">பொது அமைப்புகள்</string>
     <string name="cam_strings_more_txt">மேலும்</string>
     <string name="cam_strings_multi_window_txt">பயன்படுத்த %1$s முழுத் திரைக்கு இடமாற பிரிப்புப் பட்டியின் மையத்தை இழுக்கவும்</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">மற்றொரு சாதனம் இப்போது இணைக்கப்பட்டுள்ளது.\nகாட்சித்தேடல் வழியாக சாதனத்துடன் படத்தை பகிர விரும்புகிறீர்களா?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"மற்றொரு சாதனம் இப்போது இணைக்கப்பட்டுள்ளது.
+காட்சித்தேடல் வழியாக சாதனத்துடன் படத்தை பகிர விரும்புகிறீர்களா?"</string>
     <string name="cam_strings_multicam_add_device_txt">சாதனம் சேர்</string>
     <string name="cam_strings_multicam_add_more_txt">மேலும் சேர்</string>
     <string name="cam_strings_multicam_apply_txt">முடிந்தது</string>
@@ -436,16 +443,19 @@
     <string name="cam_strings_photometry_txt">அளவிடல்</string>
     <string name="cam_strings_predictive_capture_feedback_txt">முன்கணி.</string>
     <string name="cam_strings_predictive_capture_txt">முன்கணிக்கப்பட்ட படப்பிடிப்பு</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">உங்கள் தொலைபேசியை நீங்கள் அகலவாக்குப் பயன்முறையில் தூக்கி, அதை ஒரு பொருளை நோக்கி வைத்ததைக் கண்டறிந்ததால், கேமரா தானாகத் தொடங்கப்பட்டது.\nகேமரா அமைப்புகளிலுள்ள ஸ்மார்ட் தொடக்கம் என்பதில் இந்த அம்சத்தை உங்களுக்குப் பிடித்த முறையில் பயன்படுத்தும் வழியைத் தேர்ந்தெடுக்கலாம்.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"உங்கள் தொலைபேசியை நீங்கள் அகலவாக்குப் பயன்முறையில் தூக்கி, அதை ஒரு பொருளை நோக்கி வைத்ததைக் கண்டறிந்ததால், கேமரா தானாகத் தொடங்கப்பட்டது.
+கேமரா அமைப்புகளிலுள்ள ஸ்மார்ட் தொடக்கம் என்பதில் இந்த அம்சத்தை உங்களுக்குப் பிடித்த முறையில் பயன்படுத்தும் வழியைத் தேர்ந்தெடுக்கலாம்."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">படம்பிடிக்க, வட்டத்திற்குள் தொடவும்</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">படம்பிடிக்க, திரையைத் தொடவும்</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">முழுத்திரையில் பார்க்க, வட்டத்திற்கு உள்ளே தட்டவும்</string>
     <string name="cam_strings_predictive_launch_guide_txt">கேமராவைத் தொடங்க, வட்டத்திற்குள் தொடவும்</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">தொடு. மூலம் தொட. &amp; படம்.</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">தொடு. மூலம் தொடங்குதல்</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">கேமராவை விரைவாகத் தொடங்கலாம். சாதனத்தை அகலவாக்குப் பயன்முறையில் பிடித்து, ஒரு பொருளை நோக்கிக் காட்டவும். கேமரா தானாகத் தொடங்கும்.\nஇந்த அம்சத்தைப் பயன்படுத்துவதற்கு உங்களுக்குப் பிடித்த வழியை கேமரா அமைப்புகளிலுள்ள ஸ்மார்ட் லாஞ்ச் என்பதில் தேர்ந்தெடுக்கலாம்.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"கேமராவை விரைவாகத் தொடங்கலாம். சாதனத்தை அகலவாக்குப் பயன்முறையில் பிடித்து, ஒரு பொருளை நோக்கிக் காட்டவும். கேமரா தானாகத் தொடங்கும்.
+இந்த அம்சத்தைப் பயன்படுத்துவதற்கு உங்களுக்குப் பிடித்த வழியை கேமரா அமைப்புகளிலுள்ள ஸ்மார்ட் லாஞ்ச் என்பதில் தேர்ந்தெடுக்கலாம்."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">ஸ்மார்ட் லாஞ்ச்</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">கேமராவை விரைவாகத் தொடங்கலாம். சாதனத்தை அகலவாக்குப் பயன்முறையில் பிடித்து, ஒரு பொருளை நோக்கி கேமராவை வைக்கவும். கேமரா தானாகத் தொடங்கும்.\nஇந்த அம்சத்தை கேமரா அமைப்புகளிலுள்ள ஸ்மார்ட் லாஞ்ச் என்பதில் அணைக்கலாம்.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"கேமராவை விரைவாகத் தொடங்கலாம். சாதனத்தை அகலவாக்குப் பயன்முறையில் பிடித்து, ஒரு பொருளை நோக்கி கேமராவை வைக்கவும். கேமரா தானாகத் தொடங்கும்.
+இந்த அம்சத்தை கேமரா அமைப்புகளிலுள்ள ஸ்மார்ட் லாஞ்ச் என்பதில் அணைக்கலாம்."</string>
     <string name="cam_strings_predictive_launch_txt">ஸ்மார்ட் லாஞ்ச்</string>
     <string name="cam_strings_preview_always_txt">இயக்கத்தில்</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 நொடிகள்</string>
@@ -478,7 +488,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s பின்வரும் அனுமதியை(களை) கோருகிறது</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s -இன் அனுமதி</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">இந்தச் செயலைச் செய்வதற்கு பின்வரும் அனுமதியை(களை) பயன்பாடு கோருகிறது.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">அனுமதிகளை வழங்க, பயன்பாட்டுத் தகவல் &gt; அனுமதிகள் என்பதற்குச் செல்லவும்.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">அனுமதிகளை வழங்க, பயன்பாட்டுத் தகவல் > அனுமதிகள் என்பதற்குச் செல்லவும்.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">தொடர முடியவில்லை</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">புகைப்படங்கள் மற்றும் வீடியோக்களை எடுக்க</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">இடத்தை மீட்டெடுக்க</string>
@@ -525,11 +535,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">உள்ளக சேமிப்பக்கத்தில் சேமி</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">அடுத்து</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">இந்தச் செயலைச் செய்வதற்கு பின்வரும் அனுமதியை(களை) பயன்பாடு கோருகிறது.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">SD கார்டைப் பயன்படுத்த, கேமராவுக்கு SD கார்டை அணுகுவதற்கான அனுமதிகள் தேவை.\nதரவு சேமிப்பகத்தை மீண்டும் SD கார்டுக்கு மாற்றவும், அல்லது SD கார்டை கேமரா அணுகுவதற்கான அனுமதியை அடுத்த திரையில் வழங்கவும்.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"SD கார்டைப் பயன்படுத்த, கேமராவுக்கு SD கார்டை அணுகுவதற்கான அனுமதிகள் தேவை.
+தரவு சேமிப்பகத்தை மீண்டும் SD கார்டுக்கு மாற்றவும், அல்லது SD கார்டை கேமரா அணுகுவதற்கான அனுமதியை அடுத்த திரையில் வழங்கவும்."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD கார்டு கிடைக்கவில்லை</string>
-    <string name="cam_strings_sd_permission_info_2_txt">அனுமதிகளைக் கோரும் புதிய SD கார்டு ஒன்று கண்டறியப்பட்டுள்ளது.\n\nதரவு சேமிப்பகமாக SD கார்டைப் பயன்படுத்த, அடுத்த திரையில் SD கார்டு அல்லது DCIM கோப்பகத்தைத் தேர்ந்தெடுக்கவும்.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SD கார்டு அல்லது DCIM கோப்பகம் தேர்ந்தெடுக்கப்படவில்லை. SD கார்டைப் பயன்படுத்த முடியாது.\n\nஅனுமதிகளை வழங்க, அடுத்த திரையில் சேமிக்கும் இடமாக SD கார்டு அல்லது பொருத்தமான கோப்பகத்தைத் தேர்ந்தெடுக்கவும்.</string>
-    <string name="cam_strings_sd_permission_info_txt">அனுமதிகள் தேவைப்படும் புதிய SD கார்டு கண்டறியப்பட்டுள்ளது.\nஇனி இயல்புநிலை தரவுச் சேமிப்பகமாக உள்ளகச் சாதனச் சேமிப்பகம் பயன்படுத்தப்படும்.\n\nSD கார்டை தரவுச் சேமிப்பகமாகப் பயன்படுத்த, கேமரா அமைப்புகளுக்குச் சென்று, சேமிப்பக விருப்பத்தை SD கார்டுக்கு மாற்றவும்.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"அனுமதிகளைக் கோரும் புதிய SD கார்டு ஒன்று கண்டறியப்பட்டுள்ளது.
+
+தரவு சேமிப்பகமாக SD கார்டைப் பயன்படுத்த, அடுத்த திரையில் SD கார்டு அல்லது DCIM கோப்பகத்தைத் தேர்ந்தெடுக்கவும்."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD கார்டு அல்லது DCIM கோப்பகம் தேர்ந்தெடுக்கப்படவில்லை. SD கார்டைப் பயன்படுத்த முடியாது.
+
+அனுமதிகளை வழங்க, அடுத்த திரையில் சேமிக்கும் இடமாக SD கார்டு அல்லது பொருத்தமான கோப்பகத்தைத் தேர்ந்தெடுக்கவும்."</string>
+    <string name="cam_strings_sd_permission_info_txt">"அனுமதிகள் தேவைப்படும் புதிய SD கார்டு கண்டறியப்பட்டுள்ளது.
+இனி இயல்புநிலை தரவுச் சேமிப்பகமாக உள்ளகச் சாதனச் சேமிப்பகம் பயன்படுத்தப்படும்.
+
+SD கார்டை தரவுச் சேமிப்பகமாகப் பயன்படுத்த, கேமரா அமைப்புகளுக்குச் சென்று, சேமிப்பக விருப்பத்தை SD கார்டுக்கு மாற்றவும்."</string>
     <string name="cam_strings_sd_permission_rationale_txt">புகைப்படங்களையும் வீடியோக்களையும் SD கார்டில் சேமிக்க</string>
     <string name="cam_strings_select_picture_txt">புகைப்படத்தைத் தேர்ந்தெடு.</string>
     <string name="cam_strings_self_timer_05_txt">0.5 நொ.</string>
@@ -552,12 +570,16 @@
     <string name="cam_strings_shutter_trigger_txt">தானி. படம்பிடி.</string>
     <string name="cam_strings_side_touch_not_supported_txt">இந்தத் திரையில் சைடு சென்ஸ் ஆதரிக்கப்படவில்லை</string>
     <string name="cam_strings_side_touch_on_title_txt">சைடு சென்ஸ்</string>
-    <string name="cam_strings_side_touch_on_txt">இந்தச் செயல்பாட்டைப் பயன்படுத்த, அமைப்புகள் &gt; திரை அமைப்பு என்பதற்குச் சென்று சைடு சென்ஸ் என்பதை இயக்கவும். அதை இப்போது செயல்பெறச் செய்யவா?</string>
+    <string name="cam_strings_side_touch_on_txt">இந்தச் செயல்பாட்டைப் பயன்படுத்த, அமைப்புகள் > திரை அமைப்பு என்பதற்குச் சென்று சைடு சென்ஸ் என்பதை இயக்கவும். அதை இப்போது செயல்பெறச் செய்யவா?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">சைடு சென்ஸ்</string>
-    <string name="cam_strings_side_touch_tutorial_txt">ஷட்டர் பொத்தானைத் தட்டாமல் சாதனத். பக்கவாட்டிலுள்ள சென்சா. இரு. தட்டுவதன் மூலம், புகைப்படம் அல்லது வீடியோ எடுக்கலாம். மேலும், இந்தப் பக்கவாட்டு சென்சாரில் உங். விரலைத் தேய்ப்ப. மூலம் திரை. பெரிதாக்க. அல். சிறிதாக்கலாம்.\nபுகைப்படப் பயன். மற். வீடியோ பயன்முறை இரண். இச்செயல்பா. ஆதரி. கேமரா அமை. சைடு சென்ஸ் என். இதை அணைக்கலாம்.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">ஷட்டர் பொத்தானைத் தட்டாமல் சாதனத். பக்கவாட்டிலுள்ள சென்சா. இரு. தட்டுவதன் மூலம், செங்குத்துக் காட்சியில் புகைப்படம் அல். வீடியோ எடுக்கலாம். மேலும், இந்தப் பக்க. சென்சாரில் உங். விரலை. தேய்ப்பத. மூலம் திரை. பெரிதாக்க. அல். சிறிதாக்க.\nபுகைப்படப் பயன். மற். வீடியோ பயன்முறை இரண். இச்செயல்பா. ஆதரி. கேமரா அமை. சைடு சென்ஸ் என். இதை அணைக்கலாம்.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">ஷட்டர் பொத்தானைத் தட்டாமல் சாதனத். பக்கவாட்டிலுள்ள சென்சாரை இருமுறை தட்டுவதன் மூலம், செங்குத்துக் காட்சியில் புகைப்படம் அல்லது வீடியோ எடுக்கலாம்.\nபுகைப்படப் பயன்முறை மற்றும் வீடியோ பயன்முறை இரண்டிலும் இச்செயல்பாடு ஆதரிக்கப்படுகிறது. கேமரா அமைப்புகளிலுள்ள சைடு சென்ஸ் என்பதில் இதை அணைக்கலாம்.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">ஷட்டர் பொத்தானைத் தட்டாமல் சாதனத்தின் பக்கவாட்டிலுள்ள சென்சாரை இருமுறை தட்டுவதன் மூலம், புகைப்படம் அல்லது வீடியோவை எடுக்கலாம்.\nபுகைப்படப் பயன்முறை மற்றும் வீடியோ பயன்முறை ஆகிய இரண்டும் இச்செயல்பாட்டை ஆதரிக்கின்றன. கேமரா அமைப்புகளிலுள்ள சைடு சென்ஸ் என்பதிலிருந்து இதை அணைக்கலாம்.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"ஷட்டர் பொத்தானைத் தட்டாமல் சாதனத். பக்கவாட்டிலுள்ள சென்சா. இரு. தட்டுவதன் மூலம், புகைப்படம் அல்லது வீடியோ எடுக்கலாம். மேலும், இந்தப் பக்கவாட்டு சென்சாரில் உங். விரலைத் தேய்ப்ப. மூலம் திரை. பெரிதாக்க. அல். சிறிதாக்கலாம்.
+புகைப்படப் பயன். மற். வீடியோ பயன்முறை இரண். இச்செயல்பா. ஆதரி. கேமரா அமை. சைடு சென்ஸ் என். இதை அணைக்கலாம்."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"ஷட்டர் பொத்தானைத் தட்டாமல் சாதனத். பக்கவாட்டிலுள்ள சென்சா. இரு. தட்டுவதன் மூலம், செங்குத்துக் காட்சியில் புகைப்படம் அல். வீடியோ எடுக்கலாம். மேலும், இந்தப் பக்க. சென்சாரில் உங். விரலை. தேய்ப்பத. மூலம் திரை. பெரிதாக்க. அல். சிறிதாக்க.
+புகைப்படப் பயன். மற். வீடியோ பயன்முறை இரண். இச்செயல்பா. ஆதரி. கேமரா அமை. சைடு சென்ஸ் என். இதை அணைக்கலாம்."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"ஷட்டர் பொத்தானைத் தட்டாமல் சாதனத். பக்கவாட்டிலுள்ள சென்சாரை இருமுறை தட்டுவதன் மூலம், செங்குத்துக் காட்சியில் புகைப்படம் அல்லது வீடியோ எடுக்கலாம்.
+புகைப்படப் பயன்முறை மற்றும் வீடியோ பயன்முறை இரண்டிலும் இச்செயல்பாடு ஆதரிக்கப்படுகிறது. கேமரா அமைப்புகளிலுள்ள சைடு சென்ஸ் என்பதில் இதை அணைக்கலாம்."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"ஷட்டர் பொத்தானைத் தட்டாமல் சாதனத்தின் பக்கவாட்டிலுள்ள சென்சாரை இருமுறை தட்டுவதன் மூலம், புகைப்படம் அல்லது வீடியோவை எடுக்கலாம்.
+புகைப்படப் பயன்முறை மற்றும் வீடியோ பயன்முறை ஆகிய இரண்டும் இச்செயல்பாட்டை ஆதரிக்கின்றன. கேமரா அமைப்புகளிலுள்ள சைடு சென்ஸ் என்பதிலிருந்து இதை அணைக்கலாம்."</string>
     <string name="cam_strings_side_touch_txt">சைடு சென்ஸ்</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">பதிவுசெய்யும் ஸ்டைலையும் திரையின் தெளிவுத்திறனையும் கேமரா அமைப்புகளில் மாற்றலாம்</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">சூப்பர் மெது. (ஒரு-படம்)</string>
@@ -565,7 +587,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">சூப்பர் மெதுவான நகர்வு</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">நீங்கள் மெதுவான நகர்விற்கான fps மற். பதிவுசெய்யும் ஸ்டை. மாற்ற முடியு.</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">மேலு. விருப்பங்.</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">திரையின் நடுவி. பொத்தா. தட்டி %1$s fps மெதுவான நகர்வில் ஓர் அரிய தருண. உடனடியா. பதிவுசெய்யவும்.\nபிரகாசமான சூழலில் பதிவுசெய்தல், சிறந்த வீடியோ. உருவாக்க உதவும்</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"திரையின் நடுவி. பொத்தா. தட்டி %1$s fps மெதுவான நகர்வில் ஓர் அரிய தருண. உடனடியா. பதிவுசெய்யவும்.
+பிரகாசமான சூழலில் பதிவுசெய்தல், சிறந்த வீடியோ. உருவாக்க உதவும்"</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">நடுப் பொத்தா. தட்டி, %1$s fps -இல் ஒரு சரியான தருண. பதிவுசெய்ய.</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">திரையின் நடுவிலுள்ள பொத்தானைத் தட்டி %1$s fps மெதுவான நகர்வில் ஓர் அரிய தருணத்தை உடனடியாகப் பதிவுசெய்யவும்</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">சூப்பர் மெதுவா. நகர்வு (ஒற்.-படப்பிடி.)</string>
@@ -576,9 +599,11 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">மெதுவான நகர்வு</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">எப். பதிவுசெய்வ.</string>
     <string name="cam_strings_slow_motion_standard_txt">மெதுவான நகர்வு</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">அரிய தருணத். மெதுவான நகர்த்த. காண்பி. வியப்பூட்டும் வீடியோவை உருவாக்குங்கள்.\nபிரகாசமான சூழல். பதிவுசெய்வது, சிறப்பான வீடியோ. உருவா. உதவும்.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"அரிய தருணத். மெதுவான நகர்த்த. காண்பி. வியப்பூட்டும் வீடியோவை உருவாக்குங்கள்.
+பிரகாசமான சூழல். பதிவுசெய்வது, சிறப்பான வீடியோ. உருவா. உதவும்."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">%1$s fps -க்கு இடமாற்றி, வீடியோவை வெவ்வேறு வேகங்களில் பதிவுசெ.</string>
-    <string name="cam_strings_slow_motion_super_hint_2_txt">சரியான தருணத்தில்\nநடுவிலிரு. பொத்தானைத் தட்டவும்</string>
+    <string name="cam_strings_slow_motion_super_hint_2_txt">"சரியான தருணத்தில்
+நடுவிலிரு. பொத்தானைத் தட்டவும்"</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">மெதுவான நகர்வு பதிவுசெய்யப்பட்டது</string>
     <string name="cam_strings_slow_motion_super_tutorial_1_txt">அரிய தருணத். மெதுவான நகர்த்த. காண்பி. வியப்பூட்டும் வீடியோவை உருவாக்குங்கள்</string>
     <string name="cam_strings_slow_motion_super_tutorial_2_txt">பதிவுப் பொத்தானைத் தட்டி வீடியோ பதிவைத் தொடங்கவும்</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">மென்பொருள் உரிமங்கள்</string>
     <string name="cam_strings_take_photo_txt">புகைப்படம் எடு</string>
     <string name="cam_strings_term_of_use_accept_txt">ஏற்கிறேன்</string>
-    <string name="cam_strings_term_of_use_consent_txt">நான் Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;பயன்பாட்டு விதிமுறைகளுக்கு&lt;/a&gt; சம்மதிக்கி.</string>
+    <string name="cam_strings_term_of_use_consent_txt">நான் Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">பயன்பாட்டு விதிமுறைகளுக்கு&lt;/a> சம்மதிக்கி.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">இந்த சேவைக்கான உங்கள் பயன்பாடானது உங்கள் தரவு திட்டத்தைப் பொறுத்து மொபைல் தரவு கட்டணங்களுக்கு உட்படலாம்.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile சேவையின் ஒரு பகுதியாக அல்லது சேவை மேம்பாடுகளுக்காக உங்களுக்கு பொருத்தமான முடிவுகளை வழங்குவதன் பொருட்டு உங்கள் ஹேஷ்டு Android ID தனித்துவ சாதன அடையாளங்காட்டி, இடம் சார்ந்த தரவு மற்றும் நேர முத்திரை ஆகியவற்றை சேகரிக்கும்.</string>
     <string name="cam_strings_term_of_use_decline_txt">நிராகரி</string>
     <string name="cam_strings_term_of_use_title_txt">விதிமுறைகள் மற்றும் நிபந்தனைகள்</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;பயன்பாட்டு விதிமுறைகள்&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">பயன்பாட்டு விதிமுறைகள்&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">புகைப்படங்களை தேர்வுநீக்கு</string>
     <string name="cam_strings_timeshift_operation_failed_txt">சேமிக்க முடியவில்லை</string>
     <string name="cam_strings_timeshift_save_complete_txt">சேமிக்கப்பட்டது</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">நிலையான 4K வீடியோ பதிவிற்கு, உயர்-வேக SD கார்டை (UHS வேக வகை 1 அல்லது அதிகமானது, அல்லது வேக வகை 10 பரிந்துரைக்கப்படுகிறது) பயன்படுத்தினால் தவிர இந்த அமைப்பை மாற்ற வேண்டாம்.</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">நிலையான Timeshift video பதிவிற்கு, உயர்-வேக SD கார்டை (UHS வேக வகை 1 அல்லது அதிகமானது, அல்லது வேக வகை 10 பரிந்துரைக்கப்படுகிறது) பயன்படுத்தினால் தவிர இந்த அமைப்பை மாற்ற கூடாது. எனினும் மாற்றவா?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">நிலையான மெதுவான நகர்வு வீடியோ பதிவிற்கு, உயர்-வேக SD கார்டை (UHS வேக வகை 1 அல்லது அதிகமானது, அல்லது வேக வகை 10 பரிந்துரைக்கப்படுகிறது) பயன்படுத்தினால் தவிர இந்த அமைப்பை மாற்ற வேண்டாம்.</string>
-    <string name="cam_strings_video_explanatory_txt">நிலையான வீடியோப் பதிவிற்கு, தரவு சேமிப்பகத்தை உள்ளக சேமிப்பகத்திற்கு மாற்றுமாறு பரிந்துரைக்கிறோம். இப்போது மாற்ற விரும்புகிறீர்களா?\n\nSD கார்டை தரவு சேமிப்பகமாகப் பயன்படுத்துவதைத் தொடர்ந்தால், உயர்-வேக SD கார்டைப் பயன்படுத்தவும் (UHS வேக வகை 1 அல்லது அதிகமானது, அல்லது வேக வகை 10 பரிந்துரைக்கப்படுகிறது).</string>
+    <string name="cam_strings_video_explanatory_txt">"நிலையான வீடியோப் பதிவிற்கு, தரவு சேமிப்பகத்தை உள்ளக சேமிப்பகத்திற்கு மாற்றுமாறு பரிந்துரைக்கிறோம். இப்போது மாற்ற விரும்புகிறீர்களா?
+
+SD கார்டை தரவு சேமிப்பகமாகப் பயன்படுத்துவதைத் தொடர்ந்தால், உயர்-வேக SD கார்டைப் பயன்படுத்தவும் (UHS வேக வகை 1 அல்லது அதிகமானது, அல்லது வேக வகை 10 பரிந்துரைக்கப்படுகிறது)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">இரட்டை கேமரா</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">இரட்டை கேமராவைப் பயன்படுத்தி இரவு அல்லது குறைந்த ஒளியுள்ள அறையிலும் கூட குறைவான சிதைவுகள் உள்ள அழகான வீடியோக்களைப் பதிவுசெய்யலாம். அல்ட்ரா-உயர் உணர்திறனைப் பயன்படுத்தும்போது, காட்சிகளுக்கு ஏற்றவாறு கேமராவானது ஒற்றை மற்றும் இரட்டைக் கேமராக்களுக்கு இடையே தானியங்காக மாறும்.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">இரட்டை கேமரா மூலம் வீடியோ. பதிவுசெய்தல்</string>

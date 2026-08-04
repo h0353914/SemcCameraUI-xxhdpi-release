@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Non se puido completar a captura. Mova a cámara máis amodo.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Non se puido completar a captura. Mova a cámara máis rápido.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Faga foto panorámica facendo un varrido coa cámara</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Creando os ficheiros seguintes:\n- Imaxe multiángulo\n- Imaxe en 3D\nNota: Estes ficheiros conteñen unha zona de grises.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Creando os ficheiros seguintes:\n- Imaxe multiángulo\n- Imaxe en 3D</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Procesando...\nEsta imaxe contén unha zona de grises</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Creando os ficheiros seguintes:
+- Imaxe multiángulo
+- Imaxe en 3D
+Nota: Estes ficheiros conteñen unha zona de grises."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Creando os ficheiros seguintes:
+- Imaxe multiángulo
+- Imaxe en 3D"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Procesando...
+Esta imaxe contén unha zona de grises"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Gardar imaxe</string>
     <string name="cam_3d_strings_dialog_processing_txt">Procesando...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Agarde un intre a que se inicie a cámara 3D</string>
@@ -359,7 +365,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Déalle un aspecto luminoso e suave á súa pel. Este efecto funciona nas aplicacións que empregan a cámara frontal. Pódese aplicar ás fotos e aos vídeos. Tamén pode axustar o nivel.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Axuste de nivel</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Pel suave</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Non se pode iniciar a aplicación.\nAsegúrese de que ten instalada a última versión de %1$s e habilítea no seu dispositivo.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Non se pode iniciar a aplicación.
+Asegúrese de que ten instalada a última versión de %1$s e habilítea no seu dispositivo."</string>
     <string name="cam_strings_gridline_txt">Liñas de grade</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Amose a palma da man á cámara. O temporizador acenderase cando se recoñeza a súa palma. Para que lle resulte máis doado recoñecela, coloque os dedos estendidos cara arriba.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Amose a palma da man á cámara</string>
@@ -401,7 +408,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Axustes comúns</string>
     <string name="cam_strings_more_txt">Máis</string>
     <string name="cam_strings_multi_window_txt">Deslice a barra de división para cambiar á pantalla completa para usar %1$s</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Xa se conectou outro dispositivo.\nGustaríalle compartir a imaxe co dispositivo polo visor?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Xa se conectou outro dispositivo.
+Gustaríalle compartir a imaxe co dispositivo polo visor?"</string>
     <string name="cam_strings_multicam_add_device_txt">Engadir disposit.</string>
     <string name="cam_strings_multicam_add_more_txt">Engadir outro</string>
     <string name="cam_strings_multicam_apply_txt">Listo</string>
@@ -435,7 +443,8 @@
     <string name="cam_strings_predictive_capture_txt">Captura preditiva</string>
     <string name="cam_strings_predictive_launch_guide_txt">Pulse na pantalla para ver a pantalla completa</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Inicio preditivo</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Para iniciar a cámara de xeito rápido, oscile o dispositivo cara arriba, mantéñao en horizontal e dirixa a cámara cara ao obxecto. Esta iniciarase automaticamente.\nPode quitar esta función do Inicio preditivo nos axustes da cámara.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Para iniciar a cámara de xeito rápido, oscile o dispositivo cara arriba, mantéñao en horizontal e dirixa a cámara cara ao obxecto. Esta iniciarase automaticamente.
+Pode quitar esta función do Inicio preditivo nos axustes da cámara."</string>
     <string name="cam_strings_predictive_launch_txt">Inicio preditivo</string>
     <string name="cam_strings_preview_always_txt">Activado</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 segundos</string>
@@ -468,7 +477,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s precisa o(s) seguinte(s) permiso(s)</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Permiso de %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">A aplicación require o(s) seguinte(s) permiso(s) para realizar esta acción.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Para conceder os permisos, vaia a Información da aplicación &gt; Permisos.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Para conceder os permisos, vaia a Información da aplicación > Permisos.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Non se pode continuar</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Sacar fotos e gravar vídeos</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Recuperar a localización</string>
@@ -537,7 +546,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Cámara superlenta</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Pode cambiar os fps e o estilo de gravación da cámara lenta</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Máis opcións</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Grave un fermoso momento en %1$s fps a cámara lenta pulsando o botón do centro da pantalla.\nGravar en boas condicións de iluminación axudaralle a crear un vídeo mellor.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Grave un fermoso momento en %1$s fps a cámara lenta pulsando o botón do centro da pantalla.
+Gravar en boas condicións de iluminación axudaralle a crear un vídeo mellor."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Pode capturar un momento concreto en %1$s fps premendo o botón central.</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Grave un fermoso momento en %1$s fps a cámara lenta pulsando o botón do centro da pantalla.</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Cámara superlenta (captura única)</string>
@@ -548,7 +558,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Cámara lenta</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Como gravar</string>
     <string name="cam_strings_slow_motion_standard_txt">Cámara lenta</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Cree un vídeo emocionante amosando un momento importante a cámara lenta.\nGravar en boas condicións de iluminación axudaralle a crear un vídeo mellor.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Cree un vídeo emocionante amosando un momento importante a cámara lenta.
+Gravar en boas condicións de iluminación axudaralle a crear un vídeo mellor."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Pode gravar un vídeo a diferentes velocidades cambiando a %1$s fps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Pulse o botón do centro no momento correcto</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Gravado a cámara lenta</string>
@@ -579,12 +590,12 @@
     <string name="cam_strings_sw_licence_title_txt">Licenzas de software</string>
     <string name="cam_strings_take_photo_txt">Facer foto</string>
     <string name="cam_strings_term_of_use_accept_txt">Aceptar</string>
-    <string name="cam_strings_term_of_use_consent_txt">Acepto os &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Termos de uso&lt;/a&gt; de Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Acepto os &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Termos de uso&lt;/a> de Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">É posible que se apliquen custos de datos móbiles polo uso deste servizo, dependendo do seu plan de datos.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile recollerá o seu ID codificado de Android unívoco do dispositivo, os datos baseados na situación e a marca de hora para fornecer os resultados axeitados como parte do servizo e para a súa mellora.</string>
     <string name="cam_strings_term_of_use_decline_txt">Declinar</string>
     <string name="cam_strings_term_of_use_title_txt">Termos e condicións</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Condicións de uso&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Condicións de uso&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Desmarcar fotos</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Non se puido gardar</string>
     <string name="cam_strings_timeshift_save_complete_txt">Gardado</string>
@@ -611,7 +622,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Para gravar un vídeo 4K con estabilidade, non debe cambiar este axuste se non emprega unha tarxeta SD de alta velocidade (recoméndase Velocidade UHS clase 1 ou máis, ou Velocidade Clase 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Para gravar un vídeo Timeshift con estabilidade, non debe cambiar este axuste se non emprega unha tarxeta SD de alta velocidade (recoméndase Velocidade UHS clase 1 ou máis, ou Velocidade Clase 10). Cambiar de todos os xeitos?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Para gravar un vídeo a cámara lenta con estabilidade, non debe cambiar este axuste se non emprega unha tarxeta SD de alta velocidade (recoméndase Velocidade UHS clase 1 ou máis, ou Velocidade Clase 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Para gravar un vídeo con estabilidade, recomendamos que cambie o almacenamento de datos a Almacenamento interno. Quere cambialo agora?\n\nSe continúa a empregar a tarxeta SD como almacenamento de datos, asegúrese de empregar unha tarxeta SD de alta velocidade (recoméndase Velocidade UHS clase 1 ou máis, ou Velocidade Clase 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Para gravar un vídeo con estabilidade, recomendamos que cambie o almacenamento de datos a Almacenamento interno. Quere cambialo agora?
+
+Se continúa a empregar a tarxeta SD como almacenamento de datos, asegúrese de empregar unha tarxeta SD de alta velocidade (recoméndase Velocidade UHS clase 1 ou máis, ou Velocidade Clase 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Cámara dual</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Pode gravar fermosos vídeos con pouco ruído empregando a cámara dual incluso de noite ou nun cuarto con pouca luz. A cámara cambia de xeito automático entre a cámara normal e a dual en función das escenas que se gravan con sensibilidade ultra-alta.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Gravar vídeo coa cámara dual</string>
@@ -656,7 +669,7 @@
     <string name="cam_strings_zoom_not_supported_txt">Zoom non dispoñible actualmente</string>
     <string name="expand_button_title">Configuración avanzada</string>
     <string name="search_menu_title">Buscar</string>
-    <string name="status_bar_notification_info_overflow">&gt;999</string>
+    <string name="status_bar_notification_info_overflow">>999</string>
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">DESACTIVADO</string>
     <string name="v7_preference_on">ACTIVADO</string>

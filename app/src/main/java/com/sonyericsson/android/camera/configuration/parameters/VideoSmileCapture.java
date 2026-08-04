@@ -1,12 +1,13 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
 public enum VideoSmileCapture implements UserSettingValue {
-    HIGH(SmileCapture.HIGH, 2131231407),
-    MIDDLE(SmileCapture.MIDDLE, 2131231409),
-    LOW(SmileCapture.LOW, 2131231408),
+    HIGH(SmileCapture.HIGH, R.drawable.cam_vf_video_smile_capture_big_icn),
+    MIDDLE(SmileCapture.MIDDLE, R.drawable.cam_vf_video_smile_capture_normal_icn),
+    LOW(SmileCapture.LOW, R.drawable.cam_vf_video_smile_capture_faint_icn),
     OFF(SmileCapture.OFF, -1);
 
     public static final String TAG = "VideoSmileCapture";

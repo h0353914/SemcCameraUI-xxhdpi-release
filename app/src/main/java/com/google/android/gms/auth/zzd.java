@@ -1,11 +1,12 @@
 package com.google.android.gms.auth;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import android.os.Parcelable;
+import com.google.android.gms.common.internal.safeparcel.zza;
 import java.util.ArrayList;
 
-public class zzd implements Parcelable$Creator<TokenData> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzd implements Parcelable.Creator<TokenData> {
     static void zza(TokenData tokenData, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, tokenData.mVersionCode);
@@ -17,17 +18,9 @@ public class zzd implements Parcelable$Creator<TokenData> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ TokenData createFromParcel(Parcel parcel) {
-        return zzC(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ TokenData[] newArray(int i) {
-        return zzat(i);
-    }
-
-    public TokenData zzC(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzC, reason: merged with bridge method [inline-methods] */
+    public TokenData createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         String strZzp = null;
         Long lZzj = null;
@@ -64,10 +57,12 @@ public class zzd implements Parcelable$Creator<TokenData> {
         if (parcel.dataPosition() == iZzap) {
             return new TokenData(iZzg, strZzp, lZzj, zZzc, zZzc2, arrayListZzD);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public TokenData[] zzat(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzat, reason: merged with bridge method [inline-methods] */
+    public TokenData[] newArray(int i) {
         return new TokenData[i];
     }
 }

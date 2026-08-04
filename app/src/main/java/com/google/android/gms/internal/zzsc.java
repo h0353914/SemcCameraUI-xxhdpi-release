@@ -2,6 +2,7 @@ package com.google.android.gms.internal;
 
 import java.util.Arrays;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzsc {
     public static final Object zzbiu = new Object();
 
@@ -90,7 +91,7 @@ public final class zzsc {
 
     public static void zza(zzry zzryVar, zzry zzryVar2) {
         if (zzryVar.zzbik != null) {
-            zzryVar2.zzbik = zzryVar.zzbik.zzFH();
+            zzryVar2.zzbik = zzryVar.zzbik.clone();
         }
     }
 

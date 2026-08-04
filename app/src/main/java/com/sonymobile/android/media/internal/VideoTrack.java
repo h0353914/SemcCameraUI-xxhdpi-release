@@ -1,14 +1,19 @@
 package com.sonymobile.android.media.internal;
 
 import android.media.MediaCodec;
-import android.media.MediaCodec$CodecException;
 import android.media.MediaCodecList;
 import android.media.MediaCrypto;
 import android.media.MediaFormat;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.Surface;
+import com.sonyericsson.cameracommon.mediasaving.MediaSavingConstants;
+import com.sonymobile.android.media.internal.Track;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.concurrent.CountDownLatch;
@@ -21,14 +26,14 @@ class VideoTrack extends Track {
     private static final long TIME_OUT_STOPPING_MILLISECONDS = 1000;
     private static final long WAIT_FOR_MEDIA_MUXER_START_TIMED_OUT_US = 10000000;
     private final Handler mCallback;
-    private final VideoTrack$CodecHandler mCodecHandler;
+    private final CodecHandler mCodecHandler;
     private int mFrameDropCounter;
     private int mHeight;
-    private final Track$MuxerHandler mMuxerHandler;
+    private final Track.MuxerHandler mMuxerHandler;
     private Surface mSourceSurface;
     private String mVideoMime;
     private int mWidth;
-    private final String[] videoMimeTypes = {"", "video/3gpp", "video/avc", "video/mp4v-es", "video/x-vnd.on2.vp8", "video/hevc", "video/x-vnd.on2.vp9"};
+    private final String[] videoMimeTypes = {"", MediaSavingConstants.MEDIA_TYPE_3GP_MIME, "video/avc", "video/mp4v-es", "video/x-vnd.on2.vp8", "video/hevc", "video/x-vnd.on2.vp9"};
     private int mFrameRate = 30;
     protected int mEncodingProfile = 0;
     protected int mEncodingLevel = 0;
@@ -46,93 +51,6 @@ class VideoTrack extends Track {
     private boolean mPauseResumeFlag = false;
     private boolean mFirstCodecConfigFrame = true;
 
-    static /* synthetic */ String access$100(VideoTrack videoTrack) {
-        return videoTrack.mVideoMime;
-    }
-
-    static /* synthetic */ long access$1000(VideoTrack videoTrack) {
-        return videoTrack.mLastRecordedVideoTimestampUs;
-    }
-
-    static /* synthetic */ long access$1002(VideoTrack videoTrack, long j) {
-        videoTrack.mLastRecordedVideoTimestampUs = j;
-        return j;
-    }
-
-    static /* synthetic */ long access$1100(VideoTrack videoTrack) {
-        return videoTrack.mFrameInterval;
-    }
-
-    static /* synthetic */ Handler access$1200(VideoTrack videoTrack) {
-        return videoTrack.mCallback;
-    }
-
-    static /* synthetic */ Track$MuxerHandler access$1300(VideoTrack videoTrack) {
-        return videoTrack.mMuxerHandler;
-    }
-
-    static /* synthetic */ VideoTrack$CodecHandler access$1400(VideoTrack videoTrack) {
-        return videoTrack.mCodecHandler;
-    }
-
-    static /* synthetic */ boolean access$200(VideoTrack videoTrack) {
-        return videoTrack.mFirstCodecConfigFrame;
-    }
-
-    static /* synthetic */ boolean access$202(VideoTrack videoTrack, boolean z) {
-        videoTrack.mFirstCodecConfigFrame = z;
-        return z;
-    }
-
-    static /* synthetic */ long access$300(VideoTrack videoTrack) {
-        return videoTrack.mFirstVideoFrameTimeUs;
-    }
-
-    static /* synthetic */ long access$302(VideoTrack videoTrack, long j) {
-        videoTrack.mFirstVideoFrameTimeUs = j;
-        return j;
-    }
-
-    static /* synthetic */ long access$400(VideoTrack videoTrack) {
-        return videoTrack.mVideoOffset;
-    }
-
-    static /* synthetic */ long access$402(VideoTrack videoTrack, long j) {
-        videoTrack.mVideoOffset = j;
-        return j;
-    }
-
-    static /* synthetic */ long access$500(VideoTrack videoTrack) {
-        return videoTrack.mRecordedDurationAtStopUs;
-    }
-
-    static /* synthetic */ boolean access$600(VideoTrack videoTrack) {
-        return videoTrack.mPauseResumeFlag;
-    }
-
-    static /* synthetic */ boolean access$602(VideoTrack videoTrack, boolean z) {
-        videoTrack.mPauseResumeFlag = z;
-        return z;
-    }
-
-    static /* synthetic */ boolean access$700(VideoTrack videoTrack) {
-        return videoTrack.mWaitForKeyFrame;
-    }
-
-    static /* synthetic */ boolean access$702(VideoTrack videoTrack, boolean z) {
-        videoTrack.mWaitForKeyFrame = z;
-        return z;
-    }
-
-    static /* synthetic */ boolean access$800(VideoTrack videoTrack) {
-        return videoTrack.mKeyFrameRequested;
-    }
-
-    static /* synthetic */ boolean access$802(VideoTrack videoTrack, boolean z) {
-        videoTrack.mKeyFrameRequested = z;
-        return z;
-    }
-
     static /* synthetic */ int access$908(VideoTrack videoTrack) {
         int i = videoTrack.mFrameDropCounter;
         videoTrack.mFrameDropCounter = i + 1;
@@ -140,12 +58,12 @@ class VideoTrack extends Track {
     }
 
     VideoTrack(Handler handler, HandlerThread handlerThread, HandlerThread handlerThread2, HandlerThread handlerThread3) {
-        this.mCodecHandler = new VideoTrack$CodecHandler(this, handlerThread.getLooper());
-        this.mEventHandler = new Track$EventHandler(this, handlerThread2.getLooper());
-        this.mMuxerHandler = new Track$MuxerHandler(this, handlerThread3.getLooper());
+        this.mCodecHandler = new CodecHandler(handlerThread.getLooper());
+        this.mEventHandler = new Track.EventHandler(handlerThread2.getLooper());
+        this.mMuxerHandler = new Track.MuxerHandler(handlerThread3.getLooper());
         this.mHandlerHelper = new HandlerHelper();
         this.mCallback = handler;
-        this.mState = Track$States.STOPPED;
+        this.mState = Track.States.STOPPED;
     }
 
     public Surface getSurface() {
@@ -211,14 +129,14 @@ class VideoTrack extends Track {
         if (this.mEncodingProfile == 0) {
             if (this.mVideoMime.equals("video/avc")) {
                 if (this.mWidth >= 1280 && this.mHeight >= 720) {
-                    mediaFormatCreateVideoFormat.setInteger("profile", 8);
+                    mediaFormatCreateVideoFormat.setInteger(MediaFormat.KEY_PROFILE, 8);
                 } else {
-                    mediaFormatCreateVideoFormat.setInteger("profile", 1);
+                    mediaFormatCreateVideoFormat.setInteger(MediaFormat.KEY_PROFILE, 1);
                 }
                 mediaFormatCreateVideoFormat.setInteger("level", 1);
             }
         } else {
-            mediaFormatCreateVideoFormat.setInteger("profile", this.mEncodingProfile);
+            mediaFormatCreateVideoFormat.setInteger(MediaFormat.KEY_PROFILE, this.mEncodingProfile);
             mediaFormatCreateVideoFormat.setInteger("level", this.mEncodingLevel == 0 ? 1 : this.mEncodingLevel);
         }
         mediaFormatCreateVideoFormat.setInteger("color-format", 2130708361);
@@ -238,7 +156,7 @@ class VideoTrack extends Track {
         if (checkFormat(mediaCodecList, mediaFormatCreateVideoFormat, this.mVideoMime)) {
             try {
                 this.mEncoder = MediaCodec.createByCodecName(mediaCodecList.findEncoderForFormat(mediaFormatCreateVideoFormat));
-                this.mEncoder.setCallback(new VideoTrack$VideoEncoderCallback(this, null));
+                this.mEncoder.setCallback(new VideoEncoderCallback());
                 try {
                     if (this.mBitRateMode >= 0) {
                         mediaFormatCreateVideoFormat.setInteger("bitrate-mode", this.mBitRateMode);
@@ -251,18 +169,18 @@ class VideoTrack extends Track {
                     }
                     this.mBufferList = new LinkedBlockingDeque<>();
                     return;
-                } catch (MediaCodec$CodecException unused) {
-                    Log.e("VideoTrack", "Failed to configure MediaCodec");
+                } catch (MediaCodec.CodecException unused) {
+                    Log.e(TAG, "Failed to configure MediaCodec");
                     this.mCallback.obtainMessage(1, 4, 1).sendToTarget();
                     return;
                 }
             } catch (IOException | IllegalArgumentException | NullPointerException e) {
-                Log.e("VideoTrack", "Unable to create encoder", e);
+                Log.e(TAG, "Unable to create encoder", e);
                 this.mCallback.obtainMessage(1, 4, 1).sendToTarget();
                 return;
             }
         }
-        Log.e("VideoTrack", "Video format is not supported " + mediaFormatCreateVideoFormat.toString());
+        Log.e(TAG, "Video format is not supported " + mediaFormatCreateVideoFormat.toString());
         this.mCallback.obtainMessage(1, 4, 2);
     }
 
@@ -276,7 +194,7 @@ class VideoTrack extends Track {
         this.mWaitForKeyFrame = false;
         this.mKeyFrameRequested = false;
         this.mFirstCodecConfigFrame = true;
-        this.mState = Track$States.STARTED;
+        this.mState = Track.States.STARTED;
     }
 
     @Override // com.sonymobile.android.media.internal.Track
@@ -296,15 +214,15 @@ class VideoTrack extends Track {
     @Override // com.sonymobile.android.media.internal.Track
     protected void doReset() {
         if (this.mEncoder != null) {
-            if (this.mMuxerState == Track$MuxerState.STARTED) {
-                this.mState = Track$States.STOPPING;
+            if (this.mMuxerState == Track.MuxerState.STARTED) {
+                this.mState = Track.States.STOPPING;
                 this.mEncoder.signalEndOfInputStream();
-            } else if (this.mState != Track$States.STOPPED) {
-                this.mState = Track$States.STOPPED;
+            } else if (this.mState != Track.States.STOPPED) {
+                this.mState = Track.States.STOPPED;
                 try {
                     this.mEncoder.stop();
                 } catch (IllegalStateException e) {
-                    Log.e("VideoTrack", e + " occurred. Maybe MediaCodec is released.", e);
+                    Log.e(TAG, e + " occurred. Maybe MediaCodec is released.", e);
                 }
             }
         }
@@ -319,25 +237,25 @@ class VideoTrack extends Track {
     @Override // com.sonymobile.android.media.internal.Track
     protected void doWriteOutputBuffer() throws IllegalStateException {
         ByteBuffer outputBuffer;
-        if (this.mBufferList.isEmpty() || this.mState == Track$States.STOPPED || !isMuxerStarted()) {
+        if (this.mBufferList.isEmpty() || this.mState == Track.States.STOPPED || !isMuxerStarted()) {
             return;
         }
-        Track$EncodedBuffer track$EncodedBufferRemoveFirst = this.mBufferList.removeFirst();
-        if (track$EncodedBufferRemoveFirst.containsCopiedBuffer) {
-            outputBuffer = track$EncodedBufferRemoveFirst.byteBuffer;
+        Track.EncodedBuffer encodedBufferRemoveFirst = this.mBufferList.removeFirst();
+        if (encodedBufferRemoveFirst.containsCopiedBuffer) {
+            outputBuffer = encodedBufferRemoveFirst.byteBuffer;
         } else {
-            outputBuffer = this.mEncoder.getOutputBuffer(track$EncodedBufferRemoveFirst.bufferIndex);
+            outputBuffer = this.mEncoder.getOutputBuffer(encodedBufferRemoveFirst.bufferIndex);
         }
-        if (outputBuffer != null && track$EncodedBufferRemoveFirst.bufferInfo.size != 0) {
-            this.mMuxerWrapper.writeSampleData(this.mMuxerTrackIndex, outputBuffer, track$EncodedBufferRemoveFirst.bufferInfo);
+        if (outputBuffer != null && encodedBufferRemoveFirst.bufferInfo.size != 0) {
+            this.mMuxerWrapper.writeSampleData(this.mMuxerTrackIndex, outputBuffer, encodedBufferRemoveFirst.bufferInfo);
         }
-        if (!track$EncodedBufferRemoveFirst.containsCopiedBuffer) {
-            this.mEncoder.releaseOutputBuffer(track$EncodedBufferRemoveFirst.bufferIndex, false);
+        if (!encodedBufferRemoveFirst.containsCopiedBuffer) {
+            this.mEncoder.releaseOutputBuffer(encodedBufferRemoveFirst.bufferIndex, false);
         }
-        if ((track$EncodedBufferRemoveFirst.bufferInfo.flags & 4) != 0) {
+        if ((encodedBufferRemoveFirst.bufferInfo.flags & 4) != 0) {
             this.mEncoder.stop();
             this.mCallback.sendMessage(this.mCallback.obtainMessage(101));
-            this.mState = Track$States.STOPPED;
+            this.mState = Track.States.STOPPED;
             this.mMuxerWrapper.endTrack(this.mMuxerTrackIndex);
         }
     }
@@ -346,5 +264,160 @@ class VideoTrack extends Track {
     public void setMediaMuxerStarted() {
         super.setMediaMuxerStarted();
         this.mMuxerHandler.obtainMessage(110).sendToTarget();
+    }
+
+    private class CodecHandler extends Handler {
+        CodecHandler(Looper looper) {
+            super(looper);
+        }
+
+        private void doQueueOutputBuffer(int i, MediaCodec.BufferInfo bufferInfo) {
+            if (VideoTrack.this.mVideoMime.equals("video/x-vnd.on2.vp8") || VideoTrack.this.mVideoMime.equals(MediaSavingConstants.MEDIA_TYPE_3GP_MIME)) {
+                if (VideoTrack.this.mFirstCodecConfigFrame) {
+                    addTrack();
+                    VideoTrack.this.mFirstCodecConfigFrame = false;
+                }
+            } else {
+                if (((bufferInfo.flags & 2) == 2) && VideoTrack.this.mFirstCodecConfigFrame) {
+                    addTrack();
+                    VideoTrack.this.mEncoder.releaseOutputBuffer(i, false);
+                    VideoTrack.this.mFirstCodecConfigFrame = false;
+                    return;
+                }
+            }
+            boolean z = (bufferInfo.flags & 1) == 1;
+            if (VideoTrack.this.mFirstVideoFrameTimeUs < 0) {
+                if (z) {
+                    VideoTrack.this.mFirstVideoFrameTimeUs = bufferInfo.presentationTimeUs;
+                    bufferInfo.presentationTimeUs = 0L;
+                }
+                queueBuffer(i, bufferInfo);
+                return;
+            }
+            if (!((bufferInfo.flags & 4) == 4)) {
+                long j = bufferInfo.presentationTimeUs - VideoTrack.this.mFirstVideoFrameTimeUs;
+                bufferInfo.presentationTimeUs = j - VideoTrack.this.mVideoOffset;
+                if (VideoTrack.this.mRecordedDurationAtStopUs > 0 && bufferInfo.presentationTimeUs > VideoTrack.this.mRecordedDurationAtStopUs && VideoTrack.this.mState != Track.States.STOPPED && VideoTrack.this.mState != Track.States.STOPPING) {
+                    VideoTrack.this.mState = Track.States.STOPPING;
+                    VideoTrack.this.mEncoder.signalEndOfInputStream();
+                }
+                if (bufferInfo.size == 0) {
+                    queueBuffer(i, bufferInfo);
+                    return;
+                }
+                if (!VideoTrack.this.mClock.isPausedAt(j)) {
+                    if (VideoTrack.this.mPauseResumeFlag) {
+                        VideoTrack.this.mWaitForKeyFrame = true;
+                        VideoTrack.this.mKeyFrameRequested = false;
+                        VideoTrack.this.mPauseResumeFlag = false;
+                    }
+                    if (VideoTrack.this.mWaitForKeyFrame) {
+                        if (!VideoTrack.this.mKeyFrameRequested) {
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("request-sync", 0);
+                            VideoTrack.this.mEncoder.setParameters(bundle);
+                            VideoTrack.this.mKeyFrameRequested = true;
+                        }
+                        if (z) {
+                            VideoTrack.this.mWaitForKeyFrame = false;
+                            long j2 = VideoTrack.this.mLastRecordedVideoTimestampUs + VideoTrack.this.mFrameInterval;
+                            VideoTrack.this.mVideoOffset = j - j2;
+                            bufferInfo.presentationTimeUs = j2;
+                        } else {
+                            VideoTrack.this.mEncoder.releaseOutputBuffer(i, false);
+                            VideoTrack.access$908(VideoTrack.this);
+                            VideoTrack.this.mLastRecordedVideoTimestampUs += VideoTrack.this.mFrameInterval;
+                            return;
+                        }
+                    }
+                    queueBuffer(i, bufferInfo);
+                    return;
+                }
+                if (!VideoTrack.this.mPauseResumeFlag) {
+                    VideoTrack.this.mPauseResumeFlag = true;
+                }
+                VideoTrack.this.mEncoder.releaseOutputBuffer(i, false);
+                return;
+            }
+            queueBuffer(i, bufferInfo);
+        }
+
+        private void addTrack() {
+            if (VideoTrack.this.mMuxerTrackIndex < 0) {
+                VideoTrack.this.mMuxerTrackIndex = VideoTrack.this.mMuxerWrapper.addTrack(VideoTrack.this.mEncoder.getOutputFormat());
+                VideoTrack.this.mCallback.obtainMessage(1, 10, 0).sendToTarget();
+            }
+        }
+
+        private void queueBuffer(int i, MediaCodec.BufferInfo bufferInfo) {
+            Track.EncodedBuffer encodedBuffer = new Track.EncodedBuffer(i, bufferInfo);
+            if (VideoTrack.this.mMuxerState == Track.MuxerState.IDLE) {
+                ByteBuffer outputBuffer = VideoTrack.this.mEncoder.getOutputBuffer(i);
+                if (outputBuffer != null) {
+                    encodedBuffer.byteBuffer = ByteBuffer.allocate(outputBuffer.limit());
+                    outputBuffer.rewind();
+                    encodedBuffer.byteBuffer.put(outputBuffer);
+                    encodedBuffer.containsCopiedBuffer = true;
+                }
+                VideoTrack.this.mEncoder.releaseOutputBuffer(i, false);
+                if (bufferInfo.presentationTimeUs > VideoTrack.WAIT_FOR_MEDIA_MUXER_START_TIMED_OUT_US) {
+                    Log.e(VideoTrack.TAG, "MediaMuxer is timed out.");
+                    throw new RuntimeException("MediaMuxer is timed out.");
+                }
+            }
+            VideoTrack.this.mBufferList.add(encodedBuffer);
+            VideoTrack.this.mLastRecordedVideoTimestampUs = bufferInfo.presentationTimeUs;
+            if ((bufferInfo.flags & 4) != 0) {
+                VideoTrack.this.mMuxerHandler.obtainMessage(110).sendToTarget();
+            } else {
+                VideoTrack.this.mMuxerHandler.obtainMessage(104).sendToTarget();
+            }
+        }
+
+        private void doTimeOutBufferCallback() {
+            if (VideoTrack.this.mRecordedDurationAtStopUs <= 0 || VideoTrack.this.mState == Track.States.STOPPED || VideoTrack.this.mState == Track.States.STOPPING) {
+                return;
+            }
+            VideoTrack.this.mState = Track.States.STOPPING;
+            Log.w(VideoTrack.TAG, "Forced stop due to timeout of buffer callback : recording duration at stop = " + VideoTrack.this.mRecordedDurationAtStopUs + " , last recorded timestamp = " + VideoTrack.this.mLastRecordedVideoTimestampUs);
+            VideoTrack.this.mEncoder.signalEndOfInputStream();
+        }
+
+        @Override // android.os.Handler
+        public void handleMessage(Message message) {
+            int i = message.what;
+            if (i == 105) {
+                doQueueOutputBuffer(message.arg1, (MediaCodec.BufferInfo) message.obj);
+            } else {
+                if (i != 111) {
+                    return;
+                }
+                doTimeOutBufferCallback();
+            }
+        }
+    }
+
+    private class VideoEncoderCallback extends MediaCodec.Callback {
+        @Override // android.media.MediaCodec.Callback
+        public void onInputBufferAvailable(@NonNull MediaCodec mediaCodec, int i) {
+        }
+
+        @Override // android.media.MediaCodec.Callback
+        public void onOutputFormatChanged(@NonNull MediaCodec mediaCodec, @NonNull MediaFormat mediaFormat) {
+        }
+
+        private VideoEncoderCallback() {
+        }
+
+        @Override // android.media.MediaCodec.Callback
+        public void onOutputBufferAvailable(@NonNull MediaCodec mediaCodec, int i, @NonNull MediaCodec.BufferInfo bufferInfo) {
+            VideoTrack.this.mCodecHandler.obtainMessage(105, i, 0, bufferInfo).sendToTarget();
+        }
+
+        @Override // android.media.MediaCodec.Callback
+        public void onError(@NonNull MediaCodec mediaCodec, @NonNull MediaCodec.CodecException codecException) {
+            Log.e(VideoTrack.TAG, "Error from encoder", codecException);
+            VideoTrack.this.mCallback.obtainMessage(1, 4, 0).sendToTarget();
+        }
     }
 }

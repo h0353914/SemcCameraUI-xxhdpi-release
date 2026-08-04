@@ -27,16 +27,10 @@ public class FieldTypeAscii extends FieldType {
         for (int i6 = 0; i6 < byteArrayValue.length; i6++) {
             if (byteArrayValue[i6] == 0) {
                 try {
-                    String str = new String(byteArrayValue, i4, i6 - i4, "UTF-8");
-                    i = i5 + 1;
-                    try {
-                        strArr[i5] = str;
-                    } catch (UnsupportedEncodingException unused) {
-                    }
+                    strArr[i5] = new String(byteArrayValue, i4, i6 - i4, "UTF-8");
+                    i5++;
                 } catch (UnsupportedEncodingException unused2) {
-                    i = i5;
                 }
-                i5 = i;
                 i4 = i6 + 1;
             }
         }
@@ -50,7 +44,7 @@ public class FieldTypeAscii extends FieldType {
     }
 
     @Override // org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType
-    public byte[] writeData(Object obj, ByteOrder byteOrder) throws ImageWriteException {
+    public byte[] writeData(Object obj, ByteOrder byteOrder) throws ImageWriteException, UnsupportedEncodingException {
         if (obj instanceof byte[]) {
             byte[] bArr = (byte[]) obj;
             byte[] bArr2 = new byte[bArr.length + 1];

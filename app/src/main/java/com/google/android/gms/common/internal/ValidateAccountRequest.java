@@ -3,13 +3,14 @@ package com.google.android.gms.common.internal;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class ValidateAccountRequest implements SafeParcelable {
-    public static final Parcelable$Creator<ValidateAccountRequest> CREATOR = new zzad();
+    public static final Parcelable.Creator<ValidateAccountRequest> CREATOR = new zzad();
     final int mVersionCode;
     private final String zzSb;
     final IBinder zzaeH;

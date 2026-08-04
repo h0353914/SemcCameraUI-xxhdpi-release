@@ -2,6 +2,7 @@ package org.apache.commons.imaging.formats.jpeg.segments;
 
 import java.io.PrintWriter;
 import org.apache.commons.imaging.common.BinaryFileParser;
+import org.apache.commons.imaging.formats.jpeg.JpegConstants;
 
 public abstract class Segment extends BinaryFileParser {
     public final int length;
@@ -30,37 +31,37 @@ public abstract class Segment extends BinaryFileParser {
             return "Comment";
         }
         switch (i) {
-            case 65472:
+            case JpegConstants.SOF0_MARKER /* 65472 */:
                 return "Start Of Frame, Baseline Dct, Huffman coding";
-            case 65473:
+            case JpegConstants.SOF1_MARKER /* 65473 */:
                 return "Start Of Frame, Extended sequential Dct, Huffman coding";
-            case 65474:
+            case JpegConstants.SOF2_MARKER /* 65474 */:
                 return "Start Of Frame, Progressive Dct, Huffman coding";
-            case 65475:
+            case JpegConstants.SOF3_MARKER /* 65475 */:
                 return "Start Of Frame, Lossless (sequential), Huffman coding";
-            case 65476:
+            case JpegConstants.DHT_MARKER /* 65476 */:
                 return "Define Huffman table(s)";
-            case 65477:
+            case JpegConstants.SOF5_MARKER /* 65477 */:
                 return "Start Of Frame, Differential sequential Dct, Huffman coding";
-            case 65478:
+            case JpegConstants.SOF6_MARKER /* 65478 */:
                 return "Start Of Frame, Differential progressive Dct, Huffman coding";
-            case 65479:
+            case JpegConstants.SOF7_MARKER /* 65479 */:
                 return "Start Of Frame, Differential lossless (sequential), Huffman coding";
-            case 65480:
+            case JpegConstants.SOF8_MARKER /* 65480 */:
                 return "Start Of Frame, Reserved for JPEG extensions, arithmetic coding";
-            case 65481:
+            case JpegConstants.SOF9_MARKER /* 65481 */:
                 return "Start Of Frame, Extended sequential Dct, arithmetic coding";
-            case 65482:
+            case JpegConstants.SOF10_MARKER /* 65482 */:
                 return "Start Of Frame, Progressive Dct, arithmetic coding";
-            case 65483:
+            case JpegConstants.SOF11_MARKER /* 65483 */:
                 return "Start Of Frame, Lossless (sequential), arithmetic coding";
-            case 65484:
+            case JpegConstants.DAC_MARKER /* 65484 */:
                 return "Define arithmetic coding conditioning(s)";
-            case 65485:
+            case JpegConstants.SOF13_MARKER /* 65485 */:
                 return "Start Of Frame, Differential sequential Dct, arithmetic coding";
-            case 65486:
+            case JpegConstants.SOF14_MARKER /* 65486 */:
                 return "Start Of Frame, Differential progressive Dct, arithmetic coding";
-            case 65487:
+            case JpegConstants.SOF15_MARKER /* 65487 */:
                 return "Start Of Frame, Differential lossless (sequential), arithmetic coding";
             case 65488:
                 return "Restart with modulo 8 count 0";
@@ -80,13 +81,13 @@ public abstract class Segment extends BinaryFileParser {
                 return "Restart with modulo 8 count 7";
             case 65496:
                 return "Start of image";
-            case 65497:
+            case JpegConstants.EOI_MARKER /* 65497 */:
                 return "End of image";
-            case 65498:
+            case JpegConstants.SOS_MARKER /* 65498 */:
                 return "Start of scan";
-            case 65499:
+            case JpegConstants.DQT_MARKER /* 65499 */:
                 return "Define quantization table(s)";
-            case 65500:
+            case JpegConstants.DNL_MARKER /* 65500 */:
                 return "Define number of lines";
             case 65501:
                 return "Define restart interval";

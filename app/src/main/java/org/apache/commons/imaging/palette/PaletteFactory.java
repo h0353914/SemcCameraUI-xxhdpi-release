@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.palette;
 
+import android.support.v4.view.ViewCompat;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -75,7 +76,7 @@ public class PaletteFactory {
         return i2;
     }
 
-    private PaletteFactory$DivisionCandidate finishDivision(ColorSpaceSubset colorSpaceSubset, int i, int i2, int i3, int i4) {
+    private DivisionCandidate finishDivision(ColorSpaceSubset colorSpaceSubset, int i, int i2, int i3, int i4) {
         int i5;
         int i6 = colorSpaceSubset.total;
         if (i4 < colorSpaceSubset.mins[i] || i4 >= colorSpaceSubset.maxs[i] || i3 < 1 || i3 >= i6 || (i5 = i6 - i3) < 1 || i5 >= i6) {
@@ -87,10 +88,10 @@ public class PaletteFactory {
         System.arraycopy(colorSpaceSubset.maxs, 0, iArr2, 0, colorSpaceSubset.maxs.length);
         iArr2[i] = i4;
         iArr[i] = i4 + 1;
-        return new PaletteFactory$DivisionCandidate(new ColorSpaceSubset(i3, i2, colorSpaceSubset.mins, iArr2), new ColorSpaceSubset(i5, i2, iArr, colorSpaceSubset.maxs));
+        return new DivisionCandidate(new ColorSpaceSubset(i3, i2, colorSpaceSubset.mins, iArr2), new ColorSpaceSubset(i5, i2, iArr, colorSpaceSubset.maxs));
     }
 
-    private List<PaletteFactory$DivisionCandidate> divideSubset2(int[] iArr, ColorSpaceSubset colorSpaceSubset, int i, int i2) {
+    private List<DivisionCandidate> divideSubset2(int[] iArr, ColorSpaceSubset colorSpaceSubset, int i, int i2) {
         PaletteFactory paletteFactory;
         int i3;
         int i4 = colorSpaceSubset.total;
@@ -120,37 +121,148 @@ public class PaletteFactory {
         }
         PaletteFactory paletteFactory2 = paletteFactory;
         int i7 = i3;
-        PaletteFactory$DivisionCandidate paletteFactory$DivisionCandidateFinishDivision = paletteFactory2.finishDivision(colorSpaceSubset, i, i7, i5, i6);
-        PaletteFactory$DivisionCandidate paletteFactory$DivisionCandidateFinishDivision2 = paletteFactory2.finishDivision(colorSpaceSubset, i, i7, i5 - frequencyTotal, i6 - 1);
+        DivisionCandidate divisionCandidateFinishDivision = paletteFactory2.finishDivision(colorSpaceSubset, i, i7, i5, i6);
+        DivisionCandidate divisionCandidateFinishDivision2 = paletteFactory2.finishDivision(colorSpaceSubset, i, i7, i5 - frequencyTotal, i6 - 1);
         ArrayList arrayList = new ArrayList();
-        if (paletteFactory$DivisionCandidateFinishDivision != null) {
-            arrayList.add(paletteFactory$DivisionCandidateFinishDivision);
+        if (divisionCandidateFinishDivision != null) {
+            arrayList.add(divisionCandidateFinishDivision);
         }
-        if (paletteFactory$DivisionCandidateFinishDivision2 != null) {
-            arrayList.add(paletteFactory$DivisionCandidateFinishDivision2);
+        if (divisionCandidateFinishDivision2 != null) {
+            arrayList.add(divisionCandidateFinishDivision2);
         }
         return arrayList;
     }
 
-    private PaletteFactory$DivisionCandidate divideSubset2(int[] iArr, ColorSpaceSubset colorSpaceSubset, int i) {
-        ArrayList<PaletteFactory$DivisionCandidate> arrayList = new ArrayList();
+    private DivisionCandidate divideSubset2(int[] iArr, ColorSpaceSubset colorSpaceSubset, int i) {
+        ArrayList<DivisionCandidate> arrayList = new ArrayList();
         arrayList.addAll(divideSubset2(iArr, colorSpaceSubset, 0, i));
         arrayList.addAll(divideSubset2(iArr, colorSpaceSubset, 1, i));
         arrayList.addAll(divideSubset2(iArr, colorSpaceSubset, 2, i));
-        PaletteFactory$DivisionCandidate paletteFactory$DivisionCandidate = null;
+        DivisionCandidate divisionCandidate = null;
         double d = Double.MAX_VALUE;
-        for (PaletteFactory$DivisionCandidate paletteFactory$DivisionCandidate2 : arrayList) {
-            ColorSpaceSubset colorSpaceSubsetAccess$000 = PaletteFactory$DivisionCandidate.access$000(paletteFactory$DivisionCandidate2);
-            ColorSpaceSubset colorSpaceSubsetAccess$100 = PaletteFactory$DivisionCandidate.access$100(paletteFactory$DivisionCandidate2);
-            int i2 = colorSpaceSubsetAccess$000.total;
-            int i3 = colorSpaceSubsetAccess$100.total;
-            double dAbs = ((double) Math.abs(i2 - i3)) / ((double) Math.max(i2, i3));
-            if (paletteFactory$DivisionCandidate == null || dAbs < d) {
-                paletteFactory$DivisionCandidate = paletteFactory$DivisionCandidate2;
+        for (DivisionCandidate divisionCandidate2 : arrayList) {
+            ColorSpaceSubset colorSpaceSubset2 = divisionCandidate2.dst_a;
+            ColorSpaceSubset colorSpaceSubset3 = divisionCandidate2.dst_b;
+            int i2 = colorSpaceSubset2.total;
+            int i3 = colorSpaceSubset3.total;
+            double dAbs = Math.abs(i2 - i3) / Math.max(i2, i3);
+            if (divisionCandidate == null || dAbs < d) {
+                divisionCandidate = divisionCandidate2;
                 d = dAbs;
             }
         }
-        return paletteFactory$DivisionCandidate;
+        return divisionCandidate;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private static class DivisionCandidate {
+        private final ColorSpaceSubset dst_a;
+        private final ColorSpaceSubset dst_b;
+
+
+        public DivisionCandidate(ColorSpaceSubset colorSpaceSubset, ColorSpaceSubset colorSpaceSubset2) {
+
+            this.dst_a = colorSpaceSubset;
+            this.dst_b = colorSpaceSubset2;
+        }
     }
 
     private List<ColorSpaceSubset> divide(List<ColorSpaceSubset> list, int i, int[] iArr, int i2) {
@@ -170,11 +282,11 @@ public class PaletteFactory {
             if (colorSpaceSubset == null) {
                 return list;
             }
-            PaletteFactory$DivisionCandidate paletteFactory$DivisionCandidateDivideSubset2 = divideSubset2(iArr, colorSpaceSubset, i2);
-            if (paletteFactory$DivisionCandidateDivideSubset2 != null) {
+            DivisionCandidate divisionCandidateDivideSubset2 = divideSubset2(iArr, colorSpaceSubset, i2);
+            if (divisionCandidateDivideSubset2 != null) {
                 list.remove(colorSpaceSubset);
-                list.add(PaletteFactory$DivisionCandidate.access$000(paletteFactory$DivisionCandidateDivideSubset2));
-                list.add(PaletteFactory$DivisionCandidate.access$100(paletteFactory$DivisionCandidateDivideSubset2));
+                list.add(divisionCandidateDivideSubset2.dst_a);
+                list.add(divisionCandidateDivideSubset2.dst_b);
             } else {
                 arrayList.add(colorSpaceSubset);
             }
@@ -213,7 +325,7 @@ public class PaletteFactory {
         int i2 = 0;
         for (int i3 = 0; i3 < height; i3++) {
             for (int i4 = 0; i4 < width; i4++) {
-                if (hashSet.add(Integer.valueOf(bufferedImage.getRGB(i4, i3) & 16777215)) && hashSet.size() > i) {
+                if (hashSet.add(Integer.valueOf(bufferedImage.getRGB(i4, i3) & ViewCompat.MEASURED_SIZE_MASK)) && hashSet.size() > i) {
                     return null;
                 }
             }

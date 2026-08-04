@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">無法完成拍攝。請更緩慢地平移。</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">無法完成拍攝。請快速平移。</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">平移相機來拍攝全景相片</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">正在建立下列檔案:\n- 多角度影像\n- 3D影像\n注意: 這些檔案包含灰色區域。</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">正在建立下列檔案:\n- 多角度影像\n- 3D影像</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">處理中...\n此影像包含灰色區域</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"正在建立下列檔案:
+- 多角度影像
+- 3D影像
+注意: 這些檔案包含灰色區域。"</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"正在建立下列檔案:
+- 多角度影像
+- 3D影像"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"處理中...
+此影像包含灰色區域"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">正在儲存影像</string>
     <string name="cam_3d_strings_dialog_processing_txt">處理中...</string>
     <string name="cam_3d_strings_error_application_busy_txt">正在啟動3D相機請稍候</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">使您的膚質光亮和平滑。此效果可用於使用前置相機的應用程式。這可用於相片和影片。您亦可調校等級。</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">等級調校</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">平滑肌膚</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">無法啟動應用程式。\n請確保您已安裝最新版本的%1$s並已在裝置上啟用。</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"無法啟動應用程式。
+請確保您已安裝最新版本的%1$s並已在裝置上啟用。"</string>
     <string name="cam_strings_gridline_txt">格線</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">把您的手掌往相機方向轉。當自拍定時器辨識您的手掌時，它將開啟。若要使手掌更易於辨識，往上張開手指。</string>
     <string name="cam_strings_hand_shutter_hint_txt">把您的手掌往相機方向轉</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">一般設定</string>
     <string name="cam_strings_more_txt">更多</string>
     <string name="cam_strings_multi_window_txt">拖曳分割列的中間位置以切換到全屏幕%1$s來使用</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">另一部裝置目前已連接。\n您是否要透過取景器與該裝置分享影像？</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"另一部裝置目前已連接。
+您是否要透過取景器與該裝置分享影像？"</string>
     <string name="cam_strings_multicam_add_device_txt">新增裝置</string>
     <string name="cam_strings_multicam_add_more_txt">新增更多</string>
     <string name="cam_strings_multicam_apply_txt">完成</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">測光</string>
     <string name="cam_strings_predictive_capture_feedback_txt">已預拍</string>
     <string name="cam_strings_predictive_capture_txt">預拍功能</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">偵測到您以橫向模式舉起手機和將鏡頭對準拍攝物件，因此已自動啟動相機。\n您可以在相機設定的[智能啟動]選擇使用此功能的方式。</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"偵測到您以橫向模式舉起手機和將鏡頭對準拍攝物件，因此已自動啟動相機。
+您可以在相機設定的[智能啟動]選擇使用此功能的方式。"</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">碰觸圓圈內部開始拍攝</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">碰觸螢幕開始拍攝</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">輕按圓形的內圍以檢視全螢幕</string>
     <string name="cam_strings_predictive_launch_guide_txt">碰觸圓形內圍以啟動相機</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">碰觸啟動並拍攝</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">碰觸以啟動</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">您可以快速啟動相機。在橫向模式中快速抬起裝置，然後將相機朝向物件，將會自動啟動相機。\n您可以從相機設定中的[智能啟動]選擇您最愛使用此功能的方式。</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"您可以快速啟動相機。在橫向模式中快速抬起裝置，然後將相機朝向物件，將會自動啟動相機。
+您可以從相機設定中的[智能啟動]選擇您最愛使用此功能的方式。"</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">智能啟動</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">您可以快速啟動相機。在橫向檢視模式中向上輕劃裝置，然後將相機朝向物件，將會自動啟動相機。\n您可以從相機設定中的[智能啟動]關閉此功能。</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"您可以快速啟動相機。在橫向檢視模式中向上輕劃裝置，然後將相機朝向物件，將會自動啟動相機。
+您可以從相機設定中的[智能啟動]關閉此功能。"</string>
     <string name="cam_strings_predictive_launch_txt">智能啟動</string>
     <string name="cam_strings_preview_always_txt">開啟</string>
     <string name="cam_strings_preview_duration_3sec_txt">3秒</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s需要下列權限</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s權限</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">應用程式需要下列權限以執行此動作。</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">若要賦予權限，請進入[應用程式資訊]&gt;[權限設定]。</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">若要賦予權限，請進入[應用程式資訊]>[權限設定]。</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">無法繼續</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">照相與錄影</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">擷取地點</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">儲存至內部儲存空間</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">移動</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">應用程式需要下列權限以執行此動作。</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">若要使用SD卡，相機需要權限才能存取SD卡。\n再次將數據儲存空間更改為SD卡，或在下一畫面上允許相機存取SD卡。</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"若要使用SD卡，相機需要權限才能存取SD卡。
+再次將數據儲存空間更改為SD卡，或在下一畫面上允許相機存取SD卡。"</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD卡無法使用</string>
-    <string name="cam_strings_sd_permission_info_2_txt">已偵測到有新的SD卡需要權限設定。\n\n如要將SD卡設成數據儲存空間，請在下一個畫面選擇SD卡或DCIM目錄。</string>
-    <string name="cam_strings_sd_permission_info_3_txt">未選擇SD卡或DCIM目錄。無法使用SD卡。\n\n如要提供權限，請將儲存位置更改至SD卡作為開始，或在下一個畫面選擇適合的目錄。</string>
-    <string name="cam_strings_sd_permission_info_txt">偵測到需要權限設定的新SD卡。\n因此，預設數據儲存空間將改為使用內部儲存空間。\n\n如要將SD卡用作數據儲存空間，請進入相機設定中，並將儲存空間選項更改為SD卡。</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"已偵測到有新的SD卡需要權限設定。
+
+如要將SD卡設成數據儲存空間，請在下一個畫面選擇SD卡或DCIM目錄。"</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"未選擇SD卡或DCIM目錄。無法使用SD卡。
+
+如要提供權限，請將儲存位置更改至SD卡作為開始，或在下一個畫面選擇適合的目錄。"</string>
+    <string name="cam_strings_sd_permission_info_txt">"偵測到需要權限設定的新SD卡。
+因此，預設數據儲存空間將改為使用內部儲存空間。
+
+如要將SD卡用作數據儲存空間，請進入相機設定中，並將儲存空間選項更改為SD卡。"</string>
     <string name="cam_strings_sd_permission_rationale_txt">用於在SD卡上儲存相片和影片</string>
     <string name="cam_strings_select_picture_txt">選擇相片</string>
     <string name="cam_strings_self_timer_05_txt">0.5秒</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">自動捕捉</string>
     <string name="cam_strings_side_touch_not_supported_txt">此螢幕不支援側面感應</string>
     <string name="cam_strings_side_touch_on_title_txt">側面感應</string>
-    <string name="cam_strings_side_touch_on_txt">若要使用此功能，請進入[設定]&gt;[顯示]以開啟側面感應。立即啟用？</string>
+    <string name="cam_strings_side_touch_on_txt">若要使用此功能，請進入[設定]>[顯示]以開啟側面感應。立即啟用？</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">側面感應</string>
-    <string name="cam_strings_side_touch_tutorial_txt">僅需輕按兩下螢幕側面的感應器，即可拍攝相片或錄製影片，而無須使用快門按鈕。您亦可沿著側面感應器滑動手指，以進行縮放。\n相片和影片模式都支援此功能。您可以在相機設定內的側面感應中將其關閉。</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">縱向顯示時，僅需輕按兩下螢幕側面的感應器，即可拍攝相片或錄製影片，而無須使用快門按鈕。您亦可沿著側面感應器滑動手指，以進行縮放。\n相片和影片模式都支援此功能。您可以在相機設定內的側面感應中將其關閉。</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">縱向顯示時，僅需輕按兩下螢幕側面的感應器，即可拍攝相片或錄製影片，而無須使用快門按鈕。\n相片和錄影模式都支援此功能。您可以在相機設定內的側面感應中將其關閉。</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">僅需輕按兩下螢幕側面的感應器，即可拍攝相片或錄製影片，而無須使用快門按鈕。\n相片和影片模式都支援此功能。您可以在相機設定內的側面感應中將其關閉。</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"僅需輕按兩下螢幕側面的感應器，即可拍攝相片或錄製影片，而無須使用快門按鈕。您亦可沿著側面感應器滑動手指，以進行縮放。
+相片和影片模式都支援此功能。您可以在相機設定內的側面感應中將其關閉。"</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"縱向顯示時，僅需輕按兩下螢幕側面的感應器，即可拍攝相片或錄製影片，而無須使用快門按鈕。您亦可沿著側面感應器滑動手指，以進行縮放。
+相片和影片模式都支援此功能。您可以在相機設定內的側面感應中將其關閉。"</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"縱向顯示時，僅需輕按兩下螢幕側面的感應器，即可拍攝相片或錄製影片，而無須使用快門按鈕。
+相片和錄影模式都支援此功能。您可以在相機設定內的側面感應中將其關閉。"</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"僅需輕按兩下螢幕側面的感應器，即可拍攝相片或錄製影片，而無須使用快門按鈕。
+相片和影片模式都支援此功能。您可以在相機設定內的側面感應中將其關閉。"</string>
     <string name="cam_strings_side_touch_txt">側面感應</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">收錄風格和畫面解像度可在[相機]設定中更改</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">超慢動作（單次）</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">超慢動作</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">您可以更改慢動作影片的每秒格數和收錄風格。</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">更多選項</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">按一下畫面中間的按鈕，立即以每秒%1$s格超慢動作收錄珍貴時刻。\n建議在足夠光線下進行攝錄。</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"按一下畫面中間的按鈕，立即以每秒%1$s格超慢動作收錄珍貴時刻。
+建議在足夠光線下進行攝錄。"</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">您可以輕按中間的按鈕，以每秒%1$s格記錄精彩瞬間一次</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">按一下畫面中間的按鈕，立即以每秒%1$s格超慢動作收錄珍貴時刻（僅限一次）。</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">超慢動作(單次拍攝)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">慢動作</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">收錄方法</string>
     <string name="cam_strings_slow_motion_standard_txt">慢動作</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">以慢動作收錄影片展示珍貴時刻，令人留下深刻印象。\n建議在足夠光線下進行攝錄。</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"以慢動作收錄影片展示珍貴時刻，令人留下深刻印象。
+建議在足夠光線下進行攝錄。"</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">您可以把每秒格數切換至%1$s格，以不同的速度收錄影片</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">在精彩瞬間輕按畫面中間的按鈕</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">已收錄慢動作影片</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">軟件授權</string>
     <string name="cam_strings_take_photo_txt">拍照</string>
     <string name="cam_strings_term_of_use_accept_txt">接受</string>
-    <string name="cam_strings_term_of_use_consent_txt">我同意Sony Mobile&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;使用條款&lt;/a&gt;。</string>
+    <string name="cam_strings_term_of_use_consent_txt">我同意Sony Mobile&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">使用條款&lt;/a>。</string>
     <string name="cam_strings_term_of_use_data_charge_txt">根據您的數據計劃，您使用此服務可能必須支付流動數據費用。</string>
     <string name="cam_strings_term_of_use_data_collection_txt">為了提供適合您的結果 (我們服務項目的一部份) 及改良我們的服務，Sony Mobile 將收集您的雜湊 Android ID 唯一裝置識別碼、地點數據和時間戳記。</string>
     <string name="cam_strings_term_of_use_decline_txt">拒絕</string>
     <string name="cam_strings_term_of_use_title_txt">條款與條件</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;使用條款&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">使用條款&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">取消選擇相片</string>
     <string name="cam_strings_timeshift_operation_failed_txt">無法儲存</string>
     <string name="cam_strings_timeshift_save_complete_txt">已儲存</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">若要穩定收錄4K影片，除非您使用高速SD卡(建議使用Speed Class 10、UHS Speed Class 1或等級更高的SD卡)，否則請勿更改此設定。</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">若要穩定收錄Timeshift video，除非您使用高速SD卡(建議使用Speed Class 10、UHS Speed Class 1或等級更高的SD卡)，否則請勿更改此設定。是否仍要更改？</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">若要穩定收錄慢動作影片，除非您使用高速SD卡(建議使用Speed Class 10、UHS Speed Class 1或等級更高的SD卡)，否則請勿更改此設定。</string>
-    <string name="cam_strings_video_explanatory_txt">若要穩定收錄影片，我們建議您將資料儲存空間更改為內部儲存空間。是否要立即更改？\n\n如果您繼續使用SD卡作為資料儲存空間，請務必使用高速SD卡(建議使用Speed Class 10、UHS Speed Class 1或等級更高的SD卡)。</string>
+    <string name="cam_strings_video_explanatory_txt">"若要穩定收錄影片，我們建議您將資料儲存空間更改為內部儲存空間。是否要立即更改？
+
+如果您繼續使用SD卡作為資料儲存空間，請務必使用高速SD卡(建議使用Speed Class 10、UHS Speed Class 1或等級更高的SD卡)。"</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">雙鏡頭相機</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">即使在夜晚或光線昏暗的空間，您也可以使用雙鏡頭相機以低雜訊錄製精美的影片。相機可根據場景自動切換單鏡頭相機或雙鏡頭相機模式，並以極高感光度錄製。</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">使用雙鏡頭相機進行影片攝錄</string>

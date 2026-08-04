@@ -31,12 +31,18 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">לא ניתן להשלים את הלכידה. בצע תנועה פנורמית איטית יותר.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">לא ניתן להשלים את הלכידה. בצע תנועה פנורמית מהירה יותר.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">צלם תמונה פנורמית על-ידי הזזת המצלמה שלך</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">יצירת הקבצים הבאים:\n- תמונה מרובת זוויות\n- תמונה תלת-ממדית\nהערה: קבצים אלה מכילים אזור אפור.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">יצירת הקבצים הבאים:\n- תמונה מרובת זוויות\n- תמונה תלת-ממדית</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">מעבד...\nתמונה זו מכילה אזור אפור</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"יצירת הקבצים הבאים:
+- תמונה מרובת זוויות
+- תמונה תלת-ממדית
+הערה: קבצים אלה מכילים אזור אפור."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"יצירת הקבצים הבאים:
+- תמונה מרובת זוויות
+- תמונה תלת-ממדית"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"מעבד...
+תמונה זו מכילה אזור אפור"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">שמירת תמונה</string>
     <string name="cam_3d_strings_dialog_processing_txt">מעבד...</string>
-    <string name="cam_3d_strings_error_application_busy_txt">המתן כמה שנ\' להפ\' מצ\'התלת-מימד</string>
+    <string name="cam_3d_strings_error_application_busy_txt">"המתן כמה שנ' להפ' מצ'התלת-מימד"</string>
     <string name="cam_3d_strings_error_capturing_during_connecting_tv_title_txt">שגיאה</string>
     <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">נתק את הכבל. לא ניתן לצלם תמונה במצב זה כשכבל מחובר.</string>
     <string name="cam_3d_strings_error_direction_txt">לא ניתן לצלם תמונה. בצע תנועה פנורמית בכיוון הנכון.</string>
@@ -84,8 +90,8 @@
     <string name="cam_strings_accessibility_flash_torch_txt">פנס</string>
     <string name="cam_strings_accessibility_flash_txt">מבזק</string>
     <string name="cam_strings_accessibility_fusion_auto_txt">הקש פעמיים כדי לעבור למצלמה אוטומטית עם זוג עדשות</string>
-    <string name="cam_strings_accessibility_fusion_off_txt">הקש פעמיים כדי להפעיל את התכונה \'זוג מצלמות\'</string>
-    <string name="cam_strings_accessibility_fusion_on_txt">הקש פעמיים כדי לבטל את הפעלת התכונה \'זוג מצלמות\'</string>
+    <string name="cam_strings_accessibility_fusion_off_txt">"הקש פעמיים כדי להפעיל את התכונה 'זוג מצלמות'"</string>
+    <string name="cam_strings_accessibility_fusion_on_txt">"הקש פעמיים כדי לבטל את הפעלת התכונה 'זוג מצלמות'"</string>
     <string name="cam_strings_accessibility_image_quality_control_exposure_value_txt">ערך חשיפה</string>
     <string name="cam_strings_accessibility_image_quality_control_focus_auto_deselected_txt">הבחירה בוטלה באופן אוטומטי</string>
     <string name="cam_strings_accessibility_image_quality_control_focus_auto_selected_txt">נבחר באופן אוטומטי</string>
@@ -145,7 +151,7 @@
     <string name="cam_strings_art_filter_guesture_guide_general_txt">השתמש באצבע לעריכת התמונה המוצגת</string>
     <string name="cam_strings_art_filter_guesture_guide_tap_txt">הקש על החלק שברצונך לצבוע</string>
     <string name="cam_strings_aspect_ratio_txt">יחס גובה-רוחב</string>
-    <string name="cam_strings_auto_power_off_txt">היישום \'מצלמה\' ייסגר בקרוב עקב חוסר פעילות</string>
+    <string name="cam_strings_auto_power_off_txt">"היישום 'מצלמה' ייסגר בקרוב עקב חוסר פעילות"</string>
     <string name="cam_strings_auto_scene_recognition_txt">זיהוי זירת צילום אוטומטי</string>
     <string name="cam_strings_auto_upload_all_title_txt">העלה באופן אוטומטי</string>
     <string name="cam_strings_auto_upload_all_txt">העלה באופן אוטומטי</string>
@@ -158,7 +164,7 @@
     <string name="cam_strings_burst_change_camera_key_setting_txt">הפעל את ההגדרות של רצף מהיר עם מקש המצלמה כדי להפעיל רצף מהיר של תמונות</string>
     <string name="cam_strings_burst_in_dark_condition_txt">לא ניתן לצלם רצף מהיר של תמונות בתנאי תאורה חלשה</string>
     <string name="cam_strings_burst_not_supported_front_camera_txt">לא ניתן לצלם רצף מהיר של תמונות באמצעות המצלמה הקדמית</string>
-    <string name="cam_strings_burst_not_supported_fusion_on_txt">לא ניתן לצלם רצף תמונות כאשר התכונה \'זוג מצלמות\' פעילה</string>
+    <string name="cam_strings_burst_not_supported_fusion_on_txt">"לא ניתן לצלם רצף תמונות כאשר התכונה 'זוג מצלמות' פעילה"</string>
     <string name="cam_strings_burst_saved_internal_storage_txt">תמונות שצולמו ברצף מהיר נשמרות באחסון הפנימי</string>
     <string name="cam_strings_burst_shooting_txt">מהירות רצף מהיר</string>
     <string name="cam_strings_camera_apps_tab_txt">יישומי מצלמה</string>
@@ -219,7 +225,7 @@
     <string name="cam_strings_description_google_lens_txt">תוכל לקבל פרטים נוספים או לנקוט פעולה עבור מה שמוצג בתצלום באמצעות %1$s</string>
     <string name="cam_strings_description_high_frame_rate_txt">הקלט וידיאו בקצב מסגרות גבוה והחל אפקטים של הילוך איטי</string>
     <string name="cam_strings_description_multicam_txt">הקלט את אותה זירת צילום מזוויות מרובות על מסך יחיד</string>
-    <string name="cam_strings_description_shoundphoto_txt">צלם תצלומים עם צליל רקע (ציוץ ציפורים וכו\')</string>
+    <string name="cam_strings_description_shoundphoto_txt">"צלם תצלומים עם צליל רקע (ציוץ ציפורים וכו')"</string>
     <string name="cam_strings_description_timeshift_short_txt">אתר את התמונה הטובה ביותר מתוך רצף תמונות מלפני ואחרי הצילום שלך</string>
     <string name="cam_strings_dialog_battery_level_low_info_txt">אין מספיק סוללה בטלפון. כאשר הסוללה חלשה, המצלמה תיסגר באופן אוטומטי.</string>
     <string name="cam_strings_dialog_battery_level_low_recording_txt">ההקלטה הופסקה עקב סוללה חלשה. טען את ההתקן ונסה שוב.</string>
@@ -234,7 +240,7 @@
     <string name="cam_strings_dialog_cta_location_info_txt">אחזר פרטי מיקום</string>
     <string name="cam_strings_dialog_cta_turn_on_nfc_txt">הפעל את NFC</string>
     <string name="cam_strings_dialog_cta_turn_on_wifi_txt">הפעל Wi-Fi</string>
-    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">השת\' ב-Wi-Fi ובנתונ\' סלולר\'</string>
+    <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">"השת' ב-Wi-Fi ובנתונ' סלולר'"</string>
     <string name="cam_strings_dialog_high_temp_title_txt">הערה</string>
     <string name="cam_strings_dialog_high_temp_txt">אם טמפרטורת ההתקן עולה, ייתכן שהיישום ייסגר במהלך השימוש. ההקלטה תישמר באופן אוטומטי.</string>
     <string name="cam_strings_dialog_high_temp_vzw_txt">מצב מצלמה זה משתמש ברבים ממשאבי הטלפון, ועלול לגרום לעליית טמפרטורה של המשיר. כדי למנוע התחממות יתר, ניתן להפסיק הקלטת וידיאו ויישום המצלמה עשוי להיסגר. ההקלטה תישמר באופן אוטומטי.</string>
@@ -326,7 +332,7 @@
     <string name="cam_strings_fast_capturing_title_txt">הפעלה מהירה</string>
     <string name="cam_strings_fast_capturing_txt">הפעלה מהירה</string>
     <string name="cam_strings_fast_switch_mode_camera_wizard_title_txt">מעבר בין מצב צילום למצלמה</string>
-    <string name="cam_strings_fast_switch_mode_camera_wizard_txt">החלק את המסך כדי לעבור למצב צילום אחר כגון \'וידיאו\' או \'ידני\', וכדי לעבור בין המצלמה הראשית למצלמה האחורית.</string>
+    <string name="cam_strings_fast_switch_mode_camera_wizard_txt">"החלק את המסך כדי לעבור למצב צילום אחר כגון 'וידיאו' או 'ידני', וכדי לעבור בין המצלמה הראשית למצלמה האחורית."</string>
     <string name="cam_strings_fast_switch_tutorial_title_txt">החלף מצלמה</string>
     <string name="cam_strings_fast_switch_tutorial_txt">תוכל להחליף בין המצלמה הראשית למצלמה הקדמית על-ידי החלקה על המסך</string>
     <string name="cam_strings_file_delete_confirm_title_txt">מחק</string>
@@ -351,7 +357,7 @@
     <string name="cam_strings_front_cam_location_guide_txt">עדשת המצלמה ממוקמת כפי שמוצג באיור</string>
     <string name="cam_strings_fusion_error_too_close_txt">התרחק מעט מהאובייקט</string>
     <string name="cam_strings_fusion_on_txt">רגישות גבוהה במיוחד</string>
-    <string name="cam_strings_fusion_setting_txt">מתג של \'זוג מצלמות\'</string>
+    <string name="cam_strings_fusion_setting_txt">"מתג של 'זוג מצלמות'"</string>
     <string name="cam_strings_geotagging_title_txt">שמור מיקום</string>
     <string name="cam_strings_geotagging_txt">שמור מיקום</string>
     <string name="cam_strings_get_more_modes_txt">יישומים</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">הענק לעור שלך מראה בוהק וחלק. אפקט זה פועל ביישומים המשתמשים במצלמה הקדמית. ניתן להחיל אותו על תצלומים ועל סרטונים. תוכל גם לכוונן את הרמה.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">כוונון הרמה</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">עור חלק</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">אין אפשרות להפעיל את היישום.\nודא שהגרסה העדכנית ביותר של %1$s מותקנת ומופעלת בהתקן שלך.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"אין אפשרות להפעיל את היישום.
+ודא שהגרסה העדכנית ביותר של %1$s מותקנת ומופעלת בהתקן שלך."</string>
     <string name="cam_strings_gridline_txt">קווי רשת</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">סובב את כף היד שלך לכיוון המצלמה. כאשר כף היד שלך תזוהה, יופעל צילום עצמי. כדי להקל על הזיהוי, הרם את אצבעותיך כלפי מעלה.</string>
     <string name="cam_strings_hand_shutter_hint_txt">סובב את כף היד שלך לכיוון המצלמה</string>
@@ -388,7 +395,7 @@
     <string name="cam_strings_long_press_burst_high_txt">מהירות גבוהה</string>
     <string name="cam_strings_long_press_burst_txt">רצף מהיר בעת לחיצה ארוכה</string>
     <string name="cam_strings_manual_fusion_tutorial_2_title_txt">צילום תמונות באמצעות מצלמה עם זוג עדשות</string>
-    <string name="cam_strings_manual_fusion_tutorial_2_txt">שמור על מרחק של מ\' אחד לפחות מהאובייקט בעת צילום תמונות באמצעות מצלמה עם זוג עדשות. התקרבות לאובייקט עשויה לגרום לשינוי של נקודת המבט או הצבע.</string>
+    <string name="cam_strings_manual_fusion_tutorial_2_txt">"שמור על מרחק של מ' אחד לפחות מהאובייקט בעת צילום תמונות באמצעות מצלמה עם זוג עדשות. התקרבות לאובייקט עשויה לגרום לשינוי של נקודת המבט או הצבע."</string>
     <string name="cam_strings_manual_fusion_tutorial_title_txt">מעבר למצלמה עם זוג עדשות</string>
     <string name="cam_strings_manual_fusion_tutorial_txt">תוכל להפעיל או להשבית את המצלמה עם זוג עדשות במצב ידני. הפעל אותה לצילום תמונות ברורות ועם רמת עיוות נמוכה בתנאי אור חלש. השבת אותה כדי לצלם תמונות תקריב.</string>
     <string name="cam_strings_max_file_size_save_failed_txt">ההקלטה הופסקה עקב מגבלת גודל קובץ מקסימלי</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">הגדרות משותפות</string>
     <string name="cam_strings_more_txt">עוד</string>
     <string name="cam_strings_multi_window_txt">גרור את מרכז פס הפיצול כדי לעבור למסך מלא של %1$s כדי להשתמש</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">התקן אחר מחובר כעת.\nהאם ברצונך לשתף את התמונה באמצעות מסך התצוגה המקדימה?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"התקן אחר מחובר כעת.
+האם ברצונך לשתף את התמונה באמצעות מסך התצוגה המקדימה?"</string>
     <string name="cam_strings_multicam_add_device_txt">הוסף התקן</string>
     <string name="cam_strings_multicam_add_more_txt">הוסף עוד</string>
     <string name="cam_strings_multicam_apply_txt">בוצע</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">מדידה</string>
     <string name="cam_strings_predictive_capture_feedback_txt">חזוי</string>
     <string name="cam_strings_predictive_capture_txt">חיזוי צילום</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">המצלמה הופעלה באופן אוטומטי על-ידי זיהוי התנועה של הרמת הטלפון במסך תצוגה לרוחב והפנייתו לאובייקט.\nבאפשרותך לבחור את הדרך המועדפת עליך לשימוש בתכונה זו מתוך התפריט \'הפעלה חכמה\' בהגדרות המצלמה.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"המצלמה הופעלה באופן אוטומטי על-ידי זיהוי התנועה של הרמת הטלפון במסך תצוגה לרוחב והפנייתו לאובייקט.
+באפשרותך לבחור את הדרך המועדפת עליך לשימוש בתכונה זו מתוך התפריט 'הפעלה חכמה' בהגדרות המצלמה."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">גע בתוך העיגול כדי ללכוד</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">גע במסך כדי ללכוד</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">הקש בתוך העיגול כדי להציג מסך מלא</string>
     <string name="cam_strings_predictive_launch_guide_txt">הקש בתוך העיגול כדי להפעיל את המצלמה</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">גע כדי להפעיל וללכוד</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">גע כדי להפעיל</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">תוכל להפעיל את המצלמה במהירות. הרם קלות את המכשיר במצב תצוגה לרוחב והפנה את המצלמה לכיוון אובייקט. המצלמה תופעל באופן אוטומטי.\nניתן להשתמש בדרך המועדפת לשימוש בתכונה זו מתוך התכונה \'הפעלה חכמה\' בהגדרות המצלמה.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"תוכל להפעיל את המצלמה במהירות. הרם קלות את המכשיר במצב תצוגה לרוחב והפנה את המצלמה לכיוון אובייקט. המצלמה תופעל באופן אוטומטי.
+ניתן להשתמש בדרך המועדפת לשימוש בתכונה זו מתוך התכונה 'הפעלה חכמה' בהגדרות המצלמה."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">הפעלה חכמה</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">תוכל להפעיל את המצלמה במהירות. הנף את המכשיר במצב תצוגה לרוחב והפנה את המצלמה לכיוון אובייקט. המצלמה תופעל באופן אוטומטי.\nניתן להשבית תכונה זו מתוך התכונה \'הפעלה חכמה\' בהגדרות המצלמה.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"תוכל להפעיל את המצלמה במהירות. הנף את המכשיר במצב תצוגה לרוחב והפנה את המצלמה לכיוון אובייקט. המצלמה תופעל באופן אוטומטי.
+ניתן להשבית תכונה זו מתוך התכונה 'הפעלה חכמה' בהגדרות המצלמה."</string>
     <string name="cam_strings_predictive_launch_txt">הפעלה חכמה</string>
     <string name="cam_strings_preview_always_txt">מופעל</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 שניות</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s מחייב את ההרשאות הבאות</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">הרשאה ל%1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">לביצוע הפעולה, היישום מחייב את ההרשאות הבאות.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">כדי להעניק הרשאות, עבור אל \'פרטי יישום\' &gt; \'הרשאות\'.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">"כדי להעניק הרשאות, עבור אל 'פרטי יישום' > 'הרשאות'."</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">לא ניתן להמשיך</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">כדי לצלם תמונות וסרטונים</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">כדי לאחזר מיקום</string>
@@ -525,19 +536,27 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">נשמר באחסון הפנימי</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">עבור</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">לביצוע הפעולה, היישום מחייב את ההרשאות הבאות.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">כדי להשתמש בכרטיס SD, המצלמה זקוקה להרשאות גישה לכרטיס ה-SD. \nשנה שוב את אחסון הנתונים לכרטיס SD, או אפשר למצלמה לגשת לכרטיס ה-SD במסך הבא.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"כדי להשתמש בכרטיס SD, המצלמה זקוקה להרשאות גישה לכרטיס ה-SD. 
+שנה שוב את אחסון הנתונים לכרטיס SD, או אפשר למצלמה לגשת לכרטיס ה-SD במסך הבא."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">כרטיס SD אינו זמין</string>
-    <string name="cam_strings_sd_permission_info_2_txt">זוהה כרטיס SD חדש שדורש הרשאות.\n\nכדי להשתמש בכרטיס SD זה כאחסון נתונים, בחר בספרייה כרטיס SD או DCIM במסך הבא.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">לא זוהתה ספריית כרטיס SD או DCIM. לא ניתן להשתמש בכרטיס ה-SD.\n\nכדי לקבל הרשאות, שנה את המיקום לשמירה לכרטיס SD או בחר בספרייה המתאימה במסך הבא.</string>
-    <string name="cam_strings_sd_permission_info_txt">אותר כרטיס SD חדש שדורש הרשאות.\nהזיכרון הפנימי ישמש לפיכך כברירת המחדל לאחסון נתונים.\n\nכדי להשתמש בכרטיס ה-SD לאחסון נתונים, עבור להגדרות המצלמה ושנה את אפשרות אחסון הנתונים לכרטיס SD.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"זוהה כרטיס SD חדש שדורש הרשאות.
+
+כדי להשתמש בכרטיס SD זה כאחסון נתונים, בחר בספרייה כרטיס SD או DCIM במסך הבא."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"לא זוהתה ספריית כרטיס SD או DCIM. לא ניתן להשתמש בכרטיס ה-SD.
+
+כדי לקבל הרשאות, שנה את המיקום לשמירה לכרטיס SD או בחר בספרייה המתאימה במסך הבא."</string>
+    <string name="cam_strings_sd_permission_info_txt">"אותר כרטיס SD חדש שדורש הרשאות.
+הזיכרון הפנימי ישמש לפיכך כברירת המחדל לאחסון נתונים.
+
+כדי להשתמש בכרטיס ה-SD לאחסון נתונים, עבור להגדרות המצלמה ושנה את אפשרות אחסון הנתונים לכרטיס SD."</string>
     <string name="cam_strings_sd_permission_rationale_txt">כדי לשמור תצלומים וסרטונים בכרטיס SD</string>
     <string name="cam_strings_select_picture_txt">בחירת תצלום</string>
     <string name="cam_strings_self_timer_05_txt">0.5 שניות</string>
     <string name="cam_strings_self_timer_10_txt">10 שניות</string>
     <string name="cam_strings_self_timer_2_txt">2 שניות</string>
     <string name="cam_strings_self_timer_3_txt">3 שניות</string>
-    <string name="cam_strings_self_timer_front_hint_10_txt">צילום עצמי: 10 שנ\'</string>
-    <string name="cam_strings_self_timer_front_hint_3_txt">צילום עצמי: 3 שנ\'</string>
+    <string name="cam_strings_self_timer_front_hint_10_txt">"צילום עצמי: 10 שנ'"</string>
+    <string name="cam_strings_self_timer_front_hint_3_txt">"צילום עצמי: 3 שנ'"</string>
     <string name="cam_strings_self_timer_front_hint_off_txt">צילום עצמי: כבוי</string>
     <string name="cam_strings_self_timer_hint_countdown_txt">השאר את עיניך במצלמה</string>
     <string name="cam_strings_self_timer_photo_txt">צילום עצמי (תמונות סטילס)</string>
@@ -550,22 +569,27 @@
     <string name="cam_strings_settings_save_photos_txt">שמור</string>
     <string name="cam_strings_shortcut_video_camera_txt">מצלמת וידיאו</string>
     <string name="cam_strings_shutter_trigger_txt">צילום אוטומטי</string>
-    <string name="cam_strings_side_touch_not_supported_txt">התכונה \'חיישן צדדי\' אינה נתמכת במסך זה</string>
+    <string name="cam_strings_side_touch_not_supported_txt">"התכונה 'חיישן צדדי' אינה נתמכת במסך זה"</string>
     <string name="cam_strings_side_touch_on_title_txt">חיישן צדדי</string>
-    <string name="cam_strings_side_touch_on_txt">כדי להשתמש בפונקציה זו, עבור אל \'הגדרות\' &gt; \'תצוגה\' והפעל את \'חיישן צדדי\'. לאפשר כעת?</string>
-    <string name="cam_strings_side_touch_tutorial_title_txt">\'חיישן צדדי\'</string>
-    <string name="cam_strings_side_touch_tutorial_txt">אתה יכול לצלם תמונה או סרטון וידיאו פשוט על-ידי הקשה כפולה על החיישן שבדופן המסך במקום ללחוץ על לחצן הצילום. תוכל גם להגדיל את התצוגה או להקטין אותה על-ידי החלקת האצבע לאורך חיישן צדדי זה. \nהן מצב \'תמונה\' והן מצב \'סרטון וידיאו\' תומכים בפונקציה זו. תוכל להפסיק אותה מתוך האפשרות \'חיישן צדדי\' בהגדרות המצלמה.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">אתה יכול לצלם תמונה או סרטון וידיאו פשוט על-ידי הקשה כפולה על החיישן שבדופן המסך בתצוגה לאורך במקום ללחוץ על לחצן הצילום. תוכל גם להגדיל את התצוגה או להקטין אותה על-ידי החלקת האצבע לאורך חיישן צדדי זה.\nהן מצב \'תמונה\' והן מצב \'סרטון וידיאו\' תומכים בפונקציה זו. תוכל להפסיק אותה מתוך האפשרות \'חיישן צדדי\' בהגדרות המצלמה.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">אתה יכול לצלם תמונה או סרטון וידיאו פשוט על-ידי הקשה כפולה על החיישן שבדופן המסך בתצוגה לאורך במקום ללחוץ על לחצן הצילום.\nהן מצב \'תמונה\' והן מצב \'סרטון וידיאו\' תומכים בפונקציה זו. תוכל להפסיק אותה מתוך האפשרות \'חיישן צדדי\' בהגדרות המצלמה.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">אתה יכול לצלם תמונה או סרטון וידיאו פשוט על-ידי הקשה כפולה על החיישן שבדופן המסך במקום ללחוץ על לחצן הצילום.\nהן מצב \'תמונה\' והן מצב \'סרטון וידיאו\' תומכים בפונקציה זו. תוכל להפסיק אותה מתוך האפשרות \'חיישן צדדי\' בהגדרות המצלמה.</string>
+    <string name="cam_strings_side_touch_on_txt">"כדי להשתמש בפונקציה זו, עבור אל 'הגדרות' > 'תצוגה' והפעל את 'חיישן צדדי'. לאפשר כעת?"</string>
+    <string name="cam_strings_side_touch_tutorial_title_txt">"'חיישן צדדי'"</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"אתה יכול לצלם תמונה או סרטון וידיאו פשוט על-ידי הקשה כפולה על החיישן שבדופן המסך במקום ללחוץ על לחצן הצילום. תוכל גם להגדיל את התצוגה או להקטין אותה על-ידי החלקת האצבע לאורך חיישן צדדי זה. 
+הן מצב 'תמונה' והן מצב 'סרטון וידיאו' תומכים בפונקציה זו. תוכל להפסיק אותה מתוך האפשרות 'חיישן צדדי' בהגדרות המצלמה."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"אתה יכול לצלם תמונה או סרטון וידיאו פשוט על-ידי הקשה כפולה על החיישן שבדופן המסך בתצוגה לאורך במקום ללחוץ על לחצן הצילום. תוכל גם להגדיל את התצוגה או להקטין אותה על-ידי החלקת האצבע לאורך חיישן צדדי זה.
+הן מצב 'תמונה' והן מצב 'סרטון וידיאו' תומכים בפונקציה זו. תוכל להפסיק אותה מתוך האפשרות 'חיישן צדדי' בהגדרות המצלמה."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"אתה יכול לצלם תמונה או סרטון וידיאו פשוט על-ידי הקשה כפולה על החיישן שבדופן המסך בתצוגה לאורך במקום ללחוץ על לחצן הצילום.
+הן מצב 'תמונה' והן מצב 'סרטון וידיאו' תומכים בפונקציה זו. תוכל להפסיק אותה מתוך האפשרות 'חיישן צדדי' בהגדרות המצלמה."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"אתה יכול לצלם תמונה או סרטון וידיאו פשוט על-ידי הקשה כפולה על החיישן שבדופן המסך במקום ללחוץ על לחצן הצילום.
+הן מצב 'תמונה' והן מצב 'סרטון וידיאו' תומכים בפונקציה זו. תוכל להפסיק אותה מתוך האפשרות 'חיישן צדדי' בהגדרות המצלמה."</string>
     <string name="cam_strings_side_touch_txt">חיישן צדדי</string>
-    <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">ניתן לשנות את סגנון ההקלטה ורזולוציית המסך בהגדרות היישום \'מצלמה\'</string>
+    <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">"ניתן לשנות את סגנון ההקלטה ורזולוציית המסך בהגדרות היישום 'מצלמה'"</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">מאוד איטי (צילום אחד)</string>
     <string name="cam_strings_slow_motion_settings_standard_txt">הילוך איטי</string>
     <string name="cam_strings_slow_motion_settings_super_txt">הילוך איטי במיוחד</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">באפשרותך לשנות את קצב הפריימים (fps) וסגנון ההקלטה עבור הילוך איטי</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">אפשרויות נוספות</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">הקלט מיד רגע יקר בהילוך איטי של %1$s fps על-ידי הקשה על הלחצן במרכז המסך.\nהקלטה בתנאי תאורה בהירה תסייע לך ביצירת סרטון וידיאו טוב יותר.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"הקלט מיד רגע יקר בהילוך איטי של %1$s fps על-ידי הקשה על הלחצן במרכז המסך.
+הקלטה בתנאי תאורה בהירה תסייע לך ביצירת סרטון וידיאו טוב יותר."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">באפשרותך להקליט את הרגע המתאים ב-‎%1$s fps על-ידי הקשה על הלחצן שבמרכז</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">הקלט מיד רגע יקר בהילוך איטי של ‎%1$s fps על-ידי הקשה על הלחצן במרכז המסך</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">הילוך איטי במיוחד (ניסיון בודד)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">הילוך איטי</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">כיצד להקליט</string>
     <string name="cam_strings_slow_motion_standard_txt">הילוך איטי</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">צור וידיאו מרשים על-ידי הצגת רגע יקר בהילוך איטי.\nהקלטה בתנאי תאורה טובים תסייע לך ביצירת סרטון וידיאו טוב יותר.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"צור וידיאו מרשים על-ידי הצגת רגע יקר בהילוך איטי.
+הקלטה בתנאי תאורה טובים תסייע לך ביצירת סרטון וידיאו טוב יותר."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">באפשרותך להקליט וידיאו במהירויות שונות על-ידי מעבר ל-‎%1$s fps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">הקש על הלחצן במרכז ברגע המתאים</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">הילוך איטי הוקלט</string>
@@ -585,7 +610,7 @@
     <string name="cam_strings_slow_motion_super_tutorial_3_txt">הקש על הלחצן במרכז המסך כדי להקליט בהילוך איטי. הקש על לחצן עצור כדי לעצור את ההקלטה.</string>
     <string name="cam_strings_slow_motion_super_tutorial_title_1_txt">הילוך איטי במיוחד</string>
     <string name="cam_strings_slow_motion_super_txt">הילוך איטי במיוחד</string>
-    <string name="cam_strings_slow_motion_txt">מצב \'הילוך איטי\'</string>
+    <string name="cam_strings_slow_motion_txt">"מצב 'הילוך איטי'"</string>
     <string name="cam_strings_smile_capture_big_txt">חיוך גדול</string>
     <string name="cam_strings_smile_capture_faint_txt">חיוך קטן</string>
     <string name="cam_strings_smile_capture_normal_txt">חיוך ממוצע</string>
@@ -603,16 +628,16 @@
     <string name="cam_strings_superior_auto_brightness_txt">בהירות</string>
     <string name="cam_strings_superior_auto_color_txt">צבע</string>
     <string name="cam_strings_superior_auto_fusion_tutorial_title_txt">מצלמה עם זוג עדשות</string>
-    <string name="cam_strings_superior_auto_fusion_tutorial_txt">תוכל לצלם תמונות יפהפיות וברורות עם רמת עיוות נמוכה באמצעות מצלמה עם זוג עדשות, אפילו בלילה או בחדר עם אור חלש. היישום \'מצלמה\' יעבור באופן אוטומטי בין מצלמה עם עדשה יחידה לבין מצלמה עם זוג עדשות בהתבסס על הסצינות לצילום באמצעות מצב \'רגישות גבוהה במיוחד\'.</string>
+    <string name="cam_strings_superior_auto_fusion_tutorial_txt">"תוכל לצלם תמונות יפהפיות וברורות עם רמת עיוות נמוכה באמצעות מצלמה עם זוג עדשות, אפילו בלילה או בחדר עם אור חלש. היישום 'מצלמה' יעבור באופן אוטומטי בין מצלמה עם עדשה יחידה לבין מצלמה עם זוג עדשות בהתבסס על הסצינות לצילום באמצעות מצב 'רגישות גבוהה במיוחד'."</string>
     <string name="cam_strings_sw_licence_title_txt">רישיונות תוכנה</string>
     <string name="cam_strings_take_photo_txt">צלם תמונה</string>
     <string name="cam_strings_term_of_use_accept_txt">קבל</string>
-    <string name="cam_strings_term_of_use_consent_txt">אני מסכים ל&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;תנאי השימוש&lt;/a&gt; של Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">אני מסכים ל&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">תנאי השימוש&lt;/a> של Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">שימושך בשירות זה עשוי להיות כפוף לתשלום בגין נתונים סלולריים, בהתאם לתוכנית הנתונים שלך.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">‏Sony Mobile תאסוף את המזהה הייחודי של המכשיר - מזהה Android‎ המקוצץ, נתונים מבוססי מיקום וחותמת זמן כדי לספק לך תוצאות הולמות במסגרת השירות וכדי לסייע בשיפור השירות.</string>
     <string name="cam_strings_term_of_use_decline_txt">דחה</string>
     <string name="cam_strings_term_of_use_title_txt">תנאים והתניות</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;תנאי שימוש&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">תנאי שימוש&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">בטל בחירה של תצלומים</string>
     <string name="cam_strings_timeshift_operation_failed_txt">לא ניתן לשמור</string>
     <string name="cam_strings_timeshift_save_complete_txt">נשמר</string>
@@ -622,7 +647,7 @@
     <string name="cam_strings_touch_capturing_always_txt">מופעל</string>
     <string name="cam_strings_touch_capturing_only_front_txt">מצלמה קדמית בלבד</string>
     <string name="cam_strings_touch_capturing_title_txt">צילום בנגיעה</string>
-    <string name="cam_strings_touch_focus_in_manual_focus_txt">כדי להשתמש בתכונת \'מיקוד בנגיעה\', שנה את הגדרת המיקוד ל-AF (מיקוד אוטומטי).</string>
+    <string name="cam_strings_touch_focus_in_manual_focus_txt">"כדי להשתמש בתכונת 'מיקוד בנגיעה', שנה את הגדרת המיקוד ל-AF (מיקוד אוטומטי)."</string>
     <string name="cam_strings_touch_to_focus_adjust_exposure_focus_and_exposure_txt">מיקוד ובהירות</string>
     <string name="cam_strings_touch_to_focus_adjust_exposure_only_focus_txt">מיקוד בלבד</string>
     <string name="cam_strings_touch_to_focus_adjust_exposure_txt">גע כדי לכוונן</string>
@@ -631,21 +656,23 @@
     <string name="cam_strings_tutorial_button_skip_txt">דלג</string>
     <string name="cam_strings_tutorial_button_txt">הבנתי</string>
     <string name="cam_strings_tutorial_title_txt">החלפת מצב</string>
-    <string name="cam_strings_tutorial_txt">החלק כדי לעבור למצב צילום אחר כמו \'וידיאו\' או \'ידני\'</string>
+    <string name="cam_strings_tutorial_txt">"החלק כדי לעבור למצב צילום אחר כמו 'וידיאו' או 'ידני'"</string>
     <string name="cam_strings_unable_to_operate_txt">אין אפשרות להפעיל במהלך שמירת תצלומים</string>
     <string name="cam_strings_unlock_button_txt">בטל נעילה</string>
     <string name="cam_strings_use_of_camera_not_authorized_txt">השימוש במצלמה מוגבל משיקולי אבטחה</string>
     <string name="cam_strings_video_codec_for_4k_txt">סוג קובץ הקלטה</string>
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">לצורך הקלטה יציבה של וידיאו ‎4K, אל תשנה הגדרה זו אלא אם אתה משתמש בכרטיס SD במהירות גבוהה (מסוג UHS Speed Class 1 ואילך. מומלץ להשתמש בכרטיס מסוג Speed Class 10).</string>
-    <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">לצורך הקלטה יציבה של וידיאו בשיטת \'הסטת זמן\', אל תשנה הגדרה זו אלא אם אתה משתמש בכרטיס SD במהירות גבוהה (מסוג UHS Speed Class 1 ואילך. מומלץ להשתמש בכרטיס מסוג Speed Class 10). האם לשנות אותה בכל זאת?</string>
+    <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">"לצורך הקלטה יציבה של וידיאו בשיטת 'הסטת זמן', אל תשנה הגדרה זו אלא אם אתה משתמש בכרטיס SD במהירות גבוהה (מסוג UHS Speed Class 1 ואילך. מומלץ להשתמש בכרטיס מסוג Speed Class 10). האם לשנות אותה בכל זאת?"</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">לצורך הקלטה יציבה של וידיאו בהילוך איטי, אל תשנה הגדרה זו אלא אם אתה משתמש בכרטיס SD במהירות גבוהה (מסוג UHS Speed Class 1 ואילך. מומלץ להשתמש בכרטיס מסוג Speed Class 10).</string>
-    <string name="cam_strings_video_explanatory_txt">לצורך הקלטה יציבה של וידיאו, מומלץ לשנות את אחסון הנתונים לאחסון פנימי. האם ברצונך לשנות אותו כעת?\n\nאם תמשיך להשתמש בכרטיס SD לאחסון נתונים, הקפד להשתמש בכרטיס SD במהירות גבוהה (מסוג UHS Speed Class 1 ואילך. מומלץ להשתמש בכרטיס מסוג Speed Class 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"לצורך הקלטה יציבה של וידיאו, מומלץ לשנות את אחסון הנתונים לאחסון פנימי. האם ברצונך לשנות אותו כעת?
+
+אם תמשיך להשתמש בכרטיס SD לאחסון נתונים, הקפד להשתמש בכרטיס SD במהירות גבוהה (מסוג UHS Speed Class 1 ואילך. מומלץ להשתמש בכרטיס מסוג Speed Class 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">מצלמה עם זוג עדשות</string>
-    <string name="cam_strings_video_fusion_tutorial_0_txt">תוכל להקליט סרטוני וידיאו יפהפיים וברורים עם רמת עיוות נמוכה באמצעות מצלמה עם זוג עדשות, אפילו בלילה או בחדר עם אור חלש. היישום \'מצלמה\' יעבור באופן אוטומטי בין מצלמה עם עדשה יחידה לבין מצלמה עם זוג עדשות בהתבסס על הסצינות להקלטה באמצעות מצב \'רגישות גבוהה במיוחד\'.</string>
+    <string name="cam_strings_video_fusion_tutorial_0_txt">"תוכל להקליט סרטוני וידיאו יפהפיים וברורים עם רמת עיוות נמוכה באמצעות מצלמה עם זוג עדשות, אפילו בלילה או בחדר עם אור חלש. היישום 'מצלמה' יעבור באופן אוטומטי בין מצלמה עם עדשה יחידה לבין מצלמה עם זוג עדשות בהתבסס על הסצינות להקלטה באמצעות מצב 'רגישות גבוהה במיוחד'."</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">הקלטת וידיאו באמצעות מצלמה עם זוג עדשות</string>
-    <string name="cam_strings_video_fusion_tutorial_1_txt">שמור על מרחק של מטר אחד לפחות מהאובייקט בעת הקלטה באמצעות מצלמה עם זוג עדשות. התקרבות לאובייקט עשויה לגרום לתזוזה של נקודת המבט או הצבע בעת הקלטה במצב \'רגישות גבוהה במיוחד\'.</string>
+    <string name="cam_strings_video_fusion_tutorial_1_txt">"שמור על מרחק של מטר אחד לפחות מהאובייקט בעת הקלטה באמצעות מצלמה עם זוג עדשות. התקרבות לאובייקט עשויה לגרום לתזוזה של נקודת המבט או הצבע בעת הקלטה במצב 'רגישות גבוהה במיוחד'."</string>
     <string name="cam_strings_video_fusion_tutorial_2_title_txt">האם להשתמש במצלמה עם זוג עדשות להקלטת וידיאו?</string>
-    <string name="cam_strings_video_fusion_tutorial_2_txt">כדי לצלם תמונות תקריב נהדרות, הקש על \'לא\' ועבור למצלמה עם עדשה יחידה. תוכל לחזור בכל עת למצלמה עם זוג עדשות על-ידי הקשה על הלחצן במסך התצוגה המקדימה.</string>
+    <string name="cam_strings_video_fusion_tutorial_2_txt">"כדי לצלם תמונות תקריב נהדרות, הקש על 'לא' ועבור למצלמה עם עדשה יחידה. תוכל לחזור בכל עת למצלמה עם זוג עדשות על-ידי הקשה על הלחצן במסך התצוגה המקדימה."</string>
     <string name="cam_strings_video_hdr_hlg_txt">מצב HDR פעיל</string>
     <string name="cam_strings_video_hdr_setting_hlg_txt">HDR</string>
     <string name="cam_strings_video_hdr_title_txt">‏HDR של וידיאו</string>

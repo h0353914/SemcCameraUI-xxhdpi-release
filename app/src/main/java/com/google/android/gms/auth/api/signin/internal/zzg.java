@@ -2,28 +2,26 @@ package com.google.android.gms.auth.api.signin.internal;
 
 import android.content.Context;
 import android.os.IBinder;
-import android.os.IInterface;
 import android.os.Looper;
-import com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener;
+import com.google.android.gms.auth.api.signin.internal.zze;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.internal.zzj;
 import com.google.android.gms.common.internal.zzx;
 
-public class zzg extends zzj<zze> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzg extends zzj<com.google.android.gms.auth.api.signin.internal.zze> {
     private final com.google.android.gms.auth.api.signin.zzg zzTq;
 
-    public zzg(Context context, Looper looper, com.google.android.gms.common.internal.zzf zzfVar, com.google.android.gms.auth.api.signin.zzg zzgVar, GoogleApiClient$ConnectionCallbacks googleApiClient$ConnectionCallbacks, GoogleApiClient$OnConnectionFailedListener googleApiClient$OnConnectionFailedListener) {
-        super(context, looper, 87, zzfVar, googleApiClient$ConnectionCallbacks, googleApiClient$OnConnectionFailedListener);
+    public zzg(Context context, Looper looper, com.google.android.gms.common.internal.zzf zzfVar, com.google.android.gms.auth.api.signin.zzg zzgVar, GoogleApiClient.ConnectionCallbacks connectionCallbacks, GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener) {
+        super(context, looper, 87, zzfVar, connectionCallbacks, onConnectionFailedListener);
         this.zzTq = (com.google.android.gms.auth.api.signin.zzg) zzx.zzw(zzgVar);
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     @Override // com.google.android.gms.common.internal.zzj
-    protected /* synthetic */ IInterface zzW(IBinder iBinder) {
-        return zzax(iBinder);
-    }
-
-    protected zze zzax(IBinder iBinder) {
-        return zze$zza.zzaz(iBinder);
+    /* renamed from: zzax, reason: merged with bridge method [inline-methods] */
+    public com.google.android.gms.auth.api.signin.internal.zze zzW(IBinder iBinder) {
+        return com.google.android.gms.auth.api.signin.internal.zze.zza.zzaz(iBinder);
     }
 
     @Override // com.google.android.gms.common.internal.zzj

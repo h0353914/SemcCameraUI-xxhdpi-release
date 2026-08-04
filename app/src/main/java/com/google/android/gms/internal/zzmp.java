@@ -2,6 +2,7 @@ package com.google.android.gms.internal;
 
 import android.os.SystemClock;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzmp implements zzmn {
     private static zzmp zzaik;
 

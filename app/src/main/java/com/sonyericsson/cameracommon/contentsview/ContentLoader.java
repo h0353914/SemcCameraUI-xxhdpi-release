@@ -2,16 +2,17 @@ package com.sonyericsson.cameracommon.contentsview;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
-import android.provider.MediaStore$Images$Media;
-import android.provider.MediaStore$Video$Media;
+import android.os.Handler;
+import android.os.Message;
+import android.provider.MediaStore;
 import com.sonyericsson.android.camera.util.CamLog;
-import com.sonyericsson.cameracommon.contentsview.contents.Content$ContentInfo;
-import com.sonyericsson.cameracommon.contentsview.contents.Content$ContentsType;
+import com.sonyericsson.cameracommon.contentsview.contents.Content;
+import com.sonyericsson.cameracommon.contentsview.contents.ContentFactory;
 import com.sonyericsson.cameracommon.mediasaving.updator.CrQueryParameter;
-import com.sonyericsson.cameracommon.storage.DataLoader$DataLoadCallback;
+import com.sonyericsson.cameracommon.storage.DataLoader;
 import com.sonyericsson.cameracommon.storage.Storage;
-import com.sonyericsson.cameracommon.storage.Storage$OnLoadCompletedListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,40 +23,51 @@ public class ContentLoader {
     private static final int MAX_LOCAL_CACHE_NUM = 400;
     public static final float PANORAMA_ASPECT_THRESHOLD = 1.8777778f;
     public static final String TAG = "ContentLoader";
-    private final ContentLoader$ContentCreationCallback mContentCallback;
-    private LinkedList<Content$ContentInfo> mLocalCacheBackup;
-    private ContentLoader$SecurityLevel mSecurityLevel;
+    private final ContentCreationCallback mContentCallback;
+    private DataLoader.DataLoadCallback mDataCallback;
+    private DataLoaderHander mHandler;
+    private LinkedList<Content.ContentInfo> mLocalCacheBackup;
+    private SecurityLevel mSecurityLevel;
     private Storage mStorage;
-    private DataLoader$DataLoadCallback mDataCallback = new ContentLoader$DataCallback(this, null);
     private final int MEDIA_ID_COUNT_MAX = 400;
-    private LinkedList<Content$ContentInfo> mLocalCache = new LinkedList<>();
-    private Storage$OnLoadCompletedListener mOnLoadCompleteListener = new ContentLoader$1(this);
-    private ContentLoader$DataLoaderHander mHandler = new ContentLoader$DataLoaderHander(this, null);
+    private LinkedList<Content.ContentInfo> mLocalCache = new LinkedList<>();
+    private Storage.OnLoadCompletedListener mOnLoadCompleteListener = new Storage.OnLoadCompletedListener() { // from class: com.sonyericsson.cameracommon.contentsview.ContentLoader.1
+        @Override // com.sonyericsson.cameracommon.storage.Storage.OnLoadCompletedListener
+        public void onLoadCompleted(Uri uri, Bitmap bitmap) {
+        }
 
-    static /* synthetic */ DataLoader$DataLoadCallback access$100(ContentLoader contentLoader) {
-        return contentLoader.mDataCallback;
+        @Override // com.sonyericsson.cameracommon.storage.Storage.OnLoadCompletedListener
+        public void onLoadFailed(Uri uri, int i) {
+        }
+
+        @Override // com.sonyericsson.cameracommon.storage.Storage.OnLoadCompletedListener
+        public void onDataLoadCompleted(int i, boolean z, LinkedList<Content.ContentInfo> linkedList, Bitmap bitmap) {
+            ContentLoader.this.mDataCallback.onDataLoaded(true, linkedList, i, z, bitmap);
+        }
+
+        @Override // com.sonyericsson.cameracommon.storage.Storage.OnLoadCompletedListener
+        public void onDataLoadFailed(int i) {
+            ContentLoader.this.mDataCallback.onDataLoaded(false, null, i, false, null);
+        }
+    };
+
+    interface ContentCreationCallback {
+        void onContentCreated(int i, Content content, Bitmap bitmap);
+
+        void onNoContentLoaded();
     }
 
-    static /* synthetic */ void access$500(ContentLoader contentLoader, long j) {
-        contentLoader.removeFuture(j);
+    public enum SecurityLevel {
+        NORMAL,
+        NEWLY_ADDED_CONTENT_ONLY
     }
 
-    static /* synthetic */ ContentLoader$ContentCreationCallback access$700(ContentLoader contentLoader) {
-        return contentLoader.mContentCallback;
-    }
-
-    static /* synthetic */ void access$800(ContentLoader contentLoader, LinkedList linkedList) {
-        contentLoader.addLocalCache(linkedList);
-    }
-
-    static /* synthetic */ ContentLoader$DataLoaderHander access$900(ContentLoader contentLoader) {
-        return contentLoader.mHandler;
-    }
-
-    public ContentLoader(Storage storage, ContentLoader$SecurityLevel contentLoader$SecurityLevel, ContentLoader$ContentCreationCallback contentLoader$ContentCreationCallback) {
-        this.mSecurityLevel = contentLoader$SecurityLevel;
+    public ContentLoader(Storage storage, SecurityLevel securityLevel, ContentCreationCallback contentCreationCallback) {
+        this.mDataCallback = new DataCallback();
+        this.mSecurityLevel = securityLevel;
         this.mStorage = storage;
-        this.mContentCallback = contentLoader$ContentCreationCallback;
+        this.mContentCallback = contentCreationCallback;
+        this.mHandler = new DataLoaderHander();
     }
 
     public void pause() {
@@ -73,7 +85,7 @@ public class ContentLoader {
         clearLocalCache();
         this.mLocalCache = null;
         this.mDataCallback = null;
-        ContentLoader$DataLoaderHander.access$300(this.mHandler);
+        this.mHandler.removeAllMessages();
     }
 
     public void request(int i, Uri uri) {
@@ -97,35 +109,125 @@ public class ContentLoader {
         if (CamLog.VERBOSE) {
             CamLog.d("reload() has been called.");
         }
-        if (ContentLoader$2.$SwitchMap$com$sonyericsson$cameracommon$contentsview$ContentLoader$SecurityLevel[this.mSecurityLevel.ordinal()] == 1) {
-            if (CamLog.VERBOSE) {
-                CamLog.d("reload() : SecurityLevel = NEWLY_ADDED_CONTENT_ONLY ");
-            }
-            LinkedList<Content$ContentInfo> localCache = getLocalCache();
-            if (localCache == null || localCache.size() <= 0) {
+        switch (this.mSecurityLevel) {
+            case NEWLY_ADDED_CONTENT_ONLY: {
+                if (CamLog.VERBOSE) {
+                    CamLog.d("reload() : SecurityLevel = NEWLY_ADDED_CONTENT_ONLY ");
+                }
+                LinkedList<Content.ContentInfo> localCache = getLocalCache();
+                if (localCache == null || localCache.size() <= 0) {
+                    return;
+                }
+                request(-1, localCache.getFirst().mOriginalUri);
                 return;
             }
-            request(-1, localCache.getFirst().mOriginalUri);
-            return;
-        }
-        if (CamLog.VERBOSE) {
-            CamLog.d("reload() : SecurityLevel = NORMAL");
-        }
-        for (int i2 = 0; i2 < i; i2++) {
-            this.mStorage.requestDataLoad(i2, false, this.mOnLoadCompleteListener);
+            default:
+                if (CamLog.VERBOSE) {
+                    CamLog.d("reload() : SecurityLevel = NORMAL");
+                }
+                for (int i2 = 0; i2 < i; i2++) {
+                    this.mStorage.requestDataLoad(i2, false, this.mOnLoadCompleteListener);
+                }
+                break;
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void removeFuture(long j) {
         this.mStorage.cancelDataLoad(j);
     }
 
-    private void addLocalCache(LinkedList<Content$ContentInfo> linkedList) {
+    private class DataLoadResult {
+        private Bitmap mBitmap;
+        private Content mContent;
+
+        public DataLoadResult(Content content, Bitmap bitmap) {
+            this.mContent = content;
+            this.mBitmap = bitmap;
+        }
+    }
+
+    private class DataLoaderHander extends Handler {
+        private static final int NOTIFY_CONTENT_CREATED = 1;
+        private static final int NOTIFY_NO_CONTENT_LOADED = 0;
+
+        private DataLoaderHander() {
+        }
+
+        @Override // android.os.Handler
+        public void handleMessage(Message message) {
+            switch (message.what) {
+                case 0:
+                    ContentLoader.this.mContentCallback.onNoContentLoaded();
+                    break;
+                case 1:
+                    if (CamLog.VERBOSE) {
+                        CamLog.d("handleMessage for content creation.");
+                    }
+                    int i = message.arg1;
+                    DataLoadResult dataLoadResult = (DataLoadResult) message.obj;
+                    ContentLoader.this.removeFuture(dataLoadResult.mContent.getContentInfo().mId);
+                    ContentLoader.this.mContentCallback.onContentCreated(i, dataLoadResult.mContent, dataLoadResult.mBitmap);
+                    break;
+            }
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void notifyContentLoaded(int i, DataLoadResult dataLoadResult) {
+            if (CamLog.VERBOSE) {
+                CamLog.d("notifyContentLoaded() has been called.");
+            }
+            Message messageObtain = Message.obtain(this);
+            if (dataLoadResult != null) {
+                messageObtain.what = 1;
+                messageObtain.obj = dataLoadResult;
+            } else {
+                messageObtain.what = 0;
+            }
+            messageObtain.arg1 = i;
+            sendMessage(messageObtain);
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void removeAllMessages() {
+            removeMessages(1);
+            removeMessages(0);
+        }
+    }
+
+    private class DataCallback implements DataLoader.DataLoadCallback {
+        private DataCallback() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.storage.DataLoader.DataLoadCallback
+        public void onDataLoaded(boolean z, LinkedList<Content.ContentInfo> linkedList, int i, boolean z2, Bitmap bitmap) {
+            if (CamLog.VERBOSE) {
+                CamLog.d("onDataLoaded() has been called. result = " + z + " , requestId = " + i);
+            }
+            if (linkedList != null && !linkedList.isEmpty() && z) {
+                if (z2) {
+                    ContentLoader.this.addLocalCache(linkedList);
+                }
+                if (linkedList.getLast().mIsContainDetails) {
+                    ContentLoader.this.mHandler.notifyContentLoaded(i, ContentLoader.this.new DataLoadResult(ContentFactory.create(linkedList.getLast()), bitmap));
+                    return;
+                } else {
+                    ContentLoader.this.request(i, linkedList.getLast().mOriginalUri);
+                    return;
+                }
+            }
+            CamLog.w("Loading data is failed.");
+            ContentLoader.this.mHandler.notifyContentLoaded(i, null);
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    private void addLocalCache(LinkedList<Content.ContentInfo> linkedList) {
         if (this.mLocalCacheBackup != null) {
             if (!this.mLocalCacheBackup.isEmpty() && linkedList.size() == 1 && linkedList.getFirst().mId == this.mLocalCacheBackup.getFirst().mId) {
                 this.mLocalCacheBackup.set(0, linkedList.getFirst());
             } else {
-                Iterator<Content$ContentInfo> it = linkedList.iterator();
+                Iterator<Content.ContentInfo> it = linkedList.iterator();
                 while (it.hasNext()) {
                     this.mLocalCacheBackup.addFirst(it.next());
                     if (overLimitSize(this.mLocalCacheBackup)) {
@@ -138,7 +240,7 @@ public class ContentLoader {
             this.mLocalCache.set(0, linkedList.getFirst());
             return;
         }
-        Iterator<Content$ContentInfo> it2 = linkedList.iterator();
+        Iterator<Content.ContentInfo> it2 = linkedList.iterator();
         while (it2.hasNext()) {
             this.mLocalCache.addFirst(it2.next());
             if (overLimitSize(this.mLocalCache)) {
@@ -147,16 +249,18 @@ public class ContentLoader {
         }
     }
 
-    private boolean overLimitSize(LinkedList<Content$ContentInfo> linkedList) {
+    private boolean overLimitSize(LinkedList<Content.ContentInfo> linkedList) {
         if (linkedList.size() > 400) {
             return true;
         }
+        Iterator<Content.ContentInfo> it = linkedList.iterator();
         int i = 0;
-        for (Content$ContentInfo content$ContentInfo : linkedList) {
-            if (content$ContentInfo.mContentType == Content$ContentsType.BURST && content$ContentInfo.mGroupedImage > 0) {
-                i += content$ContentInfo.mGroupedImage;
+        while (it.hasNext()) {
+            Content.ContentInfo next = it.next();
+            if (next.mContentType == Content.ContentsType.BURST && next.mGroupedImage > 0) {
+                i += next.mGroupedImage;
             } else {
-                i = content$ContentInfo.mContentType == Content$ContentsType.PREDICTIVE_CAPTURE ? i + content$ContentInfo.mPredictiveNum : i + 1;
+                i = next.mContentType == Content.ContentsType.PREDICTIVE_CAPTURE ? i + next.mPredictiveNum : i + 1;
             }
         }
         return i > 400;
@@ -168,7 +272,7 @@ public class ContentLoader {
         }
     }
 
-    public LinkedList<Content$ContentInfo> getLocalCache() {
+    public LinkedList<Content.ContentInfo> getLocalCache() {
         return this.mLocalCache;
     }
 
@@ -191,9 +295,9 @@ public class ContentLoader {
     }
 
     public void removeInvalidLocalCache(Context context) {
-        Iterator<Content$ContentInfo> it = this.mLocalCache.iterator();
+        Iterator<Content.ContentInfo> it = this.mLocalCache.iterator();
         while (it.hasNext()) {
-            Content$ContentInfo next = it.next();
+            Content.ContentInfo next = it.next();
             if (!new File(next.mOriginalPath).exists()) {
                 it.remove();
             } else if (isRemovedFromDataBase(context, next.mId, next.mType)) {
@@ -210,10 +314,11 @@ public class ContentLoader {
         crQueryParameter.sortOrder = String.format(Locale.US, "%s DESC, %s DESC", "datetaken", "_id");
         crQueryParameter.where = String.format(Locale.US, "%s like '%s'", "_id", Long.valueOf(j));
         if (i == 1 || i == 3) {
-            cursorCrQuery = PhotoStackQueryHelper.crQuery(context.getContentResolver(), MediaStore$Images$Media.EXTERNAL_CONTENT_URI, crQueryParameter);
+            cursorCrQuery = PhotoStackQueryHelper.crQuery(context.getContentResolver(), MediaStore.Images.Media.EXTERNAL_CONTENT_URI, crQueryParameter);
         } else {
-            cursorCrQuery = i == 2 ? PhotoStackQueryHelper.crQuery(context.getContentResolver(), MediaStore$Video$Media.EXTERNAL_CONTENT_URI, crQueryParameter) : null;
+            cursorCrQuery = i == 2 ? PhotoStackQueryHelper.crQuery(context.getContentResolver(), MediaStore.Video.Media.EXTERNAL_CONTENT_URI, crQueryParameter) : null;
         }
+        boolean z = false;
         if (cursorCrQuery != null) {
             z = cursorCrQuery.getCount() == 0;
             cursorCrQuery.close();

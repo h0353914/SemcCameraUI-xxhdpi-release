@@ -1,3 +1,39 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package org.apache.commons.imaging.formats.png;
 
 import java.awt.image.BufferedImage;
@@ -9,8 +45,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.DeflaterOutputStream;
+import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
+import org.apache.commons.imaging.ImagingConstants;
 import org.apache.commons.imaging.PixelDensity;
+import org.apache.commons.imaging.formats.png.PngText;
 import org.apache.commons.imaging.palette.Palette;
 import org.apache.commons.imaging.palette.PaletteFactory;
 import org.apache.commons.imaging.palette.SimplePalette;
@@ -25,7 +64,7 @@ class PngWriter {
     }
 
     public PngWriter(Map<String, Object> map) {
-        this.verbose = map != null && Boolean.TRUE.equals(map.get("VERBOSE"));
+        this.verbose = map != null && Boolean.TRUE.equals(map.get(ImagingConstants.PARAM_KEY_VERBOSE));
     }
 
     private void writeInt(OutputStream outputStream, int i) throws IOException {
@@ -49,77 +88,98 @@ class PngWriter {
         writeInt(outputStream, (int) pngCrc.finish_partial_crc(jStart_partial_crc));
     }
 
-    private void writeChunkIHDR(OutputStream outputStream, PngWriter$ImageHeader pngWriter$ImageHeader) throws IOException {
+    private static class ImageHeader {
+        public final byte bitDepth;
+        public final byte compressionMethod;
+        public final byte filterMethod;
+        public final int height;
+        public final InterlaceMethod interlaceMethod;
+        public final PngColorType pngColorType;
+        public final int width;
+
+        public ImageHeader(int i, int i2, byte b, PngColorType pngColorType, byte b2, byte b3,
+                InterlaceMethod interlaceMethod) {
+            this.width = i;
+            this.height = i2;
+            this.bitDepth = b;
+            this.pngColorType = pngColorType;
+            this.compressionMethod = b2;
+            this.filterMethod = b3;
+            this.interlaceMethod = interlaceMethod;
+        }
+    }
+
+    private void writeChunkIHDR(OutputStream outputStream, ImageHeader imageHeader) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        writeInt(byteArrayOutputStream, pngWriter$ImageHeader.width);
-        writeInt(byteArrayOutputStream, pngWriter$ImageHeader.height);
-        byteArrayOutputStream.write(pngWriter$ImageHeader.bitDepth & 255);
-        byteArrayOutputStream.write(pngWriter$ImageHeader.pngColorType.getValue() & 255);
-        byteArrayOutputStream.write(pngWriter$ImageHeader.compressionMethod & 255);
-        byteArrayOutputStream.write(pngWriter$ImageHeader.filterMethod & 255);
-        byteArrayOutputStream.write(pngWriter$ImageHeader.interlaceMethod.ordinal() & 255);
+        writeInt(byteArrayOutputStream, imageHeader.width);
+        writeInt(byteArrayOutputStream, imageHeader.height);
+        byteArrayOutputStream.write(imageHeader.bitDepth & 255);
+        byteArrayOutputStream.write(imageHeader.pngColorType.getValue() & 255);
+        byteArrayOutputStream.write(imageHeader.compressionMethod & 255);
+        byteArrayOutputStream.write(imageHeader.filterMethod & 255);
+        byteArrayOutputStream.write(imageHeader.interlaceMethod.ordinal() & 255);
         writeChunk(outputStream, ChunkType.IHDR, byteArrayOutputStream.toByteArray());
     }
 
-    private void writeChunkiTXt(OutputStream outputStream, PngText$Itxt pngText$Itxt) throws ImageWriteException, IOException {
-        if (!isValidISO_8859_1(pngText$Itxt.keyword)) {
-            throw new ImageWriteException("Png tEXt chunk keyword is not ISO-8859-1: " + pngText$Itxt.keyword);
+    private void writeChunkiTXt(OutputStream outputStream, PngText.Itxt itxt) throws ImageWriteException, IOException {
+        if (!isValidISO_8859_1(itxt.keyword)) {
+            throw new ImageWriteException("Png tEXt chunk keyword is not ISO-8859-1: " + itxt.keyword);
         }
-        if (!isValidISO_8859_1(pngText$Itxt.languageTag)) {
-            throw new ImageWriteException("Png tEXt chunk language tag is not ISO-8859-1: " + pngText$Itxt.languageTag);
+        if (!isValidISO_8859_1(itxt.languageTag)) {
+            throw new ImageWriteException("Png tEXt chunk language tag is not ISO-8859-1: " + itxt.languageTag);
         }
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        byteArrayOutputStream.write(pngText$Itxt.keyword.getBytes("ISO-8859-1"));
+        byteArrayOutputStream.write(itxt.keyword.getBytes("ISO-8859-1"));
         byteArrayOutputStream.write(0);
         byteArrayOutputStream.write(1);
         byteArrayOutputStream.write(0);
-        byteArrayOutputStream.write(pngText$Itxt.languageTag.getBytes("ISO-8859-1"));
+        byteArrayOutputStream.write(itxt.languageTag.getBytes("ISO-8859-1"));
         byteArrayOutputStream.write(0);
-        byteArrayOutputStream.write(pngText$Itxt.translatedKeyword.getBytes("utf-8"));
+        byteArrayOutputStream.write(itxt.translatedKeyword.getBytes("utf-8"));
         byteArrayOutputStream.write(0);
-        byteArrayOutputStream.write(deflate(pngText$Itxt.text.getBytes("utf-8")));
+        byteArrayOutputStream.write(deflate(itxt.text.getBytes("utf-8")));
         writeChunk(outputStream, ChunkType.iTXt, byteArrayOutputStream.toByteArray());
     }
 
-    private void writeChunkzTXt(OutputStream outputStream, PngText$Ztxt pngText$Ztxt) throws ImageWriteException, IOException {
-        if (!isValidISO_8859_1(pngText$Ztxt.keyword)) {
-            throw new ImageWriteException("Png zTXt chunk keyword is not ISO-8859-1: " + pngText$Ztxt.keyword);
+    private void writeChunkzTXt(OutputStream outputStream, PngText.Ztxt ztxt) throws ImageWriteException, IOException {
+        if (!isValidISO_8859_1(ztxt.keyword)) {
+            throw new ImageWriteException("Png zTXt chunk keyword is not ISO-8859-1: " + ztxt.keyword);
         }
-        if (!isValidISO_8859_1(pngText$Ztxt.text)) {
-            throw new ImageWriteException("Png zTXt chunk text is not ISO-8859-1: " + pngText$Ztxt.text);
+        if (!isValidISO_8859_1(ztxt.text)) {
+            throw new ImageWriteException("Png zTXt chunk text is not ISO-8859-1: " + ztxt.text);
         }
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        byteArrayOutputStream.write(pngText$Ztxt.keyword.getBytes("ISO-8859-1"));
+        byteArrayOutputStream.write(ztxt.keyword.getBytes("ISO-8859-1"));
         byteArrayOutputStream.write(0);
         byteArrayOutputStream.write(0);
-        byteArrayOutputStream.write(deflate(pngText$Ztxt.text.getBytes("ISO-8859-1")));
+        byteArrayOutputStream.write(deflate(ztxt.text.getBytes("ISO-8859-1")));
         writeChunk(outputStream, ChunkType.zTXt, byteArrayOutputStream.toByteArray());
     }
 
-    private void writeChunktEXt(OutputStream outputStream, PngText$Text pngText$Text) throws ImageWriteException, IOException {
-        if (!isValidISO_8859_1(pngText$Text.keyword)) {
-            throw new ImageWriteException("Png tEXt chunk keyword is not ISO-8859-1: " + pngText$Text.keyword);
+    private void writeChunktEXt(OutputStream outputStream, PngText.Text text) throws ImageWriteException, IOException {
+        if (!isValidISO_8859_1(text.keyword)) {
+            throw new ImageWriteException("Png tEXt chunk keyword is not ISO-8859-1: " + text.keyword);
         }
-        if (!isValidISO_8859_1(pngText$Text.text)) {
-            throw new ImageWriteException("Png tEXt chunk text is not ISO-8859-1: " + pngText$Text.text);
+        if (!isValidISO_8859_1(text.text)) {
+            throw new ImageWriteException("Png tEXt chunk text is not ISO-8859-1: " + text.text);
         }
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        byteArrayOutputStream.write(pngText$Text.keyword.getBytes("ISO-8859-1"));
+        byteArrayOutputStream.write(text.keyword.getBytes("ISO-8859-1"));
         byteArrayOutputStream.write(0);
-        byteArrayOutputStream.write(pngText$Text.text.getBytes("ISO-8859-1"));
+        byteArrayOutputStream.write(text.text.getBytes("ISO-8859-1"));
         writeChunk(outputStream, ChunkType.tEXt, byteArrayOutputStream.toByteArray());
     }
 
-    private byte[] deflate(byte[] bArr) throws IOException {
+    private byte[] deflate(byte[] bArr) throws IOException, ImageWriteException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         DeflaterOutputStream deflaterOutputStream = new DeflaterOutputStream(byteArrayOutputStream);
         try {
             deflaterOutputStream.write(bArr);
             IoUtils.closeQuietly(true, deflaterOutputStream);
             return byteArrayOutputStream.toByteArray();
-        } catch (Throwable th) {
+        } catch (Exception th) {
             IoUtils.closeQuietly(false, deflaterOutputStream);
-            throw th;
+            throw new ImageWriteException("Error", th);
         }
     }
 
@@ -131,14 +191,14 @@ class PngWriter {
         }
     }
 
-    private void writeChunkXmpiTXt(OutputStream outputStream, String str) throws IOException {
+    private void writeChunkXmpiTXt(OutputStream outputStream, String str) throws IOException, ImageWriteException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        byteArrayOutputStream.write("XML:com.adobe.xmp".getBytes("ISO-8859-1"));
+        byteArrayOutputStream.write(PngConstants.XMP_KEYWORD.getBytes("ISO-8859-1"));
         byteArrayOutputStream.write(0);
         byteArrayOutputStream.write(1);
         byteArrayOutputStream.write(0);
         byteArrayOutputStream.write(0);
-        byteArrayOutputStream.write("XML:com.adobe.xmp".getBytes("utf-8"));
+        byteArrayOutputStream.write(PngConstants.XMP_KEYWORD.getBytes("utf-8"));
         byteArrayOutputStream.write(0);
         byteArrayOutputStream.write(deflate(str.getBytes("utf-8")));
         writeChunk(outputStream, ChunkType.iTXt, byteArrayOutputStream.toByteArray());
@@ -174,11 +234,14 @@ class PngWriter {
     }
 
     private void writeChunkPHYS(OutputStream outputStream, int i, int i2, byte b) throws IOException {
-        writeChunk(outputStream, ChunkType.pHYs, new byte[]{(byte) ((i >> 24) & 255), (byte) ((i >> 16) & 255), (byte) ((i >> 8) & 255), (byte) ((i >> 0) & 255), (byte) ((i2 >> 24) & 255), (byte) ((i2 >> 16) & 255), (byte) ((i2 >> 8) & 255), (byte) ((i2 >> 0) & 255), b});
+        writeChunk(outputStream, ChunkType.pHYs,
+                new byte[] { (byte) ((i >> 24) & 255), (byte) ((i >> 16) & 255), (byte) ((i >> 8) & 255),
+                        (byte) ((i >> 0) & 255), (byte) ((i2 >> 24) & 255), (byte) ((i2 >> 16) & 255),
+                        (byte) ((i2 >> 8) & 255), (byte) ((i2 >> 0) & 255), b });
     }
 
     private byte getBitDepth(PngColorType pngColorType, Map<String, Object> map) {
-        Object obj = map.get("PNG_BIT_DEPTH");
+        Object obj = map.get(PngConstants.PARAM_KEY_PNG_BIT_DEPTH);
         byte bByteValue = obj instanceof Number ? ((Number) obj).byteValue() : (byte) 8;
         if (pngColorType.isBitDepthAllowed(bByteValue)) {
             return bByteValue;
@@ -186,24 +249,60 @@ class PngWriter {
         return (byte) 8;
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:104:0x0279  */
-    /* JADX WARN: Removed duplicated region for block: B:124:0x0302  */
-    /* JADX WARN: Removed duplicated region for block: B:130:0x032d  */
-    /* JADX WARN: Removed duplicated region for block: B:50:0x0127  */
-    /* JADX WARN: Removed duplicated region for block: B:53:0x0143  */
-    /* JADX WARN: Removed duplicated region for block: B:56:0x015b  */
-    /* JADX WARN: Removed duplicated region for block: B:57:0x015e  */
-    /* JADX WARN: Removed duplicated region for block: B:60:0x0163  */
-    /* JADX WARN: Removed duplicated region for block: B:63:0x0194  */
-    /* JADX WARN: Removed duplicated region for block: B:70:0x01bf A[PHI: r1
-      0x01bf: PHI (r1v16 org.apache.commons.imaging.palette.Palette) = (r1v15 org.apache.commons.imaging.palette.Palette), (r1v45 org.apache.commons.imaging.palette.Palette) binds: [B:62:0x0192, B:69:0x01bc] A[DONT_GENERATE, DONT_INLINE]] */
-    /* JADX WARN: Removed duplicated region for block: B:73:0x01ca  */
-    /* JADX WARN: Removed duplicated region for block: B:79:0x0205  */
-    /* JADX WARN: Removed duplicated region for block: B:82:0x0218  */
+    private static class TransparentPalette implements Palette {
+        private final Palette palette;
+
+        TransparentPalette(Palette palette) {
+            this.palette = palette;
+        }
+
+        @Override // org.apache.commons.imaging.palette.Palette
+        public int getEntry(int i) {
+            if (i == 0) {
+                return 0;
+            }
+            return this.palette.getEntry(i - 1);
+        }
+
+        @Override // org.apache.commons.imaging.palette.Palette
+        public int length() {
+            return 1 + this.palette.length();
+        }
+
+        @Override // org.apache.commons.imaging.palette.Palette
+        public int getPaletteIndex(int i) throws ImageWriteException {
+            if (i == 0) {
+                return 0;
+            }
+            int paletteIndex = this.palette.getPaletteIndex(i);
+            return paletteIndex >= 0 ? 1 + paletteIndex : paletteIndex;
+        }
+    }
+
+    /* JADX WARN: Removed duplicated region for block: B:104:0x0279 */
+    /* JADX WARN: Removed duplicated region for block: B:124:0x0302 */
+    /* JADX WARN: Removed duplicated region for block: B:130:0x032d */
+    /* JADX WARN: Removed duplicated region for block: B:50:0x0127 */
+    /* JADX WARN: Removed duplicated region for block: B:53:0x0143 */
+    /* JADX WARN: Removed duplicated region for block: B:56:0x015b */
+    /* JADX WARN: Removed duplicated region for block: B:57:0x015e */
+    /* JADX WARN: Removed duplicated region for block: B:60:0x0163 */
+    /* JADX WARN: Removed duplicated region for block: B:63:0x0194 */
     /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    public void writeImage(BufferedImage bufferedImage, OutputStream outputStream, Map<String, Object> map) throws ImageWriteException, IOException {
+     * JADX WARN: Removed duplicated region for block: B:70:0x01bf A[PHI: r1
+     * 0x01bf: PHI (r1v16 org.apache.commons.imaging.palette.Palette) = (r1v15
+     * org.apache.commons.imaging.palette.Palette), (r1v45
+     * org.apache.commons.imaging.palette.Palette) binds: [B:62:0x0192, B:69:0x01bc]
+     * A[DONT_GENERATE, DONT_INLINE]]
+     */
+    /* JADX WARN: Removed duplicated region for block: B:73:0x01ca */
+    /* JADX WARN: Removed duplicated region for block: B:79:0x0205 */
+    /* JADX WARN: Removed duplicated region for block: B:82:0x0218 */
+    /*
+     * Code decompiled incorrectly, please refer to instructions dump.
+     */
+    public void writeImage(BufferedImage bufferedImage, OutputStream outputStream, Map<String, Object> map)
+            throws ImageWriteException, IOException {
         PngColorType colorType;
         boolean z;
         boolean z2;
@@ -214,29 +313,29 @@ class PngWriter {
         byte[] byteArray;
         byte[] byteArray2;
         HashMap map2 = new HashMap(map);
-        if (map2.containsKey("FORMAT")) {
-            map2.remove("FORMAT");
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_FORMAT)) {
+            map2.remove(ImagingConstants.PARAM_KEY_FORMAT);
         }
-        if (map2.containsKey("VERBOSE")) {
-            map2.remove("VERBOSE");
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_VERBOSE)) {
+            map2.remove(ImagingConstants.PARAM_KEY_VERBOSE);
         }
         HashMap map3 = new HashMap(map2);
-        if (map2.containsKey("PNG_FORCE_TRUE_COLOR")) {
-            map2.remove("PNG_FORCE_TRUE_COLOR");
+        if (map2.containsKey(PngConstants.PARAM_KEY_PNG_FORCE_TRUE_COLOR)) {
+            map2.remove(PngConstants.PARAM_KEY_PNG_FORCE_TRUE_COLOR);
         }
-        if (map2.containsKey("PNG_FORCE_INDEXED_COLOR")) {
-            map2.remove("PNG_FORCE_INDEXED_COLOR");
+        if (map2.containsKey(PngConstants.PARAM_KEY_PNG_FORCE_INDEXED_COLOR)) {
+            map2.remove(PngConstants.PARAM_KEY_PNG_FORCE_INDEXED_COLOR);
         }
-        if (map2.containsKey("PNG_BIT_DEPTH")) {
-            map2.remove("PNG_BIT_DEPTH");
+        if (map2.containsKey(PngConstants.PARAM_KEY_PNG_BIT_DEPTH)) {
+            map2.remove(PngConstants.PARAM_KEY_PNG_BIT_DEPTH);
         }
-        if (map2.containsKey("XMP_XML")) {
-            map2.remove("XMP_XML");
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_XMP_XML)) {
+            map2.remove(ImagingConstants.PARAM_KEY_XMP_XML);
         }
-        if (map2.containsKey("PNG_TEXT_CHUNKS")) {
-            map2.remove("PNG_TEXT_CHUNKS");
+        if (map2.containsKey(PngConstants.PARAM_KEY_PNG_TEXT_CHUNKS)) {
+            map2.remove(PngConstants.PARAM_KEY_PNG_TEXT_CHUNKS);
         }
-        map2.remove("PIXEL_DENSITY");
+        map2.remove(ImagingConstants.PARAM_KEY_PIXEL_DENSITY);
         if (!map2.isEmpty()) {
             throw new ImageWriteException("Unknown parameter: " + map2.keySet().iterator().next());
         }
@@ -250,8 +349,8 @@ class PngWriter {
         if (this.verbose) {
             Debug.debug("isGrayscale: " + zIsGrayscale);
         }
-        boolean zEquals = Boolean.TRUE.equals(map3.get("PNG_FORCE_INDEXED_COLOR"));
-        boolean zEquals2 = Boolean.TRUE.equals(map3.get("PNG_FORCE_TRUE_COLOR"));
+        boolean zEquals = Boolean.TRUE.equals(map3.get(PngConstants.PARAM_KEY_PNG_FORCE_INDEXED_COLOR));
+        boolean zEquals2 = Boolean.TRUE.equals(map3.get(PngConstants.PARAM_KEY_PNG_FORCE_TRUE_COLOR));
         if (zEquals && zEquals2) {
             throw new ImageWriteException("Params: Cannot force both indexed and true color modes");
         }
@@ -274,43 +373,48 @@ class PngWriter {
                     Debug.debug("sampleDepth: " + ((int) b));
                 }
                 PngConstants.PNG_SIGNATURE.writeTo(outputStream);
-                writeChunkIHDR(outputStream, new PngWriter$ImageHeader(width, height, bitDepth, colorType, (byte) 0, (byte) 0, InterlaceMethod.NONE));
+                writeChunkIHDR(outputStream,
+                        new ImageHeader(width, height, bitDepth, colorType, (byte) 0, (byte) 0, InterlaceMethod.NONE));
                 Palette paletteMakeQuantizedRgbPalette = null;
                 z2 = true;
                 if (colorType != PngColorType.INDEXED_COLOR) {
                     palette = paletteMakeQuantizedRgbPalette;
                 } else {
-                    paletteMakeQuantizedRgbPalette = new PaletteFactory().makeQuantizedRgbPalette(bufferedImage, zHasTransparency ? 255 : 256);
+                    paletteMakeQuantizedRgbPalette = new PaletteFactory().makeQuantizedRgbPalette(bufferedImage,
+                            zHasTransparency ? 255 : 256);
                     if (zHasTransparency) {
-                        PngWriter$TransparentPalette pngWriter$TransparentPalette = new PngWriter$TransparentPalette(paletteMakeQuantizedRgbPalette);
-                        writeChunkPLTE(outputStream, pngWriter$TransparentPalette);
-                        writeChunkTRNS(outputStream, new SimplePalette(new int[]{0}));
-                        palette = pngWriter$TransparentPalette;
+                        TransparentPalette transparentPalette = new TransparentPalette(paletteMakeQuantizedRgbPalette);
+                        writeChunkPLTE(outputStream, transparentPalette);
+                        writeChunkTRNS(outputStream, new SimplePalette(new int[] { 0 }));
+                        palette = transparentPalette;
                     } else {
                         writeChunkPLTE(outputStream, paletteMakeQuantizedRgbPalette);
                         palette = paletteMakeQuantizedRgbPalette;
                     }
                 }
-                obj = map3.get("PIXEL_DENSITY");
+                obj = map3.get(ImagingConstants.PARAM_KEY_PIXEL_DENSITY);
                 if (obj instanceof PixelDensity) {
                     PixelDensity pixelDensity = (PixelDensity) obj;
                     if (pixelDensity.isUnitless()) {
-                        writeChunkPHYS(outputStream, (int) Math.round(pixelDensity.getRawHorizontalDensity()), (int) Math.round(pixelDensity.getRawVerticalDensity()), (byte) 0);
+                        writeChunkPHYS(outputStream, (int) Math.round(pixelDensity.getRawHorizontalDensity()),
+                                (int) Math.round(pixelDensity.getRawVerticalDensity()), (byte) 0);
                     } else {
-                        writeChunkPHYS(outputStream, (int) Math.round(pixelDensity.horizontalDensityMetres()), (int) Math.round(pixelDensity.verticalDensityMetres()), (byte) 1);
+                        writeChunkPHYS(outputStream, (int) Math.round(pixelDensity.horizontalDensityMetres()),
+                                (int) Math.round(pixelDensity.verticalDensityMetres()), (byte) 1);
                     }
                 }
-                if (map3.containsKey("XMP_XML")) {
-                    writeChunkXmpiTXt(outputStream, (String) map3.get("XMP_XML"));
+                if (map3.containsKey(ImagingConstants.PARAM_KEY_XMP_XML)) {
+                    writeChunkXmpiTXt(outputStream, (String) map3.get(ImagingConstants.PARAM_KEY_XMP_XML));
                 }
-                if (map3.containsKey("PNG_TEXT_CHUNKS")) {
-                    for (PngText pngText : (List) map3.get("PNG_TEXT_CHUNKS")) {
-                        if (pngText instanceof PngText$Text) {
-                            writeChunktEXt(outputStream, (PngText$Text) pngText);
-                        } else if (pngText instanceof PngText$Ztxt) {
-                            writeChunkzTXt(outputStream, (PngText$Ztxt) pngText);
-                        } else if (pngText instanceof PngText$Itxt) {
-                            writeChunkiTXt(outputStream, (PngText$Itxt) pngText);
+                if (map3.containsKey(PngConstants.PARAM_KEY_PNG_TEXT_CHUNKS)) {
+                    for (Object pngTextObj : (List) map3.get(PngConstants.PARAM_KEY_PNG_TEXT_CHUNKS)) {
+                        PngText pngText = (PngText) pngTextObj;
+                        if (pngText instanceof PngText.Text) {
+                            writeChunktEXt(outputStream, (PngText.Text) pngText);
+                        } else if (pngText instanceof PngText.Ztxt) {
+                            writeChunkzTXt(outputStream, (PngText.Ztxt) pngText);
+                        } else if (pngText instanceof PngText.Itxt) {
+                            writeChunkiTXt(outputStream, (PngText.Itxt) pngText);
                         } else {
                             throw new ImageWriteException("Unknown text to embed in PNG: " + pngText);
                         }
@@ -396,17 +500,18 @@ class PngWriter {
         if (this.verbose) {
         }
         PngConstants.PNG_SIGNATURE.writeTo(outputStream);
-        writeChunkIHDR(outputStream, new PngWriter$ImageHeader(width, height, bitDepth2, colorType, (byte) 0, (byte) 0, InterlaceMethod.NONE));
+        writeChunkIHDR(outputStream,
+                new ImageHeader(width, height, bitDepth2, colorType, (byte) 0, (byte) 0, InterlaceMethod.NONE));
         Palette paletteMakeQuantizedRgbPalette2 = null;
         z2 = true;
         if (colorType != PngColorType.INDEXED_COLOR) {
         }
-        obj = map3.get("PIXEL_DENSITY");
+        obj = map3.get(ImagingConstants.PARAM_KEY_PIXEL_DENSITY);
         if (obj instanceof PixelDensity) {
         }
-        if (map3.containsKey("XMP_XML")) {
+        if (map3.containsKey(ImagingConstants.PARAM_KEY_XMP_XML)) {
         }
-        if (map3.containsKey("PNG_TEXT_CHUNKS")) {
+        if (map3.containsKey(PngConstants.PARAM_KEY_PNG_TEXT_CHUNKS)) {
         }
         ByteArrayOutputStream byteArrayOutputStream3 = new ByteArrayOutputStream();
         if (colorType != PngColorType.GREYSCALE_WITH_ALPHA) {

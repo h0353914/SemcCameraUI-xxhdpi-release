@@ -2,7 +2,7 @@
 <resources>
     <string name="common_android_wear_notification_needs_update_text">%1$s Android Wear tətbiqi üçün güncəlləşmə tələb edir.</string>
     <string name="common_android_wear_update_text">Android Wear güncəlləşməsə, %1$s işləməyəcək.</string>
-    <string name="common_android_wear_update_title">Android Wear\'i güncəlləşdirin</string>
+    <string name="common_android_wear_update_title">"Android Wear'i güncəlləşdirin"</string>
     <string name="common_google_play_services_api_unavailable_text">%1$s hazırda əlçatmaz olan bir və ya daha çox Google Play xidməti tələb edir.</string>
     <string name="common_google_play_services_enable_button">Google Play xidmətlərini aktiv et</string>
     <string name="common_google_play_services_enable_text">Google Play xidmətlərini aktiv etməsəniz, %1$s işləməyəcək.</string>

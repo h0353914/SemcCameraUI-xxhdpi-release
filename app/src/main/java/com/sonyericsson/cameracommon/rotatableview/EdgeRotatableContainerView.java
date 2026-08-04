@@ -4,6 +4,19 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 public class EdgeRotatableContainerView extends FrameLayout {
     private int mOrientation;
 
@@ -18,10 +31,21 @@ public class EdgeRotatableContainerView extends FrameLayout {
         setOrientation(getMeasuredWidth(), getMeasuredHeight());
     }
 
+
+
+
+
+
     public void setOrientation(int i) {
         this.mOrientation = i;
         setOrientation(getWidth(), getHeight());
     }
+
+
+
+
+
+
 
     private void setOrientation(float f, float f2) {
         if (this.mOrientation == 2) {
@@ -30,8 +54,7 @@ public class EdgeRotatableContainerView extends FrameLayout {
             setTranslationY(0.0f);
         } else {
             setRotation(-90.0f);
-            float f3 = (f - f2) / 2.0f;
-            setTranslationX(f3);
+            float f3 = (f - f2) / 2.0f; setTranslationX(f3);
             setTranslationY(f3);
         }
     }

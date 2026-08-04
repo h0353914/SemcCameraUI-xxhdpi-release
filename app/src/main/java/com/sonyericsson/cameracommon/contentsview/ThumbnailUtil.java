@@ -2,9 +2,7 @@ package com.sonyericsson.cameracommon.contentsview;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap$Config;
 import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory$Options;
 import android.graphics.Matrix;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
@@ -12,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
 import java.io.FileNotFoundException;
@@ -32,25 +31,25 @@ public class ThumbnailUtil {
         }
         LayoutInflater layoutInflater = activity.getLayoutInflater();
         if (CommonUtility.isCoreCameraApp(activity)) {
-            relativeLayout = (RelativeLayout) layoutInflater.inflate(2131492909, (ViewGroup) null);
+            relativeLayout = (RelativeLayout) layoutInflater.inflate(R.layout.content_early_thumbnail_core_camera, (ViewGroup) null);
         } else {
-            relativeLayout = (RelativeLayout) layoutInflater.inflate(2131492908, (ViewGroup) null);
+            relativeLayout = (RelativeLayout) layoutInflater.inflate(R.layout.content_early_thumbnail, (ViewGroup) null);
         }
-        ImageView imageView = (ImageView) relativeLayout.findViewById(2131296390);
-        BitmapFactory$Options bitmapFactory$Options = new BitmapFactory$Options();
-        bitmapFactory$Options.inJustDecodeBounds = true;
-        BitmapFactory.decodeByteArray(bArr, 0, bArr.length, bitmapFactory$Options);
-        int i2 = bitmapFactory$Options.outWidth;
-        int i3 = bitmapFactory$Options.outHeight;
+        ImageView imageView = (ImageView) relativeLayout.findViewById(R.id.early_thumbnail_image);
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeByteArray(bArr, 0, bArr.length, options);
+        int i2 = options.outWidth;
+        int i3 = options.outHeight;
         if (i2 > i3) {
-            bitmapFactory$Options.inSampleSize = Math.round(i3 / 96.0f);
+            options.inSampleSize = Math.round(i3 / 96.0f);
         } else {
-            bitmapFactory$Options.inSampleSize = Math.round(i2 / 96.0f);
+            options.inSampleSize = Math.round(i2 / 96.0f);
         }
-        bitmapFactory$Options.inJustDecodeBounds = false;
-        bitmapFactory$Options.inPreferredConfig = Bitmap$Config.RGB_565;
-        bitmapFactory$Options.inPurgeable = true;
-        Bitmap bitmapExtractThumbnail = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeByteArray(bArr, 0, bArr.length, bitmapFactory$Options), 96, 96);
+        options.inJustDecodeBounds = false;
+        options.inPreferredConfig = Bitmap.Config.RGB_565;
+        options.inPurgeable = true;
+        Bitmap bitmapExtractThumbnail = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeByteArray(bArr, 0, bArr.length, options), 96, 96);
         Bitmap bitmapRotateThumbnail = bitmapExtractThumbnail != null ? rotateThumbnail(bitmapExtractThumbnail, i) : null;
         if (bitmapRotateThumbnail != null) {
             imageView.setImageBitmap(bitmapRotateThumbnail);
@@ -98,20 +97,20 @@ public class ThumbnailUtil {
         }
         LayoutInflater layoutInflater = activity.getLayoutInflater();
         if (CommonUtility.isCoreCameraApp(activity)) {
-            relativeLayout = (RelativeLayout) layoutInflater.inflate(2131492909, (ViewGroup) null);
+            relativeLayout = (RelativeLayout) layoutInflater.inflate(R.layout.content_early_thumbnail_core_camera, (ViewGroup) null);
         } else {
-            relativeLayout = (RelativeLayout) layoutInflater.inflate(2131492908, (ViewGroup) null);
+            relativeLayout = (RelativeLayout) layoutInflater.inflate(R.layout.content_early_thumbnail, (ViewGroup) null);
         }
-        ImageView imageView = (ImageView) relativeLayout.findViewById(2131296390);
-        BitmapFactory$Options bitmapFactory$Options = new BitmapFactory$Options();
-        bitmapFactory$Options.inJustDecodeBounds = true;
+        ImageView imageView = (ImageView) relativeLayout.findViewById(R.id.early_thumbnail_image);
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
         try {
             inputStreamOpenInputStream = activity.getContentResolver().openInputStream(uri);
         } catch (FileNotFoundException e) {
             CamLog.e("FileNotFoundException :  = " + e);
             inputStreamOpenInputStream = null;
         }
-        BitmapFactory.decodeStream(inputStreamOpenInputStream, null, bitmapFactory$Options);
+        BitmapFactory.decodeStream(inputStreamOpenInputStream, null, options);
         if (inputStreamOpenInputStream != null) {
             try {
                 inputStreamOpenInputStream.close();
@@ -119,23 +118,23 @@ public class ThumbnailUtil {
                 CamLog.e("IOException :  = " + e2);
             }
         }
-        int i2 = bitmapFactory$Options.outWidth;
-        int i3 = bitmapFactory$Options.outHeight;
+        int i2 = options.outWidth;
+        int i3 = options.outHeight;
         if (i2 > i3) {
-            bitmapFactory$Options.inSampleSize = Math.round(i3 / 96.0f);
+            options.inSampleSize = Math.round(i3 / 96.0f);
         } else {
-            bitmapFactory$Options.inSampleSize = Math.round(i2 / 96.0f);
+            options.inSampleSize = Math.round(i2 / 96.0f);
         }
-        bitmapFactory$Options.inJustDecodeBounds = false;
-        bitmapFactory$Options.inPreferredConfig = Bitmap$Config.RGB_565;
-        bitmapFactory$Options.inPurgeable = true;
+        options.inJustDecodeBounds = false;
+        options.inPreferredConfig = Bitmap.Config.RGB_565;
+        options.inPurgeable = true;
         try {
             inputStreamOpenInputStream2 = activity.getContentResolver().openInputStream(uri);
         } catch (FileNotFoundException e3) {
             CamLog.e("FileNotFoundException :  = " + e3);
             inputStreamOpenInputStream2 = inputStreamOpenInputStream;
         }
-        Bitmap bitmapDecodeStream = BitmapFactory.decodeStream(inputStreamOpenInputStream2, null, bitmapFactory$Options);
+        Bitmap bitmapDecodeStream = BitmapFactory.decodeStream(inputStreamOpenInputStream2, null, options);
         if (inputStreamOpenInputStream2 != null) {
             try {
                 inputStreamOpenInputStream2.close();

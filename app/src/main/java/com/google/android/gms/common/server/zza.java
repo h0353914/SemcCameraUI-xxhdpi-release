@@ -1,11 +1,11 @@
 package com.google.android.gms.common.server;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.safeparcel.zzb;
 
-public class zza implements Parcelable$Creator<FavaDiagnosticsEntity> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zza implements Parcelable.Creator<FavaDiagnosticsEntity> {
     static void zza(FavaDiagnosticsEntity favaDiagnosticsEntity, Parcel parcel, int i) {
         int iZzaq = zzb.zzaq(parcel);
         zzb.zzc(parcel, 1, favaDiagnosticsEntity.mVersionCode);
@@ -14,17 +14,9 @@ public class zza implements Parcelable$Creator<FavaDiagnosticsEntity> {
         zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ FavaDiagnosticsEntity createFromParcel(Parcel parcel) {
-        return zzar(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ FavaDiagnosticsEntity[] newArray(int i) {
-        return zzbP(i);
-    }
-
-    public FavaDiagnosticsEntity zzar(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzar, reason: merged with bridge method [inline-methods] */
+    public FavaDiagnosticsEntity createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         String strZzp = null;
@@ -49,10 +41,12 @@ public class zza implements Parcelable$Creator<FavaDiagnosticsEntity> {
         if (parcel.dataPosition() == iZzap) {
             return new FavaDiagnosticsEntity(iZzg, strZzp, iZzg2);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new com.google.android.gms.common.internal.safeparcel.zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public FavaDiagnosticsEntity[] zzbP(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbP, reason: merged with bridge method [inline-methods] */
+    public FavaDiagnosticsEntity[] newArray(int i) {
         return new FavaDiagnosticsEntity[i];
     }
 }

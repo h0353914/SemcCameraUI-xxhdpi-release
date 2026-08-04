@@ -2,32 +2,34 @@ package com.sonyericsson.android.camera.setting;
 
 import android.content.Context;
 import android.graphics.Rect;
+import com.sonyericsson.android.camera.configuration.SharedPreferencesConstants;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.configuration.parameters.FastCapture;
+import com.sonyericsson.android.camera.util.capability.SharedPrefsTranslator;
 
 public class LastSettings {
     private static final String LAUNCH_AND_RECORDING = "LAUNCH_AND_RECORDING";
     private final SharedPreferencesAccessor mAccessor;
 
     LastSettings(Context context) {
-        this.mAccessor = new SharedPreferencesAccessor(context, "com.sonyericsson.android.camera.shared_preferences");
+        this.mAccessor = new SharedPreferencesAccessor(context, SharedPreferencesConstants.CAMERA_SHARED_PREFERENCES_NAME);
     }
 
     public CapturingMode getCapturingMode() {
-        return CapturingMode.convertFrom(this.mAccessor.readString("KEY_LAST_MODE", CapturingMode.UNKNOWN.name()), CapturingMode.UNKNOWN);
+        return CapturingMode.convertFrom(this.mAccessor.readString(SharedPreferencesConstants.KEY_LAST_MODE, CapturingMode.UNKNOWN.name()), CapturingMode.UNKNOWN);
     }
 
     public void setCapturingMode(CapturingMode capturingMode) {
-        this.mAccessor.writeString("KEY_LAST_MODE", capturingMode.name(), false);
+        this.mAccessor.writeString(SharedPreferencesConstants.KEY_LAST_MODE, capturingMode.name(), false);
     }
 
     public void writePauseTime() {
-        this.mAccessor.writeLong("KEY_TIME_APP_PAUSED", System.currentTimeMillis(), false);
+        this.mAccessor.writeLong(SharedPreferencesConstants.KEY_TIME_APP_PAUSED, System.currentTimeMillis(), false);
     }
 
     public FastCapture getFastCapture() {
-        String string = this.mAccessor.readString("key-last-fast-capture-setting", FastCapture.getDefault().name());
-        if ("LAUNCH_AND_RECORDING".equals(string)) {
+        String string = this.mAccessor.readString(SharedPreferencesConstants.SP_KEY_LAST_FAST_CAPTURE_SETTING, FastCapture.getDefault().name());
+        if (LAUNCH_AND_RECORDING.equals(string)) {
             return FastCapture.getDefault();
         }
         try {
@@ -38,7 +40,7 @@ public class LastSettings {
     }
 
     public void setFastCapture(FastCapture fastCapture) {
-        this.mAccessor.writeString("key-last-fast-capture-setting", fastCapture.name(), false);
+        this.mAccessor.writeString(SharedPreferencesConstants.SP_KEY_LAST_FAST_CAPTURE_SETTING, fastCapture.name(), false);
     }
 
     public Rect getPreviewSize(CapturingMode capturingMode) {
@@ -47,7 +49,7 @@ public class LastSettings {
 
     private Rect getRect(String str) {
         if (str != null) {
-            String[] strArrSplit = str.split("x");
+            String[] strArrSplit = str.split(SharedPrefsTranslator.CONNECTOR_CROSS);
             if (strArrSplit.length == 2) {
                 Rect rect = new Rect();
                 rect.right = Integer.valueOf(strArrSplit[0]).intValue();
@@ -59,7 +61,7 @@ public class LastSettings {
     }
 
     public void setPreviewSize(Rect rect, CapturingMode capturingMode) {
-        this.mAccessor.writeString(getLastPreviewSizeKey(capturingMode), String.valueOf(rect.width()) + "x" + rect.height(), false);
+        this.mAccessor.writeString(getLastPreviewSizeKey(capturingMode), String.valueOf(rect.width()) + SharedPrefsTranslator.CONNECTOR_CROSS + rect.height(), false);
     }
 
     private String getLastPreviewSizeKey(CapturingMode capturingMode) {
@@ -72,8 +74,8 @@ public class LastSettings {
 
     public void clear() {
         synchronized (this.mAccessor) {
-            this.mAccessor.remove("key-last-fast-capture-setting", false);
-            this.mAccessor.remove("KEY_LAST_MODE", false);
+            this.mAccessor.remove(SharedPreferencesConstants.SP_KEY_LAST_FAST_CAPTURE_SETTING, false);
+            this.mAccessor.remove(SharedPreferencesConstants.KEY_LAST_MODE, false);
             for (CapturingMode capturingMode : CapturingMode.values()) {
                 if (capturingMode != CapturingMode.UNKNOWN) {
                     this.mAccessor.remove(getLastPreviewSizeKey(capturingMode), false);

@@ -1,22 +1,25 @@
 package com.sonyericsson.android.camera.recorder.superslowrecorder;
 
 import android.content.Context;
+import android.media.CamcorderProfile;
+import android.media.MediaCodec;
 import android.os.Handler;
 import android.os.SystemClock;
 import com.sonyericsson.android.camera.device.CameraActionSound;
-import com.sonyericsson.android.camera.recorder.RecorderController$RecorderListener;
+import com.sonyericsson.android.camera.recorder.RecorderController;
 import com.sonyericsson.android.camera.recorder.RecorderException;
 import com.sonyericsson.android.camera.recorder.RecorderParameters;
-import com.sonyericsson.android.camera.recorder.defaultrecorder.BaseRecorderController$State;
+import com.sonyericsson.android.camera.recorder.defaultrecorder.BaseRecorderController;
 import com.sonyericsson.android.camera.recorder.defaultrecorder.DefaultRecorderController;
-import com.sonyericsson.android.camera.recorder.defaultrecorder.DefaultRecorderController$CallbackLock;
+import com.sonyericsson.android.camera.recorder.superslowrecorder.VariableSourceMediaRecorder;
 import com.sonyericsson.android.camera.recorder.utility.Accessor;
+import com.sonyericsson.android.camera.recorder.utility.encoder.InputDataSource;
 import com.sonyericsson.android.camera.recorder.utility.encoder.source.MutableAudioSampleDataSource;
+import com.sonyericsson.android.camera.recorder.utility.encoder.source.VideoFrameSource;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.ThreadUtil;
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera;
-import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$DataSpace;
-import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$RecordingParameters;
+import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -34,80 +37,32 @@ public class SuperSlowRecorderController extends DefaultRecorderController {
     private MutableAudioSampleDataSource mMutableAudioSource;
     private final int mMuteDurationInMillis;
     private final OnSuperSlowRecordingFinishedListener mOnSuperSlowRecordingFinishedListener;
-    private final DefaultRecorderController$CallbackLock mPrepareSuperSlowRecordingCallbackLock;
+    private final DefaultRecorderController.CallbackLock mPrepareSuperSlowRecordingCallbackLock;
     private Future<Boolean> mPrepareTask;
     private final ExecutorService mPrepareTaskExecutor;
     private final int mSilentDurationInMillis;
-    private final DefaultRecorderController$CallbackLock mStartSuperSlowRecordingCallbackLock;
+    private final DefaultRecorderController.CallbackLock mStartSuperSlowRecordingCallbackLock;
     private final int mSuperSlowFrameNum;
     private final int mSuperSlowFrameRate;
     private volatile long mSuperSlowTriggerTimeMillis;
 
-    static /* synthetic */ MutableAudioSampleDataSource access$1000(SuperSlowRecorderController superSlowRecorderController) {
-        return superSlowRecorderController.mMutableAudioSource;
-    }
-
-    static /* synthetic */ MutableAudioSampleDataSource access$1002(SuperSlowRecorderController superSlowRecorderController, MutableAudioSampleDataSource mutableAudioSampleDataSource) {
-        superSlowRecorderController.mMutableAudioSource = mutableAudioSampleDataSource;
-        return mutableAudioSampleDataSource;
-    }
-
-    static /* synthetic */ boolean access$101(SuperSlowRecorderController superSlowRecorderController, RecorderParameters recorderParameters) {
-        return super.prepareInternal(recorderParameters);
-    }
-
-    static /* synthetic */ int access$1100(SuperSlowRecorderController superSlowRecorderController) {
-        return superSlowRecorderController.mMuteDurationInMillis;
-    }
-
-    static /* synthetic */ int access$1200(SuperSlowRecorderController superSlowRecorderController) {
-        return superSlowRecorderController.mSilentDurationInMillis;
-    }
-
-    static /* synthetic */ void access$200(SuperSlowRecorderController superSlowRecorderController) {
-        superSlowRecorderController.notifyError();
-    }
-
-    static /* synthetic */ boolean access$400(SuperSlowRecorderController superSlowRecorderController) throws TimeoutException {
-        return superSlowRecorderController.startBypassCameraSuperSlow();
-    }
-
-    static /* synthetic */ void access$500(SuperSlowRecorderController superSlowRecorderController) {
-        superSlowRecorderController.notifyError();
-    }
-
-    static /* synthetic */ OnSuperSlowRecordingFinishedListener access$600(SuperSlowRecorderController superSlowRecorderController) {
-        return superSlowRecorderController.mOnSuperSlowRecordingFinishedListener;
-    }
-
-    static /* synthetic */ Handler access$700(SuperSlowRecorderController superSlowRecorderController) {
-        return superSlowRecorderController.getCallbackHandler();
-    }
-
-    static /* synthetic */ void access$800(SuperSlowRecorderController superSlowRecorderController) {
-        superSlowRecorderController.notifyError();
-    }
-
-    static /* synthetic */ void access$900(String str) {
-        trace(str);
-    }
-
+    /* JADX INFO: Access modifiers changed from: private */
     private static void trace(String str) {
         CamLog.d(str);
     }
 
-    public SuperSlowRecorderController(Context context, Accessor<CameraActionSound> accessor, Accessor<BypassCamera> accessor2, RecorderController$RecorderListener recorderController$RecorderListener, OnSuperSlowRecordingFinishedListener onSuperSlowRecordingFinishedListener, Handler handler, int i, Handler handler2, boolean z, int i2, int i3) {
-        super(context, accessor, accessor2, new VariableSourceMediaRecorder(120), recorderController$RecorderListener, MIN_VIDEO_DURATION_MILLIS, handler, i, handler2, true, true, true, z, true);
-        this.mPrepareTaskExecutor = ThreadUtil.buildExecutor("SSM_RECORDER_PREPARE");
+    public SuperSlowRecorderController(Context context, Accessor<CameraActionSound> accessor, Accessor<BypassCamera> accessor2, RecorderController.RecorderListener recorderListener, OnSuperSlowRecordingFinishedListener onSuperSlowRecordingFinishedListener, Handler handler, int i, Handler handler2, boolean z, int i2, int i3) {
+        super(context, accessor, accessor2, new VariableSourceMediaRecorder(120), recorderListener, MIN_VIDEO_DURATION_MILLIS, handler, i, handler2, true, true, true, z, true);
+        this.mPrepareTaskExecutor = ThreadUtil.buildExecutor(THREAD_NAME);
         trace("SuperSlowRecorderController() E");
         this.mSuperSlowFrameRate = i2;
         this.mSuperSlowFrameNum = i3;
         this.mOnSuperSlowRecordingFinishedListener = onSuperSlowRecordingFinishedListener;
         this.mMuteDurationInMillis = (this.mSuperSlowFrameNum * 1000) / this.mSuperSlowFrameRate;
         this.mSilentDurationInMillis = (1000 * this.mSuperSlowFrameNum) / 30;
-        ((VariableSourceMediaRecorder) getRecorder()).setInputDataSourceFactory(new SuperSlowRecorderController$SuperSlowSourceFactory(this, null));
-        this.mPrepareSuperSlowRecordingCallbackLock = new DefaultRecorderController$CallbackLock();
-        this.mStartSuperSlowRecordingCallbackLock = new DefaultRecorderController$CallbackLock();
+        ((VariableSourceMediaRecorder) getRecorder()).setInputDataSourceFactory(new SuperSlowSourceFactory());
+        this.mPrepareSuperSlowRecordingCallbackLock = new DefaultRecorderController.CallbackLock();
+        this.mStartSuperSlowRecordingCallbackLock = new DefaultRecorderController.CallbackLock();
         trace("SuperSlowRecorderController() X");
     }
 
@@ -117,10 +72,28 @@ public class SuperSlowRecorderController extends DefaultRecorderController {
         return super.prepare(recorderParameters);
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     @Override // com.sonyericsson.android.camera.recorder.defaultrecorder.DefaultRecorderController, com.sonyericsson.android.camera.recorder.defaultrecorder.BaseRecorderController
-    protected boolean prepareInternal(RecorderParameters recorderParameters) {
-        this.mPrepareTask = this.mPrepareTaskExecutor.submit(new SuperSlowRecorderController$PrepareTask(this, recorderParameters));
+    public boolean prepareInternal(RecorderParameters recorderParameters) {
+        this.mPrepareTask = this.mPrepareTaskExecutor.submit(new PrepareTask(recorderParameters));
         return true;
+    }
+
+    private class PrepareTask implements Callable<Boolean> {
+        private final RecorderParameters mParams;
+
+        public PrepareTask(RecorderParameters recorderParameters) {
+            this.mParams = recorderParameters;
+        }
+@Override // java.util.concurrent.Callable
+        public Boolean call() throws Exception {
+            if (SuperSlowRecorderController.super.prepareInternal(this.mParams)) {
+                return true;
+            }
+            CamLog.e("prepareInternal() is failed in PrepareTask.");
+            SuperSlowRecorderController.this.notifyError();
+            return false;
+        }
     }
 
     private boolean waitForPrepareCompleted() {
@@ -153,7 +126,7 @@ public class SuperSlowRecorderController extends DefaultRecorderController {
             trace("prepareCallBack() X failed.");
             return false;
         }
-        getBypassCamera().setSuperSlowCallbacks(new SuperSlowRecorderController$PrepareSuperSlowRecordingCallbackImpl(this.mPrepareSuperSlowRecordingCallbackLock), new SuperSlowRecorderController$StartSuperSlowRecordingCallbackImpl(this.mStartSuperSlowRecordingCallbackLock));
+        getBypassCamera().setSuperSlowCallbacks(new PrepareSuperSlowRecordingCallbackImpl(this.mPrepareSuperSlowRecordingCallbackLock), new StartSuperSlowRecordingCallbackImpl(this.mStartSuperSlowRecordingCallbackLock));
         trace("prepareCallBack() X");
         return true;
     }
@@ -179,14 +152,44 @@ public class SuperSlowRecorderController extends DefaultRecorderController {
     public boolean startSuperSlow() throws RecorderException {
         trace("startSuperSlow() E");
         synchronized (this.mStateLock) {
-            if (!verifyState(BaseRecorderController$State.STARTING, BaseRecorderController$State.RECORDING)) {
+            if (!verifyState(BaseRecorderController.State.STARTING, BaseRecorderController.State.RECORDING)) {
                 trace("start() X failed : illegal state");
                 throw new RecorderException("Fail to verify state.");
             }
-            executeInBackground(new SuperSlowRecorderController$StartSuperSlowTask(this, null));
+            executeInBackground(new StartSuperSlowTask());
         }
         trace("startSuperSlow() X");
         return true;
+    }
+
+    private class StartSuperSlowTask implements Runnable {
+        private StartSuperSlowTask() {
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            try {
+                if (!SuperSlowRecorderController.this.startBypassCameraSuperSlow()) {
+                    SuperSlowRecorderController.this.notifyError();
+                } else {
+                    SuperSlowRecorderController.this.getCallbackHandler().post(new Runnable() { // from class: com.sonyericsson.android.camera.recorder.superslowrecorder.SuperSlowRecorderController.StartSuperSlowTask.1
+                        @Override // java.lang.Runnable
+                        public void run() {
+                            SuperSlowRecorderController.this.mOnSuperSlowRecordingFinishedListener.onSuperSlowRecordingFinished();
+                        }
+                    });
+                }
+            } catch (TimeoutException e) {
+                if (CamLog.DEBUG) {
+                    throw new RuntimeException(e);
+                }
+                SuperSlowRecorderController.this.notifyError();
+            } catch (InterruptedException e2) {
+                CamLog.w("startBypassCameraSuperSlow interrupted: " + e2.getMessage());
+                Thread.currentThread().interrupt();
+                SuperSlowRecorderController.this.notifyError();
+            }
+        }
     }
 
     private long computeSuperSlowRemainTime() {
@@ -199,47 +202,45 @@ public class SuperSlowRecorderController extends DefaultRecorderController {
         }
         long jUptimeMillis = SystemClock.uptimeMillis() - j;
         trace("  elapsed-time-since-trigger:" + jUptimeMillis);
-        return Math.max(0L, 180 - jUptimeMillis);
+        return Math.max(0L, SUPER_SLOW_PROCESS_TIME_MILLIS - jUptimeMillis);
     }
 
-    private boolean startBypassCameraSuperSlow() throws TimeoutException {
+    /* JADX INFO: Access modifiers changed from: private */
+    private boolean startBypassCameraSuperSlow() throws InterruptedException, TimeoutException {
         trace("startBypassCameraSuperSlow() E");
         synchronized (this.mStateLock) {
-            if (verifyState(BaseRecorderController$State.RELEASED)) {
-                trace("startBypassCameraSuperSlow() X failed to verify state:" + BaseRecorderController$State.RELEASED.name());
+            if (verifyState(BaseRecorderController.State.RELEASED)) {
+                trace("startBypassCameraSuperSlow() X failed to verify state:" + BaseRecorderController.State.RELEASED.name());
                 return false;
             }
-            if (this.mMutableAudioSource != null) {
-                this.mMutableAudioSource.startMute();
-            }
-            CountDownLatch countDownLatchRequestLatch = this.mStartSuperSlowRecordingCallbackLock.requestLatch();
-            this.mSuperSlowTriggerTimeMillis = SystemClock.uptimeMillis();
+        }
+        if (this.mMutableAudioSource != null) {
+            this.mMutableAudioSource.startMute();
+        }
+        CountDownLatch countDownLatchRequestLatch = this.mStartSuperSlowRecordingCallbackLock.requestLatch();
+        this.mSuperSlowTriggerTimeMillis = SystemClock.uptimeMillis();
+        try {
+            getBypassCamera().requestStartSuperSlowRecording();
             try {
-                getBypassCamera().requestStartSuperSlowRecording();
-                try {
-                    if (!countDownLatchRequestLatch.await(10000L, TimeUnit.MILLISECONDS)) {
-                        throw new TimeoutException("Callback of slow motion frame is not sent over 5s from Bypasscamera");
-                    }
-                    trace("actual-elapsed-time-since-trigger:" + (SystemClock.uptimeMillis() - this.mSuperSlowTriggerTimeMillis));
-                    this.mSuperSlowTriggerTimeMillis = 0L;
-                    this.mStartSuperSlowRecordingCallbackLock.release();
-                    trace("startBypassCameraSuperSlow() X");
-                    return true;
-                } catch (InterruptedException e) {
-                    trace("startBypassCameraSuperSlow() X failed : " + e.getMessage());
-                    return false;
-                } finally {
-                    trace("actual-elapsed-time-since-trigger:" + (SystemClock.uptimeMillis() - this.mSuperSlowTriggerTimeMillis));
-                    this.mSuperSlowTriggerTimeMillis = 0L;
-                    this.mStartSuperSlowRecordingCallbackLock.release();
+                if (!countDownLatchRequestLatch.await(START_RECORDING_TIME_OUT_MILLIS, TimeUnit.MILLISECONDS)) {
+                    throw new TimeoutException("Callback of slow motion frame is not sent over 5s from Bypasscamera");
                 }
                 trace("actual-elapsed-time-since-trigger:" + (SystemClock.uptimeMillis() - this.mSuperSlowTriggerTimeMillis));
                 this.mSuperSlowTriggerTimeMillis = 0L;
                 this.mStartSuperSlowRecordingCallbackLock.release();
-            } catch (RuntimeException e2) {
-                trace("startBypassCameraSuperSlow() X failed : " + e2.getMessage());
+                trace("startBypassCameraSuperSlow() X");
+                return true;
+            } catch (InterruptedException e) {
+                trace("startBypassCameraSuperSlow() X failed : " + e.getMessage());
                 return false;
+            } finally {
+                trace("actual-elapsed-time-since-trigger:" + (SystemClock.uptimeMillis() - this.mSuperSlowTriggerTimeMillis));
+                this.mSuperSlowTriggerTimeMillis = 0L;
+                this.mStartSuperSlowRecordingCallbackLock.release();
             }
+        } catch (RuntimeException e2) {
+            trace("startBypassCameraSuperSlow() X failed : " + e2.getMessage());
+            return false;
         }
     }
 
@@ -249,7 +250,7 @@ public class SuperSlowRecorderController extends DefaultRecorderController {
         CountDownLatch countDownLatchRequestLatch = this.mPrepareSuperSlowRecordingCallbackLock.requestLatch();
         try {
             try {
-                getBypassCamera().requestPrepareSuperSlowRecording(getRecorder().getSurface(), new BypassCamera$RecordingParameters(new BypassCamera$DataSpace(0, 0, 0)));
+                getBypassCamera().requestPrepareSuperSlowRecording(getRecorder().getSurface(), new BypassCamera.RecordingParameters(new BypassCamera.DataSpace(0, 0, 0)));
                 countDownLatchRequestLatch.await();
                 this.mPrepareSuperSlowRecordingCallbackLock.release();
                 trace("prepareBypassCamera() X");
@@ -265,11 +266,57 @@ public class SuperSlowRecorderController extends DefaultRecorderController {
         }
     }
 
+    private static class PrepareSuperSlowRecordingCallbackImpl implements BypassCamera.PrepareSuperSlowRecordingCallback {
+        private final DefaultRecorderController.CallbackLock mLock;
+
+        public PrepareSuperSlowRecordingCallbackImpl(DefaultRecorderController.CallbackLock callbackLock) {
+            this.mLock = callbackLock;
+        }
+
+        @Override // com.sonymobile.imageprocessor.bypasscamera2.BypassCamera.PrepareSuperSlowRecordingCallback
+        public void onPrepareSuperSlowRecordingDone() {
+            SuperSlowRecorderController.trace("onPrepareSuperSlowRecordingDone() E");
+            this.mLock.unlock();
+            SuperSlowRecorderController.trace("onPrepareSuperSlowRecordingDone() X");
+        }
+    }
+
+    private static class StartSuperSlowRecordingCallbackImpl implements BypassCamera.StartSuperSlowRecordingCallback {
+        private final DefaultRecorderController.CallbackLock mLock;
+
+        public StartSuperSlowRecordingCallbackImpl(DefaultRecorderController.CallbackLock callbackLock) {
+            this.mLock = callbackLock;
+        }
+
+        @Override // com.sonymobile.imageprocessor.bypasscamera2.BypassCamera.StartSuperSlowRecordingCallback
+        public void onStartSuperSlowRecordingDone() {
+            SuperSlowRecorderController.trace("onStartSuperSlowRecordingDone() E");
+            this.mLock.unlock();
+            SuperSlowRecorderController.trace("onStartSuperSlowRecordingDone() X");
+        }
+    }
+
     @Override // com.sonyericsson.android.camera.recorder.defaultrecorder.BaseRecorderController, com.sonyericsson.android.camera.recorder.RecorderController
     public long getRecordingTimeMillis() {
-        if (verifyState(BaseRecorderController$State.STOPPING, BaseRecorderController$State.RELEASING)) {
+        if (verifyState(BaseRecorderController.State.STOPPING, BaseRecorderController.State.RELEASING)) {
             return this.mMutableAudioSource.getCurrentPresentationTimeMillis() + computeSuperSlowRemainTime();
         }
         return super.getRecordingTimeMillis();
+    }
+
+    private class SuperSlowSourceFactory implements VariableSourceMediaRecorder.InputDataSourceFactory {
+        private SuperSlowSourceFactory() {
+        }
+
+        @Override // com.sonyericsson.android.camera.recorder.superslowrecorder.VariableSourceMediaRecorder.InputDataSourceFactory
+        public VideoFrameSource createVideoSource(MediaCodec mediaCodec, CamcorderProfile camcorderProfile) {
+            return new VideoFrameSource(mediaCodec);
+        }
+
+        @Override // com.sonyericsson.android.camera.recorder.superslowrecorder.VariableSourceMediaRecorder.InputDataSourceFactory
+        public InputDataSource createAudioSource(MediaCodec mediaCodec, CamcorderProfile camcorderProfile) {
+            SuperSlowRecorderController.this.mMutableAudioSource = new MutableAudioSampleDataSource(mediaCodec, camcorderProfile.audioSampleRate, camcorderProfile.audioChannels, 2, SuperSlowRecorderController.this.mMuteDurationInMillis, SuperSlowRecorderController.this.mSilentDurationInMillis);
+            return SuperSlowRecorderController.this.mMutableAudioSource;
+        }
     }
 }

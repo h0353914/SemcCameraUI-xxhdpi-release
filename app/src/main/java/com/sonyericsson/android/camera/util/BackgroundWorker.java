@@ -14,15 +14,18 @@ public class BackgroundWorker {
     private final Handler mHandler;
     private Looper mLooper = null;
 
-    static /* synthetic */ Looper access$002(BackgroundWorker backgroundWorker, Looper looper) {
-        backgroundWorker.mLooper = looper;
-        return looper;
-    }
-
-    public BackgroundWorker(String str) {
-        CountDownLatch countDownLatch = new CountDownLatch(1);
-        this.mExecutor = ThreadUtil.buildExecutor(TextUtils.isEmpty(str) ? "BgWorker" : str);
-        this.mExecutor.execute(new BackgroundWorker$1(this, countDownLatch));
+    public BackgroundWorker(String str) throws InterruptedException {
+        final CountDownLatch countDownLatch = new CountDownLatch(1);
+        this.mExecutor = ThreadUtil.buildExecutor(TextUtils.isEmpty(str) ? THREAD_NAME : str);
+        this.mExecutor.execute(new Runnable() { // from class: com.sonyericsson.android.camera.util.BackgroundWorker.1
+            @Override // java.lang.Runnable
+            public void run() {
+                Looper.prepare();
+                BackgroundWorker.this.mLooper = Looper.myLooper();
+                countDownLatch.countDown();
+                Looper.loop();
+            }
+        });
         try {
             countDownLatch.await();
         } catch (InterruptedException unused) {

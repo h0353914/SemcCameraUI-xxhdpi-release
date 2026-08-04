@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Çəkilişi tamamlamaq mümkün olmadı. Daha yavaş hərəkət edin.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Çəkilişi tamamlamaq mümkün olmadı. Daha sürətlə hərəkət edin.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Öz kameranı hərəkət etdirməklə panorama şəklini çək</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Aşağıdakı fayllar yaradılır:\n- Çoxbucaqlı təsvir\n- 3D təsviri\nQeyd: Bu fayllar boz sahəni ehtiva edir.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Aşağıdakı fayllar yaradılır:\n- Çoxbucaqlı təsvir\n- 3D təsviri</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Emal olunur…\nBu təsvir boz sahəni ehtiva edir</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Aşağıdakı fayllar yaradılır:
+- Çoxbucaqlı təsvir
+- 3D təsviri
+Qeyd: Bu fayllar boz sahəni ehtiva edir."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Aşağıdakı fayllar yaradılır:
+- Çoxbucaqlı təsvir
+- 3D təsviri"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Emal olunur…
+Bu təsvir boz sahəni ehtiva edir"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Təsvir saxlanılır</string>
     <string name="cam_3d_strings_dialog_processing_txt">Emal olunur…</string>
     <string name="cam_3d_strings_error_application_busy_txt">3D kamerasını işə salmaq üçün bir neçə saniyə gözləyin</string>
@@ -359,7 +365,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Dərinizin parlaq və hamar görünməsini təmin edin. Effekt ön kamera istifadə edən proqramlarda işləyir. Bu, foto və videolara tətbiq edilə bilər. Həmçinin səviyyəni tənzimləyə bilərsiniz.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Səviyyə tənzimlənməsi</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Hamar dəri</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Proqramı başlatmaq mümkün deyil.\nƏmin olun ki, cihazınızda ən son %1$s versiyası quraşdırılıb və aktivləşdirilib.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Proqramı başlatmaq mümkün deyil.
+Əmin olun ki, cihazınızda ən son %1$s versiyası quraşdırılıb və aktivləşdirilib."</string>
     <string name="cam_strings_gridline_txt">Şəbəkə sətirləri</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Ovcunuzu kameraya doğru çevirin. Avtotaymer ovcunuz tanınan kimi aktivləşdiriləcək. Tanınmanı asanlaşdırmaq üçün barmaqlarızı yuxarı uzadın.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Ovcunuzu kameraya doğru çevirin</string>
@@ -401,7 +408,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Ümumi parametrlər</string>
     <string name="cam_strings_more_txt">Daha çox</string>
     <string name="cam_strings_multi_window_txt">%1$s proqramını tam ekranda istifadə etmək üçün ayrılmış panelin ortasından tutub dartın</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">İndi başqa cihaz qoşulmuşdur.\nŞəkli cihazla görünüş axtarıcı ilə paylaşmaq istərdinizmi?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"İndi başqa cihaz qoşulmuşdur.
+Şəkli cihazla görünüş axtarıcı ilə paylaşmaq istərdinizmi?"</string>
     <string name="cam_strings_multicam_add_device_txt">Cihazı əlavə et</string>
     <string name="cam_strings_multicam_add_more_txt">Daha çox əlavə et</string>
     <string name="cam_strings_multicam_apply_txt">Hazırdır</string>
@@ -435,7 +443,8 @@
     <string name="cam_strings_predictive_capture_txt">Proqnozlaşdırılmış Çəkiliş</string>
     <string name="cam_strings_predictive_launch_guide_txt">Tam ekrana baxmaq üçün ekrana vurun</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Proq. işəsalma</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Kameranı cəld başlada bilərsiniz. Cihazı yuxarıya çevirin, landşaft görünüşündə saxlayın və kameranı obyektə doğru tutun. Cihaz kameranı avt. işə salacaq. \nBu funksiyanı kamera par. Proqnozlaşdırıcı işəsaslma böl. söndürə bilərsiniz.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Kameranı cəld başlada bilərsiniz. Cihazı yuxarıya çevirin, landşaft görünüşündə saxlayın və kameranı obyektə doğru tutun. Cihaz kameranı avt. işə salacaq. 
+Bu funksiyanı kamera par. Proqnozlaşdırıcı işəsaslma böl. söndürə bilərsiniz."</string>
     <string name="cam_strings_predictive_launch_txt">Proqnozlaşdırıcı işəsalma</string>
     <string name="cam_strings_preview_always_txt">Aktiv</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 saniyə</string>
@@ -468,7 +477,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s aşağıdakı icazə(lər)i tələb edir</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s icazəsi</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Bu əməliyyatı yerinə yetirmək üçün proqram aşağıdakı icazə(lər)i tələb edir.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">İcazə vermək üçün Proqram məlumatı &gt; İcazələr bölməsinə keç.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">İcazə vermək üçün Proqram məlumatı > İcazələr bölməsinə keç.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Davam etmək mümkün olmadı</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Foto və video çəkmək</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Məkanı gətirmək</string>
@@ -537,7 +546,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Çox asta hərəkət</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Asta hərəkət üçün kadr sürətini və yazma üslubunu dəyişə bilərsiniz</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Daha çox seçimlər</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Ekranın mərkəzindəki düyməyə vurmaqla dəyərli anı %1$s k/san sürətində dərhal yazın.\nParlaq mühitdə çəkiliş etmək daha yaxşı video yaratmağınıza kömək edəcək.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Ekranın mərkəzindəki düyməyə vurmaqla dəyərli anı %1$s k/san sürətində dərhal yazın.
+Parlaq mühitdə çəkiliş etmək daha yaxşı video yaratmağınıza kömək edəcək."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Mərkəzi düyməyə toxunmaqla %1$s kadr/san ilə doğru anı yaza bilərsiniz</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Ekranın mərkəzindəki düyməyə vurmaqla dəyərli anı %1$s k/san sürətində dərhal yazın</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Çox asta hərəkət (bir çəkiliş)</string>
@@ -548,7 +558,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Asta hərəkət</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Necə yazmalı</string>
     <string name="cam_strings_slow_motion_standard_txt">Asta hərəkət</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Dəyərli anı asta hərəkətlə göstərməklə, təsirli video hazırlayın.\nParlaq mühitdə çəkiliş etmək daha yaxşı video yaratmağınıza kömək edəcək.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Dəyərli anı asta hərəkətlə göstərməklə, təsirli video hazırlayın.
+Parlaq mühitdə çəkiliş etmək daha yaxşı video yaratmağınıza kömək edəcək."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">%1$s k/san sürətə keçməklə, müxtəlif sürətlərdə video yaza bilərsiniz</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Doğru anda mərkəzdəki düyməyə vurun</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Asta hərəkət yazılıb</string>
@@ -579,12 +590,12 @@
     <string name="cam_strings_sw_licence_title_txt">Proqram Təminatı Lisenziyaları</string>
     <string name="cam_strings_take_photo_txt">Şəkil çək</string>
     <string name="cam_strings_term_of_use_accept_txt">Qəbul et</string>
-    <string name="cam_strings_term_of_use_consent_txt">Mən Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;İstifadə Şərtləri ilə&lt;/a&gt; razıyam.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Mən Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">İstifadə Şərtləri ilə&lt;/a> razıyam.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Sizin bu xidmətdən istifadəniz tarif planınızdan asılı olaraq mobil tarif xərclərinin dəyişməsinə səbəb ola bilər.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile xidmətin bir hissəsi olaraq, həmçinin cihazın təkmilləşdirilməsi üçün nişanlanmış Android ID vahid cihaz identifikatoru, məkanla bağlı məlumat və vaxt göstəricisi haqqında məlumatı toplayacaq.</string>
     <string name="cam_strings_term_of_use_decline_txt">Rədd et</string>
     <string name="cam_strings_term_of_use_title_txt">Qaydalar və Şərtlər</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;İstifadə Şərtləri&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">İstifadə Şərtləri&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Fotoların seçimini ləğv et</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Saxlamaq mümkün olmadı</string>
     <string name="cam_strings_timeshift_save_complete_txt">Saxlanıldı</string>
@@ -611,7 +622,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Sabit 4K video yazma üçün yüksək sürətli SD kart istifadə etmədiyiniz halda bu parametri dəyişməməlisiniz (UHS Sürət Dərəcəsi 1 və ya daha yüksək və ya Sürət Dərəcəsi 10 tövsiyə edilir).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Növbəli sabit video yazma üçün yüksək sürətli SD kart istifadə etmədiyiniz halda bu parametri dəyişməməlisiniz (UHS Sürət Dərəcəsi 1 və ya daha yüksək və ya Sürət Dərəcəsi 10 tövsiyə edilir). Dəyişdirilsin?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Asta sürətlə sabit video yazma üçün yüksək sürətli SD kart istifadə etmədiyiniz halda bu parametri dəyişməməlisiniz (UHS Sürət Dərəcəsi 1 və ya daha yüksək və ya Sürət Dərəcəsi 10 tövsiyə edilir).</string>
-    <string name="cam_strings_video_explanatory_txt">Sabit video yazma üçün məlumat yaddaşını Daxili yaddaş ilə dəyişmənizi tövsiyə edirik. İndi dəyişmək istərdiniz?\n\nSD kartını məlumat yaddaşı kimi istifadə etməyə davam etsəniz, yüksək sürətli SD kartdan istifadə etdiyinizə əmin olun (UHS Sürət Dərəcəsi 1 və ya daha yüksək və ya Sürət Dərəcəsi 10 tövsiyə edilir).</string>
+    <string name="cam_strings_video_explanatory_txt">"Sabit video yazma üçün məlumat yaddaşını Daxili yaddaş ilə dəyişmənizi tövsiyə edirik. İndi dəyişmək istərdiniz?
+
+SD kartını məlumat yaddaşı kimi istifadə etməyə davam etsəniz, yüksək sürətli SD kartdan istifadə etdiyinizə əmin olun (UHS Sürət Dərəcəsi 1 və ya daha yüksək və ya Sürət Dərəcəsi 10 tövsiyə edilir)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">İkili kamera</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Hətta gecə və ya zəif işıqlandırılmış otaqda da ikili kameradan istifadə edərək az küylü (nöqtə) gözəl videolar çəkə bilərsiniz. Ultra-yüksək həssaslıq ilə çəkmək üçün kamera səhnələrə əsaslanaraq avtomatik olaraq tək və ikili kamera arasında dəyişir.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">İkili kamera ilə video çəkiliş</string>

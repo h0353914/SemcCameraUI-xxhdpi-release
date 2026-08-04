@@ -3,6 +3,20 @@ package com.sonyericsson.android.camera.recorder;
 public class RecorderException extends Exception {
     private static final long serialVersionUID = 1747395873533117021L;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public RecorderException() {
     }
 

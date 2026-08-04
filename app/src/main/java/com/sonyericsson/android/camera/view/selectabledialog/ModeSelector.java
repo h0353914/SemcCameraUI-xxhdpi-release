@@ -1,3 +1,49 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.view.selectabledialog;
 
 import android.content.Context;
@@ -5,44 +51,98 @@ import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.CameraApplication;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
+import com.sonyericsson.android.camera.view.modeselector.AddonMode;
 import com.sonyericsson.android.camera.view.modeselector.CapturingModeAttributes;
+import com.sonyericsson.android.camera.view.modeselector.InternalMode;
 import com.sonyericsson.android.camera.view.modeselector.Mode;
 import com.sonyericsson.android.camera.view.modeselector.ModeLoader;
-import com.sonyericsson.android.camera.view.modeselector.ModeLoader$OnModeListChangeListener;
 import com.sonyericsson.android.camera.view.modeselector.ModeSelectorInternalMode;
+import com.sonyericsson.android.camera.view.modeselector.view.AbsAppsUiSelectorAdapter;
+import com.sonyericsson.android.camera.view.modeselector.view.AbsPanelView;
+import com.sonyericsson.android.camera.view.modeselector.view.CapturingModePanelAttributes;
+import com.sonyericsson.android.camera.view.modeselector.view.CapturingModePanelView;
+import com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog;
+import com.sonyericsson.android.camera.view.selectabledialog.ScrollContainer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModeSelector extends AbsSelectableDialog implements ModeLoader$OnModeListChangeListener {
+public class ModeSelector extends AbsSelectableDialog implements ModeLoader.OnModeListChangeListener {
     protected static final boolean DEBUG = CamLog.VERBOSE;
     protected static final String TAG = "ModeSelector";
     private ModeLoader mModeLoader;
-    private ModeSelector$OnModeSelectListener mOnModeSelectListener;
+    private OnModeSelectListener mOnModeSelectListener;
 
-    static /* synthetic */ ModeLoader access$000(ModeSelector modeSelector) {
-        return modeSelector.mModeLoader;
+    public interface OnModeSelectListener {
+        void onModeSelected(Mode mode, boolean z);
     }
 
-    static /* synthetic */ ModeSelector$OnModeSelectListener access$100(ModeSelector modeSelector) {
-        return modeSelector.mOnModeSelectListener;
+    private class CapturingModeSelectorAdapter extends AbsAppsUiSelectorAdapter {
+        public CapturingModeSelectorAdapter(Context context) {
+            super(context, -1, null);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.modeselector.view.AbsAppsUiSelectorAdapter
+        public View onCreateItemView(int i, ViewGroup viewGroup) {
+            return getLayoutInflater().inflate(R.layout.mode_selector_grid_item_panel, (ViewGroup) null);
+        }
+
+        @Override // com.sonyericsson.android.camera.view.modeselector.view.AbsAppsUiSelectorAdapter
+        public View onPrepareItemView(int i, AbsPanelView absPanelView, ViewGroup viewGroup) {
+            CapturingModePanelView capturingModePanelView = (CapturingModePanelView) absPanelView;
+            if (capturingModePanelView.getLayoutParams() == null) {
+                capturingModePanelView.setLayoutParams(new LinearLayout.LayoutParams(ModeSelector.this.mParams.itemWidth, ModeSelector.this.mParams.itemHeight));
+            }
+            return super.onPrepareItemView(i, absPanelView, viewGroup);
+        }
     }
 
-    public ModeSelector(Context context, AbsSelectableDialog$Params absSelectableDialog$Params, int i, boolean z) {
-        super(context, absSelectableDialog$Params, z);
+    private class OnItemClickListener implements View.OnClickListener {
+        private OnItemClickListener() {
+        }
+
+        @Override // android.view.View.OnClickListener
+        public void onClick(View view) {
+            if (view.getTag() == null || !CapturingModePanelAttributes.class.isAssignableFrom(view.getTag().getClass())) {
+                return;
+            }
+            CapturingModePanelAttributes capturingModePanelAttributes = (CapturingModePanelAttributes) view.getTag();
+            Mode modeFindById = null;
+            for (ModeSelectorInternalMode modeSelectorInternalMode : ModeSelectorInternalMode.values()) {
+                if (modeSelectorInternalMode.name().equals(capturingModePanelAttributes.getModeName())) {
+                    modeFindById = ModeSelector.this.mModeLoader.findById(InternalMode.generateId(ModeSelector.this.mContext, modeSelectorInternalMode));
+                    if (modeSelectorInternalMode != ModeSelectorInternalMode.DUAL_MONOCHROME) {
+                        ModeSelector.this.mSettingDialogStack.closeAllSettingDialogs();
+                    }
+                    break;
+                }
+            }
+            if (modeFindById == null) {
+                modeFindById = ModeSelector.this.mModeLoader.findById(AddonMode.generateId(capturingModePanelAttributes.getPackageName(), capturingModePanelAttributes.getModeName()));
+            }
+            if (ModeSelector.this.mOnModeSelectListener != null) {
+                ModeSelector.this.mOnModeSelectListener.onModeSelected(modeFindById, false);
+            }
+        }
+    }
+
+    public ModeSelector(Context context, AbsSelectableDialog.Params params, int i, boolean z) {
+        super(context, params, z);
         ModeSelectorView modeSelectorView = new ModeSelectorView(context);
-        modeSelectorView.setOnItemClickListener(new ModeSelector$OnItemClickListener(this, null));
-        modeSelectorView.setup(true, absSelectableDialog$Params, this, -1, i, z);
+        modeSelectorView.setOnItemClickListener(new OnItemClickListener());
+        modeSelectorView.setup(true, params, this, -1, i, z);
         if (z) {
-            modeSelectorView.setScrollStatus(ScrollContainer$Status.FULLSCREEN);
+            modeSelectorView.setScrollStatus(ScrollContainer.Status.FULLSCREEN);
         }
         this.mDialogScrollView = modeSelectorView;
     }
 
-    public void setOnModeSelectListener(ModeSelector$OnModeSelectListener modeSelector$OnModeSelectListener) {
-        this.mOnModeSelectListener = modeSelector$OnModeSelectListener;
+    public void setOnModeSelectListener(OnModeSelectListener onModeSelectListener) {
+        this.mOnModeSelectListener = onModeSelectListener;
     }
 
     @Override // com.sonyericsson.android.camera.view.setting.dialog.SettingDialogInterface
@@ -58,7 +158,7 @@ public class ModeSelector extends AbsSelectableDialog implements ModeLoader$OnMo
         this.mModeLoader = modeLoader;
     }
 
-    @Override // com.sonyericsson.android.camera.view.modeselector.ModeLoader$OnModeListChangeListener
+    @Override // com.sonyericsson.android.camera.view.modeselector.ModeLoader.OnModeListChangeListener
     public void onModeListChanged(List<Mode> list, List<CapturingModeAttributes> list2) {
         ArrayList arrayList = new ArrayList();
         for (int i = 0; i < list.size(); i++) {
@@ -66,10 +166,10 @@ public class ModeSelector extends AbsSelectableDialog implements ModeLoader$OnMo
                 arrayList.add(list2.get(i));
             }
         }
-        ModeSelector$CapturingModeSelectorAdapter modeSelector$CapturingModeSelectorAdapter = new ModeSelector$CapturingModeSelectorAdapter(this, this.mContext);
-        modeSelector$CapturingModeSelectorAdapter.updateItems(CapturingModeAttributes.toAttributesList(this.mContext, arrayList));
+        CapturingModeSelectorAdapter capturingModeSelectorAdapter = new CapturingModeSelectorAdapter(this.mContext);
+        capturingModeSelectorAdapter.updateItems(CapturingModeAttributes.toAttributesList(this.mContext, arrayList));
         if (this.mDialogScrollView != null) {
-            addPanel(modeSelector$CapturingModeSelectorAdapter);
+            addPanel(capturingModeSelectorAdapter);
             adjustLayout();
             startOpenAnimation();
         }
@@ -124,10 +224,15 @@ public class ModeSelector extends AbsSelectableDialog implements ModeLoader$OnMo
         super.closeImmediate();
     }
 
-    @Override // com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog, com.sonyericsson.android.camera.view.selectabledialog.ScrollContainer$OnScrollListener
-    public void onScrollFinished(ScrollContainer$Status scrollContainer$Status) {
-        if (scrollContainer$Status == ScrollContainer$Status.EXIT) {
-            CameraApplication.getUiThreadHandler().post(new ModeSelector$1(this));
+    @Override // com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog, com.sonyericsson.android.camera.view.selectabledialog.ScrollContainer.OnScrollListener
+    public void onScrollFinished(ScrollContainer.Status status) {
+        if (status == ScrollContainer.Status.EXIT) {
+            CameraApplication.getUiThreadHandler().post(new Runnable() { // from class: com.sonyericsson.android.camera.view.selectabledialog.ModeSelector.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    ModeSelector.this.mSettingDialogStack.closeAllSettingDialogs();
+                }
+            });
         }
     }
 }

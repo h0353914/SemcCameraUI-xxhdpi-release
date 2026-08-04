@@ -4,15 +4,12 @@ import android.content.Context;
 import android.os.Handler;
 import android.util.Pair;
 import com.sonyericsson.android.camera.device.CameraActionSound;
-import com.sonyericsson.android.camera.recorder.RecorderController$RecorderListener;
+import com.sonyericsson.android.camera.recorder.RecorderController;
 import com.sonyericsson.android.camera.recorder.RecorderInterface;
 import com.sonyericsson.android.camera.recorder.RecorderParameters;
-import com.sonyericsson.android.camera.recorder.RecorderParameters$DataSpace;
 import com.sonyericsson.android.camera.recorder.utility.Accessor;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera;
-import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$DataSpace;
-import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera$RecordingParameters;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeoutException;
 
@@ -20,25 +17,22 @@ public class DefaultRecorderController extends BaseRecorderController {
     private static final long STOP_PROCESS_INTERVAL_MILLISECONDS = 100;
     private static final boolean TRACE = true;
     private final Accessor<BypassCamera> mBypassCamera;
-    private final DefaultRecorderController$CallbackLock mPrepareVideoRecordingCallbackLock;
-    private final DefaultRecorderController$CallbackLock mStartVideoRecordingCallbackLock;
-    private final DefaultRecorderController$CallbackLock mStopVideoRecordingCallbackLock;
+    private final CallbackLock mPrepareVideoRecordingCallbackLock;
+    private final CallbackLock mStartVideoRecordingCallbackLock;
+    private final CallbackLock mStopVideoRecordingCallbackLock;
 
-    static /* synthetic */ void access$000(String str) {
-        trace(str);
-    }
-
+    /* JADX INFO: Access modifiers changed from: private */
     private static void trace(String str) {
         CamLog.d(str);
     }
 
-    public DefaultRecorderController(Context context, Accessor<CameraActionSound> accessor, Accessor<BypassCamera> accessor2, RecorderInterface recorderInterface, RecorderController$RecorderListener recorderController$RecorderListener, long j, Handler handler, int i, Handler handler2, boolean z, boolean z2, boolean z3, boolean z4, boolean z5) {
-        super(context, accessor, recorderInterface, handler, recorderController$RecorderListener, j, i, handler2, z, z2, z3, z4);
+    public DefaultRecorderController(Context context, Accessor<CameraActionSound> accessor, Accessor<BypassCamera> accessor2, RecorderInterface recorderInterface, RecorderController.RecorderListener recorderListener, long j, Handler handler, int i, Handler handler2, boolean z, boolean z2, boolean z3, boolean z4, boolean z5) {
+        super(context, accessor, recorderInterface, handler, recorderListener, j, i, handler2, z, z2, z3, z4);
         trace("DefaultRecorderController() E");
         this.mBypassCamera = accessor2;
-        this.mPrepareVideoRecordingCallbackLock = new DefaultRecorderController$CallbackLock();
-        this.mStartVideoRecordingCallbackLock = new DefaultRecorderController$CallbackLock();
-        this.mStopVideoRecordingCallbackLock = new DefaultRecorderController$CallbackLock();
+        this.mPrepareVideoRecordingCallbackLock = new CallbackLock();
+        this.mStartVideoRecordingCallbackLock = new CallbackLock();
+        this.mStopVideoRecordingCallbackLock = new CallbackLock();
         if (z5) {
             disableAdjustRecordingTimeByRecorderNotification();
         }
@@ -55,7 +49,7 @@ public class DefaultRecorderController extends BaseRecorderController {
             trace("prepareCallBack() X failed.");
             return false;
         }
-        getBypassCamera().setVideoCallbacks(new DefaultRecorderController$PrepareVideoRecordingCallbackImpl(this.mPrepareVideoRecordingCallbackLock), new DefaultRecorderController$StartVideoRecordingCallbackImpl(this.mStartVideoRecordingCallbackLock), new DefaultRecorderController$StopVideoRecordingCallbackImpl(this.mStopVideoRecordingCallbackLock));
+        getBypassCamera().setVideoCallbacks(new PrepareVideoRecordingCallbackImpl(this.mPrepareVideoRecordingCallbackLock), new StartVideoRecordingCallbackImpl(this.mStartVideoRecordingCallbackLock), new StopVideoRecordingCallbackImpl(this.mStopVideoRecordingCallbackLock));
         trace("prepareCallBack() X");
         return true;
     }
@@ -125,7 +119,7 @@ public class DefaultRecorderController extends BaseRecorderController {
                     recorder.stop();
                 }
                 try {
-                    Thread.sleep(100L);
+                    Thread.sleep(STOP_PROCESS_INTERVAL_MILLISECONDS);
                 } catch (InterruptedException e) {
                     trace("sleep interrupted : " + e.getMessage());
                 }
@@ -151,7 +145,6 @@ public class DefaultRecorderController extends BaseRecorderController {
             } finally {
                 recorder.reset();
             }
-            recorder.reset();
         }
         trace("stopInternal() X");
         return true;
@@ -162,7 +155,7 @@ public class DefaultRecorderController extends BaseRecorderController {
         CountDownLatch countDownLatchRequestLatch = this.mPrepareVideoRecordingCallbackLock.requestLatch();
         try {
             try {
-                getBypassCamera().requestPrepareVideoRecording(getRecorder().getSurface(), new BypassCamera$RecordingParameters(convertDataSpace(recorderParameters.dataSpace())));
+                getBypassCamera().requestPrepareVideoRecording(getRecorder().getSurface(), new BypassCamera.RecordingParameters(convertDataSpace(recorderParameters.dataSpace())));
                 countDownLatchRequestLatch.await();
                 this.mPrepareVideoRecordingCallbackLock.release();
                 trace("prepareBypassCamera() X");
@@ -212,7 +205,87 @@ public class DefaultRecorderController extends BaseRecorderController {
         }
     }
 
-    private BypassCamera$DataSpace convertDataSpace(RecorderParameters$DataSpace recorderParameters$DataSpace) {
-        return new BypassCamera$DataSpace(recorderParameters$DataSpace.standard, recorderParameters$DataSpace.transfer, recorderParameters$DataSpace.range);
+    private BypassCamera.DataSpace convertDataSpace(RecorderParameters.DataSpace dataSpace) {
+        return new BypassCamera.DataSpace(dataSpace.standard, dataSpace.transfer, dataSpace.range);
+    }
+
+    private static class PrepareVideoRecordingCallbackImpl implements BypassCamera.PrepareVideoRecordingCallback {
+        private final CallbackLock mLock;
+
+        public PrepareVideoRecordingCallbackImpl(CallbackLock callbackLock) {
+            this.mLock = callbackLock;
+        }
+
+        @Override // com.sonymobile.imageprocessor.bypasscamera2.BypassCamera.PrepareVideoRecordingCallback
+        public void onPrepareVideoRecordingDone() {
+            DefaultRecorderController.trace("onPrepareVideoRecordingDone() E");
+            this.mLock.unlock();
+            DefaultRecorderController.trace("onPrepareVideoRecordingDone() X");
+        }
+    }
+
+    private static class StartVideoRecordingCallbackImpl implements BypassCamera.StartVideoRecordingCallback {
+        private final CallbackLock mLock;
+
+        public StartVideoRecordingCallbackImpl(CallbackLock callbackLock) {
+            this.mLock = callbackLock;
+        }
+
+        @Override // com.sonymobile.imageprocessor.bypasscamera2.BypassCamera.StartVideoRecordingCallback
+        public void onStartVideoRecordingDone() {
+            DefaultRecorderController.trace("onStartVideoRecordingDone() E");
+            this.mLock.unlock();
+            DefaultRecorderController.trace("onStartVideoRecordingDone() X");
+        }
+    }
+
+    private static class StopVideoRecordingCallbackImpl implements BypassCamera.StopVideoRecordingCallback {
+        private final CallbackLock mLock;
+
+        public StopVideoRecordingCallbackImpl(CallbackLock callbackLock) {
+            this.mLock = callbackLock;
+        }
+
+        @Override // com.sonymobile.imageprocessor.bypasscamera2.BypassCamera.StopVideoRecordingCallback
+        public void onStopVideoRecordingDone() {
+            DefaultRecorderController.trace("onStopVideoRecordingDone() E");
+            this.mLock.unlock();
+            DefaultRecorderController.trace("onStopVideoRecordingDone() X");
+        }
+    }
+
+    public static class CallbackLock {
+        private CountDownLatch mLatch = null;
+
+        public CountDownLatch requestLatch() {
+            CountDownLatch countDownLatch;
+            synchronized (this) {
+                if (this.mLatch != null) {
+                    CamLog.e("requestLock() Lock object already exists.");
+                } else {
+                    this.mLatch = new CountDownLatch(1);
+                }
+                countDownLatch = this.mLatch;
+            }
+            return countDownLatch;
+        }
+
+        public void release() {
+            synchronized (this) {
+                this.mLatch = null;
+            }
+        }
+
+        public void unlock() {
+            DefaultRecorderController.trace("unlock() E");
+            synchronized (this) {
+                if (this.mLatch == null) {
+                    return;
+                }
+                this.mLatch.countDown();
+                this.mLatch = null;
+                DefaultRecorderController.trace("unlock() X");
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.wbmp;
 
+import android.support.v4.view.ViewCompat;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -15,26 +16,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import kotlin.jvm.internal.ByteCompanionObject;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.ImageInfo;
-import org.apache.commons.imaging.ImageInfo$ColorType;
-import org.apache.commons.imaging.ImageInfo$CompressionAlgorithm;
 import org.apache.commons.imaging.ImageParser;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
+import org.apache.commons.imaging.ImagingConstants;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.common.ImageMetadata;
 import org.apache.commons.imaging.common.bytesource.ByteSource;
 import org.apache.commons.imaging.util.IoUtils;
 
 public class WbmpImageParser extends ImageParser {
-    private static final String[] ACCEPTED_EXTENSIONS = {".wbmp"};
     private static final String DEFAULT_EXTENSION = ".wbmp";
+    private static final String[] ACCEPTED_EXTENSIONS = {DEFAULT_EXTENSION};
 
     @Override // org.apache.commons.imaging.ImageParser
     public String getDefaultExtension() {
-        return ".wbmp";
+        return DEFAULT_EXTENSION;
     }
 
     @Override // org.apache.commons.imaging.ImageParser
@@ -68,15 +69,37 @@ public class WbmpImageParser extends ImageParser {
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public ImageInfo getImageInfo(ByteSource byteSource, Map<String, Object> map) throws Throwable {
-        WbmpImageParser$WbmpHeader wbmpHeader = readWbmpHeader(byteSource);
-        return new ImageInfo("WBMP", 1, new ArrayList(), ImageFormats.WBMP, "Wireless Application Protocol Bitmap", wbmpHeader.height, "image/vnd.wap.wbmp", 1, 0, 0.0f, 0, 0.0f, wbmpHeader.width, false, false, false, ImageInfo$ColorType.BW, ImageInfo$CompressionAlgorithm.NONE);
+    public ImageInfo getImageInfo(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
+        WbmpHeader wbmpHeader = readWbmpHeader(byteSource);
+        return new ImageInfo("WBMP", 1, new ArrayList(), ImageFormats.WBMP, "Wireless Application Protocol Bitmap", wbmpHeader.height, "image/vnd.wap.wbmp", 1, 0, 0.0f, 0, 0.0f, wbmpHeader.width, false, false, false, ImageInfo.ColorType.BW, ImageInfo.CompressionAlgorithm.NONE);
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public Dimension getImageSize(ByteSource byteSource, Map<String, Object> map) throws Throwable {
-        WbmpImageParser$WbmpHeader wbmpHeader = readWbmpHeader(byteSource);
+    public Dimension getImageSize(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
+        WbmpHeader wbmpHeader = readWbmpHeader(byteSource);
         return new Dimension(wbmpHeader.width, wbmpHeader.height);
+    }
+
+    static class WbmpHeader {
+        byte fixHeaderField;
+        int height;
+        int typeField;
+        int width;
+
+        public WbmpHeader(int i, byte b, int i2, int i3) {
+            this.typeField = i;
+            this.fixHeaderField = b;
+            this.width = i2;
+            this.height = i3;
+        }
+
+        public void dump(PrintWriter printWriter) {
+            printWriter.println("WbmpHeader");
+            printWriter.println("TypeField: " + this.typeField);
+            printWriter.println("FixHeaderField: 0x" + Integer.toHexString(this.fixHeaderField & 255));
+            printWriter.println("Width: " + this.width);
+            printWriter.println("Height: " + this.height);
+        }
     }
 
     private int readMultiByteInteger(InputStream inputStream) throws IOException, ImageReadException {
@@ -85,12 +108,12 @@ public class WbmpImageParser extends ImageParser {
         int i2 = 0;
         do {
             b = BinaryFunctions.readByte("Header", inputStream, "Error reading WBMP header");
-            i = (i << 7) | (b & 127);
+            i = (i << 7) | (b & ByteCompanionObject.MAX_VALUE);
             i2 += 7;
             if (i2 > 31) {
                 throw new ImageReadException("Overflow reading WBMP multi-byte field");
             }
-        } while ((b & 128) != 0);
+        } while ((b & ByteCompanionObject.MIN_VALUE) != 0);
         return i;
     }
 
@@ -106,26 +129,26 @@ public class WbmpImageParser extends ImageParser {
         outputStream.write(127 & i);
     }
 
-    private WbmpImageParser$WbmpHeader readWbmpHeader(ByteSource byteSource) throws Throwable {
+    private WbmpHeader readWbmpHeader(ByteSource byteSource) throws IOException, ImageReadException {
         InputStream inputStream;
         try {
             inputStream = byteSource.getInputStream();
             try {
-                WbmpImageParser$WbmpHeader wbmpHeader = readWbmpHeader(inputStream);
+                WbmpHeader wbmpHeader = readWbmpHeader(inputStream);
                 IoUtils.closeQuietly(true, inputStream);
                 return wbmpHeader;
-            } catch (Throwable th) {
-                th = th;
+            } catch (Exception th) {
+                
                 IoUtils.closeQuietly(false, inputStream);
-                throw th;
+                throw new ImageReadException("Error", th);
             }
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (Exception th2) {
             inputStream = null;
+            throw new ImageReadException("Error", th2);
         }
     }
 
-    private WbmpImageParser$WbmpHeader readWbmpHeader(InputStream inputStream) throws IOException, ImageReadException {
+    private WbmpHeader readWbmpHeader(InputStream inputStream) throws IOException, ImageReadException {
         int multiByteInteger = readMultiByteInteger(inputStream);
         if (multiByteInteger != 0) {
             throw new ImageReadException("Invalid/unsupported WBMP type " + multiByteInteger);
@@ -134,7 +157,7 @@ public class WbmpImageParser extends ImageParser {
         if ((b & 159) != 0) {
             throw new ImageReadException("Invalid/unsupported WBMP FixHeaderField 0x" + Integer.toHexString(255 & b));
         }
-        return new WbmpImageParser$WbmpHeader(multiByteInteger, b, readMultiByteInteger(inputStream), readMultiByteInteger(inputStream));
+        return new WbmpHeader(multiByteInteger, b, readMultiByteInteger(inputStream), readMultiByteInteger(inputStream));
     }
 
     @Override // org.apache.commons.imaging.ImageParser
@@ -143,15 +166,15 @@ public class WbmpImageParser extends ImageParser {
         return true;
     }
 
-    private BufferedImage readImage(WbmpImageParser$WbmpHeader wbmpImageParser$WbmpHeader, InputStream inputStream) throws IOException {
-        byte[] bytes = BinaryFunctions.readBytes("Pixels", inputStream, ((wbmpImageParser$WbmpHeader.width + 7) / 8) * wbmpImageParser$WbmpHeader.height, "Error reading image pixels");
-        WritableRaster writableRasterCreatePackedRaster = Raster.createPackedRaster(new DataBufferByte(bytes, bytes.length), wbmpImageParser$WbmpHeader.width, wbmpImageParser$WbmpHeader.height, 1, (Point) null);
-        IndexColorModel indexColorModel = new IndexColorModel(1, 2, new int[]{0, 16777215}, 0, false, -1, 0);
+    private BufferedImage readImage(WbmpHeader wbmpHeader, InputStream inputStream) throws IOException {
+        byte[] bytes = BinaryFunctions.readBytes("Pixels", inputStream, ((wbmpHeader.width + 7) / 8) * wbmpHeader.height, "Error reading image pixels");
+        WritableRaster writableRasterCreatePackedRaster = Raster.createPackedRaster(new DataBufferByte(bytes, bytes.length), wbmpHeader.width, wbmpHeader.height, 1, (Point) null);
+        IndexColorModel indexColorModel = new IndexColorModel(1, 2, new int[]{0, ViewCompat.MEASURED_SIZE_MASK}, 0, false, -1, 0);
         return new BufferedImage(indexColorModel, writableRasterCreatePackedRaster, indexColorModel.isAlphaPremultiplied(), new Properties());
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public final BufferedImage getBufferedImage(ByteSource byteSource, Map<String, Object> map) throws Throwable {
+    public final BufferedImage getBufferedImage(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
         InputStream inputStream;
         try {
             inputStream = byteSource.getInputStream();
@@ -159,22 +182,22 @@ public class WbmpImageParser extends ImageParser {
                 BufferedImage image = readImage(readWbmpHeader(inputStream), inputStream);
                 IoUtils.closeQuietly(true, inputStream);
                 return image;
-            } catch (Throwable th) {
-                th = th;
+            } catch (Exception th) {
+                
                 IoUtils.closeQuietly(false, inputStream);
-                throw th;
+                throw new ImageReadException("Error", th);
             }
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (Exception th2) {
             inputStream = null;
+            throw new ImageReadException("Error", th2);
         }
     }
 
     @Override // org.apache.commons.imaging.ImageParser
     public void writeImage(BufferedImage bufferedImage, OutputStream outputStream, Map<String, Object> map) throws ImageWriteException, IOException {
         HashMap map2 = map == null ? new HashMap() : new HashMap(map);
-        if (map2.containsKey("FORMAT")) {
-            map2.remove("FORMAT");
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_FORMAT)) {
+            map2.remove(ImagingConstants.PARAM_KEY_FORMAT);
         }
         if (!map2.isEmpty()) {
             throw new ImageWriteException("Unknown parameter: " + map2.keySet().iterator().next());

@@ -1,4 +1,9 @@
+
+
+
 package com.sonyericsson.android.camera.view.hint;
+
+import com.sonyericsson.android.camera.R;
 
 public class HintTextHighSensitivityFusionCondition extends HintTextContent {
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
@@ -8,7 +13,7 @@ public class HintTextHighSensitivityFusionCondition extends HintTextContent {
 
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
     public int getMessageResourceId() {
-        return 2131689853;
+        return R.string.cam_strings_fusion_error_too_close_txt;
     }
 
     public HintTextHighSensitivityFusionCondition() {

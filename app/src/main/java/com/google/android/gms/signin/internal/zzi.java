@@ -3,37 +3,90 @@ package com.google.android.gms.signin.internal;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.IInterface;
 import android.os.Looper;
 import android.os.RemoteException;
 import android.util.Log;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.AuthAccountRequest;
 import com.google.android.gms.common.internal.BinderWrapper;
 import com.google.android.gms.common.internal.ResolveAccountRequest;
 import com.google.android.gms.common.internal.ResolveAccountResponse;
 import com.google.android.gms.common.internal.zzj;
-import com.google.android.gms.common.internal.zzj$zzf;
 import com.google.android.gms.common.internal.zzp;
 import com.google.android.gms.common.internal.zzt;
 import com.google.android.gms.common.internal.zzx;
 import com.google.android.gms.internal.zzqw;
 import com.google.android.gms.internal.zzqx;
+import com.google.android.gms.signin.internal.zzd;
+import com.google.android.gms.signin.internal.zzf;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 
-public class zzi extends zzj<zzf> implements zzqw {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzi extends zzj<com.google.android.gms.signin.internal.zzf> implements zzqw {
     private final boolean zzaVl;
     private final ExecutorService zzaVm;
     private final zzqx zzaaT;
     private final com.google.android.gms.common.internal.zzf zzabI;
     private Integer zzafj;
 
-    public zzi(Context context, Looper looper, boolean z, com.google.android.gms.common.internal.zzf zzfVar, zzqx zzqxVar, GoogleApiClient$ConnectionCallbacks googleApiClient$ConnectionCallbacks, GoogleApiClient$OnConnectionFailedListener googleApiClient$OnConnectionFailedListener, ExecutorService executorService) {
-        super(context, looper, 44, zzfVar, googleApiClient$ConnectionCallbacks, googleApiClient$OnConnectionFailedListener);
+    private static class zza extends com.google.android.gms.signin.internal.zzd.zza {
+        private final ExecutorService zzaVm;
+        private final zzqx zzaaT;
+
+        public zza(zzqx zzqxVar, ExecutorService executorService) {
+            this.zzaaT = zzqxVar;
+            this.zzaVm = executorService;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        public GoogleApiClient.ServerAuthCodeCallbacks zzCg() throws RemoteException {
+            return this.zzaaT.zzCg();
+        }
+
+        public void zza(final String str, final String str2, final com.google.android.gms.signin.internal.zzf zzfVar) throws RemoteException {
+            this.zzaVm.submit(new Runnable() { // from class: com.google.android.gms.signin.internal.zzi.zza.2
+                @Override // java.lang.Runnable
+                public void run() {
+                    try {
+                        zzfVar.zzaq(zzCg().onUploadServerAuthCode(str, str2));
+                    } catch (RemoteException e) {
+                        Log.e("SignInClientImpl", "RemoteException thrown when processing uploadServerAuthCode callback", e);
+                    }
+                }
+            });
+        }
+
+        public void zza(final String str, final List<Scope> list, final com.google.android.gms.signin.internal.zzf zzfVar) throws RemoteException {
+            this.zzaVm.submit(new Runnable() { // from class: com.google.android.gms.signin.internal.zzi.zza.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    try {
+                        GoogleApiClient.ServerAuthCodeCallbacks.CheckResult checkResultOnCheckServerAuthorization = zzCg().onCheckServerAuthorization(str, Collections.unmodifiableSet(new HashSet(list)));
+                        zzfVar.zza(new CheckServerAuthResult(checkResultOnCheckServerAuthorization.zznD(), checkResultOnCheckServerAuthorization.zznE()));
+                    } catch (RemoteException e) {
+                        Log.e("SignInClientImpl", "RemoteException thrown when processing checkServerAuthorization callback", e);
+                    }
+                }
+            });
+        }
+
+        public void zzb(int i, Bundle bundle) throws RemoteException {
+            Log.d("SignInClientImpl", "received setAccountInfo via callback");
+        }
+
+        public void zza(int i, IBinder iBinder, Bundle bundle) {
+            Log.d("SignInClientImpl", "received onPostInitComplete via callback");
+        }
+    }
+
+    public zzi(Context context, Looper looper, boolean z, com.google.android.gms.common.internal.zzf zzfVar, zzqx zzqxVar, GoogleApiClient.ConnectionCallbacks connectionCallbacks, GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener, ExecutorService executorService) {
+        super(context, looper, 44, zzfVar, connectionCallbacks, onConnectionFailedListener);
         this.zzaVl = z;
         this.zzabI = zzfVar;
         this.zzaaT = zzqxVar;
@@ -47,7 +100,7 @@ public class zzi extends zzj<zzf> implements zzqw {
         bundle.putBoolean("com.google.android.gms.signin.internal.idTokenRequested", zzqxVar.zzlY());
         bundle.putString("com.google.android.gms.signin.internal.serverClientId", zzqxVar.zzmb());
         if (zzqxVar.zzCg() != null) {
-            bundle.putParcelable("com.google.android.gms.signin.internal.signInCallbacks", new BinderWrapper(new zzi$zza(zzqxVar, executorService).asBinder()));
+            bundle.putParcelable("com.google.android.gms.signin.internal.signInCallbacks", new BinderWrapper(new zza(zzqxVar, executorService).asBinder()));
         }
         if (num != null) {
             bundle.putInt("com.google.android.gms.common.internal.ClientSettings.sessionId", num.intValue());
@@ -59,7 +112,7 @@ public class zzi extends zzj<zzf> implements zzqw {
 
     @Override // com.google.android.gms.internal.zzqw
     public void connect() {
-        zza(new zzj$zzf(this));
+        zza(new zzj.zzf());
     }
 
     @Override // com.google.android.gms.internal.zzqw
@@ -71,13 +124,8 @@ public class zzi extends zzj<zzf> implements zzqw {
         }
     }
 
-    @Override // com.google.android.gms.common.internal.zzj
-    protected /* synthetic */ IInterface zzW(IBinder iBinder) {
-        return zzdO(iBinder);
-    }
-
     @Override // com.google.android.gms.internal.zzqw
-    public void zza(zzp zzpVar, Set<Scope> set, zze zzeVar) {
+    public void zza(zzp zzpVar, Set<Scope> set, com.google.android.gms.signin.internal.zze zzeVar) {
         zzx.zzb(zzeVar, "Expecting a valid ISignInCallbacks");
         try {
             zzpc().zza(new AuthAccountRequest(zzpVar, set), zzeVar);
@@ -115,8 +163,11 @@ public class zzi extends zzj<zzf> implements zzqw {
         }
     }
 
-    protected zzf zzdO(IBinder iBinder) {
-        return zzf$zza.zzdN(iBinder);
+    /* JADX INFO: Access modifiers changed from: protected */
+    @Override // com.google.android.gms.common.internal.zzj
+    /* renamed from: zzdO, reason: merged with bridge method [inline-methods] */
+    public com.google.android.gms.signin.internal.zzf zzW(IBinder iBinder) {
+        return com.google.android.gms.signin.internal.zzf.zza.zzdN(iBinder);
     }
 
     @Override // com.google.android.gms.common.internal.zzj
@@ -129,7 +180,7 @@ public class zzi extends zzj<zzf> implements zzqw {
         return "com.google.android.gms.signin.internal.ISignInService";
     }
 
-    @Override // com.google.android.gms.common.internal.zzj, com.google.android.gms.common.api.Api$zzb
+    @Override // com.google.android.gms.common.internal.zzj, com.google.android.gms.common.api.Api.zzb
     public boolean zzlN() {
         return this.zzaVl;
     }

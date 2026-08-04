@@ -33,7 +33,7 @@ public class IconTextIndicator extends Indicator implements Runnable {
             this.mText.removeCallbacks(this);
             if (this.mOn && this.mVisible && isLandscape()) {
                 this.mText.setVisibility(0);
-                this.mText.postDelayed(this, 2000L);
+                this.mText.postDelayed(this, TEXT_VISIBLE_DURATION);
             } else {
                 this.mText.setVisibility(8);
             }

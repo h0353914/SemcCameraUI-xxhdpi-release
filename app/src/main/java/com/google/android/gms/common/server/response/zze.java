@@ -2,10 +2,10 @@ package com.google.android.gms.common.server.response;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zze implements Parcelable$Creator<SafeParcelResponse> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zze implements Parcelable.Creator<SafeParcelResponse> {
     static void zza(SafeParcelResponse safeParcelResponse, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, safeParcelResponse.getVersionCode());
@@ -14,17 +14,9 @@ public class zze implements Parcelable$Creator<SafeParcelResponse> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ SafeParcelResponse createFromParcel(Parcel parcel) {
-        return zzaz(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ SafeParcelResponse[] newArray(int i) {
-        return zzbX(i);
-    }
-
-    public SafeParcelResponse zzaz(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaz, reason: merged with bridge method [inline-methods] */
+    public SafeParcelResponse createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         Parcel parcelZzE = null;
         int iZzg = 0;
@@ -49,10 +41,12 @@ public class zze implements Parcelable$Creator<SafeParcelResponse> {
         if (parcel.dataPosition() == iZzap) {
             return new SafeParcelResponse(iZzg, parcelZzE, fieldMappingDictionary);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public SafeParcelResponse[] zzbX(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbX, reason: merged with bridge method [inline-methods] */
+    public SafeParcelResponse[] newArray(int i) {
         return new SafeParcelResponse[i];
     }
 }

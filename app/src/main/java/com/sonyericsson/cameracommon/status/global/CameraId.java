@@ -14,7 +14,7 @@ public class CameraId extends IntegerValue implements GlobalCameraStatusValue {
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusValue
     public String getKey() {
-        return "camera_id";
+        return KEY;
     }
 
     public CameraId(int i) {

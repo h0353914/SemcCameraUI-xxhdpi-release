@@ -4,7 +4,12 @@ import java.io.UnsupportedEncodingException;
 import java.util.Comparator;
 
 public class IptcRecord {
-    public static final Comparator<IptcRecord> COMPARATOR = new IptcRecord$1();
+    public static final Comparator<IptcRecord> COMPARATOR = new Comparator<IptcRecord>() { // from class: org.apache.commons.imaging.formats.jpeg.iptc.IptcRecord.1
+        @Override // java.util.Comparator
+        public int compare(IptcRecord iptcRecord, IptcRecord iptcRecord2) {
+            return iptcRecord.iptcType.getType() - iptcRecord2.iptcType.getType();
+        }
+    };
     private final byte[] bytes;
     public final IptcType iptcType;
     public final String value;
@@ -15,7 +20,7 @@ public class IptcRecord {
         this.value = str;
     }
 
-    public IptcRecord(IptcType iptcType, String str) {
+    public IptcRecord(IptcType iptcType, String str) throws UnsupportedEncodingException {
         byte[] bytes;
         this.iptcType = iptcType;
         try {

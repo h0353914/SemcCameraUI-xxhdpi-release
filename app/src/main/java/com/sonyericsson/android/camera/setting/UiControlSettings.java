@@ -1,21 +1,22 @@
 package com.sonyericsson.android.camera.setting;
 
 import android.content.Context;
+import com.sonyericsson.android.camera.configuration.SharedPreferencesConstants;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
 public class UiControlSettings {
     private final SharedPreferencesAccessor mAccessor;
 
     UiControlSettings(Context context) {
-        this.mAccessor = new SharedPreferencesAccessor(context, "com.sonyericsson.android.camera.shared_preferences_view");
+        this.mAccessor = new SharedPreferencesAccessor(context, SharedPreferencesConstants.CAMERA_VIEW_SHARED_PREFERENCES_NAME);
     }
 
     public UserSettingKey getLastImageQualityControlTab(boolean z) {
         String string;
         if (z) {
-            string = this.mAccessor.readString("KEY_LAST_IMAGE_QUALITY_CONTROL_TAB_FRONT", UserSettingKey.EV.toString());
+            string = this.mAccessor.readString(SharedPreferencesConstants.KEY_LAST_IMAGE_QUALITY_CONTROL_TAB_FRONT, UserSettingKey.EV.toString());
         } else {
-            string = this.mAccessor.readString("KEY_LAST_IMAGE_QUALITY_CONTROL_TAB_MAIN", UserSettingKey.EV.toString());
+            string = this.mAccessor.readString(SharedPreferencesConstants.KEY_LAST_IMAGE_QUALITY_CONTROL_TAB_MAIN, UserSettingKey.EV.toString());
         }
         if (string.equals(UserSettingKey.EV.toString())) {
             return UserSettingKey.EV;
@@ -37,9 +38,9 @@ public class UiControlSettings {
 
     public void setLastImageQualityControlTab(UserSettingKey userSettingKey, boolean z) {
         if (z) {
-            this.mAccessor.writeString("KEY_LAST_IMAGE_QUALITY_CONTROL_TAB_FRONT", userSettingKey.toString(), false);
+            this.mAccessor.writeString(SharedPreferencesConstants.KEY_LAST_IMAGE_QUALITY_CONTROL_TAB_FRONT, userSettingKey.toString(), false);
         } else {
-            this.mAccessor.writeString("KEY_LAST_IMAGE_QUALITY_CONTROL_TAB_MAIN", userSettingKey.toString(), false);
+            this.mAccessor.writeString(SharedPreferencesConstants.KEY_LAST_IMAGE_QUALITY_CONTROL_TAB_MAIN, userSettingKey.toString(), false);
         }
     }
 

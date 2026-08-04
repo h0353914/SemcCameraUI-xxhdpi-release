@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Ekki tókst að ljúka myndatökunni. Færðu myndavélina hægar.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Ekki tókst að ljúka myndatökunni. Færðu myndavélina hraðar.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Taktu víðmynd með því að hreyfa myndavélina til hliðar</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Eftirfarandi skrár búnar til:\n- Mynd með margföldu sjónarhorni\n- Þrívíddarmynd\nAth.: Skrárnar gætu innihaldið grá svæði.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Eftirfarandi skrár búnar til:\n- Mynd með margf. sjónarhorni\n- Þrívíddarmynd</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Í vinnslu...\nMyndin inniheldur grá svæði</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Eftirfarandi skrár búnar til:
+- Mynd með margföldu sjónarhorni
+- Þrívíddarmynd
+Ath.: Skrárnar gætu innihaldið grá svæði."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Eftirfarandi skrár búnar til:
+- Mynd með margf. sjónarhorni
+- Þrívíddarmynd"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Í vinnslu...
+Myndin inniheldur grá svæði"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Vista mynd</string>
     <string name="cam_3d_strings_dialog_processing_txt">Í vinnslu...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Bíddu í nokkrar sekúndur þar til þrívíddarmyndavélin ræsist</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Láttu húðina virðast skínandi slétt. Áhrifin virka í forritum sem nota fremri myndavélina. Þetta er hægt að nota á myndum og myndskeiðum. Þú getur líka stillt það.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Stilling</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Mjúk húð</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Get ekki ræst forritið.\nGættu þess að nýjasta útgáfan af %1$s sé innsett og virk á tækinu.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Get ekki ræst forritið.
+Gættu þess að nýjasta útgáfan af %1$s sé innsett og virk á tækinu."</string>
     <string name="cam_strings_gridline_txt">Hnitalínur</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Snúðu lófanum að myndavélinnni. Það kviknar á tímastillingu þegar kennsl eru borin á lófann. Beindu fingrunum upp til að auðvelda það að bera kennsl á þig.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Snúðu lófanum að myndavélinni</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Algengar stillingar</string>
     <string name="cam_strings_more_txt">Meira</string>
     <string name="cam_strings_multi_window_txt">Dragðu miðhluta skiptistikunnar til að skipta yfir í að nota %1$s á öllum skjánum</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Annað tæki er nú tengt.\nViltu deila myndinni í gegnum leitarann með tækinu?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Annað tæki er nú tengt.
+Viltu deila myndinni í gegnum leitarann með tækinu?"</string>
     <string name="cam_strings_multicam_add_device_txt">Bæta við tæki</string>
     <string name="cam_strings_multicam_add_more_txt">Bæta fleirum við</string>
     <string name="cam_strings_multicam_apply_txt">Lokið</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Mæling</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Áætlað</string>
     <string name="cam_strings_predictive_capture_txt">Flýtiupptaka</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Myndavélin hefur opnast sjálfkrafa með því að greina hreyfingu þína við að lyfta símanum upp í lárétta stöðu og beina henni að hlut.\nÞú getur valið uppáhaldsaðferð þína til að nota þennan eiginleika úr Flýtiopnun í myndavélarstillingum.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Myndavélin hefur opnast sjálfkrafa með því að greina hreyfingu þína við að lyfta símanum upp í lárétta stöðu og beina henni að hlut.
+Þú getur valið uppáhaldsaðferð þína til að nota þennan eiginleika úr Flýtiopnun í myndavélarstillingum."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Snertu inn í hringinn til að taka mynd</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Snertu skjáinn til að taka mynd</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Pikkaðu innan í hringinn til að sjá allan skjáinn.</string>
     <string name="cam_strings_predictive_launch_guide_txt">Snertu inn í hringnum til að ræsa myndavél</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Snerta til að ræsa og taka mynd</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Snerta til að ræsa</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Þú getur opnar myndavélina hratt. Sveiflaðu upp og haltu tækinu í langsniði og láttu vélina snúa að myndefninu. Tækið opnar myndavélina sjálfkrafa.\nÞú getur valið uppáhalds leið þína til að nota þessa virkni úr Snjallopnun í myndavélarstillingum.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Þú getur opnar myndavélina hratt. Sveiflaðu upp og haltu tækinu í langsniði og láttu vélina snúa að myndefninu. Tækið opnar myndavélina sjálfkrafa.
+Þú getur valið uppáhalds leið þína til að nota þessa virkni úr Snjallopnun í myndavélarstillingum."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Snjallopnun</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Þú getur opnar myndavélina hratt. Sveiflaðu upp og haltu tækinu í langsniði og láttu vélina snúa að myndefninu. Tækið opnar myndavélina sjálfkrafa.\nÞú getur slökkt á þessari aðgerð úr Snjallopnun í myndavélarstillingunum.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Þú getur opnar myndavélina hratt. Sveiflaðu upp og haltu tækinu í langsniði og láttu vélina snúa að myndefninu. Tækið opnar myndavélina sjálfkrafa.
+Þú getur slökkt á þessari aðgerð úr Snjallopnun í myndavélarstillingunum."</string>
     <string name="cam_strings_predictive_launch_txt">Snjallopnun</string>
     <string name="cam_strings_preview_always_txt">Kveikt</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 sekúndur</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s krefst eftirfarandi heimilda(r)</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s heimild</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Forritið krefst eftirfarandi heimilda(r) til að framkvæma þessa aðgerð.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Til að veita heimildir ferðu í Forritsupplýsingar &gt; Heimildir.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Til að veita heimildir ferðu í Forritsupplýsingar > Heimildir.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Gat ekki haldið áfram</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Til að taka myndir og myndskeið</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Til að sækja staðsetningu</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Vistað í innri geymslu</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">FÆRA</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Forritið krefst eftirfarandi heimilda(r) til að framkvæma þessa aðgerð.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Til að nota SD-kort þarf myndavélin að fá heimild til að fá aðgang að SD-kortinu.\nBreyttu gagnageymslu yfir á SD-kortið aftur eða leyfðu myndavélinni að fá aðgang að SD-kortinu í næstu skjámynd.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Til að nota SD-kort þarf myndavélin að fá heimild til að fá aðgang að SD-kortinu.
+Breyttu gagnageymslu yfir á SD-kortið aftur eða leyfðu myndavélinni að fá aðgang að SD-kortinu í næstu skjámynd."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD-kort ekki tiltækt</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Nýtt SD-kort sem þarfnast samþykkis hefur greinst.\n\nTil að nota SD-kortið sem gagnageymslu þarftu að velja SD-kortið eða DCIM-skrána á næsta skjá.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SD-kortið eða DCIM-skráin voru ekki valin.Ekki er hægt að nota SD-kortið.\n\nTil að veita samþykki skaltu byrja með því að breyta vistunarstaðnum í SD-kortið eða velja viðeigandi skrá á æsta skjá.</string>
-    <string name="cam_strings_sd_permission_info_txt">Nýtt SD-kort sem þarfnast heimildar fannst.\nÞess vegna þarf að nota innværa geymslu í tækinu sem sjálfgefna gagnageymslu.\n\nTil að nota SD-kortið sem gagnageymslu þarftu að fara í myndavélarstillingar og breyta valkostinum um geymslu í SD-kort.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Nýtt SD-kort sem þarfnast samþykkis hefur greinst.
+
+Til að nota SD-kortið sem gagnageymslu þarftu að velja SD-kortið eða DCIM-skrána á næsta skjá."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD-kortið eða DCIM-skráin voru ekki valin.Ekki er hægt að nota SD-kortið.
+
+Til að veita samþykki skaltu byrja með því að breyta vistunarstaðnum í SD-kortið eða velja viðeigandi skrá á æsta skjá."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Nýtt SD-kort sem þarfnast heimildar fannst.
+Þess vegna þarf að nota innværa geymslu í tækinu sem sjálfgefna gagnageymslu.
+
+Til að nota SD-kortið sem gagnageymslu þarftu að fara í myndavélarstillingar og breyta valkostinum um geymslu í SD-kort."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Að vista myndir og myndbönd á SD-korti</string>
     <string name="cam_strings_select_picture_txt">Veldu mynd</string>
     <string name="cam_strings_self_timer_05_txt">0,5 sek.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Sjálfvirk myndataka</string>
     <string name="cam_strings_side_touch_not_supported_txt">Hliðarskynjun er ekki í boði á þessum skjá</string>
     <string name="cam_strings_side_touch_on_title_txt">Hliðarskynjun</string>
-    <string name="cam_strings_side_touch_on_txt">Til að nota þennan eiginleika skaltu fara í Stillingar &gt; Skjár og kveikja á hliðarskynjun. Á að virkja hana núna?</string>
+    <string name="cam_strings_side_touch_on_txt">Til að nota þennan eiginleika skaltu fara í Stillingar > Skjár og kveikja á hliðarskynjun. Á að virkja hana núna?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Hliðarskynjun</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Þú getur tekið mynd eða myndband með því að pikka einfaldlega á á skynjarann á hlið tækisins án þess að pikka á smellihnappinn. Þú getur einnig súmmað að og frá með því að renna fingrinum eftir þessum hliðarskynjara.\nBæði mynd- og myndbandsstillingar styðja þessa aðgerð. Þú getur slökkt á henni úr Hliðarskynjun í myndavélarstillingunum.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Þú getur tekið mynd eða myndband með því að pikka einfaldlega á skynjarann á hlið tækisins í lóðréttri skjámynd án þess að pikka á smellihnappinn. Þú getur einnig súmmað að og frá með því að renna fingrinum eftir þessum hliðarskynjara.\nBæði mynd- og myndbandsstillingar styðja þessa aðgerð. Þú getur slökkt á henni úr Hliðarskynjun í myndavélarstillingunum.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Þú getur tekið mynd eða myndband með því að pikka einfaldlega á skynjarann á hlið tækisins með lóðrétta skjámynd án þess að pikka smellihnappinn.\nBæði mynd- og myndbandsstillingar styðja þessa aðgerð. Þú getur slökkt á henni úr Hliðarskynjun í myndavélarstillingunum.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Þú getur tekið mynd eða myndband með því að pikka einfaldlega á skynjarann á hlið tækisins án þess að pikka á smellihnappinn.\nBæði mynd- og myndbandsstillingar styðja þessa aðgerð. Þú getur slökkt á henni úr Hliðarskynjun í myndavélarstillingunum.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Þú getur tekið mynd eða myndband með því að pikka einfaldlega á á skynjarann á hlið tækisins án þess að pikka á smellihnappinn. Þú getur einnig súmmað að og frá með því að renna fingrinum eftir þessum hliðarskynjara.
+Bæði mynd- og myndbandsstillingar styðja þessa aðgerð. Þú getur slökkt á henni úr Hliðarskynjun í myndavélarstillingunum."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Þú getur tekið mynd eða myndband með því að pikka einfaldlega á skynjarann á hlið tækisins í lóðréttri skjámynd án þess að pikka á smellihnappinn. Þú getur einnig súmmað að og frá með því að renna fingrinum eftir þessum hliðarskynjara.
+Bæði mynd- og myndbandsstillingar styðja þessa aðgerð. Þú getur slökkt á henni úr Hliðarskynjun í myndavélarstillingunum."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Þú getur tekið mynd eða myndband með því að pikka einfaldlega á skynjarann á hlið tækisins með lóðrétta skjámynd án þess að pikka smellihnappinn.
+Bæði mynd- og myndbandsstillingar styðja þessa aðgerð. Þú getur slökkt á henni úr Hliðarskynjun í myndavélarstillingunum."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Þú getur tekið mynd eða myndband með því að pikka einfaldlega á skynjarann á hlið tækisins án þess að pikka á smellihnappinn.
+Bæði mynd- og myndbandsstillingar styðja þessa aðgerð. Þú getur slökkt á henni úr Hliðarskynjun í myndavélarstillingunum."</string>
     <string name="cam_strings_side_touch_txt">Hliðarskynjun</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Hægt er að breyta upptökustíl og skjáskerpu í Myndavélarstillingum</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Sérstaklega hægt (eitt skipti)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Mjög mikil hægspilun</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Þú getur breytt römmum/sek. og upptökustíl fyrir hægspilun</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Fleiri kostir</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Taktu samstundis upp gott augnablik í %1$s römmum/sek. í hægspilun með því að pikka á hnappinn fyrir miðju skjásins.\nEf upptakan er gerð í góðri birtu geturðu búið til betra myndskeið.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Taktu samstundis upp gott augnablik í %1$s römmum/sek. í hægspilun með því að pikka á hnappinn fyrir miðju skjásins.
+Ef upptakan er gerð í góðri birtu geturðu búið til betra myndskeið."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Þú getur skrásett rétt augnablik á %1$s fps með því að pikka á miðhnappinn</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Taktu samstundis upp gott augnablik í %1$s römmum/sek. í hægspilun með því að pikka á hnappinn fyrir miðju skjásins</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Mjög mikil hægspilun (eitt skot)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Hægspilun</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Tekið upp</string>
     <string name="cam_strings_slow_motion_standard_txt">Hægspilun</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Búðu til flott myndskeið með því að sýna vel valið augnablik í hægspilun.\nEf upptakan er gerð í góðri birtu geturðu búið til betra myndskeið.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Búðu til flott myndskeið með því að sýna vel valið augnablik í hægspilun.
+Ef upptakan er gerð í góðri birtu geturðu búið til betra myndskeið."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Þú getur tekið upp myndskeið mishratt með því að skipta í %1$s fps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Pikkaðu á miðjutakkann á rétta augnablikinu</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Tekið upp í hægspilun</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Hugbúnaðarleyfi</string>
     <string name="cam_strings_take_photo_txt">Taka ljósmynd</string>
     <string name="cam_strings_term_of_use_accept_txt">Samþykkja</string>
-    <string name="cam_strings_term_of_use_consent_txt">Ég samþykki &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Notkunarskilmála&lt;/a&gt; Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Ég samþykki &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Notkunarskilmála&lt;/a> Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Notkun þín á þessari þjónustu kann að hafa í för með sér gagnaflutningsgjöld, allt eftir áskrift þinni.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile ruglar og geymir stytt Android-kenni tækisins, staðsetningargögn og tímastimpil í því skyni að veita þér viðeigandi niðurstöður sem hluta af þjónustunni og til að bæta þjónustuna.</string>
     <string name="cam_strings_term_of_use_decline_txt">Hafna</string>
     <string name="cam_strings_term_of_use_title_txt">Skilmálar</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Notkunarskilmálar&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Notkunarskilmálar&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Afvelja myndir</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Gat ekki vistað</string>
     <string name="cam_strings_timeshift_save_complete_txt">Vistað</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Til að taka upp stöðuga 4K myndskeiðsupptöku máttu ekki breyta þessari stillingu nema þú sért að nota háhraða SD-kort (UHS hraðaflokk 1 eða hærri eða hraðaflokk 10, sem mælt er með).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Til að taka upp stöðuga Timeshift myndskeiðsupptöku þarftu að breyta þessari stillingu nema þú sért að nota háhraða SD-kort (UHS hraðaflokk 1 eða hærri eða hraðaflokk 10 sem mælt er með). Viltu samt breyta þessu?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Ti að taka upp hæga myndskeiðsupptöku skaltu ekki breyta þessari stillingu nema þú sért að nota háhraða SD-kort (UHS hraðaflokk 1 eða hærri eða hraðaflokk 10, sem mælt er með).</string>
-    <string name="cam_strings_video_explanatory_txt">Til að taka upp myndskeið á öruggan hátt mælum við með því að þú breytir gagnavistun í netvistun. Viltu breyta þessu núna?\n\nEf þú heldur áfram að nota SD-kort fyrir gagnavistun skaltu gæta þess að nota háhraða SD-kort (UHS hraðaflokk 1 eða hærri eða hraðaflokk 10 sem mælt er með).</string>
+    <string name="cam_strings_video_explanatory_txt">"Til að taka upp myndskeið á öruggan hátt mælum við með því að þú breytir gagnavistun í netvistun. Viltu breyta þessu núna?
+
+Ef þú heldur áfram að nota SD-kort fyrir gagnavistun skaltu gæta þess að nota háhraða SD-kort (UHS hraðaflokk 1 eða hærri eða hraðaflokk 10 sem mælt er með)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Tvöföld myndavél</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Þú getur tekið upp falleg myndbðnd við lágt birtustig með því að nota tvöfalda myndavél, jafnvel að nóttu til eða í herbergi með daufa lýsingu. Myndavélin skiptir sjálfkrafa á milli einfaldrar og tvöfaldrar myndavélar eftir því hvaða umhverfi er tekið upp með mjög háu ljósnæmi.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Myndband tekið með tvöfaldri myndavél</string>

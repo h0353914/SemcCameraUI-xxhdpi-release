@@ -14,21 +14,22 @@ import org.apache.commons.imaging.common.bytesource.ByteSourceArray;
 import org.apache.commons.imaging.common.bytesource.ByteSourceFile;
 import org.apache.commons.imaging.common.bytesource.ByteSourceInputStream;
 import org.apache.commons.imaging.formats.jpeg.JpegConstants;
+import org.apache.commons.imaging.formats.jpeg.xmp.JpegRewriter;
 
 public class JpegXmpRewriter extends JpegRewriter {
-    public void removeXmpXml(File file, OutputStream outputStream) throws IOException, ImageReadException {
+    public void removeXmpXml(File file, OutputStream outputStream) throws IOException, ImageReadException, ImageWriteException {
         removeXmpXml(new ByteSourceFile(file), outputStream);
     }
 
-    public void removeXmpXml(byte[] bArr, OutputStream outputStream) throws IOException, ImageReadException {
+    public void removeXmpXml(byte[] bArr, OutputStream outputStream) throws IOException, ImageReadException, ImageWriteException {
         removeXmpXml(new ByteSourceArray(bArr), outputStream);
     }
 
-    public void removeXmpXml(InputStream inputStream, OutputStream outputStream) throws IOException, ImageReadException {
+    public void removeXmpXml(InputStream inputStream, OutputStream outputStream) throws IOException, ImageReadException, ImageWriteException {
         removeXmpXml(new ByteSourceInputStream(inputStream, null), outputStream);
     }
 
-    public void removeXmpXml(ByteSource byteSource, OutputStream outputStream) throws IOException, ImageReadException {
+    public void removeXmpXml(ByteSource byteSource, OutputStream outputStream) throws IOException, ImageReadException, ImageWriteException {
         writeSegments(outputStream, removeXmpSegments(analyzeJFIF(byteSource).pieces));
     }
 
@@ -51,7 +52,7 @@ public class JpegXmpRewriter extends JpegRewriter {
         int i = 0;
         while (i < bytes.length) {
             int iMin = Math.min(bytes.length, 65535);
-            arrayList.add(new JpegRewriter$JFIFPieceSegment(65505, writeXmpSegment(bytes, i, iMin)));
+            arrayList.add(new JpegRewriter.JFIFPieceSegment(JpegConstants.JPEG_APP1_MARKER, writeXmpSegment(bytes, i, iMin)));
             i += iMin;
         }
         writeSegments(outputStream, insertAfterLastAppSegments(listRemoveXmpSegments, arrayList));

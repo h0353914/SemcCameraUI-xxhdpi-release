@@ -5,52 +5,76 @@ import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import android.util.Size;
+import android.support.v4.media.session.PlaybackStateCompat;
 import com.sonyericsson.android.camera.CameraActivity;
-import com.sonyericsson.android.camera.CameraActivity$LayoutOrientation;
-import com.sonyericsson.android.camera.LaunchCondition$ExtraOperation;
-import com.sonyericsson.android.camera.LaunchCondition$LaunchTrigger;
+import com.sonyericsson.android.camera.CameraApplication;
+import com.sonyericsson.android.camera.LaunchCondition;
+import com.sonyericsson.android.camera.configuration.IntentReader;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
+import com.sonyericsson.android.camera.configuration.parameters.AspectRatio;
+import com.sonyericsson.android.camera.configuration.parameters.AutoReview;
 import com.sonyericsson.android.camera.configuration.parameters.CameraKey;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.configuration.parameters.DestinationToSave;
+import com.sonyericsson.android.camera.configuration.parameters.DisplayFlash;
+import com.sonyericsson.android.camera.configuration.parameters.DistortionCorrection;
+import com.sonyericsson.android.camera.configuration.parameters.Ev;
+import com.sonyericsson.android.camera.configuration.parameters.Facing;
 import com.sonyericsson.android.camera.configuration.parameters.FastCapture;
+import com.sonyericsson.android.camera.configuration.parameters.Flash;
+import com.sonyericsson.android.camera.configuration.parameters.FocusMode;
+import com.sonyericsson.android.camera.configuration.parameters.FocusRange;
+import com.sonyericsson.android.camera.configuration.parameters.FrontAngle;
 import com.sonyericsson.android.camera.configuration.parameters.FusionMode;
 import com.sonyericsson.android.camera.configuration.parameters.Geotag;
+import com.sonyericsson.android.camera.configuration.parameters.GridLine;
+import com.sonyericsson.android.camera.configuration.parameters.Hdr;
+import com.sonyericsson.android.camera.configuration.parameters.HelpGuide;
 import com.sonyericsson.android.camera.configuration.parameters.Iso;
 import com.sonyericsson.android.camera.configuration.parameters.Metering;
+import com.sonyericsson.android.camera.configuration.parameters.ObjectTracking;
+import com.sonyericsson.android.camera.configuration.parameters.PhotoLight;
+import com.sonyericsson.android.camera.configuration.parameters.PredictiveCapture;
+import com.sonyericsson.android.camera.configuration.parameters.PredictiveLaunch;
+import com.sonyericsson.android.camera.configuration.parameters.ResetSettings;
 import com.sonyericsson.android.camera.configuration.parameters.Resolution;
 import com.sonyericsson.android.camera.configuration.parameters.SelfTimer;
 import com.sonyericsson.android.camera.configuration.parameters.ShutterSound;
+import com.sonyericsson.android.camera.configuration.parameters.ShutterSpeed;
+import com.sonyericsson.android.camera.configuration.parameters.ShutterTrigger;
 import com.sonyericsson.android.camera.configuration.parameters.SideSense;
 import com.sonyericsson.android.camera.configuration.parameters.SlowMotion;
 import com.sonyericsson.android.camera.configuration.parameters.SmileCapture;
+import com.sonyericsson.android.camera.configuration.parameters.SoftSkin;
 import com.sonyericsson.android.camera.configuration.parameters.TouchCapture;
 import com.sonyericsson.android.camera.configuration.parameters.TouchIntention;
 import com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable;
+import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue;
+import com.sonyericsson.android.camera.configuration.parameters.VideoCodec;
 import com.sonyericsson.android.camera.configuration.parameters.VideoHdr;
+import com.sonyericsson.android.camera.configuration.parameters.VideoShutterTrigger;
 import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
 import com.sonyericsson.android.camera.configuration.parameters.VideoSmileCapture;
 import com.sonyericsson.android.camera.configuration.parameters.VideoStabilizer;
+import com.sonyericsson.android.camera.configuration.parameters.VolumeKey;
+import com.sonyericsson.android.camera.configuration.parameters.WhiteBalance;
+import com.sonyericsson.android.camera.controller.GestureShutter;
+import com.sonyericsson.android.camera.controller.launcher.ApplicationLauncher;
+import com.sonyericsson.android.camera.controller.selftimerfeedback.LedLight;
+import com.sonyericsson.android.camera.controller.selftimerfeedback.SelfTimerFeedback;
 import com.sonyericsson.android.camera.device.CameraDeviceHandler;
-import com.sonyericsson.android.camera.device.CameraDeviceHandler$ErrorCode;
 import com.sonyericsson.android.camera.device.CameraInfo;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
-import com.sonyericsson.android.camera.device.CameraParameterConverter$SceneMode;
-import com.sonyericsson.android.camera.device.CameraParameters$DeviceStabilityCondition;
-import com.sonyericsson.android.camera.device.CameraParameters$FaceDetectionResult;
-import com.sonyericsson.android.camera.device.CameraParameters$FusionResult;
-import com.sonyericsson.android.camera.device.CameraParameters$ObjectTrackingResult;
-import com.sonyericsson.android.camera.device.CameraParameters$SceneRecognitionResult;
+import com.sonyericsson.android.camera.device.CameraParameterConverter;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.device.PlatformDependencyResolver;
 import com.sonyericsson.android.camera.parameter.dependency.DependencyCheckUtil;
-import com.sonyericsson.android.camera.recorder.RecorderController$RecorderListener;
+import com.sonyericsson.android.camera.recorder.RecorderController;
 import com.sonyericsson.android.camera.recorder.RecordingProfile;
-import com.sonyericsson.android.camera.recorder.RecordingProfile$Builder;
 import com.sonyericsson.android.camera.recorder.superslowrecorder.OnSuperSlowRecordingFinishedListener;
 import com.sonyericsson.android.camera.research.LocalResearchUtil;
 import com.sonyericsson.android.camera.setting.LastSettings;
@@ -58,57 +82,63 @@ import com.sonyericsson.android.camera.setting.MessageSettings;
 import com.sonyericsson.android.camera.setting.MessageType;
 import com.sonyericsson.android.camera.setting.UserSettings;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.util.CapturePerformanceLogger;
 import com.sonyericsson.android.camera.util.MaxVideoSize;
 import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.android.camera.util.SettingUtil;
 import com.sonyericsson.android.camera.util.ThreadUtil;
 import com.sonyericsson.android.camera.util.capability.CameraCapabilityList;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
-import com.sonyericsson.android.camera.view.UserEventHandler$VirtualKeyEvent;
-import com.sonyericsson.android.camera.view.UserEventHandler$VirtualKeyEventDispatcher;
+import com.sonyericsson.android.camera.view.UserEventHandler;
 import com.sonyericsson.android.camera.view.ViewFinder;
-import com.sonyericsson.android.camera.view.ViewFinder$BurstRejectedReason;
-import com.sonyericsson.android.camera.view.ViewFinder$HeadUpDisplaySetupState;
-import com.sonyericsson.android.camera.view.ViewFinder$UiComponentKind;
-import com.sonyericsson.android.camera.view.ViewFinder$ViewUpdateEvent;
-import com.sonyericsson.android.camera.view.animation.AnimationRequest$AnimationType;
+import com.sonyericsson.android.camera.view.angle.VariableIndex;
+import com.sonyericsson.android.camera.view.animation.AnimationRequest;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
 import com.sonyericsson.android.camera.view.messagedialog.DialogId;
+import com.sonyericsson.android.camera.view.modeselector.ModeSelectorInternalMode;
+import com.sonyericsson.cameracommon.constants.CommonConstants;
 import com.sonyericsson.cameracommon.contentsview.ContentsViewController;
 import com.sonyericsson.cameracommon.contentsview.PredictiveCaptureStoreInfo;
+import com.sonyericsson.cameracommon.contentsview.contents.Content;
+import com.sonyericsson.cameracommon.focusview.FocusRectangles;
+import com.sonyericsson.cameracommon.intent.IntentConstants;
+import com.sonyericsson.cameracommon.mediasaving.MediaSavingConstants;
+import com.sonyericsson.cameracommon.mediasaving.MediaSavingResult;
 import com.sonyericsson.cameracommon.mediasaving.StoreDataResult;
 import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusCommon;
 import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusPhoto;
-import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusPhoto$Facing;
 import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusVideo;
+import com.sonyericsson.cameracommon.sound.SoundPlayer;
+import com.sonyericsson.cameracommon.status.EachCameraStatusPublisher;
+import com.sonyericsson.cameracommon.status.eachcamera.VideoRecordingFps;
+import com.sonyericsson.cameracommon.status.eachcamera.VideoResolution;
+import com.sonyericsson.cameracommon.status.eachcamera.VideoStabilizerStatus;
 import com.sonyericsson.cameracommon.storage.PredictiveCapturePathBuilder;
 import com.sonyericsson.cameracommon.storage.RequestFactory;
-import com.sonyericsson.cameracommon.storage.RequestFactory$PhotoSavingRequestBuilder;
-import com.sonyericsson.cameracommon.storage.RequestFactory$RequestBuilder;
-import com.sonyericsson.cameracommon.storage.RequestFactory$VideoSavingRequestBuilder;
 import com.sonyericsson.cameracommon.storage.SavingRequest;
-import com.sonyericsson.cameracommon.storage.SavingTaskManager$SavedFileType;
+import com.sonyericsson.cameracommon.storage.SavingTaskManager;
 import com.sonyericsson.cameracommon.storage.Storage;
-import com.sonyericsson.cameracommon.storage.Storage$OnStoreCompletedListener;
-import com.sonyericsson.cameracommon.storage.Storage$StorageReadyStateListener;
-import com.sonyericsson.cameracommon.storage.Storage$StorageState;
-import com.sonyericsson.cameracommon.storage.Storage$StorageType;
 import com.sonyericsson.cameracommon.storage.StorageUtil;
+import com.sonyericsson.cameracommon.storage.VideoSavingRequest;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 import com.sonyericsson.cameracommon.utility.PermissionsUtil;
 import com.sonyericsson.cameracommon.utility.PositionConverter;
 import com.sonyericsson.cameracommon.utility.RotationUtil;
+import com.sonymobile.cameracommon.evf.Evf;
 import com.sonymobile.cameracommon.research.ResearchUtil;
-import com.sonymobile.cameracommon.research.parameters.Event$CaptureOperation;
-import com.sonymobile.cameracommon.research.parameters.Event$CaptureTrigger;
-import com.sonymobile.cameracommon.research.parameters.Event$Category;
-import com.sonymobile.cameracommon.research.parameters.Event$StopOperation;
+import com.sonymobile.cameracommon.research.parameters.Event;
+import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 
 public class StateMachine {
@@ -121,107 +151,391 @@ public class StateMachine {
     private static final boolean USE_PROGRESS_ON_VIDEO_THUMBNAIL = false;
     private final CameraActivity mActivity;
     private CameraDeviceHandler mCameraDeviceHandler;
+    private State mCurrentState;
     private boolean mIsSemiAutoEnabled;
     private final LastSettings mLastSettings;
     private long mLastSmileCaptureTakenTime;
     private ObjectTrackingManager mObjectTracking;
+    private SuitablePredictiveApplier mPredictiveApplier;
     private PredictiveCaptureStoreInfo mPredictiveCaptureStoreInfo;
+    private final UserSettingApplicable mSettingController;
     private Storage mStorage;
-    private Storage$StorageReadyStateListener mStorageReadyStateListener;
+    private Storage.StorageReadyStateListener mStorageReadyStateListener;
+    private StorageStateAdapter mStorageStateListener;
     private final UserSettings mUserSettings;
     private ViewFinder mViewFinder;
     private final Handler mHandler = new Handler();
-    private RequestFactory$PhotoSavingRequestBuilder mLastPhotoSavingRequest = null;
-    private RequestFactory$VideoSavingRequestBuilder mLastVideoSavingRequest = null;
+    private RequestFactory.PhotoSavingRequestBuilder mLastPhotoSavingRequest = null;
+    private RequestFactory.VideoSavingRequestBuilder mLastVideoSavingRequest = null;
     private ContentsViewController mContentsViewController = null;
-    private final ExecutorService mExecService = ThreadUtil.buildExecutor("RequestStore");
+    private final ExecutorService mExecService = ThreadUtil.buildExecutor(THREAD_NAME);
     private boolean mIsVideoRecording = false;
-    private final List<RequestFactory$PhotoSavingRequestBuilder> mPhotoSavingRequestList = new ArrayList();
-    private StateMachine$State mCurrentState = new StateMachine$StateNone(this, null);
+    private final List<RequestFactory.PhotoSavingRequestBuilder> mPhotoSavingRequestList = new ArrayList();
     private int mHighFrameRateVideoRecordingCountInSuperSlowMotion = 0;
     private StoreDataResult mLastStoreDataResult = null;
-    private StateMachine$ChangeCameraModeTask mChangeCameraModeTask = null;
-    private StateMachine$StartRecordingTask mStartRecordingTask = null;
+    private ChangeCameraModeTask mChangeCameraModeTask = null;
+    private StartRecordingTask mStartRecordingTask = null;
     private final List<Runnable> mPendingTaskListForStandby = new ArrayList();
-    private final UserEventHandler$VirtualKeyEventDispatcher mVirtualKeyEventDispatcher = new UserEventHandler$VirtualKeyEventDispatcher();
+    private final UserEventHandler.VirtualKeyEventDispatcher mVirtualKeyEventDispatcher = new UserEventHandler.VirtualKeyEventDispatcher();
     boolean mIsSceneRecognitionValid = false;
-    private StateMachine$StorageStateAdapter mStorageStateListener = new StateMachine$StorageStateAdapter(this, null);
     private boolean mIsSdPermissionFinished = false;
-    private Storage$OnStoreCompletedListener mOnStoreCompletedListener = new StateMachine$1(this);
-    private final GestureShutter$ControllerHost mGestureShutterHost = new StateMachine$3(this);
-    private final Set<StateMachine$OnStateChangedListener> mOnStateChangedListenerSet = new CopyOnWriteArraySet();
-    private final UserSettingApplicable mSettingController = new StateMachine$SettingsController(this, null);
-    private final Runnable mNotifyResumeTimeoutTask = new StateMachine$4(this);
+    private Storage.OnStoreCompletedListener mOnStoreCompletedListener = new Storage.OnStoreCompletedListener() { // from
+                                                                                                                  // class:
+                                                                                                                  // com.sonyericsson.android.camera.controller.StateMachine.1
+        @Override // com.sonyericsson.cameracommon.storage.Storage.OnStoreCompletedListener
+        public void onStoreCompleted(Uri uri, SavingRequest savingRequest, Storage.StorageType storageType) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke uri:" + uri + ", request:" + savingRequest + ", savedStorage:" + storageType);
+            }
+            notifyResult(new StoreDataResult(MediaSavingResult.SUCCESS, uri, savingRequest));
+        }
+
+        @Override // com.sonyericsson.cameracommon.storage.Storage.OnStoreCompletedListener
+        public void onStoreFailed(Uri uri, SavingRequest savingRequest, int i) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke uri:" + uri + ", request:" + savingRequest + ", reason:" + i);
+            }
+            notifyResult(new StoreDataResult(MediaSavingResult.FAIL, uri, savingRequest));
+        }
+
+        private void notifyResult(final StoreDataResult storeDataResult) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_SETTING_CHANGE_ACCEPTABILITY,
+                    Boolean.valueOf(StateMachine.this.isSettingChangeAcceptable()));
+            StateMachine.this.mHandler.post(new Runnable() { // from
+                                                             // class:
+                                                             // com.sonyericsson.android.camera.controller.StateMachine.1.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    StateMachine.this.calculateRemainStorage();
+                    StateMachine.this.sendEvent(TransitterEvent.EVENT_ON_STORE_COMPLETED, storeDataResult);
+                }
+            });
+        }
+    };
+
+    private void requestLoadStoredPicture(final StoreDataResult storeDataResult) {
+        if (CamLog.DEBUG) {
+            CamLog.d("invoke uri:" + storeDataResult.uri + ", semcType:" + storeDataResult.savingRequest.getSomcType()
+                    + ", OneShot:" + this.mActivity.isOneShot());
+        }
+        PerfLog.BYPASSCAMERA_ON_STORE_COMPLETE.transit();
+        this.mStorage.requestLoad(storeDataResult.uri, storeDataResult.savingRequest.common.orientation,
+                new Storage.OnLoadCompletedListener() { // from class:
+                                                        // com.sonyericsson.android.camera.controller.StateMachine.2
+                    @Override // com.sonyericsson.cameracommon.storage.Storage.OnLoadCompletedListener
+                    public void onDataLoadCompleted(int i, boolean z, LinkedList<Content.ContentInfo> linkedList,
+                            Bitmap bitmap) {
+                    }
+
+                    @Override // com.sonyericsson.cameracommon.storage.Storage.OnLoadCompletedListener
+                    public void onDataLoadFailed(int i) {
+                    }
+
+                    @Override // com.sonyericsson.cameracommon.storage.Storage.OnLoadCompletedListener
+                    public void onLoadCompleted(Uri uri, Bitmap bitmap) {
+                        if (CamLog.DEBUG) {
+                            CamLog.d("invoke uri:" + uri);
+                        }
+                        StateMachine.this.finishOneShot(storeDataResult, bitmap);
+                    }
+
+                    @Override // com.sonyericsson.cameracommon.storage.Storage.OnLoadCompletedListener
+                    public void onLoadFailed(Uri uri, int i) {
+                        if (CamLog.DEBUG) {
+                            CamLog.d("invoke uri:" + uri + ", reason:" + i);
+                        }
+                        StateMachine.this.finishOneShot(storeDataResult, null);
+                    }
+                });
+    }
+
+    private final GestureShutter.ControllerHost mGestureShutterHost = new GestureShutter.ControllerHost() { // from
+                                                                                                            // class:
+                                                                                                            // com.sonyericsson.android.camera.controller.StateMachine.3
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.ControllerHost
+        public void prepareGestureShutterCountDown() {
+            StateMachine.this.mViewFinder.prepareGestureShutterCountDown();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.ControllerHost
+        public void startGestureShutterCountDown() {
+            if (StateMachine.this.mViewFinder.isMessageDialogOpened()
+                    || StateMachine.this.mViewFinder.isSwitchingAnimationProgress()
+                    || StateMachine.this.isLazyInitializationRunning()
+                    || !StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage())) {
+                return;
+            }
+            StateMachine.this.sendEvent(TransitterEvent.EVENT_START_CAPTURE_COUNTDOWN, Event.SelfTimerTrigger.GESTURE);
+            StateMachine.this.mActivity.restartAutoPowerOffTimer();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.ControllerHost
+        public void resetGestureShutterCountDown() {
+            StateMachine.this
+                    .updatePhotoSelftimer((SelfTimer) StateMachine.this.mUserSettings.get(UserSettingKey.SELF_TIMER));
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.ControllerHost
+        public void removeOrientationListener(
+                CameraActivity.LayoutOrientationChangedListener layoutOrientationChangedListener) {
+            StateMachine.this.mActivity.removeOrienationListener(layoutOrientationChangedListener);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.ControllerHost
+        public CameraActivity.LayoutOrientation getLayoutOrientation() {
+            return StateMachine.this.mActivity.getLastDetectedOrientation();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.GestureShutter.ControllerHost
+        public void addOrientationListener(
+                CameraActivity.LayoutOrientationChangedListener layoutOrientationChangedListener) {
+            StateMachine.this.mActivity.addOrienationListener(layoutOrientationChangedListener);
+        }
+    };
+    private final Set<OnStateChangedListener> mOnStateChangedListenerSet = new CopyOnWriteArraySet();
+    private final Runnable mNotifyResumeTimeoutTask = new Runnable() { // from class:
+                                                                       // com.sonyericsson.android.camera.controller.StateMachine.4
+        @Override // java.lang.Runnable
+        public void run() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke NotifyResumeTimeoutTask");
+            }
+            StateMachine.this.sendEvent(TransitterEvent.EVENT_RESUME_TIMEOUT, new Object[0]);
+        }
+    };
     private ChapterThumbnail mChapterThumbnail = null;
-    private final RecorderController$RecorderListener mRecorderListener = new StateMachine$5(this);
-    private final OnSuperSlowRecordingFinishedListener mOnSuperSlowRecordingFinishedListener = new StateMachine$6(this);
+    private RequestFactory.VideoSavingRequestBuilder mVideoSavingRequestBuilder = null;
+    private final RecorderController.RecorderListener mRecorderListener = new RecorderController.RecorderListener() { // from
+                                                                                                                      // class:
+                                                                                                                      // com.sonyericsson.android.camera.controller.StateMachine.5
+        @Override // com.sonyericsson.android.camera.recorder.RecorderController.RecorderListener
+        public void setSavingRequestBuilder(RequestFactory.VideoSavingRequestBuilder videoSavingRequestBuilder) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke");
+            }
+            StateMachine.this.mVideoSavingRequestBuilder = videoSavingRequestBuilder;
+        }
+
+        @Override // com.sonyericsson.android.camera.recorder.RecorderController.RecorderListener
+        public void onRecordProgress(long j) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke progressMillis:" + j);
+            }
+            final int i = (int) j;
+            StateMachine.this.mHandler.post(new Runnable() { // from
+                                                             // class:
+                                                             // com.sonyericsson.android.camera.controller.StateMachine.5.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    StateMachine.this.updateRecordingProgress(i);
+                }
+            });
+        }
+
+        @Override // com.sonyericsson.android.camera.recorder.RecorderController.RecorderListener
+        public void onRecordError(int i, int i2) {
+            CamLog.e("ERROR:MediaRecorder (" + i + ", " + i2 + ")");
+            StateMachine.this.mHandler.post(new Runnable() { // from
+                                                             // class:
+                                                             // com.sonyericsson.android.camera.controller.StateMachine.5.2
+                @Override // java.lang.Runnable
+                public void run() {
+                    if (StateMachine.this.isCurrentStorageExternal()
+                            && !StateMachine.this.isStorageWritable(Storage.StorageType.EXTERNAL_CARD)) {
+                        StateMachine.this.mViewFinder.showMessageDialog(DialogId.COULD_NOT_START_RECORDING,
+                                new Object[0]);
+                        StateMachine.this.changeTo(new StateWarning(), new Object[0]);
+                        StateMachine.this.mCameraDeviceHandler.releaseVideo();
+                    } else {
+                        StateMachine.this.sendEvent(TransitterEvent.EVENT_ON_RECORDING_ERROR, new Object[0]);
+                        StateMachine.this.mCameraDeviceHandler.releaseVideo();
+                    }
+                }
+            });
+        }
+
+        @Override // com.sonyericsson.android.camera.recorder.RecorderController.RecorderListener
+        public void onRecordFinished(final RecorderController.Result result) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke result:" + result);
+            }
+            StateMachine.this.mHandler.post(new Runnable() { // from
+                                                             // class:
+                                                             // com.sonyericsson.android.camera.controller.StateMachine.5.3
+                @Override // java.lang.Runnable
+                public void run() {
+                    if (CamLog.DEBUG) {
+                        CamLog.d("invoke onRecordFinished");
+                    }
+                    switch (result) {
+                        case SUCCESS:
+                            if (StateMachine.this.mContentsViewController != null) {
+                                StateMachine.this.mContentsViewController.enableClick();
+                            }
+                            StateMachine.this.mCameraDeviceHandler.finalizeRecording();
+                            StateMachine.this.onVideoRecordingDone();
+                            StateMachine.this.requestStoreVideo(StateMachine.this.mVideoSavingRequestBuilder);
+                            if (StateMachine.this.getCurrentCapturingMode() == CapturingMode.SLOW_MOTION) {
+                                ResearchUtil.getInstance().sendSlowMotionEvent(
+                                        StateMachine.this.getUserSetting().get(UserSettingKey.SLOW_MOTION).getValue(),
+                                        StateMachine.this.mHighFrameRateVideoRecordingCountInSuperSlowMotion);
+                            }
+                            return;
+                        case FAIL:
+                            StateMachine.this.sendEvent(TransitterEvent.EVENT_ON_RECORDING_ERROR, new Object[0]);
+                            StateMachine.this.mCameraDeviceHandler.releaseVideo();
+                            return;
+                        case MAX_DURATION_REACHED:
+                            StateMachine.this.changeTo(new StateVideoStopping(result), new Object[0]);
+                            StateMachine.this.doStopRecording(false);
+                            return;
+                        case MAX_FILESIZE_REACHED:
+                            StateMachine.this.changeTo(new StateVideoStopping(result), new Object[0]);
+                            StateMachine.this.doStopRecording(false);
+                            return;
+                        default:
+                            return;
+                    }
+                }
+            });
+        }
+    };
+    private final OnSuperSlowRecordingFinishedListener mOnSuperSlowRecordingFinishedListener = new OnSuperSlowRecordingFinishedListener() { // from
+                                                                                                                                            // class:
+                                                                                                                                            // com.sonyericsson.android.camera.controller.StateMachine.6
+        @Override // com.sonyericsson.android.camera.recorder.superslowrecorder.OnSuperSlowRecordingFinishedListener
+        public void onSuperSlowRecordingFinished() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke");
+            }
+            StateMachine.this.sendEvent(TransitterEvent.EVENT_HIGH_FRAME_RATE_RECORDING_DONE, new Object[0]);
+        }
+    };
     private boolean mIsPausedAudioPlayback = false;
-    private StateMachine$SuitablePredictiveApplier mPredictiveApplier = new StateMachine$SuitablePredictiveApplier(this, null);
-    private final GestureShutter mGestureShutter = new GestureShutter(this.mGestureShutterHost, null);
+    private final GestureShutter mGestureShutter;
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public enum NextCaptureCondition {
+        READY,
+        REQUESTED,
+        UNACCEPTABLE
+    }
+
+    public interface OnStateChangedListener {
+        void onStateChanged(CaptureState captureState, Object... objArr);
+    }
+
+    public enum StartupAction {
+        NONE,
+        CAPTURE,
+        RECORD
+    }
+
+    public enum StaticEvent {
+        EVENT_ON_PHOTO_STACK_INITIALIZED,
+        EVENT_ON_HEAD_UP_DISPLAY_INITIALIZED,
+        EVENT_ON_SCENE_MODE_CHANGED,
+        EVENT_ON_FACE_DETECTED,
+        EVENT_ON_OBJECT_TRACKED,
+        EVENT_ON_ORIENTATION_CHANGED,
+        EVENT_ON_LAZY_INITIALIZATION_TASK_RUN,
+        EVENT_ON_OBJECT_TRACKING_LOST,
+        EVENT_ON_GESTURE_SHUTTER_SETTING_CHANGED,
+        EVENT_ON_SD_PERMISSION_DISPLAY_FINISHED,
+        EVENT_ON_PREVIEW_STARTED
+    }
+
+    public enum TransitterEvent {
+        EVENT_INITIALIZE,
+        EVENT_RESUME,
+        EVENT_RESUME_TIMEOUT,
+        EVENT_PAUSE,
+        EVENT_FINALIZE,
+        EVENT_ON_HEATED_OVER_WARNING,
+        EVENT_ON_HEATED_OVER_WARNING_EXTRA,
+        EVENT_ON_HEATED_OVER_COOLING_LOW,
+        EVENT_ON_HEATED_OVER_COOLING_ULTRA_LOW,
+        EVENT_ON_HEATED_OVER_CRITICAL,
+        EVENT_ON_HEATED_OVER_NORMAL,
+        EVENT_ON_REACH_BATTERY_LOW,
+        EVENT_ON_REACH_BATTERY_LIMIT,
+        EVENT_ON_BATTERY_LEVEL_CHANGED,
+        EVENT_ON_EVF_PREPARED,
+        EVENT_ON_EVF_PREPARATION_FAILED,
+        EVENT_ON_INITIAL_AUTO_FOCUS_DONE,
+        EVENT_ON_AUTO_FOCUS_DONE,
+        EVENT_ON_PRE_SHUTTER_DONE,
+        EVENT_ON_SHUTTER_DONE,
+        EVENT_ON_PREPARE_BURST_DONE,
+        EVENT_ON_PRE_TAKE_PICTURE_DONE,
+        EVENT_ON_TAKE_PICTURE_DONE,
+        EVENT_ON_VIDEO_RECORDING_DONE,
+        EVENT_ON_ONE_PREVIEW_FRAME_UPDATED,
+        EVENT_ON_CONTINUOUS_PREVIEW_FRAME_UPDATED,
+        EVENT_ON_SWITCH_CAMERA,
+        EVENT_ON_FUSION_CONDITION_CHANGED,
+        EVENT_ON_BURST_SHUTTER_DONE,
+        EVENT_ON_BURST_STORE_COMPLETED,
+        EVENT_ON_BURST_GROUP_STORE_COMPLETED,
+        EVENT_ON_PREDICTIVE_CAPTURE_GROUP_STORE_COMPLETED,
+        EVENT_ON_STORE_REQUESTED,
+        EVENT_ON_STORE_COMPLETED,
+        EVENT_STORAGE_ERROR,
+        EVENT_STORAGE_MOUNTED,
+        EVENT_STORAGE_READY_STATE_CHANGED,
+        EVENT_STORAGE_UNGRANTED,
+        EVENT_KEY_MENU,
+        EVENT_SET_TOUCHED_POSITION,
+        EVENT_CANCEL_TOUCHED_POSITION,
+        EVENT_CHANGE_SELECTED_FACE,
+        EVENT_SET_SELECTED_OBJECT_POSITION,
+        EVENT_DESELECT_OBJECT_POSITION,
+        EVENT_START_AF_AFTER_OBJECT_TRACKED,
+        EVENT_CLEAR_FOCUS,
+        EVENT_TOUCH_CONTENT_PROGRESS,
+        EVENT_START_TRANSITION_OPERATION,
+        EVENT_FINISH_TRANSITION_OPERATION,
+        EVENT_SELFTIMER_CANCEL,
+        EVENT_STOP_RECORDING_SLOW_MOTION_BUTTON_RELEASE,
+        EVENT_SLOW_MOTION_FEEDBACK_ANIMATION_END,
+        EVENT_HIGH_FRAME_RATE_RECORDING_DONE,
+        EVENT_ANGLE_CHANGE_START,
+        EVENT_ANGLE_CHANGE_COMPLETED,
+        EVENT_CHANGE_CAPTURING_MODE,
+        EVENT_START_CAPTURE_COUNTDOWN,
+        EVENT_REQUEST_SETUP_HEAD_UP_DISPLAY,
+        EVENT_ON_RECORDING_START_WAIT_DONE,
+        EVENT_ON_RECORDING_ERROR,
+        EVENT_DIALOG_OPENED,
+        EVENT_DIALOG_CLOSED,
+        EVENT_ON_SEMIAUTO_ENABLED,
+        EVENT_ON_SEMIAUTO_DISABLED,
+        EVENT_ON_AMBER_BLUE_COLOR_CHANGED,
+        EVENT_ON_BRIGHTNESS_CHANGED,
+        EVENT_REQUEST_UPDATE_HIGH_SENSITIVITY_FUSION_MODE,
+        EVENT_ON_CAMERA_DEVICE_OPENED,
+        EVENT_ON_CAMERA_DEVICE_CLOSED,
+        EVENT_ON_DEVICE_ERROR,
+        EVENT_CAPTURE_READY,
+        EVENT_CAPTURE,
+        EVENT_CAPTURE_CANCEL,
+        EVENT_CAPTURE_BURST,
+        EVENT_RECORD_READY,
+        EVENT_START_RECORDING,
+        EVENT_STOP_RECORDING,
+        EVENT_RESUME_RECORDING,
+        EVENT_PAUSE_RECORDING,
+        EVENT_TRIGGER_SLOW_MOTION,
+        EVENT_ZOOM_PREPARE,
+        EVENT_ZOOM_PERFORM,
+        EVENT_ZOOM_FINISH
+    }
 
     public static final void preload() {
     }
 
     private void prepareZoom() {
-    }
-
-    static /* synthetic */ boolean access$1000(StateMachine stateMachine, Storage$StorageType storage$StorageType) {
-        return stateMachine.isStorageWritable(storage$StorageType);
-    }
-
-    static /* synthetic */ void access$10200(StateMachine stateMachine) {
-        stateMachine.stopPlaySound();
-    }
-
-    static /* synthetic */ void access$10300(StateMachine stateMachine) {
-        stateMachine.pauseAudioPlaybackForRecord();
-    }
-
-    static /* synthetic */ StateMachine$StartRecordingTask access$10500(StateMachine stateMachine) {
-        return stateMachine.mStartRecordingTask;
-    }
-
-    static /* synthetic */ StateMachine$StartRecordingTask access$10502(StateMachine stateMachine, StateMachine$StartRecordingTask stateMachine$StartRecordingTask) {
-        stateMachine.mStartRecordingTask = stateMachine$StartRecordingTask;
-        return stateMachine$StartRecordingTask;
-    }
-
-    static /* synthetic */ void access$10600(StateMachine stateMachine, StoreDataResult storeDataResult) {
-        stateMachine.onOneShotStoreCompleted(storeDataResult);
-    }
-
-    static /* synthetic */ void access$10900(StateMachine stateMachine, RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder) {
-        stateMachine.doCapture(requestFactory$PhotoSavingRequestBuilder);
-    }
-
-    static /* synthetic */ StateMachine$State access$1100(StateMachine stateMachine) {
-        return stateMachine.mCurrentState;
-    }
-
-    static /* synthetic */ void access$11100(StateMachine stateMachine) {
-        stateMachine.playShutterSound();
-    }
-
-    static /* synthetic */ ChapterThumbnail access$11202(StateMachine stateMachine, ChapterThumbnail chapterThumbnail) {
-        stateMachine.mChapterThumbnail = chapterThumbnail;
-        return chapterThumbnail;
-    }
-
-    static /* synthetic */ void access$11300(StateMachine stateMachine) {
-        stateMachine.doHandleRecordingError();
-    }
-
-    static /* synthetic */ void access$11400(StateMachine stateMachine, boolean z) {
-        stateMachine.doStopRecording(z);
-    }
-
-    static /* synthetic */ boolean access$11502(StateMachine stateMachine, boolean z) {
-        stateMachine.mIsVideoRecording = z;
-        return z;
-    }
-
-    static /* synthetic */ int access$11600(StateMachine stateMachine) {
-        return stateMachine.mHighFrameRateVideoRecordingCountInSuperSlowMotion;
     }
 
     static /* synthetic */ int access$11608(StateMachine stateMachine) {
@@ -230,403 +544,140 @@ public class StateMachine {
         return i;
     }
 
-    static /* synthetic */ void access$11700(StateMachine stateMachine, Object[] objArr) {
-        stateMachine.pauseVideoRecording(objArr);
-    }
-
-    static /* synthetic */ ViewFinder access$1200(StateMachine stateMachine) {
-        return stateMachine.mViewFinder;
-    }
-
-    static /* synthetic */ void access$12000(StateMachine stateMachine) {
-        stateMachine.sendVideoChapterThumbnailToViewFinder();
-    }
-
-    static /* synthetic */ void access$12100(StateMachine stateMachine) {
-        stateMachine.doPauseRecording();
-    }
-
-    static /* synthetic */ void access$12300(StateMachine stateMachine) {
-        stateMachine.doCaptureWhileRecording();
-    }
-
-    static /* synthetic */ void access$12400(StateMachine stateMachine) {
-        stateMachine.requestVideoSmileCapture();
-    }
-
-    static /* synthetic */ void access$12600(StateMachine stateMachine) {
-        stateMachine.doResumeRecording();
-    }
-
-    static /* synthetic */ ContentsViewController access$12700(StateMachine stateMachine) {
-        return stateMachine.mContentsViewController;
-    }
-
-    static /* synthetic */ void access$12800(StateMachine stateMachine, CapturingMode capturingMode, AnimationRequest$AnimationType animationRequest$AnimationType) {
-        stateMachine.switchCamera(capturingMode, animationRequest$AnimationType);
-    }
-
-    static /* synthetic */ void access$12900(StateMachine stateMachine, CapturingMode capturingMode, AnimationRequest$AnimationType animationRequest$AnimationType) {
-        stateMachine.requestChangeModeTo(capturingMode, animationRequest$AnimationType);
-    }
-
-    static /* synthetic */ void access$1300(StateMachine stateMachine, boolean z) {
-        stateMachine.switchSceneRecognition(z);
-    }
-
-    static /* synthetic */ LastSettings access$13000(StateMachine stateMachine) {
-        return stateMachine.mLastSettings;
-    }
-
-    static /* synthetic */ void access$13100(StateMachine stateMachine) {
-        stateMachine.removeChangeCameraModeTask();
-    }
-
-    static /* synthetic */ void access$13200(StateMachine stateMachine) {
-        stateMachine.removeStartRecordingTask();
-    }
-
-    static /* synthetic */ void access$13400(StateMachine stateMachine) {
-        stateMachine.cleanupPendingState();
-    }
-
-    static /* synthetic */ void access$13600(StateMachine stateMachine) {
-        stateMachine.storeSavingRequestList();
-    }
-
-    static /* synthetic */ void access$1400(StateMachine stateMachine) {
-        stateMachine.doStopObjectTracking();
-    }
-
-    static /* synthetic */ void access$14400(StateMachine stateMachine, boolean z) {
-        stateMachine.doStartRecording(z);
-    }
-
-    static /* synthetic */ void access$14500(StateMachine stateMachine, int i) {
-        stateMachine.updateRecordingProgress(i);
-    }
-
-    static /* synthetic */ boolean access$14600(StateMachine stateMachine) {
-        return stateMachine.isCurrentStorageExternal();
-    }
-
-    static /* synthetic */ void access$14800(StateMachine stateMachine, RequestFactory$VideoSavingRequestBuilder requestFactory$VideoSavingRequestBuilder) {
-        stateMachine.requestStoreVideo(requestFactory$VideoSavingRequestBuilder);
-    }
-
-    static /* synthetic */ boolean access$14900(StateMachine stateMachine, RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder) {
-        return stateMachine.isNeedRepairRequestId(requestFactory$PhotoSavingRequestBuilder);
-    }
-
-    static /* synthetic */ void access$15100(StateMachine stateMachine, RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder) {
-        stateMachine.storePicture(requestFactory$PhotoSavingRequestBuilder);
-    }
-
-    static /* synthetic */ int access$15200(StateMachine stateMachine) {
-        return stateMachine.getOrientation();
-    }
-
-    static /* synthetic */ List access$15300(StateMachine stateMachine) {
-        return stateMachine.mPhotoSavingRequestList;
-    }
-
-    static /* synthetic */ void access$1600(StateMachine stateMachine) {
-        stateMachine.calculateRemainStorage();
-    }
-
-    static /* synthetic */ Handler access$1700(StateMachine stateMachine) {
-        return stateMachine.mHandler;
-    }
-
-    static /* synthetic */ UserSettings access$1800(StateMachine stateMachine) {
-        return stateMachine.mUserSettings;
-    }
-
-    static /* synthetic */ void access$1900(StateMachine stateMachine, StoreDataResult storeDataResult, Bitmap bitmap) {
-        stateMachine.finishOneShot(storeDataResult, bitmap);
-    }
-
-    static /* synthetic */ boolean access$2000(StateMachine stateMachine) {
-        return stateMachine.isLazyInitializationRunning();
-    }
-
-    static /* synthetic */ void access$2100(StateMachine stateMachine, SelfTimer selfTimer) {
-        stateMachine.updatePhotoSelftimer(selfTimer);
-    }
-
-    static /* synthetic */ void access$2400(StateMachine stateMachine, boolean z) {
-        stateMachine.setIsSceneRecognitionValid(z);
-    }
-
-    static /* synthetic */ void access$2500(StateMachine stateMachine) {
-        stateMachine.showBlackScreen();
-    }
-
-    static /* synthetic */ CameraDeviceHandler access$2600(StateMachine stateMachine) {
-        return stateMachine.mCameraDeviceHandler;
-    }
-
-    static /* synthetic */ void access$2700(StateMachine stateMachine, CapturingMode capturingMode, boolean z) {
-        stateMachine.requestResizeEvf(capturingMode, z);
-    }
-
-    static /* synthetic */ ObjectTrackingManager access$2800(StateMachine stateMachine) {
-        return stateMachine.mObjectTracking;
-    }
-
-    static /* synthetic */ ObjectTrackingManager access$2802(StateMachine stateMachine, ObjectTrackingManager objectTrackingManager) {
-        stateMachine.mObjectTracking = objectTrackingManager;
-        return objectTrackingManager;
-    }
-
-    static /* synthetic */ void access$2900(StateMachine stateMachine) {
-        stateMachine.switchVideoFaceDetection();
-    }
-
-    static /* synthetic */ GestureShutter access$300(StateMachine stateMachine) {
-        return stateMachine.mGestureShutter;
-    }
-
-    static /* synthetic */ boolean access$3000(StateMachine stateMachine) {
-        return stateMachine.mIsSemiAutoEnabled;
-    }
-
-    static /* synthetic */ boolean access$3002(StateMachine stateMachine, boolean z) {
-        stateMachine.mIsSemiAutoEnabled = z;
-        return z;
-    }
-
-    static /* synthetic */ boolean access$3100(StateMachine stateMachine) {
-        return stateMachine.isTouchAeEnabled();
-    }
-
-    static /* synthetic */ void access$3200(StateMachine stateMachine, int i) {
-        stateMachine.onZoomChange(i);
-    }
-
-    static /* synthetic */ void access$3400(StateMachine stateMachine, StateMachine$State stateMachine$State, Object[] objArr) {
-        stateMachine.changeTo(stateMachine$State, objArr);
-    }
-
-    static /* synthetic */ void access$3500(StateMachine stateMachine, boolean z) {
-        stateMachine.cancelAutoFocus(z);
-    }
-
-    static /* synthetic */ void access$3600(StateMachine stateMachine, RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder) {
-        stateMachine.requestStorePicture(requestFactory$PhotoSavingRequestBuilder);
-    }
-
-    static /* synthetic */ StoreDataResult access$3700(StateMachine stateMachine) {
-        return stateMachine.mLastStoreDataResult;
-    }
-
-    static /* synthetic */ StoreDataResult access$3702(StateMachine stateMachine, StoreDataResult storeDataResult) {
-        stateMachine.mLastStoreDataResult = storeDataResult;
-        return storeDataResult;
-    }
-
-    static /* synthetic */ StateMachine$SuitablePredictiveApplier access$3800(StateMachine stateMachine) {
-        return stateMachine.mPredictiveApplier;
-    }
-
-    static /* synthetic */ Storage$StorageType access$400(StateMachine stateMachine) {
-        return stateMachine.getCurrentStorage();
-    }
-
-    static /* synthetic */ RequestFactory$PhotoSavingRequestBuilder access$4000(StateMachine stateMachine) {
-        return stateMachine.mLastPhotoSavingRequest;
-    }
-
-    static /* synthetic */ RequestFactory$PhotoSavingRequestBuilder access$4002(StateMachine stateMachine, RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder) {
-        stateMachine.mLastPhotoSavingRequest = requestFactory$PhotoSavingRequestBuilder;
-        return requestFactory$PhotoSavingRequestBuilder;
-    }
-
-    static /* synthetic */ RequestFactory$VideoSavingRequestBuilder access$4100(StateMachine stateMachine) {
-        return stateMachine.mLastVideoSavingRequest;
-    }
-
-    static /* synthetic */ RequestFactory$VideoSavingRequestBuilder access$4102(StateMachine stateMachine, RequestFactory$VideoSavingRequestBuilder requestFactory$VideoSavingRequestBuilder) {
-        stateMachine.mLastVideoSavingRequest = requestFactory$VideoSavingRequestBuilder;
-        return requestFactory$VideoSavingRequestBuilder;
-    }
-
-    static /* synthetic */ void access$4200(StateMachine stateMachine, StoreDataResult storeDataResult) {
-        stateMachine.onPredictiveCaptureStoreComplete(storeDataResult);
-    }
-
-    static /* synthetic */ void access$4700(StateMachine stateMachine) {
-        stateMachine.changeToStandby();
-    }
-
-    static /* synthetic */ StateMachine$NotifyDelayedEventTask access$4800(StateMachine stateMachine, StateMachine$TransitterEvent stateMachine$TransitterEvent, Object[] objArr) {
-        return stateMachine.notifyDelayedEvent(stateMachine$TransitterEvent, objArr);
-    }
-
-    static /* synthetic */ CameraActivity access$500(StateMachine stateMachine) {
-        return stateMachine.mActivity;
-    }
-
-    static /* synthetic */ boolean access$5000(StateMachine stateMachine) {
-        return stateMachine.hasRemainSavingRequest();
-    }
-
-    static /* synthetic */ Runnable access$5200(StateMachine stateMachine) {
-        return stateMachine.mNotifyResumeTimeoutTask;
-    }
-
-    static /* synthetic */ boolean access$5300(StateMachine stateMachine) {
-        return stateMachine.isFusionMonitoringNeeded();
-    }
-
-    static /* synthetic */ void access$5400(StateMachine stateMachine, FastCapture fastCapture, StateMachine$StartupAction stateMachine$StartupAction) {
-        stateMachine.startFastCapture(fastCapture, stateMachine$StartupAction);
-    }
-
-    static /* synthetic */ StateMachine$StorageStateAdapter access$5600(StateMachine stateMachine) {
-        return stateMachine.mStorageStateListener;
-    }
-
-    static /* synthetic */ UserEventHandler$VirtualKeyEventDispatcher access$5700(StateMachine stateMachine) {
-        return stateMachine.mVirtualKeyEventDispatcher;
-    }
-
-    static /* synthetic */ void access$5800(StateMachine stateMachine) {
-        stateMachine.initGeoTagManager();
-    }
-
-    static /* synthetic */ void access$5900(StateMachine stateMachine) {
-        stateMachine.initSideSenseSetting();
-    }
-
-    static /* synthetic */ Storage access$600(StateMachine stateMachine) {
-        return stateMachine.mStorage;
-    }
-
-    static /* synthetic */ boolean access$6202(StateMachine stateMachine, boolean z) {
-        stateMachine.mIsPausedAudioPlayback = z;
-        return z;
-    }
-
-    static /* synthetic */ void access$6400(StateMachine stateMachine) {
-        stateMachine.sendResearchViewEvent();
-    }
-
-    static /* synthetic */ int access$6500(StateMachine stateMachine) {
-        return stateMachine.getSensorOrientation();
-    }
-
-    static /* synthetic */ void access$6700(StateMachine stateMachine) {
-        stateMachine.notifySceneRecognitionDisabled();
-    }
-
-    static /* synthetic */ void access$6800(StateMachine stateMachine, StateMachine$NotifyDelayedEventTask stateMachine$NotifyDelayedEventTask) {
-        stateMachine.removeDelayedEvent(stateMachine$NotifyDelayedEventTask);
-    }
-
-    static /* synthetic */ void access$6900(StateMachine stateMachine) {
-        stateMachine.doZoomChangeAngle();
-    }
-
-    static /* synthetic */ boolean access$700(StateMachine stateMachine, Storage$StorageType storage$StorageType) {
-        return stateMachine.checkSaveDestinationCanBeChange(storage$StorageType);
-    }
-
-    static /* synthetic */ boolean access$7000(StateMachine stateMachine) {
-        return stateMachine.startAutoFocus();
-    }
-
-    static /* synthetic */ Object access$7200(Object[] objArr, int i, Class cls, Object obj) {
-        return getEventParam(objArr, i, cls, obj);
-    }
-
-    static /* synthetic */ boolean access$7500(StateMachine stateMachine, boolean z) {
-        return stateMachine.checkBurstConditions(z);
-    }
-
-    static /* synthetic */ void access$7700(StateMachine stateMachine) {
-        stateMachine.requestPhotoSmileCapture();
-    }
-
-    static /* synthetic */ void access$7800(StateMachine stateMachine, Point point) {
-        stateMachine.doChangeSelectedFace(point);
-    }
-
-    static /* synthetic */ void access$7900(StateMachine stateMachine, Rect rect) {
-        stateMachine.doStartObjectTracking(rect);
-    }
-
-    static /* synthetic */ boolean access$800(StateMachine stateMachine) {
-        return stateMachine.mIsSdPermissionFinished;
-    }
-
-    static /* synthetic */ boolean access$802(StateMachine stateMachine, boolean z) {
-        stateMachine.mIsSdPermissionFinished = z;
-        return z;
-    }
-
-    static /* synthetic */ void access$8100(StateMachine stateMachine, AnimationRequest$AnimationType animationRequest$AnimationType) {
-        stateMachine.switchCamera(animationRequest$AnimationType);
-    }
-
-    static /* synthetic */ void access$8200(StateMachine stateMachine, float f) {
-        stateMachine.updateAmberBlueColor(f);
-    }
-
-    static /* synthetic */ void access$8300(StateMachine stateMachine, float f) {
-        stateMachine.updateBrightness(f);
-    }
-
-    static /* synthetic */ boolean access$8500(StateMachine stateMachine, Storage$StorageType storage$StorageType) {
-        return stateMachine.isStorageFull(storage$StorageType);
-    }
-
-    static /* synthetic */ void access$8600(StateMachine stateMachine, boolean z) {
-        stateMachine.notifyCoolingUltraLow(z);
-    }
-
-    static /* synthetic */ void access$8700(StateMachine stateMachine, FusionMode fusionMode) {
-        stateMachine.updateFusionModeSetting(fusionMode);
-    }
-
-    static /* synthetic */ void access$8900(StateMachine stateMachine, CapturingMode capturingMode) {
-        stateMachine.setCurrentCapturingMode(capturingMode);
-    }
-
-    static /* synthetic */ void access$9000(StateMachine stateMachine) {
-        stateMachine.checkThermalWarning();
-    }
-
-    static /* synthetic */ List access$9100(StateMachine stateMachine) {
-        return stateMachine.mPendingTaskListForStandby;
-    }
-
-    static /* synthetic */ boolean access$9200(StateMachine stateMachine) {
-        return stateMachine.isEnoughStorageSizeAvailableForOneShotVideo();
-    }
-
-    static /* synthetic */ RequestFactory$VideoSavingRequestBuilder access$9300(StateMachine stateMachine, RecordingProfile recordingProfile) {
-        return stateMachine.createVideoSavingRequest(recordingProfile);
-    }
-
-    static /* synthetic */ RecorderController$RecorderListener access$9400(StateMachine stateMachine) {
-        return stateMachine.mRecorderListener;
-    }
-
-    static /* synthetic */ OnSuperSlowRecordingFinishedListener access$9500(StateMachine stateMachine) {
-        return stateMachine.mOnSuperSlowRecordingFinishedListener;
-    }
-
-    static /* synthetic */ boolean access$9600(StateMachine stateMachine) {
-        return stateMachine.shouldPlayShutterSound();
-    }
-
-    private void requestLoadStoredPicture(StoreDataResult storeDataResult) {
-        if (CamLog.DEBUG) {
-            CamLog.d("invoke uri:" + storeDataResult.uri + ", semcType:" + storeDataResult.savingRequest.getSomcType() + ", OneShot:" + this.mActivity.isOneShot());
+    /* JADX INFO: Access modifiers changed from: private */
+    class StorageStateAdapter implements Storage.StorageStateListener {
+        private Storage.StorageState mOldStorageState;
+
+        @Override // com.sonyericsson.cameracommon.storage.Storage.StorageStateListener
+        public void onStorageSizeChanged(Storage.StorageType storageType, long j) {
         }
-        PerfLog.BYPASSCAMERA_ON_STORE_COMPLETE.transit();
-        this.mStorage.requestLoad(storeDataResult.uri, storeDataResult.savingRequest.common.orientation, new StateMachine$2(this, storeDataResult));
+
+        private StorageStateAdapter() {
+            this.mOldStorageState = Storage.StorageState.AVAILABLE;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void resume() {
+            this.mOldStorageState = Storage.StorageState.AVAILABLE;
+            updateGestureShutterState(true);
+        }
+
+        @Override // com.sonyericsson.cameracommon.storage.Storage.StorageStateListener
+        public synchronized void onStorageStateChanged(Storage.StorageType storageType,
+                Storage.StorageState storageState, Storage.StorageReadyState storageReadyState) {
+            if (CamLog.DEBUG) {
+                CamLog.d(
+                        "invoke type:" + storageType + ", state:" + storageState + ", readyState:" + storageReadyState);
+            }
+            if (storageReadyState == Storage.StorageReadyState.ACCESSIBLE
+                    || storageReadyState == Storage.StorageReadyState.COMPLETED) {
+                CameraApplication.getUiThreadHandler().post(new StorageStateChangeTask(storageType, storageState));
+            }
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void updateGestureShutterState(boolean z) {
+            StateMachine.this.mGestureShutter.setEnabled(z);
+        }
+
+        private class StorageStateChangeTask implements Runnable {
+            private final Storage.StorageState mStorageState;
+            private final Storage.StorageType mStorageType;
+
+            private StorageStateChangeTask(@NonNull Storage.StorageType storageType,
+                    @NonNull Storage.StorageState storageState) {
+                this.mStorageType = storageType;
+                this.mStorageState = storageState;
+            }
+
+            @Override // java.lang.Runnable
+            public void run() {
+                Storage.StorageType currentStorage = StateMachine.this.getCurrentStorage();
+                LaunchCondition.ExtraOperation extraOperation = StateMachine.this.mActivity.getLaunchCondition()
+                        .getExtraOperation();
+                Storage.StorageState currentState = StateMachine.this.mStorage.getCurrentState(currentStorage);
+                if (this.mStorageType == currentStorage
+                        && (this.mStorageState.isWritable() || currentState.isWritable())) {
+                    StateMachine.this.sendEvent(TransitterEvent.EVENT_STORAGE_MOUNTED, new Object[0]);
+                } else {
+                    if (this.mStorageType == Storage.StorageType.EXTERNAL_CARD
+                            && this.mStorageState == Storage.StorageState.CORRUPT) {
+                        StateMachine.this.sendEvent(TransitterEvent.EVENT_STORAGE_ERROR, this.mStorageType,
+                                this.mStorageState);
+                        return;
+                    }
+                    if (this.mStorageType == Storage.StorageType.EXTERNAL_CARD
+                            && this.mStorageState == Storage.StorageState.UNGRANTED) {
+                        if (currentStorage == Storage.StorageType.EXTERNAL_CARD) {
+                            StateMachine.this.sendEvent(TransitterEvent.EVENT_STORAGE_UNGRANTED, new Object[0]);
+                        }
+                    } else if (extraOperation != LaunchCondition.ExtraOperation.OPEN_SETTINGS_MENU
+                            && this.mStorageType == currentStorage) {
+                        boolean z = StateMachine.this.checkSaveDestinationCanBeChange(currentStorage)
+                                && !StateMachine.this.mActivity.isOneShot();
+                        if (StateMachine.this.mIsSdPermissionFinished
+                                && currentStorage != Storage.StorageType.EXTERNAL_CARD && z) {
+                            return;
+                        }
+                        if (StorageStateAdapter.this.mOldStorageState != null
+                                && StorageStateAdapter.this.mOldStorageState.isWritable()
+                                && (currentStorage != Storage.StorageType.EXTERNAL_CARD
+                                        || extraOperation != LaunchCondition.ExtraOperation.LAUNCH_AND_CAPTURE
+                                        || StateMachine.this.isStorageWritable(Storage.StorageType.EXTERNAL_CARD)
+                                        || !z)) {
+                            StateMachine.this.sendEvent(TransitterEvent.EVENT_STORAGE_ERROR, this.mStorageType,
+                                    this.mStorageState);
+                            StateMachine.this.mViewFinder.notifyStorageStateChanged(currentStorage, this.mStorageState,
+                                    z,
+                                    StateMachine.this.mCurrentState
+                                            .getCaptureState() == CaptureState.STATE_BURST_CAPTURE
+                                            || StateMachine.this.mCurrentState
+                                                    .getCaptureState() == CaptureState.STATE_BURST_CAPTURE_WAIT_FOR_AF_DONE);
+                        }
+                    }
+                }
+                if (this.mStorageType == currentStorage) {
+                    StorageStateAdapter.this.mOldStorageState = this.mStorageState;
+                    StateMachine.this.switchSceneRecognition(this.mStorageState.isWritable());
+                    if (!this.mStorageState.isWritable()) {
+                        StateMachine.this.doStopObjectTracking();
+                    }
+                    StorageStateAdapter.this.updateGestureShutterState(this.mStorageState.isWritable());
+                }
+            }
+        }
+    }
+
+    private class StorageReadyStateAdapter implements Storage.StorageReadyStateListener {
+        private StorageReadyStateAdapter() {
+        }
+
+        @Override // com.sonyericsson.cameracommon.storage.Storage.StorageReadyStateListener
+        public void onStorageReadyStateChanged(final Storage.StorageType storageType,
+                Storage.StorageReadyState storageReadyState) {
+            if (storageReadyState == Storage.StorageReadyState.COMPLETED
+                    && storageType == Storage.StorageType.EXTERNAL_CARD && StateMachine.this.mIsSdPermissionFinished) {
+                StateMachine.this.mIsSdPermissionFinished = false;
+                StateMachine.this.mHandler.post(new Runnable() { // from class:
+                                                                 // com.sonyericsson.android.camera.controller.StateMachine.StorageReadyStateAdapter.1
+                    @Override // java.lang.Runnable
+                    public void run() {
+                        if (StateMachine.this.mStorage.getCurrentState(storageType).isWritable()) {
+                            DestinationToSave destinationToSave = (DestinationToSave) StateMachine.this.mUserSettings
+                                    .get(UserSettingKey.DESTINATION_TO_SAVE);
+                            StateMachine.this.mUserSettings.set(DestinationToSave.SDCARD);
+                            if (destinationToSave != DestinationToSave.SDCARD) {
+                                StateMachine.this.sendEvent(TransitterEvent.EVENT_STORAGE_READY_STATE_CHANGED,
+                                        new Object[0]);
+                            }
+                            if (StateMachine.this.mViewFinder != null) {
+                                StateMachine.this.mViewFinder.showHiSpeedSdCardRecommendDialogOnDestinationChange();
+                            }
+                        }
+                    }
+                });
+            }
+        }
     }
 
     private boolean isVideo() {
@@ -643,8 +694,85 @@ public class StateMachine {
         this.mContentsViewController = null;
     }
 
+    public enum CaptureState {
+        STATE_NONE(false, false, false, false, false),
+        STATE_INITIALIZE(false, false, false, false, false),
+        STATE_RESUME(false, false, false, false, false),
+        STATE_CAMERA_SWITCHING(false, false, false, false, false),
+        STATE_PHOTO_BASE(false, false, false, false, false),
+        STATE_PHOTO_READY(true, true, true, true, false),
+        STATE_PHOTO_READY_FOR_RECORDING(false, false, false, false, false),
+        STATE_PREPARE_FOR_RECORDING(false, false, false, false, false),
+        STATE_CAPTURE_COUNTDOWN(true, false, false, false, false),
+        STATE_OPERATION_RESTRICTED(true, false, false, true, false),
+        STATE_PHOTO_WAITING_TRACKED_OBJECT_FOR_AF_START(false, false, false, false, false),
+        STATE_PHOTO_AF_SEARCH(false, false, false, false, false),
+        STATE_PHOTO_AF_DONE(false, false, false, false, false),
+        STATE_PHOTO_CAPTURE_WAIT_FOR_AF_DONE(false, false, false, false, false),
+        STATE_BURST_CAPTURE_WAIT_FOR_AF_DONE(false, false, false, false, false),
+        STATE_PHOTO_CAPTURE(false, false, false, false, false),
+        STATE_BURST_CAPTURE(true, false, false, false, false),
+        STATE_VIDEO_RECORDING(true, false, false, false, true),
+        STATE_VIDEO_CAPTURE_WHILE_RECORDING(false, false, false, false, true),
+        STATE_VIDEO_STORE_PHOTO_WHILE_RECORDING(false, false, false, false, false),
+        STATE_VIDEO_STORE(false, false, false, false, true),
+        STATE_HIGH_FRAME_RATE_VIDEO_RECORDING_IN_SUPER_SLOW_MOTION(true, false, false, false, true),
+        STATE_LOW_FRAME_RATE_VIDEO_RECORDING_IN_SUPER_SLOW_MOTION(true, false, false, false, true),
+        STATE_WAIT_FOR_HIGH_FRAME_RATE_VIDEO_RECORDING_DONE(true, false, false, false, true),
+        STATE_VIDEO_STOPPING(true, false, false, false, true),
+        STATE_PAUSE(false, true, false, false, false),
+        STATE_WARNING(true, true, false, true, false),
+        STATE_FINALIZE(false, false, false, false, false),
+        STATE_VIDEO_RECORDING_PAUSING(true, false, false, false, true),
+        STATE_VIDEO_READY(true, true, false, true, false),
+        STATE_MODE_CHANGING(false, true, false, false, false),
+        STATE_WAITING_PRE_PROCESS_DONE(false, false, false, false, false),
+        STATE_WAITING_EVF_PREPARED_IN_MODE_CHANGE(false, false, false, false, false),
+        STATE_CROPPING(false, true, false, false, false),
+        STATE_FATAL(false, false, false, false, false);
+
+        private final boolean mCanApplicationBeFinished;
+        private final boolean mCanHandleAsynchronizedTask;
+        private final boolean mCanHandleWearableCaptureRequest;
+        private final boolean mIsMenuAvailable;
+        private final boolean mIsRecordingState;
+
+        CaptureState(boolean z, boolean z2, boolean z3, boolean z4, boolean z5) {
+            this.mCanHandleAsynchronizedTask = z;
+            this.mCanApplicationBeFinished = z2;
+            this.mCanHandleWearableCaptureRequest = z3;
+            this.mIsMenuAvailable = z4;
+            this.mIsRecordingState = z5;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private boolean canHandleAsynchronizedTask() {
+            return this.mCanHandleAsynchronizedTask;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private boolean canApplicationBeFinished() {
+            return this.mCanApplicationBeFinished;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private synchronized boolean canHandleWearableCaptureRequest() {
+            return this.mCanHandleWearableCaptureRequest;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private boolean isMenuAvailable() {
+            return this.mIsMenuAvailable;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private boolean isRecording() {
+            return this.mIsRecordingState;
+        }
+    }
+
     public synchronized boolean isDialogOpened() {
-        return this.mCurrentState.getCaptureState() == StateMachine$CaptureState.STATE_OPERATION_RESTRICTED;
+        return this.mCurrentState.getCaptureState() == CaptureState.STATE_OPERATION_RESTRICTED;
     }
 
     private boolean isAllSnapshotCompleted() {
@@ -659,60 +787,617 @@ public class StateMachine {
         return this.mCameraDeviceHandler.getZoom();
     }
 
-    public void addOnStateChangedListener(StateMachine$OnStateChangedListener stateMachine$OnStateChangedListener) {
-        this.mOnStateChangedListenerSet.add(stateMachine$OnStateChangedListener);
+    public void addOnStateChangedListener(OnStateChangedListener onStateChangedListener) {
+        this.mOnStateChangedListenerSet.add(onStateChangedListener);
     }
 
-    public void removeOnStateChangedListener(StateMachine$OnStateChangedListener stateMachine$OnStateChangedListener) {
-        this.mOnStateChangedListenerSet.remove(stateMachine$OnStateChangedListener);
+    public void removeOnStateChangedListener(OnStateChangedListener onStateChangedListener) {
+        this.mOnStateChangedListenerSet.remove(onStateChangedListener);
     }
 
     public StateMachine(CameraActivity cameraActivity, Storage storage) {
+        this.mCurrentState = new StateNone();
+        this.mStorageStateListener = new StorageStateAdapter();
+        this.mSettingController = new SettingsController();
+        this.mPredictiveApplier = new SuitablePredictiveApplier();
         this.mActivity = cameraActivity;
         this.mStorage = storage;
+        this.mGestureShutter = new GestureShutter(this.mGestureShutterHost, null);
         this.mUserSettings = cameraActivity.getStoredSettings().getUserSettings();
         this.mUserSettings.register(this.mSettingController);
         this.mLastSettings = cameraActivity.getStoredSettings().getLastSettings();
         if (this.mStorageReadyStateListener == null) {
-            this.mStorageReadyStateListener = new StateMachine$StorageReadyStateAdapter(this, null);
+            this.mStorageReadyStateListener = new StorageReadyStateAdapter();
             this.mStorage.addStorageReadyStateListener(this.mStorageReadyStateListener);
         }
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:18:0x0061  */
-    /* JADX WARN: Removed duplicated region for block: B:20:? A[RETURN, SYNTHETIC] */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    private void requestResizeEvf(CapturingMode capturingMode, boolean z) {
-        Rect pictureRect;
-        boolean z2;
-        Rect previewRect;
-        if (this.mCurrentState.getCaptureState() == StateMachine$CaptureState.STATE_PAUSE && z) {
-            return;
+    private class SettingsController implements UserSettingApplicable {
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(AutoReview autoReview) {
         }
-        if (capturingMode.isVideo()) {
-            if (capturingMode == CapturingMode.SLOW_MOTION) {
-                pictureRect = ((SlowMotion) this.mUserSettings.get(capturingMode, UserSettingKey.SLOW_MOTION)).getVideoSize().getVideoRect();
-            } else {
-                pictureRect = ((VideoSize) this.mUserSettings.get(capturingMode, UserSettingKey.VIDEO_SIZE)).getVideoRect();
-                if (((VideoHdr) this.mUserSettings.get(capturingMode, UserSettingKey.VIDEO_HDR)) == VideoHdr.HDR_ON) {
-                    z2 = true;
-                }
-                previewRect = this.mCameraDeviceHandler.getPreviewRect(capturingMode, pictureRect);
-                if (previewRect == null) {
-                    Size surfaceSize = PlatformDependencyResolver.getSurfaceSize(previewRect, z2);
-                    this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_REQUEST_RESIZE_EVF_SCOPE, new Rect(0, 0, surfaceSize.getWidth(), surfaceSize.getHeight()), Boolean.valueOf(z));
-                    return;
-                }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(CameraKey cameraKey) {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(Facing facing) {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(FastCapture fastCapture) {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(Geotag geotag) {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(GridLine gridLine) {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(HelpGuide helpGuide) {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(PredictiveCapture predictiveCapture) {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(PredictiveLaunch predictiveLaunch) {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(ResetSettings resetSettings) {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(ShutterSound shutterSound) {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(TouchCapture touchCapture) {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(VideoCodec videoCodec) {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(VolumeKey volumeKey) {
+        }
+
+        private SettingsController() {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(CapturingMode capturingMode) {
+            VideoSize videoSize = (VideoSize) StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_SIZE);
+            StateMachine.this.setIsSceneRecognitionValid(isSceneRecognitionValid(capturingMode, videoSize,
+                    (VideoHdr) StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_HDR)));
+            Float zoom = StateMachine.this.getZoom();
+            if (!capturingMode.isFront() && zoom != null && 0.0f < zoom.floatValue()) {
+                StateMachine.this.showBlackScreen();
+            }
+            StateMachine.this.mCameraDeviceHandler.setCapturingMode(capturingMode);
+            StateMachine.this.mCameraDeviceHandler.setVideoSize(videoSize);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(DisplayFlash displayFlash) {
+            StateMachine.this.mCameraDeviceHandler.setDisplayFlashMode(displayFlash);
+            notifySettingChanged(displayFlash);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(Ev ev) {
+            StateMachine.this.mCameraDeviceHandler.setEv(ev);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(Flash flash) {
+            StateMachine.this.mCameraDeviceHandler.setFlashMode(flash);
+            notifySettingChanged(flash);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(FrontAngle frontAngle) {
+            if (StateMachine.this.mCurrentState.getCaptureState() == CaptureState.STATE_CROPPING
+                    || !StateMachine.this.getCurrentCapturingMode().isFront()) {
                 return;
             }
-        } else {
-            pictureRect = ((Resolution) this.mUserSettings.get(capturingMode, UserSettingKey.RESOLUTION)).getPictureRect();
+            if (CamLog.VERBOSE) {
+                CamLog.d("set(FrontAngle) value: " + frontAngle);
+            }
+            StateMachine.this.mCameraDeviceHandler.setZoom(
+                    frontAngle == FrontAngle.CROPPED
+                            ? (float) ((PlatformCapability.getWideZoomTargetRatio(CameraInfo.CameraId.FRONT) - 1.0d)
+                                    / (PlatformCapability.getMaxZoomRatio(CameraInfo.CameraId.FRONT) - 1.0d))
+                            : 0.0f);
         }
-        z2 = false;
-        previewRect = this.mCameraDeviceHandler.getPreviewRect(capturingMode, pictureRect);
-        if (previewRect == null) {
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(FocusMode focusMode) {
+            StateMachine.this.mCameraDeviceHandler.setFocusMode(focusMode);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(Hdr hdr) {
+            StateMachine.this.mCameraDeviceHandler.setHdr(hdr);
+            notifySettingChanged(hdr);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(Iso iso) {
+            StateMachine.this.mCameraDeviceHandler.setIso(iso);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(Metering metering) {
+            StateMachine.this.mCameraDeviceHandler.setMetering(metering);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(PhotoLight photoLight) {
+            StateMachine.this.mCameraDeviceHandler
+                    .setFlashMode(photoLight.getBooleanValue() ? Flash.LED_ON : Flash.LED_OFF);
+            notifySettingChanged(photoLight);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(Resolution resolution) {
+            CapturingMode capturingMode = (CapturingMode) StateMachine.this.mUserSettings
+                    .get(UserSettingKey.CAPTURING_MODE);
+            Float zoom = StateMachine.this.getZoom();
+            if (!capturingMode.isFront() && zoom != null && 0.0f < zoom.floatValue()) {
+                StateMachine.this.showBlackScreen();
+            }
+            StateMachine.this.mCameraDeviceHandler.setResolution(capturingMode.getCameraId(), resolution);
+            if (!capturingMode.isFront()) {
+                resetZoom();
+            }
+            StateMachine.this.requestResizeEvf(capturingMode, true);
+            if (StateMachine.this.mViewFinder == null || !StateMachine.this.mViewFinder.isSetupHeadupDisplayInvoked()) {
+                return;
+            }
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ZOOM_CHANGED, 0);
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED_EXCEPT_FACE, new Object[0]);
+            StateMachine.this.mObjectTracking.stop();
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(AspectRatio aspectRatio) {
+            notifySettingChanged(aspectRatio);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(SelfTimer selfTimer) {
+            StateMachine.this.updatePhotoSelftimer(selfTimer);
+            if (StateMachine.this.mViewFinder != null && StateMachine.this.mViewFinder.isSetupHeadupDisplayInvoked()) {
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                        ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_SELF_TIMER_CONDITION, selfTimer);
+            }
+            notifySettingChanged(selfTimer);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(ShutterTrigger shutterTrigger) {
+            if (((CapturingMode) StateMachine.this.mUserSettings.get(UserSettingKey.CAPTURING_MODE)).getType() == 1) {
+                if (StateMachine.this.mViewFinder == null) {
+                    return;
+                } else {
+                    StateMachine.this.mCameraDeviceHandler.setShutterTrigger(shutterTrigger);
+                }
+            }
+            StateMachine.this.mGestureShutter.handleSettingsChanged(shutterTrigger.isGestureShutterOn());
+            if (StateMachine.this.mViewFinder != null && StateMachine.this.mViewFinder.isSetupHeadupDisplayInvoked()) {
+                StateMachine.this.mViewFinder.setupFocusRectangles();
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                        ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED, new Object[0]);
+            }
+            if (StateMachine.this.mViewFinder != null) {
+                StateMachine.this.mViewFinder.setShutterTrigger(shutterTrigger);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(SoftSkin softSkin) {
+            StateMachine.this.mCameraDeviceHandler.setSoftSkin(softSkin);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(VideoStabilizer videoStabilizer) {
+            if (((CapturingMode) StateMachine.this.mUserSettings.get(UserSettingKey.CAPTURING_MODE)).getType() == 2) {
+                if (StateMachine.this.mActivity.isOneShotVideo() && StateMachine.this.mActivity.getExtraOutput() != null
+                        && !StateMachine.this.mActivity.getExtraOutput().getScheme().equalsIgnoreCase("file")) {
+                    if (StateMachine.this.mCameraDeviceHandler.isSteadyShotSupported()) {
+                        videoStabilizer = VideoStabilizer.STEADY_SHOT;
+                    } else {
+                        videoStabilizer = VideoStabilizer.OFF;
+                    }
+                }
+                StateMachine.this.mCameraDeviceHandler.setVideoStabilizer(videoStabilizer);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(TouchIntention touchIntention) {
+            StateMachine.this.mCameraDeviceHandler
+                    .setMetering((Metering) StateMachine.this.mUserSettings.get(UserSettingKey.METERING));
+            if (StateMachine.this.mViewFinder == null || !StateMachine.this.mViewFinder.isSetupHeadupDisplayInvoked()
+                    || StateMachine.this.mUserSettings.get(UserSettingKey.FOCUS_RANGE) == FocusRange.AF
+                    || touchIntention == TouchIntention.FOCUS_AND_EXPOSURE) {
+                return;
+            }
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED_EXCEPT_FACE, new Object[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(VideoSize videoSize) {
+            CapturingMode capturingMode = (CapturingMode) StateMachine.this.mUserSettings
+                    .get(UserSettingKey.CAPTURING_MODE);
+            VideoHdr videoHdr = (VideoHdr) StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_HDR);
+            if (capturingMode == CapturingMode.SLOW_MOTION) {
+                StateMachine.this.mCameraDeviceHandler.releaseRecorder();
+            }
+            StateMachine.this.setIsSceneRecognitionValid(isSceneRecognitionValid(capturingMode, videoSize, videoHdr));
+            StateMachine.this.mCameraDeviceHandler.setPreviewSizeAndFpsRangeForVideo(capturingMode.getCameraId(),
+                    videoSize, videoHdr);
+            Float zoom = StateMachine.this.getZoom();
+            if (!capturingMode.isFront() && zoom != null && 0.0f < zoom.floatValue()) {
+                StateMachine.this.showBlackScreen();
+            }
+            if (!capturingMode.isFront()) {
+                resetZoom();
+            }
+            StateMachine.this.mCameraDeviceHandler.setVideoSize(videoSize);
+            StateMachine.this.mCameraDeviceHandler.setZoom(0.0f);
+            FusionMode fusionMode = (FusionMode) StateMachine.this.mUserSettings.get(UserSettingKey.FUSION_MODE);
+            if (!DependencyCheckUtil.isFusionAvailableOnVideo(capturingMode.getCameraId(), videoSize, videoHdr)) {
+                fusionMode = FusionMode.OFF;
+            }
+            StateMachine.this.mCameraDeviceHandler.setFusionMode(fusionMode);
+            StateMachine.this.requestResizeEvf(capturingMode, true);
+            if (StateMachine.this.mViewFinder == null || !StateMachine.this.mViewFinder.isSetupHeadupDisplayInvoked()) {
+                return;
+            }
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_VIDEO_HDR_CONDITION, videoHdr, false);
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ZOOM_CHANGED, 0);
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED_EXCEPT_FACE, new Object[0]);
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_UPDATE_FUSION_MODE,
+                    fusionMode);
+            StateMachine.this.mObjectTracking.stop();
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(VideoHdr videoHdr) {
+            CapturingMode capturingMode = (CapturingMode) StateMachine.this.mUserSettings
+                    .get(UserSettingKey.CAPTURING_MODE);
+            if (StateMachine.this.getCurrentCapturingMode().isFront()
+                    && StateMachine.this.mUserSettings.get(UserSettingKey.FRONT_ANGLE) == FrontAngle.CROPPED) {
+                StateMachine.this.showBlackScreen();
+            }
+            VideoSize videoSize = (VideoSize) StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_SIZE);
+            if (videoSize == VideoSize.FOUR_K_UHD_H264) {
+                if (videoHdr == VideoHdr.HDR_ON) {
+                    StateMachine.this.mCameraDeviceHandler.setVideoSize(VideoSize.FOUR_K_UHD_H265);
+                } else if (videoHdr == VideoHdr.HDR_OFF) {
+                    StateMachine.this.mCameraDeviceHandler.setVideoSize(videoSize);
+                }
+            }
+            StateMachine.this.mCameraDeviceHandler.setVideoHdr(videoHdr);
+            notifySettingChanged(videoHdr);
+            FusionMode fusionMode = (FusionMode) StateMachine.this.mUserSettings.get(UserSettingKey.FUSION_MODE);
+            if (!DependencyCheckUtil.isFusionAvailableOnVideo(capturingMode.getCameraId(), videoSize, videoHdr)) {
+                fusionMode = FusionMode.OFF;
+            }
+            StateMachine.this.mCameraDeviceHandler.setFusionMode(fusionMode);
+            StateMachine.this
+                    .setIsSceneRecognitionValid(videoHdr != VideoHdr.HDR_ON && isSceneRecognitionValid(capturingMode,
+                            videoSize, (VideoHdr) StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_HDR)));
+            StateMachine.this.mCameraDeviceHandler.setPreviewSizeAndFpsRangeForVideo(capturingMode.getCameraId(),
+                    videoSize, videoHdr);
+            if (!capturingMode.isFront()) {
+                resetZoom();
+            }
+            StateMachine.this.requestResizeEvf(capturingMode, true);
+            if (StateMachine.this.mViewFinder == null || !StateMachine.this.mViewFinder.isSetupHeadupDisplayInvoked()) {
+                return;
+            }
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_VIDEO_HDR_CONDITION, videoHdr, true);
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ZOOM_CHANGED, 0);
+            StateMachine.this.switchVideoFaceDetection();
+            if (!StateMachine.this.mIsSemiAutoEnabled) {
+                StateMachine.this.switchSceneRecognition(
+                        StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage()));
+            }
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED_EXCEPT_FACE, new Object[0]);
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_UPDATE_FUSION_MODE,
+                    fusionMode);
+            StateMachine.this.mObjectTracking.stop();
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(VideoShutterTrigger videoShutterTrigger) {
+            if (StateMachine.this.mViewFinder != null) {
+                StateMachine.this.mViewFinder.updateVideoShutterTrigger();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(WhiteBalance whiteBalance) {
+            StateMachine.this.mCameraDeviceHandler.setWhiteBalance(whiteBalance);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void commit() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke");
+            }
+            StateMachine.this.mCameraDeviceHandler.commit();
+            if (StateMachine.this.mViewFinder != null) {
+                StateMachine.this.mViewFinder.commit();
+            }
+            CameraParameters parameters = StateMachine.this.mCameraDeviceHandler.getParameters();
+            if (parameters != null) {
+                CameraInfo.CameraId cameraId = ((CapturingMode) StateMachine.this.mUserSettings
+                        .get(UserSettingKey.CAPTURING_MODE)).getCameraId();
+                EachCameraStatusPublisher eachCameraStatusPublisher = new EachCameraStatusPublisher(
+                        StateMachine.this.mActivity, cameraId);
+                eachCameraStatusPublisher.putFromParameter(parameters, cameraId,
+                        StateMachine.this.getCurrentCapturingMode().isVideo());
+                if (StateMachine.this.getCurrentCapturingMode().isVideo()) {
+                    eachCameraStatusPublisher.put(new com.sonyericsson.cameracommon.status.eachcamera.PhotoLight(
+                            StateMachine.this.mUserSettings.get(UserSettingKey.PHOTO_LIGHT).equals(PhotoLight.ON)
+                                    ? com.sonyericsson.cameracommon.status.eachcamera.PhotoLight.Value.ON
+                                    : com.sonyericsson.cameracommon.status.eachcamera.PhotoLight.Value.OFF));
+                }
+                if (StateMachine.this.getCurrentCapturingMode() == CapturingMode.SLOW_MOTION) {
+                    switch ((SlowMotion) StateMachine.this.getUserSetting().get(UserSettingKey.SLOW_MOTION)) {
+                        case STANDARD_SLOW_MOTION:
+                            eachCameraStatusPublisher.put(new VideoResolution(
+                                    ((SlowMotion) StateMachine.this.mUserSettings.get(UserSettingKey.SLOW_MOTION))
+                                            .getVideoSize().getVideoRect()))
+                                    .put(new VideoRecordingFps(RecordingProfile.getVideoFrameRate(
+                                            ((SlowMotion) StateMachine.this.mUserSettings
+                                                    .get(UserSettingKey.SLOW_MOTION)).getVideoSize(),
+                                            VideoHdr.HDR_OFF)))
+                                    .put(VideoStabilizerStatus.fromCameraParameter(StateMachine.this.mUserSettings
+                                            .get(UserSettingKey.VIDEO_STABILIZER).getValue()))
+                                    .put(new com.sonyericsson.cameracommon.status.eachcamera.SlowMotion(
+                                            com.sonyericsson.cameracommon.status.eachcamera.SlowMotion.Value.OFF))
+                                    .put(new com.sonyericsson.cameracommon.status.eachcamera.Hdr(
+                                            com.sonyericsson.cameracommon.status.eachcamera.Hdr
+                                                    .fromCameraParameter(VideoHdr.HDR_OFF)))
+                                    .publish();
+                            return;
+                        case SUPER_SLOW_MOTION:
+                        case SUPER_SLOW_SHOT:
+                            VideoSize videoSize = (VideoSize) StateMachine.this.mUserSettings
+                                    .get(UserSettingKey.VIDEO_SIZE);
+                            eachCameraStatusPublisher.put(new VideoResolution(videoSize.getVideoRect()))
+                                    .put(new VideoRecordingFps(
+                                            RecordingProfile.getVideoFrameRate(videoSize, VideoHdr.HDR_OFF)))
+                                    .put(VideoStabilizerStatus.fromCameraParameter(StateMachine.this.mUserSettings
+                                            .get(UserSettingKey.VIDEO_STABILIZER).getValue()))
+                                    .put(new com.sonyericsson.cameracommon.status.eachcamera.SlowMotion(
+                                            com.sonyericsson.cameracommon.status.eachcamera.SlowMotion.Value.ON))
+                                    .put(new com.sonyericsson.cameracommon.status.eachcamera.Hdr(
+                                            com.sonyericsson.cameracommon.status.eachcamera.Hdr
+                                                    .fromCameraParameter(VideoHdr.HDR_OFF)))
+                                    .publish();
+                            return;
+                        default:
+                            return;
+                    }
+                }
+                eachCameraStatusPublisher.put(new VideoResolution(
+                        ((VideoSize) StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_SIZE)).getVideoRect()))
+                        .put(new VideoRecordingFps(RecordingProfile.getVideoFrameRate(
+                                (VideoSize) StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_SIZE),
+                                (VideoHdr) StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_HDR))))
+                        .put(VideoStabilizerStatus.fromCameraParameter(
+                                StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_STABILIZER).getValue()))
+                        .put(new com.sonyericsson.cameracommon.status.eachcamera.SlowMotion(
+                                com.sonyericsson.cameracommon.status.eachcamera.SlowMotion.Value.OFF))
+                        .put(new com.sonyericsson.cameracommon.status.eachcamera.Hdr(
+                                com.sonyericsson.cameracommon.status.eachcamera.Hdr.fromCameraParameter(
+                                        (VideoHdr) StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_HDR))))
+                        .publish();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(ObjectTracking objectTracking) {
+            if (StateMachine.this.mUserSettings.get(UserSettingKey.FOCUS_RANGE) == FocusRange.AF) {
+                set(FocusMode.getDefaultValue(
+                        (CapturingMode) StateMachine.this.mUserSettings.get(UserSettingKey.CAPTURING_MODE)));
+            }
+            if (StateMachine.this.mViewFinder == null || !StateMachine.this.mViewFinder.isSetupHeadupDisplayInvoked()) {
+                return;
+            }
+            StateMachine.this.mObjectTracking.stop();
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED, new Object[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(FocusRange focusRange) {
+            StateMachine.this.mCameraDeviceHandler.setFocusRange(focusRange);
+            if (StateMachine.this.mViewFinder != null && StateMachine.this.mViewFinder.isSetupHeadupDisplayInvoked()) {
+                StateMachine.this.mViewFinder.updateFocusIconType(focusRange != FocusRange.AF);
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                        ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED_EXCEPT_FACE, new Object[0]);
+            }
+            if (StateMachine.this.isTouchAeEnabled()) {
+                StateMachine.this.mCameraDeviceHandler
+                        .setMetering((Metering) StateMachine.this.mUserSettings.get(UserSettingKey.METERING));
+            }
+            if (focusRange != FocusRange.AF) {
+                StateMachine.this.mObjectTracking.stop();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(ShutterSpeed shutterSpeed) {
+            StateMachine.this.mCameraDeviceHandler.setShutterSpeed(shutterSpeed);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(com.sonyericsson.android.camera.configuration.parameters.SlowMotion slowMotion) {
+            VideoSize videoSize;
+            StateMachine.this.mCameraDeviceHandler.releaseRecorder();
+            StateMachine.this.mCameraDeviceHandler.setSlowMotion(slowMotion);
+            if (slowMotion != com.sonyericsson.android.camera.configuration.parameters.SlowMotion.OFF) {
+                CapturingMode capturingMode = (CapturingMode) StateMachine.this.mUserSettings
+                        .get(UserSettingKey.CAPTURING_MODE);
+                if (slowMotion != com.sonyericsson.android.camera.configuration.parameters.SlowMotion.STANDARD_SLOW_MOTION) {
+                    videoSize = (VideoSize) StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_SIZE);
+                } else {
+                    videoSize = slowMotion.getVideoSize();
+                }
+                StateMachine.this.setIsSceneRecognitionValid(isSceneRecognitionValid(capturingMode, videoSize,
+                        (VideoHdr) StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_HDR)));
+                StateMachine.this.mCameraDeviceHandler.setPreviewSizeAndFpsRangeForVideo(capturingMode.getCameraId(),
+                        videoSize, VideoHdr.HDR_OFF);
+                StateMachine.this.mCameraDeviceHandler.setVideoSize(videoSize);
+                if (!capturingMode.isFront()) {
+                    resetZoom();
+                }
+            }
+            StateMachine.this.mViewFinder.updateSlowMotionView(slowMotion);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(DestinationToSave destinationToSave) {
+            StateMachine.this.mGestureShutter
+                    .setEnabled(StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage()));
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(DistortionCorrection distortionCorrection) {
+            StateMachine.this.mCameraDeviceHandler.setDistortionCorrection(distortionCorrection);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(FusionMode fusionMode) {
+            if (DependencyCheckUtil.isFusionAvailableOnVideo(
+                    ((CapturingMode) StateMachine.this.mUserSettings.get(UserSettingKey.CAPTURING_MODE)).getCameraId(),
+                    (VideoSize) StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_SIZE),
+                    (VideoHdr) StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_HDR))) {
+                StateMachine.this.mCameraDeviceHandler.setFusionMode(fusionMode);
+            } else {
+                StateMachine.this.mCameraDeviceHandler.setFusionMode(FusionMode.OFF);
+            }
+            if (StateMachine.this.mViewFinder == null || !StateMachine.this.mViewFinder.isSetupHeadupDisplayInvoked()) {
+                return;
+            }
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_UPDATE_FUSION_MODE,
+                    fusionMode);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(SideSense sideSense) {
+            switch (StateMachine.this.getCurrentCapturingMode()) {
+                case NORMAL:
+                case FRONT_PHOTO:
+                case SLOW_MOTION:
+                case UNKNOWN:
+                    return;
+                default:
+                    if (sideSense == SideSense.ON) {
+                        StateMachine.this.mActivity.enableSideSense();
+                        return;
+                    } else {
+                        StateMachine.this.mActivity.disableSideSense();
+                        return;
+                    }
+            }
+        }
+
+        private void notifySettingChanged(UserSettingValue userSettingValue) {
+            synchronized (StateMachine.this) {
+                if (StateMachine.this.mViewFinder != null && StateMachine.this.mViewFinder.isSetupHeadupDisplayInvoked()
+                        && StateMachine.this.mCurrentState.getCaptureState() != CaptureState.STATE_MODE_CHANGING
+                        && StateMachine.this.mCurrentState.getCaptureState() != CaptureState.STATE_CAMERA_SWITCHING
+                        && StateMachine.this.mCurrentState
+                                .getCaptureState() != CaptureState.STATE_WAITING_EVF_PREPARED_IN_MODE_CHANGE) {
+                    StateMachine.this.mViewFinder.onSettingChanged(userSettingValue);
+                }
+            }
+        }
+
+        private boolean isSceneRecognitionValid(CapturingMode capturingMode, VideoSize videoSize, VideoHdr videoHdr) {
+            switch (capturingMode) {
+                case SCENE_RECOGNITION:
+                case SUPERIOR_FRONT:
+                    return true;
+                case FRONT_VIDEO:
+                case VIDEO:
+                    if (VideoSize.FULL_HD == videoSize && videoHdr != VideoHdr.HDR_ON) {
+                        return true;
+                    }
+                    break;
+            }
+            return false;
+        }
+
+        private void resetZoom() {
+            StateMachine.this.mCameraDeviceHandler.setZoom(0.0f);
+            StateMachine.this.onZoomChange(0);
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    private void requestResizeEvf(CapturingMode capturingMode, boolean z) {
+        // Check if we should return early when in pause state
+        if (this.mCurrentState.getCaptureState() == CaptureState.STATE_PAUSE && z) {
+            return;
+        }
+
+        Rect rect;
+        boolean isVideoHdrOn = false;
+
+        if (capturingMode.isVideo()) {
+            if (capturingMode == CapturingMode.SLOW_MOTION) {
+                // Get video rect from SlowMotion settings
+                SlowMotion slowMotion = (SlowMotion) this.mUserSettings.get(capturingMode, UserSettingKey.SLOW_MOTION);
+                rect = slowMotion.getVideoSize().getVideoRect();
+            } else {
+                // Get video rect from VideoSize settings
+                VideoSize videoSize = (VideoSize) this.mUserSettings.get(capturingMode, UserSettingKey.VIDEO_SIZE);
+                rect = videoSize.getVideoRect();
+                // Check if VideoHDR is on
+                VideoHdr videoHdr = (VideoHdr) this.mUserSettings.get(capturingMode, UserSettingKey.VIDEO_HDR);
+                if (videoHdr == VideoHdr.HDR_ON) {
+                    isVideoHdrOn = true;
+                }
+            }
+        } else {
+            // Get picture rect from Resolution settings
+            Resolution resolution = (Resolution) this.mUserSettings.get(capturingMode, UserSettingKey.RESOLUTION);
+            rect = resolution.getPictureRect();
+        }
+
+        // Get preview rect from camera device handler
+        Rect previewRect = this.mCameraDeviceHandler.getPreviewRect(capturingMode, rect);
+        if (previewRect != null) {
+            android.util.Size surfaceSize = PlatformDependencyResolver.getSurfaceSize(previewRect, isVideoHdrOn);
+            // Send view update event
+            this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_REQUEST_RESIZE_EVF_SCOPE,
+                    new Object[] {
+                            new Rect(0, 0, surfaceSize.getWidth(), surfaceSize.getHeight()),
+                            Boolean.valueOf(z)
+                    });
         }
     }
 
@@ -725,16 +1410,3057 @@ public class StateMachine {
         this.mObjectTracking = new ObjectTrackingManager(viewFinder, cameraDeviceHandler, this);
     }
 
-    private StateMachine$NotifyDelayedEventTask notifyDelayedEvent(StateMachine$TransitterEvent stateMachine$TransitterEvent, Object... objArr) {
-        StateMachine$NotifyDelayedEventTask stateMachine$NotifyDelayedEventTask = new StateMachine$NotifyDelayedEventTask(this, stateMachine$TransitterEvent, objArr, null);
-        this.mHandler.postDelayed(stateMachine$NotifyDelayedEventTask, 100L);
-        return stateMachine$NotifyDelayedEventTask;
+    class State {
+        protected CaptureState mCaptureState;
+
+        public void entry() {
+        }
+
+        public void exit() {
+        }
+
+        public void handleCapture(Object... objArr) {
+        }
+
+        public void handleCaptureBurst(Object... objArr) {
+        }
+
+        public void handleCaptureCancel(Object... objArr) {
+        }
+
+        public void handleCaptureReady(Object... objArr) {
+        }
+
+        public void handleChangeAngleStart(Object... objArr) {
+        }
+
+        public void handleChangeCapturingMode(Object... objArr) {
+        }
+
+        public void handleChangeSelectedFace(Object... objArr) {
+        }
+
+        public void handleClearFocus(Object... objArr) {
+        }
+
+        public void handleDeselectObjectPosition(Object... objArr) {
+        }
+
+        public void handleDialogClosed(Object... objArr) {
+        }
+
+        public void handleDialogOpened(Object... objArr) {
+        }
+
+        public void handleFinalize(Object... objArr) {
+        }
+
+        public void handleFinishTransitionOperation(Object... objArr) {
+        }
+
+        public void handleFinishZoom(Object... objArr) {
+        }
+
+        public void handleFusionConditionChanged(Object... objArr) {
+        }
+
+        public void handleHighFameRateRecordingDone(Object... objArr) {
+        }
+
+        public void handleInitialize(Object... objArr) {
+        }
+
+        public void handleKeyMenu(Object... objArr) {
+        }
+
+        public void handleOnAmberBlueColorChanged(Object... objArr) {
+        }
+
+        public void handleOnAutoFocusDone(Object... objArr) {
+        }
+
+        public void handleOnBrightnessChanged(Object... objArr) {
+        }
+
+        public void handleOnBurstShutterDone(Object... objArr) {
+        }
+
+        public void handleOnBurstStoreCompleted(Object... objArr) {
+        }
+
+        public void handleOnCameraDeviceClosed(Object... objArr) {
+        }
+
+        public void handleOnCameraDeviceOpened(Object... objArr) {
+        }
+
+        public void handleOnContinuousPreviewFrameUpdated(Object... objArr) {
+        }
+
+        public void handleOnEvfPrepared(Object... objArr) {
+        }
+
+        public void handleOnFaceDetected(Object... objArr) {
+        }
+
+        public void handleOnHeatedOverCoolingLow(Object... objArr) {
+        }
+
+        public void handleOnHeatedOverCoolingUltraLow(Object... objArr) {
+        }
+
+        public void handleOnHeatedOverWarningExtra(Object... objArr) {
+        }
+
+        public void handleOnLazyInitializationTaskRun(Object... objArr) {
+        }
+
+        public void handleOnObjectTracked(Object... objArr) {
+        }
+
+        public void handleOnOnePreviewFrameUpdated(Object... objArr) {
+        }
+
+        public void handleOnOrientationChanged(Object... objArr) {
+        }
+
+        public void handleOnPreShutterDone(Object... objArr) {
+        }
+
+        public void handleOnPreTakePictureDone(Object... objArr) {
+        }
+
+        public void handleOnPrepareBurstDone(Object... objArr) {
+        }
+
+        public void handleOnPreviewStarted() {
+        }
+
+        public void handleOnRecordingError(Object... objArr) {
+        }
+
+        public void handleOnRecordingStartWaitDone(Object... objArr) {
+        }
+
+        public void handleOnSceneModeChanged(Object... objArr) {
+        }
+
+        public void handleOnSemiAutoDisabled(Object... objArr) {
+        }
+
+        public void handleOnSemiAutoEnabled(Object... objArr) {
+        }
+
+        public void handleOnShutterDone(Object... objArr) {
+        }
+
+        public void handleOnStorageReadyStateChanged(Object... objArr) {
+        }
+
+        public void handleOnStoreRequested(Object... objArr) {
+        }
+
+        public void handleOnVideoRecordingDone(Object... objArr) {
+        }
+
+        public void handlePause(Object... objArr) {
+        }
+
+        public void handlePauseRecording(Object... objArr) {
+        }
+
+        public void handlePerformZoom(Object... objArr) {
+        }
+
+        public void handlePrepareZoom(Object... objArr) {
+        }
+
+        public void handleRecordReady(Object... objArr) {
+        }
+
+        public void handleRequestUpdateHighSensitivityFusionMode(Object... objArr) {
+        }
+
+        public void handleResumeRecording(Object... objArr) {
+        }
+
+        public void handleResumeTimeout(Object... objArr) {
+        }
+
+        public void handleSelfTimerCancel(Object... objArr) {
+        }
+
+        public void handleSetSelectedObjectPosition(Object... objArr) {
+        }
+
+        public void handleSetTouchedPosition(Object... objArr) {
+        }
+
+        public void handleSlowMotionFeedbackAnimationEnd(Object... objArr) {
+        }
+
+        public void handleStartAfAfterObjectTracked(Object... objArr) {
+        }
+
+        public void handleStartCaptureCountDown(Object... objArr) {
+        }
+
+        public void handleStartRecording(Object... objArr) {
+        }
+
+        public void handleStartTransitionOperation(Object... objArr) {
+        }
+
+        public void handleStopRecording(Object... objArr) {
+        }
+
+        public void handleStopRecordingSlowMotion(Object... objArr) {
+        }
+
+        public void handleStorageMounted(Object... objArr) {
+        }
+
+        public void handleSwitchCamera(Object... objArr) {
+        }
+
+        public void handleTouchContentProgress() {
+        }
+
+        public void handleTriggerSlowMotion(Object... objArr) {
+        }
+
+        private State() {
+            this.mCaptureState = CaptureState.STATE_NONE;
+        }
+
+        public String toString() {
+            if (this.mCaptureState == null) {
+                return CaptureState.STATE_NONE.toString();
+            }
+            return this.mCaptureState.toString();
+        }
+
+        public CaptureState getCaptureState() {
+            return this.mCaptureState;
+        }
+
+        public void handleResume(Object... objArr) {
+            if (StateMachine.this.mCameraDeviceHandler.isCameraDisabled()) {
+                StateMachine.this.mViewFinder.showMessageDialog(DialogId.ERROR_USE_OF_CAMERA_RESTRICTED, new Object[0]);
+            }
+        }
+
+        public void handleOnHeatedOverWarning(Object... objArr) {
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_NOTIFY_THERMAL_WARNING, new Object[0]);
+        }
+
+        public void handleOnHeatedOverCritical(Object... objArr) {
+            boolean booleanValue = ((Boolean) objArr[0]).booleanValue();
+            StateMachine.this.changeTo(new StateFatal(false, booleanValue), new Object[0]);
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_ON_NOTIFY_THERMAL_CRITICAL, Boolean.valueOf(booleanValue));
+        }
+
+        public void handleOnHeatedOverNormal(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_NOTIFY_THERMAL_NORMAL,
+                    new Object[0]);
+        }
+
+        public void handleOnInitialAutoFocusDone(Object... objArr) {
+            CamLog.e("ERROR:PRE-SCAN Event is not handled correctly. Check sequence.");
+            StateMachine.this.cancelAutoFocus(false);
+        }
+
+        public void handleOnTakePictureDone(Object... objArr) {
+            RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder = (RequestFactory.PhotoSavingRequestBuilder) objArr[0];
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke id:" + photoSavingRequestBuilder.getRequestId());
+            }
+            StateMachine.this.requestStorePicture(photoSavingRequestBuilder);
+        }
+
+        public void handleOnStoreCompleted(Object... objArr) {
+            StateMachine.this.mLastStoreDataResult = (StoreDataResult) objArr[0];
+            StateMachine.this.mPredictiveApplier.leaveSuppressor(StateMachine.this.mLastStoreDataResult.savingRequest);
+            if (StateMachine.this.mLastStoreDataResult.savingRequest.getFilePath() != null
+                    && PredictiveCapturePathBuilder.isPredictiveCaptureLastImage(
+                            StateMachine.this.mLastStoreDataResult.savingRequest.getFilePath())) {
+                StateMachine.this.sendEvent(TransitterEvent.EVENT_ON_PREDICTIVE_CAPTURE_GROUP_STORE_COMPLETED,
+                        StateMachine.this.mLastStoreDataResult);
+            }
+            if (StateMachine.this.mActivity.getWearableBridge() != null) {
+                StateMachine.this.mActivity.getWearableBridge().getPhotoStateNotifier().onCaptureSucceeded();
+            }
+            if (StateMachine.this.mViewFinder != null) {
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_STORE_COMPLETED,
+                        StateMachine.this.mLastStoreDataResult,
+                        Boolean.valueOf(isLastStoreDataResult(StateMachine.this.mLastStoreDataResult)));
+            }
+        }
+
+        private boolean isLastStoreDataResult(StoreDataResult storeDataResult) {
+            if (storeDataResult.savingRequest.common.takenByFastCapture) {
+                return true;
+            }
+            if (StateMachine.this.mLastPhotoSavingRequest == null
+                    && StateMachine.this.mLastVideoSavingRequest == null) {
+                CamLog.w("Last saving request is not exist.");
+                return true;
+            }
+            int requestId = storeDataResult.savingRequest.getRequestId();
+            return StateMachine.this.mLastPhotoSavingRequest == null
+                    ? StateMachine.this.mLastVideoSavingRequest.getRequestId() == requestId
+                    : StateMachine.this.mLastVideoSavingRequest == null
+                            ? StateMachine.this.mLastPhotoSavingRequest.getRequestId() == requestId
+                            : StateMachine.this.mLastPhotoSavingRequest
+                                    .getRequestId() > StateMachine.this.mLastVideoSavingRequest.getRequestId()
+                                            ? StateMachine.this.mLastPhotoSavingRequest.getRequestId() == requestId
+                                            : StateMachine.this.mLastVideoSavingRequest.getRequestId() == requestId;
+        }
+
+        public void handleStorageError(Object... objArr) {
+            boolean z = false;
+            Storage.StorageType storageType = (Storage.StorageType) objArr[0];
+            if (((Storage.StorageState) objArr[1]) == Storage.StorageState.CORRUPT) {
+                CamLog.w("Storage corruption : type = " + storageType + ", state = " + StateMachine.this.mCurrentState);
+                StateMachine.this.mViewFinder.showMessageDialog(DialogId.MEMORY_SD_UNAVAILABLE_FOR_CORRUPT,
+                        new Object[0]);
+                StateMachine.this.changeTo(new StateFatal(z, z), new Object[0]);
+            }
+        }
+
+        public void handleOnStorageUngranted(Object... objArr) {
+            if (CamLog.DEBUG) {
+                throw new IllegalStateException(
+                        "Since processing is not executed in the current state, confirmation is necessary");
+            }
+        }
+
+        public void handleRequestSetupHeadUpDisplay(Object... objArr) {
+            StateMachine.this.mHandler
+                    .postDelayed(new ReTrySetupHeadUpDisplayTask(((Boolean) objArr[0]).booleanValue()), 100L);
+        }
+
+        class ReTrySetupHeadUpDisplayTask implements Runnable {
+            private final boolean mApplySettingsForFastCapture;
+
+            public ReTrySetupHeadUpDisplayTask(boolean z) {
+                this.mApplySettingsForFastCapture = z;
+            }
+
+            @Override // java.lang.Runnable
+            public void run() {
+                StateMachine.this.sendEvent(TransitterEvent.EVENT_REQUEST_SETUP_HEAD_UP_DISPLAY,
+                        Boolean.valueOf(this.mApplySettingsForFastCapture));
+            }
+        }
+
+        public void handleCancelTouchedPosition(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.resetFocusAreaAndRect(
+                    (FocusMode) StateMachine.this.getUserSetting().get(UserSettingKey.FOCUS_MODE));
+            StateMachine.this.mCameraDeviceHandler.setMeteringAreaAndCommit(null,
+                    (Metering) StateMachine.this.mUserSettings.get(UserSettingKey.METERING));
+        }
+
+        public void handleOnPredictiveCaptureGroupStoreCompleted(Object... objArr) {
+            StateMachine.this.onPredictiveCaptureStoreComplete((StoreDataResult) objArr[0]);
+        }
+
+        public void handleOnObjectLost(Object... objArr) {
+            StateMachine.this.mViewFinder.onObjectLost();
+        }
+
+        public void handleOnReachBatteryLimit(Object... objArr) {
+            boolean z = false;
+            StateMachine.this.changeTo(new StateFatal(z, z), objArr);
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_NOTIFY_BATTERY_CRITICAL, false);
+        }
+
+        public void handleOnReachBatteryLow(Object... objArr) {
+            StateMachine.this.mViewFinder.showMessageDialog(DialogId.LOW_BATTERY_WARNING, new Object[0]);
+        }
+
+        public void handleOnReachBatteryLevelChanged(Object... objArr) {
+            StateMachine.this.mViewFinder.updateBatteryIndicator(((Integer) objArr[0]).intValue());
+        }
     }
 
-    private void removeDelayedEvent(StateMachine$NotifyDelayedEventTask stateMachine$NotifyDelayedEventTask) {
-        this.mHandler.removeCallbacks(stateMachine$NotifyDelayedEventTask);
+    class StateNone extends State {
+        private StateNone() {
+            super();
+            this.mCaptureState = CaptureState.STATE_NONE;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleInitialize(Object... objArr) {
+            StateMachine.this.changeTo(new StateInitialize(), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
     }
 
+    class StateWaitingEvfPreparedByModeChange extends State {
+        private StateWaitingEvfPreparedByModeChange() {
+            super();
+            this.mCaptureState = CaptureState.STATE_WAITING_EVF_PREPARED_IN_MODE_CHANGE;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnEvfPrepared(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.setPreviewSurface(((Evf) objArr[0]).asSurface());
+            StateMachine.this.mCameraDeviceHandler.startPreview();
+            if (StateMachine.this.isTutorialNeededToBeShownForCurrentMode()) {
+                StateMachine.this.changeTo(new StateOperationRestricted(), ViewFinder.UiComponentKind.TUTORIAL);
+            } else {
+                StateMachine.this.changeToStandby();
+            }
+        }
+    }
+
+    class StateInitialize extends State {
+        private Evf mEvf;
+
+        private StateInitialize() {
+            super();
+            this.mCaptureState = CaptureState.STATE_INITIALIZE;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleResume(Object... objArr) {
+            CameraDeviceHandler.CameraSessionId cameraSessionId = (CameraDeviceHandler.CameraSessionId) objArr[1];
+            StartupAction startupAction = (StartupAction) objArr[2];
+            if (StateMachine.this.mCameraDeviceHandler.isCameraDisabled()) {
+                StateMachine.this.mViewFinder.showMessageDialog(DialogId.ERROR_USE_OF_CAMERA_RESTRICTED, new Object[0]);
+                return;
+            }
+            switch (StateMachine.this.mCameraDeviceHandler.getPreProcessState()) {
+                case PRE_SCAN_DONE:
+                    StateMachine.this.mCameraDeviceHandler.preCapture();
+                    break;
+                case PRE_CAPTURE_DONE:
+                    RequestFactory.PhotoSavingRequestBuilder andClearPreCaptureResult = StateMachine.this.mCameraDeviceHandler
+                            .getAndClearPreCaptureResult();
+                    if (andClearPreCaptureResult != null) {
+                        StateMachine.this.notifyDelayedEvent(TransitterEvent.EVENT_ON_PRE_TAKE_PICTURE_DONE,
+                                andClearPreCaptureResult);
+                        break;
+                    }
+                    break;
+            }
+            FastCapture fastCapture = (FastCapture) objArr[0];
+            StateMachine.this.changeTo(new StateResume(cameraSessionId, fastCapture, this.mEvf, startupAction),
+                    fastCapture, Boolean.valueOf(StateMachine.this.hasRemainSavingRequest()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnInitialAutoFocusDone(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.preCapture();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnPreShutterDone(Object... objArr) {
+            StateMachine.this.notifyDelayedEvent(TransitterEvent.EVENT_ON_PRE_SHUTTER_DONE, objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnPreTakePictureDone(Object... objArr) {
+            StateMachine.this.notifyDelayedEvent(TransitterEvent.EVENT_ON_PRE_TAKE_PICTURE_DONE, objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnEvfPrepared(Object... objArr) {
+            this.mEvf = (Evf) objArr[0];
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    private NotifyDelayedEventTask notifyDelayedEvent(TransitterEvent transitterEvent, Object... objArr) {
+        NotifyDelayedEventTask notifyDelayedEventTask = new NotifyDelayedEventTask(transitterEvent, objArr);
+        this.mHandler.postDelayed(notifyDelayedEventTask, 100L);
+        return notifyDelayedEventTask;
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    private void removeDelayedEvent(NotifyDelayedEventTask notifyDelayedEventTask) {
+        this.mHandler.removeCallbacks(notifyDelayedEventTask);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public class NotifyDelayedEventTask implements Runnable {
+        private final Object[] mArgs;
+        private final TransitterEvent mEvent;
+
+        private NotifyDelayedEventTask(TransitterEvent transitterEvent, Object[] objArr) {
+            this.mEvent = transitterEvent;
+            this.mArgs = objArr;
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke NotifyDelayedEventTask");
+            }
+            StateMachine.this.sendEvent(this.mEvent, this.mArgs);
+        }
+    }
+
+    class StateCameraSwitching extends State {
+        private static final String TAG = "StateMachine.StateCameraSwitching";
+        private final FastCapture mFastCapture;
+        private boolean mIsCameraOpened;
+        private boolean mIsEvfPrepared;
+        private final CameraDeviceHandler.CameraSessionId mSessionId;
+
+        private StateCameraSwitching(CameraDeviceHandler.CameraSessionId cameraSessionId, FastCapture fastCapture) {
+            super();
+            this.mIsEvfPrepared = false;
+            this.mIsCameraOpened = false;
+            this.mCaptureState = CaptureState.STATE_CAMERA_SWITCHING;
+            this.mSessionId = cameraSessionId;
+            this.mFastCapture = fastCapture;
+            StateMachine.this.mHandler.removeCallbacks(StateMachine.this.mNotifyResumeTimeoutTask);
+            StateMachine.this.mHandler.postDelayed(StateMachine.this.mNotifyResumeTimeoutTask, 7000L);
+        }
+
+        private void moveStateIfCaptureReady() {
+            if (this.mIsCameraOpened && this.mIsEvfPrepared) {
+                if (StateMachine.this.getCurrentCapturingMode().isFront()
+                        && StateMachine.this.mUserSettings.get(UserSettingKey.FRONT_ANGLE) == FrontAngle.CROPPED) {
+                    StateMachine.this.showBlackScreen();
+                }
+                StateMachine.this.mCameraDeviceHandler.startPreview();
+                if (StateMachine.this.isFusionMonitoringNeeded()) {
+                    StateMachine.this.mCameraDeviceHandler.startFusionMonitoring();
+                }
+                StateMachine.this.startFastCapture(this.mFastCapture, StartupAction.NONE);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnCameraDeviceOpened(Object... objArr) {
+            if (((CameraDeviceHandler.CameraSessionId) objArr[0]) == this.mSessionId) {
+                this.mIsCameraOpened = true;
+                moveStateIfCaptureReady();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnEvfPrepared(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.setPreviewSurface(((Evf) objArr[0]).asSurface());
+            this.mIsEvfPrepared = true;
+            moveStateIfCaptureReady();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleResumeTimeout(Object... objArr) {
+            ResearchUtil.getInstance().setCameraNotAvailableFailedToOpen();
+            CamLog.i(TAG, "[CameraNotAvailable] resume timeout.");
+            PlatformCapability.setDeviceError(true);
+            StateMachine.this.mViewFinder.showMessageDialog(DialogId.ERROR_IN_USE_BY_ANOTHER_APPLICATION,
+                    new Object[0]);
+            StateMachine.this.changeTo(new StateWarning(), new Object[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void exit() {
+            super.exit();
+            StateMachine.this.mHandler.removeCallbacks(StateMachine.this.mNotifyResumeTimeoutTask);
+        }
+    }
+
+    class StateResume extends State {
+        private final FastCapture mFastCapture;
+        private boolean mIsCameraStarted;
+        private boolean mIsCurrentStorageReady;
+        private boolean mIsEvfPrepared;
+        private boolean mIsResumeSequenceStarted;
+        private final CameraDeviceHandler.CameraSessionId mSessionId;
+        private StartupAction mStartupAction;
+        private Storage.StorageReadyStateListener mStorageReadyStateListener;
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStorageUngranted(Object... objArr) {
+        }
+
+        private StateResume(CameraDeviceHandler.CameraSessionId cameraSessionId, FastCapture fastCapture, Evf evf,
+                StartupAction startupAction) {
+            super();
+            this.mStorageReadyStateListener = new Storage.StorageReadyStateListener() { // from class:
+                                                                                        // com.sonyericsson.android.camera.controller.StateMachine.StateResume.1
+                @Override // com.sonyericsson.cameracommon.storage.Storage.StorageReadyStateListener
+                public void onStorageReadyStateChanged(final Storage.StorageType storageType,
+                        final Storage.StorageReadyState storageReadyState) {
+                    if (CamLog.DEBUG) {
+                        CamLog.d("invoke type:" + storageType + ", state:" + storageReadyState + ", getCurrentStorage:"
+                                + StateMachine.this.getCurrentStorage());
+                    }
+                    if (storageReadyState != Storage.StorageReadyState.SUSPENDED) {
+                        StateMachine.this.mStorage.addStorageStateListener(StateMachine.this.mStorageStateListener);
+                    }
+                    if (StateMachine.this.getCurrentStorage() == storageType) {
+                        StateMachine.this.mHandler.post(new Runnable() { // from class:
+                                                                         // com.sonyericsson.android.camera.controller.StateMachine.StateResume.1.1
+                            @Override // java.lang.Runnable
+                            public void run() {
+                                StateMachine.this.sendEvent(TransitterEvent.EVENT_STORAGE_READY_STATE_CHANGED,
+                                        storageType, storageReadyState);
+                            }
+                        });
+                    }
+                }
+            };
+            PerfLog.STATE_RESUME.begin();
+            this.mCaptureState = CaptureState.STATE_RESUME;
+            this.mSessionId = cameraSessionId;
+            this.mFastCapture = fastCapture;
+            this.mIsResumeSequenceStarted = false;
+            this.mIsCameraStarted = false;
+            this.mIsCurrentStorageReady = StateMachine.this.mStorage
+                    .isStorageReadable(StateMachine.this.getCurrentStorage());
+            StateMachine.this.mVirtualKeyEventDispatcher.start();
+            this.mStartupAction = startupAction;
+            if (evf != null) {
+                StateMachine.this.mCameraDeviceHandler.setPreviewSurface(evf.asSurface());
+                this.mIsEvfPrepared = true;
+            } else {
+                this.mIsEvfPrepared = false;
+            }
+            StateMachine.this.mIsSemiAutoEnabled = false;
+        }
+
+        private void moveStateIfCaptureReady() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke isStorageReady:" + this.mIsCurrentStorageReady + ", isCameraStarted:"
+                        + this.mIsCameraStarted + ", isEvfPrepared:" + this.mIsEvfPrepared + ", getExtraOperation():"
+                        + StateMachine.this.mActivity.getLaunchCondition().getExtraOperation());
+            }
+            if (this.mIsCameraStarted && this.mIsEvfPrepared && this.mIsCurrentStorageReady) {
+                StateMachine.this.initGeoTagManager();
+                StateMachine.this.initSideSenseSetting();
+                if (StateMachine.this.getCurrentCapturingMode().isFront()
+                        && StateMachine.this.mUserSettings.get(UserSettingKey.FRONT_ANGLE) == FrontAngle.CROPPED) {
+                    StateMachine.this.showBlackScreen();
+                }
+                StateMachine.this.mCameraDeviceHandler.startPreview();
+                if (StateMachine.this.isFusionMonitoringNeeded()) {
+                    StateMachine.this.mCameraDeviceHandler.startFusionMonitoring();
+                }
+                StateMachine.this.mActivity.reportFullyDrawnOnce();
+                if (StateMachine.this.mUserSettings
+                        .get(UserSettingKey.DESTINATION_TO_SAVE) == DestinationToSave.SDCARD) {
+                    Storage.StorageState currentState = StateMachine.this.mStorage
+                            .getCurrentState(Storage.StorageType.EXTERNAL_CARD);
+                    boolean checkSaveDestinationCanBeChange = StateMachine.this
+                            .checkSaveDestinationCanBeChange(Storage.StorageType.EXTERNAL_CARD);
+                    if (StateMachine.this.mStorage.getSdGrantedUri() == null
+                            && (currentState != Storage.StorageState.REMOVED
+                                    || this.mFastCapture == FastCapture.LAUNCH_AND_CAPTURE)) {
+                        StateMachine.this.mUserSettings.set(DestinationToSave.EMMC);
+                        if (checkSaveDestinationCanBeChange) {
+                            if (StateMachine.this.mViewFinder != null) {
+                                StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                                        ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SHOW_CHANGE_INTERNAL_STORAGE_MESSAGE,
+                                        Boolean.valueOf(this.mFastCapture == FastCapture.LAUNCH_AND_CAPTURE));
+                            }
+                        } else {
+                            StateMachine.this.sendEvent(TransitterEvent.EVENT_STORAGE_ERROR,
+                                    Storage.StorageType.INTERNAL, currentState);
+                            StateMachine.this.mViewFinder.notifyStorageStateChanged(Storage.StorageType.INTERNAL,
+                                    currentState, checkSaveDestinationCanBeChange, false);
+                        }
+                    }
+                }
+                if (!StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage())) {
+                    switch (StateMachine.this.mCameraDeviceHandler.getPreProcessState()) {
+                        case PRE_SCAN_DONE:
+                        case PRE_CAPTURE_DONE:
+                            StateMachine.this.cancelAutoFocus(false);
+                            StateMachine.this.mCameraDeviceHandler.cancelPreProcessState();
+                            break;
+                        case PRE_CAPTURE_STARTED:
+                        case PRE_SCAN_STARTED:
+                            StateMachine.this.changeTo(new StateWaitingPreProcessDone(this.mFastCapture),
+                                    new Object[0]);
+                            return;
+                    }
+                }
+                StateMachine.this.startFastCapture(this.mFastCapture, this.mStartupAction);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void entry() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke StateResume");
+            }
+            super.entry();
+            StateMachine.this.mStorageStateListener.resume();
+            StateMachine.this.mViewFinder.setIsCameraSwitching(false);
+            StateMachine.this.mLastPhotoSavingRequest = null;
+            StateMachine.this.mLastVideoSavingRequest = null;
+            StateMachine.this.mIsPausedAudioPlayback = false;
+            this.mIsCurrentStorageReady = StateMachine.this.mStorage
+                    .isStorageReadable(StateMachine.this.getCurrentStorage());
+            StateMachine.this.mStorage.addStorageReadyStateListener(this.mStorageReadyStateListener);
+            if (StateMachine.this.hasRemainSavingRequest()) {
+                StateMachine.this.mActivity.disableAutoPowerOffTimer();
+                StateMachine.this.mViewFinder.showSavingProgressBar();
+            } else {
+                startResuming();
+                moveStateIfCaptureReady();
+            }
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_SETTING_CHANGE_ACCEPTABILITY,
+                    Boolean.valueOf(StateMachine.this.isSettingChangeAcceptable()));
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void exit() {
+            super.exit();
+            StateMachine.this.mStorage.removeStorageReadyStateListener(this.mStorageReadyStateListener);
+            StateMachine.this.mViewFinder.hideSavingProgressBar();
+            StateMachine.this.mHandler.removeCallbacks(StateMachine.this.mNotifyResumeTimeoutTask);
+            PerfLog.STATE_RESUME.end();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnEvfPrepared(Object... objArr) {
+            if (!this.mIsResumeSequenceStarted) {
+                StateMachine.this.mViewFinder.requestCheckEvfPreparationRetrying();
+                return;
+            }
+            PerfLog.RESIZE_EVF.end();
+            StateMachine.this.mCameraDeviceHandler.setPreviewSurface(((Evf) objArr[0]).asSurface());
+            this.mIsEvfPrepared = true;
+            LocalResearchUtil.getInstance().setSettingsValue(StateMachine.this.mUserSettings,
+                    StateMachine.this.mActivity.getLaunchCondition().getCapturingMode());
+            moveStateIfCaptureReady();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnInitialAutoFocusDone(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.preCapture();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStartCaptureCountDown(Object... objArr) {
+            StateMachine.this.notifyDelayedEvent(TransitterEvent.EVENT_START_CAPTURE_COUNTDOWN, objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCapture(Object... objArr) {
+            StateMachine.this.notifyDelayedEvent(TransitterEvent.EVENT_CAPTURE, objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnPreShutterDone(Object... objArr) {
+            StateMachine.this.notifyDelayedEvent(TransitterEvent.EVENT_ON_PRE_SHUTTER_DONE, objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnPreTakePictureDone(Object... objArr) {
+            StateMachine.this.notifyDelayedEvent(TransitterEvent.EVENT_ON_PRE_TAKE_PICTURE_DONE, objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnCameraDeviceOpened(Object... objArr) {
+            if (((CameraDeviceHandler.CameraSessionId) objArr[0]) == this.mSessionId) {
+                this.mIsCameraStarted = true;
+                moveStateIfCaptureReady();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnCameraDeviceClosed(Object... objArr) {
+            if (StateMachine.this.hasRemainSavingRequest() || this.mIsResumeSequenceStarted) {
+                return;
+            }
+            StateMachine.this.mActivity.enableAutoPowerOffTimer();
+            startResuming();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleResumeTimeout(Object... objArr) {
+            ResearchUtil.getInstance().setCameraNotAvailableFailedToOpen();
+            CamLog.e(StateMachine.TAG, "Camera application resume is timed-out.");
+            CamLog.e(StateMachine.TAG, "  CameraDevice is ready:" + this.mIsCameraStarted);
+            CamLog.e(StateMachine.TAG, "  Evf is ready:" + this.mIsEvfPrepared);
+            CamLog.e(StateMachine.TAG, "  Storage is ready:" + this.mIsCurrentStorageReady);
+            PlatformCapability.setDeviceError(true);
+            StateMachine.this.mViewFinder.showMessageDialog(DialogId.ERROR_IN_USE_BY_ANOTHER_APPLICATION,
+                    new Object[0]);
+            StateMachine.this.changeTo(new StateWarning(), new Object[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStorageReadyStateChanged(Object... objArr) {
+            this.mIsCurrentStorageReady = StateMachine.this.mStorage
+                    .isStorageReadable(StateMachine.this.getCurrentStorage());
+            if (this.mIsCurrentStorageReady) {
+                moveStateIfCaptureReady();
+            }
+        }
+
+        private void startResuming() {
+            if (StateMachine.this.mActivity.isOneShotVideo()) {
+                StateMachine.this.mActivity.awaitSetupAllReady();
+            }
+            this.mIsResumeSequenceStarted = true;
+            StateMachine.this.mViewFinder.showSurface();
+            StateMachine.this.requestResizeEvf(StateMachine.this.mActivity.getLaunchCondition().getCapturingMode(),
+                    false);
+            PerfLog.RESIZE_EVF.begin();
+            if (StateMachine.this.mCameraDeviceHandler
+                    .getPreProcessState() == CameraDeviceHandler.PreProcessState.PRE_SCAN_DONE) {
+                StateMachine.this.mCameraDeviceHandler.preCapture();
+            }
+            StateMachine.this.mHandler.postDelayed(StateMachine.this.mNotifyResumeTimeoutTask, 7000L);
+        }
+    }
+
+    class StatePhotoBase extends State {
+        private StatePhotoBase() {
+            super();
+            this.mCaptureState = CaptureState.STATE_PHOTO_BASE;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnOrientationChanged(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ORIENTATION_CHANGED,
+                    objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnSemiAutoEnabled(Object... objArr) {
+            StateMachine.this.mIsSemiAutoEnabled = true;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnSemiAutoDisabled(Object... objArr) {
+            StateMachine.this.mIsSemiAutoEnabled = false;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFusionConditionChanged(Object... objArr) {
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_FUSION_CONDITION, objArr);
+        }
+    }
+
+    class StatePhotoReady extends StatePhotoBase {
+        private static final String TAG = "StateMachine.StatePhotoReady";
+        private CameraParameters.FaceDetectionResult mLatestFaceDetectionResult;
+        private NotifyDelayedEventTask mNotifyDelayedEventTask;
+        private StartupAction mStartupAction;
+        private final boolean mWithExtensionFeatures;
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnOnePreviewFrameUpdated(Object... objArr) {
+        }
+
+        public StatePhotoReady(boolean z) {
+            this(z, false, StartupAction.NONE);
+        }
+
+        public StatePhotoReady(boolean z, boolean z2, StartupAction startupAction) {
+            super();
+            this.mLatestFaceDetectionResult = null;
+            this.mCaptureState = CaptureState.STATE_PHOTO_READY;
+            this.mWithExtensionFeatures = z;
+            this.mStartupAction = startupAction;
+            StateMachine.this.sendResearchViewEvent();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void entry() {
+            // line 2743
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke StatePhotoReady");
+            }
+
+            // line 2745-2746
+            if (StateMachine.this.mActivity != null)
+
+            {
+                StateMachine.this.mActivity.notifyStateIdleToWearable();
+            }
+
+            // line 2749
+            if (PlatformCapability.hasDeviceError()) {
+                return;
+            }
+
+            boolean thermalEventSent = false;
+
+            // line 2756-2766
+            if (StateMachine.this.mActivity != null) {
+                if (PlatformCapability.isPowerSavingSupported(StateMachine.this.getCurrentCameraId())) {
+                    if (StateMachine.this.mActivity.isThermalWarningReceived()) {
+                        // line 2760
+                        StateMachine.this.sendEvent(TransitterEvent.EVENT_ON_HEATED_OVER_COOLING_ULTRA_LOW,
+                                new Object[0]);
+                        thermalEventSent = true;
+                    } else if (StateMachine.this.mActivity.isThermalWarningExtraState()) {
+                        // line 2762
+                        StateMachine.this.sendEvent(TransitterEvent.EVENT_ON_HEATED_OVER_COOLING_LOW, new Object[0]);
+                    }
+                } else {
+                    // line 2765-2766
+                    if (StateMachine.this.mActivity.isThermalWarningExtraState()) {
+                        StateMachine.this.mCameraDeviceHandler.enableFpsLimitation();
+                    }
+                }
+            }
+
+            // line 2771-2778
+            if (this.mWithExtensionFeatures) {
+                // line 2773
+                if (!StateMachine.this.mViewFinder.isTouchFocus()) {
+                    // line 2775
+                    StateMachine.this.mCameraDeviceHandler.startFaceDetection();
+                }
+                // line 2777-2778 (access$3000 = mIsSemiAutoEnabled)
+                if (!StateMachine.this.mIsSemiAutoEnabled) {
+                    StateMachine.this.switchSceneRecognition(
+                            StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage()));
+                }
+            }
+
+            // line 2783-2784
+            if (StateMachine.this.mActivity != null) {
+                StateMachine.this.mActivity.enableAutoPowerOffTimer();
+            }
+
+            // line 2788-2790 (access$6500 = getSensorOrientation)
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ORIENTATION_CHANGED,
+                    Integer.valueOf(StateMachine.this.getSensorOrientation()));
+
+            // line 2793-2794
+            if (!thermalEventSent) {
+                StateMachine.this.mGestureShutter.handlePreviewStarted(
+                        StateMachine.this.getCurrentCapturingMode(),
+                        StateMachine.this.mCameraDeviceHandler.getStreamingImageRetriever());
+            }
+
+            // line 2797 (access$6600 = attemptCommitSettings on mPredictiveApplier)
+            StateMachine.this.mPredictiveApplier.attemptCommitSettings();
+
+            // line 2799-2803 (access$5300 = isFusionMonitoringNeeded)
+            if (StateMachine.this.mViewFinder.isHeadUpDisplayReady()) {
+                if (StateMachine.this.isFusionMonitoringNeeded()) {
+                    // line 2801-2803
+                    StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                            ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_FUSION_CONDITION,
+                            StateMachine.this.mCameraDeviceHandler.getLatestFusionResult());
+                }
+            }
+
+            // line 2807-2813 (access$700 = checkSaveDestinationCanBeChange)
+            Storage.StorageType storageType = StateMachine.this
+                    .getCurrentStorage();
+            if (!StateMachine.this.isStorageWritable(storageType)
+                    && !StateMachine.this.checkSaveDestinationCanBeChange(storageType)) {
+                // line 2812-2813
+                StateMachine.this.sendEvent(TransitterEvent.EVENT_STORAGE_ERROR,
+                        storageType,
+                        StateMachine.this.mStorage.getCurrentState(storageType));
+            }
+
+            // line 2817-2818 (access$6700 = notifySceneRecognitionDisabled)
+            if (!StateMachine.this.mIsSceneRecognitionValid) {
+                StateMachine.this.notifySceneRecognitionDisabled();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void exit() {
+            StateMachine.this.mActivity.notifyStateBlockedToWearable();
+            StateMachine.this.mGestureShutter.handlePreviewStopped();
+            if (this.mNotifyDelayedEventTask != null) {
+                StateMachine.this.removeDelayedEvent(this.mNotifyDelayedEventTask);
+                this.mNotifyDelayedEventTask = null;
+            }
+            StateMachine.this.mPredictiveApplier.leaveSuppressor(this);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleChangeAngleStart(Object... objArr) {
+            StateMachine.this.doZoomChangeAngle();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleRequestSetupHeadUpDisplay(Object... objArr) {
+            if (((Boolean) objArr[0]).booleanValue()) {
+                StateMachine.this.switchSceneRecognition(
+                        StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage()));
+                StateMachine.this.mCameraDeviceHandler.startFaceDetection();
+            }
+            if (this.mStartupAction == StartupAction.CAPTURE) {
+                StateMachine.this.sendEvent(TransitterEvent.EVENT_START_CAPTURE_COUNTDOWN,
+                        Event.SelfTimerTrigger.NORMAL);
+            }
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SETUP_HEAD_UP_DISPLAY,
+                    ViewFinder.HeadUpDisplaySetupState.PHOTO_READY);
+            if (StateMachine.this.isTutorialNeededToBeShownForCurrentMode()) {
+                StateMachine.this.changeTo(new StateOperationRestricted(), ViewFinder.UiComponentKind.TUTORIAL);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleDialogOpened(Object... objArr) {
+            if (objArr != null && objArr.length != 0) {
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_UPDATE_DIALOGS,
+                        (ViewFinder.UiComponentKind) objArr[0]);
+            }
+            StateMachine.this.changeTo(new StateOperationRestricted(), objArr);
+            StateMachine.this.mActivity.notifyStateBlockedToWearable();
+            if (StateMachine.this.mActivity.getLaunchCondition()
+                    .getExtraOperation() == LaunchCondition.ExtraOperation.OPEN_SETTINGS_MENU) {
+                StateMachine.this.mActivity.getLaunchCondition().clearExtraOperation();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureReady(Object... objArr) {
+            if (StateMachine.this.startAutoFocus()) {
+                StateMachine.this.changeTo(new StatePhotoAfSearch(), objArr);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStartCaptureCountDown(Object... objArr) {
+            Event.SelfTimerTrigger selfTimerTrigger = (Event.SelfTimerTrigger) StateMachine.getEventParam(objArr, 0,
+                    Event.SelfTimerTrigger.class, Event.SelfTimerTrigger.NORMAL);
+            if (this.mNotifyDelayedEventTask != null) {
+                StateMachine.this.removeDelayedEvent(this.mNotifyDelayedEventTask);
+                this.mNotifyDelayedEventTask = null;
+            }
+            if (StateMachine.this.isLazyInitializationRunning()) {
+                this.mNotifyDelayedEventTask = StateMachine.this
+                        .notifyDelayedEvent(TransitterEvent.EVENT_START_CAPTURE_COUNTDOWN, objArr);
+            } else {
+                if (!StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage())) {
+                    StateMachine.this.mViewFinder
+                            .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_CAPTURE_FINISH, new Object[0]);
+                    return;
+                }
+                if (this.mStartupAction == StartupAction.CAPTURE) {
+                    StateMachine.this.updatePhotoSelftimer(SelfTimer.LAUNCH_AND_CAPTURE_COUNT_DOWN);
+                }
+                StateMachine.this.changeTo(new StateCaptureCountdown(selfTimerTrigger), true);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCapture(Object... objArr) {
+            boolean z = false;
+            if (StateMachine.this.startAutoFocus()) {
+                StateMachine.this.changeTo(new StatePhotoCaptureWaitForAfDone(z), new Object[0]);
+            } else {
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_CAPTURE_FINISH,
+                        new Object[0]);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureBurst(Object... objArr) {
+            if (StateMachine.this.checkBurstConditions(true) && StateMachine.this.startAutoFocus()) {
+                StateMachine.this.changeTo(new StateBurstCaptureWaitForAfDone(), objArr);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureCancel(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_CAPTURE_CANCEL,
+                    new Object[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleClearFocus(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED_TOUCH_FOCUS, new Object[0]);
+            StateMachine.this.mCameraDeviceHandler.resetFocusModeAndCommit();
+            if (StateMachine.this.isTouchAeEnabled()) {
+                StateMachine.this.mCameraDeviceHandler.setMeteringAreaAndCommit(null,
+                        (Metering) StateMachine.this.mUserSettings.get(UserSettingKey.METERING));
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnAutoFocusDone(Object... objArr) {
+            StateMachine.this.cancelAutoFocus(false);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageError(Object... objArr) {
+            boolean z = false;
+            Storage.StorageType storageType = (Storage.StorageType) objArr[0];
+            if (((Storage.StorageState) objArr[1]) == Storage.StorageState.CORRUPT) {
+                StateMachine.this.mViewFinder.showMessageDialog(DialogId.MEMORY_SD_UNAVAILABLE_FOR_CORRUPT,
+                        new Object[0]);
+                StateMachine.this.changeTo(new StateFatal(z, z), new Object[0]);
+            } else {
+                if (StateMachine.this.checkSaveDestinationCanBeChange(storageType)) {
+                    return;
+                }
+                StateMachine.this.changeTo(new StateWarning(), objArr);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageMounted(Object... objArr) {
+            StateMachine.this.mPredictiveApplier.attemptCommitSettings();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStorageUngranted(Object... objArr) {
+            StateMachine.this.mUserSettings.set(DestinationToSave.EMMC);
+            if (StateMachine.this.mViewFinder != null) {
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                        ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SHOW_CHANGE_INTERNAL_STORAGE_MESSAGE, false);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnSceneModeChanged(Object... objArr) {
+            if (StateMachine.this.mIsSceneRecognitionValid) {
+                StateMachine.this.mViewFinder
+                        .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_DETECTED_SCENE_CHANGED, objArr[0]);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnFaceDetected(Object... objArr) {
+            this.mLatestFaceDetectionResult = (CameraParameters.FaceDetectionResult) objArr[0];
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_FACE_DETECTED,
+                    this.mLatestFaceDetectionResult);
+            StateMachine.this.requestPhotoSmileCapture();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleChangeSelectedFace(Object... objArr) {
+            StateMachine.this.doChangeSelectedFace((Point) objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnObjectTracked(Object... objArr) {
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_TRACKED_OBJECT_STATE_UPDATED, objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleSetSelectedObjectPosition(Object... objArr) {
+            if (StateMachine.this.mCameraDeviceHandler.isCameraDeviceStatusReady()) {
+                Rect rect = (Rect) objArr[1];
+                if (StateMachine.this.mUserSettings.get(UserSettingKey.FOCUS_RANGE) == FocusRange.AF) {
+                    StateMachine.this.doStartObjectTracking(rect);
+                }
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleDeselectObjectPosition(Object... objArr) {
+            StateMachine.this.doStopObjectTracking();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStartAfAfterObjectTracked(Object... objArr) {
+            if (StateMachine.this.mCameraDeviceHandler.isCameraDeviceStatusReady()
+                    && PlatformCapability.isObjectTrackingSupported(StateMachine.this.getCurrentCameraId())
+                    && StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage())) {
+                Rect rect = (Rect) objArr[1];
+                StateMachine.this.doStopObjectTracking();
+                StateMachine.this.doStartObjectTracking(rect);
+                StateMachine.this.changeTo(new StatePhotoWaitingTrackedObjectForAfStart(), new Object[0]);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleSetTouchedPosition(Object... objArr) {
+            if (((SmileCapture) StateMachine.this.mUserSettings.get(UserSettingKey.SMILE_CAPTURE)).isSmileCaptureOn()
+                    || ((ShutterTrigger) StateMachine.this.mUserSettings.get(UserSettingKey.SHUTTER_TRIGGER))
+                            .isGestureShutterOn()) {
+                return;
+            }
+            if (((FocusRectangles.FocusSetType) objArr[2]) == FocusRectangles.FocusSetType.RELEASE) {
+                Rect position = StateMachine.this.mViewFinder.getPosition((Point) objArr[0]);
+                if (position.isEmpty()) {
+                    return;
+                }
+                if (StateMachine.this.mUserSettings.get(UserSettingKey.FOCUS_RANGE) == FocusRange.AF) {
+                    StateMachine.this.mCameraDeviceHandler.setFocusPositionAndCommit(position);
+                }
+                if (StateMachine.this.isTouchAeEnabled()) {
+                    StateMachine.this.mCameraDeviceHandler.setMeteringAreaAndCommit(position,
+                            (Metering) StateMachine.this.mUserSettings.get(UserSettingKey.METERING));
+                }
+            }
+            if (StateMachine.this.mUserSettings.get(UserSettingKey.FOCUS_RANGE) == FocusRange.AF
+                    || StateMachine.this.mUserSettings
+                            .get(UserSettingKey.TOUCH_INTENTION) == TouchIntention.FOCUS_AND_EXPOSURE) {
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                        ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_SELECTED, objArr[0], objArr[2]);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleKeyMenu(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_UPDATE_DIALOGS,
+                    ViewFinder.UiComponentKind.SETTING_DIALOG);
+            StateMachine.this.changeTo(new StateOperationRestricted(), ViewFinder.UiComponentKind.SETTING_DIALOG);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleSwitchCamera(Object... objArr) {
+            StateMachine.this.switchCamera((AnimationRequest.AnimationType) objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleTouchContentProgress() {
+            if (StateMachine.this.mViewFinder == null) {
+                return;
+            }
+            if ((StateMachine.this.mLastVideoSavingRequest != null
+                    && (StateMachine.this.mLastPhotoSavingRequest == null || StateMachine.this.mLastVideoSavingRequest
+                            .getDateTaken() > StateMachine.this.mLastPhotoSavingRequest.getDateTaken()))
+                    || StateMachine.this.mLastPhotoSavingRequest == null
+                    || StateMachine.this.mLastPhotoSavingRequest.getImageData() == null) {
+                return;
+            }
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SHOW_INSTANT_VIEWER,
+                    StateMachine.this.mLastPhotoSavingRequest.getImageData(), StateMachine.this.mLastPhotoSavingRequest,
+                    StateMachine.this.mLastStoreDataResult);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoBase,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnSemiAutoEnabled(Object... objArr) {
+            super.handleOnSemiAutoEnabled(objArr);
+            StateMachine.this.mCameraDeviceHandler.stopSceneRecognition();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoBase,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnSemiAutoDisabled(Object... objArr) {
+            super.handleOnSemiAutoDisabled(objArr);
+            StateMachine.this
+                    .switchSceneRecognition(StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage()));
+            StateMachine.this.mCameraDeviceHandler.setAmberBlueColorAndCommit(0);
+            StateMachine.this.mCameraDeviceHandler.setBrightnessAndCommit(0);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnAmberBlueColorChanged(Object... objArr) {
+            StateMachine.this.updateAmberBlueColor(((Float) objArr[0]).floatValue());
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnBrightnessChanged(Object... objArr) {
+            StateMachine.this.updateBrightness(((Float) objArr[0]).floatValue());
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStartTransitionOperation(Object... objArr) {
+            if (((AnimationRequest) objArr[0]).mDegree == AnimationRequest.AnimationDegree.START) {
+                StateMachine.this.changeTo(new StateModeChanging(), new Object[0]);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverCoolingLow(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.setLowPower();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverCoolingUltraLow(Object... objArr) {
+            StateMachine.this
+                    .notifyCoolingUltraLow(!StateMachine.this.isStorageFull(StateMachine.this.getCurrentStorage()));
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverWarningExtra(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.enableFpsLimitation();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnEvfPrepared(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.setPreviewSurface(((Evf) objArr[0]).asSurface());
+            StateMachine.this.mCameraDeviceHandler.startPreview();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleRequestUpdateHighSensitivityFusionMode(Object... objArr) {
+            StateMachine.this.updateFusionModeSetting((FusionMode) objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePrepareZoom(Object... objArr) {
+            VariableIndex variableIndex = (VariableIndex) objArr[0];
+            handleClearFocus(objArr);
+            StateMachine.this.mPredictiveApplier.entrySuppressor(this);
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ZOOM_START,
+                    Integer.valueOf(variableIndex.getIndex()));
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePerformZoom(Object... objArr) {
+            VariableIndex variableIndex = (VariableIndex) objArr[0];
+            StateMachine.this.mCameraDeviceHandler.setZoomAndCommit(variableIndex.getRatio());
+            StateMachine.this.onZoomChange(variableIndex.getIndex());
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFinishZoom(Object... objArr) {
+            StateMachine.this.mPredictiveApplier.leaveSuppressor(this);
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ZOOM_STOP,
+                    new Object[0]);
+        }
+    }
+
+    class StateVideoReady extends StateVideoBase {
+        private static final String TAG = "StateMachine.StateVideoReady";
+        private StartupAction mStartupAction;
+
+        public StateVideoReady() {
+            this(StartupAction.NONE);
+        }
+
+        public StateVideoReady(StartupAction startupAction) {
+            super();
+            this.mCaptureState = CaptureState.STATE_VIDEO_READY;
+            this.mStartupAction = startupAction;
+            if (StateMachine.this.getCurrentCapturingMode() == CapturingMode.SCENE_RECOGNITION) {
+                StateMachine.this.setCurrentCapturingMode(CapturingMode.VIDEO);
+            }
+            StateMachine.this.sendResearchViewEvent();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void entry() {
+            com.sonyericsson.android.camera.configuration.parameters.SlowMotion slowMotion;
+            if (StateMachine.this.mActivity != null) {
+                StateMachine.this.checkThermalWarning();
+                StateMachine.this.mActivity.notifyStateBlockedToWearable();
+            }
+            if (!StateMachine.this.mPendingTaskListForStandby.isEmpty()) {
+                Iterator it = StateMachine.this.mPendingTaskListForStandby.iterator();
+                while (it.hasNext()) {
+                    StateMachine.this.mHandler.post((Runnable) it.next());
+                }
+                StateMachine.this.mPendingTaskListForStandby.clear();
+            }
+            if (PlatformCapability.hasDeviceError()) {
+                return;
+            }
+            if (StateMachine.this.mActivity != null) {
+                StateMachine.this.mActivity.enableAutoPowerOffTimer();
+            }
+            if (!StateMachine.this.mViewFinder.isTouchFocus()) {
+                StateMachine.this.switchVideoFaceDetection();
+            }
+            if (!StateMachine.this.mIsSemiAutoEnabled) {
+                StateMachine.this.switchSceneRecognition(
+                        StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage()));
+            }
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ORIENTATION_CHANGED,
+                    Integer.valueOf(StateMachine.this.getSensorOrientation()));
+            if (StateMachine.this.mViewFinder.isHeadUpDisplayReady() && StateMachine.this.isFusionMonitoringNeeded()) {
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                        ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_FUSION_CONDITION,
+                        StateMachine.this.mCameraDeviceHandler.getLatestFusionResult());
+            }
+            Storage.StorageType currentStorage = StateMachine.this.getCurrentStorage();
+            if (!StateMachine.this.isStorageWritable(currentStorage)) {
+                StateMachine.this.sendEvent(TransitterEvent.EVENT_STORAGE_ERROR, currentStorage,
+                        StateMachine.this.mStorage.getCurrentState(currentStorage));
+                return;
+            }
+            IntentReader.VideoQualityConfigurations videoQualityConfigurations = StateMachine.this.mActivity
+                    .getLaunchCondition().getVideoQualityConfigurations();
+            if (!StateMachine.this.isEnoughStorageSizeAvailableForOneShotVideo()) {
+                StateMachine.this.mViewFinder.showMessageDialog(DialogId.MEMORY_SHORTAGE_ON_ONE_SHOT_VIDEO,
+                        new Object[0]);
+                return;
+            }
+            if (!StateMachine.this.mActivity.isOneShot()
+                    || VideoSize.MMS != StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_SIZE)
+                    || videoQualityConfigurations.isQualityLow()) {
+                switch ((com.sonyericsson.android.camera.configuration.parameters.SlowMotion) StateMachine.this.mUserSettings
+                        .get(UserSettingKey.SLOW_MOTION)) {
+                    case SUPER_SLOW_MOTION:
+                    case SUPER_SLOW_SHOT:
+                        VideoSize videoSize = (VideoSize) StateMachine.this.mUserSettings
+                                .get(UserSettingKey.VIDEO_SIZE);
+                        if (StateMachine.this.getCurrentCapturingMode() == CapturingMode.SLOW_MOTION
+                                && (slowMotion = (com.sonyericsson.android.camera.configuration.parameters.SlowMotion) StateMachine.this
+                                        .getUserSetting()
+                                        .get(UserSettingKey.SLOW_MOTION)) == com.sonyericsson.android.camera.configuration.parameters.SlowMotion.STANDARD_SLOW_MOTION) {
+                            videoSize = slowMotion.getVideoSize();
+                        }
+                        RecordingProfile build = new RecordingProfile.Builder().videoSize(videoSize)
+                                .setOneShot(StateMachine.this.mActivity.isOneShot())
+                                .videoHdr((VideoHdr) StateMachine.this.mUserSettings.get(UserSettingKey.VIDEO_HDR))
+                                .build();
+                        StateMachine.this.mCameraDeviceHandler.prepareRecorder(
+                                StateMachine.this.createVideoSavingRequest(build), StateMachine.this.mRecorderListener,
+                                StateMachine.this.mOnSuperSlowRecordingFinishedListener,
+                                StateMachine.this.shouldPlayShutterSound(), build,
+                                StateMachine.this.mStorage.createNotifier(StateMachine.this.getCurrentStorage(), 10));
+                        break;
+                }
+                if (StateMachine.this.mIsSceneRecognitionValid) {
+                    return;
+                }
+                StateMachine.this.notifySceneRecognitionDisabled();
+                return;
+            }
+            StateMachine.this.mViewFinder.showMessageDialog(DialogId.MEMORY_SHORTAGE_ON_ONE_SHOT_VIDEO, new Object[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleChangeAngleStart(Object... objArr) {
+            StateMachine.this.doZoomChangeAngle();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnEvfPrepared(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.setPreviewSurface(((Evf) objArr[0]).asSurface());
+            StateMachine.this.mCameraDeviceHandler.startPreview();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleRequestSetupHeadUpDisplay(Object... objArr) {
+            if (((Boolean) objArr[0]).booleanValue()) {
+                StateMachine.this.switchSceneRecognition(
+                        StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage()));
+                StateMachine.this.switchVideoFaceDetection();
+            }
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SETUP_HEAD_UP_DISPLAY,
+                    ViewFinder.HeadUpDisplaySetupState.VIDEO_READY);
+            if (StateMachine.this.isTutorialNeededToBeShownForCurrentMode()) {
+                StateMachine.this.changeTo(new StateOperationRestricted(), ViewFinder.UiComponentKind.TUTORIAL);
+            } else if (StateMachine.this.mActivity != null
+                    && StateMachine.this.mActivity.getLaunchCondition().getLaunchCameraMode().isSlowMotion()) {
+                StateMachine.this.mViewFinder.postSlowMotionHintText();
+            }
+            if (StateMachine.this.mActivity != null) {
+                StateMachine.this.mActivity.clearLaunchCameraMode();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleDialogOpened(Object... objArr) {
+            if (objArr != null && objArr.length != 0) {
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_UPDATE_DIALOGS,
+                        (ViewFinder.UiComponentKind) objArr[0]);
+            }
+            StateMachine.this.changeTo(new StateOperationRestricted(), objArr);
+            if (StateMachine.this.mActivity.getLaunchCondition()
+                    .getExtraOperation() == LaunchCondition.ExtraOperation.OPEN_SETTINGS_MENU) {
+                StateMachine.this.mActivity.getLaunchCondition().clearExtraOperation();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageError(Object... objArr) {
+            boolean z = false;
+            Storage.StorageType storageType = (Storage.StorageType) objArr[0];
+            if (((Storage.StorageState) objArr[1]) == Storage.StorageState.CORRUPT) {
+                CamLog.w("Storage corruption : type = " + storageType + ", state = " + StateMachine.this.mCurrentState);
+                StateMachine.this.mViewFinder.showMessageDialog(DialogId.MEMORY_SD_UNAVAILABLE_FOR_CORRUPT,
+                        new Object[0]);
+                StateMachine.this.changeTo(new StateFatal(z, z), new Object[0]);
+                return;
+            }
+            if (StateMachine.this.checkSaveDestinationCanBeChange(StateMachine.this.getCurrentStorage())) {
+                return;
+            }
+            StateMachine.this.changeTo(new StateWarning(), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStorageUngranted(Object... objArr) {
+            StateMachine.this.mUserSettings.set(DestinationToSave.EMMC);
+            if (StateMachine.this.mViewFinder != null) {
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                        ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SHOW_CHANGE_INTERNAL_STORAGE_MESSAGE, false);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleKeyMenu(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_UPDATE_DIALOGS,
+                    ViewFinder.UiComponentKind.SETTING_DIALOG);
+            StateMachine.this.changeTo(new StateOperationRestricted(), ViewFinder.UiComponentKind.SETTING_DIALOG);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleSwitchCamera(Object... objArr) {
+            StateMachine.this.switchCamera((AnimationRequest.AnimationType) objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleRecordReady(Object... objArr) {
+            if (StateMachine.this.mCameraDeviceHandler.isCameraDeviceStatusReady()) {
+                StateMachine.this.changeTo(new StatePhotoReadyForRecording(false), Boolean.valueOf(
+                        (objArr == null || objArr.length == 0) ? false : ((Boolean) objArr[0]).booleanValue()));
+            } else {
+                CamLog.w("ignore the event because device is not ready");
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStartRecording(Object... objArr) {
+            if (StateMachine.this.mCameraDeviceHandler.isCameraDeviceStatusReady()) {
+                if (StateMachine.this.isLazyInitializationRunning()) {
+                    return;
+                }
+                StateMachine.this.changeTo(new StatePhotoReadyForRecording(false), false);
+                StateMachine.this.sendEvent(TransitterEvent.EVENT_START_RECORDING, new Object[0]);
+                return;
+            }
+            CamLog.w("ignore the event because device is not ready");
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStartCaptureCountDown(Object... objArr) {
+            StateMachine.this.changeTo(new StateCaptureCountdown((Event.SelfTimerTrigger) StateMachine
+                    .getEventParam(objArr, 0, Event.SelfTimerTrigger.class, Event.SelfTimerTrigger.NORMAL)), true);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverWarningExtra(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.enableFpsLimitation();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStartTransitionOperation(Object... objArr) {
+            if (((AnimationRequest) objArr[0]).mDegree == AnimationRequest.AnimationDegree.START) {
+                StateMachine.this.changeTo(new StateModeChanging(), new Object[0]);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnFaceDetected(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_FACE_DETECTED,
+                    objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleChangeSelectedFace(Object... objArr) {
+            StateMachine.this.doChangeSelectedFace((Point) objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleSetSelectedObjectPosition(Object... objArr) {
+            if (StateMachine.this.mCameraDeviceHandler.isCameraDeviceStatusReady()) {
+                Rect rect = (Rect) objArr[1];
+                if (StateMachine.this.mUserSettings.get(UserSettingKey.FOCUS_RANGE) == FocusRange.AF) {
+                    StateMachine.this.doStartObjectTracking(rect);
+                }
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnObjectTracked(Object... objArr) {
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_TRACKED_OBJECT_STATE_UPDATED, objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleDeselectObjectPosition(Object... objArr) {
+            StateMachine.this.doStopObjectTracking();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverCoolingLow(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.setLowPower();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverCoolingUltraLow(Object... objArr) {
+            StateMachine.this
+                    .notifyCoolingUltraLow(!StateMachine.this.isStorageFull(StateMachine.this.getCurrentStorage()));
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleRequestUpdateHighSensitivityFusionMode(Object... objArr) {
+            StateMachine.this.updateFusionModeSetting((FusionMode) objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnPreviewStarted() {
+            if (this.mStartupAction == StartupAction.RECORD) {
+                StateMachine.this.sendEvent(TransitterEvent.EVENT_START_RECORDING, new Object[0]);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnLazyInitializationTaskRun(Object... objArr) {
+            if (this.mStartupAction == StartupAction.RECORD) {
+                StateMachine.this.mCameraDeviceHandler.setOnPreviewStartedListener(new OnPreviewStartedListenerImpl());
+                CameraApplication.getUiThreadHandler().post(new Runnable() { // from class:
+                                                                             // com.sonyericsson.android.camera.controller.StateMachine.StateVideoReady.1
+                    @Override // java.lang.Runnable
+                    public void run() {
+                        StateMachine.this.sendEvent(TransitterEvent.EVENT_START_RECORDING, new Object[0]);
+                    }
+                });
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StateVideoBase, com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnSemiAutoDisabled(Object... objArr) {
+            super.handleOnSemiAutoDisabled(objArr);
+            StateMachine.this.switchSceneRecognition(StateMachine.this.isStorageFull(StateMachine.this.getCurrentStorage()));
+            StateMachine.this.mCameraDeviceHandler.setAmberBlueColorAndCommit(0);
+            StateMachine.this.mCameraDeviceHandler.setBrightnessAndCommit(0);
+            LocalResearchUtil.getInstance().setSemiAutoSettingAmberBlueValue(0);
+            LocalResearchUtil.getInstance().setSemiAutoSettingBrightnessValue(0);
+        }
+    }
+
+    class StateCaptureCountdown extends StatePhotoReady {
+        private SelfTimerFeedback mFeedback;
+        private final LedLight mLedLight;
+        private final Event.SelfTimerTrigger mTrigger;
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoReady,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureCancel(Object... objArr) {
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoReady,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleClearFocus(Object... objArr) {
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoReady,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleDeselectObjectPosition(Object... objArr) {
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStartRecording(Object... objArr) {
+        }
+
+        private StateCaptureCountdown(Event.SelfTimerTrigger selfTimerTrigger) {
+            super(false);
+            this.mCaptureState = CaptureState.STATE_CAPTURE_COUNTDOWN;
+            this.mLedLight = new LedLightImpl();
+            this.mTrigger = selfTimerTrigger;
+        }
+
+        private void start(int i, SoundPlayer.Type type) {
+            this.mFeedback = new SelfTimerFeedback(i, this.mLedLight,
+                    (StateMachine.this.getCurrentCapturingMode().isFront()
+                            || StateMachine.this.mUserSettings.get(UserSettingKey.FLASH) == Flash.OFF) ? false : true,
+                    new SelfTimerFeedback.SelfTimerFeedbackListener() { // from class:
+                                                                        // com.sonyericsson.android.camera.controller.StateMachine.StateCaptureCountdown.1
+                        @Override // com.sonyericsson.android.camera.controller.selftimerfeedback.SelfTimerFeedback.SelfTimerFeedbackListener
+                        public void onBlinkFinished() {
+                            StateCaptureCountdown.this.recoverFlash();
+                        }
+
+                        @Override // com.sonyericsson.android.camera.controller.selftimerfeedback.SelfTimerFeedback.SelfTimerFeedbackListener
+                        public void onCountDownFinished() {
+                            boolean z = false;
+                            if (StateMachine.this.getCurrentCapturingMode().isVideo()) {
+                                StateMachine.this.changeTo(new StatePhotoReadyForRecording(
+                                        StateCaptureCountdown.this.mTrigger == Event.SelfTimerTrigger.SIDE_SENSE),
+                                        false);
+                                StateMachine.this.sendEvent(TransitterEvent.EVENT_START_RECORDING, new Object[0]);
+                            } else if (StateMachine.this.startAutoFocus()) {
+                                StateMachine.this.changeTo(new StatePhotoCaptureWaitForAfDone(z), new Object[0]);
+                            }
+                            Event.CaptureTrigger captureTrigger = Event.CaptureTrigger.SELF_TIMER;
+                            if (StateCaptureCountdown.this.mTrigger != Event.SelfTimerTrigger.GESTURE) {
+                                if (StateCaptureCountdown.this.mTrigger == Event.SelfTimerTrigger.SIDE_SENSE) {
+                                    captureTrigger = Event.CaptureTrigger.SIDE_SENSE;
+                                }
+                            } else {
+                                captureTrigger = Event.CaptureTrigger.GESTURE;
+                                LocalResearchUtil.getInstance().setPredictiveLaunchState(false);
+                            }
+                            ResearchUtil.getInstance().setCaptureTrigger(captureTrigger);
+                        }
+
+                        @Override // com.sonyericsson.android.camera.controller.selftimerfeedback.SelfTimerFeedback.SelfTimerFeedbackListener
+                        public void onSoundTypeChange(long j) {
+                            if (StateMachine.this.shouldPlayShutterSound()) {
+                                if (j == 4000) {
+                                    StateMachine.this.mActivity.playSound(SoundPlayer.Type.SELF_TIMER_4SEC);
+                                } else {
+                                    StateMachine.this.mActivity.playSound(SoundPlayer.Type.SELF_TIMER_1SEC);
+                                }
+                            }
+                        }
+                    });
+            this.mFeedback.start(0);
+            if (type == null || !StateMachine.this.shouldPlayShutterSound()) {
+                return;
+            }
+            StateMachine.this.mActivity.playSound(type);
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void recoverFlash() {
+            if (!((CapturingMode) StateMachine.this.mUserSettings.get(UserSettingKey.CAPTURING_MODE)).isVideo()) {
+                if (((CapturingMode) StateMachine.this.mUserSettings.get(UserSettingKey.CAPTURING_MODE)).isFront()) {
+                    return;
+                }
+                StateMachine.this.mCameraDeviceHandler
+                        .setFlashModeAndCommit((Flash) StateMachine.this.mUserSettings.get(UserSettingKey.FLASH));
+                return;
+            }
+            StateMachine.this.mCameraDeviceHandler.setTorchAndCommit(
+                    ((com.sonyericsson.android.camera.configuration.parameters.PhotoLight) StateMachine.this.mUserSettings
+                            .get(UserSettingKey.PHOTO_LIGHT)).getBooleanValue());
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoReady,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void entry() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke StateCaptureCountdown");
+            }
+            SelfTimer photoSelfTimerSetting = StateMachine.this.mViewFinder.getPhotoSelfTimerSetting();
+            if (this.mTrigger == Event.SelfTimerTrigger.SIDE_SENSE && photoSelfTimerSetting == SelfTimer.OFF) {
+                photoSelfTimerSetting = SelfTimer.SIDE_COUNT_DOWN;
+            }
+            start(photoSelfTimerSetting.getDurationInMillisecond(), photoSelfTimerSetting.getSoundType());
+            StateMachine.this.mGestureShutter.handleSelftimerStarted();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoReady,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void exit() {
+            StateMachine.this.stopPlaySound();
+            this.mFeedback.stop();
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_SELFTIMER_FINISHED,
+                    new Object[0]);
+            StateMachine.this.mGestureShutter.handleSelftimerStopped(true);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoReady,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureReady(Object... objArr) {
+            recoverFlash();
+            if (StateMachine.this.startAutoFocus()) {
+                StateMachine.this.changeTo(new StatePhotoAfSearch(), objArr);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoReady,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCapture(Object... objArr) {
+            recoverFlash();
+            if (StateMachine.this.startAutoFocus()) {
+                StateMachine.this.changeTo(new StatePhotoCaptureWaitForAfDone(false), new Object[0]);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoReady,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureBurst(Object... objArr) {
+            if (StateMachine.this.checkBurstConditions(true)) {
+                recoverFlash();
+                if (StateMachine.this.startAutoFocus()) {
+                    StateMachine.this.changeTo(new StateBurstCaptureWaitForAfDone(), new Object[0]);
+                }
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoReady,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            recoverFlash();
+            super.handlePause(objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoReady,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageError(Object... objArr) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke checkSaveDestinationCanBeChange:"
+                        + StateMachine.this.checkSaveDestinationCanBeChange(StateMachine.this.getCurrentStorage()));
+            }
+            Storage.StorageType storageType = (Storage.StorageType) objArr[0];
+            if (((Storage.StorageState) objArr[1]) == Storage.StorageState.CORRUPT) {
+                CamLog.w("Storage corruption : type = " + storageType + ", state = " + StateMachine.this.mCurrentState);
+                if (CamLog.DEBUG) {
+                    throw new IllegalStateException();
+                }
+            }
+            recoverFlash();
+            if (!StateMachine.this.checkSaveDestinationCanBeChange(StateMachine.this.getCurrentStorage())) {
+                StateMachine.this.changeTo(new StateWarning(), objArr);
+            } else {
+                StateMachine.this.changeToStandby();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoReady,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleSetTouchedPosition(Object... objArr) {
+            if (((SmileCapture) StateMachine.this.mUserSettings.get(UserSettingKey.SMILE_CAPTURE)).isSmileCaptureOn()
+                    || ((ShutterTrigger) StateMachine.this.mUserSettings.get(UserSettingKey.SHUTTER_TRIGGER))
+                            .isGestureShutterOn()
+                    || TouchCapture.ON != StateMachine.this.mUserSettings.get(UserSettingKey.TOUCH_CAPTURE)) {
+                return;
+            }
+            super.handleSetTouchedPosition(objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoReady,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleSetSelectedObjectPosition(Object... objArr) {
+            if (TouchCapture.ON == StateMachine.this.mUserSettings.get(UserSettingKey.TOUCH_CAPTURE)) {
+                super.handleSetSelectedObjectPosition(objArr);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoReady,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStartAfAfterObjectTracked(Object... objArr) {
+            if (StateMachine.this.mCameraDeviceHandler.isCameraDeviceStatusReady()
+                    && TouchCapture.ON == StateMachine.this.mUserSettings.get(UserSettingKey.TOUCH_CAPTURE)) {
+                recoverFlash();
+                super.handleStartAfAfterObjectTracked(objArr);
+            }
+        }
+
+        private class LedLightImpl implements LedLight {
+            private LedLightImpl() {
+            }
+
+            @Override // com.sonyericsson.android.camera.controller.selftimerfeedback.LedLight
+            public void turnOn() {
+                StateMachine.this.mCameraDeviceHandler.setTorchAndCommit(true);
+            }
+
+            @Override // com.sonyericsson.android.camera.controller.selftimerfeedback.LedLight
+            public void turnOff() {
+                StateMachine.this.mCameraDeviceHandler.setTorchAndCommit(false);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleSelfTimerCancel(Object... objArr) {
+            recoverFlash();
+            ResearchUtil.getInstance().sendSelfTimerCancelledEvent(this.mTrigger);
+            StateMachine.this.changeToStandby();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoReady,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverCoolingUltraLow(Object... objArr) {
+            StateMachine.this.notifyCoolingUltraLow(false);
+        }
+    }
+
+    class StatePhotoReadyForRecording extends StatePhotoBase {
+        private final boolean mBySideSense;
+
+        private StatePhotoReadyForRecording(boolean z) {
+            super();
+            this.mCaptureState = CaptureState.STATE_PHOTO_READY_FOR_RECORDING;
+            this.mBySideSense = z;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageError(Object... objArr) {
+            Storage.StorageType storageType = (Storage.StorageType) objArr[0];
+            if (((Storage.StorageState) objArr[1]) == Storage.StorageState.CORRUPT) {
+                CamLog.w("Storage corruption : type = " + storageType + ", state = " + StateMachine.this.mCurrentState);
+                if (CamLog.DEBUG) {
+                    throw new IllegalStateException();
+                }
+            }
+            if (StateMachine.this.checkSaveDestinationCanBeChange(StateMachine.this.getCurrentStorage())) {
+                return;
+            }
+            StateMachine.this.changeTo(new StateWarning(), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCapture(Object... objArr) {
+            requestStartRecording();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureCancel(Object... objArr) {
+            StateMachine.this.changeTo(new StateVideoReady(), new Object[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStartRecording(Object... objArr) {
+            requestStartRecording();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnObjectTracked(Object... objArr) {
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_TRACKED_OBJECT_STATE_UPDATED, objArr[0]);
+        }
+
+        private void requestStartRecording() {
+            PerfLog.START_REC.begin();
+            if (!StateMachine.this.mStorage.canPushStoreRequest(StateMachine.this.getCurrentStorage())) {
+                StateMachine.this.changeTo(new StateVideoReady(), new Object[0]);
+                return;
+            }
+            if (!StateMachine.this.mCameraDeviceHandler.isCameraDeviceStatusReady()) {
+                StateMachine.this.changeTo(new StateVideoReady(), new Object[0]);
+                return;
+            }
+            StateMachine.this.pauseAudioPlaybackForRecord();
+            StateMachine.this.mViewFinder.hideHudIcons();
+            StateMachine.this.changeTo(new StatePrepareForRecording(), new Object[0]);
+            StateMachine.this.mStartRecordingTask = new StartRecordingTask(this.mBySideSense);
+            StateMachine.this.mHandler.post(StateMachine.this.mStartRecordingTask);
+            PerfLog.START_REC.end();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnFaceDetected(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_FACE_DETECTED,
+                    objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleTriggerSlowMotion(Object... objArr) {
+            requestStartRecording();
+        }
+    }
+
+    class StatePrepareForRecording extends StateNone {
+        private StatePrepareForRecording() {
+            super();
+            this.mCaptureState = CaptureState.STATE_PREPARE_FOR_RECORDING;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnOrientationChanged(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ORIENTATION_CHANGED,
+                    objArr[0]);
+        }
+    }
+
+    class StateCropping extends State {
+        private CaptureState mPreviousCaptureState;
+
+        public StateCropping(CaptureState captureState) {
+            super();
+            this.mPreviousCaptureState = null;
+            this.mCaptureState = CaptureState.STATE_CROPPING;
+            this.mPreviousCaptureState = captureState;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void entry() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke StateCropping");
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void exit() {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ANGLE_CHANGE_COMPLETED,
+                    new Object[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFusionConditionChanged(Object... objArr) {
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_FUSION_CONDITION, objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePerformZoom(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.setZoomAndCommit(((VariableIndex) objArr[0]).getRatio());
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFinishZoom(Object... objArr) {
+            switch (this.mPreviousCaptureState) {
+                case STATE_OPERATION_RESTRICTED:
+                    StateMachine.this.changeTo(new StateOperationRestricted(), new Object[0]);
+                    return;
+                case STATE_PHOTO_READY:
+                    StateMachine.this.changeTo(new StatePhotoReady(false), new Object[0]);
+                    return;
+                case STATE_VIDEO_READY:
+                    StateMachine.this.changeTo(new StateVideoReady(), new Object[0]);
+                    return;
+                case STATE_WARNING:
+                    StateMachine.this.changeTo(new StateWarning(), new Object[0]);
+                    return;
+                default:
+                    return;
+            }
+        }
+    }
+
+    class StateOperationRestricted extends State {
+        private StoreDataResult mVideoStoreDataResult;
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnContinuousPreviewFrameUpdated(Object... objArr) {
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStorageUngranted(Object... objArr) {
+        }
+
+        private StateOperationRestricted() {
+            super();
+            this.mVideoStoreDataResult = null;
+            this.mCaptureState = CaptureState.STATE_OPERATION_RESTRICTED;
+            if (!StateMachine.this.getCurrentCapturingMode().isVideo()
+                    && StateMachine.this.mActivity.isThermalWarningExtraState()) {
+                StateMachine.this.mCameraDeviceHandler.enableFpsLimitation();
+            }
+            if (StateMachine.this.mActivity != null) {
+                StateMachine.this.mActivity.enableAutoPowerOffTimer();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void entry() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke StateOperationRestricted");
+            }
+            StateMachine.this.mPredictiveApplier.entrySuppressor(this);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void exit() {
+            StateMachine.this.mPredictiveApplier.leaveSuppressor(this);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleClearFocus(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED_TOUCH_FOCUS, new Object[0]);
+            StateMachine.this.mCameraDeviceHandler.resetFocusModeAndCommit();
+            if (StateMachine.this.isTouchAeEnabled()) {
+                StateMachine.this.mCameraDeviceHandler.setMeteringAreaAndCommit(null,
+                        (Metering) StateMachine.this.mUserSettings.get(UserSettingKey.METERING));
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleChangeAngleStart(Object... objArr) {
+            StateMachine.this.doZoomChangeAngle();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnOrientationChanged(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ORIENTATION_CHANGED,
+                    objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleDialogOpened(Object... objArr) {
+            StateMachine.this.mActivity.notifyStateBlockedToWearable();
+            if (objArr == null || objArr.length == 0) {
+                return;
+            }
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_UPDATE_DIALOGS,
+                    (ViewFinder.UiComponentKind) objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleDialogClosed(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_CLOSE_ALL_DIALOGS,
+                    objArr);
+            StateMachine.this.mActivity.restartAutoPowerOffTimer();
+            StateMachine.this.mActivity.notifyStateIdleToWearable();
+            StateMachine.this.changeToStandby();
+            if (this.mVideoStoreDataResult != null) {
+                if (StateMachine.this.mActivity.isOneShot()) {
+                    StateMachine.this.onOneShotStoreCompleted(this.mVideoStoreDataResult);
+                } else if (StateMachine.this.getCurrentCapturingMode() == CapturingMode.SLOW_MOTION && StateMachine.this
+                        .getUserSetting()
+                        .get(UserSettingKey.SLOW_MOTION) == com.sonyericsson.android.camera.configuration.parameters.SlowMotion.STANDARD_SLOW_MOTION
+                        && !PlatformCapability.hasDeviceError()) {
+                    ApplicationLauncher.launchVideoEditor(StateMachine.this.mActivity, this.mVideoStoreDataResult);
+                }
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleKeyMenu(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_UPDATE_DIALOGS,
+                    ViewFinder.UiComponentKind.SETTING_DIALOG);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleSwitchCamera(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_CLOSE_ALL_DIALOGS,
+                    new Object[0]);
+            StateMachine.this.switchCamera((AnimationRequest.AnimationType) objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnAmberBlueColorChanged(Object... objArr) {
+            StateMachine.this.updateAmberBlueColor(((Float) objArr[0]).floatValue());
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnBrightnessChanged(Object... objArr) {
+            StateMachine.this.updateBrightness(((Float) objArr[0]).floatValue());
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverWarningExtra(Object... objArr) {
+            if (StateMachine.this.getCurrentCapturingMode().isVideo()) {
+                return;
+            }
+            StateMachine.this.mCameraDeviceHandler.enableFpsLimitation();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStartTransitionOperation(Object... objArr) {
+            if (((AnimationRequest) objArr[0]).mDegree == AnimationRequest.AnimationDegree.START) {
+                StateMachine.this.changeTo(new StateModeChanging(), new Object[0]);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnEvfPrepared(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.setPreviewSurface(((Evf) objArr[0]).asSurface());
+            StateMachine.this.mCameraDeviceHandler.startPreview();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnSemiAutoEnabled(Object... objArr) {
+            StateMachine.this.mIsSemiAutoEnabled = true;
+            StateMachine.this.mCameraDeviceHandler.stopSceneRecognition();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnSemiAutoDisabled(Object... objArr) {
+            StateMachine.this.mIsSemiAutoEnabled = false;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleDeselectObjectPosition(Object... objArr) {
+            StateMachine.this.doStopObjectTracking();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleRequestSetupHeadUpDisplay(Object... objArr) {
+            switch (StateMachine.this.getCurrentCapturingMode()) {
+                case NORMAL:
+                case FRONT_PHOTO:
+                case SCENE_RECOGNITION:
+                case SUPERIOR_FRONT:
+                    StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                            ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SETUP_HEAD_UP_DISPLAY,
+                            ViewFinder.HeadUpDisplaySetupState.PHOTO_READY);
+                    return;
+                case SLOW_MOTION:
+                case FRONT_VIDEO:
+                case VIDEO:
+                    StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                            ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SETUP_HEAD_UP_DISPLAY,
+                            ViewFinder.HeadUpDisplaySetupState.VIDEO_READY);
+                    return;
+                case UNKNOWN:
+                default:
+                    return;
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStoreCompleted(Object... objArr) {
+            super.handleOnStoreCompleted(objArr);
+            StoreDataResult storeDataResult = (StoreDataResult) objArr[0];
+            if (storeDataResult.savingRequest instanceof VideoSavingRequest) {
+                this.mVideoStoreDataResult = storeDataResult;
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleRequestUpdateHighSensitivityFusionMode(Object... objArr) {
+            StateMachine.this.updateFusionModeSetting((FusionMode) objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFusionConditionChanged(Object... objArr) {
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_FUSION_CONDITION, objArr);
+        }
+    }
+
+    class StatePhotoWaitingTrackedObjectForAfStart extends State {
+        boolean mIsAutoFocusStarted;
+        boolean mIsBurstCaptureRequired;
+        boolean mIsCaptureRequired;
+        boolean mIsFirstCallback;
+
+        private StatePhotoWaitingTrackedObjectForAfStart() {
+            super();
+            this.mIsAutoFocusStarted = false;
+            this.mIsFirstCallback = true;
+            this.mIsCaptureRequired = false;
+            this.mIsBurstCaptureRequired = false;
+            this.mCaptureState = CaptureState.STATE_PHOTO_WAITING_TRACKED_OBJECT_FOR_AF_START;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnObjectTracked(Object... objArr) {
+            boolean z = false;
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_TRACKED_OBJECT_STATE_UPDATED, objArr[0]);
+            if (!((CameraParameters.ObjectTrackingResult) objArr[0]).mIsLost && !this.mIsFirstCallback) {
+                StateMachine.this.startAutoFocus();
+                this.mIsAutoFocusStarted = true;
+                if (this.mIsCaptureRequired) {
+                    StateMachine.this.changeTo(new StatePhotoCaptureWaitForAfDone(z), new Object[0]);
+                    return;
+                } else {
+                    if (this.mIsBurstCaptureRequired) {
+                        if (StateMachine.this.checkBurstConditions(true)) {
+                            StateMachine.this.changeTo(new StateBurstCaptureWaitForAfDone(), objArr);
+                            return;
+                        } else {
+                            StateMachine.this.changeTo(new StatePhotoAfSearch(), new Object[0]);
+                            return;
+                        }
+                    }
+                    return;
+                }
+            }
+            this.mIsFirstCallback = false;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStartAfAfterObjectTracked(Object... objArr) {
+            if (StateMachine.this.mCameraDeviceHandler.isCameraDeviceStatusReady() && !this.mIsAutoFocusStarted
+                    && PlatformCapability.isObjectTrackingSupported(StateMachine.this.getCurrentCameraId())
+                    && StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage())) {
+                Rect rect = (Rect) objArr[1];
+                StateMachine.this.doStopObjectTracking();
+                StateMachine.this.doStartObjectTracking(rect);
+                this.mIsAutoFocusStarted = false;
+                this.mIsCaptureRequired = false;
+                this.mIsBurstCaptureRequired = false;
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnObjectLost(Object... objArr) {
+            super.handleOnObjectLost(objArr);
+            boolean z = false;
+            if (this.mIsCaptureRequired) {
+                StateMachine.this.startAutoFocus();
+                this.mIsAutoFocusStarted = true;
+                StateMachine.this.changeTo(new StatePhotoCaptureWaitForAfDone(z), new Object[0]);
+            } else if (this.mIsBurstCaptureRequired) {
+                StateMachine.this.startAutoFocus();
+                this.mIsAutoFocusStarted = true;
+                if (StateMachine.this.checkBurstConditions(true)) {
+                    StateMachine.this.changeTo(new StateBurstCaptureWaitForAfDone(), objArr);
+                } else {
+                    StateMachine.this.changeTo(new StatePhotoAfSearch(), new Object[0]);
+                }
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureCancel(Object... objArr) {
+            if (this.mIsAutoFocusStarted) {
+                StateMachine.this.cancelAutoFocus(true);
+            }
+            StateMachine.this.changeTo(new StatePhotoReady(true), new Object[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleClearFocus(Object... objArr) {
+            handleCaptureCancel(objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCapture(Object... objArr) {
+            if (this.mIsBurstCaptureRequired) {
+                return;
+            }
+            this.mIsCaptureRequired = true;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            if (this.mIsAutoFocusStarted) {
+                StateMachine.this.cancelAutoFocus(true);
+            }
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFusionConditionChanged(Object... objArr) {
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_FUSION_CONDITION, objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureBurst(Object... objArr) {
+            if (this.mIsCaptureRequired) {
+                return;
+            }
+            this.mIsBurstCaptureRequired = true;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageMounted(Object... objArr) {
+            StateMachine.this.mPredictiveApplier.attemptCommitSettings();
+        }
+    }
+
+    class StatePhotoAfSearch extends StatePhotoBase {
+        private static final String TAG = "StateMachine.StatePhotoAfSearch";
+        private boolean mIsCancelRequested;
+
+        private StatePhotoAfSearch() {
+            super();
+            this.mIsCancelRequested = false;
+            this.mCaptureState = CaptureState.STATE_PHOTO_AF_SEARCH;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnAutoFocusDone(Object... objArr) {
+            boolean booleanValue = ((Boolean) objArr[1]).booleanValue();
+            if (this.mIsCancelRequested) {
+                StateMachine.this.cancelAutoFocus(false);
+                StateMachine.this.changeTo(new StatePhotoReady(true), new Object[0]);
+            } else {
+                StateMachine.this.changeTo(new StatePhotoAfDone(booleanValue), objArr);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.cancelAutoFocus(true);
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleClearFocus(Object... objArr) {
+            handleCaptureCancel(objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnObjectTracked(Object... objArr) {
+            if (PlatformCapability.isTrackingFocusDuringLockSupported(StateMachine.this.getCurrentCameraId())) {
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                        ViewFinder.ViewUpdateEvent.EVENT_ON_TRACKED_OBJECT_STATE_UPDATED, objArr[0]);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnFaceDetected(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_FACE_DETECTED,
+                    objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureCancel(Object... objArr) {
+            this.mIsCancelRequested = true;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureBurst(Object... objArr) {
+            if (this.mIsCancelRequested) {
+                return;
+            }
+            if (StateMachine.this.checkBurstConditions(true)) {
+                StateMachine.this.changeTo(new StateBurstCaptureWaitForAfDone(), objArr);
+            } else {
+                StateMachine.this.changeTo(new StatePhotoCaptureWaitForAfDone(false), objArr);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCapture(Object... objArr) {
+            if (this.mIsCancelRequested) {
+                return;
+            }
+            StateMachine.this.changeTo(new StatePhotoCaptureWaitForAfDone(false), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageMounted(Object... objArr) {
+            StateMachine.this.mPredictiveApplier.attemptCommitSettings();
+        }
+    }
+
+    class StatePhotoAfDone extends StatePhotoBase {
+        private boolean mIsClearObjectTrackingFocusFrame;
+        private final boolean mIsHighQualityBurstAvailable;
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleClearFocus(Object... objArr) {
+        }
+
+        private StatePhotoAfDone(boolean z) {
+            super();
+            this.mIsClearObjectTrackingFocusFrame = false;
+            this.mCaptureState = CaptureState.STATE_PHOTO_AF_DONE;
+            this.mIsHighQualityBurstAvailable = z;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void entry() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke StatePhotoAfDone");
+            }
+            super.entry();
+            this.mIsClearObjectTrackingFocusFrame = false;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureBurst(Object... objArr) {
+            if (StateMachine.this.checkBurstConditions(this.mIsHighQualityBurstAvailable)) {
+                StateMachine.this.changeTo(new StateBurstCapture(false), objArr);
+            } else {
+                StateMachine.this
+                        .doCapture(StateMachine.this.createPhotoSavingRequest(SavingTaskManager.SavedFileType.PHOTO));
+                StateMachine.this.changeTo(new StatePhotoCapture(), objArr);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCapture(Object... objArr) {
+            StateMachine.this
+                    .doCapture(StateMachine.this.createPhotoSavingRequest(SavingTaskManager.SavedFileType.PHOTO));
+            StateMachine.this.changeTo(new StatePhotoCapture(), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureCancel(Object... objArr) {
+            StateMachine.this.cancelAutoFocus(false);
+            StateMachine.this.changeTo(new StatePhotoReady(true), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.cancelAutoFocus(true);
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnObjectTracked(Object... objArr) {
+            this.mIsClearObjectTrackingFocusFrame = false;
+            if (PlatformCapability.isTrackingFocusDuringLockSupported(StateMachine.this.getCurrentCameraId())) {
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                        ViewFinder.ViewUpdateEvent.EVENT_ON_TRACKED_OBJECT_STATE_UPDATED, objArr[0]);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnObjectLost(Object... objArr) {
+            super.handleOnObjectLost(objArr);
+            this.mIsClearObjectTrackingFocusFrame = true;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnFaceDetected(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_FACE_DETECTED,
+                    objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void exit() {
+            super.exit();
+            if (this.mIsClearObjectTrackingFocusFrame) {
+                this.mIsClearObjectTrackingFocusFrame = false;
+                if (StateMachine.this.mViewFinder != null
+                        && StateMachine.this.mViewFinder.isSetupHeadupDisplayInvoked()) {
+                    StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                            ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED_EXCEPT_FACE, new Object[0]);
+                }
+                StateMachine.this.mObjectTracking.stop();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageMounted(Object... objArr) {
+            StateMachine.this.mPredictiveApplier.attemptCommitSettings();
+        }
+    }
+
+    class StatePhotoCaptureWaitForAfDone extends StatePhotoBase {
+        private static final String TAG = "StateMachine.StatePhotoCaptureWaitForAfDone";
+        private final boolean mIsDirectCaptureRequired;
+
+        private StatePhotoCaptureWaitForAfDone(boolean z) {
+            super();
+            this.mCaptureState = CaptureState.STATE_PHOTO_CAPTURE_WAIT_FOR_AF_DONE;
+            this.mIsDirectCaptureRequired = z;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnInitialAutoFocusDone(Object... objArr) {
+            boolean z = false;
+            if (this.mIsDirectCaptureRequired) {
+                StateMachine.this.changeTo(new StatePhotoAfDone(z), objArr);
+                StateMachine.this.mCameraDeviceHandler.preCapture();
+                StateMachine.this.changeTo(new StatePhotoCapture(), objArr);
+                return;
+            }
+            StateMachine.this.cancelAutoFocus(false);
+            StateMachine.this.changeTo(new StatePhotoReady(true), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnAutoFocusDone(Object... objArr) {
+            StateMachine.this
+                    .doCapture(StateMachine.this.createPhotoSavingRequest(SavingTaskManager.SavedFileType.PHOTO));
+            StateMachine.this.changeTo(new StatePhotoAfDone(false), objArr);
+            StateMachine.this.changeTo(new StatePhotoCapture(), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.cancelAutoFocus(true);
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageMounted(Object... objArr) {
+            StateMachine.this.mPredictiveApplier.attemptCommitSettings();
+        }
+    }
+
+    class StatePhotoCapture extends StatePhotoBase {
+        private static final String TAG = "StateMachine.StatePhotoCapture";
+        private boolean mIsStorageError;
+        private NextCaptureCondition mNextCapture;
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnPreShutterDone(Object... objArr) {
+        }
+
+        private StatePhotoCapture() {
+            super();
+            this.mIsStorageError = false;
+            this.mCaptureState = CaptureState.STATE_PHOTO_CAPTURE;
+            if (StateMachine.this.mActivity.isOneShot()) {
+                this.mNextCapture = NextCaptureCondition.UNACCEPTABLE;
+            } else {
+                this.mNextCapture = NextCaptureCondition.READY;
+            }
+            StateMachine.this.mViewFinder.cancelPredictiveCaptureIndicatorAnimation();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void exit() {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_CAPTURE_FINISH,
+                    new Object[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnPreTakePictureDone(Object... objArr) {
+            if (!StateMachine.this.mStorage.isStorageActivated()) {
+                StateMachine.this.notifyDelayedEvent(TransitterEvent.EVENT_ON_PRE_TAKE_PICTURE_DONE, objArr);
+                return;
+            }
+            Storage.StorageType currentStorage = StateMachine.this.getCurrentStorage();
+            boolean z = false;
+            boolean z2 = StateMachine.this.mStorage
+                    .getCurrentState(Storage.StorageType.EXTERNAL_CARD) == Storage.StorageState.CORRUPT;
+            if (!StateMachine.this.isStorageWritable(currentStorage) || z2) {
+                ((RequestFactory.PhotoSavingRequestBuilder) objArr[0]).close();
+                StateMachine.this.mCameraDeviceHandler.prepareCaptureImageReader(null);
+                StateMachine.this.cancelAutoFocus(false);
+                StateMachine.this.mCameraDeviceHandler.cancelPreProcessState();
+                if (z2) {
+                    StateMachine.this.mViewFinder.showMessageDialog(DialogId.MEMORY_SD_UNAVAILABLE_FOR_CORRUPT,
+                            new Object[0]);
+                    StateMachine.this.changeTo(new StateFatal(z, z), new Object[0]);
+                    return;
+                } else {
+                    StateMachine.this.changeTo(new StatePhotoReady(true), new Object[0]);
+                    return;
+                }
+            }
+            RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder = (RequestFactory.PhotoSavingRequestBuilder) objArr[0];
+            StateMachine.this.mLastPhotoSavingRequest = null;
+            StateMachine.this.mLastVideoSavingRequest = null;
+            StateMachine.this.playShutterSound();
+            ByteBuffer imageReaderData = photoSavingRequestBuilder.getImageReaderData();
+            byte[] bArr = new byte[imageReaderData.remaining()];
+            imageReaderData.get(bArr);
+            photoSavingRequestBuilder.setImageData(bArr);
+            photoSavingRequestBuilder.close();
+            StateMachine.this.mCameraDeviceHandler
+                    .prepareCaptureImageReader(new CameraDeviceHandler.ImageReaderInitializedCallback() { // from class:
+                                                                                                          // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoCapture.1
+                        @Override // com.sonyericsson.android.camera.device.CameraDeviceHandler.ImageReaderInitializedCallback
+                        public void onInitialized() {
+                            StateMachine.this.mHandler.post(new Runnable() { // from class:
+                                                                             // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoCapture.1.1
+                                @Override // java.lang.Runnable
+                                public void run() {
+                                    if (CamLog.DEBUG) {
+                                        CamLog.d("invoke onInitialized");
+                                    }
+                                    if (StateMachine.this
+                                            .getCurrentCaptureState() == CaptureState.STATE_PHOTO_CAPTURE) {
+                                        StateMachine.this.cancelAutoFocus(true);
+                                        StateMachine.this.changeTo(new StatePhotoReady(true),
+                                                new Object[0]);
+                                    }
+                                }
+                            });
+                        }
+                    });
+            photoSavingRequestBuilder.setStorageType(StateMachine.this.getCurrentStorage());
+            StateMachine.this.requestStorePicture(photoSavingRequestBuilder);
+            ResearchUtil.getInstance().setTimeAfDone();
+            ResearchUtil.getInstance().setTimeCaptureStart();
+            ResearchUtil.getInstance().setCaptureTrigger(Event.CaptureTrigger.FAST_CAPTURING_LAUNCH);
+            ResearchUtil.getInstance().setOrientation(photoSavingRequestBuilder.mCommonStatus.orientation);
+            LocalResearchUtil.getInstance().sendSemiAutoSettingValues(Event.Category.SETTINGS_PHOTO);
+            LocalResearchUtil.getInstance().setUserOperation(Event.CaptureOperation.SHOOTING,
+                    StateMachine.this.getCurrentCapturingMode());
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCapture(Object... objArr) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke mNextCapture:" + this.mNextCapture);
+            }
+            if (this.mNextCapture == NextCaptureCondition.READY) {
+                if (StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage())) {
+                    this.mNextCapture = NextCaptureCondition.REQUESTED;
+                }
+            } else if (CamLog.DEBUG) {
+                CamLog.d("Capture button is ignored. mNextCapture:" + this.mNextCapture + ", Saving request count:"
+                        + StateMachine.this.mCameraDeviceHandler.getRemainSavingPhotoRequestCount());
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnShutterDone(Object... objArr) {
+            RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder = (RequestFactory.PhotoSavingRequestBuilder) objArr[0];
+            StateMachine.this.mViewFinder.hideDisplayFlashScreen();
+            StateMachine.this.mViewFinder.onCaptureDone();
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_REQUEST_CAPTURE_FEEDBACK_ANIMATION, new Object[0]);
+            if (photoSavingRequestBuilder.getSomcType() == 100) {
+                StateMachine.this.mViewFinder.startPredictiveCaptureIndicatorAnimation();
+            } else {
+                StateMachine.this.mViewFinder.cancelPredictiveCaptureIndicatorAnimation();
+            }
+            LocalResearchUtil.getInstance().setUserOperation(Event.CaptureOperation.SHOOTING,
+                    StateMachine.this.getCurrentCapturingMode());
+            if (StateMachine.this.mCameraDeviceHandler.isBypassCameraNextShotAvailable() && !this.mIsStorageError) {
+                if (!requestNextCaptureIfRequired()) {
+                    StateMachine.this.cancelAutoFocus(false);
+                    if (StateMachine.this.mActivity.isOneShot()) {
+                        return;
+                    }
+                    StateMachine.this.changeTo(new StatePhotoReady(true), new Object[0]);
+                    return;
+                }
+                ResearchUtil.getInstance().setContinuousCapture();
+                LocalResearchUtil.getInstance()
+                        .setMeasurementValid(LocalResearchUtil.MeasurementKey.SHOT_TO_SHOT_DELAY);
+                return;
+            }
+            this.mNextCapture = NextCaptureCondition.UNACCEPTABLE;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnTakePictureDone(Object... objArr) {
+            RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder = (RequestFactory.PhotoSavingRequestBuilder) objArr[0];
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke id:" + photoSavingRequestBuilder.getRequestId());
+            }
+            StateMachine.this.requestStorePicture(photoSavingRequestBuilder);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStoreCompleted(Object... objArr) {
+            super.handleOnStoreCompleted(objArr);
+            if (StateMachine.this.mActivity.isOneShot()) {
+                StateMachine.this.onOneShotStoreCompleted((StoreDataResult) objArr[0]);
+            }
+            if (this.mNextCapture == NextCaptureCondition.UNACCEPTABLE && StateMachine.this.mCameraDeviceHandler.isBypassCameraNextShotAvailable()) {
+                StateMachine.this.cancelAutoFocus(false);
+                StateMachine.this.changeTo(new StatePhotoReady(true), new Object[0]);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageError(Object... objArr) {
+            this.mIsStorageError = true;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.mViewFinder.setDisplayFlashRequired(false);
+            StateMachine.this.mViewFinder.setDisplayFlashColor(255, 255, 255);
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        private boolean requestNextCaptureIfRequired() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke mNextCapture:" + this.mNextCapture);
+            }
+            if (this.mNextCapture != NextCaptureCondition.REQUESTED) {
+                return false;
+            }
+            this.mNextCapture = NextCaptureCondition.READY;
+            StateMachine.this
+                    .doCapture(StateMachine.this.createPhotoSavingRequest(SavingTaskManager.SavedFileType.PHOTO));
+            return true;
+        }
+    }
+
+    class StateBurstCaptureWaitForAfDone extends StatePhotoBase {
+        private static final String TAG = "StateMachine.StateBurstCaptureWaitForAfDone";
+        private boolean mIsCancelRequested;
+
+        private StateBurstCaptureWaitForAfDone() {
+            super();
+            this.mCaptureState = CaptureState.STATE_BURST_CAPTURE_WAIT_FOR_AF_DONE;
+            this.mIsCancelRequested = false;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureCancel(Object... objArr) {
+            this.mIsCancelRequested = true;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnAutoFocusDone(Object... objArr) {
+            if (StateMachine.this.checkBurstConditions(((Boolean) objArr[1]).booleanValue())) {
+                StateMachine.this.changeTo(new StateBurstCapture(this.mIsCancelRequested), objArr);
+            } else {
+                StateMachine.this
+                        .doCapture(StateMachine.this.createPhotoSavingRequest(SavingTaskManager.SavedFileType.PHOTO));
+                StateMachine.this.changeTo(new StatePhotoCapture(), objArr);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.cancelAutoFocus(true);
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnFaceDetected(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_FACE_DETECTED,
+                    objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnObjectTracked(Object... objArr) {
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_TRACKED_OBJECT_STATE_UPDATED, objArr[0]);
+        }
+    }
+
+    class StateBurstCapture extends StatePhotoBase {
+        private static final int BURST_NUMBER_MAX = 100;
+        private static final int BURST_NUMBER_MIN = 2;
+        private static final int BURST_STATE_CAPTURING = 1;
+        private static final int BURST_STATE_FINALIZE = 3;
+        private static final int BURST_STATE_FINISH_AFTER_BUFFER_AVAILABLE = 4;
+        private static final int BURST_STATE_INITIALIZE = 0;
+        private static final int BURST_STATE_WAIT_FOR_BUFFER_AVAILABLE = 2;
+        private static final String TAG = "StateMachine.StateBurstCapture";
+        private int mBurstState;
+        private final String mDataString;
+        private int mIndex;
+
+        private StateBurstCapture(boolean z) {
+            super();
+            this.mCaptureState = CaptureState.STATE_BURST_CAPTURE;
+            StateMachine.this.mCameraDeviceHandler.prepareBurst();
+            this.mIndex = 0;
+            this.mDataString = new SimpleDateFormat("yyyyMMddHHmmssSSS", Locale.US).format(new Date());
+            if (z) {
+                this.mBurstState = 3;
+            } else {
+                this.mBurstState = 0;
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void exit() {
+            ResearchUtil.getInstance().setManualBurstCount(this.mIndex);
+            LocalResearchUtil.getInstance().setUserOperation(Event.CaptureOperation.SHOOTING,
+                    StateMachine.this.getCurrentCapturingMode());
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_BURST_FINISH,
+                    new Object[0]);
+        }
+
+        private void finishCapturing() {
+            switch (this.mBurstState) {
+                case 0:
+                case 1:
+                    this.mBurstState = 3;
+                    return;
+                case 2:
+                    this.mBurstState = 4;
+                    return;
+                default:
+                    return;
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleRequestSetupHeadUpDisplay(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SETUP_HEAD_UP_DISPLAY,
+                    ViewFinder.HeadUpDisplaySetupState.PHOTO_BURST_CAPTURE);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnPrepareBurstDone(Object... objArr) {
+            boolean booleanValue = ((Boolean) objArr[0]).booleanValue();
+            int i = this.mBurstState;
+            if (i == 0) {
+                if (!booleanValue) {
+                    StateMachine.this.doCapture(
+                            StateMachine.this.createPhotoSavingRequest(SavingTaskManager.SavedFileType.PHOTO));
+                    StateMachine.this.changeTo(new StatePhotoCapture(), new Object[0]);
+                    return;
+                } else {
+                    requestNextCapture();
+                    this.mBurstState = 1;
+                    return;
+                }
+            }
+            if (i != 3) {
+                return;
+            }
+            if (!booleanValue) {
+                StateMachine.this
+                        .doCapture(StateMachine.this.createPhotoSavingRequest(SavingTaskManager.SavedFileType.PHOTO));
+                StateMachine.this.changeTo(new StatePhotoCapture(), new Object[0]);
+            } else {
+                requestNextCapture();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureCancel(Object... objArr) {
+            finishCapturing();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnShutterDone(Object... objArr) {
+            boolean booleanValue = ((Boolean) objArr[1]).booleanValue();
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke count:" + this.mIndex + ", af:" + booleanValue);
+            }
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_BURST_SHUTTER_DONE,
+                    Boolean.valueOf(booleanValue), Integer.valueOf(this.mIndex));
+            if (this.mIndex >= 100) {
+                finishCapturing();
+            }
+            switch (this.mBurstState) {
+                case 0:
+                    throw new IllegalStateException("INITIALIZE cannot accept ON_SHUTTER_DONE event");
+                case 1:
+                    if (StateMachine.this.mCameraDeviceHandler.isBypassCameraNextShotAvailable()) {
+                        if (StateMachine.this.isStorageWritable(Storage.StorageType.INTERNAL)) {
+                            requestNextCapture();
+                            return;
+                        } else {
+                            requestStopBurstCapture();
+                            return;
+                        }
+                    }
+                    this.mBurstState = 2;
+                    return;
+                case 2:
+                    throw new IllegalStateException("WAIT_FOR_BUFFER_AVAILABLE cannot accept ON_SHUTTER_DONE event");
+                case 3:
+                    if (StateMachine.this.mCameraDeviceHandler.isBypassCameraNextShotAvailable()) {
+                        if (this.mIndex < 2) {
+                            if (StateMachine.this.isStorageWritable(Storage.StorageType.INTERNAL)) {
+                                requestNextCapture();
+                                return;
+                            } else {
+                                requestStopBurstCapture();
+                                return;
+                            }
+                        }
+                        requestStopBurstCapture();
+                        return;
+                    }
+                    this.mBurstState = 4;
+                    return;
+                default:
+                    return;
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnTakePictureDone(Object... objArr) {
+            RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder = (RequestFactory.PhotoSavingRequestBuilder) objArr[0];
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke id:" + photoSavingRequestBuilder.getRequestId());
+            }
+            StateMachine.this.requestStorePicture(photoSavingRequestBuilder);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStoreCompleted(Object... objArr) {
+            super.handleOnStoreCompleted(objArr);
+            int i = this.mBurstState;
+            if (i == 2) {
+                if (!StateMachine.this.mCameraDeviceHandler.isBypassCameraNextShotAvailable()) {
+                    CamLog.e("ON_STORE_COMPLETED is received. But buffer is not available.");
+                    return;
+                } else {
+                    this.mBurstState = 1;
+                    requestNextCapture();
+                    return;
+                }
+            }
+            if (i != 4) {
+                return;
+            }
+            if (!StateMachine.this.mCameraDeviceHandler.isBypassCameraNextShotAvailable()) {
+                CamLog.e("ON_STORE_COMPLETED is received. But buffer is not available.");
+                return;
+            }
+            if (this.mIndex < 2) {
+                if (StateMachine.this.isStorageWritable(Storage.StorageType.INTERNAL)) {
+                    requestNextCapture();
+                    return;
+                } else {
+                    requestStopBurstCapture();
+                    return;
+                }
+            }
+            requestStopBurstCapture();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageError(Object... objArr) {
+            Storage.StorageType storageType = (Storage.StorageType) objArr[0];
+            if (((Storage.StorageState) objArr[1]) == Storage.StorageState.CORRUPT) {
+                CamLog.w("Storage corruption : type = " + storageType + ", state = " + StateMachine.this.mCurrentState);
+                if (CamLog.DEBUG) {
+                    throw new IllegalStateException();
+                }
+            }
+            switch (this.mBurstState) {
+                case 1:
+                    this.mBurstState = 3;
+                    return;
+                case 2:
+                    this.mBurstState = 4;
+                    return;
+                default:
+                    return;
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnObjectTracked(Object... objArr) {
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_TRACKED_OBJECT_STATE_UPDATED, objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnFaceDetected(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_FACE_DETECTED,
+                    objArr[0]);
+        }
+
+        private void requestNextCapture() {
+            if (StateMachine.this.mLastPhotoSavingRequest != null
+                    && StateMachine.this.mLastPhotoSavingRequest.mCommonStatus.savedFileType == SavingTaskManager.SavedFileType.BURST) {
+                StateMachine.this.mLastPhotoSavingRequest.setFinalInSavingGroup(false);
+            }
+            RequestFactory.PhotoSavingRequestBuilder createPhotoSavingRequest = StateMachine.this
+                    .createPhotoSavingRequest(SavingTaskManager.SavedFileType.BURST);
+            createPhotoSavingRequest.setRequestId(StateMachine.this.mViewFinder.getRequestId(false));
+            createPhotoSavingRequest.setSaveTimeForCaptureGroup(this.mDataString);
+            createPhotoSavingRequest.setCaptureIdForCaptureGourp(this.mIndex);
+            StateMachine.this.doCapture(createPhotoSavingRequest);
+            this.mIndex++;
+        }
+
+        private void requestStopBurstCapture() {
+            StateMachine.this.mCameraDeviceHandler.finishBurst();
+            StateMachine.this.cancelAutoFocus(false);
+            StateMachine.this.changeTo(new StatePhotoReady(true), new Object[0]);
+            CapturePerformanceLogger.setNumOfBurstTaken(this.mIndex);
+        }
+
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
     private void sendVideoChapterThumbnailToViewFinder() {
         if (this.mChapterThumbnail == null || !this.mViewFinder.isHeadUpDisplayReady()) {
             return;
@@ -742,321 +4468,1542 @@ public class StateMachine {
         if (this.mLastVideoSavingRequest != null) {
             this.mChapterThumbnail.setOrientation(this.mLastVideoSavingRequest.mCommonStatus.orientation);
         }
-        this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_ON_ADD_VIDEO_CHAPTER, this.mChapterThumbnail);
+        this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ADD_VIDEO_CHAPTER,
+                this.mChapterThumbnail);
         this.mChapterThumbnail = null;
     }
 
-    public synchronized void sendEvent(StateMachine$TransitterEvent stateMachine$TransitterEvent, Object... objArr) {
-        if (CamLog.DEBUG) {
-            CamLog.d("invoke TransitterEvent:" + stateMachine$TransitterEvent + ", current state:" + this.mCurrentState);
+    class StateVideoBase extends State {
+        StateVideoBase() {
+            super();
         }
-        switch (StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$controller$StateMachine$TransitterEvent[stateMachine$TransitterEvent.ordinal()]) {
-            case 1:
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnOrientationChanged(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ORIENTATION_CHANGED,
+                    objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnOnePreviewFrameUpdated(Object... objArr) {
+            StateMachine.this.mChapterThumbnail = new ChapterThumbnail((byte[]) objArr[0], (Integer) objArr[1],
+                    (Rect) objArr[2]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnSemiAutoEnabled(Object... objArr) {
+            StateMachine.this.mIsSemiAutoEnabled = true;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnSemiAutoDisabled(Object... objArr) {
+            StateMachine.this.mIsSemiAutoEnabled = false;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStoreCompleted(Object... objArr) {
+            super.handleOnStoreCompleted(objArr);
+            StoreDataResult storeDataResult = (StoreDataResult) objArr[0];
+            if (StateMachine.this.mActivity.isOneShot()) {
+                StateMachine.this.onOneShotStoreCompleted(storeDataResult);
+            } else if (StateMachine.this.getCurrentCapturingMode() == CapturingMode.SLOW_MOTION && StateMachine.this
+                    .getUserSetting()
+                    .get(UserSettingKey.SLOW_MOTION) == com.sonyericsson.android.camera.configuration.parameters.SlowMotion.STANDARD_SLOW_MOTION
+                    && !PlatformCapability.hasDeviceError()) {
+                ApplicationLauncher.launchVideoEditor(StateMachine.this.mActivity, storeDataResult);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnRecordingError(Object... objArr) {
+            StateMachine.this.doHandleRecordingError();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFusionConditionChanged(Object... objArr) {
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_FUSION_CONDITION, objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverCritical(Object... objArr) {
+            if (StateMachine.this.mCameraDeviceHandler.isRecorderWorking()) {
+                StateMachine.this.doStopRecording(false);
+            }
+            super.handleOnHeatedOverCritical(objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePrepareZoom(Object... objArr) {
+            VariableIndex variableIndex = (VariableIndex) objArr[0];
+            handleClearFocus(objArr);
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ZOOM_START,
+                    Integer.valueOf(variableIndex.getIndex()));
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePerformZoom(Object... objArr) {
+            VariableIndex variableIndex = (VariableIndex) objArr[0];
+            StateMachine.this.mCameraDeviceHandler.setZoomAndCommit(variableIndex.getRatio());
+            StateMachine.this.onZoomChange(variableIndex.getIndex());
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFinishZoom(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ZOOM_STOP,
+                    new Object[0]);
+        }
+    }
+
+    class StateLowFrameRateVideoRecordingInSuperSlowMotion extends StateVideoBase {
+        private static final String TAG = "StateMachine.StateLowFrameRateVideoRecordingInSuperSlowMotion";
+
+        public StateLowFrameRateVideoRecordingInSuperSlowMotion() {
+            super();
+            this.mCaptureState = CaptureState.STATE_LOW_FRAME_RATE_VIDEO_RECORDING_IN_SUPER_SLOW_MOTION;
+            StateMachine.this.mIsVideoRecording = true;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverCoolingLow(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.setLowPower();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void entry() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke StateLowFrameRateVideoRecordingInSuperSlowMotion");
+            }
+            super.entry();
+            StateMachine.this.checkThermalWarning();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleTriggerSlowMotion(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.startSuperSlowMotion();
+            StateMachine.this.changeTo(new StateHighFrameRateVideoRecordingInSuperSlowMotion(), objArr);
+            StateMachine.access$11608(StateMachine.this);
+            StateMachine.this.mViewFinder.startSlowMotionFeedbackAnimation();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.pauseVideoRecording(objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStopRecording(Object... objArr) {
+            StateMachine.this.changeTo(new StateVideoStopping(), objArr);
+            StateMachine.this.doStopRecording(false);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnVideoRecordingDone(Object... objArr) {
+            StateMachine.this.changeTo(new StateVideoStore(), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStopRecordingSlowMotion(Object... objArr) {
+            StateMachine.this.changeTo(new StateVideoStopping(), objArr);
+            StateMachine.this.doStopRecording(false);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageError(Object... objArr) {
+            if (((Storage.StorageState) objArr[1]) == Storage.StorageState.CORRUPT) {
+                CamLog.w("Storage corruption : state = " + StateMachine.this.mCurrentState);
+                if (CamLog.DEBUG) {
+                    throw new IllegalStateException();
+                }
+            }
+            StateMachine.this.changeTo(new StateVideoStopping(), objArr);
+            StateMachine.this.doStopRecording(false);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnReachBatteryLimit(Object... objArr) {
+            StateMachine.this.doStopRecording(false);
+            StateMachine.this.changeTo(new StateFatal(true, false), objArr);
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_NOTIFY_BATTERY_CRITICAL, true);
+        }
+    }
+
+    class StateHighFrameRateVideoRecordingInSuperSlowMotion extends StateVideoBase {
+        public static final String TAG = "StateMachine.StateHighFrameRateVideoRecordingInSuperSlowMotion";
+        private boolean mAlreadyHighFrameRateRecordingDone;
+
+        public StateHighFrameRateVideoRecordingInSuperSlowMotion() {
+            super();
+            this.mAlreadyHighFrameRateRecordingDone = false;
+            this.mCaptureState = CaptureState.STATE_HIGH_FRAME_RATE_VIDEO_RECORDING_IN_SUPER_SLOW_MOTION;
+            StateMachine.this.mIsVideoRecording = true;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.pauseVideoRecording(objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleHighFameRateRecordingDone(Object... objArr) {
+            this.mAlreadyHighFrameRateRecordingDone = true;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleSlowMotionFeedbackAnimationEnd(Object... objArr) {
+            if (!this.mAlreadyHighFrameRateRecordingDone) {
+                StateMachine.this.changeTo(new StateWaitForHighFrameRateVideoRecordingDone(), new Object[0]);
+                return;
+            }
+            switch ((com.sonyericsson.android.camera.configuration.parameters.SlowMotion) StateMachine.this
+                    .getUserSetting().get(UserSettingKey.SLOW_MOTION)) {
+                case SUPER_SLOW_MOTION:
+                    StateMachine.this.changeTo(new StateLowFrameRateVideoRecordingInSuperSlowMotion(), new Object[0]);
+                    return;
+                case SUPER_SLOW_SHOT:
+                    StateMachine.this.changeTo(new StateVideoStopping(), new Object[0]);
+                    StateMachine.this.doStopRecording(false);
+                    return;
+                default:
+                    return;
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnVideoRecordingDone(Object... objArr) {
+            StateMachine.this.changeTo(new StateVideoStore(), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageError(Object... objArr) {
+            if (((Storage.StorageState) objArr[1]) == Storage.StorageState.CORRUPT) {
+                CamLog.w("Storage corruption : state = " + StateMachine.this.mCurrentState);
+                if (CamLog.DEBUG) {
+                    throw new IllegalStateException();
+                }
+            }
+            StateMachine.this.changeTo(new StateVideoStopping(), objArr);
+            StateMachine.this.doStopRecording(false);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnReachBatteryLimit(Object... objArr) {
+            StateMachine.this.doStopRecording(false);
+            StateMachine.this.changeTo(new StateFatal(true, false), objArr);
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_NOTIFY_BATTERY_CRITICAL, true);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFinishZoom(Object... objArr) {
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePerformZoom(Object... objArr) {
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePrepareZoom(Object... objArr) {
+        }
+    }
+
+    class StateWaitForHighFrameRateVideoRecordingDone extends StateVideoBase {
+        private static final String TAG = "StateMachine.StateWaitForHighFrameRateVideoRecordingDone";
+
+        public StateWaitForHighFrameRateVideoRecordingDone() {
+            super();
+            this.mCaptureState = CaptureState.STATE_WAIT_FOR_HIGH_FRAME_RATE_VIDEO_RECORDING_DONE;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleHighFameRateRecordingDone(Object... objArr) {
+            switch ((com.sonyericsson.android.camera.configuration.parameters.SlowMotion) StateMachine.this
+                    .getUserSetting().get(UserSettingKey.SLOW_MOTION)) {
+                case SUPER_SLOW_MOTION:
+                    StateMachine.this.changeTo(new StateLowFrameRateVideoRecordingInSuperSlowMotion(), new Object[0]);
+                    return;
+                case SUPER_SLOW_SHOT:
+                    StateMachine.this.changeTo(new StateVideoStopping(), new Object[0]);
+                    StateMachine.this.doStopRecording(false);
+                    return;
+                default:
+                    return;
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStopRecordingSlowMotion(Object... objArr) {
+            StateMachine.this.changeTo(new StateVideoStopping(), objArr);
+            StateMachine.this.doStopRecording(false);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.pauseVideoRecording(objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnVideoRecordingDone(Object... objArr) {
+            StateMachine.this.changeTo(new StateVideoStore(), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageError(Object... objArr) {
+            if (((Storage.StorageState) objArr[1]) == Storage.StorageState.CORRUPT) {
+                CamLog.w("Storage corruption : state = " + StateMachine.this.mCurrentState);
+                if (CamLog.DEBUG) {
+                    throw new IllegalStateException();
+                }
+            }
+            StateMachine.this.changeTo(new StateVideoStopping(), objArr);
+            StateMachine.this.doStopRecording(false);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnReachBatteryLimit(Object... objArr) {
+            StateMachine.this.doStopRecording(false);
+            StateMachine.this.changeTo(new StateFatal(true, false), objArr);
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_NOTIFY_BATTERY_CRITICAL, true);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFinishZoom(Object... objArr) {
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePerformZoom(Object... objArr) {
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePrepareZoom(Object... objArr) {
+        }
+    }
+
+    class StateVideoStopping extends StateVideoBase {
+        private static final String TAG = "StateMachine.StateVideoStopping";
+        private final RecorderController.Result mResult;
+
+        public StateVideoStopping(RecorderController.Result result) {
+            super();
+            this.mCaptureState = CaptureState.STATE_VIDEO_STOPPING;
+            this.mResult = result;
+        }
+
+        public StateVideoStopping() {
+            this(RecorderController.Result.SUCCESS);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnVideoRecordingDone(Object... objArr) {
+            StateMachine.this.changeTo(new StateVideoStore(this.mResult), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFinishZoom(Object... objArr) {
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePerformZoom(Object... objArr) {
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePrepareZoom(Object... objArr) {
+        }
+    }
+
+    class StateVideoRecording extends StateVideoBase {
+        private static final String TAG = "StateMachine.StateVideoRecording";
+        private boolean mAlreadyRequestStop;
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStartRecording(Object... objArr) {
+        }
+
+        protected boolean isPaused() {
+            return false;
+        }
+
+        private StateVideoRecording() {
+            super();
+            this.mAlreadyRequestStop = false;
+            this.mCaptureState = CaptureState.STATE_VIDEO_RECORDING;
+            StateMachine.this.mIsVideoRecording = true;
+            StateMachine.this.sendVideoChapterThumbnailToViewFinder();
+        }
+
+        public StateVideoRecording(boolean z) {
+            super();
+            this.mAlreadyRequestStop = false;
+            this.mCaptureState = CaptureState.STATE_VIDEO_RECORDING;
+            StateMachine.this.sendVideoChapterThumbnailToViewFinder();
+            StateMachine.this.mIsVideoRecording = true;
+            this.mAlreadyRequestStop = z;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void entry() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke StateVideoRecording");
+            }
+            super.entry();
+            StateMachine.this.checkThermalWarning();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleRequestSetupHeadUpDisplay(Object... objArr) {
+            if (((Boolean) objArr[0]).booleanValue()) {
+                StateMachine.this.switchSceneRecognition(
+                        StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage()));
+                StateMachine.this.switchVideoFaceDetection();
+            }
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SETUP_HEAD_UP_DISPLAY,
+                    ViewFinder.HeadUpDisplaySetupState.VIDEO_RECORDING);
+            StateMachine.this.sendVideoChapterThumbnailToViewFinder();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePauseRecording(Object... objArr) {
+            if (this.mAlreadyRequestStop) {
+                return;
+            }
+            StateMachine.this.doPauseRecording();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCapture(Object... objArr) {
+            if (this.mAlreadyRequestStop
+                    || StateMachine.this.mActivity.getLaunchCondition().getOneShotMode().isEnabled()
+                    || !StateMachine.this.mCameraDeviceHandler.canRecorderTakeSnapshot()) {
+                return;
+            }
+            StateMachine.this.changeTo(new StateVideoCaptureWhileRecording(isPaused()), new Object[0]);
+            this.mAlreadyRequestStop = true;
+            StateMachine.this.doCaptureWhileRecording();
+            ResearchUtil.getInstance().incrementCountSnapshotInRecording();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnVideoRecordingDone(Object... objArr) {
+            StateMachine.this.changeTo(new StateVideoStore(), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            this.mAlreadyRequestStop = true;
+            StateMachine.this.pauseVideoRecording(objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageError(Object... objArr) {
+            if (((Storage.StorageState) objArr[1]) == Storage.StorageState.CORRUPT) {
+                CamLog.w("Storage corruption : state = " + StateMachine.this.mCurrentState);
+                if (CamLog.DEBUG) {
+                    throw new IllegalStateException();
+                }
+            }
+            this.mAlreadyRequestStop = true;
+            StateMachine.this.changeTo(new StateVideoStopping(), new Object[0]);
+            StateMachine.this.doStopRecording(false);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStopRecording(Object... objArr) {
+            this.mAlreadyRequestStop = true;
+            StateMachine.this.changeTo(new StateVideoStopping(), new Object[0]);
+            StateMachine.this.doStopRecording(false);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StateVideoBase,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnOnePreviewFrameUpdated(Object... objArr) {
+            super.handleOnOnePreviewFrameUpdated(objArr);
+            StateMachine.this.sendVideoChapterThumbnailToViewFinder();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnFaceDetected(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_FACE_DETECTED,
+                    objArr[0]);
+            StateMachine.this.requestVideoSmileCapture();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleSetSelectedObjectPosition(Object... objArr) {
+            if (StateMachine.this.mCameraDeviceHandler.isCameraDeviceStatusReady()) {
+                Rect rect = (Rect) objArr[1];
+                if (StateMachine.this.mUserSettings.get(UserSettingKey.FOCUS_RANGE) == FocusRange.AF) {
+                    StateMachine.this.doStartObjectTracking(rect);
+                }
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnObjectTracked(Object... objArr) {
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_TRACKED_OBJECT_STATE_UPDATED, objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleDeselectObjectPosition(Object... objArr) {
+            StateMachine.this.doStopObjectTracking();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverCoolingLow(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.setLowPower();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverCoolingUltraLow(Object... objArr) {
+            StateMachine.this
+                    .notifyCoolingUltraLow(!StateMachine.this.isStorageFull(StateMachine.this.getCurrentStorage()));
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleChangeSelectedFace(Object... objArr) {
+            StateMachine.this.doChangeSelectedFace((Point) objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleDialogOpened(Object... objArr) {
+            if (objArr != null && objArr.length != 0) {
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_UPDATE_DIALOGS,
+                        (ViewFinder.UiComponentKind) objArr[0]);
+            }
+            StateMachine.this.changeTo(new StateOperationRestricted(), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnReachBatteryLimit(Object... objArr) {
+            this.mAlreadyRequestStop = true;
+            StateMachine.this.doStopRecording(false);
+            StateMachine.this.changeTo(new StateFatal(true, false), objArr);
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_NOTIFY_BATTERY_CRITICAL, true);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StateVideoBase,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverCritical(Object... objArr) {
+            this.mAlreadyRequestStop = true;
+            super.handleOnHeatedOverCritical(objArr);
+        }
+    }
+
+    class StateVideoCaptureWhileRecording extends State {
+        private final boolean mIsPaused;
+        private boolean mIsPausingRequested;
+        private boolean mIsReturnToVideoRecordingRequired;
+
+        private StateVideoCaptureWhileRecording(boolean z) {
+            super();
+            this.mIsReturnToVideoRecordingRequired = false;
+            this.mCaptureState = CaptureState.STATE_VIDEO_CAPTURE_WHILE_RECORDING;
+            this.mIsPaused = z;
+            this.mIsPausingRequested = z;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnTakePictureDone(Object... objArr) {
+            StateMachine.this.requestStorePicture((RequestFactory.PhotoSavingRequestBuilder) objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStoreRequested(Object... objArr) {
+            if (this.mIsPaused) {
+                if (this.mIsPausingRequested) {
+                    StateMachine.this.changeTo(new StateVideoRecordingPausing(), objArr);
+                } else {
+                    StateMachine.this.mCameraDeviceHandler.requestOnePreviewFrame();
+                    StateMachine.this.doResumeRecording();
+                }
+            } else if (!this.mIsPausingRequested) {
+                StateMachine.this.changeTo(new StateVideoRecording(this.mIsReturnToVideoRecordingRequired), objArr);
+            } else {
+                StateMachine.this.doPauseRecording();
+            }
+            if (this.mIsReturnToVideoRecordingRequired) {
+                StateMachine.this.doStopRecording(false);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePauseRecording(Object... objArr) {
+            this.mIsPausingRequested = true;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleResumeRecording(Object... objArr) {
+            this.mIsPausingRequested = false;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.pauseVideoRecording(objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStopRecording(Object... objArr) {
+            this.mIsReturnToVideoRecordingRequired = true;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnShutterDone(Object... objArr) {
+            RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder = (RequestFactory.PhotoSavingRequestBuilder) objArr[0];
+            synchronized (this) {
+                if (StateMachine.this.mContentsViewController != null) {
+                    StateMachine.this.mContentsViewController.setClickThumbnailProgressListener(null);
+                    photoSavingRequestBuilder
+                            .setRequestId(StateMachine.this.mContentsViewController.createProvisionalContentFrame());
+                } else {
+                    photoSavingRequestBuilder.setRequestId(-1);
+                }
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnOnePreviewFrameUpdated(Object... objArr) {
+            StateMachine.this.mChapterThumbnail = new ChapterThumbnail((byte[]) objArr[0], (Integer) objArr[1],
+                    (Rect) objArr[2]);
+            StateMachine.this.sendVideoChapterThumbnailToViewFinder();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageError(Object... objArr) {
+            if (((Storage.StorageState) objArr[1]) == Storage.StorageState.CORRUPT) {
+                CamLog.w("Storage corruption : state = " + StateMachine.this.mCurrentState);
+                if (CamLog.DEBUG) {
+                    throw new IllegalStateException();
+                }
+            }
+            StateMachine.this.doStopRecording(true);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnVideoRecordingDone(Object... objArr) {
+            StateMachine.this.changeTo(new StateVideoStore(), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnFaceDetected(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_FACE_DETECTED,
+                    objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnRecordingError(Object... objArr) {
+            StateMachine.this.doHandleRecordingError();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnOrientationChanged(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ORIENTATION_CHANGED,
+                    objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnReachBatteryLimit(Object... objArr) {
+            StateMachine.this.doStopRecording(true);
+            StateMachine.this.changeTo(new StateFatal(true, false), objArr);
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_NOTIFY_BATTERY_CRITICAL, true);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFusionConditionChanged(Object... objArr) {
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_FUSION_CONDITION, objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverCritical(Object... objArr) {
+            if (StateMachine.this.mCameraDeviceHandler.isRecorderWorking()) {
+                StateMachine.this.doStopRecording(false);
+            }
+            super.handleOnHeatedOverCritical(objArr);
+        }
+    }
+
+    class StateVideoStore extends StateVideoBase {
+        private final RecorderController.Result mResult;
+
+        private StateVideoStore(RecorderController.Result result) {
+            super();
+            this.mCaptureState = CaptureState.STATE_VIDEO_STORE;
+            this.mResult = result;
+        }
+
+        private StateVideoStore() {
+            this(RecorderController.Result.SUCCESS);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStoreRequested(Object... objArr) {
+            if (!StateMachine.this.mActivity.isOneShotVideo() || StateMachine.this.mActivity.isInLockTaskMode()) {
+                StateMachine.this.changeTo(new StateVideoReady(), new Object[0]);
+                switch (this.mResult) {
+                    case MAX_DURATION_REACHED:
+                        StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                                ViewFinder.ViewUpdateEvent.EVENT_ON_NOTIFY_MAX_DURATION_REACHED, new Object[0]);
+                        return;
+                    case MAX_FILESIZE_REACHED:
+                        StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                                ViewFinder.ViewUpdateEvent.EVENT_ON_NOTIFY_MAX_FILESIZE_REACHED, new Object[0]);
+                        return;
+                    default:
+                        return;
+                }
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StateVideoBase,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStoreCompleted(Object... objArr) {
+            super.handleOnStoreCompleted(objArr);
+            if (StateMachine.this.mActivity.isOneShot()) {
+                StateMachine.this.onOneShotStoreCompleted((StoreDataResult) objArr[0]);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnOnePreviewFrameUpdated(Object... objArr) {
+        }
+    }
+
+    class StateModeChanging extends StatePhotoBase {
+
+        private StateModeChanging() {
+            super();
+            this.mCaptureState = CaptureState.STATE_MODE_CHANGING;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void entry() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke StateModeChanging");
+            }
+            if (!PlatformCapability.isSceneRecognitionSupported(StateMachine.this.getCurrentCameraId())) {
+                StateMachine.this.mCameraDeviceHandler.stopSceneRecognition();
+            }
+            if (StateMachine.this.mActivity != null) {
+                StateMachine.this.mActivity.notifyStateBlockedToWearable();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFinishTransitionOperation(Object... objArr) {
+            AnimationRequest animationRequest = (AnimationRequest) objArr[0];
+            switch (animationRequest.mDegree) {
+                case CANCEL:
+                    StateMachine.this.changeToStandby();
+                    return;
+                case EXEC:
+                    if (animationRequest.mType == AnimationRequest.AnimationType.SWITCH_TOUCH
+                            || animationRequest.mTarget.isFront() != animationRequest.mFrom.isFront()) {
+                        StateMachine.this.switchCamera(animationRequest.mTarget, animationRequest.mType);
+                        return;
+                    } else {
+                        if (StateMachine.this.getCurrentCapturingMode() != animationRequest.mTarget) {
+                            StateMachine.this.requestChangeModeTo(animationRequest.mTarget, animationRequest.mType);
+                            return;
+                        }
+                        return;
+                    }
+                default:
+                    return;
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoBase,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnSemiAutoDisabled(Object... objArr) {
+            super.handleOnSemiAutoDisabled(objArr);
+            StateMachine.this.mCameraDeviceHandler.setAmberBlueColorAndCommit(0);
+            StateMachine.this.mCameraDeviceHandler.setBrightnessAndCommit(0);
+            LocalResearchUtil.getInstance().setSemiAutoSettingAmberBlueValue(0);
+            LocalResearchUtil.getInstance().setSemiAutoSettingBrightnessValue(0);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnEvfPrepared(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.setPreviewSurface(((Evf) objArr[0]).asSurface());
+            StateMachine.this.mCameraDeviceHandler.startPreview();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFusionConditionChanged(Object... objArr) {
+        }
+    }
+
+    class StatePause extends StatePhotoBase {
+        private static final String TAG = "StateMachine.StatePause";
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StatePhotoBase,
+                  // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFusionConditionChanged(Object... objArr) {
+        }
+
+        private StatePause(boolean z) {
+            super();
+            CapturingMode capturingMode;
+            this.mCaptureState = CaptureState.STATE_PAUSE;
+            StateMachine.this.mViewFinder.hideDisplayFlashScreen();
+            if (!StateMachine.this.mCameraDeviceHandler.isRecorderWorking()) {
+                StateMachine.this.mCameraDeviceHandler.releaseRecorder();
+            }
+            StateMachine.this.mCameraDeviceHandler.stopFaceDetection();
+            StateMachine.this.mCameraDeviceHandler.stopSceneRecognition();
+            StateMachine.this.mCameraDeviceHandler.stopFusionMonitoring();
+            if (StateMachine.this.mObjectTracking != null) {
+                StateMachine.this.doStopObjectTracking();
+            }
+            if (!StateMachine.this.mPendingTaskListForStandby.isEmpty()) {
+                StateMachine.this.mPendingTaskListForStandby.clear();
+            }
+            StateMachine.this.mCameraDeviceHandler.stopPreview();
+            StateMachine.this.mStorage.removeStorageStateListener(StateMachine.this.mStorageStateListener);
+            StateMachine.this.mUserSettings.commit();
+            StateMachine.this.mVirtualKeyEventDispatcher.stop();
+            if (!StateMachine.this.mActivity.getLaunchCondition().getOneShotMode().isEnabled()
+                    && (capturingMode = (CapturingMode) StateMachine.this.mUserSettings
+                            .get(UserSettingKey.CAPTURING_MODE)) != null) {
+                StateMachine.this.mLastSettings.setCapturingMode((ModeSelectorInternalMode.exists(capturingMode)
+                        || capturingMode.equals(CapturingMode.FRONT_PHOTO)) ? CapturingMode.SCENE_RECOGNITION
+                                : capturingMode);
+                StateMachine.this.mLastSettings.writePauseTime();
+                StateMachine.this.mLastSettings.save();
+            }
+            if (z) {
+                StateMachine.this.removeChangeCameraModeTask();
+            }
+            StateMachine.this.removeStartRecordingTask();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void entry() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke StatePause");
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleResume(Object... objArr) {
+            CameraDeviceHandler.CameraSessionId cameraSessionId = (CameraDeviceHandler.CameraSessionId) objArr[1];
+            StartupAction startupAction = (StartupAction) objArr[2];
+            if (StateMachine.this.mCameraDeviceHandler.isCameraDisabled()) {
+                StateMachine.this.mViewFinder.showMessageDialog(DialogId.ERROR_USE_OF_CAMERA_RESTRICTED, new Object[0]);
+            } else {
+                FastCapture fastCapture = (FastCapture) objArr[0];
+                StateMachine.this.changeTo(new StateResume(cameraSessionId, fastCapture, null, startupAction),
+                        fastCapture, Boolean.valueOf(StateMachine.this.hasRemainSavingRequest()));
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFinalize(Object... objArr) {
+            StateMachine.this.changeTo(new StateFinalize(), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnTakePictureDone(Object... objArr) {
+            RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder = (RequestFactory.PhotoSavingRequestBuilder) objArr[0];
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke id:" + photoSavingRequestBuilder.getRequestId());
+            }
+            StateMachine.this.requestStorePicture(photoSavingRequestBuilder);
+        }
+    }
+
+    class StateWarning extends StatePhotoBase {
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStorageUngranted(Object... objArr) {
+        }
+
+        private StateWarning() {
+            super();
+            StateMachine.this.mIsVideoRecording = false;
+            StateMachine.this.checkThermalWarning();
+            StateMachine.this.cleanupPendingState();
+            this.mCaptureState = CaptureState.STATE_WARNING;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void entry() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke StateWarning");
+            }
+            StateMachine.this.mPredictiveApplier.entrySuppressor(this);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void exit() {
+            StateMachine.this.mViewFinder.clearHintText();
+            StateMachine.this.mPredictiveApplier.leaveSuppressor(this);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleChangeAngleStart(Object... objArr) {
+            StateMachine.this.doZoomChangeAngle();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverCoolingLow(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.setLowPower();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverCoolingUltraLow(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.setUltraLowPower();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCapture(Object... objArr) {
+            StateMachine.this.mViewFinder.onCaptureDone();
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_CAPTURE_FINISH,
+                    new Object[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleCaptureCancel(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_CAPTURE_CANCEL,
+                    new Object[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleDialogOpened(Object... objArr) {
+            if (objArr != null && objArr.length != 0) {
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_UPDATE_DIALOGS,
+                        (ViewFinder.UiComponentKind) objArr[0]);
+            }
+            StateMachine.this.changeTo(new StateOperationRestricted(), objArr);
+            StateMachine.this.mActivity.notifyStateBlockedToWearable();
+            if (StateMachine.this.mActivity.getLaunchCondition()
+                    .getExtraOperation() == LaunchCondition.ExtraOperation.OPEN_SETTINGS_MENU) {
+                StateMachine.this.mActivity.getLaunchCondition().clearExtraOperation();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleRequestSetupHeadUpDisplay(Object... objArr) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke current" + StateMachine.this.getCurrentCapturingMode());
+            }
+            if (((Boolean) objArr[0]).booleanValue()) {
+                StateMachine.this.switchSceneRecognition(
+                        StateMachine.this.isStorageWritable(StateMachine.this.getCurrentStorage()));
+                StateMachine.this.switchVideoFaceDetection();
+            }
+            switch (StateMachine.this.getCurrentCapturingMode()) {
+                case NORMAL:
+                case FRONT_PHOTO:
+                case SCENE_RECOGNITION:
+                case SUPERIOR_FRONT:
+                    StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                            ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SETUP_HEAD_UP_DISPLAY,
+                            ViewFinder.HeadUpDisplaySetupState.PHOTO_READY);
+                    return;
+                case SLOW_MOTION:
+                case FRONT_VIDEO:
+                case VIDEO:
+                    StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                            ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SETUP_HEAD_UP_DISPLAY,
+                            ViewFinder.HeadUpDisplaySetupState.VIDEO_READY);
+                    return;
+                case UNKNOWN:
+                default:
+                    return;
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleKeyMenu(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_UPDATE_DIALOGS,
+                    ViewFinder.UiComponentKind.SETTING_DIALOG);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStorageMounted(Object... objArr) {
+            StateMachine.this.changeToStandby();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleSwitchCamera(Object... objArr) {
+            StateMachine.this.switchCamera((AnimationRequest.AnimationType) objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnHeatedOverWarningExtra(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.enableFpsLimitation();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleStartTransitionOperation(Object... objArr) {
+            if (((AnimationRequest) objArr[0]).mDegree == AnimationRequest.AnimationDegree.START) {
+                StateMachine.this.changeTo(new StateModeChanging(), new Object[0]);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnAmberBlueColorChanged(Object... objArr) {
+            StateMachine.this.updateAmberBlueColor(((Float) objArr[0]).floatValue());
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnBrightnessChanged(Object... objArr) {
+            StateMachine.this.updateBrightness(((Float) objArr[0]).floatValue());
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleRequestUpdateHighSensitivityFusionMode(Object... objArr) {
+            StateMachine.this.updateFusionModeSetting((FusionMode) objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnEvfPrepared(Object... objArr) {
+            StateMachine.this.mCameraDeviceHandler.setPreviewSurface(((Evf) objArr[0]).asSurface());
+            StateMachine.this.mCameraDeviceHandler.startPreview();
+        }
+    }
+
+    class StateFatal extends State {
+        private static final String TAG = "StateMachine.StateFatal";
+        private boolean mIsSaving;
+        private boolean mLazyAbort;
+        private LazyAbortTask mLazyAbortTask;
+        private StoreDataResult mStoreDataResult;
+
+        private StateFatal(boolean z, boolean z2) {
+            super();
+            this.mIsSaving = false;
+            this.mLazyAbort = false;
+            this.mStoreDataResult = null;
+            this.mLazyAbortTask = null;
+            this.mCaptureState = CaptureState.STATE_FATAL;
+            this.mIsSaving = z;
+            this.mLazyAbort = z2;
+            if (!StateMachine.this.mCameraDeviceHandler.isRecorderWorking()) {
+                StateMachine.this.mCameraDeviceHandler.releaseRecorder();
+            }
+            StateMachine.this.mCameraDeviceHandler.stopFaceDetection();
+            StateMachine.this.mCameraDeviceHandler.stopSceneRecognition();
+            if (StateMachine.this.mObjectTracking != null) {
+                StateMachine.this.doStopObjectTracking();
+            }
+            if (!StateMachine.this.mPendingTaskListForStandby.isEmpty()) {
+                StateMachine.this.mPendingTaskListForStandby.clear();
+            }
+            StateMachine.this.mCameraDeviceHandler.stopPreview();
+            StateMachine.this.removeChangeCameraModeTask();
+            StateMachine.this.removeStartRecordingTask();
+            if (!this.mLazyAbort || StateMachine.this.mViewFinder.isMessageDialogOpened()) {
+                return;
+            }
+            doLazyAbort();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnOrientationChanged(Object... objArr) {
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ORIENTATION_CHANGED,
+                    objArr[0]);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStoreCompleted(Object... objArr) {
+            super.handleOnStoreCompleted(objArr);
+            this.mStoreDataResult = (StoreDataResult) objArr[0];
+            if (StateMachine.this.mViewFinder.isMessageDialogOpened()) {
+                return;
+            }
+            if (StateMachine.this.mActivity.isOneShot()) {
+                StateMachine.this.onOneShotStoreCompleted(this.mStoreDataResult);
+            } else {
+                StateMachine.this.mActivity.terminateApplication();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleDialogClosed(Object... objArr) {
+            if (objArr == null || objArr.length == 0 || objArr[0] != ViewFinder.UiComponentKind.FATAL_ALERT_DIALOG) {
+                return;
+            }
+            if (this.mLazyAbort) {
+                doLazyAbort();
+                return;
+            }
+            if (!this.mIsSaving || this.mStoreDataResult != null) {
+                StateMachine.this.mActivity.terminateApplication();
+            } else {
+                if (this.mStoreDataResult == null || !StateMachine.this.mActivity.isOneShot()) {
+                    return;
+                }
+                StateMachine.this.onOneShotStoreCompleted(this.mStoreDataResult);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFinalize(Object... objArr) {
+            StateMachine.this.changeTo(new StateFinalize(), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+            StateMachine.this.mActivity.terminateApplication();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void exit() {
+            if (this.mLazyAbortTask != null) {
+                StateMachine.this.mHandler.removeCallbacks(this.mLazyAbortTask);
+                this.mLazyAbortTask = null;
+            }
+        }
+
+        private void doLazyAbort() {
+            if (this.mLazyAbortTask != null) {
+                StateMachine.this.mHandler.removeCallbacks(this.mLazyAbortTask);
+            }
+            this.mLazyAbortTask = new LazyAbortTask();
+            StateMachine.this.mHandler.postDelayed(this.mLazyAbortTask, 4000L);
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        public class LazyAbortTask implements Runnable {
+            private LazyAbortTask() {
+            }
+
+            @Override // java.lang.Runnable
+            public void run() {
+                if (CamLog.DEBUG) {
+                    CamLog.d("invoke LazyAbortTask");
+                }
+                StateMachine.this.mActivity.terminateApplication();
+            }
+        }
+    }
+
+    class StateFinalize extends State {
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleRequestSetupHeadUpDisplay(Object... objArr) {
+        }
+
+        private StateFinalize() {
+            super();
+            this.mCaptureState = CaptureState.STATE_FINALIZE;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void entry() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke StateFinalize");
+            }
+            StateMachine.this.mGestureShutter.release();
+            StateMachine.this.storeSavingRequestList();
+            StateMachine.this.mObjectTracking = null;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnTakePictureDone(Object... objArr) {
+            RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder = (RequestFactory.PhotoSavingRequestBuilder) objArr[0];
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke id:" + photoSavingRequestBuilder.getRequestId());
+            }
+            StateMachine.this.requestStorePicture(photoSavingRequestBuilder);
+        }
+    }
+
+    class StateWaitingPreProcessDone extends State {
+        private final FastCapture mFastCapture;
+
+        private StateWaitingPreProcessDone(FastCapture fastCapture) {
+            super();
+            this.mCaptureState = CaptureState.STATE_WAITING_PRE_PROCESS_DONE;
+            this.mFastCapture = fastCapture;
+        }
+
+        private void cancelPreProcess() {
+            StateMachine.this.cancelAutoFocus(false);
+            StateMachine.this.mCameraDeviceHandler.cancelPreProcessState();
+            StateMachine.this.startFastCapture(this.mFastCapture, StartupAction.NONE);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnInitialAutoFocusDone(Object... objArr) {
+            cancelPreProcess();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnPreTakePictureDone(Object... objArr) {
+            ((RequestFactory.PhotoSavingRequestBuilder) objArr[0]).close();
+            StateMachine.this.mCameraDeviceHandler.prepareCaptureImageReader(null);
+            cancelPreProcess();
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handlePause(Object... objArr) {
+            StateMachine.this.changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleFusionConditionChanged(Object... objArr) {
+            StateMachine.this.mViewFinder
+                    .sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_FUSION_CONDITION, objArr);
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleOnStorageUngranted(Object... objArr) {
+            StateMachine.this.mUserSettings.set(DestinationToSave.EMMC);
+            if (StateMachine.this.mViewFinder != null) {
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                        ViewFinder.ViewUpdateEvent.EVENT_REQUEST_SHOW_CHANGE_INTERNAL_STORAGE_MESSAGE, true);
+            }
+        }
+    }
+
+    public synchronized void sendEvent(TransitterEvent transitterEvent, Object... objArr) {
+        if (CamLog.DEBUG) {
+            CamLog.d("invoke TransitterEvent:" + transitterEvent + ", current state:" + this.mCurrentState);
+        }
+        switch (transitterEvent) {
+            case EVENT_INITIALIZE:
                 this.mCurrentState.handleInitialize(objArr);
                 break;
-            case 2:
+            case EVENT_RESUME:
                 this.mCurrentState.handleResume(objArr);
                 break;
-            case 3:
+            case EVENT_RESUME_TIMEOUT:
                 this.mCurrentState.handleResumeTimeout(objArr);
                 break;
-            case 4:
+            case EVENT_PAUSE:
                 this.mCurrentState.handlePause(objArr);
                 break;
-            case 5:
+            case EVENT_FINALIZE:
                 this.mCurrentState.handleFinalize(objArr);
                 break;
-            case 6:
+            case EVENT_ON_HEATED_OVER_WARNING:
                 this.mCurrentState.handleOnHeatedOverWarning(objArr);
                 break;
-            case 7:
+            case EVENT_ON_HEATED_OVER_WARNING_EXTRA:
                 this.mCurrentState.handleOnHeatedOverWarningExtra(objArr);
                 break;
-            case 8:
+            case EVENT_ON_HEATED_OVER_COOLING_LOW:
                 this.mCurrentState.handleOnHeatedOverCoolingLow(objArr);
                 break;
-            case 9:
+            case EVENT_ON_HEATED_OVER_COOLING_ULTRA_LOW:
                 this.mCurrentState.handleOnHeatedOverCoolingUltraLow(objArr);
                 break;
-            case 10:
+            case EVENT_ON_REACH_BATTERY_LIMIT:
                 this.mCurrentState.handleOnReachBatteryLimit(new Object[0]);
                 break;
-            case 11:
+            case EVENT_ON_REACH_BATTERY_LOW:
                 this.mCurrentState.handleOnReachBatteryLow(new Object[0]);
                 break;
-            case 12:
+            case EVENT_ON_BATTERY_LEVEL_CHANGED:
                 this.mCurrentState.handleOnReachBatteryLevelChanged(Integer.valueOf(((Integer) objArr[0]).intValue()));
                 break;
-            case 13:
+            case EVENT_ON_HEATED_OVER_CRITICAL:
                 this.mCurrentState.handleOnHeatedOverCritical(objArr);
                 break;
-            case 14:
+            case EVENT_ON_HEATED_OVER_NORMAL:
                 this.mCurrentState.handleOnHeatedOverNormal(objArr);
                 break;
-            case 15:
+            case EVENT_ON_EVF_PREPARED:
                 this.mCurrentState.handleOnEvfPrepared(objArr);
                 break;
-            case 16:
+            case EVENT_ON_INITIAL_AUTO_FOCUS_DONE:
                 this.mCurrentState.handleOnInitialAutoFocusDone(objArr);
                 break;
-            case 17:
+            case EVENT_ON_AUTO_FOCUS_DONE:
                 this.mCurrentState.handleOnAutoFocusDone(objArr);
                 break;
-            case 18:
+            case EVENT_ON_PRE_SHUTTER_DONE:
                 this.mCurrentState.handleOnPreShutterDone(objArr);
                 break;
-            case 19:
+            case EVENT_ON_SHUTTER_DONE:
                 this.mCurrentState.handleOnShutterDone(objArr);
                 break;
-            case 20:
+            case EVENT_ON_PREPARE_BURST_DONE:
                 this.mCurrentState.handleOnPrepareBurstDone(objArr);
                 break;
-            case 21:
+            case EVENT_ON_PRE_TAKE_PICTURE_DONE:
                 this.mCurrentState.handleOnPreTakePictureDone(objArr);
                 break;
-            case 22:
+            case EVENT_ON_TAKE_PICTURE_DONE:
                 this.mCurrentState.handleOnTakePictureDone(objArr);
                 break;
-            case 23:
+            case EVENT_ON_VIDEO_RECORDING_DONE:
                 this.mCurrentState.handleOnVideoRecordingDone(objArr);
                 break;
-            case 24:
+            case EVENT_TOUCH_CONTENT_PROGRESS:
                 this.mCurrentState.handleTouchContentProgress();
                 break;
-            case 25:
+            case EVENT_ON_STORE_REQUESTED:
                 this.mCurrentState.handleOnStoreRequested(objArr);
                 break;
-            case 26:
+            case EVENT_ON_STORE_COMPLETED:
                 this.mCurrentState.handleOnStoreCompleted(objArr);
                 break;
-            case 27:
+            case EVENT_KEY_MENU:
                 this.mCurrentState.handleKeyMenu(objArr);
                 break;
-            case 28:
+            case EVENT_START_TRANSITION_OPERATION:
                 this.mCurrentState.handleStartTransitionOperation(objArr);
                 break;
-            case 29:
+            case EVENT_FINISH_TRANSITION_OPERATION:
                 this.mCurrentState.handleFinishTransitionOperation(objArr);
                 break;
-            case 30:
+            case EVENT_CLEAR_FOCUS:
                 this.mCurrentState.handleClearFocus(objArr);
                 break;
-            case 31:
+            case EVENT_DIALOG_OPENED:
                 this.mCurrentState.handleDialogOpened(objArr);
                 break;
-            case 32:
+            case EVENT_DIALOG_CLOSED:
                 this.mCurrentState.handleDialogClosed(objArr);
                 break;
-            case 33:
+            case EVENT_STORAGE_ERROR:
                 this.mCurrentState.handleStorageError(objArr);
                 break;
-            case 34:
+            case EVENT_STORAGE_MOUNTED:
                 this.mCurrentState.handleStorageMounted(objArr);
                 break;
-            case 35:
+            case EVENT_STORAGE_UNGRANTED:
                 this.mCurrentState.handleOnStorageUngranted(objArr);
                 break;
-            case 36:
+            case EVENT_SET_TOUCHED_POSITION:
                 this.mCurrentState.handleSetTouchedPosition(objArr);
                 break;
-            case 37:
+            case EVENT_REQUEST_SETUP_HEAD_UP_DISPLAY:
                 this.mCurrentState.handleRequestSetupHeadUpDisplay(objArr);
                 break;
-            case 38:
+            case EVENT_ON_RECORDING_START_WAIT_DONE:
                 this.mCurrentState.handleOnRecordingStartWaitDone(objArr);
                 break;
-            case 39:
+            case EVENT_ON_RECORDING_ERROR:
                 this.mCurrentState.handleOnRecordingError(objArr);
                 break;
-            case 40:
+            case EVENT_CHANGE_SELECTED_FACE:
                 this.mCurrentState.handleChangeSelectedFace(objArr);
                 break;
-            case 41:
+            case EVENT_SET_SELECTED_OBJECT_POSITION:
                 this.mCurrentState.handleSetSelectedObjectPosition(objArr);
                 break;
-            case 42:
+            case EVENT_DESELECT_OBJECT_POSITION:
                 this.mCurrentState.handleDeselectObjectPosition(objArr);
                 break;
-            case 43:
+            case EVENT_START_AF_AFTER_OBJECT_TRACKED:
                 this.mCurrentState.handleStartAfAfterObjectTracked(objArr);
                 break;
-            case 44:
+            case EVENT_ON_BURST_SHUTTER_DONE:
                 this.mCurrentState.handleOnBurstShutterDone(objArr);
                 break;
-            case 45:
+            case EVENT_ON_BURST_STORE_COMPLETED:
                 this.mCurrentState.handleOnBurstStoreCompleted(objArr);
                 break;
-            case 46:
+            case EVENT_ON_PREDICTIVE_CAPTURE_GROUP_STORE_COMPLETED:
                 this.mCurrentState.handleOnPredictiveCaptureGroupStoreCompleted(objArr);
                 break;
-            case 47:
+            case EVENT_ON_ONE_PREVIEW_FRAME_UPDATED:
                 this.mCurrentState.handleOnOnePreviewFrameUpdated(objArr);
                 break;
-            case 48:
+            case EVENT_ON_CONTINUOUS_PREVIEW_FRAME_UPDATED:
                 this.mCurrentState.handleOnContinuousPreviewFrameUpdated(objArr);
                 break;
-            case 49:
+            case EVENT_ON_SWITCH_CAMERA:
                 this.mCurrentState.handleSwitchCamera(objArr);
                 break;
-            case 50:
+            case EVENT_CANCEL_TOUCHED_POSITION:
                 this.mCurrentState.handleCancelTouchedPosition(objArr);
                 break;
-            case 51:
+            case EVENT_ON_SEMIAUTO_ENABLED:
                 this.mCurrentState.handleOnSemiAutoEnabled(objArr);
                 break;
-            case 52:
+            case EVENT_ON_SEMIAUTO_DISABLED:
                 this.mCurrentState.handleOnSemiAutoDisabled(objArr);
                 break;
-            case 53:
+            case EVENT_ON_AMBER_BLUE_COLOR_CHANGED:
                 this.mCurrentState.handleOnAmberBlueColorChanged(objArr);
                 break;
-            case 54:
+            case EVENT_ON_BRIGHTNESS_CHANGED:
                 this.mCurrentState.handleOnBrightnessChanged(objArr);
                 break;
-            case 55:
+            case EVENT_SELFTIMER_CANCEL:
                 this.mCurrentState.handleSelfTimerCancel(objArr);
                 break;
-            case 56:
+            case EVENT_ON_CAMERA_DEVICE_OPENED:
                 this.mCurrentState.handleOnCameraDeviceOpened(objArr);
                 break;
-            case 57:
+            case EVENT_ON_CAMERA_DEVICE_CLOSED:
                 this.mCurrentState.handleOnCameraDeviceClosed(objArr);
                 break;
-            case 58:
+            case EVENT_STOP_RECORDING_SLOW_MOTION_BUTTON_RELEASE:
                 this.mCurrentState.handleStopRecordingSlowMotion(objArr);
                 break;
-            case 59:
+            case EVENT_SLOW_MOTION_FEEDBACK_ANIMATION_END:
                 this.mCurrentState.handleSlowMotionFeedbackAnimationEnd(objArr);
                 break;
-            case 60:
+            case EVENT_HIGH_FRAME_RATE_RECORDING_DONE:
                 this.mCurrentState.handleHighFameRateRecordingDone(objArr);
                 break;
-            case 61:
+            case EVENT_ANGLE_CHANGE_START:
                 this.mCurrentState.handleChangeAngleStart(objArr);
                 break;
-            case 62:
+            case EVENT_CAPTURE_READY:
                 this.mCurrentState.handleCaptureReady(objArr);
                 break;
-            case 63:
+            case EVENT_START_CAPTURE_COUNTDOWN:
                 this.mCurrentState.handleStartCaptureCountDown(objArr);
                 break;
-            case 64:
+            case EVENT_CAPTURE:
                 this.mCurrentState.handleCapture(objArr);
                 break;
-            case 65:
+            case EVENT_CAPTURE_BURST:
                 this.mCurrentState.handleCaptureBurst(objArr);
                 break;
-            case 66:
+            case EVENT_CAPTURE_CANCEL:
                 this.mCurrentState.handleCaptureCancel(objArr);
                 break;
-            case 67:
+            case EVENT_RECORD_READY:
                 this.mCurrentState.handleRecordReady(objArr);
                 break;
-            case 68:
+            case EVENT_START_RECORDING:
                 this.mCurrentState.handleStartRecording(objArr);
                 break;
-            case 69:
+            case EVENT_STOP_RECORDING:
                 this.mCurrentState.handleStopRecording(objArr);
                 break;
-            case 70:
+            case EVENT_RESUME_RECORDING:
                 this.mCurrentState.handleResumeRecording(objArr);
                 break;
-            case 71:
+            case EVENT_PAUSE_RECORDING:
                 this.mCurrentState.handlePauseRecording(objArr);
                 break;
-            case 72:
+            case EVENT_TRIGGER_SLOW_MOTION:
                 this.mCurrentState.handleTriggerSlowMotion(objArr);
                 break;
-            case 73:
+            case EVENT_REQUEST_UPDATE_HIGH_SENSITIVITY_FUSION_MODE:
                 this.mCurrentState.handleRequestUpdateHighSensitivityFusionMode(objArr);
                 break;
-            case 74:
+            case EVENT_ON_FUSION_CONDITION_CHANGED:
                 this.mCurrentState.handleFusionConditionChanged(objArr);
                 break;
-            case 75:
+            case EVENT_STORAGE_READY_STATE_CHANGED:
                 this.mCurrentState.handleOnStorageReadyStateChanged(objArr);
                 break;
-            case 76:
+            case EVENT_CHANGE_CAPTURING_MODE:
                 this.mCurrentState.handleChangeCapturingMode(objArr);
                 break;
-            case 77:
+            case EVENT_ZOOM_PREPARE:
                 this.mCurrentState.handlePrepareZoom(objArr);
                 break;
-            case 78:
+            case EVENT_ZOOM_PERFORM:
                 this.mCurrentState.handlePerformZoom(objArr);
                 break;
-            case 79:
+            case EVENT_ZOOM_FINISH:
                 this.mCurrentState.handleFinishZoom(objArr);
                 break;
         }
     }
 
-    public synchronized void sendStaticEvent(StateMachine$StaticEvent stateMachine$StaticEvent, Object... objArr) {
+    public synchronized void sendStaticEvent(StaticEvent staticEvent, Object... objArr) {
         if (CamLog.DEBUG) {
-            CamLog.d("invoke StaticEvent:" + stateMachine$StaticEvent + ", current state:" + this.mCurrentState);
+            CamLog.d("invoke StaticEvent:" + staticEvent + ", current state:" + this.mCurrentState);
         }
-        switch (StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$controller$StateMachine$StaticEvent[stateMachine$StaticEvent.ordinal()]) {
-            case 1:
+        switch (staticEvent) {
+            case EVENT_ON_PHOTO_STACK_INITIALIZED:
                 this.mContentsViewController = (ContentsViewController) objArr[0];
-                if (StateMachine$CaptureState.access$13700(this.mCurrentState.getCaptureState())) {
+                if (this.mCurrentState.getCaptureState().isRecording()) {
                     this.mContentsViewController.disableClick();
                 }
                 storeSavingRequestList();
                 break;
-            case 2:
-                switch (StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$view$ViewFinder$HeadUpDisplaySetupState[((ViewFinder$HeadUpDisplaySetupState) objArr[0]).ordinal()]) {
-                    case 1:
-                    case 2:
+            case EVENT_ON_HEAD_UP_DISPLAY_INITIALIZED:
+                switch ((ViewFinder.HeadUpDisplaySetupState) objArr[0]) {
+                    case PHOTO_READY:
+                    case VIDEO_READY:
                         if (!this.mViewFinder.isMessageDialogOpened()) {
                             calculateRemainStorage();
+                            break;
                         }
                         break;
-                    case 3:
+                    case VIDEO_RECORDING:
                         VideoSize videoSize = (VideoSize) this.mUserSettings.get(UserSettingKey.VIDEO_SIZE);
-                        this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_REQUEST_PREPARE_RECORDING_INDICATOR, Integer.valueOf((int) this.mLastVideoSavingRequest.mVideoStatus.maxDurationMills), Boolean.valueOf(videoSize != null && videoSize.isConstraint()), true, (VideoHdr) this.mUserSettings.get(UserSettingKey.VIDEO_HDR));
+                        this.mViewFinder.sendViewUpdateEvent(
+                                ViewFinder.ViewUpdateEvent.EVENT_REQUEST_PREPARE_RECORDING_INDICATOR,
+                                Integer.valueOf((int) this.mLastVideoSavingRequest.mVideoStatus.maxDurationMills),
+                                Boolean.valueOf(videoSize != null && videoSize.isConstraint()), true,
+                                (VideoHdr) this.mUserSettings.get(UserSettingKey.VIDEO_HDR));
                         updateRecordingProgress(0);
                         this.mCameraDeviceHandler.requestOnePreviewFrame();
                         break;
                 }
                 if (isFusionMonitoringNeeded()) {
-                    sendEvent(StateMachine$TransitterEvent.EVENT_ON_FUSION_CONDITION_CHANGED, this.mCameraDeviceHandler.getLatestFusionResult());
+                    sendEvent(TransitterEvent.EVENT_ON_FUSION_CONDITION_CHANGED,
+                            this.mCameraDeviceHandler.getLatestFusionResult());
+                    break;
                 }
                 break;
-            case 3:
+            case EVENT_ON_SCENE_MODE_CHANGED:
                 this.mCurrentState.handleOnSceneModeChanged(objArr);
                 break;
-            case 4:
+            case EVENT_ON_FACE_DETECTED:
                 this.mCurrentState.handleOnFaceDetected(objArr);
                 break;
-            case 5:
+            case EVENT_ON_OBJECT_TRACKED:
                 this.mCurrentState.handleOnObjectTracked(objArr);
                 break;
-            case 6:
+            case EVENT_ON_ORIENTATION_CHANGED:
                 this.mCurrentState.handleOnOrientationChanged(objArr);
                 break;
-            case 7:
-                this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_ON_LAZY_INITIALIZATION_TASK_RUN, new Object[0]);
+            case EVENT_ON_LAZY_INITIALIZATION_TASK_RUN:
+                this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_LAZY_INITIALIZATION_TASK_RUN,
+                        new Object[0]);
                 this.mCurrentState.handleOnLazyInitializationTaskRun(objArr);
                 break;
-            case 8:
+            case EVENT_ON_OBJECT_TRACKING_LOST:
                 this.mCurrentState.handleOnObjectLost(objArr);
                 break;
-            case 9:
+            case EVENT_ON_GESTURE_SHUTTER_SETTING_CHANGED:
                 this.mGestureShutter.handleSettingsChanged(((Boolean) objArr[0]).booleanValue());
                 break;
-            case 10:
+            case EVENT_ON_SD_PERMISSION_DISPLAY_FINISHED:
                 this.mIsSdPermissionFinished = true;
                 break;
-            case 11:
+            case EVENT_ON_PREVIEW_STARTED:
                 this.mCurrentState.handleOnPreviewStarted();
                 break;
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void showBlackScreen() {
-        this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_SHOW_BLACK_SCREEN, new Object[0]);
+        this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_SHOW_BLACK_SCREEN, new Object[0]);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void storeSavingRequestList() {
         if (CamLog.DEBUG) {
             CamLog.d("invoke mPhotoSavingRequestList.size():" + this.mPhotoSavingRequestList.size());
@@ -1064,34 +6011,41 @@ public class StateMachine {
         if (this.mPhotoSavingRequestList.isEmpty()) {
             return;
         }
-        for (RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder : this.mPhotoSavingRequestList) {
-            requestFactory$PhotoSavingRequestBuilder.setRequestId(this.mViewFinder.getRequestId(false));
+        for (RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder : this.mPhotoSavingRequestList) {
+            photoSavingRequestBuilder.setRequestId(this.mViewFinder.getRequestId(false));
             if (CamLog.DEBUG) {
-                CamLog.d("storePicture() requestId:" + requestFactory$PhotoSavingRequestBuilder.getRequestId());
+                CamLog.d("storePicture() requestId:" + photoSavingRequestBuilder.getRequestId());
             }
-            SavingRequest savingRequestCreateSavingRequest = RequestFactory.createSavingRequest(requestFactory$PhotoSavingRequestBuilder);
-            this.mStorage.requestStore(savingRequestCreateSavingRequest, savingRequestCreateSavingRequest.getStorageType(), this.mOnStoreCompletedListener);
+            SavingRequest createSavingRequest = RequestFactory.createSavingRequest(photoSavingRequestBuilder);
+            this.mStorage.requestStore(createSavingRequest, createSavingRequest.getStorageType(),
+                    this.mOnStoreCompletedListener);
         }
         this.mPhotoSavingRequestList.clear();
     }
 
-    private synchronized void changeTo(StateMachine$State stateMachine$State, Object... objArr) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private synchronized void changeTo(State state, Object... objArr) {
         if (CamLog.DEBUG) {
-            CamLog.d("invoke current:" + this.mCurrentState.getClass().getSimpleName() + ", to:" + stateMachine$State.getClass().getSimpleName());
+            CamLog.d("invoke current:" + this.mCurrentState.getClass().getSimpleName() + ", to:"
+                    + state.getClass().getSimpleName());
         }
         this.mCurrentState.exit();
-        this.mCurrentState = stateMachine$State;
-        Iterator<StateMachine$OnStateChangedListener> it = this.mOnStateChangedListenerSet.iterator();
+        this.mCurrentState = state;
+        Iterator<OnStateChangedListener> it = this.mOnStateChangedListenerSet.iterator();
         while (it.hasNext()) {
             it.next().onStateChanged(this.mCurrentState.getCaptureState(), objArr);
         }
         this.mCurrentState.entry();
     }
 
-    private void startFastCapture(FastCapture fastCapture, StateMachine$StartupAction stateMachine$StartupAction) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void startFastCapture(FastCapture fastCapture, StartupAction startupAction) {
         Rect previewRect = getPreviewRect();
-        Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity, previewRect.width() / previewRect.height(), this.mActivity.getScreenAspect());
-        PositionConverter.getInstance().init(((CapturingMode) this.mUserSettings.get(UserSettingKey.CAPTURING_MODE)).isFront(), surfaceViewRect, previewRect, PlatformCapability.getActiveArraySize(getCurrentCameraId()));
+        Rect surfaceViewRect = LayoutDependencyResolver.getSurfaceViewRect(this.mActivity,
+                (float) previewRect.width() / previewRect.height(), this.mActivity.getScreenAspect());
+        PositionConverter.getInstance().init(
+                ((CapturingMode) this.mUserSettings.get(UserSettingKey.CAPTURING_MODE)).isFront(), surfaceViewRect,
+                previewRect, PlatformCapability.getActiveArraySize(getCurrentCameraId()));
         PositionConverter.getInstance().setSurfaceSize(surfaceViewRect.width(), surfaceViewRect.height());
         PositionConverter.getInstance().setPreviewSize(previewRect.width(), previewRect.height());
         this.mActivity.requestPostLazyInitializationTaskExecute();
@@ -1099,18 +6053,19 @@ public class StateMachine {
             CamLog.e("Setup failed");
         }
         if (this.mViewFinder.isHeadUpDisplayReady() && isTutorialNeededToBeShownForCurrentMode()) {
-            changeTo(new StateMachine$StateOperationRestricted(this, null), ViewFinder$UiComponentKind.TUTORIAL);
+            changeTo(new StateOperationRestricted(), ViewFinder.UiComponentKind.TUTORIAL);
         } else if (isVideo()) {
-            changeTo(new StateMachine$StateVideoReady(this, stateMachine$StartupAction), new Object[0]);
+            changeTo(new StateVideoReady(startupAction), new Object[0]);
         } else {
-            changeTo(new StateMachine$StatePhotoReady(this, true, true, stateMachine$StartupAction), new Object[0]);
+            changeTo(new StatePhotoReady(true, true, startupAction), new Object[0]);
         }
-        switch (StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$FastCapture[fastCapture.ordinal()]) {
-            case 1:
+        switch (fastCapture) {
+            case LAUNCH_ONLY:
             default:
                 return;
-            case 2:
-                if (this.mActivity.getLaunchCondition().getExtraOperation() == LaunchCondition$ExtraOperation.LAUNCH_AND_CAPTURE) {
+            case LAUNCH_AND_CAPTURE:
+                if (this.mActivity.getLaunchCondition()
+                        .getExtraOperation() == LaunchCondition.ExtraOperation.LAUNCH_AND_CAPTURE) {
                     if (!PlatformCapability.hasDeviceError()) {
                         doFastestCapture();
                     }
@@ -1118,126 +6073,146 @@ public class StateMachine {
                     return;
                 }
                 return;
-            case 3:
+            case OFF:
                 throw new IllegalArgumentException("StateMachine.Resume:[FastCapture OFF]");
         }
     }
 
-    private void switchCamera(AnimationRequest$AnimationType animationRequest$AnimationType) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void switchCamera(AnimationRequest.AnimationType animationType) {
         if (CamLog.DEBUG) {
             CamLog.d("invoke current:" + getCurrentCapturingMode());
         }
         CapturingMode currentCapturingMode = getCurrentCapturingMode();
-        switch (StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[currentCapturingMode.ordinal()]) {
-            case 1:
+        switch (currentCapturingMode) {
+            case NORMAL:
                 currentCapturingMode = CapturingMode.FRONT_PHOTO;
                 break;
-            case 2:
+            case FRONT_PHOTO:
                 currentCapturingMode = CapturingMode.NORMAL;
                 break;
-            case 3:
-            case 8:
+            case SLOW_MOTION:
+            case VIDEO:
                 currentCapturingMode = CapturingMode.FRONT_VIDEO;
                 break;
-            case 5:
+            case SCENE_RECOGNITION:
                 currentCapturingMode = CapturingMode.SUPERIOR_FRONT;
                 break;
-            case 6:
+            case SUPERIOR_FRONT:
                 currentCapturingMode = CapturingMode.SCENE_RECOGNITION;
                 break;
-            case 7:
+            case FRONT_VIDEO:
                 currentCapturingMode = CapturingMode.VIDEO;
                 break;
         }
-        switchCamera(currentCapturingMode, animationRequest$AnimationType);
+        switchCamera(currentCapturingMode, animationType);
     }
 
-    private void switchCamera(CapturingMode capturingMode, AnimationRequest$AnimationType animationRequest$AnimationType) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void switchCamera(CapturingMode capturingMode, AnimationRequest.AnimationType animationType) {
         if (CamLog.DEBUG) {
             CamLog.d("invoke requestMode:" + capturingMode);
         }
-        this.mCameraDeviceHandler.savePreloadSettings((CapturingMode) this.mUserSettings.get(UserSettingKey.CAPTURING_MODE), this.mUserSettings, this.mLastSettings, this.mActivity.isOneShot());
+        this.mCameraDeviceHandler.savePreloadSettings(
+                (CapturingMode) this.mUserSettings.get(UserSettingKey.CAPTURING_MODE), this.mUserSettings,
+                this.mLastSettings, this.mActivity.isOneShot());
         this.mCameraDeviceHandler.releaseRecorder();
         if (isFusionMonitoringNeeded()) {
             this.mCameraDeviceHandler.stopFusionMonitoring();
-            this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_REQUEST_UPDATE_FUSION_CONDITION, (CameraParameters$FusionResult) null);
+            this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_FUSION_CONDITION,
+                    (CameraParameters.FusionResult) null);
         }
         this.mCameraDeviceHandler.stopPreviewSynchronized();
         this.mCameraDeviceHandler.closeCamera();
-        changeModeTo(capturingMode, animationRequest$AnimationType);
+        changeModeTo(capturingMode, animationType);
         requestResizeEvf(capturingMode, false);
-        this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_ON_CAPTURING_MODE_CHANGED, capturingMode, false, animationRequest$AnimationType);
+        this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_CAPTURING_MODE_CHANGED, capturingMode,
+                false, animationType);
         sendResearchSameActivityEvent(getCurrentCapturingMode());
     }
 
-    private void changeModeTo(CapturingMode capturingMode, AnimationRequest$AnimationType animationRequest$AnimationType) {
+    private void changeModeTo(CapturingMode capturingMode, AnimationRequest.AnimationType animationType) {
         if (CamLog.DEBUG) {
             CamLog.d("invoke request:" + capturingMode + ", current:" + getCurrentCapturingMode());
         }
-        this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_ON_CAPTURING_MODE_CHANGING, new Object[0]);
+        this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_CAPTURING_MODE_CHANGING,
+                new Object[0]);
         doStopObjectTracking();
         this.mUserSettings.resetTempParameters();
         this.mViewFinder.clearMessageDialog();
-        this.mCameraDeviceHandler.savePreloadSettings((CapturingMode) this.mUserSettings.get(UserSettingKey.CAPTURING_MODE), this.mUserSettings, this.mLastSettings, this.mActivity.isOneShot());
+        this.mCameraDeviceHandler.savePreloadSettings(
+                (CapturingMode) this.mUserSettings.get(UserSettingKey.CAPTURING_MODE), this.mUserSettings,
+                this.mLastSettings, this.mActivity.isOneShot());
         if (getCurrentCapturingMode().isFront() == capturingMode.isFront()) {
             setCurrentCapturingMode(capturingMode);
-            changeTo(new StateMachine$StateWaitingEvfPreparedByModeChange(this, null), new Object[0]);
-            this.mChangeCameraModeTask = new StateMachine$ChangeCameraModeTask(this, capturingMode, animationRequest$AnimationType, null);
+            changeTo(new StateWaitingEvfPreparedByModeChange(), new Object[0]);
+            this.mChangeCameraModeTask = new ChangeCameraModeTask(capturingMode, animationType);
             this.mHandler.post(this.mChangeCameraModeTask);
             return;
         }
         setCurrentCapturingMode(capturingMode);
-        changeTo(new StateMachine$StateCameraSwitching(this, this.mActivity.prepareCameraDeviceHandler(FastCapture.LAUNCH_ONLY, capturingMode, this.mUserSettings), FastCapture.LAUNCH_ONLY, null), new Object[0]);
+        changeTo(new StateCameraSwitching(
+                this.mActivity.prepareCameraDeviceHandler(FastCapture.LAUNCH_ONLY, capturingMode, this.mUserSettings),
+                FastCapture.LAUNCH_ONLY), new Object[0]);
         this.mViewFinder.notifyOnEvfPrepared();
     }
 
     private void doFastestCapture() {
         if (!isStorageWritable(getCurrentStorage())) {
-            changeTo(new StateMachine$StateWarning(this, null), new Object[0]);
+            changeTo(new StateWarning(), new Object[0]);
             return;
         }
         pauseAudioPlaybackForCapture();
-        switch (StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$device$CameraDeviceHandler$PreProcessState[this.mCameraDeviceHandler.getPreProcessState().ordinal()]) {
-            case 1:
-                changeTo(new StateMachine$StatePhotoCapture(this, null), new Object[0]);
+        switch (this.mCameraDeviceHandler.getPreProcessState()) {
+            case PRE_SCAN_DONE:
+                changeTo(new StatePhotoCapture(), new Object[0]);
                 return;
-            case 2:
-                changeTo(new StateMachine$StatePhotoCapture(this, null), new Object[0]);
+            case PRE_CAPTURE_STARTED:
+                changeTo(new StatePhotoCapture(), new Object[0]);
                 return;
-            case 3:
-                changeTo(new StateMachine$StatePhotoCapture(this, null), new Object[0]);
+            case PRE_CAPTURE_DONE:
+                changeTo(new StatePhotoCapture(), new Object[0]);
                 return;
-            case 4:
-                changeTo(new StateMachine$StatePhotoCapture(this, null), new Object[0]);
+            case PRE_SCAN_STARTED:
+                changeTo(new StatePhotoCapture(), new Object[0]);
                 return;
-            case 5:
-            case 6:
+            case NOT_STARTED:
+            case PRE_CAPTURE_RELEASED:
                 return;
-            case 7:
-                changeTo(new StateMachine$StatePhotoCapture(this, null), new Object[0]);
+            case PRE_SHUTTER_DONE:
+                changeTo(new StatePhotoCapture(), new Object[0]);
                 return;
             default:
                 throw new IllegalStateException("Un-Expected state:" + this.mCameraDeviceHandler.getPreProcessState());
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isTouchAeEnabled() {
-        if (PlatformCapability.isTouchAeSupported(getCurrentCameraId()) && this.mUserSettings.get(UserSettingKey.TOUCH_CAPTURE) != TouchCapture.ON) {
-            return (getCurrentCapturingMode() == CapturingMode.SCENE_RECOGNITION || getCurrentCapturingMode() == CapturingMode.SUPERIOR_FRONT || getCurrentCapturingMode() == CapturingMode.NORMAL) && this.mUserSettings.get(UserSettingKey.TOUCH_INTENTION) == TouchIntention.FOCUS_AND_EXPOSURE;
+        if (PlatformCapability.isTouchAeSupported(getCurrentCameraId())
+                && this.mUserSettings.get(UserSettingKey.TOUCH_CAPTURE) != TouchCapture.ON) {
+            return (getCurrentCapturingMode() == CapturingMode.SCENE_RECOGNITION
+                    || getCurrentCapturingMode() == CapturingMode.SUPERIOR_FRONT
+                    || getCurrentCapturingMode() == CapturingMode.NORMAL)
+                    && this.mUserSettings.get(UserSettingKey.TOUCH_INTENTION) == TouchIntention.FOCUS_AND_EXPOSURE;
         }
         return false;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void doChangeSelectedFace(Point point) {
         this.mObjectTracking.stop();
-        this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED_BY_SELECT_FACE, new Object[0]);
-        this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_ON_FACE_DETECTION_STARTED, new Object[0]);
+        this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED_BY_SELECT_FACE,
+                new Object[0]);
+        this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_FACE_DETECTION_STARTED, new Object[0]);
         this.mCameraDeviceHandler.setSelectedFacePosition(point.x, point.y);
         if (isTouchAeEnabled()) {
-            this.mCameraDeviceHandler.setMeteringAreaAndCommit(null, (Metering) this.mUserSettings.get(UserSettingKey.METERING));
+            this.mCameraDeviceHandler.setMeteringAreaAndCommit(null,
+                    (Metering) this.mUserSettings.get(UserSettingKey.METERING));
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean startAutoFocus() {
         if (this.mActivity != null) {
             if (!this.mStorage.isStorageActivated() || !isStorageWritable(getCurrentStorage())) {
@@ -1253,6 +6228,7 @@ public class StateMachine {
         return true;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void cancelAutoFocus(boolean z) {
         if (z) {
             this.mCameraDeviceHandler.resetFocusModeAndCommit();
@@ -1262,92 +6238,173 @@ public class StateMachine {
         this.mCameraDeviceHandler.cancelAutoFocus();
     }
 
-    private void doCapture(RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder) {
-        this.mLastPhotoSavingRequest = requestFactory$PhotoSavingRequestBuilder;
+    /* JADX INFO: Access modifiers changed from: private */
+    private void doCapture(RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder) {
+        this.mLastPhotoSavingRequest = photoSavingRequestBuilder;
         if (this.mLastPhotoSavingRequest != null) {
             this.mCameraDeviceHandler.applySavingRequest(this.mLastPhotoSavingRequest);
             this.mViewFinder.showDisplayFlashScreen();
             this.mCameraDeviceHandler.takePicture(this.mLastPhotoSavingRequest);
-            this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_REQUEST_UPDATE_SETTING_CHANGE_ACCEPTABILITY, Boolean.valueOf(isSettingChangeAcceptable()));
+            this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_SETTING_CHANGE_ACCEPTABILITY,
+                    Boolean.valueOf(isSettingChangeAcceptable()));
             sendResearchCaptureEvents();
         }
     }
 
     private void sendResearchCaptureEvents() {
         LocalResearchUtil.getInstance().sendEventSettings();
-        LocalResearchUtil.getInstance().sendSemiAutoSettingValues(Event$Category.SETTINGS_PHOTO);
+        LocalResearchUtil.getInstance().sendSemiAutoSettingValues(Event.Category.SETTINGS_PHOTO);
         ResearchUtil.getInstance().setOrientation(this.mLastPhotoSavingRequest.mCommonStatus.orientation);
-        LocalResearchUtil.getInstance().sendSemiAutoSettingValues(Event$Category.SETTINGS_PHOTO);
+        LocalResearchUtil.getInstance().sendSemiAutoSettingValues(Event.Category.SETTINGS_PHOTO);
         ResearchUtil.getInstance().setTimeCaptureStart();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void doCaptureWhileRecording() {
-        RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilderCreatePhotoSavingRequest = createPhotoSavingRequest(SavingTaskManager$SavedFileType.PHOTO_DURING_REC);
-        if (requestFactory$PhotoSavingRequestBuilderCreatePhotoSavingRequest != null) {
+        RequestFactory.PhotoSavingRequestBuilder createPhotoSavingRequest = createPhotoSavingRequest(
+                SavingTaskManager.SavedFileType.PHOTO_DURING_REC);
+        if (createPhotoSavingRequest != null) {
             if (this.mContentsViewController != null) {
                 this.mContentsViewController.stopAnimation(false);
             }
             this.mViewFinder.onShutterDone(true);
-            this.mCameraDeviceHandler.captureWhileRecording(requestFactory$PhotoSavingRequestBuilderCreatePhotoSavingRequest);
+            this.mCameraDeviceHandler.captureWhileRecording(createPhotoSavingRequest);
         }
     }
 
-    private void doStartRecording(boolean z) {
-        SlowMotion slowMotion;
+    /* JADX INFO: Access modifiers changed from: private */
+    public void doStartRecording(boolean bySideSense) {
+        // line 7512-7513
         if (this.mContentsViewController != null) {
             this.mContentsViewController.disableClick();
         }
+
+        // line 7516-7520
         VideoSize videoSize = (VideoSize) this.mUserSettings.get(UserSettingKey.VIDEO_SIZE);
-        if (getCurrentCapturingMode() == CapturingMode.SLOW_MOTION && (slowMotion = (SlowMotion) getUserSetting().get(UserSettingKey.SLOW_MOTION)) == SlowMotion.STANDARD_SLOW_MOTION) {
-            videoSize = slowMotion.getVideoSize();
+        if (getCurrentCapturingMode() == CapturingMode.SLOW_MOTION) {
+            SlowMotion slowMotion = (SlowMotion) getUserSetting().get(UserSettingKey.SLOW_MOTION);
+            if (slowMotion == SlowMotion.STANDARD_SLOW_MOTION) {
+                videoSize = slowMotion.getVideoSize();
+            }
         }
+
+        // line 7522-7525
         VideoHdr videoHdr = (VideoHdr) this.mUserSettings.get(UserSettingKey.VIDEO_HDR);
-        RecordingProfile recordingProfileBuild = new RecordingProfile$Builder().videoSize(videoSize).setOneShot(this.mActivity.isOneShot()).videoHdr(videoHdr).build();
-        this.mLastVideoSavingRequest = createVideoSavingRequest(recordingProfileBuild);
+        RecordingProfile recordingProfile = new RecordingProfile.Builder()
+                .videoSize(videoSize)
+                .setOneShot(this.mActivity.isOneShot())
+                .videoHdr(videoHdr)
+                .build();
+
+        // line 7527
+        this.mLastVideoSavingRequest = createVideoSavingRequest(recordingProfile);
+
+        // line 7531
         this.mViewFinder.setRecordingOrientation(this.mActivity.getOrientation());
-        boolean z2 = true;
+
+        // line 7534
+        boolean recordingStarted = false;
         if (this.mLastVideoSavingRequest != null) {
-            boolean z3 = (getCurrentCapturingMode() != CapturingMode.SLOW_MOTION && this.mUserSettings.get(UserSettingKey.VIDEO_SIZE) == VideoSize.MMS) || this.mUserSettings.isLimitForSizeOrDuration();
-            this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_REQUEST_PREPARE_RECORDING_INDICATOR, Integer.valueOf((int) this.mLastVideoSavingRequest.mVideoStatus.maxDurationMills), Boolean.valueOf(z3), Boolean.valueOf((z3 || this.mUserSettings.get(UserSettingKey.CAPTURING_MODE) == CapturingMode.SLOW_MOTION) ? false : true), videoHdr);
+            // line 7538-7541
+            boolean isMmsLimited;
+            if (getCurrentCapturingMode() == CapturingMode.SLOW_MOTION) {
+                isMmsLimited = false;
+            } else {
+                isMmsLimited = this.mUserSettings.get(UserSettingKey.VIDEO_SIZE) == VideoSize.MMS;
+            }
+
+            // line 7544
+            boolean showLimitIndicator;
+            if (!isMmsLimited) {
+                showLimitIndicator = this.mUserSettings.isLimitForSizeOrDuration();
+            } else {
+                showLimitIndicator = true;
+            }
+
+            // line 7546-7547
+            boolean showProgressBar = false;
+            if (!showLimitIndicator
+                    && this.mUserSettings.get(UserSettingKey.CAPTURING_MODE) != CapturingMode.SLOW_MOTION) {
+                showProgressBar = true;
+            }
+
+            // line 7550-7554
+            this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_REQUEST_PREPARE_RECORDING_INDICATOR,
+                    Integer.valueOf((int) this.mLastVideoSavingRequest.mVideoStatus.maxDurationMills),
+                    Boolean.valueOf(showLimitIndicator),
+                    Boolean.valueOf(showProgressBar),
+                    videoHdr);
+
             try {
-                switch (StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion[((SlowMotion) this.mUserSettings.get(UserSettingKey.SLOW_MOTION)).ordinal()]) {
-                    case 2:
-                    case 3:
-                        this.mCameraDeviceHandler.updateRecorder(this.mLastVideoSavingRequest, shouldPlayShutterSound());
-                        break;
-                    default:
-                        this.mCameraDeviceHandler.prepareRecorder(this.mLastVideoSavingRequest, this.mRecorderListener, this.mOnSuperSlowRecordingFinishedListener, shouldPlayShutterSound(), recordingProfileBuild, this.mStorage.createNotifier(getCurrentStorage(), 10));
-                        break;
+                // line 7561 - ordinal 2 and 3 map to updateRecorder
+                SlowMotion slowMotionSetting = (SlowMotion) this.mUserSettings.get(UserSettingKey.SLOW_MOTION);
+                if (slowMotionSetting == SlowMotion.SUPER_SLOW_MOTION
+                        || slowMotionSetting == SlowMotion.STANDARD_SLOW_MOTION) {
+                    // line 7564-7565
+                    this.mCameraDeviceHandler.updateRecorder(this.mLastVideoSavingRequest, shouldPlayShutterSound());
+                } else {
+                    // line 7569-7575
+                    Storage.StorageWriteNotifier notifier = this.mStorage.createNotifier(getCurrentStorage(), 10);
+                    this.mCameraDeviceHandler.prepareRecorder(
+                            this.mLastVideoSavingRequest,
+                            this.mRecorderListener,
+                            this.mOnSuperSlowRecordingFinishedListener,
+                            shouldPlayShutterSound(),
+                            recordingProfile,
+                            notifier);
                 }
+
+                // line 7581
                 this.mCameraDeviceHandler.startRecording();
+
+                // line 7583-7586
                 if (isSettingChangeAcceptable()) {
-                    this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_REQUEST_UPDATE_SETTING_CHANGE_ACCEPTABILITY, false);
+                    this.mViewFinder.sendViewUpdateEvent(
+                            ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_SETTING_CHANGE_ACCEPTABILITY,
+                            Boolean.FALSE);
                 }
+
+                // line 7590
                 updateDateTaken(this.mLastVideoSavingRequest);
+
+                // line 7593
                 this.mRecorderListener.setSavingRequestBuilder(this.mLastVideoSavingRequest);
+
+                recordingStarted = true;
             } catch (RuntimeException e) {
+                // line 7599
                 CamLog.w("Start recording failed.", e);
+
+                // line 7600-7601
                 if (this.mContentsViewController != null) {
                     this.mContentsViewController.enableClick();
                 }
-                if (isCurrentStorageExternal() && !isStorageWritable(Storage$StorageType.EXTERNAL_CARD)) {
-                    this.mViewFinder.showMessageDialog(DialogId.COULD_NOT_START_RECORDING, new Object[0]);
-                    changeTo(new StateMachine$StateVideoReady(this), new Object[0]);
-                    return;
-                } else {
-                    this.mViewFinder.showMessageDialog(DialogId.ERROR_IN_USE_BY_ANOTHER_APPLICATION, new Object[0]);
-                    ResearchUtil.getInstance().sendCameraNotAvailableEvent();
-                    z2 = false;
+
+                // line 7604-7607
+                if (isCurrentStorageExternal()) {
+                    if (!isStorageWritable(Storage.StorageType.EXTERNAL_CARD)) {
+                        this.mViewFinder.showMessageDialog(DialogId.COULD_NOT_START_RECORDING, new Object[0]);
+                        changeTo(new StateVideoReady(), new Object[0]);
+                        return;
+                    }
                 }
+
+                // line 7612-7613
+                this.mViewFinder.showMessageDialog(DialogId.ERROR_IN_USE_BY_ANOTHER_APPLICATION, new Object[0]);
+                ResearchUtil.getInstance().sendCameraNotAvailableEvent();
             }
-        } else {
-            z2 = false;
         }
-        ResearchUtil.getInstance().setRecordBySideSense(z);
-        if (z2) {
+
+        // line 7617
+        ResearchUtil.getInstance().setRecordBySideSense(bySideSense);
+
+        // line 7620-7622
+        if (recordingStarted) {
             transitionToRecordingState(false);
         } else {
-            changeTo(new StateMachine$StateWarning(this, null), new Object[0]);
+            changeTo(new StateWarning(), new Object[0]);
         }
     }
 
@@ -1360,55 +6417,66 @@ public class StateMachine {
             this.mCameraDeviceHandler.requestOnePreviewFrame();
         }
         if (this.mActivity != null) {
-            int i = StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[getCurrentCapturingMode().ordinal()];
-            if (i == 3) {
+            CapturingMode _capMode = getCurrentCapturingMode();
+            if (_capMode == CapturingMode.SLOW_MOTION) {
                 this.mHighFrameRateVideoRecordingCountInSuperSlowMotion = 0;
-                switch (StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion[((SlowMotion) getUserSetting().get(UserSettingKey.SLOW_MOTION)).ordinal()]) {
-                    case 1:
-                        changeTo(new StateMachine$StateVideoRecording(this, (StateMachine$1) null), new Object[0]);
-                        break;
-                    case 2:
-                        changeTo(new StateMachine$StateLowFrameRateVideoRecordingInSuperSlowMotion(this), new Object[0]);
-                        break;
-                    case 3:
-                        changeTo(new StateMachine$StateHighFrameRateVideoRecordingInSuperSlowMotion(this), new Object[0]);
+                switch ((com.sonyericsson.android.camera.configuration.parameters.SlowMotion) getUserSetting()
+                        .get(UserSettingKey.SLOW_MOTION)) {
+                    case STANDARD_SLOW_MOTION:
+                        changeTo(new StateVideoRecording(), new Object[0]);
+                        return;
+                    case SUPER_SLOW_MOTION:
+                        changeTo(new StateLowFrameRateVideoRecordingInSuperSlowMotion(), new Object[0]);
+                        return;
+                    case SUPER_SLOW_SHOT:
+                        changeTo(new StateHighFrameRateVideoRecordingInSuperSlowMotion(), new Object[0]);
                         this.mViewFinder.startSlowMotionFeedbackAnimation();
-                        break;
+                        return;
+                    default:
+                        return;
                 }
             }
-            switch (i) {
-                case 7:
-                case 8:
-                    changeTo(new StateMachine$StateVideoRecording(this, false), new Object[0]);
-                    break;
+            switch (_capMode) {
+                case FRONT_VIDEO:
+                case VIDEO:
+                    changeTo(new StateVideoRecording(false), new Object[0]);
+                    return;
+                default:
+                    return;
             }
         }
     }
 
-    private void requestChangeModeTo(CapturingMode capturingMode, AnimationRequest$AnimationType animationRequest$AnimationType) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void requestChangeModeTo(CapturingMode capturingMode, AnimationRequest.AnimationType animationType) {
         if (getCurrentCapturingMode() == capturingMode) {
             if (CamLog.DEBUG) {
-                throw new IllegalArgumentException("The specified mode is already set, mode:" + getCurrentCapturingMode().name());
+                throw new IllegalArgumentException(
+                        "The specified mode is already set, mode:" + getCurrentCapturingMode().name());
             }
             return;
         }
-        switch (StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()]) {
-            case 1:
-            case 2:
-            case 3:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
+        switch (capturingMode) {
+            case NORMAL:
+            case FRONT_PHOTO:
+            case SLOW_MOTION:
+            case SCENE_RECOGNITION:
+            case SUPERIOR_FRONT:
+            case FRONT_VIDEO:
+            case VIDEO:
                 sendResearchSameActivityEvent(capturingMode);
-                this.mCameraDeviceHandler.savePreloadSettings((CapturingMode) this.mUserSettings.get(UserSettingKey.CAPTURING_MODE), this.mUserSettings, this.mLastSettings, this.mActivity.isOneShot());
+                this.mCameraDeviceHandler.savePreloadSettings(
+                        (CapturingMode) this.mUserSettings.get(UserSettingKey.CAPTURING_MODE), this.mUserSettings,
+                        this.mLastSettings, this.mActivity.isOneShot());
                 if (isFusionMonitoringNeeded()) {
                     this.mCameraDeviceHandler.stopFusionMonitoring();
-                    this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_REQUEST_UPDATE_FUSION_CONDITION, (CameraParameters$FusionResult) null);
+                    this.mViewFinder.sendViewUpdateEvent(
+                            ViewFinder.ViewUpdateEvent.EVENT_REQUEST_UPDATE_FUSION_CONDITION,
+                            (CameraParameters.FusionResult) null);
                 }
-                changeModeTo(capturingMode, animationRequest$AnimationType);
+                changeModeTo(capturingMode, animationType);
                 return;
-            case 4:
+            case UNKNOWN:
             default:
                 return;
         }
@@ -1418,14 +6486,15 @@ public class StateMachine {
         return this.mIsVideoRecording;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void updateFusionModeSetting(FusionMode fusionMode) {
         FusionMode fusionMode2 = (FusionMode) this.mUserSettings.get(UserSettingKey.FUSION_MODE);
         if (fusionMode == fusionMode2) {
             return;
         }
-        int i = StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[getCurrentCapturingMode().ordinal()];
-        if (i != 1) {
-            if (i != 8) {
+        CapturingMode _capMode2 = getCurrentCapturingMode();
+        if (_capMode2 != CapturingMode.NORMAL) {
+            if (_capMode2 != CapturingMode.VIDEO) {
                 return;
             }
             this.mUserSettings.set(fusionMode);
@@ -1435,23 +6504,43 @@ public class StateMachine {
         Iso iso = (Iso) this.mUserSettings.get(UserSettingKey.ISO);
         this.mUserSettings.set(fusionMode);
         if (iso != this.mUserSettings.get(UserSettingKey.ISO)) {
-            this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_ON_ISO_CHANGED_BY_FUSION, new Object[0]);
+            this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ISO_CHANGED_BY_FUSION,
+                    new Object[0]);
         }
         LocalResearchUtil.getInstance().setSettingsValue(fusionMode2, fusionMode, getCurrentCapturingMode());
     }
 
     public boolean canHandleWearableCaptureRequest() {
-        return StateMachine$CaptureState.access$14200(this.mCurrentState.mCaptureState);
+        return this.mCurrentState.mCaptureState.canHandleWearableCaptureRequest();
     }
 
     public boolean canHandleAsynchronizedTask() {
-        return StateMachine$CaptureState.access$14300(this.mCurrentState.mCaptureState);
+        return this.mCurrentState.mCaptureState.canHandleAsynchronizedTask();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void removeStartRecordingTask() {
         this.mHandler.removeCallbacks(this.mStartRecordingTask);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    public class StartRecordingTask implements Runnable {
+        private final boolean mBySideSense;
+
+        public StartRecordingTask(boolean z) {
+            this.mBySideSense = z;
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke StartRecordingTask");
+            }
+            StateMachine.this.doStartRecording(this.mBySideSense);
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
     private void updateRecordingProgress(int i) {
         if (this.mViewFinder == null || !this.mViewFinder.isSetupHeadupDisplayInvoked()) {
             return;
@@ -1459,53 +6548,61 @@ public class StateMachine {
         if (this.mActivity != null) {
             this.mActivity.disableAutoPowerOffTimer();
         }
-        this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_ON_RECORDING_PROGRESS, Integer.valueOf(i));
+        this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_RECORDING_PROGRESS,
+                Integer.valueOf(i));
     }
 
-    private Event$StopOperation getCurrentRecordingStopOperation() {
+    private Event.StopOperation getCurrentRecordingStopOperation() {
         if (this.mActivity.isAlreadyHighTemperature()) {
-            return Event$StopOperation.THERMAL_STOP;
+            return Event.StopOperation.THERMAL_STOP;
         }
         if (this.mActivity.isAlreadyBcl()) {
-            return Event$StopOperation.LOWBATTERY_STOP;
+            return Event.StopOperation.LOWBATTERY_STOP;
         }
-        return Event$StopOperation.USER_STOP;
+        return Event.StopOperation.USER_STOP;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void doStopRecording(boolean z) {
         PerfLog.STOP_REC.begin();
         if (this.mContentsViewController != null) {
             this.mContentsViewController.enableClick();
         }
-        Optional<Long> optionalStopRecording = this.mCameraDeviceHandler.stopRecording(z);
-        if (optionalStopRecording.isPresent()) {
+        Optional<Long> stopRecording = this.mCameraDeviceHandler.stopRecording(z);
+        if (stopRecording.isPresent()) {
             ResearchUtil.getInstance().setOrientation(this.mLastVideoSavingRequest.mCommonStatus.orientation);
             LocalResearchUtil.getInstance().sendEventSettings();
-            LocalResearchUtil.getInstance().sendSemiAutoSettingValues(Event$Category.SETTINGS_VIDEO);
-            LocalResearchUtil.getInstance().sendRecordingEvent(Event$CaptureOperation.RECORDING, getCurrentRecordingStopOperation(), optionalStopRecording.get().intValue(), false);
+            LocalResearchUtil.getInstance().sendSemiAutoSettingValues(Event.Category.SETTINGS_VIDEO);
+            LocalResearchUtil.getInstance().sendRecordingEvent(Event.CaptureOperation.RECORDING,
+                    getCurrentRecordingStopOperation(), stopRecording.get().intValue(), false);
         }
         this.mViewFinder.onCaptureDone();
-        if (VideoStabilizer.isIntelligentActive((VideoStabilizer) this.mUserSettings.get(UserSettingKey.VIDEO_STABILIZER))) {
+        if (VideoStabilizer
+                .isIntelligentActive((VideoStabilizer) this.mUserSettings.get(UserSettingKey.VIDEO_STABILIZER))) {
             this.mLastVideoSavingRequest.setRequestId(this.mViewFinder.getRequestId(false));
         }
         PerfLog.STOP_REC.end();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void doPauseRecording() {
         this.mCameraDeviceHandler.pauseRecording();
-        changeTo(new StateMachine$StateVideoRecordingPausing(this, null), new Object[0]);
+        changeTo(new StateVideoRecordingPausing(), new Object[0]);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void doResumeRecording() {
         this.mCameraDeviceHandler.resumeRecording();
-        changeTo(new StateMachine$StateVideoRecording(this, (StateMachine$1) null), new Object[0]);
+        changeTo(new StateVideoRecording(), new Object[0]);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void doHandleRecordingError() {
         this.mViewFinder.showMessageDialog(DialogId.ERROR_UNKNOWN, new Object[0]);
-        changeTo(new StateMachine$StateWarning(this, null), new Object[0]);
+        changeTo(new StateWarning(), new Object[0]);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private int getOrientation() {
         int normalizedRotation = RotationUtil.getNormalizedRotation(this.mActivity.getSensorOrientationDegree());
         CameraInfo cameraInfo = this.mCameraDeviceHandler.getCameraInfo();
@@ -1514,84 +6611,115 @@ public class StateMachine {
             CamLog.d("ORIENTATION:cameraOrientation", RotationUtil.orientationToString(cameraInfo.orientation));
             CamLog.d("ORIENTATION:cameraFacing:" + cameraInfo.facing);
         }
-        switch (StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$device$CameraInfo$CameraId[cameraInfo.facing.ordinal()]) {
+        switch (cameraInfo.facing) {
+            case BACK:
+                return (cameraInfo.orientation + normalizedRotation) % 360;
+            case FRONT:
+                return ((cameraInfo.orientation + 360) - normalizedRotation) % 360;
+            default:
+                return (cameraInfo.orientation + normalizedRotation) % 360;
         }
-        return (cameraInfo.orientation + normalizedRotation) % 360;
     }
 
-    private TakenStatusCommon createTakenStatusCommon(SavingTaskManager$SavedFileType savingTaskManager$SavedFileType, Rect rect, String str, String str2, String str3) {
-        boolean zShouldAddToMediaStore;
+    private TakenStatusCommon createTakenStatusCommon(SavingTaskManager.SavedFileType savedFileType, Rect rect,
+            String str, String str2, String str3) {
         boolean z;
-        long jCurrentTimeMillis = System.currentTimeMillis();
+        boolean z2;
+        long currentTimeMillis = System.currentTimeMillis();
         int orientation = getOrientation();
-        Location currentLocation = (!this.mActivity.isOneShot() || PermissionsUtil.areCallerGeoPermissionsGranted(this.mActivity)) ? this.mActivity.getGeoTagManager().getCurrentLocation() : null;
-        switch (StateMachine$8.$SwitchMap$com$sonyericsson$cameracommon$storage$SavingTaskManager$SavedFileType[savingTaskManager$SavedFileType.ordinal()]) {
-            case 1:
-                zShouldAddToMediaStore = true;
-                z = zShouldAddToMediaStore;
+        Location currentLocation = (!this.mActivity.isOneShot()
+                || PermissionsUtil.areCallerGeoPermissionsGranted(this.mActivity))
+                        ? this.mActivity.getGeoTagManager().getCurrentLocation()
+                        : null;
+        switch (savedFileType) {
+            case BURST:
+                z = true;
+                z2 = z;
                 break;
-            case 2:
-                zShouldAddToMediaStore = this.mActivity.shouldAddToMediaStore();
-                z = zShouldAddToMediaStore;
+            case VIDEO:
+                z = this.mActivity.shouldAddToMediaStore();
+                z2 = z;
                 break;
-            case 3:
-                zShouldAddToMediaStore = this.mActivity.shouldAddToMediaStore();
-                z = zShouldAddToMediaStore;
+            case PHOTO:
+                z = this.mActivity.shouldAddToMediaStore();
+                z2 = z;
                 break;
             default:
-                z = false;
+                z2 = false;
                 break;
         }
-        return new TakenStatusCommon(jCurrentTimeMillis, orientation, currentLocation, rect.width(), rect.height(), str, str2, savingTaskManager$SavedFileType, str3, "", z, false);
+        return new TakenStatusCommon(currentTimeMillis, orientation, currentLocation, rect.width(), rect.height(), str,
+                str2, savedFileType, str3, "", z2, false);
     }
 
-    public RequestFactory$PhotoSavingRequestBuilder createPhotoSavingRequest(SavingTaskManager$SavedFileType savingTaskManager$SavedFileType) {
-        TakenStatusPhoto$Facing takenStatusPhoto$Facing;
-        if (savingTaskManager$SavedFileType != SavingTaskManager$SavedFileType.BURST && savingTaskManager$SavedFileType != SavingTaskManager$SavedFileType.PHOTO && savingTaskManager$SavedFileType != SavingTaskManager$SavedFileType.PHOTO_DURING_REC) {
-            throw new IllegalArgumentException("Unexpected type:" + savingTaskManager$SavedFileType);
+    /*
+     * renamed from: com.sonyericsson.android.camera.controller.StateMachine$8,
+     * reason: invalid class name
+     */
+
+    public RequestFactory.PhotoSavingRequestBuilder createPhotoSavingRequest(
+            SavingTaskManager.SavedFileType savedFileType) {
+        TakenStatusPhoto.Facing facing;
+        if (savedFileType != SavingTaskManager.SavedFileType.BURST
+                && savedFileType != SavingTaskManager.SavedFileType.PHOTO
+                && savedFileType != SavingTaskManager.SavedFileType.PHOTO_DURING_REC) {
+            throw new IllegalArgumentException("Unexpected type:" + savedFileType);
         }
         Resolution resolution = (Resolution) this.mUserSettings.get(UserSettingKey.RESOLUTION);
         if (getCurrentCapturingMode().isFront()) {
-            takenStatusPhoto$Facing = TakenStatusPhoto$Facing.FRONT;
+            facing = TakenStatusPhoto.Facing.FRONT;
         } else {
-            takenStatusPhoto$Facing = TakenStatusPhoto$Facing.BACK;
+            facing = TakenStatusPhoto.Facing.BACK;
         }
-        RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder = new RequestFactory$PhotoSavingRequestBuilder(createTakenStatusCommon(savingTaskManager$SavedFileType, resolution.getPictureRect(), "image/jpeg", ".JPG", null), new TakenStatusPhoto(takenStatusPhoto$Facing), false);
-        requestFactory$PhotoSavingRequestBuilder.addCallback(this.mOnStoreCompletedListener);
-        requestFactory$PhotoSavingRequestBuilder.setOneshot(this.mActivity.isOneShotPhoto());
-        if (savingTaskManager$SavedFileType == SavingTaskManager$SavedFileType.BURST) {
-            requestFactory$PhotoSavingRequestBuilder.setSomcType(129);
-            requestFactory$PhotoSavingRequestBuilder.setStorageType(Storage$StorageType.INTERNAL);
+        RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder = new RequestFactory.PhotoSavingRequestBuilder(
+                createTakenStatusCommon(savedFileType, resolution.getPictureRect(),
+                        MediaSavingConstants.MEDIA_TYPE_JPEG_MIME, MediaSavingConstants.MEDIA_TYPE_JPEG_EXT, null),
+                new TakenStatusPhoto(facing), false);
+        photoSavingRequestBuilder.addCallback(this.mOnStoreCompletedListener);
+        photoSavingRequestBuilder.setOneshot(this.mActivity.isOneShotPhoto());
+        if (savedFileType == SavingTaskManager.SavedFileType.BURST) {
+            photoSavingRequestBuilder.setSomcType(129);
+            photoSavingRequestBuilder.setStorageType(Storage.StorageType.INTERNAL);
         } else {
-            requestFactory$PhotoSavingRequestBuilder.setStorageType(getCurrentStorage());
+            photoSavingRequestBuilder.setStorageType(getCurrentStorage());
         }
-        requestFactory$PhotoSavingRequestBuilder.setExtraOutput(this.mActivity.getExtraOutput());
-        return requestFactory$PhotoSavingRequestBuilder;
+        photoSavingRequestBuilder.setExtraOutput(this.mActivity.getExtraOutput());
+        return photoSavingRequestBuilder;
     }
 
-    private RequestFactory$VideoSavingRequestBuilder createVideoSavingRequest(RecordingProfile recordingProfile) {
-        SlowMotion slowMotion;
+    /* JADX INFO: Access modifiers changed from: private */
+    private RequestFactory.VideoSavingRequestBuilder createVideoSavingRequest(RecordingProfile recordingProfile) {
+        com.sonyericsson.android.camera.configuration.parameters.SlowMotion slowMotion;
         VideoSize videoSize = (VideoSize) this.mUserSettings.get(UserSettingKey.VIDEO_SIZE);
-        if (getCurrentCapturingMode() == CapturingMode.SLOW_MOTION && (slowMotion = (SlowMotion) getUserSetting().get(UserSettingKey.SLOW_MOTION)) == SlowMotion.STANDARD_SLOW_MOTION) {
+        if (getCurrentCapturingMode() == CapturingMode.SLOW_MOTION
+                && (slowMotion = (com.sonyericsson.android.camera.configuration.parameters.SlowMotion) getUserSetting()
+                        .get(UserSettingKey.SLOW_MOTION)) == com.sonyericsson.android.camera.configuration.parameters.SlowMotion.STANDARD_SLOW_MOTION) {
             videoSize = slowMotion.getVideoSize();
         }
-        MaxVideoSize maxVideoSize = this.mUserSettings.getMaxVideoSize(this.mStorage, getCurrentStorage(), recordingProfile);
-        long jMin = Math.min(maxVideoSize.getMaxFileSize(), StorageUtil.getStorageMaximumFileSize(this.mActivity, getCurrentStorage()));
+        MaxVideoSize maxVideoSize = this.mUserSettings.getMaxVideoSize(this.mStorage, getCurrentStorage(),
+                recordingProfile);
+        long min = Math.min(maxVideoSize.getMaxFileSize(),
+                StorageUtil.getStorageMaximumFileSize(this.mActivity, getCurrentStorage()));
         long maxDuration = maxVideoSize.getMaxDuration();
         String mime = recordingProfile.getMime();
         String extension = recordingProfile.getExtension();
-        String string = getCurrentCapturingMode() == CapturingMode.SLOW_MOTION ? getUserSetting().get(UserSettingKey.SLOW_MOTION).toString() : null;
-        RequestFactory$VideoSavingRequestBuilder requestFactory$VideoSavingRequestBuilder = new RequestFactory$VideoSavingRequestBuilder(createTakenStatusCommon(SavingTaskManager$SavedFileType.VIDEO, videoSize.getVideoRect(), mime, extension, null), new TakenStatusVideo(maxDuration, jMin));
-        requestFactory$VideoSavingRequestBuilder.addCallback(this.mOnStoreCompletedListener);
-        requestFactory$VideoSavingRequestBuilder.setExtraOutput(this.mActivity.getExtraOutput());
-        requestFactory$VideoSavingRequestBuilder.setSlowMotion(string, this.mStorage, getCurrentStorage());
-        requestFactory$VideoSavingRequestBuilder.setOneShot(this.mActivity.isOneShotVideo());
-        requestFactory$VideoSavingRequestBuilder.setStorageType(getCurrentStorage());
-        return requestFactory$VideoSavingRequestBuilder;
+        String obj = getCurrentCapturingMode() == CapturingMode.SLOW_MOTION
+                ? getUserSetting().get(UserSettingKey.SLOW_MOTION).toString()
+                : null;
+        RequestFactory.VideoSavingRequestBuilder videoSavingRequestBuilder = new RequestFactory.VideoSavingRequestBuilder(
+                createTakenStatusCommon(SavingTaskManager.SavedFileType.VIDEO, videoSize.getVideoRect(), mime,
+                        extension, null),
+                new TakenStatusVideo(maxDuration, min));
+        videoSavingRequestBuilder.addCallback(this.mOnStoreCompletedListener);
+        videoSavingRequestBuilder.setExtraOutput(this.mActivity.getExtraOutput());
+        videoSavingRequestBuilder.setSlowMotion(obj, this.mStorage, getCurrentStorage());
+        videoSavingRequestBuilder.setOneShot(this.mActivity.isOneShotVideo());
+        videoSavingRequestBuilder.setStorageType(getCurrentStorage());
+        return videoSavingRequestBuilder;
     }
 
-    private void updateDateTaken(RequestFactory$RequestBuilder requestFactory$RequestBuilder) {
-        requestFactory$RequestBuilder.setDateTaken(System.currentTimeMillis());
+    private void updateDateTaken(RequestFactory.RequestBuilder requestBuilder) {
+        requestBuilder.setDateTaken(System.currentTimeMillis());
     }
 
     public void onInitialAutoFocusDone(boolean z) {
@@ -1599,67 +6727,70 @@ public class StateMachine {
             CamLog.d("invoke success:" + z);
         }
         ResearchUtil.getInstance().setTimeAfDone();
-        ResearchUtil.getInstance().setCaptureTrigger(Event$CaptureTrigger.FAST_CAPTURING_LAUNCH);
-        sendEvent(StateMachine$TransitterEvent.EVENT_ON_INITIAL_AUTO_FOCUS_DONE, Boolean.valueOf(z));
+        ResearchUtil.getInstance().setCaptureTrigger(Event.CaptureTrigger.FAST_CAPTURING_LAUNCH);
+        sendEvent(TransitterEvent.EVENT_ON_INITIAL_AUTO_FOCUS_DONE, Boolean.valueOf(z));
     }
 
     public void onAutoFocusDone(boolean z, boolean z2, boolean z3, int i, int i2, int i3) {
         if (CamLog.DEBUG) {
-            CamLog.d("invoke isHighQualityBurstAvailable:" + z + ", isAfSuccessed:" + z2 + ", requireDisplayFlash:" + z3);
+            CamLog.d("invoke isHighQualityBurstAvailable:" + z + ", isAfSuccessed:" + z2 + ", requireDisplayFlash:"
+                    + z3);
         }
         if (this.mViewFinder != null) {
             this.mViewFinder.setDisplayFlashRequired(z3);
             this.mViewFinder.setDisplayFlashColor(i, i2, i3);
         }
         ResearchUtil.getInstance().setTimeAfDone();
-        sendEvent(StateMachine$TransitterEvent.EVENT_ON_AUTO_FOCUS_DONE, Boolean.valueOf(z2), Boolean.valueOf(z));
+        sendEvent(TransitterEvent.EVENT_ON_AUTO_FOCUS_DONE, Boolean.valueOf(z2), Boolean.valueOf(z));
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void stopPlaySound() {
         this.mActivity.stopPlayingSound();
     }
 
-    public void onPreShutterDone(RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder) {
-        checkCallback(requestFactory$PhotoSavingRequestBuilder);
-        sendEvent(StateMachine$TransitterEvent.EVENT_ON_PRE_SHUTTER_DONE, requestFactory$PhotoSavingRequestBuilder);
+    public void onPreShutterDone(RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder) {
+        checkCallback(photoSavingRequestBuilder);
+        sendEvent(TransitterEvent.EVENT_ON_PRE_SHUTTER_DONE, photoSavingRequestBuilder);
     }
 
-    public void onShutterDone(RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder, int i, boolean z) {
+    public void onShutterDone(RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder, int i, boolean z) {
         if (CamLog.DEBUG) {
             CamLog.d("invoke captureNum:" + i + ", isAfSuccessed:" + z);
         }
         if (i > 1) {
-            this.mPredictiveCaptureStoreInfo = new PredictiveCaptureStoreInfo(i, requestFactory$PhotoSavingRequestBuilder.getSaveTimeForPredictiveCapture());
+            this.mPredictiveCaptureStoreInfo = new PredictiveCaptureStoreInfo(i,
+                    photoSavingRequestBuilder.getSaveTimeForPredictiveCapture());
         } else {
             this.mPredictiveCaptureStoreInfo = null;
         }
-        sendEvent(StateMachine$TransitterEvent.EVENT_ON_SHUTTER_DONE, requestFactory$PhotoSavingRequestBuilder, Boolean.valueOf(z));
+        sendEvent(TransitterEvent.EVENT_ON_SHUTTER_DONE, photoSavingRequestBuilder, Boolean.valueOf(z));
     }
 
-    public void onPreTakePictureDone(RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder) {
+    public void onPreTakePictureDone(RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder) {
         if (CamLog.DEBUG) {
             CamLog.d("invoke");
         }
-        checkCallback(requestFactory$PhotoSavingRequestBuilder);
-        sendEvent(StateMachine$TransitterEvent.EVENT_ON_PRE_TAKE_PICTURE_DONE, requestFactory$PhotoSavingRequestBuilder);
+        checkCallback(photoSavingRequestBuilder);
+        sendEvent(TransitterEvent.EVENT_ON_PRE_TAKE_PICTURE_DONE, photoSavingRequestBuilder);
     }
 
-    public void onTakePictureDone(RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder) {
+    public void onTakePictureDone(RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder) {
         if (CamLog.DEBUG) {
             CamLog.d("invoke");
         }
-        sendEvent(StateMachine$TransitterEvent.EVENT_ON_TAKE_PICTURE_DONE, requestFactory$PhotoSavingRequestBuilder);
+        sendEvent(TransitterEvent.EVENT_ON_TAKE_PICTURE_DONE, photoSavingRequestBuilder);
     }
 
     public void onPrepareBurstDone(boolean z) {
         if (CamLog.DEBUG) {
             CamLog.d("invoke isSuccess:" + z);
         }
-        sendEvent(StateMachine$TransitterEvent.EVENT_ON_PREPARE_BURST_DONE, Boolean.valueOf(z));
+        sendEvent(TransitterEvent.EVENT_ON_PREPARE_BURST_DONE, Boolean.valueOf(z));
     }
 
-    private void checkCallback(RequestFactory$RequestBuilder requestFactory$RequestBuilder) {
-        requestFactory$RequestBuilder.addCallback(this.mOnStoreCompletedListener);
+    private void checkCallback(RequestFactory.RequestBuilder requestBuilder) {
+        requestBuilder.addCallback(this.mOnStoreCompletedListener);
     }
 
     public void onVideoRecordingDone() {
@@ -1667,54 +6798,124 @@ public class StateMachine {
             CamLog.d("invoke");
         }
         this.mIsVideoRecording = false;
-        sendEvent(StateMachine$TransitterEvent.EVENT_ON_VIDEO_RECORDING_DONE, new Object[0]);
+        sendEvent(TransitterEvent.EVENT_ON_VIDEO_RECORDING_DONE, new Object[0]);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void requestPhotoSmileCapture() {
         requestSmileCapture(((SmileCapture) this.mUserSettings.get(UserSettingKey.SMILE_CAPTURE)).getIntValue());
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void requestVideoSmileCapture() {
-        requestSmileCapture(((VideoSmileCapture) this.mUserSettings.get(UserSettingKey.VIDEO_SMILE_CAPTURE)).getIntValue());
+        requestSmileCapture(
+                ((VideoSmileCapture) this.mUserSettings.get(UserSettingKey.VIDEO_SMILE_CAPTURE)).getIntValue());
     }
 
     private void requestSmileCapture(int i) {
-        if (SystemClock.uptimeMillis() - this.mLastSmileCaptureTakenTime <= 1000 || i >= this.mViewFinder.getSelectedFaceSmileScore()) {
+        if (SystemClock.uptimeMillis() - this.mLastSmileCaptureTakenTime <= 1000
+                || i >= this.mViewFinder.getSelectedFaceSmileScore()) {
             return;
         }
-        this.mVirtualKeyEventDispatcher.sendVirtualKeyEvent(UserEventHandler$VirtualKeyEvent.SMILE_CAPTURE);
+        this.mVirtualKeyEventDispatcher.sendVirtualKeyEvent(UserEventHandler.VirtualKeyEvent.SMILE_CAPTURE);
         this.mLastSmileCaptureTakenTime = SystemClock.uptimeMillis();
     }
 
-    private void storePicture(RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder) {
-        SavingRequest savingRequestCreateSavingRequest = RequestFactory.createSavingRequest(requestFactory$PhotoSavingRequestBuilder);
-        StateMachine$SuitablePredictiveApplier.access$8800(this.mPredictiveApplier, savingRequestCreateSavingRequest);
-        this.mStorage.requestStore(savingRequestCreateSavingRequest, savingRequestCreateSavingRequest.getStorageType(), this.mOnStoreCompletedListener);
+    /* JADX INFO: Access modifiers changed from: private */
+    private void storePicture(RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder) {
+        SavingRequest createSavingRequest = RequestFactory.createSavingRequest(photoSavingRequestBuilder);
+        this.mPredictiveApplier.entrySuppressor(createSavingRequest);
+        this.mStorage.requestStore(createSavingRequest, createSavingRequest.getStorageType(),
+                this.mOnStoreCompletedListener);
     }
 
-    private synchronized void requestStorePicture(RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder) {
-        if (isNeedRepairRequestId(requestFactory$PhotoSavingRequestBuilder) && this.mContentsViewController != null) {
-            requestFactory$PhotoSavingRequestBuilder.setRequestId(this.mViewFinder.getRequestId(false));
+    /* JADX INFO: Access modifiers changed from: private */
+    public class RequestStoreTask implements Runnable {
+        private final RequestFactory.PhotoSavingRequestBuilder mRequest;
+
+        private RequestStoreTask(RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder) {
+            this.mRequest = photoSavingRequestBuilder;
         }
-        this.mExecService.execute(new StateMachine$RequestStoreTask(this, requestFactory$PhotoSavingRequestBuilder, null));
+
+        @Override // java.lang.Runnable
+        public void run() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke RequestStoreTask");
+            }
+            synchronized (StateMachine.this) {
+                Runnable storeRequestedRunnable = new Runnable() { // from class:
+                                                                   // com.sonyericsson.android.camera.controller.StateMachine.RequestStoreTask.2
+                    @Override // java.lang.Runnable
+                    public void run() {
+                        StateMachine.this.sendEvent(TransitterEvent.EVENT_ON_STORE_REQUESTED, new Object[0]);
+                    }
+                };
+                if (!StateMachine.this.isNeedRepairRequestId(this.mRequest)
+                        || StateMachine.this.mContentsViewController == null) {
+                    if (StateMachine.this.mContentsViewController == null
+                            && StateMachine.this.mCurrentState.getCaptureState() != CaptureState.STATE_PAUSE
+                            && StateMachine.this.mCurrentState.getCaptureState() != CaptureState.STATE_FINALIZE) {
+                        if (this.mRequest.getShouldUpdateOrientationBeforeStoring()) {
+                            this.mRequest.mCommonStatus.orientation = StateMachine.this.getOrientation();
+                        }
+                        if (StateMachine.this.mActivity.isDeviceInSecurityLock()) {
+                            if (!this.mRequest.mCommonStatus.takenByFastCapture
+                                    && !StateMachine.this.isNeedRepairRequestId(this.mRequest)) {
+                                StateMachine.this.storePicture(this.mRequest);
+                            }
+                            StateMachine.this.mPhotoSavingRequestList.add(this.mRequest);
+                        } else {
+                            this.mRequest.setRequestId(-1);
+                            StateMachine.this.storePicture(this.mRequest);
+                        }
+                        StateMachine.this.mHandler.post(storeRequestedRunnable);
+                        return;
+                    }
+                    StateMachine.this.storePicture(this.mRequest);
+                    StateMachine.this.mHandler.post(storeRequestedRunnable);
+                    return;
+                }
+                StateMachine.this.mActivity.runOnUiThread(new Runnable() { // from class:
+                                                                           // com.sonyericsson.android.camera.controller.StateMachine.RequestStoreTask.1
+                    @Override // java.lang.Runnable
+                    public void run() {
+                        StateMachine.this.requestStorePicture(RequestStoreTask.this.mRequest);
+                    }
+                });
+            }
+
+        }
     }
 
-    private synchronized void requestStoreVideo(RequestFactory$VideoSavingRequestBuilder requestFactory$VideoSavingRequestBuilder) {
-        if (requestFactory$VideoSavingRequestBuilder == null) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private synchronized void requestStorePicture(RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder) {
+        if (isNeedRepairRequestId(photoSavingRequestBuilder) && this.mContentsViewController != null) {
+            photoSavingRequestBuilder.setRequestId(this.mViewFinder.getRequestId(false));
+        }
+        this.mExecService.execute(new RequestStoreTask(photoSavingRequestBuilder));
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    private synchronized void requestStoreVideo(RequestFactory.VideoSavingRequestBuilder videoSavingRequestBuilder) {
+        if (videoSavingRequestBuilder == null) {
             return;
         }
         if (this.mContentsViewController != null) {
             this.mContentsViewController.stopAnimation(false);
         }
-        if ((!VideoStabilizer.isIntelligentActive((VideoStabilizer) this.mUserSettings.get(UserSettingKey.VIDEO_STABILIZER)) || requestFactory$VideoSavingRequestBuilder.getRequestId() == -1) && this.mContentsViewController != null) {
-            requestFactory$VideoSavingRequestBuilder.setRequestId(this.mViewFinder.getRequestId(false));
+        if ((!VideoStabilizer
+                .isIntelligentActive((VideoStabilizer) this.mUserSettings.get(UserSettingKey.VIDEO_STABILIZER))
+                || videoSavingRequestBuilder.getRequestId() == -1) && this.mContentsViewController != null) {
+            videoSavingRequestBuilder.setRequestId(this.mViewFinder.getRequestId(false));
         }
-        requestFactory$VideoSavingRequestBuilder.setDateTaken(System.currentTimeMillis());
-        SavingRequest savingRequestCreateSavingRequest = RequestFactory.createSavingRequest(requestFactory$VideoSavingRequestBuilder);
-        this.mStorage.requestStore(savingRequestCreateSavingRequest, savingRequestCreateSavingRequest.getStorageType(), this.mOnStoreCompletedListener);
-        sendEvent(StateMachine$TransitterEvent.EVENT_ON_STORE_REQUESTED, new Object[0]);
+        videoSavingRequestBuilder.setDateTaken(System.currentTimeMillis());
+        SavingRequest createSavingRequest = RequestFactory.createSavingRequest(videoSavingRequestBuilder);
+        this.mStorage.requestStore(createSavingRequest, createSavingRequest.getStorageType(),
+                this.mOnStoreCompletedListener);
+        sendEvent(TransitterEvent.EVENT_ON_STORE_REQUESTED, new Object[0]);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void onOneShotStoreCompleted(StoreDataResult storeDataResult) {
         if (storeDataResult.savingRequest.getExtraOutput() == null) {
             requestLoadStoredPicture(storeDataResult);
@@ -1723,54 +6924,59 @@ public class StateMachine {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void finishOneShot(StoreDataResult storeDataResult, Bitmap bitmap) {
-        this.mActivity.finishOneShot(new StateMachine$OneShotResult(storeDataResult.uri, storeDataResult.storeResult, storeDataResult.savingRequest, bitmap, null));
+        this.mActivity.finishOneShot(new OneShotResult(storeDataResult.uri, storeDataResult.storeResult,
+                storeDataResult.savingRequest, bitmap));
     }
 
-    public void onSceneModeChanged(CameraParameters$SceneRecognitionResult cameraParameters$SceneRecognitionResult) {
+    public void onSceneModeChanged(CameraParameters.SceneRecognitionResult sceneRecognitionResult) {
         if (CamLog.DEBUG) {
             CamLog.d("invoke");
         }
         if (this.mActivity.isThermalWarningReceived()) {
             return;
         }
-        sendStaticEvent(StateMachine$StaticEvent.EVENT_ON_SCENE_MODE_CHANGED, cameraParameters$SceneRecognitionResult);
+        sendStaticEvent(StaticEvent.EVENT_ON_SCENE_MODE_CHANGED, sceneRecognitionResult);
     }
 
-    public void onFaceDetected(CameraParameters$FaceDetectionResult cameraParameters$FaceDetectionResult) {
+    public void onFaceDetected(CameraParameters.FaceDetectionResult faceDetectionResult) {
         if (CamLog.DEBUG) {
             CamLog.d("invoke");
         }
-        if (this.mActivity.isThermalWarningReceived() || !isStorageWritable(getCurrentStorage()) || this.mCameraDeviceHandler.isObjectTrackingRunning()) {
+        if (this.mActivity.isThermalWarningReceived() || !isStorageWritable(getCurrentStorage())
+                || this.mCameraDeviceHandler.isObjectTrackingRunning()) {
             return;
         }
-        sendStaticEvent(StateMachine$StaticEvent.EVENT_ON_FACE_DETECTED, cameraParameters$FaceDetectionResult);
+        sendStaticEvent(StaticEvent.EVENT_ON_FACE_DETECTED, faceDetectionResult);
     }
 
-    public void onObjectTracked(CameraParameters$ObjectTrackingResult cameraParameters$ObjectTrackingResult) {
-        if (CamLog.DEBUG) {
-            CamLog.d("invoke");
-        }
-        if (this.mActivity.isThermalWarningReceived()) {
-            return;
-        }
-        sendStaticEvent(StateMachine$StaticEvent.EVENT_ON_OBJECT_TRACKED, cameraParameters$ObjectTrackingResult);
-    }
-
-    public void onObjectLost(CameraParameters$ObjectTrackingResult cameraParameters$ObjectTrackingResult) {
+    public void onObjectTracked(CameraParameters.ObjectTrackingResult objectTrackingResult) {
         if (CamLog.DEBUG) {
             CamLog.d("invoke");
         }
         if (this.mActivity.isThermalWarningReceived()) {
             return;
         }
-        sendStaticEvent(StateMachine$StaticEvent.EVENT_ON_OBJECT_TRACKING_LOST, cameraParameters$ObjectTrackingResult);
+        sendStaticEvent(StaticEvent.EVENT_ON_OBJECT_TRACKED, objectTrackingResult);
     }
 
+    public void onObjectLost(CameraParameters.ObjectTrackingResult objectTrackingResult) {
+        if (CamLog.DEBUG) {
+            CamLog.d("invoke");
+        }
+        if (this.mActivity.isThermalWarningReceived()) {
+            return;
+        }
+        sendStaticEvent(StaticEvent.EVENT_ON_OBJECT_TRACKING_LOST, objectTrackingResult);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
     private void doZoomChangeAngle() {
-        changeTo(new StateMachine$StateCropping(this, this.mCurrentState.getCaptureState()), new Object[0]);
+        changeTo(new StateCropping(this.mCurrentState.getCaptureState()), new Object[0]);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void onZoomChange(int i) {
         if (CamLog.DEBUG) {
             CamLog.d("invoke");
@@ -1778,17 +6984,27 @@ public class StateMachine {
         if (this.mViewFinder == null || !this.mViewFinder.isSetupHeadupDisplayInvoked()) {
             return;
         }
-        this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_ON_ZOOM_CHANGED, Integer.valueOf(i));
+        this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_ZOOM_CHANGED, Integer.valueOf(i));
     }
 
     public void onCropRegionReady() {
         if (CamLog.DEBUG) {
             CamLog.d("invoke");
         }
-        this.mActivity.runOnUiThread(new StateMachine$7(this));
+        this.mActivity.runOnUiThread(new Runnable() { // from class:
+                                                      // com.sonyericsson.android.camera.controller.StateMachine.7
+            @Override // java.lang.Runnable
+            public void run() {
+                if (CamLog.DEBUG) {
+                    CamLog.d("invoke onCropRegionReady");
+                }
+                StateMachine.this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_HIDE_BLACK_SCREEN,
+                        new Object[0]);
+            }
+        });
     }
 
-    public void onDeviceError(CameraDeviceHandler$ErrorCode cameraDeviceHandler$ErrorCode) {
+    public void onDeviceError(CameraDeviceHandler.ErrorCode errorCode) {
         if (CamLog.DEBUG) {
             CamLog.d("invoke");
         }
@@ -1803,8 +7019,47 @@ public class StateMachine {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void removeChangeCameraModeTask() {
         this.mHandler.removeCallbacks(this.mChangeCameraModeTask);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public class ChangeCameraModeTask implements Runnable {
+        private final CapturingMode mRequestMode;
+        private final AnimationRequest.AnimationType mTriggerType;
+
+        private ChangeCameraModeTask(CapturingMode capturingMode, AnimationRequest.AnimationType animationType) {
+            this.mRequestMode = capturingMode;
+            this.mTriggerType = animationType;
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoke ChangeCameraModeTask");
+            }
+            if (StateMachine.this.mCameraDeviceHandler == null || StateMachine.this.mViewFinder == null) {
+                return;
+            }
+            StateMachine.this.mCameraDeviceHandler.releaseRecorder();
+            StateMachine.this.mCameraDeviceHandler.stopFaceDetection();
+            StateMachine.this.mCameraDeviceHandler.stopPreviewSynchronized();
+            StateMachine.this.mViewFinder.hideSurface();
+            PerfLog.MODE_CHANGE_TASK_START.transit();
+            StateMachine.this.mUserSettings.applyCapturingMode();
+            StateMachine.this.doStopObjectTracking();
+            StateMachine.this.requestResizeEvf(
+                    (CapturingMode) StateMachine.this.mUserSettings.get(UserSettingKey.CAPTURING_MODE), false);
+            StateMachine.this.mViewFinder.showSurface();
+            StateMachine.this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_ON_CAPTURING_MODE_CHANGED, this.mRequestMode, true,
+                    this.mTriggerType);
+            if (StateMachine.this.isFusionMonitoringNeeded()) {
+                StateMachine.this.mCameraDeviceHandler.startFusionMonitoring();
+            }
+            PerfLog.MODE_CHANGE_TASK_END.transit();
+        }
     }
 
     private Rect getPreviewRect() {
@@ -1815,21 +7070,26 @@ public class StateMachine {
         } else {
             pictureRect = ((Resolution) this.mUserSettings.get(UserSettingKey.RESOLUTION)).getPictureRect();
         }
-        return LayoutOrientationResolver.getInstance().getRectAccordingToLayoutOrientation(this.mCameraDeviceHandler.getPreviewRect(capturingMode, pictureRect));
+        return LayoutOrientationResolver.getInstance().getRectAccordingToLayoutOrientation(
+                this.mCameraDeviceHandler.getPreviewRect(capturingMode, pictureRect));
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void calculateRemainStorage() {
-        if (this.mCameraDeviceHandler == null || this.mViewFinder == null || this.mActivity == null || getCurrentStorage() == null) {
+        if (this.mCameraDeviceHandler == null || this.mViewFinder == null || this.mActivity == null
+                || getCurrentStorage() == null) {
             return;
         }
-        Storage$StorageType currentStorage = getCurrentStorage();
-        if (this.mStorage.getRemainStorage(currentStorage) <= 61440) {
-            sendEvent(StateMachine$TransitterEvent.EVENT_STORAGE_ERROR, currentStorage, this.mStorage.getCurrentState(currentStorage));
+        Storage.StorageType currentStorage = getCurrentStorage();
+        if (this.mStorage.getRemainStorage(currentStorage) <= CommonConstants.STORAGE_REMAIN_MIN) {
+            sendEvent(TransitterEvent.EVENT_STORAGE_ERROR, currentStorage,
+                    this.mStorage.getCurrentState(currentStorage));
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private int getSensorOrientation() {
-        int i = this.mActivity.getLastDetectedOrientation() == CameraActivity$LayoutOrientation.Portrait ? 1 : 2;
+        int i = this.mActivity.getLastDetectedOrientation() == CameraActivity.LayoutOrientation.Portrait ? 1 : 2;
         if (CamLog.DEBUG) {
             CamLog.d("getOrientation: sensor orientation:" + i);
         }
@@ -1842,14 +7102,36 @@ public class StateMachine {
         ResearchUtil.getInstance().sendCameraNotAvailableEvent();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void onPredictiveCaptureStoreComplete(StoreDataResult storeDataResult) {
         PerfLog.BURST_STORE_COMPLETE.transit();
-        if (this.mPredictiveCaptureStoreInfo != null && storeDataResult.savingRequest.getSaveTimeForPredictiveCapture().equals(this.mPredictiveCaptureStoreInfo.getCaptureTime())) {
+        if (this.mPredictiveCaptureStoreInfo != null && storeDataResult.savingRequest.getSaveTimeForPredictiveCapture()
+                .equals(this.mPredictiveCaptureStoreInfo.getCaptureTime())) {
             this.mPredictiveCaptureStoreInfo = null;
         }
-        Intent intent = new Intent("com.sonyericsson.android.camera.intent.action.PREDICTIVE_CAPTURE_SAVE_COMPLETED");
-        intent.putExtra("com.sonyericsson.android.camera.extra.PREDICTIVE_CAPTURE_DIRECTORY_PATH", PredictiveCapturePathBuilder.getPredictiveCaptureGroupIdPath(storeDataResult.savingRequest.getFilePath()));
+        Intent intent = new Intent(IntentConstants.BroadcastIntent.PREDICTIVE_CAPTURE_SAVE_COMPLETED);
+        intent.putExtra(IntentConstants.BroadcastIntent.EXTRA_PREDICTIVE_CAPTURE_DIRECTORY_PATH,
+                PredictiveCapturePathBuilder
+                        .getPredictiveCaptureGroupIdPath(storeDataResult.savingRequest.getFilePath()));
         this.mActivity.sendBroadcast(intent);
+    }
+
+    class StateVideoRecordingPausing extends StateVideoRecording {
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.StateVideoRecording
+        protected boolean isPaused() {
+            return true;
+        }
+
+        private StateVideoRecordingPausing() {
+            super();
+            this.mCaptureState = CaptureState.STATE_VIDEO_RECORDING_PAUSING;
+        }
+
+        @Override // com.sonyericsson.android.camera.controller.StateMachine.State
+        public void handleResumeRecording(Object... objArr) {
+            StateMachine.this.doResumeRecording();
+            StateMachine.this.mCameraDeviceHandler.requestOnePreviewFrame();
+        }
     }
 
     public CapturingMode getCurrentCapturingMode() {
@@ -1859,46 +7141,47 @@ public class StateMachine {
         return (CapturingMode) getUserSetting().get(UserSettingKey.CAPTURING_MODE);
     }
 
-    public CameraInfo$CameraId getCurrentCameraId() {
+    public CameraInfo.CameraId getCurrentCameraId() {
         return getCameraId(getCurrentCapturingMode());
     }
 
-    private CameraInfo$CameraId getCameraId(CapturingMode capturingMode) {
-        switch (StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()]) {
-            case 1:
-            case 5:
-            case 8:
-                return CameraInfo$CameraId.BACK;
-            case 2:
-            case 6:
-            case 7:
-                return CameraInfo$CameraId.FRONT;
-            case 3:
-            case 4:
+    private CameraInfo.CameraId getCameraId(CapturingMode capturingMode) {
+        switch (capturingMode) {
+            case NORMAL:
+            case SCENE_RECOGNITION:
+            case VIDEO:
+                return CameraInfo.CameraId.BACK;
+            case FRONT_PHOTO:
+            case SUPERIOR_FRONT:
+            case FRONT_VIDEO:
+                return CameraInfo.CameraId.FRONT;
+            case SLOW_MOTION:
+            case UNKNOWN:
             default:
-                return CameraInfo$CameraId.BACK;
+                return CameraInfo.CameraId.BACK;
         }
     }
 
     public boolean canApplicationBeFinished() {
-        boolean zAccess$15600;
+        boolean canApplicationBeFinished;
         synchronized (this.mCurrentState) {
-            zAccess$15600 = StateMachine$CaptureState.access$15600(this.mCurrentState.getCaptureState());
+            canApplicationBeFinished = this.mCurrentState.getCaptureState().canApplicationBeFinished();
         }
-        return zAccess$15600;
+        return canApplicationBeFinished;
     }
 
     public boolean isMenuAvailable() {
-        return StateMachine$CaptureState.access$15700(this.mCurrentState.getCaptureState());
+        return this.mCurrentState.getCaptureState().isMenuAvailable();
     }
 
     public boolean isRecording() {
         if (this.mCurrentState != null) {
-            return StateMachine$CaptureState.access$13700(this.mCurrentState.getCaptureState());
+            return this.mCurrentState.getCaptureState().isRecording();
         }
         return false;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void setCurrentCapturingMode(CapturingMode capturingMode) {
         getUserSetting().changeCapturingMode(capturingMode);
         LocalResearchUtil.getInstance().setSettingsValue(getUserSetting(), capturingMode);
@@ -1916,6 +7199,7 @@ public class StateMachine {
         return this.mUserSettings.get(UserSettingKey.CAMERA_KEY) == CameraKey.BURST_SHOT;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isLazyInitializationRunning() {
         return this.mActivity.isLazyInitializationRunning();
     }
@@ -1925,39 +7209,44 @@ public class StateMachine {
     }
 
     @Deprecated
-    public synchronized StateMachine$CaptureState getCurrentCaptureState() {
+    public synchronized CaptureState getCurrentCaptureState() {
         return this.mCurrentState.getCaptureState();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void updateAmberBlueColor(float f) {
         CameraCapabilityList cameraCapability = PlatformCapability.getCameraCapability(getCurrentCameraId());
-        int iIntValue = cameraCapability.MIN_AWB_AB.get().intValue();
-        int iIntValue2 = cameraCapability.MAX_AWB_AB.get().intValue();
-        int iCeil = (int) Math.ceil(iIntValue + ((iIntValue2 - iIntValue) * f));
+        int intValue = cameraCapability.MIN_AWB_AB.get().intValue();
+        int intValue2 = cameraCapability.MAX_AWB_AB.get().intValue();
+        int ceil = (int) Math.ceil(intValue + ((intValue2 - intValue) * f));
         if (CamLog.DEBUG) {
-            CamLog.d("invoke color-changed slider:" + f + ", min:" + iIntValue + ", max:" + iIntValue2 + ", value:" + iCeil);
+            CamLog.d("invoke color-changed slider:" + f + ", min:" + intValue + ", max:" + intValue2 + ", value:"
+                    + ceil);
         }
-        this.mCameraDeviceHandler.setAmberBlueColorAndCommit(iCeil);
-        LocalResearchUtil.getInstance().setSemiAutoSettingAmberBlueValue(iCeil);
+        this.mCameraDeviceHandler.setAmberBlueColorAndCommit(ceil);
+        LocalResearchUtil.getInstance().setSemiAutoSettingAmberBlueValue(ceil);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void updateBrightness(float f) {
         CameraCapabilityList cameraCapability = PlatformCapability.getCameraCapability(getCurrentCameraId());
-        int iIntValue = cameraCapability.EV_MIN.get().intValue();
-        int iIntValue2 = cameraCapability.EV_MAX.get().intValue();
-        int iCeil = (int) Math.ceil(iIntValue + ((iIntValue2 - iIntValue) * f));
+        int intValue = cameraCapability.EV_MIN.get().intValue();
+        int intValue2 = cameraCapability.EV_MAX.get().intValue();
+        int ceil = (int) Math.ceil(intValue + ((intValue2 - intValue) * f));
         if (CamLog.DEBUG) {
-            CamLog.d("invoke brightness-changed slider:" + f + ", min:" + iIntValue + ", max:" + iIntValue2 + ", value:" + iCeil);
+            CamLog.d("invoke brightness-changed slider:" + f + ", min:" + intValue + ", max:" + intValue2 + ", value:"
+                    + ceil);
         }
-        this.mCameraDeviceHandler.setBrightnessAndCommit(iCeil);
-        LocalResearchUtil.getInstance().setSemiAutoSettingBrightnessValue(iCeil);
+        this.mCameraDeviceHandler.setBrightnessAndCommit(ceil);
+        LocalResearchUtil.getInstance().setSemiAutoSettingBrightnessValue(ceil);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void changeToStandby() {
         if (isVideo()) {
-            changeTo(new StateMachine$StateVideoReady(this), new Object[0]);
+            changeTo(new StateVideoReady(), new Object[0]);
         } else {
-            changeTo(new StateMachine$StatePhotoReady(this, true), new Object[0]);
+            changeTo(new StatePhotoReady(true), new Object[0]);
         }
     }
 
@@ -1965,16 +7254,19 @@ public class StateMachine {
         LocalResearchUtil.getInstance().clearAllSettings();
         LocalResearchUtil.getInstance().clearTemporarySettingValues();
         ResearchUtil.getInstance().onPause(true);
-        LocalResearchUtil.getInstance().sendView(LaunchCondition$LaunchTrigger.SAME_ACTIVITY, capturingMode);
+        LocalResearchUtil.getInstance().sendView(LaunchCondition.LaunchTrigger.SAME_ACTIVITY, capturingMode);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void notifyCoolingUltraLow(boolean z) {
         if (this.mViewFinder != null) {
             this.mViewFinder.onNotifyCoolingUltraLow(z);
         }
         this.mCameraDeviceHandler.setUltraLowPower();
-        if (this.mViewFinder != null && this.mViewFinder.isSetupHeadupDisplayInvoked() && this.mCameraDeviceHandler.isObjectTrackingRunning()) {
-            this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED_EXCEPT_FACE, new Object[0]);
+        if (this.mViewFinder != null && this.mViewFinder.isSetupHeadupDisplayInvoked()
+                && this.mCameraDeviceHandler.isObjectTrackingRunning()) {
+            this.mViewFinder.sendViewUpdateEvent(
+                    ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED_EXCEPT_FACE, new Object[0]);
         }
         this.mObjectTracking.stop();
         this.mGestureShutter.handlePreviewStopped();
@@ -1987,49 +7279,60 @@ public class StateMachine {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void pauseAudioPlaybackForRecord() {
         this.mActivity.pauseAudioPlayback();
         this.mIsPausedAudioPlayback = true;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void playShutterSound() {
         if (shouldPlayShutterSound()) {
             this.mCameraDeviceHandler.playShutterSound(getCurrentCapturingMode().getType());
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean shouldPlayShutterSound() {
-        return ((ShutterSound) this.mUserSettings.get(getCurrentCapturingMode(), UserSettingKey.SHUTTER_SOUND)) != ShutterSound.OFF;
+        return ((ShutterSound) this.mUserSettings.get(getCurrentCapturingMode(),
+                UserSettingKey.SHUTTER_SOUND)) != ShutterSound.OFF;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void doStartObjectTracking(Rect rect) {
         if (isStorageWritable(getCurrentStorage())) {
             this.mObjectTracking.start(rect);
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void doStopObjectTracking() {
         this.mObjectTracking.stop();
-        this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED_EXCEPT_FACE, new Object[0]);
+        this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_FOCUS_POSITION_RELEASED_EXCEPT_FACE,
+                new Object[0]);
     }
 
-    public void setGestureShutterWindowHost(GestureShutter$WindowHost gestureShutter$WindowHost) {
+    public void setGestureShutterWindowHost(GestureShutter.WindowHost windowHost) {
         if (CamLog.DEBUG) {
             CamLog.d("invoke");
         }
-        this.mGestureShutter.setWindowHost(gestureShutter$WindowHost);
+        this.mGestureShutter.setWindowHost(windowHost);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void updatePhotoSelftimer(SelfTimer selfTimer) {
         if (this.mViewFinder != null) {
-            this.mViewFinder.setSelfTimer((CapturingMode) this.mUserSettings.get(UserSettingKey.CAPTURING_MODE), selfTimer);
+            this.mViewFinder.setSelfTimer((CapturingMode) this.mUserSettings.get(UserSettingKey.CAPTURING_MODE),
+                    selfTimer);
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void setIsSceneRecognitionValid(boolean z) {
         this.mIsSceneRecognitionValid = z;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void switchSceneRecognition(boolean z) {
         if (this.mIsSceneRecognitionValid && z) {
             this.mCameraDeviceHandler.startSceneRecognition();
@@ -2038,72 +7341,144 @@ public class StateMachine {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void switchVideoFaceDetection() {
-        if (DependencyCheckUtil.isFaceDetectionAvailable(getCurrentCapturingMode(), (VideoSize) this.mUserSettings.get(UserSettingKey.VIDEO_SIZE), (VideoHdr) this.mUserSettings.get(UserSettingKey.VIDEO_HDR))) {
+        if (DependencyCheckUtil.isFaceDetectionAvailable(getCurrentCapturingMode(),
+                (VideoSize) this.mUserSettings.get(UserSettingKey.VIDEO_SIZE),
+                (VideoHdr) this.mUserSettings.get(UserSettingKey.VIDEO_HDR))) {
             this.mCameraDeviceHandler.startFaceDetection();
         } else {
             this.mCameraDeviceHandler.stopFaceDetection();
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void notifySceneRecognitionDisabled() {
-        CameraParameters$SceneRecognitionResult cameraParameters$SceneRecognitionResult = new CameraParameters$SceneRecognitionResult();
-        cameraParameters$SceneRecognitionResult.sceneMode = CameraParameterConverter$SceneMode.getSceneMode(0);
-        cameraParameters$SceneRecognitionResult.deviceStabilityCondition = CameraParameters$DeviceStabilityCondition.getCondition(0);
-        cameraParameters$SceneRecognitionResult.isMacroRange = false;
-        this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_ON_DETECTED_SCENE_CHANGED, cameraParameters$SceneRecognitionResult);
+        CameraParameters.SceneRecognitionResult sceneRecognitionResult = new CameraParameters.SceneRecognitionResult();
+        sceneRecognitionResult.sceneMode = CameraParameterConverter.SceneMode.getSceneMode(0);
+        sceneRecognitionResult.deviceStabilityCondition = CameraParameters.DeviceStabilityCondition.getCondition(0);
+        sceneRecognitionResult.isMacroRange = false;
+        this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_DETECTED_SCENE_CHANGED,
+                sceneRecognitionResult);
     }
 
     public CapturingMode getLaunchCapturingMode() {
         return this.mActivity.getLaunchCondition().getCapturingMode();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void sendResearchViewEvent() {
-        LaunchCondition$LaunchTrigger launchTrigger = this.mActivity.getLaunchCondition().getLaunchTrigger();
-        if (launchTrigger == LaunchCondition$LaunchTrigger.VIDEO_EDITOR) {
-            launchTrigger = LaunchCondition$LaunchTrigger.OTHER;
+        LaunchCondition.LaunchTrigger launchTrigger = this.mActivity.getLaunchCondition().getLaunchTrigger();
+        if (launchTrigger == LaunchCondition.LaunchTrigger.VIDEO_EDITOR) {
+            launchTrigger = LaunchCondition.LaunchTrigger.OTHER;
         }
         LocalResearchUtil.getInstance().sendView(launchTrigger, getCurrentCapturingMode());
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isEnoughStorageSizeAvailableForOneShotVideo() {
-        SlowMotion slowMotion;
+        com.sonyericsson.android.camera.configuration.parameters.SlowMotion slowMotion;
         if (!this.mActivity.isOneShotVideo()) {
             return true;
         }
         VideoSize videoSize = (VideoSize) this.mUserSettings.get(UserSettingKey.VIDEO_SIZE);
         VideoHdr videoHdr = (VideoHdr) this.mUserSettings.get(UserSettingKey.VIDEO_HDR);
-        if (getCurrentCapturingMode() == CapturingMode.SLOW_MOTION && (slowMotion = (SlowMotion) getUserSetting().get(UserSettingKey.SLOW_MOTION)) == SlowMotion.STANDARD_SLOW_MOTION) {
+        if (getCurrentCapturingMode() == CapturingMode.SLOW_MOTION
+                && (slowMotion = (com.sonyericsson.android.camera.configuration.parameters.SlowMotion) getUserSetting()
+                        .get(UserSettingKey.SLOW_MOTION)) == com.sonyericsson.android.camera.configuration.parameters.SlowMotion.STANDARD_SLOW_MOTION) {
             videoSize = slowMotion.getVideoSize();
         }
-        RecordingProfile recordingProfileBuild = new RecordingProfile$Builder().videoSize(videoSize).setOneShot(true).videoHdr(videoHdr).build();
-        MaxVideoSize maxVideoSize = this.mUserSettings.getMaxVideoSize(this.mStorage, getCurrentStorage(), recordingProfileBuild);
-        return maxVideoSize.getMaxDuration() > 0 ? maxVideoSize.getMaxDuration() >= 1000 : maxVideoSize.getMaxFileSize() <= 0 || maxVideoSize.getMaxFileSize() >= recordingProfileBuild.minFileSize * 1024;
+        RecordingProfile build = new RecordingProfile.Builder().videoSize(videoSize).setOneShot(true).videoHdr(videoHdr)
+                .build();
+        MaxVideoSize maxVideoSize = this.mUserSettings.getMaxVideoSize(this.mStorage, getCurrentStorage(), build);
+        return maxVideoSize.getMaxDuration() > 0 ? maxVideoSize.getMaxDuration() >= 1000
+                : maxVideoSize.getMaxFileSize() <= 0 || maxVideoSize.getMaxFileSize() >= build.minFileSize
+                        * PlaybackStateCompat.ACTION_PLAY_FROM_MEDIA_ID;
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public class SuitablePredictiveApplier {
+        private boolean isSuppressed;
+        private ArrayList<Object> mSuppressors;
+
+        private SuitablePredictiveApplier() {
+            this.isSuppressed = false;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void entrySuppressor(Object obj) {
+            if (((PredictiveCapture) StateMachine.this.mUserSettings
+                    .get(UserSettingKey.PREDICTIVE_CAPTURE)) == PredictiveCapture.OFF) {
+                return;
+            }
+            if (this.mSuppressors == null) {
+                this.mSuppressors = new ArrayList<>();
+            }
+            if (this.mSuppressors.contains(obj)) {
+                return;
+            }
+            this.mSuppressors.add(obj);
+            attemptCommitSettings();
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void leaveSuppressor(Object obj) {
+            if (this.mSuppressors == null || Boolean.valueOf(this.mSuppressors.remove(obj)) == null) {
+                return;
+            }
+            attemptCommitSettings();
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private void attemptCommitSettings() {
+            if (this.mSuppressors == null || this.mSuppressors.isEmpty()) {
+                Storage.StorageState currentState = StateMachine.this.mStorage
+                        .getCurrentState(StateMachine.this.getCurrentStorage());
+                PredictiveCapture predictiveCapture = PredictiveCapture.OFF;
+                if (currentState == Storage.StorageState.AVAILABLE
+                        && StateMachine.this.mUserSettings.get(UserSettingKey.SELF_TIMER) == SelfTimer.OFF) {
+                    predictiveCapture = (PredictiveCapture) StateMachine.this.mUserSettings
+                            .get(UserSettingKey.PREDICTIVE_CAPTURE);
+                }
+                StateMachine.this.mCameraDeviceHandler.setPredictiveCaptureAndCommit(predictiveCapture);
+                this.isSuppressed = false;
+                return;
+            }
+            if (!this.isSuppressed) {
+                StateMachine.this.mCameraDeviceHandler.setPredictiveCaptureAndCommit(PredictiveCapture.OFF);
+            }
+            this.isSuppressed = true;
+        }
     }
 
     public PredictiveCaptureStoreInfo getPredictiveCaptureStoreInfo() {
         return this.mPredictiveCaptureStoreInfo;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void checkThermalWarning() {
-        if (getCurrentCapturingMode() != CapturingMode.SLOW_MOTION && PlatformCapability.isPowerSavingSupported(getCurrentCameraId())) {
+        if (getCurrentCapturingMode() != CapturingMode.SLOW_MOTION
+                && PlatformCapability.isPowerSavingSupported(getCurrentCameraId())) {
             if (this.mActivity.isThermalWarningReceived()) {
-                sendEvent(StateMachine$TransitterEvent.EVENT_ON_HEATED_OVER_COOLING_ULTRA_LOW, new Object[0]);
+                sendEvent(TransitterEvent.EVENT_ON_HEATED_OVER_COOLING_ULTRA_LOW, new Object[0]);
             } else if (this.mActivity.isThermalWarningExtraState()) {
-                sendEvent(StateMachine$TransitterEvent.EVENT_ON_HEATED_OVER_COOLING_LOW, new Object[0]);
+                sendEvent(TransitterEvent.EVENT_ON_HEATED_OVER_COOLING_LOW, new Object[0]);
             }
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void pauseVideoRecording(Object... objArr) {
         doStopRecording(false);
-        changeTo(new StateMachine$StatePause(this, ((Boolean) objArr[0]).booleanValue(), null), objArr);
+        changeTo(new StatePause(((Boolean) objArr[0]).booleanValue()), objArr);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean hasRemainSavingRequest() {
         return this.mCameraDeviceHandler.getRemainPrevSavingRequestCount() > 0;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void initGeoTagManager() {
         if (this.mActivity.getGeoTagManager() != null) {
             if (this.mActivity.getGeoTagManager().isGeotagPermissionGranted()) {
@@ -2115,6 +7490,7 @@ public class StateMachine {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void initSideSenseSetting() {
         if (SettingUtil.isSideSenseEnabled(true)) {
             return;
@@ -2122,49 +7498,91 @@ public class StateMachine {
         this.mUserSettings.set(SideSense.OFF);
     }
 
+    private class OnPreviewStartedListenerImpl implements CameraDeviceHandler.OnPreviewStartedListener {
+        private OnPreviewStartedListenerImpl() {
+        }
+
+        @Override // com.sonyericsson.android.camera.device.CameraDeviceHandler.OnPreviewStartedListener
+        public void onPreviewStarted(CameraDeviceHandler.CameraSessionId cameraSessionId) {
+            StateMachine.this.mActivity.runOnUiThread(new Runnable() { // from class:
+                                                                       // com.sonyericsson.android.camera.controller.StateMachine.OnPreviewStartedListenerImpl.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    StateMachine.this.sendStaticEvent(StaticEvent.EVENT_ON_PREVIEW_STARTED, new Object[0]);
+                }
+            });
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
     private void cleanupPendingState() {
         updatePhotoSelftimer((SelfTimer) this.mUserSettings.get(UserSettingKey.SELF_TIMER));
     }
 
-    private boolean isStorageWritable(@NonNull Storage$StorageType storage$StorageType) {
-        Storage$StorageState currentState = this.mStorage.getCurrentState(storage$StorageType);
+    /* JADX INFO: Access modifiers changed from: private */
+    private boolean isStorageWritable(@NonNull Storage.StorageType storageType) {
+        Storage.StorageState currentState = this.mStorage.getCurrentState(storageType);
         return currentState != null && currentState.isWritable();
     }
 
-    private boolean isStorageFull(Storage$StorageType storage$StorageType) {
-        return this.mStorage.getCurrentState(storage$StorageType) == Storage$StorageState.FULL;
+    /* JADX INFO: Access modifiers changed from: private */
+    private boolean isStorageFull(Storage.StorageType storageType) {
+        return this.mStorage.getCurrentState(storageType) == Storage.StorageState.FULL;
     }
 
-    private boolean checkSaveDestinationCanBeChange(Storage$StorageType storage$StorageType) {
-        Storage$StorageType storage$StorageType2;
-        if (storage$StorageType == Storage$StorageType.INTERNAL) {
-            storage$StorageType2 = Storage$StorageType.EXTERNAL_CARD;
+    /* JADX INFO: Access modifiers changed from: private */
+    private boolean checkSaveDestinationCanBeChange(Storage.StorageType storageType) {
+        Storage.StorageType storageType2;
+        if (storageType == Storage.StorageType.INTERNAL) {
+            storageType2 = Storage.StorageType.EXTERNAL_CARD;
         } else {
-            if (storage$StorageType != Storage$StorageType.EXTERNAL_CARD) {
+            if (storageType != Storage.StorageType.EXTERNAL_CARD) {
                 return false;
             }
-            storage$StorageType2 = Storage$StorageType.INTERNAL;
+            storageType2 = Storage.StorageType.INTERNAL;
         }
-        return isStorageWritable(storage$StorageType2);
+        return isStorageWritable(storageType2);
     }
 
-    private Storage$StorageType getCurrentStorage() {
+    /* JADX INFO: Access modifiers changed from: private */
+    private Storage.StorageType getCurrentStorage() {
         if (this.mActivity.isOneShot()) {
             return this.mActivity.getLaunchCondition().getStorageTypeForOneshot();
         }
-        DestinationToSave destinationToSave = (DestinationToSave) this.mUserSettings.get(UserSettingKey.DESTINATION_TO_SAVE);
+        DestinationToSave destinationToSave = (DestinationToSave) this.mUserSettings
+                .get(UserSettingKey.DESTINATION_TO_SAVE);
         if (destinationToSave == null) {
-            destinationToSave = (DestinationToSave) this.mUserSettings.get(this.mActivity.getLaunchCondition().getCapturingMode(), UserSettingKey.DESTINATION_TO_SAVE);
+            destinationToSave = (DestinationToSave) this.mUserSettings
+                    .get(this.mActivity.getLaunchCondition().getCapturingMode(), UserSettingKey.DESTINATION_TO_SAVE);
         }
         return destinationToSave.getType();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isCurrentStorageExternal() {
-        return getCurrentStorage() == Storage$StorageType.EXTERNAL_CARD;
+        return getCurrentStorage() == Storage.StorageType.EXTERNAL_CARD;
+    }
+
+    public static class OneShotResult {
+        public final Bitmap bitmap;
+        public final int code;
+        public final boolean isSuccess;
+        public final SavingRequest savingRequest;
+        public final Uri uri;
+
+        private OneShotResult(Uri uri, MediaSavingResult mediaSavingResult, SavingRequest savingRequest,
+                Bitmap bitmap) {
+            this.uri = uri;
+            this.code = mediaSavingResult.mResultCode;
+            this.isSuccess = mediaSavingResult == MediaSavingResult.SUCCESS;
+            this.savingRequest = savingRequest;
+            this.bitmap = bitmap;
+        }
     }
 
     public boolean isTutorialNeededToBeShownForCurrentMode() {
-        if (this.mActivity.isOneShot() || this.mActivity.getLaunchCondition().getLaunchTrigger() == LaunchCondition$LaunchTrigger.GOOGLE_ASSISTANT) {
+        if (this.mActivity.isOneShot() || this.mActivity.getLaunchCondition()
+                .getLaunchTrigger() == LaunchCondition.LaunchTrigger.GOOGLE_ASSISTANT) {
             return false;
         }
         MessageSettings messageSettings = this.mActivity.getStoredSettings().getMessageSettings();
@@ -2175,28 +7593,33 @@ public class StateMachine {
             }
             return !messageSettings.isNeverShow(MessageType.TUTORIAL_HAND_SHUTTER);
         }
-        switch (StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion[((SlowMotion) getUserSetting().get(UserSettingKey.SLOW_MOTION)).ordinal()]) {
-            case 1:
+        switch ((com.sonyericsson.android.camera.configuration.parameters.SlowMotion) getUserSetting()
+                .get(UserSettingKey.SLOW_MOTION)) {
+            case STANDARD_SLOW_MOTION:
                 return !messageSettings.isNeverShow(MessageType.TUTORIAL_STANDARD_SLOW_MOTION);
-            case 2:
+            case SUPER_SLOW_MOTION:
                 return !messageSettings.isNeverShow(MessageType.TUTORIAL_SUPER_SLOW_MOTION);
-            case 3:
+            case SUPER_SLOW_SHOT:
                 return !messageSettings.isNeverShow(MessageType.TUTORIAL_SUPER_SLOW_MOTION_SHOT);
             default:
-                if (currentCapturingMode.isVideo() && !this.mActivity.isOneShotVideo() && PlatformCapability.isHighSensitivityFusionSupported(currentCapturingMode.getCameraId())) {
+                if (currentCapturingMode.isVideo() && !this.mActivity.isOneShotVideo()
+                        && PlatformCapability.isHighSensitivityFusionSupported(currentCapturingMode.getCameraId())) {
                     return !messageSettings.isNeverShow(MessageType.TUTORIAL_VIDEO_FUSION);
                 }
                 return false;
         }
     }
 
-    private boolean isNeedRepairRequestId(RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder) {
-        if (requestFactory$PhotoSavingRequestBuilder.getRequestId() == -1) {
-            return requestFactory$PhotoSavingRequestBuilder.getCaptureIdForPredictiveCapture() == -1 || requestFactory$PhotoSavingRequestBuilder.getSomcType() == 100;
+    /* JADX INFO: Access modifiers changed from: private */
+    private boolean isNeedRepairRequestId(RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder) {
+        if (photoSavingRequestBuilder.getRequestId() == -1) {
+            return photoSavingRequestBuilder.getCaptureIdForPredictiveCapture() == -1
+                    || photoSavingRequestBuilder.getSomcType() == 100;
         }
         return false;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isFusionMonitoringNeeded() {
         for (FusionMode fusionMode : FusionMode.getOptions(getCurrentCapturingMode())) {
             if (fusionMode != FusionMode.OFF) {
@@ -2206,14 +7629,17 @@ public class StateMachine {
         return false;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean checkBurstConditions(boolean z) {
-        if (!isStorageWritable(Storage$StorageType.INTERNAL) || this.mCameraDeviceHandler.getRemainSavingPhotoRequestCount() > 0) {
+        if (!isStorageWritable(Storage.StorageType.INTERNAL)
+                || this.mCameraDeviceHandler.getRemainSavingPhotoRequestCount() > 0) {
             return false;
         }
         if (getCurrentCapturingMode() != CapturingMode.SCENE_RECOGNITION || z) {
             return true;
         }
-        this.mViewFinder.sendViewUpdateEvent(ViewFinder$ViewUpdateEvent.EVENT_ON_BURST_REJECTED, ViewFinder$BurstRejectedReason.CANNOT_BURST_IN_DARK_CONDITION);
+        this.mViewFinder.sendViewUpdateEvent(ViewFinder.ViewUpdateEvent.EVENT_ON_BURST_REJECTED,
+                ViewFinder.BurstRejectedReason.CANNOT_BURST_IN_DARK_CONDITION);
         return false;
     }
 
@@ -2222,24 +7648,25 @@ public class StateMachine {
     }
 
     public synchronized boolean isAngleEventReceivable() {
-        switch (StateMachine$8.$SwitchMap$com$sonyericsson$android$camera$controller$StateMachine$CaptureState[this.mCurrentState.getCaptureState().ordinal()]) {
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
+        switch (this.mCurrentState.getCaptureState()) {
+            case STATE_PHOTO_READY:
+            case STATE_VIDEO_READY:
+            case STATE_WARNING:
+            case STATE_LOW_FRAME_RATE_VIDEO_RECORDING_IN_SUPER_SLOW_MOTION:
+            case STATE_VIDEO_RECORDING:
+            case STATE_VIDEO_RECORDING_PAUSING:
+            case STATE_VIDEO_STORE:
                 return true;
             default:
                 return false;
         }
     }
 
-    public UserEventHandler$VirtualKeyEventDispatcher getVirtualKeyEventDispatcher() {
+    public UserEventHandler.VirtualKeyEventDispatcher getVirtualKeyEventDispatcher() {
         return this.mVirtualKeyEventDispatcher;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private static <T> T getEventParam(Object[] objArr, int i, Class<T> cls, T t) {
         if (objArr != null && objArr.length > i && cls.isInstance(objArr[i])) {
             return (T) objArr[i];

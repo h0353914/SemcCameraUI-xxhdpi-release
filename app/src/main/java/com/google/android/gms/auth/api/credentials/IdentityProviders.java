@@ -1,8 +1,10 @@
 package com.google.android.gms.auth.api.credentials;
 
 import android.accounts.Account;
+import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.common.internal.zzx;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class IdentityProviders {
     public static final String FACEBOOK = "https://www.facebook.com";
     public static final String GOOGLE = "https://accounts.google.com";
@@ -17,11 +19,11 @@ public final class IdentityProviders {
 
     public static final String getIdentityProviderForAccount(Account account) {
         zzx.zzb(account, "account cannot be null");
-        if ("com.google".equals(account.type)) {
-            return "https://accounts.google.com";
+        if (GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE.equals(account.type)) {
+            return GOOGLE;
         }
         if ("com.facebook.auth.login".equals(account.type)) {
-            return "https://www.facebook.com";
+            return FACEBOOK;
         }
         return null;
     }

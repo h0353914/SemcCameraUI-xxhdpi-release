@@ -2,10 +2,9 @@ package com.google.android.gms.common.server.converter;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
 
-public class zza implements Parcelable$Creator<ConverterWrapper> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zza implements Parcelable.Creator<ConverterWrapper> {
     static void zza(ConverterWrapper converterWrapper, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, converterWrapper.getVersionCode());
@@ -13,17 +12,9 @@ public class zza implements Parcelable$Creator<ConverterWrapper> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ConverterWrapper createFromParcel(Parcel parcel) {
-        return zzas(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ConverterWrapper[] newArray(int i) {
-        return zzbQ(i);
-    }
-
-    public ConverterWrapper zzas(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzas, reason: merged with bridge method [inline-methods] */
+    public ConverterWrapper createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         StringToIntConverter stringToIntConverter = null;
@@ -44,10 +35,12 @@ public class zza implements Parcelable$Creator<ConverterWrapper> {
         if (parcel.dataPosition() == iZzap) {
             return new ConverterWrapper(iZzg, stringToIntConverter);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new com.google.android.gms.common.internal.safeparcel.zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public ConverterWrapper[] zzbQ(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbQ, reason: merged with bridge method [inline-methods] */
+    public ConverterWrapper[] newArray(int i) {
         return new ConverterWrapper[i];
     }
 }

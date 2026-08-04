@@ -1,6 +1,30 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.setting;
 
 import android.content.Context;
+import com.sonyericsson.android.camera.configuration.SharedPreferencesConstants;
 
 public class MessageSettingsManager implements MessageSettings {
     private SharedPreferencesAccessor mAppAccessor;
@@ -10,9 +34,9 @@ public class MessageSettingsManager implements MessageSettings {
     private SharedPreferencesAccessor mTutorialAccessor;
 
     public MessageSettingsManager(Context context) {
-        this.mAppAccessor = new SharedPreferencesAccessor(context, "com.sonyericsson.android.camera.shared_preferences");
+        this.mAppAccessor = new SharedPreferencesAccessor(context, SharedPreferencesConstants.CAMERA_SHARED_PREFERENCES_NAME);
         this.mDefaultAccessor = new SharedPreferencesAccessor(context);
-        this.mTutorialAccessor = new SharedPreferencesAccessor(context, "tutorial");
+        this.mTutorialAccessor = new SharedPreferencesAccessor(context, SharedPreferencesConstants.TUTORIAL_SHARED_PREFS_NAME);
         this.mKeyPrefix = context.getPackageName();
     }
 

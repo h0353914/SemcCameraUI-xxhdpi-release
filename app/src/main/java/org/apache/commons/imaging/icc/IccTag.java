@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.icc;
 
+import android.support.v4.os.EnvironmentCompat;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -27,7 +28,7 @@ public class IccTag {
         this.fIccTagType = iccTagType;
     }
 
-    public void setData(byte[] bArr) throws Throwable {
+    public void setData(byte[] bArr) throws IOException, ImageReadException {
         ByteArrayInputStream byteArrayInputStream;
         this.data = bArr;
         try {
@@ -36,13 +37,13 @@ public class IccTag {
                 this.dataTypeSignature = BinaryFunctions.read4Bytes("data type signature", byteArrayInputStream, "ICC: corrupt tag data", ByteOrder.BIG_ENDIAN);
                 this.itdt = getIccTagDataType(this.dataTypeSignature);
                 IoUtils.closeQuietly(true, byteArrayInputStream);
-            } catch (Throwable th) {
-                th = th;
+            } catch (Exception th) {
+                
                 IoUtils.closeQuietly(false, byteArrayInputStream);
-                throw th;
+                throw new ImageReadException("Error", th);
             }
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (Exception th2) {
+            
             byteArrayInputStream = null;
         }
     }
@@ -70,7 +71,7 @@ public class IccTag {
             printWriter.println(str + "data: " + this.data.length);
             printWriter.println(str + "data type signature: " + Integer.toHexString(this.dataTypeSignature) + " (" + new String(new byte[]{(byte) ((this.dataTypeSignature >> 24) & 255), (byte) ((this.dataTypeSignature >> 16) & 255), (byte) ((this.dataTypeSignature >> 8) & 255), (byte) ((this.dataTypeSignature >> 0) & 255)}, "US-ASCII") + ")");
             if (this.itdt == null) {
-                printWriter.println(str + "IccTagType : unknown");
+                printWriter.println(str + "IccTagType : " + EnvironmentCompat.MEDIA_UNKNOWN);
             } else {
                 printWriter.println(str + "IccTagType : " + this.itdt.getName());
                 this.itdt.dump(str, this.data);

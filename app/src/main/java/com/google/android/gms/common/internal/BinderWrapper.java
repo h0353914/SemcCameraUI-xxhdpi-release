@@ -3,10 +3,22 @@ package com.google.android.gms.common.internal;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class BinderWrapper implements Parcelable {
-    public static final Parcelable$Creator<BinderWrapper> CREATOR = new BinderWrapper$1();
+    public static final Parcelable.Creator<BinderWrapper> CREATOR = new Parcelable.Creator<BinderWrapper>() { // from class: com.google.android.gms.common.internal.BinderWrapper.1
+        @Override // android.os.Parcelable.Creator
+        /* renamed from: zzaj, reason: merged with bridge method [inline-methods] */
+        public BinderWrapper createFromParcel(Parcel parcel) {
+            return new BinderWrapper(parcel);
+        }
+
+        @Override // android.os.Parcelable.Creator
+        /* renamed from: zzbC, reason: merged with bridge method [inline-methods] */
+        public BinderWrapper[] newArray(int i) {
+            return new BinderWrapper[i];
+        }
+    };
     private IBinder zzaeJ;
 
     public BinderWrapper() {
@@ -21,10 +33,6 @@ public final class BinderWrapper implements Parcelable {
     private BinderWrapper(Parcel parcel) {
         this.zzaeJ = null;
         this.zzaeJ = parcel.readStrongBinder();
-    }
-
-    /* synthetic */ BinderWrapper(Parcel parcel, BinderWrapper$1 binderWrapper$1) {
-        this(parcel);
     }
 
     @Override // android.os.Parcelable

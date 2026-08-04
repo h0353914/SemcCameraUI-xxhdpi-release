@@ -2,17 +2,21 @@ package com.google.android.gms.auth.api.signin;
 
 import android.accounts.Account;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import android.text.TextUtils;
-import com.google.android.gms.common.api.Api$ApiOptions$Optional;
+import com.google.android.gms.common.Scopes;
+import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class GoogleSignInConfig implements Api$ApiOptions$Optional, SafeParcelable {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class GoogleSignInConfig implements Api.ApiOptions.Optional, SafeParcelable {
     final int versionCode;
     private Account zzQd;
     private final ArrayList<Scope> zzSX;
@@ -20,11 +24,24 @@ public class GoogleSignInConfig implements Api$ApiOptions$Optional, SafeParcelab
     private final boolean zzTj;
     private final boolean zzTk;
     private String zzTl;
-    public static final Scope zzTe = new Scope("profile");
+    public static final Scope zzTe = new Scope(Scopes.PROFILE);
     public static final Scope zzTf = new Scope("email");
     public static final Scope zzTg = new Scope("openid");
-    public static final GoogleSignInConfig zzTh = new GoogleSignInConfig$zza().zzmc();
-    public static final Parcelable$Creator<GoogleSignInConfig> CREATOR = new zze();
+    public static final GoogleSignInConfig zzTh = new zza().zzmc();
+    public static final Parcelable.Creator<GoogleSignInConfig> CREATOR = new zze();
+
+    public static final class zza {
+        private Account zzQd;
+        private boolean zzTi;
+        private boolean zzTj;
+        private boolean zzTk;
+        private String zzTl;
+        private Set<Scope> zzTm = new HashSet(Arrays.asList(GoogleSignInConfig.zzTg));
+
+        public GoogleSignInConfig zzmc() {
+            return new GoogleSignInConfig(this.zzTm, this.zzQd, this.zzTi, this.zzTj, this.zzTk, this.zzTl);
+        }
+    }
 
     GoogleSignInConfig(int i, ArrayList<Scope> arrayList, Account account, boolean z, boolean z2, boolean z3, String str) {
         this.versionCode = i;
@@ -38,10 +55,6 @@ public class GoogleSignInConfig implements Api$ApiOptions$Optional, SafeParcelab
 
     private GoogleSignInConfig(Set<Scope> set, Account account, boolean z, boolean z2, boolean z3, String str) {
         this(1, (ArrayList<Scope>) new ArrayList(set), account, z, z2, z3, str);
-    }
-
-    /* synthetic */ GoogleSignInConfig(Set set, Account account, boolean z, boolean z2, boolean z3, String str, GoogleSignInConfig$1 googleSignInConfig$1) {
-        this(set, account, z, z2, z3, str);
     }
 
     @Override // android.os.Parcelable

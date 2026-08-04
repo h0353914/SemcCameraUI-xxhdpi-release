@@ -6,6 +6,7 @@ import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.Px;
+import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -14,32 +15,53 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout$LayoutParams;
 import android.widget.OverScroller;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.view.selectabledialog.AbsSelectableDialog;
 
 public class ScrollContainer extends FrameLayout {
     private static final int INVALID_POINTER = -1;
     private static final int MIN_SCROLL_DURATION = 200;
     private static final String TAG = "ScrollContainer";
-    private ScrollContainer$Status currentStatus;
+    private Status currentStatus;
     private int mActivePointerId;
     private int mChildHeight;
     private Context mContext;
-    private ScrollContainer$DIRECTION mDirection;
+    private DIRECTION mDirection;
     private boolean mIsBeingDragged;
     private int mLastMotionY;
     private int mMaximumVelocity;
     private int mMinimumVelocity;
-    private ScrollContainer$OnScrollListener mOnScrollListener;
+    private OnScrollListener mOnScrollListener;
     private int mOrientation;
-    private AbsSelectableDialog$Params mParams;
+    private AbsSelectableDialog.Params mParams;
     private OverScroller mScroller;
     private int mSettingDefaultHeight;
     private int mTouchSlop;
     private VelocityTracker mVelocityTracker;
     private ViewConfiguration mViewConfiguration;
     private int offsetY;
+
+    enum DIRECTION {
+        UP,
+        DOWN
+    }
+
+    public interface OnScrollListener {
+        void onScrollFinished(Status status);
+
+        void onScrollProgressChanged(float f);
+    }
+
+    public enum Status {
+        IDLE,
+        EXIT,
+        OPENED,
+        FULLSCREEN,
+        MOVING,
+        OPENING,
+        CLOSING
+    }
 
     @Override // android.widget.FrameLayout, android.view.ViewGroup
     public boolean shouldDelayChildPressedState() {
@@ -48,7 +70,7 @@ public class ScrollContainer extends FrameLayout {
 
     public ScrollContainer(@NonNull Context context) {
         super(context);
-        this.currentStatus = ScrollContainer$Status.OPENED;
+        this.currentStatus = Status.OPENED;
         this.mOnScrollListener = null;
         this.mActivePointerId = -1;
         init();
@@ -56,7 +78,7 @@ public class ScrollContainer extends FrameLayout {
 
     public ScrollContainer(@NonNull Context context, @Nullable AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.currentStatus = ScrollContainer$Status.OPENED;
+        this.currentStatus = Status.OPENED;
         this.mOnScrollListener = null;
         this.mActivePointerId = -1;
         init();
@@ -64,7 +86,7 @@ public class ScrollContainer extends FrameLayout {
 
     public ScrollContainer(@NonNull Context context, @Nullable AttributeSet attributeSet, @AttrRes int i) {
         super(context, attributeSet, i);
-        this.currentStatus = ScrollContainer$Status.OPENED;
+        this.currentStatus = Status.OPENED;
         this.mOnScrollListener = null;
         this.mActivePointerId = -1;
         init();
@@ -92,6 +114,7 @@ public class ScrollContainer extends FrameLayout {
                     if (!inChild((int) motionEvent.getX(), y)) {
                         this.mIsBeingDragged = false;
                         recycleVelocityTracker();
+                        break;
                     } else {
                         this.mActivePointerId = motionEvent.getPointerId(0);
                         this.mLastMotionY = y;
@@ -101,6 +124,7 @@ public class ScrollContainer extends FrameLayout {
                         this.mIsBeingDragged = !this.mScroller.isFinished();
                         if (!this.mScroller.isFinished()) {
                             this.mScroller.abortAnimation();
+                            break;
                         }
                     }
                     break;
@@ -114,7 +138,8 @@ public class ScrollContainer extends FrameLayout {
                     int i = this.mActivePointerId;
                     if (i != -1) {
                         if (motionEvent.findPointerIndex(i) == -1) {
-                            Log.e("ScrollContainer", "Invalid pointerId=" + i + " in onInterceptTouchEvent");
+                            Log.e(TAG, "Invalid pointerId=" + i + " in onInterceptTouchEvent");
+                            break;
                         } else {
                             initVelocityTrackerIfNotExists();
                             this.mVelocityTracker.addMovement(motionEvent);
@@ -125,6 +150,7 @@ public class ScrollContainer extends FrameLayout {
                                 ViewParent parent = getParent();
                                 if (parent != null) {
                                     parent.requestDisallowInterceptTouchEvent(true);
+                                    break;
                                 }
                             }
                         }
@@ -147,7 +173,7 @@ public class ScrollContainer extends FrameLayout {
     }
 
     private void onSecondaryPointerUp(MotionEvent motionEvent) {
-        int action = (motionEvent.getAction() & 65280) >> 8;
+        int action = (motionEvent.getAction() & MotionEventCompat.ACTION_POINTER_INDEX_MASK) >> 8;
         if (motionEvent.getPointerId(action) == this.mActivePointerId) {
             int i = action == 0 ? 1 : 0;
             this.mLastMotionY = (int) motionEvent.getY(i);
@@ -157,9 +183,7 @@ public class ScrollContainer extends FrameLayout {
             }
         }
     }
-
-    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-    @Override // android.view.View
+@Override // android.view.View
     public boolean onTouchEvent(MotionEvent motionEvent) {
         ViewParent parent;
         View childAt = getChildAt(0);
@@ -197,14 +221,14 @@ public class ScrollContainer extends FrameLayout {
                 this.mVelocityTracker.computeCurrentVelocity(1000, this.mMaximumVelocity);
                 if (this.mIsBeingDragged) {
                     float f = -this.mVelocityTracker.getYVelocity(this.mActivePointerId);
-                    this.mDirection = f > 0.0f ? ScrollContainer$DIRECTION.UP : ScrollContainer$DIRECTION.DOWN;
+                    this.mDirection = f > 0.0f ? DIRECTION.UP : DIRECTION.DOWN;
                     if (Math.abs(f) > this.mMinimumVelocity) {
                         flingWithDispatch((int) f);
                     }
                 }
                 endDrag();
                 this.mActivePointerId = -1;
-                if (this.mDirection == ScrollContainer$DIRECTION.DOWN && getScrollY() < 0 && Math.abs(-this.mVelocityTracker.getYVelocity()) > 2 * this.mMinimumVelocity) {
+                if (this.mDirection == DIRECTION.DOWN && getScrollY() < 0 && Math.abs(-this.mVelocityTracker.getYVelocity()) > 2 * this.mMinimumVelocity) {
                     scrollToExit();
                     return true;
                 }
@@ -216,7 +240,7 @@ public class ScrollContainer extends FrameLayout {
             case 2:
                 int iFindPointerIndex = motionEvent.findPointerIndex(this.mActivePointerId);
                 if (iFindPointerIndex == -1) {
-                    Log.e("ScrollContainer", "Invalid pointerId=" + this.mActivePointerId + " in onTouchEvent");
+                    Log.e(TAG, "Invalid pointerId=" + this.mActivePointerId + " in onTouchEvent");
                 } else {
                     initVelocityTrackerIfNotExists();
                     this.mVelocityTracker.addMovement(motionEvent);
@@ -232,7 +256,7 @@ public class ScrollContainer extends FrameLayout {
                     }
                     int scrollY = getScrollY() - i;
                     if (this.mIsBeingDragged) {
-                        this.currentStatus = ScrollContainer$Status.MOVING;
+                        this.currentStatus = Status.MOVING;
                         if (scrollY >= getChildAt(0).getMeasuredHeight() - this.mSettingDefaultHeight) {
                             scrollTo(0, getChildAt(0).getMeasuredHeight() - this.mSettingDefaultHeight);
                         } else {
@@ -270,7 +294,7 @@ public class ScrollContainer extends FrameLayout {
         if (i == 0) {
             return;
         }
-        this.currentStatus = ScrollContainer$Status.CLOSING;
+        this.currentStatus = Status.CLOSING;
         this.mScroller.startScroll(0, getScrollY(), 0, i, 200);
         invalidate();
     }
@@ -280,7 +304,7 @@ public class ScrollContainer extends FrameLayout {
         if (i == 0) {
             return;
         }
-        this.currentStatus = ScrollContainer$Status.OPENING;
+        this.currentStatus = Status.OPENING;
         this.mScroller.startScroll(0, getScrollY(), 0, i, 200);
         invalidate();
     }
@@ -362,20 +386,20 @@ public class ScrollContainer extends FrameLayout {
         if (f2 < f - this.mSettingDefaultHeight || (i2 == 0 && f - this.mSettingDefaultHeight == 0.0f)) {
             if (i2 <= 0 || f2 >= f - this.mSettingDefaultHeight) {
                 if (i2 == 0) {
-                    if (this.currentStatus != ScrollContainer$Status.OPENED) {
-                        this.currentStatus = ScrollContainer$Status.OPENED;
-                        onScrollFinished(ScrollContainer$Status.OPENED);
+                    if (this.currentStatus != Status.OPENED) {
+                        this.currentStatus = Status.OPENED;
+                        onScrollFinished(Status.OPENED);
                     }
-                } else if (i2 == (-this.mSettingDefaultHeight) && this.currentStatus != ScrollContainer$Status.EXIT) {
-                    this.currentStatus = ScrollContainer$Status.EXIT;
-                    onScrollFinished(ScrollContainer$Status.EXIT);
+                } else if (i2 == (-this.mSettingDefaultHeight) && this.currentStatus != Status.EXIT) {
+                    this.currentStatus = Status.EXIT;
+                    onScrollFinished(Status.EXIT);
                 }
-            } else if (this.currentStatus != ScrollContainer$Status.IDLE) {
-                this.currentStatus = ScrollContainer$Status.IDLE;
+            } else if (this.currentStatus != Status.IDLE) {
+                this.currentStatus = Status.IDLE;
             }
-        } else if (this.currentStatus != ScrollContainer$Status.FULLSCREEN) {
-            this.currentStatus = ScrollContainer$Status.FULLSCREEN;
-            onScrollFinished(ScrollContainer$Status.FULLSCREEN);
+        } else if (this.currentStatus != Status.FULLSCREEN) {
+            this.currentStatus = Status.FULLSCREEN;
+            onScrollFinished(Status.FULLSCREEN);
         }
         if (f2 >= f - this.mSettingDefaultHeight) {
             this.offsetY = (int) (getScrollY() - (f - this.mSettingDefaultHeight));
@@ -406,43 +430,43 @@ public class ScrollContainer extends FrameLayout {
         this.mSettingDefaultHeight = i;
     }
 
-    public void setSettingMenuParams(AbsSelectableDialog$Params absSelectableDialog$Params) {
-        this.mParams = absSelectableDialog$Params;
+    public void setSettingMenuParams(AbsSelectableDialog.Params params) {
+        this.mParams = params;
     }
 
     private boolean isPortrait() {
         return this.mOrientation == 1;
     }
 
-    public ScrollContainer$Status getCurrentStatus() {
+    public Status getCurrentStatus() {
         switch (this.currentStatus) {
             case FULLSCREEN:
-                return ScrollContainer$Status.FULLSCREEN;
+                return Status.FULLSCREEN;
             case OPENED:
-                return ScrollContainer$Status.OPENED;
+                return Status.OPENED;
             case EXIT:
-                return ScrollContainer$Status.EXIT;
+                return Status.EXIT;
             case IDLE:
-                return ScrollContainer$Status.IDLE;
+                return Status.IDLE;
             case MOVING:
-                return ScrollContainer$Status.MOVING;
+                return Status.MOVING;
             case OPENING:
-                return ScrollContainer$Status.OPENING;
+                return Status.OPENING;
             case CLOSING:
-                return ScrollContainer$Status.CLOSING;
+                return Status.CLOSING;
             default:
-                return ScrollContainer$Status.OPENED;
+                return Status.OPENED;
         }
     }
 
-    private void onScrollFinished(ScrollContainer$Status scrollContainer$Status) {
+    private void onScrollFinished(Status status) {
         if (this.mOnScrollListener != null) {
-            this.mOnScrollListener.onScrollFinished(scrollContainer$Status);
+            this.mOnScrollListener.onScrollFinished(status);
         }
     }
 
     public void noAnimationFullScreen() {
-        if (this.currentStatus == ScrollContainer$Status.FULLSCREEN) {
+        if (this.currentStatus == Status.FULLSCREEN) {
             if (isPortrait()) {
                 setViewMargin(this.mParams.maxHeightPortrait - this.mSettingDefaultHeight);
                 scrollTo(0, (this.mParams.maxHeightPortrait - this.mSettingDefaultHeight) + this.offsetY);
@@ -451,7 +475,7 @@ public class ScrollContainer extends FrameLayout {
                 scrollTo(0, (this.mParams.maxHeightLandscape - this.mSettingDefaultHeight) + this.offsetY);
             }
         }
-        if (this.currentStatus == ScrollContainer$Status.IDLE) {
+        if (this.currentStatus == Status.IDLE) {
             if (this.mScroller != null && !this.mScroller.isFinished()) {
                 this.mScroller.forceFinished(true);
             }
@@ -463,12 +487,12 @@ public class ScrollContainer extends FrameLayout {
         this.mChildHeight = i;
     }
 
-    public void setOnScrollListener(ScrollContainer$OnScrollListener scrollContainer$OnScrollListener) {
-        this.mOnScrollListener = scrollContainer$OnScrollListener;
+    public void setOnScrollListener(OnScrollListener onScrollListener) {
+        this.mOnScrollListener = onScrollListener;
     }
 
-    public void setCurrentStatus(ScrollContainer$Status scrollContainer$Status) {
-        this.currentStatus = scrollContainer$Status;
+    public void setCurrentStatus(Status status) {
+        this.currentStatus = status;
     }
 
     public void setViewMargin(int i) {
@@ -476,9 +500,9 @@ public class ScrollContainer extends FrameLayout {
         if (getChildCount() <= 0 || (childAt = getChildAt(0)) == null) {
             return;
         }
-        FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) childAt.getLayoutParams();
-        frameLayout$LayoutParams.height = this.mChildHeight;
-        frameLayout$LayoutParams.setMargins(0, i, 0, 0);
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) childAt.getLayoutParams();
+        layoutParams.height = this.mChildHeight;
+        layoutParams.setMargins(0, i, 0, 0);
     }
 
     public int getScrolledHeight() {

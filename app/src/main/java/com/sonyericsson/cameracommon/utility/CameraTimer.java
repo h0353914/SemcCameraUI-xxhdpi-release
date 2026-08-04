@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Message;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class CameraTimer {
     public static final int MSG_CANCEL = 2;
@@ -17,27 +18,6 @@ public class CameraTimer {
     private long mInterval;
     private String mOptionName;
     private Timer mTimer;
-
-    static /* synthetic */ long access$100(CameraTimer cameraTimer) {
-        return cameraTimer.mCurTime;
-    }
-
-    static /* synthetic */ long access$102(CameraTimer cameraTimer, long j) {
-        cameraTimer.mCurTime = j;
-        return j;
-    }
-
-    static /* synthetic */ Handler access$200(CameraTimer cameraTimer) {
-        return cameraTimer.mHandler;
-    }
-
-    static /* synthetic */ void access$300(CameraTimer cameraTimer) {
-        cameraTimer.terminateInnerTimer();
-    }
-
-    static /* synthetic */ long access$400(CameraTimer cameraTimer) {
-        return cameraTimer.mInterval;
-    }
 
     public CameraTimer(long j, long j2, Handler handler, String str, long j3) {
         if (CamLog.VERBOSE) {
@@ -67,7 +47,7 @@ public class CameraTimer {
             if (CamLog.VERBOSE) {
                 CamLog.d("start schedule.(" + this.mOptionName + ")");
             }
-            this.mTimer.schedule(new CameraTimer$SelfTimerTimerTask(this, null), this.mDelay, this.mInterval);
+            this.mTimer.schedule(new SelfTimerTimerTask(), this.mDelay, this.mInterval);
         }
     }
 
@@ -89,11 +69,34 @@ public class CameraTimer {
         this.mHandler.removeMessages(1);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private synchronized void terminateInnerTimer() {
         if (this.mTimer != null) {
             this.mTimer.cancel();
             this.mTimer.purge();
             this.mTimer = null;
+        }
+    }
+
+    private class SelfTimerTimerTask extends TimerTask {
+        private SelfTimerTimerTask() {
+        }
+
+        @Override // java.util.TimerTask, java.lang.Runnable
+        public void run() {
+            if (CameraTimer.this.mCurTime > 0) {
+                Message messageObtain = Message.obtain();
+                messageObtain.arg1 = (int) CameraTimer.this.mCurTime;
+                messageObtain.what = 0;
+                CameraTimer.this.mHandler.sendMessage(messageObtain);
+            } else {
+                Message messageObtain2 = Message.obtain();
+                messageObtain2.arg1 = (int) CameraTimer.this.mCurTime;
+                messageObtain2.what = 1;
+                CameraTimer.this.mHandler.sendMessage(messageObtain2);
+                CameraTimer.this.terminateInnerTimer();
+            }
+            CameraTimer.this.mCurTime -= CameraTimer.this.mInterval;
         }
     }
 }

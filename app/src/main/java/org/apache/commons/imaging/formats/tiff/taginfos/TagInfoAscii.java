@@ -12,7 +12,6 @@ public class TagInfoAscii extends TagInfo {
     }
 
     public String[] getValue(ByteOrder byteOrder, byte[] bArr) {
-        int i;
         int i2 = 0;
         for (int i3 = 0; i3 < bArr.length - 1; i3++) {
             if (bArr[i3] == 0) {
@@ -26,16 +25,10 @@ public class TagInfoAscii extends TagInfo {
         for (int i6 = 0; i6 < bArr.length; i6++) {
             if (bArr[i6] == 0) {
                 try {
-                    String str = new String(bArr, i4, i6 - i4, "UTF-8");
-                    i = i5 + 1;
-                    try {
-                        strArr[i5] = str;
-                    } catch (UnsupportedEncodingException unused) {
-                    }
+                    strArr[i5] = new String(bArr, i4, i6 - i4, "UTF-8");
+                    i5++;
                 } catch (UnsupportedEncodingException unused2) {
-                    i = i5;
                 }
-                i5 = i;
                 i4 = i6 + 1;
             }
         }
@@ -48,7 +41,7 @@ public class TagInfoAscii extends TagInfo {
         return strArr;
     }
 
-    public byte[] encodeValue(ByteOrder byteOrder, String... strArr) throws ImageWriteException {
+    public byte[] encodeValue(ByteOrder byteOrder, String... strArr) throws ImageWriteException, UnsupportedEncodingException {
         return FieldType.ASCII.writeData(strArr, byteOrder);
     }
 }

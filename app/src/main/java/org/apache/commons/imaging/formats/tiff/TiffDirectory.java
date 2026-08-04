@@ -1,7 +1,141 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package org.apache.commons.imaging.formats.tiff;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -446,7 +580,11 @@ public class TiffDirectory extends TiffElement {
     public String getFieldValue(TagInfoGpsText tagInfoGpsText, boolean z) throws ImageReadException {
         TiffField tiffFieldFindField = findField(tagInfoGpsText);
         if (tiffFieldFindField != null) {
-            return tagInfoGpsText.getValue(tiffFieldFindField);
+            try {
+                return tagInfoGpsText.getValue(tiffFieldFindField);
+            } catch (UnsupportedEncodingException e) {
+                throw new ImageReadException(e.getMessage(), e);
+            }
         }
         if (!z) {
             return null;
@@ -465,7 +603,21 @@ public class TiffDirectory extends TiffElement {
         throw new ImageReadException("Required field \"" + tagInfoXpString.name + "\" is missing");
     }
 
-    private List<TiffDirectory$ImageDataElement> getRawImageDataElements(TiffField tiffField, TiffField tiffField2) throws ImageReadException {
+    public static final class ImageDataElement extends TiffElement {
+        @Override // org.apache.commons.imaging.formats.tiff.TiffElement
+        public String getElementDescription(boolean z) {
+            if (z) {
+                return null;
+            }
+            return "ImageDataElement";
+        }
+
+        public ImageDataElement(long j, int i) {
+            super(j, i);
+        }
+    }
+
+    private List<ImageDataElement> getRawImageDataElements(TiffField tiffField, TiffField tiffField2) throws ImageReadException {
         int[] intArrayValue = tiffField.getIntArrayValue();
         int[] intArrayValue2 = tiffField2.getIntArrayValue();
         if (intArrayValue.length != intArrayValue2.length) {
@@ -473,12 +625,12 @@ public class TiffDirectory extends TiffElement {
         }
         ArrayList arrayList = new ArrayList();
         for (int i = 0; i < intArrayValue.length; i++) {
-            arrayList.add(new TiffDirectory$ImageDataElement(intArrayValue[i], intArrayValue2[i]));
+            arrayList.add(new ImageDataElement(intArrayValue[i], intArrayValue2[i]));
         }
         return arrayList;
     }
 
-    public List<TiffDirectory$ImageDataElement> getTiffRawImageDataElements() throws ImageReadException {
+    public List<ImageDataElement> getTiffRawImageDataElements() throws ImageReadException {
         TiffField tiffFieldFindField = findField(TiffTagConstants.TIFF_TAG_TILE_OFFSETS);
         TiffField tiffFieldFindField2 = findField(TiffTagConstants.TIFF_TAG_TILE_BYTE_COUNTS);
         TiffField tiffFieldFindField3 = findField(TiffTagConstants.TIFF_TAG_STRIP_OFFSETS);
@@ -506,11 +658,11 @@ public class TiffDirectory extends TiffElement {
         return true;
     }
 
-    public TiffDirectory$ImageDataElement getJpegRawImageDataElement() throws ImageReadException {
+    public ImageDataElement getJpegRawImageDataElement() throws ImageReadException {
         TiffField tiffFieldFindField = findField(TiffTagConstants.TIFF_TAG_JPEG_INTERCHANGE_FORMAT);
         TiffField tiffFieldFindField2 = findField(TiffTagConstants.TIFF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH);
         if (tiffFieldFindField != null && tiffFieldFindField2 != null) {
-            return new TiffDirectory$ImageDataElement(tiffFieldFindField.getIntArrayValue()[0], tiffFieldFindField2.getIntArrayValue()[0]);
+            return new ImageDataElement(tiffFieldFindField.getIntArrayValue()[0], tiffFieldFindField2.getIntArrayValue()[0]);
         }
         throw new ImageReadException("Couldn't find image data.");
     }

@@ -1,5 +1,7 @@
 package org.apache.commons.imaging;
 
+import org.apache.commons.imaging.ImageReadException;
+
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -250,14 +252,14 @@ public abstract class ImageParser extends BinaryFileParser {
         if (map == null) {
             return new SimpleBufferedImageFactory();
         }
-        BufferedImageFactory bufferedImageFactory = (BufferedImageFactory) map.get("BUFFERED_IMAGE_FACTORY");
+        BufferedImageFactory bufferedImageFactory = (BufferedImageFactory) map.get(ImagingConstants.BUFFERED_IMAGE_FACTORY);
         return bufferedImageFactory != null ? bufferedImageFactory : new SimpleBufferedImageFactory();
     }
 
     public static boolean isStrict(Map<String, Object> map) {
-        if (map == null || !map.containsKey("STRICT")) {
+        if (map == null || !map.containsKey(ImagingConstants.PARAM_KEY_STRICT)) {
             return false;
         }
-        return ((Boolean) map.get("STRICT")).booleanValue();
+        return ((Boolean) map.get(ImagingConstants.PARAM_KEY_STRICT)).booleanValue();
     }
 }

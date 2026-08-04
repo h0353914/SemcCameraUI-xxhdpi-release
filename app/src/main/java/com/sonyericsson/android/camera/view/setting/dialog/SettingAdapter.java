@@ -1,3 +1,42 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.view.setting.dialog;
 
 import android.content.Context;
@@ -98,13 +137,29 @@ public class SettingAdapter extends ArrayAdapter<SettingItem> {
         return 0;
     }
 
+    public static class ItemLayoutParams {
+        public final boolean bottom;
+        public final int height;
+        public final boolean left;
+        public final boolean right;
+        public final boolean top;
+
+        public ItemLayoutParams(int i, boolean z, boolean z2, boolean z3, boolean z4) {
+            this.height = i;
+            this.top = z;
+            this.bottom = z2;
+            this.left = z3;
+            this.right = z4;
+        }
+    }
+
     @Override // android.widget.ArrayAdapter, android.widget.Adapter
     public View getView(int i, View view, ViewGroup viewGroup) {
         if (CamLog.VERBOSE) {
             CamLog.d("getView()");
         }
         SettingItem item = getItem(i);
-        SettingAdapter$ItemLayoutParams settingAdapter$ItemLayoutParamsGenerateItemLayoutParams = generateItemLayoutParams(viewGroup, i);
+        ItemLayoutParams itemLayoutParamsGenerateItemLayoutParams = generateItemLayoutParams(viewGroup, i);
         if (view != null) {
             if (CamLog.VERBOSE) {
                 CamLog.d("  has convertView");
@@ -120,7 +175,7 @@ public class SettingAdapter extends ArrayAdapter<SettingItem> {
                     }
                     settingDialogItem.setItem(item);
                 }
-                settingDialogItem.update(viewGroup, settingAdapter$ItemLayoutParamsGenerateItemLayoutParams);
+                settingDialogItem.update(viewGroup, itemLayoutParamsGenerateItemLayoutParams);
                 return settingDialogItem.getView();
             }
         }
@@ -128,7 +183,7 @@ public class SettingAdapter extends ArrayAdapter<SettingItem> {
             CamLog.d("  create new dialogItem");
         }
         SettingDialogItem settingDialogItemCreate = this.mDialogItemFactory.create(item, viewGroup, this.mIsDeviceInSecurityLock);
-        settingDialogItemCreate.update(viewGroup, settingAdapter$ItemLayoutParamsGenerateItemLayoutParams);
+        settingDialogItemCreate.update(viewGroup, itemLayoutParamsGenerateItemLayoutParams);
         settingDialogItemCreate.getView().setTag(settingDialogItemCreate);
         return settingDialogItemCreate.getView();
     }
@@ -147,10 +202,10 @@ public class SettingAdapter extends ArrayAdapter<SettingItem> {
         return this.mDialogItemFactory.getDialogItemTypeCount();
     }
 
-    private SettingAdapter$ItemLayoutParams generateItemLayoutParams(ViewGroup viewGroup, int i) {
+    private ItemLayoutParams generateItemLayoutParams(ViewGroup viewGroup, int i) {
         int numColumns = viewGroup instanceof GridView ? ((GridView) viewGroup).getNumColumns() : 1;
         int i2 = i / numColumns;
         int i3 = i % numColumns;
-        return new SettingAdapter$ItemLayoutParams(this.mItemHeight, this.mSetRoundBackgroundTop && i2 == 0, i2 == (getCount() / numColumns) - 1, i3 == 0, i3 == numColumns + (-1));
+        return new ItemLayoutParams(this.mItemHeight, this.mSetRoundBackgroundTop && i2 == 0, i2 == (getCount() / numColumns) - 1, i3 == 0, i3 == numColumns + (-1));
     }
 }

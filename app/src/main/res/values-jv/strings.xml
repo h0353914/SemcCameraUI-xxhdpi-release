@@ -4,9 +4,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Ora bisa ngrampungake njupuk. Coba deleng luwih alon.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Ora bisa ngrampungake njupuk. Coba deleng luwih cepet.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Usap kamera kanggo njupuk potret panorama</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Nggawe file ing ngisor iki:\n- Gambar Multi Sudhut\n- Gambar 3D\nCathetan: File kasebut ngemot area abu-abu.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Nggawe file ing ngisor iki:\n- Gambar Multi Sudhut\n- Gambar 3D</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Lagi proses...\nGambar ini ngemot area abu-abu</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Nggawe file ing ngisor iki:
+- Gambar Multi Sudhut
+- Gambar 3D
+Cathetan: File kasebut ngemot area abu-abu."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Nggawe file ing ngisor iki:
+- Gambar Multi Sudhut
+- Gambar 3D"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Lagi proses...
+Gambar ini ngemot area abu-abu"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Nyimpen gambar</string>
     <string name="cam_3d_strings_dialog_processing_txt">Lagi proses...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Enteni sawetara wektu kanggo mbukak kamera 3D</string>
@@ -116,7 +122,7 @@
     <string name="cam_strings_apps_list_installed_txt">Wis diinstal</string>
     <string name="cam_strings_apps_list_txt">Aplikasi kamera</string>
     <string name="cam_strings_art_filter_guesture_guide_general_txt">Gunakake driji kanggo ngowahi gambar sing ditampilake</string>
-    <string name="cam_strings_art_filter_guesture_guide_tap_txt">Tutul bagean sing pengin disimpen warnane </string>
+    <string name="cam_strings_art_filter_guesture_guide_tap_txt">"Tutul bagean sing pengin disimpen warnane "</string>
     <string name="cam_strings_aspect_ratio_txt">Rasio aspek</string>
     <string name="cam_strings_auto_power_off_txt">Kamera bakal ditutup amarga ora aktif</string>
     <string name="cam_strings_auto_scene_recognition_txt">Kenal sawangan otomatis</string>
@@ -332,7 +338,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Dadekake kulit katon padhang lan alus. Efek iki fungsi ing aplikasi sing nggunakake kamera ngarep. Iki bisa ditrapake ing foto lan video. Sampeyan uga bisa ngatur tingkate.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Pangaturan tingkat</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Kulit alus</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Ora bisa miwiti aplikasi.\nPesthekake yen versi anyare %1$s wis keinstal lan aktif ing piranti.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Ora bisa miwiti aplikasi.
+Pesthekake yen versi anyare %1$s wis keinstal lan aktif ing piranti."</string>
     <string name="cam_strings_gridline_txt">Garis kothak</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Walik dlamakan tangan ngadep kamera. Timer bakal diuripake nalika dlamakan diweruhi. Supaya gampang diweruhi, dawakake driji munggah.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Walik dlamakan tangan ngadep kamera</string>
@@ -374,25 +381,26 @@
     <string name="cam_strings_more_common_setting_title_txt">Setelan umum</string>
     <string name="cam_strings_more_txt">Liyane</string>
     <string name="cam_strings_multi_window_txt">Seret tengah garis bagi kanggo ngalih menyang layar utuh kanggo nggunakake %1$s</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Piranti liya saiki kasambung.\nApa sampeyan arep mbagi gambar liwat viewfinder nggunake piranti?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Piranti liya saiki kasambung.
+Apa sampeyan arep mbagi gambar liwat viewfinder nggunake piranti?"</string>
     <string name="cam_strings_multicam_add_device_txt">Tambah piranti</string>
     <string name="cam_strings_multicam_add_more_txt">Tambah liyane</string>
     <string name="cam_strings_multicam_apply_txt">Rampung</string>
     <string name="cam_strings_multicam_connection_failure_dialog_txt">Ora bisa nyambung</string>
-    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Ora bisa nyambungake nyang Sony\'s Wi-Fi/NFC camera nalika Xperia kasambung karo Xperia liya.</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">"Ora bisa nyambungake nyang Sony's Wi-Fi/NFC camera nalika Xperia kasambung karo Xperia liya."</string>
     <string name="cam_strings_multicam_error_app_ver_old_txt">Versi apl ora cocog. Ora bisa kasambung. Apl sampeyan kudu dianyari.</string>
     <string name="cam_strings_multicam_error_disconnect_txt">Dipedhot</string>
     <string name="cam_strings_multicam_error_nfc_txt">Ora bisa miwiti karo NFC dikunci.</string>
     <string name="cam_strings_multicam_error_wifi_txt">Mode iki ora kasedhiya nalika nambatake Wi-Fi.</string>
     <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">Jumlah maks piranti sing ditambahake.</string>
-    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Mung siji Sony\'s Wi-Fi/NFC camera sing bisa nyambung karo Xperia sawayah-wayah.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">"Mung siji Sony's Wi-Fi/NFC camera sing bisa nyambung karo Xperia sawayah-wayah."</string>
     <string name="cam_strings_multicam_nfc_connect_title_txt">Demek piranti bebarengan kanggo nyambungake</string>
-    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Sony\'s Wi-Fi/NFC camera</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">"Sony's Wi-Fi/NFC camera"</string>
     <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
     <string name="cam_strings_multicam_nfc_touch_to_beam_title_txt">Demek layar</string>
     <string name="cam_strings_multicam_security_info_txt">Yen piranti sing sampeyan sambungake uga kasambung karo piranti Xperia liya liwat aplikasi iki, Xperia sampeyan uga bakal otomatis kasambung nyang piranti kasebut lan kabeh gambar liwat viewfinder bakal dibagi ing antarane Xperia sampeyan lan kabeh piranti sing kasambung.</string>
     <string name="cam_strings_multicam_touch_add_camera_desc_txt">Tutul knggo nambah piranti. Gbr sk jendhela bidik bakal katon ing kene.</string>
-    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Ora bisa nyambungake karo Xperia apa wae nalka Xperia kasambung karo Sony\'s Wi-Fi/NFC camera.</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">"Ora bisa nyambungake karo Xperia apa wae nalka Xperia kasambung karo Sony's Wi-Fi/NFC camera."</string>
     <string name="cam_strings_ok_txt">OK</string>
     <string name="cam_strings_permgroupdesc_thermalmitigation_message_txt">Idinake aplikasi ngontrol sistem kanggo motret stabil, gumantung suhune piranti.</string>
     <string name="cam_strings_permgrouplab_thermalmitigation_txt">kontrol sistem</string>
@@ -408,7 +416,8 @@
     <string name="cam_strings_predictive_capture_txt">Jepretan Prediktif</string>
     <string name="cam_strings_predictive_launch_guide_txt">Tutul layar kanggo ndeleng ing layar utuh</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Paluncuran prediktif</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Sampeyan bisa ngluncurake kamera kanthi cepet. Oyog lan cekel piranti kanthi mujur lan adhepake kamera marang objek. Piranti bakal otomatis ngluncurake kamera.\nSampeyan bisa mateni fitur iki saka Paluncuran prediktif ing setelan kamera.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Sampeyan bisa ngluncurake kamera kanthi cepet. Oyog lan cekel piranti kanthi mujur lan adhepake kamera marang objek. Piranti bakal otomatis ngluncurake kamera.
+Sampeyan bisa mateni fitur iki saka Paluncuran prediktif ing setelan kamera."</string>
     <string name="cam_strings_predictive_launch_txt">Paluncuran prediktif</string>
     <string name="cam_strings_preview_always_txt">Aktif</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 detik</string>
@@ -441,7 +450,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s merlokake idin ing ngisor</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Idin %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Aplikasi merlokake idin ing ngisor kanggo nglakokake tumindak iki.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Kanggo menehi idin, bukak Info aplikasi &gt; Idin.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Kanggo menehi idin, bukak Info aplikasi > Idin.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Ora bisa nerusake</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Njupuk foto lan video</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Mbalekake panggonan</string>
@@ -510,7 +519,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Obah alion banget</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Sampeyan bisa nggenti fps lan gaya ngrekam kanggo obahan alon</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Pilihan liyane</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Ngrekam kanthi instan prastawa mejaji ing obahan alon %1$s fps kanthi nutul tombol ing tengah layar.\nParekaman ing kahanan padhang bakal mbiyantu nggawe video sing luwih apik.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Ngrekam kanthi instan prastawa mejaji ing obahan alon %1$s fps kanthi nutul tombol ing tengah layar.
+Parekaman ing kahanan padhang bakal mbiyantu nggawe video sing luwih apik."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Smpyn bs ngrekam momen sg pas karo %1$s fps kanthi nutul tmbl ing tengah</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Ngrekam kanthi instan prastawa mejaji ing obahan alon %1$s fps kanthi nutul tombol ing tengah layar</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Obah alon banget (sak jepretan)</string>
@@ -521,7 +531,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Obah alon</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Carane ngrekam</string>
     <string name="cam_strings_slow_motion_standard_txt">Obah alon</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Gawe video apik kanthi nampilake prastawa mejaji ing obahan alon\nParekaman ing kahanan padhang bakal mbiyantu nggawe video sing luwih apik.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Gawe video apik kanthi nampilake prastawa mejaji ing obahan alon
+Parekaman ing kahanan padhang bakal mbiyantu nggawe video sing luwih apik."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Sampeyan bisa ngrekam video ing maneka kacepetan kanthi nggenti menyang %1$s fps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Tutul tombol ing tengah nalika wektune pas</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Obahan alon direkam</string>
@@ -552,12 +563,12 @@
     <string name="cam_strings_sw_licence_title_txt">Lisensi Piranti Lunak</string>
     <string name="cam_strings_take_photo_txt">Jupuk potret</string>
     <string name="cam_strings_term_of_use_accept_txt">Tampa</string>
-    <string name="cam_strings_term_of_use_consent_txt">Aku sarujuk karo &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Katemtuan Panggunan&lt;/a&gt; Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Aku sarujuk karo &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Katemtuan Panggunan&lt;/a> Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Panggunan layanan iki bisa dikenani prabeya data seluler gumantung saka paket data sampeyan.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile bakal nglumpukake pangidentifikasi piranti unik ID Android acak sampeyan, data adhedhasar panggonan, lan stempel wektu, supaya bisa nyedhiyakake asil sing prayoga minangka perangane layanan lan kanggo paningkatan layanan kasebut.</string>
     <string name="cam_strings_term_of_use_decline_txt">Tolak</string>
     <string name="cam_strings_term_of_use_title_txt">Syarat lan Katemtuan</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Katemtuan Panggunaan&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Katemtuan Panggunaan&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Ora milih foto</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Ora bisa nyimpen</string>
     <string name="cam_strings_timeshift_save_complete_txt">Disimpen</string>
@@ -584,7 +595,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Supaya parekaman video 4K stabil, aja genti setelan iki kajaba sampeyan nggunakake kertu SD sing kacepetane dhuwur (disaranake UHS Speed Class 1 utawa luwih dhuwur, utawa Speed Class 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Supaya Pangalihan wektu parekaman video stabil, aja genti setelan iki kajaba sampeyan nggunakake kertu SD sing kacepetane dhuwur (disaranake UHS Speed Class 1 utawa luwih dhuwur, utawa Speed Class 10). Genti wae?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Supaya parekaman video obah alon stabil, aja genti setelan iki kajaba sampeyan nggunakake kertu SD sing kacepetane dhuwur (disaranake UHS Speed Class 1 utawa luwih dhuwur, utawa Speed Class 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Supaya parekaman video stabil, kita nyaranake nggenti simpenan data menyang Simpenan internal. Pengin nggenti saiki?\n\nYen terus nggunakake kertu SD minangka simpenan data, pesthekake supaya nggunakake kertu SD sing kacepetane dhuwur (disaranake UHS Speed Class 1 utawa luwih dhuwur, utawa Speed Class 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Supaya parekaman video stabil, kita nyaranake nggenti simpenan data menyang Simpenan internal. Pengin nggenti saiki?
+
+Yen terus nggunakake kertu SD minangka simpenan data, pesthekake supaya nggunakake kertu SD sing kacepetane dhuwur (disaranake UHS Speed Class 1 utawa luwih dhuwur, utawa Speed Class 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Kamera loro</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Sampeyan bisa ngrekam video apik karo sithik gangguan kanthi nggunakake loro kamera, uga nalika wengo utawa kamar sing burem. Kamera otomatis ngalih antarane siji kamera menyang Kamera loro miturut prastawa sing direkam karo Tampanan dhuwur banget.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Ngrekam video nganggo loro kamera</string>

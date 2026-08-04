@@ -1,67 +1,70 @@
 package com.sonyericsson.android.camera.view.baselayout.settingshortcut;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import com.sonyericsson.android.camera.R;
+import com.sonyericsson.android.camera.configuration.SharedPreferencesConstants;
+import com.sonyericsson.android.camera.setting.SharedPreferencesAccessor;
+import com.sonyericsson.android.camera.view.modeselector.CapturingModeAttributes;
 import com.sonyericsson.android.camera.view.modeselector.InternalMode;
 import com.sonyericsson.android.camera.view.modeselector.Mode;
-import com.sonyericsson.android.camera.view.modeselector.Mode$OnStateChangeListener;
 import com.sonyericsson.android.camera.view.modeselector.ModeLoader;
-import com.sonyericsson.android.camera.view.modeselector.ModeLoader$OnModeListChangeListener;
-import com.sonyericsson.android.camera.view.selectabledialog.ModeSelector$OnModeSelectListener;
+import com.sonyericsson.android.camera.view.modeselector.internalmode.googlelens.GoogleLensMode;
+import com.sonyericsson.android.camera.view.selectabledialog.ModeSelector;
+import java.util.Iterator;
+import java.util.List;
 
 public class MruButtonContainer extends FrameLayout {
     private boolean mIsAvailable;
-    private Mode$OnStateChangeListener mModeChangeListener;
-    private ModeLoader$OnModeListChangeListener mModeListChangeListener;
+    private final Mode.OnStateChangeListener mModeChangeListener = new Mode.OnStateChangeListener() { // from class: com.sonyericsson.android.camera.view.baselayout.settingshortcut.MruButtonContainer.1
+        @Override // com.sonyericsson.android.camera.view.modeselector.Mode.OnStateChangeListener
+        public void onAvailabilityChanged(Mode mode, boolean z) {
+            if (mode == null || !mode.compare(MruButtonContainer.this.mMruButton.getMode())) {
+                return;
+            }
+            MruButtonContainer.this.setAvailability(z);
+        }
+    };
+    private final ModeLoader.OnModeListChangeListener mModeListChangeListener = new ModeLoader.OnModeListChangeListener() { // from class: com.sonyericsson.android.camera.view.baselayout.settingshortcut.MruButtonContainer.2
+        @Override // com.sonyericsson.android.camera.view.modeselector.ModeLoader.OnModeListChangeListener
+        public void onModeListChanged(List<Mode> list, List<CapturingModeAttributes> list2) throws Resources.NotFoundException {
+            Iterator<Mode> it = list.iterator();
+            while (it.hasNext()) {
+                it.next().setOnStateChangeListener(MruButtonContainer.this.mModeChangeListener);
+            }
+            MruButtonContainer.this.mMruButton.setMode(null);
+        }
+    };
     private ModeLoader mModeLoader;
-    private ModeSelector$OnModeSelectListener mModeSelectListener;
-    private MruButtonContainer$MruButton mMruButton;
+    private ModeSelector.OnModeSelectListener mModeSelectListener;
+    private MruButton mMruButton;
     private boolean mRequestVisible;
-
-    static /* synthetic */ MruButtonContainer$MruButton access$000(MruButtonContainer mruButtonContainer) {
-        return mruButtonContainer.mMruButton;
-    }
-
-    static /* synthetic */ Mode$OnStateChangeListener access$100(MruButtonContainer mruButtonContainer) {
-        return mruButtonContainer.mModeChangeListener;
-    }
-
-    static /* synthetic */ ModeSelector$OnModeSelectListener access$300(MruButtonContainer mruButtonContainer) {
-        return mruButtonContainer.mModeSelectListener;
-    }
-
-    static /* synthetic */ ModeLoader access$400(MruButtonContainer mruButtonContainer) {
-        return mruButtonContainer.mModeLoader;
-    }
 
     public MruButtonContainer(@NonNull Context context) {
         super(context);
-        this.mModeChangeListener = new MruButtonContainer$1(this);
-        this.mModeListChangeListener = new MruButtonContainer$2(this);
         init();
     }
 
     public MruButtonContainer(@NonNull Context context, @Nullable AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.mModeChangeListener = new MruButtonContainer$1(this);
-        this.mModeListChangeListener = new MruButtonContainer$2(this);
         init();
     }
 
     public MruButtonContainer(@NonNull Context context, @Nullable AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
-        this.mModeChangeListener = new MruButtonContainer$1(this);
-        this.mModeListChangeListener = new MruButtonContainer$2(this);
         init();
     }
 
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mMruButton = new MruButtonContainer$MruSmallModeButton(this, null);
+        this.mMruButton = new MruSmallModeButton();
     }
 
     private void init() {
@@ -104,8 +107,8 @@ public class MruButtonContainer extends FrameLayout {
         }
     }
 
-    public void setOnModeSelectListener(ModeSelector$OnModeSelectListener modeSelector$OnModeSelectListener) {
-        this.mModeSelectListener = modeSelector$OnModeSelectListener;
+    public void setOnModeSelectListener(ModeSelector.OnModeSelectListener onModeSelectListener) {
+        this.mModeSelectListener = onModeSelectListener;
     }
 
     public void setMode(Mode mode) {
@@ -117,5 +120,79 @@ public class MruButtonContainer extends FrameLayout {
             return false;
         }
         return InternalMode.class.isAssignableFrom(this.mMruButton.getMode().getClass());
+    }
+
+    private class MruButton {
+        private ImageView mButton;
+        private View.OnClickListener mClickListener = new View.OnClickListener() { // from class: com.sonyericsson.android.camera.view.baselayout.settingshortcut.MruButtonContainer.MruButton.1
+            @Override // android.view.View.OnClickListener
+            public void onClick(View view) {
+                if (MruButton.this.mMode == null || MruButtonContainer.this.mModeSelectListener == null) {
+                    return;
+                }
+                MruButtonContainer.this.mModeSelectListener.onModeSelected(MruButton.this.mMode, true);
+            }
+        };
+        protected Mode mMode;
+
+        MruButton() {
+            this.mButton = (ImageView) MruButtonContainer.this.findViewById(R.id.mru_button);
+            if (this.mButton == null) {
+                return;
+            }
+            this.mButton.setOnClickListener(this.mClickListener);
+        }
+
+        void setClickable(boolean z) {
+            if (this.mButton == null) {
+                return;
+            }
+            this.mButton.setClickable(z);
+        }
+
+        void setMode(Mode mode) throws Resources.NotFoundException {
+            this.mMode = mode;
+            if (this.mButton == null) {
+                MruButtonContainer.this.setAvailability(false);
+                return;
+            }
+            if (mode == null) {
+                MruButtonContainer.this.setAvailability(false);
+            } else {
+                mode.loadSmallIcon(this.mButton);
+                MruButtonContainer.this.setAvailability(mode.isAvailable());
+            }
+        }
+
+        Mode getMode() {
+            return this.mMode;
+        }
+    }
+
+    private class MruSmallModeButton extends MruButton {
+        private SharedPreferencesAccessor mPreferenceAccessor;
+
+        private MruSmallModeButton() {
+            super();
+        }
+
+        @Override // com.sonyericsson.android.camera.view.baselayout.settingshortcut.MruButtonContainer.MruButton
+        void setMode(Mode mode) throws Resources.NotFoundException {
+            if (this.mPreferenceAccessor == null) {
+                this.mPreferenceAccessor = new SharedPreferencesAccessor(MruButtonContainer.this.getContext(), SharedPreferencesConstants.MODE_SHORTCUT_SHARED_PREFS_NAME);
+            }
+            if (mode == null) {
+                String string = this.mPreferenceAccessor.readString(SharedPreferencesConstants.KEY_MODE_SHORTCUT_ID, null);
+                if (string == null) {
+                    string = GoogleLensMode.generateId(MruButtonContainer.this.getContext().getPackageName(), GoogleLensMode.MODE_NAME);
+                }
+                mode = MruButtonContainer.this.mModeLoader.findById(string);
+            }
+            super.setMode(mode);
+            if (mode != null) {
+                this.mPreferenceAccessor.writeString(SharedPreferencesConstants.KEY_MODE_SHORTCUT_ID, mode.getId(), false);
+                this.mPreferenceAccessor.apply();
+            }
+        }
     }
 }

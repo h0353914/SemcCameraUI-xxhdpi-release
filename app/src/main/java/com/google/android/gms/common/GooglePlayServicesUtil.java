@@ -1,47 +1,49 @@
 package com.google.android.gms.common;
 
 import android.app.Activity;
-import android.app.AlertDialog$Builder;
+import android.app.AlertDialog;
 import android.app.AppOpsManager;
 import android.app.Dialog;
 import android.app.Notification;
-import android.app.Notification$BigTextStyle;
-import android.app.Notification$Builder;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface$OnCancelListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageInstaller$SessionInfo;
+import android.content.pm.PackageInstaller;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager$NameNotFoundException;
 import android.content.res.Resources;
-import android.net.Uri$Builder;
+import android.net.Uri;
 import android.os.Build;
-import android.os.Build$VERSION;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.os.UserManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.NotificationCompat$Builder;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationCompatExtras;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
-import com.google.android.gms.R$drawable;
-import com.google.android.gms.R$string;
+import com.google.android.gms.R;
 import com.google.android.gms.common.internal.zzg;
 import com.google.android.gms.common.internal.zzh;
 import com.google.android.gms.common.internal.zzx;
+import com.google.android.gms.common.zzc;
 import com.google.android.gms.internal.zzml;
 import com.google.android.gms.internal.zzmx;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class GooglePlayServicesUtil {
     public static final String GMS_ERROR_DIALOG = "GooglePlayServicesErrorDialog";
 
@@ -60,6 +62,31 @@ public final class GooglePlayServicesUtil {
     static final AtomicBoolean zzaaq = new AtomicBoolean();
     private static final AtomicBoolean zzaar = new AtomicBoolean();
 
+    private static class zza extends Handler {
+        private final Context zzqZ;
+
+        zza(Context context) {
+            super(Looper.myLooper() == null ? Looper.getMainLooper() : Looper.myLooper());
+            this.zzqZ = context.getApplicationContext();
+        }
+
+        @Override // android.os.Handler
+        public void handleMessage(Message message) {
+            try {
+            if (message.what != 1) {
+                Log.w("GooglePlayServicesUtil", "Don't know how to handle this message: " + message.what);
+                return;
+            }
+            int iIsGooglePlayServicesAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this.zzqZ);
+            if (GooglePlayServicesUtil.isUserRecoverableError(iIsGooglePlayServicesAvailable)) {
+                GooglePlayServicesUtil.zza(iIsGooglePlayServicesAvailable, this.zzqZ);
+            }
+            } catch (Exception e) {
+                // Ignore
+            }
+        }
+    }
+
     private GooglePlayServicesUtil() {
     }
 
@@ -69,8 +96,8 @@ public final class GooglePlayServicesUtil {
     }
 
     @Deprecated
-    public static Dialog getErrorDialog(int i, Activity activity, int i2, DialogInterface$OnCancelListener dialogInterface$OnCancelListener) {
-        return zza(i, activity, null, i2, dialogInterface$OnCancelListener);
+    public static Dialog getErrorDialog(int i, Activity activity, int i2, DialogInterface.OnCancelListener onCancelListener) {
+        return zza(i, activity, null, i2, onCancelListener);
     }
 
     @Deprecated
@@ -86,7 +113,7 @@ public final class GooglePlayServicesUtil {
     @Deprecated
     public static String getOpenSourceSoftwareLicenseInfo(Context context) {
         try {
-            InputStream inputStreamOpenInputStream = context.getContentResolver().openInputStream(new Uri$Builder().scheme("android.resource").authority("com.google.android.gms").appendPath("raw").appendPath("oss_notice").build());
+            InputStream inputStreamOpenInputStream = context.getContentResolver().openInputStream(new Uri.Builder().scheme("android.resource").authority("com.google.android.gms").appendPath("raw").appendPath("oss_notice").build());
             try {
                 try {
                     return new Scanner(inputStreamOpenInputStream).useDelimiter("\\A").next();
@@ -103,12 +130,13 @@ public final class GooglePlayServicesUtil {
             }
         } catch (Exception unused2) {
         }
+        return null;
     }
 
     public static Context getRemoteContext(Context context) {
         try {
             return context.createPackageContext("com.google.android.gms", 3);
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             return null;
         }
     }
@@ -116,7 +144,7 @@ public final class GooglePlayServicesUtil {
     public static Resources getRemoteResource(Context context) {
         try {
             return context.getPackageManager().getResourcesForApplication("com.google.android.gms");
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             return null;
         }
     }
@@ -128,6 +156,7 @@ public final class GooglePlayServicesUtil {
         Code decompiled incorrectly, please refer to instructions dump.
     */
     public static int isGooglePlayServicesAvailable(Context context) {
+
         String str;
         String str2;
         if (com.google.android.gms.common.internal.zzd.zzaeK) {
@@ -135,7 +164,7 @@ public final class GooglePlayServicesUtil {
         }
         PackageManager packageManager = context.getPackageManager();
         try {
-            context.getResources().getString(R$string.common_google_play_services_unknown_issue);
+            context.getResources().getString(R.string.common_google_play_services_unknown_issue);
         } catch (Throwable unused) {
             Log.e("GooglePlayServicesUtil", "The Google Play services resources were not found. Check your project configuration to ensure that the resources are included.");
         }
@@ -146,7 +175,7 @@ public final class GooglePlayServicesUtil {
             PackageInfo packageInfo = packageManager.getPackageInfo("com.google.android.gms", 64);
             zzd zzdVarZznu = zzd.zznu();
             if (zzml.zzcb(packageInfo.versionCode) || zzml.zzan(context)) {
-                if (zzdVarZznu.zza(packageInfo, zzc$zzbz.zzaak) == null) {
+                if (zzdVarZznu.zza(packageInfo, zzc.zzbz.zzaak) == null) {
                     str = "GooglePlayServicesUtil";
                     str2 = "Google Play services signature invalid.";
                     Log.w(str, str2);
@@ -160,7 +189,7 @@ public final class GooglePlayServicesUtil {
                 if (applicationInfo == null) {
                     try {
                         applicationInfo = packageManager.getApplicationInfo("com.google.android.gms", 0);
-                    } catch (PackageManager$NameNotFoundException e) {
+                    } catch (PackageManager.NameNotFoundException e) {
                         Log.wtf("GooglePlayServicesUtil", "Google Play services missing when getting application info.", e);
                         return 1;
                     }
@@ -168,25 +197,26 @@ public final class GooglePlayServicesUtil {
                 return !applicationInfo.enabled ? 3 : 0;
             }
             try {
-                zzc$zza zzc_zzaZza = zzdVarZznu.zza(packageManager.getPackageInfo("com.android.vending", 8256), zzc$zzbz.zzaak);
-                if (zzc_zzaZza == null) {
+                zzc.zza zzaVarZza = zzdVarZznu.zza(packageManager.getPackageInfo(GOOGLE_PLAY_STORE_PACKAGE, 8256), zzc.zzbz.zzaak);
+                if (zzaVarZza == null) {
                     Log.w("GooglePlayServicesUtil", "Google Play Store signature invalid.");
                     return 9;
                 }
-                if (zzdVarZznu.zza(packageInfo, zzc_zzaZza) == null) {
+                if (zzdVarZznu.zza(packageInfo, zzaVarZza) == null) {
                     Log.w("GooglePlayServicesUtil", "Google Play services signature invalid.");
                     return 9;
                 }
                 if (zzml.zzca(packageInfo.versionCode) >= zzml.zzca(GOOGLE_PLAY_SERVICES_VERSION_CODE)) {
                 }
-            } catch (PackageManager$NameNotFoundException unused2) {
+            } catch (PackageManager.NameNotFoundException unused2) {
                 str = "GooglePlayServicesUtil";
                 str2 = "Google Play Store is neither installed nor updating.";
             }
-        } catch (PackageManager$NameNotFoundException unused3) {
+        } catch (PackageManager.NameNotFoundException unused3) {
             Log.w("GooglePlayServicesUtil", "Google Play services is missing.");
             return 1;
         }
+        return 0;
     }
 
     @Deprecated
@@ -210,16 +240,16 @@ public final class GooglePlayServicesUtil {
     }
 
     @Deprecated
-    public static boolean showErrorDialogFragment(int i, Activity activity, int i2, DialogInterface$OnCancelListener dialogInterface$OnCancelListener) {
-        return showErrorDialogFragment(i, activity, null, i2, dialogInterface$OnCancelListener);
+    public static boolean showErrorDialogFragment(int i, Activity activity, int i2, DialogInterface.OnCancelListener onCancelListener) {
+        return showErrorDialogFragment(i, activity, null, i2, onCancelListener);
     }
 
-    public static boolean showErrorDialogFragment(int i, Activity activity, Fragment fragment, int i2, DialogInterface$OnCancelListener dialogInterface$OnCancelListener) {
-        Dialog dialogZza = zza(i, activity, fragment, i2, dialogInterface$OnCancelListener);
+    public static boolean showErrorDialogFragment(int i, Activity activity, Fragment fragment, int i2, DialogInterface.OnCancelListener onCancelListener) {
+        Dialog dialogZza = zza(i, activity, fragment, i2, onCancelListener);
         if (dialogZza == null) {
             return false;
         }
-        zza(activity, dialogInterface$OnCancelListener, "GooglePlayServicesErrorDialog", dialogZza);
+        zza(activity, onCancelListener, GMS_ERROR_DIALOG, dialogZza);
         return true;
     }
 
@@ -235,8 +265,8 @@ public final class GooglePlayServicesUtil {
         }
     }
 
-    private static Dialog zza(int i, Activity activity, Fragment fragment, int i2, DialogInterface$OnCancelListener dialogInterface$OnCancelListener) {
-        AlertDialog$Builder alertDialog$Builder = null;
+    private static Dialog zza(int i, Activity activity, Fragment fragment, int i2, DialogInterface.OnCancelListener onCancelListener) {
+        AlertDialog.Builder builder = null;
         if (i == 0) {
             return null;
         }
@@ -245,32 +275,33 @@ public final class GooglePlayServicesUtil {
         }
         if (zzmx.zzqx()) {
             TypedValue typedValue = new TypedValue();
-            activity.getTheme().resolveAttribute(16843529, typedValue, true);
+            activity.getTheme().resolveAttribute(android.R.attr.alertDialogTheme, typedValue, true);
             if ("Theme.Dialog.Alert".equals(activity.getResources().getResourceEntryName(typedValue.resourceId))) {
-                alertDialog$Builder = new AlertDialog$Builder(activity, 5);
+                builder = new AlertDialog.Builder(activity, 5);
             }
         }
-        if (alertDialog$Builder == null) {
-            alertDialog$Builder = new AlertDialog$Builder(activity);
+        if (builder == null) {
+            builder = new AlertDialog.Builder(activity);
         }
-        alertDialog$Builder.setMessage(zzg.zzc(activity, i, zzaf(activity)));
-        if (dialogInterface$OnCancelListener != null) {
-            alertDialog$Builder.setOnCancelListener(dialogInterface$OnCancelListener);
+        builder.setMessage(zzg.zzc(activity, i, zzaf(activity)));
+        if (onCancelListener != null) {
+            builder.setOnCancelListener(onCancelListener);
         }
         Intent intentZza = GoogleApiAvailability.getInstance().zza(activity, i, "d");
         zzh zzhVar = fragment == null ? new zzh(activity, intentZza, i2) : new zzh(fragment, intentZza, i2);
         String strZzh = zzg.zzh(activity, i);
         if (strZzh != null) {
-            alertDialog$Builder.setPositiveButton(strZzh, zzhVar);
+            builder.setPositiveButton(strZzh, zzhVar);
         }
         String strZzg = zzg.zzg(activity, i);
         if (strZzg != null) {
-            alertDialog$Builder.setTitle(strZzg);
+            builder.setTitle(strZzg);
         }
-        return alertDialog$Builder.create();
+        return builder.create();
     }
 
-    private static void zza(int i, Context context) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public static void zza(int i, Context context) {
         zza(i, context, null);
     }
 
@@ -281,31 +312,31 @@ public final class GooglePlayServicesUtil {
         String strZzaf = zzaf(context);
         String strZzi = zzg.zzi(context, i);
         if (strZzi == null) {
-            strZzi = resources.getString(R$string.common_google_play_services_notification_ticker);
+            strZzi = resources.getString(R.string.common_google_play_services_notification_ticker);
         }
         String strZzd = zzg.zzd(context, i, strZzaf);
         PendingIntent pendingIntentZza = GoogleApiAvailability.getInstance().zza(context, i, 0, "n");
         if (zzml.zzan(context)) {
             zzx.zzZ(zzmx.zzqy());
-            notificationBuild = new Notification$Builder(context).setSmallIcon(R$drawable.common_ic_googleplayservices).setPriority(2).setAutoCancel(true).setStyle(new Notification$BigTextStyle().bigText(strZzi + " " + strZzd)).addAction(R$drawable.common_full_open_on_phone, resources.getString(R$string.common_open_on_phone), pendingIntentZza).build();
+            notificationBuild = new Notification.Builder(context).setSmallIcon(R.drawable.common_ic_googleplayservices).setPriority(2).setAutoCancel(true).setStyle(new Notification.BigTextStyle().bigText(strZzi + " " + strZzd)).addAction(R.drawable.common_full_open_on_phone, resources.getString(R.string.common_open_on_phone), pendingIntentZza).build();
         } else {
-            String string = resources.getString(R$string.common_google_play_services_notification_ticker);
+            String string = resources.getString(R.string.common_google_play_services_notification_ticker);
             if (zzmx.zzqu()) {
-                Notification$Builder autoCancel = new Notification$Builder(context).setSmallIcon(17301642).setContentTitle(strZzi).setContentText(strZzd).setContentIntent(pendingIntentZza).setTicker(string).setAutoCancel(true);
+                Notification.Builder autoCancel = new Notification.Builder(context).setSmallIcon(android.R.drawable.stat_sys_warning).setContentTitle(strZzi).setContentText(strZzd).setContentIntent(pendingIntentZza).setTicker(string).setAutoCancel(true);
                 if (zzmx.zzqC()) {
                     autoCancel.setLocalOnly(true);
                 }
                 if (zzmx.zzqy()) {
-                    autoCancel.setStyle(new Notification$BigTextStyle().bigText(strZzd));
+                    autoCancel.setStyle(new Notification.BigTextStyle().bigText(strZzd));
                     notificationBuild = autoCancel.build();
                 } else {
                     notificationBuild = autoCancel.getNotification();
                 }
-                if (Build$VERSION.SDK_INT == 19) {
-                    notificationBuild.extras.putBoolean("android.support.localOnly", true);
+                if (Build.VERSION.SDK_INT == 19) {
+                    notificationBuild.extras.putBoolean(NotificationCompatExtras.EXTRA_LOCAL_ONLY, true);
                 }
             } else {
-                notificationBuild = new NotificationCompat$Builder(context).setSmallIcon(17301642).setTicker(string).setWhen(System.currentTimeMillis()).setAutoCancel(true).setContentIntent(pendingIntentZza).setContentTitle(strZzi).setContentText(strZzd).build();
+                notificationBuild = new NotificationCompat.Builder(context).setSmallIcon(android.R.drawable.stat_sys_warning).setTicker(string).setWhen(System.currentTimeMillis()).setAutoCancel(true).setContentIntent(pendingIntentZza).setContentTitle(strZzi).setContentText(strZzd).build();
             }
         }
         if (zzbk(i)) {
@@ -322,7 +353,7 @@ public final class GooglePlayServicesUtil {
         }
     }
 
-    public static void zza(Activity activity, DialogInterface$OnCancelListener dialogInterface$OnCancelListener, String str, Dialog dialog) {
+    public static void zza(Activity activity, DialogInterface.OnCancelListener onCancelListener, String str, Dialog dialog) {
         boolean z;
         try {
             z = activity instanceof FragmentActivity;
@@ -330,12 +361,12 @@ public final class GooglePlayServicesUtil {
             z = false;
         }
         if (z) {
-            SupportErrorDialogFragment.newInstance(dialog, dialogInterface$OnCancelListener).show(((FragmentActivity) activity).getSupportFragmentManager(), str);
+            SupportErrorDialogFragment.newInstance(dialog, onCancelListener).show(((FragmentActivity) activity).getSupportFragmentManager(), str);
         } else {
             if (!zzmx.zzqu()) {
                 throw new RuntimeException("This Activity does not support Fragments.");
             }
-            ErrorDialogFragment.newInstance(dialog, dialogInterface$OnCancelListener).show(activity.getFragmentManager(), str);
+            ErrorDialogFragment.newInstance(dialog, onCancelListener).show(activity.getFragmentManager(), str);
         }
     }
 
@@ -378,7 +409,7 @@ public final class GooglePlayServicesUtil {
                     } else {
                         zzaap = null;
                     }
-                } catch (PackageManager$NameNotFoundException e) {
+                } catch (PackageManager.NameNotFoundException e) {
                     Log.wtf("GooglePlayServicesUtil", "This should never happen.", e);
                 }
             } else if (!zzaao.equals(context.getPackageName())) {
@@ -395,8 +426,8 @@ public final class GooglePlayServicesUtil {
     }
 
     private static void zzae(Context context) {
-        GooglePlayServicesUtil$zza googlePlayServicesUtil$zza = new GooglePlayServicesUtil$zza(context);
-        googlePlayServicesUtil$zza.sendMessageDelayed(googlePlayServicesUtil$zza.obtainMessage(1), 120000L);
+        zza zzaVar = new zza(context);
+        zzaVar.sendMessageDelayed(zzaVar.obtainMessage(1), 120000L);
     }
 
     public static String zzaf(Context context) {
@@ -409,7 +440,7 @@ public final class GooglePlayServicesUtil {
         PackageManager packageManager = context.getApplicationContext().getPackageManager();
         try {
             applicationInfo = packageManager.getApplicationInfo(context.getPackageName(), 0);
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             applicationInfo = null;
         }
         return applicationInfo != null ? packageManager.getApplicationLabel(applicationInfo).toString() : packageName;
@@ -422,10 +453,6 @@ public final class GooglePlayServicesUtil {
     public static boolean zzah(Context context) {
         Bundle applicationRestrictions;
         return zzmx.zzqA() && (applicationRestrictions = ((UserManager) context.getSystemService("user")).getApplicationRestrictions(context.getPackageName())) != null && "true".equals(applicationRestrictions.getString("restricted_profile"));
-    }
-
-    static /* synthetic */ void zzb(int i, Context context) {
-        zza(i, context);
     }
 
     public static boolean zzb(Context context, int i, String str) {
@@ -462,12 +489,11 @@ public final class GooglePlayServicesUtil {
                     } else {
                         zzaan = 0;
                     }
-                } catch (PackageManager$NameNotFoundException unused) {
+                } catch (PackageManager.NameNotFoundException unused) {
                     zzaan = 0;
                 }
-                z = zzaan != 0;
-            } else if (zzaan != 0) {
             }
+            z = zzaan != 0;
         }
         return z;
     }
@@ -508,6 +534,7 @@ public final class GooglePlayServicesUtil {
         if (i == 1) {
             return zzj(context, "com.google.android.gms");
         }
+
         return false;
     }
 
@@ -518,14 +545,14 @@ public final class GooglePlayServicesUtil {
     @Deprecated
     public static boolean zzf(Context context, int i) {
         if (i == 9) {
-            return zzj(context, "com.android.vending");
+            return zzj(context, GOOGLE_PLAY_STORE_PACKAGE);
         }
         return false;
     }
 
     static boolean zzj(Context context, String str) {
         if (zzmx.zzqD()) {
-            Iterator<PackageInstaller$SessionInfo> it = context.getPackageManager().getPackageInstaller().getAllSessions().iterator();
+            Iterator<PackageInstaller.SessionInfo> it = context.getPackageManager().getPackageInstaller().getAllSessions().iterator();
             while (it.hasNext()) {
                 if (str.equals(it.next().getAppPackageName())) {
                     return true;
@@ -537,7 +564,7 @@ public final class GooglePlayServicesUtil {
         }
         try {
             return context.getPackageManager().getApplicationInfo(str, 8192).enabled;
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             return false;
         }
     }

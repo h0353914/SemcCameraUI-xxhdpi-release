@@ -7,12 +7,6 @@ public final class DescriptorProtos$EnumValueDescriptorProto extends ExtendableM
     public String name;
     public int number;
     public DescriptorProtos$EnumValueOptions options;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$EnumValueDescriptorProto[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

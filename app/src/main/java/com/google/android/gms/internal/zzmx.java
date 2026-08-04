@@ -1,7 +1,8 @@
 package com.google.android.gms.internal;
 
-import android.os.Build$VERSION;
+import android.os.Build;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzmx {
     @Deprecated
     public static boolean isAtLeastL() {
@@ -9,7 +10,7 @@ public final class zzmx {
     }
 
     private static boolean zzcd(int i) {
-        return Build$VERSION.SDK_INT >= i;
+        return Build.VERSION.SDK_INT >= i;
     }
 
     public static boolean zzqA() {

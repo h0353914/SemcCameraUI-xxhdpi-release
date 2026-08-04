@@ -25,6 +25,9 @@ public class BaseIndicator {
 
     private boolean initViews() {
         if (this.mView == null) {
+            if (this.mViewStub == null) {
+                return false;
+            }
             this.mView = this.mViewStub.inflate();
         }
         return this.mView != null;

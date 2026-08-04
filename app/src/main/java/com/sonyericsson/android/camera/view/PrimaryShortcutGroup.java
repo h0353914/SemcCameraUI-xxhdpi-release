@@ -1,12 +1,12 @@
 package com.sonyericsson.android.camera.view;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout$LayoutParams;
 import com.sonyericsson.android.camera.ActionMode;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.configuration.parameters.DisplayFlash;
@@ -18,6 +18,8 @@ import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue
 import com.sonyericsson.android.camera.configuration.parameters.VideoHdr;
 import com.sonyericsson.android.camera.setting.UserSettings;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
+import com.sonyericsson.android.camera.view.ViewFinder;
+import com.sonyericsson.android.camera.view.ViewFinderImpl;
 import com.sonyericsson.android.camera.view.baselayout.settingshortcut.ShortcutButton;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingDialogListener;
 import com.sonyericsson.cameracommon.utility.ResourceUtil;
@@ -25,7 +27,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map$Entry;
 
 public class PrimaryShortcutGroup extends FrameLayout implements SettingDialogListener {
     private ShortcutButton mAspectRatioShortcut;
@@ -34,33 +35,82 @@ public class PrimaryShortcutGroup extends FrameLayout implements SettingDialogLi
     private ShortcutButton mFlashShortcut;
     private ShortcutButton mHdrShortcut;
     private ShortcutButton mHighSensitivityFusionShortcut;
-    private View$OnClickListener mPrimaryShortcutClickListener;
+    private View.OnClickListener mPrimaryShortcutClickListener;
     private ShortcutButton mSelfTimerShortcut;
     private ShortcutButton mSemiAutoShortcut;
     private ShortcutButton mVideoHdrShortcut;
-    private ViewFinderImpl$ViewFinderAccessorForShortcut mViewFinderAccessor;
-
-    static /* synthetic */ ViewFinderImpl$ViewFinderAccessorForShortcut access$000(PrimaryShortcutGroup primaryShortcutGroup) {
-        return primaryShortcutGroup.mViewFinderAccessor;
-    }
+    private ViewFinderImpl.ViewFinderAccessorForShortcut mViewFinderAccessor;
 
     public PrimaryShortcutGroup(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.mPrimaryShortcutClickListener = new PrimaryShortcutGroup$1(this);
+        this.mPrimaryShortcutClickListener = new View.OnClickListener() { // from class: com.sonyericsson.android.camera.view.PrimaryShortcutGroup.1
+            @Override // android.view.View.OnClickListener
+            public void onClick(View view) throws Resources.NotFoundException {
+                if (PrimaryShortcutGroup.this.mViewFinderAccessor.isShortcutButtonClickable()) {
+                    int id = view.getId();
+                    if (id == R.id.contextual_setting_shortcut) {
+                        if (view.isShown()) {
+                            PrimaryShortcutGroup.this.mViewFinderAccessor.openSettingMenuDialog();
+                        }
+                        return;
+                    }
+                    switch (id) {
+                        case R.id.primary_shortcut_aspect_ratio /* 2131296505 */:
+                            PrimaryShortcutGroup.this.mViewFinderAccessor.openShorcutDialog(ViewFinder.UiComponentKind.ASPECT_RATIO_DIALOG);
+                            break;
+                        case R.id.primary_shortcut_facing /* 2131296506 */:
+                            view.setOnClickListener(null);
+                            PrimaryShortcutGroup.this.mViewFinderAccessor.switchCamera();
+                            break;
+                        case R.id.primary_shortcut_flash /* 2131296507 */:
+                            PrimaryShortcutGroup.this.mViewFinderAccessor.openShorcutDialog(ViewFinder.UiComponentKind.FLASH_DIALOG);
+                            break;
+                        case R.id.primary_shortcut_fusion_mode /* 2131296508 */:
+                            if (!UserSettingKey.FUSION_MODE.isSelectable()) {
+                                PrimaryShortcutGroup.this.mViewFinderAccessor.showRestrictMessageDialog(UserSettingKey.FUSION_MODE);
+                                break;
+                            } else {
+                                PrimaryShortcutGroup.this.mViewFinderAccessor.openShorcutDialog(ViewFinder.UiComponentKind.FUSION_MODE_DIALOG);
+                                break;
+                            }
+                        default:
+                            switch (id) {
+                                case R.id.primary_shortcut_hdr /* 2131296510 */:
+                                    PrimaryShortcutGroup.this.mViewFinderAccessor.openShorcutDialog(ViewFinder.UiComponentKind.HDR_DIALOG);
+                                    break;
+                                case R.id.primary_shortcut_selftimer /* 2131296511 */:
+                                    PrimaryShortcutGroup.this.mViewFinderAccessor.openShorcutDialog(ViewFinder.UiComponentKind.SELF_TIMER_DIALOG);
+                                    break;
+                                case R.id.primary_shortcut_semi_auto /* 2131296512 */:
+                                    PrimaryShortcutGroup.this.mViewFinderAccessor.switchSemiAutoAvailability();
+                                    break;
+                                case R.id.primary_shortcut_video_hdr /* 2131296513 */:
+                                    if (!UserSettingKey.VIDEO_HDR.isSelectable()) {
+                                        PrimaryShortcutGroup.this.mViewFinderAccessor.showRestrictMessageDialog(UserSettingKey.VIDEO_HDR);
+                                        break;
+                                    } else {
+                                        PrimaryShortcutGroup.this.mViewFinderAccessor.openShorcutDialog(ViewFinder.UiComponentKind.VIDEO_HDR_DIALOG);
+                                        break;
+                                    }
+                            }
+                    }
+                }
+            }
+        };
     }
 
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mFlashShortcut = (ShortcutButton) findViewById(2131296507);
-        this.mSemiAutoShortcut = (ShortcutButton) findViewById(2131296512);
-        this.mHdrShortcut = (ShortcutButton) findViewById(2131296510);
-        this.mSelfTimerShortcut = (ShortcutButton) findViewById(2131296511);
-        this.mAspectRatioShortcut = (ShortcutButton) findViewById(2131296505);
-        this.mHighSensitivityFusionShortcut = (ShortcutButton) findViewById(2131296508);
-        this.mVideoHdrShortcut = (ShortcutButton) findViewById(2131296513);
-        this.mFacingShortcut = (ShortcutButton) findViewById(2131296506);
-        this.mContextualSettingShortcut = (ShortcutButton) findViewById(2131296371);
+        this.mFlashShortcut = (ShortcutButton) findViewById(R.id.primary_shortcut_flash);
+        this.mSemiAutoShortcut = (ShortcutButton) findViewById(R.id.primary_shortcut_semi_auto);
+        this.mHdrShortcut = (ShortcutButton) findViewById(R.id.primary_shortcut_hdr);
+        this.mSelfTimerShortcut = (ShortcutButton) findViewById(R.id.primary_shortcut_selftimer);
+        this.mAspectRatioShortcut = (ShortcutButton) findViewById(R.id.primary_shortcut_aspect_ratio);
+        this.mHighSensitivityFusionShortcut = (ShortcutButton) findViewById(R.id.primary_shortcut_fusion_mode);
+        this.mVideoHdrShortcut = (ShortcutButton) findViewById(R.id.primary_shortcut_video_hdr);
+        this.mFacingShortcut = (ShortcutButton) findViewById(R.id.primary_shortcut_facing);
+        this.mContextualSettingShortcut = (ShortcutButton) findViewById(R.id.contextual_setting_shortcut);
     }
 
     @Override // android.widget.FrameLayout, android.view.ViewGroup, android.view.View
@@ -73,24 +123,24 @@ public class PrimaryShortcutGroup extends FrameLayout implements SettingDialogLi
         List<View> allPrimaryShortcutView = getAllPrimaryShortcutView();
         ArrayList arrayList = new ArrayList();
         for (View view : allPrimaryShortcutView) {
-            if (view.getVisibility() == 0) {
+            if (view != null && view.getVisibility() == 0) {
                 arrayList.add(view);
             }
         }
         int size = arrayList.size();
         if (size > 0) {
             View view2 = (View) arrayList.get(0);
-            FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) view2.getLayoutParams();
-            frameLayout$LayoutParams.gravity = 49;
-            view2.setLayoutParams(frameLayout$LayoutParams);
+            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) view2.getLayoutParams();
+            layoutParams.gravity = 49;
+            view2.setLayoutParams(layoutParams);
             if (size > 1) {
-                int dimensionPixelSize = ResourceUtil.getDimensionPixelSize(getContext(), getContext().getPackageName(), 2131165428);
+                int dimensionPixelSize = ResourceUtil.getDimensionPixelSize(getContext(), getContext().getPackageName(), R.dimen.left_icon_area_height);
                 int height = (getHeight() - (dimensionPixelSize * size)) / (size - 1);
                 for (int i = 1; i < arrayList.size(); i++) {
                     View view3 = (View) arrayList.get(i);
-                    FrameLayout$LayoutParams frameLayout$LayoutParams2 = (FrameLayout$LayoutParams) view3.getLayoutParams();
-                    frameLayout$LayoutParams2.topMargin = (dimensionPixelSize + height) * i;
-                    view3.setLayoutParams(frameLayout$LayoutParams2);
+                    FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) view3.getLayoutParams();
+                    layoutParams2.topMargin = (dimensionPixelSize + height) * i;
+                    view3.setLayoutParams(layoutParams2);
                 }
             }
         }
@@ -112,15 +162,15 @@ public class PrimaryShortcutGroup extends FrameLayout implements SettingDialogLi
         if (obj == null || (view = (primaryShortcutViewMap = getPrimaryShortcutViewMap()).get(obj)) == null) {
             return;
         }
-        for (Map$Entry<UserSettingKey, View> map$Entry : primaryShortcutViewMap.entrySet()) {
+        for (Map.Entry<UserSettingKey, View> entry : primaryShortcutViewMap.entrySet()) {
             if (z) {
-                if (map$Entry.getValue() == view) {
-                    map$Entry.getValue().setSelected(z);
+                if (entry.getValue() == view) {
+                    entry.getValue().setSelected(z);
                 } else {
-                    map$Entry.getValue().setSelected(false);
+                    entry.getValue().setSelected(false);
                 }
             } else {
-                map$Entry.getValue().setSelected(z);
+                entry.getValue().setSelected(z);
             }
         }
     }
@@ -137,8 +187,8 @@ public class PrimaryShortcutGroup extends FrameLayout implements SettingDialogLi
         this.mContextualSettingShortcut.setUiOrientation(i);
     }
 
-    public void setViewFinderAccessor(ViewFinderImpl$ViewFinderAccessorForShortcut viewFinderImpl$ViewFinderAccessorForShortcut) {
-        this.mViewFinderAccessor = viewFinderImpl$ViewFinderAccessorForShortcut;
+    public void setViewFinderAccessor(ViewFinderImpl.ViewFinderAccessorForShortcut viewFinderAccessorForShortcut) {
+        this.mViewFinderAccessor = viewFinderAccessorForShortcut;
     }
 
     public void show() {
@@ -236,7 +286,7 @@ public class PrimaryShortcutGroup extends FrameLayout implements SettingDialogLi
             case NORMAL:
                 Flash currentFlashSetting = getCurrentFlashSetting(getFlashOptions(capturingMode), (Flash) userSettings.get(UserSettingKey.FLASH));
                 if (currentFlashSetting != null) {
-                    this.mFlashShortcut.setContentDescription(getString(2131689571));
+                    this.mFlashShortcut.setContentDescription(getString(R.string.cam_strings_accessibility_flash_txt));
                     this.mFlashShortcut.setImageResource(currentFlashSetting.getIconId());
                     this.mFlashShortcut.set(true);
                 } else {
@@ -264,14 +314,15 @@ public class PrimaryShortcutGroup extends FrameLayout implements SettingDialogLi
                 this.mHighSensitivityFusionShortcut.set(false);
                 this.mVideoHdrShortcut.set(false);
                 if (PlatformCapability.isFrontCameraSupported()) {
-                    this.mFacingShortcut.setContentDescription(getString(2131689610));
+                    this.mFacingShortcut.setContentDescription(getString(R.string.cam_strings_accessibility_switch_to_front_txt));
                     this.mFacingShortcut.set(true);
+                    break;
                 }
                 break;
             case SCENE_RECOGNITION:
                 Flash currentFlashSetting2 = getCurrentFlashSetting(getFlashOptions(capturingMode), (Flash) userSettings.get(UserSettingKey.FLASH));
                 if (currentFlashSetting2 != null) {
-                    this.mFlashShortcut.setContentDescription(getString(2131689571));
+                    this.mFlashShortcut.setContentDescription(getString(R.string.cam_strings_accessibility_flash_txt));
                     this.mFlashShortcut.setImageResource(currentFlashSetting2.getIconId());
                     this.mFlashShortcut.set(true);
                 } else {
@@ -298,14 +349,15 @@ public class PrimaryShortcutGroup extends FrameLayout implements SettingDialogLi
                 this.mHighSensitivityFusionShortcut.set(false);
                 this.mVideoHdrShortcut.set(false);
                 if (PlatformCapability.isFrontCameraSupported()) {
-                    this.mFacingShortcut.setContentDescription(getString(2131689610));
+                    this.mFacingShortcut.setContentDescription(getString(R.string.cam_strings_accessibility_switch_to_front_txt));
                     this.mFacingShortcut.set(true);
+                    break;
                 }
                 break;
             case VIDEO:
                 PhotoLight currentPhotoLightSetting = getCurrentPhotoLightSetting(getPhotoLightOptions(capturingMode), (PhotoLight) userSettings.get(UserSettingKey.PHOTO_LIGHT));
                 if (currentPhotoLightSetting != null) {
-                    this.mFlashShortcut.setContentDescription(getString(2131689570));
+                    this.mFlashShortcut.setContentDescription(getString(R.string.cam_strings_accessibility_flash_torch_txt));
                     this.mFlashShortcut.setImageResource(currentPhotoLightSetting.getIconId());
                     this.mFlashShortcut.set(true);
                 } else {
@@ -340,14 +392,15 @@ public class PrimaryShortcutGroup extends FrameLayout implements SettingDialogLi
                     this.mVideoHdrShortcut.set(false);
                 }
                 if (PlatformCapability.isFrontCameraSupported()) {
-                    this.mFacingShortcut.setContentDescription(getString(2131689610));
+                    this.mFacingShortcut.setContentDescription(getString(R.string.cam_strings_accessibility_switch_to_front_txt));
                     this.mFacingShortcut.set(true);
+                    break;
                 }
                 break;
             case FRONT_PHOTO:
                 DisplayFlash currentDisplayFlashSetting = getCurrentDisplayFlashSetting(getDisplayFlashOptions(capturingMode), (DisplayFlash) userSettings.get(UserSettingKey.DISPLAY_FLASH));
                 if (currentDisplayFlashSetting != null) {
-                    this.mFlashShortcut.setContentDescription(getString(2131689571));
+                    this.mFlashShortcut.setContentDescription(getString(R.string.cam_strings_accessibility_flash_txt));
                     this.mFlashShortcut.setImageResource(currentDisplayFlashSetting.getIconId());
                     this.mFlashShortcut.set(true);
                 } else {
@@ -375,14 +428,15 @@ public class PrimaryShortcutGroup extends FrameLayout implements SettingDialogLi
                 this.mHighSensitivityFusionShortcut.set(false);
                 this.mVideoHdrShortcut.set(false);
                 if (PlatformCapability.isFrontCameraSupported()) {
-                    this.mFacingShortcut.setContentDescription(getString(2131689612));
+                    this.mFacingShortcut.setContentDescription(getString(R.string.cam_strings_accessibility_switch_to_main_txt));
                     this.mFacingShortcut.set(true);
+                    break;
                 }
                 break;
             case SUPERIOR_FRONT:
                 DisplayFlash currentDisplayFlashSetting2 = getCurrentDisplayFlashSetting(getDisplayFlashOptions(capturingMode), (DisplayFlash) userSettings.get(UserSettingKey.DISPLAY_FLASH));
                 if (currentDisplayFlashSetting2 != null) {
-                    this.mFlashShortcut.setContentDescription(getString(2131689571));
+                    this.mFlashShortcut.setContentDescription(getString(R.string.cam_strings_accessibility_flash_txt));
                     this.mFlashShortcut.setImageResource(currentDisplayFlashSetting2.getIconId());
                     this.mFlashShortcut.set(true);
                 } else {
@@ -409,8 +463,9 @@ public class PrimaryShortcutGroup extends FrameLayout implements SettingDialogLi
                 this.mHighSensitivityFusionShortcut.set(false);
                 this.mVideoHdrShortcut.set(false);
                 if (PlatformCapability.isFrontCameraSupported()) {
-                    this.mFacingShortcut.setContentDescription(getString(2131689612));
+                    this.mFacingShortcut.setContentDescription(getString(R.string.cam_strings_accessibility_switch_to_main_txt));
                     this.mFacingShortcut.set(true);
+                    break;
                 }
                 break;
             case FRONT_VIDEO:
@@ -426,14 +481,15 @@ public class PrimaryShortcutGroup extends FrameLayout implements SettingDialogLi
                 this.mHighSensitivityFusionShortcut.set(false);
                 this.mVideoHdrShortcut.set(false);
                 if (PlatformCapability.isFrontCameraSupported()) {
-                    this.mFacingShortcut.setContentDescription(getString(2131689612));
+                    this.mFacingShortcut.setContentDescription(getString(R.string.cam_strings_accessibility_switch_to_main_txt));
                     this.mFacingShortcut.set(true);
+                    break;
                 }
                 break;
             case SLOW_MOTION:
                 PhotoLight currentPhotoLightSetting2 = getCurrentPhotoLightSetting(getPhotoLightOptions(capturingMode), (PhotoLight) userSettings.get(UserSettingKey.PHOTO_LIGHT));
                 if (currentPhotoLightSetting2 != null) {
-                    this.mFlashShortcut.setContentDescription(getString(2131689570));
+                    this.mFlashShortcut.setContentDescription(getString(R.string.cam_strings_accessibility_flash_torch_txt));
                     this.mFlashShortcut.setImageResource(currentPhotoLightSetting2.getIconId());
                     this.mFlashShortcut.set(true);
                 } else {
@@ -473,17 +529,19 @@ public class PrimaryShortcutGroup extends FrameLayout implements SettingDialogLi
             case FUSION_MODE:
                 if (UserSettingKey.FUSION_MODE.isSelectable()) {
                     this.mHighSensitivityFusionShortcut.setImageResource(i);
+                    break;
                 } else {
                     this.mHighSensitivityFusionShortcut.setImageResource(FusionMode.OFF.getIconId());
+                    break;
                 }
-                break;
             case VIDEO_HDR:
                 if (UserSettingKey.VIDEO_HDR.isSelectable()) {
                     this.mVideoHdrShortcut.setImageResource(i);
+                    break;
                 } else {
                     this.mVideoHdrShortcut.setImageResource(VideoHdr.HDR_OFF.getIconId());
+                    break;
                 }
-                break;
         }
     }
 

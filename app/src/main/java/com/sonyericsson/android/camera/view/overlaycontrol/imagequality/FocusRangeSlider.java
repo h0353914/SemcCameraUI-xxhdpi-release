@@ -1,16 +1,17 @@
 package com.sonyericsson.android.camera.view.overlaycontrol.imagequality;
 
 import android.content.Context;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.parameters.FocusRange;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.view.setting.settingitem.SettingItem;
 
 class FocusRangeSlider extends SettingItemSlider {
-    private CameraInfo$CameraId mCameraId;
+    private CameraInfo.CameraId mCameraId;
 
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider
     protected int getBackgroundImageResource(int i) {
-        return i == 2 ? 2131231062 : 2131231063;
+        return i == 2 ? R.drawable.cam_core_image_quality_control_focus_slider_icn : R.drawable.cam_core_image_quality_control_focus_slider_port_icn;
     }
 
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider
@@ -28,9 +29,9 @@ class FocusRangeSlider extends SettingItemSlider {
         return null;
     }
 
-    public FocusRangeSlider(Context context, SettingItem settingItem, OnSlideListener onSlideListener, CameraInfo$CameraId cameraInfo$CameraId) {
+    public FocusRangeSlider(Context context, SettingItem settingItem, OnSlideListener onSlideListener, CameraInfo.CameraId cameraId) {
         super(context, settingItem, true, false, onSlideListener);
-        this.mCameraId = cameraInfo$CameraId;
+        this.mCameraId = cameraId;
     }
 
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider
@@ -61,7 +62,7 @@ class FocusRangeSlider extends SettingItemSlider {
 
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider
     protected String getIndicatorContentDescription(int i) {
-        return String.valueOf((int) FocusRange.MF.getFocusRange(this.mCameraId)) + " " + getString(2131689581);
+        return String.valueOf((int) FocusRange.MF.getFocusRange(this.mCameraId)) + " " + getString(R.string.cam_strings_accessibility_image_quality_control_focus_manual_adjusted_txt);
     }
 
     @Override // com.sonyericsson.android.camera.view.overlaycontrol.imagequality.SettingItemSlider

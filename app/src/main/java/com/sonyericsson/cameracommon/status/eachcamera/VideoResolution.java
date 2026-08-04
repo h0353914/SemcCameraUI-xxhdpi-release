@@ -10,7 +10,7 @@ public class VideoResolution extends ResolutionValue implements EachCameraStatus
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusValue
     public String getKey() {
-        return "video_resolution";
+        return KEY;
     }
 
     public VideoResolution(int i, int i2) {

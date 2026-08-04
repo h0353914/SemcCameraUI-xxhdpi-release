@@ -12,11 +12,6 @@ class FieldData implements Cloneable {
     private List<UnknownFieldData> unknownFieldData;
     private Object value;
 
-    /* JADX INFO: renamed from: clone, reason: collision with other method in class */
-    public /* bridge */ /* synthetic */ Object m10clone() throws CloneNotSupportedException {
-        return clone();
-    }
-
     /* JADX WARN: Multi-variable type inference failed */
     <T> FieldData(Extension<?, T> extension, T newValue) {
         this.cachedExtension = extension;
@@ -27,6 +22,7 @@ class FieldData implements Cloneable {
         this.unknownFieldData = new ArrayList();
     }
 
+    @SuppressWarnings("unchecked")
     void addUnknownField(UnknownFieldData unknownField) throws IOException {
         Object valueFrom;
         if (this.unknownFieldData != null) {
@@ -50,7 +46,7 @@ class FieldData implements Cloneable {
         } else {
             valueFrom = this.cachedExtension.getValueFrom(Collections.singletonList(unknownField));
         }
-        setValue(this.cachedExtension, valueFrom);
+        setValue((Extension) this.cachedExtension, valueFrom);
     }
 
     UnknownFieldData getUnknownField(int index) {

@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Optagelsen kunne ikke fuldføres. Panorer langsommere.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Optagelsen kunne ikke fuldføres. Panorer hurtigere.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Tag et panoramabillede ved at panorere dit kamera</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Opretter følgende filer:\n- Multivinkelbillede\n- 3D-billede\nBemærk! Disse filer indeholder et gråt område.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Opretter følgende filer:\n- Multivinkelbillede\n- 3D-billede</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Behandler...\nDette billede indeholder et gråt område</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Opretter følgende filer:
+- Multivinkelbillede
+- 3D-billede
+Bemærk! Disse filer indeholder et gråt område."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Opretter følgende filer:
+- Multivinkelbillede
+- 3D-billede"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Behandler...
+Dette billede indeholder et gråt område"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Gemmer billede</string>
     <string name="cam_3d_strings_dialog_processing_txt">Behandler...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Vent et par sekunder på, at 3D-kameraet starter</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Får din hud til at se lys og glat ud. Effekten virker i programmer, der bruger frontkameraet. Dette kan anvendes på fotos og videoer. Du kan også regulere graden.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Regulering af grad</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Jævn hud</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Appen kan ikke startes.\nKontrollér, at den nyeste version af %1$s er installeret og aktiveret på din enhed.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Appen kan ikke startes.
+Kontrollér, at den nyeste version af %1$s er installeret og aktiveret på din enhed."</string>
     <string name="cam_strings_gridline_txt">Gitterlinjer</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Vend din håndflade mod kameraet. Selvudløser slås til, når din håndflade genkendes. Du kan gøre det nemmere at blive genkendt ved at strække dine fingre opad.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Vend din håndflade mod kameraet</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Almindelige indstillinger</string>
     <string name="cam_strings_more_txt">Mere</string>
     <string name="cam_strings_multi_window_txt">Træk midten af splitlinjen for at skifte til fuldskærm for %1$s</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">En anden enhed har nu forbindelse.\nVil du dele billedet med enheden via søgeren?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"En anden enhed har nu forbindelse.
+Vil du dele billedet med enheden via søgeren?"</string>
     <string name="cam_strings_multicam_add_device_txt">Tilføj enhed</string>
     <string name="cam_strings_multicam_add_more_txt">Tilføj flere</string>
     <string name="cam_strings_multicam_apply_txt">Udført</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Måling</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Forslag</string>
     <string name="cam_strings_predictive_capture_txt">Billedforslag</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Kameraet er startet automatisk, idet det registrerede din bevægelse, da du løftede telefonen op i liggende retning og pegede det mod et motiv.\nDu kan selv vælge, hvordan du vil bruge denne funktion, fra Smart start i kameraindstillinger.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Kameraet er startet automatisk, idet det registrerede din bevægelse, da du løftede telefonen op i liggende retning og pegede det mod et motiv.
+Du kan selv vælge, hvordan du vil bruge denne funktion, fra Smart start i kameraindstillinger."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Berør inden i cirklen for at optage</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Berør skærmen for at optage</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Tap inden i cirklen for at skifte til fuldskærmstilstand</string>
     <string name="cam_strings_predictive_launch_guide_txt">Berør inden i cirklen for at starte kameraet</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Berør for at starte og optage</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Berør for at starte</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Du kan starte kameraet hurtigt. Løft hurtigt din enhed op i liggende retning, mens du retter kameraet mod et objekt. Kameraet starter automatisk.\nDu kan vælge, hvordan du helst vil bruge denne funktion, fra Smart start i kameraindstillingerne.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Du kan starte kameraet hurtigt. Løft hurtigt din enhed op i liggende retning, mens du retter kameraet mod et objekt. Kameraet starter automatisk.
+Du kan vælge, hvordan du helst vil bruge denne funktion, fra Smart start i kameraindstillingerne."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Smart start</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Du kan starte kameraet hurtigt. Sving din enhed op i liggende retning, mens du retter kameraet mod et objekt. Kameraet starter automatisk.\nDu kan slå denne funktion fra i Smart start i kameraindstillingerne.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Du kan starte kameraet hurtigt. Sving din enhed op i liggende retning, mens du retter kameraet mod et objekt. Kameraet starter automatisk.
+Du kan slå denne funktion fra i Smart start i kameraindstillingerne."</string>
     <string name="cam_strings_predictive_launch_txt">Smart start</string>
     <string name="cam_strings_preview_always_txt">Tændt</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 sekunder</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s kræver den eller de følgende tilladelser</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Tilladelser til %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Appen kræver følgende tilladelser for at udføre denne handling.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Gå til Oplysninger om appen &gt; Tilladelser for at tildele tilladelser.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Gå til Oplysninger om appen > Tilladelser for at tildele tilladelser.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Kunne ikke fortsætte</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">For at tage fotos og optage videoer</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">For at hente placering</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Gemt i internt lager</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">GÅ</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Appen kræver følgende tilladelser for at udføre denne handling.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Hvis du vil bruge et SD-kort, skal kameraet have adgangstilladelse til SD-kortet.\nSkift datalager til SD-kort igen, eller giv kameraet adgang til SD-kortet på næste skærm.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Hvis du vil bruge et SD-kort, skal kameraet have adgangstilladelse til SD-kortet.
+Skift datalager til SD-kort igen, eller giv kameraet adgang til SD-kortet på næste skærm."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD-kortet er ikke tilgængeligt</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Der er registreret et nyt SD-kort, som kræver tilladelser.\n\nHvis du vil bruge SD-kortet som datalager, skal du vælge SD-kortet eller DCIM-biblioteket på næste skærm.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SD-kortet eller DCIM-biblioteket blev ikke valgt. SD-kortet kan ikke bruges.\n\nHvis du vil give tilladelser, skal du starte ved at ændre placeringen til lagring af SD-kortet eller ved at vælge det rette bibliotek på næste skærm.</string>
-    <string name="cam_strings_sd_permission_info_txt">Der blev fundet et nyt SD-kort, der kræver tilladelser.\nDet interne enhedslager bruges derfor som standardlager for data.\n\nHvis du vil bruge et SD-kort som datalager, skal du gå til kameraindstillinger og ændre lagerindstillingen til SD-kort.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Der er registreret et nyt SD-kort, som kræver tilladelser.
+
+Hvis du vil bruge SD-kortet som datalager, skal du vælge SD-kortet eller DCIM-biblioteket på næste skærm."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD-kortet eller DCIM-biblioteket blev ikke valgt. SD-kortet kan ikke bruges.
+
+Hvis du vil give tilladelser, skal du starte ved at ændre placeringen til lagring af SD-kortet eller ved at vælge det rette bibliotek på næste skærm."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Der blev fundet et nyt SD-kort, der kræver tilladelser.
+Det interne enhedslager bruges derfor som standardlager for data.
+
+Hvis du vil bruge et SD-kort som datalager, skal du gå til kameraindstillinger og ændre lagerindstillingen til SD-kort."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Sådan gemmer du fotos og videoer på SD-kortet</string>
     <string name="cam_strings_select_picture_txt">Vælg foto</string>
     <string name="cam_strings_self_timer_05_txt">0,5 sek.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Automatisk optagelse</string>
     <string name="cam_strings_side_touch_not_supported_txt">Side Sense understøttes ikke på denne skærm</string>
     <string name="cam_strings_side_touch_on_title_txt">Side Sense</string>
-    <string name="cam_strings_side_touch_on_txt">Hvis du vil bruge denne funktion, skal du gå til Indstillinger &gt; Skærm og slå Side Sense til. Vil du aktivere det nu?</string>
+    <string name="cam_strings_side_touch_on_txt">Hvis du vil bruge denne funktion, skal du gå til Indstillinger > Skærm og slå Side Sense til. Vil du aktivere det nu?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Side Sense</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Du kan tage et billede eller optage en video ved ganske enkelt at tappe to gange på sensoren på siden af skærmen i stedet for lukkerknappen. Du kan også zoome ind eller ud ved at skubbe med fingeren langs denne sidesensor.\nDenne funktion understøttes i både foto- og videotilstand. Du kan slå den fra ved at gå til Side Sense i kameraindstillingerne.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Du kan tage et billede eller optage en video ved ganske enkelt at tappe to gange på sensoren på siden af skærmen i stående tilstand i stedet for lukkerknappen. Du kan også zoome ind eller ud ved at skubbe med fingeren langs denne sidesensor.\nDenne funktion understøttes i både foto- og videotilstand. Du kan slå den fra ved at gå til Side Sense i kameraindstillingerne.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Du kan tage et billede eller optage en video ved ganske enkelt at tappe to gange på sensoren på siden af skærmen i stående tilstand i stedet for lukkerknappen.\nDenne funktion understøttes i både foto- og videotilstand. Du kan slå den fra ved at gå til Side Sense i kameraindstillingerne.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Du kan tage et billede eller optage en video ved ganske enkelt at tappe to gange på sensoren på siden af skærmen i stedet for lukkerknappen.\nDenne funktion understøttes i både foto- og videotilstand. Du kan slå den fra ved at gå til Side Sense i kameraindstillingerne.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Du kan tage et billede eller optage en video ved ganske enkelt at tappe to gange på sensoren på siden af skærmen i stedet for lukkerknappen. Du kan også zoome ind eller ud ved at skubbe med fingeren langs denne sidesensor.
+Denne funktion understøttes i både foto- og videotilstand. Du kan slå den fra ved at gå til Side Sense i kameraindstillingerne."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Du kan tage et billede eller optage en video ved ganske enkelt at tappe to gange på sensoren på siden af skærmen i stående tilstand i stedet for lukkerknappen. Du kan også zoome ind eller ud ved at skubbe med fingeren langs denne sidesensor.
+Denne funktion understøttes i både foto- og videotilstand. Du kan slå den fra ved at gå til Side Sense i kameraindstillingerne."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Du kan tage et billede eller optage en video ved ganske enkelt at tappe to gange på sensoren på siden af skærmen i stående tilstand i stedet for lukkerknappen.
+Denne funktion understøttes i både foto- og videotilstand. Du kan slå den fra ved at gå til Side Sense i kameraindstillingerne."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Du kan tage et billede eller optage en video ved ganske enkelt at tappe to gange på sensoren på siden af skærmen i stedet for lukkerknappen.
+Denne funktion understøttes i både foto- og videotilstand. Du kan slå den fra ved at gå til Side Sense i kameraindstillingerne."</string>
     <string name="cam_strings_side_touch_txt">Side Sense</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Optagestilen og skærmopløsningen kan ændres under Kameraindstillinger</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Superslow (ét klip)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Superslowmotion</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Du kan ændre b/sek. og optagelsesstilen for slowmotion</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Flere indstillinger</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Optag straks et særligt øjeblik i %1$s b/sek. slowmotion ved at tappe på knappen midt på skærmen.\nHvis du optager i lyse omgivelser, kan du lave en bedre video.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Optag straks et særligt øjeblik i %1$s b/sek. slowmotion ved at tappe på knappen midt på skærmen.
+Hvis du optager i lyse omgivelser, kan du lave en bedre video."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Optag det perfekte øjeblik med %1$s b/sek. ved at tappe på knappen i midten</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Optag straks et særligt øjeblik i slowmotion med %1$s b/sek. ved at tappe på knappen midt på skærmen</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Superslowmotion (ét klip)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Slowmotion</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Sådan optager du</string>
     <string name="cam_strings_slow_motion_standard_txt">Slowmotion</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Opret en flot video ved at vise et særligt øjeblik i slowmotion.\nHvis du optager i lyse omgivelser, kan du lave en bedre video.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Opret en flot video ved at vise et særligt øjeblik i slowmotion.
+Hvis du optager i lyse omgivelser, kan du lave en bedre video."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Du kan optage video ved forskellige hastigheder ved at skifte til %1$s b/sek.</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Tap på knappen midt på skærmen på det rette tidspunkt</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Slowmotion er optaget</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Softwarelicenser</string>
     <string name="cam_strings_take_photo_txt">Tag billede</string>
     <string name="cam_strings_term_of_use_accept_txt">Acceptér</string>
-    <string name="cam_strings_term_of_use_consent_txt">Jeg accepterer Sony Mobiles &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;vilkår for anvendelse&lt;/a&gt;.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Jeg accepterer Sony Mobiles &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">vilkår for anvendelse&lt;/a>.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Der skal måske betales et gebyr for mobildata i forbindelse med anvendelse af denne tjeneste, afhængigt af dit dataabonnement.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile indsamler dit Android-hash-id, dit entydige enheds-id, placeringsbaserede data og tidsstempel for at kunne give dig de rette resultater i forbindelse med tjenesten og for at forbedre tjenesten.</string>
     <string name="cam_strings_term_of_use_decline_txt">Afvis</string>
     <string name="cam_strings_term_of_use_title_txt">Vilkår og betingelser</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Vilkår for anvendelse&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Vilkår for anvendelse&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Fravælg fotos</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Kunne ikke gemmes</string>
     <string name="cam_strings_timeshift_save_complete_txt">Gemt</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Hvis du vil opnå en stabil 4K-videooptagelse, skal du ikke ændre denne indstilling, medmindre du bruger et højhastigheds-SD-kort (UHS-hastighedsklasse 1 eller højere eller hastighedsklasse 10 anbefales).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Hvis du vil opnå en stabil Timeshift-videooptagelse, skal du ikke ændre denne indstilling, medmindre du bruger et højhastigheds-SD-kort (UHS-hastighedsklasse 1 eller højere eller hastighedsklasse 10 anbefales). Vil du ændre den alligevel?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Hvis du vil opnå en stabil videooptagelse i slowmotion, skal du ikke ændre denne indstilling, medmindre du bruger et højhastigheds-SD-kort (UHS-hastighedsklasse 1 eller højere eller hastighedsklasse 10 anbefales).</string>
-    <string name="cam_strings_video_explanatory_txt">Hvis du vil opnå en stabil videooptagelse, anbefaler vi, at du ændrer datalageret til Internt lager. Vil du ændre det nu?\n\nHvis du fortsætter med at bruge SD-kortet som datalager, skal du bruge et højhastigheds-SD-kort (UHS-hastighedsklasse 1 eller højere eller hastighedsklasse 10 anbefales).</string>
+    <string name="cam_strings_video_explanatory_txt">"Hvis du vil opnå en stabil videooptagelse, anbefaler vi, at du ændrer datalageret til Internt lager. Vil du ændre det nu?
+
+Hvis du fortsætter med at bruge SD-kortet som datalager, skal du bruge et højhastigheds-SD-kort (UHS-hastighedsklasse 1 eller højere eller hastighedsklasse 10 anbefales)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Dual-kamera</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Du kan optage smukke videoer uden meget lys ved hjælp af dual-kameraet, selv når det er nat eller i et rum med svag belysning. Kameraet skifter automatisk mellem enkelt kamera og dual-kamera, afhængigt af de scener der skal optages med ultrahøj følsomhed.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Videooptagelse med dual-kamera</string>

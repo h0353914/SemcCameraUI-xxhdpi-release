@@ -53,7 +53,7 @@ public class SimpleFrame extends FrameBase {
 
     @Override // com.sonymobile.cameracommon.opengl.FrameBase
     protected void initializeShaderProgram() throws OpenGlException {
-        this.mSimpleColorInGLSL = GLES20.glGetUniformLocation(this.mShaderProgram, "simpleColor");
+        this.mSimpleColorInGLSL = GLES20.glGetUniformLocation(this.mShaderProgram, ShaderProgramFactory.GLSL_FIELD_ID_SIMPLE_COLOR);
         ExtendedGlSurfaceView.checkGlErrorWithException();
         super.initializeShaderProgram();
     }

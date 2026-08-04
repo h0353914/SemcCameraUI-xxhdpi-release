@@ -4,51 +4,59 @@ import android.content.Context;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.interaction.TouchActionTranslator;
-import com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener;
 
-public class CaptureArea extends ImageView implements TouchActionTranslator$TouchActionListener {
+public class CaptureArea extends ImageView implements TouchActionTranslator.TouchActionListener {
     public static final String TAG = "CaptureArea";
     private boolean mIsForceTouchCanceled;
     private boolean mIsLongPressed;
     private boolean mIsTouched;
-    private CaptureArea$CaptureAreaStateListener mListener;
-    private CaptureArea$CaptureAreaTouchEventListener mTouchListener;
+    private CaptureAreaStateListener mListener;
+    private CaptureAreaTouchEventListener mTouchListener;
     private TouchActionTranslator mUserInteractionEngine;
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    public interface CaptureAreaStateListener {
+        void onCaptureAreaCanceled();
+
+        void onCaptureAreaIsReadyToScale();
+
+        void onCaptureAreaLongPressed(Point point);
+
+        void onCaptureAreaMoved();
+
+        void onCaptureAreaReleased(Point point);
+
+        void onCaptureAreaScaled(float f);
+
+        void onCaptureAreaSingleTapUp(Point point);
+
+        void onCaptureAreaStopped();
+
+        void onCaptureAreaTouched();
+    }
+
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onDoubleMoved(Point point, Point point2) {
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onDoubleRotated(float f, float f2) {
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onFling(MotionEvent motionEvent, MotionEvent motionEvent2, float f, float f2) {
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onShowPress(MotionEvent motionEvent) {
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onSingleReleasedInDouble(Point point, Point point2) {
-    }
-
-    static /* synthetic */ TouchActionTranslator access$000(CaptureArea captureArea) {
-        return captureArea.mUserInteractionEngine;
-    }
-
-    static /* synthetic */ boolean access$102(CaptureArea captureArea, boolean z) {
-        captureArea.mIsTouched = z;
-        return z;
-    }
-
-    static /* synthetic */ CaptureArea$CaptureAreaStateListener access$200(CaptureArea captureArea) {
-        return captureArea.mListener;
     }
 
     public CaptureArea(Context context, AttributeSet attributeSet) {
@@ -57,8 +65,8 @@ public class CaptureArea extends ImageView implements TouchActionTranslator$Touc
         this.mIsLongPressed = false;
         this.mIsForceTouchCanceled = false;
         this.mUserInteractionEngine = null;
-        this.mTouchListener = new CaptureArea$CaptureAreaTouchEventListener(this);
-        this.mUserInteractionEngine = new TouchActionTranslator(context, this, context.getResources().getDimensionPixelSize(2131165678));
+        this.mTouchListener = new CaptureAreaTouchEventListener();
+        this.mUserInteractionEngine = new TouchActionTranslator(context, this, context.getResources().getDimensionPixelSize(R.dimen.touch_area_margin));
         this.mUserInteractionEngine.setInteractionListener(this);
         setOnTouchListener(this.mTouchListener);
     }
@@ -78,17 +86,36 @@ public class CaptureArea extends ImageView implements TouchActionTranslator$Touc
         this.mIsForceTouchCanceled = true;
     }
 
+    class CaptureAreaTouchEventListener implements View.OnTouchListener {
+        CaptureAreaTouchEventListener() {
+        }
+
+        @Override // android.view.View.OnTouchListener
+        public synchronized boolean onTouch(View view, MotionEvent motionEvent) {
+            if (!CaptureArea.this.mUserInteractionEngine.onTouchEvent(motionEvent)) {
+                if (CamLog.VERBOSE) {
+                    CamLog.d("touch event is out of target area");
+                }
+                CaptureArea.this.mIsTouched = false;
+                if (CaptureArea.this.mListener != null) {
+                    CaptureArea.this.mListener.onCaptureAreaCanceled();
+                }
+            }
+            return true;
+        }
+    }
+
     private Point convertPointCoordinatesFromThisViewToScreen(Point point) {
         int[] iArr = new int[2];
         getLocationOnScreen(iArr);
         return new Point(point.x + iArr[0], point.y + iArr[1]);
     }
 
-    public void setCaptureAreaStateListener(CaptureArea$CaptureAreaStateListener captureArea$CaptureAreaStateListener) {
-        this.mListener = captureArea$CaptureAreaStateListener;
+    public void setCaptureAreaStateListener(CaptureAreaStateListener captureAreaStateListener) {
+        this.mListener = captureAreaStateListener;
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onSingleTouched(Point point) {
         this.mIsTouched = true;
         this.mIsForceTouchCanceled = false;
@@ -97,7 +124,7 @@ public class CaptureArea extends ImageView implements TouchActionTranslator$Touc
         }
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onSingleMoved(Point point, Point point2, Point point3) {
         if (this.mIsTouched && this.mListener != null) {
             if (!isTouched()) {
@@ -109,14 +136,14 @@ public class CaptureArea extends ImageView implements TouchActionTranslator$Touc
         }
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onSingleStopped(Point point, Point point2, Point point3) {
         if (this.mIsTouched && this.mListener != null) {
             this.mListener.onCaptureAreaStopped();
         }
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onSingleReleased(Point point) {
         if (this.mIsForceTouchCanceled) {
             this.mIsTouched = false;
@@ -137,7 +164,7 @@ public class CaptureArea extends ImageView implements TouchActionTranslator$Touc
         }
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onSingleCanceled() {
         if (this.mIsTouched) {
             this.mIsTouched = false;
@@ -148,7 +175,7 @@ public class CaptureArea extends ImageView implements TouchActionTranslator$Touc
         }
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onDoubleTouched(Point point, Point point2) {
         if (!this.mIsTouched || this.mIsForceTouchCanceled || this.mListener == null) {
             return;
@@ -156,7 +183,7 @@ public class CaptureArea extends ImageView implements TouchActionTranslator$Touc
         this.mListener.onCaptureAreaIsReadyToScale();
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onDoubleScaled(float f, float f2, float f3) {
         if (this.mIsTouched) {
             float f4 = f - f2;
@@ -166,7 +193,7 @@ public class CaptureArea extends ImageView implements TouchActionTranslator$Touc
         }
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onDoubleCanceled() {
         if (CamLog.VERBOSE) {
             CamLog.d("onDoubleCanceled: ");
@@ -180,7 +207,7 @@ public class CaptureArea extends ImageView implements TouchActionTranslator$Touc
         }
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onOverTripleCanceled() {
         if (CamLog.VERBOSE) {
             CamLog.d("onOverTripleCanceled: ");
@@ -194,7 +221,7 @@ public class CaptureArea extends ImageView implements TouchActionTranslator$Touc
         }
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onLongPress(MotionEvent motionEvent) {
         this.mIsLongPressed = true;
         if (this.mListener != null) {
@@ -202,7 +229,7 @@ public class CaptureArea extends ImageView implements TouchActionTranslator$Touc
         }
     }
 
-    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator$TouchActionListener
+    @Override // com.sonyericsson.cameracommon.interaction.TouchActionTranslator.TouchActionListener
     public void onSingleTapUp(MotionEvent motionEvent) {
         if (this.mIsTouched && this.mListener != null) {
             this.mListener.onCaptureAreaSingleTapUp(convertPointCoordinatesFromThisViewToScreen(new Point((int) motionEvent.getX(), (int) motionEvent.getY())));

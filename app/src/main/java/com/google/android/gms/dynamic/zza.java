@@ -2,49 +2,54 @@ package com.google.android.gms.dynamic;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout$LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.dynamic.LifecycleDelegate;
+import java.util.Iterator;
 import java.util.LinkedList;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public abstract class zza<T extends LifecycleDelegate> {
     private T zzapn;
     private Bundle zzapo;
-    private LinkedList<zza$zza> zzapp;
-    private final zzf<T> zzapq = new zza$1(this);
+    private LinkedList<InterfaceC0018zza> zzapp;
+    private final zzf<T> zzapq = (zzf<T>) new zzf<T>() { // from class: com.google.android.gms.dynamic.zza.1
+        @Override // com.google.android.gms.dynamic.zzf
+        public void zza(T t) {
+            zza.this.zzapn = t;
+            Iterator it = zza.this.zzapp.iterator();
+            while (it.hasNext()) {
+                ((InterfaceC0018zza) it.next()).zzb(zza.this.zzapn);
+            }
+            zza.this.zzapp.clear();
+            zza.this.zzapo = null;
+        }
+    };
 
-    static /* synthetic */ Bundle zza(zza zzaVar, Bundle bundle) {
-        zzaVar.zzapo = bundle;
-        return bundle;
+    /* renamed from: com.google.android.gms.dynamic.zza$zza, reason: collision with other inner class name */
+    private interface InterfaceC0018zza {
+        int getState();
+
+        void zzb(LifecycleDelegate lifecycleDelegate);
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    static /* synthetic */ LifecycleDelegate zza(zza zzaVar, LifecycleDelegate lifecycleDelegate) {
-        zzaVar.zzapn = lifecycleDelegate;
-        return lifecycleDelegate;
-    }
-
-    static /* synthetic */ LinkedList zza(zza zzaVar) {
-        return zzaVar.zzapp;
-    }
-
-    private void zza(Bundle bundle, zza$zza zza_zza) {
+    private void zza(Bundle bundle, InterfaceC0018zza interfaceC0018zza) {
         if (this.zzapn != null) {
-            zza_zza.zzb(this.zzapn);
+            interfaceC0018zza.zzb(this.zzapn);
             return;
         }
         if (this.zzapp == null) {
             this.zzapp = new LinkedList<>();
         }
-        this.zzapp.add(zza_zza);
+        this.zzapp.add(interfaceC0018zza);
         if (bundle != null) {
             if (this.zzapo == null) {
                 this.zzapo = (Bundle) bundle.clone();
@@ -55,29 +60,78 @@ public abstract class zza<T extends LifecycleDelegate> {
         zza(this.zzapq);
     }
 
-    static /* synthetic */ LifecycleDelegate zzb(zza zzaVar) {
-        return zzaVar.zzapn;
+    public void onInflate(final Activity activity, final Bundle bundle, final Bundle bundle2) {
+        zza(bundle2, new InterfaceC0018zza() { // from class: com.google.android.gms.dynamic.zza.2
+            @Override // com.google.android.gms.dynamic.zza.InterfaceC0018zza
+            public int getState() {
+                return 0;
+            }
+
+            @Override // com.google.android.gms.dynamic.zza.InterfaceC0018zza
+            public void zzb(LifecycleDelegate lifecycleDelegate) {
+                zza.this.zzapn.onInflate(activity, bundle, bundle2);
+            }
+        });
     }
 
-    public static void zzb(FrameLayout frameLayout) {
-        Context context = frameLayout.getContext();
-        int iIsGooglePlayServicesAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(context);
+    public void onCreate(final Bundle bundle) {
+        zza(bundle, new InterfaceC0018zza() { // from class: com.google.android.gms.dynamic.zza.3
+            @Override // com.google.android.gms.dynamic.zza.InterfaceC0018zza
+            public int getState() {
+                return 1;
+            }
+
+            @Override // com.google.android.gms.dynamic.zza.InterfaceC0018zza
+            public void zzb(LifecycleDelegate lifecycleDelegate) {
+                zza.this.zzapn.onCreate(bundle);
+            }
+        });
+    }
+
+    public View onCreateView(final LayoutInflater layoutInflater, final ViewGroup viewGroup, final Bundle bundle) throws PackageManager.NameNotFoundException {
+        final FrameLayout frameLayout = new FrameLayout(layoutInflater.getContext());
+        zza(bundle, new InterfaceC0018zza() { // from class: com.google.android.gms.dynamic.zza.4
+            @Override // com.google.android.gms.dynamic.zza.InterfaceC0018zza
+            public int getState() {
+                return 2;
+            }
+
+            @Override // com.google.android.gms.dynamic.zza.InterfaceC0018zza
+            public void zzb(LifecycleDelegate lifecycleDelegate) {
+                frameLayout.removeAllViews();
+                frameLayout.addView(zza.this.zzapn.onCreateView(layoutInflater, viewGroup, bundle));
+            }
+        });
+        if (this.zzapn == null) {
+            zza(frameLayout);
+        }
+        return frameLayout;
+    }
+
+    public static void zzb(FrameLayout frameLayout) throws PackageManager.NameNotFoundException {
+        final Context context = frameLayout.getContext();
+        final int iIsGooglePlayServicesAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(context);
         String strZzc = com.google.android.gms.common.internal.zzg.zzc(context, iIsGooglePlayServicesAvailable, GooglePlayServicesUtil.zzaf(context));
         String strZzh = com.google.android.gms.common.internal.zzg.zzh(context, iIsGooglePlayServicesAvailable);
         LinearLayout linearLayout = new LinearLayout(frameLayout.getContext());
         linearLayout.setOrientation(1);
-        linearLayout.setLayoutParams(new FrameLayout$LayoutParams(-2, -2));
+        linearLayout.setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
         frameLayout.addView(linearLayout);
         TextView textView = new TextView(frameLayout.getContext());
-        textView.setLayoutParams(new FrameLayout$LayoutParams(-2, -2));
+        textView.setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
         textView.setText(strZzc);
         linearLayout.addView(textView);
         if (strZzh != null) {
             Button button = new Button(context);
-            button.setLayoutParams(new FrameLayout$LayoutParams(-2, -2));
+            button.setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
             button.setText(strZzh);
             linearLayout.addView(button);
-            button.setOnClickListener(new zza$5(context, iIsGooglePlayServicesAvailable));
+            button.setOnClickListener(new View.OnClickListener() { // from class: com.google.android.gms.dynamic.zza.5
+                @Override // android.view.View.OnClickListener
+                public void onClick(View view) {
+                    context.startActivity(GooglePlayServicesUtil.zzbj(iIsGooglePlayServicesAvailable));
+                }
+            });
         }
     }
 
@@ -85,19 +139,6 @@ public abstract class zza<T extends LifecycleDelegate> {
         while (!this.zzapp.isEmpty() && this.zzapp.getLast().getState() >= i) {
             this.zzapp.removeLast();
         }
-    }
-
-    public void onCreate(Bundle bundle) {
-        zza(bundle, new zza$3(this, bundle));
-    }
-
-    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        FrameLayout frameLayout = new FrameLayout(layoutInflater.getContext());
-        zza(bundle, new zza$4(this, frameLayout, layoutInflater, viewGroup, bundle));
-        if (this.zzapn == null) {
-            zza(frameLayout);
-        }
-        return frameLayout;
     }
 
     public void onDestroy() {
@@ -116,10 +157,6 @@ public abstract class zza<T extends LifecycleDelegate> {
         }
     }
 
-    public void onInflate(Activity activity, Bundle bundle, Bundle bundle2) {
-        zza(bundle2, new zza$2(this, activity, bundle, bundle2));
-    }
-
     public void onLowMemory() {
         if (this.zzapn != null) {
             this.zzapn.onLowMemory();
@@ -134,8 +171,32 @@ public abstract class zza<T extends LifecycleDelegate> {
         }
     }
 
+    public void onStart() {
+        zza((Bundle) null, new InterfaceC0018zza() { // from class: com.google.android.gms.dynamic.zza.6
+            @Override // com.google.android.gms.dynamic.zza.InterfaceC0018zza
+            public int getState() {
+                return 4;
+            }
+
+            @Override // com.google.android.gms.dynamic.zza.InterfaceC0018zza
+            public void zzb(LifecycleDelegate lifecycleDelegate) {
+                zza.this.zzapn.onStart();
+            }
+        });
+    }
+
     public void onResume() {
-        zza((Bundle) null, new zza$7(this));
+        zza((Bundle) null, new InterfaceC0018zza() { // from class: com.google.android.gms.dynamic.zza.7
+            @Override // com.google.android.gms.dynamic.zza.InterfaceC0018zza
+            public int getState() {
+                return 5;
+            }
+
+            @Override // com.google.android.gms.dynamic.zza.InterfaceC0018zza
+            public void zzb(LifecycleDelegate lifecycleDelegate) {
+                zza.this.zzapn.onResume();
+            }
+        });
     }
 
     public void onSaveInstanceState(Bundle bundle) {
@@ -146,10 +207,6 @@ public abstract class zza<T extends LifecycleDelegate> {
         }
     }
 
-    public void onStart() {
-        zza((Bundle) null, new zza$6(this));
-    }
-
     public void onStop() {
         if (this.zzapn != null) {
             this.zzapn.onStop();
@@ -158,7 +215,7 @@ public abstract class zza<T extends LifecycleDelegate> {
         }
     }
 
-    protected void zza(FrameLayout frameLayout) {
+    protected void zza(FrameLayout frameLayout) throws PackageManager.NameNotFoundException {
         zzb(frameLayout);
     }
 

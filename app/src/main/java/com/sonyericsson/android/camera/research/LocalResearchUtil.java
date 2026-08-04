@@ -1,7 +1,8 @@
 package com.sonyericsson.android.camera.research;
 
+import android.os.SystemClock;
 import android.util.ArrayMap;
-import com.sonyericsson.android.camera.LaunchCondition$LaunchTrigger;
+import com.sonyericsson.android.camera.LaunchCondition;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.configuration.parameters.Flash;
@@ -9,56 +10,87 @@ import com.sonyericsson.android.camera.configuration.parameters.FrontAngle;
 import com.sonyericsson.android.camera.configuration.parameters.ObjectTracking;
 import com.sonyericsson.android.camera.configuration.parameters.SelfTimer;
 import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
-import com.sonyericsson.android.camera.device.CameraParameterConverter$SceneMode;
+import com.sonyericsson.android.camera.device.CameraInfo;
+import com.sonyericsson.android.camera.device.CameraParameterConverter;
 import com.sonyericsson.android.camera.setting.UserSettings;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import com.sonyericsson.android.camera.view.modeselector.ModeSelectorInternalMode;
-import com.sonyericsson.android.camera.view.tutorial.TutorialController$TutorialType;
+import com.sonyericsson.android.camera.view.tutorial.TutorialController;
 import com.sonyericsson.cameracommon.systemmonitor.BatteryChangedReceiver;
 import com.sonymobile.cameracommon.research.ResearchUtil;
-import com.sonymobile.cameracommon.research.parameters.Event$Category;
-import com.sonymobile.cameracommon.research.parameters.Event$StopOperation;
-import com.sonymobile.cameracommon.research.parameters.Event$UserOperation;
-import com.sonymobile.cameracommon.research.parameters.Event$WizardPage;
-import com.sonymobile.cameracommon.research.parameters.Event$WizardResult;
+import com.sonymobile.cameracommon.research.parameters.Event;
 import com.sonymobile.cameracommon.research.parameters.Screen;
 import com.sonymobile.cameracommon.research.parameters.ShootingLabel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Map$Entry;
 
 public class LocalResearchUtil {
     public static final String TAG = "LocalResearchUtil";
     private static final LocalResearchUtil sInstance = new LocalResearchUtil();
+    static final /* synthetic */ int[] xb13ed5c5 = new int[TutorialController.TutorialType.values().length];
+    static final /* synthetic */ int[] xe3d1e672 = new int[0];
+    static final /* synthetic */ int[] xa5d29dd5 = new int[0];
+    static final /* synthetic */ int[] xf06c7730 = new int[0];
+    static final /* synthetic */ int[] x703dafe = new int[0];
     private BatteryChangedReceiver mBatteryChangedReceiver;
     private String mModeChangeMethod;
-    private final Map<UserSettingKey, LocalResearchUtil$BasisAndChange<UserSettingValue>> mSettingsPhoto = new ArrayMap();
-    private final Map<UserSettingKey, LocalResearchUtil$BasisAndChange<UserSettingValue>> mSettingsVideo = new ArrayMap();
-    private LocalResearchUtil$SemiAutoSettingValues mSemiAutoSettingValuesPhoto = null;
-    private LocalResearchUtil$SemiAutoSettingValues mSemiAutoSettingValuesVideo = null;
-    private LocalResearchUtil$GestureShutterValues mGestureShutterValues = null;
-    private LocalResearchUtil$ObjectTrackingValues mObjectTrackingValues = null;
+    private final Map<UserSettingKey, BasisAndChange<UserSettingValue>> mSettingsPhoto = new ArrayMap();
+    private final Map<UserSettingKey, BasisAndChange<UserSettingValue>> mSettingsVideo = new ArrayMap();
+    private SemiAutoSettingValues mSemiAutoSettingValuesPhoto = null;
+    private SemiAutoSettingValues mSemiAutoSettingValuesVideo = null;
+    private GestureShutterValues mGestureShutterValues = null;
+    private ObjectTrackingValues mObjectTrackingValues = null;
     private boolean mPredictiveLaunchState = false;
     private final Map<UserSettingKey, UserSettingValue> mAllSettingsPhoto = new ArrayMap();
     private final Map<UserSettingKey, UserSettingValue> mAllSettingsVideo = new ArrayMap();
-    private String mRecognizedScene = CameraParameterConverter$SceneMode.AUTO.toString();
-    private Map<LocalResearchUtil$MeasurementKey, LocalResearchUtil$PerformanceData> mPerformanceDataMap = new ArrayMap();
+    private String mRecognizedScene = CameraParameterConverter.SceneMode.AUTO.toString();
+    private Map<MeasurementKey, PerformanceData> mPerformanceDataMap = new ArrayMap();
     private boolean mIsHeated = false;
     private long mWizardStartTime = 0;
-    private TutorialController$TutorialType mTutorialType = null;
+    private TutorialController.TutorialType mTutorialType = null;
     private boolean mIsReadMore = false;
     private int mCurrentPageIndex = -1;
 
-    static /* synthetic */ boolean access$400(LocalResearchUtil localResearchUtil) {
-        return localResearchUtil.isHeated();
+    public enum MeasurementKey {
+        LAUNCH_COLD_BOOT_FROM_HOME_READY_FOR_USE,
+        LAUNCH_COLD_BOOT_FROM_LOCKSCREEN_READY_FOR_USE,
+        LAUNCH_COLD_BOOT_FROM_CAMERAKEY_READY_FOR_USE,
+        LAUNCH_COLD_BOOT_FROM_LIFTTRIGGER_READY_FOR_USE,
+        LAUNCH_WARM_BOOT_FROM_HOME_READY_FOR_USE,
+        LAUNCH_WARM_BOOT_FROM_LOCKSCREEN_READY_FOR_USE,
+        LAUNCH_WARM_BOOT_FROM_CAMERAKEY_READY_FOR_USE,
+        LAUNCH_WARM_BOOT_FROM_LIFTTRIGGER_READY_FOR_USE,
+        VIDEO_RECORDING_STOP_READY_FOR_USE,
+        CLOSE_INITIAL_RESPONSE,
+        CLOSE_READY_FOR_USE,
+        SHOT_TO_SHOT_DELAY
     }
 
-    static /* synthetic */ String access$500(LocalResearchUtil localResearchUtil) {
-        return localResearchUtil.getBatteryLevel();
+    public enum ModeChangeMethod {
+        SWIPE,
+        ICON_SWIPE,
+        ICON_TOUCH,
+        MODE_SELECTOR,
+        MRU_SHORTCUT
+    }
+
+    private static class BasisAndChange<T> {
+        private T mBasis;
+        private T mChange;
+
+        public BasisAndChange(T t, T t2) {
+            this.mBasis = null;
+            this.mChange = null;
+            this.mBasis = t;
+            this.mChange = t2;
+        }
+
+        boolean hasChange() {
+            return this.mBasis != this.mChange;
+        }
     }
 
     private LocalResearchUtil() {
@@ -83,19 +115,19 @@ public class LocalResearchUtil {
 
     private Map<UserSettingKey, UserSettingValue> getCommonSettings(Map<UserSettingKey, UserSettingValue> map) {
         ArrayMap arrayMap = new ArrayMap();
-        for (Map$Entry<UserSettingKey, UserSettingValue> map$Entry : map.entrySet()) {
-            switch (LocalResearchUtil$1.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[map$Entry.getKey().ordinal()]) {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                    arrayMap.put(map$Entry.getKey(), map.get(map$Entry.getKey()));
+        for (Map.Entry<UserSettingKey, UserSettingValue> entry : map.entrySet()) {
+            switch (entry.getKey()) {
+                case GEO_TAG:
+                case TOUCH_CAPTURE:
+                case VOLUME_KEY:
+                case SHUTTER_SOUND:
+                case DESTINATION_TO_SAVE:
+                case FAST_CAPTURE:
+                case GRID_LINE:
+                case AUTO_REVIEW:
+                case PREDICTIVE_LAUNCH:
+                case SIDE_SENSE:
+                    arrayMap.put(entry.getKey(), map.get(entry.getKey()));
                     break;
             }
         }
@@ -103,20 +135,20 @@ public class LocalResearchUtil {
     }
 
     private Screen getScreen(CapturingMode capturingMode) {
-        switch (LocalResearchUtil$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()]) {
-            case 1:
+        switch (capturingMode) {
+            case SCENE_RECOGNITION:
                 return Screen.SUPERIOR_AUTO_MAIN;
-            case 2:
+            case NORMAL:
                 return Screen.MANUAL_MAIN;
-            case 3:
+            case SUPERIOR_FRONT:
                 return Screen.SUPERIOR_AUTO_FRONT;
-            case 4:
+            case FRONT_PHOTO:
                 return Screen.MANUAL_FRONT;
-            case 5:
+            case VIDEO:
                 return Screen.VIDEO_MAIN;
-            case 6:
+            case FRONT_VIDEO:
                 return Screen.VIDEO_FRONT;
-            case 7:
+            case SLOW_MOTION:
                 return Screen.SLOW_MOTION;
             default:
                 if (CamLog.VERBOSE) {
@@ -126,12 +158,12 @@ public class LocalResearchUtil {
         }
     }
 
-    public void sendView(LaunchCondition$LaunchTrigger launchCondition$LaunchTrigger, CapturingMode capturingMode) {
-        ResearchUtil.getInstance().sendView(launchCondition$LaunchTrigger, getScreen(capturingMode));
+    public void sendView(LaunchCondition.LaunchTrigger launchTrigger, CapturingMode capturingMode) {
+        ResearchUtil.getInstance().sendView(launchTrigger, getScreen(capturingMode));
     }
 
-    public void setLaunchBy(LaunchCondition$LaunchTrigger launchCondition$LaunchTrigger) {
-        ResearchUtil.getInstance().setLaunchBy(launchCondition$LaunchTrigger);
+    public void setLaunchBy(LaunchCondition.LaunchTrigger launchTrigger) {
+        ResearchUtil.getInstance().setLaunchBy(launchTrigger);
     }
 
     public void setView(CapturingMode capturingMode) {
@@ -143,84 +175,83 @@ public class LocalResearchUtil {
         if (userSettingValue == null) {
             userSettingValue = getCurrentSetting(key);
         }
-        LocalResearchUtil$BasisAndChange<UserSettingValue> localResearchUtil$BasisAndChange = new LocalResearchUtil$BasisAndChange<>(userSettingValue, userSettingValue2);
-        if (!localResearchUtil$BasisAndChange.hasChange()) {
+        BasisAndChange<UserSettingValue> basisAndChange = new BasisAndChange<>(userSettingValue, userSettingValue2);
+        if (!basisAndChange.hasChange()) {
             if (CamLog.VERBOSE) {
                 CamLog.d("setSettingsValue() : Not changed.");
                 return;
             }
             return;
         }
-        switch (LocalResearchUtil$1.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[key.ordinal()]) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-            case 39:
-            case 40:
-            case 41:
+        switch (key) {
+            case GEO_TAG:
+            case TOUCH_CAPTURE:
+            case VOLUME_KEY:
+            case SHUTTER_SOUND:
+            case DESTINATION_TO_SAVE:
+            case FAST_CAPTURE:
+            case GRID_LINE:
+            case AUTO_REVIEW:
+            case PREDICTIVE_LAUNCH:
+            case SIDE_SENSE:
+            case DISTORTION_CORRECTION:
+            case HELP_GUIDE:
+            case RESET_SETTINGS:
                 break;
-            case 11:
-            case 12:
-            case 13:
-            case 14:
-            case 15:
-            case 16:
-            case 17:
-            case 18:
-            case 19:
-            case 20:
-            case 21:
-            case 22:
-            case 23:
-            case 24:
-            case 25:
-            case 26:
-            case 27:
-            case 28:
-                setSettingsPhotoVideo(localResearchUtil$BasisAndChange, Event$Category.SETTINGS_PHOTO);
+            case FLASH:
+            case ASPECT_RATIO:
+            case RESOLUTION:
+            case SELF_TIMER:
+            case SHUTTER_TRIGGER:
+            case HDR:
+            case ISO:
+            case SOFT_SKIN:
+            case EV:
+            case WHITE_BALANCE:
+            case METERING:
+            case SHUTTER_SPEED:
+            case FOCUS_RANGE:
+            case CAMERA_KEY:
+            case DISPLAY_FLASH:
+            case TOUCH_INTENTION:
+            case FUSION_MODE:
+            case PREDICTIVE_CAPTURE:
+                setSettingsPhotoVideo(basisAndChange, Event.Category.SETTINGS_PHOTO);
                 break;
-            case 29:
-            case 30:
-            case 31:
-            case 32:
-            case 33:
-            case 34:
-            case 35:
-                setSettingsPhotoVideo(localResearchUtil$BasisAndChange, Event$Category.SETTINGS_VIDEO);
+            case PHOTO_LIGHT:
+            case VIDEO_SIZE:
+            case VIDEO_SHUTTER_TRIGGER:
+            case VIDEO_STABILIZER:
+            case VIDEO_CODEC:
+            case VIDEO_HDR:
+            case SLOW_MOTION:
+                setSettingsPhotoVideo(basisAndChange, Event.Category.SETTINGS_VIDEO);
                 break;
-            case 36:
-            case 37:
-                switch (LocalResearchUtil$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()]) {
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                        setSettingsPhotoVideo(localResearchUtil$BasisAndChange, Event$Category.SETTINGS_PHOTO);
+            case FOCUS_MODE:
+            case OBJECT_TRACKING:
+                switch (capturingMode) {
+                    case SCENE_RECOGNITION:
+                    case NORMAL:
+                    case SUPERIOR_FRONT:
+                    case FRONT_PHOTO:
+                        setSettingsPhotoVideo(basisAndChange, Event.Category.SETTINGS_PHOTO);
                         break;
-                    case 5:
-                    case 6:
-                    case 7:
-                        setSettingsPhotoVideo(localResearchUtil$BasisAndChange, Event$Category.SETTINGS_VIDEO);
+                    case VIDEO:
+                    case FRONT_VIDEO:
+                    case SLOW_MOTION:
+                        setSettingsPhotoVideo(basisAndChange, Event.Category.SETTINGS_VIDEO);
                         break;
                 }
-                break;
-            case 38:
-                int i = LocalResearchUtil$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()];
-                if (i != 6) {
-                    switch (i) {
-                        case 3:
-                        case 4:
-                            setSettingsPhotoVideo(localResearchUtil$BasisAndChange, Event$Category.SETTINGS_PHOTO);
-                    }
-                } else {
-                    setSettingsPhotoVideo(localResearchUtil$BasisAndChange, Event$Category.SETTINGS_VIDEO);
+            case FRONT_ANGLE:
+                if (capturingMode == CapturingMode.FRONT_VIDEO) {
+                    setSettingsPhotoVideo(basisAndChange, Event.Category.SETTINGS_VIDEO);
+                    break;
+                }
+                switch (capturingMode) {
+                    case SUPERIOR_FRONT:
+                    case FRONT_PHOTO:
+                        setSettingsPhotoVideo(basisAndChange, Event.Category.SETTINGS_PHOTO);
+                        break;
                 }
                 break;
             default:
@@ -230,65 +261,65 @@ public class LocalResearchUtil {
                 }
                 return;
         }
-        ResearchUtil.getInstance().sendEventChangedSetting(key.toString(), ((UserSettingValue) LocalResearchUtil$BasisAndChange.access$000(localResearchUtil$BasisAndChange)).toString(), ((UserSettingValue) LocalResearchUtil$BasisAndChange.access$100(localResearchUtil$BasisAndChange)).toString());
-        setAllSettingsValue((UserSettingValue) LocalResearchUtil$BasisAndChange.access$100(localResearchUtil$BasisAndChange), capturingMode);
+        ResearchUtil.getInstance().sendEventChangedSetting(key.toString(), ((UserSettingValue) ((BasisAndChange) basisAndChange).mBasis).toString(), ((UserSettingValue) ((BasisAndChange) basisAndChange).mChange).toString());
+        setAllSettingsValue((UserSettingValue) ((BasisAndChange) basisAndChange).mChange, capturingMode);
     }
 
-    private Map<UserSettingKey, LocalResearchUtil$BasisAndChange<UserSettingValue>> getSettingsMap(Event$Category event$Category) {
-        switch (LocalResearchUtil$1.$SwitchMap$com$sonymobile$cameracommon$research$parameters$Event$Category[event$Category.ordinal()]) {
-            case 1:
+    private Map<UserSettingKey, BasisAndChange<UserSettingValue>> getSettingsMap(Event.Category category) {
+        switch (category) {
+            case SETTINGS_PHOTO:
                 return this.mSettingsPhoto;
-            case 2:
+            case SETTINGS_VIDEO:
                 return this.mSettingsVideo;
             default:
                 return null;
         }
     }
 
-    private void setSettingsPhotoVideo(LocalResearchUtil$BasisAndChange<UserSettingValue> localResearchUtil$BasisAndChange, Event$Category event$Category) {
-        UserSettingKey key = ((UserSettingValue) LocalResearchUtil$BasisAndChange.access$100(localResearchUtil$BasisAndChange)).getKey();
+    private void setSettingsPhotoVideo(BasisAndChange<UserSettingValue> basisAndChange, Event.Category category) {
+        UserSettingKey key = ((UserSettingValue) ((BasisAndChange) basisAndChange).mChange).getKey();
         if (CamLog.VERBOSE) {
-            CamLog.d("setSettingsPhotoVideo() : Category = " + event$Category + ", Key = " + key);
+            CamLog.d("setSettingsPhotoVideo() : Category = " + category + ", Key = " + key);
         }
         if (CamLog.VERBOSE) {
-            CamLog.d("newValues    : Basis = " + LocalResearchUtil$BasisAndChange.access$000(localResearchUtil$BasisAndChange) + ", Change = " + LocalResearchUtil$BasisAndChange.access$100(localResearchUtil$BasisAndChange));
+            CamLog.d("newValues    : Basis = " + ((BasisAndChange) basisAndChange).mBasis + ", Change = " + ((BasisAndChange) basisAndChange).mChange);
         }
-        Map<UserSettingKey, LocalResearchUtil$BasisAndChange<UserSettingValue>> settingsMap = getSettingsMap(event$Category);
+        Map<UserSettingKey, BasisAndChange<UserSettingValue>> settingsMap = getSettingsMap(category);
         if (settingsMap == null) {
             return;
         }
         if (settingsMap.containsKey(key)) {
-            LocalResearchUtil$BasisAndChange<UserSettingValue> localResearchUtil$BasisAndChange2 = settingsMap.get(key);
-            if (((UserSettingValue) LocalResearchUtil$BasisAndChange.access$000(localResearchUtil$BasisAndChange2)).equals(LocalResearchUtil$BasisAndChange.access$100(localResearchUtil$BasisAndChange))) {
-                settingsMap.remove(key);
+            BasisAndChange<UserSettingValue> basisAndChange2 = settingsMap.get(key);
+            if (!((UserSettingValue) ((BasisAndChange) basisAndChange2).mBasis).equals(((BasisAndChange) basisAndChange).mChange)) {
+                ((BasisAndChange) basisAndChange2).mChange = ((BasisAndChange) basisAndChange).mChange;
+                settingsMap.put(key, basisAndChange2);
                 return;
             } else {
-                LocalResearchUtil$BasisAndChange.access$102(localResearchUtil$BasisAndChange2, LocalResearchUtil$BasisAndChange.access$100(localResearchUtil$BasisAndChange));
-                settingsMap.put(key, localResearchUtil$BasisAndChange2);
+                settingsMap.remove(key);
                 return;
             }
         }
-        settingsMap.put(key, localResearchUtil$BasisAndChange);
+        settingsMap.put(key, basisAndChange);
     }
 
-    private void sendEventSettings(Event$Category event$Category) {
-        Map<UserSettingKey, LocalResearchUtil$BasisAndChange<UserSettingValue>> settingsMap = getSettingsMap(event$Category);
+    private void sendEventSettings(Event.Category category) {
+        Map<UserSettingKey, BasisAndChange<UserSettingValue>> settingsMap = getSettingsMap(category);
         if (settingsMap == null || settingsMap.isEmpty()) {
             return;
         }
-        for (Map$Entry<UserSettingKey, LocalResearchUtil$BasisAndChange<UserSettingValue>> map$Entry : settingsMap.entrySet()) {
-            UserSettingKey key = map$Entry.getKey();
-            LocalResearchUtil$BasisAndChange<UserSettingValue> value = map$Entry.getValue();
-            if (LocalResearchUtil$BasisAndChange.access$100(value) != null) {
-                ResearchUtil.getInstance().sendEvent(event$Category, key.toString(), ((UserSettingValue) LocalResearchUtil$BasisAndChange.access$100(value)).toString());
+        for (Map.Entry<UserSettingKey, BasisAndChange<UserSettingValue>> entry : settingsMap.entrySet()) {
+            UserSettingKey key = entry.getKey();
+            BasisAndChange<UserSettingValue> value = entry.getValue();
+            if (((BasisAndChange) value).mChange != null) {
+                ResearchUtil.getInstance().sendEvent(category, key.toString(), ((UserSettingValue) ((BasisAndChange) value).mChange).toString());
             }
         }
         settingsMap.clear();
     }
 
     public void sendEventSettings() {
-        sendEventSettings(Event$Category.SETTINGS_PHOTO);
-        sendEventSettings(Event$Category.SETTINGS_VIDEO);
+        sendEventSettings(Event.Category.SETTINGS_PHOTO);
+        sendEventSettings(Event.Category.SETTINGS_VIDEO);
     }
 
     public void sendEventInternalModeChange(CapturingMode capturingMode, CapturingMode capturingMode2) {
@@ -299,25 +330,25 @@ public class LocalResearchUtil {
         ResearchUtil.getInstance().sendEventInternalModeChange(getModeName(capturingMode), getModeName(modeSelectorInternalMode), this.mModeChangeMethod);
     }
 
-    public void sendEventAddonModeChange(Event$Category event$Category, String str, String str2) {
-        ResearchUtil.getInstance().sendEventAddonModeChange(event$Category, str, str2, this.mModeChangeMethod);
+    public void sendEventAddonModeChange(Event.Category category, String str, String str2) {
+        ResearchUtil.getInstance().sendEventAddonModeChange(category, str, str2, this.mModeChangeMethod);
     }
 
     public String getModeName(CapturingMode capturingMode) {
-        switch (LocalResearchUtil$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()]) {
-            case 1:
+        switch (capturingMode) {
+            case SCENE_RECOGNITION:
                 return "SUPERIOR_AUTO_MAIN";
-            case 2:
+            case NORMAL:
                 return "MUNAUL_MAIN";
-            case 3:
+            case SUPERIOR_FRONT:
                 return "SUPERIOR_AUTO_FRONT";
-            case 4:
+            case FRONT_PHOTO:
                 return "MUNAUL_FRONT";
-            case 5:
+            case VIDEO:
                 return "VIDEO_MAIN";
-            case 6:
+            case FRONT_VIDEO:
                 return "VIDEO_FRONT";
-            case 7:
+            case SLOW_MOTION:
                 return "SLOW_MOTION";
             default:
                 return "";
@@ -325,25 +356,55 @@ public class LocalResearchUtil {
     }
 
     private String getModeName(ModeSelectorInternalMode modeSelectorInternalMode) {
-        return LocalResearchUtil$1.$SwitchMap$com$sonyericsson$android$camera$view$modeselector$ModeSelectorInternalMode[modeSelectorInternalMode.ordinal()] != 1 ? "" : "PORTRAIT_SELFIE";
+        return modeSelectorInternalMode != ModeSelectorInternalMode.PORTRAIT_SELFIE ? "" : "PORTRAIT_SELFIE";
     }
 
-    public void setModeChangeMethod(LocalResearchUtil$ModeChangeMethod localResearchUtil$ModeChangeMethod) {
-        this.mModeChangeMethod = localResearchUtil$ModeChangeMethod.toString();
+    public void setModeChangeMethod(ModeChangeMethod modeChangeMethod) {
+        this.mModeChangeMethod = modeChangeMethod.toString();
     }
 
-    private LocalResearchUtil$SemiAutoSettingValues getSemiAutoSettingValues(Event$Category event$Category) {
-        switch (LocalResearchUtil$1.$SwitchMap$com$sonymobile$cameracommon$research$parameters$Event$Category[event$Category.ordinal()]) {
-            case 1:
-            case 3:
+    private static class SemiAutoSettingValues {
+        private BasisAndChange<Integer> mAmberBlue = new BasisAndChange<>(0, 0);
+        private BasisAndChange<Integer> mBrightness = new BasisAndChange<>(0, 0);
+
+        public void updateAmberBlue(int i) {
+            ((BasisAndChange) this.mAmberBlue).mChange = Integer.valueOf(i);
+        }
+
+        public void updateBrightness(int i) {
+            ((BasisAndChange) this.mBrightness).mChange = Integer.valueOf(i);
+        }
+
+        public boolean hasChange() {
+            return this.mAmberBlue.hasChange() || this.mBrightness.hasChange();
+        }
+
+        public void applyChange() {
+            ((BasisAndChange) this.mAmberBlue).mBasis = ((BasisAndChange) this.mAmberBlue).mChange;
+            ((BasisAndChange) this.mBrightness).mBasis = ((BasisAndChange) this.mBrightness).mChange;
+        }
+
+        public String toString() {
+            return "AMB_" + ((BasisAndChange) this.mAmberBlue).mChange + "_BR_" + ((BasisAndChange) this.mBrightness).mChange;
+        }
+
+        public boolean isEnabled() {
+            return (((Integer) ((BasisAndChange) this.mAmberBlue).mChange).intValue() == 0 && ((Integer) ((BasisAndChange) this.mBrightness).mChange).intValue() == 0) ? false : true;
+        }
+    }
+
+    private SemiAutoSettingValues getSemiAutoSettingValues(Event.Category category) {
+        switch (category) {
+            case SETTINGS_PHOTO:
+            case ALL_SETTINGS_PHOTO:
                 if (this.mSemiAutoSettingValuesPhoto == null) {
-                    this.mSemiAutoSettingValuesPhoto = new LocalResearchUtil$SemiAutoSettingValues();
+                    this.mSemiAutoSettingValuesPhoto = new SemiAutoSettingValues();
                 }
                 return this.mSemiAutoSettingValuesPhoto;
-            case 2:
-            case 4:
+            case SETTINGS_VIDEO:
+            case ALL_SETTINGS_VIDEO:
                 if (this.mSemiAutoSettingValuesVideo == null) {
-                    this.mSemiAutoSettingValuesVideo = new LocalResearchUtil$SemiAutoSettingValues();
+                    this.mSemiAutoSettingValuesVideo = new SemiAutoSettingValues();
                 }
                 return this.mSemiAutoSettingValuesVideo;
             default:
@@ -352,13 +413,13 @@ public class LocalResearchUtil {
     }
 
     public void setSemiAutoSettingAmberBlueValue(int i) {
-        getSemiAutoSettingValues(Event$Category.SETTINGS_PHOTO).updateAmberBlue(i);
-        getSemiAutoSettingValues(Event$Category.SETTINGS_VIDEO).updateAmberBlue(i);
+        getSemiAutoSettingValues(Event.Category.SETTINGS_PHOTO).updateAmberBlue(i);
+        getSemiAutoSettingValues(Event.Category.SETTINGS_VIDEO).updateAmberBlue(i);
     }
 
     public void setSemiAutoSettingBrightnessValue(int i) {
-        getSemiAutoSettingValues(Event$Category.SETTINGS_PHOTO).updateBrightness(i);
-        getSemiAutoSettingValues(Event$Category.SETTINGS_VIDEO).updateBrightness(i);
+        getSemiAutoSettingValues(Event.Category.SETTINGS_PHOTO).updateBrightness(i);
+        getSemiAutoSettingValues(Event.Category.SETTINGS_VIDEO).updateBrightness(i);
     }
 
     public void clearSemiAutoSettingValues() {
@@ -366,17 +427,42 @@ public class LocalResearchUtil {
         this.mSemiAutoSettingValuesVideo = null;
     }
 
-    public void sendSemiAutoSettingValues(Event$Category event$Category) {
-        LocalResearchUtil$SemiAutoSettingValues semiAutoSettingValues = getSemiAutoSettingValues(event$Category);
+    public void sendSemiAutoSettingValues(Event.Category category) {
+        SemiAutoSettingValues semiAutoSettingValues = getSemiAutoSettingValues(category);
         if (semiAutoSettingValues.hasChange()) {
             semiAutoSettingValues.applyChange();
-            ResearchUtil.getInstance().sendEvent(event$Category, UserSettingKey.SEMI_AUTO.toString(), semiAutoSettingValues.toString());
+            ResearchUtil.getInstance().sendEvent(category, UserSettingKey.SEMI_AUTO.toString(), semiAutoSettingValues.toString());
         }
     }
 
-    private LocalResearchUtil$ObjectTrackingValues getObjectTrackingValues() {
+    private static final class ObjectTrackingValues {
+        private String mTarget;
+
+        private ObjectTrackingValues() {
+            this.mTarget = "OFF";
+        }
+
+
+
+        public void setObjectTrackingTarget(boolean z) {
+            if (z) {
+                this.mTarget = "ON";
+            } else {
+                this.mTarget = "OFF";
+            }
+        }
+
+        public ShootingLabel.Parameter getParameter(String str) {
+            if ("OFF".equals(str)) {
+                return ShootingLabel.getObjectTrackingParameter("OFF_OFF");
+            }
+            return ShootingLabel.getObjectTrackingParameter(str + "_" + this.mTarget);
+        }
+    }
+
+    private ObjectTrackingValues getObjectTrackingValues() {
         if (this.mObjectTrackingValues == null) {
-            this.mObjectTrackingValues = new LocalResearchUtil$ObjectTrackingValues(null);
+            this.mObjectTrackingValues = new ObjectTrackingValues();
         }
         return this.mObjectTrackingValues;
     }
@@ -385,9 +471,38 @@ public class LocalResearchUtil {
         getObjectTrackingValues().setObjectTrackingTarget(z);
     }
 
-    private LocalResearchUtil$GestureShutterValues getGestureShutterValues() {
+    private static final class GestureShutterValues {
+        private int mHandSignLostNum;
+
+        private GestureShutterValues() {
+            this.mHandSignLostNum = -1;
+        }
+
+
+
+        public void startHandSignLostNumCounting() {
+            this.mHandSignLostNum = 0;
+        }
+
+        public void resetHandSignLostNum() {
+            this.mHandSignLostNum = -1;
+        }
+
+        public void countUpHandSignLostNum() {
+            if (this.mHandSignLostNum == -1 && CamLog.VERBOSE) {
+                CamLog.d("Counting up hand signs lost number from -1.");
+            }
+            this.mHandSignLostNum++;
+        }
+
+        public ShootingLabel.Parameter getParameter() {
+            return ShootingLabel.getHandSignLostParameter(this.mHandSignLostNum);
+        }
+    }
+
+    private GestureShutterValues getGestureShutterValues() {
         if (this.mGestureShutterValues == null) {
-            this.mGestureShutterValues = new LocalResearchUtil$GestureShutterValues(null);
+            this.mGestureShutterValues = new GestureShutterValues();
         }
         return this.mGestureShutterValues;
     }
@@ -416,102 +531,102 @@ public class LocalResearchUtil {
 
     public void setAllSettingsValue(UserSettingValue userSettingValue, CapturingMode capturingMode) {
         UserSettingKey key = userSettingValue.getKey();
-        switch (LocalResearchUtil$1.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[key.ordinal()]) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-            case 39:
-            case 40:
-            case 41:
-                setAllSettingsPhotoVideo(userSettingValue, Event$Category.ALL_SETTINGS_PHOTO);
-                setAllSettingsPhotoVideo(userSettingValue, Event$Category.ALL_SETTINGS_VIDEO);
+        switch (key) {
+            case GEO_TAG:
+            case TOUCH_CAPTURE:
+            case VOLUME_KEY:
+            case SHUTTER_SOUND:
+            case DESTINATION_TO_SAVE:
+            case FAST_CAPTURE:
+            case GRID_LINE:
+            case AUTO_REVIEW:
+            case PREDICTIVE_LAUNCH:
+            case SIDE_SENSE:
+            case DISTORTION_CORRECTION:
+            case HELP_GUIDE:
+            case RESET_SETTINGS:
+                setAllSettingsPhotoVideo(userSettingValue, Event.Category.ALL_SETTINGS_PHOTO);
+                setAllSettingsPhotoVideo(userSettingValue, Event.Category.ALL_SETTINGS_VIDEO);
                 break;
-            case 11:
-            case 12:
-            case 13:
-            case 14:
-            case 15:
-            case 16:
-            case 17:
-            case 18:
-            case 19:
-            case 20:
-            case 21:
-            case 22:
-            case 23:
-            case 24:
-            case 25:
-            case 26:
-            case 27:
-            case 28:
-                setAllSettingsPhotoVideo(userSettingValue, Event$Category.ALL_SETTINGS_PHOTO);
+            case FLASH:
+            case ASPECT_RATIO:
+            case RESOLUTION:
+            case SELF_TIMER:
+            case SHUTTER_TRIGGER:
+            case HDR:
+            case ISO:
+            case SOFT_SKIN:
+            case EV:
+            case WHITE_BALANCE:
+            case METERING:
+            case SHUTTER_SPEED:
+            case FOCUS_RANGE:
+            case CAMERA_KEY:
+            case DISPLAY_FLASH:
+            case TOUCH_INTENTION:
+            case FUSION_MODE:
+            case PREDICTIVE_CAPTURE:
+                setAllSettingsPhotoVideo(userSettingValue, Event.Category.ALL_SETTINGS_PHOTO);
                 break;
-            case 29:
-            case 30:
-            case 31:
-            case 32:
-            case 33:
-            case 34:
-            case 35:
-                setAllSettingsPhotoVideo(userSettingValue, Event$Category.ALL_SETTINGS_VIDEO);
+            case PHOTO_LIGHT:
+            case VIDEO_SIZE:
+            case VIDEO_SHUTTER_TRIGGER:
+            case VIDEO_STABILIZER:
+            case VIDEO_CODEC:
+            case VIDEO_HDR:
+            case SLOW_MOTION:
+                setAllSettingsPhotoVideo(userSettingValue, Event.Category.ALL_SETTINGS_VIDEO);
                 break;
-            case 36:
-            case 37:
-                switch (LocalResearchUtil$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()]) {
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                        setAllSettingsPhotoVideo(userSettingValue, Event$Category.ALL_SETTINGS_PHOTO);
+            case FOCUS_MODE:
+            case OBJECT_TRACKING:
+                switch (capturingMode) {
+                    case SCENE_RECOGNITION:
+                    case NORMAL:
+                    case SUPERIOR_FRONT:
+                    case FRONT_PHOTO:
+                        setAllSettingsPhotoVideo(userSettingValue, Event.Category.ALL_SETTINGS_PHOTO);
                         break;
-                    case 5:
-                    case 6:
-                    case 7:
-                        setAllSettingsPhotoVideo(userSettingValue, Event$Category.ALL_SETTINGS_VIDEO);
+                    case VIDEO:
+                    case FRONT_VIDEO:
+                    case SLOW_MOTION:
+                        setAllSettingsPhotoVideo(userSettingValue, Event.Category.ALL_SETTINGS_VIDEO);
                         break;
                 }
-                break;
-            case 38:
-                int i = LocalResearchUtil$1.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$CapturingMode[capturingMode.ordinal()];
-                if (i != 6) {
-                    switch (i) {
-                        case 3:
-                        case 4:
-                            setAllSettingsPhotoVideo(userSettingValue, Event$Category.ALL_SETTINGS_PHOTO);
-                    }
-                } else {
-                    setAllSettingsPhotoVideo(userSettingValue, Event$Category.ALL_SETTINGS_VIDEO);
+            case FRONT_ANGLE:
+                if (capturingMode == CapturingMode.FRONT_VIDEO) {
+                    setAllSettingsPhotoVideo(userSettingValue, Event.Category.ALL_SETTINGS_VIDEO);
+                    break;
+                }
+                switch (capturingMode) {
+                    case SUPERIOR_FRONT:
+                    case FRONT_PHOTO:
+                        setAllSettingsPhotoVideo(userSettingValue, Event.Category.ALL_SETTINGS_PHOTO);
+                        break;
                 }
                 break;
             default:
                 if (CamLog.VERBOSE) {
                     CamLog.d("setAllSettingsValue() : Not supported : " + key);
+                    break;
                 }
                 break;
         }
     }
 
-    private void setAllSettingsPhotoVideo(UserSettingValue userSettingValue, Event$Category event$Category) {
+    private void setAllSettingsPhotoVideo(UserSettingValue userSettingValue, Event.Category category) {
         UserSettingKey key = userSettingValue.getKey();
-        Map<UserSettingKey, UserSettingValue> allSettingsMap = getAllSettingsMap(event$Category);
+        Map<UserSettingKey, UserSettingValue> allSettingsMap = getAllSettingsMap(category);
         if (allSettingsMap == null) {
             return;
         }
         allSettingsMap.put(key, userSettingValue);
     }
 
-    private Map<UserSettingKey, UserSettingValue> getAllSettingsMap(Event$Category event$Category) {
-        switch (LocalResearchUtil$1.$SwitchMap$com$sonymobile$cameracommon$research$parameters$Event$Category[event$Category.ordinal()]) {
-            case 3:
+    private Map<UserSettingKey, UserSettingValue> getAllSettingsMap(Event.Category category) {
+        switch (category) {
+            case ALL_SETTINGS_PHOTO:
                 return this.mAllSettingsPhoto;
-            case 4:
+            case ALL_SETTINGS_VIDEO:
                 return this.mAllSettingsVideo;
             default:
                 return null;
@@ -520,9 +635,9 @@ public class LocalResearchUtil {
 
     private UserSettingValue getCurrentSetting(UserSettingKey userSettingKey) {
         Map<UserSettingKey, UserSettingValue> allSettingsMap;
-        Iterator it = Arrays.asList(Event$Category.ALL_SETTINGS_PHOTO, Event$Category.ALL_SETTINGS_VIDEO).iterator();
+        Iterator it = Arrays.asList(Event.Category.ALL_SETTINGS_PHOTO, Event.Category.ALL_SETTINGS_VIDEO).iterator();
         UserSettingValue userSettingValue = null;
-        while (it.hasNext() && ((allSettingsMap = getAllSettingsMap((Event$Category) it.next())) == null || (userSettingValue = allSettingsMap.get(userSettingKey)) == null)) {
+        while (it.hasNext() && ((allSettingsMap = getAllSettingsMap((Event.Category) it.next())) == null || (userSettingValue = allSettingsMap.get(userSettingKey)) == null)) {
         }
         return userSettingValue;
     }
@@ -532,26 +647,26 @@ public class LocalResearchUtil {
     }
 
     public void clearRecognizedScene() {
-        this.mRecognizedScene = CameraParameterConverter$SceneMode.AUTO.toString();
+        this.mRecognizedScene = CameraParameterConverter.SceneMode.AUTO.toString();
     }
 
-    public void setUserOperation(Event$UserOperation event$UserOperation, CapturingMode capturingMode) {
+    public void setUserOperation(Event.UserOperation userOperation, CapturingMode capturingMode) {
         String string;
         ArrayList arrayList = new ArrayList();
-        Event$Category event$Category = Event$Category.ALL_SETTINGS_PHOTO;
+        Event.Category category = Event.Category.ALL_SETTINGS_PHOTO;
         arrayList.add(ShootingLabel.getRecognizedSceneParameter(this.mRecognizedScene));
-        UserSettingValue userSettingValue = getAllSettingsMap(event$Category).get(UserSettingKey.FLASH);
+        UserSettingValue userSettingValue = getAllSettingsMap(category).get(UserSettingKey.FLASH);
         if (userSettingValue == null) {
             userSettingValue = Flash.OFF;
         }
         arrayList.add(ShootingLabel.getFlashParameter(userSettingValue.toString()));
-        UserSettingValue userSettingValue2 = getAllSettingsMap(event$Category).get(UserSettingKey.SELF_TIMER);
+        UserSettingValue userSettingValue2 = getAllSettingsMap(category).get(UserSettingKey.SELF_TIMER);
         if (userSettingValue2 == null) {
             userSettingValue2 = SelfTimer.OFF;
         }
         arrayList.add(ShootingLabel.getSelfTimerParameter(userSettingValue2.toString()));
-        if (capturingMode.isFront() && PlatformCapability.isSuperWideSupported(CameraInfo$CameraId.FRONT)) {
-            UserSettingValue userSettingValue3 = getAllSettingsMap(event$Category).get(UserSettingKey.FRONT_ANGLE);
+        if (capturingMode.isFront() && PlatformCapability.isSuperWideSupported(CameraInfo.CameraId.FRONT)) {
+            UserSettingValue userSettingValue3 = getAllSettingsMap(category).get(UserSettingKey.FRONT_ANGLE);
             if (userSettingValue3 == null) {
                 userSettingValue3 = FrontAngle.DEFAULT;
             }
@@ -560,85 +675,151 @@ public class LocalResearchUtil {
             string = "INVALID";
         }
         arrayList.add(ShootingLabel.getFrontAngleParameter(string));
-        LocalResearchUtil$SemiAutoSettingValues semiAutoSettingValues = getSemiAutoSettingValues(event$Category);
+        SemiAutoSettingValues semiAutoSettingValues = getSemiAutoSettingValues(category);
         if (semiAutoSettingValues != null) {
             arrayList.add(ShootingLabel.getSemiAutoParameter(!semiAutoSettingValues.isEnabled() ? 1 : 0));
         }
         if (this.mGestureShutterValues != null) {
             arrayList.add(this.mGestureShutterValues.getParameter());
         }
-        UserSettingValue userSettingValue4 = getAllSettingsMap(event$Category).get(UserSettingKey.OBJECT_TRACKING);
+        UserSettingValue userSettingValue4 = getAllSettingsMap(category).get(UserSettingKey.OBJECT_TRACKING);
         if (userSettingValue4 == null) {
             userSettingValue4 = ObjectTracking.OFF;
         }
         arrayList.add(getObjectTrackingValues().getParameter(userSettingValue4.toString()));
-        arrayList.add(ShootingLabel.getPredictiveLaunchParameter(this.mPredictiveLaunchState ? "True" : "False"));
-        ResearchUtil.getInstance().setUserOperation(event$UserOperation, arrayList, getAllSettingsMapString(Event$Category.ALL_SETTINGS_PHOTO));
+        arrayList.add(ShootingLabel.getPredictiveLaunchParameter(this.mPredictiveLaunchState ? ShootingLabel.PREDICTIVE_LAUNCH_ON : ShootingLabel.PREDICTIVE_LAUNCH_OFF));
+        ResearchUtil.getInstance().setUserOperation(userOperation, arrayList, getAllSettingsMapString(Event.Category.ALL_SETTINGS_PHOTO));
     }
 
-    public Map<String, String> getAllSettingsMapString(Event$Category event$Category) {
+    private class PerformanceData {
+        private final MeasurementKey mKey;
+        private long mStartInMillis = 0;
+        private long mStopInMillis = 0;
+        private boolean mIsValid = false;
+
+        public PerformanceData(MeasurementKey measurementKey) {
+            this.mKey = measurementKey;
+        }
+
+        public void start() {
+            this.mStartInMillis = SystemClock.uptimeMillis();
+        }
+
+        public void stop() {
+            this.mStopInMillis = SystemClock.uptimeMillis();
+            switch (this.mKey) {
+                case LAUNCH_COLD_BOOT_FROM_HOME_READY_FOR_USE:
+                case LAUNCH_COLD_BOOT_FROM_LOCKSCREEN_READY_FOR_USE:
+                case LAUNCH_COLD_BOOT_FROM_CAMERAKEY_READY_FOR_USE:
+                case LAUNCH_COLD_BOOT_FROM_LIFTTRIGGER_READY_FOR_USE:
+                case LAUNCH_WARM_BOOT_FROM_HOME_READY_FOR_USE:
+                case LAUNCH_WARM_BOOT_FROM_LOCKSCREEN_READY_FOR_USE:
+                case LAUNCH_WARM_BOOT_FROM_CAMERAKEY_READY_FOR_USE:
+                case LAUNCH_WARM_BOOT_FROM_LIFTTRIGGER_READY_FOR_USE:
+                    ResearchUtil.getInstance().sendPerformanceData(this.mKey.toString(), this.mStopInMillis - this.mStartInMillis, LocalResearchUtil.this.isHeated(), LocalResearchUtil.this.getBatteryLevel());
+                    if (CamLog.DEBUG) {
+                        CamLog.d(this.mKey.toString() + ": " + (this.mStopInMillis - this.mStartInMillis) + ", isHeated: " + LocalResearchUtil.this.isHeated() + ", BatteryLevel: " + LocalResearchUtil.this.getBatteryLevel());
+                        break;
+                    }
+                    break;
+                case VIDEO_RECORDING_STOP_READY_FOR_USE:
+                case CLOSE_INITIAL_RESPONSE:
+                case CLOSE_READY_FOR_USE:
+                case SHOT_TO_SHOT_DELAY:
+                    ResearchUtil.getInstance().sendPerformanceData(this.mKey.toString(), this.mStopInMillis - this.mStartInMillis, LocalResearchUtil.this.isHeated());
+                    if (CamLog.DEBUG) {
+                        CamLog.d(this.mKey.toString() + ": " + (this.mStopInMillis - this.mStartInMillis) + ", isHeated: " + LocalResearchUtil.this.isHeated());
+                        break;
+                    }
+                    break;
+            }
+        }
+
+        public void setValid() {
+            this.mIsValid = true;
+        }
+
+        public void setInvalid() {
+            this.mIsValid = false;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private boolean isValid() {
+            return this.mStartInMillis != 0 && this.mIsValid;
+        }
+
+        public void clear() {
+            this.mStartInMillis = 0L;
+            this.mStopInMillis = 0L;
+            this.mIsValid = false;
+        }
+    }
+
+    public Map<String, String> getAllSettingsMapString(Event.Category category) {
         ArrayMap arrayMap = new ArrayMap();
-        Map<UserSettingKey, UserSettingValue> allSettingsMap = getAllSettingsMap(event$Category);
+        Map<UserSettingKey, UserSettingValue> allSettingsMap = getAllSettingsMap(category);
         if (allSettingsMap != null) {
-            for (Map$Entry<UserSettingKey, UserSettingValue> map$Entry : allSettingsMap.entrySet()) {
-                arrayMap.put(map$Entry.getKey().toString(), map$Entry.getValue().toString());
+            for (Map.Entry<UserSettingKey, UserSettingValue> entry : allSettingsMap.entrySet()) {
+                arrayMap.put(entry.getKey().toString(), entry.getValue().toString());
             }
         }
         return arrayMap;
     }
 
-    public void startMeasurement(LocalResearchUtil$MeasurementKey localResearchUtil$MeasurementKey) {
-        getPerformanceData(localResearchUtil$MeasurementKey).start();
+    public void startMeasurement(MeasurementKey measurementKey) {
+        getPerformanceData(measurementKey).start();
     }
 
-    public void stopMeasurement(LocalResearchUtil$MeasurementKey localResearchUtil$MeasurementKey) {
-        LocalResearchUtil$PerformanceData performanceData = getPerformanceData(localResearchUtil$MeasurementKey);
-        if (LocalResearchUtil$PerformanceData.access$600(performanceData)) {
+    public void stopMeasurement(MeasurementKey measurementKey) {
+        PerformanceData performanceData = getPerformanceData(measurementKey);
+        if (performanceData.isValid()) {
             performanceData.stop();
         }
         performanceData.clear();
     }
 
-    public void setMeasurementValid(LocalResearchUtil$MeasurementKey localResearchUtil$MeasurementKey) {
-        getPerformanceData(localResearchUtil$MeasurementKey).setValid();
+    public void setMeasurementValid(MeasurementKey measurementKey) {
+        getPerformanceData(measurementKey).setValid();
     }
 
-    public void setMeasurementInvalid(LocalResearchUtil$MeasurementKey localResearchUtil$MeasurementKey) {
-        getPerformanceData(localResearchUtil$MeasurementKey).setInvalid();
+    public void setMeasurementInvalid(MeasurementKey measurementKey) {
+        getPerformanceData(measurementKey).setInvalid();
     }
 
-    public boolean isMeasurementValid(LocalResearchUtil$MeasurementKey localResearchUtil$MeasurementKey) {
-        return LocalResearchUtil$PerformanceData.access$600(getPerformanceData(localResearchUtil$MeasurementKey));
+    public boolean isMeasurementValid(MeasurementKey measurementKey) {
+        return getPerformanceData(measurementKey).isValid();
     }
 
     public void setMeasurementThermal(boolean z) {
         this.mIsHeated = z;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isHeated() {
         return this.mIsHeated;
     }
 
-    private LocalResearchUtil$PerformanceData getPerformanceData(LocalResearchUtil$MeasurementKey localResearchUtil$MeasurementKey) {
-        LocalResearchUtil$PerformanceData localResearchUtil$PerformanceData = this.mPerformanceDataMap.get(localResearchUtil$MeasurementKey);
-        if (localResearchUtil$PerformanceData != null) {
-            return localResearchUtil$PerformanceData;
+    private PerformanceData getPerformanceData(MeasurementKey measurementKey) {
+        PerformanceData performanceData = this.mPerformanceDataMap.get(measurementKey);
+        if (performanceData != null) {
+            return performanceData;
         }
-        LocalResearchUtil$PerformanceData localResearchUtil$PerformanceData2 = new LocalResearchUtil$PerformanceData(this, localResearchUtil$MeasurementKey);
-        this.mPerformanceDataMap.put(localResearchUtil$MeasurementKey, localResearchUtil$PerformanceData2);
-        return localResearchUtil$PerformanceData2;
+        PerformanceData performanceData2 = new PerformanceData(measurementKey);
+        this.mPerformanceDataMap.put(measurementKey, performanceData2);
+        return performanceData2;
     }
 
     public void setBatteryChangedReceiver(BatteryChangedReceiver batteryChangedReceiver) {
         this.mBatteryChangedReceiver = batteryChangedReceiver;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private String getBatteryLevel() {
         return String.valueOf(this.mBatteryChangedReceiver != null ? this.mBatteryChangedReceiver.getBatteryLevel() : -1);
     }
 
-    public void sendRecordingEvent(Event$UserOperation event$UserOperation, Event$StopOperation event$StopOperation, int i, boolean z) {
-        ResearchUtil.getInstance().sendRecordingEvent(event$UserOperation, event$StopOperation, i, z, getAllSettingsMapString(Event$Category.ALL_SETTINGS_VIDEO));
+    public void sendRecordingEvent(Event.UserOperation userOperation, Event.StopOperation stopOperation, int i, boolean z) {
+        ResearchUtil.getInstance().sendRecordingEvent(userOperation, stopOperation, i, z, getAllSettingsMapString(Event.Category.ALL_SETTINGS_VIDEO));
     }
 
     public void setSettingsValue(UserSettings userSettings, CapturingMode capturingMode) {
@@ -654,10 +835,10 @@ public class LocalResearchUtil {
         this.mIsReadMore = z;
     }
 
-    public void startSetupWizard(TutorialController$TutorialType tutorialController$TutorialType, int i) {
+    public void startSetupWizard(TutorialController.TutorialType tutorialType, int i) {
         this.mWizardStartTime = System.currentTimeMillis();
         this.mCurrentPageIndex = i;
-        this.mTutorialType = tutorialController$TutorialType;
+        this.mTutorialType = tutorialType;
     }
 
     public void closeSetupWizard() {
@@ -666,103 +847,115 @@ public class LocalResearchUtil {
         this.mTutorialType = null;
     }
 
-    public void sendSetupWizardEvent(TutorialController$TutorialType tutorialController$TutorialType, int i, Event$WizardResult event$WizardResult) {
-        Event$WizardPage event$WizardPage = Event$WizardPage.UNKNOWN;
+    public void sendSetupWizardEvent(TutorialController.TutorialType tutorialType, int i, Event.WizardResult wizardResult) {
+        Event.WizardPage wizardPage = Event.WizardPage.UNKNOWN;
         this.mCurrentPageIndex = i;
-        this.mTutorialType = tutorialController$TutorialType;
+        this.mTutorialType = tutorialType;
         if (this.mTutorialType == null) {
             CamLog.w("TutorialType is null");
             return;
         }
-        switch (LocalResearchUtil$1.$SwitchMap$com$sonyericsson$android$camera$view$tutorial$TutorialController$TutorialType[this.mTutorialType.ordinal()]) {
-            case 1:
-                event$WizardPage = Event$WizardPage.LOCATION_WIZARD;
+        switch (this.mTutorialType) {
+            case SAVE_LOCATION:
+                wizardPage = Event.WizardPage.LOCATION_WIZARD;
                 break;
-            case 2:
-                event$WizardPage = Event$WizardPage.PREDICTIVE_LAUNCH_WIZARD;
+            case PREDICTIVE_LAUNCH:
+                wizardPage = Event.WizardPage.PREDICTIVE_LAUNCH_WIZARD;
                 break;
-            case 3:
-                event$WizardPage = Event$WizardPage.SIDE_SENSING_WIZARD;
+            case SIDE_SENSE:
+                wizardPage = Event.WizardPage.SIDE_SENSING_WIZARD;
                 break;
-            case 4:
-                event$WizardPage = Event$WizardPage.SUPERIOR_AUTO_FUSION_WIZARD;
+            case DUAL_CAMERA:
+                wizardPage = Event.WizardPage.SUPERIOR_AUTO_FUSION_WIZARD;
                 break;
-            case 5:
-                event$WizardPage = Event$WizardPage.EYE_POSITION_WIZARD;
+            case EYE_GUIDE:
+                wizardPage = Event.WizardPage.EYE_POSITION_WIZARD;
                 break;
-            case 6:
-                event$WizardPage = Event$WizardPage.HAND_SHUTTER_WIZARD;
+            case HAND_SHUTTER:
+                wizardPage = Event.WizardPage.HAND_SHUTTER_WIZARD;
                 break;
-            case 7:
+            case SUPER_SLOW_MOTION_MORE_OPTIONS:
                 switch (i) {
                     case 0:
-                        event$WizardPage = Event$WizardPage.SUPER_SLOWMOTION_WIZARD1;
+                        wizardPage = Event.WizardPage.SUPER_SLOWMOTION_WIZARD1;
                         break;
                     case 1:
-                        event$WizardPage = Event$WizardPage.SUPER_SLOWMOTION_WIZARD2;
+                        wizardPage = Event.WizardPage.SUPER_SLOWMOTION_WIZARD2;
                         break;
                     case 2:
-                        event$WizardPage = Event$WizardPage.SUPER_SLOWMOTION_WIZARD3;
+                        wizardPage = Event.WizardPage.SUPER_SLOWMOTION_WIZARD3;
                         break;
                     case 3:
-                        event$WizardPage = Event$WizardPage.SUPER_SLOWMOTION_WIZARD4;
+                        wizardPage = Event.WizardPage.SUPER_SLOWMOTION_WIZARD4;
                         break;
                 }
-                break;
-            case 8:
+            case SUPER_SLOW_MOTION:
                 switch (i) {
                     case 0:
-                        event$WizardPage = Event$WizardPage.READMORE_SUPER_SLOWMOTION_WIZARD1;
+                        wizardPage = Event.WizardPage.READMORE_SUPER_SLOWMOTION_WIZARD1;
                         break;
                     case 1:
-                        event$WizardPage = Event$WizardPage.READMORE_SUPER_SLOWMOTION_WIZARD2;
+                        wizardPage = Event.WizardPage.READMORE_SUPER_SLOWMOTION_WIZARD2;
                         break;
                     case 2:
-                        event$WizardPage = Event$WizardPage.READMORE_SUPER_SLOWMOTION_WIZARD3;
+                        wizardPage = Event.WizardPage.READMORE_SUPER_SLOWMOTION_WIZARD3;
                         break;
                 }
-                break;
-            case 9:
-                event$WizardPage = this.mIsReadMore ? Event$WizardPage.READMORE_ONE_SHOT_WIZARD : Event$WizardPage.ONE_SHOT_WIZARD;
-                break;
-            case 10:
+            case SUPER_SLOW_MOTION_SHOT:
+                if (this.mIsReadMore) {
+                    wizardPage = Event.WizardPage.READMORE_ONE_SHOT_WIZARD;
+                    break;
+                } else {
+                    wizardPage = Event.WizardPage.ONE_SHOT_WIZARD;
+                    break;
+                }
+            case STANDARD_SLOW_MOTION:
                 switch (i) {
                     case 0:
-                        event$WizardPage = this.mIsReadMore ? Event$WizardPage.READMORE_SLOWMOTION_WIZARD1 : Event$WizardPage.SLOWMOTION_WIZARD1;
-                        break;
+                        if (this.mIsReadMore) {
+                            wizardPage = Event.WizardPage.READMORE_SLOWMOTION_WIZARD1;
+                            break;
+                        } else {
+                            wizardPage = Event.WizardPage.SLOWMOTION_WIZARD1;
+                            break;
+                        }
                     case 1:
-                        event$WizardPage = this.mIsReadMore ? Event$WizardPage.READMORE_SLOWMOTION_WIZARD2 : Event$WizardPage.SLOWMOTION_WIZARD2;
-                        break;
+                        if (this.mIsReadMore) {
+                            wizardPage = Event.WizardPage.READMORE_SLOWMOTION_WIZARD2;
+                            break;
+                        } else {
+                            wizardPage = Event.WizardPage.SLOWMOTION_WIZARD2;
+                            break;
+                        }
                 }
-                break;
-            case 11:
+            case MANUAL_FUSION:
                 switch (i) {
                     case 0:
-                        event$WizardPage = Event$WizardPage.MANUAL_FUSION_WIZARD1;
+                        wizardPage = Event.WizardPage.MANUAL_FUSION_WIZARD1;
                         break;
                     case 1:
-                        event$WizardPage = Event$WizardPage.MANUAL_FUSION_WIZARD2;
+                        wizardPage = Event.WizardPage.MANUAL_FUSION_WIZARD2;
                         break;
                 }
-                break;
-            case 12:
+            case VIDEO_FUSION:
                 switch (i) {
                     case 0:
-                        event$WizardPage = Event$WizardPage.VIDEO_FUSION_WIZARD1;
+                        wizardPage = Event.WizardPage.VIDEO_FUSION_WIZARD1;
                         break;
                     case 1:
-                        event$WizardPage = Event$WizardPage.VIDEO_FUSION_WIZARD2;
+                        wizardPage = Event.WizardPage.VIDEO_FUSION_WIZARD2;
                         break;
                 }
-                break;
         }
         if (this.mWizardStartTime > 0) {
-            ResearchUtil.getInstance().sendSetupWizardEvent(event$WizardPage, event$WizardResult, System.currentTimeMillis() - this.mWizardStartTime);
+            ResearchUtil.getInstance().sendSetupWizardEvent(wizardPage, wizardResult, System.currentTimeMillis() - this.mWizardStartTime);
             this.mWizardStartTime = System.currentTimeMillis();
         }
     }
 
-    public void sendSetupWizardEvent(Event$WizardResult event$WizardResult) {
-        sendSetupWizardEvent(this.mTutorialType, this.mCurrentPageIndex, event$WizardResult);
+    /* renamed from: com.sonyericsson.android.camera.research.LocalResearchUtil$1, reason: invalid class name */
+
+    public void sendSetupWizardEvent(Event.WizardResult wizardResult) {
+        sendSetupWizardEvent(this.mTutorialType, this.mCurrentPageIndex, wizardResult);
     }
 }

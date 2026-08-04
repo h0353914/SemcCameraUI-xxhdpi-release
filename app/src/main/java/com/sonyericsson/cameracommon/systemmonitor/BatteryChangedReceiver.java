@@ -8,6 +8,7 @@ import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import com.sonyericsson.android.camera.util.CamLog;
 
@@ -18,7 +19,7 @@ public class BatteryChangedReceiver extends BroadcastReceiver {
     public static final int THRESHOLD_LOW_BATTERY_LEVEL;
     private final Context mContext;
     private final Handler mHandler;
-    private final BatteryChangedReceiver$BatteryChangedReceiverListener mListener;
+    private final BatteryChangedReceiverListener mListener;
     private boolean mIsAlreadyBcl = false;
     private boolean mIsActive = true;
     private int mBatteryLevel = 100;
@@ -27,8 +28,12 @@ public class BatteryChangedReceiver extends BroadcastReceiver {
     private int mBatteryTemperature = 0;
     private int mHealth = 1;
 
-    static /* synthetic */ BatteryChangedReceiver$BatteryChangedReceiverListener access$000(BatteryChangedReceiver batteryChangedReceiver) {
-        return batteryChangedReceiver.mListener;
+    public interface BatteryChangedReceiverListener {
+        void onBatteryLevelChanged(int i);
+
+        void onReachBatteryLimit(boolean z);
+
+        void onReachLowBattery();
     }
 
     static {
@@ -43,9 +48,9 @@ public class BatteryChangedReceiver extends BroadcastReceiver {
         }
     }
 
-    public BatteryChangedReceiver(Context context, BatteryChangedReceiver$BatteryChangedReceiverListener batteryChangedReceiver$BatteryChangedReceiverListener) {
+    public BatteryChangedReceiver(Context context, BatteryChangedReceiverListener batteryChangedReceiverListener) {
         this.mContext = context;
-        this.mListener = batteryChangedReceiver$BatteryChangedReceiverListener;
+        this.mListener = batteryChangedReceiverListener;
         this.mHandler = new Handler(context.getMainLooper());
     }
 
@@ -97,7 +102,7 @@ public class BatteryChangedReceiver extends BroadcastReceiver {
             int i = this.mBatteryLevel;
             this.mBatteryLevel = intent.getIntExtra("level", 100);
             int i2 = this.mBatteryStatus;
-            this.mBatteryStatus = intent.getIntExtra("status", 1);
+            this.mBatteryStatus = intent.getIntExtra(NotificationCompat.CATEGORY_STATUS, 1);
             int i3 = this.mPlugType;
             this.mPlugType = intent.getIntExtra("plugged", 0);
             int i4 = this.mBatteryTemperature;
@@ -107,12 +112,12 @@ public class BatteryChangedReceiver extends BroadcastReceiver {
             boolean z = this.mPlugType != 0;
             boolean z2 = i3 != 0;
             if (CamLog.VERBOSE) {
-                Log.d("BatteryChangedReceiver", "level          " + i + " --> " + this.mBatteryLevel);
-                Log.d("BatteryChangedReceiver", "status         " + i2 + " --> " + this.mBatteryStatus);
-                Log.d("BatteryChangedReceiver", "plugType       " + i3 + " --> " + this.mPlugType);
-                Log.d("BatteryChangedReceiver", "plugged        " + z2 + " --> " + z);
-                Log.d("BatteryChangedReceiver", "temperature    " + i4 + " --> " + this.mBatteryTemperature);
-                Log.d("BatteryChangedReceiver", "health         " + i5 + " --> " + this.mHealth);
+                Log.d(TAG, "level          " + i + " --> " + this.mBatteryLevel);
+                Log.d(TAG, "status         " + i2 + " --> " + this.mBatteryStatus);
+                Log.d(TAG, "plugType       " + i3 + " --> " + this.mPlugType);
+                Log.d(TAG, "plugged        " + z2 + " --> " + z);
+                Log.d(TAG, "temperature    " + i4 + " --> " + this.mBatteryTemperature);
+                Log.d(TAG, "health         " + i5 + " --> " + this.mHealth);
             }
             if (checkBcl(this.mBatteryLevel, false)) {
                 return;
@@ -140,7 +145,7 @@ public class BatteryChangedReceiver extends BroadcastReceiver {
         notifyBatteryLevel(this.mBatteryLevel);
     }
 
-    private boolean checkBcl(int i, boolean z) {
+    private boolean checkBcl(int i, final boolean z) {
         if (this.mIsAlreadyBcl || !isCheckEnabled() || i > THRESHOLD_BATTERY_LEVEL) {
             return false;
         }
@@ -148,7 +153,12 @@ public class BatteryChangedReceiver extends BroadcastReceiver {
         if (Thread.currentThread().equals(Looper.getMainLooper().getThread())) {
             this.mListener.onReachBatteryLimit(z);
         } else {
-            this.mHandler.post(new BatteryChangedReceiver$1(this, z));
+            this.mHandler.post(new Runnable() { // from class: com.sonyericsson.cameracommon.systemmonitor.BatteryChangedReceiver.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    BatteryChangedReceiver.this.mListener.onReachBatteryLimit(z);
+                }
+            });
         }
         return true;
     }

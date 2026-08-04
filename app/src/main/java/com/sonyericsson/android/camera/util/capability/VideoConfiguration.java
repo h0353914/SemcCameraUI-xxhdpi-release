@@ -26,10 +26,10 @@ public class VideoConfiguration {
     }
 
     public static List<VideoConfiguration> parse(String str) {
-        return parse(str, ",");
+        return parse(str, DELIMITER_COMMA);
     }
 
-    public static List<VideoConfiguration> parse(String str, String str2) {
+    public static List<VideoConfiguration> parse(String str, String str2) throws NumberFormatException {
         if (str == null || str2 == null) {
             return null;
         }

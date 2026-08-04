@@ -18,19 +18,26 @@ public class DoubleTapInfo {
     public float secondDownX;
     public float secondDownY;
 
-    public DoubleTapInfo$Status getStatus() {
+    public enum Status {
+        Success,
+        FastTap,
+        SlowTap,
+        FarPosition
+    }
+
+    public Status getStatus() {
         if (getDeltaTime() > getDoubleTapTimeout()) {
-            return DoubleTapInfo$Status.SlowTap;
+            return Status.SlowTap;
         }
         if (getDeltaTime() < this.doubleTapMinTime) {
-            return DoubleTapInfo$Status.FastTap;
+            return Status.FastTap;
         }
         long deltaX = getDeltaX();
         long deltaY = getDeltaY();
         if (!((deltaX * deltaX) + (deltaY * deltaY) < ((long) this.doubleTapSlopSquare))) {
-            return DoubleTapInfo$Status.FarPosition;
+            return Status.FarPosition;
         }
-        return DoubleTapInfo$Status.Success;
+        return Status.Success;
     }
 
     public long getDeltaTime() {

@@ -4,12 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager$NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.view.View;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,6 +21,18 @@ import java.util.List;
 public class CommonUtility {
     public static final String TAG = "CommonUtility";
     private static final String WRITE_MEDIA_STORAGE = "android.permission.WRITE_MEDIA_STORAGE";
+
+    public enum ApplicationType {
+        SYSTEM,
+        UPDATED_SYSTEM_APP,
+        OTHER
+    }
+
+    public enum DefaultGallerySetting {
+        SONY_ALBUM,
+        GOOGLE_PHOTOS,
+        OTHER
+    }
 
     public static void preload() {
     }
@@ -52,7 +64,7 @@ public class CommonUtility {
         try {
             context.getPackageManager().getApplicationInfo(str, 0);
             return true;
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             if (!CamLog.VERBOSE) {
                 return false;
             }
@@ -65,7 +77,7 @@ public class CommonUtility {
         if (context == null) {
             return false;
         }
-        return new Bidi(context.getResources().getString(2131690264), -2).isRightToLeft();
+        return new Bidi(context.getResources().getString(R.string.capturing_mode_selector_bidicheck_string), -2).isRightToLeft();
     }
 
     public static boolean isActivityAvailable(Context context, Intent intent) {
@@ -76,29 +88,29 @@ public class CommonUtility {
         return false;
     }
 
-    public static CommonUtility$DefaultGallerySetting getDefaultGallery(Context context, Uri uri, String str) {
+    public static DefaultGallerySetting getDefaultGallery(Context context, Uri uri, String str) {
         Intent intent = new Intent("com.android.camera.action.REVIEW");
         intent.addCategory("android.intent.category.DEFAULT");
         intent.setDataAndType(uri, str);
         ResolveInfo resolveInfoResolveActivity = context.getPackageManager().resolveActivity(intent, 65536);
         if (resolveInfoResolveActivity == null) {
-            return CommonUtility$DefaultGallerySetting.OTHER;
+            return DefaultGallerySetting.OTHER;
         }
         if (resolveInfoResolveActivity.activityInfo.packageName.equals("com.sonyericsson.album")) {
-            return CommonUtility$DefaultGallerySetting.SONY_ALBUM;
+            return DefaultGallerySetting.SONY_ALBUM;
         }
         if (resolveInfoResolveActivity.activityInfo.packageName.equals("com.google.android.apps.photos")) {
-            return CommonUtility$DefaultGallerySetting.GOOGLE_PHOTOS;
+            return DefaultGallerySetting.GOOGLE_PHOTOS;
         }
-        return CommonUtility$DefaultGallerySetting.OTHER;
+        return DefaultGallerySetting.OTHER;
     }
 
     public static boolean isPreinstalledApp(Context context) {
-        return getApplicationType(context).equals(CommonUtility$ApplicationType.SYSTEM);
+        return getApplicationType(context).equals(ApplicationType.SYSTEM);
     }
 
     public static boolean isSystemApp(Context context) {
-        return !getApplicationType(context).equals(CommonUtility$ApplicationType.OTHER);
+        return !getApplicationType(context).equals(ApplicationType.OTHER);
     }
 
     public static boolean isCoreCameraApp(Context context) {
@@ -110,10 +122,10 @@ public class CommonUtility {
     }
 
     public static boolean shouldStorageForceInternal(Context context) {
-        return (("android.permission.WRITE_MEDIA_STORAGE" == 0 || isPermissionGranted(context, "android.permission.WRITE_MEDIA_STORAGE")) && isSystemApp(context)) ? false : true;
+        return (isPermissionGranted(context, WRITE_MEDIA_STORAGE) && isSystemApp(context)) ? false : true;
     }
 
-    private static CommonUtility$ApplicationType getApplicationType(Context context) {
+    private static ApplicationType getApplicationType(Context context) {
         try {
             PackageManager packageManager = context.getPackageManager();
             if (packageManager != null) {
@@ -121,21 +133,21 @@ public class CommonUtility {
                 if (packageInfo != null && packageInfo.applicationInfo != null) {
                     int i = packageInfo.applicationInfo.flags;
                     if ((i & 128) != 0) {
-                        return CommonUtility$ApplicationType.UPDATED_SYSTEM_APP;
+                        return ApplicationType.UPDATED_SYSTEM_APP;
                     }
                     if ((i & 1) != 0) {
-                        return CommonUtility$ApplicationType.SYSTEM;
+                        return ApplicationType.SYSTEM;
                     }
-                    return CommonUtility$ApplicationType.OTHER;
+                    return ApplicationType.OTHER;
                 }
                 CamLog.w("Can't get packeage info. assume user app.");
-                return CommonUtility$ApplicationType.OTHER;
+                return ApplicationType.OTHER;
             }
             CamLog.w("Can't get packeage manager. assume user app.");
-            return CommonUtility$ApplicationType.OTHER;
-        } catch (PackageManager$NameNotFoundException unused) {
+            return ApplicationType.OTHER;
+        } catch (PackageManager.NameNotFoundException unused) {
             CamLog.w("Can't get packeage info. assume user app.");
-            return CommonUtility$ApplicationType.OTHER;
+            return ApplicationType.OTHER;
         }
     }
 
@@ -160,26 +172,21 @@ public class CommonUtility {
         return str.substring(iLastIndexOf);
     }
 
-    public static void dumpFile(byte[] bArr, String str) {
-        FileOutputStream fileOutputStream;
+    public static void dumpFile(byte[] data, String fileName) throws IOException {
+        FileOutputStream outputStream = null;
         try {
-            fileOutputStream = new FileOutputStream("/sdcard/" + str);
+            outputStream = new FileOutputStream("/sdcard/" + fileName);
+            outputStream.write(data);
         } catch (IOException e) {
-            e = e;
-            fileOutputStream = null;
-        }
-        try {
-            fileOutputStream.write(bArr);
-        } catch (IOException e2) {
-            e = e2;
             CamLog.e("dumpFile Open / Write Error", e);
         }
-        if (fileOutputStream != null) {
-            try {
-                fileOutputStream.close();
-            } catch (IOException e3) {
-                CamLog.e("dumpFile Close Error", e3);
-            }
+        if (outputStream == null) {
+            return;
+        }
+        try {
+            outputStream.close();
+        } catch (IOException e2) {
+            CamLog.e("dumpFile Close Error", e2);
         }
     }
 

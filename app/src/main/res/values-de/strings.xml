@@ -31,14 +31,20 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Die Erfassung konnte nicht abgeschlossen werden. Bitte schwenken Sie langsamer.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Die Erfassung konnte nicht abgeschlossen werden. Bitte schwenken Sie schneller.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Panoramaaufnahmen durch Schwenken der Kamera</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Erstellung der folgenden Dateien:\n- Multi-Angle-Bild\n- 3D-Bild\nHinweis: Diese Dateien enthalten einen grauen Bereich.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Erstellung der folgenden Dateien: \n- Multi-Angle-Bild \n- 3D-Bild</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Verarbeitung... \nDieses Bild enthält einen grauen Bereich.</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Erstellung der folgenden Dateien:
+- Multi-Angle-Bild
+- 3D-Bild
+Hinweis: Diese Dateien enthalten einen grauen Bereich."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Erstellung der folgenden Dateien: 
+- Multi-Angle-Bild 
+- 3D-Bild"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Verarbeitung... 
+Dieses Bild enthält einen grauen Bereich."</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Bild wird gespeichert.</string>
     <string name="cam_3d_strings_dialog_processing_txt">Verarbeitung...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Warten Sie einige Sekunden, um die 3D-Kamera zu starten.</string>
     <string name="cam_3d_strings_error_capturing_during_connecting_tv_title_txt">Fehler</string>
-    <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">Ziehen Sie das Kabel ab. In diesem Modus kann kein Foto aufgenommen werden, während ein Kabel angeschlossen ist. </string>
+    <string name="cam_3d_strings_error_capturing_during_connecting_tv_txt">"Ziehen Sie das Kabel ab. In diesem Modus kann kein Foto aufgenommen werden, während ein Kabel angeschlossen ist. "</string>
     <string name="cam_3d_strings_error_direction_txt">Das Bild konnte nicht aufgenommen werden. Schwenken Sie in die richtige Richtung.</string>
     <string name="cam_3d_strings_error_too_quick_txt">Das Bild konnte nicht aufgenommen werden. Schwenken Sie langsamer.</string>
     <string name="cam_3d_strings_error_too_slow_txt">Das Bild konnte nicht aufgenommen werden. Schwenken Sie schneller.</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Lassen Sie Ihre Haut rosig und glatt erscheinen. Den Effekt können Sie in Anwendungen nutzen, die die Frontkamera verwenden. Verfügbar für Fotos und Videos. Auch die Stärke kann angepasst werden.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Stärkeanpassung</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Glatte Haut</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">App kann nicht gestartet werden.\nVergewissern Sie sich, dass die aktuelle Version von %1$s auf Ihrem Gerät installiert und aktiviert ist.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"App kann nicht gestartet werden.
+Vergewissern Sie sich, dass die aktuelle Version von %1$s auf Ihrem Gerät installiert und aktiviert ist."</string>
     <string name="cam_strings_gridline_txt">Gitterlinien</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Richten Sie Ihre Handfläche zur Kamera. Der Selbstauslöser wird eingeschaltet, wenn Ihre Handfläche erkannt wird. Strecken Sie die Finger nach oben, um den Erkennungsvorgang zu erleichtern.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Richten Sie Ihre Handfläche zur Kamera</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Allgemeine Einstellungen</string>
     <string name="cam_strings_more_txt">Mehr</string>
     <string name="cam_strings_multi_window_txt">Ziehen Sie die Mitte des Fensterteilers, um zum Vollbildmodus zu wechseln und %1$s verwenden zu können</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Ein weiteres Gerät ist nun verbunden.\nMöchten Sie das Bild über den Sucher für das Gerät freigeben?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Ein weiteres Gerät ist nun verbunden.
+Möchten Sie das Bild über den Sucher für das Gerät freigeben?"</string>
     <string name="cam_strings_multicam_add_device_txt">Gerät hinzufügen</string>
     <string name="cam_strings_multicam_add_more_txt">Mehr hinzufügen</string>
     <string name="cam_strings_multicam_apply_txt">Fertig</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Messung</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Vorherges.</string>
     <string name="cam_strings_predictive_capture_txt">Vorhersagende Aufnahme</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Die Kamera hat erkannt, dass Sie das Telefon im Querformat angehoben und auf ein Objekt gerichtet haben und wurde automatisch gestartet.\nSie können in den Kameraeinstellungen von „Vorausschauender Start“ auswählen, wie Sie diese Funktion nutzen möchten.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Die Kamera hat erkannt, dass Sie das Telefon im Querformat angehoben und auf ein Objekt gerichtet haben und wurde automatisch gestartet.
+Sie können in den Kameraeinstellungen von „Vorausschauender Start“ auswählen, wie Sie diese Funktion nutzen möchten."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Tippen Sie zur Aufnahme innerhalb des Kreises</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Berühren Sie zur Aufnahme das Display</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Tippen Sie innerhalb des Kreises, um in den Vollbildmodus zu wechseln</string>
     <string name="cam_strings_predictive_launch_guide_txt">Tippen Sie innerhalb des Kreises, um die Kamera zu starten</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Tippen zum Starten/Aufn.</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Zum Starten tippen</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Sie können die Kamera schnell starten: Heben Sie das Gerät im Querformat schnell an und richten Sie die Kamera auf das Objekt. Die Kamera wird automatisch gestartet.\nSie können in den Kameraeinstellungen von „Smart-Start“ auswählen, wie Sie diese Funktion nutzen möchten.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Sie können die Kamera schnell starten: Heben Sie das Gerät im Querformat schnell an und richten Sie die Kamera auf das Objekt. Die Kamera wird automatisch gestartet.
+Sie können in den Kameraeinstellungen von „Smart-Start“ auswählen, wie Sie diese Funktion nutzen möchten."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Smart-Start</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Sie können die Kamera schnell starten: Halten Sie das Gerät im Querformat und richten Sie die Kamera auf das Objekt. Die Kamera wird automatisch gestartet.\nSie können diese Funktion in den Kameraeinstellungen der Funktion „Smart-Start“ deaktivieren.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Sie können die Kamera schnell starten: Halten Sie das Gerät im Querformat und richten Sie die Kamera auf das Objekt. Die Kamera wird automatisch gestartet.
+Sie können diese Funktion in den Kameraeinstellungen der Funktion „Smart-Start“ deaktivieren."</string>
     <string name="cam_strings_predictive_launch_txt">Smart-Start</string>
     <string name="cam_strings_preview_always_txt">Ein</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 Sekunden</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s benötigt die folgenden Berechtigungen</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s-Berechtigung</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Die App benötigt die folgenden Berechtigungen, um diese Aktion durchzuführen.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Um Berechtigungen zu erteilen, gehen Sie zu App-Info &gt; Berechtigungen.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Um Berechtigungen zu erteilen, gehen Sie zu App-Info > Berechtigungen.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Fortfahren nicht möglich</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Um Fotos und Videos aufzunehmen</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Um den Standort abzurufen</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Im internen Speicher gespeichert</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">WEITER</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Die App benötigt die folgenden Berechtigungen, um diese Aktion durchzuführen.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Um eine SD-Karte zu verwenden, benötigt die Kamera die Berechtigung zum Zugriff auf die SD-Karte.\nÄndern Sie den Datenspeicher wieder auf „SD-Karte“ oder gewähren Sie der Kamera im nächsten Bildschirm den Zugriff auf die SD-Karte.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Um eine SD-Karte zu verwenden, benötigt die Kamera die Berechtigung zum Zugriff auf die SD-Karte.
+Ändern Sie den Datenspeicher wieder auf „SD-Karte“ oder gewähren Sie der Kamera im nächsten Bildschirm den Zugriff auf die SD-Karte."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD-Karte nicht verfügbar</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Eine neue SD-Karte, die Berechtigungen anfragt, wurde erkannt.\n\nUm die SD-Karte als Datenspeicher zu verwenden, wählen Sie bitte im nächsten Bildschirm die SD-Karte oder das DCIM-Verzeichnis aus.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Die SD-Karte/das DCIM-Verzeichnis wurde nicht ausgewählt. Die SD-Karte kann nicht verwendet werden.\n\nUm Berechtigungen zu erteilen, müssen Sie die SD-Karte als Speicherort festlegen oder im nächsten Bildschirm das entsprechende Verzeichnis auswählen.</string>
-    <string name="cam_strings_sd_permission_info_txt">Eine neue SD-Karte erkannt, die Berechtigungen benötigt.\nDer interne Speicher wird daher als Standarddatenspeicher verwendet.\n\nBitte ändern Sie in den Kameraeinstellungen den Datenspeicher auf SD-Karte, um die SD-Karte als Datenspeicher verwenden.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Eine neue SD-Karte, die Berechtigungen anfragt, wurde erkannt.
+
+Um die SD-Karte als Datenspeicher zu verwenden, wählen Sie bitte im nächsten Bildschirm die SD-Karte oder das DCIM-Verzeichnis aus."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Die SD-Karte/das DCIM-Verzeichnis wurde nicht ausgewählt. Die SD-Karte kann nicht verwendet werden.
+
+Um Berechtigungen zu erteilen, müssen Sie die SD-Karte als Speicherort festlegen oder im nächsten Bildschirm das entsprechende Verzeichnis auswählen."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Eine neue SD-Karte erkannt, die Berechtigungen benötigt.
+Der interne Speicher wird daher als Standarddatenspeicher verwendet.
+
+Bitte ändern Sie in den Kameraeinstellungen den Datenspeicher auf SD-Karte, um die SD-Karte als Datenspeicher verwenden."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Um Fotos und Videos auf der SD-Karte zu speichern</string>
     <string name="cam_strings_select_picture_txt">Foto auswählen</string>
     <string name="cam_strings_self_timer_05_txt">0,5 Sek.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Automat. Aufnahme</string>
     <string name="cam_strings_side_touch_not_supported_txt">„Seitensensor“ wird auf diesem Bildschirm nicht unterstützt</string>
     <string name="cam_strings_side_touch_on_title_txt">Seitensensor</string>
-    <string name="cam_strings_side_touch_on_txt">Gehen Sie zu Einstellungen &gt; Display und aktivieren Sie „Seitensensor“, um die Funktion zu nutzen. Jetzt aktivieren?</string>
+    <string name="cam_strings_side_touch_on_txt">Gehen Sie zu Einstellungen > Display und aktivieren Sie „Seitensensor“, um die Funktion zu nutzen. Jetzt aktivieren?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Seitensensor</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Sie können ein Foto oder Video aufnehmen, indem Sie einfach den Sensor an der Seite des Displays anstelle des Auslösers zweimal antippen. Sie können auch zoomen; bewegen Sie dazu Ihren Finger an dem Seitensensor entlang.\nSowohl der Foto- als auch der Videomodus unterstützen diese Funktion. Sie können die Funktion in den Kameraeinstellungen von „Seitensensor“ deaktivieren.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Sie können ein Foto oder Video aufnehmen, indem Sie im Hochformat einfach den Sensor an der Seite des Displays anstelle des Auslösers zweimal antippen. Sie können auch zoomen; bewegen Sie dazu Ihren Finger an dem Seitensensor entlang.\nSowohl der Foto- als auch der Videomodus unterstützen diese Funktion. Sie können die Funktion in den Kameraeinstellungen von „Seitensensor“ deaktivieren.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Sie können ein Foto oder Video aufnehmen, indem Sie im Hochformat einfach den Sensor auf der Seite des Displays anstelle des Auslösers zweimal antippen.\nSowohl der Foto- als auch der Videomodus unterstützen diese Funktion. Sie können die Funktion in den Kameraeinstellungen von „Seitensensor“ deaktivieren.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Sie können ein Foto oder Video aufnehmen, indem Sie einfach den Sensor auf der Seite des Displays anstelle des Auslösers zweimal antippen.\nSowohl der Foto- als auch der Videomodus unterstützen diese Funktion. Sie können die Funktion in den Kameraeinstellungen von „Seitensensor“ deaktivieren.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Sie können ein Foto oder Video aufnehmen, indem Sie einfach den Sensor an der Seite des Displays anstelle des Auslösers zweimal antippen. Sie können auch zoomen; bewegen Sie dazu Ihren Finger an dem Seitensensor entlang.
+Sowohl der Foto- als auch der Videomodus unterstützen diese Funktion. Sie können die Funktion in den Kameraeinstellungen von „Seitensensor“ deaktivieren."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Sie können ein Foto oder Video aufnehmen, indem Sie im Hochformat einfach den Sensor an der Seite des Displays anstelle des Auslösers zweimal antippen. Sie können auch zoomen; bewegen Sie dazu Ihren Finger an dem Seitensensor entlang.
+Sowohl der Foto- als auch der Videomodus unterstützen diese Funktion. Sie können die Funktion in den Kameraeinstellungen von „Seitensensor“ deaktivieren."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Sie können ein Foto oder Video aufnehmen, indem Sie im Hochformat einfach den Sensor auf der Seite des Displays anstelle des Auslösers zweimal antippen.
+Sowohl der Foto- als auch der Videomodus unterstützen diese Funktion. Sie können die Funktion in den Kameraeinstellungen von „Seitensensor“ deaktivieren."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Sie können ein Foto oder Video aufnehmen, indem Sie einfach den Sensor auf der Seite des Displays anstelle des Auslösers zweimal antippen.
+Sowohl der Foto- als auch der Videomodus unterstützen diese Funktion. Sie können die Funktion in den Kameraeinstellungen von „Seitensensor“ deaktivieren."</string>
     <string name="cam_strings_side_touch_txt">Seitensensor</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Aufnahmestil und Bildschirmauflösung können in den Kameraeinstellungen geändert werden</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Extrem langsam (eine Aufnahme)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Extreme Zeitlupe</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Sie können die BpS und den Aufnahmestil für die Zeitlupe ändern</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Weitere Optionen</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Nehmen Sie spontan e. Moment in Zeitlupe mit %1$s BpS auf. Tippen Sie auf d. Taste i. d. Mitte des Bildschirms.\nAufnahmen in heller Umgebung erzielen eine bessere Qualität.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Nehmen Sie spontan e. Moment in Zeitlupe mit %1$s BpS auf. Tippen Sie auf d. Taste i. d. Mitte des Bildschirms.
+Aufnahmen in heller Umgebung erzielen eine bessere Qualität."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Sie können mit %1$s BpS aufnehmen, indem Sie auf die Taste in der Mitte tippen</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Nehmen Sie einen besonderen Moment sofort in Zeitlupe mit %1$s BpS auf, indem Sie auf die Taste in der Mitte des Bildschirms tippen.</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Extreme Zeitlupe (eine Aufnahme)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Zeitlupe</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">So nehmen Sie auf</string>
     <string name="cam_strings_slow_motion_standard_txt">Zeitlupe</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Erstellen Sie ein tolles Video, indem Sie einen besonderen Moment in Zeitlupe zeigen.\nNehmen Sie Videos in heller Umgebung auf, um eine bessere Qualität zu erreichen.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Erstellen Sie ein tolles Video, indem Sie einen besonderen Moment in Zeitlupe zeigen.
+Nehmen Sie Videos in heller Umgebung auf, um eine bessere Qualität zu erreichen."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Videos mit versch. Geschwindigkeiten aufnehmen: zu %1$s BpS wechseln</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Tippen Sie im richtigen Moment auf die Taste in der Mitte</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Zeitlupe aufgenommen</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Softwarelizenzen</string>
     <string name="cam_strings_take_photo_txt">Fotografieren</string>
     <string name="cam_strings_term_of_use_accept_txt">Akzeptieren</string>
-    <string name="cam_strings_term_of_use_consent_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Nutzungsbedingungen&lt;/a&gt; von Sony Mobile zustimmen.</string>
+    <string name="cam_strings_term_of_use_consent_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Nutzungsbedingungen&lt;/a> von Sony Mobile zustimmen.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Für Ihre Nutzung dieses Diensts fallen abhängig vom Datentarif möglicherweise Gebühren für mobile Daten an.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile wird Ihre gehashte Android-ID (einmalige Gerätenummer), ortsbezogene Daten und Zeitstempel erfassen, um Ihnen im Rahmen und zur Verbesserung des Dienstes entsprechende Ergebnisse bereitzustellen.</string>
     <string name="cam_strings_term_of_use_decline_txt">Ablehnen</string>
     <string name="cam_strings_term_of_use_title_txt">Nutzungsbedingungen</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Nutzungsbedingungen&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Nutzungsbedingungen&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Fotos entfernen</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Speichern fehlgeschlagen</string>
     <string name="cam_strings_timeshift_save_complete_txt">Gespeichert</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Zur stabilen Aufnahme von 4K-Videos dürfen Sie diese Einstellung nicht ändern, sofern Sie nicht eine Hochgeschwindigkeits-SD-Karte (UHS-Geschwindigkeitsklasse 1 oder höher oder Geschwindigkeitsklasse 10 empfohlen) verwenden.</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Zur stabilen Aufnahme von Timeshift-Videos dürfen Sie diese Einstellung nicht ändern, sofern Sie nicht eine Hochgeschwindigkeits-SD-Karte (UHS-Geschwindigkeitsklasse 1 oder höher oder Geschwindigkeitsklasse 10 empfohlen) verwenden. Trotzdem ändern?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Zur stabilen Videoaufnahme in Zeitlupe dürfen Sie diese Einstellung nicht ändern, sofern Sie nicht eine Hochgeschwindigkeits-SD-Karte (UHS-Geschwindigkeitsklasse 1 oder höher oder Geschwindigkeitsklasse 10 empfohlen) verwenden.</string>
-    <string name="cam_strings_video_explanatory_txt">Für stabile Videoaufnahmen empfiehlt es sich, den internen Massenspeicher als Datenspeicher festzulegen. Möchten Sie die Änderung jetzt vornehmen?\n\nWenn Sie weiterhin eine SD-Karte als Datenspeicher verwenden möchten, sollte es eine Hochgeschwindigkeits-SD-Karte sein (UHS-Geschwindigkeitsklasse 1 oder höher oder Geschwindigkeitsklasse 10 empfohlen).</string>
+    <string name="cam_strings_video_explanatory_txt">"Für stabile Videoaufnahmen empfiehlt es sich, den internen Massenspeicher als Datenspeicher festzulegen. Möchten Sie die Änderung jetzt vornehmen?
+
+Wenn Sie weiterhin eine SD-Karte als Datenspeicher verwenden möchten, sollte es eine Hochgeschwindigkeits-SD-Karte sein (UHS-Geschwindigkeitsklasse 1 oder höher oder Geschwindigkeitsklasse 10 empfohlen)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Dual-Kamera</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Mit der Dual-Kamera können Sie auch nachts oder in einem schwach beleuchteten Raum schöne und rauscharme Videos aufnehmen. Die Kamera schaltet automatisch zwischen Einzel- und Dual-Kamera um, basierend auf den Szenen, die mit extrem hoher Empfindlichkeit aufgenommen werden sollen.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Videoaufnahme mit Dual-Kamera</string>

@@ -37,12 +37,6 @@ public final class DescriptorProtos$FileOptions extends ExtendableMessageNano<De
     public String swiftPrefix;
     public int szlApiVersion;
     public DescriptorProtos$UninterpretedOption[] uninterpretedOption;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     @NanoEnumValue(legacy = false, value = DescriptorProtos$FileOptions$CompatibilityLevel.class)
     public static int checkCompatibilityLevelOrThrow(int value) {
         if (value >= 0 && value <= 0) {
@@ -469,7 +463,6 @@ public final class DescriptorProtos$FileOptions extends ExtendableMessageNano<De
                     if (!super.storeUnknownField(input, tag)) {
                         return this;
                     }
-                    break;
                     break;
             }
         }

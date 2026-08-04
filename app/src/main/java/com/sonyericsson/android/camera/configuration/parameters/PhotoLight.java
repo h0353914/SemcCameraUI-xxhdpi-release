@@ -1,15 +1,17 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
 import com.sonyericsson.android.camera.ActionMode;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public enum PhotoLight implements UserSettingValue {
-    ON(2131231051, 2131690116, "torch", true),
-    OFF(2131231052, 2131690115, "off", false);
+    ON(R.drawable.cam_core_flash_torch_icn, R.string.cam_strings_settings_on_txt, CameraParameters.FLASH_MODE_TORCH, true),
+    OFF(R.drawable.cam_core_flash_torch_off_icn, R.string.cam_strings_settings_off_txt, "off", false);
 
     public static final String TAG = "PhotoLight";
     private static final int sParameterTextId = 2131689841;
@@ -61,12 +63,10 @@ public enum PhotoLight implements UserSettingValue {
         if (!list.isEmpty()) {
             for (PhotoLight photoLight : LedOptionsResolver.getInstance().getPhotoLightOptions(actionMode, list)) {
                 Iterator<String> it = list.iterator();
-                while (true) {
-                    if (it.hasNext()) {
-                        if (photoLight.getValue().equals(it.next())) {
-                            arrayList.add(photoLight);
-                            break;
-                        }
+                while (it.hasNext()) {
+                    if (photoLight.getValue().equals(it.next())) {
+                        arrayList.add(photoLight);
+                        break;
                     }
                 }
             }

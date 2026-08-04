@@ -31,8 +31,13 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Не вдалося завершити зйомку. Виконуйте панорамування повільніше.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Не вдалося завершити зйомку. Виконуйте панорамування швидше.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Проведіть камерою, щоб зробити панорамний знімок</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Створення таких файлів:\n- зображення Multi Angle;\n- зображення 3D.\nПримітка. Ці файли містять сіру область.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Створення таких файлів:\n- зображення Multi Angle;\n- зображення 3D.</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Створення таких файлів:
+- зображення Multi Angle;
+- зображення 3D.
+Примітка. Ці файли містять сіру область."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Створення таких файлів:
+- зображення Multi Angle;
+- зображення 3D."</string>
     <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Обробка... Зображення містить сіру область</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Збереження зображення</string>
     <string name="cam_3d_strings_dialog_processing_txt">Обробка...</string>
@@ -360,7 +365,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Вирівняйте тон шкіри та усуньте недоліки. Ефект доступний у програмах, які використовують передню камеру. Ефект можна застосувати як до фотографій, так і до відео, а також налаштувати рівень його інтенсивності.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Налаштування рівня</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Рівна шкіра</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Не вдалося запустити програму.\nПереконайтеся, що на пристрої установлено та ввімкнено найновішу версію програми %1$s.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Не вдалося запустити програму.
+Переконайтеся, що на пристрої установлено та ввімкнено найновішу версію програми %1$s."</string>
     <string name="cam_strings_gridline_txt">Лінії сітки</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Поверніть долоню до камери. Після розпізнавання долоні ввімкнеться автотаймер. Для простішого розпізнавання витягніть пальці вгору.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Поверніть долоню до камери</string>
@@ -404,7 +410,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Загальні установки</string>
     <string name="cam_strings_more_txt">Більше</string>
     <string name="cam_strings_multi_window_txt">Перетягніть центр лінії поділу, щоб запустити програму «%1$s» в повноекранному режимі</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Підключено інший пристрій.\nБажаєте обмінятися зображенням із цим пристроєм за допомогою видошукача?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Підключено інший пристрій.
+Бажаєте обмінятися зображенням із цим пристроєм за допомогою видошукача?"</string>
     <string name="cam_strings_multicam_add_device_txt">Дод. пристрою</string>
     <string name="cam_strings_multicam_add_more_txt">Додати ще</string>
     <string name="cam_strings_multicam_apply_txt">Готово</string>
@@ -436,16 +443,19 @@
     <string name="cam_strings_photometry_txt">Вимірювання</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Автокадр</string>
     <string name="cam_strings_predictive_capture_txt">Інтелектуальна зйомка</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Камеру запущено автоматично внаслідок піднімання телефону в альбомному режимі й наведення на об’єкт.\nПотрібний спосіб використання цієї функції можна вибрати в розділі «Розумний запуск» установок камери.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Камеру запущено автоматично внаслідок піднімання телефону в альбомному режимі й наведення на об’єкт.
+Потрібний спосіб використання цієї функції можна вибрати в розділі «Розумний запуск» установок камери."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Торкніться центра кола для зйомки</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Торкніться екрана для зйомки</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Торкніться центру кола для відображення на весь екран</string>
     <string name="cam_strings_predictive_launch_guide_txt">Торкніться центру кола для запуску камери</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Запуск і зйомка дотиком</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Запуск дотиком</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Швидкий запуск камери. Швидко підніміть пристрій в альбомному режимі та наведіть камеру на об’єкт. Вона запуститься автоматично.\nПотрібний спосіб використання цієї функції можна вибрати в розділі «Розумний запуск» установок камери.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Швидкий запуск камери. Швидко підніміть пристрій в альбомному режимі та наведіть камеру на об’єкт. Вона запуститься автоматично.
+Потрібний спосіб використання цієї функції можна вибрати в розділі «Розумний запуск» установок камери."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Розумний запуск</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Швидкий запуск камери. Підніміть пристрій в альбомному режимі та наведіть камеру на об’єкт. Вона запуститься автоматично.\nВимкнути цю функцію можна в розділі «Розумний запуск» установок камери.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Швидкий запуск камери. Підніміть пристрій в альбомному режимі та наведіть камеру на об’єкт. Вона запуститься автоматично.
+Вимкнути цю функцію можна в розділі «Розумний запуск» установок камери."</string>
     <string name="cam_strings_predictive_launch_txt">Розумний запуск</string>
     <string name="cam_strings_preview_always_txt">Увімк.</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 секунди</string>
@@ -478,7 +488,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">Програмі %1$s потрібні зазначені нижче права доступу</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Право доступу програми %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Щоб виконати цю дію, програмі потрібно отримати зазначені нижче права доступу.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Щоб надати права доступу, перейдіть до розділу «Інформація» &gt; «Дозволи».</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Щоб надати права доступу, перейдіть до розділу «Інформація» > «Дозволи».</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Не вдалося продовжити</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Створювати фотографії та відеозаписи</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Отримувати дані про розташування</string>
@@ -525,11 +535,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Збережено у вбудованій пам’яті</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">ПЕРЕЙТИ</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Щоб виконати цю дію, програмі потрібно отримати зазначені нижче права доступу.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Щоб використовувати картку SD, камері потрібно надати відповідні права доступу.\nЗнову виберіть для сховища даних картку SD або перейдіть до наступного екрана й надайте камері права доступу до картки SD.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Щоб використовувати картку SD, камері потрібно надати відповідні права доступу.
+Знову виберіть для сховища даних картку SD або перейдіть до наступного екрана й надайте камері права доступу до картки SD."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">Картка SD недоступна</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Виявлено нову картку SD, для якої потрібні права доступу.\n\nЩоб використовувати картку SD для зберігання даних, виберіть картку SD або каталог DCIM на наступному екрані.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Картку SD або каталог DCIM не вибрано. Картку SD використовувати не можна.\n\nЩоб надати права доступу, спершу змініть розташування для зберігання на картку SD або виберіть відповідний каталог на наступному екрані.</string>
-    <string name="cam_strings_sd_permission_info_txt">Виявлено нову картку SD, яка потребує прав доступу.\nТому як стандартне сховище даних використовуватиметься вбудована пам’ять пристрою.\n\nЩоб використовувати як сховище даних картку SD, перейдіть в установки камери та змініть відповідний параметр.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Виявлено нову картку SD, для якої потрібні права доступу.
+
+Щоб використовувати картку SD для зберігання даних, виберіть картку SD або каталог DCIM на наступному екрані."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Картку SD або каталог DCIM не вибрано. Картку SD використовувати не можна.
+
+Щоб надати права доступу, спершу змініть розташування для зберігання на картку SD або виберіть відповідний каталог на наступному екрані."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Виявлено нову картку SD, яка потребує прав доступу.
+Тому як стандартне сховище даних використовуватиметься вбудована пам’ять пристрою.
+
+Щоб використовувати як сховище даних картку SD, перейдіть в установки камери та змініть відповідний параметр."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Для збереження фотографій і відеозаписів на картці SD</string>
     <string name="cam_strings_select_picture_txt">вибрати фотографію</string>
     <string name="cam_strings_self_timer_05_txt">0,5 с</string>
@@ -552,12 +570,16 @@
     <string name="cam_strings_shutter_trigger_txt">Автозйомка</string>
     <string name="cam_strings_side_touch_not_supported_txt">Бічний сенсор не підтримується на цьому екрані</string>
     <string name="cam_strings_side_touch_on_title_txt">Бічний сенсор</string>
-    <string name="cam_strings_side_touch_on_txt">Щоб використовувати цю функцію, перейдіть до розділу «Налаштування &gt; Екран» і ввімкніть бічний сенсор. Увімкнути зараз?</string>
+    <string name="cam_strings_side_touch_on_txt">Щоб використовувати цю функцію, перейдіть до розділу «Налаштування > Екран» і ввімкніть бічний сенсор. Увімкнути зараз?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Бічний сенсор</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Знімайте фотографії й відеозаписи, просто двічі торкнувшись сенсора збоку на екрані замість натискання кнопки спуску затвора. Проводячи пальцем уздовж цього бічного сенсора, можна також збільшувати чи зменшувати зображення.\nЦя функція підтримується в режимах фото- й відеозйомки. Її можна вимкнути в установках камери в розділі «Бічний сенсор».</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Знімайте фотографії й відеозаписи, просто двічі торкнувшись сенсора збоку на екрані в портретній орієнтації замість натискання кнопки спуску затвора. Проводячи пальцем уздовж цього бічного сенсора, можна також збільшувати чи зменшувати зображення.\nЦя функція підтримується в режимах фото- й відеозйомки. Її можна вимкнути в установках камери в розділі «Бічний сенсор».</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Знімайте фотографії й відеозаписи, просто двічі торкнувшись сенсора збоку на екрані в портретній орієнтації замість натискання кнопки спуску затвора. \nЦя функція підтримується в режимах фото- й відеозйомки. Її можна вимкнути в установках камери в розділі «Бічний сенсор».</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Знімайте фотографії й відеозаписи, просто двічі торкнувшись сенсора збоку на екрані замість натискання кнопки спуску затвора. \nЦя функція підтримується в режимах фото- й відеозйомки. Її можна вимкнути в установках камери в розділі «Бічний сенсор».</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Знімайте фотографії й відеозаписи, просто двічі торкнувшись сенсора збоку на екрані замість натискання кнопки спуску затвора. Проводячи пальцем уздовж цього бічного сенсора, можна також збільшувати чи зменшувати зображення.
+Ця функція підтримується в режимах фото- й відеозйомки. Її можна вимкнути в установках камери в розділі «Бічний сенсор»."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Знімайте фотографії й відеозаписи, просто двічі торкнувшись сенсора збоку на екрані в портретній орієнтації замість натискання кнопки спуску затвора. Проводячи пальцем уздовж цього бічного сенсора, можна також збільшувати чи зменшувати зображення.
+Ця функція підтримується в режимах фото- й відеозйомки. Її можна вимкнути в установках камери в розділі «Бічний сенсор»."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Знімайте фотографії й відеозаписи, просто двічі торкнувшись сенсора збоку на екрані в портретній орієнтації замість натискання кнопки спуску затвора. 
+Ця функція підтримується в режимах фото- й відеозйомки. Її можна вимкнути в установках камери в розділі «Бічний сенсор»."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Знімайте фотографії й відеозаписи, просто двічі торкнувшись сенсора збоку на екрані замість натискання кнопки спуску затвора. 
+Ця функція підтримується в режимах фото- й відеозйомки. Її можна вимкнути в установках камери в розділі «Бічний сенсор»."</string>
     <string name="cam_strings_side_touch_txt">Бічний сенсор</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">В установках камери можна змінити стиль записування та роздільну здатність екрана</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Дуже повільно (один кадр)</string>
@@ -565,7 +587,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Суперсповільнена зйомка</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Ви можете змінити к-сть кадрів/с та стиль сповільненої зйомки</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Інші параметри</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Миттєво сповільнюйте важливі моменти з частотою %1$s кадр./с, торкаючись кнопки в центрі екрана.\nЯскраве освітлення дає змогу створити краще відео.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Миттєво сповільнюйте важливі моменти з частотою %1$s кадр./с, торкаючись кнопки в центрі екрана.
+Яскраве освітлення дає змогу створити краще відео."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Записуйте потрібний момент зі швид. %1$s кадр./с, торкнувшись центр. кнопки</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Миттєво сповільнюйте важливі моменти, застосовуючи частоту %1$s кадр/с. Для цього торкніться кнопки в центрі екрана.</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Суперсповільнена зйомка (один знімок)</string>
@@ -576,7 +599,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Сповільнена зйомка</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Записування</string>
     <string name="cam_strings_slow_motion_standard_txt">Сповільнена зйомка</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Створюйте вражаючі відеозаписи, сповільнюючи важливі моменти.\nЗаписування в умовах яскравого освітлення дає змогу створити краще відео.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Створюйте вражаючі відеозаписи, сповільнюючи важливі моменти.
+Записування в умовах яскравого освітлення дає змогу створити краще відео."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Можна записувати відео з різною швидкістю, вибравши частоту %1$s кадр/с</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Торкніться центральної кнопки в потрібний момент</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Сповільнене відео записано</string>
@@ -607,12 +631,12 @@
     <string name="cam_strings_sw_licence_title_txt">Ліцензії на ПЗ</string>
     <string name="cam_strings_take_photo_txt">Зробити знімок</string>
     <string name="cam_strings_term_of_use_accept_txt">Прийняти</string>
-    <string name="cam_strings_term_of_use_consent_txt">Я погоджуюся з &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Умовами використання&lt;/a&gt; Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Я погоджуюся з &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Умовами використання&lt;/a> Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">За користування цією послугою може стягуватися плата за передавання мобільних даних залежно від вашого тарифного плану передавання даних.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile збиратиме інформацію про хешований унікальний ідентифікатор вашого пристрою Android ID, дані на основі розташування й часову відмітку, щоб забезпечити вас відповідними результатами в межах послуги та задля покращення обслуговування.</string>
     <string name="cam_strings_term_of_use_decline_txt">Відхилити</string>
     <string name="cam_strings_term_of_use_title_txt">Умови використання</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Умови користування&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Умови користування&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Скасувати вибір фотографій</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Не вдалося зберегти</string>
     <string name="cam_strings_timeshift_save_complete_txt">Збережено</string>
@@ -639,7 +663,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Щоб рівномірно записувати відео у форматі 4K, цю установку можна змінювати лише в разі використання високошвидкісної SD-картки (UHS Speed Class 1 або вище, рекомендовано Speed Class 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Щоб рівномірно записувати відео Timeshift video, цю установку можна змінювати лише в разі використання високошвидкісної SD-картки (UHS Speed Class 1 або вищого або рекомендовано Speed Class 10). Все одно змінити?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Щоб рівномірно записувати відео сповільненої зйомки, цю установку можна змінювати лише в разі використання високошвидкісної SD-картки (UHS Speed Class 1 або вище, рекомендовано Speed Class 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Щоб рівномірно записувати відео, рекомендуємо змінити сховище даних на вбудовану пам’ять. Змінити зараз?\n\nЯкщо ви й надалі використовуватимете SD-картку як сховище даних, оберіть високошвидкісну SD-картку (UHS Speed Class 1 і вищого або рекомендовано Speed Class 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Щоб рівномірно записувати відео, рекомендуємо змінити сховище даних на вбудовану пам’ять. Змінити зараз?
+
+Якщо ви й надалі використовуватимете SD-картку як сховище даних, оберіть високошвидкісну SD-картку (UHS Speed Class 1 і вищого або рекомендовано Speed Class 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Здвоєна камера</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">За допомогою здвоєної камери ви можете отримувати прекрасні знімки з мінімальною кількістю шумів навіть уночі або в умовах слабкого освітлення. Камера автоматично переключається між одинарним і здвоєним режимами залежно від сюжету та установок надвисокої чутливості.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Відеозйомка на здвоєну камеру</string>

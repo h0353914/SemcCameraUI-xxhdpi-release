@@ -1,5 +1,7 @@
 package org.apache.commons.imaging;
 
+import org.apache.commons.imaging.ImageReadException;
+
 import java.awt.RenderingHints;
 import java.awt.color.ColorSpace;
 import java.awt.color.ICC_ColorSpace;
@@ -9,7 +11,8 @@ import java.awt.image.ColorConvertOp;
 import java.awt.image.ColorModel;
 import java.awt.image.ComponentColorModel;
 import java.awt.image.DirectColorModel;
-import java.awt.image.ImagingOpException;
+import org.apache.commons.imaging.ImagingOpException;
+import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
 import java.util.Hashtable;
@@ -65,7 +68,7 @@ public class ColorTools {
         throw new ImagingOpException("Could not clone unknown ColorModel Type.");
     }
 
-    public BufferedImage convertToColorSpace(BufferedImage bufferedImage, ColorSpace colorSpace) {
+    public BufferedImage convertToColorSpace(BufferedImage bufferedImage, ColorSpace colorSpace) throws ImagingOpException {
         ColorSpace colorSpace2 = bufferedImage.getColorModel().getColorSpace();
         RenderingHints renderingHints = new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         renderingHints.put(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
@@ -73,23 +76,22 @@ public class ColorTools {
         return relabelColorSpace(new ColorConvertOp(colorSpace2, colorSpace, renderingHints).filter(bufferedImage, (BufferedImage) null), colorSpace);
     }
 
-    public BufferedImage convertTosRGB(BufferedImage bufferedImage) {
+    public BufferedImage convertTosRGB(BufferedImage bufferedImage) throws ImagingOpException {
         return convertToColorSpace(bufferedImage, ColorModel.getRGBdefault().getColorSpace());
     }
 
-    protected BufferedImage convertFromColorSpace(BufferedImage bufferedImage, ColorSpace colorSpace) {
+    protected BufferedImage convertFromColorSpace(BufferedImage bufferedImage, ColorSpace colorSpace) throws ImagingOpException {
         return convertBetweenColorSpaces(bufferedImage, colorSpace, ColorModel.getRGBdefault().getColorSpace());
     }
 
-    public BufferedImage convertBetweenICCProfiles(BufferedImage bufferedImage, ICC_Profile iCC_Profile, ICC_Profile iCC_Profile2) {
+    public BufferedImage convertBetweenICCProfiles(BufferedImage bufferedImage, ICC_Profile iCC_Profile, ICC_Profile iCC_Profile2) throws ImagingOpException {
         return convertBetweenColorSpaces(bufferedImage, new ICC_ColorSpace(iCC_Profile), new ICC_ColorSpace(iCC_Profile2));
     }
 
-    public BufferedImage convertToICCProfile(BufferedImage bufferedImage, ICC_Profile iCC_Profile) {
+    public BufferedImage convertToICCProfile(BufferedImage bufferedImage, ICC_Profile iCC_Profile) throws ImagingOpException {
         return convertToColorSpace(bufferedImage, new ICC_ColorSpace(iCC_Profile));
     }
 
-    /* JADX INFO: Thrown type has an unknown type hierarchy: java.awt.image.ImagingOpException */
     public BufferedImage convertBetweenColorSpacesX2(BufferedImage bufferedImage, ColorSpace colorSpace, ColorSpace colorSpace2) throws ImagingOpException {
         RenderingHints renderingHints = new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         renderingHints.put(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
@@ -99,7 +101,7 @@ public class ColorTools {
         return relabelColorSpace(colorConvertOp.filter(relabelColorSpace(colorConvertOp.filter(bufferedImageRelabelColorSpace, (BufferedImage) null), colorSpace), (BufferedImage) null), colorSpace2);
     }
 
-    public BufferedImage convertBetweenColorSpaces(BufferedImage bufferedImage, ColorSpace colorSpace, ColorSpace colorSpace2) {
+    public BufferedImage convertBetweenColorSpaces(BufferedImage bufferedImage, ColorSpace colorSpace, ColorSpace colorSpace2) throws ImagingOpException {
         RenderingHints renderingHints = new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         renderingHints.put(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
         renderingHints.put(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);

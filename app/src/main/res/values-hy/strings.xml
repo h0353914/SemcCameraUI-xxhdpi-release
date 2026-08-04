@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Չհաջողվեց ավատել տեսաձայնագրումը: Խնդրում ենք ավելի դանդաղ համայնապատկերել:</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Չհաջողվեց ավատել տեսաձայնագրումը: Խնդրում ենք ավելի արագ համայնապատկերել:</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Նկարահանել համայնապատկեր` սահեցնելով խցիկը:</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Ստեղծվում են հետևյալ ֆայլերը.\n- Multi Angle պատկեր\n- 3-չափ պատկեր\nՆշում. Այս ֆայլերը պարունակում են մոխրագույն տարածք:</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Ստեղծվում են հետևյալ ֆայլերը.\n- Multi Angle պատկեր\n- 3-չափ պստկեր</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Մշակվում է...\nԱյս պատկերը պարունակում է մոխրագույն տարածք</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Ստեղծվում են հետևյալ ֆայլերը.
+- Multi Angle պատկեր
+- 3-չափ պատկեր
+Նշում. Այս ֆայլերը պարունակում են մոխրագույն տարածք:"</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Ստեղծվում են հետևյալ ֆայլերը.
+- Multi Angle պատկեր
+- 3-չափ պստկեր"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Մշակվում է...
+Այս պատկերը պարունակում է մոխրագույն տարածք"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Պատկերը պահվում է</string>
     <string name="cam_3d_strings_dialog_processing_txt">Մշակվում է...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Խնդրմ ենք սպսլ մի քանի վյրկ. 3D խցկը գրծրկլու հմր</string>
@@ -359,7 +365,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Կարող եք բացել կամ մգեցնել ձեր մաշկի երանգը։ Եֆեկտը հասանելի է առջևի խցիկն օգտագործող գործադիրների շնորհիվ։ Էֆեկտը կարող է կիրառվել լուսանկարներում և տեսանյութերում։ Կարող եք նաև կարգաբերել մակարդակը։</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Մակարդակի կարգաբերում</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Հարթ մաշկ</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Անհնար է գործարկել հավելվածը։\nՀամոզվեք, որ սարքում տեղադրված և միացված է %1$s-ի ամենավերջին տարբերակը։</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Անհնար է գործարկել հավելվածը։
+Համոզվեք, որ սարքում տեղադրված և միացված է %1$s-ի ամենավերջին տարբերակը։"</string>
     <string name="cam_strings_gridline_txt">Վանդակացանցի գծեր</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Շրջեք ձեռքը դեպի խցիկը։ Այն ճանաչելուն պես, կմիանա ավտոմատ ժամաչափը։ Ավելի հեշտ ճանաչման համար բարձրացրեք մատները։</string>
     <string name="cam_strings_hand_shutter_hint_txt">Շրջեք ձեռքը դեպի խցիկը</string>
@@ -401,7 +408,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Ընդհանուր պարամետրեր</string>
     <string name="cam_strings_more_txt">Ավելին</string>
     <string name="cam_strings_multi_window_txt">Քաշեք տրոհման գծի կենտրոնից՝ %1$s-ը լիաէկրան օգտագործելու համար</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Այս պահին միացված է մեկ այլ սարք:\nՑանկանո՞ւմ եք համօգտագործել պատկերը սարքի հետ դիտանի միջոցով:</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Այս պահին միացված է մեկ այլ սարք:
+Ցանկանո՞ւմ եք համօգտագործել պատկերը սարքի հետ դիտանի միջոցով:"</string>
     <string name="cam_strings_multicam_add_device_txt">Հավելել սարք</string>
     <string name="cam_strings_multicam_add_more_txt">Հավելել ավելին</string>
     <string name="cam_strings_multicam_apply_txt">Կատարված է</string>
@@ -435,7 +443,8 @@
     <string name="cam_strings_predictive_capture_txt">Կանխագուշական նկարահանում</string>
     <string name="cam_strings_predictive_launch_guide_txt">Հպեք էկրանը՝ լիաէկրան ռեժիմով դիտելու համար</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Կնխգշկյն թղրկմ</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Արագ միացրեք խցիկը։ Սահեցրեք վեր և պահեք սարքն ուղղահայաց դիրքում՝ խցիկով դեպի օբյեկտը։ Սարքն ավտոմատ կթողարկի խցիկը։\nԱնջատեք Կնխգշկն թղրկմը խցիկի կարգավորումներում։</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Արագ միացրեք խցիկը։ Սահեցրեք վեր և պահեք սարքն ուղղահայաց դիրքում՝ խցիկով դեպի օբյեկտը։ Սարքն ավտոմատ կթողարկի խցիկը։
+Անջատեք Կնխգշկն թղրկմը խցիկի կարգավորումներում։"</string>
     <string name="cam_strings_predictive_launch_txt">Կնխգշկյն թղրկմ</string>
     <string name="cam_strings_preview_always_txt">Միացված է</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 վայրկյան</string>
@@ -468,7 +477,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s-ին անհրաժեշտ է(են) հետևյալ թույլտվություն(ներ)ը</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s թույլտվություն</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Այս գործողությունը կատարելու համար աշխատածրագրին անհրաժեշտ է(են) հետևյալ թույլտվություն(ներ)ը:</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Թույլտվությունների համար գնացեք դեպի Հվլվծի տղկնր &gt; Թույլտվություններ:</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Թույլտվությունների համար գնացեք դեպի Հվլվծի տղկնր > Թույլտվություններ:</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Անհնար է շարունակել</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Լուսանկարելու և տեսագրելու համար</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Տեղադրությունն առբերելու համար</string>
@@ -537,7 +546,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Գերդանդաղ շարժում</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Փոխեք fps-ն ու տեսագրման ոճը՝ դանդաղ ռեժիմի համար</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Այլ ընտրանքներ</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Տեսագրեք կարևոր պահերը %1$s fps դանդաղեցված ռեժիմում՝ սեղմելով էկրանի կենտրոնի կոճակին։\nԼուսավոր պյմննրմ տեսագրումը կապահովի լավ տեսանյութ:</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Տեսագրեք կարևոր պահերը %1$s fps դանդաղեցված ռեժիմում՝ սեղմելով էկրանի կենտրոնի կոճակին։
+Լուսավոր պյմննրմ տեսագրումը կապահովի լավ տեսանյութ:"</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Տեսագրեք ճիշտ պահին %1$s fps-ով՝ հպելով կենտրոնական կոճակին</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Տեղադրեք հուշագրավ պահերը %1$s fps դանդաղ ռեժիմով՝ հպելով էկրանի կենտրոնական կոճակը</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Գերդանդաղ շարժում (մեկ կադր)</string>
@@ -548,7 +558,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Դանդաղ շարժում</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Ինչպես տեսագրել</string>
     <string name="cam_strings_slow_motion_standard_txt">Դանդաղ շարժում</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Ցուցադրեք հուշագրավ պահերը դանդաղ ռեժիմով։\nԼուսավոր պայմաններում տեսագրումը կապահովի ավելի լավ տեսանյութ:</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Ցուցադրեք հուշագրավ պահերը դանդաղ ռեժիմով։
+Լուսավոր պայմաններում տեսագրումը կապահովի ավելի լավ տեսանյութ:"</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Կարող եք տեսագրել տարբեր արագություններով՝ փոխելով %1$s fps-ի</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Ճիշտ պահին հպեք կենտրոնական կոճակին</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Դանդաղ ռեժիմով տեսագրված</string>
@@ -579,12 +590,12 @@
     <string name="cam_strings_sw_licence_title_txt">Ծրագրի արտոնագրեր</string>
     <string name="cam_strings_take_photo_txt">Նկարահանել</string>
     <string name="cam_strings_term_of_use_accept_txt">Ընդունել</string>
-    <string name="cam_strings_term_of_use_consent_txt">Ես ընդնմ եմ Sony Mobile-ի &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Օգտգրծ պյմննրը&lt;/a&gt;:</string>
+    <string name="cam_strings_term_of_use_consent_txt">Ես ընդնմ եմ Sony Mobile-ի &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Օգտգրծ պյմննրը&lt;/a>:</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Այս ծառայության օգտագործման արդյունքում կարող են գանձվել բջջային տվյալների փոխանցման վճարներ` կախված ձեր տվյալների պլանից:</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile-ը կուտակում է Ձեր խեշ Android ID եզակի սարքի նույնացուցիչը, տեղադրության տվյալներն ու ժամային կնիքը` ճշգրիտ տվյալներ տրամադրելու և ծառայությունները կատարելագործելու նպատակով:</string>
     <string name="cam_strings_term_of_use_decline_txt">Մերժել</string>
     <string name="cam_strings_term_of_use_title_txt">Պայմաններ և դրույթներ</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Օգտ պայմաններ&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Օգտ պայմաններ&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Ապաընտրել լուսանկարներ</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Չհաջողվեց պահել</string>
     <string name="cam_strings_timeshift_save_complete_txt">Պահպանված է</string>
@@ -611,7 +622,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Կայուն 4K տեսագրման համար չպետք է փոխեք այս կարգավորումը բարձրարագ SD քարտի օգտագործման ընթացքում (UHS Speed Class 1 կամ ավելի հզոր տարբերակը կամ Speed Class 10)։</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Կայուն Timeshift տեսագրման համար չպետք է փոխեք այս կարգավորումը բարձրարագ SD քարտի օգտագործման ընթացքում (UHS Speed Class 1 կամ ավելի հզոր տարբերակը կամ Speed Class 10)։ Ամեն դեպքում փոխե՞լ։</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Կայուն դանդաղ ռեժիմով տեսագրման համար չպետք է փոխեք այս կարգավորումը բարձրարագ SD քարտի օգտագործման ընթացքում (UHS Speed Class 1 կամ ավելի հզոր տարբերակը կամ Speed Class 10)։</string>
-    <string name="cam_strings_video_explanatory_txt">Կայուն տեսագրման համար խորհուրդ է տրվում օգտագործել ներքին հիշողությունը։ Փոխե՞լ հիմա։\n\nSD քարտը որպես տվյալների պահեստ օգտագործելու դեպքում համոզվեք, որ այն բարձրարագ SD քարտ է (UHS Speed Class 1 կամ ավելի հզոր տարբերակը կամ Speed Class 10)։</string>
+    <string name="cam_strings_video_explanatory_txt">"Կայուն տեսագրման համար խորհուրդ է տրվում օգտագործել ներքին հիշողությունը։ Փոխե՞լ հիմա։
+
+SD քարտը որպես տվյալների պահեստ օգտագործելու դեպքում համոզվեք, որ այն բարձրարագ SD քարտ է (UHS Speed Class 1 կամ ավելի հզոր տարբերակը կամ Speed Class 10)։"</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Երկակի խցիկ</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Երկակի խցիկն ապահովում է տեսագրման բարձր որակ նույնիսկ գիշերով կամ ցածր լուսավորության պայմաններում։ Գերբարձր զգայունությամբ տեսագրման ժամանակ երկակի և եզակի խցիկներն ավտոմատ կերպով փոխարկվում են՝ կախված լուսավորությունից։</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Տեսագրում երկակի խցիկո</string>

@@ -4,16 +4,15 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences$Editor;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager$NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.os.Build;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.view.modeselector.CapturingModeAttributes;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,19 +45,62 @@ public class CapturingModePluginsPMLoader {
     private static final String XMLNS_ANDROID = "http://schemas.android.com/apk/res/android";
     private static List<CapturingModeAttributes> mPackageManagerPluginList;
     private Context mContext;
-    private CapturingModePluginsPMLoader$TmpUiAttributes mTmpAttributes;
+    private TmpUiAttributes mTmpAttributes;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private static class TmpUiAttributes { String mActivityName; int mDescriptionLabelId; CapturingModeAttributes.InternalCaptureType mInternalCaptureType; boolean mIsVisibleNormal; boolean mIsVisibleOneshot; boolean mIsVisibleShortcut; String mModeName; String mPackageName; int mSelectorIconId; int mSelectorLabelId; int mShortcutIconId; int mShortcutLabelId; private TmpUiAttributes() { } }
 
     public CapturingModePluginsPMLoader(Context context) {
         this.mContext = context;
     }
 
     public void updatePluginsInDB() {
-        SharedPreferences sharedPreferences = this.mContext.getSharedPreferences("com.sonyericsson.cameracommon.appsui.fingerprint_sharedprefs", 0);
+        SharedPreferences sharedPreferences = this.mContext.getSharedPreferences(SHARED_PREFERENCE_NAME, 0);
         if (isCapturingModeFingerprintModified(sharedPreferences)) {
             clearCapturingModes();
-            SharedPreferences$Editor sharedPreferences$EditorEdit = sharedPreferences.edit();
-            sharedPreferences$EditorEdit.putString("android.os.Build.FINGERPRINT", Build.FINGERPRINT);
-            sharedPreferences$EditorEdit.commit();
+            SharedPreferences.Editor editorEdit = sharedPreferences.edit();
+            editorEdit.putString("android.os.Build.FINGERPRINT", Build.FINGERPRINT);
+            editorEdit.commit();
         }
         getPluginsFromPackageManager();
         CapturingModeCollection.register(this.mContext.getContentResolver(), mPackageManagerPluginList, this.mContext.getPackageManager());
@@ -81,18 +123,17 @@ public class CapturingModePluginsPMLoader {
     }
 
     private void getPluginsFromPackageManager() {
-        boolean modeAttributesFromMetaData;
         if (mPackageManagerPluginList == null) {
             mPackageManagerPluginList = new ArrayList();
         }
         mPackageManagerPluginList.clear();
         PackageManager packageManager = this.mContext.getPackageManager();
-        for (ResolveInfo resolveInfo : packageManager.queryIntentActivities(new Intent("com.sonymobile.camera.addon.action.REGISTER_MODE"), 0)) {
+        for (ResolveInfo resolveInfo : packageManager.queryIntentActivities(new Intent(INTENT_FILTER_ACTION_NAME_FOR_QUERY), 0)) {
             if (isPluginConfigurationOn(resolveInfo.activityInfo.packageName, resolveInfo.activityInfo.name)) {
-                this.mTmpAttributes = new CapturingModePluginsPMLoader$TmpUiAttributes(null);
+                this.mTmpAttributes = new TmpUiAttributes();
                 this.mTmpAttributes.mPackageName = resolveInfo.activityInfo.packageName;
                 this.mTmpAttributes.mActivityName = resolveInfo.activityInfo.name;
-                if (packageManager.checkPermission("com.sonymobile.permission.CAMERA_ADDON", this.mTmpAttributes.mPackageName) != 0) {
+                if (packageManager.checkPermission(CapturingModeUtil.CAMERA_ADDON_PERMISSION_NAME, this.mTmpAttributes.mPackageName) != 0) {
                     CamLog.e("This application has no CAMERA_ADDON permission: " + resolveInfo.activityInfo.packageName);
                     CamLog.e("Failed to add plugin for this package.");
                 } else {
@@ -104,29 +145,31 @@ public class CapturingModePluginsPMLoader {
                             try {
                                 Resources resourcesForApplication = packageManager.getResourcesForApplication(resolveInfo.activityInfo.packageName);
                                 try {
-                                    modeAttributesFromMetaData = parseModeAttributesFromMetaData(resolveInfo, activityInfo, resourcesForApplication);
-                                } catch (IOException unused) {
-                                    CamLog.e("IOException: Problem when parse mode attributes xml file.");
-                                } catch (XmlPullParserException unused2) {
-                                    CamLog.e("XmlPullParserException: Problem when parse mode attributes xml file.");
-                                }
-                                if (resourcesForApplication != null && modeAttributesFromMetaData) {
-                                    if (parsePluginFromModeAttributesXmlFile(activityInfo, resourcesForApplication)) {
-                                        addPluginToList();
-                                    } else {
-                                        CamLog.e("Failed to add plugin for this package: " + resolveInfo.activityInfo.packageName);
+                                    boolean modeAttributesFromMetaData = parseModeAttributesFromMetaData(resolveInfo, activityInfo, resourcesForApplication);
+                                    if (resourcesForApplication != null && modeAttributesFromMetaData) {
+                                        if (parsePluginFromModeAttributesXmlFile(activityInfo, resourcesForApplication)) {
+                                            addPluginToList();
+                                        } else {
+                                            CamLog.e("Failed to add plugin for this package: " + resolveInfo.activityInfo.packageName);
+                                        }
+                                        continue;
                                     }
-                                } else if (parsePluginFromApplicationInfo(resolveInfo)) {
+                                } catch (XmlPullParserException unused) {
+                                    CamLog.e("XmlPullParserException: Problem when parse mode attributes xml file.");
+                                } catch (IOException unused2) {
+                                    CamLog.e("IOException: Problem when parse mode attributes xml file.");
+                                }
+                                if (parsePluginFromApplicationInfo(resolveInfo)) {
                                     addPluginToList();
                                 } else {
                                     CamLog.e("Failed to add plugin for this package: " + resolveInfo.activityInfo.packageName);
                                 }
-                            } catch (PackageManager$NameNotFoundException unused3) {
+                            } catch (PackageManager.NameNotFoundException unused3) {
                                 CamLog.e("NameNotFoundException: Problem when geting Application Resources with packageName: " + resolveInfo.activityInfo.packageName);
                                 CamLog.e("Failed to add plugin for this package.");
                             }
                         }
-                    } catch (PackageManager$NameNotFoundException unused4) {
+                    } catch (PackageManager.NameNotFoundException unused4) {
                         CamLog.e("NameNotFoundException: Problem when geting Application META_DATA with packageName: " + resolveInfo.activityInfo.packageName);
                         CamLog.e("Failed to add plugin for this package.");
                     }
@@ -143,29 +186,24 @@ public class CapturingModePluginsPMLoader {
         if (resources == null) {
             return false;
         }
-        int i = activityInfo.metaData.getInt("com.sonymobile.camera.addon.MODE_ATTRIBUTES", 0);
+        int i = activityInfo.metaData.getInt(META_DATA_NAME, 0);
         if (i == 0) {
             return true;
         }
         try {
-            XmlResourceParser xml = resources.getXml(i);
-            Throwable th = null;
-            try {
+            try (XmlResourceParser xml = resources.getXml(i)) {
                 if (xml == null) {
                     CamLog.e("Problem when get XmlResourceParser from mode attributes xml resource Id.");
-                    if (xml != null) {
-                        xml.close();
-                    }
                     return false;
                 }
                 int next = xml.next();
                 boolean z = true;
                 while (true) {
-                    if (next == 3 && "mode".equals(xml.getName())) {
+                    if (next == 3 && MODE_TAG.equals(xml.getName())) {
                         break;
                     }
-                    if (next == 2 && "uses-feature".equals(xml.getName())) {
-                        String attributeValue = xml.getAttributeValue("http://schemas.android.com/apk/res/android", "name");
+                    if (next == 2 && USES_FEATURE_TAG.equals(xml.getName())) {
+                        String attributeValue = xml.getAttributeValue(XMLNS_ANDROID, "name");
                         if (!this.mContext.getPackageManager().hasSystemFeature(attributeValue)) {
                             CamLog.w("Mode of \"" + resolveInfo.activityInfo.packageName + "\" requires \"" + attributeValue + "\" but this platform doesn't support the feature.");
                             z = false;
@@ -173,23 +211,7 @@ public class CapturingModePluginsPMLoader {
                     }
                     next = xml.next();
                 }
-                if (xml != null) {
-                    xml.close();
-                }
                 return z;
-            } catch (Throwable th2) {
-                if (xml != null) {
-                    if (0 != 0) {
-                        try {
-                            xml.close();
-                        } catch (Throwable th3) {
-                            th.addSuppressed(th3);
-                        }
-                    } else {
-                        xml.close();
-                    }
-                }
-                throw th2;
             }
         } catch (IOException | XmlPullParserException unused) {
             CamLog.e("Problem when parse mode attributes xml file");
@@ -198,45 +220,26 @@ public class CapturingModePluginsPMLoader {
     }
 
     private boolean parsePluginFromModeAttributesXmlFile(ActivityInfo activityInfo, Resources resources) throws XmlPullParserException, IOException {
-        int i;
-        if (resources != null && (i = activityInfo.metaData.getInt("com.sonymobile.camera.addon.MODE_ATTRIBUTES", 0)) != 0) {
-            try {
-                XmlResourceParser xml = resources.getXml(i);
-                Throwable th = null;
-                if (xml != null) {
-                    try {
-                        parsePluginXMLData(xml, resources);
+        if (resources != null) {
+            int i = activityInfo.metaData.getInt(META_DATA_NAME, 0);
+            if (i != 0) {
+                try {
+                    try (XmlResourceParser xml = resources.getXml(i)) {
                         if (xml != null) {
-                            xml.close();
+                            parsePluginXMLData(xml, resources);
+                            return true;
                         }
-                        return true;
-                    } catch (Throwable th2) {
-                        if (xml != null) {
-                            if (th != null) {
-                                try {
-                                    xml.close();
-                                } catch (Throwable th3) {
-                                    th.addSuppressed(th3);
-                                }
-                            } else {
-                                xml.close();
-                            }
-                        }
-                        throw th2;
                     }
+                } catch (IOException | XmlPullParserException unused) {
+                    CamLog.e("Problem when parse mode attributes xml file.");
                 }
-                if (xml != null) {
-                    xml.close();
-                }
-            } catch (IOException | XmlPullParserException unused) {
-                CamLog.e("Problem when parse mode attributes xml file.");
             }
         }
         return false;
     }
 
     private void addPluginToList() {
-        this.mTmpAttributes.mInternalCaptureType = CapturingModeAttributes$InternalCaptureType.Photo;
+        this.mTmpAttributes.mInternalCaptureType = CapturingModeAttributes.InternalCaptureType.Photo;
         this.mTmpAttributes.mIsVisibleNormal = true;
         this.mTmpAttributes.mIsVisibleOneshot = false;
         this.mTmpAttributes.mIsVisibleShortcut = (this.mTmpAttributes.mShortcutLabelId == 0 || this.mTmpAttributes.mShortcutIconId == 0) ? false : true;
@@ -246,14 +249,8 @@ public class CapturingModePluginsPMLoader {
     private void parsePluginXMLData(XmlPullParser xmlPullParser, Resources resources) throws XmlPullParserException, IOException {
         int eventType = xmlPullParser.getEventType();
         while (eventType != 1) {
-            int next = xmlPullParser.next();
-            while (true) {
-                if (next != 3 || !"modes".equals(xmlPullParser.getName())) {
-                    if (next == 2 && "mode".equals(xmlPullParser.getName())) {
-                        parsePluginXMLModeTag(xmlPullParser, resources);
-                    }
-                    next = xmlPullParser.next();
-                }
+            if (eventType == 2 && MODE_TAG.equals(xmlPullParser.getName())) {
+                parsePluginXMLModeTag(xmlPullParser, resources);
             }
             eventType = xmlPullParser.next();
         }
@@ -267,15 +264,15 @@ public class CapturingModePluginsPMLoader {
             if (attributeName != null) {
                 if ("name".equals(attributeName)) {
                     this.mTmpAttributes.mModeName = attributeValue;
-                } else if ("selectorIcon".equals(attributeName)) {
+                } else if (MODE_ATTRIBUTE_SELECTOR_ICON.equals(attributeName)) {
                     this.mTmpAttributes.mSelectorIconId = getResIDFromXmlString(this.mTmpAttributes.mPackageName, attributeValue);
-                } else if ("selectorLabel".equals(attributeName)) {
+                } else if (MODE_ATTRIBUTE_SELECTOR_LABEL.equals(attributeName)) {
                     this.mTmpAttributes.mSelectorLabelId = getResIDFromXmlString(this.mTmpAttributes.mPackageName, attributeValue);
-                } else if ("descriptionLabel".equals(attributeName)) {
+                } else if (MODE_ATTRIBUTE_DESCRIPTION_LABEL.equals(attributeName)) {
                     this.mTmpAttributes.mDescriptionLabelId = getResIDFromXmlString(this.mTmpAttributes.mPackageName, attributeValue);
-                } else if ("shortcutIcon".equals(attributeName)) {
+                } else if (MODE_ATTRIBUTE_SHORTCUT_ICON.equals(attributeName)) {
                     this.mTmpAttributes.mShortcutIconId = getResIDFromXmlString(this.mTmpAttributes.mPackageName, attributeValue);
-                } else if ("shortcutLabel".equals(attributeName)) {
+                } else if (MODE_ATTRIBUTE_SHORTCUT_LABEL.equals(attributeName)) {
                     this.mTmpAttributes.mShortcutLabelId = getResIDFromXmlString(this.mTmpAttributes.mPackageName, attributeValue);
                 }
             }
@@ -285,7 +282,7 @@ public class CapturingModePluginsPMLoader {
     private int getResIDFromXmlString(String str, String str2) {
         try {
             return this.mContext.getPackageManager().getResourcesForApplication(str).getIdentifier(str2, null, str);
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             CamLog.e("Could not get resource id for plugin");
             return 0;
         }
@@ -308,7 +305,7 @@ public class CapturingModePluginsPMLoader {
                 return resourcesForApplication.getBoolean(identifier);
             }
             return true;
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             CamLog.e("Error reading out plugin configuration value");
             return true;
         }
@@ -319,12 +316,12 @@ public class CapturingModePluginsPMLoader {
             CamLog.e("This activity has no meta-data: " + resolveInfo.activityInfo.name);
             return false;
         }
-        this.mTmpAttributes.mModeName = activityInfo.metaData.getString("com.sonymobile.camera.addon.MODE_NAME");
-        this.mTmpAttributes.mSelectorIconId = activityInfo.metaData.getInt("com.sonymobile.camera.addon.MODE_SELECTOR_ICON");
-        this.mTmpAttributes.mSelectorLabelId = activityInfo.metaData.getInt("com.sonymobile.camera.addon.MODE_SELECTOR_LABEL");
-        this.mTmpAttributes.mDescriptionLabelId = activityInfo.metaData.getInt("com.sonymobile.camera.addon.MODE_DESCRIPTION_LABEL");
-        this.mTmpAttributes.mShortcutIconId = activityInfo.metaData.getInt("com.sonymobile.camera.addon.MODE_SHORTCUT_ICON");
-        this.mTmpAttributes.mShortcutLabelId = activityInfo.metaData.getInt("com.sonymobile.camera.addon.MODE_SHORTCUT_LABEL");
+        this.mTmpAttributes.mModeName = activityInfo.metaData.getString(MODE_SELECTOR_NAME);
+        this.mTmpAttributes.mSelectorIconId = activityInfo.metaData.getInt(MODE_SELECTOR_ICON);
+        this.mTmpAttributes.mSelectorLabelId = activityInfo.metaData.getInt(MODE_SELECTOR_LABEL);
+        this.mTmpAttributes.mDescriptionLabelId = activityInfo.metaData.getInt(MODE_DESCRIPTION_LABEL);
+        this.mTmpAttributes.mShortcutIconId = activityInfo.metaData.getInt(MODE_SHORTCUT_ICON);
+        this.mTmpAttributes.mShortcutLabelId = activityInfo.metaData.getInt(MODE_SHORTCUT_LABEL);
         return (this.mTmpAttributes.mModeName == null && this.mTmpAttributes.mSelectorIconId == 0 && this.mTmpAttributes.mSelectorLabelId == 0 && this.mTmpAttributes.mDescriptionLabelId == 0 && this.mTmpAttributes.mShortcutIconId == 0 && this.mTmpAttributes.mShortcutLabelId == 0) ? false : true;
     }
 
@@ -340,7 +337,7 @@ public class CapturingModePluginsPMLoader {
                 this.mTmpAttributes.mDescriptionLabelId = this.mTmpAttributes.mSelectorLabelId;
             }
             return true;
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             CamLog.e("NameNotFoundException: " + resolveInfo.activityInfo.packageName);
             return false;
         }

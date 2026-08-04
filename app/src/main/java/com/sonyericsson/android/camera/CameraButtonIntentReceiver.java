@@ -7,18 +7,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.PowerManager;
 import android.widget.Toast;
+import com.sonyericsson.android.camera.LaunchCondition;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.configuration.parameters.FastCapture;
 import com.sonyericsson.android.camera.controller.VibrationManager;
-import com.sonyericsson.android.camera.controller.VibrationManager$VibrationPattern;
 import com.sonyericsson.android.camera.research.LocalResearchUtil;
-import com.sonyericsson.android.camera.research.LocalResearchUtil$MeasurementKey;
 import com.sonyericsson.android.camera.setting.LastSettings;
 import com.sonyericsson.android.camera.setting.SettingsFactory;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.PerfLog;
+import com.sonyericsson.android.camera.view.modeselector.CameraCommonProviderConstants;
+import com.sonyericsson.cameracommon.constants.CommonConstants;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class CameraButtonIntentReceiver extends BroadcastReceiver {
     private static final int CAMERA_DEVICE_AUTO_RELEASE_TIMER_DURATION = 5000;
@@ -27,38 +29,39 @@ public class CameraButtonIntentReceiver extends BroadcastReceiver {
     private static final String TAG = "CameraButtonIntentReceiver";
     private static Timer sReleaseTimer;
     private static final Object sReleaseTimerLock = new Object();
-    private static CameraButtonIntentReceiver$ReceiverState sCurrentState = CameraButtonIntentReceiver$ReceiverState.IDLE;
-    private static CameraButtonIntentReceiver$IntentKind sLatestIntent = CameraButtonIntentReceiver$IntentKind.NULL;
+    private static ReceiverState sCurrentState = ReceiverState.IDLE;
+    private static IntentKind sLatestIntent = IntentKind.NULL;
+
+    private enum ReceiverState {
+        IDLE,
+        PREPARE,
+        STARTING,
+        ACTIVE
+    }
+
+    private enum IntentKind {
+        NULL,
+        PREPARE,
+        START,
+        START_SECURE,
+        CANCEL,
+        ACTIVITY_RESUMED,
+        ACTIVITY_PAUSED
+    }
 
     public static final void preload() {
     }
 
-    static /* synthetic */ Object access$100() {
-        return sReleaseTimerLock;
-    }
-
-    static /* synthetic */ Timer access$200() {
-        return sReleaseTimer;
-    }
-
-    static /* synthetic */ Timer access$202(Timer timer) {
-        sReleaseTimer = timer;
-        return timer;
-    }
-
-    static /* synthetic */ void access$300(CameraButtonIntentReceiver$ReceiverState cameraButtonIntentReceiver$ReceiverState) {
-        changeStateTo(cameraButtonIntentReceiver$ReceiverState);
-    }
-
-    private static void changeStateTo(CameraButtonIntentReceiver$ReceiverState cameraButtonIntentReceiver$ReceiverState) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private static void changeStateTo(ReceiverState receiverState) {
         if (CamLog.DEBUG) {
-            CamLog.d("changeTo:" + cameraButtonIntentReceiver$ReceiverState + " from:" + sCurrentState);
+            CamLog.d("changeTo:" + receiverState + " from:" + sCurrentState);
         }
-        sCurrentState = cameraButtonIntentReceiver$ReceiverState;
+        sCurrentState = receiverState;
     }
 
-    private static void setLatestIntent(CameraButtonIntentReceiver$IntentKind cameraButtonIntentReceiver$IntentKind) {
-        sLatestIntent = cameraButtonIntentReceiver$IntentKind;
+    private static void setLatestIntent(IntentKind intentKind) {
+        sLatestIntent = intentKind;
     }
 
     @Override // android.content.BroadcastReceiver
@@ -76,214 +79,234 @@ public class CameraButtonIntentReceiver extends BroadcastReceiver {
             return;
         }
         String stringExtra = intent.getStringExtra("android.intent.extra.SUBJECT");
-        if ("prepare".equals(stringExtra)) {
+        if (CameraActivity.INTENT_SUBJECT_PREPARE.equals(stringExtra)) {
             PerfLog.FAST_CAMERA_BUTTON_INTENT_RECEIVED.transit();
-            setLatestIntent(CameraButtonIntentReceiver$IntentKind.PREPARE);
+            setLatestIntent(IntentKind.PREPARE);
         } else if ("start".equals(stringExtra)) {
-            setLatestIntent(CameraButtonIntentReceiver$IntentKind.START);
-        } else if ("start-secure".equals(stringExtra)) {
-            setLatestIntent(CameraButtonIntentReceiver$IntentKind.START_SECURE);
-        } else if ("cancel".equals(stringExtra)) {
-            setLatestIntent(CameraButtonIntentReceiver$IntentKind.CANCEL);
-        } else if ("activity-resumed".equals(stringExtra)) {
-            setLatestIntent(CameraButtonIntentReceiver$IntentKind.ACTIVITY_RESUMED);
-        } else if ("activity-paused".equals(stringExtra)) {
-            setLatestIntent(CameraButtonIntentReceiver$IntentKind.ACTIVITY_PAUSED);
+            setLatestIntent(IntentKind.START);
+        } else if (CameraActivity.INTENT_SUBJECT_START_SECURE.equals(stringExtra)) {
+            setLatestIntent(IntentKind.START_SECURE);
+        } else if (CameraActivity.INTENT_SUBJECT_CANCEL.equals(stringExtra)) {
+            setLatestIntent(IntentKind.CANCEL);
+        } else if (CameraActivity.INTENT_SUBJECT_RESUMED.equals(stringExtra)) {
+            setLatestIntent(IntentKind.ACTIVITY_RESUMED);
+        } else if (CameraActivity.INTENT_SUBJECT_PAUSED.equals(stringExtra)) {
+            setLatestIntent(IntentKind.ACTIVITY_PAUSED);
         } else {
-            setLatestIntent(CameraButtonIntentReceiver$IntentKind.NULL);
+            setLatestIntent(IntentKind.NULL);
         }
-        LastSettings lastSettings = SettingsFactory.create(context, ((CameraApplication) context.getApplicationContext()).getStorage()).getLastSettings();
-        CamLog.i("Receive intent for camera. kind:" + sLatestIntent + " state:" + sCurrentState + " lastMode:" + lastSettings.getFastCapture() + " inLockMode:" + isInLockTaskMode(context));
-        switch (CameraButtonIntentReceiver$1.$SwitchMap$com$sonyericsson$android$camera$CameraButtonIntentReceiver$ReceiverState[sCurrentState.ordinal()]) {
-            case 1:
-                switch (CameraButtonIntentReceiver$1.$SwitchMap$com$sonyericsson$android$camera$CameraButtonIntentReceiver$IntentKind[sLatestIntent.ordinal()]) {
-                    case 1:
-                        if (!isQuickLaunchValid(lastSettings)) {
+        LastSettings lastSettings = SettingsFactory
+                .create(context, ((CameraApplication) context.getApplicationContext()).getStorage()).getLastSettings();
+        CamLog.i("Receive intent for camera. kind:" + sLatestIntent + " state:" + sCurrentState + " lastMode:"
+                + lastSettings.getFastCapture() + " inLockMode:" + isInLockTaskMode(context));
+        switch (sCurrentState) {
+            case IDLE:
+                switch (sLatestIntent) {
+                    case NULL:
+                        if (isQuickLaunchValid(lastSettings)) {
+                            if (isInLockTaskMode(context)) {
+                                changeStateTo(ReceiverState.IDLE);
+                                setLatestIntent(IntentKind.NULL);
+                                break;
+                            } else {
+                                onNullReceived(context, lastSettings);
+                                startMeasurement(context, sLatestIntent);
+                                break;
+                            }
+                        } else {
                             return;
                         }
-                        if (isInLockTaskMode(context)) {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.IDLE);
-                            setLatestIntent(CameraButtonIntentReceiver$IntentKind.NULL);
+                    case PREPARE:
+                        if (isQuickLaunchValid(lastSettings)) {
+                            if (isInLockTaskMode(context)) {
+                                changeStateTo(ReceiverState.IDLE);
+                                setLatestIntent(IntentKind.NULL);
+                                break;
+                            } else {
+                                changeStateTo(ReceiverState.PREPARE);
+                                onPrepareReceived(context, lastSettings);
+                                startMeasurement(context, sLatestIntent);
+                                break;
+                            }
                         } else {
-                            onNullReceived(context, lastSettings);
-                            startMeasurement(context, sLatestIntent);
-                        }
-                        break;
-                    case 2:
-                        if (!isQuickLaunchValid(lastSettings)) {
                             return;
                         }
-                        if (isInLockTaskMode(context)) {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.IDLE);
-                            setLatestIntent(CameraButtonIntentReceiver$IntentKind.NULL);
+                    case START:
+                        if (isQuickLaunchValid(lastSettings)) {
+                            if (isInLockTaskMode(context)) {
+                                changeStateTo(ReceiverState.IDLE);
+                                setLatestIntent(IntentKind.NULL);
+                            } else {
+                                changeStateTo(ReceiverState.STARTING);
+                                onDirectStartReceived(context, stringExtra, lastSettings);
+                                startMeasurement(context, sLatestIntent);
+                            }
+                            showScreenPinnedToastMessage(context);
+                            break;
                         } else {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.PREPARE);
-                            onPrepareReceived(context, lastSettings);
-                            startMeasurement(context, sLatestIntent);
-                        }
-                        break;
-                    case 3:
-                        if (!isQuickLaunchValid(lastSettings)) {
                             return;
                         }
-                        if (isInLockTaskMode(context)) {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.IDLE);
-                            setLatestIntent(CameraButtonIntentReceiver$IntentKind.NULL);
+                    case START_SECURE:
+                        if (isQuickLaunchValid(lastSettings)) {
+                            if (isInLockTaskMode(context)) {
+                                changeStateTo(ReceiverState.IDLE);
+                                setLatestIntent(IntentKind.NULL);
+                            } else {
+                                changeStateTo(ReceiverState.STARTING);
+                                onDirectStartReceived(context, stringExtra, lastSettings);
+                                startMeasurement(context, sLatestIntent);
+                            }
+                            showScreenPinnedToastMessage(context);
+                            break;
                         } else {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.STARTING);
-                            onDirectStartReceived(context, stringExtra, lastSettings);
-                            startMeasurement(context, sLatestIntent);
-                        }
-                        showScreenPinnedToastMessage(context);
-                        break;
-                    case 4:
-                        if (!isQuickLaunchValid(lastSettings)) {
                             return;
                         }
-                        if (isInLockTaskMode(context)) {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.IDLE);
-                            setLatestIntent(CameraButtonIntentReceiver$IntentKind.NULL);
-                        } else {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.STARTING);
-                            onDirectStartReceived(context, stringExtra, lastSettings);
-                            startMeasurement(context, sLatestIntent);
-                        }
-                        showScreenPinnedToastMessage(context);
-                        break;
-                    case 6:
-                        changeStateTo(CameraButtonIntentReceiver$ReceiverState.ACTIVE);
+                    case ACTIVITY_RESUMED:
+                        changeStateTo(ReceiverState.ACTIVE);
                         break;
                 }
-                break;
-            case 2:
-                switch (CameraButtonIntentReceiver$1.$SwitchMap$com$sonyericsson$android$camera$CameraButtonIntentReceiver$IntentKind[sLatestIntent.ordinal()]) {
-                    case 3:
+            case PREPARE:
+                switch (sLatestIntent) {
+                    case START:
                         if (isInLockTaskMode(context)) {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.IDLE);
-                            setLatestIntent(CameraButtonIntentReceiver$IntentKind.NULL);
+                            changeStateTo(ReceiverState.IDLE);
+                            setLatestIntent(IntentKind.NULL);
+                            break;
                         } else {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.STARTING);
+                            changeStateTo(ReceiverState.STARTING);
                             onStartReceived(context, stringExtra, lastSettings);
                             wakeUpAndVibrateOnLaunch(context);
+                            break;
                         }
-                        break;
-                    case 4:
+                    case START_SECURE:
                         if (isInLockTaskMode(context)) {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.IDLE);
-                            setLatestIntent(CameraButtonIntentReceiver$IntentKind.NULL);
+                            changeStateTo(ReceiverState.IDLE);
+                            setLatestIntent(IntentKind.NULL);
+                            break;
                         } else {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.STARTING);
+                            changeStateTo(ReceiverState.STARTING);
                             onStartReceived(context, stringExtra, lastSettings);
                             wakeUpAndVibrateOnLaunch(context);
+                            break;
                         }
-                        break;
-                    case 5:
-                        changeStateTo(CameraButtonIntentReceiver$ReceiverState.IDLE);
+                    case CANCEL:
+                        changeStateTo(ReceiverState.IDLE);
                         onCancelReceived(context);
                         break;
-                    case 6:
+                    case ACTIVITY_RESUMED:
                         releaseCameraDeviceReleaseTimer();
-                        changeStateTo(CameraButtonIntentReceiver$ReceiverState.ACTIVE);
+                        changeStateTo(ReceiverState.ACTIVE);
                         startCameraDeviceReleaseTimer(context);
                         break;
                 }
-                break;
-            case 3:
-                switch (CameraButtonIntentReceiver$1.$SwitchMap$com$sonyericsson$android$camera$CameraButtonIntentReceiver$IntentKind[sLatestIntent.ordinal()]) {
-                    case 1:
+            case STARTING:
+                switch (sLatestIntent) {
+                    case NULL:
                         releaseCameraDeviceReleaseTimer();
-                        if (!isQuickLaunchValid(lastSettings)) {
+                        if (isQuickLaunchValid(lastSettings)) {
+                            if (isInLockTaskMode(context)) {
+                                changeStateTo(ReceiverState.IDLE);
+                                setLatestIntent(IntentKind.NULL);
+                                break;
+                            } else {
+                                changeStateTo(ReceiverState.IDLE);
+                                onNullReceived(context, lastSettings);
+                                startMeasurement(context, sLatestIntent);
+                                break;
+                            }
+                        } else {
                             return;
                         }
-                        if (isInLockTaskMode(context)) {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.IDLE);
-                            setLatestIntent(CameraButtonIntentReceiver$IntentKind.NULL);
-                        } else {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.IDLE);
-                            onNullReceived(context, lastSettings);
-                            startMeasurement(context, sLatestIntent);
-                        }
-                        break;
-                    case 2:
+                    case PREPARE:
                         releaseCameraDeviceReleaseTimer();
-                        if (!isQuickLaunchValid(lastSettings)) {
+                        if (isQuickLaunchValid(lastSettings)) {
+                            if (isInLockTaskMode(context)) {
+                                changeStateTo(ReceiverState.IDLE);
+                                setLatestIntent(IntentKind.NULL);
+                                break;
+                            } else {
+                                changeStateTo(ReceiverState.PREPARE);
+                                onPrepareReceived(context, lastSettings);
+                                startMeasurement(context, sLatestIntent);
+                                break;
+                            }
+                        } else {
                             return;
                         }
-                        if (isInLockTaskMode(context)) {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.IDLE);
-                            setLatestIntent(CameraButtonIntentReceiver$IntentKind.NULL);
-                        } else {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.PREPARE);
-                            onPrepareReceived(context, lastSettings);
-                            startMeasurement(context, sLatestIntent);
-                        }
-                        break;
-                    case 3:
+                    case START:
                         releaseCameraDeviceReleaseTimer();
-                        if (!isQuickLaunchValid(lastSettings)) {
+                        if (isQuickLaunchValid(lastSettings)) {
+                            if (isInLockTaskMode(context)) {
+                                changeStateTo(ReceiverState.IDLE);
+                                setLatestIntent(IntentKind.NULL);
+                                break;
+                            } else {
+                                onDirectStartReceived(context, stringExtra, lastSettings);
+                                startMeasurement(context, sLatestIntent);
+                                break;
+                            }
+                        } else {
                             return;
                         }
-                        if (isInLockTaskMode(context)) {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.IDLE);
-                            setLatestIntent(CameraButtonIntentReceiver$IntentKind.NULL);
-                        } else {
-                            onDirectStartReceived(context, stringExtra, lastSettings);
-                            startMeasurement(context, sLatestIntent);
-                        }
-                        break;
-                    case 4:
+                    case START_SECURE:
                         releaseCameraDeviceReleaseTimer();
-                        if (!isQuickLaunchValid(lastSettings)) {
+                        if (isQuickLaunchValid(lastSettings)) {
+                            if (isInLockTaskMode(context)) {
+                                changeStateTo(ReceiverState.IDLE);
+                                setLatestIntent(IntentKind.NULL);
+                                break;
+                            } else {
+                                onDirectStartReceived(context, stringExtra, lastSettings);
+                                startMeasurement(context, sLatestIntent);
+                                break;
+                            }
+                        } else {
                             return;
                         }
-                        if (isInLockTaskMode(context)) {
-                            changeStateTo(CameraButtonIntentReceiver$ReceiverState.IDLE);
-                            setLatestIntent(CameraButtonIntentReceiver$IntentKind.NULL);
-                        } else {
-                            onDirectStartReceived(context, stringExtra, lastSettings);
-                            startMeasurement(context, sLatestIntent);
-                        }
+                    case ACTIVITY_RESUMED:
+                        changeStateTo(ReceiverState.ACTIVE);
                         break;
-                    case 6:
-                        changeStateTo(CameraButtonIntentReceiver$ReceiverState.ACTIVE);
-                        break;
-                    case 7:
-                        changeStateTo(CameraButtonIntentReceiver$ReceiverState.IDLE);
+                    case ACTIVITY_PAUSED:
+                        changeStateTo(ReceiverState.IDLE);
                         break;
                 }
-                break;
-            case 4:
-                switch (CameraButtonIntentReceiver$1.$SwitchMap$com$sonyericsson$android$camera$CameraButtonIntentReceiver$IntentKind[sLatestIntent.ordinal()]) {
-                    case 6:
+            case ACTIVE:
+                switch (sLatestIntent) {
+                    case ACTIVITY_RESUMED:
                         releaseCameraDeviceReleaseTimer();
                         break;
-                    case 7:
-                        changeStateTo(CameraButtonIntentReceiver$ReceiverState.IDLE);
+                    case ACTIVITY_PAUSED:
+                        changeStateTo(ReceiverState.IDLE);
                         break;
                 }
-                break;
         }
     }
 
     private void wakeUpAndVibrateOnLaunch(Context context) {
-        ((PowerManager) context.getSystemService("power")).newWakeLock(268435482, "CameraButtonIntentReceiver").acquire(1000L);
-        VibrationManager.vibrate(context, VibrationManager$VibrationPattern.EFFECT_STANDARD);
+        ((PowerManager) context.getSystemService("power")).newWakeLock(268435482, TAG).acquire(1000L);
+        VibrationManager.vibrate(context, VibrationManager.VibrationPattern.EFFECT_STANDARD);
     }
 
-    private void startMeasurement(Context context, CameraButtonIntentReceiver$IntentKind cameraButtonIntentReceiver$IntentKind) {
-        switch (CameraButtonIntentReceiver$1.$SwitchMap$com$sonyericsson$android$camera$CameraButtonIntentReceiver$IntentKind[cameraButtonIntentReceiver$IntentKind.ordinal()]) {
-            case 1:
-                LocalResearchUtil.getInstance().startMeasurement(LocalResearchUtil$MeasurementKey.LAUNCH_COLD_BOOT_FROM_CAMERAKEY_READY_FOR_USE);
-                LocalResearchUtil.getInstance().startMeasurement(LocalResearchUtil$MeasurementKey.LAUNCH_WARM_BOOT_FROM_CAMERAKEY_READY_FOR_USE);
+    private void startMeasurement(Context context, IntentKind intentKind) {
+        switch (intentKind) {
+            case NULL:
+                LocalResearchUtil.getInstance().startMeasurement(
+                        LocalResearchUtil.MeasurementKey.LAUNCH_COLD_BOOT_FROM_CAMERAKEY_READY_FOR_USE);
+                LocalResearchUtil.getInstance().startMeasurement(
+                        LocalResearchUtil.MeasurementKey.LAUNCH_WARM_BOOT_FROM_CAMERAKEY_READY_FOR_USE);
                 break;
-            case 2:
-                LocalResearchUtil.getInstance().startMeasurement(LocalResearchUtil$MeasurementKey.LAUNCH_COLD_BOOT_FROM_CAMERAKEY_READY_FOR_USE);
-                LocalResearchUtil.getInstance().startMeasurement(LocalResearchUtil$MeasurementKey.LAUNCH_WARM_BOOT_FROM_CAMERAKEY_READY_FOR_USE);
+            case PREPARE:
+                LocalResearchUtil.getInstance().startMeasurement(
+                        LocalResearchUtil.MeasurementKey.LAUNCH_COLD_BOOT_FROM_CAMERAKEY_READY_FOR_USE);
+                LocalResearchUtil.getInstance().startMeasurement(
+                        LocalResearchUtil.MeasurementKey.LAUNCH_WARM_BOOT_FROM_CAMERAKEY_READY_FOR_USE);
                 break;
-            case 3:
-            case 4:
-                LocalResearchUtil.getInstance().startMeasurement(LocalResearchUtil$MeasurementKey.LAUNCH_COLD_BOOT_FROM_LOCKSCREEN_READY_FOR_USE);
-                LocalResearchUtil.getInstance().startMeasurement(LocalResearchUtil$MeasurementKey.LAUNCH_WARM_BOOT_FROM_LOCKSCREEN_READY_FOR_USE);
+            case START:
+            case START_SECURE:
+                LocalResearchUtil.getInstance().startMeasurement(
+                        LocalResearchUtil.MeasurementKey.LAUNCH_COLD_BOOT_FROM_LOCKSCREEN_READY_FOR_USE);
+                LocalResearchUtil.getInstance().startMeasurement(
+                        LocalResearchUtil.MeasurementKey.LAUNCH_WARM_BOOT_FROM_LOCKSCREEN_READY_FOR_USE);
                 break;
         }
     }
@@ -294,40 +317,43 @@ public class CameraButtonIntentReceiver extends BroadcastReceiver {
 
     private void showScreenPinnedToastMessage(Context context) {
         if (isInLockTaskMode(context)) {
-            Toast.makeText(context, 2131690093, 0).show();
+            Toast.makeText(context, R.string.cam_strings_screen_pinned_txt, 0).show();
         }
     }
 
-    @SuppressLint({"NewApi"})
+    @SuppressLint({ "NewApi" })
     private boolean isInLockTaskMode(Context context) {
-        return ((ActivityManager) context.getSystemService("activity")).getLockTaskModeState() != 0;
+        return ((ActivityManager) context.getSystemService(CameraCommonProviderConstants.CapturingModeColumns.ACTIVITY))
+                .getLockTaskModeState() != 0;
     }
 
     private void onNullReceived(Context context, LastSettings lastSettings) {
         FastCapture fastCapture = lastSettings.getFastCapture();
         if (fastCapture == FastCapture.LAUNCH_AND_CAPTURE) {
-            ((CameraApplication) context.getApplicationContext()).getCameraDevice().preloadCamera(context, null, CapturingMode.SCENE_RECOGNITION, true);
+            ((CameraApplication) context.getApplicationContext()).getCameraDevice().preloadCamera(context, null,
+                    CapturingMode.SCENE_RECOGNITION, true);
         }
         Intent intent = new Intent();
         if (fastCapture == FastCapture.LAUNCH_AND_CAPTURE) {
-            intent.setAction("com.sonyericsson.android.camera.intent.action.QUICK_LAUNCH_AND_CAPTURE");
+            intent.setAction(LaunchCondition.ACTION_QUICK_LAUNCH_AND_CAPTURE);
         } else {
-            intent.setAction("com.sonyericsson.android.camera.intent.action.QUICK_LAUNCH");
+            intent.setAction(LaunchCondition.ACTION_QUICK_LAUNCH);
         }
         intent.setClass(context, CameraActivityOnLockScreen.class);
         intent.addCategory("android.intent.category.LAUNCHER");
         intent.setFlags(268435456);
         intent.putExtra("android.intent.extra.SUBJECT", "start");
-        intent.putExtra("com.sonyericsson.android.camera.extra.launchTrigger", LaunchCondition$LaunchTrigger.HW_CAMERA_KEY.toString());
+        intent.putExtra(LaunchCondition.LAUNCH_TRIGGER, LaunchCondition.LaunchTrigger.HW_CAMERA_KEY.toString());
         context.startActivity(intent);
     }
 
     private void onPrepareReceived(Context context, LastSettings lastSettings) {
-        Intent intent = new Intent("com.sonymobile.cameracommon.intent.ACTION_FORCE_EXIT_REQUEST");
+        Intent intent = new Intent(CommonConstants.INTENT_ACTION_FORCE_EXIT_REQUEST);
         intent.setFlags(268435456);
         context.sendBroadcast(intent);
         if (lastSettings.getFastCapture() == FastCapture.LAUNCH_AND_CAPTURE) {
-            ((CameraApplication) context.getApplicationContext()).getCameraDevice().preloadCamera(context, null, CapturingMode.SCENE_RECOGNITION, true);
+            ((CameraApplication) context.getApplicationContext()).getCameraDevice().preloadCamera(context, null,
+                    CapturingMode.SCENE_RECOGNITION, true);
             startCameraDeviceReleaseTimer(context);
         }
     }
@@ -335,38 +361,40 @@ public class CameraButtonIntentReceiver extends BroadcastReceiver {
     private void onStartReceived(Context context, String str, LastSettings lastSettings) {
         FastCapture fastCapture = lastSettings.getFastCapture();
         if (fastCapture == FastCapture.LAUNCH_AND_CAPTURE) {
-            ((CameraApplication) context.getApplicationContext()).getCameraDevice().preloadCamera(context, null, CapturingMode.SCENE_RECOGNITION, true);
+            ((CameraApplication) context.getApplicationContext()).getCameraDevice().preloadCamera(context, null,
+                    CapturingMode.SCENE_RECOGNITION, true);
         }
         Intent intent = new Intent();
         if (fastCapture == FastCapture.LAUNCH_AND_CAPTURE) {
-            intent.setAction("com.sonyericsson.android.camera.intent.action.QUICK_LAUNCH_AND_CAPTURE");
+            intent.setAction(LaunchCondition.ACTION_QUICK_LAUNCH_AND_CAPTURE);
         } else {
-            intent.setAction("com.sonyericsson.android.camera.intent.action.QUICK_LAUNCH");
+            intent.setAction(LaunchCondition.ACTION_QUICK_LAUNCH);
         }
         intent.setClass(context, CameraActivityOnLockScreen.class);
         intent.addCategory("android.intent.category.LAUNCHER");
         intent.setFlags(268435456);
         intent.putExtra("android.intent.extra.SUBJECT", str);
-        intent.putExtra("com.sonyericsson.android.camera.extra.launchTrigger", LaunchCondition$LaunchTrigger.HW_CAMERA_KEY_LOCK.toString());
+        intent.putExtra(LaunchCondition.LAUNCH_TRIGGER, LaunchCondition.LaunchTrigger.HW_CAMERA_KEY_LOCK.toString());
         context.startActivity(intent);
     }
 
     private void onDirectStartReceived(Context context, String str, LastSettings lastSettings) {
         FastCapture fastCapture = lastSettings.getFastCapture();
         if (fastCapture == FastCapture.LAUNCH_AND_CAPTURE) {
-            ((CameraApplication) context.getApplicationContext()).getCameraDevice().preloadCamera(context, null, CapturingMode.SCENE_RECOGNITION, true);
+            ((CameraApplication) context.getApplicationContext()).getCameraDevice().preloadCamera(context, null,
+                    CapturingMode.SCENE_RECOGNITION, true);
         }
         Intent intent = new Intent();
         if (fastCapture == FastCapture.LAUNCH_AND_CAPTURE) {
-            intent.setAction("com.sonyericsson.android.camera.intent.action.QUICK_LAUNCH_AND_CAPTURE");
+            intent.setAction(LaunchCondition.ACTION_QUICK_LAUNCH_AND_CAPTURE);
         } else {
-            intent.setAction("com.sonyericsson.android.camera.intent.action.QUICK_LAUNCH");
+            intent.setAction(LaunchCondition.ACTION_QUICK_LAUNCH);
         }
         intent.setClass(context, CameraActivityOnLockScreen.class);
         intent.addCategory("android.intent.category.LAUNCHER");
         intent.setFlags(268435456);
         intent.putExtra("android.intent.extra.SUBJECT", str);
-        intent.putExtra("com.sonyericsson.android.camera.extra.launchTrigger", LaunchCondition$LaunchTrigger.LOCK_SCREEN.toString());
+        intent.putExtra(LaunchCondition.LAUNCH_TRIGGER, LaunchCondition.LaunchTrigger.LOCK_SCREEN.toString());
         context.startActivity(intent);
     }
 
@@ -382,7 +410,7 @@ public class CameraButtonIntentReceiver extends BroadcastReceiver {
         synchronized (sReleaseTimerLock) {
             if (sReleaseTimer == null) {
                 sReleaseTimer = new Timer(true);
-                sReleaseTimer.schedule(new CameraButtonIntentReceiver$CameraDeviceReleaseTimerTask(context, null), 5000L);
+                sReleaseTimer.schedule(new CameraDeviceReleaseTimerTask(context), 5000L);
             }
         }
     }
@@ -397,6 +425,30 @@ public class CameraButtonIntentReceiver extends BroadcastReceiver {
                 sReleaseTimer.purge();
                 sReleaseTimer = null;
             }
+        }
+    }
+
+    private static class CameraDeviceReleaseTimerTask extends TimerTask {
+        private final Context mContext;
+
+        private CameraDeviceReleaseTimerTask(Context context) {
+            this.mContext = context;
+        }
+
+        @Override // java.util.TimerTask, java.lang.Runnable
+        public void run() {
+            if (CamLog.DEBUG) {
+                CamLog.d("Camera is released due to timeout.");
+            }
+            synchronized (CameraButtonIntentReceiver.sReleaseTimerLock) {
+                if (CameraButtonIntentReceiver.sReleaseTimer != null) {
+                    CameraButtonIntentReceiver.sReleaseTimer.cancel();
+                    CameraButtonIntentReceiver.sReleaseTimer.purge();
+                    Timer unused = CameraButtonIntentReceiver.sReleaseTimer = null;
+                }
+            }
+            CameraButtonIntentReceiver.changeStateTo(ReceiverState.IDLE);
+            ((CameraApplication) this.mContext.getApplicationContext()).getCameraDevice().closeCamera();
         }
     }
 }

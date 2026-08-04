@@ -1,13 +1,14 @@
 package com.google.android.gms.common.internal;
 
 import android.content.Context;
-import android.content.res.Resources$NotFoundException;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzae {
-    public static String zza(String str, String str2, Context context, AttributeSet attributeSet, boolean z, boolean z2, String str3) {
+    public static String zza(String str, String str2, Context context, AttributeSet attributeSet, boolean z, boolean z2, String str3) throws Resources.NotFoundException {
         String attributeValue = attributeSet == null ? null : attributeSet.getAttributeValue(str, str2);
         if (attributeValue != null && attributeValue.startsWith("@string/") && z) {
             String strSubstring = attributeValue.substring("@string/".length());
@@ -15,7 +16,7 @@ public class zzae {
             TypedValue typedValue = new TypedValue();
             try {
                 context.getResources().getValue(packageName + ":string/" + strSubstring, typedValue, true);
-            } catch (Resources$NotFoundException unused) {
+            } catch (Resources.NotFoundException unused) {
                 Log.w(str3, "Could not find resource for " + str2 + ": " + attributeValue);
             }
             if (typedValue.string != null) {

@@ -10,6 +10,19 @@ public class TagInfoSByte extends TagInfo {
     }
 
     public TagInfoSByte(String str, int i, int i2, TiffDirectoryType tiffDirectoryType) {
+
+
+
+
+
+
+
+
+
+
+
+
+
         super(str, i, FieldType.SBYTE, i2, tiffDirectoryType);
     }
 }

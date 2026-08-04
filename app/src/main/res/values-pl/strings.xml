@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Nie udało się zrobić zdjęcia. Przesuwaj aparat wolniej.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Nie udało się zrobić zdjęcia. Przesuwaj aparat szybciej.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Rób zdjęcia panoramicznie, przesuwając aparat</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Tworzenie następujących plików:\n- obraz multi-angle\n- obraz 3D\nUwaga: Te pliki zawierają szary obszar.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Tworzenie następujących plików:\n- obraz multi-angle\n- obraz 3D</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Przetwarzanie...\nTen obraz zawiera szary obszar</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Tworzenie następujących plików:
+- obraz multi-angle
+- obraz 3D
+Uwaga: Te pliki zawierają szary obszar."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Tworzenie następujących plików:
+- obraz multi-angle
+- obraz 3D"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Przetwarzanie...
+Ten obraz zawiera szary obszar"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Zapisywanie obrazu</string>
     <string name="cam_3d_strings_dialog_processing_txt">Przetwarzanie...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Poczekaj chwilę na uruchomienie aparatu 3D</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Nadaje skórze jasność i gładkość. Ten efekt działa w aplikacjach używających przedniego aparatu. Można go stosować do zdjęć i wideo. Można także regulować jego poziom.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Regulacja poziomu</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Gładka skóra</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Nie można uruchomić aplikacji.\nSprawdź, czy jest zainstalowana i włączona na urządzeniu najnowsza wersja aplikacji %1$s.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Nie można uruchomić aplikacji.
+Sprawdź, czy jest zainstalowana i włączona na urządzeniu najnowsza wersja aplikacji %1$s."</string>
     <string name="cam_strings_gridline_txt">Linie siatki</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Odwróć dłoń do aparatu. Po rozpoznaniu dłoni zostanie włączony samowyzwalacz. Aby ułatwić rozpoznawanie, wyprostuj palce do góry.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Odwróć dłoń do aparatu</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Ustawienia ogólne</string>
     <string name="cam_strings_more_txt">Więcej</string>
     <string name="cam_strings_multi_window_txt">Przeciągnij środek paska podziału, aby przełączyć na widok pełnego ekranu aplikacji %1$s w celu jej użycia</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Połączone jest teraz inne urządzenie.\nCzy chcesz udostępnić urządzeniu obraz przez wizjer?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Połączone jest teraz inne urządzenie.
+Czy chcesz udostępnić urządzeniu obraz przez wizjer?"</string>
     <string name="cam_strings_multicam_add_device_txt">Dodaj urządzenie</string>
     <string name="cam_strings_multicam_add_more_txt">Dodaj więcej</string>
     <string name="cam_strings_multicam_apply_txt">Gotowe</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Pomiar światła</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Predykcja</string>
     <string name="cam_strings_predictive_capture_txt">Rejestrowanie predykcyjne</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Aparat został uruchomiony automatycznie po wykryciu podniesienia telefonu w trybie poziomym i skierowania go na obiekt.\nPreferowany sposób używania tej funkcji możesz wybrać w sekcji Inteligentne włączanie w ustawieniach aparatu.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Aparat został uruchomiony automatycznie po wykryciu podniesienia telefonu w trybie poziomym i skierowania go na obiekt.
+Preferowany sposób używania tej funkcji możesz wybrać w sekcji Inteligentne włączanie w ustawieniach aparatu."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Dotknij wewnątrz kółka, aby zrobić zdjęcie</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Dotknij ekranu, aby zrobić zdjęcie</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Stuknij wewnątrz kółka, aby wyświetlić pełny ekran</string>
     <string name="cam_strings_predictive_launch_guide_txt">Dotknij wewnątrz kółka, aby włączyć aparat</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Włącz i rób zdj. dotknięciem</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Dotknij, aby włączyć</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Ta funkcja umożliwia szybkie włączanie aparatu. Podnieś szybko urządzenie w orientacji poziomej i skieruj aparat w stronę obiektu. Aparat zostanie włączony automatycznie.\nPreferowany sposób używania tej funkcji możesz wybrać w sekcji Inteligentne włączanie w ustawieniach aparatu.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Ta funkcja umożliwia szybkie włączanie aparatu. Podnieś szybko urządzenie w orientacji poziomej i skieruj aparat w stronę obiektu. Aparat zostanie włączony automatycznie.
+Preferowany sposób używania tej funkcji możesz wybrać w sekcji Inteligentne włączanie w ustawieniach aparatu."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Inteligent. włączanie</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Ta funkcja umożliwia szybkie włączanie aparatu. Unieś urządzenie w orientacji poziomej i skieruj aparat w stronę obiektu. Aparat zostanie włączony automatycznie.\nFunkcję tę możesz wyłączyć w sekcji Inteligentne włączanie w ustawieniach aparatu.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Ta funkcja umożliwia szybkie włączanie aparatu. Unieś urządzenie w orientacji poziomej i skieruj aparat w stronę obiektu. Aparat zostanie włączony automatycznie.
+Funkcję tę możesz wyłączyć w sekcji Inteligentne włączanie w ustawieniach aparatu."</string>
     <string name="cam_strings_predictive_launch_txt">Inteligentne włączanie</string>
     <string name="cam_strings_preview_always_txt">Włącz</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 sekundy</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">Aplikacja %1$s wymaga następujących uprawnień</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s — uprawnienie</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Ta aplikacja wymaga następujących uprawnień w celu wykonania tego działania.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Aby przyznać uprawnienia, wybierz pozycje Informacje o aplikacji &gt; Uprawnienia.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Aby przyznać uprawnienia, wybierz pozycje Informacje o aplikacji > Uprawnienia.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Nie można kontynuować</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">W celu robienia zdjęć i nagrywania wideo</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">W celu pobierania informacji o lokalizacji</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Zapisano w pamięci wewnętrznej</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">PRZEJDŹ</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Ta aplikacja wymaga następujących uprawnień w celu wykonania tego działania.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Aby móc używać karty SD, aparat potrzebuje uprawnień dostępu do niej.\nZmień ponownie pamięć masową danych na kartę SD lub zezwól aparatowi na dostęp do karty SD na następnym ekranie.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Aby móc używać karty SD, aparat potrzebuje uprawnień dostępu do niej.
+Zmień ponownie pamięć masową danych na kartę SD lub zezwól aparatowi na dostęp do karty SD na następnym ekranie."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">Karta SD niedostępna</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Wykryto nową kartę SD wymagającą uprawnień.\n\nAby użyć karty SD jako pamięci masowej na dane, wybierz kartę SD lub katalog DCIM na następnym ekranie.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Nie wybrano karty SD lub katalogu DCIM. Nie można użyć tej karty SD.\n\nAby przyznać uprawnienia, zacznij od zmiany lokalizacji zapisu na kartę SD lub wybierz odpowiedni katalog na następnym ekranie.</string>
-    <string name="cam_strings_sd_permission_info_txt">Wykryto nową kartę SD, która wymaga uprawnień.\nPamięć wewnętrzna urządzenia będzie w związku z tym używana jako domyślna pamięć na dane.\n\nAby używać karty SD jako pamięci na dane, przejdź do ustawień aparatu i zmień opcję pamięci masowej na kartę SD.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Wykryto nową kartę SD wymagającą uprawnień.
+
+Aby użyć karty SD jako pamięci masowej na dane, wybierz kartę SD lub katalog DCIM na następnym ekranie."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Nie wybrano karty SD lub katalogu DCIM. Nie można użyć tej karty SD.
+
+Aby przyznać uprawnienia, zacznij od zmiany lokalizacji zapisu na kartę SD lub wybierz odpowiedni katalog na następnym ekranie."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Wykryto nową kartę SD, która wymaga uprawnień.
+Pamięć wewnętrzna urządzenia będzie w związku z tym używana jako domyślna pamięć na dane.
+
+Aby używać karty SD jako pamięci na dane, przejdź do ustawień aparatu i zmień opcję pamięci masowej na kartę SD."</string>
     <string name="cam_strings_sd_permission_rationale_txt">W celu zapisywania zdjęć i wideo na karcie SD</string>
     <string name="cam_strings_select_picture_txt">Wybierz zdjęcie</string>
     <string name="cam_strings_self_timer_05_txt">0,5 s</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Autorejestrowanie</string>
     <string name="cam_strings_side_touch_not_supported_txt">Boczny sensor nie jest obsługiwany na tym ekranie</string>
     <string name="cam_strings_side_touch_on_title_txt">Boczny sensor</string>
-    <string name="cam_strings_side_touch_on_txt">Aby skorzystać z tej funkcji, wybierz pozycje Ustawienia &gt; Wyświetlacz i włącz Boczny sensor. Włączyć teraz?</string>
+    <string name="cam_strings_side_touch_on_txt">Aby skorzystać z tej funkcji, wybierz pozycje Ustawienia > Wyświetlacz i włącz Boczny sensor. Włączyć teraz?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Boczny sensor</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Możesz zrobić zdjęcie lub nagrać wideo, stukając dwukrotnie sensor z boku ekranu zamiast przycisk migawki. Możesz także powiększać i pomniejszać obraz, przesuwając palcem wzdłuż bocznego sensora.\nFunkcję tę obsługują tryby zdjęć i wideo. Możesz to wyłączyć w sekcji Boczny sensor w ustawieniach aparatu.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Możesz zrobić zdjęcie lub nagrać wideo, stukając dwukrotnie sensor z boku ekranu w orientacji pionowej zamiast przycisk migawki. Możesz także powiększać i pomniejszać obraz, przesuwając palcem wzdłuż bocznego sensora.\nFunkcję tę obsługują tryby zdjęć i wideo. Możesz to wyłączyć w sekcji Boczny sensor w ustawieniach aparatu.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Możesz zrobić zdjęcie lub nagrać wideo, stukając dwukrotnie sensor z boku ekranu w orientacji pionowej zamiast przycisk migawki.\nFunkcję tę obsługują tryby zdjęć i wideo. Możesz to wyłączyć w sekcji Boczny sensor w ustawieniach aparatu.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Możesz zrobić zdjęcie lub nagrać wideo, stukając dwukrotnie sensor z boku ekranu zamiast przycisk migawki.\nFunkcję tę obsługują tryby zdjęć i wideo. Możesz to wyłączyć w sekcji Boczny sensor w ustawieniach aparatu.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Możesz zrobić zdjęcie lub nagrać wideo, stukając dwukrotnie sensor z boku ekranu zamiast przycisk migawki. Możesz także powiększać i pomniejszać obraz, przesuwając palcem wzdłuż bocznego sensora.
+Funkcję tę obsługują tryby zdjęć i wideo. Możesz to wyłączyć w sekcji Boczny sensor w ustawieniach aparatu."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Możesz zrobić zdjęcie lub nagrać wideo, stukając dwukrotnie sensor z boku ekranu w orientacji pionowej zamiast przycisk migawki. Możesz także powiększać i pomniejszać obraz, przesuwając palcem wzdłuż bocznego sensora.
+Funkcję tę obsługują tryby zdjęć i wideo. Możesz to wyłączyć w sekcji Boczny sensor w ustawieniach aparatu."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Możesz zrobić zdjęcie lub nagrać wideo, stukając dwukrotnie sensor z boku ekranu w orientacji pionowej zamiast przycisk migawki.
+Funkcję tę obsługują tryby zdjęć i wideo. Możesz to wyłączyć w sekcji Boczny sensor w ustawieniach aparatu."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Możesz zrobić zdjęcie lub nagrać wideo, stukając dwukrotnie sensor z boku ekranu zamiast przycisk migawki.
+Funkcję tę obsługują tryby zdjęć i wideo. Możesz to wyłączyć w sekcji Boczny sensor w ustawieniach aparatu."</string>
     <string name="cam_strings_side_touch_txt">Boczny sensor</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Styl nagrywania i rozdzielczość ekranu można zmienić w ustawieniach Aparatu</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Bardzo zwolnione (1 uj.)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Bardzo zwolnione tempo</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Możesz zmienić liczbę klatek na sekundę i styl nagrywania w zwolnionym tempie</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Więcej opcji</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Nagraj błyskawicznie ważną chwilę w zwolnionym tempie z %1$s kl./s, stukając przycisk pośrodku ekranu\nWideo nagrywane przy jaśniejszym oświetleniu będzie mieć lepszą jakość.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Nagraj błyskawicznie ważną chwilę w zwolnionym tempie z %1$s kl./s, stukając przycisk pośrodku ekranu
+Wideo nagrywane przy jaśniejszym oświetleniu będzie mieć lepszą jakość."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Możesz nagrać ważną chwilę z szybkością %1$s kl./s, stukając środkowy przycisk</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Nagraj błyskawicznie ważną chwilę w zwolnionym tempie z %1$s kl./s, stukając przycisk pośrodku ekranu</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Bardzo zwolnione tempo (1 ujęcie)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Zwolnione tempo</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Jak nagrywać</string>
     <string name="cam_strings_slow_motion_standard_txt">Zwolnione tempo</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Utwórz imponujące wideo, pokazując ważną chwilę w zwolnionym tempie.\nWideo nagrywane przy jaśniejszym oświetleniu będzie mieć lepszą jakość.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Utwórz imponujące wideo, pokazując ważną chwilę w zwolnionym tempie.
+Wideo nagrywane przy jaśniejszym oświetleniu będzie mieć lepszą jakość."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Możesz nagrywać wideo z różną szybkością po przełączeniu na %1$s kl./s</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Stuknij przycisk pośrodku w odpowiednim momencie</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Nagrano w zwolnionym tempie</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Licencje na oprogramowanie</string>
     <string name="cam_strings_take_photo_txt">Zrób zdjęcie</string>
     <string name="cam_strings_term_of_use_accept_txt">Zaakceptuj</string>
-    <string name="cam_strings_term_of_use_consent_txt">Wyrażam zgodę na &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Warunki świadczenia usługi&lt;/a&gt; Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Wyrażam zgodę na &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Warunki świadczenia usługi&lt;/a> Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Korzystanie z tej usługi może podlegać opłatom za transmisję danych w sieci komórkowej w zależności od planu taryfowego.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Firma Sony Mobile rejestruje skrócony unikatowy identyfikator urządzenia Android ID, dane dotyczące lokalizacji oraz sygnaturę czasową w celu zapewnienia odpowiednich wyników działania usługi oraz jej doskonalenia.</string>
     <string name="cam_strings_term_of_use_decline_txt">Odrzuć</string>
     <string name="cam_strings_term_of_use_title_txt">Zasady i warunki</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Warunki korzystania&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Warunki korzystania&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Usuń zaznaczenie zdjęć</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Nie można zapisać</string>
     <string name="cam_strings_timeshift_save_complete_txt">Zapisano</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Aby nagrywanie w trybie 4K przebiegało stabilnie, nie należy zmieniać tego ustawienia, chyba że używasz szybkiej karty SD (zalecana klasa szybkości 1 UHS lub wyższa albo 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Aby nagrywanie w trybie Timeshift video przebiegało stabilnie, nie należy zmieniać tego ustawienia, chyba że używasz szybkiej karty SD (zalecana klasa szybkości 1 UHS lub wyższa albo 10). Zmienić mimo to?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Aby nagrywanie wideo w zwolnionym tempie przebiegało stabilnie, nie należy zmieniać tego ustawienia, chyba że używasz szybkiej karty SD (zalecana klasa szybkości 1 UHS lub wyższa albo 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Aby nagrywanie wideo przebiegało stabilnie, zalecamy zmianę lokalizacji danych na pamięć wewnętrzną. Czy chcesz zmienić ją teraz?\n\nJeżeli zamierzasz nadal używać karty SD jako pamięci masowej na dane, używaj szybkiej karty SD (zalecana klasa szybkości 1 UHS lub wyższa albo 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Aby nagrywanie wideo przebiegało stabilnie, zalecamy zmianę lokalizacji danych na pamięć wewnętrzną. Czy chcesz zmienić ją teraz?
+
+Jeżeli zamierzasz nadal używać karty SD jako pamięci masowej na dane, używaj szybkiej karty SD (zalecana klasa szybkości 1 UHS lub wyższa albo 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Podwójny aparat</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Podwójny aparat umożliwia nagrywanie pięknych filmów z niskim poziomem zakłóceń nawet w nocy i w słabo oświetlonym pomieszczeniu. W zależności od scen rejestrowanych z ultradużą czułością jest włączany pojedynczy lub podwójny aparat.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Nagrywanie wideo przy użyciu podwójnego aparatu</string>

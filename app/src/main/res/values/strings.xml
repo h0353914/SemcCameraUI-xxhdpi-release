@@ -45,9 +45,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Could not complete the capturing. Please pan more slowly.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Could not complete the capturing. Please pan faster.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Take a panoramic photo by sweeping your camera</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Creating the following files:\n- Multi Angle image\n- 3D image\nNote: These files contain a gray area.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Creating the following files:\n- Multi Angle image\n- 3D image</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Processing...\nThis image contains a gray area</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Creating the following files:
+- Multi Angle image
+- 3D image
+Note: These files contain a gray area."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Creating the following files:
+- Multi Angle image
+- 3D image"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Processing...
+This image contains a gray area"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Saving image</string>
     <string name="cam_3d_strings_dialog_processing_txt">Processing...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Please wait for a few seconds to launch 3D camera</string>
@@ -267,7 +273,7 @@
     <string name="cam_strings_dialog_cta_wifi_mobile_data_txt">Use Wi-Fi &amp; mobile data</string>
     <string name="cam_strings_dialog_high_temp_title_txt">Note</string>
     <string name="cam_strings_dialog_high_temp_txt">If the device temperature rises, the app may close during use. Your recording will be saved automatically.</string>
-    <string name="cam_strings_dialog_high_temp_vzw_txt">This camera mode uses a lot of your phone\'s resources and may cause your phone\'s temperature to rise. To prevent overheating, video recording may stop and the camera app may close. Your recording will be saved automatically.</string>
+    <string name="cam_strings_dialog_high_temp_vzw_txt">"This camera mode uses a lot of your phone's resources and may cause your phone's temperature to rise. To prevent overheating, video recording may stop and the camera app may close. Your recording will be saved automatically."</string>
     <string name="cam_strings_dialog_hight_temp_title_txt">Note</string>
     <string name="cam_strings_dialog_storage_full_burst_txt">Burst capturing stopped due to out of memory. Delete some files to free some space on the internal storage.</string>
     <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">You can record videos even in high contrast scene, and make them more dramatic and closer to what you see in real life. Please use supported devices/services to enjoy the content with its original color and brightness.</string>
@@ -322,7 +328,7 @@
     <string name="cam_strings_error_message_during_voice_call_txt">Camera unavailable during a call</string>
     <string name="cam_strings_error_mms_rec_size_limit_txt">Cannot add more files. File size too large.</string>
     <string name="cam_strings_error_save_file_in_progress_txt">Saving. Action currently unavailable.</string>
-    <string name="cam_strings_error_save_file_txt">Recording in progress in another app. Couldn\'t record.</string>
+    <string name="cam_strings_error_save_file_txt">"Recording in progress in another app. Couldn't record."</string>
     <string name="cam_strings_error_storage_changing_to_internal_txt">No SD card available. Changed default data storage to Internal storage.</string>
     <string name="cam_strings_error_video_rec_txt">Cannot record. Recording or a recording-related function may be in use by another application.</string>
     <string name="cam_strings_exposure_level_m03_txt">EV -0.3</string>
@@ -391,7 +397,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Make your skin look bright and smooth. The effect works in the applications that use the front camera. This can be applied on photos and videos. You can also adjust the level.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Level adjustment</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Smooth skin</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Cannot start app.\nMake sure the latest version of %1$s is installed and enabled on your device.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Cannot start app.
+Make sure the latest version of %1$s is installed and enabled on your device."</string>
     <string name="cam_strings_gridline_txt">Grid lines</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Turn your palm toward the camera. Self-timer will be turned on when your palm is recognized. To make it easy to be recognized, extend your fingers upward.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Turn your palm toward the camera</string>
@@ -483,25 +490,26 @@
     <string name="cam_strings_more_common_setting_title_txt">Common settings</string>
     <string name="cam_strings_more_txt">More</string>
     <string name="cam_strings_multi_window_txt">Drag the middle of the split bar to switch to full screen %1$s to use</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Another device is now connected.\nWould you like to share the image through the viewfinder with the device?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Another device is now connected.
+Would you like to share the image through the viewfinder with the device?"</string>
     <string name="cam_strings_multicam_add_device_txt">Add device</string>
     <string name="cam_strings_multicam_add_more_txt">Add more</string>
     <string name="cam_strings_multicam_apply_txt">Done</string>
     <string name="cam_strings_multicam_connection_failure_dialog_txt">Could not connect</string>
-    <string name="cam_strings_multicam_di_connection_err_dialog_txt">Cannot connect with any Sony\'s Wi-Fi/NFC camera when your Xperia is connected with another Xperia.</string>
-    <string name="cam_strings_multicam_error_app_ver_old_txt">App version doesn\'t match. Cannot connect. Your app needs to be updated.</string>
+    <string name="cam_strings_multicam_di_connection_err_dialog_txt">"Cannot connect with any Sony's Wi-Fi/NFC camera when your Xperia is connected with another Xperia."</string>
+    <string name="cam_strings_multicam_error_app_ver_old_txt">"App version doesn't match. Cannot connect. Your app needs to be updated."</string>
     <string name="cam_strings_multicam_error_disconnect_txt">Disconnected</string>
     <string name="cam_strings_multicam_error_nfc_txt">Cannot start with NFC locked.</string>
     <string name="cam_strings_multicam_error_wifi_txt">This mode is unavailable during Wi-Fi tethering.</string>
     <string name="cam_strings_multicam_excess_connection_num_err_dialog_txt">Max number of devices added.</string>
-    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">Only one Sony\'s Wi-Fi/NFC camera can be connected with your Xperia at a time.</string>
+    <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">"Only one Sony's Wi-Fi/NFC camera can be connected with your Xperia at a time."</string>
     <string name="cam_strings_multicam_nfc_connect_title_txt">Touch the devices together to connect</string>
-    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Sony\'s Wi-Fi/NFC camera</string>
+    <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">"Sony's Wi-Fi/NFC camera"</string>
     <string name="cam_strings_multicam_nfc_connect_xperia_txt">Xperia</string>
     <string name="cam_strings_multicam_nfc_touch_to_beam_title_txt">Touch the screen</string>
     <string name="cam_strings_multicam_security_info_txt">If the device that you connect with is also connected with other Xperia devices through this app, your Xperia will be also automatically connected to those devices and every image through the viewfinder will be shared between your Xperia and all the connected devices.</string>
     <string name="cam_strings_multicam_touch_add_camera_desc_txt">Tap to add a device. The image through its viewfinder will appear here.</string>
-    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Cannot connect with any Xperia when your Xperia is connected with a Sony\'s Wi-Fi/NFC camera.</string>
+    <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">"Cannot connect with any Xperia when your Xperia is connected with a Sony's Wi-Fi/NFC camera."</string>
     <string name="cam_strings_ok_txt">OK</string>
     <string name="cam_strings_p_pixel_8mp_16_9_txt">3840x2160(16:9)</string>
     <string name="cam_strings_permgroupdesc_thermalmitigation_message_txt">Allow the app to control the system for stable capturing, depending on the temperature in the device.</string>
@@ -533,16 +541,19 @@
     <string name="cam_strings_photometry_txt">Metering</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Predicted</string>
     <string name="cam_strings_predictive_capture_txt">Predictive Capture</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">The camera has been launched automatically by detecting your motion of lifting up your phone in landscape mode and aiming it towards an object.\nYou can select your favorite way to use this feature from Smart launch in camera settings.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"The camera has been launched automatically by detecting your motion of lifting up your phone in landscape mode and aiming it towards an object.
+You can select your favorite way to use this feature from Smart launch in camera settings."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Touch inside the circle to capture</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Touch screen to capture</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Tap inside of the circle to view fullscreen</string>
     <string name="cam_strings_predictive_launch_guide_txt">Touch inside of the circle to launch camera</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Touch to launch and capture</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Touch to launch</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">You can launch the camera quickly. Swiftly lift your device in landscape mode and aim the camera towards an object. The camera will be launched automatically.\nYou can select your favorite way to use this feature from Smart launch in camera settings.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"You can launch the camera quickly. Swiftly lift your device in landscape mode and aim the camera towards an object. The camera will be launched automatically.
+You can select your favorite way to use this feature from Smart launch in camera settings."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Smart launch</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">You can launch the camera quickly. Swing up your device in landscape mode and aim the camera towards an object. The camera will be launched automatically.\nYou can turn off this feature from Smart launch in camera settings.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"You can launch the camera quickly. Swing up your device in landscape mode and aim the camera towards an object. The camera will be launched automatically.
+You can turn off this feature from Smart launch in camera settings."</string>
     <string name="cam_strings_predictive_launch_txt">Smart launch</string>
     <string name="cam_strings_preview_always_txt">On</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 seconds</string>
@@ -565,7 +576,7 @@
     <string name="cam_strings_resolution_title_txt">Resolution</string>
     <string name="cam_strings_resolution_txt">Resolution</string>
     <string name="cam_strings_restricted_setting_dialog_title_txt">Cannot change</string>
-    <string name="cam_strings_restricted_setting_hyphen_txt">—</string>
+    <string name="cam_strings_restricted_setting_hyphen_txt"><node>—</node></string>
     <string name="cam_strings_restricted_setting_photo_resolution_or_scene_txt">This setting is not supported for the current resolution or scene. To configure this setting, change resolution or scene selection.</string>
     <string name="cam_strings_restricted_setting_photo_resolution_txt">This setting does not support the current still image size. To configure this setting, change the still image size.</string>
     <string name="cam_strings_restricted_setting_scene_txt">This setting is not supported for the current scene. To configure this setting, change scene selection.</string>
@@ -577,7 +588,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s requires the following permission(s)</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s permission</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">The app requires the following permission(s) to perform this action.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">To grant permissions, go to App info &gt; Permissions.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">To grant permissions, go to App info > Permissions.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Could not continue</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">To take photos and videos</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">To retrieve location</string>
@@ -624,11 +635,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Saved to internal storage</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">MOVE</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">The app requires the following permission(s) to perform this action.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">To use an SD card, the camera needs permissions to access the SD card.\nChange the data storage to SD card again, or allow the camera to access the SD card on the next screen.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"To use an SD card, the camera needs permissions to access the SD card.
+Change the data storage to SD card again, or allow the camera to access the SD card on the next screen."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD card unavailable</string>
-    <string name="cam_strings_sd_permission_info_2_txt">A new SD card requiring permissions has been detected.\n\nTo use the SD card as data storage, please select the SD card or DCIM directory on the next screen.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">The SD card or DCIM directory was not selected. The SD card cannot be used.\n\nTo grant permissions, start by changing the save location to the SD card, or select the appropriate directory on the next screen.</string>
-    <string name="cam_strings_sd_permission_info_txt">New SD card detected which requires permissions.\nInternal device storage will therefore be used as the default data storage.\n\nTo use SD card as data storage, please go to camera settings and change the storage option to SD card.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"A new SD card requiring permissions has been detected.
+
+To use the SD card as data storage, please select the SD card or DCIM directory on the next screen."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"The SD card or DCIM directory was not selected. The SD card cannot be used.
+
+To grant permissions, start by changing the save location to the SD card, or select the appropriate directory on the next screen."</string>
+    <string name="cam_strings_sd_permission_info_txt">"New SD card detected which requires permissions.
+Internal device storage will therefore be used as the default data storage.
+
+To use SD card as data storage, please go to camera settings and change the storage option to SD card."</string>
     <string name="cam_strings_sd_permission_rationale_txt">To save photos and videos on SD card</string>
     <string name="cam_strings_select_picture_txt">Select photo</string>
     <string name="cam_strings_self_timer_05_txt">0.5 sec.</string>
@@ -652,12 +671,16 @@
     <string name="cam_strings_shutterless">Shutterless</string>
     <string name="cam_strings_side_touch_not_supported_txt">Side sense is not supported on this screen</string>
     <string name="cam_strings_side_touch_on_title_txt">Side sense</string>
-    <string name="cam_strings_side_touch_on_txt">To use this function, go to Settings &gt; Display and turn on Side sense. Enable now?</string>
+    <string name="cam_strings_side_touch_on_txt">To use this function, go to Settings > Display and turn on Side sense. Enable now?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Side sense</string>
-    <string name="cam_strings_side_touch_tutorial_txt">You can take a photo or video by simply double-tapping the sensor on the side of the screen instead of the shutter button. You can also zoom in or out by sliding your finger along this side sensor.\nBoth photo and video mode support this function. You can turn this off from Side sense in camera settings.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">You can take a photo or video by simply double-tapping the sensor on the side of the screen in portrait view instead of the shutter button. You can also zoom in or out by sliding your finger along this side sensor.\nBoth photo and video mode support this function. You can turn this off from Side sense in camera settings.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">You can take a photo or video by simply double-tapping the sensor on the side of the screen in portrait view instead of the shutter button.\nBoth photo and video mode support this function. You can turn this off from Side sense in camera settings.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">You can take a photo or video by simply double-tapping the sensor on the side of the screen instead of the shutter button.\nBoth photo and video mode support this function. You can turn this off from Side sense in camera settings.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"You can take a photo or video by simply double-tapping the sensor on the side of the screen instead of the shutter button. You can also zoom in or out by sliding your finger along this side sensor.
+Both photo and video mode support this function. You can turn this off from Side sense in camera settings."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"You can take a photo or video by simply double-tapping the sensor on the side of the screen in portrait view instead of the shutter button. You can also zoom in or out by sliding your finger along this side sensor.
+Both photo and video mode support this function. You can turn this off from Side sense in camera settings."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"You can take a photo or video by simply double-tapping the sensor on the side of the screen in portrait view instead of the shutter button.
+Both photo and video mode support this function. You can turn this off from Side sense in camera settings."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"You can take a photo or video by simply double-tapping the sensor on the side of the screen instead of the shutter button.
+Both photo and video mode support this function. You can turn this off from Side sense in camera settings."</string>
     <string name="cam_strings_side_touch_txt">Side sense</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Recording style and screen resolution can be changed in Camera settings</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Super slow (one-shot)</string>
@@ -665,7 +688,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Super slow motion</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">You can change the fps and recording style for slow motion</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">More options</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Instantly record a precious moment in %1$s fps slow motion by tapping the button in the center of the screen.\nRecording in bright conditions will help you create a better video.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Instantly record a precious moment in %1$s fps slow motion by tapping the button in the center of the screen.
+Recording in bright conditions will help you create a better video."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">You can record a right moment with %1$s fps by tapping the center button</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Instantly record a precious moment in %1$s fps slow motion by tapping the button in the center of the screen</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Super slow motion (one-shot)</string>
@@ -676,9 +700,11 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Slow motion</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">How to record</string>
     <string name="cam_strings_slow_motion_standard_txt">Slow motion</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Make an impressive video by showing a precious moment in slow motion.\nRecording in bright conditions will help you create a better video.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Make an impressive video by showing a precious moment in slow motion.
+Recording in bright conditions will help you create a better video."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">You can record video at different speeds by switching to %1$s fps</string>
-    <string name="cam_strings_slow_motion_super_hint_2_txt">Tap the button in the center\nat the right moment</string>
+    <string name="cam_strings_slow_motion_super_hint_2_txt">"Tap the button in the center
+at the right moment"</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Slow motion recorded</string>
     <string name="cam_strings_slow_motion_super_tutorial_1_txt">Make an impressive video by showing a precious moment in slow motion</string>
     <string name="cam_strings_slow_motion_super_tutorial_2_txt">Start video recording by tapping the record button</string>
@@ -707,12 +733,12 @@
     <string name="cam_strings_sw_licence_title_txt">Software Licenses</string>
     <string name="cam_strings_take_photo_txt">Take photo</string>
     <string name="cam_strings_term_of_use_accept_txt">Accept</string>
-    <string name="cam_strings_term_of_use_consent_txt">I consent to the Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Terms of Use&lt;/a&gt;.</string>
+    <string name="cam_strings_term_of_use_consent_txt">I consent to the Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Terms of Use&lt;/a>.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Your use of this service may be subject to mobile data charges depending on your data plan.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile will collect your hashed Android ID unique device identifier, location-based data and timestamp in order to provide you with appropriate results as part of the service and for service improvements.</string>
     <string name="cam_strings_term_of_use_decline_txt">Decline</string>
     <string name="cam_strings_term_of_use_title_txt">Terms and Conditions</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Terms of Use&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Terms of Use&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Deselect photos</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Could not save</string>
     <string name="cam_strings_timeshift_save_complete_txt">Saved</string>
@@ -741,8 +767,10 @@
     <string name="cam_strings_video_codec_for_4k_txt">Recording file type</string>
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">For stable 4K video recording, you must not change this setting unless you use a high-speed SD card (UHS Speed Class 1 or higher, or Speed Class 10 recommended).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">For stable Timeshift video recording, you must not change this setting unless you use a high-speed SD card (UHS Speed Class 1 or higher, or Speed Class 10 recommended). Change anyway?</string>
-    <string name="cam_strings_video_explanatory_slowmotion_setting_txt">For stable slow motion video recording, don\'t change this setting unless you use a high-speed SD card (UHS Speed Class 1 or higher, or Speed Class 10 recommended).</string>
-    <string name="cam_strings_video_explanatory_txt">For stable video recording, we recommend you change data storage to Internal storage. Would you like to change now?\n\nIf you continue to use SD card as data storage, be sure to use a high-speed SD card (UHS Speed Class 1 or higher, or Speed Class 10 recommended).</string>
+    <string name="cam_strings_video_explanatory_slowmotion_setting_txt">"For stable slow motion video recording, don't change this setting unless you use a high-speed SD card (UHS Speed Class 1 or higher, or Speed Class 10 recommended)."</string>
+    <string name="cam_strings_video_explanatory_txt">"For stable video recording, we recommend you change data storage to Internal storage. Would you like to change now?
+
+If you continue to use SD card as data storage, be sure to use a high-speed SD card (UHS Speed Class 1 or higher, or Speed Class 10 recommended)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Dual camera</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">You can record beautiful videos with low noise by using dual camera, even at night or in a low-lit room. Camera automatically switches between single camera and dual camera based on the scenes to record with Ultra-high sensitivity.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Video recording with dual camera</string>
@@ -793,16 +821,16 @@
     <string name="cam_strings_zoom_not_supported_txt">Zoom currently not available</string>
     <string name="capturing_mode_selector_bidicheck_string">@string/cam_strings_application_name_txt</string>
     <string name="common_android_wear_notification_needs_update_text">%1$s requires an update to the Android Wear app.</string>
-    <string name="common_android_wear_update_text">%1$s won\'t run unless you update the Android Wear app.</string>
+    <string name="common_android_wear_update_text">"%1$s won't run unless you update the Android Wear app."</string>
     <string name="common_android_wear_update_title">Update Android Wear</string>
     <string name="common_google_play_services_api_unavailable_text">%1$s requires one or more Google Play services that are not currently available. Please contact the developer for assistance.</string>
     <string name="common_google_play_services_enable_button">Enable Google Play services</string>
-    <string name="common_google_play_services_enable_text">%1$s won\'t work unless you enable Google Play services.</string>
+    <string name="common_google_play_services_enable_text">"%1$s won't work unless you enable Google Play services."</string>
     <string name="common_google_play_services_enable_title">Enable Google Play services</string>
     <string name="common_google_play_services_error_notification_requested_by_msg">Requested by %1$s</string>
     <string name="common_google_play_services_install_button">Get Google Play services</string>
-    <string name="common_google_play_services_install_text_phone">%1$s won\'t run without Google Play services, which are missing from your phone.</string>
-    <string name="common_google_play_services_install_text_tablet">%1$s won\'t run without Google Play services, which are missing from your tablet.</string>
+    <string name="common_google_play_services_install_text_phone">"%1$s won't run without Google Play services, which are missing from your phone."</string>
+    <string name="common_google_play_services_install_text_tablet">"%1$s won't run without Google Play services, which are missing from your tablet."</string>
     <string name="common_google_play_services_install_title">Get Google Play services</string>
     <string name="common_google_play_services_invalid_account_text">The specified account does not exist on this device. Please choose a different account.</string>
     <string name="common_google_play_services_invalid_account_title">Invalid Account</string>
@@ -817,9 +845,9 @@
     <string name="common_google_play_services_unsupported_text">%1$s relies on Google Play services, which is not supported by your device. Contact the manufacturer for assistance.</string>
     <string name="common_google_play_services_unsupported_title">Google Play services</string>
     <string name="common_google_play_services_update_button">Update</string>
-    <string name="common_google_play_services_update_text">%1$s won\'t run unless you update Google Play services.</string>
+    <string name="common_google_play_services_update_text">"%1$s won't run unless you update Google Play services."</string>
     <string name="common_google_play_services_update_title">Update Google Play services</string>
-    <string name="common_google_play_services_updating_text">%1$s won\'t run without Google Play services, which are currently updating.</string>
+    <string name="common_google_play_services_updating_text">"%1$s won't run without Google Play services, which are currently updating."</string>
     <string name="common_google_play_services_updating_title">Google Play services are updating</string>
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>

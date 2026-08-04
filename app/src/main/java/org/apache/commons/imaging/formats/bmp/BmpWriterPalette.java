@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.bmp;
 
+import android.support.v4.view.ViewCompat;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -53,7 +54,7 @@ class BmpWriterPalette implements BmpWriter {
         for (int i4 = height - 1; i4 >= 0; i4--) {
             int i5 = i;
             for (int i6 = 0; i6 < width; i6++) {
-                int paletteIndex = this.palette.getPaletteIndex(bufferedImage.getRGB(i6, i4) & 16777215);
+                int paletteIndex = this.palette.getPaletteIndex(bufferedImage.getRGB(i6, i4) & ViewCompat.MEASURED_SIZE_MASK);
                 if (this.bitsPerSample == 8) {
                     byteArrayOutputStream.write(255 & paletteIndex);
                     i3++;

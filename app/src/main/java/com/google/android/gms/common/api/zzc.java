@@ -1,10 +1,11 @@
 package com.google.android.gms.common.api;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import android.os.Parcelable;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzc implements Parcelable$Creator<Scope> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzc implements Parcelable.Creator<Scope> {
     static void zza(Scope scope, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, scope.mVersionCode);
@@ -12,17 +13,9 @@ public class zzc implements Parcelable$Creator<Scope> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ Scope createFromParcel(Parcel parcel) {
-        return zzad(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ Scope[] newArray(int i) {
-        return zzbl(i);
-    }
-
-    public Scope zzad(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzad, reason: merged with bridge method [inline-methods] */
+    public Scope createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         String strZzp = null;
@@ -43,10 +36,12 @@ public class zzc implements Parcelable$Creator<Scope> {
         if (parcel.dataPosition() == iZzap) {
             return new Scope(iZzg, strZzp);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public Scope[] zzbl(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbl, reason: merged with bridge method [inline-methods] */
+    public Scope[] newArray(int i) {
         return new Scope[i];
     }
 }

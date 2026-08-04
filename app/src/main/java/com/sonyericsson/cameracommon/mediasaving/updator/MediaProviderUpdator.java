@@ -7,19 +7,22 @@ import android.database.Cursor;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.SystemClock;
-import android.provider.MediaStore$Images$Media;
-import android.provider.MediaStore$Video$Media;
+import android.provider.MediaStore;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.cameracommon.contentsview.PhotoStackQueryHelper;
 import com.sonyericsson.cameracommon.mediasaving.MediaSavingResult;
-import com.sonyericsson.cameracommon.storage.Storage$StorageType;
+import com.sonyericsson.cameracommon.storage.SavingRequest;
+import com.sonyericsson.cameracommon.storage.Storage;
 import com.sonyericsson.cameracommon.storage.StorageUtil;
 import com.sonyericsson.cameracommon.storage.VideoSavingRequest;
+import com.sonymobile.media.SomcMediaStore;
 import java.io.File;
 import java.util.Locale;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 public class MediaProviderUpdator {
-    private static final Uri EXTENDED_FILES_CONTENT_URI = Uri.parse("content://media/external/file");
+    private static final Uri EXTENDED_FILES_CONTENT_URI = SomcMediaStore.ExtendedFiles.getContentUri("external");
     public static final String TAG = "MediaProviderUpdator";
     private static final int TIME_INTERVAL_QUERY_IN_MILLI = 200;
     private static final int TIME_OUT_QUERY_IN_MILLI = 1000;
@@ -37,12 +40,55 @@ public class MediaProviderUpdator {
             CamLog.d("scanFile() is called. Path is : " + str);
         }
         if (str != null) {
-            MediaProviderUpdator$OnScanCompletedListener mediaProviderUpdator$OnScanCompletedListener = new MediaProviderUpdator$OnScanCompletedListener(str);
-            MediaScannerConnection.scanFile(this.mContext, new String[]{str}, null, mediaProviderUpdator$OnScanCompletedListener);
-            return mediaProviderUpdator$OnScanCompletedListener.getScanResult();
+            OnScanCompletedListener onScanCompletedListener = new OnScanCompletedListener(str);
+            MediaScannerConnection.scanFile(this.mContext, new String[]{str}, null, onScanCompletedListener);
+            return onScanCompletedListener.getScanResult();
         }
         CamLog.e("Illegal argument. scanFile is called with null.");
         return null;
+    }
+
+    private static class OnScanCompletedListener implements MediaScannerConnection.OnScanCompletedListener {
+        private final CountDownLatch mLatch = new CountDownLatch(1);
+        private Uri mScanResult;
+
+        public OnScanCompletedListener(String str) {
+        }
+
+        @Override // android.media.MediaScannerConnection.OnScanCompletedListener
+        public void onScanCompleted(String str, Uri uri) {
+            if (CamLog.VERBOSE) {
+                CamLog.d("onScanCompleted E");
+            }
+            if (CamLog.VERBOSE) {
+                CamLog.d("  uri:" + uri);
+            }
+            if (CamLog.VERBOSE) {
+                CamLog.d("  path:" + str);
+            }
+            this.mScanResult = uri;
+            this.mLatch.countDown();
+            if (CamLog.VERBOSE) {
+                CamLog.d("onScanCompleted X");
+            }
+        }
+
+        public Uri getScanResult() {
+            try {
+                if (CamLog.VERBOSE) {
+                    CamLog.d("getScanResult wait 30 seconds...");
+                }
+                if (!this.mLatch.await(30000L, TimeUnit.MILLISECONDS)) {
+                    CamLog.e("getScanResult is timeout.");
+                }
+            } catch (InterruptedException e) {
+                CamLog.e("scan video file failed.", e);
+            }
+            if (CamLog.VERBOSE) {
+                CamLog.d("getScanResult done. " + this.mScanResult);
+            }
+            return this.mScanResult;
+        }
     }
 
     private Uri insertVideoContentManager(VideoSavingRequest videoSavingRequest) {
@@ -60,15 +106,15 @@ public class MediaProviderUpdator {
     public Uri insertVideoAndSendIntent(VideoSavingRequest videoSavingRequest) {
         MediaSavingResult mediaSavingResult = MediaSavingResult.FAIL;
         Uri uriQueryVideoFromDatabase = Uri.EMPTY;
-        String filePath = videoSavingRequest.getFilePath();
+        SavingRequest savingRequest = videoSavingRequest;
+        String filePath = savingRequest.getFilePath();
         if (filePath != null) {
             File file = new File(filePath);
             if (!file.exists() || !file.canRead()) {
                 return null;
             }
-            if (StorageUtil.getStorageTypeFromPath(filePath, this.mContext) != Storage$StorageType.EXTERNAL_CARD || (uriQueryVideoFromDatabase = queryVideoFromDatabase(filePath, this.mContext)) == null) {
-                Uri uriInsertVideoContentManager = insertVideoContentManager(videoSavingRequest);
-                uriQueryVideoFromDatabase = uriInsertVideoContentManager;
+            if (StorageUtil.getStorageTypeFromPath(filePath, this.mContext) != Storage.StorageType.EXTERNAL_CARD || (uriQueryVideoFromDatabase = queryVideoFromDatabase(filePath, this.mContext)) == null) {
+                uriQueryVideoFromDatabase = insertVideoContentManager(videoSavingRequest);
             }
             if (uriQueryVideoFromDatabase != null) {
                 mediaSavingResult = MediaSavingResult.SUCCESS;
@@ -98,30 +144,17 @@ public class MediaProviderUpdator {
             return;
         }
         String string = uri.toString();
-        if (string.contains(MediaStore$Images$Media.getContentUri("external_primary").toString())) {
+        if (string.contains(MediaStore.Images.Media.getContentUri(VOLUME_EXTERNAL_PRIMARY).toString())) {
             context.sendBroadcast(new Intent("android.hardware.action.NEW_PICTURE", uri));
             return;
         }
-        if (string.contains(MediaStore$Video$Media.getContentUri("external_primary").toString())) {
+        if (string.contains(MediaStore.Video.Media.getContentUri(VOLUME_EXTERNAL_PRIMARY).toString())) {
             context.sendBroadcast(new Intent("android.hardware.action.NEW_VIDEO", uri));
         } else if (CamLog.DEBUG) {
             CamLog.w("Invalid URI: " + uri);
         }
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:20:0x008f, code lost:
-    
-        r12 = r11.getString(r11.getColumnIndex("_id"));
-        r12 = android.net.Uri.withAppendedPath(android.net.Uri.parse("content://media/external/video/media"), "" + r12);
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:21:0x00b4, code lost:
-    
-        r11.close();
-        r3 = r12;
-     */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
     public static Uri queryVideoFromDatabase(String str, Context context) {
         if (CamLog.DEBUG) {
             CamLog.d("queryVideoFromDatabase: start: " + str);
@@ -138,29 +171,31 @@ public class MediaProviderUpdator {
             crQueryParameter.projection = new String[]{"_id", "_data"};
             crQueryParameter.sortOrder = String.format(Locale.US, "%s DESC, %s DESC", "datetaken", "_id");
             crQueryParameter.where = String.format(Locale.US, "%s like '%s'", "_data", str);
-            long jCurrentTimeMillis = System.currentTimeMillis();
-            while (true) {
-                if (System.currentTimeMillis() - jCurrentTimeMillis >= 1000) {
-                    break;
-                }
-                Cursor cursorCrQuery = PhotoStackQueryHelper.crQuery(contentResolver, EXTENDED_FILES_CONTENT_URI, crQueryParameter);
-                if (cursorCrQuery != null) {
+            long currentTimeMillis = System.currentTimeMillis();
+            while (System.currentTimeMillis() - currentTimeMillis < TIME_OUT_QUERY_IN_MILLI) {
+                Cursor cursor = PhotoStackQueryHelper.crQuery(contentResolver, EXTENDED_FILES_CONTENT_URI, crQueryParameter);
+                if (cursor != null) {
                     try {
-                        if (cursorCrQuery.moveToFirst()) {
-                            break;
+                        if (cursor.moveToFirst()) {
+                            String string = cursor.getString(cursor.getColumnIndex("_id"));
+                            uri = Uri.withAppendedPath(Uri.parse("content://media/external/video/media"), "" + string);
                         }
                     } finally {
-                        cursorCrQuery.close();
+                        cursor.close();
+                    }
+                    if (uri != null) {
+                        mediaSavingResult = MediaSavingResult.SUCCESS;
+                        break;
                     }
                 }
-                SystemClock.sleep(200L);
+                SystemClock.sleep(TIME_INTERVAL_QUERY_IN_MILLI);
                 if (CamLog.DEBUG) {
                     CamLog.e("Failed to query video:" + System.currentTimeMillis());
                 }
             }
-            if (uri != null) {
-                mediaSavingResult = MediaSavingResult.SUCCESS;
-            }
+        }
+        if (uri != null) {
+            mediaSavingResult = MediaSavingResult.SUCCESS;
         }
         if (mediaSavingResult != MediaSavingResult.SUCCESS && CamLog.DEBUG) {
             CamLog.e("Failed to query video:" + mediaSavingResult);
@@ -171,19 +206,6 @@ public class MediaProviderUpdator {
         return uri;
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:20:0x008f, code lost:
-    
-        r12 = r11.getString(r11.getColumnIndex("_id"));
-        r12 = android.net.Uri.withAppendedPath(android.net.Uri.parse("content://media/external/images/media"), "" + r12);
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:21:0x00b4, code lost:
-    
-        r11.close();
-        r3 = r12;
-     */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
     public static Uri queryPhotoFromDatabase(String str, Context context) {
         if (CamLog.DEBUG) {
             CamLog.d("queryPhotoFromDatabase: start: " + str);
@@ -200,29 +222,31 @@ public class MediaProviderUpdator {
             crQueryParameter.projection = new String[]{"_id", "_data"};
             crQueryParameter.sortOrder = String.format(Locale.US, "%s DESC, %s DESC", "datetaken", "_id");
             crQueryParameter.where = String.format(Locale.US, "%s like '%s'", "_data", str);
-            long jCurrentTimeMillis = System.currentTimeMillis();
-            while (true) {
-                if (System.currentTimeMillis() - jCurrentTimeMillis >= 1000) {
-                    break;
-                }
-                Cursor cursorCrQuery = PhotoStackQueryHelper.crQuery(contentResolver, EXTENDED_FILES_CONTENT_URI, crQueryParameter);
-                if (cursorCrQuery != null) {
+            long currentTimeMillis = System.currentTimeMillis();
+            while (System.currentTimeMillis() - currentTimeMillis < TIME_OUT_QUERY_IN_MILLI) {
+                Cursor cursor = PhotoStackQueryHelper.crQuery(contentResolver, EXTENDED_FILES_CONTENT_URI, crQueryParameter);
+                if (cursor != null) {
                     try {
-                        if (cursorCrQuery.moveToFirst()) {
-                            break;
+                        if (cursor.moveToFirst()) {
+                            String string = cursor.getString(cursor.getColumnIndex("_id"));
+                            uri = Uri.withAppendedPath(Uri.parse("content://media/external/images/media"), "" + string);
                         }
                     } finally {
-                        cursorCrQuery.close();
+                        cursor.close();
+                    }
+                    if (uri != null) {
+                        mediaSavingResult = MediaSavingResult.SUCCESS;
+                        break;
                     }
                 }
-                SystemClock.sleep(200L);
+                SystemClock.sleep(TIME_INTERVAL_QUERY_IN_MILLI);
                 if (CamLog.DEBUG) {
                     CamLog.e("Failed to query:" + System.currentTimeMillis());
                 }
             }
-            if (uri != null) {
-                mediaSavingResult = MediaSavingResult.SUCCESS;
-            }
+        }
+        if (uri != null) {
+            mediaSavingResult = MediaSavingResult.SUCCESS;
         }
         if (mediaSavingResult != MediaSavingResult.SUCCESS && CamLog.DEBUG) {
             CamLog.e("Failed to query photo:" + mediaSavingResult);

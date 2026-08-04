@@ -1,10 +1,12 @@
 package com.sonyericsson.android.camera.view.hint;
 
+import com.sonyericsson.android.camera.R;
+
 public class HintTextSuperSlowMotionVideoRecording extends HintTextSlowMotion {
     private final boolean mIsDone;
 
     public HintTextSuperSlowMotionVideoRecording(boolean z) {
-        super(!z ? 2131690151 : 2131690152);
+        super(!z ? R.string.cam_strings_slow_motion_super_hint_2_txt : R.string.cam_strings_slow_motion_super_hint_3_txt);
         this.mIsDone = z;
     }
 

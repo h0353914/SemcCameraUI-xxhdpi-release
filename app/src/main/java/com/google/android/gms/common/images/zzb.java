@@ -3,9 +3,10 @@ package com.google.android.gms.common.images;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzb implements Parcelable$Creator<WebImage> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzb implements Parcelable.Creator<WebImage> {
     static void zza(WebImage webImage, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, webImage.getVersionCode());
@@ -15,17 +16,9 @@ public class zzb implements Parcelable$Creator<WebImage> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ WebImage createFromParcel(Parcel parcel) {
-        return zzah(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ WebImage[] newArray(int i) {
-        return zzbz(i);
-    }
-
-    public WebImage zzah(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzah, reason: merged with bridge method [inline-methods] */
+    public WebImage createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         Uri uri = null;
@@ -54,10 +47,12 @@ public class zzb implements Parcelable$Creator<WebImage> {
         if (parcel.dataPosition() == iZzap) {
             return new WebImage(iZzg, uri, iZzg2, iZzg3);
         }
-        throw new com.google.android.gms.common.internal.safeparcel.zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public WebImage[] zzbz(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbz, reason: merged with bridge method [inline-methods] */
+    public WebImage[] newArray(int i) {
         return new WebImage[i];
     }
 }

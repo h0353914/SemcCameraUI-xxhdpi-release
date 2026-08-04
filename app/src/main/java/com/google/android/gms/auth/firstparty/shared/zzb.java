@@ -2,10 +2,10 @@ package com.google.android.gms.auth.firstparty.shared;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzb implements Parcelable$Creator<FACLData> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzb implements Parcelable.Creator<FACLData> {
     static void zza(FACLData fACLData, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, fACLData.version);
@@ -16,17 +16,9 @@ public class zzb implements Parcelable$Creator<FACLData> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ FACLData createFromParcel(Parcel parcel) {
-        return zzU(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ FACLData[] newArray(int i) {
-        return zzaL(i);
-    }
-
-    public FACLData zzU(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzU, reason: merged with bridge method [inline-methods] */
+    public FACLData createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         boolean zZzc = false;
@@ -59,10 +51,12 @@ public class zzb implements Parcelable$Creator<FACLData> {
         if (parcel.dataPosition() == iZzap) {
             return new FACLData(iZzg, fACLConfig, strZzp, zZzc, strZzp2);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public FACLData[] zzaL(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaL, reason: merged with bridge method [inline-methods] */
+    public FACLData[] newArray(int i) {
         return new FACLData[i];
     }
 }

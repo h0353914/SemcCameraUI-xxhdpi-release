@@ -2,6 +2,7 @@ package com.google.android.gms.common.data;
 
 import java.util.NoSuchElementException;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzg<T> extends zzb<T> {
     private T zzadF;
 

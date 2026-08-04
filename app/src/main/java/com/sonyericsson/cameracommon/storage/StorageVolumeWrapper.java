@@ -2,6 +2,7 @@ package com.sonyericsson.cameracommon.storage;
 
 import android.os.storage.StorageVolume;
 import java.lang.reflect.InvocationTargetException;
+import kotlin.jvm.internal.LongCompanionObject;
 
 public class StorageVolumeWrapper {
     private StorageVolume mStorageVolume;
@@ -14,7 +15,7 @@ public class StorageVolumeWrapper {
         try {
             return ((Long) this.mStorageVolume.getClass().getDeclaredMethod("getMaxFileSize", new Class[0]).invoke(this.mStorageVolume, new Object[0])).longValue();
         } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException unused) {
-            return Long.MAX_VALUE;
+            return LongCompanionObject.MAX_VALUE;
         }
     }
 

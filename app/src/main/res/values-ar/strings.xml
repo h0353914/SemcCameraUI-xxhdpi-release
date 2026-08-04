@@ -31,9 +31,14 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">تعذر إكمال الالتقاط. يرجى التحريك بشكل أكثر بطئًا.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">تعذر إكمال الالتقاط. يرجى التحريك بشكل أسرع.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">التقاط الصور البانورامية عن طريق سحب الكاميرا</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">يتم إنشاء الملفات التالية:\n- الصورة متعددة الزوايا\n - الصورة ثلاثية الأبعاد ملاحظة: تشتمل هذه الملفات على منطقة رمادية.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">يتم إنشاء الملفات التالية:\n- الصورة متعددة الزوايا\n - الصورة ثلاثية الأبعاد</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">جارٍ المعالجة...\nتشتمل هذه الصورة على منطقة رمادية</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"يتم إنشاء الملفات التالية:
+- الصورة متعددة الزوايا
+ - الصورة ثلاثية الأبعاد ملاحظة: تشتمل هذه الملفات على منطقة رمادية."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"يتم إنشاء الملفات التالية:
+- الصورة متعددة الزوايا
+ - الصورة ثلاثية الأبعاد"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"جارٍ المعالجة...
+تشتمل هذه الصورة على منطقة رمادية"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">يتم حفظ الصورة</string>
     <string name="cam_3d_strings_dialog_processing_txt">جارٍ المعالجة...</string>
     <string name="cam_3d_strings_error_application_busy_txt">يرجى الانتظار بضع ثوان لتشغيل كاميرا 3D</string>
@@ -360,7 +365,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">لضمان أن مظهر بشرتك ساطع وناعم. يعمل التأثير في التطبيقات التي تستخدم الكاميرا الأمامية. يمكن تطبيق هذا على الصور ومقاطع الفيديو. ويمكنك أيضًا ضبط المستوى.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">ضبط المستوى</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">جلد ناعم</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">لا يمكن بدء التطبيق.\nتأكد من تثبيت أحدث إصدار من %1$s وتمكينه على جهازك.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"لا يمكن بدء التطبيق.
+تأكد من تثبيت أحدث إصدار من %1$s وتمكينه على جهازك."</string>
     <string name="cam_strings_gridline_txt">خطوط الشبكة</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">حرّك راحة يدك باتجاه الكاميرا. سيتم تشغيل المؤقت الذاتي عند التعرف على راحة يدك. لتسهيل التعرف عليها، مدّد أصابعك لأعلى.</string>
     <string name="cam_strings_hand_shutter_hint_txt">حرّك راحة يدك باتجاه الكاميرا</string>
@@ -404,7 +410,8 @@
     <string name="cam_strings_more_common_setting_title_txt">الإعدادات الشائعة</string>
     <string name="cam_strings_more_txt">المزيد</string>
     <string name="cam_strings_multi_window_txt">اسحب منتصف شريط التقسيم لتبديل %1$s إلى وضع الشاشة الكاملة لاستخدامه</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">يوجد جهاز آخر متصل الآن.\nهل تريد مشاركة الصورة عبر مصوّب التصوير مع الجهاز؟</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"يوجد جهاز آخر متصل الآن.
+هل تريد مشاركة الصورة عبر مصوّب التصوير مع الجهاز؟"</string>
     <string name="cam_strings_multicam_add_device_txt">إضافة جهاز</string>
     <string name="cam_strings_multicam_add_more_txt">إضافة المزيد</string>
     <string name="cam_strings_multicam_apply_txt">تم</string>
@@ -436,16 +443,19 @@
     <string name="cam_strings_photometry_txt">قياس</string>
     <string name="cam_strings_predictive_capture_feedback_txt">متوقع.</string>
     <string name="cam_strings_predictive_capture_txt">لقطة متوقعة</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">تم إطلاق الكاميرا تلقائيًا باكتشاف حركة رفعك للهاتف في وضع أفقي وتصويبه باتجاه جسم.\nيمكنك تحديد طريقتك المفضلة لاستخدام هذه الميزة من بدء التشغيل الذكي في إعدادات الكاميرا.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"تم إطلاق الكاميرا تلقائيًا باكتشاف حركة رفعك للهاتف في وضع أفقي وتصويبه باتجاه جسم.
+يمكنك تحديد طريقتك المفضلة لاستخدام هذه الميزة من بدء التشغيل الذكي في إعدادات الكاميرا."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">المس داخل الدائرة للالتقاط</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">المس الشاشة للالتقاط</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">انقر داخل الدائرة للعرض بملء الشاشة</string>
     <string name="cam_strings_predictive_launch_guide_txt">المس داخل الدائرة لتشغيل الكاميرا</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">المس للتشغيل والالتقاط</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">المس للتشغيل</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">يمكنك بدء تشغيل الكاميرا بسرعة. ارفع الجهاز بينما يكون في وضعية أفقية ووجه الكاميرا نحو الهدف. سيشغل الجهاز الكاميرا تلقائيًا.\nيمكنك تحديد طريقتك المفضلة لاستخدام هذه الميزة من بدء التشغيل الذكي في إعدادات الكاميرا.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"يمكنك بدء تشغيل الكاميرا بسرعة. ارفع الجهاز بينما يكون في وضعية أفقية ووجه الكاميرا نحو الهدف. سيشغل الجهاز الكاميرا تلقائيًا.
+يمكنك تحديد طريقتك المفضلة لاستخدام هذه الميزة من بدء التشغيل الذكي في إعدادات الكاميرا."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">بدء التشغيل الذكي</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">يمكنك بدء تشغيل الكاميرا بسرعة. قم بأرجحة الجهاز في وضعية أفقة وتوجيه الكاميرا نحو الهدف. سيشغل الجهاز الكاميرا تلقائيًا.\nيمكنك إيقاف تشغيل هذه الميزة من \"بدء التشغيل الذكي\" في إعدادات الكاميرا.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"يمكنك بدء تشغيل الكاميرا بسرعة. قم بأرجحة الجهاز في وضعية أفقة وتوجيه الكاميرا نحو الهدف. سيشغل الجهاز الكاميرا تلقائيًا.
+يمكنك إيقاف تشغيل هذه الميزة من \"بدء التشغيل الذكي\" في إعدادات الكاميرا."</string>
     <string name="cam_strings_predictive_launch_txt">بدء التشغيل الذكي</string>
     <string name="cam_strings_preview_always_txt">تشغيل</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 ثوان</string>
@@ -478,7 +488,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">يتطلب %1$s الإذن (الأذونات) التالي</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">إذن %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">يتطلب التطبيق الإذن (الأذونات) التالي لتنفيذ هذا الإجراء.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">لمنح الأذونات، انتقل إلى معلومات التطبيق &gt; الأذونات.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">لمنح الأذونات، انتقل إلى معلومات التطبيق > الأذونات.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">تعذرت المتابعة</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">لالتقاط صور ومقاطع فيديو</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">لاسترداد الموقع</string>
@@ -525,11 +535,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">تم الحفظ على وحدة التخزين الداخلية</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">نقل</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">يتطلب التطبيق الإذن (الأذونات) التالي لتنفيذ هذا الإجراء.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">لاستخدام بطاقة SD، تتطلب الكاميرا أذونات للوصول إلى بطاقة SD.\nغيِّر وحدة التخزين إلى بطاقة SD مرة أخرى، أو اسمح للكاميرا بالوصول إلى بطاقة SD من الشاشة التالية.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"لاستخدام بطاقة SD، تتطلب الكاميرا أذونات للوصول إلى بطاقة SD.
+غيِّر وحدة التخزين إلى بطاقة SD مرة أخرى، أو اسمح للكاميرا بالوصول إلى بطاقة SD من الشاشة التالية."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">بطاقة SD غير متوفرة</string>
-    <string name="cam_strings_sd_permission_info_2_txt">تم اكتشاف بطاقة SD جديدة تتطلب أذونات.\n\nلاستخدام بطاقة SD كمساحة تخزين بيانات، الرجاء تحديد بطاقة SD أو دليل DCIM على الشاشة التالية.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">لم يتم تحديد بطاقة SD أو دليل DCIM. لا يمكن استخدام بطاقة SD.\n\nلمنح الأذونات، ابدأ بتغيير موقع الحفظ إلى بطاقة SD أو حدد الدليل المناسب على الشاشة التالية.</string>
-    <string name="cam_strings_sd_permission_info_txt">تم اكتشاف بطاقة SD جديدة تتطلب أذونات.\nولذلك، سيتم استخدام وحدة تخزين الجهاز الداخلية كوحدة تخزين افتراضية للبيانات.\n\nلاستخدام بطاقة SD كوحدة تخزين بيانات، يرجى الانتقال إلى إعدادات الكاميرا وتبديل خيار التخزين إلى بطاقة SD.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"تم اكتشاف بطاقة SD جديدة تتطلب أذونات.
+
+لاستخدام بطاقة SD كمساحة تخزين بيانات، الرجاء تحديد بطاقة SD أو دليل DCIM على الشاشة التالية."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"لم يتم تحديد بطاقة SD أو دليل DCIM. لا يمكن استخدام بطاقة SD.
+
+لمنح الأذونات، ابدأ بتغيير موقع الحفظ إلى بطاقة SD أو حدد الدليل المناسب على الشاشة التالية."</string>
+    <string name="cam_strings_sd_permission_info_txt">"تم اكتشاف بطاقة SD جديدة تتطلب أذونات.
+ولذلك، سيتم استخدام وحدة تخزين الجهاز الداخلية كوحدة تخزين افتراضية للبيانات.
+
+لاستخدام بطاقة SD كوحدة تخزين بيانات، يرجى الانتقال إلى إعدادات الكاميرا وتبديل خيار التخزين إلى بطاقة SD."</string>
     <string name="cam_strings_sd_permission_rationale_txt">لحفظ الصور ومقاطع الفيديو في بطاقة SD</string>
     <string name="cam_strings_select_picture_txt">تحديد صورة</string>
     <string name="cam_strings_self_timer_05_txt">0.5 ثانية</string>
@@ -552,12 +570,16 @@
     <string name="cam_strings_shutter_trigger_txt">التقاط تلقائي</string>
     <string name="cam_strings_side_touch_not_supported_txt">لا تدعم هذه الشاشة التطبيق \"استشعار جانبي\"</string>
     <string name="cam_strings_side_touch_on_title_txt">استشعار جانبي</string>
-    <string name="cam_strings_side_touch_on_txt">لاستخدام هذه الوظيفة، انتقل إلى \"الإعدادات\" &gt; \"شاشة العرض وقم بتشغيل \"استشعار جانبي\". تمكين الآن؟</string>
+    <string name="cam_strings_side_touch_on_txt">لاستخدام هذه الوظيفة، انتقل إلى \"الإعدادات\" > \"شاشة العرض وقم بتشغيل \"استشعار جانبي\". تمكين الآن؟</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">الاستشعار الجانبي</string>
-    <string name="cam_strings_side_touch_tutorial_txt">يمكنك التقاط صورة أو فيديو بمجرد النقر المزدوج على المستشعر الموجود على جانب الشاشة، بدلاً من استخدام زر الالتقاط. يمكنك التكبير أو التصغير عن طريق تمرير إصبعك على هذا المستشعر الجانبي.\nيدعم وضع الصورة والفيديو هذه الوظيفة. ويمكنك إيقاف تشغيل ذلك من الاستشعار الجانبي ضمن إعدادات الكاميرا.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">يمكنك التقاط صورة أو فيديو بمجرد النقر المزدوج على المستشعر الموجود على جانب الشاشة في طريقة العرض الطولية بدلاً من استخدام زر الالتقاط. يمكنك التكبير أو التصغير عن طريق تمرير إصبعك على هذا المستشعر الجانبي.\nيدعم وضع الصورة والفيديو هذه الوظيفة. ويمكنك إيقاف تشغيل ذلك من الاستشعار الجانبي ضمن إعدادات الكاميرا.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">يمكنك التقاط صورة أو فيديو بمجرد النقر المزدوج على المستشعر الموجود على جانب الشاشة في طريقة العرض الطولية، بدلاً من استخدام زر الالتقاط.\nيدعم وضع الصورة والفيديو هذه الوظيفة. ويمكنك إيقاف تشغيل ذلك من الاستشعار الجانبي ضمن إعدادات الكاميرا.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">يمكنك التقاط صورة أو فيديو بمجرد النقر المزدوج على المستشعر الموجود على جانب الشاشة، بدلاً من استخدام زر الالتقاط.\nيدعم وضع الصورة والفيديو هذه الوظيفة. ويمكنك إيقاف تشغيل ذلك من الاستشعار الجانبي ضمن إعدادات الكاميرا.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"يمكنك التقاط صورة أو فيديو بمجرد النقر المزدوج على المستشعر الموجود على جانب الشاشة، بدلاً من استخدام زر الالتقاط. يمكنك التكبير أو التصغير عن طريق تمرير إصبعك على هذا المستشعر الجانبي.
+يدعم وضع الصورة والفيديو هذه الوظيفة. ويمكنك إيقاف تشغيل ذلك من الاستشعار الجانبي ضمن إعدادات الكاميرا."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"يمكنك التقاط صورة أو فيديو بمجرد النقر المزدوج على المستشعر الموجود على جانب الشاشة في طريقة العرض الطولية بدلاً من استخدام زر الالتقاط. يمكنك التكبير أو التصغير عن طريق تمرير إصبعك على هذا المستشعر الجانبي.
+يدعم وضع الصورة والفيديو هذه الوظيفة. ويمكنك إيقاف تشغيل ذلك من الاستشعار الجانبي ضمن إعدادات الكاميرا."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"يمكنك التقاط صورة أو فيديو بمجرد النقر المزدوج على المستشعر الموجود على جانب الشاشة في طريقة العرض الطولية، بدلاً من استخدام زر الالتقاط.
+يدعم وضع الصورة والفيديو هذه الوظيفة. ويمكنك إيقاف تشغيل ذلك من الاستشعار الجانبي ضمن إعدادات الكاميرا."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"يمكنك التقاط صورة أو فيديو بمجرد النقر المزدوج على المستشعر الموجود على جانب الشاشة، بدلاً من استخدام زر الالتقاط.
+يدعم وضع الصورة والفيديو هذه الوظيفة. ويمكنك إيقاف تشغيل ذلك من الاستشعار الجانبي ضمن إعدادات الكاميرا."</string>
     <string name="cam_strings_side_touch_txt">استشعار جانبي</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">يمكن تغيير نمط التسجيل ودقة الشاشة في إعدادات الكاميرا</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">بطيء للغاية (مرة واحدة)</string>
@@ -565,7 +587,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">حركة فائقة البطء</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">يمكنك تغيير معدل الإطارات في الثانية ونمط التسجيل للحركة البطيئة</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">مزيد من الخيارات</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">تسجيل اللحظات الثمينة في الحال بحركة بطيئة تبلغ %1$s إطارًا في الثانية عن طريق النقر فوق الزر الموجود في وسط الشاشة.\nسيساعد التسجيل في ظروف الإضاءة الساطعة على إنشاء مقطع فيديو أفضل.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"تسجيل اللحظات الثمينة في الحال بحركة بطيئة تبلغ %1$s إطارًا في الثانية عن طريق النقر فوق الزر الموجود في وسط الشاشة.
+سيساعد التسجيل في ظروف الإضاءة الساطعة على إنشاء مقطع فيديو أفضل."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">يمكنك تسجيل اللحظة في حينها بمعدل %1$s إطارًا/الثانية بالنقر فوق الزر الأوسط</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">قم بتسجيل إحدى اللحظات الثمينة فورًا بسرعة %1$s إطار في الثانية من خلال النقر فوق الزر في منتصف الشاشة</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">حركة فائقة البطء (دفعة واحدة)</string>
@@ -576,7 +599,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">حركة بطيئة</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">كيفية التسجيل</string>
     <string name="cam_strings_slow_motion_standard_txt">حركة بطيئة</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">إنشاء مقطع فيديو مذهل عن طريق إظهار اللحظات الثمينة بحركات بطيئة.\nسيساعد التسجيل في ظروف الإضاءة الساطعة على إنشاء مقطع فيديو أفضل.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"إنشاء مقطع فيديو مذهل عن طريق إظهار اللحظات الثمينة بحركات بطيئة.
+سيساعد التسجيل في ظروف الإضاءة الساطعة على إنشاء مقطع فيديو أفضل."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">يمكنك تسجيل فيديو بسرعات مختلفة من خلال التبديل لسرعة %1$s إطار في الثانية</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">انقر على الزر في المنتصف في اللحظة المناسبة</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">تم التسجيل بالحركة البطيئة</string>
@@ -607,12 +631,12 @@
     <string name="cam_strings_sw_licence_title_txt">تراخيص البرامج</string>
     <string name="cam_strings_take_photo_txt">التقاط صورة</string>
     <string name="cam_strings_term_of_use_accept_txt">قبول</string>
-    <string name="cam_strings_term_of_use_consent_txt">أوافق على &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;شروط استخدام&lt;/a&gt; Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">أوافق على &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">شروط استخدام&lt;/a> Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">قد يخضع استخدامك لهذه الخدمة لرسوم بيانات الهاتف النقال وذلك حسب خطة البيانات لديك.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">ستقوم Sony Mobile بجمع معرف Android ID المجزأ الفريد للجهاز، بالإضافة إلى البيانات القائمة على الموقع والطابع الزمني، لكي توفر لك المحصلة المناسبة كجزء من الخدمة وبغرض تحسينات الخدمة.</string>
     <string name="cam_strings_term_of_use_decline_txt">رفض</string>
     <string name="cam_strings_term_of_use_title_txt">البنود والشروط</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;شروط الاستخدام&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">شروط الاستخدام&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">إلغاء تحديد صور</string>
     <string name="cam_strings_timeshift_operation_failed_txt">تعذر الحفظ</string>
     <string name="cam_strings_timeshift_save_complete_txt">تم الحفظ</string>
@@ -639,7 +663,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">لتسجيل ثابت لمقاطع فيديو بدقة ‎4K، يجب عدم تغيير هذا الإعداد ما لم تُستخدم بطاقة SD عالية السرعة (يُوصى بسرعة UHS من الفئة 1 أو أعلى، أو سرعة من الفئة 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">لتسجيل ثابت لمقاطع فيديو بإزاحة زمنية، يجب عدم تغيير هذا الإعداد ما لم تستخدم بطاقة SD عالية السرعة (يوصى بسرعة UHS من الفئة 1 أو أعلى، أو سرعة من الفئة 10). هل تريد التغيير على أية حال؟</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">لتسجيل ثابت لمقاطع فيديو ذات حركة بطيئة، لا تقم بتغيير هذا الإعداد ما لم تُستخدم بطاقة SD عالية السرعة (يُوصى بسرعة UHS من الفئة 1 أو أعلى، أو سرعة من الفئة 10).</string>
-    <string name="cam_strings_video_explanatory_txt">لتسجيل ثابت لمقاطع الفيديو، نوصي بتغيير مخزن البيانات إلى مخزن داخلي. هل تريد التغيير الآن؟\n\nإذا تابعت استخدام بطاقة SD كمخزن للبيانات، فتأكد من استخدام بطاقة SD عالية السرعة (يوصى بسرعة UHS من الفئة 1 أو أعلى، أو سرعة من الفئة 10)</string>
+    <string name="cam_strings_video_explanatory_txt">"لتسجيل ثابت لمقاطع الفيديو، نوصي بتغيير مخزن البيانات إلى مخزن داخلي. هل تريد التغيير الآن؟
+
+إذا تابعت استخدام بطاقة SD كمخزن للبيانات، فتأكد من استخدام بطاقة SD عالية السرعة (يوصى بسرعة UHS من الفئة 1 أو أعلى، أو سرعة من الفئة 10)"</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">الكاميرا المزدوجة</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">يمكنك تسجيل مقاطع فيديو جميلة بضجيج منخفض باستخدام الكاميرا المزدوجة، حتى في الليل أو بغرفة خافتة الإضاءة. تقوم الكاميرا تلقائيًا بالتبديل بين الكاميرا المفردة والكاميرا المزدوجة حسب المشاهد المطلوب تسجيلها بميزة حساسية فائقة الشدة.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">تسجيل الفيديو بالكاميرا المزدوجة</string>

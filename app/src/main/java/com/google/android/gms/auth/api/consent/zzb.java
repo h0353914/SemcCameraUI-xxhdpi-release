@@ -3,11 +3,11 @@ package com.google.android.gms.auth.api.consent;
 import android.accounts.Account;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
 import com.google.android.gms.auth.firstparty.shared.ScopeDetail;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzb implements Parcelable$Creator<GetConsentIntentRequest> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzb implements Parcelable.Creator<GetConsentIntentRequest> {
     static void zza(GetConsentIntentRequest getConsentIntentRequest, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, getConsentIntentRequest.getVersionCode());
@@ -21,17 +21,9 @@ public class zzb implements Parcelable$Creator<GetConsentIntentRequest> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ GetConsentIntentRequest createFromParcel(Parcel parcel) {
-        return zzD(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ GetConsentIntentRequest[] newArray(int i) {
-        return zzau(i);
-    }
-
-    public GetConsentIntentRequest zzD(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzD, reason: merged with bridge method [inline-methods] */
+    public GetConsentIntentRequest createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         String strZzp = null;
         String strZzp2 = null;
@@ -76,10 +68,12 @@ public class zzb implements Parcelable$Creator<GetConsentIntentRequest> {
         if (parcel.dataPosition() == iZzap) {
             return new GetConsentIntentRequest(iZzg, strZzp, iZzg2, strZzp2, account, scopeDetailArr, zZzc, iZzg3);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public GetConsentIntentRequest[] zzau(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzau, reason: merged with bridge method [inline-methods] */
+    public GetConsentIntentRequest[] newArray(int i) {
         return new GetConsentIntentRequest[i];
     }
 }

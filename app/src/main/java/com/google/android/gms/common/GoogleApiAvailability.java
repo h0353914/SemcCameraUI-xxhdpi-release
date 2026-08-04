@@ -1,20 +1,21 @@
 package com.google.android.gms.common;
 
+import android.R;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AlertDialog$Builder;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface$OnCancelListener;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager$NameNotFoundException;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.text.TextUtils;
 import android.widget.ProgressBar;
-import com.google.android.gms.R$string;
 import com.google.android.gms.common.internal.zzn;
+import com.sonyericsson.android.camera.configuration.parameters.UserSettingValueHolder;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class GoogleApiAvailability {
     public static final String GOOGLE_PLAY_SERVICES_PACKAGE = "com.google.android.gms";
     public static final int GOOGLE_PLAY_SERVICES_VERSION_CODE = GooglePlayServicesUtil.GOOGLE_PLAY_SERVICES_VERSION_CODE;
@@ -31,19 +32,19 @@ public class GoogleApiAvailability {
         StringBuilder sb = new StringBuilder();
         sb.append("gcore_");
         sb.append(GOOGLE_PLAY_SERVICES_VERSION_CODE);
-        sb.append("-");
+        sb.append(UserSettingValueHolder.DELIMITER);
         if (!TextUtils.isEmpty(str)) {
             sb.append(str);
         }
-        sb.append("-");
+        sb.append(UserSettingValueHolder.DELIMITER);
         if (context != null) {
             sb.append(context.getPackageName());
         }
-        sb.append("-");
+        sb.append(UserSettingValueHolder.DELIMITER);
         if (context != null) {
             try {
                 sb.append(context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode);
-            } catch (PackageManager$NameNotFoundException unused) {
+            } catch (PackageManager.NameNotFoundException unused) {
             }
         }
         return sb.toString();
@@ -53,8 +54,8 @@ public class GoogleApiAvailability {
         return GooglePlayServicesUtil.getErrorDialog(i, activity, i2);
     }
 
-    public Dialog getErrorDialog(Activity activity, int i, int i2, DialogInterface$OnCancelListener dialogInterface$OnCancelListener) {
-        return GooglePlayServicesUtil.getErrorDialog(i, activity, i2, dialogInterface$OnCancelListener);
+    public Dialog getErrorDialog(Activity activity, int i, int i2, DialogInterface.OnCancelListener onCancelListener) {
+        return GooglePlayServicesUtil.getErrorDialog(i, activity, i2, onCancelListener);
     }
 
     public PendingIntent getErrorResolutionPendingIntent(Context context, int i, int i2) {
@@ -85,25 +86,25 @@ public class GoogleApiAvailability {
         return GooglePlayServicesUtil.showErrorDialogFragment(i, activity, i2);
     }
 
-    public boolean showErrorDialogFragment(Activity activity, int i, int i2, DialogInterface$OnCancelListener dialogInterface$OnCancelListener) {
-        return GooglePlayServicesUtil.showErrorDialogFragment(i, activity, i2, dialogInterface$OnCancelListener);
+    public boolean showErrorDialogFragment(Activity activity, int i, int i2, DialogInterface.OnCancelListener onCancelListener) {
+        return GooglePlayServicesUtil.showErrorDialogFragment(i, activity, i2, onCancelListener);
     }
 
-    public void showErrorNotification(Context context, int i) {
+    public void showErrorNotification(Context context, int i) throws Resources.NotFoundException, PackageManager.NameNotFoundException {
         GooglePlayServicesUtil.showErrorNotification(i, context);
     }
 
-    public Dialog zza(Activity activity, DialogInterface$OnCancelListener dialogInterface$OnCancelListener) {
-        ProgressBar progressBar = new ProgressBar(activity, null, 16842874);
+    public Dialog zza(Activity activity, DialogInterface.OnCancelListener onCancelListener) throws PackageManager.NameNotFoundException {
+        ProgressBar progressBar = new ProgressBar(activity, null, R.attr.progressBarStyleLarge);
         progressBar.setIndeterminate(true);
         progressBar.setVisibility(0);
-        AlertDialog$Builder alertDialog$Builder = new AlertDialog$Builder(activity);
-        alertDialog$Builder.setView(progressBar);
-        alertDialog$Builder.setMessage(activity.getResources().getString(R$string.common_google_play_services_updating_text, GooglePlayServicesUtil.zzaf(activity)));
-        alertDialog$Builder.setTitle(R$string.common_google_play_services_updating_title);
-        alertDialog$Builder.setPositiveButton("", (DialogInterface$OnClickListener) null);
-        AlertDialog alertDialogCreate = alertDialog$Builder.create();
-        GooglePlayServicesUtil.zza(activity, dialogInterface$OnCancelListener, "GooglePlayServicesUpdatingDialog", alertDialogCreate);
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setView(progressBar);
+        builder.setMessage(activity.getResources().getString(com.google.android.gms.R.string.common_google_play_services_updating_text, GooglePlayServicesUtil.zzaf(activity)));
+        builder.setTitle(com.google.android.gms.R.string.common_google_play_services_updating_title);
+        builder.setPositiveButton("", (DialogInterface.OnClickListener) null);
+        AlertDialog alertDialogCreate = builder.create();
+        GooglePlayServicesUtil.zza(activity, onCancelListener, "GooglePlayServicesUpdatingDialog", alertDialogCreate);
         return alertDialogCreate;
     }
 

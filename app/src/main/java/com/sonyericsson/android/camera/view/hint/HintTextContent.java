@@ -1,9 +1,17 @@
 package com.sonyericsson.android.camera.view.hint;
 
+import android.content.res.Resources;
+
 public abstract class HintTextContent {
     public static final long INFINITE_TIMEOUT_MILLIS = -1;
     public static final int NO_FADE = -1;
     protected boolean mTransparentBackground = true;
+
+    public enum HintPriority {
+        HIGH,
+        MIDDLE,
+        LOW
+    }
 
     public int getButtonDescriptionResourceId() {
         return -1;
@@ -37,11 +45,11 @@ public abstract class HintTextContent {
         return false;
     }
 
-    public HintTextContent$HintPriority getPriority() {
-        return HintTextContent$HintPriority.LOW;
+    public HintPriority getPriority() {
+        return HintPriority.LOW;
     }
 
-    public void attach(HintTextView hintTextView) {
+    public void attach(HintTextView hintTextView) throws Resources.NotFoundException {
         if (hintTextView == null) {
             return;
         }

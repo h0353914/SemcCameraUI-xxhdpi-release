@@ -2,13 +2,17 @@ package com.sonymobile.cameracommon.research.idd;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager$NameNotFoundException;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.util.ArrayMap;
+import android.util.JsonWriter;
 import com.sonyericsson.android.camera.CameraApplication;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.idd.api.Idd;
-import com.sonymobile.cameracommon.research.parameters.Event$Category;
+import com.sonymobile.cameracommon.research.parameters.Event;
 import com.sonymobile.cameracommon.research.parameters.Screen;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -77,14 +81,6 @@ public class IddUtil {
     public static void onResume() {
     }
 
-    static /* synthetic */ String access$000() {
-        return mView;
-    }
-
-    static /* synthetic */ String access$100() {
-        return mLaunchedBy;
-    }
-
     private IddUtil() {
     }
 
@@ -103,7 +99,7 @@ public class IddUtil {
         try {
             mVersionName = packageManager.getPackageInfo(mPackageName, 0).versionName;
             mVersionCode = packageManager.getPackageInfo(mPackageName, 0).versionCode;
-        } catch (PackageManager$NameNotFoundException unused) {
+        } catch (PackageManager.NameNotFoundException unused) {
             if (CamLog.VERBOSE) {
                 CamLog.w("setPackageInfo(): Could not get version info");
             }
@@ -112,11 +108,11 @@ public class IddUtil {
 
     private static boolean checkIddSupported() {
         if (mIsIddSupportAlreadyChecked) {
-            return mIsIddSupported;
+            return mIsIddSupported = false;
         }
         mIsIddSupported = false;
         try {
-            Class.forName("com.sonyericsson.idd.api.Idd").getMethod("addAppDataJSON", String.class, String.class, Integer.TYPE, JSONObject.class);
+            Class.forName(IDD_CLASS_NAME).getMethod(IDD_METHOD_NAME, String.class, String.class, Integer.TYPE, JSONObject.class);
             mIsIddSupported = true;
             if (CamLog.VERBOSE) {
                 CamLog.d("Idd.addAppDataJSON is supported");
@@ -153,31 +149,55 @@ public class IddUtil {
         mView = screen.toString();
     }
 
-    public static void sendEvent(Event$Category event$Category, String str, String str2, long j) {
-        if (getTypeName(event$Category) == null) {
+    public static void sendEvent(Event.Category category, String str, String str2, long j) {
+        if (getTypeName(category) == null) {
             return;
         }
         if (CamLog.DEBUG) {
-            CamLog.d("sendEvent(): category = " + event$Category.toString() + ", action = " + str + ", label = " + str2 + ", value = " + j);
+            CamLog.d("sendEvent(): category = " + category.toString() + ", action = " + str + ", label = " + str2 + ", value = " + j);
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder = new IddUtil$JsonStringBuilder(getTypeName(event$Category));
+        JsonStringBuilder jsonStringBuilder = new JsonStringBuilder(getTypeName(category));
         if (str == null) {
             str = "";
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder2 = iddUtil$JsonStringBuilder.set("action", str);
+        JsonStringBuilder jsonStringBuilder2 = jsonStringBuilder.set("action", str);
         if (str2 == null) {
             str2 = "";
         }
-        sendJsonData(iddUtil$JsonStringBuilder2.set("label", str2).set("value", Long.toString(j)).build());
+        sendJsonData(jsonStringBuilder2.set(KEY_LABEL, str2).set(KEY_VALUE, Long.toString(j)).build());
     }
 
-    private static String getTypeName(Event$Category event$Category) {
-        if (event$Category == null) {
+    private static String getTypeName(Event.Category category) {
+        if (category == null) {
             return null;
         }
-        switch (event$Category) {
+        switch (category) {
+            case ALL_SETTINGS_PHOTO:
+                return "PHOTO_EVENT";
+            case ALL_SETTINGS_VIDEO:
+                return "VIDEO_EVENT";
+            case CHANGED_SETTING:
+            case ADDON_FW:
+                return "MODE_SELECTOR_EVENT";
+            case THERMAL_MITIGATION:
+                return "THERMAL_ERROR";
+            case CAMERA_NOT_AVAILABLE:
+                return "CAMERA_NOT_AVAILABLE";
+            case PANORAMA:
+                return "PANORAMA";
+            case SELFTIMER_CANCELLED:
+                return "SELFTIMER_CANCEL_EVENT";
+            case LOWBATTERY_MITIGATION:
+                return "LOWBATTERY_ERROR";
+            case SLOW_MOTION:
+                return "SLOW_MOTION_EVENT";
+            case PREDICTIVE_LAUNCH:
+                return "PREDICTIVE_LAUNCH";
+            case AUTO_POWEROFF:
+                return "AUTO_POWEROFF";
+            default:
+                return null;
         }
-        return null;
     }
 
     public static void sendPerformanceData(String str, long j, boolean z, String str2) {
@@ -189,115 +209,115 @@ public class IddUtil {
         sb.append(", isHeated = ");
         sb.append(z);
         String string = sb.toString();
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder = new IddUtil$JsonStringBuilder("PERFORMANCE");
+        JsonStringBuilder jsonStringBuilder = new JsonStringBuilder(TYPE_PERFORMANCE_EVENT);
         if (str == null) {
             str = "";
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder2 = iddUtil$JsonStringBuilder.set("target", str).set("time", Long.toString(j)).set("thermal_status", z ? "HIGH" : "NORMAL");
+        JsonStringBuilder jsonStringBuilder2 = jsonStringBuilder.set(KEY_PERFORMANCE_TARGET, str).set("time", Long.toString(j)).set(KEY_PERFORMANCE_THERMAL_STATUS, z ? THERMAL_STATUS_HIGH : THERMAL_STATUS_NORMAL);
         if (!TextUtils.isEmpty(str2)) {
             string = string + ", batteryLevel = " + str2;
-            iddUtil$JsonStringBuilder2.set("battery_level", str2);
+            jsonStringBuilder2.set(KEY_PERFORMANCE_BATTERY_LEVEL, str2);
         }
         if (CamLog.DEBUG) {
             CamLog.d(string);
         }
-        sendJsonData(iddUtil$JsonStringBuilder2.build());
+        sendJsonData(jsonStringBuilder2.build());
     }
 
-    public static void sendEventAllSettings(Event$Category event$Category, Map<String, String> map, Map<String, String> map2) {
+    public static void sendEventAllSettings(Event.Category category, Map<String, String> map, Map<String, String> map2) {
         if (CamLog.DEBUG) {
-            CamLog.d("sendEventAllSettings(): category = " + event$Category.toString() + ", env = " + map + ", settings = " + map2);
+            CamLog.d("sendEventAllSettings(): category = " + category.toString() + ", env = " + map + ", settings = " + map2);
         }
-        sendJsonData(new IddUtil$JsonStringBuilder(getTypeName(event$Category)).set("environment", map).set("setting", map2).build());
+        sendJsonData(new JsonStringBuilder(getTypeName(category)).set(KEY_ENVIRONMENT, map).set(KEY_SETTING, map2).build());
     }
 
     public static void sendEventChangedSetting(String str, String str2, String str3) {
         if (CamLog.DEBUG) {
             CamLog.d("sendEventChangedSetting(): setting = " + str + ", before = " + str2 + ", after = " + str3);
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder = new IddUtil$JsonStringBuilder("CHANGE_SETTING_EVENT");
+        JsonStringBuilder jsonStringBuilder = new JsonStringBuilder(TYPE_CHANGE_SETTING_EVENT);
         if (str == null) {
             str = "";
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder2 = iddUtil$JsonStringBuilder.set("setting", str);
+        JsonStringBuilder jsonStringBuilder2 = jsonStringBuilder.set(KEY_SETTING, str);
         if (str2 == null) {
             str2 = "";
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder3 = iddUtil$JsonStringBuilder2.set("before", str2);
+        JsonStringBuilder jsonStringBuilder3 = jsonStringBuilder2.set(KEY_VALUE_BEFORE, str2);
         if (str3 == null) {
             str3 = "";
         }
-        sendJsonData(iddUtil$JsonStringBuilder3.set("after", str3).build());
+        sendJsonData(jsonStringBuilder3.set(KEY_VALUE_AFTER, str3).build());
     }
 
     public static void sendEventInternalModeChange(String str, String str2, String str3) {
         if (CamLog.DEBUG) {
             CamLog.d("sendEventInternalModeChange(): mode :" + str + "  To : " + str2 + " Way : " + str3);
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder = new IddUtil$JsonStringBuilder("MODE_CHANGE_EVENT");
+        JsonStringBuilder jsonStringBuilder = new JsonStringBuilder(TYPE_MODE_CHANGE_EVENT);
         if (str == null) {
             str = "";
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder2 = iddUtil$JsonStringBuilder.set("mode", str);
+        JsonStringBuilder jsonStringBuilder2 = jsonStringBuilder.set(KEY_MODE, str);
         if (str2 == null) {
             str2 = "";
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder3 = iddUtil$JsonStringBuilder2.set("to", str2);
+        JsonStringBuilder jsonStringBuilder3 = jsonStringBuilder2.set(KEY_VALUE_TO, str2);
         if (str3 == null) {
             str3 = "";
         }
-        sendJsonData(iddUtil$JsonStringBuilder3.set("way", str3).build());
+        sendJsonData(jsonStringBuilder3.set(KEY_VALUE_WAY, str3).build());
     }
 
-    public static void sendEventAddonModeChange(Event$Category event$Category, String str, String str2, String str3) {
-        if (getTypeName(event$Category) == null) {
+    public static void sendEventAddonModeChange(Event.Category category, String str, String str2, String str3) {
+        if (getTypeName(category) == null) {
             return;
         }
         if (CamLog.DEBUG) {
-            CamLog.d("sendEventAddonModeChange(): category = " + event$Category.toString() + ", action = " + str + ", label = " + str2 + ", method = " + str3);
+            CamLog.d("sendEventAddonModeChange(): category = " + category.toString() + ", action = " + str + ", label = " + str2 + ", method = " + str3);
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder = new IddUtil$JsonStringBuilder(getTypeName(event$Category));
+        JsonStringBuilder jsonStringBuilder = new JsonStringBuilder(getTypeName(category));
         if (str == null) {
             str = "";
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder2 = iddUtil$JsonStringBuilder.set("action", str);
+        JsonStringBuilder jsonStringBuilder2 = jsonStringBuilder.set("action", str);
         if (str2 == null) {
             str2 = "";
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder3 = iddUtil$JsonStringBuilder2.set("label", str2);
+        JsonStringBuilder jsonStringBuilder3 = jsonStringBuilder2.set(KEY_LABEL, str2);
         if (str3 == null) {
             str3 = "";
         }
-        sendJsonData(iddUtil$JsonStringBuilder3.set("way", str3).build());
+        sendJsonData(jsonStringBuilder3.set(KEY_VALUE_WAY, str3).build());
     }
 
     public static void sendWizardEvent(String str, String str2, String str3) {
         if (CamLog.DEBUG) {
             CamLog.d("sendWizardEvent(): page = " + str + ", time = " + str2 + ", reslut = " + str3);
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder = new IddUtil$JsonStringBuilder("SETUP_WIZARD_EVENT");
+        JsonStringBuilder jsonStringBuilder = new JsonStringBuilder(TYPE_SETUP_WIZARD_EVENT);
         if (str == null) {
             str = "";
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder2 = iddUtil$JsonStringBuilder.set("page", str);
+        JsonStringBuilder jsonStringBuilder2 = jsonStringBuilder.set(KEY_VALUE_PAGE, str);
         if (str2 == null) {
             str2 = "";
         }
-        IddUtil$JsonStringBuilder iddUtil$JsonStringBuilder3 = iddUtil$JsonStringBuilder2.set("time", str2);
+        JsonStringBuilder jsonStringBuilder3 = jsonStringBuilder2.set("time", str2);
         if (str3 == null) {
             str3 = "";
         }
-        sendJsonData(iddUtil$JsonStringBuilder3.set("result", str3).build());
+        sendJsonData(jsonStringBuilder3.set(KEY_VALUE_RESULT, str3).build());
     }
 
     public static void sendExternalCameraAppEvent(JSONObject jSONObject, long j) throws JSONException {
         if (CamLog.DEBUG) {
-            CamLog.d("IddUtil", "sendExternalCameraAppEvent(): json = " + jSONObject.toString() + " timestamp = " + j);
+            CamLog.d(TAG, "sendExternalCameraAppEvent(): json = " + jSONObject.toString() + " timestamp = " + j);
         }
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("HH:mm:ss");
         Date date = new Date(j);
-        jSONObject.put("timestamp_original_event", simpleDateFormat.format(date) + "T" + simpleDateFormat2.format(date) + getCurrentTimeZone());
+        jSONObject.put(KEY_TIMESTAMP_ORIGINAL_EVENT, simpleDateFormat.format(date) + "T" + simpleDateFormat2.format(date) + getCurrentTimeZone());
         sendJsonData(jSONObject.toString());
     }
 
@@ -323,6 +343,87 @@ public class IddUtil {
                         CamLog.w("sendJsonData(): Could not send event: " + th.getMessage());
                     }
                 }
+            }
+        }
+    }
+
+    private static class ValueMap {
+        private final Map<String, ValueMap> mMap;
+        private final String mValue;
+
+        public ValueMap(@NonNull String str) {
+            this.mMap = null;
+            this.mValue = str;
+        }
+
+        public ValueMap(@NonNull Map<String, String> map) {
+            this.mMap = new ArrayMap();
+            this.mValue = null;
+            for (Map.Entry<String, String> entry : map.entrySet()) {
+                this.mMap.put(entry.getKey(), new ValueMap(entry.getValue()));
+            }
+        }
+
+        public String getValue() {
+            return this.mValue;
+        }
+
+        public Map<String, ValueMap> getMap() {
+            return this.mMap;
+        }
+    }
+
+    private static class JsonStringBuilder {
+        private final Map<String, ValueMap> mMap = new ArrayMap();
+
+        public JsonStringBuilder(@NonNull String str) {
+            this.mMap.put(IddUtil.KEY_TYPE, new ValueMap(str));
+            this.mMap.put(IddUtil.KEY_MODE, new ValueMap(IddUtil.mView));
+            this.mMap.put(IddUtil.KEY_LAUNCHEDBY, new ValueMap(IddUtil.mLaunchedBy));
+        }
+
+        public JsonStringBuilder set(String str, String str2) {
+            this.mMap.put(str, new ValueMap(str2));
+            return this;
+        }
+
+        public JsonStringBuilder set(String str, Map<String, String> map) {
+            this.mMap.put(str, new ValueMap(map));
+            return this;
+        }
+
+        public String build() {
+            StringWriter stringWriter = new StringWriter();
+            JsonWriter jsonWriter = new JsonWriter(stringWriter);
+            try {
+                jsonWriter.setIndent(" ");
+                write(jsonWriter, this.mMap);
+                return stringWriter.toString();
+            } catch (IOException unused) {
+                return "";
+            } finally {
+                try {
+                    jsonWriter.close();
+                } catch (IOException unused2) {
+                }
+            }
+        }
+
+        private void write(JsonWriter jsonWriter, Map<String, ValueMap> map) throws IOException {
+            jsonWriter.beginObject();
+            for (Map.Entry<String, ValueMap> entry : map.entrySet()) {
+                write(jsonWriter, entry.getKey(), entry.getValue());
+            }
+            jsonWriter.endObject();
+        }
+
+        private void write(JsonWriter jsonWriter, String str, ValueMap valueMap) throws IOException {
+            String value = valueMap.getValue();
+            if (value == null) {
+                jsonWriter.name(str.toLowerCase(Locale.ROOT));
+                write(jsonWriter, valueMap.getMap());
+            } else {
+                jsonWriter.name(str.toLowerCase(Locale.ROOT)).value(value);
             }
         }
     }

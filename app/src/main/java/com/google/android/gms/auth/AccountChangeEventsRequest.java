@@ -2,12 +2,13 @@ package com.google.android.gms.auth;
 
 import android.accounts.Account;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class AccountChangeEventsRequest implements SafeParcelable {
-    public static final Parcelable$Creator<AccountChangeEventsRequest> CREATOR = new zzb();
+    public static final Parcelable.Creator<AccountChangeEventsRequest> CREATOR = new zzb();
     final int mVersion;
     Account zzQd;
 
@@ -26,7 +27,7 @@ public class AccountChangeEventsRequest implements SafeParcelable {
         if (account != null || TextUtils.isEmpty(str)) {
             this.zzQd = account;
         } else {
-            this.zzQd = new Account(str, "com.google");
+            this.zzQd = new Account(str, GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE);
         }
     }
 

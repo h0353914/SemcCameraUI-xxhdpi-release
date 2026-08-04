@@ -4,6 +4,7 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.zzx;
 import java.util.Set;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzna {
     public static String[] zza(Scope[] scopeArr) {
         zzx.zzb(scopeArr, "scopes can't be null.");

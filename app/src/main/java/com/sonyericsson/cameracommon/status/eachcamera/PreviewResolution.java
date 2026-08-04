@@ -10,7 +10,7 @@ public class PreviewResolution extends ResolutionValue implements EachCameraStat
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusValue
     public String getKey() {
-        return "preview_resolution";
+        return KEY;
     }
 
     public PreviewResolution(Rect rect) {

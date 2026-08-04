@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.parameter.dependency;
 
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;

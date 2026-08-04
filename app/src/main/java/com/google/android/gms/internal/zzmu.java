@@ -8,12 +8,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class zzmu {
     private static final Pattern zzaim = Pattern.compile("\\\\.");
     private static final Pattern zzain = Pattern.compile("[\\\\\"/\b\f\n\r\t]");
 
     public static String zzcz(String str) {
-        String str2;
+        String str2 = null;
         if (TextUtils.isEmpty(str)) {
             return str;
         }
@@ -48,7 +49,6 @@ public final class zzmu {
                                 str2 = "\\\\r";
                                 break;
                         }
-                        break;
                 }
             } else {
                 str2 = "\\\\\\\\";
@@ -81,7 +81,11 @@ public final class zzmu {
                 if (!jSONObject2.has(next)) {
                     return false;
                 }
-                if (!zzd(jSONObject.get(next), jSONObject2.get(next))) {
+                try {
+                    if (!zzd(jSONObject.get(next), jSONObject2.get(next))) {
+                        return false;
+                    }
+                } catch (JSONException unused) {
                     return false;
                 }
             }

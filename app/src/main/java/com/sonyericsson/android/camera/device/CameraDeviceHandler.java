@@ -3,16 +3,22 @@ package com.sonyericsson.android.camera.device;
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.hardware.camera2.CameraAccessException;
 import android.graphics.Rect;
 import android.media.CamcorderProfile;
 import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.SystemClock;
 import android.provider.DocumentsContract;
+import android.support.annotation.WorkerThread;
 import android.util.ArrayMap;
+import android.util.Printer;
+import android.view.OrientationEventListener;
 import android.view.Surface;
 import com.sonyericsson.android.camera.CameraApplication;
+import com.sonyericsson.android.camera.configuration.SharedPreferencesConstants;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.configuration.parameters.DisplayFlash;
@@ -23,11 +29,13 @@ import com.sonyericsson.android.camera.configuration.parameters.Flash;
 import com.sonyericsson.android.camera.configuration.parameters.FocusMode;
 import com.sonyericsson.android.camera.configuration.parameters.FocusRange;
 import com.sonyericsson.android.camera.configuration.parameters.FusionMode;
+import com.sonyericsson.android.camera.configuration.parameters.Geotag;
 import com.sonyericsson.android.camera.configuration.parameters.Hdr;
 import com.sonyericsson.android.camera.configuration.parameters.Iso;
 import com.sonyericsson.android.camera.configuration.parameters.Metering;
 import com.sonyericsson.android.camera.configuration.parameters.PredictiveCapture;
 import com.sonyericsson.android.camera.configuration.parameters.Resolution;
+import com.sonyericsson.android.camera.configuration.parameters.ShutterSound;
 import com.sonyericsson.android.camera.configuration.parameters.ShutterSpeed;
 import com.sonyericsson.android.camera.configuration.parameters.ShutterTrigger;
 import com.sonyericsson.android.camera.configuration.parameters.SoftSkin;
@@ -37,50 +45,62 @@ import com.sonyericsson.android.camera.configuration.parameters.VideoStabilizer;
 import com.sonyericsson.android.camera.configuration.parameters.WhiteBalance;
 import com.sonyericsson.android.camera.controller.StateMachine;
 import com.sonyericsson.android.camera.debug.DebugParameterUtils;
+import com.sonyericsson.android.camera.device.BypassCameraController;
+import com.sonyericsson.android.camera.device.CameraController;
+import com.sonyericsson.android.camera.device.CameraInfo;
+import com.sonyericsson.android.camera.device.CameraParameterConverter;
+import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.recorder.RecorderController;
-import com.sonyericsson.android.camera.recorder.RecorderController$RecorderListener;
 import com.sonyericsson.android.camera.recorder.RecorderException;
 import com.sonyericsson.android.camera.recorder.RecorderFactory;
-import com.sonyericsson.android.camera.recorder.RecorderFactory$Parameters;
-import com.sonyericsson.android.camera.recorder.RecorderParameters$Builder;
+import com.sonyericsson.android.camera.recorder.RecorderParameters;
 import com.sonyericsson.android.camera.recorder.RecordingProfile;
 import com.sonyericsson.android.camera.recorder.superslowrecorder.OnSuperSlowRecordingFinishedListener;
 import com.sonyericsson.android.camera.recorder.superslowrecorder.SuperSlowRecorderController;
+import com.sonyericsson.android.camera.recorder.utility.Accessor;
 import com.sonyericsson.android.camera.research.LocalResearchUtil;
-import com.sonyericsson.android.camera.research.LocalResearchUtil$MeasurementKey;
 import com.sonyericsson.android.camera.setting.LastSettings;
 import com.sonyericsson.android.camera.setting.UserSettings;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonyericsson.android.camera.util.CapturePerformanceLogger;
 import com.sonyericsson.android.camera.util.PerfLog;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
+import com.sonyericsson.cameracommon.mediasaving.MediaSavingConstants;
 import com.sonyericsson.cameracommon.mediasaving.location.GeotagManager;
+import com.sonyericsson.cameracommon.mediasaving.location.LocationSettingsReader;
 import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusCommon;
 import com.sonyericsson.cameracommon.mediasaving.takenstatus.TakenStatusPhoto;
 import com.sonyericsson.cameracommon.status.EachCameraStatusPublisher;
 import com.sonyericsson.cameracommon.status.eachcamera.DeviceStatus;
-import com.sonyericsson.cameracommon.status.eachcamera.DeviceStatus$Value;
 import com.sonyericsson.cameracommon.status.eachcamera.PhotoLight;
-import com.sonyericsson.cameracommon.status.eachcamera.PhotoLight$Value;
 import com.sonyericsson.cameracommon.status.eachcamera.SlowMotion;
-import com.sonyericsson.cameracommon.status.eachcamera.SlowMotion$Value;
-import com.sonyericsson.cameracommon.storage.RequestFactory$PhotoSavingRequestBuilder;
-import com.sonyericsson.cameracommon.storage.RequestFactory$RequestBuilder;
-import com.sonyericsson.cameracommon.storage.RequestFactory$VideoSavingRequestBuilder;
-import com.sonyericsson.cameracommon.storage.SavingTaskManager$SavedFileType;
-import com.sonyericsson.cameracommon.storage.Storage$StorageType;
-import com.sonyericsson.cameracommon.storage.Storage$StorageWriteNotifier;
+import com.sonyericsson.cameracommon.storage.RequestFactory;
+import com.sonyericsson.cameracommon.storage.SavingTaskManager;
+import com.sonyericsson.cameracommon.storage.Storage;
 import com.sonyericsson.cameracommon.storage.StorageUtil;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
 import com.sonyericsson.cameracommon.utility.PositionConverter;
 import com.sonyericsson.cameracommon.utility.RecordingUtil;
+import com.sonyericsson.cameracommon.utility.RotationUtil;
 import com.sonymobile.cameracommon.research.ResearchUtil;
+import com.sonymobile.cameracommon.research.parameters.Event;
+import com.sonymobile.cameracommon.research.parameters.ShootingLabel;
+import com.sonymobile.cameracommon.testevent.TestEventSender;
+import com.sonymobile.imageprocessor.bypasscamera2.BypassCamera;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CancellationException;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
 
 public class CameraDeviceHandler {
     static final long CLOSE_BYPASS_CAMERA_TIMEOUT_MILLIS = 100000;
@@ -91,186 +111,115 @@ public class CameraDeviceHandler {
     private CameraActionSound mCameraActionSound;
     private CameraController mCameraController;
     private final Handler mCameraDeviceThreadHandler;
-    private final CameraDeviceHandler$CameraDeviceAccessTask mInitControllerTask;
+    private final CameraDeviceAccessTask mInitControllerTask;
     private boolean mIsVideo;
-    private RequestFactory$VideoSavingRequestBuilder mLastVideoSavingRequest;
+    private RequestFactory.VideoSavingRequestBuilder mLastVideoSavingRequest;
     private StateMachine mStateMachine;
     private StateMachine mStateMachineForSavingRequest;
     private RecorderController mVideoRecorder;
     private final Object mVideoRecorderLock;
     private static final Object sSendPauseEventAndReleaseCameraTaskToken = new Object();
-    private static final Map<CameraDeviceHandler$CameraSessionId, CameraDeviceHandler$CameraSessionInfo> sCameraSessionInfoMap = new ArrayMap();
-    private CameraDeviceHandler$LoadSettingsThread mLoadSettingsThread = null;
+    private static final Map<CameraSessionId, CameraSessionInfo> sCameraSessionInfoMap = new ArrayMap();
+    private LoadSettingsThread mLoadSettingsThread = null;
     private Handler mUiThreadHandler = CameraApplication.getUiThreadHandler();
     private SharedPreferences mPreferences = null;
     private GeotagManager mGeotagManager = null;
-    private CameraDeviceHandler$FastCaptureOrientation mFastCaptureOrientation = null;
+    private FastCaptureOrientation mFastCaptureOrientation = null;
     private FastCapture mFastCaptureSetting = null;
     private Boolean mIsRecording = false;
-    private CameraDeviceHandler$PreProcessState mPreProcessState = CameraDeviceHandler$PreProcessState.NOT_STARTED;
+    private PreProcessState mPreProcessState = PreProcessState.NOT_STARTED;
     private boolean mIsCameraDisabled = false;
     private boolean mIsFpsLimitationEnabled = false;
     private boolean mActivityIsInForeground = true;
     private boolean mIsInShutdownNow = false;
-    private CameraDeviceHandler$CameraSessionId mCameraSessionId = null;
-    private CameraDeviceHandler$CloseBypassCameraTimeoutTask mCloseBypassCameraTimeoutTask = null;
-    private final Runnable mChangeProviderDeviceStatusToRecordingTask = new CameraDeviceHandler$5(this);
+    private CameraSessionId mCameraSessionId = null;
+    private CloseBypassCameraTimeoutTask mCloseBypassCameraTimeoutTask = null;
+    private final Runnable mChangeProviderDeviceStatusToRecordingTask;
+
+    enum CameraDeviceStatus {
+        STATUS_RELEASED,
+        STATUS_OPENED,
+        STATUS_READY,
+        STATUS_EVICTED,
+        STATUS_ERROR
+    }
+
+    public enum ErrorCode {
+        ERROR_ON_CAMERA_ERROR,
+        ERROR_ON_CAMERA_DISCONNECTION,
+        ERROR_ON_CAPTURE_FAILED,
+        ERROR_ON_CONFIGURE_FAILED
+    }
+
+    public interface ImageReaderInitializedCallback {
+        void onInitialized();
+    }
+
+    public interface OnPreviewStartedListener {
+        void onPreviewStarted(CameraSessionId cameraSessionId);
+    }
+
+    enum OpenClosePerformStatus {
+        NONE,
+        BYPASS_CAMERA_OPENED,
+        CAMERA_OPENED,
+        CAMERA_CLOSED,
+        BYPASS_CAMERA_CLOSED
+    }
+
+    enum OpenCloseRequestStatus {
+        NONE,
+        BYPASS_CAMERA_OPENING,
+        CAMERA_OPENING,
+        CAMERA_CLOSING,
+        BYPASS_CAMERA_CLOSING
+    }
+
+    public enum PreProcessState {
+        NOT_STARTED,
+        PRE_SCAN_STARTED,
+        PRE_SCAN_DONE,
+        PRE_CAPTURE_STARTED,
+        PRE_SHUTTER_DONE,
+        PRE_CAPTURE_DONE,
+        PRE_CAPTURE_RELEASED
+    }
 
     public static final void preload() {
     }
 
-    static /* synthetic */ Map access$000() {
-        return sCameraSessionInfoMap;
-    }
-
-    static /* synthetic */ boolean access$1000(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mActivityIsInForeground;
-    }
-
-    static /* synthetic */ Handler access$1100(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mCameraDeviceThreadHandler;
-    }
-
-    static /* synthetic */ void access$1200(CameraDeviceHandler cameraDeviceHandler, StringBuilder sb) {
-        cameraDeviceHandler.dumpStatus(sb);
-    }
-
-    static /* synthetic */ CameraActionSound access$1400(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mCameraActionSound;
-    }
-
-    static /* synthetic */ CameraActionSound access$1402(CameraDeviceHandler cameraDeviceHandler, CameraActionSound cameraActionSound) {
-        cameraDeviceHandler.mCameraActionSound = cameraActionSound;
-        return cameraActionSound;
-    }
-
-    static /* synthetic */ FastCapture access$1500(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mFastCaptureSetting;
-    }
-
-    static /* synthetic */ Context access$1600(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.getApplicationContext();
-    }
-
-    static /* synthetic */ GeotagManager access$1700(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mGeotagManager;
-    }
-
-    static /* synthetic */ GeotagManager access$1702(CameraDeviceHandler cameraDeviceHandler, GeotagManager geotagManager) {
-        cameraDeviceHandler.mGeotagManager = geotagManager;
-        return geotagManager;
-    }
-
-    static /* synthetic */ void access$1800(CameraDeviceHandler cameraDeviceHandler, CameraDeviceHandler$CameraDeviceAccessTask cameraDeviceHandler$CameraDeviceAccessTask) {
-        cameraDeviceHandler.runOnCameraDeviceThread(cameraDeviceHandler$CameraDeviceAccessTask);
-    }
-
-    static /* synthetic */ CameraDeviceHandler$FastCaptureOrientation access$1900(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mFastCaptureOrientation;
-    }
-
-    static /* synthetic */ CameraDeviceHandler$FastCaptureOrientation access$1902(CameraDeviceHandler cameraDeviceHandler, CameraDeviceHandler$FastCaptureOrientation cameraDeviceHandler$FastCaptureOrientation) {
-        cameraDeviceHandler.mFastCaptureOrientation = cameraDeviceHandler$FastCaptureOrientation;
-        return cameraDeviceHandler$FastCaptureOrientation;
-    }
-
-    static /* synthetic */ CameraDeviceHandler$CameraSessionId access$2200(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mCameraSessionId;
-    }
-
-    static /* synthetic */ CameraDeviceHandler$PreProcessState access$2700(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mPreProcessState;
-    }
-
-    static /* synthetic */ void access$2800(CameraDeviceHandler cameraDeviceHandler, CameraDeviceHandler$PreProcessState cameraDeviceHandler$PreProcessState) {
-        cameraDeviceHandler.changePreProcessStateTo(cameraDeviceHandler$PreProcessState);
-    }
-
-    static /* synthetic */ Handler access$2900(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mUiThreadHandler;
-    }
-
-    static /* synthetic */ BypassCameraController access$300(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mBypassCameraController;
-    }
-
-    static /* synthetic */ BypassCameraController access$302(CameraDeviceHandler cameraDeviceHandler, BypassCameraController bypassCameraController) {
-        cameraDeviceHandler.mBypassCameraController = bypassCameraController;
-        return bypassCameraController;
-    }
-
-    static /* synthetic */ StateMachine access$3100(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mStateMachine;
-    }
-
-    static /* synthetic */ boolean access$3200(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.isNeedCreatePreviewSession();
-    }
-
-    static /* synthetic */ StateMachine access$3400(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mStateMachineForSavingRequest;
-    }
-
-    static /* synthetic */ boolean access$3600(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mIsVideo;
-    }
-
-    static /* synthetic */ RecorderController access$3900(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mVideoRecorder;
-    }
-
-    static /* synthetic */ Context access$400(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mApplicationContext;
-    }
-
-    static /* synthetic */ CameraParameters access$4100(CameraDeviceHandler cameraDeviceHandler, CameraDeviceHandler$CameraSessionId cameraDeviceHandler$CameraSessionId) {
-        return cameraDeviceHandler.getParameters(cameraDeviceHandler$CameraSessionId);
-    }
-
-    static /* synthetic */ void access$4200(CameraDeviceHandler cameraDeviceHandler) {
-        cameraDeviceHandler.releaseRecorderOnCameraClosed();
-    }
-
-    static /* synthetic */ void access$4300(CameraDeviceHandler cameraDeviceHandler, CameraDeviceHandler$CameraDeviceAccessTask cameraDeviceHandler$CameraDeviceAccessTask) {
-        cameraDeviceHandler.runOnCameraDeviceThreadSync(cameraDeviceHandler$CameraDeviceAccessTask);
-    }
-
-    static /* synthetic */ CameraController access$600(CameraDeviceHandler cameraDeviceHandler) {
-        return cameraDeviceHandler.mCameraController;
-    }
-
-    static /* synthetic */ CameraController access$602(CameraDeviceHandler cameraDeviceHandler, CameraController cameraController) {
-        cameraDeviceHandler.mCameraController = cameraController;
-        return cameraController;
-    }
-
+    /* JADX INFO: Access modifiers changed from: private */
     private Context getApplicationContext() {
         return this.mApplicationContext;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void dumpStatus(StringBuilder sb) {
         sb.append("mStateMachine:" + this.mStateMachine + ",");
         sb.append("mPreProcessState:" + this.mPreProcessState.name() + ",");
         sb.append("mActivityIsInForeground:" + this.mActivityIsInForeground + ",");
         sb.append("mIsCameraDisabled:" + this.mIsCameraDisabled + ",");
-        CameraDeviceHandler$CameraSessionInfo.dump(sb);
+        CameraSessionInfo.dump(sb);
         this.mCameraController.dump(sb);
         this.mBypassCameraController.dump(sb);
     }
 
-    private void changePreProcessStateTo(CameraDeviceHandler$PreProcessState cameraDeviceHandler$PreProcessState) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void changePreProcessStateTo(PreProcessState preProcessState) {
         if (CamLog.DEBUG) {
-            CamLog.d("invoked current:" + this.mPreProcessState + " next:" + cameraDeviceHandler$PreProcessState);
+            CamLog.d("invoked current:" + this.mPreProcessState + " next:" + preProcessState);
         }
-        this.mPreProcessState = cameraDeviceHandler$PreProcessState;
+        this.mPreProcessState = preProcessState;
     }
 
     public void cancelPreProcessState() {
-        changePreProcessStateTo(CameraDeviceHandler$PreProcessState.NOT_STARTED);
+        changePreProcessStateTo(PreProcessState.NOT_STARTED);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private boolean isNeedCreatePreviewSession() {
-        return getPreProcessState() == CameraDeviceHandler$PreProcessState.PRE_SHUTTER_DONE && this.mCameraController.getCameraDeviceStatus() == CameraDeviceHandler$CameraDeviceStatus.STATUS_OPENED;
+        return getPreProcessState() == PreProcessState.PRE_SHUTTER_DONE
+                && this.mCameraController.getCameraDeviceStatus() == CameraDeviceStatus.STATUS_OPENED;
     }
 
     public Object getSendPauseEventAndReleaseCameraTaskToken() {
@@ -291,7 +240,7 @@ public class CameraDeviceHandler {
         return this.mBypassCameraController.getRemainPrevSavingRequestCount();
     }
 
-    public RequestFactory$PhotoSavingRequestBuilder getAndClearPreCaptureResult() {
+    public RequestFactory.PhotoSavingRequestBuilder getAndClearPreCaptureResult() {
         return this.mBypassCameraController.getAndClearPreCaptureResult();
     }
 
@@ -315,13 +264,169 @@ public class CameraDeviceHandler {
         return PlatformCapability.isBypassCameraSupported();
     }
 
-    private boolean isBypassCameraAvailable() {
-        CameraDeviceHandler$CameraSessionInfo openCloseStatusInfo;
-        return (this.mCameraSessionId == null || (openCloseStatusInfo = CameraDeviceHandler$CameraSessionInfo.getOpenCloseStatusInfo(this.mCameraSessionId)) == null || openCloseStatusInfo.isCloseBypassCameraTaskRequested()) ? false : true;
+    public static class CameraSessionId {
+        private static Object sIdLock = new Object();
+        private static int sLastId;
+        private final String mTag = makeTag();
+
+        private static String makeTag() {
+            String string;
+            synchronized (sIdLock) {
+                int i = sLastId + 1;
+                sLastId = i;
+                string = Integer.toString(i);
+            }
+            return string;
+        }
+
+        public String toString() {
+            return this.mTag;
+        }
     }
 
-    public void setOnPreviewStartedListener(CameraDeviceHandler$OnPreviewStartedListener cameraDeviceHandler$OnPreviewStartedListener) {
-        this.mCameraController.setOnPreviewStartedListener(cameraDeviceHandler$OnPreviewStartedListener);
+    static class CameraSessionInfo {
+        private final CameraParameters mCameraParameters;
+        private boolean mIsCameraEvicted = false;
+        private boolean mIsCameraError = false;
+        private boolean mIsOtherError = false;
+        private final CameraInfo mCameraInfo = new CameraInfo();
+        private OpenCloseRequestStatus mRequested = OpenCloseRequestStatus.NONE;
+        private OpenClosePerformStatus mPerformed = OpenClosePerformStatus.NONE;
+
+        CameraSessionInfo(CameraInfo.CameraId cameraId) {
+            this.mCameraParameters = new CameraParameters(cameraId);
+        }
+
+        static void addOpenCloseStatusInfo(CameraSessionId cameraSessionId, CameraSessionInfo cameraSessionInfo) {
+            synchronized (CameraDeviceHandler.sCameraSessionInfoMap) {
+                CameraDeviceHandler.sCameraSessionInfoMap.put(cameraSessionId, cameraSessionInfo);
+            }
+        }
+
+        static CameraSessionInfo getOpenCloseStatusInfo(CameraSessionId cameraSessionId) {
+            CameraSessionInfo cameraSessionInfo;
+            synchronized (CameraDeviceHandler.sCameraSessionInfoMap) {
+                cameraSessionInfo = (CameraSessionInfo) CameraDeviceHandler.sCameraSessionInfoMap.get(cameraSessionId);
+            }
+            return cameraSessionInfo;
+        }
+
+        static void removeOpenCloseStatusInfo(CameraSessionId cameraSessionId) {
+            synchronized (CameraDeviceHandler.sCameraSessionInfoMap) {
+                if (CameraDeviceHandler.sCameraSessionInfoMap.containsKey(cameraSessionId)) {
+                    CameraDeviceHandler.sCameraSessionInfoMap.remove(cameraSessionId);
+                }
+            }
+        }
+
+        synchronized void setRequested(OpenCloseRequestStatus openCloseRequestStatus) {
+            this.mRequested = openCloseRequestStatus;
+        }
+
+        synchronized void setPerformed(OpenClosePerformStatus openClosePerformStatus) {
+            this.mPerformed = openClosePerformStatus;
+        }
+
+        synchronized boolean isCloseCameraTaskRequested() {
+            switch (this.mRequested) {
+                case CAMERA_CLOSING:
+                case BYPASS_CAMERA_CLOSING:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        synchronized boolean isCloseBypassCameraTaskRequested() {
+            return this.mRequested == OpenCloseRequestStatus.BYPASS_CAMERA_CLOSING;
+        }
+
+        synchronized boolean isCloseBypassCameraTaskPerformed() {
+            return this.mPerformed == OpenClosePerformStatus.BYPASS_CAMERA_CLOSED;
+        }
+
+        // smali version: returns true for all except NONE
+        // Original jadx decompile was wrong: it only returned true for
+        // BYPASS_CAMERA_OPENED
+        synchronized boolean isOpenBypassCameraTaskPerformed() {
+            switch (this.mPerformed) {
+                case NONE:
+                    return false;
+                default:
+                    return true;
+            }
+        }
+
+        synchronized boolean isOpenCameraTaskPerformed() {
+            switch (this.mPerformed) {
+                case NONE:
+                case BYPASS_CAMERA_OPENED:
+                    return false;
+                default:
+                    return true;
+            }
+        }
+
+        synchronized void setCameraEvicted() {
+            this.mIsCameraEvicted = true;
+        }
+
+        synchronized void setCameraError() {
+            this.mIsCameraError = true;
+        }
+
+        synchronized void setOtherError() {
+            this.mIsOtherError = true;
+        }
+
+        synchronized boolean isErrorCaused() {
+            boolean z;
+            z = true;
+            CamLog.i("Error caused by evicted:" + this.mIsCameraEvicted + " deviceError:" + this.mIsCameraError
+                    + " otherError:" + this.mIsOtherError);
+            if (!this.mIsCameraEvicted && !this.mIsCameraError) {
+                if (!this.mIsOtherError) {
+                    z = false;
+                }
+            }
+            return z;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private synchronized String info() {
+            return "[" + this.mRequested.name() + "|" + this.mPerformed.name() + "|" + this.mIsCameraEvicted + "|"
+                    + this.mIsCameraError + "|" + this.mIsOtherError + "]";
+        }
+
+        public static void dump(StringBuilder sb) {
+            synchronized (CameraDeviceHandler.sCameraSessionInfoMap) {
+                for (Map.Entry entry : CameraDeviceHandler.sCameraSessionInfoMap.entrySet()) {
+                    sb.append(entry.getKey());
+                    sb.append(' ');
+                    sb.append(((CameraSessionInfo) entry.getValue()).info());
+                    sb.append('\n');
+                }
+            }
+        }
+
+        CameraParameters getParameters() {
+            return this.mCameraParameters;
+        }
+
+        CameraInfo getCameraInfo() {
+            return this.mCameraInfo;
+        }
+    }
+
+    private boolean isBypassCameraAvailable() {
+        CameraSessionInfo openCloseStatusInfo;
+        return (this.mCameraSessionId == null
+                || (openCloseStatusInfo = CameraSessionInfo.getOpenCloseStatusInfo(this.mCameraSessionId)) == null
+                || openCloseStatusInfo.isCloseBypassCameraTaskRequested()) ? false : true;
+    }
+
+    public void setOnPreviewStartedListener(OnPreviewStartedListener onPreviewStartedListener) {
+        this.mCameraController.setOnPreviewStartedListener(onPreviewStartedListener);
     }
 
     public void removeOnPreviewStartedListener() {
@@ -335,12 +440,56 @@ public class CameraDeviceHandler {
         handlerThread.start();
         this.mCameraDeviceThreadHandler = new Handler(handlerThread.getLooper());
         this.mVideoRecorderLock = new Object();
-        this.mInitControllerTask = new CameraDeviceHandler$InitControllerTask(this, null);
+        this.mInitControllerTask = new InitControllerTask();
         runOnCameraDeviceThread(this.mInitControllerTask);
-        runOnCameraDeviceThread(new CameraDeviceHandler$LoadNativeLibraryTask(this, null));
+        runOnCameraDeviceThread(new LoadNativeLibraryTask());
     }
 
-    public synchronized CameraDeviceHandler$CameraSessionId preloadCamera(Context context, UserSettings userSettings, CapturingMode capturingMode, boolean z) {
+    private class InitControllerTask extends CameraDeviceAccessTask {
+        @Override // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraDeviceAccessTask
+        protected boolean verifyCameraDeviceStatus() {
+            return true;
+        }
+
+        private InitControllerTask() {
+        }
+
+        @Override // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraDeviceAccessTask
+        protected void doCameraDeviceAccess() {
+            CameraDeviceHandler.this.mBypassCameraController = new BypassCameraController(
+                    CameraDeviceHandler.this.mApplicationContext, new BypassCameraControllerCallbackImpl(),
+                    CameraDeviceHandler.this.new CameraDeviceHandlerInquirer());
+            CameraDeviceHandler.this.mCameraController = new CameraController(
+                    CameraDeviceHandler.this.mApplicationContext, new CameraControllerCallbackImpl(),
+                    CameraDeviceHandler.this.new CameraDeviceHandlerInquirer());
+        }
+
+        @Override // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraDeviceAccessTask
+        public void postCameraDeviceAccess() {
+            this.mLatch.countDown();
+        }
+    }
+
+    private class LoadNativeLibraryTask extends CameraDeviceAccessTask {
+        @Override // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraDeviceAccessTask
+        protected boolean verifyCameraDeviceStatus() {
+            return true;
+        }
+
+        private LoadNativeLibraryTask() {
+        }
+
+        @Override // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraDeviceAccessTask
+        protected void doCameraDeviceAccess() {
+            if (PlatformCapability.isBypassCameraSupported()) {
+                BypassCamera.loadNativeLibrary();
+            }
+            PlatformCapability.awaitPrepare();
+        }
+    }
+
+    public synchronized CameraSessionId preloadCamera(Context context, UserSettings userSettings,
+            CapturingMode capturingMode, boolean z) {
         FastCapture fastCapture;
         if (isBypassCameraAvailable()) {
             if (CamLog.DEBUG) {
@@ -349,12 +498,13 @@ public class CameraDeviceHandler {
             return this.mCameraSessionId;
         }
         if (userSettings == null) {
-            this.mPreferences = context.getSharedPreferences("com.sonyericsson.android.camera.shared_preferences", 0);
+            this.mPreferences = context.getSharedPreferences(SharedPreferencesConstants.CAMERA_SHARED_PREFERENCES_NAME,
+                    0);
         }
         try {
-            CameraDeviceHandler$CameraDeviceAccessTask.access$800(this.mInitControllerTask).await();
-            if (this.mPreProcessState != CameraDeviceHandler$PreProcessState.PRE_CAPTURE_RELEASED) {
-                changePreProcessStateTo(CameraDeviceHandler$PreProcessState.NOT_STARTED);
+            this.mInitControllerTask.getLatch().await();
+            if (this.mPreProcessState != PreProcessState.PRE_CAPTURE_RELEASED) {
+                changePreProcessStateTo(PreProcessState.NOT_STARTED);
             }
             if (z) {
                 capturingMode = CapturingMode.SCENE_RECOGNITION;
@@ -363,7 +513,8 @@ public class CameraDeviceHandler {
                 fastCapture = FastCapture.LAUNCH_ONLY;
             }
             this.mIsVideo = capturingMode.isVideo();
-            this.mCameraSessionId = this.mBypassCameraController.openBypassCamera(this.mPreferences, userSettings, fastCapture, capturingMode);
+            this.mCameraSessionId = this.mBypassCameraController.openBypassCamera(this.mPreferences, userSettings,
+                    fastCapture, capturingMode);
             if (CamLog.DEBUG) {
                 CamLog.d("invoked mode:" + capturingMode + " fast-capture:" + z);
             }
@@ -375,8 +526,13 @@ public class CameraDeviceHandler {
         }
     }
 
-    public synchronized boolean prepareCamera(FastCapture fastCapture, CapturingMode capturingMode, UserSettings userSettings) {
-        CameraParameterValidator.loadCheckList(getApplicationContext());
+    public synchronized boolean prepareCamera(FastCapture fastCapture, CapturingMode capturingMode,
+            UserSettings userSettings) {
+        try {
+            CameraParameterValidator.loadCheckList(getApplicationContext());
+        } catch (CameraAccessException e) {
+            CamLog.e("Failed to load camera parameter checklist.", e);
+        }
         if (((DevicePolicyManager) getApplicationContext().getSystemService("device_policy")).getCameraDisabled(null)) {
             CamLog.i("Use of camera is prohibited by device policy.");
             if (CamLog.DEBUG) {
@@ -390,18 +546,21 @@ public class CameraDeviceHandler {
         this.mFastCaptureSetting = fastCapture;
         createCameraActionSound();
         if (!isBypassCameraAvailable()) {
-            this.mCameraSessionId = this.mBypassCameraController.openBypassCamera(this.mPreferences, userSettings, this.mFastCaptureSetting, capturingMode);
+            this.mCameraSessionId = this.mBypassCameraController.openBypassCamera(this.mPreferences, userSettings,
+                    this.mFastCaptureSetting, capturingMode);
             cancelCloseBypassCameraTimeoutTask();
         }
         this.mCameraController.initializeCaptureRequest(capturingMode);
         return true;
     }
 
-    public synchronized CameraDeviceHandler$CameraSessionId openCamera(FastCapture fastCapture, CapturingMode capturingMode, UserSettings userSettings) {
+    public synchronized CameraSessionId openCamera(FastCapture fastCapture, CapturingMode capturingMode,
+            UserSettings userSettings) {
         this.mCameraController.openCamera(this.mCameraSessionId, fastCapture);
         LocalResearchUtil.getInstance().clearAllSettings();
-        if (fastCapture == FastCapture.LAUNCH_AND_CAPTURE && (this.mLoadSettingsThread == null || !this.mLoadSettingsThread.isAlive())) {
-            this.mLoadSettingsThread = new CameraDeviceHandler$LoadSettingsThread(this, capturingMode, userSettings, null);
+        if (fastCapture == FastCapture.LAUNCH_AND_CAPTURE
+                && (this.mLoadSettingsThread == null || !this.mLoadSettingsThread.isAlive())) {
+            this.mLoadSettingsThread = new LoadSettingsThread(capturingMode, userSettings);
             this.mLoadSettingsThread.setName("LoadSettingsThread");
             this.mLoadSettingsThread.setPriority(10);
             this.mLoadSettingsThread.start();
@@ -432,8 +591,9 @@ public class CameraDeviceHandler {
         return null;
     }
 
-    private CameraParameters getParameters(CameraDeviceHandler$CameraSessionId cameraDeviceHandler$CameraSessionId) {
-        CameraDeviceHandler$CameraSessionInfo openCloseStatusInfo = CameraDeviceHandler$CameraSessionInfo.getOpenCloseStatusInfo(cameraDeviceHandler$CameraSessionId);
+    /* JADX INFO: Access modifiers changed from: private */
+    private CameraParameters getParameters(CameraSessionId cameraSessionId) {
+        CameraSessionInfo openCloseStatusInfo = CameraSessionInfo.getOpenCloseStatusInfo(cameraSessionId);
         if (openCloseStatusInfo != null) {
             return openCloseStatusInfo.getParameters();
         }
@@ -441,25 +601,28 @@ public class CameraDeviceHandler {
     }
 
     public CameraInfo getCameraInfo() {
-        return CameraDeviceHandler$CameraSessionInfo.getOpenCloseStatusInfo(this.mCameraSessionId).getCameraInfo();
+        return CameraSessionInfo.getOpenCloseStatusInfo(this.mCameraSessionId).getCameraInfo();
     }
 
     public void closeCamera(boolean z) {
-        if (CameraDeviceHandler$CameraSessionInfo.getOpenCloseStatusInfo(this.mCameraSessionId) == null) {
+        if (CameraSessionInfo.getOpenCloseStatusInfo(this.mCameraSessionId) == null) {
             if (CamLog.DEBUG) {
                 CamLog.d("This session has been closed, so this request was refused.");
                 return;
             }
             return;
         }
-        new EachCameraStatusPublisher(getApplicationContext(), getCameraId()).put(new SlowMotion(SlowMotion$Value.OFF)).publish();
-        if (this.mPreProcessState == CameraDeviceHandler$PreProcessState.NOT_STARTED || this.mPreProcessState == CameraDeviceHandler$PreProcessState.PRE_CAPTURE_DONE) {
-            changePreProcessStateTo(CameraDeviceHandler$PreProcessState.NOT_STARTED);
+        new EachCameraStatusPublisher(getApplicationContext(), getCameraId()).put(new SlowMotion(SlowMotion.Value.OFF))
+                .publish();
+        if (this.mPreProcessState == PreProcessState.NOT_STARTED
+                || this.mPreProcessState == PreProcessState.PRE_CAPTURE_DONE) {
+            changePreProcessStateTo(PreProcessState.NOT_STARTED);
         } else {
-            changePreProcessStateTo(CameraDeviceHandler$PreProcessState.PRE_CAPTURE_RELEASED);
+            changePreProcessStateTo(PreProcessState.PRE_CAPTURE_RELEASED);
         }
         boolean z2 = z | this.mIsInShutdownNow;
-        if (!z2 && isRecorderWorking() && ((BatteryManager) this.mApplicationContext.getSystemService("batterymanager")).getIntProperty(4) == 0) {
+        if (!z2 && isRecorderWorking() && ((BatteryManager) this.mApplicationContext.getSystemService("batterymanager"))
+                .getIntProperty(4) == 0) {
             z2 = true;
         }
         if (CamLog.DEBUG) {
@@ -499,14 +662,49 @@ public class CameraDeviceHandler {
         closeCamera(false);
     }
 
-    public void closeCamera(CameraDeviceHandler$CameraSessionId cameraDeviceHandler$CameraSessionId) {
+    public void closeCamera(CameraSessionId cameraSessionId) {
         if (CamLog.DEBUG) {
-            CamLog.d("invoked requested-session:" + cameraDeviceHandler$CameraSessionId + " current-session:" + this.mCameraSessionId);
+            CamLog.d("invoked requested-session:" + cameraSessionId + " current-session:" + this.mCameraSessionId);
         }
-        if (this.mCameraSessionId == null || cameraDeviceHandler$CameraSessionId != this.mCameraSessionId) {
+        if (this.mCameraSessionId == null || cameraSessionId != this.mCameraSessionId) {
             return;
         }
         closeCamera();
+    }
+
+    private class CloseBypassCameraTimeoutTask implements Runnable {
+        private final CameraSessionId mSessionId;
+
+        private CloseBypassCameraTimeoutTask(CameraSessionId cameraSessionId) {
+            this.mSessionId = cameraSessionId;
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            CameraSessionInfo openCloseStatusInfo;
+            if (CameraDeviceHandler.this.mActivityIsInForeground
+                    || (openCloseStatusInfo = CameraSessionInfo.getOpenCloseStatusInfo(this.mSessionId)) == null
+                    || !openCloseStatusInfo.isCloseBypassCameraTaskRequested()
+                    || openCloseStatusInfo.isCloseBypassCameraTaskPerformed()) {
+                return;
+            }
+            if (CameraDeviceHandler.this.mCameraDeviceThreadHandler != null) {
+                CameraDeviceHandler.this.mCameraDeviceThreadHandler.getLooper().dump(new Printer() { // from class:
+                                                                                                     // com.sonyericsson.android.camera.device.CameraDeviceHandler.CloseBypassCameraTimeoutTask.1
+                    @Override // android.util.Printer
+                    public void println(String str) {
+                        CamLog.e("CloseBypassCameraTimeoutTask", str);
+                    }
+                }, "");
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.append("\n========== TIMEOUT ==========\n");
+            CameraDeviceHandler.this.dumpStatus(sb);
+            sb.append("=============================");
+            CamLog.e("CloseBypassCameraTimeoutTask", sb.toString().replace(',', '\n'));
+            throw new RuntimeException(
+                    "CloseBypassCameraTimeoutTask: The camera app keeps holding the camera hardware resources.");
+        }
     }
 
     private void cancelCloseBypassCameraTimeoutTask() {
@@ -514,47 +712,112 @@ public class CameraDeviceHandler {
         this.mCloseBypassCameraTimeoutTask = null;
     }
 
-    private void requestCloseBypassCameraTimeoutTask(CameraDeviceHandler$CameraSessionId cameraDeviceHandler$CameraSessionId) {
-        this.mCloseBypassCameraTimeoutTask = new CameraDeviceHandler$CloseBypassCameraTimeoutTask(this, cameraDeviceHandler$CameraSessionId, null);
-        this.mUiThreadHandler.postDelayed(this.mCloseBypassCameraTimeoutTask, 100000L);
+    private void requestCloseBypassCameraTimeoutTask(CameraSessionId cameraSessionId) {
+        this.mCloseBypassCameraTimeoutTask = new CloseBypassCameraTimeoutTask(cameraSessionId);
+        this.mUiThreadHandler.postDelayed(this.mCloseBypassCameraTimeoutTask, CLOSE_BYPASS_CAMERA_TIMEOUT_MILLIS);
     }
 
     private void createCameraActionSound() {
-        this.mCameraDeviceThreadHandler.post(new CameraDeviceHandler$1(this));
+        this.mCameraDeviceThreadHandler.post(new Runnable() { // from class:
+                                                              // com.sonyericsson.android.camera.device.CameraDeviceHandler.1
+            @Override // java.lang.Runnable
+            public void run() {
+                if (CameraDeviceHandler.this.mCameraActionSound == null) {
+                    CameraDeviceHandler.this.mCameraActionSound = new CameraActionSound();
+                    CameraDeviceHandler.this.mCameraActionSound.load(2);
+                    CameraDeviceHandler.this.mCameraActionSound.load(3);
+                    CameraDeviceHandler.this.mCameraActionSound.load(0);
+                }
+            }
+        });
     }
 
     private void releaseCameraActionSound() {
-        this.mCameraDeviceThreadHandler.post(new CameraDeviceHandler$2(this));
+        this.mCameraDeviceThreadHandler.post(new Runnable() { // from class:
+                                                              // com.sonyericsson.android.camera.device.CameraDeviceHandler.2
+            @Override // java.lang.Runnable
+            public void run() {
+                if (CameraDeviceHandler.this.mCameraActionSound != null) {
+                    CameraDeviceHandler.this.mCameraActionSound.release();
+                    CameraDeviceHandler.this.mCameraActionSound = null;
+                }
+            }
+        });
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:19:0x008b  */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
+    private class LoadSettingsThread extends Thread {
+        private final CapturingMode mCapturingMode;
+        private final UserSettings mUserSettings;
+
+        private LoadSettingsThread(CapturingMode capturingMode, UserSettings userSettings) {
+            this.mCapturingMode = capturingMode;
+            this.mUserSettings = userSettings;
+        }
+@Override // java.lang.Thread, java.lang.Runnable
+        public void run() {
+            if (CamLog.DEBUG) {
+                CamLog.d("LoadSettingsThread invoked  casuCapture:" + CameraDeviceHandler.this.mFastCaptureSetting
+                        + " cameraId:" + this.mCapturingMode.getCameraId());
+            }
+            if (CameraDeviceHandler.this.mFastCaptureSetting == FastCapture.LAUNCH_AND_CAPTURE) {
+                CameraSessionId cameraSessionId = null;
+                Object[] objArr = new Object[0];
+                if (GeotagManager.isGeoTagEnabled(
+                        (Geotag) this.mUserSettings.get(this.mCapturingMode, UserSettingKey.GEO_TAG),
+                        CameraDeviceHandler.this.getApplicationContext())) {
+                    CameraDeviceHandler.this.mGeotagManager = new GeotagManager(
+                            CameraDeviceHandler.this.getApplicationContext());
+                    CameraDeviceHandler.this.mGeotagManager.assignResource();
+                    CameraDeviceHandler.this.runOnCameraDeviceThread(new CameraDeviceAccessTask(cameraSessionId) { // from
+                                                                                                                   // class:
+                                                                                                                   // com.sonyericsson.android.camera.device.CameraDeviceHandler.LoadSettingsThread.1
+                        @Override // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraDeviceAccessTask
+                        protected boolean verifyCameraDeviceStatus() {
+                            return true;
+                        }
+
+                        @Override // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraDeviceAccessTask
+                        public void doCameraDeviceAccess() {
+                            if (CameraDeviceHandler.this.getApplicationContext() != null
+                                    && CameraDeviceHandler.this.mGeotagManager != null) {
+                                CameraDeviceHandler.this.mGeotagManager.startLocationUpdates(
+                                        LocationSettingsReader.isLocationProviderAllowed(
+                                                CameraDeviceHandler.this.getApplicationContext(), "gps"),
+                                        LocationSettingsReader.isLocationProviderAllowed(
+                                                CameraDeviceHandler.this.getApplicationContext(), "network"));
+                            } else {
+                                CamLog.d("Camera has been released.");
+                            }
+                        }
+                    });
+                }
+                CameraDeviceHandler.this.mFastCaptureOrientation = new FastCaptureOrientation(
+                        CameraDeviceHandler.this.getApplicationContext());
+                CameraDeviceHandler.this.mFastCaptureOrientation.enable();
+            }
+        }
+    }
+
     public boolean awaitLoadSettingsThread() {
-        boolean z;
         if (this.mLoadSettingsThread == null) {
             CamLog.d("awaitSettingLoadThread thread is unnecessary");
             return true;
         }
+        boolean z = false;
         try {
             this.mLoadSettingsThread.join(4000L);
-        } catch (InterruptedException e) {
-            CamLog.e("Thread:" + this.mLoadSettingsThread.getName() + " is Interrupted.", e);
-        } catch (CancellationException e2) {
-            CamLog.e("Thread:" + this.mLoadSettingsThread.getName() + " is Cancelled.", e2);
-        }
-        if (this.mLoadSettingsThread.isAlive()) {
-            CamLog.e("Thread:" + this.mLoadSettingsThread.getName() + " is Timed out.");
-        } else {
-            z = true;
-            if (CamLog.DEBUG) {
-                CamLog.d("invoked success:" + z);
+            if (this.mLoadSettingsThread.isAlive()) {
+                CamLog.e("Thread:" + this.mLoadSettingsThread.getName() + " is Timed out.");
+            } else {
+                z = true;
             }
-            return z;
+        } catch (CancellationException e) {
+            CamLog.e("Thread:" + this.mLoadSettingsThread.getName() + " is Cancelled.", e);
+        } catch (InterruptedException e2) {
+            CamLog.e("Thread:" + this.mLoadSettingsThread.getName() + " is Interrupted.", e2);
         }
-        z = false;
         if (CamLog.DEBUG) {
+            CamLog.d("invoked success:" + z);
         }
         return z;
     }
@@ -578,9 +841,11 @@ public class CameraDeviceHandler {
             }
             this.mIsFpsLimitationEnabled = true;
             int maxPreviewFps = PlatformCapability.getMaxPreviewFps(parameters.getCameraId());
-            List<int[]> supportedPreviewFpsRange = PlatformCapability.getSupportedPreviewFpsRange(parameters.getCameraId());
+            List<int[]> supportedPreviewFpsRange = PlatformCapability
+                    .getSupportedPreviewFpsRange(parameters.getCameraId());
             if (supportedPreviewFpsRange != null) {
-                setFpsRange(CameraDeviceUtil.computePreviewFpsRange(parameters.getCameraId(), maxPreviewFps, supportedPreviewFpsRange));
+                setFpsRange(CameraDeviceUtil.computePreviewFpsRange(parameters.getCameraId(), maxPreviewFps,
+                        supportedPreviewFpsRange));
                 this.mCameraController.commitParameters(this.mCameraSessionId);
             }
         }
@@ -601,21 +866,24 @@ public class CameraDeviceHandler {
         if (parameters == null) {
             return;
         }
-        RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilderCreatePreCaptureSavingRequest = createPreCaptureSavingRequest(parameters);
+        RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilderCreatePreCaptureSavingRequest = createPreCaptureSavingRequest(
+                parameters);
         PerfLog.FAST_PRE_CAPTURE.transit();
-        changePreProcessStateTo(CameraDeviceHandler$PreProcessState.PRE_CAPTURE_STARTED);
-        this.mBypassCameraController.requestSnapshot(this.mCameraSessionId, requestFactory$PhotoSavingRequestBuilderCreatePreCaptureSavingRequest, 1);
+        changePreProcessStateTo(PreProcessState.PRE_CAPTURE_STARTED);
+        this.mBypassCameraController.requestSnapshot(this.mCameraSessionId,
+                photoSavingRequestBuilderCreatePreCaptureSavingRequest, 1);
     }
 
     public boolean isPreScanOnGoing() {
-        return this.mPreProcessState == CameraDeviceHandler$PreProcessState.PRE_SCAN_STARTED;
+        return this.mPreProcessState == PreProcessState.PRE_SCAN_STARTED;
     }
 
     public boolean isPreCaptureOnGoing() {
-        return this.mPreProcessState == CameraDeviceHandler$PreProcessState.PRE_CAPTURE_STARTED || this.mPreProcessState == CameraDeviceHandler$PreProcessState.PRE_SHUTTER_DONE;
+        return this.mPreProcessState == PreProcessState.PRE_CAPTURE_STARTED
+                || this.mPreProcessState == PreProcessState.PRE_SHUTTER_DONE;
     }
 
-    public CameraDeviceHandler$PreProcessState getPreProcessState() {
+    public PreProcessState getPreProcessState() {
         return this.mPreProcessState;
     }
 
@@ -672,7 +940,10 @@ public class CameraDeviceHandler {
                 CamLog.d("invoked value:" + flash);
             }
             parameters.setFlashMode(flash.getValue());
-            new EachCameraStatusPublisher(getApplicationContext(), parameters.getCameraId()).put(new PhotoLight("torch".equals(flash.getValue()) ? PhotoLight$Value.ON : PhotoLight$Value.OFF)).publish();
+            new EachCameraStatusPublisher(getApplicationContext(), parameters.getCameraId())
+                    .put(new PhotoLight(CameraParameters.FLASH_MODE_TORCH.equals(flash.getValue()) ? PhotoLight.Value.ON
+                            : PhotoLight.Value.OFF))
+                    .publish();
         }
     }
 
@@ -753,7 +1024,7 @@ public class CameraDeviceHandler {
         this.mCameraController.stopSceneRecognition(this.mCameraSessionId);
     }
 
-    public CameraInfo$CameraId getCameraId() {
+    public CameraInfo.CameraId getCameraId() {
         CameraParameters parameters = getParameters(this.mCameraSessionId);
         if (parameters != null) {
             return parameters.getCameraId();
@@ -762,21 +1033,25 @@ public class CameraDeviceHandler {
     }
 
     public boolean isCameraFront() {
-        return getCameraId() == CameraInfo$CameraId.FRONT;
+        return getCameraId() == CameraInfo.CameraId.FRONT;
     }
 
     public Rect getPreviewRect(CapturingMode capturingMode, Rect rect) {
         if (capturingMode.isVideo()) {
             CameraParameters parameters = getParameters(this.mCameraSessionId);
             if (parameters == null) {
-                return this.mCameraController.getVideoPreviewSize(this.mCameraSessionId, capturingMode.getCameraId(), rect);
-            }
-            if (parameters.getVideoHdr() == VideoHdr.HDR_ON) {
+                return this.mCameraController.getVideoPreviewSize(this.mCameraSessionId,
+                        capturingMode.getCameraId(), rect);
+            } else if (parameters.getVideoHdr() == VideoHdr.HDR_ON) {
                 return PlatformCapability.getPreferredPreviewSizeForHdrVideo(capturingMode.getCameraId());
+            } else {
+                return this.mCameraController.getVideoPreviewSize(this.mCameraSessionId,
+                        capturingMode.getCameraId(), rect);
             }
-            return this.mCameraController.getVideoPreviewSize(this.mCameraSessionId, capturingMode.getCameraId(), rect);
+        } else {
+            return this.mCameraController.getPhotoPreviewSize(this.mCameraSessionId, capturingMode.getCameraId(),
+                    rect);
         }
-        return this.mCameraController.getPhotoPreviewSize(this.mCameraSessionId, capturingMode.getCameraId(), rect);
     }
 
     public void setShutterTrigger(ShutterTrigger shutterTrigger) {
@@ -824,8 +1099,8 @@ public class CameraDeviceHandler {
         if (!isRecorderWorking()) {
             this.mCameraController.stopPreview(this.mCameraSessionId);
         }
-        LocalResearchUtil.getInstance().setMeasurementValid(LocalResearchUtil$MeasurementKey.CLOSE_INITIAL_RESPONSE);
-        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil$MeasurementKey.CLOSE_INITIAL_RESPONSE);
+        LocalResearchUtil.getInstance().setMeasurementValid(LocalResearchUtil.MeasurementKey.CLOSE_INITIAL_RESPONSE);
+        LocalResearchUtil.getInstance().stopMeasurement(LocalResearchUtil.MeasurementKey.CLOSE_INITIAL_RESPONSE);
     }
 
     public void stopPreviewSynchronized() {
@@ -843,11 +1118,14 @@ public class CameraDeviceHandler {
             CamLog.d("invoked");
         }
         if (isBypassCameraSupported()) {
-            AfParametersReflectedChecker afParametersReflectedCheckerCreateAfParametersResultChecker = this.mCameraController.createAfParametersResultChecker(this.mCameraSessionId, this.mUiThreadHandler);
-            if (this.mCameraController.isAfParametersReflectedToDevice(afParametersReflectedCheckerCreateAfParametersResultChecker)) {
+            AfParametersReflectedChecker afParametersReflectedCheckerCreateAfParametersResultChecker = this.mCameraController
+                    .createAfParametersResultChecker(this.mCameraSessionId, this.mUiThreadHandler);
+            if (this.mCameraController
+                    .isAfParametersReflectedToDevice(afParametersReflectedCheckerCreateAfParametersResultChecker)) {
                 this.mBypassCameraController.requestSnapshotReady(this.mCameraSessionId);
             } else {
-                this.mUiThreadHandler.postDelayed(this.mCameraController.requestSnapshotReadyAfterAfParametersReflected(this.mCameraSessionId, afParametersReflectedCheckerCreateAfParametersResultChecker), 5000L);
+                CamLog.w("AF parameters not reflected. Request snapshot ready immediately.");
+                this.mBypassCameraController.requestSnapshotReady(this.mCameraSessionId);
             }
         }
     }
@@ -861,11 +1139,43 @@ public class CameraDeviceHandler {
         }
     }
 
-    private RequestFactory$PhotoSavingRequestBuilder createPreCaptureSavingRequest(CameraParameters cameraParameters) {
-        return new RequestFactory$PhotoSavingRequestBuilder(new TakenStatusCommon(System.currentTimeMillis(), this.mFastCaptureOrientation != null ? CameraDeviceHandler$FastCaptureOrientation.access$2100(this.mFastCaptureOrientation) : 0, this.mGeotagManager != null ? this.mGeotagManager.getCurrentLocation() : null, cameraParameters.getPictureSize().width(), cameraParameters.getPictureSize().height(), "image/jpeg", ".JPG", SavingTaskManager$SavedFileType.PHOTO, null, "", false, true), new TakenStatusPhoto(), true);
+    private class FastCaptureOrientation extends OrientationEventListener {
+        private int mOrientation;
+
+        private FastCaptureOrientation(Context context) {
+            super(context);
+            this.mOrientation = -1;
+        }
+
+        @Override // android.view.OrientationEventListener
+        public void onOrientationChanged(int i) {
+            this.mOrientation = i;
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private int getOrientation() {
+            int normalizedRotation = RotationUtil.getNormalizedRotation(this.mOrientation);
+            CameraInfo cameraInfo = CameraDeviceHandler.this.getCameraInfo();
+            switch (cameraInfo.facing) {
+                case BACK:
+                    return (cameraInfo.orientation + normalizedRotation) % 360;
+                case FRONT:
+                    return (cameraInfo.orientation + 360 - normalizedRotation) % 360;
+            }
+            return (cameraInfo.orientation + normalizedRotation) % 360;
+        }
     }
 
-    public void applySavingRequest(RequestFactory$RequestBuilder requestFactory$RequestBuilder) {
+    private RequestFactory.PhotoSavingRequestBuilder createPreCaptureSavingRequest(CameraParameters cameraParameters) {
+        return new RequestFactory.PhotoSavingRequestBuilder(new TakenStatusCommon(System.currentTimeMillis(),
+                this.mFastCaptureOrientation != null ? this.mFastCaptureOrientation.getOrientation() : 0,
+                this.mGeotagManager != null ? this.mGeotagManager.getCurrentLocation() : null,
+                cameraParameters.getPictureSize().width(), cameraParameters.getPictureSize().height(),
+                MediaSavingConstants.MEDIA_TYPE_JPEG_MIME, MediaSavingConstants.MEDIA_TYPE_JPEG_EXT,
+                SavingTaskManager.SavedFileType.PHOTO, null, "", false, true), new TakenStatusPhoto(), true);
+    }
+
+    public void applySavingRequest(RequestFactory.RequestBuilder requestBuilder) {
         CameraParameters parameters = getParameters(this.mCameraSessionId);
         if (parameters == null) {
             if (CamLog.DEBUG) {
@@ -874,11 +1184,12 @@ public class CameraDeviceHandler {
             }
             return;
         }
-        parameters.setRotation(requestFactory$RequestBuilder.mCommonStatus.orientation);
+        parameters.setRotation(requestBuilder.mCommonStatus.orientation);
         parameters.removeGpsData();
-        if (requestFactory$RequestBuilder.mCommonStatus.location != null) {
-            if ((requestFactory$RequestBuilder.mCommonStatus.location.getLatitude() == 0.0d && requestFactory$RequestBuilder.mCommonStatus.location.getLongitude() == 0.0d) ? false : true) {
-                parameters.setGpsData(requestFactory$RequestBuilder.mCommonStatus.location);
+        if (requestBuilder.mCommonStatus.location != null) {
+            if ((requestBuilder.mCommonStatus.location.getLatitude() == 0.0d
+                    && requestBuilder.mCommonStatus.location.getLongitude() == 0.0d) ? false : true) {
+                parameters.setGpsData(requestBuilder.mCommonStatus.location);
             }
         }
         if (CamLog.DEBUG) {
@@ -887,13 +1198,14 @@ public class CameraDeviceHandler {
         this.mCameraController.commitParameters(this.mCameraSessionId);
     }
 
-    public void takePicture(RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder) {
+    public void takePicture(RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder) {
         if (CamLog.DEBUG) {
-            CamLog.d("invoked datetaken:" + requestFactory$PhotoSavingRequestBuilder.getDateTaken());
+            CamLog.d("invoked datetaken:" + photoSavingRequestBuilder.getDateTaken());
         }
         CameraParameters parameters = getParameters(this.mCameraSessionId);
         if (parameters != null && isBypassCameraSupported()) {
-            this.mBypassCameraController.requestSnapshot(this.mCameraSessionId, requestFactory$PhotoSavingRequestBuilder, parameters.getPredictiveCaptureNum());
+            this.mBypassCameraController.requestSnapshot(this.mCameraSessionId, photoSavingRequestBuilder,
+                    parameters.getPredictiveCaptureNum());
         }
     }
 
@@ -987,10 +1299,11 @@ public class CameraDeviceHandler {
         if (CamLog.DEBUG) {
             CamLog.d("invoked current-focus-mode:" + parameters.getFocusMode());
         }
-        if (!"manual".equals(parameters.getFocusMode())) {
-            parameters.setFocusMode(PlatformDependencyResolver.getDefaultFocusModeForFastCapturePhoto(parameters, getCameraId()));
+        if (!CameraParameters.FOCUS_MODE_MANUAL.equals(parameters.getFocusMode())) {
+            parameters.setFocusMode(
+                    PlatformDependencyResolver.getDefaultFocusModeForFastCapturePhoto(parameters, getCameraId()));
         }
-        parameters.setFocusArea("center");
+        parameters.setFocusArea(CameraParameters.FOCUS_AREA_CENTER);
         parameters.setFocusRectangles(null);
         this.mCameraController.commitParameters(this.mCameraSessionId);
     }
@@ -1000,25 +1313,28 @@ public class CameraDeviceHandler {
     }
 
     public boolean isCameraDeviceStatusReady() {
-        return this.mCameraController.getCameraDeviceStatus() == CameraDeviceHandler$CameraDeviceStatus.STATUS_READY;
+        return this.mCameraController.getCameraDeviceStatus() == CameraDeviceStatus.STATUS_READY;
     }
 
-    public void updateRecorder(RequestFactory$VideoSavingRequestBuilder requestFactory$VideoSavingRequestBuilder, boolean z) {
+    public void updateRecorder(RequestFactory.VideoSavingRequestBuilder videoSavingRequestBuilder, boolean z) {
         if (CamLog.DEBUG) {
             CamLog.d("invoked recorder-is-ready:" + isRecorderReady() + "shutter-sound-requested:" + z);
         }
         if (isRecorderReady()) {
-            this.mLastVideoSavingRequest = requestFactory$VideoSavingRequestBuilder;
-            this.mVideoRecorder.setLocation(requestFactory$VideoSavingRequestBuilder.mCommonStatus.location);
-            this.mVideoRecorder.setOrientationHint(requestFactory$VideoSavingRequestBuilder.mCommonStatus.orientation);
-            this.mVideoRecorder.setMaxDurationMillis(requestFactory$VideoSavingRequestBuilder.mVideoStatus.maxDurationMills);
-            this.mVideoRecorder.setMaxFileSizeBytes(requestFactory$VideoSavingRequestBuilder.mVideoStatus.maxFileSizeBytes);
-            this.mVideoRecorder.setOutputFilePath(requestFactory$VideoSavingRequestBuilder.getFilePath());
+            this.mLastVideoSavingRequest = videoSavingRequestBuilder;
+            this.mVideoRecorder.setLocation(videoSavingRequestBuilder.mCommonStatus.location);
+            this.mVideoRecorder.setOrientationHint(videoSavingRequestBuilder.mCommonStatus.orientation);
+            this.mVideoRecorder.setMaxDurationMillis(videoSavingRequestBuilder.mVideoStatus.maxDurationMills);
+            this.mVideoRecorder.setMaxFileSizeBytes(videoSavingRequestBuilder.mVideoStatus.maxFileSizeBytes);
+            this.mVideoRecorder.setOutputFilePath(videoSavingRequestBuilder.getFilePath());
             this.mVideoRecorder.setUserSoundSetting(z);
         }
     }
 
-    public void prepareRecorder(RequestFactory$VideoSavingRequestBuilder requestFactory$VideoSavingRequestBuilder, RecorderController$RecorderListener recorderController$RecorderListener, OnSuperSlowRecordingFinishedListener onSuperSlowRecordingFinishedListener, boolean z, RecordingProfile recordingProfile, Storage$StorageWriteNotifier storage$StorageWriteNotifier) {
+    public void prepareRecorder(RequestFactory.VideoSavingRequestBuilder videoSavingRequestBuilder,
+            RecorderController.RecorderListener recorderListener,
+            OnSuperSlowRecordingFinishedListener onSuperSlowRecordingFinishedListener, boolean z,
+            RecordingProfile recordingProfile, Storage.StorageWriteNotifier storageWriteNotifier) {
         if (this.mVideoRecorder != null && this.mVideoRecorder.isStopping()) {
             if (CamLog.DEBUG) {
                 CamLog.d("Recorder is stopping, so this request is refused.");
@@ -1033,37 +1349,73 @@ public class CameraDeviceHandler {
             }
             return;
         }
-        this.mLastVideoSavingRequest = requestFactory$VideoSavingRequestBuilder;
-        Uri extraOutput = requestFactory$VideoSavingRequestBuilder.getExtraOutput();
+        this.mLastVideoSavingRequest = videoSavingRequestBuilder;
+        Uri extraOutput = videoSavingRequestBuilder.getExtraOutput();
         if (extraOutput == null) {
-            extraOutput = Uri.fromFile(new File(requestFactory$VideoSavingRequestBuilder.getFilePath()));
+            extraOutput = Uri.fromFile(new File(videoSavingRequestBuilder.getFilePath()));
         }
         CameraParameters parameters = getParameters(this.mCameraSessionId);
         if (parameters == null) {
             return;
         }
-        RecorderFactory$Parameters recorderFactory$Parameters = new RecorderFactory$Parameters(recorderController$RecorderListener, onSuperSlowRecordingFinishedListener, recordingProfile.getProgressInterval(), z, parameters.getVideoStabilizer(), parameters.getSlowMotion());
+        RecorderFactory.Parameters parameters2 = new RecorderFactory.Parameters(recorderListener,
+                onSuperSlowRecordingFinishedListener, recordingProfile.getProgressInterval(), z,
+                parameters.getVideoStabilizer(), parameters.getSlowMotion());
         releaseRecorder();
-        CameraDeviceHandler$3 cameraDeviceHandler$3 = new CameraDeviceHandler$3(this);
-        CameraDeviceHandler$4 cameraDeviceHandler$4 = new CameraDeviceHandler$4(this);
+        Accessor<BypassCamera> accessor = new Accessor<BypassCamera>() { // from class:
+                                                                         // com.sonyericsson.android.camera.device.CameraDeviceHandler.3
+@Override // com.sonyericsson.android.camera.recorder.utility.Accessor
+            public BypassCamera get() {
+                return CameraDeviceHandler.this.mBypassCameraController.getBypassCameraInstance();
+            }
+        };
+        Accessor<CameraActionSound> accessor2 = new Accessor<CameraActionSound>() { // from class:
+                                                                                    // com.sonyericsson.android.camera.device.CameraDeviceHandler.4
+@Override // com.sonyericsson.android.camera.recorder.utility.Accessor
+            public CameraActionSound get() {
+                return CameraDeviceHandler.this.mCameraActionSound;
+            }
+        };
         VideoSize videoSize = getParameters().getVideoSize();
-        this.mVideoRecorder = RecorderFactory.create(getApplicationContext(), cameraDeviceHandler$4, cameraDeviceHandler$3, this.mUiThreadHandler, this.mCameraDeviceThreadHandler, recorderFactory$Parameters, (int) PlatformCapability.getSuperSlowFrameRate(parameters.getCameraId(), videoSize), (int) PlatformCapability.getSuperSlowFrameNum(parameters.getCameraId(), videoSize));
-        this.mVideoRecorder.setStorageWriteNotifier(storage$StorageWriteNotifier);
+        this.mVideoRecorder = RecorderFactory.create(getApplicationContext(), accessor2, accessor,
+                this.mUiThreadHandler, this.mCameraDeviceThreadHandler, parameters2,
+                (int) PlatformCapability.getSuperSlowFrameRate(parameters.getCameraId(), videoSize),
+                (int) PlatformCapability.getSuperSlowFrameNum(parameters.getCameraId(), videoSize));
+        this.mVideoRecorder.setStorageWriteNotifier(storageWriteNotifier);
         CamcorderProfile camcorderProfile = recordingProfile.getCamcorderProfile();
         if (camcorderProfile == null) {
             CamLog.e("prepareRecorder() : CamcorderProfile is null.");
             throw new RuntimeException("CamcorderProfile is null.");
         }
-        boolean z2 = (parameters.getSlowMotion() == com.sonyericsson.android.camera.configuration.parameters.SlowMotion.SUPER_SLOW_SHOT || RecordingUtil.isAudioPolicyActive(getApplicationContext())) ? false : true;
+        boolean z2 = (parameters
+                .getSlowMotion() == com.sonyericsson.android.camera.configuration.parameters.SlowMotion.SUPER_SLOW_SHOT
+                || RecordingUtil.isAudioPolicyActive(getApplicationContext())) ? false : true;
         if (CamLog.DEBUG) {
             CamLog.d("invoked uri:" + extraOutput + " audio-record-enabled:" + z2);
         }
-        if (this.mVideoRecorder.prepare(new RecorderParameters$Builder(extraOutput, camcorderProfile).setLocation(requestFactory$VideoSavingRequestBuilder.mCommonStatus.location).setMaxDuration((int) requestFactory$VideoSavingRequestBuilder.mVideoStatus.maxDurationMills).setMaxFileSize(requestFactory$VideoSavingRequestBuilder.mVideoStatus.maxFileSizeBytes).setMicrophoneEnabled(z2).setOrientationHint(requestFactory$VideoSavingRequestBuilder.mCommonStatus.orientation).setHdr(parameters.getVideoHdr() == VideoHdr.HDR_ON).setDataSpace(recordingProfile.dataSpace).build())) {
+        if (this.mVideoRecorder.prepare(new RecorderParameters.Builder(extraOutput, camcorderProfile)
+                .setLocation(videoSavingRequestBuilder.mCommonStatus.location)
+                .setMaxDuration((int) videoSavingRequestBuilder.mVideoStatus.maxDurationMills)
+                .setMaxFileSize(videoSavingRequestBuilder.mVideoStatus.maxFileSizeBytes).setMicrophoneEnabled(z2)
+                .setOrientationHint(videoSavingRequestBuilder.mCommonStatus.orientation)
+                .setHdr(parameters.getVideoHdr() == VideoHdr.HDR_ON).setDataSpace(recordingProfile.dataSpace)
+                .build())) {
             return;
         }
         CamLog.e("prepareRecorder() : Failed to prepare MediaRecorder.");
         releaseRecorder();
         throw new RuntimeException("prepareRecorder():[Failed to prepare MediaRecorder.]");
+    }
+
+    {
+        this.mChangeProviderDeviceStatusToRecordingTask = new Runnable() { // from class:
+                                                                            // com.sonyericsson.android.camera.device.CameraDeviceHandler.5
+            @Override // java.lang.Runnable
+            public void run() {
+                CameraDeviceHandler.this.mCameraController
+                        .changeProviderDeviceStatusToRecording(CameraDeviceHandler.this.mCameraSessionId);
+            }
+        };
     }
 
     public boolean isSteadyShotSupported() {
@@ -1072,7 +1424,8 @@ public class CameraDeviceHandler {
             CamLog.w("[getParameters failed] Did not check availability of VideoStabilizer.");
             return false;
         }
-        return VideoStabilizer.STEADY_SHOT.isValueEnabled(parameters.getCameraId(), parameters.getVideoSize(), parameters.getVideoHdr());
+        return VideoStabilizer.STEADY_SHOT.isValueEnabled(parameters.getCameraId(), parameters.getVideoSize(),
+                parameters.getVideoHdr());
     }
 
     public void releaseRecorder() {
@@ -1087,6 +1440,7 @@ public class CameraDeviceHandler {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void releaseRecorderOnCameraClosed() {
         synchronized (this.mVideoRecorderLock) {
             if (this.mVideoRecorder != null) {
@@ -1111,7 +1465,8 @@ public class CameraDeviceHandler {
             CamLog.e("mMediaRecorder.start() fail.");
             releaseVideo();
             if (this.mLastVideoSavingRequest.getFilePath() != null) {
-                if (StorageUtil.getStorageTypeFromPath(this.mLastVideoSavingRequest.getFilePath(), this.mApplicationContext) != Storage$StorageType.EXTERNAL_CARD) {
+                if (StorageUtil.getStorageTypeFromPath(this.mLastVideoSavingRequest.getFilePath(),
+                        this.mApplicationContext) != Storage.StorageType.EXTERNAL_CARD) {
                     try {
                         File file = new File(this.mLastVideoSavingRequest.getFilePath());
                         if (file.exists() && file.isFile() && !file.delete()) {
@@ -1121,10 +1476,12 @@ public class CameraDeviceHandler {
                         CamLog.e("startRecording: [Unable to delete empty media file.]");
                     }
                 } else {
-                    Uri uriSearchDocumentSdCard = StorageUtil.searchDocumentSdCard(this.mApplicationContext, this.mLastVideoSavingRequest.getFilePath());
+                    Uri uriSearchDocumentSdCard = StorageUtil.searchDocumentSdCard(this.mApplicationContext,
+                            this.mLastVideoSavingRequest.getFilePath());
                     if (uriSearchDocumentSdCard != null) {
                         try {
-                            if (!DocumentsContract.deleteDocument(this.mApplicationContext.getContentResolver(), uriSearchDocumentSdCard)) {
+                            if (!DocumentsContract.deleteDocument(this.mApplicationContext.getContentResolver(),
+                                    uriSearchDocumentSdCard)) {
                                 CamLog.w("deleteDocument: [delete failed.]" + uriSearchDocumentSdCard.toString());
                             }
                         } catch (FileNotFoundException | SecurityException e2) {
@@ -1164,11 +1521,13 @@ public class CameraDeviceHandler {
             this.mBypassCameraController.awaitAllSnapshotDone();
         }
         cancelChangeProviderDeviceStatusToRecording();
-        new EachCameraStatusPublisher(getApplicationContext(), getCameraId()).put(new DeviceStatus(DeviceStatus$Value.VIDEO_PREVIEW)).publish();
+        new EachCameraStatusPublisher(getApplicationContext(), getCameraId())
+                .put(new DeviceStatus(DeviceStatus.Value.VIDEO_PREVIEW)).publish();
         synchronized (this.mVideoRecorderLock) {
             if (this.mVideoRecorder != null) {
                 if (CamLog.DEBUG) {
-                    CamLog.d("invoked capturing:" + z + " recording:" + this.mVideoRecorder.isRecording() + " paused:" + this.mVideoRecorder.isPaused());
+                    CamLog.d("invoked capturing:" + z + " recording:" + this.mVideoRecorder.isRecording() + " paused:"
+                            + this.mVideoRecorder.isPaused());
                 }
                 if (this.mVideoRecorder.isRecording() || this.mVideoRecorder.isPaused()) {
                     try {
@@ -1243,8 +1602,8 @@ public class CameraDeviceHandler {
         releaseRecorder();
     }
 
-    public void captureWhileRecording(RequestFactory$PhotoSavingRequestBuilder requestFactory$PhotoSavingRequestBuilder) {
-        takePicture(requestFactory$PhotoSavingRequestBuilder);
+    public void captureWhileRecording(RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder) {
+        takePicture(photoSavingRequestBuilder);
     }
 
     public void requestOnePreviewFrame() {
@@ -1254,11 +1613,12 @@ public class CameraDeviceHandler {
         this.mCameraController.requestOnePreviewFrame(this.mCameraSessionId, this.mUiThreadHandler);
     }
 
-    public void startObjectTracking(Rect rect, CameraParameters$ObjectTrackingCallback cameraParameters$ObjectTrackingCallback) {
+    public void startObjectTracking(Rect rect, CameraParameters.ObjectTrackingCallback objectTrackingCallback) {
         if (CamLog.DEBUG) {
             CamLog.d("invoked position:" + rect);
         }
-        this.mCameraController.startObjectTracking(this.mCameraSessionId, this.mUiThreadHandler, rect, cameraParameters$ObjectTrackingCallback);
+        this.mCameraController.startObjectTracking(this.mCameraSessionId, this.mUiThreadHandler, rect,
+                objectTrackingCallback);
     }
 
     public void stopObjectTracking() {
@@ -1282,7 +1642,7 @@ public class CameraDeviceHandler {
         this.mCameraController.stopFusionMonitoring();
     }
 
-    public CameraParameters$FusionResult getLatestFusionResult() {
+    public CameraParameters.FusionResult getLatestFusionResult() {
         return this.mCameraController.getLatestFusionResult();
     }
 
@@ -1298,15 +1658,18 @@ public class CameraDeviceHandler {
         if (this.mVideoRecorder == null) {
             return false;
         }
-        if (!this.mVideoRecorder.isRecording() && !this.mVideoRecorder.isPaused() && !this.mVideoRecorder.isStopping()) {
+        if (!this.mVideoRecorder.isRecording() && !this.mVideoRecorder.isPaused()
+                && !this.mVideoRecorder.isStopping()) {
             return false;
         }
-        CamLog.d("invoked isRecorderWorking() isRecording:" + this.mVideoRecorder.isRecording() + " isPaused:" + this.mVideoRecorder.isPaused() + " isStopping:" + this.mVideoRecorder.isStopping());
+        CamLog.d("invoked isRecorderWorking() isRecording:" + this.mVideoRecorder.isRecording() + " isPaused:"
+                + this.mVideoRecorder.isPaused() + " isStopping:" + this.mVideoRecorder.isStopping());
         return true;
     }
 
     public boolean canRecorderTakeSnapshot() {
-        return isBypassCameraNextShotAvailable() && !this.mVideoRecorder.isStarting() && (this.mVideoRecorder.isRecording() || this.mVideoRecorder.isPaused());
+        return isBypassCameraNextShotAvailable() && !this.mVideoRecorder.isStarting()
+                && (this.mVideoRecorder.isRecording() || this.mVideoRecorder.isPaused());
     }
 
     public void setTorchAndCommit(boolean z) {
@@ -1334,7 +1697,7 @@ public class CameraDeviceHandler {
             if (CamLog.DEBUG) {
                 CamLog.d("invoked");
             }
-            parameters.setPowerMode("low");
+            parameters.setPowerMode(CameraParameters.POWER_SAVING_MODE_LOW_POWER);
             this.mCameraController.commitParameters(this.mCameraSessionId);
         }
     }
@@ -1349,7 +1712,7 @@ public class CameraDeviceHandler {
             if (CamLog.DEBUG) {
                 CamLog.d("invoked");
             }
-            parameters.setPowerMode("ultra-low");
+            parameters.setPowerMode(CameraParameters.POWER_SAVING_MODE_ULTRA_LOW_POWER);
             this.mCameraController.commitParameters(this.mCameraSessionId);
         }
     }
@@ -1375,14 +1738,15 @@ public class CameraDeviceHandler {
         if (CamLog.DEBUG && (parameters = getParameters(this.mCameraSessionId)) != null) {
             String predictiveCapture2 = parameters.getPredictiveCapture();
             if (!predictiveCapture.getValue().equals(predictiveCapture2)) {
-                CamLog.d("PredictiveCapture setting was changed : " + predictiveCapture2 + " -> " + predictiveCapture.getValue());
+                CamLog.d("PredictiveCapture setting was changed : " + predictiveCapture2 + " -> "
+                        + predictiveCapture.getValue());
             }
         }
         setPredictiveCapture(predictiveCapture);
         this.mBypassCameraController.commitParameters(this.mCameraSessionId);
     }
 
-    public void setEv(Ev ev) {
+    public void setEv(Ev enumC0739Ev) {
         CameraParameters parameters = getParameters(this.mCameraSessionId);
         if (parameters == null) {
             if (CamLog.DEBUG) {
@@ -1390,9 +1754,9 @@ public class CameraDeviceHandler {
             }
         } else {
             if (CamLog.DEBUG) {
-                CamLog.d("invoked value:" + ev);
+                CamLog.d("invoked value:" + enumC0739Ev);
             }
-            parameters.setExposureCompensation(ev.getIntValue());
+            parameters.setExposureCompensation(enumC0739Ev.getIntValue());
         }
     }
 
@@ -1510,14 +1874,15 @@ public class CameraDeviceHandler {
                 parameters.setAeMode("auto");
                 return;
             } else {
-                parameters.setAeMode("shutter-prio");
+                parameters.setAeMode(CameraParameters.AE_MODE_SHUTTER_PRIO);
                 return;
             }
         }
         if (ShutterSpeed.AUTO.getShutterSpeedInNanoMillis() == parameters.getShutterSpeed()) {
-            parameters.setAeMode("iso-prio");
-        } else if (PlatformCapability.getSupportedAeModes(parameters.getCameraId()).contains("semi-auto")) {
-            parameters.setAeMode("semi-auto");
+            parameters.setAeMode(CameraParameters.AE_MODE_ISO_PRIO);
+        } else if (PlatformCapability.getSupportedAeModes(parameters.getCameraId())
+                .contains(CameraParameters.AE_MODE_SEMI_AUTO)) {
+            parameters.setAeMode(CameraParameters.AE_MODE_SEMI_AUTO);
         } else {
             setShutterSpeed(ShutterSpeed.AUTO);
         }
@@ -1543,7 +1908,9 @@ public class CameraDeviceHandler {
         if (CamLog.DEBUG) {
             CamLog.d("invoked value:" + rect);
         }
-        setMeteringArea(rect != null ? new Rect(PositionConverter.getInstance().convertFromViewToActiveArray(rect)) : null, metering);
+        setMeteringArea(
+                rect != null ? new Rect(PositionConverter.getInstance().convertFromViewToActiveArray(rect)) : null,
+                metering);
         this.mCameraController.commitParameters(this.mCameraSessionId);
     }
 
@@ -1570,7 +1937,7 @@ public class CameraDeviceHandler {
         parameters.setMeteringArea(arrayList);
     }
 
-    public void setResolution(CameraInfo$CameraId cameraInfo$CameraId, Resolution resolution) {
+    public void setResolution(CameraInfo.CameraId cameraId, Resolution resolution) {
         CameraParameters parameters = getParameters(this.mCameraSessionId);
         if (parameters == null) {
             if (CamLog.DEBUG) {
@@ -1580,16 +1947,27 @@ public class CameraDeviceHandler {
             return;
         }
         if (CamLog.DEBUG) {
-            CamLog.d("invoked cameraId:" + cameraInfo$CameraId + " resolution:" + resolution + " prev-resolution:" + parameters.getPictureSize() + " video:" + this.mIsVideo);
+            CamLog.d("invoked cameraId:" + cameraId + " resolution:" + resolution + " prev-resolution:"
+                    + parameters.getPictureSize() + " video:" + this.mIsVideo);
         }
         if (parameters.getPictureSize() != resolution.getPictureRect() && !this.mIsVideo) {
             this.mBypassCameraController.requestApplyBypassCameraMode();
         }
-        Rect photoPreviewSize = this.mCameraController.getPhotoPreviewSize(this.mCameraSessionId, cameraInfo$CameraId, resolution.getPictureRect());
+        Rect photoPreviewSize = this.mCameraController.getPhotoPreviewSize(this.mCameraSessionId, cameraId,
+                resolution.getPictureRect());
         if (photoPreviewSize != null && !this.mIsVideo) {
             parameters.setPictureSize(resolution.getPictureRect());
             setPreviewSize(photoPreviewSize);
             return;
+        }
+        if (!this.mIsVideo) {
+            Rect fallbackPreviewSize = PlatformDependencyResolver
+                    .getPreferredPreviewSizeFromCaptureSize(resolution.getPictureRect());
+            if (fallbackPreviewSize != null) {
+                parameters.setPictureSize(resolution.getPictureRect());
+                setPreviewSize(fallbackPreviewSize);
+                return;
+            }
         }
         throw new IllegalArgumentException();
     }
@@ -1608,12 +1986,14 @@ public class CameraDeviceHandler {
         }
         this.mCameraController.triggerRestartPreview(this.mCameraSessionId, false);
         parameters.setPreviewSize(rect);
-        Rect rectAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance().getRectAccordingToLayoutOrientation(rect);
-        PositionConverter.getInstance().setPreviewSize(rectAccordingToLayoutOrientation.width(), rectAccordingToLayoutOrientation.height());
+        Rect rectAccordingToLayoutOrientation = LayoutOrientationResolver.getInstance()
+                .getRectAccordingToLayoutOrientation(rect);
+        PositionConverter.getInstance().setPreviewSize(rectAccordingToLayoutOrientation.width(),
+                rectAccordingToLayoutOrientation.height());
     }
 
     public void setSoftSkin(SoftSkin softSkin) {
-        if (this.mIsVideo || getCameraId() == CameraInfo$CameraId.BACK) {
+        if (this.mIsVideo || getCameraId() == CameraInfo.CameraId.BACK) {
             if (CamLog.DEBUG) {
                 CamLog.d("This request was refused. video:" + this.mIsVideo + " cameraId:" + getCameraId());
                 return;
@@ -1651,19 +2031,23 @@ public class CameraDeviceHandler {
         parameters.setVideoStabilizer(videoStabilizer.getValue());
     }
 
-    public void setPreviewSizeAndFpsRangeForVideo(CameraInfo$CameraId cameraInfo$CameraId, VideoSize videoSize, VideoHdr videoHdr) {
+    public void setPreviewSizeAndFpsRangeForVideo(CameraInfo.CameraId cameraId, VideoSize videoSize,
+            VideoHdr videoHdr) {
         Rect videoPreviewSize;
         if (CamLog.DEBUG) {
-            CamLog.d("invoked cameraId:" + cameraInfo$CameraId + " video-size:" + videoSize);
+            CamLog.d("invoked cameraId:" + cameraId + " video-size:" + videoSize);
         }
         if (videoHdr == VideoHdr.HDR_ON) {
-            videoPreviewSize = PlatformCapability.getPreferredPreviewSizeForHdrVideo(cameraInfo$CameraId);
+            videoPreviewSize = PlatformCapability.getPreferredPreviewSizeForHdrVideo(cameraId);
         } else {
-            videoPreviewSize = this.mCameraController.getVideoPreviewSize(this.mCameraSessionId, cameraInfo$CameraId, videoSize.getVideoRect());
+            videoPreviewSize = this.mCameraController.getVideoPreviewSize(this.mCameraSessionId, cameraId,
+                    videoSize.getVideoRect());
         }
         if (videoPreviewSize != null) {
             setPreviewSize(videoPreviewSize);
-            setFpsRange(CameraDeviceUtil.computePreviewFpsRange(cameraInfo$CameraId, RecordingProfile.getVideoFrameRate(videoSize, videoHdr), PlatformCapability.getSupportedPreviewFpsRange(cameraInfo$CameraId)));
+            setFpsRange(CameraDeviceUtil.computePreviewFpsRange(cameraId,
+                    RecordingProfile.getVideoFrameRate(videoSize, videoHdr),
+                    PlatformCapability.getSupportedPreviewFpsRange(cameraId)));
             return;
         }
         throw new IllegalArgumentException();
@@ -1745,10 +2129,11 @@ public class CameraDeviceHandler {
             this.mBypassCameraController.requestApplyBypassCameraMode();
         }
         parameters.setSlowMotion(slowMotion);
-        switch (CameraDeviceHandler$6.$SwitchMap$com$sonyericsson$android$camera$configuration$parameters$SlowMotion[slowMotion.ordinal()]) {
-            case 1:
-            case 2:
-                parameters.setExposureTimeLimit((long) Math.ceil(1.0E9d / PlatformCapability.getSuperSlowFrameRate(parameters.getCameraId(), parameters.getVideoSize())));
+        switch (slowMotion) {
+            case SUPER_SLOW_MOTION:
+            case SUPER_SLOW_SHOT:
+                parameters.setExposureTimeLimit((long) Math.ceil(1.0E9d / PlatformCapability
+                        .getSuperSlowFrameRate(parameters.getCameraId(), parameters.getVideoSize())));
                 break;
             default:
                 parameters.setExposureTimeLimit(PlatformCapability.getMinExposureTimeLimit(parameters.getCameraId()));
@@ -1758,11 +2143,14 @@ public class CameraDeviceHandler {
 
     public void commit() {
         if (CamLog.DEBUG) {
-            CamLog.d("invoked pre-process:" + this.mPreProcessState + " remain-saving-photo:" + getRemainSavingPhotoRequestCount());
+            CamLog.d("invoked pre-process:" + this.mPreProcessState + " remain-saving-photo:"
+                    + getRemainSavingPhotoRequestCount());
         }
         this.mCameraController.commit(this.mCameraSessionId);
         this.mBypassCameraController.commit(this.mCameraSessionId);
-        if ((this.mPreProcessState == CameraDeviceHandler$PreProcessState.NOT_STARTED || this.mPreProcessState == CameraDeviceHandler$PreProcessState.PRE_CAPTURE_DONE) && getRemainSavingPhotoRequestCount() == 0) {
+        if ((this.mPreProcessState == PreProcessState.NOT_STARTED
+                || this.mPreProcessState == PreProcessState.PRE_CAPTURE_DONE)
+                && getRemainSavingPhotoRequestCount() == 0) {
             this.mBypassCameraController.prepareCaptureImageReader(this.mCameraSessionId, null);
         }
     }
@@ -1788,7 +2176,9 @@ public class CameraDeviceHandler {
         }
         setZoom(0.0f);
         if (!this.mIsVideo) {
-            setFpsRange(CameraDeviceUtil.computePreviewFpsRange(getCameraId(), PlatformCapability.getMaxPreviewFps(getCameraId()), PlatformCapability.getSupportedPreviewFpsRange(getCameraId())));
+            setFpsRange(CameraDeviceUtil.computePreviewFpsRange(getCameraId(),
+                    PlatformCapability.getMaxPreviewFps(getCameraId()),
+                    PlatformCapability.getSupportedPreviewFpsRange(getCameraId())));
         }
         this.mCameraController.triggerRestartPreview(this.mCameraSessionId, true);
     }
@@ -1811,14 +2201,15 @@ public class CameraDeviceHandler {
                 parameters.setAeMode("auto");
                 return;
             } else {
-                parameters.setAeMode("iso-prio");
+                parameters.setAeMode(CameraParameters.AE_MODE_ISO_PRIO);
                 return;
             }
         }
         if (Iso.ISO_AUTO.getIsoValue() == parameters.getIso()) {
-            parameters.setAeMode("shutter-prio");
-        } else if (PlatformCapability.getSupportedAeModes(parameters.getCameraId()).contains("semi-auto")) {
-            parameters.setAeMode("semi-auto");
+            parameters.setAeMode(CameraParameters.AE_MODE_SHUTTER_PRIO);
+        } else if (PlatformCapability.getSupportedAeModes(parameters.getCameraId())
+                .contains(CameraParameters.AE_MODE_SEMI_AUTO)) {
+            parameters.setAeMode(CameraParameters.AE_MODE_SEMI_AUTO);
         } else {
             setIso(Iso.ISO_AUTO);
         }
@@ -1834,25 +2225,26 @@ public class CameraDeviceHandler {
             return;
         }
         if (CamLog.DEBUG) {
-            CamLog.d("invoked value:" + focusRange + " video:" + this.mIsVideo + " focus-mode:" + parameters.getFocusMode());
+            CamLog.d("invoked value:" + focusRange + " video:" + this.mIsVideo + " focus-mode:"
+                    + parameters.getFocusMode());
         }
         if (this.mIsVideo) {
             return;
         }
         if (focusRange == FocusRange.AF) {
             if (PlatformCapability.isFocusSupported(parameters.getCameraId())) {
-                parameters.setFocusMode("continuous-picture");
+                parameters.setFocusMode(CameraParameters.FOCUS_MODE_CONTINUOUS_PICTURE);
                 return;
             } else {
-                parameters.setFocusMode("fixed");
+                parameters.setFocusMode(CameraParameters.FOCUS_MODE_FIXED);
                 return;
             }
         }
-        if (!"manual".equals(parameters.getFocusMode())) {
+        if (!CameraParameters.FOCUS_MODE_MANUAL.equals(parameters.getFocusMode())) {
             stopObjectTracking();
         }
-        parameters.setFocusMode("manual");
-        parameters.setFocusArea("center");
+        parameters.setFocusMode(CameraParameters.FOCUS_MODE_MANUAL);
+        parameters.setFocusArea(CameraParameters.FOCUS_AREA_CENTER);
         parameters.setFocusRectangles(null);
         if (FocusRange.DEFAULT == focusRange) {
             parameters.setFocusRange(CameraParameters.MANUAL_FOCUS_1M.floatValue());
@@ -1920,7 +2312,8 @@ public class CameraDeviceHandler {
         }
     }
 
-    public void savePreloadSettings(CapturingMode capturingMode, UserSettings userSettings, LastSettings lastSettings, boolean z) {
+    public void savePreloadSettings(CapturingMode capturingMode, UserSettings userSettings, LastSettings lastSettings,
+            boolean z) {
         CameraParameters parameters = getParameters(this.mCameraSessionId);
         if (parameters == null) {
             if (CamLog.DEBUG) {
@@ -1930,7 +2323,8 @@ public class CameraDeviceHandler {
             return;
         }
         if (CamLog.DEBUG) {
-            CamLog.d("invoked mode:" + capturingMode + " onde-shot:" + z + " preview-size:" + parameters.getPreviewSize());
+            CamLog.d("invoked mode:" + capturingMode + " onde-shot:" + z + " preview-size:"
+                    + parameters.getPreviewSize());
         }
         if (parameters.getPreviewSize() == null || z) {
             return;
@@ -1940,25 +2334,160 @@ public class CameraDeviceHandler {
         lastSettings.save();
     }
 
-    public void prepareCaptureImageReader(CameraDeviceHandler$ImageReaderInitializedCallback cameraDeviceHandler$ImageReaderInitializedCallback) {
+    public void prepareCaptureImageReader(ImageReaderInitializedCallback imageReaderInitializedCallback) {
         if (CamLog.DEBUG) {
             CamLog.d("invoked");
         }
-        this.mBypassCameraController.prepareCaptureImageReader(this.mCameraSessionId, cameraDeviceHandler$ImageReaderInitializedCallback);
+        this.mBypassCameraController.prepareCaptureImageReader(this.mCameraSessionId, imageReaderInitializedCallback);
     }
 
     public boolean isBypassCameraNextShotAvailable() {
         return this.mBypassCameraController.isBypassCameraNextShotAvailable();
     }
 
-    private void runOnCameraDeviceThread(CameraDeviceHandler$CameraDeviceAccessTask cameraDeviceHandler$CameraDeviceAccessTask) {
-        this.mCameraDeviceThreadHandler.post(cameraDeviceHandler$CameraDeviceAccessTask);
+    static abstract class CameraDeviceAccessTask implements Runnable {
+        private static final boolean IS_DUMP_EXCEPTION_TASK_INFO_ENABLED = true;
+        private static final boolean IS_DUMP_REJECTED_TASK_INFO_ENABLED = false;
+        private final DumpInfo mDumpInfoAtConstruct;
+        private final boolean mIsBelongedToSession;
+        protected final CountDownLatch mLatch;
+        private PerfLog mPerfLog;
+        private final CameraSessionId mSessionId;
+
+        protected abstract void doCameraDeviceAccess() throws Exception;
+
+        protected void postCameraDeviceAccess() {
+        }
+
+        protected abstract boolean verifyCameraDeviceStatus();
+
+        protected void setPerformancefLog(PerfLog perfLog) {
+            this.mPerfLog = perfLog;
+        }
+
+        private class DumpInfo {
+            private final StackTraceElement[] stackTrace;
+            private final String status;
+
+            private DumpInfo() {
+                this.stackTrace = Thread.currentThread().getStackTrace();
+                CameraSessionInfo openCloseStatusInfo = CameraSessionInfo
+                        .getOpenCloseStatusInfo(CameraDeviceAccessTask.this.mSessionId);
+                if (openCloseStatusInfo != null) {
+                    this.status = openCloseStatusInfo.info();
+                } else {
+                    this.status = "CameraSession info is null. So, camera is closed";
+                }
+            }
+
+            /* JADX INFO: Access modifiers changed from: private */
+            private void dump(String str) {
+                CamLog.d("[status dump] START " + str);
+                CamLog.d("[status dump]   status:" + this.status);
+                CamLog.d("[status dump]   trace:");
+                for (int i = 1; i < this.stackTrace.length; i++) {
+                    CamLog.d("[status dump]     at " + this.stackTrace[i].getClassName() + "#"
+                            + this.stackTrace[i].getMethodName());
+                }
+                CamLog.d("[status dump] END");
+            }
+        }
+
+        CameraDeviceAccessTask(CameraSessionId cameraSessionId) {
+            this(cameraSessionId, true);
+        }
+
+        CameraDeviceAccessTask() {
+            this(null, false);
+        }
+
+        private CameraDeviceAccessTask(CameraSessionId cameraSessionId, boolean z) {
+            this.mPerfLog = null;
+            this.mLatch = new CountDownLatch(1);
+            this.mSessionId = cameraSessionId;
+            this.mIsBelongedToSession = z;
+            if (CamLog.DEBUG) {
+                this.mDumpInfoAtConstruct = new DumpInfo();
+            } else {
+                this.mDumpInfoAtConstruct = null;
+            }
+            if (CamLog.DEBUG) {
+                CamLog.d("REQUEST:" + getClass().getSimpleName() + " sessionId:" + this.mSessionId);
+            }
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        private CountDownLatch getLatch() {
+            return this.mLatch;
+        }
+
+        protected CameraSessionId getSessionId() {
+            return this.mSessionId;
+        }
+
+        protected CameraSessionInfo getOpenCloseStatusInfo() {
+            CameraSessionInfo openCloseStatusInfo = CameraSessionInfo.getOpenCloseStatusInfo(this.mSessionId);
+            if (openCloseStatusInfo != null) {
+                return openCloseStatusInfo;
+            }
+            CameraSessionInfo cameraSessionInfo = new CameraSessionInfo(null);
+            cameraSessionInfo.setRequested(OpenCloseRequestStatus.BYPASS_CAMERA_CLOSING);
+            cameraSessionInfo.setPerformed(OpenClosePerformStatus.BYPASS_CAMERA_CLOSED);
+            return cameraSessionInfo;
+        }
+
+        protected void removeOpenCloseStatusInfo() {
+            CameraSessionInfo.removeOpenCloseStatusInfo(this.mSessionId);
+        }
+
+        @Override // java.lang.Runnable
+        public final void run() {
+            try {
+                boolean z = (this.mIsBelongedToSession && getOpenCloseStatusInfo().isCloseBypassCameraTaskPerformed())
+                        ? false
+                        : true;
+                if (verifyCameraDeviceStatus() && z) {
+                    if (CamLog.DEBUG) {
+                        CamLog.d("START:" + getClass().getSimpleName() + " sessionId:" + this.mSessionId);
+                    }
+                    if (this.mPerfLog != null) {
+                        this.mPerfLog.begin();
+                    }
+                    doCameraDeviceAccess();
+                    if (this.mPerfLog != null) {
+                        this.mPerfLog.end();
+                    }
+                    if (CamLog.DEBUG) {
+                        CamLog.d("END:" + getClass().getSimpleName() + " sessionId:" + this.mSessionId);
+                    }
+                } else if (CamLog.DEBUG) {
+                    CamLog.d("REJECTED:" + getClass().getSimpleName() + " sessionId:" + this.mSessionId);
+                }
+                postCameraDeviceAccess();
+            } catch (Exception e) {
+                if (CamLog.DEBUG) {
+                    CamLog.d("EXCEPTION:" + getClass().getSimpleName() + " sessionId:" + this.mSessionId);
+                    DumpInfo dumpInfo = this.mDumpInfoAtConstruct;
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("request ");
+                    sb.append(getClass().getSimpleName());
+                    dumpInfo.dump(sb.toString());
+                    new DumpInfo().dump("performed " + getClass().getSimpleName());
+                }
+            }
+        }
     }
 
-    private void runOnCameraDeviceThreadSync(CameraDeviceHandler$CameraDeviceAccessTask cameraDeviceHandler$CameraDeviceAccessTask) {
-        this.mCameraDeviceThreadHandler.post(cameraDeviceHandler$CameraDeviceAccessTask);
+    /* JADX INFO: Access modifiers changed from: private */
+    private void runOnCameraDeviceThread(CameraDeviceAccessTask cameraDeviceAccessTask) {
+        this.mCameraDeviceThreadHandler.post(cameraDeviceAccessTask);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    private void runOnCameraDeviceThreadSync(CameraDeviceAccessTask cameraDeviceAccessTask) {
+        this.mCameraDeviceThreadHandler.post(cameraDeviceAccessTask);
         try {
-            CameraDeviceHandler$CameraDeviceAccessTask.access$800(cameraDeviceHandler$CameraDeviceAccessTask).await();
+            cameraDeviceAccessTask.getLatch().await();
         } catch (InterruptedException e) {
             CamLog.e("runOnCameraDeviceThreadSync() : Failed to await by InterruptedException", e);
         }
@@ -1966,5 +2495,579 @@ public class CameraDeviceHandler {
 
     public ImageRetriever getStreamingImageRetriever() {
         return this.mCameraController.getStreamingImageRetriever();
+    }
+
+    private class BypassCameraControllerCallbackImpl implements BypassCameraController.BypassCameraControllerCallback {
+        private Runnable mSnapshotReadyDoneTask;
+
+        private BypassCameraControllerCallbackImpl() {
+        }
+
+        @Override // com.sonyericsson.android.camera.device.BypassCameraController.BypassCameraControllerCallback
+        public void onCameraClosed() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked pre-process:" + CameraDeviceHandler.this.mPreProcessState);
+            }
+            if (CameraDeviceHandler.this.mPreProcessState == PreProcessState.NOT_STARTED
+                    || CameraDeviceHandler.this.mPreProcessState == PreProcessState.PRE_CAPTURE_DONE) {
+                CameraDeviceHandler.this.changePreProcessStateTo(PreProcessState.NOT_STARTED);
+            } else {
+                CameraDeviceHandler.this.changePreProcessStateTo(PreProcessState.PRE_CAPTURE_RELEASED);
+            }
+            CameraDeviceHandler.this.mUiThreadHandler.removeCallbacks(this.mSnapshotReadyDoneTask);
+            this.mSnapshotReadyDoneTask = null;
+            CameraDeviceHandler.this.mUiThreadHandler.post(new CloseCameraDeviceNotificationTask());
+        }
+
+        private class CloseCameraDeviceNotificationTask implements Runnable {
+            private CloseCameraDeviceNotificationTask() {
+            }
+
+            @Override // java.lang.Runnable
+            public void run() {
+                if (CameraDeviceHandler.this.mStateMachine != null) {
+                    CameraDeviceHandler.this.mStateMachine
+                            .sendEvent(StateMachine.TransitterEvent.EVENT_ON_CAMERA_DEVICE_CLOSED, new Object[0]);
+                }
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.device.BypassCameraController.BypassCameraControllerCallback
+        public void onPrepareBurstDone(final boolean z) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked success:" + z);
+            }
+            CameraDeviceHandler.this.mUiThreadHandler.post(new Runnable() { // from class:
+                                                                            // com.sonyericsson.android.camera.device.CameraDeviceHandler.BypassCameraControllerCallbackImpl.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    if (CameraDeviceHandler.this.mStateMachine != null) {
+                        CameraDeviceHandler.this.mStateMachine.onPrepareBurstDone(z);
+                    }
+                }
+            });
+        }
+
+        @Override // com.sonyericsson.android.camera.device.BypassCameraController.BypassCameraControllerCallback
+        public void onShutterDone(int i, int i2, boolean z) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked captureId:" + i + " captureNum:" + i2 + " isAfSuccess:" + z);
+            }
+            if (CameraDeviceHandler.this.mPreProcessState == PreProcessState.PRE_CAPTURE_STARTED) {
+                CameraDeviceHandler.this.changePreProcessStateTo(PreProcessState.PRE_SHUTTER_DONE);
+                if (CameraDeviceHandler.this.isNeedCreatePreviewSession()) {
+                    CameraDeviceHandler.this.mCameraController
+                            .createPreviewSession(CameraDeviceHandler.this.mCameraSessionId);
+                }
+            }
+            String str = new SimpleDateFormat("yyyyMMddHHmmssSSS", Locale.US).format(new Date());
+            for (int i3 = 0; i3 < i2; i3++) {
+                if (i3 == 0) {
+                    RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilderPeekLastSavingPhotoRequest = CameraDeviceHandler.this.mBypassCameraController
+                            .peekLastSavingPhotoRequest();
+                    setPredictiveCaptureInfo(photoSavingRequestBuilderPeekLastSavingPhotoRequest, i3, i2, str);
+                    CameraDeviceHandler.this.mUiThreadHandler.post(new ShutterDoneHandlerCallbackImpl(
+                            photoSavingRequestBuilderPeekLastSavingPhotoRequest, i2, z));
+                } else {
+                    RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilderCreatePhotoSavingRequest = CameraDeviceHandler.this.mStateMachine
+                            .createPhotoSavingRequest(SavingTaskManager.SavedFileType.PHOTO);
+                    setPredictiveCaptureInfo(photoSavingRequestBuilderCreatePhotoSavingRequest, i3, i2, str);
+                    CameraDeviceHandler.this.mBypassCameraController
+                            .enqueueSavingPhotoRequest(photoSavingRequestBuilderCreatePhotoSavingRequest);
+                }
+            }
+        }
+
+        private void setPredictiveCaptureInfo(RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder, int i,
+                int i2, String str) {
+            if (i2 > 1) {
+                photoSavingRequestBuilder.setSaveTimeForCaptureGroup(str);
+                photoSavingRequestBuilder.setCaptureIdForCaptureGourp((i2 - i) - 1);
+                if (i == 0) {
+                    photoSavingRequestBuilder.setSomcType(100);
+                }
+            }
+        }
+
+        private class ShutterDoneHandlerCallbackImpl implements Runnable {
+            private final int mCaptureRequestNum;
+            private final boolean mIsAfSuccess;
+            private final RequestFactory.PhotoSavingRequestBuilder mRequest;
+
+            private ShutterDoneHandlerCallbackImpl(RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder,
+                    int i, boolean z) {
+                this.mRequest = photoSavingRequestBuilder;
+                this.mCaptureRequestNum = i;
+                this.mIsAfSuccess = z;
+            }
+
+            @Override // java.lang.Runnable
+            public void run() {
+                if (CamLog.DEBUG) {
+                    CamLog.d("ShutterDoneHandlerCallbackImpl invoked pre-process:"
+                            + CameraDeviceHandler.this.mPreProcessState);
+                }
+                if (CapturePerformanceLogger.get(this.mRequest) != null) {
+                    CapturePerformanceLogger.get(this.mRequest).shutterDone = SystemClock.uptimeMillis();
+                }
+                if (CameraDeviceHandler.this.mPreProcessState == PreProcessState.NOT_STARTED
+                        || CameraDeviceHandler.this.mPreProcessState == PreProcessState.PRE_CAPTURE_DONE) {
+                    if (CameraDeviceHandler.this.mStateMachine != null) {
+                        updatePredictiveCaptureNumForResearchUtil(CameraDeviceHandler.this.mStateMachine);
+                        CameraDeviceHandler.this.mStateMachine.onShutterDone(this.mRequest, this.mCaptureRequestNum,
+                                this.mIsAfSuccess);
+                        playSoundIfPossible(CameraDeviceHandler.this.mStateMachine);
+                    } else if (CameraDeviceHandler.this.mStateMachineForSavingRequest != null) {
+                        updatePredictiveCaptureNumForResearchUtil(
+                                CameraDeviceHandler.this.mStateMachineForSavingRequest);
+                        playSoundIfPossible(CameraDeviceHandler.this.mStateMachineForSavingRequest);
+                    }
+                }
+            }
+
+            private void updatePredictiveCaptureNumForResearchUtil(StateMachine stateMachine) {
+                if (((PredictiveCapture) stateMachine.getUserSetting().get(stateMachine.getCurrentCapturingMode(),
+                        UserSettingKey.PREDICTIVE_CAPTURE)) == PredictiveCapture.OFF) {
+                    ResearchUtil.getInstance().setPredictiveCaptureNum(0);
+                } else {
+                    ResearchUtil.getInstance().setPredictiveCaptureNum(this.mCaptureRequestNum);
+                }
+            }
+
+            private void playSoundIfPossible(StateMachine stateMachine) {
+                if (((ShutterSound) stateMachine.getUserSetting().get(stateMachine.getCurrentCapturingMode(),
+                        UserSettingKey.SHUTTER_SOUND)) == ShutterSound.OFF || CameraDeviceHandler.this.isRecording()) {
+                    return;
+                }
+                CameraDeviceHandler.this.playShutterSound(1);
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.device.BypassCameraController.BypassCameraControllerCallback
+        public void onSnapshotDone(RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked requestId:" + photoSavingRequestBuilder.getRequestId());
+            }
+            CameraDeviceHandler.this.mUiThreadHandler
+                    .post(new SnapshotDoneHandlerCallbackImpl(photoSavingRequestBuilder));
+        }
+
+        private class SnapshotDoneHandlerCallbackImpl implements Runnable {
+            private final RequestFactory.PhotoSavingRequestBuilder localRequestBuilder;
+
+            private SnapshotDoneHandlerCallbackImpl(
+                    RequestFactory.PhotoSavingRequestBuilder photoSavingRequestBuilder) {
+                this.localRequestBuilder = photoSavingRequestBuilder;
+            }
+
+            @Override // java.lang.Runnable
+            public void run() {
+                if (CamLog.DEBUG) {
+                    CamLog.d("SnapshotDoneHandlerCallbackImpl invoked pre-process:"
+                            + CameraDeviceHandler.this.mPreProcessState);
+                }
+                if (CapturePerformanceLogger.get(this.localRequestBuilder) != null) {
+                    CapturePerformanceLogger.get(this.localRequestBuilder).snapshotDone = SystemClock.uptimeMillis();
+                }
+                TestEventSender.onPictureTaken();
+                if (CameraDeviceHandler.this.mPreProcessState == PreProcessState.PRE_SHUTTER_DONE) {
+                    CameraDeviceHandler.this.changePreProcessStateTo(PreProcessState.PRE_CAPTURE_DONE);
+                    if (CameraDeviceHandler.this.mStateMachine != null) {
+                        CameraDeviceHandler.this.mStateMachine.onPreTakePictureDone(this.localRequestBuilder);
+                    } else {
+                        CamLog.i("Launch and capture is done before activity is started.");
+                        CameraDeviceHandler.this.mBypassCameraController.setPreCaptureResult(this.localRequestBuilder);
+                    }
+                } else if (CameraDeviceHandler.this.mPreProcessState == PreProcessState.NOT_STARTED
+                        || CameraDeviceHandler.this.mPreProcessState == PreProcessState.PRE_CAPTURE_DONE) {
+                    if (CameraDeviceHandler.this.mStateMachine != null) {
+                        CameraDeviceHandler.this.mStateMachine.onTakePictureDone(this.localRequestBuilder);
+                    } else if (CameraDeviceHandler.this.mStateMachineForSavingRequest != null) {
+                        CamLog.i("Capture is done after activity is puased.");
+                        CameraDeviceHandler.this.mStateMachineForSavingRequest
+                                .onTakePictureDone(this.localRequestBuilder);
+                    } else {
+                        CamLog.e("StateMachine doesn't exists, so captured photo cannot be saved.");
+                    }
+                } else {
+                    this.localRequestBuilder.close();
+                }
+                Context applicationContext = CameraDeviceHandler.this.getApplicationContext();
+                if (applicationContext != null) {
+                    new EachCameraStatusPublisher(applicationContext, CameraDeviceHandler.this.getCameraId())
+                            .put(new DeviceStatus(CameraDeviceHandler.this.mIsVideo ? DeviceStatus.Value.VIDEO_RECORDING
+                                    : DeviceStatus.Value.STILL_PREVIEW))
+                            .publish();
+                }
+            }
+        }
+
+        private String toString(BypassCamera.DisplayFlashColor displayFlashColor) {
+            if (displayFlashColor == null) {
+                return "null";
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.append(displayFlashColor.colorRed);
+            sb.append(',');
+            sb.append(displayFlashColor.colorGreen);
+            sb.append(',');
+            sb.append(displayFlashColor.colorBlue);
+            return sb.toString();
+        }
+
+        @Override // com.sonyericsson.android.camera.device.BypassCameraController.BypassCameraControllerCallback
+        public void onSnapshotReadyDone(ExecutorService executorService, final boolean z, final boolean z2,
+                final boolean z3, final BypassCamera.DisplayFlashColor displayFlashColor) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked pre-process:" + CameraDeviceHandler.this.mPreProcessState
+                        + " isHighQualityBurstAvailable:" + z + " isAfSuccess:" + z2 + " requireFlash:" + z3
+                        + " displayFlashColor:" + toString(displayFlashColor));
+            }
+            this.mSnapshotReadyDoneTask = new Runnable() { // from class:
+                                                           // com.sonyericsson.android.camera.device.CameraDeviceHandler.BypassCameraControllerCallbackImpl.2
+                @Override // java.lang.Runnable
+                public void run() {
+                    if (CamLog.DEBUG) {
+                        CamLog.d(
+                                "SnapshotReadyDoneTask invoked pre-process:" + CameraDeviceHandler.this.mPreProcessState
+                                        + " fast-capture:" + CameraDeviceHandler.this.mFastCaptureSetting);
+                    }
+                    if (CameraDeviceHandler.this.mPreProcessState == PreProcessState.PRE_SCAN_STARTED) {
+                        CameraDeviceHandler.this.changePreProcessStateTo(PreProcessState.PRE_SCAN_DONE);
+                        if (CameraDeviceHandler.this.mFastCaptureSetting != FastCapture.LAUNCH_AND_CAPTURE
+                                && CameraDeviceHandler.this.mStateMachine != null) {
+                            CameraDeviceHandler.this.mStateMachine.onInitialAutoFocusDone(z2);
+                            return;
+                        }
+                        ResearchUtil.getInstance().setTimeAfDone();
+                        ResearchUtil.getInstance().setCaptureTrigger(Event.CaptureTrigger.FAST_CAPTURING_LAUNCH);
+                        CameraDeviceHandler.this.preCapture();
+                        return;
+                    }
+                    if ((CameraDeviceHandler.this.mPreProcessState == PreProcessState.NOT_STARTED
+                            || CameraDeviceHandler.this.mPreProcessState == PreProcessState.PRE_CAPTURE_DONE)
+                            && CameraDeviceHandler.this.mStateMachine != null) {
+                        CameraDeviceHandler.this.mStateMachine.onAutoFocusDone(z, z2, z3, displayFlashColor.colorRed,
+                                displayFlashColor.colorGreen, displayFlashColor.colorBlue);
+                    }
+                }
+            };
+            if (CameraDeviceHandler.this.mPreProcessState != PreProcessState.PRE_SCAN_STARTED) {
+                CameraDeviceHandler.this.mUiThreadHandler.post(this.mSnapshotReadyDoneTask);
+            } else if (!executorService.isShutdown()) {
+                executorService.submit(this.mSnapshotReadyDoneTask);
+            } else {
+                CamLog.w("BypassCameraRequestExecutor already Shutdown");
+            }
+        }
+    }
+
+    private class CameraControllerCallbackImpl implements CameraController.CameraControllerCallback {
+        private CameraControllerCallbackImpl() {
+        }
+
+        @Override // com.sonyericsson.android.camera.device.CameraController.CameraControllerCallback
+        public void onDeviceError(CameraSessionId cameraSessionId, final ErrorCode errorCode) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked sessionId:" + cameraSessionId + " error:" + errorCode);
+            }
+            CameraDeviceHandler.this.mCameraDeviceThreadHandler.post(new OnErrorTask(cameraSessionId));
+            CameraDeviceHandler.this.mUiThreadHandler.post(new Runnable() { // from class:
+                                                                            // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraControllerCallbackImpl.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    if (CameraDeviceHandler.this.mStateMachine != null) {
+                        CameraDeviceHandler.this.mStateMachine.onDeviceError(errorCode);
+                    }
+                }
+            });
+        }
+
+        @Override // com.sonyericsson.android.camera.device.CameraController.CameraControllerCallback
+        public void onSessionDisconnected(CameraSessionId cameraSessionId) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked sessionId:" + cameraSessionId);
+            }
+            CameraDeviceHandler.this.mCameraDeviceThreadHandler.post(new OnDisconnectedTask(cameraSessionId));
+            CameraDeviceHandler.this.mUiThreadHandler.post(new Runnable() { // from class:
+                                                                            // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraControllerCallbackImpl.2
+                @Override // java.lang.Runnable
+                public void run() {
+                    if (CameraDeviceHandler.this.mStateMachine != null) {
+                        CameraDeviceHandler.this.mStateMachine.onDeviceError(ErrorCode.ERROR_ON_CAMERA_DISCONNECTION);
+                    }
+                }
+            });
+        }
+
+        @WorkerThread
+        private class OnErrorTask extends CameraDeviceAccessTask {
+            private OnErrorTask(CameraSessionId cameraSessionId) {
+                super(cameraSessionId);
+            }
+
+            @Override // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraDeviceAccessTask
+            protected boolean verifyCameraDeviceStatus() {
+                switch (CameraDeviceHandler.this.mCameraController.getCameraDeviceStatus()) {
+                    case STATUS_RELEASED:
+                    case STATUS_OPENED:
+                    case STATUS_READY:
+                        if (!getOpenCloseStatusInfo().isCloseCameraTaskRequested()) {
+                            return true;
+                        }
+                        CamLog.d("OnErrorTask : CloseCameraTask is already requested.");
+                        return false;
+                    case STATUS_ERROR:
+                    case STATUS_EVICTED:
+                        return false;
+                    default:
+                        throw new IllegalStateException("Failed due to wrong status in OnErrorTask. status: "
+                                + CameraDeviceHandler.this.mCameraController.getCameraDeviceStatus());
+                }
+            }
+
+            @Override // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraDeviceAccessTask
+            public void doCameraDeviceAccess() {
+                CameraDeviceHandler.this.mCameraController.setCameraDeviceStatus(CameraDeviceStatus.STATUS_ERROR);
+                CameraDeviceHandler.this.mUiThreadHandler.post(new Runnable() { // from class:
+                                                                                // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraControllerCallbackImpl.OnErrorTask.1
+                    @Override // java.lang.Runnable
+                    public void run() {
+                        if (CameraDeviceHandler.this.isRecorderWorking()) {
+                            try {
+                                CameraDeviceHandler.this.mVideoRecorder.stopOnCameraError();
+                            } catch (RecorderException e) {
+                                CamLog.e("Stop recording by Camera error fail." + e.getMessage());
+                            }
+                        }
+                        CameraDeviceHandler.this.closeCamera();
+                    }
+                });
+            }
+        }
+
+        @WorkerThread
+        private class OnDisconnectedTask extends CameraDeviceAccessTask {
+            private OnDisconnectedTask(CameraSessionId cameraSessionId) {
+                super(cameraSessionId);
+            }
+
+            @Override // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraDeviceAccessTask
+            protected boolean verifyCameraDeviceStatus() {
+                switch (CameraDeviceHandler.this.mCameraController.getCameraDeviceStatus()) {
+                    case STATUS_RELEASED:
+                    case STATUS_OPENED:
+                    case STATUS_READY:
+                        return !getOpenCloseStatusInfo().isCloseCameraTaskRequested();
+                    case STATUS_ERROR:
+                    case STATUS_EVICTED:
+                        return false;
+                    default:
+                        throw new IllegalStateException("Failed due to wrong status in OnDisconnectedTask. status: "
+                                + CameraDeviceHandler.this.mCameraController.getCameraDeviceStatus());
+                }
+            }
+
+            @Override // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraDeviceAccessTask
+            public void doCameraDeviceAccess() {
+                CameraDeviceHandler.this.mCameraController.setCameraDeviceStatus(CameraDeviceStatus.STATUS_EVICTED);
+                CameraDeviceHandler.this.mUiThreadHandler.post(new Runnable() { // from class:
+                                                                                // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraControllerCallbackImpl.OnDisconnectedTask.1
+                    @Override // java.lang.Runnable
+                    public void run() {
+                        if (CameraDeviceHandler.this.isRecorderWorking()) {
+                            try {
+                                CameraDeviceHandler.this.mVideoRecorder.stopOnCameraError();
+                            } catch (RecorderException e) {
+                                CamLog.e("Stop recording by Camera eviction fails." + e.getMessage());
+                            }
+                        }
+                        CameraDeviceHandler.this.closeCamera();
+                    }
+                });
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.device.CameraController.CameraControllerCallback
+        public void onCropRegionReady() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked");
+            }
+            if (CameraDeviceHandler.this.mStateMachine != null) {
+                CameraDeviceHandler.this.mStateMachine.onCropRegionReady();
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.device.CameraController.CameraControllerCallback
+        public void onFaceDetected(CameraParameters.FaceDetectionResult faceDetectionResult) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked result:" + faceDetectionResult);
+            }
+            if (CameraDeviceHandler.this.mStateMachine == null || faceDetectionResult == null) {
+                ResearchUtil.getInstance().clearFaceNum();
+                return;
+            }
+            ResearchUtil.getInstance().setFaceNum(faceDetectionResult.extFaceList.size());
+            if (CameraDeviceHandler.this.isRecording()) {
+                ResearchUtil.getInstance().setRecordingMaxFaceNum(faceDetectionResult.extFaceList.size());
+            }
+            CameraDeviceHandler.this.mStateMachine.onFaceDetected(faceDetectionResult);
+        }
+
+        @Override // com.sonyericsson.android.camera.device.CameraController.CameraControllerCallback
+        public void onFusionResultChanged(CameraParameters.FusionResult fusionResult) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked result:" + fusionResult);
+            }
+            if (fusionResult == null || CameraDeviceHandler.this.mStateMachine == null) {
+                return;
+            }
+            CameraDeviceHandler.this.mStateMachine
+                    .sendEvent(StateMachine.TransitterEvent.EVENT_ON_FUSION_CONDITION_CHANGED, fusionResult);
+        }
+
+        @Override // com.sonyericsson.android.camera.device.CameraController.CameraControllerCallback
+        public void onSceneModeChanged(CameraParameters.SceneRecognitionResult sceneRecognitionResult) {
+            String string;
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked result:" + sceneRecognitionResult);
+            }
+            if (sceneRecognitionResult == null) {
+                return;
+            }
+            if (CameraDeviceHandler.this.mStateMachine != null) {
+                CameraDeviceHandler.this.mStateMachine.onSceneModeChanged(sceneRecognitionResult);
+            }
+            LocalResearchUtil localResearchUtil = LocalResearchUtil.getInstance();
+            if (sceneRecognitionResult.isMacroRange) {
+                string = ShootingLabel.RECOGNIZED_SCENE_MACRO;
+            } else if (sceneRecognitionResult.sceneMode == null) {
+                string = CameraParameterConverter.SceneMode.AUTO.toString();
+            } else {
+                string = sceneRecognitionResult.sceneMode.toString();
+            }
+            localResearchUtil.setRecognizedScene(string);
+        }
+
+        @Override // com.sonyericsson.android.camera.device.CameraController.CameraControllerCallback
+        public void onOpenCameraRequested(CameraSessionId cameraSessionId) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked sessionId:" + cameraSessionId);
+            }
+            CameraDeviceHandler.this.mUiThreadHandler.post(new OpenCameraDeviceNotificationTask(cameraSessionId));
+        }
+
+        private class OpenCameraDeviceNotificationTask implements Runnable {
+            private final CameraSessionId mSessionId;
+
+            private OpenCameraDeviceNotificationTask(CameraSessionId cameraSessionId) {
+                this.mSessionId = cameraSessionId;
+            }
+
+            @Override // java.lang.Runnable
+            public void run() {
+                if (CameraDeviceHandler.this.mStateMachine != null) {
+                    CameraDeviceHandler.this.mStateMachine
+                            .sendEvent(StateMachine.TransitterEvent.EVENT_ON_CAMERA_DEVICE_OPENED, this.mSessionId);
+                }
+            }
+        }
+
+        @Override // com.sonyericsson.android.camera.device.CameraController.CameraControllerCallback
+        public void onPreviewFrameUpdated(ByteBuffer byteBuffer, int i, Rect rect) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked format:" + i + " rect:" + rect);
+            }
+            if (CameraDeviceHandler.this.mStateMachine == null || i != 17) {
+                return;
+            }
+            byte[] bArr = new byte[byteBuffer.remaining()];
+            byteBuffer.get(bArr);
+            byteBuffer.rewind();
+            CameraDeviceHandler.this.mStateMachine.sendEvent(
+                    StateMachine.TransitterEvent.EVENT_ON_ONE_PREVIEW_FRAME_UPDATED, bArr, Integer.valueOf(i), rect);
+        }
+
+        @Override // com.sonyericsson.android.camera.device.CameraController.CameraControllerCallback
+        public void onReflected(CameraSessionId cameraSessionId) {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked sessionId:" + cameraSessionId);
+            }
+            CameraDeviceHandler.this.mBypassCameraController.requestSnapshotReady(cameraSessionId);
+        }
+    }
+
+    class CameraDeviceHandlerInquirer {
+        CameraDeviceHandlerInquirer() {
+        }
+
+        CameraParameters getParameters(CameraSessionId cameraSessionId) {
+            return CameraDeviceHandler.this.getParameters(cameraSessionId);
+        }
+
+        boolean isNeedCreatePreviewSession() {
+            return CameraDeviceHandler.this.isNeedCreatePreviewSession();
+        }
+
+        boolean isIgnoreCameraError() {
+            return CameraDeviceHandler.this.mActivityIsInForeground;
+        }
+
+        boolean isVideo() {
+            return CameraDeviceHandler.this.mIsVideo;
+        }
+
+        boolean isRecording() {
+            return CameraDeviceHandler.this.isRecording();
+        }
+
+        void releaseRecorderOnCameraClosed() {
+            if (CamLog.DEBUG) {
+                CamLog.d("invoked");
+            }
+            CameraDeviceHandler.this.releaseRecorderOnCameraClosed();
+        }
+
+        void prepareCaptureImageReader() {
+            CameraDeviceHandler.this.prepareCaptureImageReader(null);
+        }
+
+        void postCameraDeviceThread(CameraDeviceAccessTask cameraDeviceAccessTask) {
+            CameraDeviceHandler.this.runOnCameraDeviceThread(cameraDeviceAccessTask);
+        }
+
+        void postCameraDeviceThreadSync(CameraDeviceAccessTask cameraDeviceAccessTask) {
+            CameraDeviceHandler.this.runOnCameraDeviceThreadSync(cameraDeviceAccessTask);
+        }
+
+        Handler getDeviceThreadHandler() {
+            return CameraDeviceHandler.this.mCameraDeviceThreadHandler;
+        }
+
+        boolean awaitLoadSettingsThread() {
+            return CameraDeviceHandler.this.awaitLoadSettingsThread();
+        }
+
+        PreProcessState getPreProcessState() {
+            return CameraDeviceHandler.this.mPreProcessState;
+        }
+
+        void changePreProcessStateTo(PreProcessState preProcessState) {
+            CameraDeviceHandler.this.changePreProcessStateTo(preProcessState);
+        }
+
+        public boolean isPreScanOnGoing() {
+            return CameraDeviceHandler.this.mPreProcessState == PreProcessState.PRE_SCAN_STARTED;
+        }
+
+        public boolean isPreCaptureOnGoing() {
+            return CameraDeviceHandler.this.mPreProcessState == PreProcessState.PRE_CAPTURE_STARTED
+                    || CameraDeviceHandler.this.mPreProcessState == PreProcessState.PRE_SHUTTER_DONE;
+        }
+
+        boolean isSnapshotRunning() {
+            return CameraDeviceHandler.this.mBypassCameraController.isSnapshotRunning();
+        }
+
     }
 }

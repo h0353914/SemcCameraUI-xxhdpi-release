@@ -13,6 +13,6 @@ public class PngChunkGama extends PngChunk {
     }
 
     public double getGamma() {
-        return 1.0d / (((double) this.gamma) / 100000.0d);
+        return 1.0d / (this.gamma / 100000.0d);
     }
 }

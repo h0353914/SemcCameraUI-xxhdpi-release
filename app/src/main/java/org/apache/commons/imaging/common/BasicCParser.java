@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PushbackInputStream;
 import java.util.Map;
+import kotlin.text.Typography;
 import org.apache.commons.imaging.ImageReadException;
 
 public class BasicCParser {
@@ -28,7 +29,7 @@ public class BasicCParser {
                     z3 = !z3;
                 } else {
                     if (i == 34) {
-                        sb.append('\"');
+                        sb.append(Typography.quote);
                         if (!z3) {
                             return sb.toString();
                         }
@@ -48,7 +49,7 @@ public class BasicCParser {
                     return sb.toString();
                 }
             } else if (i == 34) {
-                sb.append('\"');
+                sb.append(Typography.quote);
                 z = true;
             } else if (Character.isLetterOrDigit(i) || i == 95) {
                 sb.append((char) i);
@@ -279,7 +280,7 @@ public class BasicCParser {
                 if (cCharAt == '\\') {
                     sb.append('\\');
                 } else if (cCharAt == '\"') {
-                    sb.append('\"');
+                    sb.append(Typography.quote);
                 } else if (cCharAt == '\'') {
                     sb.append('\'');
                 } else if (cCharAt == 'x') {

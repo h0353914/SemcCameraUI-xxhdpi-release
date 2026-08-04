@@ -1,12 +1,13 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import java.util.ArrayList;
 
 public enum VolumeKey implements UserSettingValue {
-    ZOOM(-1, 2131690254),
-    VOLUME(-1, 2131690253),
-    HW_CAMERA_KEY(-1, 2131690251);
+    ZOOM(-1, R.string.cam_strings_volumekey_zoom_txt),
+    VOLUME(-1, R.string.cam_strings_volumekey_volume_txt),
+    HW_CAMERA_KEY(-1, R.string.cam_strings_volumekey_shutter_txt);
 
     public static final String TAG = "VolumeKey";
     private static final int sParameterTextId = 2131690252;

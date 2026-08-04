@@ -1,3 +1,18 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.configuration.parameters;
 
 public class UnsupportedSensorResolutionException extends RuntimeException {

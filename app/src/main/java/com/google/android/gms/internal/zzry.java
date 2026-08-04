@@ -3,13 +3,9 @@ package com.google.android.gms.internal;
 import com.google.android.gms.internal.zzry;
 import java.io.IOException;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public abstract class zzry<M extends zzry<M>> extends zzse {
     protected zzsa zzbik;
-
-    @Override // com.google.android.gms.internal.zzse
-    public /* synthetic */ Object clone() throws CloneNotSupportedException {
-        return zzFF();
-    }
 
     @Override // com.google.android.gms.internal.zzse
     protected int zzB() {
@@ -23,15 +19,12 @@ public abstract class zzry<M extends zzry<M>> extends zzse {
         return iZzB;
     }
 
-    public M zzFF() throws CloneNotSupportedException {
-        M m = (M) super.zzFG();
+    @Override // com.google.android.gms.internal.zzse
+    /* renamed from: zzFF, reason: merged with bridge method [inline-methods] */
+    public M clone() throws CloneNotSupportedException {
+        M m = (M) super.clone();
         zzsc.zza(this, m);
         return m;
-    }
-
-    @Override // com.google.android.gms.internal.zzse
-    public /* synthetic */ zzse zzFG() throws CloneNotSupportedException {
-        return zzFF();
     }
 
     public final <T> T zza(zzrz<M, T> zzrzVar) {
@@ -43,7 +36,7 @@ public abstract class zzry<M extends zzry<M>> extends zzse {
     }
 
     @Override // com.google.android.gms.internal.zzse
-    public void zza(zzrx zzrxVar) throws IOException {
+    public void zza(zzrx zzrxVar) throws IOException, ArrayIndexOutOfBoundsException, IllegalArgumentException {
         if (this.zzbik == null) {
             return;
         }

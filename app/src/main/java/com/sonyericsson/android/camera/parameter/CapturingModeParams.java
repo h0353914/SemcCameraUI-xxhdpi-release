@@ -29,7 +29,7 @@ import com.sonyericsson.android.camera.configuration.parameters.VideoShutterTrig
 import com.sonyericsson.android.camera.configuration.parameters.VideoSize;
 import com.sonyericsson.android.camera.configuration.parameters.VideoStabilizer;
 import com.sonyericsson.android.camera.configuration.parameters.WhiteBalance;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -65,7 +65,7 @@ public class CapturingModeParams {
 
     public CapturingModeParams(Context context, CapturingMode capturingMode, boolean z) {
         this.mCapturingMode = new UserSettingValueHolder<>(capturingMode);
-        if (capturingMode.getCameraId() == CameraInfo$CameraId.FRONT) {
+        if (capturingMode.getCameraId() == CameraInfo.CameraId.FRONT) {
             this.mFacing = new UserSettingValueHolder<>(Facing.FRONT);
         } else {
             this.mFacing = new UserSettingValueHolder<>(Facing.BACK);
@@ -87,14 +87,16 @@ public class CapturingModeParams {
         this.mShutterSpeed = new UserSettingValueHolder<>(ShutterSpeed.AUTO);
         this.mFocusRange = new UserSettingValueHolder<>(FocusRange.AF);
         this.mTouchIntention = new UserSettingValueHolder<>(TouchIntention.getDefaultValue(capturingMode));
-        if (SlowMotion.getDefaultValue(capturingMode) == SlowMotion.SUPER_SLOW_MOTION || SlowMotion.getDefaultValue(capturingMode) == SlowMotion.SUPER_SLOW_SHOT) {
+        if (SlowMotion.getDefaultValue(capturingMode) == SlowMotion.SUPER_SLOW_MOTION
+                || SlowMotion.getDefaultValue(capturingMode) == SlowMotion.SUPER_SLOW_SHOT) {
             this.mVideoSize = new UserSettingValueHolder<>(VideoSize.HD);
         } else {
             this.mVideoSize = new UserSettingValueHolder<>(VideoSize.FULL_HD);
         }
         this.mVideoHdr = new UserSettingValueHolder<>(VideoHdr.getDefault());
         this.mVideoShutterTrigger = new UserSettingValueHolder<>(VideoShutterTrigger.OFF);
-        this.mVideoStabilizer = new UserSettingValueHolder<>(VideoStabilizer.getRecommendedVideoStabilizerValue(context, capturingMode, (VideoSize) this.mVideoSize.get()));
+        this.mVideoStabilizer = new UserSettingValueHolder<>(VideoStabilizer.getRecommendedVideoStabilizerValue(context,
+                capturingMode, (VideoSize) this.mVideoSize.get()));
         this.mVideoCodec = new UserSettingValueHolder<>(VideoCodec.H264);
         this.mSlowMotion = new UserSettingValueHolder<>(SlowMotion.getDefaultValue(capturingMode));
     }
@@ -103,7 +105,7 @@ public class CapturingModeParams {
         CapturingMode capturingMode = (CapturingMode) this.mCapturingMode.get();
         this.mActionMode = new ActionMode(z, capturingMode.getType(), capturingMode.getCameraId());
         this.mConfig = configurations;
-        this.mCapturingMode.setOptions(new CapturingMode[]{capturingMode});
+        this.mCapturingMode.setOptions(new CapturingMode[] { capturingMode });
         this.mFacing.setOptions(Facing.getOptions());
         this.mEv.setOptions(Ev.getOptions(capturingMode));
         this.mWhiteBalance.setOptions(WhiteBalance.getOptions(capturingMode));
@@ -114,7 +116,8 @@ public class CapturingModeParams {
         this.mShutterTrigger.setOptions(ShutterTrigger.getOptions(capturingMode));
         this.mFocusMode.setOptions(FocusMode.getOptions(capturingMode));
         this.mHdr.setOptions(Hdr.getOptions(capturingMode));
-        this.mIso.setOptions(Iso.getOptions(capturingMode, (Resolution) this.mResolution.get(), (FusionMode) this.mFusionMode.get()));
+        this.mIso.setOptions(Iso.getOptions(capturingMode, (Resolution) this.mResolution.get(),
+                (FusionMode) this.mFusionMode.get()));
         this.mMetering.setOptions(Metering.getOptions(capturingMode));
         this.mSoftSkin.setOptions(SoftSkin.getOptions(capturingMode));
         this.mPredictiveCapture.setOptions(PredictiveCapture.getOptions(z, capturingMode));

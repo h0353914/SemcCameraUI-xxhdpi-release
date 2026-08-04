@@ -2,11 +2,10 @@ package com.sonyericsson.cameracommon.utility;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences$Editor;
 
 public class ParamSharedPref {
     public static final String TAG = "ParamSharedPref";
-    private SharedPreferences$Editor mEditor;
+    private SharedPreferences.Editor mEditor;
     private SharedPreferences mPref;
 
     ParamSharedPref(Context context, String str) {

@@ -2,26 +2,25 @@ package com.sonyericsson.android.camera.view.setting;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout$LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
 import com.sonyericsson.android.camera.view.modeselector.ModeLoader;
 import com.sonyericsson.android.camera.view.selectabledialog.ModeSelector;
-import com.sonyericsson.android.camera.view.selectabledialog.ModeSelector$OnModeSelectListener;
 import com.sonyericsson.android.camera.view.selectabledialog.SettingMenu;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingAdapter;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingDialogFactory;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingDialogInterface;
 import com.sonyericsson.android.camera.view.setting.dialog.SettingDialogListener;
 import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver;
-import com.sonyericsson.cameracommon.utility.LayoutOrientationResolver$LayoutOrientationType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -38,7 +37,7 @@ public class SettingDialogStack {
     private SettingMenu mContextualMenu2ndLayer;
     private SettingAdapter mContextualMenu2ndLayerAdapter;
     private final HashMap<SettingDialogInterface, Object> mDialogTags;
-    private SettingDialogStack$ExclusiveViewListener mExclusiveViewListener;
+    private ExclusiveViewListener mExclusiveViewListener;
     private ModeSelector mModeSelectorDialog;
     private SettingMenu mMonochromeDialog;
     private int mOrientation;
@@ -48,46 +47,14 @@ public class SettingDialogStack {
     private SettingDialogListener mContextualMenuListener = null;
     private boolean mIsCanceledOnTouchOutside = true;
 
-    static /* synthetic */ SettingMenu access$000(SettingDialogStack settingDialogStack) {
-        return settingDialogStack.mContextualMenu2ndLayer;
-    }
-
-    static /* synthetic */ HashMap access$100(SettingDialogStack settingDialogStack) {
-        return settingDialogStack.mDialogTags;
-    }
-
-    static /* synthetic */ FrameLayout access$200(SettingDialogStack settingDialogStack) {
-        return settingDialogStack.mContainer;
-    }
-
-    static /* synthetic */ SettingMenu access$300(SettingDialogStack settingDialogStack) {
-        return settingDialogStack.mContextualMenu;
-    }
-
-    static /* synthetic */ int access$400(SettingDialogStack settingDialogStack) {
-        return settingDialogStack.mOrientation;
-    }
-
-    static /* synthetic */ SettingDialogInterface access$500(SettingDialogStack settingDialogStack) {
-        return settingDialogStack.getCurrentDialog();
-    }
-
-    static /* synthetic */ SettingDialogStack$ExclusiveViewListener access$600(SettingDialogStack settingDialogStack) {
-        return settingDialogStack.mExclusiveViewListener;
-    }
-
-    static /* synthetic */ ViewGroup access$700(SettingDialogStack settingDialogStack) {
-        return settingDialogStack.mBackground;
-    }
-
-    static /* synthetic */ boolean access$800(SettingDialogStack settingDialogStack) {
-        return settingDialogStack.mIsCanceledOnTouchOutside;
+    public interface ExclusiveViewListener {
+        boolean isExclusiveView(View view, MotionEvent motionEvent);
     }
 
     public SettingDialogStack(Context context, ViewGroup viewGroup, Rect rect) {
         this.mContext = context;
         this.mScreenRect = rect;
-        this.mBackground = new SettingDialogStack$Background(this, this.mContext);
+        this.mBackground = new Background(this.mContext);
         viewGroup.addView(this.mBackground);
         this.mBackground.getLayoutParams().width = -1;
         this.mBackground.getLayoutParams().height = -1;
@@ -182,16 +149,16 @@ public class SettingDialogStack {
         this.mBackground.addView(this.mBottomContainer);
         this.mBottomContainer.setOrientation(1);
         ImageView imageView = new ImageView(this.mContext);
-        imageView.setBackgroundResource(2131231306);
+        imageView.setBackgroundResource(R.drawable.cam_setting_separator_shadow_icn);
         this.mBottomContainer.addView(imageView);
         imageView.getLayoutParams().width = -1;
         imageView.getLayoutParams().height = -2;
         View view = new View(this.mContext);
         this.mBottomContainer.addView(view);
-        view.setBackgroundColor(this.mContext.getResources().getColor(2131099756));
+        view.setBackgroundColor(this.mContext.getResources().getColor(R.color.setting_1st_layer_background_color));
         view.getLayoutParams().width = -1;
         view.getLayoutParams().height = LayoutDependencyResolver.getNavigationBarMargin(this.mContext);
-        this.mBottomContainer.setPivotX((new Rect(LayoutDependencyResolver.getViewFinderSize(this.mContext)).width() - LayoutDependencyResolver.getNavigationBarMargin(this.mContext)) - this.mContext.getResources().getDimensionPixelSize(2131165580));
+        this.mBottomContainer.setPivotX((new Rect(LayoutDependencyResolver.getViewFinderSize(this.mContext)).width() - LayoutDependencyResolver.getNavigationBarMargin(this.mContext)) - this.mContext.getResources().getDimensionPixelSize(R.dimen.setting_1st_layer_value_bottom_shadow_height));
         this.mBottomContainer.setPivotY(0.0f);
         this.mBottomContainer.setRotation(-90.0f);
     }
@@ -202,9 +169,9 @@ public class SettingDialogStack {
         }
     }
 
-    public boolean openModeSelectorDialog(ModeLoader modeLoader, ModeSelector$OnModeSelectListener modeSelector$OnModeSelectListener) {
+    public boolean openModeSelectorDialog(ModeLoader modeLoader, ModeSelector.OnModeSelectListener onModeSelectListener) {
         if (this.mModeSelectorDialog != null) {
-            return false;
+            closeModeSelectDialog(false);
         }
         closeMenuDialog(false);
         closeShortcutDialog(false);
@@ -215,7 +182,7 @@ public class SettingDialogStack {
         this.mModeSelectorDialog = SettingDialogFactory.createModeSelector(this.mContext, getBackgroundWidth(), getBackgroundHeight(), false);
         this.mModeSelectorDialog.setSettingDialogStack(this);
         this.mModeSelectorDialog.setSensorOrientation(this.mOrientation);
-        this.mModeSelectorDialog.setOnModeSelectListener(modeSelector$OnModeSelectListener);
+        this.mModeSelectorDialog.setOnModeSelectListener(onModeSelectListener);
         this.mModeSelectorDialog.setModeLoader(modeLoader);
         this.mModeSelectorDialog.open(this.mContainer);
         this.mDialogTags.put(this.mModeSelectorDialog, null);
@@ -228,7 +195,7 @@ public class SettingDialogStack {
     public boolean openMonochromeDialog(SettingAdapter settingAdapter, int i) {
         Rect rect;
         if (CamLog.DEBUG) {
-            CamLog.d("SettingDialogStack", "openMonochromeDialog");
+            CamLog.d(TAG, "openMonochromeDialog");
         }
         boolean z = false;
         closemMonochromeDialog(false);
@@ -253,7 +220,7 @@ public class SettingDialogStack {
         this.mContainer.requestFocus();
         notifyOpenSettingDialog(null);
         if (CamLog.DEBUG) {
-            CamLog.d("SettingDialogStack", "openMonochromeDialog:NOTIFY OPEN CALLBACK");
+            CamLog.d(TAG, "openMonochromeDialog:NOTIFY OPEN CALLBACK");
         }
         return true;
     }
@@ -339,7 +306,7 @@ public class SettingDialogStack {
         if (!this.mContextualMenu.getGlobalVisibleItemRect(rect2, obj)) {
             return false;
         }
-        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver$LayoutOrientationType.PORTRAIT) {
+        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
             if (this.mOrientation == 2) {
                 rect2 = new Rect(rect2.top, rect.width() - rect2.right, rect2.bottom, rect.width() - rect2.left);
             }
@@ -496,6 +463,7 @@ public class SettingDialogStack {
         this.mCapturingMode = capturingMode;
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private SettingDialogInterface getCurrentDialog() {
         if (CamLog.VERBOSE) {
             CamLog.d("getCurrentDialog");
@@ -581,7 +549,7 @@ public class SettingDialogStack {
         }
         this.mDialogTags.remove(this.mMonochromeDialog);
         if (CamLog.DEBUG) {
-            CamLog.d("SettingDialogStack", "mMonochromeDialog remove:");
+            CamLog.d(TAG, "mMonochromeDialog remove:");
         }
         if (z) {
             this.mMonochromeDialog.close();
@@ -619,8 +587,107 @@ public class SettingDialogStack {
         this.mIsCanceledOnTouchOutside = z;
     }
 
-    public void setExclusiveViewListener(SettingDialogStack$ExclusiveViewListener settingDialogStack$ExclusiveViewListener) {
-        this.mExclusiveViewListener = settingDialogStack$ExclusiveViewListener;
+    private class Background extends FrameLayout {
+        private final Rect mBackgroundRect;
+        private final Rect mItemRect;
+
+        public Background(Context context) {
+            super(context);
+            this.mBackgroundRect = new Rect();
+            this.mItemRect = new Rect();
+        }
+
+        @Override // android.widget.FrameLayout, android.view.View
+        protected void onMeasure(int i, int i2) {
+            int i3;
+            super.onMeasure(i, i2);
+            if (CamLog.VERBOSE) {
+                CamLog.d("onMeasure() E");
+            }
+            if (SettingDialogStack.this.mContextualMenu2ndLayer != null) {
+                Object obj = SettingDialogStack.this.mDialogTags.get(SettingDialogStack.this.mContextualMenu2ndLayer);
+                Rect rect = new Rect();
+                if (SettingDialogStack.this.mContainer.getGlobalVisibleRect(rect)) {
+                    if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
+                        this.mBackgroundRect.left = rect.top;
+                        this.mBackgroundRect.top = rect.left;
+                        this.mBackgroundRect.right = rect.bottom;
+                        this.mBackgroundRect.bottom = rect.right;
+                    } else {
+                        this.mBackgroundRect.left = rect.left;
+                        this.mBackgroundRect.top = rect.top;
+                        this.mBackgroundRect.right = rect.right;
+                        this.mBackgroundRect.bottom = rect.bottom;
+                    }
+                    if (CamLog.VERBOSE) {
+                        CamLog.d("  backgroundRect: (" + this.mBackgroundRect.left + ", " + this.mBackgroundRect.top + ", " + this.mBackgroundRect.right + ", " + this.mBackgroundRect.bottom + ")");
+                    }
+                    Rect rect2 = new Rect();
+                    if (SettingDialogStack.this.mContextualMenu.getGlobalVisibleItemRect(rect2, obj)) {
+                        if (LayoutOrientationResolver.getInstance().getOrientation() == LayoutOrientationResolver.LayoutOrientationType.PORTRAIT) {
+                            this.mItemRect.left = rect2.top;
+                            this.mItemRect.top = rect2.left;
+                            this.mItemRect.right = rect2.bottom;
+                            this.mItemRect.bottom = rect2.right;
+                        } else {
+                            this.mItemRect.left = rect2.left;
+                            this.mItemRect.top = rect2.top;
+                            this.mItemRect.right = rect2.right;
+                            this.mItemRect.bottom = rect2.bottom;
+                        }
+                        if (CamLog.VERBOSE) {
+                            CamLog.d("  itemRect: (" + this.mItemRect.left + ", " + this.mItemRect.top + ", " + this.mItemRect.right + ", " + this.mItemRect.bottom + ")");
+                        }
+                        if (SettingDialogStack.this.mOrientation == 2) {
+                            i3 = this.mBackgroundRect.bottom - this.mItemRect.bottom;
+                        } else {
+                            i3 = this.mBackgroundRect.right - this.mItemRect.right;
+                        }
+                        SettingDialogStack.this.mContextualMenu2ndLayer.setBottomMarginHint(i3);
+                        if (CamLog.VERBOSE) {
+                            CamLog.d("  margin-button:" + i3);
+                        }
+                    }
+                }
+            }
+            if (CamLog.VERBOSE) {
+                CamLog.d("onMeasure() X");
+            }
+        }
+
+        @Override // android.view.View
+        public boolean onTouchEvent(MotionEvent motionEvent) {
+            if (CamLog.VERBOSE) {
+                CamLog.d("onTouchEvent: " + motionEvent.getAction());
+            }
+            SettingDialogInterface currentDialog = SettingDialogStack.this.getCurrentDialog();
+            if (currentDialog != null) {
+                switch (motionEvent.getAction()) {
+                    case 0:
+                        if (SettingDialogStack.this.mExclusiveViewListener == null || !SettingDialogStack.this.mExclusiveViewListener.isExclusiveView(SettingDialogStack.this.mBackground, motionEvent)) {
+                        }
+                        break;
+                    case 1:
+                        if (SettingDialogStack.this.mIsCanceledOnTouchOutside) {
+                            if (SettingDialogStack.this.mContextualMenu == null || !SettingDialogStack.this.mContextualMenu.isOperationAcceptable()) {
+                                Rect rect = new Rect();
+                                SettingDialogStack.this.mBackground.getGlobalVisibleRect(rect);
+                                if (!currentDialog.hitTest(rect.right - ((int) motionEvent.getY()), rect.top + ((int) motionEvent.getX()))) {
+                                    SettingDialogStack.this.closeCurrentDialog();
+                                    break;
+                                }
+                            }
+                        }
+                        break;
+                }
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public void setExclusiveViewListener(ExclusiveViewListener exclusiveViewListener) {
+        this.mExclusiveViewListener = exclusiveViewListener;
     }
 
     public void adjustContainer(boolean z) {
@@ -634,9 +701,9 @@ public class SettingDialogStack {
             this.mContainer.getLayoutParams().height = this.mScreenRect.height();
             this.mContainer.setPadding(0, 0, 0, 0);
         }
-        ((FrameLayout$LayoutParams) this.mContainer.getLayoutParams()).gravity = 51;
-        ((FrameLayout$LayoutParams) this.mContainer.getLayoutParams()).topMargin = this.mScreenRect.top;
-        ((FrameLayout$LayoutParams) this.mContainer.getLayoutParams()).leftMargin = this.mScreenRect.left;
+        ((FrameLayout.LayoutParams) this.mContainer.getLayoutParams()).gravity = 51;
+        ((FrameLayout.LayoutParams) this.mContainer.getLayoutParams()).topMargin = this.mScreenRect.top;
+        ((FrameLayout.LayoutParams) this.mContainer.getLayoutParams()).leftMargin = this.mScreenRect.left;
         this.mContainer.requestLayout();
     }
 }

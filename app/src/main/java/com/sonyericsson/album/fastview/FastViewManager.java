@@ -1,31 +1,43 @@
 package com.sonyericsson.album.fastview;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import com.sonyericsson.album.fastview.IFastViewService;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class FastViewManager {
     private static final String LOG_TAG = "FastViewManager";
     private final Object mBitmapManagerClassInstance;
-    private final ServiceConnection mConnection = new FastViewManager$1(this);
+    private final ServiceConnection mConnection = new ServiceConnection() { // from class: com.sonyericsson.album.fastview.FastViewManager.1
+        @Override // android.content.ServiceConnection
+        public void onServiceDisconnected(ComponentName componentName) {
+        }
+
+        @Override // android.content.ServiceConnection
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            FastViewManager.this.mService = IFastViewService.Stub.asInterface(iBinder);
+            if (FastViewManager.this.mOnPrewarmedListener != null) {
+                FastViewManager.this.mOnPrewarmedListener.onPrewarmed();
+            }
+        }
+    };
     private final Context mContext;
     private final Method mGetBitmapMethod;
-    private FastViewManager$OnPrewarmedListener mOnPrewarmedListener;
+    private OnPrewarmedListener mOnPrewarmedListener;
     private IFastViewService mService;
 
-    static /* synthetic */ IFastViewService access$002(FastViewManager fastViewManager, IFastViewService iFastViewService) {
-        fastViewManager.mService = iFastViewService;
-        return iFastViewService;
-    }
-
-    static /* synthetic */ FastViewManager$OnPrewarmedListener access$100(FastViewManager fastViewManager) {
-        return fastViewManager.mOnPrewarmedListener;
+    public interface OnPrewarmedListener {
+        void onPrewarmed();
     }
 
     public FastViewManager(@NonNull Context context) throws FastViewUnavailableException {
@@ -45,8 +57,8 @@ public class FastViewManager {
         this.mContext.bindService(intent, this.mConnection, 1);
     }
 
-    public void setOnPrewarmedListener(@Nullable FastViewManager$OnPrewarmedListener fastViewManager$OnPrewarmedListener) {
-        this.mOnPrewarmedListener = fastViewManager$OnPrewarmedListener;
+    public void setOnPrewarmedListener(@Nullable OnPrewarmedListener onPrewarmedListener) {
+        this.mOnPrewarmedListener = onPrewarmedListener;
     }
 
     public void prepare(@Nullable Uri uri) {
@@ -56,7 +68,7 @@ public class FastViewManager {
         try {
             this.mService.prepare(uri);
         } catch (RemoteException unused) {
-            Log.d("FastViewManager", "Not in pre-warmed state.");
+            Log.d(LOG_TAG, "Not in pre-warmed state.");
         }
     }
 
@@ -67,7 +79,7 @@ public class FastViewManager {
         this.mService = null;
     }
 
-    public Bitmap getBitmap(Uri uri) {
+    public Bitmap getBitmap(Uri uri) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         Object objInvoke;
         try {
             objInvoke = this.mGetBitmapMethod.invoke(this.mBitmapManagerClassInstance, this.mContext, uri);

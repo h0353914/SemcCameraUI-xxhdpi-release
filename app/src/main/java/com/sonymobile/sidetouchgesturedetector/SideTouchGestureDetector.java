@@ -1,7 +1,10 @@
 package com.sonymobile.sidetouchgesturedetector;
 
 import android.content.Context;
+import android.database.ContentObserver;
 import android.os.Handler;
+import android.os.Message;
+import android.provider.Settings;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import java.util.HashSet;
@@ -25,119 +28,116 @@ public class SideTouchGestureDetector {
     private static final int TOUCH_SLOP = 8;
     private static final int TOUCH_SLOP_IN_DP = 14;
     private final Context mContext;
-    private SideTouchGestureDetector$DebugListener mDebugListener;
+    private DebugListener mDebugListener;
     private DoubleTapInfo mDoubleTapInfo;
-    private SideTouchGestureDetector$OnDoubleTapListener mDoubleTapListener;
+    private OnDoubleTapListener mDoubleTapListener;
     private int mDoubleTapMinTime;
     private int mDoubleTapSlopSquare;
     private int mDoubleTapTimeout;
     private int mDoubleTapTimeoutLearning;
     private int mDoubleTapTimeoutReal;
-    private SideTouchGestureDetector$DynamicSettings mDynamicSettings;
+    private DynamicSettings mDynamicSettings;
     private int mGestureIds;
-    private Set<SideTouchGestureDetector$Gesture> mGestures;
-    private Set<SideTouchGestureDetector$Gesture> mGesturesWaitingPointer;
+    private Set<Gesture> mGestures;
+    private Set<Gesture> mGesturesWaitingPointer;
     private final Handler mHandler;
     private boolean mIsLearningMode;
     private boolean mIsLongpressEnabled;
-    private SideTouchGestureDetector$OnGestureListener mListener;
+    private OnGestureListener mListener;
     private int mLongPressTimeout;
     private int mMaximumFlingVelocity;
     private int mMinimumFlingVelocity;
     private int mTouchSlopSquare;
     private VelocityTracker mVelocityTracker;
 
-    static /* synthetic */ Context access$100(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mContext;
+    public interface DebugListener {
+        void onConfigurationLoaded();
     }
 
-    static /* synthetic */ void access$1000(SideTouchGestureDetector sideTouchGestureDetector, SideTouchGestureDetector$Gesture sideTouchGestureDetector$Gesture) {
-        sideTouchGestureDetector.moveToWaitingList(sideTouchGestureDetector$Gesture);
+    public interface OnDoubleTapListener {
+        void onDoubleTap(int i, MotionEvent motionEvent);
+
+        void onDoubleTapForLearning(DoubleTapInfo doubleTapInfo);
+
+        void onSingleTapConfirmed(int i, MotionEvent motionEvent);
     }
 
-    static /* synthetic */ void access$1100(SideTouchGestureDetector sideTouchGestureDetector, SideTouchGestureDetector$Gesture sideTouchGestureDetector$Gesture) {
-        sideTouchGestureDetector.removeFromWaitingList(sideTouchGestureDetector$Gesture);
+    public interface OnGestureListener {
+        void onCancel(MotionEvent motionEvent);
+
+        void onDown(int i, MotionEvent motionEvent);
+
+        void onFling(int i, MotionEvent motionEvent, MotionEvent motionEvent2, float f, float f2);
+
+        void onGestureFinished(int i);
+
+        void onLongPress(int i, MotionEvent motionEvent);
+
+        void onScroll(int i, MotionEvent motionEvent, MotionEvent motionEvent2, float f, float f2);
+
+        void onUp(int i, MotionEvent motionEvent);
     }
 
-    static /* synthetic */ Handler access$1200(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mHandler;
+    private class GestureHandler extends Handler {
+        GestureHandler() {
+        }
+
+        GestureHandler(Handler handler) {
+            super(handler.getLooper());
+        }
+
+        @Override // android.os.Handler
+        public void handleMessage(Message message) {
+            ((Gesture) message.obj).onHandleMessage(message.what);
+        }
     }
 
-    static /* synthetic */ void access$1600(SideTouchGestureDetector sideTouchGestureDetector, int i) {
-        sideTouchGestureDetector.releaseGestureId(i);
+    private class DynamicSettings {
+        private boolean mRegistered = false;
+        private ContentObserver mContentObserver = new ContentObserver(new Handler()) { // from class: com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.DynamicSettings.1
+            @Override // android.database.ContentObserver
+            public void onChange(boolean z) {
+                super.onChange(z);
+                DynamicSettings.this.loadSettings();
+            }
+        };
+
+        public DynamicSettings() {
+            registerObserver();
+            loadSettings();
+        }
+
+        public void registerObserver() {
+            if (this.mRegistered) {
+                return;
+            }
+            SideTouchGestureDetector.this.mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(SideTouchGestureDetector.SETTINGS_KEY_DOUBLE_TAP_TIMEOUT), false, this.mContentObserver);
+            this.mRegistered = true;
+        }
+
+        public void unregisterObserver() {
+            if (this.mRegistered) {
+                SideTouchGestureDetector.this.mContext.getContentResolver().unregisterContentObserver(this.mContentObserver);
+                this.mRegistered = false;
+            }
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        public void loadSettings() {
+            SideTouchGestureDetector.this.setDoubleTapTimeout(Settings.System.getInt(SideTouchGestureDetector.this.mContext.getContentResolver(), SideTouchGestureDetector.SETTINGS_KEY_DOUBLE_TAP_TIMEOUT, SideTouchGestureDetector.DEFAULT_DOUBLE_TAP_TIMEOUT));
+            if (SideTouchGestureDetector.this.mDebugListener != null) {
+                SideTouchGestureDetector.this.mDebugListener.onConfigurationLoaded();
+            }
+        }
     }
 
-    static /* synthetic */ SideTouchGestureDetector$OnGestureListener access$1700(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mListener;
+    public SideTouchGestureDetector(Context context, OnGestureListener onGestureListener) {
+        this(context, onGestureListener, null);
     }
 
-    static /* synthetic */ int access$1900(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.acquireGestureId();
-    }
-
-    static /* synthetic */ SideTouchGestureDetector$DebugListener access$200(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mDebugListener;
-    }
-
-    static /* synthetic */ SideTouchGestureDetector$OnDoubleTapListener access$2000(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mDoubleTapListener;
-    }
-
-    static /* synthetic */ int access$2100(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mDoubleTapTimeout;
-    }
-
-    static /* synthetic */ boolean access$2300(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mIsLongpressEnabled;
-    }
-
-    static /* synthetic */ int access$2400(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mLongPressTimeout;
-    }
-
-    static /* synthetic */ int access$2600(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mTouchSlopSquare;
-    }
-
-    static /* synthetic */ int access$3000(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mDoubleTapTimeoutReal;
-    }
-
-    static /* synthetic */ int access$3100(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mDoubleTapMinTime;
-    }
-
-    static /* synthetic */ boolean access$3200(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mIsLearningMode;
-    }
-
-    static /* synthetic */ DoubleTapInfo access$3300(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mDoubleTapInfo;
-    }
-
-    static /* synthetic */ int access$3400(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mDoubleTapSlopSquare;
-    }
-
-    static /* synthetic */ int access$3500(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mMaximumFlingVelocity;
-    }
-
-    static /* synthetic */ VelocityTracker access$3600(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mVelocityTracker;
-    }
-
-    static /* synthetic */ int access$3700(SideTouchGestureDetector sideTouchGestureDetector) {
-        return sideTouchGestureDetector.mMinimumFlingVelocity;
-    }
-
-    public SideTouchGestureDetector(Context context, SideTouchGestureDetector$OnGestureListener sideTouchGestureDetector$OnGestureListener) {
-        this(context, sideTouchGestureDetector$OnGestureListener, null);
-    }
-
-    public SideTouchGestureDetector(Context context, SideTouchGestureDetector$OnGestureListener sideTouchGestureDetector$OnGestureListener, Handler handler) {
+    public SideTouchGestureDetector(Context context, OnGestureListener onGestureListener, Handler handler) {
         this.mLongPressTimeout = 500;
-        this.mDoubleTapTimeout = 360;
+        this.mDoubleTapTimeout = DEFAULT_DOUBLE_TAP_TIMEOUT;
         this.mDoubleTapMinTime = 30;
         this.mGestures = new HashSet();
         this.mGesturesWaitingPointer = new HashSet();
@@ -146,13 +146,13 @@ public class SideTouchGestureDetector {
         this.mDoubleTapTimeoutLearning = 1100;
         this.mContext = context;
         if (handler != null) {
-            this.mHandler = new SideTouchGestureDetector$GestureHandler(this, handler);
+            this.mHandler = new GestureHandler(handler);
         } else {
-            this.mHandler = new SideTouchGestureDetector$GestureHandler(this);
+            this.mHandler = new GestureHandler();
         }
-        this.mListener = sideTouchGestureDetector$OnGestureListener;
-        if (sideTouchGestureDetector$OnGestureListener instanceof SideTouchGestureDetector$OnDoubleTapListener) {
-            setOnDoubleTapListener((SideTouchGestureDetector$OnDoubleTapListener) sideTouchGestureDetector$OnGestureListener);
+        this.mListener = onGestureListener;
+        if (onGestureListener instanceof OnDoubleTapListener) {
+            setOnDoubleTapListener((OnDoubleTapListener) onGestureListener);
         }
         init(context);
     }
@@ -166,7 +166,7 @@ public class SideTouchGestureDetector {
             throw new NullPointerException("Context must not be null");
         }
         this.mIsLongpressEnabled = true;
-        this.mDynamicSettings = new SideTouchGestureDetector$DynamicSettings(this);
+        this.mDynamicSettings = new DynamicSettings();
         int iDp2px2 = dp2px(14.0f);
         if (context.getResources().getConfiguration().isLayoutSizeAtLeast(4)) {
             iDp2px = dp2px(45.0f);
@@ -179,8 +179,8 @@ public class SideTouchGestureDetector {
         this.mDoubleTapSlopSquare = iDp2px * iDp2px;
     }
 
-    public void setOnDoubleTapListener(SideTouchGestureDetector$OnDoubleTapListener sideTouchGestureDetector$OnDoubleTapListener) {
-        this.mDoubleTapListener = sideTouchGestureDetector$OnDoubleTapListener;
+    public void setOnDoubleTapListener(OnDoubleTapListener onDoubleTapListener) {
+        this.mDoubleTapListener = onDoubleTapListener;
     }
 
     public void setIsLongpressEnabled(boolean z) {
@@ -207,8 +207,8 @@ public class SideTouchGestureDetector {
         return this.mDoubleTapTimeout;
     }
 
-    public void setDebugListener(SideTouchGestureDetector$DebugListener sideTouchGestureDetector$DebugListener) {
-        this.mDebugListener = sideTouchGestureDetector$DebugListener;
+    public void setDebugListener(DebugListener debugListener) {
+        this.mDebugListener = debugListener;
     }
 
     public void setLongPressTimeout(int i) {
@@ -264,38 +264,34 @@ public class SideTouchGestureDetector {
         switch (motionEvent.getActionMasked()) {
             case 0:
             case 5:
-                Iterator<SideTouchGestureDetector$Gesture> it = this.mGesturesWaitingPointer.iterator();
-                while (true) {
-                    if (it.hasNext()) {
-                        if (it.next().onDownEvent(motionEvent)) {
-                            z = true;
-                        }
+                Iterator<Gesture> it = this.mGesturesWaitingPointer.iterator();
+                while (it.hasNext()) {
+                    if (it.next().onDownEvent(motionEvent)) {
+                        z = true;
                     }
                 }
                 if (!z) {
-                    Iterator<SideTouchGestureDetector$Gesture> it2 = this.mGestures.iterator();
-                    while (true) {
-                        if (it2.hasNext()) {
-                            if (it2.next().onDownEvent(motionEvent)) {
-                                z = true;
-                            }
+                    Iterator<Gesture> it2 = this.mGestures.iterator();
+                    while (it2.hasNext()) {
+                        if (it2.next().onDownEvent(motionEvent)) {
+                            z = true;
                         }
                     }
                     if (!z) {
-                        SideTouchGestureDetector$Gesture sideTouchGestureDetector$Gesture = new SideTouchGestureDetector$Gesture(this, null);
-                        this.mGestures.add(sideTouchGestureDetector$Gesture);
-                        sideTouchGestureDetector$Gesture.onDownEvent(motionEvent);
+                        Gesture gesture = new Gesture();
+                        this.mGestures.add(gesture);
+                        gesture.onDownEvent(motionEvent);
                     }
                 }
                 return true;
             case 1:
             case 6:
-                Iterator<SideTouchGestureDetector$Gesture> it3 = this.mGestures.iterator();
+                Iterator<Gesture> it3 = this.mGestures.iterator();
                 while (it3.hasNext() && !it3.next().onUpEvent(motionEvent)) {
                 }
                 return true;
             case 2:
-                Iterator<SideTouchGestureDetector$Gesture> it4 = this.mGestures.iterator();
+                Iterator<Gesture> it4 = this.mGestures.iterator();
                 while (it4.hasNext()) {
                     it4.next().onMoveEvent(motionEvent);
                 }
@@ -308,7 +304,7 @@ public class SideTouchGestureDetector {
                 this.mListener.onCancel(motionEvent);
                 this.mGestures.addAll(this.mGesturesWaitingPointer);
                 this.mGesturesWaitingPointer.clear();
-                Iterator<SideTouchGestureDetector$Gesture> it5 = this.mGestures.iterator();
+                Iterator<Gesture> it5 = this.mGestures.iterator();
                 while (it5.hasNext()) {
                     it5.next().cancel();
                 }
@@ -319,29 +315,419 @@ public class SideTouchGestureDetector {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private int acquireGestureId() {
         int iLowestOneBit = Integer.lowestOneBit(~this.mGestureIds);
         this.mGestureIds |= iLowestOneBit;
         return Integer.numberOfTrailingZeros(iLowestOneBit);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void releaseGestureId(int i) {
         this.mGestureIds = (~(1 << i)) & this.mGestureIds;
     }
 
-    private void moveToWaitingList(SideTouchGestureDetector$Gesture sideTouchGestureDetector$Gesture) {
-        if (this.mGestures.remove(sideTouchGestureDetector$Gesture)) {
-            this.mGesturesWaitingPointer.add(sideTouchGestureDetector$Gesture);
+    /* JADX INFO: Access modifiers changed from: private */
+    private void moveToWaitingList(Gesture gesture) {
+        if (this.mGestures.remove(gesture)) {
+            this.mGesturesWaitingPointer.add(gesture);
         }
     }
 
-    private void removeFromWaitingList(SideTouchGestureDetector$Gesture sideTouchGestureDetector$Gesture) {
-        if (this.mGesturesWaitingPointer.remove(sideTouchGestureDetector$Gesture)) {
-            this.mGestures.add(sideTouchGestureDetector$Gesture);
+    /* JADX INFO: Access modifiers changed from: private */
+    private void removeFromWaitingList(Gesture gesture) {
+        if (this.mGesturesWaitingPointer.remove(gesture)) {
+            this.mGestures.add(gesture);
         }
     }
 
     private int dp2px(float f) {
         return (int) ((f * this.mContext.getResources().getDisplayMetrics().density) + 0.5f);
+    }
+
+    private class Gesture {
+        final State doubleTapDownState;
+        final State downState;
+        final State initialState;
+        final State longPressState;
+        private MotionEvent mDownEvent;
+        private int mGestureId;
+        private State mState;
+        final State scrollState;
+        final State upState;
+
+        private Gesture() {
+            this.initialState = new Initial();
+            this.downState = new Down();
+            this.upState = new Up();
+            this.longPressState = new LongPress();
+            this.scrollState = new Scroll();
+            this.doubleTapDownState = new DoubleTapDown();
+            this.mGestureId = -1;
+            this.mState = this.initialState;
+        }
+
+        boolean onDownEvent(MotionEvent motionEvent) {
+            return this.mState.processDown(motionEvent);
+        }
+
+        void onMoveEvent(MotionEvent motionEvent) {
+            this.mState.processMove(motionEvent);
+        }
+
+        boolean onUpEvent(MotionEvent motionEvent) {
+            return this.mState.processUp(motionEvent);
+        }
+
+        void onHandleMessage(int i) {
+            this.mState.processMessage(i);
+        }
+
+        void cancel() {
+            this.mState.cancel();
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+    private void setState(State state, MotionEvent motionEvent) {
+            if (this.mState != state) {
+                this.mState.exit();
+                this.mState = state;
+                state.enter(motionEvent);
+            }
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+    private void moveToWaitingList() {
+            SideTouchGestureDetector.this.moveToWaitingList(this);
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+    private void removeFromWaitingList() {
+            SideTouchGestureDetector.this.removeFromWaitingList(this);
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+    private void sendMessageDelayed(int i, long j) {
+            removeMessages(i);
+            SideTouchGestureDetector.this.mHandler.sendMessageDelayed(SideTouchGestureDetector.this.mHandler.obtainMessage(i, this), j);
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+    private void sendMessageAtTime(int i, long j) {
+            removeMessages(i);
+            SideTouchGestureDetector.this.mHandler.sendMessageAtTime(SideTouchGestureDetector.this.mHandler.obtainMessage(i, this), j);
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+    private void removeMessages(int i) {
+            SideTouchGestureDetector.this.mHandler.removeMessages(i, this);
+        }
+
+        private class State {
+            void enter(MotionEvent motionEvent) {
+            }
+
+            void exit() {
+            }
+
+            boolean processDown(MotionEvent motionEvent) {
+                return false;
+            }
+
+            void processMessage(int i) {
+            }
+
+            void processMove(MotionEvent motionEvent) {
+            }
+
+            boolean processUp(MotionEvent motionEvent) {
+                return false;
+            }
+
+            private State() {
+            }
+
+            final void cancel() {
+                Gesture.this.setState(Gesture.this.initialState, null);
+            }
+        }
+
+        private class Initial extends State {
+            private Initial() {
+                super();
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            void enter(MotionEvent motionEvent) {
+                if (Gesture.this.mGestureId != -1) {
+                    SideTouchGestureDetector.this.releaseGestureId(Gesture.this.mGestureId);
+                    SideTouchGestureDetector.this.mListener.onGestureFinished(Gesture.this.mGestureId);
+                    Gesture.this.mGestureId = -1;
+                }
+                if (Gesture.this.mDownEvent != null) {
+                    Gesture.this.mDownEvent.recycle();
+                    Gesture.this.mDownEvent = null;
+                }
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            void exit() {
+                if (Gesture.this.mGestureId == -1) {
+                    Gesture.this.mGestureId = SideTouchGestureDetector.this.acquireGestureId();
+                }
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            boolean processDown(MotionEvent motionEvent) {
+                Gesture.this.setState(Gesture.this.downState, motionEvent);
+                SideTouchGestureDetector.this.mListener.onDown(Gesture.this.mGestureId, motionEvent);
+                return true;
+            }
+        }
+
+        private class Down extends State {
+            private boolean mDeferConfirmSingleTap;
+
+            private Down() {
+                super();
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            void enter(MotionEvent motionEvent) {
+                Gesture.this.mDownEvent = MotionEvent.obtain(motionEvent);
+                this.mDeferConfirmSingleTap = false;
+                if (SideTouchGestureDetector.this.mDoubleTapListener != null) {
+                    Gesture.this.sendMessageDelayed(2, SideTouchGestureDetector.this.mDoubleTapTimeout);
+                }
+                if (SideTouchGestureDetector.this.mIsLongpressEnabled) {
+                    Gesture.this.sendMessageAtTime(1, motionEvent.getEventTime() + SideTouchGestureDetector.this.mLongPressTimeout);
+                }
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            void processMove(MotionEvent motionEvent) {
+                int actionIndex = Gesture.this.mDownEvent.getActionIndex();
+                int iFindPointerIndex = motionEvent.findPointerIndex(Gesture.this.mDownEvent.getPointerId(actionIndex));
+                int x = (int) (motionEvent.getX(iFindPointerIndex) - Gesture.this.mDownEvent.getX(actionIndex));
+                int y = (int) (motionEvent.getY(iFindPointerIndex) - Gesture.this.mDownEvent.getY(actionIndex));
+                if ((x * x) + (y * y) > SideTouchGestureDetector.this.mTouchSlopSquare) {
+                    Gesture.this.removeMessages(2);
+                    Gesture.this.removeMessages(1);
+                    Gesture.this.setState(Gesture.this.scrollState, motionEvent);
+                }
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            boolean processUp(MotionEvent motionEvent) {
+                if (Gesture.this.mDownEvent.getPointerId(Gesture.this.mDownEvent.getActionIndex()) != motionEvent.getPointerId(motionEvent.getActionIndex())) {
+                    return false;
+                }
+                SideTouchGestureDetector.this.mListener.onUp(Gesture.this.mGestureId, motionEvent);
+                Gesture.this.removeMessages(1);
+                if (SideTouchGestureDetector.this.mDoubleTapListener == null) {
+                    Gesture.this.setState(Gesture.this.initialState, motionEvent);
+                } else if (!this.mDeferConfirmSingleTap) {
+                    Gesture.this.setState(Gesture.this.upState, motionEvent);
+                } else {
+                    SideTouchGestureDetector.this.mDoubleTapListener.onSingleTapConfirmed(Gesture.this.mGestureId, motionEvent);
+                    Gesture.this.removeMessages(2);
+                    Gesture.this.setState(Gesture.this.initialState, motionEvent);
+                }
+                return true;
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            void processMessage(int i) {
+                switch (i) {
+                    case 1:
+                        SideTouchGestureDetector.this.mListener.onLongPress(Gesture.this.mGestureId, Gesture.this.mDownEvent);
+                        Gesture.this.setState(Gesture.this.longPressState, null);
+                        break;
+                    case 2:
+                        if (SideTouchGestureDetector.this.mDoubleTapListener != null) {
+                            this.mDeferConfirmSingleTap = true;
+                            break;
+                        }
+                        break;
+                }
+            }
+        }
+
+        /* renamed from: com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector$Gesture$Up */
+        private class Up extends State {
+            private long mUpTime;
+
+            private Up() {
+                super();
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            void enter(MotionEvent motionEvent) {
+                this.mUpTime = motionEvent.getEventTime();
+                Gesture.this.moveToWaitingList();
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            void exit() {
+                Gesture.this.removeFromWaitingList();
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            boolean processDown(MotionEvent motionEvent) {
+                if (!isConsideredDoubleTap(motionEvent)) {
+                    return false;
+                }
+                Gesture.this.removeMessages(2);
+                Gesture.this.setState(Gesture.this.doubleTapDownState, motionEvent);
+                SideTouchGestureDetector.this.mDoubleTapListener.onDoubleTap(Gesture.this.mGestureId, motionEvent);
+                return true;
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            void processMessage(int i) {
+                if (i != 2) {
+                    return;
+                }
+                if (SideTouchGestureDetector.this.mDoubleTapListener != null) {
+                    SideTouchGestureDetector.this.mDoubleTapListener.onSingleTapConfirmed(Gesture.this.mGestureId, Gesture.this.mDownEvent);
+                }
+                Gesture.this.setState(Gesture.this.initialState, null);
+            }
+
+            private boolean isConsideredDoubleTap(MotionEvent motionEvent) {
+                long eventTime = motionEvent.getEventTime() - this.mUpTime;
+                SideTouchGestureDetector.this.mDoubleTapInfo.isLearningMode(SideTouchGestureDetector.this.mIsLearningMode).firstDown(Gesture.this.mDownEvent).firstUpTime(this.mUpTime).secondDown(motionEvent).doubleTapMinTime(SideTouchGestureDetector.this.mDoubleTapMinTime).doubleTapTimeout(SideTouchGestureDetector.this.mDoubleTapTimeout).doubleTapTimeoutReal(SideTouchGestureDetector.this.mDoubleTapTimeoutReal);
+                if (eventTime > SideTouchGestureDetector.this.mDoubleTapTimeout || eventTime < SideTouchGestureDetector.this.mDoubleTapMinTime) {
+                    SideTouchGestureDetector.this.mDoubleTapListener.onDoubleTapForLearning(SideTouchGestureDetector.this.mDoubleTapInfo);
+                    return false;
+                }
+                int x = ((int) Gesture.this.mDownEvent.getX(Gesture.this.mDownEvent.getActionIndex())) - ((int) motionEvent.getX(motionEvent.getActionIndex()));
+                int y = ((int) Gesture.this.mDownEvent.getY(Gesture.this.mDownEvent.getActionIndex())) - ((int) motionEvent.getY(motionEvent.getActionIndex()));
+                int i = SideTouchGestureDetector.this.mDoubleTapSlopSquare;
+                boolean z = (x * x) + (y * y) < i;
+                SideTouchGestureDetector.this.mDoubleTapInfo.doubleTapSlopSquare(i);
+                SideTouchGestureDetector.this.mDoubleTapListener.onDoubleTapForLearning(SideTouchGestureDetector.this.mDoubleTapInfo);
+                return z;
+            }
+        }
+
+        private class Scroll extends State {
+            private float mLastX;
+            private float mLastY;
+
+            private Scroll() {
+                super();
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            void enter(MotionEvent motionEvent) {
+                int actionIndex = Gesture.this.mDownEvent.getActionIndex();
+                float x = Gesture.this.mDownEvent.getX(actionIndex);
+                float y = Gesture.this.mDownEvent.getY(actionIndex);
+                int iFindPointerIndex = motionEvent.findPointerIndex(Gesture.this.mDownEvent.getPointerId(actionIndex));
+                this.mLastX = motionEvent.getX(iFindPointerIndex);
+                this.mLastY = motionEvent.getY(iFindPointerIndex);
+                SideTouchGestureDetector.this.mListener.onScroll(Gesture.this.mGestureId, Gesture.this.mDownEvent, motionEvent, x - this.mLastX, y - this.mLastY);
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            void processMove(MotionEvent motionEvent) {
+                int iFindPointerIndex = motionEvent.findPointerIndex(Gesture.this.mDownEvent.getPointerId(Gesture.this.mDownEvent.getActionIndex()));
+                SideTouchGestureDetector.this.mListener.onScroll(Gesture.this.mGestureId, Gesture.this.mDownEvent, motionEvent, this.mLastX - motionEvent.getX(iFindPointerIndex), this.mLastY - motionEvent.getY(iFindPointerIndex));
+                this.mLastX = motionEvent.getX(iFindPointerIndex);
+                this.mLastY = motionEvent.getY(iFindPointerIndex);
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            boolean processUp(MotionEvent motionEvent) {
+                int pointerId = motionEvent.getPointerId(motionEvent.getActionIndex());
+                if (Gesture.this.mDownEvent.getPointerId(Gesture.this.mDownEvent.getActionIndex()) != pointerId) {
+                    return false;
+                }
+                SideTouchGestureDetector.this.mVelocityTracker.computeCurrentVelocity(1000, SideTouchGestureDetector.this.mMaximumFlingVelocity);
+                float xVelocity = SideTouchGestureDetector.this.mVelocityTracker.getXVelocity(pointerId);
+                float yVelocity = SideTouchGestureDetector.this.mVelocityTracker.getYVelocity(pointerId);
+                if (Math.abs(xVelocity) > SideTouchGestureDetector.this.mMinimumFlingVelocity || Math.abs(yVelocity) > SideTouchGestureDetector.this.mMinimumFlingVelocity) {
+                    SideTouchGestureDetector.this.mListener.onFling(Gesture.this.mGestureId, Gesture.this.mDownEvent, motionEvent, xVelocity, yVelocity);
+                }
+                SideTouchGestureDetector.this.mListener.onUp(Gesture.this.mGestureId, motionEvent);
+                Gesture.this.setState(Gesture.this.initialState, motionEvent);
+                return true;
+            }
+        }
+
+        private class LongPress extends State {
+            private LongPress() {
+                super();
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            void processMove(MotionEvent motionEvent) {
+                int actionIndex = Gesture.this.mDownEvent.getActionIndex();
+                int iFindPointerIndex = motionEvent.findPointerIndex(Gesture.this.mDownEvent.getPointerId(actionIndex));
+                int x = (int) (motionEvent.getX(iFindPointerIndex) - Gesture.this.mDownEvent.getX(actionIndex));
+                int y = (int) (motionEvent.getY(iFindPointerIndex) - Gesture.this.mDownEvent.getY(actionIndex));
+                if ((x * x) + (y * y) > SideTouchGestureDetector.this.mTouchSlopSquare) {
+                    Gesture.this.setState(Gesture.this.scrollState, motionEvent);
+                }
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            boolean processUp(MotionEvent motionEvent) {
+                if (Gesture.this.mDownEvent.getPointerId(Gesture.this.mDownEvent.getActionIndex()) != motionEvent.getPointerId(motionEvent.getActionIndex())) {
+                    return false;
+                }
+                SideTouchGestureDetector.this.mListener.onUp(Gesture.this.mGestureId, motionEvent);
+                Gesture.this.setState(Gesture.this.initialState, motionEvent);
+                return true;
+            }
+        }
+
+        private class DoubleTapDown extends State {
+            private DoubleTapDown() {
+                super();
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            void enter(MotionEvent motionEvent) {
+                Gesture.this.mDownEvent.recycle();
+                Gesture.this.mDownEvent = MotionEvent.obtain(motionEvent);
+                if (SideTouchGestureDetector.this.mIsLongpressEnabled) {
+                    Gesture.this.sendMessageAtTime(1, motionEvent.getEventTime() + SideTouchGestureDetector.this.mLongPressTimeout);
+                }
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            void processMove(MotionEvent motionEvent) {
+                int actionIndex = Gesture.this.mDownEvent.getActionIndex();
+                int iFindPointerIndex = motionEvent.findPointerIndex(Gesture.this.mDownEvent.getPointerId(actionIndex));
+                int x = (int) (motionEvent.getX(iFindPointerIndex) - Gesture.this.mDownEvent.getX(actionIndex));
+                int y = (int) (motionEvent.getY(iFindPointerIndex) - Gesture.this.mDownEvent.getY(actionIndex));
+                if ((x * x) + (y * y) > SideTouchGestureDetector.this.mTouchSlopSquare) {
+                    Gesture.this.removeMessages(1);
+                    Gesture.this.setState(Gesture.this.scrollState, motionEvent);
+                }
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            boolean processUp(MotionEvent motionEvent) {
+                if (Gesture.this.mDownEvent.getPointerId(Gesture.this.mDownEvent.getActionIndex()) != motionEvent.getPointerId(motionEvent.getActionIndex())) {
+                    return false;
+                }
+                SideTouchGestureDetector.this.mListener.onUp(Gesture.this.mGestureId, motionEvent);
+                Gesture.this.removeMessages(1);
+                Gesture.this.setState(Gesture.this.initialState, motionEvent);
+                return true;
+            }
+
+            @Override // com.sonymobile.sidetouchgesturedetector.SideTouchGestureDetector.Gesture.State
+            void processMessage(int i) {
+                if (i != 1) {
+                    return;
+                }
+                SideTouchGestureDetector.this.mListener.onLongPress(Gesture.this.mGestureId, Gesture.this.mDownEvent);
+                Gesture.this.setState(Gesture.this.longPressState, null);
+            }
+        }
     }
 }

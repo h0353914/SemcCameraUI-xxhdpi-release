@@ -1,11 +1,12 @@
 package com.google.android.gms.auth.api.credentials;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class IdToken implements SafeParcelable {
-    public static final Parcelable$Creator<IdToken> CREATOR = new zzd();
+    public static final Parcelable.Creator<IdToken> CREATOR = new zzd();
     final int mVersionCode;
     private final String zzSk;
     private final String zzSs;

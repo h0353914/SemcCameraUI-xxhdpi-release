@@ -3,6 +3,7 @@ package com.sonyericsson.android.camera.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.parameters.FrontAngle;
 
 public class FrontAngleSwitchButton extends ImageView {
@@ -24,9 +25,9 @@ public class FrontAngleSwitchButton extends ImageView {
     public void switchFrontAngle(FrontAngle frontAngle) {
         this.mAngle = frontAngle;
         if (this.mAngle == FrontAngle.DEFAULT) {
-            setContentDescription(getResources().getString(2131689607));
+            setContentDescription(getResources().getString(R.string.cam_strings_accessibility_swf_normal_txt));
         } else {
-            setContentDescription(getResources().getString(2131689608));
+            setContentDescription(getResources().getString(R.string.cam_strings_accessibility_swf_wide_txt));
         }
         update();
     }
@@ -43,18 +44,20 @@ public class FrontAngleSwitchButton extends ImageView {
         switch (this.mCurrentOrientation) {
             case 1:
                 if (this.mAngle == FrontAngle.DEFAULT) {
-                    setBackgroundResource(2131231577);
+                    setBackgroundResource(R.drawable.wide_switch_background_port_superwide);
+                    break;
                 } else {
-                    setBackgroundResource(2131231578);
+                    setBackgroundResource(R.drawable.wide_switch_background_port_wide);
+                    break;
                 }
-                break;
             case 2:
                 if (this.mAngle == FrontAngle.DEFAULT) {
-                    setBackgroundResource(2131231575);
+                    setBackgroundResource(R.drawable.wide_switch_background_land_superwide);
+                    break;
                 } else {
-                    setBackgroundResource(2131231576);
+                    setBackgroundResource(R.drawable.wide_switch_background_land_wide);
+                    break;
                 }
-                break;
         }
         invalidate();
     }

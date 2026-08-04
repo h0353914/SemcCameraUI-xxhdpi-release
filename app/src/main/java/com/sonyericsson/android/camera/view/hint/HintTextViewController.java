@@ -1,71 +1,127 @@
 package com.sonyericsson.android.camera.view.hint;
 
+import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.View$OnClickListener;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout$LayoutParams;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
-import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver$ScreenAspect;
+import com.sonyericsson.android.camera.view.baselayout.LayoutDependencyResolver;
+import com.sonyericsson.android.camera.view.hint.HintTextContent;
 import com.sonyericsson.cameracommon.utility.ResourceUtil;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 
 public class HintTextViewController {
     private static final String TAG = "HintTextViewController";
-    private HintTextContent$HintPriority mContentDisplayThreshold;
+    private HintTextContent.HintPriority mContentDisplayThreshold;
     private Context mContext;
-    private HintTextViewController$TimeoutHandler mHandler;
+    private TimeoutHandler mHandler;
     private ViewGroup mHintTextBackground;
     private FrameLayout mHintTextContainer;
     private ObjectAnimator mHintTextFadeOutAnimator;
     private HintTextView mHintTextView;
-    private HintTextViewController$HintTextContentListener mListener;
-    private final LayoutDependencyResolver$ScreenAspect mScreenAspect;
-    private BlockingQueue<HintTextContent> mContentPrioritizedStack = new HintTextViewController$BlockingFiloContentQueue();
-    private View$OnClickListener mOnClickListener = new HintTextViewController$1(this);
+    private HintTextContentListener mListener;
+    private final LayoutDependencyResolver.ScreenAspect mScreenAspect;
+    private BlockingQueue<HintTextContent> mContentPrioritizedStack = new BlockingFiloContentQueue();
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() { // from class: com.sonyericsson.android.camera.view.hint.HintTextViewController.1
+        @Override // android.view.View.OnClickListener
+        public void onClick(View view) {
+            HintTextContent hintTextContentReferTop = HintTextViewController.this.referTop();
+            if (hintTextContentReferTop != null) {
+                HintTextViewController.this.mListener.onContentButtonClick(HintTextViewController.this, hintTextContentReferTop);
+            }
+        }
+    };
 
-    static /* synthetic */ HintTextContent access$000(HintTextViewController hintTextViewController) {
-        return hintTextViewController.referTop();
+    public interface HintTextContentListener {
+        void onContentButtonClick(HintTextViewController hintTextViewController, HintTextContent hintTextContent);
+
+        void onStateChanged();
     }
 
-    static /* synthetic */ HintTextViewController$HintTextContentListener access$100(HintTextViewController hintTextViewController) {
-        return hintTextViewController.mListener;
+    private static class BlockingFiloContentQueue extends PriorityBlockingQueue<HintTextContent> {
+        private static final Map<HintTextContent, Long> sSequentialIndexMap = new LinkedHashMap();
+        private long mCount;
+
+        public BlockingFiloContentQueue() {
+            super(2, new Comparator<HintTextContent>() { // from class: com.sonyericsson.android.camera.view.hint.HintTextViewController.BlockingFiloContentQueue.1
+                @Override // java.util.Comparator
+                public int compare(HintTextContent hintTextContent, HintTextContent hintTextContent2) {
+                    int iCompareTo = hintTextContent.getPriority().compareTo(hintTextContent2.getPriority());
+                    return (iCompareTo != 0 || hintTextContent.equals(hintTextContent2)) ? iCompareTo : ((Long) BlockingFiloContentQueue.sSequentialIndexMap.getOrDefault(hintTextContent, Long.MIN_VALUE)).longValue() < ((Long) BlockingFiloContentQueue.sSequentialIndexMap.getOrDefault(hintTextContent2, Long.MIN_VALUE)).longValue() ? 1 : -1;
+                }
+            });
+            sSequentialIndexMap.clear();
+        }
+
+        @Override // java.util.concurrent.PriorityBlockingQueue, java.util.Queue, java.util.concurrent.BlockingQueue
+        public boolean offer(HintTextContent hintTextContent) {
+            Map<HintTextContent, Long> map = sSequentialIndexMap;
+            long j = this.mCount;
+            this.mCount = 1 + j;
+            map.put(hintTextContent, Long.valueOf(j));
+            return super.offer(hintTextContent);
+        }
+
+        @Override // java.util.concurrent.PriorityBlockingQueue, java.util.Queue
+        public HintTextContent poll() {
+            HintTextContent hintTextContent = (HintTextContent) super.poll();
+            sSequentialIndexMap.remove(hintTextContent);
+            return hintTextContent;
+        }
+
+        @Override // java.util.concurrent.PriorityBlockingQueue, java.util.AbstractQueue, java.util.AbstractCollection, java.util.Collection
+        public void clear() {
+            super.clear();
+            sSequentialIndexMap.clear();
+            this.mCount = 0L;
+        }
     }
 
-    static /* synthetic */ HintTextViewController$TimeoutHandler access$300(HintTextViewController hintTextViewController) {
-        return hintTextViewController.mHandler;
-    }
-
-    static /* synthetic */ boolean access$400(HintTextViewController hintTextViewController, HintTextContent hintTextContent) {
-        return hintTextViewController.cancelFromContentStack(hintTextContent);
-    }
-
-    static /* synthetic */ HintTextView access$500(HintTextViewController hintTextViewController) {
-        return hintTextViewController.mHintTextView;
-    }
-
-    static /* synthetic */ ObjectAnimator access$700(HintTextViewController hintTextViewController) {
-        return hintTextViewController.mHintTextFadeOutAnimator;
-    }
-
-    static /* synthetic */ BlockingQueue access$800(HintTextViewController hintTextViewController) {
-        return hintTextViewController.mContentPrioritizedStack;
-    }
-
-    public HintTextViewController(ViewGroup viewGroup, HintTextViewController$HintTextContentListener hintTextViewController$HintTextContentListener, LayoutDependencyResolver$ScreenAspect layoutDependencyResolver$ScreenAspect) {
-        this.mListener = hintTextViewController$HintTextContentListener;
-        this.mScreenAspect = layoutDependencyResolver$ScreenAspect;
+    public HintTextViewController(ViewGroup viewGroup, HintTextContentListener hintTextContentListener, LayoutDependencyResolver.ScreenAspect screenAspect) {
+        this.mListener = hintTextContentListener;
+        this.mScreenAspect = screenAspect;
         initHintTextBackground(viewGroup);
         initHintTextView(viewGroup);
         this.mHintTextFadeOutAnimator = ObjectAnimator.ofPropertyValuesHolder(this.mHintTextView, PropertyValuesHolder.ofFloat("alpha", 1.0f, 0.0f));
-        this.mHintTextFadeOutAnimator.addListener(new HintTextViewController$2(this));
+        this.mHintTextFadeOutAnimator.addListener(new Animator.AnimatorListener() { // from class: com.sonyericsson.android.camera.view.hint.HintTextViewController.2
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationRepeat(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationStart(Animator animator) {
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationEnd(Animator animator) throws Resources.NotFoundException {
+                if (HintTextViewController.this.mHandler != null && HintTextViewController.this.mHandler.attachedContent != null) {
+                    HintTextViewController.this.cancelFromContentStack(HintTextViewController.this.mHandler.attachedContent);
+                }
+                HintTextViewController.this.mHintTextView.setAlpha(1.0f);
+            }
+
+            @Override // android.animation.Animator.AnimatorListener
+            public void onAnimationCancel(Animator animator) {
+                HintTextViewController.this.mHintTextView.setAlpha(1.0f);
+            }
+        });
     }
 
     public void clearAll() {
@@ -79,7 +135,7 @@ public class HintTextViewController {
         }
     }
 
-    public void clearToastContent() {
+    public void clearToastContent() throws Resources.NotFoundException {
         HintTextContent hintTextContentReferTop = referTop();
         if (hintTextContentReferTop == null || !hintTextContentReferTop.isToast()) {
             return;
@@ -87,7 +143,7 @@ public class HintTextViewController {
         cancelFromContentStack(hintTextContentReferTop);
     }
 
-    public boolean post(@NonNull HintTextContent hintTextContent) {
+    public boolean post(@NonNull HintTextContent hintTextContent) throws Resources.NotFoundException {
         if (CamLog.VERBOSE) {
             CamLog.d("post: content = " + hintTextContent.getTag());
         }
@@ -143,11 +199,11 @@ public class HintTextViewController {
     }
 
     public boolean showAll() {
-        return show(HintTextContent$HintPriority.LOW);
+        return show(HintTextContent.HintPriority.LOW);
     }
 
-    public boolean show(@NonNull HintTextContent$HintPriority hintTextContent$HintPriority) {
-        if (this.mContentDisplayThreshold != null && hintTextContent$HintPriority.compareTo(this.mContentDisplayThreshold) == 0) {
+    public boolean show(@NonNull HintTextContent.HintPriority hintPriority) throws Resources.NotFoundException {
+        if (this.mContentDisplayThreshold != null && hintPriority.compareTo(this.mContentDisplayThreshold) == 0) {
             if (!CamLog.VERBOSE) {
                 return false;
             }
@@ -156,7 +212,7 @@ public class HintTextViewController {
         }
         HintTextContent hintTextContentReferTop = referTop();
         if (hintTextContentReferTop != null) {
-            if (hintTextContentReferTop.getPriority().compareTo(hintTextContent$HintPriority) <= 0) {
+            if (hintTextContentReferTop.getPriority().compareTo(hintPriority) <= 0) {
                 if (this.mContentDisplayThreshold == null || hintTextContentReferTop.getPriority().compareTo(this.mContentDisplayThreshold) > 0) {
                     showInternal(hintTextContentReferTop);
                 }
@@ -164,7 +220,7 @@ public class HintTextViewController {
                 hideInternal(hintTextContentReferTop);
             }
         }
-        this.mContentDisplayThreshold = hintTextContent$HintPriority;
+        this.mContentDisplayThreshold = hintPriority;
         return true;
     }
 
@@ -181,11 +237,11 @@ public class HintTextViewController {
         return false;
     }
 
-    public void setUiOrientation(Rect rect, Context context, LayoutDependencyResolver$ScreenAspect layoutDependencyResolver$ScreenAspect, int i) {
+    public void setUiOrientation(Rect rect, Context context, LayoutDependencyResolver.ScreenAspect screenAspect, int i) {
         if (this.mHintTextView == null) {
             return;
         }
-        this.mHintTextView.setUiOrientation(rect, context, layoutDependencyResolver$ScreenAspect, i);
+        this.mHintTextView.setUiOrientation(rect, context, screenAspect, i);
     }
 
     public boolean isNoTimeOutHinTextDisplayed() {
@@ -198,7 +254,7 @@ public class HintTextViewController {
         return this.mHintTextView != null && hintTextContentReferTop != null && this.mHintTextView.getVisibility() == 0 && hintTextContentReferTop.getTag().equals(str);
     }
 
-    private void showInternal(@Nullable HintTextContent hintTextContent) {
+    private void showInternal(@Nullable HintTextContent hintTextContent) throws Resources.NotFoundException {
         if (hintTextContent == null) {
             if (CamLog.VERBOSE) {
                 CamLog.d("showInternal: content is null");
@@ -237,7 +293,8 @@ public class HintTextViewController {
         }
     }
 
-    private boolean cancelFromContentStack(@NonNull HintTextContent hintTextContent) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private boolean cancelFromContentStack(@NonNull HintTextContent hintTextContent) throws Resources.NotFoundException {
         if (CamLog.VERBOSE) {
             CamLog.d("cancel: content = " + hintTextContent.getTag());
         }
@@ -265,14 +322,14 @@ public class HintTextViewController {
 
     private void startTimeoutCount(long j, HintTextContent hintTextContent) {
         if (this.mHandler == null) {
-            this.mHandler = new HintTextViewController$TimeoutHandler(this, null);
+            this.mHandler = new TimeoutHandler();
         }
         this.mHandler.startTimeoutCount(j, hintTextContent);
     }
 
     private void startFadeOut(long j, int i, HintTextContent hintTextContent) {
         if (this.mHandler == null) {
-            this.mHandler = new HintTextViewController$TimeoutHandler(this, null);
+            this.mHandler = new TimeoutHandler();
         }
         this.mHandler.startFadeOut(j, i, hintTextContent);
     }
@@ -284,8 +341,56 @@ public class HintTextViewController {
         }
     }
 
+    private class TimeoutHandler extends Handler {
+        private static final int MSG_START_FADE_OUT = 2;
+        private static final int MSG_TIMEOUT = 1;
+        public HintTextContent attachedContent;
+
+        private TimeoutHandler() {
+        }
+
+        public void startTimeoutCount(long j, HintTextContent hintTextContent) {
+            sendEmptyMessageDelayed(1, j);
+            this.attachedContent = hintTextContent;
+        }
+
+        public void startFadeOut(long j, int i, HintTextContent hintTextContent) {
+            cancelCount();
+            Message messageObtain = Message.obtain();
+            messageObtain.what = 2;
+            messageObtain.arg1 = i;
+            sendMessageDelayed(messageObtain, j);
+            this.attachedContent = hintTextContent;
+        }
+
+        public void cancelCount() {
+            removeMessages(1);
+            removeMessages(2);
+            HintTextViewController.this.mHintTextFadeOutAnimator.cancel();
+            HintTextViewController.this.mListener.onStateChanged();
+        }
+
+        @Override // android.os.Handler
+        public void handleMessage(Message message) throws Resources.NotFoundException {
+            switch (message.what) {
+                case 1:
+                    if (this.attachedContent != null) {
+                        HintTextViewController.this.cancelFromContentStack(this.attachedContent);
+                        break;
+                    }
+                    break;
+                case 2:
+                    HintTextViewController.this.mHintTextFadeOutAnimator.cancel();
+                    HintTextViewController.this.mHintTextFadeOutAnimator.setDuration(message.arg1);
+                    HintTextViewController.this.mHintTextFadeOutAnimator.start();
+                    break;
+            }
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
     @Nullable
-    private HintTextContent referTop() {
+    public HintTextContent referTop() {
         if (!this.mContentPrioritizedStack.isEmpty()) {
             return this.mContentPrioritizedStack.peek();
         }
@@ -304,7 +409,7 @@ public class HintTextViewController {
     }
 
     private void initHintTextBackground(ViewGroup viewGroup) {
-        this.mHintTextBackground = new HintTextViewController$Background(this, viewGroup.getContext());
+        this.mHintTextBackground = new Background(viewGroup.getContext());
         viewGroup.addView(this.mHintTextBackground);
         this.mHintTextBackground.getLayoutParams().width = -1;
         this.mHintTextBackground.getLayoutParams().height = -1;
@@ -313,11 +418,11 @@ public class HintTextViewController {
     }
 
     private void initHintTextView(ViewGroup viewGroup) {
-        ViewStub viewStub = (ViewStub) viewGroup.findViewById(2131296414);
+        ViewStub viewStub = (ViewStub) viewGroup.findViewById(R.id.hint_text_container_sub);
         this.mContext = viewStub.getContext();
         this.mHintTextContainer = (FrameLayout) viewStub.inflate();
-        if (this.mScreenAspect == LayoutDependencyResolver$ScreenAspect.EIGHTEEN_NINE) {
-            ((FrameLayout$LayoutParams) this.mHintTextContainer.getLayoutParams()).setMargins(ResourceUtil.getDimensionPixelSize(this.mContext, this.mContext.getPackageName(), 2131165456), 0, 0, 0);
+        if (this.mScreenAspect == LayoutDependencyResolver.ScreenAspect.EIGHTEEN_NINE) {
+            ((FrameLayout.LayoutParams) this.mHintTextContainer.getLayoutParams()).setMargins(ResourceUtil.getDimensionPixelSize(this.mContext, this.mContext.getPackageName(), R.dimen.navigator_container_width), 0, 0, 0);
         }
         this.mHintTextView = HintTextView.inflate(this.mContext);
         this.mHintTextView.setOnButtonClickListener(this.mOnClickListener);
@@ -325,17 +430,44 @@ public class HintTextViewController {
     }
 
     public void updateHintTextContainer(int i, int i2) {
-        FrameLayout$LayoutParams frameLayout$LayoutParams = (FrameLayout$LayoutParams) this.mHintTextContainer.getLayoutParams();
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) this.mHintTextContainer.getLayoutParams();
         int iMax = Math.max(i, i2);
         int iMin = Math.min(i, i2);
-        frameLayout$LayoutParams.width = iMax;
-        frameLayout$LayoutParams.height = iMin;
-        frameLayout$LayoutParams.gravity = 16;
-        int dimensionPixelSize = this.mScreenAspect == LayoutDependencyResolver$ScreenAspect.EIGHTEEN_NINE ? 0 + ResourceUtil.getDimensionPixelSize(this.mContext, this.mContext.getPackageName(), 2131165456) : 0;
+        layoutParams.width = iMax;
+        layoutParams.height = iMin;
+        layoutParams.gravity = 16;
+        int dimensionPixelSize = this.mScreenAspect == LayoutDependencyResolver.ScreenAspect.EIGHTEEN_NINE ? 0 + ResourceUtil.getDimensionPixelSize(this.mContext, this.mContext.getPackageName(), R.dimen.navigator_container_width) : 0;
         if (i == i2) {
             dimensionPixelSize += i2 / 3;
         }
-        frameLayout$LayoutParams.leftMargin = dimensionPixelSize;
+        layoutParams.leftMargin = dimensionPixelSize;
         this.mHintTextContainer.requestLayout();
+    }
+
+    private class Background extends FrameLayout {
+        public Background(Context context) {
+            super(context);
+        }
+
+        @Override // android.widget.FrameLayout, android.view.View
+        protected void onMeasure(int i, int i2) {
+            super.onMeasure(i, i2);
+        }
+
+        @Override // android.view.View
+        public boolean onTouchEvent(MotionEvent motionEvent) {
+            if (CamLog.VERBOSE) {
+                CamLog.d("onTouchEvent: " + motionEvent.getAction());
+            }
+            if (!HintTextViewController.this.mContentPrioritizedStack.isEmpty()) {
+                switch (motionEvent.getAction()) {
+                    case 0:
+                        return HintTextViewController.this.isHintTextDisplayed(HintTextAutoPowerOff.class.getSimpleName());
+                    case 1:
+                        return false;
+                }
+            }
+            return false;
+        }
     }
 }

@@ -1,13 +1,14 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
 public enum SmileCapture implements UserSettingValue {
-    HIGH(-1, 2131690159, 2131231404, 70, 2131165647, true),
-    MIDDLE(-1, 2131690161, 2131231406, 55, 2131165649, true),
-    LOW(-1, 2131690160, 2131231405, 40, 2131165648, true),
-    OFF(-1, 2131690115, -1, 999, -1, false);
+    HIGH(-1, R.string.cam_strings_smile_capture_big_txt, R.drawable.cam_vf_camera_smile_capture_big_icn, 70, R.dimen.smile_gauge_score_high, true),
+    MIDDLE(-1, R.string.cam_strings_smile_capture_normal_txt, R.drawable.cam_vf_camera_smile_capture_normal_icn, 55, R.dimen.smile_gauge_score_middle, true),
+    LOW(-1, R.string.cam_strings_smile_capture_faint_txt, R.drawable.cam_vf_camera_smile_capture_faint_icn, 40, R.dimen.smile_gauge_score_low, true),
+    OFF(-1, R.string.cam_strings_settings_off_txt, -1, 999, -1, false);
 
     public static final String TAG = "SmileCapture";
     private static final int sParameterTextId = 2131690163;

@@ -62,37 +62,29 @@ public class ExtendedGlSurfaceView extends GLSurfaceView {
     }
 
     static String loadShaderSourceCodesFrom(Context context, int[] iArr) {
-        BufferedReader bufferedReader;
         StringBuilder sb = new StringBuilder();
-        int i = 0;
-        BufferedReader bufferedReader2 = null;
-        while (i < iArr.length) {
+        BufferedReader reader = null;
+        for (int i = 0; i < iArr.length; i++) {
             try {
-                bufferedReader = new BufferedReader(new InputStreamReader(context.getResources().openRawResource(iArr[i])));
-            } catch (IOException e) {
-                e = e;
-            }
-            try {
-                for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()) {
+                reader = new BufferedReader(new InputStreamReader(context.getResources().openRawResource(iArr[i])));
+                String line = reader.readLine();
+                while (line != null) {
                     sb.append(line);
+                    line = reader.readLine();
                 }
-                if (bufferedReader != null) {
-                    bufferedReader.close();
+                if (reader != null) {
+                    reader.close();
                 }
-                i++;
-                bufferedReader2 = bufferedReader;
-            } catch (IOException e2) {
-                e = e2;
-                bufferedReader2 = bufferedReader;
+            } catch (IOException e) {
                 CamLog.e("Can not load shader file.", e);
-                if (bufferedReader2 != null) {
+                if (reader != null) {
                     try {
-                        bufferedReader2.close();
-                    } catch (IOException e3) {
-                        CamLog.e("Fail to close BufferedReader.", e3);
+                        reader.close();
+                    } catch (IOException e2) {
+                        CamLog.e("Fail to close BufferedReader.", e2);
                     }
                 }
-                return sb.toString();
+                break;
             }
         }
         return sb.toString();

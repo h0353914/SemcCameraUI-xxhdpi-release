@@ -22,10 +22,10 @@ public class CameraActionSound {
 
     public CameraActionSound() {
         this.mSoundExecutor = null;
-        this.mSoundExecutor = ThreadUtil.buildScheduledExecutor("CAS#Main", 10);
+        this.mSoundExecutor = ThreadUtil.buildScheduledExecutor(THREAD_NAME, 10);
     }
 
-    public void load(int i) {
+    public void load(final int i) {
         synchronized (this) {
             if (CamLog.DEBUG) {
                 CamLog.d("invoked isReleased:" + this.mIsReleased + " name:" + i);
@@ -33,11 +33,17 @@ public class CameraActionSound {
             if (this.mIsReleased) {
                 return;
             }
-            this.mSoundExecutor.submit(new CameraActionSound$1(this, this.mMediaActionSound, i));
+            final MediaActionSound mediaActionSound = this.mMediaActionSound;
+            this.mSoundExecutor.submit(new Runnable() { // from class: com.sonyericsson.android.camera.device.CameraActionSound.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    mediaActionSound.load(i);
+                }
+            });
         }
     }
 
-    public void play(int i, boolean z) {
+    public void play(final int i, boolean z) {
         Future<?> futureSubmit;
         synchronized (this) {
             if (CamLog.DEBUG) {
@@ -46,12 +52,18 @@ public class CameraActionSound {
             if (this.mIsReleased) {
                 MediaActionSound mediaActionSound = new MediaActionSound();
                 mediaActionSound.play(i);
-                ScheduledExecutorService scheduledExecutorServiceBuildScheduledExecutor = ThreadUtil.buildScheduledExecutor("CAS#Onetime");
+                ScheduledExecutorService scheduledExecutorServiceBuildScheduledExecutor = ThreadUtil.buildScheduledExecutor(THREAD_NAME_ONETIME);
                 releaseDelay(mediaActionSound, scheduledExecutorServiceBuildScheduledExecutor);
                 scheduledExecutorServiceBuildScheduledExecutor.shutdown();
                 futureSubmit = null;
             } else {
-                futureSubmit = this.mSoundExecutor.submit(new CameraActionSound$2(this, this.mMediaActionSound, i));
+                final MediaActionSound mediaActionSound2 = this.mMediaActionSound;
+                futureSubmit = this.mSoundExecutor.submit(new Runnable() { // from class: com.sonyericsson.android.camera.device.CameraActionSound.2
+                    @Override // java.lang.Runnable
+                    public void run() {
+                        mediaActionSound2.play(i);
+                    }
+                });
             }
         }
         if (!z || futureSubmit == null) {
@@ -77,8 +89,13 @@ public class CameraActionSound {
         }
     }
 
-    private static void releaseDelay(MediaActionSound mediaActionSound, ScheduledExecutorService scheduledExecutorService) {
+    private static void releaseDelay(final MediaActionSound mediaActionSound, ScheduledExecutorService scheduledExecutorService) {
         CamLog.d("invoked");
-        scheduledExecutorService.schedule(new CameraActionSound$3(mediaActionSound), 4000L, TimeUnit.MILLISECONDS);
+        scheduledExecutorService.schedule(new Runnable() { // from class: com.sonyericsson.android.camera.device.CameraActionSound.3
+            @Override // java.lang.Runnable
+            public void run() {
+                mediaActionSound.release();
+            }
+        }, 4000L, TimeUnit.MILLISECONDS);
     }
 }

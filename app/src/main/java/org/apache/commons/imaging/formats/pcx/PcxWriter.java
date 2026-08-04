@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.pcx;
 
+import android.support.v4.view.ViewCompat;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -8,6 +9,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.commons.imaging.ImageWriteException;
+import org.apache.commons.imaging.ImagingConstants;
 import org.apache.commons.imaging.PixelDensity;
 import org.apache.commons.imaging.common.BinaryOutputStream;
 import org.apache.commons.imaging.palette.PaletteFactory;
@@ -24,11 +26,11 @@ class PcxWriter {
         Object objRemove3;
         this.bitDepth = -1;
         HashMap map2 = map == null ? new HashMap() : new HashMap(map);
-        if (map2.containsKey("FORMAT")) {
-            map2.remove("FORMAT");
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_FORMAT)) {
+            map2.remove(ImagingConstants.PARAM_KEY_FORMAT);
         }
         this.encoding = 1;
-        if (map2.containsKey("PCX_COMPRESSION") && (objRemove3 = map2.remove("PCX_COMPRESSION")) != null) {
+        if (map2.containsKey(PcxConstants.PARAM_KEY_PCX_COMPRESSION) && (objRemove3 = map2.remove(PcxConstants.PARAM_KEY_PCX_COMPRESSION)) != null) {
             if (!(objRemove3 instanceof Number)) {
                 throw new ImageWriteException("Invalid compression parameter: " + objRemove3);
             }
@@ -36,13 +38,13 @@ class PcxWriter {
                 this.encoding = 0;
             }
         }
-        if (map2.containsKey("PCX_BIT_DEPTH") && (objRemove2 = map2.remove("PCX_BIT_DEPTH")) != null) {
+        if (map2.containsKey(PcxConstants.PARAM_KEY_PCX_BIT_DEPTH) && (objRemove2 = map2.remove(PcxConstants.PARAM_KEY_PCX_BIT_DEPTH)) != null) {
             if (!(objRemove2 instanceof Number)) {
                 throw new ImageWriteException("Invalid bit depth parameter: " + objRemove2);
             }
             this.bitDepth = ((Number) objRemove2).intValue();
         }
-        if (map2.containsKey("PIXEL_DENSITY") && (objRemove = map2.remove("PIXEL_DENSITY")) != null) {
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_PIXEL_DENSITY) && (objRemove = map2.remove(ImagingConstants.PARAM_KEY_PIXEL_DENSITY)) != null) {
             if (!(objRemove instanceof PixelDensity)) {
                 throw new ImageWriteException("Invalid pixel density parameter");
             }
@@ -229,7 +231,7 @@ class PcxWriter {
         for (int i2 = 0; i2 < bufferedImage.getHeight(); i2++) {
             Arrays.fill(bArr, (byte) 0);
             for (int i3 = 0; i3 < bufferedImage.getWidth(); i3++) {
-                int rgb = bufferedImage.getRGB(i3, i2) & 16777215;
+                int rgb = bufferedImage.getRGB(i3, i2) & ViewCompat.MEASURED_SIZE_MASK;
                 if (rgb == 0) {
                     i = 0;
                 } else {
@@ -283,7 +285,7 @@ class PcxWriter {
             Arrays.fill(bArr2, (byte) 0);
             for (int i4 = 0; i4 < bufferedImage.getWidth(); i4++) {
                 int i5 = i4 / 2;
-                bArr2[i5] = (byte) ((simplePalette.getPaletteIndex(bufferedImage.getRGB(i4, i3) & 16777215) << ((1 - (i4 % 2)) * 4)) | bArr2[i5]);
+                bArr2[i5] = (byte) ((simplePalette.getPaletteIndex(bufferedImage.getRGB(i4, i3) & ViewCompat.MEASURED_SIZE_MASK) << ((1 - (i4 % 2)) * 4)) | bArr2[i5]);
             }
             writeScanLine(binaryOutputStream, bArr2);
         }
@@ -312,7 +314,7 @@ class PcxWriter {
         byte[] bArr = new byte[width];
         for (int i = 0; i < bufferedImage.getHeight(); i++) {
             for (int i2 = 0; i2 < bufferedImage.getWidth(); i2++) {
-                bArr[i2] = (byte) simplePalette.getPaletteIndex(bufferedImage.getRGB(i2, i) & 16777215);
+                bArr[i2] = (byte) simplePalette.getPaletteIndex(bufferedImage.getRGB(i2, i) & ViewCompat.MEASURED_SIZE_MASK);
             }
             writeScanLine(binaryOutputStream, bArr);
         }

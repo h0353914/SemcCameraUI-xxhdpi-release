@@ -1,10 +1,11 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
 public enum SideSense implements UserSettingValue {
-    ON(-1, 2131690116),
-    OFF(-1, 2131690115);
+    ON(-1, R.string.cam_strings_settings_on_txt),
+    OFF(-1, R.string.cam_strings_settings_off_txt);
 
     public static final String TAG = "SideSense";
     private static final int sParameterTextId = 2131690131;

@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">ಸೆರೆಹಿಡಿಯುವುದನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಆಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಇನ್ನಷ್ಟು ನಿಧಾವಾಗಿ ಪೇನ್ ಮಾಡಿ.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">ಸೆರೆಹಿಡಿಯುವುದನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಆಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ವೇಗವಾಗಿ ಪೇನ್ ಮಾಡಿ.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">ನಿಮ್ಮ ಕ್ಯಾಮೆರಾವನ್ನು ತಿರುಗಿಸುವ ಮೂಲಕ ಪ್ಯಾನೋರಮಿಕ್.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">ಈ ಕೆಳಗಿನ ಫೈಲ್‌ಗಳನ್ನು ರಚಿಸುತ್ತಿದೆ:\n- ಬಹು ಕೋನ ಚಿತ್ರ\n- 3D ಚಿತ್ರ \nಸೂಚನೆ: ಈ ಫೈಲ್‌ಗಳು ಬೂದು ಪ್ರದೇಶವನ್ನು ಒಳಗೊಂಡಿವೆ.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">ಈ ಕೆಳಗಿನ ಫೈಲ್‌ಗಳನ್ನು ರಚಿಸುತ್ತಿದೆ:\n- ಬಹು ಕೋನ ಚಿತ್ರ\n- 3D ಚಿತ್ರ</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">ಪ್ರಕ್ರಿಯೆಗೊಳ್ಳುತ್ತಿದೆ...\nಈ ಇಮೇಜ್ ಬೂದು ಪ್ರದೇಶವನ್ನು ಹೊಂದಿದೆ</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"ಈ ಕೆಳಗಿನ ಫೈಲ್‌ಗಳನ್ನು ರಚಿಸುತ್ತಿದೆ:
+- ಬಹು ಕೋನ ಚಿತ್ರ
+- 3D ಚಿತ್ರ 
+ಸೂಚನೆ: ಈ ಫೈಲ್‌ಗಳು ಬೂದು ಪ್ರದೇಶವನ್ನು ಒಳಗೊಂಡಿವೆ."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"ಈ ಕೆಳಗಿನ ಫೈಲ್‌ಗಳನ್ನು ರಚಿಸುತ್ತಿದೆ:
+- ಬಹು ಕೋನ ಚಿತ್ರ
+- 3D ಚಿತ್ರ"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"ಪ್ರಕ್ರಿಯೆಗೊಳ್ಳುತ್ತಿದೆ...
+ಈ ಇಮೇಜ್ ಬೂದು ಪ್ರದೇಶವನ್ನು ಹೊಂದಿದೆ"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">ಚಿತ್ರವನ್ನು ಉಳಿಸುತ್ತಿದೆ</string>
     <string name="cam_3d_strings_dialog_processing_txt">ಪ್ರಕ್ರಿಯೆಗೊಳ್ಳುತ್ತಿದೆ...</string>
     <string name="cam_3d_strings_error_application_busy_txt">3D ಕ್ಯಾಮೆರಾ ಆರಂಭಿಸಲು ದಯವಿಟ್ಟು ಕೆಲವು ಸೆಕೆಂಡುಗಳ ಕಾಲ ಕಾಯಿರಿ</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">ನಿಮ್ಮ ತ್ವಚೆಯು ಹೊಳಪಾಗಿರುವಂತೆ ಮತ್ತು ಮೃದುವಾಗಿರುವಂತೆ ಮಾಡುತ್ತದೆ. ಈ ಪರಿಣಾಮವು ಮುಂದಿನ ಕ್ಯಾಮೆರಾವನ್ನು ಬಳಸುವ ಅಪ್ಲಿಕೇಶನ್‌ಗಳಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ. ಇದನ್ನು ಭಾವಚಿತ್ರಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳಲ್ಲಿ ಅನ್ವಯಿಸಬಹುದು. ನೀವು ಮಟ್ಟವನ್ನು ಸಹ ಸರಿಹೊಂದಿಸಬಹುದು.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">ಮಟ್ಟದ ಹೊಂದಾಣಿಕೆ</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">ಮೃದು ಚರ್ಮ</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">ಆಪ್ ಪ್ರಾರಂಭಿಸಲಾಗುವುದಿಲ್ಲ.\n%1$s ನ ಇತ್ತೀಚಿನ ಆವೃತ್ತಿಯನ್ನು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಸ್ಥಾಪನೆಗೊಳಿಸಲಾಗಿದೆ ಮತ್ತು ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ ಎಂಬುದನ್ನು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"ಆಪ್ ಪ್ರಾರಂಭಿಸಲಾಗುವುದಿಲ್ಲ.
+%1$s ನ ಇತ್ತೀಚಿನ ಆವೃತ್ತಿಯನ್ನು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಸ್ಥಾಪನೆಗೊಳಿಸಲಾಗಿದೆ ಮತ್ತು ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ ಎಂಬುದನ್ನು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ."</string>
     <string name="cam_strings_gridline_txt">ಗ್ರಿಡ್ ಸಾಲುಗಳು</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">ನಿಮ್ಮ ಹಸ್ತವನ್ನು ಕ್ಯಾಮೆರಾದ ಕಡೆಗೆ ತಿರುಗಿಸಿ. ನಿಮ್ಮ ಹಸ್ತವು ಗುರುತಿಸಿದ ತಕ್ಷಣ, ಸ್ವಯಂ-ಟೈಮರ್ ಆನ್ ಆಗುತ್ತದೆ. ಹಸ್ತವನ್ನು ಗುರುತಿಸಲು ಸುಲಭಗೊಳಿಸಲು, ನಿಮ್ಮ ಬೆರಳುಗಳನ್ನು ಮೇಲಕ್ಕೆ ಚಾಚಿ.</string>
     <string name="cam_strings_hand_shutter_hint_txt">ನಿಮ್ಮ ಹಸ್ತವನ್ನು ಕ್ಯಾಮೆರಾದ ಕಡೆಗೆ ತಿರುಗಿಸಿ</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">ಸಾಮಾನ್ಯ ಸಂಯೋಜನೆಗಳು</string>
     <string name="cam_strings_more_txt">ಇನ್ನಷ್ಟು</string>
     <string name="cam_strings_multi_window_txt">%1$s ಬಳಸುವುದಕ್ಕಾಗಿ ಪೂರ್ಣ ಪರದೆಗೆ ಬದಲಾಗಲು ವಿಭಜಿತ ಪಟ್ಟಿಯ ಮಧ್ಯದ ಭಾಗವನ್ನು ಎಳೆಯಿರಿ</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">ಮತ್ತೊಂದು ಸಾಧನ ಇದೀಗ ಸಂಪರ್ಕಿತವಾಗಿದೆ.\nಸಾಧನದೊಂದಿಗೆ ವ್ಯೂಫೈಂಡರ್ ಮುಖಾಂತರ ಚಿತ್ರ ಹಂಚಿಕೊಳ್ಳಲು ನೀವು ಬಯಸುವಿರಾ?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"ಮತ್ತೊಂದು ಸಾಧನ ಇದೀಗ ಸಂಪರ್ಕಿತವಾಗಿದೆ.
+ಸಾಧನದೊಂದಿಗೆ ವ್ಯೂಫೈಂಡರ್ ಮುಖಾಂತರ ಚಿತ್ರ ಹಂಚಿಕೊಳ್ಳಲು ನೀವು ಬಯಸುವಿರಾ?"</string>
     <string name="cam_strings_multicam_add_device_txt">ಸಾಧನ ಸೇರಿಸಿ</string>
     <string name="cam_strings_multicam_add_more_txt">ಹೆಚ್ಚು ಸೇರಿಸಿ</string>
     <string name="cam_strings_multicam_apply_txt">ಆಯಿತು</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">ಮೀಟರಿಂಗ್</string>
     <string name="cam_strings_predictive_capture_feedback_txt">ಊಹಿಸಿದೆ</string>
     <string name="cam_strings_predictive_capture_txt">ಊಹಾತ್ಮಕ ಕ್ಯಾಪ್ಚರ್</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">ಲ್ಯಾಂಡ್‌ಸ್ಕೇಪ್ ಮೋಡ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಫೋನ್ ಎತ್ತುವ ವಸ್ತುವಿನತ್ತ ಗುರಿ ಮಾಡುವ ನಿಮ್ಮ ಚಲನೆಯನ್ನು ಪತ್ತೆಹಚ್ಚುವ ಮೂಲಕ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಕ್ಯಾಮೆರಾ ಆರಂಭಿಸಲಾಗಿದೆ.\nಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಲ್ಲಿ ಸ್ಮಾರ್ಟ್ ಲಾಂಚ್‌ನಿಂದ ಈ ವೈಶಿಷ್ಟ್ಯ ಬಳಸುವ ನಿಮ್ಮ ಮೆಚ್ಚಿನ ವಿಧಾನವನ್ನು ನೀವು ಆಯ್ಕೆಮಾಡಬಹುದು.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"ಲ್ಯಾಂಡ್‌ಸ್ಕೇಪ್ ಮೋಡ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಫೋನ್ ಎತ್ತುವ ವಸ್ತುವಿನತ್ತ ಗುರಿ ಮಾಡುವ ನಿಮ್ಮ ಚಲನೆಯನ್ನು ಪತ್ತೆಹಚ್ಚುವ ಮೂಲಕ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಕ್ಯಾಮೆರಾ ಆರಂಭಿಸಲಾಗಿದೆ.
+ಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಲ್ಲಿ ಸ್ಮಾರ್ಟ್ ಲಾಂಚ್‌ನಿಂದ ಈ ವೈಶಿಷ್ಟ್ಯ ಬಳಸುವ ನಿಮ್ಮ ಮೆಚ್ಚಿನ ವಿಧಾನವನ್ನು ನೀವು ಆಯ್ಕೆಮಾಡಬಹುದು."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">ಸೆರೆಹಿಡಿಯಲು ವೃತ್ತದ ಒಳಗೆ ಸ್ಪರ್ಶಿಸಿ</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">ಸೆರೆಹಿಡಿಯಲು ಪರದೆಯನ್ನು ಸ್ಪರ್ಶಿಸಿ</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">ಪೂರ್ಣಪರದೆಯನ್ನು ವೀಕ್ಷಿಸಲು ಪರದೆಯ ಒಳಗೆ ತಟ್ಟಿ</string>
     <string name="cam_strings_predictive_launch_guide_txt">ಕ್ಯಾಮೆರಾ ಆರಂಭಿಸಲು ವೃತ್ತದ ಒಳಗೆ ಸ್ಪರ್ಶಿಸಿ</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">ಆರಂಭಿ. ಸೆರೆ. ಸ್ಪರ್ಶಿಸಿ</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">ಆರಂಭಿಸಲು ಸ್ಪರ್ಶಿಸಿ</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">ನೀವು ತ್ವರಿತವಾಗಿ ಕ್ಯಾಮೆರಾ ಆರಂಭಿಸಬಹುದು. ಲ್ಯಾಂಡ್‌ಸ್ಕೇಪ್ ಮೋಡ್‌ನಲ್ಲಿ ಬೇಗನೆ ನಿಮ್ಮ ಸಾಧನವನ್ನು ಎತ್ತಿ ಮತ್ತು ಕ್ಯಾಮೆರಾವನ್ನು ವಸ್ತುವಿನತ್ತ ಮುಖಮಾಡಿ. ಕ್ಯಾಮೆರಾ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆರಂಭಗೊಳ್ಳುತ್ತದೆ.\nಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಲ್ಲಿನ ಸ್ಮಾರ್ಟ್ ಲಾಂಚ್‌ನಿಂದ ಈ ವೈಶಿಷ್ಟ್ಯವನ್ನು ಬಳಸುವ ಮೆಚ್ಚಿನ ವಿಧಾನವನ್ನು ನೀವು ಆಯ್ಕೆಮಾಡಬಹುದು.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"ನೀವು ತ್ವರಿತವಾಗಿ ಕ್ಯಾಮೆರಾ ಆರಂಭಿಸಬಹುದು. ಲ್ಯಾಂಡ್‌ಸ್ಕೇಪ್ ಮೋಡ್‌ನಲ್ಲಿ ಬೇಗನೆ ನಿಮ್ಮ ಸಾಧನವನ್ನು ಎತ್ತಿ ಮತ್ತು ಕ್ಯಾಮೆರಾವನ್ನು ವಸ್ತುವಿನತ್ತ ಮುಖಮಾಡಿ. ಕ್ಯಾಮೆರಾ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆರಂಭಗೊಳ್ಳುತ್ತದೆ.
+ಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಲ್ಲಿನ ಸ್ಮಾರ್ಟ್ ಲಾಂಚ್‌ನಿಂದ ಈ ವೈಶಿಷ್ಟ್ಯವನ್ನು ಬಳಸುವ ಮೆಚ್ಚಿನ ವಿಧಾನವನ್ನು ನೀವು ಆಯ್ಕೆಮಾಡಬಹುದು."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">ಸ್ಮಾರ್ಟ್ ಲಾಂಚ್</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">ನೀವು ತ್ವರಿತವಾಗಿ ಕ್ಯಾಮೆರಾ ಆರಂಭಿಸಬಹುದು. ಲ್ಯಾಂಡ್‌ಸ್ಕೇಪ್ ಮೋಡ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಸಾಧನವನ್ನು ಮೇಲಕ್ಕೆ ಸ್ವಿಂಗ್ ಮಾಡಿ ಮತ್ತು ವಸ್ತುವಿನತ್ತ ಕ್ಯಾಮೆರಾ ಮುಖಮಾಡಿ. ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಕ್ಯಾಮರಾ ಆರಂಭಿಸುತ್ತದೆ.\nಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಲ್ಲಿನ ಸ್ಮಾರ್ಟ್ ಲಾಂಚ್‌ನಿಂದ ಈ ವೈಶಿಷ್ಟ್ಯವನ್ನು ನೀವು ಆಫ್ ಮಾಡಬಹುದು.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"ನೀವು ತ್ವರಿತವಾಗಿ ಕ್ಯಾಮೆರಾ ಆರಂಭಿಸಬಹುದು. ಲ್ಯಾಂಡ್‌ಸ್ಕೇಪ್ ಮೋಡ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಸಾಧನವನ್ನು ಮೇಲಕ್ಕೆ ಸ್ವಿಂಗ್ ಮಾಡಿ ಮತ್ತು ವಸ್ತುವಿನತ್ತ ಕ್ಯಾಮೆರಾ ಮುಖಮಾಡಿ. ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಕ್ಯಾಮರಾ ಆರಂಭಿಸುತ್ತದೆ.
+ಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಲ್ಲಿನ ಸ್ಮಾರ್ಟ್ ಲಾಂಚ್‌ನಿಂದ ಈ ವೈಶಿಷ್ಟ್ಯವನ್ನು ನೀವು ಆಫ್ ಮಾಡಬಹುದು."</string>
     <string name="cam_strings_predictive_launch_txt">ಸ್ಮಾರ್ಟ್ ಲಾಂಚ್</string>
     <string name="cam_strings_preview_always_txt">ಆನ್</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 ಸೆಕೆಂಡುಗಳು</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s ಗೆ ಈ ಕೆಳಕಂಡ ಅನುಮತಿ(ಗಳು) ಅಗತ್ಯವಿದೆ</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s ಅನುಮತಿ</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">ಈ ಕ್ರಿಯೆಯನ್ನು ನಡೆಸಲು ಆಪ್‌ಗೆ ಈ ಕೆಳಕಂಡ ಅನುಮತಿ(ಗಳು) ಅಗತ್ಯವಿದೆ.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">ಅನುಮತಿಗಳನ್ನು ನೀಡಲು, ಅಪ್ಲಿಕೇಶನ್ ಮಾಹಿತಿ &gt; ಅನುಮತಿಗಳಿಗೆ ಹೋಗಿ.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">ಅನುಮತಿಗಳನ್ನು ನೀಡಲು, ಅಪ್ಲಿಕೇಶನ್ ಮಾಹಿತಿ > ಅನುಮತಿಗಳಿಗೆ ಹೋಗಿ.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">ಮುಂದುವರಿಸಲು ಆಗಲಿಲ್ಲ</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">ಭಾವಚಿತ್ರಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ತೆಗೆಯಲು</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">ಸ್ಥಳವನ್ನು ಹಿಂಪಡೆಯಲು</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">ಆಂತರಿಕ ಶೇಖರಣೆಗೆ ಉಳಿಸಲಾಯಿತು</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">ಸರಿಸು</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">ಈ ಕ್ರಿಯೆಯನ್ನು ನಡೆಸಲು ಆಪ್‌ಗೆ ಈ ಕೆಳಕಂಡ ಅನುಮತಿ(ಗಳು) ಅಗತ್ಯವಿದೆ.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">SD ಕಾರ್ಡ್ ಬಳಸಲು, SD ಕಾರ್ಡ್ ಪ್ರವೇಶಿಸಲು ಕ್ಯಾಮೆರಾಗೆ ಅನುಮತಿಗಳು ಅಗತ್ಯವಿರುತ್ತದೆ.\nಡೇಟಾ ಸಂಗ್ರಹಣೆಯನ್ನು ಮತ್ತೊಮ್ಮೆ SD ಕಾರ್ಡ್‌ಗೆ ಬದಲಾಯಿಸಿ ಅಥವಾ ಮುಂದಿನ ಪರದೆಯಲ್ಲಿ SD ಕಾರ್ಡ್ ಪ್ರವೇಶಿಸಲು ಕ್ಯಾಮೆರಾಗೆ ಅನುಮತಿಸಿ.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"SD ಕಾರ್ಡ್ ಬಳಸಲು, SD ಕಾರ್ಡ್ ಪ್ರವೇಶಿಸಲು ಕ್ಯಾಮೆರಾಗೆ ಅನುಮತಿಗಳು ಅಗತ್ಯವಿರುತ್ತದೆ.
+ಡೇಟಾ ಸಂಗ್ರಹಣೆಯನ್ನು ಮತ್ತೊಮ್ಮೆ SD ಕಾರ್ಡ್‌ಗೆ ಬದಲಾಯಿಸಿ ಅಥವಾ ಮುಂದಿನ ಪರದೆಯಲ್ಲಿ SD ಕಾರ್ಡ್ ಪ್ರವೇಶಿಸಲು ಕ್ಯಾಮೆರಾಗೆ ಅನುಮತಿಸಿ."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD ಕಾರ್ಡ್ ಅಲಭ್ಯವಾಗಿದೆ</string>
-    <string name="cam_strings_sd_permission_info_2_txt">ಅನುಮತಿಗಳು ಅಗತ್ಯವಿರುವ ಹೊಸ SD ಕಾರ್ಡ್ ಪತ್ತೆಹಚ್ಚಲಾಗಿದೆ.\n\nಡೇಟಾ ಸಂಗ್ರಹಣೆಯಾಗಿ SD ಕಾರ್ಡ್ ಬಳಸಲು, ಮುಂದಿನ ಪರದೆಯಲ್ಲಿ ದಯವಿಟ್ಟು SD ಕಾರ್ಡ್ ಅಥವಾ DCIM ನಿಘಂಟು ಆಯ್ಕೆಮಾಡಿ.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SD ಕಾರ್ಡ್ ಅಥವಾ DCIM ಡೈರೆಕ್ಟರಿ ಆಯ್ಕೆಮಾಡಲಾಗಿಲ್ಲ. SD ಕಾರ್ಡ್ ಬಳಸಲಾಗುವುದಿಲ್ಲ.\n\nಅನುಮತಿಗಳನ್ನು ನೀಡಲು, ಉಳಿಸುವಿಕೆ ಸ್ಥಳವನ್ನು SD ಕಾರ್ಡ್‌ಗೆ ಬದಲಾಯಿಸುವ ಮೂಲಕ ಪ್ರಾರಂಭಿಸಿ ಅಥವಾ ಮುಂದಿನ ಪರದೆಯಲ್ಲಿ ಸೂಕ್ತ ಡೈರೆಕ್ಟರಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ.</string>
-    <string name="cam_strings_sd_permission_info_txt">ಅನುಮತಿಗಳು ಅಗತ್ಯವಿರುವ ಹೊಸ SD ಕಾರ್ಡ್ ಪತ್ತೆಹಚ್ಚಲಾಗಿದೆ.\nಆದ್ದರಿಂದ ಆಂತರಿಕ ಸಾಧನ ಸಂಗ್ರಹಣೆಯನ್ನು ಡೀಫಾಲ್ಟ್ ಡೇಟಾ ಸಂಗ್ರಹಣೆಯಾಗಿ ಬಳಸಲಾಗುತ್ತದೆ.\n\nಡೇಟಾ ಸಂಗ್ರಹಣೆಯಾಗಿ SD ಕಾರ್ಡ್ ಬಳಸಲು, ಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಿಗೆ ಹೋಗಿ ಮತ್ತು ಸಂಗ್ರಹಣೆ ಆಯ್ಕೆಯನ್ನು SD ಕಾರ್ಡ್‌ಗೆ ಬದಲಾಯಿಸಿ.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"ಅನುಮತಿಗಳು ಅಗತ್ಯವಿರುವ ಹೊಸ SD ಕಾರ್ಡ್ ಪತ್ತೆಹಚ್ಚಲಾಗಿದೆ.
+
+ಡೇಟಾ ಸಂಗ್ರಹಣೆಯಾಗಿ SD ಕಾರ್ಡ್ ಬಳಸಲು, ಮುಂದಿನ ಪರದೆಯಲ್ಲಿ ದಯವಿಟ್ಟು SD ಕಾರ್ಡ್ ಅಥವಾ DCIM ನಿಘಂಟು ಆಯ್ಕೆಮಾಡಿ."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD ಕಾರ್ಡ್ ಅಥವಾ DCIM ಡೈರೆಕ್ಟರಿ ಆಯ್ಕೆಮಾಡಲಾಗಿಲ್ಲ. SD ಕಾರ್ಡ್ ಬಳಸಲಾಗುವುದಿಲ್ಲ.
+
+ಅನುಮತಿಗಳನ್ನು ನೀಡಲು, ಉಳಿಸುವಿಕೆ ಸ್ಥಳವನ್ನು SD ಕಾರ್ಡ್‌ಗೆ ಬದಲಾಯಿಸುವ ಮೂಲಕ ಪ್ರಾರಂಭಿಸಿ ಅಥವಾ ಮುಂದಿನ ಪರದೆಯಲ್ಲಿ ಸೂಕ್ತ ಡೈರೆಕ್ಟರಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ."</string>
+    <string name="cam_strings_sd_permission_info_txt">"ಅನುಮತಿಗಳು ಅಗತ್ಯವಿರುವ ಹೊಸ SD ಕಾರ್ಡ್ ಪತ್ತೆಹಚ್ಚಲಾಗಿದೆ.
+ಆದ್ದರಿಂದ ಆಂತರಿಕ ಸಾಧನ ಸಂಗ್ರಹಣೆಯನ್ನು ಡೀಫಾಲ್ಟ್ ಡೇಟಾ ಸಂಗ್ರಹಣೆಯಾಗಿ ಬಳಸಲಾಗುತ್ತದೆ.
+
+ಡೇಟಾ ಸಂಗ್ರಹಣೆಯಾಗಿ SD ಕಾರ್ಡ್ ಬಳಸಲು, ಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಿಗೆ ಹೋಗಿ ಮತ್ತು ಸಂಗ್ರಹಣೆ ಆಯ್ಕೆಯನ್ನು SD ಕಾರ್ಡ್‌ಗೆ ಬದಲಾಯಿಸಿ."</string>
     <string name="cam_strings_sd_permission_rationale_txt">SD ಕಾರ್ಡ್‌ನಲ್ಲಿ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೋಗಳನ್ನು ಉಳಿಸಲು</string>
     <string name="cam_strings_select_picture_txt">ಭಾವಚಿತ್ರ ಆರಿಸಿ</string>
     <string name="cam_strings_self_timer_05_txt">0.5 ಸೆಕೆ.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">ಸ್ವಯಂ ಸೆರೆಹಿಡಿಯುವಿಕೆ</string>
     <string name="cam_strings_side_touch_not_supported_txt">ಈ ಪರದೆಯಲ್ಲಿ ಸೈಡ್ ಸೆನ್ಸ್ ಬೆಂಬಲಿತವಾಗಿಲ್ಲ</string>
     <string name="cam_strings_side_touch_on_title_txt">ಸೈಡ್ ಸೆನ್ಸ್</string>
-    <string name="cam_strings_side_touch_on_txt">ಈ ಕಾರ್ಯವನ್ನು ಬಳಸಲು, ಸಂಯೋಜನೆಗಳು &gt; ಪ್ರದರ್ಶನಕ್ಕೆ ಹೋಗಿ ಮತ್ತು ಸೈಡ್ ಸೆನ್ಸ್ ಆನ್ ಮಾಡಿ. ಇದೀಗ ಸಕ್ರಿಯಗೊಳಿಸುವುದೇ?</string>
+    <string name="cam_strings_side_touch_on_txt">ಈ ಕಾರ್ಯವನ್ನು ಬಳಸಲು, ಸಂಯೋಜನೆಗಳು > ಪ್ರದರ್ಶನಕ್ಕೆ ಹೋಗಿ ಮತ್ತು ಸೈಡ್ ಸೆನ್ಸ್ ಆನ್ ಮಾಡಿ. ಇದೀಗ ಸಕ್ರಿಯಗೊಳಿಸುವುದೇ?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">ಸೈಡ್ ಸೆನ್ಸ್</string>
-    <string name="cam_strings_side_touch_tutorial_txt">ಶಟರ್ ಬಟನ್ ಬದಲಿಗೆ ಪರದೆಯ ಬದಿ. ಸೆನ್ಸರ್ ಅನ್ನು ಎರಡು ಬಾರಿ ತಟ್ಟುವ ಮೂಲಕ ನೀವು ಫೋಟೋ. ವೀಡಿಯೋ ತೆಗೆದುಕೊಳ್ಳಬಹುದು. ಹಾಗೆಯೇ, ಈ ಬದಿಯ ಸೆನ್ಸರ್‌. ನಿಮ್ಮ ಬೆರಳನ್ನು ಸ್ಲೈಡ್ ಮಾಡುವ ನೀವು ಒಳಗೆ ಮತ್ತು ಹೊರಗೆ ಜೂಮ್ ಮಾಡಬಹುದು.\nಫೋಟೋ ಮತ್ತು ವೀಡಿಯೋ ಮೋಡ್ ಎರಡೂ ಸಹ ಈ ಕಾರ್ಯ ಬೆಂಬಲಿಸುತ್ತದೆ. ಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಲ್ಲಿನ ಸೈಡ್ ಸೆನ್ಸ್‌ನಿಂದ ಇದನ್ನು ನೀವು ಆಫ್ ಮಾಡಬಹುದು.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">ಶಟರ್ ಬಟನ್ ಬದಲಿಗೆ ಪೋರ್ಟ್ರೇಟ್ ವೀಕ್ಷಣೆಯಲ್ಲಿ ಪರದೆಯ ಬದಿ. ಸೆನ್ಸರ್. ಎರಡು ಬಾರಿ ತಟ್ಟುವ ಮೂಲಕ ಫೋಟೋ. ವೀಡಿಯೋ ತೆಗೆದುಕೊಳ್ಳಬಹುದು. ಹಾಗೆಯೇ, ಸೈಡ್ ಸೆನ್ಸರ್. ನಿಮ್ಮ ಬೆರಳನ್ನು ಸ್ಲೈಡ್ ಮಾಡುವ. ಒಳಗೆ. ಹೊರಗೆ ಜೂಮ್ ಮಾಡಬಹುದು.\nಫೋಟೋ ಮತ್ತು ವೀಡಿಯೋ ಮೋಡ್ ಎರಡೂ ಈ ಕಾರ್ಯ ಬೆಂಬಲಿಸುತ್ತದೆ. ಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆ. ಸೈಡ್ ಸೆನ್ಸ್‌ನಿಂದ ಇದನ್ನು ನೀವು ಆಫ್ ಮಾಡಬಹುದು.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">ಶಟರ್ ಬಟನ್ ಬದಲಿಗೆ ಪೋರ್ಟ್ರೇಟ್ ವೀಕ್ಷಣೆಯಲ್ಲಿ ಪರದೆಯ ಬದಿಯಲ್ಲಿನ ಸೆನ್ಸರ್ ಅನ್ನು ಎರಡು ಬಾರಿ ತಟ್ಟುವ ಮೂಲಕ ನೀವು ಫೋಟೋ ಅಥವಾ ವೀಡಿಯೋ ತೆಗೆದುಕೊಳ್ಳಬಹುದು.\nಫೋಟೋ ಮತ್ತು ವೀಡಿಯೋ ಮೋಡ್ ಎರಡೂ ಈ ಕಾರ್ಯ ಬೆಂಬಲಿಸುತ್ತದೆ. ಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಲ್ಲಿನ ಸೈಡ್ ಸೆನ್ಸ್‌ನಿಂದ ಇದನ್ನು ನೀವು ಆಫ್ ಮಾಡಬಹುದು.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">ಶಟರ್ ಬಟನ್ ಬದಲಿಗೆ ಪರದೆಯ ಬದಿಯಲ್ಲಿನ ಸೆನ್ಸರ್ ಅನ್ನು ಎರಡು ಬಾರಿ ತಟ್ಟುವ ಮೂಲಕ ನೀವು ಫೋಟೋ ಅಥವಾ ವೀಡಿಯೋ ತೆಗೆದುಕೊಳ್ಳಬಹುದು. \nಫೋಟೋ ಮತ್ತು ವೀಡಿಯೋ ಮೋಡ್ ಎರಡೂ ಈ ಕಾರ್ಯ ಬೆಂಬಲಿಸುತ್ತದೆ. ಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಲ್ಲಿನ ಸೈಡ್ ಸೆನ್ಸ್‌ನಿಂದ ಇದನ್ನು ನೀವು ಆಫ್ ಮಾಡಬಹುದು.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"ಶಟರ್ ಬಟನ್ ಬದಲಿಗೆ ಪರದೆಯ ಬದಿ. ಸೆನ್ಸರ್ ಅನ್ನು ಎರಡು ಬಾರಿ ತಟ್ಟುವ ಮೂಲಕ ನೀವು ಫೋಟೋ. ವೀಡಿಯೋ ತೆಗೆದುಕೊಳ್ಳಬಹುದು. ಹಾಗೆಯೇ, ಈ ಬದಿಯ ಸೆನ್ಸರ್‌. ನಿಮ್ಮ ಬೆರಳನ್ನು ಸ್ಲೈಡ್ ಮಾಡುವ ನೀವು ಒಳಗೆ ಮತ್ತು ಹೊರಗೆ ಜೂಮ್ ಮಾಡಬಹುದು.
+ಫೋಟೋ ಮತ್ತು ವೀಡಿಯೋ ಮೋಡ್ ಎರಡೂ ಸಹ ಈ ಕಾರ್ಯ ಬೆಂಬಲಿಸುತ್ತದೆ. ಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಲ್ಲಿನ ಸೈಡ್ ಸೆನ್ಸ್‌ನಿಂದ ಇದನ್ನು ನೀವು ಆಫ್ ಮಾಡಬಹುದು."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"ಶಟರ್ ಬಟನ್ ಬದಲಿಗೆ ಪೋರ್ಟ್ರೇಟ್ ವೀಕ್ಷಣೆಯಲ್ಲಿ ಪರದೆಯ ಬದಿ. ಸೆನ್ಸರ್. ಎರಡು ಬಾರಿ ತಟ್ಟುವ ಮೂಲಕ ಫೋಟೋ. ವೀಡಿಯೋ ತೆಗೆದುಕೊಳ್ಳಬಹುದು. ಹಾಗೆಯೇ, ಸೈಡ್ ಸೆನ್ಸರ್. ನಿಮ್ಮ ಬೆರಳನ್ನು ಸ್ಲೈಡ್ ಮಾಡುವ. ಒಳಗೆ. ಹೊರಗೆ ಜೂಮ್ ಮಾಡಬಹುದು.
+ಫೋಟೋ ಮತ್ತು ವೀಡಿಯೋ ಮೋಡ್ ಎರಡೂ ಈ ಕಾರ್ಯ ಬೆಂಬಲಿಸುತ್ತದೆ. ಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆ. ಸೈಡ್ ಸೆನ್ಸ್‌ನಿಂದ ಇದನ್ನು ನೀವು ಆಫ್ ಮಾಡಬಹುದು."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"ಶಟರ್ ಬಟನ್ ಬದಲಿಗೆ ಪೋರ್ಟ್ರೇಟ್ ವೀಕ್ಷಣೆಯಲ್ಲಿ ಪರದೆಯ ಬದಿಯಲ್ಲಿನ ಸೆನ್ಸರ್ ಅನ್ನು ಎರಡು ಬಾರಿ ತಟ್ಟುವ ಮೂಲಕ ನೀವು ಫೋಟೋ ಅಥವಾ ವೀಡಿಯೋ ತೆಗೆದುಕೊಳ್ಳಬಹುದು.
+ಫೋಟೋ ಮತ್ತು ವೀಡಿಯೋ ಮೋಡ್ ಎರಡೂ ಈ ಕಾರ್ಯ ಬೆಂಬಲಿಸುತ್ತದೆ. ಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಲ್ಲಿನ ಸೈಡ್ ಸೆನ್ಸ್‌ನಿಂದ ಇದನ್ನು ನೀವು ಆಫ್ ಮಾಡಬಹುದು."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"ಶಟರ್ ಬಟನ್ ಬದಲಿಗೆ ಪರದೆಯ ಬದಿಯಲ್ಲಿನ ಸೆನ್ಸರ್ ಅನ್ನು ಎರಡು ಬಾರಿ ತಟ್ಟುವ ಮೂಲಕ ನೀವು ಫೋಟೋ ಅಥವಾ ವೀಡಿಯೋ ತೆಗೆದುಕೊಳ್ಳಬಹುದು. 
+ಫೋಟೋ ಮತ್ತು ವೀಡಿಯೋ ಮೋಡ್ ಎರಡೂ ಈ ಕಾರ್ಯ ಬೆಂಬಲಿಸುತ್ತದೆ. ಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಲ್ಲಿನ ಸೈಡ್ ಸೆನ್ಸ್‌ನಿಂದ ಇದನ್ನು ನೀವು ಆಫ್ ಮಾಡಬಹುದು."</string>
     <string name="cam_strings_side_touch_txt">ಸೈಡ್ ಸೆನ್ಸ್</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">ರೆಕಾರ್ಡಿಂಗ್ ಶೈಲಿ ಮತ್ತು ಪರದೆ ರೆಸಲ್ಯೂಶನ್ ಅನ್ನು ಕ್ಯಾಮೆರಾ ಸಂಯೋಜನೆಗಳಲ್ಲಿ ಬದಲಿಸಬಹುದು</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">ತೀರಾ ನಿಧಾನ (ಒಂದು-ಶಾಟ್)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">ಸೂಪರ್ ನಿಧಾನ ಚಲನೆ</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">ನೀವು ನಿಧಾನ ಚಲನೆಗೆ fps ಮತ್ತು ರೆಕಾರ್ಡಿಂಗ್ ಶೈಲಿ ಬದಲಾಯಿಸಬಹುದು</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">ಹೆಚ್ಚು ಆಯ್ಕೆಗಳು</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">ಪರದೆಯ ಮ. ಬಟನ್ ತಟ್ಟುವ ಮೂಲಕ %1$s fps ನಿಧಾನ ಚಲನೆ. ಅಮೂಲ್ಯ ಕ್ಷಣ ರೆಕಾರ್ಡ್ ಮಾಡಿ.\nಪ್ರಖರ ಪರಿಸ್ಥಿತಿಗಳಲ್ಲಿ ರೆಕಾರ್ಡ್. ಉತ್ತಮ ವೀಡಿಯೋ ರಚಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"ಪರದೆಯ ಮ. ಬಟನ್ ತಟ್ಟುವ ಮೂಲಕ %1$s fps ನಿಧಾನ ಚಲನೆ. ಅಮೂಲ್ಯ ಕ್ಷಣ ರೆಕಾರ್ಡ್ ಮಾಡಿ.
+ಪ್ರಖರ ಪರಿಸ್ಥಿತಿಗಳಲ್ಲಿ ರೆಕಾರ್ಡ್. ಉತ್ತಮ ವೀಡಿಯೋ ರಚಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">ಮಧ್ಯದ ಬಟನ್ ಟ್ಯಾಪ್. %1$s fps ಬಳಸಿ ಸೂಕ್ತ ಕ್ಷಣ ರೆಕಾರ್ಡ್ ಮಾಡಬಹುದು</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">ಪರದೆಯ ಮಧ್ಯದಲ್ಲಿ ಬಟನ್ ತಟ್ಟುವ ಮೂಲಕ %1$s fps ನಿಧಾನ ಚಲನೆಯಲ್ಲಿ ಪ್ರಮುಖ ಕ್ಷಣಗಳನ್ನು ತಕ್ಷಣ ರೆಕಾರ್ಡ್ ಮಾಡಿ</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">ಸೂಪರ್ ನಿಧಾನ ಚಲನೆ (ಒಂದು-ಶಾಟ್)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">ನಿಧಾನ ಚಲನೆ</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">ಹೇಗೆ ರೆಕಾ. ಮಾಡುವುದು</string>
     <string name="cam_strings_slow_motion_standard_txt">ನಿಧಾನ ಚಲನೆ</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">ನಿಧಾನ ಚಲನೆಯಲ್ಲಿ ನಿಖರ ಕ್ಷಣವನ್ನು ತೋರಿಸುವ ಮೂಲಕ ಆಕರ್ಷಕ ವೀಡಿಯೋ ಮಾಡಿ.\nಪ್ರಖರ ಸ್ಥಿತಿಗಳಲ್ಲಿ ರೆಕಾರ್ಡ್ ಮಾಡುವುದು ನಿಮಗೆ ಉತ್ತಮ ವೀಡಿಯೋ ರಚಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"ನಿಧಾನ ಚಲನೆಯಲ್ಲಿ ನಿಖರ ಕ್ಷಣವನ್ನು ತೋರಿಸುವ ಮೂಲಕ ಆಕರ್ಷಕ ವೀಡಿಯೋ ಮಾಡಿ.
+ಪ್ರಖರ ಸ್ಥಿತಿಗಳಲ್ಲಿ ರೆಕಾರ್ಡ್ ಮಾಡುವುದು ನಿಮಗೆ ಉತ್ತಮ ವೀಡಿಯೋ ರಚಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">ನೀವು %1$s fps ಗೆ ಬದ. ವಿಭಿನ್ನ ವೇಗಗಳಲ್ಲಿ ವೀಡಿಯೋ ರೆಕಾರ್ಡ್ ಮಾಡಬಹುದು</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">ಸೂಕ್ತ ಕ್ಷಣದ ಮಧ್ಯದಲ್ಲಿ ಬಟನ್ ತಟ್ಟಿ</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">ನಿಧಾನ ಚಲನೆ ರೆಕಾರ್ಡ್ ಮಾಡಲಾಗಿದೆ</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">ಸಾಫ್ಟ್‌ವೇರ್ ಪರವಾನಗಿಗಳು</string>
     <string name="cam_strings_take_photo_txt">ಫೋಟೋ ತೆಗೆದುಕೊಳ್ಳಿ</string>
     <string name="cam_strings_term_of_use_accept_txt">ಸ್ವೀಕರಿಸಿ</string>
-    <string name="cam_strings_term_of_use_consent_txt">ನಾನು Sony Mobile ನ &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;ಬಳಕೆಯ ಷರತ್ತುಗಳಿಗೆ&lt;/a&gt; ಒಪ್ಪಿಕೊಳ್ಳುತ್ತೇನೆ.</string>
+    <string name="cam_strings_term_of_use_consent_txt">ನಾನು Sony Mobile ನ &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">ಬಳಕೆಯ ಷರತ್ತುಗಳಿಗೆ&lt;/a> ಒಪ್ಪಿಕೊಳ್ಳುತ್ತೇನೆ.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">ಈ ಸೇವೆಯ ನಿಮ್ಮ ಬಳಕೆಯು ನಿಮ್ಮ ಡೇಟಾ ಯೋಜನೆಯನ್ನು ಆಧರಿಸಿ ಮೊಬೈಲ್ ಡೇಟಾ ದರಗಳಿಗೆ ಒಳಪಟ್ಟಿರುತ್ತದೆ.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile ಸೇವೆಯ ಭಾಗವಾಗಿ ಹಾಗೂ ಸೇವೆಯ ಸುಧಾರಣೆಗಳಿಗೆ ನಿಮ್ಮ ಹ್ಯಾಷ್ ಮಾಡಿದ Android ಐಡಿ ಯೂನಿಕ್ ಡಿವೈಸ್ ಐಡೆಂಟಿಫೈಯರ್, ಸ್ಥಳಾಧಾರಿತ ಡೇಟಾ ಹಾಗೂ ಟೈಮ್ ಸ್ಟ್ಯಾಂಪ್ ಅನ್ನು ಸಂಗ್ರಹಿಸುತ್ತದೆ.</string>
     <string name="cam_strings_term_of_use_decline_txt">ನಿರಾಕರಿಸಿ</string>
     <string name="cam_strings_term_of_use_title_txt">ನಿಯಮಗಳು ಮತ್ತು ಷರತ್ತುಗಳು</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;ಬಳಕೆಯ ನಿಯಮಗಳು&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">ಬಳಕೆಯ ನಿಯಮಗಳು&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">ಫೋಟೋಗಳನ್ನು ಡೀಸೆಲೆಕ್ಟ್ ಮಾಡಿ</string>
     <string name="cam_strings_timeshift_operation_failed_txt">ಉಳಿಸಲಾಗಲಿಲ್ಲ</string>
     <string name="cam_strings_timeshift_save_complete_txt">ಉಳಿಸಲಾಯಿತು</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">ಸ್ಥಿರ 4K ವೀಡಿಯೋ ರೆಕಾರ್ಡಿಂಗ್‌ಗೆ, ನೀವು ಅಧಿಕ ವೇಗದ SD ಕಾರ್ಡ್ (UHS ಸ್ಪೀಡ್ ಕ್ಲಾಸ್ 1 ಅಥವಾ ಹೆಚ್ಚಿನದು ಅಥವಾ ಸ್ಪೀಡ್ ಕ್ಲಾಸ್ 10 ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ) ಹೊಂದಿರದ ಹೊರತು ಈ ಸಂಯೋಜನೆ ಬದಲಾಯಿಸಬಾರದು.</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">ಸ್ಥಿರ ಟೈಮ್‌ಶಿಫ್ಟ್ ವೀಡಿಯೋ ರೆಕಾರ್ಡಿಂಗ್‌ಗೆ, ನೀವು ಅಧಿಕ ವೇಗದ SD ಕಾರ್ಡ್ (UHS ಸ್ಪೀಡ್ ಕ್ಲಾಸ್ 1 ಅಥವಾ ಹೆಚ್ಚಿನದು ಅಥವಾ ಸ್ಪೀಡ್ ಕ್ಲಾಸ್ 10 ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ) ಹೊಂದಿರದ ಹೊರತು ಈ ಸಂಯೋಜನೆ ಬದಲಾಯಿಸಬಾರದು. ಹೇಗಿದ್ದರೂ ಬದಲಾಯಿಸುವುದೇ?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">ಸ್ಥಿರ ನಿಧಾನ ಚಲನೆ ವೀಡಿಯೋ ರೆಕಾರ್ಡಿಂಗ್‌ಗೆ, ನೀವು ಅಧಿಕ ವೇಗದ SD ಕಾರ್ಡ್ (UHS ಸ್ಪೀಡ್ ಕ್ಲಾಸ್ 1 ಅಥವಾ ಹೆಚ್ಚಿನದು ಅಥವಾ ಸ್ಪೀಡ್ ಕ್ಲಾಸ್ 10 ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ) ಹೊಂದಿರದ ಹೊರತು ಈ ಸಂಯೋಜನೆ ಬದಲಾಯಿಸಬಾರದು.</string>
-    <string name="cam_strings_video_explanatory_txt">ಸ್ಥಿರ ವೀಡಿಯೋ ರೆಕಾರ್ಡಿಂಗ್‌ಗೆ, ನೀವು ಡೇಟಾ ಸಂಗ್ರಹಣೆಯನ್ನು ಆಂತರಿಕ ಸಂಗ್ರಹಣೆಗೆ ಬದಲಾಯಿಸುವಂತೆ ನಾವು ಶಿಫಾರಸು ಮಾಡುತ್ತೇವೆ. ಇದೀಗ ಬದಲಾಯಿಸಲು ಬಯಸುವಿರಾ?\n\nಡೇಟಾ ಸಂಗ್ರಹಣೆಯಾಗಿ SD ಬಳಸುವುದನ್ನು ನೀವು ಮುಂದುವರಿಸಿದರೆ, ಅಧಿಕ-ವೇಗ SD ಕಾರ್ಡ್ (UHS ಸ್ಪೀಡ್ ಕ್ಲಾಸ್ 1 ಅಥವಾ ಹೆಚ್ಚಿನದು, ಅಥವಾ ಸ್ಪೀಡ್ ಕ್ಲಾಸ್ 10 ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ) ಬಳಸಲು ಖಚಿತವಾಗಿರಿ.</string>
+    <string name="cam_strings_video_explanatory_txt">"ಸ್ಥಿರ ವೀಡಿಯೋ ರೆಕಾರ್ಡಿಂಗ್‌ಗೆ, ನೀವು ಡೇಟಾ ಸಂಗ್ರಹಣೆಯನ್ನು ಆಂತರಿಕ ಸಂಗ್ರಹಣೆಗೆ ಬದಲಾಯಿಸುವಂತೆ ನಾವು ಶಿಫಾರಸು ಮಾಡುತ್ತೇವೆ. ಇದೀಗ ಬದಲಾಯಿಸಲು ಬಯಸುವಿರಾ?
+
+ಡೇಟಾ ಸಂಗ್ರಹಣೆಯಾಗಿ SD ಬಳಸುವುದನ್ನು ನೀವು ಮುಂದುವರಿಸಿದರೆ, ಅಧಿಕ-ವೇಗ SD ಕಾರ್ಡ್ (UHS ಸ್ಪೀಡ್ ಕ್ಲಾಸ್ 1 ಅಥವಾ ಹೆಚ್ಚಿನದು, ಅಥವಾ ಸ್ಪೀಡ್ ಕ್ಲಾಸ್ 10 ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ) ಬಳಸಲು ಖಚಿತವಾಗಿರಿ."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">ಡ್ಯೂ. ಕ್ಯಾಮೆರಾ</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">ರಾತ್ರಿಯಲ್ಲಿ ಅಥವಾ ಕಡಿಮೆ ಬೆಳಕಿರುವ ಕೊಠಡಿಯಲ್ಲಿಯೂ ಡ್ಯೂಯಲ್ ಕ್ಯಾಮೆರಾ ಬಳಸಿಕೊಂಡು ಆಕರ್ಷಕ ವೀಡಿಯೋಗಳನ್ನು ನೀವು ರೆಕಾರ್ಡ್ ಮಾಡಬಹುದು. ಅಲ್ಟ್ರಾ-ಹೈ ಸೂಕ್ಷ್ಮತೆಯ ಮೂಲಕ ರೆಕಾರ್ಡ್ ಮಾಡಲು ಪರದೆಗಳನ್ನು ಆಧರಿಸಿ ಏಕ ಕ್ಯಾಮೆರಾ ಮತ್ತು ಡ್ಯೂಯಲ್ ಕ್ಯಾಮೆರಾ ನಡುವೆ ಕ್ಯಾಮೆರಾ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಬದಲಾಯಿಸುತ್ತದೆ.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">ಡ್ಯೂಯೆಲ್ ಕ್ಯಾಮೆರಾ. ವೀಡಿಯೋ ರೆಕಾರ್ಡಿಂಗ್</string>

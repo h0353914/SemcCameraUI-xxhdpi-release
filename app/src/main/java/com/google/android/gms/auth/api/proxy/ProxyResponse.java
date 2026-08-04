@@ -3,14 +3,14 @@ package com.google.android.gms.auth.api.proxy;
 import android.app.PendingIntent;
 import android.os.Bundle;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map$Entry;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class ProxyResponse implements SafeParcelable {
-    public static final Parcelable$Creator<ProxyResponse> CREATOR = new zzc();
+    public static final Parcelable.Creator<ProxyResponse> CREATOR = new zzc();
     public static final int STATUS_CODE_NO_CONNECTION = -1;
     public final byte[] body;
     public final int googlePlayServicesStatusCode;
@@ -49,8 +49,8 @@ public class ProxyResponse implements SafeParcelable {
         if (map == null) {
             return bundle;
         }
-        for (Map$Entry<String, String> map$Entry : map.entrySet()) {
-            bundle.putString(map$Entry.getKey(), map$Entry.getValue());
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            bundle.putString(entry.getKey(), entry.getValue());
         }
         return bundle;
     }

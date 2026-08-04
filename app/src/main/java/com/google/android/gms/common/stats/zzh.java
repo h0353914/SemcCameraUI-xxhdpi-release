@@ -1,11 +1,12 @@
 package com.google.android.gms.common.stats;
 
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import android.os.Parcelable;
+import com.google.android.gms.common.internal.safeparcel.zza;
 import java.util.ArrayList;
 
-public class zzh implements Parcelable$Creator<WakeLockEvent> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzh implements Parcelable.Creator<WakeLockEvent> {
     static void zza(WakeLockEvent wakeLockEvent, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, wakeLockEvent.mVersionCode);
@@ -24,17 +25,9 @@ public class zzh implements Parcelable$Creator<WakeLockEvent> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ WakeLockEvent createFromParcel(Parcel parcel) {
-        return zzaB(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ WakeLockEvent[] newArray(int i) {
-        return zzbZ(i);
-    }
-
-    public WakeLockEvent zzaB(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaB, reason: merged with bridge method [inline-methods] */
+    public WakeLockEvent createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         long jZzi = 0;
         long jZzi2 = 0;
@@ -102,10 +95,12 @@ public class zzh implements Parcelable$Creator<WakeLockEvent> {
         if (parcel.dataPosition() == iZzap) {
             return new WakeLockEvent(iZzg, jZzi, iZzg2, strZzp, iZzg3, arrayListZzD, strZzp2, jZzi2, iZzg4, strZzp3, strZzp4, fZzl, jZzi3);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public WakeLockEvent[] zzbZ(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbZ, reason: merged with bridge method [inline-methods] */
+    public WakeLockEvent[] newArray(int i) {
         return new WakeLockEvent[i];
     }
 }

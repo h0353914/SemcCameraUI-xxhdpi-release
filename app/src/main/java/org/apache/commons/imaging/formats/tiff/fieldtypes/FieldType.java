@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
 import org.apache.commons.imaging.formats.tiff.TiffField;
+import java.io.UnsupportedEncodingException;
 
 public abstract class FieldType {
     private final int elementSize;
@@ -35,9 +36,9 @@ public abstract class FieldType {
     public static final List<FieldType> ASCII_OR_RATIONAL = Collections.unmodifiableList(Arrays.asList(ASCII, RATIONAL));
     public static final List<FieldType> ASCII_OR_BYTE = Collections.unmodifiableList(Arrays.asList(ASCII, BYTE));
 
-    public abstract Object getValue(TiffField tiffField);
+    public abstract Object getValue(TiffField tiffField) throws ImageReadException;
 
-    public abstract byte[] writeData(Object obj, ByteOrder byteOrder) throws ImageWriteException;
+    public abstract byte[] writeData(Object obj, ByteOrder byteOrder) throws ImageWriteException, UnsupportedEncodingException;
 
     protected FieldType(int i, String str, int i2) {
         this.type = i;

@@ -3,12 +3,12 @@ package com.sonyericsson.cameracommon.focusview;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View$OnTouchListener;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.cameracommon.utility.FaceDetectUtil;
 import com.sonyericsson.cameracommon.utility.PositionConverter;
 import java.util.HashMap;
 
-public class RectangleTouchEventDispatcher implements View$OnTouchListener {
+public class RectangleTouchEventDispatcher implements View.OnTouchListener {
     public static final String TAG = "RectangleTouchEventDispatcher";
     private FaceInformationList mFacetList;
     private HashMap<String, TaggedRectangle> mRectangles;
@@ -22,7 +22,7 @@ public class RectangleTouchEventDispatcher implements View$OnTouchListener {
         this.mFacetList = faceInformationList;
     }
 
-    @Override // android.view.View$OnTouchListener
+    @Override // android.view.View.OnTouchListener
     public boolean onTouch(View view, MotionEvent motionEvent) {
         if (this.mFacetList == null) {
             return false;
@@ -31,7 +31,7 @@ public class RectangleTouchEventDispatcher implements View$OnTouchListener {
         if (action == 0) {
             this.mTargetRect = updateTouchView(this.mFacetList, motionEvent);
         }
-        Rectangle rectangle = this.mTargetRect != null ? (Rectangle) this.mTargetRect.findViewById(2131296527) : null;
+        Rectangle rectangle = this.mTargetRect != null ? (Rectangle) this.mTargetRect.findViewById(R.id.rect) : null;
         if (action == 1 || action == 3) {
             this.mTargetRect = null;
         }

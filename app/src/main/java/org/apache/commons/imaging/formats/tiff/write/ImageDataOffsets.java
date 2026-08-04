@@ -1,18 +1,19 @@
 package org.apache.commons.imaging.formats.tiff.write;
 
-import org.apache.commons.imaging.formats.tiff.TiffElement$DataElement;
+import org.apache.commons.imaging.formats.tiff.TiffElement;
+import org.apache.commons.imaging.formats.tiff.write.TiffOutputItem;
 
 class ImageDataOffsets {
     final int[] imageDataOffsets;
     final TiffOutputField imageDataOffsetsField;
     final TiffOutputItem[] outputItems;
 
-    ImageDataOffsets(TiffElement$DataElement[] tiffElement$DataElementArr, int[] iArr, TiffOutputField tiffOutputField) {
+    ImageDataOffsets(TiffElement.DataElement[] dataElementArr, int[] iArr, TiffOutputField tiffOutputField) {
         this.imageDataOffsets = iArr;
         this.imageDataOffsetsField = tiffOutputField;
-        this.outputItems = new TiffOutputItem[tiffElement$DataElementArr.length];
-        for (int i = 0; i < tiffElement$DataElementArr.length; i++) {
-            this.outputItems[i] = new TiffOutputItem$Value("TIFF image data", tiffElement$DataElementArr[i].getData());
+        this.outputItems = new TiffOutputItem[dataElementArr.length];
+        for (int i = 0; i < dataElementArr.length; i++) {
+            this.outputItems[i] = new TiffOutputItem.Value("TIFF image data", dataElementArr[i].getData());
         }
     }
 }

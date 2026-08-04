@@ -3,6 +3,25 @@ package org.apache.commons.imaging.formats.tiff.constants;
 import java.nio.ByteOrder;
 
 public final class TiffConstants {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static final ByteOrder DEFAULT_TIFF_BYTE_ORDER = ByteOrder.LITTLE_ENDIAN;
     public static final String PARAM_KEY_LZW_COMPRESSION_BLOCK_SIZE = "PARAM_KEY_LZW_COMPRESSION_BLOCK_SIZE";
     public static final String PARAM_KEY_SUBIMAGE_HEIGHT = "SUBIMAGE_HEIGHT";
@@ -31,6 +50,49 @@ public final class TiffConstants {
     public static final int TIFF_HEADER_SIZE = 8;
     public static final int TIFF_LZW_COMPRESSION_BLOCK_SIZE_LARGE = 65536;
     public static final int TIFF_LZW_COMPRESSION_BLOCK_SIZE_MEDIUM = 32768;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private TiffConstants() {
     }

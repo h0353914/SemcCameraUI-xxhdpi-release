@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.gif;
 
+import android.support.v4.view.ViewCompat;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -14,15 +15,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import kotlin.jvm.internal.ByteCompanionObject;
 import org.apache.commons.imaging.FormatCompliance;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.ImageInfo;
-import org.apache.commons.imaging.ImageInfo$ColorType;
-import org.apache.commons.imaging.ImageInfo$CompressionAlgorithm;
 import org.apache.commons.imaging.ImageParser;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
+import org.apache.commons.imaging.ImagingConstants;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.common.BinaryOutputStream;
 import org.apache.commons.imaging.common.ImageBuilder;
@@ -30,6 +31,7 @@ import org.apache.commons.imaging.common.ImageMetadata;
 import org.apache.commons.imaging.common.bytesource.ByteSource;
 import org.apache.commons.imaging.common.mylzw.MyLzwCompressor;
 import org.apache.commons.imaging.common.mylzw.MyLzwDecompressor;
+import org.apache.commons.imaging.formats.pnm.PnmConstants;
 import org.apache.commons.imaging.palette.Palette;
 import org.apache.commons.imaging.palette.PaletteFactory;
 import org.apache.commons.imaging.util.IoUtils;
@@ -37,7 +39,6 @@ import org.apache.commons.imaging.util.IoUtils;
 public class GifImageParser extends ImageParser {
     private static final int APPLICATION_EXTENSION_LABEL = 255;
     private static final int COMMENT_EXTENSION = 254;
-    private static final String DEFAULT_EXTENSION = ".gif";
     private static final int EXTENSION_CODE = 33;
     private static final int GRAPHIC_CONTROL_EXTENSION = 8697;
     private static final int IMAGE_SEPARATOR = 44;
@@ -48,9 +49,10 @@ public class GifImageParser extends ImageParser {
     private static final int TERMINATOR_BYTE = 59;
     private static final int XMP_COMPLETE_CODE = 8703;
     private static final int XMP_EXTENSION = 255;
-    private static final String[] ACCEPTED_EXTENSIONS = {".gif"};
+    private static final String DEFAULT_EXTENSION = ".gif";
+    private static final String[] ACCEPTED_EXTENSIONS = {DEFAULT_EXTENSION};
     private static final byte[] GIF_HEADER_SIGNATURE = {71, 73, 70};
-    private static final byte[] XMP_APPLICATION_ID_AND_AUTH_CODE = {88, 77, 80, 32, 68, 97, 116, 97, 88, 77, 80};
+    private static final byte[] XMP_APPLICATION_ID_AND_AUTH_CODE = {88, 77, PnmConstants.PNM_PREFIX_BYTE, PnmConstants.PNM_SEPARATOR, 68, 97, 116, 97, 88, 77, PnmConstants.PNM_PREFIX_BYTE};
 
     private int simplePow(int i, int i2) {
         int i3 = 1;
@@ -62,7 +64,7 @@ public class GifImageParser extends ImageParser {
 
     @Override // org.apache.commons.imaging.ImageParser
     public String getDefaultExtension() {
-        return ".gif";
+        return DEFAULT_EXTENSION;
     }
 
     @Override // org.apache.commons.imaging.ImageParser
@@ -126,7 +128,7 @@ public class GifImageParser extends ImageParser {
         if (getDebug()) {
             BinaryFunctions.printByteBits("PackedFields bits", b9);
         }
-        boolean z2 = (b9 & 128) > 0;
+        boolean z2 = (b9 & ByteCompanionObject.MIN_VALUE) > 0;
         if (getDebug()) {
             System.out.println("GlobalColorTableFlag: " + z2);
         }
@@ -224,10 +226,12 @@ public class GifImageParser extends ImageParser {
                                 }
                                 if (subBlock == null) {
                                     continue;
-                                } else if (subBlock.length > 0) {
+                                } else if (subBlock.length <= 0) {
+                                    break;
+                                } else {
                                     arrayList.add(readGenericGIFBlock(inputStream, i3, subBlock));
+                                    break;
                                 }
-                                break;
                             default:
                                 if (formatCompliance != null) {
                                     formatCompliance.addComment("Unknown block", i3);
@@ -238,7 +242,9 @@ public class GifImageParser extends ImageParser {
                     }
                 }
                 arrayList.add(readGenericGIFBlock(inputStream, i3));
-            } else if (i != 44) {
+            } else if (i == 44) {
+                arrayList.add(readImageDescriptor(gifHeaderInfo, i, inputStream, z, formatCompliance));
+            } else {
                 if (i == 59) {
                     return arrayList;
                 }
@@ -250,8 +256,6 @@ public class GifImageParser extends ImageParser {
                     default:
                         throw new ImageReadException("GIF: unknown code: " + i);
                 }
-            } else {
-                arrayList.add(readImageDescriptor(gifHeaderInfo, i, inputStream, z, formatCompliance));
             }
         }
     }
@@ -323,7 +327,7 @@ public class GifImageParser extends ImageParser {
         return readFile(byteSource, z, FormatCompliance.getDefault());
     }
 
-    private ImageContents readFile(ByteSource byteSource, boolean z, FormatCompliance formatCompliance) throws Throwable {
+    private ImageContents readFile(ByteSource byteSource, boolean z, FormatCompliance formatCompliance) throws IOException, ImageReadException {
         InputStream inputStream;
         try {
             inputStream = byteSource.getInputStream();
@@ -332,14 +336,15 @@ public class GifImageParser extends ImageParser {
                 ImageContents imageContents = new ImageContents(header, header.globalColorTableFlag ? readColorTable(inputStream, header.sizeOfGlobalColorTable) : null, readBlocks(header, inputStream, z, formatCompliance));
                 IoUtils.closeQuietly(true, inputStream);
                 return imageContents;
-            } catch (Throwable th) {
-                th = th;
+            } catch (Exception th) {
+                
                 IoUtils.closeQuietly(false, inputStream);
-                throw th;
+                throw new ImageReadException("Error", th);
             }
-        } catch (Throwable th2) {
-            th = th2;
+        } catch (Exception th2) {
+            
             inputStream = null;
+            throw new ImageReadException("Error", th2);
         }
     }
 
@@ -383,14 +388,14 @@ public class GifImageParser extends ImageParser {
         if (imageDescriptor == null) {
             throw new ImageReadException("GIF: Couldn't read ImageDescriptor");
         }
-        GraphicControlExtension graphicControlExtension = (GraphicControlExtension) findBlock(file.blocks, 8697);
+        GraphicControlExtension graphicControlExtension = (GraphicControlExtension) findBlock(file.blocks, GRAPHIC_CONTROL_EXTENSION);
         int i = imageDescriptor.imageHeight;
         int i2 = imageDescriptor.imageWidth;
         List<String> comments = getComments(file.blocks);
         int i3 = gifHeaderInfo.colorResolution + 1;
         ImageFormats imageFormats = ImageFormats.GIF;
         boolean z = imageDescriptor.interlaceFlag;
-        return new ImageInfo("Gif " + ((char) file.gifHeaderInfo.version1) + ((char) file.gifHeaderInfo.version2) + ((char) file.gifHeaderInfo.version3), i3, comments, imageFormats, "GIF Graphics Interchange Format", i, "image/gif", -1, 72, (float) (((double) i) / 72.0d), 72, (float) (((double) i2) / 72.0d), i2, z, graphicControlExtension != null && graphicControlExtension.transparency, true, ImageInfo$ColorType.RGB, ImageInfo$CompressionAlgorithm.LZW);
+        return new ImageInfo("Gif " + ((char) file.gifHeaderInfo.version1) + ((char) file.gifHeaderInfo.version2) + ((char) file.gifHeaderInfo.version3), i3, comments, imageFormats, "GIF Graphics Interchange Format", i, "image/gif", -1, 72, (float) (i / 72.0d), 72, (float) (i2 / 72.0d), i2, z, graphicControlExtension != null && graphicControlExtension.transparency, true, ImageInfo.ColorType.RGB, ImageInfo.CompressionAlgorithm.LZW);
     }
 
     @Override // org.apache.commons.imaging.ImageParser
@@ -419,13 +424,13 @@ public class GifImageParser extends ImageParser {
         int[] iArr = new int[length];
         for (int i = 0; i < length; i++) {
             int i2 = i * 3;
-            iArr[i] = ((bArr[i2 + 2] & 255) << 0) | ((bArr[i2 + 0] & 255) << 16) | (-16777216) | ((bArr[i2 + 1] & 255) << 8);
+            iArr[i] = ((bArr[i2 + 2] & 255) << 0) | ((bArr[i2 + 0] & 255) << 16) | ViewCompat.MEASURED_STATE_MASK | ((bArr[i2 + 1] & 255) << 8);
         }
         return iArr;
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public FormatCompliance getFormatCompliance(ByteSource byteSource) throws Throwable {
+    public FormatCompliance getFormatCompliance(ByteSource byteSource) throws IOException, ImageReadException {
         FormatCompliance formatCompliance = new FormatCompliance(byteSource.getDescription());
         readFile(byteSource, false, formatCompliance);
         return formatCompliance;
@@ -447,7 +452,7 @@ public class GifImageParser extends ImageParser {
         if (imageDescriptor == null) {
             throw new ImageReadException("GIF: Couldn't read Image Descriptor");
         }
-        GraphicControlExtension graphicControlExtension = (GraphicControlExtension) findBlock(file.blocks, 8697);
+        GraphicControlExtension graphicControlExtension = (GraphicControlExtension) findBlock(file.blocks, GRAPHIC_CONTROL_EXTENSION);
         int i3 = imageDescriptor.imageWidth;
         int i4 = imageDescriptor.imageHeight;
         boolean z = graphicControlExtension != null && graphicControlExtension.transparency;
@@ -522,17 +527,17 @@ public class GifImageParser extends ImageParser {
     public void writeImage(BufferedImage bufferedImage, OutputStream outputStream, Map<String, Object> map) throws ImageWriteException, IOException {
         int paletteIndex;
         HashMap map2 = new HashMap(map);
-        boolean zEquals = Boolean.TRUE.equals(map2.get("VERBOSE"));
-        if (map2.containsKey("FORMAT")) {
-            map2.remove("FORMAT");
+        boolean zEquals = Boolean.TRUE.equals(map2.get(ImagingConstants.PARAM_KEY_VERBOSE));
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_FORMAT)) {
+            map2.remove(ImagingConstants.PARAM_KEY_FORMAT);
         }
-        if (map2.containsKey("VERBOSE")) {
-            map2.remove("VERBOSE");
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_VERBOSE)) {
+            map2.remove(ImagingConstants.PARAM_KEY_VERBOSE);
         }
         String str = null;
-        if (map2.containsKey("XMP_XML")) {
-            str = (String) map2.get("XMP_XML");
-            map2.remove("XMP_XML");
+        if (map2.containsKey(ImagingConstants.PARAM_KEY_XMP_XML)) {
+            str = (String) map2.get(ImagingConstants.PARAM_KEY_XMP_XML);
+            map2.remove(ImagingConstants.PARAM_KEY_XMP_XML);
         }
         if (!map2.isEmpty()) {
             throw new ImageWriteException("Unknown parameter: " + map2.keySet().iterator().next());
@@ -633,66 +638,65 @@ public class GifImageParser extends ImageParser {
     }
 
     @Override // org.apache.commons.imaging.ImageParser
-    public String getXmpXml(ByteSource byteSource, Map<String, Object> map) throws Throwable {
+    public String getXmpXml(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
         boolean z;
-        InputStream inputStream;
-        ArrayList arrayList;
-        InputStream inputStream2 = null;
+        InputStream inputStream = null;
         try {
-            inputStream = byteSource.getInputStream();
+            InputStream inputStream2 = byteSource.getInputStream();
             try {
-                GifHeaderInfo header = readHeader(inputStream, null);
+                GifHeaderInfo header = readHeader(inputStream2, null);
                 if (header.globalColorTableFlag) {
-                    readColorTable(inputStream, header.sizeOfGlobalColorTable);
+                    readColorTable(inputStream2, header.sizeOfGlobalColorTable);
                 }
-                List<GifBlock> blocks = readBlocks(header, inputStream, true, null);
-                arrayList = new ArrayList();
-            } catch (Throwable th) {
-                th = th;
-                inputStream2 = inputStream;
+                List<GifBlock> blocks = readBlocks(header, inputStream2, true, null);
+                ArrayList arrayList = new ArrayList();
+                for (GifBlock gifBlock : blocks) {
+                    if (gifBlock.blockCode == XMP_COMPLETE_CODE) {
+                        byte[] bArrAppendSubBlocks = ((GenericGifBlock) gifBlock).appendSubBlocks(true);
+                        if (bArrAppendSubBlocks.length >= XMP_APPLICATION_ID_AND_AUTH_CODE.length && BinaryFunctions.compareBytes(bArrAppendSubBlocks, 0, XMP_APPLICATION_ID_AND_AUTH_CODE, 0, XMP_APPLICATION_ID_AND_AUTH_CODE.length)) {
+                            byte[] bArr = new byte[256];
+                            for (int i = 0; i <= 255; i++) {
+                                bArr[i] = (byte) (255 - i);
+                            }
+                            if (bArrAppendSubBlocks.length >= XMP_APPLICATION_ID_AND_AUTH_CODE.length + bArr.length) {
+                                if (!BinaryFunctions.compareBytes(bArrAppendSubBlocks, bArrAppendSubBlocks.length - bArr.length, bArr, 0, bArr.length)) {
+                                    throw new ImageReadException("XMP block in GIF missing magic trailer.");
+                                }
+                                try {
+                                    arrayList.add(new String(bArrAppendSubBlocks, XMP_APPLICATION_ID_AND_AUTH_CODE.length, bArrAppendSubBlocks.length - (XMP_APPLICATION_ID_AND_AUTH_CODE.length + bArr.length), "utf-8"));
+                                } catch (UnsupportedEncodingException e) {
+                                    throw new ImageReadException("Invalid XMP Block in GIF.", e);
+                                }
+                            }
+                        }
+                    }
+                }
+                if (arrayList.size() >= 1) {
+                    if (arrayList.size() > 1) {
+                        throw new ImageReadException("More than one XMP Block in GIF.");
+                    }
+                    try {
+                        String str = (String) arrayList.get(0);
+                        IoUtils.closeQuietly(true, inputStream2);
+                        return str;
+                    } catch (Exception th) {
+                        
+                        inputStream = inputStream2;
+                        z = true;
+                        IoUtils.closeQuietly(z, inputStream);
+                        throw new ImageReadException("Error", th);
+                    }
+                }
+                IoUtils.closeQuietly(false, inputStream2);
+                return null;
+            } catch (Exception th2) {
+                
+                inputStream = inputStream2;
                 z = false;
+                IoUtils.closeQuietly(z, inputStream);
+                throw new ImageReadException("Error", th2);
             }
-        } catch (Throwable th2) {
-            th = th2;
-        }
-        for (GifBlock gifBlock : blocks) {
-            if (gifBlock.blockCode == 8703) {
-                byte[] bArrAppendSubBlocks = ((GenericGifBlock) gifBlock).appendSubBlocks(true);
-                if (bArrAppendSubBlocks.length >= XMP_APPLICATION_ID_AND_AUTH_CODE.length && BinaryFunctions.compareBytes(bArrAppendSubBlocks, 0, XMP_APPLICATION_ID_AND_AUTH_CODE, 0, XMP_APPLICATION_ID_AND_AUTH_CODE.length)) {
-                    byte[] bArr = new byte[256];
-                    for (int i = 0; i <= 255; i++) {
-                        bArr[i] = (byte) (255 - i);
-                    }
-                    if (bArrAppendSubBlocks.length >= XMP_APPLICATION_ID_AND_AUTH_CODE.length + bArr.length) {
-                        if (!BinaryFunctions.compareBytes(bArrAppendSubBlocks, bArrAppendSubBlocks.length - bArr.length, bArr, 0, bArr.length)) {
-                            throw new ImageReadException("XMP block in GIF missing magic trailer.");
-                        }
-                        try {
-                            arrayList.add(new String(bArrAppendSubBlocks, XMP_APPLICATION_ID_AND_AUTH_CODE.length, bArrAppendSubBlocks.length - (XMP_APPLICATION_ID_AND_AUTH_CODE.length + bArr.length), "utf-8"));
-                        } catch (UnsupportedEncodingException e) {
-                            throw new ImageReadException("Invalid XMP Block in GIF.", e);
-                        }
-                        IoUtils.closeQuietly(z, inputStream2);
-                        throw th;
-                    }
-                }
-            }
-        }
-        if (arrayList.size() >= 1) {
-            if (arrayList.size() > 1) {
-                throw new ImageReadException("More than one XMP Block in GIF.");
-            }
-            try {
-                String str = (String) arrayList.get(0);
-                IoUtils.closeQuietly(true, inputStream);
-                return str;
-            } catch (Throwable th3) {
-                th = th3;
-                inputStream2 = inputStream;
-                z = true;
-            }
-        } else {
-            IoUtils.closeQuietly(false, inputStream);
+        } catch (Exception th3) {
             return null;
         }
     }

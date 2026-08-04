@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.jpeg;
 
+import com.sonyericsson.cameracommon.mediasaving.MediaSavingConstants;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -8,6 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.ByteOrder;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,24 +18,27 @@ import java.util.Map;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.ImageInfo;
-import org.apache.commons.imaging.ImageInfo$ColorType;
-import org.apache.commons.imaging.ImageInfo$CompressionAlgorithm;
 import org.apache.commons.imaging.ImageParser;
 import org.apache.commons.imaging.ImageReadException;
+import org.apache.commons.imaging.ImagingConstants;
 import org.apache.commons.imaging.common.BinaryFunctions;
 import org.apache.commons.imaging.common.ImageMetadata;
 import org.apache.commons.imaging.common.bytesource.ByteSource;
+import org.apache.commons.imaging.formats.jpeg.JpegUtils;
 import org.apache.commons.imaging.formats.jpeg.decoder.JpegDecoder;
+import org.apache.commons.imaging.formats.jpeg.iptc.IptcParser;
 import org.apache.commons.imaging.formats.jpeg.iptc.PhotoshopApp13Data;
 import org.apache.commons.imaging.formats.jpeg.segments.App13Segment;
 import org.apache.commons.imaging.formats.jpeg.segments.App14Segment;
 import org.apache.commons.imaging.formats.jpeg.segments.App2Segment;
 import org.apache.commons.imaging.formats.jpeg.segments.ComSegment;
+import org.apache.commons.imaging.formats.jpeg.segments.DqtSegment;
 import org.apache.commons.imaging.formats.jpeg.segments.GenericSegment;
 import org.apache.commons.imaging.formats.jpeg.segments.JfifSegment;
 import org.apache.commons.imaging.formats.jpeg.segments.Segment;
 import org.apache.commons.imaging.formats.jpeg.segments.SofnSegment;
-import org.apache.commons.imaging.formats.jpeg.segments.SofnSegment$Component;
+import org.apache.commons.imaging.formats.jpeg.segments.UnknownSegment;
+import org.apache.commons.imaging.formats.jpeg.xmp.JpegXmpParser;
 import org.apache.commons.imaging.formats.tiff.TiffField;
 import org.apache.commons.imaging.formats.tiff.TiffImageMetadata;
 import org.apache.commons.imaging.formats.tiff.TiffImageParser;
@@ -41,21 +46,17 @@ import org.apache.commons.imaging.formats.tiff.constants.TiffTagConstants;
 import org.apache.commons.imaging.util.Debug;
 
 public class JpegImageParser extends ImageParser {
-    private static final String[] ACCEPTED_EXTENSIONS = {".jpg", ".jpeg"};
     private static final String DEFAULT_EXTENSION = ".jpg";
+    private static final String[] ACCEPTED_EXTENSIONS = {DEFAULT_EXTENSION, ".jpeg"};
 
     @Override // org.apache.commons.imaging.ImageParser
     public String getDefaultExtension() {
-        return ".jpg";
+        return DEFAULT_EXTENSION;
     }
 
     @Override // org.apache.commons.imaging.ImageParser
     public String getName() {
         return "Jpeg-Custom";
-    }
-
-    static /* synthetic */ boolean access$000(JpegImageParser jpegImageParser, int i, int[] iArr) {
-        return jpegImageParser.keepMarker(i, iArr);
     }
 
     public JpegImageParser() {
@@ -77,7 +78,8 @@ public class JpegImageParser extends ImageParser {
         return new JpegDecoder().decode(byteSource);
     }
 
-    private boolean keepMarker(int i, int[] iArr) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public boolean keepMarker(int i, int[] iArr) {
         if (iArr == null) {
             return true;
         }
@@ -89,9 +91,47 @@ public class JpegImageParser extends ImageParser {
         return false;
     }
 
-    public List<Segment> readSegments(ByteSource byteSource, int[] iArr, boolean z, boolean z2) throws IOException, ImageReadException {
-        ArrayList arrayList = new ArrayList();
-        new JpegUtils().traverseJFIF(byteSource, new JpegImageParser$1(this, iArr, arrayList, this, new int[]{65472, 65473, 65474, 65475, 65477, 65478, 65479, 65481, 65482, 65483, 65485, 65486, 65487}, z));
+    public List<Segment> readSegments(ByteSource byteSource, final int[] iArr, final boolean z, boolean z2) throws IOException, ImageReadException {
+        final ArrayList arrayList = new ArrayList();
+        final int[] iArr2 = {JpegConstants.SOF0_MARKER, JpegConstants.SOF1_MARKER, JpegConstants.SOF2_MARKER, JpegConstants.SOF3_MARKER, JpegConstants.SOF5_MARKER, JpegConstants.SOF6_MARKER, JpegConstants.SOF7_MARKER, JpegConstants.SOF9_MARKER, JpegConstants.SOF10_MARKER, JpegConstants.SOF11_MARKER, JpegConstants.SOF13_MARKER, JpegConstants.SOF14_MARKER, JpegConstants.SOF15_MARKER};
+        new JpegUtils().traverseJFIF(byteSource, new JpegUtils.Visitor() { // from class: org.apache.commons.imaging.formats.jpeg.JpegImageParser.1
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public boolean beginSOS() {
+                return false;
+            }
+
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public void visitSOS(int i, byte[] bArr, byte[] bArr2) {
+            }
+
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public boolean visitSegment(int i, byte[] bArr, int i2, byte[] bArr2, byte[] bArr3) throws IOException, ImageReadException {
+                if (i == 65497) {
+                    return false;
+                }
+                if (!JpegImageParser.this.keepMarker(i, iArr)) {
+                    return true;
+                }
+                if (i == 65517) {
+                    arrayList.add(new App13Segment(JpegImageParser.this, i, bArr3));
+                } else if (i == 65518) {
+                    arrayList.add(new App14Segment(i, bArr3));
+                } else if (i == 65506) {
+                    arrayList.add(new App2Segment(i, bArr3));
+                } else if (i == 65504) {
+                    arrayList.add(new JfifSegment(i, bArr3));
+                } else if (Arrays.binarySearch(iArr2, i) >= 0) {
+                    arrayList.add(new SofnSegment(i, bArr3));
+                } else if (i == 65499) {
+                    arrayList.add(new DqtSegment(i, bArr3));
+                } else if (i >= 65505 && i <= 65519) {
+                    arrayList.add(new UnknownSegment(i, bArr3));
+                } else if (i == 65534) {
+                    arrayList.add(new ComSegment(i, bArr3));
+                }
+                return !z;
+            }
+        });
         return arrayList;
     }
 
@@ -151,7 +191,7 @@ public class JpegImageParser extends ImageParser {
 
     @Override // org.apache.commons.imaging.ImageParser
     public byte[] getICCProfileBytes(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
-        List<Segment> segments = readSegments(byteSource, new int[]{65506}, false);
+        List<Segment> segments = readSegments(byteSource, new int[]{JpegConstants.JPEG_APP2_MARKER}, false);
         ArrayList arrayList = new ArrayList();
         if (segments != null) {
             Iterator<Segment> it = segments.iterator();
@@ -209,14 +249,14 @@ public class JpegImageParser extends ImageParser {
         if (map == null) {
             map = new HashMap<>();
         }
-        if (!map.containsKey("READ_THUMBNAILS")) {
-            map.put("READ_THUMBNAILS", Boolean.TRUE);
+        if (!map.containsKey(ImagingConstants.PARAM_KEY_READ_THUMBNAILS)) {
+            map.put(ImagingConstants.PARAM_KEY_READ_THUMBNAILS, Boolean.TRUE);
         }
         return (TiffImageMetadata) new TiffImageParser().getMetadata(exifRawData, map);
     }
 
     public byte[] getExifRawData(ByteSource byteSource) throws IOException, ImageReadException {
-        List<Segment> segments = readSegments(byteSource, new int[]{65505}, false);
+        List<Segment> segments = readSegments(byteSource, new int[]{JpegConstants.JPEG_APP1_MARKER}, false);
         if (segments == null || segments.isEmpty()) {
             return null;
         }
@@ -234,27 +274,111 @@ public class JpegImageParser extends ImageParser {
     }
 
     public boolean hasExifSegment(ByteSource byteSource) throws IOException, ImageReadException {
-        boolean[] zArr = {false};
-        new JpegUtils().traverseJFIF(byteSource, new JpegImageParser$2(this, zArr));
+        final boolean[] zArr = {false};
+        new JpegUtils().traverseJFIF(byteSource, new JpegUtils.Visitor() { // from class: org.apache.commons.imaging.formats.jpeg.JpegImageParser.2
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public boolean beginSOS() {
+                return false;
+            }
+
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public void visitSOS(int i, byte[] bArr, byte[] bArr2) {
+            }
+
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public boolean visitSegment(int i, byte[] bArr, int i2, byte[] bArr2, byte[] bArr3) throws IOException, ImageReadException {
+                if (i == 65497) {
+                    return false;
+                }
+                if (i != 65505 || !BinaryFunctions.startsWith(bArr3, JpegConstants.EXIF_IDENTIFIER_CODE)) {
+                    return true;
+                }
+                zArr[0] = true;
+                return false;
+            }
+        });
         return zArr[0];
     }
 
     public boolean hasIptcSegment(ByteSource byteSource) throws IOException, ImageReadException {
-        boolean[] zArr = {false};
-        new JpegUtils().traverseJFIF(byteSource, new JpegImageParser$3(this, zArr));
+        final boolean[] zArr = {false};
+        new JpegUtils().traverseJFIF(byteSource, new JpegUtils.Visitor() { // from class: org.apache.commons.imaging.formats.jpeg.JpegImageParser.3
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public boolean beginSOS() {
+                return false;
+            }
+
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public void visitSOS(int i, byte[] bArr, byte[] bArr2) {
+            }
+
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public boolean visitSegment(int i, byte[] bArr, int i2, byte[] bArr2, byte[] bArr3) throws IOException, ImageReadException {
+                if (i == 65497) {
+                    return false;
+                }
+                if (i != 65517 || !new IptcParser().isPhotoshopJpegSegment(bArr3)) {
+                    return true;
+                }
+                zArr[0] = true;
+                return false;
+            }
+        });
         return zArr[0];
     }
 
     public boolean hasXmpSegment(ByteSource byteSource) throws IOException, ImageReadException {
-        boolean[] zArr = {false};
-        new JpegUtils().traverseJFIF(byteSource, new JpegImageParser$4(this, zArr));
+        final boolean[] zArr = {false};
+        new JpegUtils().traverseJFIF(byteSource, new JpegUtils.Visitor() { // from class: org.apache.commons.imaging.formats.jpeg.JpegImageParser.4
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public boolean beginSOS() {
+                return false;
+            }
+
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public void visitSOS(int i, byte[] bArr, byte[] bArr2) {
+            }
+
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public boolean visitSegment(int i, byte[] bArr, int i2, byte[] bArr2, byte[] bArr3) throws IOException, ImageReadException {
+                if (i == 65497) {
+                    return false;
+                }
+                if (i != 65505 || !new JpegXmpParser().isXmpJpegSegment(bArr3)) {
+                    return true;
+                }
+                zArr[0] = true;
+                return false;
+            }
+        });
         return zArr[0];
     }
 
     @Override // org.apache.commons.imaging.ImageParser
     public String getXmpXml(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
-        ArrayList arrayList = new ArrayList();
-        new JpegUtils().traverseJFIF(byteSource, new JpegImageParser$5(this, arrayList));
+        final ArrayList arrayList = new ArrayList();
+        new JpegUtils().traverseJFIF(byteSource, new JpegUtils.Visitor() { // from class: org.apache.commons.imaging.formats.jpeg.JpegImageParser.5
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public boolean beginSOS() {
+                return false;
+            }
+
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public void visitSOS(int i, byte[] bArr, byte[] bArr2) {
+            }
+
+            @Override // org.apache.commons.imaging.formats.jpeg.JpegUtils.Visitor
+            public boolean visitSegment(int i, byte[] bArr, int i2, byte[] bArr2, byte[] bArr3) throws IOException, ImageReadException {
+                if (i == 65497) {
+                    return false;
+                }
+                if (i != 65505 || !new JpegXmpParser().isXmpJpegSegment(bArr3)) {
+                    return true;
+                }
+                arrayList.add(new JpegXmpParser().parseXmpJpegSegment(bArr3));
+                return false;
+            }
+        });
         if (arrayList.isEmpty()) {
             return null;
         }
@@ -265,7 +389,7 @@ public class JpegImageParser extends ImageParser {
     }
 
     public JpegPhotoshopMetadata getPhotoshopMetadata(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
-        List<Segment> segments = readSegments(byteSource, new int[]{65517}, false);
+        List<Segment> segments = readSegments(byteSource, new int[]{JpegConstants.JPEG_APP13_MARKER}, false);
         if (segments == null || segments.isEmpty()) {
             return null;
         }
@@ -286,7 +410,7 @@ public class JpegImageParser extends ImageParser {
 
     @Override // org.apache.commons.imaging.ImageParser
     public Dimension getImageSize(ByteSource byteSource, Map<String, Object> map) throws IOException, ImageReadException {
-        List<Segment> segments = readSegments(byteSource, new int[]{65472, 65473, 65474, 65475, 65477, 65478, 65479, 65481, 65482, 65483, 65485, 65486, 65487}, true);
+        List<Segment> segments = readSegments(byteSource, new int[]{JpegConstants.SOF0_MARKER, JpegConstants.SOF1_MARKER, JpegConstants.SOF2_MARKER, JpegConstants.SOF3_MARKER, JpegConstants.SOF5_MARKER, JpegConstants.SOF6_MARKER, JpegConstants.SOF7_MARKER, JpegConstants.SOF9_MARKER, JpegConstants.SOF10_MARKER, JpegConstants.SOF11_MARKER, JpegConstants.SOF13_MARKER, JpegConstants.SOF14_MARKER, JpegConstants.SOF15_MARKER}, true);
         if (segments == null || segments.isEmpty()) {
             throw new ImageReadException("No JFIF Data Found.");
         }
@@ -306,16 +430,16 @@ public class JpegImageParser extends ImageParser {
         float f;
         int iRound;
         int iRound2;
-        ImageInfo$ColorType imageInfo$ColorType;
-        int i;
-        int i2;
-        boolean z;
-        ImageInfo$ColorType imageInfo$ColorType2;
-        ImageInfo$ColorType imageInfo$ColorType3;
-        ImageInfo$ColorType imageInfo$ColorType4;
-        ImageInfo$ColorType imageInfo$ColorType5;
-        boolean z2;
-        List<Segment> segments = readSegments(byteSource, new int[]{65472, 65473, 65474, 65475, 65477, 65478, 65479, 65481, 65482, 65483, 65485, 65486, 65487}, false);
+        ImageInfo.ColorType colorType;
+        int i = 0;
+        int i2 = 0;
+        boolean z = false;
+        ImageInfo.ColorType colorType2 = ImageInfo.ColorType.UNKNOWN;
+        ImageInfo.ColorType colorType3 = ImageInfo.ColorType.UNKNOWN;
+        ImageInfo.ColorType colorType4 = ImageInfo.ColorType.UNKNOWN;
+        ImageInfo.ColorType colorType5 = ImageInfo.ColorType.UNKNOWN;
+        boolean z2 = false;
+        List<Segment> segments = readSegments(byteSource, new int[]{JpegConstants.SOF0_MARKER, JpegConstants.SOF1_MARKER, JpegConstants.SOF2_MARKER, JpegConstants.SOF3_MARKER, JpegConstants.SOF5_MARKER, JpegConstants.SOF6_MARKER, JpegConstants.SOF7_MARKER, JpegConstants.SOF9_MARKER, JpegConstants.SOF10_MARKER, JpegConstants.SOF11_MARKER, JpegConstants.SOF13_MARKER, JpegConstants.SOF14_MARKER, JpegConstants.SOF15_MARKER}, false);
         if (segments == null) {
             throw new ImageReadException("No SOFN Data Found.");
         }
@@ -325,10 +449,11 @@ public class JpegImageParser extends ImageParser {
             throw new ImageReadException("No SOFN Data Found.");
         }
         int i3 = sofnSegment.width;
+        i = i3;
         int i4 = sofnSegment.height;
         App14Segment app14Segment = null;
         JfifSegment jfifSegment = (segments2 == null || segments2.isEmpty()) ? null : (JfifSegment) segments2.get(0);
-        List<Segment> segments3 = readSegments(byteSource, new int[]{65518}, true);
+        List<Segment> segments3 = readSegments(byteSource, new int[]{JpegConstants.JPEG_APP14_MARKER}, true);
         if (segments3 != null && !segments3.isEmpty()) {
             app14Segment = (App14Segment) segments3.get(0);
         }
@@ -386,8 +511,8 @@ public class JpegImageParser extends ImageParser {
             double d4 = d * d3;
             iRound2 = (int) Math.round(d4);
             double d5 = d2 * d3;
-            float f3 = (float) (((double) i4) / d5);
-            f2 = (float) (((double) i3) / d4);
+            float f3 = (float) (i4 / d5);
+            f2 = (float) (i3 / d4);
             iRound = (int) Math.round(d5);
             f = f3;
         } else {
@@ -396,7 +521,7 @@ public class JpegImageParser extends ImageParser {
             iRound2 = -1;
         }
         ArrayList arrayList = new ArrayList();
-        Iterator<Segment> it = readSegments(byteSource, new int[]{65534}, false).iterator();
+        Iterator<Segment> it = readSegments(byteSource, new int[]{JpegConstants.COM_MARKER}, false).iterator();
         while (it.hasNext()) {
             String str2 = "";
             try {
@@ -409,44 +534,44 @@ public class JpegImageParser extends ImageParser {
         int i7 = i6 * sofnSegment.precision;
         ImageFormats imageFormats = ImageFormats.JPEG;
         boolean z3 = sofnSegment.marker == 65474;
-        ImageInfo$ColorType imageInfo$ColorType6 = ImageInfo$ColorType.UNKNOWN;
+        ImageInfo.ColorType colorType6 = ImageInfo.ColorType.UNKNOWN;
         int i8 = 3;
         if (app14Segment != null && app14Segment.isAdobeJpegSegment()) {
             int adobeColorTransform = app14Segment.getAdobeColorTransform();
             if (adobeColorTransform == 0) {
                 if (i6 == 3) {
-                    imageInfo$ColorType6 = ImageInfo$ColorType.RGB;
+                    colorType6 = ImageInfo.ColorType.RGB;
                 } else if (i6 == 4) {
-                    imageInfo$ColorType6 = ImageInfo$ColorType.CMYK;
+                    colorType6 = ImageInfo.ColorType.CMYK;
                 }
             } else if (adobeColorTransform == 1) {
-                imageInfo$ColorType6 = ImageInfo$ColorType.YCbCr;
+                colorType6 = ImageInfo.ColorType.YCbCr;
             } else if (adobeColorTransform == 2) {
-                imageInfo$ColorType6 = ImageInfo$ColorType.YCCK;
+                colorType6 = ImageInfo.ColorType.YCCK;
             }
-            imageInfo$ColorType3 = imageInfo$ColorType6;
+            colorType3 = colorType6;
         } else {
             if (jfifSegment != null) {
                 if (i6 == 1) {
-                    imageInfo$ColorType5 = ImageInfo$ColorType.GRAYSCALE;
+                    colorType5 = ImageInfo.ColorType.GRAYSCALE;
                 } else {
                     if (i6 == 3) {
-                        imageInfo$ColorType5 = ImageInfo$ColorType.YCbCr;
+                        colorType5 = ImageInfo.ColorType.YCbCr;
                     }
-                    imageInfo$ColorType = imageInfo$ColorType6;
+                    colorType = colorType6;
                     i = i3;
-                    imageInfo$ColorType3 = imageInfo$ColorType;
+                    colorType3 = colorType;
                 }
-                imageInfo$ColorType3 = imageInfo$ColorType5;
+                colorType3 = colorType5;
             } else {
                 if (i6 == 1) {
-                    imageInfo$ColorType5 = ImageInfo$ColorType.GRAYSCALE;
+                    colorType5 = ImageInfo.ColorType.GRAYSCALE;
                 } else {
                     if (i6 == 2) {
-                        imageInfo$ColorType4 = ImageInfo$ColorType.GRAYSCALE;
+                        colorType4 = ImageInfo.ColorType.GRAYSCALE;
                     } else {
                         if (i6 == 3 || i6 == 4) {
-                            SofnSegment$Component[] components = sofnSegment.getComponents();
+                            SofnSegment.Component[] components = sofnSegment.getComponents();
                             int length = components.length;
                             int i9 = 0;
                             boolean z4 = false;
@@ -456,7 +581,7 @@ public class JpegImageParser extends ImageParser {
                             boolean z8 = false;
                             while (i9 < length) {
                                 int i10 = components[i9].componentIdentifier;
-                                ImageInfo$ColorType imageInfo$ColorType7 = imageInfo$ColorType6;
+                                ImageInfo.ColorType colorType7 = colorType6;
                                 if (i10 == 1) {
                                     z4 = true;
                                 } else if (i10 == 2) {
@@ -469,16 +594,16 @@ public class JpegImageParser extends ImageParser {
                                     z8 = true;
                                 }
                                 i9++;
-                                imageInfo$ColorType6 = imageInfo$ColorType7;
+                                colorType6 = colorType7;
                                 i8 = 3;
                             }
-                            imageInfo$ColorType = imageInfo$ColorType6;
+                            colorType = colorType6;
                             if (i6 == i8 && z4 && z5 && z6 && !z7 && !z8) {
-                                imageInfo$ColorType5 = ImageInfo$ColorType.YCbCr;
+                                colorType5 = ImageInfo.ColorType.YCbCr;
                             } else if (i6 == 4 && z4 && z5 && z6 && z7 && !z8) {
-                                imageInfo$ColorType4 = ImageInfo$ColorType.YCbCr;
+                                colorType4 = ImageInfo.ColorType.YCbCr;
                             } else {
-                                SofnSegment$Component[] components2 = sofnSegment.getComponents();
+                                SofnSegment.Component[] components2 = sofnSegment.getComponents();
                                 int length2 = components2.length;
                                 int i11 = 0;
                                 boolean z9 = false;
@@ -491,7 +616,7 @@ public class JpegImageParser extends ImageParser {
                                 while (i11 < length2) {
                                     int i12 = length2;
                                     int i13 = components2[i11].componentIdentifier;
-                                    SofnSegment$Component[] sofnSegment$ComponentArr = components2;
+                                    SofnSegment.Component[] componentArr = components2;
                                     if (i13 == 82) {
                                         z9 = true;
                                     } else if (i13 == 71) {
@@ -509,18 +634,18 @@ public class JpegImageParser extends ImageParser {
                                     }
                                     i11++;
                                     length2 = i12;
-                                    components2 = sofnSegment$ComponentArr;
+                                    components2 = componentArr;
                                 }
                                 if (z9 && z10 && z11 && !z12 && !z13 && !z14 && !z15) {
-                                    imageInfo$ColorType5 = ImageInfo$ColorType.RGB;
+                                    colorType5 = ImageInfo.ColorType.RGB;
                                 } else if (z9 && z10 && z11 && z12 && !z13 && !z14 && !z15) {
-                                    imageInfo$ColorType4 = ImageInfo$ColorType.RGB;
+                                    colorType4 = ImageInfo.ColorType.RGB;
                                 } else if (z15 && z13 && z14 && !z9 && !z10 && !z11 && !z12) {
-                                    imageInfo$ColorType5 = ImageInfo$ColorType.YCC;
+                                    colorType5 = ImageInfo.ColorType.YCC;
                                 } else if (z15 && z13 && z14 && z12 && !z9 && !z10 && !z11) {
-                                    imageInfo$ColorType4 = ImageInfo$ColorType.YCC;
+                                    colorType4 = ImageInfo.ColorType.YCC;
                                 } else {
-                                    SofnSegment$Component[] components3 = sofnSegment.getComponents();
+                                    SofnSegment.Component[] components3 = sofnSegment.getComponents();
                                     int length3 = components3.length;
                                     int i14 = Integer.MAX_VALUE;
                                     int i15 = Integer.MIN_VALUE;
@@ -530,23 +655,23 @@ public class JpegImageParser extends ImageParser {
                                     int i18 = 0;
                                     while (i18 < length3) {
                                         int i19 = length3;
-                                        SofnSegment$Component sofnSegment$Component = components3[i18];
-                                        SofnSegment$Component[] sofnSegment$ComponentArr2 = components3;
-                                        if (i14 > sofnSegment$Component.horizontalSamplingFactor) {
-                                            i14 = sofnSegment$Component.horizontalSamplingFactor;
+                                        SofnSegment.Component component = components3[i18];
+                                        SofnSegment.Component[] componentArr2 = components3;
+                                        if (i14 > component.horizontalSamplingFactor) {
+                                            i14 = component.horizontalSamplingFactor;
                                         }
-                                        if (i15 < sofnSegment$Component.horizontalSamplingFactor) {
-                                            i15 = sofnSegment$Component.horizontalSamplingFactor;
+                                        if (i15 < component.horizontalSamplingFactor) {
+                                            i15 = component.horizontalSamplingFactor;
                                         }
-                                        if (i16 > sofnSegment$Component.verticalSamplingFactor) {
-                                            i16 = sofnSegment$Component.verticalSamplingFactor;
+                                        if (i16 > component.verticalSamplingFactor) {
+                                            i16 = component.verticalSamplingFactor;
                                         }
-                                        if (i17 < sofnSegment$Component.verticalSamplingFactor) {
-                                            i17 = sofnSegment$Component.verticalSamplingFactor;
+                                        if (i17 < component.verticalSamplingFactor) {
+                                            i17 = component.verticalSamplingFactor;
                                         }
                                         i18++;
                                         length3 = i19;
-                                        components3 = sofnSegment$ComponentArr2;
+                                        components3 = componentArr2;
                                     }
                                     if (i14 == i15 && i16 == i17) {
                                         i2 = 3;
@@ -557,39 +682,39 @@ public class JpegImageParser extends ImageParser {
                                     }
                                     if (i6 == i2) {
                                         if (z) {
-                                            imageInfo$ColorType2 = ImageInfo$ColorType.YCbCr;
+                                            colorType2 = ImageInfo.ColorType.YCbCr;
                                         } else {
-                                            imageInfo$ColorType2 = ImageInfo$ColorType.RGB;
+                                            colorType2 = ImageInfo.ColorType.RGB;
                                         }
                                     } else if (i6 == 4) {
                                         if (z) {
-                                            imageInfo$ColorType2 = ImageInfo$ColorType.YCCK;
+                                            colorType2 = ImageInfo.ColorType.YCCK;
                                         } else {
-                                            imageInfo$ColorType2 = ImageInfo$ColorType.CMYK;
+                                            colorType2 = ImageInfo.ColorType.CMYK;
                                         }
                                     }
-                                    imageInfo$ColorType3 = imageInfo$ColorType2;
+                                    colorType3 = colorType2;
                                 }
                             }
                         } else {
-                            imageInfo$ColorType = imageInfo$ColorType6;
+                            colorType = colorType6;
                             i = i3;
                         }
-                        imageInfo$ColorType3 = imageInfo$ColorType;
+                        colorType3 = colorType;
                     }
-                    imageInfo$ColorType3 = imageInfo$ColorType4;
+                    colorType3 = colorType4;
                     i = i3;
                     z2 = true;
-                    return new ImageInfo(str, i7, arrayList, imageFormats, "JPEG (Joint Photographic Experts Group) Format", i4, "image/jpeg", 1, iRound, f, iRound2, f2, i, z3, z2, false, imageInfo$ColorType3, ImageInfo$CompressionAlgorithm.JPEG);
+                    return new ImageInfo(str, i7, arrayList, imageFormats, "JPEG (Joint Photographic Experts Group) Format", i4, MediaSavingConstants.MEDIA_TYPE_JPEG_MIME, 1, iRound, f, iRound2, f2, i, z3, z2, false, colorType3, ImageInfo.CompressionAlgorithm.JPEG);
                 }
-                imageInfo$ColorType3 = imageInfo$ColorType5;
+                colorType3 = colorType5;
             }
             z2 = false;
-            return new ImageInfo(str, i7, arrayList, imageFormats, "JPEG (Joint Photographic Experts Group) Format", i4, "image/jpeg", 1, iRound, f, iRound2, f2, i, z3, z2, false, imageInfo$ColorType3, ImageInfo$CompressionAlgorithm.JPEG);
+            return new ImageInfo(str, i7, arrayList, imageFormats, "JPEG (Joint Photographic Experts Group) Format", i4, MediaSavingConstants.MEDIA_TYPE_JPEG_MIME, 1, iRound, f, iRound2, f2, i, z3, z2, false, colorType3, ImageInfo.CompressionAlgorithm.JPEG);
         }
         i = i3;
         z2 = false;
-        return new ImageInfo(str, i7, arrayList, imageFormats, "JPEG (Joint Photographic Experts Group) Format", i4, "image/jpeg", 1, iRound, f, iRound2, f2, i, z3, z2, false, imageInfo$ColorType3, ImageInfo$CompressionAlgorithm.JPEG);
+        return new ImageInfo(str, i7, arrayList, imageFormats, "JPEG (Joint Photographic Experts Group) Format", i4, MediaSavingConstants.MEDIA_TYPE_JPEG_MIME, 1, iRound, f, iRound2, f2, i, z3, z2, false, colorType3, ImageInfo.CompressionAlgorithm.JPEG);
     }
 
     @Override // org.apache.commons.imaging.ImageParser

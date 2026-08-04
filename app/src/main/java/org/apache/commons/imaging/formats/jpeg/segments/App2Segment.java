@@ -12,11 +12,6 @@ public class App2Segment extends AppnSegment implements Comparable<App2Segment> 
     private final byte[] iccBytes;
     public final int numMarkers;
 
-    @Override // java.lang.Comparable
-    public /* bridge */ /* synthetic */ int compareTo(App2Segment app2Segment) {
-        return compareTo2(app2Segment);
-    }
-
     public App2Segment(int i, byte[] bArr) throws IOException, ImageReadException {
         this(i, bArr.length, new ByteArrayInputStream(bArr));
     }
@@ -44,8 +39,8 @@ public class App2Segment extends AppnSegment implements Comparable<App2Segment> 
         return this.curMarker;
     }
 
-    /* JADX INFO: renamed from: compareTo, reason: avoid collision after fix types in other method */
-    public int compareTo2(App2Segment app2Segment) {
+    @Override // java.lang.Comparable
+    public int compareTo(App2Segment app2Segment) {
         return this.curMarker - app2Segment.curMarker;
     }
 

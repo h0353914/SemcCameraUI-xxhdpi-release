@@ -3,37 +3,47 @@ package com.sonyericsson.cameracommon.focusview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
-import android.view.GestureDetector$OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.util.CamLog;
 
-public class Rectangle extends RelativeLayout implements GestureDetector$OnGestureListener {
+public class Rectangle extends RelativeLayout implements GestureDetector.OnGestureListener {
     public static final String TAG = "Rectangles";
     private GestureDetector mGestureDetector;
-    private Rectangle$RectangleOnTouchListener mRectangleOnTouchListener;
+    private RectangleOnTouchListener mRectangleOnTouchListener;
 
-    @Override // android.view.GestureDetector$OnGestureListener
+    public interface RectangleOnTouchListener {
+        void onRectTouchCancel(View view, MotionEvent motionEvent);
+
+        void onRectTouchDown(View view, MotionEvent motionEvent);
+
+        void onRectTouchLongPress(View view, MotionEvent motionEvent);
+
+        void onRectTouchUp(View view, MotionEvent motionEvent);
+    }
+
+    @Override // android.view.GestureDetector.OnGestureListener
     public boolean onDown(MotionEvent motionEvent) {
         return false;
     }
 
-    @Override // android.view.GestureDetector$OnGestureListener
+    @Override // android.view.GestureDetector.OnGestureListener
     public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent2, float f, float f2) {
         return false;
     }
 
-    @Override // android.view.GestureDetector$OnGestureListener
+    @Override // android.view.GestureDetector.OnGestureListener
     public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent2, float f, float f2) {
         return false;
     }
 
-    @Override // android.view.GestureDetector$OnGestureListener
+    @Override // android.view.GestureDetector.OnGestureListener
     public void onShowPress(MotionEvent motionEvent) {
     }
 
-    @Override // android.view.GestureDetector$OnGestureListener
+    @Override // android.view.GestureDetector.OnGestureListener
     public boolean onSingleTapUp(MotionEvent motionEvent) {
         return false;
     }
@@ -63,14 +73,17 @@ public class Rectangle extends RelativeLayout implements GestureDetector$OnGestu
             case 0:
                 if (this.mRectangleOnTouchListener != null) {
                     this.mRectangleOnTouchListener.onRectTouchDown(this, motionEvent);
+                    break;
                 }
                 break;
             case 1:
                 if (this.mRectangleOnTouchListener != null) {
                     if (motionEvent.getX() < 0.0f || motionEvent.getX() > getHeight() - 1 || motionEvent.getY() < 0.0f || motionEvent.getY() > getWidth() - 1) {
                         this.mRectangleOnTouchListener.onRectTouchCancel(this, motionEvent);
+                        break;
                     } else {
                         this.mRectangleOnTouchListener.onRectTouchUp(this, motionEvent);
+                        break;
                     }
                 }
                 break;
@@ -78,18 +91,18 @@ public class Rectangle extends RelativeLayout implements GestureDetector$OnGestu
         return z;
     }
 
-    public synchronized void setRectangleOnTouchListener(Rectangle$RectangleOnTouchListener rectangle$RectangleOnTouchListener) {
-        this.mRectangleOnTouchListener = rectangle$RectangleOnTouchListener;
+    public synchronized void setRectangleOnTouchListener(RectangleOnTouchListener rectangleOnTouchListener) {
+        this.mRectangleOnTouchListener = rectangleOnTouchListener;
     }
 
     public void changeChildBackgroundResource(int i) {
-        View viewFindViewById = findViewById(2131296528);
+        View viewFindViewById = findViewById(R.id.rect_image);
         if (viewFindViewById.getVisibility() != 8) {
             viewFindViewById.setBackgroundResource(i);
         }
     }
 
-    @Override // android.view.GestureDetector$OnGestureListener
+    @Override // android.view.GestureDetector.OnGestureListener
     public synchronized void onLongPress(MotionEvent motionEvent) {
         if (this.mRectangleOnTouchListener != null) {
             this.mRectangleOnTouchListener.onRectTouchLongPress(this, motionEvent);

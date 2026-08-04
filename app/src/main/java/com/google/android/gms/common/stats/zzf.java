@@ -1,5 +1,6 @@
 package com.google.android.gms.common.stats;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public abstract class zzf {
     public static int zzahY = 0;
     public static int zzahZ = 1;

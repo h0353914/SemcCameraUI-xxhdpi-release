@@ -1,20 +1,46 @@
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.cameracommon.status.eachcamera;
 
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 import com.sonyericsson.cameracommon.status.EnumValue;
 
-public class VideoNoiseReduction extends EnumValue<VideoNoiseReduction$Value> implements EachCameraStatusValue {
-    public static final VideoNoiseReduction$Value DEFAULT_VALUE = VideoNoiseReduction$Value.OFF;
+public class VideoNoiseReduction extends EnumValue implements EachCameraStatusValue {
+    public static final Value DEFAULT_VALUE = Value.OFF;
     public static final String KEY = "video_noise_reduction";
     private static int REQUIRED_PROVIDER_VERSION = 10;
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusValue
     public String getKey() {
-        return "video_noise_reduction";
+        return KEY;
     }
 
-    public VideoNoiseReduction(VideoNoiseReduction$Value videoNoiseReduction$Value) {
-        super(videoNoiseReduction$Value);
+    public enum Value {
+        ON("on"),
+        OFF("off");
+
+        private final String mStringExpression;
+
+        Value(String str) {
+            this.mStringExpression = str;
+        }
+
+        @Override // java.lang.Enum
+        public String toString() {
+            return this.mStringExpression;
+        }
+    }
+
+    public VideoNoiseReduction(Value value) {
+        super(value);
     }
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusValue

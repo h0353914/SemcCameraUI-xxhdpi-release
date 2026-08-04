@@ -2,11 +2,11 @@ package com.google.android.gms.auth.api.credentials.internal;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
 import com.google.android.gms.auth.api.credentials.Credential;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzi implements Parcelable$Creator<SaveRequest> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzi implements Parcelable.Creator<SaveRequest> {
     static void zza(SaveRequest saveRequest, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zza(parcel, 1, (Parcelable) saveRequest.getCredential(), i, false);
@@ -14,17 +14,9 @@ public class zzi implements Parcelable$Creator<SaveRequest> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ SaveRequest createFromParcel(Parcel parcel) {
-        return zzK(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ SaveRequest[] newArray(int i) {
-        return zzaB(i);
-    }
-
-    public SaveRequest zzK(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzK, reason: merged with bridge method [inline-methods] */
+    public SaveRequest createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         Credential credential = null;
@@ -42,10 +34,12 @@ public class zzi implements Parcelable$Creator<SaveRequest> {
         if (parcel.dataPosition() == iZzap) {
             return new SaveRequest(iZzg, credential);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public SaveRequest[] zzaB(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaB, reason: merged with bridge method [inline-methods] */
+    public SaveRequest[] newArray(int i) {
         return new SaveRequest[i];
     }
 }

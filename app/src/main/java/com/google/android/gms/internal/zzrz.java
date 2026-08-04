@@ -6,6 +6,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzrz<M extends zzry<M>, T> {
     public final int tag;
     protected final int type;
@@ -19,7 +20,7 @@ public class zzrz<M extends zzry<M>, T> {
         this.zzbim = z;
     }
 
-    private T zzF(List<zzsg> list) {
+    private T zzF(List<zzsg> list) throws ArrayIndexOutOfBoundsException, IllegalArgumentException {
         ArrayList arrayList = new ArrayList();
         for (int i = 0; i < list.size(); i++) {
             zzsg zzsgVar = list.get(i);
@@ -111,7 +112,7 @@ public class zzrz<M extends zzry<M>, T> {
         list.add(zzF(zzrw.zzB(zzsgVar.zzbiw)));
     }
 
-    void zza(Object obj, zzrx zzrxVar) throws IOException {
+    void zza(Object obj, zzrx zzrxVar) throws IOException, ArrayIndexOutOfBoundsException, IllegalArgumentException {
         if (this.zzbim) {
             zzc(obj, zzrxVar);
         } else {
@@ -139,7 +140,7 @@ public class zzrz<M extends zzry<M>, T> {
         }
     }
 
-    protected void zzc(Object obj, zzrx zzrxVar) {
+    protected void zzc(Object obj, zzrx zzrxVar) throws ArrayIndexOutOfBoundsException, IllegalArgumentException {
         int length = Array.getLength(obj);
         for (int i = 0; i < length; i++) {
             Object obj2 = Array.get(obj, i);

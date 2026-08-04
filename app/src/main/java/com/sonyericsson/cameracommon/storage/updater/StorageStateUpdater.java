@@ -4,10 +4,9 @@ import android.support.annotation.NonNull;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.ThreadUtil;
 import com.sonyericsson.cameracommon.storage.CameraStorageManager;
-import com.sonyericsson.cameracommon.storage.CameraStorageManager$UpdateInterval;
-import com.sonyericsson.cameracommon.storage.CameraStorageManager$UpdateRequestReason;
 import com.sonyericsson.cameracommon.storage.SavingTaskInquiry;
-import com.sonyericsson.cameracommon.storage.Storage$StorageType;
+import com.sonyericsson.cameracommon.storage.Storage;
+import com.sonyericsson.cameracommon.storage.updater.StorageUpdateTask;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -24,20 +23,26 @@ public class StorageStateUpdater {
     private boolean mIsAutoUpdateEnabled;
     private final Semaphore mSemaphore;
     private final CameraStorageManager mStorageManager;
-    private final Storage$StorageType mType;
+    private final Storage.StorageType mType;
     private final Queue<Future> mStackedTask = new LinkedList();
-    private final StorageUpdateTask$OnTaskFinishCallback mCallback = new StorageStateUpdater$1(this);
+    private final StorageUpdateTask.OnTaskFinishCallback mCallback = new StorageUpdateTask.OnTaskFinishCallback() { // from class: com.sonyericsson.cameracommon.storage.updater.StorageStateUpdater.1
+        @Override // com.sonyericsson.cameracommon.storage.updater.StorageUpdateTask.OnTaskFinishCallback
+        public void onFinish(Storage.StorageType storageType, int i) {
+            synchronized (StorageStateUpdater.this.mStackedTask) {
+                if (CamLog.DEBUG) {
+                    CamLog.d("type: " + storageType + ", id: " + i);
+                }
+                StorageStateUpdater.this.mStackedTask.poll();
+            }
+        }
+    };
 
-    static /* synthetic */ Queue access$000(StorageStateUpdater storageStateUpdater) {
-        return storageStateUpdater.mStackedTask;
-    }
-
-    public StorageStateUpdater(@NonNull Storage$StorageType storage$StorageType, @NonNull CameraStorageManager cameraStorageManager, @NonNull SavingTaskInquiry savingTaskInquiry, @NonNull Semaphore semaphore) {
-        this.mType = storage$StorageType;
+    public StorageStateUpdater(@NonNull Storage.StorageType storageType, @NonNull CameraStorageManager cameraStorageManager, @NonNull SavingTaskInquiry savingTaskInquiry, @NonNull Semaphore semaphore) {
+        this.mType = storageType;
         this.mStorageManager = cameraStorageManager;
         this.mInquiry = savingTaskInquiry;
         this.mSemaphore = semaphore;
-        this.mBackgroundUpdater = ThreadUtil.buildScheduledExecutor("SM#State:" + storage$StorageType);
+        this.mBackgroundUpdater = ThreadUtil.buildScheduledExecutor(THREAD_NAME + storageType);
     }
 
     public void release() {
@@ -45,9 +50,9 @@ public class StorageStateUpdater {
         clearStorageUpdateTask();
     }
 
-    public void requestVolumeCheck(CameraStorageManager$UpdateInterval cameraStorageManager$UpdateInterval, CameraStorageManager$UpdateRequestReason cameraStorageManager$UpdateRequestReason) {
-        if (cameraStorageManager$UpdateRequestReason == CameraStorageManager$UpdateRequestReason.APP_LAUNCH) {
-            StateUpdateTask stateUpdateTask = new StateUpdateTask(this.mType, this.mStorageManager, this.mInquiry, this.mSemaphore, this.mCallback, cameraStorageManager$UpdateRequestReason);
+    public void requestVolumeCheck(CameraStorageManager.UpdateInterval updateInterval, CameraStorageManager.UpdateRequestReason updateRequestReason) {
+        if (updateRequestReason == CameraStorageManager.UpdateRequestReason.APP_LAUNCH) {
+            StateUpdateTask stateUpdateTask = new StateUpdateTask(this.mType, this.mStorageManager, this.mInquiry, this.mSemaphore, this.mCallback, updateRequestReason);
             synchronized (this.mStackedTask) {
                 if (CamLog.DEBUG) {
                     CamLog.d("submit StateUpdateTask.");
@@ -61,10 +66,10 @@ public class StorageStateUpdater {
                 this.mAutoUpdateTask.cancel(false);
                 this.mAutoUpdateTask = null;
             }
-            if (this.mBackgroundUpdater == null || cameraStorageManager$UpdateInterval == CameraStorageManager$UpdateInterval.STOP) {
+            if (this.mBackgroundUpdater == null || updateInterval == CameraStorageManager.UpdateInterval.STOP) {
                 return;
             }
-            this.mAutoUpdateTask = this.mBackgroundUpdater.schedule(new StateUpdateTask(this.mType, this.mStorageManager, this.mInquiry, this.mSemaphore, null, cameraStorageManager$UpdateRequestReason), cameraStorageManager$UpdateInterval.getIntervalMillis(), TimeUnit.MILLISECONDS);
+            this.mAutoUpdateTask = this.mBackgroundUpdater.schedule(new StateUpdateTask(this.mType, this.mStorageManager, this.mInquiry, this.mSemaphore, null, updateRequestReason), updateInterval.getIntervalMillis(), TimeUnit.MILLISECONDS);
             return;
         }
         if (CamLog.DEBUG) {
@@ -72,8 +77,8 @@ public class StorageStateUpdater {
         }
     }
 
-    public synchronized void requestWriteCheck(CameraStorageManager$UpdateRequestReason cameraStorageManager$UpdateRequestReason) {
-        WriteCheckTask writeCheckTask = new WriteCheckTask(this.mType, this.mStorageManager, this.mInquiry, this.mSemaphore, this.mCallback, cameraStorageManager$UpdateRequestReason);
+    public synchronized void requestWriteCheck(CameraStorageManager.UpdateRequestReason updateRequestReason) {
+        WriteCheckTask writeCheckTask = new WriteCheckTask(this.mType, this.mStorageManager, this.mInquiry, this.mSemaphore, this.mCallback, updateRequestReason);
         synchronized (this.mStackedTask) {
             if (CamLog.DEBUG) {
                 CamLog.d("submit WriteCheckTask.");
@@ -85,7 +90,7 @@ public class StorageStateUpdater {
     public void setAutoUpdateEnabled(boolean z) {
         this.mIsAutoUpdateEnabled = z;
         if (this.mIsAutoUpdateEnabled) {
-            requestVolumeCheck(this.mStorageManager.calculateNextPollingInterval(this.mType), CameraStorageManager$UpdateRequestReason.PERIODIC_UPDATE);
+            requestVolumeCheck(this.mStorageManager.calculateNextPollingInterval(this.mType), CameraStorageManager.UpdateRequestReason.PERIODIC_UPDATE);
         } else {
             clearStorageUpdateTask();
         }

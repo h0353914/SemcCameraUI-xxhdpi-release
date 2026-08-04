@@ -14,7 +14,7 @@ public class DelegatingPagerAdapter extends PagerAdapter {
 
     public DelegatingPagerAdapter(@NonNull PagerAdapter pagerAdapter) {
         this.mDelegate = pagerAdapter;
-        pagerAdapter.registerDataSetObserver(new DelegatingPagerAdapter$MyDataSetObserver(this, null));
+        pagerAdapter.registerDataSetObserver(new MyDataSetObserver(this));
     }
 
     @NonNull
@@ -129,5 +129,25 @@ public class DelegatingPagerAdapter extends PagerAdapter {
     @Override // android.support.v4.view.PagerAdapter
     public float getPageWidth(int i) {
         return this.mDelegate.getPageWidth(i);
+    }
+
+    private static class MyDataSetObserver extends DataSetObserver {
+        final DelegatingPagerAdapter mParent;
+
+        private MyDataSetObserver(DelegatingPagerAdapter delegatingPagerAdapter) {
+            this.mParent = delegatingPagerAdapter;
+        }
+
+        @Override // android.database.DataSetObserver
+        public void onChanged() {
+            if (this.mParent != null) {
+                this.mParent.superNotifyDataSetChanged();
+            }
+        }
+
+        @Override // android.database.DataSetObserver
+        public void onInvalidated() {
+            onChanged();
+        }
     }
 }

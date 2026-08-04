@@ -11,9 +11,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import com.google.android.apps.gsa.publicsearch.IPublicSearchService;
-import com.google.android.apps.gsa.publicsearch.IPublicSearchService$Stub;
 import com.google.android.apps.gsa.publicsearch.IPublicSearchServiceSession;
-import com.google.android.apps.gsa.publicsearch.IPublicSearchServiceSessionCallback$Stub;
+import com.google.android.apps.gsa.publicsearch.IPublicSearchServiceSessionCallback;
 import com.google.android.apps.gsa.publicsearch.SystemParcelableWrapper;
 import com.google.android.apps.gsa.search.shared.service.proto.nano.ClientEventProto;
 import com.google.android.apps.gsa.search.shared.service.proto.nano.LensServiceClientEvent;
@@ -24,7 +23,7 @@ import com.google.android.apps.gsa.search.shared.service.proto.nano.ServiceEvent
 import com.google.protobuf.nano.InvalidProtocolBufferNanoException;
 import com.google.protobuf.nano.MessageNano;
 
-public class LensServiceBridge extends IPublicSearchServiceSessionCallback$Stub implements ServiceConnection {
+public class LensServiceBridge extends IPublicSearchServiceSessionCallback.Stub implements ServiceConnection {
     private static final String BIND_INTENT_ACTION = "com.google.android.apps.gsa.publicsearch.IPublicSearchService";
     private static final boolean DEBUG = false;
     private static final String LENS_CLIENT_SESSION_TYPE = "LENS_SERVICE_SESSION";
@@ -47,16 +46,16 @@ public class LensServiceBridge extends IPublicSearchServiceSessionCallback$Stub 
 
     public boolean bindService() {
         ensureOnMainThread();
-        Intent intent = new Intent("com.google.android.apps.gsa.publicsearch.IPublicSearchService");
+        Intent intent = new Intent(BIND_INTENT_ACTION);
         intent.setPackage("com.google.android.googlequicksearchbox");
         try {
             if (this.context.bindService(intent, this, 65)) {
                 return true;
             }
-            Log.e("LensServiceBridge", "Unable to bind Lens service.");
+            Log.e(TAG, "Unable to bind Lens service.");
             return false;
         } catch (SecurityException unused) {
-            Log.i("LensServiceBridge", "Unable to bind Lens service due to security exception. Maybe the service is not available yet.");
+            Log.i(TAG, "Unable to bind Lens service due to security exception. Maybe the service is not available yet.");
             return false;
         }
     }
@@ -73,15 +72,15 @@ public class LensServiceBridge extends IPublicSearchServiceSessionCallback$Stub 
     @Override // android.content.ServiceConnection
     public void onServiceConnected(ComponentName name, final IBinder service) {
         ensureOnMainThread();
-        Log.i("LensServiceBridge", "Lens service connected.");
-        this.lensService = IPublicSearchService$Stub.asInterface(service);
+        Log.i(TAG, "Lens service connected.");
+        this.lensService = IPublicSearchService.Stub.asInterface(service);
         beginLensSession();
     }
 
     @Override // android.content.ServiceConnection
     public void onServiceDisconnected(ComponentName name) {
         ensureOnMainThread();
-        Log.w("LensServiceBridge", "Lens service disconnected.");
+        Log.w(TAG, "Lens service disconnected.");
     }
 
     @Override // com.google.android.apps.gsa.publicsearch.IPublicSearchServiceSessionCallback
@@ -92,21 +91,21 @@ public class LensServiceBridge extends IPublicSearchServiceSessionCallback$Stub 
                 this.serviceApiVersion = ((LensServiceEventData) from.getExtension(LensServiceEvent.lensServiceEventData)).getServiceApiVersion();
             }
         } catch (InvalidProtocolBufferNanoException e) {
-            Log.e("LensServiceBridge", "Unable to parse the protobuf.", e);
+            Log.e(TAG, "Unable to parse the protobuf.", e);
         }
     }
 
     public boolean prewarmLensActivity() {
         ensureOnMainThread();
         if (!isLensSessionReady()) {
-            Log.i("LensServiceBridge", "Lens session is not ready for prewarm.");
+            Log.i(TAG, "Lens session is not ready for prewarm.");
             return false;
         }
         try {
             this.lensServiceSession.onGenericClientEvent(MessageNano.toByteArray(new ClientEventProto().setEventId(347)));
             return true;
         } catch (RemoteException | SecurityException e) {
-            Log.e("LensServiceBridge", "Unable to send prewarm signal.", e);
+            Log.e(TAG, "Unable to send prewarm signal.", e);
             return false;
         }
     }
@@ -122,9 +121,9 @@ public class LensServiceBridge extends IPublicSearchServiceSessionCallback$Stub 
         ClientEventProto eventId = new ClientEventProto().setEventId(348);
         eventId.setExtension(LensServiceClientEvent.lensServiceClientEventData, new LensServiceClientEventData().setTargetServiceApiVersion(1));
         try {
-            this.lensServiceSession = this.lensService.beginSession("LENS_SERVICE_SESSION", this, MessageNano.toByteArray(eventId));
+            this.lensServiceSession = this.lensService.beginSession(LENS_CLIENT_SESSION_TYPE, this, MessageNano.toByteArray(eventId));
         } catch (RemoteException | SecurityException e) {
-            Log.e("LensServiceBridge", "Unable to begin Lens service session.", e);
+            Log.e(TAG, "Unable to begin Lens service session.", e);
         }
     }
 
@@ -135,7 +134,7 @@ public class LensServiceBridge extends IPublicSearchServiceSessionCallback$Stub 
         try {
             this.lensServiceSession.onGenericClientEvent(MessageNano.toByteArray(new ClientEventProto().setEventId(345)));
         } catch (RemoteException | SecurityException e) {
-            Log.e("LensServiceBridge", "Unable to end Lens service session.", e);
+            Log.e(TAG, "Unable to end Lens service session.", e);
         }
     }
 

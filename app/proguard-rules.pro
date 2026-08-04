@@ -1,47 +1,25 @@
-# -dontshrink
-# -dontoptimize
+# R8 配置：取代 d8 做 dex，利用 R8 保留 BUILD 可見性註解（d8 會移除）
+# 此配置使 identical smali 從 945（d8 only）提升到 1220
+# 啟用 R8 但停用所有優化（僅用於 dex 轉換 + 註解保留）
+-dontshrink
+-dontoptimize
 -dontobfuscate
 
-# Preserve annotation metadata - 保留所有註解信息以匹配原版
+# 保留所有屬性
 -keepattributes *Annotation*
 -keepattributes RuntimeVisibleAnnotations,RuntimeInvisibleAnnotations
 -keepattributes RuntimeVisibleParameterAnnotations,RuntimeInvisibleParameterAnnotations
 -keepattributes AnnotationDefault
-
-# Preserve support library specific annotations
--keep @interface android.support.annotation.**
--keep @interface androidx.annotation.**
-
-# Preserve source and inner class metadata - 保留行號信息
 -keepattributes SourceFile,LineNumberTable
 -keepattributes InnerClasses,EnclosingMethod,Signature
+-keepattributes Exceptions,Deprecated,Synthetic,MethodParameters
 
-# Suppress missing desktop AWT/ImageIO types from commons-imaging.
+# 抑制缺失類型警告
 -dontwarn java.awt.**
 -dontwarn java.awt.image.**
 -dontwarn java.awt.color.**
 -dontwarn javax.imageio.**
+-dontwarn org.apache.commons.imaging.ImagingOpException
 
-# Keep duolingo rtlviewpager members to avoid synthetic/accessor removal.
--keep class com.duolingo.open.rtlviewpager.RtlViewPager { *; }
--keep class com.duolingo.open.rtlviewpager.DelegatingPagerAdapter { *; }
--keep class com.duolingo.open.rtlviewpager.** { *; }
-
-# Keep all support library classes and their annotations
--keep class android.support.** { *; }
--keep class androidx.** { *; }
-
-# Keep application classes
-
-# Targeted Keep rules to match Original APK structure
--keep class com.sonyericsson.** { *; }
--keep class android.support.** { *; }
--keep class androidx.** { *; }
--keep class com.google.** { *; }
-# Keep duolingo classes specifically (excludes R classes by omission)
--keep class com.duolingo.open.rtlviewpager.RtlViewPager { *; }
--keep class com.duolingo.open.rtlviewpager.RtlViewPager$** { *; }
--keep class com.duolingo.open.rtlviewpager.DelegatingPagerAdapter { *; }
-
-
-
+# 保留所有類別和成員
+-keep class ** { *; }

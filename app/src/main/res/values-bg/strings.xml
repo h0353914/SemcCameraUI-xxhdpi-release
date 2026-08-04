@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Неуспешно заснемане. Премествайте по-бавно.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Неуспешно заснемане. Премествайте по-бързо.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Придвижете камерата за заснемане на панорамни снимки</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Създават се следните файлове:\n– Изображение от много ъгли\n– 3D изображение\nЗабележка: Файловете съдържат сива област.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Създават се следните файлове:\n– Изображение от много ъгли\n– 3D изображение</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Обработка...\nИзображението съдържа сива област</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Създават се следните файлове:
+– Изображение от много ъгли
+– 3D изображение
+Забележка: Файловете съдържат сива област."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Създават се следните файлове:
+– Изображение от много ъгли
+– 3D изображение"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Обработка...
+Изображението съдържа сива област"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Записване на изображ.</string>
     <string name="cam_3d_strings_dialog_processing_txt">Обработка...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Изчакайте няколко секунди за стартиране на 3D камерата</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Направете така, че кожата ви да изглежда сияйна и гладка. Ефектът работи на приложенията, които използват предна камера. Това може да се приложи за снимки и видео. Можете също да регулирате нивото.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Регулиране на нивото</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Кадифена кожа</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Приложението не може да се стартира.\nУверете се, че най-новата версия на %1$s е инсталирана и разрешена на вашето устройство.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Приложението не може да се стартира.
+Уверете се, че най-новата версия на %1$s е инсталирана и разрешена на вашето устройство."</string>
     <string name="cam_strings_gridline_txt">Решетка</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Обърнете дланта си към камерата. Таймерът за самозаснемане ще се включи, когато дланта ви бъде разпозната. За да се разпознае по-лесно, изпънете пръстите си нагоре.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Обърнете дланта си към камерата</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Общи настройки</string>
     <string name="cam_strings_more_txt">Още</string>
     <string name="cam_strings_multi_window_txt">Преместете средата на разделящата лента, за да преминете към цял екран на %1$s, за да го използвате</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Свързано е друго устройство.\nЖелаете ли да споделите изображението през визьора с другото устройство?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Свързано е друго устройство.
+Желаете ли да споделите изображението през визьора с другото устройство?"</string>
     <string name="cam_strings_multicam_add_device_txt">Добав. устр.</string>
     <string name="cam_strings_multicam_add_more_txt">Добавяне на още</string>
     <string name="cam_strings_multicam_apply_txt">Готово</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Измерване</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Предсказ.</string>
     <string name="cam_strings_predictive_capture_txt">Предсказване на заснемане</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Камерата е стартирана автоматично след засичане на движение или повдигане на телефона в пейзажен режим и насочването му към обект.\nМожете да изберете предпочитания от вас начин за използването на тази функция от \"Интелигентно стартиране\" в настройките на камерата.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Камерата е стартирана автоматично след засичане на движение или повдигане на телефона в пейзажен режим и насочването му към обект.
+Можете да изберете предпочитания от вас начин за използването на тази функция от \"Интелигентно стартиране\" в настройките на камерата."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Докоснете в кръга за заснемане</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Докоснете екрана за заснемане</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Натиснете в кръга за цял екран</string>
     <string name="cam_strings_predictive_launch_guide_txt">Докоснете в кръга за стартиране на камерата</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Докосв. за старт. и заснем.</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Докосване за стартиране</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Можете бързо да стартирате камерата. Повдигнете бързо устройството си в пейзажен режим и насочете камерата към обекта. Камерата ще се стартира автоматично.\nМожете да изберете предпочитания от вас начин за използване на тази функция от \"Интелигентно стартиране\" в настройките на камерата.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Можете бързо да стартирате камерата. Повдигнете бързо устройството си в пейзажен режим и насочете камерата към обекта. Камерата ще се стартира автоматично.
+Можете да изберете предпочитания от вас начин за използване на тази функция от \"Интелигентно стартиране\" в настройките на камерата."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Интелиг. стартир.</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Можете бързо да стартирате камерата. Плъзнете нагоре устройството си в пейзажен режим и насочете камерата към обекта. Камерата ще се стартира автоматично. \nМожете да го изключите от \"Интелигентно стартиране\" в настройките на камерата.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Можете бързо да стартирате камерата. Плъзнете нагоре устройството си в пейзажен режим и насочете камерата към обекта. Камерата ще се стартира автоматично. 
+Можете да го изключите от \"Интелигентно стартиране\" в настройките на камерата."</string>
     <string name="cam_strings_predictive_launch_txt">Интелигентно стартиране</string>
     <string name="cam_strings_preview_always_txt">Вкл.</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 секунди</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s изисква разрешенията по-долу</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Разрешение за %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Приложението изисква посочените по-долу разрешения за извършване на това действие.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">За да дадете разрешения, отидете на \"Информация за приложението\" &gt; \"Разрешения\".</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">За да дадете разрешения, отидете на \"Информация за приложението\" > \"Разрешения\".</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Не може да се продължи</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Заснемане на снимки и видеоклипове</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Извличане на местоположение</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Записано във вътрешната памет</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">ПРЕМИНИ</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Приложението изисква посочените по-долу разрешения за извършване на това действие.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">За да използвате SD карта, камерата се нуждае от разрешения за достъп до SD картата.\nПроменете мястото за съхранение на данни на SD картата отново или позволете на камерата достъп до SD картата на следващия екран.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"За да използвате SD карта, камерата се нуждае от разрешения за достъп до SD картата.
+Променете мястото за съхранение на данни на SD картата отново или позволете на камерата достъп до SD картата на следващия екран."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">Няма налична SD карта</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Открита е нова SD карта, изискваща разрешения.\n\nЗа да използвате SD картата за съхранение на данни, изберете SD картата или DCIM директория на следващия екран.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Не е избрана SD картата или DCIM директорията. SD картата не може да се използва.\n\nЗа да дадете разрешения, започнете с промяна на местоположението на записване на SD картата или изберете подходяща директория на следващия екран.</string>
-    <string name="cam_strings_sd_permission_info_txt">Открита е нова SD карта, която изисква разрешения.\nПоради това вътрешната памет на устройството ще се използва като памет за данни по подразбиране.\n\nЗа да използвате SD картата като памет за данни, отидете на настройките на камерата и променете опцията за памет на SD карта.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Открита е нова SD карта, изискваща разрешения.
+
+За да използвате SD картата за съхранение на данни, изберете SD картата или DCIM директория на следващия екран."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Не е избрана SD картата или DCIM директорията. SD картата не може да се използва.
+
+За да дадете разрешения, започнете с промяна на местоположението на записване на SD картата или изберете подходяща директория на следващия екран."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Открита е нова SD карта, която изисква разрешения.
+Поради това вътрешната памет на устройството ще се използва като памет за данни по подразбиране.
+
+За да използвате SD картата като памет за данни, отидете на настройките на камерата и променете опцията за памет на SD карта."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Записване на снимки и видеоклипове в SD карта</string>
     <string name="cam_strings_select_picture_txt">Избор на снимка</string>
     <string name="cam_strings_self_timer_05_txt">0,5 секунди</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Автозаснемане</string>
     <string name="cam_strings_side_touch_not_supported_txt">\"Страничен сензор\" не се поддържа на този екран</string>
     <string name="cam_strings_side_touch_on_title_txt">Страничен сензор</string>
-    <string name="cam_strings_side_touch_on_txt">За да използвате тази функция, отидете в \"Настройки\" &gt; \"Дисплей\" и включете функцията \"Страничен сензор\". Разрешаване сега?</string>
+    <string name="cam_strings_side_touch_on_txt">За да използвате тази функция, отидете в \"Настройки\" > \"Дисплей\" и включете функцията \"Страничен сензор\". Разрешаване сега?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Страничен сензор</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Можете да засн. снимка или видеоклип чрез двукр. натискане на сензора отстрани на екрана вместо бутона за затвора. Можете също да увелич. и намал. мащаба, като плъзнете пръста си по този страничен сензор.\nРежимът за снимки и този за видеоклипове поддържат функцията. Можете да я изключите от \"Страничен сензор\" в настройките на камерата.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Можете да засн. снимка или видеокл. чрез двукр. натискане на сензора отстр. на екрана в портр. реж. вместо бутона за затвора. Можете също да увелич. и намал. мащаба, като плъзнете пръста си по страничния сензор.\nРежимът за снимки и този за видеоклипове поддържат функцията. Можете да я изключите от \"Страничен сензор\" в настройките на камерата.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Можете да заснемете снимка или видеоклип, като просто натиснете двукратно сензора отстрани на устройството в портретен режим, вместо да натискате бутона за затвора.\nКакто режимът за снимки, така и този за видеоклипове поддържат функцията. Можете да я изключите от \"Страничен сензор\" в настройките на камерата.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Можете да заснемете снимка или видеоклип, като просто натиснете двукратно сензора отстрани на екрана, вместо да натискате бутона за затвора.\nКакто режимът за снимки, така и този за видеоклипове поддържат функцията. Можете да я изключите от \"Страничен сензор\" в настройките на камерата.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Можете да засн. снимка или видеоклип чрез двукр. натискане на сензора отстрани на екрана вместо бутона за затвора. Можете също да увелич. и намал. мащаба, като плъзнете пръста си по този страничен сензор.
+Режимът за снимки и този за видеоклипове поддържат функцията. Можете да я изключите от \"Страничен сензор\" в настройките на камерата."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Можете да засн. снимка или видеокл. чрез двукр. натискане на сензора отстр. на екрана в портр. реж. вместо бутона за затвора. Можете също да увелич. и намал. мащаба, като плъзнете пръста си по страничния сензор.
+Режимът за снимки и този за видеоклипове поддържат функцията. Можете да я изключите от \"Страничен сензор\" в настройките на камерата."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Можете да заснемете снимка или видеоклип, като просто натиснете двукратно сензора отстрани на устройството в портретен режим, вместо да натискате бутона за затвора.
+Както режимът за снимки, така и този за видеоклипове поддържат функцията. Можете да я изключите от \"Страничен сензор\" в настройките на камерата."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Можете да заснемете снимка или видеоклип, като просто натиснете двукратно сензора отстрани на екрана, вместо да натискате бутона за затвора.
+Както режимът за снимки, така и този за видеоклипове поддържат функцията. Можете да я изключите от \"Страничен сензор\" в настройките на камерата."</string>
     <string name="cam_strings_side_touch_txt">Страничен сензор</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Стилът на запис и резолюцията на екрана могат да бъдат променени в \"Настройки на камерата\"</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Супербавно (един кадър)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Суперзабавен каданс</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Можете да промените fps и стила на записване за забавен каданс</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Още опции</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Записвайте незабавно ценните моменти в забавен каданс с %1$s fps чрез натискане на бутона в центъра на екрана.\nЗапис на светло дава по-добро видео.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Записвайте незабавно ценните моменти в забавен каданс с %1$s fps чрез натискане на бутона в центъра на екрана.
+Запис на светло дава по-добро видео."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Можете да запиш. точен момент с %1$s fps, като натиснете бутона в центъра</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Записвайте незабавно във важен момент с %1$s fps при забавен каданс, като натиснете бутона в центъра на екрана</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Суперзабавен каданс (едно заснемане)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Забавен каданс</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Как се записва</string>
     <string name="cam_strings_slow_motion_standard_txt">Забавен каданс</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Създайте впечатляващо видео, като покажете ценните моменти в задавен каданс.\nЗаписване при силно осветление помага за създаване на по-добро видео.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Създайте впечатляващо видео, като покажете ценните моменти в задавен каданс.
+Записване при силно осветление помага за създаване на по-добро видео."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Можете да запишете видео с различни скорости, като преминете към %1$s fps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Натиснете бутона в центъра в точния момент</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Забавеният каданс е записан</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Софтуерни лицензи</string>
     <string name="cam_strings_take_photo_txt">Заснемане на снимка</string>
     <string name="cam_strings_term_of_use_accept_txt">Приемам</string>
-    <string name="cam_strings_term_of_use_consent_txt">Приемам &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Условията за използване&lt;/a&gt; на Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Приемам &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Условията за използване&lt;/a> на Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Използването на тази услуга от ваша страна може да подлежи на такси за мобилни данни в зависимост от вашия план за данни.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile ще събира Вашия хеширан уникален идентификатор на устройство Android, данни, свързани с местоположението Ви, и времево клеймо, за да Ви предоставя подходящи резултати като част от услугата и с цел подобряването й.</string>
     <string name="cam_strings_term_of_use_decline_txt">Отказвам</string>
     <string name="cam_strings_term_of_use_title_txt">Правила и условия</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Условия за използване&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Условия за използване&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Отмяна на избора на снимки</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Неуспешно записване</string>
     <string name="cam_strings_timeshift_save_complete_txt">Записано</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">За стабилен 4K видеозапис е необходимо да не променяте тази настройка, освен ако не използвате високоскоростна SD карта (препоръчва се UHS Speed Class 1 или по-висок или Speed Class 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">За стабилен Timeshift video запис е необходимо да не променяте тази настройка, освен ако не използвате високоскоростна SD карта (препоръчва се UHS Speed Class 1 или по-висок или Speed Class 10). Искате ли въпреки това да я промените?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">За стабилен видеозапис на забавен каданс не променяйте тази настройка, освен ако не използвате високоскоростна SD карта (препоръчва се UHS Speed Class 1 или по-висок или Speed Class 10).</string>
-    <string name="cam_strings_video_explanatory_txt">За стабилен видеозапис ви препоръчваме да промените мястото за съхранение на данни на \"Вътрешна памет\". Искате ли да го промените сега?\n\nАко продължите да използвате SD карта като място за съхранение на данни, се уверете, че използвате високоскоростна SD карта (препоръчва се UHS Speed Class 1 или по-висок или Speed Class 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"За стабилен видеозапис ви препоръчваме да промените мястото за съхранение на данни на \"Вътрешна памет\". Искате ли да го промените сега?
+
+Ако продължите да използвате SD карта като място за съхранение на данни, се уверете, че използвате високоскоростна SD карта (препоръчва се UHS Speed Class 1 или по-висок или Speed Class 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Двойна камера</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Можете да записвате красиви видеоклипове с нисък шум с помощта на двойната камера – дори вечер или в слабо осветена стая. Камерата автоматично превключва между единична и двойна камера с оглед на сцените, които ще се записват с ултрависока чувствителност.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Видеозапис с двойна камера</string>

@@ -1,5 +1,8 @@
 package com.sonyericsson.android.camera.view.hint;
 
+import com.sonyericsson.android.camera.R;
+import com.sonyericsson.android.camera.view.hint.HintTextContent;
+
 public class HintTextAutoPowerOff extends HintTextContent {
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
     public int getButtonMessageResourceId() {
@@ -8,7 +11,7 @@ public class HintTextAutoPowerOff extends HintTextContent {
 
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
     public int getMessageResourceId() {
-        return 2131689642;
+        return R.string.cam_strings_auto_power_off_txt;
     }
 
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
@@ -17,7 +20,7 @@ public class HintTextAutoPowerOff extends HintTextContent {
     }
 
     @Override // com.sonyericsson.android.camera.view.hint.HintTextContent
-    public HintTextContent$HintPriority getPriority() {
-        return HintTextContent$HintPriority.HIGH;
+    public HintTextContent.HintPriority getPriority() {
+        return HintTextContent.HintPriority.HIGH;
     }
 }

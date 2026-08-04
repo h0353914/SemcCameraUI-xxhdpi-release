@@ -31,8 +31,12 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Δεν ήταν δυνατή η ολοκλήρωση της λήψης. Κάντε μετατόπιση πιο αργά.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Δεν ήταν δυνατή η ολοκλήρωση της λήψης. Κάντε μετατόπιση πιο γρήγορα.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Λήψη πανοραμικής φωτογρ. με ημικυκλική κίνηση της κάμερας</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Δημιουργία των εξής αρχείων:\n- Εικόνα πολλαπλών γωνιών\n- Εικόνα 3DΣημείωση: Αυτά τα αρχεία περιέχουν μια γκρι περιοχή.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Δημιουργία των εξής αρχείων:\n- Εικόνα πολλαπλών γωνιών\n- Εικόνα 3D</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Δημιουργία των εξής αρχείων:
+- Εικόνα πολλαπλών γωνιών
+- Εικόνα 3DΣημείωση: Αυτά τα αρχεία περιέχουν μια γκρι περιοχή."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Δημιουργία των εξής αρχείων:
+- Εικόνα πολλαπλών γωνιών
+- Εικόνα 3D"</string>
     <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Γίνεται επεξεργασία... Αυτή η εικόνα περιέχει μια γκρι περιοχή</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Αποθήκευση εικόνας</string>
     <string name="cam_3d_strings_dialog_processing_txt">Γίνεται επεξεργασία...</string>
@@ -360,7 +364,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Δώστε στο δέρμα σας φωτεινότητα και απαλότητα. Το εφέ λειτουργεί στις εφαρμογές που χρησιμοποιούν τη μπροστινή κάμερα. Αυτό μπορεί να εφαρμοστεί σε φωτογραφίες και βίντεο. Επίσης, μπορείτε να προσαρμόσετε το επίπεδο.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Προσαρμογή επιπέδου</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Απαλό δέρμα</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Η έναρξη της εφαρμογής δεν είναι δυνατή.\nΒεβαιωθείτε ότι εγκαταστάθηκε και ενεργοποιήθηκε η πιο πρόσφατη έκδοση του %1$s στη συσκευή σας.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Η έναρξη της εφαρμογής δεν είναι δυνατή.
+Βεβαιωθείτε ότι εγκαταστάθηκε και ενεργοποιήθηκε η πιο πρόσφατη έκδοση του %1$s στη συσκευή σας."</string>
     <string name="cam_strings_gridline_txt">Γραμμές πλέγματος</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Γυρίστε την παλάμη σας προς την κάμερα. Ο χρονοδιακόπτης θα ενεργοποιηθεί όταν αναγνωριστεί η παλάμη σας. Για να διευκολύνετε την αναγνώριση, εκτείνετε τα δάχτυλά σας προς τα πάνω.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Γυρίστε την παλάμη σας προς την κάμερα</string>
@@ -404,7 +409,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Κοινές ρυθμίσεις</string>
     <string name="cam_strings_more_txt">Περισσότερα</string>
     <string name="cam_strings_multi_window_txt">Σύρετε το κέντρο της γραμμής διαίρεσης για αλλαγή σε πλήρη οθόνη, για χρήση με την εφαρμογή %1$s</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Συνδέθηκε τώρα και άλλη συσκευή.\nΘέλετε να κάνετε κοινή χρήση της εικόνας μέσω του εικονοσκοπίου με τη συσκευή;</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Συνδέθηκε τώρα και άλλη συσκευή.
+Θέλετε να κάνετε κοινή χρήση της εικόνας μέσω του εικονοσκοπίου με τη συσκευή;"</string>
     <string name="cam_strings_multicam_add_device_txt">Προσθ. συσκ.</string>
     <string name="cam_strings_multicam_add_more_txt">Προσθήκη περισσότερων</string>
     <string name="cam_strings_multicam_apply_txt">Ολοκληρώθηκε</string>
@@ -436,16 +442,19 @@
     <string name="cam_strings_photometry_txt">Φωτομέτρηση</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Πρόβλεψης</string>
     <string name="cam_strings_predictive_capture_txt">Λήψη πρόβλεψης</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Η εκκίνηση της κάμερας έγινε αυτόματα με ανίχνευση κίνησης όταν σηκώσατε το τηλέφωνό σας σε λειτουργία οριζόντιας προβολής και στοχεύσατε σε ένα αντικείμενο.\nΜπορείτε να επιλέξετε τον αγαπημένο σας τρόπο χρήσης αυτής της δυνατότητας από το στοιχείο \"Έξυπνη εκκίνηση\" στις ρυθμίσεις κάμερας.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Η εκκίνηση της κάμερας έγινε αυτόματα με ανίχνευση κίνησης όταν σηκώσατε το τηλέφωνό σας σε λειτουργία οριζόντιας προβολής και στοχεύσατε σε ένα αντικείμενο.
+Μπορείτε να επιλέξετε τον αγαπημένο σας τρόπο χρήσης αυτής της δυνατότητας από το στοιχείο \"Έξυπνη εκκίνηση\" στις ρυθμίσεις κάμερας."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Αγγίξτε μέσα στον κύκλο για λήψη</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Αγγίξτε την οθόνη για λήψη</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Πατήστε μέσα στον κύκλο για να προβολή πλήρους οθόνης</string>
     <string name="cam_strings_predictive_launch_guide_txt">Αγγίξτε μέσα στον κύκλο για έναρξη της κάμερας</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Αγγίξτε για εκκίν. και λήψη</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Πατήστε για εκκίνηση</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Μπορείτε να εκκινήσετε την κάμερα γρήγορα. Σηκώστε γρήγορα τη συσκευή σας σε λειτουργία οριζόντιου προσανατολισμού και στοχεύστε την κάμερα προς ένα αντικείμενο. Η κάμερα θα εκκινήσει αυτόματα.\nΜπορείτε να επιλέξετε τον αγαπημένο σας τρόπο για να χρησιμοποιείτε αυτή τη λειτουργία από το στοιχείο \"Έξυπνη εκκίνηση\", στις ρυθμίσεις κάμερας.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Μπορείτε να εκκινήσετε την κάμερα γρήγορα. Σηκώστε γρήγορα τη συσκευή σας σε λειτουργία οριζόντιου προσανατολισμού και στοχεύστε την κάμερα προς ένα αντικείμενο. Η κάμερα θα εκκινήσει αυτόματα.
+Μπορείτε να επιλέξετε τον αγαπημένο σας τρόπο για να χρησιμοποιείτε αυτή τη λειτουργία από το στοιχείο \"Έξυπνη εκκίνηση\", στις ρυθμίσεις κάμερας."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Έξυπνη εκκίνηση</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Για γρήγορη εκκίνηση της κάμερας, περιστρέψτε τη συσκευή σας σε λειτουργία οριζόντιου προσανατολισμού και στοχεύστε την κάμερα προς τα πάνω προς ένα αντικείμενο. Η κάμερα θα εκκινήσει αυτόματα.\nΑπενεργοποιείται από την \"Έξυπνη εκκίνηση\" στις ρυθμίσεις κάμερας.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Για γρήγορη εκκίνηση της κάμερας, περιστρέψτε τη συσκευή σας σε λειτουργία οριζόντιου προσανατολισμού και στοχεύστε την κάμερα προς τα πάνω προς ένα αντικείμενο. Η κάμερα θα εκκινήσει αυτόματα.
+Απενεργοποιείται από την \"Έξυπνη εκκίνηση\" στις ρυθμίσεις κάμερας."</string>
     <string name="cam_strings_predictive_launch_txt">Έξυπνη εκκίνηση</string>
     <string name="cam_strings_preview_always_txt">Ενεργοποίηση</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 δευτερόλεπτα</string>
@@ -478,7 +487,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">Η εφαρμογή %1$s απαιτεί τις ακόλουθες άδειες</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Άδεια της εφαρμογής %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Η εφαρμογή απαιτεί τις ακόλουθες άδειες για την εκτέλεση αυτής της ενέργειας.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Για να εκχωρήσετε άδειες, μεταβείτε στη διαδρομή Πληροφορίες εφαρμογής &gt; Άδειες.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Για να εκχωρήσετε άδειες, μεταβείτε στη διαδρομή Πληροφορίες εφαρμογής > Άδειες.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Η συνέχεια δεν ήταν δυνατή</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Για λήψη φωτογραφιών και βίντεο</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Για ανάκτηση τοποθεσίας</string>
@@ -525,11 +534,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Αποθηκεύτηκε στην εσωτερική μνήμη</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">ΜΕΤΑΒΑΣΗ</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Η εφαρμογή απαιτεί τις ακόλουθες άδειες για την εκτέλεση αυτής της ενέργειας.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Για να χρησιμοποιήσετε μια κάρτα SD, η κάμερα χρειάζεται άδειες για πρόσβαση στην κάρτα SD.\nΑλλάξτε την αποθήκευση δεδομένων ξανά στην κάρτα SD ή επιτρέψτε στην κάμερα να αποκτά πρόσβαση στην κάρτα SD στην επόμενη οθόνη.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Για να χρησιμοποιήσετε μια κάρτα SD, η κάμερα χρειάζεται άδειες για πρόσβαση στην κάρτα SD.
+Αλλάξτε την αποθήκευση δεδομένων ξανά στην κάρτα SD ή επιτρέψτε στην κάμερα να αποκτά πρόσβαση στην κάρτα SD στην επόμενη οθόνη."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">Η κάρτα SD δεν είναι διαθέσιμη</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Ανιχνεύτηκε μια νέα κάρτα SD που απαιτεί άδειες.\n\nΓια να χρησιμοποιήσετε την κάρτα SD ως μνήμη δεδομένων, επιλέξτε την κάρτα SD ή τον κατάλογο DCIM στην επόμενη οθόνη.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Δεν επιλέχτηκε η κάρτα SD ή ο κατάλογος DCIM. Η κάρτα SD δεν μπορεί να χρησιμοποιηθεί.\n\nΓια να εκχωρήσετε άδειες, ξεκινήστε αλλάζοντας την τοποθεσία αποθήκευσης στην κάρτα SD ή επιλέξτε τον κατάλληλο κατάλογο στην επόμενη οθόνη.</string>
-    <string name="cam_strings_sd_permission_info_txt">Εντοπίστηκε νέα κάρτα SD, η οποία απαιτεί άδειες.\nΣυνεπώς, η εσωτερική μνήμη της συσκευής θα χρησιμοποιείται ως προεπιλεγμένη μνήμη δεδομένων.\n\nΓια να χρησιμοποιήσετε την κάρτα SD ως μνήμη δεδομένων, μεταβείτε στις ρυθμίσεις κάμερας και αλλάξτε την επιλογή αποθήκευσης σε κάρτα SD.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Ανιχνεύτηκε μια νέα κάρτα SD που απαιτεί άδειες.
+
+Για να χρησιμοποιήσετε την κάρτα SD ως μνήμη δεδομένων, επιλέξτε την κάρτα SD ή τον κατάλογο DCIM στην επόμενη οθόνη."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Δεν επιλέχτηκε η κάρτα SD ή ο κατάλογος DCIM. Η κάρτα SD δεν μπορεί να χρησιμοποιηθεί.
+
+Για να εκχωρήσετε άδειες, ξεκινήστε αλλάζοντας την τοποθεσία αποθήκευσης στην κάρτα SD ή επιλέξτε τον κατάλληλο κατάλογο στην επόμενη οθόνη."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Εντοπίστηκε νέα κάρτα SD, η οποία απαιτεί άδειες.
+Συνεπώς, η εσωτερική μνήμη της συσκευής θα χρησιμοποιείται ως προεπιλεγμένη μνήμη δεδομένων.
+
+Για να χρησιμοποιήσετε την κάρτα SD ως μνήμη δεδομένων, μεταβείτε στις ρυθμίσεις κάμερας και αλλάξτε την επιλογή αποθήκευσης σε κάρτα SD."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Για αποθήκευση φωτογραφιών και βίντεο στην κάρτα SD</string>
     <string name="cam_strings_select_picture_txt">Επιλογή φωτογραφίας</string>
     <string name="cam_strings_self_timer_05_txt">0,5 δευτ.</string>
@@ -552,12 +569,16 @@
     <string name="cam_strings_shutter_trigger_txt">Αυτόματη λήψη</string>
     <string name="cam_strings_side_touch_not_supported_txt">Το Side sense δεν υποστηρίζεται σε αυτή την οθόνη</string>
     <string name="cam_strings_side_touch_on_title_txt">Side sense</string>
-    <string name="cam_strings_side_touch_on_txt">Για να χρησιμοποιήσετε αυτή τη λειτουργία, μεταβείτε στη διαδρομή Ρυθμίσεις &gt; Προβολή και ενεργοποιήστε το στοιχείο Side sense. Να ενεργοποιηθεί τώρα;</string>
+    <string name="cam_strings_side_touch_on_txt">Για να χρησιμοποιήσετε αυτή τη λειτουργία, μεταβείτε στη διαδρομή Ρυθμίσεις > Προβολή και ενεργοποιήστε το στοιχείο Side sense. Να ενεργοποιηθεί τώρα;</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Side sense</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Τραβήξτε φωτογραφία ή βίντεο πατώντας απλώς δύο φορές τον αισθητήρα στο πλάι της οθόνης αντί για το κουμπί κλείστρου ή κάντε μεγέθυνση ή σμίκρυνση σύροντας το δάχτυλό σας κατά μήκος του πλαϊνού αισθητήρα.\nΗ λειτουργία υποστηρίζεται από τις λειτουργίες φωτογραφίας και βίντεο. Μπορείτε να την απενεργοποιήσετε στις ρυθμίσεις κάμερας του Side sense.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Τραβήξτε φωτογραφία ή βίντεο πατώντας απλώς δύο φορές τον αισθητήρα στο πλάι της οθόνης σε κατακόρυφη προβολή αντί για το κουμπί κλείστρου ή κάντε μεγέθυνση ή σμίκρυνση σύροντας το δάχτυλό σας κατά μήκος του πλαϊνού αισθητήρα.\nΗ λειτουργία υποστηρίζεται από τις λειτ. φωτογραφίας και βίντεο, ενώ απενεργοποιείται στις ρυθμίσεις κάμερας του Side sense.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Τραβήξτε φωτογραφία ή βίντεο πατώντας απλώς δύο φορές τον αισθητήρα στο πλάι της οθόνης σε κατακόρυφη προβολή αντί για το κουμπί κλείστρου.\nΗ λειτουργία υποστηρίζεται από τις λειτουργίες φωτογραφίας και βίντεο. Μπορείτε να την απενεργοποιήσετε στις ρυθμίσεις κάμερας του Side sense.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Τραβήξτε φωτογραφία ή βίντεο πατώντας απλώς δύο φορές τον αισθητήρα στο πλάι της οθόνης αντί για το κουμπί κλείστρου.\nΗ λειτουργία υποστηρίζεται από τις λειτουργίες φωτογραφίας και βίντεο. Μπορείτε να την απενεργοποιήσετε στις ρυθμίσεις κάμερας του Side sense.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Τραβήξτε φωτογραφία ή βίντεο πατώντας απλώς δύο φορές τον αισθητήρα στο πλάι της οθόνης αντί για το κουμπί κλείστρου ή κάντε μεγέθυνση ή σμίκρυνση σύροντας το δάχτυλό σας κατά μήκος του πλαϊνού αισθητήρα.
+Η λειτουργία υποστηρίζεται από τις λειτουργίες φωτογραφίας και βίντεο. Μπορείτε να την απενεργοποιήσετε στις ρυθμίσεις κάμερας του Side sense."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Τραβήξτε φωτογραφία ή βίντεο πατώντας απλώς δύο φορές τον αισθητήρα στο πλάι της οθόνης σε κατακόρυφη προβολή αντί για το κουμπί κλείστρου ή κάντε μεγέθυνση ή σμίκρυνση σύροντας το δάχτυλό σας κατά μήκος του πλαϊνού αισθητήρα.
+Η λειτουργία υποστηρίζεται από τις λειτ. φωτογραφίας και βίντεο, ενώ απενεργοποιείται στις ρυθμίσεις κάμερας του Side sense."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Τραβήξτε φωτογραφία ή βίντεο πατώντας απλώς δύο φορές τον αισθητήρα στο πλάι της οθόνης σε κατακόρυφη προβολή αντί για το κουμπί κλείστρου.
+Η λειτουργία υποστηρίζεται από τις λειτουργίες φωτογραφίας και βίντεο. Μπορείτε να την απενεργοποιήσετε στις ρυθμίσεις κάμερας του Side sense."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Τραβήξτε φωτογραφία ή βίντεο πατώντας απλώς δύο φορές τον αισθητήρα στο πλάι της οθόνης αντί για το κουμπί κλείστρου.
+Η λειτουργία υποστηρίζεται από τις λειτουργίες φωτογραφίας και βίντεο. Μπορείτε να την απενεργοποιήσετε στις ρυθμίσεις κάμερας του Side sense."</string>
     <string name="cam_strings_side_touch_txt">Side sense</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Το στυλ εγγραφής και η ανάλυση οθόνης μπορούν να αλλάξουν στις \"Ρυθμίσεις κάμερας\"</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Πάρα πολύ αργή (μία λήψη)</string>
@@ -565,7 +586,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Πολύ αργή κίνηση</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Μπορείτε να αλλάξετε τα fps και το στυλ εγγραφής για αργή κίνηση</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Περισσότ. επιλογές</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Εγγράψτε αμέσως μια πολύτιμη στιγμή σε αργή κίνηση %1$s fps, πατώντας το κεντρικό κουμπί της οθόνης.\nΜε την εγγραφή σε φωτεινό περιβάλλον θα δημιουργήσετε καλύτερο βίντεο.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Εγγράψτε αμέσως μια πολύτιμη στιγμή σε αργή κίνηση %1$s fps, πατώντας το κεντρικό κουμπί της οθόνης.
+Με την εγγραφή σε φωτεινό περιβάλλον θα δημιουργήσετε καλύτερο βίντεο."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Εγγράψτε την κατάλληλη στιγμή με %1$s FPS πατώντας το κεντρικό κουμπί</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Εγγράψτε αμέσως μια πολύτιμη στιγμή σε αργή κίνηση %1$s fps, πατώντας το κεντρικό κουμπί της οθόνης</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Πολύ αργή κίνηση (μία λήψη)</string>
@@ -576,7 +598,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Αργή κίνηση</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Τρόπος εγγραφής</string>
     <string name="cam_strings_slow_motion_standard_txt">Αργή κίνηση</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Δημιουργήστε ένα εντυπωσιακό βίντεο με μια στιγμή σε αργή κίνηση.\nΜε την εγγραφή σε φωτεινό περιβάλλον θα δημιουργήσετε καλύτερο βίντεο.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Δημιουργήστε ένα εντυπωσιακό βίντεο με μια στιγμή σε αργή κίνηση.
+Με την εγγραφή σε φωτεινό περιβάλλον θα δημιουργήσετε καλύτερο βίντεο."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Μπορείτε να εγγράψετε βίντεο σε διαφορετ. ταχύτητες με αλλαγή σε %1$s fps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Πατήστε το κεντρικό κουμπί την κατάλληλη στιγμή</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Εγγράφηκε αργή κίνηση</string>
@@ -607,12 +630,12 @@
     <string name="cam_strings_sw_licence_title_txt">Άδειες χρήσης λογισμικού</string>
     <string name="cam_strings_take_photo_txt">Λήψη φωτογραφίας</string>
     <string name="cam_strings_term_of_use_accept_txt">Αποδοχή</string>
-    <string name="cam_strings_term_of_use_consent_txt">Αποδέχομαι τους &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Όρους χρήσης&lt;/a&gt; της Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Αποδέχομαι τους &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Όρους χρήσης&lt;/a> της Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Η χρήση της υπηρεσίας ενδέχεται να υπόκειται σε επιπλέον χρεώσεις δεδομένων κινητής τηλεφωνίας ανάλογα με το πρόγραμμα δεδομένων σας.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Η Sony Mobile συλλέγει το μοναδικό αναγνωριστικό συσκευής Android ID με ετικέτα κατακερματισμού, τα δεδομένα τοποθεσίας και τη χρονική σφραγίδα, με σκοπό να σας προσφέρει τα κατάλληλα αποτελέσματα στα πλαίσια της υπηρεσίας, αλλά και για την βελτίωση της υπηρεσίας.</string>
     <string name="cam_strings_term_of_use_decline_txt">Απόρριψη</string>
     <string name="cam_strings_term_of_use_title_txt">Όροι και προϋποθέσεις</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Όροι χρήσης&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Όροι χρήσης&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Αποεπιλογή φωτογραφιών</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Αδυναμία αποθήκευσης</string>
     <string name="cam_strings_timeshift_save_complete_txt">Αποθηκεύτηκε</string>
@@ -639,7 +662,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Για σταθερή εγγραφή βίντεο 4K, δεν πρέπει να αλλάξετε αυτήν τη ρύθμιση παρά μόνο αν χρησιμοποιείτε κάρτα SD υψηλής ταχύτητας (συνιστάται UHS Ταχύτητας Κλάσης 1 ή ανώτερη ή Ταχύτητας Κλάσης 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Για σταθερή εγγραφή Timeshift video, δεν πρέπει να αλλάξετε αυτήν τη ρύθμιση παρά μόνο αν χρησιμοποιείτε κάρτα SD υψηλής ταχύτητας (συνιστάται UHS Ταχύτητας Κλάσης 1 ή ή ανώτερη ή Ταχύτητας Κλάσης 10). Να γίνει η αλλαγή;</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Για σταθερή εγγραφή βίντεο αργής κίνησης, μην αλλάξετε αυτήν τη ρύθμιση παρά μόνο αν χρησιμοποιείτε κάρτα SD υψηλής ταχύτητας (συνιστάται UHS Ταχύτητας Κλάσης 1 ή ανώτερη ή Ταχύτητας Κλάσης 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Για σταθερή εγγραφή βίντεο, συνιστάται να αλλάξετε την αποθήκευση δεδομένων στην εσωτερική μνήμη. Θέλετε να την αλλάξετε τώρα;\n\nΑν συνεχίσετε να χρησιμοποιείτε την κάρτα SD για αποθήκευση δεδομένων, βεβαιωθείτε ότι χρησιμοποιείτε μια κάρτα SD υψηλής ταχύτητας (συνιστάται UHS Ταχύτητας Κλάσης 1 ή ανώτερη ή Ταχύτητας Κλάσης 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Για σταθερή εγγραφή βίντεο, συνιστάται να αλλάξετε την αποθήκευση δεδομένων στην εσωτερική μνήμη. Θέλετε να την αλλάξετε τώρα;
+
+Αν συνεχίσετε να χρησιμοποιείτε την κάρτα SD για αποθήκευση δεδομένων, βεβαιωθείτε ότι χρησιμοποιείτε μια κάρτα SD υψηλής ταχύτητας (συνιστάται UHS Ταχύτητας Κλάσης 1 ή ανώτερη ή Ταχύτητας Κλάσης 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Διπλή κάμερα</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Μπορείτε να εγγράψετε υπέροχα βίντεο με χαμηλό θόρυβο χρησιμοποιώντας τη διπλή κάμερα, ακόμα και τη νύχτα ή σε δωμάτιο με χαμηλό φωτισμό. Η εφαρμογή Κάμερα αλλάζει αυτόματα μεταξύ μονής και διπλής κάμερας με βάση τις σκηνές που θα εγγραφούν με πολύ υψηλή ευαισθησία.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Εγγραφή βίντεο με διπλή κάμερα</string>

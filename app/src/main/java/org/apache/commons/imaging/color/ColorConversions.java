@@ -1,5 +1,7 @@
 package org.apache.commons.imaging.color;
 
+import android.support.v4.view.ViewCompat;
+
 public final class ColorConversions {
     private static final double REF_X = 95.047d;
     private static final double REF_Y = 100.0d;
@@ -39,9 +41,9 @@ public final class ColorConversions {
     }
 
     public static ColorCieLab convertXYZtoCIELab(double d, double d2, double d3) {
-        double d4 = d / 95.047d;
-        double d5 = d2 / 100.0d;
-        double d6 = d3 / 108.883d;
+        double d4 = d / REF_X;
+        double d5 = d2 / REF_Y;
+        double d6 = d3 / REF_Z;
         double dPow = d4 > 0.008856d ? Math.pow(d4, 0.3333333333333333d) : (d4 * 7.787d) + 0.13793103448275862d;
         double dPow2 = d5 > 0.008856d ? Math.pow(d5, 0.3333333333333333d) : (d5 * 7.787d) + 0.13793103448275862d;
         return new ColorCieLab((116.0d * dPow2) - 16.0d, 500.0d * (dPow - dPow2), 200.0d * (dPow2 - (d6 > 0.008856d ? Math.pow(d6, 0.3333333333333333d) : (7.787d * d6) + 0.13793103448275862d)));
@@ -55,7 +57,7 @@ public final class ColorConversions {
         double d4 = (d + 16.0d) / 116.0d;
         double d5 = (d2 / 500.0d) + d4;
         double d6 = d4 - (d3 / 200.0d);
-        return new ColorXyz(95.047d * (Math.pow(d5, 3.0d) > 0.008856d ? Math.pow(d5, 3.0d) : (d5 - 0.13793103448275862d) / 7.787d), 100.0d * (Math.pow(d4, 3.0d) > 0.008856d ? Math.pow(d4, 3.0d) : (d4 - 0.13793103448275862d) / 7.787d), 108.883d * (Math.pow(d6, 3.0d) > 0.008856d ? Math.pow(d6, 3.0d) : (d6 - 0.13793103448275862d) / 7.787d));
+        return new ColorXyz(REF_X * (Math.pow(d5, 3.0d) > 0.008856d ? Math.pow(d5, 3.0d) : (d5 - 0.13793103448275862d) / 7.787d), REF_Y * (Math.pow(d4, 3.0d) > 0.008856d ? Math.pow(d4, 3.0d) : (d4 - 0.13793103448275862d) / 7.787d), REF_Z * (Math.pow(d6, 3.0d) > 0.008856d ? Math.pow(d6, 3.0d) : (d6 - 0.13793103448275862d) / 7.787d));
     }
 
     public static ColorHunterLab convertXYZtoHunterLab(ColorXyz colorXyz) {
@@ -80,9 +82,9 @@ public final class ColorConversions {
     }
 
     public static int convertXYZtoRGB(double d, double d2, double d3) {
-        double d4 = d / 100.0d;
-        double d5 = d2 / 100.0d;
-        double d6 = d3 / 100.0d;
+        double d4 = d / REF_Y;
+        double d5 = d2 / REF_Y;
+        double d6 = d3 / REF_Y;
         double d7 = (3.2406d * d4) + ((-1.5372d) * d5) + ((-0.4986d) * d6);
         double d8 = ((-0.9689d) * d4) + (1.8758d * d5) + (0.0415d * d6);
         double d9 = (d4 * 0.0557d) + (d5 * (-0.204d)) + (d6 * 1.057d);
@@ -90,18 +92,20 @@ public final class ColorConversions {
     }
 
     public static ColorXyz convertRGBtoXYZ(int i) {
-        double d = ((double) ((i >> 16) & 255)) / 255.0d;
-        double d2 = ((double) ((i >> 8) & 255)) / 255.0d;
-        double d3 = ((double) ((i >> 0) & 255)) / 255.0d;
+        double d = ((i >> 16) & 255) / 255.0d;
+        double d2 = ((i >> 8) & 255) / 255.0d;
+        double d3 = ((i >> 0) & 255) / 255.0d;
         double dPow = d > 0.04045d ? Math.pow((d + 0.055d) / 1.055d, 2.4d) : d / 12.92d;
-        double d4 = dPow * 100.0d;
-        double dPow2 = (d2 > 0.04045d ? Math.pow((d2 + 0.055d) / 1.055d, 2.4d) : d2 / 12.92d) * 100.0d;
-        double dPow3 = (d3 > 0.04045d ? Math.pow((d3 + 0.055d) / 1.055d, 2.4d) : d3 / 12.92d) * 100.0d;
-        return new ColorXyz((0.4124d * d4) + (0.3576d * dPow2) + (0.1805d * dPow3), (0.2126d * d4) + (0.7152d * dPow2) + (0.0722d * dPow3), (d4 * 0.0193d) + (dPow2 * 0.1192d) + (dPow3 * 0.9505d));
+        double dPow2 = d2 > 0.04045d ? Math.pow((d2 + 0.055d) / 1.055d, 2.4d) : d2 / 12.92d;
+        double dPow3 = d3 > 0.04045d ? Math.pow((d3 + 0.055d) / 1.055d, 2.4d) : d3 / 12.92d;
+        double d4 = dPow * REF_Y;
+        double d5 = dPow2 * REF_Y;
+        double d6 = dPow3 * REF_Y;
+        return new ColorXyz((0.4124d * d4) + (0.3576d * d5) + (0.1805d * d6), (0.2126d * d4) + (0.7152d * d5) + (0.0722d * d6), (d4 * 0.0193d) + (d5 * 0.1192d) + (d6 * 0.9505d));
     }
 
     public static ColorCmy convertRGBtoCMY(int i) {
-        return new ColorCmy(1.0d - (((double) ((i >> 16) & 255)) / 255.0d), 1.0d - (((double) ((i >> 8) & 255)) / 255.0d), 1.0d - (((double) ((i >> 0) & 255)) / 255.0d));
+        return new ColorCmy(1.0d - (((i >> 16) & 255) / 255.0d), 1.0d - (((i >> 8) & 255) / 255.0d), 1.0d - (((i >> 0) & 255) / 255.0d));
     }
 
     public static int convertCMYtoRGB(ColorCmy colorCmy) {
@@ -143,7 +147,7 @@ public final class ColorConversions {
     }
 
     public static int convertCMYKtoRGB(int i, int i2, int i3, int i4) {
-        return convertCMYtoRGB(convertCMYKtoCMY(((double) i) / 255.0d, ((double) i2) / 255.0d, ((double) i3) / 255.0d, ((double) i4) / 255.0d));
+        return convertCMYtoRGB(convertCMYKtoCMY(i / 255.0d, i2 / 255.0d, i3 / 255.0d, i4 / 255.0d));
     }
 
     public static ColorHsl convertRGBtoHSL(int i) {
@@ -152,9 +156,9 @@ public final class ColorConversions {
         double d;
         double d2;
         double d3;
-        double d4 = ((double) ((i >> 16) & 255)) / 255.0d;
-        double d5 = ((double) ((i >> 8) & 255)) / 255.0d;
-        double d6 = ((double) ((i >> 0) & 255)) / 255.0d;
+        double d4 = ((i >> 16) & 255) / 255.0d;
+        double d5 = ((i >> 8) & 255) / 255.0d;
+        double d6 = ((i >> 0) & 255) / 255.0d;
         double dMin = Math.min(d4, Math.min(d5, d6));
         if (d4 >= d5 && d4 >= d6) {
             z = true;
@@ -223,9 +227,9 @@ public final class ColorConversions {
         double d2;
         double d3;
         boolean z = false;
-        double d4 = ((double) ((i >> 16) & 255)) / 255.0d;
-        double d5 = ((double) ((i >> 8) & 255)) / 255.0d;
-        double d6 = ((double) ((i >> 0) & 255)) / 255.0d;
+        double d4 = ((i >> 16) & 255) / 255.0d;
+        double d5 = ((i >> 8) & 255) / 255.0d;
+        double d6 = ((i >> 0) & 255) / 255.0d;
         double dMin = Math.min(d4, Math.min(d5, d6));
         boolean z2 = true;
         if (d4 >= d5 && d4 >= d6) {
@@ -322,9 +326,9 @@ public final class ColorConversions {
     }
 
     public static int convertCIELabtoARGBTest(int i, int i2, int i3) {
-        double d = (((((double) i) * 100.0d) / 255.0d) + 16.0d) / 116.0d;
-        double d2 = (((double) i2) / 500.0d) + d;
-        double d3 = d - (((double) i3) / 200.0d);
+        double d = (((i * REF_Y) / 255.0d) + 16.0d) / 116.0d;
+        double d2 = (i2 / 500.0d) + d;
+        double d3 = d - (i3 / 200.0d);
         double dCube = cube(d2);
         double dCube2 = cube(d);
         double dCube3 = cube(d3);
@@ -337,24 +341,27 @@ public final class ColorConversions {
         if (dCube3 <= 0.008856d) {
             dCube3 = (d3 - 0.13793103448275862d) / 7.787d;
         }
-        double d4 = (95.047d * dCube) / 100.0d;
-        double d5 = (dCube2 * 100.0d) / 100.0d;
-        double d6 = (108.883d * dCube3) / 100.0d;
-        double d7 = (3.2406d * d4) + ((-1.5372d) * d5) + ((-0.4986d) * d6);
-        double d8 = ((-0.9689d) * d4) + (1.8758d * d5) + (0.0415d * d6);
-        double d9 = (d4 * 0.0557d) + (d5 * (-0.204d)) + (d6 * 1.057d);
-        return convertRGBtoRGB((d7 > 0.0031308d ? (Math.pow(d7, 0.4166666666666667d) * 1.055d) - 0.055d : d7 * 12.92d) * 255.0d, (d8 > 0.0031308d ? (Math.pow(d8, 0.4166666666666667d) * 1.055d) - 0.055d : d8 * 12.92d) * 255.0d, (d9 > 0.0031308d ? (1.055d * Math.pow(d9, 0.4166666666666667d)) - 0.055d : 12.92d * d9) * 255.0d);
+        double d4 = REF_X * dCube;
+        double d5 = dCube2 * REF_Y;
+        double d6 = REF_Z * dCube3;
+        double d7 = d4 / REF_Y;
+        double d8 = d5 / REF_Y;
+        double d9 = d6 / REF_Y;
+        double d10 = (3.2406d * d7) + ((-1.5372d) * d8) + ((-0.4986d) * d9);
+        double d11 = ((-0.9689d) * d7) + (1.8758d * d8) + (0.0415d * d9);
+        double d12 = (d7 * 0.0557d) + (d8 * (-0.204d)) + (d9 * 1.057d);
+        return convertRGBtoRGB((d10 > 0.0031308d ? (Math.pow(d10, 0.4166666666666667d) * 1.055d) - 0.055d : d10 * 12.92d) * 255.0d, (d11 > 0.0031308d ? (Math.pow(d11, 0.4166666666666667d) * 1.055d) - 0.055d : d11 * 12.92d) * 255.0d, (d12 > 0.0031308d ? (1.055d * Math.pow(d12, 0.4166666666666667d)) - 0.055d : 12.92d * d12) * 255.0d);
     }
 
     private static int convertRGBtoRGB(double d, double d2, double d3) {
         int iRound = (int) Math.round(d);
         int iRound2 = (int) Math.round(d2);
         int iRound3 = (int) Math.round(d3);
-        return (Math.min(255, Math.max(0, iRound)) << 16) | (-16777216) | (Math.min(255, Math.max(0, iRound2)) << 8) | (Math.min(255, Math.max(0, iRound3)) << 0);
+        return (Math.min(255, Math.max(0, iRound)) << 16) | ViewCompat.MEASURED_STATE_MASK | (Math.min(255, Math.max(0, iRound2)) << 8) | (Math.min(255, Math.max(0, iRound3)) << 0);
     }
 
     private static int convertRGBtoRGB(int i, int i2, int i3) {
-        return (Math.min(255, Math.max(0, i)) << 16) | (-16777216) | (Math.min(255, Math.max(0, i2)) << 8) | (Math.min(255, Math.max(0, i3)) << 0);
+        return (Math.min(255, Math.max(0, i)) << 16) | ViewCompat.MEASURED_STATE_MASK | (Math.min(255, Math.max(0, i2)) << 8) | (Math.min(255, Math.max(0, i3)) << 0);
     }
 
     public static ColorCieLch convertCIELabtoCIELCH(ColorCieLab colorCieLab) {
@@ -383,7 +390,7 @@ public final class ColorConversions {
         double d5 = d + (15.0d * d2) + (3.0d * d3);
         double d6 = d4 / d5;
         double d7 = (9.0d * d2) / d5;
-        double d8 = d2 / 100.0d;
+        double d8 = d2 / REF_Y;
         double dPow = (116.0d * (d8 > 0.008856d ? Math.pow(d8, 0.3333333333333333d) : (7.787d * d8) + 0.13793103448275862d)) - 16.0d;
         double d9 = 13.0d * dPow;
         return new ColorCieLuv(dPow, d9 * (d6 - 0.19783982482140777d), d9 * (d7 - 0.46833630293240974d));
@@ -398,7 +405,7 @@ public final class ColorConversions {
         double d5 = 13.0d * d;
         double d6 = (d2 / d5) + 0.19783982482140777d;
         double d7 = (d3 / d5) + 0.46833630293240974d;
-        double dPow = (Math.pow(d4, 3.0d) > 0.008856d ? Math.pow(d4, 3.0d) : (d4 - 0.0d) / 7.787d) * 100.0d;
+        double dPow = (Math.pow(d4, 3.0d) > 0.008856d ? Math.pow(d4, 3.0d) : (d4 - 0.0d) / 7.787d) * REF_Y;
         double d8 = 9.0d * dPow;
         double d9 = (-(d8 * d6)) / (((d6 - 4.0d) * d7) - (d6 * d7));
         return new ColorXyz(d9, dPow, ((d8 - ((15.0d * d7) * dPow)) - (d7 * d9)) / (3.0d * d7));

@@ -1,18 +1,21 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
+import com.sonyericsson.android.camera.Constants;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.cameracommon.settings.SelfTimerInterface;
-import com.sonyericsson.cameracommon.sound.SoundPlayer$Type;
+import com.sonyericsson.cameracommon.sound.SoundPlayer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.apache.commons.imaging.formats.jpeg.iptc.IptcConstants;
 
 public enum SelfTimer implements UserSettingValue, SelfTimerInterface {
-    LONG(2131231172, 2131231181, 2131690105, true, 10000, -1, SoundPlayer$Type.SELF_TIMER_1SEC),
-    SHORT(2131231174, 2131231182, 2131690107, true, 3000, -1, SoundPlayer$Type.SELF_TIMER_3SEC),
-    GESTURE_SHUTTER_COUNT_DOWN(-1, -1, -1, false, 1500, 2131231234, null),
-    SIDE_COUNT_DOWN(-1, -1, -1, false, 500, 2131231234, null),
+    LONG(R.drawable.cam_core_selftimer_setting_10sec_icn, R.drawable.cam_core_shortcut_selftimer_10sec_icn, R.string.cam_strings_self_timer_10_txt, true, IptcConstants.IMAGE_RESOURCE_BLOCK_PRINT_FLAGS_INFO, -1, SoundPlayer.Type.SELF_TIMER_1SEC),
+    SHORT(R.drawable.cam_core_selftimer_setting_3sec_icn, R.drawable.cam_core_shortcut_selftimer_3sec_icn, R.string.cam_strings_self_timer_3_txt, true, 3000, -1, SoundPlayer.Type.SELF_TIMER_3SEC),
+    GESTURE_SHUTTER_COUNT_DOWN(-1, -1, -1, false, 1500, R.drawable.cam_handshutter_timer_hand_icn, null),
+    SIDE_COUNT_DOWN(-1, -1, -1, false, Constants.INTERVAL_OPEN_CAMERA, R.drawable.cam_handshutter_timer_hand_icn, null),
     LAUNCH_AND_CAPTURE_COUNT_DOWN(-1, -1, -1, false, 0, -1, null),
-    OFF(2131231175, 2131231183, 2131690115, false, 0, -1, null);
+    OFF(R.drawable.cam_core_selftimer_setting_off_icn, R.drawable.cam_core_shortcut_selftimer_off_icn, R.string.cam_strings_settings_off_txt, false, 0, -1, null);
 
     public static final String TAG = "SelfTimer";
     private static final int sParameterTextId = 2131690113;
@@ -22,7 +25,7 @@ public enum SelfTimer implements UserSettingValue, SelfTimerInterface {
     private final int mIconId;
     private int mMilliSeconds;
     private final int mShortcutIconId;
-    private SoundPlayer$Type mSoundType;
+    private SoundPlayer.Type mSoundType;
     private final int mTextId;
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValue
@@ -30,14 +33,14 @@ public enum SelfTimer implements UserSettingValue, SelfTimerInterface {
         return 2131690113;
     }
 
-    SelfTimer(int i, int i2, int i3, boolean z, int i4, int i5, SoundPlayer$Type soundPlayer$Type) {
+    SelfTimer(int i, int i2, int i3, boolean z, int i4, int i5, SoundPlayer.Type type) {
         this.mIconId = i;
         this.mShortcutIconId = i2;
         this.mTextId = i3;
         this.mBooleanValue = z;
         this.mMilliSeconds = i4;
         this.mCountDownIconId = i5;
-        this.mSoundType = soundPlayer$Type;
+        this.mSoundType = type;
     }
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValue
@@ -99,7 +102,7 @@ public enum SelfTimer implements UserSettingValue, SelfTimerInterface {
     }
 
     @Override // com.sonyericsson.cameracommon.settings.SelfTimerInterface
-    public SoundPlayer$Type getSoundType() {
+    public SoundPlayer.Type getSoundType() {
         return this.mSoundType;
     }
 
@@ -107,11 +110,11 @@ public enum SelfTimer implements UserSettingValue, SelfTimerInterface {
         if (this == LAUNCH_AND_CAPTURE_COUNT_DOWN) {
             this.mMilliSeconds = i;
             if (this.mMilliSeconds < 4000) {
-                this.mSoundType = SoundPlayer$Type.SELF_TIMER_3SEC;
+                this.mSoundType = SoundPlayer.Type.SELF_TIMER_3SEC;
             } else if (this.mMilliSeconds == 4000) {
-                this.mSoundType = SoundPlayer$Type.SELF_TIMER_4SEC;
+                this.mSoundType = SoundPlayer.Type.SELF_TIMER_4SEC;
             } else {
-                this.mSoundType = SoundPlayer$Type.SELF_TIMER_1SEC;
+                this.mSoundType = SoundPlayer.Type.SELF_TIMER_1SEC;
             }
         }
     }

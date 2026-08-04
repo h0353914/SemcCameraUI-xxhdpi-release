@@ -1,8 +1,10 @@
 package org.apache.commons.imaging.formats.tiff.constants;
 
+import android.support.v4.view.InputDeviceCompat;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import org.apache.commons.imaging.formats.psd.PsdImageParser;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfo;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoAny;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfoAscii;
@@ -168,7 +170,7 @@ public final class TiffTagConstants {
     public static final TagInfoAny TIFF_TAG_SMAX_SAMPLE_VALUE = new TagInfoAny("SMaxSampleValue", 341, -1, TiffDirectoryType.TIFF_DIRECTORY_ROOT);
     public static final TagInfoShort TIFF_TAG_TRANSFER_RANGE = new TagInfoShort("TransferRange", 342, 6, TiffDirectoryType.TIFF_DIRECTORY_ROOT);
     public static final TagInfoShort TIFF_TAG_JPEG_PROC = new TagInfoShort("JPEGProc", 512, 1, TiffDirectoryType.TIFF_DIRECTORY_ROOT);
-    public static final TagInfoLong TIFF_TAG_JPEG_INTERCHANGE_FORMAT = new TagInfoLong("JPEGInterchangeFormat", 513, 1, TiffDirectoryType.TIFF_DIRECTORY_ROOT, true);
+    public static final TagInfoLong TIFF_TAG_JPEG_INTERCHANGE_FORMAT = new TagInfoLong("JPEGInterchangeFormat", InputDeviceCompat.SOURCE_DPAD, 1, TiffDirectoryType.TIFF_DIRECTORY_ROOT, true);
     public static final TagInfoLong TIFF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH = new TagInfoLong("JPEGInterchangeFormatLength", 514, 1, TiffDirectoryType.TIFF_DIRECTORY_ROOT);
     public static final TagInfoShort TIFF_TAG_JPEG_RESTART_INTERVAL = new TagInfoShort("JPEGRestartInterval", 515, 1, TiffDirectoryType.TIFF_DIRECTORY_ROOT);
     public static final TagInfoShort TIFF_TAG_JPEG_LOSSLESS_PREDICTORS = new TagInfoShort("JPEGLosslessPredictors", 517, -1, TiffDirectoryType.TIFF_DIRECTORY_ROOT);
@@ -181,7 +183,7 @@ public final class TiffTagConstants {
     public static final TagInfoShort TIFF_TAG_YCBCR_POSITIONING = new TagInfoShort("YCbCrPositioning", 531, 1, TiffDirectoryType.TIFF_DIRECTORY_ROOT);
     public static final TagInfoLong TIFF_TAG_REFERENCE_BLACK_WHITE = new TagInfoLong("ReferenceBlackWhite", 532, -1, TiffDirectoryType.TIFF_DIRECTORY_ROOT);
     public static final TagInfoAscii TIFF_TAG_COPYRIGHT = new TagInfoAscii("Copyright", 33432, -1, TiffDirectoryType.TIFF_DIRECTORY_ROOT);
-    public static final TagInfoByte TIFF_TAG_XMP = new TagInfoByte("XMP", 700, -1, TiffDirectoryType.TIFF_DIRECTORY_ROOT);
+    public static final TagInfoByte TIFF_TAG_XMP = new TagInfoByte(PsdImageParser.BLOCK_NAME_XMP, 700, -1, TiffDirectoryType.TIFF_DIRECTORY_ROOT);
     public static final TagInfo TIFF_TAG_UNKNOWN = new TagInfoUnknown("Unknown Tag", -1, -1, TiffDirectoryType.EXIF_DIRECTORY_UNKNOWN);
     public static final List<TagInfo> ALL_TIFF_TAGS = Collections.unmodifiableList(Arrays.asList(TIFF_TAG_NEW_SUBFILE_TYPE, TIFF_TAG_SUBFILE_TYPE, TIFF_TAG_IMAGE_WIDTH, TIFF_TAG_IMAGE_LENGTH, TIFF_TAG_BITS_PER_SAMPLE, TIFF_TAG_COMPRESSION, TIFF_TAG_PHOTOMETRIC_INTERPRETATION, TIFF_TAG_THRESHHOLDING, TIFF_TAG_CELL_WIDTH, TIFF_TAG_CELL_LENGTH, TIFF_TAG_FILL_ORDER, TIFF_TAG_DOCUMENT_NAME, TIFF_TAG_IMAGE_DESCRIPTION, TIFF_TAG_MAKE, TIFF_TAG_MODEL, TIFF_TAG_STRIP_OFFSETS, TIFF_TAG_ORIENTATION, TIFF_TAG_SAMPLES_PER_PIXEL, TIFF_TAG_ROWS_PER_STRIP, TIFF_TAG_STRIP_BYTE_COUNTS, TIFF_TAG_MIN_SAMPLE_VALUE, TIFF_TAG_MAX_SAMPLE_VALUE, TIFF_TAG_XRESOLUTION, TIFF_TAG_YRESOLUTION, TIFF_TAG_PLANAR_CONFIGURATION, TIFF_TAG_PAGE_NAME, TIFF_TAG_XPOSITION, TIFF_TAG_YPOSITION, TIFF_TAG_FREE_OFFSETS, TIFF_TAG_FREE_BYTE_COUNTS, TIFF_TAG_GRAY_RESPONSE_UNIT, TIFF_TAG_GRAY_RESPONSE_CURVE, TIFF_TAG_T4_OPTIONS, TIFF_TAG_T6_OPTIONS, TIFF_TAG_RESOLUTION_UNIT, TIFF_TAG_PAGE_NUMBER, TIFF_TAG_TRANSFER_FUNCTION, TIFF_TAG_SOFTWARE, TIFF_TAG_DATE_TIME, TIFF_TAG_ARTIST, TIFF_TAG_HOST_COMPUTER, TIFF_TAG_PREDICTOR, TIFF_TAG_WHITE_POINT, TIFF_TAG_PRIMARY_CHROMATICITIES, TIFF_TAG_COLOR_MAP, TIFF_TAG_HALFTONE_HINTS, TIFF_TAG_TILE_WIDTH, TIFF_TAG_TILE_LENGTH, TIFF_TAG_TILE_OFFSETS, TIFF_TAG_TILE_BYTE_COUNTS, TIFF_TAG_INK_SET, TIFF_TAG_INK_NAMES, TIFF_TAG_NUMBER_OF_INKS, TIFF_TAG_DOT_RANGE, TIFF_TAG_TARGET_PRINTER, TIFF_TAG_EXTRA_SAMPLES, TIFF_TAG_SAMPLE_FORMAT, TIFF_TAG_SMIN_SAMPLE_VALUE, TIFF_TAG_SMAX_SAMPLE_VALUE, TIFF_TAG_TRANSFER_RANGE, TIFF_TAG_JPEG_PROC, TIFF_TAG_JPEG_INTERCHANGE_FORMAT, TIFF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH, TIFF_TAG_JPEG_RESTART_INTERVAL, TIFF_TAG_JPEG_LOSSLESS_PREDICTORS, TIFF_TAG_JPEG_POINT_TRANSFORMS, TIFF_TAG_JPEG_QTABLES, TIFF_TAG_JPEG_DCTABLES, TIFF_TAG_JPEG_ACTABLES, TIFF_TAG_YCBCR_COEFFICIENTS, TIFF_TAG_YCBCR_SUB_SAMPLING, TIFF_TAG_YCBCR_POSITIONING, TIFF_TAG_REFERENCE_BLACK_WHITE, TIFF_TAG_COPYRIGHT, TIFF_TAG_XMP));
 

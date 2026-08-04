@@ -1,7 +1,7 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
-import com.sonyericsson.android.camera.device.CameraInfo$CameraId;
+import com.sonyericsson.android.camera.device.CameraInfo;
 import com.sonyericsson.android.camera.util.capability.PlatformCapability;
 
 public enum FrontAngle implements UserSettingValue {
@@ -41,7 +41,7 @@ public enum FrontAngle implements UserSettingValue {
     }
 
     public static FrontAngle[] getOptions() {
-        if (PlatformCapability.isSuperWideSupported(CameraInfo$CameraId.FRONT)) {
+        if (PlatformCapability.isSuperWideSupported(CameraInfo.CameraId.FRONT)) {
             return values();
         }
         return new FrontAngle[0];

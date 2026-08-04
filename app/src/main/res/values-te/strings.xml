@@ -30,10 +30,16 @@
     <string name="cam_3d_strings_creating_but_incorrect_direction_txt">సంగ్రహించడాన్ని పూర్తి చేయలేరు. దయచేసి సరైన దిశలో పాన్ చేయండి.</string>
     <string name="cam_3d_strings_creating_but_too_quick_txt">సంగ్రహించడాన్ని పూర్తి చేయలేరు. దయచేసి మరింత నెమ్మదిగా పాన్ చేయండి.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">సంగ్రహించడాన్ని పూర్తి చేయలేరు. దయచేసి వేగంగా పాన్ చేయండి.</string>
-    <string name="cam_3d_strings_description_sweep_panorama_txt">మీ కెమెరాను స్వీప్ చేస్తూ  పనోరమ ఫోటోను తీయండి</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">కింది ఫైళ్లను సృష్టిస్తోంది:\n- మల్టీ యాంగిల్ చిత్రం\n- 3D చిత్రం\nగమనిక: ఈ ఫైళ్లల్లో ఉదా రంగు ప్రాంతం ఉంది.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">కింది ఫైళ్లను సృష్టిస్తోంది:\n- మల్టీ యాంగిల్ చిత్రం\n- 3D చిత్రం</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">ప్రాసెస్ చేస్తోంది...\nఈ చిత్రంలో ఉదా రంగు ప్రాంతం ఉంది</string>
+    <string name="cam_3d_strings_description_sweep_panorama_txt">"మీ కెమెరాను స్వీప్ చేస్తూ  పనోరమ ఫోటోను తీయండి"</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"కింది ఫైళ్లను సృష్టిస్తోంది:
+- మల్టీ యాంగిల్ చిత్రం
+- 3D చిత్రం
+గమనిక: ఈ ఫైళ్లల్లో ఉదా రంగు ప్రాంతం ఉంది."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"కింది ఫైళ్లను సృష్టిస్తోంది:
+- మల్టీ యాంగిల్ చిత్రం
+- 3D చిత్రం"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"ప్రాసెస్ చేస్తోంది...
+ఈ చిత్రంలో ఉదా రంగు ప్రాంతం ఉంది"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">చిత్రాన్ని సేవ్ చేస్తోంది</string>
     <string name="cam_3d_strings_dialog_processing_txt">ప్రాసెస్ చేస్తోంది...</string>
     <string name="cam_3d_strings_error_application_busy_txt">దయచేసి 3D కెమెరాను ప్రారంభించడానికి కొన్ని సెకన్లు వేచి ఉండండి</string>
@@ -97,7 +103,7 @@
     <string name="cam_strings_accessibility_image_quality_control_shutter_speed_auto_selected_txt">స్వయంచాలకం ఎంపికైంది</string>
     <string name="cam_strings_accessibility_image_quality_control_shutter_speed_txt">షటర్ వేగం</string>
     <string name="cam_strings_accessibility_image_quality_control_white_balance_txt">వైట్ బ్యాలెన్స్</string>
-    <string name="cam_strings_accessibility_information_txt">సమాచారం </string>
+    <string name="cam_strings_accessibility_information_txt">"సమాచారం "</string>
     <string name="cam_strings_accessibility_menu_txt">మెనూ</string>
     <string name="cam_strings_accessibility_not_configurable_txt">కాన్ఫిగర్ చేయలేరు</string>
     <string name="cam_strings_accessibility_open_color_button_txt">రంగు సర్దుబాటును తెరువు</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">మీ చర్మం ప్రకాశవంతంగా మరియు నున్నగా కనిపిస్తున్నట్లు నిర్ధారించుకోండి. ఈ ప్రభావం ముందు కెమెరాను ఉపయోగించే అప్లికేషన్‌ల్లో పని చేస్తుంది. దీనిని ఫోటోలు మరియు వీడియోల్లో వర్తించవచ్చు. మీరు స్థాయిని కూడా సర్దుబాటు చేయవచ్చు.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">స్థాయి సర్దుబాటు</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">స్కిన్ మృదుత్వ. చే.</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">అప్లికేషన్‌ను ప్రారంభించలేరు.\nమీ పరికరంలో సరికొత్త %1$s సంస్కరణను ఇన్‌స్టాల్ చేసి, ఎనేబుల్ చేసినట్లు నిర్ధారించుకోండి.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"అప్లికేషన్‌ను ప్రారంభించలేరు.
+మీ పరికరంలో సరికొత్త %1$s సంస్కరణను ఇన్‌స్టాల్ చేసి, ఎనేబుల్ చేసినట్లు నిర్ధారించుకోండి."</string>
     <string name="cam_strings_gridline_txt">గ్రిడ్ లైన్లు</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">మీ అరచేతిని కెమెరావైపుగా తిప్పండి. మీ అరచేయి గుర్తించబడినప్పుడు సెల్ఫ్-టైమర్ ఆన్ చేయబడుతుంది. ఇది సులభంగా గుర్తించబడేలా చేయడానికి, మీ వేళ్లను పైకి చాచండి.</string>
     <string name="cam_strings_hand_shutter_hint_txt">మీ అరచేతిని కెమెరావైపుగా తిప్పండి</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">ఉమ్మడి సెట్టింగ్‌లు</string>
     <string name="cam_strings_more_txt">మరిన్ని</string>
     <string name="cam_strings_multi_window_txt">%1$s ను ఉపయోగించడానికి పూర్తి స్క్రీన్‌కు మారడానికి లైన్ విభజన మధ్యలో పట్టుకోని పైకి లేదా కిందికి లాగండి</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">ఇప్పుడు మరొక పరికరం కనెక్ట్ చేయబడింది.\nఆ పరికరంతో వ్యూఫైండర్ ద్వారా చిత్రాన్ని మీరు పంచుకోవాలనుకుంటున్నారా?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"ఇప్పుడు మరొక పరికరం కనెక్ట్ చేయబడింది.
+ఆ పరికరంతో వ్యూఫైండర్ ద్వారా చిత్రాన్ని మీరు పంచుకోవాలనుకుంటున్నారా?"</string>
     <string name="cam_strings_multicam_add_device_txt">పరికరాన్ని చేర్చు</string>
     <string name="cam_strings_multicam_add_more_txt">మరిన్ని చేర్చండి</string>
     <string name="cam_strings_multicam_apply_txt">పూర్తయ్యింది</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">మీటరింగ్</string>
     <string name="cam_strings_predictive_capture_feedback_txt">ముం. చెప్పబ.</string>
     <string name="cam_strings_predictive_capture_txt">ముందు సూచించిన క్యాప్చర్</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">లాండ్‌స్కేప్ మోడ్‌లో మరియు ఆబ్జెక్ట‌ వైపుకు పెట్టి మీ ఫోన్‌ను పైకెత్తడం వలన కదలికను గుర్తించడం ద్వారా కెమెరా స్వయంచాలకంగా లాంచ్ చేయబడుతుంది.\nమీరు కెమెరా సెట్టింగ్‌లలో స్మార్ట్ లాంచ్ నుండి ఈ ఫీచర్‌ను ఉపయోగించడానికి మీకు నచ్చిన మార్గాన్ని ఎంచుకోవచ్చు.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"లాండ్‌స్కేప్ మోడ్‌లో మరియు ఆబ్జెక్ట‌ వైపుకు పెట్టి మీ ఫోన్‌ను పైకెత్తడం వలన కదలికను గుర్తించడం ద్వారా కెమెరా స్వయంచాలకంగా లాంచ్ చేయబడుతుంది.
+మీరు కెమెరా సెట్టింగ్‌లలో స్మార్ట్ లాంచ్ నుండి ఈ ఫీచర్‌ను ఉపయోగించడానికి మీకు నచ్చిన మార్గాన్ని ఎంచుకోవచ్చు."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">సంగ్రహించడానికి వలయం లోపల టచ్ చేయండి</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">సంగ్రహించడానికి స్క్రీన్‌పై టచ్ చేయండి</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">పూర్తి స్క్రీన్‌లో వీక్షించడానికి వలయంలోపల ట్యాప్ చేయండి</string>
     <string name="cam_strings_predictive_launch_guide_txt">కెమెరాను లాంచ్ చేయడానికి వృత్తంలోపల టచ్ చేయండి</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">లాంచ్ చేసి, సంగ్రహిం. టచ్ చే.</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">లాంచ్ చేయడానికి టచ్ చేయండి</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">మీరు కెమెరాను త్వరితంగా లాంచ్ చేయవచ్చు. మీ పరికరాన్ని త్వరగా లాండ్‌స్కేప్ విధానంలో పైకి ఎత్తి, కెమెరాను ఆబ్జెక్ట్ వైపుకి సూటిగా పెట్టండి. కెమెరా స్వయంచాలకంగా లాంచ్ చేయబడుతుంది.\nఈ ఫీచర్‌ను ఉపయోగించడానికి మీరు కెమెరా సెట్టింగ్‌లలో స్మార్ట్ లాంచ్‌ నుండి మీరు మీ ఇష్టమైన మార్గాన్ని ఎంచుకోవచ్చు.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"మీరు కెమెరాను త్వరితంగా లాంచ్ చేయవచ్చు. మీ పరికరాన్ని త్వరగా లాండ్‌స్కేప్ విధానంలో పైకి ఎత్తి, కెమెరాను ఆబ్జెక్ట్ వైపుకి సూటిగా పెట్టండి. కెమెరా స్వయంచాలకంగా లాంచ్ చేయబడుతుంది.
+ఈ ఫీచర్‌ను ఉపయోగించడానికి మీరు కెమెరా సెట్టింగ్‌లలో స్మార్ట్ లాంచ్‌ నుండి మీరు మీ ఇష్టమైన మార్గాన్ని ఎంచుకోవచ్చు."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">స్మార్ట్ లాంచ్</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">మీరు కెమెరాను త్వరితంగా లాంచ్ చేయవచ్చు. మీ పరికరాన్ని పైకి స్వింగ్ చేసి, లాండ్‌స్కేప్ వీక్షణిలో పట్టుకుని, కెమెరాను ఆబ్జెక్ట్ వైపుకి ఎదురుగా పెట్టండి. పరికరం కెమెరాను స్వయంచా. లాంచ్ చే.\nమీరు ఈ ఫీచర్‌ని కెమెరా సెట్టింగ్‌లలో ముందు సూచించిన లాంచ్ నుండి ఆఫ్ చేయవచ్చు.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"మీరు కెమెరాను త్వరితంగా లాంచ్ చేయవచ్చు. మీ పరికరాన్ని పైకి స్వింగ్ చేసి, లాండ్‌స్కేప్ వీక్షణిలో పట్టుకుని, కెమెరాను ఆబ్జెక్ట్ వైపుకి ఎదురుగా పెట్టండి. పరికరం కెమెరాను స్వయంచా. లాంచ్ చే.
+మీరు ఈ ఫీచర్‌ని కెమెరా సెట్టింగ్‌లలో ముందు సూచించిన లాంచ్ నుండి ఆఫ్ చేయవచ్చు."</string>
     <string name="cam_strings_predictive_launch_txt">స్మార్ట్ లాంచ్</string>
     <string name="cam_strings_preview_always_txt">ఆన్</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 సెకన్లు</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s కింది అనుమతి(తులు) అవసరం</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s అనుమతి</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">ఈ చర్యను అమలు చేయడానికి అప్లికేషన్‌కు కింది అనుమతి(తులు) అవసరం.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">అనుమతులను మంజూరు చేయడానికి, అప్లికేషన్ సమాచారం &gt; అనుమతులు కు వెళ్ళండి.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">అనుమతులను మంజూరు చేయడానికి, అప్లికేషన్ సమాచారం > అనుమతులు కు వెళ్ళండి.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">కొనసాగించలేరు</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">ఫోటోలు మరియు వీడియోలను తీయడానికి</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">స్థానాన్ని తిరిగి పొందడానికి</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">అంతర్గత నిల్వకు సేవ్ చేయబడింది</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">తరలించు</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">ఈ చర్యను అమలు చేయడానికి అప్లికేషన్‌కు కింది అనుమతి(తులు) అవసరం.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">SD కార్డ్‌‌ను ఉపయోగించడానికి, SD కార్డ్‌ను యాక్సెస్ చేయడానికి కెమెరాకు అనుమతులు అవసరం.\nడేటా నిల్వను తిరిగి SD కార్డ్‌కు మార్చండి లేదా తదుపరి స్క్రీన్‌‌పై SD కార్డ్‌ను యాక్సెస్ చేయడానికి కెమెరాను అనుమతించండి.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"SD కార్డ్‌‌ను ఉపయోగించడానికి, SD కార్డ్‌ను యాక్సెస్ చేయడానికి కెమెరాకు అనుమతులు అవసరం.
+డేటా నిల్వను తిరిగి SD కార్డ్‌కు మార్చండి లేదా తదుపరి స్క్రీన్‌‌పై SD కార్డ్‌ను యాక్సెస్ చేయడానికి కెమెరాను అనుమతించండి."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">SD కార్డ్ అందుబాటులో లేదు</string>
-    <string name="cam_strings_sd_permission_info_2_txt">కొత్త SD కార్డ్‌కు అవసరమైన అనుమతులు గుర్తించబడ్డాయి.\n\nSD కార్డ్‌ను డేటా నిల్వ వలె ఉపయోగించడానికి, దయచేసి తదుపరి స్క్రీన్‌లో SD కార్డ్ లేదా DCIM డైరెక్టరీని ఎంచుకోండి.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">SD కార్డ్ లేదా DCIM డైరెక్టరీ ఎంచుకోలేదు. SD కార్డ్‌ను ఉపయోగించడం సాధ్యం కాదు.\n\nఅనుమతులను మంజూరు చేయడానికి, సేవ్ స్థానాన్ని SD కార్డ్‌కు మార్చి ప్రారంభించండి లేదా తదుపరి స్క్రీన్‌లో సరైన డైరెక్టరీని ఎంచుకోండి.</string>
-    <string name="cam_strings_sd_permission_info_txt">అనుమతులు అవసరమైన కొత్త SD కార్డ్ కనుగొనబడింది.\nఅందువల్ల, అంతర్గత నిల్వ బదులుగా డీఫాల్ట్ డేటా నిల్వగా ఉపయోగించబడుతుంది.\n\nSD కార్డ్‌ను డేటా నిల్వగా ఉపయోగించేందుకు, దయచేసి కెమెరా సెట్టింగ్‌లలో నిల్వ ఎంపికను SD కార్డ్‌కు మార్చండి.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"కొత్త SD కార్డ్‌కు అవసరమైన అనుమతులు గుర్తించబడ్డాయి.
+
+SD కార్డ్‌ను డేటా నిల్వ వలె ఉపయోగించడానికి, దయచేసి తదుపరి స్క్రీన్‌లో SD కార్డ్ లేదా DCIM డైరెక్టరీని ఎంచుకోండి."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"SD కార్డ్ లేదా DCIM డైరెక్టరీ ఎంచుకోలేదు. SD కార్డ్‌ను ఉపయోగించడం సాధ్యం కాదు.
+
+అనుమతులను మంజూరు చేయడానికి, సేవ్ స్థానాన్ని SD కార్డ్‌కు మార్చి ప్రారంభించండి లేదా తదుపరి స్క్రీన్‌లో సరైన డైరెక్టరీని ఎంచుకోండి."</string>
+    <string name="cam_strings_sd_permission_info_txt">"అనుమతులు అవసరమైన కొత్త SD కార్డ్ కనుగొనబడింది.
+అందువల్ల, అంతర్గత నిల్వ బదులుగా డీఫాల్ట్ డేటా నిల్వగా ఉపయోగించబడుతుంది.
+
+SD కార్డ్‌ను డేటా నిల్వగా ఉపయోగించేందుకు, దయచేసి కెమెరా సెట్టింగ్‌లలో నిల్వ ఎంపికను SD కార్డ్‌కు మార్చండి."</string>
     <string name="cam_strings_sd_permission_rationale_txt">ఫోటోలు మరియు వీడియోలను SD కార్డ్‌లో సేవ్ చేయడం</string>
     <string name="cam_strings_select_picture_txt">ఫోటోను ఎంచుకోండి</string>
     <string name="cam_strings_self_timer_05_txt">0.5 సెక.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">స్వీయ సంగ్రహణ</string>
     <string name="cam_strings_side_touch_not_supported_txt">ఈ స్క్రీన్‌పై సైడ్ సెన్స్ మద్దతివ్వదు</string>
     <string name="cam_strings_side_touch_on_title_txt">సైడ్ సెన్స్</string>
-    <string name="cam_strings_side_touch_on_txt">ఈ చర్యను ఉపయోగించడానికి, సెట్టింగ్‌లు &gt; ప్రదర్శనకు వెళ్లి, సైడ్ సెన్స్‌ను ఆన్ చేయండి. ఇప్పుడే ఎనేబుల్ చెయ్యాలా?</string>
+    <string name="cam_strings_side_touch_on_txt">ఈ చర్యను ఉపయోగించడానికి, సెట్టింగ్‌లు > ప్రదర్శనకు వెళ్లి, సైడ్ సెన్స్‌ను ఆన్ చేయండి. ఇప్పుడే ఎనేబుల్ చెయ్యాలా?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">సైడ్ సెన్స్</string>
-    <string name="cam_strings_side_touch_tutorial_txt">షట్టర్ బటన్‌‌కు బదులుగా స్క్రీన్ సైడ్‌ భాగంలో రెండుసార్లు ట్యాప్ చేయడం ద్వారా మీరు ఫోటో లేదా వీడియోను తీసుకోవచ్చు. ఈ సైడ్ సెన్సార్‌తోపాటు మీరు మీ వేలిని స్లైడ్ చేయడం ద్వారా జూమ్ ఇన్ మరియు జూమ్ అవుట్ కూడా చేయవచ్చు.\nఈ చర్యకు ఫోటో మరియు వీడియో విధానం రెండూ మద్దతిస్తాయి. మీరు దీన్ని కెమెరా సెట్టింగ్‌లలో సైడ్ సెన్స్ నుండి ఆఫ్ చేయవచ్చు.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">షట్టర్ బటన్‌ కాకుండా పోర్ట్రెయిట్ వీక్షణిలో స్క్రీన్ సైడ్‌ భాగంలో రెండుసార్లు ట్యాప్ చేయడం ద్వారా మీరు ఫోటో లేదా వీడియోను తీసుకోవచ్చు. ఈ సైడ్ సెన్సార్‌తోపాటు మీరు మీ వేలిని స్లైడ్ చేయడం ద్వారా జూమ్ ఇన్ మరియు జూమ్ అవుట్ కూడా చేయవచ్చు.\nఈ చర్యకు ఫోటో మరియు వీడియో విధానం రెండూ మద్దతిస్తాయి. మీరు దీన్ని కెమెరా సెట్టింగ్‌లలో సైడ్ సెన్స్ నుండి ఆఫ్ చేయవచ్చు.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">షట్టర్ బటన్‌ కాకుండా పోర్ట్రెయిట్ వీక్షణిలో స్క్రీన్ సైడ్‌ భాగంలో రెండుసార్లు ట్యాప్ చేయడం ద్వారా మీరు ఫోటో లేదా వీడియోను తీసుకోవచ్చు.\nఈ చర్యకు ఫోటో మరియు వీడియో విధానం రెండూ మద్దతిస్తాయి. మీరు దీన్ని కెమెరా సెట్టింగ్‌లలో సైడ్ సెన్స్ నుండి ఆఫ్ చేయవచ్చు.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">షట్టర్ బటన్‌‌కు బదులుగా స్క్రీన్ సైడ్‌ భాగంలో రెండుసార్లు ట్యాప్ చేయడం ద్వారా మీరు ఫోటో లేదా వీడియోను తీసుకోవచ్చు.\nఈ చర్యకు ఫోటో మరియు వీడియో విధానం రెండూ మద్దతిస్తాయి. మీరు దీన్ని కెమెరా సెట్టింగ్‌లలో సైడ్ సెన్స్ నుండి ఆఫ్ చేయవచ్చు.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"షట్టర్ బటన్‌‌కు బదులుగా స్క్రీన్ సైడ్‌ భాగంలో రెండుసార్లు ట్యాప్ చేయడం ద్వారా మీరు ఫోటో లేదా వీడియోను తీసుకోవచ్చు. ఈ సైడ్ సెన్సార్‌తోపాటు మీరు మీ వేలిని స్లైడ్ చేయడం ద్వారా జూమ్ ఇన్ మరియు జూమ్ అవుట్ కూడా చేయవచ్చు.
+ఈ చర్యకు ఫోటో మరియు వీడియో విధానం రెండూ మద్దతిస్తాయి. మీరు దీన్ని కెమెరా సెట్టింగ్‌లలో సైడ్ సెన్స్ నుండి ఆఫ్ చేయవచ్చు."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"షట్టర్ బటన్‌ కాకుండా పోర్ట్రెయిట్ వీక్షణిలో స్క్రీన్ సైడ్‌ భాగంలో రెండుసార్లు ట్యాప్ చేయడం ద్వారా మీరు ఫోటో లేదా వీడియోను తీసుకోవచ్చు. ఈ సైడ్ సెన్సార్‌తోపాటు మీరు మీ వేలిని స్లైడ్ చేయడం ద్వారా జూమ్ ఇన్ మరియు జూమ్ అవుట్ కూడా చేయవచ్చు.
+ఈ చర్యకు ఫోటో మరియు వీడియో విధానం రెండూ మద్దతిస్తాయి. మీరు దీన్ని కెమెరా సెట్టింగ్‌లలో సైడ్ సెన్స్ నుండి ఆఫ్ చేయవచ్చు."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"షట్టర్ బటన్‌ కాకుండా పోర్ట్రెయిట్ వీక్షణిలో స్క్రీన్ సైడ్‌ భాగంలో రెండుసార్లు ట్యాప్ చేయడం ద్వారా మీరు ఫోటో లేదా వీడియోను తీసుకోవచ్చు.
+ఈ చర్యకు ఫోటో మరియు వీడియో విధానం రెండూ మద్దతిస్తాయి. మీరు దీన్ని కెమెరా సెట్టింగ్‌లలో సైడ్ సెన్స్ నుండి ఆఫ్ చేయవచ్చు."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"షట్టర్ బటన్‌‌కు బదులుగా స్క్రీన్ సైడ్‌ భాగంలో రెండుసార్లు ట్యాప్ చేయడం ద్వారా మీరు ఫోటో లేదా వీడియోను తీసుకోవచ్చు.
+ఈ చర్యకు ఫోటో మరియు వీడియో విధానం రెండూ మద్దతిస్తాయి. మీరు దీన్ని కెమెరా సెట్టింగ్‌లలో సైడ్ సెన్స్ నుండి ఆఫ్ చేయవచ్చు."</string>
     <string name="cam_strings_side_touch_txt">సైడ్ సెన్స్</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">రికార్డింగ్ శైలి మరియు స్క్రీన్ రిజల్యూషన్‌ను కెమెరా సెట్టింగ్‌లలో మార్చవచ్చు</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">అత్యం. నెమ్మది కదలిక(ఒక-షాట్)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">అత్యంత నెమ్మది కదలిక</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">మీరు స్లో మోషన్ కోసం fps మరియు రికార్డింగ్ శైలిని మార్చవచ్చు</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">మరిన్ని ఎంపికలు</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">స్క్రీన్ మధ్యలోని బటన్ నొక్కి, తక్షణమే %1$s fps స్లో మోషన్‌లో విలువైన క్షణం రికార్డ్ చేయండి.\nకాంతివంతమైన స్థితిలో రికార్డ్ చేయడం ఉత్తమ వీడియోను సృష్టించడంలో మీకు సహాయపడుతుంది.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"స్క్రీన్ మధ్యలోని బటన్ నొక్కి, తక్షణమే %1$s fps స్లో మోషన్‌లో విలువైన క్షణం రికార్డ్ చేయండి.
+కాంతివంతమైన స్థితిలో రికార్డ్ చేయడం ఉత్తమ వీడియోను సృష్టించడంలో మీకు సహాయపడుతుంది."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">మీరు మధ్య బటన్‌ను నొక్కి %1$s fpsతో సరైన సంఘటనను రికార్డ్ చేయండి</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">స్క్రీన్ మధ్యలోని బటన్‌ను నొక్కడం ద్వారా తక్షణమే %1$s fps స్లో మోషన్‌లో విలువైన క్షణాన్ని రికార్డ్ చేయండి</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">అత్యంత నెమ్మది కదలిక (ఒక-షాట్)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">నెమ్మది కదలిక</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">ఎలా రికార్డ్ చేయాలి</string>
     <string name="cam_strings_slow_motion_standard_txt">నెమ్మది కదలిక</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">స్లో మోషన్‌లో విలువైన క్షణాన్ని చూపడం ద్వారా మనోహరమైన వీడియోను రూపొందించండి.\nప్రకాశవంతమైన స్థితిలో రికార్డ్ చేయడం ఉత్తమ వీడియోను సృష్టించడంలో మీకు సహాయపడుతుంది.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"స్లో మోషన్‌లో విలువైన క్షణాన్ని చూపడం ద్వారా మనోహరమైన వీడియోను రూపొందించండి.
+ప్రకాశవంతమైన స్థితిలో రికార్డ్ చేయడం ఉత్తమ వీడియోను సృష్టించడంలో మీకు సహాయపడుతుంది."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">మీరు %1$s fps కు మారడం ద్వారా విభిన్న వేగాల వద్ద వీడియోను రికార్డ్ చేయవచ్చు</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">తగిన క్షణాన మధ్యలోని బటన్‌ను టాప్ చేయండి</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">స్లో మోషన్ రికార్డ్ చేయబడింది</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">సాఫ్ట్‌వేర్ లైసెన్స్‌లు</string>
     <string name="cam_strings_take_photo_txt">ఫోటోను తీయి</string>
     <string name="cam_strings_term_of_use_accept_txt">అంగీకరించండి</string>
-    <string name="cam_strings_term_of_use_consent_txt">Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;ఉపయోగ నిబంధనలు&lt;/a&gt; కు నేను సమ్మతిస్తుంన్నాను.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">ఉపయోగ నిబంధనలు&lt;/a> కు నేను సమ్మతిస్తుంన్నాను.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">ఈ సర్వీసు యొక్క వాడకం మీ డేటా ప్లాన్ ఆధారంగా మొబైల్ డేటా ఛార్జీలకు సంబంధించి ఉండవచ్చు.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">సర్వీసు మరియు సర్వీసు మెరుగుదలల భాగంగా సముచితమైన ఫలితాలతో మీకు అందజేయడానికి, మీ హ్యాష్ చేయబడిన Android ID యూనిక్ పరికర ఐడెంటిఫైయర్, స్థానం ఆధారిత డేటా మరియు టైమ్‌స్టాంప్‌‌ను Sony Mobile సేకరిస్తుంది.</string>
     <string name="cam_strings_term_of_use_decline_txt">తిరస్కరించండి</string>
     <string name="cam_strings_term_of_use_title_txt">నిబంధనలు మరియు షరతులు</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;సేవా నిబంధలు&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">సేవా నిబంధలు&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">ఫోటోలను డీసెలక్ట్ చేయండి</string>
     <string name="cam_strings_timeshift_operation_failed_txt">సేవ్ చేయలేరు</string>
     <string name="cam_strings_timeshift_save_complete_txt">సేవ్ చేయబడింది</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">స్థిరమైన 4K వీడియో రికార్డింగ్ కోసం, మీరు తప్పనిసరిగా అధిక వేగ SD కార్డ్ (UHS వేగ తరగతి 1 లేదా తదుపరిది లేదా వేగ తరగతి 10 సిఫార్సు చేయబడింది) ఉపయోగిస్తే మినహా ఈ సెట్టింగ్‌ను మార్చకూడదు.</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">స్థిరమైన Timeshift video రికార్డింగ్ కోసం, మీరు అధిక వేగ SD కార్డ్ (UHS వేగ తరగతి 1 లేదా తదుపరిది లేదా వేగ తరగతి 10 సిఫార్సు చేయబడింది) ఉపయోగించకుంటే ఈ సెట్టింగ్‌ను మార్చలేరు. ఏదేమైనప్పటికీ మార్చాలా?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">స్థిరమైన నెమ్మది చలన రికార్డింగ్ కోసం, మీరు అధిక వేగ SD కార్డ్ (UHS వేగ తరగతి 1 లేదా తదుపరిది లేదా వేగ తరగతి 10 సిఫార్సు చేయబడింది) ఉపయోగిస్తే మినహా ఈ సెట్టింగ్‌ను మార్చవద్దు.</string>
-    <string name="cam_strings_video_explanatory_txt">స్థిరమైన వీడియో రికార్డింగ్ కోసం, మీరు డేటా నిల్వను అంతర్గత నిల్వకు మార్చాలని మేము సిఫార్సు చేస్తున్నాము. మీరు ఇప్పుడు మార్చాలనుకుంటున్నారా?\n\nమీరు SD కార్డ్‌ను డేటా నిల్వ వలె ఉపయోగించడాన్ని కొనసాగిస్తే, అధిక వేగ SD కార్డ్ (UHS వేగ తరగతి 1 లేదా తదుపరిది లేదా వేగ తరగతి 10 సిఫార్సు చేయబడింది) ఉపయోగిస్తున్నట్లు నిర్ధారించుకోండి.</string>
+    <string name="cam_strings_video_explanatory_txt">"స్థిరమైన వీడియో రికార్డింగ్ కోసం, మీరు డేటా నిల్వను అంతర్గత నిల్వకు మార్చాలని మేము సిఫార్సు చేస్తున్నాము. మీరు ఇప్పుడు మార్చాలనుకుంటున్నారా?
+
+మీరు SD కార్డ్‌ను డేటా నిల్వ వలె ఉపయోగించడాన్ని కొనసాగిస్తే, అధిక వేగ SD కార్డ్ (UHS వేగ తరగతి 1 లేదా తదుపరిది లేదా వేగ తరగతి 10 సిఫార్సు చేయబడింది) ఉపయోగిస్తున్నట్లు నిర్ధారించుకోండి."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">డ్యూయల్ కెమెరా</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">మీరు డ్యూయల్ కెమెరాను ఉపయోగించి, రాత్రిపూట అయినా లేదా తక్కువ కాంతి ఉన్న గదిలో అయినా తక్కువ శబ్దంతో అద్భుతమైన వీడియోలను రికార్డ్ చేయవచ్చు. అత్యంత అధిక గ్రాహ్యతతో రికార్డ్ చేయడానికి దృశ్యాల ఆధారంగా సింగిల్ కెమెరా మరియు డ్యూయల్ కెమెరాల మధ్య కెమెరా స్వయంచాలకంగా మారుతుంది.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">డ్యూయల్ కెమెరాతో వీడియో రికార్డింగ్</string>

@@ -7,13 +7,14 @@ import org.apache.commons.imaging.ImageWriteException;
 import org.apache.commons.imaging.common.BinaryOutputStream;
 import org.apache.commons.imaging.formats.tiff.fieldtypes.FieldType;
 import org.apache.commons.imaging.formats.tiff.taginfos.TagInfo;
+import org.apache.commons.imaging.formats.tiff.write.TiffOutputItem;
 
 public class TiffOutputField {
     private static final String NEWLINE = System.getProperty("line.separator");
     private byte[] bytes;
     public final int count;
     public final FieldType fieldType;
-    private final TiffOutputItem$Value separateValueItem;
+    private final TiffOutputItem.Value separateValueItem;
     private int sortHint;
     public final int tag;
     public final TagInfo tagInfo;
@@ -33,7 +34,7 @@ public class TiffOutputField {
             this.separateValueItem = null;
             return;
         }
-        this.separateValueItem = new TiffOutputItem$Value("Field Seperate value (" + tagInfo.getDescription() + ")", bArr);
+        this.separateValueItem = new TiffOutputItem.Value("Field Seperate value (" + tagInfo.getDescription() + ")", bArr);
     }
 
     protected static TiffOutputField createOffsetField(TagInfo tagInfo, ByteOrder byteOrder) throws ImageWriteException {

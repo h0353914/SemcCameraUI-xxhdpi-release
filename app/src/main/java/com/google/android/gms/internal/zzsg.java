@@ -3,6 +3,7 @@ package com.google.android.gms.internal;
 import java.io.IOException;
 import java.util.Arrays;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 final class zzsg {
     final int tag;
     final byte[] zzbiw;

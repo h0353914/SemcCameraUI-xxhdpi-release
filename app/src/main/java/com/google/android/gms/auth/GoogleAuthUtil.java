@@ -6,7 +6,9 @@ import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build$VERSION;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.SystemClock;
@@ -17,11 +19,12 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.internal.zzl;
 import com.google.android.gms.common.internal.zzx;
-import com.google.android.gms.internal.zzau$zza;
+import com.google.android.gms.internal.zzau;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public final class GoogleAuthUtil {
     public static final int CHANGE_TYPE_ACCOUNT_ADDED = 1;
     public static final int CHANGE_TYPE_ACCOUNT_REMOVED = 2;
@@ -39,9 +42,9 @@ public final class GoogleAuthUtil {
     private static final ComponentName zzRx;
 
     static {
-        int i = Build$VERSION.SDK_INT;
+        int i = Build.VERSION.SDK_INT;
         KEY_CALLER_UID = "callerUid";
-        int i2 = Build$VERSION.SDK_INT;
+        int i2 = Build.VERSION.SDK_INT;
         KEY_ANDROID_PACKAGE_NAME = "androidPackageName";
         zzRw = new ComponentName("com.google.android.gms", "com.google.android.gms.auth.GetToken");
         zzRx = new ComponentName("com.google.android.gms", "com.google.android.gms.recovery.RecoveryService");
@@ -67,7 +70,7 @@ public final class GoogleAuthUtil {
                 throw new IOException("Could not bind to service with the given context.");
             }
             try {
-                Bundle bundleZza = zzau$zza.zza(zzaVar.zzno()).zza(str, bundle);
+                Bundle bundleZza = zzau.zza.zza(zzaVar.zzno()).zza(str, bundle);
                 String string = bundleZza.getString("Error");
                 if (bundleZza.getBoolean("booleanResult")) {
                 } else {
@@ -96,7 +99,7 @@ public final class GoogleAuthUtil {
                 throw new IOException("Could not bind to service with the given context.");
             }
             try {
-                return zzau$zza.zza(zzaVar.zzno()).zza(new AccountChangeEventsRequest().setAccountName(str).setEventIndex(i)).getEvents();
+                return zzau.zza.zza(zzaVar.zzno()).zza(new AccountChangeEventsRequest().setAccountName(str).setEventIndex(i)).getEvents();
             } catch (RemoteException e) {
                 Log.i("GoogleAuthUtil", "GMS remote exception ", e);
                 throw new IOException("remote exception");
@@ -125,12 +128,12 @@ public final class GoogleAuthUtil {
 
     @Deprecated
     public static String getToken(Context context, String str, String str2) throws IOException, GoogleAuthException {
-        return getToken(context, new Account(str, "com.google"), str2);
+        return getToken(context, new Account(str, GOOGLE_ACCOUNT_TYPE), str2);
     }
 
     @Deprecated
     public static String getToken(Context context, String str, String str2, Bundle bundle) throws IOException, GoogleAuthException {
-        return getToken(context, new Account(str, "com.google"), str2, bundle);
+        return getToken(context, new Account(str, GOOGLE_ACCOUNT_TYPE), str2, bundle);
     }
 
     public static String getTokenWithNotification(Context context, Account account, String str, Bundle bundle) throws IOException, GoogleAuthException {
@@ -166,22 +169,22 @@ public final class GoogleAuthUtil {
 
     @Deprecated
     public static String getTokenWithNotification(Context context, String str, String str2, Bundle bundle) throws IOException, GoogleAuthException {
-        return getTokenWithNotification(context, new Account(str, "com.google"), str2, bundle);
+        return getTokenWithNotification(context, new Account(str, GOOGLE_ACCOUNT_TYPE), str2, bundle);
     }
 
     @Deprecated
     public static String getTokenWithNotification(Context context, String str, String str2, Bundle bundle, Intent intent) throws IOException, GoogleAuthException {
-        return getTokenWithNotification(context, new Account(str, "com.google"), str2, bundle, intent);
+        return getTokenWithNotification(context, new Account(str, GOOGLE_ACCOUNT_TYPE), str2, bundle, intent);
     }
 
     @Deprecated
     public static String getTokenWithNotification(Context context, String str, String str2, Bundle bundle, String str3, Bundle bundle2) throws IOException, GoogleAuthException {
-        return getTokenWithNotification(context, new Account(str, "com.google"), str2, bundle, str3, bundle2);
+        return getTokenWithNotification(context, new Account(str, GOOGLE_ACCOUNT_TYPE), str2, bundle, str3, bundle2);
     }
 
     @Deprecated
     public static void invalidateToken(Context context, String str) {
-        AccountManager.get(context).invalidateAuthToken("com.google", str);
+        AccountManager.get(context).invalidateAuthToken(GOOGLE_ACCOUNT_TYPE, str);
     }
 
     public static TokenData zza(Context context, Account account, String str, Bundle bundle) throws GoogleAuthException, IOException {
@@ -202,7 +205,7 @@ public final class GoogleAuthUtil {
                 throw new IOException("Could not bind to service with the given context.");
             }
             try {
-                Bundle bundleZza = zzau$zza.zza(zzaVar.zzno()).zza(account, str, bundle2);
+                Bundle bundleZza = zzau.zza.zza(zzaVar.zzno()).zza(account, str, bundle2);
                 if (bundleZza == null) {
                     Log.w("GoogleAuthUtil", "Binder call returned null.");
                     throw new GoogleAuthException("ServiceUnavailable");

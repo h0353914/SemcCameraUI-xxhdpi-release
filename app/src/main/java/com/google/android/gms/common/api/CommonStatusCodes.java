@@ -1,5 +1,6 @@
 package com.google.android.gms.common.api;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class CommonStatusCodes {
 
     @Deprecated
@@ -73,15 +74,15 @@ public class CommonStatusCodes {
                         switch (i) {
                             case 3000:
                                 return "AUTH_API_INVALID_CREDENTIALS";
-                            case 3001:
+                            case AUTH_API_ACCESS_FORBIDDEN /* 3001 */:
                                 return "AUTH_API_ACCESS_FORBIDDEN";
-                            case 3002:
+                            case AUTH_API_CLIENT_ERROR /* 3002 */:
                                 return "AUTH_API_CLIENT_ERROR";
-                            case 3003:
+                            case AUTH_API_SERVER_ERROR /* 3003 */:
                                 return "AUTH_API_SERVER_ERROR";
-                            case 3004:
+                            case AUTH_TOKEN_ERROR /* 3004 */:
                                 return "AUTH_TOKEN_ERROR";
-                            case 3005:
+                            case AUTH_URL_RESOLUTION /* 3005 */:
                                 return "AUTH_URL_RESOLUTION";
                             default:
                                 return "unknown status code: " + i;

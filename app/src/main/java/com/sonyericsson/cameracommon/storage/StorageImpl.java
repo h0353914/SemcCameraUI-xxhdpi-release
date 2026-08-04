@@ -1,12 +1,18 @@
 package com.sonyericsson.cameracommon.storage;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Handler;
-import com.sonyericsson.android.camera.CameraApplication$Pausable;
+import com.sonyericsson.android.camera.CameraApplication;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.ThreadUtil;
+import com.sonyericsson.cameracommon.storage.CameraStorageManager;
+import com.sonyericsson.cameracommon.storage.Storage;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,7 +24,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.Semaphore;
 
-public class StorageImpl implements Storage, CameraApplication$Pausable {
+public class StorageImpl implements Storage, CameraApplication.Pausable {
     private static final int DATA_LOAD_TASK_SIZE = 1;
     private static final int MULTI_STORAGE_ACCESS_PERMIT_NUM = 2;
     static final long NO_INTERVAL_REMAIN_THRESHOLD = 307200;
@@ -31,20 +37,75 @@ public class StorageImpl implements Storage, CameraApplication$Pausable {
     private SavingTaskManager mSavingTaskManager;
     private StorageController mStorageController;
     private CameraStorageManager mCameraStorageManager = null;
-    private StorageImpl$StorageBroadcastReceiver mStorageBroadcastReceiver = new StorageImpl$StorageBroadcastReceiver(this, null);
-    private Map<Storage$StorageType, Semaphore> mStorageAccessSemaphoreMap = new HashMap();
+    private StorageBroadcastReceiver mStorageBroadcastReceiver = new StorageBroadcastReceiver();
+    private Map<Storage.StorageType, Semaphore> mStorageAccessSemaphoreMap = new HashMap();
     private final Object mRequestLock = new Object();
 
-    static /* synthetic */ StorageController access$100(StorageImpl storageImpl) {
-        return storageImpl.mStorageController;
+    private class StorageBroadcastReceiver extends BroadcastReceiver {
+        private StorageBroadcastReceiver() {
+        }
+
+        @Override // android.content.BroadcastReceiver
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            String path = intent.getData().getPath();
+            Storage.StorageType storageTypeFromPath = StorageUtil.getStorageTypeFromPath(path, context);
+            CamLog.i("Action = " + action + ", Type = " + storageTypeFromPath + ", Path = " + path);
+            if (action.equals("android.intent.action.MEDIA_MOUNTED")) {
+                notifyStorageStatusChanged(storageTypeFromPath, action, path);
+                return;
+            }
+            if (action.equals("android.intent.action.MEDIA_UNMOUNTED")) {
+                notifyStorageStatusChanged(storageTypeFromPath, action, path);
+            } else if (action.equals("android.intent.action.MEDIA_EJECT")) {
+                notifyStorageStatusChanged(storageTypeFromPath, action, path);
+            } else if (action.equals("android.intent.action.MEDIA_SCANNER_FINISHED")) {
+                notifyStorageStatusChanged(storageTypeFromPath, action, path);
+            }
+        }
+
+        private void notifyStorageStatusChanged(Storage.StorageType storageType, String str, String str2) {
+            boolean z;
+            Iterator<Storage.StorageType> it = StorageUtil.getMountableStorageTypes().iterator();
+            while (true) {
+                if (!it.hasNext()) {
+                    z = false;
+                    break;
+                } else if (it.next() == storageType) {
+                    z = true;
+                    break;
+                }
+            }
+            if (z) {
+                if (StorageImpl.this.isStorageReadable()) {
+                    if (str.equals("android.intent.action.MEDIA_SCANNER_FINISHED")) {
+                        StorageImpl.this.mStorageController.checkAndNotifyStateChanged(storageType, true);
+                    }
+                    if (StorageImpl.this.mCameraStorageManager != null) {
+                        StorageImpl.this.mCameraStorageManager.updateStorageStateByAction(str, storageType);
+                        return;
+                    }
+                    return;
+                }
+                CamLog.i("onReceive: storage is not activated.");
+                return;
+            }
+            CamLog.i("StorageType is not mountable. action = " + str + " path=" + str2);
+        }
     }
 
-    static /* synthetic */ CameraStorageManager access$200(StorageImpl storageImpl) {
-        return storageImpl.mCameraStorageManager;
-    }
+    private class StorageInitializeThread extends Thread {
+        private static final String THREAD_NAME_STORAGE_INITIALIZE = "SM#initTask";
 
-    static /* synthetic */ void access$300(StorageImpl storageImpl) {
-        storageImpl.initialize();
+        public StorageInitializeThread() {
+            setName(THREAD_NAME_STORAGE_INITIALIZE);
+        }
+
+        @Override // java.lang.Thread, java.lang.Runnable
+        public void run() {
+            super.run();
+            StorageImpl.this.initialize();
+        }
     }
 
     CameraStorageManager getCameraStorageManager() {
@@ -56,11 +117,11 @@ public class StorageImpl implements Storage, CameraApplication$Pausable {
             CamLog.d("StorageImpl open");
         }
         this.mContext = context;
-        for (Storage$StorageType storage$StorageType : StorageUtil.getMountableStorageTypes()) {
-            if (storage$StorageType == Storage$StorageType.INTERNAL) {
-                this.mStorageAccessSemaphoreMap.put(storage$StorageType, new Semaphore(2, true));
+        for (Storage.StorageType storageType : StorageUtil.getMountableStorageTypes()) {
+            if (storageType == Storage.StorageType.INTERNAL) {
+                this.mStorageAccessSemaphoreMap.put(storageType, new Semaphore(2, true));
             } else {
-                this.mStorageAccessSemaphoreMap.put(storage$StorageType, new Semaphore(1, true));
+                this.mStorageAccessSemaphoreMap.put(storageType, new Semaphore(1, true));
             }
         }
         this.mStorageController = new StorageController();
@@ -68,10 +129,11 @@ public class StorageImpl implements Storage, CameraApplication$Pausable {
         this.mSavingTaskManager = new SavingTaskManager(context, this.mCameraStorageManager, this.mStorageAccessSemaphoreMap);
         prepareReceiver();
         this.mDataLoaderTaskQueue = new LinkedBlockingDeque<>(1);
-        this.mDataLoadExecutor = ThreadUtil.buildExecutor("DataLoaderTask");
-        new StorageImpl$StorageInitializeThread(this).start();
+        this.mDataLoadExecutor = ThreadUtil.buildExecutor(THREAD_NAME_DATE_LOADER_TASK);
+        new StorageInitializeThread().start();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private void initialize() {
         if (CamLog.VERBOSE) {
             CamLog.d("StorageImpl initialize");
@@ -130,14 +192,14 @@ public class StorageImpl implements Storage, CameraApplication$Pausable {
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public boolean requestStore(SavingRequest savingRequest, Storage$StorageType storage$StorageType, Storage$OnStoreCompletedListener storage$OnStoreCompletedListener) {
+    public boolean requestStore(SavingRequest savingRequest, Storage.StorageType storageType, Storage.OnStoreCompletedListener onStoreCompletedListener) {
         if (CamLog.VERBOSE) {
             CamLog.d("requestStore");
         }
-        if (!this.mSavingTaskManager.canPushStoreTask(storage$StorageType)) {
+        if (!this.mSavingTaskManager.canPushStoreTask(storageType)) {
             return false;
         }
-        savingRequest.addCallback(storage$OnStoreCompletedListener);
+        savingRequest.addCallback(onStoreCompletedListener);
         if (savingRequest instanceof VideoSavingRequest) {
             if (CamLog.VERBOSE) {
                 CamLog.d("StorageImpl storeVideo");
@@ -153,19 +215,39 @@ public class StorageImpl implements Storage, CameraApplication$Pausable {
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public void requestLoad(Uri uri, int i, Storage$OnLoadCompletedListener storage$OnLoadCompletedListener) throws Throwable {
+    public void requestLoad(final Uri uri, int i, final Storage.OnLoadCompletedListener onLoadCompletedListener) {
         if (CamLog.VERBOSE) {
             CamLog.d("StorageImpl requestLoad");
         }
-        new Handler().post(new StorageImpl$1(this, storage$OnLoadCompletedListener, new ImageLoader(this.mContext, uri, i).load(), uri));
+        final Bitmap bitmapLoad = new ImageLoader(this.mContext, uri, i).load();
+        new Handler().post(new Runnable() { // from class: com.sonyericsson.cameracommon.storage.StorageImpl.1
+            @Override // java.lang.Runnable
+            public void run() {
+                if (onLoadCompletedListener != null) {
+                    if (bitmapLoad != null) {
+                        onLoadCompletedListener.onLoadCompleted(uri, bitmapLoad);
+                    } else {
+                        onLoadCompletedListener.onLoadFailed(uri, 0);
+                    }
+                }
+            }
+        });
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public void requestLoad(byte[] bArr, int i, Storage$OnLoadCompletedListener storage$OnLoadCompletedListener) throws Throwable {
+    public void requestLoad(byte[] bArr, int i, final Storage.OnLoadCompletedListener onLoadCompletedListener) {
         if (CamLog.VERBOSE) {
             CamLog.d("StorageImpl requestLoad");
         }
-        new Handler().post(new StorageImpl$2(this, storage$OnLoadCompletedListener, new ImageLoader(this.mContext, bArr, i).load()));
+        final Bitmap bitmapLoad = new ImageLoader(this.mContext, bArr, i).load();
+        new Handler().post(new Runnable() { // from class: com.sonyericsson.cameracommon.storage.StorageImpl.2
+            @Override // java.lang.Runnable
+            public void run() {
+                if (onLoadCompletedListener != null) {
+                    onLoadCompletedListener.onLoadCompleted(Uri.EMPTY, bitmapLoad);
+                }
+            }
+        });
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
@@ -185,36 +267,36 @@ public class StorageImpl implements Storage, CameraApplication$Pausable {
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public void requestDataLoad(int i, boolean z, Storage$OnLoadCompletedListener storage$OnLoadCompletedListener) {
+    public void requestDataLoad(int i, boolean z, Storage.OnLoadCompletedListener onLoadCompletedListener) {
         if (CamLog.VERBOSE) {
             CamLog.d("StorageImpl requestDataLoad");
         }
-        loadData(new DataLoader(this.mContext, this.mCameraStorageManager.getReadableStoragePaths(), i, storage$OnLoadCompletedListener, z));
+        loadData(new DataLoader(this.mContext, this.mCameraStorageManager.getReadableStoragePaths(), i, onLoadCompletedListener, z));
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public void requestDataLoad(int i, Uri uri, boolean z, Storage$OnLoadCompletedListener storage$OnLoadCompletedListener) {
+    public void requestDataLoad(int i, Uri uri, boolean z, Storage.OnLoadCompletedListener onLoadCompletedListener) {
         if (CamLog.VERBOSE) {
             CamLog.d("StorageImpl requestDataLoad");
         }
-        loadData(new DataLoader(i, uri, this.mContext, storage$OnLoadCompletedListener, z));
+        loadData(new DataLoader(i, uri, this.mContext, onLoadCompletedListener, z));
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public void requestLastDataLoad(int i, boolean z, Storage$OnLoadCompletedListener storage$OnLoadCompletedListener) {
+    public void requestLastDataLoad(int i, boolean z, Storage.OnLoadCompletedListener onLoadCompletedListener) {
         if (CamLog.VERBOSE) {
             CamLog.d("StorageImpl requestDataLoad");
         }
-        loadData(new DataLoader(this.mContext, this.mCameraStorageManager.getReadableStoragePaths(), i, 0, storage$OnLoadCompletedListener, z));
+        loadData(new DataLoader(this.mContext, this.mCameraStorageManager.getReadableStoragePaths(), i, 0, onLoadCompletedListener, z));
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public void requestCreateContentInfoSync(ArrayList<Uri> arrayList, Storage$OnLoadCompletedListener storage$OnLoadCompletedListener) {
+    public void requestCreateContentInfoSync(ArrayList<Uri> arrayList, Storage.OnLoadCompletedListener onLoadCompletedListener) {
         if (CamLog.VERBOSE) {
             CamLog.d("StorageImpl requestCreateContentInfoSync");
         }
         try {
-            new DataLoader(this.mContext, arrayList, storage$OnLoadCompletedListener, true).call();
+            new DataLoader(this.mContext, arrayList, onLoadCompletedListener, true).call();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -245,16 +327,16 @@ public class StorageImpl implements Storage, CameraApplication$Pausable {
                         jLongValue = next.get().longValue();
                     } catch (InterruptedException unused) {
                         if (CamLog.VERBOSE) {
-                            CamLog.d("StrorageImpl", "InterruptedException at future.get().");
+                            CamLog.d(TAG, "InterruptedException at future.get().");
                         }
                     } catch (ExecutionException unused2) {
                         if (CamLog.VERBOSE) {
-                            CamLog.d("StrorageImpl", "ExecutionException at future.get().");
+                            CamLog.d(TAG, "ExecutionException at future.get().");
                         }
                     }
                     if (jLongValue == j) {
                         if (CamLog.VERBOSE) {
-                            CamLog.d("StrorageImpl", "remove queue. id = " + jLongValue);
+                            CamLog.d(TAG, "remove queue. id = " + jLongValue);
                         }
                         it.remove();
                     }
@@ -287,36 +369,36 @@ public class StorageImpl implements Storage, CameraApplication$Pausable {
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public void addStorageStateListener(Storage$StorageStateListener storage$StorageStateListener) {
+    public void addStorageStateListener(Storage.StorageStateListener storageStateListener) {
         if (CamLog.VERBOSE) {
             CamLog.d("StorageImpl addStorageStateListener");
         }
-        this.mStorageController.addStorageListener(storage$StorageStateListener);
+        this.mStorageController.addStorageListener(storageStateListener);
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public void removeStorageStateListener(Storage$StorageStateListener storage$StorageStateListener) {
+    public void removeStorageStateListener(Storage.StorageStateListener storageStateListener) {
         if (CamLog.VERBOSE) {
             CamLog.d("StorageImpl removeStorageStateListener");
         }
-        this.mStorageController.removeStorageListener(storage$StorageStateListener);
+        this.mStorageController.removeStorageListener(storageStateListener);
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public Storage$StorageState getCurrentState(Storage$StorageType storage$StorageType) {
+    public Storage.StorageState getCurrentState(Storage.StorageType storageType) {
         if (CamLog.VERBOSE) {
             CamLog.d("StorageImpl getCurrentState");
         }
-        return this.mStorageController.getStorageState(storage$StorageType);
+        return this.mStorageController.getStorageState(storageType);
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public long getRemainStorage(Storage$StorageType storage$StorageType) {
+    public long getRemainStorage(Storage.StorageType storageType) {
         if (CamLog.VERBOSE) {
             CamLog.d("StorageImpl getRemainStorage");
         }
-        this.mCameraStorageManager.checkRemain(false, storage$StorageType);
-        return this.mStorageController.getAvailableStorageSize(storage$StorageType);
+        this.mCameraStorageManager.checkRemain(false, storageType);
+        return this.mStorageController.getAvailableStorageSize(storageType);
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
@@ -328,28 +410,28 @@ public class StorageImpl implements Storage, CameraApplication$Pausable {
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public boolean canPushStoreRequest(Storage$StorageType storage$StorageType) {
-        if (isStorageActivated() && getAvailableStorage().contains(storage$StorageType)) {
-            return this.mSavingTaskManager.canPushStoreTask(storage$StorageType);
+    public boolean canPushStoreRequest(Storage.StorageType storageType) {
+        if (isStorageActivated() && getAvailableStorage().contains(storageType)) {
+            return this.mSavingTaskManager.canPushStoreTask(storageType);
         }
         return false;
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public List<Storage$StorageType> getAvailableStorage() {
-        ArrayList arrayList = new ArrayList(Storage$StorageType.values().length);
-        for (Storage$StorageType storage$StorageType : Storage$StorageType.values()) {
-            if (checkStorageState(storage$StorageType, Storage$StorageState.AVAILABLE_NEAR_FULL, Storage$StorageState.AVAILABLE)) {
-                arrayList.add(storage$StorageType);
+    public List<Storage.StorageType> getAvailableStorage() {
+        ArrayList arrayList = new ArrayList(Storage.StorageType.values().length);
+        for (Storage.StorageType storageType : Storage.StorageType.values()) {
+            if (checkStorageState(storageType, Storage.StorageState.AVAILABLE_NEAR_FULL, Storage.StorageState.AVAILABLE)) {
+                arrayList.add(storageType);
             }
         }
         return arrayList;
     }
 
-    private boolean checkStorageState(Storage$StorageType storage$StorageType, Storage$StorageState... storage$StorageStateArr) {
-        Storage$StorageState currentState = getCurrentState(storage$StorageType);
-        for (Storage$StorageState storage$StorageState : storage$StorageStateArr) {
-            if (currentState == storage$StorageState) {
+    private boolean checkStorageState(Storage.StorageType storageType, Storage.StorageState... storageStateArr) {
+        Storage.StorageState currentState = getCurrentState(storageType);
+        for (Storage.StorageState storageState : storageStateArr) {
+            if (currentState == storageState) {
                 return true;
             }
         }
@@ -358,10 +440,10 @@ public class StorageImpl implements Storage, CameraApplication$Pausable {
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
     public boolean isStorageReadable() {
-        for (Storage$StorageType storage$StorageType : StorageUtil.getMountableStorageTypes()) {
-            if (!isStorageReadable(storage$StorageType)) {
+        for (Storage.StorageType storageType : StorageUtil.getMountableStorageTypes()) {
+            if (!isStorageReadable(storageType)) {
                 if (CamLog.DEBUG) {
-                    CamLog.d("type = " + storage$StorageType + ", readyState = " + this.mStorageController.getStorageReadyState(storage$StorageType));
+                    CamLog.d("type = " + storageType + ", readyState = " + this.mStorageController.getStorageReadyState(storageType));
                 }
                 return false;
             }
@@ -370,15 +452,15 @@ public class StorageImpl implements Storage, CameraApplication$Pausable {
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public boolean isStorageReadable(Storage$StorageType storage$StorageType) {
-        return this.mStorageController.getStorageReadyState(storage$StorageType).compareTo(Storage$StorageReadyState.ACCESSIBLE) >= 0;
+    public boolean isStorageReadable(Storage.StorageType storageType) {
+        return this.mStorageController.getStorageReadyState(storageType).compareTo(Storage.StorageReadyState.ACCESSIBLE) >= 0;
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
     public boolean isStorageActivated() {
-        Iterator<Storage$StorageType> it = StorageUtil.getMountableStorageTypes().iterator();
+        Iterator<Storage.StorageType> it = StorageUtil.getMountableStorageTypes().iterator();
         while (it.hasNext()) {
-            if (this.mStorageController.getStorageReadyState(it.next()) != Storage$StorageReadyState.COMPLETED) {
+            if (this.mStorageController.getStorageReadyState(it.next()) != Storage.StorageReadyState.COMPLETED) {
                 return false;
             }
         }
@@ -386,32 +468,32 @@ public class StorageImpl implements Storage, CameraApplication$Pausable {
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public void addStorageReadyStateListener(Storage$StorageReadyStateListener storage$StorageReadyStateListener) {
-        if (storage$StorageReadyStateListener != null) {
-            this.mStorageController.addStorageReadyStateListener(storage$StorageReadyStateListener);
+    public void addStorageReadyStateListener(Storage.StorageReadyStateListener storageReadyStateListener) {
+        if (storageReadyStateListener != null) {
+            this.mStorageController.addStorageReadyStateListener(storageReadyStateListener);
         }
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public void removeStorageReadyStateListener(Storage$StorageReadyStateListener storage$StorageReadyStateListener) {
-        if (storage$StorageReadyStateListener != null) {
-            this.mStorageController.removeStorageReadyStateListener(storage$StorageReadyStateListener);
+    public void removeStorageReadyStateListener(Storage.StorageReadyStateListener storageReadyStateListener) {
+        if (storageReadyStateListener != null) {
+            this.mStorageController.removeStorageReadyStateListener(storageReadyStateListener);
         }
     }
 
     @Override // com.sonyericsson.cameracommon.storage.Storage
-    public Storage$StorageWriteNotifier createNotifier(Storage$StorageType storage$StorageType, int i) {
-        return new StorageWriteNotifierImpl(this, storage$StorageType, i, this.mStorageController);
+    public Storage.StorageWriteNotifier createNotifier(Storage.StorageType storageType, int i) {
+        return new StorageWriteNotifierImpl(this, storageType, i, this.mStorageController);
     }
 
-    public void onWriteStorage(Storage$StorageType storage$StorageType) {
+    public void onWriteStorage(Storage.StorageType storageType) {
         if (CamLog.VERBOSE) {
-            CamLog.d("onWriteStorage : " + storage$StorageType);
+            CamLog.d("onWriteStorage : " + storageType);
         }
-        this.mCameraStorageManager.requestVolumeCheck(storage$StorageType, CameraStorageManager$UpdateInterval.IMMEDIATE, CameraStorageManager$UpdateRequestReason.PERIODIC_UPDATE);
+        this.mCameraStorageManager.requestVolumeCheck(storageType, CameraStorageManager.UpdateInterval.IMMEDIATE, CameraStorageManager.UpdateRequestReason.PERIODIC_UPDATE);
     }
 
-    @Override // com.sonyericsson.android.camera.CameraApplication$Pausable
+    @Override // com.sonyericsson.android.camera.CameraApplication.Pausable
     public void resume() {
         if (CamLog.DEBUG) {
             CamLog.d("resume()");
@@ -419,7 +501,7 @@ public class StorageImpl implements Storage, CameraApplication$Pausable {
         this.mCameraStorageManager.doResume();
     }
 
-    @Override // com.sonyericsson.android.camera.CameraApplication$Pausable
+    @Override // com.sonyericsson.android.camera.CameraApplication.Pausable
     public void pause() {
         if (CamLog.DEBUG) {
             CamLog.d("pause()");

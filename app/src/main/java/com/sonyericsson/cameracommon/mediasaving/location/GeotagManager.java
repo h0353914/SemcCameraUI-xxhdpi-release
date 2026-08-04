@@ -9,6 +9,7 @@ import com.sonyericsson.android.camera.configuration.parameters.Geotag;
 import com.sonyericsson.android.camera.setting.UserSettings;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.view.ViewFinderImpl;
+import com.sonyericsson.android.camera.view.messagedialog.DialogId;
 import com.sonyericsson.cameracommon.utility.PermissionsUtil;
 
 public class GeotagManager {
@@ -21,10 +22,6 @@ public class GeotagManager {
     private GeotagLocationListener mLocationListenerGps;
     private GeotagLocationListener mLocationListenerNetwork;
     private LocationManager mLocationManager;
-
-    static /* synthetic */ boolean access$000(CameraActivity cameraActivity) {
-        return isLocationServiceAvailable(cameraActivity);
-    }
 
     public void setIsGeotagPermissionGranted(boolean z) {
         this.mIsGeotagPermissionGranted = z;
@@ -253,17 +250,27 @@ public class GeotagManager {
         return zCheckLocationService && z;
     }
 
-    public boolean setGeotag(Geotag geotag, CameraActivity cameraActivity, ViewFinderImpl viewFinderImpl) {
+    public boolean setGeotag(Geotag geotag, final CameraActivity cameraActivity, final ViewFinderImpl viewFinderImpl) {
         if (CamLog.VERBOSE) {
             CamLog.d("setGeotag(): " + geotag);
         }
         cameraActivity.getStoredSettings().getUserSettings().set(geotag);
-        if (geotag == Geotag.ON && cameraActivity.checkAndRequestSelfPermissions(13, REQUEST_LOCATION_PERMISSION, new GeotagManager$1(this, cameraActivity, viewFinderImpl))) {
+        if (geotag == Geotag.ON && cameraActivity.checkAndRequestSelfPermissions(13, REQUEST_LOCATION_PERMISSION, new CameraActivity.PermissionCheckCallback() { // from class: com.sonyericsson.cameracommon.mediasaving.location.GeotagManager.1
+            @Override // com.sonyericsson.android.camera.CameraActivity.PermissionCheckCallback
+            public boolean onPermissionChecked(String[] strArr) {
+                if (!PermissionsUtil.arePermissionsGranted(cameraActivity, strArr) || GeotagManager.isLocationServiceAvailable(cameraActivity) || viewFinderImpl == null) {
+                    return true;
+                }
+                viewFinderImpl.showMessageDialog(DialogId.LOCATION_SERVICE_DISABLE_ON_CONTEXTUAL_SETTINGS, new Object[0]);
+                return true;
+            }
+        })) {
             return true;
         }
         return checkLocationService(geotag, cameraActivity);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     private static boolean isLocationServiceAvailable(CameraActivity cameraActivity) {
         cameraActivity.readLocationSettings();
         return cameraActivity.isGpsLocationAllowed() || cameraActivity.isNetworkLocationAllowed();

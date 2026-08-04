@@ -1,3 +1,85 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.android.camera.configuration.parameters;
 
 import com.sonyericsson.android.camera.configuration.parameters.UserSettingValue;
@@ -13,26 +95,14 @@ public class UserSettingValueHolder<T extends UserSettingValue> {
     private boolean mChanged;
     private T mDefaultValue;
     private T[] mOptions;
-
-    /* JADX WARN: Incorrect inner types in field signature: Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValueHolder<TT;>.ParameterState; */
-    private UserSettingValueHolder$ParameterState mState;
-
-    static /* synthetic */ boolean access$002(UserSettingValueHolder userSettingValueHolder, boolean z) {
-        userSettingValueHolder.mChanged = z;
-        return z;
-    }
-
-    static /* synthetic */ UserSettingValueHolder$ParameterState access$102(UserSettingValueHolder userSettingValueHolder, UserSettingValueHolder$ParameterState userSettingValueHolder$ParameterState) {
-        userSettingValueHolder.mState = userSettingValueHolder$ParameterState;
-        return userSettingValueHolder$ParameterState;
-    }
+    private UserSettingValueHolder<T>.ParameterState mState;
 
     public UserSettingValueHolder(T t) {
         if (t == null) {
             CamLog.d("Create UserSettingValueHolder with null default value ");
         }
         this.mDefaultValue = t;
-        this.mState = new UserSettingValueHolder$NormalState(this, t, null, null);
+        this.mState = new NormalState(t, null, null);
         onApplied();
     }
 
@@ -106,29 +176,157 @@ public class UserSettingValueHolder<T extends UserSettingValue> {
         this.mChanged = true;
     }
 
+    private abstract class ParameterState {
+        protected T mCurrentValue;
+        protected T mOriginalValue;
+        protected T mRecommendedValue;
+
+        public abstract void applyCurrentValue();
+
+        public abstract void applyRecommendedValue(T t);
+
+        public abstract boolean forceChange(T t);
+
+        public abstract boolean reset();
+
+        public ParameterState() {
+        }
+
+        public ParameterState(T t, T t2, T t3) {
+            setCurrentValue(t);
+            setOriginalValue(t2);
+            setRecommendedValue(t3);
+        }
+
+        public void dumpStackTrace() {
+            StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+            CamLog.d("## dump stack trace ...");
+            for (int i = 1; i < stackTrace.length; i++) {
+                CamLog.d("trace:" + stackTrace[i].getClassName() + "#" + stackTrace[i].getMethodName());
+            }
+        }
+
+        public final void setCurrentValue(T t) {
+            if (this.mCurrentValue != t) {
+                UserSettingValueHolder.this.mChanged = true;
+            }
+            if (t == null) {
+                CamLog.d("[" + getClass().getSimpleName() + "] setCurrentValue() mCurrentValue: null");
+                dumpStackTrace();
+            }
+            this.mCurrentValue = t;
+        }
+
+        public final T getCurrentValue() {
+            return this.mCurrentValue;
+        }
+
+        public final T getOriginalValue() {
+            return this.mOriginalValue;
+        }
+
+        public final void setOriginalValue(T t) {
+            this.mOriginalValue = t;
+        }
+
+        public final T getRecommendedValue() {
+            return this.mRecommendedValue;
+        }
+
+        public final void setRecommendedValue(T t) {
+            this.mRecommendedValue = t;
+        }
+    }
+
+    private class NormalState extends UserSettingValueHolder<T>.ParameterState {
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValueHolder.ParameterState
+        public void applyCurrentValue() {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValueHolder.ParameterState
+        public boolean reset() {
+            return false;
+        }
+
+        public NormalState() {
+            super();
+        }
+
+        public NormalState(T t, T t2, T t3) {
+            super(t, t2, t3);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValueHolder.ParameterState
+        public boolean forceChange(T t) {
+            UserSettingValueHolder.this.mState = new ForceChangedState(t, UserSettingValueHolder.this.get(), null);
+            UserSettingValueHolder.this.mChanged = true;
+            return true;
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValueHolder.ParameterState
+        public void applyRecommendedValue(T t) {
+            UserSettingValueHolder.this.mState = new ForceChangedState(t, UserSettingValueHolder.this.get(), t);
+            UserSettingValueHolder.this.mChanged = true;
+        }
+    }
+
+    private class ForceChangedState extends UserSettingValueHolder<T>.ParameterState {
+        public ForceChangedState() {
+            super();
+        }
+
+        public ForceChangedState(T t, T t2, T t3) {
+            super(t, t2, t3);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValueHolder.ParameterState
+        public boolean forceChange(T t) {
+            setCurrentValue(t);
+            return false;
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValueHolder.ParameterState
+        public boolean reset() {
+            UserSettingValueHolder.this.mState = new NormalState(this.mCurrentValue, null, null);
+            UserSettingValueHolder.this.mChanged = true;
+            return true;
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValueHolder.ParameterState
+        public void applyRecommendedValue(T t) {
+            setCurrentValue(t);
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingValueHolder.ParameterState
+        public void applyCurrentValue() {
+            if (this.mRecommendedValue != null) {
+                setCurrentValue(this.mRecommendedValue);
+            }
+        }
+    }
+
     public String createValueString() {
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append(this.mState.getClass().getName());
-        stringBuffer.append("-");
+        stringBuffer.append(DELIMITER);
         stringBuffer.append(serialize(this.mState.getCurrentValue()));
-        stringBuffer.append("-");
+        stringBuffer.append(DELIMITER);
         stringBuffer.append(serialize(this.mState.getOriginalValue()));
-        stringBuffer.append("-");
+        stringBuffer.append(DELIMITER);
         stringBuffer.append(serialize(this.mState.getRecommendedValue()));
         if (this.mState.getCurrentValue() instanceof UserSettingIntValue) {
-            stringBuffer.append("-");
+            stringBuffer.append(DELIMITER);
             stringBuffer.append(String.valueOf(((UserSettingIntValue) this.mState.getCurrentValue()).getInt()));
         }
         return stringBuffer.toString();
     }
-
-    public void parseValueString(String str) {
-        UserSettingValueHolder$ParameterState parameterState;
+public void parseValueString(String str) {
+        UserSettingValueHolder<T>.ParameterState parameterState;
         UserSettingValue userSettingValueDeserialize;
         if (str == null || this.mChanged) {
             return;
         }
-        String[] strArrSplit = str.split("-");
+        String[] strArrSplit = str.split(DELIMITER);
         if (strArrSplit.length < 4 || (parameterState = getParameterState(strArrSplit[0])) == null || (userSettingValueDeserialize = deserialize(strArrSplit[1])) == null) {
             return;
         }
@@ -137,21 +335,21 @@ public class UserSettingValueHolder<T extends UserSettingValue> {
         if (userSettingValueDeserialize instanceof UserSettingIntValue) {
             ((UserSettingIntValue) userSettingValueDeserialize).setInt(Integer.parseInt(strArrSplit[4]));
         }
-        parameterState.setCurrentValue(userSettingValueDeserialize);
-        parameterState.setOriginalValue(userSettingValueDeserialize2);
-        parameterState.setRecommendedValue(userSettingValueDeserialize3);
+        parameterState.setCurrentValue((T) userSettingValueDeserialize);
+        parameterState.setOriginalValue((T) userSettingValueDeserialize2);
+        parameterState.setRecommendedValue((T) userSettingValueDeserialize3);
         this.mState = parameterState;
     }
 
     private String serialize(T t) {
         if (t == null) {
-            return "NO_VALUE";
+            return NO_VALUE;
         }
         return t.getClass().getName() + "@" + t.toString();
     }
 
     private T deserialize(String str) {
-        if (str.equals("NO_VALUE")) {
+        if (str.equals(NO_VALUE)) {
             return null;
         }
         String[] strArrSplit = str.split("@");
@@ -159,7 +357,13 @@ public class UserSettingValueHolder<T extends UserSettingValue> {
             return null;
         }
         try {
-            return (T) Enum.valueOf(Class.forName(strArrSplit[0]), strArrSplit[1]);
+            Class<?> enumClass = Class.forName(strArrSplit[0]);
+            if (!Enum.class.isAssignableFrom(enumClass)) {
+                return null;
+            }
+            @SuppressWarnings("unchecked")
+            Class<? extends Enum> castClass = (Class<? extends Enum>) enumClass;
+            return (T) Enum.valueOf(castClass, strArrSplit[1]);
         } catch (ClassCastException e) {
             if (CamLog.VERBOSE) {
                 CamLog.w("deserialize failed.", e);
@@ -183,10 +387,9 @@ public class UserSettingValueHolder<T extends UserSettingValue> {
         }
     }
 
-    /* JADX WARN: Incorrect inner types in method signature: (Ljava/lang/String;)Lcom/sonyericsson/android/camera/configuration/parameters/UserSettingValueHolder<TT;>.ParameterState; */
-    private UserSettingValueHolder$ParameterState getParameterState(String str) {
+    private UserSettingValueHolder<T>.ParameterState getParameterState(String str) {
         try {
-            return (UserSettingValueHolder$ParameterState) Class.forName(str).getConstructor(getClass()).newInstance(this);
+            return (ParameterState) Class.forName(str).getConstructor(getClass()).newInstance(this);
         } catch (ClassCastException e) {
             if (CamLog.VERBOSE) {
                 CamLog.d("getParameterState failed", e);
@@ -236,6 +439,6 @@ public class UserSettingValueHolder<T extends UserSettingValue> {
     }
 
     public String toString() {
-        return this.mState == null ? super.toString() : String.format("%s(%s|%s|%s)", this.mState.getClass().getSimpleName(), Objects.toString(this.mState.getCurrentValue(), "NO_VALUE"), Objects.toString(this.mState.getOriginalValue(), "NO_VALUE"), Objects.toString(this.mState.getRecommendedValue(), "NO_VALUE"));
+        return this.mState == null ? super.toString() : String.format("%s(%s|%s|%s)", this.mState.getClass().getSimpleName(), Objects.toString(this.mState.getCurrentValue(), NO_VALUE), Objects.toString(this.mState.getOriginalValue(), NO_VALUE), Objects.toString(this.mState.getRecommendedValue(), NO_VALUE));
     }
 }

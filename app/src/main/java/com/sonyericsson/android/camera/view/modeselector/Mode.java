@@ -1,14 +1,20 @@
 package com.sonyericsson.android.camera.view.modeselector;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.widget.ImageView;
+import com.sonyericsson.android.camera.R;
 
 public abstract class Mode {
     public static final int INVALID_ID = 0;
     protected final Context mContext;
     protected String mId;
-    protected Mode$OnStateChangeListener mStateChangeListener;
+    protected OnStateChangeListener mStateChangeListener;
+
+    public interface OnStateChangeListener {
+        void onAvailabilityChanged(Mode mode, boolean z);
+    }
 
     protected abstract String generateSmallIconMappingName();
 
@@ -29,21 +35,21 @@ public abstract class Mode {
         return this.mId;
     }
 
-    public void setOnStateChangeListener(Mode$OnStateChangeListener mode$OnStateChangeListener) {
-        this.mStateChangeListener = mode$OnStateChangeListener;
+    public void setOnStateChangeListener(OnStateChangeListener onStateChangeListener) {
+        this.mStateChangeListener = onStateChangeListener;
     }
 
-    public void loadSmallIcon(@NonNull ImageView imageView) {
+    public void loadSmallIcon(@NonNull ImageView imageView) throws Resources.NotFoundException {
         String strGenerateSmallIconMappingName = generateSmallIconMappingName();
-        int identifier = this.mContext.getResources().getIdentifier(strGenerateSmallIconMappingName, "drawable", this.mContext.getPackageName());
+        int identifier = this.mContext.getResources().getIdentifier(strGenerateSmallIconMappingName, ResourceUtil.RES_TYPE_NAME_DRAWABLE, this.mContext.getPackageName());
         if (identifier != 0) {
             imageView.setPadding(0, 0, 0, 0);
             imageView.setImageResource(identifier);
         } else {
-            int dimensionPixelSize = this.mContext.getResources().getDimensionPixelSize(2131165452);
+            int dimensionPixelSize = this.mContext.getResources().getDimensionPixelSize(R.dimen.mru_button_selector_icon_padding_size);
             imageView.setPadding(dimensionPixelSize, dimensionPixelSize, dimensionPixelSize, dimensionPixelSize);
             int selectorIconResId = getSelectorIconResId();
-            int dimensionPixelSize2 = this.mContext.getResources().getDimensionPixelSize(2131165451);
+            int dimensionPixelSize2 = this.mContext.getResources().getDimensionPixelSize(R.dimen.mru_button_container_size);
             imageView.setImageBitmap(ResourceUtil.getBitmap(this.mContext, strGenerateSmallIconMappingName, selectorIconResId, dimensionPixelSize2, dimensionPixelSize2));
         }
         String modeName = getModeName();

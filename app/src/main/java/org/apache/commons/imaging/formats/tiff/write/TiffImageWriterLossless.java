@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map$Entry;
 import org.apache.commons.imaging.FormatCompliance;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.ImageWriteException;
@@ -20,15 +19,24 @@ import org.apache.commons.imaging.formats.tiff.JpegImageData;
 import org.apache.commons.imaging.formats.tiff.TiffContents;
 import org.apache.commons.imaging.formats.tiff.TiffDirectory;
 import org.apache.commons.imaging.formats.tiff.TiffElement;
-import org.apache.commons.imaging.formats.tiff.TiffElement$Stub;
 import org.apache.commons.imaging.formats.tiff.TiffField;
 import org.apache.commons.imaging.formats.tiff.TiffImageData;
 import org.apache.commons.imaging.formats.tiff.TiffReader;
 import org.apache.commons.imaging.formats.tiff.constants.ExifTagConstants;
 
 public class TiffImageWriterLossless extends TiffImageWriterBase {
-    private static final Comparator<TiffElement> ELEMENT_SIZE_COMPARATOR = new TiffImageWriterLossless$1();
-    private static final Comparator<TiffOutputItem> ITEM_SIZE_COMPARATOR = new TiffImageWriterLossless$2();
+    private static final Comparator<TiffElement> ELEMENT_SIZE_COMPARATOR = new Comparator<TiffElement>() { // from class: org.apache.commons.imaging.formats.tiff.write.TiffImageWriterLossless.1
+        @Override // java.util.Comparator
+        public int compare(TiffElement tiffElement, TiffElement tiffElement2) {
+            return tiffElement.length - tiffElement2.length;
+        }
+    };
+    private static final Comparator<TiffOutputItem> ITEM_SIZE_COMPARATOR = new Comparator<TiffOutputItem>() { // from class: org.apache.commons.imaging.formats.tiff.write.TiffImageWriterLossless.2
+        @Override // java.util.Comparator
+        public int compare(TiffOutputItem tiffOutputItem, TiffOutputItem tiffOutputItem2) {
+            return tiffOutputItem.getItemLength() - tiffOutputItem2.getItemLength();
+        }
+    };
     private final byte[] exifBytes;
 
     public TiffImageWriterLossless(byte[] bArr) {
@@ -71,10 +79,10 @@ public class TiffImageWriterLossless extends TiffImageWriterBase {
             ArrayList arrayList2 = new ArrayList();
             long j = -1;
             for (TiffElement tiffElement2 : arrayList) {
-                long j2 = tiffElement2.offset + ((long) tiffElement2.length);
+                long j2 = tiffElement2.offset + tiffElement2.length;
                 if (tiffElement != null) {
                     if (tiffElement2.offset - j > 3) {
-                        arrayList2.add(new TiffElement$Stub(tiffElement.offset, (int) (j - tiffElement.offset)));
+                        arrayList2.add(new TiffElement.Stub(tiffElement.offset, (int) (j - tiffElement.offset)));
                     } else {
                         j = j2;
                     }
@@ -83,7 +91,7 @@ public class TiffImageWriterLossless extends TiffImageWriterBase {
                 j = j2;
             }
             if (tiffElement != null) {
-                arrayList2.add(new TiffElement$Stub(tiffElement.offset, (int) (j - tiffElement.offset)));
+                arrayList2.add(new TiffElement.Stub(tiffElement.offset, (int) (j - tiffElement.offset)));
             }
             return arrayList2;
         } catch (ImageReadException e) {
@@ -105,13 +113,13 @@ public class TiffImageWriterLossless extends TiffImageWriterBase {
         }
         if (listAnalyzeOldTiff.size() == 1) {
             TiffElement tiffElement = listAnalyzeOldTiff.get(0);
-            if (tiffElement.offset == 8 && tiffElement.offset + ((long) tiffElement.length) + 8 == length) {
+            if (tiffElement.offset == 8 && tiffElement.offset + tiffElement.length + 8 == length) {
                 new TiffImageWriterLossy(this.byteOrder).write(outputStream, tiffOutputSet);
                 return;
             }
         }
         HashMap map2 = new HashMap();
-        Iterator<Map$Entry<Integer, TiffOutputField>> it = map.entrySet().iterator();
+        Iterator<Map.Entry<Integer, TiffOutputField>> it = map.entrySet().iterator();
         while (it.hasNext()) {
             TiffOutputField value = it.next().getValue();
             if (value.getSeperateValue().getOffset() != -1) {
@@ -137,11 +145,11 @@ public class TiffImageWriterLossless extends TiffImageWriterBase {
         Collections.sort(arrayList, TiffElement.COMPARATOR);
         Collections.reverse(arrayList);
         while (!arrayList.isEmpty()) {
-            TiffElement tiffElement = (TiffElement) arrayList.get(0);
-            if (tiffElement.offset + ((long) tiffElement.length) != length) {
+            TiffElement r10 = (TiffElement) arrayList.get(0);
+            if (r10.offset + r10.length != length) {
                 break;
             }
-            length -= (long) tiffElement.length;
+            length -= r10.length;
             arrayList.remove(0);
         }
         Collections.sort(arrayList, ELEMENT_SIZE_COMPARATOR);
@@ -152,21 +160,21 @@ public class TiffImageWriterLossless extends TiffImageWriterBase {
         while (!arrayList2.isEmpty()) {
             TiffOutputItem tiffOutputItem = (TiffOutputItem) arrayList2.remove(0);
             int itemLength = tiffOutputItem.getItemLength();
-            TiffElement tiffElement2 = null;
-            for (TiffElement tiffElement3 : arrayList) {
-                if (tiffElement3.length < itemLength) {
+            TiffElement tiffElement = null;
+            for (TiffElement tiffElement2 : arrayList) {
+                if (tiffElement2.length < itemLength) {
                     break;
                 }
-                tiffElement2 = tiffElement3;
+                tiffElement = tiffElement2;
             }
-            if (tiffElement2 == null) {
+            if (tiffElement == null) {
                 tiffOutputItem.setOffset(length);
-                length += (long) itemLength;
+                length += itemLength;
             } else {
-                tiffOutputItem.setOffset(tiffElement2.offset);
-                arrayList.remove(tiffElement2);
-                if (tiffElement2.length > itemLength) {
-                    arrayList.add(new TiffElement$Stub(tiffElement2.offset + ((long) itemLength), tiffElement2.length - itemLength));
+                tiffOutputItem.setOffset(tiffElement.offset);
+                arrayList.remove(tiffElement);
+                if (tiffElement.length > itemLength) {
+                    arrayList.add(new TiffElement.Stub(tiffElement.offset + itemLength, tiffElement.length - itemLength));
                     Collections.sort(arrayList, ELEMENT_SIZE_COMPARATOR);
                     Collections.reverse(arrayList);
                 }
@@ -175,21 +183,51 @@ public class TiffImageWriterLossless extends TiffImageWriterBase {
         return length;
     }
 
+    private static class BufferOutputStream extends OutputStream {
+        private final byte[] buffer;
+        private int index;
+
+        public BufferOutputStream(byte[] bArr, int i) {
+            this.buffer = bArr;
+            this.index = i;
+        }
+
+        @Override // java.io.OutputStream
+        public void write(int i) throws IOException {
+            if (this.index >= this.buffer.length) {
+                throw new IOException("Buffer overflow.");
+            }
+            byte[] bArr = this.buffer;
+            int i2 = this.index;
+            this.index = i2 + 1;
+            bArr[i2] = (byte) i;
+        }
+
+        @Override // java.io.OutputStream
+        public void write(byte[] bArr, int i, int i2) throws IOException {
+            if (this.index + i2 > this.buffer.length) {
+                throw new IOException("Buffer overflow.");
+            }
+            System.arraycopy(bArr, i, this.buffer, this.index, i2);
+            this.index += i2;
+        }
+    }
+
     private void writeStep(OutputStream outputStream, TiffOutputSet tiffOutputSet, List<TiffElement> list, List<TiffOutputItem> list2, long j) throws ImageWriteException, IOException {
         TiffOutputDirectory rootDirectory = tiffOutputSet.getRootDirectory();
         byte[] bArr = new byte[(int) j];
         System.arraycopy(this.exifBytes, 0, bArr, 0, Math.min(this.exifBytes.length, bArr.length));
-        writeImageFileHeader(new BinaryOutputStream(new TiffImageWriterLossless$BufferOutputStream(bArr, 0), this.byteOrder), rootDirectory.getOffset());
+        writeImageFileHeader(new BinaryOutputStream(new BufferOutputStream(bArr, 0), this.byteOrder), rootDirectory.getOffset());
         for (TiffElement tiffElement : list) {
             for (int i = 0; i < tiffElement.length; i++) {
-                int i2 = (int) (tiffElement.offset + ((long) i));
+                int i2 = (int) (tiffElement.offset + i);
                 if (i2 < bArr.length) {
                     bArr[i2] = 0;
                 }
             }
         }
         for (TiffOutputItem tiffOutputItem : list2) {
-            tiffOutputItem.writeItem(new BinaryOutputStream(new TiffImageWriterLossless$BufferOutputStream(bArr, (int) tiffOutputItem.getOffset()), this.byteOrder));
+            tiffOutputItem.writeItem(new BinaryOutputStream(new BufferOutputStream(bArr, (int) tiffOutputItem.getOffset()), this.byteOrder));
         }
         outputStream.write(bArr);
     }

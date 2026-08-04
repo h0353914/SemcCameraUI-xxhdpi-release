@@ -3,11 +3,11 @@ package com.google.android.gms.common.internal;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzz implements Parcelable$Creator<ResolveAccountResponse> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzz implements Parcelable.Creator<ResolveAccountResponse> {
     static void zza(ResolveAccountResponse resolveAccountResponse, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, resolveAccountResponse.mVersionCode);
@@ -18,17 +18,9 @@ public class zzz implements Parcelable$Creator<ResolveAccountResponse> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ResolveAccountResponse createFromParcel(Parcel parcel) {
-        return zzam(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ ResolveAccountResponse[] newArray(int i) {
-        return zzbK(i);
-    }
-
-    public ResolveAccountResponse zzam(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzam, reason: merged with bridge method [inline-methods] */
+    public ResolveAccountResponse createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         IBinder iBinderZzq = null;
         ConnectionResult connectionResult = null;
@@ -61,10 +53,12 @@ public class zzz implements Parcelable$Creator<ResolveAccountResponse> {
         if (parcel.dataPosition() == iZzap) {
             return new ResolveAccountResponse(iZzg, iBinderZzq, connectionResult, zZzc, zZzc2);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public ResolveAccountResponse[] zzbK(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbK, reason: merged with bridge method [inline-methods] */
+    public ResolveAccountResponse[] newArray(int i) {
         return new ResolveAccountResponse[i];
     }
 }

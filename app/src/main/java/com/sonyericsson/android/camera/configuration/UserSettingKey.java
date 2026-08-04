@@ -1,5 +1,6 @@
 package com.sonyericsson.android.camera.configuration;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.parameters.CapturingMode;
 import com.sonyericsson.android.camera.configuration.parameters.DisplayFlash;
 import com.sonyericsson.android.camera.configuration.parameters.Flash;
@@ -9,57 +10,57 @@ import com.sonyericsson.android.camera.setting.UserSettings;
 import com.sonyericsson.android.camera.view.messagedialog.DialogId;
 
 public enum UserSettingKey {
-    AUTO_REVIEW(true, false, true, ParameterCategory.COMMON, 2131689980),
-    VIDEO_AUTO_REVIEW(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690020),
-    CAPTURING_MODE(true, false, false, ParameterCategory.CAPTURING_MODE, 2131689686),
-    DESTINATION_TO_SAVE(true, false, true, ParameterCategory.COMMON, 2131690058),
-    EV(true, false, false, ParameterCategory.CAPTURING_MODE, 2131689811),
-    FACING(false, false, false, ParameterCategory.CAPTURING_MODE, 2131689665),
+    AUTO_REVIEW(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_photo_autoreview_txt),
+    VIDEO_AUTO_REVIEW(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_preview_duration_title_txt),
+    CAPTURING_MODE(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_capturing_mode_title_txt),
+    DESTINATION_TO_SAVE(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_save_destination_title_txt),
+    EV(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_exposure_level_title_txt),
+    FACING(false, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_camera_switching_txt),
     SETTING_MENU(false, false, false, ParameterCategory.COMMON, -1),
-    FAST_CAPTURE(true, false, true, ParameterCategory.COMMON, 2131689929),
-    FLASH(true, false, true, ParameterCategory.COMMON, 2131689840),
-    DISPLAY_FLASH(true, false, true, ParameterCategory.COMMON, 2131689840),
-    FOCUS_MODE(true, false, false, ParameterCategory.CAPTURING_MODE, 2131689849),
-    GEO_TAG(true, false, true, ParameterCategory.COMMON, 2131689856),
-    HDR(true, false, false, ParameterCategory.CAPTURING_MODE, 2131689870),
-    ISO(true, false, false, ParameterCategory.CAPTURING_MODE, 2131689927),
-    METERING(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690001),
-    MICROPHONE(true, false, false, ParameterCategory.CAPTURING_MODE, 2131689948),
-    PHOTO_LIGHT(true, false, true, ParameterCategory.COMMON, 2131689841),
-    RESOLUTION(true, false, false, ParameterCategory.CAPTURING_MODE, 2131689910),
-    ASPECT_RATIO(true, false, false, ParameterCategory.CAPTURING_MODE, 2131689641),
-    SELF_TIMER(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690113),
-    SHUTTER_SOUND(true, false, true, ParameterCategory.COMMON, 2131689664),
-    SMILE_CAPTURE(false, false, false, ParameterCategory.CAPTURING_MODE, 2131690164),
-    CAMERA_KEY(true, false, true, ParameterCategory.CAPTURING_MODE, 2131689663),
-    SOFT_SKIN(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690167),
-    VIDEO_STABILIZER(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690170),
+    FAST_CAPTURE(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_launch_with_camera_key_txt),
+    FLASH(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_flash_title_txt),
+    DISPLAY_FLASH(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_flash_title_txt),
+    FOCUS_MODE(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_focus_mode_title_txt),
+    GEO_TAG(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_geotagging_title_txt),
+    HDR(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_hdr_title_txt),
+    ISO(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_iso_title_txt),
+    METERING(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_photometry_title_txt),
+    MICROPHONE(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_microphone_title_txt),
+    PHOTO_LIGHT(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_flash_torch_txt),
+    RESOLUTION(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_image_size_txt),
+    ASPECT_RATIO(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_aspect_ratio_txt),
+    SELF_TIMER(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_self_timer_txt),
+    SHUTTER_SOUND(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_camera_sound_txt),
+    SMILE_CAPTURE(false, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_smile_shutter_title_cy_txt),
+    CAMERA_KEY(true, false, true, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_camera_key_setting_txt),
+    SOFT_SKIN(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_soft_skin_effect_cy_txt),
+    VIDEO_STABILIZER(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_steadyshot_cy_txt),
     SUPER_RESOLUTION(false, false, false, ParameterCategory.CAPTURING_MODE, -1),
-    TOUCH_CAPTURE(true, false, true, ParameterCategory.COMMON, 2131690194),
-    VIDEO_SELF_TIMER(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690113),
-    VIDEO_SIZE(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690248),
-    VIDEO_HDR(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690223),
-    VIDEO_SMILE_CAPTURE(false, false, false, ParameterCategory.CAPTURING_MODE, 2131690249),
-    VIDEO_SHUTTER_TRIGGER(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690244),
-    VOLUME_KEY(true, false, true, ParameterCategory.COMMON, 2131690252),
-    WHITE_BALANCE(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690260),
+    TOUCH_CAPTURE(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_touch_capturing_title_txt),
+    VIDEO_SELF_TIMER(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_self_timer_txt),
+    VIDEO_SIZE(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_video_size_txt),
+    VIDEO_HDR(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_video_hdr_setting_hlg_txt),
+    VIDEO_SMILE_CAPTURE(false, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_video_smile_shutter_txt),
+    VIDEO_SHUTTER_TRIGGER(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_video_shutter_trigger_txt),
+    VOLUME_KEY(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_volumekey_txt),
+    WHITE_BALANCE(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_white_balance_title_txt),
     SEMI_AUTO(false, false, false, ParameterCategory.CAPTURING_MODE, 0),
-    GRID_LINE(true, false, true, ParameterCategory.COMMON, 2131689865),
-    SIDE_SENSE(true, false, true, ParameterCategory.COMMON, 2131690131),
-    HELP_GUIDE(false, false, true, ParameterCategory.COMMON, 2131689872),
-    RESET_SETTINGS(false, false, true, ParameterCategory.COMMON, 2131690033),
-    VIDEO_CODEC(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690228),
-    OBJECT_TRACKING(true, false, false, ParameterCategory.CAPTURING_MODE, 2131689847),
-    SHUTTER_TRIGGER(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690121),
+    GRID_LINE(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_gridline_txt),
+    SIDE_SENSE(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_side_touch_txt),
+    HELP_GUIDE(false, false, true, ParameterCategory.COMMON, R.string.cam_strings_help_txt),
+    RESET_SETTINGS(false, false, true, ParameterCategory.COMMON, R.string.cam_strings_reset_settings_txt),
+    VIDEO_CODEC(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_video_resolution_4k_file_type_txt),
+    OBJECT_TRACKING(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_focus_mode_object_tracking_txt),
+    SHUTTER_TRIGGER(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_shutter_trigger_txt),
     SHUTTER_SPEED(true, false, false, ParameterCategory.CAPTURING_MODE, 0),
     FOCUS_RANGE(true, false, false, ParameterCategory.CAPTURING_MODE, 0),
-    TOUCH_INTENTION(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690198),
-    PREDICTIVE_CAPTURE(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690005),
-    SLOW_MOTION(true, false, false, ParameterCategory.CAPTURING_MODE, 2131690158),
+    TOUCH_INTENTION(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_touch_to_focus_adjust_exposure_txt),
+    PREDICTIVE_CAPTURE(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_predictive_capture_txt),
+    SLOW_MOTION(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_slow_motion_txt),
     FRONT_ANGLE(true, false, true, ParameterCategory.COMMON, -1),
-    FUSION_MODE(true, false, false, ParameterCategory.CAPTURING_MODE, 2131689855),
-    DISTORTION_CORRECTION(true, false, true, ParameterCategory.COMMON, 2131689930),
-    PREDICTIVE_LAUNCH(true, true, true, ParameterCategory.COMMON, 2131690016);
+    FUSION_MODE(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_fusion_setting_txt),
+    DISTORTION_CORRECTION(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_lens_correction_for_photo_txt),
+    PREDICTIVE_LAUNCH(true, true, true, ParameterCategory.COMMON, R.string.cam_strings_predictive_launch_txt);
 
     public static final String TAG = "UserSettingKey";
     private final ParameterCategory mCategory;
@@ -98,12 +99,12 @@ public enum UserSettingKey {
     }
 
     public int getTitleTextId() {
-        switch (UserSettingKey$1.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[ordinal()]) {
-            case 1:
+        switch (this) {
+            case FLASH:
                 return Flash.getParameterKeyTitleTextId();
-            case 2:
+            case DISPLAY_FLASH:
                 return DisplayFlash.getParameterKeyTitleTextId();
-            case 3:
+            case VIDEO_STABILIZER:
                 return VideoStabilizer.getParameterKeyTitleText();
             default:
                 return this.mTitleTextId;
@@ -122,25 +123,25 @@ public enum UserSettingKey {
         DialogId dialogId = DialogId.DLG_INVALID;
         VideoHdr videoHdr = (VideoHdr) userSettings.get(VIDEO_HDR);
         CapturingMode capturingMode = (CapturingMode) userSettings.get(CAPTURING_MODE);
-        switch (UserSettingKey$1.$SwitchMap$com$sonyericsson$android$camera$configuration$UserSettingKey[ordinal()]) {
-            case 3:
-            case 7:
-            case 8:
+        switch (this) {
+            case VIDEO_STABILIZER:
+            case VIDEO_SHUTTER_TRIGGER:
+            case VIDEO_CODEC:
                 if (videoHdr == VideoHdr.HDR_ON) {
                     return DialogId.VIDEO_HDR_RESTRICTION;
                 }
                 return DialogId.RESTRICT_STEADYSHOT_VIDEO_RESOLUTION;
-            case 4:
-            case 5:
-            case 6:
+            case ISO:
+            case METERING:
+            case SHUTTER_TRIGGER:
             default:
                 return dialogId;
-            case 9:
+            case OBJECT_TRACKING:
                 if (videoHdr == VideoHdr.HDR_ON) {
                     return DialogId.VIDEO_HDR_RESTRICTION;
                 }
                 return capturingMode.isVideo() ? DialogId.RESTRICT_STEADYSHOT_VIDEO_RESOLUTION : dialogId;
-            case 10:
+            case FUSION_MODE:
                 if (videoHdr == VideoHdr.HDR_ON) {
                     return DialogId.VIDEO_HDR_RESTRICTION;
                 }
@@ -148,7 +149,7 @@ public enum UserSettingKey {
                     return DialogId.RESTRICT_STEADYSHOT_VIDEO_RESOLUTION;
                 }
                 return capturingMode == CapturingMode.NORMAL ? DialogId.RESTRICT_PHOTO_RESOLUTION : dialogId;
-            case 11:
+            case VIDEO_SIZE:
                 if (videoHdr == VideoHdr.HDR_ON) {
                     return DialogId.VIDEO_HDR_RESTRICTION;
                 }
@@ -156,7 +157,7 @@ public enum UserSettingKey {
                     return DialogId.RESTRICT_SLOW_VIDEO_RESOLUTION;
                 }
                 return DialogId.RESTRICT_STEADYSHOT_VIDEO_RESOLUTION;
-            case 12:
+            case VIDEO_HDR:
                 return DialogId.RESTRICT_STEADYSHOT_VIDEO_RESOLUTION;
         }
     }

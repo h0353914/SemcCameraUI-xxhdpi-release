@@ -3,10 +3,9 @@ package com.google.android.gms.common.data;
 import android.os.Parcel;
 import android.os.ParcelFileDescriptor;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
 
-public class zza implements Parcelable$Creator<BitmapTeleporter> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zza implements Parcelable.Creator<BitmapTeleporter> {
     static void zza(BitmapTeleporter bitmapTeleporter, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, bitmapTeleporter.mVersionCode);
@@ -15,17 +14,9 @@ public class zza implements Parcelable$Creator<BitmapTeleporter> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ BitmapTeleporter createFromParcel(Parcel parcel) {
-        return zzaf(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ BitmapTeleporter[] newArray(int i) {
-        return zzbq(i);
-    }
-
-    public BitmapTeleporter zzaf(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzaf, reason: merged with bridge method [inline-methods] */
+    public BitmapTeleporter createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         int iZzg = 0;
         ParcelFileDescriptor parcelFileDescriptor = null;
@@ -50,10 +41,12 @@ public class zza implements Parcelable$Creator<BitmapTeleporter> {
         if (parcel.dataPosition() == iZzap) {
             return new BitmapTeleporter(iZzg, parcelFileDescriptor, iZzg2);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new com.google.android.gms.common.internal.safeparcel.zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public BitmapTeleporter[] zzbq(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbq, reason: merged with bridge method [inline-methods] */
+    public BitmapTeleporter[] newArray(int i) {
         return new BitmapTeleporter[i];
     }
 }

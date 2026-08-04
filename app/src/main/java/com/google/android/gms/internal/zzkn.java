@@ -1,10 +1,11 @@
 package com.google.android.gms.internal;
 
-import com.google.android.gms.auth.api.proxy.ProxyApi$ProxyResult;
+import com.google.android.gms.auth.api.proxy.ProxyApi;
 import com.google.android.gms.auth.api.proxy.ProxyResponse;
 import com.google.android.gms.common.api.Status;
 
-class zzkn implements ProxyApi$ProxyResult {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+class zzkn implements ProxyApi.ProxyResult {
     private Status zzSC;
     private ProxyResponse zzST;
 
@@ -17,7 +18,7 @@ class zzkn implements ProxyApi$ProxyResult {
         this.zzSC = status;
     }
 
-    @Override // com.google.android.gms.auth.api.proxy.ProxyApi$ProxyResult
+    @Override // com.google.android.gms.auth.api.proxy.ProxyApi.ProxyResult
     public ProxyResponse getResponse() {
         return this.zzST;
     }

@@ -1,12 +1,13 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
 import com.sonyericsson.android.camera.ActionMode;
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
 public enum AutoReview implements UserSettingValue {
-    ALWAYS(-1, 2131690017, 3000),
-    FRONT_ONLY(-1, 2131690024, 3000),
-    OFF(-1, 2131690115, 0);
+    ALWAYS(-1, R.string.cam_strings_preview_always_txt, 3000),
+    FRONT_ONLY(-1, R.string.cam_strings_preview_only_front_txt, 3000),
+    OFF(-1, R.string.cam_strings_settings_off_txt, 0);
 
     public static final String TAG = "AutoReview";
     private static final int sParameterTextId = 2131690021;

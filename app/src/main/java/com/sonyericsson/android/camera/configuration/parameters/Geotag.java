@@ -1,10 +1,11 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 
 public enum Geotag implements UserSettingValue {
-    ON(-1, 2131690116, true),
-    OFF(-1, 2131690115, false);
+    ON(-1, R.string.cam_strings_settings_on_txt, true),
+    OFF(-1, R.string.cam_strings_settings_off_txt, false);
 
     public static final String TAG = "Geotag";
     private static final int sParameterTextId = 2131689857;

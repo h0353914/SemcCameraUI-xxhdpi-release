@@ -1,53 +1,58 @@
 package com.sonyericsson.android.camera.configuration.parameters;
 
+import com.sonyericsson.android.camera.R;
 import com.sonyericsson.android.camera.configuration.UserSettingKey;
 import com.sonyericsson.android.camera.util.CamLog;
-import com.sonyericsson.cameracommon.storage.Storage$StorageType;
+import com.sonyericsson.cameracommon.storage.Storage;
 import java.util.List;
 
+
+
+
+
+
+
+
+
+
 public enum DestinationToSave implements UserSettingValue {
-    EMMC(2131231018, 2131690056, Storage$StorageType.INTERNAL, null),
-    SDCARD(2131231019, 2131690057, Storage$StorageType.EXTERNAL_CARD, null),
-    INTERNAL_MASS_STORAGE(2131231018, 2131690056, Storage$StorageType.INTERNAL, EMMC),
-    MEMORY_CARD(2131231019, 2131690057, Storage$StorageType.EXTERNAL_CARD, SDCARD);
+    EMMC(R.drawable.cam_core_data_storage_setting_internal_icn, R.string.cam_strings_save_destination_ims_txt, Storage.StorageType.INTERNAL, null),
+    SDCARD(R.drawable.cam_core_data_storage_setting_sd_icn, R.string.cam_strings_save_destination_sd_txt, Storage.StorageType.EXTERNAL_CARD, null),
+    INTERNAL_MASS_STORAGE(R.drawable.cam_core_data_storage_setting_internal_icn, R.string.cam_strings_save_destination_ims_txt, Storage.StorageType.INTERNAL, EMMC),
+    MEMORY_CARD(R.drawable.cam_core_data_storage_setting_sd_icn, R.string.cam_strings_save_destination_sd_txt, Storage.StorageType.EXTERNAL_CARD, SDCARD);
 
     public static final String TAG = "DestinationToSave";
     private static int sParameterTextId = 2131690059;
     private final DestinationToSave mCompatibleValue;
     private int mIconId;
-    private boolean mIsEquipped = false;
+    private boolean mIsEquipped;
     private int mTextId;
-    private Storage$StorageType mType;
+    private Storage.StorageType mType;
     private static DestinationToSave sPrimaryStorage = EMMC;
 
     public static final void preload() {
     }
 
-    DestinationToSave(int i, int i2, Storage$StorageType storage$StorageType, DestinationToSave destinationToSave) {
+    DestinationToSave(int i, int i2, Storage.StorageType storageType, DestinationToSave destinationToSave) {
         this.mIconId = i;
         this.mTextId = i2;
-        this.mType = storage$StorageType;
+        this.mType = storageType;
         this.mCompatibleValue = destinationToSave;
     }
 
-    public static void setMountPoint(List<Storage$StorageType> list) {
-        for (Storage$StorageType storage$StorageType : list) {
+    public static void setMountPoint(List<Storage.StorageType> list) {
+        for (Storage.StorageType storageType : list) {
             if (CamLog.VERBOSE) {
-                CamLog.d("setMountPoint: type: " + storage$StorageType);
+                CamLog.d("setMountPoint: type: " + storageType);
             }
             DestinationToSave[] destinationToSaveArrValues = values();
             int length = destinationToSaveArrValues.length;
-            int i = 0;
-            while (true) {
-                if (i < length) {
-                    DestinationToSave destinationToSave = destinationToSaveArrValues[i];
-                    if (destinationToSave.mCompatibleValue == null && storage$StorageType == destinationToSave.getType()) {
-                        destinationToSave.mIsEquipped = true;
-                        if (CamLog.VERBOSE) {
-                            CamLog.d("setMountPoint: valid mount point: " + destinationToSave);
-                        }
-                    } else {
-                        i++;
+            for (int i = 0; i < length; i++) {
+                DestinationToSave destinationToSave = destinationToSaveArrValues[i];
+                if (destinationToSave.mCompatibleValue == null && storageType == destinationToSave.getType()) {
+                    destinationToSave.mIsEquipped = true;
+                    if (CamLog.VERBOSE) {
+                        CamLog.d("setMountPoint: valid mount point: " + destinationToSave);
                     }
                 }
             }
@@ -94,14 +99,14 @@ public enum DestinationToSave implements UserSettingValue {
         return this.mIsEquipped;
     }
 
-    public static DestinationToSave getValueFromType(Storage$StorageType storage$StorageType) {
-        if (storage$StorageType == null) {
+    public static DestinationToSave getValueFromType(Storage.StorageType storageType) {
+        if (storageType == null) {
             return null;
         }
         for (DestinationToSave destinationToSave : values()) {
-            if (storage$StorageType == destinationToSave.getType()) {
+            if (storageType == destinationToSave.getType()) {
                 if (CamLog.VERBOSE) {
-                    CamLog.d("getValueFromType: type: " + storage$StorageType + ", value : " + destinationToSave);
+                    CamLog.d("getValueFromType: type: " + storageType + ", value : " + destinationToSave);
                 }
                 return destinationToSave;
             }
@@ -113,7 +118,7 @@ public enum DestinationToSave implements UserSettingValue {
         return new DestinationToSave[]{EMMC, SDCARD};
     }
 
-    public Storage$StorageType getType() {
+    public Storage.StorageType getType() {
         return this.mType;
     }
 

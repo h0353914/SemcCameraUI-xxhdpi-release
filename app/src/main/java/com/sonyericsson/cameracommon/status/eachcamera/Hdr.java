@@ -1,11 +1,26 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.sonyericsson.cameracommon.status.eachcamera;
 
 import com.sonyericsson.android.camera.configuration.parameters.VideoHdr;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 import com.sonyericsson.cameracommon.status.EnumValue;
 
-public class Hdr extends EnumValue<Hdr$Value> implements EachCameraStatusValue {
-    public static final Hdr$Value DEFAULT_VALUE = Hdr$Value.OFF;
+public class Hdr extends EnumValue implements EachCameraStatusValue {
+    public static final Value DEFAULT_VALUE = Value.OFF;
     public static final String KEY = "hdr";
     private static int REQUIRED_PROVIDER_VERSION = 12;
 
@@ -14,15 +29,31 @@ public class Hdr extends EnumValue<Hdr$Value> implements EachCameraStatusValue {
         return "hdr";
     }
 
-    public static Hdr$Value fromCameraParameter(VideoHdr videoHdr) {
+    public static Value fromCameraParameter(VideoHdr videoHdr) {
         if (videoHdr == VideoHdr.HDR_ON) {
-            return Hdr$Value.ON;
+            return Value.ON;
         }
-        return Hdr$Value.OFF;
+        return Value.OFF;
     }
 
-    public Hdr(Hdr$Value hdr$Value) {
-        super(hdr$Value);
+    public Hdr(Value value) {
+        super(value);
+    }
+
+    public enum Value {
+        ON("on"),
+        OFF("off");
+
+        private final String mStringExpression;
+
+        Value(String str) {
+            this.mStringExpression = str;
+        }
+
+        @Override // java.lang.Enum
+        public String toString() {
+            return this.mStringExpression;
+        }
     }
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusValue

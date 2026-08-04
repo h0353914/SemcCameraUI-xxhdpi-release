@@ -3,11 +3,11 @@ package com.google.android.gms.common.internal;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
 import com.google.android.gms.common.api.Scope;
-import com.google.android.gms.common.internal.safeparcel.zza$zza;
+import com.google.android.gms.common.internal.safeparcel.zza;
 
-public class zzc implements Parcelable$Creator<AuthAccountRequest> {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public class zzc implements Parcelable.Creator<AuthAccountRequest> {
     static void zza(AuthAccountRequest authAccountRequest, Parcel parcel, int i) {
         int iZzaq = com.google.android.gms.common.internal.safeparcel.zzb.zzaq(parcel);
         com.google.android.gms.common.internal.safeparcel.zzb.zzc(parcel, 1, authAccountRequest.mVersionCode);
@@ -16,17 +16,9 @@ public class zzc implements Parcelable$Creator<AuthAccountRequest> {
         com.google.android.gms.common.internal.safeparcel.zzb.zzI(parcel, iZzaq);
     }
 
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ AuthAccountRequest createFromParcel(Parcel parcel) {
-        return zzai(parcel);
-    }
-
-    @Override // android.os.Parcelable$Creator
-    public /* synthetic */ AuthAccountRequest[] newArray(int i) {
-        return zzbB(i);
-    }
-
-    public AuthAccountRequest zzai(Parcel parcel) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzai, reason: merged with bridge method [inline-methods] */
+    public AuthAccountRequest createFromParcel(Parcel parcel) {
         int iZzap = com.google.android.gms.common.internal.safeparcel.zza.zzap(parcel);
         IBinder iBinderZzq = null;
         int iZzg = 0;
@@ -51,10 +43,12 @@ public class zzc implements Parcelable$Creator<AuthAccountRequest> {
         if (parcel.dataPosition() == iZzap) {
             return new AuthAccountRequest(iZzg, iBinderZzq, scopeArr);
         }
-        throw new zza$zza("Overread allowed size end=" + iZzap, parcel);
+        throw new zza.C0010zza("Overread allowed size end=" + iZzap, parcel);
     }
 
-    public AuthAccountRequest[] zzbB(int i) {
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: zzbB, reason: merged with bridge method [inline-methods] */
+    public AuthAccountRequest[] newArray(int i) {
         return new AuthAccountRequest[i];
     }
 }

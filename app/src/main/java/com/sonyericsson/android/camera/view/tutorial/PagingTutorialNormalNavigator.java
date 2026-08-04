@@ -5,8 +5,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout$LayoutParams;
 import android.widget.TextView;
+import com.sonyericsson.android.camera.R;
 
 public class PagingTutorialNormalNavigator extends PagingTutorialNavigator {
 
@@ -52,11 +52,11 @@ public class PagingTutorialNormalNavigator extends PagingTutorialNavigator {
         }
         for (int i2 = 0; i2 < i; i2++) {
             ImageView imageView = new ImageView(getContext());
-            LinearLayout$LayoutParams linearLayout$LayoutParams = new LinearLayout$LayoutParams(-1, -1);
-            linearLayout$LayoutParams.width = (int) getResources().getDimension(2131165484);
-            linearLayout$LayoutParams.height = (int) getResources().getDimension(2131165484);
-            imageView.setLayoutParams(linearLayout$LayoutParams);
-            imageView.setImageResource(2131231573);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -1);
+            layoutParams.width = (int) getResources().getDimension(R.dimen.paging_tutorial_navigator_icon_one_side);
+            layoutParams.height = (int) getResources().getDimension(R.dimen.paging_tutorial_navigator_icon_one_side);
+            imageView.setLayoutParams(layoutParams);
+            imageView.setImageResource(R.drawable.tutorial_page_navigator);
             this.mPageIcons.addView(imageView);
         }
     }
@@ -150,11 +150,11 @@ public class PagingTutorialNormalNavigator extends PagingTutorialNavigator {
 
     @Override // android.view.View
     protected void onFinishInflate() {
-        this.mSkip = (TextView) findViewById(2131296491);
-        this.mNext = (TextView) findViewById(2131296488);
-        this.mGotIt = (TextView) findViewById(2131296487);
-        this.mPrevIcon = (ImageView) findViewById(2131296490);
-        this.mPageIcons = (LinearLayout) findViewById(2131296489);
+        this.mSkip = (TextView) findViewById(R.id.page_tutorial_skip_button);
+        this.mNext = (TextView) findViewById(R.id.page_tutorial_next_button);
+        this.mGotIt = (TextView) findViewById(R.id.page_tutorial_gotit_button);
+        this.mPrevIcon = (ImageView) findViewById(R.id.page_tutorial_prev_icon_button);
+        this.mPageIcons = (LinearLayout) findViewById(R.id.page_tutorial_paging_navigation);
         super.onFinishInflate();
     }
 }

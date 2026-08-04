@@ -4,9 +4,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Төшерүне төгәлләү мөмкин түгел. Панораманы әкренрәк ясагыз.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Төшерүне төгәлләү мөмкин түгел. Панораманы тизрәк ясагыз.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">панорама фотоны төшерегез 3D панорама каплауны кулланып</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Түбәндәге файлларны төзү:\n- Multi Angle сүрәте\n- 3D сүрәт\nИскәрмә: Бу файлларда күчү зонасы бар.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Түбәндәге файлларны төзү:\n- Multi Angle сүрәте\n- 3D сүрәт</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Эшкәртү...\nБу сүрәттә күчү зонасы бар</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Түбәндәге файлларны төзү:
+- Multi Angle сүрәте
+- 3D сүрәт
+Искәрмә: Бу файлларда күчү зонасы бар."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Түбәндәге файлларны төзү:
+- Multi Angle сүрәте
+- 3D сүрәт"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Эшкәртү...
+Бу сүрәттә күчү зонасы бар"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Сүрәтне саклау</string>
     <string name="cam_3d_strings_dialog_processing_txt">Эшкәртү...</string>
     <string name="cam_3d_strings_error_application_busy_txt">3D камераның кабызып җибәрүен бераз көтегез</string>
@@ -95,8 +101,8 @@
     <string name="cam_strings_accessibility_switch_to_main_txt">Төп камерага күчү өчен ике тапкыр кагылыгыз</string>
     <string name="cam_strings_accessibility_switch_to_photo_txt">Камерага күчү өчен ике тапкыр кагып алыгыз</string>
     <string name="cam_strings_accessibility_switch_to_video_txt">Видеога күчү өчен ике тапкыр кагып алыгыз</string>
-    <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">HDR\'ны кабызу өчен ике тапкыр кагылыгыз</string>
-    <string name="cam_strings_accessibility_video_hdr_hlg_on_txt">HDR\'ны сүндерү өчен ике тапкыр кагылыгыз</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_off_txt">"HDR'ны кабызу өчен ике тапкыр кагылыгыз"</string>
+    <string name="cam_strings_accessibility_video_hdr_hlg_on_txt">"HDR'ны сүндерү өчен ике тапкыр кагылыгыз"</string>
     <string name="cam_strings_accessibility_video_setting_txt">Видео параметрлары</string>
     <string name="cam_strings_accessibility_viewer_txt">Рәсем күзетүче белән ачу</string>
     <string name="cam_strings_advanced_setting_geo_tag_both_off_txt">Урнашу урыннарын саклау өчен GPS һәм/яки чыбыксыз челтәрләрне эшләтеп җибәрергә кирәк. Эшләтеп җибәрергәме?</string>
@@ -332,7 +338,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Тирегезне матур һәм шома күренә торган итегез. Бу эффект алгы камераны куллана торган кушымталарда эшли. Аны фото һәм видеолар өчен кулланып була. Бу эффектның куллану дәрәҗәсен көйләргә була.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Дәрәҗәне көйләү</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Шома тире</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Кушымтаны эшләтеп җибәреп булмый.\nҖайланмагызда %1$s кушымтасының соңгы версиясе урнаштырылган һәм кабызылган булуына инаныгыз.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Кушымтаны эшләтеп җибәреп булмый.
+Җайланмагызда %1$s кушымтасының соңгы версиясе урнаштырылган һәм кабызылган булуына инаныгыз."</string>
     <string name="cam_strings_gridline_txt">Рәшәткә сызыклары</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Уч төбен камерага таба борыгыз. Уч төбегезне таныгач, камера үз таймерын кабызачак. Тануны җиңеләйтү өчен, бармакларыгызны җәегез.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Уч төбен камерага таба борыгыз</string>
@@ -374,7 +381,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Гомуми параметрлар</string>
     <string name="cam_strings_more_txt">Күбрәк</string>
     <string name="cam_strings_multi_window_txt">%1$s кушымтасын куллану өчен тулы экранны кабызу максатында бүлү сызыгының уртасын шудыру</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Хәзер башка җайланма тоташты.\nҖайланма белән күренеш эзләгеч аша сурәт белән уртаклашырга телисезме?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Хәзер башка җайланма тоташты.
+Җайланма белән күренеш эзләгеч аша сурәт белән уртаклашырга телисезме?"</string>
     <string name="cam_strings_multicam_add_device_txt">Җай. өстәү</string>
     <string name="cam_strings_multicam_add_more_txt">Күбрәк кушырга</string>
     <string name="cam_strings_multicam_apply_txt">Булган</string>
@@ -408,7 +416,8 @@
     <string name="cam_strings_predictive_capture_txt">Алдан билгеле кадр яздыру</string>
     <string name="cam_strings_predictive_launch_guide_txt">Тулы экранда карау өчен экранга кагылыгыз</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Алдан кабызу</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Камераны тиз генә каб. аласыз. Җайл-ны манзара күренешендә күтәреп тотып торыгыз һәм камераны объектка карат. Җайл. камераны үзлегеннән кабызачак.\nБу функцияне камера көйләүләрендәге Алдан кабызуда сүндерә аласыз.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Камераны тиз генә каб. аласыз. Җайл-ны манзара күренешендә күтәреп тотып торыгыз һәм камераны объектка карат. Җайл. камераны үзлегеннән кабызачак.
+Бу функцияне камера көйләүләрендәге Алдан кабызуда сүндерә аласыз."</string>
     <string name="cam_strings_predictive_launch_txt">Алдан кабызу</string>
     <string name="cam_strings_preview_always_txt">Кабызу</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 секунд</string>
@@ -434,14 +443,14 @@
     <string name="cam_strings_restricted_setting_photo_resolution_txt">Хәзер кулланыла торган ачыклык белән бу параметр эшләми. Бу параметрны көйләү өчен, ачыклыкны үзгәртегез.</string>
     <string name="cam_strings_restricted_setting_scene_txt">Хәзер кулланыла торган сцена белән бу параметр эшләми. Бу параметрны көйләү өчен, сцена сайлауны үзгәртегез.</string>
     <string name="cam_strings_restricted_setting_slow_motion_txt">Әкренәйтелгән хәрәкәт режимында ачыклыкны үзгәртеп булмый. Бу көйләүне үзгәртү өчен, Әкренәйтелгән хәрәкәт режимыннан чыгыгыз.</string>
-    <string name="cam_strings_restricted_setting_video_hdr_hlg_txt">HDR кабызылган вакытта бу көйләүгә кереп булмый. Аны көйләү өчен HDR\'ны сүндерегез.</string>
+    <string name="cam_strings_restricted_setting_video_hdr_hlg_txt">"HDR кабызылган вакытта бу көйләүгә кереп булмый. Аны көйләү өчен HDR'ны сүндерегез."</string>
     <string name="cam_strings_restricted_setting_video_resolution_or_scene_txt">Хәзер кулланыла торган видео ачыклыгы яки сцена белән бу параметр эшләми. Бу параметрны көйләү өчен, видео ачыклыгын яки сцена сайлауны үзгәртегез.</string>
     <string name="cam_strings_restricted_setting_video_resolution_txt">Хәзер кулланыла торган видео ачыклыгы белән бу параметр эшләми. Бу параметрны көйләү өчен, видео ачыклыгын үзгәртегез.</string>
     <string name="cam_strings_runtime_permission_continue_button_txt">КУШЫМТА МӘГ.</string>
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s өчен түбәндәге рөхсәт(ләр) кирәк</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s рөхсәте</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Бу гамәлне башкару өчен кушымтага түбәндәге рөхсәт(ләр) кирәк.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Рөхсәтләр бирү өчен Кушымта мәгълүматы &gt; Рөхсәтләр менюсына күчегез.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Рөхсәтләр бирү өчен Кушымта мәгълүматы > Рөхсәтләр менюсына күчегез.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Дәвам итеп булмады</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Фотога һәм видеога төшерү өчен</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Урнашу урынын чыгарту өчен</string>
@@ -510,7 +519,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Бик каты әкренәйтелгән хәрәкәт</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Хәрәкәтне әкренәйтү өчен к/с һәм яздыру стилен үзгәртә аласыз</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Күбрәк параметрл.</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Экран уртасындагы төймәгә кагылып кадерле моментны шунда ук %1$s к/с б-н әкренәйтелгән хәрәкәтле итеп яздыру.\nВидеоны яктыда яздыру аның сыйфатын яхшыртачак.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Экран уртасындагы төймәгә кагылып кадерле моментны шунда ук %1$s к/с б-н әкренәйтелгән хәрәкәтле итеп яздыру.
+Видеоны яктыда яздыру аның сыйфатын яхшыртачак."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Урт. төймәгә кагыл. кирәкле моментны %1$s кадр/секундлы итеп язд. аласыз</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Экран уртасындагы төймәгә кагылып кадерле моментны шунда ук %1$s к/с белән хәрәкәтне әкренәйтеп яздыру</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Бик каты әкренәйт. хәрәкәт (one-shot)</string>
@@ -521,7 +531,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Әкренәйтелгән хәрәкәт</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Ничек яздырырга</string>
     <string name="cam_strings_slow_motion_standard_txt">Әкренәйтелгән хәрәкәт</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Кадерле моментны тәэсирле итеп күрсәтү өчен әкренәйтелгән хәрәкәтле видео ясау.\nВидеоны яктыда яздыру аның сыйфатын яхшыртачак.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Кадерле моментны тәэсирле итеп күрсәтү өчен әкренәйтелгән хәрәкәтле видео ясау.
+Видеоны яктыда яздыру аның сыйфатын яхшыртачак."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">%1$s к/с ка күчеп видеоны төрле тизлектә яздыра аласыз</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Кирәкле моментта уртадагы төймәгә кагылыгыз</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Әкренәйтелгән хәрәкәт яздырылды</string>
@@ -552,12 +563,12 @@
     <string name="cam_strings_sw_licence_title_txt">Прогр. тәэм. лицензияләре</string>
     <string name="cam_strings_take_photo_txt">Фотога төшерү</string>
     <string name="cam_strings_term_of_use_accept_txt">Кабул итү</string>
-    <string name="cam_strings_term_of_use_consent_txt">Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Куллану шартлар&lt;/a&gt; бел.риза.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Куллану шартлар&lt;/a> бел.риза.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Бу хезмәтне куллану өчен, мәгълүмат планыгызга каратып, мобиль мәгълүмат бәяләре салынырга мөмкин.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile сезнең кисәкле Android тиңләштергечен, урнашу мәгълүматын һәм вакыт өлкәсен хезмәт күрсәтү нәтиҗәсен яхшырту өчен җыячак.</string>
     <string name="cam_strings_term_of_use_decline_txt">Баш тарту</string>
     <string name="cam_strings_term_of_use_title_txt">Шартлар</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt; Куллану шартлары&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"> Куллану шартлары&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Сайлауны алу</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Саклап булмый</string>
     <string name="cam_strings_timeshift_save_complete_txt">Сакланган</string>
@@ -584,7 +595,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Тотрыклы 4K яздыру өчен, югары тизлекле SD карта куллансагыз гына, бу көйләүне үзгәртергә ярый (1нче яки югарырак UHS тизлек классы яки 10нчы класс тизлеге киңәш ителә).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Тотрыклы Timeshift video яздыру өчен, югары тизлекле SD карта кулланмасагыз, бу көйләүне үзгәртергә ярамый. (1нче яки югарырак UHS тизлек классы яки 10нчы класс киңәш ителә). Барыбер үзгәртергәме?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Әкренәйтелгән хәрәкәтне тотрыклы яздыру өчен югары тизлекле SD карта кулланмасагыз, бу көйләүне үзгәртмәгез. (1нче яки югарырак UHS тизлек классы яки 10нчы класс киңәш ителә).</string>
-    <string name="cam_strings_video_explanatory_txt">Видеоны тотрыклы яздыру өчен мәгълүмат саклагычы итеп Эчке саклагычны сайларга тәкъдим итәбез. Үзгәртергә телисезме?\n\nSD картагыз югары тизлекле булса гына, аны мәгълүмат саклау өчен куллануны дәвам итегез (1нче яки югарырак UHS тизлек классы яки 10нчы класс киңәш ителә).</string>
+    <string name="cam_strings_video_explanatory_txt">"Видеоны тотрыклы яздыру өчен мәгълүмат саклагычы итеп Эчке саклагычны сайларга тәкъдим итәбез. Үзгәртергә телисезме?
+
+SD картагыз югары тизлекле булса гына, аны мәгълүмат саклау өчен куллануны дәвам итегез (1нче яки югарырак UHS тизлек классы яки 10нчы класс киңәш ителә)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Ике камера</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Сез ике камера кулланып хәтта төнлә яки начар яктыртылган бүлмәдә дә югары сыйфатлы бик матур видеолар яздыра аласыз. Камера Иң югары сизгерлек белән яздырганда, шартларга карап, бер камерадан ике камерага үзлегеннән күчә.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Ике камера белән видео яздыру</string>
@@ -599,9 +612,9 @@
     <string name="cam_strings_video_resolution_full_hd_30fps_txt">Тулы HD (30 к/с)</string>
     <string name="cam_strings_video_resolution_full_hd_60fps_txt">Тулы HD (60 к/с)</string>
     <string name="cam_strings_video_resolution_full_hd_frame_rate_txt">Кадр ешлыгы (Full HD)</string>
-    <string name="cam_strings_video_resolution_full_hd_super_slow_desc_txt">HD\'дан аермалы буларак, язд. вакыт. яртысында киңрәк өлкәне төшерә.</string>
+    <string name="cam_strings_video_resolution_full_hd_super_slow_desc_txt">"HD'дан аермалы буларак, язд. вакыт. яртысында киңрәк өлкәне төшерә."</string>
     <string name="cam_strings_video_resolution_full_hd_txt">Full HD</string>
-    <string name="cam_strings_video_resolution_hd_super_slow_desc_txt">Full HD\'дан аермалы буларак, ике язд. вакытында таррак өлкәне төшерә.</string>
+    <string name="cam_strings_video_resolution_hd_super_slow_desc_txt">"Full HD'дан аермалы буларак, ике язд. вакытында таррак өлкәне төшерә."</string>
     <string name="cam_strings_video_resolution_hd_txt">HD</string>
     <string name="cam_strings_video_resolution_mms_txt">MMS</string>
     <string name="cam_strings_video_resolution_qvga_txt">QVGA</string>

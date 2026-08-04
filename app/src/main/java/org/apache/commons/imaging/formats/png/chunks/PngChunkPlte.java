@@ -1,5 +1,6 @@
 package org.apache.commons.imaging.formats.png.chunks;
 
+import android.support.v4.view.ViewCompat;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import org.apache.commons.imaging.ImageReadException;
@@ -18,7 +19,7 @@ public class PngChunkPlte extends PngChunk {
         int i4 = i / 3;
         this.rgb = new int[i4];
         for (int i5 = 0; i5 < i4; i5++) {
-            this.rgb[i5] = ((BinaryFunctions.readByte("red[" + i5 + "]", byteArrayInputStream, "Not a Valid Png File: PLTE Corrupt") & 255) << 16) | (-16777216) | ((BinaryFunctions.readByte("green[" + i5 + "]", byteArrayInputStream, "Not a Valid Png File: PLTE Corrupt") & 255) << 8) | ((255 & BinaryFunctions.readByte("blue[" + i5 + "]", byteArrayInputStream, "Not a Valid Png File: PLTE Corrupt")) << 0);
+            this.rgb[i5] = ((BinaryFunctions.readByte("red[" + i5 + "]", byteArrayInputStream, "Not a Valid Png File: PLTE Corrupt") & 255) << 16) | ViewCompat.MEASURED_STATE_MASK | ((BinaryFunctions.readByte("green[" + i5 + "]", byteArrayInputStream, "Not a Valid Png File: PLTE Corrupt") & 255) << 8) | ((255 & BinaryFunctions.readByte("blue[" + i5 + "]", byteArrayInputStream, "Not a Valid Png File: PLTE Corrupt")) << 0);
         }
     }
 

@@ -10,55 +10,55 @@ public class CamLog {
     public static final boolean VERBOSE;
 
     static {
-        VERBOSE = DEBUG && Log.isLoggable("CameraApp", 2);
+        VERBOSE = DEBUG && Log.isLoggable(GLOBAL_TAG, 2);
     }
 
     public static void v(String... strArr) {
         if (VERBOSE) {
-            Log.v("CameraApp", makeLogStringWithLongInfo(strArr));
+            Log.v(GLOBAL_TAG, makeLogStringWithLongInfo(strArr));
         }
     }
 
     public static void v(String str, Throwable th) {
         if (VERBOSE) {
-            Log.v("CameraApp", makeLogStringWithLongInfo(str), th);
+            Log.v(GLOBAL_TAG, makeLogStringWithLongInfo(str), th);
         }
     }
 
     public static void d(String... strArr) {
-        if (DEBUG || Log.isLoggable("CameraApp", 3)) {
-            Log.d("CameraApp", makeLogStringWithLongInfo(strArr));
+        if (DEBUG || Log.isLoggable(GLOBAL_TAG, 3)) {
+            Log.d(GLOBAL_TAG, makeLogStringWithLongInfo(strArr));
         }
     }
 
     public static void d(String str, Throwable th) {
-        if (DEBUG || Log.isLoggable("CameraApp", 3)) {
-            Log.d("CameraApp", makeLogStringWithLongInfo(str), th);
+        if (DEBUG || Log.isLoggable(GLOBAL_TAG, 3)) {
+            Log.d(GLOBAL_TAG, makeLogStringWithLongInfo(str), th);
         }
     }
 
     public static void i(String... strArr) {
-        Log.i("CameraApp", makeLogStringWithShortInfo(strArr));
+        Log.i(GLOBAL_TAG, makeLogStringWithShortInfo(strArr));
     }
 
     public static void i(String str, Throwable th) {
-        Log.i("CameraApp", makeLogStringWithShortInfo(str), th);
+        Log.i(GLOBAL_TAG, makeLogStringWithShortInfo(str), th);
     }
 
     public static void w(String... strArr) {
-        Log.w("CameraApp", makeLogStringWithShortInfo(strArr));
+        Log.w(GLOBAL_TAG, makeLogStringWithShortInfo(strArr));
     }
 
     public static void w(String str, Throwable th) {
-        Log.w("CameraApp", makeLogStringWithShortInfo(str), th);
+        Log.w(GLOBAL_TAG, makeLogStringWithShortInfo(str), th);
     }
 
     public static void e(String... strArr) {
-        Log.e("CameraApp", makeLogStringWithShortInfo(strArr));
+        Log.e(GLOBAL_TAG, makeLogStringWithShortInfo(strArr));
     }
 
     public static void e(String str, Throwable th) {
-        Log.e("CameraApp", makeLogStringWithShortInfo(str), th);
+        Log.e(GLOBAL_TAG, makeLogStringWithShortInfo(str), th);
     }
 
     private static String makeLogStringWithLongInfo(String... strArr) {

@@ -1,19 +1,22 @@
 package com.sonyericsson.android.camera.view.modeselector;
 
 import android.content.Context;
-import com.sonyericsson.android.camera.view.modeselector.view.AbsPanelView$PanelAttributes;
-import com.sonyericsson.android.camera.view.modeselector.view.CapturingModePanelAttributes$AttributesBuilder;
+import com.sonyericsson.android.camera.Constants;
+import com.sonyericsson.android.camera.view.modeselector.CameraCommonProviderConstants;
+import com.sonyericsson.android.camera.view.modeselector.CapturingModeUtil;
+import com.sonyericsson.android.camera.view.modeselector.view.AbsPanelView;
+import com.sonyericsson.android.camera.view.modeselector.view.CapturingModePanelAttributes;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class CapturingModeAttributes implements CapturingModeUtil$CapturingMode {
+public class CapturingModeAttributes implements CapturingModeUtil.CapturingMode {
     static final /* synthetic */ boolean $assertionsDisabled = false;
     public static final String TAG = "CapturingModeAttributes";
     private final String mActivityName;
     private final int mDescriptionLabelId;
     private final Long mId;
-    private final CapturingModeAttributes$InternalCaptureType mInternalCaptureType;
+    private final InternalCaptureType mInternalCaptureType;
     private final boolean mIsVisibleNormal;
     private final boolean mIsVisibleOneshot;
     private final boolean mIsVisibleShortcut;
@@ -25,6 +28,11 @@ public class CapturingModeAttributes implements CapturingModeUtil$CapturingMode 
     private final int mShortcutLabelId;
     private final Object mTag;
 
+    public enum InternalCaptureType {
+        Photo,
+        Video
+    }
+
     public String getSelectorLabel() {
         return null;
     }
@@ -33,15 +41,27 @@ public class CapturingModeAttributes implements CapturingModeUtil$CapturingMode 
         return -1;
     }
 
-    public CapturingModeAttributes(String str, String str2, String str3, int i, int i2, int i3, int i4, int i5, CapturingModeAttributes$InternalCaptureType capturingModeAttributes$InternalCaptureType, boolean z, boolean z2, boolean z3, Object obj) {
-        this(null, str, str2, str3, i, i2, i3, i4, i5, capturingModeAttributes$InternalCaptureType, z, z2, z3, obj);
+    public enum VisibilityType {
+        Normal(CameraCommonProviderConstants.CapturingModeColumns.VISIBILITY_NORMAL),
+        Oneshot(CameraCommonProviderConstants.CapturingModeColumns.VISIBILITY_ONESHOT),
+        Shortcut(CameraCommonProviderConstants.CapturingModeColumns.VISIBILITY_SHORTCUT);
+
+        final String mColumn;
+
+        VisibilityType(String str) {
+            this.mColumn = str;
+        }
     }
 
-    CapturingModeAttributes(Long l, String str, String str2, String str3, int i, int i2, int i3, int i4, int i5, CapturingModeAttributes$InternalCaptureType capturingModeAttributes$InternalCaptureType, boolean z, boolean z2, boolean z3) {
-        this(l, str, str2, str3, i, i2, i3, i4, i5, capturingModeAttributes$InternalCaptureType, z, z2, z3, null);
+    public CapturingModeAttributes(String str, String str2, String str3, int i, int i2, int i3, int i4, int i5, InternalCaptureType internalCaptureType, boolean z, boolean z2, boolean z3, Object obj) {
+        this(null, str, str2, str3, i, i2, i3, i4, i5, internalCaptureType, z, z2, z3, obj);
     }
 
-    CapturingModeAttributes(Long l, String str, String str2, String str3, int i, int i2, int i3, int i4, int i5, CapturingModeAttributes$InternalCaptureType capturingModeAttributes$InternalCaptureType, boolean z, boolean z2, boolean z3, Object obj) {
+    CapturingModeAttributes(Long l, String str, String str2, String str3, int i, int i2, int i3, int i4, int i5, InternalCaptureType internalCaptureType, boolean z, boolean z2, boolean z3) {
+        this(l, str, str2, str3, i, i2, i3, i4, i5, internalCaptureType, z, z2, z3, null);
+    }
+
+    CapturingModeAttributes(Long l, String str, String str2, String str3, int i, int i2, int i3, int i4, int i5, InternalCaptureType internalCaptureType, boolean z, boolean z2, boolean z3, Object obj) {
         this.mId = l;
         this.mPackageName = str;
         this.mActivityName = str2;
@@ -51,7 +71,7 @@ public class CapturingModeAttributes implements CapturingModeUtil$CapturingMode 
         this.mDescriptionLabelId = i3;
         this.mShortcutIconId = i4;
         this.mShortcutLabelId = i5;
-        this.mInternalCaptureType = capturingModeAttributes$InternalCaptureType;
+        this.mInternalCaptureType = internalCaptureType;
         this.mIsVisibleNormal = z;
         this.mIsVisibleOneshot = z2;
         this.mIsVisibleShortcut = z3;
@@ -98,7 +118,7 @@ public class CapturingModeAttributes implements CapturingModeUtil$CapturingMode 
         return this.mTag;
     }
 
-    public CapturingModeAttributes$InternalCaptureType getInternalCaptureType() {
+    public InternalCaptureType getInternalCaptureType() {
         return this.mInternalCaptureType;
     }
 
@@ -114,7 +134,7 @@ public class CapturingModeAttributes implements CapturingModeUtil$CapturingMode 
         return this.mIsVisibleShortcut;
     }
 
-    @Override // com.sonyericsson.android.camera.view.modeselector.CapturingModeUtil$CapturingMode
+    @Override // com.sonyericsson.android.camera.view.modeselector.CapturingModeUtil.CapturingMode
     public boolean is(String str, String str2) {
         return str.equals(this.mPackageName) && str2.equals(this.mModeName);
     }
@@ -131,7 +151,7 @@ public class CapturingModeAttributes implements CapturingModeUtil$CapturingMode 
         return "PackageName=" + this.mPackageName + ", ActivityName=" + this.mActivityName + ", ModeName=" + this.mModeName + ", SelectorIconId=" + this.mSelectorIconId + ", SelectorLabelId=" + this.mSelectorLabelId + ", DescriptionLabelId=" + this.mDescriptionLabelId + ", ShortcutIconId=" + this.mShortcutIconId + ", ShortcutLabelId=" + this.mShortcutLabelId;
     }
 
-    public static List<AbsPanelView$PanelAttributes> toAttributesList(Context context, List<CapturingModeAttributes> list) {
+    public static List<AbsPanelView.PanelAttributes> toAttributesList(Context context, List<CapturingModeAttributes> list) {
         ArrayList arrayList = new ArrayList();
         Iterator<CapturingModeAttributes> it = list.iterator();
         while (it.hasNext()) {
@@ -140,7 +160,7 @@ public class CapturingModeAttributes implements CapturingModeUtil$CapturingMode 
         return arrayList;
     }
 
-    private static AbsPanelView$PanelAttributes convert(Context context, CapturingModeAttributes capturingModeAttributes) {
+    private static AbsPanelView.PanelAttributes convert(Context context, CapturingModeAttributes capturingModeAttributes) {
         if (capturingModeAttributes == null) {
             return null;
         }
@@ -149,9 +169,9 @@ public class CapturingModeAttributes implements CapturingModeUtil$CapturingMode 
         if (selectorLabel == null) {
             selectorLabel = ResourceUtil.getString(context, capturingModeAttributes.getPackageName(), capturingModeAttributes.getSelectorLabelId(), "", 100);
         }
-        String string = ResourceUtil.getString(context, capturingModeAttributes.getPackageName(), capturingModeAttributes.getDescriptionLabelId(), "", 500);
-        CapturingModePanelAttributes$AttributesBuilder capturingModePanelAttributes$AttributesBuilder = new CapturingModePanelAttributes$AttributesBuilder();
-        capturingModePanelAttributes$AttributesBuilder.setPackageName(capturingModeAttributes.getPackageName()).setActivityName(capturingModeAttributes.getActivityName()).setModeName(capturingModeAttributes.getModeName()).setIconUri(resourceUri).setTitle(selectorLabel).setDescription(string);
-        return capturingModePanelAttributes$AttributesBuilder.build();
+        String string = ResourceUtil.getString(context, capturingModeAttributes.getPackageName(), capturingModeAttributes.getDescriptionLabelId(), "", Constants.INTERVAL_OPEN_CAMERA);
+        CapturingModePanelAttributes.AttributesBuilder attributesBuilder = new CapturingModePanelAttributes.AttributesBuilder();
+        attributesBuilder.setPackageName(capturingModeAttributes.getPackageName()).setActivityName(capturingModeAttributes.getActivityName()).setModeName(capturingModeAttributes.getModeName()).setIconUri(resourceUri).setTitle(selectorLabel).setDescription(string);
+        return attributesBuilder.build();
     }
 }

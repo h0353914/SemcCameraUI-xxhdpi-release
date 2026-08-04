@@ -3,13 +3,15 @@ package com.sonymobile.cameracommon.evf;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.support.v4.view.ViewCompat;
 import android.util.Size;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.view.ViewGroup$LayoutParams;
+import android.view.ViewGroup;
 import com.sonyericsson.android.camera.util.CamLog;
+import com.sonymobile.cameracommon.evf.Evf;
 
 public class SurfaceViewEvf implements Evf {
     private static final String TAG = "SurfaceViewEvf";
@@ -17,25 +19,8 @@ public class SurfaceViewEvf implements Evf {
     private SurfaceView mSurfaceView = null;
     private Rect mEvfRect = new Rect();
     private boolean mIsSurfaceAvailable = false;
-    private SurfaceViewEvf$SurfaceViewCallback mSurfaceViewCallback = new SurfaceViewEvf$SurfaceViewCallback(this, null);
-    private Evf$LifeCycleCallback mLifeCycleCallback = null;
-
-    static /* synthetic */ void access$100(SurfaceViewEvf surfaceViewEvf, boolean z) {
-        surfaceViewEvf.setSurfaceAvailability(z);
-    }
-
-    static /* synthetic */ Size access$202(SurfaceViewEvf surfaceViewEvf, Size size) {
-        surfaceViewEvf.mSurfaceSize = size;
-        return size;
-    }
-
-    static /* synthetic */ Evf$LifeCycleCallback access$300(SurfaceViewEvf surfaceViewEvf) {
-        return surfaceViewEvf.mLifeCycleCallback;
-    }
-
-    static /* synthetic */ SurfaceView access$400(SurfaceViewEvf surfaceViewEvf) {
-        return surfaceViewEvf.mSurfaceView;
-    }
+    private SurfaceViewCallback mSurfaceViewCallback = new SurfaceViewCallback();
+    private Evf.LifeCycleCallback mLifeCycleCallback = null;
 
     @Override // com.sonymobile.cameracommon.evf.Evf
     public void show() {
@@ -84,15 +69,15 @@ public class SurfaceViewEvf implements Evf {
         if (CamLog.DEBUG) {
             CamLog.d("resize() : Width=" + i + ", Height = " + i2);
         }
-        ViewGroup$LayoutParams layoutParams = this.mSurfaceView.getLayoutParams();
+        ViewGroup.LayoutParams layoutParams = this.mSurfaceView.getLayoutParams();
         layoutParams.width = i;
         layoutParams.height = i2;
         this.mSurfaceView.setLayoutParams(layoutParams);
     }
 
     @Override // com.sonymobile.cameracommon.evf.Evf
-    public void setLifeCycleCallback(Evf$LifeCycleCallback evf$LifeCycleCallback) {
-        this.mLifeCycleCallback = evf$LifeCycleCallback;
+    public void setLifeCycleCallback(Evf.LifeCycleCallback lifeCycleCallback) {
+        this.mLifeCycleCallback = lifeCycleCallback;
     }
 
     @Override // com.sonymobile.cameracommon.evf.Evf
@@ -148,13 +133,80 @@ public class SurfaceViewEvf implements Evf {
         SurfaceHolder holder;
         Canvas canvasLockCanvas;
         if (this.mIsSurfaceAvailable && (canvasLockCanvas = (holder = this.mSurfaceView.getHolder()).lockCanvas()) != null) {
-            canvasLockCanvas.drawColor(-16777216);
+            canvasLockCanvas.drawColor(ViewCompat.MEASURED_STATE_MASK);
             holder.unlockCanvasAndPost(canvasLockCanvas);
         }
     }
 
-    private synchronized void setSurfaceAvailability(boolean z) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public synchronized void setSurfaceAvailability(boolean z) {
         this.mIsSurfaceAvailable = z;
+    }
+
+    private class SurfaceViewCallback implements SurfaceHolder.Callback {
+        private SurfaceViewCallback() {
+        }
+
+        @Override // android.view.SurfaceHolder.Callback
+        public void surfaceCreated(SurfaceHolder surfaceHolder) {
+            Rect surfaceFrame = surfaceHolder.getSurfaceFrame();
+            if (CamLog.DEBUG) {
+                CamLog.d("surfaceCreated(" + surfaceFrame.width() + "," + surfaceFrame.height() + ") : E");
+            }
+            if (verifySurfaceSize(surfaceFrame.width(), surfaceFrame.height())) {
+                SurfaceViewEvf.this.setSurfaceAvailability(true);
+                SurfaceViewEvf.this.mSurfaceSize = new Size(surfaceFrame.width(), surfaceFrame.height());
+                SurfaceViewEvf.this.mLifeCycleCallback.onEvfInitialized(SurfaceViewEvf.this, surfaceFrame.width(), surfaceFrame.height());
+                if (CamLog.DEBUG) {
+                    CamLog.d("surfaceCreated() : X");
+                }
+            }
+        }
+
+        @Override // android.view.SurfaceHolder.Callback
+        public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i2, int i3) {
+            if (CamLog.DEBUG) {
+                CamLog.d("surfaceChanged(" + i2 + "," + i3 + ") : E");
+            }
+            if (verifySurfaceSize(i2, i3)) {
+                SurfaceViewEvf.this.mSurfaceSize = new Size(i2, i3);
+                SurfaceViewEvf.this.mLifeCycleCallback.onEvfSizeChanged(SurfaceViewEvf.this, i2, i3);
+                if (CamLog.DEBUG) {
+                    CamLog.d("surfaceChanged() : X");
+                }
+            }
+        }
+
+        @Override // android.view.SurfaceHolder.Callback
+        public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
+            if (CamLog.DEBUG) {
+                CamLog.d("surfaceDestroyed() : E");
+            }
+            SurfaceViewEvf.this.setSurfaceAvailability(false);
+            SurfaceViewEvf.this.mSurfaceSize = null;
+            SurfaceViewEvf.this.mLifeCycleCallback.onEvfFinalized(SurfaceViewEvf.this);
+            if (CamLog.DEBUG) {
+                CamLog.d("surfaceDestroyed() : X");
+            }
+        }
+
+        private boolean verifySurfaceSize(int i, int i2) {
+            if (SurfaceViewEvf.this.mSurfaceView != null) {
+                int iWidth = SurfaceViewEvf.this.mSurfaceView.getHolder().getSurfaceFrame().width();
+                if (i == iWidth) {
+                    int iHeight = SurfaceViewEvf.this.mSurfaceView.getHolder().getSurfaceFrame().height();
+                    if (i2 == iHeight) {
+                        return true;
+                    }
+                    CamLog.w("Surface height is not matched: expected = " + iHeight + " actual = " + i2);
+                    return false;
+                }
+                CamLog.w("Surface width is not matched: expected = " + iWidth + " actual = " + i);
+                return false;
+            }
+            CamLog.w("Surface view has been destroyed");
+            return false;
+        }
     }
 
     @Override // com.sonymobile.cameracommon.evf.Evf

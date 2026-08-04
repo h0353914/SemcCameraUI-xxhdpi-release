@@ -4,6 +4,7 @@ import com.google.android.gms.common.internal.zzx;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class zzb<T> implements Iterator<T> {
     protected final DataBuffer<T> zzadi;
     protected int zzadj = -1;

@@ -2,13 +2,14 @@ package com.google.android.gms.auth.api.consent;
 
 import android.accounts.Account;
 import android.os.Parcel;
-import android.os.Parcelable$Creator;
+import android.os.Parcelable;
 import com.google.android.gms.auth.firstparty.shared.ScopeDetail;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.common.internal.zzx;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public class GetConsentIntentRequest implements SafeParcelable {
-    public static final Parcelable$Creator<GetConsentIntentRequest> CREATOR = new zzb();
+    public static final Parcelable.Creator<GetConsentIntentRequest> CREATOR = new zzb();
     private final int mVersionCode;
     private final Account zzQd;
     private final String zzSb;

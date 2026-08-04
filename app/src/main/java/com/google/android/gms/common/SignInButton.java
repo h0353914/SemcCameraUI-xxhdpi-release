@@ -1,18 +1,19 @@
 package com.google.android.gms.common;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import com.google.android.gms.common.internal.zzaa;
 import com.google.android.gms.common.internal.zzab;
 import com.google.android.gms.common.internal.zzx;
-import com.google.android.gms.dynamic.zzg$zza;
+import com.google.android.gms.dynamic.zzg;
 
-public final class SignInButton extends FrameLayout implements View$OnClickListener {
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
+public final class SignInButton extends FrameLayout implements View.OnClickListener {
     public static final int COLOR_DARK = 0;
     public static final int COLOR_LIGHT = 1;
     public static final int SIZE_ICON_ONLY = 2;
@@ -21,7 +22,7 @@ public final class SignInButton extends FrameLayout implements View$OnClickListe
     private int mColor;
     private int mSize;
     private View zzaat;
-    private View$OnClickListener zzaau;
+    private View.OnClickListener zzaau;
 
     public SignInButton(Context context) {
         this(context, null);
@@ -37,7 +38,7 @@ public final class SignInButton extends FrameLayout implements View$OnClickListe
         setStyle(0, 0);
     }
 
-    private static Button zza(Context context, int i, int i2) {
+    private static Button zza(Context context, int i, int i2) throws Resources.NotFoundException {
         zzab zzabVar = new zzab(context);
         zzabVar.zza(context.getResources(), i, i2);
         return zzabVar;
@@ -49,7 +50,7 @@ public final class SignInButton extends FrameLayout implements View$OnClickListe
         }
         try {
             this.zzaat = zzaa.zzb(context, this.mSize, this.mColor);
-        } catch (zzg$zza unused) {
+        } catch (zzg.zza unused) {
             Log.w("SignInButton", "Sign in button not found, using placeholder instead");
             this.zzaat = zza(context, this.mSize, this.mColor);
         }
@@ -58,7 +59,7 @@ public final class SignInButton extends FrameLayout implements View$OnClickListe
         this.zzaat.setOnClickListener(this);
     }
 
-    @Override // android.view.View$OnClickListener
+    @Override // android.view.View.OnClickListener
     public void onClick(View view) {
         if (this.zzaau == null || view != this.zzaat) {
             return;
@@ -77,8 +78,8 @@ public final class SignInButton extends FrameLayout implements View$OnClickListe
     }
 
     @Override // android.view.View
-    public void setOnClickListener(View$OnClickListener view$OnClickListener) {
-        this.zzaau = view$OnClickListener;
+    public void setOnClickListener(View.OnClickListener onClickListener) {
+        this.zzaau = onClickListener;
         if (this.zzaat != null) {
             this.zzaat.setOnClickListener(this);
         }

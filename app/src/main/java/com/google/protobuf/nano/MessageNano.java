@@ -17,11 +17,6 @@ public abstract class MessageNano {
     public void writeTo(CodedOutputByteBufferNano output) throws IOException {
     }
 
-    /* JADX INFO: renamed from: clone */
-    public /* bridge */ /* synthetic */ Object mo6clone() throws CloneNotSupportedException {
-        return clone();
-    }
-
     public int getCachedSize() {
         if (this.cachedSize < 0) {
             getSerializedSize();

@@ -1,5 +1,8 @@
 package com.duolingo.open.rtlviewpager;
 
+
+
+
 public final class BuildConfig {
     public static final String APPLICATION_ID = "com.duolingo.open.rtlviewpager";
     public static final String BUILD_TYPE = "release";

@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">Nepodarilo sa dokončiť snímanie. Otáčajte fotoaparát pomalšie.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">Nepodarilo sa dokončiť snímanie. Otáčajte fotoaparát rýchlejšie.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Sníma panoramatické fotografie pomocou posúvania fotoaparátu</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Vytvárajú sa nasledujúce súbory:\n- obrázok pod rozličnými uhlami\n- obrázok 3D\nPoznámka: Tieto súbory obsahujú sivú oblasť.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Vytvárajú sa nasledujúce súbory:\n- obrázok pod rozličnými uhlami\n- obrázok 3D</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Spracúva sa...\nTento obrázok obsahuje sivú oblasť</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Vytvárajú sa nasledujúce súbory:
+- obrázok pod rozličnými uhlami
+- obrázok 3D
+Poznámka: Tieto súbory obsahujú sivú oblasť."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Vytvárajú sa nasledujúce súbory:
+- obrázok pod rozličnými uhlami
+- obrázok 3D"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Spracúva sa...
+Tento obrázok obsahuje sivú oblasť"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Obrázok sa ukladá</string>
     <string name="cam_3d_strings_dialog_processing_txt">Spracúva sa...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Ak chcete spustiť fotoaparát 3D, počkajte niekoľko sekúnd</string>
@@ -348,7 +354,7 @@
     <string name="cam_strings_focus_mode_title_txt">Režim zaostrenia</string>
     <string name="cam_strings_focus_mode_touch_focus_txt">Dotykové zaostrovanie</string>
     <string name="cam_strings_focus_mode_txt">Režim zaostrenia</string>
-    <string name="cam_strings_front_cam_location_guide_txt">Umiestnenie objektívu fotoaparátu je zobrazené na obrázku </string>
+    <string name="cam_strings_front_cam_location_guide_txt">"Umiestnenie objektívu fotoaparátu je zobrazené na obrázku "</string>
     <string name="cam_strings_fusion_error_too_close_txt">Odstúpte ďalej od objektu</string>
     <string name="cam_strings_fusion_on_txt">Ultra vysoká citlivosť</string>
     <string name="cam_strings_fusion_setting_txt">Prepínanie duálneho fotoaparátu</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Nastavte efekt jasnej a jemnej pokožky. Dosiahnete ho v aplikáciách, ktoré využívajú predný fotoaparát. Dá sa nastaviť pre fotografie aj videá. Nastaviť môžete aj úroveň.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Nastavenie úrovne</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Hladká pleť</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">Aplikácia sa nedá spustiť.\nSkontrolujte, či máte v zariadení nainštalovanú a zapnutú najnovšiu verziu aplikácie %1$s.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"Aplikácia sa nedá spustiť.
+Skontrolujte, či máte v zariadení nainštalovanú a zapnutú najnovšiu verziu aplikácie %1$s."</string>
     <string name="cam_strings_gridline_txt">Mriežky</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Dlaň otočte k fotoaparátu. Keď fotoaparát rozpozná vašu dlaň, zapne sa samospúšť. Kvôli ľahšiemu rozpoznaniu dlane vystrite prsty dohora.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Dlaň otočte k fotoaparátu</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Bežné nastavenie</string>
     <string name="cam_strings_more_txt">Ďalšie</string>
     <string name="cam_strings_multi_window_txt">Pred použitím aplikácie %1$s prepnite na celú obrazovku potiahnutím za stred deliacej línie</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Pripojilo sa ďalšie zariadenie.\nChcete s ním zdieľať obrázok cez hľadáčik?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Pripojilo sa ďalšie zariadenie.
+Chcete s ním zdieľať obrázok cez hľadáčik?"</string>
     <string name="cam_strings_multicam_add_device_txt">Pridať zariadenie</string>
     <string name="cam_strings_multicam_add_more_txt">Pridať ďalšie</string>
     <string name="cam_strings_multicam_apply_txt">Hotovo</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Meranie expozície</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Prediktívne</string>
     <string name="cam_strings_predictive_capture_txt">Prediktívne snímanie</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">Fotoaparát sa spustil automaticky, keď zistil, že ste telefón nadvihli v režime na šírku a nasmerovali ste ho na objekt.\nV nastaveniach fotoaparátu si môžete vybrať obľúbený spôsob používania tejto funkcie cez položku Inteligentné spustenie.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"Fotoaparát sa spustil automaticky, keď zistil, že ste telefón nadvihli v režime na šírku a nasmerovali ste ho na objekt.
+V nastaveniach fotoaparátu si môžete vybrať obľúbený spôsob používania tejto funkcie cez položku Inteligentné spustenie."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Snímku urobíte dotykom vnútri kruhu</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Snímku urobíte dotknutím sa obrazovky</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Ťuknutím na stred kruhu otvoríte zobrazenie na celú obrazovku</string>
     <string name="cam_strings_predictive_launch_guide_txt">Dotykom vnútri kruhu spustíte fotoaparát</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Spustiť a snímať dotykom</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Spustiť dotykom na obrazovku</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Fotoaparát sa dá spúšťať aj rýchlejšie. Zariadenie uchopte po šírke, svižne ho nadvihnite a fotoaparát nasmerujte na objekt. Fotoaparát sa spustí automaticky. \nV nastaveniach fotoaparátu v ponuke Inteligentné spustenie môžete vybrať svoj obľúbený spôsob používania tejto funkcie.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Fotoaparát sa dá spúšťať aj rýchlejšie. Zariadenie uchopte po šírke, svižne ho nadvihnite a fotoaparát nasmerujte na objekt. Fotoaparát sa spustí automaticky. 
+V nastaveniach fotoaparátu v ponuke Inteligentné spustenie môžete vybrať svoj obľúbený spôsob používania tejto funkcie."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Inteligent. spustenie</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Fotoaparát sa dá spúšťať aj rýchlejšie. Zariadenie uchopte po šírke, urobte hojdavý pohyb nahor a fotoaparát nasmerujte na objekt. Fotoaparát sa spustí automaticky.\nTúto funkciu vypnete v nastaveniach fotoaparátu cez ponuku Inteligentné spustenie.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Fotoaparát sa dá spúšťať aj rýchlejšie. Zariadenie uchopte po šírke, urobte hojdavý pohyb nahor a fotoaparát nasmerujte na objekt. Fotoaparát sa spustí automaticky.
+Túto funkciu vypnete v nastaveniach fotoaparátu cez ponuku Inteligentné spustenie."</string>
     <string name="cam_strings_predictive_launch_txt">Inteligentné spustenie</string>
     <string name="cam_strings_preview_always_txt">Zapnuté</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 sekundy</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s vyžaduje nasledujúce povolenia</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Povolenie pre %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">Na vykonanie akcie potrebuje aplikácia nasledujúce povolenia.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Ak chcete udeliť povolenia, prejdite na Informácie o aplikácii &gt; Povolenia.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Ak chcete udeliť povolenia, prejdite na Informácie o aplikácii > Povolenia.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">Nedá sa pokračovať</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Fotografovanie a natáčanie videí</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Načítanie polohy</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Uložené do interného ukladacieho priestoru</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">PREJSŤ</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">Na vykonanie akcie potrebuje aplikácia nasledujúce povolenia.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Aby mohol fotoaparát používať kartu SD, potrebuje povolenia na prístup ku karte SD.\nDátový ukladací priestor znova zmeňte na kartu SD alebo na ďalšej obrazovke povoľte fotoaparátu prístup ku karte SD.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Aby mohol fotoaparát používať kartu SD, potrebuje povolenia na prístup ku karte SD.
+Dátový ukladací priestor znova zmeňte na kartu SD alebo na ďalšej obrazovke povoľte fotoaparátu prístup ku karte SD."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">Karta SD nie je k dispozícii</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Bola zistená nová karta SD, ktorá vyžaduje povolenia.\n\nAk chcete kartu SD používať ako ukladací priestor dát, na ďalšej obrazovke vyberte kartu SD alebo adresár DCIM.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">Nebola vybraná karta SD ani adresár DCIM. Kartu SD nie je možné použiť.\n\nAk chcete udeliť povolenia, na ďalšej obrazovke najskôr vyberte ako miesto ukladania kartu SD alebo vhodný adresár.</string>
-    <string name="cam_strings_sd_permission_info_txt">Zistila sa nová karta SD, ktorá vyžaduje povolenia.\nAko predvolený dátový ukladací priestor sa preto použije interný ukladací priestor zariadenia.\n\nAk chcete ako dátový ukladací priestor používať kartu SD, prejdite do nastavení fotoaparátu a voľbu ukladacieho priestoru zmeňte na kartu SD.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Bola zistená nová karta SD, ktorá vyžaduje povolenia.
+
+Ak chcete kartu SD používať ako ukladací priestor dát, na ďalšej obrazovke vyberte kartu SD alebo adresár DCIM."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"Nebola vybraná karta SD ani adresár DCIM. Kartu SD nie je možné použiť.
+
+Ak chcete udeliť povolenia, na ďalšej obrazovke najskôr vyberte ako miesto ukladania kartu SD alebo vhodný adresár."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Zistila sa nová karta SD, ktorá vyžaduje povolenia.
+Ako predvolený dátový ukladací priestor sa preto použije interný ukladací priestor zariadenia.
+
+Ak chcete ako dátový ukladací priestor používať kartu SD, prejdite do nastavení fotoaparátu a voľbu ukladacieho priestoru zmeňte na kartu SD."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Ukladanie fotografií a videí na kartu SD</string>
     <string name="cam_strings_select_picture_txt">Vybrať fotografiu</string>
     <string name="cam_strings_self_timer_05_txt">0,5 s</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Automatické snímanie</string>
     <string name="cam_strings_side_touch_not_supported_txt">Na tejto obrazovke bočný snímač nie je podporovaný</string>
     <string name="cam_strings_side_touch_on_title_txt">Bočný snímač</string>
-    <string name="cam_strings_side_touch_on_txt">Ak chcete použiť túto funkciu, prejdite na Nastavenia &gt; Displej a zapnite funkciu Bočný snímač. Chcete ju zapnúť?</string>
+    <string name="cam_strings_side_touch_on_txt">Ak chcete použiť túto funkciu, prejdite na Nastavenia > Displej a zapnite funkciu Bočný snímač. Chcete ju zapnúť?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Bočný snímač</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Fotografie alebo videá môžete ľahko nasnímať aj bez tlačidla uzávierky. Stačí dvakrát ťuknúť na snímač na bočnej strane obrazovky. Posúvaním prsta pozdĺž tohto bočného snímača môžete dokonca priblížiť alebo oddialiť obraz.\nTáto funkcia je podporovaná v režime fotografie aj videa. Vypnúť ju môžete v ponuke Bočný snímač v nastaveniach fotoaparátu.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Fotografie alebo videá môžete ľahko nasnímať aj bez tlačidla uzávierky. Stačí dvakrát ťuknúť na snímač na bočnej strane obrazovky v zobrazení na výšku. Posúvaním prsta pozdĺž tohto bočného snímača môžete dokonca priblížiť alebo oddialiť obraz.\nTáto funkcia je podporovaná v režime fotografie aj videa. Vypnúť ju môžete v ponuke Bočný snímač v nastaveniach fotoaparátu.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Fotografie alebo videá môžete ľahko nasnímať aj bez tlačidla uzávierky. Stačí dvakrát ťuknúť na snímač na bočnej strane obrazovky v zobrazení na výšku.\nTáto funkcia je podporovaná v režime fotografie aj videa. Vypnúť ju môžete v ponuke Bočný snímač v nastaveniach fotoaparátu.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Fotografie alebo videá môžete ľahko nasnímať aj bez tlačidla uzávierky. Stačí dvakrát ťuknúť na snímač na bočnej strane obrazovky.\nTáto funkcia je podporovaná v režime fotografie aj videa. Vypnúť ju môžete v ponuke Bočný snímač v nastaveniach fotoaparátu.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Fotografie alebo videá môžete ľahko nasnímať aj bez tlačidla uzávierky. Stačí dvakrát ťuknúť na snímač na bočnej strane obrazovky. Posúvaním prsta pozdĺž tohto bočného snímača môžete dokonca priblížiť alebo oddialiť obraz.
+Táto funkcia je podporovaná v režime fotografie aj videa. Vypnúť ju môžete v ponuke Bočný snímač v nastaveniach fotoaparátu."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Fotografie alebo videá môžete ľahko nasnímať aj bez tlačidla uzávierky. Stačí dvakrát ťuknúť na snímač na bočnej strane obrazovky v zobrazení na výšku. Posúvaním prsta pozdĺž tohto bočného snímača môžete dokonca priblížiť alebo oddialiť obraz.
+Táto funkcia je podporovaná v režime fotografie aj videa. Vypnúť ju môžete v ponuke Bočný snímač v nastaveniach fotoaparátu."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Fotografie alebo videá môžete ľahko nasnímať aj bez tlačidla uzávierky. Stačí dvakrát ťuknúť na snímač na bočnej strane obrazovky v zobrazení na výšku.
+Táto funkcia je podporovaná v režime fotografie aj videa. Vypnúť ju môžete v ponuke Bočný snímač v nastaveniach fotoaparátu."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Fotografie alebo videá môžete ľahko nasnímať aj bez tlačidla uzávierky. Stačí dvakrát ťuknúť na snímač na bočnej strane obrazovky.
+Táto funkcia je podporovaná v režime fotografie aj videa. Vypnúť ju môžete v ponuke Bočný snímač v nastaveniach fotoaparátu."</string>
     <string name="cam_strings_side_touch_txt">Bočný snímač</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">Štýl nahrávania a rozlíšenie obrazovky sa dajú zmeniť v nastaveniach fotoaparátu</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Superspomalený (jednoraz. záber)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Superspomalený záber</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Frekvenciu snímok a štýl nahrávania spomalených záberov môžete meniť</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Ďalšie možnosti</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Ťuknutím na tlačidlo v strede obrazovky zachytíte vzácny moment v spomalenom zábere s rýchlosťou %1$s snímok/s.\nLepšie video nahráte pri jasnom svetle.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Ťuknutím na tlačidlo v strede obrazovky zachytíte vzácny moment v spomalenom zábere s rýchlosťou %1$s snímok/s.
+Lepšie video nahráte pri jasnom svetle."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Ťuknutím na tlačidlo v strede nahráte ten správny moment s frekvenciou %1$s sn./s</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Ťuknutím na tlačidlo v strede obrazovky zachytíte vzácny moment v spomalenom zábere s rýchlosťou %1$s snímk./s.</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Superspomalený záber (jednorazový)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Spomalený záber</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Ako nahrávať</string>
     <string name="cam_strings_slow_motion_standard_txt">Spomalený záber</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Vytvorte si pôsobivé video zobrazujúce vzácne chvíle v spomalenom zábere.\nLepšie video nahráte pri jasnom svetle.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Vytvorte si pôsobivé video zobrazujúce vzácne chvíle v spomalenom zábere.
+Lepšie video nahráte pri jasnom svetle."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Prepnutím na %1$s sn./s môžete nahrávať videá s rôznymi rýchlosťami</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">V správnom momente ťuknite na tlačidlo v strede</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Spomalený záber je nahraný</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Licencie na softvér</string>
     <string name="cam_strings_take_photo_txt">Fotografovať</string>
     <string name="cam_strings_term_of_use_accept_txt">Súhlasím</string>
-    <string name="cam_strings_term_of_use_consent_txt">Súhlasím s &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;podmienkami používania služieb&lt;/a&gt; spoločnosti Sony Mobile.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Súhlasím s &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">podmienkami používania služieb&lt;/a> spoločnosti Sony Mobile.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">Za používanie tejto služby sa môžu v závislosti od dátovej tarify účtovať poplatky za mobilné dáta.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Spoločnosť Sony Mobile bude na poskytovanie vhodných výsledkov v rámci služby a na jej zlepšenie zhromažďovať jedinečný hašovaný identifikátor zariadenia Android ID, údaje podľa miesta a časovú pečiatku.</string>
     <string name="cam_strings_term_of_use_decline_txt">Nesúhlasím</string>
     <string name="cam_strings_term_of_use_title_txt">Zmluvné podmienky</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Podmienky používania služieb&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Podmienky používania služieb&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Zrušiť výber fotografií</string>
     <string name="cam_strings_timeshift_operation_failed_txt">Snímku sa nepodarilo uložiť</string>
     <string name="cam_strings_timeshift_save_complete_txt">Uložené</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Ak chcete dosiahnuť stabilné nahrávanie videí vo formáte 4K, toto nastavenie nesmiete meniť, pokiaľ nepoužívate vysokorýchlostnú SD kartu (odporúča sa UHS, rýchlostná trieda 1 alebo vyššia, alebo rýchlostná trieda 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Kvôli stabilnému nahrávaniu v režime Timeshift video sa toto nastavenie nesmie meniť, pokiaľ nepoužívate vysokorýchlostnú SD kartu (odporúča sa UHS, rýchlostná trieda 1 alebo vyššia, alebo rýchlostná trieda 10). Chcete nastavenie aj tak zmeniť?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Ak chcete dosiahnuť stabilné nahrávanie videí v spomalenom zábere, toto nastavenie nemeňte, pokiaľ nepoužívate vysokorýchlostnú SD kartu (odporúča sa UHS, rýchlostná trieda 1 alebo vyššia, alebo rýchlostná trieda 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Kvôli stabilnému nahrávaniu videí odporúčame zmeniť dátové úložisko na interný ukladací priestor. Chcete to urobiť teraz?\n\nAk chcete videá naďalej ukladať na SD kartu, použite vysokorýchlostnú SD kartu (odporúča sa UHS, rýchlostná trieda 1 alebo vyššia, alebo rýchlostná trieda 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Kvôli stabilnému nahrávaniu videí odporúčame zmeniť dátové úložisko na interný ukladací priestor. Chcete to urobiť teraz?
+
+Ak chcete videá naďalej ukladať na SD kartu, použite vysokorýchlostnú SD kartu (odporúča sa UHS, rýchlostná trieda 1 alebo vyššia, alebo rýchlostná trieda 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Duálny fotoaparát</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">S duálnym fotoaparátom urobíte krásne videozábery s nízkou úrovňou skreslenia aj v noci alebo pri slabom interiérovom osvetlení. Fotoaparát automaticky prepína medzi bežným a duálnym fotoaparátom podľa toho, či scény vyžadujú ultra vysokú citlivosť nahrávania.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Nahrávanie videí s duálnym fotoaparátom</string>

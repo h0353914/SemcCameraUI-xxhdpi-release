@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">No se pudo completar la captura. Muévase más lento.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">No se pudo completar la captura. Muévase más rápidamente.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">Toma fotografía panorámica al mover de lado a lado la cámara</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">Creando los siguientes archivos:\n- Imagen de varios ángulos\n- Imagen en 3D\nNota: Estos archivos contienen un área gris.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">Creando los siguientes archivos:\n- Imagen de varios ángulos\n- Imagen en 3D</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">Procesando...\nEsta imagen contiene un área gris</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"Creando los siguientes archivos:
+- Imagen de varios ángulos
+- Imagen en 3D
+Nota: Estos archivos contienen un área gris."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"Creando los siguientes archivos:
+- Imagen de varios ángulos
+- Imagen en 3D"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"Procesando...
+Esta imagen contiene un área gris"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">Guardando imagen</string>
     <string name="cam_3d_strings_dialog_processing_txt">Procesando...</string>
     <string name="cam_3d_strings_error_application_busy_txt">Espere unos pocos segundos para iniciar la cámara en 3D</string>
@@ -215,7 +221,7 @@
     <string name="cam_strings_description_camera_txt">Tomar fotos y videos</string>
     <string name="cam_strings_description_creative_effect_txt">Seleccione efectos para fotos y videos artísticos</string>
     <string name="cam_strings_description_dualrec_txt">Coloque su cara en fotos y videos usando la cámara delantera y principal</string>
-    <string name="cam_strings_description_facefusion_txt">Enmascare su rostro con el de su amigo y tome una selfie impresionante. </string>
+    <string name="cam_strings_description_facefusion_txt">"Enmascare su rostro con el de su amigo y tome una selfie impresionante. "</string>
     <string name="cam_strings_description_google_lens_txt">Vea más detalles o realizar otras acciones en lo que está viendo con %1$s</string>
     <string name="cam_strings_description_high_frame_rate_txt">Grabe video de alta velocidad y aplique efecto de cámara lenta</string>
     <string name="cam_strings_description_multicam_txt">Grabe la misma escena de varios ángulos en una sola pantalla</string>
@@ -276,7 +282,7 @@
     <string name="cam_strings_error_high_temp_shut_down_no_txt">No</string>
     <string name="cam_strings_error_high_temp_shut_down_yes_txt">Sí</string>
     <string name="cam_strings_error_high_temp_shutting_down_txt">La cámara se apagará temporalmente para enfriarse.</string>
-    <string name="cam_strings_error_high_temp_shutting_down_vzw_txt">La cámara tiene que ser enfriada. La grabación sera guardada y la aplicación  cerrada, hasta que el dispositivo este adecuadamente enfriado.</string>
+    <string name="cam_strings_error_high_temp_shutting_down_vzw_txt">"La cámara tiene que ser enfriada. La grabación sera guardada y la aplicación  cerrada, hasta que el dispositivo este adecuadamente enfriado."</string>
     <string name="cam_strings_error_internal_memory_full_txt">Memoria interna llena. Cambió el ajuste predeterminado de Almacenar datos en la tarjeta SD.</string>
     <string name="cam_strings_error_internal_memory_unavailable_txt">El almacenamiento interno está corrupto o protegido contra escritura. Almacenar datos cambió a la tarjeta SD.</string>
     <string name="cam_strings_error_internal_sd_full_txt">Memoria llena. Elimine algunos archivos de la tarjeta SD o del almacenamiento interno</string>
@@ -360,7 +366,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">Haga que su piel luzca brillosa y suave. El efecto funciona en todas las aplicaciones que utilizan la cámara delantera. Se puede aplicar en fotografías y videos. También puede ajustar el nivel.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">Ajuste de nivel</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">Alisar piel</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">No se puede iniciar la aplicación.\nAsegúrese de tener la versión más reciente de %1$s instalada y activada en su dispositivo.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"No se puede iniciar la aplicación.
+Asegúrese de tener la versión más reciente de %1$s instalada y activada en su dispositivo."</string>
     <string name="cam_strings_gridline_txt">Líneas de cuadrícula</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">Gire la palma hacia la cámara. El temporizador se activará al reconocer su palma. Para facilitar el reconocimiento, extienda los dedos hacia arriba.</string>
     <string name="cam_strings_hand_shutter_hint_txt">Gire la palma hacia la cámara</string>
@@ -404,7 +411,8 @@
     <string name="cam_strings_more_common_setting_title_txt">Ajustes comunes</string>
     <string name="cam_strings_more_txt">Más</string>
     <string name="cam_strings_multi_window_txt">Arrastre el medio de la barra dividida para pasar a la pantalla completa de %1$s para usar</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">Otro dispositivo está conectado ahora.\n¿Le gustaría compartir la imagen a través del visor con el dispositivo?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"Otro dispositivo está conectado ahora.
+¿Le gustaría compartir la imagen a través del visor con el dispositivo?"</string>
     <string name="cam_strings_multicam_add_device_txt">Agregar</string>
     <string name="cam_strings_multicam_add_more_txt">Agregar más</string>
     <string name="cam_strings_multicam_apply_txt">Listo</string>
@@ -436,16 +444,19 @@
     <string name="cam_strings_photometry_txt">Medición</string>
     <string name="cam_strings_predictive_capture_feedback_txt">Predicción</string>
     <string name="cam_strings_predictive_capture_txt">Captura predictiva</string>
-    <string name="cam_strings_predictive_launch_dialog_guide_txt">La cámara se inició automáticamente al detectar su movimiento o cuando tomó su dispositivo en modo horizontal y apuntó a un objeto.\nPuede seleccionar la manera favorita de usar esta función desde Inicio predictivo en los ajustes de la cámara.</string>
+    <string name="cam_strings_predictive_launch_dialog_guide_txt">"La cámara se inició automáticamente al detectar su movimiento o cuando tomó su dispositivo en modo horizontal y apuntó a un objeto.
+Puede seleccionar la manera favorita de usar esta función desde Inicio predictivo en los ajustes de la cámara."</string>
     <string name="cam_strings_predictive_launch_guide_2_txt">Toque dentro de círculo para capturar</string>
     <string name="cam_strings_predictive_launch_guide_3_txt">Toque la pantalla para capturar</string>
     <string name="cam_strings_predictive_launch_guide_circle_txt">Toque suavemente dentro del círculo para ver la pantalla completa</string>
     <string name="cam_strings_predictive_launch_guide_txt">Toque suavemente dentro del círculo para iniciar la cámara</string>
     <string name="cam_strings_predictive_launch_launch_and_capture_txt">Toque para iniciar y capturar</string>
     <string name="cam_strings_predictive_launch_launch_only_txt">Toque para iniciar</string>
-    <string name="cam_strings_predictive_launch_tutorial_2_txt">Puede iniciar la cámara rápido. Levante su dispositivo y sosténgalo en la vista horizontal y dirija la cámara hacia el objeto. El dispositivo iniciará la cámara automáticamente.\nPuede seleccionar la manera preferida para usar esta función desde Inicio predictivo en configuración de la cámara.</string>
+    <string name="cam_strings_predictive_launch_tutorial_2_txt">"Puede iniciar la cámara rápido. Levante su dispositivo y sosténgalo en la vista horizontal y dirija la cámara hacia el objeto. El dispositivo iniciará la cámara automáticamente.
+Puede seleccionar la manera preferida para usar esta función desde Inicio predictivo en configuración de la cámara."</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">Inicio predictivo</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">Puede iniciar la cámara rápido. Levante su dispositivo y sosténgalo en la vista horizontal y dirija la cámara hacia el objeto. El dispositivo iniciará la cámara automáticamente.\nPuede desactivar esta función desde Inicio predictivo en configuración de la cámara.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"Puede iniciar la cámara rápido. Levante su dispositivo y sosténgalo en la vista horizontal y dirija la cámara hacia el objeto. El dispositivo iniciará la cámara automáticamente.
+Puede desactivar esta función desde Inicio predictivo en configuración de la cámara."</string>
     <string name="cam_strings_predictive_launch_txt">Inicio predictivo</string>
     <string name="cam_strings_preview_always_txt">Activado</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 segundos</string>
@@ -478,7 +489,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s requiere los siguientes permisos</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">Permiso %1$s</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">La aplicación requiere los siguientes permisos para realizar esta acción.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Para otorgar permisos, vaya a Información de la aplicación &gt; Permisos.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">Para otorgar permisos, vaya a Información de la aplicación > Permisos.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">No se pudo continuar</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">Para tomar fotos y videos</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">Para recuperar la ubicación</string>
@@ -525,11 +536,19 @@
     <string name="cam_strings_sd_permission_data_storage_info_txt">Guardado en almacenamiento interno</string>
     <string name="cam_strings_sd_permission_dialog_continue_button_txt">CONTINUAR</string>
     <string name="cam_strings_sd_permission_dialog_message1_txt">La aplicación requiere los siguientes permisos para realizar esta acción.</string>
-    <string name="cam_strings_sd_permission_dialog_message2_txt">Para usar una tarjeta SD, la cámara necesita permisos para acceder a la tarjeta SD.\nCambie el almacenamiento de datos a la tarjeta SD nuevamente o permita que la cámara acceda a la tarjeta SD en la siguiente pantalla.</string>
+    <string name="cam_strings_sd_permission_dialog_message2_txt">"Para usar una tarjeta SD, la cámara necesita permisos para acceder a la tarjeta SD.
+Cambie el almacenamiento de datos a la tarjeta SD nuevamente o permita que la cámara acceda a la tarjeta SD en la siguiente pantalla."</string>
     <string name="cam_strings_sd_permission_dialog_title_txt">Tarjeta SD no disponible</string>
-    <string name="cam_strings_sd_permission_info_2_txt">Se detectó una nueva tarjeta SD que requiere permisos.\n\nPara usar la tarjeta SD como almacenamiento de datos, seleccione la tarjeta SD o el directorio DCIM en la próxima pantalla.</string>
-    <string name="cam_strings_sd_permission_info_3_txt">No se seleccionó la tarjeta SD o el directorio de DCIM. La tarjeta SD no se puede usar\n\nPara otorgar permisos, inicie cambiando la ubicación de guardado para la tarjeta SD o bien seleccione el directorio apropiado en la siguiente pantalla.</string>
-    <string name="cam_strings_sd_permission_info_txt">Se detectó una nueva tarjeta SD que requiere permisos.\nPor lo tanto, se usará el almacenamiento interno del dispositivo como almacenamiento de datos predeterminado.\n\nPara usar la tarjeta SD como almacenamiento de datos, vaya a los ajustes de la cámara y cambie la opción de almacenamiento a tarjeta SD.</string>
+    <string name="cam_strings_sd_permission_info_2_txt">"Se detectó una nueva tarjeta SD que requiere permisos.
+
+Para usar la tarjeta SD como almacenamiento de datos, seleccione la tarjeta SD o el directorio DCIM en la próxima pantalla."</string>
+    <string name="cam_strings_sd_permission_info_3_txt">"No se seleccionó la tarjeta SD o el directorio de DCIM. La tarjeta SD no se puede usar
+
+Para otorgar permisos, inicie cambiando la ubicación de guardado para la tarjeta SD o bien seleccione el directorio apropiado en la siguiente pantalla."</string>
+    <string name="cam_strings_sd_permission_info_txt">"Se detectó una nueva tarjeta SD que requiere permisos.
+Por lo tanto, se usará el almacenamiento interno del dispositivo como almacenamiento de datos predeterminado.
+
+Para usar la tarjeta SD como almacenamiento de datos, vaya a los ajustes de la cámara y cambie la opción de almacenamiento a tarjeta SD."</string>
     <string name="cam_strings_sd_permission_rationale_txt">Para guardar fotos y videos en la tarjeta SD</string>
     <string name="cam_strings_select_picture_txt">Seleccionar fotografía</string>
     <string name="cam_strings_self_timer_05_txt">0,5 seg.</string>
@@ -552,12 +571,16 @@
     <string name="cam_strings_shutter_trigger_txt">Captura automática</string>
     <string name="cam_strings_side_touch_not_supported_txt">Sensor lateral no admitido en esta pantalla</string>
     <string name="cam_strings_side_touch_on_title_txt">Sensor lateral</string>
-    <string name="cam_strings_side_touch_on_txt">Para usar esta función, vaya a Configuración &gt; Pantalla y active el Sensor lateral. ¿Activar ahora?</string>
+    <string name="cam_strings_side_touch_on_txt">Para usar esta función, vaya a Configuración > Pantalla y active el Sensor lateral. ¿Activar ahora?</string>
     <string name="cam_strings_side_touch_tutorial_title_txt">Sensor lateral</string>
-    <string name="cam_strings_side_touch_tutorial_txt">Puede tomar una fotografía o un video con tan solo tocar suavemente dos veces el sensor en el lado de la pantalla, en lugar del obturador. Además, puede acercar y alejar al deslizar el dedo a lo largo del sensor lateral.\nTanto el modo de fotografía como el de video admiten esta función. Puede desactivarla desde Sensor lateral en los ajustes de la cámara.</string>
-    <string name="cam_strings_side_touch_tutorial_without_land_txt">Puede tomar una fotografía o un video con tan solo tocar suavemente dos veces el sensor en el lado de la pantalla, en la vista de retrato, en lugar de tocar el obturador. Además, puede acercar y alejar al deslizar el dedo a lo largo del sensor lateral.\nTanto el modo de fotografía como el de video admiten esta función. Puede desactivarla desde Sensor lateral en los ajustes de la cámara.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">Puede tomar una fotografía o un video con tan solo tocar suavemente dos veces el sensor en el lado de la pantalla, en la vista de retrato, en lugar del obturador.\nTanto el modo de fotografía como el de video admiten esta función. Puede desactivarla desde Sensor lateral en los ajustes de la cámara.</string>
-    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">Puede tomar una fotografía o un video con tan solo tocar suavemente dos veces el sensor en el lado de la pantalla, en lugar del obturador.\nTanto el modo de fotografía como el de video admiten esta función. Puede desactivarla desde Sensor lateral en los ajustes de la cámara.</string>
+    <string name="cam_strings_side_touch_tutorial_txt">"Puede tomar una fotografía o un video con tan solo tocar suavemente dos veces el sensor en el lado de la pantalla, en lugar del obturador. Además, puede acercar y alejar al deslizar el dedo a lo largo del sensor lateral.
+Tanto el modo de fotografía como el de video admiten esta función. Puede desactivarla desde Sensor lateral en los ajustes de la cámara."</string>
+    <string name="cam_strings_side_touch_tutorial_without_land_txt">"Puede tomar una fotografía o un video con tan solo tocar suavemente dos veces el sensor en el lado de la pantalla, en la vista de retrato, en lugar de tocar el obturador. Además, puede acercar y alejar al deslizar el dedo a lo largo del sensor lateral.
+Tanto el modo de fotografía como el de video admiten esta función. Puede desactivarla desde Sensor lateral en los ajustes de la cámara."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_land_txt">"Puede tomar una fotografía o un video con tan solo tocar suavemente dos veces el sensor en el lado de la pantalla, en la vista de retrato, en lugar del obturador.
+Tanto el modo de fotografía como el de video admiten esta función. Puede desactivarla desde Sensor lateral en los ajustes de la cámara."</string>
+    <string name="cam_strings_side_touch_tutorial_without_zoom_txt">"Puede tomar una fotografía o un video con tan solo tocar suavemente dos veces el sensor en el lado de la pantalla, en lugar del obturador.
+Tanto el modo de fotografía como el de video admiten esta función. Puede desactivarla desde Sensor lateral en los ajustes de la cámara."</string>
     <string name="cam_strings_side_touch_txt">Sensor lateral</string>
     <string name="cam_strings_slow_motion_change_resolution_tutorial_txt">El estilo de grabación y la resolución de la pantalla se pueden cambiar en los ajustes de Cámara</string>
     <string name="cam_strings_slow_motion_settings_shot_txt">Súper cámara lenta (una cap.)</string>
@@ -565,7 +588,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">Súper cámara lenta</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">Puede cambiar los fps y el estilo de grabación para cámara lenta</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">Más opciones</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">Grabe instantáneamente un momento preciado en cámara lenta de %1$s fps al tocar suavemente el centro de la pantalla.\nGrabar en condiciones con brillo puede ayudarle a crear un mejor video.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"Grabe instantáneamente un momento preciado en cámara lenta de %1$s fps al tocar suavemente el centro de la pantalla.
+Grabar en condiciones con brillo puede ayudarle a crear un mejor video."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">Puede grabar un momento preciso con %1$s FPS al tocar el botón central</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">Grabe instantáneamente un momento preciado en cámara lenta de %1$s fps al tocar suavemente el centro de la pantalla</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">Súper cámara lenta (una captura)</string>
@@ -576,7 +600,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">Cámara lenta</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">Cómo grabar</string>
     <string name="cam_strings_slow_motion_standard_txt">Cámara lenta</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">Realice un fabuloso video mostrando un momento preciado en cámara lenta.\nGrabar con brillo puede ayudarle a crear un mejor video.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"Realice un fabuloso video mostrando un momento preciado en cámara lenta.
+Grabar con brillo puede ayudarle a crear un mejor video."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">Puede grabar el video con diferentes velocidades al pasar a %1$s fps</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">Toque suavemente el botón del centro en el momento justo</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">Cámara lenta grabada</string>
@@ -607,12 +632,12 @@
     <string name="cam_strings_sw_licence_title_txt">Licencias de software</string>
     <string name="cam_strings_take_photo_txt">Tomar fotografía</string>
     <string name="cam_strings_term_of_use_accept_txt">Aceptar</string>
-    <string name="cam_strings_term_of_use_consent_txt">Doy mi consentimiento a Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Términos de uso&lt;/a&gt;.</string>
+    <string name="cam_strings_term_of_use_consent_txt">Doy mi consentimiento a Sony Mobile &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Términos de uso&lt;/a>.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">El uso de este servicio puede estar sujeto a cargos por datos móviles dependiendo de su plan de datos.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile recopilará su identificador único de dispositivo de ID de Android de versión oculta, datos basados en la ubicación y el momento con el fin de proporcionarle resultados apropiados como parte del servicio y para las mejoras del servicio.</string>
     <string name="cam_strings_term_of_use_decline_txt">Rechazar</string>
     <string name="cam_strings_term_of_use_title_txt">Términos y condiciones</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;Términos de uso&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">Términos de uso&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">Cancelar selección de fotografías</string>
     <string name="cam_strings_timeshift_operation_failed_txt">No se pudo guardar</string>
     <string name="cam_strings_timeshift_save_complete_txt">Guardado</string>
@@ -639,7 +664,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">Para una grabación de video 4K, no debe cambiar este ajuste a menos que use una tarjeta SD de alta velocidad (Se recomienda Clase de velocidad UHS 1 o mayor, o bien, la Clase de velocidad 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Para una grabación de video Timeshift, no debe cambiar este ajuste a menos que use una tarjeta SD de alta velocidad (Se recomienda Clase de velocidad UHS 1 o mayor, o bien, la Clase de velocidad 10). ¿Desea cambiarla de todos modos?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">Para una grabación de video estable en cámara lenta, no debe cambiar este ajuste a menos que use una tarjeta SD de alta velocidad (Se recomienda Clase de velocidad UHS 1 o mayor, o bien, la Clase de velocidad 10).</string>
-    <string name="cam_strings_video_explanatory_txt">Para lograr una grabación de video estable, le recomendamos que cambie el almacenamiento de datos a Almacenamiento interno. ¿Desea cambiarlo ahora?\n\nSi continúa usando una tarjeta SD como almacenamiento de datos, asegúrese que usar una tarjeta SD de alta velocidad (Se recomienda la Clase de velocidad UHS 1 o una superior, o bien, la Clase de velocidad 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"Para lograr una grabación de video estable, le recomendamos que cambie el almacenamiento de datos a Almacenamiento interno. ¿Desea cambiarlo ahora?
+
+Si continúa usando una tarjeta SD como almacenamiento de datos, asegúrese que usar una tarjeta SD de alta velocidad (Se recomienda la Clase de velocidad UHS 1 o una superior, o bien, la Clase de velocidad 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">Cámara doble</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">Puede grabar bellos videos con poco ruido al usar la cámara doble, incluso por la noche o en una habitación con poca luz. La cámara alterna automáticamente entre la cámara simple y la doble en función de las escenas que graba con sensibilidad ultra alta.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">Grabación de video con cámara doble</string>

@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.view.InputDevice;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.SignatureUtil;
+import com.sonymobile.sidetouchgesturedetector.SideTouchUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -28,9 +29,9 @@ public class PlatformCapabilityList {
         if (CamLog.VERBOSE) {
             CamLog.d("loadPlatformCapabilityFromSharedPreferences");
         }
-        this.CAMERA_LIFT_TRIGGER = new BooleanCapabilityItem("sensor_camera_lift_trigger", sharedPreferences);
-        this.SIDE_SENSE = new BooleanCapabilityItem("somc_side_sense", sharedPreferences);
-        this.WEARABLE = new BooleanCapabilityItem("somc_wearable", sharedPreferences);
+        this.CAMERA_LIFT_TRIGGER = new BooleanCapabilityItem(KEY_SENSOR_CAMERA_LIFT_TRIGGER, sharedPreferences);
+        this.SIDE_SENSE = new BooleanCapabilityItem(KEY_SIDE_SENSE, sharedPreferences);
+        this.WEARABLE = new BooleanCapabilityItem(KEY_WEARABLE, sharedPreferences);
         this.mValues = createList();
     }
 
@@ -38,9 +39,9 @@ public class PlatformCapabilityList {
         if (CamLog.VERBOSE) {
             CamLog.d("loadPlatformCapabilityFromDevice");
         }
-        this.CAMERA_LIFT_TRIGGER = new BooleanCapabilityItem("sensor_camera_lift_trigger", Boolean.valueOf(isLiftTriggerSupported(context)));
-        this.SIDE_SENSE = new BooleanCapabilityItem("somc_side_sense", Boolean.valueOf(isSideSenseSupported()));
-        this.WEARABLE = new BooleanCapabilityItem("somc_wearable", Boolean.valueOf(isWearableSupported(context)));
+        this.CAMERA_LIFT_TRIGGER = new BooleanCapabilityItem(KEY_SENSOR_CAMERA_LIFT_TRIGGER, Boolean.valueOf(isLiftTriggerSupported(context)));
+        this.SIDE_SENSE = new BooleanCapabilityItem(KEY_SIDE_SENSE, Boolean.valueOf(isSideSenseSupported()));
+        this.WEARABLE = new BooleanCapabilityItem(KEY_WEARABLE, Boolean.valueOf(isWearableSupported(context)));
         this.mValues = createList();
     }
 
@@ -60,7 +61,7 @@ public class PlatformCapabilityList {
     private boolean isLiftTriggerSupported(Context context) {
         Iterator<Sensor> it = ((SensorManager) context.getSystemService("sensor")).getSensorList(-1).iterator();
         while (it.hasNext()) {
-            if (it.next().getStringType().equals("com.sonymobile.sensor.camera_lift_trigger")) {
+            if (it.next().getStringType().equals(SENSOR_CAMERA_LIFT_TRIGGER)) {
                 return true;
             }
         }
@@ -69,7 +70,7 @@ public class PlatformCapabilityList {
 
     private boolean isSideSenseSupported() {
         for (int i : InputDevice.getDeviceIds()) {
-            if (InputDevice.getDevice(i).supportsSource(536870912)) {
+            if (InputDevice.getDevice(i).supportsSource(SideTouchUtils.SOURCE_SIDETOUCH)) {
                 return true;
             }
         }

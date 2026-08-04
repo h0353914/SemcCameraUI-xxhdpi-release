@@ -12,12 +12,6 @@ public final class DescriptorProtos$UninterpretedOption extends ExtendableMessag
     public long negativeIntValue;
     public long positiveIntValue;
     public byte[] stringValue;
-
-    @Override // com.google.protobuf.nano.MessageNano
-    public /* bridge */ /* synthetic */ MessageNano mergeFrom(CodedInputByteBufferNano input) throws IOException {
-        return mergeFrom(input);
-    }
-
     public static DescriptorProtos$UninterpretedOption[] emptyArray() {
         if (_emptyArray == null) {
             synchronized (InternalNano.LAZY_INIT_LOCK) {

@@ -6,7 +6,7 @@ import com.sonyericsson.android.camera.util.CamLog;
 import java.util.ArrayList;
 import java.util.List;
 
-class SharedPrefsTranslator {
+public class SharedPrefsTranslator {
     public static final String CONNECTOR_AT = "@";
     public static final String CONNECTOR_CROSS = "x";
     public static final String CONNECTOR_SLASH = "/";
@@ -20,7 +20,7 @@ class SharedPrefsTranslator {
         if (rect == null) {
             return "";
         }
-        return rect.width() + "x" + rect.height();
+        return rect.width() + CONNECTOR_CROSS + rect.height();
     }
 
     public static final String fromStringList(List<String> list) {
@@ -30,7 +30,7 @@ class SharedPrefsTranslator {
         StringBuilder sb = new StringBuilder();
         sb.append(list.size());
         for (String str : list) {
-            sb.append(";");
+            sb.append(DELIMITER);
             sb.append(str);
         }
         return sb.toString();
@@ -43,9 +43,9 @@ class SharedPrefsTranslator {
         StringBuilder sb = new StringBuilder();
         sb.append(list.size());
         for (Rect rect : list) {
-            sb.append(";");
+            sb.append(DELIMITER);
             sb.append(rect.width());
-            sb.append("x");
+            sb.append(CONNECTOR_CROSS);
             sb.append(rect.height());
         }
         return sb.toString();
@@ -58,15 +58,15 @@ class SharedPrefsTranslator {
         StringBuilder sb = new StringBuilder();
         sb.append(list.size());
         for (VideoConfiguration videoConfiguration : list) {
-            sb.append(";");
+            sb.append(DELIMITER);
             sb.append(videoConfiguration.mWidth);
-            sb.append("x");
+            sb.append(CONNECTOR_CROSS);
             sb.append(videoConfiguration.mHeight);
             if (videoConfiguration.mFrameNum != 0) {
                 sb.append("@");
                 sb.append(videoConfiguration.mFrameNum);
             }
-            sb.append("/");
+            sb.append(CONNECTOR_SLASH);
             sb.append(videoConfiguration.mFps);
         }
         return sb.toString();
@@ -80,7 +80,7 @@ class SharedPrefsTranslator {
         String strValueOf = String.valueOf(range.getLower());
         String strValueOf2 = String.valueOf(range.getUpper());
         sb.append(strValueOf);
-        sb.append("x");
+        sb.append(CONNECTOR_CROSS);
         sb.append(strValueOf2);
         return sb.toString();
     }
@@ -93,11 +93,11 @@ class SharedPrefsTranslator {
         sb.append(list.size());
         for (int[] iArr : list) {
             if (iArr.length == 2) {
-                sb.append(";");
+                sb.append(DELIMITER);
                 String strValueOf = String.valueOf(iArr[0]);
                 String strValueOf2 = String.valueOf(iArr[1]);
                 sb.append(strValueOf);
-                sb.append("x");
+                sb.append(CONNECTOR_CROSS);
                 sb.append(strValueOf2);
             }
         }
@@ -107,7 +107,7 @@ class SharedPrefsTranslator {
     public static final Rect getRect(String str) {
         Rect rect = new Rect();
         if (str != null) {
-            String[] strArrSplit = str.split("x");
+            String[] strArrSplit = str.split(CONNECTOR_CROSS);
             if (strArrSplit.length == 2) {
                 try {
                     rect.right = Integer.parseInt(strArrSplit[0]);
@@ -126,7 +126,7 @@ class SharedPrefsTranslator {
     public static final List<String> getStringList(String str) {
         ArrayList arrayList = new ArrayList();
         if (str != null && !str.isEmpty()) {
-            String[] strArrSplit = str.split(";");
+            String[] strArrSplit = str.split(DELIMITER);
             try {
                 if (Integer.parseInt(strArrSplit[0]) > 0) {
                     for (String str2 : strArrSplit) {
@@ -146,7 +146,7 @@ class SharedPrefsTranslator {
     public static final List<Rect> getRectList(String str) {
         ArrayList arrayList = new ArrayList();
         if (str != null && !str.isEmpty()) {
-            String[] strArrSplit = str.split(";");
+            String[] strArrSplit = str.split(DELIMITER);
             try {
                 if (Integer.parseInt(strArrSplit[0]) > 0) {
                     for (String str2 : strArrSplit) {
@@ -168,8 +168,8 @@ class SharedPrefsTranslator {
         if (str == null || str.isEmpty()) {
             return arrayList;
         }
-        String[] strArrSplit = str.split(";", 2);
-        return strArrSplit.length == 2 ? VideoConfiguration.parse(strArrSplit[1], ";") : arrayList;
+        String[] strArrSplit = str.split(DELIMITER, 2);
+        return strArrSplit.length == 2 ? VideoConfiguration.parse(strArrSplit[1], DELIMITER) : arrayList;
     }
 
     public static final int[] getIntArray(String str) {
@@ -177,7 +177,7 @@ class SharedPrefsTranslator {
         if (str == null) {
             return iArr;
         }
-        String[] strArrSplit = str.split("x");
+        String[] strArrSplit = str.split(CONNECTOR_CROSS);
         if (strArrSplit.length != 2) {
             return iArr;
         }
@@ -196,7 +196,7 @@ class SharedPrefsTranslator {
     public static final List<int[]> getIntArrayList(String str) {
         ArrayList arrayList = new ArrayList();
         if (str != null && !str.isEmpty()) {
-            String[] strArrSplit = str.split(";");
+            String[] strArrSplit = str.split(DELIMITER);
             try {
                 if (Integer.parseInt(strArrSplit[0]) > 0) {
                     for (String str2 : strArrSplit) {
@@ -218,7 +218,7 @@ class SharedPrefsTranslator {
         if (str == null) {
             return range;
         }
-        String[] strArrSplit = str.split("x");
+        String[] strArrSplit = str.split(CONNECTOR_CROSS);
         if (strArrSplit.length != 2) {
             return range;
         }

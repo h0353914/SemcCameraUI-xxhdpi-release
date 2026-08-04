@@ -1,11 +1,13 @@
 package com.google.android.gms.internal;
 
+import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.os.RemoteException;
 import android.util.Log;
+import android.util.Pair;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.PendingResult$zza;
 import com.google.android.gms.common.api.Releasable;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.ResultCallback;
@@ -17,10 +19,11 @@ import java.util.Iterator;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+/* loaded from: /home/h/tmp/SemcCameraUI-xxhdpi-release/SemcCameraUI-xxhdpi-release/build/apk/classes.dex */
 public abstract class zzlc<R extends Result> extends PendingResult<R> {
     private boolean zzL;
     private volatile R zzaaX;
-    protected final zzlc$zza<R> zzabi;
+    protected final zza<R> zzabi;
     private ResultCallback<? super R> zzabk;
     private volatile boolean zzabl;
     private boolean zzabm;
@@ -29,15 +32,62 @@ public abstract class zzlc<R extends Result> extends PendingResult<R> {
     private volatile zzlq<R> zzabp;
     private final Object zzabh = new Object();
     private final CountDownLatch zzoS = new CountDownLatch(1);
-    private final ArrayList<PendingResult$zza> zzabj = new ArrayList<>();
+    private final ArrayList<PendingResult.zza> zzabj = new ArrayList<>();
+
+    public static class zza<R extends Result> extends Handler {
+        public zza() {
+            this(Looper.getMainLooper());
+        }
+
+        public zza(Looper looper) {
+            super(looper);
+        }
+
+        @Override // android.os.Handler
+        public void handleMessage(Message message) {
+            switch (message.what) {
+                case 1:
+                    Pair pair = (Pair) message.obj;
+                    zzb((ResultCallback) pair.first, (R) pair.second);
+                    break;
+                case 2:
+                    ((zzlc) message.obj).zzw(Status.zzabe);
+                    break;
+                default:
+                    Log.wtf("BasePendingResult", "Don't know how to handle message: " + message.what, new Exception());
+                    break;
+            }
+        }
+
+        public void zza(ResultCallback<? super R> resultCallback, R r) {
+            sendMessage(obtainMessage(1, new Pair(resultCallback, r)));
+        }
+
+        public void zza(zzlc<R> zzlcVar, long j) {
+            sendMessageDelayed(obtainMessage(2, zzlcVar), j);
+        }
+
+        protected void zzb(ResultCallback<? super R> resultCallback, R r) {
+            try {
+                resultCallback.onResult(r);
+            } catch (RuntimeException e) {
+                zzlc.zzd(r);
+                throw e;
+            }
+        }
+
+        public void zznM() {
+            removeMessages(2);
+        }
+    }
 
     @Deprecated
     protected zzlc(Looper looper) {
-        this.zzabi = new zzlc$zza<>(looper);
+        this.zzabi = new zza<>(looper);
     }
 
     protected zzlc(GoogleApiClient googleApiClient) {
-        this.zzabi = new zzlc$zza<>(googleApiClient != null ? googleApiClient.getLooper() : Looper.getMainLooper());
+        this.zzabi = new zza<>(googleApiClient != null ? googleApiClient.getLooper() : Looper.getMainLooper());
     }
 
     private R get() {
@@ -65,7 +115,7 @@ public abstract class zzlc<R extends Result> extends PendingResult<R> {
                 this.zzabi.zza(this.zzabk, get());
             }
         }
-        Iterator<PendingResult$zza> it = this.zzabj.iterator();
+        Iterator<PendingResult.zza> it = this.zzabj.iterator();
         while (it.hasNext()) {
             it.next().zzt(status);
         }
@@ -125,7 +175,7 @@ public abstract class zzlc<R extends Result> extends PendingResult<R> {
                 zzd(this.zzaaX);
                 this.zzabk = null;
                 this.zzL = true;
-                zzc(zzb(Status.zzabf));
+                zzc(zzc(Status.zzabf));
             }
         }
     }
@@ -185,14 +235,14 @@ public abstract class zzlc<R extends Result> extends PendingResult<R> {
     }
 
     @Override // com.google.android.gms.common.api.PendingResult
-    public final void zza(PendingResult$zza pendingResult$zza) {
+    public final void zza(PendingResult.zza zzaVar) {
         zzx.zza(!this.zzabl, "Result has already been consumed.");
-        zzx.zzb(pendingResult$zza != null, "Callback cannot be null.");
+        zzx.zzb(zzaVar != null, "Callback cannot be null.");
         synchronized (this.zzabh) {
             if (isReady()) {
-                pendingResult$zza.zzt(this.zzaaX.getStatus());
+                zzaVar.zzt(this.zzaaX.getStatus());
             } else {
-                this.zzabj.add(pendingResult$zza);
+                this.zzabj.add(zzaVar);
             }
         }
     }
@@ -203,7 +253,7 @@ public abstract class zzlc<R extends Result> extends PendingResult<R> {
         }
     }
 
-    protected abstract R zzb(Status status);
+    protected abstract R zzc(Status status);
 
     public final void zzb(R r) {
         synchronized (this.zzabh) {
@@ -228,7 +278,7 @@ public abstract class zzlc<R extends Result> extends PendingResult<R> {
     public final void zzw(Status status) {
         synchronized (this.zzabh) {
             if (!isReady()) {
-                zzb(zzb(status));
+                zzb(zzc(status));
                 this.zzabm = true;
             }
         }

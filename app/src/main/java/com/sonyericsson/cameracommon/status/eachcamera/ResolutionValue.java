@@ -2,6 +2,7 @@ package com.sonyericsson.cameracommon.status.eachcamera;
 
 import android.content.ContentValues;
 import android.graphics.Rect;
+import com.sonyericsson.android.camera.util.capability.SharedPrefsTranslator;
 import com.sonyericsson.cameracommon.status.CameraStatusValue;
 import com.sonyericsson.cameracommon.status.EachCameraStatusValue;
 
@@ -21,7 +22,7 @@ public abstract class ResolutionValue implements CameraStatusValue, EachCameraSt
     }
 
     public String toString() {
-        return "" + this.mWidth + "x" + this.mHeight;
+        return "" + this.mWidth + SharedPrefsTranslator.CONNECTOR_CROSS + this.mHeight;
     }
 
     @Override // com.sonyericsson.cameracommon.status.CameraStatusValue

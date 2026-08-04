@@ -31,9 +31,15 @@
     <string name="cam_3d_strings_creating_but_too_quick_txt">გადაღება ვერ მოხერხდა. გთხოვთ, უფრო ნელა მოახდინოთ პანორამირება.</string>
     <string name="cam_3d_strings_creating_but_too_slow_txt">გადაღება ვერ მოხერხდა. გთხოვთ, უფრო სწრაფად მოახდინოთ პანორამირება.</string>
     <string name="cam_3d_strings_description_sweep_panorama_txt">გადაიღეთ პანორამული ფოტო კამერის გაშლით</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">შემდეგი ფაილების შექმნა:\n- Multi Angle გამოსახულება\n- 3D გამოსახულება\nშენიშვნა: ეს ფაილები შეიცავს ნაცრისფერ არეს.</string>
-    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">შემდეგი ფაილების შექმნა:\n- Multi Angle გამოსახულება\n- 3D გამოსახულება</string>
-    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">დამუშავება...\nეს გამოსახულება შეიცავს ნაცრისფერ არეს</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_include_black_area_txt">"შემდეგი ფაილების შექმნა:
+- Multi Angle გამოსახულება
+- 3D გამოსახულება
+შენიშვნა: ეს ფაილები შეიცავს ნაცრისფერ არეს."</string>
+    <string name="cam_3d_strings_dialog_multi_angle_processing_txt">"შემდეგი ფაილების შექმნა:
+- Multi Angle გამოსახულება
+- 3D გამოსახულება"</string>
+    <string name="cam_3d_strings_dialog_processing_include_black_area_txt">"დამუშავება...
+ეს გამოსახულება შეიცავს ნაცრისფერ არეს"</string>
     <string name="cam_3d_strings_dialog_processing_saving_image_title_txt">გამოსახულების შენახვა</string>
     <string name="cam_3d_strings_dialog_processing_txt">დამუშავება...</string>
     <string name="cam_3d_strings_error_application_busy_txt">3D კამერის გასაშვებად, გთხოვთ, დაელოდოთ რამდენიმე წამი</string>
@@ -359,7 +365,8 @@
     <string name="cam_strings_global_setting_softskin_detail_txt">გამოიყენეთ პრიალა და გლუვი კანის ეფექტი პროგრამებში, რომლებიც წინა კამერას იყენებენ. ამ ეფექტის გამოყენება შეიძლება ფოტოებსა და ვიდეოებში. ასევე, შეგიძლიათ დაარეგულიროთ ეფექტის დონე.</string>
     <string name="cam_strings_global_setting_softskin_level_adjustment_txt">დონის რეგულირება</string>
     <string name="cam_strings_global_setting_softskin_smoothen_skin_txt">ნაზი კანი</string>
-    <string name="cam_strings_google_lens_error_dialog_txt">აპის გაშვება შეუძლებელია.\nდარწმუნდით, რომ მოწყობილობაში დაინსტალირებულია და ჩართულია %1$s-ის უახლესი ვერსია.</string>
+    <string name="cam_strings_google_lens_error_dialog_txt">"აპის გაშვება შეუძლებელია.
+დარწმუნდით, რომ მოწყობილობაში დაინსტალირებულია და ჩართულია %1$s-ის უახლესი ვერსია."</string>
     <string name="cam_strings_gridline_txt">ბადის ხაზები</string>
     <string name="cam_strings_hand_shutter_hint_detail_txt">მიმართეთ ხელი კამერისკენ. ავტომატური ტაიმერი ჩაირთვება ხელის ამოცნობის შემდეგ. ამოცნობის გამარტივებისთვის, გაშალეთ თითები.</string>
     <string name="cam_strings_hand_shutter_hint_txt">მიმართეთ ხელი კამერისკენ</string>
@@ -401,7 +408,8 @@
     <string name="cam_strings_more_common_setting_title_txt">საერთო პარამეტრები</string>
     <string name="cam_strings_more_txt">სხვა</string>
     <string name="cam_strings_multi_window_txt">გადაიტანეთ გაყოფილი ზოლის შუა ხაზი, რათა ჩართოთ %1$s მთელ ეკრანზე და გამოიყენოთ</string>
-    <string name="cam_strings_multicam_add_camera_security_info_txt">სხვა მოწყობილობა დაკავშირებულია.\nგსურთ გაუზიაროთ მოწყობილობას გამოსახულება სამიზნებელის საშუალებით?</string>
+    <string name="cam_strings_multicam_add_camera_security_info_txt">"სხვა მოწყობილობა დაკავშირებულია.
+გსურთ გაუზიაროთ მოწყობილობას გამოსახულება სამიზნებელის საშუალებით?"</string>
     <string name="cam_strings_multicam_add_device_txt">მოწ დამატ</string>
     <string name="cam_strings_multicam_add_more_txt">მეტის დამატება</string>
     <string name="cam_strings_multicam_apply_txt">შესრ</string>
@@ -435,7 +443,8 @@
     <string name="cam_strings_predictive_capture_txt">პროგნოზირებადი გადაღება</string>
     <string name="cam_strings_predictive_launch_guide_txt">შეეხეთ ეკრანს მთელ ეკრანზე სანახავად</string>
     <string name="cam_strings_predictive_launch_tutorial_title_txt">პრედიქ. გაშვება</string>
-    <string name="cam_strings_predictive_launch_tutorial_txt">სწრაფად გაუშვით კამერა. დაიჭირეთ პეიზაჟის ხედით და დაუმიზნეთ ობიექტს. კამერა გაიშვება.\nგამორთეთ პრედიქტ. გაშვების მენიუდან კამერის პარამეტრებში.</string>
+    <string name="cam_strings_predictive_launch_tutorial_txt">"სწრაფად გაუშვით კამერა. დაიჭირეთ პეიზაჟის ხედით და დაუმიზნეთ ობიექტს. კამერა გაიშვება.
+გამორთეთ პრედიქტ. გაშვების მენიუდან კამერის პარამეტრებში."</string>
     <string name="cam_strings_predictive_launch_txt">პრედიქტიული გაშვება</string>
     <string name="cam_strings_preview_always_txt">ჩართვა</string>
     <string name="cam_strings_preview_duration_3sec_txt">3 წამი</string>
@@ -468,7 +477,7 @@
     <string name="cam_strings_runtime_permission_dialog1_message_txt">%1$s მოითხოვს შემდეგ ნებართვებს</string>
     <string name="cam_strings_runtime_permission_dialog1_title_txt">%1$s-ის ნებართვა</string>
     <string name="cam_strings_runtime_permission_dialog2_message1_txt">აპი მოითხოვს შემდეგ ნებართვებს ამ მოქმედების შესასრულებლად.</string>
-    <string name="cam_strings_runtime_permission_dialog2_message2_txt">ნებართვების მისაცემად, გახსენით მენიუ: პროგრამის ინფო &gt; ნებართვები.</string>
+    <string name="cam_strings_runtime_permission_dialog2_message2_txt">ნებართვების მისაცემად, გახსენით მენიუ: პროგრამის ინფო > ნებართვები.</string>
     <string name="cam_strings_runtime_permission_dialog2_title_txt">ვერ გაგრძელდა</string>
     <string name="cam_strings_runtime_permission_rationale_camera_txt">ფოტოების და ვიდეოების გადაღება</string>
     <string name="cam_strings_runtime_permission_rationale_location_txt">მდებარეობის მიღება</string>
@@ -537,7 +546,8 @@
     <string name="cam_strings_slow_motion_settings_super_txt">სუპერ ნელი მოძრაობა</string>
     <string name="cam_strings_slow_motion_settings_tutorial_1_txt">შეცვალეთ სიჩქარე და ჩაწერის სტილი ნელი მოძრაობისთვის</string>
     <string name="cam_strings_slow_motion_settings_tutorial_title_txt">სხვა ოფციები</string>
-    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">ჩაწერეთ ძვირფასი მომენტები ნელი მოძრაობით, %1$s კადრი/წამში. შეეხეთ ცენტრში.\nკაშკაშა მდგომარეობაში ჩაწერით უკეთეს ვიდეოს შექმნით.</string>
+    <string name="cam_strings_slow_motion_shot_bright_place_tutorial_1_txt">"ჩაწერეთ ძვირფასი მომენტები ნელი მოძრაობით, %1$s კადრი/წამში. შეეხეთ ცენტრში.
+კაშკაშა მდგომარეობაში ჩაწერით უკეთეს ვიდეოს შექმნით."</string>
     <string name="cam_strings_slow_motion_shot_hint_1_txt">ჩაწერეთ მომენტი %1$s კ/წმ-ით ცენტრალურ ღილაკზე შეხებით</string>
     <string name="cam_strings_slow_motion_shot_tutorial_1_txt">მყისიერად ჩაწერეთ ძვირფასი მომენტები ნელი მოძრაობის რეჟიმში სიჩქარით %1$s კადრი/წამში. შეეხეთ ღილაკს ცენტრში</string>
     <string name="cam_strings_slow_motion_shot_tutorial_title_txt">სუპერ ნელი (ერთკადრიანი)</string>
@@ -548,7 +558,8 @@
     <string name="cam_strings_slow_motion_standard_tutorial_title_1_txt">ნელი მოძრაობა</string>
     <string name="cam_strings_slow_motion_standard_tutorial_title_2_txt">ჩაწერის წესი</string>
     <string name="cam_strings_slow_motion_standard_txt">ნელი მოძრაობა</string>
-    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">შექმენით შთამბეჭდავი ვიდეო ძვირფასი მომენტის ნელი მოძრაობით ასახვით.\nკაშკაშა მდგომარეობაში ჩაწერით უკეთეს ვიდეოს შექმნით.</string>
+    <string name="cam_strings_slow_motion_super_bright_place_tutorial_1_txt">"შექმენით შთამბეჭდავი ვიდეო ძვირფასი მომენტის ნელი მოძრაობით ასახვით.
+კაშკაშა მდგომარეობაში ჩაწერით უკეთეს ვიდეოს შექმნით."</string>
     <string name="cam_strings_slow_motion_super_hint_1_txt">ჩაწერეთ ვიდეო სხვადასხვა სიჩქარით %1$s კ/წმ-ზე გადართვით</string>
     <string name="cam_strings_slow_motion_super_hint_2_txt">საჭირო მომენტში შეეხეთ ღილაკს ცენტრში.</string>
     <string name="cam_strings_slow_motion_super_hint_3_txt">ნელი მოძრაობა ჩაწერილია</string>
@@ -579,12 +590,12 @@
     <string name="cam_strings_sw_licence_title_txt">პროგრამის ლიცენზიები</string>
     <string name="cam_strings_take_photo_txt">სურათის გადაღება</string>
     <string name="cam_strings_term_of_use_accept_txt">მიღება</string>
-    <string name="cam_strings_term_of_use_consent_txt">მე ვეთანხმები Sony Mobile-ის &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;გამოყენების პირობებს&lt;/a&gt;.</string>
+    <string name="cam_strings_term_of_use_consent_txt">მე ვეთანხმები Sony Mobile-ის &lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">გამოყენების პირობებს&lt;/a>.</string>
     <string name="cam_strings_term_of_use_data_charge_txt">ამ სერვისის გამოყენებამ, თქვენი სატარიფო გეგმის შესაბამისად, შეიძლება გამოიწვიოს დამატებითი ხარჯები.</string>
     <string name="cam_strings_term_of_use_data_collection_txt">Sony Mobile შეაგროვებს თქვენი Android-ის ჰეშირებულ უნიკალურ მოწყობილობის საიდენტიფიკაციო ნომერს, მდებარეობასთან დაკავშირებულ მონაცემებს და დროის ნიშნულს, რომ მოგაწოდოთ შესაბამისი შედეგი, როგორც სერვისის ნაწილი და სერვისის გაუმჯობესებისთვის.</string>
     <string name="cam_strings_term_of_use_decline_txt">უარი</string>
     <string name="cam_strings_term_of_use_title_txt">წესები და პირობები</string>
-    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\"&gt;გამოყენების პირობები&lt;/a&gt;</string>
+    <string name="cam_strings_term_of_use_txt">&lt;a href=\"http://www.sonymobile.com/terms-of-use-applications\">გამოყენების პირობები&lt;/a></string>
     <string name="cam_strings_timeshift_cancel_selection_txt">ფოტოების არჩევის გაუქმება</string>
     <string name="cam_strings_timeshift_operation_failed_txt">ვერ შეინახა</string>
     <string name="cam_strings_timeshift_save_complete_txt">შენახულია</string>
@@ -611,7 +622,9 @@
     <string name="cam_strings_video_explanatory_4k2k_setting_txt">4K ვიდეოს სტაბილური ჩაწერისთვის ეს პარამეტრი არ უნდა შეცვალოთ, თუ არ იყენებთ მაღალსიჩქარიან SD ბარათს (რეკომენდებულია UHS სიჩქარის კლასი 1 ან უფრო მაღალი, ან სიჩქარის კლასი 10).</string>
     <string name="cam_strings_video_explanatory_high_frame_rate_setting_txt">Timeshift ვიდეოს სტაბილური ჩაწერისთვის ეს პარამეტრი არ უნდა შეცვალოთ, თუ არ იყენებთ მაღალსიჩქარიან SD ბარათს (რეკომენდებულია UHS სიჩქარის კლასი 1 ან უფრო მაღალი, ან სიჩქარის კლასი 10). მაინც შევცვალოთ?</string>
     <string name="cam_strings_video_explanatory_slowmotion_setting_txt">შენელებული ვიდეოს სტაბილური ჩაწერისთვის არ შეცვალოთ ეს პარამეტრი, თუ არ იყენებთ მაღალსიჩქარიან SD ბარათს (რეკომენდებულია UHS სიჩქარის კლასი 1 ან უფრო მაღალი, ან სიჩქარის კლასი 10).</string>
-    <string name="cam_strings_video_explanatory_txt">ვიდეოს სტაბილური ჩაწერისთვის გირჩევთ, შეცვალოთ მონაცემთა მეხსიერება შიდა მეხსიერებით. გსურთ ახლა შეცვალოთ?\n\nთუ გააგრძელებთ SD ბარათის გამოყენებას მონაცემთა მეხსიერებად, გამოიყენეთ მაღალსიჩქარიანი SD ბარათი (რეკომენდებულია UHS სიჩქარის კლასი 1 ან უფრო მაღალი, ან სიჩქარის კლასი 10).</string>
+    <string name="cam_strings_video_explanatory_txt">"ვიდეოს სტაბილური ჩაწერისთვის გირჩევთ, შეცვალოთ მონაცემთა მეხსიერება შიდა მეხსიერებით. გსურთ ახლა შეცვალოთ?
+
+თუ გააგრძელებთ SD ბარათის გამოყენებას მონაცემთა მეხსიერებად, გამოიყენეთ მაღალსიჩქარიანი SD ბარათი (რეკომენდებულია UHS სიჩქარის კლასი 1 ან უფრო მაღალი, ან სიჩქარის კლასი 10)."</string>
     <string name="cam_strings_video_fusion_tutorial_0_title_txt">ორმაგი კამერა</string>
     <string name="cam_strings_video_fusion_tutorial_0_txt">ორმაგი კამერის გამოყენებით შეგიძლიათ გადაიღოთ ლამაზი ვიდეო ხარვეზების დაბალი დონით ღამის და არასაკმარისი განათების პირობებშიც კი. კამერა ავტომატურად გადაირთვება ერთმაგი და ორმაგი კამერის რეჟიმებს შორის გადაღების ადგილის მიხედვით ულტრა-მაღალი მგრძნობელობით გადაღების უზრუნველსაყოფად.</string>
     <string name="cam_strings_video_fusion_tutorial_1_title_txt">ვიდეოს ჩაწერა ორმაგი კამერით</string>
