@@ -1,6 +1,7 @@
 package com.sonyericsson.android.camera.view.modeselector.internalmode.googlelens;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import com.sonyericsson.android.camera.view.modeselector.CapturingModeAttributes;
 import com.sonyericsson.android.camera.view.modeselector.ResourceUtil;
 
@@ -14,6 +15,11 @@ public class GoogleLensCapturingModeAttributes extends CapturingModeAttributes {
 
     @Override // com.sonyericsson.android.camera.view.modeselector.CapturingModeAttributes
     public String getSelectorLabel() {
-        return ResourceUtil.getString(this.mContext, getPackageName(), getSelectorLabelId(), "", 100);
+        PackageManager packageManager = this.mContext.getPackageManager();
+        try {
+            return (String) packageManager.getApplicationLabel(packageManager.getApplicationInfo("com.google.ar.lens", 0));
+        } catch (PackageManager.NameNotFoundException e) {
+            return ResourceUtil.getString(this.mContext, getPackageName(), getSelectorLabelId(), "", 100);
+        }
     }
 }
