@@ -1124,8 +1124,10 @@ public class CameraDeviceHandler {
                     .isAfParametersReflectedToDevice(afParametersReflectedCheckerCreateAfParametersResultChecker)) {
                 this.mBypassCameraController.requestSnapshotReady(this.mCameraSessionId);
             } else {
-                CamLog.w("AF parameters not reflected. Request snapshot ready immediately.");
-                this.mBypassCameraController.requestSnapshotReady(this.mCameraSessionId);
+                Runnable requestSnapshotReadyAfterAfParametersReflected = this.mCameraController
+                        .requestSnapshotReadyAfterAfParametersReflected(this.mCameraSessionId,
+                                afParametersReflectedCheckerCreateAfParametersResultChecker);
+                this.mUiThreadHandler.postDelayed(requestSnapshotReadyAfterAfParametersReflected, 5000L);
             }
         }
     }

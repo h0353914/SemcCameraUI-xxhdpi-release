@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutorService;
 
 public class ModeLoader implements CapturingModeListLoader.OnCapturingModeListChangedListener {
     private static final String THREAD_NAME = "AddonAppsLoader";
-    private static ExecutorService mExecutor = ThreadUtil.buildPoolExecutor(THREAD_NAME, 2);
+    private static ExecutorService mExecutor = ThreadUtil.buildExecutor(THREAD_NAME);
     private CapturingModeListLoader mCapturingModeListLoader;
     private final Context mContext;
     private final List<Mode> mModes = new ArrayList();

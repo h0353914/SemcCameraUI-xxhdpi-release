@@ -59,5 +59,6 @@ public class AspectRatioApplier extends DependencyApplier {
     }
 
     public void reset(CapturingModeParams capturingModeParams) {
+        capturingModeParams.mResolution.reset();
     }
 }

@@ -286,15 +286,12 @@ public class ViewFinderGestureDetector {
 
     private boolean isExclusiveViewEvent(MotionEvent motionEvent) {
         Iterator<View> it = this.mExclusiveViews.iterator();
-        int rawX = (int) motionEvent.getRawX();
-        int rawY = (int) motionEvent.getRawY();
         while (it.hasNext()) {
             View view = it.next();
-            if (view == null) {
-                continue;
-            }
             if (view.getGlobalVisibleRect(this.mGlobalVisibleRect)) {
-                if (this.mGlobalVisibleRect.contains(rawX, rawY)) {
+                int x = (int) motionEvent.getX();
+                int y = (int) motionEvent.getY();
+                if (this.mGlobalVisibleRect.contains(x, y)) {
                     return true;
                 }
             }

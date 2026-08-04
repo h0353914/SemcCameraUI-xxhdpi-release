@@ -486,9 +486,13 @@ public class SetupWizardActivity extends Activity {
                         if (SetupWizardActivity.this.isRestrictedMode() && !SetupWizardActivity.this.isSecure()) {
                             SetupWizardActivity.this.dismissKeyguard();
                         }
-                        SetupWizardActivity.this
-                                .startActivity(new Intent("android.settings.APPLICATION_DETAILS_SETTINGS",
-                                        Uri.parse("package:" + SetupWizardActivity.this.getPackageName())));
+                        try {
+                            SetupWizardActivity.this
+                                    .startActivity(new Intent("android.settings.APPLICATION_DETAILS_SETTINGS",
+                                            Uri.parse("package:" + SetupWizardActivity.this.getPackageName())));
+                        } catch (ActivityNotFoundException e) {
+                            CamLog.e("showOptionalRuntimePermissionDialog() launchApplicationSettings: failed.", e);
+                        }
                         SetupWizardActivity.this.mOptionalRuntimePermissionDialog = null;
                     }
                 });

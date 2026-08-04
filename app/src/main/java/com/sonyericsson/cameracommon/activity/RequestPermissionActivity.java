@@ -605,9 +605,13 @@ public class RequestPermissionActivity extends Activity {
                         public void onClick(DialogInterface dialogInterface, int i2) {
                             Intent intent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS",
                                     Uri.parse("package:" + RequestPermissionActivity.this.getPackageName()));
-                            RequestPermissionActivity.this.startActivity(intent);
-                            if (CamLog.VERBOSE) {
-                                CamLog.d("showPermissionDialog() launchApplicationSettings: " + intent);
+                            try {
+                                RequestPermissionActivity.this.startActivity(intent);
+                                if (CamLog.VERBOSE) {
+                                    CamLog.d("showPermissionDialog() launchApplicationSettings: " + intent);
+                                }
+                            } catch (ActivityNotFoundException e) {
+                                CamLog.e("showPermissionDialog() launchApplicationSettings: failed.", e);
                             }
                             RequestPermissionActivity.this.mCurrentShownDialog = null;
                         }

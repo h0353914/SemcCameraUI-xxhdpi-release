@@ -656,7 +656,7 @@ public class OnScreenButton extends FrameLayout implements OnScreenButtonGroup.O
 
 
     private boolean contains(MotionEvent motionEvent) {
-        return motionEvent.getX() >= 0.0f && motionEvent.getX() < ((float) getWidth()) && motionEvent.getY() >= 0.0f && motionEvent.getY() < ((float) getHeight());
+        return getGlobalVisibleRect(new Rect()) && motionEvent.getX() >= 0.0f && motionEvent.getX() <= ((float) (getHeight() - 1)) && motionEvent.getY() >= 0.0f && motionEvent.getY() <= ((float) (getWidth() - 1));
     }
 
     public void changeRotatability(int i, boolean z) {
