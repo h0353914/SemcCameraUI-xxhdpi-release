@@ -6341,7 +6341,7 @@ public class StateMachine {
                 // line 7561 - ordinal 2 and 3 map to updateRecorder
                 SlowMotion slowMotionSetting = (SlowMotion) this.mUserSettings.get(UserSettingKey.SLOW_MOTION);
                 if (slowMotionSetting == SlowMotion.SUPER_SLOW_MOTION
-                        || slowMotionSetting == SlowMotion.STANDARD_SLOW_MOTION) {
+                        || slowMotionSetting == SlowMotion.SUPER_SLOW_SHOT) {
                     // line 7564-7565
                     this.mCameraDeviceHandler.updateRecorder(this.mLastVideoSavingRequest, shouldPlayShutterSound());
                 } else {
