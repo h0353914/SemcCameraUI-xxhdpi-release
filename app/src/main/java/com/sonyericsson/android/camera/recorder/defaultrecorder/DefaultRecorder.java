@@ -162,7 +162,16 @@ public class DefaultRecorder implements RecorderInterface {
 
     private boolean setupParameters(Context context, RecorderParameters recorderParameters) throws IllegalStateException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException {
         if (recorderParameters.isMicrophoneEnabled()) {
-            this.mRecorder.setAudioSource(5);
+            // [WORKAROUND] 原本是 setAudioSource(5)（AudioSource.CAMCORDER），跟原廠一致，
+            // 但目前用的通用 qcom-caf audio HAL 原始碼裡沒有原廠的 SND_DEVICE_IN_SONY_CAMCORDER
+            // 客製化裝置邏輯，AUDIO_SOURCE_CAMCORDER 會 fallback 走 CAF 通用的
+            // SND_DEVICE_IN_CAMCORDER_LANDSCAPE（acdb_id 預設值跟單聲道 handset-mic 共用），
+            // 但 camcorder-mic 混音路徑實際是雙聲道，Sony 的 ACDB 校正資料沒有這個 ID 的雙聲道
+            // 校正資料，導致 DSP 端 "Failed to fetch the lookup information of the device"
+            // 而錄影中途音訊被靜默截斷。暫時改用 AudioSource.MIC(1) 繞開，走已驗證正常的
+            // 單聲道 handset-mic 路徑。副作用：收音特性不是原廠攝影模式調校過的效果。
+            // 之後如果補上 HAL 端的 SND_DEVICE_IN_SONY_CAMCORDER 邏輯，這裡要改回 5。
+            this.mRecorder.setAudioSource(1);
             this.mRecorder.setVideoSource(this.mVideoSource);
             this.mRecorder.setProfile(recorderParameters.profile());
             this.mIsMicrophoneEnabled = true;
