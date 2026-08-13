@@ -225,7 +225,7 @@ java_import {
 // Main SemcCameraUI application
 
 android_app {
-    name: "SemcCameraUI",
+    name: "SemcCameraUI-xxhdpi-release",
 
     srcs: [
         "app/src/main/java/**/*.java",
