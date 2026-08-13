@@ -10,7 +10,6 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import com.sonyericsson.android.camera.util.CamLog;
 import com.sonyericsson.android.camera.util.capability.SharedPrefsTranslator;
-import com.sonyericsson.cameracommon.constants.SomcFileTypeConstants;
 import com.sonyericsson.cameracommon.contentsview.PhotoStackQueryHelper;
 import com.sonyericsson.cameracommon.contentsview.QueryParameterAdapter;
 import com.sonyericsson.cameracommon.contentsview.ThumbnailFactory;
@@ -19,7 +18,6 @@ import com.sonyericsson.cameracommon.mediasaving.MediaSavingConstants;
 import com.sonyericsson.cameracommon.mediasaving.updator.CrQueryParameter;
 import com.sonyericsson.cameracommon.storage.Storage;
 import com.sonyericsson.cameracommon.utility.CommonUtility;
-import com.sonymobile.media.SomcMediaStore;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -36,7 +34,7 @@ public class DataLoader implements Callable<Long> {
     private static final int COLUMN_INDEX_ORIENTATION = 6;
     private static final int COLUMN_INDEX_WIDTH = 4;
     public static final String EXTENDED_FILES_COLUMN_ID = "files_id";
-    public static final Uri EXTENDED_FILES_CONTENT_URI = SomcMediaStore.ExtendedFiles.getContentUri("external");
+    public static final Uri EXTENDED_FILES_CONTENT_URI = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
     public static final float PANORAMA_ASPECT_THRESHOLD = 1.8777778f;
     public static final String TAG = "DataLoader";
     private final String[] CONTENT_EXTENSIONS;
@@ -199,11 +197,7 @@ public class DataLoader implements Callable<Long> {
         crQueryParameter.limit = 1;
         crQueryParameter.sortOrder = String.format(Locale.US, "%s DESC, %s DESC", "datetaken", "_id");
         StringBuilder sb = new StringBuilder();
-        sb.append("(somctype!=129)");
-        sb.append(" AND (media_type==1 OR media_type==3)");
-        sb.append(" AND ");
-        sb.append("(somctype!=130)");
-        sb.append(" AND (");
+        sb.append("(");
         for (int i2 = 0; i2 < arrayList.size(); i2++) {
             if (i2 != 0) {
                 sb.append(" OR ");
@@ -351,46 +345,11 @@ public class DataLoader implements Callable<Long> {
     }
 
     private int getSomcType(String str) {
-        if (CamLog.VERBOSE) {
-            CamLog.d("getSomcType path : " + str);
-        }
-        CrQueryParameter crQueryParameter = new CrQueryParameter();
-        crQueryParameter.projection = new String[]{"_data", SomcMediaStore.ExtendedFiles.ExtendedFileColumns.SOMC_FILE_TYPE};
-        crQueryParameter.sortOrder = String.format(Locale.US, "%s DESC, %s DESC", "datetaken", "_id");
-        crQueryParameter.where = String.format(Locale.US, "%s like '%s'", "_data", str);
-        Cursor cursorCrQuery = PhotoStackQueryHelper.crQuery(this.mResolver, EXTENDED_FILES_CONTENT_URI, crQueryParameter);
-        if (cursorCrQuery == null) {
-            return 0;
-        }
-        int i = cursorCrQuery.moveToFirst() ? cursorCrQuery.getInt(cursorCrQuery.getColumnIndex(SomcMediaStore.ExtendedFiles.ExtendedFileColumns.SOMC_FILE_TYPE)) : 0;
-        cursorCrQuery.close();
-        if (CamLog.VERBOSE) {
-            CamLog.d("somcType = " + i);
-        }
-        return i;
+        return 0;
     }
 
     private boolean isVideoHdr(String str) {
-        CrQueryParameter crQueryParameter = new CrQueryParameter();
-        crQueryParameter.projection = new String[]{"_data", SomcFileTypeConstants.IS_HDR};
-        boolean z = false;
-        crQueryParameter.sortOrder = String.format(Locale.US, "%s DESC, %s DESC", "datetaken", "_id");
-        crQueryParameter.where = String.format(Locale.US, "%s like '%s'", "_data", str);
-        Cursor cursorCrQuery = PhotoStackQueryHelper.crQuery(this.mResolver, EXTENDED_FILES_CONTENT_URI, crQueryParameter);
-        if (cursorCrQuery != null) {
-            try {
-                if (cursorCrQuery.moveToFirst()) {
-                    if (cursorCrQuery.getInt(cursorCrQuery.getColumnIndex(SomcFileTypeConstants.IS_HDR)) == 1) {
-                        z = true;
-                    }
-                }
-            } finally {
-                if (cursorCrQuery != null) {
-                    cursorCrQuery.close();
-                }
-            }
-        }
-        return z;
+        return false;
     }
 
     private Content.ContentsType getContentType(Content.ContentInfo contentInfo) {
@@ -540,28 +499,62 @@ public class DataLoader implements Callable<Long> {
     }
 
     private Cursor getLatestImageInfo() {
-        Cursor cursorCrQuery = PhotoStackQueryHelper.crQuery(this.mResolver, EXTENDED_FILES_CONTENT_URI, this.mParam);
+        Cursor cursorImage = PhotoStackQueryHelper.crQuery(this.mResolver, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, this.mParam);
+        Cursor cursorVideo = PhotoStackQueryHelper.crQuery(this.mResolver, MediaStore.Video.Media.EXTERNAL_CONTENT_URI, this.mParam);
+        Cursor cursorCrQuery = pickMostRecent(cursorImage, cursorVideo);
         if (cursorCrQuery == null) {
             if (CamLog.VERBOSE) {
                 CamLog.d("getLatestImageInfo: null");
             }
             return null;
         }
-        if (cursorCrQuery.moveToFirst()) {
-            return cursorCrQuery;
+        return cursorCrQuery;
+    }
+
+    private Cursor pickMostRecent(Cursor cursorImage, Cursor cursorVideo) {
+        boolean hasImage = cursorImage != null && cursorImage.moveToFirst();
+        boolean hasVideo = cursorVideo != null && cursorVideo.moveToFirst();
+        if (!hasImage && !hasVideo) {
+            if (cursorImage != null) {
+                cursorImage.close();
+            }
+            if (cursorVideo != null) {
+                cursorVideo.close();
+            }
+            return null;
         }
-        if (CamLog.VERBOSE) {
-            CamLog.d("getLatestImageInfo: row: 0");
+        if (hasImage && !hasVideo) {
+            if (cursorVideo != null) {
+                cursorVideo.close();
+            }
+            return cursorImage;
         }
-        cursorCrQuery.close();
-        return null;
+        if (hasVideo && !hasImage) {
+            if (cursorImage != null) {
+                cursorImage.close();
+            }
+            return cursorVideo;
+        }
+        if (cursorImage.getLong(3) >= cursorVideo.getLong(3)) {
+            cursorVideo.close();
+            return cursorImage;
+        }
+        cursorImage.close();
+        return cursorVideo;
     }
 
     private Cursor getCoverImageInfo(int i) {
         CrQueryParameter crQueryParameter = new CrQueryParameter();
-        crQueryParameter.projection = new String[]{"_id", "_data", "mime_type", "datetaken", "width", "height", "orientation", "bucket_id", SomcMediaStore.ExtendedFiles.ExtendedFileColumns.SOMC_FILE_TYPE};
+        crQueryParameter.projection = new String[]{"_id", "_data", "mime_type", "datetaken", "width", "height", "orientation", "bucket_id"};
         crQueryParameter.where = String.format(Locale.US, "%s like '%s'", "_id", Integer.valueOf(i));
-        Cursor cursorCrQuery = PhotoStackQueryHelper.crQuery(this.mResolver, EXTENDED_FILES_CONTENT_URI, crQueryParameter);
+        Cursor cursorCrQuery = PhotoStackQueryHelper.crQuery(this.mResolver, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, crQueryParameter);
+        if (cursorCrQuery != null && cursorCrQuery.moveToFirst()) {
+            return cursorCrQuery;
+        }
+        if (cursorCrQuery != null) {
+            cursorCrQuery.close();
+        }
+        cursorCrQuery = PhotoStackQueryHelper.crQuery(this.mResolver, MediaStore.Video.Media.EXTERNAL_CONTENT_URI, crQueryParameter);
         if (cursorCrQuery == null) {
             if (CamLog.VERBOSE) {
                 CamLog.d("getCoverImageInfo: null");
@@ -575,9 +568,6 @@ public class DataLoader implements Callable<Long> {
             cursorCrQuery.close();
             return null;
         }
-        if (CamLog.VERBOSE) {
-            CamLog.d("getCoverImageInfo somcType: " + getSomcType(cursorCrQuery.getString(1)));
-        }
         return cursorCrQuery;
     }
 
@@ -587,7 +577,7 @@ public class DataLoader implements Callable<Long> {
         int iMin = Math.min(i, i2);
         int iMax = Math.max(i, i2);
         CrQueryParameter crQueryParameter = new CrQueryParameter();
-        crQueryParameter.projection = new String[]{"_id", "_data", "mime_type", "datetaken", "width", "height", "orientation", "bucket_id", SomcMediaStore.ExtendedFiles.ExtendedFileColumns.SOMC_FILE_TYPE};
+        crQueryParameter.projection = new String[]{"_id", "_data", "mime_type", "datetaken", "width", "height", "orientation", "bucket_id"};
         crQueryParameter.where = String.format(Locale.US, "%s >= '%s' AND %s <= '%s'", "_id", Integer.valueOf(iMin), "_id", Integer.valueOf(iMax));
         Cursor cursorCrQuery = PhotoStackQueryHelper.crQuery(this.mResolver, EXTENDED_FILES_CONTENT_URI, crQueryParameter);
         if (cursorCrQuery == null) {
