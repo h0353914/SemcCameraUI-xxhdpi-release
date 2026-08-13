@@ -52,6 +52,150 @@ cc_prebuilt_library_shared {
     prefer: true,
 }
 
+cc_prebuilt_library_shared {
+    name: "libSNPE_semccamera",
+    stem: "libSNPE",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libSNPE.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libdetector_semccamera",
+    stem: "libdetector",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libdetector.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libhta_semccamera",
+    stem: "libhta",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libhta.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsnpe-android_semccamera",
+    stem: "libsnpe-android",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libsnpe-android.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsnpe_adsp_semccamera",
+    stem: "libsnpe_adsp",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libsnpe_adsp.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsnpe_dsp_domains_semccamera",
+    stem: "libsnpe_dsp_domains",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libsnpe_dsp_domains.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsnpe_dsp_domains_skel_semccamera",
+    stem: "libsnpe_dsp_domains_skel",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libsnpe_dsp_domains_skel.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsnpe_dsp_domains_v2_semccamera",
+    stem: "libsnpe_dsp_domains_v2",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libsnpe_dsp_domains_v2.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsnpe_dsp_skel_semccamera",
+    stem: "libsnpe_dsp_skel",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libsnpe_dsp_skel.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsnpe_dsp_v65_domains_v2_skel_semccamera",
+    stem: "libsnpe_dsp_v65_domains_v2_skel",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libsnpe_dsp_v65_domains_v2_skel.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsnpe_dsp_v66_domains_v2_skel_semccamera",
+    stem: "libsnpe_dsp_v66_domains_v2_skel",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libsnpe_dsp_v66_domains_v2_skel.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsymphony-cpu_semccamera",
+    stem: "libsymphony-cpu",
+    srcs: ["app/src/main/jniLibs/arm64-v8a/libsymphony-cpu.so"],
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    prefer: true,
+}
+
 // Compile-only stub JARs (compileOnly in Gradle)
 
 java_import {
@@ -126,6 +270,19 @@ android_app {
         "libhandsigns_jni_semccamera",
         "libimage_converter_semccamera",
         "libmpbase_semccamera",
+        "libSNPE_semccamera",
+        "libdetector_semccamera",
+        "libhta_semccamera",
+        "libsnpe-android_semccamera",
+        "libsnpe_adsp_semccamera",
+        "libsnpe_dsp_domains_semccamera",
+        "libsnpe_dsp_domains_skel_semccamera",
+        "libsnpe_dsp_domains_v2_semccamera",
+        "libsnpe_dsp_skel_semccamera",
+        "libsnpe_dsp_v65_domains_v2_skel_semccamera",
+        "libsnpe_dsp_v66_domains_v2_skel_semccamera",
+        "libsymphony-cpu_semccamera",
+        "libimageprocessorjni",
     ],
 
     optimize: {
