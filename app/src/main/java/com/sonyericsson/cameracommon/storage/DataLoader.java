@@ -454,7 +454,7 @@ public class DataLoader implements Callable<Long> {
             if (contentInfo.mOriginalPath == null) {
                 contentInfo.mOriginalPath = getMediaPath(contentInfo.mId, contentInfo.mType);
             }
-            Bitmap bitmapCreateMicroThumbnail = ThumbnailFactory.createMicroThumbnail(contentInfo);
+            Bitmap bitmapCreateMicroThumbnail = ThumbnailFactory.createMicroThumbnail(this.mContext, contentInfo);
             bitmapCreateAntiAliasBitmap = bitmapCreateMicroThumbnail != null ? createAntiAliasBitmap(bitmapCreateMicroThumbnail, bitmapCreateMicroThumbnail.getWidth()) : bitmapCreateMicroThumbnail;
             if (CamLog.VERBOSE) {
                 CamLog.d("decodeThumbnail(): thumbnail = " + bitmapCreateAntiAliasBitmap);

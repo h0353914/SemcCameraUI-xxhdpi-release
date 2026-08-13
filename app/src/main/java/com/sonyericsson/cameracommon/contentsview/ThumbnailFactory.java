@@ -7,6 +7,7 @@ import android.graphics.Matrix;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import com.sonyericsson.android.camera.util.CamLog;
+import java.io.InputStream;
 
 public class ThumbnailFactory {
     private static final int MAX_NUM_PIXELS_MICRO_THUMBNAIL = 19200;
@@ -14,7 +15,7 @@ public class ThumbnailFactory {
     public static final int TARGET_SIZE_MICRO_THUMBNAIL = 96;
     private static final int UNCONSTRAINED = -1;
 
-    public static Bitmap createMicroThumbnail(com.sonyericsson.cameracommon.contentsview.contents.Content.ContentInfo contentInfo) {
+    public static Bitmap createMicroThumbnail(Context context, com.sonyericsson.cameracommon.contentsview.contents.Content.ContentInfo contentInfo) {
         Bitmap bitmap;
         if (CamLog.VERBOSE) {
             CamLog.d("createMicroThumbnail(type:" + contentInfo.mType + ",id;" + contentInfo.mId + ",data:" + contentInfo.mOriginalPath + ")");
@@ -23,20 +24,26 @@ public class ThumbnailFactory {
         try {
             int i = contentInfo.mType;
             if (i == 1 || i == 3) {
-                BitmapFactory.Options options = new BitmapFactory.Options();
-                options.inSampleSize = 1;
-                options.inJustDecodeBounds = true;
-                BitmapFactory.decodeFile(contentInfo.mOriginalPath, options);
-                if (options.mCancel || options.outWidth == -1 || options.outHeight == -1) {
-                    return null;
+                bitmap = decodeBitmapFromUri(context, contentInfo.mOriginalUri);
+                if (bitmap == null) {
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inSampleSize = 1;
+                    options.inJustDecodeBounds = true;
+                    BitmapFactory.decodeFile(contentInfo.mOriginalPath, options);
+                    if (options.mCancel || options.outWidth == -1 || options.outHeight == -1) {
+                        return null;
+                    }
+                    options.inSampleSize = computeSampleSize(options, TARGET_SIZE_MICRO_THUMBNAIL, MAX_NUM_PIXELS_MICRO_THUMBNAIL);
+                    options.inJustDecodeBounds = false;
+                    options.inDither = false;
+                    options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+                    bitmap = BitmapFactory.decodeFile(contentInfo.mOriginalPath, options);
                 }
-                options.inSampleSize = computeSampleSize(options, TARGET_SIZE_MICRO_THUMBNAIL, MAX_NUM_PIXELS_MICRO_THUMBNAIL);
-                options.inJustDecodeBounds = false;
-                options.inDither = false;
-                options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-                bitmap = BitmapFactory.decodeFile(contentInfo.mOriginalPath, options);
             } else if (i == 2) {
-                bitmap = createVideoThumbnail(contentInfo.mOriginalPath);
+                bitmap = (context == null || contentInfo.mOriginalUri == null) ? null : createVideoThumbnail(context, contentInfo.mOriginalUri);
+                if (bitmap == null) {
+                    bitmap = createVideoThumbnail(contentInfo.mOriginalPath);
+                }
             } else {
                 CamLog.e("createMicroThumbnail() wrong type:" + contentInfo.mType);
                 bitmap = null;
@@ -55,6 +62,33 @@ public class ThumbnailFactory {
             return null;
         }
         return rotateThumbnail(bitmap2, contentInfo.mOrientation);
+    }
+
+    private static Bitmap decodeBitmapFromUri(Context context, Uri uri) {
+        if (context == null || uri == null) {
+            return null;
+        }
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        try (InputStream inputStream = context.getContentResolver().openInputStream(uri)) {
+            BitmapFactory.decodeStream(inputStream, null, options);
+        } catch (Exception e) {
+            CamLog.e("decodeBitmapFromUri() bounds decode failed for uri:" + uri + ", ex:" + e);
+            return null;
+        }
+        if (options.outWidth <= 0 || options.outHeight <= 0) {
+            return null;
+        }
+        options.inSampleSize = computeSampleSize(options, TARGET_SIZE_MICRO_THUMBNAIL, MAX_NUM_PIXELS_MICRO_THUMBNAIL);
+        options.inJustDecodeBounds = false;
+        options.inDither = false;
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        try (InputStream inputStream = context.getContentResolver().openInputStream(uri)) {
+            return BitmapFactory.decodeStream(inputStream, null, options);
+        } catch (Exception e) {
+            CamLog.e("decodeBitmapFromUri() decode failed for uri:" + uri + ", ex:" + e);
+            return null;
+        }
     }
 
     public static boolean tryCreateThumbnail(String str) {
