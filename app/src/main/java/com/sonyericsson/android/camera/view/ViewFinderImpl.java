@@ -7888,8 +7888,8 @@ public class ViewFinderImpl implements StateMachine.OnStateChangedListener, View
                 z = ((PhotoSavingRequest) storeDataResult.savingRequest).isPredictiveCaptureCoverImage();
                 if (z2 || z) {
                     this.mActivity.runOnUiThread(thumbnailRunnable);
+                    return;
                 }
-                return;
             }
         } else {
             CamLog.d("File path is not set by storage error.");
