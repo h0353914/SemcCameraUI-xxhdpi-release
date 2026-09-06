@@ -621,7 +621,6 @@ public class CameraActivity extends Activity implements DialogInterface.OnCancel
         createLaunchCondition();
         this.mLaunchCondition.setup(getIntent(), this.mStoredSettings.getLastSettings().getCapturingMode(),
                 this instanceof InternalCameraActivity);
-        notifyActivityState(INTENT_SUBJECT_RESUMED);
         LaunchCondition.LaunchTrigger launchTrigger = getLaunchCondition().getLaunchTrigger();
         if (launchTrigger == LaunchCondition.LaunchTrigger.LIFT_TRIGGER) {
             LocalResearchUtil.getInstance().setMeasurementValid(
@@ -1795,7 +1794,6 @@ public class CameraActivity extends Activity implements DialogInterface.OnCancel
         CapturingMode capturingMode = this.mLaunchCondition.getCapturingMode();
         this.mLaunchCondition.setup(intent, this.mStoredSettings.getLastSettings().getCapturingMode(),
                 this instanceof InternalCameraActivity);
-        notifyActivityState(INTENT_SUBJECT_RESUMED);
         LaunchCondition.LaunchTrigger launchTrigger = getLaunchCondition().getLaunchTrigger();
         if (launchTrigger == LaunchCondition.LaunchTrigger.LIFT_TRIGGER) {
             LocalResearchUtil.getInstance().setMeasurementValid(
