@@ -259,6 +259,8 @@ class CameraController {
     private PreviewSessionRequest mPrevPreviewSessionRequest;
     private final PreviewFrameReceiver mPreviewFrameReceiver;
     private PreviewSessionRequest mPreviewRequest;
+    private final Object mRepeatingRequestTaskSetLock;
+    private final Set<Integer> mRepeatingRequestTaskSet;
     private final RequestOneImageRetrieverCallback mRequestOneImageRetrieverCallback;
     private CameraStateCallback mStateCallback;
     private ImageReader mStreamingImageReader;
@@ -438,8 +440,10 @@ class CameraController {
         this.mRequestOneImageRetrieverCallback = new RequestOneImageRetrieverCallback();
         this.mCurrentDeviceStatusLock = new Object();
         this.mCaptureResultCheckerLock = new Object();
+        this.mRepeatingRequestTaskSetLock = new Object();
         this.mPreviewFrameReceiver = new PreviewFrameReceiver();
         this.mCaptureResultCheckerSet = new HashSet();
+        this.mRepeatingRequestTaskSet = new HashSet();
         this.mOnPreviewStartedListenerSet = new HashSet();
         this.mCallback = cameraControllerCallback;
         this.mCameraDeviceHandler = cameraDeviceHandlerInquirer;
@@ -1151,6 +1155,16 @@ void setRepeatingRequestInternal(CameraDeviceHandler.CameraSessionId cameraSessi
                         this.mCameraDeviceHandler.getDeviceThreadHandler());
             }
             setRepeatingRequestTask = new SetRepeatingRequestTask(cameraSessionId, imageReader);
+            synchronized (this.mRepeatingRequestTaskSetLock) {
+                if (this.mRepeatingRequestTaskSet.contains(setRepeatingRequestTask.hashCode())) {
+                    if (CamLog.DEBUG) {
+                        CamLog.d(
+                                "setRepeatingRequestInternal() same repeating request already posted, skip.");
+                    }
+                    return;
+                }
+                this.mRepeatingRequestTaskSet.add(setRepeatingRequestTask.hashCode());
+            }
             if (z) {
                 this.mCameraDeviceHandler.postCameraDeviceThreadSync(setRepeatingRequestTask);
             } else {
@@ -1172,8 +1186,17 @@ void setRepeatingRequestInternal(CameraDeviceHandler.CameraSessionId cameraSessi
             setPerformancefLog(PerfLog.SET_REPEATING_REQUEST_TASK);
         }
 
+        @Override // java.lang.Object
+        public int hashCode() {
+            int i = getSessionId() != null ? getSessionId().hashCode() : 0;
+            return (i * 31) + (this.mCaptureSurface != null ? this.mCaptureSurface.hashCode() : 0);
+        }
+
         @Override // com.sonyericsson.android.camera.device.CameraDeviceHandler.CameraDeviceAccessTask
         protected boolean verifyCameraDeviceStatus() {
+            synchronized (CameraController.this.mRepeatingRequestTaskSetLock) {
+                CameraController.this.mRepeatingRequestTaskSet.remove(hashCode());
+            }
             switch (CameraController.this.getCameraDeviceStatus()) {
                 case STATUS_ERROR:
                 case STATUS_EVICTED:
