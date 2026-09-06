@@ -6,8 +6,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
+import android.os.ParcelFileDescriptor;
 import com.sonyericsson.android.camera.util.CamLog;
-import java.io.InputStream;
 
 public class ThumbnailFactory {
     private static final int MAX_NUM_PIXELS_MICRO_THUMBNAIL = 19200;
@@ -68,23 +68,21 @@ public class ThumbnailFactory {
         if (context == null || uri == null) {
             return null;
         }
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        try (InputStream inputStream = context.getContentResolver().openInputStream(uri)) {
-            BitmapFactory.decodeStream(inputStream, null, options);
-        } catch (Exception e) {
-            CamLog.e("decodeBitmapFromUri() bounds decode failed for uri:" + uri + ", ex:" + e);
-            return null;
-        }
-        if (options.outWidth <= 0 || options.outHeight <= 0) {
-            return null;
-        }
-        options.inSampleSize = computeSampleSize(options, TARGET_SIZE_MICRO_THUMBNAIL, MAX_NUM_PIXELS_MICRO_THUMBNAIL);
-        options.inJustDecodeBounds = false;
-        options.inDither = false;
-        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        try (InputStream inputStream = context.getContentResolver().openInputStream(uri)) {
-            return BitmapFactory.decodeStream(inputStream, null, options);
+        try (ParcelFileDescriptor pfd = context.getContentResolver().openFileDescriptor(uri, "r")) {
+            if (pfd == null) {
+                return null;
+            }
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true;
+            BitmapFactory.decodeFileDescriptor(pfd.getFileDescriptor(), null, options);
+            if (options.outWidth <= 0 || options.outHeight <= 0) {
+                return null;
+            }
+            options.inSampleSize = computeSampleSize(options, TARGET_SIZE_MICRO_THUMBNAIL, MAX_NUM_PIXELS_MICRO_THUMBNAIL);
+            options.inJustDecodeBounds = false;
+            options.inDither = false;
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            return BitmapFactory.decodeFileDescriptor(pfd.getFileDescriptor(), null, options);
         } catch (Exception e) {
             CamLog.e("decodeBitmapFromUri() decode failed for uri:" + uri + ", ex:" + e);
             return null;
