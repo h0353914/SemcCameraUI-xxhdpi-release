@@ -3,6 +3,7 @@ package com.sonyericsson.android.camera.recorder.defaultrecorder;
 import android.content.Context;
 import android.location.Location;
 import android.os.Handler;
+import android.os.HandlerThread;
 import com.sonyericsson.android.camera.device.CameraActionSound;
 import com.sonyericsson.android.camera.recorder.RecorderController;
 import com.sonyericsson.android.camera.recorder.RecorderException;
@@ -26,6 +27,8 @@ public class BaseRecorderController implements RecorderController {
     private final Accessor<CameraActionSound> mCameraActionSound;
     private final Context mContext;
     private final Handler mDeviceHandler;
+    private final HandlerThread mRecorderAccessThread;
+    private final Handler mRecorderControllerThread;
     private boolean mIsAdjustRecordingTimeByRecorderNotification;
     protected boolean mIsCameraErrorDetected;
     private boolean mIsMicrophoneEnabled;
@@ -199,7 +202,7 @@ public class BaseRecorderController implements RecorderController {
     }
 
     protected void executeInBackground(Runnable runnable) {
-        this.mDeviceHandler.post(runnable);
+        this.mRecorderControllerThread.post(runnable);
     }
 
     public BaseRecorderController(Context context, Accessor<CameraActionSound> accessor, RecorderInterface recorderInterface, Handler handler, RecorderController.RecorderListener recorderListener, long j, int i, Handler handler2, boolean z, boolean z2, boolean z3, boolean z4) {
@@ -211,6 +214,9 @@ public class BaseRecorderController implements RecorderController {
         changeTo(State.IDLE);
         this.mReferenceClock = new ReferenceClock(this.mCallbackHandler, this.mOnTickCallback, i);
         this.mDeviceHandler = handler2;
+        this.mRecorderAccessThread = new HandlerThread("RecorderAccess", 10);
+        this.mRecorderAccessThread.start();
+        this.mRecorderControllerThread = new Handler(this.mRecorderAccessThread.getLooper());
         this.mMinDurationMillis = j;
         this.mIsStartSoundRequired = z;
         this.mShouldWaitStartSound = z2;
@@ -641,6 +647,7 @@ public class BaseRecorderController implements RecorderController {
 
     protected void releaseInternal() {
         this.mRecorder.release();
+        this.mRecorderAccessThread.quitSafely();
     }
 
     @Override // com.sonyericsson.android.camera.recorder.RecorderController
