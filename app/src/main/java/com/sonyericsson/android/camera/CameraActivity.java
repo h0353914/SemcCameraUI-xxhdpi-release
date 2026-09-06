@@ -19,8 +19,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Process;
-import android.os.SystemClock;
-import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -112,11 +110,8 @@ public class CameraActivity extends Activity implements DialogInterface.OnCancel
     public static final String INTENT_SUBJECT_RESUMED = "activity-resumed";
     public static final String INTENT_SUBJECT_START = "start";
     public static final String INTENT_SUBJECT_START_SECURE = "start-secure";
-    private static final long ON_RESUME_DELAY_NON_SECURE_MILLIS = 15;
-    private static final long ON_RESUME_DELAY_SECURE_MILLIS = 30;
     private static final long PREPARE_PLATFORM_CAPABILITY_TIMED_OUT_MILLIS = 2000;
     private static final int RESULT_AUTO_OFF_TIMER = 2;
-    private static final long SEND_PAUSE_EVENT_DELAY_MILLIS = 500;
     public static final int SETUP_DEVICE_SETUP_WAIT_TIME = 100;
     private static final int SETUP_LAZY_EXECUTION_WAIT_TIME = 200;
     private static final String TAG = "CameraActivity";
@@ -130,7 +125,6 @@ public class CameraActivity extends Activity implements DialogInterface.OnCancel
     private boolean mIsCalledOnDestroy;
     private LaunchCondition mLaunchCondition;
     private LocationSettingsReader mLocationSettingsReader;
-    private Handler mMainHandler;
     private OrientationEventListener mOrientationEventListener;
     private boolean mResetSettingsRequested;
     private LayoutDependencyResolver.ScreenAspect mScreenAspect;
@@ -164,7 +158,6 @@ public class CameraActivity extends Activity implements DialogInterface.OnCancel
 
     @Nullable
     private KeyguardManager mKeyguardManager = null;
-    private boolean mSkippedOnResume = false;
     private LayoutOrientation mLastDetectedOrientation = LayoutOrientation.Unknown;
     private final Set<LayoutOrientationChangedListener> mLayoutOrientationChangedListenerSet = new CopyOnWriteArraySet();
     private int mSensorOrientationDegree = -1;
@@ -175,48 +168,6 @@ public class CameraActivity extends Activity implements DialogInterface.OnCancel
     private CameraActivityFinishBroadcastReceiver mCameraActivityFinishReceiver = null;
     private final UserEventHandler.KeyEventDispatcher mKeyEventDispatcher = new UserEventHandler.KeyEventDispatcher();
     private final UserEventHandler.SideTouchEventDispatcher mSideTouchEventDispatcher = new UserEventHandler.SideTouchEventDispatcher();
-    private final Runnable mOnResumeTasks = new Runnable() { // from class:
-                                                             // com.sonyericsson.android.camera.CameraActivity.1
-        @Override // java.lang.Runnable
-        @MainThread
-        public void run() {
-            if (CameraActivity.this.mSkippedOnResume) {
-                if (CamLog.DEBUG) {
-                    CamLog.d("Runnable --> onResumeTasks()");
-                }
-                CameraActivity.this.mSkippedOnResume = false;
-                CameraActivity.this.onResumeTasks();
-                return;
-            }
-            if (CamLog.DEBUG) {
-                throw new IllegalStateException("OnResumeTasks was executed when onResume is not skipped.");
-            }
-        }
-    };
-    private final Runnable mSendPauseEventAndReleaseCameraTask = new Runnable() { // from class:
-                                                                                  // com.sonyericsson.android.camera.CameraActivity.2
-        @Override // java.lang.Runnable
-        @MainThread
-        public void run() {
-            if (CameraActivity.this.mSkippedOnResume) {
-                if (CamLog.DEBUG) {
-                    CamLog.d("Runnable --> sendEvent(EVENT_PAUSE) & closeCamera()");
-                }
-                CameraActivity.this.mSkippedOnResume = false;
-                CameraActivity.this.notifyActivityState(CameraActivity.INTENT_SUBJECT_PAUSED);
-                if (CameraActivity.this.mStateMachine != null) {
-                    CameraActivity.this.mStateMachine.sendEvent(StateMachine.TransitterEvent.EVENT_PAUSE, true);
-                }
-                CameraActivity.this.getCameraDevice().closeCamera(CameraActivity.this.mCurrentCameraSessionId);
-                CameraActivity.this.mCurrentCameraSessionId = null;
-                return;
-            }
-            if (CamLog.DEBUG) {
-                throw new IllegalStateException(
-                        "PauseEventAndReleaseCameraTask was executed when onResume is not skipped.");
-            }
-        }
-    };
     private ThermalAlertReceiver.ThermalAlertReceiverListener mThermalAlertListener = new ThermalAlertReceiver.ThermalAlertReceiverListener() { // from
                                                                                                                                                 // class:
                                                                                                                                                 // com.sonyericsson.android.camera.CameraActivity.3
@@ -2811,28 +2762,12 @@ public class CameraActivity extends Activity implements DialogInterface.OnCancel
         if (CamLog.VERBOSE) {
             CamLog.d("onResume(): isKeyguardLocked() = " + isKeyguardLocked());
         }
-        if (this.mMainHandler == null) {
-            this.mMainHandler = new Handler(getMainLooper());
-        }
-        this.mMainHandler.removeCallbacks(this.mOnResumeTasks);
-        CameraApplication.getUiThreadHandler()
-                .removeCallbacksAndMessages(getCameraDevice().getSendPauseEventAndReleaseCameraTaskToken());
         getCameraDevice().setIsInShutdownNow(false);
         registerShutDownReceiver();
-        if (isKeyguardLocked() || this.mSkippedOnResume) {
-            this.mSkippedOnResume = true;
-            long j = isKeyguardSecure() ? ON_RESUME_DELAY_SECURE_MILLIS : ON_RESUME_DELAY_NON_SECURE_MILLIS;
-            if (CamLog.VERBOSE) {
-                CamLog.d("onResume() --> postDelayed(mOnResumeTasks," + j + ")");
-            }
-            this.mMainHandler.postDelayed(this.mOnResumeTasks, j);
-        } else {
-            if (CamLog.VERBOSE) {
-                CamLog.d("onResume() --> onResumeTasks()");
-            }
-            this.mSkippedOnResume = false;
-            onResumeTasks();
+        if (CamLog.VERBOSE) {
+            CamLog.d("onResume() --> onResumeTasks()");
         }
+        onResumeTasks();
         super.onResume();
     }
 
@@ -2850,24 +2785,10 @@ public class CameraActivity extends Activity implements DialogInterface.OnCancel
         if (CamLog.VERBOSE) {
             CamLog.d("onPause(): isKeyguardLocked() = " + isKeyguardLocked());
         }
-        if (this.mMainHandler != null) {
-            this.mMainHandler.removeCallbacks(this.mOnResumeTasks);
+        if (CamLog.DEBUG) {
+            CamLog.d("onPause() --> onPauseTasks()");
         }
-        CameraApplication.getUiThreadHandler()
-                .removeCallbacksAndMessages(getCameraDevice().getSendPauseEventAndReleaseCameraTaskToken());
-        if (!this.mSkippedOnResume) {
-            if (CamLog.DEBUG) {
-                CamLog.d("onPause() --> onPauseTasks()");
-            }
-            onPauseTasks();
-        } else {
-            if (CamLog.DEBUG) {
-                CamLog.d("onPause() --> postAtTime(SendPauseEventAndReleaseCameraTask,500)");
-            }
-            CameraApplication.getUiThreadHandler().postAtTime(this.mSendPauseEventAndReleaseCameraTask,
-                    getCameraDevice().getSendPauseEventAndReleaseCameraTaskToken(),
-                    SystemClock.uptimeMillis() + SEND_PAUSE_EVENT_DELAY_MILLIS);
-        }
+        onPauseTasks();
         unRegisterShutDownReceiver();
         super.onPause();
     }
