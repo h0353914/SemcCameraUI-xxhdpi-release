@@ -55,7 +55,7 @@ public class SavingTaskManager {
     private static final String SUFFIX_TEMP_FILE = ".rewrite-exif";
     public static final String TAG = "SavingTaskManager";
     private static final String THREAD_NAME = "SavingTask";
-    private static final ExecutorService mExecutor = ThreadUtil.buildExecutor(THREAD_NAME);
+    private static final ExecutorService mExecutor = ThreadUtil.buildPoolExecutor(THREAD_NAME, 3);
     Context mContext;
     private Handler mHandler;
     private final MediaScanController mMediaScanController;
