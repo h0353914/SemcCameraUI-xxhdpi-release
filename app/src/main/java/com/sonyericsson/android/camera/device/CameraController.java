@@ -1668,6 +1668,8 @@ void setRepeatingRequestInternal(CameraDeviceHandler.CameraSessionId cameraSessi
         private Runnable mCallbackTask;
         private ImageRetriever.CaptureImageRequest mCaptureImageRequest;
         private byte[] mOutput;
+        private int mImageWidth;
+        private int mImageHeight;
 
         private PreviewFrameReceiver() {
             this.mCaptureImageRequest = null;
@@ -1715,7 +1717,9 @@ void setRepeatingRequestInternal(CameraDeviceHandler.CameraSessionId cameraSessi
                         int width = imageAcquireLatestImage.getWidth();
                         int height = imageAcquireLatestImage.getHeight();
                         if (width % 2 == 0 && height % 2 == 0) {
-                            if (this.mOutput == null || width != 0 || height != 0) {
+                            if (this.mOutput == null || this.mImageWidth != width || this.mImageHeight != height) {
+                                this.mImageWidth = width;
+                                this.mImageHeight = height;
                                 this.mOutput = new byte[((width * height) * 3) / 2];
                             }
                             Image.Plane plane = planes[0];
