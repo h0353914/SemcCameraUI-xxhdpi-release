@@ -745,4 +745,17 @@ Jeżeli zamierzasz nadal używać karty SD jako pamięci masowej na dane, używa
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">WYŁ.</string>
     <string name="v7_preference_on">WŁ.</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Czytnik kodów QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Czytnik kodów QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Stuknij, by otworzyć \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Stuknij, aby połączyć z siecią Wi-Fi „%1$s”</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Nie można połączyć z tą siecią Wi-Fi</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Ten kod QR Code jest nieobsługiwany</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Stuknij, aby skonfigurować to urządzenie</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Połączono z %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">W tej sieci Wi-Fi występują zagrożenia</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Czy na pewno chcesz się połączyć z %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Połącz z Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Funkcja Wi-Fi jest wyłączona.
+Włącz Wi-Fi w USTAWIENIACH."</string>
 </resources>

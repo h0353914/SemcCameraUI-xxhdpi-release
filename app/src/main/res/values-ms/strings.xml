@@ -715,4 +715,17 @@ Jika anda terus menggunakan kad SD sebagai storan data, pastikan anda menggunaka
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">MATI</string>
     <string name="v7_preference_on">HIDUP</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Pembaca QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Pembaca QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Ketik utk buka \"%1$s\" dlm pelayar anda</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Ketik utk samb ke rangkaian Wi-Fi \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Tidak dapat menyambung ke rangkaian Wi-Fi ini</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">QR Code ini tidak disokong</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Ketik untuk menyediakan peranti ini</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Bersambung ke %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Rangkaian Wi-Fi ini ada risiko keselamatan</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Adakah anda pasti mahu menyambung ke %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Sambung ke Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi dimatikan.
+Sila hidupkan Wi-Fi daripada TETAPAN."</string>
 </resources>

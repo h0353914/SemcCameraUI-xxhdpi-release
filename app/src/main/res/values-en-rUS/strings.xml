@@ -116,4 +116,5 @@ If you continue to use SD card as data storage, be sure to use a high-speed SD c
     <string name="cam_strings_video_resolution_4k_file_type_txt">File format (4K)</string>
     <string name="cam_strings_video_shutter_trigger_txt">Auto capturing (video)</string>
     <string name="cam_strings_video_stabilizer_txt">Video stabilizer</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">This QR code is not supported</string>
 </resources>

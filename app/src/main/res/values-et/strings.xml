@@ -709,4 +709,17 @@ Kui jätkate SD-kaardi mäluruumina kasutamist, kasutage kindlasti kiiret SD-kaa
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">VÄLJAS</string>
     <string name="v7_preference_on">SEES</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code’i luger</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code’i luger</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Puudutage avamaks link \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Koput. ühend. Wi-Fi võrguga „%1$s“</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Selle WiFi-võrguga ei saa ühendust luua</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Seda QR Code’i ei toetata</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Puudutage selle seadme seadistamiseks</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Loodud on ühendus võrguga %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">See Wi-Fi võrk sisaldab turbeohte</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Kas soovite kindlasti luua ühenduse võrguga %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Wi-Fi ühenduse loomine</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi on välja lülitatud.
+Lülitage Wi-Fi sisse kuval SEADED."</string>
 </resources>

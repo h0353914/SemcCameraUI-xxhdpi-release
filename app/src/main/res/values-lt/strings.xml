@@ -745,4 +745,17 @@ Jei norite kaip duomenų saugyklą ir toliau naudoti SD kortelę, naudokite dide
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">IŠJUNGTA</string>
     <string name="v7_preference_on">ĮJUNGTA</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code skaitytuvas</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code skaitytuvas</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Atidarykite \"%1$s\" savo naršyklėje</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Bakst., kad prisij. prie „Wi-Fi“ tinklo „%1$s“</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Negalima prisijungti prie šio „Wi-Fi“ tinklo</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Šis QR Code nepalaikomas</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Palieskite, kad nustatytumėte įrenginį</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Prisijungta prie %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Šis „Wi-Fi“ tinklas kelia pavojų saugai</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Ar tikrai norite prisijungti prie %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Prisijungti prie „Wi-Fi“</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"„Wi-Fi“ išjungtas.
+Įjunkite „Wi-Fi“ pasirinkę NUSTATYMAI."</string>
 </resources>

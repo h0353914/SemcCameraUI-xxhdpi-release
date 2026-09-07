@@ -745,4 +745,17 @@ Ha továbbra is SD-kártyát használ adattárolóként, feltétlenül nagy sebe
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">KI</string>
     <string name="v7_preference_on">BE</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code-olvasó</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code-olvasó</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Kopp. a hiv. megnyitásához: \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Kopp. csatlakozás Wi-Fi-hálózathoz: %1$s</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Nem lehet csatlakozni ehhez a Wi-Fi-hálózathoz</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Ez a QR Code nem támogatott</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Kopp. a készülék beállításához</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Csatlakoztatva ehhez: %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Ez a Wi-Fi-hálózat biztonsági kockázatokkal jár</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Biztosan csatlakozni szeretne a következő hálózathoz: %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Csatlakoztatás Wi-Fi-hálózathoz</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"A Wi-Fi ki van kapcsolva.
+A BEÁLLÍTÁSOK gombot használva kapcsolja ki a Wi-Fi funkciót."</string>
 </resources>

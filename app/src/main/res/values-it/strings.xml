@@ -746,4 +746,17 @@ Se continui a usare la scheda SD come memoria dei dati, assicurati di usarne una
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">OFF</string>
     <string name="v7_preference_on">ON</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Lettore QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Lettore QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Sfiora per aprire: \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Sfiora per connet. alla rete Wi-Fi \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Impossibile connettersi a questa rete Wi-Fi</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Questo QR Code non è supportato</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Sfiora per configurare questo dispositivo</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Connesso a %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Questa rete Wi-Fi è un rischio per la sicurezza</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Connettersi a %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Connettiti alla rete Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Il Wi-Fi è stato disattivato.
+Attiva il Wi-Fi da IMPOSTAZIONI."</string>
 </resources>

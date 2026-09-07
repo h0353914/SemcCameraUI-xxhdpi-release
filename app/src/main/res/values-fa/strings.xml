@@ -745,4 +745,17 @@
     <string name="summary_collapsed_preference_list">%1$s، %2$s</string>
     <string name="v7_preference_off">خاموش</string>
     <string name="v7_preference_on">روشن</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code خوان</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code خوان</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">برای باز کردن \"%1$s\" در مرورگر، ضربه بزنید</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">برای اتصال به این شبکه Wi-Fi ضربه بزنید‏: %1$s</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">اتصال به این شبکه Wi-Fi امکان‌پذیر نیست</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">این QR Code پشتیبانی نمی‌شود</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">برای تنظیم این دستگاه، ضربه بزنید</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">متصل به %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">این شبکه Wi-Fi دارای خطرات امنیتی احتمالی است</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">آیا مطمئنید که می‌خواهید به %1$s متصل شوید؟</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">اتصال به Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi خاموش است.
+لطفاً Wi-Fi را از «تنظیمات» روشن کنید."</string>
 </resources>

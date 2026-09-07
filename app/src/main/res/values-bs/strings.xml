@@ -715,4 +715,17 @@ Ako nastavite koristiti SD karticu za pohranu podataka, obavezno koristite brzu 
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">ISKLJUČENO</string>
     <string name="v7_preference_on">UKLJUČENO</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Čitač stavke QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Čitač stavke QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Kucnite da otvorite \"%1$s\" u pretraž.</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Kucnite za povez. na Wi-Fi mrežu \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Nije se moguće povezati na ovu Wi-Fi mrežu</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Ovaj QR Code nije podržan</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Kucnite da postavite ovaj uređaj</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Povezani ste na %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Ova Wi-Fi mreža ima sigurnosne rizike</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Jeste li sigurni da se želite povezati na mrežu %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Poveži se na Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi je isključen.
+Uključite Wi-Fi koristeći POSTAVKE."</string>
 </resources>

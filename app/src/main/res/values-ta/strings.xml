@@ -715,4 +715,17 @@ SD கார்டை தரவு சேமிப்பகமாகப் ப�
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">ஆஃப்</string>
     <string name="v7_preference_on">ஆன்</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code ரீடர்</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code ரீடர்</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">உலாவியில் \"%1$s\" திறக்க, தட்டு</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">இந்த Wi-Fi நெட். இணை. தட்.: \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">இந்த Wi-Fi பிணையத்துடன் இணைக்க முடியாது</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">இந்தக் QR Code ஆதரிக்கப்படவில்லை</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">இந்தச் சாதனத்தை அமைக்க, தட்டவும்</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">%1$s உடன் இணைக்கப்பட்டது</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Wi-Fi நெட்வொர். பாதுகா. ஆபத்துகள் உள்ளன</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">%1$s உடன் நிச்சயமாக இணைக்கவா?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Wi-Fi உடன் இணை</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi அணைக்கப்பட்டுள்ளது.
+அமைப்புகளில் Wi-Fi -ஐ இயக்கவும்."</string>
 </resources>

@@ -745,4 +745,17 @@ Als u de SD-kaart als gegevensopslag blijft gebruiken, zorg dan dat u een high-s
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">UIT</string>
     <string name="v7_preference_on">AAN</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Codelezer</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Codelezer</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Tik om de koppeling te openen: \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Tik en verbind met Wi-Fi-netwerk \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Kan geen verbinding maken met dit Wi-Fi-netwerk</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Deze QR Code wordt niet ondersteund</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Tik om dit apparaat in te stellen</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Verbonden met %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">"Dit Wi-Fi-netwerk heeft beveiligingsrisico's"</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Weet u zeker dat u verbinding wilt maken met %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Verbinding maken met Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi is uitgeschakeld.
+Schakel Wi-Fi in via de INSTELLINGEN."</string>
 </resources>

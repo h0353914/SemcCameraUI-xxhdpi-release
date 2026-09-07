@@ -149,4 +149,5 @@ If you continue to use SD card as data storage, be sure to use a high-speed SD c
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">OFF</string>
     <string name="v7_preference_on">ON</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">This QR code is not supported</string>
 </resources>

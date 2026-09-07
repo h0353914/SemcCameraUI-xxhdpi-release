@@ -744,4 +744,17 @@ Om du fortsätter att använda SD-kort som lagringsmedium ska ett höghastighets
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">AV</string>
     <string name="v7_preference_on">PÅ</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code-läsare</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code-läsare</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Tryck för att öppna \"%1$s\" i webbläsare</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Tryck för att ansluta till Wi-Fi-nätv. %1$s</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Kan inte ansluta till Wi-Fi-nätverk</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Denna QR Code stöds inte</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Tryck för att konfigurera enheten</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Ansluten till %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Det här Wi-Fi-nätverket har säkerhetsrisker</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Är du säker på att du vill ansluta till %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Ansluta till Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi är avstängt.
+Aktivera Wi-Fi från INSTÄLLNINGAR."</string>
 </resources>

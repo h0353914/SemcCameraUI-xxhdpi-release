@@ -715,4 +715,17 @@ SD കാർഡ് ഡാറ്റാ സംഭരണമായി ഉപയോ�
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">ഓഫ്</string>
     <string name="v7_preference_on">ഓൺ</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code റീഡർ</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code റീഡർ</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">ഇത് തുറക്കാൻ ടാപ്പ് ചെ.: \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Wi-Fi നെ. കണ. ചെ. ടാ. ചെ. \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">ഈ നെറ്റ്വർക്കിൽ കണക്ട് ചെയ്യാനാകില്ല</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">ഈ QR Code-ന് പിന്തുണയില്ല</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">ഈ ഉപകരണം സജ്ജീകരിക്കാൻ ടാപ് ചെയ്യുക</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">%1$s എന്നതിൽ കണക്ടു ചെയ്‌തു</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">ഈ Wi-Fi നെറ്റ്‌വർക്കിൽ സുരക്ഷാ പ്രശ്‌നങ്ങളുണ്ട്</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">%1$s എന്നതിൽ കണക്ടു ചെയ്യണമെന്ന് തീർച്ചയാണോ?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Wi-Fi യിൽ കണക്ടു ചെയ്യുക</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi ഓഫ് ചെയ്‌തിരിക്കുന്നു.
+ക്രമീകരണത്തിൽ നിന്നും Wi-Fi ഓൺ ചെയ്യുക."</string>
 </resources>

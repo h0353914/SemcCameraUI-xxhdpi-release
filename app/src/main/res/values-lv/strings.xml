@@ -745,4 +745,17 @@ Ja joprojām vēlaties kā datu krātuvi izmantot SD karti, izmantojiet ātrdarb
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">IZSLĒGTS</string>
     <string name="v7_preference_on">IESLĒGTS</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code lasītājs</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code lasītājs</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Piesitiet, lai atvērtu \"%1$s\" pārlūkpr.</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Piesitiet, lai izv. sav. ar Wi-Fi tīklu \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Nevar izveidot savienojumu ar šo Wi-Fi tīklu</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Šis QR Code netiek atbalstīts</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Piesitiet, lai iestatītu šo ierīci.</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Izveidots savienojums ar %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Šajā Wi-Fi tīklā pastāv drošības riski</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Vai tiešām vēlaties veidot savienojumu ar %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Izveidot savienojumu ar Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi ir izslēgts.
+Lūdzu, ieslēdziet Wi-Fi izvēlnē IESTATĪJUMI."</string>
 </resources>

@@ -202,6 +202,7 @@ public class CameraParameters {
     public static final String WHITE_BALANCE_INCANDESCENT = "incandescent";
     public static final String WHITE_BALANCE_OFF = "off";
     private CameraInfo.CameraId mCameraId;
+    private boolean mIsQrCodeDetectionActive;
     private ShutterTrigger mShutterTrigger;
     private SlowMotion mSlowMotion;
     private VideoHdr mVideoHdr;
@@ -1223,6 +1224,18 @@ public class CameraParameters {
 
     public ShutterTrigger getShutterTrigger() {
         return this.mShutterTrigger;
+    }
+
+    public void setQrCodeDetectionActive(boolean z) {
+        if (this.mIsQrCodeDetectionActive != z) {
+            this.mIsQrCodeDetectionActive = z;
+            this.mNeedCreatePreviewSession = true;
+            this.mNeedApply = true;
+        }
+    }
+
+    public boolean isQrCodeDetectionActive() {
+        return this.mIsQrCodeDetectionActive;
     }
 
     public void setGpsData(Location location) {

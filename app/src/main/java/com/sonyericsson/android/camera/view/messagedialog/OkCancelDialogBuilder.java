@@ -12,12 +12,29 @@ public class OkCancelDialogBuilder extends MessageDialogBuilder {
         builder.setOnKeyListener(new MessageDialogBuilder.KeyEventKiller());
         builder.setOrientation(i);
         builder.setTitle(messageDialogRequest.mDialogId.titleResourceID);
-        builder.setMessage(messageDialogRequest.mDialogId.messageResourceID);
+        CharSequence formattedMessage = findFormattedMessage(messageDialogRequest.mOptions);
+        if (formattedMessage != null) {
+            builder.setMessage(formattedMessage);
+        } else {
+            builder.setMessage(messageDialogRequest.mDialogId.messageResourceID);
+        }
         builder.setPositiveButton(messageDialogRequest.mDialogId.positiveButtonResourceID, onClickListener);
         builder.setNegativeButton(messageDialogRequest.mDialogId.negativeButtonResourceID, onClickListener2);
         builder.setOnCancelListener(onCancelListener);
         builder.setOnDismissListener(onDismissListener);
         builder.setCancelable(messageDialogRequest.mDialogId.isCancelable, messageDialogRequest.mDialogId.isCancelableOnTouchOutside);
         return builder.createRotatableDialog();
+    }
+
+    private static CharSequence findFormattedMessage(Object[] options) {
+        if (options == null) {
+            return null;
+        }
+        for (Object option : options) {
+            if (option instanceof CharSequence) {
+                return (CharSequence) option;
+            }
+        }
+        return null;
     }
 }

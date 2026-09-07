@@ -745,4 +745,17 @@ Pokud jako úložiště budete nadále používat kartu SD, použijte vysokorych
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">VYP</string>
     <string name="v7_preference_on">ZAP</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Čtečka kódů QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Čtečka kódů QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Ťuknutím otevřete: \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Ťuknutím se připojíte k síti Wi-Fi %1$s</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">K této síti Wi-Fi se nelze připojit</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Tento kód QR Code není podporován</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Ťuknutím nastavte toto zařízení</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Připojeno k %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Tato síť Wi-Fi představuje bezpečnostní rizika</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Opravdu se chcete připojit k %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Připojit k Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Síť Wi-Fi je vypnutá.
+Zapněte Wi-Fi v nabídce NASTAVENÍ."</string>
 </resources>

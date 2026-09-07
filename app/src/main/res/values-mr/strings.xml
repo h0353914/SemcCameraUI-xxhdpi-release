@@ -715,4 +715,17 @@
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">बंद</string>
     <string name="v7_preference_on">चालू</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code रीडर</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code रीडर</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">ब्राउझरमध्ये उघडण्यासाठी \"%1$s\" टॅप करा</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">पुढील Wi-Fi नेटवर्क जोडणीसाठी टॅप करा: \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">या Wi-Fi नेटवर्कशी कनेक्ट करणे शक्य नाही</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">हा QR Code समर्थन देत नाही</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">उपकरण सेट अप करण्यासाठी टॅप करा</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">%1$s शी जोडणी केली</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">या Wi-Fi नेटवर्कमध्ये सुरक्षा जोखीमा आहेत</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">आपणास निश्चितपणे %1$s शी जोडणी करायची आहे?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Wi-Fi शी जोडणी केली</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi बंद आहे.
+कृपया सेटिंगमधून Wi-Fi चालू करा."</string>
 </resources>

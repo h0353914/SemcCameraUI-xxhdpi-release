@@ -715,4 +715,17 @@ SD картасын деректер қоймасы ретінде пайдал�
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">ӨШІРУЛІ</string>
     <string name="v7_preference_on">ҚОСУЛЫ</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code оқу құралы</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code оқу құралы</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Браузерде \"%1$s\" ашу үшін түртіңіз</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Wi-Fi желісіне қосылу үшін түрт: «%1$s»</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Бұл Wi-Fi желісіне қосылу мүмкін емес</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Осы QR Code қолдауы жоқ</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Осы құрылғыны баптау үшін түртіңіз</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">%1$s желісіне қосылған</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Осы Wi-Fi желісінде қауіптер бар</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">%1$s желісіне шынымен қосылу керек пе?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Wi-Fi желісіне қосылу</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi өшірілген.
+ПАРАМЕТРЛЕР ішінен Wi-Fi қосыңыз."</string>
 </resources>

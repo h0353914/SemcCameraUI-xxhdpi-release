@@ -743,4 +743,17 @@
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">ΑΝΕΝΕΡΓΗ</string>
     <string name="v7_preference_on">ΕΝΕΡΓΗ</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Ανάγνωση κωδικού QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Ανάγνωση κωδικού QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Πατήστε για άνοιγμα του \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Πατ. για σύνδ. με το δίκτυο Wi-Fi \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Αδυναμία σύνδεσης σε αυτό το δίκτυο Wi-Fi</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Αυτός ο QR Code δεν υποστηρίζεται</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Πάτημα για ρύθμιση της συσκευής</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Συνδέθηκε με το δίκτυο %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Αυτό το δίκτυο Wi-Fi έχει κινδύνους ασφαλείας</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Θέλετε οπωσδήποτε να συνδεθείτε με το δίκτυο %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Σύνδεση με δίκτυο Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Το Wi-Fi απενεργοποιήθηκε.
+Ενεργοποιήστε το Wi-Fi από τις ΡΥΘΜΙΣΕΙΣ."</string>
 </resources>

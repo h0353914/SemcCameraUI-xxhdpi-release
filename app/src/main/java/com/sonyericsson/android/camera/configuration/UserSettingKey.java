@@ -46,6 +46,7 @@ public enum UserSettingKey {
     WHITE_BALANCE(true, false, false, ParameterCategory.CAPTURING_MODE, R.string.cam_strings_white_balance_title_txt),
     SEMI_AUTO(false, false, false, ParameterCategory.CAPTURING_MODE, 0),
     GRID_LINE(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_gridline_txt),
+    QR_CODE_DETECTION(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_feature_qrcode_detection_txt),
     SIDE_SENSE(true, false, true, ParameterCategory.COMMON, R.string.cam_strings_side_touch_txt),
     HELP_GUIDE(false, false, true, ParameterCategory.COMMON, R.string.cam_strings_help_txt),
     RESET_SETTINGS(false, false, true, ParameterCategory.COMMON, R.string.cam_strings_reset_settings_txt),

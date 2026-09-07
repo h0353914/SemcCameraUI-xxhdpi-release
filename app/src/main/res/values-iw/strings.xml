@@ -745,4 +745,17 @@
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">כבוי</string>
     <string name="v7_preference_on">מופעל</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">קורא QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">קורא QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">הקש כדי לפתוח את \"%1$s\" בדפדפן</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">הקש כדי להתחבר לרשת Wi-Fi \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">לא ניתן להתחבר לרשת Wi-Fi זו</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">QR Code זה אינו נתמך</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">הקש כדי להגדיר התקן זה</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">מחובר אל %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">רשת ה-Wi-Fi כוללת סיכוני אבטחה</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">האם אתה בטוח שברצונך להתחבר ל-%1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">התחבר ל-Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi כבוי.
+הפעל את ה-Wi-Fi מתוך 'הגדרות'."</string>
 </resources>

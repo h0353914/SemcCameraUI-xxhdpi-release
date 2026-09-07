@@ -745,4 +745,17 @@
     <string name="summary_collapsed_preference_list">%1$s、%2$s</string>
     <string name="v7_preference_off">关闭</string>
     <string name="v7_preference_on">开启</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">二维码扫一扫</string>
+    <string name="cam_strings_qrcode_detect_title_txt">二维码扫一扫</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">点按可在浏览器中打开\"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">点按以连接到WLAN网络“%1$s”</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">无法连接到此Wi-Fi网络</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">不支持此二维码</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">点按以设置此设备</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">已连接到%1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">此WLAN网络存在安全风险</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">是否确定要连接到%1$s？</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">连接到WLAN</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"WLAN已关闭。
+请从“设定”中开启WLAN。"</string>
 </resources>

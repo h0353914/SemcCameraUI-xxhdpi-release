@@ -715,4 +715,17 @@
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">ಆಫ್</string>
     <string name="v7_preference_on">ಆನ್</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code ರೀಡರ್</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code ರೀಡರ್</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">ನಿಮ್ಮ ಬ್ರೌಸರ್‌.\"%1$s\" ತೆರೆ. ತಟ್ಟಿ</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Wi-Fi ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪ. ತಟ್ಟಿ \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">ಈ Wi-Fi ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಪಡಿಸಲಾಗದು</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">ಈ QR Code ಬೆಂಬಲಿತವಾಗಿಲ್ಲ</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">ಈ ಸಾಧನ ಸೆಟಪ್ ಮಾಡಲು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">%1$s ಗೆ ಸಂಪರ್ಕಗೊಂಡಿದೆ</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">ಈ Wi-Fi ನೆಟ್‌ವರ್ಕ್ ಸುರಕ್ಷತೆ ಅಪಾಯಗಳನ್ನು ಹೊಂದಿದೆ</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">ನೀವು %1$s ಗೆ ಸಂಪರ್ಕಪಡಿಸಲು ಖಚಿತವಾಗಿ ಬಯಸುವಿರಾ?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Wi-Fi ಗೆ ಸಂಪರ್ಕಿಸಿ</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi ಆಫ್ ಮಾಡಲಾಗಿದೆ.
+ಸಂಯೋಜನೆಗಳು ಎಂಬಲ್ಲಿಂದ ದಯವಿಟ್ಟು Wi-Fi ಆನ್ ಮಾಡಿ."</string>
 </resources>

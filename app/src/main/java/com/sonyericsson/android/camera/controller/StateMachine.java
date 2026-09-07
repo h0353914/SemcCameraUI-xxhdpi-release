@@ -41,6 +41,7 @@ import com.sonyericsson.android.camera.configuration.parameters.ObjectTracking;
 import com.sonyericsson.android.camera.configuration.parameters.PhotoLight;
 import com.sonyericsson.android.camera.configuration.parameters.PredictiveCapture;
 import com.sonyericsson.android.camera.configuration.parameters.PredictiveLaunch;
+import com.sonyericsson.android.camera.configuration.parameters.QrCodeDetection;
 import com.sonyericsson.android.camera.configuration.parameters.ResetSettings;
 import com.sonyericsson.android.camera.configuration.parameters.Resolution;
 import com.sonyericsson.android.camera.configuration.parameters.SelfTimer;
@@ -73,6 +74,8 @@ import com.sonyericsson.android.camera.device.CameraParameterConverter;
 import com.sonyericsson.android.camera.device.CameraParameters;
 import com.sonyericsson.android.camera.device.PlatformDependencyResolver;
 import com.sonyericsson.android.camera.parameter.dependency.DependencyCheckUtil;
+import com.sonyericsson.android.camera.qrdetection.CameraNotificationManager;
+import com.sonyericsson.android.camera.qrdetection.QrDetectionController;
 import com.sonyericsson.android.camera.recorder.RecorderController;
 import com.sonyericsson.android.camera.recorder.RecordingProfile;
 import com.sonyericsson.android.camera.recorder.superslowrecorder.OnSuperSlowRecordingFinishedListener;
@@ -414,6 +417,8 @@ public class StateMachine {
     };
     private boolean mIsPausedAudioPlayback = false;
     private final GestureShutter mGestureShutter;
+    private final CameraNotificationManager mNotificationManager;
+    private final QrDetectionController mQrDetectionController;
 
     /* JADX INFO: Access modifiers changed from: private */
     public enum NextCaptureCondition {
@@ -803,6 +808,8 @@ public class StateMachine {
         this.mActivity = cameraActivity;
         this.mStorage = storage;
         this.mGestureShutter = new GestureShutter(this.mGestureShutterHost, null);
+        this.mNotificationManager = new CameraNotificationManager(cameraActivity);
+        this.mQrDetectionController = new QrDetectionController(this.mNotificationManager);
         this.mUserSettings = cameraActivity.getStoredSettings().getUserSettings();
         this.mUserSettings.register(this.mSettingController);
         this.mLastSettings = cameraActivity.getStoredSettings().getLastSettings();
@@ -835,6 +842,12 @@ public class StateMachine {
 
         @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
         public void set(GridLine gridLine) {
+        }
+
+        @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+        public void set(QrCodeDetection qrCodeDetection) {
+            StateMachine.this.mQrDetectionController.handleSettingsChanged(
+                    qrCodeDetection == QrCodeDetection.ON);
         }
 
         @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
@@ -1408,6 +1421,14 @@ public class StateMachine {
         this.mViewFinder = viewFinder;
         this.mCameraDeviceHandler = cameraDeviceHandler;
         this.mObjectTracking = new ObjectTrackingManager(viewFinder, cameraDeviceHandler, this);
+        this.mNotificationManager.setViewFinder(viewFinder);
+        this.mQrDetectionController.setNeedCapturedFrameListener(new QrDetectionController.NeedCapturedFrameListener() { // from class: com.sonyericsson.android.camera.controller.StateMachine.NeedCapturedFrameListenerImpl
+            @Override // com.sonyericsson.android.camera.qrdetection.QrDetectionController.NeedCapturedFrameListener
+            public void onNeedCapturedFrameChanged(boolean z) {
+                StateMachine.this.mCameraDeviceHandler.setQrCodeDetectionActive(z);
+                StateMachine.this.mCameraDeviceHandler.commit();
+            }
+        });
     }
 
     class State {
@@ -2365,6 +2386,12 @@ public class StateMachine {
                 StateMachine.this.mGestureShutter.handlePreviewStarted(
                         StateMachine.this.getCurrentCapturingMode(),
                         StateMachine.this.mCameraDeviceHandler.getStreamingImageRetriever());
+                StateMachine.this.mQrDetectionController.handleSettingsChanged(
+                        StateMachine.this.mUserSettings.get(UserSettingKey.QR_CODE_DETECTION)
+                                == QrCodeDetection.ON);
+                StateMachine.this.mQrDetectionController.handlePreviewStarted(
+                        StateMachine.this.getCurrentCapturingMode(),
+                        StateMachine.this.mCameraDeviceHandler.getStreamingImageRetriever());
             }
 
             // line 2797 (access$6600 = attemptCommitSettings on mPredictiveApplier)
@@ -2401,6 +2428,7 @@ public class StateMachine {
         public void exit() {
             StateMachine.this.mActivity.notifyStateBlockedToWearable();
             StateMachine.this.mGestureShutter.handlePreviewStopped();
+            StateMachine.this.mQrDetectionController.handlePreviewStopped();
             if (this.mNotifyDelayedEventTask != null) {
                 StateMachine.this.removeDelayedEvent(this.mNotifyDelayedEventTask);
                 this.mNotifyDelayedEventTask = null;
@@ -5621,6 +5649,7 @@ public class StateMachine {
                 CamLog.d("invoke StateFinalize");
             }
             StateMachine.this.mGestureShutter.release();
+            StateMachine.this.mQrDetectionController.release();
             StateMachine.this.storeSavingRequestList();
             StateMachine.this.mObjectTracking = null;
         }
@@ -7270,6 +7299,7 @@ public class StateMachine {
         }
         this.mObjectTracking.stop();
         this.mGestureShutter.handlePreviewStopped();
+        this.mQrDetectionController.handlePreviewStopped();
     }
 
     private void pauseAudioPlaybackForCapture() {

@@ -14,6 +14,7 @@ import com.sonyericsson.android.camera.configuration.parameters.GridLine;
 import com.sonyericsson.android.camera.configuration.parameters.HelpGuide;
 import com.sonyericsson.android.camera.configuration.parameters.PhotoLight;
 import com.sonyericsson.android.camera.configuration.parameters.PredictiveLaunch;
+import com.sonyericsson.android.camera.configuration.parameters.QrCodeDetection;
 import com.sonyericsson.android.camera.configuration.parameters.ResetSettings;
 import com.sonyericsson.android.camera.configuration.parameters.ShutterSound;
 import com.sonyericsson.android.camera.configuration.parameters.SideSense;
@@ -45,6 +46,7 @@ public class ModeIndependentParams {
     UserSettingValueHolder<SideSense> mSideSense = new UserSettingValueHolder<>(SideSense.getDefaultValue());
     UserSettingValueHolder<ResetSettings> mResetSettings = new UserSettingValueHolder<>(ResetSettings.DUMMY_OFF);
     UserSettingValueHolder<PredictiveLaunch> mPredictiveLaunch = new UserSettingValueHolder<>(PredictiveLaunch.OFF);
+    UserSettingValueHolder<QrCodeDetection> mQrCodeDetection = new UserSettingValueHolder<>(QrCodeDetection.getDefaultValue());
 
     public void init(ActionMode actionMode, Storage storage) {
         DestinationToSave.setMountPoint(storage.getAvailableStorage());
@@ -66,6 +68,7 @@ public class ModeIndependentParams {
         this.mSideSense.setOptions(SideSense.getOptions());
         this.mResetSettings.setOptions(ResetSettings.getOptions());
         this.mPredictiveLaunch.setOptions(PredictiveLaunch.getOptions());
+        this.mQrCodeDetection.setOptions(QrCodeDetection.getOptions());
     }
 
     public void clear(Storage storage) {
@@ -87,6 +90,7 @@ public class ModeIndependentParams {
         this.mDistortionCorrection.setDefaultValue();
         this.mResetSettings.setDefaultValue();
         this.mPredictiveLaunch.setDefaultValue();
+        this.mQrCodeDetection.setDefaultValue();
     }
 
     public List<UserSettingValueHolder<?>> values() {
@@ -109,6 +113,7 @@ public class ModeIndependentParams {
         arrayList.add(this.mSideSense);
         arrayList.add(this.mResetSettings);
         arrayList.add(this.mPredictiveLaunch);
+        arrayList.add(this.mQrCodeDetection);
         return arrayList;
     }
 
@@ -131,5 +136,6 @@ public class ModeIndependentParams {
         this.mSideSense.set(modeIndependentParams.mSideSense.get());
         this.mResetSettings.set(modeIndependentParams.mResetSettings.get());
         this.mPredictiveLaunch.set(modeIndependentParams.mPredictiveLaunch.get());
+        this.mQrCodeDetection.set(modeIndependentParams.mQrCodeDetection.get());
     }
 }

@@ -745,4 +745,17 @@ Jos jatkat tallentamista SD-kortille, käytä suurinopeuksista SD-korttia (vähi
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">POIS KÄYTÖSTÄ</string>
     <string name="v7_preference_on">KÄYTÖSSÄ</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code -lukija</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code -lukija</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Avaa \"%1$s\" selaimessa napauttamalla</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Yhdistä napauttamalla verkkoon %1$s</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Tähän Wi-Fi-verkkoon yhdistäminen ei onnistu</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Tätä QR Code -koodia ei tueta</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Määritä tämä laite napauttamalla</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Yhdistetty verkkoon %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Tässä Wi-Fi-verkossa on tietoturvariskejä</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Haluatko varmasti yhdistää verkkoon %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Muodosta Wi-Fi-yhteys</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi ei ole käytössä.
+Ota Wi-Fi käyttöön ASETUKSISSA."</string>
 </resources>

@@ -7,4 +7,10 @@
     <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">一次只能将一台索尼的WLAN/NFC相机与Xperia相连。</string>
     <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">索尼的WLAN/NFC相机</string>
     <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">当Xperia与索尼的WLAN/NFC相机连接时，无法连接到任何Xperia。</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">点按以连接到WLAN网络“%1$s”</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">无法连接到此WLAN网络</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">此WLAN网络存在安全风险</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">连接到WLAN</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"WLAN已关闭。
+请从“设定”中开启WLAN。"</string>
 </resources>

@@ -745,4 +745,17 @@
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">ИЗКЛ.</string>
     <string name="v7_preference_on">ВКЛ.</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Четец на QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Четец на QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Натис. за отвар.: \"%1$s\" в браузъра</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Нат. за свързване с Wi-Fi мрежа \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Не може да се свърже с тази Wi-Fi мрежа</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Този QR Code не се поддържа</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Докоснете, за да настроите това устройство</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Осъществена връзка с/ъс %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Тази Wi-Fi мрежа носи рискове за защитата</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Наистина ли искате да се свържете с/ъс %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Свързване с Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi е изключен.
+Включете Wi-Fi от \"НАСТРОЙКИ\"."</string>
 </resources>

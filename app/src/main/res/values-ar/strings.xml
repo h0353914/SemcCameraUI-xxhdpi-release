@@ -744,4 +744,17 @@
     <string name="summary_collapsed_preference_list">%1$s، %2$s</string>
     <string name="v7_preference_off">إيقاف</string>
     <string name="v7_preference_on">تفعيل</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">قارئ QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">قارئ QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">انقر لفتح الرابط \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">انقر للاتصال بشبكة Wi-Fi \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">لا يمكن الاتصال بشبكة Wi-Fi هذه</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">QR Code هذا غير مدعوم</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">انقر لإعداد هذا الجهاز</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">الاتصال بـ %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">تنطوي شبكة Wi-Fi هذه على مخاطر أمنية</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">هل أنت متأكد أنك تريد الاتصال بـ %1$s؟</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">الاتصال بـ Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"تم إيقاف شبكة Wi-Fi.
+يرجى تشغيل شبكة Wi-Fi من الإعدادات."</string>
 </resources>

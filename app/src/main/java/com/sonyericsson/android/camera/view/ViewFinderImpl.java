@@ -108,6 +108,7 @@ import com.sonyericsson.android.camera.view.hint.HintTextAutoPowerOff;
 import com.sonyericsson.android.camera.view.hint.HintTextContent;
 import com.sonyericsson.android.camera.view.hint.HintTextHighSensitivityFusionCondition;
 import com.sonyericsson.android.camera.view.hint.HintTextHighSensitivityFusionStatus;
+import com.sonyericsson.android.camera.view.hint.HintTextQrDetect;
 import com.sonyericsson.android.camera.view.hint.HintTextSlowMotionDescription;
 import com.sonyericsson.android.camera.view.hint.HintTextStandardSlowMotion;
 import com.sonyericsson.android.camera.view.hint.HintTextStandardSlowMotionDescription;
@@ -4142,6 +4143,9 @@ public class ViewFinderImpl implements StateMachine.OnStateChangedListener, View
                     return;
                 }
                 return;
+            case EVENT_SHOW_QR_DETECTION_RESULT:
+                postHintText((HintTextContent) objArr[0]);
+                return;
             default:
                 return;
         }
@@ -6957,6 +6961,11 @@ public class ViewFinderImpl implements StateMachine.OnStateChangedListener, View
                     || did == DialogId.SD_CARD_PERMISSION_UNAVAILABLE) {
                 PermissionsUtil.requestSdCardGranted(ViewFinderImpl.this.mActivity, 20, StorageUtil.getVolumeUuid(
                         Storage.StorageType.EXTERNAL_CARD, ViewFinderImpl.this.mActivity.getApplicationContext()));
+            } else if (did == DialogId.APPLICATION_NOTIFICATION_NETWORK || did == DialogId.CONNECT_WIFI_SETTING) {
+                if (messageDialogRequest.mOptions != null && messageDialogRequest.mOptions.length > 0
+                        && messageDialogRequest.mOptions[0] instanceof Runnable) {
+                    ((Runnable) messageDialogRequest.mOptions[0]).run();
+                }
             }
         }
     }
@@ -7266,6 +7275,9 @@ public class ViewFinderImpl implements StateMachine.OnStateChangedListener, View
                 onClickThermalReadMore();
             } else if (hintTextContent instanceof HintTextSlowMotionDescription) {
                 onClickSlowMotionDescription(hintTextViewController, (HintTextSlowMotionDescription) hintTextContent);
+            } else if (hintTextContent instanceof HintTextQrDetect) {
+                ((HintTextQrDetect) hintTextContent).onClick();
+                hintTextViewController.hide();
             }
         }
 

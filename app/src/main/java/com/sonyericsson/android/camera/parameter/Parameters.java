@@ -31,6 +31,7 @@ import com.sonyericsson.android.camera.configuration.parameters.ObjectTracking;
 import com.sonyericsson.android.camera.configuration.parameters.PhotoLight;
 import com.sonyericsson.android.camera.configuration.parameters.PredictiveCapture;
 import com.sonyericsson.android.camera.configuration.parameters.PredictiveLaunch;
+import com.sonyericsson.android.camera.configuration.parameters.QrCodeDetection;
 import com.sonyericsson.android.camera.configuration.parameters.ResetSettings;
 import com.sonyericsson.android.camera.configuration.parameters.Resolution;
 import com.sonyericsson.android.camera.configuration.parameters.SelfTimer;
@@ -599,6 +600,11 @@ public abstract class Parameters implements UserSettingApplicable {
     }
 
     @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
+    public void set(QrCodeDetection qrCodeDetection) {
+        this.mIndependentParams.mQrCodeDetection.set(qrCodeDetection);
+    }
+
+    @Override // com.sonyericsson.android.camera.configuration.parameters.UserSettingApplicable
     public void set(SideSense sideSense) {
         this.mIndependentParams.mSideSense.set(sideSense);
     }
@@ -703,6 +709,8 @@ public abstract class Parameters implements UserSettingApplicable {
                 return this.mIndependentParams.mVolumeKey.get();
             case GRID_LINE:
                 return this.mIndependentParams.mGridLine.get();
+            case QR_CODE_DETECTION:
+                return this.mIndependentParams.mQrCodeDetection.get();
             case SIDE_SENSE:
                 return this.mIndependentParams.mSideSense.get();
             case SLOW_MOTION:

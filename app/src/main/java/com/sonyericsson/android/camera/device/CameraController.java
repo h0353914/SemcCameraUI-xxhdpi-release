@@ -902,7 +902,8 @@ class CameraController {
                     }
                     previewSessionRequest.needVideoHdr(parameters.getVideoHdr() == VideoHdr.HDR_ON);
                     previewSessionRequest
-                            .needCapturedFrame(parameters.getShutterTrigger() == ShutterTrigger.GESTURE_SHUTTER);
+                            .needCapturedFrame(parameters.getShutterTrigger() == ShutterTrigger.GESTURE_SHUTTER
+                                    || parameters.isQrCodeDetectionActive());
                 }
             }
             if (this.mPrevPreviewSessionRequest != null
@@ -2347,7 +2348,8 @@ void setRepeatingRequestInternal(CameraDeviceHandler.CameraSessionId cameraSessi
             this.mPreviewRequest.needVideo(null);
         }
         this.mPreviewRequest.needVideoHdr(parameters.getVideoHdr() == VideoHdr.HDR_ON);
-        this.mPreviewRequest.needCapturedFrame(parameters.getShutterTrigger() == ShutterTrigger.GESTURE_SHUTTER);
+        this.mPreviewRequest.needCapturedFrame(parameters.getShutterTrigger() == ShutterTrigger.GESTURE_SHUTTER
+                || parameters.isQrCodeDetectionActive());
     }
 
     private void applyAmberBlueColor(CameraParameters cameraParameters) {

@@ -681,4 +681,17 @@ Si continúa usando una tarjeta SD como almacenamiento de datos, asegúrese de u
     <string name="cam_strings_white_balance_txt">Balance Blanco</string>
     <string name="cam_strings_zoom_help_txt">Use la tecla de volumen para acercar o alejar</string>
     <string name="cam_strings_zoom_not_supported_txt">El zoom no está disponible.</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Lector de QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Lector de QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Pulsar para abrir \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Pulsar para conectarse a red Wi-Fi \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">No se puede conectar a esta red Wi-Fi</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">QR Code incompatible</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Pulse para configurar este dispositivo</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Conexión con %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Esta red Wi-Fi tiene riesgos de seguridad</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">¿Seguro que desea conectarse a %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Conectarse al Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"El Wi-Fi está desactivado.
+Active el Wi-Fi en AJUSTES."</string>
 </resources>

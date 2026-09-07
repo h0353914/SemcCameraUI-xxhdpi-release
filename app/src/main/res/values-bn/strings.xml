@@ -714,4 +714,17 @@ SD কার্ডটি ডাটা সঞ্চয়স্থান হিস�
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">বন্ধ</string>
     <string name="v7_preference_on">চালু</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code রিডার</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code রিডার</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">ব্রাউজারে \"%1$s\" খুলতে আলতো চাপুন</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Wi-Fi নেটওয়ার্কে সংযোগ করতে আল. \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">এই Wi-Fi-এ সংযোগ করা যায়নি</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">এইQR Codeটি সমর্থিত নয়</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">এই যন্ত্রটি সেট আপ করতে আলতো চাপুন</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">%1$s-এ সংযুক্ত হয়েছে</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">এই Wi-Fi নেটওয়ার্কে নিরাপত্তার ঝুঁকি আছে</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">আপনি কি নিশ্চিতভাবে %1$s-এ সংযোগ করতে চান?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Wi-Fi-এ সংযোগ করুন</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi বন্ধ আছে।
+সেটিংস থেকে অনুগ্রহ করে Wi-Fi চালু করুন।"</string>
 </resources>

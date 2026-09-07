@@ -745,4 +745,17 @@ Jika Anda melanjutkan menggunakan kartu SD sebagai penyimpanan data, pastikan me
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">NONAKTIF</string>
     <string name="v7_preference_on">AKTIF</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Pembaca QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Pembaca QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Ktk utk buka \"%1$s\" di browser</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Ketuk utk sambung ke jrgn Wi-Fi \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Tidak dapat tersambung ke jaringan Wi-Fi ini</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">QR Code tidak didukung</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Ketuk untuk menyetel perangkat ini</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Tersambung ke %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Jaringan Wi-Fi ini memiliki risiko keamanan</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Anda yakin ingin tersambung ke %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Sambungkan ke Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi dimatikan.
+Aktifkan Wi-Fi dari SETELAN."</string>
 </resources>

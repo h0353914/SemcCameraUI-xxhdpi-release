@@ -774,6 +774,7 @@ public class SettingUi {
             case VIDEO_STABILIZER:
                 return getOptions(userSettingKey).length > 2 ? 2 : 4;
             case GRID_LINE:
+            case QR_CODE_DETECTION:
             case SHUTTER_SOUND:
             case GEO_TAG:
                 return 4;
@@ -795,6 +796,7 @@ public class SettingUi {
             case SLOW_MOTION:
                 return 5;
             case GRID_LINE:
+            case QR_CODE_DETECTION:
             case SHUTTER_SOUND:
             case GEO_TAG:
             case TOUCH_CAPTURE:
@@ -828,6 +830,7 @@ public class SettingUi {
             case OBJECT_TRACKING:
             case SIDE_SENSE:
             case GRID_LINE:
+            case QR_CODE_DETECTION:
             case SHUTTER_SOUND:
             case GEO_TAG:
             case WHITE_BALANCE:

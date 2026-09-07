@@ -745,4 +745,17 @@ Kung patuloy mong gagamitin ang SD card bilang storage ng data, tiyaking gumamit
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">NAKA-OFF</string>
     <string name="v7_preference_on">NAKA-ON</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code reader</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code reader</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Buksan ang \"%1$s\" sa browser mo</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">I-tap at kmnekta sa Wi-Fi network \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Hindi makakonekta sa Wi-Fi network na ito</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Hindi sinusuportahan ang QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Mag-tap upang i-set up ang device na ito</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Nakakonekta sa %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">May mga panganib sa Wi-Fi network na ito</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Sigurado ka bang gusto mong kumonekta sa %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Kumonekta sa Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Naka-off ang Wi-Fi.
+Paki-on ang Wi-Fi sa MGA SETTING."</string>
 </resources>

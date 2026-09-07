@@ -761,4 +761,17 @@ SDカードを使用する場合は、カメラの設定から保存先をSDカ�
     <string name="summary_collapsed_preference_list">%1$s、%2$s</string>
     <string name="v7_preference_off">OFF</string>
     <string name="v7_preference_on">ON</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QRコード読み取り</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QRコード読み取り</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">タップして\"%1$s\"をブラウザアプリで開く</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">タップしてWi-Fi\"%1$s\"に接続</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">このWi-Fiには接続できません</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">サポートされていないQRコードです</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">タップしてこの機器を設定します</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">%1$sに接続しました</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">セキュリティリスクのあるWi-Fiです</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">本当に%1$sに接続しますか?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Wi-Fiに接続</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fiの設定がOFFです。
+[設定]ボタンからONにしてください。"</string>
 </resources>

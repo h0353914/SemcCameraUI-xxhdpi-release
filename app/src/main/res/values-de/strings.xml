@@ -745,4 +745,17 @@ Wenn Sie weiterhin eine SD-Karte als Datenspeicher verwenden möchten, sollte es
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">AUS</string>
     <string name="v7_preference_on">EIN</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code-Scanner</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code-Scanner</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Tippen, um Link zu öffnen: \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Tippen zum Verbinden mit „%1$s“</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Keine Verbindung mit diesem WLAN möglich</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Dieser QR Code wird nicht unterstützt</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Zum Einrichten dieses Geräts tippen</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Verbunden mit %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Bei diesem WLAN-Netzwerk bestehen Sicherheitsrisiken</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Möchten Sie wirklich eine Verbindung zu %1$s herstellen?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Mit WLAN verbinden</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"WLAN ist ausgeschaltet
+Bitte WLAN in den EINSTELLUNGEN einschalten."</string>
 </resources>

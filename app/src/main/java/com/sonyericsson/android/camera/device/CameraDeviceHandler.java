@@ -1066,6 +1066,18 @@ public class CameraDeviceHandler {
         this.mCameraController.triggerRestartPreview(this.mCameraSessionId, false);
     }
 
+    public void setQrCodeDetectionActive(boolean z) {
+        if (CamLog.DEBUG) {
+            CamLog.d("invoked value:" + z);
+        }
+        CameraParameters parameters = getParameters(this.mCameraSessionId);
+        if (parameters == null || parameters.isQrCodeDetectionActive() == z) {
+            return;
+        }
+        parameters.setQrCodeDetectionActive(z);
+        this.mCameraController.triggerRestartPreview(this.mCameraSessionId, false);
+    }
+
     public void setStateMachine(StateMachine stateMachine) {
         if (CamLog.DEBUG) {
             CamLog.d("invoked prev:" + this.mStateMachine + " new:" + stateMachine);

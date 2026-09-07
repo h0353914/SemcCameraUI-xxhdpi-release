@@ -746,4 +746,17 @@ Hvis du fortsetter å bruke SD-kortet til datalagring, er det viktig at du bruke
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">AV</string>
     <string name="v7_preference_on">PÅ</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code-leser</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code-leser</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Trykk for å åpne koblingen \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Trykk for å koble til Wi-Fi-nettet «%1$s»</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Kan ikke koble til dette Wi-Fi-nettverket</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Denne QR Code støttes ikke</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Trykk for å konfigurere denne enheten</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Koblet til %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Dette Wi-Fi-nettverket er ikke trygt</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Er du sikker på at du vil koble til %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Koble til Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi er slått av.
+Slå på Wi-Fi i INNSTILLINGER."</string>
 </resources>

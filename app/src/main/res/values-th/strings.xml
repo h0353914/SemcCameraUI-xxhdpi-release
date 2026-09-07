@@ -749,4 +749,17 @@
     <string name="summary_collapsed_preference_list">%1$s %2$s</string>
     <string name="v7_preference_off">ปิด</string>
     <string name="v7_preference_on">เปิด</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">ตัวอ่าน QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">ตัวอ่าน QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">แตะเพื่อเปิด \"%1$s\" ในเบราว์เซอร์</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">แตะเพื่อเชื่อมต่อกับเครือข่าย Wi-Fi \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">เชื่อมต่อเครือข่าย Wi-Fi นี้ไม่ได้</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">ไม่รองรับ QR Code นี้</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">แตะเพื่อตั้งค่าอุปกรณ์เครื่องนี้</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">เชื่อมต่อกับ %1$s แล้ว</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">เครือข่าย Wi-Fi มีความเสี่ยงด้านความปลอดภัย</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">คุณแน่ใจว่าต้องการเชื่อมต่อกับ %1$s หรือไม่</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">เชื่อมต่อกับ Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi ปิดอยู่
+โปรดเปิด Wi-Fi จากการตั้งค่า"</string>
 </resources>

@@ -7,4 +7,10 @@
     <string name="cam_strings_multicam_excess_di_connection_num_err_dialog_txt">"Votre Xperia ne peut être branché qu'à un appareil photo WLAN/NFC de Sony à la fois."</string>
     <string name="cam_strings_multicam_nfc_connect_wifi_camera_txt">Appareil photo WLAN/NFC de Sony</string>
     <string name="cam_strings_multicam_xperia_connection_err_dialog_txt">Impossible de se connecter à un Xperia lorsque votre Xperia est connecté à un appareil photo WLAN/NFC de Sony.</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Taper pour se conn. au rés. WLAN « %1$s »</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Connexion impossible à ce réseau WLAN</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Ce réseau WLAN présente des risques de sécurité</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Connecter au WLAN</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Le WLAN est désactivé.
+Veuillez activer le WLAN dans PARAMÈTRES."</string>
 </resources>

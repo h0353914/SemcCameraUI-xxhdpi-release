@@ -53,6 +53,8 @@ public interface UserSettingApplicable {
 
     void set(PredictiveLaunch predictiveLaunch);
 
+    void set(QrCodeDetection qrCodeDetection);
+
     void set(ResetSettings resetSettings);
 
     void set(Resolution resolution);

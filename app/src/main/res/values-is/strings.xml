@@ -715,4 +715,17 @@ Ef þú heldur áfram að nota SD-kort fyrir gagnavistun skaltu gæta þess að 
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">SLÖKKT</string>
     <string name="v7_preference_on">KVEIKT</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code lesari</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code lesari</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Pikkaðu til að opna \"%1$s\" í vafra</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Pikka og tengjast við Wi-Fi-net \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Get ekki tengst þessu Wi-Fi-netkerfi</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Þessi QR Code er ekki studdur</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Pikkaðu til að setja þetta tæki upp</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Tengd við %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Þetta Wi-Fi-netkerfi er með öryggishættur</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Ertu viss um að þú viljir tengjast við %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Tengjast við Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Slökkt er á Wi-Fi.
+Kveiktu á Wi-Fi í STILLINGAR."</string>
 </resources>

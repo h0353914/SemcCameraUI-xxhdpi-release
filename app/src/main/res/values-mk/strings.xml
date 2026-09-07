@@ -714,4 +714,17 @@
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">ИСКЛУЧЕНО</string>
     <string name="v7_preference_on">ВКЛУЧЕНО</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Читач на QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Читач на QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Допрете за отворање на \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Допр. за поврзув. со Wi-Fi мреж. „%1$s“</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Не може да се поврзе со оваа Wi-Fi мрежа</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Овој QR Code не е поддржан</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Допрете за да го поставите овој уред</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Поврзани сте на %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Оваа Wi-Fi мрежа има безбедносни ризици</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Сигурно ли сакате да се поврзете со %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Поврзи се со Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi е исклучен.
+Вклучете го Wi-Fi од ПОСТАВКИТЕ."</string>
 </resources>

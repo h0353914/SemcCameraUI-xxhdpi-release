@@ -745,4 +745,17 @@ Veri depolaması olarak SD kart kullanmaya devam ederseniz, hızlı bir SD kart 
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">KAPALI</string>
     <string name="v7_preference_on">AÇIK</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code okuyucu</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code okuyucu</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Açmak için dokunun: \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Şu Wi-Fi ağına bağlnmk içn dokun: %1$s</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Bu Wi-Fi ağına bağlanılamıyor</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Bu QR Code desteklenmiyor</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Bu cihazın kurulumunu yapmak için dokunun</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">%1$s ağına bağlandı</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Bu Wi-Fi ağında güvenlik riskleri var</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">%1$s ağına bağlanmak istediğinizden emin misiniz?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Wi-Fi ağına bağlan</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi kapalı.
+Lütfen AYARLAR'dan Wi-Fi özelliğini açın."</string>
 </resources>

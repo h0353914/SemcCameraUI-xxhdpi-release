@@ -745,4 +745,17 @@ Nếu bạn tiếp tục sử dụng thẻ SD làm bộ nhớ dữ liệu, hãy 
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">TẮT</string>
     <string name="v7_preference_on">BẬT</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Trình đọc QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Trình đọc QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Nhấn để mở \"%1$s\" trên trình duyệt</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Nhấn để kết nối với mạng Wi-Fi \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Không thể kết nối với mạng Wi-Fi này</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Không hỗ trợ QR Code này</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Nhấn để thiết lập thiết bị này</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Đã kết nối với %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Mạng Wi-Fi này có rủi ro bảo mật</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Bạn có chắc chắn muốn kết nối với %1$s không?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Kết nối với Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Đã tắt Wi-Fi.
+Vui lòng bật Wi-Fi từ phần CÀI ĐẶT."</string>
 </resources>

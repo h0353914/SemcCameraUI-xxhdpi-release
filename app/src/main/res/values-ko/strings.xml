@@ -745,4 +745,17 @@ SD 카드를 데이터 저장소로 계속 사용하려면 고속 SD 카드(UHS 
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">사용 안함</string>
     <string name="v7_preference_on">사용</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code 리더</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code 리더</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">링크를 열려면 누름: \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Wi-Fi 네트워크에 연결하려면 누름: \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Wi-Fi 네트워크에 연결할 수 없음</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">이 QR Code는 지원되지 않음</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">눌러서 이 기기 설정</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">%1$s에 연결됨</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">이 Wi-Fi 네트워크에 보안 위험이 있음</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">%1$s에 연결하시겠습니까?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Wi-Fi 연결</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi가 꺼져 있습니다.
+설정에서 Wi-Fi를 켜세요."</string>
 </resources>

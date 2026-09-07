@@ -117,6 +117,9 @@ dependencies {
 
     // Architecture Components
     implementation("android.arch.lifecycle:livedata-core:1.1.1")
+
+    // QR Code 偵測（取代 2.9.2.A.0.10 內嵌的 ZXing core smali，改用官方 Maven 套件）
+    implementation("com.google.zxing:core:3.5.3")
 }
 
 configurations.all {

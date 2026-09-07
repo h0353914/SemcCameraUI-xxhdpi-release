@@ -715,4 +715,17 @@ Nëse vazhdoni të përdorni kartën SD për ruajtjen e të dhënave, sigurohuni
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">JOAKTIV</string>
     <string name="v7_preference_on">AKTIV</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Lexuesi i QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Lexuesi i QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Trok. për të hapur \"%1$s\" në shfletues</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">"Trok. për t'u lidhur me rrjetin Wi-Fi \"%1$s\""</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Nuk mund të lidhet me këtë rrjet Wi-Fi</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Ky kod QR Code nuk mbështetet</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Trokitni për të konfig. këtë pajisje</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Jeni lidhur me %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Ky rrjet Wi-Fi nuk është i sigurt</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Jeni të sigurt që dëshironi të lidheni me %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Lidhuni me Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi është çaktivizuar.
+Aktivizoni Wi-Fi nga CILËSIMET."</string>
 </resources>

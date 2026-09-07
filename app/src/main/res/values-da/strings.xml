@@ -745,4 +745,17 @@ Hvis du fortsætter med at bruge SD-kortet som datalager, skal du bruge et højh
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">FRA</string>
     <string name="v7_preference_on">TIL</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code-læser</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code-læser</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Tap for at åbne linket \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Tap og forbind til Wi-Fi-netværket \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Forbindelse til Wi-Fi-netværket kan ikke oprettes</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Denne QR Code understøttes ikke</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Tryk for at konfigurere dette udstyr</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Forbundet til %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">Dette Wi-Fi-netværk har en sikkerhedsrisiko</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Er du sikker på, at du vil oprette forbindelse til %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Opret forbindelse til Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi er slået fra.
+Slå Wi-Fi til under INDSTILLINGER."</string>
 </resources>

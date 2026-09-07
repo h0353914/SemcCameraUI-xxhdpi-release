@@ -275,6 +275,11 @@ This image contains a gray area"</string>
     <string name="cam_strings_dialog_high_temp_txt">If the device temperature rises, the app may close during use. Your recording will be saved automatically.</string>
     <string name="cam_strings_dialog_high_temp_vzw_txt">"This camera mode uses a lot of your phone's resources and may cause your phone's temperature to rise. To prevent overheating, video recording may stop and the camera app may close. Your recording will be saved automatically."</string>
     <string name="cam_strings_dialog_hight_temp_title_txt">Note</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Are you sure you want to connect to %1$s?</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Wi-Fi is turned off.
+Please turn on Wi-Fi from SETTINGS."</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">This Wi-Fi network has security risks</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Connect to Wi-Fi</string>
     <string name="cam_strings_dialog_storage_full_burst_txt">Burst capturing stopped due to out of memory. Delete some files to free some space on the internal storage.</string>
     <string name="cam_strings_dialog_video_hdr_hlg_supported_txt">You can record videos even in high contrast scene, and make them more dramatic and closer to what you see in real life. Please use supported devices/services to enjoy the content with its original color and brightness.</string>
     <string name="cam_strings_distortion_correction_photo_video_txt">Correction for distortion</string>
@@ -366,6 +371,7 @@ This image contains a gray area"</string>
     <string name="cam_strings_fast_switch_mode_camera_wizard_txt">Swipe the screen to switch to another capturing mode such as Video or Manual, and switch between the main and front camera.</string>
     <string name="cam_strings_fast_switch_tutorial_title_txt">Switch camera</string>
     <string name="cam_strings_fast_switch_tutorial_txt">You can switch between the main and front cameras by swiping the screen</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">QR Code reader</string>
     <string name="cam_strings_file_delete_confirm_title_txt">Delete</string>
     <string name="cam_strings_file_delete_confirm_txt">Delete this file?</string>
     <string name="cam_strings_file_share_title_txt">Share</string>
@@ -564,6 +570,12 @@ You can turn off this feature from Smart launch in camera settings."</string>
     <string name="cam_strings_preview_edit_txt">Edit</string>
     <string name="cam_strings_preview_only_front_txt">Only front camera</string>
     <string name="cam_strings_previous_txt">Previous</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Tap to set up this device</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">This QR code is not supported</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Tap to open \"%1$s\" in your browser</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Cannot connect to this Wi-Fi network</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Tap to connect to Wi-Fi network \"%1$s\"</string>
+    <string name="cam_strings_qrcode_detect_title_txt">QR Code reader</string>
     <string name="cam_strings_recording_remaining_time_devider_txt">/</string>
     <string name="cam_strings_recording_txt">REC</string>
     <string name="cam_strings_remember_geotag_title_txt">Save location?</string>
@@ -745,6 +757,7 @@ at the right moment"</string>
     <string name="cam_strings_timeshift_save_selection_txt">Save separately</string>
     <string name="cam_strings_timeshift_select_images_txt">Select photos</string>
     <string name="cam_strings_timeshift_share_txt">Share</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Connected to %1$s</string>
     <string name="cam_strings_touch_capturing_always_txt">On</string>
     <string name="cam_strings_touch_capturing_only_front_txt">Only front camera</string>
     <string name="cam_strings_touch_capturing_title_txt">Touch capture</string>

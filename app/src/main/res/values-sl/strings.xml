@@ -745,4 +745,17 @@ S snemanjem pri dobri osvetlitvi boste ustvarili boljši videoposnetek."</string
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">IZKLOPLJENO</string>
     <string name="v7_preference_on">VKLOPLJENO</string>
+    <string name="cam_strings_feature_qrcode_detection_txt">Bralnik kod QR Code</string>
+    <string name="cam_strings_qrcode_detect_title_txt">Bralnik kod QR Code</string>
+    <string name="cam_strings_qrcode_detect_text_url_txt">Tapnite, da odprete \"%1$s\" v brskalniku</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_txt">Tapnite za pov. z omrežjem Wi-Fi »%1$s«</string>
+    <string name="cam_strings_qrcode_detect_text_wifi_notsupported_txt">Povezave s tem omrežjem Wi-Fi ni mogoče vzpostaviti</string>
+    <string name="cam_strings_qrcode_detect_text_notsupported_txt">Ta koda QR Code ni podprta</string>
+    <string name="cam_strings_qrcode_detect_text_matter_txt">Tapnite za nastavitev te naprave</string>
+    <string name="cam_strings_toast_qrcode_wifi_connect_txt">Povezava je vzpostavljena z omrežjem %1$s</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_securityrisk_txt">To omrežje Wi-Fi predstavlja varnostna tveganja</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_securityrisk_txt">Ali res želite vzpostaviti povezavo z omrežjem %1$s?</string>
+    <string name="cam_strings_dialog_title_qrcode_wifi_ready_txt">Vzpostavite povezavo z omrežjem Wi-Fi</string>
+    <string name="cam_strings_dialog_body_qrcode_wifi_ready_wifi_off_txt">"Omrežje Wi-Fi je izklopljeno.
+Vklopite omrežje Wi-Fi v NASTAVITVAH."</string>
 </resources>
